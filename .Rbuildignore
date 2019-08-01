@@ -1,0 +1,9 @@
+^statsExpressions\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$
+^\.github$
+^\.github/ISSUE_TEMPLATE$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^README\.Rmd$
