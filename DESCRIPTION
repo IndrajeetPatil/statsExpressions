@@ -1,16 +1,68 @@
+Type: Package
 Package: statsExpressions
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Expressions with Statistical Details
+Version: 0.0.1.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: GPL-3 + file LICENSE
+    c(person(given = "Indrajeet",
+             family = "Patil",
+             role = c("cre", "aut", "ctb"),
+             email = "patilindrajeet.science@gmail.com",
+             comment = c(ORCID = "0000-0003-1995-6531")),
+      person(given = "Chuck",
+             family = "Powell",
+             role = "ctb",
+             email = "ibecav@gmail.com",
+             comment = c(ORCID = "0000-0002-3606-2188")))
+Maintainer: Indrajeet Patil <patilindrajeet.science@gmail.com>
+Description: Backend for 'ggstatsplot' package. It creates
+    expressions with details from statistical tests.  Currently, it
+    supports only the most common types of statistical tests: parametric,
+    nonparametric, robust, and bayesian versions of t-test/anova,
+    correlation analyses, contingency table analysis, and regression
+    analyses.
+License: GPL-3 | file LICENSE
+URL: https://indrajeetpatil.github.io/statsExpressions/,
+    https://github.com/IndrajeetPatil/statsExpressions
+BugReports: 
+    https://github.com/IndrajeetPatil/statsExpressions/issues
+Depends: 
+    R (>= 3.5.0)
+Imports:
+    BayesFactor (>= 0.9.12-4.2),
+    boot (>= 1.3-22),
+    broomExtra (>= 0.0.4),
+    crayon (>= 1.3.4),
+    dplyr (>= 0.8.3),
+    ellipsis (>= 0.2.0.1),
+    ez (>= 4.4-0),
+    groupedstats,
+    magrittr (>= 1.5),
+    MCMCpack (>= 1.4-4),
+    methods,
+    psych,
+    purrr (>= 0.3.2),
+    purrrlyr (>= 0.0.5),
+    rcompanion (>= 2.2.2),
+    rlang (>= 0.4.0),
+    stats,
+    tibble (>= 2.1.3),
+    tidyr (>= 0.8.3),
+    utils,
+    WRS2 (>= 1.0-0)
+Suggests:
+    broom,
+    forcats,
+    ggplot2,
+    jmv,
+    knitr,
+    rmarkdown,
+    spelling,
+    stringr,
+    testthat
+VignetteBuilder: 
+    knitr
 Encoding: UTF-8
-LazyData: true
-Suggests: 
-    spelling
 Language: en-US
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1.9000

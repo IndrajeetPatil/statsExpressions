@@ -1,1 +1,49 @@
-destination: docs
+url: https://indrajeetpatil.github.io/statsExpressions/
+
+template:
+  params:
+    bootswatch: simplex
+
+development:
+  mode: unreleased
+
+authors:
+  Indrajeet Patil:
+    href: https://sites.google.com/site/indrajeetspatilmorality/
+
+reference:
+  - title: Primary functions
+    desc: Functions used to create expressions with statistical details
+    contents:
+      - starts_with("subtitle_")
+
+  - title: Helper functions for preparing Bayes Factor captions
+    desc: Functions used to create Bayes Factor (in favor of null) captions
+    contents:
+      - starts_with("bf_")
+
+  - title: Reexported functions
+    desc:  Useful functions re-exported from other packages.
+    contents:
+      - specify_decimal_p
+      - signif_column
+      - lm_effsize_ci
+      - set_cwd
+      - "%>%"
+      - "%<>%"
+      - "%$%"
+      - "%||%"
+      - "%|%"
+      - tibble
+      - as_tibble
+
+  - title: Data
+    desc:  Datasets included in the package.
+    contents:
+      - movies_wide
+      - movies_long
+      - Titanic_full
+      - intent_morality
+      - iris_long
+      - VR_dilemma
+      - bugs_long
