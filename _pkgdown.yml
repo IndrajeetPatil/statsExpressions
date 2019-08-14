@@ -22,6 +22,10 @@ reference:
     contents:
       - starts_with("bf_")
 
+  - title: Helper functions
+    contents:
+      - long_to_wide_converter
+
   - title: Reexported functions
     desc:  Useful functions re-exported from other packages.
     contents:

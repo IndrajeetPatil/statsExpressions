@@ -32,6 +32,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Bayes Factor for <em>t</em>-test — bf_ttest" />
 
 <meta property="og:description" content="Bayes Factor for t-test" />
@@ -92,6 +94,9 @@
       <a href="../articles/tests_and_coverage.html">Tests and Coverage</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -238,7 +243,7 @@ otherwise a two-sample <em>t</em>-test will be carried out.</p>
 <span class='co'># for paired sample test</span>
 <span class='fu'>bf_ttest</span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(
-    <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/statsExpressions/man/intent_morality.html'>intent_morality</a></span>,
+    <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='no'><a href='https://indrajeetpatil.github.io/statsExpressions//reference/intent_morality.html'>intent_morality</a></span>,
     <span class='no'>condition</span> <span class='kw'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"accidental"</span>, <span class='st'>"attempted"</span>),
     <span class='no'>harm</span> <span class='kw'>==</span> <span class='st'>"Poisoning"</span>
   ),

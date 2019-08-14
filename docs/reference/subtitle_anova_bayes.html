@@ -32,6 +32,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Making expression containing Bayesian one-way ANOVA results. — subtitle_anova_bayes" />
 
 <meta property="og:description" content="Making expression containing Bayesian one-way ANOVA results." />
@@ -92,6 +94,9 @@
       <a href="../articles/tests_and_coverage.html">Tests and Coverage</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -175,7 +180,7 @@ prior width to use in calculating Bayes Factors.</p></td>
 
 <span class='co'># between-subjects ---------------------------------------</span>
 <span class='co'># with defaults</span>
-<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/statsExpressions/man/subtitle_anova_bayes.html'>subtitle_anova_bayes</a></span>(
+<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/statsExpressions//reference/subtitle_anova_bayes.html'>subtitle_anova_bayes</a></span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>vore</span>,
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>sleep_rem</span>
@@ -183,7 +188,7 @@ prior width to use in calculating Bayes Factors.</p></td>
 #&gt;     "log"["e"], "(BF"["10"], ") = ", "1.23", ", ", italic("r")["Cauchy"]^"JZS", 
 #&gt;     " = ", "0.71"))</div><div class='input'>
 <span class='co'># modifying the defaults</span>
-<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/statsExpressions/man/subtitle_anova_bayes.html'>subtitle_anova_bayes</a></span>(
+<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/statsExpressions//reference/subtitle_anova_bayes.html'>subtitle_anova_bayes</a></span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>vore</span>,
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>sleep_rem</span>,
@@ -193,7 +198,7 @@ prior width to use in calculating Bayes Factors.</p></td>
 #&gt;     "log"["e"], "(BF"["10"], ") = ", "1.153", ", ", italic("r")["Cauchy"]^"JZS", 
 #&gt;     " = ", "0.800"))</div><div class='input'>
 <span class='co'># repeated measures ---------------------------------------</span>
-<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/statsExpressions/man/subtitle_anova_bayes.html'>subtitle_anova_bayes</a></span>(
+<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/statsExpressions//reference/subtitle_anova_bayes.html'>subtitle_anova_bayes</a></span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>WRS2</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/WRS2/man/WineTasting.html'>WineTasting</a></span>,
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Wine</span>,
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Taste</span>,
