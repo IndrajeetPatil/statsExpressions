@@ -17,6 +17,7 @@
 #' @inheritParams t1way_ci
 #' @inheritParams subtitle_t_parametric
 #' @inheritParams bf_corr_test
+#' @inheritParams subtitle_anova_parametric
 #'
 #' @importFrom dplyr select bind_rows summarize mutate mutate_at mutate_if
 #' @importFrom dplyr group_by n arrange

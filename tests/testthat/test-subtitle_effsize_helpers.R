@@ -477,26 +477,22 @@ testthat::test_that(
 testthat::test_that(
   desc = "effsize works for Cohen's d and Hedge's g (within - with NA)",
   code = {
-    library(jmv)
-    data(bugs)
 
-    # creating a new dataframe with a variable that has dropped factor level
-    bugs_short_unequal <- bugs %>%
-      tibble::as_tibble(x = .) %>%
-      tidyr::gather(
-        data = .,
-        key = "condition",
-        value = "value",
-        LDLF:LDHF,
-        na.rm = TRUE
-      )
+    # data
+    bugs_short_unequal <- dplyr::filter(
+      bugs_long,
+      condition %in% c("LDLF", "LDHF")
+    )
 
     bugs_short <- bugs_short_unequal %>%
-      dplyr::filter(.data = ., Subject != 2L, Subject != 80)
+      dplyr::filter(.data = ., subject != 2L, subject != 80)
+
+
+    bugs <- tidyr::spread(bugs_short_unequal, condition, desire)
 
     tobject1 <-
       t.test(
-        formula = value ~ condition,
+        formula = desire ~ condition,
         data = bugs_short,
         var.equal = TRUE,
         conf.level = .95,
@@ -504,7 +500,7 @@ testthat::test_that(
       )
     tobject2 <-
       t.test(
-        formula = value ~ condition,
+        formula = desire ~ condition,
         data = bugs_short,
         var.equal = TRUE,
         conf.level = .95,
@@ -512,7 +508,7 @@ testthat::test_that(
       )
     tobject3 <-
       t.test(
-        formula = value ~ condition,
+        formula = desire ~ condition,
         data = bugs_short,
         var.equal = TRUE,
         conf.level = .90,
@@ -520,7 +516,7 @@ testthat::test_that(
       )
     tobject4 <-
       t.test(
-        formula = value ~ condition,
+        formula = desire ~ condition,
         data = bugs_short,
         var.equal = TRUE,
         conf.level = .90,
@@ -537,7 +533,7 @@ testthat::test_that(
 
     testthat::expect_error(
       statsExpressions:::effsize_t_parametric(
-        formula = value ~ condition,
+        formula = desire ~ condition,
         data = bugs_short_unequal,
         paired = TRUE,
         hedges.correction = TRUE,
@@ -549,7 +545,7 @@ testthat::test_that(
     # g and central
     set.seed(123)
     df1 <- statsExpressions:::effsize_t_parametric(
-      formula = value ~ condition,
+      formula = desire ~ condition,
       data = bugs_short,
       paired = TRUE,
       hedges.correction = TRUE,
@@ -561,7 +557,7 @@ testthat::test_that(
     # g and non-central
     set.seed(123)
     df2 <- statsExpressions:::effsize_t_parametric(
-      formula = value ~ condition,
+      formula = desire ~ condition,
       data = bugs_short,
       paired = TRUE,
       hedges.correction = TRUE,
@@ -573,7 +569,7 @@ testthat::test_that(
     # d and central
     set.seed(123)
     df3 <- statsExpressions:::effsize_t_parametric(
-      formula = value ~ condition,
+      formula = desire ~ condition,
       data = bugs_short,
       paired = TRUE,
       hedges.correction = FALSE,
@@ -585,7 +581,7 @@ testthat::test_that(
     # d and non-central
     set.seed(123)
     df4 <- statsExpressions:::effsize_t_parametric(
-      formula = value ~ condition,
+      formula = desire ~ condition,
       data = bugs_short,
       paired = TRUE,
       hedges.correction = FALSE,
@@ -593,6 +589,7 @@ testthat::test_that(
       noncentral = TRUE,
       tobject = tobject4
     )
+
 
     # not tidy data
     set.seed(123)

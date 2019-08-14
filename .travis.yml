@@ -68,7 +68,6 @@ matrix:
         - tidyr
         - dplyr
         - coin
-        - jmv
         - sjstats
         - WRS2
         - bridgesampling
@@ -124,7 +123,6 @@ matrix:
         - tidyr
         - dplyr
         - coin
-        - jmv
         - sjstats
         - WRS2
         - bridgesampling

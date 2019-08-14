@@ -384,7 +384,12 @@ testthat::test_that(
 
     # cleaning the factor levels
     df <- as.data.frame(as.table(matrix_df)) %>%
-      dplyr::mutate(.data = ., Var2 = stringr::str_remove(Var2, "2"))
+      dplyr::mutate(.data = ., Var2 = dplyr::case_when(
+        Var2 == "Pastafarian2" ~ "Pastafarian",
+        Var2 == "Discordiant2" ~ "Discordiant",
+        Var2 == "Dudist2" ~ "Dudist",
+        Var2 == "Jedi2" ~ "Jedi"
+      ))
 
     # ggstatsplot output
     set.seed(123)

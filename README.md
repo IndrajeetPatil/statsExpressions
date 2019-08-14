@@ -18,9 +18,9 @@
 [`statsExpressions`](https://indrajeetpatil.github.io/statsExpressions/)
 provides backend for the
 [`ggstatsplot`](https://indrajeetpatil.github.io/ggstatsplot/) package,
-which combines visualizations made with `ggplot2` with expressions
-containing results from statistical tests. `statsExpressions` contains
-all functions needed to create these expressions.
+which combines `ggplot2` visualizations with expressions containing
+results from statistical tests. `statsExpressions` contains all
+functions needed to create these expressions.
 
 # Installation
 
@@ -58,18 +58,6 @@ remotes::install_github(
   dependencies = TRUE, # installs packages which statsExpressions depends on
   upgrade_dependencies = TRUE # updates any out of date dependencies
 )
-```
-
-If you are not using the [RStudio IDE](https://www.rstudio.com/) and you
-get an error related to “pandoc” you will either need to remove the
-argument `build_vignettes = TRUE` (to avoid building the vignettes) or
-install [pandoc](http://pandoc.org/). If you have the `rmarkdown` R
-package installed then you can check if you have pandoc by running the
-following in R:
-
-``` r
-rmarkdown::pandoc_available()
-#> [1] TRUE
 ```
 
 # Citation
@@ -155,6 +143,9 @@ Although these functions were initially written to display results from
 statistical tests on ready-made `ggplot2` plots implemented in
 `ggstatsplot`, the `statsExpressions` package functions can be used to
 display these results on any custom plots.
+
+Here is an example from `ggstatsplot` of what the plots look like when
+the expressions are displayed in the subtitle-
 
 <img src="man/figures/README-ggwithinstats1-1.png" align="center" />
 

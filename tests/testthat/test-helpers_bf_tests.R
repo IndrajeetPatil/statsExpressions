@@ -70,13 +70,12 @@ testthat::test_that(
 testthat::test_that(
   desc = "bayes factor (paired t-test)",
   code = {
+    # data
+    dat <- tidyr::spread(bugs_long, condition, desire) %>%
+      dplyr::filter(.data = ., !is.na(HDLF), !is.na(HDHF))
 
-
-    # creating a dataframe
+    # BF output
     set.seed(123)
-    data("bugs", package = "jmv")
-    dat <- dplyr::filter(bugs, !is.na(HDLF), !is.na(HDHF))
-
     df <- suppressMessages(statsExpressions::bf_extractor(
       BayesFactor::ttestBF(
         x = dat$HDLF,
@@ -87,14 +86,14 @@ testthat::test_that(
     ))
 
     # creating a tidy dataframe
-    dat_tidy <- tidyr::gather(data = dat, key, value, c(HDLF, HDHF))
+    dat_tidy <- dplyr::filter(bugs_long, condition %in% c("HDLF", "HDHF"))
 
     # extracting results from where this function is implemented
     set.seed(123)
     df_results <- statsExpressions::bf_ttest(
       data = dat_tidy,
-      x = "key",
-      y = value,
+      x = "condition",
+      y = desire,
       paired = TRUE,
       bf.prior = 0.8,
       output = "results"

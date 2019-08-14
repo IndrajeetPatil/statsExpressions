@@ -1,0 +1,5 @@
+bibentry(bibtype = "manual",
+         title = "statsExpressions: 'ggplot2' Expressions with Statistical Details",
+         author = c(person("Indrajeet", "Patil")),
+         year = 2019,
+         url = "https://CRAN.R-project.org/package=statsExpressions")

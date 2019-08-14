@@ -10,13 +10,9 @@ testthat::test_that(
 
     # setup
     set.seed(123)
-    library(jmv)
-    data("bugs", package = "jmv")
 
     # converting to long format
-    data_bugs <- bugs %>%
-      tibble::as_tibble(.) %>%
-      tidyr::gather(., key, value, LDLF:HDHF)
+    data_bugs <- bugs_long
 
     # ----------------------- data without NAs ------------------------------
 
@@ -47,8 +43,8 @@ testthat::test_that(
     set.seed(123)
     df3 <- statsExpressions:::long_to_wide_converter(
       data = data_bugs,
-      x = key,
-      y = value
+      x = condition,
+      y = desire
     )
 
     testthat::expect_equal(dim(df3), c(88L, 5L))

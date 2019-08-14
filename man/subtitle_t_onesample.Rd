@@ -56,6 +56,9 @@ for the effect size (Default: \code{100}).}
 added as a prefix in the subtitle. The default is \code{NULL}. An example of a
 \code{stat.title} argument will be something like \code{"Student's t-test: "}.}
 
+\item{messages}{Decides whether messages references, notes, and warnings are
+to be displayed (Default: \code{TRUE}).}
+
 \item{...}{Additional arguments (currently ignored).}
 }
 \description{

@@ -41,7 +41,6 @@ Imports:
     methods,
     psych,
     purrr (>= 0.3.2),
-    purrrlyr (>= 0.0.5),
     rcompanion (>= 2.2.2),
     rlang (>= 0.4.0),
     stats,
@@ -51,13 +50,10 @@ Imports:
     WRS2 (>= 1.0-0)
 Suggests:
     broom,
-    forcats,
     ggplot2,
-    jmv,
     knitr,
     rmarkdown,
     spelling,
-    stringr,
     testthat
 VignetteBuilder: 
     knitr

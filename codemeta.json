@@ -73,18 +73,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "forcats",
-      "name": "forcats",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=forcats"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "ggplot2",
       "name": "ggplot2",
       "provider": {
@@ -94,18 +82,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=ggplot2"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "jmv",
-      "name": "jmv",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=jmv"
     },
     {
       "@type": "SoftwareApplication",
@@ -142,18 +118,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=spelling"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "stringr",
-      "name": "stringr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=stringr"
     },
     {
       "@type": "SoftwareApplication",
@@ -336,19 +300,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "purrrlyr",
-      "name": "purrrlyr",
-      "version": ">= 0.0.5",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=purrrlyr"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "rcompanion",
       "name": "rcompanion",
       "version": ">= 2.2.2",
@@ -423,7 +374,7 @@
       "sameAs": "https://CRAN.R-project.org/package=WRS2"
     }
   ],
-  "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.Rmd",
+  "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md",
   "contIntegration": [
     "https://ci.appveyor.com/project/IndrajeetPatil/statsExpressions",
     "https://travis-ci.org/IndrajeetPatil/statsExpressions"
