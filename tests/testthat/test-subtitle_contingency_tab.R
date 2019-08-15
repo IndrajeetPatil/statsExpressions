@@ -669,5 +669,51 @@ testthat::test_that(
       data = df,
       x = am
     ), NULL)
+
+    testthat::expect_null(statsExpressions::subtitle_onesample_proptest(
+      data = df,
+      y = am,
+      x = cyl,
+    ), NULL)
+
+    # too few observations
+    df <- data.frame(
+      x = c("a", "b", "b", "c", "c", "c"),
+      y = c("a", "a", "a", "a", "b", "b")
+    )
+
+    testthat::expect_identical(
+      suppressWarnings(
+        statsExpressions::subtitle_contingency_tab(df, x, y, messages = FALSE)
+      ),
+      ggplot2::expr(
+        paste(
+          NULL,
+          chi["Pearson"]^2,
+          "(",
+          "2",
+          ") = ",
+          "3.00",
+          ", ",
+          italic("p"),
+          " = ",
+          "0.223",
+          ", ",
+          italic("V")["Cramer"],
+          " = ",
+          "NaN",
+          ", CI"["95%"],
+          " [",
+          "NaN",
+          ", ",
+          "NaN",
+          "]",
+          ", ",
+          italic("n")["obs"],
+          " = ",
+          6L
+        )
+      )
+    )
   }
 )

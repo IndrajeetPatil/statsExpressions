@@ -1,6 +1,6 @@
 Tests and Coverage
 ================
-14 August, 2019 19:22:03
+14 August, 2019 21:32:02
 
   - [Coverage](#coverage)
   - [Unit Tests](#unit-tests)
@@ -15,16 +15,16 @@ Coverage summary is created using the
 
 | Object                                                                               | Coverage (%) |
 | :----------------------------------------------------------------------------------- | :----------: |
-| statsExpressions                                                                     |    98.64     |
-| [R/helpers\_ggcatstats\_subtitles.R](../R/helpers_ggcatstats_subtitles.R)            |    92.95     |
-| [R/helpers\_ggbetween\_anova\_subtitles.R](../R/helpers_ggbetween_anova_subtitles.R) |    96.67     |
-| [R/helpers\_ggscatterstats\_subtitles.R](../R/helpers_ggscatterstats_subtitles.R)    |    99.00     |
-| [R/helpers\_bf\_tests.R](../R/helpers_bf_tests.R)                                    |    99.07     |
-| [R/helpers\_effsize\_ci.R](../R/helpers_effsize_ci.R)                                |    100.00    |
-| [R/helpers\_ggbetween\_t\_subtitles.R](../R/helpers_ggbetween_t_subtitles.R)         |    100.00    |
-| [R/helpers\_gghistostats\_subtitles.R](../R/helpers_gghistostats_subtitles.R)        |    100.00    |
-| [R/helpers\_messages.R](../R/helpers_messages.R)                                     |    100.00    |
-| [R/helpers\_misc\_subtitle\_functions.R](../R/helpers_misc_subtitle_functions.R)     |    100.00    |
+| statsExpressions                                                                     |     100      |
+| [R/helpers\_bf\_tests.R](../R/helpers_bf_tests.R)                                    |     100      |
+| [R/helpers\_effsize\_ci.R](../R/helpers_effsize_ci.R)                                |     100      |
+| [R/helpers\_ggbetween\_anova\_subtitles.R](../R/helpers_ggbetween_anova_subtitles.R) |     100      |
+| [R/helpers\_ggbetween\_t\_subtitles.R](../R/helpers_ggbetween_t_subtitles.R)         |     100      |
+| [R/helpers\_ggcatstats\_subtitles.R](../R/helpers_ggcatstats_subtitles.R)            |     100      |
+| [R/helpers\_gghistostats\_subtitles.R](../R/helpers_gghistostats_subtitles.R)        |     100      |
+| [R/helpers\_ggscatterstats\_subtitles.R](../R/helpers_ggscatterstats_subtitles.R)    |     100      |
+| [R/helpers\_messages.R](../R/helpers_messages.R)                                     |     100      |
+| [R/helpers\_misc\_subtitle\_functions.R](../R/helpers_misc_subtitle_functions.R)     |     100      |
 
 <br>
 
@@ -35,22 +35,22 @@ Unit Test summary is created using the
 
 | file                                                                                  |   n |  time | error | failed | skipped | warning |
 | :------------------------------------------------------------------------------------ | --: | ----: | ----: | -----: | ------: | ------: |
-| [test-helpers\_bf\_tests.R](testthat/test-helpers_bf_tests.R)                         |  61 |  4.48 |     0 |      0 |       0 |       0 |
-| [test-subtitle\_anova\_bayes.R](testthat/test-subtitle_anova_bayes.R)                 |   3 |  2.20 |     0 |      0 |       0 |       0 |
-| [test-subtitle\_anova\_nonparametric.R](testthat/test-subtitle_anova_nonparametric.R) |   4 |  0.73 |     0 |      0 |       0 |       0 |
-| [test-subtitle\_anova\_parametric.R](testthat/test-subtitle_anova_parametric.R)       |  10 |  1.73 |     0 |      0 |       0 |       0 |
-| [test-subtitle\_anova\_robust.R](testthat/test-subtitle_anova_robust.R)               |   4 |  2.39 |     0 |      0 |       0 |       0 |
-| [test-subtitle\_contingency\_tab.R](testthat/test-subtitle_contingency_tab.R)         |  11 |  0.82 |     0 |      0 |       0 |       0 |
-| [test-subtitle\_effsize\_helpers.R](testthat/test-subtitle_effsize_helpers.R)         | 170 | 16.30 |     0 |      0 |       0 |       0 |
-| [test-subtitle\_ggscatterstats.R](testthat/test-subtitle_ggscatterstats.R)            |   4 |  0.14 |     0 |      0 |       0 |       0 |
-| [test-subtitle\_misc\_helpers.R](testthat/test-subtitle_misc_helpers.R)               |   4 |  0.03 |     0 |      0 |       0 |       0 |
-| [test-subtitle\_t\_bayes.R](testthat/test-subtitle_t_bayes.R)                         |   4 |  0.10 |     0 |      0 |       0 |       0 |
-| [test-subtitle\_t\_nonparametric.R](testthat/test-subtitle_t_nonparametric.R)         |   3 |  0.94 |     0 |      0 |       0 |       0 |
-| [test-subtitle\_t\_onesample.R](testthat/test-subtitle_t_onesample.R)                 |   7 |  1.03 |     0 |      0 |       0 |       0 |
-| [test-subtitle\_t\_parametric.R](testthat/test-subtitle_t_parametric.R)               |   4 |  0.06 |     0 |      0 |       0 |       0 |
-| [test-subtitle\_t\_robust.R](testthat/test-subtitle_t_robust.R)                       |   4 |  2.94 |     0 |      0 |       0 |       0 |
-| [test-subtitle\_templates.R](testthat/test-subtitle_templates.R)                      |   5 |  0.00 |     0 |      0 |       0 |       0 |
-| [test-switch\_statements.R](testthat/test-switch_statements.R)                        |  21 |  0.00 |     0 |      0 |       0 |       0 |
+| [test-helpers\_bf\_tests.R](testthat/test-helpers_bf_tests.R)                         |  62 |  7.29 |     0 |      0 |       0 |       0 |
+| [test-subtitle\_anova\_bayes.R](testthat/test-subtitle_anova_bayes.R)                 |   3 |  3.89 |     0 |      0 |       0 |       0 |
+| [test-subtitle\_anova\_nonparametric.R](testthat/test-subtitle_anova_nonparametric.R) |   4 |  1.39 |     0 |      0 |       0 |       0 |
+| [test-subtitle\_anova\_parametric.R](testthat/test-subtitle_anova_parametric.R)       |  11 |  3.25 |     0 |      0 |       0 |       0 |
+| [test-subtitle\_anova\_robust.R](testthat/test-subtitle_anova_robust.R)               |   4 |  4.42 |     0 |      0 |       0 |       0 |
+| [test-subtitle\_contingency\_tab.R](testthat/test-subtitle_contingency_tab.R)         |  13 |  1.28 |     0 |      0 |       0 |       0 |
+| [test-subtitle\_corr\_test.R](testthat/test-subtitle_corr_test.R)                     |   4 |  0.25 |     0 |      0 |       0 |       0 |
+| [test-subtitle\_effsize\_helpers.R](testthat/test-subtitle_effsize_helpers.R)         | 170 | 26.05 |     0 |      0 |       0 |       0 |
+| [test-subtitle\_misc\_helpers.R](testthat/test-subtitle_misc_helpers.R)               |   4 |  0.06 |     0 |      0 |       0 |       0 |
+| [test-subtitle\_t\_bayes.R](testthat/test-subtitle_t_bayes.R)                         |   4 |  0.15 |     0 |      0 |       0 |       0 |
+| [test-subtitle\_t\_nonparametric.R](testthat/test-subtitle_t_nonparametric.R)         |   3 |  1.69 |     0 |      0 |       0 |       0 |
+| [test-subtitle\_t\_onesample.R](testthat/test-subtitle_t_onesample.R)                 |   7 |  1.81 |     0 |      0 |       0 |       0 |
+| [test-subtitle\_t\_parametric.R](testthat/test-subtitle_t_parametric.R)               |   4 |  0.11 |     0 |      0 |       0 |       0 |
+| [test-subtitle\_t\_robust.R](testthat/test-subtitle_t_robust.R)                       |   4 |  4.86 |     0 |      0 |       0 |       0 |
+| [test-subtitle\_templates.R](testthat/test-subtitle_templates.R)                      |   5 |  0.02 |     0 |      0 |       0 |       0 |
+| [test-switch\_statements.R](testthat/test-switch_statements.R)                        |  21 |  0.01 |     0 |      0 |       0 |       0 |
 
 <details closed>
 
@@ -60,72 +60,73 @@ Unit Test summary is created using the
 | :----------------------------------------------------------------------------------------- | :--------------------------------------------- | :-------------------------------------------------------------------- | :----- | -: | ----: |
 | [test-helpers\_bf\_tests.R](testthat/test-helpers_bf_tests.R#L20)                          | helpers\_bf\_tests                             | bayes factor (correlation)                                            | PASS   |  5 |  0.02 |
 | [test-helpers\_bf\_tests.R](testthat/test-helpers_bf_tests.R#L57)                          | helpers\_bf\_tests                             | bayes factor (independent samples t-test)                             | PASS   |  6 |  0.06 |
-| [test-helpers\_bf\_tests.R](testthat/test-helpers_bf_tests.R#L103)                         | helpers\_bf\_tests                             | bayes factor (paired t-test)                                          | PASS   |  7 |  0.05 |
-| [test-helpers\_bf\_tests.R](testthat/test-helpers_bf_tests.R#L144)                         | helpers\_bf\_tests                             | bayes factor (one sample t-test)                                      | PASS   |  7 |  0.03 |
-| [test-helpers\_bf\_tests.R](testthat/test-helpers_bf_tests.R#L210)                         | helpers\_bf\_tests                             | bayes factor (between-subjects - anova)                               | PASS   |  9 |  0.08 |
-| [test-helpers\_bf\_tests.R](testthat/test-helpers_bf_tests.R#L318)                         | helpers\_bf\_tests                             | bayes factor (within-subjects - anova)                                | PASS   |  9 |  0.75 |
-| [test-helpers\_bf\_tests.R](testthat/test-helpers_bf_tests.R#L383)                         | helpers\_bf\_tests                             | bayes factor (proportion test)                                        | PASS   |  6 |  3.38 |
-| [test-helpers\_bf\_tests.R](testthat/test-helpers_bf_tests.R#L468)                         | helpers\_bf\_tests                             | bayes factor (contingency tab)                                        | PASS   |  9 |  0.09 |
-| [test-helpers\_bf\_tests.R](testthat/test-helpers_bf_tests.R#L525)                         | helpers\_bf\_tests                             | bayes factor caption maker check                                      | PASS   |  1 |  0.02 |
-| [test-helpers\_bf\_tests.R](testthat/test-helpers_bf_tests.R#L555_L573)                    | helpers\_bf\_tests                             | bayes factor caption maker check                                      | PASS   |  2 |  0.00 |
+| [test-helpers\_bf\_tests.R](testthat/test-helpers_bf_tests.R#L103)                         | helpers\_bf\_tests                             | bayes factor (paired t-test)                                          | PASS   |  7 |  0.07 |
+| [test-helpers\_bf\_tests.R](testthat/test-helpers_bf_tests.R#L144)                         | helpers\_bf\_tests                             | bayes factor (one sample t-test)                                      | PASS   |  7 |  0.12 |
+| [test-helpers\_bf\_tests.R](testthat/test-helpers_bf_tests.R#L210)                         | helpers\_bf\_tests                             | bayes factor (between-subjects - anova)                               | PASS   |  9 |  0.14 |
+| [test-helpers\_bf\_tests.R](testthat/test-helpers_bf_tests.R#L318)                         | helpers\_bf\_tests                             | bayes factor (within-subjects - anova)                                | PASS   |  9 |  1.24 |
+| [test-helpers\_bf\_tests.R](testthat/test-helpers_bf_tests.R#L383)                         | helpers\_bf\_tests                             | bayes factor (proportion test)                                        | PASS   |  6 |  5.50 |
+| [test-helpers\_bf\_tests.R](testthat/test-helpers_bf_tests.R#L477)                         | helpers\_bf\_tests                             | bayes factor (contingency tab)                                        | PASS   | 10 |  0.12 |
+| [test-helpers\_bf\_tests.R](testthat/test-helpers_bf_tests.R#L553)                         | helpers\_bf\_tests                             | bayes factor caption maker check                                      | PASS   |  1 |  0.00 |
+| [test-helpers\_bf\_tests.R](testthat/test-helpers_bf_tests.R#L583_L601)                    | helpers\_bf\_tests                             | bayes factor caption maker check                                      | PASS   |  2 |  0.02 |
 | [test-subtitle\_anova\_bayes.R](testthat/test-subtitle_anova_bayes.R#L39)                  | subtitle\_anova\_bayes                         | subtitle\_anova\_bayes works (between-subjects)                       | PASS   |  1 |  0.04 |
-| [test-subtitle\_anova\_bayes.R](testthat/test-subtitle_anova_bayes.R#L79)                  | subtitle\_anova\_bayes                         | subtitle\_anova\_bayes works (within-subjects)                        | PASS   |  1 |  0.24 |
-| [test-subtitle\_anova\_bayes.R](testthat/test-subtitle_anova_bayes.R#L119)                 | subtitle\_anova\_bayes                         | subtitle\_anova\_bayes works (within-subjects) - with NA              | PASS   |  1 |  1.92 |
-| [test-subtitle\_anova\_nonparametric.R](testthat/test-subtitle_anova_nonparametric.R#L56)  | subtitle\_anova\_nonparametric                 | between-subjects - data with and without NAs                          | PASS   |  2 |  0.28 |
-| [test-subtitle\_anova\_nonparametric.R](testthat/test-subtitle_anova_nonparametric.R#L162) | subtitle\_anova\_nonparametric                 | within-subjects - data with and without NAs                           | PASS   |  2 |  0.45 |
-| [test-subtitle\_anova\_parametric.R](testthat/test-subtitle_anova_parametric.R#L58)        | subtitle\_anova\_parametric - between-subjects | parametric anova subtitles work (without NAs)                         | PASS   |  1 |  0.02 |
-| [test-subtitle\_anova\_parametric.R](testthat/test-subtitle_anova_parametric.R#L131)       | subtitle\_anova\_parametric - between-subjects | parametric anova subtitles work (with NAs)                            | PASS   |  1 |  0.48 |
-| [test-subtitle\_anova\_parametric.R](testthat/test-subtitle_anova_parametric.R#L190)       | subtitle\_anova\_parametric - between-subjects | parametric anova subtitles with partial omega-squared                 | PASS   |  1 |  0.08 |
-| [test-subtitle\_anova\_parametric.R](testthat/test-subtitle_anova_parametric.R#L250)       | subtitle\_anova\_parametric - between-subjects | parametric anova subtitles with partial eta-squared and data with NAs | PASS   |  1 |  0.03 |
-| [test-subtitle\_anova\_parametric.R](testthat/test-subtitle_anova_parametric.R#L361)       | subtitle\_anova\_parametric - between-subjects | parametric anova subtitles with partial eta-squared and data with NAs | PASS   |  2 |  0.11 |
-| [test-subtitle\_anova\_parametric.R](testthat/test-subtitle_anova_parametric.R#L426)       | subtitle\_anova\_parametric - within-subjects  | parametric anova subtitles work (without NAs)                         | PASS   |  1 |  0.42 |
-| [test-subtitle\_anova\_parametric.R](testthat/test-subtitle_anova_parametric.R#L486)       | subtitle\_anova\_parametric - within-subjects  | parametric anova subtitles work (with NAs)                            | PASS   |  2 |  0.19 |
-| [test-subtitle\_anova\_parametric.R](testthat/test-subtitle_anova_parametric.R#L599)       | subtitle\_anova\_parametric - within-subjects  | parametric anova subtitles work (catch bad data)                      | PASS   |  1 |  0.40 |
-| [test-subtitle\_anova\_robust.R](testthat/test-subtitle_anova_robust.R#L58)                | subtitle\_anova\_robust                        | subtitle\_anova\_robust works - between-subjects                      | PASS   |  2 |  2.34 |
-| [test-subtitle\_anova\_robust.R](testthat/test-subtitle_anova_robust.R#L155)               | subtitle\_anova\_robust                        | subtitle\_anova\_robust works - within-subjects                       | PASS   |  2 |  0.05 |
-| [test-subtitle\_contingency\_tab.R](testthat/test-subtitle_contingency_tab.R#L60)          | subtitle\_contingency\_tab                     | subtitle\_contingency\_tab works - data without NAs                   | PASS   |  2 |  0.45 |
-| [test-subtitle\_contingency\_tab.R](testthat/test-subtitle_contingency_tab.R#L176)         | subtitle\_contingency\_tab                     | subtitle\_contingency\_tab works - data with NAs                      | PASS   |  1 |  0.03 |
-| [test-subtitle\_contingency\_tab.R](testthat/test-subtitle_contingency_tab.R#L260)         | subtitle\_contingency\_tab\_paired             | paired subtitle\_contingency\_tab works - counts data without NAs     | PASS   |  1 |  0.06 |
-| [test-subtitle\_contingency\_tab.R](testthat/test-subtitle_contingency_tab.R#L359)         | subtitle\_contingency\_tab\_paired             | paired subtitle\_contingency\_tab works - with NAs                    | PASS   |  1 |  0.07 |
-| [test-subtitle\_contingency\_tab.R](testthat/test-subtitle_contingency_tab.R#L442)         | subtitle\_contingency\_tab\_paired             | paired data 4-by-4                                                    | PASS   |  1 |  0.04 |
-| [test-subtitle\_contingency\_tab.R](testthat/test-subtitle_contingency_tab.R#L502)         | subtitle\_contingency\_tab\_gof                | Goodness of Fit subtitle\_contingency\_tab works without counts       | PASS   |  2 |  0.08 |
-| [test-subtitle\_contingency\_tab.R](testthat/test-subtitle_contingency_tab.R#L599)         | subtitle\_contingency\_tab\_gof                | Goodness of Fit subtitle\_contingency\_tab works with counts          | PASS   |  1 |  0.06 |
-| [test-subtitle\_contingency\_tab.R](testthat/test-subtitle_contingency_tab.R#L653)         | subtitle\_contingency\_tab\_gof                | works with dataframes with NAs and with ratio                         | PASS   |  1 |  0.03 |
-| [test-subtitle\_contingency\_tab.R](testthat/test-subtitle_contingency_tab.R#L668_L671)    | subtitle\_contingency\_tab\_gof                | works even in edge cases                                              | PASS   |  1 |  0.00 |
-| [test-subtitle\_effsize\_helpers.R](testthat/test-subtitle_effsize_helpers.R#L11)          | effsize\_t\_parametric                         | effsize works for Cohen’s d and Hedge’s g (between - without NA)      | PASS   | 29 |  0.13 |
-| [test-subtitle\_effsize\_helpers.R](testthat/test-subtitle_effsize_helpers.R#L181_L184)    | effsize\_t\_parametric                         | effsize works for Cohen’s d and Hedge’s g (between - with NA)         | PASS   | 24 |  0.03 |
-| [test-subtitle\_effsize\_helpers.R](testthat/test-subtitle_effsize_helpers.R#L329_L335)    | effsize\_t\_parametric                         | effsize works for Cohen’s d and Hedge’s g (within - without NA)       | PASS   | 26 |  0.03 |
-| [test-subtitle\_effsize\_helpers.R](testthat/test-subtitle_effsize_helpers.R#L534_L543)    | effsize\_t\_parametric                         | effsize works for Cohen’s d and Hedge’s g (within - with NA)          | PASS   | 23 |  0.03 |
+| [test-subtitle\_anova\_bayes.R](testthat/test-subtitle_anova_bayes.R#L79)                  | subtitle\_anova\_bayes                         | subtitle\_anova\_bayes works (within-subjects)                        | PASS   |  1 |  0.41 |
+| [test-subtitle\_anova\_bayes.R](testthat/test-subtitle_anova_bayes.R#L119)                 | subtitle\_anova\_bayes                         | subtitle\_anova\_bayes works (within-subjects) - with NA              | PASS   |  1 |  3.44 |
+| [test-subtitle\_anova\_nonparametric.R](testthat/test-subtitle_anova_nonparametric.R#L56)  | subtitle\_anova\_nonparametric                 | between-subjects - data with and without NAs                          | PASS   |  2 |  0.52 |
+| [test-subtitle\_anova\_nonparametric.R](testthat/test-subtitle_anova_nonparametric.R#L162) | subtitle\_anova\_nonparametric                 | within-subjects - data with and without NAs                           | PASS   |  2 |  0.87 |
+| [test-subtitle\_anova\_parametric.R](testthat/test-subtitle_anova_parametric.R#L58)        | subtitle\_anova\_parametric - between-subjects | parametric anova subtitles work (without NAs)                         | PASS   |  1 |  0.05 |
+| [test-subtitle\_anova\_parametric.R](testthat/test-subtitle_anova_parametric.R#L131)       | subtitle\_anova\_parametric - between-subjects | parametric anova subtitles work (with NAs)                            | PASS   |  1 |  0.78 |
+| [test-subtitle\_anova\_parametric.R](testthat/test-subtitle_anova_parametric.R#L190)       | subtitle\_anova\_parametric - between-subjects | parametric anova subtitles with partial omega-squared                 | PASS   |  1 |  0.12 |
+| [test-subtitle\_anova\_parametric.R](testthat/test-subtitle_anova_parametric.R#L250)       | subtitle\_anova\_parametric - between-subjects | parametric anova subtitles with partial eta-squared and data with NAs | PASS   |  1 |  0.05 |
+| [test-subtitle\_anova\_parametric.R](testthat/test-subtitle_anova_parametric.R#L361)       | subtitle\_anova\_parametric - between-subjects | parametric anova subtitles with partial eta-squared and data with NAs | PASS   |  2 |  0.20 |
+| [test-subtitle\_anova\_parametric.R](testthat/test-subtitle_anova_parametric.R#L426)       | subtitle\_anova\_parametric - within-subjects  | parametric anova subtitles work (without NAs)                         | PASS   |  1 |  0.74 |
+| [test-subtitle\_anova\_parametric.R](testthat/test-subtitle_anova_parametric.R#L486)       | subtitle\_anova\_parametric - within-subjects  | parametric anova subtitles work (with NAs)                            | PASS   |  2 |  0.39 |
+| [test-subtitle\_anova\_parametric.R](testthat/test-subtitle_anova_parametric.R#L597)       | subtitle\_anova\_parametric - within-subjects  | parametric anova subtitles work (catch bad data)                      | PASS   |  1 |  0.75 |
+| [test-subtitle\_anova\_parametric.R](testthat/test-subtitle_anova_parametric.R#L674_L704)  | subtitle\_anova\_parametric - within-subjects  | checking warning message when too few obs                             | PASS   |  1 |  0.17 |
+| [test-subtitle\_anova\_robust.R](testthat/test-subtitle_anova_robust.R#L58)                | subtitle\_anova\_robust                        | subtitle\_anova\_robust works - between-subjects                      | PASS   |  2 |  4.33 |
+| [test-subtitle\_anova\_robust.R](testthat/test-subtitle_anova_robust.R#L155)               | subtitle\_anova\_robust                        | subtitle\_anova\_robust works - within-subjects                       | PASS   |  2 |  0.09 |
+| [test-subtitle\_contingency\_tab.R](testthat/test-subtitle_contingency_tab.R#L60)          | subtitle\_contingency\_tab                     | subtitle\_contingency\_tab works - data without NAs                   | PASS   |  2 |  0.53 |
+| [test-subtitle\_contingency\_tab.R](testthat/test-subtitle_contingency_tab.R#L176)         | subtitle\_contingency\_tab                     | subtitle\_contingency\_tab works - data with NAs                      | PASS   |  1 |  0.05 |
+| [test-subtitle\_contingency\_tab.R](testthat/test-subtitle_contingency_tab.R#L260)         | subtitle\_contingency\_tab\_paired             | paired subtitle\_contingency\_tab works - counts data without NAs     | PASS   |  1 |  0.12 |
+| [test-subtitle\_contingency\_tab.R](testthat/test-subtitle_contingency_tab.R#L359)         | subtitle\_contingency\_tab\_paired             | paired subtitle\_contingency\_tab works - with NAs                    | PASS   |  1 |  0.10 |
+| [test-subtitle\_contingency\_tab.R](testthat/test-subtitle_contingency_tab.R#L442)         | subtitle\_contingency\_tab\_paired             | paired data 4-by-4                                                    | PASS   |  1 |  0.08 |
+| [test-subtitle\_contingency\_tab.R](testthat/test-subtitle_contingency_tab.R#L502)         | subtitle\_contingency\_tab\_gof                | Goodness of Fit subtitle\_contingency\_tab works without counts       | PASS   |  2 |  0.18 |
+| [test-subtitle\_contingency\_tab.R](testthat/test-subtitle_contingency_tab.R#L599)         | subtitle\_contingency\_tab\_gof                | Goodness of Fit subtitle\_contingency\_tab works with counts          | PASS   |  1 |  0.11 |
+| [test-subtitle\_contingency\_tab.R](testthat/test-subtitle_contingency_tab.R#L653)         | subtitle\_contingency\_tab\_gof                | works with dataframes with NAs and with ratio                         | PASS   |  1 |  0.06 |
+| [test-subtitle\_contingency\_tab.R](testthat/test-subtitle_contingency_tab.R#L668_L671)    | subtitle\_contingency\_tab\_gof                | works even in edge cases                                              | PASS   |  3 |  0.05 |
+| [test-subtitle\_corr\_test.R](testthat/test-subtitle_corr_test.R#L54)                      | subtitle\_corr\_test                           | subtitle\_corr\_test works - nonparametric                            | PASS   |  1 |  0.15 |
+| [test-subtitle\_corr\_test.R](testthat/test-subtitle_corr_test.R#L112)                     | subtitle\_corr\_test                           | subtitle\_corr\_test works - parametric                               | PASS   |  1 |  0.00 |
+| [test-subtitle\_corr\_test.R](testthat/test-subtitle_corr_test.R#L169)                     | subtitle\_corr\_test                           | subtitle\_corr\_test works - robust                                   | PASS   |  1 |  0.05 |
+| [test-subtitle\_corr\_test.R](testthat/test-subtitle_corr_test.R#L211)                     | subtitle\_corr\_test                           | subtitle\_corr\_test works - bayes                                    | PASS   |  1 |  0.05 |
+| [test-subtitle\_effsize\_helpers.R](testthat/test-subtitle_effsize_helpers.R#L11)          | effsize\_t\_parametric                         | effsize works for Cohen’s d and Hedge’s g (between - without NA)      | PASS   | 29 |  0.05 |
+| [test-subtitle\_effsize\_helpers.R](testthat/test-subtitle_effsize_helpers.R#L181_L184)    | effsize\_t\_parametric                         | effsize works for Cohen’s d and Hedge’s g (between - with NA)         | PASS   | 24 |  0.05 |
+| [test-subtitle\_effsize\_helpers.R](testthat/test-subtitle_effsize_helpers.R#L329_L335)    | effsize\_t\_parametric                         | effsize works for Cohen’s d and Hedge’s g (within - without NA)       | PASS   | 26 |  0.04 |
+| [test-subtitle\_effsize\_helpers.R](testthat/test-subtitle_effsize_helpers.R#L534_L543)    | effsize\_t\_parametric                         | effsize works for Cohen’s d and Hedge’s g (within - with NA)          | PASS   | 23 |  0.05 |
 | [test-subtitle\_effsize\_helpers.R](testthat/test-subtitle_effsize_helpers.R#L756)         | effsize\_t\_parametric                         | effsize works for one sample test                                     | PASS   | 14 |  0.03 |
-| [test-subtitle\_effsize\_helpers.R](testthat/test-subtitle_effsize_helpers.R#L827)         | t1way\_ci                                      | t1way\_ci works                                                       | PASS   | 13 | 14.10 |
-| [test-subtitle\_effsize\_helpers.R](testthat/test-subtitle_effsize_helpers.R#L1006)        | test\_yuend\_ci                                | Yuen’s test on trimmed means for dependent samples works              | PASS   | 18 |  1.28 |
-| [test-subtitle\_effsize\_helpers.R](testthat/test-subtitle_effsize_helpers.R#L1096)        | robcor\_ci                                     | robcor\_ci works                                                      | PASS   | 23 |  0.67 |
-| [test-subtitle\_ggscatterstats.R](testthat/test-subtitle_ggscatterstats.R#L54)             | subtitle\_corr\_test                           | subtitle\_corr\_test works - nonparametric                            | PASS   |  1 |  0.09 |
-| [test-subtitle\_ggscatterstats.R](testthat/test-subtitle_ggscatterstats.R#L112)            | subtitle\_corr\_test                           | subtitle\_corr\_test works - parametric                               | PASS   |  1 |  0.00 |
-| [test-subtitle\_ggscatterstats.R](testthat/test-subtitle_ggscatterstats.R#L171)            | subtitle\_corr\_test                           | subtitle\_corr\_test works - robust                                   | PASS   |  1 |  0.04 |
-| [test-subtitle\_ggscatterstats.R](testthat/test-subtitle_ggscatterstats.R#L213)            | subtitle\_corr\_test                           | subtitle\_corr\_test works - bayes                                    | PASS   |  1 |  0.01 |
-| [test-subtitle\_misc\_helpers.R](testthat/test-subtitle_misc_helpers.R#L27)                | long\_to\_wide\_converter                      | long\_to\_wide\_converter works                                       | PASS   |  4 |  0.03 |
-| [test-subtitle\_t\_bayes.R](testthat/test-subtitle_t_bayes.R#L42)                          | subtitle\_t\_bayes                             | subtitle\_t\_bayes works - between-subjects design                    | PASS   |  1 |  0.02 |
-| [test-subtitle\_t\_bayes.R](testthat/test-subtitle_t_bayes.R#L83)                          | subtitle\_t\_bayes                             | subtitle\_t\_bayes works - between-subjects design - with NA          | PASS   |  1 |  0.02 |
-| [test-subtitle\_t\_bayes.R](testthat/test-subtitle_t_bayes.R#L160)                         | subtitle\_t\_bayes                             | subtitle\_t\_bayes\_paired works - within-subjects design             | PASS   |  1 |  0.03 |
-| [test-subtitle\_t\_bayes.R](testthat/test-subtitle_t_bayes.R#L199)                         | subtitle\_t\_bayes                             | subtitle\_t\_bayes\_paired works - within-subjects design - with NA   | PASS   |  1 |  0.03 |
-| [test-subtitle\_t\_nonparametric.R](testthat/test-subtitle_t_nonparametric.R#L51)          | subtitle\_mann\_nonparametric                  | subtitle\_mann\_nonparametric works - between-subjects design         | PASS   |  1 |  0.69 |
-| [test-subtitle\_t\_nonparametric.R](testthat/test-subtitle_t_nonparametric.R#L97_L101)     | subtitle\_mann\_nonparametric                  | subtitle\_mann\_nonparametric works - within-subjects design          | PASS   |  2 |  0.25 |
-| [test-subtitle\_t\_onesample.R](testthat/test-subtitle_t_onesample.R#L199)                 | subtitle\_t\_onesample                         | subtitle\_t\_onesample parametric works                               | PASS   |  4 |  0.03 |
-| [test-subtitle\_t\_onesample.R](testthat/test-subtitle_t_onesample.R#L256)                 | subtitle\_t\_onesample                         | subtitle\_t\_onesample non-parametric works                           | PASS   |  1 |  0.95 |
-| [test-subtitle\_t\_onesample.R](testthat/test-subtitle_t_onesample.R#L306)                 | subtitle\_t\_onesample                         | subtitle\_t\_onesample robust works                                   | PASS   |  1 |  0.03 |
-| [test-subtitle\_t\_onesample.R](testthat/test-subtitle_t_onesample.R#L347)                 | subtitle\_t\_onesample                         | subtitle\_t\_onesample bayes factor works                             | PASS   |  1 |  0.02 |
-| [test-subtitle\_t\_parametric.R](testthat/test-subtitle_t_parametric.R#L61)                | subtitle\_t\_parametric                        | parametric t-test works (between-subjects without NAs)                | PASS   |  1 |  0.01 |
-| [test-subtitle\_t\_parametric.R](testthat/test-subtitle_t_parametric.R#L125)               | subtitle\_t\_parametric                        | parametric t-test works (between-subjects with NAs)                   | PASS   |  1 |  0.00 |
-| [test-subtitle\_t\_parametric.R](testthat/test-subtitle_t_parametric.R#L183)               | subtitle\_t\_parametric                        | parametric t-test works (within-subjects without NAs)                 | PASS   |  1 |  0.03 |
-| [test-subtitle\_t\_parametric.R](testthat/test-subtitle_t_parametric.R#L239)               | subtitle\_t\_parametric                        | parametric t-test works (within-subjects with NAs)                    | PASS   |  1 |  0.02 |
-| [test-subtitle\_t\_robust.R](testthat/test-subtitle_t_robust.R#L54)                        | subtitle\_t\_robust                            | subtitle\_t\_robust - within-subjects - without NAs                   | PASS   |  2 |  1.61 |
-| [test-subtitle\_t\_robust.R](testthat/test-subtitle_t_robust.R#L128)                       | subtitle\_t\_robust                            | subtitle\_t\_robust - within-subjects - with NAs                      | PASS   |  1 |  0.84 |
-| [test-subtitle\_t\_robust.R](testthat/test-subtitle_t_robust.R#L183)                       | subtitle\_t\_robust                            | subtitle\_t\_robust - between-subjects - without NAs                  | PASS   |  1 |  0.49 |
+| [test-subtitle\_effsize\_helpers.R](testthat/test-subtitle_effsize_helpers.R#L827)         | t1way\_ci                                      | t1way\_ci works                                                       | PASS   | 13 | 23.35 |
+| [test-subtitle\_effsize\_helpers.R](testthat/test-subtitle_effsize_helpers.R#L1006)        | test\_yuend\_ci                                | Yuen’s test on trimmed means for dependent samples works              | PASS   | 18 |  1.93 |
+| [test-subtitle\_effsize\_helpers.R](testthat/test-subtitle_effsize_helpers.R#L1096)        | robcor\_ci                                     | robcor\_ci works                                                      | PASS   | 23 |  0.55 |
+| [test-subtitle\_misc\_helpers.R](testthat/test-subtitle_misc_helpers.R#L27)                | long\_to\_wide\_converter                      | long\_to\_wide\_converter works                                       | PASS   |  4 |  0.06 |
+| [test-subtitle\_t\_bayes.R](testthat/test-subtitle_t_bayes.R#L42)                          | subtitle\_t\_bayes                             | subtitle\_t\_bayes works - between-subjects design                    | PASS   |  1 |  0.03 |
+| [test-subtitle\_t\_bayes.R](testthat/test-subtitle_t_bayes.R#L83)                          | subtitle\_t\_bayes                             | subtitle\_t\_bayes works - between-subjects design - with NA          | PASS   |  1 |  0.03 |
+| [test-subtitle\_t\_bayes.R](testthat/test-subtitle_t_bayes.R#L160)                         | subtitle\_t\_bayes                             | subtitle\_t\_bayes\_paired works - within-subjects design             | PASS   |  1 |  0.05 |
+| [test-subtitle\_t\_bayes.R](testthat/test-subtitle_t_bayes.R#L199)                         | subtitle\_t\_bayes                             | subtitle\_t\_bayes\_paired works - within-subjects design - with NA   | PASS   |  1 |  0.04 |
+| [test-subtitle\_t\_nonparametric.R](testthat/test-subtitle_t_nonparametric.R#L51)          | subtitle\_mann\_nonparametric                  | subtitle\_mann\_nonparametric works - between-subjects design         | PASS   |  1 |  1.23 |
+| [test-subtitle\_t\_nonparametric.R](testthat/test-subtitle_t_nonparametric.R#L97_L101)     | subtitle\_mann\_nonparametric                  | subtitle\_mann\_nonparametric works - within-subjects design          | PASS   |  2 |  0.46 |
+| [test-subtitle\_t\_onesample.R](testthat/test-subtitle_t_onesample.R#L199)                 | subtitle\_t\_onesample                         | subtitle\_t\_onesample parametric works                               | PASS   |  4 |  0.06 |
+| [test-subtitle\_t\_onesample.R](testthat/test-subtitle_t_onesample.R#L256)                 | subtitle\_t\_onesample                         | subtitle\_t\_onesample non-parametric works                           | PASS   |  1 |  1.67 |
+| [test-subtitle\_t\_onesample.R](testthat/test-subtitle_t_onesample.R#L306)                 | subtitle\_t\_onesample                         | subtitle\_t\_onesample robust works                                   | PASS   |  1 |  0.05 |
+| [test-subtitle\_t\_onesample.R](testthat/test-subtitle_t_onesample.R#L347)                 | subtitle\_t\_onesample                         | subtitle\_t\_onesample bayes factor works                             | PASS   |  1 |  0.03 |
+| [test-subtitle\_t\_parametric.R](testthat/test-subtitle_t_parametric.R#L61)                | subtitle\_t\_parametric                        | parametric t-test works (between-subjects without NAs)                | PASS   |  1 |  0.02 |
+| [test-subtitle\_t\_parametric.R](testthat/test-subtitle_t_parametric.R#L125)               | subtitle\_t\_parametric                        | parametric t-test works (between-subjects with NAs)                   | PASS   |  1 |  0.01 |
+| [test-subtitle\_t\_parametric.R](testthat/test-subtitle_t_parametric.R#L183)               | subtitle\_t\_parametric                        | parametric t-test works (within-subjects without NAs)                 | PASS   |  1 |  0.05 |
+| [test-subtitle\_t\_parametric.R](testthat/test-subtitle_t_parametric.R#L239)               | subtitle\_t\_parametric                        | parametric t-test works (within-subjects with NAs)                    | PASS   |  1 |  0.03 |
+| [test-subtitle\_t\_robust.R](testthat/test-subtitle_t_robust.R#L54)                        | subtitle\_t\_robust                            | subtitle\_t\_robust - within-subjects - without NAs                   | PASS   |  2 |  2.71 |
+| [test-subtitle\_t\_robust.R](testthat/test-subtitle_t_robust.R#L128)                       | subtitle\_t\_robust                            | subtitle\_t\_robust - within-subjects - with NAs                      | PASS   |  1 |  1.37 |
+| [test-subtitle\_t\_robust.R](testthat/test-subtitle_t_robust.R#L183)                       | subtitle\_t\_robust                            | subtitle\_t\_robust - between-subjects - without NAs                  | PASS   |  1 |  0.78 |
 | [test-subtitle\_templates.R](testthat/test-subtitle_templates.R#L57)                       | subtitle\_templates                            | checking if subtitle template works without any parameter             | PASS   |  1 |  0.00 |
-| [test-subtitle\_templates.R](testthat/test-subtitle_templates.R#L117)                      | subtitle\_templates                            | checking if subtitle template works with a single parameter           | PASS   |  2 |  0.00 |
+| [test-subtitle\_templates.R](testthat/test-subtitle_templates.R#L117)                      | subtitle\_templates                            | checking if subtitle template works with a single parameter           | PASS   |  2 |  0.02 |
 | [test-subtitle\_templates.R](testthat/test-subtitle_templates.R#L198)                      | subtitle\_templates                            | checking if subtitle template works with two parameters               | PASS   |  2 |  0.00 |
-| [test-switch\_statements.R](testthat/test-switch_statements.R#L8)                          | switch statements                              | switch for effct size type works                                      | PASS   | 13 |  0.00 |
+| [test-switch\_statements.R](testthat/test-switch_statements.R#L8)                          | switch statements                              | switch for effct size type works                                      | PASS   | 13 |  0.01 |
 | [test-switch\_statements.R](testthat/test-switch_statements.R#L30)                         | switch statements                              | switch for stats type works                                           | PASS   |  8 |  0.00 |
 
 </details>

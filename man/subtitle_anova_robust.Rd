@@ -56,6 +56,7 @@ trimmed means
 }
 \examples{
 
+\donttest{
 # for reproducibility
 set.seed(123)
 
@@ -91,6 +92,7 @@ statsExpressions::subtitle_anova_robust(
   tr = 0.2,
   k = 3
 )
+}
 }
 \author{
 \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}

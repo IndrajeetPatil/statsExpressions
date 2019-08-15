@@ -405,5 +405,20 @@
     "https://www.tidyverse.org/lifecycle/",
     "http://www.repostatus.org/#active"
   ],
-  "releaseNotes": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/NEWS.md"
+  "releaseNotes": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/NEWS.md",
+  "citation": [
+    {
+      "@type": "SoftwareSourceCode",
+      "datePublished": "2019",
+      "author": [
+        {
+          "@type": "Person",
+          "givenName": "Indrajeet",
+          "familyName": "Patil"
+        }
+      ],
+      "name": "statsExpressions: 'ggplot2' Expressions with Statistical Details",
+      "url": "https://CRAN.R-project.org/package=statsExpressions"
+    }
+  ]
 }

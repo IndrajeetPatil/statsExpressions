@@ -480,6 +480,7 @@ subtitle_anova_nonparametric <- function(data,
 #'
 #' @examples
 #'
+#' \donttest{
 #' # for reproducibility
 #' set.seed(123)
 #'
@@ -515,6 +516,7 @@ subtitle_anova_nonparametric <- function(data,
 #'   tr = 0.2,
 #'   k = 3
 #' )
+#' }
 #' @export
 
 # function body

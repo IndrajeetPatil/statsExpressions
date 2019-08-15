@@ -73,6 +73,8 @@ below.
 }
 \examples{
 
+\donttest{
+# for reproducibility
 set.seed(123)
 
 # -------------- between-subjects design ------------------------
@@ -125,6 +127,7 @@ statsExpressions::subtitle_mann_nonparametric(
   nboot = 200,
   k = 5
 )
+}
 }
 \author{
 \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}, Chuck Powell

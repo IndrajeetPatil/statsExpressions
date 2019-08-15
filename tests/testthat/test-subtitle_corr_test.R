@@ -18,7 +18,7 @@ testthat::test_that(
         k = 5,
         conf.level = 0.999,
         nboot = 50,
-        messages = FALSE
+        messages = TRUE
       ))
 
     # expected
@@ -74,7 +74,7 @@ testthat::test_that(
         conf.level = 0.90,
         conf.type = "bca",
         nboot = 25,
-        messages = FALSE
+        messages = TRUE
       ))
 
     # expected
@@ -119,8 +119,6 @@ testthat::test_that(
   desc = "subtitle_corr_test works - robust",
   code = {
 
-
-
     # using function
     set.seed(123)
     using_function <-
@@ -133,7 +131,7 @@ testthat::test_that(
         conf.level = .50,
         conf.type = "basic",
         nboot = 25,
-        messages = FALSE
+        messages = TRUE
       ))
 
     # expected

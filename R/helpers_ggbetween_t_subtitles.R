@@ -207,6 +207,8 @@ subtitle_t_parametric <- function(data,
 #'
 #' @examples
 #'
+#' \donttest{
+#' # for reproducibility
 #' set.seed(123)
 #'
 #' # -------------- between-subjects design ------------------------
@@ -259,6 +261,7 @@ subtitle_t_parametric <- function(data,
 #'   nboot = 200,
 #'   k = 5
 #' )
+#' }
 #' @export
 
 # function body

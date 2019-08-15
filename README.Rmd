@@ -178,10 +178,10 @@ library(ggplot2)
 library(statsExpressions)
 
 # create a plot
-p <- ggplot(mtcars, aes(cyl, wt)) + geom_point()
+p <- ggplot(iris, aes(Species, Sepal.Length)) + geom_boxplot()
 
 # create an expression containing details from the relevant test
-results <- subtitle_anova_robust(mtcars, cyl, wt, messages = FALSE)
+results <- subtitle_anova_robust(iris, Species, Sepal.Length, messages = FALSE)
 
 # display results on the plot
 p + labs(title = "A heteroscedastic one-way ANOVA for trimmed means", 

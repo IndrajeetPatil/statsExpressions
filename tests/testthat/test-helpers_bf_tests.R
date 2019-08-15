@@ -464,6 +464,15 @@ testthat::test_that(
       output = "alternative"
     )
 
+    # with counts
+    caption_text3 <- statsExpressions::bf_contingency_tab(
+      data = as.data.frame(Titanic),
+      x = Survived,
+      y = Sex,
+      counts = "Freq",
+      output = "H0"
+    )
+
     # check bayes factor values
     testthat::expect_equal(df$bf10, 28.07349, tolerance = 0.001)
     testthat::expect_equal(df$log_e_bf10, 3.334826, tolerance = 0.001)
@@ -505,6 +514,25 @@ testthat::test_that(
           "214.25",
           ", sampling = ",
           "joint multinomial",
+          ", ",
+          italic("a"),
+          " = ",
+          "1.00"
+        )
+      ))
+    )
+    testthat::expect_identical(
+      caption_text3,
+      ggplot2::expr(atop(
+        displaystyle(NULL),
+        expr = paste(
+          "In favor of null: ",
+          "log"["e"],
+          "(BF"["01"],
+          ") = ",
+          "-213.98",
+          ", sampling = ",
+          "independent multinomial",
           ", ",
           italic("a"),
           " = ",
