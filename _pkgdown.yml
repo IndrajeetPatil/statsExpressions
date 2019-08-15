@@ -7,6 +7,9 @@ template:
 development:
   mode: unreleased
 
+toc:
+  depth: 3
+
 authors:
   Indrajeet Patil:
     href: https://sites.google.com/site/indrajeetspatilmorality/

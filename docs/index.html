@@ -60,6 +60,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="articles/stats_details.html">Test and effect size details</a>
+    </li>
+    <li>
       <a href="articles/tests_and_coverage.html">Tests and Coverage</a>
     </li>
   </ul>
@@ -462,38 +465,66 @@
 <h1 class="hasAnchor">
 <a href="#primary-functions" class="anchor"></a>Primary functions</h1>
 <p>A list of primary functions in this package can be found at the package website: <a href="https://indrajeetpatil.github.io/statsExpressions/reference/index.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/reference/index.html</a></p>
-<p>Although these functions were initially written to display results from statistical tests on ready-made <code>ggplot2</code> plots implemented in <code>ggstatsplot</code>, the <code>statsExpressions</code> package functions can be used to display these results on any custom plots.</p>
-<p>Here is an example from <code>ggstatsplot</code> of what the plots look like when the expressions are displayed in the subtitle-</p>
-<p><img src="reference/figures/README-ggwithinstats1-1.png" align="center"></p>
-<p>For more, see the package website: <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="uri">https://indrajeetpatil.github.io/ggstatsplot/</a></p>
 <p>Here is an example of how these functions can be used: <br> Let’s say we want to check differences in weight of the vehicle based on number of cylinders in the engine and we want to carry out a robust ANOVA:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># setup</span></a>
 <a class="sourceLine" id="cb5-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">123</span>)</a>
 <a class="sourceLine" id="cb5-3" title="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
 <a class="sourceLine" id="cb5-4" title="4"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(statsExpressions)</a>
-<a class="sourceLine" id="cb5-5" title="5"></a>
-<a class="sourceLine" id="cb5-6" title="6"><span class="co"># create a plot</span></a>
-<a class="sourceLine" id="cb5-7" title="7">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(Species, Sepal.Length)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</a>
-<a class="sourceLine" id="cb5-8" title="8"></a>
-<a class="sourceLine" id="cb5-9" title="9"><span class="co"># create an expression containing details from the relevant test</span></a>
-<a class="sourceLine" id="cb5-10" title="10">results &lt;-<span class="st"> </span><span class="kw"><a href="reference/expr_anova_robust.html">expr_anova_robust</a></span>(iris, Species, Sepal.Length, <span class="dt">messages =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb5-11" title="11"></a>
-<a class="sourceLine" id="cb5-12" title="12"><span class="co"># display results on the plot</span></a>
-<a class="sourceLine" id="cb5-13" title="13">p <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"A heteroscedastic one-way ANOVA for trimmed means"</span>, </a>
-<a class="sourceLine" id="cb5-14" title="14">         <span class="dt">subtitle =</span> results)</a></code></pre></div>
+<a class="sourceLine" id="cb5-5" title="5"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggridges)</a>
+<a class="sourceLine" id="cb5-6" title="6"></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="co"># create a ridgeplot</span></a>
+<a class="sourceLine" id="cb5-8" title="8">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Species)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="st">  </span><span class="kw">geom_density_ridges</span>(</a>
+<a class="sourceLine" id="cb5-10" title="10">    <span class="dt">jittered_points =</span> <span class="ot">TRUE</span>, <span class="dt">quantile_lines =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb5-11" title="11">    <span class="dt">scale =</span> <span class="fl">0.9</span>, <span class="dt">vline_size =</span> <span class="dv">1</span>, <span class="dt">vline_color =</span> <span class="st">"red"</span>,</a>
+<a class="sourceLine" id="cb5-12" title="12">    <span class="dt">position =</span> <span class="kw">position_raincloud</span>(<span class="dt">adjust_vlines =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb5-13" title="13">  )</a>
+<a class="sourceLine" id="cb5-14" title="14"></a>
+<a class="sourceLine" id="cb5-15" title="15"><span class="co"># create an expression containing details from the relevant test</span></a>
+<a class="sourceLine" id="cb5-16" title="16">results &lt;-<span class="st"> </span><span class="kw"><a href="reference/expr_anova_robust.html">expr_anova_robust</a></span>(iris, Species, Sepal.Length, <span class="dt">messages =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb5-17" title="17"></a>
+<a class="sourceLine" id="cb5-18" title="18"><span class="co"># display results on the plot</span></a>
+<a class="sourceLine" id="cb5-19" title="19">p <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(</a>
+<a class="sourceLine" id="cb5-20" title="20">  <span class="dt">title =</span> <span class="st">"A heteroscedastic one-way ANOVA for trimmed means"</span>,</a>
+<a class="sourceLine" id="cb5-21" title="21">  <span class="dt">subtitle =</span> results</a>
+<a class="sourceLine" id="cb5-22" title="22">)</a></code></pre></div>
 <p><img src="reference/figures/README-example1-1.png" width="100%"></p>
-<p>You can also use these function to get the expression in return without having to display them in plots:</p>
+<p>Let’s look at another example where we want to run correlation analysis:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co"># setup</span></a>
 <a class="sourceLine" id="cb6-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">123</span>)</a>
 <a class="sourceLine" id="cb6-3" title="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
 <a class="sourceLine" id="cb6-4" title="4"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(statsExpressions)</a>
 <a class="sourceLine" id="cb6-5" title="5"></a>
-<a class="sourceLine" id="cb6-6" title="6"><span class="co"># one-sample equal proportions test</span></a>
-<a class="sourceLine" id="cb6-7" title="7"><span class="kw"><a href="reference/expr_contingency_tab.html">expr_onesample_proptest</a></span>(msleep, vore, <span class="dt">messages =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb6-8" title="8"><span class="co">#&gt; paste(NULL, chi["gof"]^2, "(", "3", ") = ", "19.26", ", ", italic("p"), </span></a>
-<a class="sourceLine" id="cb6-9" title="9"><span class="co">#&gt;     " = ", "&lt; 0.001", ", ", italic("V")["Cramer"], " = ", "0.29", </span></a>
-<a class="sourceLine" id="cb6-10" title="10"><span class="co">#&gt;     ", CI"["95%"], " [", "0.18", ", ", "0.37", "]", ", ", italic("n")["obs"], </span></a>
-<a class="sourceLine" id="cb6-11" title="11"><span class="co">#&gt;     " = ", 76L)</span></a></code></pre></div>
+<a class="sourceLine" id="cb6-6" title="6"><span class="co"># create a ridgeplot</span></a>
+<a class="sourceLine" id="cb6-7" title="7">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> wt)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb6-9" title="9"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">"lm"</span>)</a>
+<a class="sourceLine" id="cb6-10" title="10"></a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="co"># create an expression containing details from the relevant test</span></a>
+<a class="sourceLine" id="cb6-12" title="12">results &lt;-<span class="st"> </span><span class="kw"><a href="reference/expr_corr_test.html">expr_corr_test</a></span>(mtcars, mpg, wt, <span class="dt">type =</span> <span class="st">"np"</span>, <span class="dt">messages =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb6-13" title="13"></a>
+<a class="sourceLine" id="cb6-14" title="14"><span class="co"># display results on the plot</span></a>
+<a class="sourceLine" id="cb6-15" title="15">p <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(</a>
+<a class="sourceLine" id="cb6-16" title="16">  <span class="dt">title =</span> <span class="st">"Spearman's rank correlation"</span>,</a>
+<a class="sourceLine" id="cb6-17" title="17">  <span class="dt">subtitle =</span> results</a>
+<a class="sourceLine" id="cb6-18" title="18">)</a></code></pre></div>
+<p><img src="reference/figures/README-example2-1.png" width="100%"></p>
+<p>You can also use these function to get the expression in return without having to display them in plots:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co"># setup</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">123</span>)</a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(statsExpressions)</a>
+<a class="sourceLine" id="cb7-5" title="5"></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="co"># one-sample equal proportions test</span></a>
+<a class="sourceLine" id="cb7-7" title="7"><span class="kw"><a href="reference/expr_contingency_tab.html">expr_onesample_proptest</a></span>(msleep, vore, <span class="dt">messages =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb7-8" title="8"><span class="co">#&gt; paste(NULL, chi["gof"]^2, "(", "3", ") = ", "19.26", ", ", italic("p"), </span></a>
+<a class="sourceLine" id="cb7-9" title="9"><span class="co">#&gt;     " = ", "&lt; 0.001", ", ", italic("V")["Cramer"], " = ", "0.29", </span></a>
+<a class="sourceLine" id="cb7-10" title="10"><span class="co">#&gt;     ", CI"["95%"], " [", "0.18", ", ", "0.37", "]", ", ", italic("n")["obs"], </span></a>
+<a class="sourceLine" id="cb7-11" title="11"><span class="co">#&gt;     " = ", 76L)</span></a></code></pre></div>
+<p>Although these functions were initially written to display results from statistical tests on ready-made <code>ggplot2</code> plots implemented in <code>ggstatsplot</code>, the <code>statsExpressions</code> package functions can be used to display these results on any custom plots.</p>
+<p>For detailed documentation, see the package website: <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="uri">https://indrajeetpatil.github.io/ggstatsplot/</a></p>
+<p>Here is an example from <code>ggstatsplot</code> of what the plots look like when the expressions are displayed in the subtitle-</p>
+<p><img src="reference/figures/README-ggwithinstats1-1.png" align="center"></p>
 </div>
 <div id="code-coverage" class="section level1">
 <h1 class="hasAnchor">

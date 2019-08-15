@@ -139,19 +139,6 @@ A list of primary functions in this package can be found at the package
 website:
 <https://indrajeetpatil.github.io/statsExpressions/reference/index.html>
 
-Although these functions were initially written to display results from
-statistical tests on ready-made `ggplot2` plots implemented in
-`ggstatsplot`, the `statsExpressions` package functions can be used to
-display these results on any custom plots.
-
-Here is an example from `ggstatsplot` of what the plots look like when
-the expressions are displayed in the subtitle-
-
-<img src="man/figures/README-ggwithinstats1-1.png" align="center" />
-
-For more, see the package website:
-<https://indrajeetpatil.github.io/ggstatsplot/>
-
 Here is an example of how these functions can be used: <br> Let’s say we
 want to check differences in weight of the vehicle based on number of
 cylinders in the engine and we want to carry out a robust ANOVA:
@@ -161,19 +148,52 @@ cylinders in the engine and we want to carry out a robust ANOVA:
 set.seed(123)
 library(ggplot2)
 library(statsExpressions)
+library(ggridges)
 
-# create a plot
-p <- ggplot(iris, aes(Species, Sepal.Length)) + geom_boxplot()
+# create a ridgeplot
+p <- ggplot(iris, aes(x = Sepal.Length, y = Species)) +
+  geom_density_ridges(
+    jittered_points = TRUE, quantile_lines = TRUE,
+    scale = 0.9, vline_size = 1, vline_color = "red",
+    position = position_raincloud(adjust_vlines = TRUE)
+  )
 
 # create an expression containing details from the relevant test
 results <- expr_anova_robust(iris, Species, Sepal.Length, messages = FALSE)
 
 # display results on the plot
-p + labs(title = "A heteroscedastic one-way ANOVA for trimmed means", 
-         subtitle = results)
+p + labs(
+  title = "A heteroscedastic one-way ANOVA for trimmed means",
+  subtitle = results
+)
 ```
 
 <img src="man/figures/README-example1-1.png" width="100%" />
+
+Let’s look at another example where we want to run correlation analysis:
+
+``` r
+# setup
+set.seed(123)
+library(ggplot2)
+library(statsExpressions)
+
+# create a ridgeplot
+p <- ggplot(mtcars, aes(x = mpg, y = wt)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# create an expression containing details from the relevant test
+results <- expr_corr_test(mtcars, mpg, wt, type = "np", messages = FALSE)
+
+# display results on the plot
+p + labs(
+  title = "Spearman's rank correlation",
+  subtitle = results
+)
+```
+
+<img src="man/figures/README-example2-1.png" width="100%" />
 
 You can also use these function to get the expression in return without
 having to display them in plots:
@@ -191,6 +211,19 @@ expr_onesample_proptest(msleep, vore, messages = FALSE)
 #>     ", CI"["95%"], " [", "0.18", ", ", "0.37", "]", ", ", italic("n")["obs"], 
 #>     " = ", 76L)
 ```
+
+Although these functions were initially written to display results from
+statistical tests on ready-made `ggplot2` plots implemented in
+`ggstatsplot`, the `statsExpressions` package functions can be used to
+display these results on any custom plots.
+
+For detailed documentation, see the package website:
+<https://indrajeetpatil.github.io/ggstatsplot/>
+
+Here is an example from `ggstatsplot` of what the plots look like when
+the expressions are displayed in the subtitle-
+
+<img src="man/figures/README-ggwithinstats1-1.png" align="center" />
 
 # Code coverage
 
