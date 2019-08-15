@@ -1,0 +1,120 @@
+context("expr_anova_bayes")
+
+# expr_anova_bayes works (between-subjects) ----------------------------
+
+testthat::test_that(
+  desc = "expr_anova_bayes works (between-subjects)",
+  code = {
+
+    # ggstatsplot output
+    set.seed(123)
+    using_function1 <-
+      statsExpressions::expr_anova_bayes(
+        data = statsExpressions::movies_long,
+        x = genre,
+        y = rating,
+        k = 5,
+        bf.prior = 0.8
+      )
+
+    # expected output
+    results1 <-
+      ggplot2::expr(atop(
+        displaystyle(NULL),
+        expr = paste(
+          "In favor of alternative: ",
+          "log"["e"],
+          "(BF"["10"],
+          ") = ",
+          "93.14228",
+          ", ",
+          italic("r")["Cauchy"]^"JZS",
+          " = ",
+          "0.80000"
+        )
+      ))
+
+    # testing overall call
+    testthat::expect_identical(using_function1, results1)
+  }
+)
+
+# expr_anova_bayes works (within-subjects) ----------------------------
+
+testthat::test_that(
+  desc = "expr_anova_bayes works (within-subjects)",
+  code = {
+
+
+    # ggstatsplot output
+    set.seed(123)
+    using_function1 <-
+      statsExpressions::expr_anova_bayes(
+        data = WRS2::WineTasting,
+        x = Wine,
+        y = Taste,
+        paired = TRUE,
+        k = 3
+      )
+
+    # expected output
+    results1 <-
+      ggplot2::expr(atop(
+        displaystyle(NULL),
+        expr = paste(
+          "In favor of alternative: ",
+          "log"["e"],
+          "(BF"["10"],
+          ") = ",
+          "2.115",
+          ", ",
+          italic("r")["Cauchy"]^"JZS",
+          " = ",
+          "0.707"
+        )
+      ))
+
+    # testing overall call
+    testthat::expect_identical(using_function1, results1)
+  }
+)
+
+# expr_anova_bayes works (within-subjects) - with NA ----------------------
+
+testthat::test_that(
+  desc = "expr_anova_bayes works (within-subjects) - with NA",
+  code = {
+
+
+    # ggstatsplot output
+    set.seed(123)
+    using_function1 <-
+      statsExpressions::expr_anova_bayes(
+        data = statsExpressions::bugs_long,
+        x = condition,
+        y = desire,
+        paired = TRUE,
+        k = 3
+      )
+
+    # expected output
+    results1 <-
+      ggplot2::expr(atop(
+        displaystyle(NULL),
+        expr = paste(
+          "In favor of alternative: ",
+          "log"["e"],
+          "(BF"["10"],
+          ") = ",
+          "21.040",
+          ", ",
+          italic("r")["Cauchy"]^"JZS",
+          " = ",
+          "0.707"
+        )
+      ))
+
+    # testing overall call
+    testthat::expect_identical(using_function1, results1)
+  }
+)

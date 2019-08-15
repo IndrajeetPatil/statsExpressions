@@ -131,90 +131,123 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-primary-functions" class="hasAnchor"><a href="#section-primary-functions" class="anchor"></a>Primary functions</h2>
-          <p class="section-desc"><p>Functions used to create expressions with statistical details</p></p>
+          <h2 id="section-expressions-for-one-sample-t-test" class="hasAnchor"><a href="#section-expressions-for-one-sample-t-test" class="anchor"></a>Expressions for one-sample t-test</h2>
+          <p class="section-desc"><p>Functions to create expressions for one-sample t-tests</p></p>
         </th>
       </tr>
       <tr>
         
         <td>
-          <p><code><a href="subtitle_anova_bayes.html">subtitle_anova_bayes()</a></code> </p>
+          <p><code><a href="expr_t_onesample.html">expr_t_onesample()</a></code> </p>
         </td>
-        <td><p>Making expression containing Bayesian one-way ANOVA results.</p></td>
-      </tr><tr>
+        <td><p>Expression for one sample <em>t</em>-test and its non-parametric and
+robust equivalents</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-expressions-for-two-sample-t-test" class="hasAnchor"><a href="#section-expressions-for-two-sample-t-test" class="anchor"></a>Expressions for two-sample t-test</h2>
+          <p class="section-desc"><p>Functions to create expressions for two-sample (both between-and within-subject designs) t-tests</p></p>
+        </th>
+      </tr>
+      <tr>
         
         <td>
-          <p><code><a href="subtitle_anova_nonparametric.html">subtitle_anova_nonparametric()</a></code> </p>
-        </td>
-        <td><p>Making text subtitle for nonparametric ANOVA.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="subtitle_anova_parametric.html">subtitle_anova_parametric()</a></code> </p>
-        </td>
-        <td><p>Making expression containing parametric ANOVA results</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="subtitle_anova_robust.html">subtitle_anova_robust()</a></code> </p>
-        </td>
-        <td><p>Expression containing results from heteroscedastic one-way ANOVA for
-trimmed means</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="subtitle_contingency_tab.html">subtitle_contingency_tab()</a></code> <code><a href="subtitle_contingency_tab.html">subtitle_onesample_proptest()</a></code> </p>
-        </td>
-        <td><p>Making expression for contingency table and goodness of fit tests</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="subtitle_corr_test.html">subtitle_corr_test()</a></code> <code><a href="subtitle_corr_test.html">subtitle_ggscatterstats()</a></code> </p>
-        </td>
-        <td><p>Making expression for correlation analysis</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="subtitle_mann_nonparametric.html">subtitle_mann_nonparametric()</a></code> <code><a href="subtitle_mann_nonparametric.html">subtitle_t_nonparametric()</a></code> </p>
-        </td>
-        <td><p>Making expression for Mann-Whitney <em>U</em>-test/Wilcoxon test results</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="subtitle_template.html">subtitle_template()</a></code> </p>
-        </td>
-        <td><p>Template for subtitles with statistical details for tests</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="subtitle_t_bayes.html">subtitle_t_bayes()</a></code> </p>
+          <p><code><a href="expr_t_bayes.html">expr_t_bayes()</a></code> </p>
         </td>
         <td><p>Making expression containing Bayesian <em>t</em>-test results</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="subtitle_t_onesample.html">subtitle_t_onesample()</a></code> </p>
+          <p><code><a href="expr_t_nonparametric.html">expr_t_nonparametric()</a></code> <code><a href="expr_t_nonparametric.html">expr_mann_nonparametric()</a></code> </p>
+        </td>
+        <td><p>Making expression for Mann-Whitney <em>U</em>-test/Wilcoxon test results</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="expr_t_onesample.html">expr_t_onesample()</a></code> </p>
         </td>
         <td><p>Expression for one sample <em>t</em>-test and its non-parametric and
 robust equivalents</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="subtitle_t_parametric.html">subtitle_t_parametric()</a></code> </p>
+          <p><code><a href="expr_t_parametric.html">expr_t_parametric()</a></code> </p>
         </td>
         <td><p>Making expression containing <em>t</em>-test results</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="subtitle_t_robust.html">subtitle_t_robust()</a></code> </p>
+          <p><code><a href="expr_t_robust.html">expr_t_robust()</a></code> </p>
         </td>
         <td><p>Expression containing results from a robust <em>t</em>-test</p></td>
       </tr>
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-helper-functions-for-preparing-bayes-factor-captions" class="hasAnchor"><a href="#section-helper-functions-for-preparing-bayes-factor-captions" class="anchor"></a>Helper functions for preparing Bayes Factor captions</h2>
-          <p class="section-desc"><p>Functions used to create Bayes Factor (in favor of null) captions</p></p>
+          <h2 id="section-expressions-for-one-way-anova" class="hasAnchor"><a href="#section-expressions-for-one-way-anova" class="anchor"></a>Expressions for one-way ANOVA</h2>
+          <p class="section-desc"><p>Functions to create expressions for one-way (both between-and within-subject designs) ANOVA</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="expr_anova_bayes.html">expr_anova_bayes()</a></code> </p>
+        </td>
+        <td><p>Making expression containing Bayesian one-way ANOVA results.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="expr_anova_nonparametric.html">expr_anova_nonparametric()</a></code> </p>
+        </td>
+        <td><p>Making text subtitle for nonparametric ANOVA.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="expr_anova_parametric.html">expr_anova_parametric()</a></code> </p>
+        </td>
+        <td><p>Making expression containing parametric ANOVA results</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="expr_anova_robust.html">expr_anova_robust()</a></code> </p>
+        </td>
+        <td><p>Expression containing results from heteroscedastic one-way ANOVA for
+trimmed means</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-expressions-for-correlation-analysis" class="hasAnchor"><a href="#section-expressions-for-correlation-analysis" class="anchor"></a>Expressions for correlation analysis</h2>
+          <p class="section-desc"><p>Functions to create expressions for correlation tests</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="expr_corr_test.html">expr_corr_test()</a></code> </p>
+        </td>
+        <td><p>Making expression for correlation analysis</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-expressions-for-contingency-table-analysis" class="hasAnchor"><a href="#section-expressions-for-contingency-table-analysis" class="anchor"></a>Expressions for contingency table analysis</h2>
+          <p class="section-desc"><p>Functions to create expressions for contingency table analysis and one-sample goodness of fit proportion test</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="expr_contingency_tab.html">expr_contingency_tab()</a></code> <code><a href="expr_contingency_tab.html">expr_onesample_proptest()</a></code> </p>
+        </td>
+        <td><p>Making expression for contingency table and goodness of fit tests</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-helper-functions-for-bayes-factor-tests" class="hasAnchor"><a href="#section-helper-functions-for-bayes-factor-tests" class="anchor"></a>Helper functions for Bayes Factor tests</h2>
+          <p class="section-desc"><p>Functions to extract Bayes Factor for various tests</p></p>
         </th>
       </tr>
       <tr>
@@ -262,6 +295,12 @@ robust equivalents</p></td>
         </th>
       </tr>
       <tr>
+        
+        <td>
+          <p><code><a href="expr_template.html">expr_template()</a></code> </p>
+        </td>
+        <td><p>Template for subtitles with statistical details for tests</p></td>
+      </tr><tr>
         
         <td>
           <p><code><a href="long_to_wide_converter.html">long_to_wide_converter()</a></code> </p>
@@ -339,8 +378,12 @@ robust equivalents</p></td>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-primary-functions">Primary functions</a></li>
-      <li><a href="#section-helper-functions-for-preparing-bayes-factor-captions">Helper functions for preparing Bayes Factor captions</a></li>
+      <li><a href="#section-expressions-for-one-sample-t-test">Expressions for one-sample t-test</a></li>
+      <li><a href="#section-expressions-for-two-sample-t-test">Expressions for two-sample t-test</a></li>
+      <li><a href="#section-expressions-for-one-way-anova">Expressions for one-way ANOVA</a></li>
+      <li><a href="#section-expressions-for-correlation-analysis">Expressions for correlation analysis</a></li>
+      <li><a href="#section-expressions-for-contingency-table-analysis">Expressions for contingency table analysis</a></li>
+      <li><a href="#section-helper-functions-for-bayes-factor-tests">Helper functions for Bayes Factor tests</a></li>
       <li><a href="#section-helper-functions">Helper functions</a></li>
       <li><a href="#section-reexported-functions">Reexported functions</a></li>
       <li><a href="#section-data">Data</a></li>

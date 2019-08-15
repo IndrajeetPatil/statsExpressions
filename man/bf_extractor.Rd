@@ -24,3 +24,6 @@ statsExpressions::bf_extractor(
   )
 )
 }
+\author{
+\href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
+}

@@ -16,6 +16,6 @@ test and converts it into standard terms to reduce the complexity of
 conditional statements.
 }
 \author{
-Indrajeet Patil
+\href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 }
 \keyword{internal}

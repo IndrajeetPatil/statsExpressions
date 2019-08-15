@@ -1,5 +1,6 @@
 #' @title Extract Bayes Factors from `BayesFactor` model object.
 #' @name bf_extractor
+#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
 #' @param bf.object An object from `BayesFactor` package.
 #' @param ... Currently ignored.
@@ -62,7 +63,7 @@ bf_extractor <- function(bf.object, ...) {
 #'   expression with evidence in favor of the alternative hypothesis, or
 #'   `"results"`, which will return a dataframe with results all the details).
 #' @param ... Additional arguments (ignored).
-#' @inheritParams subtitle_template
+#' @inheritParams expr_template
 #'
 #' @examples
 #'
@@ -143,7 +144,7 @@ bf_caption_maker <- function(bf.df,
 #' @name bf_corr_test
 #' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
-#' @inheritParams subtitle_corr_test
+#' @inheritParams expr_corr_test
 #' @inheritParams bf_caption_maker
 #' @param bf.prior A numeric value between `0.5` and `2` (default `0.707`), the
 #'   prior width to use in calculating Bayes Factors.
@@ -237,7 +238,7 @@ bf_corr_test <- function(data,
 #' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
 #' @inheritParams BayesFactor::contingencyTableBF
-#' @inheritParams subtitle_contingency_tab
+#' @inheritParams expr_contingency_tab
 #' @inheritParams bf_corr_test
 #' @param sampling.plan Character describing the sampling plan. Possible options
 #'   are `"indepMulti"` (independent multinomial; default), `"poisson"`,
@@ -537,10 +538,10 @@ bf_onesample_proptest <- bf_contingency_tab
 #'
 #' @param x Either the grouping variable from the dataframe `data` if it's a
 #'   two-sample *t*-test or a numeric variable if it's a one-sample *t*-test.
-#' @inheritParams subtitle_t_parametric
+#' @inheritParams expr_t_parametric
 #' @inheritParams BayesFactor::ttestBF
 #' @inheritParams bf_corr_test
-#' @inheritParams subtitle_t_onesample
+#' @inheritParams expr_t_onesample
 #'
 #' @importFrom BayesFactor ttestBF
 #' @importFrom rlang !! quo_is_null new_formula ensym enquo
@@ -726,7 +727,7 @@ bf_two_sample_ttest <- bf_ttest
 #'
 #' @importFrom BayesFactor anovaBF
 #'
-#' @inheritParams subtitle_anova_parametric
+#' @inheritParams expr_anova_parametric
 #' @inheritParams bf_ttest
 #' @param ... Additional arguments.
 #'

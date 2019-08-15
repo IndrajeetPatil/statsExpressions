@@ -16,6 +16,6 @@ terms (\code{"biased"} or \code{"unbiased"}) to reduce the complexity of conditi
 statements.
 }
 \author{
-Indrajeet Patil
+\href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 }
 \keyword{internal}

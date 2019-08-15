@@ -1,6 +1,6 @@
 #' @title Message about bootstrapped confidence intervals for effect sizes.
 #' @name effsize_ci_message
-#' @author Indrajeet Patil
+#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
 #' @inheritParams t1way_ci
 #'
@@ -28,7 +28,7 @@ effsize_ci_message <- function(nboot = 100, conf.level = 0.95) {
 #'   size (e.g., `"d"`, `"partial_eta"`, etc.) and converts it into standard
 #'   terms (`"biased"` or `"unbiased"`) to reduce the complexity of conditional
 #'   statements.
-#' @author Indrajeet Patil
+#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
 #' @param effsize.type Character describing the needed effect size.
 #'
@@ -68,7 +68,7 @@ effsize_type_switch <- function(effsize.type = NULL) {
 #' @description Takes in all allowed characters describing the needed type of
 #'   test and converts it into standard terms to reduce the complexity of
 #'   conditional statements.
-#' @author Indrajeet Patil
+#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
 #' @param stats.type Character describing the needed type of statistics (e.g.,
 #'   `"parametric"`, `"nonparametric"`, `"robust"`, `"bayes"``, etc.).

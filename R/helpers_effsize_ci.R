@@ -11,9 +11,9 @@
 #' @param noncentral Logical indicating whether to use non-central
 #'   *t*-distributions for computing the confidence intervals (Default: `TRUE`).
 #' @param tobject Object with the *t*-test specification.
-#' @inheritParams subtitle_t_parametric
+#' @inheritParams expr_t_parametric
 #'
-#' @importFrom stats t.test na.omit cor qt pt uniroot
+#' @importFrom stats t.test cor qt pt uniroot
 #' @importFrom tibble tibble
 #' @importFrom methods is
 #'
@@ -315,7 +315,6 @@ effsize_t_parametric <- function(formula = NULL,
 #' @importFrom rlang !! enquo
 #' @importFrom WRS2 t1way
 #' @importFrom boot boot boot.ci
-#' @importFrom stats na.omit
 #'
 #' @examples
 #' set.seed(123)
@@ -458,7 +457,6 @@ t1way_ci <- function(data,
 #' @importFrom rlang !! enquo
 #' @importFrom WRS2 yuend
 #' @importFrom boot boot boot.ci
-#' @importFrom stats na.omit
 #'
 #' @examples
 #'
@@ -617,7 +615,6 @@ yuend_ci <- function(data,
 #' @importFrom rlang !! enquo
 #' @importFrom WRS2 pbcor
 #' @importFrom boot boot boot.ci
-#' @importFrom stats na.omit
 #'
 #' @examples
 #'

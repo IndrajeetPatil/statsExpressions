@@ -22,11 +22,8 @@ effct
 effsize
 Erlbaum
 et
+expr
 freighteningness
-ggbetween
-ggcatstats
-gghistostats
-ggscatterstats
 ggstatsplot
 gh
 github
@@ -48,7 +45,6 @@ LDLF
 LFHD
 Licence
 lifecycle
-mann
 McNemar's
 McNemar’s
 mingw
@@ -59,13 +55,11 @@ nd
 Noncentral
 NumGenre
 onesample
-pandoc
 pearson's
 plotmath
 Rdoc
 reproducibility
 robcor
-RStudio
 saythanks
 setosa
 spearman
