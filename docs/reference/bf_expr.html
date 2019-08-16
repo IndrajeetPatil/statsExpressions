@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Prepare caption with expression for Bayes Factor results — bf_caption_maker • statsExpressions</title>
+<title>Prepare caption with expression for Bayes Factor results — bf_expr • statsExpressions</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,7 +34,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Prepare caption with expression for Bayes Factor results — bf_caption_maker" />
+<meta property="og:title" content="Prepare caption with expression for Bayes Factor results — bf_expr" />
 
 <meta property="og:description" content="Convenience function to write a caption message with bayes
 factors in favor of the null hypothesis." />
@@ -126,7 +126,7 @@ factors in favor of the null hypothesis." />
     <div class="page-header">
     <h1>Prepare caption with expression for Bayes Factor results</h1>
     <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/helpers_bf_tests.R'><code>R/helpers_bf_tests.R</code></a></small>
-    <div class="hidden name"><code>bf_caption_maker.Rd</code></div>
+    <div class="hidden name"><code>bf_expr.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -136,7 +136,7 @@ factors in favor of the null hypothesis.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>bf_caption_maker</span>(<span class='no'>bf.df</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"null"</span>, <span class='kw'>caption</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>bf_expr</span>(<span class='no'>bf.df</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"null"</span>, <span class='kw'>caption</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -185,7 +185,7 @@ Bayes Factor caption/message).</p></td>
   <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>.data</span> <span class='kw'>=</span> <span class='no'>.</span>, <span class='kw'>bf.prior</span> <span class='kw'>=</span> <span class='fl'>0.707</span>)
 
 <span class='co'># creating caption (for null)</span>
-<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/statsExpressions//reference/bf_caption_maker.html'>bf_caption_maker</a></span>(
+<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/statsExpressions//reference/bf_expr.html'>bf_expr</a></span>(
   <span class='kw'>bf.df</span> <span class='kw'>=</span> <span class='no'>bf_results</span>,
   <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"null"</span>,
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>,
@@ -194,7 +194,7 @@ Bayes Factor caption/message).</p></td>
 #&gt;     "log"["e"], "(BF"["01"], ") = ", "-99.770", ", ", italic("r")["Cauchy"]^"JZS", 
 #&gt;     " = ", "0.707"))</div><div class='input'>
 <span class='co'># creating caption (for alternative)</span>
-<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/statsExpressions//reference/bf_caption_maker.html'>bf_caption_maker</a></span>(
+<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/statsExpressions//reference/bf_expr.html'>bf_expr</a></span>(
   <span class='kw'>bf.df</span> <span class='kw'>=</span> <span class='no'>bf_results</span>,
   <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"alternative"</span>
 )</div><div class='output co'>#&gt; atop(displaystyle(NULL), expr = paste("In favor of alternative: ", 

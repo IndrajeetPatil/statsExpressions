@@ -30,7 +30,7 @@ Package | Status | Usage | GitHub | References
 [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/) | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/) | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Github Issues](https://img.shields.io/badge/issues-`r itdepends:::get_github_info("statsExpressions")$open_issues[[1]]`-red.svg)](https://github.com/IndrajeetPatil/statsExpressions/issues) | [![vignettes](https://img.shields.io/badge/vignettes-0.0.1-orange.svg?colorB=FF5722)](https://CRAN.R-project.org/package=statsExpressions/vignettes/)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/statsExpressions/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/statsExpressions?branch=master) | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/statsExpressions.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/statsExpressions) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2074621.svg)](https://doi.org/10.5281/zenodo.2074621)
 [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html) | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master) | [![HitCount](http://hits.dwyl.io/IndrajeetPatil/statsExpressions.svg)](http://hits.dwyl.io/IndrajeetPatil/statsExpressions) | [![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master) | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master)
-[![status](https://tinyverse.netlify.com/badge/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions) | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2019_08_15-brightgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/blob/master/tests/README.md) | [![saythanks](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/IndrajeetPatil) | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/statsExpressions/issues)
+[![status](https://tinyverse.netlify.com/badge/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions) | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2019_08_16-brightgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/blob/master/tests/README.md) | [![saythanks](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/IndrajeetPatil) | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/statsExpressions/issues)
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/statsExpressions/community) | | | |
 
 # Introduction
@@ -157,11 +157,55 @@ Functions | Type | Test | Effect size | 95% CI available?
 A list of primary functions in this package can be found at the package website:
 <https://indrajeetpatil.github.io/statsExpressions/reference/index.html>
 
-Here is an example of how these functions can be used: <br>
+Following are few examples of how these functions can be used.
+
+## Example: Expressions for one-sample *t*-test
+
+```{r example_t_one}
+# setup
+set.seed(123)
+library(ggplot2)
+library(statsExpressions)
+
+# create fake data
+df <- data.frame(x = rnorm(1000, 0.1, 0.5))
+
+# creating a histogram plot
+p <- ggplot(df, aes(x)) +
+  geom_histogram(alpha = 0.5) +
+  geom_vline(xintercept = mean(df$x), color = "red")
+
+# adding a caption with a non-parametric one-sample test
+p + labs(
+  title = "One-Sample Wilcoxon Signed Rank Test",
+  caption = expr_t_onesample(df, x, type = "nonparametric")
+)
+```
+
+## Example: Expressions for two-sample *t*-test
+
+```{r example_t_two}
+# setup
+set.seed(123)
+library(ggplot2)
+library(hrbrthemes)
+
+# create a plot
+p <- ggplot(ToothGrowth, aes(supp, len)) + geom_boxplot() + theme_ipsum_rc()
+
+# adding a subtitle with
+p + labs(
+  title = "Two-Sample Welch's t-test",
+  subtitle = expr_t_parametric(ToothGrowth, supp, len)
+)
+```
+
+## Example: Expressions for one-way ANOVA
+
 Let's say we want to check differences in weight of the vehicle based on number of
 cylinders in the engine and we want to carry out a robust ANOVA:
 
-```{r example1}
+```{r example_anova}
 # setup
 set.seed(123)
 library(ggplot2)
@@ -186,9 +230,11 @@ p + labs(
 )
 ```
 
+## Example: Expressions for correlation analysis
+
 Let's look at another example where we want to run correlation analysis:
 
-```{r example2}
+```{r example_corr}
 # setup
 set.seed(123)
 library(ggplot2)
@@ -200,32 +246,65 @@ p <- ggplot(mtcars, aes(x = mpg, y = wt)) +
   geom_smooth(method = "lm")
 
 # create an expression containing details from the relevant test
-results <- expr_corr_test(mtcars, mpg, wt, type = "np", messages = FALSE)
+results <- expr_corr_test(mtcars, mpg, wt, type = "nonparametric")
 
 # display results on the plot
 p + labs(
-  title = "Spearman's rank correlation",
+  title = "Spearman's rank correlation coefficient",
   subtitle = results
 )
 ```
 
-You can also use these function to get the expression in return without having
-to display them in plots:
+## Example: Expressions for contingency table analysis
 
-```{r example3}
+```{r example_contingency}
 # setup
 set.seed(123)
 library(ggplot2)
 library(statsExpressions)
 
-# one-sample equal proportions test
-expr_onesample_proptest(msleep, vore, messages = FALSE)
+# data
+df <- as.data.frame(table(mpg$class))
+colnames(df) <- c("class", "freq")
+
+# basic pie chart
+p <- ggplot(df, aes(x = "", y = freq, fill = factor(class))) +
+  geom_bar(width = 1, stat = "identity") +
+  theme(
+    axis.line = element_blank(),
+    plot.title = element_text(hjust = 0.5)
+  )
+
+# cleaning up the chart and adding results from one-sample proportion test
+p +
+  coord_polar(theta = "y", start = 0) +
+  labs(
+    fill = "class",
+    x = NULL,
+    y = NULL,
+    title = "Pie Chart of class",
+    subtitle = expr_onesample_proptest(df, class, counts = freq),
+    caption = "One-sample goodness of fit proportion test"
+  )
 ```
 
-Although these functions were initially written to display results from
-statistical tests on ready-made `ggplot2` plots implemented in `ggstatsplot`,
-the `statsExpressions` package functions can be used to display these results on
-any custom plots.
+You can also use these function to get the expression in return without having
+to display them in plots:
+
+```{r example_expr_output}
+# setup
+set.seed(123)
+library(ggplot2)
+library(statsExpressions)
+
+# Pearson's chi-squared test of independence
+expr_contingency_tab(mtcars, am, cyl, messages = FALSE)
+```
+
+# Usage in `ggstatsplot`
+
+Note that these functions were initially written to display results from
+statistical tests on ready-made `ggplot2` plots implemented in `ggstatsplot`.
 
 For detailed documentation, see the package website:
 <https://indrajeetpatil.github.io/ggstatsplot/>

@@ -569,12 +569,12 @@ testthat::test_that(
     )
 
     # expected
-    using1 <- statsExpressions::bf_caption_maker(
+    using1 <- statsExpressions::bf_expr(
       bf.df = bf_results,
       k = 3,
       caption = substitute(paste(italic("Note", ": made up data")))
     )
-    using2 <- statsExpressions::bf_caption_maker(
+    using2 <- statsExpressions::bf_expr(
       bf.df = bf_results,
       output = "H1",
       caption = substitute(paste(italic("Note", ": made up data")))

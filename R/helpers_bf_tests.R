@@ -48,7 +48,7 @@ bf_extractor <- function(bf.object, ...) {
 }
 
 #' @title Prepare caption with expression for Bayes Factor results
-#' @name bf_caption_maker
+#' @name bf_expr
 #' @description Convenience function to write a caption message with bayes
 #'   factors in favor of the null hypothesis.
 #'
@@ -78,7 +78,7 @@ bf_extractor <- function(bf.object, ...) {
 #'   dplyr::mutate(.data = ., bf.prior = 0.707)
 #'
 #' # creating caption (for null)
-#' statsExpressions::bf_caption_maker(
+#' statsExpressions::bf_expr(
 #'   bf.df = bf_results,
 #'   output = "null",
 #'   k = 3,
@@ -86,18 +86,18 @@ bf_extractor <- function(bf.object, ...) {
 #' )
 #'
 #' # creating caption (for alternative)
-#' statsExpressions::bf_caption_maker(
+#' statsExpressions::bf_expr(
 #'   bf.df = bf_results,
 #'   output = "alternative"
 #' )
 #' @export
 
 # function body
-bf_caption_maker <- function(bf.df,
-                             k = 2,
-                             output = "null",
-                             caption = NULL,
-                             ...) {
+bf_expr <- function(bf.df,
+                    k = 2,
+                    output = "null",
+                    caption = NULL,
+                    ...) {
   ellipsis::check_dots_used()
 
   # changing aspects of the caption based on what output is needed
@@ -145,7 +145,7 @@ bf_caption_maker <- function(bf.df,
 #' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
 #' @inheritParams expr_corr_test
-#' @inheritParams bf_caption_maker
+#' @inheritParams bf_expr
 #' @param bf.prior A numeric value between `0.5` and `2` (default `0.707`), the
 #'   prior width to use in calculating Bayes Factors.
 #'
@@ -214,7 +214,7 @@ bf_corr_test <- function(data,
   # prepare the Bayes Factor message
   if (output != "results") {
     bf_message <-
-      bf_caption_maker(
+      bf_expr(
         bf.df = bf_results,
         output = output,
         k = k,
@@ -693,7 +693,7 @@ bf_ttest <- function(data,
   # prepare the Bayes factor message
   if (output != "results") {
     bf_message <-
-      bf_caption_maker(
+      bf_expr(
         bf.df = bf_results,
         output = output,
         k = k,
@@ -828,7 +828,7 @@ bf_oneway_anova <- function(data,
   # prepare the Bayes Factor message
   if (output != "results") {
     bf_message <-
-      bf_caption_maker(
+      bf_expr(
         bf.df = bf_results,
         output = output,
         k = k,
