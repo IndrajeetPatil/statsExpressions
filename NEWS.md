@@ -1,3 +1,3 @@
-# statsExpressions 0.0.1
+# statsExpressions 0.1.0
 
   - First release of the package.
