@@ -61,6 +61,11 @@ to be displayed (Default: \code{TRUE}).}
 
 \item{...}{Additional arguments (currently ignored).}
 }
+\value{
+Expression containing results from a one-sample test. The exact test
+and the effect size details contained will be dependent on the \code{type}
+argument.
+}
 \description{
 Expression for one sample \emph{t}-test and its non-parametric and
 robust equivalents
@@ -70,12 +75,46 @@ robust equivalents
 # for reproducibility
 set.seed(123)
 
+# ----------------------- parametric ---------------------------------------
+
 statsExpressions::expr_t_onesample(
-  data = iris,
-  x = Sepal.Length,
-  test.value = 5,
-  type = "r"
+  data = ggplot2::msleep,
+  x = brainwt,
+  test.value = 0.275,
+  type = "parametric"
 )
+
+# ----------------------- non-parametric -----------------------------------
+
+statsExpressions::expr_t_onesample(
+  data = ggplot2::msleep,
+  x = brainwt,
+  test.value = 0.275,
+  type = "nonparametric"
+)
+
+# ----------------------- robust --------------------------------------------
+
+statsExpressions::expr_t_onesample(
+  data = ggplot2::msleep,
+  x = brainwt,
+  test.value = 0.275,
+  type = "robust"
+)
+
+# ----------------------- Bayes Factor -----------------------------------
+
+statsExpressions::expr_t_onesample(
+  data = ggplot2::msleep,
+  x = brainwt,
+  test.value = 0.275,
+  type = "bayes",
+  bf.prior = 0.8
+)
+}
+\references{
+For more details, see-
+\url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }
 \author{
 \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}

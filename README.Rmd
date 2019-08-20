@@ -203,7 +203,24 @@ p + labs(
 ## Example: Expressions for one-way ANOVA
 
 Let's say we want to check differences in weight of the vehicle based on number of
-cylinders in the engine and we want to carry out a robust ANOVA:
+cylinders in the engine and wish to carry out Welch's ANOVA:
+
+```{r example_anova_parametric}
+# setup
+set.seed(123)
+library(ggplot2)
+library(statsExpressions)
+
+# create a boxplot
+ggplot(iris, aes(x = Species, y = Sepal.Length)) + geom_boxplot() +
+  labs(
+    title = "Welch's ANOVA",
+    subtitle = expr_anova_parametric(iris, Species, Sepal.Length, messages = FALSE)
+  )
+```
+
+In case you change your mind and now want to carry out a robust ANOVA instead.
+Also, let's use a different kind of a visualization:
 
 ```{r example_anova}
 # setup
@@ -341,10 +358,4 @@ of commitment):
     preparing subtitles)
 
 Please note that this project is released with a 
-[Contributor Code of Conduct](https://github.com/IndrajeetPatil/statsExpressions/blob/master/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
-
-# Session Information
-
-For reproducibility purposes, the details about the session information in which
-this document was rendered, see-
-<https://indrajeetpatil.github.io/statsExpressions/articles/web_only/session_info.html>
+[Contributor Code of Conduct](https://github.com/IndrajeetPatil/statsExpressions/blob/master/.github/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.

@@ -2,6 +2,12 @@
 #' @name expr_corr_test
 #' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
+#' @return Expression containing results from correlation test with confidence
+#'   intervals for the correlation coefficient estimate.
+#'
+#' @references For more details, see-
+#' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
+#'
 #' @param x The column in `data` containing the explanatory variable to be
 #'   plotted on the `x`-axis. Can be entered either as a character string (e.g.,
 #'   `"x"`) or as a bare expression (e.g, `x`).
@@ -33,7 +39,8 @@
 #' statsExpressions::expr_corr_test(
 #'   data = ggplot2::midwest,
 #'   x = area,
-#'   y = percblack
+#'   y = percblack,
+#'   type = "parametric"
 #' )
 #'
 #' # changing defaults
@@ -43,7 +50,7 @@
 #'   y = percblack,
 #'   nboot = 25,
 #'   beta = 0.2,
-#'   type = "r",
+#'   type = "robust",
 #'   k = 1
 #' )
 #' @export

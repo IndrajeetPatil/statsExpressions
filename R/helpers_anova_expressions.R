@@ -2,6 +2,9 @@
 #' @name expr_anova_parametric
 #' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
+#' @return For more details, see-
+#' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
+#'
 #' @note For repeated measures designs (`paired = TRUE`), only omega-squared and
 #'   partial eta-squared effect sizes are supported.
 #'
@@ -293,10 +296,13 @@ expr_anova_parametric <- function(data,
 #' @name expr_anova_nonparametric
 #' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
-#' @description For paired designs, the effect size is Kendall's coefficient of
+#' @details For paired designs, the effect size is Kendall's coefficient of
 #'   concordance (*W*), while for between-subjects designs, the effect size is
 #'   epsilon-squared (for more, see `?rcompanion::epsilonSquared` and
 #'   `?rcompanion::kendallW`).
+#'
+#' @return For more details, see-
+#' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @inheritParams t1way_ci
 #' @inheritParams expr_anova_parametric
@@ -469,6 +475,9 @@ expr_anova_nonparametric <- function(data,
 #'   trimmed means
 #' @name expr_anova_robust
 #' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
+#'
+#' @return For more details, see-
+#' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @inheritParams t1way_ci
 #' @inheritParams expr_anova_nonparametric
@@ -650,6 +659,9 @@ expr_anova_robust <- function(data,
 #' @title Making expression containing Bayesian one-way ANOVA results.
 #' @name expr_anova_bayes
 #' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
+#'
+#' @return For more details, see-
+#' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @inheritParams expr_anova_parametric
 #' @inheritParams expr_t_bayes

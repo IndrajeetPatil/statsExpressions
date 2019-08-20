@@ -64,19 +64,6 @@ testthat::test_that(
   desc = "parametric anova subtitles work (with NAs)",
   code = {
 
-
-    # the expected result
-    set.seed(123)
-    r <-
-      broom::tidy(
-        stats::oneway.test(
-          formula = sleep_total ~ vore,
-          na.action = na.omit,
-          subset = NULL,
-          data = ggplot2::msleep
-        )
-      )
-
     # output from statsExpression helper subtitle
     set.seed(123)
     using_function1 <-

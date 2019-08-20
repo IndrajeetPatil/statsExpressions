@@ -48,6 +48,10 @@ added as a prefix in the subtitle. The default is \code{NULL}. An example of a
 
 \item{...}{Additional arguments (currently ignored).}
 }
+\value{
+Expression containing details from results of a two-sample test and
+effect size plus confidence intervals.
+}
 \description{
 Making expression containing \emph{t}-test results
 }
@@ -98,6 +102,10 @@ statsExpressions::expr_t_parametric(
   k = 2,
   effsize.type = "d"
 )
+}
+\references{
+For more details, see-
+\url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }
 \author{
 \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}, Chuck Powell

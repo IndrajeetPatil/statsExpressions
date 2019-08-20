@@ -146,7 +146,7 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="http://hits.dwyl.io/IndrajeetPatil/statsExpressions"><img src="http://hits.dwyl.io/IndrajeetPatil/statsExpressions.svg" alt="HitCount"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--08--19-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--08--20-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
@@ -511,100 +511,113 @@
 <div id="example-expressions-for-one-way-anova" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example-expressions-for-one-way-anova" class="anchor"></a>Example: Expressions for one-way ANOVA</h2>
-<p>Let’s say we want to check differences in weight of the vehicle based on number of cylinders in the engine and we want to carry out a robust ANOVA:</p>
+<p>Let’s say we want to check differences in weight of the vehicle based on number of cylinders in the engine and wish to carry out Welch’s ANOVA:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co"># setup</span></a>
 <a class="sourceLine" id="cb7-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">123</span>)</a>
 <a class="sourceLine" id="cb7-3" title="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
 <a class="sourceLine" id="cb7-4" title="4"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(statsExpressions)</a>
-<a class="sourceLine" id="cb7-5" title="5"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggridges)</a>
-<a class="sourceLine" id="cb7-6" title="6"></a>
-<a class="sourceLine" id="cb7-7" title="7"><span class="co"># create a ridgeplot</span></a>
-<a class="sourceLine" id="cb7-8" title="8">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Species)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-9" title="9"><span class="st">  </span><span class="kw">geom_density_ridges</span>(</a>
-<a class="sourceLine" id="cb7-10" title="10">    <span class="dt">jittered_points =</span> <span class="ot">TRUE</span>, <span class="dt">quantile_lines =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb7-11" title="11">    <span class="dt">scale =</span> <span class="fl">0.9</span>, <span class="dt">vline_size =</span> <span class="dv">1</span>, <span class="dt">vline_color =</span> <span class="st">"red"</span>,</a>
-<a class="sourceLine" id="cb7-12" title="12">    <span class="dt">position =</span> <span class="kw">position_raincloud</span>(<span class="dt">adjust_vlines =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb7-13" title="13">  )</a>
-<a class="sourceLine" id="cb7-14" title="14"></a>
-<a class="sourceLine" id="cb7-15" title="15"><span class="co"># create an expression containing details from the relevant test</span></a>
-<a class="sourceLine" id="cb7-16" title="16">results &lt;-<span class="st"> </span><span class="kw"><a href="reference/expr_anova_robust.html">expr_anova_robust</a></span>(iris, Species, Sepal.Length, <span class="dt">messages =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb7-17" title="17"></a>
-<a class="sourceLine" id="cb7-18" title="18"><span class="co"># display results on the plot</span></a>
-<a class="sourceLine" id="cb7-19" title="19">p <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(</a>
-<a class="sourceLine" id="cb7-20" title="20">  <span class="dt">title =</span> <span class="st">"A heteroscedastic one-way ANOVA for trimmed means"</span>,</a>
-<a class="sourceLine" id="cb7-21" title="21">  <span class="dt">subtitle =</span> results</a>
-<a class="sourceLine" id="cb7-22" title="22">)</a></code></pre></div>
+<a class="sourceLine" id="cb7-5" title="5"></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="co"># create a boxplot</span></a>
+<a class="sourceLine" id="cb7-7" title="7"><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x =</span> Species, <span class="dt">y =</span> Sepal.Length)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-8" title="8"><span class="st">  </span><span class="kw">labs</span>(</a>
+<a class="sourceLine" id="cb7-9" title="9">    <span class="dt">title =</span> <span class="st">"Welch's ANOVA"</span>,</a>
+<a class="sourceLine" id="cb7-10" title="10">    <span class="dt">subtitle =</span> <span class="kw"><a href="reference/expr_anova_parametric.html">expr_anova_parametric</a></span>(iris, Species, Sepal.Length, <span class="dt">messages =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb7-11" title="11">  )</a></code></pre></div>
+<p><img src="reference/figures/README-example_anova_parametric-1.png" width="100%"></p>
+<p>In case you change your mind and now want to carry out a robust ANOVA instead. Also, let’s use a different kind of a visualization:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co"># setup</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">123</span>)</a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(statsExpressions)</a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggridges)</a>
+<a class="sourceLine" id="cb8-6" title="6"></a>
+<a class="sourceLine" id="cb8-7" title="7"><span class="co"># create a ridgeplot</span></a>
+<a class="sourceLine" id="cb8-8" title="8">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Species)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-9" title="9"><span class="st">  </span><span class="kw">geom_density_ridges</span>(</a>
+<a class="sourceLine" id="cb8-10" title="10">    <span class="dt">jittered_points =</span> <span class="ot">TRUE</span>, <span class="dt">quantile_lines =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb8-11" title="11">    <span class="dt">scale =</span> <span class="fl">0.9</span>, <span class="dt">vline_size =</span> <span class="dv">1</span>, <span class="dt">vline_color =</span> <span class="st">"red"</span>,</a>
+<a class="sourceLine" id="cb8-12" title="12">    <span class="dt">position =</span> <span class="kw">position_raincloud</span>(<span class="dt">adjust_vlines =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb8-13" title="13">  )</a>
+<a class="sourceLine" id="cb8-14" title="14"></a>
+<a class="sourceLine" id="cb8-15" title="15"><span class="co"># create an expression containing details from the relevant test</span></a>
+<a class="sourceLine" id="cb8-16" title="16">results &lt;-<span class="st"> </span><span class="kw"><a href="reference/expr_anova_robust.html">expr_anova_robust</a></span>(iris, Species, Sepal.Length, <span class="dt">messages =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb8-17" title="17"></a>
+<a class="sourceLine" id="cb8-18" title="18"><span class="co"># display results on the plot</span></a>
+<a class="sourceLine" id="cb8-19" title="19">p <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(</a>
+<a class="sourceLine" id="cb8-20" title="20">  <span class="dt">title =</span> <span class="st">"A heteroscedastic one-way ANOVA for trimmed means"</span>,</a>
+<a class="sourceLine" id="cb8-21" title="21">  <span class="dt">subtitle =</span> results</a>
+<a class="sourceLine" id="cb8-22" title="22">)</a></code></pre></div>
 <p><img src="reference/figures/README-example_anova-1.png" width="100%"></p>
 </div>
 <div id="example-expressions-for-correlation-analysis" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example-expressions-for-correlation-analysis" class="anchor"></a>Example: Expressions for correlation analysis</h2>
 <p>Let’s look at another example where we want to run correlation analysis:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co"># setup</span></a>
-<a class="sourceLine" id="cb8-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">123</span>)</a>
-<a class="sourceLine" id="cb8-3" title="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
-<a class="sourceLine" id="cb8-4" title="4"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(statsExpressions)</a>
-<a class="sourceLine" id="cb8-5" title="5"></a>
-<a class="sourceLine" id="cb8-6" title="6"><span class="co"># create a ridgeplot</span></a>
-<a class="sourceLine" id="cb8-7" title="7">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> wt)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb8-8" title="8"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb8-9" title="9"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">"lm"</span>)</a>
-<a class="sourceLine" id="cb8-10" title="10"></a>
-<a class="sourceLine" id="cb8-11" title="11"><span class="co"># create an expression containing details from the relevant test</span></a>
-<a class="sourceLine" id="cb8-12" title="12">results &lt;-<span class="st"> </span><span class="kw"><a href="reference/expr_corr_test.html">expr_corr_test</a></span>(mtcars, mpg, wt, <span class="dt">type =</span> <span class="st">"nonparametric"</span>)</a>
-<a class="sourceLine" id="cb8-13" title="13"></a>
-<a class="sourceLine" id="cb8-14" title="14"><span class="co"># display results on the plot</span></a>
-<a class="sourceLine" id="cb8-15" title="15">p <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(</a>
-<a class="sourceLine" id="cb8-16" title="16">  <span class="dt">title =</span> <span class="st">"Spearman's rank correlation coefficient"</span>,</a>
-<a class="sourceLine" id="cb8-17" title="17">  <span class="dt">subtitle =</span> results</a>
-<a class="sourceLine" id="cb8-18" title="18">)</a></code></pre></div>
-<p><img src="reference/figures/README-example_corr-1.png" width="100%"></p>
-</div>
-<div id="example-expressions-for-contingency-table-analysis" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example-expressions-for-contingency-table-analysis" class="anchor"></a>Example: Expressions for contingency table analysis</h2>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># setup</span></a>
 <a class="sourceLine" id="cb9-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">123</span>)</a>
 <a class="sourceLine" id="cb9-3" title="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
 <a class="sourceLine" id="cb9-4" title="4"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(statsExpressions)</a>
 <a class="sourceLine" id="cb9-5" title="5"></a>
-<a class="sourceLine" id="cb9-6" title="6"><span class="co"># data</span></a>
-<a class="sourceLine" id="cb9-7" title="7">df &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/table.html">table</a></span>(mpg<span class="op">$</span>class))</a>
-<a class="sourceLine" id="cb9-8" title="8"><span class="kw"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(df) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"class"</span>, <span class="st">"freq"</span>)</a>
-<a class="sourceLine" id="cb9-9" title="9"></a>
-<a class="sourceLine" id="cb9-10" title="10"><span class="co"># basic pie chart</span></a>
-<a class="sourceLine" id="cb9-11" title="11">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="st">""</span>, <span class="dt">y =</span> freq, <span class="dt">fill =</span> <span class="kw"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(class))) <span class="op">+</span></a>
-<a class="sourceLine" id="cb9-12" title="12"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>, <span class="dt">stat =</span> <span class="st">"identity"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb9-13" title="13"><span class="st">  </span><span class="kw">theme</span>(</a>
-<a class="sourceLine" id="cb9-14" title="14">    <span class="dt">axis.line =</span> <span class="kw">element_blank</span>(),</a>
-<a class="sourceLine" id="cb9-15" title="15">    <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="fl">0.5</span>)</a>
-<a class="sourceLine" id="cb9-16" title="16">  )</a>
-<a class="sourceLine" id="cb9-17" title="17"></a>
-<a class="sourceLine" id="cb9-18" title="18"><span class="co"># cleaning up the chart and adding results from one-sample proportion test</span></a>
-<a class="sourceLine" id="cb9-19" title="19">p <span class="op">+</span></a>
-<a class="sourceLine" id="cb9-20" title="20"><span class="st">  </span><span class="kw">coord_polar</span>(<span class="dt">theta =</span> <span class="st">"y"</span>, <span class="dt">start =</span> <span class="dv">0</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb9-21" title="21"><span class="st">  </span><span class="kw">labs</span>(</a>
-<a class="sourceLine" id="cb9-22" title="22">    <span class="dt">fill =</span> <span class="st">"class"</span>,</a>
-<a class="sourceLine" id="cb9-23" title="23">    <span class="dt">x =</span> <span class="ot">NULL</span>,</a>
-<a class="sourceLine" id="cb9-24" title="24">    <span class="dt">y =</span> <span class="ot">NULL</span>,</a>
-<a class="sourceLine" id="cb9-25" title="25">    <span class="dt">title =</span> <span class="st">"Pie Chart of class"</span>,</a>
-<a class="sourceLine" id="cb9-26" title="26">    <span class="dt">subtitle =</span> <span class="kw"><a href="reference/expr_contingency_tab.html">expr_onesample_proptest</a></span>(df, class, <span class="dt">counts =</span> freq),</a>
-<a class="sourceLine" id="cb9-27" title="27">    <span class="dt">caption =</span> <span class="st">"One-sample goodness of fit proportion test"</span></a>
-<a class="sourceLine" id="cb9-28" title="28">  )</a>
-<a class="sourceLine" id="cb9-29" title="29"><span class="co">#&gt; Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.</span></a></code></pre></div>
-<p><img src="reference/figures/README-example_contingency-1.png" width="100%"></p>
-<p>You can also use these function to get the expression in return without having to display them in plots:</p>
+<a class="sourceLine" id="cb9-6" title="6"><span class="co"># create a ridgeplot</span></a>
+<a class="sourceLine" id="cb9-7" title="7">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> wt)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-8" title="8"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-9" title="9"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">"lm"</span>)</a>
+<a class="sourceLine" id="cb9-10" title="10"></a>
+<a class="sourceLine" id="cb9-11" title="11"><span class="co"># create an expression containing details from the relevant test</span></a>
+<a class="sourceLine" id="cb9-12" title="12">results &lt;-<span class="st"> </span><span class="kw"><a href="reference/expr_corr_test.html">expr_corr_test</a></span>(mtcars, mpg, wt, <span class="dt">type =</span> <span class="st">"nonparametric"</span>)</a>
+<a class="sourceLine" id="cb9-13" title="13"></a>
+<a class="sourceLine" id="cb9-14" title="14"><span class="co"># display results on the plot</span></a>
+<a class="sourceLine" id="cb9-15" title="15">p <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(</a>
+<a class="sourceLine" id="cb9-16" title="16">  <span class="dt">title =</span> <span class="st">"Spearman's rank correlation coefficient"</span>,</a>
+<a class="sourceLine" id="cb9-17" title="17">  <span class="dt">subtitle =</span> results</a>
+<a class="sourceLine" id="cb9-18" title="18">)</a></code></pre></div>
+<p><img src="reference/figures/README-example_corr-1.png" width="100%"></p>
+</div>
+<div id="example-expressions-for-contingency-table-analysis" class="section level2">
+<h2 class="hasAnchor">
+<a href="#example-expressions-for-contingency-table-analysis" class="anchor"></a>Example: Expressions for contingency table analysis</h2>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="co"># setup</span></a>
 <a class="sourceLine" id="cb10-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">123</span>)</a>
 <a class="sourceLine" id="cb10-3" title="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
 <a class="sourceLine" id="cb10-4" title="4"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(statsExpressions)</a>
 <a class="sourceLine" id="cb10-5" title="5"></a>
-<a class="sourceLine" id="cb10-6" title="6"><span class="co"># Pearson's chi-squared test of independence</span></a>
-<a class="sourceLine" id="cb10-7" title="7"><span class="kw"><a href="reference/expr_contingency_tab.html">expr_contingency_tab</a></span>(mtcars, am, cyl, <span class="dt">messages =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb10-8" title="8"><span class="co">#&gt; paste(NULL, chi["Pearson"]^2, "(", "2", ") = ", "8.74", ", ", </span></a>
-<a class="sourceLine" id="cb10-9" title="9"><span class="co">#&gt;     italic("p"), " = ", "0.013", ", ", italic("V")["Cramer"], </span></a>
-<a class="sourceLine" id="cb10-10" title="10"><span class="co">#&gt;     " = ", "0.52", ", CI"["95%"], " [", "0.20", ", ", "0.75", </span></a>
-<a class="sourceLine" id="cb10-11" title="11"><span class="co">#&gt;     "]", ", ", italic("n")["obs"], " = ", 32L)</span></a></code></pre></div>
+<a class="sourceLine" id="cb10-6" title="6"><span class="co"># data</span></a>
+<a class="sourceLine" id="cb10-7" title="7">df &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/table.html">table</a></span>(mpg<span class="op">$</span>class))</a>
+<a class="sourceLine" id="cb10-8" title="8"><span class="kw"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(df) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"class"</span>, <span class="st">"freq"</span>)</a>
+<a class="sourceLine" id="cb10-9" title="9"></a>
+<a class="sourceLine" id="cb10-10" title="10"><span class="co"># basic pie chart</span></a>
+<a class="sourceLine" id="cb10-11" title="11">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="st">""</span>, <span class="dt">y =</span> freq, <span class="dt">fill =</span> <span class="kw"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(class))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-12" title="12"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>, <span class="dt">stat =</span> <span class="st">"identity"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-13" title="13"><span class="st">  </span><span class="kw">theme</span>(</a>
+<a class="sourceLine" id="cb10-14" title="14">    <span class="dt">axis.line =</span> <span class="kw">element_blank</span>(),</a>
+<a class="sourceLine" id="cb10-15" title="15">    <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb10-16" title="16">  )</a>
+<a class="sourceLine" id="cb10-17" title="17"></a>
+<a class="sourceLine" id="cb10-18" title="18"><span class="co"># cleaning up the chart and adding results from one-sample proportion test</span></a>
+<a class="sourceLine" id="cb10-19" title="19">p <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-20" title="20"><span class="st">  </span><span class="kw">coord_polar</span>(<span class="dt">theta =</span> <span class="st">"y"</span>, <span class="dt">start =</span> <span class="dv">0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-21" title="21"><span class="st">  </span><span class="kw">labs</span>(</a>
+<a class="sourceLine" id="cb10-22" title="22">    <span class="dt">fill =</span> <span class="st">"class"</span>,</a>
+<a class="sourceLine" id="cb10-23" title="23">    <span class="dt">x =</span> <span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb10-24" title="24">    <span class="dt">y =</span> <span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb10-25" title="25">    <span class="dt">title =</span> <span class="st">"Pie Chart of class"</span>,</a>
+<a class="sourceLine" id="cb10-26" title="26">    <span class="dt">subtitle =</span> <span class="kw"><a href="reference/expr_contingency_tab.html">expr_onesample_proptest</a></span>(df, class, <span class="dt">counts =</span> freq),</a>
+<a class="sourceLine" id="cb10-27" title="27">    <span class="dt">caption =</span> <span class="st">"One-sample goodness of fit proportion test"</span></a>
+<a class="sourceLine" id="cb10-28" title="28">  )</a>
+<a class="sourceLine" id="cb10-29" title="29"><span class="co">#&gt; Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.</span></a></code></pre></div>
+<p><img src="reference/figures/README-example_contingency-1.png" width="100%"></p>
+<p>You can also use these function to get the expression in return without having to display them in plots:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co"># setup</span></a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">123</span>)</a>
+<a class="sourceLine" id="cb11-3" title="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb11-4" title="4"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(statsExpressions)</a>
+<a class="sourceLine" id="cb11-5" title="5"></a>
+<a class="sourceLine" id="cb11-6" title="6"><span class="co"># Pearson's chi-squared test of independence</span></a>
+<a class="sourceLine" id="cb11-7" title="7"><span class="kw"><a href="reference/expr_contingency_tab.html">expr_contingency_tab</a></span>(mtcars, am, cyl, <span class="dt">messages =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb11-8" title="8"><span class="co">#&gt; paste(NULL, chi["Pearson"]^2, "(", "2", ") = ", "8.74", ", ", </span></a>
+<a class="sourceLine" id="cb11-9" title="9"><span class="co">#&gt;     italic("p"), " = ", "0.013", ", ", italic("V")["Cramer"], </span></a>
+<a class="sourceLine" id="cb11-10" title="10"><span class="co">#&gt;     " = ", "0.52", ", CI"["95%"], " [", "0.20", ", ", "0.75", </span></a>
+<a class="sourceLine" id="cb11-11" title="11"><span class="co">#&gt;     "]", ", ", italic("n")["obs"], " = ", 32L)</span></a></code></pre></div>
 </div>
 </div>
 <div id="usage-in-ggstatsplot" class="section level1">
@@ -632,12 +645,7 @@
 <li><p>Review code</p></li>
 <li><p>Add new functionality (in the form of new plotting functions or helpers for preparing subtitles)</p></li>
 </ul>
-<p>Please note that this project is released with a <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/CODE_OF_CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
-</div>
-<div id="session-information" class="section level1">
-<h1 class="hasAnchor">
-<a href="#session-information" class="anchor"></a>Session Information</h1>
-<p>For reproducibility purposes, the details about the session information in which this document was rendered, see- <a href="https://indrajeetpatil.github.io/statsExpressions/articles/web_only/session_info.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/web_only/session_info.html</a></p>
+<p>Please note that this project is released with a <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/.github/CODE_OF_CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
   </div>
 

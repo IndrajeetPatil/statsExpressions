@@ -19,6 +19,13 @@
 #' @inheritParams bf_corr_test
 #' @inheritParams expr_anova_parametric
 #'
+#' @return Expression containing results from a one-sample test. The exact test
+#'   and the effect size details contained will be dependent on the `type`
+#'   argument.
+#'
+#' @references For more details, see-
+#' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
+#'
 #' @importFrom dplyr select bind_rows summarize mutate mutate_at mutate_if
 #' @importFrom dplyr group_by n arrange
 #' @importFrom WRS2 onesampb
@@ -31,11 +38,41 @@
 #' # for reproducibility
 #' set.seed(123)
 #'
+#' # ----------------------- parametric ---------------------------------------
+#'
 #' statsExpressions::expr_t_onesample(
-#'   data = iris,
-#'   x = Sepal.Length,
-#'   test.value = 5,
-#'   type = "r"
+#'   data = ggplot2::msleep,
+#'   x = brainwt,
+#'   test.value = 0.275,
+#'   type = "parametric"
+#' )
+#'
+#' # ----------------------- non-parametric -----------------------------------
+#'
+#' statsExpressions::expr_t_onesample(
+#'   data = ggplot2::msleep,
+#'   x = brainwt,
+#'   test.value = 0.275,
+#'   type = "nonparametric"
+#' )
+#'
+#' # ----------------------- robust --------------------------------------------
+#'
+#' statsExpressions::expr_t_onesample(
+#'   data = ggplot2::msleep,
+#'   x = brainwt,
+#'   test.value = 0.275,
+#'   type = "robust"
+#' )
+#'
+#' # ----------------------- Bayes Factor -----------------------------------
+#'
+#' statsExpressions::expr_t_onesample(
+#'   data = ggplot2::msleep,
+#'   x = brainwt,
+#'   test.value = 0.275,
+#'   type = "bayes",
+#'   bf.prior = 0.8
 #' )
 #' @export
 

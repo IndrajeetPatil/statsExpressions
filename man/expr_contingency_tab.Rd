@@ -76,11 +76,14 @@ to be displayed (Default: \code{TRUE}).}
 
 \item{...}{Additional arguments (currently ignored).}
 }
+\value{
+Expression for contingency analysis (Pearson's chi-square test for
+independence for between-subjects design or McNemar's test for
+within-subjects design) or goodness of fit test for a single categorical
+variable.
+}
 \description{
-Making expression for contingency analysis (Pearson's
-chi-square test for independence for between-subjects design or McNemar's
-test for within-subjects design) or goodness of fit test for a single
-categorical variable.
+Making expression for contingency table and goodness of fit tests
 }
 \details{
 For more details about how the effect sizes and their confidence
@@ -99,6 +102,7 @@ statsExpressions::expr_contingency_tab(
   data = mtcars,
   x = am,
   y = cyl,
+  paired = FALSE,
   nboot = 15
 )
 
@@ -114,6 +118,10 @@ expr_contingency_tab(
   counts = Freq,
   ratio = c(0.2, 0.2, 0.3, 0.3)
 )
+}
+\references{
+For more details, see-
+\url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }
 \author{
 \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}

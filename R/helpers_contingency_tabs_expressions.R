@@ -1,9 +1,14 @@
+#' @name expr_contingency_tab
 #' @title Making expression for contingency table and goodness of fit tests
-#' @description Making expression for contingency analysis (Pearson's
-#'   chi-square test for independence for between-subjects design or McNemar's
-#'   test for within-subjects design) or goodness of fit test for a single
-#'   categorical variable.
 #' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
+#'
+#' @return Expression for contingency analysis (Pearson's chi-square test for
+#'   independence for between-subjects design or McNemar's test for
+#'   within-subjects design) or goodness of fit test for a single categorical
+#'   variable.
+#'
+#' @references For more details, see-
+#' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @param x The variable to use as the **rows** in the contingency table.
 #' @param y The variable to use as the **columns** in the contingency
@@ -58,6 +63,7 @@
 #'   data = mtcars,
 #'   x = am,
 #'   y = cyl,
+#'   paired = FALSE,
 #'   nboot = 15
 #' )
 #'

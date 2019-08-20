@@ -62,6 +62,10 @@ to be displayed (Default: \code{TRUE}).}
 
 \item{...}{Additional arguments (currently ignored).}
 }
+\value{
+For more details, see-
+\url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
+}
 \description{
 Making expression containing parametric ANOVA results
 }

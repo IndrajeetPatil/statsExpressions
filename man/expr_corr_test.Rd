@@ -55,6 +55,10 @@ to be displayed (Default: \code{TRUE}).}
 
 \item{...}{Additional arguments (currently ignored).}
 }
+\value{
+Expression containing results from correlation test with confidence
+intervals for the correlation coefficient estimate.
+}
 \description{
 Making expression for correlation analysis
 }
@@ -67,7 +71,8 @@ set.seed(123)
 statsExpressions::expr_corr_test(
   data = ggplot2::midwest,
   x = area,
-  y = percblack
+  y = percblack,
+  type = "parametric"
 )
 
 # changing defaults
@@ -77,9 +82,13 @@ statsExpressions::expr_corr_test(
   y = percblack,
   nboot = 25,
   beta = 0.2,
-  type = "r",
+  type = "robust",
   k = 1
 )
+}
+\references{
+For more details, see-
+\url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }
 \author{
 \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}

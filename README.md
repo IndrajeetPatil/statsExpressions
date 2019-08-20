@@ -9,7 +9,7 @@
 | [![CRAN Checks](https://cranchecks.info/badges/summary/statsExpressions)](https://cran.r-project.org/web/checks/check_results_statsExpressions.html)                      | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/statsExpressions?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/statsExpressions) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)   | [![Forks](https://img.shields.io/badge/forks-0-blue.svg)](https://github.com/IndrajeetPatil/statsExpressions/)                                                           | [![Rdoc](https://www.rdocumentation.org/badges/version/statsExpressions)](https://www.rdocumentation.org/packages/statsExpressions)                                       |
 | [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)                                                                | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/)                                                                                         | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Github Issues](https://img.shields.io/badge/issues-1-red.svg)](https://github.com/IndrajeetPatil/statsExpressions/issues)                                             | [![vignettes](https://img.shields.io/badge/vignettes-0.1.0-orange.svg?colorB=FF5722)](https://CRAN.R-project.org/package=statsExpressions/vignettes/)                     |
 | [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/statsExpressions/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/statsExpressions?branch=master)             | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)  | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/statsExpressions.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/statsExpressions) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2074621.svg)](https://doi.org/10.5281/zenodo.2074621)                                                                 |
-| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                          | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master)                   | [![HitCount](http://hits.dwyl.io/IndrajeetPatil/statsExpressions.svg)](http://hits.dwyl.io/IndrajeetPatil/statsExpressions)                                 | [![Last-changedate](https://img.shields.io/badge/last%20change-2019--08--19-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master)         | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master) |
+| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                          | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master)                   | [![HitCount](http://hits.dwyl.io/IndrajeetPatil/statsExpressions.svg)](http://hits.dwyl.io/IndrajeetPatil/statsExpressions)                                 | [![Last-changedate](https://img.shields.io/badge/last%20change-2019--08--20-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master)         | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master) |
 | [![status](https://tinyverse.netlify.com/badge/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)                                                    | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2019_08_16-brightgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/blob/master/tests/README.md)                     | [![saythanks](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/IndrajeetPatil)                                              | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)                                                               | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/statsExpressions/issues)      |
 | [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/statsExpressions/community)                                                              |                                                                                                                                                                                                        |                                                                                                                                                             |                                                                                                                                                                          |                                                                                                                                                                           |
 
@@ -190,8 +190,26 @@ p + labs(
 ## Example: Expressions for one-way ANOVA
 
 Let’s say we want to check differences in weight of the vehicle based on
-number of cylinders in the engine and we want to carry out a robust
-ANOVA:
+number of cylinders in the engine and wish to carry out Welch’s ANOVA:
+
+``` r
+# setup
+set.seed(123)
+library(ggplot2)
+library(statsExpressions)
+
+# create a boxplot
+ggplot(iris, aes(x = Species, y = Sepal.Length)) + geom_boxplot() +
+  labs(
+    title = "Welch's ANOVA",
+    subtitle = expr_anova_parametric(iris, Species, Sepal.Length, messages = FALSE)
+  )
+```
+
+<img src="man/figures/README-example_anova_parametric-1.png" width="100%" />
+
+In case you change your mind and now want to carry out a robust ANOVA
+instead. Also, let’s use a different kind of a visualization:
 
 ``` r
 # setup
@@ -342,11 +360,5 @@ order of commitment):
     helpers for preparing subtitles)
 
 Please note that this project is released with a [Contributor Code of
-Conduct](https://github.com/IndrajeetPatil/statsExpressions/blob/master/CODE_OF_CONDUCT.md).
+Conduct](https://github.com/IndrajeetPatil/statsExpressions/blob/master/.github/CODE_OF_CONDUCT.md).
 By participating in this project you agree to abide by its terms.
-
-# Session Information
-
-For reproducibility purposes, the details about the session information
-in which this document was rendered, see-
-<https://indrajeetpatil.github.io/statsExpressions/articles/web_only/session_info.html>

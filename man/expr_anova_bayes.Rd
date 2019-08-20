@@ -28,6 +28,10 @@ prior width to use in calculating Bayes Factors.}
 
 \item{...}{Additional arguments (currently ignored).}
 }
+\value{
+For more details, see-
+\url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
+}
 \description{
 Making expression containing Bayesian one-way ANOVA results.
 }

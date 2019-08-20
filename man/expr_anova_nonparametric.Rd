@@ -43,7 +43,14 @@ to be displayed (Default: \code{TRUE}).}
 
 \item{...}{Additional arguments (currently ignored).}
 }
+\value{
+For more details, see-
+\url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
+}
 \description{
+Making text subtitle for nonparametric ANOVA.
+}
+\details{
 For paired designs, the effect size is Kendall's coefficient of
 concordance (\emph{W}), while for between-subjects designs, the effect size is
 epsilon-squared (for more, see \code{?rcompanion::epsilonSquared} and

@@ -13,8 +13,14 @@
 #' @inheritParams expr_template
 #'
 #' @importFrom dplyr select mutate_at matches vars starts_with ends_with
-#' @importFrom rlang !! enquo
+#' @importFrom rlang !! enquo ensym
 #' @importFrom stats t.test na.omit qt pt uniroot
+#'
+#' @return Expression containing details from results of a two-sample test and
+#'   effect size plus confidence intervals.
+#'
+#' @references For more details, see-
+#' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @details Cohen's *d* is calculated in the traditional fashion as the
 #'   difference between means or mean minus *mu* divided by the estimated
@@ -37,7 +43,6 @@
 #'   - `((n1+n2)/(n1*n2) + .5*d^2/df) * ((n1+n2)/df)` (independent samples)
 #'
 #'   - `sqrt(((1 / n) + (d^2 / n)) * 2 * (1 - r))`  (paired case)
-#'
 #'
 #' @examples
 #'
@@ -205,6 +210,9 @@ expr_t_parametric <- function(data,
 #'   reordering your factor levels if appropriate as shown in the second example
 #'   below.
 #'
+#' @references For more details, see-
+#' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
+#'
 #' @examples
 #'
 #' \donttest{
@@ -367,6 +375,9 @@ expr_t_nonparametric <- function(data,
 #' @title Expression containing results from a robust *t*-test
 #' @name expr_t_robust
 #' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
+#'
+#' @references For more details, see-
+#' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @inheritParams expr_t_parametric
 #' @inheritParams yuend_ci
@@ -532,6 +543,9 @@ expr_t_robust <- function(data,
 #' @title Making expression containing Bayesian *t*-test results
 #' @name expr_t_bayes
 #' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
+#'
+#' @references For more details, see-
+#' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @inheritParams expr_t_parametric
 #' @inheritParams expr_anova_parametric
