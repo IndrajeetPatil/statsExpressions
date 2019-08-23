@@ -5,7 +5,11 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 1 notes
+
+  - I get 1 `NOTE` about a couple of URLs that are currently invalid because
+    they link to `CRAN` documentation for this package and those links will
+    become active only when the package is on `CRAN`.
 
   - Added `\donttest{}` to few examples to reduce the check time to less than 10
     minutes. The code coverage still stands at `100%`, so this should in no way
