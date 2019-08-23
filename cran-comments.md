@@ -6,6 +6,10 @@
 ## R CMD check results
 
 0 errors | 0 warnings | 0 notes
+
+  - Added `\donttest{}` to few examples to reduce the check time to less than 10
+    minutes. The code coverage still stands at `100%`, so this should in no way
+    compromise integrity of code.
     
   - There is no reference corresponding to this package so I have not included
     any link in the `DESCRIPTION` file.

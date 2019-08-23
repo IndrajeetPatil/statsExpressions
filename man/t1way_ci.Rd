@@ -166,12 +166,15 @@ Custom function to get confidence intervals for effect size
 measure for robust ANOVA.
 }
 \examples{
+# for reproducibility
 set.seed(123)
+\donttest{
 statsExpressions:::t1way_ci(
   data = morley,
   x = Expt,
   y = Speed,
   nboot = 10
 )
+}
 }
 \keyword{internal}

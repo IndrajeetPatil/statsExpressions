@@ -167,14 +167,18 @@ correlation coefficient.
 }
 \examples{
 
+# for reproducibility
+set.seed(123)
+\donttest{
 statsExpressions:::robcor_ci(
   data = mtcars,
   x = "hp",
   y = "mpg",
   beta = .01,
-  nboot = 125,
+  nboot = 25,
   conf.level = .99,
   conf.type = c("basic")
 )
+}
 }
 \keyword{internal}

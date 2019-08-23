@@ -74,7 +74,7 @@ For repeated measures designs (\code{paired = TRUE}), only omega-squared and
 partial eta-squared effect sizes are supported.
 }
 \examples{
-
+\donttest{
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
@@ -112,6 +112,7 @@ statsExpressions::expr_anova_parametric(
   k = 4,
   nboot = 10
 )
+}
 }
 \author{
 \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}

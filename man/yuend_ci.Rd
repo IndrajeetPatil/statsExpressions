@@ -167,6 +167,9 @@ measure for paired samples robust t-tests.
 }
 \examples{
 
+# for reproducibility
+set.seed(123)
+\donttest{
 statsExpressions:::yuend_ci(
   data = dplyr::filter(
     .data = statsExpressions::iris_long,
@@ -177,5 +180,6 @@ statsExpressions:::yuend_ci(
   nboot = 50,
   tr = 0.2
 )
+}
 }
 \keyword{internal}

@@ -36,7 +36,7 @@ For more details, see-
 Making expression containing Bayesian one-way ANOVA results.
 }
 \examples{
-
+\donttest{
 set.seed(123)
 
 # between-subjects ---------------------------------------
@@ -64,6 +64,7 @@ statsExpressions::expr_anova_bayes(
   paired = TRUE,
   k = 4
 )
+}
 }
 \author{
 \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}

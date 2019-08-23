@@ -53,6 +53,7 @@
 #'
 #' @examples
 #'
+#' \donttest{
 #' # ------------------------ association tests -----------------------------
 #'
 #' set.seed(123)
@@ -79,6 +80,7 @@
 #'   counts = Freq,
 #'   ratio = c(0.2, 0.2, 0.3, 0.3)
 #' )
+#' }
 #' @export
 
 # function body

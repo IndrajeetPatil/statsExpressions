@@ -41,13 +41,17 @@ repeated measures/within-subjects or between-subjects. The default is
 Bayesian one-way analysis of variance.
 }
 \examples{
+\donttest{
+
+# between-subjects -------------------------------------------------------
 
 # to get caption (default)
 bf_oneway_anova(
   data = iris,
   x = Species,
   y = Sepal.Length,
-  bf.prior = 0.8
+  bf.prior = 0.8,
+  paired = FALSE
 )
 
 # to get results dataframe
@@ -58,6 +62,15 @@ bf_oneway_anova(
   bf.prior = 0.8,
   output = "results"
 )
+
+# within-subjects -------------------------------------------------------
+bf_oneway_anova(
+  data = bugs_long,
+  x = condition,
+  y = desire,
+  paired = TRUE
+)
+}
 }
 \seealso{
 \code{\link{bf_contingency_tab}}, \code{\link{bf_corr_test}},

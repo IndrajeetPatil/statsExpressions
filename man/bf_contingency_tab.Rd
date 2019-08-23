@@ -72,6 +72,7 @@ Richard Morey:
 }
 \examples{
 
+\donttest{
 # ------------------ association tests --------------------------------
 
 # for reproducibility
@@ -112,6 +113,7 @@ bf_contingency_tab(
   x = am,
   prior.concentration = 10
 )
+}
 }
 \seealso{
 \code{\link{bf_corr_test}}, \code{\link{bf_oneway_anova}},

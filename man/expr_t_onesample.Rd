@@ -71,7 +71,7 @@ Expression for one sample \emph{t}-test and its non-parametric and
 robust equivalents
 }
 \examples{
-
+\donttest{
 # for reproducibility
 set.seed(123)
 
@@ -111,6 +111,7 @@ statsExpressions::expr_t_onesample(
   type = "bayes",
   bf.prior = 0.8
 )
+}
 }
 \references{
 For more details, see-

@@ -285,12 +285,14 @@ rcompanion_cleaner <- function(object, estimate.col) {
 #' @importFrom tidyr spread
 #'
 #' @examples
+#' \donttest{
 #' statsExpressions::long_to_wide_converter(
 #'   data = iris_long,
 #'   x = condition,
 #'   y = value,
 #'   paired = TRUE
 #' )
+#' }
 #' @export
 
 long_to_wide_converter <- function(data, x, y, paired = TRUE) {

@@ -57,6 +57,7 @@ epsilon-squared (for more, see \code{?rcompanion::epsilonSquared} and
 \code{?rcompanion::kendallW}).
 }
 \examples{
+\donttest{
 # setup
 set.seed(123)
 library(statsExpressions)
@@ -83,6 +84,7 @@ statsExpressions::expr_anova_nonparametric(
   conf.level = 0.99,
   conf.type = "perc"
 )
+}
 }
 \author{
 \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}

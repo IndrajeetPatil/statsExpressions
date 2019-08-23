@@ -30,7 +30,8 @@ Convenience function to write a caption message with bayes
 factors in favor of the null hypothesis.
 }
 \examples{
-
+\donttest{
+# for reproducibility
 set.seed(123)
 
 # dataframe containing results
@@ -54,4 +55,5 @@ statsExpressions::bf_expr(
   bf.df = bf_results,
   output = "alternative"
 )
+}
 }
