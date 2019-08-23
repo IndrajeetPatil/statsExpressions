@@ -35,6 +35,10 @@
 #'
 #' @examples
 #'
+#' \donttest{
+#' # for reproducibility
+#' set.seed(123)
+#'
 #' #---------------- two-sample test ------------------------------------
 #'
 #' # creating a smaller dataset
@@ -89,6 +93,8 @@
 #'   noncentral = TRUE,
 #'   tobject = tobj3
 #' )
+#' }
+#'
 #' @keywords internal
 
 # function body
@@ -317,13 +323,16 @@ effsize_t_parametric <- function(formula = NULL,
 #' @importFrom boot boot boot.ci
 #'
 #' @examples
+#' # for reproducibility
 #' set.seed(123)
+#' \donttest{
 #' statsExpressions:::t1way_ci(
 #'   data = morley,
 #'   x = Expt,
 #'   y = Speed,
 #'   nboot = 10
 #' )
+#' }
 #' @keywords internal
 
 t1way_ci <- function(data,
@@ -460,6 +469,9 @@ t1way_ci <- function(data,
 #'
 #' @examples
 #'
+#' # for reproducibility
+#' set.seed(123)
+#' \donttest{
 #' statsExpressions:::yuend_ci(
 #'   data = dplyr::filter(
 #'     .data = statsExpressions::iris_long,
@@ -470,6 +482,7 @@ t1way_ci <- function(data,
 #'   nboot = 50,
 #'   tr = 0.2
 #' )
+#' }
 #' @keywords internal
 
 # function body
@@ -618,15 +631,19 @@ yuend_ci <- function(data,
 #'
 #' @examples
 #'
+#' # for reproducibility
+#' set.seed(123)
+#' \donttest{
 #' statsExpressions:::robcor_ci(
 #'   data = mtcars,
 #'   x = "hp",
 #'   y = "mpg",
 #'   beta = .01,
-#'   nboot = 125,
+#'   nboot = 25,
 #'   conf.level = .99,
 #'   conf.type = c("basic")
 #' )
+#' }
 #' @keywords internal
 
 # function body

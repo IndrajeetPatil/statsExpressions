@@ -32,6 +32,7 @@ repeated measures/within-subjects or between-subjects. The default is
 Making expression containing Bayesian \emph{t}-test results
 }
 \examples{
+\donttest{
 # for reproducibility
 set.seed(123)
 
@@ -56,6 +57,7 @@ statsExpressions::expr_t_bayes(
   y = rating,
   paired = TRUE
 )
+}
 }
 \references{
 For more details, see-

@@ -40,7 +40,7 @@ expression with evidence in favor of the alternative hypothesis, or
 Bayesian correlation test.
 }
 \examples{
-
+\donttest{
 # for reproducibility
 set.seed(123)
 
@@ -60,6 +60,7 @@ bf_corr_test(
   bf.prior = 0.8,
   output = "results"
 )
+}
 }
 \seealso{
 \code{\link{bf_contingency_tab}}, \code{\link{bf_oneway_anova}},

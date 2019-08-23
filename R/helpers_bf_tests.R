@@ -66,7 +66,8 @@ bf_extractor <- function(bf.object, ...) {
 #' @inheritParams expr_template
 #'
 #' @examples
-#'
+#' \donttest{
+#' # for reproducibility
 #' set.seed(123)
 #'
 #' # dataframe containing results
@@ -90,6 +91,7 @@ bf_extractor <- function(bf.object, ...) {
 #'   bf.df = bf_results,
 #'   output = "alternative"
 #' )
+#' }
 #' @export
 
 # function body
@@ -156,7 +158,7 @@ bf_expr <- function(bf.df,
 #' \code{\link{bf_ttest}}
 #'
 #' @examples
-#'
+#' \donttest{
 #' # for reproducibility
 #' set.seed(123)
 #'
@@ -176,6 +178,7 @@ bf_expr <- function(bf.df,
 #'   bf.prior = 0.8,
 #'   output = "results"
 #' )
+#' }
 #' @export
 
 # function body
@@ -266,6 +269,7 @@ bf_corr_test <- function(data,
 #'
 #' @examples
 #'
+#' \donttest{
 #' # ------------------ association tests --------------------------------
 #'
 #' # for reproducibility
@@ -306,6 +310,7 @@ bf_corr_test <- function(data,
 #'   x = am,
 #'   prior.concentration = 10
 #' )
+#' }
 #' @export
 
 # function body
@@ -735,13 +740,17 @@ bf_two_sample_ttest <- bf_ttest
 #' \code{\link{bf_ttest}}
 #'
 #' @examples
+#' \donttest{
+#'
+#' # between-subjects -------------------------------------------------------
 #'
 #' # to get caption (default)
 #' bf_oneway_anova(
 #'   data = iris,
 #'   x = Species,
 #'   y = Sepal.Length,
-#'   bf.prior = 0.8
+#'   bf.prior = 0.8,
+#'   paired = FALSE
 #' )
 #'
 #' # to get results dataframe
@@ -752,6 +761,15 @@ bf_two_sample_ttest <- bf_ttest
 #'   bf.prior = 0.8,
 #'   output = "results"
 #' )
+#'
+#' # within-subjects -------------------------------------------------------
+#' bf_oneway_anova(
+#'   data = bugs_long,
+#'   x = condition,
+#'   y = desire,
+#'   paired = TRUE
+#' )
+#' }
 #' @export
 
 # function body

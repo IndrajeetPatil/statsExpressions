@@ -92,6 +92,7 @@ intervals were computed, see documentation in \code{?rcompanion::cramerV},
 }
 \examples{
 
+\donttest{
 # ------------------------ association tests -----------------------------
 
 set.seed(123)
@@ -118,6 +119,7 @@ expr_contingency_tab(
   counts = Freq,
   ratio = c(0.2, 0.2, 0.3, 0.3)
 )
+}
 }
 \references{
 For more details, see-

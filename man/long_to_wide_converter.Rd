@@ -23,12 +23,14 @@ repeated measures/within-subjects or between-subjects. The default is
 This conversion is helpful mostly for repeated measures design.
 }
 \examples{
+\donttest{
 statsExpressions::long_to_wide_converter(
   data = iris_long,
   x = condition,
   y = value,
   paired = TRUE
 )
+}
 }
 \author{
 \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}

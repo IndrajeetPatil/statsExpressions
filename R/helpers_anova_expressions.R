@@ -35,7 +35,7 @@
 #' @importFrom groupedstats lm_effsize_standardizer
 #'
 #' @examples
-#'
+#' \donttest{
 #' # for reproducibility
 #' set.seed(123)
 #' library(statsExpressions)
@@ -73,6 +73,7 @@
 #'   k = 4,
 #'   nboot = 10
 #' )
+#' }
 #' @export
 
 # function body
@@ -190,7 +191,7 @@ expr_anova_parametric <- function(data,
           data = data %>%
             dplyr::mutate_if(
               .tbl = .,
-              .predicate = purrr::is_bare_character,
+              .predicate = is.character,
               .funs = as.factor
             ) %>%
             dplyr::mutate(.data = ., rowid = as.factor(rowid)),
@@ -315,6 +316,7 @@ expr_anova_parametric <- function(data,
 #' @importFrom rcompanion epsilonSquared kendallW
 #'
 #' @examples
+#' \donttest{
 #' # setup
 #' set.seed(123)
 #' library(statsExpressions)
@@ -341,6 +343,7 @@ expr_anova_parametric <- function(data,
 #'   conf.level = 0.99,
 #'   conf.type = "perc"
 #' )
+#' }
 #' @export
 
 # function body
@@ -671,7 +674,7 @@ expr_anova_robust <- function(data,
 #' @importFrom stats lm oneway.test na.omit
 #'
 #' @examples
-#'
+#' \donttest{
 #' set.seed(123)
 #'
 #' # between-subjects ---------------------------------------
@@ -699,6 +702,7 @@ expr_anova_robust <- function(data,
 #'   paired = TRUE,
 #'   k = 4
 #' )
+#' }
 #' @export
 
 # function body

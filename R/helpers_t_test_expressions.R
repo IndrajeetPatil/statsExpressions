@@ -45,7 +45,9 @@
 #'   - `sqrt(((1 / n) + (d^2 / n)) * 2 * (1 - r))`  (paired case)
 #'
 #' @examples
-#'
+#' # for reproducibility
+#' set.seed(123)
+#' \donttest{
 #' # creating a smaller dataset
 #' msleep_short <- dplyr::filter(
 #'   .data = ggplot2::msleep,
@@ -68,6 +70,7 @@
 #'   k = 2,
 #'   effsize.type = "d"
 #' )
+#' }
 #' @export
 
 # function body
@@ -388,7 +391,7 @@ expr_t_nonparametric <- function(data,
 #' @importFrom WRS2 yuen yuen.effect.ci
 #'
 #' @examples
-#'
+#' \donttest{
 #' # for reproducibility
 #' set.seed(123)
 #'
@@ -421,6 +424,7 @@ expr_t_nonparametric <- function(data,
 #'   paired = TRUE,
 #'   nboot = 25
 #' )
+#' }
 #' @export
 
 # function body
@@ -552,6 +556,7 @@ expr_t_robust <- function(data,
 #' @inheritParams bf_ttest
 #'
 #' @examples
+#' \donttest{
 #' # for reproducibility
 #' set.seed(123)
 #'
@@ -576,6 +581,7 @@ expr_t_robust <- function(data,
 #'   y = rating,
 #'   paired = TRUE
 #' )
+#' }
 #' @export
 
 # function body

@@ -53,7 +53,7 @@ to be displayed (Default: \code{TRUE}).}
 Expression containing results from a robust \emph{t}-test
 }
 \examples{
-
+\donttest{
 # for reproducibility
 set.seed(123)
 
@@ -86,6 +86,7 @@ statsExpressions::expr_t_robust(
   paired = TRUE,
   nboot = 25
 )
+}
 }
 \references{
 For more details, see-

@@ -64,6 +64,10 @@ Confidence Intervals on Effect Size
 }
 \examples{
 
+\donttest{
+# for reproducibility
+set.seed(123)
+
 #---------------- two-sample test ------------------------------------
 
 # creating a smaller dataset
@@ -118,6 +122,8 @@ statsExpressions:::effsize_t_parametric(
   noncentral = TRUE,
   tobject = tobj3
 )
+}
+
 }
 \author{
 Chuck Powell

@@ -79,7 +79,9 @@ When computing confidence intervals the variance of the effect size \emph{d} or
 }
 }
 \examples{
-
+# for reproducibility
+set.seed(123)
+\donttest{
 # creating a smaller dataset
 msleep_short <- dplyr::filter(
   .data = ggplot2::msleep,
@@ -102,6 +104,7 @@ statsExpressions::expr_t_parametric(
   k = 2,
   effsize.type = "d"
 )
+}
 }
 \references{
 For more details, see-

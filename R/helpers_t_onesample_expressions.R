@@ -34,7 +34,7 @@
 #' @importFrom rcompanion wilcoxonOneSampleR
 #'
 #' @examples
-#'
+#' \donttest{
 #' # for reproducibility
 #' set.seed(123)
 #'
@@ -74,6 +74,7 @@
 #'   type = "bayes",
 #'   bf.prior = 0.8
 #' )
+#' }
 #' @export
 
 expr_t_onesample <- function(data,
