@@ -36,7 +36,7 @@ Package | Status | Usage | GitHub | References
 # Introduction
 
 [`statsExpressions`](https://indrajeetpatil.github.io/statsExpressions/)
-provides backend for the
+provides statistical processing backend for the
 [`ggstatsplot`](https://indrajeetpatil.github.io/ggstatsplot/) package, which
 combines `ggplot2` visualizations with expressions containing results
 from statistical tests. `statsExpressions` contains all functions needed to

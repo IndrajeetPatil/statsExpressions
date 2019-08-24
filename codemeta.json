@@ -10,11 +10,12 @@
   "codeRepository": "https://github.com/IndrajeetPatil/statsExpressions",
   "relatedLink": [
     "https://indrajeetpatil.github.io/ggstatsplot/",
-    "https://indrajeetpatil.github.io/statsExpressions/"
+    "https://indrajeetpatil.github.io/statsExpressions/",
+    "https://CRAN.R-project.org/package=statsExpressions"
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/statsExpressions/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.1.0",
+  "version": "0.1.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -402,5 +403,11 @@
       "name": "statsExpressions: 'ggplot2' Expressions with Statistical Details",
       "url": "https://CRAN.R-project.org/package=statsExpressions"
     }
-  ]
+  ],
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  }
 }
