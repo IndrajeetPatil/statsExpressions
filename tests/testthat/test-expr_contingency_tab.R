@@ -252,7 +252,6 @@ testthat::test_that(
   desc = "paired expr_contingency_tab works - with NAs",
   code = {
 
-
     # create data structure
     paired_data <-
       structure(
@@ -275,22 +274,16 @@ testthat::test_that(
       )
 
     # expanding the dataframe
-    paired_data %<>%
-      tidyr::uncount(data = ., weights = Freq)
+    paired_data %<>% tidyr::uncount(data = ., weights = Freq)
 
     # introduce NAs
     # check that 2-by-2 doesn't produce continuity correction
     set.seed(123)
-    paired_data %<>%
-      purrr::map_df(
-        .x = .,
-        .f = ~ .[sample(
-          x = c(TRUE, NA),
-          prob = c(0.8, 0.2),
-          size = length(.),
-          replace = TRUE
-        )]
-      )
+    paired_data[1, 1] <- NA
+    paired_data[12, 1] <- NA
+    paired_data[22, 1] <- NA
+    paired_data[24, 1] <- NA
+    paired_data[65, 1] <- NA
 
     # ggstatsplot output
     set.seed(123)
@@ -318,25 +311,25 @@ testthat::test_that(
           "(",
           "1",
           ") = ",
-          "8.895",
+          "13.333",
           ", ",
           italic("p"),
           " = ",
-          "0.003",
+          "< 0.001",
           ", ",
           italic("g")["Cohen"],
           " = ",
-          "-0.342",
+          "-0.333",
           ", CI"["90%"],
           " [",
-          "-0.458",
+          "-0.454",
           ", ",
-          "-0.192",
+          "-0.204",
           "]",
           ", ",
           italic("n")["pairs"],
           " = ",
-          67L
+          95L
         )
       )
 
