@@ -110,29 +110,14 @@ testthat::test_that(
   desc = "expr_contingency_tab works - data with NAs",
   code = {
 
-
     # introduce NAs
     # check that 2-by-2 doesn't produce continuity correction
     set.seed(123)
-    df <-
-      purrr::map_df(
-        .x = mtcars,
-        .f = ~ .[sample(
-          x = c(TRUE, NA),
-          prob = c(0.8, 0.2),
-          size = length(.),
-          replace = TRUE
-        )]
-      ) %>%
-      dplyr::filter(.data = ., cyl != "4")
-
-    # ggstatsplot output
-    set.seed(123)
     using_function1 <-
       suppressWarnings(statsExpressions::expr_contingency_tab(
-        data = df,
-        x = am,
-        y = "cyl",
+        data = ggplot2::msleep,
+        x = vore,
+        y = "conservation",
         conf.level = .990,
         conf.type = "perc",
         nboot = 15,
@@ -150,25 +135,25 @@ testthat::test_that(
           "(",
           "NA",
           ") = ",
-          "3.19",
+          "15.75",
           ", ",
           italic("p"),
           " = ",
-          "0.107",
+          "0.392",
           ", ",
           italic("V")["Cramer"],
           " = ",
-          "0.43",
+          "0.32",
           ", CI"["99%"],
           " [",
-          "0.02",
+          "0.28",
           ", ",
-          "0.83",
+          "0.46",
           "]",
           ", ",
           italic("n")["obs"],
           " = ",
-          17L
+          52L
         )
       )
 

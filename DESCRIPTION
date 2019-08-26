@@ -49,7 +49,6 @@ Imports:
 Suggests:
     ggplot2,
     knitr,
-    purrr,
     rmarkdown,
     spelling,
     testthat

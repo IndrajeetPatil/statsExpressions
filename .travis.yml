@@ -64,7 +64,6 @@ matrix:
       r_packages:
         - rlang
         - bindrcpp
-        - purrr
         - tidyr
         - dplyr
         - coin
@@ -119,7 +118,6 @@ matrix:
       r_packages:
         - rlang
         - bindrcpp
-        - purrr
         - tidyr
         - dplyr
         - coin
