@@ -208,7 +208,6 @@ testthat::test_that(
   desc = "expr_t_onesample non-parametric works",
   code = {
 
-
     # ggstatsplot output
     set.seed(123)
     using_function <-
@@ -237,12 +236,12 @@ testthat::test_that(
           ", ",
           italic("r"),
           " = ",
-          "-0.1264",
+          "-0.1282",
           ", CI"["95%"],
           " [",
-          "-0.3805",
+          "-0.3827",
           ", ",
-          "0.1545",
+          "0.1522",
           "]",
           ", ",
           italic("n")["obs"],
@@ -262,7 +261,6 @@ testthat::test_that(
 testthat::test_that(
   desc = "expr_t_onesample robust works",
   code = {
-
 
     # ggstatsplot output
     set.seed(123)

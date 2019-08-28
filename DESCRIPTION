@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Expressions with Statistical Details
-Version: 0.1.0.9000
+Version: 0.1.1
 Authors@R: 
     c(person(given = "Indrajeet",
              family = "Patil",
@@ -18,8 +18,7 @@ Description: Statistical processing backend for 'ggstatsplot',
     this package creates expressions with details from statistical tests.
     Currently, it supports only the most common types of statistical
     tests: parametric, nonparametric, robust, and bayesian versions of
-    t-test/anova, correlation analyses, contingency table analysis, and
-    regression analyses.
+    t-test/anova, correlation analyses, contingency table analysis.
 License: GPL-3 | file LICENSE
 URL: https://indrajeetpatil.github.io/statsExpressions/,
     https://github.com/IndrajeetPatil/statsExpressions
@@ -40,7 +39,7 @@ Imports:
     MCMCpack (>= 1.4-4),
     methods,
     psych,
-    rcompanion (>= 2.2.2),
+    rcompanion (>= 2.3.0),
     rlang (>= 0.4.0),
     stats,
     tibble (>= 2.1.3),
