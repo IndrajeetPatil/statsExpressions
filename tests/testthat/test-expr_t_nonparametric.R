@@ -15,7 +15,7 @@ testthat::test_that(
         y = length,
         k = 3,
         conf.level = 0.90,
-        messages = FALSE
+        messages = TRUE
       )
 
     # expected output
@@ -112,7 +112,7 @@ testthat::test_that(
         conf.type = "perc",
         conf.level = 0.99,
         paired = TRUE,
-        messages = FALSE
+        messages = TRUE
       ))
 
     # expected output

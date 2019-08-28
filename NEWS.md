@@ -1,3 +1,5 @@
+# statsExpressions 0.1.1.9000
+
 # statsExpressions 0.1.1
 
   - Fixing tests for the new release of `rcompanion` dependency.
