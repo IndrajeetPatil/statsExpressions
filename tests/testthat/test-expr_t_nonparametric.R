@@ -5,6 +5,7 @@ context("expr_t_nonparametric")
 testthat::test_that(
   desc = "expr_t_nonparametric works - between-subjects design",
   code = {
+
     # ggstatsplot output
     set.seed(123)
     using_function <-
@@ -38,7 +39,7 @@ testthat::test_that(
           " [",
           "-0.195",
           ", ",
-          "-0.074",
+          "-0.073",
           "]",
           ", ",
           italic("n")["obs"],
@@ -57,7 +58,6 @@ testthat::test_that(
 testthat::test_that(
   desc = "expr_t_nonparametric works - within-subjects design",
   code = {
-
 
     # made up data
     Input <- ("
@@ -112,7 +112,7 @@ testthat::test_that(
         conf.type = "perc",
         conf.level = 0.99,
         paired = TRUE,
-        messages = TRUE
+        messages = FALSE
       ))
 
     # expected output
@@ -131,12 +131,12 @@ testthat::test_that(
           ", ",
           italic(r),
           " = ",
-          "-0.74978",
+          "-0.75000",
           ", CI"["99%"],
           " [",
-          "-0.88156",
+          "-0.88250",
           ", ",
-          "-0.59505",
+          "-0.59500",
           "]",
           ", ",
           italic("n")["pairs"],

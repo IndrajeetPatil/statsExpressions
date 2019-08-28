@@ -6,7 +6,6 @@ testthat::test_that(
   desc = "expr_corr_test works - nonparametric",
   code = {
 
-
     # ggstatsplot output
     set.seed(123)
     using_function <-

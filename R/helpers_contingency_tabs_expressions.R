@@ -239,11 +239,7 @@ expr_contingency_tab <- function(data,
       ))
 
       # computing effect size + CI
-      stats_df <-
-        broomExtra::tidy(stats::mcnemar.test(
-          x = x_arg,
-          correct = FALSE
-        ))
+      stats_df <- broomExtra::tidy(stats::mcnemar.test(x = x_arg, correct = FALSE))
 
       # computing effect size + CI
       effsize_df <-
