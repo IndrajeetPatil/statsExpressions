@@ -9,10 +9,12 @@
 <title>Calculating Cohen's <em>d</em> or Hedge's <em>g</em> (for between-/within- or one
 sample designs). — effsize_t_parametric • statsExpressions</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -32,15 +34,22 @@ sample designs). — effsize_t_parametric • statsExpressions</title>
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
   <link href="../extra.css" rel="stylesheet">
   
+
 <meta property="og:title" content="Calculating Cohen's <em>d</em> or Hedge's <em>g</em> (for between-/within- or one
 sample designs). — effsize_t_parametric" />
-
 <meta property="og:description" content="Calculating Cohen's d or Hedge's g (for between-/within- or one
 sample designs)." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -71,7 +80,7 @@ sample designs)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.1.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.1.1.9000</span>
       </span>
     </div>
 
@@ -105,7 +114,6 @@ sample designs)." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/IndrajeetPatil/statsExpressions">
@@ -114,6 +122,12 @@ sample designs)." />
   </a>
 </li>
       </ul>
+      
+      <form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
       
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -133,16 +147,14 @@ sample designs).</h1>
     </div>
 
     <div class="ref-description">
-    
     <p>Calculating Cohen's <em>d</em> or Hedge's <em>g</em> (for between-/within- or one
 sample designs).</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>effsize_t_parametric</span>(<span class='kw'>formula</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>,
   <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>hedges.correction</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
   <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>noncentral</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>tobject</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -199,7 +211,7 @@ correction, Hedge's <em>g</em> (Default: <code>TRUE</code>).</p></td>
       <td><p>Additional arguments (currently ignored).</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This function is a rewrite of functionality provided in <code>lsr::cohensD</code> and
@@ -218,11 +230,11 @@ Hillsdale, NJ: Lawrence Erlbaum Associates.</p></li>
 Confidence Intervals on Effect Size</p></li>
 </ul>
 
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-</div><div class='input'><span class='co'># for reproducibility</span>
+<span class='co'># \donttest{</span>
+<span class='co'># for reproducibility</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
 
 <span class='co'>#---------------- two-sample test ------------------------------------</span>
@@ -242,11 +254,11 @@ Confidence Intervals on Effect Size</p></li>
   <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>sleep_rem</span> ~ <span class='no'>vore</span>,
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>msleep_short</span>,
   <span class='kw'>tobject</span> <span class='kw'>=</span> <span class='no'>tobj1</span>
-)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 9</span><span>
+)</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 9</span><span>
 #&gt;   method estimate conf.low conf.high conf.level alternative paired noncentral
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span>     
-#&gt; </span><span style='color: #555555;'>1</span><span> Hedge~    0.614   -</span><span style='color: #BB0000;'>0.223</span><span>      1.32       0.95 two.sided   FALSE  TRUE      
-#&gt; </span><span style='color: #555555;'># ... with 1 more variable: var.equal </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span></div><div class='input'>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Hedge~    0.614   -</span><span style='color: #BB0000;'>0.223</span><span>      1.32       0.95 two.sided   FALSE  TRUE      
+#&gt; </span><span style='color: #949494;'># ... with 1 more variable: var.equal </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span></div><div class='input'>
 <span class='co'># changing defaults</span>
 <span class='no'>tobj2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/t.test.html'>t.test</a></span>(
   <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>sleep_rem</span> ~ <span class='no'>vore</span>,
@@ -264,11 +276,11 @@ Confidence Intervals on Effect Size</p></li>
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>.99</span>,
   <span class='kw'>noncentral</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>tobject</span> <span class='kw'>=</span> <span class='no'>tobj2</span>
-)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 9</span><span>
+)</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 9</span><span>
 #&gt;   method estimate conf.low conf.high conf.level alternative paired noncentral
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span>     
-#&gt; </span><span style='color: #555555;'>1</span><span> Hedge~    0.614   -</span><span style='color: #BB0000;'>0.582</span><span>      1.81       0.99 two.sided   FALSE  FALSE     
-#&gt; </span><span style='color: #555555;'># ... with 1 more variable: var.equal </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span></div><div class='input'>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Hedge~    0.614   -</span><span style='color: #BB0000;'>0.582</span><span>      1.81       0.99 two.sided   FALSE  FALSE     
+#&gt; </span><span style='color: #949494;'># ... with 1 more variable: var.equal </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span></div><div class='input'>
 <span class='co'>#---------------- one-sample test ------------------------------------</span>
 
 <span class='no'>tobj3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/t.test.html'>t.test</a></span>(
@@ -284,20 +296,19 @@ Confidence Intervals on Effect Size</p></li>
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>.90</span>,
   <span class='kw'>noncentral</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>tobject</span> <span class='kw'>=</span> <span class='no'>tobj3</span>
-)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 9</span><span>
+)</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 9</span><span>
 #&gt;   method estimate conf.low conf.high conf.level alternative paired noncentral
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span>     
-#&gt; </span><span style='color: #555555;'>1</span><span> Hedge~   -</span><span style='color: #BB0000;'>0.269</span><span>   -</span><span style='color: #BB0000;'>0.570</span><span>    0.014</span><span style='text-decoration: underline;'>0</span><span>        0.9 two.sided   </span><span style='color: #BB0000;'>NA</span><span>     TRUE      
-#&gt; </span><span style='color: #555555;'># ... with 1 more variable: var.equal </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span></div></span><div class='input'>
-</div></pre>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Hedge~   -</span><span style='color: #BB0000;'>0.269</span><span>   -</span><span style='color: #BB0000;'>0.570</span><span>    0.014</span><span style='text-decoration: underline;'>0</span><span>        0.9 two.sided   </span><span style='color: #BB0000;'>NA</span><span>     TRUE      
+#&gt; </span><span style='color: #949494;'># ... with 1 more variable: var.equal </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span></div><div class='input'># }
+
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#details">Details</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
@@ -320,6 +331,23 @@ Confidence Intervals on Effect Size</p></li>
    </div>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: 'cfa913c0232e74cf725e6865b064017b',
+    indexName: 'statsExpressions',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
 
   </body>

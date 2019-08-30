@@ -10,7 +10,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
+<script src="pkgdown.js"></script><!-- docsearch --><script src="docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
+<link href="docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="extra.css" rel="stylesheet">
 <meta property="og:title" content="Expressions with Statistical Details">
 <meta property="og:description" content="Statistical processing backend for ggstatsplot,
     this package creates expressions with details from statistical tests.
@@ -24,7 +26,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-article">
+    <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -78,7 +80,13 @@
   </a>
 </li>
       </ul>
+<form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
+      </form>
+      
+    </div>
 <!--/.nav-collapse -->
   </div>
 <!--/.container -->
@@ -88,22 +96,18 @@
       
 
       </header><div class="row">
-  <div class="col-md-9 contents">
-    
+  <div class="contents col-md-9">
 
-    
-    
-<p><!-- README.md is generated from README.Rmd. Please edit that file --></p>
 <div id="statsexpressions-expressions-with-statistical-details" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#statsexpressions-expressions-with-statistical-details" class="anchor"></a><code>statsExpressions</code>: Expressions with statistical details</h1></div>
-<table class="table table">
+<table class="table">
 <colgroup>
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
+<col width="19%">
+<col width="23%">
+<col width="18%">
+<col width="19%">
+<col width="19%">
 </colgroup>
 <thead><tr class="header">
 <th>Package</th>
@@ -209,7 +213,7 @@
 <a href="#summary-of-types-of-statistical-analyses" class="anchor"></a>Summary of types of statistical analyses</h1>
 <p>Currently, it supports only the most common types of statistical tests: <strong>parametric</strong>, <strong>nonparametric</strong>, <strong>robust</strong>, and <strong>bayesian</strong> versions of <strong>t-test</strong>/<strong>anova</strong>, <strong>correlation</strong> analyses, <strong>contingency table</strong> analysis, and <strong>regression</strong> analyses.</p>
 <p>The table below summarizes all the different types of analyses currently supported in this package-</p>
-<table class="table table">
+<table class="table">
 <thead><tr class="header">
 <th>Description</th>
 <th>Parametric</th>
@@ -273,13 +277,13 @@
 <h1 class="hasAnchor">
 <a href="#summary-of-statistical-tests-and-effect-sizes" class="anchor"></a>Summary of statistical tests and effect sizes</h1>
 <p>Here is a summary table of all the statistical tests currently supported across various functions:</p>
-<table class="table table">
+<table class="table">
 <colgroup>
-<col width="23%">
-<col width="18%">
-<col width="35%">
-<col width="13%">
-<col width="8%">
+<col width="7%">
+<col width="2%">
+<col width="34%">
+<col width="36%">
+<col width="19%">
 </colgroup>
 <thead><tr class="header">
 <th>Functions</th>
@@ -296,15 +300,15 @@
 <td>Student’s and Welch’s <em>t</em>-test</td>
 <td>Cohen’s <em>d</em>, Hedge’s <em>g</em>
 </td>
-<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
 <tr class="even">
 <td>
 <code>expr_anova_parametric</code> (&gt; 2 groups)</td>
 <td>Parametric</td>
 <td>Fisher’s and Welch’s one-way ANOVA</td>
-<td><span class="math display">\[\eta^2, \eta^2_p, \omega^2, \omega^2_p\]</span></td>
-<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+<td><embed src="https://latex.codecogs.com/png.latex?%5Ceta%5E2%2C%20%5Ceta%5E2_p%2C%20%5Comega%5E2%2C%20%5Comega%5E2_p" title="\eta^2, \eta^2_p, \omega^2, \omega^2_p"></embed></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
 <tr class="odd">
 <td>
@@ -312,31 +316,31 @@
 <td>Non-parametric</td>
 <td>Mann-Whitney <em>U</em>-test</td>
 <td><em>r</em></td>
-<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
 <tr class="even">
 <td>
 <code>expr_anova_nonparametric</code> (&gt; 2 groups)</td>
 <td>Non-parametric</td>
 <td>Kruskal-Wallis Rank Sum Test</td>
-<td><span class="math display">\[\epsilon^2\]</span></td>
-<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+<td><embed src="https://latex.codecogs.com/png.latex?%5Cepsilon%5E2" title="\epsilon^2"></embed></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
 <tr class="odd">
 <td>
 <code>expr_anova_robust</code> (2 groups)</td>
 <td>Robust</td>
 <td>Yuen’s test for trimmed means</td>
-<td><span class="math display">\[\xi\]</span></td>
-<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+<td><embed src="https://latex.codecogs.com/png.latex?%5Cxi" title="\xi"></embed></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
 <tr class="even">
 <td>
 <code>expr_anova_robust</code> (&gt; 2 groups)</td>
 <td>Robust</td>
 <td>Heteroscedastic one-way ANOVA for trimmed means</td>
-<td><span class="math display">\[\xi\]</span></td>
-<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+<td><embed src="https://latex.codecogs.com/png.latex?%5Cxi" title="\xi"></embed></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
 <tr class="odd">
 <td>
@@ -345,15 +349,15 @@
 <td>Student’s <em>t</em>-test</td>
 <td>Cohen’s <em>d</em>, Hedge’s <em>g</em>
 </td>
-<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
 <tr class="even">
 <td>
 <code>expr_anova_parametric</code> (&gt; 2 groups)</td>
 <td>Parametric</td>
 <td>Fisher’s one-way repeated measures ANOVA</td>
-<td><span class="math display">\[\eta^2_p, \omega^2\]</span></td>
-<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+<td><embed src="https://latex.codecogs.com/png.latex?%5Ceta%5E2_p%2C%20%5Comega%5E2" title="\eta^2_p, \omega^2"></embed></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
 <tr class="odd">
 <td>
@@ -361,40 +365,40 @@
 <td>Non-parametric</td>
 <td>Wilcoxon signed-rank test</td>
 <td><em>r</em></td>
-<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
 <tr class="even">
 <td>
 <code>expr_anova_nonparametric</code> (&gt; 2 groups)</td>
 <td>Non-parametric</td>
 <td>Friedman rank sum test</td>
-<td><span class="math display">\[W_{Kendall}\]</span></td>
-<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+<td><embed src="https://latex.codecogs.com/png.latex?W_%7BKendall%7D" title="W_{Kendall}"></embed></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
 <tr class="odd">
 <td>
 <code>expr_anova_robust</code> (2 groups)</td>
 <td>Robust</td>
 <td>Yuen’s test on trimmed means for dependent samples</td>
-<td><span class="math display">\[\xi\]</span></td>
-<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+<td><embed src="https://latex.codecogs.com/png.latex?%5Cxi" title="\xi"></embed></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
 <tr class="even">
 <td>
 <code>expr_anova_robust</code> (&gt; 2 groups)</td>
 <td>Robust</td>
 <td>Heteroscedastic one-way repeated measures ANOVA for trimmed means</td>
-<td><font color="red"><span class="math inline">\(\times\)</span></font></td>
-<td><font color="red"><span class="math inline">\(\times\)</span></font></td>
+<td><font color="red"><embed src="https://latex.codecogs.com/png.latex?%5Ctimes" title="\times"></embed></font></td>
+<td><font color="red"><embed src="https://latex.codecogs.com/png.latex?%5Ctimes" title="\times"></embed></font></td>
 </tr>
 <tr class="odd">
 <td>
 <code>expr_contingency_tab</code> (unpaired)</td>
 <td>Parametric</td>
-<td><span class="math display">\[\text{Pearson's}~ \chi^2 ~\text{test}\]</span></td>
+<td><embed src="https://latex.codecogs.com/png.latex?%5Ctext%7BPearson%27s%7D~%20%5Cchi%5E2%20~%5Ctext%7Btest%7D" title="\text{Pearson's}~ \chi^2 ~\text{test}"></embed></td>
 <td>Cramér’s <em>V</em>
 </td>
-<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
 <tr class="even">
 <td>
@@ -403,7 +407,7 @@
 <td>McNemar’s test</td>
 <td>Cohen’s <em>g</em>
 </td>
-<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
 <tr class="odd">
 <td><code>expr_contingency_tab</code></td>
@@ -411,7 +415,7 @@
 <td>One-sample proportion test</td>
 <td>Cramér’s <em>V</em>
 </td>
-<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
 <tr class="even">
 <td><code>expr_corr_test</code></td>
@@ -419,21 +423,21 @@
 <td>Pearson’s <em>r</em>
 </td>
 <td><em>r</em></td>
-<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
 <tr class="odd">
 <td><code>expr_corr_test</code></td>
 <td>Non-parametric</td>
-<td><span class="math display">\[\text{Spearman's}~ \rho\]</span></td>
-<td><span class="math display">\[\rho\]</span></td>
-<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+<td><embed src="https://latex.codecogs.com/png.latex?%5Ctext%7BSpearman%27s%7D~%20%5Crho" title="\text{Spearman's}~ \rho"></embed></td>
+<td><embed src="https://latex.codecogs.com/png.latex?%5Crho" title="\rho"></embed></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
 <tr class="even">
 <td><code>expr_corr_test</code></td>
 <td>Robust</td>
 <td>Percentage bend correlation</td>
 <td><em>r</em></td>
-<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
 <tr class="odd">
 <td><code>expr_t_onesample</code></td>
@@ -441,21 +445,21 @@
 <td>One-sample <em>t</em>-test</td>
 <td>Cohen’s <em>d</em>, Hedge’s <em>g</em>
 </td>
-<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
 <tr class="even">
 <td><code>expr_t_onesample</code></td>
 <td>Non-parametric</td>
 <td>One-sample Wilcoxon signed rank test</td>
 <td><em>r</em></td>
-<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
 <tr class="odd">
 <td><code>expr_t_onesample</code></td>
 <td>Robust</td>
 <td>One-sample percentile bootstrap</td>
 <td>robust estimator</td>
-<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
 </tbody>
 </table>
@@ -646,6 +650,7 @@
 </ul>
 <p>Please note that this project is released with a <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/.github/CODE_OF_CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
+
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -690,10 +695,8 @@
 </ul>
 </div>
 
-      </div>
-
+  </div>
 </div>
-
 
 
       <footer><div class="copyright">
@@ -708,7 +711,20 @@
 </div>
 
   
-
-
-  </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script><script>
+  docsearch({
+    
+    
+    apiKey: 'cfa913c0232e74cf725e6865b064017b',
+    indexName: 'statsExpressions',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+</body>
 </html>

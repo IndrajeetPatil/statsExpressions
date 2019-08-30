@@ -8,10 +8,12 @@
 
 <title>Bayesian contingency table analysis. — bf_contingency_tab • statsExpressions</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -31,13 +33,20 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Bayesian contingency table analysis. — bf_contingency_tab" />
 
+<meta property="og:title" content="Bayesian contingency table analysis. — bf_contingency_tab" />
 <meta property="og:description" content="Bayesian contingency table analysis." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -68,7 +77,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.1.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.1.1.9000</span>
       </span>
     </div>
 
@@ -102,7 +111,6 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/IndrajeetPatil/statsExpressions">
@@ -111,6 +119,12 @@
   </a>
 </li>
       </ul>
+      
+      <form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
       
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -129,9 +143,7 @@
     </div>
 
     <div class="ref-description">
-    
     <p>Bayesian contingency table analysis.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>bf_contingency_tab</span>(<span class='no'>data</span>, <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>counts</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ratio</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -143,7 +155,7 @@
   <span class='kw'>sampling.plan</span> <span class='kw'>=</span> <span class='st'>"indepMulti"</span>, <span class='kw'>fixed.margin</span> <span class='kw'>=</span> <span class='st'>"rows"</span>,
   <span class='kw'>prior.concentration</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>caption</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"null"</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>,
   <span class='no'>...</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -218,22 +230,21 @@ expression with evidence in favor of the alternative hypothesis, or
       <td><p>further arguments to be passed to or from methods.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Bayes Factor for goodness of fit test is based on gist provided by
 Richard Morey:
 <a href='https://gist.github.com/richarddmorey/a4cd3a2051f373db917550d67131dba4'>https://gist.github.com/richarddmorey/a4cd3a2051f373db917550d67131dba4</a>.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='bf_corr_test.html'>bf_corr_test</a></code>, <code><a href='bf_oneway_anova.html'>bf_oneway_anova</a></code>,
 <code><a href='bf_ttest.html'>bf_ttest</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-</div><div class='input'><span class='co'># ------------------ association tests --------------------------------</span>
+<span class='co'># \donttest{</span>
+<span class='co'># ------------------ association tests --------------------------------</span>
 
 <span class='co'># for reproducibility</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
@@ -276,17 +287,15 @@ Richard Morey:
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>am</span>,
   <span class='kw'>prior.concentration</span> <span class='kw'>=</span> <span class='fl'>10</span>
 )</div><div class='output co'>#&gt; atop(displaystyle(NULL), expr = paste("In favor of null: ", "log"["e"], 
-#&gt;     "(BF"["01"], ") = ", "0.30", ", ", italic("a"), " = ", "10.00"))</div></pre>
+#&gt;     "(BF"["01"], ") = ", "0.30", ", ", italic("a"), " = ", "10.00"))</div><div class='input'># }
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#note">Note</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
@@ -309,6 +318,23 @@ Richard Morey:
    </div>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: 'cfa913c0232e74cf725e6865b064017b',
+    indexName: 'statsExpressions',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
 
   </body>

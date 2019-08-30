@@ -8,10 +8,12 @@
 
 <title>Robust correlation coefficient and its confidence interval — robcor_ci • statsExpressions</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -31,14 +33,21 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Robust correlation coefficient and its confidence interval — robcor_ci" />
 
+<meta property="og:title" content="Robust correlation coefficient and its confidence interval — robcor_ci" />
 <meta property="og:description" content="Custom function to get confidence intervals for percentage bend
 correlation coefficient." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -69,7 +78,7 @@ correlation coefficient." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.1.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.1.1.9000</span>
       </span>
     </div>
 
@@ -103,7 +112,6 @@ correlation coefficient." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/IndrajeetPatil/statsExpressions">
@@ -112,6 +120,12 @@ correlation coefficient." />
   </a>
 </li>
       </ul>
+      
+      <form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
       
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -130,15 +144,13 @@ correlation coefficient." />
     </div>
 
     <div class="ref-description">
-    
     <p>Custom function to get confidence intervals for percentage bend
 correlation coefficient.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>robcor_ci</span>(<span class='no'>data</span>, <span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
   <span class='kw'>conf.type</span> <span class='kw'>=</span> <span class='st'>"norm"</span>, <span class='no'>...</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -273,22 +285,24 @@ intervals required. The value should be any subset of the values <code>"norm"</c
   <dt>cl</dt><dd><p>An optional <span class="pkg">parallel</span> or <span class="pkg">snow</span> cluster for use if
     <code>parallel = "snow"</code>.  If not supplied, a cluster on the
     local machine is created for the duration of the <code>boot</code> call.</p></dd>
+
 </dl></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A tibble with percentage bend correlation coefficient, along with its
 confidence intervals, and the number of bootstrap samples used to generate
 confidence intervals. Additionally, it also includes information about
 sample size, bending constant, no. of bootstrap samples, etc.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'># for reproducibility</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)</div><div class='input'><span class='kw pkg'>statsExpressions</span><span class='kw ns'>:::</span><span class='fu'><a href='https://indrajeetpatil.github.io/statsExpressions//reference/robcor_ci.html'>robcor_ci</a></span>(
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
+<span class='co'># \donttest{</span>
+<span class='kw pkg'>statsExpressions</span><span class='kw ns'>:::</span><span class='fu'><a href='https://indrajeetpatil.github.io/statsExpressions//reference/robcor_ci.html'>robcor_ci</a></span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>,
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"hp"</span>,
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"mpg"</span>,
@@ -296,19 +310,18 @@ sample size, bending constant, no. of bootstrap samples, etc.</p>
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>25</span>,
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>.99</span>,
   <span class='kw'>conf.type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"basic"</span>)
-)</div><div class='output co'>#&gt; <span class='warning'>Warning: extreme order statistics used as endpoints</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 11</span><span>
+)</div><div class='output co'>#&gt; <span class='warning'>Warning: extreme order statistics used as endpoints</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 11</span><span>
 #&gt;   estimate conf.low conf.high  conf    V2    V3 p.value statistic     n nboot
-#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>   -</span><span style='color: #BB0000;'>0.804</span><span>   -</span><span style='color: #BB0000;'>0.880</span><span>    -</span><span style='color: #BB0000;'>0.738</span><span>  0.99  25.9  0.13 2.93</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-8</span><span>     -</span><span style='color: #BB0000;'>7.41</span><span>    32    25
-#&gt; </span><span style='color: #555555;'># ... with 1 more variable: beta </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span></div></span></pre>
+#&gt;      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>   -</span><span style='color: #BB0000;'>0.804</span><span>   -</span><span style='color: #BB0000;'>0.880</span><span>    -</span><span style='color: #BB0000;'>0.738</span><span>  0.99  25.9  0.13 2.93</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-8</span><span>     -</span><span style='color: #BB0000;'>7.41</span><span>    32    25
+#&gt; </span><span style='color: #949494;'># ... with 1 more variable: beta </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'># }
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
@@ -329,6 +342,23 @@ sample size, bending constant, no. of bootstrap samples, etc.</p>
    </div>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: 'cfa913c0232e74cf725e6865b064017b',
+    indexName: 'statsExpressions',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
 
   </body>
