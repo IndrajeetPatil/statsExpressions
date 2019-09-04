@@ -223,6 +223,7 @@
       "@type": "SoftwareApplication",
       "identifier": "groupedstats",
       "name": "groupedstats",
+      "version": ">= 0.0.9",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -266,6 +267,7 @@
       "@type": "SoftwareApplication",
       "identifier": "psych",
       "name": "psych",
+      "version": ">= 1.8.12",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -389,7 +391,10 @@
         }
       ],
       "name": "statsExpressions: 'ggplot2' Expressions with Statistical Details",
-      "url": "https://CRAN.R-project.org/package=statsExpressions"
+      "identifier": "10.5281/zenodo.3386122",
+      "url": "https://CRAN.R-project.org/package=statsExpressions",
+      "@id": "https://doi.org/10.5281/zenodo.3386122",
+      "sameAs": "https://doi.org/10.5281/zenodo.3386122"
     }
   ],
   "provider": {

@@ -2,4 +2,5 @@ bibentry(bibtype = "manual",
          title = "statsExpressions: 'ggplot2' Expressions with Statistical Details",
          author = c(person("Indrajeet", "Patil")),
          year = 2019,
-         url = "https://CRAN.R-project.org/package=statsExpressions")
+         url = "https://CRAN.R-project.org/package=statsExpressions",
+         doi = "10.5281/zenodo.3386122")
