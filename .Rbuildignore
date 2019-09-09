@@ -37,3 +37,4 @@ tests\^spelling
 ^\.github/ISSUE_TEMPLATE$
 ^paper.*$
 references.bib
+^API$

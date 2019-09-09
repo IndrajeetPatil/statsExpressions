@@ -236,7 +236,7 @@ bf_corr_test <- function(data,
 }
 
 
-#' @title Bayesian contingency table analysis.
+#' @title Bayesian contingency table analysis
 #' @name bf_contingency_tab
 #' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'

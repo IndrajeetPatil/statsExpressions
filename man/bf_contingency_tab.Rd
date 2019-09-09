@@ -3,7 +3,7 @@
 \name{bf_contingency_tab}
 \alias{bf_contingency_tab}
 \alias{bf_onesample_proptest}
-\title{Bayesian contingency table analysis.}
+\title{Bayesian contingency table analysis}
 \usage{
 bf_contingency_tab(data, x, y = NULL, counts = NULL, ratio = NULL,
   sampling.plan = "indepMulti", fixed.margin = "rows",
@@ -63,7 +63,7 @@ expression with evidence in favor of the alternative hypothesis, or
 \item{...}{further arguments to be passed to or from methods.}
 }
 \description{
-Bayesian contingency table analysis.
+Bayesian contingency table analysis
 }
 \note{
 Bayes Factor for goodness of fit test is based on gist provided by
