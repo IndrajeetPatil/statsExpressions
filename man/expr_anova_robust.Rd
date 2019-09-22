@@ -5,9 +5,20 @@
 \title{Expression containing results from heteroscedastic one-way ANOVA for
 trimmed means}
 \usage{
-expr_anova_robust(data, x, y, paired = FALSE, tr = 0.1, nboot = 100,
-  conf.level = 0.95, conf.type = "norm", k = 2, stat.title = NULL,
-  messages = TRUE, ...)
+expr_anova_robust(
+  data,
+  x,
+  y,
+  paired = FALSE,
+  tr = 0.1,
+  nboot = 100,
+  conf.level = 0.95,
+  conf.type = "norm",
+  k = 2,
+  stat.title = NULL,
+  messages = TRUE,
+  ...
+)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to
@@ -32,7 +43,7 @@ try to play around with the value of \code{tr}, which is by default set to
 for the effect size (Default: \code{100}).}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\code{95\%} lower and upper confidence intervals (\code{0.95}).}
+\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
 
 \item{conf.type}{A vector of character strings representing the type of
 intervals required. The value should be any subset of the values \code{"norm"},

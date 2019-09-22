@@ -6,16 +6,44 @@
 \alias{bf_two_sample_ttest}
 \title{Bayes Factor for \emph{t}-test}
 \usage{
-bf_ttest(data, x, y = NULL, test.value = 0, paired = FALSE,
-  bf.prior = 0.707, caption = NULL, output = "null", k = 2, ...)
+bf_ttest(
+  data,
+  x,
+  y = NULL,
+  test.value = 0,
+  paired = FALSE,
+  bf.prior = 0.707,
+  caption = NULL,
+  output = "null",
+  k = 2,
+  ...
+)
 
-bf_one_sample_ttest(data, x, y = NULL, test.value = 0,
-  paired = FALSE, bf.prior = 0.707, caption = NULL,
-  output = "null", k = 2, ...)
+bf_one_sample_ttest(
+  data,
+  x,
+  y = NULL,
+  test.value = 0,
+  paired = FALSE,
+  bf.prior = 0.707,
+  caption = NULL,
+  output = "null",
+  k = 2,
+  ...
+)
 
-bf_two_sample_ttest(data, x, y = NULL, test.value = 0,
-  paired = FALSE, bf.prior = 0.707, caption = NULL,
-  output = "null", k = 2, ...)
+bf_two_sample_ttest(
+  data,
+  x,
+  y = NULL,
+  test.value = 0,
+  paired = FALSE,
+  bf.prior = 0.707,
+  caption = NULL,
+  output = "null",
+  k = 2,
+  ...
+)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to

@@ -5,9 +5,18 @@
 \title{Calculating Cohen's \emph{d} or Hedge's \emph{g} (for between-/within- or one
 sample designs).}
 \usage{
-effsize_t_parametric(formula = NULL, data = NULL, mu = 0,
-  paired = FALSE, hedges.correction = TRUE, conf.level = 0.95,
-  var.equal = FALSE, noncentral = TRUE, tobject = NULL, ...)
+effsize_t_parametric(
+  formula = NULL,
+  data = NULL,
+  mu = 0,
+  paired = FALSE,
+  hedges.correction = TRUE,
+  conf.level = 0.95,
+  var.equal = FALSE,
+  noncentral = TRUE,
+  tobject = NULL,
+  ...
+)
 }
 \arguments{
 \item{formula}{This function only accepts the variables in \code{formula} format
@@ -26,7 +35,7 @@ repeated measures/within-subjects or between-subjects. The default is
 correction, Hedge's \emph{g} (Default: \code{TRUE}).}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\code{95\%} lower and upper confidence intervals (\code{0.95}).}
+\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
 
 \item{var.equal}{a logical variable indicating whether to treat the
     variances in the samples as equal.  If \code{TRUE}, then a simple F

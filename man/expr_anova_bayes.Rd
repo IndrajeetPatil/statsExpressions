@@ -4,8 +4,7 @@
 \alias{expr_anova_bayes}
 \title{Making expression containing Bayesian one-way ANOVA results.}
 \usage{
-expr_anova_bayes(data, x, y, paired = FALSE, bf.prior = 0.707, k = 2,
-  ...)
+expr_anova_bayes(data, x, y, paired = FALSE, bf.prior = 0.707, k = 2, ...)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to

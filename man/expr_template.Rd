@@ -4,11 +4,25 @@
 \alias{expr_template}
 \title{Template for subtitles with statistical details for tests}
 \usage{
-expr_template(no.parameters, stat.title = NULL, statistic.text,
-  statistic, parameter = NULL, parameter2 = NULL, p.value,
-  effsize.text, effsize.estimate, effsize.LL, effsize.UL, n,
-  conf.level = 0.95, k = 2L, k.parameter = 0L, k.parameter2 = 0L,
-  n.text = NULL)
+expr_template(
+  no.parameters,
+  stat.title = NULL,
+  statistic.text,
+  statistic,
+  parameter = NULL,
+  parameter2 = NULL,
+  p.value,
+  effsize.text,
+  effsize.estimate,
+  effsize.LL,
+  effsize.UL,
+  n,
+  conf.level = 0.95,
+  k = 2L,
+  k.parameter = 0L,
+  k.parameter2 = 0L,
+  n.text = NULL
+)
 }
 \arguments{
 \item{no.parameters}{An integer that specifies that the number of parameters
@@ -47,7 +61,7 @@ effect size, its lower bound, and its upper.}
 \item{n}{An integer specifying the sample size used for the test.}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\code{95\%} lower and upper confidence intervals (\code{0.95}).}
+\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2}).}

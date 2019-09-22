@@ -4,10 +4,22 @@
 \alias{expr_anova_parametric}
 \title{Making expression containing parametric ANOVA results}
 \usage{
-expr_anova_parametric(data, x, y, paired = FALSE,
-  effsize.type = "unbiased", partial = TRUE, conf.level = 0.95,
-  nboot = 100, var.equal = FALSE, sphericity.correction = TRUE,
-  k = 2, stat.title = NULL, messages = TRUE, ...)
+expr_anova_parametric(
+  data,
+  x,
+  y,
+  paired = FALSE,
+  effsize.type = "unbiased",
+  partial = TRUE,
+  conf.level = 0.95,
+  nboot = 100,
+  var.equal = FALSE,
+  sphericity.correction = TRUE,
+  k = 2,
+  stat.title = NULL,
+  messages = TRUE,
+  ...
+)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to
@@ -34,7 +46,7 @@ will be returned. Valid only for objects of class \code{lm}, \code{aov}, \code{a
 \code{aovlist}.}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\code{95\%} lower and upper confidence intervals (\code{0.95}).}
+\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
 
 \item{nboot}{Number of bootstrap samples for computing confidence interval
 for the effect size (Default: \code{100}).}

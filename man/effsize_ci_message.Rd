@@ -11,7 +11,7 @@ effsize_ci_message(nboot = 100, conf.level = 0.95)
 for the effect size (Default: \code{100}).}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\code{95\%} lower and upper confidence intervals (\code{0.95}).}
+\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
 }
 \description{
 Message about bootstrapped confidence intervals for effect sizes.

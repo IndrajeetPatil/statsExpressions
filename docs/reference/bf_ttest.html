@@ -146,16 +146,44 @@
     <p>Bayes Factor for <em>t</em>-test</p>
     </div>
 
-    <pre class="usage"><span class='fu'>bf_ttest</span>(<span class='no'>data</span>, <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>test.value</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>bf.prior</span> <span class='kw'>=</span> <span class='fl'>0.707</span>, <span class='kw'>caption</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"null"</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>bf_ttest</span>(
+  <span class='no'>data</span>,
+  <span class='no'>x</span>,
+  <span class='kw'>y</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>test.value</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>bf.prior</span> <span class='kw'>=</span> <span class='fl'>0.707</span>,
+  <span class='kw'>caption</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"null"</span>,
+  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>,
+  <span class='no'>...</span>
+)
 
-<span class='fu'>bf_one_sample_ttest</span>(<span class='no'>data</span>, <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>test.value</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>bf.prior</span> <span class='kw'>=</span> <span class='fl'>0.707</span>, <span class='kw'>caption</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"null"</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='no'>...</span>)
+<span class='fu'>bf_one_sample_ttest</span>(
+  <span class='no'>data</span>,
+  <span class='no'>x</span>,
+  <span class='kw'>y</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>test.value</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>bf.prior</span> <span class='kw'>=</span> <span class='fl'>0.707</span>,
+  <span class='kw'>caption</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"null"</span>,
+  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>,
+  <span class='no'>...</span>
+)
 
-<span class='fu'>bf_two_sample_ttest</span>(<span class='no'>data</span>, <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>test.value</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>bf.prior</span> <span class='kw'>=</span> <span class='fl'>0.707</span>, <span class='kw'>caption</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"null"</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>bf_two_sample_ttest</span>(
+  <span class='no'>data</span>,
+  <span class='no'>x</span>,
+  <span class='kw'>y</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>test.value</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>bf.prior</span> <span class='kw'>=</span> <span class='fl'>0.707</span>,
+  <span class='kw'>caption</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"null"</span>,
+  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>,
+  <span class='no'>...</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -314,7 +342,7 @@ otherwise a two-sample <em>t</em>-test will be carried out.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

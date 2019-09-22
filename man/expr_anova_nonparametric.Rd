@@ -4,9 +4,19 @@
 \alias{expr_anova_nonparametric}
 \title{Making text subtitle for nonparametric ANOVA.}
 \usage{
-expr_anova_nonparametric(data, x, y, paired = FALSE,
-  conf.type = "perc", conf.level = 0.95, k = 2, nboot = 100,
-  stat.title = NULL, messages = TRUE, ...)
+expr_anova_nonparametric(
+  data,
+  x,
+  y,
+  paired = FALSE,
+  conf.type = "perc",
+  conf.level = 0.95,
+  k = 2,
+  nboot = 100,
+  stat.title = NULL,
+  messages = TRUE,
+  ...
+)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to
@@ -26,7 +36,7 @@ intervals required. The value should be any subset of the values \code{"norm"},
 \code{"basic"}, \code{"perc"}, \code{"bca"}. For more, see \code{?boot::boot.ci}.}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\code{95\%} lower and upper confidence intervals (\code{0.95}).}
+\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2}).}

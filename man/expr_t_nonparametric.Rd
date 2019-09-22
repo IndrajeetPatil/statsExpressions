@@ -5,13 +5,33 @@
 \alias{expr_mann_nonparametric}
 \title{Making expression for Mann-Whitney \emph{U}-test/Wilcoxon test results}
 \usage{
-expr_t_nonparametric(data, x, y, paired = FALSE, k = 2,
-  conf.level = 0.95, conf.type = "norm", nboot = 100,
-  stat.title = NULL, messages = TRUE, ...)
+expr_t_nonparametric(
+  data,
+  x,
+  y,
+  paired = FALSE,
+  k = 2,
+  conf.level = 0.95,
+  conf.type = "norm",
+  nboot = 100,
+  stat.title = NULL,
+  messages = TRUE,
+  ...
+)
 
-expr_mann_nonparametric(data, x, y, paired = FALSE, k = 2,
-  conf.level = 0.95, conf.type = "norm", nboot = 100,
-  stat.title = NULL, messages = TRUE, ...)
+expr_mann_nonparametric(
+  data,
+  x,
+  y,
+  paired = FALSE,
+  k = 2,
+  conf.level = 0.95,
+  conf.type = "norm",
+  nboot = 100,
+  stat.title = NULL,
+  messages = TRUE,
+  ...
+)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to
@@ -30,7 +50,7 @@ repeated measures/within-subjects or between-subjects. The default is
 (Default: \code{k = 2}).}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\code{95\%} lower and upper confidence intervals (\code{0.95}).}
+\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
 
 \item{conf.type}{A vector of character strings representing the type of
 intervals required. The value should be any subset of the values \code{"norm"},

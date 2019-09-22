@@ -4,9 +4,19 @@
 \alias{expr_t_parametric}
 \title{Making expression containing \emph{t}-test results}
 \usage{
-expr_t_parametric(data, x, y, paired = FALSE, effsize.type = "g",
-  effsize.noncentral = TRUE, conf.level = 0.95, var.equal = FALSE,
-  k = 2, stat.title = NULL, ...)
+expr_t_parametric(
+  data,
+  x,
+  y,
+  paired = FALSE,
+  effsize.type = "g",
+  effsize.noncentral = TRUE,
+  conf.level = 0.95,
+  var.equal = FALSE,
+  k = 2,
+  stat.title = NULL,
+  ...
+)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to
@@ -30,7 +40,7 @@ argument can be \code{"biased"} (\code{"d"} for Cohen's \emph{d}) or \code{"unbi
 or Hedge's \emph{g} (Default: \code{TRUE}).}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\code{95\%} lower and upper confidence intervals (\code{0.95}).}
+\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
 
 \item{var.equal}{a logical variable indicating whether to treat the
     variances in the samples as equal.  If \code{TRUE}, then a simple F

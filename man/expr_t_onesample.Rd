@@ -5,10 +5,23 @@
 \title{Expression for one sample \emph{t}-test and its non-parametric and
 robust equivalents}
 \usage{
-expr_t_onesample(data, x, type = "parametric", test.value = 0,
-  bf.prior = 0.707, robust.estimator = "onestep", effsize.type = "g",
-  effsize.noncentral = TRUE, conf.level = 0.95, conf.type = "norm",
-  nboot = 100, k = 2, stat.title = NULL, messages = TRUE, ...)
+expr_t_onesample(
+  data,
+  x,
+  type = "parametric",
+  test.value = 0,
+  bf.prior = 0.707,
+  robust.estimator = "onestep",
+  effsize.type = "g",
+  effsize.noncentral = TRUE,
+  conf.level = 0.95,
+  conf.type = "norm",
+  nboot = 100,
+  k = 2,
+  stat.title = NULL,
+  messages = TRUE,
+  ...
+)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to
@@ -40,7 +53,7 @@ argument can be \code{"biased"} (\code{"d"} for Cohen's \emph{d}) or \code{"unbi
 or Hedge's \emph{g} (Default: \code{TRUE}).}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\code{95\%} lower and upper confidence intervals (\code{0.95}).}
+\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
 
 \item{conf.type}{A vector of character strings representing the type of
 intervals required. The value should be any subset of the values \code{"norm"},

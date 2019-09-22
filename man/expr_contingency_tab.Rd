@@ -5,17 +5,45 @@
 \alias{expr_onesample_proptest}
 \title{Making expression for contingency table and goodness of fit tests}
 \usage{
-expr_contingency_tab(data, x, y = NULL, counts = NULL, ratio = NULL,
-  nboot = 100, paired = FALSE, stat.title = NULL,
-  legend.title = NULL, conf.level = 0.95, conf.type = "norm",
-  simulate.p.value = FALSE, B = 2000, bias.correct = FALSE, k = 2,
-  messages = TRUE, ...)
+expr_contingency_tab(
+  data,
+  x,
+  y = NULL,
+  counts = NULL,
+  ratio = NULL,
+  nboot = 100,
+  paired = FALSE,
+  stat.title = NULL,
+  legend.title = NULL,
+  conf.level = 0.95,
+  conf.type = "norm",
+  simulate.p.value = FALSE,
+  B = 2000,
+  bias.correct = FALSE,
+  k = 2,
+  messages = TRUE,
+  ...
+)
 
-expr_onesample_proptest(data, x, y = NULL, counts = NULL,
-  ratio = NULL, nboot = 100, paired = FALSE, stat.title = NULL,
-  legend.title = NULL, conf.level = 0.95, conf.type = "norm",
-  simulate.p.value = FALSE, B = 2000, bias.correct = FALSE, k = 2,
-  messages = TRUE, ...)
+expr_onesample_proptest(
+  data,
+  x,
+  y = NULL,
+  counts = NULL,
+  ratio = NULL,
+  nboot = 100,
+  paired = FALSE,
+  stat.title = NULL,
+  legend.title = NULL,
+  conf.level = 0.95,
+  conf.type = "norm",
+  simulate.p.value = FALSE,
+  B = 2000,
+  bias.correct = FALSE,
+  k = 2,
+  messages = TRUE,
+  ...
+)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to
@@ -53,7 +81,7 @@ like \code{"main x condition"} or \code{"interaction"}.}
 \item{legend.title}{Title text for the legend.}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\code{95\%} lower and upper confidence intervals (\code{0.95}).}
+\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
 
 \item{conf.type}{A vector of character strings representing the type of
 intervals required. The value should be any subset of the values \code{"norm"},

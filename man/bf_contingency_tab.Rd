@@ -5,15 +5,35 @@
 \alias{bf_onesample_proptest}
 \title{Bayesian contingency table analysis}
 \usage{
-bf_contingency_tab(data, x, y = NULL, counts = NULL, ratio = NULL,
-  sampling.plan = "indepMulti", fixed.margin = "rows",
-  prior.concentration = 1, caption = NULL, output = "null", k = 2,
-  ...)
+bf_contingency_tab(
+  data,
+  x,
+  y = NULL,
+  counts = NULL,
+  ratio = NULL,
+  sampling.plan = "indepMulti",
+  fixed.margin = "rows",
+  prior.concentration = 1,
+  caption = NULL,
+  output = "null",
+  k = 2,
+  ...
+)
 
-bf_onesample_proptest(data, x, y = NULL, counts = NULL, ratio = NULL,
-  sampling.plan = "indepMulti", fixed.margin = "rows",
-  prior.concentration = 1, caption = NULL, output = "null", k = 2,
-  ...)
+bf_onesample_proptest(
+  data,
+  x,
+  y = NULL,
+  counts = NULL,
+  ratio = NULL,
+  sampling.plan = "indepMulti",
+  fixed.margin = "rows",
+  prior.concentration = 1,
+  caption = NULL,
+  output = "null",
+  k = 2,
+  ...
+)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to

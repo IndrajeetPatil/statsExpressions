@@ -4,8 +4,16 @@
 \alias{bf_corr_test}
 \title{Bayesian correlation test.}
 \usage{
-bf_corr_test(data, x, y, bf.prior = 0.707, caption = NULL,
-  output = "null", k = 2, ...)
+bf_corr_test(
+  data,
+  x,
+  y,
+  bf.prior = 0.707,
+  caption = NULL,
+  output = "null",
+  k = 2,
+  ...
+)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to

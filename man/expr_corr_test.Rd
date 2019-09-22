@@ -4,9 +4,21 @@
 \alias{expr_corr_test}
 \title{Making expression for correlation analysis}
 \usage{
-expr_corr_test(data, x, y, nboot = 100, beta = 0.1, type = "pearson",
-  bf.prior = 0.707, conf.level = 0.95, conf.type = "norm", k = 2,
-  stat.title = NULL, messages = TRUE, ...)
+expr_corr_test(
+  data,
+  x,
+  y,
+  nboot = 100,
+  beta = 0.1,
+  type = "pearson",
+  bf.prior = 0.707,
+  conf.level = 0.95,
+  conf.type = "norm",
+  k = 2,
+  stat.title = NULL,
+  messages = TRUE,
+  ...
+)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to
@@ -37,7 +49,7 @@ parametric/pearson's), \code{"np"} (nonparametric/spearman), \code{"r"} (robust)
 prior width to use in calculating Bayes Factors.}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\code{95\%} lower and upper confidence intervals (\code{0.95}).}
+\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
 
 \item{conf.type}{A vector of character strings representing the type of
 intervals required. The value should be any subset of the values \code{"norm"},

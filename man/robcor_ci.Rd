@@ -4,8 +4,16 @@
 \alias{robcor_ci}
 \title{Robust correlation coefficient and its confidence interval}
 \usage{
-robcor_ci(data, x, y, beta = 0.1, nboot = 100, conf.level = 0.95,
-  conf.type = "norm", ...)
+robcor_ci(
+  data,
+  x,
+  y,
+  beta = 0.1,
+  nboot = 100,
+  conf.level = 0.95,
+  conf.type = "norm",
+  ...
+)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to
@@ -21,20 +29,16 @@ be taken. A matrix or tables will \strong{not} be accepted.}
 for the effect size (Default: \code{100}).}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\code{95\%} lower and upper confidence intervals (\code{0.95}).}
+\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
 
 \item{conf.type}{A vector of character strings representing the type of
 intervals required. The value should be any subset of the values \code{"norm"},
 \code{"basic"}, \code{"perc"}, \code{"bca"}. For more, see \code{?boot::boot.ci}.}
 
-\item{...}{Arguments passed on to \code{boot::boot}
-\describe{
-  \item{data}{
-    The data as a vector, matrix or data frame.  If it is a matrix or
-    data frame then each row is considered as one multivariate
-    observation.
-  }
-  \item{statistic}{
+\item{...}{
+  Arguments passed on to \code{\link[boot:boot]{boot::boot}}
+  \describe{
+    \item{\code{statistic}}{
     A function which when applied to data returns a vector containing
     the statistic(s) of interest.  When \code{sim = "parametric"}, the
     first argument to \code{statistic} must be the data.  For each
@@ -48,7 +52,7 @@ intervals required. The value should be any subset of the values \code{"norm"},
     Any further arguments can be passed to \code{statistic} through the
     \code{\dots} argument.
   }
-  \item{R}{
+    \item{\code{R}}{
     The number of bootstrap replicates.  Usually this will be a single
     positive integer.  For importance resampling, some resamples may use
     one set of weights and others use a different set of weights.  In
@@ -56,7 +60,7 @@ intervals required. The value should be any subset of the values \code{"norm"},
     component gives the number of resamples from each of the rows of
     weights.
   }
-  \item{sim}{
+    \item{\code{sim}}{
     A character string indicating the type of simulation required.
     Possible values are \code{"ordinary"} (the default),
     \code{"parametric"}, \code{"balanced"}, \code{"permutation"}, or
@@ -65,27 +69,27 @@ intervals required. The value should be any subset of the values \code{"norm"},
     still be specified but may only be \code{"ordinary"} or
     \code{"balanced"} in this case.
   }
-  \item{stype}{
+    \item{\code{stype}}{
     A character string indicating what the second argument of \code{statistic}
     represents.  Possible values of stype are \code{"i"} (indices - the
     default), \code{"f"} (frequencies), or \code{"w"} (weights).  Not
     used for \code{sim = "parametric"}.
   }
-  \item{strata}{
+    \item{\code{strata}}{
     An integer vector or factor specifying the strata for multi-sample
     problems.  This may be specified for any simulation, but is ignored
     when \code{sim = "parametric"}.  When \code{strata} is
     supplied for a nonparametric bootstrap, the simulations are done
     within the specified strata.
   }
-  \item{L}{
+    \item{\code{L}}{
     Vector of influence values evaluated at the observations.  This is
     used only when \code{sim} is \code{"antithetic"}.  If not supplied,
     they are calculated through a call to \code{empinf}.  This will use
     the infinitesimal jackknife provided that \code{stype} is
     \code{"w"}, otherwise the usual jackknife is used.
   }
-  \item{m}{
+    \item{\code{m}}{
     The number of predictions which are to be made at each bootstrap
     replicate.  This is most useful for (generalized) linear models.
     This can only be used when \code{sim} is \code{"ordinary"}.
@@ -97,7 +101,7 @@ intervals required. The value should be any subset of the values \code{"norm"},
     argument giving the vector of indices of the errors to be used for
     the predictions.
   }
-  \item{weights}{
+    \item{\code{weights}}{
     Vector or matrix of importance weights.  If a vector then it should
     have as many elements as there are observations in \code{data}.
     When simulation from more than one set of weights is required,
@@ -107,7 +111,7 @@ intervals required. The value should be any subset of the values \code{"norm"},
     parameter is ignored if \code{sim} is not \code{"ordinary"} or
     \code{"balanced"}.
   }
-  \item{ran.gen}{
+    \item{\code{ran.gen}}{
     This function is used only when \code{sim = "parametric"}
     when it describes how random values are to be generated.  It should
     be a function of two arguments.  The first argument should be the
@@ -125,35 +129,35 @@ intervals required. The value should be any subset of the values \code{"norm"},
     user to implement any types of nonparametric resampling which are
     not supported directly.
   }
-  \item{mle}{
+    \item{\code{mle}}{
     The second argument to be passed to \code{ran.gen}.  Typically these
     will be maximum likelihood estimates of the parameters.  For
     efficiency \code{mle} is often a list containing all of the objects
     needed by \code{ran.gen} which can be calculated using the original
     data set only.
   }
-  \item{simple}{logical, only allowed to be \code{TRUE} for
+    \item{\code{simple}}{logical, only allowed to be \code{TRUE} for
     \code{sim = "ordinary", stype = "i", n = 0} (otherwise ignored with a
     warning).  By default a \code{n} by \code{R} index array is created:
     this can be large and if \code{simple = TRUE} this is avoided by
     sampling separately for each replication, which is slower but uses
     less memory.
   }
-  \item{parallel}{
+    \item{\code{parallel}}{
     The type of parallel operation to be used (if any).  If missing, the
     default is taken from the option \code{"boot.parallel"} (and if that
     is not set, \code{"no"}).
   }
-  \item{ncpus}{
+    \item{\code{ncpus}}{
     integer: number of processes to be used in parallel operation:
     typically one would chose this to the number of available CPUs.
   }
-  \item{cl}{
+    \item{\code{cl}}{
     An optional \pkg{parallel} or \pkg{snow} cluster for use if
     \code{parallel = "snow"}.  If not supplied, a cluster on the
     local machine is created for the duration of the \code{boot} call.
   }
-}}
+  }}
 }
 \value{
 A tibble with percentage bend correlation coefficient, along with its

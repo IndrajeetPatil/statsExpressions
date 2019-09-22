@@ -4,8 +4,17 @@
 \alias{bf_oneway_anova}
 \title{Bayesian one-way analysis of variance.}
 \usage{
-bf_oneway_anova(data, x, y, bf.prior = 0.707, caption = NULL,
-  output = "null", paired = FALSE, k = 2, ...)
+bf_oneway_anova(
+  data,
+  x,
+  y,
+  bf.prior = 0.707,
+  caption = NULL,
+  output = "null",
+  paired = FALSE,
+  k = 2,
+  ...
+)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to

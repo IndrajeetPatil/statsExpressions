@@ -4,8 +4,7 @@
 \alias{expr_t_bayes}
 \title{Making expression containing Bayesian \emph{t}-test results}
 \usage{
-expr_t_bayes(data, x, y, bf.prior = 0.707, paired = FALSE, k = 2,
-  ...)
+expr_t_bayes(data, x, y, bf.prior = 0.707, paired = FALSE, k = 2, ...)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to
