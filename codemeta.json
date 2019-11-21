@@ -158,7 +158,7 @@
       "@type": "SoftwareApplication",
       "identifier": "broomExtra",
       "name": "broomExtra",
-      "version": ">= 0.0.5",
+      "version": ">= 0.0.6",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -223,7 +223,7 @@
       "@type": "SoftwareApplication",
       "identifier": "groupedstats",
       "name": "groupedstats",
-      "version": ">= 0.0.9",
+      "version": ">= 0.1.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -267,7 +267,7 @@
       "@type": "SoftwareApplication",
       "identifier": "rcompanion",
       "name": "rcompanion",
-      "version": ">= 2.3.0",
+      "version": ">= 2.3.7",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -280,7 +280,7 @@
       "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
-      "version": ">= 0.4.0",
+      "version": ">= 0.4.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",

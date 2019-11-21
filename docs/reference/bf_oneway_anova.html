@@ -18,8 +18,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -238,10 +238,12 @@ repeated measures/within-subjects or between-subjects. The default is
   <span class='kw'>bf.prior</span> <span class='kw'>=</span> <span class='fl'>0.8</span>,
   <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"results"</span>
 )</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 8</span><span>
-#&gt;      bf10   error     bf01 log_e_bf10 log_e_bf01 log_10_bf10 log_10_bf01
-#&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 2.03</span><span style='color: #949494;'>e</span><span>28 4.78</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-8</span><span> 4.93</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-29</span><span>       65.2      -</span><span style='color: #BB0000;'>65.2</span><span>        28.3       -</span><span style='color: #BB0000;'>28.3</span><span>
-#&gt; </span><span style='color: #949494;'># ... with 1 more variable: bf.prior </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
+#&gt;      bf10        error     bf01 log_e_bf10 log_e_bf01 log_10_bf10 log_10_bf01
+#&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 2.03</span><span style='color: #949494;'>e</span><span>28 0.000</span><span style='text-decoration: underline;'>000</span><span>047</span><span style='text-decoration: underline;'>8</span><span> 4.93</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-29</span><span>       65.2      -</span><span style='color: #BB0000;'>65.2</span><span>        28.3       -</span><span style='color: #BB0000;'>28.3</span><span>
+#&gt;   bf.prior
+#&gt;      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>      0.8</div><div class='input'>
 <span class='co'># within-subjects -------------------------------------------------------</span>
 <span class='fu'>bf_oneway_anova</span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>bugs_long</span>,
@@ -273,7 +275,7 @@ repeated measures/within-subjects or between-subjects. The default is
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
 </div>
 
       </footer>

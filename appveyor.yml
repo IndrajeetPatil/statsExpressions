@@ -16,13 +16,24 @@ skip_branch_with_pr: true
 
 # Adapt as necessary starting from here
 
+cache:
+  - C:\RLibrary
+
+# Adapt as necessary starting from here
+before_test:
+  - cinst pandoc
+  - ps: $env:Path += ";C:\Program Files (x86)\Pandoc\"
+  - pandoc -v
+
 environment:
   global:
     USE_RTOOLS: true
     NOT_CRAN: true
     _R_CHECK_FORCE_SUGGESTS: true
     _R_CHECK_CRAN_INCOMING_: true
+    R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
     #R_CHECK_ARGS: "--run-dontrun"
+
   matrix:
   - R_VERSION: release
     R_ARCH: x64
