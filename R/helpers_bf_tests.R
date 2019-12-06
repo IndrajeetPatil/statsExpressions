@@ -22,7 +22,6 @@
 
 # function body
 bf_extractor <- function(bf.object, ...) {
-  ellipsis::check_dots_used()
 
   # preparing the dataframe
   bf_df <-
@@ -100,7 +99,6 @@ bf_expr <- function(bf.df,
                     output = "null",
                     caption = NULL,
                     ...) {
-  ellipsis::check_dots_used()
 
   # changing aspects of the caption based on what output is needed
   if (output %in% c("null", "caption", "H0", "h0")) {
@@ -331,7 +329,6 @@ bf_contingency_tab <- function(data,
   x <- rlang::ensym(x)
   y <- if (!rlang::quo_is_null(rlang::enquo(y))) rlang::ensym(y)
   counts <- if (!rlang::quo_is_null(rlang::enquo(counts))) rlang::ensym(counts)
-  ellipsis::check_dots_used()
 
   # =============================== dataframe ================================
 
@@ -629,7 +626,6 @@ bf_ttest <- function(data,
   # make sure both quoted and unquoted arguments are allowed
   x <- rlang::ensym(x)
   y <- if (!rlang::quo_is_null(rlang::enquo(y))) rlang::ensym(y)
-  ellipsis::check_dots_used()
 
   # -------------------------- two-sample tests ------------------------------
 
@@ -786,7 +782,6 @@ bf_oneway_anova <- function(data,
   # make sure both quoted and unquoted arguments are allowed
   x <- rlang::ensym(x)
   y <- rlang::ensym(y)
-  ellipsis::check_dots_used()
 
   # ============================ data preparation ==========================
 

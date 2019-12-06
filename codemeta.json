@@ -145,7 +145,7 @@
       "@type": "SoftwareApplication",
       "identifier": "boot",
       "name": "boot",
-      "version": ">= 1.3-22",
+      "version": ">= 1.3-23",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -195,19 +195,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "ellipsis",
-      "name": "ellipsis",
-      "version": ">= 0.3.0",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=ellipsis"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "ez",
       "name": "ez",
       "version": ">= 4.4-0",
@@ -236,7 +223,7 @@
       "@type": "SoftwareApplication",
       "identifier": "MCMCpack",
       "name": "MCMCpack",
-      "version": ">= 1.4-4",
+      "version": ">= 1.4-5",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -280,7 +267,7 @@
       "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
-      "version": ">= 0.4.1",
+      "version": ">= 0.4.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",

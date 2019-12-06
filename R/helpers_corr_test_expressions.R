@@ -73,7 +73,6 @@ expr_corr_test <- function(data,
   # make sure both quoted and unquoted arguments are supported
   x <- rlang::ensym(x)
   y <- rlang::ensym(y)
-  ellipsis::check_dots_used()
 
   #------------------------ dataframe -------------------------------------
 

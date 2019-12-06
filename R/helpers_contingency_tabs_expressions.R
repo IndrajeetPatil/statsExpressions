@@ -40,7 +40,6 @@
 #' @inheritParams expr_anova_parametric
 #'
 #' @importFrom dplyr select mutate mutate_at union rename filter
-#' @importFrom ellipsis check_dots_used
 #' @importFrom rlang !! enquo as_name ensym
 #' @importFrom tibble tribble as_tibble
 #' @importFrom tidyr uncount drop_na
@@ -106,7 +105,6 @@ expr_contingency_tab <- function(data,
   x <- rlang::ensym(x)
   y <- if (!rlang::quo_is_null(rlang::enquo(y))) rlang::ensym(y)
   counts <- if (!rlang::quo_is_null(rlang::enquo(counts))) rlang::ensym(counts)
-  ellipsis::check_dots_used()
 
   # =============================== dataframe ================================
 

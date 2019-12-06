@@ -30,7 +30,6 @@
 #' @importFrom dplyr group_by n arrange
 #' @importFrom WRS2 onesampb
 #' @importFrom crayon green blue yellow red
-#' @importFrom ellipsis check_dots_used
 #' @importFrom rcompanion wilcoxonOneSampleR
 #'
 #' @examples
@@ -94,7 +93,6 @@ expr_t_onesample <- function(data,
                              ...) {
 
   # check the dots
-  ellipsis::check_dots_used()
   x <- rlang::ensym(x)
 
   # ====================== dataframe ========================================
