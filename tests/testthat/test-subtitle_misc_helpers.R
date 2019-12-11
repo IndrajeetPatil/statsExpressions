@@ -6,7 +6,7 @@ context(desc = "long_to_wide_converter")
 testthat::test_that(
   desc = "long_to_wide_converter works",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # setup
     set.seed(123)

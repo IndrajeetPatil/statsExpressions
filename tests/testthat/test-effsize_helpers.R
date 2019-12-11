@@ -5,7 +5,7 @@ context("effsize_t_parametric")
 testthat::test_that(
   desc = "effsize works for Cohen's d and Hedge's g (between - without NA)",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # checking for errors
     testthat::expect_error(statsExpressions:::effsize_t_parametric(formula = wt ~ cyl))
@@ -51,51 +51,55 @@ testthat::test_that(
         conf.level = .99
       )
 
-    df1 <- statsExpressions:::effsize_t_parametric(
-      formula = wt ~ am,
-      data = mtcars,
-      paired = FALSE,
-      hedges.correction = TRUE,
-      conf.level = 0.95,
-      noncentral = FALSE,
-      tobject = tobject1
-    )
+    df1 <-
+      statsExpressions:::effsize_t_parametric(
+        formula = wt ~ am,
+        data = mtcars,
+        paired = FALSE,
+        hedges.correction = TRUE,
+        conf.level = 0.95,
+        noncentral = FALSE,
+        tobject = tobject1
+      )
 
     # g and non-central
     set.seed(123)
-    df2 <- statsExpressions:::effsize_t_parametric(
-      formula = wt ~ am,
-      data = mtcars,
-      paired = FALSE,
-      hedges.correction = TRUE,
-      conf.level = 0.95,
-      noncentral = TRUE,
-      tobject = tobject1
-    )
+    df2 <-
+      statsExpressions:::effsize_t_parametric(
+        formula = wt ~ am,
+        data = mtcars,
+        paired = FALSE,
+        hedges.correction = TRUE,
+        conf.level = 0.95,
+        noncentral = TRUE,
+        tobject = tobject1
+      )
 
     # d and central
     set.seed(123)
-    df3 <- statsExpressions:::effsize_t_parametric(
-      formula = wt ~ cyl,
-      data = mtcars_short,
-      paired = FALSE,
-      hedges.correction = FALSE,
-      conf.level = 0.99,
-      noncentral = FALSE,
-      tobject = tobject2
-    )
+    df3 <-
+      statsExpressions:::effsize_t_parametric(
+        formula = wt ~ cyl,
+        data = mtcars_short,
+        paired = FALSE,
+        hedges.correction = FALSE,
+        conf.level = 0.99,
+        noncentral = FALSE,
+        tobject = tobject2
+      )
 
     # d and non-central
     set.seed(123)
-    df4 <- statsExpressions:::effsize_t_parametric(
-      formula = wt ~ cyl,
-      data = mtcars_short,
-      paired = FALSE,
-      hedges.correction = FALSE,
-      conf.level = 0.99,
-      noncentral = TRUE,
-      tobject = tobject2
-    )
+    df4 <-
+      statsExpressions:::effsize_t_parametric(
+        formula = wt ~ cyl,
+        data = mtcars_short,
+        paired = FALSE,
+        hedges.correction = FALSE,
+        conf.level = 0.99,
+        noncentral = TRUE,
+        tobject = tobject2
+      )
 
     # checking attributes of dataframe
     testthat::expect_identical(
@@ -169,13 +173,15 @@ testthat::test_that(
 testthat::test_that(
   desc = "effsize works for Cohen's d and Hedge's g (between - with NA)",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
     library(ggplot2)
 
     # creating a new dataframe with a variable that has dropped factor level
-    msleep_short <- dplyr::filter(
-      .data = ggplot2::msleep,
-      vore %in% c("herbi", "carni")
-    )
+    msleep_short <-
+      dplyr::filter(
+        .data = ggplot2::msleep,
+        vore %in% c("herbi", "carni")
+      )
 
     # shouldn't work
     testthat::expect_error(statsExpressions:::effsize_t_parametric(
@@ -201,51 +207,55 @@ testthat::test_that(
 
     # g and central
     set.seed(123)
-    df1 <- statsExpressions:::effsize_t_parametric(
-      formula = brainwt ~ vore,
-      data = msleep_short,
-      paired = FALSE,
-      hedges.correction = TRUE,
-      conf.level = 0.95,
-      noncentral = FALSE,
-      tobject = tobject1
-    )
+    df1 <-
+      statsExpressions:::effsize_t_parametric(
+        formula = brainwt ~ vore,
+        data = msleep_short,
+        paired = FALSE,
+        hedges.correction = TRUE,
+        conf.level = 0.95,
+        noncentral = FALSE,
+        tobject = tobject1
+      )
 
     # g and non-central
     set.seed(123)
-    df2 <- statsExpressions:::effsize_t_parametric(
-      formula = brainwt ~ vore,
-      data = msleep_short,
-      paired = FALSE,
-      hedges.correction = TRUE,
-      conf.level = 0.95,
-      noncentral = TRUE,
-      tobject = tobject1
-    )
+    df2 <-
+      statsExpressions:::effsize_t_parametric(
+        formula = brainwt ~ vore,
+        data = msleep_short,
+        paired = FALSE,
+        hedges.correction = TRUE,
+        conf.level = 0.95,
+        noncentral = TRUE,
+        tobject = tobject1
+      )
 
     # d and central
     set.seed(123)
-    df3 <- statsExpressions:::effsize_t_parametric(
-      formula = sleep_rem ~ vore,
-      data = msleep_short,
-      paired = FALSE,
-      hedges.correction = FALSE,
-      conf.level = 0.90,
-      noncentral = FALSE,
-      tobject = tobject2
-    )
+    df3 <-
+      statsExpressions:::effsize_t_parametric(
+        formula = sleep_rem ~ vore,
+        data = msleep_short,
+        paired = FALSE,
+        hedges.correction = FALSE,
+        conf.level = 0.90,
+        noncentral = FALSE,
+        tobject = tobject2
+      )
 
     # d and non-central
     set.seed(123)
-    df4 <- statsExpressions:::effsize_t_parametric(
-      formula = sleep_rem ~ vore,
-      data = msleep_short,
-      paired = FALSE,
-      hedges.correction = FALSE,
-      conf.level = 0.90,
-      noncentral = TRUE,
-      tobject = tobject2
-    )
+    df4 <-
+      statsExpressions:::effsize_t_parametric(
+        formula = sleep_rem ~ vore,
+        data = msleep_short,
+        paired = FALSE,
+        hedges.correction = FALSE,
+        conf.level = 0.90,
+        noncentral = TRUE,
+        tobject = tobject2
+      )
 
     # checking attributes of dataframe
     testthat::expect_identical(
@@ -317,7 +327,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "effsize works for Cohen's d and Hedge's g (within - without NA)",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # creating a new dataframe with a variable that has dropped factor level
     iris_short <- dplyr::filter(
@@ -361,51 +371,55 @@ testthat::test_that(
 
     # g and central
     set.seed(123)
-    df1 <- statsExpressions:::effsize_t_parametric(
-      formula = value ~ condition,
-      data = iris_short,
-      paired = TRUE,
-      hedges.correction = TRUE,
-      conf.level = 0.95,
-      noncentral = FALSE,
-      tobject = tobject1
-    )
+    df1 <-
+      statsExpressions:::effsize_t_parametric(
+        formula = value ~ condition,
+        data = iris_short,
+        paired = TRUE,
+        hedges.correction = TRUE,
+        conf.level = 0.95,
+        noncentral = FALSE,
+        tobject = tobject1
+      )
 
     # g and non-central
     set.seed(123)
-    df2 <- suppressWarnings(statsExpressions:::effsize_t_parametric(
-      formula = value ~ condition,
-      data = iris_short,
-      paired = TRUE,
-      hedges.correction = TRUE,
-      conf.level = 0.95,
-      noncentral = TRUE,
-      tobject = tobject1
-    ))
+    df2 <-
+      suppressWarnings(statsExpressions:::effsize_t_parametric(
+        formula = value ~ condition,
+        data = iris_short,
+        paired = TRUE,
+        hedges.correction = TRUE,
+        conf.level = 0.95,
+        noncentral = TRUE,
+        tobject = tobject1
+      ))
 
     # d and central
     set.seed(123)
-    df3 <- statsExpressions:::effsize_t_parametric(
-      formula = value ~ condition,
-      data = iris_short,
-      paired = TRUE,
-      hedges.correction = FALSE,
-      conf.level = 0.99,
-      noncentral = FALSE,
-      tobject = tobject2
-    )
+    df3 <-
+      statsExpressions:::effsize_t_parametric(
+        formula = value ~ condition,
+        data = iris_short,
+        paired = TRUE,
+        hedges.correction = FALSE,
+        conf.level = 0.99,
+        noncentral = FALSE,
+        tobject = tobject2
+      )
 
     # d and non-central
     set.seed(123)
-    df4 <- suppressWarnings(statsExpressions:::effsize_t_parametric(
-      formula = value ~ condition,
-      data = iris_short,
-      paired = TRUE,
-      hedges.correction = FALSE,
-      conf.level = 0.50,
-      noncentral = TRUE,
-      tobject = tobject3
-    ))
+    df4 <-
+      suppressWarnings(statsExpressions:::effsize_t_parametric(
+        formula = value ~ condition,
+        data = iris_short,
+        paired = TRUE,
+        hedges.correction = FALSE,
+        conf.level = 0.50,
+        noncentral = TRUE,
+        tobject = tobject3
+      ))
 
     # checking attributes of dataframe
     testthat::expect_identical(
@@ -477,6 +491,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "effsize works for Cohen's d and Hedge's g (within - with NA)",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
 
     # data
     bugs_short_unequal <- dplyr::filter(
@@ -672,6 +687,10 @@ testthat::test_that(
 testthat::test_that(
   desc = "effsize works for one sample test",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
+
+    set.seed(123)
+
     tobject1 <-
       t.test(
         x = dplyr::starwars$height,
@@ -782,7 +801,7 @@ context("t1way_ci")
 testthat::test_that(
   desc = "t1way_ci works",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # normal
     set.seed(123)
@@ -851,6 +870,7 @@ context("test_yuend_ci")
 testthat::test_that(
   desc = "Yuen's test on trimmed means for dependent samples works",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
 
     # ggstatsplot output
     set.seed(123)
@@ -933,19 +953,20 @@ context("robcor_ci")
 testthat::test_that(
   desc = "robcor_ci works",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # using mtcars dataset
     set.seed(123)
-    df1 <- statsExpressions:::robcor_ci(
-      data = datasets::mtcars,
-      x = hp,
-      y = mpg,
-      beta = .01,
-      nboot = 125,
-      conf.level = .99,
-      conf.type = c("norm")
-    )
+    df1 <-
+      statsExpressions:::robcor_ci(
+        data = datasets::mtcars,
+        x = hp,
+        y = mpg,
+        beta = .01,
+        nboot = 125,
+        conf.level = .99,
+        conf.type = c("norm")
+      )
 
     # induce an NA
     mtcars2 <- datasets::mtcars

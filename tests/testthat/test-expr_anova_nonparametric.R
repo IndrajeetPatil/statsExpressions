@@ -5,7 +5,7 @@ context("expr_anova_nonparametric")
 testthat::test_that(
   desc = "between-subjects - data with and without NAs",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # ggstatsplot output
     set.seed(123)
@@ -111,6 +111,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "within-subjects - data with and without NAs",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
 
     # ggstatsplot output
     set.seed(123)

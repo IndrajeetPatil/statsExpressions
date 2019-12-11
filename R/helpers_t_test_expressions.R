@@ -519,23 +519,24 @@ expr_t_robust <- function(data,
   }
 
   # preparing subtitle
-  subtitle <- expr_template(
-    no.parameters = 1L,
-    stat.title = stat.title,
-    statistic.text = quote(italic("t")),
-    statistic = statistic,
-    parameter = stats_df$df[[1]],
-    p.value = stats_df$p.value[[1]],
-    effsize.text = quote(italic(xi)),
-    effsize.estimate = effsize.estimate,
-    effsize.LL = effsize.LL,
-    effsize.UL = effsize.UL,
-    n = sample_size,
-    n.text = n.text,
-    conf.level = conf.level,
-    k = k,
-    k.parameter = k.parameter
-  )
+  subtitle <-
+    expr_template(
+      no.parameters = 1L,
+      stat.title = stat.title,
+      statistic.text = quote(italic("t")),
+      statistic = statistic,
+      parameter = stats_df$df[[1]],
+      p.value = stats_df$p.value[[1]],
+      effsize.text = quote(italic(xi)),
+      effsize.estimate = effsize.estimate,
+      effsize.LL = effsize.LL,
+      effsize.UL = effsize.UL,
+      n = sample_size,
+      n.text = n.text,
+      conf.level = conf.level,
+      k = k,
+      k.parameter = k.parameter
+    )
 
   # message about effect size measure
   if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)

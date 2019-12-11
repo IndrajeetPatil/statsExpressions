@@ -5,6 +5,8 @@ context("switch statements")
 testthat::test_that(
   desc = "switch for effct size type works",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
+
     testthat::expect_identical(effsize_type_switch(NULL), "unbiased")
     testthat::expect_identical(effsize_type_switch("none"), "unbiased")
     testthat::expect_identical(effsize_type_switch("d"), "biased")
@@ -27,6 +29,8 @@ testthat::test_that(
 testthat::test_that(
   desc = "switch for stats type works",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
+
     testthat::expect_identical(stats_type_switch(NULL), "parametric")
     testthat::expect_identical(stats_type_switch("p"), "parametric")
     testthat::expect_identical(stats_type_switch("pearson"), "parametric")

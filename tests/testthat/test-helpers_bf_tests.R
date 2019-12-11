@@ -5,7 +5,7 @@ context("helpers_bf_tests")
 testthat::test_that(
   desc = "bayes factor (correlation)",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # creating a dataframe
     set.seed(123)
@@ -30,7 +30,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "bayes factor (independent samples t-test)",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # from Bayes Factor
     df <- suppressMessages(statsExpressions::bf_extractor(
@@ -70,6 +70,8 @@ testthat::test_that(
 testthat::test_that(
   desc = "bayes factor (paired t-test)",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
+
     # data
     dat <- tidyr::spread(bugs_long, condition, desire) %>%
       dplyr::filter(.data = ., !is.na(HDLF), !is.na(HDHF))
@@ -117,7 +119,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "bayes factor (one sample t-test)",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # creating a dataframe
     set.seed(123)
@@ -158,7 +160,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "bayes factor (between-subjects - anova)",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # dataframe
     set.seed(123)
@@ -261,7 +263,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "bayes factor (within-subjects - anova)",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # dataframe
     dat <- WRS2::WineTasting
@@ -369,7 +371,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "bayes factor (proportion test)",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # extracting results from where this function is implemented
     set.seed(123)
@@ -420,7 +422,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "bayes factor (contingency tab)",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # extracting results from where this function is implemented
     set.seed(123)
@@ -559,7 +561,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "bayes factor caption maker check",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # bayes factor results
     set.seed(123)

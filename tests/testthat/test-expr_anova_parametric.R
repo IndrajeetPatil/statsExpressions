@@ -5,6 +5,7 @@ context("expr_anova_parametric - between-subjects")
 testthat::test_that(
   desc = "parametric anova subtitles work (without NAs)",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
 
     # statsExpression output
     set.seed(123)
@@ -63,6 +64,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "parametric anova subtitles work (with NAs)",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
 
     # output from statsExpression helper subtitle
     set.seed(123)
@@ -123,8 +125,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "parametric anova subtitles with partial omega-squared",
   code = {
-
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # statsExpression output
     set.seed(123)
@@ -182,8 +183,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "parametric anova subtitles with partial eta-squared and data with NAs",
   code = {
-
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # statsExpression output
     set.seed(123)
@@ -242,7 +242,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "parametric anova subtitles with partial eta-squared and data with NAs",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # statsExpression output
     # eta
@@ -351,15 +351,12 @@ testthat::test_that(
   }
 )
 
-
-context("expr_anova_parametric - within-subjects")
-
 # parametric repeated anova subtitles (basic) ---------------------------------
 
 testthat::test_that(
   desc = "parametric anova subtitles work (without NAs)",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # statsExpression output
     set.seed(123)
@@ -418,7 +415,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "parametric anova subtitles work (with NAs)",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # statsExpression output
     set.seed(123)
@@ -529,6 +526,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "parametric anova subtitles work (catch bad data)",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
     # statsExpression output
 
     # fake a data entry mistake
@@ -536,48 +534,50 @@ testthat::test_that(
 
     # sample size should be different
     set.seed(123)
-    using_function1 <- statsExpressions::expr_anova_parametric(
-      data = iris_long,
-      x = condition,
-      y = value,
-      paired = TRUE,
-      effsize.type = "eta",
-      partial = FALSE,
-      conf.level = 0.50,
-      messages = FALSE
-    )
+    using_function1 <-
+      statsExpressions::expr_anova_parametric(
+        data = iris_long,
+        x = condition,
+        y = value,
+        paired = TRUE,
+        effsize.type = "eta",
+        partial = FALSE,
+        conf.level = 0.50,
+        messages = FALSE
+      )
 
     # expected
-    results1 <- ggplot2::expr(
-      paste(
-        NULL,
-        italic("F"),
-        "(",
-        "1.28",
-        ",",
-        "189.93",
-        ") = ",
-        "686.64",
-        ", ",
-        italic("p"),
-        " = ",
-        "< 0.001",
-        ", ",
-        eta["p"]^2,
-        " = ",
-        "0.82",
-        ", CI"["50%"],
-        " [",
-        "0.81",
-        ", ",
-        "0.83",
-        "]",
-        ", ",
-        italic("n")["pairs"],
-        " = ",
-        149L
+    results1 <-
+      ggplot2::expr(
+        paste(
+          NULL,
+          italic("F"),
+          "(",
+          "1.28",
+          ",",
+          "189.93",
+          ") = ",
+          "686.64",
+          ", ",
+          italic("p"),
+          " = ",
+          "< 0.001",
+          ", ",
+          eta["p"]^2,
+          " = ",
+          "0.82",
+          ", CI"["50%"],
+          " [",
+          "0.81",
+          ", ",
+          "0.83",
+          "]",
+          ", ",
+          italic("n")["pairs"],
+          " = ",
+          149L
+        )
       )
-    )
 
     # testing overall call
     testthat::expect_identical(using_function1, results1)
@@ -589,6 +589,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "checking warning message when too few obs",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
     set.seed(123)
 
     # dataframe
@@ -648,13 +649,14 @@ testthat::test_that(
 
     # capture the message
     set.seed(123)
-    p_sub <- suppressWarnings(statsExpressions::expr_anova_parametric(
-      data = df,
-      x = x,
-      y = y,
-      paired = TRUE,
-      messages = FALSE
-    ))
+    p_sub <-
+      suppressWarnings(statsExpressions::expr_anova_parametric(
+        data = df,
+        x = x,
+        y = y,
+        paired = TRUE,
+        messages = FALSE
+      ))
 
     # check that
     testthat::expect_identical(

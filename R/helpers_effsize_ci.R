@@ -13,9 +13,9 @@
 #' @param tobject Object with the *t*-test specification.
 #' @inheritParams expr_t_parametric
 #'
+#' @importFrom rlang is_formula
 #' @importFrom stats t.test cor qt pt uniroot
 #' @importFrom tibble tibble
-#' @importFrom methods is
 #'
 #' @details
 #' This function is a rewrite of functionality provided in `lsr::cohensD` and
@@ -111,7 +111,7 @@ effsize_t_parametric <- function(formula = NULL,
 
   # -------------- input checking -------------------
 
-  if (!is(formula, "formula") | !is(data, "data.frame")) {
+  if (!rlang::is_formula(formula) | !is.data.frame(data)) {
     stop("arguments must include a formula and a data frame")
   }
   if (length(formula) == 2 & length(all.vars(formula)) > 1) {

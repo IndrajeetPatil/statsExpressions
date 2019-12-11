@@ -5,7 +5,7 @@ context("expr_anova_robust")
 testthat::test_that(
   desc = "expr_anova_robust works - between-subjects",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # ggstatsplot output
     set.seed(123)
@@ -115,7 +115,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "expr_anova_robust works - within-subjects",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # ggstatsplot output
     set.seed(123)
@@ -156,13 +156,14 @@ testthat::test_that(
 
     # ggstatsplot output
     set.seed(123)
-    using_function2 <- statsExpressions::expr_anova_robust(
-      data = iris_long,
-      x = condition,
-      y = value,
-      k = 3,
-      paired = TRUE
-    )
+    using_function2 <-
+      statsExpressions::expr_anova_robust(
+        data = iris_long,
+        x = condition,
+        y = value,
+        k = 3,
+        paired = TRUE
+      )
 
     # expected output
     set.seed(123)

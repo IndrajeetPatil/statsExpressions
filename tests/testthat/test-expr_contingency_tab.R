@@ -7,7 +7,7 @@ context("expr_contingency_tab")
 testthat::test_that(
   desc = "expr_contingency_tab works - data without NAs",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # ggstatsplot output
     set.seed(123)
@@ -109,6 +109,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "expr_contingency_tab works - data with NAs",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
 
     # introduce NAs
     # check that 2-by-2 doesn't produce continuity correction
@@ -162,16 +163,12 @@ testthat::test_that(
   }
 )
 
-# expr_contingency_tab_paired ---------------------------------------------
-
-context("expr_contingency_tab_paired")
-
 # paired data without NAs and counts data -------------------------------------
 
 testthat::test_that(
   desc = "paired expr_contingency_tab works - counts data without NAs",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # create data structure
     paired_data <-
@@ -251,6 +248,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "paired expr_contingency_tab works - with NAs",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
 
     # create data structure
     paired_data <-
@@ -343,6 +341,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "paired data 4-by-4",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
     set.seed(123)
 
     # making data
@@ -423,14 +422,12 @@ testthat::test_that(
 
 # expr_contingency_tab_gof -----------------------------------------
 
-context("expr_contingency_tab_gof")
-
 # checking subtitle (without counts) -----------------------------------------
 
 testthat::test_that(
   desc = "Goodness of Fit expr_contingency_tab works without counts",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # ggstatsplot output
     set.seed(123)
@@ -528,7 +525,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "Goodness of Fit expr_contingency_tab works with counts",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # ggstatsplot output
     set.seed(123)
@@ -583,7 +580,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "works with dataframes with NAs and with ratio",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # from function
     set.seed(123)
@@ -637,6 +634,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "works even in edge cases",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
     set.seed(123)
 
     # creating a dataframe

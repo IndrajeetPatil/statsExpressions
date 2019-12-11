@@ -5,6 +5,7 @@ context("expr_corr_test")
 testthat::test_that(
   desc = "expr_corr_test works - nonparametric",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
 
     # ggstatsplot output
     set.seed(123)
@@ -59,7 +60,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "expr_corr_test works - parametric",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # ggstatsplot output
     set.seed(123)
@@ -117,6 +118,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "expr_corr_test works - robust",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
 
     # using function
     set.seed(123)
@@ -175,7 +177,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "expr_corr_test works - bayes",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # using function
     set.seed(123)

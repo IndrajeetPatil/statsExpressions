@@ -5,6 +5,7 @@ context("expr_t_nonparametric")
 testthat::test_that(
   desc = "expr_t_nonparametric works - between-subjects design",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
 
     # ggstatsplot output
     set.seed(123)
@@ -58,6 +59,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "expr_t_nonparametric works - within-subjects design",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
 
     # made up data
     Input <- ("

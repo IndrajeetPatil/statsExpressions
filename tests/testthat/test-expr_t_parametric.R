@@ -5,6 +5,8 @@ context("expr_t_parametric")
 testthat::test_that(
   desc = "parametric t-test works (between-subjects without NAs)",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
+
     # ggstatsplot output
     set.seed(123)
     using_function1 <-
@@ -67,7 +69,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "parametric t-test works (between-subjects with NAs)",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # ggstatsplot output
     set.seed(123)
@@ -131,7 +133,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "parametric t-test works (within-subjects without NAs)",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # output from ggstatsplot helper subtitle
     set.seed(123)
@@ -150,34 +152,35 @@ testthat::test_that(
       ))
 
     # expected
-    expected <- ggplot2::expr(
-      paste(
-        NULL,
-        italic("t"),
-        "(",
-        "149",
-        ") = ",
-        "34.8152",
-        ", ",
-        italic("p"),
-        " = ",
-        "< 0.001",
-        ", ",
-        italic("g"),
-        " = ",
-        "2.8282",
-        ", CI"["50%"],
-        " [",
-        "2.7224",
-        ", ",
-        "2.9710",
-        "]",
-        ", ",
-        italic("n")["pairs"],
-        " = ",
-        150L
+    expected <-
+      ggplot2::expr(
+        paste(
+          NULL,
+          italic("t"),
+          "(",
+          "149",
+          ") = ",
+          "34.8152",
+          ", ",
+          italic("p"),
+          " = ",
+          "< 0.001",
+          ", ",
+          italic("g"),
+          " = ",
+          "2.8282",
+          ", CI"["50%"],
+          " [",
+          "2.7224",
+          ", ",
+          "2.9710",
+          "]",
+          ", ",
+          italic("n")["pairs"],
+          " = ",
+          150L
+        )
       )
-    )
 
     # testing overall call
     testthat::expect_identical(subtitle, expected)
@@ -190,7 +193,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "parametric t-test works (within-subjects with NAs)",
   code = {
-
+    testthat::skip_if(getRversion() < "3.6")
 
     # output from ggstatsplot helper subtitle
     set.seed(123)
@@ -206,34 +209,35 @@ testthat::test_that(
       )
 
     # expected
-    expected <- ggplot2::expr(
-      paste(
-        NULL,
-        italic("t"),
-        "(",
-        "89",
-        ") = ",
-        "3.613",
-        ", ",
-        italic("p"),
-        " = ",
-        "< 0.001",
-        ", ",
-        italic("d"),
-        " = ",
-        "0.381",
-        ", CI"["95%"],
-        " [",
-        "0.167",
-        ", ",
-        "0.597",
-        "]",
-        ", ",
-        italic("n")["pairs"],
-        " = ",
-        90L
+    expected <-
+      ggplot2::expr(
+        paste(
+          NULL,
+          italic("t"),
+          "(",
+          "89",
+          ") = ",
+          "3.613",
+          ", ",
+          italic("p"),
+          " = ",
+          "< 0.001",
+          ", ",
+          italic("d"),
+          " = ",
+          "0.381",
+          ", CI"["95%"],
+          " [",
+          "0.167",
+          ", ",
+          "0.597",
+          "]",
+          ", ",
+          italic("n")["pairs"],
+          " = ",
+          90L
+        )
       )
-    )
 
     # testing overall call
     testthat::expect_identical(subtitle, expected)

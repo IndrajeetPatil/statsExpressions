@@ -122,13 +122,14 @@ expr_t_onesample <- function(data,
     }
 
     # creating model object
-    mod_object <- stats::t.test(
-      x = data %>% dplyr::pull({{ x }}),
-      mu = test.value,
-      conf.level = conf.level,
-      alternative = "two.sided",
-      na.action = na.omit
-    )
+    mod_object <-
+      stats::t.test(
+        x = data %>% dplyr::pull({{ x }}),
+        mu = test.value,
+        conf.level = conf.level,
+        alternative = "two.sided",
+        na.action = na.omit
+      )
 
     # tidy dataframe
     stats_df <- broomExtra::tidy(mod_object)
@@ -191,36 +192,38 @@ expr_t_onesample <- function(data,
 
   # preparing subtitle
   if (stats.type %in% c("parametric", "nonparametric")) {
-    subtitle <- expr_template(
-      no.parameters = no.parameters,
-      parameter = parameter,
-      stat.title = stat.title,
-      statistic.text = statistic.text,
-      statistic = stats_df$statistic[[1]],
-      p.value = stats_df$p.value[[1]],
-      effsize.text = effsize.text,
-      effsize.estimate = effsize_df$estimate[[1]],
-      effsize.LL = effsize_df$conf.low[[1]],
-      effsize.UL = effsize_df$conf.high[[1]],
-      n = sample_size,
-      n.text = quote(italic("n")["obs"]),
-      conf.level = conf.level,
-      k = k,
-      k.parameter = 0L
-    )
+    subtitle <-
+      expr_template(
+        no.parameters = no.parameters,
+        parameter = parameter,
+        stat.title = stat.title,
+        statistic.text = statistic.text,
+        statistic = stats_df$statistic[[1]],
+        p.value = stats_df$p.value[[1]],
+        effsize.text = effsize.text,
+        effsize.estimate = effsize_df$estimate[[1]],
+        effsize.LL = effsize_df$conf.low[[1]],
+        effsize.UL = effsize_df$conf.high[[1]],
+        n = sample_size,
+        n.text = quote(italic("n")["obs"]),
+        conf.level = conf.level,
+        k = k,
+        k.parameter = 0L
+      )
   }
 
   # ======================= robust =========================================
 
   if (stats.type == "robust") {
     # running one-sample percentile bootstrap
-    stats_df <- WRS2::onesampb(
-      x = data %>% dplyr::pull({{ x }}),
-      est = robust.estimator,
-      nboot = nboot,
-      nv = test.value,
-      alpha = 1 - conf.level
-    )
+    stats_df <-
+      WRS2::onesampb(
+        x = data %>% dplyr::pull({{ x }}),
+        est = robust.estimator,
+        nboot = nboot,
+        nv = test.value,
+        alpha = 1 - conf.level
+      )
 
     # displaying message about bootstrap
     if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)
