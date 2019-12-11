@@ -1,11 +1,11 @@
 ## Test environments
-* local OS X install, R 3.6.0
+* local Windows install, R 3.6.1
 * ubuntu 14.04 on travis-ci (devel and release)
-* win-builder (devel and release)
+* win-builder on appveyor (devel and release)
 
 ## R CMD check results
 
 0 errors | 0 warnings | 0 notes
 
-- This release fixes tests that are failing with the new release of `rcompanion`.
+- This release fixes tests to address failing checks on CRAN.
 

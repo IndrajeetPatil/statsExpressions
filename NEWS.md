@@ -1,4 +1,6 @@
-# statsExpressions 0.1.1.9000
+# statsExpressions 0.1.2
+
+  - Maintenance release to fix additional check issues on CRAN.
 
 # statsExpressions 0.1.1
 
