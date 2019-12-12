@@ -589,6 +589,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "checking warning message when too few obs",
   code = {
+    testthat::skip_on_cran()
     testthat::skip_if(getRversion() < "3.6")
     set.seed(123)
 
