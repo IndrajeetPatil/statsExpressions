@@ -253,8 +253,7 @@ bf_corr_test <- function(data,
 #'   (1974) `"a"` parameter.
 #'
 #' @importFrom BayesFactor contingencyTableBF logMeanExpLogs
-#' @importFrom stats dmultinom
-#' @importFrom MCMCpack rdirichlet
+#' @importFrom stats dmultinom rgamma
 #' @importFrom dplyr pull select rename mutate
 #' @importFrom tidyr uncount drop_na
 #'
@@ -415,7 +414,16 @@ bf_contingency_tab <- function(data,
 
     # estimate log prob of data under null with Monte Carlo
     M <- 100000
-    p1s <- MCMCpack::rdirichlet(n = M, alpha = prior.concentration * ratio)
+
+    # rdirichlet function
+    rdirichlet_int <- function(n, alpha) {
+      l <- length(alpha)
+      x <- matrix(stats::rgamma(l * n, alpha), ncol = l, byrow = TRUE)
+      sm <- x %*% rep(1, l)
+      return(x / as.vector(sm))
+    }
+    p1s <- rdirichlet_int(n = M, alpha = prior.concentration * ratio)
+
     tmp_pr_h1 <-
       sapply(
         X = 1:M,

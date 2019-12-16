@@ -1,8 +1,10 @@
 # statsExpressions 0.1.2.9000
 
+  - Removes `MCMCpack` from `Depends`.
+
 # statsExpressions 0.1.2
 
-  - Maintenance release to fix additional check issues on CRAN.
+  - Maintenance release to fix additional check issues on `CRAN`.
 
 # statsExpressions 0.1.1
 
