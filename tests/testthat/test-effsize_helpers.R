@@ -829,37 +829,19 @@ testthat::test_that(
         conf.type = "perc"
       ))
 
-    # bca
-    set.seed(123)
-    df3 <-
-      suppressWarnings(statsExpressions:::t1way_ci(
-        data = dplyr::filter(.data = ggplot2::msleep, vore != "insecti"),
-        x = vore,
-        y = brainwt,
-        nboot = 50,
-        conf.level = 0.99,
-        tr = 0.05,
-        conf.type = c("bca")
-      ))
-
     # test normal CI
-    testthat::expect_equal(df1$xi, 0.7639015, tolerance = 0.00002)
+    testthat::expect_equal(df1$estimate, 0.5423793, tolerance = 0.00002)
     testthat::expect_equal(df1$conf.low, 0.06259349, tolerance = 0.00002)
     testthat::expect_equal(df1$conf.high, 1.838343, tolerance = 0.00002)
-    testthat::expect_equal(df1$F.value, 0.6146867, tolerance = 0.00002)
+    testthat::expect_equal(df1$statistic, 0.6146867, tolerance = 0.00002)
     testthat::expect_equal(df1$p.value, 0.5487093, tolerance = 0.00002)
 
     # test percentile CI
-    testthat::expect_equal(df2$xi, 1.452066, tolerance = 0.00002)
+    testthat::expect_equal(df2$estimate, 1.295478, tolerance = 0.00002)
     testthat::expect_equal(df2$conf.low, 0.1435678, tolerance = 0.00002)
     testthat::expect_equal(df2$conf.high, 2.357306, tolerance = 0.00002)
-    testthat::expect_equal(df2$F.value, 0.260884, tolerance = 0.00002)
+    testthat::expect_equal(df2$statistic, 0.260884, tolerance = 0.00002)
     testthat::expect_equal(df2$p.value, 0.772501, tolerance = 0.00002)
-
-    # test bca
-    testthat::expect_equal(df3$xi, 0.5664255, tolerance = 0.00002)
-    testthat::expect_equal(df3$conf.low, 0.2904682, tolerance = 0.00002)
-    testthat::expect_equal(df3$conf.high, 1.724382, tolerance = 0.00002)
   }
 )
 
@@ -896,53 +878,21 @@ testthat::test_that(
         conf.type = "basic"
       )
 
-    # percentile CI
-    set.seed(123)
-    df3 <-
-      statsExpressions:::yuend_ci(
-        data = mydata1,
-        x = vore,
-        y = brainwt,
-        conf.level = 0.50,
-        conf.type = "perc"
-      )
-
-    # bca CI
-    set.seed(123)
-    df4 <-
-      suppressWarnings(statsExpressions:::yuend_ci(
-        data = mydata1,
-        x = vore,
-        y = brainwt,
-        conf.level = 0.85,
-        conf.type = "bca"
-      ))
-
     # testing (dataframe without NAs)
-    testthat::expect_equal(df1$t.value, 6.082871, tolerance = 0.001)
-    testthat::expect_equal(df1$xi, 0.7881904, tolerance = 0.0001)
+    testthat::expect_equal(df1$statistic, 6.082871, tolerance = 0.001)
+    testthat::expect_equal(df1$estimate, 0.7881904, tolerance = 0.0001)
     testthat::expect_equal(df1$conf.low, 0.5830343, tolerance = 0.0001)
     testthat::expect_equal(df1$conf.high, 0.8415761, tolerance = 0.001)
     testthat::expect_equal(df1$df, 10L)
     testthat::expect_equal(df1$p.value, 0.0001183419, tolerance = 0.00001)
 
     # testing (dataframe with NAs)
-    testthat::expect_equal(df2$t.value, 0.8617648, tolerance = 0.001)
-    testthat::expect_equal(df2$xi, 0.9279336, tolerance = 0.0001)
+    testthat::expect_equal(df2$statistic, 0.8617648, tolerance = 0.001)
+    testthat::expect_equal(df2$estimate, 0.9279336, tolerance = 0.0001)
     testthat::expect_equal(df2$conf.low, 0.9642619, tolerance = 0.0001)
     testthat::expect_equal(df2$conf.high, 1.798206, tolerance = 0.001)
     testthat::expect_equal(df2$df, 14L)
     testthat::expect_equal(df2$p.value, 0.4033365, tolerance = 0.000001)
-
-    # testing (dataframe with NAs + percentile CI)
-    testthat::expect_equal(df3$xi, 0.9279336, tolerance = 0.0001)
-    testthat::expect_equal(df3$conf.low, 0.22922, tolerance = 0.0001)
-    testthat::expect_equal(df3$conf.high, 0.4790643, tolerance = 0.0001)
-
-    # testing (dataframe with NAs + bca CI)
-    testthat::expect_equal(df4$xi, 0.9279336, tolerance = 0.0001)
-    testthat::expect_equal(df4$conf.low, 0.9981894, tolerance = 0.0001)
-    testthat::expect_equal(df4$conf.high, 0.9981894, tolerance = 0.0001)
   }
 )
 
@@ -973,30 +923,6 @@ testthat::test_that(
     mtcars2[1, 1] <- NA
     set.seed(123)
 
-    # this also makes sure that the quoted arguments work
-    df2 <-
-      suppressWarnings(statsExpressions:::robcor_ci(
-        data = mtcars2,
-        x = "hp",
-        y = "mpg",
-        beta = .01,
-        nboot = 125,
-        conf.level = .99,
-        conf.type = c("basic")
-      ))
-
-    # percentile CI
-    set.seed(123)
-    df3 <- suppressWarnings(statsExpressions:::robcor_ci(
-      data = ggplot2::msleep,
-      x = brainwt,
-      y = sleep_rem,
-      beta = 0.1,
-      nboot = 55,
-      conf.level = 0.99,
-      conf.type = "perc"
-    ))
-
     # bca CI
     set.seed(123)
     df4 <- suppressWarnings(statsExpressions:::robcor_ci(
@@ -1016,24 +942,6 @@ testthat::test_that(
     testthat::expect_equal(df1$p.value, 2.933186e-08, tolerance = 0.00001)
     testthat::expect_equal(df1$statistic, -7.412179, tolerance = 0.00001)
     testthat::expect_identical(class(df1)[[1]], "tbl_df")
-
-    # data with NAs
-    testthat::expect_equal(df2$estimate, -0.8052814, tolerance = 0.00001)
-    testthat::expect_equal(df2$conf.low, -0.9576768, tolerance = 0.00001)
-    testthat::expect_equal(df2$conf.high, -0.717556, tolerance = 0.00001)
-    testthat::expect_equal(df2$p.value, 4.677899e-08, tolerance = 0.00001)
-    testthat::expect_equal(df2$statistic, -7.314263, tolerance = 0.00001)
-
-    # percentile CI
-    testthat::expect_equal(df3$estimate, -0.3956043, tolerance = 0.00001)
-    testthat::expect_equal(df3$conf.low, -0.5488374, tolerance = 0.00001)
-    testthat::expect_equal(df3$conf.high, -0.1557196, tolerance = 0.00001)
-    testthat::expect_equal(df3$p.value, 0.005384018, tolerance = 0.00001)
-    testthat::expect_equal(df3$statistic, -2.921448, tolerance = 0.00001)
-    testthat::expect_equal(df3$conf, 0.99, tolerance = 0.001)
-    testthat::expect_equal(df3$beta, 0.1, tolerance = 0.01)
-    testthat::expect_equal(df3$nboot, 55L)
-    testthat::expect_equal(df3$n, 48L)
 
     # bca CI
     testthat::expect_equal(df4$estimate, -0.4085762, tolerance = 0.00001)

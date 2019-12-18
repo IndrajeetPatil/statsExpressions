@@ -317,10 +317,10 @@ effsize_t_parametric <- function(formula = NULL,
 #' @inheritDotParams boot::boot
 #'
 #' @importFrom tibble as_tibble
-#' @importFrom dplyr select
+#' @importFrom dplyr select contains
+#' @importFrom boot boot
 #' @importFrom rlang !! enquo
 #' @importFrom WRS2 t1way
-#' @importFrom boot boot boot.ci
 #'
 #' @examples
 #' # for reproducibility
@@ -344,11 +344,8 @@ t1way_ci <- function(data,
                      conf.type = "norm",
                      ...) {
   # creating a dataframe from entered data
-  data <- dplyr::select(
-    .data = data,
-    x = !!rlang::enquo(x),
-    y = !!rlang::enquo(y)
-  ) %>%
+  data %<>%
+    dplyr::select(.data = ., x = {{ x }}, y = {{ y }}) %>%
     dplyr::filter(.data = ., !is.na(x), !is.na(y)) %>%
     dplyr::mutate(.data = ., x = droplevels(as.factor(x))) %>%
     tibble::as_tibble(x = .)
@@ -365,6 +362,7 @@ t1way_ci <- function(data,
   xici <- function(formula, data, tr, indices) {
     # allows boot to select sample
     d <- data[indices, ]
+
     # running the function
     fit <-
       WRS2::t1way(
@@ -378,78 +376,19 @@ t1way_ci <- function(data,
   }
 
   # save the bootstrapped results to an object
-  bootobj <- boot::boot(
-    data = data,
-    statistic = xici,
-    R = nboot,
-    formula = y ~ x,
-    tr = tr,
-    parallel = "multicore",
-    ...
-  )
-
-  # get 95% CI from the bootstrapped object
-  bootci <- boot::boot.ci(
-    boot.out = bootobj,
-    conf = conf.level,
-    type = conf.type
-  )
-
-  # extracting ci part
-  if (conf.type == "norm") {
-    ci <- bootci$normal
-  } else if (conf.type == "basic") {
-    ci <- bootci$basic
-  } else if (conf.type == "perc") {
-    ci <- bootci$perc
-  } else if (conf.type == "bca") {
-    ci <- bootci$bca
-  }
-
-  # preparing a dataframe out of the results
-  results_df <-
-    tibble::as_tibble(
-      x = cbind.data.frame(
-        "xi" = bootci$t0,
-        ci,
-        "F.value" = fit$test,
-        "df1" = fit$df1,
-        "df2" = fit$df2,
-        "p.value" = fit$p.value,
-        "nboot" = bootci$R,
-        tr
-      )
+  bootobj <-
+    boot::boot(
+      data = data,
+      statistic = xici,
+      R = nboot,
+      formula = y ~ x,
+      tr = tr,
+      parallel = "multicore",
+      ...
     )
 
-  # selecting the columns corresponding to the confidence intervals
-  if (conf.type == "norm") {
-    results_df %<>%
-      dplyr::select(
-        .data = .,
-        xi,
-        conf.low = V2,
-        conf.high = V3,
-        F.value,
-        df1,
-        df2,
-        dplyr::everything()
-      )
-  } else {
-    results_df %<>%
-      dplyr::select(
-        .data = .,
-        xi,
-        conf.low = V4,
-        conf.high = V5,
-        F.value,
-        df1,
-        df2,
-        dplyr::everything()
-      )
-  }
-
-  # returning the results
-  return(results_df)
+  # extracting all details with the custom function
+  return(extract_boot_output(bootobj, fit, conf.type, conf.level))
 }
 
 #' @title Paired samples robust *t*-tests with confidence
@@ -461,11 +400,7 @@ t1way_ci <- function(data,
 #' @inheritParams t1way_ci
 #' @inheritDotParams boot::boot
 #'
-#' @importFrom tibble as_tibble
-#' @importFrom dplyr select
-#' @importFrom rlang !! enquo
 #' @importFrom WRS2 yuend
-#' @importFrom boot boot boot.ci
 #'
 #' @examples
 #'
@@ -495,12 +430,8 @@ yuend_ci <- function(data,
                      conf.type = "norm",
                      ...) {
   # creating a dataframe from entered data
-  data <-
-    dplyr::select(
-      .data = data,
-      x = !!rlang::enquo(x),
-      y = !!rlang::enquo(y)
-    ) %>%
+  data %<>%
+    dplyr::select(.data = ., x = {{ x }}, y = {{ y }}) %>%
     dplyr::filter(.data = ., !is.na(x), !is.na(y)) %>%
     dplyr::mutate(.data = ., x = droplevels(as.factor(x))) %>%
     tibble::as_tibble(x = .)
@@ -512,12 +443,7 @@ yuend_ci <- function(data,
   sample_size <- nrow(data_wide)
 
   # running robust one-way anova
-  fit <-
-    WRS2::yuend(
-      x = data_wide[2],
-      y = data_wide[3],
-      tr = tr
-    )
+  fit <- WRS2::yuend(x = data_wide[2], y = data_wide[3], tr = tr)
 
   # function to obtain 95% CI for xi
   xici <- function(data, tr, indices) {
@@ -525,87 +451,25 @@ yuend_ci <- function(data,
     d <- data[indices, ]
 
     # running the function
-    fit <-
-      WRS2::yuend(
-        x = d[2],
-        y = d[3],
-        tr = tr
-      )
+    fit <- WRS2::yuend(x = d[2], y = d[3], tr = tr)
 
     # return the value of interest: effect size
     return(fit$effsize)
   }
 
   # save the bootstrapped results to an object
-  bootobj <- boot::boot(
-    statistic = xici,
-    R = nboot,
-    data = data_wide,
-    tr = tr,
-    parallel = "multicore",
-    ...
-  )
-
-  # get 95% CI from the bootstrapped object
-  bootci <- boot::boot.ci(
-    boot.out = bootobj,
-    conf = conf.level,
-    type = conf.type
-  )
-
-  # extracting ci part
-  if (conf.type == "norm") {
-    ci <- bootci$normal
-  } else if (conf.type == "basic") {
-    ci <- bootci$basic
-  } else if (conf.type == "perc") {
-    ci <- bootci$perc
-  } else if (conf.type == "bca") {
-    ci <- bootci$bca
-  }
-
-  # preparing a dataframe out of the results
-  results_df <-
-    tibble::as_tibble(
-      x = cbind.data.frame(
-        "xi" = bootci$t0,
-        ci,
-        "t.value" = fit$test,
-        "df" = fit$df,
-        "p.value" = fit$p.value,
-        "nboot" = bootci$R,
-        tr,
-        n = sample_size
-      )
+  bootobj <-
+    boot::boot(
+      statistic = xici,
+      R = nboot,
+      data = data_wide,
+      tr = tr,
+      parallel = "multicore",
+      ...
     )
 
-  # selecting the columns corresponding to the confidence intervals
-  if (conf.type == "norm") {
-    results_df %<>%
-      dplyr::select(
-        .data = .,
-        xi,
-        conf.low = V2,
-        conf.high = V3,
-        t.value,
-        df,
-        dplyr::everything()
-      )
-  } else {
-    results_df %<>%
-      dplyr::select(
-        .data = .,
-        xi,
-        conf.low = V4,
-        conf.high = V5,
-        t.value,
-        df,
-        dplyr::everything()
-      )
-  }
-
-  # returning the results
-  return(results_df)
+  # extracting all details with the custom function
+  return(extract_boot_output(bootobj, fit, conf.type, conf.level))
 }
 
 #' @title Robust correlation coefficient and its confidence interval
@@ -623,11 +487,7 @@ yuend_ci <- function(data,
 #' @inheritParams t1way_ci
 #' @inheritDotParams boot::boot
 #'
-#' @importFrom tibble as_tibble
-#' @importFrom dplyr select
-#' @importFrom rlang !! enquo
 #' @importFrom WRS2 pbcor
-#' @importFrom boot boot boot.ci
 #'
 #' @examples
 #'
@@ -656,102 +516,83 @@ robcor_ci <- function(data,
                       conf.type = "norm",
                       ...) {
   # creating a dataframe from entered data
-  data <-
-    dplyr::select(
-      .data = data,
-      x = !!rlang::enquo(x),
-      y = !!rlang::enquo(y)
-    ) %>%
+  data %<>%
+    dplyr::select(.data = ., x = {{ x }}, y = {{ y }}) %>%
     dplyr::filter(.data = ., !is.na(x), !is.na(y)) %>%
     tibble::as_tibble(x = .)
 
   # getting the p.value for the correlation coefficient
-  fit <-
-    WRS2::pbcor(
-      x = data$x,
-      y = data$y,
-      beta = beta
-    )
+  fit <- WRS2::pbcor(x = data$x, y = data$y, beta = beta)
 
   # function to obtain 95% CI for xi
   robcor_ci <- function(data, x, y, beta = beta, indices) {
     # allows boot to select sample
     d <- data[indices, ]
-    # allows boot to select sample
-    fit <-
-      WRS2::pbcor(
-        x = d$x,
-        y = d$y,
-        beta = beta
-      )
+
+    # correlation object
+    fit <- WRS2::pbcor(x = d$x, y = d$y, beta = beta)
 
     # return the value of interest: correlation coefficient
     return(fit$cor)
   }
 
   # save the bootstrapped results to an object
-  bootobj <- boot::boot(
-    data = data,
-    statistic = robcor_ci,
-    R = nboot,
-    x = x,
-    y = y,
-    beta = beta,
-    parallel = "multicore",
-    ...
-  )
+  bootobj <-
+    boot::boot(
+      data = data,
+      statistic = robcor_ci,
+      R = nboot,
+      x = x,
+      y = y,
+      beta = beta,
+      parallel = "multicore",
+      ...
+    )
 
+  # extracting all details with the custom function
+  return(extract_boot_output(bootobj, fit, conf.type, conf.level))
+}
+
+
+#' @name extract_boot_output
+#'
+#' @importFrom dplyr select contains rename rename_all recode bind_cols
+#' @importFrom purrr pluck
+#' @importFrom boot boot boot.ci
+#'
+#' @noRd
+
+# extract CI
+extract_boot_output <- function(bootobj, fit, conf.type, conf.level) {
   # get 95% CI from the bootstrapped object
-  bootci <- boot::boot.ci(
-    boot.out = bootobj,
-    conf = conf.level,
-    type = conf.type
-  )
+  bootci <- boot::boot.ci(boot.out = bootobj, conf = conf.level, type = conf.type)
 
   # extracting ci part
-  if (conf.type == "norm") {
-    ci <- bootci$normal
-  } else if (conf.type == "basic") {
-    ci <- bootci$basic
-  } else if (conf.type == "perc") {
-    ci <- bootci$perc
-  } else if (conf.type == "bca") {
-    ci <- bootci$bca
+  ci <- purrr::pluck(bootci, dplyr::contains(conf.type, TRUE, names(bootci)))
+
+  # function to clean WRS object
+  wrs_cleaning <- function(wrs_obj) {
+    x <- unlist(wrs_obj)
+    x[length(x)] <- NULL
+    tibble::as_tibble(x)
   }
 
-  # preparing a dataframe out of the results
+  # combining
   results_df <-
-    tibble::as_tibble(x = cbind.data.frame(
-      "estimate" = bootci$t0,
-      ci,
-      "p.value" = fit$p.value,
-      "statistic" = fit$test[[1]],
-      "n" = fit$n,
-      "nboot" = bootci$R,
-      beta
-    ))
+    dplyr::bind_cols(wrs_cleaning(fit), tibble::as_tibble(as.data.frame(ci))) %>%
+    dplyr::rename_all(
+      .tbl = .,
+      .funs = dplyr::recode,
+      effsize = "estimate",
+      cor = "estimate",
+      test = "statistic",
+      se = "std.error"
+    )
 
   # selecting the columns corresponding to the confidence intervals
   if (conf.type == "norm") {
-    results_df %<>%
-      dplyr::select(
-        .data = .,
-        estimate,
-        conf.low = V2,
-        conf.high = V3,
-        dplyr::everything()
-      )
+    return(results_df %>% dplyr::rename(.data = ., conf.low = V2, conf.high = V3))
   } else {
-    results_df %<>%
-      dplyr::select(
-        .data = .,
-        estimate,
-        conf.low = V4,
-        conf.high = V5,
-        dplyr::everything()
-      )
+    return(results_df %>% dplyr::rename(.data = ., conf.low = V4, conf.high = V5))
   }
-
-  # returning the results
-  return(results_df)
 }
