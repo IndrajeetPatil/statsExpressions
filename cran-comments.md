@@ -7,5 +7,6 @@
 
 0 errors | 0 warnings | 0 notes
 
-- This release fixes tests to address failing checks on CRAN.
+- Minor updates to make the package compatible with the upcoming release of
+`ggstatsplot`.
 
