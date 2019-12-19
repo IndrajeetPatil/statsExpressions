@@ -511,8 +511,8 @@ expr_t_robust <- function(data,
 
     # subtitle parameters
     k.parameter <- 0L
-    statistic <- stats_df$t.value[[1]]
-    effsize.estimate <- stats_df$xi[[1]]
+    statistic <- stats_df$statistic[[1]]
+    effsize.estimate <- stats_df$estimate[[1]]
     effsize.LL <- stats_df$conf.low[[1]]
     effsize.UL <- stats_df$conf.high[[1]]
     n.text <- quote(italic("n")["pairs"])
