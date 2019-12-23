@@ -11,7 +11,7 @@ testthat::test_that(
     set.seed(123)
     using_function <-
       suppressWarnings(statsExpressions::expr_corr_test(
-        data = movies_long,
+        data = dplyr::sample_frac(movies_long, 0.05),
         x = rating,
         y = "length",
         type = "nonparametric",
@@ -28,25 +28,25 @@ testthat::test_that(
           NULL,
           "log"["e"](italic("S")),
           " = ",
-          "19.67322",
+          "10.63231",
           ", ",
           italic("p"),
           " = ",
           "< 0.001",
           ", ",
-          widehat(italic(rho)["Spearman"]),
+          widehat(italic(rho))["Spearman"],
           " = ",
-          "0.46669",
+          "0.49546",
           ", CI"["99.9%"],
           " [",
-          "0.39467",
+          "0.26846",
           ", ",
-          "0.54406",
+          "0.73574",
           "]",
           ", ",
           italic("n")["pairs"],
           " = ",
-          1579L
+          79L
         )
       )
 
@@ -92,7 +92,7 @@ testthat::test_that(
           " = ",
           "0.131",
           ", ",
-          widehat(italic("r")["Pearson"]),
+          widehat(italic("r"))["Pearson"],
           " = ",
           "-0.221",
           ", CI"["90%"],
@@ -150,7 +150,7 @@ testthat::test_that(
           " = ",
           "< 0.001",
           ", ",
-          widehat(italic(rho)["pb"]),
+          widehat(italic(rho))["pb"],
           " = ",
           "-0.5696",
           ", CI"["50%"],

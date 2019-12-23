@@ -11,9 +11,9 @@ testthat::test_that(
     set.seed(123)
     using_function <-
       statsExpressions::expr_t_nonparametric(
-        data = dplyr::filter(movies_long, genre == "Action" | genre == "Drama"),
-        x = genre,
-        y = length,
+        data = mtcars,
+        x = am,
+        y = wt,
         k = 3,
         conf.level = 0.90,
         messages = TRUE
@@ -27,25 +27,25 @@ testthat::test_that(
           NULL,
           "log"["e"](italic("W")),
           " = ",
-          "10.408",
+          "5.440",
           ", ",
           italic("p"),
           " = ",
-          "0.001",
+          "< 0.001",
           ", ",
-          widehat(italic(r)),
+          widehat(italic("r")),
           " = ",
-          "-0.133",
+          "0.727",
           ", CI"["90%"],
           " [",
-          "-0.195",
+          "0.596",
           ", ",
-          "-0.073",
+          "0.893",
           "]",
           ", ",
           italic("n")["obs"],
           " = ",
-          614L
+          32L
         )
       )
 
@@ -131,7 +131,7 @@ testthat::test_that(
           " = ",
           "0.00295",
           ", ",
-          widehat(italic(r)),
+          widehat(italic("r")),
           " = ",
           "-0.75000",
           ", CI"["99%"],

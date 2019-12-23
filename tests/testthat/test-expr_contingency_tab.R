@@ -40,7 +40,7 @@ testthat::test_that(
           " = ",
           "< 0.001",
           ", ",
-          widehat(italic("V")["Cramer"]),
+          widehat(italic("V"))["Cramer"],
           " = ",
           "0.29412",
           ", CI"["99%"],
@@ -61,13 +61,14 @@ testthat::test_that(
 
     # with counts
     set.seed(123)
-    using_function2 <- statsExpressions::expr_contingency_tab(
-      data = as.data.frame(Titanic),
-      x = Sex,
-      y = Survived,
-      counts = "Freq",
-      messages = FALSE
-    )
+    using_function2 <-
+      statsExpressions::expr_contingency_tab(
+        data = as.data.frame(Titanic),
+        x = Sex,
+        y = Survived,
+        counts = "Freq",
+        messages = FALSE
+      )
 
     results2 <-
       ggplot2::expr(
@@ -83,7 +84,7 @@ testthat::test_that(
           " = ",
           "< 0.001",
           ", ",
-          widehat(italic("V")["Cramer"]),
+          widehat(italic("V"))["Cramer"],
           " = ",
           "0.46",
           ", CI"["95%"],
@@ -142,7 +143,7 @@ testthat::test_that(
           " = ",
           "0.392",
           ", ",
-          widehat(italic("V")["Cramer"]),
+          widehat(italic("V"))["Cramer"],
           " = ",
           "0.32",
           ", CI"["99%"],
@@ -222,7 +223,7 @@ testthat::test_that(
           " = ",
           "< 0.001",
           ", ",
-          widehat(italic("g")["Cohen"]),
+          widehat(italic("g"))["Cohen"],
           " = ",
           "-0.33333",
           ", CI"["95%"],
@@ -315,7 +316,7 @@ testthat::test_that(
           " = ",
           "< 0.001",
           ", ",
-          widehat(italic("g")["Cohen"]),
+          widehat(italic("g"))["Cohen"],
           " = ",
           "-0.333",
           ", CI"["90%"],
@@ -399,7 +400,7 @@ testthat::test_that(
           " = ",
           "NaN",
           ", ",
-          widehat(italic("g")["Cohen"]),
+          widehat(italic("g"))["Cohen"],
           " = ",
           "0.4344",
           ", CI"["99%"],
@@ -457,7 +458,7 @@ testthat::test_that(
           " = ",
           "0.28884",
           ", ",
-          widehat(italic("V")["Cramer"]),
+          widehat(italic("V"))["Cramer"],
           " = ",
           "0.18750",
           ", CI"["99%"],
@@ -499,7 +500,7 @@ testthat::test_that(
           " = ",
           "< 0.001",
           ", ",
-          widehat(italic("V")["Cramer"]),
+          widehat(italic("V"))["Cramer"],
           " = ",
           "0.57",
           ", CI"["95%"],
@@ -554,7 +555,7 @@ testthat::test_that(
           " = ",
           "< 0.001",
           ", ",
-          widehat(italic("V")["Cramer"]),
+          widehat(italic("V"))["Cramer"],
           " = ",
           "0.573",
           ", CI"["95%"],
@@ -608,7 +609,7 @@ testthat::test_that(
           " = ",
           "< 0.001",
           ", ",
-          widehat(italic("V")["Cramer"]),
+          widehat(italic("V"))["Cramer"],
           " = ",
           "0.38",
           ", CI"["95%"],
@@ -675,7 +676,7 @@ testthat::test_that(
           " = ",
           "0.223",
           ", ",
-          widehat(italic("V")["Cramer"]),
+          widehat(italic("V"))["Cramer"],
           " = ",
           "NaN",
           ", CI"["95%"],

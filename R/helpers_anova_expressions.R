@@ -133,9 +133,9 @@ expr_anova_parametric <- function(data,
   if (effsize.type == "unbiased") {
     effsize <- "omega"
     if (isTRUE(partial)) {
-      effsize.text <- quote(omega["p"]^2)
+      effsize.text <- quote(widehat(omega["p"]^2))
     } else {
-      effsize.text <- quote(omega^2)
+      effsize.text <- quote(widehat(omega^2))
     }
   }
 
@@ -143,9 +143,9 @@ expr_anova_parametric <- function(data,
   if (effsize.type == "biased") {
     effsize <- "eta"
     if (isTRUE(partial)) {
-      effsize.text <- quote(eta["p"]^2)
+      effsize.text <- quote(widehat(eta["p"]^2))
     } else {
-      effsize.text <- quote(eta^2)
+      effsize.text <- quote(widehat(eta^2))
     }
   }
 
@@ -407,7 +407,7 @@ expr_anova_nonparametric <- function(data,
       ))
 
     # text for effect size
-    effsize.text <- quote(italic("W")["Kendall"])
+    effsize.text <- quote(widehat(italic("W"))["Kendall"])
   }
 
   # ------------------- between-subjects design ------------------------------
@@ -444,7 +444,7 @@ expr_anova_nonparametric <- function(data,
       rcompanion_cleaner(object = ., estimate.col = "epsilon.squared")
 
     # text for effect size
-    effsize.text <- quote(epsilon^2)
+    effsize.text <- quote(widehat(epsilon^2))
   }
 
   # message about effect size measure
@@ -638,7 +638,7 @@ expr_anova_robust <- function(data,
         parameter = stats_df$df1[[1]],
         parameter2 = stats_df$df2[[1]],
         p.value = stats_df$p.value[[1]],
-        effsize.text = quote(italic(xi)),
+        effsize.text = quote(widehat(italic(xi))),
         effsize.estimate = stats_df$estimate[[1]][[1]],
         effsize.LL = stats_df$conf.low[[1]],
         effsize.UL = stats_df$conf.high[[1]],

@@ -11,7 +11,7 @@ testthat::test_that(
     set.seed(123)
     using_function1 <-
       statsExpressions::expr_anova_nonparametric(
-        data = statsExpressions::movies_long,
+        data = dplyr::sample_frac(statsExpressions::movies_long, 0.1),
         x = "genre",
         y = length,
         conf.type = "norm",
@@ -30,7 +30,7 @@ testthat::test_that(
           "(",
           "8",
           ") = ",
-          "342.90144",
+          "51.42672",
           ", ",
           italic("p"),
           " = ",
@@ -38,17 +38,17 @@ testthat::test_that(
           ", ",
           widehat(epsilon^2),
           " = ",
-          "0.21730",
+          "0.32756",
           ", CI"["95%"],
           " [",
-          "0.17355",
+          "0.16177",
           ", ",
-          "0.25229",
+          "0.42980",
           "]",
           ", ",
           italic("n")["obs"],
           " = ",
-          1579L
+          158L
         )
       )
 
@@ -115,16 +115,17 @@ testthat::test_that(
 
     # ggstatsplot output
     set.seed(123)
-    using_function1 <- statsExpressions::expr_anova_nonparametric(
-      data = statsExpressions::bugs_long,
-      x = condition,
-      y = "desire",
-      k = 4,
-      conf.type = "norm",
-      paired = TRUE,
-      conf.level = 0.99,
-      messages = FALSE
-    )
+    using_function1 <-
+      statsExpressions::expr_anova_nonparametric(
+        data = statsExpressions::bugs_long,
+        x = condition,
+        y = "desire",
+        k = 4,
+        conf.type = "norm",
+        paired = TRUE,
+        conf.level = 0.99,
+        messages = FALSE
+      )
 
     # expected output
     set.seed(123)
@@ -142,7 +143,7 @@ testthat::test_that(
           " = ",
           "< 0.001",
           ", ",
-          widehat(italic("W")["Kendall"]),
+          widehat(italic("W"))["Kendall"],
           " = ",
           "0.6148",
           ", CI"["99%"],
@@ -163,16 +164,17 @@ testthat::test_that(
 
     # ggstatsplot output
     set.seed(123)
-    using_function2 <- statsExpressions::expr_anova_nonparametric(
-      data = iris_long,
-      x = condition,
-      y = "value",
-      k = 3,
-      conf.type = "perc",
-      paired = TRUE,
-      conf.level = 0.90,
-      messages = FALSE
-    )
+    using_function2 <-
+      statsExpressions::expr_anova_nonparametric(
+        data = iris_long,
+        x = condition,
+        y = "value",
+        k = 3,
+        conf.type = "perc",
+        paired = TRUE,
+        conf.level = 0.90,
+        messages = FALSE
+      )
 
     # expected output
     set.seed(123)
@@ -190,7 +192,7 @@ testthat::test_that(
           " = ",
           "< 0.001",
           ", ",
-          widehat(italic("W")["Kendall"]),
+          widehat(italic("W"))["Kendall"],
           " = ",
           "0.486",
           ", CI"["90%"],

@@ -117,10 +117,10 @@ expr_t_parametric <- function(data,
   # deciding which effect size to use (Hedge's g or Cohen's d)
   if (effsize.type %in% c("unbiased", "g")) {
     hedges.correction <- TRUE
-    effsize.text <- quote(italic("g"))
+    effsize.text <- quote(widehat(italic("g")))
   } else {
     hedges.correction <- FALSE
-    effsize.text <- quote(italic("d"))
+    effsize.text <- quote(widehat(italic("d")))
   }
 
   # setting up the t-test model and getting its summary
@@ -361,7 +361,7 @@ expr_t_nonparametric <- function(data,
     statistic.text = statistic.text,
     statistic = log(stats_df$statistic[[1]]),
     p.value = stats_df$p.value[[1]],
-    effsize.text = quote(italic(r)),
+    effsize.text = quote(widehat(italic("r"))),
     effsize.estimate = effsize_df$estimate[[1]],
     effsize.LL = effsize_df$conf.low[[1]],
     effsize.UL = effsize_df$conf.high[[1]],
@@ -527,7 +527,7 @@ expr_t_robust <- function(data,
       statistic = statistic,
       parameter = stats_df$df[[1]],
       p.value = stats_df$p.value[[1]],
-      effsize.text = quote(italic(xi)),
+      effsize.text = quote(widehat(italic(xi))),
       effsize.estimate = effsize.estimate,
       effsize.LL = effsize.LL,
       effsize.UL = effsize.UL,

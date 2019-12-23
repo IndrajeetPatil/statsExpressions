@@ -11,7 +11,7 @@ testthat::test_that(
     set.seed(123)
     using_function1 <-
       statsExpressions::expr_t_onesample(
-        data = movies_long,
+        data = dplyr::sample_frac(movies_long, 0.05),
         x = length,
         test.value = 120,
         type = "p",
@@ -26,27 +26,27 @@ testthat::test_that(
           NULL,
           italic("t"),
           "(",
-          "1578",
+          "78",
           ") = ",
-          "-23.04633",
+          "-2.67496",
           ", ",
           italic("p"),
           " = ",
-          "< 0.001",
+          "0.00910",
           ", ",
           widehat(italic("g")),
           " = ",
-          "-0.57970",
+          "-0.29802",
           ", CI"["95%"],
           " [",
-          "-0.63341",
+          "-0.52889",
           ", ",
-          "-0.52675",
+          "-0.07501",
           "]",
           ", ",
           italic("n")["obs"],
           " = ",
-          1579L
+          79L
         )
       )
 
@@ -55,7 +55,7 @@ testthat::test_that(
     using_function2 <-
       suppressWarnings(
         statsExpressions::expr_t_onesample(
-          data = movies_long,
+          data = dplyr::sample_frac(movies_long, 0.05),
           x = length,
           test.value = 120,
           type = "p",
@@ -73,27 +73,27 @@ testthat::test_that(
           NULL,
           italic("t"),
           "(",
-          "1578",
+          "78",
           ") = ",
-          "-23.046",
+          "-2.675",
           ", ",
           italic("p"),
           " = ",
-          "< 0.001",
+          "0.009",
           ", ",
           widehat(italic("g")),
           " = ",
-          "-0.580",
+          "-0.298",
           ", CI"["99%"],
           " [",
-          "-0.650",
+          "-0.600",
           ", ",
-          "-0.510",
+          "-0.004",
           "]",
           ", ",
           italic("n")["obs"],
           " = ",
-          1579L
+          79L
         )
       )
 
@@ -102,7 +102,7 @@ testthat::test_that(
     using_function3 <-
       suppressWarnings(
         statsExpressions::expr_t_onesample(
-          data = movies_long,
+          data = dplyr::sample_frac(movies_long, 0.05),
           x = length,
           test.value = 120,
           type = "p",
@@ -122,27 +122,27 @@ testthat::test_that(
           NULL,
           italic("t"),
           "(",
-          "1578",
+          "78",
           ") = ",
-          "-23.0463",
+          "-2.6750",
           ", ",
           italic("p"),
           " = ",
-          "< 0.001",
+          "0.0091",
           ", ",
           widehat(italic("d")),
           " = ",
-          "-0.5800",
+          "-0.3010",
           ", CI"["90%"],
           " [",
-          "-0.6248",
+          "-0.4924",
           ", ",
-          "-0.5353",
+          "-0.1115",
           "]",
           ", ",
           italic("n")["obs"],
           " = ",
-          1579L
+          79L
         )
       )
 
@@ -151,7 +151,7 @@ testthat::test_that(
     using_function4 <-
       suppressWarnings(
         statsExpressions::expr_t_onesample(
-          data = movies_long,
+          data = dplyr::sample_frac(movies_long, 0.05),
           x = "length",
           test.value = 120,
           type = "p",
@@ -171,27 +171,27 @@ testthat::test_that(
           NULL,
           italic("t"),
           "(",
-          "1578",
+          "78",
           ") = ",
-          "-23.05",
+          "-2.67",
           ", ",
           italic("p"),
           " = ",
-          "< 0.001",
+          "0.009",
           ", ",
           widehat(italic("d")),
           " = ",
-          "-0.58",
+          "-0.30",
           ", CI"["50%"],
           " [",
-          "-0.60",
+          "-0.38",
           ", ",
-          "-0.56",
+          "-0.22",
           "]",
           ", ",
           italic("n")["obs"],
           " = ",
-          1579L
+          79L
         )
       )
 

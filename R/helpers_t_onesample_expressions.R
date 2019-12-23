@@ -107,7 +107,7 @@ expr_t_onesample <- function(data,
   sample_size <- nrow(data)
 
   # standardize the type of statistics
-  stats.type <- stats_type_switch(stats.type = type)
+  stats.type <- stats_type_switch(type)
 
   # ========================= parametric ====================================
 
@@ -115,10 +115,10 @@ expr_t_onesample <- function(data,
     # deciding which effect size to use (Hedge's g or Cohen's d)
     if (effsize.type %in% c("unbiased", "g")) {
       hedges.correction <- TRUE
-      effsize.text <- quote(italic("g"))
+      effsize.text <- quote(widehat(italic("g")))
     } else {
       hedges.correction <- FALSE
-      effsize.text <- quote(italic("d"))
+      effsize.text <- quote(widehat(italic("d")))
     }
 
     # creating model object
@@ -184,7 +184,7 @@ expr_t_onesample <- function(data,
     statistic.text <- quote("log"["e"](italic("V")))
     no.parameters <- 0L
     parameter <- NULL
-    effsize.text <- quote(italic("r"))
+    effsize.text <- quote(widehat(italic("r")))
 
     # message about effect size measure
     if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)
@@ -254,11 +254,7 @@ expr_t_onesample <- function(data,
           conf.level = paste(conf.level * 100, "%", sep = ""),
           LL = specify_decimal_p(x = stats_df$ci[[1]], k = k),
           UL = specify_decimal_p(x = stats_df$ci[[2]], k = k),
-          p.value = specify_decimal_p(
-            x = stats_df$p.value[[1]],
-            k = k,
-            p.value = TRUE
-          ),
+          p.value = specify_decimal_p(x = stats_df$p.value[[1]], k = k, p.value = TRUE),
           n = sample_size
         )
       )

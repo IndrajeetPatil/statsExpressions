@@ -122,7 +122,7 @@ expr_corr_test <- function(data,
     no.parameters <- 1L
     parameter <- stats_df$parameter[[1]]
     statistic.text <- quote(italic("t"))
-    effsize.text <- quote(italic("r")["Pearson"])
+    effsize.text <- quote(widehat(italic("r"))["Pearson"])
   }
 
   #--------------------- Spearnman's rho ---------------------------------
@@ -150,7 +150,7 @@ expr_corr_test <- function(data,
     no.parameters <- 0L
     parameter <- NULL
     statistic.text <- quote("log"["e"](italic("S")))
-    effsize.text <- quote(italic(rho)["Spearman"])
+    effsize.text <- quote(widehat(italic(rho))["Spearman"])
   }
 
   #---------------------- robust percentage bend --------------------------
@@ -175,7 +175,7 @@ expr_corr_test <- function(data,
     no.parameters <- 1L
     parameter <- sample_size - 2L
     statistic.text <- quote(italic("t"))
-    effsize.text <- quote(italic(rho)["pb"])
+    effsize.text <- quote(widehat(italic(rho))["pb"])
 
     # message about effect size measure
     if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)

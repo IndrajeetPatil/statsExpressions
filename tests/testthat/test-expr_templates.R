@@ -52,7 +52,7 @@ testthat::test_that(
         k = 2L,
         k.parameter = 0L,
         n = 32,
-        effsize.text = quote(italic("r"))
+        effsize.text = quote(widehat(italic("r")))
       )
 
     # check if they are equivalent
@@ -83,7 +83,7 @@ testthat::test_that(
           " = ",
           "0.013",
           ", ",
-          widehat(italic(V)),
+          widehat(italic("V")),
           " = ",
           "0.52",
           ", CI"["99%"],
@@ -114,7 +114,7 @@ testthat::test_that(
         k = 2L,
         k.parameter = 0L,
         n = 32,
-        effsize.text = quote(italic(V))
+        effsize.text = quote(widehat(italic("V")))
       )
 
     # check if they are equivalent
@@ -181,23 +181,24 @@ testthat::test_that(
       )
 
     # created using a template maker
-    template_1 <- statsExpressions::expr_template(
-      no.parameters = 2L,
-      statistic.text = quote(italic("F")),
-      statistic = 2.27,
-      parameter = 3L,
-      parameter2 = 24.05,
-      p.value = 0.107,
-      effsize.estimate = 0.00,
-      effsize.LL = -0.08,
-      effsize.UL = 0.10,
-      conf.level = 0.95,
-      k = 2L,
-      k.parameter = 0L,
-      k.parameter2 = 2L,
-      n = 51L,
-      effsize.text = quote(omega["p"]^2)
-    )
+    template_1 <-
+      statsExpressions::expr_template(
+        no.parameters = 2L,
+        statistic.text = quote(italic("F")),
+        statistic = 2.27,
+        parameter = 3L,
+        parameter2 = 24.05,
+        p.value = 0.107,
+        effsize.estimate = 0.00,
+        effsize.LL = -0.08,
+        effsize.UL = 0.10,
+        conf.level = 0.95,
+        k = 2L,
+        k.parameter = 0L,
+        k.parameter2 = 2L,
+        n = 51L,
+        effsize.text = quote(widehat(omega["p"]^2))
+      )
 
     # check if they are equivalent
     testthat::expect_identical(subtitle, template_1)

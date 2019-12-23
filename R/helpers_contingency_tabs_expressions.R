@@ -207,7 +207,7 @@ expr_contingency_tab <- function(data,
         )
 
       # effect size text
-      effsize.text <- quote(italic("V")["Cramer"])
+      effsize.text <- quote(widehat(italic("V"))["Cramer"])
       statistic.text <- quote(chi["Pearson"]^2)
       n.text <- quote(italic("n")["obs"])
     }
@@ -254,7 +254,7 @@ expr_contingency_tab <- function(data,
         dplyr::filter(.data = ., Statistic == "g")
 
       # effect size text
-      effsize.text <- quote(italic("g")["Cohen"])
+      effsize.text <- quote(widehat(italic("g"))["Cohen"])
       statistic.text <- quote(chi["McNemar"]^2)
       n.text <- quote(italic("n")["pairs"])
     }
@@ -302,7 +302,7 @@ expr_contingency_tab <- function(data,
       rcompanion_cleaner(object = ., estimate.col = "Cramer.V")
 
     # effect size text
-    effsize.text <- quote(italic("V")["Cramer"])
+    effsize.text <- quote(widehat(italic("V"))["Cramer"])
     statistic.text <- quote(chi["gof"]^2)
     n.text <- quote(italic("n")["obs"])
   }

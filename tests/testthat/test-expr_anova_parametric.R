@@ -11,7 +11,7 @@ testthat::test_that(
     set.seed(123)
     using_function1 <-
       statsExpressions::expr_anova_parametric(
-        data = statsExpressions::movies_long,
+        data = dplyr::sample_frac(statsExpressions::movies_long, 0.1),
         x = genre,
         y = rating,
         effsize.type = "partial_eta",
@@ -30,27 +30,27 @@ testthat::test_that(
           "(",
           "8",
           ",",
-          "399.03535",
+          "46.23423",
           ") = ",
-          "28.41410",
+          "4.03133",
           ", ",
           italic("p"),
           " = ",
-          "< 0.001",
+          "0.00107",
           ", ",
           widehat(eta["p"]^2),
           " = ",
-          "0.13123",
+          "0.15181",
           ", CI"["95%"],
           " [",
-          "0.09826",
+          "0.02591",
           ", ",
-          "0.15804",
+          "0.21660",
           "]",
           ", ",
           italic("n")["obs"],
           " = ",
-          1579L
+          158L
         )
       )
 

@@ -1,4 +1,6 @@
-# statsExpressions 0.1.3.9000
+# statsExpressions 0.2.0.9000
+
+  - Minor tweaks to how widehat is displayed in some of the expressions. 
  
 # statsExpressions 0.1.3
 
