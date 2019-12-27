@@ -56,9 +56,6 @@ Calculating Cohen's \emph{d} or Hedge's \emph{g} (for between-/within- or one
 sample designs).
 }
 \details{
-This function is a rewrite of functionality provided in \code{lsr::cohensD} and
-\code{effsize::cohen.d}.
-
 References-
 \itemize{
 \item Cooper, Harris, Hedges, Larry V., Valentine, Jeffrey C., The Handbook

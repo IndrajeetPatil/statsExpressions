@@ -18,9 +18,6 @@
 #' @importFrom tibble tibble
 #'
 #' @details
-#' This function is a rewrite of functionality provided in `lsr::cohensD` and
-#' `effsize::cohen.d`.
-#'
 #' References-
 #' \itemize{
 #' \item Cooper, Harris, Hedges, Larry V., Valentine, Jeffrey C., The Handbook

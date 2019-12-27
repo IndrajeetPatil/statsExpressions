@@ -249,7 +249,7 @@
       "@type": "SoftwareApplication",
       "identifier": "rcompanion",
       "name": "rcompanion",
-      "version": ">= 2.3.7",
+      "version": ">= 2.3.9",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",

@@ -176,7 +176,8 @@ expr_t_onesample <- function(data,
         type = conf.type,
         R = nboot,
         histogram = FALSE,
-        digits = k
+        digits = k,
+        reportIncomplete = FALSE
       ) %>%
       rcompanion_cleaner(object = ., estimate.col = "r")
 

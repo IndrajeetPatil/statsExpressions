@@ -97,37 +97,18 @@ expr_anova_parametric <- function(data,
   y <- rlang::ensym(y)
 
   # for paired designs, variance is going to be equal across grouping levels
-  if (isTRUE(paired)) {
-    var.equal <- TRUE
-  } else {
-    sphericity.correction <- FALSE
-  }
+  if (isTRUE(paired)) var.equal <- TRUE
+  if (isFALSE(paired)) sphericity.correction <- FALSE
 
-  # number of decimal places for degree of freedom
-  if (isTRUE(var.equal) && isFALSE(sphericity.correction)) {
-    k.df2 <- 0L
-  } else {
-    k.df2 <- k
-  }
-
-  # denominator degrees of freedom
-  if (isTRUE(paired) && isTRUE(sphericity.correction)) {
-    k.df1 <- k
-  } else {
-    k.df1 <- 0L
-  }
+  # determine number of decimal places for both degrees of freedom
+  k.df1 <- ifelse(isTRUE(paired) && isTRUE(sphericity.correction), k, 0L)
+  k.df2 <- ifelse(isTRUE(var.equal) && isFALSE(sphericity.correction), 0L, k)
 
   # figuring out which effect size to use
   effsize.type <- effsize_type_switch(effsize.type)
 
   # some of the effect sizes don't work properly for paired designs
-  if (isTRUE(paired)) {
-    if (effsize.type == "unbiased") {
-      partial <- FALSE
-    } else {
-      partial <- TRUE
-    }
-  }
+  if (isTRUE(paired)) partial <- ifelse(effsize.type == "unbiased", FALSE, TRUE)
 
   # omega
   if (effsize.type == "unbiased") {
@@ -439,7 +420,8 @@ expr_anova_nonparametric <- function(data,
         type = conf.type,
         R = nboot,
         histogram = FALSE,
-        digits = 5
+        digits = 5,
+        reportIncomplete = FALSE
       ) %>%
       rcompanion_cleaner(object = ., estimate.col = "epsilon.squared")
 
@@ -628,6 +610,9 @@ expr_anova_robust <- function(data,
         conf.type = conf.type
       )
 
+    # effect size dataframe
+    effsize_df <- stats_df
+
     # preparing subtitle
     subtitle <-
       expr_template(
@@ -639,9 +624,9 @@ expr_anova_robust <- function(data,
         parameter2 = stats_df$df2[[1]],
         p.value = stats_df$p.value[[1]],
         effsize.text = quote(widehat(italic(xi))),
-        effsize.estimate = stats_df$estimate[[1]][[1]],
-        effsize.LL = stats_df$conf.low[[1]],
-        effsize.UL = stats_df$conf.high[[1]],
+        effsize.estimate = effsize_df$estimate[[1]],
+        effsize.LL = effsize_df$conf.low[[1]],
+        effsize.UL = effsize_df$conf.high[[1]],
         n = sample_size,
         n.text = n.text,
         conf.level = conf.level,

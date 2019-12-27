@@ -124,14 +124,15 @@ expr_t_parametric <- function(data,
   }
 
   # setting up the t-test model and getting its summary
-  tobject <- stats::t.test(
-    formula = rlang::new_formula({{ y }}, {{ x }}),
-    data = data,
-    paired = paired,
-    alternative = "two.sided",
-    var.equal = var.equal,
-    na.action = na.omit
-  )
+  tobject <-
+    stats::t.test(
+      formula = rlang::new_formula({{ y }}, {{ x }}),
+      data = data,
+      paired = paired,
+      alternative = "two.sided",
+      var.equal = var.equal,
+      na.action = na.omit
+    )
 
   # tidy dataframe from model object
   stats_df <- broomExtra::tidy(tobject)
@@ -151,30 +152,27 @@ expr_t_parametric <- function(data,
 
   # when paired samples t-test is run df is going to be integer
   # ditto for when variance is assumed to be equal
-  if (isTRUE(paired) || isTRUE(var.equal)) {
-    k.df <- 0L
-  } else {
-    k.df <- k
-  }
+  k.df <- ifelse(isTRUE(paired) || isTRUE(var.equal), 0L, k)
 
   # preparing subtitle
-  subtitle <- expr_template(
-    no.parameters = 1L,
-    stat.title = stat.title,
-    statistic.text = quote(italic("t")),
-    statistic = stats_df$statistic[[1]],
-    parameter = stats_df$parameter[[1]],
-    p.value = stats_df$p.value[[1]],
-    effsize.text = effsize.text,
-    effsize.estimate = effsize_df$estimate,
-    effsize.LL = effsize_df$conf.low,
-    effsize.UL = effsize_df$conf.high,
-    n = sample_size,
-    conf.level = conf.level,
-    k = k,
-    k.parameter = k.df,
-    n.text = n.text
-  )
+  subtitle <-
+    expr_template(
+      no.parameters = 1L,
+      stat.title = stat.title,
+      statistic.text = quote(italic("t")),
+      statistic = stats_df$statistic[[1]],
+      parameter = stats_df$parameter[[1]],
+      p.value = stats_df$p.value[[1]],
+      effsize.text = effsize.text,
+      effsize.estimate = effsize_df$estimate[[1]],
+      effsize.LL = effsize_df$conf.low[[1]],
+      effsize.UL = effsize_df$conf.high[[1]],
+      n = sample_size,
+      conf.level = conf.level,
+      k = k,
+      k.parameter = k.df,
+      n.text = n.text
+    )
 
   # return the subtitle
   return(subtitle)
@@ -353,23 +351,24 @@ expr_t_nonparametric <- function(data,
   if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)
 
   # preparing subtitle
-  subtitle <- expr_template(
-    no.parameters = 0L,
-    parameter = NULL,
-    parameter2 = NULL,
-    stat.title = stat.title,
-    statistic.text = statistic.text,
-    statistic = log(stats_df$statistic[[1]]),
-    p.value = stats_df$p.value[[1]],
-    effsize.text = quote(widehat(italic("r"))),
-    effsize.estimate = effsize_df$estimate[[1]],
-    effsize.LL = effsize_df$conf.low[[1]],
-    effsize.UL = effsize_df$conf.high[[1]],
-    n = sample_size,
-    n.text = n.text,
-    conf.level = conf.level,
-    k = k
-  )
+  subtitle <-
+    expr_template(
+      no.parameters = 0L,
+      parameter = NULL,
+      parameter2 = NULL,
+      stat.title = stat.title,
+      statistic.text = statistic.text,
+      statistic = log(stats_df$statistic[[1]]),
+      p.value = stats_df$p.value[[1]],
+      effsize.text = quote(widehat(italic("r"))),
+      effsize.estimate = effsize_df$estimate[[1]],
+      effsize.LL = effsize_df$conf.low[[1]],
+      effsize.UL = effsize_df$conf.high[[1]],
+      n = sample_size,
+      n.text = n.text,
+      conf.level = conf.level,
+      k = k
+    )
 
   # return the subtitle
   return(subtitle)
@@ -389,6 +388,7 @@ expr_t_nonparametric <- function(data,
 #' @importFrom dplyr select
 #' @importFrom rlang !! enquo
 #' @importFrom WRS2 yuen yuen.effect.ci
+#' @importFrom tibble tribble
 #'
 #' @examples
 #' \donttest{
@@ -469,7 +469,7 @@ expr_t_robust <- function(data,
       )
 
     # computing effect size and its confidence interval
-    effsize_df <-
+    effsize_obj <-
       WRS2::yuen.effect.ci(
         formula = rlang::new_formula({{ y }}, {{ x }}),
         data = data,
@@ -478,12 +478,16 @@ expr_t_robust <- function(data,
         alpha = 1 - conf.level
       )
 
+    # effect size dataframe
+    effsize_df <-
+      tibble::tribble(
+        ~estimate, ~conf.low, ~conf.high,
+        effsize_obj$effsize[[1]], effsize_obj$CI[[1]], effsize_obj$CI[[2]]
+      )
+
     # subtitle parameters
     k.parameter <- k
     statistic <- stats_df$test[[1]]
-    effsize.estimate <- effsize_df$effsize[[1]]
-    effsize.LL <- effsize_df$CI[[1]][[1]]
-    effsize.UL <- effsize_df$CI[[2]][[1]]
     n.text <- quote(italic("n")["obs"])
   }
 
@@ -509,12 +513,12 @@ expr_t_robust <- function(data,
         conf.type = conf.type
       )
 
+    # effect sizes are already in there
+    effsize_df <- stats_df
+
     # subtitle parameters
     k.parameter <- 0L
     statistic <- stats_df$statistic[[1]]
-    effsize.estimate <- stats_df$estimate[[1]]
-    effsize.LL <- stats_df$conf.low[[1]]
-    effsize.UL <- stats_df$conf.high[[1]]
     n.text <- quote(italic("n")["pairs"])
   }
 
@@ -528,9 +532,9 @@ expr_t_robust <- function(data,
       parameter = stats_df$df[[1]],
       p.value = stats_df$p.value[[1]],
       effsize.text = quote(widehat(italic(xi))),
-      effsize.estimate = effsize.estimate,
-      effsize.LL = effsize.LL,
-      effsize.UL = effsize.UL,
+      effsize.estimate = effsize_df$estimate[[1]],
+      effsize.LL = effsize_df$conf.low[[1]],
+      effsize.UL = effsize_df$conf.high[[1]],
       n = sample_size,
       n.text = n.text,
       conf.level = conf.level,

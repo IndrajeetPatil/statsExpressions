@@ -39,7 +39,7 @@
 #' @inheritParams stats::chisq.test
 #' @inheritParams expr_anova_parametric
 #'
-#' @importFrom dplyr select mutate mutate_at union rename filter
+#' @importFrom dplyr select mutate rename filter
 #' @importFrom rlang !! enquo as_name ensym
 #' @importFrom tibble tribble as_tibble
 #' @importFrom tidyr uncount drop_na
@@ -165,15 +165,12 @@ expr_contingency_tab <- function(data,
   # association tests
   if (!rlang::quo_is_null(rlang::enquo(y))) {
 
+    # creating a matrix with frequencies and cleaning it up
+    x_arg <- as.matrix(table(data %>% dplyr::pull({{ x }}), data %>% dplyr::pull({{ y }})))
+
     # ======================== Pearson's test ================================
 
     if (isFALSE(paired)) {
-      # creating a matrix with frequencies and cleaning it up
-      x_arg <- as.matrix(table(
-        data %>% dplyr::pull({{ x }}),
-        data %>% dplyr::pull({{ y }})
-      ))
-
       # object containing stats
       stats_df <-
         broomExtra::tidy(stats::chisq.test(
@@ -186,25 +183,18 @@ expr_contingency_tab <- function(data,
 
       # computing Cramer's V and its confidence intervals
       effsize_df <-
-        tryCatch(
-          expr = rcompanion::cramerV(
-            x = x_arg,
-            ci = TRUE,
-            conf = conf.level,
-            type = conf.type,
-            R = nboot,
-            histogram = FALSE,
-            digits = 5,
-            bias.correct = bias.correct
-          ) %>%
-            rcompanion_cleaner(object = ., estimate.col = "Cramer.V"),
-          error = function(x) {
-            tibble::tribble(
-              ~estimate, ~conf.low, ~conf.high,
-              NaN, NaN, NaN
-            )
-          }
-        )
+        rcompanion::cramerV(
+          x = x_arg,
+          ci = TRUE,
+          conf = conf.level,
+          type = conf.type,
+          R = nboot,
+          histogram = FALSE,
+          digits = 5,
+          bias.correct = bias.correct,
+          reportIncomplete = FALSE
+        ) %>%
+        rcompanion_cleaner(object = ., estimate.col = "Cramer.V")
 
       # effect size text
       effsize.text <- quote(widehat(italic("V"))["Cramer"])
@@ -215,27 +205,6 @@ expr_contingency_tab <- function(data,
     # ======================== McNemar's test ================================
 
     if (isTRUE(paired)) {
-      # figuring out all unique factor levels across two variables
-      factor.levels <- dplyr::union(
-        levels(data %>% dplyr::pull({{ x }})),
-        levels(data %>% dplyr::pull({{ y }}))
-      )
-
-      # introducing dropped levels back into the variables
-      data %<>%
-        dplyr::mutate_at(
-          .tbl = .,
-          .vars = dplyr::vars({{ x }}, {{ y }}),
-          .funs = factor,
-          levels = factor.levels
-        )
-
-      # creating a matrix with frequencies and cleaning it up
-      x_arg <- as.matrix(table(
-        data %>% dplyr::pull({{ x }}),
-        data %>% dplyr::pull({{ y }})
-      ))
-
       # computing effect size + CI
       stats_df <- broomExtra::tidy(stats::mcnemar.test(x = x_arg, correct = FALSE))
 
@@ -248,7 +217,8 @@ expr_contingency_tab <- function(data,
           type = conf.type,
           R = nboot,
           histogram = FALSE,
-          digits = 5
+          digits = 5,
+          reportIncomplete = FALSE
         )$Global.statistics %>%
         rcompanion_cleaner(object = ., estimate.col = "Value") %>%
         dplyr::filter(.data = ., Statistic == "g")
@@ -280,9 +250,10 @@ expr_contingency_tab <- function(data,
     # if the function worked, then return tidy output
     if (is.null(stats_df)) {
       return(NULL)
-    } else {
-      stats_df <- broomExtra::tidy(stats_df)
     }
+
+    # tidy up
+    stats_df <- broomExtra::tidy(stats_df)
 
     # `x` argument for effect size function
     x_arg <- as.vector(table(data %>% dplyr::pull({{ x }})))

@@ -148,9 +148,9 @@ testthat::test_that(
           "0.32",
           ", CI"["99%"],
           " [",
-          "0.28",
+          "NA",
           ", ",
-          "0.46",
+          "NA",
           "]",
           ", ",
           italic("n")["obs"],
@@ -337,7 +337,7 @@ testthat::test_that(
   }
 )
 
-# paired data 3-by-3  ---------------------------------------------
+# paired data 4-by-4  ---------------------------------------------
 
 testthat::test_that(
   desc = "paired data 4-by-4",
@@ -371,18 +371,19 @@ testthat::test_that(
 
     # ggstatsplot output
     set.seed(123)
-    subtitle1 <- suppressWarnings(statsExpressions::expr_contingency_tab(
-      data = df,
-      x = Var1,
-      y = Var2,
-      counts = "Freq",
-      paired = TRUE,
-      k = 4,
-      conf.level = 0.99,
-      conf.type = "basic",
-      nboot = 50,
-      messages = FALSE
-    ))
+    subtitle1 <-
+      suppressWarnings(statsExpressions::expr_contingency_tab(
+        data = df,
+        x = Var1,
+        y = Var2,
+        counts = "Freq",
+        paired = TRUE,
+        k = 4,
+        conf.level = 0.99,
+        conf.type = "basic",
+        nboot = 50,
+        messages = FALSE
+      ))
 
     # expected output
     set.seed(123)
@@ -402,12 +403,12 @@ testthat::test_that(
           ", ",
           widehat(italic("g"))["Cohen"],
           " = ",
-          "0.4344",
+          "0.2954",
           ", CI"["99%"],
           " [",
-          "0.3838",
+          "0.2046",
           ", ",
-          "0.5092",
+          "0.3898",
           "]",
           ", ",
           italic("n")["pairs"],
@@ -418,6 +419,58 @@ testthat::test_that(
 
     # testing overall call
     testthat::expect_identical(subtitle1, results1)
+
+    # edge case
+    dfEx <-
+      data.frame(
+        cat1 = rep(c("A", "B"), 10),
+        cat2 = c(rep("C", 10), rep("D", 10))
+      )
+
+    # subtitle
+    set.seed(123)
+    subtitle2 <-
+      statsExpressions::expr_contingency_tab(
+        data = dfEx,
+        x = cat1,
+        y = cat2,
+        paired = TRUE,
+        nboot = 10,
+        messages = FALSE
+      )
+
+    results2 <-
+      ggplot2::expr(
+        paste(
+          NULL,
+          chi["McNemar"]^2,
+          "(",
+          "1",
+          ") = ",
+          "0.00",
+          ", ",
+          italic("p"),
+          " = ",
+          "1.000",
+          ", ",
+          widehat(italic("g"))["Cohen"],
+          " = ",
+          "0.00",
+          ", CI"["95%"],
+          " [",
+          "-0.26",
+          ", ",
+          "0.40",
+          "]",
+          ", ",
+          italic("n")["pairs"],
+          " = ",
+          20L
+        )
+      )
+
+    # testing overall call
+    testthat::expect_identical(subtitle2, results2)
   }
 )
 
@@ -614,9 +667,9 @@ testthat::test_that(
           "0.38",
           ", CI"["95%"],
           " [",
-          "0.29",
+          "NA",
           ", ",
-          "0.51",
+          "NA",
           "]",
           ", ",
           italic("n")["obs"],
@@ -678,12 +731,12 @@ testthat::test_that(
           ", ",
           widehat(italic("V"))["Cramer"],
           " = ",
-          "NaN",
+          "0.71",
           ", CI"["95%"],
           " [",
-          "NaN",
+          "NA",
           ", ",
-          "NaN",
+          "NA",
           "]",
           ", ",
           italic("n")["obs"],

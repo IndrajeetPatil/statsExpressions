@@ -37,9 +37,9 @@ bf_extractor <- function(bf.object, ...) {
       .data = .,
       bf01 = 1 / bf10,
       log_e_bf10 = log(bf10),
-      log_e_bf01 = log(bf01),
+      log_e_bf01 = -1 * log_e_bf10,
       log_10_bf10 = log10(bf10),
-      log_10_bf01 = log10(bf01)
+      log_10_bf01 = -1 * log_10_bf10
     )
 
   # return the dataframe with Bayes Factors
@@ -444,9 +444,9 @@ bf_contingency_tab <- function(data,
         .data = .,
         bf01 = 1 / bf10,
         log_e_bf10 = log(bf10),
-        log_e_bf01 = log(bf01),
+        log_e_bf01 = -1 * log_e_bf10,
         log_10_bf10 = log10(bf10),
-        log_10_bf01 = log10(bf01)
+        log_10_bf01 = -1 * log_10_bf10
       ) %>%
       dplyr::mutate(.data = ., prior.concentration = prior.concentration)
   }

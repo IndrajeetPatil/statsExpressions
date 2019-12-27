@@ -36,7 +36,7 @@ Imports:
     groupedstats (>= 0.1.0),
     psych (>= 1.8.12),
     purrr (>= 0.3.3),
-    rcompanion (>= 2.3.7),
+    rcompanion (>= 2.3.9),
     rlang (>= 0.4.2),
     stats,
     tibble (>= 2.1.3),

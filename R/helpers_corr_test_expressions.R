@@ -100,8 +100,7 @@ expr_corr_test <- function(data,
       broomExtra::tidy(
         stats::cor.test(
           formula = rlang::new_formula(
-            NULL,
-            rlang::expr(!!rlang::enexpr(x) + !!rlang::enexpr(y))
+            NULL, rlang::expr(!!rlang::enexpr(x) + !!rlang::enexpr(y))
           ),
           data = data,
           method = cor.method,
@@ -142,7 +141,8 @@ expr_corr_test <- function(data,
         type = conf.type,
         R = nboot,
         histogram = FALSE,
-        digits = 5
+        digits = 5,
+        reportIncomplete = FALSE
       ) %>%
       rcompanion_cleaner(object = ., estimate.col = "rho")
 

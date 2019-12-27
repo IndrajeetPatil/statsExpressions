@@ -134,8 +134,8 @@ expr_template <- function(no.parameters,
     if (rlang::is_null(parameter)) {
       stop(message(cat(
         crayon::red("Error: "),
-        crayon::blue("For tests with statistic that have two parameters, \n"),
-        crayon::blue("the argument `parameter` **must** be specified.\n"),
+        crayon::blue("For tests with statistic that have one parameter, \n"),
+        crayon::blue("the argument `parameter` must be specified.\n"),
         sep = ""
       )),
       call. = FALSE
@@ -197,7 +197,7 @@ expr_template <- function(no.parameters,
         crayon::red("Error: "),
         crayon::blue(
           "For tests with statistic that have two parameters, \n",
-          "the arguments `parameter` and `parameter2` **must** be specified.\n"
+          "the arguments `parameter` and `parameter2` must be specified.\n"
         ),
         sep = ""
       )),
@@ -262,8 +262,7 @@ expr_template <- function(no.parameters,
 #' @keywords internal
 
 rcompanion_cleaner <- function(object, estimate.col) {
-  object %>%
-    tibble::as_tibble(x = .) %>%
+  tibble::as_tibble(object) %>%
     dplyr::rename(
       .data = .,
       estimate = estimate.col,
