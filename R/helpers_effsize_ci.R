@@ -311,7 +311,7 @@ effsize_t_parametric <- function(formula = NULL,
 #'   `"basic"`, `"perc"`, `"bca"`. For more, see `?boot::boot.ci`.
 #' @param conf.level Scalar between 0 and 1. If unspecified, the defaults return
 #'   `95%` lower and upper confidence intervals (`0.95`).
-#' @inheritDotParams boot::boot
+#' @param ... Currently ignored.
 #'
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr select contains
@@ -395,7 +395,7 @@ t1way_ci <- function(data,
 #'   measure for paired samples robust t-tests.
 #'
 #' @inheritParams t1way_ci
-#' @inheritDotParams boot::boot
+#' @param ... Currently ignored.
 #'
 #' @importFrom WRS2 yuend
 #'
@@ -482,7 +482,7 @@ yuend_ci <- function(data,
 #' @param y The response - a vector of length the number of rows of `x`.
 #' @param beta bending constant (Default: `0.1`). For more, see `?WRS2::pbcor`.
 #' @inheritParams t1way_ci
-#' @inheritDotParams boot::boot
+#' @param ... Currently ignored.
 #'
 #' @importFrom WRS2 pbcor
 #'
@@ -583,7 +583,10 @@ extract_boot_output <- function(bootobj, fit, conf.type, conf.level) {
       effsize = "estimate",
       cor = "estimate",
       test = "statistic",
-      se = "std.error"
+      se = "std.error",
+      df = "parameter",
+      df1 = "parameter1",
+      df2 = "parameter2"
     )
 
   # selecting the columns corresponding to the confidence intervals

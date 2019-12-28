@@ -8,20 +8,16 @@ expr_template(
   no.parameters,
   stat.title = NULL,
   statistic.text,
-  statistic,
-  parameter = NULL,
-  parameter2 = NULL,
-  p.value,
+  stats.df,
   effsize.text,
-  effsize.estimate,
-  effsize.LL,
-  effsize.UL,
+  effsize.df,
   n,
   conf.level = 0.95,
   k = 2L,
   k.parameter = 0L,
   k.parameter2 = 0L,
-  n.text = NULL
+  n.text = NULL,
+  ...
 )
 }
 \arguments{
@@ -39,24 +35,29 @@ For example, for tests with \emph{t}-statistic, \code{statistic.text = "t"}. If 
 want to use plotmath, you will have to quote the argument (e.g.,
 \code{quote(italic("t"))}).}
 
-\item{statistic}{The numeric value of a statistic.}
-
-\item{parameter}{The numeric value of a parameter being modeled (often
-degrees of freedom for the test). Default is \code{NULL} to accommodate
-non-parametric tests.}
-
-\item{parameter2}{Relevant only if the statistic in question has two degrees
-of freedom (default: \code{NULL}).}
-
-\item{p.value}{The two-sided p-value associated with the observed statistic.}
+\item{stats.df}{A dataframe containing the following columns:
+\itemize{
+\item \emph{statistic}: the numeric value of a statistic.
+\item \emph{parameter}: the numeric value of a parameter being modeled (often
+degrees of freedom for the test); note that if \code{no.parameters = 0L} (e.g.,
+for non-parametric tests), this column will be irrelevant.
+\item \emph{parameter1}, \emph{parameter2} relevant only if the statistic in question
+has two degrees of freedom (e.g., anova).
+\item \emph{p.value} the two-sided \emph{p}-value associated with the observed
+statistic.
+}}
 
 \item{effsize.text}{A character that specifies the relevant effect size.
 For example, for Cohen's \emph{d} statistic, \code{effsize.text = "d"}. If you
 want to use plotmath, you will have to quote the argument (e.g.,
 \code{quote(italic("d"))}).}
 
-\item{effsize.estimate, effsize.LL, effsize.UL}{The estimated value of the
-effect size, its lower bound, and its upper.}
+\item{effsize.df}{A dataframe containing the following columns:
+\itemize{
+\item \emph{estimate}: estimated value of the effect size.
+\item \emph{conf.low}:  lower bound for effect size estimate.
+\item \emph{conf.high}: upper bound for effect size estimate.
+}}
 
 \item{n}{An integer specifying the sample size used for the test.}
 
@@ -74,6 +75,8 @@ what the \code{n} stands for. For example, for repeated measures, this can be
 \code{quote(italic("n")["pairs"])}, while for independent subjects design this
 can be \code{quote(italic("n")["obs"])}. If \code{NULL}, defaults to generic
 \code{quote(italic("n"))}.}
+
+\item{...}{Currently ignored.}
 }
 \description{
 Template for subtitles with statistical details for tests
@@ -81,17 +84,27 @@ Template for subtitles with statistical details for tests
 \examples{
 set.seed(123)
 
+# creating a dataframe with stats results
+stats_df <- cbind.data.frame(
+  statistic = 5.494,
+  parameter = 29.234,
+  p.value = 0.00001
+)
+
+# creating a dataframe with effect size results
+effsize_df <- cbind.data.frame(
+  estimate = -1.980,
+  conf.low = -2.873,
+  conf.high = -1.088
+)
+
 # subtitle for *t*-statistic with Cohen's *d* as effect size
 statsExpressions::expr_template(
   no.parameters = 1L,
+  stats.df = stats_df,
+  effsize.df = effsize_df,
   statistic.text = quote(italic("t")),
-  statistic = 5.494,
-  parameter = 29.234,
-  p.value = 0.00001,
   effsize.text = quote(italic("d")),
-  effsize.estimate = -1.980,
-  effsize.LL = -2.873,
-  effsize.UL = -1.088,
   n = 32L,
   conf.level = 0.95,
   k = 3L,

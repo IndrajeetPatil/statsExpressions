@@ -188,18 +188,20 @@ expr_anova_parametric <- function(data,
     if (isTRUE(sphericity.correction)) {
       e_corr <- ez_df$`Sphericity Corrections`$GGe
       stats_df <-
-        list(
+        tibble::as_tibble(cbind.data.frame(
           statistic = ez_df$ANOVA$F[2],
-          parameter = c(e_corr * ez_df$ANOVA$DFn[2], e_corr * ez_df$ANOVA$DFd[2]),
+          parameter1 = e_corr * ez_df$ANOVA$DFn[2],
+          parameter2 = e_corr * ez_df$ANOVA$DFd[2],
           p.value = ez_df$`Sphericity Corrections`$`p[GG]`[[1]]
-        )
+        ))
     } else {
       stats_df <-
-        list(
+        tibble::as_tibble(cbind.data.frame(
           statistic = ez_df$ANOVA$F[2],
-          parameter = c(ez_df$ANOVA$DFn[2], ez_df$ANOVA$DFd[2]),
+          parameter1 = ez_df$ANOVA$DFn[2],
+          parameter2 = ez_df$ANOVA$DFd[2],
           p.value = ez_df$ANOVA$p[2]
-        )
+        ))
     }
 
     # creating a standardized dataframe with effect size and its CIs
@@ -217,7 +219,7 @@ expr_anova_parametric <- function(data,
     n.text <- quote(italic("n")["obs"])
 
     # Welch's ANOVA run by default
-    stats_df <-
+    stats_obj <-
       stats::oneway.test(
         formula = rlang::new_formula({{ y }}, {{ x }}),
         data = data,
@@ -225,6 +227,10 @@ expr_anova_parametric <- function(data,
         na.action = na.omit,
         var.equal = var.equal
       )
+
+    # tidy up the stats object
+    stats_df <- suppressMessages(broomExtra::tidy(stats_obj)) %>%
+      dplyr::rename(.data = ., parameter1 = num.df, parameter2 = den.df)
 
     # creating a standardized dataframe with effect size and its CIs
     effsize_object <-
@@ -248,17 +254,12 @@ expr_anova_parametric <- function(data,
   # preparing subtitle
   subtitle <-
     expr_template(
-      no.parameters = 2L,
       stat.title = stat.title,
+      no.parameters = 2L,
+      stats.df = stats_df,
+      effsize.df = effsize_df,
       statistic.text = quote(italic("F")),
-      statistic = stats_df$statistic[[1]],
-      parameter = stats_df$parameter[[1]],
-      parameter2 = stats_df$parameter[[2]],
-      p.value = stats_df$p.value[[1]],
       effsize.text = effsize.text,
-      effsize.estimate = effsize_df$estimate[[1]],
-      effsize.LL = effsize_df$conf.low[[1]],
-      effsize.UL = effsize_df$conf.high[[1]],
       n = sample_size,
       n.text = n.text,
       conf.level = conf.level,
@@ -435,21 +436,16 @@ expr_anova_nonparametric <- function(data,
   # preparing subtitle
   subtitle <-
     expr_template(
-      no.parameters = 1L,
       stat.title = stat.title,
+      no.parameters = 1L,
+      stats.df = stats_df,
+      effsize.df = effsize_df,
       statistic.text = quote(italic(chi)^2),
-      statistic = stats_df$statistic[[1]],
-      parameter = stats_df$parameter[[1]],
-      p.value = stats_df$p.value[[1]],
       effsize.text = effsize.text,
-      effsize.estimate = effsize_df$estimate[[1]],
-      effsize.LL = effsize_df$conf.low[[1]],
-      effsize.UL = effsize_df$conf.high[[1]],
       n = sample_size,
       n.text = n.text,
       conf.level = conf.level,
-      k = k,
-      k.parameter = 0L
+      k = k
     )
 
   # return the subtitle
@@ -618,15 +614,10 @@ expr_anova_robust <- function(data,
       expr_template(
         no.parameters = 2L,
         stat.title = stat.title,
+        stats.df = stats_df,
+        effsize.df = effsize_df,
         statistic.text = quote(italic("F")),
-        statistic = stats_df$statistic[[1]],
-        parameter = stats_df$df1[[1]],
-        parameter2 = stats_df$df2[[1]],
-        p.value = stats_df$p.value[[1]],
         effsize.text = quote(widehat(italic(xi))),
-        effsize.estimate = effsize_df$estimate[[1]],
-        effsize.LL = effsize_df$conf.low[[1]],
-        effsize.UL = effsize_df$conf.high[[1]],
         n = sample_size,
         n.text = n.text,
         conf.level = conf.level,

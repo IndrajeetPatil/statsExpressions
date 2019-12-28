@@ -202,7 +202,9 @@ utils::globalVariables(
     "condition",
     "main",
     "pair1",
-    "W"
+    "W",
+    "num.df",
+    "den.df"
   ),
   package = "statsExpressions",
   add = FALSE

@@ -559,7 +559,8 @@ testthat::test_that(
 
     # g and central
     set.seed(123)
-    df1 <- statsExpressions:::effsize_t_parametric(
+    df1 <-
+      statsExpressions:::effsize_t_parametric(
       formula = desire ~ condition,
       data = bugs_short,
       paired = TRUE,
@@ -571,7 +572,8 @@ testthat::test_that(
 
     # g and non-central
     set.seed(123)
-    df2 <- statsExpressions:::effsize_t_parametric(
+    df2 <-
+      statsExpressions:::effsize_t_parametric(
       formula = desire ~ condition,
       data = bugs_short,
       paired = TRUE,
@@ -583,7 +585,8 @@ testthat::test_that(
 
     # d and central
     set.seed(123)
-    df3 <- statsExpressions:::effsize_t_parametric(
+    df3 <-
+      statsExpressions:::effsize_t_parametric(
       formula = desire ~ condition,
       data = bugs_short,
       paired = TRUE,
@@ -595,7 +598,8 @@ testthat::test_that(
 
     # d and non-central
     set.seed(123)
-    df4 <- statsExpressions:::effsize_t_parametric(
+    df4 <-
+      statsExpressions:::effsize_t_parametric(
       formula = desire ~ condition,
       data = bugs_short,
       paired = TRUE,
@@ -608,7 +612,8 @@ testthat::test_that(
 
     # not tidy data
     set.seed(123)
-    df5 <- statsExpressions:::effsize_t_parametric(
+    df5 <-
+      statsExpressions:::effsize_t_parametric(
       formula = LDLF ~ LDHF,
       data = bugs,
       paired = TRUE,
@@ -723,7 +728,8 @@ testthat::test_that(
 
     # d and central
     set.seed(123)
-    df1 <- statsExpressions:::effsize_t_parametric(
+    df1 <-
+      statsExpressions:::effsize_t_parametric(
       formula = ~height,
       data = dplyr::starwars,
       mu = 175,
@@ -735,7 +741,8 @@ testthat::test_that(
 
     # d and noncentral
     set.seed(123)
-    df2 <- statsExpressions:::effsize_t_parametric(
+    df2 <-
+      statsExpressions:::effsize_t_parametric(
       formula = ~height,
       data = dplyr::starwars,
       mu = 175,
@@ -747,7 +754,8 @@ testthat::test_that(
 
     # g and central
     set.seed(123)
-    df3 <- statsExpressions:::effsize_t_parametric(
+    df3 <-
+      statsExpressions:::effsize_t_parametric(
       formula = ~height,
       data = dplyr::starwars,
       hedges.correction = TRUE,
@@ -759,7 +767,8 @@ testthat::test_that(
 
     # g and noncentral
     set.seed(123)
-    df4 <- suppressWarnings(
+    df4 <-
+      suppressWarnings(
       statsExpressions:::effsize_t_parametric(
         formula = ~height,
         data = dplyr::starwars,
@@ -810,7 +819,7 @@ testthat::test_that(
         data = dplyr::filter(.data = ggplot2::msleep, vore != "insecti"),
         x = vore,
         y = brainwt,
-        nboot = 25,
+        nboot = 10,
         conf.level = 0.99,
         tr = 0.05,
         conf.type = c("norm")
@@ -824,22 +833,22 @@ testthat::test_that(
         x = vore,
         y = brainwt,
         tr = 0.1,
-        nboot = 50,
+        nboot = 10,
         conf.level = 0.99,
         conf.type = "perc"
       ))
 
     # test normal CI
     testthat::expect_equal(df1$estimate, 0.5423793, tolerance = 0.00002)
-    testthat::expect_equal(df1$conf.low, 0.06259349, tolerance = 0.00002)
-    testthat::expect_equal(df1$conf.high, 1.838343, tolerance = 0.00002)
+    testthat::expect_equal(df1$conf.low, -0.5290579, tolerance = 0.00002)
+    testthat::expect_equal(df1$conf.high, 1.877737, tolerance = 0.00002)
     testthat::expect_equal(df1$statistic, 0.6146867, tolerance = 0.00002)
     testthat::expect_equal(df1$p.value, 0.5487093, tolerance = 0.00002)
 
     # test percentile CI
     testthat::expect_equal(df2$estimate, 1.295478, tolerance = 0.00002)
-    testthat::expect_equal(df2$conf.low, 0.1435678, tolerance = 0.00002)
-    testthat::expect_equal(df2$conf.high, 2.357306, tolerance = 0.00002)
+    testthat::expect_equal(df2$conf.low, 0.3947649, tolerance = 0.00002)
+    testthat::expect_equal(df2$conf.high, 1.887348, tolerance = 0.00002)
     testthat::expect_equal(df2$statistic, 0.260884, tolerance = 0.00002)
     testthat::expect_equal(df2$p.value, 0.772501, tolerance = 0.00002)
   }
@@ -883,7 +892,7 @@ testthat::test_that(
     testthat::expect_equal(df1$estimate, 0.7881904, tolerance = 0.0001)
     testthat::expect_equal(df1$conf.low, 0.5830343, tolerance = 0.0001)
     testthat::expect_equal(df1$conf.high, 0.8415761, tolerance = 0.001)
-    testthat::expect_equal(df1$df, 10L)
+    testthat::expect_equal(df1$parameter, 10L)
     testthat::expect_equal(df1$p.value, 0.0001183419, tolerance = 0.00001)
 
     # testing (dataframe with NAs)
@@ -891,7 +900,7 @@ testthat::test_that(
     testthat::expect_equal(df2$estimate, 0.9279336, tolerance = 0.0001)
     testthat::expect_equal(df2$conf.low, 0.9642619, tolerance = 0.0001)
     testthat::expect_equal(df2$conf.high, 1.798206, tolerance = 0.001)
-    testthat::expect_equal(df2$df, 14L)
+    testthat::expect_equal(df2$parameter, 14L)
     testthat::expect_equal(df2$p.value, 0.4033365, tolerance = 0.000001)
   }
 )

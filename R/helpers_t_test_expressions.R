@@ -159,14 +159,10 @@ expr_t_parametric <- function(data,
     expr_template(
       no.parameters = 1L,
       stat.title = stat.title,
+      stats.df = stats_df,
+      effsize.df = effsize_df,
       statistic.text = quote(italic("t")),
-      statistic = stats_df$statistic[[1]],
-      parameter = stats_df$parameter[[1]],
-      p.value = stats_df$p.value[[1]],
       effsize.text = effsize.text,
-      effsize.estimate = effsize_df$estimate[[1]],
-      effsize.LL = effsize_df$conf.low[[1]],
-      effsize.UL = effsize_df$conf.high[[1]],
       n = sample_size,
       conf.level = conf.level,
       k = k,
@@ -330,7 +326,8 @@ expr_t_nonparametric <- function(data,
       correct = TRUE,
       conf.int = TRUE,
       conf.level = conf.level
-    ))
+    )) %>%
+    dplyr::mutate(.data = ., statistic = log(statistic))
 
   # computing effect size
   effsize_df <-
@@ -354,16 +351,11 @@ expr_t_nonparametric <- function(data,
   subtitle <-
     expr_template(
       no.parameters = 0L,
-      parameter = NULL,
-      parameter2 = NULL,
+      stats.df = stats_df,
+      effsize.df = effsize_df,
       stat.title = stat.title,
       statistic.text = statistic.text,
-      statistic = log(stats_df$statistic[[1]]),
-      p.value = stats_df$p.value[[1]],
       effsize.text = quote(widehat(italic("r"))),
-      effsize.estimate = effsize_df$estimate[[1]],
-      effsize.LL = effsize_df$conf.low[[1]],
-      effsize.UL = effsize_df$conf.high[[1]],
       n = sample_size,
       n.text = n.text,
       conf.level = conf.level,
@@ -461,11 +453,18 @@ expr_t_robust <- function(data,
     sample_size <- nrow(data)
 
     # Yuen's test for trimmed means
-    stats_df <-
+    stats_obj <-
       WRS2::yuen(
         formula = rlang::new_formula({{ y }}, {{ x }}),
         data = data,
         tr = tr
+      )
+
+    # tidying it up
+    stats_df <-
+      tibble::tribble(
+        ~statistic, ~parameter, ~p.value,
+        stats_obj$test, stats_obj$df, stats_obj$p.value
       )
 
     # computing effect size and its confidence interval
@@ -487,7 +486,6 @@ expr_t_robust <- function(data,
 
     # subtitle parameters
     k.parameter <- k
-    statistic <- stats_df$test[[1]]
     n.text <- quote(italic("n")["obs"])
   }
 
@@ -518,32 +516,27 @@ expr_t_robust <- function(data,
 
     # subtitle parameters
     k.parameter <- 0L
-    statistic <- stats_df$statistic[[1]]
     n.text <- quote(italic("n")["pairs"])
   }
+
+  # message about effect size measure
+  if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)
 
   # preparing subtitle
   subtitle <-
     expr_template(
       no.parameters = 1L,
+      stats.df = stats_df,
+      effsize.df = effsize_df,
       stat.title = stat.title,
       statistic.text = quote(italic("t")),
-      statistic = statistic,
-      parameter = stats_df$df[[1]],
-      p.value = stats_df$p.value[[1]],
       effsize.text = quote(widehat(italic(xi))),
-      effsize.estimate = effsize_df$estimate[[1]],
-      effsize.LL = effsize_df$conf.low[[1]],
-      effsize.UL = effsize_df$conf.high[[1]],
       n = sample_size,
       n.text = n.text,
       conf.level = conf.level,
       k = k,
       k.parameter = k.parameter
     )
-
-  # message about effect size measure
-  if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)
 
   # return the subtitle
   return(subtitle)

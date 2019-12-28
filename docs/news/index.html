@@ -143,6 +143,12 @@
 <h1 class="page-header">
 <a href="#statsexpressions-0209000" class="anchor"></a>statsExpressions 0.2.0.9000<small> Unreleased </small>
 </h1>
+<p>BREAKING CHANGES</p>
+<ul>
+<li>
+<code>expr_template</code> function now expects two dataframes: <code>stats.df</code> and <code>effsize.df</code> that contain the details needed for creating expressions instead of providing each individual values. This makes the function more friendly work with using modeling packages like <code>broom</code>.</li>
+</ul>
+<p>MINOR CHANGES</p>
 <ul>
 <li>Minor tweaks to how widehat is displayed in some of the expressions.</li>
 </ul>
@@ -151,6 +157,7 @@
 <h1 class="page-header">
 <a href="#statsexpressions-013" class="anchor"></a>statsExpressions 0.1.3<small> 2019-12-18 </small>
 </h1>
+<p>MAJOR CHANGES</p>
 <ul>
 <li>Removes <code>MCMCpack</code> from <code>Depends</code>.</li>
 <li>All effect size texts now contain <code><a href="https://rdrr.io/r/base/Arithmetic.html">^</a></code> on top to signify that these are estimates.</li>
@@ -160,6 +167,7 @@
 <h1 class="page-header">
 <a href="#statsexpressions-012" class="anchor"></a>statsExpressions 0.1.2<small> 2019-12-13 </small>
 </h1>
+<p>MINOR CHANGES</p>
 <ul>
 <li>Maintenance release to fix additional check issues on <code>CRAN</code>.</li>
 </ul>
@@ -168,6 +176,7 @@
 <h1 class="page-header">
 <a href="#statsexpressions-011" class="anchor"></a>statsExpressions 0.1.1<small> 2019-08-28 </small>
 </h1>
+<p>MINOR CHANGES</p>
 <ul>
 <li>Fixing tests for the new release of <code>rcompanion</code> dependency.</li>
 <li>Minor code refactoring.</li>

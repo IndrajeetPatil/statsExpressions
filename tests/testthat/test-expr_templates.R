@@ -37,20 +37,28 @@ testthat::test_that(
         )
       )
 
+    # creating a dataframe with stats results
+    stats_df <- cbind.data.frame(
+      statistic = 8.74,
+      p.value = 0.013
+    )
+
+    # creating a dataframe with effect size results
+    effsize_df <- cbind.data.frame(
+      estimate = 0.52,
+      conf.low = 0.13,
+      conf.high = 0.93
+    )
+
     # created using a template maker
     template_0 <-
       statsExpressions::expr_template(
         no.parameters = 0L,
+        stats.df = stats_df,
+        effsize.df = effsize_df,
         statistic.text = quote(italic("W")),
-        statistic = 8.74,
-        parameter = NULL,
-        p.value = 0.013,
-        effsize.estimate = 0.52,
-        effsize.LL = 0.13,
-        effsize.UL = 0.93,
         conf.level = 0.99,
         k = 2L,
-        k.parameter = 0L,
         n = 32,
         effsize.text = quote(widehat(italic("r")))
       )
@@ -86,7 +94,7 @@ testthat::test_that(
           widehat(italic("V")),
           " = ",
           "0.52",
-          ", CI"["99%"],
+          ", CI"["95%"],
           " [",
           "0.13",
           ", ",
@@ -99,43 +107,33 @@ testthat::test_that(
         )
       )
 
+    # creating a dataframe with stats results
+    stats_df <- cbind.data.frame(
+      statistic = 8.74,
+      parameter = 2,
+      p.value = 0.013
+    )
+
+    # creating a dataframe with effect size results
+    effsize_df <- cbind.data.frame(
+      estimate = 0.52,
+      conf.low = 0.13,
+      conf.high = 0.93
+    )
+
     # created using a template maker
     template_1 <-
       statsExpressions::expr_template(
         no.parameters = 1L,
+        stats.df = stats_df,
+        effsize.df = effsize_df,
         statistic.text = quote(italic(chi)^2),
-        statistic = 8.74,
-        parameter = 2,
-        p.value = 0.013,
-        effsize.estimate = 0.52,
-        effsize.LL = 0.13,
-        effsize.UL = 0.93,
-        conf.level = 0.99,
-        k = 2L,
-        k.parameter = 0L,
         n = 32,
         effsize.text = quote(widehat(italic("V")))
       )
 
     # check if they are equivalent
     testthat::expect_identical(subtitle, template_1)
-
-    # make sure this doesn't work when df is not specified
-    testthat::expect_error(statsExpressions::expr_template(
-      no.parameters = 1L,
-      statistic.text = quote(italic("t")),
-      statistic = 2.27,
-      parameter = NULL,
-      p.value = 0.107,
-      effsize.estimate = 0.00,
-      effsize.LL = -0.08,
-      effsize.UL = 0.10,
-      conf.level = 0.95,
-      k = 2L,
-      k.parameter = 2L,
-      n = 51L,
-      effsize.text = quote(omega["p"]^2)
-    ))
   }
 )
 
@@ -180,18 +178,28 @@ testthat::test_that(
         )
       )
 
+    # creating a dataframe with stats results
+    stats_df <- cbind.data.frame(
+      statistic = 2.27,
+      parameter1 = 3,
+      parameter2 = 24.05,
+      p.value = 0.107
+    )
+
+    # creating a dataframe with effect size results
+    effsize_df <- cbind.data.frame(
+      estimate = 0.00,
+      conf.low = -0.08,
+      conf.high = 0.10
+    )
+
     # created using a template maker
     template_1 <-
       statsExpressions::expr_template(
         no.parameters = 2L,
+        stats.df = stats_df,
+        effsize.df = effsize_df,
         statistic.text = quote(italic("F")),
-        statistic = 2.27,
-        parameter = 3L,
-        parameter2 = 24.05,
-        p.value = 0.107,
-        effsize.estimate = 0.00,
-        effsize.LL = -0.08,
-        effsize.UL = 0.10,
         conf.level = 0.95,
         k = 2L,
         k.parameter = 0L,
@@ -202,22 +210,5 @@ testthat::test_that(
 
     # check if they are equivalent
     testthat::expect_identical(subtitle, template_1)
-
-    # make sure this doesn't work when df2 is not specified
-    testthat::expect_error(statsExpressions::expr_template(
-      no.parameters = 2L,
-      statistic.text = quote(italic("F")),
-      statistic = 2.27,
-      parameter = 3L,
-      p.value = 0.107,
-      effsize.estimate = 0.00,
-      effsize.LL = -0.08,
-      effsize.UL = 0.10,
-      conf.level = 0.95,
-      k = 2L,
-      k.parameter = 2L,
-      n = 51L,
-      effsize.text = quote(omega["p"]^2)
-    ))
   }
 )

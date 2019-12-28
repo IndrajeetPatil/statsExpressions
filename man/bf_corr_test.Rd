@@ -42,7 +42,7 @@ expression with evidence in favor of the alternative hypothesis, or
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2}).}
 
-\item{...}{Additional arguments (currently ignored).}
+\item{...}{Currently ignored.}
 }
 \description{
 Bayesian correlation test.
