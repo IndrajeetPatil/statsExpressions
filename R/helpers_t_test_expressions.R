@@ -452,21 +452,6 @@ expr_t_robust <- function(data,
     # sample size
     sample_size <- nrow(data)
 
-    # Yuen's test for trimmed means
-    stats_obj <-
-      WRS2::yuen(
-        formula = rlang::new_formula({{ y }}, {{ x }}),
-        data = data,
-        tr = tr
-      )
-
-    # tidying it up
-    stats_df <-
-      tibble::tribble(
-        ~statistic, ~parameter, ~p.value,
-        stats_obj$test, stats_obj$df, stats_obj$p.value
-      )
-
     # computing effect size and its confidence interval
     effsize_obj <-
       WRS2::yuen.effect.ci(
@@ -482,6 +467,21 @@ expr_t_robust <- function(data,
       tibble::tribble(
         ~estimate, ~conf.low, ~conf.high,
         effsize_obj$effsize[[1]], effsize_obj$CI[[1]], effsize_obj$CI[[2]]
+      )
+
+    # Yuen's test for trimmed means
+    stats_obj <-
+      WRS2::yuen(
+        formula = rlang::new_formula({{ y }}, {{ x }}),
+        data = data,
+        tr = tr
+      )
+
+    # tidying it up
+    stats_df <-
+      tibble::tribble(
+        ~statistic, ~parameter, ~p.value,
+        stats_obj$test, stats_obj$df, stats_obj$p.value
       )
 
     # subtitle parameters

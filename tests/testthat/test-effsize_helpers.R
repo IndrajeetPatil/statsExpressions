@@ -561,67 +561,67 @@ testthat::test_that(
     set.seed(123)
     df1 <-
       statsExpressions:::effsize_t_parametric(
-      formula = desire ~ condition,
-      data = bugs_short,
-      paired = TRUE,
-      hedges.correction = TRUE,
-      conf.level = 0.95,
-      noncentral = FALSE,
-      tobject = tobject1
-    )
+        formula = desire ~ condition,
+        data = bugs_short,
+        paired = TRUE,
+        hedges.correction = TRUE,
+        conf.level = 0.95,
+        noncentral = FALSE,
+        tobject = tobject1
+      )
 
     # g and non-central
     set.seed(123)
     df2 <-
       statsExpressions:::effsize_t_parametric(
-      formula = desire ~ condition,
-      data = bugs_short,
-      paired = TRUE,
-      hedges.correction = TRUE,
-      conf.level = 0.95,
-      noncentral = TRUE,
-      tobject = tobject2
-    )
+        formula = desire ~ condition,
+        data = bugs_short,
+        paired = TRUE,
+        hedges.correction = TRUE,
+        conf.level = 0.95,
+        noncentral = TRUE,
+        tobject = tobject2
+      )
 
     # d and central
     set.seed(123)
     df3 <-
       statsExpressions:::effsize_t_parametric(
-      formula = desire ~ condition,
-      data = bugs_short,
-      paired = TRUE,
-      hedges.correction = FALSE,
-      conf.level = 0.90,
-      noncentral = FALSE,
-      tobject = tobject3
-    )
+        formula = desire ~ condition,
+        data = bugs_short,
+        paired = TRUE,
+        hedges.correction = FALSE,
+        conf.level = 0.90,
+        noncentral = FALSE,
+        tobject = tobject3
+      )
 
     # d and non-central
     set.seed(123)
     df4 <-
       statsExpressions:::effsize_t_parametric(
-      formula = desire ~ condition,
-      data = bugs_short,
-      paired = TRUE,
-      hedges.correction = FALSE,
-      conf.level = 0.90,
-      noncentral = TRUE,
-      tobject = tobject4
-    )
+        formula = desire ~ condition,
+        data = bugs_short,
+        paired = TRUE,
+        hedges.correction = FALSE,
+        conf.level = 0.90,
+        noncentral = TRUE,
+        tobject = tobject4
+      )
 
 
     # not tidy data
     set.seed(123)
     df5 <-
       statsExpressions:::effsize_t_parametric(
-      formula = LDLF ~ LDHF,
-      data = bugs,
-      paired = TRUE,
-      hedges.correction = FALSE,
-      conf.level = 0.90,
-      noncentral = TRUE,
-      tobject = tobject5
-    )
+        formula = LDLF ~ LDHF,
+        data = bugs,
+        paired = TRUE,
+        hedges.correction = FALSE,
+        conf.level = 0.90,
+        noncentral = TRUE,
+        tobject = tobject5
+      )
 
     # checking attributes of dataframe
     testthat::expect_identical(
@@ -730,55 +730,55 @@ testthat::test_that(
     set.seed(123)
     df1 <-
       statsExpressions:::effsize_t_parametric(
-      formula = ~height,
-      data = dplyr::starwars,
-      mu = 175,
-      hedges.correction = FALSE,
-      conf.level = 0.99,
-      noncentral = FALSE,
-      tobject = tobject1
-    )
+        formula = ~height,
+        data = dplyr::starwars,
+        mu = 175,
+        hedges.correction = FALSE,
+        conf.level = 0.99,
+        noncentral = FALSE,
+        tobject = tobject1
+      )
 
     # d and noncentral
     set.seed(123)
     df2 <-
       statsExpressions:::effsize_t_parametric(
-      formula = ~height,
-      data = dplyr::starwars,
-      mu = 175,
-      hedges.correction = FALSE,
-      conf.level = 0.90,
-      noncentral = TRUE,
-      tobject = tobject2
-    )
+        formula = ~height,
+        data = dplyr::starwars,
+        mu = 175,
+        hedges.correction = FALSE,
+        conf.level = 0.90,
+        noncentral = TRUE,
+        tobject = tobject2
+      )
 
     # g and central
     set.seed(123)
     df3 <-
       statsExpressions:::effsize_t_parametric(
-      formula = ~height,
-      data = dplyr::starwars,
-      hedges.correction = TRUE,
-      mu = 100,
-      conf.level = 0.99,
-      noncentral = FALSE,
-      tobject = tobject3
-    )
+        formula = ~height,
+        data = dplyr::starwars,
+        hedges.correction = TRUE,
+        mu = 100,
+        conf.level = 0.99,
+        noncentral = FALSE,
+        tobject = tobject3
+      )
 
     # g and noncentral
     set.seed(123)
     df4 <-
       suppressWarnings(
-      statsExpressions:::effsize_t_parametric(
-        formula = ~height,
-        data = dplyr::starwars,
-        mu = 100,
-        hedges.correction = TRUE,
-        conf.level = 0.90,
-        noncentral = TRUE,
-        tobject = tobject4
+        statsExpressions:::effsize_t_parametric(
+          formula = ~height,
+          data = dplyr::starwars,
+          mu = 100,
+          hedges.correction = TRUE,
+          conf.level = 0.90,
+          noncentral = TRUE,
+          tobject = tobject4
+        )
       )
-    )
 
     # checking estimates and CIs
     testthat::expect_equal(df1$estimate, -0.01846326, tolerance = 0.001)
