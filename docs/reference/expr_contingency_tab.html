@@ -158,8 +158,6 @@
   <span class='kw'>legend.title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
   <span class='kw'>conf.type</span> <span class='kw'>=</span> <span class='st'>"norm"</span>,
-  <span class='kw'>simulate.p.value</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>B</span> <span class='kw'>=</span> <span class='fl'>2000</span>,
   <span class='kw'>bias.correct</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>,
   <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
@@ -178,8 +176,6 @@
   <span class='kw'>legend.title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
   <span class='kw'>conf.type</span> <span class='kw'>=</span> <span class='st'>"norm"</span>,
-  <span class='kw'>simulate.p.value</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>B</span> <span class='kw'>=</span> <span class='fl'>2000</span>,
   <span class='kw'>bias.correct</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>,
   <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
@@ -251,16 +247,6 @@ like <code>"main x condition"</code> or <code>"interaction"</code>.</p></td>
       <td><p>A vector of character strings representing the type of
 intervals required. The value should be any subset of the values <code>"norm"</code>,
 <code>"basic"</code>, <code>"perc"</code>, <code>"bca"</code>. For more, see <code><a href='https://rdrr.io/pkg/boot/man/boot.ci.html'>?boot::boot.ci</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>simulate.p.value</th>
-      <td><p>a logical indicating whether to compute
-    p-values by Monte Carlo simulation.</p></td>
-    </tr>
-    <tr>
-      <th>B</th>
-      <td><p>an integer specifying the number of replicates used in the
-    Monte Carlo test.</p></td>
     </tr>
     <tr>
       <th>bias.correct</th>

@@ -94,8 +94,6 @@ expr_contingency_tab <- function(data,
                                  legend.title = NULL,
                                  conf.level = 0.95,
                                  conf.type = "norm",
-                                 simulate.p.value = FALSE,
-                                 B = 2000,
                                  bias.correct = FALSE,
                                  k = 2,
                                  messages = TRUE,
@@ -114,8 +112,7 @@ expr_contingency_tab <- function(data,
     tidyr::drop_na(data = .) %>%
     tibble::as_tibble(x = .)
 
-  # x and y need to be a factor for this analysis
-  # also drop the unused levels of the factors
+  # x and y need to be factors; drop the unused levels of the factors
 
   # x
   data %<>% dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }})))
@@ -172,14 +169,7 @@ expr_contingency_tab <- function(data,
 
     if (isFALSE(paired)) {
       # object containing stats
-      stats_df <-
-        broomExtra::tidy(stats::chisq.test(
-          x = x_arg,
-          correct = FALSE,
-          rescale.p = FALSE,
-          simulate.p.value = simulate.p.value,
-          B = B
-        ))
+      stats_df <- stats::chisq.test(x = x_arg, correct = FALSE)
 
       # computing Cramer's V and its confidence intervals
       effsize_df <-
@@ -206,7 +196,7 @@ expr_contingency_tab <- function(data,
 
     if (isTRUE(paired)) {
       # computing effect size + CI
-      stats_df <- broomExtra::tidy(stats::mcnemar.test(x = x_arg, correct = FALSE))
+      stats_df <- stats::mcnemar.test(x = x_arg, correct = FALSE)
 
       # computing effect size + CI
       effsize_df <-
@@ -233,17 +223,13 @@ expr_contingency_tab <- function(data,
   # ======================== goodness of fit test ========================
 
   if (rlang::quo_is_null(rlang::enquo(y))) {
+    # frequency table
+    x_arg <- table(data %>% dplyr::pull({{ x }}))
+
     # checking if the chi-squared test can be run
     stats_df <-
       tryCatch(
-        expr = stats::chisq.test(
-          x = table(data %>% dplyr::pull({{ x }})),
-          correct = FALSE,
-          p = ratio,
-          rescale.p = FALSE,
-          simulate.p.value = simulate.p.value,
-          B = B
-        ),
+        expr = stats::chisq.test(x = x_arg, correct = FALSE, p = ratio),
         error = function(x) NULL
       )
 
@@ -251,9 +237,6 @@ expr_contingency_tab <- function(data,
     if (is.null(stats_df)) {
       return(NULL)
     }
-
-    # tidy up
-    stats_df <- broomExtra::tidy(stats_df)
 
     # `x` argument for effect size function
     x_arg <- as.vector(table(data %>% dplyr::pull({{ x }})))
@@ -277,6 +260,9 @@ expr_contingency_tab <- function(data,
     statistic.text <- quote(chi["gof"]^2)
     n.text <- quote(italic("n")["obs"])
   }
+
+  # tidy up
+  stats_df <- broomExtra::tidy(stats_df)
 
   # preparing subtitle
   subtitle <-

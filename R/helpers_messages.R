@@ -37,7 +37,6 @@ effsize_ci_message <- function(nboot = 100, conf.level = 0.95) {
 effsize_type_switch <- function(effsize.type = NULL) {
   # figuring out which effect size to use
   if (!is.null(effsize.type)) {
-    effsize.type <-
       switch(
         EXPR = effsize.type,
         d = "biased",
@@ -55,11 +54,8 @@ effsize_type_switch <- function(effsize.type = NULL) {
         "unbiased"
       )
   } else {
-    effsize.type <- "unbiased"
+    "unbiased"
   }
-
-  # return the value
-  return(effsize.type)
 }
 
 
@@ -78,7 +74,6 @@ effsize_type_switch <- function(effsize.type = NULL) {
 stats_type_switch <- function(stats.type) {
   # figuring out which effect size to use
   if (!is.null(stats.type)) {
-    stats.type <-
       switch(
         EXPR = stats.type,
         parametric = "parametric",
@@ -96,9 +91,6 @@ stats_type_switch <- function(stats.type) {
         "parametric"
       )
   } else {
-    stats.type <- "parametric"
+    "parametric"
   }
-
-  # return the value
-  return(stats.type)
 }

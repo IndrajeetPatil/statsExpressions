@@ -98,7 +98,7 @@ expr_corr_test <- function(data,
     # tidy dataframe with statistical details
     stats_df <-
       broomExtra::tidy(
-        stats::cor.test(
+        x = stats::cor.test(
           formula = rlang::new_formula(
             NULL, rlang::expr(!!rlang::enexpr(x) + !!rlang::enexpr(y))
           ),

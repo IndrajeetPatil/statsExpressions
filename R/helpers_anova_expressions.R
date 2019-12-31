@@ -380,13 +380,15 @@ expr_anova_nonparametric <- function(data,
 
     # setting up the anova model (`y ~ x | id`) and getting its summary
     stats_df <-
-      broomExtra::tidy(stats::friedman.test(
-        formula = rlang::new_formula(
-          {{ rlang::enexpr(y) }}, rlang::expr(!!rlang::enexpr(x) | rowid)
-        ),
-        data = data,
-        na.action = na.omit
-      ))
+      broomExtra::tidy(
+        x = stats::friedman.test(
+          formula = rlang::new_formula(
+            {{ rlang::enexpr(y) }}, rlang::expr(!!rlang::enexpr(x) | rowid)
+          ),
+          data = data,
+          na.action = na.omit
+        )
+      )
 
     # text for effect size
     effsize.text <- quote(widehat(italic("W"))["Kendall"])
@@ -404,11 +406,13 @@ expr_anova_nonparametric <- function(data,
 
     # setting up the anova model and getting its summary
     stats_df <-
-      broomExtra::tidy(stats::kruskal.test(
-        formula = rlang::new_formula({{ y }}, {{ x }}),
-        data = data,
-        na.action = na.omit
-      ))
+      broomExtra::tidy(
+        x = stats::kruskal.test(
+          formula = rlang::new_formula({{ y }}, {{ x }}),
+          data = data,
+          na.action = na.omit
+        )
+      )
 
     # getting partial eta-squared based on H-statistic
     effsize_df <-
@@ -622,7 +626,6 @@ expr_anova_robust <- function(data,
         n.text = n.text,
         conf.level = conf.level,
         k = k,
-        k.parameter = 0L,
         k.parameter2 = k
       )
 
