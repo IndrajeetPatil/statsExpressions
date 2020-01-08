@@ -340,9 +340,10 @@ expr_t_nonparametric <- function(data,
       type = conf.type,
       R = nboot,
       histogram = FALSE,
-      digits = k
+      digits = k,
+      reportIncomplete = TRUE
     ) %>%
-    rcompanion_cleaner(object = ., estimate.col = "r")
+    rcompanion_cleaner(.)
 
   # message about effect size measure
   if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)

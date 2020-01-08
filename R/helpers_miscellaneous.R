@@ -262,15 +262,28 @@ expr_template <- function(no.parameters,
 }
 
 #' @noRd
+#'
+#' @importFrom dplyr rename_all recode
+#'
 #' @keywords internal
 
-rcompanion_cleaner <- function(object, estimate.col) {
+rcompanion_cleaner <- function(object) {
+  # if a list, extract the first component containing results
+  if (inherits(object, "list")) object <- object[[1]]
+
+  # rename columns uniformly
   tibble::as_tibble(object) %>%
-    dplyr::rename(
-      .data = .,
-      estimate = estimate.col,
-      conf.low = lower.ci,
-      conf.high = upper.ci
+    dplyr::rename_all(
+      .tbl = .,
+      .funs = dplyr::recode,
+      epsilon.squared = "estimate",
+      r = "estimate",
+      rho = "estimate",
+      W = "estimate",
+      Cramer.V = "estimate",
+      Value = "estimate",
+      lower.ci = "conf.low",
+      upper.ci = "conf.high"
     )
 }
 

@@ -178,9 +178,9 @@ expr_t_onesample <- function(data,
         R = nboot,
         histogram = FALSE,
         digits = k,
-        reportIncomplete = FALSE
+        reportIncomplete = TRUE
       ) %>%
-      rcompanion_cleaner(object = ., estimate.col = "r")
+      rcompanion_cleaner(.)
 
     # preparing subtitle parameters
     statistic.text <- quote("log"["e"](italic("V")))

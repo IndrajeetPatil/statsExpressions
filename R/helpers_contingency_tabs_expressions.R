@@ -25,8 +25,8 @@
 #'   test. The default is `NULL`, i.e. no title will be added to describe the
 #'   effect being shown. An example of a `stat.title` argument will be something
 #'   like `"main x condition"` or `"interaction"`.
-#' @param bias.correct If `TRUE`, a bias correction will be applied to Cramer's
-#'   *V*.
+#' @param bias.correct If `TRUE` (default), a bias correction will be applied to
+#'   Cramer's *V*.
 #' @param ratio A vector of proportions: the expected proportions for the
 #'   proportion test (should sum to 1). Default is `NULL`, which means the null
 #'   is equal theoretical proportions across the levels of the nominal variable.
@@ -40,7 +40,7 @@
 #' @inheritParams expr_anova_parametric
 #'
 #' @importFrom dplyr select mutate rename filter
-#' @importFrom rlang !! enquo as_name ensym
+#' @importFrom rlang !! enquo as_name ensym exec
 #' @importFrom tibble tribble as_tibble
 #' @importFrom tidyr uncount drop_na
 #' @importFrom stats mcnemar.test chisq.test
@@ -94,7 +94,7 @@ expr_contingency_tab <- function(data,
                                  legend.title = NULL,
                                  conf.level = 0.95,
                                  conf.type = "norm",
-                                 bias.correct = FALSE,
+                                 bias.correct = TRUE,
                                  k = 2,
                                  messages = TRUE,
                                  ...) {
@@ -171,22 +171,8 @@ expr_contingency_tab <- function(data,
       # object containing stats
       stats_df <- stats::chisq.test(x = x_arg, correct = FALSE)
 
-      # computing Cramer's V and its confidence intervals
-      effsize_df <-
-        rcompanion::cramerV(
-          x = x_arg,
-          ci = TRUE,
-          conf = conf.level,
-          type = conf.type,
-          R = nboot,
-          histogram = FALSE,
-          digits = 5,
-          bias.correct = bias.correct,
-          reportIncomplete = FALSE
-        ) %>%
-        rcompanion_cleaner(object = ., estimate.col = "Cramer.V")
-
       # effect size text
+      .f <- rcompanion::cramerV
       effsize.text <- quote(widehat(italic("V"))["Cramer"])
       statistic.text <- quote(chi["Pearson"]^2)
       n.text <- quote(italic("n")["obs"])
@@ -198,26 +184,14 @@ expr_contingency_tab <- function(data,
       # computing effect size + CI
       stats_df <- stats::mcnemar.test(x = x_arg, correct = FALSE)
 
-      # computing effect size + CI
-      effsize_df <-
-        rcompanion::cohenG(
-          x = x_arg,
-          ci = TRUE,
-          conf = conf.level,
-          type = conf.type,
-          R = nboot,
-          histogram = FALSE,
-          digits = 5,
-          reportIncomplete = FALSE
-        )$Global.statistics %>%
-        rcompanion_cleaner(object = ., estimate.col = "Value") %>%
-        dplyr::filter(.data = ., Statistic == "g")
-
       # effect size text
+      .f <- rcompanion::cohenG
       effsize.text <- quote(widehat(italic("g"))["Cohen"])
       statistic.text <- quote(chi["McNemar"]^2)
       n.text <- quote(italic("n")["pairs"])
     }
+
+    args_list <- list(x = x_arg, bias.correct = bias.correct)
   }
 
   # ======================== goodness of fit test ========================
@@ -241,34 +215,40 @@ expr_contingency_tab <- function(data,
     # `x` argument for effect size function
     x_arg <- as.vector(table(data %>% dplyr::pull({{ x }})))
 
-    # dataframe with effect size and its confidence intervals
-    effsize_df <-
-      rcompanion::cramerVFit(
-        x = x_arg,
-        p = ratio,
-        ci = TRUE,
-        conf = conf.level,
-        type = conf.type,
-        R = nboot,
-        histogram = FALSE,
-        digits = 5
-      ) %>%
-      rcompanion_cleaner(object = ., estimate.col = "Cramer.V")
-
     # effect size text
+    .f <- rcompanion::cramerVFit
     effsize.text <- quote(widehat(italic("V"))["Cramer"])
     statistic.text <- quote(chi["gof"]^2)
     n.text <- quote(italic("n")["obs"])
+    args_list <- list(x = x_arg, p = ratio)
   }
 
-  # tidy up
-  stats_df <- broomExtra::tidy(stats_df)
+  # computing effect size + CI
+  effsize_df <-
+    rlang::exec(
+      .fn = .f,
+      !!!args_list,
+      ci = TRUE,
+      conf = conf.level,
+      type = conf.type,
+      R = nboot,
+      histogram = FALSE,
+      digits = 5,
+      reportIncomplete = TRUE
+    ) %>%
+    rcompanion_cleaner(.)
+
+
+  # for Cohen's g
+  if ("Statistic" %in% names(effsize_df)) {
+    effsize_df %<>% dplyr::filter(.data = ., Statistic == "g")
+  }
 
   # preparing subtitle
   subtitle <-
     expr_template(
       no.parameters = 1L,
-      stats.df = stats_df,
+      stats.df = broomExtra::tidy(stats_df),
       effsize.df = effsize_df,
       stat.title = stat.title,
       statistic.text = statistic.text,
@@ -276,8 +256,7 @@ expr_contingency_tab <- function(data,
       n = sample_size,
       n.text = n.text,
       conf.level = conf.level,
-      k = k,
-      k.parameter = 0L
+      k = k
     )
 
   # message about effect size measure

@@ -141,9 +141,9 @@ expr_corr_test <- function(data,
         R = nboot,
         histogram = FALSE,
         digits = 5,
-        reportIncomplete = FALSE
+        reportIncomplete = TRUE
       ) %>%
-      rcompanion_cleaner(object = ., estimate.col = "rho")
+      rcompanion_cleaner(.)
 
     # subtitle parameters
     no.parameters <- 0L

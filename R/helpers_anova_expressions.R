@@ -368,7 +368,7 @@ expr_anova_nonparametric <- function(data,
         histogram = FALSE,
         digits = 5
       ) %>%
-      rcompanion_cleaner(object = ., estimate.col = "W")
+      rcompanion_cleaner(.)
 
     # converting to long format and then getting it back in wide so that the
     # rowid variable can be used as the block variable
@@ -428,7 +428,7 @@ expr_anova_nonparametric <- function(data,
         digits = 5,
         reportIncomplete = FALSE
       ) %>%
-      rcompanion_cleaner(object = ., estimate.col = "epsilon.squared")
+      rcompanion_cleaner(.)
 
     # text for effect size
     effsize.text <- quote(widehat(epsilon^2))

@@ -18,6 +18,7 @@ testthat::test_that(
         y = Class,
         stat.title = "Testing",
         k = 5,
+        bias.correct = FALSE,
         conf.level = 0.99,
         conf.type = "basic",
         nboot = 5,
@@ -124,7 +125,7 @@ testthat::test_that(
         conf.type = "perc",
         nboot = 15,
         messages = FALSE,
-        simulate.p.value = TRUE
+        simulate.p.value = TRUE # this should get ignored
       ))
 
     # expected output
@@ -145,12 +146,12 @@ testthat::test_that(
           ", ",
           widehat(italic("V"))["Cramer"],
           " = ",
-          "0.32",
+          "0.06",
           ", CI"["99%"],
           " [",
-          "NA",
+          "0.00",
           ", ",
-          "NA",
+          "0.39",
           "]",
           ", ",
           italic("n")["obs"],
@@ -667,9 +668,9 @@ testthat::test_that(
           "0.38",
           ", CI"["95%"],
           " [",
-          "NA",
+          "0.29",
           ", ",
-          "NA",
+          "0.51",
           "]",
           ", ",
           italic("n")["obs"],
@@ -712,10 +713,15 @@ testthat::test_that(
       y = c("a", "a", "a", "a", "b", "b")
     )
 
+    # subtitle
+    set.seed(123)
+    sub <- suppressWarnings(
+      statsExpressions::expr_contingency_tab(df, x, y, messages = FALSE)
+    )
+
+    # test
     testthat::expect_identical(
-      suppressWarnings(
-        statsExpressions::expr_contingency_tab(df, x, y, messages = FALSE)
-      ),
+      sub,
       ggplot2::expr(
         paste(
           NULL,
@@ -731,12 +737,12 @@ testthat::test_that(
           ", ",
           widehat(italic("V"))["Cramer"],
           " = ",
-          "0.71",
+          "0.35",
           ", CI"["95%"],
           " [",
-          "NA",
+          "-0.44",
           ", ",
-          "NA",
+          "0.93",
           "]",
           ", ",
           italic("n")["obs"],

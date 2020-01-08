@@ -1,4 +1,4 @@
-# statsExpressions 0.2.0.9000
+# statsExpressions 0.2.0
 
 BREAKING CHANGES
 
@@ -10,6 +10,7 @@ BREAKING CHANGES
 MINOR CHANGES
 
   - Minor tweaks to how widehat is displayed in some of the expressions. 
+  - Cramer's *V* is bias-corrected by default.
  
 # statsExpressions 0.1.3
 

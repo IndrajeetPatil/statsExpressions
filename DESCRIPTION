@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Expressions with Statistical Details
-Version: 0.2.0.9000
+Version: 0.2.0
 Authors@R: 
     c(person(given = "Indrajeet",
              family = "Patil",
@@ -36,7 +36,7 @@ Imports:
     groupedstats (>= 0.1.0),
     psych (>= 1.8.12),
     purrr (>= 0.3.3),
-    rcompanion (>= 2.3.9),
+    rcompanion (>= 2.3.21),
     rlang (>= 0.4.2),
     stats,
     tibble (>= 2.1.3),
