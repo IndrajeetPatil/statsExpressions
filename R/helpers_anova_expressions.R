@@ -28,7 +28,7 @@
 #' @inheritParams groupedstats::lm_effsize_standardizer
 #'
 #'
-#' @importFrom dplyr select
+#' @importFrom dplyr select rename matches
 #' @importFrom rlang !! enquo eval_tidy expr ensym
 #' @importFrom stats lm oneway.test na.omit
 #' @importFrom ez ezANOVA
@@ -229,8 +229,13 @@ expr_anova_parametric <- function(data,
       )
 
     # tidy up the stats object
-    stats_df <- suppressMessages(broomExtra::tidy(stats_obj)) %>%
-      dplyr::rename(.data = ., parameter1 = num.df, parameter2 = den.df)
+    stats_df <-
+      suppressMessages(broomExtra::tidy(stats_obj)) %>%
+      dplyr::rename(
+        .data = .,
+        parameter1 = dplyr::matches("num"),
+        parameter2 = dplyr::matches("denom")
+      )
 
     # creating a standardized dataframe with effect size and its CIs
     effsize_object <-
