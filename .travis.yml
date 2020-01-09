@@ -20,8 +20,6 @@ env:
 
 #r_check_args: "--run-dontrun"
 
-
-
 notifications:
   email:
   on_success: change
@@ -33,7 +31,6 @@ matrix:
       dist: trusty
       r: release
       r_binary_packages:
-        - stringi
         - magrittr
         - curl
         - jsonlite
@@ -59,8 +56,6 @@ matrix:
         - data.table
         - LaplacesDemon
         - logspline
-        - MCMCpack
-        - MCMCglmm
       r_packages:
         - rlang
         - bindrcpp
@@ -72,6 +67,7 @@ matrix:
         - bridgesampling
         - BH
         - remotes
+        - stringi
       r_github_packages:
         - jimhester/lintr
         - r-lib/covr
@@ -87,7 +83,6 @@ matrix:
       dist: trusty
       r: devel
       r_binary_packages:
-        - stringi
         - magrittr
         - curl
         - jsonlite
@@ -113,8 +108,6 @@ matrix:
         - data.table
         - LaplacesDemon
         - logspline
-        - MCMCpack
-        - MCMCglmm
       r_packages:
         - rlang
         - bindrcpp
@@ -126,6 +119,7 @@ matrix:
         - bridgesampling
         - BH
         - remotes
+        - stringi
       r_github_packages:
         - jimhester/lintr
         - r-lib/covr
