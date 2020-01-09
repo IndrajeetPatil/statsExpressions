@@ -148,7 +148,6 @@ expr_t_onesample <- function(data,
     # preparing subtitle parameters
     statistic.text <- quote(italic("t"))
     no.parameters <- 1L
-    parameter <- stats_df$parameter[[1]]
   }
 
   # ========================== non-parametric ==============================
@@ -156,14 +155,16 @@ expr_t_onesample <- function(data,
   if (stats.type == "nonparametric") {
     # setting up the Mann-Whitney U-test and getting its summary
     stats_df <-
-      broomExtra::tidy(stats::wilcox.test(
-        x = data %>% dplyr::pull({{ x }}),
-        alternative = "two.sided",
-        na.action = na.omit,
-        mu = test.value,
-        exact = FALSE,
-        correct = TRUE
-      )) %>%
+      broomExtra::tidy(
+        x = stats::wilcox.test(
+          x = data %>% dplyr::pull({{ x }}),
+          alternative = "two.sided",
+          na.action = na.omit,
+          mu = test.value,
+          exact = FALSE,
+          correct = TRUE
+        )
+      ) %>%
       dplyr::mutate(.data = ., statistic = log(statistic))
 
     # effect size dataframe
@@ -176,14 +177,14 @@ expr_t_onesample <- function(data,
         type = conf.type,
         R = nboot,
         histogram = FALSE,
-        digits = k
+        digits = k,
+        reportIncomplete = TRUE
       ) %>%
-      rcompanion_cleaner(object = ., estimate.col = "r")
+      rcompanion_cleaner(.)
 
     # preparing subtitle parameters
     statistic.text <- quote("log"["e"](italic("V")))
     no.parameters <- 0L
-    parameter <- NULL
     effsize.text <- quote(widehat(italic("r")))
 
     # message about effect size measure
@@ -194,21 +195,16 @@ expr_t_onesample <- function(data,
   if (stats.type %in% c("parametric", "nonparametric")) {
     subtitle <-
       expr_template(
-        no.parameters = no.parameters,
-        parameter = parameter,
         stat.title = stat.title,
+        no.parameters = no.parameters,
+        stats.df = stats_df,
+        effsize.df = effsize_df,
         statistic.text = statistic.text,
-        statistic = stats_df$statistic[[1]],
-        p.value = stats_df$p.value[[1]],
         effsize.text = effsize.text,
-        effsize.estimate = effsize_df$estimate[[1]],
-        effsize.LL = effsize_df$conf.low[[1]],
-        effsize.UL = effsize_df$conf.high[[1]],
         n = sample_size,
         n.text = quote(italic("n")["obs"]),
         conf.level = conf.level,
-        k = k,
-        k.parameter = 0L
+        k = k
       )
   }
 

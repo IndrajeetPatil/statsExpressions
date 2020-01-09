@@ -22,83 +22,25 @@ effsize_ci_message <- function(nboot = 100, conf.level = 0.95) {
 }
 
 
-#' @title Switch function to determine which effect size is to computed.
-#' @name effsize_type_switch
-#' @description Takes in all allowed characters describing the needed effect
-#'   size (e.g., `"d"`, `"partial_eta"`, etc.) and converts it into standard
-#'   terms (`"biased"` or `"unbiased"`) to reduce the complexity of conditional
-#'   statements.
-#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
-#'
-#' @param effsize.type Character describing the needed effect size.
-#'
-#' @keywords internal
+#' @noRd
 
-effsize_type_switch <- function(effsize.type = NULL) {
-  # figuring out which effect size to use
-  if (!is.null(effsize.type)) {
-    effsize.type <-
-      switch(
-        EXPR = effsize.type,
-        d = "biased",
-        g = "unbiased",
-        eta = "biased",
-        omega = "unbiased",
-        partial_eta = "biased",
-        partial_omega = "unbiased",
-        partial.eta = "biased",
-        partial.omega = "unbiased",
-        p_eta = "biased",
-        p_omega = "unbiased",
-        biased = "biased",
-        unbiased = "unbiased",
-        "unbiased"
-      )
-  } else {
-    effsize.type <- "unbiased"
-  }
-
-  # return the value
-  return(effsize.type)
+effsize_type_switch <- function(effsize.type) {
+  dplyr::case_when(
+    grepl("^u|^g|omega", effsize.type, TRUE) ~ "unbiased",
+    grepl("^b|^d|eta", effsize.type, TRUE) ~ "biased",
+    TRUE ~ "unbiased"
+  )
 }
 
 
-#' @title Switch function to determine which type of statistics is to be run.
-#' @name stats_type_switch
-#' @description Takes in all allowed characters describing the needed type of
-#'   test and converts it into standard terms to reduce the complexity of
-#'   conditional statements.
-#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
-#'
-#' @param stats.type Character describing the needed type of statistics (e.g.,
-#'   `"parametric"`, `"nonparametric"`, `"robust"`, `"bayes"``, etc.).
-#'
-#' @keywords internal
+#' @noRd
 
-stats_type_switch <- function(stats.type) {
-  # figuring out which effect size to use
-  if (!is.null(stats.type)) {
-    stats.type <-
-      switch(
-        EXPR = stats.type,
-        parametric = "parametric",
-        p = "parametric",
-        pearson = "parametric",
-        nonparametric = "nonparametric",
-        np = "nonparametric",
-        "non-parametric" = "nonparametric",
-        spearman = "nonparametric",
-        robust = "robust",
-        r = "robust",
-        pb = "robust",
-        bayes = "bayes",
-        bf = "bayes",
-        "parametric"
-      )
-  } else {
-    stats.type <- "parametric"
-  }
-
-  # return the value
-  return(stats.type)
+stats_type_switch <- function(type) {
+  dplyr::case_when(
+    grepl("^p", type, TRUE) ~ "parametric",
+    grepl("^n|^s", type, TRUE) ~ "nonparametric",
+    grepl("^r", type, TRUE) ~ "robust",
+    grepl("^b", type, TRUE) ~ "bayes",
+    TRUE ~ "parametric"
+  )
 }

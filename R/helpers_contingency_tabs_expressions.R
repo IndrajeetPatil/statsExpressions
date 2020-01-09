@@ -25,8 +25,8 @@
 #'   test. The default is `NULL`, i.e. no title will be added to describe the
 #'   effect being shown. An example of a `stat.title` argument will be something
 #'   like `"main x condition"` or `"interaction"`.
-#' @param bias.correct If `TRUE`, a bias correction will be applied to Cramer's
-#'   *V*.
+#' @param bias.correct If `TRUE` (default), a bias correction will be applied to
+#'   Cramer's *V*.
 #' @param ratio A vector of proportions: the expected proportions for the
 #'   proportion test (should sum to 1). Default is `NULL`, which means the null
 #'   is equal theoretical proportions across the levels of the nominal variable.
@@ -39,8 +39,8 @@
 #' @inheritParams stats::chisq.test
 #' @inheritParams expr_anova_parametric
 #'
-#' @importFrom dplyr select mutate mutate_at union rename filter
-#' @importFrom rlang !! enquo as_name ensym
+#' @importFrom dplyr select mutate rename filter
+#' @importFrom rlang !! enquo as_name ensym exec
 #' @importFrom tibble tribble as_tibble
 #' @importFrom tidyr uncount drop_na
 #' @importFrom stats mcnemar.test chisq.test
@@ -94,9 +94,7 @@ expr_contingency_tab <- function(data,
                                  legend.title = NULL,
                                  conf.level = 0.95,
                                  conf.type = "norm",
-                                 simulate.p.value = FALSE,
-                                 B = 2000,
-                                 bias.correct = FALSE,
+                                 bias.correct = TRUE,
                                  k = 2,
                                  messages = TRUE,
                                  ...) {
@@ -114,8 +112,7 @@ expr_contingency_tab <- function(data,
     tidyr::drop_na(data = .) %>%
     tibble::as_tibble(x = .)
 
-  # x and y need to be a factor for this analysis
-  # also drop the unused levels of the factors
+  # x and y need to be factors; drop the unused levels of the factors
 
   # x
   data %<>% dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }})))
@@ -165,48 +162,17 @@ expr_contingency_tab <- function(data,
   # association tests
   if (!rlang::quo_is_null(rlang::enquo(y))) {
 
+    # creating a matrix with frequencies and cleaning it up
+    x_arg <- as.matrix(table(data %>% dplyr::pull({{ x }}), data %>% dplyr::pull({{ y }})))
+
     # ======================== Pearson's test ================================
 
     if (isFALSE(paired)) {
-      # creating a matrix with frequencies and cleaning it up
-      x_arg <- as.matrix(table(
-        data %>% dplyr::pull({{ x }}),
-        data %>% dplyr::pull({{ y }})
-      ))
-
       # object containing stats
-      stats_df <-
-        broomExtra::tidy(stats::chisq.test(
-          x = x_arg,
-          correct = FALSE,
-          rescale.p = FALSE,
-          simulate.p.value = simulate.p.value,
-          B = B
-        ))
-
-      # computing Cramer's V and its confidence intervals
-      effsize_df <-
-        tryCatch(
-          expr = rcompanion::cramerV(
-            x = x_arg,
-            ci = TRUE,
-            conf = conf.level,
-            type = conf.type,
-            R = nboot,
-            histogram = FALSE,
-            digits = 5,
-            bias.correct = bias.correct
-          ) %>%
-            rcompanion_cleaner(object = ., estimate.col = "Cramer.V"),
-          error = function(x) {
-            tibble::tribble(
-              ~estimate, ~conf.low, ~conf.high,
-              NaN, NaN, NaN
-            )
-          }
-        )
+      stats_df <- stats::chisq.test(x = x_arg, correct = FALSE)
 
       # effect size text
+      .f <- rcompanion::cramerV
       effsize.text <- quote(widehat(italic("V"))["Cramer"])
       statistic.text <- quote(chi["Pearson"]^2)
       n.text <- quote(italic("n")["obs"])
@@ -215,116 +181,82 @@ expr_contingency_tab <- function(data,
     # ======================== McNemar's test ================================
 
     if (isTRUE(paired)) {
-      # figuring out all unique factor levels across two variables
-      factor.levels <- dplyr::union(
-        levels(data %>% dplyr::pull({{ x }})),
-        levels(data %>% dplyr::pull({{ y }}))
-      )
-
-      # introducing dropped levels back into the variables
-      data %<>%
-        dplyr::mutate_at(
-          .tbl = .,
-          .vars = dplyr::vars({{ x }}, {{ y }}),
-          .funs = factor,
-          levels = factor.levels
-        )
-
-      # creating a matrix with frequencies and cleaning it up
-      x_arg <- as.matrix(table(
-        data %>% dplyr::pull({{ x }}),
-        data %>% dplyr::pull({{ y }})
-      ))
-
       # computing effect size + CI
-      stats_df <- broomExtra::tidy(stats::mcnemar.test(x = x_arg, correct = FALSE))
-
-      # computing effect size + CI
-      effsize_df <-
-        rcompanion::cohenG(
-          x = x_arg,
-          ci = TRUE,
-          conf = conf.level,
-          type = conf.type,
-          R = nboot,
-          histogram = FALSE,
-          digits = 5
-        )$Global.statistics %>%
-        rcompanion_cleaner(object = ., estimate.col = "Value") %>%
-        dplyr::filter(.data = ., Statistic == "g")
+      stats_df <- stats::mcnemar.test(x = x_arg, correct = FALSE)
 
       # effect size text
+      .f <- rcompanion::cohenG
       effsize.text <- quote(widehat(italic("g"))["Cohen"])
       statistic.text <- quote(chi["McNemar"]^2)
       n.text <- quote(italic("n")["pairs"])
     }
+
+    args_list <- list(x = x_arg, bias.correct = bias.correct)
   }
 
   # ======================== goodness of fit test ========================
 
   if (rlang::quo_is_null(rlang::enquo(y))) {
+    # frequency table
+    x_arg <- table(data %>% dplyr::pull({{ x }}))
+
     # checking if the chi-squared test can be run
     stats_df <-
       tryCatch(
-        expr = stats::chisq.test(
-          x = table(data %>% dplyr::pull({{ x }})),
-          correct = FALSE,
-          p = ratio,
-          rescale.p = FALSE,
-          simulate.p.value = simulate.p.value,
-          B = B
-        ),
+        expr = stats::chisq.test(x = x_arg, correct = FALSE, p = ratio),
         error = function(x) NULL
       )
 
     # if the function worked, then return tidy output
     if (is.null(stats_df)) {
       return(NULL)
-    } else {
-      stats_df <- broomExtra::tidy(stats_df)
     }
 
     # `x` argument for effect size function
     x_arg <- as.vector(table(data %>% dplyr::pull({{ x }})))
 
-    # dataframe with effect size and its confidence intervals
-    effsize_df <-
-      rcompanion::cramerVFit(
-        x = x_arg,
-        p = ratio,
-        ci = TRUE,
-        conf = conf.level,
-        type = conf.type,
-        R = nboot,
-        histogram = FALSE,
-        digits = 5
-      ) %>%
-      rcompanion_cleaner(object = ., estimate.col = "Cramer.V")
-
     # effect size text
+    .f <- rcompanion::cramerVFit
     effsize.text <- quote(widehat(italic("V"))["Cramer"])
     statistic.text <- quote(chi["gof"]^2)
     n.text <- quote(italic("n")["obs"])
+    args_list <- list(x = x_arg, p = ratio)
+  }
+
+  # computing effect size + CI
+  effsize_df <-
+    rlang::exec(
+      .fn = .f,
+      !!!args_list,
+      ci = TRUE,
+      conf = conf.level,
+      type = conf.type,
+      R = nboot,
+      histogram = FALSE,
+      digits = 5,
+      reportIncomplete = TRUE
+    ) %>%
+    rcompanion_cleaner(.)
+
+
+  # for Cohen's g
+  if ("Statistic" %in% names(effsize_df)) {
+    effsize_df %<>% dplyr::filter(.data = ., Statistic == "g")
   }
 
   # preparing subtitle
   subtitle <-
     expr_template(
       no.parameters = 1L,
+      stats.df = broomExtra::tidy(stats_df),
+      effsize.df = effsize_df,
       stat.title = stat.title,
       statistic.text = statistic.text,
-      statistic = stats_df$statistic[[1]],
-      parameter = stats_df$parameter[[1]],
-      p.value = stats_df$p.value[[1]],
       effsize.text = effsize.text,
-      effsize.estimate = effsize_df$estimate[[1]],
-      effsize.LL = effsize_df$conf.low[[1]],
-      effsize.UL = effsize_df$conf.high[[1]],
       n = sample_size,
       n.text = n.text,
       conf.level = conf.level,
-      k = k,
-      k.parameter = 0L
+      k = k
     )
 
   # message about effect size measure

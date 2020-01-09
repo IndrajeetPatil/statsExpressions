@@ -51,7 +51,7 @@ added as a prefix in the subtitle. The default is \code{NULL}. An example of a
 \item{messages}{Decides whether messages references, notes, and warnings are
 to be displayed (Default: \code{TRUE}).}
 
-\item{...}{Additional arguments (currently ignored).}
+\item{...}{Currently ignored.}
 }
 \value{
 For more details, see-

@@ -37,9 +37,9 @@ bf_extractor <- function(bf.object, ...) {
       .data = .,
       bf01 = 1 / bf10,
       log_e_bf10 = log(bf10),
-      log_e_bf01 = log(bf01),
+      log_e_bf01 = -1 * log_e_bf10,
       log_10_bf10 = log10(bf10),
-      log_10_bf01 = log10(bf01)
+      log_10_bf01 = -1 * log_10_bf10
     )
 
   # return the dataframe with Bayes Factors
@@ -415,15 +415,18 @@ bf_contingency_tab <- function(data,
     # estimate log prob of data under null with Monte Carlo
     M <- 100000
 
-    # rdirichlet function
+    # `rdirichlet` function
     rdirichlet_int <- function(n, alpha) {
       l <- length(alpha)
       x <- matrix(stats::rgamma(l * n, alpha), ncol = l, byrow = TRUE)
       sm <- x %*% rep(1, l)
       return(x / as.vector(sm))
     }
+
+    # use it
     p1s <- rdirichlet_int(n = M, alpha = prior.concentration * ratio)
 
+    # prob
     tmp_pr_h1 <-
       sapply(
         X = 1:M,
@@ -431,7 +434,7 @@ bf_contingency_tab <- function(data,
       )
 
     # estimate log prob of data under alternative
-    pr_y_h1 <- BayesFactor::logMeanExpLogs(v = tmp_pr_h1)
+    pr_y_h1 <- BayesFactor::logMeanExpLogs(tmp_pr_h1)
 
     # computing Bayes Factor
     bf_10 <- exp(pr_y_h1 - pr_y_h0)
@@ -444,9 +447,9 @@ bf_contingency_tab <- function(data,
         .data = .,
         bf01 = 1 / bf10,
         log_e_bf10 = log(bf10),
-        log_e_bf01 = log(bf01),
+        log_e_bf01 = -1 * log_e_bf10,
         log_10_bf10 = log10(bf10),
-        log_10_bf01 = log10(bf01)
+        log_10_bf01 = -1 * log_10_bf10
       ) %>%
       dplyr::mutate(.data = ., prior.concentration = prior.concentration)
   }

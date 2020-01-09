@@ -15,14 +15,14 @@
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/statsExpressions/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.2.0.9000",
+  "version": "0.2.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.6.1",
+    "version": "3.6.2",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.1 (2019-07-05)",
+  "runtimePlatform": "R version 3.6.2 (2019-12-12)",
   "author": [
     {
       "@type": "Person",
@@ -249,7 +249,7 @@
       "@type": "SoftwareApplication",
       "identifier": "rcompanion",
       "name": "rcompanion",
-      "version": ">= 2.3.7",
+      "version": ">= 2.3.21",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",

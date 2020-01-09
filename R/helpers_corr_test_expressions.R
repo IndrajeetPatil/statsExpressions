@@ -86,7 +86,7 @@ expr_corr_test <- function(data,
   sample_size <- nrow(data)
 
   # standardize the type of statistics
-  stats.type <- stats_type_switch(stats.type = type)
+  stats.type <- stats_type_switch(type)
 
   #------------------------ Pearson's r -------------------------------------
 
@@ -98,10 +98,9 @@ expr_corr_test <- function(data,
     # tidy dataframe with statistical details
     stats_df <-
       broomExtra::tidy(
-        stats::cor.test(
+        x = stats::cor.test(
           formula = rlang::new_formula(
-            NULL,
-            rlang::expr(!!rlang::enexpr(x) + !!rlang::enexpr(y))
+            NULL, rlang::expr(!!rlang::enexpr(x) + !!rlang::enexpr(y))
           ),
           data = data,
           method = cor.method,
@@ -120,7 +119,6 @@ expr_corr_test <- function(data,
 
     # subtitle parameters
     no.parameters <- 1L
-    parameter <- stats_df$parameter[[1]]
     statistic.text <- quote(italic("t"))
     effsize.text <- quote(widehat(italic("r"))["Pearson"])
   }
@@ -142,13 +140,13 @@ expr_corr_test <- function(data,
         type = conf.type,
         R = nboot,
         histogram = FALSE,
-        digits = 5
+        digits = 5,
+        reportIncomplete = TRUE
       ) %>%
-      rcompanion_cleaner(object = ., estimate.col = "rho")
+      rcompanion_cleaner(.)
 
     # subtitle parameters
     no.parameters <- 0L
-    parameter <- NULL
     statistic.text <- quote("log"["e"](italic("S")))
     effsize.text <- quote(widehat(italic(rho))["Spearman"])
   }
@@ -166,14 +164,14 @@ expr_corr_test <- function(data,
         nboot = nboot,
         conf.level = conf.level,
         conf.type = conf.type
-      )
+      ) %>%
+      dplyr::mutate(.data = ., parameter = sample_size - 2L)
 
     # stats object already contains effect size info
     effsize_df <- stats_df
 
     # subtitle parameters
     no.parameters <- 1L
-    parameter <- sample_size - 2L
     statistic.text <- quote(italic("t"))
     effsize.text <- quote(widehat(italic(rho))["pb"])
 
@@ -188,19 +186,14 @@ expr_corr_test <- function(data,
     subtitle <-
       expr_template(
         no.parameters = no.parameters,
+        stats.df = stats_df,
+        effsize.df = effsize_df,
         stat.title = stat.title,
         statistic.text = statistic.text,
-        statistic = stats_df$statistic[[1]],
-        parameter = parameter,
-        p.value = stats_df$p.value[[1]],
         effsize.text = effsize.text,
-        effsize.estimate = effsize_df$estimate[[1]],
-        effsize.LL = effsize_df$conf.low[[1]],
-        effsize.UL = effsize_df$conf.high[[1]],
         n = sample_size,
         conf.level = conf.level,
         k = k,
-        k.parameter = 0L,
         n.text = quote(italic("n")["pairs"])
       )
   }

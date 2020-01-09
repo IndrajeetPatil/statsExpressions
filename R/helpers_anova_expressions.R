@@ -28,7 +28,7 @@
 #' @inheritParams groupedstats::lm_effsize_standardizer
 #'
 #'
-#' @importFrom dplyr select
+#' @importFrom dplyr select rename matches
 #' @importFrom rlang !! enquo eval_tidy expr ensym
 #' @importFrom stats lm oneway.test na.omit
 #' @importFrom ez ezANOVA
@@ -97,37 +97,18 @@ expr_anova_parametric <- function(data,
   y <- rlang::ensym(y)
 
   # for paired designs, variance is going to be equal across grouping levels
-  if (isTRUE(paired)) {
-    var.equal <- TRUE
-  } else {
-    sphericity.correction <- FALSE
-  }
+  if (isTRUE(paired)) var.equal <- TRUE
+  if (isFALSE(paired)) sphericity.correction <- FALSE
 
-  # number of decimal places for degree of freedom
-  if (isTRUE(var.equal) && isFALSE(sphericity.correction)) {
-    k.df2 <- 0L
-  } else {
-    k.df2 <- k
-  }
-
-  # denominator degrees of freedom
-  if (isTRUE(paired) && isTRUE(sphericity.correction)) {
-    k.df1 <- k
-  } else {
-    k.df1 <- 0L
-  }
+  # determine number of decimal places for both degrees of freedom
+  k.df1 <- ifelse(isTRUE(paired) && isTRUE(sphericity.correction), k, 0L)
+  k.df2 <- ifelse(isTRUE(var.equal) && isFALSE(sphericity.correction), 0L, k)
 
   # figuring out which effect size to use
   effsize.type <- effsize_type_switch(effsize.type)
 
   # some of the effect sizes don't work properly for paired designs
-  if (isTRUE(paired)) {
-    if (effsize.type == "unbiased") {
-      partial <- FALSE
-    } else {
-      partial <- TRUE
-    }
-  }
+  if (isTRUE(paired)) partial <- ifelse(effsize.type == "unbiased", FALSE, TRUE)
 
   # omega
   if (effsize.type == "unbiased") {
@@ -207,18 +188,20 @@ expr_anova_parametric <- function(data,
     if (isTRUE(sphericity.correction)) {
       e_corr <- ez_df$`Sphericity Corrections`$GGe
       stats_df <-
-        list(
+        tibble::as_tibble(cbind.data.frame(
           statistic = ez_df$ANOVA$F[2],
-          parameter = c(e_corr * ez_df$ANOVA$DFn[2], e_corr * ez_df$ANOVA$DFd[2]),
+          parameter1 = e_corr * ez_df$ANOVA$DFn[2],
+          parameter2 = e_corr * ez_df$ANOVA$DFd[2],
           p.value = ez_df$`Sphericity Corrections`$`p[GG]`[[1]]
-        )
+        ))
     } else {
       stats_df <-
-        list(
+        tibble::as_tibble(cbind.data.frame(
           statistic = ez_df$ANOVA$F[2],
-          parameter = c(ez_df$ANOVA$DFn[2], ez_df$ANOVA$DFd[2]),
+          parameter1 = ez_df$ANOVA$DFn[2],
+          parameter2 = ez_df$ANOVA$DFd[2],
           p.value = ez_df$ANOVA$p[2]
-        )
+        ))
     }
 
     # creating a standardized dataframe with effect size and its CIs
@@ -236,13 +219,22 @@ expr_anova_parametric <- function(data,
     n.text <- quote(italic("n")["obs"])
 
     # Welch's ANOVA run by default
-    stats_df <-
+    stats_obj <-
       stats::oneway.test(
         formula = rlang::new_formula({{ y }}, {{ x }}),
         data = data,
         subset = NULL,
         na.action = na.omit,
         var.equal = var.equal
+      )
+
+    # tidy up the stats object
+    stats_df <-
+      suppressMessages(broomExtra::tidy(stats_obj)) %>%
+      dplyr::rename(
+        .data = .,
+        parameter1 = dplyr::matches("num"),
+        parameter2 = dplyr::matches("denom")
       )
 
     # creating a standardized dataframe with effect size and its CIs
@@ -267,17 +259,12 @@ expr_anova_parametric <- function(data,
   # preparing subtitle
   subtitle <-
     expr_template(
-      no.parameters = 2L,
       stat.title = stat.title,
+      no.parameters = 2L,
+      stats.df = stats_df,
+      effsize.df = effsize_df,
       statistic.text = quote(italic("F")),
-      statistic = stats_df$statistic[[1]],
-      parameter = stats_df$parameter[[1]],
-      parameter2 = stats_df$parameter[[2]],
-      p.value = stats_df$p.value[[1]],
       effsize.text = effsize.text,
-      effsize.estimate = effsize_df$estimate[[1]],
-      effsize.LL = effsize_df$conf.low[[1]],
-      effsize.UL = effsize_df$conf.high[[1]],
       n = sample_size,
       n.text = n.text,
       conf.level = conf.level,
@@ -386,7 +373,7 @@ expr_anova_nonparametric <- function(data,
         histogram = FALSE,
         digits = 5
       ) %>%
-      rcompanion_cleaner(object = ., estimate.col = "W")
+      rcompanion_cleaner(.)
 
     # converting to long format and then getting it back in wide so that the
     # rowid variable can be used as the block variable
@@ -398,13 +385,15 @@ expr_anova_nonparametric <- function(data,
 
     # setting up the anova model (`y ~ x | id`) and getting its summary
     stats_df <-
-      broomExtra::tidy(stats::friedman.test(
-        formula = rlang::new_formula(
-          {{ rlang::enexpr(y) }}, rlang::expr(!!rlang::enexpr(x) | rowid)
-        ),
-        data = data,
-        na.action = na.omit
-      ))
+      broomExtra::tidy(
+        x = stats::friedman.test(
+          formula = rlang::new_formula(
+            {{ rlang::enexpr(y) }}, rlang::expr(!!rlang::enexpr(x) | rowid)
+          ),
+          data = data,
+          na.action = na.omit
+        )
+      )
 
     # text for effect size
     effsize.text <- quote(widehat(italic("W"))["Kendall"])
@@ -422,11 +411,13 @@ expr_anova_nonparametric <- function(data,
 
     # setting up the anova model and getting its summary
     stats_df <-
-      broomExtra::tidy(stats::kruskal.test(
-        formula = rlang::new_formula({{ y }}, {{ x }}),
-        data = data,
-        na.action = na.omit
-      ))
+      broomExtra::tidy(
+        x = stats::kruskal.test(
+          formula = rlang::new_formula({{ y }}, {{ x }}),
+          data = data,
+          na.action = na.omit
+        )
+      )
 
     # getting partial eta-squared based on H-statistic
     effsize_df <-
@@ -439,9 +430,10 @@ expr_anova_nonparametric <- function(data,
         type = conf.type,
         R = nboot,
         histogram = FALSE,
-        digits = 5
+        digits = 5,
+        reportIncomplete = FALSE
       ) %>%
-      rcompanion_cleaner(object = ., estimate.col = "epsilon.squared")
+      rcompanion_cleaner(.)
 
     # text for effect size
     effsize.text <- quote(widehat(epsilon^2))
@@ -453,21 +445,16 @@ expr_anova_nonparametric <- function(data,
   # preparing subtitle
   subtitle <-
     expr_template(
-      no.parameters = 1L,
       stat.title = stat.title,
+      no.parameters = 1L,
+      stats.df = stats_df,
+      effsize.df = effsize_df,
       statistic.text = quote(italic(chi)^2),
-      statistic = stats_df$statistic[[1]],
-      parameter = stats_df$parameter[[1]],
-      p.value = stats_df$p.value[[1]],
       effsize.text = effsize.text,
-      effsize.estimate = effsize_df$estimate[[1]],
-      effsize.LL = effsize_df$conf.low[[1]],
-      effsize.UL = effsize_df$conf.high[[1]],
       n = sample_size,
       n.text = n.text,
       conf.level = conf.level,
-      k = k,
-      k.parameter = 0L
+      k = k
     )
 
   # return the subtitle
@@ -628,25 +615,22 @@ expr_anova_robust <- function(data,
         conf.type = conf.type
       )
 
+    # effect size dataframe
+    effsize_df <- stats_df
+
     # preparing subtitle
     subtitle <-
       expr_template(
         no.parameters = 2L,
         stat.title = stat.title,
+        stats.df = stats_df,
+        effsize.df = effsize_df,
         statistic.text = quote(italic("F")),
-        statistic = stats_df$statistic[[1]],
-        parameter = stats_df$df1[[1]],
-        parameter2 = stats_df$df2[[1]],
-        p.value = stats_df$p.value[[1]],
         effsize.text = quote(widehat(italic(xi))),
-        effsize.estimate = stats_df$estimate[[1]][[1]],
-        effsize.LL = stats_df$conf.low[[1]],
-        effsize.UL = stats_df$conf.high[[1]],
         n = sample_size,
         n.text = n.text,
         conf.level = conf.level,
         k = k,
-        k.parameter = 0L,
         k.parameter2 = k
       )
 

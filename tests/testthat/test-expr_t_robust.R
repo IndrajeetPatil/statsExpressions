@@ -173,17 +173,71 @@ testthat::test_that(
           ", ",
           widehat(italic(xi)),
           " = ",
-          "0.812",
+          "0.818",
           ", CI"["99%"],
           " [",
-          "0.699",
+          "0.727",
           ", ",
-          "0.986",
+          "0.985",
           "]",
           ", ",
           italic("n")["obs"],
           " = ",
           32L
+        )
+      )
+
+    # testing overall call
+    testthat::expect_identical(using_function1, results1)
+  }
+)
+
+testthat::test_that(
+  desc = "expr_t_robust - between-subjects - with NAs",
+  code = {
+    testthat::skip_if(getRversion() < "3.6")
+
+    # subtitle
+    set.seed(123)
+    using_function1 <-
+      expr_t_robust(
+        data = dplyr::filter(ggplot2::msleep, vore %in% c("carni", "herbi")),
+        x = "vore",
+        y = "brainwt",
+        paired = FALSE,
+        conf.level = 0.90,
+        k = 4,
+        messages = FALSE
+      )
+
+    # expected
+    results1 <-
+      ggplot2::expr(
+        paste(
+          NULL,
+          italic("t"),
+          "(",
+          "20.9388",
+          ") = ",
+          "0.6891",
+          ", ",
+          italic("p"),
+          " = ",
+          "0.4983",
+          ", ",
+          widehat(italic(xi)),
+          " = ",
+          "0.2874",
+          ", CI"["90%"],
+          " [",
+          "0.0000",
+          ", ",
+          "0.5875",
+          "]",
+          ", ",
+          italic("n")["obs"],
+          " = ",
+          29L
         )
       )
 

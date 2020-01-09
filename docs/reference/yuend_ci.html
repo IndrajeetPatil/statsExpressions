@@ -80,7 +80,7 @@ measure for paired samples robust t-tests." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.2.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.2.0</span>
       </span>
     </div>
 
@@ -205,101 +205,7 @@ intervals required. The value should be any subset of the values <code>"norm"</c
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Arguments passed on to <code><a href='https://rdrr.io/pkg/boot/man/boot.html'>boot::boot</a></code></p><dl class='dl-horizontal'>
-    <dt><code>statistic</code></dt><dd><p>A function which when applied to data returns a vector containing
-    the statistic(s) of interest.  When <code>sim = "parametric"</code>, the
-    first argument to <code>statistic</code> must be the data.  For each
-    replicate a simulated dataset returned by <code>ran.gen</code> will be
-    passed.  In all other cases <code>statistic</code> must take at least two
-    arguments.  The first argument passed will always be the original
-    data.  The second will be a vector of indices, frequencies or weights
-    which define the bootstrap sample.  Further, if predictions are
-    required, then a third argument is required which would be a vector
-    of the random indices used to generate the bootstrap predictions.
-    Any further arguments can be passed to <code>statistic</code> through the
-    <code>...</code> argument.</p></dd>
-    <dt><code>R</code></dt><dd><p>The number of bootstrap replicates.  Usually this will be a single
-    positive integer.  For importance resampling, some resamples may use
-    one set of weights and others use a different set of weights.  In
-    this case <code>R</code> would be a vector of integers where each
-    component gives the number of resamples from each of the rows of
-    weights.</p></dd>
-    <dt><code>sim</code></dt><dd><p>A character string indicating the type of simulation required.
-    Possible values are <code>"ordinary"</code> (the default),
-    <code>"parametric"</code>, <code>"balanced"</code>, <code>"permutation"</code>, or
-    <code>"antithetic"</code>.  Importance resampling is specified by
-    including importance weights; the type of importance resampling must
-    still be specified but may only be <code>"ordinary"</code> or
-    <code>"balanced"</code> in this case.</p></dd>
-    <dt><code>stype</code></dt><dd><p>A character string indicating what the second argument of <code>statistic</code>
-    represents.  Possible values of stype are <code>"i"</code> (indices - the
-    default), <code>"f"</code> (frequencies), or <code>"w"</code> (weights).  Not
-    used for <code>sim = "parametric"</code>.</p></dd>
-    <dt><code>strata</code></dt><dd><p>An integer vector or factor specifying the strata for multi-sample
-    problems.  This may be specified for any simulation, but is ignored
-    when <code>sim = "parametric"</code>.  When <code>strata</code> is
-    supplied for a nonparametric bootstrap, the simulations are done
-    within the specified strata.</p></dd>
-    <dt><code>L</code></dt><dd><p>Vector of influence values evaluated at the observations.  This is
-    used only when <code>sim</code> is <code>"antithetic"</code>.  If not supplied,
-    they are calculated through a call to <code>empinf</code>.  This will use
-    the infinitesimal jackknife provided that <code>stype</code> is
-    <code>"w"</code>, otherwise the usual jackknife is used.</p></dd>
-    <dt><code>m</code></dt><dd><p>The number of predictions which are to be made at each bootstrap
-    replicate.  This is most useful for (generalized) linear models.
-    This can only be used when <code>sim</code> is <code>"ordinary"</code>.
-    <code>m</code> will usually be a single integer but, if there are strata,
-    it may be a vector with length equal to the number of strata,
-    specifying how many of the errors for prediction should come from
-    each strata.  The actual predictions should be returned as the final
-    part of the output of <code>statistic</code>, which should also take an
-    argument giving the vector of indices of the errors to be used for
-    the predictions.</p></dd>
-    <dt><code>weights</code></dt><dd><p>Vector or matrix of importance weights.  If a vector then it should
-    have as many elements as there are observations in <code>data</code>.
-    When simulation from more than one set of weights is required,
-    <code>weights</code> should be a matrix where each row of the matrix is
-    one set of importance weights.  If <code>weights</code> is a matrix then
-    <code>R</code> must be a vector of length <code><a href='https://rdrr.io/r/base/nrow.html'>nrow(weights)</a></code>.  This
-    parameter is ignored if <code>sim</code> is not <code>"ordinary"</code> or
-    <code>"balanced"</code>.</p></dd>
-    <dt><code>ran.gen</code></dt><dd><p>This function is used only when <code>sim = "parametric"</code>
-    when it describes how random values are to be generated.  It should
-    be a function of two arguments.  The first argument should be the
-    observed data and the second argument consists of any other
-    information needed (e.g. parameter estimates).  The second argument
-    may be a list, allowing any number of items to be passed to
-    <code>ran.gen</code>.  The returned value should be a simulated data set
-    of the same form as the observed data which will be passed to
-    <code>statistic</code> to get a bootstrap replicate.  It is important that the
-    returned value be of the same shape and type as the original
-    dataset.  If <code>ran.gen</code> is not specified, the default is a
-    function which returns the original <code>data</code> in which case all
-    simulation should be included as part of <code>statistic</code>.  Use of
-    <code>sim = "parametric"</code> with a suitable <code>ran.gen</code> allows the
-    user to implement any types of nonparametric resampling which are
-    not supported directly.</p></dd>
-    <dt><code>mle</code></dt><dd><p>The second argument to be passed to <code>ran.gen</code>.  Typically these
-    will be maximum likelihood estimates of the parameters.  For
-    efficiency <code>mle</code> is often a list containing all of the objects
-    needed by <code>ran.gen</code> which can be calculated using the original
-    data set only.</p></dd>
-    <dt><code>simple</code></dt><dd><p>logical, only allowed to be <code>TRUE</code> for
-    <code>sim = "ordinary", stype = "i", n = 0</code> (otherwise ignored with a
-    warning).  By default a <code>n</code> by <code>R</code> index array is created:
-    this can be large and if <code>simple = TRUE</code> this is avoided by
-    sampling separately for each replication, which is slower but uses
-    less memory.</p></dd>
-    <dt><code>parallel</code></dt><dd><p>The type of parallel operation to be used (if any).  If missing, the
-    default is taken from the option <code>"boot.parallel"</code> (and if that
-    is not set, <code>"no"</code>).</p></dd>
-    <dt><code>ncpus</code></dt><dd><p>integer: number of processes to be used in parallel operation:
-    typically one would chose this to the number of available CPUs.</p></dd>
-    <dt><code>cl</code></dt><dd><p>An optional <span class="pkg">parallel</span> or <span class="pkg">snow</span> cluster for use if
-    <code>parallel = "snow"</code>.  If not supplied, a cluster on the
-    local machine is created for the duration of the <code>boot</code> call.</p></dd>
-  
-</dl></td>
+      <td><p>Currently ignored.</p></td>
     </tr>
     </table>
 
@@ -319,9 +225,9 @@ intervals required. The value should be any subset of the values <code>"norm"</c
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>50</span>,
   <span class='kw'>tr</span> <span class='kw'>=</span> <span class='fl'>0.2</span>
 )</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 11</span><span>
-#&gt;   statistic conf.int1 conf.int2 std.error p.value    df  diff estimate  conf
-#&gt;       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>     -</span><span style='color: #BB0000;'>13.0</span><span>     -</span><span style='color: #BB0000;'>2.25</span><span>     -</span><span style='color: #BB0000;'>1.66</span><span>     0.150       0    89 -</span><span style='color: #BB0000;'>1.96</span><span>    0.625  0.95
+#&gt;   statistic conf.int1 conf.int2 std.error p.value parameter  diff estimate  conf
+#&gt;       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>     -</span><span style='color: #BB0000;'>13.0</span><span>     -</span><span style='color: #BB0000;'>2.25</span><span>     -</span><span style='color: #BB0000;'>1.66</span><span>     0.150       0        89 -</span><span style='color: #BB0000;'>1.96</span><span>    0.625  0.95
 #&gt;   conf.low conf.high
 #&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span>    0.226     0.811</div><div class='input'># }

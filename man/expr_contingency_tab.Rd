@@ -17,9 +17,7 @@ expr_contingency_tab(
   legend.title = NULL,
   conf.level = 0.95,
   conf.type = "norm",
-  simulate.p.value = FALSE,
-  B = 2000,
-  bias.correct = FALSE,
+  bias.correct = TRUE,
   k = 2,
   messages = TRUE,
   ...
@@ -37,9 +35,7 @@ expr_onesample_proptest(
   legend.title = NULL,
   conf.level = 0.95,
   conf.type = "norm",
-  simulate.p.value = FALSE,
-  B = 2000,
-  bias.correct = FALSE,
+  bias.correct = TRUE,
   k = 2,
   messages = TRUE,
   ...
@@ -87,14 +83,8 @@ like \code{"main x condition"} or \code{"interaction"}.}
 intervals required. The value should be any subset of the values \code{"norm"},
 \code{"basic"}, \code{"perc"}, \code{"bca"}. For more, see \code{?boot::boot.ci}.}
 
-\item{simulate.p.value}{a logical indicating whether to compute
-    p-values by Monte Carlo simulation.}
-
-\item{B}{an integer specifying the number of replicates used in the
-    Monte Carlo test.}
-
-\item{bias.correct}{If \code{TRUE}, a bias correction will be applied to Cramer's
-\emph{V}.}
+\item{bias.correct}{If \code{TRUE} (default), a bias correction will be applied to
+Cramer's \emph{V}.}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2}).}

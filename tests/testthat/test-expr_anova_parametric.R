@@ -476,7 +476,7 @@ testthat::test_that(
         x = Wine,
         y = Taste,
         paired = TRUE,
-        effsize.type = "bogus",
+        effsize.type = "xxx",
         k = 5,
         conf.level = 0.90,
         nboot = 15,

@@ -7,7 +7,8 @@ testthat::test_that(
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
-    testthat::expect_identical(effsize_type_switch(NULL), "unbiased")
+    testthat::expect_identical(effsize_type_switch("unbiased"), "unbiased")
+    testthat::expect_identical(effsize_type_switch("biased"), "biased")
     testthat::expect_identical(effsize_type_switch("none"), "unbiased")
     testthat::expect_identical(effsize_type_switch("d"), "biased")
     testthat::expect_identical(effsize_type_switch("g"), "unbiased")
@@ -31,7 +32,6 @@ testthat::test_that(
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
-    testthat::expect_identical(stats_type_switch(NULL), "parametric")
     testthat::expect_identical(stats_type_switch("p"), "parametric")
     testthat::expect_identical(stats_type_switch("pearson"), "parametric")
     testthat::expect_identical(stats_type_switch("non-parametric"), "nonparametric")

@@ -38,3 +38,8 @@ tests\^spelling
 ^paper.*$
 references.bib
 ^API$
+^\.gitsum$
+^gitsum$
+^tests/testmanual$
+^\.pre-commit-config\.yaml$
+^brew\-log$
