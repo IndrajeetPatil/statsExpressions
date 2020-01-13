@@ -233,8 +233,8 @@ expr_anova_parametric <- function(data,
       suppressMessages(broomExtra::tidy(stats_obj)) %>%
       dplyr::rename(
         .data = .,
-        parameter1 = dplyr::matches("num"),
-        parameter2 = dplyr::matches("denom")
+        parameter1 = dplyr::matches("^num"),
+        parameter2 = dplyr::matches("^den")
       )
 
     # creating a standardized dataframe with effect size and its CIs
