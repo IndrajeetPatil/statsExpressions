@@ -87,8 +87,7 @@ expr_t_parametric <- function(data,
                               ...) {
 
   # make sure both quoted and unquoted arguments are supported
-  x <- rlang::ensym(x)
-  y <- rlang::ensym(y)
+  c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
   # creating a dataframe
   data %<>%
@@ -283,8 +282,7 @@ expr_t_nonparametric <- function(data,
                                  ...) {
 
   # make sure both quoted and unquoted arguments are supported
-  x <- rlang::ensym(x)
-  y <- rlang::ensym(y)
+  c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
   # creating a dataframe
   data %<>%
@@ -434,8 +432,7 @@ expr_t_robust <- function(data,
                           messages = TRUE,
                           ...) {
   # make sure both quoted and unquoted arguments are supported
-  x <- rlang::ensym(x)
-  y <- rlang::ensym(y)
+  c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
   # creating a dataframe
   data %<>%
@@ -592,14 +589,16 @@ expr_t_bayes <- function(data,
                          k = 2,
                          ...) {
   # make sure both quoted and unquoted arguments are supported
-  x <- rlang::ensym(x)
-  y <- rlang::ensym(y)
+  c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
   # creating a dataframe
-  subtitle <-
-    dplyr::select(.data = data, {{ x }}, {{ y }}) %>%
+  data %<>%
+    dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
     dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    tibble::as_tibble(.) %>% # preparing the subtitle
+    tibble::as_tibble(.)
+
+  # prepare subtitle
+  subtitle <-
     bf_ttest(
       data = data,
       x = {{ x }},

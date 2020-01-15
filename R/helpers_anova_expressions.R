@@ -93,8 +93,7 @@ expr_anova_parametric <- function(data,
                                   ...) {
 
   # make sure both quoted and unquoted arguments are allowed
-  x <- rlang::ensym(x)
-  y <- rlang::ensym(y)
+  c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
   # for paired designs, variance is going to be equal across grouping levels
   if (isTRUE(paired)) var.equal <- TRUE
@@ -347,8 +346,7 @@ expr_anova_nonparametric <- function(data,
                                      ...) {
 
   # make sure both quoted and unquoted arguments are allowed
-  x <- rlang::ensym(x)
-  y <- rlang::ensym(y)
+  c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
   # creating a dataframe
   data %<>%
@@ -360,33 +358,15 @@ expr_anova_nonparametric <- function(data,
 
   # properly removing NAs if it's a paired design
   if (isTRUE(paired)) {
-    # calculating Kendall's W and its CI
-    effsize_df <-
-      rcompanion::kendallW(
-        x = dplyr::select(long_to_wide_converter(data, {{ x }}, {{ y }}), -rowid),
-        correct = TRUE,
-        na.rm = TRUE,
-        ci = TRUE,
-        conf = conf.level,
-        type = conf.type,
-        R = nboot,
-        histogram = FALSE,
-        digits = 5
-      ) %>%
-      rcompanion_cleaner(.)
 
     # converting to long format and then getting it back in wide so that the
     # rowid variable can be used as the block variable
     data %<>% df_cleanup_paired(data = ., x = {{ x }}, y = {{ y }})
 
-    # sample size
-    sample_size <- length(unique(data$rowid))
-    n.text <- quote(italic("n")["pairs"])
-
     # setting up the anova model (`y ~ x | id`) and getting its summary
     stats_df <-
       broomExtra::tidy(
-        x = stats::friedman.test(
+        stats::friedman.test(
           formula = rlang::new_formula(
             {{ rlang::enexpr(y) }}, rlang::expr(!!rlang::enexpr(x) | rowid)
           ),
@@ -395,7 +375,15 @@ expr_anova_nonparametric <- function(data,
         )
       )
 
-    # text for effect size
+    # details for expression creator
+    .f <- rcompanion::kendallW
+    arg_list <- list(
+      x = dplyr::select(long_to_wide_converter(data, {{ x }}, {{ y }}), -rowid),
+      correct = TRUE,
+      na.rm = TRUE
+    )
+    sample_size <- length(unique(data$rowid))
+    n.text <- quote(italic("n")["pairs"])
     effsize.text <- quote(widehat(italic("W"))["Kendall"])
   }
 
@@ -405,39 +393,42 @@ expr_anova_nonparametric <- function(data,
     # remove NAs listwise for between-subjects design
     data %<>% tidyr::drop_na(data = .)
 
-    # sample size
-    sample_size <- nrow(data)
-    n.text <- quote(italic("n")["obs"])
-
     # setting up the anova model and getting its summary
     stats_df <-
       broomExtra::tidy(
-        x = stats::kruskal.test(
+        stats::kruskal.test(
           formula = rlang::new_formula({{ y }}, {{ x }}),
           data = data,
           na.action = na.omit
         )
       )
 
-    # getting partial eta-squared based on H-statistic
-    effsize_df <-
-      rcompanion::epsilonSquared(
-        x = data %>% dplyr::pull({{ y }}),
-        g = data %>% dplyr::pull({{ x }}),
-        group = "row",
-        ci = TRUE,
-        conf = conf.level,
-        type = conf.type,
-        R = nboot,
-        histogram = FALSE,
-        digits = 5,
-        reportIncomplete = FALSE
-      ) %>%
-      rcompanion_cleaner(.)
-
-    # text for effect size
+    # details for expression creator
+    .f <- rcompanion::epsilonSquared
+    arg_list <- list(
+      x = data %>% dplyr::pull({{ y }}),
+      g = data %>% dplyr::pull({{ x }}),
+      group = "row",
+      reportIncomplete = FALSE
+    )
+    sample_size <- nrow(data)
+    n.text <- quote(italic("n")["obs"])
     effsize.text <- quote(widehat(epsilon^2))
   }
+
+  # computing respective effect sizes
+  effsize_df <-
+    rlang::exec(
+      .fn = .f,
+      !!!arg_list,
+      ci = TRUE,
+      conf = conf.level,
+      type = conf.type,
+      R = nboot,
+      histogram = FALSE,
+      digits = 5
+    ) %>%
+    rcompanion_cleaner(.)
 
   # message about effect size measure
   if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)
@@ -533,8 +524,7 @@ expr_anova_robust <- function(data,
                               ...) {
 
   # make sure both quoted and unquoted arguments are allowed
-  x <- rlang::ensym(x)
-  y <- rlang::ensym(y)
+  c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
   # creating a dataframe
   data %<>%
@@ -699,8 +689,7 @@ expr_anova_bayes <- function(data,
                              ...) {
 
   # make sure both quoted and unquoted arguments are allowed
-  x <- rlang::ensym(x)
-  y <- rlang::ensym(y)
+  c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
   # creating a dataframe
   data %<>%

@@ -189,6 +189,9 @@ bf_corr_test <- function(data,
                          k = 2,
                          ...) {
 
+  # make sure both quoted and unquoted arguments are allowed
+  c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
+
   # ============================ data preparation ==========================
 
   # creating a dataframe
@@ -791,8 +794,7 @@ bf_oneway_anova <- function(data,
                             ...) {
 
   # make sure both quoted and unquoted arguments are allowed
-  x <- rlang::ensym(x)
-  y <- rlang::ensym(y)
+  c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
   # ============================ data preparation ==========================
 

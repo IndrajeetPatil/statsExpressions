@@ -14,6 +14,7 @@
 \alias{\%|\%}
 \alias{tibble}
 \alias{as_tibble}
+\alias{\%<-\%}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -28,5 +29,7 @@ below to see their documentation.
   \item{rlang}{\code{\link[rlang]{\%|\%}}, \code{\link[rlang]{\%||\%}}}
 
   \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{tibble}}}
+
+  \item{zeallot}{\code{\link[zeallot]{\%<-\%}}}
 }}
 

@@ -46,3 +46,9 @@ tibble::tibble
 #' @export
 #' @importFrom tibble as_tibble
 tibble::as_tibble
+
+# ----------------------- zeallot -------------------------------------
+
+#' @export
+#' @importFrom zeallot "%<-%"
+zeallot::`%<-%`

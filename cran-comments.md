@@ -7,5 +7,4 @@
 
 0 errors | 0 warnings | 0 notes
 
-- Minor updates to make the package compatible with `rcompanion 2.3.21`.
 
