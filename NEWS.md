@@ -2,7 +2,8 @@
 
 NEW FEATURES
 
-  - New functions to carry out meta-analysis: `expr_meta_parametric`.
+  - New functions to carry out meta-analysis: `expr_meta_parametric`,
+    `expr_meta_robust`, `expr_meta_bayes`.
 
 # statsExpressions 0.2.0
 

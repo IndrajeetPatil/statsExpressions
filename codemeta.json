@@ -222,6 +222,19 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "metaBMA",
+      "name": "metaBMA",
+      "version": ">= 0.6.2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=metaBMA"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "metafor",
       "name": "metafor",
       "version": ">= 2.1-0",
