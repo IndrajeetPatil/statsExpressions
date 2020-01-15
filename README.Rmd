@@ -317,6 +317,32 @@ library(statsExpressions)
 expr_contingency_tab(mtcars, am, cyl, messages = FALSE)
 ```
 
+## Example: Expressions for meta-analysis
+
+```{r example_metaanalysis, fig.height=14, fig.width=12}
+# setup
+set.seed(123)
+library(metaviz)
+library(ggplot2)
+
+# rename columns to `statsExpressions` conventions
+df <- dplyr::rename(mozart, estimate = d, std.error = se)
+
+# meta-analysis forest plot with results random-effects meta-analysis
+viz_forest(
+  x = mozart[, c("d", "se")],
+  study_labels = mozart[, "study_name"],
+  xlab = "Cohen's d",
+  variant = "thick",
+  type = "cumulative"
+) + # use `statsExpressions` to create expression containing results 
+  labs(
+    title = "Meta-analysis of Pietschnig, Voracek, and Formann (2010) on the Mozart effect",
+    subtitle = expr_meta_parametric(df, k = 3)
+  ) + 
+  theme(text = element_text(size = 12))
+```
+
 # Usage in `ggstatsplot`
 
 Note that these functions were initially written to display results from

@@ -20,7 +20,7 @@ Description: Statistical processing backend for 'ggstatsplot',
     tests: parametric, nonparametric, robust, and bayesian versions of
     t-test/anova, correlation analyses, contingency table analysis.
 License: GPL-3 | file LICENSE
-URL: https://indrajeetpatil.github.io/statsExpressions/,
+URL: https://indrajeetpatil.github.io/statsExpressions,
     https://github.com/IndrajeetPatil/statsExpressions
 BugReports: 
     https://github.com/IndrajeetPatil/statsExpressions/issues
@@ -34,6 +34,7 @@ Imports:
     dplyr (>= 0.8.3),
     ez (>= 4.4-0),
     groupedstats (>= 0.1.0),
+    metafor (>= 2.1-0),
     psych (>= 1.8.12),
     purrr (>= 0.3.3),
     rcompanion (>= 2.3.21),
