@@ -105,7 +105,8 @@ statsExpressions::expr_anova_robust(
   y = value,
   paired = TRUE,
   tr = 0.2,
-  k = 3
+  k = 3,
+  nboot = 10
 )
 }
 }

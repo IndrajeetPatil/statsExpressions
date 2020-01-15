@@ -204,7 +204,10 @@ utils::globalVariables(
     "pair1",
     "W",
     "num.df",
-    "den.df"
+    "den.df",
+    "95% ci.lb",
+    "95% ci.ub",
+    "z value"
   ),
   package = "statsExpressions",
   add = FALSE

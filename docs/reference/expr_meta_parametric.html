@@ -168,7 +168,8 @@ more, see <code><a href='https://rdrr.io/pkg/metafor/man/rma.uni.html'>?metafor:
       <th>data</th>
       <td><p>A dataframe. It <strong>must</strong> contain columns named <code>estimate</code> (effect
 sizes or outcomes)  and <code>std.error</code> (corresponding standard errors). These
-two columns will be used for <code>yi</code>  and <code>sei</code> arguments in <code><a href='https://rdrr.io/pkg/metafor/man/rma.uni.html'>metafor::rma</a></code>.</p></td>
+two columns will be used for <code>yi</code>  and <code>sei</code> arguments in <code><a href='https://rdrr.io/pkg/metafor/man/rma.uni.html'>metafor::rma</a></code>
+(for parametric analysis) or <code><a href='https://rdrr.io/pkg/metaplus/man/metaplus.html'>metaplus::metaplus</a></code> (for robust analysis).</p></td>
     </tr>
     <tr>
       <th>conf.level</th>
@@ -200,7 +201,48 @@ when <code>output = "caption"</code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Additional arguments passed to <code><a href='https://rdrr.io/pkg/metafor/man/rma.uni.html'>metafor::rma</a></code>.</p></td>
+      <td><p>Arguments passed on to <code><a href='https://rdrr.io/pkg/metafor/man/rma.uni.html'>metafor::rma</a></code></p><dl class='dl-horizontal'>
+    <dt><code>vi</code></dt><dd><p>vector of length \(k\) with the corresponding sampling variances. See &#8216;Details&#8217;.</p></dd>
+    <dt><code>weights</code></dt><dd><p>optional argument to specify a vector of length \(k\) with user-defined weights. See &#8216;Details&#8217;.</p></dd>
+    <dt><code>ai</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>bi</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>ci</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>di</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>n1i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>n2i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>x1i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>x2i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>t1i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>t2i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>m1i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>m2i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>sd1i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>sd2i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>xi</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>mi</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>ri</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>ti</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>sdi</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>r2i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>ni</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>mods</code></dt><dd><p>optional argument to include one or more moderators in the model. A single moderator can be given as a vector of length \(k\) specifying the values of the moderator. Multiple moderators are specified by giving a matrix with \(k\) rows and as many columns as there are moderator variables. Alternatively, a model <code><a href='https://rdrr.io/r/stats/formula.html'>formula</a></code> can be used to specify the model. See &#8216;Details&#8217;.</p></dd>
+    <dt><code>measure</code></dt><dd><p>character string indicating the type of data supplied to the function. When <code>measure="GEN"</code> (default), the observed effect sizes or outcomes and corresponding sampling variances (or standard errors) should be supplied to the function via the <code>yi</code>, <code>vi</code>, and <code>sei</code> arguments (only one of the two, <code>vi</code> or <code>sei</code>, needs to be specified). Alternatively, one can set <code>measure</code> to one of the effect size or outcome measures described under the documentation for the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function and specify the needed data via the appropriate arguments.</p></dd>
+    <dt><code>intercept</code></dt><dd><p>logical indicating whether an intercept should be added to the model (the default is <code>TRUE</code>). Ignored when <code>mods</code> is a formula.</p></dd>
+    <dt><code>slab</code></dt><dd><p>optional vector with labels for the \(k\) studies.</p></dd>
+    <dt><code>subset</code></dt><dd><p>optional vector indicating the subset of studies that should be used for the analysis. This can be a logical vector of length \(k\) or a numeric vector indicating the indices of the observations to include.</p></dd>
+    <dt><code>add</code></dt><dd><p>see the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function.</p></dd>
+    <dt><code>to</code></dt><dd><p>see the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function.</p></dd>
+    <dt><code>drop00</code></dt><dd><p>see the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function.</p></dd>
+    <dt><code>vtype</code></dt><dd><p>see the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function.</p></dd>
+    <dt><code>method</code></dt><dd><p>character string specifying whether a fixed- or a random/mixed-effects model should be fitted. A fixed-effects model (with or without moderators) is fitted when using <code>method="FE"</code>. Random/mixed-effects models are fitted by setting <code>method</code> equal to one of the following: <code>"DL"</code>, <code>"HE"</code>, <code>"SJ"</code>, <code>"ML"</code>, <code>"REML"</code>, <code>"EB"</code>, <code>"HS"</code>, or <code>"GENQ"</code>. Default is <code>"REML"</code>. See &#8216;Details&#8217;.</p></dd>
+    <dt><code>weighted</code></dt><dd><p>logical indicating whether weighted (default) or unweighted estimation should be used to fit the model.</p></dd>
+    <dt><code>test</code></dt><dd><p>character string specifying how test statistics and confidence intervals for the fixed effects should be computed. By default (<code>test="z"</code>), Wald-type tests and CIs are obtained, which are based on a standard normal distribution. When <code>test="knha"</code>, the method by Knapp and Hartung (2003) is used for adjusting test statistics and confidence intervals. See &#8216;Details&#8217;.</p></dd>
+    <dt><code>digits</code></dt><dd><p>integer specifying the number of decimal places to which the printed results should be rounded (if unspecified, the default is 4).</p></dd>
+    <dt><code>btt</code></dt><dd><p>optional vector of indices specifying which coefficients to include in the omnibus test of moderators. See &#8216;Details&#8217;.</p></dd>
+    <dt><code>verbose</code></dt><dd><p>logical indicating whether output should be generated on the progress of the model fitting (the default is <code>FALSE</code>). Can also be an integer. Values &gt; 1 generate more verbose output. See &#8216;Note&#8217;.</p></dd>
+    <dt><code>control</code></dt><dd><p>optional list of control values for the iterative estimation algorithms. If unspecified, default values are defined inside the function. See &#8216;Note&#8217;.</p></dd>
+  
+</dl></td>
     </tr>
     </table>
 

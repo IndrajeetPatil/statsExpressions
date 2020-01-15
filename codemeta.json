@@ -235,6 +235,19 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "metaplus",
+      "name": "metaplus",
+      "version": ">= 0.7-11",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=metaplus"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "psych",
       "name": "psych",
       "version": ">= 1.8.12",

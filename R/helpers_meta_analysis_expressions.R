@@ -6,7 +6,8 @@
 #'
 #' @param data A dataframe. It **must** contain columns named `estimate` (effect
 #'   sizes or outcomes)  and `std.error` (corresponding standard errors). These
-#'   two columns will be used for `yi`  and `sei` arguments in `metafor::rma`.
+#'   two columns will be used for `yi`  and `sei` arguments in `metafor::rma`
+#'   (for parametric analysis) or `metaplus::metaplus` (for robust analysis).
 #' @param output  Character describing the desired output. If `"subtitle"`, a
 #'   formatted subtitle with summary effect and statistical details will be
 #'   returned, and if `"caption"`, expression containing details from model
@@ -15,7 +16,7 @@
 #' @param caption Text to display as caption. This argument is relevant only
 #'   when `output = "caption"`.
 #' @inheritParams expr_anova_parametric
-#' @param ... Additional arguments passed to `metafor::rma`.
+#' @inheritDotParams metafor::rma -yi -sei -tau2 -level
 #'
 #' @importFrom metafor rma
 #' @importFrom dplyr rename_all recode mutate tibble
@@ -95,21 +96,8 @@ expr_meta_parametric <- function(data,
                                  output = "subtitle",
                                  caption = NULL,
                                  ...) {
-
-  #----------------------- input checking ------------------------------------
-
-  # check if the two columns needed are present
-  if (sum(c("estimate", "std.error") %in% names(data)) != 2) {
-    # inform the user that skipping labels for the same reason
-    stop(message(cat(
-      crayon::red("Error"),
-      crayon::blue(": The dataframe **must** contain the following two columns:\n"),
-      crayon::blue("`estimate` and `std.error`."),
-      sep = ""
-    )),
-    call. = FALSE
-    )
-  }
+  # check the data contains needed column
+  meta_data_check(data)
 
   #----------------------- meta-analysis ------------------------------------
 
@@ -225,4 +213,123 @@ expr_meta_parametric <- function(data,
     "glance" = df_glance,
     "subtitle"
   ))
+}
+
+
+#' @title Making expression with frequentist random-effects robust meta-analysis
+#'   results
+#' @description This analysis is carried out using the `metaplus` package. For
+#'   more, see `?metaplus::metaplus`.
+#' @name expr_meta_robust
+#'
+#' @inheritParams expr_meta_parametric
+#' @inheritParams metaplus::metaplus
+#' @inheritDotParams metaplus::metaplus -yi -sei
+#'
+#' @importFrom metaplus metaplus
+#' @importFrom dplyr filter inner_join
+#'
+#' @examples
+#' \donttest{
+#' # setup
+#' set.seed(123)
+#' library(metaplus)
+#'
+#' # renaming to what `statsExpressions` expects
+#' df <- dplyr::rename(mag, estimate = yi, std.error = sei)
+#'
+#' # creating expression (changing few defaults)
+#' expr_meta_robust(
+#'   data = df,
+#'   random = "normal",
+#'   k = 4,
+#'   messages = TRUE,
+#'   plotci = TRUE
+#' )
+#' }
+#' @export
+
+# function body
+expr_meta_robust <- function(data,
+                             random = "mixture",
+                             k = 2,
+                             messages = FALSE,
+                             ...) {
+  # check the data contains needed column
+  meta_data_check(data)
+
+  #----------------------- meta-analysis ------------------------------------
+
+  # object from meta-analysis
+  meta_res <-
+    metaplus::metaplus(
+      yi = estimate,
+      sei = std.error,
+      data = data,
+      random = random,
+      ...
+    )
+
+  # print the results
+  if (isTRUE(messages)) print(meta_res)
+
+  #----------------------- tidy output and subtitle ---------------------------
+
+  # create a dataframe with coefficients
+  df_tidy <-
+    meta_res %>% {
+      dplyr::inner_join(
+        x = tibble::as_tibble(as.data.frame(.$results), rownames = "term"),
+        y = tibble::as_tibble(as.data.frame(.$profile@summary@coef), rownames = "term"),
+        by = "term"
+      ) %>%
+        dplyr::rename_all(.tbl = ., .funs = tolower) %>%
+        dplyr::select(
+          .data = .,
+          term,
+          estimate,
+          conf.low = `95% ci.lb`,
+          conf.high = `95% ci.ub`,
+          p.value = pvalue,
+          statistic = `z value`
+        ) %>%
+        dplyr::filter(.data = ., term == "muhat")
+    }
+
+  # preparing the subtitle
+  subtitle <-
+    expr_template(
+      stat.title = "Summary effect: ",
+      stats.df = df_tidy,
+      effsize.df = df_tidy,
+      statistic.text = quote(italic("z")),
+      effsize.text = quote(widehat(beta)),
+      n = nrow(data),
+      n.text = quote(italic("n")["effects"]),
+      no.parameters = 0L,
+      conf.level = 0.95,
+      k = k
+    )
+
+  #---------------------------- output ---------------------------------------
+
+  # what needs to be returned?
+  return(subtitle)
+}
+
+#' @noRd
+
+meta_data_check <- function(data) {
+  # check if the two columns needed are present
+  if (sum(c("estimate", "std.error") %in% names(data)) != 2) {
+    # inform the user that skipping labels for the same reason
+    stop(message(cat(
+      crayon::red("Error"),
+      crayon::blue(": The dataframe must contain the following two columns:\n"),
+      crayon::blue("`estimate` and `std.error`."),
+      sep = ""
+    )),
+    call. = FALSE
+    )
+  }
 }

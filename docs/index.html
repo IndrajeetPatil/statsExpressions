@@ -204,7 +204,16 @@
 <div id="summary-of-types-of-statistical-analyses" class="section level1">
 <h1 class="hasAnchor">
 <a href="#summary-of-types-of-statistical-analyses" class="anchor"></a>Summary of types of statistical analyses</h1>
-<p>Currently, it supports only the most common types of statistical tests: <strong>parametric</strong>, <strong>nonparametric</strong>, <strong>robust</strong>, and <strong>bayesian</strong> versions of <strong>t-test</strong>/<strong>anova</strong>, <strong>correlation</strong> analyses, <strong>contingency table</strong> analysis, and <strong>regression</strong> analyses.</p>
+<p>Currently, it supports only the most common types of statistical tests. Specifically, <strong>parametric</strong>, <strong>non-parametric</strong>, <strong>robust</strong>, and <strong>bayesian</strong> versions of:</p>
+<ul>
+<li><strong>t-test</strong></li>
+<li><strong>anova</strong></li>
+<li>
+<strong>correlation</strong> tests</li>
+<li>
+<strong>contingency table</strong> analysis</li>
+<li><strong>meta-analysis</strong></li>
+</ul>
 <p>The table below summarizes all the different types of analyses currently supported in this package-</p>
 <table class="table">
 <thead><tr class="header">
@@ -255,6 +264,13 @@
 <td><font color="green">Yes</font></td>
 <td><code>NA</code></td>
 <td><code>NA</code></td>
+<td><font color="green">Yes</font></td>
+</tr>
+<tr class="odd">
+<td>Random-effects meta-analysis</td>
+<td><font color="green">Yes</font></td>
+<td><font color="red">No</font></td>
+<td><font color="green">Yes</font></td>
 <td><font color="green">Yes</font></td>
 </tr>
 </tbody>
@@ -452,6 +468,20 @@
 <td>Robust</td>
 <td>One-sample percentile bootstrap</td>
 <td>robust estimator</td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
+</tr>
+<tr class="even">
+<td><code>expr_meta_parametric</code></td>
+<td>Parametric</td>
+<td>Meta-analysis via random-effects models</td>
+<td><embed src="https://latex.codecogs.com/png.latex?%5Cbeta" title="\beta"></embed></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
+</tr>
+<tr class="odd">
+<td><code>expr_meta_robust</code></td>
+<td>Robust</td>
+<td>Meta-analysis via robust random-effects models</td>
+<td><embed src="https://latex.codecogs.com/png.latex?%5Cbeta" title="\beta"></embed></td>
 <td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
 </tbody>

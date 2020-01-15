@@ -77,10 +77,15 @@ updated after every new commit:
 
 # Summary of types of statistical analyses
 
-Currently, it supports only the most common types of statistical tests:
-**parametric**, **nonparametric**, **robust**, and **bayesian** versions
-of **t-test**/**anova**, **correlation** analyses, **contingency table**
-analysis, and **regression** analyses.
+Currently, it supports only the most common types of statistical tests.
+Specifically, **parametric**, **non-parametric**, **robust**, and
+**bayesian** versions of:
+
+  - **t-test**
+  - **anova**
+  - **correlation** tests
+  - **contingency table** analysis
+  - **meta-analysis**
 
 The table below summarizes all the different types of analyses currently
 supported in this package-
@@ -93,6 +98,7 @@ supported in this package-
 | Correlation between two variables                 | <font color="green">Yes</font> | <font color="green">Yes</font> | <font color="green">Yes</font> | <font color="green">Yes</font> |
 | Association between categorical variables         | <font color="green">Yes</font> | `NA`                           | `NA`                           | <font color="green">Yes</font> |
 | Equal proportions for categorical variable levels | <font color="green">Yes</font> | `NA`                           | `NA`                           | <font color="green">Yes</font> |
+| Random-effects meta-analysis                      | <font color="green">Yes</font> | <font color="red">No</font>    | <font color="green">Yes</font> | <font color="green">Yes</font> |
 
 # Statistical reporting
 
@@ -131,6 +137,8 @@ across various functions:
 | `expr_t_onesample`                       | Parametric     | One-sample *t*-test                                                                                                                                                                        | Cohen’s *d*, Hedge’s *g*                                                                                                                                                                              | <font color="green">![\\checkmark](https://latex.codecogs.com/png.latex?%5Ccheckmark "\\checkmark")</font> |
 | `expr_t_onesample`                       | Non-parametric | One-sample Wilcoxon signed rank test                                                                                                                                                       | *r*                                                                                                                                                                                                   | <font color="green">![\\checkmark](https://latex.codecogs.com/png.latex?%5Ccheckmark "\\checkmark")</font> |
 | `expr_t_onesample`                       | Robust         | One-sample percentile bootstrap                                                                                                                                                            | robust estimator                                                                                                                                                                                      | <font color="green">![\\checkmark](https://latex.codecogs.com/png.latex?%5Ccheckmark "\\checkmark")</font> |
+| `expr_meta_parametric`                   | Parametric     | Meta-analysis via random-effects models                                                                                                                                                    | ![\\beta](https://latex.codecogs.com/png.latex?%5Cbeta "\\beta")                                                                                                                                      | <font color="green">![\\checkmark](https://latex.codecogs.com/png.latex?%5Ccheckmark "\\checkmark")</font> |
+| `expr_meta_robust`                       | Robust         | Meta-analysis via robust random-effects models                                                                                                                                             | ![\\beta](https://latex.codecogs.com/png.latex?%5Cbeta "\\beta")                                                                                                                                      | <font color="green">![\\checkmark](https://latex.codecogs.com/png.latex?%5Ccheckmark "\\checkmark")</font> |
 
 # Primary functions
 
