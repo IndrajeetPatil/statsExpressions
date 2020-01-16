@@ -58,6 +58,7 @@ matrix:
         - logspline
       r_packages:
         - rlang
+        - rstan
         - bindrcpp
         - tidyr
         - dplyr
@@ -110,6 +111,7 @@ matrix:
         - logspline
       r_packages:
         - rlang
+        - rstan
         - bindrcpp
         - tidyr
         - dplyr
