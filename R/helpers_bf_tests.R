@@ -22,28 +22,15 @@
 
 # function body
 bf_extractor <- function(bf.object, ...) {
-
-  # preparing the dataframe
-  bf_df <-
-    BayesFactor::extractBF(
-      x = bf.object,
-      logbf = FALSE,
-      onlybf = FALSE
-    ) %>%
+  BayesFactor::extractBF(
+    x = bf.object,
+    logbf = FALSE,
+    onlybf = FALSE
+  ) %>%
     tibble::as_tibble(.) %>%
     dplyr::select(.data = ., -time, -code) %>%
     dplyr::rename(.data = ., bf10 = bf) %>%
-    dplyr::mutate(
-      .data = .,
-      bf01 = 1 / bf10,
-      log_e_bf10 = log(bf10),
-      log_e_bf01 = -1 * log_e_bf10,
-      log_10_bf10 = log10(bf10),
-      log_10_bf01 = -1 * log_10_bf10
-    )
-
-  # return the dataframe with Bayes Factors
-  return(bf_df)
+    bf_formatter(.)
 }
 
 #' @title Prepare caption with expression for Bayes Factor results
@@ -257,7 +244,7 @@ bf_corr_test <- function(data,
 #'
 #' @importFrom BayesFactor contingencyTableBF logMeanExpLogs
 #' @importFrom stats dmultinom rgamma
-#' @importFrom dplyr pull select rename mutate
+#' @importFrom dplyr pull select rename mutate tibble
 #' @importFrom tidyr uncount drop_na
 #'
 #' @seealso \code{\link{bf_corr_test}}, \code{\link{bf_oneway_anova}},
@@ -418,7 +405,7 @@ bf_contingency_tab <- function(data,
     # estimate log prob of data under null with Monte Carlo
     M <- 100000
 
-    # `rdirichlet` function
+    # `rdirichlet` function from `MCMCpack`
     rdirichlet_int <- function(n, alpha) {
       l <- length(alpha)
       x <- matrix(stats::rgamma(l * n, alpha), ncol = l, byrow = TRUE)
@@ -439,21 +426,10 @@ bf_contingency_tab <- function(data,
     # estimate log prob of data under alternative
     pr_y_h1 <- BayesFactor::logMeanExpLogs(tmp_pr_h1)
 
-    # computing Bayes Factor
-    bf_10 <- exp(pr_y_h1 - pr_y_h0)
-
-    # dataframe with results
+    # computing Bayes Factor and formatting the results
     bf_results <-
-      tibble::enframe(bf_10) %>%
-      dplyr::select(.data = ., bf10 = value) %>%
-      dplyr::mutate(
-        .data = .,
-        bf01 = 1 / bf10,
-        log_e_bf10 = log(bf10),
-        log_e_bf01 = -1 * log_e_bf10,
-        log_10_bf10 = log10(bf10),
-        log_10_bf01 = -1 * log_10_bf10
-      ) %>%
+      dplyr::tibble(bf10 = exp(pr_y_h1 - pr_y_h0)) %>%
+      bf_formatter(.) %>%
       dplyr::mutate(.data = ., prior.concentration = prior.concentration)
   }
 
@@ -873,6 +849,7 @@ bf_oneway_anova <- function(data,
 
 #' @title Bayes factor message for random-effects meta-analysis
 #' @name bf_meta
+#'
 #' @importFrom metaBMA meta_random prior
 #'
 #' @inherit metaBMA::meta_random return Description
@@ -990,4 +967,18 @@ bf_meta <- function(data,
 
   # return the caption
   return(bf_text)
+}
+
+#' @noRd
+#' @keywords internal
+
+bf_formatter <- function(data) {
+  dplyr::mutate(
+    .data = data,
+    bf01 = 1 / bf10,
+    log_e_bf10 = log(bf10),
+    log_e_bf01 = -1 * log_e_bf10,
+    log_10_bf10 = log10(bf10),
+    log_10_bf01 = -1 * log_10_bf10
+  )
 }
