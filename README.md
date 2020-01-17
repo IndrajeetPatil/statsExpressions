@@ -77,10 +77,15 @@ updated after every new commit:
 
 # Summary of types of statistical analyses
 
-Currently, it supports only the most common types of statistical tests:
-**parametric**, **nonparametric**, **robust**, and **bayesian** versions
-of **t-test**/**anova**, **correlation** analyses, **contingency table**
-analysis, and **regression** analyses.
+Currently, it supports only the most common types of statistical tests.
+Specifically, **parametric**, **non-parametric**, **robust**, and
+**bayesian** versions of:
+
+  - **t-test**
+  - **anova**
+  - **correlation** tests
+  - **contingency table** analysis
+  - **meta-analysis**
 
 The table below summarizes all the different types of analyses currently
 supported in this package-
@@ -93,6 +98,7 @@ supported in this package-
 | Correlation between two variables                 | <font color="green">Yes</font> | <font color="green">Yes</font> | <font color="green">Yes</font> | <font color="green">Yes</font> |
 | Association between categorical variables         | <font color="green">Yes</font> | `NA`                           | `NA`                           | <font color="green">Yes</font> |
 | Equal proportions for categorical variable levels | <font color="green">Yes</font> | `NA`                           | `NA`                           | <font color="green">Yes</font> |
+| Random-effects meta-analysis                      | <font color="green">Yes</font> | <font color="red">No</font>    | <font color="green">Yes</font> | <font color="green">Yes</font> |
 
 # Statistical reporting
 
@@ -131,6 +137,8 @@ across various functions:
 | `expr_t_onesample`                       | Parametric     | One-sample *t*-test                                                                                                                                                                        | Cohen’s *d*, Hedge’s *g*                                                                                                                                                                              | <font color="green">![\\checkmark](https://latex.codecogs.com/png.latex?%5Ccheckmark "\\checkmark")</font> |
 | `expr_t_onesample`                       | Non-parametric | One-sample Wilcoxon signed rank test                                                                                                                                                       | *r*                                                                                                                                                                                                   | <font color="green">![\\checkmark](https://latex.codecogs.com/png.latex?%5Ccheckmark "\\checkmark")</font> |
 | `expr_t_onesample`                       | Robust         | One-sample percentile bootstrap                                                                                                                                                            | robust estimator                                                                                                                                                                                      | <font color="green">![\\checkmark](https://latex.codecogs.com/png.latex?%5Ccheckmark "\\checkmark")</font> |
+| `expr_meta_parametric`                   | Parametric     | Meta-analysis via random-effects models                                                                                                                                                    | ![\\beta](https://latex.codecogs.com/png.latex?%5Cbeta "\\beta")                                                                                                                                      | <font color="green">![\\checkmark](https://latex.codecogs.com/png.latex?%5Ccheckmark "\\checkmark")</font> |
+| `expr_meta_robust`                       | Robust         | Meta-analysis via robust random-effects models                                                                                                                                             | ![\\beta](https://latex.codecogs.com/png.latex?%5Cbeta "\\beta")                                                                                                                                      | <font color="green">![\\checkmark](https://latex.codecogs.com/png.latex?%5Ccheckmark "\\checkmark")</font> |
 
 # Primary functions
 
@@ -316,6 +324,34 @@ expr_contingency_tab(mtcars, am, cyl, messages = FALSE)
 #>     " = ", "0.46", ", CI"["95%"], " [", "0.08", ", ", "0.75", 
 #>     "]", ", ", italic("n")["obs"], " = ", 32L)
 ```
+
+## Example: Expressions for meta-analysis
+
+``` r
+# setup
+set.seed(123)
+library(metaviz)
+library(ggplot2)
+
+# rename columns to `statsExpressions` conventions
+df <- dplyr::rename(mozart, estimate = d, std.error = se)
+
+# meta-analysis forest plot with results random-effects meta-analysis
+viz_forest(
+  x = mozart[, c("d", "se")],
+  study_labels = mozart[, "study_name"],
+  xlab = "Cohen's d",
+  variant = "thick",
+  type = "cumulative"
+) + # use `statsExpressions` to create expression containing results 
+  labs(
+    title = "Meta-analysis of Pietschnig, Voracek, and Formann (2010) on the Mozart effect",
+    subtitle = expr_meta_parametric(df, k = 3)
+  ) + 
+  theme(text = element_text(size = 12))
+```
+
+<img src="man/figures/README-example_metaanalysis-1.png" width="100%" />
 
 # Usage in `ggstatsplot`
 

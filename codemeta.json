@@ -11,7 +11,8 @@
   "relatedLink": [
     "https://indrajeetpatil.github.io/ggstatsplot/",
     "https://indrajeetpatil.github.io/statsExpressions/",
-    "https://CRAN.R-project.org/package=statsExpressions"
+    "https://CRAN.R-project.org/package=statsExpressions",
+    "https://indrajeetpatil.github.io/statsExpressions"
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/statsExpressions/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
@@ -218,6 +219,45 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=groupedstats"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "metaBMA",
+      "name": "metaBMA",
+      "version": ">= 0.6.2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=metaBMA"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "metafor",
+      "name": "metafor",
+      "version": ">= 2.1-0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=metafor"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "metaplus",
+      "name": "metaplus",
+      "version": ">= 0.7-11",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=metaplus"
     },
     {
       "@type": "SoftwareApplication",

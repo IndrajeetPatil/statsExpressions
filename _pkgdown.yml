@@ -43,6 +43,11 @@ reference:
     contents:
       - matches("expr_contingency_")
 
+  - title: Expressions for meta-analysis
+    desc: Functions to create expressions for random-effects meta-analysis
+    contents:
+      - matches("expr_meta_")
+
   - title: Helper functions for Bayes Factor tests
     desc: Functions to extract Bayes Factor for various tests
     contents:

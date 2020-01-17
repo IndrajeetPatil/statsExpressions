@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bayesian one-way analysis of variance. — bf_oneway_anova • statsExpressions</title>
+<title>Making expression with frequentist random-effects robust meta-analysis
+results — expr_meta_robust • statsExpressions</title>
 
 
 <!-- jquery -->
@@ -43,8 +44,10 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Bayesian one-way analysis of variance. — bf_oneway_anova" />
-<meta property="og:description" content="Bayesian one-way analysis of variance." />
+<meta property="og:title" content="Making expression with frequentist random-effects robust meta-analysis
+results — expr_meta_robust" />
+<meta property="og:description" content="This analysis is carried out using the metaplus package. For
+more, see ?metaplus::metaplus." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -137,67 +140,32 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Bayesian one-way analysis of variance.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/helpers_bf_tests.R'><code>R/helpers_bf_tests.R</code></a></small>
-    <div class="hidden name"><code>bf_oneway_anova.Rd</code></div>
+    <h1>Making expression with frequentist random-effects robust meta-analysis
+results</h1>
+    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/helpers_meta_analysis_expressions.R'><code>R/helpers_meta_analysis_expressions.R</code></a></small>
+    <div class="hidden name"><code>expr_meta_robust.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Bayesian one-way analysis of variance.</p>
+    <p>This analysis is carried out using the <code>metaplus</code> package. For
+more, see <code><a href='https://rdrr.io/pkg/metaplus/man/metaplus.html'>?metaplus::metaplus</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>bf_oneway_anova</span>(
-  <span class='no'>data</span>,
-  <span class='no'>x</span>,
-  <span class='no'>y</span>,
-  <span class='kw'>bf.prior</span> <span class='kw'>=</span> <span class='fl'>0.707</span>,
-  <span class='kw'>caption</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"null"</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>expr_meta_robust</span>(<span class='no'>data</span>, <span class='kw'>random</span> <span class='kw'>=</span> <span class='st'>"mixture"</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>A dataframe (or a tibble) from which variables specified are to
-be taken. A matrix or tables will <strong>not</strong> be accepted.</p></td>
+      <td><p>A dataframe. It <strong>must</strong> contain columns named <code>estimate</code> (effect
+sizes or outcomes)  and <code>std.error</code> (corresponding standard errors). These
+two columns will be used for <code>yi</code>  and <code>sei</code> arguments in <code><a href='https://rdrr.io/pkg/metafor/man/rma.uni.html'>metafor::rma</a></code>
+(for parametric analysis) or <code><a href='https://rdrr.io/pkg/metaplus/man/metaplus.html'>metaplus::metaplus</a></code> (for robust analysis).</p></td>
     </tr>
     <tr>
-      <th>x</th>
-      <td><p>The grouping variable from the dataframe <code>data</code>.</p></td>
-    </tr>
-    <tr>
-      <th>y</th>
-      <td><p>The response (a.k.a. outcome or dependent) variable from the
-dataframe <code>data</code>.</p></td>
-    </tr>
-    <tr>
-      <th>bf.prior</th>
-      <td><p>A numeric value between <code>0.5</code> and <code>2</code> (default <code>0.707</code>), the
-prior width to use in calculating Bayes Factors.</p></td>
-    </tr>
-    <tr>
-      <th>caption</th>
-      <td><p>Text to display as caption (will be displayed on top of the
-Bayes Factor caption/message).</p></td>
-    </tr>
-    <tr>
-      <th>output</th>
-      <td><p>Can either be <code>"null"</code> (or <code>"caption"</code> or <code>"H0"</code> or <code>"h0"</code>),
-which will return expression with evidence in favor of the null hypothesis,
-or <code>"alternative"</code> (or <code>"title"</code> or <code>"H1"</code> or <code>"h1"</code>), which will return
-expression with evidence in favor of the alternative hypothesis, or
-<code>"results"</code>, which will return a dataframe with results all the details).</p></td>
-    </tr>
-    <tr>
-      <th>paired</th>
-      <td><p>Logical that decides whether the experimental design is
-repeated measures/within-subjects or between-subjects. The default is
-<code>FALSE</code>.</p></td>
+      <th>random</th>
+      <td><p>The type of random effects distribution. One of "normal","t-dist","mixture", for standard normal, \(t\)-distribution or mixture of normals respectively.</p></td>
     </tr>
     <tr>
       <th>k</th>
@@ -205,66 +173,60 @@ repeated measures/within-subjects or between-subjects. The default is
 (Default: <code>k = 2</code>).</p></td>
     </tr>
     <tr>
+      <th>messages</th>
+      <td><p>Decides whether messages references, notes, and warnings are
+to be displayed (Default: <code>TRUE</code>).</p></td>
+    </tr>
+    <tr>
       <th>...</th>
-      <td><p>Additional arguments.</p></td>
+      <td><p>Arguments passed on to <code><a href='https://rdrr.io/pkg/metaplus/man/metaplus.html'>metaplus::metaplus</a></code></p><dl class='dl-horizontal'>
+    <dt><code>mods</code></dt><dd><p>data frame of covariates corresponding to each study</p></dd>
+    <dt><code>label</code></dt><dd><p>The label to be used for this model when plotting</p></dd>
+    <dt><code>plotci</code></dt><dd><p>Should profile be plotted for each confidence interval?</p></dd>
+    <dt><code>justfit</code></dt><dd><p>Should model only be fitted? If justfit=TRUE then profiling and likelihood ratio statistics are not calculated. Useful for when bootstrapping.</p></dd>
+    <dt><code>slab</code></dt><dd><p>Vector of character strings corresponding to each study.</p></dd>
+    <dt><code>useAGQ</code></dt><dd><p>Use adaptive Gauss-Hermite quadrature when performing integration for t-distribution random-effects. Useful when standard errors for studies are relatively small.</p></dd>
+    <dt><code>quadpoints</code></dt><dd><p>Number of quadrature points to use in adaptive Gauss-Hermite quadrature.</p></dd>
+  
+</dl></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='bf_contingency_tab.html'>bf_contingency_tab</a></code>, <code><a href='bf_corr_test.html'>bf_corr_test</a></code>,
-<code><a href='bf_ttest.html'>bf_ttest</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='co'># setup</span>
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>metaplus</span>)
 
-<span class='co'># between-subjects -------------------------------------------------------</span>
+<span class='co'># renaming to what `statsExpressions` expects</span>
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>rename</a></span>(<span class='no'>mag</span>, <span class='kw'>estimate</span> <span class='kw'>=</span> <span class='no'>yi</span>, <span class='kw'>std.error</span> <span class='kw'>=</span> <span class='no'>sei</span>)
 
-<span class='co'># to get caption (default)</span>
-<span class='fu'>bf_oneway_anova</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Species</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Sepal.Length</span>,
-  <span class='kw'>bf.prior</span> <span class='kw'>=</span> <span class='fl'>0.8</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)</div><div class='output co'>#&gt; atop(displaystyle(NULL), expr = paste("In favor of null: ", "log"["e"], 
-#&gt;     "(BF"["01"], ") = ", "-65.18", ", ", italic("r")["Cauchy"]^"JZS", 
-#&gt;     " = ", "0.80"))</div><div class='input'>
-<span class='co'># to get results dataframe</span>
-<span class='fu'>bf_oneway_anova</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Species</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Sepal.Length</span>,
-  <span class='kw'>bf.prior</span> <span class='kw'>=</span> <span class='fl'>0.8</span>,
-  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"results"</span>
-)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 8</span><span>
-#&gt;      bf10        error     bf01 log_e_bf10 log_e_bf01 log_10_bf10 log_10_bf01
-#&gt;     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> 2.03</span><span style='color: #555555;'>e</span><span>28 0.000</span><span style='text-decoration: underline;'>000</span><span>047</span><span style='text-decoration: underline;'>8</span><span> 4.93</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-29</span><span>       65.2      -</span><span style='color: #BB0000;'>65.2</span><span>        28.3       -</span><span style='color: #BB0000;'>28.3</span><span>
-#&gt;   bf.prior
-#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>      0.8</div><div class='input'>
-<span class='co'># within-subjects -------------------------------------------------------</span>
-<span class='fu'>bf_oneway_anova</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>bugs_long</span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>condition</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>desire</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-)</div><div class='output co'>#&gt; atop(displaystyle(NULL), expr = paste("In favor of null: ", "log"["e"], 
-#&gt;     "(BF"["01"], ") = ", "-21.05", ", ", italic("r")["Cauchy"]^"JZS", 
-#&gt;     " = ", "0.71"))</div><div class='input'># }
-</div></span></pre>
+<span class='co'># creating expression (changing few defaults)</span>
+<span class='fu'>expr_meta_robust</span>(
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>df</span>,
+  <span class='kw'>random</span> <span class='kw'>=</span> <span class='st'>"normal"</span>,
+  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>4</span>,
+  <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>plotci</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</div><div class='img'><img src='expr_meta_robust-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt;          Est. 95% ci.lb 95% ci.ub   pvalue
+#&gt; muhat -0.7463   -1.2583   -0.3428 0.000501
+#&gt; tau2   0.2540                             
+#&gt; 
+#&gt;      logLik      AIC      BIC
+#&gt;   -19.68459 43.36918 44.91436</div><div class='output co'>#&gt; paste("Summary effect: ", italic("z"), " = ", "NA", ", ", italic("p"), 
+#&gt;     " = ", "5e-04", ", ", widehat(beta), " = ", "-0.7463", ", CI"["95%"], 
+#&gt;     " [", "-1.2583", ", ", "-0.3428", "]", ", ", italic("n")["effects"], 
+#&gt;     " = ", 16L)</div><div class='input'># }
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
-    <h2>Author</h2>
-    <p><a href='https://github.com/IndrajeetPatil'>Indrajeet Patil</a></p>
   </div>
 </div>
 

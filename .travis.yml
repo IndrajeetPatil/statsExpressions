@@ -1,7 +1,6 @@
 # documentation at https://docs.travis-ci.com/user/languages/r
 
 language: r
-sudo: true
 dist: trusty
 cache: packages
 latex: true
@@ -25,7 +24,7 @@ notifications:
   on_success: change
   on_failure: change
 
-matrix:
+jobs:
   include:
     - os: linux
       dist: trusty
@@ -34,6 +33,7 @@ matrix:
         - magrittr
         - curl
         - jsonlite
+        - rstan
         - Rcpp
         - RcppEigen
         - openssl
@@ -64,9 +64,13 @@ matrix:
         - coin
         - sjstats
         - WRS2
+        - coda
+        - rstantools
         - bridgesampling
         - BH
         - remotes
+        - knitr
+        - rmarkdown
         - stringi
       r_github_packages:
         - jimhester/lintr
@@ -86,6 +90,7 @@ matrix:
         - magrittr
         - curl
         - jsonlite
+        - rstan
         - Rcpp
         - RcppEigen
         - openssl
@@ -116,10 +121,14 @@ matrix:
         - coin
         - sjstats
         - WRS2
+        - coda
+        - rstantools
         - bridgesampling
         - BH
         - remotes
         - stringi
+        - knitr
+        - rmarkdown
       r_github_packages:
         - jimhester/lintr
         - r-lib/covr

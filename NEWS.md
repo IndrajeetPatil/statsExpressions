@@ -1,5 +1,10 @@
 # statsExpressions 0.2.0.9000
 
+NEW FEATURES
+
+  - New functions to carry out meta-analysis: `expr_meta_parametric`,
+    `expr_meta_robust`, `expr_meta_bayes`.
+
 # statsExpressions 0.2.0
 
 BREAKING CHANGES

@@ -204,7 +204,16 @@
 <div id="summary-of-types-of-statistical-analyses" class="section level1">
 <h1 class="hasAnchor">
 <a href="#summary-of-types-of-statistical-analyses" class="anchor"></a>Summary of types of statistical analyses</h1>
-<p>Currently, it supports only the most common types of statistical tests: <strong>parametric</strong>, <strong>nonparametric</strong>, <strong>robust</strong>, and <strong>bayesian</strong> versions of <strong>t-test</strong>/<strong>anova</strong>, <strong>correlation</strong> analyses, <strong>contingency table</strong> analysis, and <strong>regression</strong> analyses.</p>
+<p>Currently, it supports only the most common types of statistical tests. Specifically, <strong>parametric</strong>, <strong>non-parametric</strong>, <strong>robust</strong>, and <strong>bayesian</strong> versions of:</p>
+<ul>
+<li><strong>t-test</strong></li>
+<li><strong>anova</strong></li>
+<li>
+<strong>correlation</strong> tests</li>
+<li>
+<strong>contingency table</strong> analysis</li>
+<li><strong>meta-analysis</strong></li>
+</ul>
 <p>The table below summarizes all the different types of analyses currently supported in this package-</p>
 <table class="table">
 <thead><tr class="header">
@@ -255,6 +264,13 @@
 <td><font color="green">Yes</font></td>
 <td><code>NA</code></td>
 <td><code>NA</code></td>
+<td><font color="green">Yes</font></td>
+</tr>
+<tr class="odd">
+<td>Random-effects meta-analysis</td>
+<td><font color="green">Yes</font></td>
+<td><font color="red">No</font></td>
+<td><font color="green">Yes</font></td>
 <td><font color="green">Yes</font></td>
 </tr>
 </tbody>
@@ -454,6 +470,20 @@
 <td>robust estimator</td>
 <td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
 </tr>
+<tr class="even">
+<td><code>expr_meta_parametric</code></td>
+<td>Parametric</td>
+<td>Meta-analysis via random-effects models</td>
+<td><embed src="https://latex.codecogs.com/png.latex?%5Cbeta" title="\beta"></embed></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
+</tr>
+<tr class="odd">
+<td><code>expr_meta_robust</code></td>
+<td>Robust</td>
+<td>Meta-analysis via robust random-effects models</td>
+<td><embed src="https://latex.codecogs.com/png.latex?%5Cbeta" title="\beta"></embed></td>
+<td><font color="green"><embed src="https://latex.codecogs.com/png.latex?%5Ccheckmark" title="\checkmark"></embed></font></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -614,6 +644,32 @@
 <span id="cb11-9"><a href="#cb11-9"></a><span class="co">#&gt;     italic("p"), " = ", "0.013", ", ", widehat(italic("V"))["Cramer"], </span></span>
 <span id="cb11-10"><a href="#cb11-10"></a><span class="co">#&gt;     " = ", "0.46", ", CI"["95%"], " [", "0.08", ", ", "0.75", </span></span>
 <span id="cb11-11"><a href="#cb11-11"></a><span class="co">#&gt;     "]", ", ", italic("n")["obs"], " = ", 32L)</span></span></code></pre></div>
+</div>
+<div id="example-expressions-for-meta-analysis" class="section level2">
+<h2 class="hasAnchor">
+<a href="#example-expressions-for-meta-analysis" class="anchor"></a>Example: Expressions for meta-analysis</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># setup</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">123</span>)</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(metaviz)</span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</span>
+<span id="cb12-5"><a href="#cb12-5"></a></span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="co"># rename columns to `statsExpressions` conventions</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>df &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">rename</a></span>(mozart, <span class="dt">estimate =</span> d, <span class="dt">std.error =</span> se)</span>
+<span id="cb12-8"><a href="#cb12-8"></a></span>
+<span id="cb12-9"><a href="#cb12-9"></a><span class="co"># meta-analysis forest plot with results random-effects meta-analysis</span></span>
+<span id="cb12-10"><a href="#cb12-10"></a><span class="kw">viz_forest</span>(</span>
+<span id="cb12-11"><a href="#cb12-11"></a>  <span class="dt">x =</span> mozart[, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"d"</span>, <span class="st">"se"</span>)],</span>
+<span id="cb12-12"><a href="#cb12-12"></a>  <span class="dt">study_labels =</span> mozart[, <span class="st">"study_name"</span>],</span>
+<span id="cb12-13"><a href="#cb12-13"></a>  <span class="dt">xlab =</span> <span class="st">"Cohen's d"</span>,</span>
+<span id="cb12-14"><a href="#cb12-14"></a>  <span class="dt">variant =</span> <span class="st">"thick"</span>,</span>
+<span id="cb12-15"><a href="#cb12-15"></a>  <span class="dt">type =</span> <span class="st">"cumulative"</span></span>
+<span id="cb12-16"><a href="#cb12-16"></a>) <span class="op">+</span><span class="st"> </span><span class="co"># use `statsExpressions` to create expression containing results </span></span>
+<span id="cb12-17"><a href="#cb12-17"></a><span class="st">  </span><span class="kw">labs</span>(</span>
+<span id="cb12-18"><a href="#cb12-18"></a>    <span class="dt">title =</span> <span class="st">"Meta-analysis of Pietschnig, Voracek, and Formann (2010) on the Mozart effect"</span>,</span>
+<span id="cb12-19"><a href="#cb12-19"></a>    <span class="dt">subtitle =</span> <span class="kw"><a href="reference/expr_meta_parametric.html">expr_meta_parametric</a></span>(df, <span class="dt">k =</span> <span class="dv">3</span>)</span>
+<span id="cb12-20"><a href="#cb12-20"></a>  ) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb12-21"><a href="#cb12-21"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>))</span></code></pre></div>
+<p><img src="reference/figures/README-example_metaanalysis-1.png" width="100%"></p>
 </div>
 </div>
 <div id="usage-in-ggstatsplot" class="section level1">

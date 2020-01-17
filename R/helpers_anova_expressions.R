@@ -149,10 +149,8 @@ expr_anova_parametric <- function(data,
 
     # warn the user if
     if (sample_size < nlevels(as.factor(data %>% dplyr::pull({{ x }})))) {
-      # no sphericity correction applied
-      sphericity.correction <- FALSE
-      k.df1 <- 0L
-      k.df2 <- 0L
+      # no sphericity correction applied; adjust expr display accordingly
+      c(k.df1, k.df2, sphericity.correction) %<-% c(0L, 0L, FALSE)
 
       # inform the user
       message(cat(
@@ -504,7 +502,8 @@ expr_anova_nonparametric <- function(data,
 #'   y = value,
 #'   paired = TRUE,
 #'   tr = 0.2,
-#'   k = 3
+#'   k = 3,
+#'   nboot = 10
 #' )
 #' }
 #' @export

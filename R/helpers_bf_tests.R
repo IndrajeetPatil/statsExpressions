@@ -869,3 +869,125 @@ bf_oneway_anova <- function(data,
     bf_message
   ))
 }
+
+
+#' @title Bayes factor message for random-effects meta-analysis
+#' @name bf_meta
+#' @importFrom metaBMA meta_random prior
+#'
+#' @inherit metaBMA::meta_random return Description
+#'
+#' @inheritParams expr_meta_parametric
+#' @inheritParams metaBMA::meta_random
+#' @inheritDotParams metaBMA::meta_random -y -SE
+#'
+#' @examples
+#'
+#' \donttest{
+#' # setup
+#' set.seed(123)
+#' library(metaBMA)
+#'
+#' # creating a dataframe
+#' (df <-
+#'   structure(
+#'     .Data = list(
+#'       study = c("1", "2", "3", "4", "5"),
+#'       estimate = c(
+#'         0.382047603321706,
+#'         0.780783111514665,
+#'         0.425607573765058,
+#'         0.558365541235078,
+#'         0.956473848429961
+#'       ),
+#'       std.error = c(
+#'         0.0465576338644502,
+#'         0.0330218199731529,
+#'         0.0362834986178494,
+#'         0.0480571500648261,
+#'         0.062215818388157
+#'       )
+#'     ),
+#'     row.names = c(NA, -5L),
+#'     class = c("tbl_df", "tbl", "data.frame")
+#'   ))
+#'
+#' # getting Bayes factor in favor of null hypothesis
+#' bf_meta(
+#'   data = df,
+#'   k = 3,
+#'   iter = 1500,
+#'   messages = TRUE
+#' )
+#' }
+#'
+#' @export
+
+# function body
+bf_meta <- function(data,
+                    d = prior("norm", c(mean = 0, sd = 0.3)),
+                    tau = prior("invgamma", c(shape = 1, scale = 0.15)),
+                    k = 2,
+                    caption = NULL,
+                    messages = TRUE,
+                    ...) {
+
+  # check the data contains needed column
+  meta_data_check(data)
+
+  #----------------------- meta-analysis -------------------------------
+
+  # extracting results from random-effects meta-analysis
+  meta_res <-
+    metaBMA::meta_random(
+      y = data$estimate,
+      SE = data$std.error,
+      d = d,
+      tau = tau,
+      ...
+    )
+
+  # print results from meta-analysis
+  if (isTRUE(messages)) print(meta_res)
+
+  #----------------------- preparing caption -------------------------------
+
+  # creating a dataframe with posterior estimates
+  df_estimates <-
+    tibble::as_tibble(meta_res$estimates, rownames = "term") %>%
+    dplyr::filter(.data = ., term == "d")
+
+  # prepare the Bayes factor message
+  bf_text <-
+    substitute(
+      atop(displaystyle(top.text),
+        expr = paste(
+          "In favor of null: ",
+          "log"["e"],
+          "(BF"["01"],
+          ") = ",
+          bf,
+          ", ",
+          italic("d")["mean"]^"posterior",
+          " = ",
+          d.pmean,
+          ", CI"["95%"],
+          " [",
+          d.pmean.LB,
+          ", ",
+          d.pmean.UB,
+          "]"
+        )
+      ),
+      env = list(
+        top.text = caption,
+        bf = specify_decimal_p(x = log(meta_res$BF["random_H0", "random_H1"]), k = k),
+        d.pmean = specify_decimal_p(x = df_estimates$mean[[1]], k = k),
+        d.pmean.LB = specify_decimal_p(x = df_estimates$hpd95_lower[[1]], k = k),
+        d.pmean.UB = specify_decimal_p(x = df_estimates$hpd95_upper[[1]], k = k)
+      )
+    )
+
+  # return the caption
+  return(bf_text)
+}
