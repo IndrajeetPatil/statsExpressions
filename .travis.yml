@@ -27,6 +27,9 @@ notifications:
 jobs:
   include:
     - os: linux
+      env:
+        - CC=clang
+        - CXX=clang++
       dist: trusty
       r: release
       r_binary_packages:
@@ -79,11 +82,17 @@ jobs:
         apt:
           sources:
             - ubuntu-toolchain-r-test
+            - llvm-toolchain-trusty-6.0
           packages:
-            - g++-7
+            #- g++-7
+            - clang-6.0
       env:
-        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+        #- MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+        - MATRIX_EVAL="CC=clang-6.0 && CXX=clang++-6.0"
     - os: linux
+      env:
+        - CC=clang
+        - CXX=clang++
       dist: trusty
       r: devel
       r_binary_packages:
@@ -136,14 +145,20 @@ jobs:
         apt:
           sources:
             - ubuntu-toolchain-r-test
+            - llvm-toolchain-trusty-6.0
           packages:
-            - g++-7
+            #- g++-7
+            - clang-6.0
       env:
-        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+        #- MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+        - MATRIX_EVAL="CC=clang-6.0 && CXX=clang++-6.0"
 
 before_install:
   - mkdir -p ~/.R/
-  - echo "CXX14 = g++-7 -fPIC" >> ~/.R/Makevars
+  - echo "CXX = $CXX" >> ~/.R/Makevars
+  - echo "CXX14 = $CXX" >> ~/.R/Makevars
+  - echo "CXX14FLAGS = `R CMD config CXXFLAGS` -pedantic -g0 -fPIC" >> ~/.R/Makevars
+  - echo "CXX14 = g++-7 -fPIC -flto=2" >> ~/.R/Makevars
   - echo "CXX14FLAGS = -mtune=native -march=native -Wno-unused-variable -Wno-unused-function -Wno-unused-local-typedefs -Wno-ignored-attributes -Wno-deprecated-declarations -Wno-attributes -O3" >> ~/.R/Makevars
 
 after_success:
