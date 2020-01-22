@@ -52,6 +52,9 @@ jobs:
       - remotes
       - knitr
       - rmarkdown
+    r_github_packages:
+      - jimhester/lintr
+      - r-lib/covr
   - r: release
     r_binary_packages:
       - magrittr
@@ -94,6 +97,9 @@ jobs:
       - remotes
       - knitr
       - rmarkdown
+    r_github_packages:
+      - jimhester/lintr
+      - r-lib/covr
 
 addons:
   apt:
