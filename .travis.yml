@@ -1,8 +1,8 @@
 # documentation at https://docs.travis-ci.com/user/languages/r
 
 language: r
+os: linux
 dist: trusty
-#latex: true
 warnings_are_errors: true
 cache:
   - packages
@@ -11,16 +11,6 @@ cache:
 r_build_args: '--no-build-vignettes'
 r_check_args: '--ignore-vignettes'
 
-#repos:
-#  CRAN: https://cloud.r-project.org
-#  ropensci: http://packages.ropensci.org
-
-#env:
-#  global:
-#    - R_MAX_NUM_DLLS=999
-#    - _R_CHECK_FORCE_SUGGESTS_=true
-#    - _R_CHECK_CRAN_INCOMING_=true
-
 addons:
   apt:
     packages:
@@ -28,27 +18,23 @@ addons:
       - libgdal-dev
       - libproj-dev
 
-#r_check_args: "--run-dontrun"
-
-notifications:
-  email:
-  on_success: change
-  on_failure: change
 
 jobs:
   include:
-    - os: linux
-      r:
-        - release
-        - devel
-      r_github_packages:
-        - jimhester/lintr
-        - r-lib/covr
+    - r: devel
+    #- r: release
+
 
 before_install:
   - mkdir -p ~/.R
   - echo "CXX14FLAGS=-O3 -mtune=native -march=native -Wno-unused-variable -Wno-unused-function  -Wno-macro-redefined" >> ~/.R/Makevars
   - echo "CXX14=g++ -std=c++1y -fPIC" >> ~/.R/Makevars
+
+
+notifications:
+  email:
+  on_success: change
+  on_failure: change
 
 
 after_success:
