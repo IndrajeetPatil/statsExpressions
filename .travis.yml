@@ -11,31 +11,39 @@ cache:
 matrix:
   include:
   - r: devel
-      r_packages:
-        - rlang
-        - bindrcpp
-        - tidyr
-        - dplyr
-        - coin
-        - sjstats
-        - WRS2
-        - coda
-        - rstantools
-        - bridgesampling
-        - BH
+    r_packages:
+      - rlang
+      - bindrcpp
+      - tidyr
+      - dplyr
+      - coin
+      - sjstats
+      - WRS2
+      - coda
+      - rstantools
+      - bridgesampling
+      - BH
+      - remotes
+      - knitr
+      - rmarkdown
+      - stringi
   - r: release
-      r_packages:
-        - rlang
-        - bindrcpp
-        - tidyr
-        - dplyr
-        - coin
-        - sjstats
-        - WRS2
-        - coda
-        - rstantools
-        - bridgesampling
-        - BH
+    r_packages:
+      - rlang
+      - bindrcpp
+      - tidyr
+      - dplyr
+      - coin
+      - sjstats
+      - WRS2
+      - coda
+      - rstantools
+      - bridgesampling
+      - BH
+      - remotes
+      - knitr
+      - rmarkdown
+      - stringi
 
 addons:
   apt:
