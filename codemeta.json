@@ -5,7 +5,7 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "statsExpressions",
-  "description": "Statistical processing backend for 'ggstatsplot',\n    this package creates expressions with details from statistical tests.\n    Currently, it supports only the most common types of statistical\n    tests: parametric, nonparametric, robust, and bayesian versions of\n    t-test/anova, correlation analyses, contingency table analysis.",
+  "description": "Statistical processing backend for 'ggstatsplot',\n    this package creates expressions with details from statistical tests.\n    Currently, it supports only the most common types of statistical\n    tests: parametric, nonparametric, robust, and bayesian versions of\n    t-test/anova, correlation analyses, contingency table analysis, and\n    meta-analysis.",
   "name": "statsExpressions: Expressions with Statistical Details",
   "codeRepository": "https://github.com/IndrajeetPatil/statsExpressions",
   "relatedLink": [
@@ -146,7 +146,7 @@
       "@type": "SoftwareApplication",
       "identifier": "boot",
       "name": "boot",
-      "version": ">= 1.3-22",
+      "version": ">= 1.3-24",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -263,7 +263,7 @@
       "@type": "SoftwareApplication",
       "identifier": "psych",
       "name": "psych",
-      "version": ">= 1.8.12",
+      "version": ">= 1.9.12.31",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
