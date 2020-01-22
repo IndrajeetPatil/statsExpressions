@@ -43,6 +43,7 @@ jobs:
       - bridgesampling
       - BH
       - stringi
+      - metaBMA
     r_packages:
       - coin
       - sjstats
@@ -84,6 +85,7 @@ jobs:
       - bridgesampling
       - BH
       - stringi
+      - metaBMA
     r_packages:
       - coin
       - sjstats
