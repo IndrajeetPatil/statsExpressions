@@ -8,42 +8,90 @@ cache:
   - packages
   - ccache
 
-matrix:
+jobs:
   include:
   - r: devel
-    r_packages:
+    r_binary_packages:
+      - magrittr
+      - curl
+      - jsonlite
+      - rstan
+      - Rcpp
+      - RcppEigen
+      - openssl
+      - utf8
+      - gss
+      - haven
+      - minqa
+      - mvtnorm
+      - nloptr
+      - SparseM
+      - httpuv
+      - markdown
+      - sem
+      - readxl
+      - openxlsx
+      - pander
+      - lme4
+      - psych
+      - git2r
       - rlang
       - bindrcpp
       - tidyr
       - dplyr
+      - rstantools
+      - bridgesampling
+      - BH
+      - stringi
+    r_packages:
       - coin
       - sjstats
       - WRS2
       - coda
-      - rstantools
-      - bridgesampling
-      - BH
       - remotes
       - knitr
       - rmarkdown
-      - stringi
   - r: release
-    r_packages:
+    r_binary_packages:
+      - magrittr
+      - curl
+      - jsonlite
+      - rstan
+      - Rcpp
+      - RcppEigen
+      - openssl
+      - utf8
+      - gss
+      - haven
+      - minqa
+      - mvtnorm
+      - nloptr
+      - SparseM
+      - httpuv
+      - markdown
+      - sem
+      - readxl
+      - openxlsx
+      - pander
+      - lme4
+      - psych
+      - git2r
       - rlang
       - bindrcpp
       - tidyr
       - dplyr
+      - rstantools
+      - bridgesampling
+      - BH
+      - stringi
+    r_packages:
       - coin
       - sjstats
       - WRS2
       - coda
-      - rstantools
-      - bridgesampling
-      - BH
       - remotes
       - knitr
       - rmarkdown
-      - stringi
 
 addons:
   apt:
