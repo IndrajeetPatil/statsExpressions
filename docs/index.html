@@ -18,7 +18,8 @@
     this package creates expressions with details from statistical tests.
     Currently, it supports only the most common types of statistical
     tests: parametric, nonparametric, robust, and bayesian versions of
-    t-test/anova, correlation analyses, contingency table analysis.">
+    t-test/anova, correlation analyses, contingency table analysis, and
+    meta-analysis.">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -38,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.2.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.2.1.9000</span>
       </span>
     </div>
 
@@ -128,14 +129,14 @@
 <td><a href="https://cran.r-project.org/web/checks/check_results_statsExpressions.html"><img src="https://cranchecks.info/badges/summary/statsExpressions" alt="CRAN Checks"></a></td>
 <td><a href="https://ci.appveyor.com/project/IndrajeetPatil/statsExpressions"><img src="https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/statsExpressions?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></td>
 <td><a href="https://CRAN.R-project.org/package=statsExpressions"><img src="https://cranlogs.r-pkg.org/badges/last-week/statsExpressions?color=blue" alt="Weekly downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/"><img src="https://img.shields.io/badge/forks-2-blue.svg" alt="Forks"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/"><img src="https://img.shields.io/badge/forks-4-blue.svg" alt="Forks"></a></td>
 <td><a href="https://www.rdocumentation.org/packages/statsExpressions"><img src="https://www.rdocumentation.org/badges/version/statsExpressions" alt="Rdoc"></a></td>
 </tr>
 <tr class="odd">
 <td><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg" alt="minimal R version"></a></td>
 <td><a href="https://www.tidyverse.org/lifecycle/"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></td>
 <td><a href="https://CRAN.R-project.org/package=statsExpressions"><img src="https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue" alt="Monthly downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/issues"><img src="https://img.shields.io/badge/issues-5-red.svg" alt="Github Issues"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/issues"><img src="https://img.shields.io/badge/issues-4-red.svg" alt="Github Issues"></a></td>
 <td><a href="https://CRAN.R-project.org/package=statsExpressions/vignettes/"><img src="https://img.shields.io/badge/vignettes-0.2.1-orange.svg?colorB=FF5722" alt="vignettes"></a></td>
 </tr>
 <tr class="even">
@@ -149,12 +150,12 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="http://hits.dwyl.io/IndrajeetPatil/statsExpressions"><img src="http://hits.dwyl.io/IndrajeetPatil/statsExpressions.svg" alt="HitCount"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--01--22-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--01--23-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
 <td><a href="https://CRAN.R-project.org/package=statsExpressions"><img src="https://tinyverse.netlify.com/badge/statsExpressions" alt="status"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/tests/README.md"><img src="https://img.shields.io/badge/covrpage-Last_Build_2020_01_22-yellowgreen.svg" alt="Covrpage Summary"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/tests/README.md"><img src="https://img.shields.io/badge/covrpage-Last_Build_2020_01_23-yellowgreen.svg" alt="Covrpage Summary"></a></td>
 <td><a href="https://gitter.im/statsExpressions/community"><img src="https://badges.gitter.im/gitterHQ/gitter.png" alt="Gitter chat"></a></td>
 <td><a href="http://www.repostatus.org/#active"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="contributions welcome"></a></td>

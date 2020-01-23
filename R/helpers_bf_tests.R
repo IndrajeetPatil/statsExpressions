@@ -934,6 +934,11 @@ bf_meta <- function(data,
     tibble::as_tibble(meta_res$estimates, rownames = "term") %>%
     dplyr::filter(.data = ., term == "d")
 
+  # dataframe with bayes factors
+  bf_results <-
+    dplyr::tibble(bf10 = meta_res$BF["random_H1", "random_H0"]) %>%
+    bf_formatter(.)
+
   # prepare the Bayes factor message
   bf_text <-
     substitute(
@@ -958,7 +963,7 @@ bf_meta <- function(data,
       ),
       env = list(
         top.text = caption,
-        bf = specify_decimal_p(x = log(meta_res$BF["random_H0", "random_H1"]), k = k),
+        bf = specify_decimal_p(x = bf_results$log_e_bf01[[1]], k = k),
         d.pmean = specify_decimal_p(x = df_estimates$mean[[1]], k = k),
         d.pmean.LB = specify_decimal_p(x = df_estimates$hpd95_lower[[1]], k = k),
         d.pmean.UB = specify_decimal_p(x = df_estimates$hpd95_upper[[1]], k = k)

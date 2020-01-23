@@ -667,13 +667,13 @@ testthat::test_that(
     # getting bayes factor in favor of null hypothesis
     set.seed(123)
     subtitle1 <-
-      statsExpressions::bf_meta(
+      suppressWarnings(statsExpressions::bf_meta(
         data = df1,
         k = 3,
         messages = TRUE,
-        iter = 2000,
+        iter = 1000,
         summarize = "integrate"
-      )
+      ))
 
     testthat::expect_identical(
       subtitle1,

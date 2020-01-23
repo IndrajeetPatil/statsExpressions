@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Expressions with Statistical Details
-Version: 0.2.1
+Version: 0.2.1.9000
 Authors@R: 
     c(person(given = "Indrajeet",
              family = "Patil",
@@ -59,4 +59,4 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.0.2.9000

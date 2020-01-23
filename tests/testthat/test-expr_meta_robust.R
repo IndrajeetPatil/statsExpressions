@@ -11,7 +11,11 @@ testthat::test_that(
     library(metaplus)
 
     # renaming to what `statsExpressions` expects
-    df <- dplyr::rename(mag, estimate = yi, std.error = sei)
+    set.seed(123)
+    df <-
+      mag %>%
+      dplyr::rename(., estimate = yi, std.error = sei) %>%
+      dplyr::sample_frac(., 0.4)
 
     # subtitle
     set.seed(123)
@@ -35,21 +39,21 @@ testthat::test_that(
           ", ",
           italic("p"),
           " = ",
-          "5e-04",
+          "0.0230",
           ", ",
           widehat(beta),
           " = ",
-          "-0.7463",
+          "-0.6930",
           ", CI"["95%"],
           " [",
-          "-1.2583",
+          "-1.5596",
           ", ",
-          "-0.3428",
+          "-0.1180",
           "]",
           ", ",
           italic("n")["effects"],
           " = ",
-          16L
+          6L
         )
       )
     )

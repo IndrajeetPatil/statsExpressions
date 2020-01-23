@@ -30,7 +30,7 @@ Package | Status | Usage | GitHub | References
 [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/) | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/) | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Github Issues](https://img.shields.io/badge/issues-`r itdepends:::get_github_info("statsExpressions")$open_issues[[1]]`-red.svg)](https://github.com/IndrajeetPatil/statsExpressions/issues) | [![vignettes](https://img.shields.io/badge/vignettes-0.2.1-orange.svg?colorB=FF5722)](https://CRAN.R-project.org/package=statsExpressions/vignettes/)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/statsExpressions/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/statsExpressions?branch=master) | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/statsExpressions.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/statsExpressions) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2074621.svg)](https://doi.org/10.5281/zenodo.3386122)
 [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html) | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master) | [![HitCount](http://hits.dwyl.io/IndrajeetPatil/statsExpressions.svg)](http://hits.dwyl.io/IndrajeetPatil/statsExpressions) | [![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master) | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master)
-[![status](https://tinyverse.netlify.com/badge/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions) | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_01_22-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/blob/master/tests/README.md) | [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/statsExpressions/community) | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/statsExpressions/issues)
+[![status](https://tinyverse.netlify.com/badge/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions) | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_01_23-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/blob/master/tests/README.md) | [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/statsExpressions/community) | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/statsExpressions/issues)
 
 # Introduction
 
@@ -198,7 +198,10 @@ library(ggplot2)
 library(hrbrthemes)
 
 # create a plot
-p <- ggplot(ToothGrowth, aes(supp, len)) + geom_boxplot() + theme_ipsum_rc()
+p <-
+  ggplot(ToothGrowth, aes(supp, len)) +
+  geom_boxplot() +
+  theme_ipsum_rc()
 
 # adding a subtitle with
 p + labs(
@@ -219,7 +222,8 @@ library(ggplot2)
 library(statsExpressions)
 
 # create a boxplot
-ggplot(iris, aes(x = Species, y = Sepal.Length)) + geom_boxplot() +
+ggplot(iris, aes(x = Species, y = Sepal.Length)) +
+  geom_boxplot() +
   labs(
     title = "Welch's ANOVA",
     subtitle = expr_anova_parametric(iris, Species, Sepal.Length, messages = FALSE)
@@ -237,7 +241,8 @@ library(statsExpressions)
 library(ggridges)
 
 # create a ridgeplot
-p <- ggplot(iris, aes(x = Sepal.Length, y = Species)) +
+p <-
+  ggplot(iris, aes(x = Sepal.Length, y = Species)) +
   geom_density_ridges(
     jittered_points = TRUE, quantile_lines = TRUE,
     scale = 0.9, vline_size = 1, vline_color = "red",
@@ -265,7 +270,8 @@ library(ggplot2)
 library(statsExpressions)
 
 # create a ridgeplot
-p <- ggplot(mtcars, aes(x = mpg, y = wt)) +
+p <-
+  ggplot(mtcars, aes(x = mpg, y = wt)) +
   geom_point() +
   geom_smooth(method = "lm")
 
@@ -292,7 +298,8 @@ df <- as.data.frame(table(mpg$class))
 colnames(df) <- c("class", "freq")
 
 # basic pie chart
-p <- ggplot(df, aes(x = "", y = freq, fill = factor(class))) +
+p <-
+  ggplot(df, aes(x = "", y = freq, fill = factor(class))) +
   geom_bar(width = 1, stat = "identity") +
   theme(
     axis.line = element_blank(),
@@ -343,11 +350,11 @@ viz_forest(
   xlab = "Cohen's d",
   variant = "thick",
   type = "cumulative"
-) + # use `statsExpressions` to create expression containing results 
+) + # use `statsExpressions` to create expression containing results
   labs(
     title = "Meta-analysis of Pietschnig, Voracek, and Formann (2010) on the Mozart effect",
     subtitle = expr_meta_parametric(df, k = 3)
-  ) + 
+  ) +
   theme(text = element_text(size = 12))
 ```
 
