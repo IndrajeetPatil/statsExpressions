@@ -366,7 +366,7 @@ expr_meta_robust <- function(data,
 #'   # additional arguments given to `metaBMA`
 #'   iter = 5000,
 #'   summarize = "integrate",
-#'   control = list(adapt_delta = 0.99,  max_treedepth = 15)
+#'   control = list(adapt_delta = 0.99, max_treedepth = 15)
 #' )
 #' }
 #' @export
@@ -385,6 +385,8 @@ expr_meta_bayes <- function(data,
   subtitle <-
     bf_meta(
       data = data,
+      d = d,
+      tau = tau,
       k = k,
       caption = NULL,
       output = "h1",
