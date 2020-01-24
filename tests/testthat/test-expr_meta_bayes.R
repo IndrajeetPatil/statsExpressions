@@ -38,37 +38,15 @@ testthat::test_that(
     # subtitle
     set.seed(123)
     results1 <-
-      suppressWarnings(expr_meta_bayes(
+      capture.output(suppressWarnings(expr_meta_bayes(
         data = df1,
         k = 3,
         messages = TRUE,
-        iter = 1000,
-        summarize = "integrate"
-      ))
+        iter = 1000
+      )))
 
     # test
-    testthat::expect_identical(
-      results1,
-      ggplot2::expr(atop(
-        displaystyle(NULL),
-        expr = paste(
-          "In favor of alternative: ",
-          "log"["e"],
-          "(BF"["10"],
-          ") = ",
-          "3.341",
-          ", ",
-          italic("d")["mean"]^"posterior",
-          " = ",
-          "0.514",
-          ", CI"["95%"],
-          " [",
-          "0.220",
-          ", ",
-          "0.761",
-          "]"
-        )
-      ))
-    )
+    testthat::expect_identical(results1[8], "  random_H0       1.0    0.0354")
+    testthat::expect_identical(results1[9], "  random_H1      28.2    1.0000")
   }
 )
