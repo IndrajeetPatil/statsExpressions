@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Prepare caption with expression for Bayes Factor results — bf_expr • statsExpressions</title>
+<title>Formatting numeric (<em>p</em>-)values — specify_decimal_p • statsExpressions</title>
 
 
 <!-- jquery -->
@@ -43,9 +43,14 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Prepare caption with expression for Bayes Factor results — bf_expr" />
-<meta property="og:description" content="Convenience function to write a caption message with bayes
-factors in favor of the null hypothesis." />
+<meta property="og:title" content="Formatting numeric (<em>p</em>-)values — specify_decimal_p" />
+<meta property="og:description" content="Function to format an R object for pretty printing with a
+specified (k) number of decimal places. The function also allows really
+small p-values to be denoted as &quot;p &amp;lt; 0.001&quot; rather than &quot;p = 0.000&quot;.
+Note that if p.value is set to TRUE, the minimum value of k allowed
+is 3. If k is set to less than 3, the function will ignore entered k
+value and use k = 3 instead. Important: This function is not
+vectorized." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -138,90 +143,58 @@ factors in favor of the null hypothesis." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Prepare caption with expression for Bayes Factor results</h1>
-    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/helpers_bf_tests.R'><code>R/helpers_bf_tests.R</code></a></small>
-    <div class="hidden name"><code>bf_expr.Rd</code></div>
+    <h1>Formatting numeric (<em>p</em>-)values</h1>
+    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/specify_decimal_p.R'><code>R/specify_decimal_p.R</code></a></small>
+    <div class="hidden name"><code>specify_decimal_p.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Convenience function to write a caption message with bayes
-factors in favor of the null hypothesis.</p>
+    <p>Function to format an R object for pretty printing with a
+specified (<code>k</code>) number of decimal places. The function also allows really
+small <em>p</em>-values to be denoted as <code>"p &lt; 0.001"</code> rather than <code>"p = 0.000"</code>.
+Note that if <code>p.value</code> is set to <code>TRUE</code>, the minimum value of <code>k</code> allowed
+is <code>3</code>. If <code>k</code> is set to less than 3, the function will ignore entered <code>k</code>
+value and use <code>k = 3</code> instead. <strong>Important</strong>: This function is not
+vectorized.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>bf_expr</span>(<span class='no'>bf.df</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"null"</span>, <span class='kw'>caption</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>specify_decimal_p</span>(<span class='no'>x</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>bf.df</th>
-      <td><p>A dataframe containing two columns <code>log_e_bf01</code> (for evidence in
-favor of null hypothesis) and <code>bf.prior</code>. If dataframe contains more than
-two rows, only the first row will be used.</p></td>
+      <th>x</th>
+      <td><p>A numeric value.</p></td>
     </tr>
     <tr>
       <th>k</th>
       <td><p>Number of digits after decimal point (should be an integer)
-(Default: <code>k = 2</code>).</p></td>
+(Default: <code>k = 3</code>).</p></td>
     </tr>
     <tr>
-      <th>output</th>
-      <td><p>Can either be <code>"null"</code> (or <code>"caption"</code> or <code>"H0"</code> or <code>"h0"</code>),
-which will return expression with evidence in favor of the null hypothesis,
-or <code>"alternative"</code> (or <code>"title"</code> or <code>"H1"</code> or <code>"h1"</code>), which will return
-expression with evidence in favor of the alternative hypothesis, or
-<code>"results"</code>, which will return a dataframe with results all the details).</p></td>
-    </tr>
-    <tr>
-      <th>caption</th>
-      <td><p>Text to display as caption (will be displayed on top of the
-Bayes Factor caption/message).</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments (ignored).</p></td>
+      <th>p.value</th>
+      <td><p>Decides whether the number is a <em>p</em>-value (Default: <code>FALSE</code>).</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Formatted numeric value.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='co'># for reproducibility</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
-
-<span class='co'># dataframe containing results</span>
-<span class='no'>bf.df</span> <span class='kw'>&lt;-</span>
-  <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/statsExpressions//reference/bf_extractor.html'>bf_extractor</a></span>(<span class='kw pkg'>BayesFactor</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/BayesFactor/man/correlationBF.html'>correlationBF</a></span>(
-    <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>iris</span>$<span class='no'>Sepal.Length</span>,
-    <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>iris</span>$<span class='no'>Petal.Length</span>
-  )) <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>.data</span> <span class='kw'>=</span> <span class='no'>.</span>, <span class='kw'>bf.prior</span> <span class='kw'>=</span> <span class='fl'>0.707</span>)
-
-<span class='co'># creating caption (for null)</span>
-<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/statsExpressions//reference/bf_expr.html'>bf_expr</a></span>(
-  <span class='kw'>bf.df</span> <span class='kw'>=</span> <span class='no'>bf.df</span>,
-  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"null"</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>,
-  <span class='kw'>caption</span> <span class='kw'>=</span> <span class='st'>"Note: Iris dataset"</span>
-)</div><div class='output co'>#&gt; atop(displaystyle("Note: Iris dataset"), expr = paste("In favor of null: ", 
-#&gt;     "log"["e"], "(BF"["01"], ") = ", "-99.770", ", ", italic("r")["Cauchy"]^"JZS", 
-#&gt;     " = ", "0.707"))</div><div class='input'>
-<span class='co'># creating caption (for alternative)</span>
-<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/statsExpressions//reference/bf_expr.html'>bf_expr</a></span>(
-  <span class='kw'>bf.df</span> <span class='kw'>=</span> <span class='no'>bf.df</span>,
-  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"alternative"</span>
-)</div><div class='output co'>#&gt; atop(displaystyle(NULL), expr = paste("In favor of alternative: ", 
-#&gt;     "log"["e"], "(BF"["10"], ") = ", "99.77", ", ", italic("r")["Cauchy"]^"JZS", 
-#&gt;     " = ", "0.71"))</div><div class='input'># }
-</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>specify_decimal_p</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0.00001</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "&lt; 0.001"</div><div class='input'><span class='fu'>specify_decimal_p</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0.008</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "0.008"</div><div class='input'><span class='fu'>specify_decimal_p</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0.008</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] "0.008"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
+    <h2>Author</h2>
+    <p>Indrajeet Patil</p>
   </div>
 </div>
 

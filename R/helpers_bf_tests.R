@@ -57,7 +57,7 @@ bf_extractor <- function(bf.object, ...) {
 #' set.seed(123)
 #'
 #' # dataframe containing results
-#' bf_results <-
+#' bf.df <-
 #'   statsExpressions::bf_extractor(BayesFactor::correlationBF(
 #'     x = iris$Sepal.Length,
 #'     y = iris$Petal.Length
@@ -66,7 +66,7 @@ bf_extractor <- function(bf.object, ...) {
 #'
 #' # creating caption (for null)
 #' statsExpressions::bf_expr(
-#'   bf.df = bf_results,
+#'   bf.df = bf.df,
 #'   output = "null",
 #'   k = 3,
 #'   caption = "Note: Iris dataset"
@@ -74,7 +74,7 @@ bf_extractor <- function(bf.object, ...) {
 #'
 #' # creating caption (for alternative)
 #' statsExpressions::bf_expr(
-#'   bf.df = bf_results,
+#'   bf.df = bf.df,
 #'   output = "alternative"
 #' )
 #' }
@@ -190,7 +190,7 @@ bf_corr_test <- function(data,
   # ========================= subtitle preparation ==========================
 
   # extracting results from Bayesian test and creating a dataframe
-  bf_results <-
+  bf.df <-
     bf_extractor(
       BayesFactor::correlationBF(
         x = data %>% dplyr::pull({{ x }}),
@@ -206,7 +206,7 @@ bf_corr_test <- function(data,
   if (output != "results") {
     bf_message <-
       bf_expr(
-        bf.df = bf_results,
+        bf.df = bf.df,
         output = output,
         k = k,
         caption = caption
@@ -218,7 +218,7 @@ bf_corr_test <- function(data,
   # return the text results or the dataframe with results
   return(switch(
     EXPR = output,
-    "results" = bf_results,
+    "results" = bf.df,
     bf_message
   ))
 }
@@ -358,7 +358,7 @@ bf_contingency_tab <- function(data,
       )
 
     # extracting results from Bayesian test and creating a dataframe
-    bf_results <-
+    bf.df <-
       bf_extractor(
         BayesFactor::contingencyTableBF(
           x = table(
@@ -427,7 +427,7 @@ bf_contingency_tab <- function(data,
     pr_y_h1 <- BayesFactor::logMeanExpLogs(tmp_pr_h1)
 
     # computing Bayes Factor and formatting the results
-    bf_results <-
+    bf.df <-
       dplyr::tibble(bf10 = exp(pr_y_h1 - pr_y_h0)) %>%
       bf_formatter(.) %>%
       dplyr::mutate(.data = ., prior.concentration = prior.concentration)
@@ -438,11 +438,11 @@ bf_contingency_tab <- function(data,
   # changing aspects of the caption based on what output is needed
   if (output %in% c("null", "caption", "H0", "h0")) {
     hypothesis.text <- "In favor of null: "
-    bf.value <- bf_results$log_e_bf01[[1]]
+    bf.value <- bf.df$log_e_bf01[[1]]
     bf.subscript <- "01"
   } else {
     hypothesis.text <- "In favor of alternative: "
-    bf.value <- -bf_results$log_e_bf01[[1]]
+    bf.value <- -bf.df$log_e_bf01[[1]]
     bf.subscript <- "10"
   }
 
@@ -472,7 +472,7 @@ bf_contingency_tab <- function(data,
           bf.subscript = bf.subscript,
           bf = specify_decimal_p(x = bf.value, k = k),
           sampling.plan = sampling_plan_text,
-          a = specify_decimal_p(x = bf_results$prior.concentration[[1]], k = k)
+          a = specify_decimal_p(x = bf.df$prior.concentration[[1]], k = k)
         )
       )
   }
@@ -500,7 +500,7 @@ bf_contingency_tab <- function(data,
           top.text = caption,
           bf.subscript = bf.subscript,
           bf = specify_decimal_p(x = bf.value, k = k),
-          a = specify_decimal_p(x = bf_results$prior.concentration[[1]], k = k)
+          a = specify_decimal_p(x = bf.df$prior.concentration[[1]], k = k)
         )
       )
   }
@@ -510,7 +510,7 @@ bf_contingency_tab <- function(data,
   # return the text results or the dataframe with results
   return(switch(
     EXPR = output,
-    "results" = bf_results,
+    "results" = bf.df,
     bf_message
   ))
 }
@@ -675,7 +675,7 @@ bf_ttest <- function(data,
   }
 
   # extracting the Bayes factors
-  bf_results <-
+  bf.df <-
     bf_extractor(bf.object = bf_object) %>%
     dplyr::mutate(.data = ., bf.prior = bf.prior)
 
@@ -685,7 +685,7 @@ bf_ttest <- function(data,
   if (output != "results") {
     bf_message <-
       bf_expr(
-        bf.df = bf_results,
+        bf.df = bf.df,
         output = output,
         k = k,
         caption = caption
@@ -695,7 +695,7 @@ bf_ttest <- function(data,
   # return the text results or the dataframe with results
   return(switch(
     EXPR = output,
-    "results" = bf_results,
+    "results" = bf.df,
     bf_message
   ))
 }
@@ -790,7 +790,7 @@ bf_oneway_anova <- function(data,
       dplyr::mutate(.data = ., rowid = as.factor(rowid))
 
     # extracting results from Bayesian test (`y ~ x + id`) and creating a dataframe
-    bf_results <-
+    bf.df <-
       bf_extractor(BayesFactor::anovaBF(
         formula = rlang::new_formula(
           {{ rlang::enexpr(y) }}, rlang::expr(!!rlang::enexpr(x) + rowid)
@@ -812,7 +812,7 @@ bf_oneway_anova <- function(data,
     data %<>% tidyr::drop_na(.)
 
     # extracting results from Bayesian test and creating a dataframe
-    bf_results <-
+    bf.df <-
       bf_extractor(
         BayesFactor::anovaBF(
           formula = rlang::new_formula({{ y }}, {{ x }}),
@@ -831,7 +831,7 @@ bf_oneway_anova <- function(data,
   if (output != "results") {
     bf_message <-
       bf_expr(
-        bf.df = bf_results,
+        bf.df = bf.df,
         output = output,
         k = k,
         caption = caption
@@ -841,7 +841,7 @@ bf_oneway_anova <- function(data,
   # return the text results or the dataframe with results
   return(switch(
     EXPR = output,
-    "results" = bf_results,
+    "results" = bf.df,
     bf_message
   ))
 }
@@ -855,6 +855,7 @@ bf_oneway_anova <- function(data,
 #' @inherit metaBMA::meta_random return Description
 #'
 #' @inheritParams expr_meta_parametric
+#' @inheritParams bf_expr
 #' @inheritParams metaBMA::meta_random
 #' @inheritDotParams metaBMA::meta_random -y -SE
 #'
@@ -894,7 +895,9 @@ bf_oneway_anova <- function(data,
 #'   data = df,
 #'   k = 3,
 #'   iter = 1500,
-#'   messages = TRUE
+#'   messages = TRUE,
+#'   # customizing analysis with additional arguments
+#'   control = list(max_treedepth = 15)
 #' )
 #' }
 #'
@@ -905,6 +908,7 @@ bf_meta <- function(data,
                     d = prior("norm", c(mean = 0, sd = 0.3)),
                     tau = prior("invgamma", c(shape = 1, scale = 0.15)),
                     k = 2,
+                    output = "null",
                     caption = NULL,
                     messages = TRUE,
                     ...) {
@@ -935,18 +939,29 @@ bf_meta <- function(data,
     dplyr::filter(.data = ., term == "d")
 
   # dataframe with bayes factors
-  bf_results <-
+  bf.df <-
     dplyr::tibble(bf10 = meta_res$BF["random_H1", "random_H0"]) %>%
     bf_formatter(.)
+
+  # changing aspects of the caption based on what output is needed
+  if (output %in% c("null", "caption", "H0", "h0")) {
+    hypothesis.text <- "In favor of null: "
+    bf.value <- bf.df$log_e_bf01[[1]]
+    bf.subscript <- "01"
+  } else {
+    hypothesis.text <- "In favor of alternative: "
+    bf.value <- bf.df$log_e_bf10[[1]]
+    bf.subscript <- "10"
+  }
 
   # prepare the Bayes factor message
   bf_text <-
     substitute(
       atop(displaystyle(top.text),
         expr = paste(
-          "In favor of null: ",
+          hypothesis.text,
           "log"["e"],
-          "(BF"["01"],
+          "(BF"[bf.subscript],
           ") = ",
           bf,
           ", ",
@@ -962,8 +977,10 @@ bf_meta <- function(data,
         )
       ),
       env = list(
+        hypothesis.text = hypothesis.text,
         top.text = caption,
-        bf = specify_decimal_p(x = bf_results$log_e_bf01[[1]], k = k),
+        bf.subscript = bf.subscript,
+        bf = specify_decimal_p(x = bf.value, k = k),
         d.pmean = specify_decimal_p(x = df_estimates$mean[[1]], k = k),
         d.pmean.LB = specify_decimal_p(x = df_estimates$hpd95_lower[[1]], k = k),
         d.pmean.UB = specify_decimal_p(x = df_estimates$hpd95_upper[[1]], k = k)

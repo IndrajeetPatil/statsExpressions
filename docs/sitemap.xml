@@ -52,6 +52,9 @@
     <loc>https://indrajeetpatil.github.io/statsExpressions//reference/expr_corr_test.html</loc>
   </url>
   <url>
+    <loc>https://indrajeetpatil.github.io/statsExpressions//reference/expr_meta_bayes.html</loc>
+  </url>
+  <url>
     <loc>https://indrajeetpatil.github.io/statsExpressions//reference/expr_meta_parametric.html</loc>
   </url>
   <url>
@@ -95,6 +98,9 @@
   </url>
   <url>
     <loc>https://indrajeetpatil.github.io/statsExpressions//reference/robcor_ci.html</loc>
+  </url>
+  <url>
+    <loc>https://indrajeetpatil.github.io/statsExpressions//reference/specify_decimal_p.html</loc>
   </url>
   <url>
     <loc>https://indrajeetpatil.github.io/statsExpressions//reference/t1way_ci.html</loc>

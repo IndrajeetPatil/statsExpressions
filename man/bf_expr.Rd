@@ -35,7 +35,7 @@ factors in favor of the null hypothesis.
 set.seed(123)
 
 # dataframe containing results
-bf_results <-
+bf.df <-
   statsExpressions::bf_extractor(BayesFactor::correlationBF(
     x = iris$Sepal.Length,
     y = iris$Petal.Length
@@ -44,7 +44,7 @@ bf_results <-
 
 # creating caption (for null)
 statsExpressions::bf_expr(
-  bf.df = bf_results,
+  bf.df = bf.df,
   output = "null",
   k = 3,
   caption = "Note: Iris dataset"
@@ -52,7 +52,7 @@ statsExpressions::bf_expr(
 
 # creating caption (for alternative)
 statsExpressions::bf_expr(
-  bf.df = bf_results,
+  bf.df = bf.df,
   output = "alternative"
 )
 }

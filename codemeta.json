@@ -208,19 +208,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "groupedstats",
-      "name": "groupedstats",
-      "version": ">= 0.1.1",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=groupedstats"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "metaBMA",
       "name": "metaBMA",
       "version": ">= 0.6.2",
@@ -309,6 +296,19 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=rlang"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "sjstats",
+      "name": "sjstats",
+      "version": ">= 0.17.7",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=sjstats"
     },
     {
       "@type": "SoftwareApplication",

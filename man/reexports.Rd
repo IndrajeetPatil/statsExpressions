@@ -3,10 +3,6 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
-\alias{specify_decimal_p}
-\alias{signif_column}
-\alias{lm_effsize_ci}
-\alias{set_cwd}
 \alias{\%>\%}
 \alias{\%<>\%}
 \alias{\%$\%}
@@ -23,8 +19,6 @@ below to see their documentation.
 
 \describe{
   \item{broomExtra}{\code{\link[broomExtra]{\%$\%}}, \code{\link[broomExtra]{\%<>\%}}, \code{\link[broomExtra]{\%>\%}}}
-
-  \item{groupedstats}{\code{\link[groupedstats]{lm_effsize_ci}}, \code{\link[groupedstats]{set_cwd}}, \code{\link[groupedstats]{signif_column}}, \code{\link[groupedstats]{specify_decimal_p}}}
 
   \item{rlang}{\code{\link[rlang]{\%|\%}}, \code{\link[rlang]{\%||\%}}}
 
