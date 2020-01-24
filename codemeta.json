@@ -301,7 +301,7 @@
       "@type": "SoftwareApplication",
       "identifier": "sjstats",
       "name": "sjstats",
-      "version": ">= 0.17.8",
+      "version": ">= 0.17.7",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",

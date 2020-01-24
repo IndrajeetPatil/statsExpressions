@@ -190,7 +190,7 @@ Bayes Factor caption/message).</p></td>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
 
 <span class='co'># dataframe containing results</span>
-<span class='no'>bf_results</span> <span class='kw'>&lt;-</span>
+<span class='no'>bf.df</span> <span class='kw'>&lt;-</span>
   <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/statsExpressions//reference/bf_extractor.html'>bf_extractor</a></span>(<span class='kw pkg'>BayesFactor</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/BayesFactor/man/correlationBF.html'>correlationBF</a></span>(
     <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>iris</span>$<span class='no'>Sepal.Length</span>,
     <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>iris</span>$<span class='no'>Petal.Length</span>
@@ -199,7 +199,7 @@ Bayes Factor caption/message).</p></td>
 
 <span class='co'># creating caption (for null)</span>
 <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/statsExpressions//reference/bf_expr.html'>bf_expr</a></span>(
-  <span class='kw'>bf.df</span> <span class='kw'>=</span> <span class='no'>bf_results</span>,
+  <span class='kw'>bf.df</span> <span class='kw'>=</span> <span class='no'>bf.df</span>,
   <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"null"</span>,
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>,
   <span class='kw'>caption</span> <span class='kw'>=</span> <span class='st'>"Note: Iris dataset"</span>
@@ -208,7 +208,7 @@ Bayes Factor caption/message).</p></td>
 #&gt;     " = ", "0.707"))</div><div class='input'>
 <span class='co'># creating caption (for alternative)</span>
 <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/statsExpressions//reference/bf_expr.html'>bf_expr</a></span>(
-  <span class='kw'>bf.df</span> <span class='kw'>=</span> <span class='no'>bf_results</span>,
+  <span class='kw'>bf.df</span> <span class='kw'>=</span> <span class='no'>bf.df</span>,
   <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"alternative"</span>
 )</div><div class='output co'>#&gt; atop(displaystyle(NULL), expr = paste("In favor of alternative: ", 
 #&gt;     "log"["e"], "(BF"["10"], ") = ", "99.77", ", ", italic("r")["Cauchy"]^"JZS", 

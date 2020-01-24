@@ -9,6 +9,7 @@ bf_meta(
   d = prior("norm", c(mean = 0, sd = 0.3)),
   tau = prior("invgamma", c(shape = 1, scale = 0.15)),
   k = 2,
+  output = "null",
   caption = NULL,
   messages = TRUE,
   ...
@@ -28,6 +29,12 @@ probability density function is defined via \code{\link[metaBMA]{prior}}.}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2}).}
+
+\item{output}{Character describing the desired output. If \code{"subtitle"}, a
+formatted subtitle with summary effect and statistical details will be
+returned, and if \code{"caption"}, expression containing details from model
+summary will be returned. The other option is to return \code{"tidy"} data frame
+with coefficients or \code{"glance"} dataframe with model summaries.}
 
 \item{caption}{Text to display as caption. This argument is relevant only
 when \code{output = "caption"}.}
@@ -106,7 +113,9 @@ bf_meta(
   data = df,
   k = 3,
   iter = 1500,
-  messages = TRUE
+  messages = TRUE,
+  # customizing analysis with additional arguments
+  control = list(max_treedepth = 15)
 )
 }
 
