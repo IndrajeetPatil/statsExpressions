@@ -57,14 +57,11 @@ reference:
     contents:
       - expr_template
       - long_to_wide_converter
+      - specify_decimal_p
 
   - title: Reexported functions
     desc:  Useful functions re-exported from other packages.
     contents:
-      - specify_decimal_p
-      - signif_column
-      - lm_effsize_ci
-      - set_cwd
       - "%>%"
       - "%<>%"
       - "%$%"

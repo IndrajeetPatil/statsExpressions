@@ -526,13 +526,16 @@
 <span id="cb6-4"><a href="#cb6-4"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(hrbrthemes)</span>
 <span id="cb6-5"><a href="#cb6-5"></a></span>
 <span id="cb6-6"><a href="#cb6-6"></a><span class="co"># create a plot</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a>p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(ToothGrowth, <span class="kw">aes</span>(supp, len)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme_ipsum_rc</span>()</span>
-<span id="cb6-8"><a href="#cb6-8"></a></span>
-<span id="cb6-9"><a href="#cb6-9"></a><span class="co"># adding a subtitle with</span></span>
-<span id="cb6-10"><a href="#cb6-10"></a>p <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(</span>
-<span id="cb6-11"><a href="#cb6-11"></a>  <span class="dt">title =</span> <span class="st">"Two-Sample Welch's t-test"</span>,</span>
-<span id="cb6-12"><a href="#cb6-12"></a>  <span class="dt">subtitle =</span> <span class="kw"><a href="reference/expr_t_parametric.html">expr_t_parametric</a></span>(ToothGrowth, supp, len)</span>
-<span id="cb6-13"><a href="#cb6-13"></a>)</span></code></pre></div>
+<span id="cb6-7"><a href="#cb6-7"></a>p &lt;-</span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="st">  </span><span class="kw">ggplot</span>(ToothGrowth, <span class="kw">aes</span>(supp, len)) <span class="op">+</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="st">  </span><span class="kw">theme_ipsum_rc</span>()</span>
+<span id="cb6-11"><a href="#cb6-11"></a></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co"># adding a subtitle with</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>p <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(</span>
+<span id="cb6-14"><a href="#cb6-14"></a>  <span class="dt">title =</span> <span class="st">"Two-Sample Welch's t-test"</span>,</span>
+<span id="cb6-15"><a href="#cb6-15"></a>  <span class="dt">subtitle =</span> <span class="kw"><a href="reference/expr_t_parametric.html">expr_t_parametric</a></span>(ToothGrowth, supp, len)</span>
+<span id="cb6-16"><a href="#cb6-16"></a>)</span></code></pre></div>
 <p><img src="reference/figures/README-example_t_two-1.png" width="100%"></p>
 </div>
 <div id="example-expressions-for-one-way-anova" class="section level2">
@@ -545,11 +548,12 @@
 <span id="cb7-4"><a href="#cb7-4"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(statsExpressions)</span>
 <span id="cb7-5"><a href="#cb7-5"></a></span>
 <span id="cb7-6"><a href="#cb7-6"></a><span class="co"># create a boxplot</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x =</span> Species, <span class="dt">y =</span> Sepal.Length)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a><span class="st">  </span><span class="kw">labs</span>(</span>
-<span id="cb7-9"><a href="#cb7-9"></a>    <span class="dt">title =</span> <span class="st">"Welch's ANOVA"</span>,</span>
-<span id="cb7-10"><a href="#cb7-10"></a>    <span class="dt">subtitle =</span> <span class="kw"><a href="reference/expr_anova_parametric.html">expr_anova_parametric</a></span>(iris, Species, Sepal.Length, <span class="dt">messages =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb7-11"><a href="#cb7-11"></a>  )</span></code></pre></div>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x =</span> Species, <span class="dt">y =</span> Sepal.Length)) <span class="op">+</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="st">  </span><span class="kw">labs</span>(</span>
+<span id="cb7-10"><a href="#cb7-10"></a>    <span class="dt">title =</span> <span class="st">"Welch's ANOVA"</span>,</span>
+<span id="cb7-11"><a href="#cb7-11"></a>    <span class="dt">subtitle =</span> <span class="kw"><a href="reference/expr_anova_parametric.html">expr_anova_parametric</a></span>(iris, Species, Sepal.Length, <span class="dt">messages =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb7-12"><a href="#cb7-12"></a>  )</span></code></pre></div>
 <p><img src="reference/figures/README-example_anova_parametric-1.png" width="100%"></p>
 <p>In case you change your mind and now want to carry out a robust ANOVA instead. Also, let’s use a different kind of a visualization:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># setup</span></span>
@@ -559,21 +563,22 @@
 <span id="cb8-5"><a href="#cb8-5"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggridges)</span>
 <span id="cb8-6"><a href="#cb8-6"></a></span>
 <span id="cb8-7"><a href="#cb8-7"></a><span class="co"># create a ridgeplot</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a>p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Species)) <span class="op">+</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a><span class="st">  </span><span class="kw">geom_density_ridges</span>(</span>
-<span id="cb8-10"><a href="#cb8-10"></a>    <span class="dt">jittered_points =</span> <span class="ot">TRUE</span>, <span class="dt">quantile_lines =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb8-11"><a href="#cb8-11"></a>    <span class="dt">scale =</span> <span class="fl">0.9</span>, <span class="dt">vline_size =</span> <span class="dv">1</span>, <span class="dt">vline_color =</span> <span class="st">"red"</span>,</span>
-<span id="cb8-12"><a href="#cb8-12"></a>    <span class="dt">position =</span> <span class="kw">position_raincloud</span>(<span class="dt">adjust_vlines =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb8-13"><a href="#cb8-13"></a>  )</span>
-<span id="cb8-14"><a href="#cb8-14"></a></span>
-<span id="cb8-15"><a href="#cb8-15"></a><span class="co"># create an expression containing details from the relevant test</span></span>
-<span id="cb8-16"><a href="#cb8-16"></a>results &lt;-<span class="st"> </span><span class="kw"><a href="reference/expr_anova_robust.html">expr_anova_robust</a></span>(iris, Species, Sepal.Length, <span class="dt">messages =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb8-17"><a href="#cb8-17"></a></span>
-<span id="cb8-18"><a href="#cb8-18"></a><span class="co"># display results on the plot</span></span>
-<span id="cb8-19"><a href="#cb8-19"></a>p <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(</span>
-<span id="cb8-20"><a href="#cb8-20"></a>  <span class="dt">title =</span> <span class="st">"A heteroscedastic one-way ANOVA for trimmed means"</span>,</span>
-<span id="cb8-21"><a href="#cb8-21"></a>  <span class="dt">subtitle =</span> results</span>
-<span id="cb8-22"><a href="#cb8-22"></a>)</span></code></pre></div>
+<span id="cb8-8"><a href="#cb8-8"></a>p &lt;-</span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="st">  </span><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Species)) <span class="op">+</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="st">  </span><span class="kw">geom_density_ridges</span>(</span>
+<span id="cb8-11"><a href="#cb8-11"></a>    <span class="dt">jittered_points =</span> <span class="ot">TRUE</span>, <span class="dt">quantile_lines =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb8-12"><a href="#cb8-12"></a>    <span class="dt">scale =</span> <span class="fl">0.9</span>, <span class="dt">vline_size =</span> <span class="dv">1</span>, <span class="dt">vline_color =</span> <span class="st">"red"</span>,</span>
+<span id="cb8-13"><a href="#cb8-13"></a>    <span class="dt">position =</span> <span class="kw">position_raincloud</span>(<span class="dt">adjust_vlines =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb8-14"><a href="#cb8-14"></a>  )</span>
+<span id="cb8-15"><a href="#cb8-15"></a></span>
+<span id="cb8-16"><a href="#cb8-16"></a><span class="co"># create an expression containing details from the relevant test</span></span>
+<span id="cb8-17"><a href="#cb8-17"></a>results &lt;-<span class="st"> </span><span class="kw"><a href="reference/expr_anova_robust.html">expr_anova_robust</a></span>(iris, Species, Sepal.Length, <span class="dt">messages =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb8-18"><a href="#cb8-18"></a></span>
+<span id="cb8-19"><a href="#cb8-19"></a><span class="co"># display results on the plot</span></span>
+<span id="cb8-20"><a href="#cb8-20"></a>p <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(</span>
+<span id="cb8-21"><a href="#cb8-21"></a>  <span class="dt">title =</span> <span class="st">"A heteroscedastic one-way ANOVA for trimmed means"</span>,</span>
+<span id="cb8-22"><a href="#cb8-22"></a>  <span class="dt">subtitle =</span> results</span>
+<span id="cb8-23"><a href="#cb8-23"></a>)</span></code></pre></div>
 <p><img src="reference/figures/README-example_anova-1.png" width="100%"></p>
 </div>
 <div id="example-expressions-for-correlation-analysis" class="section level2">
@@ -586,18 +591,19 @@
 <span id="cb9-4"><a href="#cb9-4"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(statsExpressions)</span>
 <span id="cb9-5"><a href="#cb9-5"></a></span>
 <span id="cb9-6"><a href="#cb9-6"></a><span class="co"># create a ridgeplot</span></span>
-<span id="cb9-7"><a href="#cb9-7"></a>p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> wt)) <span class="op">+</span></span>
-<span id="cb9-8"><a href="#cb9-8"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
-<span id="cb9-9"><a href="#cb9-9"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">"lm"</span>)</span>
-<span id="cb9-10"><a href="#cb9-10"></a></span>
-<span id="cb9-11"><a href="#cb9-11"></a><span class="co"># create an expression containing details from the relevant test</span></span>
-<span id="cb9-12"><a href="#cb9-12"></a>results &lt;-<span class="st"> </span><span class="kw"><a href="reference/expr_corr_test.html">expr_corr_test</a></span>(mtcars, mpg, wt, <span class="dt">type =</span> <span class="st">"nonparametric"</span>)</span>
-<span id="cb9-13"><a href="#cb9-13"></a></span>
-<span id="cb9-14"><a href="#cb9-14"></a><span class="co"># display results on the plot</span></span>
-<span id="cb9-15"><a href="#cb9-15"></a>p <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(</span>
-<span id="cb9-16"><a href="#cb9-16"></a>  <span class="dt">title =</span> <span class="st">"Spearman's rank correlation coefficient"</span>,</span>
-<span id="cb9-17"><a href="#cb9-17"></a>  <span class="dt">subtitle =</span> results</span>
-<span id="cb9-18"><a href="#cb9-18"></a>)</span></code></pre></div>
+<span id="cb9-7"><a href="#cb9-7"></a>p &lt;-</span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="st">  </span><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> mpg, <span class="dt">y =</span> wt)) <span class="op">+</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">"lm"</span>)</span>
+<span id="cb9-11"><a href="#cb9-11"></a></span>
+<span id="cb9-12"><a href="#cb9-12"></a><span class="co"># create an expression containing details from the relevant test</span></span>
+<span id="cb9-13"><a href="#cb9-13"></a>results &lt;-<span class="st"> </span><span class="kw"><a href="reference/expr_corr_test.html">expr_corr_test</a></span>(mtcars, mpg, wt, <span class="dt">type =</span> <span class="st">"nonparametric"</span>)</span>
+<span id="cb9-14"><a href="#cb9-14"></a></span>
+<span id="cb9-15"><a href="#cb9-15"></a><span class="co"># display results on the plot</span></span>
+<span id="cb9-16"><a href="#cb9-16"></a>p <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(</span>
+<span id="cb9-17"><a href="#cb9-17"></a>  <span class="dt">title =</span> <span class="st">"Spearman's rank correlation coefficient"</span>,</span>
+<span id="cb9-18"><a href="#cb9-18"></a>  <span class="dt">subtitle =</span> results</span>
+<span id="cb9-19"><a href="#cb9-19"></a>)</span></code></pre></div>
 <p><img src="reference/figures/README-example_corr-1.png" width="100%"></p>
 </div>
 <div id="example-expressions-for-contingency-table-analysis" class="section level2">
@@ -613,25 +619,26 @@
 <span id="cb10-8"><a href="#cb10-8"></a><span class="kw"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(df) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"class"</span>, <span class="st">"freq"</span>)</span>
 <span id="cb10-9"><a href="#cb10-9"></a></span>
 <span id="cb10-10"><a href="#cb10-10"></a><span class="co"># basic pie chart</span></span>
-<span id="cb10-11"><a href="#cb10-11"></a>p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="st">""</span>, <span class="dt">y =</span> freq, <span class="dt">fill =</span> <span class="kw"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(class))) <span class="op">+</span></span>
-<span id="cb10-12"><a href="#cb10-12"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>, <span class="dt">stat =</span> <span class="st">"identity"</span>) <span class="op">+</span></span>
-<span id="cb10-13"><a href="#cb10-13"></a><span class="st">  </span><span class="kw">theme</span>(</span>
-<span id="cb10-14"><a href="#cb10-14"></a>    <span class="dt">axis.line =</span> <span class="kw">element_blank</span>(),</span>
-<span id="cb10-15"><a href="#cb10-15"></a>    <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="fl">0.5</span>)</span>
-<span id="cb10-16"><a href="#cb10-16"></a>  )</span>
-<span id="cb10-17"><a href="#cb10-17"></a></span>
-<span id="cb10-18"><a href="#cb10-18"></a><span class="co"># cleaning up the chart and adding results from one-sample proportion test</span></span>
-<span id="cb10-19"><a href="#cb10-19"></a>p <span class="op">+</span></span>
-<span id="cb10-20"><a href="#cb10-20"></a><span class="st">  </span><span class="kw">coord_polar</span>(<span class="dt">theta =</span> <span class="st">"y"</span>, <span class="dt">start =</span> <span class="dv">0</span>) <span class="op">+</span></span>
-<span id="cb10-21"><a href="#cb10-21"></a><span class="st">  </span><span class="kw">labs</span>(</span>
-<span id="cb10-22"><a href="#cb10-22"></a>    <span class="dt">fill =</span> <span class="st">"class"</span>,</span>
-<span id="cb10-23"><a href="#cb10-23"></a>    <span class="dt">x =</span> <span class="ot">NULL</span>,</span>
-<span id="cb10-24"><a href="#cb10-24"></a>    <span class="dt">y =</span> <span class="ot">NULL</span>,</span>
-<span id="cb10-25"><a href="#cb10-25"></a>    <span class="dt">title =</span> <span class="st">"Pie Chart of class"</span>,</span>
-<span id="cb10-26"><a href="#cb10-26"></a>    <span class="dt">subtitle =</span> <span class="kw"><a href="reference/expr_contingency_tab.html">expr_onesample_proptest</a></span>(df, class, <span class="dt">counts =</span> freq),</span>
-<span id="cb10-27"><a href="#cb10-27"></a>    <span class="dt">caption =</span> <span class="st">"One-sample goodness of fit proportion test"</span></span>
-<span id="cb10-28"><a href="#cb10-28"></a>  )</span>
-<span id="cb10-29"><a href="#cb10-29"></a><span class="co">#&gt; Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.</span></span></code></pre></div>
+<span id="cb10-11"><a href="#cb10-11"></a>p &lt;-</span>
+<span id="cb10-12"><a href="#cb10-12"></a><span class="st">  </span><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="st">""</span>, <span class="dt">y =</span> freq, <span class="dt">fill =</span> <span class="kw"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(class))) <span class="op">+</span></span>
+<span id="cb10-13"><a href="#cb10-13"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>, <span class="dt">stat =</span> <span class="st">"identity"</span>) <span class="op">+</span></span>
+<span id="cb10-14"><a href="#cb10-14"></a><span class="st">  </span><span class="kw">theme</span>(</span>
+<span id="cb10-15"><a href="#cb10-15"></a>    <span class="dt">axis.line =</span> <span class="kw">element_blank</span>(),</span>
+<span id="cb10-16"><a href="#cb10-16"></a>    <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="fl">0.5</span>)</span>
+<span id="cb10-17"><a href="#cb10-17"></a>  )</span>
+<span id="cb10-18"><a href="#cb10-18"></a></span>
+<span id="cb10-19"><a href="#cb10-19"></a><span class="co"># cleaning up the chart and adding results from one-sample proportion test</span></span>
+<span id="cb10-20"><a href="#cb10-20"></a>p <span class="op">+</span></span>
+<span id="cb10-21"><a href="#cb10-21"></a><span class="st">  </span><span class="kw">coord_polar</span>(<span class="dt">theta =</span> <span class="st">"y"</span>, <span class="dt">start =</span> <span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb10-22"><a href="#cb10-22"></a><span class="st">  </span><span class="kw">labs</span>(</span>
+<span id="cb10-23"><a href="#cb10-23"></a>    <span class="dt">fill =</span> <span class="st">"class"</span>,</span>
+<span id="cb10-24"><a href="#cb10-24"></a>    <span class="dt">x =</span> <span class="ot">NULL</span>,</span>
+<span id="cb10-25"><a href="#cb10-25"></a>    <span class="dt">y =</span> <span class="ot">NULL</span>,</span>
+<span id="cb10-26"><a href="#cb10-26"></a>    <span class="dt">title =</span> <span class="st">"Pie Chart of class"</span>,</span>
+<span id="cb10-27"><a href="#cb10-27"></a>    <span class="dt">subtitle =</span> <span class="kw"><a href="reference/expr_contingency_tab.html">expr_onesample_proptest</a></span>(df, class, <span class="dt">counts =</span> freq),</span>
+<span id="cb10-28"><a href="#cb10-28"></a>    <span class="dt">caption =</span> <span class="st">"One-sample goodness of fit proportion test"</span></span>
+<span id="cb10-29"><a href="#cb10-29"></a>  )</span>
+<span id="cb10-30"><a href="#cb10-30"></a><span class="co">#&gt; Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.</span></span></code></pre></div>
 <p><img src="reference/figures/README-example_contingency-1.png" width="100%"></p>
 <p>You can also use these function to get the expression in return without having to display them in plots:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># setup</span></span>
@@ -664,11 +671,11 @@
 <span id="cb12-13"><a href="#cb12-13"></a>  <span class="dt">xlab =</span> <span class="st">"Cohen's d"</span>,</span>
 <span id="cb12-14"><a href="#cb12-14"></a>  <span class="dt">variant =</span> <span class="st">"thick"</span>,</span>
 <span id="cb12-15"><a href="#cb12-15"></a>  <span class="dt">type =</span> <span class="st">"cumulative"</span></span>
-<span id="cb12-16"><a href="#cb12-16"></a>) <span class="op">+</span><span class="st"> </span><span class="co"># use `statsExpressions` to create expression containing results </span></span>
+<span id="cb12-16"><a href="#cb12-16"></a>) <span class="op">+</span><span class="st"> </span><span class="co"># use `statsExpressions` to create expression containing results</span></span>
 <span id="cb12-17"><a href="#cb12-17"></a><span class="st">  </span><span class="kw">labs</span>(</span>
 <span id="cb12-18"><a href="#cb12-18"></a>    <span class="dt">title =</span> <span class="st">"Meta-analysis of Pietschnig, Voracek, and Formann (2010) on the Mozart effect"</span>,</span>
 <span id="cb12-19"><a href="#cb12-19"></a>    <span class="dt">subtitle =</span> <span class="kw"><a href="reference/expr_meta_parametric.html">expr_meta_parametric</a></span>(df, <span class="dt">k =</span> <span class="dv">3</span>)</span>
-<span id="cb12-20"><a href="#cb12-20"></a>  ) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb12-20"><a href="#cb12-20"></a>  ) <span class="op">+</span></span>
 <span id="cb12-21"><a href="#cb12-21"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>))</span></code></pre></div>
 <p><img src="reference/figures/README-example_metaanalysis-1.png" width="100%"></p>
 </div>

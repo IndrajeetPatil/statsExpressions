@@ -30,9 +30,8 @@
 #'
 #' @importFrom dplyr select rename matches
 #' @importFrom rlang !! enquo eval_tidy expr ensym
-#' @importFrom stats lm oneway.test na.omit
+#' @importFrom stats aov oneway.test na.omit
 #' @importFrom ez ezANOVA
-#' @importFrom groupedstats lm_effsize_standardizer
 #'
 #' @examples
 #' \donttest{
@@ -236,7 +235,7 @@ expr_anova_parametric <- function(data,
 
     # creating a standardized dataframe with effect size and its CIs
     effsize_object <-
-      stats::lm(
+      stats::aov(
         formula = rlang::new_formula({{ y }}, {{ x }}),
         data = data,
         na.action = na.omit
@@ -245,12 +244,12 @@ expr_anova_parametric <- function(data,
 
   # creating a standardized dataframe with effect size and its CIs
   effsize_df <-
-    groupedstats::lm_effsize_standardizer(
-      object = effsize_object,
+    aov_effsize(
+      model = effsize_object,
       effsize = effsize,
       partial = partial,
-      conf.level = conf.level,
-      nboot = nboot
+      ci = conf.level,
+      iterations = nboot
     )
 
   # preparing subtitle

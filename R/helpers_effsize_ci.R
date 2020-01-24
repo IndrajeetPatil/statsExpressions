@@ -596,3 +596,61 @@ extract_boot_output <- function(bootobj, fit, conf.type, conf.level) {
     return(results_df %>% dplyr::rename(.data = ., conf.low = V4, conf.high = V5))
   }
 }
+
+#' @name aov_effsize
+#' @title Effect sizes and their CIs for `aov` objects
+#'
+#' @importFrom sjstats eta_sq omega_sq
+#' @importFrom dplyr rename rename_all filter
+#' @importFrom rlang exec
+#'
+#' @keywords internal
+#' @noRd
+
+aov_effsize <- function(model,
+                        effsize = "eta",
+                        partial = TRUE,
+                        ci = 0.95,
+                        iterations = 100) {
+
+  # function to compute effect sizes
+  if (effsize == "eta") {
+    .f <- sjstats::eta_sq
+  } else {
+    .f <- sjstats::omega_sq
+  }
+
+  # computing effect size
+  rlang::exec(
+    .fn = .f,
+    model = model,
+    partial = partial,
+    ci.lvl = ci,
+    n = iterations
+  ) %>%
+    tibble::as_tibble(.) %>%
+    dplyr::rename_all(
+      .tbl = .,
+      .funs = tolower
+    ) %>% # renaming the effect size to standard term 'estimate'
+    dplyr::rename(.data = ., estimate = dplyr::matches("eta|omega")) %>%
+    dplyr::rename_all(
+      .tbl = .,
+      .funs = ~ gsub(
+        x = .,
+        pattern = "_",
+        replacement = "."
+      )
+    ) %>%
+    dplyr::rename_all(
+      .tbl = .,
+      .funs = dplyr::recode,
+      parameter = "term",
+      ci.low = "conf.low",
+      ci.high = "conf.high"
+    ) %>%
+    dplyr::filter(.data = ., !is.na(estimate)) %>%
+    dplyr::filter(
+      .data = ., !grepl(pattern = "Residuals", x = term, ignore.case = TRUE)
+    )
+}
