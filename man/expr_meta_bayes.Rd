@@ -87,7 +87,7 @@ expr_meta_bayes(
   # additional arguments given to `metaBMA`
   iter = 5000,
   summarize = "integrate",
-  control = list(adapt_delta = 0.99,  max_treedepth = 15)
+  control = list(adapt_delta = 0.99, max_treedepth = 15)
 )
 }
 }

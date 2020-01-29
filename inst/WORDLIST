@@ -80,8 +80,10 @@ svg
 testthat
 tibble
 uk
+vectorized
 versicolor
 virginica
+warmup
 Welch
 Welch's
 Welch’s

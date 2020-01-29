@@ -7,4 +7,5 @@
 
 0 errors | 0 warnings | 0 notes
 
+- Prepares `statsExpressions` for the next release of `ggstatsplot`.
 

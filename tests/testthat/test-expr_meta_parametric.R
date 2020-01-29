@@ -8,7 +8,7 @@ testthat::test_that(
     testthat::skip_if(getRversion() < "3.6")
 
     # dataframe
-    df <-
+    df_eg <-
       tibble::tribble(
         ~estimate, ~std.error,
         0.111, 0.05,
@@ -22,7 +22,7 @@ testthat::test_that(
     set.seed(123)
     using_function1 <-
       expr_meta_parametric(
-        data = df,
+        data = df_eg,
         k = 4,
         messages = FALSE,
         output = "subtitle"
@@ -32,7 +32,7 @@ testthat::test_that(
     set.seed(123)
     using_function2 <-
       expr_meta_parametric(
-        data = df,
+        data = df_eg,
         k = 2,
         caption = "this is caption",
         messages = FALSE,
@@ -104,14 +104,14 @@ testthat::test_that(
     set.seed(123)
     tidy_df <-
       expr_meta_parametric(
-        data = df,
+        data = df_eg,
         messages = FALSE,
         output = "tidy"
       )
 
     glance_df <-
       expr_meta_parametric(
-        data = df,
+        data = df_eg,
         messages = FALSE,
         output = "glance"
       )
