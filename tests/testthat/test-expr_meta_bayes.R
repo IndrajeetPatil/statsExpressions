@@ -6,7 +6,6 @@ testthat::test_that(
   desc = "expr_meta_bayes works",
   code = {
     testthat::skip_if(getRversion() < "3.6")
-    testthat::skip_if(.Platform$OS.type == "macOS")
 
     # setup
     set.seed(123)
@@ -16,8 +15,12 @@ testthat::test_that(
     df1 <-
       structure(
         .Data = list(
-          term = c("1", "2", "3", "4", "5"),
           estimate = c(
+            0.382047603321706,
+            0.780783111514665,
+            0.425607573765058,
+            0.558365541235078,
+            0.956473848429961,
             0.382047603321706,
             0.780783111514665,
             0.425607573765058,
@@ -29,10 +32,15 @@ testthat::test_that(
             0.0330218199731529,
             0.0362834986178494,
             0.0480571500648261,
+            0.062215818388157,
+            0.0465576338644502,
+            0.0330218199731529,
+            0.0362834986178494,
+            0.0480571500648261,
             0.062215818388157
           )
         ),
-        row.names = c(NA, -5L),
+        row.names = c(NA, -10L),
         class = c("tbl_df", "tbl", "data.frame")
       )
 
@@ -47,7 +55,7 @@ testthat::test_that(
       )))
 
     # test
-    testthat::expect_identical(results1[8], "  random_H0       1.0    0.0354")
-    testthat::expect_identical(results1[9], "  random_H1      28.2    1.0000")
+    testthat::expect_identical(results1[8], "  random_H0         1  0.000234")
+    testthat::expect_identical(results1[9], "  random_H1      4269  1.000000")
   }
 )
