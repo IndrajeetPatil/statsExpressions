@@ -1,4 +1,3 @@
-context("expr_anova_robust")
 
 # between-subjects -------------------------------------------------------
 

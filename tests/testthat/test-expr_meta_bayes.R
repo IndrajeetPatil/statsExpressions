@@ -6,6 +6,7 @@ testthat::test_that(
   desc = "expr_meta_bayes works",
   code = {
     testthat::skip_if(getRversion() < "3.6")
+    testthat::skip_if(.Platform$OS.type == "macOS")
 
     # setup
     set.seed(123)

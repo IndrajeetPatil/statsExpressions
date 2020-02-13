@@ -1,3 +1,5 @@
+# statsExpressions 0.3.0.9000
+
 # statsExpressions 0.3.0
 
 NEW FEATURES

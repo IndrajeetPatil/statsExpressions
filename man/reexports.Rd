@@ -3,14 +3,18 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
+\alias{specify_decimal_p}
+\alias{signif_column}
+\alias{set_cwd}
+\alias{long_to_wide_converter}
 \alias{\%>\%}
 \alias{\%<>\%}
 \alias{\%$\%}
+\alias{\%<-\%}
 \alias{\%||\%}
 \alias{\%|\%}
 \alias{tibble}
 \alias{as_tibble}
-\alias{\%<-\%}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -18,12 +22,10 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{broomExtra}{\code{\link[broomExtra]{\%$\%}}, \code{\link[broomExtra]{\%<>\%}}, \code{\link[broomExtra]{\%>\%}}}
+  \item{ipmisc}{\code{\link[ipmisc]{\%$\%}}, \code{\link[ipmisc]{\%<-\%}}, \code{\link[ipmisc]{\%<>\%}}, \code{\link[ipmisc]{\%>\%}}, \code{\link[ipmisc]{long_to_wide_converter}}, \code{\link[ipmisc]{set_cwd}}, \code{\link[ipmisc]{signif_column}}, \code{\link[ipmisc]{specify_decimal_p}}}
 
   \item{rlang}{\code{\link[rlang]{\%|\%}}, \code{\link[rlang]{\%||\%}}}
 
   \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{tibble}}}
-
-  \item{zeallot}{\code{\link[zeallot]{\%<-\%}}}
 }}
 
