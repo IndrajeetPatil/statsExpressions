@@ -297,24 +297,18 @@ expr_meta_robust <- function(data,
     }
 
   # preparing the subtitle
-  subtitle <-
-    expr_template(
-      stat.title = "Summary effect: ",
-      stats.df = df_tidy,
-      effsize.df = df_tidy,
-      statistic.text = quote(italic("z")),
-      effsize.text = quote(widehat(beta)),
-      n = nrow(data),
-      n.text = quote(italic("n")["effects"]),
-      no.parameters = 0L,
-      conf.level = 0.95,
-      k = k
-    )
-
-  #---------------------------- output ---------------------------------------
-
-  # what needs to be returned?
-  return(subtitle)
+  expr_template(
+    stat.title = "Summary effect: ",
+    stats.df = df_tidy,
+    effsize.df = df_tidy,
+    statistic.text = quote(italic("z")),
+    effsize.text = quote(widehat(beta)),
+    n = nrow(data),
+    n.text = quote(italic("n")["effects"]),
+    no.parameters = 0L,
+    conf.level = 0.95,
+    k = k
+  )
 }
 
 #' @name expr_meta_bayes
@@ -382,19 +376,15 @@ expr_meta_bayes <- function(data,
   meta_data_check(data)
 
   # bayes factor results
-  subtitle <-
-    bf_meta(
-      data = data,
-      d = d,
-      tau = tau,
-      k = k,
-      caption = NULL,
-      output = "h1",
-      messages = messages
-    )
-
-  # return the subtitle
-  return(subtitle)
+  bf_meta(
+    data = data,
+    d = d,
+    tau = tau,
+    k = k,
+    caption = NULL,
+    output = "h1",
+    messages = messages
+  )
 }
 
 #' @noRd
@@ -404,9 +394,9 @@ meta_data_check <- function(data) {
   if (sum(c("estimate", "std.error") %in% names(data)) != 2) {
     # inform the user that skipping labels for the same reason
     stop(message(cat(
-      crayon::red("Error"),
-      crayon::blue(": The dataframe must contain the following two columns:\n"),
-      crayon::blue("`estimate` and `std.error`."),
+      ipmisc::red("Error"),
+      ipmisc::blue(": The dataframe must contain the following two columns:\n"),
+      ipmisc::blue("`estimate` and `std.error`."),
       sep = ""
     )),
     call. = FALSE

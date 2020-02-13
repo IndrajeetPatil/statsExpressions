@@ -137,9 +137,9 @@ expr_contingency_tab <- function(data,
     if (nlevels(data %>% dplyr::pull({{ y }}))[[1]] == 1L) {
       # display message
       message(cat(
-        crayon::red("Error: "),
-        crayon::blue("Row variable 'y' contains less than 2 levels.\n"),
-        crayon::blue("Chi-squared test can't be run; no subtitle displayed."),
+        ipmisc::red("Error: "),
+        ipmisc::blue("Row variable 'y' contains less than 2 levels.\n"),
+        ipmisc::blue("Chi-squared test can't be run; no subtitle displayed."),
         sep = ""
       ))
 

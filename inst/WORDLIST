@@ -62,11 +62,14 @@ mrc
 nd
 Noncentral
 normals
+noticable
 NumGenre
 onesample
 pb
+pearson
 pearson's
 plotmath
+ps
 psy
 rcompanion
 Rdoc
@@ -80,7 +83,7 @@ svg
 testthat
 tibble
 uk
-vectorized
+unadjusted
 versicolor
 virginica
 warmup

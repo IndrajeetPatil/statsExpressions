@@ -56,8 +56,7 @@ reference:
   - title: Helper functions
     contents:
       - expr_template
-      - long_to_wide_converter
-      - specify_decimal_p
+      - corr_objects
 
   - title: Reexported functions
     desc:  Useful functions re-exported from other packages.
@@ -67,8 +66,11 @@ reference:
       - "%$%"
       - "%||%"
       - "%|%"
+      - "%<-%"
       - tibble
       - as_tibble
+      - long_to_wide_converter
+      - specify_decimal_p
 
   - title: Data
     desc:  Datasets included in the package.

@@ -29,7 +29,6 @@
 #' @importFrom dplyr select bind_rows summarize mutate mutate_at mutate_if
 #' @importFrom dplyr group_by n arrange
 #' @importFrom WRS2 onesampb
-#' @importFrom crayon green blue yellow red
 #' @importFrom rcompanion wilcoxonOneSampleR
 #'
 #' @examples

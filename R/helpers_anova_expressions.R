@@ -153,9 +153,9 @@ expr_anova_parametric <- function(data,
 
       # inform the user
       message(cat(
-        crayon::red("Warning: "),
-        crayon::blue("No. of factor levels is greater than no. of observations per cell.\n"),
-        crayon::blue("No sphericity correction applied. Interpret the results with caution.\n")
+        ipmisc::red("Warning: "),
+        ipmisc::blue("No. of factor levels is greater than no. of observations per cell.\n"),
+        ipmisc::blue("No sphericity correction applied. Interpret the results with caution.\n")
       ),
       sep = ""
       )

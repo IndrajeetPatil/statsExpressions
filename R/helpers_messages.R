@@ -4,6 +4,8 @@
 #'
 #' @inheritParams t1way_ci
 #'
+#' @importFrom ipmisc green yellow blue red
+#'
 #' @family helper_messages
 #'
 #' @keywords internal
@@ -11,11 +13,11 @@
 # displaying message about bootstrap
 effsize_ci_message <- function(nboot = 100, conf.level = 0.95) {
   message(cat(
-    crayon::green("Note:"),
-    crayon::yellow(paste(conf.level * 100, "%", sep = "")),
-    crayon::blue("CI for effect size estimate was computed with"),
-    crayon::yellow(nboot),
-    crayon::blue("bootstrap samples.\n")
+    ipmisc::green("Note:"),
+    ipmisc::yellow(paste(conf.level * 100, "%", sep = "")),
+    ipmisc::blue("CI for effect size estimate was computed with"),
+    ipmisc::yellow(nboot),
+    ipmisc::blue("bootstrap samples.\n")
   ),
   sep = ""
   )
