@@ -16,7 +16,7 @@
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/statsExpressions/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.3.0.9000",
+  "version": "0.3.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -133,7 +133,6 @@
       "@type": "SoftwareApplication",
       "identifier": "BayesFactor",
       "name": "BayesFactor",
-      "version": ">= 0.9.12-4.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -171,7 +170,6 @@
       "@type": "SoftwareApplication",
       "identifier": "dplyr",
       "name": "dplyr",
-      "version": ">= 0.8.3",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -184,7 +182,6 @@
       "@type": "SoftwareApplication",
       "identifier": "ez",
       "name": "ez",
-      "version": ">= 4.4-0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -204,13 +201,12 @@
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://github.com/IndrajeetPatil/ipmisc"
+      "sameAs": "https://CRAN.R-project.org/package=ipmisc"
     },
     {
       "@type": "SoftwareApplication",
       "identifier": "metaBMA",
       "name": "metaBMA",
-      "version": ">= 0.6.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -223,7 +219,6 @@
       "@type": "SoftwareApplication",
       "identifier": "metafor",
       "name": "metafor",
-      "version": ">= 2.1-0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -236,7 +231,6 @@
       "@type": "SoftwareApplication",
       "identifier": "metaplus",
       "name": "metaplus",
-      "version": ">= 0.7-11",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -249,7 +243,6 @@
       "@type": "SoftwareApplication",
       "identifier": "psych",
       "name": "psych",
-      "version": ">= 1.9.12.31",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -262,7 +255,6 @@
       "@type": "SoftwareApplication",
       "identifier": "purrr",
       "name": "purrr",
-      "version": ">= 0.3.3",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -275,7 +267,6 @@
       "@type": "SoftwareApplication",
       "identifier": "rcompanion",
       "name": "rcompanion",
-      "version": ">= 2.3.21",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -288,7 +279,6 @@
       "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
-      "version": ">= 0.4.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -301,7 +291,6 @@
       "@type": "SoftwareApplication",
       "identifier": "sjstats",
       "name": "sjstats",
-      "version": ">= 0.17.7",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -319,7 +308,6 @@
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
-      "version": ">= 2.1.3",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -332,7 +320,6 @@
       "@type": "SoftwareApplication",
       "identifier": "tidyr",
       "name": "tidyr",
-      "version": ">= 1.0.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -345,7 +332,6 @@
       "@type": "SoftwareApplication",
       "identifier": "WRS2",
       "name": "WRS2",
-      "version": ">= 1.0-0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
