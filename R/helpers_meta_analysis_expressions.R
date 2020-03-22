@@ -314,7 +314,7 @@ expr_meta_robust <- function(data,
 #' @name expr_meta_bayes
 #' @title Making expression containing Bayesian random-effects meta-analysis.
 #'
-#' @inheritParams bf_meta
+#' @inheritParams tidyBF::bf_meta
 #'
 #' @examples
 #' \donttest{
@@ -376,7 +376,7 @@ expr_meta_bayes <- function(data,
   meta_data_check(data)
 
   # bayes factor results
-  bf_meta(
+  tidyBF::bf_meta(
     data = data,
     d = d,
     tau = tau,

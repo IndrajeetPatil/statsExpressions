@@ -56,20 +56,10 @@ reference:
   - title: Helper functions
     contents:
       - expr_template
-      - corr_objects
 
   - title: Reexported functions
     desc:  Useful functions re-exported from other packages.
     contents:
-      - "%>%"
-      - "%<>%"
-      - "%$%"
-      - "%||%"
-      - "%|%"
-      - "%<-%"
-      - tibble
-      - as_tibble
-      - long_to_wide_converter
       - specify_decimal_p
 
   - title: Data

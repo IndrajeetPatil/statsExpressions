@@ -69,7 +69,7 @@ when \code{output = "caption"}.}
     \item{\code{measure}}{character string indicating the type of data supplied to the function. When \code{measure="GEN"} (default), the observed effect sizes or outcomes and corresponding sampling variances (or standard errors) should be supplied to the function via the \code{yi}, \code{vi}, and \code{sei} arguments (only one of the two, \code{vi} or \code{sei}, needs to be specified). Alternatively, one can set \code{measure} to one of the effect size or outcome measures described under the documentation for the \code{\link[metafor]{escalc}} function and specify the needed data via the appropriate arguments.}
     \item{\code{intercept}}{logical indicating whether an intercept should be added to the model (the default is \code{TRUE}). Ignored when \code{mods} is a formula.}
     \item{\code{slab}}{optional vector with labels for the \eqn{k} studies.}
-    \item{\code{subset}}{optional vector indicating the subset of studies that should be used for the analysis. This can be a logical vector of length \eqn{k} or a numeric vector indicating the indices of the observations to include.}
+    \item{\code{subset}}{optional (logical or numeric) vector indicating the subset of studies that should be used for the analysis.}
     \item{\code{add}}{see the documentation of the \code{\link[metafor]{escalc}} function.}
     \item{\code{to}}{see the documentation of the \code{\link[metafor]{escalc}} function.}
     \item{\code{drop00}}{see the documentation of the \code{\link[metafor]{escalc}} function.}
@@ -78,7 +78,7 @@ when \code{output = "caption"}.}
     \item{\code{weighted}}{logical indicating whether weighted (default) or unweighted estimation should be used to fit the model.}
     \item{\code{test}}{character string specifying how test statistics and confidence intervals for the fixed effects should be computed. By default (\code{test="z"}), Wald-type tests and CIs are obtained, which are based on a standard normal distribution. When \code{test="knha"}, the method by Knapp and Hartung (2003) is used for adjusting test statistics and confidence intervals. See \sQuote{Details}.}
     \item{\code{digits}}{integer specifying the number of decimal places to which the printed results should be rounded (if unspecified, the default is 4).}
-    \item{\code{btt}}{optional vector of indices specifying which coefficients to include in the omnibus test of moderators. See \sQuote{Details}.}
+    \item{\code{btt}}{optional vector of indices specifying which coefficients to include in the omnibus test of moderators. Can also be a string to grep for. See \sQuote{Details}.}
     \item{\code{verbose}}{logical indicating whether output should be generated on the progress of the model fitting (the default is \code{FALSE}). Can also be an integer. Values > 1 generate more verbose output. See \sQuote{Note}.}
     \item{\code{control}}{optional list of control values for the iterative estimation algorithms. If unspecified, default values are defined inside the function. See \sQuote{Note}.}
   }}

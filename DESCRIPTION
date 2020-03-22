@@ -1,24 +1,19 @@
 Type: Package
 Package: statsExpressions
 Title: Expressions with Statistical Details
-Version: 0.3.1
+Version: 0.4.0.9000
 Authors@R: 
     c(person(given = "Indrajeet",
              family = "Patil",
              role = c("cre", "aut", "ctb"),
              email = "patilindrajeet.science@gmail.com",
-             comment = c(ORCID = "0000-0003-1995-6531")),
-      person(given = "Chuck",
-             family = "Powell",
-             role = "ctb",
-             email = "ibecav@gmail.com",
-             comment = c(ORCID = "0000-0002-3606-2188")))
+             comment = c(ORCID = "0000-0003-1995-6531")))
 Maintainer: Indrajeet Patil <patilindrajeet.science@gmail.com>
 Description: Statistical processing backend for 'ggstatsplot',
     this package creates expressions with details from statistical tests.
     Currently, it supports only the most common types of statistical
-    tests: parametric, nonparametric, robust, and bayesian versions of
-    t-test/anova, correlation analyses, contingency table analysis, and
+    tests: parametric, nonparametric, robust, and Bayesian versions of
+    t-test/ANOVA, correlation analyses, contingency table analysis, and
     meta-analysis.
 License: GPL-3 | file LICENSE
 URL: https://indrajeetpatil.github.io/statsExpressions,
@@ -28,22 +23,20 @@ BugReports:
 Depends: 
     R (>= 3.5.0)
 Imports:
-    BayesFactor,
     boot,
-    broomExtra (>= 1.0.1),
+    broomExtra,
     dplyr,
     ez,
-    ipmisc (>= 1.1.0),
-    metaBMA,
+    ipmisc,
     metafor,
     metaplus,
-    psych,
     purrr,
     rcompanion,
     rlang,
     sjstats,
     stats,
     tibble,
+    tidyBF (>= 0.1.0.9000),
     tidyr,
     WRS2
 Suggests:
@@ -52,10 +45,12 @@ Suggests:
     rmarkdown,
     spelling,
     testthat
+Remotes:
+    IndrajeetPatil/tidyBF
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.2.9000
+RoxygenNote: 7.1.0.9000

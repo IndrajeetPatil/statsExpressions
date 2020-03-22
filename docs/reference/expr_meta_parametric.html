@@ -11,12 +11,16 @@ results — expr_meta_parametric • statsExpressions</title>
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
@@ -36,7 +40,7 @@ results — expr_meta_parametric • statsExpressions</title>
 
 <!-- docsearch -->
 <script src="../docsearch.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
@@ -48,7 +52,6 @@ results — expr_meta_parametric • statsExpressions</title>
 results — expr_meta_parametric" />
 <meta property="og:description" content="This analysis is carried out using the metafor package. For
 more, see ?metafor::rma." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -66,7 +69,7 @@ more, see ?metafor::rma." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -80,7 +83,7 @@ more, see ?metafor::rma." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.3.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.4.0.9000</span>
       </span>
     </div>
 
@@ -105,9 +108,6 @@ more, see ?metafor::rma." />
     <li>
       <a href="../articles/stats_details.html">Test and effect size details</a>
     </li>
-    <li>
-      <a href="../articles/tests_and_coverage.html">Tests and Coverage</a>
-    </li>
   </ul>
 </li>
 <li>
@@ -116,7 +116,7 @@ more, see ?metafor::rma." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/IndrajeetPatil/statsExpressions">
+  <a href="https://github.com/IndrajeetPatil/statsExpressions/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -229,7 +229,7 @@ when <code>output = "caption"</code>.</p></td>
     <dt><code>measure</code></dt><dd><p>character string indicating the type of data supplied to the function. When <code>measure="GEN"</code> (default), the observed effect sizes or outcomes and corresponding sampling variances (or standard errors) should be supplied to the function via the <code>yi</code>, <code>vi</code>, and <code>sei</code> arguments (only one of the two, <code>vi</code> or <code>sei</code>, needs to be specified). Alternatively, one can set <code>measure</code> to one of the effect size or outcome measures described under the documentation for the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function and specify the needed data via the appropriate arguments.</p></dd>
     <dt><code>intercept</code></dt><dd><p>logical indicating whether an intercept should be added to the model (the default is <code>TRUE</code>). Ignored when <code>mods</code> is a formula.</p></dd>
     <dt><code>slab</code></dt><dd><p>optional vector with labels for the \(k\) studies.</p></dd>
-    <dt><code>subset</code></dt><dd><p>optional vector indicating the subset of studies that should be used for the analysis. This can be a logical vector of length \(k\) or a numeric vector indicating the indices of the observations to include.</p></dd>
+    <dt><code>subset</code></dt><dd><p>optional (logical or numeric) vector indicating the subset of studies that should be used for the analysis.</p></dd>
     <dt><code>add</code></dt><dd><p>see the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function.</p></dd>
     <dt><code>to</code></dt><dd><p>see the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function.</p></dd>
     <dt><code>drop00</code></dt><dd><p>see the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function.</p></dd>
@@ -238,7 +238,7 @@ when <code>output = "caption"</code>.</p></td>
     <dt><code>weighted</code></dt><dd><p>logical indicating whether weighted (default) or unweighted estimation should be used to fit the model.</p></dd>
     <dt><code>test</code></dt><dd><p>character string specifying how test statistics and confidence intervals for the fixed effects should be computed. By default (<code>test="z"</code>), Wald-type tests and CIs are obtained, which are based on a standard normal distribution. When <code>test="knha"</code>, the method by Knapp and Hartung (2003) is used for adjusting test statistics and confidence intervals. See &#8216;Details&#8217;.</p></dd>
     <dt><code>digits</code></dt><dd><p>integer specifying the number of decimal places to which the printed results should be rounded (if unspecified, the default is 4).</p></dd>
-    <dt><code>btt</code></dt><dd><p>optional vector of indices specifying which coefficients to include in the omnibus test of moderators. See &#8216;Details&#8217;.</p></dd>
+    <dt><code>btt</code></dt><dd><p>optional vector of indices specifying which coefficients to include in the omnibus test of moderators. Can also be a string to grep for. See &#8216;Details&#8217;.</p></dd>
     <dt><code>verbose</code></dt><dd><p>logical indicating whether output should be generated on the progress of the model fitting (the default is <code>FALSE</code>). Can also be an integer. Values &gt; 1 generate more verbose output. See &#8216;Note&#8217;.</p></dd>
     <dt><code>control</code></dt><dd><p>optional list of control values for the iterative estimation algorithms. If unspecified, default values are defined inside the function. See &#8216;Note&#8217;.</p></dd>
   
@@ -325,12 +325,9 @@ when <code>output = "caption"</code>.</p></td>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 

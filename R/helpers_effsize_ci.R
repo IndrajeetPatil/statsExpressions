@@ -15,7 +15,6 @@
 #'
 #' @importFrom rlang is_formula
 #' @importFrom stats t.test cor qt pt uniroot
-#' @importFrom tibble tibble
 #'
 #' @details
 #' References-

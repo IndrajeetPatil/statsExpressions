@@ -1,5 +1,3 @@
-context("expr_meta_bayes")
-
 # subtitle from meta-analysis -------------------------------------------
 
 testthat::test_that(
@@ -9,7 +7,6 @@ testthat::test_that(
 
     # setup
     set.seed(123)
-    library(metaBMA)
 
     # creating a dataframe
     df1 <-

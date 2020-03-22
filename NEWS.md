@@ -1,3 +1,10 @@
+# statsExpressions 0.4.0.9000
+
+  - All Bayes Factor related functions have now moved to the new `tidyBF`
+    package and are re-exported from there.
+  
+  - Removes the experimental `corr_objects` function.
+
 # statsExpressions 0.3.1
  
   - Adds a new function `corr_objects` to reduce dependency load of
@@ -36,6 +43,7 @@ MINOR CHANGES
 MAJOR CHANGES
 
   - Removes `MCMCpack` from `Depends`.
+  
   - All effect size texts now contain `^` on top to signify that these are
     estimates.
 

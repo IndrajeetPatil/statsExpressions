@@ -1,9 +1,9 @@
-pandoc: 2.9.1.1
+pandoc: 2.9.2
 pkgdown: 1.4.1.9000
-pkgdown_sha: 134033d9d744c548c6fbe297bc0fbd1a2f498e83
+pkgdown_sha: 705aafaa01d1a0145bee83b9cb7493ae9ddd3c40
 articles:
   stats_details: stats_details.html
-  tests_and_coverage: tests_and_coverage.html
+last_built: 2020-03-22T16:53Z
 urls:
   reference: https://indrajeetpatil.github.io/statsExpressions//reference
   article: https://indrajeetpatil.github.io/statsExpressions//articles

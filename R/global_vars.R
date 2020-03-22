@@ -207,7 +207,8 @@ utils::globalVariables(
     "den.df",
     "95% ci.lb",
     "95% ci.ub",
-    "z value"
+    "z value",
+    "prior"
   ),
   package = "statsExpressions",
   add = FALSE

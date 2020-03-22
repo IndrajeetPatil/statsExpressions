@@ -5,7 +5,7 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "statsExpressions",
-  "description": "Statistical processing backend for 'ggstatsplot',\n    this package creates expressions with details from statistical tests.\n    Currently, it supports only the most common types of statistical\n    tests: parametric, nonparametric, robust, and bayesian versions of\n    t-test/anova, correlation analyses, contingency table analysis, and\n    meta-analysis.",
+  "description": "Statistical processing backend for 'ggstatsplot',\n    this package creates expressions with details from statistical tests.\n    Currently, it supports only the most common types of statistical\n    tests: parametric, nonparametric, robust, and Bayesian versions of\n    t-test/ANOVA, correlation analyses, contingency table analysis, and\n    meta-analysis.",
   "name": "statsExpressions: Expressions with Statistical Details",
   "codeRepository": "https://github.com/IndrajeetPatil/statsExpressions",
   "relatedLink": [
@@ -16,14 +16,14 @@
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/statsExpressions/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.3.1",
+  "version": "0.4.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.6.2",
+    "version": "4.0.0",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.2 (2019-12-12)",
+  "runtimePlatform": "R Under development (unstable) (2020-02-28 r77874)",
   "author": [
     {
       "@type": "Person",
@@ -40,13 +40,6 @@
       "familyName": "Patil",
       "email": "patilindrajeet.science@gmail.com",
       "@id": "https://orcid.org/0000-0003-1995-6531"
-    },
-    {
-      "@type": "Person",
-      "givenName": "Chuck",
-      "familyName": "Powell",
-      "email": "ibecav@gmail.com",
-      "@id": "https://orcid.org/0000-0002-3606-2188"
     }
   ],
   "copyrightHolder": {},
@@ -131,18 +124,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "BayesFactor",
-      "name": "BayesFactor",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=BayesFactor"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "boot",
       "name": "boot",
       "provider": {
@@ -157,7 +138,6 @@
       "@type": "SoftwareApplication",
       "identifier": "broomExtra",
       "name": "broomExtra",
-      "version": ">= 1.0.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -194,7 +174,6 @@
       "@type": "SoftwareApplication",
       "identifier": "ipmisc",
       "name": "ipmisc",
-      "version": ">= 1.1.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -202,18 +181,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=ipmisc"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "metaBMA",
-      "name": "metaBMA",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=metaBMA"
     },
     {
       "@type": "SoftwareApplication",
@@ -238,18 +205,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=metaplus"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "psych",
-      "name": "psych",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=psych"
     },
     {
       "@type": "SoftwareApplication",
@@ -315,6 +270,19 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "tidyBF",
+      "name": "tidyBF",
+      "version": ">= 0.1.0.9000",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://github.com/IndrajeetPatil/tidyBF"
     },
     {
       "@type": "SoftwareApplication",

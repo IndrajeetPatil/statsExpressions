@@ -10,12 +10,16 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
@@ -35,7 +39,7 @@
 
 <!-- docsearch -->
 <script src="../docsearch.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
@@ -61,7 +65,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-index">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -75,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.3.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.4.0.9000</span>
       </span>
     </div>
 
@@ -100,9 +104,6 @@
     <li>
       <a href="../articles/stats_details.html">Test and effect size details</a>
     </li>
-    <li>
-      <a href="../articles/tests_and_coverage.html">Tests and Coverage</a>
-    </li>
   </ul>
 </li>
 <li>
@@ -111,7 +112,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/IndrajeetPatil/statsExpressions">
+  <a href="https://github.com/IndrajeetPatil/statsExpressions/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -153,6 +154,11 @@
           <p class="section-desc"><p>Functions to create expressions for one-sample t-tests</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
@@ -168,6 +174,11 @@ robust equivalents</p></td>
           <p class="section-desc"><p>Functions to create expressions for two-sample (both between-and within-subject designs) t-tests</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
@@ -207,6 +218,11 @@ robust equivalents</p></td>
           <p class="section-desc"><p>Functions to create expressions for one-way (both between-and within-subject designs) ANOVA</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
@@ -240,6 +256,11 @@ trimmed means</p></td>
           <p class="section-desc"><p>Functions to create expressions for correlation tests</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
@@ -254,6 +275,11 @@ trimmed means</p></td>
           <p class="section-desc"><p>Functions to create expressions for contingency table analysis and one-sample goodness of fit proportion test</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
@@ -268,6 +294,11 @@ trimmed means</p></td>
           <p class="section-desc"><p>Functions to create expressions for random-effects meta-analysis</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
@@ -296,49 +327,12 @@ results</p></td>
           <p class="section-desc"><p>Functions to extract Bayes Factor for various tests</p></p>
         </th>
       </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="bf_contingency_tab.html">bf_contingency_tab()</a></code> <code><a href="bf_contingency_tab.html">bf_onesample_proptest()</a></code> </p>
-        </td>
-        <td><p>Bayesian contingency table analysis</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="bf_corr_test.html">bf_corr_test()</a></code> </p>
-        </td>
-        <td><p>Bayesian correlation test.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="bf_expr.html">bf_expr()</a></code> </p>
-        </td>
-        <td><p>Prepare caption with expression for Bayes Factor results</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="bf_extractor.html">bf_extractor()</a></code> </p>
-        </td>
-        <td><p>Extract Bayes Factors from <code>BayesFactor</code> model object.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="bf_meta.html">bf_meta()</a></code> </p>
-        </td>
-        <td><p>Bayes factor message for random-effects meta-analysis</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="bf_oneway_anova.html">bf_oneway_anova()</a></code> </p>
-        </td>
-        <td><p>Bayesian one-way analysis of variance.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="bf_ttest.html">bf_ttest()</a></code> <code><a href="bf_ttest.html">bf_one_sample_ttest()</a></code> <code><a href="bf_ttest.html">bf_two_sample_ttest()</a></code> </p>
-        </td>
-        <td><p>Bayes Factor for <em>t</em>-test</p></td>
-      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      
     </tbody><tbody>
       <tr>
         <th colspan="2">
@@ -346,18 +340,17 @@ results</p></td>
           <p class="section-desc"></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
           <p><code><a href="expr_template.html">expr_template()</a></code> </p>
         </td>
         <td><p>Template for subtitles with statistical details for tests</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="corr_objects.html">corr_objects()</a></code> </p>
-        </td>
-        <td><p>Create all needed objects for correlation matrix.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -366,6 +359,11 @@ results</p></td>
           <p class="section-desc"><p>Useful functions re-exported from other packages.</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
@@ -380,6 +378,11 @@ results</p></td>
           <p class="section-desc"><p>Datasets included in the package.</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
@@ -428,19 +431,9 @@ results</p></td>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-expressions-for-one-sample-t-test">Expressions for one-sample t-test</a></li>
-      <li><a href="#section-expressions-for-two-sample-t-test">Expressions for two-sample t-test</a></li>
-      <li><a href="#section-expressions-for-one-way-anova">Expressions for one-way ANOVA</a></li>
-      <li><a href="#section-expressions-for-correlation-analysis">Expressions for correlation analysis</a></li>
-      <li><a href="#section-expressions-for-contingency-table-analysis">Expressions for contingency table analysis</a></li>
-      <li><a href="#section-expressions-for-meta-analysis">Expressions for meta-analysis</a></li>
-      <li><a href="#section-helper-functions-for-bayes-factor-tests">Helper functions for Bayes Factor tests</a></li>
-      <li><a href="#section-helper-functions">Helper functions</a></li>
-      <li><a href="#section-reexported-functions">Reexported functions</a></li>
-      <li><a href="#section-data">Data</a></li>
-    </ul>
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 

@@ -175,7 +175,7 @@ expr_t_parametric <- function(data,
 
 
 #' @title Making expression for Mann-Whitney *U*-test/Wilcoxon test results
-#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}, Chuck Powell
+#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
 #' @inheritParams expr_anova_parametric
 #' @inheritParams expr_t_parametric
@@ -184,7 +184,6 @@ expr_t_parametric <- function(data,
 #' @importFrom dplyr select
 #' @importFrom rlang !! enquo exec
 #' @importFrom stats wilcox.test
-#' @importFrom psych corr.test
 #' @importFrom rcompanion wilcoxonR wilcoxonPairedR
 #'
 #' @details For the two independent samples case, the Mann-Whitney *U*-test is
@@ -549,7 +548,7 @@ expr_t_robust <- function(data,
 #'
 #' @inheritParams expr_t_parametric
 #' @inheritParams expr_anova_parametric
-#' @inheritParams bf_ttest
+#' @inheritParams tidyBF::bf_ttest
 #'
 #' @examples
 #' \donttest{
@@ -599,7 +598,7 @@ expr_t_bayes <- function(data,
 
   # prepare subtitle
   subtitle <-
-    bf_ttest(
+    tidyBF::bf_ttest(
       data = data,
       x = {{ x }},
       y = {{ y }},

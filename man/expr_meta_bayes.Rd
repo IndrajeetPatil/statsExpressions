@@ -14,8 +14,10 @@ expr_meta_bayes(
 )
 }
 \arguments{
-\item{data}{data frame containing the variables for effect size \code{y},
-standard error \code{SE}, \code{labels}, and moderators per study.}
+\item{data}{A dataframe. It \strong{must} contain columns named \code{estimate} (effect
+sizes or outcomes)  and \code{std.error} (corresponding standard errors). These
+two columns will be used for \code{yi}  and \code{sei} arguments in \code{metafor::rma}
+(for parametric analysis) or \code{metaplus::metaplus} (for robust analysis).}
 
 \item{d}{\code{prior} distribution on the average effect size \code{d}. The
 prior probability density function is defined via \code{\link[metaBMA]{prior}}.}
@@ -31,14 +33,37 @@ probability density function is defined via \code{\link[metaBMA]{prior}}.}
 \item{messages}{Decides whether messages references, notes, and warnings are
 to be displayed (Default: \code{TRUE}).}
 
-\item{...}{further arguments passed to \code{rstan::sampling} (see
-\code{\link[rstan]{stanmodel-method-sampling}}). Relevant MCMC settings
-concern the number of warmup samples that are discarded
-(\code{warmup=500}), the total number of iterations per chain
-(\code{iter=2000}), the number of MCMC chains (\code{chains=4}), whether
-multiple cores should be used (\code{cores=4}), and control arguments that
-make the sampling in Stan more robust, for instance:
-\code{control=list(adapt_delta=.97)}.}
+\item{...}{
+  Arguments passed on to \code{\link[metaBMA:meta_random]{metaBMA::meta_random}}
+  \describe{
+    \item{\code{labels}}{optional: character values with study labels. Can be a
+character vector or the quoted or unquoted name of the variable in
+\code{data}}
+    \item{\code{rscale_contin}}{scale parameter of the JZS prior for the continuous
+covariates.}
+    \item{\code{rscale_discrete}}{scale parameter of the JZS prior for discrete
+moderators.}
+    \item{\code{centering}}{whether continuous moderators are centered.}
+    \item{\code{logml}}{how to estimate the log-marginal likelihood: either by numerical
+integration (\code{"integrate"}) or by bridge sampling using MCMC/Stan
+samples (\code{"stan"}). To obtain high precision with \code{logml="stan"},
+many MCMC samples are required (e.g., \code{logml_iter=10000, warmup=1000}).}
+    \item{\code{summarize}}{how to estimate parameter summaries (mean, median, SD,
+etc.): Either by numerical integration (\code{summarize = "integrate"}) or
+based on MCMC/Stan samples (\code{summarize = "stan"}).}
+    \item{\code{ci}}{probability for the credibility/highest-density intervals.}
+    \item{\code{rel.tol}}{relative tolerance used for numerical integration using
+\code{\link[stats]{integrate}}. Use \code{rel.tol=.Machine$double.eps} for
+maximal precision (however, this might be slow).}
+    \item{\code{logml_iter}}{number of iterations (per chain) from the posterior
+distribution of \code{d} and \code{tau}. The samples are used for computing
+the marginal likelihood of the random-effects model with bridge sampling
+(if \code{logml="stan"}) and for obtaining parameter estimates (if
+\code{summarize="stan"}). Note that the argument \code{iter=2000} controls
+the number of iterations for estimation of the random-effect parameters per
+study in random-effects meta-analysis.}
+    \item{\code{silent_stan}}{whether to suppress the Stan progress bar.}
+  }}
 }
 \description{
 Making expression containing Bayesian random-effects meta-analysis.

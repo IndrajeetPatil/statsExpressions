@@ -16,7 +16,7 @@
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams t1way_ci
 #' @inheritParams expr_t_parametric
-#' @inheritParams bf_corr_test
+#' @inheritParams tidyBF::bf_corr_test
 #' @inheritParams expr_anova_parametric
 #'
 #' @return Expression containing results from a one-sample test. The exact test
@@ -260,7 +260,7 @@ expr_t_onesample <- function(data,
   # running Bayesian one-sample t-test
   if (stats.type == "bayes") {
     subtitle <-
-      bf_one_sample_ttest(
+      tidyBF::bf_one_sample_ttest(
         data = data,
         x = {{ x }},
         test.value = test.value,

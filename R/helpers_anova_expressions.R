@@ -705,7 +705,7 @@ expr_anova_bayes <- function(data,
 
   # bayes factor results
   subtitle <-
-    bf_oneway_anova(
+    tidyBF::bf_oneway_anova(
       data = data,
       x = {{ x }},
       y = {{ y }},

@@ -41,7 +41,7 @@
 #'
 #' @importFrom dplyr select mutate rename filter
 #' @importFrom rlang !! enquo as_name ensym exec
-#' @importFrom tibble tribble as_tibble
+#' @importFrom tibble tribble
 #' @importFrom tidyr uncount drop_na
 #' @importFrom stats mcnemar.test chisq.test
 #' @importFrom rcompanion cramerV cohenG cramerVFit

@@ -11,12 +11,16 @@ robust equivalents — expr_t_onesample • statsExpressions</title>
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
@@ -36,7 +40,7 @@ robust equivalents — expr_t_onesample • statsExpressions</title>
 
 <!-- docsearch -->
 <script src="../docsearch.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
@@ -48,7 +52,6 @@ robust equivalents — expr_t_onesample • statsExpressions</title>
 robust equivalents — expr_t_onesample" />
 <meta property="og:description" content="Expression for one sample t-test and its non-parametric and
 robust equivalents" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -66,7 +69,7 @@ robust equivalents" />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -80,7 +83,7 @@ robust equivalents" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.3.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.4.0.9000</span>
       </span>
     </div>
 
@@ -105,9 +108,6 @@ robust equivalents" />
     <li>
       <a href="../articles/stats_details.html">Test and effect size details</a>
     </li>
-    <li>
-      <a href="../articles/tests_and_coverage.html">Tests and Coverage</a>
-    </li>
   </ul>
 </li>
 <li>
@@ -116,7 +116,7 @@ robust equivalents" />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/IndrajeetPatil/statsExpressions">
+  <a href="https://github.com/IndrajeetPatil/statsExpressions/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -195,8 +195,8 @@ or <code>"robust"</code> or <code>"bayes"</code>).Corresponding abbreviations ar
     </tr>
     <tr>
       <th>bf.prior</th>
-      <td><p>A numeric value between <code>0.5</code> and <code>2</code> (default <code>0.707</code>), the
-prior width to use in calculating Bayes Factors.</p></td>
+      <td><p>A number between <code>0.5</code> and <code>2</code> (default <code>0.707</code>), the prior
+width to use in calculating Bayes factors.</p></td>
     </tr>
     <tr>
       <th>robust.estimator</th>
@@ -271,7 +271,7 @@ argument.</p>
 
 <span class='co'># ----------------------- parametric ---------------------------------------</span>
 
-<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/statsExpressions//reference/expr_t_onesample.html'>expr_t_onesample</a></span>(
+<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_onesample</span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>brainwt</span>,
   <span class='kw'>test.value</span> <span class='kw'>=</span> <span class='fl'>0.275</span>,
@@ -282,7 +282,7 @@ argument.</p>
 #&gt;     " = ", 56L)</div><div class='input'>
 <span class='co'># ----------------------- non-parametric -----------------------------------</span>
 
-<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/statsExpressions//reference/expr_t_onesample.html'>expr_t_onesample</a></span>(
+<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_onesample</span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>brainwt</span>,
   <span class='kw'>test.value</span> <span class='kw'>=</span> <span class='fl'>0.275</span>,
@@ -294,7 +294,7 @@ argument.</p>
 #&gt;     " = ", 56L)</div><div class='input'>
 <span class='co'># ----------------------- robust --------------------------------------------</span>
 
-<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/statsExpressions//reference/expr_t_onesample.html'>expr_t_onesample</a></span>(
+<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_onesample</span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>brainwt</span>,
   <span class='kw'>test.value</span> <span class='kw'>=</span> <span class='fl'>0.275</span>,
@@ -305,7 +305,7 @@ argument.</p>
 #&gt;     ", ", italic("n")["obs"], " = ", 56L)</div><div class='input'>
 <span class='co'># ----------------------- Bayes Factor -----------------------------------</span>
 
-<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/statsExpressions//reference/expr_t_onesample.html'>expr_t_onesample</a></span>(
+<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_onesample</span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>brainwt</span>,
   <span class='kw'>test.value</span> <span class='kw'>=</span> <span class='fl'>0.275</span>,
@@ -317,16 +317,9 @@ argument.</p>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#references">References</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p><a href='https://github.com/IndrajeetPatil'>Indrajeet Patil</a></p>
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
