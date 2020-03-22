@@ -48,8 +48,8 @@ health.
 
 Effect size | Small | Medium | Large | Range
 ---- | ---------- | ---------- | ---------- | ---------- 
-Cohen's *d* | 0 – < 0.20 | 0.20 – < 0.50 | ≥ 0.80 | [0,1]  
-Hedge's *g* | 0 – < 0.20 | 0.20 – < 0.50 | ≥ 0.80 | [0,1] 
+Cohen's *d* | 0 – < 0.20 | 0.20 – < 0.50 | ≥ 0.80 | [-Inf,Inf]  
+Hedge's *g* | 0 – < 0.20 | 0.20 – < 0.50 | ≥ 0.80 | [-Inf,Inf]  
 
 ## non-parametric
 
@@ -108,8 +108,8 @@ $\xi$ | 0.10 – < 0.30 | 0.30 – < 0.50 | ≥ 0.50 | [0,1]
 
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | -------
-Cohen's *d* | 0.20 | 0.50 | 0.80 | [0,1]
-Hedge's *g* | 0.20 | 0.50 | 0.80 | [0,1]
+Cohen's *d* | 0.20 | 0.50 | 0.80 | [-Inf,Inf]
+Hedge's *g* | 0.20 | 0.50 | 0.80 | [-Inf,Inf]
 
 ### non-parametric
 
@@ -301,4 +301,3 @@ If you find any bugs or have any suggestions/remarks, please file an issue on Gi
 
 For details, see-
 <https://indrajeetpatil.github.io/ggstatsplot/articles/web_only/session_info.html>
-

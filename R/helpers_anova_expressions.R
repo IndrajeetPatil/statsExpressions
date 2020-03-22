@@ -208,7 +208,7 @@ expr_anova_parametric <- function(data,
 
   if (isFALSE(paired)) {
     # remove NAs listwise for between-subjects design
-    data %<>% tidyr::drop_na(data = .)
+    data %<>% tidyr::drop_na(.)
 
     # sample size
     sample_size <- nrow(data)
@@ -252,31 +252,27 @@ expr_anova_parametric <- function(data,
       iterations = nboot
     )
 
-  # preparing subtitle
-  subtitle <-
-    expr_template(
-      stat.title = stat.title,
-      no.parameters = 2L,
-      stats.df = stats_df,
-      effsize.df = effsize_df,
-      statistic.text = quote(italic("F")),
-      effsize.text = effsize.text,
-      n = sample_size,
-      n.text = n.text,
-      conf.level = conf.level,
-      k = k,
-      k.parameter = k.df1,
-      k.parameter2 = k.df2
-    )
-
   # message about effect size measure
   if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)
 
-  # return the subtitle
-  return(subtitle)
+  # preparing subtitle
+  expr_template(
+    stat.title = stat.title,
+    no.parameters = 2L,
+    stats.df = stats_df,
+    effsize.df = effsize_df,
+    statistic.text = quote(italic("F")),
+    effsize.text = effsize.text,
+    n = sample_size,
+    n.text = n.text,
+    conf.level = conf.level,
+    k = k,
+    k.parameter = k.df1,
+    k.parameter2 = k.df2
+  )
 }
 
-#' @title Making text subtitle for nonparametric ANOVA.
+#' @title Making text subtitle for non-parametric ANOVA.
 #' @name expr_anova_nonparametric
 #' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
@@ -431,22 +427,18 @@ expr_anova_nonparametric <- function(data,
   if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)
 
   # preparing subtitle
-  subtitle <-
-    expr_template(
-      stat.title = stat.title,
-      no.parameters = 1L,
-      stats.df = stats_df,
-      effsize.df = effsize_df,
-      statistic.text = quote(italic(chi)^2),
-      effsize.text = effsize.text,
-      n = sample_size,
-      n.text = n.text,
-      conf.level = conf.level,
-      k = k
-    )
-
-  # return the subtitle
-  return(subtitle)
+  expr_template(
+    stat.title = stat.title,
+    no.parameters = 1L,
+    stats.df = stats_df,
+    effsize.df = effsize_df,
+    statistic.text = quote(italic(chi)^2),
+    effsize.text = effsize.text,
+    n = sample_size,
+    n.text = n.text,
+    conf.level = conf.level,
+    k = k
+  )
 }
 
 #' @title Expression containing results from heteroscedastic one-way ANOVA for
@@ -644,6 +636,7 @@ expr_anova_robust <- function(data,
 #' @importFrom dplyr select
 #' @importFrom rlang !! enquo
 #' @importFrom stats lm oneway.test na.omit
+#' @importFrom tidyBF bf_oneway_anova
 #'
 #' @examples
 #' \donttest{
@@ -704,18 +697,13 @@ expr_anova_bayes <- function(data,
   if (isFALSE(paired)) data %<>% tidyr::drop_na(.)
 
   # bayes factor results
-  subtitle <-
-    tidyBF::bf_oneway_anova(
-      data = data,
-      x = {{ x }},
-      y = {{ y }},
-      paired = paired,
-      bf.prior = bf.prior,
-      k = k,
-      caption = NULL,
-      output = "h1"
-    )
-
-  # return the subtitle
-  return(subtitle)
+  tidyBF::bf_oneway_anova(
+    data = data,
+    x = {{ x }},
+    y = {{ y }},
+    paired = paired,
+    bf.prior = bf.prior,
+    k = k,
+    output = "h1"
+  )
 }

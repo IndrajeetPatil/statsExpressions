@@ -1,5 +1,3 @@
-context("switch statements")
-
 # switch for effect size type works ------------------------------------------
 
 testthat::test_that(

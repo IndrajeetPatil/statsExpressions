@@ -2,24 +2,9 @@
 % Please edit documentation in R/helpers_t_test_expressions.R
 \name{expr_t_nonparametric}
 \alias{expr_t_nonparametric}
-\alias{expr_mann_nonparametric}
 \title{Making expression for Mann-Whitney \emph{U}-test/Wilcoxon test results}
 \usage{
 expr_t_nonparametric(
-  data,
-  x,
-  y,
-  paired = FALSE,
-  k = 2,
-  conf.level = 0.95,
-  conf.type = "norm",
-  nboot = 100,
-  stat.title = NULL,
-  messages = TRUE,
-  ...
-)
-
-expr_mann_nonparametric(
   data,
   x,
   y,

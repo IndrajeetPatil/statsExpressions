@@ -244,26 +244,22 @@ expr_contingency_tab <- function(data,
     effsize_df %<>% dplyr::filter(.data = ., Statistic == "g")
   }
 
-  # preparing subtitle
-  subtitle <-
-    expr_template(
-      no.parameters = 1L,
-      stats.df = broomExtra::tidy(stats_df),
-      effsize.df = effsize_df,
-      stat.title = stat.title,
-      statistic.text = statistic.text,
-      effsize.text = effsize.text,
-      n = sample_size,
-      n.text = n.text,
-      conf.level = conf.level,
-      k = k
-    )
-
   # message about effect size measure
   if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)
 
-  # return the subtitle
-  return(subtitle)
+  # preparing subtitle
+  expr_template(
+    no.parameters = 1L,
+    stats.df = broomExtra::tidy(stats_df),
+    effsize.df = effsize_df,
+    stat.title = stat.title,
+    statistic.text = statistic.text,
+    effsize.text = effsize.text,
+    n = sample_size,
+    n.text = n.text,
+    conf.level = conf.level,
+    k = k
+  )
 }
 
 # aliases -----------------------------------------------------------------

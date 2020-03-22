@@ -154,23 +154,19 @@ expr_t_parametric <- function(data,
   k.df <- ifelse(isTRUE(paired) || isTRUE(var.equal), 0L, k)
 
   # preparing subtitle
-  subtitle <-
-    expr_template(
-      no.parameters = 1L,
-      stat.title = stat.title,
-      stats.df = stats_df,
-      effsize.df = effsize_df,
-      statistic.text = quote(italic("t")),
-      effsize.text = effsize.text,
-      n = sample_size,
-      conf.level = conf.level,
-      k = k,
-      k.parameter = k.df,
-      n.text = n.text
-    )
-
-  # return the subtitle
-  return(subtitle)
+  expr_template(
+    no.parameters = 1L,
+    stat.title = stat.title,
+    stats.df = stats_df,
+    effsize.df = effsize_df,
+    statistic.text = quote(italic("t")),
+    effsize.text = effsize.text,
+    n = sample_size,
+    conf.level = conf.level,
+    k = k,
+    k.parameter = k.df,
+    n.text = n.text
+  )
 }
 
 
@@ -182,7 +178,7 @@ expr_t_parametric <- function(data,
 #' @inheritParams t1way_ci
 #'
 #' @importFrom dplyr select
-#' @importFrom rlang !! enquo exec
+#' @importFrom rlang !! enquo exec new_formula
 #' @importFrom stats wilcox.test
 #' @importFrom rcompanion wilcoxonR wilcoxonPairedR
 #'
@@ -346,22 +342,18 @@ expr_t_nonparametric <- function(data,
   if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)
 
   # preparing subtitle
-  subtitle <-
-    expr_template(
-      no.parameters = 0L,
-      stats.df = stats_df,
-      effsize.df = effsize_df,
-      stat.title = stat.title,
-      statistic.text = statistic.text,
-      effsize.text = quote(widehat(italic("r"))),
-      n = sample_size,
-      n.text = n.text,
-      conf.level = conf.level,
-      k = k
-    )
-
-  # return the subtitle
-  return(subtitle)
+  expr_template(
+    no.parameters = 0L,
+    stats.df = stats_df,
+    effsize.df = effsize_df,
+    stat.title = stat.title,
+    statistic.text = statistic.text,
+    effsize.text = quote(widehat(italic("r"))),
+    n = sample_size,
+    n.text = n.text,
+    conf.level = conf.level,
+    k = k
+  )
 }
 
 #' @title Expression containing results from a robust *t*-test
@@ -520,23 +512,19 @@ expr_t_robust <- function(data,
   if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)
 
   # preparing subtitle
-  subtitle <-
-    expr_template(
-      no.parameters = 1L,
-      stats.df = stats_df,
-      effsize.df = effsize_df,
-      stat.title = stat.title,
-      statistic.text = quote(italic("t")),
-      effsize.text = quote(widehat(italic(xi))),
-      n = sample_size,
-      n.text = n.text,
-      conf.level = conf.level,
-      k = k,
-      k.parameter = k.parameter
-    )
-
-  # return the subtitle
-  return(subtitle)
+  expr_template(
+    no.parameters = 1L,
+    stats.df = stats_df,
+    effsize.df = effsize_df,
+    stat.title = stat.title,
+    statistic.text = quote(italic("t")),
+    effsize.text = quote(widehat(italic(xi))),
+    n = sample_size,
+    n.text = n.text,
+    conf.level = conf.level,
+    k = k,
+    k.parameter = k.parameter
+  )
 }
 
 #' @title Making expression containing Bayesian *t*-test results
@@ -597,26 +585,14 @@ expr_t_bayes <- function(data,
     tibble::as_tibble(.)
 
   # prepare subtitle
-  subtitle <-
-    tidyBF::bf_ttest(
-      data = data,
-      x = {{ x }},
-      y = {{ y }},
-      paired = paired,
-      bf.prior = bf.prior,
-      caption = NULL,
-      output = "h1",
-      k = k
-    )
-
-  # return the message
-  return(subtitle)
+  tidyBF::bf_ttest(
+    data = data,
+    x = {{ x }},
+    y = {{ y }},
+    paired = paired,
+    bf.prior = bf.prior,
+    caption = NULL,
+    output = "h1",
+    k = k
+  )
 }
-
-# aliases -----------------------------------------------------------------
-
-#' @rdname expr_t_nonparametric
-#' @aliases expr_t_nonparametric
-#' @export
-
-expr_mann_nonparametric <- expr_t_nonparametric

@@ -48,11 +48,6 @@ reference:
     contents:
       - matches("expr_meta_")
 
-  - title: Helper functions for Bayes Factor tests
-    desc: Functions to extract Bayes Factor for various tests
-    contents:
-      - matches("bf_")
-
   - title: Helper functions
     contents:
       - expr_template

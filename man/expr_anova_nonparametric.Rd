@@ -2,7 +2,7 @@
 % Please edit documentation in R/helpers_anova_expressions.R
 \name{expr_anova_nonparametric}
 \alias{expr_anova_nonparametric}
-\title{Making text subtitle for nonparametric ANOVA.}
+\title{Making text subtitle for non-parametric ANOVA.}
 \usage{
 expr_anova_nonparametric(
   data,
@@ -58,7 +58,7 @@ For more details, see-
 \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }
 \description{
-Making text subtitle for nonparametric ANOVA.
+Making text subtitle for non-parametric ANOVA.
 }
 \details{
 For paired designs, the effect size is Kendall's coefficient of
