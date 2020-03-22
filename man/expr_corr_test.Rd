@@ -10,7 +10,7 @@ expr_corr_test(
   y,
   nboot = 100,
   beta = 0.1,
-  type = "pearson",
+  type = "parametric",
   bf.prior = 0.707,
   conf.level = 0.95,
   conf.type = "norm",
@@ -21,8 +21,8 @@ expr_corr_test(
 )
 }
 \arguments{
-\item{data}{A dataframe (or a tibble) from which variables specified are to
-be taken. A matrix or tables will \strong{not} be accepted.}
+\item{data}{for use with \code{formula}, a data frame containing all the
+data}
 
 \item{x}{The column in \code{data} containing the explanatory variable to be
 plotted on the \code{x}-axis. Can be entered either as a character string (e.g.,
@@ -65,7 +65,7 @@ added as a prefix in the subtitle. The default is \code{NULL}. An example of a
 \item{messages}{Decides whether messages references, notes, and warnings are
 to be displayed (Default: \code{TRUE}).}
 
-\item{...}{Currently ignored.}
+\item{...}{Additional arguments (ignored).}
 }
 \value{
 Expression containing results from correlation test with confidence

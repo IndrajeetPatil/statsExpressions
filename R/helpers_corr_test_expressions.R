@@ -21,11 +21,14 @@
 #'   Corresponding abbreviations are also accepted: `"p"` (for
 #'   parametric/pearson's), `"np"` (nonparametric/spearman), `"r"` (robust),
 #'   `"bf"` (for bayes factor), resp.
-#' @inheritParams robcor_ci
+#' @param beta bending constant (Default: `0.1`). For more, see `?WRS2::pbcor`.
 #' @inheritParams tidyBF::bf_corr_test
 #' @inheritParams expr_anova_parametric
+#' @inheritParams expr_anova_nonparametric
 #'
 #' @importFrom dplyr select
+#' @importFrom correlation correlation
+#' @importFrom broomExtra easystats_to_tidy_names
 #' @importFrom rlang !! enquo enexpr ensym enexpr
 #' @importFrom stats cor.test
 #' @importFrom rcompanion spearmanRho
@@ -61,7 +64,7 @@ expr_corr_test <- function(data,
                            y,
                            nboot = 100,
                            beta = 0.1,
-                           type = "pearson",
+                           type = "parametric",
                            bf.prior = 0.707,
                            conf.level = 0.95,
                            conf.type = "norm",
@@ -79,53 +82,52 @@ expr_corr_test <- function(data,
   data %<>%
     dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
     tidyr::drop_na(.) %>%
-    tibble::as_tibble(x = .)
+    as_tibble(.)
 
   # the total sample size for analysis
   sample_size <- nrow(data)
 
-  # standardize the type of statistics
-  stats.type <- stats_type_switch(type)
+  # ============================ checking corr.method =======================
 
-  #------------------------ Pearson's r -------------------------------------
+  # see which method was used to specify type of correlation
+  stats_type <- stats_type_switch(type)
 
-  if (stats.type %in% c("parametric", "nonparametric")) {
-    # choosing appropriate method
-    if (stats.type == "parametric") cor.method <- "pearson"
-    if (stats.type == "nonparametric") cor.method <- "spearman"
+  # if any of the abbreviations have been entered, change them
+  corr.method <-
+    switch(
+      EXPR = stats_type,
+      "parametric" = "pearson",
+      "nonparametric" = "spearman",
+      "robust" = "percentage"
+    )
 
-    # tidy dataframe with statistical details
+  #----------------- creating correlation dataframes -----------------------
+
+  # for all except `bayes`
+  if (stats_type != "bayes") {
+    # creating a dataframe of results
     stats_df <-
-      broomExtra::tidy(
-        x = stats::cor.test(
-          formula = rlang::new_formula(
-            NULL, rlang::expr(!!rlang::enexpr(x) + !!rlang::enexpr(y))
-          ),
-          data = data,
-          method = cor.method,
-          alternative = "two.sided",
-          exact = FALSE,
-          conf.level = conf.level,
-          na.action = na.omit
-        )
+      correlation::correlation(
+        data = data,
+        method = corr.method,
+        ci = conf.level,
+        beta = beta
+      ) %>%
+      broomExtra::easystats_to_tidy_names(.) %>%
+      dplyr::rename_all(
+        .tbl = .,
+        .funs = dplyr::recode,
+        "r" = "estimate",
+        "rho" = "estimate",
+        "df" = "parameter",
+        "s" = "statistic"
       )
-  }
 
-  # preparing other needed objects
-  if (stats.type == "parametric") {
-    # stats object already contains effect size info
+    # effect size dataframe is the same one
     effsize_df <- stats_df
-
-    # subtitle parameters
-    no.parameters <- 1L
-    statistic.text <- quote(italic("t"))
-    effsize.text <- quote(widehat(italic("r"))["Pearson"])
   }
 
-  #--------------------- Spearnman's rho ---------------------------------
-
-  if (stats.type == "nonparametric") {
-    # tidy dataframe with statistical details
+  if (stats_type == "nonparametric") {
     stats_df %<>% dplyr::mutate(.data = ., statistic = log(statistic))
 
     # getting confidence interval for rho using broom bootstrap
@@ -150,37 +152,26 @@ expr_corr_test <- function(data,
     effsize.text <- quote(widehat(italic(rho))["Spearman"])
   }
 
-  #---------------------- robust percentage bend --------------------------
+  #------------------------ subtitle text elements -----------------------------
 
-  if (stats.type == "robust") {
-    # running robust correlation
-    stats_df <-
-      robcor_ci(
-        data = data,
-        x = {{ x }},
-        y = {{ y }},
-        beta = beta,
-        nboot = nboot,
-        conf.level = conf.level,
-        conf.type = conf.type
-      ) %>%
-      dplyr::mutate(.data = ., parameter = sample_size - 2L)
+  # preparing other needed objects
+  if (stats_type == "parametric") {
+    # subtitle parameters
+    no.parameters <- 1L
+    statistic.text <- quote(italic("t"))
+    effsize.text <- quote(widehat(italic("r"))["Pearson"])
+  }
 
-    # stats object already contains effect size info
-    effsize_df <- stats_df
-
+  if (stats_type == "robust") {
     # subtitle parameters
     no.parameters <- 1L
     statistic.text <- quote(italic("t"))
     effsize.text <- quote(widehat(italic(rho))["pb"])
-
-    # message about effect size measure
-    if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)
   }
 
   #---------------------- preparing subtitle ---------------------------------
 
-  if (stats.type %in% c("parametric", "nonparametric", "robust")) {
+  if (stats_type != "bayes") {
     # preparing subtitle
     subtitle <-
       expr_template(
@@ -195,11 +186,7 @@ expr_corr_test <- function(data,
         k = k,
         n.text = quote(italic("n")["pairs"])
       )
-  }
-
-  #---------------------- bayes factor -----------------------------------
-
-  if (stats.type == "bayes") {
+  } else {
     # bayes factor results
     subtitle <-
       tidyBF::bf_corr_test(
@@ -207,7 +194,6 @@ expr_corr_test <- function(data,
         x = {{ x }},
         y = {{ y }},
         bf.prior = bf.prior,
-        caption = NULL,
         output = "h1",
         k = k
       )

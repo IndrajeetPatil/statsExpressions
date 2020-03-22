@@ -152,7 +152,7 @@
   <span class='no'>y</span>,
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>100</span>,
   <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"pearson"</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"parametric"</span>,
   <span class='kw'>bf.prior</span> <span class='kw'>=</span> <span class='fl'>0.707</span>,
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
   <span class='kw'>conf.type</span> <span class='kw'>=</span> <span class='st'>"norm"</span>,
@@ -167,8 +167,8 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>A dataframe (or a tibble) from which variables specified are to
-be taken. A matrix or tables will <strong>not</strong> be accepted.</p></td>
+      <td><p>for use with <code>formula</code>, a data frame containing all the
+data</p></td>
     </tr>
     <tr>
       <th>x</th>
@@ -235,7 +235,7 @@ to be displayed (Default: <code>TRUE</code>).</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Currently ignored.</p></td>
+      <td><p>Additional arguments (ignored).</p></td>
     </tr>
     </table>
 
@@ -272,11 +272,10 @@ intervals for the correlation coefficient estimate.</p>
   <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>0.2</span>,
   <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"robust"</span>,
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>1</span>
-)</div><div class='output co'>#&gt; <span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>95%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>25</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, italic("t"), "(", "435", ") = ", "0.1", ", ", italic("p"), 
+)</div><div class='output co'>#&gt; paste(NULL, italic("t"), "(", "435", ") = ", "0.1", ", ", italic("p"), 
 #&gt;     " = ", "0.960", ", ", widehat(italic(rho))["pb"], " = ", 
 #&gt;     "0.0", ", CI"["95%"], " [", "-0.1", ", ", "0.1", "]", ", ", 
-#&gt;     italic("n")["pairs"], " = ", 437L)</div></span></pre>
+#&gt;     italic("n")["pairs"], " = ", 437L)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

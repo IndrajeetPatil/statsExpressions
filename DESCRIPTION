@@ -25,6 +25,7 @@ Depends:
 Imports:
     boot,
     broomExtra,
+    correlation (>= 0.1.1),
     dplyr,
     ez,
     ipmisc,
@@ -46,7 +47,8 @@ Suggests:
     spelling,
     testthat
 Remotes:
-    IndrajeetPatil/tidyBF
+    IndrajeetPatil/tidyBF,
+    easystats/correlation
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
