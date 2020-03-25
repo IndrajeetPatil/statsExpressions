@@ -518,11 +518,25 @@ extract_boot_output <- function(bootobj, fit, conf.type, conf.level) {
 #' @title Effect sizes and their CIs for `aov` objects
 #'
 #' @importFrom sjstats eta_sq omega_sq
-#' @importFrom dplyr rename rename_all filter
+#' @importFrom dplyr rename filter matches
 #' @importFrom rlang exec
+#' @importFrom broomExtra easystats_to_tidy_names
 #'
+#' @examples
+#' \donttest{
+#' # for reproducibility
+#' set.seed(123)
+#'
+#' # model
+#' mod <- stats::lm(formula = wt ~ am * cyl, data = mtcars)
+#'
+#' # effect size
+#' statsExpressions:::aov_effsize(mod, effsize = "eta")
+#' statsExpressions:::aov_effsize(mod, effsize = "eta", partial = FALSE)
+#' statsExpressions:::aov_effsize(mod, effsize = "omega")
+#' statsExpressions:::aov_effsize(mod, effsize = "omega", partial = FALSE)
+#' }
 #' @keywords internal
-#' @noRd
 
 aov_effsize <- function(model,
                         effsize = "eta",
@@ -545,29 +559,8 @@ aov_effsize <- function(model,
     ci.lvl = ci,
     n = iterations
   ) %>%
-    tibble::as_tibble(.) %>%
-    dplyr::rename_all(
-      .tbl = .,
-      .funs = tolower
-    ) %>% # renaming the effect size to standard term 'estimate'
+    broomExtra::easystats_to_tidy_names(.) %>% # renaming to standard term 'estimate'
     dplyr::rename(.data = ., estimate = dplyr::matches("eta|omega")) %>%
-    dplyr::rename_all(
-      .tbl = .,
-      .funs = ~ gsub(
-        x = .,
-        pattern = "_",
-        replacement = "."
-      )
-    ) %>%
-    dplyr::rename_all(
-      .tbl = .,
-      .funs = dplyr::recode,
-      parameter = "term",
-      ci.low = "conf.low",
-      ci.high = "conf.high"
-    ) %>%
     dplyr::filter(.data = ., !is.na(estimate)) %>%
-    dplyr::filter(
-      .data = ., !grepl(pattern = "Residuals", x = term, ignore.case = TRUE)
-    )
+    dplyr::filter(.data = ., !grepl(pattern = "Residuals", x = term, ignore.case = TRUE))
 }
