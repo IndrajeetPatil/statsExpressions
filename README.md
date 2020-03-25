@@ -156,19 +156,15 @@ set.seed(123)
 library(ggplot2)
 library(statsExpressions)
 
-# create fake data
-df <- data.frame(x = rnorm(1000, 0.1, 0.5))
-
 # creating a histogram plot
-p <- ggplot(df, aes(x)) +
+ggplot(mtcars, aes(wt)) +
   geom_histogram(alpha = 0.5) +
-  geom_vline(xintercept = mean(df$x), color = "red")
-
-# adding a caption with a non-parametric one-sample test
-p + labs(
-  title = "One-Sample Wilcoxon Signed Rank Test",
-  caption = expr_t_onesample(df, x, type = "nonparametric")
-)
+  geom_vline(xintercept = mean(mtcars$wt), color = "red") +
+  # adding a caption with a non-parametric one-sample test
+  labs(
+    title = "One-Sample Wilcoxon Signed Rank Test",
+    caption = expr_t_onesample(mtcars, wt, test.value = 3, type = "nonparametric")
+  )
 #> Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.
 ```
 
@@ -183,16 +179,14 @@ library(ggplot2)
 library(hrbrthemes)
 
 # create a plot
-p <-
-  ggplot(ToothGrowth, aes(supp, len)) +
+ggplot(ToothGrowth, aes(supp, len)) +
   geom_boxplot() +
-  theme_ipsum_rc()
-
-# adding a subtitle with
-p + labs(
-  title = "Two-Sample Welch's t-test",
-  subtitle = expr_t_parametric(ToothGrowth, supp, len)
-)
+  theme_ipsum_rc() +
+  # adding a subtitle with
+  labs(
+    title = "Two-Sample Welch's t-test",
+    subtitle = expr_t_parametric(ToothGrowth, supp, len)
+  )
 ```
 
 <img src="man/figures/README-example_t_two-1.png" width="100%" />
@@ -230,22 +224,16 @@ library(statsExpressions)
 library(ggridges)
 
 # create a ridgeplot
-p <-
-  ggplot(iris, aes(x = Sepal.Length, y = Species)) +
+ggplot(iris, aes(x = Sepal.Length, y = Species)) +
   geom_density_ridges(
     jittered_points = TRUE, quantile_lines = TRUE,
     scale = 0.9, vline_size = 1, vline_color = "red",
     position = position_raincloud(adjust_vlines = TRUE)
+  ) +
+  labs(
+    title = "A heteroscedastic one-way ANOVA for trimmed means",
+    subtitle = expr_anova_robust(iris, Species, Sepal.Length, messages = FALSE)
   )
-
-# create an expression containing details from the relevant test
-results <- expr_anova_robust(iris, Species, Sepal.Length, messages = FALSE)
-
-# display results on the plot
-p + labs(
-  title = "A heteroscedastic one-way ANOVA for trimmed means",
-  subtitle = results
-)
 ```
 
 <img src="man/figures/README-example_anova-1.png" width="100%" />
@@ -261,19 +249,13 @@ library(ggplot2)
 library(statsExpressions)
 
 # create a ridgeplot
-p <-
-  ggplot(mtcars, aes(x = mpg, y = wt)) +
+ggplot(mtcars, aes(x = mpg, y = wt)) +
   geom_point() +
-  geom_smooth(method = "lm")
-
-# create an expression containing details from the relevant test
-results <- expr_corr_test(mtcars, mpg, wt, type = "nonparametric")
-
-# display results on the plot
-p + labs(
-  title = "Spearman's rank correlation coefficient",
-  subtitle = results
-)
+  geom_smooth(method = "lm") +
+  labs(
+    title = "Spearman's rank correlation coefficient",
+    subtitle = expr_corr_test(mtcars, mpg, wt, type = "nonparametric")
+  )
 ```
 
 <img src="man/figures/README-example_corr-1.png" width="100%" />
@@ -286,28 +268,18 @@ set.seed(123)
 library(ggplot2)
 library(statsExpressions)
 
-# data
-df <- as.data.frame(table(mpg$class))
-colnames(df) <- c("class", "freq")
-
 # basic pie chart
-p <-
-  ggplot(df, aes(x = "", y = freq, fill = factor(class))) +
+ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1))) +
   geom_bar(width = 1, stat = "identity") +
-  theme(
-    axis.line = element_blank(),
-    plot.title = element_text(hjust = 0.5)
-  )
-
-# cleaning up the chart and adding results from one-sample proportion test
-p +
+  theme(axis.line = element_blank()) +
+  # cleaning up the chart and adding results from one-sample proportion test
   coord_polar(theta = "y", start = 0) +
   labs(
-    fill = "class",
+    fill = "Class",
     x = NULL,
     y = NULL,
-    title = "Pie Chart of class",
-    subtitle = expr_onesample_proptest(df, class, counts = freq),
+    title = "Pie Chart of class (type of car)",
+    subtitle = expr_onesample_proptest(as.data.frame(table(mpg$class)), Var1, counts = Freq),
     caption = "One-sample goodness of fit proportion test"
   )
 #> Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.
@@ -340,9 +312,6 @@ set.seed(123)
 library(metaviz)
 library(ggplot2)
 
-# rename columns to `statsExpressions` conventions
-df <- dplyr::rename(mozart, estimate = d, std.error = se)
-
 # meta-analysis forest plot with results random-effects meta-analysis
 viz_forest(
   x = mozart[, c("d", "se")],
@@ -353,7 +322,7 @@ viz_forest(
 ) + # use `statsExpressions` to create expression containing results
   labs(
     title = "Meta-analysis of Pietschnig, Voracek, and Formann (2010) on the Mozart effect",
-    subtitle = expr_meta_parametric(df, k = 3)
+    subtitle = expr_meta_parametric(dplyr::rename(mozart, estimate = d, std.error = se))
   ) +
   theme(text = element_text(size = 12))
 ```
