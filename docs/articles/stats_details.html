@@ -94,7 +94,7 @@
       <h1 data-toc-skip>Test and effect size details</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2020-03-25</h4>
+            <h4 class="date">2020-03-26</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/stats_details.Rmd"><code>vignettes/stats_details.Rmd</code></a></small>
       <div class="hidden name"><code>stats_details.Rmd</code></div>
@@ -104,11 +104,215 @@
     
     
 <p>This vignette provides a go-to summary for which test is carried out for each function included in the package and what effect size it returns. Additionally, there are also recommendations on how to interpret those effect sizes.</p>
-<p>Note that the following recommendations on how to interpret the effect sizes are just suggestions and there is nothing universal about them. The interpretation of <strong>any</strong> effect size measures is always going to be relative to the discipline, the specific data, and the aims of the analyst. Here the guidelines are given for <em>small</em>, <em>medium</em>, and <em>large</em> effects and references should shed more information on the baseline discipline with respect to which these guidelines were recommended. This is important because what might be considered a small effect in psychology might be large for some other field like public health.</p>
-<div id="expr_t_onesample" class="section level1">
+<div id="summary-of-statistical-tests-and-effect-sizes" class="section level1">
 <h1 class="hasAnchor">
-<a href="#expr_t_onesample" class="anchor"></a><code>expr_t_onesample</code>
-</h1>
+<a href="#summary-of-statistical-tests-and-effect-sizes" class="anchor"></a>Summary of statistical tests and effect sizes</h1>
+<p>Here is a summary table of all the statistical tests currently supported across various functions:</p>
+<table class="table">
+<colgroup>
+<col width="22%">
+<col width="20%">
+<col width="37%">
+<col width="14%">
+<col width="5%">
+</colgroup>
+<thead><tr class="header">
+<th>Functions</th>
+<th>Type</th>
+<th>Test</th>
+<th>Effect size</th>
+<th>95% CI available?</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>
+<code>expr_anova_parametric</code> (2 groups)</td>
+<td>Parametric</td>
+<td>Student’s and Welch’s <em>t</em>-test</td>
+<td>Cohen’s <em>d</em>, Hedge’s <em>g</em>
+</td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+<tr class="even">
+<td>
+<code>expr_anova_parametric</code> (&gt; 2 groups)</td>
+<td>Parametric</td>
+<td>Fisher’s and Welch’s one-way ANOVA</td>
+<td><span class="math inline">\(\eta^2, \eta^2_p, \omega^2, \omega^2_p\)</span></td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+<tr class="odd">
+<td>
+<code>expr_anova_nonparametric</code> (2 groups)</td>
+<td>Non-parametric</td>
+<td>Mann-Whitney <em>U</em>-test</td>
+<td><em>r</em></td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+<tr class="even">
+<td>
+<code>expr_anova_nonparametric</code> (&gt; 2 groups)</td>
+<td>Non-parametric</td>
+<td>Kruskal-Wallis Rank Sum Test</td>
+<td><span class="math inline">\(\epsilon^2\)</span></td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+<tr class="odd">
+<td>
+<code>expr_anova_robust</code> (2 groups)</td>
+<td>Robust</td>
+<td>Yuen’s test for trimmed means</td>
+<td><span class="math inline">\(\xi\)</span></td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+<tr class="even">
+<td>
+<code>expr_anova_robust</code> (&gt; 2 groups)</td>
+<td>Robust</td>
+<td>Heteroscedastic one-way ANOVA for trimmed means</td>
+<td><span class="math inline">\(\xi\)</span></td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+<tr class="odd">
+<td>
+<code>expr_anova_parametric</code> (2 groups)</td>
+<td>Parametric</td>
+<td>Student’s <em>t</em>-test</td>
+<td>Cohen’s <em>d</em>, Hedge’s <em>g</em>
+</td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+<tr class="even">
+<td>
+<code>expr_anova_parametric</code> (&gt; 2 groups)</td>
+<td>Parametric</td>
+<td>Fisher’s one-way repeated measures ANOVA</td>
+<td><span class="math inline">\(\eta^2_p, \omega^2\)</span></td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+<tr class="odd">
+<td>
+<code>expr_anova_nonparametric</code> (2 groups)</td>
+<td>Non-parametric</td>
+<td>Wilcoxon signed-rank test</td>
+<td><em>r</em></td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+<tr class="even">
+<td>
+<code>expr_anova_nonparametric</code> (&gt; 2 groups)</td>
+<td>Non-parametric</td>
+<td>Friedman rank sum test</td>
+<td><span class="math inline">\(W_{Kendall}\)</span></td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+<tr class="odd">
+<td>
+<code>expr_anova_robust</code> (2 groups)</td>
+<td>Robust</td>
+<td>Yuen’s test on trimmed means for dependent samples</td>
+<td><span class="math inline">\(\xi\)</span></td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+<tr class="even">
+<td>
+<code>expr_anova_robust</code> (&gt; 2 groups)</td>
+<td>Robust</td>
+<td>Heteroscedastic one-way repeated measures ANOVA for trimmed means</td>
+<td><font color="red"><span class="math inline">\(\times\)</span></font></td>
+<td><font color="red"><span class="math inline">\(\times\)</span></font></td>
+</tr>
+<tr class="odd">
+<td>
+<code>expr_contingency_tab</code> (unpaired)</td>
+<td>Parametric</td>
+<td><span class="math inline">\(\text{Pearson's}~ \chi^2 ~\text{test}\)</span></td>
+<td>Cramér’s <em>V</em>
+</td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+<tr class="even">
+<td>
+<code>expr_contingency_tab</code> (paired)</td>
+<td>Parametric</td>
+<td>McNemar’s test</td>
+<td>Cohen’s <em>g</em>
+</td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+<tr class="odd">
+<td><code>expr_contingency_tab</code></td>
+<td>Parametric</td>
+<td>One-sample proportion test</td>
+<td>Cramér’s <em>V</em>
+</td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+<tr class="even">
+<td><code>expr_corr_test</code></td>
+<td>Parametric</td>
+<td>Pearson’s <em>r</em>
+</td>
+<td><em>r</em></td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+<tr class="odd">
+<td><code>expr_corr_test</code></td>
+<td>Non-parametric</td>
+<td><span class="math inline">\(\text{Spearman's}~ \rho\)</span></td>
+<td><span class="math inline">\(\rho\)</span></td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+<tr class="even">
+<td><code>expr_corr_test</code></td>
+<td>Robust</td>
+<td>Percentage bend correlation</td>
+<td><em>r</em></td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+<tr class="odd">
+<td><code>expr_t_onesample</code></td>
+<td>Parametric</td>
+<td>One-sample <em>t</em>-test</td>
+<td>Cohen’s <em>d</em>, Hedge’s <em>g</em>
+</td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+<tr class="even">
+<td><code>expr_t_onesample</code></td>
+<td>Non-parametric</td>
+<td>One-sample Wilcoxon signed rank test</td>
+<td><em>r</em></td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+<tr class="odd">
+<td><code>expr_t_onesample</code></td>
+<td>Robust</td>
+<td>One-sample percentile bootstrap</td>
+<td>robust estimator</td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+<tr class="even">
+<td><code>expr_meta_parametric</code></td>
+<td>Parametric</td>
+<td>Meta-analysis via random-effects models</td>
+<td><span class="math inline">\(\beta\)</span></td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+<tr class="odd">
+<td><code>expr_meta_robust</code></td>
+<td>Robust</td>
+<td>Meta-analysis via robust random-effects models</td>
+<td><span class="math inline">\(\beta\)</span></td>
+<td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
+</tr>
+</tbody>
+</table>
+<p>Note that the following recommendations on how to interpret the effect sizes are just suggestions and there is nothing universal about them. The interpretation of <strong>any</strong> effect size measures is always going to be relative to the discipline, the specific data, and the aims of the analyst. Here the guidelines are given for <em>small</em>, <em>medium</em>, and <em>large</em> effects and references should shed more information on the baseline discipline with respect to which these guidelines were recommended. This is important because what might be considered a small effect in psychology might be large for some other field like public health.</p>
+</div>
+<div id="one-sample-tests" class="section level1">
+<h1 class="hasAnchor">
+<a href="#one-sample-tests" class="anchor"></a>One-sample tests</h1>
 <div id="parametric" class="section level2">
 <h2 class="hasAnchor">
 <a href="#parametric" class="anchor"></a>parametric</h2>
@@ -168,10 +372,9 @@
 <p><strong>Test</strong>: One-sample percentile bootstrap test <br><strong>Effect size</strong>: robust location measure</p>
 </div>
 </div>
-<div id="expr_t_parametric" class="section level1">
+<div id="two-sample-tests" class="section level1">
 <h1 class="hasAnchor">
-<a href="#expr_t_parametric" class="anchor"></a><code>expr_t_parametric</code>
-</h1>
+<a href="#two-sample-tests" class="anchor"></a>Two-sample tests</h1>
 <div id="within-subjects-design" class="section level2">
 <h2 class="hasAnchor">
 <a href="#within-subjects-design" class="anchor"></a>within-subjects design</h2>
@@ -332,10 +535,9 @@
 </div>
 </div>
 </div>
-<div id="expr_anova_parametric" class="section level1">
+<div id="one-way-anovas" class="section level1">
 <h1 class="hasAnchor">
-<a href="#expr_anova_parametric" class="anchor"></a><code>expr_anova_parametric</code>
-</h1>
+<a href="#one-way-anovas" class="anchor"></a>One-way ANOVAs</h1>
 <div id="within-subjects-design-1" class="section level2">
 <h2 class="hasAnchor">
 <a href="#within-subjects-design-1" class="anchor"></a>within-subjects design</h2>
@@ -527,10 +729,9 @@
 </div>
 </div>
 </div>
-<div id="expr_contingency_tab" class="section level1">
+<div id="contingency-table-analyses" class="section level1">
 <h1 class="hasAnchor">
-<a href="#expr_contingency_tab" class="anchor"></a><code>expr_contingency_tab</code>
-</h1>
+<a href="#contingency-table-analyses" class="anchor"></a>Contingency table analyses</h1>
 <div id="association-test---unpaired" class="section level2">
 <h2 class="hasAnchor">
 <a href="#association-test---unpaired" class="anchor"></a>association test - unpaired</h2>
@@ -687,10 +888,9 @@
 <p><strong>Reference</strong>: <a href="https://rcompanion.org/handbook/H_03.html" class="uri">https://rcompanion.org/handbook/H_03.html</a></p>
 </div>
 </div>
-<div id="expr_corr_test" class="section level1">
+<div id="correlation-analyses" class="section level1">
 <h1 class="hasAnchor">
-<a href="#expr_corr_test" class="anchor"></a><code>expr_corr_test</code>
-</h1>
+<a href="#correlation-analyses" class="anchor"></a>Correlation analyses</h1>
 <div id="parametric-5" class="section level2">
 <h2 class="hasAnchor">
 <a href="#parametric-5" class="anchor"></a>parametric</h2>

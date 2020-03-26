@@ -246,23 +246,23 @@ to be displayed (Default: <code>TRUE</code>).</p></td>
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>group</span>,
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>extra</span>
 )</div><div class='output co'>#&gt; <span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>95%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>100</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, italic("t"), "(", "13.90", ") = ", "1.57", ", ", 
-#&gt;     italic("p"), " = ", "0.139", ", ", widehat(italic(xi)), " = ", 
-#&gt;     "0.52", ", CI"["95%"], " [", "0.00", ", ", "0.87", "]", ", ", 
-#&gt;     italic("n")["obs"], " = ", 20L)</div><div class='input'>
+#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, italic("t")["Yuen"], "(", "13.90", ") = ", "1.57", 
+#&gt;     ", ", italic("p"), " = ", "0.139", ", ", widehat(italic(xi)), 
+#&gt;     " = ", "0.52", ", CI"["95%"], " [", "0.00", ", ", "0.87", 
+#&gt;     "]", ", ", italic("n")["obs"], " = ", 20L)</div><div class='input'>
 <span class='co'># changing defaults</span>
 <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_robust</span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>ToothGrowth</span>,
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>supp</span>,
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>len</span>,
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>10</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>,
   <span class='kw'>tr</span> <span class='kw'>=</span> <span class='fl'>0.2</span>
 )</div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>95%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>10</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, italic("t"), "(", "33.5", ") = ", "2.3", ", ", italic("p"), 
-#&gt;     " = ", "0.029", ", ", widehat(italic(xi)), " = ", "0.4", 
-#&gt;     ", CI"["95%"], " [", "0.1", ", ", "0.6", "]", ", ", italic("n")["obs"], 
-#&gt;     " = ", 60L)</div><div class='input'>
+#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, italic("t")["Yuen"], "(", "33.491", ") = ", "2.287", 
+#&gt;     ", ", italic("p"), " = ", "0.029", ", ", widehat(italic(xi)), 
+#&gt;     " = ", "0.400", ", CI"["95%"], " [", "0.056", ", ", "0.555", 
+#&gt;     "]", ", ", italic("n")["obs"], " = ", 60L)</div><div class='input'>
 <span class='co'># within-subjects design</span>
 <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_robust</span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(
@@ -275,8 +275,8 @@ to be displayed (Default: <code>TRUE</code>).</p></td>
   <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>25</span>
 )</div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>95%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>25</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, italic("t"), "(", "199", ") = ", "-26.64", ", ", 
-#&gt;     italic("p"), " = ", "&lt; 0.001", ", ", widehat(italic(xi)), 
+#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, italic("t")["Yuen"], "(", "199", ") = ", "-26.64", 
+#&gt;     ", ", italic("p"), " = ", "&lt; 0.001", ", ", widehat(italic(xi)), 
 #&gt;     " = ", "0.73", ", CI"["95%"], " [", "0.49", ", ", "0.87", 
 #&gt;     "]", ", ", italic("n")["pairs"], " = ", 250L)</div><div class='input'># }
 </div></span></pre>

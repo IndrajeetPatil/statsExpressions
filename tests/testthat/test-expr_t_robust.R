@@ -1,5 +1,3 @@
-context("expr_t_robust")
-
 # within-subjects ------------------------------------------------------------
 
 testthat::test_that(
@@ -28,7 +26,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic("t"),
+          italic("t")["Yuen"],
           "(",
           "119",
           ") = ",
@@ -104,7 +102,7 @@ testthat::test_that(
     results1 <- ggplot2::expr(
       paste(
         NULL,
-        italic("t"),
+        italic("t")["Yuen"],
         "(",
         "71",
         ") = ",
@@ -161,7 +159,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic("t"),
+          italic("t")["Yuen"],
           "(",
           "24.816",
           ") = ",
@@ -215,7 +213,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic("t"),
+          italic("t")["Yuen"],
           "(",
           "20.9388",
           ") = ",

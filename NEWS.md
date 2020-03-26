@@ -4,6 +4,9 @@
     package and are re-exported from there.
   
   - Removes the experimental `corr_objects` function.
+  
+  - Correlation analysis is carried out using `correlation` package, which is
+    now added as a dependency.
 
 # statsExpressions 0.3.1
  

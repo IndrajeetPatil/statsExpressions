@@ -249,8 +249,8 @@ epsilon-squared (for more, see <code><a href='https://rdrr.io/pkg/rcompanion/man
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.99</span>,
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>
 )</div><div class='output co'>#&gt; <span class='warning'>Warning: extreme order statistics used as endpoints</span></div><div class='output co'>#&gt; <span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>99%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>100</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, italic(chi)^2, "(", "3", ") = ", "55.83", ", ", italic("p"), 
-#&gt;     " = ", "&lt; 0.001", ", ", widehat(italic("W"))["Kendall"], 
+#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, chi["Friedman"]^2, "(", "3", ") = ", "55.83", ", ", 
+#&gt;     italic("p"), " = ", "&lt; 0.001", ", ", widehat(italic("W"))["Kendall"], 
 #&gt;     " = ", "0.61", ", CI"["99%"], " [", "0.61", ", ", "1.00", 
 #&gt;     "]", ", ", italic("n")["pairs"], " = ", 88L)</div><div class='input'>
 <span class='co'># -------------- between-subjects design --------------------------------</span>
@@ -263,10 +263,10 @@ epsilon-squared (for more, see <code><a href='https://rdrr.io/pkg/rcompanion/man
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.99</span>,
   <span class='kw'>conf.type</span> <span class='kw'>=</span> <span class='st'>"perc"</span>
 )</div><div class='output co'>#&gt; <span class='warning'>Warning: extreme order statistics used as endpoints</span></div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>99%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>100</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, italic(chi)^2, "(", "3", ") = ", "9.06", ", ", italic("p"), 
-#&gt;     " = ", "0.028", ", ", widehat(epsilon^2), " = ", "0.16", 
-#&gt;     ", CI"["99%"], " [", "0.02", ", ", "0.56", "]", ", ", italic("n")["obs"], 
-#&gt;     " = ", 56L)</div><div class='input'># }
+#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, chi["Kruskal-Wallis"]^2, "(", "3", ") = ", "9.06", 
+#&gt;     ", ", italic("p"), " = ", "0.028", ", ", widehat(epsilon^2), 
+#&gt;     " = ", "0.16", ", CI"["99%"], " [", "0.02", ", ", "0.56", 
+#&gt;     "]", ", ", italic("n")["obs"], " = ", 56L)</div><div class='input'># }
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

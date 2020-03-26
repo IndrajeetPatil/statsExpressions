@@ -243,8 +243,7 @@ expr_meta_parametric <- function(data,
 #'   data = df,
 #'   random = "normal",
 #'   k = 4,
-#'   messages = TRUE,
-#'   plotci = TRUE
+#'   messages = TRUE
 #' )
 #' }
 #' @export

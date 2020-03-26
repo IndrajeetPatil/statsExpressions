@@ -33,16 +33,3 @@ effsize_type_switch <- function(effsize.type) {
     TRUE ~ "unbiased"
   )
 }
-
-
-#' @noRd
-
-stats_type_switch <- function(type) {
-  dplyr::case_when(
-    grepl("^p", type, TRUE) ~ "parametric",
-    grepl("^n|^s", type, TRUE) ~ "nonparametric",
-    grepl("^r", type, TRUE) ~ "robust",
-    grepl("^b", type, TRUE) ~ "bayes",
-    TRUE ~ "parametric"
-  )
-}

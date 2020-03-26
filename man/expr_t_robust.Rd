@@ -81,7 +81,7 @@ statsExpressions::expr_t_robust(
   x = supp,
   y = len,
   nboot = 10,
-  k = 1,
+  k = 3,
   tr = 0.2
 )
 

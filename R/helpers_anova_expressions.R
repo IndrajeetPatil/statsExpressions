@@ -132,7 +132,7 @@ expr_anova_parametric <- function(data,
   data %<>%
     dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
     dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    tibble::as_tibble(x = .)
+    as_tibble(x = .)
 
   # -------------- within-subjects design --------------------------------
 
@@ -184,7 +184,7 @@ expr_anova_parametric <- function(data,
     if (isTRUE(sphericity.correction)) {
       e_corr <- ez_df$`Sphericity Corrections`$GGe
       stats_df <-
-        tibble::as_tibble(cbind.data.frame(
+        as_tibble(cbind.data.frame(
           statistic = ez_df$ANOVA$F[2],
           parameter1 = e_corr * ez_df$ANOVA$DFn[2],
           parameter2 = e_corr * ez_df$ANOVA$DFd[2],
@@ -192,7 +192,7 @@ expr_anova_parametric <- function(data,
         ))
     } else {
       stats_df <-
-        tibble::as_tibble(cbind.data.frame(
+        as_tibble(cbind.data.frame(
           statistic = ez_df$ANOVA$F[2],
           parameter1 = ez_df$ANOVA$DFn[2],
           parameter2 = ez_df$ANOVA$DFd[2],
@@ -255,13 +255,21 @@ expr_anova_parametric <- function(data,
   # message about effect size measure
   if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)
 
+  # test details
+  statistic.text <-
+    if (isTRUE(paired) || isTRUE(var.equal)) {
+      quote(italic("F")["Fisher"])
+    } else {
+      quote(italic("F")["Welch"])
+    }
+
   # preparing subtitle
   expr_template(
     stat.title = stat.title,
     no.parameters = 2L,
     stats.df = stats_df,
     effsize.df = effsize_df,
-    statistic.text = quote(italic("F")),
+    statistic.text = statistic.text,
     effsize.text = effsize.text,
     n = sample_size,
     n.text = n.text,
@@ -345,7 +353,7 @@ expr_anova_nonparametric <- function(data,
   data %<>%
     dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
     dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    tibble::as_tibble(x = .)
+    as_tibble(x = .)
 
   # ------------------- within-subjects design ------------------------------
 
@@ -377,6 +385,7 @@ expr_anova_nonparametric <- function(data,
     )
     sample_size <- length(unique(data$rowid))
     n.text <- quote(italic("n")["pairs"])
+    statistic.text <- quote(chi["Friedman"]^2)
     effsize.text <- quote(widehat(italic("W"))["Kendall"])
   }
 
@@ -406,6 +415,7 @@ expr_anova_nonparametric <- function(data,
     )
     sample_size <- nrow(data)
     n.text <- quote(italic("n")["obs"])
+    statistic.text <- quote(chi["Kruskal-Wallis"]^2)
     effsize.text <- quote(widehat(epsilon^2))
   }
 
@@ -432,7 +442,7 @@ expr_anova_nonparametric <- function(data,
     no.parameters = 1L,
     stats.df = stats_df,
     effsize.df = effsize_df,
-    statistic.text = quote(italic(chi)^2),
+    statistic.text = statistic.text,
     effsize.text = effsize.text,
     n = sample_size,
     n.text = n.text,
@@ -520,7 +530,7 @@ expr_anova_robust <- function(data,
   data %<>%
     dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
     dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    tibble::as_tibble(x = .)
+    as_tibble(x = .)
 
   # -------------- within-subjects design --------------------------------
 
@@ -686,7 +696,7 @@ expr_anova_bayes <- function(data,
   data %<>%
     dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
     dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    tibble::as_tibble(x = .)
+    as_tibble(x = .)
 
   # properly removing NAs if it's a paired design
   # converting to long format and then getting it back in wide so that the

@@ -1,5 +1,3 @@
-context("expr_t_nonparametric")
-
 # between-subjects design -----------------------------------------------
 
 testthat::test_that(

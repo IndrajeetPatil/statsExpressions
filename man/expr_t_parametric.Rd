@@ -93,10 +93,7 @@ When computing confidence intervals the variance of the effect size \emph{d} or
 set.seed(123)
 \donttest{
 # creating a smaller dataset
-msleep_short <- dplyr::filter(
-  .data = ggplot2::msleep,
-  vore \%in\% c("carni", "herbi")
-)
+msleep_short <- dplyr::filter(ggplot2::msleep, vore \%in\% c("carni", "herbi"))
 
 # with defaults
 statsExpressions::expr_t_parametric(
@@ -105,13 +102,12 @@ statsExpressions::expr_t_parametric(
   y = sleep_rem
 )
 
-# changing defaults
+# changing defaults (getting expression as output)
 statsExpressions::expr_t_parametric(
   data = msleep_short,
   x = vore,
   y = sleep_rem,
   var.equal = TRUE,
-  k = 2,
   effsize.type = "d"
 )
 }

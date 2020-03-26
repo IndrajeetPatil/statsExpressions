@@ -30,6 +30,7 @@
 #' @importFrom dplyr group_by n arrange
 #' @importFrom WRS2 onesampb
 #' @importFrom rcompanion wilcoxonOneSampleR
+#' @importFrom ipmisc stats_type_switch
 #'
 #' @examples
 #' \donttest{
@@ -100,13 +101,13 @@ expr_t_onesample <- function(data,
   data %<>%
     dplyr::select(.data = ., {{ x }}) %>%
     tidyr::drop_na(data = .) %>%
-    tibble::as_tibble(x = .)
+    as_tibble(.)
 
   # sample size
   sample_size <- nrow(data)
 
   # standardize the type of statistics
-  stats.type <- stats_type_switch(type)
+  stats.type <- ipmisc::stats_type_switch(type)
 
   # ========================= parametric ====================================
 
@@ -145,7 +146,7 @@ expr_t_onesample <- function(data,
       )
 
     # preparing subtitle parameters
-    statistic.text <- quote(italic("t"))
+    statistic.text <- quote(italic("t")["Student"])
     no.parameters <- 1L
   }
 
@@ -265,7 +266,6 @@ expr_t_onesample <- function(data,
         x = {{ x }},
         test.value = test.value,
         bf.prior = bf.prior,
-        caption = NULL,
         output = "h1",
         k = k
       )

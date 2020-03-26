@@ -1,5 +1,3 @@
-context("expr_anova_nonparametric")
-
 # between-subjects ----------------------------------------------------------
 
 testthat::test_that(
@@ -7,7 +5,7 @@ testthat::test_that(
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
-    # ggstatsplot output
+    # `statsExpressions` output
     set.seed(123)
     using_function1 <-
       statsExpressions::expr_anova_nonparametric(
@@ -26,7 +24,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic(chi)^2,
+          chi["Kruskal-Wallis"]^2,
           "(",
           "8",
           ") = ",
@@ -55,7 +53,7 @@ testthat::test_that(
     # testing overall call
     testthat::expect_identical(using_function1, results1)
 
-    # ggstatsplot output
+    # `statsExpressions` output
     set.seed(123)
     using_function2 <-
       suppressWarnings(statsExpressions::expr_anova_nonparametric(
@@ -75,7 +73,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic(chi)^2,
+          chi["Kruskal-Wallis"]^2,
           "(",
           "3",
           ") = ",
@@ -113,7 +111,7 @@ testthat::test_that(
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
-    # ggstatsplot output
+    # `statsExpressions` output
     set.seed(123)
     using_function1 <-
       statsExpressions::expr_anova_nonparametric(
@@ -133,7 +131,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic(chi)^2,
+          chi["Friedman"]^2,
           "(",
           "3",
           ") = ",
@@ -162,7 +160,7 @@ testthat::test_that(
     # testing overall call
     testthat::expect_identical(using_function1, results1)
 
-    # ggstatsplot output
+    # `statsExpressions` output
     set.seed(123)
     using_function2 <-
       statsExpressions::expr_anova_nonparametric(
@@ -182,7 +180,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic(chi)^2,
+          chi["Friedman"]^2,
           "(",
           "3",
           ") = ",

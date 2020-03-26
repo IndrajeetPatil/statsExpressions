@@ -28,7 +28,7 @@ Imports:
     correlation (>= 0.1.1),
     dplyr,
     ez,
-    ipmisc,
+    ipmisc (>= 1.3.0),
     metafor,
     metaplus,
     purrr,
@@ -48,6 +48,7 @@ Suggests:
     testthat
 Remotes:
     IndrajeetPatil/tidyBF,
+    IndrajeetPatil/ipmisc,
     easystats/correlation
 VignetteBuilder: 
     knitr

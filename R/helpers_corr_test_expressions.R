@@ -32,6 +32,7 @@
 #' @importFrom rlang !! enquo enexpr ensym enexpr
 #' @importFrom stats cor.test
 #' @importFrom rcompanion spearmanRho
+#' @importFrom ipmisc stats_type_switch
 #'
 #' @examples
 #'
@@ -70,7 +71,6 @@ expr_corr_test <- function(data,
                            conf.type = "norm",
                            k = 2,
                            stat.title = NULL,
-                           messages = TRUE,
                            ...) {
 
   # make sure both quoted and unquoted arguments are supported
@@ -90,7 +90,7 @@ expr_corr_test <- function(data,
   # ============================ checking corr.method =======================
 
   # see which method was used to specify type of correlation
-  stats_type <- stats_type_switch(type)
+  stats_type <- ipmisc::stats_type_switch(type)
 
   # if any of the abbreviations have been entered, change them
   corr.method <-
@@ -127,10 +127,11 @@ expr_corr_test <- function(data,
     effsize_df <- stats_df
   }
 
+  # `correlation` doesn't return CIs for Spearman'r rho
   if (stats_type == "nonparametric") {
     stats_df %<>% dplyr::mutate(.data = ., statistic = log(statistic))
 
-    # getting confidence interval for rho using broom bootstrap
+    # getting confidence interval for rho using `rcompanion`
     effsize_df <-
       rcompanion::spearmanRho(
         x = data %>% dplyr::pull({{ x }}),

@@ -67,8 +67,7 @@ expr_meta_robust(
   data = df,
   random = "normal",
   k = 4,
-  messages = TRUE,
-  plotci = TRUE
+  messages = TRUE
 )
 }
 }

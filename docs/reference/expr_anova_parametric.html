@@ -273,8 +273,8 @@ partial eta-squared effect sizes are supported.</p>
   <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>
 )</div><div class='output co'>#&gt; <span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>95%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>100</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, italic("F"), "(", "3", ",", "11.101", ") = ", "2.633", 
-#&gt;     ", ", italic("p"), " = ", "0.102", ", ", widehat(omega["p"]^2), 
+#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, italic("F")["Welch"], "(", "3", ",", "11.101", ") = ", 
+#&gt;     "2.633", ", ", italic("p"), " = ", "0.102", ", ", widehat(omega["p"]^2), 
 #&gt;     " = ", "0.144", ", CI"["95%"], " [", "-0.025", ", ", "0.421", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 56L)</div><div class='input'>
 <span class='co'># modifying the defaults</span>
@@ -288,8 +288,8 @@ partial eta-squared effect sizes are supported.</p>
   <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>10</span>
 )</div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>95%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>10</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, italic("F"), "(", "3", ",", "52", ") = ", "4.14", 
-#&gt;     ", ", italic("p"), " = ", "0.011", ", ", widehat(eta^2), 
+#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, italic("F")["Fisher"], "(", "3", ",", "52", ") = ", 
+#&gt;     "4.14", ", ", italic("p"), " = ", "0.011", ", ", widehat(eta^2), 
 #&gt;     " = ", "0.19", ", CI"["95%"], " [", "0.04", ", ", "0.52", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 56L)</div><div class='input'>
 <span class='co'># -------------------- repeated measures ------------------------------</span>
@@ -302,10 +302,11 @@ partial eta-squared effect sizes are supported.</p>
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>4</span>,
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>10</span>
 )</div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>95%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>10</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, italic("F"), "(", "1.1491", ",", "171.2174", ") = ", 
-#&gt;     "776.3182", ", ", italic("p"), " = ", "&lt; 0.001", ", ", widehat(omega^2), 
-#&gt;     " = ", "0.7074", ", CI"["95%"], " [", "0.7675", ", ", "0.8181", 
-#&gt;     "]", ", ", italic("n")["pairs"], " = ", 150L)</div><div class='input'># }
+#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, italic("F")["Fisher"], "(", "1.1491", ",", "171.2174", 
+#&gt;     ") = ", "776.3182", ", ", italic("p"), " = ", "&lt; 0.001", 
+#&gt;     ", ", widehat(omega^2), " = ", "0.7074", ", CI"["95%"], " [", 
+#&gt;     "0.7675", ", ", "0.8181", "]", ", ", italic("n")["pairs"], 
+#&gt;     " = ", 150L)</div><div class='input'># }
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

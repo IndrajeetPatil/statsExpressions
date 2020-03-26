@@ -49,10 +49,7 @@
 #' set.seed(123)
 #' \donttest{
 #' # creating a smaller dataset
-#' msleep_short <- dplyr::filter(
-#'   .data = ggplot2::msleep,
-#'   vore %in% c("carni", "herbi")
-#' )
+#' msleep_short <- dplyr::filter(ggplot2::msleep, vore %in% c("carni", "herbi"))
 #'
 #' # with defaults
 #' statsExpressions::expr_t_parametric(
@@ -61,13 +58,12 @@
 #'   y = sleep_rem
 #' )
 #'
-#' # changing defaults
+#' # changing defaults (getting expression as output)
 #' statsExpressions::expr_t_parametric(
 #'   data = msleep_short,
 #'   x = vore,
 #'   y = sleep_rem,
 #'   var.equal = TRUE,
-#'   k = 2,
 #'   effsize.type = "d"
 #' )
 #' }
@@ -93,7 +89,7 @@ expr_t_parametric <- function(data,
   data %<>%
     dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
     dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    tibble::as_tibble(x = .)
+    as_tibble(x = .)
 
   # properly removing NAs if it's a paired design
   if (isTRUE(paired)) {
@@ -152,6 +148,12 @@ expr_t_parametric <- function(data,
   # when paired samples t-test is run df is going to be integer
   # ditto for when variance is assumed to be equal
   k.df <- ifelse(isTRUE(paired) || isTRUE(var.equal), 0L, k)
+  statistic.text <-
+    if (isTRUE(paired) || isTRUE(var.equal)) {
+      quote(italic("t")["Student"])
+    } else {
+      quote(italic("t")["Welch"])
+    }
 
   # preparing subtitle
   expr_template(
@@ -159,7 +161,7 @@ expr_t_parametric <- function(data,
     stat.title = stat.title,
     stats.df = stats_df,
     effsize.df = effsize_df,
-    statistic.text = quote(italic("t")),
+    statistic.text = statistic.text,
     effsize.text = effsize.text,
     n = sample_size,
     conf.level = conf.level,
@@ -283,7 +285,7 @@ expr_t_nonparametric <- function(data,
   data %<>%
     dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
     dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    tibble::as_tibble(x = .)
+    as_tibble(x = .)
 
   # properly removing NAs if it's a paired design
   if (isTRUE(paired)) {
@@ -390,7 +392,7 @@ expr_t_nonparametric <- function(data,
 #'   x = supp,
 #'   y = len,
 #'   nboot = 10,
-#'   k = 1,
+#'   k = 3,
 #'   tr = 0.2
 #' )
 #'
@@ -429,7 +431,7 @@ expr_t_robust <- function(data,
   data %<>%
     dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
     dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    tibble::as_tibble(x = .)
+    as_tibble(x = .)
 
   # ---------------------------- between-subjects design --------------------
 
@@ -470,7 +472,7 @@ expr_t_robust <- function(data,
     stats_df <-
       tibble::tribble(
         ~statistic, ~parameter, ~p.value,
-        stats_obj$test, stats_obj$df, stats_obj$p.value
+        stats_obj$test[[1]], stats_obj$df[[1]], stats_obj$p.value[[1]]
       )
 
     # subtitle parameters
@@ -517,7 +519,7 @@ expr_t_robust <- function(data,
     stats.df = stats_df,
     effsize.df = effsize_df,
     stat.title = stat.title,
-    statistic.text = quote(italic("t")),
+    statistic.text = quote(italic("t")["Yuen"]),
     effsize.text = quote(widehat(italic(xi))),
     n = sample_size,
     n.text = n.text,
@@ -582,7 +584,7 @@ expr_t_bayes <- function(data,
   data %<>%
     dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
     dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    tibble::as_tibble(.)
+    as_tibble(.)
 
   # prepare subtitle
   tidyBF::bf_ttest(
@@ -591,7 +593,6 @@ expr_t_bayes <- function(data,
     y = {{ y }},
     paired = paired,
     bf.prior = bf.prior,
-    caption = NULL,
     output = "h1",
     k = k
   )

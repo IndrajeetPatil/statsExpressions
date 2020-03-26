@@ -187,13 +187,14 @@
       "@type": "SoftwareApplication",
       "identifier": "ipmisc",
       "name": "ipmisc",
+      "version": ">= 1.3.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=ipmisc"
+      "sameAs": "https://github.com/IndrajeetPatil/ipmisc"
     },
     {
       "@type": "SoftwareApplication",

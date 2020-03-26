@@ -29,6 +29,38 @@ This vignette provides a go-to summary for which test is carried out for each
 function included in the package and what effect size it returns. Additionally,
 there are also recommendations on how to interpret those effect sizes.
 
+# Summary of statistical tests and effect sizes
+
+Here is a summary table of all the statistical tests currently supported across
+various functions:
+
+Functions | Type | Test | Effect size | 95% CI available? 
+------------ | ----------- | -------------------- | -------- | ---  
+`expr_anova_parametric` (2 groups) | Parametric | Student's and Welch's *t*-test | Cohen's *d*, Hedge's *g* | <font color="green">$\checkmark$</font>
+`expr_anova_parametric` (> 2 groups) | Parametric | Fisher's and Welch's one-way ANOVA | $\eta^2, \eta^2_p, \omega^2, \omega^2_p$ | <font color="green">$\checkmark$</font>
+`expr_anova_nonparametric` (2 groups) | Non-parametric | Mann-Whitney *U*-test | *r* | <font color="green">$\checkmark$</font>
+`expr_anova_nonparametric` (> 2 groups) | Non-parametric | Kruskal-Wallis Rank Sum Test | $\epsilon^2$ | <font color="green">$\checkmark$</font>
+`expr_anova_robust` (2 groups) | Robust | Yuen's test for trimmed means | $\xi$ | <font color="green">$\checkmark$</font>
+`expr_anova_robust` (> 2 groups) | Robust | Heteroscedastic one-way ANOVA for trimmed means | $\xi$ | <font color="green">$\checkmark$</font>
+`expr_anova_parametric` (2 groups) | Parametric | Student's *t*-test | Cohen's *d*, Hedge's *g* | <font color="green">$\checkmark$</font>
+`expr_anova_parametric` (> 2 groups) | Parametric | Fisher's one-way repeated measures ANOVA | $\eta^2_p, \omega^2$ | <font color="green">$\checkmark$</font>
+`expr_anova_nonparametric` (2 groups) | Non-parametric | Wilcoxon signed-rank test | *r* | <font color="green">$\checkmark$</font>
+`expr_anova_nonparametric` (> 2 groups) | Non-parametric | Friedman rank sum test | $W_{Kendall}$ | <font color="green">$\checkmark$</font>
+`expr_anova_robust` (2 groups) | Robust | Yuen's test on trimmed means for dependent samples | $\xi$ | <font color="green">$\checkmark$</font>
+`expr_anova_robust` (> 2 groups) | Robust | Heteroscedastic one-way repeated measures ANOVA for trimmed means | <font color="red">$\times$</font> | <font color="red">$\times$</font>
+`expr_contingency_tab` (unpaired) | Parametric | $\text{Pearson's}~ \chi^2 ~\text{test}$ | Cramér's *V* | <font color="green">$\checkmark$</font>
+`expr_contingency_tab` (paired) | Parametric | McNemar's test | Cohen's *g* | <font color="green">$\checkmark$</font>
+`expr_contingency_tab` | Parametric | One-sample proportion test | Cramér's *V* | <font color="green">$\checkmark$</font>
+`expr_corr_test` | Parametric | Pearson's *r* | *r* | <font color="green">$\checkmark$</font>
+`expr_corr_test` | Non-parametric | $\text{Spearman's}~ \rho$ | $\rho$ | <font color="green">$\checkmark$</font>
+`expr_corr_test` | Robust | Percentage bend correlation | *r* | <font color="green">$\checkmark$</font>
+`expr_t_onesample` | Parametric | One-sample *t*-test | Cohen's *d*, Hedge's *g* | <font color="green">$\checkmark$</font>
+`expr_t_onesample` | Non-parametric | One-sample Wilcoxon signed rank test | *r* | <font color="green">$\checkmark$</font>
+`expr_t_onesample` | Robust | One-sample percentile bootstrap | robust estimator | <font color="green">$\checkmark$</font>
+`expr_meta_parametric` | Parametric | Meta-analysis via random-effects models | $\beta$ | <font color="green">$\checkmark$</font>
+`expr_meta_robust` | Robust | Meta-analysis via robust random-effects models | $\beta$ | <font color="green">$\checkmark$</font>
+
+
 Note that the following recommendations on how to interpret the effect sizes are
 just suggestions and there is nothing universal about them. The interpretation
 of **any** effect size measures is always going to be relative to the
@@ -39,7 +71,7 @@ guidelines were recommended. This is important because what might be considered
 a small effect in psychology might be large for some other field like public
 health.
 
-# `expr_t_onesample`
+# One-sample tests
 
 ## parametric
 
@@ -65,7 +97,7 @@ Effect size | Small | Medium | Large | Range
 **Test**: One-sample percentile bootstrap test <br>
 **Effect size**: robust location measure
  
-# `expr_t_parametric` 
+# Two-sample tests
 
 ## within-subjects design
 
@@ -133,7 +165,7 @@ $\xi$ | 0.10 – < 0.30 | 0.30 – < 0.50 | ≥ 0.50 | [0,1]
 
 **Reference**: <https://CRAN.R-project.org/package=WRS2/vignettes/WRS2.pdf>
 
-# `expr_anova_parametric` 
+# One-way ANOVAs
 
 ## within-subjects design
 
@@ -213,7 +245,7 @@ $\xi$ | 0.10 – < 0.30 | 0.30 – < 0.50 | ≥ 0.50 | [0,1]
 
 **Reference**: <https://CRAN.R-project.org/package=WRS2/vignettes/WRS2.pdf>
 
-# `expr_contingency_tab`
+# Contingency table analyses
 
 ## association test - unpaired
 
@@ -263,7 +295,7 @@ In the following table, *k* is the number of categories.
 
 **Reference**: <https://rcompanion.org/handbook/H_03.html>
 
-# `expr_corr_test`
+# Correlation analyses
 
 ## parametric
 

@@ -33,7 +33,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic("t"),
+          italic("t")["Student"],
           "(",
           "612",
           ") = ",
@@ -97,7 +97,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic("t"),
+          italic("t")["Welch"],
           "(",
           "271.302",
           ") = ",
@@ -156,7 +156,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic("t"),
+          italic("t")["Student"],
           "(",
           "149",
           ") = ",
@@ -213,7 +213,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic("t"),
+          italic("t")["Student"],
           "(",
           "89",
           ") = ",

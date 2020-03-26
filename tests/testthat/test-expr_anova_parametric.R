@@ -1,5 +1,3 @@
-context("expr_anova_parametric - between-subjects")
-
 # parametric anova subtitles (without NAs) -----------------------------------
 
 testthat::test_that(
@@ -26,7 +24,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic("F"),
+          italic("F")["Welch"],
           "(",
           "8",
           ",",
@@ -87,7 +85,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic("F"),
+          italic("F")["Welch"],
           "(",
           "3",
           ",",
@@ -145,7 +143,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic("F"),
+          italic("F")["Welch"],
           "(",
           "3",
           ",",
@@ -204,7 +202,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic("F"),
+          italic("F")["Fisher"],
           "(",
           "3",
           ",",
@@ -281,7 +279,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic("F"),
+          italic("F")["Welch"],
           "(",
           "3",
           ",",
@@ -314,7 +312,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic("F"),
+          italic("F")["Welch"],
           "(",
           "3",
           ",",
@@ -377,7 +375,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic("F"),
+          italic("F")["Fisher"],
           "(",
           "1.149",
           ",",
@@ -437,7 +435,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic("F"),
+          italic("F")["Fisher"],
           "(",
           "2",
           ",",
@@ -488,7 +486,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic("F"),
+          italic("F")["Fisher"],
           "(",
           "1.54700",
           ",",
@@ -551,7 +549,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic("F"),
+          italic("F")["Fisher"],
           "(",
           "1.28",
           ",",
@@ -664,7 +662,7 @@ testthat::test_that(
       p_sub,
       ggplot2::expr(paste(
         NULL,
-        italic("F"),
+        italic("F")["Fisher"],
         "(",
         "6",
         ",",

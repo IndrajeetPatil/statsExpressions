@@ -1,7 +1,5 @@
 ---
-output:
-  github_document:
-    pandoc_args: --webtex
+output: github_document
 ---
 
   <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -25,7 +23,7 @@ knitr::opts_chunk$set(
 
 Package | Status | Usage | GitHub | References
 ----------------- | ----------------- | ----------------- | ----------------- | -----------------
-[![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions) | [![Build Status](https://travis-ci.org/IndrajeetPatil/statsExpressions.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/statsExpressions) | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![GitHub version](https://img.shields.io/badge/GitHub-0.3.1.9000-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/statsExpressions/) | [![Website](https://img.shields.io/badge/website-statsExpressions-orange.svg?colorB=E91E63)](https://indrajeetpatil.github.io/statsExpressions/)
+[![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions) | [![Build Status](https://travis-ci.org/IndrajeetPatil/statsExpressions.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/statsExpressions) | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![GitHub version](https://img.shields.io/badge/GitHub-0.4.0.9000-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/statsExpressions/) | [![Website](https://img.shields.io/badge/website-statsExpressions-orange.svg?colorB=E91E63)](https://indrajeetpatil.github.io/statsExpressions/)
 [![CRAN Checks](https://cranchecks.info/badges/summary/statsExpressions)](https://cran.r-project.org/web/checks/check_results_statsExpressions.html) | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/statsExpressions?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/statsExpressions) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Forks](https://img.shields.io/badge/forks-`r itdepends:::get_github_info("statsExpressions")$forks[[1]]`-blue.svg)](https://github.com/IndrajeetPatil/statsExpressions/) | [![Rdoc](https://www.rdocumentation.org/badges/version/statsExpressions)](https://www.rdocumentation.org/packages/statsExpressions)
 [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/) | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/) | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Github Issues](https://img.shields.io/badge/issues-`r itdepends:::get_github_info("statsExpressions")$open_issues[[1]]`-red.svg)](https://github.com/IndrajeetPatil/statsExpressions/issues) | [![vignettes](https://img.shields.io/badge/vignettes-0.3.1-orange.svg?colorB=FF5722)](https://CRAN.R-project.org/package=statsExpressions/vignettes/)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/statsExpressions/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/statsExpressions?branch=master) | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/statsExpressions.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/statsExpressions) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2074621.svg)](https://doi.org/10.5281/zenodo.3386122)
@@ -59,7 +57,7 @@ prefer-
 
 ```{r installation1, eval = FALSE}
 # needed package to download from GitHub repo
-utils::install.packages(pkgs = "remotes")
+install.packages("remotes")
 
 # downloading the package from GitHub
 remotes::install_github(
@@ -132,32 +130,7 @@ reporting. For example, here are results from Yuen's test for trimmed means
 
 Here is a summary table of all the statistical tests currently supported across
 various functions:
-
-Functions | Type | Test | Effect size | 95% CI available? 
------------- | ----------- | -------------------- | -------- | ---  
-`expr_anova_parametric` (2 groups) | Parametric | Student's and Welch's *t*-test | Cohen's *d*, Hedge's *g* | <font color="green">$\checkmark$</font>
-`expr_anova_parametric` (> 2 groups) | Parametric | Fisher's and Welch's one-way ANOVA | $\eta^2, \eta^2_p, \omega^2, \omega^2_p$ | <font color="green">$\checkmark$</font>
-`expr_anova_nonparametric` (2 groups) | Non-parametric | Mann-Whitney *U*-test | *r* | <font color="green">$\checkmark$</font>
-`expr_anova_nonparametric` (> 2 groups) | Non-parametric | Kruskal-Wallis Rank Sum Test | $\epsilon^2$ | <font color="green">$\checkmark$</font>
-`expr_anova_robust` (2 groups) | Robust | Yuen's test for trimmed means | $\xi$ | <font color="green">$\checkmark$</font>
-`expr_anova_robust` (> 2 groups) | Robust | Heteroscedastic one-way ANOVA for trimmed means | $\xi$ | <font color="green">$\checkmark$</font>
-`expr_anova_parametric` (2 groups) | Parametric | Student's *t*-test | Cohen's *d*, Hedge's *g* | <font color="green">$\checkmark$</font>
-`expr_anova_parametric` (> 2 groups) | Parametric | Fisher's one-way repeated measures ANOVA | $\eta^2_p, \omega^2$ | <font color="green">$\checkmark$</font>
-`expr_anova_nonparametric` (2 groups) | Non-parametric | Wilcoxon signed-rank test | *r* | <font color="green">$\checkmark$</font>
-`expr_anova_nonparametric` (> 2 groups) | Non-parametric | Friedman rank sum test | $W_{Kendall}$ | <font color="green">$\checkmark$</font>
-`expr_anova_robust` (2 groups) | Robust | Yuen's test on trimmed means for dependent samples | $\xi$ | <font color="green">$\checkmark$</font>
-`expr_anova_robust` (> 2 groups) | Robust | Heteroscedastic one-way repeated measures ANOVA for trimmed means | <font color="red">$\times$</font> | <font color="red">$\times$</font>
-`expr_contingency_tab` (unpaired) | Parametric | $\text{Pearson's}~ \chi^2 ~\text{test}$ | Cramér's *V* | <font color="green">$\checkmark$</font>
-`expr_contingency_tab` (paired) | Parametric | McNemar's test | Cohen's *g* | <font color="green">$\checkmark$</font>
-`expr_contingency_tab` | Parametric | One-sample proportion test | Cramér's *V* | <font color="green">$\checkmark$</font>
-`expr_corr_test` | Parametric | Pearson's *r* | *r* | <font color="green">$\checkmark$</font>
-`expr_corr_test` | Non-parametric | $\text{Spearman's}~ \rho$ | $\rho$ | <font color="green">$\checkmark$</font>
-`expr_corr_test` | Robust | Percentage bend correlation | *r* | <font color="green">$\checkmark$</font>
-`expr_t_onesample` | Parametric | One-sample *t*-test | Cohen's *d*, Hedge's *g* | <font color="green">$\checkmark$</font>
-`expr_t_onesample` | Non-parametric | One-sample Wilcoxon signed rank test | *r* | <font color="green">$\checkmark$</font>
-`expr_t_onesample` | Robust | One-sample percentile bootstrap | robust estimator | <font color="green">$\checkmark$</font>
-`expr_meta_parametric` | Parametric | Meta-analysis via random-effects models | $\beta$ | <font color="green">$\checkmark$</font>
-`expr_meta_robust` | Robust | Meta-analysis via robust random-effects models | $\beta$ | <font color="green">$\checkmark$</font>
+<https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html>
 
 # Primary functions
 
@@ -182,25 +155,6 @@ ggplot(mtcars, aes(wt)) +
   labs(
     title = "One-Sample Wilcoxon Signed Rank Test",
     caption = expr_t_onesample(mtcars, wt, test.value = 3, type = "nonparametric")
-  )
-```
-
-## Example: Expressions for two-sample *t*-test
-
-```{r example_t_two}
-# setup
-set.seed(123)
-library(ggplot2)
-library(hrbrthemes)
-
-# create a plot
-ggplot(ToothGrowth, aes(supp, len)) +
-  geom_boxplot() +
-  theme_ipsum_rc() +
-  # adding a subtitle with
-  labs(
-    title = "Two-Sample Welch's t-test",
-    subtitle = expr_t_parametric(ToothGrowth, supp, len)
   )
 ```
 
@@ -247,6 +201,87 @@ ggplot(iris, aes(x = Sepal.Length, y = Species)) +
   )
 ```
 
+Needless to say, you can also use these functions to display results in
+`ggplot`-extension packages. For example, `ggpubr`:
+
+```{r ggpubr_anova}
+set.seed(123)
+library(ggpubr)
+library(ggplot2)
+
+# plot
+ggboxplot(
+  ToothGrowth,
+  x = "dose",
+  y = "len",
+  color = "dose",
+  palette = c("#00AFBB", "#E7B800", "#FC4E07"),
+  add = "jitter",
+  shape = "dose"
+) + # adding results from stats analysis using `statsExpressions`
+  labs(
+    title = "Kruskall-Wallis test",
+    subtitle = expr_anova_nonparametric(ToothGrowth, dose, len, type = "np")
+  )
+```
+
+## Example: Expressions for two-sample *t*-test
+
+```{r example_t_two}
+# setup
+set.seed(123)
+library(ggplot2)
+library(hrbrthemes)
+library(statsExpressions)
+
+# create a plot
+ggplot(ToothGrowth, aes(supp, len)) +
+  geom_boxplot() +
+  theme_ipsum_rc() +
+  # adding a subtitle with
+  labs(
+    title = "Two-Sample Welch's t-test",
+    subtitle = expr_t_parametric(ToothGrowth, supp, len)
+  )
+```
+
+Another example with `ggpubr`:
+
+```{r example_t_two_ggpubr}
+# setup
+set.seed(123)
+library(ggplot2)
+library(ggpubr)
+library(statsExpressions)
+
+# basic plot
+gghistogram(
+  data.frame(
+    sex = factor(rep(c("F", "M"), each = 200)),
+    weight = c(rnorm(200, 55), rnorm(200, 58))
+  ),
+  x = "weight",
+  add = "mean",
+  rug = TRUE,
+  fill = "sex",
+  palette = c("#00AFBB", "#E7B800"),
+  add_density = TRUE
+) + # displaying stats results
+  labs(
+    title = "Yuen's two-sample test for trimmed means",
+    subtitle = expr_t_robust(
+      data = data.frame(
+        sex = factor(rep(c("F", "M"), each = 200)),
+        weight = c(rnorm(200, 55), rnorm(200, 58))
+      ),
+      x = sex,
+      y = weight,
+      type = "robust",
+      messages = FALSE
+    )
+  )
+```
+
 ## Example: Expressions for correlation analysis
 
 Let's look at another example where we want to run correlation analysis:
@@ -258,7 +293,7 @@ library(ggplot2)
 library(statsExpressions)
 
 # create a ridgeplot
-ggplot(mtcars, aes(x = mpg, y = wt)) +
+ggplot(mtcars, aes(mpg, wt)) +
   geom_point() +
   geom_smooth(method = "lm") +
   labs(
