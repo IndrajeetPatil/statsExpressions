@@ -183,7 +183,7 @@ expr_t_onesample <- function(data,
       rcompanion_cleaner(.)
 
     # preparing subtitle parameters
-    statistic.text <- quote("log"["e"](italic("V")))
+    statistic.text <- quote("log"["e"](italic("V")["Wilcoxon"]))
     no.parameters <- 0L
     effsize.text <- quote(widehat(italic("r")))
 

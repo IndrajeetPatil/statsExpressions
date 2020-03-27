@@ -227,7 +227,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          "log"["e"](italic("V")),
+          "log"["e"](italic("V")["Wilcoxon"]),
           " = ",
           "6.6247",
           ", ",

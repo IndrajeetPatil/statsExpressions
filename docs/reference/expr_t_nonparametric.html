@@ -257,10 +257,10 @@ below.</p>
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>group</span>,
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>extra</span>
 )</div><div class='output co'>#&gt; <span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>95%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>100</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")), " = ", "3.24", ", ", italic("p"), 
-#&gt;     " = ", "0.069", ", ", widehat(italic("r")), " = ", "-0.41", 
-#&gt;     ", CI"["95%"], " [", "-0.84", ", ", "-0.04", "]", ", ", italic("n")["obs"], 
-#&gt;     " = ", 20L)</div><div class='input'>
+#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")["Wilcoxon"]), " = ", "3.24", 
+#&gt;     ", ", italic("p"), " = ", "0.069", ", ", widehat(italic("r")), 
+#&gt;     " = ", "-0.41", ", CI"["95%"], " [", "-0.84", ", ", "-0.04", 
+#&gt;     "]", ", ", italic("n")["obs"], " = ", 20L)</div><div class='input'>
 <span class='co'># creating a smaller dataset</span>
 <span class='no'>msleep_short</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(
   <span class='kw'>.data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
@@ -276,10 +276,10 @@ below.</p>
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.99</span>,
   <span class='kw'>conf.type</span> <span class='kw'>=</span> <span class='st'>"bca"</span>
 )</div><div class='output co'>#&gt; <span class='warning'>Warning: extreme order statistics used as endpoints</span></div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>99%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>200</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")), " = ", "5.05", ", ", italic("p"), 
-#&gt;     " = ", "0.179", ", ", widehat(italic("r")), " = ", "0.23", 
-#&gt;     ", CI"["99%"], " [", "-0.28", ", ", "0.63", "]", ", ", italic("n")["obs"], 
-#&gt;     " = ", 34L)</div><div class='input'>
+#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")["Wilcoxon"]), " = ", "5.05", 
+#&gt;     ", ", italic("p"), " = ", "0.179", ", ", widehat(italic("r")), 
+#&gt;     " = ", "0.23", ", CI"["99%"], " [", "-0.28", ", ", "0.63", 
+#&gt;     "]", ", ", italic("n")["obs"], " = ", 34L)</div><div class='input'>
 <span class='co'># The order of the grouping factor matters when computing *V*</span>
 <span class='co'># Changing default alphabetical order manually</span>
 <span class='no'>msleep_short</span>$<span class='no'>vore</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='no'>msleep_short</span>$<span class='no'>vore</span>,
@@ -293,10 +293,10 @@ below.</p>
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>vore</span>,
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>sleep_rem</span>
 )</div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>95%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>100</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")), " = ", "4.43", ", ", italic("p"), 
-#&gt;     " = ", "0.179", ", ", widehat(italic("r")), " = ", "-0.23", 
-#&gt;     ", CI"["95%"], " [", "-0.60", ", ", "0.12", "]", ", ", italic("n")["obs"], 
-#&gt;     " = ", 34L)</div><div class='input'>
+#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")["Wilcoxon"]), " = ", "4.43", 
+#&gt;     ", ", italic("p"), " = ", "0.179", ", ", widehat(italic("r")), 
+#&gt;     " = ", "-0.23", ", CI"["95%"], " [", "-0.60", ", ", "0.12", 
+#&gt;     "]", ", ", italic("n")["obs"], " = ", 34L)</div><div class='input'>
 <span class='co'># -------------- within-subjects design ------------------------</span>
 <span class='co'># using dataset included in the package</span>
 <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_nonparametric</span>(
@@ -309,8 +309,8 @@ below.</p>
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>200</span>,
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>5</span>
 )</div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>90%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>200</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("V")), " = ", "1.50408", ", ", 
-#&gt;     italic("p"), " = ", "&lt; 0.001", ", ", widehat(italic("r")), 
+#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("V")["Wilcoxon"]), " = ", "1.50408", 
+#&gt;     ", ", italic("p"), " = ", "&lt; 0.001", ", ", widehat(italic("r")), 
 #&gt;     " = ", "-0.57452", ", CI"["90%"], " [", "-0.68428", ", ", 
 #&gt;     "-0.44265", "]", ", ", italic("n")["pairs"], " = ", 34L)</div><div class='input'># }
 </div></span></pre>

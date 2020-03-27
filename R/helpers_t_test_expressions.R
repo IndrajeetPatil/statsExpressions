@@ -285,7 +285,7 @@ expr_t_nonparametric <- function(data,
   data %<>%
     dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
     dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    as_tibble(x = .)
+    as_tibble(.)
 
   # properly removing NAs if it's a paired design
   if (isTRUE(paired)) {
@@ -295,7 +295,7 @@ expr_t_nonparametric <- function(data,
     sample_size <- length(unique(data$rowid))
     n.text <- quote(italic("n")["pairs"])
     .f <- rcompanion::wilcoxonPairedR
-    statistic.text <- quote("log"["e"](italic("V")))
+    statistic.text <- quote("log"["e"](italic("V")["Wilcoxon"]))
   }
 
   # remove NAs listwise for between-subjects design
@@ -306,7 +306,7 @@ expr_t_nonparametric <- function(data,
     sample_size <- nrow(data)
     n.text <- quote(italic("n")["obs"])
     .f <- rcompanion::wilcoxonR
-    statistic.text <- quote("log"["e"](italic("W")))
+    statistic.text <- quote("log"["e"](italic("W")["Wilcoxon"]))
   }
 
   # setting up the test and getting its summary

@@ -6,10 +6,10 @@
 | Package                                                                                                                                                                   | Status                                                                                                                                                                                                 | Usage                                                                                                                                                                              | GitHub                                                                                                                                                                   | References                                                                                                                                                                |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)                                  | [![Build Status](https://travis-ci.org/IndrajeetPatil/statsExpressions.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/statsExpressions)                                                      | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)                            | [![GitHub version](https://img.shields.io/badge/GitHub-0.4.0.9000-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/statsExpressions/)                    | [![Website](https://img.shields.io/badge/website-statsExpressions-orange.svg?colorB=E91E63)](https://indrajeetpatil.github.io/statsExpressions/)                          |
-| [![CRAN Checks](https://cranchecks.info/badges/summary/statsExpressions)](https://cran.r-project.org/web/checks/check_results_statsExpressions.html)                      | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/statsExpressions?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/statsExpressions) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)                          | [![Forks](https://img.shields.io/badge/forks-4-blue.svg)](https://github.com/IndrajeetPatil/statsExpressions/)                                                           | [![Rdoc](https://www.rdocumentation.org/badges/version/statsExpressions)](https://www.rdocumentation.org/packages/statsExpressions)                                       |
+| [![CRAN Checks](https://cranchecks.info/badges/summary/statsExpressions)](https://cran.r-project.org/web/checks/check_results_statsExpressions.html)                      | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/statsExpressions?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/statsExpressions) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)                          | [![Forks](https://img.shields.io/badge/forks-4-blue.svg)](https://github.com/IndrajeetPatil/statsExpressions/)                                                           | [![Features](https://img.shields.io/badge/features-effectsize-orange.svg?colorB=2196F3)](https://indrajeetpatil.github.io/statsExpressions/reference/index.html)          |
 | [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)                                                                | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/)                                                                                         | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)                        | [![Github Issues](https://img.shields.io/badge/issues-8-red.svg)](https://github.com/IndrajeetPatil/statsExpressions/issues)                                             | [![vignettes](https://img.shields.io/badge/vignettes-0.3.1-orange.svg?colorB=FF5722)](https://CRAN.R-project.org/package=statsExpressions/vignettes/)                     |
 | [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/statsExpressions/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/statsExpressions?branch=master)             | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)                         | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/statsExpressions.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/statsExpressions) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2074621.svg)](https://doi.org/10.5281/zenodo.3386122)                                                                 |
-| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                          | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master)                   | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_03_22-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/blob/master/tests/README.md) | [![Last-changedate](https://img.shields.io/badge/last%20change-2020--03--26-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master)         | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master) |
+| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                          | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master)                   | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_03_22-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/blob/master/tests/README.md) | [![Last-changedate](https://img.shields.io/badge/last%20change-2020--03--27-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master)         | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master) |
 | [![status](https://tinyverse.netlify.com/badge/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)                                                    | [![R build status](https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions)                                            | [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/statsExpressions/community)                                                                       | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)                                                               | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/statsExpressions/issues)      |
 
 # Introduction
@@ -123,29 +123,9 @@ website:
 
 Following are few examples of how these functions can be used.
 
-## Example: Expressions for one-sample *t*-test
+## Example: Expressions for one-way ANOVAs
 
-``` r
-# setup
-set.seed(123)
-library(ggplot2)
-library(statsExpressions)
-
-# creating a histogram plot
-ggplot(mtcars, aes(wt)) +
-  geom_histogram(alpha = 0.5) +
-  geom_vline(xintercept = mean(mtcars$wt), color = "red") +
-  # adding a caption with a non-parametric one-sample test
-  labs(
-    title = "One-Sample Wilcoxon Signed Rank Test",
-    caption = expr_t_onesample(mtcars, wt, test.value = 3, type = "nonparametric")
-  )
-#> Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.
-```
-
-<img src="man/figures/README-example_t_one-1.png" width="100%" />
-
-## Example: Expressions for one-way ANOVA
+### Between-subjects design
 
 Let’s say we want to check differences in weight of the vehicle based on
 number of cylinders in the engine and wish to carry out Welch’s ANOVA:
@@ -160,12 +140,13 @@ library(statsExpressions)
 ggplot(iris, aes(x = Species, y = Sepal.Length)) +
   geom_boxplot() +
   labs(
-    title = "Welch's ANOVA",
-    subtitle = expr_anova_parametric(iris, Species, Sepal.Length, messages = FALSE)
+    title = "Fisher's one-way ANOVA",
+    subtitle = expr_anova_parametric(iris, Species, Sepal.Length, var.equal = TRUE)
   )
+#> Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.
 ```
 
-<img src="man/figures/README-example_anova_parametric-1.png" width="100%" />
+<img src="man/figures/README-anova_parametric1-1.png" width="100%" />
 
 In case you change your mind and now want to carry out a robust ANOVA
 instead. Also, let’s use a different kind of a visualization:
@@ -190,7 +171,7 @@ ggplot(iris, aes(x = Sepal.Length, y = Species)) +
   )
 ```
 
-<img src="man/figures/README-example_anova-1.png" width="100%" />
+<img src="man/figures/README-anova_rob1-1.png" width="100%" />
 
 Needless to say, you can also use these functions to display results in
 `ggplot`-extension packages. For example, `ggpubr`:
@@ -219,7 +200,32 @@ ggboxplot(
 
 <img src="man/figures/README-ggpubr_anova-1.png" width="100%" />
 
-## Example: Expressions for two-sample *t*-test
+### Within-subjects design
+
+Let’s now see an example of a repeated measures one-way ANOVA.
+
+``` r
+# setup
+set.seed(123)
+library(ggplot2)
+library(WRS2)
+library(ggbeeswarm)
+library(statsExpressions)
+
+ggplot2::ggplot(WineTasting, aes(Wine, Taste, color = Wine)) +
+  geom_quasirandom() +
+  labs(
+    title = "Friedman's rank sum test",
+    subtitle = expr_anova_nonparametric(WineTasting, Wine, Taste, paired = TRUE, type = "np")
+  )
+#> Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.
+```
+
+<img src="man/figures/README-anova_parametric2-1.png" width="100%" />
+
+## Example: Expressions for two-sample tests
+
+### Between-subjects design
 
 ``` r
 # setup
@@ -239,9 +245,9 @@ ggplot(ToothGrowth, aes(supp, len)) +
   )
 ```
 
-<img src="man/figures/README-example_t_two-1.png" width="100%" />
+<img src="man/figures/README-t_two-1.png" width="100%" />
 
-Another example with `ggpubr`:
+Example with `ggpubr`:
 
 ``` r
 # setup
@@ -278,9 +284,87 @@ gghistogram(
   )
 ```
 
-<img src="man/figures/README-example_t_two_ggpubr-1.png" width="100%" />
+<img src="man/figures/README-t_two_ggpubr-1.png" width="100%" />
 
-## Example: Expressions for correlation analysis
+Another example with `ggiraphExtra`:
+
+``` r
+# setup
+set.seed(123)
+library(ggplot2)
+library(ggiraphExtra)
+library(gcookbook)
+library(statsExpressions)
+
+# plot
+ggDot(heightweight, aes(sex, heightIn, fill = sex),
+  boxfill = "white",
+  binwidth = 0.4
+) +
+  labs(
+    title = "Wilcoxon two-sample test",
+    subtitle = expr_t_nonparametric(heightweight, sex, heightIn, type = "np")
+  )
+#> Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.
+```
+
+<img src="man/figures/README-t_ggiraphExtra-1.png" width="100%" />
+
+### Within-subjects design
+
+We can also have a look at a repeated measures design and the related
+expressions.
+
+``` r
+# setup
+set.seed(123)
+library(ggplot2)
+library(statsExpressions)
+library(tidyr)
+library(PairedData)
+data(PrisonStress)
+
+# plot
+paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject") +
+  # `statsExpressions` needs data in the tidy format
+  labs(
+    title = "Two-sample Wilcoxon paired test",
+    subtitle = expr_t_nonparametric(
+      data = pivot_longer(PrisonStress, starts_with("PSS"), "PSS", values_to = "stress"),
+      x = PSS,
+      y = stress,
+      paired = TRUE,
+      type = "nonparametric"
+    )
+  )
+#> Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.
+```
+
+<img src="man/figures/README-t_two_paired1-1.png" width="100%" />
+
+## Example: Expressions for one-sample tests
+
+``` r
+# setup
+set.seed(123)
+library(ggplot2)
+library(statsExpressions)
+
+# creating a histogram plot
+ggplot(mtcars, aes(wt)) +
+  geom_histogram(alpha = 0.5) +
+  geom_vline(xintercept = mean(mtcars$wt), color = "red") +
+  # adding a caption with a non-parametric one-sample test
+  labs(
+    title = "One-Sample Wilcoxon Signed Rank Test",
+    subtitle = expr_t_onesample(mtcars, wt, test.value = 3, type = "nonparametric")
+  )
+#> Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.
+```
+
+<img src="man/figures/README-t_one-1.png" width="100%" />
+
+## Example: Expressions for correlation analyses
 
 Let’s look at another example where we want to run correlation analysis:
 
@@ -300,9 +384,11 @@ ggplot(mtcars, aes(mpg, wt)) +
   )
 ```
 
-<img src="man/figures/README-example_corr-1.png" width="100%" />
+<img src="man/figures/README-corr-1.png" width="100%" />
 
 ## Example: Expressions for contingency table analysis
+
+For categorical/nominal data
 
 ``` r
 # setup
@@ -327,7 +413,7 @@ ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1
 #> Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.
 ```
 
-<img src="man/figures/README-example_contingency-1.png" width="100%" />
+<img src="man/figures/README-gof-1.png" width="100%" />
 
 You can also use these function to get the expression in return without
 having to display them in plots:
@@ -369,7 +455,7 @@ viz_forest(
   theme(text = element_text(size = 12))
 ```
 
-<img src="man/figures/README-example_metaanalysis-1.png" width="100%" />
+<img src="man/figures/README-metaanalysis-1.png" width="100%" />
 
 # Usage in `ggstatsplot`
 

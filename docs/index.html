@@ -127,7 +127,7 @@
 <td><a href="https://ci.appveyor.com/project/IndrajeetPatil/statsExpressions"><img src="https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/statsExpressions?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></td>
 <td><a href="https://CRAN.R-project.org/package=statsExpressions"><img src="https://cranlogs.r-pkg.org/badges/last-week/statsExpressions?color=blue" alt="Weekly downloads badge"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions/"><img src="https://img.shields.io/badge/forks-4-blue.svg" alt="Forks"></a></td>
-<td><a href="https://www.rdocumentation.org/packages/statsExpressions"><img src="https://www.rdocumentation.org/badges/version/statsExpressions" alt="Rdoc"></a></td>
+<td><a href="https://indrajeetpatil.github.io/statsExpressions/reference/index.html"><img src="https://img.shields.io/badge/features-effectsize-orange.svg?colorB=2196F3" alt="Features"></a></td>
 </tr>
 <tr class="odd">
 <td><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg" alt="minimal R version"></a></td>
@@ -147,7 +147,7 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/tests/README.md"><img src="https://img.shields.io/badge/covrpage-Last_Build_2020_03_22-yellowgreen.svg" alt="Covrpage Summary"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--03--26-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--03--27-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
@@ -290,31 +290,14 @@ remotes::install_github(
 <a href="#primary-functions" class="anchor"></a>Primary functions</h1>
 <p>A list of primary functions in this package can be found at the package website: <a href="https://indrajeetpatil.github.io/statsExpressions/reference/index.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/reference/index.html</a></p>
 <p>Following are few examples of how these functions can be used.</p>
-<div id="example-expressions-for-one-sample-t-test" class="section level2">
+<div id="example-expressions-for-one-way-anovas" class="section level2">
 <h2 class="hasAnchor">
-<a href="#example-expressions-for-one-sample-t-test" class="anchor"></a>Example: Expressions for one-sample <em>t</em>-test</h2>
-<div class="sourceCode" id="cb5"><pre class="r"># setup
-set.seed(123)
-library(ggplot2)
-library(statsExpressions)
-
-# creating a histogram plot
-ggplot(mtcars, aes(wt)) +
-  geom_histogram(alpha = 0.5) +
-  geom_vline(xintercept = mean(mtcars$wt), color = "red") +
-  # adding a caption with a non-parametric one-sample test
-  labs(
-    title = "One-Sample Wilcoxon Signed Rank Test",
-    caption = expr_t_onesample(mtcars, wt, test.value = 3, type = "nonparametric")
-  )
-#&gt; Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.</pre></div>
-<p><img src="reference/figures/README-example_t_one-1.png" width="100%"></p>
-</div>
-<div id="example-expressions-for-one-way-anova" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example-expressions-for-one-way-anova" class="anchor"></a>Example: Expressions for one-way ANOVA</h2>
+<a href="#example-expressions-for-one-way-anovas" class="anchor"></a>Example: Expressions for one-way ANOVAs</h2>
+<div id="between-subjects-design" class="section level3">
+<h3 class="hasAnchor">
+<a href="#between-subjects-design" class="anchor"></a>Between-subjects design</h3>
 <p>Let’s say we want to check differences in weight of the vehicle based on number of cylinders in the engine and wish to carry out Welch’s ANOVA:</p>
-<div class="sourceCode" id="cb6"><pre class="r"># setup
+<div class="sourceCode" id="cb5"><pre class="r"># setup
 set.seed(123)
 library(ggplot2)
 library(statsExpressions)
@@ -323,12 +306,13 @@ library(statsExpressions)
 ggplot(iris, aes(x = Species, y = Sepal.Length)) +
   geom_boxplot() +
   labs(
-    title = "Welch's ANOVA",
-    subtitle = expr_anova_parametric(iris, Species, Sepal.Length, messages = FALSE)
-  )</pre></div>
-<p><img src="reference/figures/README-example_anova_parametric-1.png" width="100%"></p>
+    title = "Fisher's one-way ANOVA",
+    subtitle = expr_anova_parametric(iris, Species, Sepal.Length, var.equal = TRUE)
+  )
+#&gt; Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.</pre></div>
+<p><img src="reference/figures/README-anova_parametric1-1.png" width="100%"></p>
 <p>In case you change your mind and now want to carry out a robust ANOVA instead. Also, let’s use a different kind of a visualization:</p>
-<div class="sourceCode" id="cb7"><pre class="r"># setup
+<div class="sourceCode" id="cb6"><pre class="r"># setup
 set.seed(123)
 library(ggplot2)
 library(statsExpressions)
@@ -345,9 +329,9 @@ ggplot(iris, aes(x = Sepal.Length, y = Species)) +
     title = "A heteroscedastic one-way ANOVA for trimmed means",
     subtitle = expr_anova_robust(iris, Species, Sepal.Length, messages = FALSE)
   )</pre></div>
-<p><img src="reference/figures/README-example_anova-1.png" width="100%"></p>
+<p><img src="reference/figures/README-anova_rob1-1.png" width="100%"></p>
 <p>Needless to say, you can also use these functions to display results in <code>ggplot</code>-extension packages. For example, <code>ggpubr</code>:</p>
-<div class="sourceCode" id="cb8"><pre class="r">set.seed(123)
+<div class="sourceCode" id="cb7"><pre class="r">set.seed(123)
 library(ggpubr)
 library(ggplot2)
 
@@ -368,9 +352,33 @@ ggboxplot(
 #&gt; Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.</pre></div>
 <p><img src="reference/figures/README-ggpubr_anova-1.png" width="100%"></p>
 </div>
-<div id="example-expressions-for-two-sample-t-test" class="section level2">
+<div id="within-subjects-design" class="section level3">
+<h3 class="hasAnchor">
+<a href="#within-subjects-design" class="anchor"></a>Within-subjects design</h3>
+<p>Let’s now see an example of a repeated measures one-way ANOVA.</p>
+<div class="sourceCode" id="cb8"><pre class="r"># setup
+set.seed(123)
+library(ggplot2)
+library(WRS2)
+library(ggbeeswarm)
+library(statsExpressions)
+
+ggplot2::ggplot(WineTasting, aes(Wine, Taste, color = Wine)) +
+  geom_quasirandom() +
+  labs(
+    title = "Friedman's rank sum test",
+    subtitle = expr_anova_nonparametric(WineTasting, Wine, Taste, paired = TRUE, type = "np")
+  )
+#&gt; Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.</pre></div>
+<p><img src="reference/figures/README-anova_parametric2-1.png" width="100%"></p>
+</div>
+</div>
+<div id="example-expressions-for-two-sample-tests" class="section level2">
 <h2 class="hasAnchor">
-<a href="#example-expressions-for-two-sample-t-test" class="anchor"></a>Example: Expressions for two-sample <em>t</em>-test</h2>
+<a href="#example-expressions-for-two-sample-tests" class="anchor"></a>Example: Expressions for two-sample tests</h2>
+<div id="between-subjects-design-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#between-subjects-design-1" class="anchor"></a>Between-subjects design</h3>
 <div class="sourceCode" id="cb9"><pre class="r"># setup
 set.seed(123)
 library(ggplot2)
@@ -386,8 +394,8 @@ ggplot(ToothGrowth, aes(supp, len)) +
     title = "Two-Sample Welch's t-test",
     subtitle = expr_t_parametric(ToothGrowth, supp, len)
   )</pre></div>
-<p><img src="reference/figures/README-example_t_two-1.png" width="100%"></p>
-<p>Another example with <code>ggpubr</code>:</p>
+<p><img src="reference/figures/README-t_two-1.png" width="100%"></p>
+<p>Example with <code>ggpubr</code>:</p>
 <div class="sourceCode" id="cb10"><pre class="r"># setup
 set.seed(123)
 library(ggplot2)
@@ -420,13 +428,81 @@ gghistogram(
       messages = FALSE
     )
   )</pre></div>
-<p><img src="reference/figures/README-example_t_two_ggpubr-1.png" width="100%"></p>
-</div>
-<div id="example-expressions-for-correlation-analysis" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example-expressions-for-correlation-analysis" class="anchor"></a>Example: Expressions for correlation analysis</h2>
-<p>Let’s look at another example where we want to run correlation analysis:</p>
+<p><img src="reference/figures/README-t_two_ggpubr-1.png" width="100%"></p>
+<p>Another example with <code>ggiraphExtra</code>:</p>
 <div class="sourceCode" id="cb11"><pre class="r"># setup
+set.seed(123)
+library(ggplot2)
+library(ggiraphExtra)
+library(gcookbook)
+library(statsExpressions)
+
+# plot
+ggDot(heightweight, aes(sex, heightIn, fill = sex),
+  boxfill = "white",
+  binwidth = 0.4
+) +
+  labs(
+    title = "Wilcoxon two-sample test",
+    subtitle = expr_t_nonparametric(heightweight, sex, heightIn, type = "np")
+  )
+#&gt; Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.</pre></div>
+<p><img src="reference/figures/README-t_ggiraphExtra-1.png" width="100%"></p>
+</div>
+<div id="within-subjects-design-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#within-subjects-design-1" class="anchor"></a>Within-subjects design</h3>
+<p>We can also have a look at a repeated measures design and the related expressions.</p>
+<div class="sourceCode" id="cb12"><pre class="r"># setup
+set.seed(123)
+library(ggplot2)
+library(statsExpressions)
+library(tidyr)
+library(PairedData)
+data(PrisonStress)
+
+# plot
+paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject") +
+  # `statsExpressions` needs data in the tidy format
+  labs(
+    title = "Two-sample Wilcoxon paired test",
+    subtitle = expr_t_nonparametric(
+      data = pivot_longer(PrisonStress, starts_with("PSS"), "PSS", values_to = "stress"),
+      x = PSS,
+      y = stress,
+      paired = TRUE,
+      type = "nonparametric"
+    )
+  )
+#&gt; Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.</pre></div>
+<p><img src="reference/figures/README-t_two_paired1-1.png" width="100%"></p>
+</div>
+</div>
+<div id="example-expressions-for-one-sample-tests" class="section level2">
+<h2 class="hasAnchor">
+<a href="#example-expressions-for-one-sample-tests" class="anchor"></a>Example: Expressions for one-sample tests</h2>
+<div class="sourceCode" id="cb13"><pre class="r"># setup
+set.seed(123)
+library(ggplot2)
+library(statsExpressions)
+
+# creating a histogram plot
+ggplot(mtcars, aes(wt)) +
+  geom_histogram(alpha = 0.5) +
+  geom_vline(xintercept = mean(mtcars$wt), color = "red") +
+  # adding a caption with a non-parametric one-sample test
+  labs(
+    title = "One-Sample Wilcoxon Signed Rank Test",
+    subtitle = expr_t_onesample(mtcars, wt, test.value = 3, type = "nonparametric")
+  )
+#&gt; Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.</pre></div>
+<p><img src="reference/figures/README-t_one-1.png" width="100%"></p>
+</div>
+<div id="example-expressions-for-correlation-analyses" class="section level2">
+<h2 class="hasAnchor">
+<a href="#example-expressions-for-correlation-analyses" class="anchor"></a>Example: Expressions for correlation analyses</h2>
+<p>Let’s look at another example where we want to run correlation analysis:</p>
+<div class="sourceCode" id="cb14"><pre class="r"># setup
 set.seed(123)
 library(ggplot2)
 library(statsExpressions)
@@ -439,12 +515,13 @@ ggplot(mtcars, aes(mpg, wt)) +
     title = "Spearman's rank correlation coefficient",
     subtitle = expr_corr_test(mtcars, mpg, wt, type = "nonparametric")
   )</pre></div>
-<p><img src="reference/figures/README-example_corr-1.png" width="100%"></p>
+<p><img src="reference/figures/README-corr-1.png" width="100%"></p>
 </div>
 <div id="example-expressions-for-contingency-table-analysis" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example-expressions-for-contingency-table-analysis" class="anchor"></a>Example: Expressions for contingency table analysis</h2>
-<div class="sourceCode" id="cb12"><pre class="r"># setup
+<p>For categorical/nominal data</p>
+<div class="sourceCode" id="cb15"><pre class="r"># setup
 set.seed(123)
 library(ggplot2)
 library(statsExpressions)
@@ -464,9 +541,9 @@ ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1
     caption = "One-sample goodness of fit proportion test"
   )
 #&gt; Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.</pre></div>
-<p><img src="reference/figures/README-example_contingency-1.png" width="100%"></p>
+<p><img src="reference/figures/README-gof-1.png" width="100%"></p>
 <p>You can also use these function to get the expression in return without having to display them in plots:</p>
-<div class="sourceCode" id="cb13"><pre class="r"># setup
+<div class="sourceCode" id="cb16"><pre class="r"># setup
 set.seed(123)
 library(ggplot2)
 library(statsExpressions)
@@ -481,7 +558,7 @@ expr_contingency_tab(mtcars, am, cyl, messages = FALSE)
 <div id="example-expressions-for-meta-analysis" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example-expressions-for-meta-analysis" class="anchor"></a>Example: Expressions for meta-analysis</h2>
-<div class="sourceCode" id="cb14"><pre class="r"># setup
+<div class="sourceCode" id="cb17"><pre class="r"># setup
 set.seed(123)
 library(metaviz)
 library(ggplot2)
@@ -499,7 +576,7 @@ viz_forest(
     subtitle = expr_meta_parametric(dplyr::rename(mozart, estimate = d, std.error = se))
   ) +
   theme(text = element_text(size = 12))</pre></div>
-<p><img src="reference/figures/README-example_metaanalysis-1.png" width="100%"></p>
+<p><img src="reference/figures/README-metaanalysis-1.png" width="100%"></p>
 </div>
 </div>
 <div id="usage-in-ggstatsplot" class="section level1">

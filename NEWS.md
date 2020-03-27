@@ -1,5 +1,7 @@
 # statsExpressions 0.4.0.9000
 
+  - All expressions now contain a hint about which test is being displayed.
+
   - All Bayes Factor related functions have now moved to the new `tidyBF`
     package and are re-exported from there.
   
