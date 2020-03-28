@@ -98,7 +98,7 @@ expr_t_parametric <- function(data,
 
   # remove NAs listwise for between-subjects design
   if (isFALSE(paired)) {
-    data %<>% tidyr::drop_na(data = .)
+    data %<>% tidyr::drop_na(.)
 
     # sample size
     sample_size <- nrow(data)
@@ -107,12 +107,10 @@ expr_t_parametric <- function(data,
 
   # deciding which effect size to use (Hedge's g or Cohen's d)
   if (effsize.type %in% c("unbiased", "g")) {
-    hedges.correction <- TRUE
-    effsize.text <- quote(widehat(italic("g")))
+    effsize.text <- quote(widehat(italic("g"))["Hedge"])
     .f <- effectsize::hedges_g
   } else {
-    hedges.correction <- FALSE
-    effsize.text <- quote(widehat(italic("d")))
+    effsize.text <- quote(widehat(italic("d"))["Cohen"])
     .f <- effectsize::cohens_d
   }
 

@@ -115,12 +115,10 @@ expr_t_onesample <- function(data,
   if (stats.type == "parametric") {
     # deciding which effect size to use (Hedge's g or Cohen's d)
     if (effsize.type %in% c("unbiased", "g")) {
-      hedges.correction <- TRUE
-      effsize.text <- quote(widehat(italic("g")))
+      effsize.text <- quote(widehat(italic("g"))["Hedge"])
       .f <- effectsize::hedges_g
     } else {
-      hedges.correction <- FALSE
-      effsize.text <- quote(widehat(italic("d")))
+      effsize.text <- quote(widehat(italic("d"))["Cohen"])
       .f <- effectsize::cohens_d
     }
 

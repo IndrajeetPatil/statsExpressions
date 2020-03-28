@@ -141,13 +141,10 @@ yuend_ci <- function(data,
     dplyr::select(.data = ., x = {{ x }}, y = {{ y }}) %>%
     dplyr::filter(.data = ., !is.na(x), !is.na(y)) %>%
     dplyr::mutate(.data = ., x = droplevels(as.factor(x))) %>%
-    as_tibble(x = .)
+    as_tibble(.)
 
   # jamovi needs data to be wide format and not long format
   data_wide <- long_to_wide_converter(data = data, x = x, y = y)
-
-  # sample size
-  sample_size <- nrow(data_wide)
 
   # running robust one-way anova
   fit <- WRS2::yuend(x = data_wide[2], y = data_wide[3], tr = tr)
