@@ -152,7 +152,6 @@
   <span class='no'>y</span>,
   <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>effsize.type</span> <span class='kw'>=</span> <span class='st'>"g"</span>,
-  <span class='kw'>effsize.noncentral</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
   <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>,
@@ -188,12 +187,6 @@ repeated measures/within-subjects or between-subjects. The default is
       <td><p>Type of effect size needed for <em>parametric</em> tests. The
 argument can be <code>"biased"</code> (<code>"d"</code> for Cohen's <em>d</em>) or <code>"unbiased"</code>
 (<code>"g"</code> Hedge's <em>g</em> for <strong>t-test</strong>). The default is <code>"g"</code>.</p></td>
-    </tr>
-    <tr>
-      <th>effsize.noncentral</th>
-      <td><p>Logical indicating whether to use non-central
-<em>t</em>-distributions for computing the confidence interval for Cohen's <em>d</em>
-or Hedge's <em>g</em> (Default: <code>TRUE</code>).</p></td>
     </tr>
     <tr>
       <th>conf.level</th>
@@ -242,8 +235,7 @@ will mirror the Welch test, otherwise a pooled and weighted estimate is
 used. If a paired samples <em>t</em>-test was requested, then effect size desired
 is based on the standard deviation of the differences.</p>
 <p>The computation of the confidence intervals defaults to a use of
-non-central Student-<em>t</em> distributions (<code>effsize.noncentral = TRUE</code>);
-otherwise a central distribution is used.</p>
+non-central Student-<em>t</em> distributions.</p>
 <p>When computing confidence intervals the variance of the effect size <em>d</em> or
 <em>g</em> is computed using the conversion formula reported in Cooper et al.
 (2009)</p><ul>
@@ -270,7 +262,7 @@ otherwise a central distribution is used.</p>
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>sleep_rem</span>
 )</div><div class='output co'>#&gt; paste(NULL, italic("t")["Welch"], "(", "10.89", ") = ", "1.49", 
 #&gt;     ", ", italic("p"), " = ", "0.164", ", ", widehat(italic("g")), 
-#&gt;     " = ", "0.61", ", CI"["95%"], " [", "-0.22", ", ", "1.32", 
+#&gt;     " = ", "0.61", ", CI"["95%"], " [", "-0.18", ", ", "1.20", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 34L)</div><div class='input'>
 <span class='co'># changing defaults (getting expression as output)</span>
 <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_parametric</span>(
@@ -281,7 +273,7 @@ otherwise a central distribution is used.</p>
   <span class='kw'>effsize.type</span> <span class='kw'>=</span> <span class='st'>"d"</span>
 )</div><div class='output co'>#&gt; paste(NULL, italic("t")["Student"], "(", "32", ") = ", "1.95", 
 #&gt;     ", ", italic("p"), " = ", "0.060", ", ", widehat(italic("d")), 
-#&gt;     " = ", "0.73", ", CI"["95%"], " [", "-0.03", ", ", "1.49", 
+#&gt;     " = ", "0.73", ", CI"["95%"], " [", "-0.03", ", ", "1.40", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 34L)</div><div class='input'># }
 </div></pre>
   </div>

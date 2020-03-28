@@ -1,5 +1,3 @@
-context("expr_t_parametric")
-
 # parametric t-test (between-subjects without NAs) ---------------------------
 
 testthat::test_that(
@@ -7,7 +5,7 @@ testthat::test_that(
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
-    # ggstatsplot output
+    # `statsExpressions` output
     set.seed(123)
     using_function1 <-
       suppressWarnings(
@@ -19,7 +17,6 @@ testthat::test_that(
           x = genre,
           y = rating,
           effsize.type = "d",
-          effsize.noncentral = TRUE,
           var.equal = TRUE,
           conf.level = .99,
           k = 5,
@@ -48,9 +45,9 @@ testthat::test_that(
           "-0.92473",
           ", CI"["99%"],
           " [",
-          "-1.16064",
+          "-1.06843",
           ", ",
-          "-0.68817",
+          "-0.63354",
           "]",
           ", ",
           italic("n")["obs"],
@@ -71,7 +68,7 @@ testthat::test_that(
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
-    # ggstatsplot output
+    # `statsExpressions` output
     set.seed(123)
     using_function1 <-
       suppressWarnings(
@@ -83,9 +80,8 @@ testthat::test_that(
           x = genre,
           y = rating,
           effsize.type = "g",
-          effsize.noncentral = FALSE,
           var.equal = FALSE,
-          conf.level = .90,
+          conf.level = 0.90,
           k = 3,
           messages = FALSE
         )
@@ -112,9 +108,9 @@ testthat::test_that(
           "-0.863",
           ", CI"["90%"],
           " [",
-          "-1.014",
+          "-0.886",
           ", ",
-          "-0.713",
+          "-0.611",
           "]",
           ", ",
           italic("n")["obs"],
@@ -135,7 +131,7 @@ testthat::test_that(
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
-    # output from ggstatsplot helper subtitle
+    # output from `statsExpressions` helper subtitle
     set.seed(123)
     subtitle <-
       suppressWarnings(statsExpressions::expr_t_parametric(
@@ -168,12 +164,12 @@ testthat::test_that(
           ", ",
           widehat(italic("g")),
           " = ",
-          "2.8282",
+          "2.8283",
           ", CI"["50%"],
           " [",
-          "2.7224",
+          "2.7086",
           ", ",
-          "2.9710",
+          "2.9560",
           "]",
           ", ",
           italic("n")["pairs"],
@@ -195,7 +191,7 @@ testthat::test_that(
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
-    # output from ggstatsplot helper subtitle
+    # output from `statsExpressions` helper subtitle
     set.seed(123)
     subtitle <-
       statsExpressions::expr_t_parametric(
@@ -204,7 +200,6 @@ testthat::test_that(
         y = desire,
         paired = TRUE,
         effsize.type = "d",
-        effsize.noncentral = TRUE,
         k = 3
       )
 

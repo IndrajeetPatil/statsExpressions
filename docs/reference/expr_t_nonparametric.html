@@ -235,7 +235,7 @@ independent/between-subjects designs, and to total number of <em>pairs</em> (and
 <p><em>Note:</em> The <em>stats::wilcox.test</em> function does not follow the
 same convention as <em>stats::t.test</em>. The sign of the <em>V</em> test statistic
 will always be positive since it is <strong>the sum of the positive signed ranks</strong>.
-Therefore <em>V</em> will vary in magnitude but not significance based solely
+Therefore, <em>V</em> will vary in magnitude but not significance based solely
 on the order of the grouping variable. Consider manually
 reordering your factor levels if appropriate as shown in the second example
 below.</p>
@@ -282,9 +282,7 @@ below.</p>
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 34L)</div><div class='input'>
 <span class='co'># The order of the grouping factor matters when computing *V*</span>
 <span class='co'># Changing default alphabetical order manually</span>
-<span class='no'>msleep_short</span>$<span class='no'>vore</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='no'>msleep_short</span>$<span class='no'>vore</span>,
-  <span class='kw'>levels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"herbi"</span>, <span class='st'>"carni"</span>)
-)
+<span class='no'>msleep_short</span>$<span class='no'>vore</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='no'>msleep_short</span>$<span class='no'>vore</span>, <span class='kw'>levels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"herbi"</span>, <span class='st'>"carni"</span>))
 
 <span class='co'># note the change in the reported *V* value but the identical</span>
 <span class='co'># value for *p* and the reversed effect size</span>
@@ -298,6 +296,7 @@ below.</p>
 #&gt;     " = ", "-0.23", ", CI"["95%"], " [", "-0.60", ", ", "0.12", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 34L)</div><div class='input'>
 <span class='co'># -------------- within-subjects design ------------------------</span>
+
 <span class='co'># using dataset included in the package</span>
 <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_nonparametric</span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>VR_dilemma</span>,
@@ -307,12 +306,12 @@ below.</p>
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.90</span>,
   <span class='kw'>conf.type</span> <span class='kw'>=</span> <span class='st'>"perc"</span>,
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>200</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>5</span>
+  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>4</span>
 )</div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>90%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>200</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("V")["Wilcoxon"]), " = ", "1.50408", 
-#&gt;     ", ", italic("p"), " = ", "&lt; 0.001", ", ", widehat(italic("r")), 
-#&gt;     " = ", "-0.57452", ", CI"["90%"], " [", "-0.68428", ", ", 
-#&gt;     "-0.44265", "]", ", ", italic("n")["pairs"], " = ", 34L)</div><div class='input'># }
+#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("V")["Wilcoxon"]), " = ", "1.5041", 
+#&gt;     ", ", italic("p"), " = ", "9e-04", ", ", widehat(italic("r")), 
+#&gt;     " = ", "-0.5745", ", CI"["90%"], " [", "-0.6843", ", ", "-0.4427", 
+#&gt;     "]", ", ", italic("n")["pairs"], " = ", 34L)</div><div class='input'># }
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

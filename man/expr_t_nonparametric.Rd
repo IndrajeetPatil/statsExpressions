@@ -71,7 +71,7 @@ independent/between-subjects designs, and to total number of \emph{pairs} (and
 \emph{Note:} The \emph{stats::wilcox.test} function does not follow the
 same convention as \emph{stats::t.test}. The sign of the \emph{V} test statistic
 will always be positive since it is \strong{the sum of the positive signed ranks}.
-Therefore \emph{V} will vary in magnitude but not significance based solely
+Therefore, \emph{V} will vary in magnitude but not significance based solely
 on the order of the grouping variable. Consider manually
 reordering your factor levels if appropriate as shown in the second example
 below.
@@ -108,9 +108,7 @@ statsExpressions::expr_t_nonparametric(
 
 # The order of the grouping factor matters when computing *V*
 # Changing default alphabetical order manually
-msleep_short$vore <- factor(msleep_short$vore,
-  levels = c("herbi", "carni")
-)
+msleep_short$vore <- factor(msleep_short$vore, levels = c("herbi", "carni"))
 
 # note the change in the reported *V* value but the identical
 # value for *p* and the reversed effect size
@@ -121,6 +119,7 @@ statsExpressions::expr_t_nonparametric(
 )
 
 # -------------- within-subjects design ------------------------
+
 # using dataset included in the package
 statsExpressions::expr_t_nonparametric(
   data = VR_dilemma,
@@ -130,14 +129,11 @@ statsExpressions::expr_t_nonparametric(
   conf.level = 0.90,
   conf.type = "perc",
   nboot = 200,
-  k = 5
+  k = 4
 )
 }
 }
 \references{
 For more details, see-
 \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
-}
-\author{
-\href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 }

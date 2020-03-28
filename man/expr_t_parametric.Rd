@@ -10,7 +10,6 @@ expr_t_parametric(
   y,
   paired = FALSE,
   effsize.type = "g",
-  effsize.noncentral = TRUE,
   conf.level = 0.95,
   var.equal = FALSE,
   k = 2,
@@ -34,10 +33,6 @@ repeated measures/within-subjects or between-subjects. The default is
 \item{effsize.type}{Type of effect size needed for \emph{parametric} tests. The
 argument can be \code{"biased"} (\code{"d"} for Cohen's \emph{d}) or \code{"unbiased"}
 (\code{"g"} Hedge's \emph{g} for \strong{t-test}). The default is \code{"g"}.}
-
-\item{effsize.noncentral}{Logical indicating whether to use non-central
-\emph{t}-distributions for computing the confidence interval for Cohen's \emph{d}
-or Hedge's \emph{g} (Default: \code{TRUE}).}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} lower and upper confidence intervals (\code{0.95}).}
@@ -77,8 +72,7 @@ used. If a paired samples \emph{t}-test was requested, then effect size desired
 is based on the standard deviation of the differences.
 
 The computation of the confidence intervals defaults to a use of
-non-central Student-\emph{t} distributions (\code{effsize.noncentral = TRUE});
-otherwise a central distribution is used.
+non-central Student-\emph{t} distributions.
 
 When computing confidence intervals the variance of the effect size \emph{d} or
 \emph{g} is computed using the conversion formula reported in Cooper et al.
@@ -115,7 +109,4 @@ statsExpressions::expr_t_parametric(
 \references{
 For more details, see-
 \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
-}
-\author{
-\href{https://github.com/IndrajeetPatil}{Indrajeet Patil}, Chuck Powell
 }

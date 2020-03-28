@@ -35,59 +35,12 @@ testthat::test_that(
           ", ",
           widehat(italic("g")),
           " = ",
-          "-0.29802",
+          "-0.29805",
           ", CI"["95%"],
           " [",
-          "-0.52889",
+          "-0.52379",
           ", ",
-          "-0.07501",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          79L
-        )
-      )
-
-    # Hedge's g and central
-    set.seed(123)
-    using_function2 <-
-      suppressWarnings(
-        statsExpressions::expr_t_onesample(
-          data = dplyr::sample_frac(movies_long, 0.05),
-          x = length,
-          test.value = 120,
-          type = "p",
-          effsize.noncentral = FALSE,
-          k = 3,
-          conf.level = 0.99,
-          messages = FALSE
-        )
-      )
-
-    set.seed(123)
-    results2 <-
-      ggplot2::expr(
-        paste(
-          NULL,
-          italic("t")["Student"],
-          "(",
-          "78",
-          ") = ",
-          "-2.675",
-          ", ",
-          italic("p"),
-          " = ",
-          "0.009",
-          ", ",
-          widehat(italic("g")),
-          " = ",
-          "-0.298",
-          ", CI"["99%"],
-          " [",
-          "-0.600",
-          ", ",
-          "-0.004",
+          "-0.07429",
           "]",
           ", ",
           italic("n")["obs"],
@@ -98,7 +51,7 @@ testthat::test_that(
 
     # Cohen's d and non-central
     set.seed(123)
-    using_function3 <-
+    using_function2 <-
       suppressWarnings(
         statsExpressions::expr_t_onesample(
           data = dplyr::sample_frac(movies_long, 0.05),
@@ -106,16 +59,14 @@ testthat::test_that(
           test.value = 120,
           type = "p",
           effsize.type = "d",
-          effsize.noncentral = TRUE,
           k = 4,
           conf.level = 0.90,
-          conf.type = "bca",
           messages = FALSE
         )
       )
 
     set.seed(123)
-    results3 <-
+    results2 <-
       ggplot2::expr(
         paste(
           NULL,
@@ -145,60 +96,9 @@ testthat::test_that(
         )
       )
 
-    # Cohen's d and central
-    set.seed(123)
-    using_function4 <-
-      suppressWarnings(
-        statsExpressions::expr_t_onesample(
-          data = dplyr::sample_frac(movies_long, 0.05),
-          x = "length",
-          test.value = 120,
-          type = "p",
-          effsize.type = "d",
-          effsize.noncentral = FALSE,
-          k = 2,
-          conf.level = 0.50,
-          conf.type = "perc",
-          messages = TRUE
-        )
-      )
-
-    set.seed(123)
-    results4 <-
-      ggplot2::expr(
-        paste(
-          NULL,
-          italic("t")["Student"],
-          "(",
-          "78",
-          ") = ",
-          "-2.67",
-          ", ",
-          italic("p"),
-          " = ",
-          "0.009",
-          ", ",
-          widehat(italic("d")),
-          " = ",
-          "-0.30",
-          ", CI"["50%"],
-          " [",
-          "-0.38",
-          ", ",
-          "-0.22",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          79L
-        )
-      )
-
     # testing overall call
     testthat::expect_identical(using_function1, results1)
     testthat::expect_identical(using_function2, results2)
-    testthat::expect_identical(using_function3, results3)
-    testthat::expect_identical(using_function4, results4)
   }
 )
 

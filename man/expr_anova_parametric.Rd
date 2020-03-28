@@ -12,7 +12,6 @@ expr_anova_parametric(
   effsize.type = "unbiased",
   partial = TRUE,
   conf.level = 0.95,
-  nboot = 100,
   var.equal = FALSE,
   sphericity.correction = TRUE,
   k = 2,
@@ -40,16 +39,10 @@ argument can be \code{"biased"} (equivalent to \code{"d"} for Cohen's \emph{d} f
 \code{"unbiased"} (equivalent to \code{"g"} Hedge's \emph{g} for \strong{t-test};
 \code{"partial_omega"} for partial omega-squared for \strong{anova})).}
 
-\item{partial}{Logical that decides if partial eta-squared or omega-squared
-are returned (Default: \code{TRUE}). If \code{FALSE}, eta-squared or omega-squared
-will be returned. Valid only for objects of class \code{lm}, \code{aov}, \code{anova}, or
-\code{aovlist}.}
+\item{partial}{If \code{TRUE}, return partial indices.}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} lower and upper confidence intervals (\code{0.95}).}
-
-\item{nboot}{Number of bootstrap samples for computing confidence interval
-for the effect size (Default: \code{100}).}
 
 \item{var.equal}{a logical variable indicating whether to treat the
     variances in the samples as equal.  If \code{TRUE}, then a simple F
@@ -79,11 +72,12 @@ For more details, see-
 \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }
 \description{
-Making expression containing parametric ANOVA results
+The effect sizes and their confidence intervals are computed
+using \code{effectsize::eta_squared} and \code{effectsize::omega_squared} functions.
 }
 \note{
-For repeated measures designs (\code{paired = TRUE}), only omega-squared and
-partial eta-squared effect sizes are supported.
+For repeated measures designs (\code{paired = TRUE}), only partial
+omega-squared and partial eta-squared are supported.
 }
 \examples{
 \donttest{
@@ -108,10 +102,9 @@ statsExpressions::expr_anova_parametric(
   x = vore,
   y = sleep_rem,
   paired = FALSE,
-  effsize.type = "biased",
+  effsize.type = "eta",
   partial = FALSE,
-  var.equal = TRUE,
-  nboot = 10
+  var.equal = TRUE
 )
 
 # -------------------- repeated measures ------------------------------
