@@ -144,11 +144,20 @@
 <h1 class="page-header" data-toc-text="0.4.0.9000">
 <a href="#statsexpressions-0409000" class="anchor"></a>statsExpressions 0.4.0.9000<small> Unreleased </small>
 </h1>
+<p>BREAKING CHANGES</p>
 <ul>
-<li><p>All expressions now contain a hint about which test is being displayed.</p></li>
-<li><p>All Bayes Factor related functions have now moved to the new <code>tidyBF</code> package and are re-exported from there.</p></li>
 <li><p>Removes the experimental <code>corr_objects</code> function.</p></li>
+<li><p>All Bayes Factor related functions have now moved to the new <code>tidyBF</code> package and are re-exported from there.</p></li>
+</ul>
+<p>MAJOR CHANGES</p>
+<ul>
+<li><p>Retires the internal <code>effsize_t_parametric</code> helper function in favor of relying functions from <code>effectsize</code>, which is now added as a dependency. Similarly, <code>statsExpressions</code> now relies on <code>effectsize</code> to compute effect sizes for ANOVA designs, instead of <code>sjstats</code>.</p></li>
+<li><p>For parametric <em>t</em>-tests and ANOVAs, confidence intervals for effect sizes are estimated using the noncentrality parameter method. Centrality-based methods are deprecated.</p></li>
 <li><p>Correlation analysis is carried out using <code>correlation</code> package, which is now added as a dependency.</p></li>
+</ul>
+<p>MINOR CHANGES</p>
+<ul>
+<li>All expressions now contain name of the statistical test carried out.</li>
 </ul>
 </div>
     <div id="statsexpressions-031" class="section level1">
@@ -188,8 +197,8 @@
 </ul>
 <p>MINOR CHANGES</p>
 <ul>
-<li>Minor tweaks to how widehat is displayed in some of the expressions.</li>
-<li>Cramer’s <em>V</em> is bias-corrected by default.</li>
+<li><p>Minor tweaks to how widehat is displayed in some of the expressions.</p></li>
+<li><p>Cramer’s <em>V</em> is bias-corrected by default.</p></li>
 </ul>
 </div>
     <div id="statsexpressions-013" class="section level1">

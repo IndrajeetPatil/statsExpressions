@@ -3,11 +3,11 @@ Package: statsExpressions
 Title: Expressions with Statistical Details
 Version: 0.4.0.9000
 Authors@R: 
-    c(person(given = "Indrajeet",
-             family = "Patil",
-             role = c("cre", "aut", "ctb"),
-             email = "patilindrajeet.science@gmail.com",
-             comment = c(ORCID = "0000-0003-1995-6531")))
+    person(given = "Indrajeet",
+           family = "Patil",
+           role = c("cre", "aut", "ctb"),
+           email = "patilindrajeet.science@gmail.com",
+           comment = c(ORCID = "0000-0003-1995-6531"))
 Maintainer: Indrajeet Patil <patilindrajeet.science@gmail.com>
 Description: Statistical processing backend for 'ggstatsplot',
     this package creates expressions with details from statistical tests.
@@ -27,6 +27,7 @@ Imports:
     broomExtra,
     correlation (>= 0.1.1),
     dplyr,
+    effectsize (>= 0.3.0),
     ez,
     ipmisc (>= 1.3.0),
     metafor,
@@ -34,7 +35,6 @@ Imports:
     purrr,
     rcompanion,
     rlang,
-    sjstats,
     stats,
     tibble,
     tidyBF (>= 0.1.0.9000),
@@ -46,12 +46,13 @@ Suggests:
     rmarkdown,
     spelling,
     testthat
-Remotes:
-    IndrajeetPatil/tidyBF,
-    IndrajeetPatil/ipmisc,
-    easystats/correlation
 VignetteBuilder: 
     knitr
+Remotes:
+    easystats/correlation,
+    easystats/effectsize,
+    IndrajeetPatil/ipmisc,
+    IndrajeetPatil/tidyBF
 Encoding: UTF-8
 Language: en-US
 LazyData: true

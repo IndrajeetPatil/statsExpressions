@@ -1,7 +1,6 @@
 #' @title Expression for one sample *t*-test and its non-parametric and
 #'   robust equivalents
 #' @name expr_t_onesample
-#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
 #' @param x A numeric variable.
 #' @param test.value A number specifying the value of the null hypothesis
@@ -26,11 +25,14 @@
 #' @references For more details, see-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
-#' @importFrom dplyr select bind_rows summarize mutate mutate_at mutate_if
-#' @importFrom dplyr group_by n arrange
+#' @importFrom dplyr select mutate pull rename_all recode
 #' @importFrom WRS2 onesampb
 #' @importFrom rcompanion wilcoxonOneSampleR
 #' @importFrom ipmisc stats_type_switch
+#' @importFrom effectsize cohens_d hedges_g
+#' @importFrom stats t.test wilcox.test
+#' @importFrom rlang !! ensym new_formula exec
+#' @importFrom broomExtra easystats_to_tidy_names
 #'
 #' @examples
 #' \donttest{
@@ -83,7 +85,6 @@ expr_t_onesample <- function(data,
                              bf.prior = 0.707,
                              robust.estimator = "onestep",
                              effsize.type = "g",
-                             effsize.noncentral = TRUE,
                              conf.level = 0.95,
                              conf.type = "norm",
                              nboot = 100,
@@ -114,35 +115,37 @@ expr_t_onesample <- function(data,
   if (stats.type == "parametric") {
     # deciding which effect size to use (Hedge's g or Cohen's d)
     if (effsize.type %in% c("unbiased", "g")) {
-      hedges.correction <- TRUE
-      effsize.text <- quote(widehat(italic("g")))
+      effsize.text <- quote(widehat(italic("g"))["Hedge"])
+      .f <- effectsize::hedges_g
     } else {
-      hedges.correction <- FALSE
-      effsize.text <- quote(widehat(italic("d")))
+      effsize.text <- quote(widehat(italic("d"))["Cohen"])
+      .f <- effectsize::cohens_d
     }
 
-    # creating model object
-    mod_object <-
-      stats::t.test(
+    # setting up the t-test model and getting its summary
+    stats_df <-
+      broomExtra::tidy(stats::t.test(
         x = data %>% dplyr::pull({{ x }}),
         mu = test.value,
         conf.level = conf.level,
         alternative = "two.sided",
         na.action = na.omit
-      )
-
-    # tidy dataframe
-    stats_df <- broomExtra::tidy(mod_object)
+      ))
 
     # creating effect size info
     effsize_df <-
-      effsize_t_parametric(
-        formula = rlang::new_formula(NULL, {{ x }}),
-        data = data,
-        tobject = mod_object,
-        mu = test.value,
-        hedges.correction = hedges.correction,
-        conf.level = conf.level
+      rlang::exec(
+        .fn = .f,
+        x = data %>% dplyr::pull({{ x }}) - test.value,
+        correction = FALSE,
+        ci = conf.level
+      ) %>%
+      broomExtra::easystats_to_tidy_names(.) %>%
+      dplyr::rename_all(
+        .tbl = .,
+        .funs = dplyr::recode,
+        "cohens.d" = "estimate",
+        "hedges.g" = "estimate"
       )
 
     # preparing subtitle parameters

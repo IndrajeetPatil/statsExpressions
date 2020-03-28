@@ -1,20 +1,18 @@
 #' @title Making expression containing *t*-test results
 #' @name expr_t_parametric
-#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}, Chuck Powell
 #'
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
 #'   argument can be `"biased"` (`"d"` for Cohen's *d*) or `"unbiased"`
 #'   (`"g"` Hedge's *g* for **t-test**). The default is `"g"`.
-#' @param effsize.noncentral Logical indicating whether to use non-central
-#'   *t*-distributions for computing the confidence interval for Cohen's *d*
-#'   or Hedge's *g* (Default: `TRUE`).
 #' @inheritParams expr_anova_parametric
 #' @inheritParams stats::t.test
 #' @inheritParams expr_template
 #'
-#' @importFrom dplyr select mutate_at matches vars starts_with ends_with
-#' @importFrom rlang !! enquo ensym
-#' @importFrom stats t.test na.omit qt pt uniroot
+#' @importFrom dplyr select rename_all recode mutate
+#' @importFrom rlang !! ensym new_formula exec
+#' @importFrom tidyr drop_na
+#' @importFrom stats t.test
+#' @importFrom effectsize cohens_d hedges_g
 #'
 #' @return Expression containing details from results of a two-sample test and
 #'   effect size plus confidence intervals.
@@ -33,8 +31,7 @@
 #'   is based on the standard deviation of the differences.
 #'
 #'   The computation of the confidence intervals defaults to a use of
-#'   non-central Student-*t* distributions (`effsize.noncentral = TRUE`);
-#'   otherwise a central distribution is used.
+#'   non-central Student-*t* distributions.
 #'
 #'   When computing confidence intervals the variance of the effect size *d* or
 #'   *g* is computed using the conversion formula reported in Cooper et al.
@@ -75,7 +72,6 @@ expr_t_parametric <- function(data,
                               y,
                               paired = FALSE,
                               effsize.type = "g",
-                              effsize.noncentral = TRUE,
                               conf.level = 0.95,
                               var.equal = FALSE,
                               k = 2,
@@ -102,7 +98,7 @@ expr_t_parametric <- function(data,
 
   # remove NAs listwise for between-subjects design
   if (isFALSE(paired)) {
-    data %<>% tidyr::drop_na(data = .)
+    data %<>% tidyr::drop_na(.)
 
     # sample size
     sample_size <- nrow(data)
@@ -111,38 +107,41 @@ expr_t_parametric <- function(data,
 
   # deciding which effect size to use (Hedge's g or Cohen's d)
   if (effsize.type %in% c("unbiased", "g")) {
-    hedges.correction <- TRUE
-    effsize.text <- quote(widehat(italic("g")))
+    effsize.text <- quote(widehat(italic("g"))["Hedge"])
+    .f <- effectsize::hedges_g
   } else {
-    hedges.correction <- FALSE
-    effsize.text <- quote(widehat(italic("d")))
+    effsize.text <- quote(widehat(italic("d"))["Cohen"])
+    .f <- effectsize::cohens_d
   }
 
   # setting up the t-test model and getting its summary
-  tobject <-
-    stats::t.test(
+  stats_df <-
+    broomExtra::tidy(stats::t.test(
       formula = rlang::new_formula({{ y }}, {{ x }}),
       data = data,
       paired = paired,
       alternative = "two.sided",
       var.equal = var.equal,
       na.action = na.omit
-    )
-
-  # tidy dataframe from model object
-  stats_df <- broomExtra::tidy(tobject)
+    ))
 
   # effect size object
   effsize_df <-
-    effsize_t_parametric(
-      formula = rlang::new_formula({{ y }}, {{ x }}),
+    rlang::exec(
+      .fn = .f,
+      x = rlang::new_formula({{ y }}, {{ x }}),
       data = data,
+      correction = FALSE,
       paired = paired,
-      hedges.correction = hedges.correction,
-      conf.level = conf.level,
-      noncentral = effsize.noncentral,
-      var.equal = var.equal,
-      tobject = tobject
+      pooled_sd = var.equal,
+      ci = conf.level
+    ) %>%
+    broomExtra::easystats_to_tidy_names(.) %>%
+    dplyr::rename_all(
+      .tbl = .,
+      .funs = dplyr::recode,
+      "cohens.d" = "estimate",
+      "hedges.g" = "estimate"
     )
 
   # when paired samples t-test is run df is going to be integer
@@ -173,7 +172,7 @@ expr_t_parametric <- function(data,
 
 
 #' @title Making expression for Mann-Whitney *U*-test/Wilcoxon test results
-#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
+#' @name expr_t_nonparametric
 #'
 #' @inheritParams expr_anova_parametric
 #' @inheritParams expr_t_parametric
@@ -198,7 +197,7 @@ expr_t_parametric <- function(data,
 #'   *Note:* The *stats::wilcox.test* function does not follow the
 #'   same convention as *stats::t.test*. The sign of the *V* test statistic
 #'   will always be positive since it is **the sum of the positive signed ranks**.
-#'   Therefore *V* will vary in magnitude but not significance based solely
+#'   Therefore, *V* will vary in magnitude but not significance based solely
 #'   on the order of the grouping variable. Consider manually
 #'   reordering your factor levels if appropriate as shown in the second example
 #'   below.
@@ -238,9 +237,7 @@ expr_t_parametric <- function(data,
 #'
 #' # The order of the grouping factor matters when computing *V*
 #' # Changing default alphabetical order manually
-#' msleep_short$vore <- factor(msleep_short$vore,
-#'   levels = c("herbi", "carni")
-#' )
+#' msleep_short$vore <- factor(msleep_short$vore, levels = c("herbi", "carni"))
 #'
 #' # note the change in the reported *V* value but the identical
 #' # value for *p* and the reversed effect size
@@ -251,6 +248,7 @@ expr_t_parametric <- function(data,
 #' )
 #'
 #' # -------------- within-subjects design ------------------------
+#'
 #' # using dataset included in the package
 #' statsExpressions::expr_t_nonparametric(
 #'   data = VR_dilemma,
@@ -260,7 +258,7 @@ expr_t_parametric <- function(data,
 #'   conf.level = 0.90,
 #'   conf.type = "perc",
 #'   nboot = 200,
-#'   k = 5
+#'   k = 4
 #' )
 #' }
 #' @export

@@ -173,6 +173,19 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "effectsize",
+      "name": "effectsize",
+      "version": ">= 0.3.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://github.com/easystats/effectsize"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "ez",
       "name": "ez",
       "provider": {
@@ -255,18 +268,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=rlang"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "sjstats",
-      "name": "sjstats",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=sjstats"
     },
     {
       "@type": "SoftwareApplication",

@@ -1,14 +1,29 @@
 # statsExpressions 0.4.0.9000
 
-  - All expressions now contain a hint about which test is being displayed.
+BREAKING CHANGES
 
+  - Removes the experimental `corr_objects` function.
+  
   - All Bayes Factor related functions have now moved to the new `tidyBF`
     package and are re-exported from there.
   
-  - Removes the experimental `corr_objects` function.
-  
+MAJOR CHANGES
+
+  - Retires the internal `effsize_t_parametric` helper function in favor of
+    relying functions from `effectsize`, which is now added as a dependency.
+    Similarly, `statsExpressions` now relies on `effectsize` to compute effect
+    sizes for ANOVA designs, instead of `sjstats`.
+
+  - For parametric *t*-tests and ANOVAs, confidence intervals for effect sizes
+    are estimated using the noncentrality parameter method. Centrality-based
+    methods are deprecated.
+
   - Correlation analysis is carried out using `correlation` package, which is
     now added as a dependency.
+
+MINOR CHANGES
+  
+  - All expressions now contain name of the statistical test carried out.
 
 # statsExpressions 0.3.1
  
@@ -41,6 +56,7 @@ BREAKING CHANGES
 MINOR CHANGES
 
   - Minor tweaks to how widehat is displayed in some of the expressions. 
+  
   - Cramer's *V* is bias-corrected by default.
  
 # statsExpressions 0.1.3

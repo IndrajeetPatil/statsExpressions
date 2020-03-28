@@ -13,7 +13,6 @@ expr_t_onesample(
   bf.prior = 0.707,
   robust.estimator = "onestep",
   effsize.type = "g",
-  effsize.noncentral = TRUE,
   conf.level = 0.95,
   conf.type = "norm",
   nboot = 100,
@@ -47,10 +46,6 @@ width to use in calculating Bayes factors.}
 \item{effsize.type}{Type of effect size needed for \emph{parametric} tests. The
 argument can be \code{"biased"} (\code{"d"} for Cohen's \emph{d}) or \code{"unbiased"}
 (\code{"g"} Hedge's \emph{g} for \strong{t-test}). The default is \code{"g"}.}
-
-\item{effsize.noncentral}{Logical indicating whether to use non-central
-\emph{t}-distributions for computing the confidence interval for Cohen's \emph{d}
-or Hedge's \emph{g} (Default: \code{TRUE}).}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} lower and upper confidence intervals (\code{0.95}).}
@@ -129,7 +124,4 @@ statsExpressions::expr_t_onesample(
 \references{
 For more details, see-
 \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
-}
-\author{
-\href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 }

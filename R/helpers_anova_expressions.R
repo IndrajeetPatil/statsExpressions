@@ -5,8 +5,11 @@
 #' @return For more details, see-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
-#' @note For repeated measures designs (`paired = TRUE`), only omega-squared and
-#'   partial eta-squared effect sizes are supported.
+#' @note For repeated measures designs (`paired = TRUE`), only partial
+#'   omega-squared and partial eta-squared are supported.
+#'
+#' @description The effect sizes and their confidence intervals are computed
+#'   using `effectsize::eta_squared` and `effectsize::omega_squared` functions.
 #'
 #' @inheritParams t1way_ci
 #' @param paired Logical that decides whether the experimental design is
@@ -25,13 +28,14 @@
 #' @inheritParams expr_template
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams stats::oneway.test
-#' @inheritParams groupedstats::lm_effsize_standardizer
-#'
+#' @inheritParams effectsize::eta_squared
 #'
 #' @importFrom dplyr select rename matches
-#' @importFrom rlang !! enquo eval_tidy expr ensym
-#' @importFrom stats aov oneway.test na.omit
+#' @importFrom rlang !! enquo eval_tidy expr ensym exec
+#' @importFrom stats aov oneway.test
 #' @importFrom ez ezANOVA
+#' @importFrom effectsize eta_squared omega_squared
+#' @importFrom broomExtra easystats_to_tidy_names
 #'
 #' @examples
 #' \donttest{
@@ -56,10 +60,9 @@
 #'   x = vore,
 #'   y = sleep_rem,
 #'   paired = FALSE,
-#'   effsize.type = "biased",
+#'   effsize.type = "eta",
 #'   partial = FALSE,
-#'   var.equal = TRUE,
-#'   nboot = 10
+#'   var.equal = TRUE
 #' )
 #'
 #' # -------------------- repeated measures ------------------------------
@@ -83,7 +86,6 @@ expr_anova_parametric <- function(data,
                                   effsize.type = "unbiased",
                                   partial = TRUE,
                                   conf.level = 0.95,
-                                  nboot = 100,
                                   var.equal = FALSE,
                                   sphericity.correction = TRUE,
                                   k = 2,
@@ -106,7 +108,7 @@ expr_anova_parametric <- function(data,
   effsize.type <- effsize_type_switch(effsize.type)
 
   # some of the effect sizes don't work properly for paired designs
-  if (isTRUE(paired)) partial <- ifelse(effsize.type == "unbiased", FALSE, TRUE)
+  if (isTRUE(paired)) partial <- TRUE
 
   # omega
   if (effsize.type == "unbiased") {
@@ -155,7 +157,7 @@ expr_anova_parametric <- function(data,
       message(cat(
         ipmisc::red("Warning: "),
         ipmisc::blue("No. of factor levels is greater than no. of observations per cell.\n"),
-        ipmisc::blue("No sphericity correction applied. Interpret the results with caution.\n")
+        ipmisc::blue("No sphericity correction applied. Interpret results with caution.\n")
       ),
       sep = ""
       )
@@ -242,18 +244,27 @@ expr_anova_parametric <- function(data,
       )
   }
 
-  # creating a standardized dataframe with effect size and its CIs
-  effsize_df <-
-    aov_effsize(
-      model = effsize_object,
-      effsize = effsize,
-      partial = partial,
-      ci = conf.level,
-      iterations = nboot
-    )
+  # ------------------- effect size computation ------------------------------
 
-  # message about effect size measure
-  if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)
+  # function to compute effect sizes
+  if (effsize == "eta") {
+    .f <- effectsize::eta_squared
+  } else {
+    .f <- effectsize::omega_squared
+  }
+
+  # computing effect size
+  effsize_df <-
+    rlang::exec(
+      .fn = .f,
+      model = effsize_object,
+      partial = partial,
+      ci.lvl = conf.level
+    ) %>%
+    broomExtra::easystats_to_tidy_names(.) %>% # renaming to standard term 'estimate'
+    dplyr::rename(.data = ., estimate = dplyr::matches("eta|omega")) %>%
+    dplyr::filter(.data = ., !is.na(estimate)) %>%
+    dplyr::filter(.data = ., !grepl(pattern = "Residuals", x = term, ignore.case = TRUE))
 
   # test details
   statistic.text <-
@@ -298,7 +309,7 @@ expr_anova_parametric <- function(data,
 #'
 #' @importFrom dplyr select
 #' @importFrom rlang !! enquo
-#' @importFrom stats friedman.test kruskal.test
+#' @importFrom stats friedman.test kruskal.test na.omit
 #' @importFrom broomExtra tidy
 #' @importFrom rcompanion epsilonSquared kendallW
 #'
