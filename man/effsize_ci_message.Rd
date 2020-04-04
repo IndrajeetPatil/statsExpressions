@@ -16,8 +16,5 @@ for the effect size (Default: \code{100}).}
 \description{
 Message about bootstrapped confidence intervals for effect sizes.
 }
-\author{
-\href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
-}
 \concept{helper_messages}
 \keyword{internal}

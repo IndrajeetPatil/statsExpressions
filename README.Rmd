@@ -44,7 +44,7 @@ create these expressions.
 To get the latest, stable `CRAN` release:
 
 ```{r installationCRAN, eval = FALSE}
-install.packages(pkgs = "statsExpressions")
+install.packages("statsExpressions")
 ```
 
 You can get the **development** version of the package from `GitHub`. To see

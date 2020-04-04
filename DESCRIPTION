@@ -51,6 +51,7 @@ VignetteBuilder:
 Remotes:
     easystats/correlation,
     easystats/effectsize,
+    IndrajeetPatil/broomExtra,
     IndrajeetPatil/ipmisc,
     IndrajeetPatil/tidyBF
 Encoding: UTF-8

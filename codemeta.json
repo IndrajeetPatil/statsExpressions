@@ -145,7 +145,7 @@
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=broomExtra"
+      "sameAs": "https://github.com/IndrajeetPatil/broomExtra"
     },
     {
       "@type": "SoftwareApplication",

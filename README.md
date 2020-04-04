@@ -26,7 +26,7 @@ functions needed to create these expressions.
 To get the latest, stable `CRAN` release:
 
 ``` r
-install.packages(pkgs = "statsExpressions")
+install.packages("statsExpressions")
 ```
 
 You can get the **development** version of the package from `GitHub`. To

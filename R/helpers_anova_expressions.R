@@ -566,7 +566,7 @@ expr_anova_robust <- function(data,
     subtitle <-
       substitute(
         expr = paste(
-          italic("F"),
+          italic("F")["trimmed-means"],
           "(",
           df1,
           ",",
@@ -596,7 +596,7 @@ expr_anova_robust <- function(data,
 
   if (isFALSE(paired)) {
     # remove NAs listwise for between-subjects design
-    data %<>% tidyr::drop_na(data = .)
+    data %<>% tidyr::drop_na(.)
 
     # sample size
     sample_size <- nrow(data)
@@ -625,7 +625,7 @@ expr_anova_robust <- function(data,
         stat.title = stat.title,
         stats.df = stats_df,
         effsize.df = effsize_df,
-        statistic.text = quote(italic("F")),
+        statistic.text = quote(italic("F")["trimmed-means"]),
         effsize.text = quote(widehat(italic(xi))),
         n = sample_size,
         n.text = n.text,

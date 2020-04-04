@@ -25,7 +25,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic("F"),
+          italic("F")["trimmed-means"],
           "(",
           "2",
           ",",
@@ -76,7 +76,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic("F"),
+          italic("F")["trimmed-means"],
           "(",
           "2",
           ",",
@@ -132,7 +132,7 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          italic("F"),
+          italic("F")["trimmed-means"],
           "(",
           "2.7303",
           ",",
@@ -169,7 +169,7 @@ testthat::test_that(
     results2 <-
       ggplot2::expr(
         paste(
-          italic("F"),
+          italic("F")["trimmed-means"],
           "(",
           "1.091",
           ",",

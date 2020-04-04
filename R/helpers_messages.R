@@ -1,6 +1,5 @@
 #' @title Message about bootstrapped confidence intervals for effect sizes.
 #' @name effsize_ci_message
-#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
 #' @inheritParams t1way_ci
 #'

@@ -352,7 +352,6 @@ expr_t_nonparametric <- function(data,
 
 #' @title Expression containing results from a robust *t*-test
 #' @name expr_t_robust
-#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
 #' @references For more details, see-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
@@ -523,10 +522,11 @@ expr_t_robust <- function(data,
 
 #' @title Making expression containing Bayesian *t*-test results
 #' @name expr_t_bayes
-#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
 #' @references For more details, see-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
+#'
+#' @importFrom tidyBF bf_ttest
 #'
 #' @inheritParams expr_t_parametric
 #' @inheritParams expr_anova_parametric
@@ -569,15 +569,6 @@ expr_t_bayes <- function(data,
                          paired = FALSE,
                          k = 2,
                          ...) {
-  # make sure both quoted and unquoted arguments are supported
-  c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
-
-  # creating a dataframe
-  data %<>%
-    dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
-    dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    as_tibble(.)
-
   # prepare subtitle
   tidyBF::bf_ttest(
     data = data,
