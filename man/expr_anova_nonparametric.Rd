@@ -96,6 +96,3 @@ statsExpressions::expr_anova_nonparametric(
 )
 }
 }
-\author{
-\href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
-}

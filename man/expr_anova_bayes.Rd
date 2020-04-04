@@ -65,6 +65,3 @@ statsExpressions::expr_anova_bayes(
 )
 }
 }
-\author{
-\href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
-}

@@ -292,7 +292,6 @@ expr_anova_parametric <- function(data,
 
 #' @title Making text subtitle for non-parametric ANOVA.
 #' @name expr_anova_nonparametric
-#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
 #' @details For paired designs, the effect size is Kendall's coefficient of
 #'   concordance (*W*), while for between-subjects designs, the effect size is
@@ -464,7 +463,6 @@ expr_anova_nonparametric <- function(data,
 #' @title Expression containing results from heteroscedastic one-way ANOVA for
 #'   trimmed means
 #' @name expr_anova_robust
-#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
 #' @return For more details, see-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
@@ -645,7 +643,6 @@ expr_anova_robust <- function(data,
 
 #' @title Making expression containing Bayesian one-way ANOVA results.
 #' @name expr_anova_bayes
-#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
 #' @return For more details, see-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
@@ -653,9 +650,6 @@ expr_anova_robust <- function(data,
 #' @inheritParams expr_anova_parametric
 #' @inheritParams expr_t_bayes
 #'
-#' @importFrom dplyr select
-#' @importFrom rlang !! enquo
-#' @importFrom stats lm oneway.test na.omit
 #' @importFrom tidyBF bf_oneway_anova
 #'
 #' @examples
@@ -698,24 +692,6 @@ expr_anova_bayes <- function(data,
                              bf.prior = 0.707,
                              k = 2,
                              ...) {
-
-  # make sure both quoted and unquoted arguments are allowed
-  c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
-
-  # creating a dataframe
-  data %<>%
-    dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
-    dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    as_tibble(x = .)
-
-  # properly removing NAs if it's a paired design
-  # converting to long format and then getting it back in wide so that the
-  # rowid variable can be used as the block variable
-  if (isTRUE(paired)) data %<>% df_cleanup_paired(data = ., x = {{ x }}, y = {{ y }})
-
-  # remove NAs listwise for between-subjects design
-  if (isFALSE(paired)) data %<>% tidyr::drop_na(.)
-
   # bayes factor results
   tidyBF::bf_oneway_anova(
     data = data,

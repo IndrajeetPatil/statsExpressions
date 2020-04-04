@@ -110,6 +110,3 @@ statsExpressions::expr_anova_robust(
 )
 }
 }
-\author{
-\href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
-}
