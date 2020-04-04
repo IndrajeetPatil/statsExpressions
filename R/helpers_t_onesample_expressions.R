@@ -140,13 +140,7 @@ expr_t_onesample <- function(data,
         correction = FALSE,
         ci = conf.level
       ) %>%
-      broomExtra::easystats_to_tidy_names(.) %>%
-      dplyr::rename_all(
-        .tbl = .,
-        .funs = dplyr::recode,
-        "cohens.d" = "estimate",
-        "hedges.g" = "estimate"
-      )
+      broomExtra::easystats_to_tidy_names(.)
 
     # preparing subtitle parameters
     statistic.text <- quote(italic("t")["Student"])

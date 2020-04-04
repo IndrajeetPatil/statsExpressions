@@ -1,6 +1,5 @@
 #' @name expr_contingency_tab
 #' @title Making expression for contingency table and goodness of fit tests
-#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
 #' @return Expression for contingency analysis (Pearson's chi-square test for
 #'   independence for between-subjects design or McNemar's test for

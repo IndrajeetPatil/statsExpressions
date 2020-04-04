@@ -1,6 +1,5 @@
 #' @title Making expression for correlation analysis
 #' @name expr_corr_test
-#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
 #' @return Expression containing results from correlation test with confidence
 #'   intervals for the correlation coefficient estimate.
@@ -26,11 +25,9 @@
 #' @inheritParams expr_anova_parametric
 #' @inheritParams expr_anova_nonparametric
 #'
-#' @importFrom dplyr select
+#' @importFrom dplyr select rename_all recode
 #' @importFrom correlation correlation
 #' @importFrom broomExtra easystats_to_tidy_names
-#' @importFrom rlang !! enquo enexpr ensym enexpr
-#' @importFrom stats cor.test
 #' @importFrom rcompanion spearmanRho
 #' @importFrom ipmisc stats_type_switch
 #'
@@ -73,20 +70,6 @@ expr_corr_test <- function(data,
                            stat.title = NULL,
                            ...) {
 
-  # make sure both quoted and unquoted arguments are supported
-  c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
-
-  #------------------------ dataframe -------------------------------------
-
-  # if dataframe is provided
-  data %<>%
-    dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
-    tidyr::drop_na(.) %>%
-    as_tibble(.)
-
-  # the total sample size for analysis
-  sample_size <- nrow(data)
-
   # ============================ checking corr.method =======================
 
   # see which method was used to specify type of correlation
@@ -108,7 +91,7 @@ expr_corr_test <- function(data,
     # creating a dataframe of results
     stats_df <-
       correlation::correlation(
-        data = data,
+        data = dplyr::select(.data = data, {{ x }}, {{ y }}),
         method = corr.method,
         ci = conf.level,
         beta = beta
@@ -117,10 +100,7 @@ expr_corr_test <- function(data,
       dplyr::rename_all(
         .tbl = .,
         .funs = dplyr::recode,
-        "r" = "estimate",
-        "rho" = "estimate",
-        "df" = "parameter",
-        "s" = "statistic"
+        "df" = "parameter"
       )
 
     # effect size dataframe is the same one
@@ -182,7 +162,7 @@ expr_corr_test <- function(data,
         stat.title = stat.title,
         statistic.text = statistic.text,
         effsize.text = effsize.text,
-        n = sample_size,
+        n = stats_df$n.obs[[1]],
         conf.level = conf.level,
         k = k,
         n.text = quote(italic("n")["pairs"])

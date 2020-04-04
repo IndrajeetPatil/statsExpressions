@@ -1,6 +1,5 @@
 #' @title Template for subtitles with statistical details for tests
 #' @name expr_template
-#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
 #' @param no.parameters An integer that specifies that the number of parameters
 #'   for the statistical test. Can be `0` for non-parametric tests, `1` for

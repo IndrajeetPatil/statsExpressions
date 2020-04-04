@@ -111,6 +111,3 @@ statsExpressions::expr_template(
   k.parameter = 3L
 )
 }
-\author{
-\href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
-}

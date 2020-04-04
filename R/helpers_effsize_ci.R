@@ -206,7 +206,6 @@ extract_boot_output <- function(bootobj, fit, conf.type, conf.level) {
       .tbl = .,
       .funs = dplyr::recode,
       effsize = "estimate",
-      cor = "estimate",
       test = "statistic",
       se = "std.error",
       df = "parameter",

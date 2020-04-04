@@ -121,17 +121,15 @@ testthat::test_that(
     # using function
     set.seed(123)
     using_function <-
-      suppressWarnings(statsExpressions::expr_corr_test(
+      statsExpressions::expr_corr_test(
         data = ggplot2::msleep,
-        x = "brainwt",
+        x = names(ggplot2::msleep)[10],
         y = "sleep_total",
         type = "r",
         k = 4,
         conf.level = .50,
-        conf.type = "basic",
-        nboot = 25,
         messages = TRUE
-      ))
+      )
 
     # expected
     expected <-
@@ -180,14 +178,14 @@ testthat::test_that(
     # using function
     set.seed(123)
     using_function <-
-      suppressWarnings(statsExpressions::expr_corr_test(
+      statsExpressions::expr_corr_test(
         data = ggplot2::msleep,
         x = "brainwt",
         y = sleep_rem,
         type = "bf",
         k = 3,
         messages = FALSE
-      ))
+      )
 
     # expected
     expected <-

@@ -50,7 +50,8 @@ r_binary_packages:
   - fastGHQuad
 r_packages:
   - coin
-  - sjstats
+  - effectsize
+  - parameters
   - WRS2
   - coda
   - remotes
