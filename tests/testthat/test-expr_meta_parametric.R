@@ -1,5 +1,3 @@
-context("expr_meta_parametric")
-
 # subtitle from meta-analysis -------------------------------------------
 
 testthat::test_that(
@@ -132,37 +130,5 @@ testthat::test_that(
 
     # error
     testthat::expect_error(expr_meta_parametric(mtcars))
-  }
-)
-
-
-# checking meta-analysis results object -----------------------------------
-
-testthat::test_that(
-  desc = "checking meta-analysis results object",
-  code = {
-    testthat::skip_if(getRversion() < "3.6")
-
-    # dataframe
-    df <- tibble::tribble(
-      ~estimate, ~std.error,
-      0.111, 0.05,
-      0.245, 0.111,
-      0.8, 0.001,
-      1.1, 0.2,
-      0.03, 0.01
-    )
-
-    # output message
-    message <- capture.output(expr_meta_parametric(
-      data = df,
-      messages = TRUE
-    ))
-
-    # test the output
-    testthat::expect_identical(
-      message[2],
-      "Random-Effects Model (k = 5; tau^2 estimator: REML)"
-    )
   }
 )

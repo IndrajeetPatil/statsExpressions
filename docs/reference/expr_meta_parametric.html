@@ -155,7 +155,6 @@ more, see <code><a href='https://rdrr.io/pkg/metafor/man/rma.uni.html'>?metafor:
   <span class='no'>data</span>,
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-  <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"subtitle"</span>,
   <span class='kw'>caption</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='no'>...</span>
@@ -180,11 +179,6 @@ two columns will be used for <code>yi</code>  and <code>sei</code> arguments in 
       <th>k</th>
       <td><p>Number of digits after decimal point (should be an integer)
 (Default: <code>k = 2</code>).</p></td>
-    </tr>
-    <tr>
-      <th>messages</th>
-      <td><p>Decides whether messages references, notes, and warnings are
-to be displayed (Default: <code>TRUE</code>).</p></td>
     </tr>
     <tr>
       <th>output</th>
@@ -252,76 +246,50 @@ when <code>output = "caption"</code>.</p></td>
 <span class='co'># setup</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>statsExpressions</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>metaplus</span>)
 
-<span class='co'># let's create a dataframe</span>
-<span class='no'>df_results</span> <span class='kw'>&lt;-</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span>(
-    <span class='kw'>.Data</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>estimate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
-      <span class='fl'>0.382047603321706</span>, <span class='fl'>0.780783111514665</span>,
-      <span class='fl'>0.425607573765058</span>, <span class='fl'>0.558365541235078</span>, <span class='fl'>0.956473848429961</span>
-    ), <span class='kw'>std.error</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
-      <span class='fl'>0.0465576338644502</span>,
-      <span class='fl'>0.0330218199731529</span>, <span class='fl'>0.0362834986178494</span>, <span class='fl'>0.0480571500648261</span>, <span class='fl'>0.062215818388157</span>
-    ), <span class='kw'>t.value</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
-      <span class='fl'>8.20590677855356</span>, <span class='fl'>23.6444603038067</span>, <span class='fl'>11.7300588415607</span>,
-      <span class='fl'>11.6187818146078</span>, <span class='fl'>15.3734833553524</span>
-    ), <span class='kw'>conf.low</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
-      <span class='fl'>0.290515146096969</span>,
-      <span class='fl'>0.715841986960399</span>, <span class='fl'>0.354354575031406</span>, <span class='fl'>0.46379116008131</span>, <span class='fl'>0.827446138277154</span>
-    ), <span class='kw'>conf.high</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
-      <span class='fl'>0.473580060546444</span>, <span class='fl'>0.845724236068931</span>, <span class='fl'>0.496860572498711</span>,
-      <span class='fl'>0.652939922388847</span>, <span class='fl'>1.08550155858277</span>
-    ), <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
-      <span class='fl'>3.28679518728519e-15</span>,
-      <span class='fl'>4.04778497135963e-75</span>, <span class='fl'>7.59757330804449e-29</span>, <span class='fl'>5.45155840151592e-26</span>,
-      <span class='fl'>2.99171217913312e-13</span>
-    ), <span class='kw'>df.residual</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
-      <span class='fl'>394L</span>, <span class='fl'>358L</span>, <span class='fl'>622L</span>, <span class='fl'>298L</span>,
-      <span class='fl'>22L</span>
-    )),
-    <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>, -<span class='fl'>5L</span>),
-    <span class='kw'>class</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"tbl_df"</span>, <span class='st'>"tbl"</span>, <span class='st'>"data.frame"</span>)
-  )
+<span class='co'># renaming to what `statsExpressions` expects</span>
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>rename</a></span>(<span class='no'>mag</span>, <span class='kw'>estimate</span> <span class='kw'>=</span> <span class='no'>yi</span>, <span class='kw'>std.error</span> <span class='kw'>=</span> <span class='no'>sei</span>)
 
 <span class='co'># making subtitle</span>
 <span class='fu'>expr_meta_parametric</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>df_results</span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>df</span>,
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>,
   <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)</div><div class='output co'>#&gt; paste("Summary effect: ", italic("z"), " = ", "5.736", ", ", 
+)</div><div class='output co'>#&gt; <span class='warning'>Warning: Extra argument ('messages') disregarded.</span></div><div class='output co'>#&gt; paste("Summary effect: ", italic("z"), " = ", "-3.619", ", ", 
 #&gt;     italic("p"), " = ", "&lt; 0.001", ", ", widehat(beta), " = ", 
-#&gt;     "0.619", ", CI"["95%"], " [", "0.407", ", ", "0.830", "]", 
-#&gt;     ", ", italic("n")["effects"], " = ", 5L)</div><div class='input'>
+#&gt;     "-0.767", ", CI"["95%"], " [", "-1.182", ", ", "-0.351", 
+#&gt;     "]", ", ", italic("n")["effects"], " = ", 16L)</div><div class='input'>
 <span class='co'># getting tidy data frame with coefficients</span>
 <span class='fu'>expr_meta_parametric</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>df_results</span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>df</span>,
   <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>
-)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 7</span><span>
-#&gt;   estimate std.error statistic       p.value conf.low conf.high term          
-#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         
-#&gt; </span><span style='color: #555555;'>1</span><span>    0.619     0.108      5.74 0.000</span><span style='text-decoration: underline;'>000</span><span>009</span><span style='text-decoration: underline;'>68</span><span>    0.407     0.830 summary effect</div><div class='input'>
+)</div><div class='output co'>#&gt; <span class='warning'>Warning: Extra argument ('messages') disregarded.</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 7</span><span>
+#&gt;   estimate std.error statistic  p.value conf.low conf.high term          
+#&gt;      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>   -</span><span style='color: #BB0000;'>0.767</span><span>     0.212     -</span><span style='color: #BB0000;'>3.62</span><span> 0.000</span><span style='text-decoration: underline;'>295</span><span>    -</span><span style='color: #BB0000;'>1.18</span><span>    -</span><span style='color: #BB0000;'>0.351</span><span> summary effect</div><div class='input'>
 <span class='co'># making caption</span>
 <span class='fu'>expr_meta_parametric</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>df_results</span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>df</span>,
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>,
   <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"caption"</span>
-)</div><div class='output co'>#&gt; atop(displaystyle(NULL), expr = paste("Heterogeneity: ", italic("Q"), 
-#&gt;     "(", "4", ") = ", "109", ", ", italic("p"), " = ", "&lt; 0.001", 
-#&gt;     ", ", tau["REML"]^2, " = ", "0.06", ", ", "I"^2, " = ", "96.81%"))</div><div class='input'>
+)</div><div class='output co'>#&gt; <span class='warning'>Warning: Extra argument ('messages') disregarded.</span></div><div class='output co'>#&gt; atop(displaystyle(NULL), expr = paste("Heterogeneity: ", italic("Q"), 
+#&gt;     "(", "15", ") = ", "47", ", ", italic("p"), " = ", "&lt; 0.001", 
+#&gt;     ", ", tau["REML"]^2, " = ", "0.29", ", ", "I"^2, " = ", "73.64%"))</div><div class='input'>
 <span class='co'># getting dataframe with model summary</span>
 <span class='fu'>expr_meta_parametric</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>df_results</span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>df</span>,
   <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"glance"</span>
-)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 12</span><span>
-#&gt;     tau2 se.tau2     k     p     m    QE      QEp    QM           QMp    I2
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> 0.056</span><span style='text-decoration: underline;'>1</span><span>  0.041</span><span style='text-decoration: underline;'>1</span><span>     5     1     1  109. 1.48</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-22</span><span>  32.9 0.000</span><span style='text-decoration: underline;'>000</span><span>009</span><span style='text-decoration: underline;'>68</span><span>  96.8
-#&gt;      H2 int.only
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span>   
-#&gt; </span><span style='color: #555555;'>1</span><span>  31.3 TRUE    </div><div class='input'># }
+)</div><div class='output co'>#&gt; <span class='warning'>Warning: Extra argument ('messages') disregarded.</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 12</span><span>
+#&gt;    tau2 se.tau2     k     p     m    QE       QEp    QM      QMp    I2    H2
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 0.293   0.229    16     1     1  47.1 0.000</span><span style='text-decoration: underline;'>036</span><span>0  13.1 0.000</span><span style='text-decoration: underline;'>295</span><span>  73.6  3.79
+#&gt;   int.only
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> TRUE    </div><div class='input'># }
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

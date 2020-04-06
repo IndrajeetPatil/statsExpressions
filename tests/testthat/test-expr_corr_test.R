@@ -180,7 +180,7 @@ testthat::test_that(
     using_function <-
       statsExpressions::expr_corr_test(
         data = ggplot2::msleep,
-        x = "brainwt",
+        x = names(ggplot2::msleep)[10],
         y = sleep_rem,
         type = "bf",
         k = 3,
