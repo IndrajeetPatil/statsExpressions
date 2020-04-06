@@ -41,28 +41,6 @@ testthat::test_that(
       ))
 
     # test
-    testthat::expect_identical(
-      results1,
-      ggplot2::expr(atop(
-        displaystyle(NULL),
-        expr = paste(
-          "In favor of alternative: ",
-          "log"["e"],
-          "(BF"["10"],
-          ") = ",
-          "7.513",
-          ", ",
-          italic("d")["mean"] ^ "posterior",
-          " = ",
-          "0.350",
-          ", CI"["95%"],
-          " [",
-          "0.201",
-          ", ",
-          "0.501",
-          "]"
-        )
-      ))
-    )
+    testthat::expect_identical(as.character(results1$expr)[6], "7.513")
   }
 )
