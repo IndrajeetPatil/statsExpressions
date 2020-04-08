@@ -151,7 +151,7 @@ results</h1>
 more, see <code><a href='https://rdrr.io/pkg/metaplus/man/metaplus.html'>?metaplus::metaplus</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expr_meta_robust</span>(<span class='no'>data</span>, <span class='kw'>random</span> <span class='kw'>=</span> <span class='st'>"mixture"</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>expr_meta_robust</span>(<span class='no'>data</span>, <span class='kw'>random</span> <span class='kw'>=</span> <span class='st'>"mixture"</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -171,6 +171,10 @@ two columns will be used for <code>yi</code>  and <code>sei</code> arguments in 
       <th>k</th>
       <td><p>Number of digits after decimal point (should be an integer)
 (Default: <code>k = 2</code>).</p></td>
+    </tr>
+    <tr>
+      <th>messages</th>
+      <td><p>Deprecated. Retained only for backward compatibility.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -203,7 +207,10 @@ two columns will be used for <code>yi</code>  and <code>sei</code> arguments in 
   <span class='kw'>random</span> <span class='kw'>=</span> <span class='st'>"normal"</span>,
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>4</span>,
   <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-)</div><div class='output co'>#&gt; <span class='error'>Error in metaplus::metaplus(yi = estimate, sei = std.error, data = data,     random = random, ...): unused argument (messages = TRUE)</span></div><div class='input'># }
+)</div><div class='output co'>#&gt; paste("Summary effect: ", italic("z"), " = ", "NA", ", ", italic("p"), 
+#&gt;     " = ", "5e-04", ", ", widehat(beta), " = ", "-0.7463", ", CI"["95%"], 
+#&gt;     " [", "-1.2583", ", ", "-0.3428", "]", ", ", italic("n")["effects"], 
+#&gt;     " = ", 16L)</div><div class='input'># }
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

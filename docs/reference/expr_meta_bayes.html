@@ -151,6 +151,7 @@
   <span class='kw'>d</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/metaBMA/man/prior.html'>prior</a></span>(<span class='st'>"norm"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>mean</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>sd</span> <span class='kw'>=</span> <span class='fl'>0.3</span>)),
   <span class='kw'>tau</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/metaBMA/man/prior.html'>prior</a></span>(<span class='st'>"invgamma"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>shape</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>0.15</span>)),
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>,
+  <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='no'>...</span>
 )</pre>
 
@@ -180,6 +181,10 @@ probability density function is defined via <code><a href='https://rdrr.io/pkg/m
       <th>k</th>
       <td><p>Number of digits after decimal point (should be an integer)
 (Default: <code>k = 2</code>).</p></td>
+    </tr>
+    <tr>
+      <th>messages</th>
+      <td><p>Deprecated. Retained only for backward compatibility.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -221,8 +226,8 @@ study in random-effects meta-analysis.</p></dd>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='co'># setup</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>metaplus</span>)
-
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>metaplus</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Note: The second parameter is the study standard error not the standard error squared as in the metafor package.</span></div><div class='input'>
 <span class='co'># renaming to what `statsExpressions` expects</span>
 <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>rename</a></span>(<span class='no'>mag</span>, <span class='kw'>estimate</span> <span class='kw'>=</span> <span class='no'>yi</span>, <span class='kw'>std.error</span> <span class='kw'>=</span> <span class='no'>sei</span>)
 

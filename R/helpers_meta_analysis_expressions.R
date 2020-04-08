@@ -21,6 +21,7 @@
 #'
 #' @importFrom metafor rma
 #' @importFrom dplyr rename_all recode mutate tibble
+#' @importFrom tidyBF meta_data_check
 #'
 #' @examples
 #' \donttest{
@@ -72,7 +73,7 @@ expr_meta_parametric <- function(data,
                                  messages = TRUE,
                                  ...) {
   # check the data contains needed column
-  meta_data_check(data)
+  tidyBF::meta_data_check(data)
 
   #----------------------- meta-analysis ------------------------------------
 
@@ -227,7 +228,7 @@ expr_meta_robust <- function(data,
                              messages = TRUE,
                              ...) {
   # check the data contains needed column
-  meta_data_check(data)
+  tidyBF::meta_data_check(data)
 
   #----------------------- meta-analysis ------------------------------------
 
@@ -313,7 +314,7 @@ expr_meta_bayes <- function(data,
                             messages = TRUE,
                             ...) {
   # check the data contains needed column
-  meta_data_check(data)
+  tidyBF::meta_data_check(data)
 
   # bayes factor results
   tidyBF::bf_meta(
@@ -324,21 +325,4 @@ expr_meta_bayes <- function(data,
     caption = NULL,
     output = "h1"
   )
-}
-
-#' @noRd
-
-meta_data_check <- function(data) {
-  # check if the two columns needed are present
-  if (sum(c("estimate", "std.error") %in% names(data)) != 2) {
-    # inform the user that skipping labels for the same reason
-    stop(message(cat(
-      ipmisc::red("Error"),
-      ipmisc::blue(": The dataframe must contain the following two columns:\n"),
-      ipmisc::blue("`estimate` and `std.error`."),
-      sep = ""
-    )),
-    call. = FALSE
-    )
-  }
 }
