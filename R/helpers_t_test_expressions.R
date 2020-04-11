@@ -85,7 +85,7 @@ expr_t_parametric <- function(data,
   data %<>%
     dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
     dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    as_tibble(x = .)
+    as_tibble(.)
 
   # properly removing NAs if it's a paired design
   if (isTRUE(paired)) {
@@ -363,7 +363,6 @@ expr_t_nonparametric <- function(data,
 #' @importFrom dplyr select
 #' @importFrom rlang !! enquo
 #' @importFrom WRS2 yuen yuen.effect.ci
-#' @importFrom tibble tribble
 #'
 #' @examples
 #' \donttest{
@@ -422,7 +421,7 @@ expr_t_robust <- function(data,
   data %<>%
     dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
     dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    as_tibble(x = .)
+    as_tibble(.)
 
   # ---------------------------- between-subjects design --------------------
 
@@ -446,9 +445,10 @@ expr_t_robust <- function(data,
 
     # effect size dataframe
     effsize_df <-
-      tibble::tribble(
-        ~estimate, ~conf.low, ~conf.high,
-        effsize_obj$effsize[[1]], effsize_obj$CI[[1]], effsize_obj$CI[[2]]
+      tibble(
+        estimate = effsize_obj$effsize[[1]],
+        conf.low = effsize_obj$CI[[1]],
+        conf.high = effsize_obj$CI[[2]]
       )
 
     # Yuen's test for trimmed means
@@ -461,9 +461,10 @@ expr_t_robust <- function(data,
 
     # tidying it up
     stats_df <-
-      tibble::tribble(
-        ~statistic, ~parameter, ~p.value,
-        stats_obj$test[[1]], stats_obj$df[[1]], stats_obj$p.value[[1]]
+      tibble(
+        statistic = stats_obj$test[[1]],
+        parameter = stats_obj$df[[1]],
+        p.value = stats_obj$p.value[[1]]
       )
 
     # subtitle parameters

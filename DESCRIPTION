@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Expressions with Statistical Details
-Version: 0.4.0.9000
+Version: 0.4.0
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -21,23 +21,22 @@ URL: https://indrajeetpatil.github.io/statsExpressions,
 BugReports: 
     https://github.com/IndrajeetPatil/statsExpressions/issues
 Depends: 
-    R (>= 3.5.0)
+    R (>= 3.6.0)
 Imports:
     boot,
-    broomExtra (>= 2.6.0),
-    correlation (>= 0.1.1),
+    broomExtra (>= 3.0.0),
+    correlation (>= 0.2.0),
     dplyr,
-    effectsize (>= 0.2.9.9),
+    effectsize (>= 0.3.0),
     ez,
-    ipmisc (>= 1.3.0),
+    ipmisc (>= 2.0.0),
     metafor,
     metaplus,
     purrr,
     rcompanion,
     rlang,
     stats,
-    tibble,
-    tidyBF (>= 0.1.0.9000),
+    tidyBF (>= 0.2.0),
     tidyr,
     WRS2
 Suggests:
@@ -48,12 +47,6 @@ Suggests:
     testthat
 VignetteBuilder: 
     knitr
-Remotes:
-    easystats/correlation,
-    easystats/effectsize,
-    IndrajeetPatil/broomExtra,
-    IndrajeetPatil/ipmisc,
-    IndrajeetPatil/tidyBF
 Encoding: UTF-8
 Language: en-US
 LazyData: true

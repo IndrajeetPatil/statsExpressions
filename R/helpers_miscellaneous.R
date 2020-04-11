@@ -273,7 +273,7 @@ rcompanion_cleaner <- function(object) {
   if (inherits(object, "list")) object <- object[[1]]
 
   # rename columns uniformly
-  tibble::as_tibble(object) %>%
+  as_tibble(object) %>%
     dplyr::rename_all(
       .tbl = .,
       .funs = dplyr::recode,

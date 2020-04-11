@@ -7,13 +7,13 @@ testthat::test_that(
 
     # dataframe
     df_eg <-
-      tibble::tribble(
-        ~estimate, ~std.error,
-        0.111, 0.05,
-        0.245, 0.111,
-        0.8, 0.001,
-        1.1, 0.2,
-        0.03, 0.01
+      structure(
+        list(
+          estimate = c(0.111, 0.245, 0.8, 1.1, 0.03),
+          std.error = c(0.05, 0.111, 0.001, 0.2, 0.01)
+        ),
+        row.names = c(NA, -5L),
+        class = c("tbl_df", "tbl", "data.frame")
       )
 
     # subtitle output

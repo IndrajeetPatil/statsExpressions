@@ -1,4 +1,4 @@
-# statsExpressions 0.4.0.9000
+# statsExpressions 0.4.0
 
 BREAKING CHANGES
 
@@ -8,6 +8,8 @@ BREAKING CHANGES
     package and are re-exported from there.
   
 MAJOR CHANGES
+
+  - Minimum R version bumped to `R 3.6.0`.
 
   - Retires the internal `effsize_t_parametric` helper function in favor of
     relying functions from `effectsize`, which is now added as a dependency.

@@ -85,7 +85,7 @@ testthat::test_that(
 
     # converting to long format
     df_bird %<>%
-      tibble::as_tibble(x = .) %>%
+      as_tibble(x = .) %>%
       tidyr::gather(
         data = .,
         key = "type",

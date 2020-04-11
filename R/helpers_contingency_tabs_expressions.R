@@ -40,7 +40,6 @@
 #'
 #' @importFrom dplyr select mutate rename filter
 #' @importFrom rlang !! enquo as_name ensym exec
-#' @importFrom tibble tribble
 #' @importFrom tidyr uncount drop_na
 #' @importFrom stats mcnemar.test chisq.test
 #' @importFrom rcompanion cramerV cohenG cramerVFit
@@ -109,7 +108,7 @@ expr_contingency_tab <- function(data,
   data %<>%
     dplyr::select(.data = ., {{ x }}, {{ y }}, {{ counts }}) %>%
     tidyr::drop_na(data = .) %>%
-    tibble::as_tibble(x = .)
+    as_tibble(x = .)
 
   # x and y need to be factors; drop the unused levels of the factors
 

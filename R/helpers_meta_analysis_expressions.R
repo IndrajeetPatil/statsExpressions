@@ -20,7 +20,7 @@
 #' @inheritDotParams metafor::rma -yi -sei -tau2 -level
 #'
 #' @importFrom metafor rma
-#' @importFrom dplyr rename_all recode mutate tibble
+#' @importFrom dplyr rename_all recode mutate
 #' @importFrom tidyBF meta_data_check
 #'
 #' @examples
@@ -92,7 +92,7 @@ expr_meta_parametric <- function(data,
   # create a dataframe with coefficients
   df_tidy <-
     coef(summary(meta_res)) %>%
-    tibble::as_tibble(.) %>%
+    as_tibble(.) %>%
     dplyr::rename_all(
       .tbl = .,
       .funs = dplyr::recode,
@@ -124,7 +124,7 @@ expr_meta_parametric <- function(data,
   df_glance <-
     with(
       data = meta_res,
-      expr = dplyr::tibble(
+      expr = tibble(
         tau2 = tau2,
         se.tau2 = se.tau2,
         k = k,
@@ -248,8 +248,8 @@ expr_meta_robust <- function(data,
   df_tidy <-
     meta_res %>% {
       dplyr::inner_join(
-        x = tibble::as_tibble(as.data.frame(.$results), rownames = "term"),
-        y = tibble::as_tibble(as.data.frame(.$profile@summary@coef), rownames = "term"),
+        x = as_tibble(as.data.frame(.$results), rownames = "term"),
+        y = as_tibble(as.data.frame(.$profile@summary@coef), rownames = "term"),
         by = "term"
       ) %>%
         dplyr::rename_all(.tbl = ., .funs = tolower) %>%

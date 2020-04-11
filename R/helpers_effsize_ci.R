@@ -23,7 +23,6 @@
 #'   `95%` lower and upper confidence intervals (`0.95`).
 #' @param ... Currently ignored.
 #'
-#' @importFrom tibble as_tibble
 #' @importFrom dplyr select contains
 #' @importFrom boot boot
 #' @importFrom rlang !! enquo
