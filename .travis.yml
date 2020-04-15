@@ -1,7 +1,7 @@
 language: r
 r:
   - release
-  - devel
+#  - devel
 
 latex: true
 warnings_are_errors: TRUE
@@ -48,12 +48,13 @@ r_binary_packages:
   - metaBMA
   - metaplus
   - fastGHQuad
+  - multcomp
+  - coda
 r_packages:
   - coin
   - effectsize
   - parameters
   - WRS2
-  - coda
   - remotes
   - knitr
   - rmarkdown
