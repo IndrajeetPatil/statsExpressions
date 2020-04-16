@@ -227,19 +227,16 @@ testthat::test_that(
     # expected output
     set.seed(123)
     results <-
-      ggplot2::expr(atop(
-        displaystyle(NULL),
-        expr = paste(
-          "In favor of alternative: ",
-          "log"["e"],
-          "(BF"["10"],
-          ") = ",
-          "-0.80",
-          ", ",
-          italic("r")["Cauchy"]^"JZS",
-          " = ",
-          "0.71"
-        )
+      ggplot2::expr(paste(
+        "In favor of alternative: ",
+        "log"["e"],
+        "(BF"["10"],
+        ") = ",
+        "-0.80",
+        ", ",
+        italic("r")["Cauchy"]^"JZS",
+        " = ",
+        "0.71"
       ))
 
     # testing overall call

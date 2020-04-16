@@ -1,5 +1,3 @@
-context("expr_anova_bayes")
-
 # expr_anova_bayes works (between-subjects) ----------------------------
 
 testthat::test_that(
@@ -20,19 +18,16 @@ testthat::test_that(
 
     # expected output
     results1 <-
-      ggplot2::expr(atop(
-        displaystyle(NULL),
-        expr = paste(
-          "In favor of alternative: ",
-          "log"["e"],
-          "(BF"["10"],
-          ") = ",
-          "93.14228",
-          ", ",
-          italic("r")["Cauchy"]^"JZS",
-          " = ",
-          "0.80000"
-        )
+      ggplot2::expr(paste(
+        "In favor of alternative: ",
+        "log"["e"],
+        "(BF"["10"],
+        ") = ",
+        "93.14228",
+        ", ",
+        italic("r")["Cauchy"]^"JZS",
+        " = ",
+        "0.80000"
       ))
 
     # testing overall call
@@ -60,19 +55,16 @@ testthat::test_that(
 
     # expected output
     results1 <-
-      ggplot2::expr(atop(
-        displaystyle(NULL),
-        expr = paste(
-          "In favor of alternative: ",
-          "log"["e"],
-          "(BF"["10"],
-          ") = ",
-          "2.115",
-          ", ",
-          italic("r")["Cauchy"]^"JZS",
-          " = ",
-          "0.707"
-        )
+      ggplot2::expr(paste(
+        "In favor of alternative: ",
+        "log"["e"],
+        "(BF"["10"],
+        ") = ",
+        "2.115",
+        ", ",
+        italic("r")["Cauchy"]^"JZS",
+        " = ",
+        "0.707"
       ))
 
     # testing overall call
@@ -100,19 +92,16 @@ testthat::test_that(
 
     # expected output
     results1 <-
-      ggplot2::expr(atop(
-        displaystyle(NULL),
-        expr = paste(
-          "In favor of alternative: ",
-          "log"["e"],
-          "(BF"["10"],
-          ") = ",
-          "21.040",
-          ", ",
-          italic("r")["Cauchy"]^"JZS",
-          " = ",
-          "0.707"
-        )
+      ggplot2::expr(paste(
+        "In favor of alternative: ",
+        "log"["e"],
+        "(BF"["10"],
+        ") = ",
+        "21.040",
+        ", ",
+        italic("r")["Cauchy"]^"JZS",
+        " = ",
+        "0.707"
       ))
 
     # testing overall call

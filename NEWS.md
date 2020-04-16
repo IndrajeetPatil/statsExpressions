@@ -1,5 +1,9 @@
 # statsExpressions 0.4.0.9000
 
+MINOR CHANGES
+
+  - Removes extra space contained in subtitles for Bayes Factor results (#31).
+
 # statsExpressions 0.4.0
 
 BREAKING CHANGES

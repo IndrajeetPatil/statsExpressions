@@ -579,5 +579,5 @@ expr_t_bayes <- function(data,
     bf.prior = bf.prior,
     output = "h1",
     k = k
-  )
+  )$expr
 }

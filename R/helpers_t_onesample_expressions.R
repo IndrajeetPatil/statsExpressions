@@ -265,7 +265,7 @@ expr_t_onesample <- function(data,
         bf.prior = bf.prior,
         output = "h1",
         k = k
-      )
+      )$expr
   }
 
   # return the subtitle

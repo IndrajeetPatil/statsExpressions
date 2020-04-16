@@ -189,19 +189,16 @@ testthat::test_that(
 
     # expected
     expected <-
-      ggplot2::expr(atop(
-        displaystyle(NULL),
-        expr = paste(
-          "In favor of alternative: ",
-          "log"["e"],
-          "(BF"["10"],
-          ") = ",
-          "-0.425",
-          ", ",
-          italic("r")["Cauchy"]^"JZS",
-          " = ",
-          "0.707"
-        )
+      ggplot2::expr(paste(
+        "In favor of alternative: ",
+        "log"["e"],
+        "(BF"["10"],
+        ") = ",
+        "-0.425",
+        ", ",
+        italic("r")["Cauchy"]^"JZS",
+        " = ",
+        "0.707"
       ))
 
     # testing overall call

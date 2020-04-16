@@ -202,9 +202,8 @@ width to use in calculating Bayes factors.</p></td>
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>vore</span>,
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>sleep_rem</span>
-)</div><div class='output co'>#&gt; atop(displaystyle(NULL), expr = paste("In favor of alternative: ", 
-#&gt;     "log"["e"], "(BF"["10"], ") = ", "1.23", ", ", italic("r")["Cauchy"]^"JZS", 
-#&gt;     " = ", "0.71"))</div><div class='input'>
+)</div><div class='output co'>#&gt; paste("In favor of alternative: ", "log"["e"], "(BF"["10"], ") = ", 
+#&gt;     "1.23", ", ", italic("r")["Cauchy"]^"JZS", " = ", "0.71")</div><div class='input'>
 <span class='co'># modifying the defaults</span>
 <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_anova_bayes</span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
@@ -212,9 +211,8 @@ width to use in calculating Bayes factors.</p></td>
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>sleep_rem</span>,
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>,
   <span class='kw'>bf.prior</span> <span class='kw'>=</span> <span class='fl'>0.8</span>
-)</div><div class='output co'>#&gt; atop(displaystyle(NULL), expr = paste("In favor of alternative: ", 
-#&gt;     "log"["e"], "(BF"["10"], ") = ", "1.153", ", ", italic("r")["Cauchy"]^"JZS", 
-#&gt;     " = ", "0.800"))</div><div class='input'>
+)</div><div class='output co'>#&gt; paste("In favor of alternative: ", "log"["e"], "(BF"["10"], ") = ", 
+#&gt;     "1.153", ", ", italic("r")["Cauchy"]^"JZS", " = ", "0.800")</div><div class='input'>
 <span class='co'># repeated measures ---------------------------------------</span>
 <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_anova_bayes</span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>WRS2</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/WRS2/man/WineTasting.html'>WineTasting</a></span>,
@@ -222,9 +220,8 @@ width to use in calculating Bayes factors.</p></td>
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Taste</span>,
   <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>4</span>
-)</div><div class='output co'>#&gt; atop(displaystyle(NULL), expr = paste("In favor of alternative: ", 
-#&gt;     "log"["e"], "(BF"["10"], ") = ", "2.1154", ", ", italic("r")["Cauchy"]^"JZS", 
-#&gt;     " = ", "0.7070"))</div><div class='input'># }
+)</div><div class='output co'>#&gt; paste("In favor of alternative: ", "log"["e"], "(BF"["10"], ") = ", 
+#&gt;     "2.1154", ", ", italic("r")["Cauchy"]^"JZS", " = ", "0.7070")</div><div class='input'># }
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

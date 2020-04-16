@@ -48,13 +48,13 @@ r_binary_packages:
   - metaBMA
   - metaplus
   - fastGHQuad
-  - multcomp
   - coda
 r_packages:
   - coin
   - effectsize
   - parameters
-  - WRS2
+  - performance
+  - multcomp
   - remotes
   - knitr
   - rmarkdown

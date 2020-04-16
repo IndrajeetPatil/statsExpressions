@@ -701,5 +701,5 @@ expr_anova_bayes <- function(data,
     bf.prior = bf.prior,
     k = k,
     output = "h1"
-  )
+  )$expr
 }
