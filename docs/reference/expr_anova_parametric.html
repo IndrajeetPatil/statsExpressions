@@ -81,7 +81,7 @@ using effectsize::eta_squared and effectsize::omega_squared functions." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.4.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.4.1</span>
       </span>
     </div>
 
@@ -267,7 +267,7 @@ omega-squared and partial eta-squared are supported.</p>
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>
 )</div><div class='output co'>#&gt; paste(NULL, italic("F")["Welch"], "(", "3", ",", "11.101", ") = ", 
 #&gt;     "2.633", ", ", italic("p"), " = ", "0.102", ", ", widehat(omega["p"]^2), 
-#&gt;     " = ", "0.144", ", CI"["95%"], " [", "-0.025", ", ", "0.283", 
+#&gt;     " = ", "0.144", ", CI"["95%"], " [", "-0.042", ", ", "0.314", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 56L)</div><div class='input'>
 <span class='co'># modifying the defaults</span>
 <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_anova_parametric</span>(
@@ -280,7 +280,7 @@ omega-squared and partial eta-squared are supported.</p>
   <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
 )</div><div class='output co'>#&gt; paste(NULL, italic("F")["Fisher"], "(", "3", ",", "52", ") = ", 
 #&gt;     "4.14", ", ", italic("p"), " = ", "0.011", ", ", widehat(eta^2), 
-#&gt;     " = ", "0.19", ", CI"["95%"], " [", "0.03", ", ", "0.33", 
+#&gt;     " = ", "0.19", ", CI"["95%"], " [", "0.01", ", ", "0.36", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 56L)</div><div class='input'>
 <span class='co'># -------------------- repeated measures ------------------------------</span>
 
@@ -291,11 +291,11 @@ omega-squared and partial eta-squared are supported.</p>
   <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>4</span>,
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>10</span>
-)</div><div class='output co'>#&gt; paste(NULL, italic("F")["Fisher"], "(", "1.1491", ",", "171.2174", 
-#&gt;     ") = ", "776.3182", ", ", italic("p"), " = ", "&lt; 0.001", 
-#&gt;     ", ", widehat(omega["p"]^2), " = ", "0.8376", ", CI"["95%"], 
-#&gt;     " [", "0.8183", ", ", "0.8538", "]", ", ", italic("n")["pairs"], 
-#&gt;     " = ", 150L)</div><div class='input'># }
+)</div><div class='output co'>#&gt; paste(NULL, italic("F")["Fisher"], "(", "1.2833", ",", "189.9267", 
+#&gt;     ") = ", "686.6370", ", ", italic("p"), " = ", "&lt; 0.001", 
+#&gt;     ", ", widehat(omega["p"]^2), " = ", "0.8212", ", CI"["95%"], 
+#&gt;     " [", "0.7955", ", ", "0.8422", "]", ", ", italic("n")["pairs"], 
+#&gt;     " = ", 149L)</div><div class='input'># }
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

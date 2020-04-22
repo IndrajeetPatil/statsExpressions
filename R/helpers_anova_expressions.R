@@ -258,7 +258,7 @@ expr_anova_parametric <- function(data,
       .fn = .f,
       model = effsize_object,
       partial = partial,
-      ci.lvl = conf.level
+      ci = conf.level
     ) %>%
     broomExtra::easystats_to_tidy_names(.) %>% # renaming to standard term 'estimate'
     dplyr::rename(.data = ., estimate = dplyr::matches("eta|omega")) %>%

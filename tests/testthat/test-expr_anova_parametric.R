@@ -18,6 +18,19 @@ testthat::test_that(
         messages = FALSE
       )
 
+    set.seed(123)
+    using_function2 <-
+      statsExpressions::expr_anova_parametric(
+        data = dplyr::sample_frac(statsExpressions::movies_long, 0.1),
+        x = genre,
+        y = rating,
+        effsize.type = "partial_eta",
+        conf.level = 0.90,
+        k = 5,
+        var.equal = FALSE,
+        messages = FALSE
+      )
+
     # expected output
     results1 <-
       ggplot2::expr(
@@ -40,6 +53,38 @@ testthat::test_that(
           "0.15181",
           ", CI"["95%"],
           " [",
+          "0.02743",
+          ", ",
+          "0.22672",
+          "]",
+          ", ",
+          italic("n")["obs"],
+          " = ",
+          158L
+        )
+      )
+
+    results2 <-
+      ggplot2::expr(
+        paste(
+          NULL,
+          italic("F")["Welch"],
+          "(",
+          "8",
+          ",",
+          "46.23423",
+          ") = ",
+          "4.03133",
+          ", ",
+          italic("p"),
+          " = ",
+          "0.00107",
+          ", ",
+          widehat(eta["p"]^2),
+          " = ",
+          "0.15181",
+          ", CI"["90%"],
+          " [",
           "0.03902",
           ", ",
           "0.20834",
@@ -53,6 +98,7 @@ testthat::test_that(
 
     # testing overall call
     testthat::expect_identical(using_function1, results1)
+    testthat::expect_identical(using_function2, results2)
   }
 )
 
@@ -103,7 +149,7 @@ testthat::test_that(
           " [",
           "0.000",
           ", ",
-          "0.178",
+          "0.203",
           "]",
           ", ",
           italic("n")["obs"],
@@ -158,9 +204,9 @@ testthat::test_that(
           "0.1438",
           ", CI"["95%"],
           " [",
-          "-0.0248",
+          "-0.0422",
           ", ",
-          "0.2832",
+          "0.3144",
           "]",
           ", ",
           italic("n")["obs"],
@@ -216,9 +262,9 @@ testthat::test_that(
           "0.1926",
           ", CI"["95%"],
           " [",
-          "0.0307",
+          "0.0139",
           ", ",
-          "0.3257",
+          "0.3555",
           "]",
           ", ",
           italic("n")["obs"],
@@ -291,9 +337,9 @@ testthat::test_that(
           "0.1926",
           ", CI"["95%"],
           " [",
-          "0.0307",
+          "0.0139",
           ", ",
-          "0.3257",
+          "0.3555",
           "]",
           ", ",
           italic("n")["obs"],
@@ -324,9 +370,9 @@ testthat::test_that(
           "0.1438",
           ", CI"["99%"],
           " [",
-          "-0.0248",
+          "-0.0566",
           ", ",
-          "0.2832",
+          "0.3728",
           "]",
           ", ",
           italic("n")["obs"],
@@ -386,9 +432,9 @@ testthat::test_that(
           "0.838",
           ", CI"["99%"],
           " [",
-          "0.818",
+          "0.806",
           ", ",
-          "0.854",
+          "0.862",
           "]",
           ", ",
           italic("n")["pairs"],
@@ -447,9 +493,9 @@ testthat::test_that(
           "0.2304",
           ", CI"["99%"],
           " [",
-          "0.0534",
+          "0.0021",
           ", ",
-          "0.3894",
+          "0.4770",
           "]",
           ", ",
           italic("n")["pairs"],
@@ -560,9 +606,9 @@ testthat::test_that(
           "0.82",
           ", CI"["50%"],
           " [",
-          "0.80",
+          "0.81",
           ", ",
-          "0.84",
+          "0.83",
           "]",
           ", ",
           italic("n")["pairs"],
@@ -673,7 +719,7 @@ testthat::test_that(
         "0.89",
         ", CI"["95%"],
         " [",
-        "0.81",
+        "0.78",
         ", ",
         "0.93",
         "]",
