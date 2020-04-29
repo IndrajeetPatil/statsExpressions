@@ -43,3 +43,6 @@ references.bib
 ^tests/testmanual$
 ^\.pre-commit-config\.yaml$
 ^brew\-log$
+^\.github/workflows/R\.yaml$
+^\.github/workflows/pr-commands\.yaml$
+hextools

@@ -16,11 +16,10 @@
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/statsExpressions/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.4.1",
+  "version": "0.4.1.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "4.0.0",
     "url": "https://r-project.org"
   },
   "runtimePlatform": "R Under development (unstable) (2020-02-28 r77874)",
@@ -314,10 +313,7 @@
     }
   ],
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md",
-  "contIntegration": [
-    "https://ci.appveyor.com/project/IndrajeetPatil/statsExpressions",
-    "https://travis-ci.org/IndrajeetPatil/statsExpressions"
-  ],
+  "contIntegration": ["https://travis-ci.org/IndrajeetPatil/statsExpressions", "https://ci.appveyor.com/project/IndrajeetPatil/statsExpressions", "https://coveralls.io/github/IndrajeetPatil/statsExpressions?branch=master", "https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master"],
   "keywords": [
     "ggplot-extension",
     "statistical-tests",
@@ -340,10 +336,7 @@
     "parametric",
     "meta-analysis"
   ],
-  "developmentStatus": [
-    "https://www.tidyverse.org/lifecycle/",
-    "http://www.repostatus.org/#active"
-  ],
+  "developmentStatus": ["https://www.tidyverse.org/lifecycle/", "http://www.repostatus.org/#active"],
   "releaseNotes": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/NEWS.md",
   "citation": [
     {
@@ -368,5 +361,6 @@
     "@type": "Organization",
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
-  }
+  },
+  "fileSize": "4153.021KB"
 }

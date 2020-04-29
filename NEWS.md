@@ -1,3 +1,9 @@
+# statsExpressions 0.4.1.9000
+
+MINOR CHANGES
+
+  - Thanks to Sarah, the package has a hexsticker. :)
+
 # statsExpressions 0.4.1
 
 BUG FIXES
