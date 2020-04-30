@@ -16,8 +16,8 @@ skip_branch_with_pr: true
 
 # Adapt as necessary starting from here
 
-cache:
-  - C:\RLibrary
+# cache:
+#   - C:\RLibrary
 
 # Adapt as necessary starting from here
 before_test:

@@ -11,9 +11,9 @@ env:
     - _R_CHECK_FORCE_SUGGESTS_=true
     - _R_CHECK_CRAN_INCOMING_=true
 
-cache:
-  - packages
-  - ccache
+# cache:
+#   - packages
+#   - ccache
 
 r_binary_packages:
   - magrittr
@@ -32,9 +32,6 @@ r_binary_packages:
   - SparseM
   - httpuv
   - markdown
-  - sem
-  - readxl
-  - openxlsx
   - pander
   - git2r
   - rlang
@@ -45,19 +42,32 @@ r_binary_packages:
   - bridgesampling
   - BH
   - stringi
+  - BayesFactor
   - metaBMA
+  - coda
+  - coin
+  - multcomp
+  - pbkrtest
+  - mc2d
+  - data.table
+  - lme4
+  - lmerTest
+  - GGally
+  - emmeans
+  - ggrepel
   - metaplus
   - fastGHQuad
-  - coda
+
 r_packages:
-  - coin
-  - effectsize
-  - parameters
-  - performance
-  - multcomp
   - remotes
   - knitr
   - rmarkdown
+  - ipmisc
+  - afex
+  - effectsize
+  - insight
+  - ggcorrplot
+
 r_github_packages:
   - jimhester/lintr
   - r-lib/covr
