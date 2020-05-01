@@ -57,15 +57,16 @@ r_binary_packages:
   - ggrepel
   - metaplus
   - fastGHQuad
+  - broomExtra
+  - car
+  - quantreg
+  - rio
 
 r_packages:
   - remotes
   - knitr
   - rmarkdown
-  - ipmisc
   - afex
-  - effectsize
-  - insight
   - ggcorrplot
 
 r_github_packages:

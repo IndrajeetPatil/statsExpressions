@@ -2,7 +2,7 @@
 #'   robust equivalents
 #' @name expr_t_onesample
 #'
-#' @param x A numeric variable.
+#' @param x A numeric variable from the dataframe `data`.
 #' @param test.value A number specifying the value of the null hypothesis
 #'   (Default: `0`).
 #' @param type Type of statistic expected (`"parametric"` or `"nonparametric"`
@@ -92,9 +92,6 @@ expr_t_onesample <- function(data,
                              stat.title = NULL,
                              messages = TRUE,
                              ...) {
-
-  # check the dots
-  x <- rlang::ensym(x)
 
   # ====================== dataframe ========================================
 

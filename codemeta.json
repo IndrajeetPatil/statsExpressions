@@ -312,7 +312,6 @@
       "sameAs": "https://CRAN.R-project.org/package=WRS2"
     }
   ],
-  "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md",
   "contIntegration": ["https://travis-ci.org/IndrajeetPatil/statsExpressions", "https://ci.appveyor.com/project/IndrajeetPatil/statsExpressions", "https://coveralls.io/github/IndrajeetPatil/statsExpressions?branch=master", "https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master"],
   "keywords": [
     "ggplot-extension",
@@ -362,5 +361,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "4153.021KB"
+  "fileSize": "4148.624KB",
+  "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

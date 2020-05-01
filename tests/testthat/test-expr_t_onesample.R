@@ -55,7 +55,7 @@ testthat::test_that(
       suppressWarnings(
         statsExpressions::expr_t_onesample(
           data = dplyr::sample_frac(movies_long, 0.05),
-          x = length,
+          x = "length",
           test.value = 120,
           type = "p",
           effsize.type = "d",
@@ -109,7 +109,7 @@ testthat::test_that(
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
-    # ggstatsplot output
+    # statsExpressions output
     set.seed(123)
     using_function <-
       statsExpressions::expr_t_onesample(
@@ -153,6 +153,49 @@ testthat::test_that(
 
     # testing overall call
     testthat::expect_identical(using_function, results)
+
+    # statsExpressions output
+    set.seed(123)
+    using_function2 <-
+      statsExpressions::expr_t_onesample(
+        data = ggplot2::msleep,
+        x = names(ggplot2::msleep)[10],
+        test.value = 0.25,
+        type = "np",
+        k = 4,
+        messages = FALSE
+      )
+
+    results2 <-
+      ggplot2::expr(
+        paste(
+          NULL,
+          "log"["e"](italic("V")["Wilcoxon"]),
+          " = ",
+          "5.5683",
+          ", ",
+          italic("p"),
+          " = ",
+          "< 0.001",
+          ", ",
+          widehat(italic("r")),
+          " = ",
+          "-0.5840",
+          ", CI"["95%"],
+          " [",
+          "-0.8133",
+          ", ",
+          "-0.3768",
+          "]",
+          ", ",
+          italic("n")["obs"],
+          " = ",
+          56L
+        )
+      )
+
+    # testing overall call
+    testthat::expect_identical(using_function2, results2)
   }
 )
 
@@ -164,7 +207,7 @@ testthat::test_that(
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
-    # ggstatsplot output
+    # statsExpressions output
     set.seed(123)
     using_function <-
       statsExpressions::expr_t_onesample(
@@ -213,12 +256,12 @@ testthat::test_that(
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
-    # ggstatsplot output
+    # statsExpressions output
     set.seed(123)
     using_function <-
       statsExpressions::expr_t_onesample(
         data = anscombe,
-        x = x2,
+        x = "x2",
         test.value = 8,
         type = "bf",
         messages = FALSE
@@ -241,5 +284,36 @@ testthat::test_that(
 
     # testing overall call
     testthat::expect_identical(using_function, results)
+
+    # statsExpressions output
+    set.seed(123)
+    using_function2 <-
+      statsExpressions::expr_t_onesample(
+        data = ggplot2::msleep,
+        x = "brainwt",
+        test.value = 0.25,
+        type = "bf",
+        k = 4,
+        messages = FALSE
+      )
+
+    # expected result
+    results2 <-
+      ggplot2::expr(
+        paste(
+          "In favor of alternative: ",
+          "log"["e"],
+          "(BF"["10"],
+          ") = ",
+          "-1.8967",
+          ", ",
+          italic("r")["Cauchy"]^"JZS",
+          " = ",
+          "0.7070"
+        )
+      )
+
+    # testing overall call
+    testthat::expect_identical(using_function2, results2)
   }
 )

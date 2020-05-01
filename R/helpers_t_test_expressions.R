@@ -2,8 +2,7 @@
 #' @name expr_t_parametric
 #'
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
-#'   argument can be `"biased"` (`"d"` for Cohen's *d*) or `"unbiased"`
-#'   (`"g"` Hedge's *g* for **t-test**). The default is `"g"`.
+#'   argument can be `"d"` (for Cohen's *d*) or `"g"` (for Hedge's *g*).
 #' @inheritParams expr_anova_parametric
 #' @inheritParams stats::t.test
 #' @inheritParams expr_template
