@@ -11,17 +11,21 @@ env:
     - _R_CHECK_FORCE_SUGGESTS_=true
     - _R_CHECK_CRAN_INCOMING_=true
 
-# cache:
-#   - packages
-#   - ccache
-
 r_binary_packages:
-  - magrittr
-  - curl
-  - jsonlite
+  - rstantools
+  - bridgesampling
+  - BH
+  - stringi
+  - BayesFactor
+  - metaBMA
+  - coda
+  - fastGHQuad
   - rstan
   - Rcpp
   - RcppEigen
+  - magrittr
+  - curl
+  - jsonlite
   - openssl
   - utf8
   - gss
@@ -38,13 +42,6 @@ r_binary_packages:
   - bindrcpp
   - tidyr
   - dplyr
-  - rstantools
-  - bridgesampling
-  - BH
-  - stringi
-  - BayesFactor
-  - metaBMA
-  - coda
   - coin
   - multcomp
   - pbkrtest
@@ -57,7 +54,6 @@ r_binary_packages:
   - ggrepel
   - metaplus
   - fastGHQuad
-  - broomExtra
   - car
   - quantreg
   - rio
@@ -67,7 +63,6 @@ r_packages:
   - knitr
   - rmarkdown
   - afex
-  - ggcorrplot
 
 r_github_packages:
   - jimhester/lintr

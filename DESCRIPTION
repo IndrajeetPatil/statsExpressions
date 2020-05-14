@@ -24,19 +24,19 @@ Depends:
     R (>= 3.6.0)
 Imports:
     boot,
-    broomExtra (>= 3.0.0),
-    correlation (>= 0.2.0),
+    broomExtra,
+    correlation,
     dplyr,
-    effectsize (>= 0.3.0),
+    effectsize,
     ez,
-    ipmisc (>= 2.0.0),
+    ipmisc,
     metafor,
     metaplus,
     purrr,
     rcompanion,
     rlang,
     stats,
-    tidyBF (>= 0.2.0),
+    tidyBF,
     tidyr,
     WRS2
 Suggests:
