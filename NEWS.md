@@ -3,6 +3,9 @@
 MINOR CHANGES
 
   - Thanks to Sarah, the package has a hexsticker. :)
+  
+  - Confidence intervals for Spearman's rho are computed using `correlation`
+    instead of `rcompanion`.
 
 # statsExpressions 0.4.1
 

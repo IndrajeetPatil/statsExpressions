@@ -18,7 +18,7 @@
 #'   "`"nonparametric"`: Spearman's rho" or "`"robust"`: percentage bend
 #'   correlation coefficient" or "`"bayes"`: Bayes Factor for Pearson's *r*").
 #'   Corresponding abbreviations are also accepted: `"p"` (for
-#'   parametric/pearson's), `"np"` (nonparametric/spearman), `"r"` (robust),
+#'   parametric/pearson), `"np"` (nonparametric/spearman), `"r"` (robust),
 #'   `"bf"` (for bayes factor), resp.
 #' @param beta bending constant (Default: `0.1`). For more, see `?WRS2::pbcor`.
 #' @inheritParams tidyBF::bf_corr_test
@@ -28,7 +28,6 @@
 #' @importFrom dplyr select rename_all recode
 #' @importFrom correlation correlation
 #' @importFrom broomExtra easystats_to_tidy_names
-#' @importFrom rcompanion spearmanRho
 #' @importFrom ipmisc stats_type_switch
 #'
 #' @examples
@@ -49,10 +48,8 @@
 #'   data = ggplot2::midwest,
 #'   x = area,
 #'   y = percblack,
-#'   nboot = 25,
 #'   beta = 0.2,
-#'   type = "robust",
-#'   k = 1
+#'   type = "robust"
 #' )
 #' @export
 
@@ -60,13 +57,11 @@
 expr_corr_test <- function(data,
                            x,
                            y,
-                           nboot = 100,
                            beta = 0.1,
                            type = "parametric",
                            bf.prior = 0.707,
                            conf.level = 0.95,
-                           conf.type = "norm",
-                           k = 2,
+                           k = 2L,
                            stat.title = NULL,
                            ...) {
 
@@ -107,44 +102,24 @@ expr_corr_test <- function(data,
     effsize_df <- stats_df
   }
 
-  # `correlation` doesn't return CIs for Spearman'r rho
-  if (stats_type == "nonparametric") {
-    stats_df %<>% dplyr::mutate(.data = ., statistic = log(statistic))
-
-    # getting confidence interval for rho using `rcompanion`
-    effsize_df <-
-      rcompanion::spearmanRho(
-        x = data %>% dplyr::pull({{ x }}),
-        y = data %>% dplyr::pull({{ y }}),
-        method = "spearman",
-        ci = TRUE,
-        conf = conf.level,
-        type = conf.type,
-        R = nboot,
-        histogram = FALSE,
-        digits = 5,
-        reportIncomplete = TRUE
-      ) %>%
-      rcompanion_cleaner(.)
-
-    # subtitle parameters
-    no.parameters <- 0L
-    statistic.text <- quote("log"["e"](italic("S")))
-    effsize.text <- quote(widehat(italic(rho))["Spearman"])
-  }
-
   #------------------------ subtitle text elements -----------------------------
 
   # preparing other needed objects
   if (stats_type == "parametric") {
-    # subtitle parameters
     no.parameters <- 1L
     statistic.text <- quote(italic("t"))
     effsize.text <- quote(widehat(italic("r"))["Pearson"])
   }
 
+  if (stats_type == "nonparametric") {
+    stats_df %<>% dplyr::mutate(.data = ., statistic = log(statistic))
+
+    no.parameters <- 0L
+    statistic.text <- quote("log"["e"](italic("S")))
+    effsize.text <- quote(widehat(italic(rho))["Spearman"])
+  }
+
   if (stats_type == "robust") {
-    # subtitle parameters
     no.parameters <- 1L
     statistic.text <- quote(italic("t"))
     effsize.text <- quote(widehat(italic(rho))["pb"])

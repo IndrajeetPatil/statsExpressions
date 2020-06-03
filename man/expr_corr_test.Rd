@@ -8,13 +8,11 @@ expr_corr_test(
   data,
   x,
   y,
-  nboot = 100,
   beta = 0.1,
   type = "parametric",
   bf.prior = 0.707,
   conf.level = 0.95,
-  conf.type = "norm",
-  k = 2,
+  k = 2L,
   stat.title = NULL,
   ...
 )
@@ -31,9 +29,6 @@ plotted on the \code{x}-axis. Can be entered either as a character string (e.g.,
 be plotted on the \code{y}-axis. Can be entered either as a character string
 (e.g., \code{"y"}) or as a bare expression (e.g, \code{y}).}
 
-\item{nboot}{Number of bootstrap samples for computing confidence interval
-for the effect size (Default: \code{100}).}
-
 \item{beta}{bending constant (Default: \code{0.1}). For more, see \code{?WRS2::pbcor}.}
 
 \item{type}{Type of association between paired samples required
@@ -41,7 +36,7 @@ for the effect size (Default: \code{100}).}
 "\code{"nonparametric"}: Spearman's rho" or "\code{"robust"}: percentage bend
 correlation coefficient" or "\code{"bayes"}: Bayes Factor for Pearson's \emph{r}").
 Corresponding abbreviations are also accepted: \code{"p"} (for
-parametric/pearson's), \code{"np"} (nonparametric/spearman), \code{"r"} (robust),
+parametric/pearson), \code{"np"} (nonparametric/spearman), \code{"r"} (robust),
 \code{"bf"} (for bayes factor), resp.}
 
 \item{bf.prior}{A number between \code{0.5} and \code{2} (default \code{0.707}), the prior
@@ -49,10 +44,6 @@ width to use in calculating Bayes factors.}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} lower and upper confidence intervals (\code{0.95}).}
-
-\item{conf.type}{A vector of character strings representing the type of
-intervals required. The value should be any subset of the values \code{"norm"},
-\code{"basic"}, \code{"perc"}, \code{"bca"}. For more, see \code{?boot::boot.ci}.}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2}).}
@@ -88,10 +79,8 @@ statsExpressions::expr_corr_test(
   data = ggplot2::midwest,
   x = area,
   y = percblack,
-  nboot = 25,
   beta = 0.2,
-  type = "robust",
-  k = 1
+  type = "robust"
 )
 }
 \references{

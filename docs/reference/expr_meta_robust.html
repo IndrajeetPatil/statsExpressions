@@ -186,7 +186,7 @@ two columns will be used for <code>yi</code>  and <code>sei</code> arguments in 
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Arguments passed on to <code><a href='https://rdrr.io/pkg/metaplus/man/metaplus.html'>metaplus::metaplus</a></code></p><dl'>
+      <td><p>Arguments passed on to <code><a href='https://rdrr.io/pkg/metaplus/man/metaplus.html'>metaplus::metaplus</a></code></p><dl>
     <dt><code>mods</code></dt><dd><p>data frame of covariates corresponding to each study</p></dd>
     <dt><code>label</code></dt><dd><p>The label to be used for this model when plotting</p></dd>
     <dt><code>plotci</code></dt><dd><p>Should profile be plotted for each confidence interval?</p></dd>
@@ -207,7 +207,7 @@ two columns will be used for <code>yi</code>  and <code>sei</code> arguments in 
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>metaplus</span>)
 
 <span class='co'># renaming to what `statsExpressions` expects</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>rename</a></span>(<span class='no'>mag</span>, <span class='kw'>estimate</span> <span class='kw'>=</span> <span class='no'>yi</span>, <span class='kw'>std.error</span> <span class='kw'>=</span> <span class='no'>sei</span>)
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span>(<span class='no'>mag</span>, <span class='kw'>estimate</span> <span class='kw'>=</span> <span class='no'>yi</span>, <span class='kw'>std.error</span> <span class='kw'>=</span> <span class='no'>sei</span>)
 
 <span class='co'># creating expression (changing few defaults)</span>
 <span class='fu'>expr_meta_robust</span>(
@@ -218,8 +218,7 @@ two columns will be used for <code>yi</code>  and <code>sei</code> arguments in 
 )</div><div class='output co'>#&gt; paste("Summary effect: ", italic("z"), " = ", "NA", ", ", italic("p"), 
 #&gt;     " = ", "5e-04", ", ", widehat(beta), " = ", "-0.7463", ", CI"["95%"], 
 #&gt;     " [", "-1.2583", ", ", "-0.3428", "]", ", ", italic("n")["effects"], 
-#&gt;     " = ", 16L)</div><div class='input'># }
-</div></pre>
+#&gt;     " = ", 16L)</div><div class='input'><span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

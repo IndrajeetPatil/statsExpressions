@@ -208,7 +208,7 @@ when <code>output = "caption"</code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Arguments passed on to <code><a href='https://rdrr.io/pkg/metafor/man/rma.uni.html'>metafor::rma</a></code></p><dl'>
+      <td><p>Arguments passed on to <code><a href='https://rdrr.io/pkg/metafor/man/rma.uni.html'>metafor::rma</a></code></p><dl>
     <dt><code>vi</code></dt><dd><p>vector of length \(k\) with the corresponding sampling variances. See &#8216;Details&#8217;.</p></dd>
     <dt><code>weights</code></dt><dd><p>optional argument to specify a vector of length \(k\) with user-defined weights. See &#8216;Details&#8217;.</p></dd>
     <dt><code>ai</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
@@ -262,7 +262,7 @@ when <code>output = "caption"</code>.</p></td>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>metaplus</span>)
 
 <span class='co'># renaming to what `statsExpressions` expects</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>rename</a></span>(<span class='no'>mag</span>, <span class='kw'>estimate</span> <span class='kw'>=</span> <span class='no'>yi</span>, <span class='kw'>std.error</span> <span class='kw'>=</span> <span class='no'>sei</span>)
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span>(<span class='no'>mag</span>, <span class='kw'>estimate</span> <span class='kw'>=</span> <span class='no'>yi</span>, <span class='kw'>std.error</span> <span class='kw'>=</span> <span class='no'>sei</span>)
 
 <span class='co'># making subtitle</span>
 <span class='fu'>expr_meta_parametric</span>(
@@ -302,8 +302,7 @@ when <code>output = "caption"</code>.</p></td>
 #&gt; </span><span style='color: #555555;'>1</span><span> 0.293   0.229    16     1     1  47.1 0.000</span><span style='text-decoration: underline;'>036</span><span>0  13.1 0.000</span><span style='text-decoration: underline;'>295</span><span>  73.6  3.79
 #&gt;   int.only
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span>   
-#&gt; </span><span style='color: #555555;'>1</span><span> TRUE    </div><div class='input'># }
-</div></span></pre>
+#&gt; </span><span style='color: #555555;'>1</span><span> TRUE    </div><div class='input'><span class='co'># }</span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

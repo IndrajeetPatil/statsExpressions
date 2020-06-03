@@ -5,7 +5,7 @@ testthat::test_that(
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
-    # ggstatsplot output
+    # `statsExpressions` output
     set.seed(123)
     using_function <-
       suppressWarnings(statsExpressions::expr_corr_test(
@@ -14,9 +14,7 @@ testthat::test_that(
         y = "length",
         type = "nonparametric",
         k = 5,
-        conf.level = 0.999,
-        nboot = 50,
-        messages = TRUE
+        conf.level = 0.999
       ))
 
     # expected
@@ -37,9 +35,9 @@ testthat::test_that(
           "0.49546",
           ", CI"["99.9%"],
           " [",
-          "0.26846",
+          "0.16432",
           ", ",
-          "0.73574",
+          "0.72624",
           "]",
           ", ",
           italic("n")["pairs"],
@@ -50,6 +48,46 @@ testthat::test_that(
 
     # testing overall call
     testthat::expect_identical(using_function, expected)
+
+    # `statsExpressions` output
+    set.seed(123)
+    using_function2 <-
+      statsExpressions::expr_corr_test(
+        data = mtcars,
+        x = names(mtcars)[6],
+        y = mpg,
+        type = "np"
+      )
+
+    expected2 <-
+      ggplot2::expr(
+        paste(
+          NULL,
+          "log"["e"](italic("S")),
+          " = ",
+          "9.24",
+          ", ",
+          italic("p"),
+          " = ",
+          "< 0.001",
+          ", ",
+          widehat(italic(rho))["Spearman"],
+          " = ",
+          "-0.89",
+          ", CI"["95%"],
+          " [",
+          "-0.94",
+          ", ",
+          "-0.78",
+          "]",
+          ", ",
+          italic("n")["pairs"],
+          " = ",
+          32L
+        )
+      )
+
+    testthat::expect_identical(using_function2, expected2)
   }
 )
 
@@ -60,7 +98,7 @@ testthat::test_that(
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
-    # ggstatsplot output
+    # `statsExpressions` output
     set.seed(123)
     using_function <-
       suppressWarnings(statsExpressions::expr_corr_test(
@@ -69,10 +107,7 @@ testthat::test_that(
         y = sleep_rem,
         type = "parametric",
         k = 3,
-        conf.level = 0.90,
-        conf.type = "bca",
-        nboot = 25,
-        messages = TRUE
+        conf.level = 0.90
       ))
 
     # expected
@@ -127,8 +162,7 @@ testthat::test_that(
         y = "sleep_total",
         type = "r",
         k = 4,
-        conf.level = .50,
-        messages = TRUE
+        conf.level = .50
       )
 
     # expected
@@ -183,8 +217,7 @@ testthat::test_that(
         x = names(ggplot2::msleep)[10],
         y = sleep_rem,
         type = "bf",
-        k = 3,
-        messages = FALSE
+        k = 3
       )
 
     # expected

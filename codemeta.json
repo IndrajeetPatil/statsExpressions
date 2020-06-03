@@ -155,7 +155,7 @@
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=correlation"
+      "sameAs": "https://github.com/easystats/correlation"
     },
     {
       "@type": "SoftwareApplication",
@@ -356,6 +356,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "4154.063KB",
+  "fileSize": "4153.347KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }
