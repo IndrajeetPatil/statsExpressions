@@ -163,9 +163,8 @@
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>100</span>,
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
   <span class='kw'>conf.type</span> <span class='kw'>=</span> <span class='st'>"norm"</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>,
+  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
   <span class='kw'>stat.title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='no'>...</span>
 )</pre>
 
@@ -228,11 +227,6 @@ added as a prefix in the subtitle. The default is <code>NULL</code>. An example 
 <code>stat.title</code> argument will be something like <code>"Student's t-test: "</code>.</p></td>
     </tr>
     <tr>
-      <th>messages</th>
-      <td><p>Decides whether messages references, notes, and warnings are
-to be displayed (Default: <code>TRUE</code>).</p></td>
-    </tr>
-    <tr>
       <th>...</th>
       <td><p>Additional arguments (currently ignored).</p></td>
     </tr>
@@ -253,8 +247,7 @@ to be displayed (Default: <code>TRUE</code>).</p></td>
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>sleep</span>,
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>group</span>,
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>extra</span>
-)</div><div class='output co'>#&gt; <span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>95%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>100</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, italic("t")["Yuen"], "(", "13.90", ") = ", "1.57", 
+)</div><div class='output co'>#&gt; paste(NULL, italic("t")["Yuen"], "(", "13.90", ") = ", "1.57", 
 #&gt;     ", ", italic("p"), " = ", "0.139", ", ", widehat(italic(xi)), 
 #&gt;     " = ", "0.52", ", CI"["95%"], " [", "0.00", ", ", "0.87", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 20L)</div><div class='input'>
@@ -266,8 +259,7 @@ to be displayed (Default: <code>TRUE</code>).</p></td>
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>10</span>,
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>,
   <span class='kw'>tr</span> <span class='kw'>=</span> <span class='fl'>0.2</span>
-)</div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>95%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>10</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, italic("t")["Yuen"], "(", "33.491", ") = ", "2.287", 
+)</div><div class='output co'>#&gt; paste(NULL, italic("t")["Yuen"], "(", "33.491", ") = ", "2.287", 
 #&gt;     ", ", italic("p"), " = ", "0.029", ", ", widehat(italic(xi)), 
 #&gt;     " = ", "0.400", ", CI"["95%"], " [", "0.056", ", ", "0.555", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 60L)</div><div class='input'>
@@ -282,11 +274,10 @@ to be displayed (Default: <code>TRUE</code>).</p></td>
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>rating</span>,
   <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>25</span>
-)</div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>95%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>25</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, italic("t")["Yuen"], "(", "199", ") = ", "-26.64", 
+)</div><div class='output co'>#&gt; paste(NULL, italic("t")["Yuen"], "(", "199", ") = ", "-26.64", 
 #&gt;     ", ", italic("p"), " = ", "&lt; 0.001", ", ", widehat(italic(xi)), 
 #&gt;     " = ", "0.73", ", CI"["95%"], " [", "0.49", ", ", "0.87", 
-#&gt;     "]", ", ", italic("n")["pairs"], " = ", 250L)</div><div class='input'><span class='co'># }</span></div></span></pre>
+#&gt;     "]", ", ", italic("n")["pairs"], " = ", 250L)</div><div class='input'><span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

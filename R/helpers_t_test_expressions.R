@@ -261,12 +261,11 @@ expr_t_nonparametric <- function(data,
                                  x,
                                  y,
                                  paired = FALSE,
-                                 k = 2,
+                                 k = 2L,
                                  conf.level = 0.95,
                                  conf.type = "norm",
                                  nboot = 100,
                                  stat.title = NULL,
-                                 messages = TRUE,
                                  ...) {
 
   # make sure both quoted and unquoted arguments are supported
@@ -330,9 +329,6 @@ expr_t_nonparametric <- function(data,
       reportIncomplete = TRUE
     ) %>%
     rcompanion_cleaner(.)
-
-  # message about effect size measure
-  if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)
 
   # preparing subtitle
   expr_template(
@@ -409,9 +405,8 @@ expr_t_robust <- function(data,
                           nboot = 100,
                           conf.level = 0.95,
                           conf.type = "norm",
-                          k = 2,
+                          k = 2L,
                           stat.title = NULL,
-                          messages = TRUE,
                           ...) {
   # make sure both quoted and unquoted arguments are supported
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
@@ -500,9 +495,6 @@ expr_t_robust <- function(data,
     k.parameter <- 0L
     n.text <- quote(italic("n")["pairs"])
   }
-
-  # message about effect size measure
-  if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)
 
   # preparing subtitle
   expr_template(

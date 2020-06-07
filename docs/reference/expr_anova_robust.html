@@ -168,9 +168,8 @@ trimmed means</p>
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>100</span>,
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
   <span class='kw'>conf.type</span> <span class='kw'>=</span> <span class='st'>"norm"</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>,
+  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
   <span class='kw'>stat.title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='no'>...</span>
 )</pre>
 
@@ -233,11 +232,6 @@ added as a prefix in the subtitle. The default is <code>NULL</code>. An example 
 <code>stat.title</code> argument will be something like <code>"Student's t-test: "</code>.</p></td>
     </tr>
     <tr>
-      <th>messages</th>
-      <td><p>Decides whether messages references, notes, and warnings are
-to be displayed (Default: <code>TRUE</code>).</p></td>
-    </tr>
-    <tr>
       <th>...</th>
       <td><p>Currently ignored.</p></td>
     </tr>
@@ -263,8 +257,7 @@ to be displayed (Default: <code>TRUE</code>).</p></td>
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>percbelowpoverty</span>,
   <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>10</span>
-)</div><div class='output co'>#&gt; <span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>95%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>10</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, italic("F")["trimmed-means"], "(", "4", ",", "169.73", 
+)</div><div class='output co'>#&gt; paste(NULL, italic("F")["trimmed-means"], "(", "4", ",", "169.73", 
 #&gt;     ") = ", "11.43", ", ", italic("p"), " = ", "&lt; 0.001", ", ", 
 #&gt;     widehat(italic(xi)), " = ", "0.33", ", CI"["95%"], " [", 
 #&gt;     "0.21", ", ", "0.45", "]", ", ", italic("n")["obs"], " = ", 
@@ -278,8 +271,7 @@ to be displayed (Default: <code>TRUE</code>).</p></td>
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.99</span>,
   <span class='kw'>tr</span> <span class='kw'>=</span> <span class='fl'>0.2</span>,
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>10</span>
-)</div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>99%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>10</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, italic("F")["trimmed-means"], "(", "4", ",", "127.02", 
+)</div><div class='output co'>#&gt; paste(NULL, italic("F")["trimmed-means"], "(", "4", ",", "127.02", 
 #&gt;     ") = ", "7.67", ", ", italic("p"), " = ", "&lt; 0.001", ", ", 
 #&gt;     widehat(italic(xi)), " = ", "0.31", ", CI"["99%"], " [", 
 #&gt;     "0.17", ", ", "0.42", "]", ", ", italic("n")["obs"], " = ", 
@@ -296,7 +288,7 @@ to be displayed (Default: <code>TRUE</code>).</p></td>
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>10</span>
 )</div><div class='output co'>#&gt; paste(italic("F")["trimmed-means"], "(", "1.091", ",", "97.096", 
 #&gt;     ") = ", "367.791", ", ", italic("p"), " = ", "&lt; 0.001", ", ", 
-#&gt;     italic("n")["pairs"], " = ", 150L)</div><div class='input'><span class='co'># }</span></div></span></pre>
+#&gt;     italic("n")["pairs"], " = ", 150L)</div><div class='input'><span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

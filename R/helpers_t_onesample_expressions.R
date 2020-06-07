@@ -88,9 +88,8 @@ expr_t_onesample <- function(data,
                              conf.level = 0.95,
                              conf.type = "norm",
                              nboot = 100,
-                             k = 2,
+                             k = 2L,
                              stat.title = NULL,
-                             messages = TRUE,
                              ...) {
 
   # ====================== dataframe ========================================
@@ -180,9 +179,6 @@ expr_t_onesample <- function(data,
     statistic.text <- quote("log"["e"](italic("V")["Wilcoxon"]))
     no.parameters <- 0L
     effsize.text <- quote(widehat(italic("r")))
-
-    # message about effect size measure
-    if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)
   }
 
   # preparing subtitle
@@ -214,9 +210,6 @@ expr_t_onesample <- function(data,
         nv = test.value,
         alpha = 1 - conf.level
       )
-
-    # displaying message about bootstrap
-    if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)
 
     # preparing the subtitle
     subtitle <-

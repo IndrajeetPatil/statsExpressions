@@ -18,8 +18,7 @@ expr_contingency_tab(
   conf.level = 0.95,
   conf.type = "norm",
   bias.correct = TRUE,
-  k = 2,
-  messages = TRUE,
+  k = 2L,
   ...
 )
 
@@ -36,8 +35,7 @@ expr_onesample_proptest(
   conf.level = 0.95,
   conf.type = "norm",
   bias.correct = TRUE,
-  k = 2,
-  messages = TRUE,
+  k = 2L,
   ...
 )
 }
@@ -88,9 +86,6 @@ Cramer's \emph{V}.}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2}).}
-
-\item{messages}{Decides whether messages references, notes, and warnings are
-to be displayed (Default: \code{TRUE}).}
 
 \item{...}{Additional arguments (currently ignored).}
 }

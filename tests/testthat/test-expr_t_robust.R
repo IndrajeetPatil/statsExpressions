@@ -72,12 +72,6 @@ testthat::test_that(
         messages = TRUE
       )
     )
-
-    # checking captured messages
-    testthat::expect_match(p_message[1],
-      "99% CI for effect size estimate was computed with 20",
-      fixed = TRUE
-    )
   }
 )
 

@@ -159,12 +159,11 @@
   <span class='no'>x</span>,
   <span class='no'>y</span>,
   <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>,
+  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
   <span class='kw'>conf.type</span> <span class='kw'>=</span> <span class='st'>"norm"</span>,
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>100</span>,
   <span class='kw'>stat.title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='no'>...</span>
 )</pre>
 
@@ -219,11 +218,6 @@ added as a prefix in the subtitle. The default is <code>NULL</code>. An example 
 <code>stat.title</code> argument will be something like <code>"Student's t-test: "</code>.</p></td>
     </tr>
     <tr>
-      <th>messages</th>
-      <td><p>Decides whether messages references, notes, and warnings are
-to be displayed (Default: <code>TRUE</code>).</p></td>
-    </tr>
-    <tr>
       <th>...</th>
       <td><p>Additional arguments (currently ignored).</p></td>
     </tr>
@@ -264,8 +258,7 @@ below.</p>
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>sleep</span>,
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>group</span>,
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>extra</span>
-)</div><div class='output co'>#&gt; <span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>95%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>100</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")["Wilcoxon"]), " = ", "3.24", 
+)</div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")["Wilcoxon"]), " = ", "3.24", 
 #&gt;     ", ", italic("p"), " = ", "0.069", ", ", widehat(italic("r")), 
 #&gt;     " = ", "-0.41", ", CI"["95%"], " [", "-0.84", ", ", "-0.04", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 20L)</div><div class='input'>
@@ -283,8 +276,7 @@ below.</p>
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>200</span>,
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.99</span>,
   <span class='kw'>conf.type</span> <span class='kw'>=</span> <span class='st'>"bca"</span>
-)</div><div class='output co'>#&gt; <span class='warning'>Warning: extreme order statistics used as endpoints</span></div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>99%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>200</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")["Wilcoxon"]), " = ", "5.05", 
+)</div><div class='output co'>#&gt; <span class='warning'>Warning: extreme order statistics used as endpoints</span></div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")["Wilcoxon"]), " = ", "5.05", 
 #&gt;     ", ", italic("p"), " = ", "0.179", ", ", widehat(italic("r")), 
 #&gt;     " = ", "0.23", ", CI"["99%"], " [", "-0.28", ", ", "0.63", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 34L)</div><div class='input'>
@@ -298,8 +290,7 @@ below.</p>
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>msleep_short</span>,
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>vore</span>,
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>sleep_rem</span>
-)</div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>95%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>100</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")["Wilcoxon"]), " = ", "4.43", 
+)</div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")["Wilcoxon"]), " = ", "4.43", 
 #&gt;     ", ", italic("p"), " = ", "0.179", ", ", widehat(italic("r")), 
 #&gt;     " = ", "-0.23", ", CI"["95%"], " [", "-0.60", ", ", "0.12", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 34L)</div><div class='input'>
@@ -315,11 +306,10 @@ below.</p>
   <span class='kw'>conf.type</span> <span class='kw'>=</span> <span class='st'>"perc"</span>,
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>200</span>,
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>4</span>
-)</div><div class='output co'>#&gt; </span><span style='color: #00BB00;'>Note:</span><span> </span><span style='color: #BBBB00;'>90%</span><span> </span><span style='color: #0000BB;'>CI for effect size estimate was computed with</span><span> </span><span style='color: #BBBB00;'>200</span><span> </span><span style='color: #0000BB;'>bootstrap samples.
-#&gt; </span><span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("V")["Wilcoxon"]), " = ", "1.5041", 
+)</div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("V")["Wilcoxon"]), " = ", "1.5041", 
 #&gt;     ", ", italic("p"), " = ", "9e-04", ", ", widehat(italic("r")), 
 #&gt;     " = ", "-0.5745", ", CI"["90%"], " [", "-0.6843", ", ", "-0.4427", 
-#&gt;     "]", ", ", italic("n")["pairs"], " = ", 34L)</div><div class='input'><span class='co'># }</span></div></span></pre>
+#&gt;     "]", ", ", italic("n")["pairs"], " = ", 34L)</div><div class='input'><span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

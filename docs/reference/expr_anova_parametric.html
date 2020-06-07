@@ -166,9 +166,8 @@ using <code><a href='https://rdrr.io/pkg/effectsize/man/eta_squared.html'>effect
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
   <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>sphericity.correction</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>,
+  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
   <span class='kw'>stat.title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='no'>...</span>
 )</pre>
 
@@ -237,11 +236,6 @@ to account for violation of sphericity in a repeated measures design ANOVA
       <td><p>A character describing the test being run, which will be
 added as a prefix in the subtitle. The default is <code>NULL</code>. An example of a
 <code>stat.title</code> argument will be something like <code>"Student's t-test: "</code>.</p></td>
-    </tr>
-    <tr>
-      <th>messages</th>
-      <td><p>Decides whether messages references, notes, and warnings are
-to be displayed (Default: <code>TRUE</code>).</p></td>
     </tr>
     <tr>
       <th>...</th>

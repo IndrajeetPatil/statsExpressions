@@ -9,7 +9,7 @@
 | [![CRAN Checks](https://cranchecks.info/badges/summary/statsExpressions)](https://cran.r-project.org/web/checks/check_results_statsExpressions.html)                      | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/statsExpressions?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/statsExpressions) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)                          | [![Forks](https://img.shields.io/badge/forks-7-blue.svg)](https://github.com/IndrajeetPatil/statsExpressions/)                                                           | [![Features](https://img.shields.io/badge/features-statsExpressions-orange.svg?colorB=2196F3)](https://indrajeetpatil.github.io/statsExpressions/reference/index.html)    |
 | [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)                                                                | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/)                                                                                         | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)                        | [![Github Issues](https://img.shields.io/badge/issues-6-red.svg)](https://github.com/IndrajeetPatil/statsExpressions/issues)                                             | [![vignettes](https://img.shields.io/badge/vignettes-0.4.1-orange.svg?colorB=FF5722)](https://CRAN.R-project.org/package=statsExpressions/vignettes/)                     |
 | [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/statsExpressions/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/statsExpressions?branch=master)             | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)                         | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/statsExpressions.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/statsExpressions) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2074621.svg)](https://doi.org/10.5281/zenodo.3386122)                                                                 |
-| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                          | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master)                   | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_03_22-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/blob/master/tests/README.md) | [![Last-changedate](https://img.shields.io/badge/last%20change-2020--06--03-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master)         | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master) |
+| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                          | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master)                   | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_03_22-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/blob/master/tests/README.md) | [![Last-changedate](https://img.shields.io/badge/last%20change-2020--06--07-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master)         | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master) |
 | [![status](https://tinyverse.netlify.com/badge/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)                                                    | [![R build status](https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions)                                            | [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/statsExpressions/community)                                                                       | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)                                                               | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/statsExpressions/issues)      |
 
 # Introduction <img src="man/figures/logo.png" align="right" width="240" />
@@ -166,7 +166,7 @@ ggplot(iris, aes(x = Sepal.Length, y = Species)) +
   ) +
   labs(
     title = "A heteroscedastic one-way ANOVA for trimmed means",
-    subtitle = expr_anova_robust(iris, Species, Sepal.Length, messages = FALSE)
+    subtitle = expr_anova_robust(iris, Species, Sepal.Length)
   )
 ```
 
@@ -194,7 +194,6 @@ ggboxplot(
     title = "Kruskall-Wallis test",
     subtitle = expr_anova_nonparametric(ToothGrowth, dose, len, type = "np")
   )
-#> Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.
 ```
 
 <img src="man/figures/README-ggpubr_anova-1.png" width="100%" />
@@ -217,7 +216,6 @@ ggplot2::ggplot(WineTasting, aes(Wine, Taste, color = Wine)) +
     title = "Friedman's rank sum test",
     subtitle = expr_anova_nonparametric(WineTasting, Wine, Taste, paired = TRUE, type = "np")
   )
-#> Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.
 ```
 
 <img src="man/figures/README-anova_parametric2-1.png" width="100%" />
@@ -304,7 +302,6 @@ ggDot(heightweight, aes(sex, heightIn, fill = sex),
     title = "Wilcoxon two-sample test",
     subtitle = expr_t_nonparametric(heightweight, sex, heightIn, type = "np")
   )
-#> Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.
 ```
 
 <img src="man/figures/README-t_ggiraphExtra-1.png" width="100%" />
@@ -336,7 +333,6 @@ paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject")
       type = "nonparametric"
     )
   )
-#> Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.
 ```
 
 <img src="man/figures/README-t_two_paired1-1.png" width="100%" />
@@ -358,7 +354,6 @@ ggplot(mtcars, aes(wt)) +
     title = "One-Sample Wilcoxon Signed Rank Test",
     subtitle = expr_t_onesample(mtcars, wt, test.value = 3, type = "nonparametric")
   )
-#> Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.
 ```
 
 <img src="man/figures/README-t_one-1.png" width="100%" />
@@ -409,7 +404,6 @@ ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1
     subtitle = expr_onesample_proptest(as.data.frame(table(mpg$class)), Var1, counts = Freq),
     caption = "One-sample goodness of fit proportion test"
   )
-#> Note: 95% CI for effect size estimate was computed with 100 bootstrap samples.
 ```
 
 <img src="man/figures/README-gof-1.png" width="100%" />
@@ -424,7 +418,7 @@ library(ggplot2)
 library(statsExpressions)
 
 # Pearson's chi-squared test of independence
-expr_contingency_tab(mtcars, am, cyl, messages = FALSE)
+expr_contingency_tab(mtcars, am, cyl)
 #> paste(NULL, chi["Pearson"]^2, "(", "2", ") = ", "8.74", ", ", 
 #>     italic("p"), " = ", "0.013", ", ", widehat(italic("V"))["Cramer"], 
 #>     " = ", "0.46", ", CI"["95%"], " [", "0.08", ", ", "0.75", 

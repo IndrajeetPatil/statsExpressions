@@ -9,12 +9,11 @@ expr_t_nonparametric(
   x,
   y,
   paired = FALSE,
-  k = 2,
+  k = 2L,
   conf.level = 0.95,
   conf.type = "norm",
   nboot = 100,
   stat.title = NULL,
-  messages = TRUE,
   ...
 )
 }
@@ -47,9 +46,6 @@ for the effect size (Default: \code{100}).}
 \item{stat.title}{A character describing the test being run, which will be
 added as a prefix in the subtitle. The default is \code{NULL}. An example of a
 \code{stat.title} argument will be something like \code{"Student's t-test: "}.}
-
-\item{messages}{Decides whether messages references, notes, and warnings are
-to be displayed (Default: \code{TRUE}).}
 
 \item{...}{Additional arguments (currently ignored).}
 }

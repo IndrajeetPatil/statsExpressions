@@ -93,8 +93,7 @@ expr_contingency_tab <- function(data,
                                  conf.level = 0.95,
                                  conf.type = "norm",
                                  bias.correct = TRUE,
-                                 k = 2,
-                                 messages = TRUE,
+                                 k = 2L,
                                  ...) {
 
   # ensure the variables work quoted or unquoted
@@ -238,12 +237,7 @@ expr_contingency_tab <- function(data,
 
 
   # for Cohen's g
-  if ("Statistic" %in% names(effsize_df)) {
-    effsize_df %<>% dplyr::filter(.data = ., Statistic == "g")
-  }
-
-  # message about effect size measure
-  if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)
+  if ("Statistic" %in% names(effsize_df)) effsize_df %<>% dplyr::filter(Statistic == "g")
 
   # preparing subtitle
   expr_template(

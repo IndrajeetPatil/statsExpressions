@@ -22,8 +22,6 @@
 #' @param sphericity.correction Logical that decides whether to apply correction
 #'   to account for violation of sphericity in a repeated measures design ANOVA
 #'   (Default: `TRUE`).
-#' @param messages Decides whether messages references, notes, and warnings are
-#'   to be displayed (Default: `TRUE`).
 #' @inheritParams expr_template
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams stats::oneway.test
@@ -87,9 +85,8 @@ expr_anova_parametric <- function(data,
                                   conf.level = 0.95,
                                   var.equal = FALSE,
                                   sphericity.correction = TRUE,
-                                  k = 2,
+                                  k = 2L,
                                   stat.title = NULL,
-                                  messages = TRUE,
                                   ...) {
 
   # make sure both quoted and unquoted arguments are allowed
@@ -260,7 +257,8 @@ expr_anova_parametric <- function(data,
       partial = partial,
       ci = conf.level
     ) %>%
-    broomExtra::easystats_to_tidy_names(.) %>% # renaming to standard term 'estimate'
+    broomExtra::easystats_to_tidy_names(.) %>%
+    # renaming to standard term 'estimate'
     dplyr::rename(.data = ., estimate = dplyr::matches("eta|omega")) %>%
     dplyr::filter(.data = ., !is.na(estimate)) %>%
     dplyr::filter(.data = ., !grepl(pattern = "Residuals", x = term, ignore.case = TRUE))
@@ -349,10 +347,9 @@ expr_anova_nonparametric <- function(data,
                                      paired = FALSE,
                                      conf.type = "perc",
                                      conf.level = 0.95,
-                                     k = 2,
+                                     k = 2L,
                                      nboot = 100,
                                      stat.title = NULL,
-                                     messages = TRUE,
                                      ...) {
 
   # make sure both quoted and unquoted arguments are allowed
@@ -442,9 +439,6 @@ expr_anova_nonparametric <- function(data,
     ) %>%
     rcompanion_cleaner(.)
 
-  # message about effect size measure
-  if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)
-
   # preparing subtitle
   expr_template(
     stat.title = stat.title,
@@ -526,9 +520,8 @@ expr_anova_robust <- function(data,
                               nboot = 100,
                               conf.level = 0.95,
                               conf.type = "norm",
-                              k = 2,
+                              k = 2L,
                               stat.title = NULL,
-                              messages = TRUE,
                               ...) {
 
   # make sure both quoted and unquoted arguments are allowed
@@ -631,9 +624,6 @@ expr_anova_robust <- function(data,
         k = k,
         k.parameter2 = k
       )
-
-    # message about effect size measure
-    if (isTRUE(messages)) effsize_ci_message(nboot, conf.level)
   }
 
   # return the subtitle

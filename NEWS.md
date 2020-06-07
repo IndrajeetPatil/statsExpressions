@@ -6,6 +6,9 @@ MINOR CHANGES
   
   - Confidence intervals for Spearman's rho are computed using `correlation`
     instead of `rcompanion`.
+    
+  - All relevant functions get rid of `messages` argument as the functions no
+    longer print a message when bootstrapped CIs are used.
 
 # statsExpressions 0.4.1
 

@@ -67,7 +67,7 @@
 # function body
 expr_meta_parametric <- function(data,
                                  conf.level = 0.95,
-                                 k = 2,
+                                 k = 2L,
                                  output = "subtitle",
                                  caption = NULL,
                                  messages = TRUE,

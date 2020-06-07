@@ -305,3 +305,13 @@ df_cleanup_paired <- function(data, x, y) {
     dplyr::rename(.data = ., {{ x }} := key, {{ y }} := value) %>%
     dplyr::mutate(.data = ., {{ x }} := factor({{ x }}))
 }
+
+#' @noRd
+
+effsize_type_switch <- function(effsize.type) {
+  dplyr::case_when(
+    grepl("^u|^g|omega", effsize.type, TRUE) ~ "unbiased",
+    grepl("^b|^d|eta", effsize.type, TRUE) ~ "biased",
+    TRUE ~ "unbiased"
+  )
+}

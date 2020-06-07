@@ -180,7 +180,7 @@ ggplot(iris, aes(x = Sepal.Length, y = Species)) +
   ) +
   labs(
     title = "A heteroscedastic one-way ANOVA for trimmed means",
-    subtitle = expr_anova_robust(iris, Species, Sepal.Length, messages = FALSE)
+    subtitle = expr_anova_robust(iris, Species, Sepal.Length)
   )
 ```
 
@@ -411,7 +411,7 @@ library(ggplot2)
 library(statsExpressions)
 
 # Pearson's chi-squared test of independence
-expr_contingency_tab(mtcars, am, cyl, messages = FALSE)
+expr_contingency_tab(mtcars, am, cyl)
 ```
 
 ## Example: Expressions for meta-analysis

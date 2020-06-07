@@ -14,9 +14,8 @@ expr_anova_robust(
   nboot = 100,
   conf.level = 0.95,
   conf.type = "norm",
-  k = 2,
+  k = 2L,
   stat.title = NULL,
-  messages = TRUE,
   ...
 )
 }
@@ -55,9 +54,6 @@ intervals required. The value should be any subset of the values \code{"norm"},
 \item{stat.title}{A character describing the test being run, which will be
 added as a prefix in the subtitle. The default is \code{NULL}. An example of a
 \code{stat.title} argument will be something like \code{"Student's t-test: "}.}
-
-\item{messages}{Decides whether messages references, notes, and warnings are
-to be displayed (Default: \code{TRUE}).}
 
 \item{...}{Currently ignored.}
 }

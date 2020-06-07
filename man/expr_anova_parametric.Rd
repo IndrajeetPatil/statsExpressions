@@ -14,9 +14,8 @@ expr_anova_parametric(
   conf.level = 0.95,
   var.equal = FALSE,
   sphericity.correction = TRUE,
-  k = 2,
+  k = 2L,
   stat.title = NULL,
-  messages = TRUE,
   ...
 )
 }
@@ -61,9 +60,6 @@ to account for violation of sphericity in a repeated measures design ANOVA
 \item{stat.title}{A character describing the test being run, which will be
 added as a prefix in the subtitle. The default is \code{NULL}. An example of a
 \code{stat.title} argument will be something like \code{"Student's t-test: "}.}
-
-\item{messages}{Decides whether messages references, notes, and warnings are
-to be displayed (Default: \code{TRUE}).}
 
 \item{...}{Additional arguments (currently ignored).}
 }
