@@ -85,18 +85,20 @@ Template for subtitles with statistical details for tests
 set.seed(123)
 
 # creating a dataframe with stats results
-stats_df <- cbind.data.frame(
-  statistic = 5.494,
-  parameter = 29.234,
-  p.value = 0.00001
-)
+stats_df <-
+  cbind.data.frame(
+    statistic = 5.494,
+    parameter = 29.234,
+    p.value = 0.00001
+  )
 
 # creating a dataframe with effect size results
-effsize_df <- cbind.data.frame(
-  estimate = -1.980,
-  conf.low = -2.873,
-  conf.high = -1.088
-)
+effsize_df <-
+  cbind.data.frame(
+    estimate = -1.980,
+    conf.low = -2.873,
+    conf.high = -1.088
+  )
 
 # subtitle for *t*-statistic with Cohen's *d* as effect size
 statsExpressions::expr_template(

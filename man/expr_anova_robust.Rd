@@ -13,7 +13,6 @@ expr_anova_robust(
   tr = 0.1,
   nboot = 100,
   conf.level = 0.95,
-  conf.type = "norm",
   k = 2L,
   stat.title = NULL,
   ...
@@ -44,10 +43,6 @@ for the effect size (Default: \code{100}).}
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} lower and upper confidence intervals (\code{0.95}).}
 
-\item{conf.type}{A vector of character strings representing the type of
-intervals required. The value should be any subset of the values \code{"norm"},
-\code{"basic"}, \code{"perc"}, \code{"bca"}. For more, see \code{?boot::boot.ci}.}
-
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2}).}
 
@@ -55,7 +50,7 @@ intervals required. The value should be any subset of the values \code{"norm"},
 added as a prefix in the subtitle. The default is \code{NULL}. An example of a
 \code{stat.title} argument will be something like \code{"Student's t-test: "}.}
 
-\item{...}{Currently ignored.}
+\item{...}{Additional arguments (currently ignored).}
 }
 \value{
 For more details, see-
@@ -101,8 +96,7 @@ statsExpressions::expr_anova_robust(
   y = value,
   paired = TRUE,
   tr = 0.2,
-  k = 3,
-  nboot = 10
+  k = 3
 )
 }
 }

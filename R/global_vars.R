@@ -208,7 +208,11 @@ utils::globalVariables(
     "95% ci.lb",
     "95% ci.ub",
     "z value",
-    "prior"
+    "prior",
+    "Est",
+    "ci.low",
+    "ci.up",
+    "effect_size"
   ),
   package = "statsExpressions",
   add = FALSE

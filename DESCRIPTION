@@ -23,22 +23,20 @@ BugReports:
 Depends: 
     R (>= 3.6.0)
 Imports:
-    boot,
     broomExtra,
     correlation,
     dplyr,
     effectsize,
     ez,
-    ipmisc,
+    ipmisc (>= 3.0.0.9000),
     metafor,
     metaplus,
-    purrr,
     rcompanion,
     rlang,
     stats,
     tidyBF,
     tidyr,
-    WRS2
+    WRS2 (>= 1.1-0)
 Suggests:
     ggplot2,
     knitr,
@@ -48,7 +46,8 @@ Suggests:
 VignetteBuilder: 
     knitr
 Remotes:
-    easystats/correlation
+    easystats/correlation,
+    IndrajeetPatil/ipmisc
 Encoding: UTF-8
 Language: en-US
 LazyData: true

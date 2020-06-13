@@ -13,10 +13,10 @@
 #'   (`"onestep"` (Default), `"mom"`, or `"median"`). For more, see
 #'   `?WRS2::onesampb`.
 #' @param ... Additional arguments (currently ignored).
-#' @inheritParams t1way_ci
 #' @inheritParams expr_t_parametric
 #' @inheritParams tidyBF::bf_corr_test
 #' @inheritParams expr_anova_parametric
+#' @inheritParams expr_anova_nonparametric
 #'
 #' @return Expression containing results from a one-sample test. The exact test
 #'   and the effect size details contained will be dependent on the `type`
@@ -149,13 +149,12 @@ expr_t_onesample <- function(data,
     # setting up the Mann-Whitney U-test and getting its summary
     stats_df <-
       broomExtra::tidy(
-        x = stats::wilcox.test(
+        stats::wilcox.test(
           x = data %>% dplyr::pull({{ x }}),
           alternative = "two.sided",
           na.action = na.omit,
           mu = test.value,
-          exact = FALSE,
-          correct = TRUE
+          exact = FALSE
         )
       ) %>%
       dplyr::mutate(.data = ., statistic = log(statistic))

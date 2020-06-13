@@ -330,8 +330,7 @@ paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject")
       data = pivot_longer(PrisonStress, starts_with("PSS"), "PSS", values_to = "stress"),
       x = PSS,
       y = stress,
-      paired = TRUE,
-      type = "nonparametric"
+      paired = TRUE
     )
   )
 ```

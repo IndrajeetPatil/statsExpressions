@@ -160,9 +160,8 @@
   <span class='no'>y</span>,
   <span class='kw'>tr</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
   <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>100</span>,
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
-  <span class='kw'>conf.type</span> <span class='kw'>=</span> <span class='st'>"norm"</span>,
+  <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>100</span>,
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
   <span class='kw'>stat.title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='no'>...</span>
@@ -200,20 +199,14 @@ repeated measures/within-subjects or between-subjects. The default is
 <code>FALSE</code>.</p></td>
     </tr>
     <tr>
-      <th>nboot</th>
-      <td><p>Number of bootstrap samples for computing confidence interval
-for the effect size (Default: <code>100</code>).</p></td>
-    </tr>
-    <tr>
       <th>conf.level</th>
       <td><p>Scalar between 0 and 1. If unspecified, the defaults return
 <code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
     </tr>
     <tr>
-      <th>conf.type</th>
-      <td><p>A vector of character strings representing the type of
-intervals required. The value should be any subset of the values <code>"norm"</code>,
-<code>"basic"</code>, <code>"perc"</code>, <code>"bca"</code>. For more, see <code><a href='https://rdrr.io/pkg/boot/man/boot.ci.html'>?boot::boot.ci</a></code>.</p></td>
+      <th>nboot</th>
+      <td><p>Number of bootstrap samples for computing confidence interval
+for the effect size (Default: <code>100</code>).</p></td>
     </tr>
     <tr>
       <th>k</th>
@@ -242,6 +235,8 @@ added as a prefix in the subtitle. The default is <code>NULL</code>. An example 
 <span class='co'># for reproducibility</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
 
+<span class='co'># between-subjects design -----------------------------------------------</span>
+
 <span class='co'># with defaults</span>
 <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_robust</span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>sleep</span>,
@@ -263,21 +258,17 @@ added as a prefix in the subtitle. The default is <code>NULL</code>. An example 
 #&gt;     ", ", italic("p"), " = ", "0.029", ", ", widehat(italic(xi)), 
 #&gt;     " = ", "0.400", ", CI"["95%"], " [", "0.056", ", ", "0.555", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 60L)</div><div class='input'>
-<span class='co'># within-subjects design</span>
+<span class='co'># within-subjects design -----------------------------------------------</span>
 <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_robust</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(
-    <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='no'><a href='intent_morality.html'>intent_morality</a></span>,
-    <span class='no'>condition</span> <span class='kw'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"accidental"</span>, <span class='st'>"attempted"</span>),
-    <span class='no'>harm</span> <span class='kw'>==</span> <span class='st'>"Poisoning"</span>
-  ),
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>bugs_long</span>, <span class='no'>condition</span> <span class='kw'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"LDLF"</span>, <span class='st'>"LDHF"</span>)),
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>condition</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>rating</span>,
+  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>desire</span>,
   <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>25</span>
-)</div><div class='output co'>#&gt; paste(NULL, italic("t")["Yuen"], "(", "199", ") = ", "-26.64", 
-#&gt;     ", ", italic("p"), " = ", "&lt; 0.001", ", ", widehat(italic(xi)), 
-#&gt;     " = ", "0.73", ", CI"["95%"], " [", "0.49", ", ", "0.87", 
-#&gt;     "]", ", ", italic("n")["pairs"], " = ", 250L)</div><div class='input'><span class='co'># }</span></div></pre>
+)</div><div class='output co'>#&gt; paste(NULL, italic("t")["Yuen"], "(", "72", ") = ", "-6.71", 
+#&gt;     ", ", italic("p"), " = ", "&lt; 0.001", ", ", widehat(italic(delta))["R"], 
+#&gt;     " = ", "-0.53", ", CI"["95%"], " [", "-0.75", ", ", "-0.47", 
+#&gt;     "]", ", ", italic("n")["pairs"], " = ", 91L)</div><div class='input'><span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

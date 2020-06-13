@@ -71,12 +71,16 @@ guidelines were recommended. This is important because what might be considered
 a small effect in psychology might be large for some other field like public
 health.
 
+(Additionally, you will also see which function is used internally to compute
+the effect size and their confidence intervals.)
+
 # One-sample tests
 
 ## parametric
 
 **Test**: One-sample *t*-test <br>
-**Effect size**: Cohen's *d*, Hedge's *g* 
+**Effect size**: Cohen's *d*, Hedge's *g* <br>
+**Function**: `effectsize::cohens_d`
 
 Effect size | Small | Medium | Large | Range
 ---- | ---------- | ---------- | ---------- | ---------- 
@@ -86,7 +90,8 @@ Hedge's *g* | 0 – < 0.20 | 0.20 – < 0.50 | ≥ 0.80 | [-Inf,Inf]
 ## non-parametric
 
 **Test**: One-sample Wilcoxon Signed-rank Test <br>
-**Effect size**: *r* ( = $Z/\sqrt(N_{obs})$) 
+**Effect size**: $r$ ( = $Z/\sqrt(N_{obs})$) <br>
+**Function**: `rcompanion::wilcoxonOneSampleR`
 
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | -------
@@ -95,7 +100,8 @@ Effect size | Small | Medium | Large | Range
 ## robust
 
 **Test**: One-sample percentile bootstrap test <br>
-**Effect size**: robust location measure
+**Effect size**: robust location measure <br>
+**Function**: `WRS2::onesampb`
  
 # Two-sample tests
 
@@ -104,7 +110,8 @@ Effect size | Small | Medium | Large | Range
 ### parametric
 
 **Test**: Student's dependent samples *t*-test <br>
-**Effect size**: Cohen's *d*, Hedge's *g* 
+**Effect size**: Cohen's *d*, Hedge's *g* <br>
+**Function**: `effectsize::cohens_d`
 
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | -------
@@ -114,7 +121,8 @@ Hedge's *g* | 0.20 | 0.50 | 0.80 | [0,1]
 ### non-parametric
 
 **Test**: Wilcoxon signed-rank test <br>
-**Effect size**: *r* ( = $Z/\sqrt(N_{pairs})$) 
+**Effect size**: $r$ ( = $Z/\sqrt(N_{pairs})$) <br>
+**Function**: `rcompanion::wilcoxonPairedR`
 
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | -------
@@ -123,20 +131,25 @@ Effect size | Small | Medium | Large | Range
 ### robust
 
 **Test**: Yuen's dependent sample trimmed means *t*-test <br>
-**Effect size**: Explanatory measure of effect size ($\xi$)
+**Effect size**: robust (trimmed-Winsorized) standardized difference similar to
+Cohen's *d* <br>
+**Function**: `WRS2::dep.effect`
 
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | -------
-$\xi$ | 0.10 – < 0.30 | 0.30 – < 0.50 | ≥ 0.50 | [0,1]
+$\delta_{R}$ | 0.10 – < 0.30 | 0.30 – < 0.50 | ≥ 0.50 | [0,1]
 
-**Reference**: <https://CRAN.R-project.org/package=WRS2/vignettes/WRS2.pdf>
+**Reference**:
+- <https://CRAN.R-project.org/package=WRS2/vignettes/WRS2.pdf>
+- <https://journals.sagepub.com/doi/10.1177/0013164406288161>
 
 ## between-subjects design
 
 ### parametric
 
 **Test**: Student's and Welch's independent samples *t*-test <br>
-**Effect size**: Cohen's *d*, Hedge's *g* 
+**Effect size**: Cohen's *d*, Hedge's *g* <br>
+**Function**: `effectsize::cohens_d`
 
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | -------
@@ -146,7 +159,8 @@ Hedge's *g* | 0.20 | 0.50 | 0.80 | [-Inf,Inf]
 ### non-parametric
 
 **Test**: Two-sample Mann–Whitney *U* Test <br>
-**Effect size**: *r* ( = $Z/\sqrt(N_{obs})$) 
+**Effect size**: $r$ ( = $Z/\sqrt(N_{obs})$) <br>
+**Function**: `rcompanion::wilcoxonR`
 
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | ---------- 
@@ -157,7 +171,8 @@ Effect size | Small | Medium | Large | Range
 ### robust
 
 **Test**: Yuen's independent sample trimmed means *t*-test <br>
-**Effect size**: Explanatory measure of effect size ($\xi$)
+**Effect size**: Explanatory measure of effect size ($\xi$) <br>
+**Function**: `WRS2::yuen.effect.ci`
 
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | --------
@@ -171,8 +186,9 @@ $\xi$ | 0.10 – < 0.30 | 0.30 – < 0.50 | ≥ 0.50 | [0,1]
 
 ### parametric
 
-**Test**: Fisher's repeated measures one-way ANOVA  <br>
-**Effect size**: $\eta^2_p$, $\omega^2$
+**Test**: Fisher's repeated measures one-way ANOVA <br>
+**Effect size**: $\eta^2_p$, $\omega^2$ <br>
+**Function**: `effectsize::eta_squared` and `effectsize::omega_squared`
 
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | ------
@@ -187,7 +203,8 @@ $\eta^2_p$ | 0.01 – < 0.06 | 0.06 – < 0.14 | ≥ 0.14 | [0,1]
 ### non-parametric
 
 **Test**: Friedman's rank sum test <br>
-**Effect size**: Kendall's *W*
+**Effect size**: Kendall's *W* <br>
+**Function**: `rcompanion::kendallW`
 
 In the following table, *k* is the number of treatments, groups, or things being
 rated.
@@ -208,8 +225,9 @@ rated.
 
 ### parametric
 
-**Test**: Fisher's or Welch's one-way ANOVA  <br>
-**Effect size**: $\eta^2$, $\eta^2_p$, $\omega^2$, $\omega^2_p$
+**Test**: Fisher's or Welch's one-way ANOVA <br>
+**Effect size**: $\eta^2$, $\eta^2_p$, $\omega^2$, $\omega^2_p$ <br>
+**Function**: `effectsize::eta_squared` and `effectsize::omega_squared`
 
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | --------
@@ -226,7 +244,8 @@ $\omega^2_p$ | 0.01 – < 0.06 | 0.06 – < 0.14 | ≥ 0.14 | [0,1]
 ### non-parametric
 
 **Test**: Kruskal–Wallis test <br>
-**Effect size**: $\epsilon^2$
+**Effect size**: $\epsilon^2$ <br>
+**Function**: `rcompanion::epsilonSquared`
 
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | -------- 
@@ -237,7 +256,8 @@ $\epsilon^2$ | 0.01 – < 0.08 | 0.08 – < 0.26 | ≥ 0.26 | [0,1]
 ### robust
 
 **Test**: Heteroscedastic one-way ANOVA for trimmed means <br>
-**Effect size**: Explanatory measure of effect size ($\xi$)
+**Effect size**: Explanatory measure of effect size ($\xi$) <br>
+**Function**: `WRS2::t1way` 
 
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | --------
@@ -250,7 +270,8 @@ $\xi$ | 0.10 – < 0.30 | 0.30 – < 0.50 | ≥ 0.50 | [0,1]
 ## association test - unpaired
 
 **Test**: Pearson's $\chi^2$-squared test <br>
-**Effect size**: Cramér’s *V*
+**Effect size**: Cramér’s *V* <br>
+**Function**: `rcompanion::cramerV`
 
 In the following table, *k* is the minimum number of categories in either rows
 or columns.
@@ -266,7 +287,8 @@ or columns.
 ## association test - paired 
 
 **Test**: McNemar's test <br>
-**Effect size**: Cohen’s *g*
+**Effect size**: Cohen’s *g* <br>
+**Function**: `rcompanion::cohenG`
 
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | --------
@@ -277,7 +299,8 @@ Cohen’s *g* | 0.05 – < 0.15 | 0.15 – < 0.25 | ≥ 0.25 | [0,1]
 ## goodness-of-fit test 
 
 **Test**: Pearson's $\chi^2$-squared goodness-of-fit test <br>
-**Effect size**: Cramér’s *V*
+**Effect size**: Cramér’s *V* <br>
+**Function**: `rcompanion::cramerVFit`
 
 In the following table, *k* is the number of categories.
 
@@ -300,7 +323,8 @@ In the following table, *k* is the number of categories.
 ## parametric
 
 **Test**:  Pearson product-moment correlation coefficient <br>
-**Effect size**: Pearson's correlation coefficient (*r*) 
+**Effect size**: Pearson's correlation coefficient (*r*) <br>
+**Function**: `correlation::correlation`
 
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | ---------
@@ -309,7 +333,8 @@ Pearson's *r* | 0.10 – < 0.30 | 0.30 – < 0.50 | ≥ 0.50 | [-1,1]
 ## non-parametric
 
 **Test**: Spearman's rank correlation coefficient <br>
-**Effect size**: Spearman's rank correlation coefficient ($\rho$) 
+**Effect size**: Spearman's rank correlation coefficient ($\rho$) <br>
+**Function**: `correlation::correlation`
 
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | ---------
@@ -318,7 +343,8 @@ Spearman's $\rho$ | 0.10 – < 0.30 | 0.30 – < 0.50 | ≥ 0.50 | [-1,1]
 ## robust
 
 **Test**: Percentage bend correlation coefficient <br>
-**Effect size**: Percentage bend correlation coefficient ($\rho_{pb}$) 
+**Effect size**: Percentage bend correlation coefficient ($\rho_{pb}$) <br>
+**Function**: `correlation::correlation`
 
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | ---------
