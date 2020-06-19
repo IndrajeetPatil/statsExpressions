@@ -91,7 +91,7 @@ robust equivalents" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.4.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.4.2</span>
       </span>
     </div>
 
@@ -266,7 +266,7 @@ argument.</p>
 <span class='co'># ----------------------- parametric ---------------------------------------</span>
 
 <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_onesample</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/ggplot2/man/msleep.html'>msleep</a></span>,
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>brainwt</span>,
   <span class='kw'>test.value</span> <span class='kw'>=</span> <span class='fl'>0.275</span>,
   <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"parametric"</span>
@@ -277,7 +277,7 @@ argument.</p>
 <span class='co'># ----------------------- non-parametric -----------------------------------</span>
 
 <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_onesample</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/ggplot2/man/msleep.html'>msleep</a></span>,
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>brainwt</span>,
   <span class='kw'>test.value</span> <span class='kw'>=</span> <span class='fl'>0.275</span>,
   <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"nonparametric"</span>
@@ -288,7 +288,7 @@ argument.</p>
 <span class='co'># ----------------------- robust --------------------------------------------</span>
 
 <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_onesample</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/ggplot2/man/msleep.html'>msleep</a></span>,
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>brainwt</span>,
   <span class='kw'>test.value</span> <span class='kw'>=</span> <span class='fl'>0.275</span>,
   <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"robust"</span>
@@ -298,13 +298,14 @@ argument.</p>
 <span class='co'># ----------------------- Bayes Factor -----------------------------------</span>
 
 <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_onesample</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/ggplot2/man/msleep.html'>msleep</a></span>,
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>brainwt</span>,
   <span class='kw'>test.value</span> <span class='kw'>=</span> <span class='fl'>0.275</span>,
   <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"bayes"</span>,
   <span class='kw'>bf.prior</span> <span class='kw'>=</span> <span class='fl'>0.8</span>
 )</div><div class='output co'>#&gt; paste("In favor of alternative: ", "log"["e"], "(BF"["10"], ") = ", 
-#&gt;     "-2.04", ", ", italic("r")["Cauchy"]^"JZS", " = ", "0.80")</div><div class='input'><span class='co'># }</span></div></pre>
+#&gt;     "-2.04", ", ", italic("r")["Cauchy"]^"JZS", " = ", "0.80")</div><div class='input'># }
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -320,7 +321,7 @@ argument.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

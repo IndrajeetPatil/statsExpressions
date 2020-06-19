@@ -88,7 +88,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.4.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.4.2</span>
       </span>
     </div>
 
@@ -217,12 +217,13 @@ repeated measures/within-subjects or between-subjects. The default is
 <span class='co'># ------------- within-subjects design -----------------------------</span>
 
 <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_bayes</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>bugs_long</span>, <span class='no'>condition</span> <span class='kw'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"LDLF"</span>, <span class='st'>"LDHF"</span>)),
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/filter.html'>filter</a></span>(<span class='no'>bugs_long</span>, <span class='no'>condition</span> <span class='kw'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"LDLF"</span>, <span class='st'>"LDHF"</span>)),
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>condition</span>,
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>desire</span>,
   <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
 )</div><div class='output co'>#&gt; paste("In favor of alternative: ", "log"["e"], "(BF"["10"], ") = ", 
-#&gt;     "15.38", ", ", italic("r")["Cauchy"]^"JZS", " = ", "0.71")</div><div class='input'><span class='co'># }</span></div></pre>
+#&gt;     "15.38", ", ", italic("r")["Cauchy"]^"JZS", " = ", "0.71")</div><div class='input'># }
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -238,7 +239,7 @@ repeated measures/within-subjects or between-subjects. The default is
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

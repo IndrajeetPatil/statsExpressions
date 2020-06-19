@@ -88,7 +88,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.4.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.4.2</span>
       </span>
     </div>
 
@@ -260,15 +260,16 @@ added as a prefix in the subtitle. The default is <code>NULL</code>. An example 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 60L)</div><div class='input'>
 <span class='co'># within-subjects design -----------------------------------------------</span>
 <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_robust</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>bugs_long</span>, <span class='no'>condition</span> <span class='kw'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"LDLF"</span>, <span class='st'>"LDHF"</span>)),
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/filter.html'>filter</a></span>(<span class='no'>bugs_long</span>, <span class='no'>condition</span> <span class='kw'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"LDLF"</span>, <span class='st'>"LDHF"</span>)),
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>condition</span>,
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>desire</span>,
   <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>25</span>
 )</div><div class='output co'>#&gt; paste(NULL, italic("t")["Yuen"], "(", "72", ") = ", "-6.71", 
 #&gt;     ", ", italic("p"), " = ", "&lt; 0.001", ", ", widehat(italic(delta))["R"], 
-#&gt;     " = ", "-0.53", ", CI"["95%"], " [", "-0.75", ", ", "-0.47", 
-#&gt;     "]", ", ", italic("n")["pairs"], " = ", 91L)</div><div class='input'><span class='co'># }</span></div></pre>
+#&gt;     " = ", "-0.62", ", CI"["95%"], " [", "-0.75", ", ", "-0.47", 
+#&gt;     "]", ", ", italic("n")["pairs"], " = ", 91L)</div><div class='input'># }
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -284,7 +285,7 @@ added as a prefix in the subtitle. The default is <code>NULL</code>. An example 
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

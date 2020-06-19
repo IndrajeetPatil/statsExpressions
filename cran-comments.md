@@ -7,6 +7,4 @@
 
 0 errors | 0 warnings | 1 note
 
-  - 1 note: "Number of updates in past 6 months: 7"
-  - Hotfix release to fix a major bug, so unfortunately can not postpone this
-    release.
+  - Fixes failing tests due to new release of `WRS2`.
