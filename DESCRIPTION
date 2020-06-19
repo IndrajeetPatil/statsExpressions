@@ -43,8 +43,6 @@ Suggests:
     rmarkdown,
     spelling,
     testthat
-Remotes:
-    IndrajeetPatil/ipmisc
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
