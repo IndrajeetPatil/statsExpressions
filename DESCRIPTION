@@ -24,11 +24,11 @@ Depends:
     R (>= 3.6.0)
 Imports:
     broomExtra,
-    correlation,
+    correlation (>= 0.3.0),
     dplyr,
     effectsize,
     ez,
-    ipmisc (>= 3.0.0.9000),
+    ipmisc (>= 3.0.1),
     metafor,
     metaplus,
     rcompanion,
@@ -43,11 +43,10 @@ Suggests:
     rmarkdown,
     spelling,
     testthat
+Remotes:
+    IndrajeetPatil/ipmisc
 VignetteBuilder: 
     knitr
-Remotes:
-    easystats/correlation,
-    IndrajeetPatil/ipmisc
 Encoding: UTF-8
 Language: en-US
 LazyData: true

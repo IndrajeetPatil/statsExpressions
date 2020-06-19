@@ -350,6 +350,27 @@ Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | ---------
 $\rho_{pb}$ | 0.10 – < 0.30 | 0.30 – < 0.50 | ≥ 0.50 | [-1,1]
 
+# Meta-analysis
+
+## parametric
+
+**Test**: Parametric random-effects meta-analysis <br>
+**Effect size**: Regression estimate ($\beta$) <br>
+**Function**: `metafor::rma`
+
+## robust
+
+**Test**: Random-effects meta-analysis using a mixture of normals for the random effect <br>
+**Effect size**: Regression estimate ($\beta$) <br>
+**Function**: `metaplus::metaplus`
+
+## Bayesian
+
+**Test**: Bayesian random-effects meta-analysis <br>
+**Effect size**: Regression estimate ($\beta$) <br>
+**Function**: `metaBMA::meta_random`
+
+
 # Suggestions
 
 If you find any bugs or have any suggestions/remarks, please file an issue on GitHub: 

@@ -212,7 +212,8 @@ utils::globalVariables(
     "Est",
     "ci.low",
     "ci.up",
-    "effect_size"
+    "effect_size",
+    "df_internal"
   ),
   package = "statsExpressions",
   add = FALSE
