@@ -47,13 +47,9 @@ statsExpressions::expr_t_bayes(
 # ------------- within-subjects design -----------------------------
 
 statsExpressions::expr_t_bayes(
-  data = dplyr::filter(
-    statsExpressions::intent_morality,
-    condition \%in\% c("accidental", "attempted"),
-    harm == "Poisoning"
-  ),
+  data = dplyr::filter(bugs_long, condition \%in\% c("LDLF", "LDHF")),
   x = condition,
-  y = rating,
+  y = desire,
   paired = TRUE
 )
 }

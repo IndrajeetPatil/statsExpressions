@@ -44,24 +44,26 @@
 #'   can be `quote(italic("n")["obs"])`. If `NULL`, defaults to generic
 #'   `quote(italic("n"))`.
 #' @param ... Currently ignored.
-#' @inheritParams t1way_ci
+#' @inheritParams expr_anova_parametric
 #'
 #' @examples
 #' set.seed(123)
 #'
 #' # creating a dataframe with stats results
-#' stats_df <- cbind.data.frame(
-#'   statistic = 5.494,
-#'   parameter = 29.234,
-#'   p.value = 0.00001
-#' )
+#' stats_df <-
+#'   cbind.data.frame(
+#'     statistic = 5.494,
+#'     parameter = 29.234,
+#'     p.value = 0.00001
+#'   )
 #'
 #' # creating a dataframe with effect size results
-#' effsize_df <- cbind.data.frame(
-#'   estimate = -1.980,
-#'   conf.low = -2.873,
-#'   conf.high = -1.088
-#' )
+#' effsize_df <-
+#'   cbind.data.frame(
+#'     estimate = -1.980,
+#'     conf.low = -2.873,
+#'     conf.high = -1.088
+#'   )
 #'
 #' # subtitle for *t*-statistic with Cohen's *d* as effect size
 #' statsExpressions::expr_template(
@@ -286,24 +288,6 @@ rcompanion_cleaner <- function(object) {
       lower.ci = "conf.low",
       upper.ci = "conf.high"
     )
-}
-
-
-#' @noRd
-#'
-#' @importFrom rlang :=
-#' @importFrom dplyr rename mutate arrange
-#' @importFrom tidyr gather
-#'
-#' @keywords internal
-
-df_cleanup_paired <- function(data, x, y) {
-  data %<>%
-    long_to_wide_converter(data = ., x = {{ x }}, y = {{ y }}) %>%
-    tidyr::gather(data = ., key, value, -rowid) %>%
-    dplyr::arrange(.data = ., rowid) %>%
-    dplyr::rename(.data = ., {{ x }} := key, {{ y }} := value) %>%
-    dplyr::mutate(.data = ., {{ x }} := factor({{ x }}))
 }
 
 #' @noRd

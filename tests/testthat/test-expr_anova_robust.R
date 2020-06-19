@@ -6,7 +6,7 @@ testthat::test_that(
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
-    # ggstatsplot output
+    # `statsExpressions` output
     set.seed(123)
     using_function1 <-
       statsExpressions::expr_anova_robust(
@@ -39,12 +39,12 @@ testthat::test_that(
           ", ",
           widehat(italic(xi)),
           " = ",
-          "0.95933",
+          "0.85858",
           ", CI"["95%"],
           " [",
-          "0.84565",
+          "0.85268",
           ", ",
-          "1.00154",
+          "0.86448",
           "]",
           ", ",
           italic("n")["obs"],
@@ -56,7 +56,7 @@ testthat::test_that(
     # testing overall call
     testthat::expect_identical(using_function1, results1)
 
-    # ggstatsplot output
+    # `statsExpressions` output
     set.seed(123)
     using_function2 <-
       suppressWarnings(statsExpressions::expr_anova_robust(
@@ -90,12 +90,12 @@ testthat::test_that(
           ", ",
           widehat(italic(xi)),
           " = ",
-          "0.1352",
+          "0.1793",
           ", CI"["99%"],
           " [",
-          "-0.0284",
+          "0.0711",
           ", ",
-          "0.2206",
+          "0.5717",
           "]",
           ", ",
           italic("n")["obs"],
@@ -116,7 +116,7 @@ testthat::test_that(
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
-    # ggstatsplot output
+    # `statsExpressions` output
     set.seed(123)
     using_function1 <-
       statsExpressions::expr_anova_robust(
@@ -153,7 +153,7 @@ testthat::test_that(
     # testing overall call
     testthat::expect_identical(using_function1, results1)
 
-    # ggstatsplot output
+    # `statsExpressions` output
     set.seed(123)
     using_function2 <-
       statsExpressions::expr_anova_robust(

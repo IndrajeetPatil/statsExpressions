@@ -11,8 +11,7 @@
 #' @param output  Character describing the desired output. If `"subtitle"`, a
 #'   formatted subtitle with summary effect and statistical details will be
 #'   returned, and if `"caption"`, expression containing details from model
-#'   summary will be returned. The other option is to return `"tidy"` data frame
-#'   with coefficients or `"glance"` dataframe with model summaries.
+#'   summary will be returned.
 #' @param caption Text to display as caption. This argument is relevant only
 #'   when `output = "caption"`.
 #' @inheritParams tidyBF::bf_meta
@@ -181,9 +180,7 @@ expr_meta_parametric <- function(data,
   return(switch(
     EXPR = output,
     "subtitle" = subtitle,
-    "tidy" = df_tidy,
     "caption" = caption,
-    "glance" = df_glance,
     "subtitle"
   ))
 }

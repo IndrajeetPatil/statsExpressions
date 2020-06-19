@@ -9,14 +9,10 @@ testthat::test_that(
     set.seed(123)
     using_function1 <-
       expr_t_robust(
-        data = dplyr::filter(
-          statsExpressions::iris_long,
-          condition %in% c("Sepal.Length", "Sepal.Width")
-        ),
+        data = dplyr::filter(iris_long, condition %in% c("Sepal.Length", "Sepal.Width")),
         x = "condition",
         y = value,
         paired = TRUE,
-        conf.level = 0.90,
         k = 4,
         messages = FALSE
       )
@@ -36,14 +32,14 @@ testthat::test_that(
           " = ",
           "< 0.001",
           ", ",
-          widehat(italic(xi)),
+          widehat(italic(delta))["R"],
           " = ",
-          "0.9265",
-          ", CI"["90%"],
+          "2.6018",
+          ", CI"["95%"],
           " [",
-          "0.9193",
+          "2.2905",
           ", ",
-          "0.9367",
+          "2.8700",
           "]",
           ", ",
           italic("n")["pairs"],
@@ -54,24 +50,6 @@ testthat::test_that(
 
     # testing overall call
     testthat::expect_identical(using_function1, results1)
-
-    # checking if messages are okay
-    set.seed(123)
-    p_message <- capture.output(
-      statsExpressions::expr_t_robust(
-        data = dplyr::filter(
-          statsExpressions::iris_long,
-          condition %in% c("Sepal.Length", "Sepal.Width")
-        ),
-        x = condition,
-        y = value,
-        paired = TRUE,
-        conf.level = 0.99,
-        nboot = 20,
-        k = 3,
-        messages = TRUE
-      )
-    )
   }
 )
 
@@ -82,45 +60,46 @@ testthat::test_that(
 
     # subtitle
     set.seed(123)
-    using_function1 <- expr_t_robust(
-      data = dplyr::filter(statsExpressions::bugs_long, condition %in% c("HDHF", "HDLF")),
-      x = "condition",
-      y = desire,
-      paired = TRUE,
-      conf.level = 0.99,
-      k = 3,
-      messages = FALSE
-    )
+    using_function1 <-
+      expr_t_robust(
+        data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+        x = "condition",
+        y = desire,
+        paired = TRUE,
+        k = 3,
+        messages = FALSE
+      )
 
     # expected
-    results1 <- ggplot2::expr(
-      paste(
-        NULL,
-        italic("t")["Yuen"],
-        "(",
-        "71",
-        ") = ",
-        "3.274",
-        ", ",
-        italic("p"),
-        " = ",
-        "0.002",
-        ", ",
-        widehat(italic(xi)),
-        " = ",
-        "0.273",
-        ", CI"["99%"],
-        " [",
-        "0.066",
-        ", ",
-        "0.490",
-        "]",
-        ", ",
-        italic("n")["pairs"],
-        " = ",
-        90L
+    results1 <-
+      ggplot2::expr(
+        paste(
+          NULL,
+          italic("t")["Yuen"],
+          "(",
+          "71",
+          ") = ",
+          "-3.274",
+          ", ",
+          italic("p"),
+          " = ",
+          "0.002",
+          ", ",
+          widehat(italic(delta))["R"],
+          " = ",
+          "-0.418",
+          ", CI"["95%"],
+          " [",
+          "-0.599",
+          ", ",
+          "-0.210",
+          "]",
+          ", ",
+          italic("n")["pairs"],
+          " = ",
+          90L
+        )
       )
-    )
 
     # testing overall call
     testthat::expect_identical(using_function1, results1)

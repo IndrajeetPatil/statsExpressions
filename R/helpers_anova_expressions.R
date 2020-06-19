@@ -10,7 +10,13 @@
 #' @description The effect sizes and their confidence intervals are computed
 #'   using `effectsize::eta_squared` and `effectsize::omega_squared` functions.
 #'
-#' @inheritParams t1way_ci
+#' @param data A dataframe (or a tibble) from which variables specified are to
+#'   be taken. A matrix or tables will **not** be accepted.
+#' @param x The grouping variable from the dataframe `data`.
+#' @param y The response (a.k.a. outcome or dependent) variable from the
+#'   dataframe `data`.
+#' @param conf.level Scalar between 0 and 1. If unspecified, the defaults return
+#'   `95%` lower and upper confidence intervals (`0.95`).
 #' @param paired Logical that decides whether the experimental design is
 #'   repeated measures/within-subjects or between-subjects. The default is
 #'   `FALSE`.
@@ -69,8 +75,7 @@
 #'   x = condition,
 #'   y = value,
 #'   paired = TRUE,
-#'   k = 4,
-#'   nboot = 10
+#'   k = 4
 #' )
 #' }
 #' @export
@@ -126,27 +131,29 @@ expr_anova_parametric <- function(data,
     }
   }
 
-  # creating a dataframe
+  # ============================ data preparation ==========================
+
+  # have a proper cleanup with NA removal
   data %<>%
-    dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
-    dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    as_tibble(x = .)
+    long_to_wide_converter(
+      data = .,
+      x = {{ x }},
+      y = {{ y }},
+      paired = paired,
+      spread = FALSE
+    )
 
   # -------------- within-subjects design --------------------------------
 
   # properly removing NAs if it's a paired design
   if (isTRUE(paired)) {
-    # converting to long format and then getting it back in wide so that the
-    # rowid variable can be used as the block variable
-    data %<>% df_cleanup_paired(data = ., x = {{ x }}, y = {{ y }})
-
     # sample size
     sample_size <- length(unique(data$rowid))
     n.text <- quote(italic("n")["pairs"])
 
     # warn the user if
     if (sample_size < nlevels(as.factor(data %>% dplyr::pull({{ x }})))) {
-      # no sphericity correction applied; adjust expr display accordingly
+      # no sphericity correction applied; adjust expression display accordingly
       c(k.df1, k.df2, sphericity.correction) %<-% c(0L, 0L, FALSE)
 
       # inform the user
@@ -163,13 +170,14 @@ expr_anova_parametric <- function(data,
     ez_df <-
       rlang::eval_tidy(rlang::expr(
         ez::ezANOVA(
-          data = data %>%
-            dplyr::mutate_if(
-              .tbl = .,
-              .predicate = is.character,
-              .funs = as.factor
-            ) %>%
-            dplyr::mutate(.data = ., rowid = as.factor(rowid)),
+          data =
+            data %>%
+              dplyr::mutate_if(
+                .tbl = .,
+                .predicate = is.character,
+                .funs = as.factor
+              ) %>%
+              dplyr::mutate(.data = ., rowid = as.factor(rowid)),
           dv = !!rlang::ensym(y),
           wid = rowid,
           within = !!rlang::ensym(x),
@@ -205,9 +213,6 @@ expr_anova_parametric <- function(data,
   # ------------------- between-subjects design ------------------------------
 
   if (isFALSE(paired)) {
-    # remove NAs listwise for between-subjects design
-    data %<>% tidyr::drop_na(.)
-
     # sample size
     sample_size <- nrow(data)
     n.text <- quote(italic("n")["obs"])
@@ -299,7 +304,11 @@ expr_anova_parametric <- function(data,
 #' @return For more details, see-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
-#' @inheritParams t1way_ci
+#' @param conf.type A vector of character strings representing the type of
+#'   intervals required. The value should be any subset of the values `"norm"`,
+#'   `"basic"`, `"perc"`, `"bca"`. For more, see `?boot::boot.ci`.
+#' @param nboot Number of bootstrap samples for computing confidence interval
+#'   for the effect size (Default: `100`).
 #' @inheritParams expr_anova_parametric
 #' @inheritParams expr_template
 #'
@@ -348,28 +357,29 @@ expr_anova_nonparametric <- function(data,
                                      conf.type = "perc",
                                      conf.level = 0.95,
                                      k = 2L,
-                                     nboot = 100,
+                                     nboot = 100L,
                                      stat.title = NULL,
                                      ...) {
 
   # make sure both quoted and unquoted arguments are allowed
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
-  # creating a dataframe
+  # ============================ data preparation ==========================
+
+  # have a proper cleanup with NA removal
   data %<>%
-    dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
-    dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    as_tibble(x = .)
+    long_to_wide_converter(
+      data = .,
+      x = {{ x }},
+      y = {{ y }},
+      paired = paired,
+      spread = FALSE
+    )
 
   # ------------------- within-subjects design ------------------------------
 
   # properly removing NAs if it's a paired design
   if (isTRUE(paired)) {
-
-    # converting to long format and then getting it back in wide so that the
-    # rowid variable can be used as the block variable
-    data %<>% df_cleanup_paired(data = ., x = {{ x }}, y = {{ y }})
-
     # setting up the anova model (`y ~ x | id`) and getting its summary
     stats_df <-
       broomExtra::tidy(
@@ -398,9 +408,6 @@ expr_anova_nonparametric <- function(data,
   # ------------------- between-subjects design ------------------------------
 
   if (isFALSE(paired)) {
-    # remove NAs listwise for between-subjects design
-    data %<>% tidyr::drop_na(data = .)
-
     # setting up the anova model and getting its summary
     stats_df <-
       broomExtra::tidy(
@@ -461,13 +468,17 @@ expr_anova_nonparametric <- function(data,
 #' @return For more details, see-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
-#' @inheritParams t1way_ci
+#' @param tr Trim level for the mean when carrying out `robust` tests. If you
+#'   get error stating "Standard error cannot be computed because of Winsorized
+#'   variance of 0 (e.g., due to ties). Try to decrease the trimming level.",
+#'   try to play around with the value of `tr`, which is by default set to
+#'   `0.1`. Lowering the value might help.
 #' @inheritParams expr_anova_nonparametric
 #' @inheritParams expr_template
 #'
 #' @importFrom dplyr select
 #' @importFrom rlang !! enquo ensym as_name
-#' @importFrom WRS2 rmanova
+#' @importFrom WRS2 rmanova t1way
 #'
 #' @examples
 #'
@@ -505,8 +516,7 @@ expr_anova_nonparametric <- function(data,
 #'   y = value,
 #'   paired = TRUE,
 #'   tr = 0.2,
-#'   k = 3,
-#'   nboot = 10
+#'   k = 3
 #' )
 #' }
 #' @export
@@ -519,7 +529,6 @@ expr_anova_robust <- function(data,
                               tr = 0.1,
                               nboot = 100,
                               conf.level = 0.95,
-                              conf.type = "norm",
                               k = 2L,
                               stat.title = NULL,
                               ...) {
@@ -527,20 +536,22 @@ expr_anova_robust <- function(data,
   # make sure both quoted and unquoted arguments are allowed
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
-  # creating a dataframe
+  # ============================ data preparation ==========================
+
+  # have a proper cleanup with NA removal
   data %<>%
-    dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
-    dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    as_tibble(x = .)
+    long_to_wide_converter(
+      data = .,
+      x = {{ x }},
+      y = {{ y }},
+      paired = paired,
+      spread = FALSE
+    )
 
   # -------------- within-subjects design --------------------------------
 
   # properly removing NAs if it's a paired design
   if (isTRUE(paired)) {
-    # converting to long format and then getting it back in wide so that the
-    # rowid variable can be used as the block variable
-    data %<>% df_cleanup_paired(data = ., x = {{ x }}, y = {{ y }})
-
     # sample size
     sample_size <- length(unique(data$rowid))
 
@@ -586,24 +597,30 @@ expr_anova_robust <- function(data,
   # -------------- between-subjects design --------------------------------
 
   if (isFALSE(paired)) {
-    # remove NAs listwise for between-subjects design
-    data %<>% tidyr::drop_na(.)
-
     # sample size
     sample_size <- nrow(data)
     n.text <- quote(italic("n")["obs"])
 
-    # setting up the Bootstrap version of the heteroscedastic one-way ANOVA for
-    # trimmed means
-    stats_df <-
-      t1way_ci(
+    # heteroscedastic one-way ANOVA for trimmed means
+    mod <-
+      WRS2::t1way(
+        formula = rlang::new_formula({{ y }}, {{ x }}),
         data = data,
-        x = {{ x }},
-        y = {{ y }},
         tr = tr,
-        nboot = nboot,
-        conf.level = conf.level,
-        conf.type = conf.type
+        alpha = 1 - conf.level,
+        nboot = nboot
+      )
+
+    # create a dataframe
+    stats_df <-
+      tibble(
+        statistic = mod$test[[1]],
+        parameter1 = mod$df1[[1]],
+        parameter2 = mod$df2[[1]],
+        p.value = mod$p.value[[1]],
+        estimate = mod$effsize[[1]],
+        conf.low = mod$effsize_ci[[1]],
+        conf.high = mod$effsize_ci[[2]]
       )
 
     # effect size dataframe
@@ -680,7 +697,7 @@ expr_anova_bayes <- function(data,
                              y,
                              paired = FALSE,
                              bf.prior = 0.707,
-                             k = 2,
+                             k = 2L,
                              ...) {
   # bayes factor results
   tidyBF::bf_oneway_anova(

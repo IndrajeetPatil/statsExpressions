@@ -123,18 +123,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "boot",
-      "name": "boot",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=boot"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "broomExtra",
       "name": "broomExtra",
       "provider": {
@@ -149,13 +137,14 @@
       "@type": "SoftwareApplication",
       "identifier": "correlation",
       "name": "correlation",
+      "version": ">= 0.3.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://github.com/easystats/correlation"
+      "sameAs": "https://CRAN.R-project.org/package=correlation"
     },
     {
       "@type": "SoftwareApplication",
@@ -197,6 +186,7 @@
       "@type": "SoftwareApplication",
       "identifier": "ipmisc",
       "name": "ipmisc",
+      "version": ">= 3.0.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -228,18 +218,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=metaplus"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "purrr",
-      "name": "purrr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=purrr"
     },
     {
       "@type": "SoftwareApplication",
@@ -298,6 +276,7 @@
       "@type": "SoftwareApplication",
       "identifier": "WRS2",
       "name": "WRS2",
+      "version": ">= 1.1-0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -356,6 +335,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "4140.259KB",
+  "fileSize": "4071.521KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

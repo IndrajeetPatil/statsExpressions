@@ -13,6 +13,7 @@
 \alias{\%<-\%}
 \alias{\%||\%}
 \alias{\%|\%}
+\alias{:=}
 \alias{tibble}
 \alias{as_tibble}
 \alias{bf_contingency_tab}
@@ -28,10 +29,10 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{ipmisc}{\code{\link[ipmisc]{\%$\%}}, \code{\link[ipmisc]{\%<-\%}}, \code{\link[ipmisc]{\%<>\%}}, \code{\link[ipmisc]{\%>\%}}, \code{\link[ipmisc]{as_tibble}}, \code{\link[ipmisc]{long_to_wide_converter}}, \code{\link[ipmisc]{set_cwd}}, \code{\link[ipmisc]{signif_column}}, \code{\link[ipmisc]{specify_decimal_p}}, \code{\link[ipmisc]{tibble}}}
+  \item{ipmisc}{\code{\link[ipmisc:reexports]{\%$\%}}, \code{\link[ipmisc:reexports]{\%<-\%}}, \code{\link[ipmisc:reexports]{\%<>\%}}, \code{\link[ipmisc:reexports]{\%>\%}}, \code{\link[ipmisc:reexports]{as_tibble}}, \code{\link[ipmisc]{long_to_wide_converter}}, \code{\link[ipmisc]{set_cwd}}, \code{\link[ipmisc]{signif_column}}, \code{\link[ipmisc]{specify_decimal_p}}, \code{\link[ipmisc:reexports]{tibble}}}
 
-  \item{rlang}{\code{\link[rlang]{\%|\%}}, \code{\link[rlang]{\%||\%}}}
+  \item{rlang}{\code{\link[rlang:op-na-default]{\%|\%}}, \code{\link[rlang:op-null-default]{\%||\%}}, \code{\link[rlang:nse-force]{:=}}}
 
-  \item{tidyBF}{\code{\link[tidyBF]{bf_contingency_tab}}, \code{\link[tidyBF]{bf_corr_test}}, \code{\link[tidyBF]{bf_meta}}, \code{\link[tidyBF]{bf_oneway_anova}}, \code{\link[tidyBF]{bf_ttest}}, \code{\link[tidyBF]{prior}}}
+  \item{tidyBF}{\code{\link[tidyBF]{bf_contingency_tab}}, \code{\link[tidyBF]{bf_corr_test}}, \code{\link[tidyBF]{bf_meta}}, \code{\link[tidyBF]{bf_oneway_anova}}, \code{\link[tidyBF]{bf_ttest}}, \code{\link[tidyBF:reexports]{prior}}}
 }}
 

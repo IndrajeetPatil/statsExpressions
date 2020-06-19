@@ -80,16 +80,20 @@ expr_t_parametric <- function(data,
   # make sure both quoted and unquoted arguments are supported
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
-  # creating a dataframe
+  # ============================ data preparation ==========================
+
+  # have a proper cleanup with NA removal
   data %<>%
-    dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
-    dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    as_tibble(.)
+    long_to_wide_converter(
+      data = .,
+      x = {{ x }},
+      y = {{ y }},
+      paired = paired,
+      spread = FALSE
+    )
 
   # properly removing NAs if it's a paired design
   if (isTRUE(paired)) {
-    data %<>% df_cleanup_paired(data = ., x = {{ x }}, y = {{ y }})
-
     # sample size
     sample_size <- length(unique(data$rowid))
     n.text <- quote(italic("n")["pairs"])
@@ -97,8 +101,6 @@ expr_t_parametric <- function(data,
 
   # remove NAs listwise for between-subjects design
   if (isFALSE(paired)) {
-    data %<>% tidyr::drop_na(.)
-
     # sample size
     sample_size <- nrow(data)
     n.text <- quote(italic("n")["obs"])
@@ -169,7 +171,7 @@ expr_t_parametric <- function(data,
 #'
 #' @inheritParams expr_anova_parametric
 #' @inheritParams expr_t_parametric
-#' @inheritParams t1way_ci
+#' @inheritParams expr_anova_nonparametric
 #'
 #' @importFrom dplyr select
 #' @importFrom rlang !! enquo exec new_formula
@@ -271,17 +273,21 @@ expr_t_nonparametric <- function(data,
   # make sure both quoted and unquoted arguments are supported
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
-  # creating a dataframe
+  # ============================ data preparation ==========================
+
+  # have a proper cleanup with NA removal
   data %<>%
-    dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
-    dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    as_tibble(.)
+    long_to_wide_converter(
+      data = .,
+      x = {{ x }},
+      y = {{ y }},
+      paired = paired,
+      spread = FALSE
+    )
 
   # properly removing NAs if it's a paired design
   if (isTRUE(paired)) {
-    data %<>% df_cleanup_paired(data = ., x = {{ x }}, y = {{ y }})
-
-    # sample size
+    # subtitle details
     sample_size <- length(unique(data$rowid))
     n.text <- quote(italic("n")["pairs"])
     .f <- rcompanion::wilcoxonPairedR
@@ -290,9 +296,7 @@ expr_t_nonparametric <- function(data,
 
   # remove NAs listwise for between-subjects design
   if (isFALSE(paired)) {
-    data %<>% tidyr::drop_na(data = .)
-
-    # sample size
+    # subtitle details
     sample_size <- nrow(data)
     n.text <- quote(italic("n")["obs"])
     .f <- rcompanion::wilcoxonR
@@ -307,10 +311,7 @@ expr_t_nonparametric <- function(data,
       paired = paired,
       alternative = "two.sided",
       na.action = na.omit,
-      exact = FALSE,
-      correct = TRUE,
-      conf.int = TRUE,
-      conf.level = conf.level
+      exact = FALSE
     )) %>%
     dplyr::mutate(.data = ., statistic = log(statistic))
 
@@ -352,17 +353,19 @@ expr_t_nonparametric <- function(data,
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @inheritParams expr_t_parametric
-#' @inheritParams yuend_ci
 #' @inheritParams expr_anova_parametric
+#' @inheritParams expr_anova_robust
 #'
 #' @importFrom dplyr select
 #' @importFrom rlang !! enquo
-#' @importFrom WRS2 yuen yuen.effect.ci
+#' @importFrom WRS2 yuen yuen.effect.ci yuend dep.effect
 #'
 #' @examples
 #' \donttest{
 #' # for reproducibility
 #' set.seed(123)
+#'
+#' # between-subjects design -----------------------------------------------
 #'
 #' # with defaults
 #' statsExpressions::expr_t_robust(
@@ -381,15 +384,11 @@ expr_t_nonparametric <- function(data,
 #'   tr = 0.2
 #' )
 #'
-#' # within-subjects design
+#' # within-subjects design -----------------------------------------------
 #' statsExpressions::expr_t_robust(
-#'   data = dplyr::filter(
-#'     statsExpressions::intent_morality,
-#'     condition %in% c("accidental", "attempted"),
-#'     harm == "Poisoning"
-#'   ),
+#'   data = dplyr::filter(bugs_long, condition %in% c("LDLF", "LDHF")),
 #'   x = condition,
-#'   y = rating,
+#'   y = desire,
 #'   paired = TRUE,
 #'   nboot = 25
 #' )
@@ -402,31 +401,30 @@ expr_t_robust <- function(data,
                           y,
                           tr = 0.1,
                           paired = FALSE,
-                          nboot = 100,
                           conf.level = 0.95,
-                          conf.type = "norm",
+                          nboot = 100,
                           k = 2L,
                           stat.title = NULL,
                           ...) {
   # make sure both quoted and unquoted arguments are supported
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
-  # creating a dataframe
+  # ============================ data preparation ==========================
+
+  # have a proper cleanup with NA removal
   data %<>%
-    dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
-    dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    as_tibble(.)
+    long_to_wide_converter(
+      data = .,
+      x = {{ x }},
+      y = {{ y }},
+      paired = paired,
+      spread = paired
+    )
 
   # ---------------------------- between-subjects design --------------------
 
-  # running bayesian analysis
+  # running Bayesian analysis
   if (isFALSE(paired)) {
-    # removing NAs
-    data %<>% tidyr::drop_na(.)
-
-    # sample size
-    sample_size <- nrow(data)
-
     # computing effect size and its confidence interval
     effsize_obj <-
       WRS2::yuen.effect.ci(
@@ -464,36 +462,43 @@ expr_t_robust <- function(data,
     # subtitle parameters
     k.parameter <- k
     n.text <- quote(italic("n")["obs"])
+    effsize.text <- quote(widehat(italic(xi)))
   }
 
   # ---------------------------- within-subjects design -------------------
 
   if (isTRUE(paired)) {
-    # converting to long format and then getting it back in wide so that the
-    # rowid variable can be used as the block variable
-    data %<>% df_cleanup_paired(data = ., x = {{ x }}, y = {{ y }})
+    # running robust paired t-test
+    fit <- WRS2::yuend(x = data[2], y = data[3], tr = tr)
 
-    # sample size
-    sample_size <- length(unique(data$rowid))
-
-    # getting dataframe of results from the custom function
+    # create a dataframe
     stats_df <-
-      yuend_ci(
-        data = data,
-        x = {{ x }},
-        y = {{ y }},
-        tr = tr,
-        nboot = nboot,
-        conf.level = conf.level,
-        conf.type = conf.type
+      tibble(
+        statistic = fit$test[[1]],
+        parameter = fit$df[[1]],
+        p.value = fit$p.value[[1]]
       )
 
-    # effect sizes are already in there
-    effsize_df <- stats_df
+    # computing effect size
+    fit2 <-
+      WRS2::dep.effect(
+        x = data[2],
+        y = data[3],
+        tr = tr,
+        nboot = nboot
+      )
+
+    # create a dataframe
+    effsize_df <-
+      as_tibble(as.data.frame(fit2), rownames = "effect_size") %>%
+      dplyr::filter(effect_size == "AKP") %>%
+      dplyr::rename(estimate = Est, conf.low = ci.low, conf.high = ci.up)
 
     # subtitle parameters
     k.parameter <- 0L
     n.text <- quote(italic("n")["pairs"])
+    conf.level <- 0.95
+    effsize.text <- quote(widehat(italic(delta))["R"])
   }
 
   # preparing subtitle
@@ -503,8 +508,8 @@ expr_t_robust <- function(data,
     effsize.df = effsize_df,
     stat.title = stat.title,
     statistic.text = quote(italic("t")["Yuen"]),
-    effsize.text = quote(widehat(italic(xi))),
-    n = sample_size,
+    effsize.text = effsize.text,
+    n = nrow(data),
     n.text = n.text,
     conf.level = conf.level,
     k = k,
@@ -541,13 +546,9 @@ expr_t_robust <- function(data,
 #' # ------------- within-subjects design -----------------------------
 #'
 #' statsExpressions::expr_t_bayes(
-#'   data = dplyr::filter(
-#'     statsExpressions::intent_morality,
-#'     condition %in% c("accidental", "attempted"),
-#'     harm == "Poisoning"
-#'   ),
+#'   data = dplyr::filter(bugs_long, condition %in% c("LDLF", "LDHF")),
 #'   x = condition,
-#'   y = rating,
+#'   y = desire,
 #'   paired = TRUE
 #' )
 #' }

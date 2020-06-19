@@ -110,8 +110,7 @@ statsExpressions::expr_anova_parametric(
   x = condition,
   y = value,
   paired = TRUE,
-  k = 4,
-  nboot = 10
+  k = 4
 )
 }
 }

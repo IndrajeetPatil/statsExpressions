@@ -14,7 +14,6 @@ expr_contingency_tab(
   nboot = 100,
   paired = FALSE,
   stat.title = NULL,
-  legend.title = NULL,
   conf.level = 0.95,
   conf.type = "norm",
   bias.correct = TRUE,
@@ -31,7 +30,6 @@ expr_onesample_proptest(
   nboot = 100,
   paired = FALSE,
   stat.title = NULL,
-  legend.title = NULL,
   conf.level = 0.95,
   conf.type = "norm",
   bias.correct = TRUE,
@@ -71,8 +69,6 @@ be returned.}
 test. The default is \code{NULL}, i.e. no title will be added to describe the
 effect being shown. An example of a \code{stat.title} argument will be something
 like \code{"main x condition"} or \code{"interaction"}.}
-
-\item{legend.title}{Title text for the legend.}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} lower and upper confidence intervals (\code{0.95}).}

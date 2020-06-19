@@ -9,6 +9,9 @@ MINOR CHANGES
     
   - All relevant functions get rid of `messages` argument as the functions no
     longer print a message when bootstrapped CIs are used.
+    
+  - The effect size measure for paired robust *t*-test is now changed to robust
+    (trimmed-Winsorized) standardized difference similar to Cohen's *d*.
 
 # statsExpressions 0.4.1
 

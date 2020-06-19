@@ -572,53 +572,16 @@ testthat::test_that(
 
     # sample size should be different
     set.seed(123)
-    using_function1 <-
-      statsExpressions::expr_anova_parametric(
-        data = iris_long,
-        x = condition,
-        y = value,
-        paired = TRUE,
-        effsize.type = "eta",
-        partial = FALSE,
-        conf.level = 0.50,
-        messages = FALSE
-      )
-
-    # expected
-    results1 <-
-      ggplot2::expr(
-        paste(
-          NULL,
-          italic("F")["Fisher"],
-          "(",
-          "1.28",
-          ",",
-          "189.93",
-          ") = ",
-          "686.64",
-          ", ",
-          italic("p"),
-          " = ",
-          "< 0.001",
-          ", ",
-          widehat(eta["p"]^2),
-          " = ",
-          "0.82",
-          ", CI"["50%"],
-          " [",
-          "0.81",
-          ", ",
-          "0.83",
-          "]",
-          ", ",
-          italic("n")["pairs"],
-          " = ",
-          149L
-        )
-      )
-
-    # testing overall call
-    testthat::expect_identical(using_function1, results1)
+    testthat::expect_error(statsExpressions::expr_anova_parametric(
+      data = iris_long,
+      x = condition,
+      y = value,
+      paired = TRUE,
+      effsize.type = "eta",
+      partial = FALSE,
+      conf.level = 0.50,
+      messages = FALSE
+    ))
   }
 )
 

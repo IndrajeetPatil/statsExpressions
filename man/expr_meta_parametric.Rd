@@ -30,8 +30,7 @@ two columns will be used for \code{yi}  and \code{sei} arguments in \code{metafo
 \item{output}{Character describing the desired output. If \code{"subtitle"}, a
 formatted subtitle with summary effect and statistical details will be
 returned, and if \code{"caption"}, expression containing details from model
-summary will be returned. The other option is to return \code{"tidy"} data frame
-with coefficients or \code{"glance"} dataframe with model summaries.}
+summary will be returned.}
 
 \item{caption}{Text to display as caption. This argument is relevant only
 when \code{output = "caption"}.}
@@ -39,7 +38,7 @@ when \code{output = "caption"}.}
 \item{messages}{Deprecated. Retained only for backward compatibility.}
 
 \item{...}{
-  Arguments passed on to \code{\link[metafor:rma]{metafor::rma}}
+  Arguments passed on to \code{\link[metafor:rma.uni]{metafor::rma}}
   \describe{
     \item{\code{vi}}{vector of length \eqn{k} with the corresponding sampling variances. See \sQuote{Details}.}
     \item{\code{weights}}{optional argument to specify a vector of length \eqn{k} with user-defined weights. See \sQuote{Details}.}

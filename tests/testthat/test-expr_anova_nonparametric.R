@@ -115,10 +115,10 @@ testthat::test_that(
     set.seed(123)
     using_function1 <-
       statsExpressions::expr_anova_nonparametric(
-        data = statsExpressions::bugs_long,
+        data = bugs_long,
         x = condition,
         y = "desire",
-        k = 4,
+        k = 4L,
         conf.type = "norm",
         paired = TRUE,
         conf.level = 0.99,
@@ -146,9 +146,9 @@ testthat::test_that(
           "0.6148",
           ", CI"["99%"],
           " [",
-          "0.3390",
+          "0.3369",
           ", ",
-          "0.7058",
+          "0.7022",
           "]",
           ", ",
           italic("n")["pairs"],
@@ -197,7 +197,7 @@ testthat::test_that(
           " [",
           "0.345",
           ", ",
-          "0.977",
+          "0.956",
           "]",
           ", ",
           italic("n")["pairs"],
