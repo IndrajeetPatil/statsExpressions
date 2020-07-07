@@ -1,3 +1,5 @@
+# statsExpressions 0.4.2.9000
+
 # statsExpressions 0.4.2
 
 MINOR CHANGES
