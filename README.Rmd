@@ -150,11 +150,13 @@ cylinders in the engine and wish to carry out Welch's ANOVA:
 # setup
 set.seed(123)
 library(ggplot2)
+library(ggforce)
 library(statsExpressions)
 
-# create a boxplot
+# plot with subtitle
 ggplot(iris, aes(x = Species, y = Sepal.Length)) +
-  geom_boxplot() +
+  geom_violin() +
+  geom_sina() +
   labs(
     title = "Fisher's one-way ANOVA",
     subtitle = expr_anova_parametric(iris, Species, Sepal.Length, var.equal = TRUE)
@@ -175,7 +177,7 @@ library(ggridges)
 ggplot(iris, aes(x = Sepal.Length, y = Species)) +
   geom_density_ridges(
     jittered_points = TRUE, quantile_lines = TRUE,
-    scale = 0.9, vline_size = 1, vline_color = "red",  
+    scale = 0.9, vline_size = 1, vline_color = "red",
     position = position_raincloud(adjust_vlines = TRUE)
   ) +
   labs(
@@ -379,7 +381,7 @@ ggplot(mtcars, aes(mpg, wt)) +
 
 ## Example: Expressions for contingency table analysis
 
-For categorical/nominal data
+For categorical/nominal data - one-sample:
 
 ```{r gof}
 # setup
@@ -400,6 +402,29 @@ ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1
     title = "Pie Chart of class (type of car)",
     subtitle = expr_onesample_proptest(as.data.frame(table(mpg$class)), Var1, counts = Freq),
     caption = "One-sample goodness of fit proportion test"
+  )
+```
+
+Another example of contingency tabs analysis:
+
+```{r cont_tabs1}
+# setup
+set.seed(123)
+library(moonBook)
+library(ggiraphExtra)
+library(statsExpressions)
+
+# plot
+ggSpine(
+  data = acs,
+  aes(x = Dx, fill = smoking),
+  addlabel = TRUE,
+  interactive = FALSE
+) +
+  labs(
+    x = "diagnosis",
+    title = "Pearson's chi-squared contingency table test for counts",
+    subtitle = expr_contingency_tab(acs, Dx, smoking, paired = FALSE)
   )
 ```
 

@@ -3,7 +3,7 @@ pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
   stats_details: stats_details.html
-last_built: 2020-07-07T07:34Z
+last_built: 2020-07-19T16:47Z
 urls:
   reference: https://indrajeetpatil.github.io/statsExpressions//reference
   article: https://indrajeetpatil.github.io/statsExpressions//articles

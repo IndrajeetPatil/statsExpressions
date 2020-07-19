@@ -9,7 +9,7 @@
 | [![CRAN Checks](https://cranchecks.info/badges/summary/statsExpressions)](https://cran.r-project.org/web/checks/check_results_statsExpressions.html)                      | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/statsExpressions?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/statsExpressions) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)                          | [![Forks](https://img.shields.io/badge/forks-7-blue.svg)](https://github.com/IndrajeetPatil/statsExpressions/)                                                           | [![Features](https://img.shields.io/badge/features-statsExpressions-orange.svg?colorB=2196F3)](https://indrajeetpatil.github.io/statsExpressions/reference/index.html)    |
 | [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)                                                                | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/)                                                                                         | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)                        | [![Github Issues](https://img.shields.io/badge/issues-6-red.svg)](https://github.com/IndrajeetPatil/statsExpressions/issues)                                             | [![vignettes](https://img.shields.io/badge/vignettes-0.4.1-orange.svg?colorB=FF5722)](https://CRAN.R-project.org/package=statsExpressions/vignettes/)                     |
 | [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/statsExpressions/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/statsExpressions?branch=master)             | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)                         | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/statsExpressions.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/statsExpressions) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2074621.svg)](https://doi.org/10.5281/zenodo.3386122)                                                                 |
-| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                          | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master)                   | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_03_22-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/blob/master/tests/README.md) | [![Last-changedate](https://img.shields.io/badge/last%20change-2020--07--07-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master)         | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master) |
+| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                          | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master)                   | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_03_22-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/blob/master/tests/README.md) | [![Last-changedate](https://img.shields.io/badge/last%20change-2020--07--19-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master)         | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master) |
 | [![status](https://tinyverse.netlify.com/badge/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)                                                    | [![R build status](https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions)                                            | [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/statsExpressions/community)                                                                       | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)                                                               | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/statsExpressions/issues)      |
 
 # Introduction <img src="man/figures/logo.png" align="right" width="240" />
@@ -134,11 +134,13 @@ number of cylinders in the engine and wish to carry out Welch’s ANOVA:
 # setup
 set.seed(123)
 library(ggplot2)
+library(ggforce)
 library(statsExpressions)
 
-# create a boxplot
+# plot with subtitle
 ggplot(iris, aes(x = Species, y = Sepal.Length)) +
-  geom_boxplot() +
+  geom_violin() +
+  geom_sina() +
   labs(
     title = "Fisher's one-way ANOVA",
     subtitle = expr_anova_parametric(iris, Species, Sepal.Length, var.equal = TRUE)
@@ -161,7 +163,7 @@ library(ggridges)
 ggplot(iris, aes(x = Sepal.Length, y = Species)) +
   geom_density_ridges(
     jittered_points = TRUE, quantile_lines = TRUE,
-    scale = 0.9, vline_size = 1, vline_color = "red",  
+    scale = 0.9, vline_size = 1, vline_color = "red",
     position = position_raincloud(adjust_vlines = TRUE)
   ) +
   labs(
@@ -384,7 +386,7 @@ ggplot(mtcars, aes(mpg, wt)) +
 
 ## Example: Expressions for contingency table analysis
 
-For categorical/nominal data
+For categorical/nominal data - one-sample:
 
 ``` r
 # setup
@@ -409,6 +411,31 @@ ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1
 ```
 
 <img src="man/figures/README-gof-1.png" width="100%" />
+
+Another example of contingency tabs analysis:
+
+``` r
+# setup
+set.seed(123)
+library(moonBook)
+library(ggiraphExtra)
+library(statsExpressions)
+
+# plot
+ggSpine(
+  data = acs,
+  aes(x = Dx, fill = smoking),
+  addlabel = TRUE,
+  interactive = FALSE
+) +
+  labs(
+    x = "diagnosis",
+    title = "Pearson's chi-squared contingency table test for counts",
+    subtitle = expr_contingency_tab(acs, Dx, smoking, paired = FALSE)
+  )
+```
+
+<img src="man/figures/README-cont_tabs1-1.png" width="100%" />
 
 You can also use these function to get the expression in return without
 having to display them in plots:
