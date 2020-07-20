@@ -1,23 +1,43 @@
-bf_contingency_tab(data, x, y = NULL, counts = NULL, ratio = NULL, sampling.plan = "indepMulti", fixed.margin = "rows", prior.concentration = 1, caption = NULL, output = "null", k = 2, ...)
-bf_corr_test(data, x, y, bf.prior = 0.707, caption = NULL, output = "null", k = 2, ...)
-bf_expr(bf.df, k = 2, output = "null", caption = NULL, ...)
-bf_extractor(bf.object, ...)
-bf_meta(data, d = prior, norm, c(mean = 0, sd = 0.3), tau = prior, invgamma, c(shape = 1, scale = 0.15), k = 2, output = "null", caption = NULL, messages = TRUE, ...)
-bf_oneway_anova(data, x, y, bf.prior = 0.707, caption = NULL, output = "null", paired = FALSE, k = 2, ...)
-bf_ttest(data, x, y = NULL, test.value = 0, paired = FALSE, bf.prior = 0.707, caption = NULL, output = "null", k = 2, ...)
-corr_objects(data, ci = FALSE, corr.method = "pearson", p.adjust.method = "none", beta = 0.1, k = 2, ...)
-expr_anova_bayes(data, x, y, paired = FALSE, bf.prior = 0.707, k = 2, ...)
-expr_anova_nonparametric(data, x, y, paired = FALSE, conf.type = "perc", conf.level = 0.95, k = 2, nboot = 100, stat.title = NULL, messages = TRUE, ...)
-expr_anova_parametric(data, x, y, paired = FALSE, effsize.type = "unbiased", partial = TRUE, conf.level = 0.95, nboot = 100, var.equal = FALSE, sphericity.correction = TRUE, k = 2, stat.title = NULL, messages = TRUE, ...)
-expr_anova_robust(data, x, y, paired = FALSE, tr = 0.1, nboot = 100, conf.level = 0.95, conf.type = "norm", k = 2, stat.title = NULL, messages = TRUE, ...)
-expr_contingency_tab(data, x, y = NULL, counts = NULL, ratio = NULL, nboot = 100, paired = FALSE, stat.title = NULL, legend.title = NULL, conf.level = 0.95, conf.type = "norm", bias.correct = TRUE, k = 2, messages = TRUE, ...)
-expr_corr_test(data, x, y, nboot = 100, beta = 0.1, type = "pearson", bf.prior = 0.707, conf.level = 0.95, conf.type = "norm", k = 2, stat.title = NULL, messages = TRUE, ...)
-expr_meta_bayes(data, d = prior, norm, c(mean = 0, sd = 0.3), tau = prior, invgamma, c(shape = 1, scale = 0.15), k = 2, messages = TRUE, ...)
-expr_meta_parametric(data, conf.level = 0.95, k = 2, messages = FALSE, output = "subtitle", caption = NULL, ...)
-expr_meta_robust(data, random = "mixture", k = 2, messages = FALSE, ...)
+# API for statsExpressions package
+
+## Exported functions
+
+expr_anova_bayes(data, x, y, paired = FALSE, bf.prior = 0.707, k = 2L, ...)
+expr_anova_nonparametric(data, x, y, paired = FALSE, conf.type = "perc", conf.level = 0.95, k = 2L, nboot = 100L, stat.title = NULL, ...)
+expr_anova_parametric(data, x, y, paired = FALSE, effsize.type = "unbiased", partial = TRUE, conf.level = 0.95, var.equal = FALSE, sphericity.correction = TRUE, k = 2L, stat.title = NULL, ...)
+expr_anova_robust(data, x, y, paired = FALSE, tr = 0.1, nboot = 100, conf.level = 0.95, k = 2L, stat.title = NULL, ...)
+expr_contingency_tab(data, x, y = NULL, counts = NULL, ratio = NULL, nboot = 100, paired = FALSE, stat.title = NULL, conf.level = 0.95, conf.type = "norm", bias.correct = TRUE, k = 2L, ...)
+expr_corr_test(data, x, y, beta = 0.1, type = "parametric", bf.prior = 0.707, conf.level = 0.95, k = 2L, stat.title = NULL, ...)
+expr_meta_bayes(data, d = prior("norm", c(mean = 0, sd = 0.3)), tau = prior("invgamma", c(shape = 1, scale = 0.15)), k = 2, messages = TRUE, ...)
+expr_meta_parametric(data, conf.level = 0.95, k = 2L, output = "subtitle", caption = NULL, messages = TRUE, ...)
+expr_meta_robust(data, random = "mixture", k = 2, messages = TRUE, ...)
+expr_onesample_proptest(data, x, y = NULL, counts = NULL, ratio = NULL, nboot = 100, paired = FALSE, stat.title = NULL, conf.level = 0.95, conf.type = "norm", bias.correct = TRUE, k = 2L, ...)
 expr_t_bayes(data, x, y, bf.prior = 0.707, paired = FALSE, k = 2, ...)
-expr_t_nonparametric(data, x, y, paired = FALSE, k = 2, conf.level = 0.95, conf.type = "norm", nboot = 100, stat.title = NULL, messages = TRUE, ...)
-expr_t_onesample(data, x, type = "parametric", test.value = 0, bf.prior = 0.707, robust.estimator = "onestep", effsize.type = "g", effsize.noncentral = TRUE, conf.level = 0.95, conf.type = "norm", nboot = 100, k = 2, stat.title = NULL, messages = TRUE, ...)
-expr_t_parametric(data, x, y, paired = FALSE, effsize.type = "g", effsize.noncentral = TRUE, conf.level = 0.95, var.equal = FALSE, k = 2, stat.title = NULL, ...)
-expr_t_robust(data, x, y, tr = 0.1, paired = FALSE, nboot = 100, conf.level = 0.95, conf.type = "norm", k = 2, stat.title = NULL, messages = TRUE, ...)
-expr_template(no.parameters, stat.title = NULL, statistic.text, stats.df, effsize.text, effsize.df, n, conf.level = 0.95, k = 2, k.parameter = 0, k.parameter2 = 0, n.text = NULL, ...)
+expr_t_nonparametric(data, x, y, paired = FALSE, k = 2L, conf.level = 0.95, conf.type = "norm", nboot = 100, stat.title = NULL, ...)
+expr_t_onesample(data, x, type = "parametric", test.value = 0, bf.prior = 0.707, robust.estimator = "onestep", effsize.type = "g", conf.level = 0.95, conf.type = "norm", nboot = 100, k = 2L, stat.title = NULL, ...)
+expr_t_parametric(data, x, y, paired = FALSE, effsize.type = "g", conf.level = 0.95, var.equal = FALSE, k = 2, stat.title = NULL, ...)
+expr_t_robust(data, x, y, tr = 0.1, paired = FALSE, conf.level = 0.95, nboot = 100, k = 2L, stat.title = NULL, ...)
+expr_template(no.parameters, stat.title = NULL, statistic.text, stats.df, effsize.text, effsize.df, n, conf.level = 0.95, k = 2L, k.parameter = 0L, k.parameter2 = 0L, n.text = NULL, ...)
+
+## Reexported objects
+
+::%$%
+zeallot::%<-%
+::%<>%
+::%>%
+rlang::%|%
+rlang::%||%
+rlang:::=
+tibble::as_tibble
+tidyBF::bf_contingency_tab
+tidyBF::bf_corr_test
+tidyBF::bf_meta
+tidyBF::bf_oneway_anova
+tidyBF::bf_ttest
+correlation::correlation
+ipmisc::long_to_wide_converter
+metaBMA::prior
+ipmisc::set_cwd
+ipmisc::signif_column
+ipmisc::specify_decimal_p
+tibble::tibble

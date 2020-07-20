@@ -80,3 +80,9 @@ tidyBF::bf_oneway_anova
 #' @export
 #' @importFrom tidyBF prior
 tidyBF::prior
+
+# ----------------------- easystats -------------------------------------
+
+#' @export
+#' @importFrom correlation correlation
+correlation::correlation
