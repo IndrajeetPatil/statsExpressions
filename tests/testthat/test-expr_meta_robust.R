@@ -1,5 +1,3 @@
-context("expr_meta_robust")
-
 # subtitle from meta-analysis -------------------------------------------
 
 testthat::test_that(

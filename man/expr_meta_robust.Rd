@@ -5,7 +5,7 @@
 \title{Making expression with frequentist random-effects robust meta-analysis
 results}
 \usage{
-expr_meta_robust(data, random = "mixture", k = 2, messages = TRUE, ...)
+expr_meta_robust(data, random = "mixture", k = 2L, messages = TRUE, ...)
 }
 \arguments{
 \item{data}{A dataframe. It \strong{must} contain columns named \code{estimate} (effect

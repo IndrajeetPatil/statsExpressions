@@ -196,7 +196,7 @@ expr_meta_parametric <- function(data,
 # function body
 expr_meta_robust <- function(data,
                              random = "mixture",
-                             k = 2,
+                             k = 2L,
                              messages = TRUE,
                              ...) {
   # check the data contains needed column
