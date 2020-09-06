@@ -38,7 +38,7 @@ environment:
     R_ARCH: x64
     GCC_PATH: mingw_64
 
-  # `data.table` not available
+  # `utf8` not available
   # - R_VERSION: devel
   #   R_ARCH: x64
   #   GCC_PATH: mingw_64

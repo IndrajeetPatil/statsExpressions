@@ -160,16 +160,16 @@ trimmed means</p>
     </div>
 
     <pre class="usage"><span class='fu'>expr_anova_robust</span>(
-  <span class='no'>data</span>,
-  <span class='no'>x</span>,
-  <span class='no'>y</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>tr</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
-  <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-  <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
-  <span class='kw'>stat.title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>
+  <span class='kw'>data</span>,
+  <span class='kw'>x</span>,
+  <span class='kw'>y</span>,
+  paired = <span class='fl'>FALSE</span>,
+  tr = <span class='fl'>0.1</span>,
+  nboot = <span class='fl'>100</span>,
+  conf.level = <span class='fl'>0.95</span>,
+  k = <span class='fl'>2L</span>,
+  stat.title = <span class='kw'>NULL</span>,
+  <span class='kw'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -244,43 +244,46 @@ added as a prefix in the subtitle. The default is <code>NULL</code>. An example 
 <span class='co'># ------------------------ between-subjects -----------------------------</span>
 
 <span class='co'># going with the defaults</span>
-<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_anova_robust</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/midwest.html'>midwest</a></span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>state</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>percbelowpoverty</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>10</span>
-)</div><div class='output co'>#&gt; paste(NULL, italic("F")["trimmed-means"], "(", "4", ",", "169.73", 
+<span class='kw'>statsExpressions</span>::<span class='fu'>expr_anova_robust</span>(
+  data = <span class='kw'>ggplot2</span>::<span class='kw'><a href='https://ggplot2.tidyverse.org/reference/midwest.html'>midwest</a></span>,
+  x = <span class='kw'>state</span>,
+  y = <span class='kw'>percbelowpoverty</span>,
+  paired = <span class='fl'>FALSE</span>,
+  nboot = <span class='fl'>10</span>
+)
+</div><div class='output co'>#&gt; paste(NULL, italic("F")["trimmed-means"], "(", "4", ",", "169.73", 
 #&gt;     ") = ", "11.43", ", ", italic("p"), " = ", "&lt; 0.001", ", ", 
 #&gt;     widehat(italic(xi)), " = ", "0.38", ", CI"["95%"], " [", 
 #&gt;     "0.31", ", ", "0.44", "]", ", ", italic("n")["obs"], " = ", 
 #&gt;     437L)</div><div class='input'>
 <span class='co'># changing defaults</span>
 <span class='fu'>expr_anova_robust</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/midwest.html'>midwest</a></span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>state</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>percollege</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.99</span>,
-  <span class='kw'>tr</span> <span class='kw'>=</span> <span class='fl'>0.2</span>,
-  <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>10</span>
-)</div><div class='output co'>#&gt; paste(NULL, italic("F")["trimmed-means"], "(", "4", ",", "127.02", 
+  data = <span class='kw'>ggplot2</span>::<span class='kw'><a href='https://ggplot2.tidyverse.org/reference/midwest.html'>midwest</a></span>,
+  x = <span class='kw'>state</span>,
+  y = <span class='kw'>percollege</span>,
+  paired = <span class='fl'>FALSE</span>,
+  conf.level = <span class='fl'>0.99</span>,
+  tr = <span class='fl'>0.2</span>,
+  nboot = <span class='fl'>10</span>
+)
+</div><div class='output co'>#&gt; paste(NULL, italic("F")["trimmed-means"], "(", "4", ",", "127.02", 
 #&gt;     ") = ", "7.67", ", ", italic("p"), " = ", "&lt; 0.001", ", ", 
 #&gt;     widehat(italic(xi)), " = ", "0.37", ", CI"["99%"], " [", 
 #&gt;     "0.30", ", ", "0.43", "]", ", ", italic("n")["obs"], " = ", 
 #&gt;     437L)</div><div class='input'>
 <span class='co'># ------------------------ within-subjects -----------------------------</span>
 
-<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_anova_robust</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris_long</span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>condition</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>value</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>tr</span> <span class='kw'>=</span> <span class='fl'>0.2</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>
-)</div><div class='output co'>#&gt; paste(italic("F")["trimmed-means"], "(", "1.091", ",", "97.096", 
+<span class='kw'>statsExpressions</span>::<span class='fu'>expr_anova_robust</span>(
+  data = <span class='kw'>iris_long</span>,
+  x = <span class='kw'>condition</span>,
+  y = <span class='kw'>value</span>,
+  paired = <span class='fl'>TRUE</span>,
+  tr = <span class='fl'>0.2</span>,
+  k = <span class='fl'>3</span>
+)
+</div><div class='output co'>#&gt; paste(italic("F")["trimmed-means"], "(", "1.091", ",", "97.096", 
 #&gt;     ") = ", "367.791", ", ", italic("p"), " = ", "&lt; 0.001", ", ", 
-#&gt;     italic("n")["pairs"], " = ", 150L)</div><div class='input'># }
+#&gt;     italic("n")["pairs"], " = ", 150L)</div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -297,7 +300,7 @@ added as a prefix in the subtitle. The default is <code>NULL</code>. An example 
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

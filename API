@@ -21,10 +21,10 @@ expr_template(no.parameters, stat.title = NULL, statistic.text, stats.df, effsiz
 
 ## Reexported objects
 
-::%$%
+magrittr::%$%
 zeallot::%<-%
-::%<>%
-::%>%
+magrittr::%<>%
+magrittr::%>%
 rlang::%|%
 rlang::%||%
 rlang:::=

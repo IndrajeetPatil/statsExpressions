@@ -8,7 +8,7 @@ expr_meta_bayes(
   data,
   d = prior("norm", c(mean = 0, sd = 0.3)),
   tau = prior("invgamma", c(shape = 1, scale = 0.15)),
-  k = 2,
+  k = 2L,
   messages = TRUE,
   ...
 )

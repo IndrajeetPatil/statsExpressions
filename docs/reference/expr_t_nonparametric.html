@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Making expression for Mann-Whitney <em>U</em>-test/Wilcoxon test results — expr_t_nonparametric • statsExpressions</title>
+<title>Making expression for Mann-Whitney U-test/Wilcoxon test results — expr_t_nonparametric • statsExpressions</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,7 +54,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Making expression for Mann-Whitney <em>U</em>-test/Wilcoxon test results — expr_t_nonparametric" />
+<meta property="og:title" content="Making expression for Mann-Whitney U-test/Wilcoxon test results — expr_t_nonparametric" />
 <meta property="og:description" content="Making expression for Mann-Whitney U-test/Wilcoxon test results" />
 <meta property="og:image" content="https://indrajeetpatil.github.io/statsExpressions/logo.png" />
 
@@ -155,16 +155,16 @@
     </div>
 
     <pre class="usage"><span class='fu'>expr_t_nonparametric</span>(
-  <span class='no'>data</span>,
-  <span class='no'>x</span>,
-  <span class='no'>y</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
-  <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
-  <span class='kw'>conf.type</span> <span class='kw'>=</span> <span class='st'>"norm"</span>,
-  <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-  <span class='kw'>stat.title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>
+  <span class='kw'>data</span>,
+  <span class='kw'>x</span>,
+  <span class='kw'>y</span>,
+  paired = <span class='fl'>FALSE</span>,
+  k = <span class='fl'>2L</span>,
+  conf.level = <span class='fl'>0.95</span>,
+  conf.type = <span class='st'>"norm"</span>,
+  nboot = <span class='fl'>100</span>,
+  stat.title = <span class='kw'>NULL</span>,
+  <span class='kw'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -254,62 +254,66 @@ below.</p>
 
 <span class='co'># -------------- between-subjects design ------------------------</span>
 <span class='co'># simple function call</span>
-<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_nonparametric</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>sleep</span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>group</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>extra</span>
-)</div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")["Wilcoxon"]), " = ", "3.24", 
+<span class='kw'>statsExpressions</span>::<span class='fu'>expr_t_nonparametric</span>(
+  data = <span class='kw'>sleep</span>,
+  x = <span class='kw'>group</span>,
+  y = <span class='kw'>extra</span>
+)
+</div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")["Wilcoxon"]), " = ", "3.24", 
 #&gt;     ", ", italic("p"), " = ", "0.069", ", ", widehat(italic("r")), 
 #&gt;     " = ", "-0.41", ", CI"["95%"], " [", "-0.84", ", ", "-0.04", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 20L)</div><div class='input'>
 <span class='co'># creating a smaller dataset</span>
-<span class='no'>msleep_short</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(
-  <span class='kw'>.data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
-  <span class='no'>vore</span> <span class='kw'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"carni"</span>, <span class='st'>"herbi"</span>)
+<span class='kw'>msleep_short</span> <span class='op'>&lt;-</span> <span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(
+  .data = <span class='kw'>ggplot2</span>::<span class='kw'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
+  <span class='kw'>vore</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"carni"</span>, <span class='st'>"herbi"</span>)
 )
 
 <span class='co'># modifying few things</span>
-<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_nonparametric</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>msleep_short</span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>vore</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>sleep_rem</span>,
-  <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>200</span>,
-  <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.99</span>,
-  <span class='kw'>conf.type</span> <span class='kw'>=</span> <span class='st'>"bca"</span>
-)</div><div class='output co'>#&gt; <span class='warning'>Warning: extreme order statistics used as endpoints</span></div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")["Wilcoxon"]), " = ", "5.05", 
+<span class='kw'>statsExpressions</span>::<span class='fu'>expr_t_nonparametric</span>(
+  data = <span class='kw'>msleep_short</span>,
+  x = <span class='kw'>vore</span>,
+  y = <span class='kw'>sleep_rem</span>,
+  nboot = <span class='fl'>200</span>,
+  conf.level = <span class='fl'>0.99</span>,
+  conf.type = <span class='st'>"bca"</span>
+)
+</div><div class='output co'>#&gt; <span class='warning'>Warning: extreme order statistics used as endpoints</span></div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")["Wilcoxon"]), " = ", "5.05", 
 #&gt;     ", ", italic("p"), " = ", "0.179", ", ", widehat(italic("r")), 
 #&gt;     " = ", "0.23", ", CI"["99%"], " [", "-0.28", ", ", "0.63", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 34L)</div><div class='input'>
 <span class='co'># The order of the grouping factor matters when computing *V*</span>
 <span class='co'># Changing default alphabetical order manually</span>
-<span class='no'>msleep_short</span>$<span class='no'>vore</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='no'>msleep_short</span>$<span class='no'>vore</span>, <span class='kw'>levels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"herbi"</span>, <span class='st'>"carni"</span>))
+<span class='kw'>msleep_short</span><span class='op'>$</span><span class='kw'>vore</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='kw'>msleep_short</span><span class='op'>$</span><span class='kw'>vore</span>, levels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"herbi"</span>, <span class='st'>"carni"</span>))
 
 <span class='co'># note the change in the reported *V* value but the identical</span>
 <span class='co'># value for *p* and the reversed effect size</span>
-<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_nonparametric</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>msleep_short</span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>vore</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>sleep_rem</span>
-)</div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")["Wilcoxon"]), " = ", "4.43", 
+<span class='kw'>statsExpressions</span>::<span class='fu'>expr_t_nonparametric</span>(
+  data = <span class='kw'>msleep_short</span>,
+  x = <span class='kw'>vore</span>,
+  y = <span class='kw'>sleep_rem</span>
+)
+</div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")["Wilcoxon"]), " = ", "4.43", 
 #&gt;     ", ", italic("p"), " = ", "0.179", ", ", widehat(italic("r")), 
 #&gt;     " = ", "-0.23", ", CI"["95%"], " [", "-0.60", ", ", "0.12", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 34L)</div><div class='input'>
 <span class='co'># -------------- within-subjects design ------------------------</span>
 
 <span class='co'># using dataset included in the package</span>
-<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_nonparametric</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>VR_dilemma</span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>modality</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>score</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.90</span>,
-  <span class='kw'>conf.type</span> <span class='kw'>=</span> <span class='st'>"perc"</span>,
-  <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>200</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>4</span>
-)</div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("V")["Wilcoxon"]), " = ", "1.5041", 
+<span class='kw'>statsExpressions</span>::<span class='fu'>expr_t_nonparametric</span>(
+  data = <span class='kw'>VR_dilemma</span>,
+  x = <span class='kw'>modality</span>,
+  y = <span class='kw'>score</span>,
+  paired = <span class='fl'>TRUE</span>,
+  conf.level = <span class='fl'>0.90</span>,
+  conf.type = <span class='st'>"perc"</span>,
+  nboot = <span class='fl'>200</span>,
+  k = <span class='fl'>4</span>
+)
+</div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("V")["Wilcoxon"]), " = ", "1.5041", 
 #&gt;     ", ", italic("p"), " = ", "9e-04", ", ", widehat(italic("r")), 
 #&gt;     " = ", "-0.5745", ", CI"["90%"], " [", "-0.6843", ", ", "-0.4427", 
-#&gt;     "]", ", ", italic("n")["pairs"], " = ", 34L)</div><div class='input'># }
+#&gt;     "]", ", ", italic("n")["pairs"], " = ", 34L)</div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -326,7 +330,7 @@ below.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>
