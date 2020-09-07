@@ -85,13 +85,13 @@ expr_contingency_tab <- function(data,
                                  y = NULL,
                                  counts = NULL,
                                  ratio = NULL,
-                                 nboot = 100,
-                                 paired = FALSE,
-                                 stat.title = NULL,
+                                 k = 2L,
                                  conf.level = 0.95,
                                  conf.type = "norm",
+                                 nboot = 100L,
+                                 paired = FALSE,
+                                 stat.title = NULL,
                                  bias.correct = TRUE,
-                                 k = 2L,
                                  ...) {
 
   # ensure the variables work quoted or unquoted

@@ -159,9 +159,9 @@
   <span class='kw'>x</span>,
   <span class='kw'>y</span>,
   paired = <span class='fl'>FALSE</span>,
-  conf.type = <span class='st'>"perc"</span>,
-  conf.level = <span class='fl'>0.95</span>,
   k = <span class='fl'>2L</span>,
+  conf.level = <span class='fl'>0.95</span>,
+  conf.type = <span class='st'>"perc"</span>,
   nboot = <span class='fl'>100L</span>,
   stat.title = <span class='kw'>NULL</span>,
   <span class='kw'>...</span>
@@ -191,10 +191,9 @@ repeated measures/within-subjects or between-subjects. The default is
 <code>FALSE</code>.</p></td>
     </tr>
     <tr>
-      <th>conf.type</th>
-      <td><p>A vector of character strings representing the type of
-intervals required. The value should be any subset of the values <code>"norm"</code>,
-<code>"basic"</code>, <code>"perc"</code>, <code>"bca"</code>. For more, see <code><a href='https://rdrr.io/pkg/boot/man/boot.ci.html'>?boot::boot.ci</a></code>.</p></td>
+      <th>k</th>
+      <td><p>Number of digits after decimal point (should be an integer)
+(Default: <code>k = 2</code>).</p></td>
     </tr>
     <tr>
       <th>conf.level</th>
@@ -202,9 +201,10 @@ intervals required. The value should be any subset of the values <code>"norm"</c
 <code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
     </tr>
     <tr>
-      <th>k</th>
-      <td><p>Number of digits after decimal point (should be an integer)
-(Default: <code>k = 2</code>).</p></td>
+      <th>conf.type</th>
+      <td><p>A vector of character strings representing the type of
+intervals required. The value should be any subset of the values <code>"norm"</code>,
+<code>"basic"</code>, <code>"perc"</code>, <code>"bca"</code>. For more, see <code><a href='https://rdrr.io/pkg/boot/man/boot.ci.html'>?boot::boot.ci</a></code>.</p></td>
     </tr>
     <tr>
       <th>nboot</th>

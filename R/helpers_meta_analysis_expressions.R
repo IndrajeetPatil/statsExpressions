@@ -40,13 +40,6 @@
 #'   messages = FALSE
 #' )
 #'
-#' # getting tidy data frame with coefficients
-#' expr_meta_parametric(
-#'   data = df,
-#'   messages = FALSE,
-#'   output = "tidy"
-#' )
-#'
 #' # making caption
 #' expr_meta_parametric(
 #'   data = df,
@@ -54,20 +47,13 @@
 #'   messages = FALSE,
 #'   output = "caption"
 #' )
-#'
-#' # getting dataframe with model summary
-#' expr_meta_parametric(
-#'   data = df,
-#'   messages = FALSE,
-#'   output = "glance"
-#' )
 #' }
 #' @export
 
 # function body
 expr_meta_parametric <- function(data,
-                                 conf.level = 0.95,
                                  k = 2L,
+                                 conf.level = 0.95,
                                  output = "subtitle",
                                  caption = NULL,
                                  messages = TRUE,
@@ -156,7 +142,7 @@ expr_meta_parametric <- function(data,
     EXPR = output,
     "subtitle" = subtitle,
     "caption" = caption,
-    "subtitle"
+    subtitle
   ))
 }
 

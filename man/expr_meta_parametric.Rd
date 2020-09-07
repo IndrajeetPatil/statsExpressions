@@ -7,8 +7,8 @@ results}
 \usage{
 expr_meta_parametric(
   data,
-  conf.level = 0.95,
   k = 2L,
+  conf.level = 0.95,
   output = "subtitle",
   caption = NULL,
   messages = TRUE,
@@ -21,11 +21,11 @@ sizes or outcomes)  and \code{std.error} (corresponding standard errors). These
 two columns will be used for \code{yi}  and \code{sei} arguments in \code{metafor::rma}
 (for parametric analysis) or \code{metaplus::metaplus} (for robust analysis).}
 
-\item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
-
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2}).}
+
+\item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
+\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
 
 \item{output}{Character describing the desired output. If \code{"subtitle"}, a
 formatted subtitle with summary effect and statistical details will be
@@ -102,26 +102,12 @@ expr_meta_parametric(
   messages = FALSE
 )
 
-# getting tidy data frame with coefficients
-expr_meta_parametric(
-  data = df,
-  messages = FALSE,
-  output = "tidy"
-)
-
 # making caption
 expr_meta_parametric(
   data = df,
   k = 2,
   messages = FALSE,
   output = "caption"
-)
-
-# getting dataframe with model summary
-expr_meta_parametric(
-  data = df,
-  messages = FALSE,
-  output = "glance"
 )
 }
 }

@@ -9,10 +9,10 @@ expr_t_parametric(
   x,
   y,
   paired = FALSE,
-  effsize.type = "g",
+  k = 2L,
   conf.level = 0.95,
+  effsize.type = "g",
   var.equal = FALSE,
-  k = 2,
   stat.title = NULL,
   ...
 )
@@ -30,11 +30,14 @@ dataframe \code{data}.}
 repeated measures/within-subjects or between-subjects. The default is
 \code{FALSE}.}
 
-\item{effsize.type}{Type of effect size needed for \emph{parametric} tests. The
-argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \emph{g}).}
+\item{k}{Number of digits after decimal point (should be an integer)
+(Default: \code{k = 2}).}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} lower and upper confidence intervals (\code{0.95}).}
+
+\item{effsize.type}{Type of effect size needed for \emph{parametric} tests. The
+argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \emph{g}).}
 
 \item{var.equal}{a logical variable indicating whether to treat the
     variances in the samples as equal.  If \code{TRUE}, then a simple F
@@ -42,9 +45,6 @@ argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \em
     performed.  If \code{FALSE}, an approximate method of Welch (1951)
     is used, which generalizes the commonly known 2-sample Welch test to
     the case of arbitrarily many samples.}
-
-\item{k}{Number of digits after decimal point (should be an integer)
-(Default: \code{k = 2}).}
 
 \item{stat.title}{A character describing the test being run, which will be
 added as a prefix in the subtitle. The default is \code{NULL}. An example of a

@@ -11,13 +11,13 @@ expr_contingency_tab(
   y = NULL,
   counts = NULL,
   ratio = NULL,
-  nboot = 100,
-  paired = FALSE,
-  stat.title = NULL,
+  k = 2L,
   conf.level = 0.95,
   conf.type = "norm",
+  nboot = 100L,
+  paired = FALSE,
+  stat.title = NULL,
   bias.correct = TRUE,
-  k = 2L,
   ...
 )
 
@@ -27,13 +27,13 @@ expr_onesample_proptest(
   y = NULL,
   counts = NULL,
   ratio = NULL,
-  nboot = 100,
-  paired = FALSE,
-  stat.title = NULL,
+  k = 2L,
   conf.level = 0.95,
   conf.type = "norm",
+  nboot = 100L,
+  paired = FALSE,
+  stat.title = NULL,
   bias.correct = TRUE,
-  k = 2L,
   ...
 )
 }
@@ -57,6 +57,16 @@ is equal theoretical proportions across the levels of the nominal variable.
 This means if there are two levels this will be \code{ratio = c(0.5,0.5)} or if
 there are four levels this will be \code{ratio = c(0.25,0.25,0.25,0.25)}, etc.}
 
+\item{k}{Number of digits after decimal point (should be an integer)
+(Default: \code{k = 2}).}
+
+\item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
+\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
+
+\item{conf.type}{A vector of character strings representing the type of
+intervals required. The value should be any subset of the values \code{"norm"},
+\code{"basic"}, \code{"perc"}, \code{"bca"}. For more, see \code{?boot::boot.ci}.}
+
 \item{nboot}{Number of bootstrap samples for computing confidence interval
 for the effect size (Default: \code{100}).}
 
@@ -70,18 +80,8 @@ test. The default is \code{NULL}, i.e. no title will be added to describe the
 effect being shown. An example of a \code{stat.title} argument will be something
 like \code{"main x condition"} or \code{"interaction"}.}
 
-\item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
-
-\item{conf.type}{A vector of character strings representing the type of
-intervals required. The value should be any subset of the values \code{"norm"},
-\code{"basic"}, \code{"perc"}, \code{"bca"}. For more, see \code{?boot::boot.ci}.}
-
 \item{bias.correct}{If \code{TRUE} (default), a bias correction will be applied to
 Cramer's \emph{V}.}
-
-\item{k}{Number of digits after decimal point (should be an integer)
-(Default: \code{k = 2}).}
 
 \item{...}{Additional arguments (currently ignored).}
 }

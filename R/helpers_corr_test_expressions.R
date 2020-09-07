@@ -57,11 +57,11 @@
 expr_corr_test <- function(data,
                            x,
                            y,
+                           k = 2L,
+                           conf.level = 0.95,
                            beta = 0.1,
                            type = "parametric",
                            bf.prior = 0.707,
-                           conf.level = 0.95,
-                           k = 2L,
                            stat.title = NULL,
                            ...) {
 

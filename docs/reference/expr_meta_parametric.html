@@ -161,8 +161,8 @@ more, see <code><a href='https://rdrr.io/pkg/metafor/man/rma.uni.html'>?metafor:
 
     <pre class="usage"><span class='fu'>expr_meta_parametric</span>(
   <span class='kw'>data</span>,
-  conf.level = <span class='fl'>0.95</span>,
   k = <span class='fl'>2L</span>,
+  conf.level = <span class='fl'>0.95</span>,
   output = <span class='st'>"subtitle"</span>,
   caption = <span class='kw'>NULL</span>,
   messages = <span class='fl'>TRUE</span>,
@@ -180,14 +180,14 @@ two columns will be used for <code>yi</code>  and <code>sei</code> arguments in 
 (for parametric analysis) or <code><a href='https://rdrr.io/pkg/metaplus/man/metaplus.html'>metaplus::metaplus</a></code> (for robust analysis).</p></td>
     </tr>
     <tr>
-      <th>conf.level</th>
-      <td><p>Scalar between 0 and 1. If unspecified, the defaults return
-<code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
-    </tr>
-    <tr>
       <th>k</th>
       <td><p>Number of digits after decimal point (should be an integer)
 (Default: <code>k = 2</code>).</p></td>
+    </tr>
+    <tr>
+      <th>conf.level</th>
+      <td><p>Scalar between 0 and 1. If unspecified, the defaults return
+<code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
     </tr>
     <tr>
       <th>output</th>
@@ -273,13 +273,6 @@ when <code>output = "caption"</code>.</p></td>
 #&gt;     italic("p"), " = ", "&lt; 0.001", ", ", widehat(beta), " = ", 
 #&gt;     "-0.767", ", CI"["95%"], " [", "-1.182", ", ", "-0.351", 
 #&gt;     "]", ", ", italic("n")["effects"], " = ", 16L)</div><div class='input'>
-<span class='co'># getting tidy data frame with coefficients</span>
-<span class='fu'>expr_meta_parametric</span>(
-  data = <span class='kw'>df</span>,
-  messages = <span class='fl'>FALSE</span>,
-  output = <span class='st'>"tidy"</span>
-)
-</div><div class='output co'>#&gt; [1] "subtitle"</div><div class='input'>
 <span class='co'># making caption</span>
 <span class='fu'>expr_meta_parametric</span>(
   data = <span class='kw'>df</span>,
@@ -289,14 +282,7 @@ when <code>output = "caption"</code>.</p></td>
 )
 </div><div class='output co'>#&gt; atop(displaystyle(NULL), expr = paste("Heterogeneity: ", italic("Q"), 
 #&gt;     "(", "15", ") = ", "47", ", ", italic("p"), " = ", "&lt; 0.001", 
-#&gt;     ", ", tau["REML"]^2, " = ", "0.29", ", ", "I"^2, " = ", "73.64%"))</div><div class='input'>
-<span class='co'># getting dataframe with model summary</span>
-<span class='fu'>expr_meta_parametric</span>(
-  data = <span class='kw'>df</span>,
-  messages = <span class='fl'>FALSE</span>,
-  output = <span class='st'>"glance"</span>
-)
-</div><div class='output co'>#&gt; [1] "subtitle"</div><div class='input'><span class='co'># }</span>
+#&gt;     ", ", tau["REML"]^2, " = ", "0.29", ", ", "I"^2, " = ", "73.64%"))</div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

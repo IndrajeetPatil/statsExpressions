@@ -9,9 +9,9 @@ expr_anova_nonparametric(
   x,
   y,
   paired = FALSE,
-  conf.type = "perc",
-  conf.level = 0.95,
   k = 2L,
+  conf.level = 0.95,
+  conf.type = "perc",
   nboot = 100L,
   stat.title = NULL,
   ...
@@ -30,15 +30,15 @@ dataframe \code{data}.}
 repeated measures/within-subjects or between-subjects. The default is
 \code{FALSE}.}
 
-\item{conf.type}{A vector of character strings representing the type of
-intervals required. The value should be any subset of the values \code{"norm"},
-\code{"basic"}, \code{"perc"}, \code{"bca"}. For more, see \code{?boot::boot.ci}.}
+\item{k}{Number of digits after decimal point (should be an integer)
+(Default: \code{k = 2}).}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} lower and upper confidence intervals (\code{0.95}).}
 
-\item{k}{Number of digits after decimal point (should be an integer)
-(Default: \code{k = 2}).}
+\item{conf.type}{A vector of character strings representing the type of
+intervals required. The value should be any subset of the values \code{"norm"},
+\code{"basic"}, \code{"perc"}, \code{"bca"}. For more, see \code{?boot::boot.ci}.}
 
 \item{nboot}{Number of bootstrap samples for computing confidence interval
 for the effect size (Default: \code{100}).}

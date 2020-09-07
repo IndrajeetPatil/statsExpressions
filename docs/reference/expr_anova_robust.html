@@ -164,10 +164,10 @@ trimmed means</p>
   <span class='kw'>x</span>,
   <span class='kw'>y</span>,
   paired = <span class='fl'>FALSE</span>,
-  tr = <span class='fl'>0.1</span>,
-  nboot = <span class='fl'>100</span>,
-  conf.level = <span class='fl'>0.95</span>,
   k = <span class='fl'>2L</span>,
+  conf.level = <span class='fl'>0.95</span>,
+  tr = <span class='fl'>0.1</span>,
+  nboot = <span class='fl'>100L</span>,
   stat.title = <span class='kw'>NULL</span>,
   <span class='kw'>...</span>
 )</pre>
@@ -196,6 +196,16 @@ repeated measures/within-subjects or between-subjects. The default is
 <code>FALSE</code>.</p></td>
     </tr>
     <tr>
+      <th>k</th>
+      <td><p>Number of digits after decimal point (should be an integer)
+(Default: <code>k = 2</code>).</p></td>
+    </tr>
+    <tr>
+      <th>conf.level</th>
+      <td><p>Scalar between 0 and 1. If unspecified, the defaults return
+<code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
+    </tr>
+    <tr>
       <th>tr</th>
       <td><p>Trim level for the mean when carrying out <code>robust</code> tests. If you
 get error stating "Standard error cannot be computed because of Winsorized
@@ -207,16 +217,6 @@ try to play around with the value of <code>tr</code>, which is by default set to
       <th>nboot</th>
       <td><p>Number of bootstrap samples for computing confidence interval
 for the effect size (Default: <code>100</code>).</p></td>
-    </tr>
-    <tr>
-      <th>conf.level</th>
-      <td><p>Scalar between 0 and 1. If unspecified, the defaults return
-<code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
-    </tr>
-    <tr>
-      <th>k</th>
-      <td><p>Number of digits after decimal point (should be an integer)
-(Default: <code>k = 2</code>).</p></td>
     </tr>
     <tr>
       <th>stat.title</th>

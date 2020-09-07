@@ -160,13 +160,13 @@
   y = <span class='kw'>NULL</span>,
   counts = <span class='kw'>NULL</span>,
   ratio = <span class='kw'>NULL</span>,
-  nboot = <span class='fl'>100</span>,
-  paired = <span class='fl'>FALSE</span>,
-  stat.title = <span class='kw'>NULL</span>,
+  k = <span class='fl'>2L</span>,
   conf.level = <span class='fl'>0.95</span>,
   conf.type = <span class='st'>"norm"</span>,
+  nboot = <span class='fl'>100L</span>,
+  paired = <span class='fl'>FALSE</span>,
+  stat.title = <span class='kw'>NULL</span>,
   bias.correct = <span class='fl'>TRUE</span>,
-  k = <span class='fl'>2L</span>,
   <span class='kw'>...</span>
 )
 
@@ -176,13 +176,13 @@
   y = <span class='kw'>NULL</span>,
   counts = <span class='kw'>NULL</span>,
   ratio = <span class='kw'>NULL</span>,
-  nboot = <span class='fl'>100</span>,
-  paired = <span class='fl'>FALSE</span>,
-  stat.title = <span class='kw'>NULL</span>,
+  k = <span class='fl'>2L</span>,
   conf.level = <span class='fl'>0.95</span>,
   conf.type = <span class='st'>"norm"</span>,
+  nboot = <span class='fl'>100L</span>,
+  paired = <span class='fl'>FALSE</span>,
+  stat.title = <span class='kw'>NULL</span>,
   bias.correct = <span class='fl'>TRUE</span>,
-  k = <span class='fl'>2L</span>,
   <span class='kw'>...</span>
 )</pre>
 
@@ -219,6 +219,22 @@ This means if there are two levels this will be <code>ratio = c(0.5,0.5)</code> 
 there are four levels this will be <code>ratio = c(0.25,0.25,0.25,0.25)</code>, etc.</p></td>
     </tr>
     <tr>
+      <th>k</th>
+      <td><p>Number of digits after decimal point (should be an integer)
+(Default: <code>k = 2</code>).</p></td>
+    </tr>
+    <tr>
+      <th>conf.level</th>
+      <td><p>Scalar between 0 and 1. If unspecified, the defaults return
+<code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
+    </tr>
+    <tr>
+      <th>conf.type</th>
+      <td><p>A vector of character strings representing the type of
+intervals required. The value should be any subset of the values <code>"norm"</code>,
+<code>"basic"</code>, <code>"perc"</code>, <code>"bca"</code>. For more, see <code><a href='https://rdrr.io/pkg/boot/man/boot.ci.html'>?boot::boot.ci</a></code>.</p></td>
+    </tr>
+    <tr>
       <th>nboot</th>
       <td><p>Number of bootstrap samples for computing confidence interval
 for the effect size (Default: <code>100</code>).</p></td>
@@ -238,25 +254,9 @@ effect being shown. An example of a <code>stat.title</code> argument will be som
 like <code>"main x condition"</code> or <code>"interaction"</code>.</p></td>
     </tr>
     <tr>
-      <th>conf.level</th>
-      <td><p>Scalar between 0 and 1. If unspecified, the defaults return
-<code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
-    </tr>
-    <tr>
-      <th>conf.type</th>
-      <td><p>A vector of character strings representing the type of
-intervals required. The value should be any subset of the values <code>"norm"</code>,
-<code>"basic"</code>, <code>"perc"</code>, <code>"bca"</code>. For more, see <code><a href='https://rdrr.io/pkg/boot/man/boot.ci.html'>?boot::boot.ci</a></code>.</p></td>
-    </tr>
-    <tr>
       <th>bias.correct</th>
       <td><p>If <code>TRUE</code> (default), a bias correction will be applied to
 Cramer's <em>V</em>.</p></td>
-    </tr>
-    <tr>
-      <th>k</th>
-      <td><p>Number of digits after decimal point (should be an integer)
-(Default: <code>k = 2</code>).</p></td>
     </tr>
     <tr>
       <th>...</th>

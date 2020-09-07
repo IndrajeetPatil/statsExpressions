@@ -154,7 +154,7 @@
     <p>Making expression containing Bayesian <em>t</em>-test results</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expr_t_bayes</span>(<span class='kw'>data</span>, <span class='kw'>x</span>, <span class='kw'>y</span>, bf.prior = <span class='fl'>0.707</span>, paired = <span class='fl'>FALSE</span>, k = <span class='fl'>2</span>, <span class='kw'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>expr_t_bayes</span>(<span class='kw'>data</span>, <span class='kw'>x</span>, <span class='kw'>y</span>, paired = <span class='fl'>FALSE</span>, k = <span class='fl'>2L</span>, bf.prior = <span class='fl'>0.707</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -174,11 +174,6 @@ be taken. A matrix or tables will <strong>not</strong> be accepted.</p></td>
 dataframe <code>data</code>.</p></td>
     </tr>
     <tr>
-      <th>bf.prior</th>
-      <td><p>A number between <code>0.5</code> and <code>2</code> (default <code>0.707</code>), the prior
-width to use in calculating Bayes factors.</p></td>
-    </tr>
-    <tr>
       <th>paired</th>
       <td><p>Logical that decides whether the experimental design is
 repeated measures/within-subjects or between-subjects. The default is
@@ -188,6 +183,11 @@ repeated measures/within-subjects or between-subjects. The default is
       <th>k</th>
       <td><p>Number of digits after decimal point (should be an integer)
 (Default: <code>k = 2</code>).</p></td>
+    </tr>
+    <tr>
+      <th>bf.prior</th>
+      <td><p>A number between <code>0.5</code> and <code>2</code> (default <code>0.707</code>), the prior
+width to use in calculating Bayes factors.</p></td>
     </tr>
     <tr>
       <th>...</th>

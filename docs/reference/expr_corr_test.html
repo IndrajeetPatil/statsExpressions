@@ -158,11 +158,11 @@
   <span class='kw'>data</span>,
   <span class='kw'>x</span>,
   <span class='kw'>y</span>,
+  k = <span class='fl'>2L</span>,
+  conf.level = <span class='fl'>0.95</span>,
   beta = <span class='fl'>0.1</span>,
   type = <span class='st'>"parametric"</span>,
   bf.prior = <span class='fl'>0.707</span>,
-  conf.level = <span class='fl'>0.95</span>,
-  k = <span class='fl'>2L</span>,
   stat.title = <span class='kw'>NULL</span>,
   <span class='kw'>...</span>
 )</pre>
@@ -188,6 +188,16 @@ be plotted on the <code>y</code>-axis. Can be entered either as a character stri
 (e.g., <code>"y"</code>) or as a bare expression (e.g, <code>y</code>).</p></td>
     </tr>
     <tr>
+      <th>k</th>
+      <td><p>Number of digits after decimal point (should be an integer)
+(Default: <code>k = 2</code>).</p></td>
+    </tr>
+    <tr>
+      <th>conf.level</th>
+      <td><p>Scalar between 0 and 1. If unspecified, the defaults return
+<code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
+    </tr>
+    <tr>
       <th>beta</th>
       <td><p>bending constant (Default: <code>0.1</code>). For more, see <code><a href='https://rdrr.io/pkg/WRS2/man/pbcor.html'>?WRS2::pbcor</a></code>.</p></td>
     </tr>
@@ -205,16 +215,6 @@ parametric/pearson), <code>"np"</code> (nonparametric/spearman), <code>"r"</code
       <th>bf.prior</th>
       <td><p>A number between <code>0.5</code> and <code>2</code> (default <code>0.707</code>), the prior
 width to use in calculating Bayes factors.</p></td>
-    </tr>
-    <tr>
-      <th>conf.level</th>
-      <td><p>Scalar between 0 and 1. If unspecified, the defaults return
-<code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
-    </tr>
-    <tr>
-      <th>k</th>
-      <td><p>Number of digits after decimal point (should be an integer)
-(Default: <code>k = 2</code>).</p></td>
     </tr>
     <tr>
       <th>stat.title</th>

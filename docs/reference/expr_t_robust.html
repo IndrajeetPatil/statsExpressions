@@ -158,11 +158,11 @@
   <span class='kw'>data</span>,
   <span class='kw'>x</span>,
   <span class='kw'>y</span>,
-  tr = <span class='fl'>0.1</span>,
   paired = <span class='fl'>FALSE</span>,
-  conf.level = <span class='fl'>0.95</span>,
-  nboot = <span class='fl'>100</span>,
   k = <span class='fl'>2L</span>,
+  conf.level = <span class='fl'>0.95</span>,
+  tr = <span class='fl'>0.1</span>,
+  nboot = <span class='fl'>100</span>,
   stat.title = <span class='kw'>NULL</span>,
   <span class='kw'>...</span>
 )</pre>
@@ -185,6 +185,22 @@ be taken. A matrix or tables will <strong>not</strong> be accepted.</p></td>
 dataframe <code>data</code>.</p></td>
     </tr>
     <tr>
+      <th>paired</th>
+      <td><p>Logical that decides whether the experimental design is
+repeated measures/within-subjects or between-subjects. The default is
+<code>FALSE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>k</th>
+      <td><p>Number of digits after decimal point (should be an integer)
+(Default: <code>k = 2</code>).</p></td>
+    </tr>
+    <tr>
+      <th>conf.level</th>
+      <td><p>Scalar between 0 and 1. If unspecified, the defaults return
+<code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
+    </tr>
+    <tr>
       <th>tr</th>
       <td><p>Trim level for the mean when carrying out <code>robust</code> tests. If you
 get error stating "Standard error cannot be computed because of Winsorized
@@ -193,25 +209,9 @@ try to play around with the value of <code>tr</code>, which is by default set to
 <code>0.1</code>. Lowering the value might help.</p></td>
     </tr>
     <tr>
-      <th>paired</th>
-      <td><p>Logical that decides whether the experimental design is
-repeated measures/within-subjects or between-subjects. The default is
-<code>FALSE</code>.</p></td>
-    </tr>
-    <tr>
-      <th>conf.level</th>
-      <td><p>Scalar between 0 and 1. If unspecified, the defaults return
-<code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
-    </tr>
-    <tr>
       <th>nboot</th>
       <td><p>Number of bootstrap samples for computing confidence interval
 for the effect size (Default: <code>100</code>).</p></td>
-    </tr>
-    <tr>
-      <th>k</th>
-      <td><p>Number of digits after decimal point (should be an integer)
-(Default: <code>k = 2</code>).</p></td>
     </tr>
     <tr>
       <th>stat.title</th>

@@ -9,12 +9,12 @@ expr_anova_parametric(
   x,
   y,
   paired = FALSE,
+  k = 2L,
+  conf.level = 0.95,
   effsize.type = "unbiased",
   partial = TRUE,
-  conf.level = 0.95,
   var.equal = FALSE,
   sphericity.correction = TRUE,
-  k = 2L,
   stat.title = NULL,
   ...
 )
@@ -32,6 +32,12 @@ dataframe \code{data}.}
 repeated measures/within-subjects or between-subjects. The default is
 \code{FALSE}.}
 
+\item{k}{Number of digits after decimal point (should be an integer)
+(Default: \code{k = 2}).}
+
+\item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
+\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
+
 \item{effsize.type}{Type of effect size needed for \emph{parametric} tests. The
 argument can be \code{"biased"} (equivalent to \code{"d"} for Cohen's \emph{d} for
 \strong{t-test}; \code{"partial_eta"} for partial eta-squared for \strong{anova}) or
@@ -39,9 +45,6 @@ argument can be \code{"biased"} (equivalent to \code{"d"} for Cohen's \emph{d} f
 \code{"partial_omega"} for partial omega-squared for \strong{anova})).}
 
 \item{partial}{If \code{TRUE}, return partial indices.}
-
-\item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
 
 \item{var.equal}{a logical variable indicating whether to treat the
     variances in the samples as equal.  If \code{TRUE}, then a simple F
@@ -53,9 +56,6 @@ argument can be \code{"biased"} (equivalent to \code{"d"} for Cohen's \emph{d} f
 \item{sphericity.correction}{Logical that decides whether to apply correction
 to account for violation of sphericity in a repeated measures design ANOVA
 (Default: \code{TRUE}).}
-
-\item{k}{Number of digits after decimal point (should be an integer)
-(Default: \code{k = 2}).}
 
 \item{stat.title}{A character describing the test being run, which will be
 added as a prefix in the subtitle. The default is \code{NULL}. An example of a

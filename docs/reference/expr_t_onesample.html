@@ -164,13 +164,13 @@ robust equivalents</p>
   <span class='kw'>x</span>,
   type = <span class='st'>"parametric"</span>,
   test.value = <span class='fl'>0</span>,
+  k = <span class='fl'>2L</span>,
+  conf.level = <span class='fl'>0.95</span>,
+  conf.type = <span class='st'>"norm"</span>,
   bf.prior = <span class='fl'>0.707</span>,
   robust.estimator = <span class='st'>"onestep"</span>,
   effsize.type = <span class='st'>"g"</span>,
-  conf.level = <span class='fl'>0.95</span>,
-  conf.type = <span class='st'>"norm"</span>,
-  nboot = <span class='fl'>100</span>,
-  k = <span class='fl'>2L</span>,
+  nboot = <span class='fl'>100L</span>,
   stat.title = <span class='kw'>NULL</span>,
   <span class='kw'>...</span>
 )</pre>
@@ -200,6 +200,22 @@ or <code>"robust"</code> or <code>"bayes"</code>).Corresponding abbreviations ar
 (Default: <code>0</code>).</p></td>
     </tr>
     <tr>
+      <th>k</th>
+      <td><p>Number of digits after decimal point (should be an integer)
+(Default: <code>k = 2</code>).</p></td>
+    </tr>
+    <tr>
+      <th>conf.level</th>
+      <td><p>Scalar between 0 and 1. If unspecified, the defaults return
+<code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
+    </tr>
+    <tr>
+      <th>conf.type</th>
+      <td><p>A vector of character strings representing the type of
+intervals required. The value should be any subset of the values <code>"norm"</code>,
+<code>"basic"</code>, <code>"perc"</code>, <code>"bca"</code>. For more, see <code><a href='https://rdrr.io/pkg/boot/man/boot.ci.html'>?boot::boot.ci</a></code>.</p></td>
+    </tr>
+    <tr>
       <th>bf.prior</th>
       <td><p>A number between <code>0.5</code> and <code>2</code> (default <code>0.707</code>), the prior
 width to use in calculating Bayes factors.</p></td>
@@ -216,25 +232,9 @@ width to use in calculating Bayes factors.</p></td>
 argument can be <code>"d"</code> (for Cohen's <em>d</em>) or <code>"g"</code> (for Hedge's <em>g</em>).</p></td>
     </tr>
     <tr>
-      <th>conf.level</th>
-      <td><p>Scalar between 0 and 1. If unspecified, the defaults return
-<code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
-    </tr>
-    <tr>
-      <th>conf.type</th>
-      <td><p>A vector of character strings representing the type of
-intervals required. The value should be any subset of the values <code>"norm"</code>,
-<code>"basic"</code>, <code>"perc"</code>, <code>"bca"</code>. For more, see <code><a href='https://rdrr.io/pkg/boot/man/boot.ci.html'>?boot::boot.ci</a></code>.</p></td>
-    </tr>
-    <tr>
       <th>nboot</th>
       <td><p>Number of bootstrap samples for computing confidence interval
 for the effect size (Default: <code>100</code>).</p></td>
-    </tr>
-    <tr>
-      <th>k</th>
-      <td><p>Number of digits after decimal point (should be an integer)
-(Default: <code>k = 2</code>).</p></td>
     </tr>
     <tr>
       <th>stat.title</th>

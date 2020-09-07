@@ -4,7 +4,7 @@
 \alias{expr_t_bayes}
 \title{Making expression containing Bayesian \emph{t}-test results}
 \usage{
-expr_t_bayes(data, x, y, bf.prior = 0.707, paired = FALSE, k = 2, ...)
+expr_t_bayes(data, x, y, paired = FALSE, k = 2L, bf.prior = 0.707, ...)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to
@@ -15,15 +15,15 @@ be taken. A matrix or tables will \strong{not} be accepted.}
 \item{y}{The response (a.k.a. outcome or dependent) variable from the
 dataframe \code{data}.}
 
-\item{bf.prior}{A number between \code{0.5} and \code{2} (default \code{0.707}), the prior
-width to use in calculating Bayes factors.}
-
 \item{paired}{Logical that decides whether the experimental design is
 repeated measures/within-subjects or between-subjects. The default is
 \code{FALSE}.}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2}).}
+
+\item{bf.prior}{A number between \code{0.5} and \code{2} (default \code{0.707}), the prior
+width to use in calculating Bayes factors.}
 
 \item{...}{Additional arguments (currently ignored).}
 }

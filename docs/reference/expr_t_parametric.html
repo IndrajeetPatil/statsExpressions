@@ -159,10 +159,10 @@
   <span class='kw'>x</span>,
   <span class='kw'>y</span>,
   paired = <span class='fl'>FALSE</span>,
-  effsize.type = <span class='st'>"g"</span>,
+  k = <span class='fl'>2L</span>,
   conf.level = <span class='fl'>0.95</span>,
+  effsize.type = <span class='st'>"g"</span>,
   var.equal = <span class='fl'>FALSE</span>,
-  k = <span class='fl'>2</span>,
   stat.title = <span class='kw'>NULL</span>,
   <span class='kw'>...</span>
 )</pre>
@@ -191,14 +191,19 @@ repeated measures/within-subjects or between-subjects. The default is
 <code>FALSE</code>.</p></td>
     </tr>
     <tr>
-      <th>effsize.type</th>
-      <td><p>Type of effect size needed for <em>parametric</em> tests. The
-argument can be <code>"d"</code> (for Cohen's <em>d</em>) or <code>"g"</code> (for Hedge's <em>g</em>).</p></td>
+      <th>k</th>
+      <td><p>Number of digits after decimal point (should be an integer)
+(Default: <code>k = 2</code>).</p></td>
     </tr>
     <tr>
       <th>conf.level</th>
       <td><p>Scalar between 0 and 1. If unspecified, the defaults return
 <code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
+    </tr>
+    <tr>
+      <th>effsize.type</th>
+      <td><p>Type of effect size needed for <em>parametric</em> tests. The
+argument can be <code>"d"</code> (for Cohen's <em>d</em>) or <code>"g"</code> (for Hedge's <em>g</em>).</p></td>
     </tr>
     <tr>
       <th>var.equal</th>
@@ -208,11 +213,6 @@ argument can be <code>"d"</code> (for Cohen's <em>d</em>) or <code>"g"</code> (f
     performed.  If <code>FALSE</code>, an approximate method of Welch (1951)
     is used, which generalizes the commonly known 2-sample Welch test to
     the case of arbitrarily many samples.</p></td>
-    </tr>
-    <tr>
-      <th>k</th>
-      <td><p>Number of digits after decimal point (should be an integer)
-(Default: <code>k = 2</code>).</p></td>
     </tr>
     <tr>
       <th>stat.title</th>
