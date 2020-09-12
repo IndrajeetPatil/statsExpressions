@@ -221,29 +221,16 @@ testthat::test_that(
       )
 
     # expected
+    set.seed(123)
     expected <-
-      ggplot2::expr(
-        paste(
-          "log"["e"],
-          "(BF"["10"],
-          ") = ",
-          "-0.425",
-          ", ",
-          widehat(italic(rho))["median"]^"posterior",
-          " = ",
-          "-0.211",
-          ", CI"["95%"]^"HDI",
-          " [",
-          "-0.474",
-          ", ",
-          "0.052",
-          "]",
-          ", ",
-          italic("r")["Cauchy"]^"JZS",
-          " = ",
-          "0.707"
-        )
-      )
+      tidyBF::bf_corr_test(
+        data = ggplot2::msleep,
+        x = names(ggplot2::msleep)[10],
+        y = sleep_rem,
+        type = "bf",
+        k = 3,
+        output = "h1"
+      )$expr
 
     # testing overall call
     testthat::expect_identical(using_function, expected)

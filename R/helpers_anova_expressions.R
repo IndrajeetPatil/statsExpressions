@@ -98,8 +98,7 @@ expr_anova_parametric <- function(data,
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
   # for paired designs, variance is going to be equal across grouping levels
-  if (isTRUE(paired)) var.equal <- TRUE
-  if (isFALSE(paired)) sphericity.correction <- FALSE
+  if (isTRUE(paired)) var.equal <- TRUE else sphericity.correction <- FALSE
 
   # determine number of decimal places for both degrees of freedom
   k.df1 <- ifelse(isTRUE(paired) && isTRUE(sphericity.correction), k, 0L)
@@ -170,14 +169,8 @@ expr_anova_parametric <- function(data,
     ez_df <-
       rlang::eval_tidy(rlang::expr(
         ez::ezANOVA(
-          data =
-            data %>%
-              dplyr::mutate_if(
-                .tbl = .,
-                .predicate = is.character,
-                .funs = as.factor
-              ) %>%
-              dplyr::mutate(.data = ., rowid = as.factor(rowid)),
+          data = dplyr::mutate_if(.tbl = data, .predicate = is.character, .funs = as.factor) %>%
+            dplyr::mutate(.data = ., rowid = as.factor(rowid)),
           dv = !!rlang::ensym(y),
           wid = rowid,
           within = !!rlang::ensym(x),
@@ -230,11 +223,7 @@ expr_anova_parametric <- function(data,
     # tidy up the stats object
     stats_df <-
       suppressMessages(broomExtra::tidy(stats_obj)) %>%
-      dplyr::rename(
-        .data = .,
-        parameter1 = dplyr::matches("^num"),
-        parameter2 = dplyr::matches("^den")
-      )
+      dplyr::rename(parameter1 = dplyr::matches("^num"), parameter2 = dplyr::matches("^den"))
 
     # creating a standardized dataframe with effect size and its CIs
     effsize_object <-
@@ -263,10 +252,8 @@ expr_anova_parametric <- function(data,
       ci = conf.level
     ) %>%
     broomExtra::easystats_to_tidy_names(.) %>%
-    # renaming to standard term 'estimate'
-    dplyr::rename(.data = ., estimate = dplyr::matches("eta|omega")) %>%
-    dplyr::filter(.data = ., !is.na(estimate)) %>%
-    dplyr::filter(.data = ., !grepl(pattern = "Residuals", x = term, ignore.case = TRUE))
+    dplyr::rename(estimate = dplyr::matches("eta|omega")) %>%
+    dplyr::filter(!is.na(estimate), !grepl(pattern = "Residuals", x = term, ignore.case = TRUE))
 
   # test details
   statistic.text <-

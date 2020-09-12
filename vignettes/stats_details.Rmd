@@ -195,10 +195,6 @@ Effect size | Small | Medium | Large | Range
 $\omega^2$ | 0.01 – < 0.06 | 0.06 – < 0.14 | ≥ 0.14 | [0,1]
 $\eta^2_p$ | 0.01 – < 0.06 | 0.06 – < 0.14 | ≥ 0.14 | [0,1]
 
-**Reference**: <br>
-
-- <http://imaging.mrc-cbu.cam.ac.uk/statswiki/FAQ/effectSize>
-
 ### non-parametric
 
 **Test**: Friedman's rank sum test <br>

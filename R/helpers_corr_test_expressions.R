@@ -92,11 +92,7 @@ expr_corr_test <- function(data,
         beta = beta
       ) %>%
       broomExtra::easystats_to_tidy_names(.) %>%
-      dplyr::rename_all(
-        .tbl = .,
-        .funs = dplyr::recode,
-        "df" = "parameter"
-      )
+      dplyr::rename_all(.tbl = ., .funs = dplyr::recode, "df" = "parameter")
 
     # effect size dataframe is the same one
     effsize_df <- stats_df
@@ -113,7 +109,6 @@ expr_corr_test <- function(data,
 
   if (stats_type == "nonparametric") {
     stats_df %<>% dplyr::mutate(.data = ., statistic = log(statistic))
-
     no.parameters <- 0L
     statistic.text <- quote("log"["e"](italic("S")))
     effsize.text <- quote(widehat(italic(rho))["Spearman"])

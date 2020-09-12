@@ -22,7 +22,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R Under development (unstable) (2020-09-04 r79137)",
+  "runtimePlatform": "R Under development (unstable) (2020-09-11 r79188)",
   "author": [
     {
       "@type": "Person",
@@ -333,6 +333,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3809.441KB",
+  "fileSize": "3808.79KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }
