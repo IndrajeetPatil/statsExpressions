@@ -28,7 +28,7 @@ prior probability density function is defined via \code{\link[metaBMA]{prior}}.}
 probability density function is defined via \code{\link[metaBMA]{prior}}.}
 
 \item{k}{Number of digits after decimal point (should be an integer)
-(Default: \code{k = 2}).}
+(Default: \code{k = 2L}).}
 
 \item{messages}{Deprecated. Retained only for backward compatibility.}
 

@@ -222,17 +222,28 @@ testthat::test_that(
 
     # expected
     expected <-
-      ggplot2::expr(paste(
-        "In favor of alternative: ",
-        "log"["e"],
-        "(BF"["10"],
-        ") = ",
-        "-0.425",
-        ", ",
-        italic("r")["Cauchy"]^"JZS",
-        " = ",
-        "0.707"
-      ))
+      ggplot2::expr(
+        paste(
+          "log"["e"],
+          "(BF"["10"],
+          ") = ",
+          "-0.425",
+          ", ",
+          widehat(italic(rho))["median"]^"posterior",
+          " = ",
+          "-0.211",
+          ", CI"["95%"]^"HDI",
+          " [",
+          "-0.474",
+          ", ",
+          "0.052",
+          "]",
+          ", ",
+          italic("r")["Cauchy"]^"JZS",
+          " = ",
+          "0.707"
+        )
+      )
 
     # testing overall call
     testthat::expect_identical(using_function, expected)

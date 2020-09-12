@@ -41,6 +41,6 @@ testthat::test_that(
       ))
 
     # test
-    testthat::expect_identical(as.character(results1$expr)[6], "7.513")
+    testthat::expect_identical(as.character(results1)[5], "7.513")
   }
 )

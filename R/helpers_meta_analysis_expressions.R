@@ -282,5 +282,5 @@ expr_meta_bayes <- function(data,
     k = k,
     caption = NULL,
     output = "h1"
-  )
+  )$expr
 }

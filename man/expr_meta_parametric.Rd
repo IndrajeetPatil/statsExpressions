@@ -22,7 +22,7 @@ two columns will be used for \code{yi}  and \code{sei} arguments in \code{metafo
 (for parametric analysis) or \code{metaplus::metaplus} (for robust analysis).}
 
 \item{k}{Number of digits after decimal point (should be an integer)
-(Default: \code{k = 2}).}
+(Default: \code{k = 2L}).}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} lower and upper confidence intervals (\code{0.95}).}

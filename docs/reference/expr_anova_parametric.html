@@ -89,7 +89,7 @@ using effectsize::eta_squared and effectsize::omega_squared functions." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.4.3</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.5.0</span>
       </span>
     </div>
 
@@ -157,18 +157,18 @@ using <code><a href='https://rdrr.io/pkg/effectsize/man/eta_squared.html'>effect
     </div>
 
     <pre class="usage"><span class='fu'>expr_anova_parametric</span>(
-  <span class='kw'>data</span>,
-  <span class='kw'>x</span>,
-  <span class='kw'>y</span>,
-  paired = <span class='fl'>FALSE</span>,
-  k = <span class='fl'>2L</span>,
-  conf.level = <span class='fl'>0.95</span>,
-  effsize.type = <span class='st'>"unbiased"</span>,
-  partial = <span class='fl'>TRUE</span>,
-  var.equal = <span class='fl'>FALSE</span>,
-  sphericity.correction = <span class='fl'>TRUE</span>,
-  stat.title = <span class='kw'>NULL</span>,
-  <span class='kw'>...</span>
+  <span class='no'>data</span>,
+  <span class='no'>x</span>,
+  <span class='no'>y</span>,
+  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
+  <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
+  <span class='kw'>effsize.type</span> <span class='kw'>=</span> <span class='st'>"unbiased"</span>,
+  <span class='kw'>partial</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>sphericity.correction</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>stat.title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -256,50 +256,47 @@ omega-squared and partial eta-squared are supported.</p>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='co'># for reproducibility</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://indrajeetpatil.github.io/statsExpressions'>statsExpressions</a></span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>statsExpressions</span>)
 
 <span class='co'># -------------------- between-subjects ------------------------------</span>
 
 <span class='co'># with defaults</span>
-<span class='kw'>statsExpressions</span>::<span class='fu'>expr_anova_parametric</span>(
-  data = <span class='kw'>ggplot2</span>::<span class='kw'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
-  x = <span class='kw'>vore</span>,
-  y = <span class='kw'>sleep_rem</span>,
-  paired = <span class='fl'>FALSE</span>,
-  k = <span class='fl'>3</span>
-)
-</div><div class='output co'>#&gt; paste(NULL, italic("F")["Welch"], "(", "3", ",", "11.101", ") = ", 
+<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_anova_parametric</span>(
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
+  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>vore</span>,
+  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>sleep_rem</span>,
+  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>
+)</div><div class='output co'>#&gt; paste(NULL, italic("F")["Welch"], "(", "3", ",", "11.101", ") = ", 
 #&gt;     "2.633", ", ", italic("p"), " = ", "0.102", ", ", widehat(omega["p"]^2), 
 #&gt;     " = ", "0.144", ", CI"["95%"], " [", "-0.042", ", ", "0.314", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 56L)</div><div class='input'>
 <span class='co'># modifying the defaults</span>
-<span class='kw'>statsExpressions</span>::<span class='fu'>expr_anova_parametric</span>(
-  data = <span class='kw'>ggplot2</span>::<span class='kw'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
-  x = <span class='kw'>vore</span>,
-  y = <span class='kw'>sleep_rem</span>,
-  paired = <span class='fl'>FALSE</span>,
-  effsize.type = <span class='st'>"eta"</span>,
-  partial = <span class='fl'>FALSE</span>,
-  var.equal = <span class='fl'>TRUE</span>
-)
-</div><div class='output co'>#&gt; paste(NULL, italic("F")["Fisher"], "(", "3", ",", "52", ") = ", 
+<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_anova_parametric</span>(
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
+  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>vore</span>,
+  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>sleep_rem</span>,
+  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>effsize.type</span> <span class='kw'>=</span> <span class='st'>"eta"</span>,
+  <span class='kw'>partial</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</div><div class='output co'>#&gt; paste(NULL, italic("F")["Fisher"], "(", "3", ",", "52", ") = ", 
 #&gt;     "4.14", ", ", italic("p"), " = ", "0.011", ", ", widehat(eta^2), 
 #&gt;     " = ", "0.19", ", CI"["95%"], " [", "0.01", ", ", "0.36", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 56L)</div><div class='input'>
 <span class='co'># -------------------- repeated measures ------------------------------</span>
 
-<span class='kw'>statsExpressions</span>::<span class='fu'>expr_anova_parametric</span>(
-  data = <span class='kw'>iris_long</span>,
-  x = <span class='kw'>condition</span>,
-  y = <span class='kw'>value</span>,
-  paired = <span class='fl'>TRUE</span>,
-  k = <span class='fl'>4</span>
-)
-</div><div class='output co'>#&gt; paste(NULL, italic("F")["Fisher"], "(", "1.1491", ",", "171.2174", 
+<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_anova_parametric</span>(
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris_long</span>,
+  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>condition</span>,
+  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>value</span>,
+  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>4</span>
+)</div><div class='output co'>#&gt; paste(NULL, italic("F")["Fisher"], "(", "1.1491", ",", "171.2174", 
 #&gt;     ") = ", "776.3182", ", ", italic("p"), " = ", "&lt; 0.001", 
 #&gt;     ", ", widehat(omega["p"]^2), " = ", "0.8376", ", CI"["95%"], 
 #&gt;     " [", "0.8143", ", ", "0.8567", "]", ", ", italic("n")["pairs"], 
-#&gt;     " = ", 150L)</div><div class='input'><span class='co'># }</span>
+#&gt;     " = ", 150L)</div><div class='input'># }
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -316,7 +313,7 @@ omega-squared and partial eta-squared are supported.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

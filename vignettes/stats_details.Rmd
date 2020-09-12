@@ -235,10 +235,6 @@ $\omega^2$ | 0.01 – < 0.06 | 0.06 – < 0.14 | ≥ 0.14 | [0,1]
 $\eta^2_p$ | 0.01 – < 0.06 | 0.06 – < 0.14 | ≥ 0.14 | [0,1]
 $\omega^2_p$ | 0.01 – < 0.06 | 0.06 – < 0.14 | ≥ 0.14 | [0,1]
 
-**Reference**: <br>
-
-- <http://www.psy.gla.ac.uk/~steve/best/effect.html>
-
 ### non-parametric
 
 **Test**: Kruskal–Wallis test <br>

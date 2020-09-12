@@ -270,17 +270,14 @@ testthat::test_that(
     # expected output
     set.seed(123)
     results <-
-      ggplot2::expr(paste(
-        "In favor of alternative: ",
-        "log"["e"],
-        "(BF"["10"],
-        ") = ",
-        "-0.80",
-        ", ",
-        italic("r")["Cauchy"]^"JZS",
-        " = ",
-        "0.71"
-      ))
+      tidyBF::bf_ttest(
+        data = anscombe,
+        x = "x2",
+        test.value = 8,
+        type = "bf",
+        messages = FALSE,
+        output = "h1"
+      )$expr
 
     # testing overall call
     testthat::expect_identical(using_function, results)
@@ -298,20 +295,17 @@ testthat::test_that(
       )
 
     # expected result
+    set.seed(123)
     results2 <-
-      ggplot2::expr(
-        paste(
-          "In favor of alternative: ",
-          "log"["e"],
-          "(BF"["10"],
-          ") = ",
-          "-1.8967",
-          ", ",
-          italic("r")["Cauchy"]^"JZS",
-          " = ",
-          "0.7070"
-        )
-      )
+      tidyBF::bf_ttest(
+        data = ggplot2::msleep,
+        x = "brainwt",
+        test.value = 0.25,
+        type = "bf",
+        k = 4,
+        messages = FALSE,
+        output = "h1"
+      )$expr
 
     # testing overall call
     testthat::expect_identical(using_function2, results2)

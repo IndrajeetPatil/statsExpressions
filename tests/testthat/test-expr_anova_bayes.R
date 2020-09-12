@@ -18,17 +18,14 @@ testthat::test_that(
 
     # expected output
     results1 <-
-      ggplot2::expr(paste(
-        "In favor of alternative: ",
-        "log"["e"],
-        "(BF"["10"],
-        ") = ",
-        "93.14228",
-        ", ",
-        italic("r")["Cauchy"]^"JZS",
-        " = ",
-        "0.80000"
-      ))
+      tidyBF::bf_oneway_anova(
+        data = statsExpressions::movies_long,
+        x = genre,
+        y = rating,
+        k = 5,
+        bf.prior = 0.8,
+        output = "h1"
+      )$expr
 
     # testing overall call
     testthat::expect_identical(using_function1, results1)
@@ -54,18 +51,16 @@ testthat::test_that(
       )
 
     # expected output
+    set.seed(123)
     results1 <-
-      ggplot2::expr(paste(
-        "In favor of alternative: ",
-        "log"["e"],
-        "(BF"["10"],
-        ") = ",
-        "2.115",
-        ", ",
-        italic("r")["Cauchy"]^"JZS",
-        " = ",
-        "0.707"
-      ))
+      tidyBF::bf_oneway_anova(
+        data = WRS2::WineTasting,
+        x = Wine,
+        y = Taste,
+        paired = TRUE,
+        k = 3,
+        output = "h1"
+      )$expr
 
     # testing overall call
     testthat::expect_identical(using_function1, results1)
@@ -91,18 +86,16 @@ testthat::test_that(
       )
 
     # expected output
+    set.seed(123)
     results1 <-
-      ggplot2::expr(paste(
-        "In favor of alternative: ",
-        "log"["e"],
-        "(BF"["10"],
-        ") = ",
-        "21.040",
-        ", ",
-        italic("r")["Cauchy"]^"JZS",
-        " = ",
-        "0.707"
-      ))
+      tidyBF::bf_oneway_anova(
+        data = statsExpressions::bugs_long,
+        x = condition,
+        y = desire,
+        paired = TRUE,
+        k = 3,
+        output = "h1"
+      )$expr
 
     # testing overall call
     testthat::expect_identical(using_function1, results1)

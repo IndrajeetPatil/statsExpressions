@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Making expression containing Bayesian t-test results — expr_t_bayes • statsExpressions</title>
+<title>Making expression containing Bayesian <em>t</em>-test results — expr_t_bayes • statsExpressions</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,7 +54,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Making expression containing Bayesian t-test results — expr_t_bayes" />
+<meta property="og:title" content="Making expression containing Bayesian <em>t</em>-test results — expr_t_bayes" />
 <meta property="og:description" content="Making expression containing Bayesian t-test results" />
 <meta property="og:image" content="https://indrajeetpatil.github.io/statsExpressions/logo.png" />
 
@@ -88,7 +88,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.4.3</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.5.0</span>
       </span>
     </div>
 
@@ -154,7 +154,7 @@
     <p>Making expression containing Bayesian <em>t</em>-test results</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expr_t_bayes</span>(<span class='kw'>data</span>, <span class='kw'>x</span>, <span class='kw'>y</span>, paired = <span class='fl'>FALSE</span>, k = <span class='fl'>2L</span>, bf.prior = <span class='fl'>0.707</span>, <span class='kw'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>expr_t_bayes</span>(<span class='no'>data</span>, <span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>bf.prior</span> <span class='kw'>=</span> <span class='fl'>0.707</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -207,24 +207,24 @@ width to use in calculating Bayes factors.</p></td>
 
 <span class='co'># ------------- between-subjects design --------------------------</span>
 
-<span class='kw'>statsExpressions</span>::<span class='fu'>expr_t_bayes</span>(
-  data = <span class='kw'>mtcars</span>,
-  x = <span class='kw'>am</span>,
-  y = <span class='kw'>wt</span>,
-  paired = <span class='fl'>FALSE</span>
-)
-</div><div class='output co'>#&gt; paste("In favor of alternative: ", "log"["e"], "(BF"["10"], ") = ", 
-#&gt;     "7.23", ", ", italic("r")["Cauchy"]^"JZS", " = ", "0.71")</div><div class='input'>
+<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_bayes</span>(
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>,
+  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>am</span>,
+  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>wt</span>,
+  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</div><div class='output co'>#&gt; paste("log"["e"], "(BF"["10"], ") = ", "7.23", ", ", widehat(italic(d))["median"]^"posterior", 
+#&gt;     " = ", "1.26", ", CI"["95%"]^"HDI", " [", "0.72", ", ", "1.79", 
+#&gt;     "]", ", ", italic("r")["Cauchy"]^"JZS", " = ", "0.71")</div><div class='input'>
 <span class='co'># ------------- within-subjects design -----------------------------</span>
 
-<span class='kw'>statsExpressions</span>::<span class='fu'>expr_t_bayes</span>(
-  data = <span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='kw'>bugs_long</span>, <span class='kw'>condition</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"LDLF"</span>, <span class='st'>"LDHF"</span>)),
-  x = <span class='kw'>condition</span>,
-  y = <span class='kw'>desire</span>,
-  paired = <span class='fl'>TRUE</span>
-)
-</div><div class='output co'>#&gt; paste("In favor of alternative: ", "log"["e"], "(BF"["10"], ") = ", 
-#&gt;     "15.38", ", ", italic("r")["Cauchy"]^"JZS", " = ", "0.71")</div><div class='input'><span class='co'># }</span>
+<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_t_bayes</span>(
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>bugs_long</span>, <span class='no'>condition</span> <span class='kw'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"LDLF"</span>, <span class='st'>"LDHF"</span>)),
+  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>condition</span>,
+  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>desire</span>,
+  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</div><div class='output co'>#&gt; paste("log"["e"], "(BF"["10"], ") = ", "15.38", ", ", widehat(italic(d))["median"]^"posterior", 
+#&gt;     " = ", "5.74", ", CI"["95%"]^"HDI", " [", "4.25", ", ", "7.73", 
+#&gt;     "]", ", ", italic("r")["Cauchy"]^"JZS", " = ", "0.71")</div><div class='input'># }
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -241,7 +241,7 @@ width to use in calculating Bayes factors.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

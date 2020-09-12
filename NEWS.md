@@ -1,5 +1,7 @@
-# statsExpressions 0.4.3
+# statsExpressions 0.5.0
 
+  - Adapts to changes made in `tidyBF` package.
+  
   - Re-exports `correlation::correlation` needed for `ggstatsplot`.
 
 # statsExpressions 0.4.2

@@ -18,7 +18,7 @@ The type of random effects distribution. One of "normal","t-dist","mixture", for
 }
 
 \item{k}{Number of digits after decimal point (should be an integer)
-(Default: \code{k = 2}).}
+(Default: \code{k = 2L}).}
 
 \item{messages}{Deprecated. Retained only for backward compatibility.}
 

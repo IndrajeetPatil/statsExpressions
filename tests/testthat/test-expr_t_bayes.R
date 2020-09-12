@@ -5,7 +5,7 @@ testthat::test_that(
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
-    # ggstatsplot output
+    # statsExpressions output
     set.seed(123)
     using_function <-
       statsExpressions::expr_t_bayes(
@@ -14,24 +14,20 @@ testthat::test_that(
         y = rating,
         bf.prior = .9,
         paired = FALSE,
-        k = 5,
-        messages = FALSE
+        k = 5
       )
 
-    # expected output
     set.seed(123)
     results <-
-      ggplot2::expr(paste(
-        "In favor of alternative: ",
-        "log"["e"],
-        "(BF"["10"],
-        ") = ",
-        "47.76267",
-        ", ",
-        italic("r")["Cauchy"]^"JZS",
-        " = ",
-        "0.90000"
-      ))
+      tidyBF::bf_ttest(
+        data = dplyr::filter(movies_long, genre == "Action" | genre == "Drama"),
+        x = "genre",
+        y = rating,
+        bf.prior = .9,
+        paired = FALSE,
+        k = 5,
+        output = "h1"
+      )$expr
 
     # testing overall call
     testthat::expect_identical(using_function, results)
@@ -43,7 +39,7 @@ testthat::test_that(
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
-    # ggstatsplot output
+    # statsExpressions output
     set.seed(123)
     using_function <-
       statsExpressions::expr_t_bayes(
@@ -59,17 +55,16 @@ testthat::test_that(
     # expected output
     set.seed(123)
     results <-
-      ggplot2::expr(paste(
-        "In favor of alternative: ",
-        "log"["e"],
-        "(BF"["10"],
-        ") = ",
-        "0.1836",
-        ", ",
-        italic("r")["Cauchy"]^"JZS",
-        " = ",
-        "0.8000"
-      ))
+      tidyBF::bf_ttest(
+        data = dplyr::filter(ggplot2::msleep, vore %in% c("omni", "carni")),
+        x = vore,
+        y = bodywt,
+        paired = FALSE,
+        bf.prior = 0.8,
+        k = 4,
+        messages = FALSE,
+        output = "h1"
+      )$expr
 
     # testing overall call
     testthat::expect_identical(using_function, results)
@@ -117,7 +112,7 @@ testthat::test_that(
         Typical:Odd
       )
 
-    # ggstatsplot output
+    # statsExpressions output
     set.seed(123)
     using_function <-
       statsExpressions::expr_t_bayes(
@@ -133,17 +128,16 @@ testthat::test_that(
     # expected output
     set.seed(123)
     results <-
-      ggplot2::expr(paste(
-        "In favor of alternative: ",
-        "log"["e"],
-        "(BF"["10"],
-        ") = ",
-        "3.59201",
-        ", ",
-        italic("r")["Cauchy"]^"JZS",
-        " = ",
-        "0.60000"
-      ))
+      tidyBF::bf_ttest(
+        data = df_bird,
+        x = type,
+        y = "length",
+        bf.prior = 0.6,
+        k = 5,
+        paired = TRUE,
+        messages = FALSE,
+        output = "h1"
+      )$expr
 
     # testing overall call
     testthat::expect_identical(using_function, results)
@@ -155,7 +149,7 @@ testthat::test_that(
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
-    # ggstatsplot output
+    # statsExpressions output
     set.seed(123)
     using_function <-
       statsExpressions::expr_t_bayes(
@@ -171,17 +165,16 @@ testthat::test_that(
     # expected output
     set.seed(123)
     results <-
-      ggplot2::expr(paste(
-        "In favor of alternative: ",
-        "log"["e"],
-        "(BF"["10"],
-        ") = ",
-        "3.1547",
-        ", ",
-        italic("r")["Cauchy"]^"JZS",
-        " = ",
-        "0.7700"
-      ))
+      tidyBF::bf_ttest(
+        data = dplyr::filter(statsExpressions::bugs_long, condition %in% c("LDLF", "HDLF")),
+        x = condition,
+        y = desire,
+        bf.prior = 0.77,
+        k = 4,
+        paired = TRUE,
+        messages = FALSE,
+        output = "h1"
+      )$expr
 
     # testing overall call
     testthat::expect_identical(using_function, results)
