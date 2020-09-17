@@ -83,8 +83,7 @@ statsExpressions::expr_t_robust(
   data = dplyr::filter(bugs_long, condition \%in\% c("LDLF", "LDHF")),
   x = condition,
   y = desire,
-  paired = TRUE,
-  nboot = 25
+  paired = TRUE
 )
 }
 }

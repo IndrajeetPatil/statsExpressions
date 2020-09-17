@@ -1,3 +1,5 @@
+# statsExpressions 0.5.0.9000
+
 # statsExpressions 0.5.0
 
   - Adapts to changes made in `tidyBF` package.

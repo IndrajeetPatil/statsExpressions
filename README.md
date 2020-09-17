@@ -1,4 +1,3 @@
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 `statsExpressions`: Expressions with statistical details
@@ -6,11 +5,11 @@
 
 | Package                                                                                                                                                                   | Status                                                                                                                                                                                                 | Usage                                                                                                                                                                              | GitHub                                                                                                                                                                   | References                                                                                                                                                                |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)                                  | [![Build Status](https://travis-ci.org/IndrajeetPatil/statsExpressions.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/statsExpressions)                                                      | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)                            | [![GitHub version](https://img.shields.io/badge/GitHub-0.4.3-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/statsExpressions/)                         | [![Website](https://img.shields.io/badge/website-statsExpressions-orange.svg?colorB=E91E63)](https://indrajeetpatil.github.io/statsExpressions/)                          |
+| [![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)                                    | [![Build Status](https://travis-ci.org/IndrajeetPatil/statsExpressions.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/statsExpressions)                                                      | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)                            | [![GitHub version](https://img.shields.io/badge/GitHub-0.4.3-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/statsExpressions/)                         | [![Website](https://img.shields.io/badge/website-statsExpressions-orange.svg?colorB=E91E63)](https://indrajeetpatil.github.io/statsExpressions/)                          |
 | [![CRAN Checks](https://cranchecks.info/badges/summary/statsExpressions)](https://cran.r-project.org/web/checks/check_results_statsExpressions.html)                      | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/statsExpressions?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/statsExpressions) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)                          | [![Forks](https://img.shields.io/badge/forks-8-blue.svg)](https://github.com/IndrajeetPatil/statsExpressions/)                                                           | [![Features](https://img.shields.io/badge/features-statsExpressions-orange.svg?colorB=2196F3)](https://indrajeetpatil.github.io/statsExpressions/reference/index.html)    |
 | [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)                                                                | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/)                                                                                         | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)                        | [![Github Issues](https://img.shields.io/badge/issues-6-red.svg)](https://github.com/IndrajeetPatil/statsExpressions/issues)                                             | [![vignettes](https://img.shields.io/badge/vignettes-0.4.3-orange.svg?colorB=FF5722)](https://CRAN.R-project.org/package=statsExpressions/vignettes/)                     |
 | [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/statsExpressions/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/statsExpressions?branch=master)             | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)                         | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/statsExpressions.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/statsExpressions) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2074621.svg)](https://doi.org/10.5281/zenodo.3386122)                                                                 |
-| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                          | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master)                   | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_03_22-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/blob/master/tests/README.md) | [![Last-changedate](https://img.shields.io/badge/last%20change-2020--09--12-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master)         | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master) |
+| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                          | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master)                   | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_03_22-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/blob/master/tests/README.md) | [![Last-changedate](https://img.shields.io/badge/last%20change-2020--09--16-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master)         | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master) |
 | [![status](https://tinyverse.netlify.com/badge/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)                                                    | [![R build status](https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions)                                            | [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/statsExpressions/community)                                                                       | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)                                                              | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/statsExpressions/issues)      |
 
 Introduction <img src="man/figures/logo.png" align="right" width="240" />
@@ -28,7 +27,9 @@ Installation
 
 To get the latest, stable `CRAN` release:
 
-    install.packages("statsExpressions")
+``` r
+install.packages("statsExpressions")
+```
 
 You can get the **development** version of the package from `GitHub`. To
 see what new changes (and bug fixes) have been made to the package since
@@ -38,23 +39,27 @@ here:
 
 If you are in hurry and want to reduce the time of installation, prefer-
 
-    # needed package to download from GitHub repo
-    install.packages("remotes")
+``` r
+# needed package to download from GitHub repo
+install.packages("remotes")
 
-    # downloading the package from GitHub
-    remotes::install_github(
-      repo = "IndrajeetPatil/statsExpressions", # package path on GitHub
-      dependencies = FALSE, # assumes you have already installed needed packages
-      quick = TRUE # skips docs, demos, and vignettes
-    )
+# downloading the package from GitHub
+remotes::install_github(
+  repo = "IndrajeetPatil/statsExpressions", # package path on GitHub
+  dependencies = FALSE, # assumes you have already installed needed packages
+  quick = TRUE # skips docs, demos, and vignettes
+)
+```
 
 If time is not a constraint-
 
-    remotes::install_github(
-      repo = "IndrajeetPatil/statsExpressions", # package path on GitHub
-      dependencies = TRUE, # installs packages which statsExpressions depends on
-      upgrade_dependencies = TRUE # updates any out of date dependencies
-    )
+``` r
+remotes::install_github(
+  repo = "IndrajeetPatil/statsExpressions", # package path on GitHub
+  dependencies = TRUE, # installs packages which statsExpressions depends on
+  upgrade_dependencies = TRUE # updates any out of date dependencies
+)
+```
 
 Citation
 ========
@@ -62,7 +67,9 @@ Citation
 If you want to cite this package in a scientific journal or in any other
 context, run the following code in your `R` console:
 
-    citation("statsExpressions")
+``` r
+citation("statsExpressions")
+```
 
 Documentation and Examples
 ==========================
@@ -132,67 +139,73 @@ Example: Expressions for one-way ANOVAs
 Let’s say we want to check differences in weight of the vehicle based on
 number of cylinders in the engine and wish to carry out Welch’s ANOVA:
 
-    # setup
-    set.seed(123)
-    library(ggplot2)
-    library(ggforce)
-    library(statsExpressions)
+``` r
+# setup
+set.seed(123)
+library(ggplot2)
+library(ggforce)
+library(statsExpressions)
 
-    # plot with subtitle
-    ggplot(iris, aes(x = Species, y = Sepal.Length)) +
-      geom_violin() +
-      geom_sina() +
-      labs(
-        title = "Fisher's one-way ANOVA",
-        subtitle = expr_anova_parametric(iris, Species, Sepal.Length, var.equal = TRUE)
-      )
+# plot with subtitle
+ggplot(iris, aes(x = Species, y = Sepal.Length)) +
+  geom_violin() +
+  geom_sina() +
+  labs(
+    title = "Fisher's one-way ANOVA",
+    subtitle = expr_anova_parametric(iris, Species, Sepal.Length, var.equal = TRUE)
+  )
+```
 
 <img src="man/figures/README-anova_parametric1-1.png" width="100%" />
 
 In case you change your mind and now want to carry out a robust ANOVA
 instead. Also, let’s use a different kind of a visualization:
 
-    # setup
-    set.seed(123)
-    library(ggplot2)
-    library(statsExpressions)
-    library(ggridges)
+``` r
+# setup
+set.seed(123)
+library(ggplot2)
+library(statsExpressions)
+library(ggridges)
 
-    # create a ridgeplot
-    ggplot(iris, aes(x = Sepal.Length, y = Species)) +
-      geom_density_ridges(
-        jittered_points = TRUE, quantile_lines = TRUE,
-        scale = 0.9, vline_size = 1, vline_color = "red",
-        position = position_raincloud(adjust_vlines = TRUE)
-      ) +
-      labs(
-        title = "A heteroscedastic one-way ANOVA for trimmed means",
-        subtitle = expr_anova_robust(iris, Species, Sepal.Length)
-      )
+# create a ridgeplot
+ggplot(iris, aes(x = Sepal.Length, y = Species)) +
+  geom_density_ridges(
+    jittered_points = TRUE, quantile_lines = TRUE,
+    scale = 0.9, vline_size = 1, vline_color = "red",
+    position = position_raincloud(adjust_vlines = TRUE)
+  ) +
+  labs(
+    title = "A heteroscedastic one-way ANOVA for trimmed means",
+    subtitle = expr_anova_robust(iris, Species, Sepal.Length)
+  )
+```
 
 <img src="man/figures/README-anova_rob1-1.png" width="100%" />
 
 Needless to say, you can also use these functions to display results in
 `ggplot`-extension packages. For example, `ggpubr`:
 
-    set.seed(123)
-    library(ggpubr)
-    library(ggplot2)
+``` r
+set.seed(123)
+library(ggpubr)
+library(ggplot2)
 
-    # plot
-    ggboxplot(
-      ToothGrowth,
-      x = "dose",
-      y = "len",
-      color = "dose",
-      palette = c("#00AFBB", "#E7B800", "#FC4E07"),
-      add = "jitter",
-      shape = "dose"
-    ) + # adding results from stats analysis using `statsExpressions`
-      labs(
-        title = "Kruskall-Wallis test",
-        subtitle = expr_anova_nonparametric(ToothGrowth, dose, len, type = "np")
-      )
+# plot
+ggboxplot(
+  ToothGrowth,
+  x = "dose",
+  y = "len",
+  color = "dose",
+  palette = c("#00AFBB", "#E7B800", "#FC4E07"),
+  add = "jitter",
+  shape = "dose"
+) + # adding results from stats analysis using `statsExpressions`
+  labs(
+    title = "Kruskall-Wallis test",
+    subtitle = expr_anova_nonparametric(ToothGrowth, dose, len, type = "np")
+  )
+```
 
 <img src="man/figures/README-ggpubr_anova-1.png" width="100%" />
 
@@ -200,19 +213,21 @@ Needless to say, you can also use these functions to display results in
 
 Let’s now see an example of a repeated measures one-way ANOVA.
 
-    # setup
-    set.seed(123)
-    library(ggplot2)
-    library(WRS2)
-    library(ggbeeswarm)
-    library(statsExpressions)
+``` r
+# setup
+set.seed(123)
+library(ggplot2)
+library(WRS2)
+library(ggbeeswarm)
+library(statsExpressions)
 
-    ggplot2::ggplot(WineTasting, aes(Wine, Taste, color = Wine)) +
-      geom_quasirandom() +
-      labs(
-        title = "Friedman's rank sum test",
-        subtitle = expr_anova_nonparametric(WineTasting, Wine, Taste, paired = TRUE, type = "np")
-      )
+ggplot2::ggplot(WineTasting, aes(Wine, Taste, color = Wine)) +
+  geom_quasirandom() +
+  labs(
+    title = "Friedman's rank sum test",
+    subtitle = expr_anova_nonparametric(WineTasting, Wine, Taste, paired = TRUE, type = "np")
+  )
+```
 
 <img src="man/figures/README-anova_parametric2-1.png" width="100%" />
 
@@ -221,82 +236,88 @@ Example: Expressions for two-sample tests
 
 ### Between-subjects design
 
-    # setup
-    set.seed(123)
-    library(ggplot2)
-    library(gghalves)
-    library(ggbeeswarm)
-    library(hrbrthemes)
-    library(statsExpressions)
+``` r
+# setup
+set.seed(123)
+library(ggplot2)
+library(gghalves)
+library(ggbeeswarm)
+library(hrbrthemes)
+library(statsExpressions)
 
-    # create a plot
-    ggplot(ToothGrowth, aes(supp, len)) +
-      geom_half_boxplot() +
-      geom_beeswarm(beeswarmArgs = list(side = 1)) +
-      theme_ipsum_rc() +
-      # adding a subtitle with
-      labs(
-        title = "Two-Sample Welch's t-test",
-        subtitle = expr_t_parametric(ToothGrowth, supp, len)
-      )
+# create a plot
+ggplot(ToothGrowth, aes(supp, len)) +
+  geom_half_boxplot() +
+  geom_beeswarm(beeswarmArgs = list(side = 1)) +
+  theme_ipsum_rc() +
+  # adding a subtitle with
+  labs(
+    title = "Two-Sample Welch's t-test",
+    subtitle = expr_t_parametric(ToothGrowth, supp, len)
+  )
+```
 
 <img src="man/figures/README-t_two-1.png" width="100%" />
 
 Example with `ggpubr`:
 
-    # setup
-    set.seed(123)
-    library(ggplot2)
-    library(ggpubr)
-    library(statsExpressions)
+``` r
+# setup
+set.seed(123)
+library(ggplot2)
+library(ggpubr)
+library(statsExpressions)
 
-    # basic plot
-    gghistogram(
-      data.frame(
+# basic plot
+gghistogram(
+  data.frame(
+    sex = factor(rep(c("F", "M"), each = 200)),
+    weight = c(rnorm(200, 55), rnorm(200, 58))
+  ),
+  x = "weight",
+  add = "mean",
+  rug = TRUE,
+  fill = "sex",
+  palette = c("#00AFBB", "#E7B800"),
+  add_density = TRUE
+) + # displaying stats results
+  labs(
+    title = "Yuen's two-sample test for trimmed means",
+    subtitle = expr_t_robust(
+      data = data.frame(
         sex = factor(rep(c("F", "M"), each = 200)),
         weight = c(rnorm(200, 55), rnorm(200, 58))
       ),
-      x = "weight",
-      add = "mean",
-      rug = TRUE,
-      fill = "sex",
-      palette = c("#00AFBB", "#E7B800"),
-      add_density = TRUE
-    ) + # displaying stats results
-      labs(
-        title = "Yuen's two-sample test for trimmed means",
-        subtitle = expr_t_robust(
-          data = data.frame(
-            sex = factor(rep(c("F", "M"), each = 200)),
-            weight = c(rnorm(200, 55), rnorm(200, 58))
-          ),
-          x = sex,
-          y = weight,
-          type = "robust",
-          messages = FALSE
-        )
-      )
+      x = sex,
+      y = weight,
+      type = "robust",
+      messages = FALSE
+    )
+  )
+```
 
 <img src="man/figures/README-t_two_ggpubr-1.png" width="100%" />
 
 Another example with `ggiraphExtra`:
 
-    # setup
-    set.seed(123)
-    library(ggplot2)
-    library(ggiraphExtra)
-    library(gcookbook)
-    library(statsExpressions)
+``` r
+# setup
+set.seed(123)
+library(ggplot2)
+library(ggiraphExtra)
+library(gcookbook)
+library(statsExpressions)
 
-    # plot
-    ggDot(heightweight, aes(sex, heightIn, fill = sex),
-      boxfill = "white",
-      binwidth = 0.4
-    ) +
-      labs(
-        title = "Wilcoxon two-sample test",
-        subtitle = expr_t_nonparametric(heightweight, sex, heightIn, type = "np")
-      )
+# plot
+ggDot(heightweight, aes(sex, heightIn, fill = sex),
+  boxfill = "white",
+  binwidth = 0.4
+) +
+  labs(
+    title = "Wilcoxon two-sample test",
+    subtitle = expr_t_nonparametric(heightweight, sex, heightIn, type = "np")
+  )
+```
 
 <img src="man/figures/README-t_ggiraphExtra-1.png" width="100%" />
 
@@ -305,46 +326,50 @@ Another example with `ggiraphExtra`:
 We can also have a look at a repeated measures design and the related
 expressions.
 
-    # setup
-    set.seed(123)
-    library(ggplot2)
-    library(statsExpressions)
-    library(tidyr)
-    library(PairedData)
-    data(PrisonStress)
+``` r
+# setup
+set.seed(123)
+library(ggplot2)
+library(statsExpressions)
+library(tidyr)
+library(PairedData)
+data(PrisonStress)
 
-    # plot
-    paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject") +
-      # `statsExpressions` needs data in the tidy format
-      labs(
-        title = "Two-sample Wilcoxon paired test",
-        subtitle = expr_t_nonparametric(
-          data = pivot_longer(PrisonStress, starts_with("PSS"), "PSS", values_to = "stress"),
-          x = PSS,
-          y = stress,
-          paired = TRUE
-        )
-      )
+# plot
+paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject") +
+  # `statsExpressions` needs data in the tidy format
+  labs(
+    title = "Two-sample Wilcoxon paired test",
+    subtitle = expr_t_nonparametric(
+      data = pivot_longer(PrisonStress, starts_with("PSS"), "PSS", values_to = "stress"),
+      x = PSS,
+      y = stress,
+      paired = TRUE
+    )
+  )
+```
 
 <img src="man/figures/README-t_two_paired1-1.png" width="100%" />
 
 Example: Expressions for one-sample tests
 -----------------------------------------
 
-    # setup
-    set.seed(123)
-    library(ggplot2)
-    library(statsExpressions)
+``` r
+# setup
+set.seed(123)
+library(ggplot2)
+library(statsExpressions)
 
-    # creating a histogram plot
-    ggplot(mtcars, aes(wt)) +
-      geom_histogram(alpha = 0.5) +
-      geom_vline(xintercept = mean(mtcars$wt), color = "red") +
-      # adding a caption with a non-parametric one-sample test
-      labs(
-        title = "One-Sample Wilcoxon Signed Rank Test",
-        subtitle = expr_t_onesample(mtcars, wt, test.value = 3, type = "nonparametric")
-      )
+# creating a histogram plot
+ggplot(mtcars, aes(wt)) +
+  geom_histogram(alpha = 0.5) +
+  geom_vline(xintercept = mean(mtcars$wt), color = "red") +
+  # adding a caption with a non-parametric one-sample test
+  labs(
+    title = "One-Sample Wilcoxon Signed Rank Test",
+    subtitle = expr_t_onesample(mtcars, wt, test.value = 3, type = "nonparametric")
+  )
+```
 
 <img src="man/figures/README-t_one-1.png" width="100%" />
 
@@ -353,19 +378,21 @@ Example: Expressions for correlation analyses
 
 Let’s look at another example where we want to run correlation analysis:
 
-    # setup
-    set.seed(123)
-    library(ggplot2)
-    library(statsExpressions)
+``` r
+# setup
+set.seed(123)
+library(ggplot2)
+library(statsExpressions)
 
-    # create a ridgeplot
-    ggplot(mtcars, aes(mpg, wt)) +
-      geom_point() +
-      geom_smooth(method = "lm") +
-      labs(
-        title = "Spearman's rank correlation coefficient",
-        subtitle = expr_corr_test(mtcars, mpg, wt, type = "nonparametric")
-      )
+# create a ridgeplot
+ggplot(mtcars, aes(mpg, wt)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(
+    title = "Spearman's rank correlation coefficient",
+    subtitle = expr_corr_test(mtcars, mpg, wt, type = "nonparametric")
+  )
+```
 
 <img src="man/figures/README-corr-1.png" width="100%" />
 
@@ -374,87 +401,95 @@ Example: Expressions for contingency table analysis
 
 For categorical/nominal data - one-sample:
 
-    # setup
-    set.seed(123)
-    library(ggplot2)
-    library(statsExpressions)
+``` r
+# setup
+set.seed(123)
+library(ggplot2)
+library(statsExpressions)
 
-    # basic pie chart
-    ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1))) +
-      geom_bar(width = 1, stat = "identity") +
-      theme(axis.line = element_blank()) +
-      # cleaning up the chart and adding results from one-sample proportion test
-      coord_polar(theta = "y", start = 0) +
-      labs(
-        fill = "Class",
-        x = NULL,
-        y = NULL,
-        title = "Pie Chart of class (type of car)",
-        subtitle = expr_onesample_proptest(as.data.frame(table(mpg$class)), Var1, counts = Freq),
-        caption = "One-sample goodness of fit proportion test"
-      )
+# basic pie chart
+ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1))) +
+  geom_bar(width = 1, stat = "identity") +
+  theme(axis.line = element_blank()) +
+  # cleaning up the chart and adding results from one-sample proportion test
+  coord_polar(theta = "y", start = 0) +
+  labs(
+    fill = "Class",
+    x = NULL,
+    y = NULL,
+    title = "Pie Chart of class (type of car)",
+    subtitle = expr_onesample_proptest(as.data.frame(table(mpg$class)), Var1, counts = Freq),
+    caption = "One-sample goodness of fit proportion test"
+  )
+```
 
 <img src="man/figures/README-gof-1.png" width="100%" />
 
 Another example of contingency tabs analysis:
 
-    # setup
-    set.seed(123)
-    library(moonBook)
-    library(ggiraphExtra)
-    library(statsExpressions)
+``` r
+# setup
+set.seed(123)
+library(moonBook)
+library(ggiraphExtra)
+library(statsExpressions)
 
-    # plot
-    ggSpine(
-      data = acs,
-      aes(x = Dx, fill = smoking),
-      addlabel = TRUE,
-      interactive = FALSE
-    ) +
-      labs(
-        x = "diagnosis",
-        title = "Pearson's chi-squared contingency table test for counts",
-        subtitle = expr_contingency_tab(acs, Dx, smoking, paired = FALSE)
-      )
+# plot
+ggSpine(
+  data = acs,
+  aes(x = Dx, fill = smoking),
+  addlabel = TRUE,
+  interactive = FALSE
+) +
+  labs(
+    x = "diagnosis",
+    title = "Pearson's chi-squared contingency table test for counts",
+    subtitle = expr_contingency_tab(acs, Dx, smoking, paired = FALSE)
+  )
+```
 
 <img src="man/figures/README-cont_tabs1-1.png" width="100%" />
 
 You can also use these function to get the expression in return without
 having to display them in plots:
 
-    # setup
-    set.seed(123)
-    library(ggplot2)
-    library(statsExpressions)
+``` r
+# setup
+set.seed(123)
+library(ggplot2)
+library(statsExpressions)
 
-    # Pearson's chi-squared test of independence
-    expr_contingency_tab(mtcars, am, cyl)
-    #> paste(NULL, chi["Pearson"]^2, "(", "2", ") = ", "8.74", ", ", 
-    #>     italic("p"), " = ", "0.013", ", ", widehat(italic("V"))["Cramer"], 
-    #>     " = ", "0.46", ", CI"["95%"], " [", "0.08", ", ", "0.75", 
-    #>     "]", ", ", italic("n")["obs"], " = ", 32L)
+# Pearson's chi-squared test of independence
+expr_contingency_tab(mtcars, am, cyl)
+#> paste(NULL, chi["Pearson"]^2, "(", "2", ") = ", "8.74", ", ", 
+#>     italic("p"), " = ", "0.013", ", ", widehat(italic("V"))["Cramer"], 
+#>     " = ", "0.46", ", CI"["95%"], " [", "0.08", ", ", "0.75", 
+#>     "]", ", ", italic("n")["obs"], " = ", 32L)
+```
 
 Example: Expressions for meta-analysis
 --------------------------------------
 
-    # setup
-    set.seed(123)
-    library(metaviz)
-    library(ggplot2)
+``` r
+# setup
+set.seed(123)
+library(metaviz)
+library(ggplot2)
 
-    # meta-analysis forest plot with results random-effects meta-analysis
-    viz_forest(
-      x = mozart[, c("d", "se")],
-      study_labels = mozart[, "study_name"],
-      xlab = "Cohen's d",
-      variant = "thick",
-      type = "cumulative"
-    ) + # use `statsExpressions` to create expression containing results
-      labs(
-        title = "Meta-analysis of Pietschnig, Voracek, and Formann (2010) on the Mozart effect",
-        subtitle = expr_meta_parametric(dplyr::rename(mozart, estimate = d, std.error = se))
-      ) +
-      theme(text = element_text(size = 12))
+# meta-analysis forest plot with results random-effects meta-analysis
+viz_forest(
+  x = mozart[, c("d", "se")],
+  study_labels = mozart[, "study_name"],
+  xlab = "Cohen's d",
+  variant = "thick",
+  type = "cumulative"
+) + # use `statsExpressions` to create expression containing results
+  labs(
+    title = "Meta-analysis of Pietschnig, Voracek, and Formann (2010) on the Mozart effect",
+    subtitle = expr_meta_parametric(dplyr::rename(mozart, estimate = d, std.error = se))
+  ) +
+  theme(text = element_text(size = 12))
+```
 
 <img src="man/figures/README-metaanalysis-1.png" width="100%" />
 

@@ -33,7 +33,7 @@ testthat::test_that(
           "Summary effect: ",
           italic("z"),
           " = ",
-          "NA",
+          "-1.8844",
           ", ",
           italic("p"),
           " = ",

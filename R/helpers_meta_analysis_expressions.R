@@ -203,25 +203,7 @@ expr_meta_robust <- function(data,
   #----------------------- tidy output and subtitle ---------------------------
 
   # create a dataframe with coefficients
-  df_tidy <-
-    meta_res %>% {
-      dplyr::inner_join(
-        x = as_tibble(as.data.frame(.$results), rownames = "term"),
-        y = as_tibble(as.data.frame(.$profile@summary@coef), rownames = "term"),
-        by = "term"
-      ) %>%
-        dplyr::rename_all(.tbl = ., .funs = tolower) %>%
-        dplyr::select(
-          .data = .,
-          term,
-          estimate,
-          conf.low = `95% ci.lb`,
-          conf.high = `95% ci.ub`,
-          p.value = pvalue,
-          statistic = `z value`
-        ) %>%
-        dplyr::filter(.data = ., term == "muhat")
-    }
+  df_tidy <- dplyr::filter(.data = broomExtra::tidy_parameters(meta_res), term == "Overall")
 
   # preparing the subtitle
   expr_template(

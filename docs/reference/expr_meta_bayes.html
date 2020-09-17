@@ -88,7 +88,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.5.0</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.5.0.9000</span>
       </span>
     </div>
 
@@ -234,8 +234,8 @@ study in random-effects meta-analysis.</p></dd>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='co'># setup</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>metaplus</span>)</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Note: The second parameter is the study standard error not the standard error squared as in the metafor package.</span></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>metaplus</span>)
+
 <span class='co'># renaming to what `statsExpressions` expects</span>
 <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span>(<span class='no'>mag</span>, <span class='kw'>estimate</span> <span class='kw'>=</span> <span class='no'>yi</span>, <span class='kw'>std.error</span> <span class='kw'>=</span> <span class='no'>sei</span>)
 
