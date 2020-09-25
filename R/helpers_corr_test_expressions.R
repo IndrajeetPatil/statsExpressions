@@ -20,15 +20,14 @@
 #'   Corresponding abbreviations are also accepted: `"p"` (for
 #'   parametric/pearson), `"np"` (nonparametric/spearman), `"r"` (robust),
 #'   `"bf"` (for bayes factor), resp.
-#' @param beta bending constant (Default: `0.1`). For more, see `?WRS2::pbcor`.
+#' @param beta bending constant (Default: `0.1`). For more, see [WRS2::pbcor()].
 #' @inheritParams tidyBF::bf_corr_test
 #' @inheritParams expr_anova_parametric
 #' @inheritParams expr_anova_nonparametric
 #'
 #' @importFrom dplyr select rename_all recode
 #' @importFrom correlation correlation
-#' @importFrom broomExtra easystats_to_tidy_names
-#' @importFrom ipmisc stats_type_switch
+#' @importFrom ipmisc easystats_to_tidy_names stats_type_switch
 #'
 #' @examples
 #'
@@ -88,10 +87,9 @@ expr_corr_test <- function(data,
       correlation::correlation(
         data = dplyr::select(.data = data, {{ x }}, {{ y }}),
         method = corr.method,
-        ci = conf.level,
-        beta = beta
+        ci = conf.level
       ) %>%
-      broomExtra::easystats_to_tidy_names(.) %>%
+      ipmisc::easystats_to_tidy_names(.) %>%
       dplyr::rename_all(.tbl = ., .funs = dplyr::recode, "df" = "parameter")
 
     # effect size dataframe is the same one
@@ -103,7 +101,7 @@ expr_corr_test <- function(data,
   # preparing other needed objects
   if (stats_type == "parametric") {
     no.parameters <- 1L
-    statistic.text <- quote(italic("t"))
+    statistic.text <- quote(italic("t")["Student"])
     effsize.text <- quote(widehat(italic("r"))["Pearson"])
   }
 
@@ -116,7 +114,7 @@ expr_corr_test <- function(data,
 
   if (stats_type == "robust") {
     no.parameters <- 1L
-    statistic.text <- quote(italic("t"))
+    statistic.text <- quote(italic("t")["Student"])
     effsize.text <- quote(widehat(italic(rho))["pb"])
   }
 

@@ -88,7 +88,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.5.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.5.1</span>
       </span>
     </div>
 
@@ -258,7 +258,7 @@ below.</p>
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>sleep</span>,
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>group</span>,
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>extra</span>
-)</div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")["Wilcoxon"]), " = ", "3.24", 
+)</div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")["Mann-Whitney"]), " = ", "3.24", 
 #&gt;     ", ", italic("p"), " = ", "0.069", ", ", widehat(italic("r")), 
 #&gt;     " = ", "-0.41", ", CI"["95%"], " [", "-0.84", ", ", "-0.04", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 20L)</div><div class='input'>
@@ -276,7 +276,7 @@ below.</p>
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>200</span>,
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.99</span>,
   <span class='kw'>conf.type</span> <span class='kw'>=</span> <span class='st'>"bca"</span>
-)</div><div class='output co'>#&gt; <span class='warning'>Warning: extreme order statistics used as endpoints</span></div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")["Wilcoxon"]), " = ", "5.05", 
+)</div><div class='output co'>#&gt; <span class='warning'>Warning: extreme order statistics used as endpoints</span></div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")["Mann-Whitney"]), " = ", "5.05", 
 #&gt;     ", ", italic("p"), " = ", "0.179", ", ", widehat(italic("r")), 
 #&gt;     " = ", "0.23", ", CI"["99%"], " [", "-0.28", ", ", "0.63", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 34L)</div><div class='input'>
@@ -290,7 +290,7 @@ below.</p>
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>msleep_short</span>,
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>vore</span>,
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>sleep_rem</span>
-)</div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")["Wilcoxon"]), " = ", "4.43", 
+)</div><div class='output co'>#&gt; paste(NULL, "log"["e"](italic("W")["Mann-Whitney"]), " = ", "4.43", 
 #&gt;     ", ", italic("p"), " = ", "0.179", ", ", widehat(italic("r")), 
 #&gt;     " = ", "-0.23", ", CI"["95%"], " [", "-0.60", ", ", "0.12", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 34L)</div><div class='input'>

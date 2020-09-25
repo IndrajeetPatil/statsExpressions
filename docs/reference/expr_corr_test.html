@@ -88,7 +88,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.5.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.5.1</span>
       </span>
     </div>
 
@@ -199,7 +199,7 @@ be plotted on the <code>y</code>-axis. Can be entered either as a character stri
     </tr>
     <tr>
       <th>beta</th>
-      <td><p>bending constant (Default: <code>0.1</code>). For more, see <code><a href='https://rdrr.io/pkg/WRS2/man/pbcor.html'>?WRS2::pbcor</a></code>.</p></td>
+      <td><p>bending constant (Default: <code>0.1</code>). For more, see <code><a href='https://rdrr.io/pkg/WRS2/man/pbcor.html'>WRS2::pbcor()</a></code>.</p></td>
     </tr>
     <tr>
       <th>type</th>
@@ -249,10 +249,10 @@ intervals for the correlation coefficient estimate.</p>
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>area</span>,
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>percblack</span>,
   <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"parametric"</span>
-)</div><div class='output co'>#&gt; paste(NULL, italic("t"), "(", "435", ") = ", "-0.97", ", ", italic("p"), 
-#&gt;     " = ", "0.332", ", ", widehat(italic("r"))["Pearson"], " = ", 
-#&gt;     "-0.05", ", CI"["95%"], " [", "-0.14", ", ", "0.05", "]", 
-#&gt;     ", ", italic("n")["pairs"], " = ", 437L)</div><div class='input'>
+)</div><div class='output co'>#&gt; paste(NULL, italic("t")["Student"], "(", "435", ") = ", "-0.97", 
+#&gt;     ", ", italic("p"), " = ", "0.332", ", ", widehat(italic("r"))["Pearson"], 
+#&gt;     " = ", "-0.05", ", CI"["95%"], " [", "-0.14", ", ", "0.05", 
+#&gt;     "]", ", ", italic("n")["pairs"], " = ", 437L)</div><div class='input'>
 <span class='co'># changing defaults</span>
 <span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_corr_test</span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/midwest.html'>midwest</a></span>,
@@ -260,10 +260,10 @@ intervals for the correlation coefficient estimate.</p>
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>percblack</span>,
   <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>0.2</span>,
   <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"robust"</span>
-)</div><div class='output co'>#&gt; paste(NULL, italic("t"), "(", "435", ") = ", "0.05", ", ", italic("p"), 
-#&gt;     " = ", "0.960", ", ", widehat(italic(rho))["pb"], " = ", 
-#&gt;     "0.00", ", CI"["95%"], " [", "-0.09", ", ", "0.10", "]", 
-#&gt;     ", ", italic("n")["pairs"], " = ", 437L)</div></pre>
+)</div><div class='output co'>#&gt; paste(NULL, italic("t")["Student"], "(", "435", ") = ", "0.05", 
+#&gt;     ", ", italic("p"), " = ", "0.960", ", ", widehat(italic(rho))["pb"], 
+#&gt;     " = ", "0.00", ", CI"["95%"], " [", "-0.09", ", ", "0.10", 
+#&gt;     "]", ", ", italic("n")["pairs"], " = ", 437L)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

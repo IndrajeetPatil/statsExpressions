@@ -1,10 +1,21 @@
 # statsExpressions 0.5.0.9000
 
+MINOR CHANGES
+
+  - Adapts tests to changes made in the `correlation` package.
+  
+  - Subtitles for correlation tests make clear the type of statistic.
+  
 # statsExpressions 0.5.0
+
+MINOR CHANGES
 
   - Adapts to changes made in `tidyBF` package.
   
   - Re-exports `correlation::correlation` needed for `ggstatsplot`.
+  
+  - The `expr_t_nonparametric` subtitle now clarifies whether it's a Wilcoxon
+    test or a Mann-Whitney test.
 
 # statsExpressions 0.4.2
 

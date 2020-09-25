@@ -308,7 +308,7 @@ ggDot(heightweight, aes(sex, heightIn, fill = sex),
   binwidth = 0.4
 ) +
   labs(
-    title = "Wilcoxon two-sample test",
+    title = "Mann-Whitney test",
     subtitle = expr_t_nonparametric(heightweight, sex, heightIn, type = "np")
   )
 ```
@@ -369,7 +369,7 @@ set.seed(123)
 library(ggplot2)
 library(statsExpressions)
 
-# create a ridgeplot
+# create a scatter plot
 ggplot(mtcars, aes(mpg, wt)) +
   geom_point() +
   geom_smooth(method = "lm") +
@@ -377,6 +377,29 @@ ggplot(mtcars, aes(mpg, wt)) +
     title = "Spearman's rank correlation coefficient",
     subtitle = expr_corr_test(mtcars, mpg, wt, type = "nonparametric")
   )
+```
+
+Another example
+
+```{r corr2}
+# setup
+set.seed(123)
+library(ggplot2)
+library(ggExtra)
+library(statsExpressions)
+
+# basic plot
+p <- 
+  ggplot(mtcars, aes(mpg, wt)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(
+    title = "Pearson's correlation coefficient",
+    subtitle = expr_corr_test(mtcars, mpg, wt, type = "parametric")
+  )
+
+# add
+ggMarginal(p, type = "histogram", xparams = list(binwidth = 1, fill = "orange"))
 ```
 
 ## Example: Expressions for contingency table analysis

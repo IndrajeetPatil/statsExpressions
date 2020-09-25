@@ -23,7 +23,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          "log"["e"](italic("W")["Wilcoxon"]),
+          "log"["e"](italic("W")["Mann-Whitney"]),
           " = ",
           "5.440",
           ", ",

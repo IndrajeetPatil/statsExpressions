@@ -247,7 +247,7 @@ expr_t_onesample <- function(data,
   # running Bayesian one-sample t-test
   if (stats.type == "bayes") {
     subtitle <-
-      tidyBF::bf_one_sample_ttest(
+      tidyBF::bf_ttest(
         data = data,
         x = {{ x }},
         test.value = test.value,

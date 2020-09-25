@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Expressions with Statistical Details
-Version: 0.5.0.9000
+Version: 0.5.1
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -24,7 +24,7 @@ Depends:
     R (>= 3.6.0)
 Imports:
     broomExtra,
-    correlation,
+    correlation (>= 0.4.0),
     dplyr,
     effectsize,
     ez,
@@ -34,7 +34,7 @@ Imports:
     rcompanion,
     rlang,
     stats,
-    tidyBF (>= 0.3.0),
+    tidyBF,
     tidyr,
     WRS2
 Suggests:
@@ -43,6 +43,8 @@ Suggests:
     rmarkdown,
     spelling,
     testthat
+Remotes:
+    easystats/correlation
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

@@ -35,7 +35,7 @@ be plotted on the \code{y}-axis. Can be entered either as a character string
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} lower and upper confidence intervals (\code{0.95}).}
 
-\item{beta}{bending constant (Default: \code{0.1}). For more, see \code{?WRS2::pbcor}.}
+\item{beta}{bending constant (Default: \code{0.1}). For more, see \code{\link[WRS2:pbcor]{WRS2::pbcor()}}.}
 
 \item{type}{Type of association between paired samples required
 ("\code{"parametric"}: Pearson's product moment correlation coefficient" or

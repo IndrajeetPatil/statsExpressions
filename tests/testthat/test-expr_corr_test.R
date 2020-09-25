@@ -115,7 +115,7 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic("t"),
+          italic("t")["Student"],
           "(",
           "46",
           ") = ",
@@ -170,11 +170,11 @@ testthat::test_that(
       ggplot2::expr(
         paste(
           NULL,
-          italic("t"),
+          italic("t")["Student"],
           "(",
           "54",
           ") = ",
-          "-5.0929",
+          "-5.3122",
           ", ",
           italic("p"),
           " = ",
@@ -182,12 +182,12 @@ testthat::test_that(
           ", ",
           widehat(italic(rho))["pb"],
           " = ",
-          "-0.5696",
+          "-0.5894",
           ", CI"["50%"],
           " [",
-          "-0.6289",
+          "-0.6466",
           ", ",
-          "-0.5037",
+          "-0.5257",
           "]",
           ", ",
           italic("n")["pairs"],
