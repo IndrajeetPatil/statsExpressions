@@ -1,7 +1,3 @@
-# expr_contingency_tab ---------------------------------------------------
-
-context("expr_contingency_tab")
-
 # contingency tab - data without NAs -----------------------------------------
 
 testthat::test_that(
@@ -39,7 +35,7 @@ testthat::test_that(
           ", ",
           italic("p"),
           " = ",
-          "< 0.001",
+          "4.9999e-41",
           ", ",
           widehat(italic("V"))["Cramer"],
           " = ",
@@ -83,7 +79,7 @@ testthat::test_that(
           ", ",
           italic("p"),
           " = ",
-          "< 0.001",
+          "2.3e-101",
           ", ",
           widehat(italic("V"))["Cramer"],
           " = ",
@@ -222,7 +218,7 @@ testthat::test_that(
           ", ",
           italic("p"),
           " = ",
-          "< 0.001",
+          "2.6073e-04",
           ", ",
           widehat(italic("g"))["Cohen"],
           " = ",
@@ -315,7 +311,7 @@ testthat::test_that(
           ", ",
           italic("p"),
           " = ",
-          "< 0.001",
+          "2.61e-04",
           ", ",
           widehat(italic("g"))["Cohen"],
           " = ",
@@ -533,12 +529,13 @@ testthat::test_that(
 
     # with counts
     set.seed(123)
-    using_function2 <- statsExpressions::expr_contingency_tab(
-      data = as.data.frame(Titanic),
-      x = Sex,
-      counts = "Freq",
-      messages = FALSE
-    )
+    using_function2 <-
+      statsExpressions::expr_contingency_tab(
+        data = as.data.frame(Titanic),
+        x = Sex,
+        counts = "Freq",
+        messages = FALSE
+      )
 
     results2 <-
       ggplot2::expr(
@@ -552,7 +549,7 @@ testthat::test_that(
           ", ",
           italic("p"),
           " = ",
-          "< 0.001",
+          "3.92e-159",
           ", ",
           widehat(italic("V"))["Cramer"],
           " = ",
@@ -607,7 +604,7 @@ testthat::test_that(
           ", ",
           italic("p"),
           " = ",
-          "< 0.001",
+          "3.92e-159",
           ", ",
           widehat(italic("V"))["Cramer"],
           " = ",
@@ -661,7 +658,7 @@ testthat::test_that(
           ", ",
           italic("p"),
           " = ",
-          "< 0.001",
+          "2.23e-07",
           ", ",
           widehat(italic("V"))["Cramer"],
           " = ",

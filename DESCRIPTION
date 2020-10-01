@@ -28,7 +28,7 @@ Imports:
     dplyr,
     effectsize,
     ez,
-    ipmisc,
+    ipmisc (>= 4.0.0),
     metafor,
     metaplus,
     rcompanion,
@@ -44,7 +44,8 @@ Suggests:
     spelling,
     testthat
 Remotes:
-    easystats/correlation
+    easystats/correlation,
+    IndrajeetPatil/ipmisc
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

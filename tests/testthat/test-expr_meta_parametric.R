@@ -82,7 +82,7 @@ testthat::test_that(
           ", ",
           italic("p"),
           " = ",
-          "< 0.001",
+          "0e+00",
           ", ",
           tau["REML"]^2,
           " = ",

@@ -29,7 +29,7 @@ testthat::test_that(
           ", ",
           italic("p"),
           " = ",
-          "< 0.001",
+          "4.35e-05",
           ", ",
           widehat(italic("r")),
           " = ",

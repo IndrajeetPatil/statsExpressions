@@ -1,10 +1,12 @@
-# statsExpressions 0.5.0.9000
+# statsExpressions 0.5.1
 
 MINOR CHANGES
 
   - Adapts tests to changes made in the `correlation` package.
   
   - Subtitles for correlation tests make clear the type of statistic.
+  
+  - Small *p*-values (< 0.001) are now shown in scientific format.
   
 # statsExpressions 0.5.0
 

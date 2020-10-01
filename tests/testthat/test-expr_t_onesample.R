@@ -176,7 +176,7 @@ testthat::test_that(
           ", ",
           italic("p"),
           " = ",
-          "< 0.001",
+          "1.253e-05",
           ", ",
           widehat(italic("r")),
           " = ",

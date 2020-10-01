@@ -7,4 +7,4 @@
 
 0 errors | 0 warnings | 0 note
 
-  - Fixes failing tests with the new release of the `correlation` package.
+  - Fixes failing tests due to the `correlation` and `ipmisc` package updates.
