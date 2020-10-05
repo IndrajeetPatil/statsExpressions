@@ -43,9 +43,6 @@ Suggests:
     rmarkdown,
     spelling,
     testthat
-Remotes:
-    easystats/correlation,
-    IndrajeetPatil/ipmisc
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
