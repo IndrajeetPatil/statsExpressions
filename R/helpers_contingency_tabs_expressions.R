@@ -207,15 +207,12 @@ expr_contingency_tab <- function(data,
       return(NULL)
     }
 
-    # `x` argument for effect size function
-    x_arg <- as.vector(table(data %>% dplyr::pull({{ x }})))
-
     # effect size text
     .f <- rcompanion::cramerVFit
     effsize.text <- quote(widehat(italic("V"))["Cramer"])
     statistic.text <- quote(chi["gof"]^2)
     n.text <- quote(italic("n")["obs"])
-    args_list <- list(x = x_arg, p = ratio)
+    args_list <- list(x = as.vector(x_arg), p = ratio)
   }
 
   # computing effect size + CI

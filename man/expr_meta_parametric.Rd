@@ -11,7 +11,6 @@ expr_meta_parametric(
   conf.level = 0.95,
   output = "subtitle",
   caption = NULL,
-  messages = TRUE,
   ...
 )
 }
@@ -34,8 +33,6 @@ summary will be returned.}
 
 \item{caption}{Text to display as caption. This argument is relevant only
 when \code{output = "caption"}.}
-
-\item{messages}{Deprecated. Retained only for backward compatibility.}
 
 \item{...}{
   Arguments passed on to \code{\link[metafor:rma.uni]{metafor::rma}}
@@ -98,15 +95,12 @@ df <- dplyr::rename(mag, estimate = yi, std.error = sei)
 # making subtitle
 expr_meta_parametric(
   data = df,
-  k = 3,
-  messages = FALSE
+  k = 3
 )
 
 # making caption
 expr_meta_parametric(
   data = df,
-  k = 2,
-  messages = FALSE,
   output = "caption"
 )
 }

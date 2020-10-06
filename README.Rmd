@@ -389,7 +389,7 @@ library(ggExtra)
 library(statsExpressions)
 
 # basic plot
-p <- 
+p <-
   ggplot(mtcars, aes(mpg, wt)) +
   geom_point() +
   geom_smooth(method = "lm") +
@@ -485,6 +485,31 @@ viz_forest(
     subtitle = expr_meta_parametric(dplyr::rename(mozart, estimate = d, std.error = se))
   ) +
   theme(text = element_text(size = 12))
+```
+
+# Customizing details to your liking
+
+Sometimes you may not wish include so many details in the subtitle. In that
+case, you can extract the expression and copy-paste only the part you wish to
+include. For example, here only statistic and *p*-values are included:
+
+```{r custom_expr}
+# setup
+set.seed(123)
+library(ggplot2)
+library(statsExpressions)
+
+# extracting detailed expression
+(res_expr <- expr_anova_parametric(iris, Species, Sepal.Length, var.equal = TRUE))
+
+# adapting the details to your liking
+ggplot(iris, aes(x = Species, y = Sepal.Length)) +
+  geom_boxplot() +
+  labs(subtitle = ggplot2::expr(paste(
+    NULL, italic("F"), "(", "2",
+    ",", "147", ") = ", "119.26", ", ",
+    italic("p"), " = ", "1.67e-31"
+  )))
 ```
 
 # Usage in `ggstatsplot`

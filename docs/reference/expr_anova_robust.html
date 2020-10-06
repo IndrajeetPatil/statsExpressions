@@ -91,7 +91,7 @@ trimmed means" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.5.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.5.1.9000</span>
       </span>
     </div>
 
@@ -159,18 +159,18 @@ trimmed means</h1>
 trimmed means</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expr_anova_robust</span>(
-  <span class='no'>data</span>,
-  <span class='no'>x</span>,
-  <span class='no'>y</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
-  <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
-  <span class='kw'>tr</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
-  <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>100L</span>,
-  <span class='kw'>stat.title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>expr_anova_robust</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  <span class='va'>x</span>,
+  <span class='va'>y</span>,
+  paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  k <span class='op'>=</span> <span class='fl'>2L</span>,
+  conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
+  tr <span class='op'>=</span> <span class='fl'>0.1</span>,
+  nboot <span class='op'>=</span> <span class='fl'>100L</span>,
+  stat.title <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -239,48 +239,41 @@ added as a prefix in the subtitle. The default is <code>NULL</code>. An example 
     <pre class="examples"><div class='input'>
 <span class='co'># \donttest{</span>
 <span class='co'># for reproducibility</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
 
 <span class='co'># ------------------------ between-subjects -----------------------------</span>
 
 <span class='co'># going with the defaults</span>
-<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_anova_robust</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/midwest.html'>midwest</a></span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>state</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>percbelowpoverty</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>10</span>
-)</div><div class='output co'>#&gt; paste(NULL, italic("F")["trimmed-means"], "(", "4", ",", "169.73", 
-#&gt;     ") = ", "11.43", ", ", italic("p"), " = ", "3.09e-08", ", ", 
-#&gt;     widehat(italic(xi)), " = ", "0.38", ", CI"["95%"], " [", 
-#&gt;     "0.31", ", ", "0.44", "]", ", ", italic("n")["obs"], " = ", 
-#&gt;     437L)</div><div class='input'>
+<span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_anova_robust</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/midwest.html'>midwest</a></span>,
+  x <span class='op'>=</span> <span class='va'>state</span>,
+  y <span class='op'>=</span> <span class='va'>percbelowpoverty</span>,
+  paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  nboot <span class='op'>=</span> <span class='fl'>10</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error: could not find function "long_to_wide_converter"</span></div><div class='input'>
 <span class='co'># changing defaults</span>
-<span class='fu'>expr_anova_robust</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/midwest.html'>midwest</a></span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>state</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>percollege</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.99</span>,
-  <span class='kw'>tr</span> <span class='kw'>=</span> <span class='fl'>0.2</span>,
-  <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>10</span>
-)</div><div class='output co'>#&gt; paste(NULL, italic("F")["trimmed-means"], "(", "4", ",", "127.02", 
-#&gt;     ") = ", "7.67", ", ", italic("p"), " = ", "1.44e-05", ", ", 
-#&gt;     widehat(italic(xi)), " = ", "0.37", ", CI"["99%"], " [", 
-#&gt;     "0.30", ", ", "0.43", "]", ", ", italic("n")["obs"], " = ", 
-#&gt;     437L)</div><div class='input'>
+<span class='fu'>expr_anova_robust</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/midwest.html'>midwest</a></span>,
+  x <span class='op'>=</span> <span class='va'>state</span>,
+  y <span class='op'>=</span> <span class='va'>percollege</span>,
+  paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  conf.level <span class='op'>=</span> <span class='fl'>0.99</span>,
+  tr <span class='op'>=</span> <span class='fl'>0.2</span>,
+  nboot <span class='op'>=</span> <span class='fl'>10</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error: could not find function "long_to_wide_converter"</span></div><div class='input'>
 <span class='co'># ------------------------ within-subjects -----------------------------</span>
 
-<span class='kw pkg'>statsExpressions</span><span class='kw ns'>::</span><span class='fu'>expr_anova_robust</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris_long</span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>condition</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>value</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>tr</span> <span class='kw'>=</span> <span class='fl'>0.2</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>
-)</div><div class='output co'>#&gt; paste(italic("F")["trimmed-means"], "(", "1.091", ",", "97.096", 
-#&gt;     ") = ", "367.791", ", ", italic("p"), " = ", "0e+00", ", ", 
-#&gt;     italic("n")["pairs"], " = ", 150L)</div><div class='input'># }
+<span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_anova_robust</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='va'>iris_long</span>,
+  x <span class='op'>=</span> <span class='va'>condition</span>,
+  y <span class='op'>=</span> <span class='va'>value</span>,
+  paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  tr <span class='op'>=</span> <span class='fl'>0.2</span>,
+  k <span class='op'>=</span> <span class='fl'>3</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error: could not find function "long_to_wide_converter"</span></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -297,7 +290,7 @@ added as a prefix in the subtitle. The default is <code>NULL</code>. An example 
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

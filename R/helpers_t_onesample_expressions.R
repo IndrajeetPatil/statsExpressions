@@ -32,7 +32,7 @@
 #' @importFrom effectsize cohens_d hedges_g
 #' @importFrom stats t.test wilcox.test
 #' @importFrom rlang !! ensym new_formula exec
-#' @importFrom broomExtra easystats_to_tidy_names
+#' @importFrom ipmisc easystats_to_tidy_names
 #'
 #' @examples
 #' \donttest{

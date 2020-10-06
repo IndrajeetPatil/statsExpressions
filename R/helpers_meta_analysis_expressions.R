@@ -36,15 +36,12 @@
 #' # making subtitle
 #' expr_meta_parametric(
 #'   data = df,
-#'   k = 3,
-#'   messages = FALSE
+#'   k = 3
 #' )
 #'
 #' # making caption
 #' expr_meta_parametric(
 #'   data = df,
-#'   k = 2,
-#'   messages = FALSE,
 #'   output = "caption"
 #' )
 #' }
@@ -56,7 +53,6 @@ expr_meta_parametric <- function(data,
                                  conf.level = 0.95,
                                  output = "subtitle",
                                  caption = NULL,
-                                 messages = TRUE,
                                  ...) {
   # check the data contains needed column
   tidyBF::meta_data_check(data)
@@ -172,9 +168,7 @@ expr_meta_parametric <- function(data,
 #' # creating expression (changing few defaults)
 #' expr_meta_robust(
 #'   data = df,
-#'   random = "normal",
-#'   k = 4,
-#'   messages = TRUE
+#'   random = "normal"
 #' )
 #' }
 #' @export
@@ -183,7 +177,6 @@ expr_meta_parametric <- function(data,
 expr_meta_robust <- function(data,
                              random = "mixture",
                              k = 2L,
-                             messages = TRUE,
                              ...) {
   # check the data contains needed column
   tidyBF::meta_data_check(data)
@@ -251,7 +244,6 @@ expr_meta_bayes <- function(data,
                             d = prior("norm", c(mean = 0, sd = 0.3)),
                             tau = prior("invgamma", c(shape = 1, scale = 0.15)),
                             k = 2L,
-                            messages = TRUE,
                             ...) {
   # check the data contains needed column
   tidyBF::meta_data_check(data)

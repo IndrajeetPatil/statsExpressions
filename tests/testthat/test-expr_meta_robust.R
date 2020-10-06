@@ -21,8 +21,7 @@ testthat::test_that(
       expr_meta_robust(
         data = df,
         random = "normal",
-        k = 4,
-        messages = TRUE
+        k = 4
       )
 
     # test

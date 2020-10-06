@@ -22,7 +22,6 @@ testthat::test_that(
       expr_meta_parametric(
         data = df_eg,
         k = 4,
-        messages = FALSE,
         output = "subtitle"
       )
 
@@ -33,7 +32,6 @@ testthat::test_that(
         data = df_eg,
         k = 2,
         caption = "this is caption",
-        messages = FALSE,
         output = "caption"
       )
 

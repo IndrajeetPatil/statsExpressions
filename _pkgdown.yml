@@ -55,7 +55,7 @@ reference:
   - title: Reexported functions
     desc:  Useful functions re-exported from other packages.
     contents:
-      - specify_decimal_p
+      - as_tibble
 
   - title: Data
     desc:  Datasets included in the package.

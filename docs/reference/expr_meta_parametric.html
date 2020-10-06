@@ -91,7 +91,7 @@ more, see ?metafor::rma." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.5.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.5.1.9000</span>
       </span>
     </div>
 
@@ -156,18 +156,18 @@ results</h1>
 
     <div class="ref-description">
     <p>This analysis is carried out using the <code>metafor</code> package. For
-more, see <code><a href='https://rdrr.io/pkg/metafor/man/rma.uni.html'>?metafor::rma</a></code>.</p>
+more, see <code><a href='https://wviechtb.github.io/metafor/reference/rma.uni.html'>?metafor::rma</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expr_meta_parametric</span>(
-  <span class='no'>data</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
-  <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
-  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"subtitle"</span>,
-  <span class='kw'>caption</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>expr_meta_parametric</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  k <span class='op'>=</span> <span class='fl'>2L</span>,
+  conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
+  output <span class='op'>=</span> <span class='st'>"subtitle"</span>,
+  caption <span class='op'>=</span> <span class='cn'>NULL</span>,
+  messages <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -176,7 +176,7 @@ more, see <code><a href='https://rdrr.io/pkg/metafor/man/rma.uni.html'>?metafor:
       <th>data</th>
       <td><p>A dataframe. It <strong>must</strong> contain columns named <code>estimate</code> (effect
 sizes or outcomes)  and <code>std.error</code> (corresponding standard errors). These
-two columns will be used for <code>yi</code>  and <code>sei</code> arguments in <code><a href='https://rdrr.io/pkg/metafor/man/rma.uni.html'>metafor::rma</a></code>
+two columns will be used for <code>yi</code>  and <code>sei</code> arguments in <code><a href='https://wviechtb.github.io/metafor/reference/rma.uni.html'>metafor::rma</a></code>
 (for parametric analysis) or <code><a href='https://rdrr.io/pkg/metaplus/man/metaplus.html'>metaplus::metaplus</a></code> (for robust analysis).</p></td>
     </tr>
     <tr>
@@ -207,39 +207,39 @@ when <code>output = "caption"</code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Arguments passed on to <code><a href='https://rdrr.io/pkg/metafor/man/rma.uni.html'>metafor::rma</a></code></p><dl'>
+      <td><p>Arguments passed on to <code><a href='https://wviechtb.github.io/metafor/reference/rma.uni.html'>metafor::rma</a></code></p><dl>
     <dt><code>vi</code></dt><dd><p>vector of length \(k\) with the corresponding sampling variances. See &#8216;Details&#8217;.</p></dd>
     <dt><code>weights</code></dt><dd><p>optional argument to specify a vector of length \(k\) with user-defined weights. See &#8216;Details&#8217;.</p></dd>
-    <dt><code>ai</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
-    <dt><code>bi</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
-    <dt><code>ci</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
-    <dt><code>di</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
-    <dt><code>n1i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
-    <dt><code>n2i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
-    <dt><code>x1i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
-    <dt><code>x2i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
-    <dt><code>t1i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
-    <dt><code>t2i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
-    <dt><code>m1i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
-    <dt><code>m2i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
-    <dt><code>sd1i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
-    <dt><code>sd2i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
-    <dt><code>xi</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
-    <dt><code>mi</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
-    <dt><code>ri</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
-    <dt><code>ti</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
-    <dt><code>sdi</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
-    <dt><code>r2i</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
-    <dt><code>ni</code></dt><dd><p>see below and the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>ai</code></dt><dd><p>see below and the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>bi</code></dt><dd><p>see below and the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>ci</code></dt><dd><p>see below and the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>di</code></dt><dd><p>see below and the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>n1i</code></dt><dd><p>see below and the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>n2i</code></dt><dd><p>see below and the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>x1i</code></dt><dd><p>see below and the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>x2i</code></dt><dd><p>see below and the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>t1i</code></dt><dd><p>see below and the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>t2i</code></dt><dd><p>see below and the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>m1i</code></dt><dd><p>see below and the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>m2i</code></dt><dd><p>see below and the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>sd1i</code></dt><dd><p>see below and the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>sd2i</code></dt><dd><p>see below and the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>xi</code></dt><dd><p>see below and the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>mi</code></dt><dd><p>see below and the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>ri</code></dt><dd><p>see below and the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>ti</code></dt><dd><p>see below and the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>sdi</code></dt><dd><p>see below and the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>r2i</code></dt><dd><p>see below and the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function for more details.</p></dd>
+    <dt><code>ni</code></dt><dd><p>see below and the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function for more details.</p></dd>
     <dt><code>mods</code></dt><dd><p>optional argument to include one or more moderators in the model. A single moderator can be given as a vector of length \(k\) specifying the values of the moderator. Multiple moderators are specified by giving a matrix with \(k\) rows and as many columns as there are moderator variables. Alternatively, a model <code><a href='https://rdrr.io/r/stats/formula.html'>formula</a></code> can be used to specify the model. See &#8216;Details&#8217;.</p></dd>
-    <dt><code>measure</code></dt><dd><p>character string indicating the type of data supplied to the function. When <code>measure="GEN"</code> (default), the observed effect sizes or outcomes and corresponding sampling variances (or standard errors) should be supplied to the function via the <code>yi</code>, <code>vi</code>, and <code>sei</code> arguments (only one of the two, <code>vi</code> or <code>sei</code>, needs to be specified). Alternatively, one can set <code>measure</code> to one of the effect size or outcome measures described under the documentation for the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function and specify the needed data via the appropriate arguments.</p></dd>
+    <dt><code>measure</code></dt><dd><p>character string indicating the type of data supplied to the function. When <code>measure="GEN"</code> (default), the observed effect sizes or outcomes and corresponding sampling variances (or standard errors) should be supplied to the function via the <code>yi</code>, <code>vi</code>, and <code>sei</code> arguments (only one of the two, <code>vi</code> or <code>sei</code>, needs to be specified). Alternatively, one can set <code>measure</code> to one of the effect size or outcome measures described under the documentation for the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function and specify the needed data via the appropriate arguments.</p></dd>
     <dt><code>intercept</code></dt><dd><p>logical indicating whether an intercept should be added to the model (the default is <code>TRUE</code>). Ignored when <code>mods</code> is a formula.</p></dd>
     <dt><code>slab</code></dt><dd><p>optional vector with labels for the \(k\) studies.</p></dd>
     <dt><code>subset</code></dt><dd><p>optional (logical or numeric) vector indicating the subset of studies that should be used for the analysis.</p></dd>
-    <dt><code>add</code></dt><dd><p>see the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function.</p></dd>
-    <dt><code>to</code></dt><dd><p>see the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function.</p></dd>
-    <dt><code>drop00</code></dt><dd><p>see the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function.</p></dd>
-    <dt><code>vtype</code></dt><dd><p>see the documentation of the <code><a href='https://rdrr.io/pkg/metafor/man/escalc.html'>escalc</a></code> function.</p></dd>
+    <dt><code>add</code></dt><dd><p>see the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function.</p></dd>
+    <dt><code>to</code></dt><dd><p>see the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function.</p></dd>
+    <dt><code>drop00</code></dt><dd><p>see the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function.</p></dd>
+    <dt><code>vtype</code></dt><dd><p>see the documentation of the <code><a href='https://wviechtb.github.io/metafor/reference/escalc.html'>escalc</a></code> function.</p></dd>
     <dt><code>method</code></dt><dd><p>character string specifying whether a fixed- or a random/mixed-effects model should be fitted. A fixed-effects model (with or without moderators) is fitted when using <code>method="FE"</code>. Random/mixed-effects models are fitted by setting <code>method</code> equal to one of the following: <code>"DL"</code>, <code>"HE"</code>, <code>"SJ"</code>, <code>"ML"</code>, <code>"REML"</code>, <code>"EB"</code>, <code>"HS"</code>, or <code>"GENQ"</code>. Default is <code>"REML"</code>. See &#8216;Details&#8217;.</p></dd>
     <dt><code>weighted</code></dt><dd><p>logical indicating whether weighted (default) or unweighted estimation should be used to fit the model.</p></dd>
     <dt><code>test</code></dt><dd><p>character string specifying how test statistics and confidence intervals for the fixed effects should be computed. By default (<code>test="z"</code>), Wald-type tests and CIs are obtained, which are based on a standard normal distribution. When <code>test="knha"</code>, the method by Knapp and Hartung (2003) is used for adjusting test statistics and confidence intervals. See &#8216;Details&#8217;.</p></dd>
@@ -256,31 +256,28 @@ when <code>output = "caption"</code>.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='co'># setup</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>statsExpressions</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>metaplus</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://indrajeetpatil.github.io/statsExpressions/'>statsExpressions</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>metaplus</span><span class='op'>)</span>
 
 <span class='co'># renaming to what `statsExpressions` expects</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span>(<span class='no'>mag</span>, <span class='kw'>estimate</span> <span class='kw'>=</span> <span class='no'>yi</span>, <span class='kw'>std.error</span> <span class='kw'>=</span> <span class='no'>sei</span>)
+<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span><span class='va'>mag</span>, estimate <span class='op'>=</span> <span class='va'>yi</span>, std.error <span class='op'>=</span> <span class='va'>sei</span><span class='op'>)</span>
 
 <span class='co'># making subtitle</span>
-<span class='fu'>expr_meta_parametric</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>df</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>,
-  <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)</div><div class='output co'>#&gt; paste("Summary effect: ", italic("z"), " = ", "-3.619", ", ", 
-#&gt;     italic("p"), " = ", "2.95e-04", ", ", widehat(beta), " = ", 
-#&gt;     "-0.767", ", CI"["95%"], " [", "-1.182", ", ", "-0.351", 
-#&gt;     "]", ", ", italic("n")["effects"], " = ", 16L)</div><div class='input'>
+<span class='fu'>expr_meta_parametric</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='va'>df</span>,
+  k <span class='op'>=</span> <span class='fl'>3</span>,
+  messages <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in specify_decimal_p(x = statistic, k = k): could not find function "specify_decimal_p"</span></div><div class='input'>
 <span class='co'># making caption</span>
-<span class='fu'>expr_meta_parametric</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>df</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-  <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"caption"</span>
-)</div><div class='output co'>#&gt; atop(displaystyle(NULL), expr = paste("Heterogeneity: ", italic("Q"), 
-#&gt;     "(", "15", ") = ", "47", ", ", italic("p"), " = ", "3.6e-05", 
-#&gt;     ", ", tau["REML"]^2, " = ", "0.29", ", ", "I"^2, " = ", "73.64%"))</div><div class='input'># }
+<span class='fu'>expr_meta_parametric</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='va'>df</span>,
+  k <span class='op'>=</span> <span class='fl'>2</span>,
+  messages <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  output <span class='op'>=</span> <span class='st'>"caption"</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in specify_decimal_p(x = statistic, k = k): could not find function "specify_decimal_p"</span></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -297,7 +294,7 @@ when <code>output = "caption"</code>.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

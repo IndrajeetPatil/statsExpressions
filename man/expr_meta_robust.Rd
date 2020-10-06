@@ -5,7 +5,7 @@
 \title{Making expression with frequentist random-effects robust meta-analysis
 results}
 \usage{
-expr_meta_robust(data, random = "mixture", k = 2L, messages = TRUE, ...)
+expr_meta_robust(data, random = "mixture", k = 2L, ...)
 }
 \arguments{
 \item{data}{A dataframe. It \strong{must} contain columns named \code{estimate} (effect
@@ -19,8 +19,6 @@ The type of random effects distribution. One of "normal","t-dist","mixture", for
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2L}).}
-
-\item{messages}{Deprecated. Retained only for backward compatibility.}
 
 \item{...}{
   Arguments passed on to \code{\link[metaplus:metaplus]{metaplus::metaplus}}
@@ -64,9 +62,7 @@ df <- dplyr::rename(mag, estimate = yi, std.error = sei)
 # creating expression (changing few defaults)
 expr_meta_robust(
   data = df,
-  random = "normal",
-  k = 4,
-  messages = TRUE
+  random = "normal"
 )
 }
 }

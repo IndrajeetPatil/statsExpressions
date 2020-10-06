@@ -38,7 +38,7 @@
 #' @importFrom stats aov oneway.test
 #' @importFrom ez ezANOVA
 #' @importFrom effectsize eta_squared omega_squared
-#' @importFrom broomExtra easystats_to_tidy_names
+#' @importFrom ipmisc long_to_wide_converter easystats_to_tidy_names specify_decimal_p
 #'
 #' @examples
 #' \donttest{
@@ -134,7 +134,7 @@ expr_anova_parametric <- function(data,
 
   # have a proper cleanup with NA removal
   data %<>%
-    long_to_wide_converter(
+    ipmisc::long_to_wide_converter(
       data = .,
       x = {{ x }},
       y = {{ y }},
@@ -251,7 +251,7 @@ expr_anova_parametric <- function(data,
       partial = partial,
       ci = conf.level
     ) %>%
-    broomExtra::easystats_to_tidy_names(.) %>%
+    ipmisc::easystats_to_tidy_names(.) %>%
     dplyr::rename(estimate = dplyr::matches("eta|omega")) %>%
     dplyr::filter(!is.na(estimate), !grepl(pattern = "Residuals", x = term, ignore.case = TRUE))
 
@@ -355,7 +355,7 @@ expr_anova_nonparametric <- function(data,
 
   # have a proper cleanup with NA removal
   data %<>%
-    long_to_wide_converter(
+    ipmisc::long_to_wide_converter(
       data = .,
       x = {{ x }},
       y = {{ y }},
@@ -368,24 +368,23 @@ expr_anova_nonparametric <- function(data,
   # properly removing NAs if it's a paired design
   if (isTRUE(paired)) {
     # setting up the anova model (`y ~ x | id`) and getting its summary
-    stats_df <-
-      broomExtra::tidy(
-        stats::friedman.test(
-          formula = rlang::new_formula(
-            {{ rlang::enexpr(y) }}, rlang::expr(!!rlang::enexpr(x) | rowid)
-          ),
-          data = data,
-          na.action = na.omit
-        )
+    mod <-
+      stats::friedman.test(
+        formula = rlang::new_formula(
+          {{ rlang::enexpr(y) }}, rlang::expr(!!rlang::enexpr(x) | rowid)
+        ),
+        data = data,
+        na.action = na.omit
       )
 
     # details for expression creator
     .f <- rcompanion::kendallW
-    arg_list <- list(
-      x = dplyr::select(long_to_wide_converter(data, {{ x }}, {{ y }}), -rowid),
-      correct = TRUE,
-      na.rm = TRUE
-    )
+    arg_list <-
+      list(
+        x = dplyr::select(ipmisc::long_to_wide_converter(data, {{ x }}, {{ y }}), -rowid),
+        correct = TRUE,
+        na.rm = TRUE
+      )
     sample_size <- length(unique(data$rowid))
     n.text <- quote(italic("n")["pairs"])
     statistic.text <- quote(chi["Friedman"]^2)
@@ -396,23 +395,22 @@ expr_anova_nonparametric <- function(data,
 
   if (isFALSE(paired)) {
     # setting up the anova model and getting its summary
-    stats_df <-
-      broomExtra::tidy(
-        stats::kruskal.test(
-          formula = rlang::new_formula({{ y }}, {{ x }}),
-          data = data,
-          na.action = na.omit
-        )
+    mod <-
+      stats::kruskal.test(
+        formula = rlang::new_formula({{ y }}, {{ x }}),
+        data = data,
+        na.action = na.omit
       )
 
     # details for expression creator
     .f <- rcompanion::epsilonSquared
-    arg_list <- list(
-      x = data %>% dplyr::pull({{ y }}),
-      g = data %>% dplyr::pull({{ x }}),
-      group = "row",
-      reportIncomplete = FALSE
-    )
+    arg_list <-
+      list(
+        x = data %>% dplyr::pull({{ y }}),
+        g = data %>% dplyr::pull({{ x }}),
+        group = "row",
+        reportIncomplete = FALSE
+      )
     sample_size <- nrow(data)
     n.text <- quote(italic("n")["obs"])
     statistic.text <- quote(chi["Kruskal-Wallis"]^2)
@@ -437,7 +435,7 @@ expr_anova_nonparametric <- function(data,
   expr_template(
     stat.title = stat.title,
     no.parameters = 1L,
-    stats.df = stats_df,
+    stats.df = broomExtra::tidy(mod),
     effsize.df = effsize_df,
     statistic.text = statistic.text,
     effsize.text = effsize.text,
@@ -527,7 +525,7 @@ expr_anova_robust <- function(data,
 
   # have a proper cleanup with NA removal
   data %<>%
-    long_to_wide_converter(
+    ipmisc::long_to_wide_converter(
       data = .,
       x = {{ x }},
       y = {{ y }},
