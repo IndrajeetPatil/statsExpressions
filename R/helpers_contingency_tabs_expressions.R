@@ -123,7 +123,18 @@ expr_contingency_tab <- function(data,
       )
   }
 
-  # y
+  # =============================== association tests ========================
+
+  # sample size
+  sample_size <- nrow(data)
+
+  # ratio
+  if (is.null(ratio)) {
+    x_vec <- data %>% dplyr::pull({{ x }})
+    ratio <- rep(1 / length(table(x_vec)), length(table(x_vec)))
+  }
+
+  # association tests
   if (!rlang::quo_is_null(rlang::enquo(y))) {
     # drop the unused levels of the column variable
     data %<>% dplyr::mutate(.data = ., {{ y }} := droplevels(as.factor({{ y }})))
@@ -141,21 +152,6 @@ expr_contingency_tab <- function(data,
       # return early
       return(NULL)
     }
-  }
-
-  # =============================== association tests ========================
-
-  # sample size
-  sample_size <- nrow(data)
-
-  # ratio
-  if (is.null(ratio)) {
-    x_vec <- data %>% dplyr::pull({{ x }})
-    ratio <- rep(1 / length(table(x_vec)), length(table(x_vec)))
-  }
-
-  # association tests
-  if (!rlang::quo_is_null(rlang::enquo(y))) {
 
     # creating a matrix with frequencies and cleaning it up
     x_arg <- as.matrix(table(data %>% dplyr::pull({{ x }}), data %>% dplyr::pull({{ y }})))

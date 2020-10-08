@@ -136,7 +136,7 @@ expr_t_onesample <- function(data,
         correction = FALSE,
         ci = conf.level
       ) %>%
-      broomExtra::easystats_to_tidy_names(.)
+      ipmisc::easystats_to_tidy_names(.)
 
     # preparing subtitle parameters
     statistic.text <- quote(italic("t")["Student"])
@@ -148,15 +148,14 @@ expr_t_onesample <- function(data,
   if (stats.type == "nonparametric") {
     # setting up the Mann-Whitney U-test and getting its summary
     stats_df <-
-      broomExtra::tidy(
-        stats::wilcox.test(
-          x = data %>% dplyr::pull({{ x }}),
-          alternative = "two.sided",
-          na.action = na.omit,
-          mu = test.value,
-          exact = FALSE
-        )
+      stats::wilcox.test(
+        x = data %>% dplyr::pull({{ x }}),
+        alternative = "two.sided",
+        na.action = na.omit,
+        mu = test.value,
+        exact = FALSE
       ) %>%
+      broomExtra::tidy(.) %>%
       dplyr::mutate(.data = ., statistic = log(statistic))
 
     # effect size dataframe
