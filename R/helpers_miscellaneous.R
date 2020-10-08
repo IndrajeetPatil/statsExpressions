@@ -5,9 +5,6 @@
 #'   for the statistical test. Can be `0` for non-parametric tests, `1` for
 #'   tests based on *t*-statistic or chi-squared statistic, `2` for tests based
 #'   on *F*-statistic.
-#' @param stat.title A character describing the test being run, which will be
-#'   added as a prefix in the subtitle. The default is `NULL`. An example of a
-#'   `stat.title` argument will be something like `"Student's t-test: "`.
 #' @param stats.df A dataframe containing the following columns:
 #' \itemize{
 #'   \item *statistic*: the numeric value of a statistic.
@@ -81,7 +78,6 @@
 
 # function body
 expr_template <- function(no.parameters,
-                          stat.title = NULL,
                           statistic.text,
                           stats.df,
                           effsize.text,
@@ -111,7 +107,6 @@ expr_template <- function(no.parameters,
     subtitle <-
       substitute(
         expr = paste(
-          stat.title,
           statistic.text,
           " = ",
           statistic,
@@ -135,7 +130,6 @@ expr_template <- function(no.parameters,
           n
         ),
         env = list(
-          stat.title = stat.title,
           statistic.text = statistic.text,
           statistic = specify_decimal_p(x = statistic, k = k),
           p.value = specify_decimal_p(x = p.value, k = k, p.value = TRUE),
@@ -160,7 +154,6 @@ expr_template <- function(no.parameters,
     subtitle <-
       substitute(
         expr = paste(
-          stat.title,
           statistic.text,
           "(",
           parameter,
@@ -186,7 +179,6 @@ expr_template <- function(no.parameters,
           n
         ),
         env = list(
-          stat.title = stat.title,
           statistic.text = statistic.text,
           statistic = specify_decimal_p(x = statistic, k = k),
           parameter = specify_decimal_p(x = parameter, k = k.parameter),
@@ -213,7 +205,6 @@ expr_template <- function(no.parameters,
     subtitle <-
       substitute(
         expr = paste(
-          stat.title,
           statistic.text,
           "(",
           parameter1,
@@ -241,7 +232,6 @@ expr_template <- function(no.parameters,
           n
         ),
         env = list(
-          stat.title = stat.title,
           statistic.text = statistic.text,
           statistic = specify_decimal_p(x = statistic, k = k),
           parameter1 = specify_decimal_p(x = parameter, k = k.parameter),

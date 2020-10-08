@@ -79,11 +79,10 @@ expr_meta_parametric <- function(data,
   # preparing the subtitle
   subtitle <-
     expr_template(
-      stat.title = "Summary effect: ",
       stats.df = df_tidy,
       effsize.df = df_tidy,
       statistic.text = quote(italic("z")),
-      effsize.text = quote(widehat(beta)),
+      effsize.text = quote(widehat(beta)["summary"]^"meta"),
       n = nrow(data),
       n.text = quote(italic("n")["effects"]),
       no.parameters = 0L,
@@ -200,11 +199,10 @@ expr_meta_robust <- function(data,
 
   # preparing the subtitle
   expr_template(
-    stat.title = "Summary effect: ",
     stats.df = df_tidy,
     effsize.df = df_tidy,
     statistic.text = quote(italic("z")),
-    effsize.text = quote(widehat(beta)),
+    effsize.text = quote(widehat(beta)["summary"]^"meta"),
     n = nrow(data),
     n.text = quote(italic("n")["effects"]),
     no.parameters = 0L,

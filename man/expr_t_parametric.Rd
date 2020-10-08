@@ -13,7 +13,6 @@ expr_t_parametric(
   conf.level = 0.95,
   effsize.type = "g",
   var.equal = FALSE,
-  stat.title = NULL,
   ...
 )
 }
@@ -45,10 +44,6 @@ argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \em
     performed.  If \code{FALSE}, an approximate method of Welch (1951)
     is used, which generalizes the commonly known 2-sample Welch test to
     the case of arbitrarily many samples.}
-
-\item{stat.title}{A character describing the test being run, which will be
-added as a prefix in the subtitle. The default is \code{NULL}. An example of a
-\code{stat.title} argument will be something like \code{"Student's t-test: "}.}
 
 \item{...}{Additional arguments (currently ignored).}
 }

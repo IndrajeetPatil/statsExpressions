@@ -165,7 +165,6 @@ more, see <code><a href='https://wviechtb.github.io/metafor/reference/rma.uni.ht
   conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
   output <span class='op'>=</span> <span class='st'>"subtitle"</span>,
   caption <span class='op'>=</span> <span class='cn'>NULL</span>,
-  messages <span class='op'>=</span> <span class='cn'>TRUE</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -200,10 +199,6 @@ summary will be returned.</p></td>
       <th>caption</th>
       <td><p>Text to display as caption. This argument is relevant only
 when <code>output = "caption"</code>.</p></td>
-    </tr>
-    <tr>
-      <th>messages</th>
-      <td><p>Deprecated. Retained only for backward compatibility.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -266,18 +261,20 @@ when <code>output = "caption"</code>.</p></td>
 <span class='co'># making subtitle</span>
 <span class='fu'>expr_meta_parametric</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>df</span>,
-  k <span class='op'>=</span> <span class='fl'>3</span>,
-  messages <span class='op'>=</span> <span class='cn'>FALSE</span>
+  k <span class='op'>=</span> <span class='fl'>3</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in specify_decimal_p(x = statistic, k = k): could not find function "specify_decimal_p"</span></div><div class='input'>
+</div><div class='output co'>#&gt; paste(italic("z"), " = ", "-3.619", ", ", italic("p"), " = ", 
+#&gt;     "2.95e-04", ", ", widehat(beta)["summary"]^"meta", " = ", 
+#&gt;     "-0.767", ", CI"["95%"], " [", "-1.182", ", ", "-0.351", 
+#&gt;     "]", ", ", italic("n")["effects"], " = ", 16L)</div><div class='input'>
 <span class='co'># making caption</span>
 <span class='fu'>expr_meta_parametric</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>df</span>,
-  k <span class='op'>=</span> <span class='fl'>2</span>,
-  messages <span class='op'>=</span> <span class='cn'>FALSE</span>,
   output <span class='op'>=</span> <span class='st'>"caption"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in specify_decimal_p(x = statistic, k = k): could not find function "specify_decimal_p"</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; atop(displaystyle(NULL), expr = paste("Heterogeneity: ", italic("Q"), 
+#&gt;     "(", "15", ") = ", "47", ", ", italic("p"), " = ", "3.6e-05", 
+#&gt;     ", ", tau["REML"]^2, " = ", "0.29", ", ", "I"^2, " = ", "73.64%"))</div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

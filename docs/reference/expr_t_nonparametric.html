@@ -163,7 +163,6 @@
   conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
   conf.type <span class='op'>=</span> <span class='st'>"norm"</span>,
   nboot <span class='op'>=</span> <span class='fl'>100</span>,
-  stat.title <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -212,12 +211,6 @@ intervals required. The value should be any subset of the values <code>"norm"</c
 for the effect size (Default: <code>100</code>).</p></td>
     </tr>
     <tr>
-      <th>stat.title</th>
-      <td><p>A character describing the test being run, which will be
-added as a prefix in the subtitle. The default is <code>NULL</code>. An example of a
-<code>stat.title</code> argument will be something like <code>"Student's t-test: "</code>.</p></td>
-    </tr>
-    <tr>
       <th>...</th>
       <td><p>Additional arguments (currently ignored).</p></td>
     </tr>
@@ -259,7 +252,10 @@ below.</p>
   x <span class='op'>=</span> <span class='va'>group</span>,
   y <span class='op'>=</span> <span class='va'>extra</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error: could not find function "long_to_wide_converter"</span></div><div class='input'>
+</div><div class='output co'>#&gt; paste("log"["e"](italic("W")["Mann-Whitney"]), " = ", "3.24", 
+#&gt;     ", ", italic("p"), " = ", "0.069", ", ", widehat(italic("r")), 
+#&gt;     " = ", "-0.41", ", CI"["95%"], " [", "-0.84", ", ", "-0.04", 
+#&gt;     "]", ", ", italic("n")["obs"], " = ", 20L)</div><div class='input'>
 <span class='co'># creating a smaller dataset</span>
 <span class='va'>msleep_short</span> <span class='op'>&lt;-</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span>
   .data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
@@ -275,7 +271,10 @@ below.</p>
   conf.level <span class='op'>=</span> <span class='fl'>0.99</span>,
   conf.type <span class='op'>=</span> <span class='st'>"bca"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error: could not find function "long_to_wide_converter"</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: extreme order statistics used as endpoints</span></div><div class='output co'>#&gt; paste("log"["e"](italic("W")["Mann-Whitney"]), " = ", "5.05", 
+#&gt;     ", ", italic("p"), " = ", "0.179", ", ", widehat(italic("r")), 
+#&gt;     " = ", "0.23", ", CI"["99%"], " [", "-0.28", ", ", "0.63", 
+#&gt;     "]", ", ", italic("n")["obs"], " = ", 34L)</div><div class='input'>
 <span class='co'># The order of the grouping factor matters when computing *V*</span>
 <span class='co'># Changing default alphabetical order manually</span>
 <span class='va'>msleep_short</span><span class='op'>$</span><span class='va'>vore</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>msleep_short</span><span class='op'>$</span><span class='va'>vore</span>, levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"herbi"</span>, <span class='st'>"carni"</span><span class='op'>)</span><span class='op'>)</span>
@@ -287,7 +286,10 @@ below.</p>
   x <span class='op'>=</span> <span class='va'>vore</span>,
   y <span class='op'>=</span> <span class='va'>sleep_rem</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error: could not find function "long_to_wide_converter"</span></div><div class='input'>
+</div><div class='output co'>#&gt; paste("log"["e"](italic("W")["Mann-Whitney"]), " = ", "4.43", 
+#&gt;     ", ", italic("p"), " = ", "0.179", ", ", widehat(italic("r")), 
+#&gt;     " = ", "-0.23", ", CI"["95%"], " [", "-0.60", ", ", "0.12", 
+#&gt;     "]", ", ", italic("n")["obs"], " = ", 34L)</div><div class='input'>
 <span class='co'># -------------- within-subjects design ------------------------</span>
 
 <span class='co'># using dataset included in the package</span>
@@ -296,12 +298,12 @@ below.</p>
   x <span class='op'>=</span> <span class='va'>modality</span>,
   y <span class='op'>=</span> <span class='va'>score</span>,
   paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  conf.level <span class='op'>=</span> <span class='fl'>0.90</span>,
-  conf.type <span class='op'>=</span> <span class='st'>"perc"</span>,
-  nboot <span class='op'>=</span> <span class='fl'>200</span>,
-  k <span class='op'>=</span> <span class='fl'>4</span>
+  conf.level <span class='op'>=</span> <span class='fl'>0.90</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error: could not find function "long_to_wide_converter"</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; paste("log"["e"](italic("V")["Wilcoxon"]), " = ", "1.50", ", ", 
+#&gt;     italic("p"), " = ", "0.001", ", ", widehat(italic("r")), 
+#&gt;     " = ", "-0.57", ", CI"["90%"], " [", "-0.68", ", ", "-0.46", 
+#&gt;     "]", ", ", italic("n")["pairs"], " = ", 34L)</div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

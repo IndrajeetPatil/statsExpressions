@@ -165,23 +165,6 @@
   conf.type <span class='op'>=</span> <span class='st'>"norm"</span>,
   nboot <span class='op'>=</span> <span class='fl'>100L</span>,
   paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  stat.title <span class='op'>=</span> <span class='cn'>NULL</span>,
-  bias.correct <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  <span class='va'>...</span>
-<span class='op'>)</span>
-
-<span class='fu'>expr_onesample_proptest</span><span class='op'>(</span>
-  <span class='va'>data</span>,
-  <span class='va'>x</span>,
-  y <span class='op'>=</span> <span class='cn'>NULL</span>,
-  counts <span class='op'>=</span> <span class='cn'>NULL</span>,
-  ratio <span class='op'>=</span> <span class='cn'>NULL</span>,
-  k <span class='op'>=</span> <span class='fl'>2L</span>,
-  conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
-  conf.type <span class='op'>=</span> <span class='st'>"norm"</span>,
-  nboot <span class='op'>=</span> <span class='fl'>100L</span>,
-  paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  stat.title <span class='op'>=</span> <span class='cn'>NULL</span>,
   bias.correct <span class='op'>=</span> <span class='cn'>TRUE</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
@@ -247,13 +230,6 @@ test subtitle will be returned. If <code>FALSE</code>, Pearson's chi-square test
 be returned.</p></td>
     </tr>
     <tr>
-      <th>stat.title</th>
-      <td><p>Title for the effect being investigated with the chi-square
-test. The default is <code>NULL</code>, i.e. no title will be added to describe the
-effect being shown. An example of a <code>stat.title</code> argument will be something
-like <code>"main x condition"</code> or <code>"interaction"</code>.</p></td>
-    </tr>
-    <tr>
       <th>bias.correct</th>
       <td><p>If <code>TRUE</code> (default), a bias correction will be applied to
 Cramer's <em>V</em>.</p></td>
@@ -296,7 +272,10 @@ intervals were computed, see documentation in <code><a href='https://rdrr.io/pkg
   paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
   nboot <span class='op'>=</span> <span class='fl'>15</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Chi-squared approximation may be incorrect</span></div><div class='output co'>#&gt; <span class='error'>Error in specify_decimal_p(x = statistic, k = k): could not find function "specify_decimal_p"</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Chi-squared approximation may be incorrect</span></div><div class='output co'>#&gt; paste(chi["Pearson"]^2, "(", "2", ") = ", "8.74", ", ", italic("p"), 
+#&gt;     " = ", "0.013", ", ", widehat(italic("V"))["Cramer"], " = ", 
+#&gt;     "0.46", ", CI"["95%"], " [", "0.10", ", ", "0.68", "]", ", ", 
+#&gt;     italic("n")["obs"], " = ", 32L)</div><div class='input'>
 <span class='co'># ------------------------ goodness of fit tests ---------------------------</span>
 
 <span class='co'># for reproducibility</span>
@@ -309,7 +288,10 @@ intervals were computed, see documentation in <code><a href='https://rdrr.io/pkg
   counts <span class='op'>=</span> <span class='va'>Freq</span>,
   ratio <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.2</span>, <span class='fl'>0.2</span>, <span class='fl'>0.3</span>, <span class='fl'>0.3</span><span class='op'>)</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in specify_decimal_p(x = statistic, k = k): could not find function "specify_decimal_p"</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; paste(chi["gof"]^2, "(", "3", ") = ", "278.96", ", ", italic("p"), 
+#&gt;     " = ", "3.56e-60", ", ", widehat(italic("V"))["Cramer"], 
+#&gt;     " = ", "0.40", ", CI"["95%"], " [", "0.35", ", ", "0.43", 
+#&gt;     "]", ", ", italic("n")["obs"], " = ", 592L)</div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

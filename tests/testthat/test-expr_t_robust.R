@@ -21,7 +21,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("t")["Yuen"],
           "(",
           "119",
@@ -74,7 +73,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("t")["Yuen"],
           "(",
           "71",
@@ -131,7 +129,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("t")["Yuen"],
           "(",
           "24.816",
@@ -185,7 +182,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("t")["Yuen"],
           "(",
           "20.9388",

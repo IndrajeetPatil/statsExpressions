@@ -2,7 +2,6 @@
 % Please edit documentation in R/helpers_contingency_tabs_expressions.R
 \name{expr_contingency_tab}
 \alias{expr_contingency_tab}
-\alias{expr_onesample_proptest}
 \title{Making expression for contingency table and goodness of fit tests}
 \usage{
 expr_contingency_tab(
@@ -16,23 +15,6 @@ expr_contingency_tab(
   conf.type = "norm",
   nboot = 100L,
   paired = FALSE,
-  stat.title = NULL,
-  bias.correct = TRUE,
-  ...
-)
-
-expr_onesample_proptest(
-  data,
-  x,
-  y = NULL,
-  counts = NULL,
-  ratio = NULL,
-  k = 2L,
-  conf.level = 0.95,
-  conf.type = "norm",
-  nboot = 100L,
-  paired = FALSE,
-  stat.title = NULL,
   bias.correct = TRUE,
   ...
 )
@@ -74,11 +56,6 @@ for the effect size (Default: \code{100}).}
 repeated measures design study (Default: \code{FALSE}). If \code{TRUE}, McNemar's
 test subtitle will be returned. If \code{FALSE}, Pearson's chi-square test will
 be returned.}
-
-\item{stat.title}{Title for the effect being investigated with the chi-square
-test. The default is \code{NULL}, i.e. no title will be added to describe the
-effect being shown. An example of a \code{stat.title} argument will be something
-like \code{"main x condition"} or \code{"interaction"}.}
 
 \item{bias.correct}{If \code{TRUE} (default), a bias correction will be applied to
 Cramer's \emph{V}.}

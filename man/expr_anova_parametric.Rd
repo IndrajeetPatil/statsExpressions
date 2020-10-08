@@ -15,7 +15,6 @@ expr_anova_parametric(
   partial = TRUE,
   var.equal = FALSE,
   sphericity.correction = TRUE,
-  stat.title = NULL,
   ...
 )
 }
@@ -56,10 +55,6 @@ argument can be \code{"biased"} (equivalent to \code{"d"} for Cohen's \emph{d} f
 \item{sphericity.correction}{Logical that decides whether to apply correction
 to account for violation of sphericity in a repeated measures design ANOVA
 (Default: \code{TRUE}).}
-
-\item{stat.title}{A character describing the test being run, which will be
-added as a prefix in the subtitle. The default is \code{NULL}. An example of a
-\code{stat.title} argument will be something like \code{"Student's t-test: "}.}
 
 \item{...}{Additional arguments (currently ignored).}
 }

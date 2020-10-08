@@ -167,7 +167,6 @@ using <code><a href='https://easystats.github.io/effectsize/reference/eta_square
   partial <span class='op'>=</span> <span class='cn'>TRUE</span>,
   var.equal <span class='op'>=</span> <span class='cn'>FALSE</span>,
   sphericity.correction <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  stat.title <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -232,12 +231,6 @@ to account for violation of sphericity in a repeated measures design ANOVA
 (Default: <code>TRUE</code>).</p></td>
     </tr>
     <tr>
-      <th>stat.title</th>
-      <td><p>A character describing the test being run, which will be
-added as a prefix in the subtitle. The default is <code>NULL</code>. An example of a
-<code>stat.title</code> argument will be something like <code>"Student's t-test: "</code>.</p></td>
-    </tr>
-    <tr>
       <th>...</th>
       <td><p>Additional arguments (currently ignored).</p></td>
     </tr>
@@ -268,7 +261,10 @@ omega-squared and partial eta-squared are supported.</p>
   paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
   k <span class='op'>=</span> <span class='fl'>3</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error: could not find function "long_to_wide_converter"</span></div><div class='input'>
+</div><div class='output co'>#&gt; paste(italic("F")["Welch"], "(", "3", ",", "11.101", ") = ", 
+#&gt;     "2.633", ", ", italic("p"), " = ", "0.102", ", ", widehat(omega["p"]^2), 
+#&gt;     " = ", "0.144", ", CI"["95%"], " [", "-0.042", ", ", "0.314", 
+#&gt;     "]", ", ", italic("n")["obs"], " = ", 56L)</div><div class='input'>
 <span class='co'># modifying the defaults</span>
 <span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_anova_parametric</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
@@ -279,7 +275,10 @@ omega-squared and partial eta-squared are supported.</p>
   partial <span class='op'>=</span> <span class='cn'>FALSE</span>,
   var.equal <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error: could not find function "long_to_wide_converter"</span></div><div class='input'>
+</div><div class='output co'>#&gt; paste(italic("F")["Fisher"], "(", "3", ",", "52", ") = ", "4.14", 
+#&gt;     ", ", italic("p"), " = ", "0.011", ", ", widehat(eta^2), 
+#&gt;     " = ", "0.19", ", CI"["95%"], " [", "0.01", ", ", "0.36", 
+#&gt;     "]", ", ", italic("n")["obs"], " = ", 56L)</div><div class='input'>
 <span class='co'># -------------------- repeated measures ------------------------------</span>
 
 <span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_anova_parametric</span><span class='op'>(</span>
@@ -289,7 +288,11 @@ omega-squared and partial eta-squared are supported.</p>
   paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
   k <span class='op'>=</span> <span class='fl'>4</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error: could not find function "long_to_wide_converter"</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; paste(italic("F")["Fisher"], "(", "1.1491", ",", "171.2174", 
+#&gt;     ") = ", "776.3182", ", ", italic("p"), " = ", "1.325e-69", 
+#&gt;     ", ", widehat(omega["p"]^2), " = ", "0.8376", ", CI"["95%"], 
+#&gt;     " [", "0.8143", ", ", "0.8567", "]", ", ", italic("n")["pairs"], 
+#&gt;     " = ", 150L)</div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

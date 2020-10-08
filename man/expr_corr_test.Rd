@@ -13,7 +13,6 @@ expr_corr_test(
   beta = 0.1,
   type = "parametric",
   bf.prior = 0.707,
-  stat.title = NULL,
   ...
 )
 }
@@ -47,10 +46,6 @@ parametric/pearson), \code{"np"} (nonparametric/spearman), \code{"r"} (robust),
 
 \item{bf.prior}{A number between \code{0.5} and \code{2} (default \code{0.707}), the prior
 width to use in calculating Bayes factors.}
-
-\item{stat.title}{A character describing the test being run, which will be
-added as a prefix in the subtitle. The default is \code{NULL}. An example of a
-\code{stat.title} argument will be something like \code{"Student's t-test: "}.}
 
 \item{...}{Additional arguments passed to
 \code{\link[parameters:model_parameters.BFBayesFactor]{parameters::model_parameters.BFBayesFactor()}}.}

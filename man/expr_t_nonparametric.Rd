@@ -13,7 +13,6 @@ expr_t_nonparametric(
   conf.level = 0.95,
   conf.type = "norm",
   nboot = 100,
-  stat.title = NULL,
   ...
 )
 }
@@ -42,10 +41,6 @@ intervals required. The value should be any subset of the values \code{"norm"},
 
 \item{nboot}{Number of bootstrap samples for computing confidence interval
 for the effect size (Default: \code{100}).}
-
-\item{stat.title}{A character describing the test being run, which will be
-added as a prefix in the subtitle. The default is \code{NULL}. An example of a
-\code{stat.title} argument will be something like \code{"Student's t-test: "}.}
 
 \item{...}{Additional arguments (currently ignored).}
 }
@@ -122,10 +117,7 @@ statsExpressions::expr_t_nonparametric(
   x = modality,
   y = score,
   paired = TRUE,
-  conf.level = 0.90,
-  conf.type = "perc",
-  nboot = 200,
-  k = 4
+  conf.level = 0.90
 )
 }
 }

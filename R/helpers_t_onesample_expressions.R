@@ -89,7 +89,6 @@ expr_t_onesample <- function(data,
                              robust.estimator = "onestep",
                              effsize.type = "g",
                              nboot = 100L,
-                             stat.title = NULL,
                              ...) {
 
   # ====================== dataframe ========================================
@@ -183,7 +182,6 @@ expr_t_onesample <- function(data,
   if (stats.type %in% c("parametric", "nonparametric")) {
     subtitle <-
       expr_template(
-        stat.title = stat.title,
         no.parameters = no.parameters,
         stats.df = stats_df,
         effsize.df = effsize_df,

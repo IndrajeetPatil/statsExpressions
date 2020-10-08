@@ -91,7 +91,6 @@ expr_anova_parametric <- function(data,
                                   partial = TRUE,
                                   var.equal = FALSE,
                                   sphericity.correction = TRUE,
-                                  stat.title = NULL,
                                   ...) {
 
   # make sure both quoted and unquoted arguments are allowed
@@ -112,7 +111,7 @@ expr_anova_parametric <- function(data,
 
   # omega
   if (effsize.type == "unbiased") {
-    effsize <- "omega"
+    .f <- effectsize::omega_squared
     if (isTRUE(partial)) {
       effsize.text <- quote(widehat(omega["p"]^2))
     } else {
@@ -122,7 +121,7 @@ expr_anova_parametric <- function(data,
 
   # eta
   if (effsize.type == "biased") {
-    effsize <- "eta"
+    .f <- effectsize::eta_squared
     if (isTRUE(partial)) {
       effsize.text <- quote(widehat(eta["p"]^2))
     } else {
@@ -130,7 +129,7 @@ expr_anova_parametric <- function(data,
     }
   }
 
-  # ============================ data preparation ==========================
+  # --------------------- data preparation --------------------------------
 
   # have a proper cleanup with NA removal
   data %<>%
@@ -215,7 +214,6 @@ expr_anova_parametric <- function(data,
       stats::oneway.test(
         formula = rlang::new_formula({{ y }}, {{ x }}),
         data = data,
-        subset = NULL,
         na.action = na.omit,
         var.equal = var.equal
       )
@@ -235,13 +233,6 @@ expr_anova_parametric <- function(data,
   }
 
   # ------------------- effect size computation ------------------------------
-
-  # function to compute effect sizes
-  if (effsize == "eta") {
-    .f <- effectsize::eta_squared
-  } else {
-    .f <- effectsize::omega_squared
-  }
 
   # computing effect size
   effsize_df <-
@@ -265,7 +256,6 @@ expr_anova_parametric <- function(data,
 
   # preparing subtitle
   expr_template(
-    stat.title = stat.title,
     no.parameters = 2L,
     stats.df = stats_df,
     effsize.df = effsize_df,
@@ -345,7 +335,6 @@ expr_anova_nonparametric <- function(data,
                                      conf.level = 0.95,
                                      conf.type = "perc",
                                      nboot = 100L,
-                                     stat.title = NULL,
                                      ...) {
 
   # make sure both quoted and unquoted arguments are allowed
@@ -433,7 +422,6 @@ expr_anova_nonparametric <- function(data,
 
   # preparing subtitle
   expr_template(
-    stat.title = stat.title,
     no.parameters = 1L,
     stats.df = broomExtra::tidy(mod),
     effsize.df = effsize_df,
@@ -488,9 +476,7 @@ expr_anova_nonparametric <- function(data,
 #'   x = state,
 #'   y = percollege,
 #'   paired = FALSE,
-#'   conf.level = 0.99,
-#'   tr = 0.2,
-#'   nboot = 10
+#'   conf.level = 0.99
 #' )
 #'
 #' # ------------------------ within-subjects -----------------------------
@@ -500,7 +486,6 @@ expr_anova_nonparametric <- function(data,
 #'   x = condition,
 #'   y = value,
 #'   paired = TRUE,
-#'   tr = 0.2,
 #'   k = 3
 #' )
 #' }
@@ -515,7 +500,6 @@ expr_anova_robust <- function(data,
                               conf.level = 0.95,
                               tr = 0.1,
                               nboot = 100L,
-                              stat.title = NULL,
                               ...) {
 
   # make sure both quoted and unquoted arguments are allowed
@@ -615,7 +599,6 @@ expr_anova_robust <- function(data,
     subtitle <-
       expr_template(
         no.parameters = 2L,
-        stat.title = stat.title,
         stats.df = stats_df,
         effsize.df = effsize_df,
         statistic.text = quote(italic("F")["trimmed-means"]),

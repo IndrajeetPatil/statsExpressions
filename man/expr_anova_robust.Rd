@@ -14,7 +14,6 @@ expr_anova_robust(
   conf.level = 0.95,
   tr = 0.1,
   nboot = 100L,
-  stat.title = NULL,
   ...
 )
 }
@@ -45,10 +44,6 @@ try to play around with the value of \code{tr}, which is by default set to
 
 \item{nboot}{Number of bootstrap samples for computing confidence interval
 for the effect size (Default: \code{100}).}
-
-\item{stat.title}{A character describing the test being run, which will be
-added as a prefix in the subtitle. The default is \code{NULL}. An example of a
-\code{stat.title} argument will be something like \code{"Student's t-test: "}.}
 
 \item{...}{Additional arguments (currently ignored).}
 }
@@ -83,9 +78,7 @@ expr_anova_robust(
   x = state,
   y = percollege,
   paired = FALSE,
-  conf.level = 0.99,
-  tr = 0.2,
-  nboot = 10
+  conf.level = 0.99
 )
 
 # ------------------------ within-subjects -----------------------------
@@ -95,7 +88,6 @@ statsExpressions::expr_anova_robust(
   x = condition,
   y = value,
   paired = TRUE,
-  tr = 0.2,
   k = 3
 )
 }

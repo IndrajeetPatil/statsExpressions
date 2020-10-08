@@ -6,7 +6,6 @@
 \usage{
 expr_template(
   no.parameters,
-  stat.title = NULL,
   statistic.text,
   stats.df,
   effsize.text,
@@ -25,10 +24,6 @@ expr_template(
 for the statistical test. Can be \code{0} for non-parametric tests, \code{1} for
 tests based on \emph{t}-statistic or chi-squared statistic, \code{2} for tests based
 on \emph{F}-statistic.}
-
-\item{stat.title}{A character describing the test being run, which will be
-added as a prefix in the subtitle. The default is \code{NULL}. An example of a
-\code{stat.title} argument will be something like \code{"Student's t-test: "}.}
 
 \item{statistic.text}{A character that specifies the relevant test statistic.
 For example, for tests with \emph{t}-statistic, \code{statistic.text = "t"}. If you

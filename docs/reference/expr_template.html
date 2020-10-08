@@ -156,7 +156,6 @@
 
     <pre class="usage"><span class='fu'>expr_template</span><span class='op'>(</span>
   <span class='va'>no.parameters</span>,
-  stat.title <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>statistic.text</span>,
   <span class='va'>stats.df</span>,
   <span class='va'>effsize.text</span>,
@@ -179,12 +178,6 @@
 for the statistical test. Can be <code>0</code> for non-parametric tests, <code>1</code> for
 tests based on <em>t</em>-statistic or chi-squared statistic, <code>2</code> for tests based
 on <em>F</em>-statistic.</p></td>
-    </tr>
-    <tr>
-      <th>stat.title</th>
-      <td><p>A character describing the test being run, which will be
-added as a prefix in the subtitle. The default is <code>NULL</code>. An example of a
-<code>stat.title</code> argument will be something like <code>"Student's t-test: "</code>.</p></td>
     </tr>
     <tr>
       <th>statistic.text</th>
@@ -286,7 +279,10 @@ can be <code><a href='https://rdrr.io/r/base/substitute.html'>quote(italic("n")[
   k <span class='op'>=</span> <span class='fl'>3L</span>,
   k.parameter <span class='op'>=</span> <span class='fl'>3L</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in specify_decimal_p(x = statistic, k = k): could not find function "specify_decimal_p"</span></div></pre>
+</div><div class='output co'>#&gt; paste(italic("t"), "(", "29.234", ") = ", "5.494", ", ", italic("p"), 
+#&gt;     " = ", "1e-05", ", ", italic("d"), " = ", "-1.980", ", CI"["95%"], 
+#&gt;     " [", "-2.873", ", ", "-1.088", "]", ", ", italic("n"), " = ", 
+#&gt;     32L)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

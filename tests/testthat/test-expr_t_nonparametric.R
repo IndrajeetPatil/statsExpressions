@@ -22,7 +22,6 @@ testthat::test_that(
     results <-
       ggplot2::expr(
         paste(
-          NULL,
           "log"["e"](italic("W")["Mann-Whitney"]),
           " = ",
           "5.440",
@@ -120,7 +119,6 @@ testthat::test_that(
     results2 <-
       ggplot2::expr(
         paste(
-          NULL,
           "log"["e"](italic("V")["Wilcoxon"]),
           " = ",
           "2.30259",

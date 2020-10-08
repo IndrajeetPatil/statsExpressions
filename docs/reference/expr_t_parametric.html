@@ -163,7 +163,6 @@
   conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
   effsize.type <span class='op'>=</span> <span class='st'>"g"</span>,
   var.equal <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  stat.title <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -215,12 +214,6 @@ argument can be <code>"d"</code> (for Cohen's <em>d</em>) or <code>"g"</code> (f
     the case of arbitrarily many samples.</p></td>
     </tr>
     <tr>
-      <th>stat.title</th>
-      <td><p>A character describing the test being run, which will be
-added as a prefix in the subtitle. The default is <code>NULL</code>. An example of a
-<code>stat.title</code> argument will be something like <code>"Student's t-test: "</code>.</p></td>
-    </tr>
-    <tr>
       <th>...</th>
       <td><p>Additional arguments (currently ignored).</p></td>
     </tr>
@@ -268,7 +261,10 @@ non-central Student-<em>t</em> distributions.</p>
   x <span class='op'>=</span> <span class='va'>vore</span>,
   y <span class='op'>=</span> <span class='va'>sleep_rem</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error: could not find function "long_to_wide_converter"</span></div><div class='input'>
+</div><div class='output co'>#&gt; paste(italic("t")["Welch"], "(", "10.89", ") = ", "1.49", ", ", 
+#&gt;     italic("p"), " = ", "0.164", ", ", widehat(italic("g"))["Hedge"], 
+#&gt;     " = ", "0.61", ", CI"["95%"], " [", "-0.19", ", ", "1.28", 
+#&gt;     "]", ", ", italic("n")["obs"], " = ", 34L)</div><div class='input'>
 <span class='co'># changing defaults (getting expression as output)</span>
 <span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_t_parametric</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>msleep_short</span>,
@@ -277,7 +273,10 @@ non-central Student-<em>t</em> distributions.</p>
   var.equal <span class='op'>=</span> <span class='cn'>TRUE</span>,
   effsize.type <span class='op'>=</span> <span class='st'>"d"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error: could not find function "long_to_wide_converter"</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; paste(italic("t")["Student"], "(", "32", ") = ", "1.95", ", ", 
+#&gt;     italic("p"), " = ", "0.060", ", ", widehat(italic("d"))["Cohen"], 
+#&gt;     " = ", "0.73", ", CI"["95%"], " [", "-0.03", ", ", "1.49", 
+#&gt;     "]", ", ", italic("n")["obs"], " = ", 34L)</div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

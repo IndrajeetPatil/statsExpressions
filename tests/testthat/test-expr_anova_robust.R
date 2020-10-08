@@ -24,7 +24,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("F")["trimmed-means"],
           "(",
           "2",
@@ -75,7 +74,6 @@ testthat::test_that(
     results2 <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("F")["trimmed-means"],
           "(",
           "2",

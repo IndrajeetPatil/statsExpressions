@@ -12,7 +12,6 @@ testthat::test_that(
     subtitle <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("W"),
           " = ",
           "8.74",
@@ -80,7 +79,6 @@ testthat::test_that(
     subtitle <-
       ggplot2::expr(
         paste(
-          NULL,
           italic(chi)^2,
           "(",
           "2",
@@ -149,7 +147,6 @@ testthat::test_that(
     subtitle <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("F"),
           "(",
           "3",

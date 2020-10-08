@@ -35,7 +35,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("F")["Welch"],
           "(",
           "8",
@@ -67,7 +66,6 @@ testthat::test_that(
     results2 <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("F")["Welch"],
           "(",
           "8",
@@ -129,7 +127,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("F")["Welch"],
           "(",
           "3",
@@ -186,7 +183,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("F")["Welch"],
           "(",
           "3",
@@ -244,7 +240,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("F")["Fisher"],
           "(",
           "3",
@@ -319,7 +314,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("F")["Welch"],
           "(",
           "3",
@@ -352,7 +346,6 @@ testthat::test_that(
     results2 <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("F")["Welch"],
           "(",
           "3",
@@ -414,7 +407,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("F")["Fisher"],
           "(",
           "1.149",
@@ -475,7 +467,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("F")["Fisher"],
           "(",
           "2",
@@ -525,7 +516,6 @@ testthat::test_that(
     results2 <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("F")["Fisher"],
           "(",
           "1.54700",
@@ -664,7 +654,6 @@ testthat::test_that(
     testthat::expect_identical(
       p_sub,
       ggplot2::expr(paste(
-        NULL,
         italic("F")["Fisher"],
         "(",
         "6",

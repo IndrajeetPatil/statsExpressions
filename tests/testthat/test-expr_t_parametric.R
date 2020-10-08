@@ -29,7 +29,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("t")["Student"],
           "(",
           "612",
@@ -92,7 +91,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("t")["Welch"],
           "(",
           "271.302",
@@ -151,7 +149,6 @@ testthat::test_that(
     expected <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("t")["Student"],
           "(",
           "149",
@@ -207,7 +204,6 @@ testthat::test_that(
     expected <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("t")["Student"],
           "(",
           "89",

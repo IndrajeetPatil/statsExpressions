@@ -29,7 +29,6 @@ testthat::test_that(
       results1,
       ggplot2::expr(
         paste(
-          "Summary effect: ",
           italic("z"),
           " = ",
           "-1.8844",
@@ -38,7 +37,7 @@ testthat::test_that(
           " = ",
           "0.0230",
           ", ",
-          widehat(beta),
+          widehat(beta)["summary"]^"meta",
           " = ",
           "-0.6930",
           ", CI"["95%"],

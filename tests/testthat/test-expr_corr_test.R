@@ -21,7 +21,6 @@ testthat::test_that(
     expected <-
       ggplot2::expr(
         paste(
-          NULL,
           "log"["e"](italic("S")),
           " = ",
           "10.63231",
@@ -62,7 +61,6 @@ testthat::test_that(
     expected2 <-
       ggplot2::expr(
         paste(
-          NULL,
           "log"["e"](italic("S")),
           " = ",
           "9.24",
@@ -114,7 +112,6 @@ testthat::test_that(
     expected <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("t")["Student"],
           "(",
           "46",
@@ -169,7 +166,6 @@ testthat::test_that(
     expected <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("t")["Student"],
           "(",
           "54",

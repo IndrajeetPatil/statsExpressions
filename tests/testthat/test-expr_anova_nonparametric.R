@@ -23,7 +23,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           chi["Kruskal-Wallis"]^2,
           "(",
           "8",
@@ -72,7 +71,6 @@ testthat::test_that(
     results2 <-
       ggplot2::expr(
         paste(
-          NULL,
           chi["Kruskal-Wallis"]^2,
           "(",
           "3",
@@ -130,7 +128,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           chi["Friedman"]^2,
           "(",
           "3",
@@ -179,7 +176,6 @@ testthat::test_that(
     results2 <-
       ggplot2::expr(
         paste(
-          NULL,
           chi["Friedman"]^2,
           "(",
           "3",

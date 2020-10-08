@@ -74,7 +74,6 @@ expr_t_parametric <- function(data,
                               conf.level = 0.95,
                               effsize.type = "g",
                               var.equal = FALSE,
-                              stat.title = NULL,
                               ...) {
 
   # make sure both quoted and unquoted arguments are supported
@@ -117,14 +116,15 @@ expr_t_parametric <- function(data,
 
   # setting up the t-test model and getting its summary
   stats_df <-
-    broomExtra::tidy(stats::t.test(
+    stats::t.test(
       formula = rlang::new_formula({{ y }}, {{ x }}),
       data = data,
       paired = paired,
       alternative = "two.sided",
       var.equal = var.equal,
       na.action = na.omit
-    ))
+    ) %>%
+    broomExtra::tidy(.)
 
   # effect size object
   effsize_df <-
@@ -152,7 +152,6 @@ expr_t_parametric <- function(data,
   # preparing subtitle
   expr_template(
     no.parameters = 1L,
-    stat.title = stat.title,
     stats.df = stats_df,
     effsize.df = effsize_df,
     statistic.text = statistic.text,
@@ -250,10 +249,7 @@ expr_t_parametric <- function(data,
 #'   x = modality,
 #'   y = score,
 #'   paired = TRUE,
-#'   conf.level = 0.90,
-#'   conf.type = "perc",
-#'   nboot = 200,
-#'   k = 4
+#'   conf.level = 0.90
 #' )
 #' }
 #' @export
@@ -267,7 +263,6 @@ expr_t_nonparametric <- function(data,
                                  conf.level = 0.95,
                                  conf.type = "norm",
                                  nboot = 100,
-                                 stat.title = NULL,
                                  ...) {
 
   # make sure both quoted and unquoted arguments are supported
@@ -305,14 +300,15 @@ expr_t_nonparametric <- function(data,
 
   # setting up the test and getting its summary
   stats_df <-
-    broomExtra::tidy(stats::wilcox.test(
+    stats::wilcox.test(
       formula = rlang::new_formula({{ y }}, {{ x }}),
       data = data,
       paired = paired,
       alternative = "two.sided",
       na.action = na.omit,
       exact = FALSE
-    )) %>%
+    ) %>%
+    broomExtra::tidy(.) %>%
     dplyr::mutate(.data = ., statistic = log(statistic))
 
   # computing effect size
@@ -336,7 +332,6 @@ expr_t_nonparametric <- function(data,
     no.parameters = 0L,
     stats.df = stats_df,
     effsize.df = effsize_df,
-    stat.title = stat.title,
     statistic.text = statistic.text,
     effsize.text = quote(widehat(italic("r"))),
     n = sample_size,
@@ -403,7 +398,6 @@ expr_t_robust <- function(data,
                           conf.level = 0.95,
                           tr = 0.1,
                           nboot = 100,
-                          stat.title = NULL,
                           ...) {
   # make sure both quoted and unquoted arguments are supported
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
@@ -505,7 +499,6 @@ expr_t_robust <- function(data,
     no.parameters = 1L,
     stats.df = stats_df,
     effsize.df = effsize_df,
-    stat.title = stat.title,
     statistic.text = quote(italic("t")["Yuen"]),
     effsize.text = effsize.text,
     n = nrow(data),

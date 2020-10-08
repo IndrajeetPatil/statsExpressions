@@ -1,5 +1,15 @@
 # statsExpressions 0.5.1.9000
 
+BREAKING CHANGES
+
+  - Removes the alias `expr_onesample_proptest`.
+
+MINOR CHANGES
+
+  - Retires the vestigial `stat.title` argument. It was originally intended to
+    give more info on the tests, but now the expressions themselves contain
+    these details.
+
 # statsExpressions 0.5.1
 
 MINOR CHANGES

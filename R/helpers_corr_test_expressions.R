@@ -61,7 +61,6 @@ expr_corr_test <- function(data,
                            beta = 0.1,
                            type = "parametric",
                            bf.prior = 0.707,
-                           stat.title = NULL,
                            ...) {
 
   # ============================ checking corr.method =======================
@@ -127,7 +126,6 @@ expr_corr_test <- function(data,
         no.parameters = no.parameters,
         stats.df = stats_df,
         effsize.df = effsize_df,
-        stat.title = stat.title,
         statistic.text = statistic.text,
         effsize.text = effsize.text,
         n = stats_df$n.obs[[1]],

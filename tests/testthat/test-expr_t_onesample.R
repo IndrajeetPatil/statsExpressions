@@ -22,7 +22,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("t")["Student"],
           "(",
           "78",
@@ -69,7 +68,6 @@ testthat::test_that(
     results2 <-
       ggplot2::expr(
         paste(
-          NULL,
           italic("t")["Student"],
           "(",
           "78",
@@ -126,7 +124,6 @@ testthat::test_that(
     results <-
       ggplot2::expr(
         paste(
-          NULL,
           "log"["e"](italic("V")["Wilcoxon"]),
           " = ",
           "6.6247",
@@ -169,7 +166,6 @@ testthat::test_that(
     results2 <-
       ggplot2::expr(
         paste(
-          NULL,
           "log"["e"](italic("V")["Wilcoxon"]),
           " = ",
           "5.5683",

@@ -13,7 +13,6 @@ expr_t_robust(
   conf.level = 0.95,
   tr = 0.1,
   nboot = 100,
-  stat.title = NULL,
   ...
 )
 }
@@ -44,10 +43,6 @@ try to play around with the value of \code{tr}, which is by default set to
 
 \item{nboot}{Number of bootstrap samples for computing confidence interval
 for the effect size (Default: \code{100}).}
-
-\item{stat.title}{A character describing the test being run, which will be
-added as a prefix in the subtitle. The default is \code{NULL}. An example of a
-\code{stat.title} argument will be something like \code{"Student's t-test: "}.}
 
 \item{...}{Additional arguments (currently ignored).}
 }

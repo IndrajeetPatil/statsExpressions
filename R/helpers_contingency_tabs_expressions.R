@@ -1,4 +1,5 @@
 #' @name expr_contingency_tab
+#' @rdname expr_contingency_tab
 #' @title Making expression for contingency table and goodness of fit tests
 #'
 #' @return Expression for contingency analysis (Pearson's chi-square test for
@@ -20,10 +21,6 @@
 #'   repeated measures design study (Default: `FALSE`). If `TRUE`, McNemar's
 #'   test subtitle will be returned. If `FALSE`, Pearson's chi-square test will
 #'   be returned.
-#' @param stat.title Title for the effect being investigated with the chi-square
-#'   test. The default is `NULL`, i.e. no title will be added to describe the
-#'   effect being shown. An example of a `stat.title` argument will be something
-#'   like `"main x condition"` or `"interaction"`.
 #' @param bias.correct If `TRUE` (default), a bias correction will be applied to
 #'   Cramer's *V*.
 #' @param ratio A vector of proportions: the expected proportions for the
@@ -90,7 +87,6 @@ expr_contingency_tab <- function(data,
                                  conf.type = "norm",
                                  nboot = 100L,
                                  paired = FALSE,
-                                 stat.title = NULL,
                                  bias.correct = TRUE,
                                  ...) {
 
@@ -235,7 +231,6 @@ expr_contingency_tab <- function(data,
     no.parameters = 1L,
     stats.df = broomExtra::tidy(stats_df),
     effsize.df = effsize_df,
-    stat.title = stat.title,
     statistic.text = statistic.text,
     effsize.text = effsize.text,
     n = sample_size,
@@ -244,11 +239,3 @@ expr_contingency_tab <- function(data,
     k = k
   )
 }
-
-# aliases -----------------------------------------------------------------
-
-#' @rdname expr_contingency_tab
-#' @aliases expr_contingency_tab
-#' @export
-
-expr_onesample_proptest <- expr_contingency_tab

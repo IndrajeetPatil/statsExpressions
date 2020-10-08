@@ -26,7 +26,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          "Testing",
           chi["Pearson"]^2,
           "(",
           "3",
@@ -70,7 +69,6 @@ testthat::test_that(
     results2 <-
       ggplot2::expr(
         paste(
-          NULL,
           chi["Pearson"]^2,
           "(",
           "1",
@@ -129,7 +127,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           chi["Pearson"]^2,
           "(",
           "15",
@@ -209,7 +206,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           chi["McNemar"]^2,
           "(",
           "1",
@@ -302,7 +298,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           chi["McNemar"]^2,
           "(",
           "1",
@@ -387,7 +382,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           chi["McNemar"]^2,
           "(",
           "6",
@@ -439,7 +433,6 @@ testthat::test_that(
     results2 <-
       ggplot2::expr(
         paste(
-          NULL,
           chi["McNemar"]^2,
           "(",
           "1",
@@ -483,7 +476,7 @@ testthat::test_that(
     # ggstatsplot output
     set.seed(123)
     using_function1 <-
-      statsExpressions::expr_onesample_proptest(
+      statsExpressions::expr_contingency_tab(
         data = mtcars,
         x = "am",
         legend.title = "Engine",
@@ -497,7 +490,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           chi["gof"]^2,
           "(",
           "1",
@@ -540,7 +532,6 @@ testthat::test_that(
     results2 <-
       ggplot2::expr(
         paste(
-          NULL,
           chi["gof"]^2,
           "(",
           "1",
@@ -582,7 +573,7 @@ testthat::test_that(
     # ggstatsplot output
     set.seed(123)
     using_function1 <-
-      statsExpressions::expr_onesample_proptest(
+      statsExpressions::expr_contingency_tab(
         data = as.data.frame(Titanic),
         x = Sex,
         counts = "Freq",
@@ -595,7 +586,6 @@ testthat::test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          NULL,
           chi["gof"]^2,
           "(",
           "1",
@@ -637,7 +627,7 @@ testthat::test_that(
     # from function
     set.seed(123)
     using_function <-
-      statsExpressions::expr_onesample_proptest(
+      statsExpressions::expr_contingency_tab(
         data = ggplot2::msleep,
         x = vore,
         ratio = c(0.2, 0.2, 0.3, 0.3),
@@ -649,7 +639,6 @@ testthat::test_that(
     expected <-
       ggplot2::expr(
         paste(
-          NULL,
           chi["gof"]^2,
           "(",
           "3",
@@ -693,12 +682,12 @@ testthat::test_that(
     df <- dplyr::filter(mtcars, am == "0")
 
     # subtitle
-    testthat::expect_null(statsExpressions::expr_onesample_proptest(
+    testthat::expect_null(statsExpressions::expr_contingency_tab(
       data = df,
       x = am
     ), NULL)
 
-    testthat::expect_null(statsExpressions::expr_onesample_proptest(
+    testthat::expect_null(statsExpressions::expr_contingency_tab(
       data = df,
       y = am,
       x = cyl,
@@ -721,7 +710,6 @@ testthat::test_that(
       sub,
       ggplot2::expr(
         paste(
-          NULL,
           chi["Pearson"]^2,
           "(",
           "2",
