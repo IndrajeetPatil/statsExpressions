@@ -161,13 +161,14 @@
       "@type": "SoftwareApplication",
       "identifier": "effectsize",
       "name": "effectsize",
+      "version": ">= 0.3.9.001",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=effectsize"
+      "sameAs": "https://github.com/easystats/effectsize"
     },
     {
       "@type": "SoftwareApplication",
@@ -192,7 +193,7 @@
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://github.com/IndrajeetPatil/ipmisc"
+      "sameAs": "https://CRAN.R-project.org/package=ipmisc"
     },
     {
       "@type": "SoftwareApplication",
@@ -333,6 +334,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3976.019KB",
+  "fileSize": "3971.837KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

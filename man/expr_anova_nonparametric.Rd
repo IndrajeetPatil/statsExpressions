@@ -66,7 +66,7 @@ library(statsExpressions)
 # -------------- within-subjects design --------------------------------
 
 # creating the subtitle
-statsExpressions::expr_anova_nonparametric(
+expr_anova_nonparametric(
   data = bugs_long,
   x = condition,
   y = desire,
@@ -77,7 +77,7 @@ statsExpressions::expr_anova_nonparametric(
 
 # -------------- between-subjects design --------------------------------
 
-statsExpressions::expr_anova_nonparametric(
+expr_anova_nonparametric(
   data = ggplot2::msleep,
   x = vore,
   y = sleep_rem,

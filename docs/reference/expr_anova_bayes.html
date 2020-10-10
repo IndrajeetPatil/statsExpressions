@@ -206,14 +206,14 @@ width to use in calculating Bayes factors.</p></td>
 
 <span class='co'># between-subjects ---------------------------------------</span>
 <span class='co'># with defaults</span>
-<span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_anova_bayes</span><span class='op'>(</span>
+<span class='fu'>expr_anova_bayes</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
   x <span class='op'>=</span> <span class='va'>vore</span>,
   y <span class='op'>=</span> <span class='va'>sleep_rem</span>
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; paste("log"["e"], "(BF"["10"], ") = ", "1.23")</div><div class='input'>
 <span class='co'># modifying the defaults</span>
-<span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_anova_bayes</span><span class='op'>(</span>
+<span class='fu'>expr_anova_bayes</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
   x <span class='op'>=</span> <span class='va'>vore</span>,
   y <span class='op'>=</span> <span class='va'>sleep_rem</span>,
@@ -222,7 +222,7 @@ width to use in calculating Bayes factors.</p></td>
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; paste("log"["e"], "(BF"["10"], ") = ", "1.153")</div><div class='input'>
 <span class='co'># repeated measures ---------------------------------------</span>
-<span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_anova_bayes</span><span class='op'>(</span>
+<span class='fu'>expr_anova_bayes</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>WRS2</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/WRS2/man/WineTasting.html'>WineTasting</a></span>,
   x <span class='op'>=</span> <span class='va'>Wine</span>,
   y <span class='op'>=</span> <span class='va'>Taste</span>,

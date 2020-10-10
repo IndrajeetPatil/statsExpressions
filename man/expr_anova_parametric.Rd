@@ -66,10 +66,6 @@ For more details, see-
 The effect sizes and their confidence intervals are computed
 using \code{effectsize::eta_squared} and \code{effectsize::omega_squared} functions.
 }
-\note{
-For repeated measures designs (\code{paired = TRUE}), only partial
-omega-squared and partial eta-squared are supported.
-}
 \examples{
 \donttest{
 # for reproducibility
@@ -79,7 +75,7 @@ library(statsExpressions)
 # -------------------- between-subjects ------------------------------
 
 # with defaults
-statsExpressions::expr_anova_parametric(
+expr_anova_parametric(
   data = ggplot2::msleep,
   x = vore,
   y = sleep_rem,
@@ -88,7 +84,7 @@ statsExpressions::expr_anova_parametric(
 )
 
 # modifying the defaults
-statsExpressions::expr_anova_parametric(
+expr_anova_parametric(
   data = ggplot2::msleep,
   x = vore,
   y = sleep_rem,
@@ -100,7 +96,7 @@ statsExpressions::expr_anova_parametric(
 
 # -------------------- repeated measures ------------------------------
 
-statsExpressions::expr_anova_parametric(
+expr_anova_parametric(
   data = iris_long,
   x = condition,
   y = value,

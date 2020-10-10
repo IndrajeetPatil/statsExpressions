@@ -4,9 +4,6 @@
 #' @return For more details, see-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
-#' @note For repeated measures designs (`paired = TRUE`), only partial
-#'   omega-squared and partial eta-squared are supported.
-#'
 #' @description The effect sizes and their confidence intervals are computed
 #'   using `effectsize::eta_squared` and `effectsize::omega_squared` functions.
 #'
@@ -49,7 +46,7 @@
 #' # -------------------- between-subjects ------------------------------
 #'
 #' # with defaults
-#' statsExpressions::expr_anova_parametric(
+#' expr_anova_parametric(
 #'   data = ggplot2::msleep,
 #'   x = vore,
 #'   y = sleep_rem,
@@ -58,7 +55,7 @@
 #' )
 #'
 #' # modifying the defaults
-#' statsExpressions::expr_anova_parametric(
+#' expr_anova_parametric(
 #'   data = ggplot2::msleep,
 #'   x = vore,
 #'   y = sleep_rem,
@@ -70,7 +67,7 @@
 #'
 #' # -------------------- repeated measures ------------------------------
 #'
-#' statsExpressions::expr_anova_parametric(
+#' expr_anova_parametric(
 #'   data = iris_long,
 #'   x = condition,
 #'   y = value,
@@ -105,9 +102,6 @@ expr_anova_parametric <- function(data,
 
   # figuring out which effect size to use
   effsize.type <- effsize_type_switch(effsize.type)
-
-  # some of the effect sizes don't work properly for paired designs
-  if (isTRUE(paired)) partial <- TRUE
 
   # omega
   if (effsize.type == "unbiased") {
@@ -304,7 +298,7 @@ expr_anova_parametric <- function(data,
 #' # -------------- within-subjects design --------------------------------
 #'
 #' # creating the subtitle
-#' statsExpressions::expr_anova_nonparametric(
+#' expr_anova_nonparametric(
 #'   data = bugs_long,
 #'   x = condition,
 #'   y = desire,
@@ -315,7 +309,7 @@ expr_anova_parametric <- function(data,
 #'
 #' # -------------- between-subjects design --------------------------------
 #'
-#' statsExpressions::expr_anova_nonparametric(
+#' expr_anova_nonparametric(
 #'   data = ggplot2::msleep,
 #'   x = vore,
 #'   y = sleep_rem,
@@ -462,7 +456,7 @@ expr_anova_nonparametric <- function(data,
 #' # ------------------------ between-subjects -----------------------------
 #'
 #' # going with the defaults
-#' statsExpressions::expr_anova_robust(
+#' expr_anova_robust(
 #'   data = ggplot2::midwest,
 #'   x = state,
 #'   y = percbelowpoverty,
@@ -481,7 +475,7 @@ expr_anova_nonparametric <- function(data,
 #'
 #' # ------------------------ within-subjects -----------------------------
 #'
-#' statsExpressions::expr_anova_robust(
+#' expr_anova_robust(
 #'   data = iris_long,
 #'   x = condition,
 #'   y = value,
@@ -633,14 +627,14 @@ expr_anova_robust <- function(data,
 #'
 #' # between-subjects ---------------------------------------
 #' # with defaults
-#' statsExpressions::expr_anova_bayes(
+#' expr_anova_bayes(
 #'   data = ggplot2::msleep,
 #'   x = vore,
 #'   y = sleep_rem
 #' )
 #'
 #' # modifying the defaults
-#' statsExpressions::expr_anova_bayes(
+#' expr_anova_bayes(
 #'   data = ggplot2::msleep,
 #'   x = vore,
 #'   y = sleep_rem,
@@ -649,7 +643,7 @@ expr_anova_robust <- function(data,
 #' )
 #'
 #' # repeated measures ---------------------------------------
-#' statsExpressions::expr_anova_bayes(
+#' expr_anova_bayes(
 #'   data = WRS2::WineTasting,
 #'   x = Wine,
 #'   y = Taste,

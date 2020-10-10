@@ -155,10 +155,8 @@ expr_contingency_tab <- function(data,
     # ======================== Pearson's test ================================
 
     if (isFALSE(paired)) {
-      # object containing stats
+      # computing stats and effect size + CI
       stats_df <- stats::chisq.test(x = x_arg, correct = FALSE)
-
-      # effect size text
       .f <- rcompanion::cramerV
       effsize.text <- quote(widehat(italic("V"))["Cramer"])
       statistic.text <- quote(chi["Pearson"]^2)
@@ -168,10 +166,8 @@ expr_contingency_tab <- function(data,
     # ======================== McNemar's test ================================
 
     if (isTRUE(paired)) {
-      # computing effect size + CI
+      # computing stats and effect size + CI
       stats_df <- stats::mcnemar.test(x = x_arg, correct = FALSE)
-
-      # effect size text
       .f <- rcompanion::cohenG
       effsize.text <- quote(widehat(italic("g"))["Cohen"])
       statistic.text <- quote(chi["McNemar"]^2)

@@ -9,6 +9,8 @@ MINOR CHANGES
   - Retires the vestigial `stat.title` argument. It was originally intended to
     give more info on the tests, but now the expressions themselves contain
     these details.
+    
+  - For paired ANOVA designs, `partial = TRUE` is recognized by effect sizes.
 
 # statsExpressions 0.5.1
 

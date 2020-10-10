@@ -236,7 +236,7 @@ epsilon-squared (for more, see <code><a href='https://rdrr.io/pkg/rcompanion/man
 <span class='co'># -------------- within-subjects design --------------------------------</span>
 
 <span class='co'># creating the subtitle</span>
-<span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_anova_nonparametric</span><span class='op'>(</span>
+<span class='fu'>expr_anova_nonparametric</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>bugs_long</span>,
   x <span class='op'>=</span> <span class='va'>condition</span>,
   y <span class='op'>=</span> <span class='va'>desire</span>,
@@ -250,7 +250,7 @@ epsilon-squared (for more, see <code><a href='https://rdrr.io/pkg/rcompanion/man
 #&gt;     "]", ", ", italic("n")["pairs"], " = ", 88L)</div><div class='input'>
 <span class='co'># -------------- between-subjects design --------------------------------</span>
 
-<span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_anova_nonparametric</span><span class='op'>(</span>
+<span class='fu'>expr_anova_nonparametric</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
   x <span class='op'>=</span> <span class='va'>vore</span>,
   y <span class='op'>=</span> <span class='va'>sleep_rem</span>,

@@ -64,7 +64,7 @@ set.seed(123)
 # ------------------------ between-subjects -----------------------------
 
 # going with the defaults
-statsExpressions::expr_anova_robust(
+expr_anova_robust(
   data = ggplot2::midwest,
   x = state,
   y = percbelowpoverty,
@@ -83,7 +83,7 @@ expr_anova_robust(
 
 # ------------------------ within-subjects -----------------------------
 
-statsExpressions::expr_anova_robust(
+expr_anova_robust(
   data = iris_long,
   x = condition,
   y = value,

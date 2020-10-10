@@ -423,7 +423,7 @@ ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1
     x = NULL,
     y = NULL,
     title = "Pie Chart of class (type of car)",
-    subtitle = expr_onesample_proptest(as.data.frame(table(mpg$class)), Var1, counts = Freq),
+    subtitle = expr_contingency_tab(as.data.frame(table(mpg$class)), Var1, counts = Freq),
     caption = "One-sample goodness of fit proportion test"
   )
 ```

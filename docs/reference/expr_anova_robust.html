@@ -237,7 +237,7 @@ for the effect size (Default: <code>100</code>).</p></td>
 <span class='co'># ------------------------ between-subjects -----------------------------</span>
 
 <span class='co'># going with the defaults</span>
-<span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_anova_robust</span><span class='op'>(</span>
+<span class='fu'>expr_anova_robust</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/midwest.html'>midwest</a></span>,
   x <span class='op'>=</span> <span class='va'>state</span>,
   y <span class='op'>=</span> <span class='va'>percbelowpoverty</span>,
@@ -264,7 +264,7 @@ for the effect size (Default: <code>100</code>).</p></td>
 #&gt;     437L)</div><div class='input'>
 <span class='co'># ------------------------ within-subjects -----------------------------</span>
 
-<span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_anova_robust</span><span class='op'>(</span>
+<span class='fu'>expr_anova_robust</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>iris_long</span>,
   x <span class='op'>=</span> <span class='va'>condition</span>,
   y <span class='op'>=</span> <span class='va'>value</span>,
