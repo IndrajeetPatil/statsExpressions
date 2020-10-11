@@ -68,10 +68,9 @@ reordering your factor levels if appropriate as shown in the second example
 below.
 }
 \examples{
-
-\donttest{
 # for reproducibility
 set.seed(123)
+library(statsExpressions)
 
 # -------------- between-subjects design ------------------------
 # simple function call
@@ -119,7 +118,6 @@ statsExpressions::expr_t_nonparametric(
   paired = TRUE,
   conf.level = 0.90
 )
-}
 }
 \references{
 For more details, see-

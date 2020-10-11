@@ -28,7 +28,7 @@ Imports:
     dplyr,
     effectsize (>= 0.3.9.001),
     ez,
-    ipmisc (>= 4.0.0),
+    ipmisc,
     metafor,
     metaplus,
     rcompanion,

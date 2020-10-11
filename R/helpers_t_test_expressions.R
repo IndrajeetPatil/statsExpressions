@@ -43,7 +43,8 @@
 #' @examples
 #' # for reproducibility
 #' set.seed(123)
-#' \donttest{
+#' library(statsExpressions)
+#'
 #' # creating a smaller dataset
 #' msleep_short <- dplyr::filter(ggplot2::msleep, vore %in% c("carni", "herbi"))
 #'
@@ -62,7 +63,6 @@
 #'   var.equal = TRUE,
 #'   effsize.type = "d"
 #' )
-#' }
 #' @export
 
 # function body
@@ -200,10 +200,9 @@ expr_t_parametric <- function(data,
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @examples
-#'
-#' \donttest{
 #' # for reproducibility
 #' set.seed(123)
+#' library(statsExpressions)
 #'
 #' # -------------- between-subjects design ------------------------
 #' # simple function call
@@ -251,7 +250,6 @@ expr_t_parametric <- function(data,
 #'   paired = TRUE,
 #'   conf.level = 0.90
 #' )
-#' }
 #' @export
 
 # function body
@@ -321,7 +319,6 @@ expr_t_nonparametric <- function(data,
       conf = conf.level,
       type = conf.type,
       R = nboot,
-      histogram = FALSE,
       digits = k,
       reportIncomplete = TRUE
     ) %>%
@@ -356,9 +353,9 @@ expr_t_nonparametric <- function(data,
 #' @importFrom WRS2 yuen yuen.effect.ci yuend dep.effect
 #'
 #' @examples
-#' \donttest{
 #' # for reproducibility
 #' set.seed(123)
+#' library(statsExpressions)
 #'
 #' # between-subjects design -----------------------------------------------
 #'
@@ -386,7 +383,6 @@ expr_t_nonparametric <- function(data,
 #'   y = desire,
 #'   paired = TRUE
 #' )
-#' }
 #' @export
 
 # function body
@@ -522,9 +518,9 @@ expr_t_robust <- function(data,
 #' @inheritParams tidyBF::bf_ttest
 #'
 #' @examples
-#' \donttest{
 #' # for reproducibility
 #' set.seed(123)
+#' library(statsExpressions)
 #'
 #' # ------------- between-subjects design --------------------------
 #'
@@ -543,7 +539,6 @@ expr_t_robust <- function(data,
 #'   y = desire,
 #'   paired = TRUE
 #' )
-#' }
 #' @export
 
 # function body

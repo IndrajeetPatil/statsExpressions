@@ -50,9 +50,9 @@ for the effect size (Default: \code{100}).}
 Expression containing results from a robust \emph{t}-test
 }
 \examples{
-\donttest{
 # for reproducibility
 set.seed(123)
+library(statsExpressions)
 
 # between-subjects design -----------------------------------------------
 
@@ -80,7 +80,6 @@ statsExpressions::expr_t_robust(
   y = desire,
   paired = TRUE
 )
-}
 }
 \references{
 For more details, see-

@@ -31,9 +31,9 @@ width to use in calculating Bayes factors.}
 Making expression containing Bayesian \emph{t}-test results
 }
 \examples{
-\donttest{
 # for reproducibility
 set.seed(123)
+library(statsExpressions)
 
 # ------------- between-subjects design --------------------------
 
@@ -52,7 +52,6 @@ statsExpressions::expr_t_bayes(
   y = desire,
   paired = TRUE
 )
-}
 }
 \references{
 For more details, see-

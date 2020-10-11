@@ -52,15 +52,16 @@ width to use in calculating Bayes factors.}
 }
 \value{
 Expression containing results from correlation test with confidence
-intervals for the correlation coefficient estimate.
+intervals for the correlation coefficient estimate. Results are extracted
+via \code{correlation::correlation}.
 }
 \description{
 Making expression for correlation analysis
 }
 \examples{
-
 # for reproducibility
 set.seed(123)
+library(statsExpressions)
 
 # without changing defaults
 statsExpressions::expr_corr_test(

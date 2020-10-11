@@ -38,7 +38,6 @@
 #' @importFrom ipmisc long_to_wide_converter easystats_to_tidy_names specify_decimal_p
 #'
 #' @examples
-#' \donttest{
 #' # for reproducibility
 #' set.seed(123)
 #' library(statsExpressions)
@@ -74,7 +73,6 @@
 #'   paired = TRUE,
 #'   k = 4
 #' )
-#' }
 #' @export
 
 # function body
@@ -290,7 +288,6 @@ expr_anova_parametric <- function(data,
 #' @importFrom rcompanion epsilonSquared kendallW
 #'
 #' @examples
-#' \donttest{
 #' # setup
 #' set.seed(123)
 #' library(statsExpressions)
@@ -317,7 +314,6 @@ expr_anova_parametric <- function(data,
 #'   conf.level = 0.99,
 #'   conf.type = "perc"
 #' )
-#' }
 #' @export
 
 # function body
@@ -409,7 +405,6 @@ expr_anova_nonparametric <- function(data,
       conf = conf.level,
       type = conf.type,
       R = nboot,
-      histogram = FALSE,
       digits = 5
     ) %>%
     rcompanion_cleaner(.)
@@ -448,10 +443,9 @@ expr_anova_nonparametric <- function(data,
 #' @importFrom WRS2 rmanova t1way
 #'
 #' @examples
-#'
-#' \donttest{
 #' # for reproducibility
 #' set.seed(123)
+#' library(statsExpressions)
 #'
 #' # ------------------------ between-subjects -----------------------------
 #'
@@ -482,7 +476,6 @@ expr_anova_nonparametric <- function(data,
 #'   paired = TRUE,
 #'   k = 3
 #' )
-#' }
 #' @export
 
 # function body
@@ -622,8 +615,9 @@ expr_anova_robust <- function(data,
 #' @importFrom tidyBF bf_oneway_anova
 #'
 #' @examples
-#' \donttest{
+#' # setup
 #' set.seed(123)
+#' library(statsExpressions)
 #'
 #' # between-subjects ---------------------------------------
 #' # with defaults
@@ -650,7 +644,6 @@ expr_anova_robust <- function(data,
 #'   paired = TRUE,
 #'   k = 4
 #' )
-#' }
 #' @export
 
 # function body

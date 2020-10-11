@@ -2,7 +2,8 @@
 #' @name expr_corr_test
 #'
 #' @return Expression containing results from correlation test with confidence
-#'   intervals for the correlation coefficient estimate.
+#'   intervals for the correlation coefficient estimate. Results are extracted
+#'   via `correlation::correlation`.
 #'
 #' @references For more details, see-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
@@ -30,9 +31,9 @@
 #' @importFrom ipmisc easystats_to_tidy_names stats_type_switch
 #'
 #' @examples
-#'
 #' # for reproducibility
 #' set.seed(123)
+#' library(statsExpressions)
 #'
 #' # without changing defaults
 #' statsExpressions::expr_corr_test(
@@ -63,7 +64,7 @@ expr_corr_test <- function(data,
                            bf.prior = 0.707,
                            ...) {
 
-  # ============================ checking corr.method =======================
+  # -------------------------- checking corr.method --------------------------
 
   # see which method was used to specify type of correlation
   stats_type <- ipmisc::stats_type_switch(type)
@@ -77,7 +78,7 @@ expr_corr_test <- function(data,
       "robust" = "percentage"
     )
 
-  #----------------- creating correlation dataframes -----------------------
+  # ----------------- creating correlation dataframes -----------------------
 
   # for all except `bayes`
   if (stats_type != "bayes") {
@@ -95,7 +96,7 @@ expr_corr_test <- function(data,
     effsize_df <- stats_df
   }
 
-  #------------------------ subtitle text elements -----------------------------
+  # ------------------------ subtitle text elements -----------------------------
 
   # preparing other needed objects
   if (stats_type == "parametric") {
@@ -117,7 +118,7 @@ expr_corr_test <- function(data,
     effsize.text <- quote(widehat(italic(rho))["pb"])
   }
 
-  #---------------------- preparing subtitle ---------------------------------
+  # ---------------------- preparing subtitle ---------------------------------
 
   if (stats_type != "bayes") {
     # preparing subtitle

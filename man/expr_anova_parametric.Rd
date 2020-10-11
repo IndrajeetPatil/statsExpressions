@@ -67,7 +67,6 @@ The effect sizes and their confidence intervals are computed
 using \code{effectsize::eta_squared} and \code{effectsize::omega_squared} functions.
 }
 \examples{
-\donttest{
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
@@ -103,5 +102,4 @@ expr_anova_parametric(
   paired = TRUE,
   k = 4
 )
-}
 }

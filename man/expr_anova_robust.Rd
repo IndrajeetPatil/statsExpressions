@@ -56,10 +56,9 @@ Expression containing results from heteroscedastic one-way ANOVA for
 trimmed means
 }
 \examples{
-
-\donttest{
 # for reproducibility
 set.seed(123)
+library(statsExpressions)
 
 # ------------------------ between-subjects -----------------------------
 
@@ -90,5 +89,4 @@ expr_anova_robust(
   paired = TRUE,
   k = 3
 )
-}
 }

@@ -35,8 +35,9 @@ For more details, see-
 Making expression containing Bayesian one-way ANOVA results.
 }
 \examples{
-\donttest{
+# setup
 set.seed(123)
+library(statsExpressions)
 
 # between-subjects ---------------------------------------
 # with defaults
@@ -63,5 +64,4 @@ expr_anova_bayes(
   paired = TRUE,
   k = 4
 )
-}
 }

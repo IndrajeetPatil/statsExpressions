@@ -43,6 +43,8 @@
 #' @param ... Currently ignored.
 #' @inheritParams expr_anova_parametric
 #'
+#' @importFrom rlang is_null
+#'
 #' @examples
 #' set.seed(123)
 #'
@@ -147,9 +149,6 @@ expr_template <- function(no.parameters,
   # ------------------ statistic with 1 degree of freedom --------------------
 
   if (no.parameters == 1L) {
-    # check if parameter is specified
-    parameter <- stats.df$parameter[[1]]
-
     # preparing subtitle
     subtitle <-
       substitute(
@@ -181,7 +180,7 @@ expr_template <- function(no.parameters,
         env = list(
           statistic.text = statistic.text,
           statistic = specify_decimal_p(x = statistic, k = k),
-          parameter = specify_decimal_p(x = parameter, k = k.parameter),
+          parameter = specify_decimal_p(x = stats.df$parameter[[1]], k = k.parameter),
           p.value = specify_decimal_p(x = p.value, k = k, p.value = TRUE),
           effsize.text = effsize.text,
           effsize.estimate = specify_decimal_p(x = effsize.estimate, k = k),
@@ -197,10 +196,6 @@ expr_template <- function(no.parameters,
   # ------------------ statistic with 2 degrees of freedom -----------------
 
   if (no.parameters == 2L) {
-    # check if parameters are specified
-    parameter <- stats.df$parameter1[[1]]
-    parameter2 <- stats.df$parameter2[[1]]
-
     # preparing subtitle
     subtitle <-
       substitute(
@@ -234,8 +229,8 @@ expr_template <- function(no.parameters,
         env = list(
           statistic.text = statistic.text,
           statistic = specify_decimal_p(x = statistic, k = k),
-          parameter1 = specify_decimal_p(x = parameter, k = k.parameter),
-          parameter2 = specify_decimal_p(x = parameter2, k = k.parameter2),
+          parameter1 = specify_decimal_p(x = stats.df$parameter1[[1]], k = k.parameter),
+          parameter2 = specify_decimal_p(x = stats.df$parameter2[[1]], k = k.parameter2),
           p.value = specify_decimal_p(x = p.value, k = k, p.value = TRUE),
           effsize.text = effsize.text,
           effsize.estimate = specify_decimal_p(x = effsize.estimate, k = k),
@@ -265,19 +260,17 @@ rcompanion_cleaner <- function(object) {
   if (inherits(object, "list")) object <- object[[1]]
 
   # rename columns uniformly
-  as_tibble(object) %>%
-    dplyr::rename_all(
-      .tbl = .,
-      .funs = dplyr::recode,
-      epsilon.squared = "estimate",
-      r = "estimate",
-      rho = "estimate",
-      W = "estimate",
-      Cramer.V = "estimate",
-      Value = "estimate",
-      lower.ci = "conf.low",
-      upper.ci = "conf.high"
-    )
+  dplyr::rename_all(
+    .tbl = as_tibble(object),
+    .funs = dplyr::recode,
+    epsilon.squared = "estimate",
+    r = "estimate",
+    W = "estimate",
+    Cramer.V = "estimate",
+    Value = "estimate",
+    lower.ci = "conf.low",
+    upper.ci = "conf.high"
+  )
 }
 
 #' @noRd

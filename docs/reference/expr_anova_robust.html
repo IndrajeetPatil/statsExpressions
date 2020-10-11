@@ -229,10 +229,9 @@ for the effect size (Default: <code>100</code>).</p></td>
 <a href='https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html'>https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='co'># \donttest{</span>
-<span class='co'># for reproducibility</span>
+    <pre class="examples"><div class='input'><span class='co'># for reproducibility</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://indrajeetpatil.github.io/statsExpressions/'>statsExpressions</a></span><span class='op'>)</span>
 
 <span class='co'># ------------------------ between-subjects -----------------------------</span>
 
@@ -273,8 +272,7 @@ for the effect size (Default: <code>100</code>).</p></td>
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; paste(italic("F")["trimmed-means"], "(", "1.118", ",", "132.992", 
 #&gt;     ") = ", "559.197", ", ", italic("p"), " = ", "0e+00", ", ", 
-#&gt;     italic("n")["pairs"], " = ", 150L)</div><div class='input'><span class='co'># }</span>
-</div></pre>
+#&gt;     italic("n")["pairs"], " = ", 150L)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

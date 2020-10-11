@@ -212,7 +212,6 @@ expr_contingency_tab <- function(data,
       conf = conf.level,
       type = conf.type,
       R = nboot,
-      histogram = FALSE,
       digits = 5,
       reportIncomplete = TRUE
     ) %>%
