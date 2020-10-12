@@ -667,22 +667,6 @@ testthat::test_that(
   desc = "works even in edge cases",
   code = {
     testthat::skip_if(getRversion() < "3.6")
-    set.seed(123)
-
-    # creating a dataframe
-    df <- dplyr::filter(mtcars, am == "0")
-
-    # subtitle
-    testthat::expect_null(statsExpressions::expr_contingency_tab(
-      data = df,
-      x = am
-    ), NULL)
-
-    testthat::expect_null(statsExpressions::expr_contingency_tab(
-      data = df,
-      y = am,
-      x = cyl,
-    ), NULL)
 
     # too few observations
     df <- data.frame(

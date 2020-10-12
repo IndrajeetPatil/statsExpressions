@@ -255,19 +255,14 @@ expr_template <- function(no.parameters,
 #'
 #' @keywords internal
 
+# rename columns uniformly
 rcompanion_cleaner <- function(object) {
-  # if a list, extract the first component containing results
-  if (inherits(object, "list")) object <- object[[1]]
-
-  # rename columns uniformly
   dplyr::rename_all(
     .tbl = as_tibble(object),
     .funs = dplyr::recode,
     epsilon.squared = "estimate",
     r = "estimate",
     W = "estimate",
-    Cramer.V = "estimate",
-    Value = "estimate",
     lower.ci = "conf.low",
     upper.ci = "conf.high"
   )
