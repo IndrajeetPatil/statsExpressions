@@ -4,6 +4,13 @@ BREAKING CHANGES
 
   - Removes the alias `expr_onesample_proptest`.
 
+MAJOR CHANGES
+
+  - All effect sizes for contingency tabs are now calculated via `effectsize`
+    instead of `rcompanion`. This would lead to slight differences in effect
+    sizes and their CIs but the computations will be faster. Additionally, the
+    lower bound will never be negative and will be restricted to [0,1].
+
 MINOR CHANGES
 
   - Retires the vestigial `stat.title` argument. It was originally intended to
@@ -11,6 +18,9 @@ MINOR CHANGES
     these details.
     
   - For paired ANOVA designs, `partial = TRUE` is recognized by effect sizes.
+  
+  - Retires `bias.correct` argument for contingency table analysis. It is rarely
+    justifiable to use the biased version of Cramer's *V*.
 
 # statsExpressions 0.5.1
 

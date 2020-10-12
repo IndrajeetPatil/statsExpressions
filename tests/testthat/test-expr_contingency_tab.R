@@ -16,8 +16,6 @@ testthat::test_that(
         k = 5,
         bias.correct = FALSE,
         conf.level = 0.99,
-        conf.type = "basic",
-        nboot = 5,
         messages = FALSE
       ))
 
@@ -38,12 +36,12 @@ testthat::test_that(
           ", ",
           widehat(italic("V"))["Cramer"],
           " = ",
-          "0.29412",
+          "0.29186",
           ", CI"["99%"],
           " [",
-          "0.26922",
+          "0.23466",
           ", ",
-          "0.31248",
+          "0.34572",
           "]",
           ", ",
           italic("n")["obs"],
@@ -116,10 +114,7 @@ testthat::test_that(
         x = vore,
         y = "conservation",
         conf.level = .990,
-        conf.type = "perc",
-        nboot = 15,
-        messages = FALSE,
-        simulate.p.value = TRUE # this should get ignored
+        messages = FALSE
       ))
 
     # expected output
@@ -142,9 +137,9 @@ testthat::test_that(
           "0.06",
           ", CI"["99%"],
           " [",
-          "0.00",
+          "NaN",
           ", ",
-          "0.39",
+          "0.25",
           "]",
           ", ",
           italic("n")["obs"],
@@ -218,12 +213,12 @@ testthat::test_that(
           ", ",
           widehat(italic("g"))["Cohen"],
           " = ",
-          "-0.33333",
+          "0.33333",
           ", CI"["95%"],
           " [",
-          "-0.49302",
+          "0.16436",
           ", ",
-          "-0.18628",
+          "0.42663",
           "]",
           ", ",
           italic("n")["pairs"],
@@ -288,7 +283,6 @@ testthat::test_that(
           paired = TRUE,
           k = 3,
           conf.level = 0.90,
-          conf.type = "perc",
           messages = FALSE
         )
       )
@@ -310,12 +304,12 @@ testthat::test_that(
           ", ",
           widehat(italic("g"))["Cohen"],
           " = ",
-          "-0.333",
+          "0.333",
           ", CI"["90%"],
           " [",
-          "-0.454",
+          "0.195",
           ", ",
-          "-0.204",
+          "0.416",
           "]",
           ", ",
           italic("n")["pairs"],
@@ -394,12 +388,12 @@ testthat::test_that(
           ", ",
           widehat(italic("g"))["Cohen"],
           " = ",
-          "0.2954",
+          "0.2955",
           ", CI"["99%"],
           " [",
-          "0.2046",
+          "0.1659",
           ", ",
-          "0.3898",
+          "0.3835",
           "]",
           ", ",
           italic("n")["pairs"],
@@ -450,7 +444,7 @@ testthat::test_that(
           " [",
           "-0.26",
           ", ",
-          "0.40",
+          "0.26",
           "]",
           ", ",
           italic("n")["pairs"],
@@ -464,9 +458,7 @@ testthat::test_that(
   }
 )
 
-# expr_contingency_tab_gof -----------------------------------------
-
-# checking subtitle (without counts) -----------------------------------------
+# one-sample test (without counts) -----------------------------------------
 
 testthat::test_that(
   desc = "Goodness of Fit expr_contingency_tab works without counts",
@@ -476,14 +468,13 @@ testthat::test_that(
     # ggstatsplot output
     set.seed(123)
     using_function1 <-
-      statsExpressions::expr_contingency_tab(
+      suppressWarnings(statsExpressions::expr_contingency_tab(
         data = mtcars,
         x = "am",
-        legend.title = "Engine",
         conf.level = 0.99,
         messages = FALSE,
         k = 5
-      )
+      ))
 
     # expected output
     set.seed(123)
@@ -502,12 +493,12 @@ testthat::test_that(
           ", ",
           widehat(italic("V"))["Cramer"],
           " = ",
-          "0.18750",
+          "0.05472",
           ", CI"["99%"],
           " [",
-          "-0.21551",
+          "NaN",
           ", ",
-          "0.52301",
+          "0.62743",
           "]",
           ", ",
           italic("n")["obs"],
@@ -547,9 +538,9 @@ testthat::test_that(
           "0.57",
           ", CI"["95%"],
           " [",
-          "0.54",
+          "0.47",
           ", ",
-          "0.61",
+          "0.62",
           "]",
           ", ",
           italic("n")["obs"],
@@ -601,9 +592,9 @@ testthat::test_that(
           "0.573",
           ", CI"["95%"],
           " [",
-          "0.541",
+          "0.465",
           ", ",
-          "0.607",
+          "0.615",
           "]",
           ", ",
           italic("n")["obs"],
@@ -651,12 +642,12 @@ testthat::test_that(
           ", ",
           widehat(italic("V"))["Cramer"],
           " = ",
-          "0.38",
+          "0.27",
           ", CI"["95%"],
           " [",
-          "0.29",
+          "0.08",
           ", ",
-          "0.51",
+          "0.40",
           "]",
           ", ",
           italic("n")["obs"],
@@ -725,9 +716,9 @@ testthat::test_that(
           "0.35",
           ", CI"["95%"],
           " [",
-          "-0.44",
+          "NaN",
           ", ",
-          "0.93",
+          "1.43",
           "]",
           ", ",
           italic("n")["obs"],
