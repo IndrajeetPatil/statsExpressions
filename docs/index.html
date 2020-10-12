@@ -140,7 +140,7 @@
 <td><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg" alt="minimal R version"></a></td>
 <td><a href="https://www.tidyverse.org/lifecycle/"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></td>
 <td><a href="https://CRAN.R-project.org/package=statsExpressions"><img src="https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue" alt="Monthly downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/issues"><img src="https://img.shields.io/badge/issues-6-red.svg" alt="Github Issues"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/issues"><img src="https://img.shields.io/badge/issues-7-red.svg" alt="Github Issues"></a></td>
 <td><a href="https://CRAN.R-project.org/package=statsExpressions/vignettes/"><img src="https://img.shields.io/badge/vignettes-0.4.3-orange.svg?colorB=FF5722" alt="vignettes"></a></td>
 </tr>
 <tr class="even">
@@ -154,7 +154,7 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/tests/README.md"><img src="https://img.shields.io/badge/covrpage-Last_Build_2020_03_22-yellowgreen.svg" alt="Covrpage Summary"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--10--10-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--10--12-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
@@ -352,7 +352,7 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 
 <span class="co"># plot</span>
-<span class="fu"><a href="https://rpkgs.datanovia.com/ggpubr/reference/ggboxplot.html">ggboxplot</a></span><span class="op">(</span>
+<span class="fu"><a href="https://rdrr.io/pkg/ggpubr/man/ggboxplot.html">ggboxplot</a></span><span class="op">(</span>
   <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="st">"dose"</span>,
   y <span class="op">=</span> <span class="st">"len"</span>,
@@ -423,7 +423,7 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
 
 <span class="co"># basic plot</span>
-<span class="fu"><a href="https://rpkgs.datanovia.com/ggpubr/reference/gghistogram.html">gghistogram</a></span><span class="op">(</span>
+<span class="fu"><a href="https://rdrr.io/pkg/ggpubr/man/gghistogram.html">gghistogram</a></span><span class="op">(</span>
   <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
     sex <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">200</span><span class="op">)</span><span class="op">)</span>,
     weight <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">200</span>, <span class="fl">55</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">200</span>, <span class="fl">58</span><span class="op">)</span><span class="op">)</span>
@@ -615,7 +615,7 @@
 <span class="fu"><a href="reference/expr_contingency_tab.html">expr_contingency_tab</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">am</span>, <span class="va">cyl</span><span class="op">)</span>
 <span class="co">#&gt; paste(chi["Pearson"]^2, "(", "2", ") = ", "8.74", ", ", italic("p"), </span>
 <span class="co">#&gt;     " = ", "0.013", ", ", widehat(italic("V"))["Cramer"], " = ", </span>
-<span class="co">#&gt;     "0.46", ", CI"["95%"], " [", "0.08", ", ", "0.75", "]", ", ", </span>
+<span class="co">#&gt;     "0.46", ", CI"["95%"], " [", "NaN", ", ", "0.82", "]", ", ", </span>
 <span class="co">#&gt;     italic("n")["obs"], " = ", 32L)</span></pre></div>
 </div>
 <div id="example-expressions-for-meta-analysis" class="section level2">

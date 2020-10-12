@@ -12,10 +12,7 @@ expr_contingency_tab(
   ratio = NULL,
   k = 2L,
   conf.level = 0.95,
-  conf.type = "norm",
-  nboot = 100L,
   paired = FALSE,
-  bias.correct = TRUE,
   ...
 )
 }
@@ -45,20 +42,10 @@ there are four levels this will be \code{ratio = c(0.25,0.25,0.25,0.25)}, etc.}
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} lower and upper confidence intervals (\code{0.95}).}
 
-\item{conf.type}{A vector of character strings representing the type of
-intervals required. The value should be any subset of the values \code{"norm"},
-\code{"basic"}, \code{"perc"}, \code{"bca"}. For more, see \code{?boot::boot.ci}.}
-
-\item{nboot}{Number of bootstrap samples for computing confidence interval
-for the effect size (Default: \code{100}).}
-
 \item{paired}{Logical indicating whether data came from a within-subjects or
 repeated measures design study (Default: \code{FALSE}). If \code{TRUE}, McNemar's
 test subtitle will be returned. If \code{FALSE}, Pearson's chi-square test will
 be returned.}
-
-\item{bias.correct}{If \code{TRUE} (default), a bias correction will be applied to
-Cramer's \emph{V}.}
 
 \item{...}{Additional arguments (currently ignored).}
 }
@@ -73,30 +60,27 @@ Making expression for contingency table and goodness of fit tests
 }
 \details{
 For more details about how the effect sizes and their confidence
-intervals were computed, see documentation in \code{?rcompanion::cramerV},
-\code{?rcompanion::cramerVFit}, and \code{?rcompanion::cohenG}.
+intervals were computed, see documentation in \code{?effectsize::cramers_v} and
+\code{?effectsize::cohens_g}.
 }
 \examples{
 
 \donttest{
 # ------------------------ association tests -----------------------------
 
+# for reproducibility
 set.seed(123)
 library(statsExpressions)
 
 # without counts data
-statsExpressions::expr_contingency_tab(
+expr_contingency_tab(
   data = mtcars,
   x = am,
   y = cyl,
-  paired = FALSE,
-  nboot = 15
+  paired = FALSE
 )
 
 # ------------------------ goodness of fit tests ---------------------------
-
-# for reproducibility
-set.seed(123)
 
 # with counts
 expr_contingency_tab(

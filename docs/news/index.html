@@ -156,10 +156,15 @@
 <ul>
 <li>Removes the alias <code>expr_onesample_proptest</code>.</li>
 </ul>
+<p>MAJOR CHANGES</p>
+<ul>
+<li>All effect sizes for contingency tabs are now calculated via <code>effectsize</code> instead of <code>rcompanion</code>. This would lead to slight differences in effect sizes and their CIs but the computations will be faster. Additionally, the lower bound will never be negative and will be restricted to [0,1].</li>
+</ul>
 <p>MINOR CHANGES</p>
 <ul>
 <li><p>Retires the vestigial <code>stat.title</code> argument. It was originally intended to give more info on the tests, but now the expressions themselves contain these details.</p></li>
 <li><p>For paired ANOVA designs, <code>partial = TRUE</code> is recognized by effect sizes.</p></li>
+<li><p>Retires <code>bias.correct</code> argument for contingency table analysis. It is rarely justifiable to use the biased version of Cramer’s <em>V</em>.</p></li>
 </ul>
 </div>
     <div id="statsexpressions-051" class="section level1">

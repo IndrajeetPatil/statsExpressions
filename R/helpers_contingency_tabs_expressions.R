@@ -21,8 +21,6 @@
 #'   repeated measures design study (Default: `FALSE`). If `TRUE`, McNemar's
 #'   test subtitle will be returned. If `FALSE`, Pearson's chi-square test will
 #'   be returned.
-#' @param bias.correct If `TRUE` (default), a bias correction will be applied to
-#'   Cramer's *V*.
 #' @param ratio A vector of proportions: the expected proportions for the
 #'   proportion test (should sum to 1). Default is `NULL`, which means the null
 #'   is equal theoretical proportions across the levels of the nominal variable.
@@ -38,33 +36,31 @@
 #' @importFrom rlang !! enquo as_name ensym exec
 #' @importFrom tidyr uncount drop_na
 #' @importFrom stats mcnemar.test chisq.test
-#' @importFrom rcompanion cramerV cohenG cramerVFit
+#' @importFrom effectsize cramers_v cohens_g
+#' @importFrom insight standardize_names
 #'
 #' @details For more details about how the effect sizes and their confidence
-#'   intervals were computed, see documentation in `?rcompanion::cramerV`,
-#'   `?rcompanion::cramerVFit`, and `?rcompanion::cohenG`.
+#'   intervals were computed, see documentation in `?effectsize::cramers_v` and
+#'   `?effectsize::cohens_g`.
 #'
 #' @examples
 #'
 #' \donttest{
 #' # ------------------------ association tests -----------------------------
 #'
+#' # for reproducibility
 #' set.seed(123)
 #' library(statsExpressions)
 #'
 #' # without counts data
-#' statsExpressions::expr_contingency_tab(
+#' expr_contingency_tab(
 #'   data = mtcars,
 #'   x = am,
 #'   y = cyl,
-#'   paired = FALSE,
-#'   nboot = 15
+#'   paired = FALSE
 #' )
 #'
 #' # ------------------------ goodness of fit tests ---------------------------
-#'
-#' # for reproducibility
-#' set.seed(123)
 #'
 #' # with counts
 #' expr_contingency_tab(
@@ -84,10 +80,7 @@ expr_contingency_tab <- function(data,
                                  ratio = NULL,
                                  k = 2L,
                                  conf.level = 0.95,
-                                 conf.type = "norm",
-                                 nboot = 100L,
                                  paired = FALSE,
-                                 bias.correct = TRUE,
                                  ...) {
 
   # ensure the variables work quoted or unquoted
@@ -157,7 +150,7 @@ expr_contingency_tab <- function(data,
     if (isFALSE(paired)) {
       # computing stats and effect size + CI
       stats_df <- stats::chisq.test(x = x_arg, correct = FALSE)
-      .f <- rcompanion::cramerV
+      .f <- effectsize::cramers_v
       effsize.text <- quote(widehat(italic("V"))["Cramer"])
       statistic.text <- quote(chi["Pearson"]^2)
       n.text <- quote(italic("n")["obs"])
@@ -168,13 +161,11 @@ expr_contingency_tab <- function(data,
     if (isTRUE(paired)) {
       # computing stats and effect size + CI
       stats_df <- stats::mcnemar.test(x = x_arg, correct = FALSE)
-      .f <- rcompanion::cohenG
+      .f <- effectsize::cohens_g
       effsize.text <- quote(widehat(italic("g"))["Cohen"])
       statistic.text <- quote(chi["McNemar"]^2)
       n.text <- quote(italic("n")["pairs"])
     }
-
-    args_list <- list(x = x_arg, bias.correct = bias.correct)
   }
 
   # ======================== goodness of fit test ========================
@@ -196,30 +187,21 @@ expr_contingency_tab <- function(data,
     }
 
     # effect size text
-    .f <- rcompanion::cramerVFit
+    .f <- effectsize::cramers_v
     effsize.text <- quote(widehat(italic("V"))["Cramer"])
     statistic.text <- quote(chi["gof"]^2)
     n.text <- quote(italic("n")["obs"])
-    args_list <- list(x = as.vector(x_arg), p = ratio)
   }
 
   # computing effect size + CI
   effsize_df <-
     rlang::exec(
       .fn = .f,
-      !!!args_list,
-      ci = TRUE,
-      conf = conf.level,
-      type = conf.type,
-      R = nboot,
-      digits = 5,
-      reportIncomplete = TRUE
+      x = x_arg,
+      adjust = TRUE,
+      ci = conf.level
     ) %>%
-    rcompanion_cleaner(.)
-
-
-  # for Cohen's g
-  if ("Statistic" %in% names(effsize_df)) effsize_df %<>% dplyr::filter(Statistic == "g")
+    insight::standardize_names(data = ., style = "broom")
 
   # preparing subtitle
   expr_template(

@@ -162,10 +162,7 @@
   ratio <span class='op'>=</span> <span class='cn'>NULL</span>,
   k <span class='op'>=</span> <span class='fl'>2L</span>,
   conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
-  conf.type <span class='op'>=</span> <span class='st'>"norm"</span>,
-  nboot <span class='op'>=</span> <span class='fl'>100L</span>,
   paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  bias.correct <span class='op'>=</span> <span class='cn'>TRUE</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -212,27 +209,11 @@ there are four levels this will be <code>ratio = c(0.25,0.25,0.25,0.25)</code>, 
 <code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
     </tr>
     <tr>
-      <th>conf.type</th>
-      <td><p>A vector of character strings representing the type of
-intervals required. The value should be any subset of the values <code>"norm"</code>,
-<code>"basic"</code>, <code>"perc"</code>, <code>"bca"</code>. For more, see <code><a href='https://rdrr.io/pkg/boot/man/boot.ci.html'>?boot::boot.ci</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>nboot</th>
-      <td><p>Number of bootstrap samples for computing confidence interval
-for the effect size (Default: <code>100</code>).</p></td>
-    </tr>
-    <tr>
       <th>paired</th>
       <td><p>Logical indicating whether data came from a within-subjects or
 repeated measures design study (Default: <code>FALSE</code>). If <code>TRUE</code>, McNemar's
 test subtitle will be returned. If <code>FALSE</code>, Pearson's chi-square test will
 be returned.</p></td>
-    </tr>
-    <tr>
-      <th>bias.correct</th>
-      <td><p>If <code>TRUE</code> (default), a bias correction will be applied to
-Cramer's <em>V</em>.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -249,8 +230,8 @@ variable.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>For more details about how the effect sizes and their confidence
-intervals were computed, see documentation in <code><a href='https://rdrr.io/pkg/rcompanion/man/cramerV.html'>?rcompanion::cramerV</a></code>,
-<code><a href='https://rdrr.io/pkg/rcompanion/man/cramerVFit.html'>?rcompanion::cramerVFit</a></code>, and <code><a href='https://rdrr.io/pkg/rcompanion/man/cohenG.html'>?rcompanion::cohenG</a></code>.</p>
+intervals were computed, see documentation in <code><a href='https://easystats.github.io/effectsize/reference/phi.html'>?effectsize::cramers_v</a></code> and
+<code><a href='https://easystats.github.io/effectsize/reference/phi.html'>?effectsize::cohens_g</a></code>.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>For more details, see-
@@ -261,25 +242,22 @@ intervals were computed, see documentation in <code><a href='https://rdrr.io/pkg
 <span class='co'># \donttest{</span>
 <span class='co'># ------------------------ association tests -----------------------------</span>
 
+<span class='co'># for reproducibility</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://indrajeetpatil.github.io/statsExpressions/'>statsExpressions</a></span><span class='op'>)</span>
 
 <span class='co'># without counts data</span>
-<span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_contingency_tab</span><span class='op'>(</span>
+<span class='fu'>expr_contingency_tab</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>mtcars</span>,
   x <span class='op'>=</span> <span class='va'>am</span>,
   y <span class='op'>=</span> <span class='va'>cyl</span>,
-  paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  nboot <span class='op'>=</span> <span class='fl'>15</span>
+  paired <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Chi-squared approximation may be incorrect</span></div><div class='output co'>#&gt; paste(chi["Pearson"]^2, "(", "2", ") = ", "8.74", ", ", italic("p"), 
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Chi-squared approximation may be incorrect</span></div><div class='output co'>#&gt; <span class='warning'>Warning: NaNs produced</span></div><div class='output co'>#&gt; paste(chi["Pearson"]^2, "(", "2", ") = ", "8.74", ", ", italic("p"), 
 #&gt;     " = ", "0.013", ", ", widehat(italic("V"))["Cramer"], " = ", 
-#&gt;     "0.46", ", CI"["95%"], " [", "0.10", ", ", "0.68", "]", ", ", 
+#&gt;     "0.46", ", CI"["95%"], " [", "NaN", ", ", "0.82", "]", ", ", 
 #&gt;     italic("n")["obs"], " = ", 32L)</div><div class='input'>
 <span class='co'># ------------------------ goodness of fit tests ---------------------------</span>
-
-<span class='co'># for reproducibility</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
 
 <span class='co'># with counts</span>
 <span class='fu'>expr_contingency_tab</span><span class='op'>(</span>
@@ -290,7 +268,7 @@ intervals were computed, see documentation in <code><a href='https://rdrr.io/pkg
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; paste(chi["gof"]^2, "(", "3", ") = ", "278.96", ", ", italic("p"), 
 #&gt;     " = ", "3.56e-60", ", ", widehat(italic("V"))["Cramer"], 
-#&gt;     " = ", "0.40", ", CI"["95%"], " [", "0.35", ", ", "0.43", 
+#&gt;     " = ", "0.27", ", CI"["95%"], " [", "0.22", ", ", "0.32", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 592L)</div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
