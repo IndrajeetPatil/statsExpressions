@@ -11,12 +11,12 @@
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @param x The variable to use as the **rows** in the contingency table.
-#' @param y The variable to use as the **columns** in the contingency
-#'   table. Default is `NULL`. If `NULL`, one-sample proportion test (a goodness
-#'   of fit test) will be run for the `main` variable. Otherwise an appropriate
-#'   association test will be run.
+#' @param y The variable to use as the **columns** in the contingency table.
+#'   Default is `NULL`. If `NULL`, one-sample proportion test (a goodness of fit
+#'   test) will be run for the `x` variable. Otherwise association test will be
+#'   carried out.
 #' @param counts A string naming a variable in data containing counts, or `NULL`
-#'   if each row represents a single observation (Default).
+#'   if each row represents a single observation.
 #' @param paired Logical indicating whether data came from a within-subjects or
 #'   repeated measures design study (Default: `FALSE`). If `TRUE`, McNemar's
 #'   test subtitle will be returned. If `FALSE`, Pearson's chi-square test will
@@ -44,13 +44,11 @@
 #'   `?effectsize::cohens_g`.
 #'
 #' @examples
-#'
-#' \donttest{
-#' # ------------------------ association tests -----------------------------
-#'
 #' # for reproducibility
 #' set.seed(123)
 #' library(statsExpressions)
+#'
+#' # ------------------------ association tests -----------------------------
 #'
 #' # without counts data
 #' expr_contingency_tab(
@@ -69,7 +67,6 @@
 #'   counts = Freq,
 #'   ratio = c(0.2, 0.2, 0.3, 0.3)
 #' )
-#' }
 #' @export
 
 # function body
@@ -77,10 +74,10 @@ expr_contingency_tab <- function(data,
                                  x,
                                  y = NULL,
                                  counts = NULL,
+                                 paired = FALSE,
                                  ratio = NULL,
                                  k = 2L,
                                  conf.level = 0.95,
-                                 paired = FALSE,
                                  ...) {
 
   # ensure the variables work quoted or unquoted
@@ -112,8 +109,6 @@ expr_contingency_tab <- function(data,
       )
   }
 
-  # =============================== association tests ========================
-
   # sample size
   sample_size <- nrow(data)
 
@@ -123,27 +118,15 @@ expr_contingency_tab <- function(data,
     ratio <- rep(1 / length(table(x_vec)), length(table(x_vec)))
   }
 
+  # =============================== association tests ========================
+
   # association tests
   if (!rlang::quo_is_null(rlang::enquo(y))) {
     # drop the unused levels of the column variable
     data %<>% dplyr::mutate(.data = ., {{ y }} := droplevels(as.factor({{ y }})))
 
-    # in case there is no variation, no subtitle will be shown
-    if (nlevels(data %>% dplyr::pull({{ y }}))[[1]] == 1L) {
-      # display message
-      message(cat(
-        ipmisc::red("Error: "),
-        ipmisc::blue("Row variable 'y' contains less than 2 levels.\n"),
-        ipmisc::blue("Chi-squared test can't be run; no subtitle displayed."),
-        sep = ""
-      ))
-
-      # return early
-      return(NULL)
-    }
-
     # creating a matrix with frequencies and cleaning it up
-    x_arg <- as.matrix(table(data %>% dplyr::pull({{ x }}), data %>% dplyr::pull({{ y }})))
+    x_arg <- table(data %>% dplyr::pull({{ x }}), data %>% dplyr::pull({{ y }}))
 
     # ======================== Pearson's test ================================
 
@@ -175,16 +158,7 @@ expr_contingency_tab <- function(data,
     x_arg <- table(data %>% dplyr::pull({{ x }}))
 
     # checking if the chi-squared test can be run
-    stats_df <-
-      tryCatch(
-        expr = stats::chisq.test(x = x_arg, correct = FALSE, p = ratio),
-        error = function(x) NULL
-      )
-
-    # if the function worked, then return tidy output
-    if (is.null(stats_df)) {
-      return(NULL)
-    }
+    stats_df <- stats::chisq.test(x = x_arg, correct = FALSE, p = ratio)
 
     # effect size text
     .f <- effectsize::cramers_v

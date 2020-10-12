@@ -159,10 +159,10 @@
   <span class='va'>x</span>,
   y <span class='op'>=</span> <span class='cn'>NULL</span>,
   counts <span class='op'>=</span> <span class='cn'>NULL</span>,
+  paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
   ratio <span class='op'>=</span> <span class='cn'>NULL</span>,
   k <span class='op'>=</span> <span class='fl'>2L</span>,
   conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
-  paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -180,15 +180,22 @@ be taken. A matrix or tables will <strong>not</strong> be accepted.</p></td>
     </tr>
     <tr>
       <th>y</th>
-      <td><p>The variable to use as the <strong>columns</strong> in the contingency
-table. Default is <code>NULL</code>. If <code>NULL</code>, one-sample proportion test (a goodness
-of fit test) will be run for the <code>main</code> variable. Otherwise an appropriate
-association test will be run.</p></td>
+      <td><p>The variable to use as the <strong>columns</strong> in the contingency table.
+Default is <code>NULL</code>. If <code>NULL</code>, one-sample proportion test (a goodness of fit
+test) will be run for the <code>x</code> variable. Otherwise association test will be
+carried out.</p></td>
     </tr>
     <tr>
       <th>counts</th>
       <td><p>A string naming a variable in data containing counts, or <code>NULL</code>
 if each row represents a single observation (Default).</p></td>
+    </tr>
+    <tr>
+      <th>paired</th>
+      <td><p>Logical indicating whether data came from a within-subjects or
+repeated measures design study (Default: <code>FALSE</code>). If <code>TRUE</code>, McNemar's
+test subtitle will be returned. If <code>FALSE</code>, Pearson's chi-square test will
+be returned.</p></td>
     </tr>
     <tr>
       <th>ratio</th>
@@ -207,13 +214,6 @@ there are four levels this will be <code>ratio = c(0.25,0.25,0.25,0.25)</code>, 
       <th>conf.level</th>
       <td><p>Scalar between 0 and 1. If unspecified, the defaults return
 <code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
-    </tr>
-    <tr>
-      <th>paired</th>
-      <td><p>Logical indicating whether data came from a within-subjects or
-repeated measures design study (Default: <code>FALSE</code>). If <code>TRUE</code>, McNemar's
-test subtitle will be returned. If <code>FALSE</code>, Pearson's chi-square test will
-be returned.</p></td>
     </tr>
     <tr>
       <th>...</th>

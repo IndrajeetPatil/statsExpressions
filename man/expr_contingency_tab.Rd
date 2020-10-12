@@ -9,10 +9,10 @@ expr_contingency_tab(
   x,
   y = NULL,
   counts = NULL,
+  paired = FALSE,
   ratio = NULL,
   k = 2L,
   conf.level = 0.95,
-  paired = FALSE,
   ...
 )
 }
@@ -22,13 +22,18 @@ be taken. A matrix or tables will \strong{not} be accepted.}
 
 \item{x}{The variable to use as the \strong{rows} in the contingency table.}
 
-\item{y}{The variable to use as the \strong{columns} in the contingency
-table. Default is \code{NULL}. If \code{NULL}, one-sample proportion test (a goodness
-of fit test) will be run for the \code{main} variable. Otherwise an appropriate
-association test will be run.}
+\item{y}{The variable to use as the \strong{columns} in the contingency table.
+Default is \code{NULL}. If \code{NULL}, one-sample proportion test (a goodness of fit
+test) will be run for the \code{x} variable. Otherwise association test will be
+carried out.}
 
 \item{counts}{A string naming a variable in data containing counts, or \code{NULL}
-if each row represents a single observation (Default).}
+if each row represents a single observation.}
+
+\item{paired}{Logical indicating whether data came from a within-subjects or
+repeated measures design study (Default: \code{FALSE}). If \code{TRUE}, McNemar's
+test subtitle will be returned. If \code{FALSE}, Pearson's chi-square test will
+be returned.}
 
 \item{ratio}{A vector of proportions: the expected proportions for the
 proportion test (should sum to 1). Default is \code{NULL}, which means the null
@@ -41,11 +46,6 @@ there are four levels this will be \code{ratio = c(0.25,0.25,0.25,0.25)}, etc.}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} lower and upper confidence intervals (\code{0.95}).}
-
-\item{paired}{Logical indicating whether data came from a within-subjects or
-repeated measures design study (Default: \code{FALSE}). If \code{TRUE}, McNemar's
-test subtitle will be returned. If \code{FALSE}, Pearson's chi-square test will
-be returned.}
 
 \item{...}{Additional arguments (currently ignored).}
 }
@@ -64,13 +64,11 @@ intervals were computed, see documentation in \code{?effectsize::cramers_v} and
 \code{?effectsize::cohens_g}.
 }
 \examples{
-
-\donttest{
-# ------------------------ association tests -----------------------------
-
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
+
+# ------------------------ association tests -----------------------------
 
 # without counts data
 expr_contingency_tab(
@@ -89,7 +87,6 @@ expr_contingency_tab(
   counts = Freq,
   ratio = c(0.2, 0.2, 0.3, 0.3)
 )
-}
 }
 \references{
 For more details, see-

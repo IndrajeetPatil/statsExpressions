@@ -523,7 +523,7 @@ For detailed documentation, see the package website:
 Here is an example from `ggstatsplot` of what the plots look like when the
 expressions are displayed in the subtitle-
 
-<img src="man/figures/README-ggwithinstats1-1.png" align="center" />
+<img src="man/figures/README-ggbetweenstats1-1.png" align="center" />
 
 # Acknowledgments
 

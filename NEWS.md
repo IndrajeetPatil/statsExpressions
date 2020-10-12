@@ -10,6 +10,11 @@ MAJOR CHANGES
     instead of `rcompanion`. This would lead to slight differences in effect
     sizes and their CIs but the computations will be faster. Additionally, the
     lower bound will never be negative and will be restricted to [0,1].
+    
+  - `expr_contingency_tab` function has been made less robust. It now fails
+    instead of returning `NULL` when it is not supposed to work. This is done to
+    be consistent with the other functions in the package which also fail
+    instead of returning `NULL`.
 
 MINOR CHANGES
 
