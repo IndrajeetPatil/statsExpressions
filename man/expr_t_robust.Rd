@@ -57,14 +57,14 @@ library(statsExpressions)
 # between-subjects design -----------------------------------------------
 
 # with defaults
-statsExpressions::expr_t_robust(
+expr_t_robust(
   data = sleep,
   x = group,
   y = extra
 )
 
 # changing defaults
-statsExpressions::expr_t_robust(
+expr_t_robust(
   data = ToothGrowth,
   x = supp,
   y = len,
@@ -74,7 +74,7 @@ statsExpressions::expr_t_robust(
 )
 
 # within-subjects design -----------------------------------------------
-statsExpressions::expr_t_robust(
+expr_t_robust(
   data = dplyr::filter(bugs_long, condition \%in\% c("LDLF", "LDHF")),
   x = condition,
   y = desire,

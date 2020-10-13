@@ -39,9 +39,9 @@ testthat::test_that(
           "0.29186",
           ", CI"["99%"],
           " [",
-          "0.23466",
+          "0.23516",
           ", ",
-          "0.34572",
+          "0.34527",
           "]",
           ", ",
           italic("n")["obs"],
@@ -106,7 +106,6 @@ testthat::test_that(
     testthat::skip_if(getRversion() < "3.6")
 
     # introduce NAs
-    # check that 2-by-2 doesn't produce continuity correction
     set.seed(123)
     using_function1 <-
       suppressWarnings(statsExpressions::expr_contingency_tab(
@@ -137,9 +136,9 @@ testthat::test_that(
           "0.06",
           ", CI"["99%"],
           " [",
-          "NaN",
+          "0.00",
           ", ",
-          "0.25",
+          "0.00",
           "]",
           ", ",
           italic("n")["obs"],
@@ -419,9 +418,7 @@ testthat::test_that(
         data = dfEx,
         x = cat1,
         y = cat2,
-        paired = TRUE,
-        nboot = 10,
-        messages = FALSE
+        paired = TRUE
       )
 
     results2 <-
@@ -496,9 +493,9 @@ testthat::test_that(
           "0.05472",
           ", CI"["99%"],
           " [",
-          "NaN",
+          "0.00000",
           ", ",
-          "0.62743",
+          "0.49920",
           "]",
           ", ",
           italic("n")["obs"],
@@ -622,7 +619,6 @@ testthat::test_that(
         data = ggplot2::msleep,
         x = vore,
         ratio = c(0.2, 0.2, 0.3, 0.3),
-        conf.type = "perc",
         messages = TRUE
       )
 
@@ -645,9 +641,9 @@ testthat::test_that(
           "0.27",
           ", CI"["95%"],
           " [",
-          "0.08",
+          "0.11",
           ", ",
-          "0.40",
+          "0.38",
           "]",
           ", ",
           italic("n")["obs"],
@@ -700,9 +696,9 @@ testthat::test_that(
           "0.35",
           ", CI"["95%"],
           " [",
-          "NaN",
+          "0.00",
           ", ",
-          "1.43",
+          "0.95",
           "]",
           ", ",
           italic("n")["obs"],

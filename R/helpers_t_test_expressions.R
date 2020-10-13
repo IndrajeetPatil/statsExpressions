@@ -49,14 +49,14 @@
 #' msleep_short <- dplyr::filter(ggplot2::msleep, vore %in% c("carni", "herbi"))
 #'
 #' # with defaults
-#' statsExpressions::expr_t_parametric(
+#' expr_t_parametric(
 #'   data = msleep_short,
 #'   x = vore,
 #'   y = sleep_rem
 #' )
 #'
 #' # changing defaults (getting expression as output)
-#' statsExpressions::expr_t_parametric(
+#' expr_t_parametric(
 #'   data = msleep_short,
 #'   x = vore,
 #'   y = sleep_rem,
@@ -206,7 +206,7 @@ expr_t_parametric <- function(data,
 #'
 #' # -------------- between-subjects design ------------------------
 #' # simple function call
-#' statsExpressions::expr_t_nonparametric(
+#' expr_t_nonparametric(
 #'   data = sleep,
 #'   x = group,
 #'   y = extra
@@ -219,7 +219,7 @@ expr_t_parametric <- function(data,
 #' )
 #'
 #' # modifying few things
-#' statsExpressions::expr_t_nonparametric(
+#' expr_t_nonparametric(
 #'   data = msleep_short,
 #'   x = vore,
 #'   y = sleep_rem,
@@ -234,7 +234,7 @@ expr_t_parametric <- function(data,
 #'
 #' # note the change in the reported *V* value but the identical
 #' # value for *p* and the reversed effect size
-#' statsExpressions::expr_t_nonparametric(
+#' expr_t_nonparametric(
 #'   data = msleep_short,
 #'   x = vore,
 #'   y = sleep_rem
@@ -243,7 +243,7 @@ expr_t_parametric <- function(data,
 #' # -------------- within-subjects design ------------------------
 #'
 #' # using dataset included in the package
-#' statsExpressions::expr_t_nonparametric(
+#' expr_t_nonparametric(
 #'   data = VR_dilemma,
 #'   x = modality,
 #'   y = score,
@@ -360,14 +360,14 @@ expr_t_nonparametric <- function(data,
 #' # between-subjects design -----------------------------------------------
 #'
 #' # with defaults
-#' statsExpressions::expr_t_robust(
+#' expr_t_robust(
 #'   data = sleep,
 #'   x = group,
 #'   y = extra
 #' )
 #'
 #' # changing defaults
-#' statsExpressions::expr_t_robust(
+#' expr_t_robust(
 #'   data = ToothGrowth,
 #'   x = supp,
 #'   y = len,
@@ -377,7 +377,7 @@ expr_t_nonparametric <- function(data,
 #' )
 #'
 #' # within-subjects design -----------------------------------------------
-#' statsExpressions::expr_t_robust(
+#' expr_t_robust(
 #'   data = dplyr::filter(bugs_long, condition %in% c("LDLF", "LDHF")),
 #'   x = condition,
 #'   y = desire,
@@ -524,7 +524,7 @@ expr_t_robust <- function(data,
 #'
 #' # ------------- between-subjects design --------------------------
 #'
-#' statsExpressions::expr_t_bayes(
+#' expr_t_bayes(
 #'   data = mtcars,
 #'   x = am,
 #'   y = wt,
@@ -533,7 +533,7 @@ expr_t_robust <- function(data,
 #'
 #' # ------------- within-subjects design -----------------------------
 #'
-#' statsExpressions::expr_t_bayes(
+#' expr_t_bayes(
 #'   data = dplyr::filter(bugs_long, condition %in% c("LDLF", "LDHF")),
 #'   x = condition,
 #'   y = desire,

@@ -85,14 +85,14 @@ library(statsExpressions)
 msleep_short <- dplyr::filter(ggplot2::msleep, vore \%in\% c("carni", "herbi"))
 
 # with defaults
-statsExpressions::expr_t_parametric(
+expr_t_parametric(
   data = msleep_short,
   x = vore,
   y = sleep_rem
 )
 
 # changing defaults (getting expression as output)
-statsExpressions::expr_t_parametric(
+expr_t_parametric(
   data = msleep_short,
   x = vore,
   y = sleep_rem,

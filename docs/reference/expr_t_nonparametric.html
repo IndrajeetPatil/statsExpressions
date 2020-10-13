@@ -246,7 +246,7 @@ below.</p>
 
 <span class='co'># -------------- between-subjects design ------------------------</span>
 <span class='co'># simple function call</span>
-<span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_t_nonparametric</span><span class='op'>(</span>
+<span class='fu'>expr_t_nonparametric</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>sleep</span>,
   x <span class='op'>=</span> <span class='va'>group</span>,
   y <span class='op'>=</span> <span class='va'>extra</span>
@@ -262,7 +262,7 @@ below.</p>
 <span class='op'>)</span>
 
 <span class='co'># modifying few things</span>
-<span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_t_nonparametric</span><span class='op'>(</span>
+<span class='fu'>expr_t_nonparametric</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>msleep_short</span>,
   x <span class='op'>=</span> <span class='va'>vore</span>,
   y <span class='op'>=</span> <span class='va'>sleep_rem</span>,
@@ -280,7 +280,7 @@ below.</p>
 
 <span class='co'># note the change in the reported *V* value but the identical</span>
 <span class='co'># value for *p* and the reversed effect size</span>
-<span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_t_nonparametric</span><span class='op'>(</span>
+<span class='fu'>expr_t_nonparametric</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>msleep_short</span>,
   x <span class='op'>=</span> <span class='va'>vore</span>,
   y <span class='op'>=</span> <span class='va'>sleep_rem</span>
@@ -292,7 +292,7 @@ below.</p>
 <span class='co'># -------------- within-subjects design ------------------------</span>
 
 <span class='co'># using dataset included in the package</span>
-<span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_t_nonparametric</span><span class='op'>(</span>
+<span class='fu'>expr_t_nonparametric</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>VR_dilemma</span>,
   x <span class='op'>=</span> <span class='va'>modality</span>,
   y <span class='op'>=</span> <span class='va'>score</span>,

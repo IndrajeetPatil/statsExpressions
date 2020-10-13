@@ -207,7 +207,7 @@ width to use in calculating Bayes factors.</p></td>
 
 <span class='co'># ------------- between-subjects design --------------------------</span>
 
-<span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_t_bayes</span><span class='op'>(</span>
+<span class='fu'>expr_t_bayes</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>mtcars</span>,
   x <span class='op'>=</span> <span class='va'>am</span>,
   y <span class='op'>=</span> <span class='va'>wt</span>,
@@ -218,7 +218,7 @@ width to use in calculating Bayes factors.</p></td>
 #&gt;     "-0.72", "]", ", ", italic("r")["Cauchy"]^"JZS", " = ", "0.71")</div><div class='input'>
 <span class='co'># ------------- within-subjects design -----------------------------</span>
 
-<span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_t_bayes</span><span class='op'>(</span>
+<span class='fu'>expr_t_bayes</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>bugs_long</span>, <span class='va'>condition</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"LDLF"</span>, <span class='st'>"LDHF"</span><span class='op'>)</span><span class='op'>)</span>,
   x <span class='op'>=</span> <span class='va'>condition</span>,
   y <span class='op'>=</span> <span class='va'>desire</span>,

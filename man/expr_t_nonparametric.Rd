@@ -74,7 +74,7 @@ library(statsExpressions)
 
 # -------------- between-subjects design ------------------------
 # simple function call
-statsExpressions::expr_t_nonparametric(
+expr_t_nonparametric(
   data = sleep,
   x = group,
   y = extra
@@ -87,7 +87,7 @@ msleep_short <- dplyr::filter(
 )
 
 # modifying few things
-statsExpressions::expr_t_nonparametric(
+expr_t_nonparametric(
   data = msleep_short,
   x = vore,
   y = sleep_rem,
@@ -102,7 +102,7 @@ msleep_short$vore <- factor(msleep_short$vore, levels = c("herbi", "carni"))
 
 # note the change in the reported *V* value but the identical
 # value for *p* and the reversed effect size
-statsExpressions::expr_t_nonparametric(
+expr_t_nonparametric(
   data = msleep_short,
   x = vore,
   y = sleep_rem
@@ -111,7 +111,7 @@ statsExpressions::expr_t_nonparametric(
 # -------------- within-subjects design ------------------------
 
 # using dataset included in the package
-statsExpressions::expr_t_nonparametric(
+expr_t_nonparametric(
   data = VR_dilemma,
   x = modality,
   y = score,

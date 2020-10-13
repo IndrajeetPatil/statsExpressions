@@ -37,7 +37,7 @@ library(statsExpressions)
 
 # ------------- between-subjects design --------------------------
 
-statsExpressions::expr_t_bayes(
+expr_t_bayes(
   data = mtcars,
   x = am,
   y = wt,
@@ -46,7 +46,7 @@ statsExpressions::expr_t_bayes(
 
 # ------------- within-subjects design -----------------------------
 
-statsExpressions::expr_t_bayes(
+expr_t_bayes(
   data = dplyr::filter(bugs_long, condition \%in\% c("LDLF", "LDHF")),
   x = condition,
   y = desire,

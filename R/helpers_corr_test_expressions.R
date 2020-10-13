@@ -90,14 +90,7 @@ expr_corr_test <- function(data,
         ci = conf.level
       ) %>%
       insight::standardize_names(data = ., style = "broom") %>%
-      as_tibble(.) %>%
-      dplyr::rename_all(
-        .tbl = .,
-        .funs = dplyr::recode,
-        "df" = "parameter",
-        "s" = "statistic",
-        "n_obs" = "n.obs"
-      )
+      dplyr::rename_all(.tbl = ., .funs = dplyr::recode, "df" = "parameter")
 
     # effect size dataframe is the same one
     effsize_df <- stats_df
