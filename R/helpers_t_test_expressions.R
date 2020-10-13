@@ -137,7 +137,7 @@ expr_t_parametric <- function(data,
       pooled_sd = var.equal,
       ci = conf.level
     ) %>%
-    ipmisc::easystats_to_tidy_names(.)
+    insight::standardize_names(data = ., style = "broom")
 
   # when paired samples t-test is run df is going to be integer
   # ditto for when variance is assumed to be equal

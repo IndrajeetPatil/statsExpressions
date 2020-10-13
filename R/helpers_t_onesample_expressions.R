@@ -32,7 +32,6 @@
 #' @importFrom effectsize cohens_d hedges_g
 #' @importFrom stats t.test wilcox.test
 #' @importFrom rlang !! ensym new_formula exec
-#' @importFrom ipmisc easystats_to_tidy_names
 #'
 #' @examples
 #' \donttest{
@@ -135,7 +134,7 @@ expr_t_onesample <- function(data,
         correction = FALSE,
         ci = conf.level
       ) %>%
-      ipmisc::easystats_to_tidy_names(.)
+      insight::standardize_names(data = ., style = "broom")
 
     # preparing subtitle parameters
     statistic.text <- quote(italic("t")["Student"])

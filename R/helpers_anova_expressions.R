@@ -35,7 +35,7 @@
 #' @importFrom stats aov oneway.test
 #' @importFrom ez ezANOVA
 #' @importFrom effectsize eta_squared omega_squared
-#' @importFrom ipmisc long_to_wide_converter easystats_to_tidy_names specify_decimal_p
+#' @importFrom ipmisc long_to_wide_converter specify_decimal_p
 #'
 #' @examples
 #' # for reproducibility
@@ -234,8 +234,7 @@ expr_anova_parametric <- function(data,
       partial = partial,
       ci = conf.level
     ) %>%
-    ipmisc::easystats_to_tidy_names(.) %>%
-    dplyr::rename(estimate = dplyr::matches("eta|omega")) %>%
+    insight::standardize_names(data = ., style = "broom") %>%
     dplyr::filter(!is.na(estimate), !grepl(pattern = "Residuals", x = term, ignore.case = TRUE))
 
   # test details

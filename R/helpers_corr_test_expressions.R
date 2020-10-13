@@ -28,7 +28,7 @@
 #'
 #' @importFrom dplyr select rename_all recode
 #' @importFrom correlation correlation
-#' @importFrom ipmisc easystats_to_tidy_names stats_type_switch
+#' @importFrom ipmisc stats_type_switch
 #'
 #' @examples
 #' # for reproducibility
@@ -89,8 +89,15 @@ expr_corr_test <- function(data,
         method = corr.method,
         ci = conf.level
       ) %>%
-      ipmisc::easystats_to_tidy_names(.) %>%
-      dplyr::rename_all(.tbl = ., .funs = dplyr::recode, "df" = "parameter")
+      insight::standardize_names(data = ., style = "broom") %>%
+      as_tibble(.) %>%
+      dplyr::rename_all(
+        .tbl = .,
+        .funs = dplyr::recode,
+        "df" = "parameter",
+        "s" = "statistic",
+        "n_obs" = "n.obs"
+      )
 
     # effect size dataframe is the same one
     effsize_df <- stats_df
