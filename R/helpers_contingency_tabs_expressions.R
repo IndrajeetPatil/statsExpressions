@@ -132,10 +132,10 @@ expr_contingency_tab <- function(data,
 
     if (isFALSE(paired)) {
       # computing stats and effect size + CI
-      stats_df <- stats::chisq.test(x = x_arg, correct = FALSE)
+      stats_obj <- stats::chisq.test(x = x_arg, correct = FALSE)
       .f <- effectsize::cramers_v
       effsize.text <- quote(widehat(italic("V"))["Cramer"])
-      statistic.text <- quote(chi["Pearson"]^2)
+
       n.text <- quote(italic("n")["obs"])
     }
 
@@ -143,10 +143,10 @@ expr_contingency_tab <- function(data,
 
     if (isTRUE(paired)) {
       # computing stats and effect size + CI
-      stats_df <- stats::mcnemar.test(x = x_arg, correct = FALSE)
+      stats_obj <- stats::mcnemar.test(x = x_arg, correct = FALSE)
       .f <- effectsize::cohens_g
       effsize.text <- quote(widehat(italic("g"))["Cohen"])
-      statistic.text <- quote(chi["McNemar"]^2)
+
       n.text <- quote(italic("n")["pairs"])
     }
   }
@@ -158,13 +158,20 @@ expr_contingency_tab <- function(data,
     x_arg <- table(data %>% dplyr::pull({{ x }}))
 
     # checking if the chi-squared test can be run
-    stats_df <- stats::chisq.test(x = x_arg, correct = FALSE, p = ratio)
+    stats_obj <- stats::chisq.test(x = x_arg, correct = FALSE, p = ratio)
 
     # effect size text
     .f <- effectsize::cramers_v
     effsize.text <- quote(widehat(italic("V"))["Cramer"])
-    statistic.text <- quote(chi["gof"]^2)
     n.text <- quote(italic("n")["obs"])
+  }
+
+  # which test was carried out?
+  if (stats_obj$method == "Chi-squared test for given probabilities") {
+    statistic.text <- quote(chi["gof"]^2)
+  } else {
+    if (isTRUE(paired)) statistic.text <- quote(chi["McNemar"]^2)
+    if (isFALSE(paired)) statistic.text <- quote(chi["Pearson"]^2)
   }
 
   # computing effect size + CI
@@ -180,7 +187,7 @@ expr_contingency_tab <- function(data,
   # preparing subtitle
   expr_template(
     no.parameters = 1L,
-    stats.df = broomExtra::tidy(stats_df),
+    stats.df = broomExtra::tidy(stats_obj),
     effsize.df = effsize_df,
     statistic.text = statistic.text,
     effsize.text = effsize.text,

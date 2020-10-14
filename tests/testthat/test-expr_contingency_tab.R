@@ -707,5 +707,43 @@ testthat::test_that(
         )
       )
     )
+
+    # another dataset
+    df1 <- dplyr::filter(mtcars, am == "0")
+
+    set.seed(123)
+    sub1 <- expr_contingency_tab(df1, am, cyl)
+
+    # test
+    testthat::expect_identical(
+      sub1,
+      ggplot2::expr(
+        paste(
+          chi["gof"]^2,
+          "(",
+          "2",
+          ") = ",
+          "7.68",
+          ", ",
+          italic("p"),
+          " = ",
+          "0.021",
+          ", ",
+          widehat(italic("V"))["Cramer"],
+          " = ",
+          "0.41",
+          ", CI"["95%"],
+          " [",
+          "0.00",
+          ", ",
+          "0.67",
+          "]",
+          ", ",
+          italic("n")["obs"],
+          " = ",
+          19L
+        )
+      )
+    )
   }
 )

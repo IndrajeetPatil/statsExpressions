@@ -30,7 +30,7 @@
 #' @importFrom rcompanion wilcoxonOneSampleR
 #' @importFrom ipmisc stats_type_switch
 #' @importFrom effectsize cohens_d hedges_g
-#' @importFrom stats t.test wilcox.test
+#' @importFrom stats t.test wilcox.test na.omit
 #' @importFrom rlang !! ensym new_formula exec
 #'
 #' @examples
@@ -97,9 +97,6 @@ expr_t_onesample <- function(data,
     dplyr::select(.data = ., {{ x }}) %>%
     tidyr::drop_na(data = .) %>%
     as_tibble(.)
-
-  # sample size
-  sample_size <- nrow(data)
 
   # standardize the type of statistics
   stats.type <- ipmisc::stats_type_switch(type)
@@ -185,7 +182,7 @@ expr_t_onesample <- function(data,
         effsize.df = effsize_df,
         statistic.text = statistic.text,
         effsize.text = effsize.text,
-        n = sample_size,
+        n = nrow(data),
         n.text = quote(italic("n")["obs"]),
         conf.level = conf.level,
         k = k
@@ -232,7 +229,7 @@ expr_t_onesample <- function(data,
           LL = specify_decimal_p(x = stats_df$ci[[1]], k = k),
           UL = specify_decimal_p(x = stats_df$ci[[2]], k = k),
           p.value = specify_decimal_p(x = stats_df$p.value[[1]], k = k, p.value = TRUE),
-          n = sample_size
+          n = nrow(data)
         )
       )
   }
