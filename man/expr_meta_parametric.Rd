@@ -9,8 +9,8 @@ expr_meta_parametric(
   data,
   k = 2L,
   conf.level = 0.95,
-  output = "subtitle",
   caption = NULL,
+  output = "expression",
   ...
 )
 }
@@ -26,13 +26,13 @@ two columns will be used for \code{yi}  and \code{sei} arguments in \code{metafo
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} lower and upper confidence intervals (\code{0.95}).}
 
+\item{caption}{Text to display as caption. This argument is relevant only
+when \code{output = "caption"}.}
+
 \item{output}{Character describing the desired output. If \code{"subtitle"}, a
 formatted subtitle with summary effect and statistical details will be
 returned, and if \code{"caption"}, expression containing details from model
 summary will be returned.}
-
-\item{caption}{Text to display as caption. This argument is relevant only
-when \code{output = "caption"}.}
 
 \item{...}{
   Arguments passed on to \code{\link[metafor:rma.uni]{metafor::rma}}

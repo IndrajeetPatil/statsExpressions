@@ -35,7 +35,7 @@ Imports:
     rcompanion,
     rlang,
     stats,
-    tidyBF,
+    tidyBF (>= 0.3.0.9000),
     tidyr,
     WRS2
 Suggests:
@@ -48,7 +48,8 @@ VignetteBuilder:
     knitr
 Remotes:
     easystats/effectsize,
-    easystats/insight
+    easystats/insight,
+    IndrajeetPatil/tidyBF
 Encoding: UTF-8
 Language: en-US
 LazyData: true

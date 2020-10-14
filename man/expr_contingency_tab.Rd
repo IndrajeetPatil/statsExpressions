@@ -13,6 +13,7 @@ expr_contingency_tab(
   ratio = NULL,
   k = 2L,
   conf.level = 0.95,
+  output = "expression",
   ...
 )
 }
@@ -46,6 +47,9 @@ there are four levels this will be \code{ratio = c(0.25,0.25,0.25,0.25)}, etc.}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} lower and upper confidence intervals (\code{0.95}).}
+
+\item{output}{Can either be \code{"expression"}, which will return expression or
+\code{"dataframe"}, which will return a dataframe with results.}
 
 \item{...}{Additional arguments (currently ignored).}
 }

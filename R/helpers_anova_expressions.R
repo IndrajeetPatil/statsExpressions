@@ -25,6 +25,8 @@
 #' @param sphericity.correction Logical that decides whether to apply correction
 #'   to account for violation of sphericity in a repeated measures design ANOVA
 #'   (Default: `TRUE`).
+#' @param output Can either be `"expression"`, which will return expression or
+#'   `"dataframe"`, which will return a dataframe with results.
 #' @inheritParams expr_template
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams stats::oneway.test
@@ -86,6 +88,7 @@ expr_anova_parametric <- function(data,
                                   partial = TRUE,
                                   var.equal = FALSE,
                                   sphericity.correction = TRUE,
+                                  output = "expression",
                                   ...) {
 
   # make sure both quoted and unquoted arguments are allowed
@@ -202,7 +205,7 @@ expr_anova_parametric <- function(data,
     n.text <- quote(italic("n")["obs"])
 
     # Welch's ANOVA run by default
-    stats_obj <-
+    mod <-
       stats::oneway.test(
         formula = rlang::new_formula({{ y }}, {{ x }}),
         data = data,
@@ -212,8 +215,8 @@ expr_anova_parametric <- function(data,
 
     # tidy up the stats object
     stats_df <-
-      suppressMessages(broomExtra::tidy(stats_obj)) %>%
-      dplyr::rename(parameter1 = dplyr::matches("^num"), parameter2 = dplyr::matches("^den"))
+      suppressMessages(broomExtra::tidy(mod)) %>%
+      dplyr::select(statistic, parameter1 = num.df, parameter2 = den.df, dplyr::everything())
 
     # creating a standardized dataframe with effect size and its CIs
     effsize_object <-
@@ -234,8 +237,7 @@ expr_anova_parametric <- function(data,
       partial = partial,
       ci = conf.level
     ) %>%
-    insight::standardize_names(data = ., style = "broom") %>%
-    dplyr::filter(!is.na(estimate), !grepl(pattern = "Residuals", x = term, ignore.case = TRUE))
+    insight::standardize_names(data = ., style = "broom")
 
   # test details
   statistic.text <-
@@ -245,19 +247,28 @@ expr_anova_parametric <- function(data,
       quote(italic("F")["Welch"])
     }
 
+  # combining dataframes
+  stats_df <- dplyr::bind_cols(stats_df, effsize_df)
+
   # preparing subtitle
-  expr_template(
-    no.parameters = 2L,
-    stats.df = stats_df,
-    effsize.df = effsize_df,
-    statistic.text = statistic.text,
-    effsize.text = effsize.text,
-    n = sample_size,
-    n.text = n.text,
-    conf.level = conf.level,
-    k = k,
-    k.parameter = k.df1,
-    k.parameter2 = k.df2
+  subtitle <-
+    expr_template(
+      no.parameters = 2L,
+      stats.df = stats_df,
+      statistic.text = statistic.text,
+      effsize.text = effsize.text,
+      n = sample_size,
+      n.text = n.text,
+      conf.level = conf.level,
+      k = k,
+      k.parameter = k.df1,
+      k.parameter2 = k.df2
+    )
+
+  # return the output
+  switch(output,
+    "expression" = subtitle,
+    "dataframe" = stats_df
   )
 }
 
@@ -324,6 +335,7 @@ expr_anova_nonparametric <- function(data,
                                      conf.level = 0.95,
                                      conf.type = "perc",
                                      nboot = 100L,
+                                     output = "expression",
                                      ...) {
 
   # make sure both quoted and unquoted arguments are allowed
@@ -408,17 +420,26 @@ expr_anova_nonparametric <- function(data,
     ) %>%
     rcompanion_cleaner(.)
 
+  # combining dataframes
+  stats_df <- dplyr::bind_cols(broomExtra::tidy(mod), effsize_df)
+
   # preparing subtitle
-  expr_template(
-    no.parameters = 1L,
-    stats.df = broomExtra::tidy(mod),
-    effsize.df = effsize_df,
-    statistic.text = statistic.text,
-    effsize.text = effsize.text,
-    n = sample_size,
-    n.text = n.text,
-    conf.level = conf.level,
-    k = k
+  subtitle <-
+    expr_template(
+      no.parameters = 1L,
+      stats.df = stats_df,
+      statistic.text = statistic.text,
+      effsize.text = effsize.text,
+      n = sample_size,
+      n.text = n.text,
+      conf.level = conf.level,
+      k = k
+    )
+
+  # return the output
+  switch(output,
+    "expression" = subtitle,
+    "dataframe" = stats_df
   )
 }
 
@@ -486,6 +507,7 @@ expr_anova_robust <- function(data,
                               conf.level = 0.95,
                               tr = 0.1,
                               nboot = 100L,
+                              output = "expression",
                               ...) {
 
   # make sure both quoted and unquoted arguments are allowed
@@ -511,12 +533,21 @@ expr_anova_robust <- function(data,
     sample_size <- length(unique(data$rowid))
 
     # test
-    stats_df <-
+    mod <-
       WRS2::rmanova(
         y = data[[rlang::as_name(y)]],
         groups = data[[rlang::as_name(x)]],
         blocks = data[["rowid"]],
         tr = tr
+      )
+
+    # create a dataframe
+    stats_df <-
+      tibble(
+        statistic = mod$test[[1]],
+        parameter1 = mod$df1[[1]],
+        parameter2 = mod$df2[[1]],
+        p.value = mod$p.value[[1]]
       )
 
     # preparing the subtitle
@@ -540,9 +571,9 @@ expr_anova_robust <- function(data,
           n
         ),
         env = list(
-          statistic = specify_decimal_p(x = stats_df$test[[1]], k = k),
-          df1 = specify_decimal_p(x = stats_df$df1[[1]], k = k),
-          df2 = specify_decimal_p(x = stats_df$df2[[1]], k = k),
+          statistic = specify_decimal_p(x = stats_df$statistic[[1]], k = k),
+          df1 = specify_decimal_p(x = stats_df$parameter1[[1]], k = k),
+          df2 = specify_decimal_p(x = stats_df$parameter2[[1]], k = k),
           p.value = specify_decimal_p(x = stats_df$p.value[[1]], k = k, p.value = TRUE),
           n = sample_size
         )
@@ -578,15 +609,11 @@ expr_anova_robust <- function(data,
         conf.high = mod$effsize_ci[[2]]
       )
 
-    # effect size dataframe
-    effsize_df <- stats_df
-
     # preparing subtitle
     subtitle <-
       expr_template(
         no.parameters = 2L,
         stats.df = stats_df,
-        effsize.df = effsize_df,
         statistic.text = quote(italic("F")["trimmed-means"]),
         effsize.text = quote(widehat(italic(xi))),
         n = sample_size,
@@ -597,8 +624,11 @@ expr_anova_robust <- function(data,
       )
   }
 
-  # return the subtitle
-  return(subtitle)
+  # return the output
+  switch(output,
+    "expression" = subtitle,
+    "dataframe" = stats_df
+  )
 }
 
 
@@ -652,15 +682,26 @@ expr_anova_bayes <- function(data,
                              paired = FALSE,
                              bf.prior = 0.707,
                              k = 2L,
+                             output = "expression",
                              ...) {
   # bayes factor results
-  tidyBF::bf_oneway_anova(
-    data = data,
-    x = {{ x }},
-    y = {{ y }},
-    paired = paired,
-    bf.prior = bf.prior,
-    k = k,
-    output = "h1"
-  )$expr
+  stats_df <-
+    tidyBF::bf_oneway_anova(
+      data = data,
+      x = {{ x }},
+      y = {{ y }},
+      paired = paired,
+      bf.prior = bf.prior,
+      k = k,
+      output = output,
+      ...
+    )
+
+  if (output == "expression") subtitle <- stats_df$expr
+
+  # return the output
+  switch(output,
+    "expression" = subtitle,
+    "dataframe" = stats_df
+  )
 }

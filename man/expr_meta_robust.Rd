@@ -5,7 +5,7 @@
 \title{Making expression with frequentist random-effects robust meta-analysis
 results}
 \usage{
-expr_meta_robust(data, random = "mixture", k = 2L, ...)
+expr_meta_robust(data, random = "mixture", k = 2L, output = "expression", ...)
 }
 \arguments{
 \item{data}{A dataframe. It \strong{must} contain columns named \code{estimate} (effect
@@ -19,6 +19,11 @@ The type of random effects distribution. One of "normal","t-dist","mixture", for
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2L}).}
+
+\item{output}{Character describing the desired output. If \code{"subtitle"}, a
+formatted subtitle with summary effect and statistical details will be
+returned, and if \code{"caption"}, expression containing details from model
+summary will be returned.}
 
 \item{...}{
   Arguments passed on to \code{\link[metaplus:metaplus]{metaplus::metaplus}}

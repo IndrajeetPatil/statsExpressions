@@ -14,6 +14,7 @@ expr_anova_robust(
   conf.level = 0.95,
   tr = 0.1,
   nboot = 100L,
+  output = "expression",
   ...
 )
 }
@@ -44,6 +45,9 @@ try to play around with the value of \code{tr}, which is by default set to
 
 \item{nboot}{Number of bootstrap samples for computing confidence interval
 for the effect size (Default: \code{100}).}
+
+\item{output}{Can either be \code{"expression"}, which will return expression or
+\code{"dataframe"}, which will return a dataframe with results.}
 
 \item{...}{Additional arguments (currently ignored).}
 }

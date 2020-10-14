@@ -12,7 +12,7 @@
 #' @param robust.estimator If `type = "robust"`, a robust estimator to be used
 #'   (`"onestep"` (Default), `"mom"`, or `"median"`). For more, see
 #'   `?WRS2::onesampb`.
-#' @param ... Additional arguments (currently ignored).
+#' @param ... Additional arguments passed to `tidyBF::bf_ttest`.
 #' @inheritParams expr_t_parametric
 #' @inheritParams tidyBF::bf_corr_test
 #' @inheritParams expr_anova_parametric
@@ -88,6 +88,7 @@ expr_t_onesample <- function(data,
                              robust.estimator = "onestep",
                              effsize.type = "g",
                              nboot = 100L,
+                             output = "expression",
                              ...) {
 
   # ====================== dataframe ========================================
@@ -175,11 +176,15 @@ expr_t_onesample <- function(data,
 
   # preparing subtitle
   if (stats.type %in% c("parametric", "nonparametric")) {
+    # combining dataframes
+    stats_df <-
+      dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("estimate|^conf")), effsize_df)
+
+    # expression
     subtitle <-
       expr_template(
         no.parameters = no.parameters,
         stats.df = stats_df,
-        effsize.df = effsize_df,
         statistic.text = statistic.text,
         effsize.text = effsize.text,
         n = nrow(data),
@@ -193,13 +198,22 @@ expr_t_onesample <- function(data,
 
   if (stats.type == "robust") {
     # running one-sample percentile bootstrap
-    stats_df <-
+    mod <-
       WRS2::onesampb(
         x = data %>% dplyr::pull({{ x }}),
         est = robust.estimator,
         nboot = nboot,
         nv = test.value,
         alpha = 1 - conf.level
+      )
+
+    # create a dataframe
+    stats_df <-
+      tibble(
+        estimate = mod$estimate[[1]],
+        conf.low = mod$ci[[1]],
+        conf.high = mod$ci[[2]],
+        p.value = mod$p.value[[1]]
       )
 
     # preparing the subtitle
@@ -226,8 +240,8 @@ expr_t_onesample <- function(data,
         env = list(
           estimate = specify_decimal_p(x = stats_df$estimate[[1]], k = k),
           conf.level = paste(conf.level * 100, "%", sep = ""),
-          LL = specify_decimal_p(x = stats_df$ci[[1]], k = k),
-          UL = specify_decimal_p(x = stats_df$ci[[2]], k = k),
+          LL = specify_decimal_p(x = stats_df$conf.low[[1]], k = k),
+          UL = specify_decimal_p(x = stats_df$conf.high[[1]], k = k),
           p.value = specify_decimal_p(x = stats_df$p.value[[1]], k = k, p.value = TRUE),
           n = nrow(data)
         )
@@ -238,17 +252,23 @@ expr_t_onesample <- function(data,
 
   # running Bayesian one-sample t-test
   if (stats.type == "bayes") {
-    subtitle <-
+    stats_df <-
       tidyBF::bf_ttest(
         data = data,
         x = {{ x }},
         test.value = test.value,
         bf.prior = bf.prior,
-        output = "h1",
-        k = k
-      )$expr
+        output = output,
+        k = k,
+        ...
+      )
+
+    if (output == "expression") subtitle <- stats_df$expr
   }
 
-  # return the subtitle
-  return(subtitle)
+  # return the output
+  switch(output,
+    "expression" = subtitle,
+    "dataframe" = stats_df
+  )
 }

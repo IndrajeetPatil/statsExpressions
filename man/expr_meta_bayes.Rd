@@ -9,6 +9,7 @@ expr_meta_bayes(
   d = prior("norm", c(mean = 0, sd = 0.3)),
   tau = prior("invgamma", c(shape = 1, scale = 0.15)),
   k = 2L,
+  output = "expression",
   ...
 )
 }
@@ -28,6 +29,12 @@ probability density function is defined via \code{\link[metaBMA]{prior}}.}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2L}).}
+
+\item{output}{Can either be \code{"null"} (or \code{"caption"} or \code{"H0"} or \code{"h0"}),
+which will return expression with evidence in favor of the null hypothesis,
+or \code{"alternative"} (or \code{"title"} or \code{"H1"} or \code{"h1"}), which will return
+expression with evidence in favor of the alternative hypothesis, or
+\code{"dataframe"}, which will return a dataframe with results all the details).}
 
 \item{...}{
   Arguments passed on to \code{\link[metaBMA:meta_random]{metaBMA::meta_random}}

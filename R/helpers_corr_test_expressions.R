@@ -36,7 +36,7 @@
 #' library(statsExpressions)
 #'
 #' # without changing defaults
-#' statsExpressions::expr_corr_test(
+#' expr_corr_test(
 #'   data = ggplot2::midwest,
 #'   x = area,
 #'   y = percblack,
@@ -44,7 +44,7 @@
 #' )
 #'
 #' # changing defaults
-#' statsExpressions::expr_corr_test(
+#' expr_corr_test(
 #'   data = ggplot2::midwest,
 #'   x = area,
 #'   y = percblack,
@@ -62,6 +62,7 @@ expr_corr_test <- function(data,
                            beta = 0.1,
                            type = "parametric",
                            bf.prior = 0.707,
+                           output = "expression",
                            ...) {
 
   # -------------------------- checking corr.method --------------------------
@@ -90,10 +91,8 @@ expr_corr_test <- function(data,
         ci = conf.level
       ) %>%
       insight::standardize_names(data = ., style = "broom") %>%
-      dplyr::rename_all(.tbl = ., .funs = dplyr::recode, "df" = "parameter")
-
-    # effect size dataframe is the same one
-    effsize_df <- stats_df
+      dplyr::rename_all(.tbl = ., .funs = dplyr::recode, "df" = "parameter") %>%
+      as_tibble(.)
   }
 
   # ------------------------ subtitle text elements -----------------------------
@@ -126,7 +125,6 @@ expr_corr_test <- function(data,
       expr_template(
         no.parameters = no.parameters,
         stats.df = stats_df,
-        effsize.df = effsize_df,
         statistic.text = statistic.text,
         effsize.text = effsize.text,
         n = stats_df$n.obs[[1]],
@@ -136,17 +134,23 @@ expr_corr_test <- function(data,
       )
   } else {
     # bayes factor results
-    subtitle <-
+    stats_df <-
       tidyBF::bf_corr_test(
         data = data,
         x = {{ x }},
         y = {{ y }},
         bf.prior = bf.prior,
-        output = "h1",
-        k = k
-      )$expr
+        output = output,
+        k = k,
+        ...
+      )
+
+    if (output == "expression") subtitle <- stats_df$expr
   }
 
-  # return the subtitle
-  return(subtitle)
+  # return the output
+  switch(output,
+    "expression" = subtitle,
+    "dataframe" = stats_df
+  )
 }

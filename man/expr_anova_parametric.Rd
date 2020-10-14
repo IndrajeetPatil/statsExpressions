@@ -15,6 +15,7 @@ expr_anova_parametric(
   partial = TRUE,
   var.equal = FALSE,
   sphericity.correction = TRUE,
+  output = "expression",
   ...
 )
 }
@@ -55,6 +56,9 @@ argument can be \code{"biased"} (equivalent to \code{"d"} for Cohen's \emph{d} f
 \item{sphericity.correction}{Logical that decides whether to apply correction
 to account for violation of sphericity in a repeated measures design ANOVA
 (Default: \code{TRUE}).}
+
+\item{output}{Can either be \code{"expression"}, which will return expression or
+\code{"dataframe"}, which will return a dataframe with results.}
 
 \item{...}{Additional arguments (currently ignored).}
 }

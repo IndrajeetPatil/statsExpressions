@@ -232,3 +232,21 @@ testthat::test_that(
     testthat::expect_identical(using_function, expected)
   }
 )
+
+
+# dataframe -----------------------------------------------------------
+
+testthat::test_that(
+  desc = "dataframe",
+  code = {
+    testthat::expect_is(
+      statsExpressions::expr_corr_test(
+        data = mtcars,
+        x = mpg,
+        y = wt,
+        output = "dataframe"
+      ),
+      "tbl_df"
+    )
+  }
+)

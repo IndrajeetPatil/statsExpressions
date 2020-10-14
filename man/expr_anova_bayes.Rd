@@ -4,7 +4,16 @@
 \alias{expr_anova_bayes}
 \title{Making expression containing Bayesian one-way ANOVA results.}
 \usage{
-expr_anova_bayes(data, x, y, paired = FALSE, bf.prior = 0.707, k = 2L, ...)
+expr_anova_bayes(
+  data,
+  x,
+  y,
+  paired = FALSE,
+  bf.prior = 0.707,
+  k = 2L,
+  output = "expression",
+  ...
+)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to
@@ -24,6 +33,9 @@ width to use in calculating Bayes factors.}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2}).}
+
+\item{output}{Can either be \code{"expression"}, which will return expression or
+\code{"dataframe"}, which will return a dataframe with results.}
 
 \item{...}{Additional arguments (currently ignored).}
 }
