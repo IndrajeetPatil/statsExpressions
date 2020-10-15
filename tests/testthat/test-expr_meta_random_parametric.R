@@ -1,7 +1,7 @@
 # subtitle from meta-analysis -------------------------------------------
 
 testthat::test_that(
-  desc = "expr_meta_parametric works",
+  desc = "expr_meta_random works",
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
@@ -19,7 +19,7 @@ testthat::test_that(
     # subtitle output
     set.seed(123)
     using_function1 <-
-      expr_meta_parametric(
+      expr_meta_random(
         data = df_eg,
         k = 4,
         output = "subtitle"
@@ -28,7 +28,7 @@ testthat::test_that(
     # caption output
     set.seed(123)
     using_function2 <-
-      expr_meta_parametric(
+      expr_meta_random(
         data = df_eg,
         k = 2,
         caption = "this is caption",
@@ -38,7 +38,7 @@ testthat::test_that(
     # dataframe output
     set.seed(123)
     df_res <-
-      expr_meta_parametric(
+      expr_meta_random(
         data = df_eg,
         output = "dataframe"
       )
@@ -107,6 +107,6 @@ testthat::test_that(
     testthat::expect_identical(using_function2, results2)
 
     # error
-    testthat::expect_error(expr_meta_parametric(mtcars))
+    testthat::expect_error(expr_meta_random(mtcars))
   }
 )

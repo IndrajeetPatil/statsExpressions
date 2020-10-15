@@ -59,8 +59,8 @@ Functions | Type | Test | Effect size | 95% CI available?
 `expr_t_onesample` | Parametric | One-sample *t*-test | Cohen's *d*, Hedge's *g* | <font color="green">$\checkmark$</font>
 `expr_t_onesample` | Non-parametric | One-sample Wilcoxon signed rank test | *r* | <font color="green">$\checkmark$</font>
 `expr_t_onesample` | Robust | One-sample percentile bootstrap | robust estimator | <font color="green">$\checkmark$</font>
-`expr_meta_parametric` | Parametric | Meta-analysis via random-effects models | $\beta$ | <font color="green">$\checkmark$</font>
-`expr_meta_robust` | Robust | Meta-analysis via robust random-effects models | $\beta$ | <font color="green">$\checkmark$</font>
+`expr_meta_random` | Parametric | Meta-analysis via random-effects models | $\beta$ | <font color="green">$\checkmark$</font>
+`expr_meta_random` | Robust | Meta-analysis via robust random-effects models | $\beta$ | <font color="green">$\checkmark$</font>
 
 
 Note that the following recommendations on how to interpret the effect sizes are

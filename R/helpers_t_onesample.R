@@ -37,10 +37,11 @@
 #' \donttest{
 #' # for reproducibility
 #' set.seed(123)
+#' library(statsExpressions)
 #'
 #' # ----------------------- parametric ---------------------------------------
 #'
-#' statsExpressions::expr_t_onesample(
+#' expr_t_onesample(
 #'   data = ggplot2::msleep,
 #'   x = brainwt,
 #'   test.value = 0.275,
@@ -49,7 +50,7 @@
 #'
 #' # ----------------------- non-parametric -----------------------------------
 #'
-#' statsExpressions::expr_t_onesample(
+#' expr_t_onesample(
 #'   data = ggplot2::msleep,
 #'   x = brainwt,
 #'   test.value = 0.275,
@@ -58,7 +59,7 @@
 #'
 #' # ----------------------- robust --------------------------------------------
 #'
-#' statsExpressions::expr_t_onesample(
+#' expr_t_onesample(
 #'   data = ggplot2::msleep,
 #'   x = brainwt,
 #'   test.value = 0.275,
@@ -67,7 +68,7 @@
 #'
 #' # ----------------------- Bayes Factor -----------------------------------
 #'
-#' statsExpressions::expr_t_onesample(
+#' expr_t_onesample(
 #'   data = ggplot2::msleep,
 #'   x = brainwt,
 #'   test.value = 0.275,

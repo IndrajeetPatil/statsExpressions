@@ -1,7 +1,7 @@
 # subtitle from meta-analysis -------------------------------------------
 
 testthat::test_that(
-  desc = "expr_meta_robust works",
+  desc = "expr_meta_random works",
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
@@ -18,17 +18,19 @@ testthat::test_that(
     # subtitle
     set.seed(123)
     results1 <-
-      expr_meta_robust(
+      expr_meta_random(
         data = df,
         random = "normal",
+        type = "robust",
         k = 4
       )
 
     # df
     set.seed(123)
     df_res <-
-      expr_meta_robust(
+      expr_meta_random(
         data = df,
+        type = "robust",
         random = "normal",
         output = "dataframe"
       )

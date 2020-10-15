@@ -1,4 +1,4 @@
-# statsExpressions 0.5.1.9000
+# statsExpressions 0.6.0.9000
 
 BREAKING CHANGES
 
@@ -6,6 +6,9 @@ BREAKING CHANGES
   
   - The `expr_template` function retires `effsize.df` argument. Now all details
     need to be entered only in `stats.df`.
+    
+  - All meta-analyses are now carried out using `expr_meta_random` and the
+    individual functions have been removed. 
 
 MAJOR CHANGES
 

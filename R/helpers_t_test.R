@@ -217,50 +217,19 @@ expr_t_parametric <- function(data,
 #'
 #' # -------------- between-subjects design ------------------------
 #'
-#' # simple function call
 #' expr_t_nonparametric(
 #'   data = sleep,
 #'   x = group,
 #'   y = extra
 #' )
 #'
-#' # creating a smaller dataset
-#' msleep_short <- dplyr::filter(
-#'   .data = ggplot2::msleep,
-#'   vore %in% c("carni", "herbi")
-#' )
-#'
-#' # modifying few things
-#' expr_t_nonparametric(
-#'   data = msleep_short,
-#'   x = vore,
-#'   y = sleep_rem,
-#'   nboot = 200,
-#'   conf.level = 0.99,
-#'   conf.type = "bca"
-#' )
-#'
-#' # The order of the grouping factor matters when computing *V*
-#' # Changing default alphabetical order manually
-#' msleep_short$vore <- factor(msleep_short$vore, levels = c("herbi", "carni"))
-#'
-#' # note the change in the reported *V* value but the identical
-#' # value for *p* and the reversed effect size
-#' expr_t_nonparametric(
-#'   data = msleep_short,
-#'   x = vore,
-#'   y = sleep_rem
-#' )
-#'
 #' # -------------- within-subjects design ------------------------
 #'
-#' # using dataset included in the package
 #' expr_t_nonparametric(
 #'   data = VR_dilemma,
 #'   x = modality,
 #'   y = score,
-#'   paired = TRUE,
-#'   conf.level = 0.90
+#'   paired = TRUE
 #' )
 #' @export
 

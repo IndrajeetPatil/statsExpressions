@@ -5,7 +5,7 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "statsExpressions",
-  "description": "Statistical processing backend for 'ggstatsplot',\n    this package creates expressions with details from statistical tests.\n    Currently, it supports only the most common types of statistical\n    tests: parametric, nonparametric, robust, and Bayesian versions of\n    t-test/ANOVA, correlation analyses, contingency table analysis, and\n    meta-analysis.",
+  "description": "Statistical processing backend for 'ggstatsplot',\n    this package creates expressions with details from statistical tests.\n    It can additionally return dataframes with these results, which also\n    make these functions a more pipe-friendly way to do statistical\n    analysis. Currently, it supports only the most common types of\n    statistical tests: parametric, nonparametric, robust, and Bayesian\n    versions of t-test/ANOVA, correlation analyses, contingency table\n    analysis, and meta-analysis.",
   "name": "statsExpressions: Expressions with Statistical Details",
   "codeRepository": "https://github.com/IndrajeetPatil/statsExpressions",
   "relatedLink": [
@@ -16,7 +16,7 @@
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/statsExpressions/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.5.1.9000",
+  "version": "0.6.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -347,6 +347,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "4202.412KB",
+  "fileSize": "4157.514KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

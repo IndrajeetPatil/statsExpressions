@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Expressions with Statistical Details
-Version: 0.5.1.9000
+Version: 0.6.0.9000
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -11,10 +11,12 @@ Authors@R:
 Maintainer: Indrajeet Patil <patilindrajeet.science@gmail.com>
 Description: Statistical processing backend for 'ggstatsplot',
     this package creates expressions with details from statistical tests.
-    Currently, it supports only the most common types of statistical
-    tests: parametric, nonparametric, robust, and Bayesian versions of
-    t-test/ANOVA, correlation analyses, contingency table analysis, and
-    meta-analysis.
+    It can additionally return dataframes with these results, which also
+    make these functions a more pipe-friendly way to do statistical
+    analysis. Currently, it supports only the most common types of
+    statistical tests: parametric, nonparametric, robust, and Bayesian
+    versions of t-test/ANOVA, correlation analyses, contingency table
+    analysis, and meta-analysis.
 License: GPL-3 | file LICENSE
 URL: https://indrajeetpatil.github.io/statsExpressions/,
     https://github.com/IndrajeetPatil/statsExpressions

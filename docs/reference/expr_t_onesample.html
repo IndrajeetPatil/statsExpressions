@@ -91,7 +91,7 @@ robust equivalents" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.5.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.6.0.9000</span>
       </span>
     </div>
 
@@ -153,7 +153,7 @@ robust equivalents" />
     <div class="page-header">
     <h1>Expression for one sample <em>t</em>-test and its non-parametric and
 robust equivalents</h1>
-    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/helpers_t_onesample_expressions.R'><code>R/helpers_t_onesample_expressions.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/helpers_t_onesample.R'><code>R/helpers_t_onesample.R</code></a></small>
     <div class="hidden name"><code>expr_t_onesample.Rd</code></div>
     </div>
 
@@ -264,10 +264,11 @@ argument.</p>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='co'># for reproducibility</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://indrajeetpatil.github.io/statsExpressions/'>statsExpressions</a></span><span class='op'>)</span>
 
 <span class='co'># ----------------------- parametric ---------------------------------------</span>
 
-<span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_t_onesample</span><span class='op'>(</span>
+<span class='fu'>expr_t_onesample</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
   x <span class='op'>=</span> <span class='va'>brainwt</span>,
   test.value <span class='op'>=</span> <span class='fl'>0.275</span>,
@@ -279,7 +280,7 @@ argument.</p>
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 56L)</div><div class='input'>
 <span class='co'># ----------------------- non-parametric -----------------------------------</span>
 
-<span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_t_onesample</span><span class='op'>(</span>
+<span class='fu'>expr_t_onesample</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
   x <span class='op'>=</span> <span class='va'>brainwt</span>,
   test.value <span class='op'>=</span> <span class='fl'>0.275</span>,
@@ -291,7 +292,7 @@ argument.</p>
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 56L)</div><div class='input'>
 <span class='co'># ----------------------- robust --------------------------------------------</span>
 
-<span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_t_onesample</span><span class='op'>(</span>
+<span class='fu'>expr_t_onesample</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
   x <span class='op'>=</span> <span class='va'>brainwt</span>,
   test.value <span class='op'>=</span> <span class='fl'>0.275</span>,
@@ -302,7 +303,7 @@ argument.</p>
 #&gt;     ", ", italic("n")["obs"], " = ", 56L)</div><div class='input'>
 <span class='co'># ----------------------- Bayes Factor -----------------------------------</span>
 
-<span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_t_onesample</span><span class='op'>(</span>
+<span class='fu'>expr_t_onesample</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
   x <span class='op'>=</span> <span class='va'>brainwt</span>,
   test.value <span class='op'>=</span> <span class='fl'>0.275</span>,

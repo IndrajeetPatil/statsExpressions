@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.5.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.6.0.9000</span>
       </span>
     </div>
 
@@ -821,17 +821,17 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_meta_parametric.html">expr_meta_parametric</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, output <span class="op">=</span> <span class="st">"dataframe"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/expr_meta_random.html">expr_meta_random</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, output <span class="op">=</span> <span class="st">"dataframe"</span>, type <span class="op">=</span> <span class="st">"parametric"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 8</span>
 <span class="co">#&gt;   term    type    estimate std.error statistic  p.value conf.low conf.high</span>
 <span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Overall summary   -0.767     0.212     -3.62 0.000295    -1.18    -0.351</span>
+<span class="co">#&gt; 1 overall summary   -0.767     0.212     -3.62 0.000295    -1.18    -0.351</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_meta_robust.html">expr_meta_robust</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, output <span class="op">=</span> <span class="st">"dataframe"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/expr_meta_random.html">expr_meta_random</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, output <span class="op">=</span> <span class="st">"dataframe"</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 8</span>
 <span class="co">#&gt;   term    estimate std.error conf.low conf.high statistic  p.value weight</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;</span>
@@ -841,7 +841,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_meta_bayes.html">expr_meta_bayes</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, output <span class="op">=</span> <span class="st">"dataframe"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/expr_meta_random.html">expr_meta_random</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, output <span class="op">=</span> <span class="st">"dataframe"</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 2 x 11</span>
 <span class="co">#&gt;   term    mean    sd `2.5%`  `50%` `97.5%` hpd95_lower hpd95_upper n_eff  Rhat</span>
 <span class="co">#&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>

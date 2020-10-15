@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Making expression containing Bayesian random-effects meta-analysis. — expr_meta_bayes • statsExpressions</title>
+<title>Making expression for random-effects meta-analysis — expr_meta_random • statsExpressions</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,8 +54,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Making expression containing Bayesian random-effects meta-analysis. — expr_meta_bayes" />
-<meta property="og:description" content="Making expression containing Bayesian random-effects meta-analysis." />
+<meta property="og:title" content="Making expression for random-effects meta-analysis — expr_meta_random" />
+<meta property="og:description" content="Making expression for random-effects meta-analysis" />
 <meta property="og:image" content="https://indrajeetpatil.github.io/statsExpressions/logo.png" />
 
 
@@ -88,7 +88,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.5.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.6.0.9000</span>
       </span>
     </div>
 
@@ -148,20 +148,24 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Making expression containing Bayesian random-effects meta-analysis.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/helpers_meta_analysis_expressions.R'><code>R/helpers_meta_analysis_expressions.R</code></a></small>
-    <div class="hidden name"><code>expr_meta_bayes.Rd</code></div>
+    <h1>Making expression for random-effects meta-analysis</h1>
+    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/helpers_meta_random.R'><code>R/helpers_meta_random.R</code></a></small>
+    <div class="hidden name"><code>expr_meta_random.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Making expression containing Bayesian random-effects meta-analysis.</p>
+    <p>Making expression for random-effects meta-analysis</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expr_meta_bayes</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>expr_meta_random</span><span class='op'>(</span>
   <span class='va'>data</span>,
+  type <span class='op'>=</span> <span class='st'>"parametric"</span>,
   d <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/metaBMA/man/prior.html'>prior</a></span><span class='op'>(</span><span class='st'>"norm"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>mean <span class='op'>=</span> <span class='fl'>0</span>, sd <span class='op'>=</span> <span class='fl'>0.3</span><span class='op'>)</span><span class='op'>)</span>,
   tau <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/metaBMA/man/prior.html'>prior</a></span><span class='op'>(</span><span class='st'>"invgamma"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>shape <span class='op'>=</span> <span class='fl'>1</span>, scale <span class='op'>=</span> <span class='fl'>0.15</span><span class='op'>)</span><span class='op'>)</span>,
+  random <span class='op'>=</span> <span class='st'>"mixture"</span>,
   k <span class='op'>=</span> <span class='fl'>2L</span>,
+  conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
+  caption <span class='op'>=</span> <span class='cn'>NULL</span>,
   output <span class='op'>=</span> <span class='st'>"expression"</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
@@ -177,6 +181,13 @@ two columns will be used for <code>yi</code>  and <code>sei</code> arguments in 
 (for parametric analysis) or <code><a href='https://rdrr.io/pkg/metaplus/man/metaplus.html'>metaplus::metaplus</a></code> (for robust analysis).</p></td>
     </tr>
     <tr>
+      <th>type</th>
+      <td><p>Type of statistic expected (<code>"parametric"</code> or <code>"nonparametric"</code>
+or <code>"robust"</code> or <code>"bayes"</code>).Corresponding abbreviations are also accepted:
+<code>"p"</code> (for parametric), <code>"np"</code> (nonparametric), <code>"r"</code> (robust), or
+<code>"bf"</code>resp.</p></td>
+    </tr>
+    <tr>
       <th>d</th>
       <td><p><code>prior</code> distribution on the average effect size <code>d</code>. The
 prior probability density function is defined via <code><a href='https://rdrr.io/pkg/metaBMA/man/prior.html'>prior</a></code>.</p></td>
@@ -189,79 +200,103 @@ prior probability density function is defined via <code><a href='https://rdrr.io
 probability density function is defined via <code><a href='https://rdrr.io/pkg/metaBMA/man/prior.html'>prior</a></code>.</p></td>
     </tr>
     <tr>
+      <th>random</th>
+      <td><p>The type of random effects distribution. One of "normal","t-dist","mixture", for standard normal, \(t\)-distribution or mixture of normals respectively.</p></td>
+    </tr>
+    <tr>
       <th>k</th>
       <td><p>Number of digits after decimal point (should be an integer)
-(Default: <code>k = 2L</code>).</p></td>
+(Default: <code>k = 2</code>).</p></td>
+    </tr>
+    <tr>
+      <th>conf.level</th>
+      <td><p>Scalar between 0 and 1. If unspecified, the defaults return
+<code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
+    </tr>
+    <tr>
+      <th>caption</th>
+      <td><p>Text to display as caption. This argument is relevant only
+when <code>output = "caption"</code>.</p></td>
     </tr>
     <tr>
       <th>output</th>
-      <td><p>Can either be <code>"null"</code> (or <code>"caption"</code> or <code>"H0"</code> or <code>"h0"</code>),
-which will return expression with evidence in favor of the null hypothesis,
-or <code>"alternative"</code> (or <code>"title"</code> or <code>"H1"</code> or <code>"h1"</code>), which will return
-expression with evidence in favor of the alternative hypothesis, or
-<code>"dataframe"</code>, which will return a dataframe with results all the details).</p></td>
+      <td><p>Can either be <code>"expression"</code>, which will return expression or
+<code>"dataframe"</code>, which will return a dataframe with results.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Arguments passed on to <code><a href='https://rdrr.io/pkg/metaBMA/man/meta_random.html'>metaBMA::meta_random</a></code></p><dl>
-    <dt><code>labels</code></dt><dd><p>optional: character values with study labels. Can be a
-character vector or the quoted or unquoted name of the variable in
-<code>data</code></p></dd>
-    <dt><code>rscale_contin</code></dt><dd><p>scale parameter of the JZS prior for the continuous
-covariates.</p></dd>
-    <dt><code>rscale_discrete</code></dt><dd><p>scale parameter of the JZS prior for discrete
-moderators.</p></dd>
-    <dt><code>centering</code></dt><dd><p>whether continuous moderators are centered.</p></dd>
-    <dt><code>logml</code></dt><dd><p>how to estimate the log-marginal likelihood: either by numerical
-integration (<code>"integrate"</code>) or by bridge sampling using MCMC/Stan
-samples (<code>"stan"</code>). To obtain high precision with <code>logml="stan"</code>,
-many MCMC samples are required (e.g., <code>logml_iter=10000, warmup=1000</code>).</p></dd>
-    <dt><code>summarize</code></dt><dd><p>how to estimate parameter summaries (mean, median, SD,
-etc.): Either by numerical integration (<code>summarize = "integrate"</code>) or
-based on MCMC/Stan samples (<code>summarize = "stan"</code>).</p></dd>
-    <dt><code>ci</code></dt><dd><p>probability for the credibility/highest-density intervals.</p></dd>
-    <dt><code>rel.tol</code></dt><dd><p>relative tolerance used for numerical integration using
-<code><a href='https://rdrr.io/r/stats/integrate.html'>integrate</a></code>. Use <code>rel.tol=.Machine$double.eps</code> for
-maximal precision (however, this might be slow).</p></dd>
-    <dt><code>logml_iter</code></dt><dd><p>number of iterations (per chain) from the posterior
-distribution of <code>d</code> and <code>tau</code>. The samples are used for computing
-the marginal likelihood of the random-effects model with bridge sampling
-(if <code>logml="stan"</code>) and for obtaining parameter estimates (if
-<code>summarize="stan"</code>). Note that the argument <code>iter=2000</code> controls
-the number of iterations for estimation of the random-effect parameters per
-study in random-effects meta-analysis.</p></dd>
-    <dt><code>silent_stan</code></dt><dd><p>whether to suppress the Stan progress bar.</p></dd>
-  
-</dl></td>
+      <td><p>Additional arguments passed to the respective meta-analysis
+function.</p></td>
     </tr>
     </table>
+
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This analysis is carried out using-</p><ul>
+<li><p>parametric: <code><a href='https://wviechtb.github.io/metafor/reference/rma.uni.html'>metafor::rma</a></code></p></li>
+<li><p>robust: <code><a href='https://rdrr.io/pkg/metaplus/man/metaplus.html'>metaplus::metaplus</a></code></p></li>
+<li><p>Bayesian: <code><a href='https://rdrr.io/pkg/metaBMA/man/meta_random.html'>metaBMA::meta_random</a></code></p></li>
+</ul>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='co'># setup</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://indrajeetpatil.github.io/statsExpressions/'>statsExpressions</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>metaplus</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Note: The second parameter is the study standard error not the standard error squared as in the metafor package.</span></div><div class='input'>
+
 <span class='co'># renaming to what `statsExpressions` expects</span>
 <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span><span class='va'>mag</span>, estimate <span class='op'>=</span> <span class='va'>yi</span>, std.error <span class='op'>=</span> <span class='va'>sei</span><span class='op'>)</span>
 
+<span class='co'># ----------------------- parametric ---------------------------------------</span>
+
 <span class='co'># making subtitle</span>
-<span class='fu'>expr_meta_bayes</span><span class='op'>(</span>
+<span class='fu'>expr_meta_random</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>df</span>,
+  k <span class='op'>=</span> <span class='fl'>3</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; paste(italic("z"), " = ", "-3.619", ", ", italic("p"), " = ", 
+#&gt;     "2.95e-04", ", ", widehat(beta)["summary"]^"meta", " = ", 
+#&gt;     "-0.767", ", CI"["95%"], " [", "-1.182", ", ", "-0.351", 
+#&gt;     "]", ", ", italic("n")["effects"], " = ", 16L)</div><div class='input'>
+<span class='co'># making caption</span>
+<span class='fu'>expr_meta_random</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='va'>df</span>,
+  output <span class='op'>=</span> <span class='st'>"caption"</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; atop(displaystyle(NULL), expr = paste("Heterogeneity: ", italic("Q"), 
+#&gt;     "(", "15", ") = ", "47", ", ", italic("p"), " = ", "3.6e-05", 
+#&gt;     ", ", tau["REML"]^2, " = ", "0.29", ", ", "I"^2, " = ", "73.64%"))</div><div class='input'>
+<span class='co'># ----------------------- random -----------------------------------------</span>
+
+<span class='co'># creating expression</span>
+<span class='fu'>expr_meta_random</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='va'>df</span>,
+  type <span class='op'>=</span> <span class='st'>"random"</span>,
+  random <span class='op'>=</span> <span class='st'>"normal"</span>,
+  output <span class='op'>=</span> <span class='st'>"dataframe"</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 8</span><span>
+#&gt;   </span><span style='font-weight: bold;'>term</span><span>    </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>std.error</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>statistic</span><span>  </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>weight</span><span>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> Overall   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>746</span><span>     </span><span style='color: #555555;'>0.</span><span>234    -</span><span style='color: #BB0000;'>1.26</span><span>    -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>343</span><span>     -</span><span style='color: #BB0000;'>3.20</span><span> </span><span style='color: #555555;'>0.000</span><span style='text-decoration: underline;'>501</span><span>     </span><span style='color: #BB0000;'>NA</span><span></div><div class='input'>
+<span class='co'># ----------------------- Bayes Factor -----------------------------------</span>
+
+<span class='co'># making subtitle</span>
+<span class='fu'>expr_meta_random</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='va'>df</span>,
+  type <span class='op'>=</span> <span class='st'>"bayes"</span>,
   k <span class='op'>=</span> <span class='fl'>3</span>,
   <span class='co'># additional arguments given to `metaBMA`</span>
   iter <span class='op'>=</span> <span class='fl'>5000</span>,
   summarize <span class='op'>=</span> <span class='st'>"integrate"</span>,
   control <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>adapt_delta <span class='op'>=</span> <span class='fl'>0.99</span>, max_treedepth <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: There were 1 divergent transitions after warmup. See</span>
-#&gt; <span class='warning'>http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup</span>
-#&gt; <span class='warning'>to find out why this is a problem and how to eliminate them.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Examine the pairs() plot to diagnose sampling problems</span></div><div class='output co'>#&gt; paste("log"["e"], "(BF"["10"], ") = ", "3.669", ", ", widehat(italic("d"))["mean"]^"posterior", 
-#&gt;     " = ", "-0.467", ", CI"["95%"], " [", "-0.788", ", ", "-0.143", 
+</div><div class='output co'>#&gt; paste("log"["e"], "(BF"["10"], ") = ", "3.669", ", ", widehat(italic("d"))["mean"]^"posterior", 
+#&gt;     " = ", "-0.471", ", CI"["95%"], " [", "-0.803", ", ", "-0.155", 
 #&gt;     "]")</div><div class='input'><span class='co'># }</span>
-</div></pre>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

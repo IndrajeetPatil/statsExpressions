@@ -18,7 +18,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include = FALSE, warning = FALSE, message = FALSE}
+```{r setup, include = FALSE}
 # show me all columns
 options(tibble.width = Inf, pillar.bold = TRUE, pillar.subtle_num = TRUE)
 
@@ -495,19 +495,19 @@ df <- dplyr::rename(mag, estimate = yi, std.error = sei)
 
 # for reproducibility
 set.seed(123)
-expr_meta_parametric(data = df, output = "dataframe")
+expr_meta_random(data = df, output = "dataframe", type = "parametric")
 
 # ----------------------- robust --------------------------------------------
 
 # for reproducibility
 set.seed(123)
-expr_meta_robust(data = df, output = "dataframe")
+expr_meta_random(data = df, output = "dataframe", type = "robust")
 
 # ----------------------- Bayes Factor ---------------------------------------
 
 # for reproducibility
 set.seed(123)
-expr_meta_bayes(data = df, output = "dataframe")
+expr_meta_random(data = df, output = "dataframe", type = "bayes")
 ```
 
 # Suggestions
