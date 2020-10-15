@@ -98,13 +98,14 @@
 
       
 
-      </header><script src="dataframe_outputs_files/header-attrs-2.4/header-attrs.js"></script><div class="row">
+      </header><script src="dataframe_outputs_files/header-attrs-2.4.5/header-attrs.js"></script><link href="dataframe_outputs_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="dataframe_outputs_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2020-10-14</h4>
+            <h4 class="date">2020-10-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/dataframe_outputs.Rmd"><code>vignettes/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -113,8 +114,22 @@
 
     
     
-<p>This vignette catalogs dataframe outputs from all functions.</p>
-<p>For details about the tests and types of effect size estimates, see: <a href="https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html</a></p>
+<div id="introduction" class="section level1">
+<h1 class="hasAnchor">
+<a href="#introduction" class="anchor"></a>Introduction</h1>
+<p>Although the primary focus of this package is to get expressions containing statistical results, one can also use it to extract dataframes containing these details. This vignette catalogs dataframe outputs from all functions.</p>
+<p>A dataframe will typically contain the following columns:</p>
+<ul>
+<li><p><em>statistic</em>: the numeric value of a statistic.</p></li>
+<li><p><em>parameter</em>: the numeric value of a parameter being modeled (often degrees of freedom for the test); note that if <code>no.parameters = 0L</code> (e.g., for non-parametric tests), this column will be irrelevant.</p></li>
+<li><p><em>parameter1</em>, <em>parameter2</em> relevant only if the statistic in question has two degrees of freedom (e.g., anova).</p></li>
+<li><p><em>p.value</em> the two-sided <em>p</em>-value associated with the observed statistic.</p></li>
+<li><p><em>estimate</em>: estimated value of the effect size.</p></li>
+<li><p><em>conf.low</em>: lower bound for effect size estimate.</p></li>
+<li><p><em>conf.high</em>: upper bound for effect size estimate.</p></li>
+</ul>
+<p>For details about the tests and types of effect size estimates they correspond to, see: <a href="https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html</a></p>
+</div>
 <div id="one-sample-tests" class="section level1">
 <h1 class="hasAnchor">
 <a href="#one-sample-tests" class="anchor"></a>One-sample tests</h1>
@@ -510,7 +525,6 @@
 <div class="sourceCode" id="cb5"><pre class="downlit">
 <span class="co"># setup</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span>
 
 <span class="co"># ----------------------- parametric ---------------------------------------</span>
 
@@ -518,108 +532,108 @@
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># unequal variance</span>
 <span class="fu"><a href="../reference/expr_anova_parametric.html">expr_anova_parametric</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">penguins</span>,
-  x <span class="op">=</span> <span class="va">species</span>,
-  y <span class="op">=</span> <span class="va">body_mass_g</span>,
+  data <span class="op">=</span> <span class="va">iris</span>,
+  x <span class="op">=</span> <span class="va">Species</span>,
+  y <span class="op">=</span> <span class="va">Sepal.Length</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 10</span>
 <span class="co">#&gt;   statistic parameter1 parameter2  p.value</span>
 <span class="co">#&gt;       &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      318.          2       189. 3.09e-61</span>
+<span class="co">#&gt; 1      139.          2       92.2 1.51e-28</span>
 <span class="co">#&gt;   method                                                   term    estimate</span>
 <span class="co">#&gt;   &lt;chr&gt;                                                    &lt;chr&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 One-way analysis of means (not assuming equal variances) species    0.667</span>
+<span class="co">#&gt; 1 One-way analysis of means (not assuming equal variances) Species    0.612</span>
 <span class="co">#&gt;   ci.width conf.low conf.high</span>
 <span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     0.95    0.615     0.710</span>
+<span class="co">#&gt; 1     0.95    0.517     0.683</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># equal variance</span>
 <span class="fu"><a href="../reference/expr_anova_parametric.html">expr_anova_parametric</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">penguins</span>,
-  x <span class="op">=</span> <span class="va">species</span>,
-  y <span class="op">=</span> <span class="va">body_mass_g</span>,
+  data <span class="op">=</span> <span class="va">iris</span>,
+  x <span class="op">=</span> <span class="va">Species</span>,
+  y <span class="op">=</span> <span class="va">Sepal.Length</span>,
   var.equal <span class="op">=</span> <span class="cn">TRUE</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 10</span>
 <span class="co">#&gt;   statistic parameter1 parameter2  p.value method                    term   </span>
 <span class="co">#&gt;       &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                     &lt;chr&gt;  </span>
-<span class="co">#&gt; 1      344.          2        339 2.89e-82 One-way analysis of means species</span>
+<span class="co">#&gt; 1      119.          2        147 1.67e-31 One-way analysis of means Species</span>
 <span class="co">#&gt;   estimate ci.width conf.low conf.high</span>
 <span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    0.667     0.95    0.615     0.710</span>
+<span class="co">#&gt; 1    0.612     0.95    0.517     0.683</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../reference/expr_anova_nonparametric.html">expr_anova_nonparametric</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">penguins</span>,
-  x <span class="op">=</span> <span class="va">species</span>,
-  y <span class="op">=</span> <span class="va">body_mass_g</span>,
+  data <span class="op">=</span> <span class="va">iris</span>,
+  x <span class="op">=</span> <span class="va">Species</span>,
+  y <span class="op">=</span> <span class="va">Sepal.Length</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 7</span>
 <span class="co">#&gt;   statistic  p.value parameter method                       estimate conf.low</span>
 <span class="co">#&gt;       &lt;dbl&gt;    &lt;dbl&gt;     &lt;int&gt; &lt;chr&gt;                           &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      218. 5.61e-48         2 Kruskal-Wallis rank sum test    0.638    0.589</span>
+<span class="co">#&gt; 1      96.9 8.92e-22         2 Kruskal-Wallis rank sum test    0.651    0.560</span>
 <span class="co">#&gt;   conf.high</span>
 <span class="co">#&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     0.686</span>
+<span class="co">#&gt; 1     0.724</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../reference/expr_anova_robust.html">expr_anova_robust</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">penguins</span>,
-  x <span class="op">=</span> <span class="va">species</span>,
-  y <span class="op">=</span> <span class="va">body_mass_g</span>,
+  data <span class="op">=</span> <span class="va">iris</span>,
+  x <span class="op">=</span> <span class="va">Species</span>,
+  y <span class="op">=</span> <span class="va">Sepal.Length</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 7</span>
 <span class="co">#&gt;   statistic parameter1 parameter2 p.value estimate conf.low conf.high</span>
 <span class="co">#&gt;       &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      282.          2       158.       0    0.929    0.891     0.969</span>
+<span class="co">#&gt; 1      124.          2       71.6       0    0.916    0.861     0.984</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../reference/expr_anova_bayes.html">expr_anova_bayes</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">penguins</span>,
-  x <span class="op">=</span> <span class="va">species</span>,
-  y <span class="op">=</span> <span class="va">body_mass_g</span>,
+  data <span class="op">=</span> <span class="va">iris</span>,
+  x <span class="op">=</span> <span class="va">Species</span>,
+  y <span class="op">=</span> <span class="va">Sepal.Length</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 x 13</span>
-<span class="co">#&gt;   term               estimate   conf.low conf.high    pd rope.percentage</span>
-<span class="co">#&gt;   &lt;chr&gt;                 &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 mu                  4171.     4127.      4213.       1               0</span>
-<span class="co">#&gt; 2 species-Adelie      -469.     -522.      -412.       1               0</span>
-<span class="co">#&gt; 3 species-Chinstrap   -435.     -502.      -368.       1               0</span>
-<span class="co">#&gt; 4 species-Gentoo       903.      841.       955.       1               0</span>
-<span class="co">#&gt; 5 sig2              214595.   189662.    243057.       1               0</span>
-<span class="co">#&gt; 6 g_species              2.61      0.370      9.91     1               1</span>
+<span class="co">#&gt;   term               estimate conf.low conf.high    pd rope.percentage</span>
+<span class="co">#&gt;   &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 mu                   5.84    5.77        5.91  1               0    </span>
+<span class="co">#&gt; 2 Species-setosa      -0.829  -0.926      -0.736 1               0    </span>
+<span class="co">#&gt; 3 Species-versicolor   0.0916 -0.00578     0.185 0.936           0.434</span>
+<span class="co">#&gt; 4 Species-virginica    0.737   0.638       0.827 1               0    </span>
+<span class="co">#&gt; 5 sig2                 0.267   0.213       0.314 1               0    </span>
+<span class="co">#&gt; 6 g_Species            2.15    0.289       8.42  1               0    </span>
 <span class="co">#&gt;   prior.distribution prior.location prior.scale effect component      bf10</span>
 <span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 &lt;NA&gt;                           NA          NA fixed  extra       4.51e78</span>
-<span class="co">#&gt; 2 &lt;NA&gt;                           NA          NA fixed  conditional 4.51e78</span>
-<span class="co">#&gt; 3 &lt;NA&gt;                           NA          NA fixed  conditional 4.51e78</span>
-<span class="co">#&gt; 4 &lt;NA&gt;                           NA          NA fixed  conditional 4.51e78</span>
-<span class="co">#&gt; 5 &lt;NA&gt;                           NA          NA fixed  extra       4.51e78</span>
-<span class="co">#&gt; 6 &lt;NA&gt;                           NA          NA fixed  extra       4.51e78</span>
+<span class="co">#&gt; 1 &lt;NA&gt;                           NA          NA fixed  extra       1.87e28</span>
+<span class="co">#&gt; 2 &lt;NA&gt;                           NA          NA fixed  conditional 1.87e28</span>
+<span class="co">#&gt; 3 &lt;NA&gt;                           NA          NA fixed  conditional 1.87e28</span>
+<span class="co">#&gt; 4 &lt;NA&gt;                           NA          NA fixed  conditional 1.87e28</span>
+<span class="co">#&gt; 5 &lt;NA&gt;                           NA          NA fixed  extra       1.87e28</span>
+<span class="co">#&gt; 6 &lt;NA&gt;                           NA          NA fixed  extra       1.87e28</span>
 <span class="co">#&gt;   log_e_bf10</span>
 <span class="co">#&gt;        &lt;dbl&gt;</span>
-<span class="co">#&gt; 1       181.</span>
-<span class="co">#&gt; 2       181.</span>
-<span class="co">#&gt; 3       181.</span>
-<span class="co">#&gt; 4       181.</span>
-<span class="co">#&gt; 5       181.</span>
-<span class="co">#&gt; 6       181.</span></pre></div>
+<span class="co">#&gt; 1       65.1</span>
+<span class="co">#&gt; 2       65.1</span>
+<span class="co">#&gt; 3       65.1</span>
+<span class="co">#&gt; 4       65.1</span>
+<span class="co">#&gt; 5       65.1</span>
+<span class="co">#&gt; 6       65.1</span></pre></div>
 </div>
 </div>
 <div id="contingency-table-analyses" class="section level1">
@@ -714,83 +728,82 @@
 <div class="sourceCode" id="cb7"><pre class="downlit">
 <span class="co"># setup</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span>
 
 <span class="co"># ----------------------- parametric ---------------------------------------</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../reference/expr_corr_test.html">expr_corr_test</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">penguins</span>,
-  x <span class="op">=</span> <span class="va">body_mass_g</span>,
-  y <span class="op">=</span> <span class="va">flipper_length_mm</span>,
+  data <span class="op">=</span> <span class="va">mtcars</span>,
+  x <span class="op">=</span> <span class="va">wt</span>,
+  y <span class="op">=</span> <span class="va">mpg</span>,
   type <span class="op">=</span> <span class="st">"parametric"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 10</span>
-<span class="co">#&gt;   parameter1  parameter2        estimate conf.low conf.high statistic parameter</span>
-<span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;int&gt;</span>
-<span class="co">#&gt; 1 body_mass_g flipper_length_mm    0.871    0.843     0.895      32.7       340</span>
-<span class="co">#&gt;     p.value method  n.obs</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;int&gt;</span>
-<span class="co">#&gt; 1 4.37e-107 Pearson   342</span>
+<span class="co">#&gt;   parameter1 parameter2 estimate conf.low conf.high statistic parameter  p.value</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;int&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 wt         mpg          -0.868   -0.934    -0.744     -9.56        30 1.29e-10</span>
+<span class="co">#&gt;   method  n.obs</span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;int&gt;</span>
+<span class="co">#&gt; 1 Pearson    32</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../reference/expr_corr_test.html">expr_corr_test</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">penguins</span>,
-  x <span class="op">=</span> <span class="va">body_mass_g</span>,
-  y <span class="op">=</span> <span class="va">flipper_length_mm</span>,
+  data <span class="op">=</span> <span class="va">mtcars</span>,
+  x <span class="op">=</span> <span class="va">wt</span>,
+  y <span class="op">=</span> <span class="va">mpg</span>,
   type <span class="op">=</span> <span class="st">"nonparametric"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 9</span>
-<span class="co">#&gt;   parameter1  parameter2        estimate conf.low conf.high statistic  p.value</span>
-<span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 body_mass_g flipper_length_mm    0.840    0.806     0.869      13.9 2.76e-92</span>
-<span class="co">#&gt;   method   n.obs</span>
-<span class="co">#&gt;   &lt;chr&gt;    &lt;int&gt;</span>
-<span class="co">#&gt; 1 Spearman   342</span>
+<span class="co">#&gt;   parameter1 parameter2 estimate conf.low conf.high statistic  p.value method  </span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;   </span>
+<span class="co">#&gt; 1 wt         mpg          -0.886   -0.943    -0.778      9.24 1.49e-11 Spearman</span>
+<span class="co">#&gt;   n.obs</span>
+<span class="co">#&gt;   &lt;int&gt;</span>
+<span class="co">#&gt; 1    32</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../reference/expr_corr_test.html">expr_corr_test</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">penguins</span>,
-  x <span class="op">=</span> <span class="va">body_mass_g</span>,
-  y <span class="op">=</span> <span class="va">flipper_length_mm</span>,
+  data <span class="op">=</span> <span class="va">mtcars</span>,
+  x <span class="op">=</span> <span class="va">wt</span>,
+  y <span class="op">=</span> <span class="va">mpg</span>,
   type <span class="op">=</span> <span class="st">"robust"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 10</span>
-<span class="co">#&gt;   parameter1  parameter2        estimate conf.low conf.high statistic parameter</span>
-<span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 body_mass_g flipper_length_mm    0.871    0.843     0.895      32.7       340</span>
-<span class="co">#&gt;     p.value method          n.obs</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;int&gt;</span>
-<span class="co">#&gt; 1 5.55e-107 Percentage Bend   342</span>
+<span class="co">#&gt;   parameter1 parameter2 estimate conf.low conf.high statistic parameter  p.value</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 wt         mpg          -0.896   -0.948    -0.796     -10.9        30 6.25e-12</span>
+<span class="co">#&gt;   method          n.obs</span>
+<span class="co">#&gt;   &lt;chr&gt;           &lt;int&gt;</span>
+<span class="co">#&gt; 1 Percentage Bend    32</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../reference/expr_corr_test.html">expr_corr_test</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">penguins</span>,
-  x <span class="op">=</span> <span class="va">body_mass_g</span>,
-  y <span class="op">=</span> <span class="va">flipper_length_mm</span>,
+  data <span class="op">=</span> <span class="va">mtcars</span>,
+  x <span class="op">=</span> <span class="va">wt</span>,
+  y <span class="op">=</span> <span class="va">mpg</span>,
   type <span class="op">=</span> <span class="st">"bayes"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 13</span>
 <span class="co">#&gt;   term  estimate conf.low conf.high    pd rope.percentage prior.distribution</span>
 <span class="co">#&gt;   &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;             </span>
-<span class="co">#&gt; 1 rho      0.869    0.848     0.891     1               0 cauchy            </span>
-<span class="co">#&gt;   prior.location prior.scale effect component       bf10 log_e_bf10</span>
-<span class="co">#&gt;            &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1              0       0.707 fixed  conditional 1.28e103       237.</span></pre></div>
+<span class="co">#&gt; 1 rho     -0.843   -0.919    -0.759     1               0 cauchy            </span>
+<span class="co">#&gt;   prior.location prior.scale effect component        bf10 log_e_bf10</span>
+<span class="co">#&gt;            &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1              0       0.707 fixed  conditional 56223033.       17.8</span></pre></div>
 </div>
 <div id="meta-analysis" class="section level1">
 <h1 class="hasAnchor">

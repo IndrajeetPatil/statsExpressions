@@ -66,22 +66,10 @@ library(statsExpressions)
 
 # ------------------------ between-subjects -----------------------------
 
-# going with the defaults
 expr_anova_robust(
   data = ggplot2::midwest,
   x = state,
-  y = percbelowpoverty,
-  paired = FALSE,
-  nboot = 10
-)
-
-# changing defaults
-expr_anova_robust(
-  data = ggplot2::midwest,
-  x = state,
-  y = percollege,
-  paired = FALSE,
-  conf.level = 0.99
+  y = percbelowpoverty
 )
 
 # ------------------------ within-subjects -----------------------------

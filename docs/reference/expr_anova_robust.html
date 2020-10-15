@@ -244,31 +244,15 @@ for the effect size (Default: <code>100</code>).</p></td>
 
 <span class='co'># ------------------------ between-subjects -----------------------------</span>
 
-<span class='co'># going with the defaults</span>
 <span class='fu'>expr_anova_robust</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/midwest.html'>midwest</a></span>,
   x <span class='op'>=</span> <span class='va'>state</span>,
-  y <span class='op'>=</span> <span class='va'>percbelowpoverty</span>,
-  paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  nboot <span class='op'>=</span> <span class='fl'>10</span>
+  y <span class='op'>=</span> <span class='va'>percbelowpoverty</span>
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; paste(italic("F")["trimmed-means"], "(", "4", ",", "169.73", 
 #&gt;     ") = ", "11.43", ", ", italic("p"), " = ", "3.09e-08", ", ", 
-#&gt;     widehat(italic(xi)), " = ", "0.38", ", CI"["95%"], " [", 
-#&gt;     "0.31", ", ", "0.44", "]", ", ", italic("n")["obs"], " = ", 
-#&gt;     437L)</div><div class='input'>
-<span class='co'># changing defaults</span>
-<span class='fu'>expr_anova_robust</span><span class='op'>(</span>
-  data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/midwest.html'>midwest</a></span>,
-  x <span class='op'>=</span> <span class='va'>state</span>,
-  y <span class='op'>=</span> <span class='va'>percollege</span>,
-  paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  conf.level <span class='op'>=</span> <span class='fl'>0.99</span>
-<span class='op'>)</span>
-</div><div class='output co'>#&gt; paste(italic("F")["trimmed-means"], "(", "4", ",", "170.57", 
-#&gt;     ") = ", "6.72", ", ", italic("p"), " = ", "4.79e-05", ", ", 
-#&gt;     widehat(italic(xi)), " = ", "0.30", ", CI"["99%"], " [", 
-#&gt;     "0.19", ", ", "0.41", "]", ", ", italic("n")["obs"], " = ", 
+#&gt;     widehat(italic(xi)), " = ", "0.35", ", CI"["95%"], " [", 
+#&gt;     "0.27", ", ", "0.43", "]", ", ", italic("n")["obs"], " = ", 
 #&gt;     437L)</div><div class='input'>
 <span class='co'># ------------------------ within-subjects -----------------------------</span>
 

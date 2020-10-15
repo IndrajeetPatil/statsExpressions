@@ -101,3 +101,21 @@ testthat::test_that(
     testthat::expect_identical(using_function1, results1)
   }
 )
+
+
+# dataframe -----------------------------------------------------------
+
+testthat::test_that(
+  desc = "dataframe",
+  code = {
+    testthat::expect_is(
+      statsExpressions::expr_anova_parametric(
+        data = mtcars,
+        x = cyl,
+        y = wt,
+        output = "dataframe"
+      ),
+      "tbl_df"
+    )
+  }
+)

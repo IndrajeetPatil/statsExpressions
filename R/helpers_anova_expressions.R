@@ -469,22 +469,10 @@ expr_anova_nonparametric <- function(data,
 #'
 #' # ------------------------ between-subjects -----------------------------
 #'
-#' # going with the defaults
 #' expr_anova_robust(
 #'   data = ggplot2::midwest,
 #'   x = state,
-#'   y = percbelowpoverty,
-#'   paired = FALSE,
-#'   nboot = 10
-#' )
-#'
-#' # changing defaults
-#' expr_anova_robust(
-#'   data = ggplot2::midwest,
-#'   x = state,
-#'   y = percollege,
-#'   paired = FALSE,
-#'   conf.level = 0.99
+#'   y = percbelowpoverty
 #' )
 #'
 #' # ------------------------ within-subjects -----------------------------
@@ -649,23 +637,15 @@ expr_anova_robust <- function(data,
 #' library(statsExpressions)
 #'
 #' # between-subjects ---------------------------------------
-#' # with defaults
+#'
 #' expr_anova_bayes(
 #'   data = ggplot2::msleep,
 #'   x = vore,
 #'   y = sleep_rem
 #' )
 #'
-#' # modifying the defaults
-#' expr_anova_bayes(
-#'   data = ggplot2::msleep,
-#'   x = vore,
-#'   y = sleep_rem,
-#'   k = 3,
-#'   bf.prior = 0.8
-#' )
-#'
 #' # repeated measures ---------------------------------------
+#'
 #' expr_anova_bayes(
 #'   data = WRS2::WineTasting,
 #'   x = Wine,

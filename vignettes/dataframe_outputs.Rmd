@@ -32,9 +32,33 @@ knitr::opts_chunk$set(
 )
 ```
 
-This vignette catalogs dataframe outputs from all functions.
+# Introduction
 
-For details about the tests and types of effect size estimates, see:
+Although the primary focus of this package is to get expressions containing
+statistical results, one can also use it to extract dataframes containing these
+details. This vignette catalogs dataframe outputs from all functions.
+
+A dataframe will typically contain the following columns:
+
+  - *statistic*: the numeric value of a statistic.
+
+  - *parameter*: the numeric value of a parameter being modeled (often degrees
+    of freedom for the test); note that if `no.parameters = 0L` (e.g., for
+    non-parametric tests), this column will be irrelevant.
+
+  - *parameter1*, *parameter2* relevant only if the statistic in question has
+    two degrees of freedom (e.g., anova).
+
+  - *p.value* the two-sided *p*-value associated with the observed statistic.
+
+  - *estimate*: estimated value of the effect size.
+
+  - *conf.low*: lower bound for effect size estimate.
+
+  - *conf.high*: upper bound for effect size estimate.
+
+For details about the tests and types of effect size estimates they correspond
+to, see:
 <https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html>
 
 # One-sample tests
@@ -92,7 +116,6 @@ expr_t_onesample(
   output = "dataframe"
 )
 ```
-
 
 # Two-sample tests
 
@@ -489,10 +512,8 @@ expr_meta_bayes(data = df, output = "dataframe")
 
 # Suggestions
 
-If you find any bugs or have any suggestions/remarks, please file an issue on GitHub: 
-<https://github.com/IndrajeetPatil/ggstatsplot/issues>
+If you find any bugs or have any suggestions/remarks, please file an issue on GitHub: <https://github.com/IndrajeetPatil/ggstatsplot/issues>
 
 # Session Information
 
-For details, see-
-<https://indrajeetpatil.github.io/ggstatsplot/articles/web_only/session_info.html>
+For details, see- <https://indrajeetpatil.github.io/ggstatsplot/articles/web_only/session_info.html>

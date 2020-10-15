@@ -52,23 +52,15 @@ set.seed(123)
 library(statsExpressions)
 
 # between-subjects ---------------------------------------
-# with defaults
+
 expr_anova_bayes(
   data = ggplot2::msleep,
   x = vore,
   y = sleep_rem
 )
 
-# modifying the defaults
-expr_anova_bayes(
-  data = ggplot2::msleep,
-  x = vore,
-  y = sleep_rem,
-  k = 3,
-  bf.prior = 0.8
-)
-
 # repeated measures ---------------------------------------
+
 expr_anova_bayes(
   data = WRS2::WineTasting,
   x = Wine,
