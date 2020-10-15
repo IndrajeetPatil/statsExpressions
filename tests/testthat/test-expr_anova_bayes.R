@@ -109,7 +109,7 @@ testthat::test_that(
   desc = "dataframe",
   code = {
     testthat::expect_is(
-      statsExpressions::expr_anova_parametric(
+      statsExpressions::expr_anova_bayes(
         data = mtcars,
         x = cyl,
         y = wt,

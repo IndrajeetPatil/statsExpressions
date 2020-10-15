@@ -22,9 +22,6 @@
 #'   **t-test**; `"partial_eta"` for partial eta-squared for **anova**) or
 #'   `"unbiased"` (equivalent to `"g"` Hedge's *g* for **t-test**;
 #'   `"partial_omega"` for partial omega-squared for **anova**)).
-#' @param sphericity.correction Logical that decides whether to apply correction
-#'   to account for violation of sphericity in a repeated measures design ANOVA
-#'   (Default: `TRUE`).
 #' @param output Can either be `"expression"`, which will return expression or
 #'   `"dataframe"`, which will return a dataframe with results.
 #' @inheritParams expr_template
@@ -84,10 +81,9 @@ expr_anova_parametric <- function(data,
                                   paired = FALSE,
                                   k = 2L,
                                   conf.level = 0.95,
-                                  effsize.type = "unbiased",
+                                  effsize.type = "omega",
                                   partial = TRUE,
                                   var.equal = FALSE,
-                                  sphericity.correction = TRUE,
                                   output = "expression",
                                   ...) {
 
@@ -95,11 +91,11 @@ expr_anova_parametric <- function(data,
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
   # for paired designs, variance is going to be equal across grouping levels
-  if (isTRUE(paired)) var.equal <- TRUE else sphericity.correction <- FALSE
+  if (isTRUE(paired)) var.equal <- TRUE
 
   # determine number of decimal places for both degrees of freedom
-  k.df1 <- ifelse(isTRUE(paired) && isTRUE(sphericity.correction), k, 0L)
-  k.df2 <- ifelse(isTRUE(var.equal) && isFALSE(sphericity.correction), 0L, k)
+  k.df1 <- ifelse(isFALSE(paired), 0L, k)
+  k.df2 <- ifelse(isFALSE(paired) && isTRUE(var.equal), 0L, k)
 
   # figuring out which effect size to use
   effsize.type <- effsize_type_switch(effsize.type)
@@ -144,21 +140,6 @@ expr_anova_parametric <- function(data,
     sample_size <- length(unique(data$rowid))
     n.text <- quote(italic("n")["pairs"])
 
-    # warn the user if
-    if (sample_size < nlevels(as.factor(data %>% dplyr::pull({{ x }})))) {
-      # no sphericity correction applied; adjust expression display accordingly
-      c(k.df1, k.df2, sphericity.correction) %<-% c(0L, 0L, FALSE)
-
-      # inform the user
-      message(cat(
-        ipmisc::red("Warning: "),
-        ipmisc::blue("No. of factor levels is greater than no. of observations per cell.\n"),
-        ipmisc::blue("No sphericity correction applied. Interpret results with caution.\n")
-      ),
-      sep = ""
-      )
-    }
-
     # run the ANOVA
     ez_df <-
       rlang::eval_tidy(rlang::expr(
@@ -173,28 +154,27 @@ expr_anova_parametric <- function(data,
         )
       ))
 
-    # list with results
-    if (isTRUE(sphericity.correction)) {
-      e_corr <- ez_df$`Sphericity Corrections`$GGe
-      stats_df <-
-        as_tibble(cbind.data.frame(
-          statistic = ez_df$ANOVA$F[2],
-          parameter1 = e_corr * ez_df$ANOVA$DFn[2],
-          parameter2 = e_corr * ez_df$ANOVA$DFd[2],
-          p.value = ez_df$`Sphericity Corrections`$`p[GG]`[[1]]
-        ))
+    # no sphericity correction applied
+    if (sample_size < nlevels(as.factor(data %>% dplyr::pull({{ x }})))) {
+      c(k.df1, k.df2) %<-% c(0L, 0L)
+      e_corr <- 1
+      p.value <- ez_df$ANOVA$p[2]
     } else {
-      stats_df <-
-        as_tibble(cbind.data.frame(
-          statistic = ez_df$ANOVA$F[2],
-          parameter1 = ez_df$ANOVA$DFn[2],
-          parameter2 = ez_df$ANOVA$DFd[2],
-          p.value = ez_df$ANOVA$p[2]
-        ))
+      e_corr <- ez_df$`Sphericity Corrections`$GGe
+      p.value <- ez_df$`Sphericity Corrections`$`p[GG]`[[1]]
     }
 
+    # combine into a dataframe
+    stats_df <-
+      as_tibble(cbind.data.frame(
+        statistic = ez_df$ANOVA$F[2],
+        parameter1 = e_corr * ez_df$ANOVA$DFn[2],
+        parameter2 = e_corr * ez_df$ANOVA$DFd[2],
+        p.value = p.value
+      ))
+
     # creating a standardized dataframe with effect size and its CIs
-    effsize_object <- ez_df$aov
+    mod <- ez_df$aov
   }
 
   # ------------------- between-subjects design ------------------------------
@@ -219,7 +199,7 @@ expr_anova_parametric <- function(data,
       dplyr::select(statistic, parameter1 = num.df, parameter2 = den.df, dplyr::everything())
 
     # creating a standardized dataframe with effect size and its CIs
-    effsize_object <-
+    mod <-
       stats::aov(
         formula = rlang::new_formula({{ y }}, {{ x }}),
         data = data,
@@ -233,7 +213,7 @@ expr_anova_parametric <- function(data,
   effsize_df <-
     rlang::exec(
       .fn = .f,
-      model = effsize_object,
+      model = mod,
       partial = partial,
       ci = conf.level
     ) %>%

@@ -449,57 +449,6 @@ testthat::test_that(
 
     # statsExpression output
     set.seed(123)
-    using_function1 <-
-      statsExpressions::expr_anova_parametric(
-        data = WRS2::WineTasting,
-        x = Wine,
-        y = Taste,
-        paired = TRUE,
-        effsize.type = "biased",
-        partial = TRUE,
-        sphericity.correction = FALSE,
-        k = 4,
-        conf.level = 0.99,
-        messages = FALSE
-      )
-
-    # expected output
-    results1 <-
-      ggplot2::expr(
-        paste(
-          italic("F")["Fisher"],
-          "(",
-          "2",
-          ",",
-          "42",
-          ") = ",
-          "6.2883",
-          ", ",
-          italic("p"),
-          " = ",
-          "0.0041",
-          ", ",
-          widehat(eta["p"]^2),
-          " = ",
-          "0.2304",
-          ", CI"["99%"],
-          " [",
-          "0.0021",
-          ", ",
-          "0.4770",
-          "]",
-          ", ",
-          italic("n")["pairs"],
-          " = ",
-          22L
-        )
-      )
-
-    # testing overall call
-    testthat::expect_identical(using_function1, results1)
-
-    # statsExpression output
-    set.seed(123)
     using_function2 <-
       statsExpressions::expr_anova_parametric(
         data = WRS2::WineTasting,

@@ -166,10 +166,9 @@ using <code><a href='https://easystats.github.io/effectsize/reference/eta_square
   paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
   k <span class='op'>=</span> <span class='fl'>2L</span>,
   conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
-  effsize.type <span class='op'>=</span> <span class='st'>"unbiased"</span>,
+  effsize.type <span class='op'>=</span> <span class='st'>"omega"</span>,
   partial <span class='op'>=</span> <span class='cn'>TRUE</span>,
   var.equal <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  sphericity.correction <span class='op'>=</span> <span class='cn'>TRUE</span>,
   output <span class='op'>=</span> <span class='st'>"expression"</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
@@ -227,12 +226,6 @@ argument can be <code>"biased"</code> (equivalent to <code>"d"</code> for Cohen'
     performed.  If <code>FALSE</code>, an approximate method of Welch (1951)
     is used, which generalizes the commonly known 2-sample Welch test to
     the case of arbitrarily many samples.</p></td>
-    </tr>
-    <tr>
-      <th>sphericity.correction</th>
-      <td><p>Logical that decides whether to apply correction
-to account for violation of sphericity in a repeated measures design ANOVA
-(Default: <code>TRUE</code>).</p></td>
     </tr>
     <tr>
       <th>output</th>

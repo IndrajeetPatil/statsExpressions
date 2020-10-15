@@ -21,6 +21,9 @@ MAJOR CHANGES
     instead of returning `NULL` when it is not supposed to work. This is done to
     be consistent with the other functions in the package which also fail
     instead of returning `NULL`.
+    
+  - `expr_anova_parametric` always applies sphericity correction for *p*-values
+    for repeated measures ANOVA.
 
 MINOR CHANGES
 

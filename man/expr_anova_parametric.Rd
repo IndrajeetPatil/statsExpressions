@@ -11,10 +11,9 @@ expr_anova_parametric(
   paired = FALSE,
   k = 2L,
   conf.level = 0.95,
-  effsize.type = "unbiased",
+  effsize.type = "omega",
   partial = TRUE,
   var.equal = FALSE,
-  sphericity.correction = TRUE,
   output = "expression",
   ...
 )
@@ -52,10 +51,6 @@ argument can be \code{"biased"} (equivalent to \code{"d"} for Cohen's \emph{d} f
     performed.  If \code{FALSE}, an approximate method of Welch (1951)
     is used, which generalizes the commonly known 2-sample Welch test to
     the case of arbitrarily many samples.}
-
-\item{sphericity.correction}{Logical that decides whether to apply correction
-to account for violation of sphericity in a repeated measures design ANOVA
-(Default: \code{TRUE}).}
 
 \item{output}{Can either be \code{"expression"}, which will return expression or
 \code{"dataframe"}, which will return a dataframe with results.}
