@@ -3,6 +3,9 @@
 BREAKING CHANGES
 
   - Removes the alias `expr_onesample_proptest`.
+  
+  - The `expr_template` function retires `effsize.df` argument. Now all details
+    need to be entered only in `stats.df`.
 
 MAJOR CHANGES
 

@@ -39,11 +39,7 @@ testthat::test_that(
     # creating a dataframe with stats results
     stats_df <- cbind.data.frame(
       statistic = 8.74,
-      p.value = 0.013
-    )
-
-    # creating a dataframe with effect size results
-    effsize_df <- cbind.data.frame(
+      p.value = 0.013,
       estimate = 0.52,
       conf.low = 0.13,
       conf.high = 0.93
@@ -54,7 +50,6 @@ testthat::test_that(
       statsExpressions::expr_template(
         no.parameters = 0L,
         stats.df = stats_df,
-        effsize.df = effsize_df,
         statistic.text = quote(italic("W")),
         conf.level = 0.99,
         k = 2L,
@@ -109,11 +104,7 @@ testthat::test_that(
     stats_df <- cbind.data.frame(
       statistic = 8.74,
       parameter = 2,
-      p.value = 0.013
-    )
-
-    # creating a dataframe with effect size results
-    effsize_df <- cbind.data.frame(
+      p.value = 0.013,
       estimate = 0.52,
       conf.low = 0.13,
       conf.high = 0.93
@@ -124,7 +115,6 @@ testthat::test_that(
       statsExpressions::expr_template(
         no.parameters = 1L,
         stats.df = stats_df,
-        effsize.df = effsize_df,
         statistic.text = quote(italic(chi)^2),
         n = 32,
         effsize.text = quote(widehat(italic("V")))
@@ -180,11 +170,7 @@ testthat::test_that(
       statistic = 2.27,
       parameter1 = 3,
       parameter2 = 24.05,
-      p.value = 0.107
-    )
-
-    # creating a dataframe with effect size results
-    effsize_df <- cbind.data.frame(
+      p.value = 0.107,
       estimate = 0.00,
       conf.low = -0.08,
       conf.high = 0.10
@@ -195,7 +181,6 @@ testthat::test_that(
       statsExpressions::expr_template(
         no.parameters = 2L,
         stats.df = stats_df,
-        effsize.df = effsize_df,
         statistic.text = quote(italic("F")),
         conf.level = 0.95,
         k = 2L,

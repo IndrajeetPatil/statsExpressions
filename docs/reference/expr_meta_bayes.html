@@ -111,6 +111,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/dataframe_outputs.html">Dataframe outputs</a>
+    </li>
+    <li>
       <a href="../articles/stats_details.html">Test and effect size details</a>
     </li>
   </ul>
@@ -159,6 +162,7 @@
   d <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/metaBMA/man/prior.html'>prior</a></span><span class='op'>(</span><span class='st'>"norm"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>mean <span class='op'>=</span> <span class='fl'>0</span>, sd <span class='op'>=</span> <span class='fl'>0.3</span><span class='op'>)</span><span class='op'>)</span>,
   tau <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/metaBMA/man/prior.html'>prior</a></span><span class='op'>(</span><span class='st'>"invgamma"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>shape <span class='op'>=</span> <span class='fl'>1</span>, scale <span class='op'>=</span> <span class='fl'>0.15</span><span class='op'>)</span><span class='op'>)</span>,
   k <span class='op'>=</span> <span class='fl'>2L</span>,
+  output <span class='op'>=</span> <span class='st'>"expression"</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -188,6 +192,14 @@ probability density function is defined via <code><a href='https://rdrr.io/pkg/m
       <th>k</th>
       <td><p>Number of digits after decimal point (should be an integer)
 (Default: <code>k = 2L</code>).</p></td>
+    </tr>
+    <tr>
+      <th>output</th>
+      <td><p>Can either be <code>"null"</code> (or <code>"caption"</code> or <code>"H0"</code> or <code>"h0"</code>),
+which will return expression with evidence in favor of the null hypothesis,
+or <code>"alternative"</code> (or <code>"title"</code> or <code>"H1"</code> or <code>"h1"</code>), which will return
+expression with evidence in favor of the alternative hypothesis, or
+<code>"dataframe"</code>, which will return a dataframe with results all the details).</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -230,7 +242,8 @@ study in random-effects meta-analysis.</p></dd>
 <span class='co'># setup</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>metaplus</span><span class='op'>)</span>
-
+</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Note: The second parameter is the study standard error not the standard error squared as in the metafor package.</span></div><div class='input'>
 <span class='co'># renaming to what `statsExpressions` expects</span>
 <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span><span class='va'>mag</span>, estimate <span class='op'>=</span> <span class='va'>yi</span>, std.error <span class='op'>=</span> <span class='va'>sei</span><span class='op'>)</span>
 

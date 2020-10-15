@@ -112,6 +112,9 @@ using effectsize::eta_squared and effectsize::omega_squared functions." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/dataframe_outputs.html">Dataframe outputs</a>
+    </li>
+    <li>
       <a href="../articles/stats_details.html">Test and effect size details</a>
     </li>
   </ul>
@@ -167,6 +170,7 @@ using <code><a href='https://easystats.github.io/effectsize/reference/eta_square
   partial <span class='op'>=</span> <span class='cn'>TRUE</span>,
   var.equal <span class='op'>=</span> <span class='cn'>FALSE</span>,
   sphericity.correction <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  output <span class='op'>=</span> <span class='st'>"expression"</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -229,6 +233,11 @@ argument can be <code>"biased"</code> (equivalent to <code>"d"</code> for Cohen'
       <td><p>Logical that decides whether to apply correction
 to account for violation of sphericity in a repeated measures design ANOVA
 (Default: <code>TRUE</code>).</p></td>
+    </tr>
+    <tr>
+      <th>output</th>
+      <td><p>Can either be <code>"expression"</code>, which will return expression or
+<code>"dataframe"</code>, which will return a dataframe with results.</p></td>
     </tr>
     <tr>
       <th>...</th>

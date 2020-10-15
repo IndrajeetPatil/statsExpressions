@@ -78,6 +78,7 @@ expr_contingency_tab <- function(data,
                                  ratio = NULL,
                                  k = 2L,
                                  conf.level = 0.95,
+                                 output = "expression",
                                  ...) {
 
   # ensure the variables work quoted or unquoted
@@ -132,7 +133,7 @@ expr_contingency_tab <- function(data,
 
     if (isFALSE(paired)) {
       # computing stats and effect size + CI
-      stats_obj <- stats::chisq.test(x = x_arg, correct = FALSE)
+      mod <- stats::chisq.test(x = x_arg, correct = FALSE)
       .f <- effectsize::cramers_v
       effsize.text <- quote(widehat(italic("V"))["Cramer"])
 
@@ -143,7 +144,7 @@ expr_contingency_tab <- function(data,
 
     if (isTRUE(paired)) {
       # computing stats and effect size + CI
-      stats_obj <- stats::mcnemar.test(x = x_arg, correct = FALSE)
+      mod <- stats::mcnemar.test(x = x_arg, correct = FALSE)
       .f <- effectsize::cohens_g
       effsize.text <- quote(widehat(italic("g"))["Cohen"])
 
@@ -158,7 +159,7 @@ expr_contingency_tab <- function(data,
     x_arg <- table(data %>% dplyr::pull({{ x }}))
 
     # checking if the chi-squared test can be run
-    stats_obj <- stats::chisq.test(x = x_arg, correct = FALSE, p = ratio)
+    mod <- stats::chisq.test(x = x_arg, correct = FALSE, p = ratio)
 
     # effect size text
     .f <- effectsize::cramers_v
@@ -167,7 +168,7 @@ expr_contingency_tab <- function(data,
   }
 
   # which test was carried out?
-  if (stats_obj$method == "Chi-squared test for given probabilities") {
+  if (mod$method == "Chi-squared test for given probabilities") {
     statistic.text <- quote(chi["gof"]^2)
   } else {
     if (isTRUE(paired)) statistic.text <- quote(chi["McNemar"]^2)
@@ -184,16 +185,25 @@ expr_contingency_tab <- function(data,
     ) %>%
     insight::standardize_names(data = ., style = "broom")
 
-  # preparing subtitle
-  expr_template(
-    no.parameters = 1L,
-    stats.df = broomExtra::tidy(stats_obj),
-    effsize.df = effsize_df,
-    statistic.text = statistic.text,
-    effsize.text = effsize.text,
-    n = sample_size,
-    n.text = n.text,
-    conf.level = conf.level,
-    k = k
+  # combining dataframes
+  stats_df <- dplyr::bind_cols(broomExtra::tidy(mod), effsize_df)
+
+  # expression
+  subtitle <-
+    expr_template(
+      no.parameters = 1L,
+      stats.df = stats_df,
+      statistic.text = statistic.text,
+      effsize.text = effsize.text,
+      n = sample_size,
+      n.text = n.text,
+      conf.level = conf.level,
+      k = k
+    )
+
+  # return the output
+  switch(output,
+    "expression" = subtitle,
+    "dataframe" = stats_df
   )
 }

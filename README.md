@@ -1,20 +1,18 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-`statsExpressions`: Expressions with statistical details
-========================================================
+# `statsExpressions`: Expressions with statistical details
 
 | Package                                                                                                                                                                   | Status                                                                                                                                                                                                 | Usage                                                                                                                                                                              | GitHub                                                                                                                                                                   | References                                                                                                                                                                |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)                                  | [![Build Status](https://travis-ci.org/IndrajeetPatil/statsExpressions.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/statsExpressions)                                                      | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)                            | [![GitHub version](https://img.shields.io/badge/GitHub-0.4.3-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/statsExpressions/)                         | [![Website](https://img.shields.io/badge/website-statsExpressions-orange.svg?colorB=E91E63)](https://indrajeetpatil.github.io/statsExpressions/)                          |
 | [![CRAN Checks](https://cranchecks.info/badges/summary/statsExpressions)](https://cran.r-project.org/web/checks/check_results_statsExpressions.html)                      | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/statsExpressions?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/statsExpressions) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)                          | [![Forks](https://img.shields.io/badge/forks-10-blue.svg)](https://github.com/IndrajeetPatil/statsExpressions/)                                                          | [![Features](https://img.shields.io/badge/features-statsExpressions-orange.svg?colorB=2196F3)](https://indrajeetpatil.github.io/statsExpressions/reference/index.html)    |
-| [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)                                                                | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/)                                                                                         | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)                        | [![Github Issues](https://img.shields.io/badge/issues-5-red.svg)](https://github.com/IndrajeetPatil/statsExpressions/issues)                                             | [![vignettes](https://img.shields.io/badge/vignettes-0.4.3-orange.svg?colorB=FF5722)](https://CRAN.R-project.org/package=statsExpressions/vignettes/)                     |
+| [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)                                                                | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/)                                                                                         | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)                        | [![Github Issues](https://img.shields.io/badge/issues-7-red.svg)](https://github.com/IndrajeetPatil/statsExpressions/issues)                                             | [![vignettes](https://img.shields.io/badge/vignettes-0.4.3-orange.svg?colorB=FF5722)](https://CRAN.R-project.org/package=statsExpressions/vignettes/)                     |
 | [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/statsExpressions/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/statsExpressions?branch=master)             | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)                         | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/statsExpressions.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/statsExpressions) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2074621.svg)](https://doi.org/10.5281/zenodo.3386122)                                                                 |
-| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                          | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master)                   | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_03_22-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/blob/master/tests/README.md) | [![Last-changedate](https://img.shields.io/badge/last%20change-2020--10--13-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master)         | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master) |
+| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                          | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master)                   | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_03_22-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/blob/master/tests/README.md) | [![Last-changedate](https://img.shields.io/badge/last%20change-2020--10--15-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master)         | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master) |
 | [![status](https://tinyverse.netlify.com/badge/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)                                                    | [![R build status](https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions)                                            | [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/statsExpressions/community)                                                                       | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)                                                              | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/statsExpressions/issues)      |
 
-Introduction <img src="man/figures/logo.png" align="right" width="240" />
-=========================================================================
+# Introduction <img src="man/figures/logo.png" align="right" width="240" />
 
 [`statsExpressions`](https://indrajeetpatil.github.io/statsExpressions/)
 provides statistical processing backend for the
@@ -23,8 +21,7 @@ which combines `ggplot2` visualizations with expressions containing
 results from statistical tests. `statsExpressions` contains all
 functions needed to create these expressions.
 
-Installation
-============
+# Installation
 
 To get the latest, stable `CRAN` release:
 
@@ -36,7 +33,7 @@ You can get the **development** version of the package from `GitHub`. To
 see what new changes (and bug fixes) have been made to the package since
 the last release on `CRAN`, you can check the detailed log of changes
 here:
-<a href="https://indrajeetpatil.github.io/statsExpressions/news/index.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/news/index.html</a>
+<https://indrajeetpatil.github.io/statsExpressions/news/index.html>
 
 If you are in hurry and want to reduce the time of installation, prefer-
 
@@ -62,8 +59,7 @@ remotes::install_github(
 )
 ```
 
-Citation
-========
+# Citation
 
 If you want to cite this package in a scientific journal or in any other
 context, run the following code in your `R` console:
@@ -72,16 +68,14 @@ context, run the following code in your `R` console:
 citation("statsExpressions")
 ```
 
-Documentation and Examples
-==========================
+# Documentation and Examples
 
 To see the documentation relevant for the **development** version of the
 package, see the dedicated website for `statsExpressions`, which is
 updated after every new commit:
-<a href="https://indrajeetpatil.github.io/statsExpressions/" class="uri">https://indrajeetpatil.github.io/statsExpressions/</a>.
+<https://indrajeetpatil.github.io/statsExpressions/>.
 
-Summary of types of statistical analyses
-========================================
+# Summary of types of statistical analyses
 
 Currently, it supports only the most common types of statistical tests.
 Specifically, **parametric**, **non-parametric**, **robust**, and
@@ -106,8 +100,7 @@ supported in this package-
 | Equal proportions for categorical variable levels | <font color="green">Yes</font> | `NA`                           | `NA`                           | <font color="green">Yes</font> |
 | Random-effects meta-analysis                      | <font color="green">Yes</font> | <font color="red">No</font>    | <font color="green">Yes</font> | <font color="green">Yes</font> |
 
-Statistical reporting
-=====================
+# Statistical reporting
 
 For **all** statistical test expressions, the default template abides by
 the [APA](https://my.ilstu.edu/~jhkahn/apastats.html) gold standard for
@@ -116,24 +109,53 @@ for trimmed means (robust *t*-test):
 
 <img src="man/figures/stats_reporting_format.png" align="center" />
 
-Summary of statistical tests and effect sizes
-=============================================
+# Summary of statistical tests and effect sizes
 
 Here is a summary table of all the statistical tests currently supported
 across various functions:
-<a href="https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html</a>
+<https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html>
 
-Primary functions
-=================
+# Dataframe as output
+
+Although the primary focus of this package is to get expressions
+containing statistical results, one can also use it to extract
+dataframes containing these details.
+
+For a more detailed summary of these dataframe:
+<https://indrajeetpatil.github.io/statsExpressions/articles/dataframe_outputs.html>
+
+For example,
+
+``` r
+# setup
+library(statsExpressions)
+set.seed(123)
+
+expr_anova_parametric(
+  data = bugs_long,
+  x = condition,
+  y = desire,
+  paired = TRUE,
+  output = "dataframe"
+)
+#> # A tibble: 1 x 10
+#>   statistic parameter1 parameter2  p.value group           term      estimate
+#>       <dbl>      <dbl>      <dbl>    <dbl> <chr>           <chr>        <dbl>
+#> 1      20.6       2.63       229. 8.27e-11 rowid:condition condition   0.0783
+#>   ci.width conf.low conf.high
+#>      <dbl>    <dbl>     <dbl>
+#> 1     0.95   0.0217     0.140
+```
+
+# Primary functions
 
 A list of primary functions in this package can be found at the package
 website:
-<a href="https://indrajeetpatil.github.io/statsExpressions/reference/index.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/reference/index.html</a>
+<https://indrajeetpatil.github.io/statsExpressions/reference/index.html>
 
 Following are few examples of how these functions can be used.
 
-Example: Expressions for one-way ANOVAs
----------------------------------------
+## Example: Expressions for one-way ANOVAs
 
 ### Between-subjects design
 
@@ -232,8 +254,7 @@ ggplot2::ggplot(WineTasting, aes(Wine, Taste, color = Wine)) +
 
 <img src="man/figures/README-anova_parametric2-1.png" width="100%" />
 
-Example: Expressions for two-sample tests
------------------------------------------
+## Example: Expressions for two-sample tests
 
 ### Between-subjects design
 
@@ -352,8 +373,7 @@ paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject")
 
 <img src="man/figures/README-t_two_paired1-1.png" width="100%" />
 
-Example: Expressions for one-sample tests
------------------------------------------
+## Example: Expressions for one-sample tests
 
 ``` r
 # setup
@@ -374,8 +394,7 @@ ggplot(mtcars, aes(wt)) +
 
 <img src="man/figures/README-t_one-1.png" width="100%" />
 
-Example: Expressions for correlation analyses
----------------------------------------------
+## Example: Expressions for correlation analyses
 
 Let’s look at another example where we want to run correlation analysis:
 
@@ -422,8 +441,7 @@ ggMarginal(p, type = "histogram", xparams = list(binwidth = 1, fill = "orange"))
 
 <img src="man/figures/README-corr2-1.png" width="100%" />
 
-Example: Expressions for contingency table analysis
----------------------------------------------------
+## Example: Expressions for contingency table analysis
 
 For categorical/nominal data - one-sample:
 
@@ -493,8 +511,7 @@ expr_contingency_tab(mtcars, am, cyl)
 #>     italic("n")["obs"], " = ", 32L)
 ```
 
-Example: Expressions for meta-analysis
---------------------------------------
+## Example: Expressions for meta-analysis
 
 ``` r
 # setup
@@ -519,8 +536,7 @@ viz_forest(
 
 <img src="man/figures/README-metaanalysis-1.png" width="100%" />
 
-Customizing details to your liking
-==================================
+# Customizing details to your liking
 
 Sometimes you may not wish include so many details in the subtitle. In
 that case, you can extract the expression and copy-paste only the part
@@ -552,36 +568,32 @@ ggplot(iris, aes(x = Species, y = Sepal.Length)) +
 
 <img src="man/figures/README-custom_expr-1.png" width="100%" />
 
-Usage in `ggstatsplot`
-======================
+# Usage in `ggstatsplot`
 
 Note that these functions were initially written to display results from
 statistical tests on ready-made `ggplot2` plots implemented in
 `ggstatsplot`.
 
 For detailed documentation, see the package website:
-<a href="https://indrajeetpatil.github.io/ggstatsplot/" class="uri">https://indrajeetpatil.github.io/ggstatsplot/</a>
+<https://indrajeetpatil.github.io/ggstatsplot/>
 
 Here is an example from `ggstatsplot` of what the plots look like when
 the expressions are displayed in the subtitle-
 
 <img src="man/figures/README-ggbetweenstats1-1.png" align="center" />
 
-Acknowledgments
-===============
+# Acknowledgments
 
 The hexsticker was generously designed by Sarah Otterstetter (Max Planck
 Institute for Human Development, Berlin).
 
-Code coverage
-=============
+# Code coverage
 
 As the code stands right now, here is the code coverage for all primary
 functions involved:
-<a href="https://codecov.io/gh/IndrajeetPatil/statsExpressions/tree/master/R" class="uri">https://codecov.io/gh/IndrajeetPatil/statsExpressions/tree/master/R</a>
+<https://codecov.io/gh/IndrajeetPatil/statsExpressions/tree/master/R>
 
-Contributing
-============
+# Contributing
 
 I’m happy to receive bug reports, suggestions, questions, and (most of
 all) contributions to fix problems and add features. I personally prefer

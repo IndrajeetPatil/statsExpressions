@@ -40,7 +40,17 @@ testthat::test_that(
         iter = 1000
       ))
 
+    # subtitle
+    set.seed(123)
+    df <-
+      suppressWarnings(expr_meta_bayes(
+        data = df1,
+        iter = 1000,
+        output = "dataframe"
+      ))
+
     # test
     testthat::expect_identical(as.character(results1)[5], "7.513")
+    testthat::expect_is(df, "tbl_df")
   }
 )

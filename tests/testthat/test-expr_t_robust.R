@@ -212,3 +212,21 @@ testthat::test_that(
     testthat::expect_identical(using_function1, results1)
   }
 )
+
+
+# dataframe -----------------------------------------------------------
+
+testthat::test_that(
+  desc = "dataframe",
+  code = {
+    testthat::expect_is(
+      statsExpressions::expr_t_robust(
+        data = dplyr::filter(movies_long, genre == "Action" | genre == "Drama"),
+        x = "genre",
+        y = rating,
+        output = "dataframe"
+      ),
+      "tbl_df"
+    )
+  }
+)

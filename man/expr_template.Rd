@@ -9,7 +9,6 @@ expr_template(
   statistic.text,
   stats.df,
   effsize.text,
-  effsize.df,
   n,
   conf.level = 0.95,
   k = 2L,
@@ -30,7 +29,8 @@ For example, for tests with \emph{t}-statistic, \code{statistic.text = "t"}. If 
 want to use plotmath, you will have to quote the argument (e.g.,
 \code{quote(italic("t"))}).}
 
-\item{stats.df}{A dataframe containing the following columns:
+\item{stats.df}{A dataframe containing details from the statistical analysis
+and should contain some of the the following columns:
 \itemize{
 \item \emph{statistic}: the numeric value of a statistic.
 \item \emph{parameter}: the numeric value of a parameter being modeled (often
@@ -40,19 +40,15 @@ for non-parametric tests), this column will be irrelevant.
 has two degrees of freedom (e.g., anova).
 \item \emph{p.value} the two-sided \emph{p}-value associated with the observed
 statistic.
+\item \emph{estimate}: estimated value of the effect size.
+\item \emph{conf.low}:  lower bound for effect size estimate.
+\item \emph{conf.high}: upper bound for effect size estimate.
 }}
 
 \item{effsize.text}{A character that specifies the relevant effect size.
 For example, for Cohen's \emph{d} statistic, \code{effsize.text = "d"}. If you
 want to use plotmath, you will have to quote the argument (e.g.,
 \code{quote(italic("d"))}).}
-
-\item{effsize.df}{A dataframe containing the following columns:
-\itemize{
-\item \emph{estimate}: estimated value of the effect size.
-\item \emph{conf.low}:  lower bound for effect size estimate.
-\item \emph{conf.high}: upper bound for effect size estimate.
-}}
 
 \item{n}{An integer specifying the sample size used for the test.}
 
@@ -84,12 +80,7 @@ stats_df <-
   cbind.data.frame(
     statistic = 5.494,
     parameter = 29.234,
-    p.value = 0.00001
-  )
-
-# creating a dataframe with effect size results
-effsize_df <-
-  cbind.data.frame(
+    p.value = 0.00001,
     estimate = -1.980,
     conf.low = -2.873,
     conf.high = -1.088
@@ -99,7 +90,6 @@ effsize_df <-
 statsExpressions::expr_template(
   no.parameters = 1L,
   stats.df = stats_df,
-  effsize.df = effsize_df,
   statistic.text = quote(italic("t")),
   effsize.text = quote(italic("d")),
   n = 32L,

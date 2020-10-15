@@ -74,6 +74,7 @@ expr_t_parametric <- function(data,
                               conf.level = 0.95,
                               effsize.type = "g",
                               var.equal = FALSE,
+                              output = "expression",
                               ...) {
 
   # make sure both quoted and unquoted arguments are supported
@@ -139,6 +140,10 @@ expr_t_parametric <- function(data,
     ) %>%
     insight::standardize_names(data = ., style = "broom")
 
+  # combining dataframes
+  stats_df <-
+    dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("estimate|^conf")), effsize_df)
+
   # when paired samples t-test is run df is going to be integer
   # ditto for when variance is assumed to be equal
   k.df <- ifelse(isTRUE(paired) || isTRUE(var.equal), 0L, k)
@@ -150,17 +155,23 @@ expr_t_parametric <- function(data,
     }
 
   # preparing subtitle
-  expr_template(
-    no.parameters = 1L,
-    stats.df = stats_df,
-    effsize.df = effsize_df,
-    statistic.text = statistic.text,
-    effsize.text = effsize.text,
-    n = sample_size,
-    conf.level = conf.level,
-    k = k,
-    k.parameter = k.df,
-    n.text = n.text
+  subtitle <-
+    expr_template(
+      no.parameters = 1L,
+      stats.df = stats_df,
+      statistic.text = statistic.text,
+      effsize.text = effsize.text,
+      n = sample_size,
+      conf.level = conf.level,
+      k = k,
+      k.parameter = k.df,
+      n.text = n.text
+    )
+
+  # return the output
+  switch(output,
+    "expression" = subtitle,
+    "dataframe" = stats_df
   )
 }
 
@@ -205,6 +216,7 @@ expr_t_parametric <- function(data,
 #' library(statsExpressions)
 #'
 #' # -------------- between-subjects design ------------------------
+#'
 #' # simple function call
 #' expr_t_nonparametric(
 #'   data = sleep,
@@ -261,6 +273,7 @@ expr_t_nonparametric <- function(data,
                                  conf.level = 0.95,
                                  conf.type = "norm",
                                  nboot = 100,
+                                 output = "expression",
                                  ...) {
 
   # make sure both quoted and unquoted arguments are supported
@@ -324,17 +337,27 @@ expr_t_nonparametric <- function(data,
     ) %>%
     rcompanion_cleaner(.)
 
+  # combining dataframes
+  stats_df <-
+    dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("estimate|^conf")), effsize_df)
+
   # preparing subtitle
-  expr_template(
-    no.parameters = 0L,
-    stats.df = stats_df,
-    effsize.df = effsize_df,
-    statistic.text = statistic.text,
-    effsize.text = quote(widehat(italic("r"))),
-    n = sample_size,
-    n.text = n.text,
-    conf.level = conf.level,
-    k = k
+  subtitle <-
+    expr_template(
+      no.parameters = 0L,
+      stats.df = stats_df,
+      statistic.text = statistic.text,
+      effsize.text = quote(widehat(italic("r"))),
+      n = sample_size,
+      n.text = n.text,
+      conf.level = conf.level,
+      k = k
+    )
+
+  # return the output
+  switch(output,
+    "expression" = subtitle,
+    "dataframe" = stats_df
   )
 }
 
@@ -394,6 +417,7 @@ expr_t_robust <- function(data,
                           conf.level = 0.95,
                           tr = 0.1,
                           nboot = 100,
+                          output = "expression",
                           ...) {
   # make sure both quoted and unquoted arguments are supported
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
@@ -490,18 +514,28 @@ expr_t_robust <- function(data,
     effsize.text <- quote(widehat(italic(delta))["R"])
   }
 
+  # combining dataframes
+  stats_df <-
+    dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("estimate|^conf")), effsize_df)
+
   # preparing subtitle
-  expr_template(
-    no.parameters = 1L,
-    stats.df = stats_df,
-    effsize.df = effsize_df,
-    statistic.text = quote(italic("t")["Yuen"]),
-    effsize.text = effsize.text,
-    n = nrow(data),
-    n.text = n.text,
-    conf.level = conf.level,
-    k = k,
-    k.parameter = k.parameter
+  subtitle <-
+    expr_template(
+      no.parameters = 1L,
+      stats.df = stats_df,
+      statistic.text = quote(italic("t")["Yuen"]),
+      effsize.text = effsize.text,
+      n = nrow(data),
+      n.text = n.text,
+      conf.level = conf.level,
+      k = k,
+      k.parameter = k.parameter
+    )
+
+  # return the output
+  switch(output,
+    "expression" = subtitle,
+    "dataframe" = stats_df
   )
 }
 
@@ -548,15 +582,26 @@ expr_t_bayes <- function(data,
                          paired = FALSE,
                          k = 2L,
                          bf.prior = 0.707,
+                         output = "expression",
                          ...) {
   # prepare subtitle
-  tidyBF::bf_ttest(
-    data = data,
-    x = {{ x }},
-    y = {{ y }},
-    paired = paired,
-    bf.prior = bf.prior,
-    output = "h1",
-    k = k
-  )$expr
+  stats_df <-
+    tidyBF::bf_ttest(
+      data = data,
+      x = {{ x }},
+      y = {{ y }},
+      paired = paired,
+      bf.prior = bf.prior,
+      output = output,
+      k = k,
+      ...
+    )
+
+  if (output == "expression") subtitle <- stats_df$expr
+
+  # return the output
+  switch(output,
+    "expression" = subtitle,
+    "dataframe" = stats_df
+  )
 }

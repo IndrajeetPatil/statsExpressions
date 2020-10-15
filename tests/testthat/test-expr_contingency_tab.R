@@ -747,3 +747,21 @@ testthat::test_that(
     )
   }
 )
+
+
+# dataframe -----------------------------------------------------------
+
+testthat::test_that(
+  desc = "dataframe",
+  code = {
+    testthat::expect_is(
+      statsExpressions::expr_contingency_tab(
+        data = as.data.frame(HairEyeColor),
+        x = Eye,
+        counts = Freq,
+        output = "dataframe"
+      ),
+      "tbl_df"
+    )
+  }
+)

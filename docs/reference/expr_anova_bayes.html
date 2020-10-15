@@ -111,6 +111,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/dataframe_outputs.html">Dataframe outputs</a>
+    </li>
+    <li>
       <a href="../articles/stats_details.html">Test and effect size details</a>
     </li>
   </ul>
@@ -154,7 +157,16 @@
     <p>Making expression containing Bayesian one-way ANOVA results.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expr_anova_bayes</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>x</span>, <span class='va'>y</span>, paired <span class='op'>=</span> <span class='cn'>FALSE</span>, bf.prior <span class='op'>=</span> <span class='fl'>0.707</span>, k <span class='op'>=</span> <span class='fl'>2L</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>expr_anova_bayes</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  <span class='va'>x</span>,
+  <span class='va'>y</span>,
+  paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  bf.prior <span class='op'>=</span> <span class='fl'>0.707</span>,
+  k <span class='op'>=</span> <span class='fl'>2L</span>,
+  output <span class='op'>=</span> <span class='st'>"expression"</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -190,6 +202,11 @@ width to use in calculating Bayes factors.</p></td>
 (Default: <code>k = 2</code>).</p></td>
     </tr>
     <tr>
+      <th>output</th>
+      <td><p>Can either be <code>"expression"</code>, which will return expression or
+<code>"dataframe"</code>, which will return a dataframe with results.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
       <td><p>Additional arguments (currently ignored).</p></td>
     </tr>
@@ -206,23 +223,15 @@ width to use in calculating Bayes factors.</p></td>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://indrajeetpatil.github.io/statsExpressions/'>statsExpressions</a></span><span class='op'>)</span>
 
 <span class='co'># between-subjects ---------------------------------------</span>
-<span class='co'># with defaults</span>
+
 <span class='fu'>expr_anova_bayes</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
   x <span class='op'>=</span> <span class='va'>vore</span>,
   y <span class='op'>=</span> <span class='va'>sleep_rem</span>
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; paste("log"["e"], "(BF"["10"], ") = ", "1.23")</div><div class='input'>
-<span class='co'># modifying the defaults</span>
-<span class='fu'>expr_anova_bayes</span><span class='op'>(</span>
-  data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
-  x <span class='op'>=</span> <span class='va'>vore</span>,
-  y <span class='op'>=</span> <span class='va'>sleep_rem</span>,
-  k <span class='op'>=</span> <span class='fl'>3</span>,
-  bf.prior <span class='op'>=</span> <span class='fl'>0.8</span>
-<span class='op'>)</span>
-</div><div class='output co'>#&gt; paste("log"["e"], "(BF"["10"], ") = ", "1.153")</div><div class='input'>
 <span class='co'># repeated measures ---------------------------------------</span>
+
 <span class='fu'>expr_anova_bayes</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>WRS2</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/WRS2/man/WineTasting.html'>WineTasting</a></span>,
   x <span class='op'>=</span> <span class='va'>Wine</span>,
@@ -230,7 +239,7 @@ width to use in calculating Bayes factors.</p></td>
   paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
   k <span class='op'>=</span> <span class='fl'>4</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; paste("log"["e"], "(BF"["10"], ") = ", "2.1072")</div></pre>
+</div><div class='output co'>#&gt; paste("log"["e"], "(BF"["10"], ") = ", "2.1186")</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

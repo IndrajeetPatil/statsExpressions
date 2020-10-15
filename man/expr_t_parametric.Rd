@@ -13,6 +13,7 @@ expr_t_parametric(
   conf.level = 0.95,
   effsize.type = "g",
   var.equal = FALSE,
+  output = "expression",
   ...
 )
 }
@@ -44,6 +45,9 @@ argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \em
     performed.  If \code{FALSE}, an approximate method of Welch (1951)
     is used, which generalizes the commonly known 2-sample Welch test to
     the case of arbitrarily many samples.}
+
+\item{output}{Can either be \code{"expression"}, which will return expression or
+\code{"dataframe"}, which will return a dataframe with results.}
 
 \item{...}{Additional arguments (currently ignored).}
 }

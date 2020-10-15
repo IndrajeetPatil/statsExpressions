@@ -35,6 +35,17 @@ testthat::test_that(
         output = "caption"
       )
 
+    # dataframe output
+    set.seed(123)
+    df_res <-
+      expr_meta_parametric(
+        data = df_eg,
+        output = "dataframe"
+      )
+
+    # output
+    testthat::expect_is(df_res, "tbl_df")
+
     # expected subtitle output
     set.seed(123)
     results1 <-

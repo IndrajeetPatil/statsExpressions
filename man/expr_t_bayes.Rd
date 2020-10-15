@@ -4,7 +4,16 @@
 \alias{expr_t_bayes}
 \title{Making expression containing Bayesian \emph{t}-test results}
 \usage{
-expr_t_bayes(data, x, y, paired = FALSE, k = 2L, bf.prior = 0.707, ...)
+expr_t_bayes(
+  data,
+  x,
+  y,
+  paired = FALSE,
+  k = 2L,
+  bf.prior = 0.707,
+  output = "expression",
+  ...
+)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to
@@ -24,6 +33,9 @@ repeated measures/within-subjects or between-subjects. The default is
 
 \item{bf.prior}{A number between \code{0.5} and \code{2} (default \code{0.707}), the prior
 width to use in calculating Bayes factors.}
+
+\item{output}{Can either be \code{"expression"}, which will return expression or
+\code{"dataframe"}, which will return a dataframe with results.}
 
 \item{...}{Additional arguments (currently ignored).}
 }

@@ -24,6 +24,18 @@ testthat::test_that(
         k = 4
       )
 
+    # df
+    set.seed(123)
+    df_res <-
+      expr_meta_robust(
+        data = df,
+        random = "normal",
+        output = "dataframe"
+      )
+
+    # output
+    testthat::expect_is(df_res, "tbl_df")
+
     # test
     testthat::expect_identical(
       results1,

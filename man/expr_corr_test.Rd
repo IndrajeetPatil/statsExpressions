@@ -13,6 +13,7 @@ expr_corr_test(
   beta = 0.1,
   type = "parametric",
   bf.prior = 0.707,
+  output = "expression",
   ...
 )
 }
@@ -47,6 +48,12 @@ parametric/pearson), \code{"np"} (nonparametric/spearman), \code{"r"} (robust),
 \item{bf.prior}{A number between \code{0.5} and \code{2} (default \code{0.707}), the prior
 width to use in calculating Bayes factors.}
 
+\item{output}{Can either be \code{"null"} (or \code{"caption"} or \code{"H0"} or \code{"h0"}),
+which will return expression with evidence in favor of the null hypothesis,
+or \code{"alternative"} (or \code{"title"} or \code{"H1"} or \code{"h1"}), which will return
+expression with evidence in favor of the alternative hypothesis, or
+\code{"dataframe"}, which will return a dataframe with results all the details).}
+
 \item{...}{Additional arguments passed to
 \code{\link[parameters:model_parameters.BFBayesFactor]{parameters::model_parameters.BFBayesFactor()}}.}
 }
@@ -64,7 +71,7 @@ set.seed(123)
 library(statsExpressions)
 
 # without changing defaults
-statsExpressions::expr_corr_test(
+expr_corr_test(
   data = ggplot2::midwest,
   x = area,
   y = percblack,
@@ -72,7 +79,7 @@ statsExpressions::expr_corr_test(
 )
 
 # changing defaults
-statsExpressions::expr_corr_test(
+expr_corr_test(
   data = ggplot2::midwest,
   x = area,
   y = percblack,

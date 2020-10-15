@@ -13,6 +13,7 @@ expr_anova_nonparametric(
   conf.level = 0.95,
   conf.type = "perc",
   nboot = 100L,
+  output = "expression",
   ...
 )
 }
@@ -41,6 +42,9 @@ intervals required. The value should be any subset of the values \code{"norm"},
 
 \item{nboot}{Number of bootstrap samples for computing confidence interval
 for the effect size (Default: \code{100}).}
+
+\item{output}{Can either be \code{"expression"}, which will return expression or
+\code{"dataframe"}, which will return a dataframe with results.}
 
 \item{...}{Additional arguments (currently ignored).}
 }

@@ -111,6 +111,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/dataframe_outputs.html">Dataframe outputs</a>
+    </li>
+    <li>
       <a href="../articles/stats_details.html">Test and effect size details</a>
     </li>
   </ul>
@@ -163,6 +166,7 @@
   conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
   conf.type <span class='op'>=</span> <span class='st'>"norm"</span>,
   nboot <span class='op'>=</span> <span class='fl'>100</span>,
+  output <span class='op'>=</span> <span class='st'>"expression"</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -211,6 +215,11 @@ intervals required. The value should be any subset of the values <code>"norm"</c
 for the effect size (Default: <code>100</code>).</p></td>
     </tr>
     <tr>
+      <th>output</th>
+      <td><p>Can either be <code>"expression"</code>, which will return expression or
+<code>"dataframe"</code>, which will return a dataframe with results.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
       <td><p>Additional arguments (currently ignored).</p></td>
     </tr>
@@ -245,6 +254,7 @@ below.</p>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://indrajeetpatil.github.io/statsExpressions/'>statsExpressions</a></span><span class='op'>)</span>
 
 <span class='co'># -------------- between-subjects design ------------------------</span>
+
 <span class='co'># simple function call</span>
 <span class='fu'>expr_t_nonparametric</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>sleep</span>,

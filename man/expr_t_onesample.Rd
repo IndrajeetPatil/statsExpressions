@@ -17,6 +17,7 @@ expr_t_onesample(
   robust.estimator = "onestep",
   effsize.type = "g",
   nboot = 100L,
+  output = "expression",
   ...
 )
 }
@@ -57,7 +58,10 @@ argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \em
 \item{nboot}{Number of bootstrap samples for computing confidence interval
 for the effect size (Default: \code{100}).}
 
-\item{...}{Additional arguments (currently ignored).}
+\item{output}{Can either be \code{"expression"}, which will return expression or
+\code{"dataframe"}, which will return a dataframe with results.}
+
+\item{...}{Additional arguments passed to \code{tidyBF::bf_ttest}.}
 }
 \value{
 Expression containing results from a one-sample test. The exact test

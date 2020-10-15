@@ -69,6 +69,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="articles/dataframe_outputs.html">Dataframe outputs</a>
+    </li>
+    <li>
       <a href="articles/stats_details.html">Test and effect size details</a>
     </li>
   </ul>
@@ -140,7 +143,7 @@
 <td><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg" alt="minimal R version"></a></td>
 <td><a href="https://www.tidyverse.org/lifecycle/"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></td>
 <td><a href="https://CRAN.R-project.org/package=statsExpressions"><img src="https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue" alt="Monthly downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/issues"><img src="https://img.shields.io/badge/issues-5-red.svg" alt="Github Issues"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/issues"><img src="https://img.shields.io/badge/issues-7-red.svg" alt="Github Issues"></a></td>
 <td><a href="https://CRAN.R-project.org/package=statsExpressions/vignettes/"><img src="https://img.shields.io/badge/vignettes-0.4.3-orange.svg?colorB=FF5722" alt="vignettes"></a></td>
 </tr>
 <tr class="even">
@@ -154,7 +157,7 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/tests/README.md"><img src="https://img.shields.io/badge/covrpage-Last_Build_2020_03_22-yellowgreen.svg" alt="Covrpage Summary"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--10--13-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--10--15-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
@@ -297,6 +300,32 @@
 <a href="#summary-of-statistical-tests-and-effect-sizes" class="anchor"></a>Summary of statistical tests and effect sizes</h1>
 <p>Here is a summary table of all the statistical tests currently supported across various functions: <a href="https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html</a></p>
 </div>
+<div id="dataframe-as-output" class="section level1">
+<h1 class="hasAnchor">
+<a href="#dataframe-as-output" class="anchor"></a>Dataframe as output</h1>
+<p>Although the primary focus of this package is to get expressions containing statistical results, one can also use it to extract dataframes containing these details.</p>
+<p>For a more detailed summary of these dataframe: <a href="https://indrajeetpatil.github.io/statsExpressions/articles/dataframe_outputs.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/dataframe_outputs.html</a></p>
+<p>For example,</p>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="co"># setup</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+
+<span class="fu"><a href="reference/expr_anova_parametric.html">expr_anova_parametric</a></span><span class="op">(</span>
+  data <span class="op">=</span> <span class="va">bugs_long</span>,
+  x <span class="op">=</span> <span class="va">condition</span>,
+  y <span class="op">=</span> <span class="va">desire</span>,
+  paired <span class="op">=</span> <span class="cn">TRUE</span>,
+  output <span class="op">=</span> <span class="st">"dataframe"</span>
+<span class="op">)</span>
+<span class="co">#&gt; # A tibble: 1 x 10</span>
+<span class="co">#&gt;   statistic parameter1 parameter2  p.value group           term      estimate</span>
+<span class="co">#&gt;       &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;        &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      20.6       2.63       229. 8.27e-11 rowid:condition condition   0.0783</span>
+<span class="co">#&gt;   ci.width conf.low conf.high</span>
+<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1     0.95   0.0217     0.140</span></pre></div>
+</div>
 <div id="primary-functions" class="section level1">
 <h1 class="hasAnchor">
 <a href="#primary-functions" class="anchor"></a>Primary functions</h1>
@@ -309,7 +338,7 @@
 <h3 class="hasAnchor">
 <a href="#between-subjects-design" class="anchor"></a>Between-subjects design</h3>
 <p>Let’s say we want to check differences in weight of the vehicle based on number of cylinders in the engine and wish to carry out Welch’s ANOVA:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
+<div class="sourceCode" id="cb6"><pre class="downlit">
 <span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -326,7 +355,7 @@
   <span class="op">)</span></pre></div>
 <p><img src="reference/figures/README-anova_parametric1-1.png" width="100%"></p>
 <p>In case you change your mind and now want to carry out a robust ANOVA instead. Also, let’s use a different kind of a visualization:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
+<div class="sourceCode" id="cb7"><pre class="downlit">
 <span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -346,7 +375,7 @@
   <span class="op">)</span></pre></div>
 <p><img src="reference/figures/README-anova_rob1-1.png" width="100%"></p>
 <p>Needless to say, you can also use these functions to display results in <code>ggplot</code>-extension packages. For example, <code>ggpubr</code>:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
+<div class="sourceCode" id="cb8"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rpkgs.datanovia.com/ggpubr/">ggpubr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -371,7 +400,7 @@
 <h3 class="hasAnchor">
 <a href="#within-subjects-design" class="anchor"></a>Within-subjects design</h3>
 <p>Let’s now see an example of a repeated measures one-way ANOVA.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit">
+<div class="sourceCode" id="cb9"><pre class="downlit">
 <span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -394,7 +423,7 @@
 <div id="between-subjects-design-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#between-subjects-design-1" class="anchor"></a>Between-subjects design</h3>
-<div class="sourceCode" id="cb9"><pre class="downlit">
+<div class="sourceCode" id="cb10"><pre class="downlit">
 <span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -415,7 +444,7 @@
   <span class="op">)</span></pre></div>
 <p><img src="reference/figures/README-t_two-1.png" width="100%"></p>
 <p>Example with <code>ggpubr</code>:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit">
+<div class="sourceCode" id="cb11"><pre class="downlit">
 <span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -450,7 +479,7 @@
   <span class="op">)</span></pre></div>
 <p><img src="reference/figures/README-t_two_ggpubr-1.png" width="100%"></p>
 <p>Another example with <code>ggiraphExtra</code>:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit">
+<div class="sourceCode" id="cb12"><pre class="downlit">
 <span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -473,7 +502,7 @@
 <h3 class="hasAnchor">
 <a href="#within-subjects-design-1" class="anchor"></a>Within-subjects design</h3>
 <p>We can also have a look at a repeated measures design and the related expressions.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit">
+<div class="sourceCode" id="cb13"><pre class="downlit">
 <span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -500,7 +529,7 @@
 <div id="example-expressions-for-one-sample-tests" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example-expressions-for-one-sample-tests" class="anchor"></a>Example: Expressions for one-sample tests</h2>
-<div class="sourceCode" id="cb13"><pre class="downlit">
+<div class="sourceCode" id="cb14"><pre class="downlit">
 <span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -521,7 +550,7 @@
 <h2 class="hasAnchor">
 <a href="#example-expressions-for-correlation-analyses" class="anchor"></a>Example: Expressions for correlation analyses</h2>
 <p>Let’s look at another example where we want to run correlation analysis:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit">
+<div class="sourceCode" id="cb15"><pre class="downlit">
 <span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -537,7 +566,7 @@
   <span class="op">)</span></pre></div>
 <p><img src="reference/figures/README-corr-1.png" width="100%"></p>
 <p>Another example</p>
-<div class="sourceCode" id="cb15"><pre class="downlit">
+<div class="sourceCode" id="cb16"><pre class="downlit">
 <span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -562,7 +591,7 @@
 <h2 class="hasAnchor">
 <a href="#example-expressions-for-contingency-table-analysis" class="anchor"></a>Example: Expressions for contingency table analysis</h2>
 <p>For categorical/nominal data - one-sample:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit">
+<div class="sourceCode" id="cb17"><pre class="downlit">
 <span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -584,7 +613,7 @@
   <span class="op">)</span></pre></div>
 <p><img src="reference/figures/README-gof-1.png" width="100%"></p>
 <p>Another example of contingency tabs analysis:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit">
+<div class="sourceCode" id="cb18"><pre class="downlit">
 <span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/cardiomoon/moonBook">moonBook</a></span><span class="op">)</span>
@@ -605,7 +634,7 @@
   <span class="op">)</span></pre></div>
 <p><img src="reference/figures/README-cont_tabs1-1.png" width="100%"></p>
 <p>You can also use these function to get the expression in return without having to display them in plots:</p>
-<div class="sourceCode" id="cb18"><pre class="downlit">
+<div class="sourceCode" id="cb19"><pre class="downlit">
 <span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -621,7 +650,7 @@
 <div id="example-expressions-for-meta-analysis" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example-expressions-for-meta-analysis" class="anchor"></a>Example: Expressions for meta-analysis</h2>
-<div class="sourceCode" id="cb19"><pre class="downlit">
+<div class="sourceCode" id="cb20"><pre class="downlit">
 <span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Mkossmeier/metaviz">metaviz</a></span><span class="op">)</span>
@@ -647,7 +676,7 @@
 <h1 class="hasAnchor">
 <a href="#customizing-details-to-your-liking" class="anchor"></a>Customizing details to your liking</h1>
 <p>Sometimes you may not wish include so many details in the subtitle. In that case, you can extract the expression and copy-paste only the part you wish to include. For example, here only statistic and <em>p</em>-values are included:</p>
-<div class="sourceCode" id="cb20"><pre class="downlit">
+<div class="sourceCode" id="cb21"><pre class="downlit">
 <span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>

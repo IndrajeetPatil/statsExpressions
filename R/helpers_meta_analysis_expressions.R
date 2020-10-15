@@ -51,8 +51,8 @@
 expr_meta_parametric <- function(data,
                                  k = 2L,
                                  conf.level = 0.95,
-                                 output = "subtitle",
                                  caption = NULL,
+                                 output = "expression",
                                  ...) {
   # check the data contains needed column
   tidyBF::meta_data_check(data)
@@ -72,15 +72,14 @@ expr_meta_parametric <- function(data,
   #----------------------- tidy output and subtitle ---------------------------
 
   # create a dataframe with coefficients
-  df_tidy <-
+  stats_df <-
     broomExtra::tidy_parameters(meta_res) %>%
     dplyr::mutate(.data = ., term = "Overall")
 
   # preparing the subtitle
   subtitle <-
     expr_template(
-      stats.df = df_tidy,
-      effsize.df = df_tidy,
+      stats.df = stats_df,
       statistic.text = quote(italic("z")),
       effsize.text = quote(widehat(beta)["summary"]^"meta"),
       n = nrow(data),
@@ -135,6 +134,7 @@ expr_meta_parametric <- function(data,
   # what needs to be returned?
   return(switch(
     EXPR = output,
+    "dataframe" = stats_df,
     "subtitle" = subtitle,
     "caption" = caption,
     subtitle
@@ -176,6 +176,7 @@ expr_meta_parametric <- function(data,
 expr_meta_robust <- function(data,
                              random = "mixture",
                              k = 2L,
+                             output = "expression",
                              ...) {
   # check the data contains needed column
   tidyBF::meta_data_check(data)
@@ -195,19 +196,25 @@ expr_meta_robust <- function(data,
   #----------------------- tidy output and subtitle ---------------------------
 
   # create a dataframe with coefficients
-  df_tidy <- dplyr::filter(.data = broomExtra::tidy_parameters(meta_res), term == "Overall")
+  stats_df <- dplyr::filter(.data = broomExtra::tidy_parameters(meta_res), term == "Overall")
 
   # preparing the subtitle
-  expr_template(
-    stats.df = df_tidy,
-    effsize.df = df_tidy,
-    statistic.text = quote(italic("z")),
-    effsize.text = quote(widehat(beta)["summary"]^"meta"),
-    n = nrow(data),
-    n.text = quote(italic("n")["effects"]),
-    no.parameters = 0L,
-    conf.level = 0.95,
-    k = k
+  subtitle <-
+    expr_template(
+      stats.df = stats_df,
+      statistic.text = quote(italic("z")),
+      effsize.text = quote(widehat(beta)["summary"]^"meta"),
+      n = nrow(data),
+      n.text = quote(italic("n")["effects"]),
+      no.parameters = 0L,
+      conf.level = 0.95,
+      k = k
+    )
+
+  # return the output
+  switch(output,
+    "expression" = subtitle,
+    "dataframe" = stats_df
   )
 }
 
@@ -242,17 +249,26 @@ expr_meta_bayes <- function(data,
                             d = prior("norm", c(mean = 0, sd = 0.3)),
                             tau = prior("invgamma", c(shape = 1, scale = 0.15)),
                             k = 2L,
+                            output = "expression",
                             ...) {
   # check the data contains needed column
   tidyBF::meta_data_check(data)
 
   # bayes factor results
-  tidyBF::bf_meta(
-    data = data,
-    d = d,
-    tau = tau,
-    k = k,
-    caption = NULL,
-    output = "h1"
-  )$expr
+  stats_df <-
+    tidyBF::bf_meta(
+      data = data,
+      d = d,
+      tau = tau,
+      k = k,
+      output = output
+    )
+
+  if (output == "expression") subtitle <- stats_df$expr
+
+  # return the output
+  switch(output,
+    "expression" = subtitle,
+    "dataframe" = stats_df
+  )
 }

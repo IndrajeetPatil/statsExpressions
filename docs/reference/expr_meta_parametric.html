@@ -114,6 +114,9 @@ more, see ?metafor::rma." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/dataframe_outputs.html">Dataframe outputs</a>
+    </li>
+    <li>
       <a href="../articles/stats_details.html">Test and effect size details</a>
     </li>
   </ul>
@@ -163,8 +166,8 @@ more, see <code><a href='https://wviechtb.github.io/metafor/reference/rma.uni.ht
   <span class='va'>data</span>,
   k <span class='op'>=</span> <span class='fl'>2L</span>,
   conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
-  output <span class='op'>=</span> <span class='st'>"subtitle"</span>,
   caption <span class='op'>=</span> <span class='cn'>NULL</span>,
+  output <span class='op'>=</span> <span class='st'>"expression"</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -189,16 +192,16 @@ two columns will be used for <code>yi</code>  and <code>sei</code> arguments in 
 <code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
     </tr>
     <tr>
+      <th>caption</th>
+      <td><p>Text to display as caption. This argument is relevant only
+when <code>output = "caption"</code>.</p></td>
+    </tr>
+    <tr>
       <th>output</th>
       <td><p>Character describing the desired output. If <code>"subtitle"</code>, a
 formatted subtitle with summary effect and statistical details will be
 returned, and if <code>"caption"</code>, expression containing details from model
 summary will be returned.</p></td>
-    </tr>
-    <tr>
-      <th>caption</th>
-      <td><p>Text to display as caption. This argument is relevant only
-when <code>output = "caption"</code>.</p></td>
     </tr>
     <tr>
       <th>...</th>

@@ -114,6 +114,9 @@ more, see ?metaplus::metaplus." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/dataframe_outputs.html">Dataframe outputs</a>
+    </li>
+    <li>
       <a href="../articles/stats_details.html">Test and effect size details</a>
     </li>
   </ul>
@@ -159,7 +162,7 @@ results</h1>
 more, see <code><a href='https://rdrr.io/pkg/metaplus/man/metaplus.html'>?metaplus::metaplus</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expr_meta_robust</span><span class='op'>(</span><span class='va'>data</span>, random <span class='op'>=</span> <span class='st'>"mixture"</span>, k <span class='op'>=</span> <span class='fl'>2L</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>expr_meta_robust</span><span class='op'>(</span><span class='va'>data</span>, random <span class='op'>=</span> <span class='st'>"mixture"</span>, k <span class='op'>=</span> <span class='fl'>2L</span>, output <span class='op'>=</span> <span class='st'>"expression"</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -179,6 +182,13 @@ two columns will be used for <code>yi</code>  and <code>sei</code> arguments in 
       <th>k</th>
       <td><p>Number of digits after decimal point (should be an integer)
 (Default: <code>k = 2L</code>).</p></td>
+    </tr>
+    <tr>
+      <th>output</th>
+      <td><p>Character describing the desired output. If <code>"subtitle"</code>, a
+formatted subtitle with summary effect and statistical details will be
+returned, and if <code>"caption"</code>, expression containing details from model
+summary will be returned.</p></td>
     </tr>
     <tr>
       <th>...</th>

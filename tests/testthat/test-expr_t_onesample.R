@@ -307,3 +307,21 @@ testthat::test_that(
     testthat::expect_identical(using_function2, results2)
   }
 )
+
+
+# dataframe -----------------------------------------------------------
+
+testthat::test_that(
+  desc = "dataframe",
+  code = {
+    testthat::expect_is(
+      statsExpressions::expr_t_onesample(
+        data = dplyr::sample_frac(movies_long, 0.05),
+        x = length,
+        test.value = 120,
+        output = "dataframe"
+      ),
+      "tbl_df"
+    )
+  }
+)
