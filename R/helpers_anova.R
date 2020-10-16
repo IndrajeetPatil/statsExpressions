@@ -166,12 +166,12 @@ expr_anova_parametric <- function(data,
 
     # combine into a dataframe
     stats_df <-
-      as_tibble(cbind.data.frame(
+      tibble(
         statistic = ez_df$ANOVA$F[2],
         parameter1 = e_corr * ez_df$ANOVA$DFn[2],
         parameter2 = e_corr * ez_df$ANOVA$DFd[2],
         p.value = p.value
-      ))
+      )
 
     # creating a standardized dataframe with effect size and its CIs
     mod <- ez_df$aov
@@ -248,7 +248,8 @@ expr_anova_parametric <- function(data,
   # return the output
   switch(output,
     "expression" = subtitle,
-    "dataframe" = stats_df
+    "dataframe" = stats_df,
+    subtitle
   )
 }
 
@@ -419,7 +420,8 @@ expr_anova_nonparametric <- function(data,
   # return the output
   switch(output,
     "expression" = subtitle,
-    "dataframe" = stats_df
+    "dataframe" = stats_df,
+    subtitle
   )
 }
 
@@ -595,7 +597,8 @@ expr_anova_robust <- function(data,
   # return the output
   switch(output,
     "expression" = subtitle,
-    "dataframe" = stats_df
+    "dataframe" = stats_df,
+    subtitle
   )
 }
 
@@ -662,6 +665,7 @@ expr_anova_bayes <- function(data,
   # return the output
   switch(output,
     "expression" = subtitle,
-    "dataframe" = stats_df
+    "dataframe" = stats_df,
+    subtitle
   )
 }

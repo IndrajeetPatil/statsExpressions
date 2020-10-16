@@ -204,6 +204,7 @@ expr_contingency_tab <- function(data,
   # return the output
   switch(output,
     "expression" = subtitle,
-    "dataframe" = stats_df
+    "dataframe" = stats_df,
+    subtitle
   )
 }

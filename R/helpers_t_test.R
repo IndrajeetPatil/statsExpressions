@@ -80,8 +80,6 @@ expr_t_parametric <- function(data,
   # make sure both quoted and unquoted arguments are supported
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
-  # ============================ data preparation ==========================
-
   # have a proper cleanup with NA removal
   data %<>%
     long_to_wide_converter(
@@ -171,7 +169,8 @@ expr_t_parametric <- function(data,
   # return the output
   switch(output,
     "expression" = subtitle,
-    "dataframe" = stats_df
+    "dataframe" = stats_df,
+    subtitle
   )
 }
 
@@ -247,8 +246,6 @@ expr_t_nonparametric <- function(data,
 
   # make sure both quoted and unquoted arguments are supported
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
-
-  # ============================ data preparation ==========================
 
   # have a proper cleanup with NA removal
   data %<>%
@@ -326,7 +323,8 @@ expr_t_nonparametric <- function(data,
   # return the output
   switch(output,
     "expression" = subtitle,
-    "dataframe" = stats_df
+    "dataframe" = stats_df,
+    subtitle
   )
 }
 
@@ -391,8 +389,6 @@ expr_t_robust <- function(data,
   # make sure both quoted and unquoted arguments are supported
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
-  # ============================ data preparation ==========================
-
   # have a proper cleanup with NA removal
   data %<>%
     long_to_wide_converter(
@@ -402,8 +398,6 @@ expr_t_robust <- function(data,
       paired = paired,
       spread = paired
     )
-
-  # ---------------------------- between-subjects design --------------------
 
   # running Bayesian analysis
   if (isFALSE(paired)) {
@@ -446,8 +440,6 @@ expr_t_robust <- function(data,
     n.text <- quote(italic("n")["obs"])
     effsize.text <- quote(widehat(italic(xi)))
   }
-
-  # ---------------------------- within-subjects design -------------------
 
   if (isTRUE(paired)) {
     # running robust paired t-test
@@ -504,7 +496,8 @@ expr_t_robust <- function(data,
   # return the output
   switch(output,
     "expression" = subtitle,
-    "dataframe" = stats_df
+    "dataframe" = stats_df,
+    subtitle
   )
 }
 
@@ -571,6 +564,7 @@ expr_t_bayes <- function(data,
   # return the output
   switch(output,
     "expression" = subtitle,
-    "dataframe" = stats_df
+    "dataframe" = stats_df,
+    subtitle
   )
 }

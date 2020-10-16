@@ -151,6 +151,7 @@ expr_corr_test <- function(data,
   # return the output
   switch(output,
     "expression" = subtitle,
-    "dataframe" = stats_df
+    "dataframe" = stats_df,
+    subtitle
   )
 }

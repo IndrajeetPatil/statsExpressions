@@ -270,6 +270,7 @@ expr_t_onesample <- function(data,
   # return the output
   switch(output,
     "expression" = subtitle,
-    "dataframe" = stats_df
+    "dataframe" = stats_df,
+    subtitle
   )
 }
