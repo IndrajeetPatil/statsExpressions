@@ -226,7 +226,7 @@ testthat::test_that(
         type = "bf",
         k = 3,
         output = "h1"
-      )$expr
+      )
 
     # testing overall call
     testthat::expect_identical(using_function, expected)

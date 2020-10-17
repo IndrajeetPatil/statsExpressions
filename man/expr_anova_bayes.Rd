@@ -2,7 +2,7 @@
 % Please edit documentation in R/helpers_anova.R
 \name{expr_anova_bayes}
 \alias{expr_anova_bayes}
-\title{Making expression containing Bayesian one-way ANOVA results.}
+\title{Expression containing Bayesian one-way ANOVA results}
 \usage{
 expr_anova_bayes(
   data,
@@ -32,10 +32,11 @@ repeated measures/within-subjects or between-subjects. The default is
 width to use in calculating Bayes factors.}
 
 \item{k}{Number of digits after decimal point (should be an integer)
-(Default: \code{k = 2}).}
+(Default: \code{k = 2L}).}
 
-\item{output}{Can either be \code{"expression"}, which will return expression or
-\code{"dataframe"}, which will return a dataframe with results.}
+\item{output}{If \code{"expression"}, will return expression with statistical
+details, while \code{"dataframe"} will return a dataframe containing the
+results.}
 
 \item{...}{Additional arguments (currently ignored).}
 }
@@ -44,7 +45,7 @@ For more details, see-
 \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }
 \description{
-Making expression containing Bayesian one-way ANOVA results.
+Expression containing Bayesian one-way ANOVA results
 }
 \examples{
 # setup

@@ -273,7 +273,7 @@ testthat::test_that(
         type = "bf",
         messages = FALSE,
         output = "h1"
-      )$expr
+      )
 
     # testing overall call
     testthat::expect_identical(using_function, results)
@@ -301,7 +301,7 @@ testthat::test_that(
         k = 4,
         messages = FALSE,
         output = "h1"
-      )$expr
+      )
 
     # testing overall call
     testthat::expect_identical(using_function2, results2)

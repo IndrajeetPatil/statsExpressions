@@ -194,7 +194,7 @@ repeated measures/within-subjects or between-subjects. The default is
     <tr>
       <th>k</th>
       <td><p>Number of digits after decimal point (should be an integer)
-(Default: <code>k = 2</code>).</p></td>
+(Default: <code>k = 2L</code>).</p></td>
     </tr>
     <tr>
       <th>bf.prior</th>
@@ -203,8 +203,9 @@ width to use in calculating Bayes factors.</p></td>
     </tr>
     <tr>
       <th>output</th>
-      <td><p>Can either be <code>"expression"</code>, which will return expression or
-<code>"dataframe"</code>, which will return a dataframe with results.</p></td>
+      <td><p>If <code>"expression"</code>, will return expression with statistical
+details, while <code>"dataframe"</code> (default) will return a dataframe containing the
+results.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -230,7 +231,7 @@ width to use in calculating Bayes factors.</p></td>
   y <span class='op'>=</span> <span class='va'>wt</span>,
   paired <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; paste("log"["e"], "(BF"["10"], ") = ", "7.23", ", ", widehat(italic(d))["median"]^"posterior", 
+</div><div class='output co'>#&gt; paste("log"["e"], "(BF"["01"], ") = ", "-7.23", ", ", widehat(italic(delta))["median"]^"posterior", 
 #&gt;     " = ", "-1.26", ", CI"["95%"]^"HDI", " [", "-1.79", ", ", 
 #&gt;     "-0.72", "]", ", ", italic("r")["Cauchy"]^"JZS", " = ", "0.71")</div><div class='input'>
 <span class='co'># ------------- within-subjects design -----------------------------</span>
@@ -241,7 +242,7 @@ width to use in calculating Bayes factors.</p></td>
   y <span class='op'>=</span> <span class='va'>desire</span>,
   paired <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; paste("log"["e"], "(BF"["10"], ") = ", "15.38", ", ", widehat(italic(d))["median"]^"posterior", 
+</div><div class='output co'>#&gt; paste("log"["e"], "(BF"["01"], ") = ", "-15.38", ", ", widehat(italic(delta))["median"]^"posterior", 
 #&gt;     " = ", "1.62", ", CI"["95%"]^"HDI", " [", "1.17", ", ", "2.16", 
 #&gt;     "]", ", ", italic("r")["Cauchy"]^"JZS", " = ", "0.71")</div></pre>
   </div>

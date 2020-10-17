@@ -41,7 +41,7 @@ The type of random effects distribution. One of "normal","t-dist","mixture", for
 }
 
 \item{k}{Number of digits after decimal point (should be an integer)
-(Default: \code{k = 2}).}
+(Default: \code{k = 2L}).}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} lower and upper confidence intervals (\code{0.95}).}
@@ -49,8 +49,9 @@ The type of random effects distribution. One of "normal","t-dist","mixture", for
 \item{caption}{Text to display as caption. This argument is relevant only
 when \code{output = "caption"}.}
 
-\item{output}{Can either be \code{"expression"}, which will return expression or
-\code{"dataframe"}, which will return a dataframe with results.}
+\item{output}{If \code{"expression"}, will return expression with statistical
+details, while \code{"dataframe"} will return a dataframe containing the
+results.}
 
 \item{...}{Additional arguments passed to the respective meta-analysis
 function.}

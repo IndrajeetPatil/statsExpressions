@@ -168,7 +168,6 @@ expr_t_parametric <- function(data,
 
   # return the output
   switch(output,
-    "expression" = subtitle,
     "dataframe" = stats_df,
     subtitle
   )
@@ -322,7 +321,6 @@ expr_t_nonparametric <- function(data,
 
   # return the output
   switch(output,
-    "expression" = subtitle,
     "dataframe" = stats_df,
     subtitle
   )
@@ -495,7 +493,6 @@ expr_t_robust <- function(data,
 
   # return the output
   switch(output,
-    "expression" = subtitle,
     "dataframe" = stats_df,
     subtitle
   )
@@ -546,25 +543,14 @@ expr_t_bayes <- function(data,
                          bf.prior = 0.707,
                          output = "expression",
                          ...) {
-  # prepare subtitle
-  stats_df <-
-    tidyBF::bf_ttest(
-      data = data,
-      x = {{ x }},
-      y = {{ y }},
-      paired = paired,
-      bf.prior = bf.prior,
-      output = output,
-      k = k,
-      ...
-    )
-
-  if (output == "expression") subtitle <- stats_df$expr
-
-  # return the output
-  switch(output,
-    "expression" = subtitle,
-    "dataframe" = stats_df,
-    subtitle
+  tidyBF::bf_ttest(
+    data = data,
+    x = {{ x }},
+    y = {{ y }},
+    paired = paired,
+    bf.prior = bf.prior,
+    output = output,
+    k = k,
+    ...
   )
 }

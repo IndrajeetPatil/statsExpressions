@@ -27,7 +27,7 @@ testthat::test_that(
         paired = FALSE,
         k = 5,
         output = "h1"
-      )$expr
+      )
 
     # testing overall call
     testthat::expect_identical(using_function, results)
@@ -64,7 +64,7 @@ testthat::test_that(
         k = 4,
         messages = FALSE,
         output = "h1"
-      )$expr
+      )
 
     # testing overall call
     testthat::expect_identical(using_function, results)
@@ -137,7 +137,7 @@ testthat::test_that(
         paired = TRUE,
         messages = FALSE,
         output = "h1"
-      )$expr
+      )
 
     # testing overall call
     testthat::expect_identical(using_function, results)
@@ -174,7 +174,7 @@ testthat::test_that(
         paired = TRUE,
         messages = FALSE,
         output = "h1"
-      )$expr
+      )
 
     # testing overall call
     testthat::expect_identical(using_function, results)

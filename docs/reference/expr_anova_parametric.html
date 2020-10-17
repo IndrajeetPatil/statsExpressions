@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Making expression containing parametric ANOVA results — expr_anova_parametric • statsExpressions</title>
+<title>Expression containing parametric ANOVA results — expr_anova_parametric • statsExpressions</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,7 +54,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Making expression containing parametric ANOVA results — expr_anova_parametric" />
+<meta property="og:title" content="Expression containing parametric ANOVA results — expr_anova_parametric" />
 <meta property="og:description" content="The effect sizes and their confidence intervals are computed
 using effectsize::eta_squared and effectsize::omega_squared functions." />
 <meta property="og:image" content="https://indrajeetpatil.github.io/statsExpressions/logo.png" />
@@ -149,7 +149,7 @@ using effectsize::eta_squared and effectsize::omega_squared functions." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Making expression containing parametric ANOVA results</h1>
+    <h1>Expression containing parametric ANOVA results</h1>
     <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/helpers_anova.R'><code>R/helpers_anova.R</code></a></small>
     <div class="hidden name"><code>expr_anova_parametric.Rd</code></div>
     </div>
@@ -199,7 +199,7 @@ repeated measures/within-subjects or between-subjects. The default is
     <tr>
       <th>k</th>
       <td><p>Number of digits after decimal point (should be an integer)
-(Default: <code>k = 2</code>).</p></td>
+(Default: <code>k = 2L</code>).</p></td>
     </tr>
     <tr>
       <th>conf.level</th>
@@ -229,8 +229,9 @@ argument can be <code>"biased"</code> (equivalent to <code>"d"</code> for Cohen'
     </tr>
     <tr>
       <th>output</th>
-      <td><p>Can either be <code>"expression"</code>, which will return expression or
-<code>"dataframe"</code>, which will return a dataframe with results.</p></td>
+      <td><p>If <code>"expression"</code>, will return expression with statistical
+details, while <code>"dataframe"</code> (default) will return a dataframe containing the
+results.</p></td>
     </tr>
     <tr>
       <th>...</th>

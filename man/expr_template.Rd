@@ -56,7 +56,7 @@ want to use plotmath, you will have to quote the argument (e.g.,
 \verb{95\%} lower and upper confidence intervals (\code{0.95}).}
 
 \item{k}{Number of digits after decimal point (should be an integer)
-(Default: \code{k = 2}).}
+(Default: \code{k = 2L}).}
 
 \item{k.parameter, k.parameter2}{Number of decimal places to display for the
 parameters (default: \code{0}).}

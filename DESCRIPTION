@@ -37,7 +37,7 @@ Imports:
     rcompanion,
     rlang,
     stats,
-    tidyBF (>= 0.3.0.9000),
+    tidyBF (>= 0.4.0.9000),
     tidyr,
     WRS2
 Suggests:

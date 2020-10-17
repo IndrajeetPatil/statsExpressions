@@ -212,7 +212,7 @@ there are four levels this will be <code>ratio = c(0.25,0.25,0.25,0.25)</code>, 
     <tr>
       <th>k</th>
       <td><p>Number of digits after decimal point (should be an integer)
-(Default: <code>k = 2</code>).</p></td>
+(Default: <code>k = 2L</code>).</p></td>
     </tr>
     <tr>
       <th>conf.level</th>
@@ -221,8 +221,9 @@ there are four levels this will be <code>ratio = c(0.25,0.25,0.25,0.25)</code>, 
     </tr>
     <tr>
       <th>output</th>
-      <td><p>Can either be <code>"expression"</code>, which will return expression or
-<code>"dataframe"</code>, which will return a dataframe with results.</p></td>
+      <td><p>If <code>"expression"</code>, will return expression with statistical
+details, while <code>"dataframe"</code> (default) will return a dataframe containing the
+results.</p></td>
     </tr>
     <tr>
       <th>...</th>

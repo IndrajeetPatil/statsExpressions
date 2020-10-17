@@ -206,7 +206,7 @@ probability density function is defined via <code><a href='https://rdrr.io/pkg/m
     <tr>
       <th>k</th>
       <td><p>Number of digits after decimal point (should be an integer)
-(Default: <code>k = 2</code>).</p></td>
+(Default: <code>k = 2L</code>).</p></td>
     </tr>
     <tr>
       <th>conf.level</th>
@@ -220,8 +220,9 @@ when <code>output = "caption"</code>.</p></td>
     </tr>
     <tr>
       <th>output</th>
-      <td><p>Can either be <code>"expression"</code>, which will return expression or
-<code>"dataframe"</code>, which will return a dataframe with results.</p></td>
+      <td><p>If <code>"expression"</code>, will return expression with statistical
+details, while <code>"dataframe"</code> (default) will return a dataframe containing the
+results.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -245,8 +246,7 @@ function.</p></td>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://indrajeetpatil.github.io/statsExpressions/'>statsExpressions</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>metaplus</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Note: The second parameter is the study standard error not the standard error squared as in the metafor package.</span></div><div class='input'>
+
 <span class='co'># renaming to what `statsExpressions` expects</span>
 <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span><span class='va'>mag</span>, estimate <span class='op'>=</span> <span class='va'>yi</span>, std.error <span class='op'>=</span> <span class='va'>sei</span><span class='op'>)</span>
 
@@ -278,10 +278,10 @@ function.</p></td>
   random <span class='op'>=</span> <span class='st'>"normal"</span>,
   output <span class='op'>=</span> <span class='st'>"dataframe"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 8</span><span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 8</span><span>
 #&gt;   </span><span style='font-weight: bold;'>term</span><span>    </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>std.error</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>statistic</span><span>  </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>weight</span><span>
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Overall   -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>746</span><span>     </span><span style='color: #949494;'>0.</span><span>234    -</span><span style='color: #BB0000;'>1.26</span><span>    -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>343</span><span>     -</span><span style='color: #BB0000;'>3.20</span><span> </span><span style='color: #949494;'>0.000</span><span style='text-decoration: underline;'>501</span><span>     </span><span style='color: #BB0000;'>NA</span><span></div><div class='input'>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> Overall   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>746</span><span>     </span><span style='color: #555555;'>0.</span><span>234    -</span><span style='color: #BB0000;'>1.26</span><span>    -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>343</span><span>     -</span><span style='color: #BB0000;'>3.20</span><span> </span><span style='color: #555555;'>0.000</span><span style='text-decoration: underline;'>501</span><span>     </span><span style='color: #BB0000;'>NA</span><span></div><div class='input'>
 <span class='co'># ----------------------- Bayes Factor -----------------------------------</span>
 
 <span class='co'># making subtitle</span>
@@ -294,7 +294,7 @@ function.</p></td>
   summarize <span class='op'>=</span> <span class='st'>"integrate"</span>,
   control <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>adapt_delta <span class='op'>=</span> <span class='fl'>0.99</span>, max_treedepth <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; paste("log"["e"], "(BF"["10"], ") = ", "3.669", ", ", widehat(italic("d"))["mean"]^"posterior", 
+</div><div class='output co'>#&gt; paste("log"["e"], "(BF"["01"], ") = ", "-3.669", ", ", widehat(italic(delta))["mean"]^"posterior", 
 #&gt;     " = ", "-0.471", ", CI"["95%"], " [", "-0.803", ", ", "-0.155", 
 #&gt;     "]")</div><div class='input'><span class='co'># }</span>
 </div></span></pre>

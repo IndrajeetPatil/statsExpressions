@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Making expression containing Bayesian one-way ANOVA results. — expr_anova_bayes • statsExpressions</title>
+<title>Expression containing Bayesian one-way ANOVA results — expr_anova_bayes • statsExpressions</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,8 +54,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Making expression containing Bayesian one-way ANOVA results. — expr_anova_bayes" />
-<meta property="og:description" content="Making expression containing Bayesian one-way ANOVA results." />
+<meta property="og:title" content="Expression containing Bayesian one-way ANOVA results — expr_anova_bayes" />
+<meta property="og:description" content="Expression containing Bayesian one-way ANOVA results" />
 <meta property="og:image" content="https://indrajeetpatil.github.io/statsExpressions/logo.png" />
 
 
@@ -148,13 +148,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Making expression containing Bayesian one-way ANOVA results.</h1>
+    <h1>Expression containing Bayesian one-way ANOVA results</h1>
     <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/helpers_anova.R'><code>R/helpers_anova.R</code></a></small>
     <div class="hidden name"><code>expr_anova_bayes.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Making expression containing Bayesian one-way ANOVA results.</p>
+    <p>Expression containing Bayesian one-way ANOVA results</p>
     </div>
 
     <pre class="usage"><span class='fu'>expr_anova_bayes</span><span class='op'>(</span>
@@ -199,12 +199,13 @@ width to use in calculating Bayes factors.</p></td>
     <tr>
       <th>k</th>
       <td><p>Number of digits after decimal point (should be an integer)
-(Default: <code>k = 2</code>).</p></td>
+(Default: <code>k = 2L</code>).</p></td>
     </tr>
     <tr>
       <th>output</th>
-      <td><p>Can either be <code>"expression"</code>, which will return expression or
-<code>"dataframe"</code>, which will return a dataframe with results.</p></td>
+      <td><p>If <code>"expression"</code>, will return expression with statistical
+details, while <code>"dataframe"</code> (default) will return a dataframe containing the
+results.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -229,7 +230,7 @@ width to use in calculating Bayes factors.</p></td>
   x <span class='op'>=</span> <span class='va'>vore</span>,
   y <span class='op'>=</span> <span class='va'>sleep_rem</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; paste("log"["e"], "(BF"["10"], ") = ", "1.23")</div><div class='input'>
+</div><div class='output co'>#&gt; paste("log"["e"], "(BF"["01"], ") = ", "-1.23")</div><div class='input'>
 <span class='co'># repeated measures ---------------------------------------</span>
 
 <span class='fu'>expr_anova_bayes</span><span class='op'>(</span>
@@ -239,7 +240,7 @@ width to use in calculating Bayes factors.</p></td>
   paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
   k <span class='op'>=</span> <span class='fl'>4</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; paste("log"["e"], "(BF"["10"], ") = ", "2.1186")</div></pre>
+</div><div class='output co'>#&gt; paste("log"["e"], "(BF"["01"], ") = ", "-2.1186")</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

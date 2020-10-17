@@ -25,7 +25,7 @@ testthat::test_that(
         k = 5,
         bf.prior = 0.8,
         output = "h1"
-      )$expr
+      )
 
     # testing overall call
     testthat::expect_identical(using_function1, results1)
@@ -60,7 +60,7 @@ testthat::test_that(
         paired = TRUE,
         k = 3,
         output = "h1"
-      )$expr
+      )
 
     # testing overall call
     testthat::expect_identical(using_function1, results1)
@@ -95,7 +95,7 @@ testthat::test_that(
         paired = TRUE,
         k = 3,
         output = "h1"
-      )$expr
+      )
 
     # testing overall call
     testthat::expect_identical(using_function1, results1)

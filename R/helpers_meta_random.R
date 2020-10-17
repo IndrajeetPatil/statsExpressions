@@ -196,7 +196,7 @@ expr_meta_random <- function(data,
       )
 
     caption <- NULL
-    if (output == "expression") subtitle <- stats_df$expr
+    subtitle <- stats_df
   }
 
   #---------------------------- return ---------------------------------
@@ -205,7 +205,6 @@ expr_meta_random <- function(data,
   return(switch(
     EXPR = output,
     "dataframe" = stats_df,
-    "expression" = subtitle,
     "caption" = caption,
     subtitle
   ))

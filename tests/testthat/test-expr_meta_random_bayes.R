@@ -51,7 +51,7 @@ testthat::test_that(
       ))
 
     # test
-    testthat::expect_identical(as.character(results1)[5], "7.513")
+    testthat::expect_identical(as.character(results1)[5], "-7.513")
     testthat::expect_is(df, "tbl_df")
   }
 )

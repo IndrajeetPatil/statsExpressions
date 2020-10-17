@@ -1,4 +1,4 @@
-#' @title Making expression containing parametric ANOVA results
+#' @title Expression containing parametric ANOVA results
 #' @name expr_anova_parametric
 #'
 #' @return For more details, see-
@@ -22,8 +22,7 @@
 #'   **t-test**; `"partial_eta"` for partial eta-squared for **anova**) or
 #'   `"unbiased"` (equivalent to `"g"` Hedge's *g* for **t-test**;
 #'   `"partial_omega"` for partial omega-squared for **anova**)).
-#' @param output Can either be `"expression"`, which will return expression or
-#'   `"dataframe"`, which will return a dataframe with results.
+#' @inheritParams expr_corr_test
 #' @inheritParams expr_template
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams stats::oneway.test
@@ -247,7 +246,6 @@ expr_anova_parametric <- function(data,
 
   # return the output
   switch(output,
-    "expression" = subtitle,
     "dataframe" = stats_df,
     subtitle
   )
@@ -270,6 +268,7 @@ expr_anova_parametric <- function(data,
 #' @param nboot Number of bootstrap samples for computing confidence interval
 #'   for the effect size (Default: `100`).
 #' @inheritParams expr_anova_parametric
+#' @inheritParams tidyBF::bf_oneway_anova
 #' @inheritParams expr_template
 #'
 #' @importFrom dplyr select
@@ -419,7 +418,6 @@ expr_anova_nonparametric <- function(data,
 
   # return the output
   switch(output,
-    "expression" = subtitle,
     "dataframe" = stats_df,
     subtitle
   )
@@ -438,6 +436,7 @@ expr_anova_nonparametric <- function(data,
 #'   try to play around with the value of `tr`, which is by default set to
 #'   `0.1`. Lowering the value might help.
 #' @inheritParams expr_anova_nonparametric
+#' @inheritParams expr_corr_test
 #' @inheritParams expr_template
 #'
 #' @importFrom dplyr select
@@ -596,14 +595,13 @@ expr_anova_robust <- function(data,
 
   # return the output
   switch(output,
-    "expression" = subtitle,
     "dataframe" = stats_df,
     subtitle
   )
 }
 
 
-#' @title Making expression containing Bayesian one-way ANOVA results.
+#' @title Expression containing Bayesian one-way ANOVA results
 #' @name expr_anova_bayes
 #'
 #' @return For more details, see-
@@ -647,25 +645,14 @@ expr_anova_bayes <- function(data,
                              k = 2L,
                              output = "expression",
                              ...) {
-  # bayes factor results
-  stats_df <-
-    tidyBF::bf_oneway_anova(
-      data = data,
-      x = {{ x }},
-      y = {{ y }},
-      paired = paired,
-      bf.prior = bf.prior,
-      k = k,
-      output = output,
-      ...
-    )
-
-  if (output == "expression") subtitle <- stats_df$expr
-
-  # return the output
-  switch(output,
-    "expression" = subtitle,
-    "dataframe" = stats_df,
-    subtitle
+  tidyBF::bf_oneway_anova(
+    data = data,
+    x = {{ x }},
+    y = {{ y }},
+    paired = paired,
+    bf.prior = bf.prior,
+    k = k,
+    output = output,
+    ...
   )
 }

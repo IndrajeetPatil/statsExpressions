@@ -29,7 +29,7 @@
 #'   want to use plotmath, you will have to quote the argument (e.g.,
 #'   `quote(italic("d"))`).
 #' @param k Number of digits after decimal point (should be an integer)
-#'   (Default: `k = 2`).
+#'   (Default: `k = 2L`).
 #' @param k.parameter,k.parameter2 Number of decimal places to display for the
 #'   parameters (default: `0`).
 #' @param n An integer specifying the sample size used for the test.
