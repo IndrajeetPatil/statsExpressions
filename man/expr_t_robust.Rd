@@ -8,6 +8,7 @@ expr_t_robust(
   data,
   x,
   y,
+  subject.id = NULL,
   paired = FALSE,
   k = 2L,
   conf.level = 0.95,
@@ -25,6 +26,13 @@ be taken. A matrix or tables will \strong{not} be accepted.}
 
 \item{y}{The response (a.k.a. outcome or dependent) variable from the
 dataframe \code{data}.}
+
+\item{subject.id}{In case of repeated measures design (\code{paired = TRUE},
+i.e.), this argument specifies the subject or repeated measures id. Note
+that if this argument is \code{NULL} (which is the default), the function
+assumes that the data has already been sorted by such an id by the user and
+creates an internal identifier. So if your data is \strong{not} sorted and you
+leave this argument unspecified, the results can be inaccurate.}
 
 \item{paired}{Logical that decides whether the experimental design is
 repeated measures/within-subjects or between-subjects. The default is
@@ -68,22 +76,13 @@ expr_t_robust(
   y = extra
 )
 
-# changing defaults
-expr_t_robust(
-  data = ToothGrowth,
-  x = supp,
-  y = len,
-  nboot = 10,
-  k = 3,
-  tr = 0.2
-)
-
 # within-subjects design -----------------------------------------------
 expr_t_robust(
   data = dplyr::filter(bugs_long, condition \%in\% c("LDLF", "LDHF")),
   x = condition,
   y = desire,
-  paired = TRUE
+  paired = TRUE,
+  subject.id = subject
 )
 }
 \references{

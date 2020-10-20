@@ -9,7 +9,7 @@ testthat::test_that(
     col.name <- colnames(mtcars)
 
     ls <-
-      capture.output(for (i in 9:length(col.name)) {
+      capture.output(for (i in 4:5) {
         print(expr_corr_test(
           data = mtcars,
           x = disp,
@@ -17,7 +17,7 @@ testthat::test_that(
         ))
       })
 
-    testthat::expect_equal(length(ls), 12L)
+    testthat::expect_equal(length(ls), 8L)
   }
 )
 
@@ -31,7 +31,7 @@ testthat::test_that(
     col.name <- colnames(mtcars)
 
     ls <-
-      capture.output(for (i in 10:length(col.name)) {
+      capture.output(for (i in 3:5) {
         print(expr_t_onesample(
           data = mtcars,
           x = col.name[i],
@@ -39,6 +39,6 @@ testthat::test_that(
         ))
       })
 
-    testthat::expect_equal(length(ls), 8L)
+    testthat::expect_equal(length(ls), 12L)
   }
 )

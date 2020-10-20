@@ -7,7 +7,7 @@ Authors@R:
            family = "Patil",
            role = c("cre", "aut", "cph"),
            email = "patilindrajeet.science@gmail.com",
-           comment = c(ORCID = "0000-0003-1995-6531"))
+           comment = c(ORCID = "0000-0003-1995-6531", Twitter = "@patilindrajeets"))
 Maintainer: Indrajeet Patil <patilindrajeet.science@gmail.com>
 Description: Statistical processing backend for 'ggstatsplot',
     this package creates expressions with details from statistical tests.
@@ -31,7 +31,7 @@ Imports:
     effectsize (>= 0.3.9.001),
     ez,
     insight (>= 0.9.6.1),
-    ipmisc,
+    ipmisc (>= 4.1.0),
     metafor,
     metaplus,
     rcompanion,
@@ -51,7 +51,8 @@ VignetteBuilder:
 Remotes:
     easystats/effectsize,
     easystats/insight,
-    IndrajeetPatil/tidyBF
+    IndrajeetPatil/tidyBF,
+    IndrajeetPatil/ipmisc
 Encoding: UTF-8
 Language: en-US
 LazyData: true

@@ -25,6 +25,9 @@ MAJOR CHANGES
   - `expr_anova_parametric` always applies sphericity correction for *p*-values
     for repeated measures ANOVA.
 
+  - The *t*-test and ANOVA tests get `subject.id` argument relevant for repeated
+    measures design.
+
 MINOR CHANGES
 
   - Retires the vestigial `stat.title` argument. It was originally intended to

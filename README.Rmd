@@ -155,6 +155,7 @@ expr_anova_parametric(
   x = condition,
   y = desire,
   paired = TRUE,
+  subject.id = subject,
   output = "dataframe"
 )
 ```
@@ -253,7 +254,15 @@ ggplot2::ggplot(WineTasting, aes(Wine, Taste, color = Wine)) +
   geom_quasirandom() +
   labs(
     title = "Friedman's rank sum test",
-    subtitle = expr_anova_nonparametric(WineTasting, Wine, Taste, paired = TRUE, type = "np")
+    subtitle = 
+      expr_anova_nonparametric(
+      WineTasting,
+      Wine,
+      Taste,
+      paired = TRUE,
+      subject.id = Taster,
+      type = "np"
+    )
   )
 ```
 
@@ -362,7 +371,8 @@ paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject")
       data = pivot_longer(PrisonStress, starts_with("PSS"), "PSS", values_to = "stress"),
       x = PSS,
       y = stress,
-      paired = TRUE
+      paired = TRUE,
+      subject.id = Subject
     )
   )
 ```

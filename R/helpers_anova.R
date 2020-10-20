@@ -24,6 +24,7 @@
 #'   `"partial_omega"` for partial omega-squared for **anova**)).
 #' @inheritParams expr_corr_test
 #' @inheritParams expr_template
+#' @inheritParams ipmisc::long_to_wide_converter
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams stats::oneway.test
 #' @inheritParams effectsize::eta_squared
@@ -77,6 +78,7 @@
 expr_anova_parametric <- function(data,
                                   x,
                                   y,
+                                  subject.id = NULL,
                                   paired = FALSE,
                                   k = 2L,
                                   conf.level = 0.95,
@@ -127,6 +129,7 @@ expr_anova_parametric <- function(data,
       data = .,
       x = {{ x }},
       y = {{ y }},
+      subject.id = {{ subject.id }},
       paired = paired,
       spread = FALSE
     )
@@ -229,8 +232,8 @@ expr_anova_parametric <- function(data,
   # combining dataframes
   stats_df <- dplyr::bind_cols(stats_df, effsize_df)
 
-  # preparing subtitle
-  subtitle <-
+  # preparing expression
+  expression <-
     expr_template(
       no.parameters = 2L,
       stats.df = stats_df,
@@ -247,11 +250,11 @@ expr_anova_parametric <- function(data,
   # return the output
   switch(output,
     "dataframe" = stats_df,
-    subtitle
+    expression
   )
 }
 
-#' @title Making text subtitle for non-parametric ANOVA.
+#' @title Making text expression for non-parametric ANOVA.
 #' @name expr_anova_nonparametric
 #'
 #' @details For paired designs, the effect size is Kendall's coefficient of
@@ -284,7 +287,7 @@ expr_anova_parametric <- function(data,
 #'
 #' # -------------- within-subjects design --------------------------------
 #'
-#' # creating the subtitle
+#' # creating the expression
 #' expr_anova_nonparametric(
 #'   data = bugs_long,
 #'   x = condition,
@@ -310,6 +313,7 @@ expr_anova_parametric <- function(data,
 expr_anova_nonparametric <- function(data,
                                      x,
                                      y,
+                                     subject.id = NULL,
                                      paired = FALSE,
                                      k = 2L,
                                      conf.level = 0.95,
@@ -329,6 +333,7 @@ expr_anova_nonparametric <- function(data,
       data = .,
       x = {{ x }},
       y = {{ y }},
+      subject.id = {{ subject.id }},
       paired = paired,
       spread = FALSE
     )
@@ -403,8 +408,8 @@ expr_anova_nonparametric <- function(data,
   # combining dataframes
   stats_df <- dplyr::bind_cols(broomExtra::tidy(mod), effsize_df)
 
-  # preparing subtitle
-  subtitle <-
+  # preparing expression
+  expression <-
     expr_template(
       no.parameters = 1L,
       stats.df = stats_df,
@@ -419,7 +424,7 @@ expr_anova_nonparametric <- function(data,
   # return the output
   switch(output,
     "dataframe" = stats_df,
-    subtitle
+    expression
   )
 }
 
@@ -471,6 +476,7 @@ expr_anova_nonparametric <- function(data,
 expr_anova_robust <- function(data,
                               x,
                               y,
+                              subject.id = NULL,
                               paired = FALSE,
                               k = 2L,
                               conf.level = 0.95,
@@ -490,6 +496,7 @@ expr_anova_robust <- function(data,
       data = .,
       x = {{ x }},
       y = {{ y }},
+      subject.id = {{ subject.id }},
       paired = paired,
       spread = FALSE
     )
@@ -519,8 +526,8 @@ expr_anova_robust <- function(data,
         p.value = mod$p.value[[1]]
       )
 
-    # preparing the subtitle
-    subtitle <-
+    # preparing the expression
+    expression <-
       substitute(
         expr = paste(
           italic("F")["trimmed-means"],
@@ -578,8 +585,8 @@ expr_anova_robust <- function(data,
         conf.high = mod$effsize_ci[[2]]
       )
 
-    # preparing subtitle
-    subtitle <-
+    # preparing expression
+    expression <-
       expr_template(
         no.parameters = 2L,
         stats.df = stats_df,
@@ -596,7 +603,7 @@ expr_anova_robust <- function(data,
   # return the output
   switch(output,
     "dataframe" = stats_df,
-    subtitle
+    expression
   )
 }
 
@@ -640,6 +647,7 @@ expr_anova_robust <- function(data,
 expr_anova_bayes <- function(data,
                              x,
                              y,
+                             subject.id = NULL,
                              paired = FALSE,
                              bf.prior = 0.707,
                              k = 2L,
@@ -649,6 +657,7 @@ expr_anova_bayes <- function(data,
     data = data,
     x = {{ x }},
     y = {{ y }},
+    subject.id = {{ subject.id }},
     paired = paired,
     bf.prior = bf.prior,
     k = k,

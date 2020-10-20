@@ -69,6 +69,7 @@
 expr_t_parametric <- function(data,
                               x,
                               y,
+                              subject.id = NULL,
                               paired = FALSE,
                               k = 2L,
                               conf.level = 0.95,
@@ -86,6 +87,7 @@ expr_t_parametric <- function(data,
       data = .,
       x = {{ x }},
       y = {{ y }},
+      subject.id = {{ subject.id }},
       paired = paired,
       spread = FALSE
     )
@@ -227,7 +229,8 @@ expr_t_parametric <- function(data,
 #'   data = VR_dilemma,
 #'   x = modality,
 #'   y = score,
-#'   paired = TRUE
+#'   paired = TRUE,
+#'   subject.id = id
 #' )
 #' @export
 
@@ -235,6 +238,7 @@ expr_t_parametric <- function(data,
 expr_t_nonparametric <- function(data,
                                  x,
                                  y,
+                                 subject.id = NULL,
                                  paired = FALSE,
                                  k = 2L,
                                  conf.level = 0.95,
@@ -252,6 +256,7 @@ expr_t_nonparametric <- function(data,
       data = .,
       x = {{ x }},
       y = {{ y }},
+      subject.id = {{ subject.id }},
       paired = paired,
       spread = FALSE
     )
@@ -354,22 +359,13 @@ expr_t_nonparametric <- function(data,
 #'   y = extra
 #' )
 #'
-#' # changing defaults
-#' expr_t_robust(
-#'   data = ToothGrowth,
-#'   x = supp,
-#'   y = len,
-#'   nboot = 10,
-#'   k = 3,
-#'   tr = 0.2
-#' )
-#'
 #' # within-subjects design -----------------------------------------------
 #' expr_t_robust(
 #'   data = dplyr::filter(bugs_long, condition %in% c("LDLF", "LDHF")),
 #'   x = condition,
 #'   y = desire,
-#'   paired = TRUE
+#'   paired = TRUE,
+#'   subject.id = subject
 #' )
 #' @export
 
@@ -377,6 +373,7 @@ expr_t_nonparametric <- function(data,
 expr_t_robust <- function(data,
                           x,
                           y,
+                          subject.id = NULL,
                           paired = FALSE,
                           k = 2L,
                           conf.level = 0.95,
@@ -393,6 +390,7 @@ expr_t_robust <- function(data,
       data = .,
       x = {{ x }},
       y = {{ y }},
+      subject.id = {{ subject.id }},
       paired = paired,
       spread = paired
     )
@@ -530,7 +528,8 @@ expr_t_robust <- function(data,
 #'   data = dplyr::filter(bugs_long, condition %in% c("LDLF", "LDHF")),
 #'   x = condition,
 #'   y = desire,
-#'   paired = TRUE
+#'   paired = TRUE,
+#'   subject.id = subject
 #' )
 #' @export
 
@@ -538,6 +537,7 @@ expr_t_robust <- function(data,
 expr_t_bayes <- function(data,
                          x,
                          y,
+                         subject.id = NULL,
                          paired = FALSE,
                          k = 2L,
                          bf.prior = 0.707,
@@ -547,6 +547,7 @@ expr_t_bayes <- function(data,
     data = data,
     x = {{ x }},
     y = {{ y }},
+    subject.id = {{ subject.id }},
     paired = paired,
     bf.prior = bf.prior,
     output = output,

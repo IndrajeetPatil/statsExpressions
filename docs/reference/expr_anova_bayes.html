@@ -161,6 +161,7 @@
   <span class='va'>data</span>,
   <span class='va'>x</span>,
   <span class='va'>y</span>,
+  subject.id <span class='op'>=</span> <span class='cn'>NULL</span>,
   paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
   bf.prior <span class='op'>=</span> <span class='fl'>0.707</span>,
   k <span class='op'>=</span> <span class='fl'>2L</span>,
@@ -186,6 +187,15 @@ be taken. A matrix or tables will <strong>not</strong> be accepted.</p></td>
 dataframe <code>data</code>.</p></td>
     </tr>
     <tr>
+      <th>subject.id</th>
+      <td><p>In case of repeated measures design (<code>paired = TRUE</code>,
+i.e.), this argument specifies the subject or repeated measures id. Note
+that if this argument is <code>NULL</code> (which is the default), the function
+assumes that the data has already been sorted by such an id by the user and
+creates an internal identifier. So if your data is <strong>not</strong> sorted and you
+leave this argument unspecified, the results can be inaccurate.</p></td>
+    </tr>
+    <tr>
       <th>paired</th>
       <td><p>Logical that decides whether the experimental design is
 repeated measures/within-subjects or between-subjects. The default is
@@ -204,7 +214,7 @@ width to use in calculating Bayes factors.</p></td>
     <tr>
       <th>output</th>
       <td><p>If <code>"expression"</code>, will return expression with statistical
-details, while <code>"dataframe"</code> (default) will return a dataframe containing the
+details, while <code>"dataframe"</code> will return a dataframe containing the
 results.</p></td>
     </tr>
     <tr>

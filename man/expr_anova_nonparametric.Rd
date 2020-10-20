@@ -2,12 +2,13 @@
 % Please edit documentation in R/helpers_anova.R
 \name{expr_anova_nonparametric}
 \alias{expr_anova_nonparametric}
-\title{Making text subtitle for non-parametric ANOVA.}
+\title{Making text expression for non-parametric ANOVA.}
 \usage{
 expr_anova_nonparametric(
   data,
   x,
   y,
+  subject.id = NULL,
   paired = FALSE,
   k = 2L,
   conf.level = 0.95,
@@ -25,6 +26,13 @@ be taken. A matrix or tables will \strong{not} be accepted.}
 
 \item{y}{The response (a.k.a. outcome or dependent) variable from the
 dataframe \code{data}.}
+
+\item{subject.id}{In case of repeated measures design (\code{paired = TRUE},
+i.e.), this argument specifies the subject or repeated measures id. Note
+that if this argument is \code{NULL} (which is the default), the function
+assumes that the data has already been sorted by such an id by the user and
+creates an internal identifier. So if your data is \strong{not} sorted and you
+leave this argument unspecified, the results can be inaccurate.}
 
 \item{paired}{Logical that decides whether the experimental design is
 repeated measures/within-subjects or between-subjects. The default is
@@ -54,7 +62,7 @@ For more details, see-
 \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }
 \description{
-Making text subtitle for non-parametric ANOVA.
+Making text expression for non-parametric ANOVA.
 }
 \details{
 For paired designs, the effect size is Kendall's coefficient of
@@ -69,7 +77,7 @@ library(statsExpressions)
 
 # -------------- within-subjects design --------------------------------
 
-# creating the subtitle
+# creating the expression
 expr_anova_nonparametric(
   data = bugs_long,
   x = condition,

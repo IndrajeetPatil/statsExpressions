@@ -161,6 +161,7 @@
   <span class='va'>data</span>,
   <span class='va'>x</span>,
   <span class='va'>y</span>,
+  subject.id <span class='op'>=</span> <span class='cn'>NULL</span>,
   paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
   k <span class='op'>=</span> <span class='fl'>2L</span>,
   bf.prior <span class='op'>=</span> <span class='fl'>0.707</span>,
@@ -186,6 +187,15 @@ be taken. A matrix or tables will <strong>not</strong> be accepted.</p></td>
 dataframe <code>data</code>.</p></td>
     </tr>
     <tr>
+      <th>subject.id</th>
+      <td><p>In case of repeated measures design (<code>paired = TRUE</code>,
+i.e.), this argument specifies the subject or repeated measures id. Note
+that if this argument is <code>NULL</code> (which is the default), the function
+assumes that the data has already been sorted by such an id by the user and
+creates an internal identifier. So if your data is <strong>not</strong> sorted and you
+leave this argument unspecified, the results can be inaccurate.</p></td>
+    </tr>
+    <tr>
       <th>paired</th>
       <td><p>Logical that decides whether the experimental design is
 repeated measures/within-subjects or between-subjects. The default is
@@ -204,7 +214,7 @@ width to use in calculating Bayes factors.</p></td>
     <tr>
       <th>output</th>
       <td><p>If <code>"expression"</code>, will return expression with statistical
-details, while <code>"dataframe"</code> (default) will return a dataframe containing the
+details, while <code>"dataframe"</code> will return a dataframe containing the
 results.</p></td>
     </tr>
     <tr>
@@ -240,11 +250,12 @@ results.</p></td>
   data <span class='op'>=</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>bugs_long</span>, <span class='va'>condition</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"LDLF"</span>, <span class='st'>"LDHF"</span><span class='op'>)</span><span class='op'>)</span>,
   x <span class='op'>=</span> <span class='va'>condition</span>,
   y <span class='op'>=</span> <span class='va'>desire</span>,
-  paired <span class='op'>=</span> <span class='cn'>TRUE</span>
+  paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  subject.id <span class='op'>=</span> <span class='va'>subject</span>
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; paste("log"["e"], "(BF"["01"], ") = ", "-15.38", ", ", widehat(italic(delta))["median"]^"posterior", 
-#&gt;     " = ", "1.62", ", CI"["95%"]^"HDI", " [", "1.17", ", ", "2.16", 
-#&gt;     "]", ", ", italic("r")["Cauchy"]^"JZS", " = ", "0.71")</div></pre>
+#&gt;     " = ", "-1.63", ", CI"["95%"]^"HDI", " [", "-2.12", ", ", 
+#&gt;     "-1.13", "]", ", ", italic("r")["Cauchy"]^"JZS", " = ", "0.71")</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
