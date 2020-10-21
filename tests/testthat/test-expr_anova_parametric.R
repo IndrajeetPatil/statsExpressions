@@ -17,18 +17,6 @@ testthat::test_that(
         var.equal = FALSE
       )
 
-    set.seed(123)
-    using_function2 <-
-      statsExpressions::expr_anova_parametric(
-        data = dplyr::sample_frac(statsExpressions::movies_long, 0.1),
-        x = genre,
-        y = rating,
-        effsize.type = "eta",
-        conf.level = 0.90,
-        k = 5,
-        var.equal = FALSE
-      )
-
     # expected output
     results1 <-
       ggplot2::expr(
@@ -61,40 +49,8 @@ testthat::test_that(
         )
       )
 
-    results2 <-
-      ggplot2::expr(
-        paste(
-          italic("F")["Welch"],
-          "(",
-          "8",
-          ",",
-          "46.23423",
-          ") = ",
-          "4.03133",
-          ", ",
-          italic("p"),
-          " = ",
-          "0.00107",
-          ", ",
-          widehat(eta["p"]^2),
-          " = ",
-          "0.15181",
-          ", CI"["90%"],
-          " [",
-          "0.03977",
-          ", ",
-          "0.20834",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          158L
-        )
-      )
-
     # testing overall call
     testthat::expect_identical(using_function1, results1)
-    testthat::expect_identical(using_function2, results2)
   }
 )
 
