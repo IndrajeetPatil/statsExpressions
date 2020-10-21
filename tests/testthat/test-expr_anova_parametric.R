@@ -12,7 +12,7 @@ testthat::test_that(
         data = dplyr::sample_frac(statsExpressions::movies_long, 0.1),
         x = genre,
         y = rating,
-        effsize.type = "partial_eta",
+        effsize.type = "eta",
         k = 5,
         var.equal = FALSE
       )
@@ -23,7 +23,7 @@ testthat::test_that(
         data = dplyr::sample_frac(statsExpressions::movies_long, 0.1),
         x = genre,
         y = rating,
-        effsize.type = "partial_eta",
+        effsize.type = "eta",
         conf.level = 0.90,
         k = 5,
         var.equal = FALSE
@@ -81,7 +81,7 @@ testthat::test_that(
           "0.15181",
           ", CI"["90%"],
           " [",
-          "0.03902",
+          "0.03977",
           ", ",
           "0.20834",
           "]",
@@ -112,7 +112,7 @@ testthat::test_that(
         data = ggplot2::msleep,
         x = vore,
         y = "sleep_rem",
-        effsize.type = "partial_omega",
+        effsize.type = "omega",
         k = 4,
         messages = FALSE
       )
@@ -381,6 +381,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "works with subject id",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
 
     # data
     df <-

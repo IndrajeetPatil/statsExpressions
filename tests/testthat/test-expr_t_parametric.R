@@ -240,6 +240,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "works with subject id",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
 
     # data
     df <-

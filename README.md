@@ -68,6 +68,21 @@ context, run the following code in your `R` console:
 
 ``` r
 citation("statsExpressions")
+#> 
+#>   Patil, I. (2018). ggstatsplot: 'ggplot2' Based Plots with Statistical
+#>   Details. CRAN. Retrieved from
+#>   https://cran.r-project.org/web/packages/ggstatsplot/index.html
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Article{,
+#>     title = {{ggstatsplot}: 'ggplot2' Based Plots with Statistical Details},
+#>     author = {Indrajeet Patil},
+#>     year = {2018},
+#>     journal = {CRAN},
+#>     url = {https://CRAN.R-project.org/package=ggstatsplot},
+#>     doi = {10.5281/zenodo.2074621},
+#>   }
 ```
 
 # Documentation and Examples
