@@ -39,7 +39,7 @@ various functions:
 Functions | Type | Test | Effect size | 95% CI available? 
 ------------ | ----------- | -------------------- | -------- | ---  
 `expr_anova_parametric` (2 groups) | Parametric | Student's and Welch's *t*-test | Cohen's *d*, Hedge's *g* | <font color="green">$\checkmark$</font>
-`expr_anova_parametric` (> 2 groups) | Parametric | Fisher's and Welch's one-way ANOVA | $\eta^2, \eta^2_p, \omega^2, \omega^2_p$ | <font color="green">$\checkmark$</font>
+`expr_anova_parametric` (> 2 groups) | Parametric | Fisher's and Welch's one-way ANOVA | $\eta^2_p, \omega^2_p$ | <font color="green">$\checkmark$</font>
 `expr_anova_nonparametric` (2 groups) | Non-parametric | Mann-Whitney *U*-test | *r* | <font color="green">$\checkmark$</font>
 `expr_anova_nonparametric` (> 2 groups) | Non-parametric | Kruskal-Wallis Rank Sum Test | $\epsilon^2$ | <font color="green">$\checkmark$</font>
 `expr_anova_robust` (2 groups) | Robust | Yuen's test for trimmed means | $\xi$ | <font color="green">$\checkmark$</font>
@@ -189,7 +189,7 @@ $\xi$ | 0.10 – < 0.30 | 0.30 – < 0.50 | ≥ 0.50 | [0,1]
 ### parametric
 
 **Test**: Fisher's repeated measures one-way ANOVA <br>
-**Effect size**: $\eta^2_p$, $\omega^2$ <br>
+**Effect size**: $\eta^2_p$, $\omega^2_p$ <br>
 **Function**: `effectsize::eta_squared` and `effectsize::omega_squared`
 
 Effect size | Small | Medium | Large | Range
@@ -223,7 +223,7 @@ rated.
 ### parametric
 
 **Test**: Fisher's or Welch's one-way ANOVA <br>
-**Effect size**: $\eta^2$, $\eta^2_p$, $\omega^2$, $\omega^2_p$ <br>
+**Effect size**: $\eta^2_p$, $\omega^2_p$ <br>
 **Function**: `effectsize::eta_squared` and `effectsize::omega_squared`
 
 Effect size | Small | Medium | Large | Range
@@ -263,7 +263,7 @@ $\xi$ | 0.10 – < 0.30 | 0.30 – < 0.50 | ≥ 0.50 | [0,1]
 
 **Test**: Pearson's $\chi^2$-squared test <br>
 **Effect size**: Cramér’s *V* <br>
-**Function**: `rcompanion::cramerV`
+**Function**: `effectsize::cramers_v`
 
 In the following table, *k* is the minimum number of categories in either rows
 or columns.
@@ -280,7 +280,7 @@ or columns.
 
 **Test**: McNemar's test <br>
 **Effect size**: Cohen’s *g* <br>
-**Function**: `rcompanion::cohenG`
+**Function**: `effectsize::cohens_g`
 
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | --------
@@ -292,7 +292,7 @@ Cohen’s *g* | 0.05 – < 0.15 | 0.15 – < 0.25 | ≥ 0.25 | [0,1]
 
 **Test**: Pearson's $\chi^2$-squared goodness-of-fit test <br>
 **Effect size**: Cramér’s *V* <br>
-**Function**: `rcompanion::cramerVFit`
+**Function**: `effectsize::cramers_v`
 
 In the following table, *k* is the number of categories.
 

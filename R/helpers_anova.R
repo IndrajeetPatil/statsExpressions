@@ -19,15 +19,14 @@
 #'   `FALSE`.
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
 #'   argument can be `"biased"` (equivalent to `"d"` for Cohen's *d* for
-#'   **t-test**; `"partial_eta"` for partial eta-squared for **anova**) or
+#'   **t-test**; `"eta"` for partial eta-squared for **anova**) or
 #'   `"unbiased"` (equivalent to `"g"` Hedge's *g* for **t-test**;
-#'   `"partial_omega"` for partial omega-squared for **anova**)).
+#'   `"omega"` for partial omega-squared for **anova**)).
 #' @inheritParams expr_corr_test
 #' @inheritParams expr_template
 #' @inheritParams ipmisc::long_to_wide_converter
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams stats::oneway.test
-#' @inheritParams effectsize::eta_squared
 #'
 #' @importFrom dplyr select rename matches
 #' @importFrom rlang !! enquo eval_tidy expr ensym exec
@@ -43,34 +42,23 @@
 #'
 #' # -------------------- between-subjects ------------------------------
 #'
-#' # with defaults
+#' # to get expression
 #' expr_anova_parametric(
 #'   data = ggplot2::msleep,
 #'   x = vore,
-#'   y = sleep_rem,
-#'   paired = FALSE,
-#'   k = 3
-#' )
-#'
-#' # modifying the defaults
-#' expr_anova_parametric(
-#'   data = ggplot2::msleep,
-#'   x = vore,
-#'   y = sleep_rem,
-#'   paired = FALSE,
-#'   effsize.type = "eta",
-#'   partial = FALSE,
-#'   var.equal = TRUE
+#'   y = sleep_rem
 #' )
 #'
 #' # -------------------- repeated measures ------------------------------
 #'
+#' # to get dataframe
 #' expr_anova_parametric(
 #'   data = iris_long,
 #'   x = condition,
 #'   y = value,
+#'   subject.id = id,
 #'   paired = TRUE,
-#'   k = 4
+#'   output = "dataframe"
 #' )
 #' @export
 
@@ -83,7 +71,6 @@ expr_anova_parametric <- function(data,
                                   k = 2L,
                                   conf.level = 0.95,
                                   effsize.type = "omega",
-                                  partial = TRUE,
                                   var.equal = FALSE,
                                   output = "expression",
                                   ...) {
@@ -104,21 +91,13 @@ expr_anova_parametric <- function(data,
   # omega
   if (effsize.type == "unbiased") {
     .f <- effectsize::omega_squared
-    if (isTRUE(partial)) {
-      effsize.text <- quote(widehat(omega["p"]^2))
-    } else {
-      effsize.text <- quote(widehat(omega^2))
-    }
+    effsize.text <- quote(widehat(omega["p"]^2))
   }
 
   # eta
   if (effsize.type == "biased") {
     .f <- effectsize::eta_squared
-    if (isTRUE(partial)) {
-      effsize.text <- quote(widehat(eta["p"]^2))
-    } else {
-      effsize.text <- quote(widehat(eta^2))
-    }
+    effsize.text <- quote(widehat(eta["p"]^2))
   }
 
   # --------------------- data preparation --------------------------------
@@ -216,7 +195,7 @@ expr_anova_parametric <- function(data,
     rlang::exec(
       .fn = .f,
       model = mod,
-      partial = partial,
+      partial = TRUE,
       ci = conf.level
     ) %>%
     insight::standardize_names(data = ., style = "broom")

@@ -14,8 +14,7 @@ testthat::test_that(
         y = rating,
         effsize.type = "partial_eta",
         k = 5,
-        var.equal = FALSE,
-        messages = FALSE
+        var.equal = FALSE
       )
 
     set.seed(123)
@@ -27,8 +26,7 @@ testthat::test_that(
         effsize.type = "partial_eta",
         conf.level = 0.90,
         k = 5,
-        var.equal = FALSE,
-        messages = FALSE
+        var.equal = FALSE
       )
 
     # expected output
@@ -97,66 +95,6 @@ testthat::test_that(
     # testing overall call
     testthat::expect_identical(using_function1, results1)
     testthat::expect_identical(using_function2, results2)
-  }
-)
-
-# parametric anova subtitles (with NAs) --------------------------------------
-
-testthat::test_that(
-  desc = "parametric anova subtitles work (with NAs)",
-  code = {
-    testthat::skip_if(getRversion() < "3.6")
-
-    # output from statsExpression helper subtitle
-    set.seed(123)
-    using_function1 <-
-      suppressWarnings(
-        statsExpressions::expr_anova_parametric(
-          data = ggplot2::msleep,
-          x = vore,
-          y = sleep_total,
-          k = 3,
-          effsize.type = "biased",
-          partial = FALSE,
-          conf.level = 0.95,
-          messages = FALSE
-        )
-      )
-
-    # expected output
-    results1 <-
-      ggplot2::expr(
-        paste(
-          italic("F")["Welch"],
-          "(",
-          "3",
-          ",",
-          "16.586",
-          ") = ",
-          "1.405",
-          ", ",
-          italic("p"),
-          " = ",
-          "0.277",
-          ", ",
-          widehat(eta^2),
-          " = ",
-          "0.085",
-          ", CI"["95%"],
-          " [",
-          "0.000",
-          ", ",
-          "0.203",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          76L
-        )
-      )
-
-    # testing overall call
-    testthat::expect_identical(using_function1, results1)
   }
 )
 
@@ -273,116 +211,6 @@ testthat::test_that(
   }
 )
 
-# checking non-partial variants ----------------------------------
-
-testthat::test_that(
-  desc = "parametric anova subtitles with partial eta-squared and data with NAs",
-  code = {
-    testthat::skip_if(getRversion() < "3.6")
-
-    # statsExpression output
-    # eta
-    set.seed(123)
-    using_function1 <-
-      statsExpressions::expr_anova_parametric(
-        data = ggplot2::msleep,
-        x = vore,
-        y = sleep_rem,
-        effsize.type = "biased",
-        conf.level = 0.95,
-        partial = FALSE,
-        k = 4,
-        messages = FALSE
-      )
-
-    # omega
-    set.seed(123)
-    using_function2 <-
-      statsExpressions::expr_anova_parametric(
-        data = ggplot2::msleep,
-        x = vore,
-        y = sleep_rem,
-        effsize.type = "unbiased",
-        partial = FALSE,
-        k = 4,
-        conf.level = 0.99,
-        messages = FALSE
-      )
-
-    # expected output
-    # eta
-    results1 <-
-      ggplot2::expr(
-        paste(
-          italic("F")["Welch"],
-          "(",
-          "3",
-          ",",
-          "11.1010",
-          ") = ",
-          "2.6325",
-          ", ",
-          italic("p"),
-          " = ",
-          "0.1017",
-          ", ",
-          widehat(eta^2),
-          " = ",
-          "0.1926",
-          ", CI"["95%"],
-          " [",
-          "0.0139",
-          ", ",
-          "0.3555",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          56L
-        )
-      )
-
-    # omega
-    results2 <-
-      ggplot2::expr(
-        paste(
-          italic("F")["Welch"],
-          "(",
-          "3",
-          ",",
-          "11.1010",
-          ") = ",
-          "2.6325",
-          ", ",
-          italic("p"),
-          " = ",
-          "0.1017",
-          ", ",
-          widehat(omega^2),
-          " = ",
-          "0.1438",
-          ", CI"["99%"],
-          " [",
-          "0.0000",
-          ", ",
-          "0.3577",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          56L
-        )
-      )
-
-    # testing overall call
-    # eta
-    testthat::expect_identical(using_function1, results1)
-
-    # omega
-    testthat::expect_identical(using_function2, results2)
-  }
-)
-
 # parametric repeated anova subtitles (basic) ---------------------------------
 
 testthat::test_that(
@@ -399,8 +227,7 @@ testthat::test_that(
         y = value,
         paired = TRUE,
         k = 3,
-        conf.level = 0.99,
-        messages = TRUE
+        conf.level = 0.99
       )
 
     # expected output
@@ -437,91 +264,6 @@ testthat::test_that(
 
     # testing overall call
     testthat::expect_identical(using_function1, results1)
-  }
-)
-
-# parametric repeated anova subtitles ---------------------------------
-
-testthat::test_that(
-  desc = "parametric anova subtitles work (with NAs)",
-  code = {
-    testthat::skip_if(getRversion() < "3.6")
-
-    # statsExpression output
-    set.seed(123)
-    using_function2 <-
-      statsExpressions::expr_anova_parametric(
-        data = WRS2::WineTasting,
-        x = Wine,
-        y = Taste,
-        paired = TRUE,
-        effsize.type = "xxx",
-        partial = FALSE,
-        k = 5,
-        conf.level = 0.90,
-        messages = FALSE
-      )
-
-    # expected output
-    results2 <-
-      ggplot2::expr(
-        paste(
-          italic("F")["Fisher"],
-          "(",
-          "1.54700",
-          ",",
-          "32.48706",
-          ") = ",
-          "6.28831",
-          ", ",
-          italic("p"),
-          " = ",
-          "0.00844",
-          ", ",
-          widehat(omega^2),
-          " = ",
-          "0.01633",
-          ", CI"["90%"],
-          " [",
-          "0.00000",
-          ", ",
-          "0.09119",
-          "]",
-          ", ",
-          italic("n")["pairs"],
-          " = ",
-          22L
-        )
-      )
-
-    # testing overall call
-    testthat::expect_identical(using_function2, results2)
-  }
-)
-
-# parametric repeated anova subtitles (catch bad data) -----------------------
-
-testthat::test_that(
-  desc = "parametric anova subtitles work (catch bad data)",
-  code = {
-    testthat::skip_if(getRversion() < "3.6")
-    # statsExpression output
-
-    # fake a data entry mistake
-    iris_long[5, 3] <- "Sepal.Width"
-
-    # sample size should be different
-    set.seed(123)
-    testthat::expect_error(statsExpressions::expr_anova_parametric(
-      data = iris_long,
-      x = condition,
-      y = value,
-      paired = TRUE,
-      effsize.type = "eta",
-      partial = FALSE,
-      conf.level = 0.50,
-      messages = FALSE
-    ))
   }
 )
 
@@ -597,9 +339,7 @@ testthat::test_that(
         x = x,
         y = y,
         paired = TRUE,
-        effsize.type = "eta",
-        partial = FALSE,
-        messages = FALSE
+        effsize.type = "eta"
       ))
 
     # check that
@@ -618,14 +358,14 @@ testthat::test_that(
         " = ",
         "1.08e-11",
         ", ",
-        widehat(eta^2),
+        widehat(eta["p"]^2),
         " = ",
-        "0.62",
+        "0.92",
         ", CI"["95%"],
         " [",
-        "0.26",
+        "0.83",
         ", ",
-        "0.75",
+        "0.95",
         "]",
         ", ",
         italic("n")["pairs"],

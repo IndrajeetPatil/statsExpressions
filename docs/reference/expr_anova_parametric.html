@@ -168,7 +168,6 @@ using <code><a href='https://easystats.github.io/effectsize/reference/eta_square
   k <span class='op'>=</span> <span class='fl'>2L</span>,
   conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
   effsize.type <span class='op'>=</span> <span class='st'>"omega"</span>,
-  partial <span class='op'>=</span> <span class='cn'>TRUE</span>,
   var.equal <span class='op'>=</span> <span class='cn'>FALSE</span>,
   output <span class='op'>=</span> <span class='st'>"expression"</span>,
   <span class='va'>...</span>
@@ -220,13 +219,9 @@ repeated measures/within-subjects or between-subjects. The default is
       <th>effsize.type</th>
       <td><p>Type of effect size needed for <em>parametric</em> tests. The
 argument can be <code>"biased"</code> (equivalent to <code>"d"</code> for Cohen's <em>d</em> for
-<strong>t-test</strong>; <code>"partial_eta"</code> for partial eta-squared for <strong>anova</strong>) or
+<strong>t-test</strong>; <code>"eta"</code> for partial eta-squared for <strong>anova</strong>) or
 <code>"unbiased"</code> (equivalent to <code>"g"</code> Hedge's <em>g</em> for <strong>t-test</strong>;
-<code>"partial_omega"</code> for partial omega-squared for <strong>anova</strong>)).</p></td>
-    </tr>
-    <tr>
-      <th>partial</th>
-      <td><p>If <code>TRUE</code>, return partial indices.</p></td>
+<code>"omega"</code> for partial omega-squared for <strong>anova</strong>)).</p></td>
     </tr>
     <tr>
       <th>var.equal</th>
@@ -261,46 +256,34 @@ results.</p></td>
 
 <span class='co'># -------------------- between-subjects ------------------------------</span>
 
-<span class='co'># with defaults</span>
+<span class='co'># to get expression</span>
 <span class='fu'>expr_anova_parametric</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
   x <span class='op'>=</span> <span class='va'>vore</span>,
-  y <span class='op'>=</span> <span class='va'>sleep_rem</span>,
-  paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  k <span class='op'>=</span> <span class='fl'>3</span>
+  y <span class='op'>=</span> <span class='va'>sleep_rem</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; paste(italic("F")["Welch"], "(", "3", ",", "11.101", ") = ", 
-#&gt;     "2.633", ", ", italic("p"), " = ", "0.102", ", ", widehat(omega["p"]^2), 
-#&gt;     " = ", "0.144", ", CI"["95%"], " [", "0.000", ", ", "0.300", 
-#&gt;     "]", ", ", italic("n")["obs"], " = ", 56L)</div><div class='input'>
-<span class='co'># modifying the defaults</span>
-<span class='fu'>expr_anova_parametric</span><span class='op'>(</span>
-  data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
-  x <span class='op'>=</span> <span class='va'>vore</span>,
-  y <span class='op'>=</span> <span class='va'>sleep_rem</span>,
-  paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  effsize.type <span class='op'>=</span> <span class='st'>"eta"</span>,
-  partial <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  var.equal <span class='op'>=</span> <span class='cn'>TRUE</span>
-<span class='op'>)</span>
-</div><div class='output co'>#&gt; paste(italic("F")["Fisher"], "(", "3", ",", "52", ") = ", "4.14", 
-#&gt;     ", ", italic("p"), " = ", "0.011", ", ", widehat(eta^2), 
-#&gt;     " = ", "0.19", ", CI"["95%"], " [", "0.01", ", ", "0.36", 
+</div><div class='output co'>#&gt; paste(italic("F")["Welch"], "(", "3", ",", "11.10", ") = ", "2.63", 
+#&gt;     ", ", italic("p"), " = ", "0.102", ", ", widehat(omega["p"]^2), 
+#&gt;     " = ", "0.14", ", CI"["95%"], " [", "0.00", ", ", "0.30", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", 56L)</div><div class='input'>
 <span class='co'># -------------------- repeated measures ------------------------------</span>
 
+<span class='co'># to get dataframe</span>
 <span class='fu'>expr_anova_parametric</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>iris_long</span>,
   x <span class='op'>=</span> <span class='va'>condition</span>,
   y <span class='op'>=</span> <span class='va'>value</span>,
+  subject.id <span class='op'>=</span> <span class='va'>id</span>,
   paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  k <span class='op'>=</span> <span class='fl'>4</span>
+  output <span class='op'>=</span> <span class='st'>"dataframe"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; paste(italic("F")["Fisher"], "(", "1.1491", ",", "171.2174", 
-#&gt;     ") = ", "776.3182", ", ", italic("p"), " = ", "1.325e-69", 
-#&gt;     ", ", widehat(omega["p"]^2), " = ", "0.7069", ", CI"["95%"], 
-#&gt;     " [", "0.6664", ", ", "0.7404", "]", ", ", italic("n")["pairs"], 
-#&gt;     " = ", 150L)</div></pre>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 10</span><span>
+#&gt;   </span><span style='font-weight: bold;'>statistic</span><span> </span><span style='font-weight: bold;'>parameter1</span><span> </span><span style='font-weight: bold;'>parameter2</span><span>  </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>group</span><span>           </span><span style='font-weight: bold;'>term</span><span>      </span><span style='font-weight: bold;'>estimate</span><span>
+#&gt;       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>      776.       1.15       171. 1.32</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-69</span><span> rowid:condition condition    </span><span style='color: #949494;'>0.</span><span>707
+#&gt;   </span><span style='font-weight: bold;'>ci.width</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>
+#&gt;      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     </span><span style='color: #949494;'>0.</span><span>95    </span><span style='color: #949494;'>0.</span><span>666     </span><span style='color: #949494;'>0.</span><span>740</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

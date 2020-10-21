@@ -24,6 +24,9 @@ MAJOR CHANGES
     
   - `expr_anova_parametric` always applies sphericity correction for *p*-values
     for repeated measures ANOVA.
+    
+  - `expr_anova_parametric` retires non-partial variants of effect sizes
+    (eta-squared and omega-squared, i.e.) for parametric analyses.
 
   - The *t*-test and ANOVA tests get `subject.id` argument relevant for repeated
     measures design.

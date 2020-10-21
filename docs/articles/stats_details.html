@@ -98,14 +98,14 @@
 
       
 
-      </header><script src="stats_details_files/header-attrs-2.4.6/header-attrs.js"></script><link href="stats_details_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+      </header><script src="stats_details_files/header-attrs-2.5/header-attrs.js"></script><link href="stats_details_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
 <script src="stats_details_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Test and effect size details</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2020-10-20</h4>
+            <h4 class="date">2020-10-21</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/stats_details.Rmd"><code>vignettes/stats_details.Rmd</code></a></small>
       <div class="hidden name"><code>stats_details.Rmd</code></div>
@@ -149,7 +149,7 @@
 <code>expr_anova_parametric</code> (&gt; 2 groups)</td>
 <td>Parametric</td>
 <td>Fisher’s and Welch’s one-way ANOVA</td>
-<td><span class="math inline">\(\eta^2, \eta^2_p, \omega^2, \omega^2_p\)</span></td>
+<td><span class="math inline">\(\eta^2_p, \omega^2_p\)</span></td>
 <td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
 </tr>
 <tr class="odd">
@@ -556,7 +556,7 @@
 <div id="parametric-3" class="section level3">
 <h3 class="hasAnchor">
 <a href="#parametric-3" class="anchor"></a>parametric</h3>
-<p><strong>Test</strong>: Fisher’s repeated measures one-way ANOVA <br><strong>Effect size</strong>: <span class="math inline">\(\eta^2_p\)</span>, <span class="math inline">\(\omega^2\)</span> <br><strong>Function</strong>: <code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html">effectsize::eta_squared</a></code> and <code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html">effectsize::omega_squared</a></code></p>
+<p><strong>Test</strong>: Fisher’s repeated measures one-way ANOVA <br><strong>Effect size</strong>: <span class="math inline">\(\eta^2_p\)</span>, <span class="math inline">\(\omega^2_p\)</span> <br><strong>Function</strong>: <code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html">effectsize::eta_squared</a></code> and <code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html">effectsize::omega_squared</a></code></p>
 <table class="table">
 <thead><tr class="header">
 <th>Effect size</th>
@@ -644,7 +644,7 @@
 <div id="parametric-4" class="section level3">
 <h3 class="hasAnchor">
 <a href="#parametric-4" class="anchor"></a>parametric</h3>
-<p><strong>Test</strong>: Fisher’s or Welch’s one-way ANOVA <br><strong>Effect size</strong>: <span class="math inline">\(\eta^2\)</span>, <span class="math inline">\(\eta^2_p\)</span>, <span class="math inline">\(\omega^2\)</span>, <span class="math inline">\(\omega^2_p\)</span> <br><strong>Function</strong>: <code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html">effectsize::eta_squared</a></code> and <code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html">effectsize::omega_squared</a></code></p>
+<p><strong>Test</strong>: Fisher’s or Welch’s one-way ANOVA <br><strong>Effect size</strong>: <span class="math inline">\(\eta^2_p\)</span>, <span class="math inline">\(\omega^2_p\)</span> <br><strong>Function</strong>: <code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html">effectsize::eta_squared</a></code> and <code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html">effectsize::omega_squared</a></code></p>
 <table class="table">
 <thead><tr class="header">
 <th>Effect size</th>
@@ -737,7 +737,7 @@
 <div id="association-test---unpaired" class="section level2">
 <h2 class="hasAnchor">
 <a href="#association-test---unpaired" class="anchor"></a>association test - unpaired</h2>
-<p><strong>Test</strong>: Pearson’s <span class="math inline">\(\chi^2\)</span>-squared test <br><strong>Effect size</strong>: Cramér’s <em>V</em> <br><strong>Function</strong>: <code><a href="https://rdrr.io/pkg/rcompanion/man/cramerV.html">rcompanion::cramerV</a></code></p>
+<p><strong>Test</strong>: Pearson’s <span class="math inline">\(\chi^2\)</span>-squared test <br><strong>Effect size</strong>: Cramér’s <em>V</em> <br><strong>Function</strong>: <code><a href="https://easystats.github.io/effectsize/reference/phi.html">effectsize::cramers_v</a></code></p>
 <p>In the following table, <em>k</em> is the minimum number of categories in either rows or columns.</p>
 <table class="table">
 <thead><tr class="header">
@@ -779,7 +779,7 @@
 <div id="association-test---paired" class="section level2">
 <h2 class="hasAnchor">
 <a href="#association-test---paired" class="anchor"></a>association test - paired</h2>
-<p><strong>Test</strong>: McNemar’s test <br><strong>Effect size</strong>: Cohen’s <em>g</em> <br><strong>Function</strong>: <code><a href="https://rdrr.io/pkg/rcompanion/man/cohenG.html">rcompanion::cohenG</a></code></p>
+<p><strong>Test</strong>: McNemar’s test <br><strong>Effect size</strong>: Cohen’s <em>g</em> <br><strong>Function</strong>: <code><a href="https://easystats.github.io/effectsize/reference/phi.html">effectsize::cohens_g</a></code></p>
 <table class="table">
 <thead><tr class="header">
 <th>Effect size</th>
@@ -802,7 +802,7 @@
 <div id="goodness-of-fit-test" class="section level2">
 <h2 class="hasAnchor">
 <a href="#goodness-of-fit-test" class="anchor"></a>goodness-of-fit test</h2>
-<p><strong>Test</strong>: Pearson’s <span class="math inline">\(\chi^2\)</span>-squared goodness-of-fit test <br><strong>Effect size</strong>: Cramér’s <em>V</em> <br><strong>Function</strong>: <code><a href="https://rdrr.io/pkg/rcompanion/man/cramerVFit.html">rcompanion::cramerVFit</a></code></p>
+<p><strong>Test</strong>: Pearson’s <span class="math inline">\(\chi^2\)</span>-squared goodness-of-fit test <br><strong>Effect size</strong>: Cramér’s <em>V</em> <br><strong>Function</strong>: <code><a href="https://easystats.github.io/effectsize/reference/phi.html">effectsize::cramers_v</a></code></p>
 <p>In the following table, <em>k</em> is the number of categories.</p>
 <table class="table">
 <thead><tr class="header">

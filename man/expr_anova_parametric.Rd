@@ -13,7 +13,6 @@ expr_anova_parametric(
   k = 2L,
   conf.level = 0.95,
   effsize.type = "omega",
-  partial = TRUE,
   var.equal = FALSE,
   output = "expression",
   ...
@@ -47,11 +46,9 @@ repeated measures/within-subjects or between-subjects. The default is
 
 \item{effsize.type}{Type of effect size needed for \emph{parametric} tests. The
 argument can be \code{"biased"} (equivalent to \code{"d"} for Cohen's \emph{d} for
-\strong{t-test}; \code{"partial_eta"} for partial eta-squared for \strong{anova}) or
+\strong{t-test}; \code{"eta"} for partial eta-squared for \strong{anova}) or
 \code{"unbiased"} (equivalent to \code{"g"} Hedge's \emph{g} for \strong{t-test};
-\code{"partial_omega"} for partial omega-squared for \strong{anova})).}
-
-\item{partial}{If \code{TRUE}, return partial indices.}
+\code{"omega"} for partial omega-squared for \strong{anova})).}
 
 \item{var.equal}{a logical variable indicating whether to treat the
     variances in the samples as equal.  If \code{TRUE}, then a simple F
@@ -81,33 +78,22 @@ library(statsExpressions)
 
 # -------------------- between-subjects ------------------------------
 
-# with defaults
+# to get expression
 expr_anova_parametric(
   data = ggplot2::msleep,
   x = vore,
-  y = sleep_rem,
-  paired = FALSE,
-  k = 3
-)
-
-# modifying the defaults
-expr_anova_parametric(
-  data = ggplot2::msleep,
-  x = vore,
-  y = sleep_rem,
-  paired = FALSE,
-  effsize.type = "eta",
-  partial = FALSE,
-  var.equal = TRUE
+  y = sleep_rem
 )
 
 # -------------------- repeated measures ------------------------------
 
+# to get dataframe
 expr_anova_parametric(
   data = iris_long,
   x = condition,
   y = value,
+  subject.id = id,
   paired = TRUE,
-  k = 4
+  output = "dataframe"
 )
 }

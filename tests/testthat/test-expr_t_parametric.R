@@ -269,7 +269,7 @@ testthat::test_that(
         45L
       ), class = "data.frame")
 
-    df <- dplyr::filter(df, condition %in% c(1,5))
+    df <- dplyr::filter(df, condition %in% c(1, 5))
 
     # incorrect
     set.seed(123)
