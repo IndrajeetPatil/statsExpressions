@@ -6,7 +6,7 @@
   "@type": "SoftwareSourceCode",
   "identifier": "statsExpressions",
   "description": "Statistical processing backend for 'ggstatsplot',\n    this package creates expressions with details from statistical tests.\n    It can additionally return dataframes with these results, which also\n    make these functions a more pipe-friendly way to do statistical\n    analysis. Currently, it supports only the most common types of\n    statistical tests: parametric, nonparametric, robust, and Bayesian\n    versions of t-test/ANOVA, correlation analyses, contingency table\n    analysis, and meta-analysis.",
-  "name": "statsExpressions: Expressions with Statistical Details",
+  "name": "statsExpressions: Expressions and Dataframes with Statistical Details",
   "codeRepository": "https://github.com/IndrajeetPatil/statsExpressions",
   "relatedLink": [
     "https://indrajeetpatil.github.io/ggstatsplot/",
@@ -161,7 +161,7 @@
       "@type": "SoftwareApplication",
       "identifier": "effectsize",
       "name": "effectsize",
-      "version": ">= 0.3.9.001",
+      "version": ">= 0.4.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -186,14 +186,14 @@
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
-      "version": ">= 0.9.6.1",
+      "version": ">= 0.10.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://github.com/easystats/insight"
+      "sameAs": "https://CRAN.R-project.org/package=insight"
     },
     {
       "@type": "SoftwareApplication",
@@ -326,8 +326,8 @@
   "releaseNotes": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/NEWS.md",
   "citation": [
     {
-      "@type": "SoftwareSourceCode",
-      "datePublished": "2019",
+      "@type": "ScholarlyArticle",
+      "datePublished": "2018",
       "author": [
         {
           "@type": "Person",
@@ -335,11 +335,19 @@
           "familyName": "Patil"
         }
       ],
-      "name": "statsExpressions: 'ggplot2' Expressions with Statistical Details",
-      "identifier": "10.5281/zenodo.3386122",
-      "url": "https://CRAN.R-project.org/package=statsExpressions",
-      "@id": "https://doi.org/10.5281/zenodo.3386122",
-      "sameAs": "https://doi.org/10.5281/zenodo.3386122"
+      "name": "{ggstatsplot}: 'ggplot2' Based Plots with Statistical Details",
+      "identifier": "10.5281/zenodo.2074621",
+      "url": "https://CRAN.R-project.org/package=ggstatsplot",
+      "@id": "https://doi.org/10.5281/zenodo.2074621",
+      "sameAs": "https://doi.org/10.5281/zenodo.2074621",
+      "isPartOf": {
+        "@type": "PublicationIssue",
+        "datePublished": "2018",
+        "isPartOf": {
+          "@type": ["PublicationVolume", "Periodical"],
+          "name": "CRAN"
+        }
+      }
     }
   ],
   "provider": {
@@ -348,6 +356,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "4166.457KB",
+  "fileSize": "4180.655KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

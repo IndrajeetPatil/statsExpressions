@@ -1,6 +1,6 @@
 Type: Package
 Package: statsExpressions
-Title: Expressions with Statistical Details
+Title: Expressions and Dataframes with Statistical Details
 Version: 0.6.0.9000
 Authors@R: 
     person(given = "Indrajeet",
@@ -28,9 +28,9 @@ Imports:
     broomExtra,
     correlation,
     dplyr,
-    effectsize (>= 0.3.9.001),
+    effectsize (>= 0.4.0),
     ez,
-    insight (>= 0.9.6.1),
+    insight (>= 0.10.0),
     ipmisc (>= 4.1.0),
     metafor,
     metaplus,
@@ -50,7 +50,6 @@ VignetteBuilder:
     knitr
 Remotes:
     easystats/effectsize,
-    easystats/insight,
     IndrajeetPatil/tidyBF,
     IndrajeetPatil/ipmisc
 Encoding: UTF-8

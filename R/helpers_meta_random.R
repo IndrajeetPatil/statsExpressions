@@ -24,7 +24,7 @@
 #' @importFrom metafor rma
 #' @importFrom metaplus metaplus
 #' @importFrom dplyr rename_all recode mutate
-#' @importFrom tidyBF bf_meta meta_data_check
+#' @importFrom tidyBF bf_meta_random meta_data_check
 #' @importFrom broomExtra tidy_parameters glance_performance
 #'
 #' @examples

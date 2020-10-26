@@ -368,7 +368,7 @@ expr_anova_nonparametric <- function(data,
     sample_size <- nrow(data)
     n.text <- quote(italic("n")["obs"])
     statistic.text <- quote(chi["Kruskal-Wallis"]^2)
-    effsize.text <- quote(widehat(epsilon^2))
+    effsize.text <- quote(widehat(epsilon^2)["ordinal"])
   }
 
   # computing respective effect sizes

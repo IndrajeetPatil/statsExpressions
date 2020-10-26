@@ -17,6 +17,7 @@ testthat::test_that(
       )
 
     # expected output
+    set.seed(123)
     results1 <-
       tidyBF::bf_oneway_anova(
         data = statsExpressions::movies_long,

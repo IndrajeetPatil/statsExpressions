@@ -47,8 +47,8 @@ tidyBF::bf_contingency_tab
 tidyBF::bf_ttest
 
 #' @export
-#' @importFrom tidyBF bf_meta
-tidyBF::bf_meta
+#' @importFrom tidyBF bf_meta_random
+tidyBF::bf_meta_random
 
 #' @export
 #' @importFrom tidyBF bf_corr_test

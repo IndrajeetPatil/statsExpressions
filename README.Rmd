@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# `statsExpressions`: Expressions with statistical details
+# `statsExpressions`: Expressions and dataframes with statistical details
 
 Package | Status | Usage | GitHub | References
 ----------------- | ----------------- | ----------------- | ----------------- | -----------------

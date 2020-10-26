@@ -28,7 +28,7 @@ rlang:::=
 tibble::as_tibble
 tidyBF::bf_contingency_tab
 tidyBF::bf_corr_test
-tidyBF::bf_meta
+tidyBF::bf_meta_random
 tidyBF::bf_oneway_anova
 tidyBF::bf_ttest
 correlation::correlation
