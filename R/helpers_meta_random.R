@@ -162,10 +162,8 @@ expr_meta_random <- function(data,
   # clean up
   if (stats.type %in% c("parametric", "robust")) {
     # create a dataframe with coefficients
-    stats_df <- dplyr::filter(
-      broomExtra::tidy_parameters(mod),
-      term %in% c("Overall", "overall")
-    )
+    stats_df <-
+      dplyr::filter(broomExtra::tidy_parameters(mod), term %in% c("Overall", "overall"))
 
     # preparing the subtitle
     subtitle <-
@@ -186,7 +184,7 @@ expr_meta_random <- function(data,
   if (stats.type == "bayes") {
     # bayes factor results
     stats_df <-
-      tidyBF::bf_meta(
+      tidyBF::bf_meta_random(
         data = data,
         d = d,
         tau = tau,

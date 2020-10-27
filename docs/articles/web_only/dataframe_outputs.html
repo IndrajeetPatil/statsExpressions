@@ -6,20 +6,20 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dataframe outputs • statsExpressions</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../../apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../../apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../../apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../../apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
-<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../../bootstrap-toc.css">
+<script src="../../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
-<link href="../docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../../pkgdown.css" rel="stylesheet">
+<script src="../../pkgdown.js"></script><!-- docsearch --><script src="../../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
+<link href="../../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../../extra.css" rel="stylesheet">
 <meta property="og:title" content="Dataframe outputs">
 <meta property="og:description" content="statsExpressions">
 <meta property="og:image" content="https://indrajeetpatil.github.io/statsExpressions/logo.png">
@@ -40,21 +40,21 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.6.0.9000</span>
+        <a class="navbar-link" href="../../index.html">statsExpressions</a>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.6.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
+  <a href="../../index.html">
     <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -64,15 +64,15 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/dataframe_outputs.html">Dataframe outputs</a>
+      <a href="../../articles/stats_details.html">Test and effect size details</a>
     </li>
     <li>
-      <a href="../articles/stats_details.html">Test and effect size details</a>
+      <a href="../../articles/web_only/dataframe_outputs.html">Dataframe outputs</a>
     </li>
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -105,9 +105,9 @@
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2020-10-26</h4>
+            <h4 class="date">2020-10-27</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/dataframe_outputs.Rmd"><code>vignettes/dataframe_outputs.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
 
     </div>
@@ -141,7 +141,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_t_onesample.html">expr_t_onesample</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_onesample.html">expr_t_onesample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html">msleep</a></span>,
   x <span class="op">=</span> <span class="va">brainwt</span>,
   test.value <span class="op">=</span> <span class="fl">0.275</span>,
@@ -160,7 +160,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_t_onesample.html">expr_t_onesample</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_onesample.html">expr_t_onesample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html">msleep</a></span>,
   x <span class="op">=</span> <span class="va">brainwt</span>,
   test.value <span class="op">=</span> <span class="fl">0.275</span>,
@@ -179,7 +179,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_t_onesample.html">expr_t_onesample</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_onesample.html">expr_t_onesample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html">msleep</a></span>,
   x <span class="op">=</span> <span class="va">brainwt</span>,
   test.value <span class="op">=</span> <span class="fl">0.275</span>,
@@ -195,7 +195,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_t_onesample.html">expr_t_onesample</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_onesample.html">expr_t_onesample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html">msleep</a></span>,
   x <span class="op">=</span> <span class="va">brainwt</span>,
   test.value <span class="op">=</span> <span class="fl">0.275</span>,
@@ -231,7 +231,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_t_parametric.html">expr_t_parametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_parametric.html">expr_t_parametric</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">df</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
@@ -251,7 +251,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_t_nonparametric.html">expr_t_nonparametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_nonparametric.html">expr_t_nonparametric</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">df</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
@@ -271,7 +271,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_t_robust.html">expr_t_robust</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_robust.html">expr_t_robust</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">df</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
@@ -291,7 +291,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_t_bayes.html">expr_t_bayes</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_bayes.html">expr_t_bayes</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">df</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
@@ -322,7 +322,7 @@
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># unequal variance</span>
-<span class="fu"><a href="../reference/expr_t_parametric.html">expr_t_parametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_parametric.html">expr_t_parametric</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
   y <span class="op">=</span> <span class="va">len</span>,
@@ -339,7 +339,7 @@
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># equal variance</span>
-<span class="fu"><a href="../reference/expr_t_parametric.html">expr_t_parametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_parametric.html">expr_t_parametric</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
   y <span class="op">=</span> <span class="va">len</span>,
@@ -358,7 +358,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_t_nonparametric.html">expr_t_nonparametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_nonparametric.html">expr_t_nonparametric</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
   y <span class="op">=</span> <span class="va">len</span>,
@@ -376,7 +376,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_t_robust.html">expr_t_robust</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_robust.html">expr_t_robust</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
   y <span class="op">=</span> <span class="va">len</span>,
@@ -391,7 +391,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_t_bayes.html">expr_t_bayes</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_bayes.html">expr_t_bayes</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
   y <span class="op">=</span> <span class="va">len</span>,
@@ -423,7 +423,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_anova_parametric.html">expr_anova_parametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_anova_parametric.html">expr_anova_parametric</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">bugs_long</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
@@ -443,7 +443,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_anova_nonparametric.html">expr_anova_nonparametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_anova_nonparametric.html">expr_anova_nonparametric</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">bugs_long</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
@@ -463,7 +463,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_anova_robust.html">expr_anova_robust</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_anova_robust.html">expr_anova_robust</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">bugs_long</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
@@ -480,7 +480,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_anova_bayes.html">expr_anova_bayes</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_anova_bayes.html">expr_anova_bayes</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">bugs_long</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
@@ -539,7 +539,7 @@
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># unequal variance</span>
-<span class="fu"><a href="../reference/expr_anova_parametric.html">expr_anova_parametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_anova_parametric.html">expr_anova_parametric</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
@@ -559,7 +559,7 @@
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># equal variance</span>
-<span class="fu"><a href="../reference/expr_anova_parametric.html">expr_anova_parametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_anova_parametric.html">expr_anova_parametric</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
@@ -578,7 +578,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_anova_nonparametric.html">expr_anova_nonparametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_anova_nonparametric.html">expr_anova_nonparametric</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
@@ -596,7 +596,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_anova_robust.html">expr_anova_robust</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_anova_robust.html">expr_anova_robust</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
@@ -611,7 +611,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_anova_bayes.html">expr_anova_bayes</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_anova_bayes.html">expr_anova_bayes</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
@@ -678,7 +678,7 @@
 
 <span class="co"># unpaired</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_contingency_tab.html">expr_contingency_tab</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_contingency_tab.html">expr_contingency_tab</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">mtcars</span>,
   x <span class="op">=</span> <span class="va">am</span>,
   y <span class="op">=</span> <span class="va">cyl</span>,
@@ -695,7 +695,7 @@
 
 <span class="co"># paired</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu">statsExpressions</span><span class="fu">::</span><span class="fu"><a href="../reference/expr_contingency_tab.html">expr_contingency_tab</a></span><span class="op">(</span>
+<span class="fu">statsExpressions</span><span class="fu">::</span><span class="fu"><a href="../../reference/expr_contingency_tab.html">expr_contingency_tab</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">paired_data</span>,
   x <span class="op">=</span> <span class="va">response_before</span>,
   y <span class="op">=</span> <span class="va">response_after</span>,
@@ -716,7 +716,7 @@
 
 <span class="co"># with counts</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_contingency_tab.html">expr_contingency_tab</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_contingency_tab.html">expr_contingency_tab</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">HairEyeColor</span><span class="op">)</span>,
   x <span class="op">=</span> <span class="va">Eye</span>,
   counts <span class="op">=</span> <span class="va">Freq</span>,
@@ -741,7 +741,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_corr_test.html">expr_corr_test</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_corr_test.html">expr_corr_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">mtcars</span>,
   x <span class="op">=</span> <span class="va">wt</span>,
   y <span class="op">=</span> <span class="va">mpg</span>,
@@ -760,7 +760,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_corr_test.html">expr_corr_test</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_corr_test.html">expr_corr_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">mtcars</span>,
   x <span class="op">=</span> <span class="va">wt</span>,
   y <span class="op">=</span> <span class="va">mpg</span>,
@@ -779,7 +779,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_corr_test.html">expr_corr_test</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_corr_test.html">expr_corr_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">mtcars</span>,
   x <span class="op">=</span> <span class="va">wt</span>,
   y <span class="op">=</span> <span class="va">mpg</span>,
@@ -798,7 +798,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_corr_test.html">expr_corr_test</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_corr_test.html">expr_corr_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">mtcars</span>,
   x <span class="op">=</span> <span class="va">wt</span>,
   y <span class="op">=</span> <span class="va">mpg</span>,
@@ -829,7 +829,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_meta_random.html">expr_meta_random</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, output <span class="op">=</span> <span class="st">"dataframe"</span>, type <span class="op">=</span> <span class="st">"parametric"</span><span class="op">)</span>
+<span class="fu"><a href="../../reference/expr_meta_random.html">expr_meta_random</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, output <span class="op">=</span> <span class="st">"dataframe"</span>, type <span class="op">=</span> <span class="st">"parametric"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 8</span>
 <span class="co">#&gt;   term    type    estimate std.error statistic  p.value conf.low conf.high</span>
 <span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
@@ -839,7 +839,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_meta_random.html">expr_meta_random</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, output <span class="op">=</span> <span class="st">"dataframe"</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span>
+<span class="fu"><a href="../../reference/expr_meta_random.html">expr_meta_random</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, output <span class="op">=</span> <span class="st">"dataframe"</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 8</span>
 <span class="co">#&gt;   term    estimate std.error conf.low conf.high statistic  p.value weight</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;</span>
@@ -849,16 +849,16 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../reference/expr_meta_random.html">expr_meta_random</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, output <span class="op">=</span> <span class="st">"dataframe"</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2 x 10</span>
-<span class="co">#&gt;   term    estimate std.error conf.low conf.high  bf10  rhat   ess log_e_bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Overall   -0.467     0.165   -0.788    -0.143  39.2  1    6575.       3.67</span>
-<span class="co">#&gt; 2 tau        0.439     0.185    0.140     0.809  NA    1.00 4260.      NA   </span>
-<span class="co">#&gt;   prior.scale</span>
-<span class="co">#&gt;         &lt;dbl&gt;</span>
-<span class="co">#&gt; 1       0.707</span>
-<span class="co">#&gt; 2       0.707</span></pre></div>
+<span class="fu"><a href="../../reference/expr_meta_random.html">expr_meta_random</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, output <span class="op">=</span> <span class="st">"dataframe"</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 2 x 12</span>
+<span class="co">#&gt;   term    estimate std.error conf.low conf.high weight  bf10  rhat   ess</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Overall   -0.467     0.165   -0.788    -0.143     NA  39.2  1    6575.</span>
+<span class="co">#&gt; 2 tau        0.439     0.185    0.140     0.809     NA  NA    1.00 4260.</span>
+<span class="co">#&gt;   component log_e_bf10 prior.scale</span>
+<span class="co">#&gt;   &lt;chr&gt;          &lt;dbl&gt;       &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 meta            3.67       0.707</span>
+<span class="co">#&gt; 2 meta           NA          0.707</span></pre></div>
 </div>
 <div id="suggestions" class="section level1">
 <h1 class="hasAnchor">

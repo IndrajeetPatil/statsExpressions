@@ -60,21 +60,9 @@ Expression containing Bayesian one-way ANOVA results
 set.seed(123)
 library(statsExpressions)
 
-# between-subjects ---------------------------------------
-
 expr_anova_bayes(
   data = ggplot2::msleep,
   x = vore,
   y = sleep_rem
-)
-
-# repeated measures ---------------------------------------
-
-expr_anova_bayes(
-  data = WRS2::WineTasting,
-  x = Wine,
-  y = Taste,
-  paired = TRUE,
-  k = 4
 )
 }

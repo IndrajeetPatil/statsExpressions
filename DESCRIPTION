@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Expressions and Dataframes with Statistical Details
-Version: 0.6.0.9000
+Version: 0.6.0
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -37,7 +37,7 @@ Imports:
     rcompanion,
     rlang,
     stats,
-    tidyBF (>= 0.4.0.9000),
+    tidyBF (>= 0.4.0),
     tidyr,
     WRS2
 Suggests:
