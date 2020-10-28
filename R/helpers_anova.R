@@ -597,6 +597,8 @@ expr_anova_robust <- function(data,
 #' @inheritParams expr_t_bayes
 #'
 #' @importFrom tidyBF bf_oneway_anova
+#' @importFrom parameters model_parameters
+#' @importFrom performance model_performance
 #'
 #' @examples
 #' # setup

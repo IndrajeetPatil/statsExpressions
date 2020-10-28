@@ -26,7 +26,6 @@
 #' @importFrom dplyr rename_all recode mutate
 #' @importFrom tidyBF bf_meta_random meta_data_check
 #' @importFrom broomExtra tidy_parameters glance_performance
-#' @importFrom parameters model_parameters
 #'
 #' @examples
 #' \donttest{
