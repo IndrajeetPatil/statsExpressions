@@ -9,6 +9,7 @@ expr_meta_random(
   type = "parametric",
   d = prior("norm", c(mean = 0, sd = 0.3)),
   tau = prior("invgamma", c(shape = 1, scale = 0.15)),
+  metaBMA.args = list(),
   random = "mixture",
   k = 2L,
   conf.level = 0.95,
@@ -36,6 +37,9 @@ prior probability density function is defined via \code{\link[metaBMA]{prior}}.}
 \code{dstudy} in a random-effects meta-analysis. A (nonnegative) prior
 probability density function is defined via \code{\link[metaBMA]{prior}}.}
 
+\item{metaBMA.args}{A list of additional arguments to be passed to
+\code{metaBMA::meta_random}.}
+
 \item{random}{
 The type of random effects distribution. One of "normal","t-dist","mixture", for standard normal, \eqn{t}-distribution or mixture of normals respectively.
 }
@@ -48,10 +52,6 @@ The type of random effects distribution. One of "normal","t-dist","mixture", for
 
 \item{caption}{Text to display as caption. This argument is relevant only
 when \code{output = "caption"}.}
-
-\item{output}{If \code{"expression"}, will return expression with statistical
-details, while \code{"dataframe"} will return a dataframe containing the
-results.}
 
 \item{...}{Additional arguments passed to the respective meta-analysis
 function.}

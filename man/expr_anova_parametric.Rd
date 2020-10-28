@@ -57,10 +57,6 @@ argument can be \code{"biased"} (equivalent to \code{"d"} for Cohen's \emph{d} f
     is used, which generalizes the commonly known 2-sample Welch test to
     the case of arbitrarily many samples.}
 
-\item{output}{If \code{"expression"}, will return expression with statistical
-details, while \code{"dataframe"} will return a dataframe containing the
-results.}
-
 \item{...}{Additional arguments (currently ignored).}
 }
 \value{

@@ -220,15 +220,25 @@ parametric/pearson), <code>"np"</code> (nonparametric/spearman), <code>"r"</code
 width to use in calculating Bayes factors.</p></td>
     </tr>
     <tr>
-      <th>output</th>
-      <td><p>If <code>"expression"</code>, will return expression with statistical
-details, while <code>"dataframe"</code> will return a dataframe containing the
-results.</p></td>
-    </tr>
-    <tr>
       <th>...</th>
-      <td><p>Additional arguments passed to
-<code><a href='https://easystats.github.io/parameters/reference/model_parameters.BFBayesFactor.html'>parameters::model_parameters.BFBayesFactor()</a></code>.</p></td>
+      <td><p>Arguments passed on to <code><a href='https://indrajeetpatil.github.io/tidyBF//reference/bf_extractor.html'>bf_extractor</a></code></p><dl>
+    <dt><code>conf.level</code></dt><dd><p>Confidence/Credible Interval (CI) level. Default to <code>0.95</code>
+(<code>95%</code>).</p></dd>
+    <dt><code>centrality</code></dt><dd><p>The point-estimates (centrality indices) to compute.
+Character (vector) or list with one or more of these options: <code>"median"</code>,
+<code>"mean"</code>, <code>"MAP"</code> or <code>"all"</code>.</p></dd>
+    <dt><code>conf.method</code></dt><dd><p>The type of index used for Credible Interval. Can be
+<code>"hdi"</code> (default, see <code><a href='https://easystats.github.io/bayestestR/reference/hdi.html'>bayestestR::hdi()</a></code>), <code>"eti"</code> (see
+<code><a href='https://easystats.github.io/bayestestR/reference/eti.html'>bayestestR::eti()</a></code>) or <code>"si"</code> (see <code><a href='https://easystats.github.io/bayestestR/reference/si.html'>bayestestR::si()</a></code>).</p></dd>
+    <dt><code>k</code></dt><dd><p>Number of digits after decimal point (should be an integer)
+(Default: <code>k = 2L</code>).</p></dd>
+    <dt><code>top.text</code></dt><dd><p>Text to display as top.text (will be displayed on top of the
+Bayes Factor top.text/message).</p></dd>
+    <dt><code>output</code></dt><dd><p>If <code>"expression"</code>, will return expression with statistical
+details, while <code>"dataframe"</code> will return a dataframe containing the
+results.</p></dd>
+  
+</dl></td>
     </tr>
     </table>
 

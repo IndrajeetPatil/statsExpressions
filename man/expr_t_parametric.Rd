@@ -54,10 +54,6 @@ argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \em
     is used, which generalizes the commonly known 2-sample Welch test to
     the case of arbitrarily many samples.}
 
-\item{output}{If \code{"expression"}, will return expression with statistical
-details, while \code{"dataframe"} will return a dataframe containing the
-results.}
-
 \item{...}{Additional arguments (currently ignored).}
 }
 \value{

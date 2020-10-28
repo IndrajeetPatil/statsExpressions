@@ -8,7 +8,7 @@
 #' @param caption Text to display as caption. This argument is relevant only
 #'   when `output = "caption"`.
 #' @inheritParams expr_t_onesample
-#' @inheritParams tidyBF::bf_meta
+#' @inheritParams tidyBF::bf_meta_random
 #' @inheritParams metaplus::metaplus
 #' @inheritParams expr_anova_parametric
 #' @param ... Additional arguments passed to the respective meta-analysis
@@ -26,6 +26,7 @@
 #' @importFrom dplyr rename_all recode mutate
 #' @importFrom tidyBF bf_meta_random meta_data_check
 #' @importFrom broomExtra tidy_parameters glance_performance
+#' @importFrom parameters model_parameters
 #'
 #' @examples
 #' \donttest{
@@ -81,6 +82,7 @@ expr_meta_random <- function(data,
                              type = "parametric",
                              d = prior("norm", c(mean = 0, sd = 0.3)),
                              tau = prior("invgamma", c(shape = 1, scale = 0.15)),
+                             metaBMA.args = list(),
                              random = "mixture",
                              k = 2L,
                              conf.level = 0.95,
@@ -188,7 +190,9 @@ expr_meta_random <- function(data,
         data = data,
         d = d,
         tau = tau,
+        metaBMA.args = metaBMA.args,
         k = k,
+        conf.level = conf.level,
         output = output,
         ...
       )
@@ -200,10 +204,10 @@ expr_meta_random <- function(data,
   #---------------------------- return ---------------------------------
 
   # what needs to be returned?
-  return(switch(
+  switch(
     EXPR = output,
     "dataframe" = stats_df,
     "caption" = caption,
     subtitle
-  ))
+  )
 }

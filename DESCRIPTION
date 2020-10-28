@@ -34,6 +34,7 @@ Imports:
     ipmisc (>= 4.1.0),
     metafor,
     metaplus,
+    parameters (>= 0.8.6.1),
     rcompanion,
     rlang,
     stats,
@@ -49,9 +50,8 @@ Suggests:
 VignetteBuilder: 
     knitr
 Remotes:
-    easystats/effectsize,
     IndrajeetPatil/tidyBF,
-    IndrajeetPatil/ipmisc
+    easystats/parameters
 Encoding: UTF-8
 Language: en-US
 LazyData: true

@@ -54,10 +54,6 @@ try to play around with the value of \code{tr}, which is by default set to
 \item{nboot}{Number of bootstrap samples for computing confidence interval
 for the effect size (Default: \code{100}).}
 
-\item{output}{If \code{"expression"}, will return expression with statistical
-details, while \code{"dataframe"} will return a dataframe containing the
-results.}
-
 \item{...}{Additional arguments (currently ignored).}
 }
 \value{

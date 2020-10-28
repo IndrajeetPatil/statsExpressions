@@ -369,7 +369,7 @@ statistical results, one can also use it to extract dataframes containing these
 details. 
 
 For a more detailed summary of these dataframe:
-<https://indrajeetpatil.github.io/statsExpressions/articles/dataframe_outputs.html>
+<https://indrajeetpatil.github.io/statsExpressions//articles/web_only/dataframe_outputs.html>
 
 # Suggestions
 

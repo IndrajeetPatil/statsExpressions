@@ -48,12 +48,25 @@ parametric/pearson), \code{"np"} (nonparametric/spearman), \code{"r"} (robust),
 \item{bf.prior}{A number between \code{0.5} and \code{2} (default \code{0.707}), the prior
 width to use in calculating Bayes factors.}
 
-\item{output}{If \code{"expression"}, will return expression with statistical
+\item{...}{
+  Arguments passed on to \code{\link[tidyBF:bf_extractor]{bf_extractor}}
+  \describe{
+    \item{\code{conf.level}}{Confidence/Credible Interval (CI) level. Default to \code{0.95}
+(\verb{95\%}).}
+    \item{\code{centrality}}{The point-estimates (centrality indices) to compute.
+Character (vector) or list with one or more of these options: \code{"median"},
+\code{"mean"}, \code{"MAP"} or \code{"all"}.}
+    \item{\code{conf.method}}{The type of index used for Credible Interval. Can be
+\code{"hdi"} (default, see \code{\link[bayestestR:hdi]{bayestestR::hdi()}}), \code{"eti"} (see
+\code{\link[bayestestR:eti]{bayestestR::eti()}}) or \code{"si"} (see \code{\link[bayestestR:si]{bayestestR::si()}}).}
+    \item{\code{k}}{Number of digits after decimal point (should be an integer)
+(Default: \code{k = 2L}).}
+    \item{\code{top.text}}{Text to display as top.text (will be displayed on top of the
+Bayes Factor top.text/message).}
+    \item{\code{output}}{If \code{"expression"}, will return expression with statistical
 details, while \code{"dataframe"} will return a dataframe containing the
 results.}
-
-\item{...}{Additional arguments passed to
-\code{\link[parameters:model_parameters.BFBayesFactor]{parameters::model_parameters.BFBayesFactor()}}.}
+  }}
 }
 \value{
 Expression containing results from correlation test with confidence
