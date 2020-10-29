@@ -42,6 +42,10 @@ width to use in calculating Bayes factors.}
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2L}).}
 
+\item{output}{If \code{"expression"}, will return expression with statistical
+details, while \code{"dataframe"} will return a dataframe containing the
+results.}
+
 \item{...}{Additional arguments (currently ignored).}
 }
 \value{

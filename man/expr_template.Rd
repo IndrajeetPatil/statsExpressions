@@ -53,7 +53,7 @@ want to use plotmath, you will have to quote the argument (e.g.,
 \item{n}{An integer specifying the sample size used for the test.}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
+\verb{95\%} confidence/credible intervals (\code{0.95}).}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2L}).}

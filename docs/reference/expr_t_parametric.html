@@ -211,7 +211,7 @@ repeated measures/within-subjects or between-subjects. The default is
     <tr>
       <th>conf.level</th>
       <td><p>Scalar between 0 and 1. If unspecified, the defaults return
-<code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
+<code>95%</code> confidence/credible intervals (<code>0.95</code>).</p></td>
     </tr>
     <tr>
       <th>effsize.type</th>
@@ -226,6 +226,12 @@ argument can be <code>"d"</code> (for Cohen's <em>d</em>) or <code>"g"</code> (f
     performed.  If <code>FALSE</code>, an approximate method of Welch (1951)
     is used, which generalizes the commonly known 2-sample Welch test to
     the case of arbitrarily many samples.</p></td>
+    </tr>
+    <tr>
+      <th>output</th>
+      <td><p>If <code>"expression"</code>, will return expression with statistical
+details, while <code>"dataframe"</code> will return a dataframe containing the
+results.</p></td>
     </tr>
     <tr>
       <th>...</th>

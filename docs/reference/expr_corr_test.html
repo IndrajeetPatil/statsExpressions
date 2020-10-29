@@ -198,7 +198,7 @@ be plotted on the <code>y</code>-axis. Can be entered either as a character stri
     <tr>
       <th>conf.level</th>
       <td><p>Scalar between 0 and 1. If unspecified, the defaults return
-<code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
+<code>95%</code> confidence/credible intervals (<code>0.95</code>).</p></td>
     </tr>
     <tr>
       <th>beta</th>
@@ -218,6 +218,12 @@ parametric/pearson), <code>"np"</code> (nonparametric/spearman), <code>"r"</code
       <th>bf.prior</th>
       <td><p>A number between <code>0.5</code> and <code>2</code> (default <code>0.707</code>), the prior
 width to use in calculating Bayes factors.</p></td>
+    </tr>
+    <tr>
+      <th>output</th>
+      <td><p>If <code>"expression"</code>, will return expression with statistical
+details, while <code>"dataframe"</code> will return a dataframe containing the
+results.</p></td>
     </tr>
     <tr>
       <th>...</th>

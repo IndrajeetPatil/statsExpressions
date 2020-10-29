@@ -42,7 +42,7 @@ repeated measures/within-subjects or between-subjects. The default is
 (Default: \code{k = 2L}).}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
+\verb{95\%} confidence/credible intervals (\code{0.95}).}
 
 \item{effsize.type}{Type of effect size needed for \emph{parametric} tests. The
 argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \emph{g}).}
@@ -53,6 +53,10 @@ argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \em
     performed.  If \code{FALSE}, an approximate method of Welch (1951)
     is used, which generalizes the commonly known 2-sample Welch test to
     the case of arbitrarily many samples.}
+
+\item{output}{If \code{"expression"}, will return expression with statistical
+details, while \code{"dataframe"} will return a dataframe containing the
+results.}
 
 \item{...}{Additional arguments (currently ignored).}
 }

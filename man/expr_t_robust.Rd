@@ -42,7 +42,7 @@ repeated measures/within-subjects or between-subjects. The default is
 (Default: \code{k = 2L}).}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
+\verb{95\%} confidence/credible intervals (\code{0.95}).}
 
 \item{tr}{Trim level for the mean when carrying out \code{robust} tests. If you
 get error stating "Standard error cannot be computed because of Winsorized
@@ -52,6 +52,10 @@ try to play around with the value of \code{tr}, which is by default set to
 
 \item{nboot}{Number of bootstrap samples for computing confidence interval
 for the effect size (Default: \code{100}).}
+
+\item{output}{If \code{"expression"}, will return expression with statistical
+details, while \code{"dataframe"} will return a dataframe containing the
+results.}
 
 \item{...}{Additional arguments (currently ignored).}
 }

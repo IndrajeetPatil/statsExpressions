@@ -39,7 +39,7 @@ or \code{"robust"} or \code{"bayes"}).Corresponding abbreviations are also accep
 (Default: \code{k = 2L}).}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
+\verb{95\%} confidence/credible intervals (\code{0.95}).}
 
 \item{conf.type}{A vector of character strings representing the type of
 intervals required. The value should be any subset of the values \code{"norm"},
@@ -57,6 +57,10 @@ argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \em
 
 \item{nboot}{Number of bootstrap samples for computing confidence interval
 for the effect size (Default: \code{100}).}
+
+\item{output}{If \code{"expression"}, will return expression with statistical
+details, while \code{"dataframe"} will return a dataframe containing the
+results.}
 
 \item{...}{Additional arguments passed to \code{tidyBF::bf_ttest}.}
 }

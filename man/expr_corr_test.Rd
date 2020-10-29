@@ -33,7 +33,7 @@ be plotted on the \code{y}-axis. Can be entered either as a character string
 (Default: \code{k = 2L}).}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
+\verb{95\%} confidence/credible intervals (\code{0.95}).}
 
 \item{beta}{bending constant (Default: \code{0.1}). For more, see \code{\link[WRS2:pbcor]{WRS2::pbcor()}}.}
 
@@ -47,6 +47,10 @@ parametric/pearson), \code{"np"} (nonparametric/spearman), \code{"r"} (robust),
 
 \item{bf.prior}{A number between \code{0.5} and \code{2} (default \code{0.707}), the prior
 width to use in calculating Bayes factors.}
+
+\item{output}{If \code{"expression"}, will return expression with statistical
+details, while \code{"dataframe"} will return a dataframe containing the
+results.}
 
 \item{...}{
   Arguments passed on to \code{\link[tidyBF:bf_extractor]{bf_extractor}}

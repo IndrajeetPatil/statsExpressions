@@ -42,13 +42,11 @@ repeated measures/within-subjects or between-subjects. The default is
 (Default: \code{k = 2L}).}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
+\verb{95\%} confidence/credible intervals (\code{0.95}).}
 
 \item{effsize.type}{Type of effect size needed for \emph{parametric} tests. The
-argument can be \code{"biased"} (equivalent to \code{"d"} for Cohen's \emph{d} for
-\strong{t-test}; \code{"eta"} for partial eta-squared for \strong{anova}) or
-\code{"unbiased"} (equivalent to \code{"g"} Hedge's \emph{g} for \strong{t-test};
-\code{"omega"} for partial omega-squared for \strong{anova})).}
+argument can be \code{"eta"} (partial eta-squared) or \code{"omega"} (partial
+omega-squared).}
 
 \item{var.equal}{a logical variable indicating whether to treat the
     variances in the samples as equal.  If \code{TRUE}, then a simple F
@@ -56,6 +54,10 @@ argument can be \code{"biased"} (equivalent to \code{"d"} for Cohen's \emph{d} f
     performed.  If \code{FALSE}, an approximate method of Welch (1951)
     is used, which generalizes the commonly known 2-sample Welch test to
     the case of arbitrarily many samples.}
+
+\item{output}{If \code{"expression"}, will return expression with statistical
+details, while \code{"dataframe"} will return a dataframe containing the
+results.}
 
 \item{...}{Additional arguments (currently ignored).}
 }

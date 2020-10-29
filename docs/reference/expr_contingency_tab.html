@@ -217,7 +217,13 @@ there are four levels this will be <code>ratio = c(0.25,0.25,0.25,0.25)</code>, 
     <tr>
       <th>conf.level</th>
       <td><p>Scalar between 0 and 1. If unspecified, the defaults return
-<code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
+<code>95%</code> confidence/credible intervals (<code>0.95</code>).</p></td>
+    </tr>
+    <tr>
+      <th>output</th>
+      <td><p>If <code>"expression"</code>, will return expression with statistical
+details, while <code>"dataframe"</code> will return a dataframe containing the
+results.</p></td>
     </tr>
     <tr>
       <th>...</th>

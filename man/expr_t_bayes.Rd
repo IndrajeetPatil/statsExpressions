@@ -42,6 +42,10 @@ repeated measures/within-subjects or between-subjects. The default is
 \item{bf.prior}{A number between \code{0.5} and \code{2} (default \code{0.707}), the prior
 width to use in calculating Bayes factors.}
 
+\item{output}{If \code{"expression"}, will return expression with statistical
+details, while \code{"dataframe"} will return a dataframe containing the
+results.}
+
 \item{...}{Additional arguments (currently ignored).}
 }
 \description{

@@ -7,24 +7,17 @@
 #' @description The effect sizes and their confidence intervals are computed
 #'   using `effectsize::eta_squared` and `effectsize::omega_squared` functions.
 #'
-#' @param data A dataframe (or a tibble) from which variables specified are to
-#'   be taken. A matrix or tables will **not** be accepted.
-#' @param x The grouping variable from the dataframe `data`.
-#' @param y The response (a.k.a. outcome or dependent) variable from the
-#'   dataframe `data`.
+#' @inheritParams ipmisc::long_to_wide_converter
 #' @param conf.level Scalar between 0 and 1. If unspecified, the defaults return
-#'   `95%` lower and upper confidence intervals (`0.95`).
-#' @param paired Logical that decides whether the experimental design is
-#'   repeated measures/within-subjects or between-subjects. The default is
-#'   `FALSE`.
+#'   `95%` confidence/credible intervals (`0.95`).
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
-#'   argument can be `"biased"` (equivalent to `"d"` for Cohen's *d* for
-#'   **t-test**; `"eta"` for partial eta-squared for **anova**) or
-#'   `"unbiased"` (equivalent to `"g"` Hedge's *g* for **t-test**;
-#'   `"omega"` for partial omega-squared for **anova**)).
+#'   argument can be `"eta"` (partial eta-squared) or `"omega"` (partial
+#'   omega-squared).
+#' @param output If `"expression"`, will return expression with statistical
+#'   details, while `"dataframe"` will return a dataframe containing the
+#'   results.
 #' @inheritParams expr_corr_test
 #' @inheritParams expr_template
-#' @inheritParams ipmisc::long_to_wide_converter
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams stats::oneway.test
 #'

@@ -213,15 +213,13 @@ repeated measures/within-subjects or between-subjects. The default is
     <tr>
       <th>conf.level</th>
       <td><p>Scalar between 0 and 1. If unspecified, the defaults return
-<code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
+<code>95%</code> confidence/credible intervals (<code>0.95</code>).</p></td>
     </tr>
     <tr>
       <th>effsize.type</th>
       <td><p>Type of effect size needed for <em>parametric</em> tests. The
-argument can be <code>"biased"</code> (equivalent to <code>"d"</code> for Cohen's <em>d</em> for
-<strong>t-test</strong>; <code>"eta"</code> for partial eta-squared for <strong>anova</strong>) or
-<code>"unbiased"</code> (equivalent to <code>"g"</code> Hedge's <em>g</em> for <strong>t-test</strong>;
-<code>"omega"</code> for partial omega-squared for <strong>anova</strong>)).</p></td>
+argument can be <code>"eta"</code> (partial eta-squared) or <code>"omega"</code> (partial
+omega-squared).</p></td>
     </tr>
     <tr>
       <th>var.equal</th>
@@ -231,6 +229,12 @@ argument can be <code>"biased"</code> (equivalent to <code>"d"</code> for Cohen'
     performed.  If <code>FALSE</code>, an approximate method of Welch (1951)
     is used, which generalizes the commonly known 2-sample Welch test to
     the case of arbitrarily many samples.</p></td>
+    </tr>
+    <tr>
+      <th>output</th>
+      <td><p>If <code>"expression"</code>, will return expression with statistical
+details, while <code>"dataframe"</code> will return a dataframe containing the
+results.</p></td>
     </tr>
     <tr>
       <th>...</th>

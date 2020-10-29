@@ -35,15 +35,14 @@ assumes that the data has already been sorted by such an id by the user and
 creates an internal identifier. So if your data is \strong{not} sorted and you
 leave this argument unspecified, the results can be inaccurate.}
 
-\item{paired}{Logical that decides whether the experimental design is
-repeated measures/within-subjects or between-subjects. The default is
-\code{FALSE}.}
+\item{paired}{Decides whether the design is repeated measures or not
+(Default: \code{FALSE}).}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2L}).}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
-\verb{95\%} lower and upper confidence intervals (\code{0.95}).}
+\verb{95\%} confidence/credible intervals (\code{0.95}).}
 
 \item{tr}{Trim level for the mean when carrying out \code{robust} tests. If you
 get error stating "Standard error cannot be computed because of Winsorized
@@ -53,6 +52,10 @@ try to play around with the value of \code{tr}, which is by default set to
 
 \item{nboot}{Number of bootstrap samples for computing confidence interval
 for the effect size (Default: \code{100}).}
+
+\item{output}{If \code{"expression"}, will return expression with statistical
+details, while \code{"dataframe"} will return a dataframe containing the
+results.}
 
 \item{...}{Additional arguments (currently ignored).}
 }

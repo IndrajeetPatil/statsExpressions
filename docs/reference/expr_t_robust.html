@@ -211,7 +211,7 @@ repeated measures/within-subjects or between-subjects. The default is
     <tr>
       <th>conf.level</th>
       <td><p>Scalar between 0 and 1. If unspecified, the defaults return
-<code>95%</code> lower and upper confidence intervals (<code>0.95</code>).</p></td>
+<code>95%</code> confidence/credible intervals (<code>0.95</code>).</p></td>
     </tr>
     <tr>
       <th>tr</th>
@@ -225,6 +225,12 @@ try to play around with the value of <code>tr</code>, which is by default set to
       <th>nboot</th>
       <td><p>Number of bootstrap samples for computing confidence interval
 for the effect size (Default: <code>100</code>).</p></td>
+    </tr>
+    <tr>
+      <th>output</th>
+      <td><p>If <code>"expression"</code>, will return expression with statistical
+details, while <code>"dataframe"</code> will return a dataframe containing the
+results.</p></td>
     </tr>
     <tr>
       <th>...</th>
