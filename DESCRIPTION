@@ -26,7 +26,7 @@ Depends:
     R (>= 3.6.0)
 Imports:
     broomExtra,
-    correlation (>= 0.5.0),
+    correlation,
     dplyr,
     effectsize (>= 0.4.0),
     ez,
@@ -51,11 +51,6 @@ Suggests:
     utils
 VignetteBuilder: 
     knitr
-Remotes:
-    IndrajeetPatil/tidyBF,
-    easystats/correlation,
-    easystats/parameters,
-    easystats/performance
 Encoding: UTF-8
 Language: en-US
 LazyData: true
