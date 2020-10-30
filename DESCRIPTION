@@ -26,7 +26,7 @@ Depends:
     R (>= 3.6.0)
 Imports:
     broomExtra,
-    correlation,
+    correlation (>= 0.5.0),
     dplyr,
     effectsize (>= 0.4.0),
     ez,
@@ -34,8 +34,8 @@ Imports:
     ipmisc (>= 4.1.0),
     metafor,
     metaplus,
-    parameters (>= 0.8.6.2),
-    performance (>= 0.5.0),
+    parameters (>= 0.9.0),
+    performance (>= 0.5.1),
     rcompanion,
     rlang,
     stats,
@@ -47,11 +47,13 @@ Suggests:
     knitr,
     rmarkdown,
     spelling,
-    testthat
+    testthat,
+    utils
 VignetteBuilder: 
     knitr
 Remotes:
     IndrajeetPatil/tidyBF,
+    easystats/correlation,
     easystats/parameters,
     easystats/performance
 Encoding: UTF-8

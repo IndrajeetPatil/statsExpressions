@@ -112,6 +112,11 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=testthat"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "utils",
+      "name": "utils"
     }
   ],
   "softwareRequirements": [
@@ -137,13 +142,14 @@
       "@type": "SoftwareApplication",
       "identifier": "correlation",
       "name": "correlation",
+      "version": ">= 0.5.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=correlation"
+      "sameAs": "https://github.com/easystats/correlation"
     },
     {
       "@type": "SoftwareApplication",
@@ -236,7 +242,7 @@
       "@type": "SoftwareApplication",
       "identifier": "parameters",
       "name": "parameters",
-      "version": ">= 0.8.6.2",
+      "version": ">= 0.9.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -249,7 +255,7 @@
       "@type": "SoftwareApplication",
       "identifier": "performance",
       "name": "performance",
-      "version": ">= 0.5.0",
+      "version": ">= 0.5.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -382,6 +388,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3874.819KB",
+  "fileSize": "3875.378KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }
