@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Expressions and Dataframes with Statistical Details
-Version: 0.6.0
+Version: 0.6.0.9000
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -28,18 +28,18 @@ Imports:
     broomExtra,
     correlation,
     dplyr,
-    effectsize (>= 0.4.0),
+    effectsize,
     ez,
-    insight (>= 0.10.0),
-    ipmisc (>= 4.1.0),
+    insight,
+    ipmisc,
     metafor,
     metaplus,
-    parameters (>= 0.9.0),
-    performance (>= 0.5.1),
+    parameters,
+    performance,
     rcompanion,
     rlang,
     stats,
-    tidyBF (>= 0.4.0),
+    tidyBF,
     tidyr,
     WRS2
 Suggests:
@@ -57,3 +57,6 @@ LazyData: true
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
     "collate", "pkgapi::api_roclet"))
 RoxygenNote: 7.1.1
+Config/testthat/edition: 3
+Config/testthat/parallel: true
+Config/testthat/start-first: watcher, parallel*

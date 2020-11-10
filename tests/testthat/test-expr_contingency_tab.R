@@ -754,7 +754,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "dataframe",
   code = {
-    testthat::expect_is(
+    testthat::expect_s3_class(
       statsExpressions::expr_contingency_tab(
         data = as.data.frame(HairEyeColor),
         x = Eye,

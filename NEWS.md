@@ -1,3 +1,5 @@
+# statsExpressions 0.6.0.9000
+
 # statsExpressions 0.6.0
 
 BREAKING CHANGES

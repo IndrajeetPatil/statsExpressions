@@ -302,7 +302,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "dataframe",
   code = {
-    testthat::expect_is(
+    testthat::expect_s3_class(
       statsExpressions::expr_t_parametric(
         data = dplyr::filter(movies_long, genre == "Action" | genre == "Drama"),
         x = "genre",

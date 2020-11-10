@@ -259,8 +259,7 @@ testthat::test_that(
         data = anscombe,
         x = "x2",
         test.value = 8,
-        type = "bf",
-        messages = FALSE
+        type = "bf"
       )
 
     # expected output
@@ -271,8 +270,7 @@ testthat::test_that(
         x = "x2",
         test.value = 8,
         type = "bf",
-        messages = FALSE,
-        output = "h1"
+        output = "expr"
       )
 
     # testing overall call
@@ -299,8 +297,7 @@ testthat::test_that(
         test.value = 0.25,
         type = "bf",
         k = 4,
-        messages = FALSE,
-        output = "h1"
+        output = "expression"
       )
 
     # testing overall call
@@ -314,7 +311,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "dataframe",
   code = {
-    testthat::expect_is(
+    testthat::expect_s3_class(
       statsExpressions::expr_t_onesample(
         data = dplyr::sample_frac(movies_long, 0.05),
         x = length,

@@ -1,5 +1,3 @@
-context("expr_templates")
-
 # zero parameter -----------------------------------------------------------
 
 testthat::test_that(
@@ -166,15 +164,16 @@ testthat::test_that(
       )
 
     # creating a dataframe with stats results
-    stats_df <- cbind.data.frame(
-      statistic = 2.27,
-      parameter1 = 3,
-      parameter2 = 24.05,
-      p.value = 0.107,
-      estimate = 0.00,
-      conf.low = -0.08,
-      conf.high = 0.10
-    )
+    stats_df <-
+      cbind.data.frame(
+        statistic = 2.27,
+        parameter1 = 3,
+        parameter2 = 24.05,
+        p.value = 0.107,
+        estimate = 0.00,
+        conf.low = -0.08,
+        conf.high = 0.10
+      )
 
     # created using a template maker
     template_1 <-

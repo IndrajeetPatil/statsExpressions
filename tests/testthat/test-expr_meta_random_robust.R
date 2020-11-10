@@ -36,7 +36,7 @@ testthat::test_that(
       )
 
     # output
-    testthat::expect_is(df_res, "tbl_df")
+    testthat::expect_s3_class(df_res, "tbl_df")
 
     # test
     testthat::expect_identical(
