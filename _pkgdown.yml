@@ -51,6 +51,7 @@ reference:
   - title: Helper functions
     contents:
       - expr_template
+      - matches("tidy_")
 
   - title: Reexported functions
     desc:  Useful functions re-exported from other packages.

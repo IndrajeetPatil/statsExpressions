@@ -169,8 +169,8 @@ expr_anova_parametric <- function(data,
 
     # tidy up the stats object
     stats_df <-
-      suppressMessages(broomExtra::tidy(mod)) %>%
-      dplyr::select(statistic, parameter1 = num.df, parameter2 = den.df, dplyr::everything())
+      suppressMessages(tidy_model_parameters(mod)) %>%
+      dplyr::select(statistic, parameter1 = df.num, parameter2 = df.denom, dplyr::everything())
 
     # creating a standardized dataframe with effect size and its CIs
     mod <-
@@ -249,7 +249,6 @@ expr_anova_parametric <- function(data,
 #' @importFrom dplyr select
 #' @importFrom rlang !! enquo
 #' @importFrom stats friedman.test kruskal.test na.omit
-#' @importFrom broomExtra tidy
 #' @importFrom rcompanion epsilonSquared kendallW
 #'
 #' @examples
@@ -378,7 +377,7 @@ expr_anova_nonparametric <- function(data,
     rcompanion_cleaner(.)
 
   # combining dataframes
-  stats_df <- dplyr::bind_cols(broomExtra::tidy(mod), effsize_df)
+  stats_df <- dplyr::bind_cols(tidy_model_parameters(mod), effsize_df)
 
   # preparing expression
   expression <-

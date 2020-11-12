@@ -25,7 +25,7 @@
 #' @importFrom metaplus metaplus
 #' @importFrom dplyr rename_all recode mutate
 #' @importFrom tidyBF bf_meta_random meta_data_check
-#' @importFrom broomExtra tidy_parameters glance_performance
+#' @importFrom broomExtra glance_performance
 #'
 #' @examples
 #' \donttest{
@@ -163,8 +163,7 @@ expr_meta_random <- function(data,
   # clean up
   if (stats.type %in% c("parametric", "robust")) {
     # create a dataframe with coefficients
-    stats_df <-
-      dplyr::filter(broomExtra::tidy_parameters(mod), term %in% c("Overall", "overall"))
+    stats_df <- dplyr::filter(tidy_model_parameters(mod), term == "Overall")
 
     # preparing the subtitle
     subtitle <-

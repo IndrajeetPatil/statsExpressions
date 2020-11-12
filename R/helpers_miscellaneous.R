@@ -140,6 +140,8 @@ expr_template <- function(no.parameters,
   # ------------------ statistic with 1 degree of freedom --------------------
 
   if (no.parameters == 1L) {
+    if ("df" %in% names(stats.df)) stats.df %<>% dplyr::rename("parameter" = "df")
+
     # preparing subtitle
     subtitle <-
       substitute(
@@ -267,4 +269,40 @@ effsize_type_switch <- function(effsize.type) {
     grepl("^b|^d|eta", effsize.type, TRUE) ~ "biased",
     TRUE ~ "unbiased"
   )
+}
+
+#' @name tidy_model_parameters
+#' @title Convert `parameters` output to `tidymodels` convention
+#'
+#' @inheritParams parameters::model_parameters
+#'
+#' @importFrom parameters model_parameters standardize_names
+#'
+#' @examples
+#' model <- lm(mpg ~ wt + cyl, data = mtcars)
+#' tidy_model_parameters(model)
+#' @export
+
+tidy_model_parameters <- function(model, ...) {
+  parameters::model_parameters(model, verbose = FALSE, ...) %>%
+    parameters::standardize_names(data = ., style = "broom") %>%
+    as_tibble(.)
+}
+
+#' @name tidy_model_performance
+#' @title Convert `performance` output to `tidymodels` convention
+#'
+#' @inheritParams performance::model_performance
+#'
+#' @importFrom performance model_performance
+#'
+#' @examples
+#' model <- lm(mpg ~ wt + cyl, data = mtcars)
+#' tidy_model_parameters(model)
+#' @export
+
+tidy_model_performance <- function(model, ...) {
+  performance::model_performance(model, verbose = FALSE, ...) %>%
+    parameters::standardize_names(data = ., style = "broom") %>%
+    as_tibble(.)
 }

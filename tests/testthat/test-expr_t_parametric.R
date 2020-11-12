@@ -19,8 +19,7 @@ testthat::test_that(
           effsize.type = "d",
           var.equal = TRUE,
           conf.level = .99,
-          k = 5,
-          messages = FALSE
+          k = 5
         )
       )
 

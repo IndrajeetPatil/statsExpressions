@@ -186,7 +186,7 @@ expr_contingency_tab <- function(data,
     insight::standardize_names(data = ., style = "broom")
 
   # combining dataframes
-  stats_df <- dplyr::bind_cols(broomExtra::tidy(mod), effsize_df)
+  stats_df <- dplyr::bind_cols(tidy_model_parameters(mod), effsize_df)
 
   # expression
   subtitle <-
