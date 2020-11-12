@@ -125,7 +125,7 @@ expr_t_parametric <- function(data,
       var.equal = var.equal,
       na.action = na.omit
     ) %>%
-    broomExtra::tidy(.)
+    tidy_model_parameters(.)
 
   # effect size object
   effsize_df <-
@@ -138,7 +138,7 @@ expr_t_parametric <- function(data,
       pooled_sd = var.equal,
       ci = conf.level
     ) %>%
-    insight::standardize_names(data = ., style = "broom")
+    parameters::standardize_names(data = ., style = "broom")
 
   # combining dataframes
   stats_df <-
@@ -289,7 +289,7 @@ expr_t_nonparametric <- function(data,
       na.action = na.omit,
       exact = FALSE
     ) %>%
-    broomExtra::tidy(.) %>%
+    tidy_model_parameters(.) %>%
     dplyr::mutate(.data = ., statistic = log(statistic))
 
   # computing effect size

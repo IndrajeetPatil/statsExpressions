@@ -117,13 +117,14 @@ expr_t_onesample <- function(data,
 
     # setting up the t-test model and getting its summary
     stats_df <-
-      broomExtra::tidy(stats::t.test(
+      stats::t.test(
         x = data %>% dplyr::pull({{ x }}),
         mu = test.value,
         conf.level = conf.level,
         alternative = "two.sided",
         na.action = na.omit
-      ))
+      ) %>%
+      tidy_model_parameters(.)
 
     # creating effect size info
     effsize_df <-
@@ -133,7 +134,7 @@ expr_t_onesample <- function(data,
         correction = FALSE,
         ci = conf.level
       ) %>%
-      insight::standardize_names(data = ., style = "broom")
+      parameters::standardize_names(data = ., style = "broom")
 
     # preparing subtitle parameters
     statistic.text <- quote(italic("t")["Student"])
@@ -152,7 +153,7 @@ expr_t_onesample <- function(data,
         mu = test.value,
         exact = FALSE
       ) %>%
-      broomExtra::tidy(.) %>%
+      tidy_model_parameters(.) %>%
       dplyr::mutate(.data = ., statistic = log(statistic))
 
     # effect size dataframe

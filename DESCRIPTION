@@ -25,17 +25,16 @@ BugReports:
 Depends: 
     R (>= 3.6.0)
 Imports:
-    broomExtra,
     correlation,
     dplyr,
     effectsize,
     ez,
-    insight,
+    insight (>= 0.10.0.1),
     ipmisc,
     metafor,
     metaplus,
-    parameters,
-    performance,
+    parameters (>= 0.9.0.1),
+    performance (>= 0.5.1.1),
     rcompanion,
     rlang,
     stats,
@@ -49,6 +48,10 @@ Suggests:
     spelling,
     testthat,
     utils
+Remotes:
+    easystats/parameters,
+    easystats/insight,
+    easystats/performance    
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

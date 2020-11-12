@@ -25,7 +25,6 @@
 #' @importFrom metaplus metaplus
 #' @importFrom dplyr rename_all recode mutate
 #' @importFrom tidyBF bf_meta_random meta_data_check
-#' @importFrom broomExtra tidy_parameters glance_performance
 #'
 #' @examples
 #' \donttest{
@@ -106,7 +105,7 @@ expr_meta_random <- function(data,
       )
 
     # model summary
-    df_glance <- broomExtra::glance_performance(mod)
+    df_glance <- tidy_model_performance(mod)
 
     # preparing the subtitle
     caption <-
@@ -135,11 +134,11 @@ expr_meta_random <- function(data,
         ),
         env = list(
           top.text = caption,
-          Q = specify_decimal_p(x = df_glance$cochran.qe, k = 0L),
-          df = specify_decimal_p(x = df_glance$df.residual, k = 0L),
-          pvalue = specify_decimal_p(x = df_glance$p.value.cochran.qe, k = k, p.value = TRUE),
-          tau2 = specify_decimal_p(x = df_glance$tau.squared, k = k),
-          I2 = paste(specify_decimal_p(x = df_glance$i.squared, k = 2L), "%", sep = "")
+          Q = specify_decimal_p(x = df_glance$cochransq, k = 0L),
+          df = specify_decimal_p(x = df_glance$df.error, k = 0L),
+          pvalue = specify_decimal_p(x = df_glance$p.cochransq, k = k, p.value = TRUE),
+          tau2 = specify_decimal_p(x = df_glance$tau2, k = k),
+          I2 = paste(specify_decimal_p(x = df_glance$i2 * 100, k = 2L), "%", sep = "")
         )
       )
   }
@@ -163,8 +162,7 @@ expr_meta_random <- function(data,
   # clean up
   if (stats.type %in% c("parametric", "robust")) {
     # create a dataframe with coefficients
-    stats_df <-
-      dplyr::filter(broomExtra::tidy_parameters(mod), term %in% c("Overall", "overall"))
+    stats_df <- dplyr::filter(tidy_model_parameters(mod), term == "Overall")
 
     # preparing the subtitle
     subtitle <-

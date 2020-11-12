@@ -1,16 +1,24 @@
 # statsExpressions 0.6.0.9000
 
+MAJOR CHANGES
+
+  - Adds two new helper functions: `tidy_model_parameters` and
+    `tidy_model_performance` to toggle between `easystats` and `tidymodels`
+    conventions.
+    
+  - Drops `broomExtra` from dependencies in favor of `parameters` + `performance`.
+
 # statsExpressions 0.6.0
 
 BREAKING CHANGES
 
   - Removes the alias `expr_onesample_proptest`.
-  
+
   - The `expr_template` function retires `effsize.df` argument. Now all details
     need to be entered only in `stats.df`.
-    
+
   - All meta-analyses are now carried out using `expr_meta_random` and the
-    individual functions have been removed. 
+    individual functions have been removed.
 
 MAJOR CHANGES
 
@@ -18,15 +26,15 @@ MAJOR CHANGES
     instead of `rcompanion`. This would lead to slight differences in effect
     sizes and their CIs but the computations will be faster. Additionally, the
     lower bound will never be negative and will be restricted to [0,1].
-    
+
   - `expr_contingency_tab` function has been made less robust. It now fails
     instead of returning `NULL` when it is not supposed to work. This is done to
     be consistent with the other functions in the package which also fail
     instead of returning `NULL`.
-    
+
   - `expr_anova_parametric` always applies sphericity correction for *p*-values
     for repeated measures ANOVA.
-    
+
   - `expr_anova_parametric` retires non-partial variants of effect sizes
     (eta-squared and omega-squared, i.e.) for parametric analyses.
 
@@ -38,9 +46,9 @@ MINOR CHANGES
   - Retires the vestigial `stat.title` argument. It was originally intended to
     give more info on the tests, but now the expressions themselves contain
     these details.
-    
+
   - For paired ANOVA designs, `partial = TRUE` is recognized by effect sizes.
-  
+
   - Retires `bias.correct` argument for contingency table analysis. It is rarely
     justifiable to use the biased version of Cramer's *V*.
 
@@ -49,19 +57,19 @@ MINOR CHANGES
 MINOR CHANGES
 
   - Adapts tests to changes made in the `correlation` package.
-  
+
   - Subtitles for correlation tests make clear the type of statistic.
-  
+
   - Small *p*-values (< 0.001) are now shown in scientific format.
-  
+
 # statsExpressions 0.5.0
 
 MINOR CHANGES
 
   - Adapts to changes made in `tidyBF` package.
-  
+
   - Re-exports `correlation::correlation` needed for `ggstatsplot`.
-  
+
   - The `expr_t_nonparametric` subtitle now clarifies whether it's a Wilcoxon
     test or a Mann-Whitney test.
 
@@ -70,13 +78,13 @@ MINOR CHANGES
 MINOR CHANGES
 
   - Thanks to Sarah, the package has a hexsticker. :)
-  
+
   - Confidence intervals for Spearman's rho are computed using `correlation`
     instead of `rcompanion`.
-    
+
   - All relevant functions get rid of `messages` argument as the functions no
     longer print a message when bootstrapped CIs are used.
-    
+
   - The effect size measure for paired robust *t*-test is now changed to robust
     (trimmed-Winsorized) standardized difference similar to Cohen's *d*.
 
@@ -84,8 +92,9 @@ MINOR CHANGES
 
 BUG FIXES
 
-  - Major bug introduced in `0.4.0` release for `expr_anova_parametric`: 
-    changing `conf.level` doesn't work and function defaults to `0.90` CIs (#32).
+  - Major bug introduced in `0.4.0` release for `expr_anova_parametric`:
+    changing `conf.level` doesn't work and function defaults to `0.90` CIs
+    (#32).
 
 MINOR CHANGES
 
@@ -96,10 +105,10 @@ MINOR CHANGES
 BREAKING CHANGES
 
   - Removes the experimental `corr_objects` function.
-  
+
   - All Bayes Factor related functions have now moved to the new `tidyBF`
     package and are re-exported from there.
-  
+
 MAJOR CHANGES
 
   - Minimum R version bumped to `R 3.6.0`.
@@ -117,7 +126,7 @@ MAJOR CHANGES
     now added as a dependency.
 
 MINOR CHANGES
-  
+
   - All expressions now contain name of the statistical test carried out.
 
 # statsExpressions 0.3.1
@@ -150,16 +159,16 @@ BREAKING CHANGES
 
 MINOR CHANGES
 
-  - Minor tweaks to how widehat is displayed in some of the expressions. 
-  
+  - Minor tweaks to how widehat is displayed in some of the expressions.
+
   - Cramer's *V* is bias-corrected by default.
- 
+
 # statsExpressions 0.1.3
 
 MAJOR CHANGES
 
   - Removes `MCMCpack` from `Depends`.
-  
+
   - All effect size texts now contain `^` on top to signify that these are
     estimates.
 
@@ -174,8 +183,10 @@ MINOR CHANGES
 MINOR CHANGES
 
   - Fixing tests for the new release of `rcompanion` dependency.
+
   - Minor code refactoring.
 
 # statsExpressions 0.1.0
 
   - First release of the package.
+

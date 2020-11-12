@@ -98,7 +98,7 @@
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2020-11-10</h4>
+            <h4 class="date">2020-11-12</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -141,13 +141,13 @@
   type <span class="op">=</span> <span class="st">"parametric"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 9</span>
-<span class="co">#&gt;   statistic p.value parameter method            alternative estimate ci.width</span>
-<span class="co">#&gt;       &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    0.0504   0.960        55 One Sample t-test two.sided    0.00665     0.95</span>
-<span class="co">#&gt;   conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1   -0.254     0.267</span>
+<span class="co">#&gt; # A tibble: 1 x 11</span>
+<span class="co">#&gt;   term                                               mu difference statistic</span>
+<span class="co">#&gt;   &lt;chr&gt;                                           &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 data %&gt;% dplyr::pull({     {         x     } }) 0.275    0.00658    0.0504</span>
+<span class="co">#&gt;      df p.value method            estimate ci.width conf.low conf.high</span>
+<span class="co">#&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1    55   0.960 One Sample t-test  0.00665     0.95   -0.254     0.267</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -160,13 +160,13 @@
   type <span class="op">=</span> <span class="st">"nonparametric"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 7</span>
-<span class="co">#&gt;   statistic    p.value method                                              </span>
-<span class="co">#&gt;       &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                                               </span>
-<span class="co">#&gt; 1      5.51 0.00000738 Wilcoxon signed rank test with continuity correction</span>
-<span class="co">#&gt;   alternative estimate conf.low conf.high</span>
-<span class="co">#&gt;   &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 two.sided       -0.6   -0.830    -0.393</span>
+<span class="co">#&gt; # A tibble: 1 x 8</span>
+<span class="co">#&gt;   parameter1                                      parameter2 statistic</span>
+<span class="co">#&gt;   &lt;chr&gt;                                           &lt;chr&gt;          &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 data %&gt;% dplyr::pull({     {         x     } }) &lt;NA&gt;            5.51</span>
+<span class="co">#&gt;      p.value method  estimate conf.low conf.high</span>
+<span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 0.00000738 Kendall     -0.6   -0.830    -0.393</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -232,13 +232,13 @@
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 9</span>
-<span class="co">#&gt;   statistic       p.value parameter method        alternative estimate ci.width</span>
-<span class="co">#&gt;       &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      6.65 0.00000000222        90 Paired t-test two.sided      0.691     0.95</span>
-<span class="co">#&gt;   conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    0.465     0.922</span>
+<span class="co">#&gt; # A tibble: 1 x 12</span>
+<span class="co">#&gt;   term   group     mean.group1 mean.group2 statistic    df       p.value</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 desire condition        1.66          NA      6.65    90 0.00000000222</span>
+<span class="co">#&gt;   method        estimate ci.width conf.low conf.high</span>
+<span class="co">#&gt;   &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Paired t-test    0.691     0.95    0.465     0.922</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -252,13 +252,13 @@
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 7</span>
-<span class="co">#&gt;   statistic      p.value method                                              </span>
-<span class="co">#&gt;       &lt;dbl&gt;        &lt;dbl&gt; &lt;chr&gt;                                               </span>
-<span class="co">#&gt; 1      7.72 0.0000000241 Wilcoxon signed rank test with continuity correction</span>
-<span class="co">#&gt;   alternative estimate conf.low conf.high</span>
-<span class="co">#&gt;   &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 two.sided      0.580     0.47       0.7</span>
+<span class="co">#&gt; # A tibble: 1 x 8</span>
+<span class="co">#&gt;   parameter1          parameter2 statistic      p.value method  estimate</span>
+<span class="co">#&gt;   &lt;chr&gt;               &lt;chr&gt;          &lt;dbl&gt;        &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 desire by condition &lt;NA&gt;            7.72 0.0000000241 Kendall    0.580</span>
+<span class="co">#&gt;   conf.low conf.high</span>
+<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1     0.47       0.7</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -273,12 +273,12 @@
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 11</span>
-<span class="co">#&gt;   statistic parameter       p.value effect_size `NULL` estimate     S     M</span>
-<span class="co">#&gt;       &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      6.71        72 0.00000000375 AKP              0    0.621   0.1   0.3</span>
-<span class="co">#&gt;       L conf.low conf.high</span>
-<span class="co">#&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1   0.5    0.385     0.798</span>
+<span class="co">#&gt;   statistic    df       p.value effect_size `NULL` estimate     S     M     L</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      6.71    72 0.00000000375 AKP              0    0.621   0.1   0.3   0.5</span>
+<span class="co">#&gt;   conf.low conf.high</span>
+<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1    0.385     0.798</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
@@ -321,13 +321,13 @@
   y <span class="op">=</span> <span class="va">len</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 9</span>
-<span class="co">#&gt;   statistic p.value parameter method                  alternative estimate</span>
-<span class="co">#&gt;       &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;                   &lt;chr&gt;          &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      1.92  0.0606      55.3 Welch Two Sample t-test two.sided      0.488</span>
-<span class="co">#&gt;   ci.width conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     0.95  -0.0212     0.993</span>
+<span class="co">#&gt; # A tibble: 1 x 12</span>
+<span class="co">#&gt;   term  group mean.group1 mean.group2 statistic    df p.value</span>
+<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 len   supp         20.7        17.0      1.92  55.3  0.0606</span>
+<span class="co">#&gt;   method                  estimate ci.width conf.low conf.high</span>
+<span class="co">#&gt;   &lt;chr&gt;                      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Welch Two Sample t-test    0.488     0.95  -0.0212     0.993</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
@@ -339,13 +339,13 @@
   var.equal <span class="op">=</span> <span class="cn">TRUE</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 9</span>
-<span class="co">#&gt;   statistic p.value parameter method            alternative estimate ci.width</span>
-<span class="co">#&gt;       &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      1.92  0.0604        58 Two Sample t-test two.sided      0.488     0.95</span>
-<span class="co">#&gt;   conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1  -0.0212     0.993</span>
+<span class="co">#&gt; # A tibble: 1 x 12</span>
+<span class="co">#&gt;   term  group mean.group1 mean.group2 statistic    df p.value</span>
+<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 len   supp         20.7        17.0      1.92    58  0.0604</span>
+<span class="co">#&gt;   method               estimate ci.width conf.low conf.high</span>
+<span class="co">#&gt;   &lt;chr&gt;                   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 " Two Sample t-test"    0.488     0.95  -0.0212     0.993</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -357,13 +357,10 @@
   y <span class="op">=</span> <span class="va">len</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 7</span>
-<span class="co">#&gt;   statistic p.value method                                           </span>
-<span class="co">#&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                                            </span>
-<span class="co">#&gt; 1      6.36  0.0645 Wilcoxon rank sum test with continuity correction</span>
-<span class="co">#&gt;   alternative estimate conf.low conf.high</span>
-<span class="co">#&gt;   &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 two.sided       0.24  -0.0055      0.47</span>
+<span class="co">#&gt; # A tibble: 1 x 8</span>
+<span class="co">#&gt;   parameter1  parameter2 statistic p.value method  estimate conf.low conf.high</span>
+<span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 len by supp &lt;NA&gt;            6.36  0.0645 Kendall     0.24  -0.0055      0.47</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -376,9 +373,9 @@
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 6</span>
-<span class="co">#&gt;   statistic parameter p.value estimate conf.low conf.high</span>
-<span class="co">#&gt;       &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      2.05      45.2  0.0460    0.384   0.0401     0.659</span>
+<span class="co">#&gt;   statistic    df p.value estimate conf.low conf.high</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      2.05  45.2  0.0460    0.384   0.0401     0.659</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
@@ -444,10 +441,10 @@
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 7</span>
-<span class="co">#&gt;   statistic  p.value parameter method                 estimate conf.low</span>
-<span class="co">#&gt;       &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      55.8 4.56e-12         3 Friedman rank sum test    0.615    0.615</span>
+<span class="co">#&gt; # A tibble: 1 x 9</span>
+<span class="co">#&gt;   parameter1 parameter2 statistic    df  p.value method  estimate conf.low</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 desire     condition       55.8     3 4.56e-12 Kendall    0.615    0.615</span>
 <span class="co">#&gt;   conf.high</span>
 <span class="co">#&gt;       &lt;dbl&gt;</span>
 <span class="co">#&gt; 1     0.906</span>
@@ -589,13 +586,13 @@
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 7</span>
-<span class="co">#&gt;   statistic  p.value parameter method                       estimate conf.low</span>
-<span class="co">#&gt;       &lt;dbl&gt;    &lt;dbl&gt;     &lt;int&gt; &lt;chr&gt;                           &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      96.9 8.92e-22         2 Kruskal-Wallis rank sum test    0.651    0.560</span>
-<span class="co">#&gt;   conf.high</span>
-<span class="co">#&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     0.724</span>
+<span class="co">#&gt; # A tibble: 1 x 9</span>
+<span class="co">#&gt;   parameter1              parameter2 statistic    df  p.value method  estimate</span>
+<span class="co">#&gt;   &lt;chr&gt;                   &lt;chr&gt;          &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Sepal.Length by Species &lt;NA&gt;            96.9     2 8.92e-22 Kendall    0.651</span>
+<span class="co">#&gt;   conf.low conf.high</span>
+<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1    0.560     0.724</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -690,10 +687,10 @@
   paired <span class="op">=</span> <span class="cn">FALSE</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 8</span>
-<span class="co">#&gt;   statistic p.value parameter method                     estimate ci.width</span>
-<span class="co">#&gt;       &lt;dbl&gt;   &lt;dbl&gt;     &lt;int&gt; &lt;chr&gt;                         &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      8.74  0.0126         2 Pearson's Chi-squared test    0.464     0.95</span>
+<span class="co">#&gt; # A tibble: 1 x 10</span>
+<span class="co">#&gt;   parameter1 parameter2 statistic    df p.value method  estimate ci.width</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 x_arg      &lt;NA&gt;            8.74     2  0.0126 Pearson    0.464     0.95</span>
 <span class="co">#&gt;   conf.low conf.high</span>
 <span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt; 1        0     0.777</span>
@@ -708,10 +705,10 @@
   counts <span class="op">=</span> <span class="st">"Freq"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 8</span>
-<span class="co">#&gt;   statistic  p.value parameter method                     estimate ci.width</span>
-<span class="co">#&gt;       &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      13.3 0.000261         1 McNemar's Chi-squared test    0.333     0.95</span>
+<span class="co">#&gt; # A tibble: 1 x 10</span>
+<span class="co">#&gt;   parameter1 parameter2 statistic    df  p.value method  estimate ci.width</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 x_arg      &lt;NA&gt;            13.3     1 0.000261 Kendall    0.333     0.95</span>
 <span class="co">#&gt;   conf.low conf.high</span>
 <span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt; 1    0.164     0.427</span>
@@ -727,13 +724,13 @@
   counts <span class="op">=</span> <span class="va">Freq</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 8</span>
-<span class="co">#&gt;   statistic  p.value parameter method                                   estimate</span>
-<span class="co">#&gt;       &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;                                       &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      133. 9.65e-29         3 Chi-squared test for given probabilities    0.272</span>
-<span class="co">#&gt;   ci.width conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     0.95    0.222     0.316</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 1 x 10</span>
+<span class="co">#&gt;   parameter1 parameter2 statistic    df  p.value method  estimate ci.width</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 x_arg      &lt;NA&gt;            133.     3 9.65e-29 Kendall    0.272     0.95</span>
+<span class="co">#&gt;   conf.low conf.high</span>
+<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1    0.222     0.316</span></code></pre></div>
 </div>
 <div id="correlation-analyses" class="section level1">
 <h1 class="hasAnchor">
@@ -754,9 +751,9 @@
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 10</span>
-<span class="co">#&gt;   parameter1 parameter2 estimate conf.low conf.high statistic parameter  p.value</span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;int&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 wt         mpg          -0.868   -0.934    -0.744     -9.56        30 1.29e-10</span>
+<span class="co">#&gt;   parameter1 parameter2 estimate conf.low conf.high statistic    df  p.value</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 wt         mpg          -0.868   -0.934    -0.744     -9.56    30 1.29e-10</span>
 <span class="co">#&gt;   method  n.obs</span>
 <span class="co">#&gt;   &lt;chr&gt;   &lt;int&gt;</span>
 <span class="co">#&gt; 1 Pearson    32</span>
@@ -792,9 +789,9 @@
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 10</span>
-<span class="co">#&gt;   parameter1 parameter2 estimate conf.low conf.high statistic parameter  p.value</span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 wt         mpg          -0.896   -0.948    -0.796     -11.1        30 4.15e-12</span>
+<span class="co">#&gt;   parameter1 parameter2 estimate conf.low conf.high statistic    df  p.value</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 wt         mpg          -0.896   -0.948    -0.796     -11.1    30 4.15e-12</span>
 <span class="co">#&gt;   method          n.obs</span>
 <span class="co">#&gt;   &lt;chr&gt;           &lt;int&gt;</span>
 <span class="co">#&gt; 1 Percentage Bend    32</span>
@@ -836,9 +833,9 @@
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/expr_meta_random.html">expr_meta_random</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, output <span class="op">=</span> <span class="st">"dataframe"</span>, type <span class="op">=</span> <span class="st">"parametric"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 8</span>
-<span class="co">#&gt;   term    type    estimate std.error statistic  p.value conf.low conf.high</span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 overall summary   -0.767     0.212     -3.62 0.000295    -1.18    -0.351</span>
+<span class="co">#&gt;   term    estimate std.error conf.low conf.high statistic  p.value weight</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Overall   -0.767     0.212    -1.18    -0.351     -3.62 0.000295     NA</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
