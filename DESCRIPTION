@@ -25,7 +25,6 @@ BugReports:
 Depends: 
     R (>= 3.6.0)
 Imports:
-    broomExtra,
     correlation,
     dplyr,
     effectsize,

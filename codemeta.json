@@ -128,18 +128,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "broomExtra",
-      "name": "broomExtra",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=broomExtra"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "correlation",
       "name": "correlation",
       "provider": {
@@ -384,6 +372,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3896.981KB",
+  "fileSize": "3897.261KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }
