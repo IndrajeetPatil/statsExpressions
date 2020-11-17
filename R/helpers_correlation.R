@@ -94,7 +94,7 @@ expr_corr_test <- function(data,
       as_tibble(.)
   }
 
-  # ------------------------ subtitle text elements -----------------------------
+  # ------------------------ expression elements -----------------------------
 
   # preparing other needed objects
   if (stats_type == "parametric") {

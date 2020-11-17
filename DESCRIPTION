@@ -51,7 +51,7 @@ Suggests:
 Remotes:
     easystats/parameters,
     easystats/insight,
-    easystats/performance    
+    easystats/performance
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

@@ -98,7 +98,7 @@
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2020-11-12</h4>
+            <h4 class="date">2020-11-16</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -273,12 +273,12 @@
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 11</span>
-<span class="co">#&gt;   statistic    df       p.value effect_size `NULL` estimate     S     M     L</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      6.71    72 0.00000000375 AKP              0    0.621   0.1   0.3   0.5</span>
-<span class="co">#&gt;   conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    0.385     0.798</span>
+<span class="co">#&gt;   statistic parameter       p.value effect_size `NULL` estimate     S     M</span>
+<span class="co">#&gt;       &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      6.71        72 0.00000000375 AKP              0    0.621   0.1   0.3</span>
+<span class="co">#&gt;       L conf.low conf.high</span>
+<span class="co">#&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1   0.5    0.385     0.798</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
@@ -340,12 +340,12 @@
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 12</span>
-<span class="co">#&gt;   term  group mean.group1 mean.group2 statistic    df p.value</span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 len   supp         20.7        17.0      1.92    58  0.0604</span>
-<span class="co">#&gt;   method               estimate ci.width conf.low conf.high</span>
-<span class="co">#&gt;   &lt;chr&gt;                   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 " Two Sample t-test"    0.488     0.95  -0.0212     0.993</span>
+<span class="co">#&gt;   term  group mean.group1 mean.group2 statistic    df p.value method           </span>
+<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;            </span>
+<span class="co">#&gt; 1 len   supp         20.7        17.0      1.92    58  0.0604 Two Sample t-test</span>
+<span class="co">#&gt;   estimate ci.width conf.low conf.high</span>
+<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1    0.488     0.95  -0.0212     0.993</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -373,9 +373,9 @@
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 6</span>
-<span class="co">#&gt;   statistic    df p.value estimate conf.low conf.high</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      2.05  45.2  0.0460    0.384   0.0401     0.659</span>
+<span class="co">#&gt;   statistic parameter p.value estimate conf.low conf.high</span>
+<span class="co">#&gt;       &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      2.05      45.2  0.0460    0.384   0.0401     0.659</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
@@ -687,13 +687,10 @@
   paired <span class="op">=</span> <span class="cn">FALSE</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
-<span class="co">#&gt;   parameter1 parameter2 statistic    df p.value method  estimate ci.width</span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 x_arg      &lt;NA&gt;            8.74     2  0.0126 Pearson    0.464     0.95</span>
-<span class="co">#&gt;   conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1        0     0.777</span>
+<span class="co">#&gt; # A tibble: 1 x 7</span>
+<span class="co">#&gt;   statistic    df p.value estimate ci.width conf.low conf.high</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      8.74     2  0.0126    0.464     0.95        0     0.777</span>
 
 <span class="co"># paired</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
@@ -705,13 +702,13 @@
   counts <span class="op">=</span> <span class="st">"Freq"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
-<span class="co">#&gt;   parameter1 parameter2 statistic    df  p.value method  estimate ci.width</span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 x_arg      &lt;NA&gt;            13.3     1 0.000261 Kendall    0.333     0.95</span>
-<span class="co">#&gt;   conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    0.164     0.427</span>
+<span class="co">#&gt; # A tibble: 1 x 8</span>
+<span class="co">#&gt;   statistic    df  p.value method                     estimate ci.width conf.low</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      13.3     1 0.000261 McNemar's Chi-squared test    0.333     0.95    0.164</span>
+<span class="co">#&gt;   conf.high</span>
+<span class="co">#&gt;       &lt;dbl&gt;</span>
+<span class="co">#&gt; 1     0.427</span>
 
 
 <span class="co"># ------------------------ goodness of fit tests ---------------------------</span>
@@ -724,13 +721,10 @@
   counts <span class="op">=</span> <span class="va">Freq</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
-<span class="co">#&gt;   parameter1 parameter2 statistic    df  p.value method  estimate ci.width</span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 x_arg      &lt;NA&gt;            133.     3 9.65e-29 Kendall    0.272     0.95</span>
-<span class="co">#&gt;   conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    0.222     0.316</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 1 x 7</span>
+<span class="co">#&gt;   statistic    df  p.value estimate ci.width conf.low conf.high</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      133.     3 9.65e-29    0.272     0.95    0.222     0.316</span></code></pre></div>
 </div>
 <div id="correlation-analyses" class="section level1">
 <h1 class="hasAnchor">

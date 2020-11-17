@@ -1,11 +1,10 @@
 #' @name expr_contingency_tab
-#' @rdname expr_contingency_tab
-#' @title Making expression for contingency table and goodness of fit tests
+#' @title Making expression for contingency table analysis
 #'
-#' @return Expression for contingency analysis (Pearson's chi-square test for
-#'   independence for between-subjects design or McNemar's test for
-#'   within-subjects design) or goodness of fit test for a single categorical
-#'   variable.
+#' @return Expression or a dataframe for contingency analysis (Pearson's
+#'   chi-square test for independence for between-subjects design or McNemar's
+#'   test for within-subjects design) or goodness of fit test for a single
+#'   categorical variable.
 #'
 #' @references For more details, see-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
@@ -38,10 +37,6 @@
 #' @importFrom stats mcnemar.test chisq.test
 #' @importFrom effectsize cramers_v cohens_g
 #' @importFrom insight standardize_names
-#'
-#' @details For more details about how the effect sizes and their confidence
-#'   intervals were computed, see documentation in `?effectsize::cramers_v` and
-#'   `?effectsize::cohens_g`.
 #'
 #' @examples
 #' # for reproducibility
@@ -132,22 +127,20 @@ expr_contingency_tab <- function(data,
     # ======================== Pearson's test ================================
 
     if (isFALSE(paired)) {
-      # computing stats and effect size + CI
+      # details for the expression
       mod <- stats::chisq.test(x = x_arg, correct = FALSE)
       .f <- effectsize::cramers_v
       effsize.text <- quote(widehat(italic("V"))["Cramer"])
-
       n.text <- quote(italic("n")["obs"])
     }
 
     # ======================== McNemar's test ================================
 
     if (isTRUE(paired)) {
-      # computing stats and effect size + CI
+      # details for the expression
       mod <- stats::mcnemar.test(x = x_arg, correct = FALSE)
       .f <- effectsize::cohens_g
       effsize.text <- quote(widehat(italic("g"))["Cohen"])
-
       n.text <- quote(italic("n")["pairs"])
     }
   }
@@ -161,7 +154,7 @@ expr_contingency_tab <- function(data,
     # checking if the chi-squared test can be run
     mod <- stats::chisq.test(x = x_arg, correct = FALSE, p = ratio)
 
-    # effect size text
+    # details for the expression
     .f <- effectsize::cramers_v
     effsize.text <- quote(widehat(italic("V"))["Cramer"])
     n.text <- quote(italic("n")["obs"])
@@ -183,7 +176,7 @@ expr_contingency_tab <- function(data,
       adjust = TRUE,
       ci = conf.level
     ) %>%
-    insight::standardize_names(data = ., style = "broom")
+    parameters::standardize_names(data = ., style = "broom")
 
   # combining dataframes
   stats_df <- dplyr::bind_cols(tidy_model_parameters(mod), effsize_df)

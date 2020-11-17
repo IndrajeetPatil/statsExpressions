@@ -191,7 +191,7 @@ expr_anova_parametric <- function(data,
       partial = TRUE,
       ci = conf.level
     ) %>%
-    insight::standardize_names(data = ., style = "broom")
+    parameters::standardize_names(data = ., style = "broom")
 
   # test details
   statistic.text <-
