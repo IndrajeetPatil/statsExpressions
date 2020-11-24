@@ -24,7 +24,7 @@
 #' @importFrom metafor rma
 #' @importFrom metaplus metaplus
 #' @importFrom dplyr rename_all recode mutate
-#' @importFrom tidyBF bf_meta_random meta_data_check
+#' @importFrom tidyBF bf_meta_random
 #'
 #' @examples
 #' \donttest{
@@ -38,17 +38,8 @@
 #'
 #' # ----------------------- parametric ---------------------------------------
 #'
-#' # making subtitle
-#' expr_meta_random(
-#'   data = df,
-#'   k = 3
-#' )
-#'
-#' # making caption
-#' expr_meta_random(
-#'   data = df,
-#'   output = "caption"
-#' )
+#' # creating expression
+#' expr_meta_random(data = df, k = 3)
 #'
 #' # ----------------------- random -----------------------------------------
 #'
@@ -68,9 +59,11 @@
 #'   type = "bayes",
 #'   k = 3,
 #'   # additional arguments given to `metaBMA`
-#'   iter = 5000,
-#'   summarize = "integrate",
-#'   control = list(adapt_delta = 0.99, max_treedepth = 15)
+#'   metaBMA.args = list(
+#'     iter = 5000,
+#'     summarize = "integrate",
+#'     control = list(adapt_delta = 0.99, max_treedepth = 15)
+#'   )
 #' )
 #' }
 #' @export
@@ -78,8 +71,6 @@
 # function body
 expr_meta_random <- function(data,
                              type = "parametric",
-                             d = prior("norm", c(mean = 0, sd = 0.3)),
-                             tau = prior("invgamma", c(shape = 1, scale = 0.15)),
                              metaBMA.args = list(),
                              random = "mixture",
                              k = 2L,
@@ -88,7 +79,6 @@ expr_meta_random <- function(data,
                              output = "expression",
                              ...) {
   # check the data contains needed column
-  tidyBF::meta_data_check(data)
   stats.type <- stats_type_switch(type)
 
   #----------------------- parametric ------------------------------------
@@ -162,7 +152,7 @@ expr_meta_random <- function(data,
   # clean up
   if (stats.type %in% c("parametric", "robust")) {
     # create a dataframe with coefficients
-    stats_df <- dplyr::filter(tidy_model_parameters(mod), term == "Overall")
+    stats_df <- tidy_model_parameters(mod, include_studies = FALSE)
 
     # preparing the subtitle
     subtitle <-
@@ -185,8 +175,6 @@ expr_meta_random <- function(data,
     stats_df <-
       tidyBF::bf_meta_random(
         data = data,
-        d = d,
-        tau = tau,
         metaBMA.args = metaBMA.args,
         k = k,
         conf.level = conf.level,

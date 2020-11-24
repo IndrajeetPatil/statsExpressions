@@ -17,7 +17,6 @@
 \alias{bf_meta_random}
 \alias{bf_corr_test}
 \alias{bf_oneway_anova}
-\alias{prior}
 \alias{correlation}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -32,6 +31,6 @@ below to see their documentation.
 
   \item{rlang}{\code{\link[rlang:op-na-default]{\%|\%}}, \code{\link[rlang:op-null-default]{\%||\%}}, \code{\link[rlang:nse-force]{:=}}}
 
-  \item{tidyBF}{\code{\link[tidyBF]{bf_contingency_tab}}, \code{\link[tidyBF]{bf_corr_test}}, \code{\link[tidyBF]{bf_meta_random}}, \code{\link[tidyBF]{bf_oneway_anova}}, \code{\link[tidyBF]{bf_ttest}}, \code{\link[tidyBF:reexports]{prior}}}
+  \item{tidyBF}{\code{\link[tidyBF]{bf_contingency_tab}}, \code{\link[tidyBF]{bf_corr_test}}, \code{\link[tidyBF]{bf_meta_random}}, \code{\link[tidyBF]{bf_oneway_anova}}, \code{\link[tidyBF]{bf_ttest}}}
 }}
 

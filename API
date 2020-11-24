@@ -8,7 +8,7 @@ expr_anova_parametric(data, x, y, subject.id = NULL, paired = FALSE, k = 2L, con
 expr_anova_robust(data, x, y, subject.id = NULL, paired = FALSE, k = 2L, conf.level = 0.95, tr = 0.1, nboot = 100L, output = "expression", ...)
 expr_contingency_tab(data, x, y = NULL, counts = NULL, paired = FALSE, ratio = NULL, k = 2L, conf.level = 0.95, output = "expression", ...)
 expr_corr_test(data, x, y, k = 2L, conf.level = 0.95, beta = 0.1, type = "parametric", bf.prior = 0.707, output = "expression", ...)
-expr_meta_random(data, type = "parametric", d = prior("norm", c(mean = 0, sd = 0.3)), tau = prior("invgamma", c(shape = 1, scale = 0.15)), metaBMA.args = list(), random = "mixture", k = 2L, conf.level = 0.95, caption = NULL, output = "expression", ...)
+expr_meta_random(data, type = "parametric", metaBMA.args = list(), random = "mixture", k = 2L, conf.level = 0.95, caption = NULL, output = "expression", ...)
 expr_t_bayes(data, x, y, subject.id = NULL, paired = FALSE, k = 2L, bf.prior = 0.707, output = "expression", ...)
 expr_t_nonparametric(data, x, y, subject.id = NULL, paired = FALSE, k = 2L, conf.level = 0.95, conf.type = "norm", nboot = 100, output = "expression", ...)
 expr_t_onesample(data, x, type = "parametric", test.value = 0, k = 2L, conf.level = 0.95, conf.type = "norm", bf.prior = 0.707, robust.estimator = "onestep", effsize.type = "g", nboot = 100L, output = "expression", ...)
@@ -34,5 +34,4 @@ tidyBF::bf_meta_random
 tidyBF::bf_oneway_anova
 tidyBF::bf_ttest
 correlation::correlation
-metaBMA::prior
 tibble::tibble

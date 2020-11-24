@@ -24,7 +24,7 @@ testthat::test_that(
 # loops - one-sample ---------------------------------------------------------
 
 testthat::test_that(
-  desc = "expr_corr_test works in loop",
+  desc = "expr_onesample works in loop",
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
@@ -36,6 +36,30 @@ testthat::test_that(
           data = mtcars,
           x = col.name[i],
           test.value = 3
+        ))
+      })
+
+    testthat::expect_equal(length(ls), 12L)
+  }
+)
+
+
+# loops - contingency tabs ---------------------------------------------------
+
+testthat::test_that(
+  desc = "expr_contingency_tab works in loop",
+  code = {
+    testthat::skip_if(getRversion() < "3.6")
+
+    df <- dplyr::select(mtcars, am, cyl, vs)
+    col.name <- colnames(df)
+
+    set.seed(123)
+    ls <-
+      capture.output(for (i in 1:3) {
+        print(expr_contingency_tab(
+          data = mtcars,
+          x = col.name[i]
         ))
       })
 

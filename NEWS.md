@@ -7,6 +7,8 @@ MAJOR CHANGES
     conventions.
     
   - Drops `broomExtra` from dependencies in favor of `parameters` + `performance`.
+  
+  - Removes the unused and vestigial `Titanic_full` dataset.
 
 # statsExpressions 0.6.0
 

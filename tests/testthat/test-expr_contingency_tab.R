@@ -5,18 +5,15 @@ testthat::test_that(
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
-    # ggstatsplot output
+    # `statsExpressions` output
     set.seed(123)
     using_function1 <-
       suppressWarnings(statsExpressions::expr_contingency_tab(
-        data = statsExpressions::Titanic_full,
-        x = "Survived",
-        y = Class,
-        stat.title = "Testing",
+        data = mtcars,
+        x = "am",
+        y = cyl,
         k = 5,
-        bias.correct = FALSE,
-        conf.level = 0.99,
-        messages = FALSE
+        conf.level = 0.99
       ))
 
     # expected output
@@ -26,27 +23,27 @@ testthat::test_that(
         paste(
           chi["Pearson"]^2,
           "(",
-          "3",
+          "2",
           ") = ",
-          "190.40110",
+          "8.74073",
           ", ",
           italic("p"),
           " = ",
-          "4.9999e-41",
+          "0.01265",
           ", ",
           widehat(italic("V"))["Cramer"],
           " = ",
-          "0.29186",
+          "0.46431",
           ", CI"["99%"],
           " [",
-          "0.23516",
+          "0.00000",
           ", ",
-          "0.34527",
+          "0.88767",
           "]",
           ", ",
           italic("n")["obs"],
           " = ",
-          2201L
+          32L
         )
       )
 
@@ -58,10 +55,9 @@ testthat::test_that(
     using_function2 <-
       statsExpressions::expr_contingency_tab(
         data = as.data.frame(Titanic),
-        x = Sex,
+        x = names(as.data.frame(Titanic))[2],
         y = Survived,
-        counts = "Freq",
-        messages = FALSE
+        counts = "Freq"
       )
 
     results2 <-
@@ -112,8 +108,7 @@ testthat::test_that(
         data = ggplot2::msleep,
         x = vore,
         y = "conservation",
-        conf.level = .990,
-        messages = FALSE
+        conf.level = .990
       ))
 
     # expected output
@@ -180,7 +175,7 @@ testthat::test_that(
         row.names = c(NA, -4L)
       )
 
-    # ggstatsplot output
+    # `statsExpressions` output
     set.seed(123)
     using_function1 <-
       suppressWarnings(
@@ -190,8 +185,7 @@ testthat::test_that(
           y = response_after,
           paired = TRUE,
           counts = "Freq",
-          k = 5,
-          messages = FALSE
+          k = 5
         )
       )
 
@@ -271,7 +265,7 @@ testthat::test_that(
     paired_data[24, 1] <- NA
     paired_data[65, 1] <- NA
 
-    # ggstatsplot output
+    # `statsExpressions` output
     set.seed(123)
     using_function1 <-
       suppressWarnings(
@@ -281,8 +275,7 @@ testthat::test_that(
           y = "response_after",
           paired = TRUE,
           k = 3,
-          conf.level = 0.90,
-          messages = FALSE
+          conf.level = 0.90
         )
       )
 
@@ -354,7 +347,7 @@ testthat::test_that(
         Var2 == "Jedi2" ~ "Jedi"
       ))
 
-    # ggstatsplot output
+    # `statsExpressions` output
     set.seed(123)
     subtitle1 <-
       suppressWarnings(statsExpressions::expr_contingency_tab(
@@ -366,8 +359,7 @@ testthat::test_that(
         k = 4,
         conf.level = 0.99,
         conf.type = "basic",
-        nboot = 50,
-        messages = FALSE
+        nboot = 50
       ))
 
     # expected output
@@ -462,14 +454,13 @@ testthat::test_that(
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
-    # ggstatsplot output
+    # `statsExpressions` output
     set.seed(123)
     using_function1 <-
       suppressWarnings(statsExpressions::expr_contingency_tab(
         data = mtcars,
         x = "am",
         conf.level = 0.99,
-        messages = FALSE,
         k = 5
       ))
 
@@ -513,8 +504,7 @@ testthat::test_that(
       statsExpressions::expr_contingency_tab(
         data = as.data.frame(Titanic),
         x = Sex,
-        counts = "Freq",
-        messages = FALSE
+        counts = "Freq"
       )
 
     results2 <-
@@ -558,15 +548,14 @@ testthat::test_that(
   code = {
     testthat::skip_if(getRversion() < "3.6")
 
-    # ggstatsplot output
+    # `statsExpressions` output
     set.seed(123)
     using_function1 <-
       statsExpressions::expr_contingency_tab(
         data = as.data.frame(Titanic),
         x = Sex,
         counts = "Freq",
-        k = 3,
-        messages = FALSE
+        k = 3
       )
 
     # expected output
@@ -618,8 +607,7 @@ testthat::test_that(
       statsExpressions::expr_contingency_tab(
         data = ggplot2::msleep,
         x = vore,
-        ratio = c(0.2, 0.2, 0.3, 0.3),
-        messages = TRUE
+        ratio = c(0.2, 0.2, 0.3, 0.3)
       )
 
     # expected

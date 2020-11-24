@@ -58,10 +58,6 @@ tidyBF::bf_corr_test
 #' @importFrom tidyBF bf_oneway_anova
 tidyBF::bf_oneway_anova
 
-#' @export
-#' @importFrom tidyBF prior
-tidyBF::prior
-
 # ----------------------- easystats -------------------------------------
 
 #' @export

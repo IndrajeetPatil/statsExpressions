@@ -66,29 +66,6 @@
 #' dplyr::glimpse(movies_long)
 "movies_long"
 
-#' @title Titanic dataset.
-#' @name Titanic_full
-#' @details This data set provides information on the fate of passengers on the
-#'   fatal maiden voyage of the ocean liner 'Titanic', summarized according to
-#'   economic status (class), sex, age and survival.
-#'
-#' This is a modified dataset from `datasets` package.
-#'
-#' @format A data frame with 2201 rows and 5 variables
-#' \itemize{
-#'   \item id. Dummy identity number for each person.
-#'   \item Class.	1st, 2nd, 3rd, Crew.
-#'   \item Sex.	Male, Female.
-#'   \item Age.	Child, Adult.
-#'   \item Survived.	No, Yes.
-#' }
-#'
-#' @examples
-#' dim(Titanic_full)
-#' head(Titanic_full)
-#' dplyr::glimpse(Titanic_full)
-"Titanic_full"
-
 
 #' @title Edgar Anderson's Iris Data in long format.
 #' @name iris_long

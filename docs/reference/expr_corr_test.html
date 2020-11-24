@@ -228,12 +228,12 @@ results.</p></td>
 Character (vector) or list with one or more of these options: <code>"median"</code>,
 <code>"mean"</code>, <code>"MAP"</code> or <code>"all"</code>.</p></dd>
     <dt><code>conf.method</code></dt><dd><p>The type of index used for Credible Interval. Can be
-<code>"hdi"</code> (default, see <code><a href='https://easystats.github.io/bayestestR/reference/hdi.html'>bayestestR::hdi()</a></code>), <code>"eti"</code> (see
-<code><a href='https://easystats.github.io/bayestestR/reference/eti.html'>bayestestR::eti()</a></code>) or <code>"si"</code> (see <code><a href='https://easystats.github.io/bayestestR/reference/si.html'>bayestestR::si()</a></code>).</p></dd>
+<code>"hdi"</code> (default), <code>"eti"</code>, or <code>"si"</code> (see <code>si()</code>, <code>hdi()</code>, <code>eti()</code>
+functions from <code>bayestestR</code> package).</p></dd>
     <dt><code>k</code></dt><dd><p>Number of digits after decimal point (should be an integer)
 (Default: <code>k = 2L</code>).</p></dd>
-    <dt><code>top.text</code></dt><dd><p>Text to display as top.text (will be displayed on top of the
-Bayes Factor top.text/message).</p></dd>
+    <dt><code>top.text</code></dt><dd><p>Text to display on top of the Bayes Factor message. This is
+mostly relevant in the context of <code>ggstatsplot</code> functions.</p></dd>
     <dt><code>output</code></dt><dd><p>If <code>"expression"</code>, will return expression with statistical
 details, while <code>"dataframe"</code> will return a dataframe containing the
 results.</p></dd>

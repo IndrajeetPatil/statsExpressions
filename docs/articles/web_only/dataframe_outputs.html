@@ -98,7 +98,7 @@
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2020-11-16</h4>
+            <h4 class="date">2020-11-24</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -196,16 +196,13 @@
   bf.prior <span class="op">=</span> <span class="fl">0.8</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 13</span>
+<span class="co">#&gt; # A tibble: 1 x 11</span>
 <span class="co">#&gt;   term       estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Difference  0.00952   -0.250     0.255 0.532           0.619</span>
-<span class="co">#&gt;   prior.distribution prior.location prior.scale effect component    bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 cauchy                          0         0.8 fixed  conditional 0.130</span>
-<span class="co">#&gt;   log_e_bf10</span>
-<span class="co">#&gt;        &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      -2.04</span></code></pre></div>
+<span class="co">#&gt;   prior.distribution prior.location prior.scale  bf10 log_e_bf10</span>
+<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 cauchy                          0         0.8 0.130      -2.04</span></code></pre></div>
 </div>
 <div id="two-sample-tests" class="section level1">
 <h1 class="hasAnchor">
@@ -232,13 +229,13 @@
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 12</span>
-<span class="co">#&gt;   term   group     mean.group1 mean.group2 statistic    df       p.value</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 desire condition        1.66          NA      6.65    90 0.00000000222</span>
-<span class="co">#&gt;   method        estimate ci.width conf.low conf.high</span>
-<span class="co">#&gt;   &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Paired t-test    0.691     0.95    0.465     0.922</span>
+<span class="co">#&gt; # A tibble: 1 x 11</span>
+<span class="co">#&gt;   term   group     mean.difference statistic    df       p.value method       </span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;        </span>
+<span class="co">#&gt; 1 desire condition            1.66      6.65    90 0.00000000222 Paired t-test</span>
+<span class="co">#&gt;   estimate ci.width conf.low conf.high</span>
+<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1    0.691     0.95    0.465     0.922</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -292,16 +289,13 @@
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 13</span>
+<span class="co">#&gt; # A tibble: 1 x 11</span>
 <span class="co">#&gt;   term       estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Difference    -1.62    -2.12     -1.14     1               0</span>
-<span class="co">#&gt;   prior.distribution prior.location prior.scale effect component       bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 cauchy                          0       0.707 fixed  conditional 4762370.</span>
-<span class="co">#&gt;   log_e_bf10</span>
-<span class="co">#&gt;        &lt;dbl&gt;</span>
-<span class="co">#&gt; 1       15.4</span></code></pre></div>
+<span class="co">#&gt;   prior.distribution prior.location prior.scale     bf10 log_e_bf10</span>
+<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 cauchy                          0       0.707 4762370.       15.4</span></code></pre></div>
 </div>
 <div id="between-subjects-design" class="section level2">
 <h2 class="hasAnchor">
@@ -387,16 +381,13 @@
   y <span class="op">=</span> <span class="va">len</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 13</span>
+<span class="co">#&gt; # A tibble: 1 x 11</span>
 <span class="co">#&gt;   term       estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Difference    -3.16    -6.66     0.528 0.960          0.0424</span>
-<span class="co">#&gt;   prior.distribution prior.location prior.scale effect component    bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 cauchy                          0       0.707 fixed  conditional  1.20</span>
-<span class="co">#&gt;   log_e_bf10</span>
-<span class="co">#&gt;        &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      0.181</span></code></pre></div>
+<span class="co">#&gt;   prior.distribution prior.location prior.scale  bf10 log_e_bf10</span>
+<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 cauchy                          0       0.707  1.20      0.181</span></code></pre></div>
 </div>
 </div>
 <div id="one-way-anovas" class="section level1">
@@ -619,15 +610,15 @@
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 19</span>
-<span class="co">#&gt;   term               estimate conf.low conf.high    pd rope.percentage effect</span>
-<span class="co">#&gt;   &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt; </span>
-<span class="co">#&gt; 1 mu                   5.84     5.76       5.93  1               0     fixed </span>
-<span class="co">#&gt; 2 Species-setosa      -0.829   -0.947     -0.713 1               0     fixed </span>
-<span class="co">#&gt; 3 Species-versicolor   0.0916  -0.0275     0.208 0.936           0.434 fixed </span>
-<span class="co">#&gt; 4 Species-virginica    0.737    0.618      0.852 1               0     fixed </span>
-<span class="co">#&gt; 5 sig2                 0.267    0.210      0.335 1               0     fixed </span>
-<span class="co">#&gt; 6 g_Species            2.15     0.188     15.0   1               0     fixed </span>
+<span class="co">#&gt; # A tibble: 6 x 18</span>
+<span class="co">#&gt;   term               estimate conf.low conf.high    pd rope.percentage</span>
+<span class="co">#&gt;   &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 mu                   5.84     5.76       5.93  1               0    </span>
+<span class="co">#&gt; 2 Species-setosa      -0.829   -0.947     -0.713 1               0    </span>
+<span class="co">#&gt; 3 Species-versicolor   0.0916  -0.0275     0.208 0.936           0.434</span>
+<span class="co">#&gt; 4 Species-virginica    0.737    0.618      0.852 1               0    </span>
+<span class="co">#&gt; 5 sig2                 0.267    0.210      0.335 1               0    </span>
+<span class="co">#&gt; 6 g_Species            2.15     0.188     15.0   1               0    </span>
 <span class="co">#&gt;   component      bf10 log_e_bf10    r2 std.dev ci.width r2.conf.low r2.conf.high</span>
 <span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 extra       1.87e28       65.1 0.612  0.0310       95       0.544        0.667</span>
@@ -687,10 +678,13 @@
   paired <span class="op">=</span> <span class="cn">FALSE</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 7</span>
-<span class="co">#&gt;   statistic    df p.value estimate ci.width conf.low conf.high</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      8.74     2  0.0126    0.464     0.95        0     0.777</span>
+<span class="co">#&gt; # A tibble: 1 x 8</span>
+<span class="co">#&gt;   statistic    df p.value method                     estimate ci.width conf.low</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      8.74     2  0.0126 Pearson's Chi-squared test    0.464     0.95        0</span>
+<span class="co">#&gt;   conf.high</span>
+<span class="co">#&gt;       &lt;dbl&gt;</span>
+<span class="co">#&gt; 1     0.777</span>
 
 <span class="co"># paired</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
@@ -721,10 +715,13 @@
   counts <span class="op">=</span> <span class="va">Freq</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 7</span>
-<span class="co">#&gt;   statistic    df  p.value estimate ci.width conf.low conf.high</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      133.     3 9.65e-29    0.272     0.95    0.222     0.316</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 1 x 8</span>
+<span class="co">#&gt;   statistic    df  p.value method                                   estimate</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                                       &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      133.     3 9.65e-29 Chi-squared test for given probabilities    0.272</span>
+<span class="co">#&gt;   ci.width conf.low conf.high</span>
+<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1     0.95    0.222     0.316</span></code></pre></div>
 </div>
 <div id="correlation-analyses" class="section level1">
 <h1 class="hasAnchor">
@@ -801,13 +798,13 @@
   type <span class="op">=</span> <span class="st">"bayes"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 13</span>
+<span class="co">#&gt; # A tibble: 1 x 11</span>
 <span class="co">#&gt;   term  estimate conf.low conf.high    pd rope.percentage prior.distribution</span>
 <span class="co">#&gt;   &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;             </span>
 <span class="co">#&gt; 1 rho     -0.843   -0.934    -0.734     1               0 cauchy            </span>
-<span class="co">#&gt;   prior.location prior.scale effect component        bf10 log_e_bf10</span>
-<span class="co">#&gt;            &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1              0       0.707 fixed  conditional 56223033.       17.8</span></code></pre></div>
+<span class="co">#&gt;   prior.location prior.scale      bf10 log_e_bf10</span>
+<span class="co">#&gt;            &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1              0       0.707 56223033.       17.8</span></code></pre></div>
 </div>
 <div id="meta-analysis" class="section level1">
 <h1 class="hasAnchor">
@@ -846,15 +843,15 @@
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/expr_meta_random.html">expr_meta_random</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, output <span class="op">=</span> <span class="st">"dataframe"</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2 x 12</span>
+<span class="co">#&gt; # A tibble: 2 x 14</span>
 <span class="co">#&gt;   term    estimate std.error conf.low conf.high weight  bf10  rhat   ess</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Overall   -0.467     0.165   -0.788    -0.143     NA  39.2  1    6575.</span>
 <span class="co">#&gt; 2 tau        0.439     0.185    0.140     0.809     NA  NA    1.00 4260.</span>
-<span class="co">#&gt;   component log_e_bf10 prior.scale</span>
-<span class="co">#&gt;   &lt;chr&gt;          &lt;dbl&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 meta            3.67       0.707</span>
-<span class="co">#&gt; 2 meta           NA          0.707</span></code></pre></div>
+<span class="co">#&gt;   component prior.distribution prior.location prior.scale log_e_bf10</span>
+<span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 meta      norm                            0        0.3        3.67</span>
+<span class="co">#&gt; 2 meta      invgamma                        1        0.15      NA</span></code></pre></div>
 </div>
 <div id="suggestions" class="section level1">
 <h1 class="hasAnchor">

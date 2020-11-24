@@ -14,7 +14,8 @@ utils::globalVariables(
     "rowid",
     "statistic",
     "std.error",
-    "term"
+    "term",
+    ".counts"
   ),
   package = "statsExpressions",
   add = FALSE

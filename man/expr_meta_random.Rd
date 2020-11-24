@@ -7,8 +7,6 @@
 expr_meta_random(
   data,
   type = "parametric",
-  d = prior("norm", c(mean = 0, sd = 0.3)),
-  tau = prior("invgamma", c(shape = 1, scale = 0.15)),
   metaBMA.args = list(),
   random = "mixture",
   k = 2L,
@@ -28,14 +26,6 @@ two columns will be used for \code{yi}  and \code{sei} arguments in \code{metafo
 or \code{"robust"} or \code{"bayes"}).Corresponding abbreviations are also accepted:
 \code{"p"} (for parametric), \code{"np"} (nonparametric), \code{"r"} (robust), or
 \code{"bf"}resp.}
-
-\item{d}{\code{prior} distribution on the average effect size \code{d}. The
-prior probability density function is defined via \code{\link[metaBMA]{prior}}.}
-
-\item{tau}{\code{prior} distribution on the between-study heterogeneity
-\code{tau} (i.e., the standard deviation of the study effect sizes
-\code{dstudy} in a random-effects meta-analysis. A (nonnegative) prior
-probability density function is defined via \code{\link[metaBMA]{prior}}.}
 
 \item{metaBMA.args}{A list of additional arguments to be passed to
 \code{metaBMA::meta_random}.}
@@ -83,17 +73,8 @@ df <- dplyr::rename(mag, estimate = yi, std.error = sei)
 
 # ----------------------- parametric ---------------------------------------
 
-# making subtitle
-expr_meta_random(
-  data = df,
-  k = 3
-)
-
-# making caption
-expr_meta_random(
-  data = df,
-  output = "caption"
-)
+# creating expression
+expr_meta_random(data = df, k = 3)
 
 # ----------------------- random -----------------------------------------
 
@@ -113,9 +94,11 @@ expr_meta_random(
   type = "bayes",
   k = 3,
   # additional arguments given to `metaBMA`
-  iter = 5000,
-  summarize = "integrate",
-  control = list(adapt_delta = 0.99, max_treedepth = 15)
+  metaBMA.args = list(
+    iter = 5000,
+    summarize = "integrate",
+    control = list(adapt_delta = 0.99, max_treedepth = 15)
+  )
 )
 }
 }

@@ -75,35 +75,19 @@ expr_contingency_tab <- function(data,
                                  conf.level = 0.95,
                                  output = "expression",
                                  ...) {
-
-  # ensure the variables work quoted or unquoted
-  x <- rlang::ensym(x)
-  y <- if (!rlang::quo_is_null(rlang::enquo(y))) rlang::ensym(y)
-  counts <- if (!rlang::quo_is_null(rlang::enquo(counts))) rlang::ensym(counts)
+  # one-way or two-way table?
+  test <- ifelse(!rlang::quo_is_null(rlang::enquo(y)), "two.way", "one.way")
 
   # =============================== dataframe ================================
 
   # creating a dataframe
   data %<>%
-    dplyr::select(.data = ., {{ x }}, {{ y }}, {{ counts }}) %>%
-    tidyr::drop_na(data = .) %>%
-    as_tibble(x = .)
-
-  # x and y need to be factors; drop the unused levels of the factors
-
-  # x
-  data %<>% dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }})))
+    dplyr::select(.data = ., {{ x }}, {{ y }}, .counts = {{ counts }}) %>%
+    tidyr::drop_na(.) %>%
+    as_tibble(.)
 
   # untable the dataframe based on the count for each observation
-  if (!rlang::quo_is_null(rlang::enquo(counts))) {
-    data %<>%
-      tidyr::uncount(
-        data = .,
-        weights = {{ counts }},
-        .remove = TRUE,
-        .id = "id"
-      )
-  }
+  if (".counts" %in% names(data)) data %<>% tidyr::uncount(data = ., weights = .counts)
 
   # sample size
   sample_size <- nrow(data)
@@ -116,11 +100,7 @@ expr_contingency_tab <- function(data,
 
   # =============================== association tests ========================
 
-  # association tests
-  if (!rlang::quo_is_null(rlang::enquo(y))) {
-    # drop the unused levels of the column variable
-    data %<>% dplyr::mutate(.data = ., {{ y }} := droplevels(as.factor({{ y }})))
-
+  if (test == "two.way") {
     # creating a matrix with frequencies and cleaning it up
     x_arg <- table(data %>% dplyr::pull({{ x }}), data %>% dplyr::pull({{ y }}))
 
@@ -147,7 +127,7 @@ expr_contingency_tab <- function(data,
 
   # ======================== goodness of fit test ========================
 
-  if (rlang::quo_is_null(rlang::enquo(y))) {
+  if (test == "one.way") {
     # frequency table
     x_arg <- table(data %>% dplyr::pull({{ x }}))
 
@@ -195,7 +175,8 @@ expr_contingency_tab <- function(data,
     )
 
   # return the output
-  switch(output,
+  switch(
+    EXPR = output,
     "dataframe" = stats_df,
     subtitle
   )

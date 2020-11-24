@@ -154,8 +154,6 @@
     <pre class="usage"><span class='fu'>expr_meta_random</span><span class='op'>(</span>
   <span class='va'>data</span>,
   type <span class='op'>=</span> <span class='st'>"parametric"</span>,
-  d <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/metaBMA/man/prior.html'>prior</a></span><span class='op'>(</span><span class='st'>"norm"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>mean <span class='op'>=</span> <span class='fl'>0</span>, sd <span class='op'>=</span> <span class='fl'>0.3</span><span class='op'>)</span><span class='op'>)</span>,
-  tau <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/metaBMA/man/prior.html'>prior</a></span><span class='op'>(</span><span class='st'>"invgamma"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>shape <span class='op'>=</span> <span class='fl'>1</span>, scale <span class='op'>=</span> <span class='fl'>0.15</span><span class='op'>)</span><span class='op'>)</span>,
   metaBMA.args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
   random <span class='op'>=</span> <span class='st'>"mixture"</span>,
   k <span class='op'>=</span> <span class='fl'>2L</span>,
@@ -181,18 +179,6 @@ two columns will be used for <code>yi</code>  and <code>sei</code> arguments in 
 or <code>"robust"</code> or <code>"bayes"</code>).Corresponding abbreviations are also accepted:
 <code>"p"</code> (for parametric), <code>"np"</code> (nonparametric), <code>"r"</code> (robust), or
 <code>"bf"</code>resp.</p></td>
-    </tr>
-    <tr>
-      <th>d</th>
-      <td><p><code>prior</code> distribution on the average effect size <code>d</code>. The
-prior probability density function is defined via <code><a href='https://rdrr.io/pkg/metaBMA/man/prior.html'>prior</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>tau</th>
-      <td><p><code>prior</code> distribution on the between-study heterogeneity
-<code>tau</code> (i.e., the standard deviation of the study effect sizes
-<code>dstudy</code> in a random-effects meta-analysis. A (nonnegative) prior
-probability density function is defined via <code><a href='https://rdrr.io/pkg/metaBMA/man/prior.html'>prior</a></code>.</p></td>
     </tr>
     <tr>
       <th>metaBMA.args</th>
@@ -253,23 +239,12 @@ function.</p></td>
 
 <span class='co'># ----------------------- parametric ---------------------------------------</span>
 
-<span class='co'># making subtitle</span>
-<span class='fu'>expr_meta_random</span><span class='op'>(</span>
-  data <span class='op'>=</span> <span class='va'>df</span>,
-  k <span class='op'>=</span> <span class='fl'>3</span>
-<span class='op'>)</span>
+<span class='co'># creating expression</span>
+<span class='fu'>expr_meta_random</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>df</span>, k <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; paste(italic("z"), " = ", "-3.619", ", ", italic("p"), " = ", 
 #&gt;     "2.95e-04", ", ", widehat(beta)["summary"]^"meta", " = ", 
 #&gt;     "-0.767", ", CI"["95%"], " [", "-1.182", ", ", "-0.351", 
 #&gt;     "]", ", ", italic("n")["effects"], " = ", 16L)</div><div class='input'>
-<span class='co'># making caption</span>
-<span class='fu'>expr_meta_random</span><span class='op'>(</span>
-  data <span class='op'>=</span> <span class='va'>df</span>,
-  output <span class='op'>=</span> <span class='st'>"caption"</span>
-<span class='op'>)</span>
-</div><div class='output co'>#&gt; atop(displaystyle(NULL), expr = paste("Heterogeneity: ", italic("Q"), 
-#&gt;     "(", "15", ") = ", "47", ", ", italic("p"), " = ", "3.6e-05", 
-#&gt;     ", ", tau["REML"]^2, " = ", "0.29", ", ", "I"^2, " = ", "73.64%"))</div><div class='input'>
 <span class='co'># ----------------------- random -----------------------------------------</span>
 
 <span class='co'># creating expression</span>
@@ -291,16 +266,16 @@ function.</p></td>
   type <span class='op'>=</span> <span class='st'>"bayes"</span>,
   k <span class='op'>=</span> <span class='fl'>3</span>,
   <span class='co'># additional arguments given to `metaBMA`</span>
-  iter <span class='op'>=</span> <span class='fl'>5000</span>,
-  summarize <span class='op'>=</span> <span class='st'>"integrate"</span>,
-  control <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>adapt_delta <span class='op'>=</span> <span class='fl'>0.99</span>, max_treedepth <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span>
+  metaBMA.args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+    iter <span class='op'>=</span> <span class='fl'>5000</span>,
+    summarize <span class='op'>=</span> <span class='st'>"integrate"</span>,
+    control <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>adapt_delta <span class='op'>=</span> <span class='fl'>0.99</span>, max_treedepth <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span>
+  <span class='op'>)</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: There were 1 divergent transitions after warmup. See</span>
-#&gt; <span class='warning'>http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup</span>
-#&gt; <span class='warning'>to find out why this is a problem and how to eliminate them.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Examine the pairs() plot to diagnose sampling problems</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Could not get model data.</span></div><div class='output co'>#&gt; paste("log"["e"], "(BF"["01"], ") = ", "-3.669", ", ", widehat(italic(delta))["mean"]^"posterior", 
-#&gt;     " = ", "-0.467", ", CI"["95%"]^"HDI", " [", "-0.788", ", ", 
-#&gt;     "-0.143", "]", ", ", italic("r")["Cauchy"]^"JZS", " = ", 
-#&gt;     "0.707")</div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Could not get model data.</span></div><div class='output co'>#&gt; paste("log"["e"], "(BF"["01"], ") = ", "-3.669", ", ", widehat(italic(delta))["mean"]^"posterior", 
+#&gt;     " = ", "-0.471", ", CI"["95%"]^"HDI", " [", "-0.803", ", ", 
+#&gt;     "-0.155", "]", ", ", italic("r")["Cauchy"]^"JZS", " = ", 
+#&gt;     "0.300")</div><div class='input'><span class='co'># }</span>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
