@@ -130,13 +130,14 @@
       "@type": "SoftwareApplication",
       "identifier": "correlation",
       "name": "correlation",
+      "version": ">= 0.4.0.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=correlation"
+      "sameAs": "https://github.com/easystats/correlation"
     },
     {
       "@type": "SoftwareApplication",
@@ -372,6 +373,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3872.338KB",
+  "fileSize": "3874.907KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

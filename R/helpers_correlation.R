@@ -113,7 +113,7 @@ expr_corr_test <- function(data,
   if (stats_type == "robust") {
     no.parameters <- 1L
     statistic.text <- quote(italic("t")["Student"])
-    effsize.text <- quote(widehat(italic(rho))["pb"])
+    effsize.text <- quote(widehat(italic(rho))["% bend"])
   }
 
   # ---------------------- preparing subtitle ---------------------------------
