@@ -170,7 +170,7 @@ expr_anova_parametric <- function(data,
     # tidy up the stats object
     stats_df <-
       suppressMessages(tidy_model_parameters(mod)) %>%
-      dplyr::select(statistic, parameter1 = df.num, parameter2 = df.denom, dplyr::everything())
+      dplyr::select(statistic, parameter1 = df, parameter2 = df.error, dplyr::everything())
 
     # creating a standardized dataframe with effect size and its CIs
     mod <-

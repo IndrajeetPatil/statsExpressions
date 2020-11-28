@@ -141,6 +141,7 @@ expr_template <- function(no.parameters,
 
   if (no.parameters == 1L) {
     if ("df" %in% names(stats.df)) stats.df %<>% dplyr::rename("parameter" = "df")
+    if ("df.error" %in% names(stats.df)) stats.df %<>% dplyr::rename("parameter" = "df.error")
 
     # preparing subtitle
     subtitle <-
