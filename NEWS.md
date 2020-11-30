@@ -1,10 +1,10 @@
-# statsExpressions 0.6.0.9000
+# statsExpressions 0.6.1
 
 MAJOR CHANGES
 
   - Adds two new helper functions: `tidy_model_parameters` and
     `tidy_model_performance` to toggle between `easystats` and `tidymodels`
-    conventions.
+    naming conventions.
     
   - Drops `broomExtra` from dependencies in favor of `parameters` + `performance`.
   

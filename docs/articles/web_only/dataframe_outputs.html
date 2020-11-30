@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.6.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.6.1</span>
       </span>
     </div>
 
@@ -92,13 +92,13 @@
 
       
 
-      </header><script src="dataframe_outputs_files/header-attrs-2.5/header-attrs.js"></script><div class="row">
+      </header><script src="dataframe_outputs_files/header-attrs-2.5.3/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2020-11-25</h4>
+            <h4 class="date">2020-11-30</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -145,9 +145,9 @@
 <span class="co">#&gt;   term                                               mu difference statistic</span>
 <span class="co">#&gt;   &lt;chr&gt;                                           &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 data %&gt;% dplyr::pull({     {         x     } }) 0.275    0.00658    0.0504</span>
-<span class="co">#&gt;      df p.value method            estimate ci.width conf.low conf.high</span>
-<span class="co">#&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    55   0.960 One Sample t-test  0.00665     0.95   -0.254     0.267</span>
+<span class="co">#&gt;   df.error p.value method            estimate ci.width conf.low conf.high</span>
+<span class="co">#&gt;      &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1       55   0.960 One Sample t-test  0.00665     0.95   -0.254     0.267</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -230,12 +230,12 @@
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 11</span>
-<span class="co">#&gt;   term   group     mean.difference statistic    df       p.value method       </span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;        </span>
-<span class="co">#&gt; 1 desire condition            1.66      6.65    90 0.00000000222 Paired t-test</span>
-<span class="co">#&gt;   estimate ci.width conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    0.691     0.95    0.465     0.922</span>
+<span class="co">#&gt;   term   group     mean.difference statistic df.error       p.value</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 desire condition            1.66      6.65       90 0.00000000222</span>
+<span class="co">#&gt;   method        estimate ci.width conf.low conf.high</span>
+<span class="co">#&gt;   &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Paired t-test    0.691     0.95    0.465     0.922</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -316,9 +316,9 @@
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 12</span>
-<span class="co">#&gt;   term  group mean.group1 mean.group2 statistic    df p.value</span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 len   supp         20.7        17.0      1.92  55.3  0.0606</span>
+<span class="co">#&gt;   term  group mean.group1 mean.group2 statistic df.error p.value</span>
+<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 len   supp         20.7        17.0      1.92     55.3  0.0606</span>
 <span class="co">#&gt;   method                  estimate ci.width conf.low conf.high</span>
 <span class="co">#&gt;   &lt;chr&gt;                      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Welch Two Sample t-test    0.488     0.95  -0.0212     0.993</span>
@@ -334,12 +334,12 @@
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 12</span>
-<span class="co">#&gt;   term  group mean.group1 mean.group2 statistic    df p.value method           </span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;            </span>
-<span class="co">#&gt; 1 len   supp         20.7        17.0      1.92    58  0.0604 Two Sample t-test</span>
-<span class="co">#&gt;   estimate ci.width conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    0.488     0.95  -0.0212     0.993</span>
+<span class="co">#&gt;   term  group mean.group1 mean.group2 statistic df.error p.value</span>
+<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 len   supp         20.7        17.0      1.92       58  0.0604</span>
+<span class="co">#&gt;   method            estimate ci.width conf.low conf.high</span>
+<span class="co">#&gt;   &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Two Sample t-test    0.488     0.95  -0.0212     0.993</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -433,9 +433,9 @@
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 9</span>
-<span class="co">#&gt;   parameter1 parameter2 statistic    df  p.value method  estimate conf.low</span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 desire     condition       55.8     3 4.56e-12 Kendall    0.615    0.615</span>
+<span class="co">#&gt;   parameter1 parameter2 statistic df.error  p.value method  estimate conf.low</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 desire     condition       55.8        3 4.56e-12 Kendall    0.615    0.615</span>
 <span class="co">#&gt;   conf.high</span>
 <span class="co">#&gt;       &lt;dbl&gt;</span>
 <span class="co">#&gt; 1     0.906</span>
@@ -578,12 +578,12 @@
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 9</span>
-<span class="co">#&gt;   parameter1              parameter2 statistic    df  p.value method  estimate</span>
-<span class="co">#&gt;   &lt;chr&gt;                   &lt;chr&gt;          &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Sepal.Length by Species &lt;NA&gt;            96.9     2 8.92e-22 Kendall    0.651</span>
-<span class="co">#&gt;   conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    0.560     0.724</span>
+<span class="co">#&gt;   parameter1              parameter2 statistic df.error  p.value method </span>
+<span class="co">#&gt;   &lt;chr&gt;                   &lt;chr&gt;          &lt;dbl&gt;    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  </span>
+<span class="co">#&gt; 1 Sepal.Length by Species &lt;NA&gt;            96.9        2 8.92e-22 Kendall</span>
+<span class="co">#&gt;   estimate conf.low conf.high</span>
+<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1    0.651    0.560     0.724</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
