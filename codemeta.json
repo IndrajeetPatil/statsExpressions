@@ -16,13 +16,13 @@
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/statsExpressions/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.6.0.9000",
+  "version": "0.6.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R Under development (unstable) (2020-10-07 r79310)",
+  "runtimePlatform": "R Under development (unstable) (2020-11-23 r79474)",
   "author": [
     {
       "@type": "Person",
@@ -373,6 +373,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3874.907KB",
+  "fileSize": "3875.821KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }
