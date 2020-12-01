@@ -98,7 +98,7 @@
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2020-11-30</h4>
+            <h4 class="date">2020-12-01</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -433,9 +433,9 @@
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 9</span>
-<span class="co">#&gt;   parameter1 parameter2 statistic df.error  p.value method  estimate conf.low</span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 desire     condition       55.8        3 4.56e-12 Kendall    0.615    0.615</span>
+<span class="co">#&gt;   parameter1 parameter2 statistic    df  p.value method  estimate conf.low</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 desire     condition       55.8     3 4.56e-12 Kendall    0.615    0.615</span>
 <span class="co">#&gt;   conf.high</span>
 <span class="co">#&gt;       &lt;dbl&gt;</span>
 <span class="co">#&gt; 1     0.906</span>
@@ -578,12 +578,12 @@
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 9</span>
-<span class="co">#&gt;   parameter1              parameter2 statistic df.error  p.value method </span>
-<span class="co">#&gt;   &lt;chr&gt;                   &lt;chr&gt;          &lt;dbl&gt;    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  </span>
-<span class="co">#&gt; 1 Sepal.Length by Species &lt;NA&gt;            96.9        2 8.92e-22 Kendall</span>
-<span class="co">#&gt;   estimate conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    0.651    0.560     0.724</span>
+<span class="co">#&gt;   parameter1              parameter2 statistic    df  p.value method  estimate</span>
+<span class="co">#&gt;   &lt;chr&gt;                   &lt;chr&gt;          &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Sepal.Length by Species &lt;NA&gt;            96.9     2 8.92e-22 Kendall    0.651</span>
+<span class="co">#&gt;   conf.low conf.high</span>
+<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1    0.560     0.724</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -763,7 +763,7 @@
 <span class="co">#&gt; # A tibble: 1 x 9</span>
 <span class="co">#&gt;   parameter1 parameter2 estimate conf.low conf.high statistic  p.value method  </span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;   </span>
-<span class="co">#&gt; 1 wt         mpg          -0.886   -0.945    -0.774      9.24 1.49e-11 Spearman</span>
+<span class="co">#&gt; 1 wt         mpg          -0.886   -0.943    -0.778      9.24 1.49e-11 Spearman</span>
 <span class="co">#&gt;   n.obs</span>
 <span class="co">#&gt;   &lt;int&gt;</span>
 <span class="co">#&gt; 1    32</span>
@@ -782,7 +782,7 @@
 <span class="co">#&gt; # A tibble: 1 x 10</span>
 <span class="co">#&gt;   parameter1 parameter2 estimate conf.low conf.high statistic    df  p.value</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 wt         mpg          -0.896   -0.948    -0.796     -11.1    30 4.15e-12</span>
+<span class="co">#&gt; 1 wt         mpg          -0.896   -0.948    -0.796     -10.9    30 6.25e-12</span>
 <span class="co">#&gt;   method          n.obs</span>
 <span class="co">#&gt;   &lt;chr&gt;           &lt;int&gt;</span>
 <span class="co">#&gt; 1 Percentage Bend    32</span>

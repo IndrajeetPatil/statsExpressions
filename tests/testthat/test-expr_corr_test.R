@@ -6,7 +6,7 @@ testthat::test_that(
     testthat::skip_if(getRversion() < "3.6")
     testthat::skip_on_cran()
 
-    if (utils::packageVersion("correlation") >= package_version("0.4.0")) {
+    if (utils::packageVersion("correlation") > package_version("0.4.0")) {
       # `statsExpressions` output
       set.seed(123)
       using_function <-
@@ -100,7 +100,7 @@ testthat::test_that(
     testthat::skip_if(getRversion() < "3.6")
     testthat::skip_on_cran()
 
-    if (utils::packageVersion("correlation") >= package_version("0.4.0")) {
+    if (utils::packageVersion("correlation") > package_version("0.4.0")) {
       # `statsExpressions` output
       set.seed(123)
       using_function <-
@@ -157,7 +157,7 @@ testthat::test_that(
     testthat::skip_if(getRversion() < "3.6")
     testthat::skip_on_cran()
 
-    if (utils::packageVersion("correlation") >= package_version("0.4.0")) {
+    if (utils::packageVersion("correlation") > package_version("0.4.0")) {
       # using function
       set.seed(123)
       using_function <-

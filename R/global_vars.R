@@ -15,7 +15,9 @@ utils::globalVariables(
     "statistic",
     "std.error",
     "term",
-    ".counts"
+    ".counts",
+    "df",
+    "df.error"
   ),
   package = "statsExpressions",
   add = FALSE
