@@ -33,7 +33,7 @@ if each row represents a single observation.}
 
 \item{paired}{Logical indicating whether data came from a within-subjects or
 repeated measures design study (Default: \code{FALSE}). If \code{TRUE}, McNemar's
-test subtitle will be returned. If \code{FALSE}, Pearson's chi-square test will
+test expression will be returned. If \code{FALSE}, Pearson's chi-square test will
 be returned.}
 
 \item{ratio}{A vector of proportions: the expected proportions for the

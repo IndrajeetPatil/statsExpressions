@@ -118,7 +118,7 @@ expr_t_parametric <- function(data,
   # setting up the t-test model and getting its summary
   stats_df <-
     stats::t.test(
-      formula = rlang::new_formula({{ y }}, {{ x }}),
+      formula = rlang::new_formula(y, x),
       data = data,
       paired = paired,
       alternative = "two.sided",
@@ -131,7 +131,7 @@ expr_t_parametric <- function(data,
   effsize_df <-
     rlang::exec(
       .fn = .f,
-      x = rlang::new_formula({{ y }}, {{ x }}),
+      x = rlang::new_formula(y, x),
       data = data,
       correction = FALSE,
       paired = paired,
@@ -154,8 +154,8 @@ expr_t_parametric <- function(data,
       quote(italic("t")["Welch"])
     }
 
-  # preparing subtitle
-  subtitle <-
+  # preparing expression
+  expression <-
     expr_template(
       no.parameters = 1L,
       stats.df = stats_df,
@@ -169,10 +169,7 @@ expr_t_parametric <- function(data,
     )
 
   # return the output
-  switch(output,
-    "dataframe" = stats_df,
-    subtitle
-  )
+  switch(output, "dataframe" = stats_df, expression)
 }
 
 
@@ -263,7 +260,7 @@ expr_t_nonparametric <- function(data,
 
   # properly removing NAs if it's a paired design
   if (isTRUE(paired)) {
-    # subtitle details
+    # expression details
     sample_size <- length(unique(data$rowid))
     n.text <- quote(italic("n")["pairs"])
     .f <- rcompanion::wilcoxonPairedR
@@ -272,7 +269,7 @@ expr_t_nonparametric <- function(data,
 
   # remove NAs listwise for between-subjects design
   if (isFALSE(paired)) {
-    # subtitle details
+    # expression details
     sample_size <- nrow(data)
     n.text <- quote(italic("n")["obs"])
     .f <- rcompanion::wilcoxonR
@@ -282,7 +279,7 @@ expr_t_nonparametric <- function(data,
   # setting up the test and getting its summary
   stats_df <-
     stats::wilcox.test(
-      formula = rlang::new_formula({{ y }}, {{ x }}),
+      formula = rlang::new_formula(y, x),
       data = data,
       paired = paired,
       alternative = "two.sided",
@@ -311,8 +308,8 @@ expr_t_nonparametric <- function(data,
   stats_df <-
     dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("estimate|^conf")), effsize_df)
 
-  # preparing subtitle
-  subtitle <-
+  # preparing expression
+  expression <-
     expr_template(
       no.parameters = 0L,
       stats.df = stats_df,
@@ -325,10 +322,7 @@ expr_t_nonparametric <- function(data,
     )
 
   # return the output
-  switch(output,
-    "dataframe" = stats_df,
-    subtitle
-  )
+  switch(output, "dataframe" = stats_df, expression)
 }
 
 #' @title Expression containing results from a robust *t*-test
@@ -400,7 +394,7 @@ expr_t_robust <- function(data,
     # computing effect size and its confidence interval
     effsize_obj <-
       WRS2::yuen.effect.ci(
-        formula = rlang::new_formula({{ y }}, {{ x }}),
+        formula = rlang::new_formula(y, x),
         data = data,
         tr = tr,
         nboot = nboot,
@@ -418,7 +412,7 @@ expr_t_robust <- function(data,
     # Yuen's test for trimmed means
     stats_obj <-
       WRS2::yuen(
-        formula = rlang::new_formula({{ y }}, {{ x }}),
+        formula = rlang::new_formula(y, x),
         data = data,
         tr = tr
       )
@@ -431,7 +425,7 @@ expr_t_robust <- function(data,
         p.value = stats_obj$p.value[[1]]
       )
 
-    # subtitle parameters
+    # expression parameters
     k.parameter <- k
     n.text <- quote(italic("n")["obs"])
     effsize.text <- quote(widehat(italic(xi)))
@@ -464,7 +458,7 @@ expr_t_robust <- function(data,
       dplyr::filter(effect_size == "AKP") %>%
       dplyr::rename(estimate = Est, conf.low = ci.low, conf.high = ci.up)
 
-    # subtitle parameters
+    # expression parameters
     k.parameter <- 0L
     n.text <- quote(italic("n")["pairs"])
     conf.level <- 0.95
@@ -475,8 +469,8 @@ expr_t_robust <- function(data,
   stats_df <-
     dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("estimate|^conf")), effsize_df)
 
-  # preparing subtitle
-  subtitle <-
+  # preparing expression
+  expression <-
     expr_template(
       no.parameters = 1L,
       stats.df = stats_df,
@@ -490,10 +484,7 @@ expr_t_robust <- function(data,
     )
 
   # return the output
-  switch(output,
-    "dataframe" = stats_df,
-    subtitle
-  )
+  switch(output, "dataframe" = stats_df, expression)
 }
 
 #' @title Making expression containing Bayesian *t*-test results

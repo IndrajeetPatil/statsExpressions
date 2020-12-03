@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.6.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.6.1.9000</span>
       </span>
     </div>
 
@@ -98,7 +98,7 @@
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2020-12-01</h4>
+            <h4 class="date">2020-12-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -321,7 +321,7 @@
 <span class="co">#&gt; 1 len   supp         20.7        17.0      1.92     55.3  0.0606</span>
 <span class="co">#&gt;   method                  estimate ci.width conf.low conf.high</span>
 <span class="co">#&gt;   &lt;chr&gt;                      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Welch Two Sample t-test    0.488     0.95  -0.0212     0.993</span>
+<span class="co">#&gt; 1 Welch Two Sample t-test    0.488     0.95  -0.0217     0.994</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
@@ -538,16 +538,16 @@
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
+<span class="co">#&gt; # A tibble: 1 x 9</span>
 <span class="co">#&gt;   statistic parameter1 parameter2  p.value</span>
-<span class="co">#&gt;       &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; *     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1      139.          2       92.2 1.51e-28</span>
-<span class="co">#&gt;   method                                                   term    estimate</span>
-<span class="co">#&gt;   &lt;chr&gt;                                                    &lt;chr&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 One-way analysis of means (not assuming equal variances) Species    0.612</span>
-<span class="co">#&gt;   ci.width conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     0.95    0.517     0.683</span>
+<span class="co">#&gt;   method                                                   estimate ci.width</span>
+<span class="co">#&gt; * &lt;chr&gt;                                                       &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 One-way analysis of means (not assuming equal variances)    0.743     0.95</span>
+<span class="co">#&gt;   conf.low conf.high</span>
+<span class="co">#&gt; *    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1    0.655     0.803</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
@@ -559,13 +559,13 @@
   var.equal <span class="op">=</span> <span class="cn">TRUE</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
-<span class="co">#&gt;   statistic parameter1 parameter2  p.value method                    term   </span>
-<span class="co">#&gt;       &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                     &lt;chr&gt;  </span>
-<span class="co">#&gt; 1      119.          2        147 1.67e-31 One-way analysis of means Species</span>
-<span class="co">#&gt;   estimate ci.width conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    0.612     0.95    0.517     0.683</span>
+<span class="co">#&gt; # A tibble: 1 x 9</span>
+<span class="co">#&gt;   statistic parameter1 parameter2  p.value method                    estimate</span>
+<span class="co">#&gt; *     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                        &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      119.          2        147 1.67e-31 One-way analysis of means    0.612</span>
+<span class="co">#&gt;   ci.width conf.low conf.high</span>
+<span class="co">#&gt; *    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1     0.95    0.517     0.683</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -763,7 +763,7 @@
 <span class="co">#&gt; # A tibble: 1 x 9</span>
 <span class="co">#&gt;   parameter1 parameter2 estimate conf.low conf.high statistic  p.value method  </span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;   </span>
-<span class="co">#&gt; 1 wt         mpg          -0.886   -0.943    -0.778      9.24 1.49e-11 Spearman</span>
+<span class="co">#&gt; 1 wt         mpg          -0.886   -0.945    -0.774      9.24 1.49e-11 Spearman</span>
 <span class="co">#&gt;   n.obs</span>
 <span class="co">#&gt;   &lt;int&gt;</span>
 <span class="co">#&gt; 1    32</span>
@@ -782,7 +782,7 @@
 <span class="co">#&gt; # A tibble: 1 x 10</span>
 <span class="co">#&gt;   parameter1 parameter2 estimate conf.low conf.high statistic    df  p.value</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 wt         mpg          -0.896   -0.948    -0.796     -10.9    30 6.25e-12</span>
+<span class="co">#&gt; 1 wt         mpg          -0.896   -0.948    -0.796     -11.1    30 4.15e-12</span>
 <span class="co">#&gt;   method          n.obs</span>
 <span class="co">#&gt;   &lt;chr&gt;           &lt;int&gt;</span>
 <span class="co">#&gt; 1 Percentage Bend    32</span>

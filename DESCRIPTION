@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Expressions and Dataframes with Statistical Details
-Version: 0.6.1
+Version: 0.6.1.9000
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -27,7 +27,7 @@ Depends:
 Imports:
     correlation,
     dplyr,
-    effectsize,
+    effectsize (>= 0.4.1),
     ez,
     insight (>= 0.11.0),
     ipmisc,
@@ -41,6 +41,8 @@ Imports:
     tidyBF,
     tidyr,
     WRS2
+Remotes:
+    easystats/effectsize
 Suggests:
     ggplot2,
     knitr,
