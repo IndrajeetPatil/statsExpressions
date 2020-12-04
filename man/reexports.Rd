@@ -31,6 +31,6 @@ below to see their documentation.
 
   \item{rlang}{\code{\link[rlang:op-na-default]{\%|\%}}, \code{\link[rlang:op-null-default]{\%||\%}}, \code{\link[rlang:nse-force]{:=}}}
 
-  \item{tidyBF}{\code{\link[tidyBF]{bf_contingency_tab}}, \code{\link[tidyBF]{bf_corr_test}}, \code{\link[tidyBF]{bf_meta_random}}, \code{\link[tidyBF]{bf_oneway_anova}}, \code{\link[tidyBF]{bf_ttest}}}
+  \item{tidyBF}{\code{\link[tidyBF]{bf_contingency_tab}}, \code{\link[tidyBF]{bf_corr_test}}, \code{\link[tidyBF]{bf_meta_random}}, \code{\link[tidyBF:bf_ttest]{bf_oneway_anova}}, \code{\link[tidyBF]{bf_ttest}}}
 }}
 

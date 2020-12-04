@@ -34,8 +34,9 @@ assumes that the data has already been sorted by such an id by the user and
 creates an internal identifier. So if your data is \strong{not} sorted and you
 leave this argument unspecified, the results can be inaccurate.}
 
-\item{paired}{Decides whether the design is repeated measures or not
-(Default: \code{FALSE}).}
+\item{paired}{Logical that decides whether the experimental design is
+repeated measures/within-subjects or between-subjects. The default is
+\code{FALSE}.}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2L}).}
@@ -54,7 +55,7 @@ for the effect size (Default: \code{100}).}
 details, while \code{"dataframe"} will return a dataframe containing the
 results.}
 
-\item{...}{Additional arguments (currently ignored).}
+\item{...}{Currently ignored.}
 }
 \value{
 For more details, see-

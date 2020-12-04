@@ -68,9 +68,8 @@ testthat::test_that(
         data = ggplot2::msleep,
         x = vore,
         y = "sleep_rem",
-        effsize.type = "omega",
-        k = 4,
-        messages = FALSE
+        effsize.type = "unbiased",
+        k = 4
       )
 
     # expected output
@@ -125,9 +124,8 @@ testthat::test_that(
         x = vore,
         y = sleep_rem,
         var.equal = TRUE,
-        effsize.type = "eta",
-        k = 4,
-        messages = FALSE
+        effsize.type = "biased",
+        k = 4
       )
 
     # expected output

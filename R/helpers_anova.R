@@ -78,6 +78,8 @@ expr_anova_parametric <- function(data,
   k.df2 <- ifelse(isFALSE(paired) && isTRUE(var.equal), 0L, k)
 
   # effsize text
+  if (effsize.type == "unbiased") effsize.type <- "omega"
+  if (effsize.type == "biased") effsize.type <- "eta"
   if (effsize.type == "omega") effsize.text <- quote(widehat(omega["p"]^2))
   if (effsize.type == "eta") effsize.text <- quote(widehat(eta["p"]^2))
 
@@ -218,8 +220,8 @@ expr_anova_parametric <- function(data,
 #'   `"basic"`, `"perc"`, `"bca"`. For more, see `?boot::boot.ci`.
 #' @param nboot Number of bootstrap samples for computing confidence interval
 #'   for the effect size (Default: `100`).
+#' @inheritParams ipmisc::long_to_wide_converter
 #' @inheritParams expr_anova_parametric
-#' @inheritParams tidyBF::bf_oneway_anova
 #' @inheritParams expr_template
 #'
 #' @importFrom dplyr select

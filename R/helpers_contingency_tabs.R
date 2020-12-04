@@ -141,6 +141,7 @@ expr_contingency_tab <- function(data,
   }
 
   # which test was carried out?
+  # done separately to handle edge cases where gof instead of Pearson is run
   if (mod$method == "Chi-squared test for given probabilities") {
     statistic.text <- quote(chi["gof"]^2)
   } else {
