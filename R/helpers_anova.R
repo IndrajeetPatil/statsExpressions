@@ -23,9 +23,9 @@
 #'
 #' @importFrom dplyr select rename matches
 #' @importFrom rlang !! enquo eval_tidy expr ensym exec
-#' @importFrom stats aov oneway.test
+#' @importFrom stats oneway.test
 #' @importFrom ez ezANOVA
-#' @importFrom effectsize eta_squared omega_squared
+#' @importFrom effectsize effectsize
 #' @importFrom ipmisc long_to_wide_converter specify_decimal_p
 #'
 #' @examples
@@ -67,7 +67,6 @@ expr_anova_parametric <- function(data,
                                   var.equal = FALSE,
                                   output = "expression",
                                   ...) {
-
   # make sure both quoted and unquoted arguments are allowed
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
@@ -78,20 +77,11 @@ expr_anova_parametric <- function(data,
   k.df1 <- ifelse(isFALSE(paired), 0L, k)
   k.df2 <- ifelse(isFALSE(paired) && isTRUE(var.equal), 0L, k)
 
-  # figuring out which effect size to use
-  effsize.type <- effsize_type_switch(effsize.type)
-
-  # omega
-  if (effsize.type == "unbiased") {
-    .f <- effectsize::omega_squared
-    effsize.text <- quote(widehat(omega["p"]^2))
-  }
-
-  # eta
-  if (effsize.type == "biased") {
-    .f <- effectsize::eta_squared
-    effsize.text <- quote(widehat(eta["p"]^2))
-  }
+  # effsize text
+  if (effsize.type == "unbiased") effsize.type <- "omega"
+  if (effsize.type == "biased") effsize.type <- "eta"
+  if (effsize.type == "omega") effsize.text <- quote(widehat(omega["p"]^2))
+  if (effsize.type == "eta") effsize.text <- quote(widehat(eta["p"]^2))
 
   # --------------------- data preparation --------------------------------
 
@@ -161,7 +151,7 @@ expr_anova_parametric <- function(data,
     # Welch's ANOVA run by default
     mod <-
       stats::oneway.test(
-        formula = rlang::new_formula({{ y }}, {{ x }}),
+        formula = rlang::new_formula(y, x),
         data = data,
         na.action = na.omit,
         var.equal = var.equal
@@ -171,35 +161,26 @@ expr_anova_parametric <- function(data,
     stats_df <-
       suppressMessages(tidy_model_parameters(mod)) %>%
       dplyr::select(statistic, parameter1 = df, parameter2 = df.error, dplyr::everything())
-
-    # creating a standardized dataframe with effect size and its CIs
-    mod <-
-      stats::aov(
-        formula = rlang::new_formula({{ y }}, {{ x }}),
-        data = data,
-        na.action = na.omit
-      )
   }
 
   # ------------------- effect size computation ------------------------------
 
   # computing effect size
   effsize_df <-
-    rlang::exec(
-      .fn = .f,
+    suppressWarnings(rlang::exec(
+      .fn = effectsize::effectsize,
       model = mod,
-      partial = TRUE,
+      type = effsize.type,
       ci = conf.level
-    ) %>%
+    )) %>%
     parameters::standardize_names(data = ., style = "broom")
 
   # test details
-  statistic.text <-
-    if (isTRUE(paired) || isTRUE(var.equal)) {
-      quote(italic("F")["Fisher"])
-    } else {
-      quote(italic("F")["Welch"])
-    }
+  if (isTRUE(paired) || isTRUE(var.equal)) {
+    statistic.text <- quote(italic("F")["Fisher"])
+  } else {
+    statistic.text <- quote(italic("F")["Welch"])
+  }
 
   # combining dataframes
   stats_df <- dplyr::bind_cols(stats_df, effsize_df)
@@ -220,10 +201,7 @@ expr_anova_parametric <- function(data,
     )
 
   # return the output
-  switch(output,
-    "dataframe" = stats_df,
-    expression
-  )
+  switch(output, "dataframe" = stats_df, expression)
 }
 
 #' @title Making text expression for non-parametric ANOVA.
@@ -242,8 +220,8 @@ expr_anova_parametric <- function(data,
 #'   `"basic"`, `"perc"`, `"bca"`. For more, see `?boot::boot.ci`.
 #' @param nboot Number of bootstrap samples for computing confidence interval
 #'   for the effect size (Default: `100`).
+#' @inheritParams ipmisc::long_to_wide_converter
 #' @inheritParams expr_anova_parametric
-#' @inheritParams tidyBF::bf_oneway_anova
 #' @inheritParams expr_template
 #'
 #' @importFrom dplyr select
@@ -393,10 +371,7 @@ expr_anova_nonparametric <- function(data,
     )
 
   # return the output
-  switch(output,
-    "dataframe" = stats_df,
-    expression
-  )
+  switch(output, "dataframe" = stats_df, expression)
 }
 
 #' @title Expression containing results from heteroscedastic one-way ANOVA for
@@ -572,10 +547,7 @@ expr_anova_robust <- function(data,
   }
 
   # return the output
-  switch(output,
-    "dataframe" = stats_df,
-    expression
-  )
+  switch(output, "dataframe" = stats_df, expression)
 }
 
 

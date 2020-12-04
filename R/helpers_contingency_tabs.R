@@ -18,7 +18,7 @@
 #'   if each row represents a single observation.
 #' @param paired Logical indicating whether data came from a within-subjects or
 #'   repeated measures design study (Default: `FALSE`). If `TRUE`, McNemar's
-#'   test subtitle will be returned. If `FALSE`, Pearson's chi-square test will
+#'   test expression will be returned. If `FALSE`, Pearson's chi-square test will
 #'   be returned.
 #' @param ratio A vector of proportions: the expected proportions for the
 #'   proportion test (should sum to 1). Default is `NULL`, which means the null
@@ -141,6 +141,7 @@ expr_contingency_tab <- function(data,
   }
 
   # which test was carried out?
+  # done separately to handle edge cases where gof instead of Pearson is run
   if (mod$method == "Chi-squared test for given probabilities") {
     statistic.text <- quote(chi["gof"]^2)
   } else {
@@ -162,7 +163,7 @@ expr_contingency_tab <- function(data,
   stats_df <- dplyr::bind_cols(tidy_model_parameters(mod), effsize_df)
 
   # expression
-  subtitle <-
+  expression <-
     expr_template(
       no.parameters = 1L,
       stats.df = stats_df,
@@ -175,9 +176,5 @@ expr_contingency_tab <- function(data,
     )
 
   # return the output
-  switch(
-    EXPR = output,
-    "dataframe" = stats_df,
-    subtitle
-  )
+  switch(output, "dataframe" = stats_df, expression)
 }

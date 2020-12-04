@@ -136,7 +136,7 @@ expr_t_onesample <- function(data,
       ) %>%
       parameters::standardize_names(data = ., style = "broom")
 
-    # preparing subtitle parameters
+    # preparing expression parameters
     statistic.text <- quote(italic("t")["Student"])
     no.parameters <- 1L
   }
@@ -170,20 +170,20 @@ expr_t_onesample <- function(data,
       ) %>%
       rcompanion_cleaner(.)
 
-    # preparing subtitle parameters
+    # preparing expression parameters
     statistic.text <- quote("log"["e"](italic("V")["Wilcoxon"]))
     no.parameters <- 0L
     effsize.text <- quote(widehat(italic("r")))
   }
 
-  # preparing subtitle
+  # preparing expression
   if (stats.type %in% c("parametric", "nonparametric")) {
     # combining dataframes
     stats_df <-
       dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("estimate|^conf")), effsize_df)
 
     # expression
-    subtitle <-
+    expression <-
       expr_template(
         no.parameters = no.parameters,
         stats.df = stats_df,
@@ -218,8 +218,8 @@ expr_t_onesample <- function(data,
         p.value = mod$p.value[[1]]
       )
 
-    # preparing the subtitle
-    subtitle <-
+    # preparing the expression
+    expression <-
       substitute(
         expr = paste(
           italic("M")["robust"],
@@ -265,12 +265,9 @@ expr_t_onesample <- function(data,
         ...
       )
 
-    subtitle <- stats_df
+    expression <- stats_df
   }
 
   # return the output
-  switch(output,
-    "dataframe" = stats_df,
-    subtitle
-  )
+  switch(output, "dataframe" = stats_df, expression)
 }

@@ -1,3 +1,9 @@
+# statsExpressions 0.6.1.9000
+
+MINOR CHANGES
+
+  - Internal refactoring to catch up with changes made to `effectsize`.
+
 # statsExpressions 0.6.1
 
 MAJOR CHANGES

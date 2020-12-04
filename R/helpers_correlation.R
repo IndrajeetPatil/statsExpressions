@@ -116,11 +116,11 @@ expr_corr_test <- function(data,
     effsize.text <- quote(widehat(italic(rho))["% bend"])
   }
 
-  # ---------------------- preparing subtitle ---------------------------------
+  # ---------------------- preparing expression ---------------------------------
 
   if (stats_type != "bayes") {
-    # preparing subtitle
-    subtitle <-
+    # preparing expression
+    expression <-
       expr_template(
         no.parameters = no.parameters,
         stats.df = stats_df,
@@ -144,12 +144,9 @@ expr_corr_test <- function(data,
         ...
       )
 
-    subtitle <- stats_df
+    expression <- stats_df
   }
 
   # return the output
-  switch(output,
-    "dataframe" = stats_df,
-    subtitle
-  )
+  switch(output, "dataframe" = stats_df, expression)
 }

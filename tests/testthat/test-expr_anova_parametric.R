@@ -35,12 +35,12 @@ testthat::test_that(
           ", ",
           widehat(eta["p"]^2),
           " = ",
-          "0.15181",
+          "0.41092",
           ", CI"["95%"],
           " [",
-          "0.02743",
+          "0.11026",
           ", ",
-          "0.22672",
+          "0.54317",
           "]",
           ", ",
           italic("n")["obs"],
@@ -68,9 +68,8 @@ testthat::test_that(
         data = ggplot2::msleep,
         x = vore,
         y = "sleep_rem",
-        effsize.type = "omega",
-        k = 4,
-        messages = FALSE
+        effsize.type = "unbiased",
+        k = 4
       )
 
     # expected output
@@ -91,12 +90,12 @@ testthat::test_that(
           ", ",
           widehat(omega["p"]^2),
           " = ",
-          "0.1438",
+          "0.2449",
           ", CI"["95%"],
           " [",
           "0.0000",
           ", ",
-          "0.2999",
+          "0.5391",
           "]",
           ", ",
           italic("n")["obs"],
@@ -125,9 +124,8 @@ testthat::test_that(
         x = vore,
         y = sleep_rem,
         var.equal = TRUE,
-        effsize.type = "partial_eta",
-        k = 4,
-        messages = FALSE
+        effsize.type = "biased",
+        k = 4
       )
 
     # expected output
