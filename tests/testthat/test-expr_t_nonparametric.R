@@ -41,7 +41,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          32L
+          "32"
         )
       )
 
@@ -109,8 +109,7 @@ testthat::test_that(
         nboot = 25,
         conf.type = "perc",
         conf.level = 0.99,
-        paired = TRUE,
-        messages = TRUE
+        paired = TRUE
       ))
 
     # expected output
@@ -138,7 +137,7 @@ testthat::test_that(
           ", ",
           italic("n")["pairs"],
           " = ",
-          16L
+          "16"
         )
       )
 

@@ -14,8 +14,7 @@ testthat::test_that(
         y = length,
         conf.type = "norm",
         paired = FALSE,
-        k = 5,
-        messages = TRUE
+        k = 5
       )
 
     # expected output
@@ -45,7 +44,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          158L
+          "158"
         )
       )
 
@@ -92,7 +91,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          31L
+          "31"
         )
       )
 
@@ -118,8 +117,7 @@ testthat::test_that(
         k = 4L,
         conf.type = "norm",
         paired = TRUE,
-        conf.level = 0.99,
-        messages = FALSE
+        conf.level = 0.99
       )
 
     # expected output
@@ -149,7 +147,7 @@ testthat::test_that(
           ", ",
           italic("n")["pairs"],
           " = ",
-          88L
+          "88"
         )
       )
 
@@ -166,8 +164,7 @@ testthat::test_that(
         k = 3,
         conf.type = "perc",
         paired = TRUE,
-        conf.level = 0.90,
-        messages = FALSE
+        conf.level = 0.90
       )
 
     # expected output
@@ -197,7 +194,7 @@ testthat::test_that(
           ", ",
           italic("n")["pairs"],
           " = ",
-          150L
+          "150"
         )
       )
 

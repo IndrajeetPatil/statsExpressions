@@ -13,8 +13,7 @@ testthat::test_that(
         x = "condition",
         y = value,
         paired = TRUE,
-        k = 4,
-        messages = FALSE
+        k = 4
       )
 
     # expected
@@ -43,7 +42,7 @@ testthat::test_that(
           ", ",
           italic("n")["pairs"],
           " = ",
-          150L
+          "150"
         )
       )
 
@@ -65,8 +64,7 @@ testthat::test_that(
         x = "condition",
         y = desire,
         paired = TRUE,
-        k = 3,
-        messages = FALSE
+        k = 3
       )
 
     # expected
@@ -95,7 +93,7 @@ testthat::test_that(
           ", ",
           italic("n")["pairs"],
           " = ",
-          90L
+          "90"
         )
       )
 
@@ -121,8 +119,7 @@ testthat::test_that(
         y = "wt",
         paired = FALSE,
         conf.level = 0.99,
-        k = 3,
-        messages = FALSE
+        k = 3
       )
 
     # expected
@@ -151,7 +148,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          32L
+          "32"
         )
       )
 
@@ -174,8 +171,7 @@ testthat::test_that(
         y = "brainwt",
         paired = FALSE,
         conf.level = 0.90,
-        k = 4,
-        messages = FALSE
+        k = 4
       )
 
     # expected
@@ -204,7 +200,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          29L
+          "29"
         )
       )
 

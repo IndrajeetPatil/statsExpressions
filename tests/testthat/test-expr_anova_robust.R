@@ -16,8 +16,7 @@ testthat::test_that(
         paired = FALSE,
         k = 5,
         tr = 0.00025,
-        nboot = 2,
-        messages = FALSE
+        nboot = 2
       )
 
     # expected output
@@ -48,7 +47,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          32L
+          "32"
         )
       )
 
@@ -65,9 +64,7 @@ testthat::test_that(
         paired = FALSE,
         k = 4,
         nboot = 15,
-        conf.level = 0.99,
-        conf.type = "basic",
-        messages = TRUE
+        conf.level = 0.99
       ))
 
     # expected output
@@ -98,7 +95,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          71L
+          "71"
         )
       )
 
@@ -144,7 +141,7 @@ testthat::test_that(
           ", ",
           italic("n")["pairs"],
           " = ",
-          88L
+          "88"
         )
       )
 

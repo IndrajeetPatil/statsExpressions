@@ -50,7 +50,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          614L
+          "614"
         )
       )
 
@@ -111,7 +111,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          614L
+          "614"
         )
       )
 
@@ -169,7 +169,7 @@ testthat::test_that(
           ", ",
           italic("n")["pairs"],
           " = ",
-          150L
+          "150"
         )
       )
 
@@ -224,7 +224,7 @@ testthat::test_that(
           ", ",
           italic("n")["pairs"],
           " = ",
-          90L
+          "90"
         )
       )
 

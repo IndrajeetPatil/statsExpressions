@@ -131,7 +131,7 @@ expr_template <- function(no.parameters,
           conf.level = paste(conf.level * 100, "%", sep = ""),
           effsize.LL = specify_decimal_p(x = effsize.LL, k = k),
           effsize.UL = specify_decimal_p(x = effsize.UL, k = k),
-          n = n,
+          n = .prettyNum(n),
           n.text = n.text
         )
       )
@@ -181,7 +181,7 @@ expr_template <- function(no.parameters,
           conf.level = paste(conf.level * 100, "%", sep = ""),
           effsize.LL = specify_decimal_p(x = effsize.LL, k = k),
           effsize.UL = specify_decimal_p(x = effsize.UL, k = k),
-          n = n,
+          n = .prettyNum(n),
           n.text = n.text
         )
       )
@@ -231,7 +231,7 @@ expr_template <- function(no.parameters,
           conf.level = paste(conf.level * 100, "%", sep = ""),
           effsize.LL = specify_decimal_p(x = effsize.LL, k = k),
           effsize.UL = specify_decimal_p(x = effsize.UL, k = k),
-          n = n,
+          n = .prettyNum(n),
           n.text = n.text
         )
       )
@@ -307,3 +307,8 @@ tidy_model_performance <- function(model, ...) {
     parameters::standardize_names(data = ., style = "broom") %>%
     as_tibble(.)
 }
+
+
+#' @noRd
+
+.prettyNum <- function(x) prettyNum(x, big.mark = ",", scientific = FALSE)

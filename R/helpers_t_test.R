@@ -133,7 +133,6 @@ expr_t_parametric <- function(data,
       .fn = .f,
       x = rlang::new_formula(y, x),
       data = data,
-      correction = FALSE,
       paired = paired,
       pooled_sd = var.equal,
       ci = conf.level

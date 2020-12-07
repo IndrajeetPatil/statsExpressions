@@ -92,13 +92,10 @@ expr_t_onesample <- function(data,
                              output = "expression",
                              ...) {
 
-  # ====================== dataframe ========================================
+  # ====================== data ========================================
 
-  # preparing a dataframe out of provided inputs
-  data %<>%
-    dplyr::select(.data = ., {{ x }}) %>%
-    tidyr::drop_na(data = .) %>%
-    as_tibble(.)
+  # preparing the vector
+  x_vec <- stats::na.omit(data %>% dplyr::pull({{ x }}))
 
   # standardize the type of statistics
   stats.type <- ipmisc::stats_type_switch(type)
@@ -118,7 +115,7 @@ expr_t_onesample <- function(data,
     # setting up the t-test model and getting its summary
     stats_df <-
       stats::t.test(
-        x = data %>% dplyr::pull({{ x }}),
+        x = x_vec,
         mu = test.value,
         conf.level = conf.level,
         alternative = "two.sided",
@@ -130,8 +127,7 @@ expr_t_onesample <- function(data,
     effsize_df <-
       rlang::exec(
         .fn = .f,
-        x = data %>% dplyr::pull({{ x }}) - test.value,
-        correction = FALSE,
+        x = x_vec - test.value,
         ci = conf.level
       ) %>%
       parameters::standardize_names(data = ., style = "broom")
@@ -147,7 +143,7 @@ expr_t_onesample <- function(data,
     # setting up the Mann-Whitney U-test and getting its summary
     stats_df <-
       stats::wilcox.test(
-        x = data %>% dplyr::pull({{ x }}),
+        x = x_vec,
         alternative = "two.sided",
         na.action = na.omit,
         mu = test.value,
@@ -159,7 +155,7 @@ expr_t_onesample <- function(data,
     # effect size dataframe
     effsize_df <-
       rcompanion::wilcoxonOneSampleR(
-        x = data %>% dplyr::pull({{ x }}),
+        x = x_vec,
         mu = test.value,
         ci = TRUE,
         conf = conf.level,
@@ -189,7 +185,7 @@ expr_t_onesample <- function(data,
         stats.df = stats_df,
         statistic.text = statistic.text,
         effsize.text = effsize.text,
-        n = nrow(data),
+        n = length(x_vec),
         n.text = quote(italic("n")["obs"]),
         conf.level = conf.level,
         k = k
@@ -202,7 +198,7 @@ expr_t_onesample <- function(data,
     # running one-sample percentile bootstrap
     mod <-
       WRS2::onesampb(
-        x = data %>% dplyr::pull({{ x }}),
+        x = x_vec,
         est = robust.estimator,
         nboot = nboot,
         nv = test.value,
@@ -245,7 +241,7 @@ expr_t_onesample <- function(data,
           LL = specify_decimal_p(x = stats_df$conf.low[[1]], k = k),
           UL = specify_decimal_p(x = stats_df$conf.high[[1]], k = k),
           p.value = specify_decimal_p(x = stats_df$p.value[[1]], k = k, p.value = TRUE),
-          n = nrow(data)
+          n = .prettyNum(length(x_vec))
         )
       )
   }

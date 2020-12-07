@@ -497,7 +497,7 @@ expr_anova_robust <- function(data,
           df1 = specify_decimal_p(x = stats_df$parameter1[[1]], k = k),
           df2 = specify_decimal_p(x = stats_df$parameter2[[1]], k = k),
           p.value = specify_decimal_p(x = stats_df$p.value[[1]], k = k, p.value = TRUE),
-          n = sample_size
+          n = .prettyNum(sample_size)
         )
       )
   }

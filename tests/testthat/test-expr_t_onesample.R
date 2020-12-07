@@ -14,8 +14,7 @@ testthat::test_that(
         x = length,
         test.value = 120,
         type = "p",
-        k = 5,
-        messages = FALSE
+        k = 5
       )
 
     set.seed(123)
@@ -44,7 +43,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          79L
+          "79"
         )
       )
 
@@ -59,8 +58,7 @@ testthat::test_that(
           type = "p",
           effsize.type = "d",
           k = 4,
-          conf.level = 0.90,
-          messages = FALSE
+          conf.level = 0.90
         )
       )
 
@@ -90,7 +88,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          79L
+          "79"
         )
       )
 
@@ -115,8 +113,7 @@ testthat::test_that(
         x = len,
         test.value = 20,
         type = "np",
-        k = 4,
-        messages = TRUE
+        k = 4
       )
 
     # expected output
@@ -144,7 +141,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          60L
+          "60"
         )
       )
 
@@ -159,8 +156,7 @@ testthat::test_that(
         x = names(ggplot2::msleep)[10],
         test.value = 0.25,
         type = "np",
-        k = 4,
-        messages = FALSE
+        k = 4
       )
 
     results2 <-
@@ -186,7 +182,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          56L
+          "56"
         )
       )
 
@@ -236,7 +232,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          11L
+          "11"
         )
       )
 
@@ -284,8 +280,7 @@ testthat::test_that(
         x = "brainwt",
         test.value = 0.25,
         type = "bf",
-        k = 4,
-        messages = FALSE
+        k = 4
       )
 
     # expected result

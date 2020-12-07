@@ -43,7 +43,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          32L
+          "32"
         )
       )
 
@@ -85,7 +85,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          2201L
+          "2,201"
         )
       )
 
@@ -138,7 +138,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          52L
+          "52"
         )
       )
 
@@ -216,7 +216,7 @@ testthat::test_that(
           ", ",
           italic("n")["pairs"],
           " = ",
-          100L
+          "100"
         )
       )
 
@@ -306,7 +306,7 @@ testthat::test_that(
           ", ",
           italic("n")["pairs"],
           " = ",
-          95L
+          "95"
         )
       )
 
@@ -389,7 +389,7 @@ testthat::test_that(
           ", ",
           italic("n")["pairs"],
           " = ",
-          89L
+          "89"
         )
       )
 
@@ -438,7 +438,7 @@ testthat::test_that(
           ", ",
           italic("n")["pairs"],
           " = ",
-          20L
+          "20"
         )
       )
 
@@ -491,7 +491,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          32L
+          "32"
         )
       )
 
@@ -532,7 +532,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          2201L
+          "2,201"
         )
       )
 
@@ -585,7 +585,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          2201L
+          "2,201"
         )
       )
 
@@ -636,7 +636,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          76L
+          "76"
         )
       )
 
@@ -691,7 +691,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          6L
+          "6"
         )
       )
     )
@@ -729,7 +729,7 @@ testthat::test_that(
           ", ",
           italic("n")["obs"],
           " = ",
-          19L
+          "19"
         )
       )
     )

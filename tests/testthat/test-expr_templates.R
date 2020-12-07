@@ -30,7 +30,7 @@ testthat::test_that(
           ", ",
           italic("n"),
           " = ",
-          32
+          "32"
         )
       )
 
@@ -94,7 +94,7 @@ testthat::test_that(
           ", ",
           italic("n"),
           " = ",
-          32
+          "32"
         )
       )
 
@@ -159,7 +159,7 @@ testthat::test_that(
           ", ",
           italic("n"),
           " = ",
-          51L
+          "51"
         )
       )
 

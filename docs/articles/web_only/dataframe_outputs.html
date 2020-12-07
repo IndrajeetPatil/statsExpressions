@@ -98,7 +98,7 @@
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2020-12-03</h4>
+            <h4 class="date">2020-12-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -142,12 +142,12 @@
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 11</span>
-<span class="co">#&gt;   term                                               mu difference statistic</span>
-<span class="co">#&gt;   &lt;chr&gt;                                           &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 data %&gt;% dplyr::pull({     {         x     } }) 0.275    0.00658    0.0504</span>
-<span class="co">#&gt;   df.error p.value method            estimate ci.width conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1       55   0.960 One Sample t-test  0.00665     0.95   -0.254     0.267</span>
+<span class="co">#&gt;   term     mu difference statistic df.error p.value method            estimate</span>
+<span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 x_vec 0.275    0.00658    0.0504       55   0.960 One Sample t-test  0.00665</span>
+<span class="co">#&gt;   ci.width conf.low conf.high</span>
+<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1     0.95   -0.254     0.267</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -161,12 +161,9 @@
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 8</span>
-<span class="co">#&gt;   parameter1                                      parameter2 statistic</span>
-<span class="co">#&gt;   &lt;chr&gt;                                           &lt;chr&gt;          &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 data %&gt;% dplyr::pull({     {         x     } }) &lt;NA&gt;            5.51</span>
-<span class="co">#&gt;      p.value method  estimate conf.low conf.high</span>
-<span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 0.00000738 Kendall     -0.6   -0.830    -0.393</span>
+<span class="co">#&gt;   parameter1 parameter2 statistic    p.value method  estimate conf.low conf.high</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 x_vec      &lt;NA&gt;            5.51 0.00000738 Kendall     -0.6   -0.830    -0.393</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -433,9 +430,9 @@
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 9</span>
-<span class="co">#&gt;   parameter1 parameter2 statistic    df  p.value method  estimate conf.low</span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 desire     condition       55.8     3 4.56e-12 Kendall    0.615    0.615</span>
+<span class="co">#&gt;   parameter1 parameter2 statistic df.error  p.value method  estimate conf.low</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 desire     condition       55.8        3 4.56e-12 Kendall    0.615    0.615</span>
 <span class="co">#&gt;   conf.high</span>
 <span class="co">#&gt;       &lt;dbl&gt;</span>
 <span class="co">#&gt; 1     0.906</span>
@@ -578,12 +575,12 @@
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 9</span>
-<span class="co">#&gt;   parameter1              parameter2 statistic    df  p.value method  estimate</span>
-<span class="co">#&gt;   &lt;chr&gt;                   &lt;chr&gt;          &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Sepal.Length by Species &lt;NA&gt;            96.9     2 8.92e-22 Kendall    0.651</span>
-<span class="co">#&gt;   conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    0.560     0.724</span>
+<span class="co">#&gt;   parameter1              parameter2 statistic df.error  p.value method </span>
+<span class="co">#&gt;   &lt;chr&gt;                   &lt;chr&gt;          &lt;dbl&gt;    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;  </span>
+<span class="co">#&gt; 1 Sepal.Length by Species &lt;NA&gt;            96.9        2 8.92e-22 Kendall</span>
+<span class="co">#&gt;   estimate conf.low conf.high</span>
+<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1    0.651    0.560     0.724</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 

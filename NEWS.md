@@ -3,6 +3,8 @@
 MINOR CHANGES
 
   - Internal refactoring to catch up with changes made to `effectsize`.
+  
+  - Sample size information in expressions is pretty-formatted.
 
 # statsExpressions 0.6.1
 

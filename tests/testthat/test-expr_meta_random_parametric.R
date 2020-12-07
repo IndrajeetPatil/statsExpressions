@@ -71,7 +71,7 @@ testthat::test_that(
           ", ",
           italic("n")["effects"],
           " = ",
-          5L
+          "5"
         )
       )
 
