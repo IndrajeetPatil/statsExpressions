@@ -1,9 +1,10 @@
-# statsExpressions 0.6.1.9000
+# statsExpressions 0.6.2
 
 MINOR CHANGES
 
-  - Internal refactoring to catch up with changes made to `effectsize`.
-  
+  - Internal refactoring to catch up with changes made to `effectsize`. Tests
+    are adapted to these changes as well.
+
   - Sample size information in expressions is pretty-formatted.
 
 # statsExpressions 0.6.1
@@ -13,9 +14,10 @@ MAJOR CHANGES
   - Adds two new helper functions: `tidy_model_parameters` and
     `tidy_model_performance` to toggle between `easystats` and `tidymodels`
     naming conventions.
-    
-  - Drops `broomExtra` from dependencies in favor of `parameters` + `performance`.
-  
+
+  - Drops `broomExtra` from dependencies in favor of `parameters` +
+    `performance`.
+
   - Removes the unused and vestigial `Titanic_full` dataset.
 
 # statsExpressions 0.6.0

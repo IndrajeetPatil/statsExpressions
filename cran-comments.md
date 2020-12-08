@@ -7,4 +7,4 @@
 
 0 errors | 0 warnings | 0 note
 
-  - Prepares for upcoming release of `parameters` package.
+  - Fixes failing tests due to `effectsize` update.

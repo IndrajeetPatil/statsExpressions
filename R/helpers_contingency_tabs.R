@@ -32,11 +32,11 @@
 #' @inheritParams expr_anova_nonparametric
 #'
 #' @importFrom dplyr select mutate rename filter
-#' @importFrom rlang !! enquo as_name ensym exec
+#' @importFrom rlang enquo as_name ensym exec
 #' @importFrom tidyr uncount drop_na
 #' @importFrom stats mcnemar.test chisq.test
 #' @importFrom effectsize cramers_v cohens_g
-#' @importFrom insight standardize_names
+#' @importFrom parameters standardize_names
 #'
 #' @examples
 #' # for reproducibility
