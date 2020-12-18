@@ -277,7 +277,8 @@ effsize_type_switch <- function(effsize.type) {
 #'
 #' @inheritParams parameters::model_parameters
 #'
-#' @importFrom parameters model_parameters standardize_names
+#' @importFrom parameters model_parameters
+#' @importFrom insight standardize_names
 #'
 #' @examples
 #' model <- lm(mpg ~ wt + cyl, data = mtcars)

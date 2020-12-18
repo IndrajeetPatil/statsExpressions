@@ -16,13 +16,13 @@
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/statsExpressions/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.6.2",
+  "version": "0.6.2.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R Under development (unstable) (2020-12-03 r79553)",
+  "runtimePlatform": "R Under development (unstable) (2020-12-16 r79643)",
   "author": [
     {
       "@type": "Person",
@@ -161,7 +161,7 @@
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=effectsize"
+      "sameAs": "https://github.com/easystats/effectsize"
     },
     {
       "@type": "SoftwareApplication",
@@ -174,6 +174,19 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=ez"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "insight",
+      "name": "insight",
+      "version": ">= 0.11.1.1",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://github.com/easystats/insight"
     },
     {
       "@type": "SoftwareApplication",
@@ -215,7 +228,7 @@
       "@type": "SoftwareApplication",
       "identifier": "parameters",
       "name": "parameters",
-      "version": ">= 0.10.0",
+      "version": ">= 0.10.1.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -228,14 +241,14 @@
       "@type": "SoftwareApplication",
       "identifier": "performance",
       "name": "performance",
-      "version": ">= 0.6.0",
+      "version": ">= 0.6.1.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=performance"
+      "sameAs": "https://github.com/easystats/performance"
     },
     {
       "@type": "SoftwareApplication",
@@ -277,7 +290,7 @@
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=tidyBF"
+      "sameAs": "https://github.com/IndrajeetPatil/tidyBF"
     },
     {
       "@type": "SoftwareApplication",
@@ -361,6 +374,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3874.961KB",
+  "fileSize": "3876.991KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }
