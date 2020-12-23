@@ -4,9 +4,6 @@
 #' @return For more details, see-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
-#' @description The effect sizes and their confidence intervals are computed
-#'   using `effectsize::eta_squared` and `effectsize::omega_squared` functions.
-#'
 #' @inheritParams ipmisc::long_to_wide_converter
 #' @param conf.level Scalar between 0 and 1. If unspecified, the defaults return
 #'   `95%` confidence/credible intervals (`0.95`).

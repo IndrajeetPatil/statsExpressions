@@ -66,8 +66,7 @@ For more details, see-
 \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }
 \description{
-The effect sizes and their confidence intervals are computed
-using \code{effectsize::eta_squared} and \code{effectsize::omega_squared} functions.
+Expression containing parametric ANOVA results
 }
 \examples{
 # for reproducibility

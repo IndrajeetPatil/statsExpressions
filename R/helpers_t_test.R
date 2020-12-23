@@ -417,12 +417,7 @@ expr_t_robust <- function(data,
       )
 
     # tidying it up
-    stats_df <-
-      tibble(
-        statistic = stats_obj$test[[1]],
-        parameter = stats_obj$df[[1]],
-        p.value = stats_obj$p.value[[1]]
-      )
+    stats_df <- tidy_model_parameters(stats_obj)
 
     # expression parameters
     k.parameter <- k
@@ -432,15 +427,10 @@ expr_t_robust <- function(data,
 
   if (isTRUE(paired)) {
     # running robust paired t-test
-    fit <- WRS2::yuend(x = data[2], y = data[3], tr = tr)
+    stats_obj <- WRS2::yuend(x = data[2], y = data[3], tr = tr)
 
     # create a dataframe
-    stats_df <-
-      tibble(
-        statistic = fit$test[[1]],
-        parameter = fit$df[[1]],
-        p.value = fit$p.value[[1]]
-      )
+    stats_df <- tidy_model_parameters(stats_obj)
 
     # computing effect size
     fit2 <-
@@ -466,7 +456,7 @@ expr_t_robust <- function(data,
 
   # combining dataframes
   stats_df <-
-    dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("estimate|^conf")), effsize_df)
+    dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("^est|^eff|conf")), effsize_df)
 
   # preparing expression
   expression <-
