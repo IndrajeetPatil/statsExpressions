@@ -24,8 +24,7 @@
 #' @importFrom dplyr select rename matches
 #' @importFrom rlang !! enquo eval_tidy expr ensym exec
 #' @importFrom stats oneway.test
-#' @importFrom ez ezANOVA
-#' @importFrom effectsize effectsize
+#' @importFrom afex aov_ez
 #' @importFrom ipmisc long_to_wide_converter specify_decimal_p
 #'
 #' @examples
@@ -77,11 +76,13 @@ expr_anova_parametric <- function(data,
   k.df1 <- ifelse(isFALSE(paired), 0L, k)
   k.df2 <- ifelse(isFALSE(paired) && isTRUE(var.equal), 0L, k)
 
-  # effsize text
-  if (effsize.type == "unbiased") effsize.type <- "omega"
-  if (effsize.type == "biased") effsize.type <- "eta"
-  if (effsize.type == "omega") effsize.text <- quote(widehat(omega["p"]^2))
-  if (effsize.type == "eta") effsize.text <- quote(widehat(eta["p"]^2))
+  # which effect size?
+  eta_squared <- omega_squared <- NULL
+  if (effsize.type %in% c("unbiased", "omega")) omega_squared <- "partial"
+  if (effsize.type %in% c("biased", "eta")) eta_squared <- "partial"
+
+  if (!is.null(omega_squared)) effsize.text <- quote(widehat(omega["p"]^2))
+  if (!is.null(eta_squared)) effsize.text <- quote(widehat(eta["p"]^2))
 
   # --------------------- data preparation --------------------------------
 
@@ -104,41 +105,14 @@ expr_anova_parametric <- function(data,
     sample_size <- length(unique(data$rowid))
     n.text <- quote(italic("n")["pairs"])
 
-    # run the ANOVA
-    ez_df <-
-      rlang::eval_tidy(rlang::expr(
-        ez::ezANOVA(
-          data = dplyr::mutate_if(.tbl = data, .predicate = is.character, .funs = as.factor) %>%
-            dplyr::mutate(.data = ., rowid = as.factor(rowid)),
-          dv = !!rlang::ensym(y),
-          wid = rowid,
-          within = !!rlang::ensym(x),
-          detailed = TRUE,
-          return_aov = TRUE
-        )
-      ))
-
-    # no sphericity correction applied
-    if (sample_size < nlevels(as.factor(data %>% dplyr::pull({{ x }})))) {
-      c(k.df1, k.df2) %<-% c(0L, 0L)
-      e_corr <- 1
-      p.value <- ez_df$ANOVA$p[2]
-    } else {
-      e_corr <- ez_df$`Sphericity Corrections`$GGe
-      p.value <- ez_df$`Sphericity Corrections`$`p[GG]`[[1]]
-    }
-
-    # combine into a dataframe
-    stats_df <-
-      tibble(
-        statistic = ez_df$ANOVA$F[2],
-        parameter1 = e_corr * ez_df$ANOVA$DFn[2],
-        parameter2 = e_corr * ez_df$ANOVA$DFd[2],
-        p.value = p.value
+    # Fisher's ANOVA
+    mod <-
+      afex::aov_ez(
+        id = "rowid",
+        dv = rlang::as_string(y),
+        data = data,
+        within = rlang::as_string(x)
       )
-
-    # creating a standardized dataframe with effect size and its CIs
-    mod <- ez_df$aov
   }
 
   # ------------------- between-subjects design ------------------------------
@@ -148,7 +122,7 @@ expr_anova_parametric <- function(data,
     sample_size <- nrow(data)
     n.text <- quote(italic("n")["obs"])
 
-    # Welch's ANOVA run by default
+    # Welch's ANOVA
     mod <-
       stats::oneway.test(
         formula = rlang::new_formula(y, x),
@@ -156,24 +130,18 @@ expr_anova_parametric <- function(data,
         na.action = na.omit,
         var.equal = var.equal
       )
-
-    # tidy up the stats object
-    stats_df <-
-      suppressMessages(tidy_model_parameters(mod)) %>%
-      dplyr::select(statistic, parameter1 = df, parameter2 = df.error, dplyr::everything())
   }
 
-  # ------------------- effect size computation ------------------------------
+  # ------------------- parameter extraction ------------------------------
 
-  # computing effect size
-  effsize_df <-
-    suppressWarnings(rlang::exec(
-      .fn = effectsize::effectsize,
+  # tidy up the stats object
+  stats_df <-
+    suppressMessages(tidy_model_parameters(
       model = mod,
-      type = effsize.type,
+      eta_squared = eta_squared,
+      omega_squared = omega_squared,
       ci = conf.level
-    )) %>%
-    parameters::standardize_names(data = ., style = "broom")
+    ))
 
   # test details
   if (isTRUE(paired) || isTRUE(var.equal)) {
@@ -181,9 +149,6 @@ expr_anova_parametric <- function(data,
   } else {
     statistic.text <- quote(italic("F")["Welch"])
   }
-
-  # combining dataframes
-  stats_df <- dplyr::bind_cols(stats_df, effsize_df)
 
   # preparing expression
   expression <-
@@ -321,7 +286,7 @@ expr_anova_nonparametric <- function(data,
     # setting up the anova model and getting its summary
     mod <-
       stats::kruskal.test(
-        formula = rlang::new_formula({{ y }}, {{ x }}),
+        formula = rlang::new_formula(y, x),
         data = data,
         na.action = na.omit
       )
@@ -463,14 +428,8 @@ expr_anova_robust <- function(data,
         tr = tr
       )
 
-    # create a dataframe
-    stats_df <-
-      tibble(
-        statistic = mod$test[[1]],
-        parameter1 = mod$df1[[1]],
-        parameter2 = mod$df2[[1]],
-        p.value = mod$p.value[[1]]
-      )
+    # parameter extraction
+    stats_df <- tidy_model_parameters(mod)
 
     # preparing the expression
     expression <-
@@ -494,8 +453,8 @@ expr_anova_robust <- function(data,
         ),
         env = list(
           statistic = specify_decimal_p(x = stats_df$statistic[[1]], k = k),
-          df1 = specify_decimal_p(x = stats_df$parameter1[[1]], k = k),
-          df2 = specify_decimal_p(x = stats_df$parameter2[[1]], k = k),
+          df1 = specify_decimal_p(x = stats_df$df[[1]], k = k),
+          df2 = specify_decimal_p(x = stats_df$df.error[[1]], k = k),
           p.value = specify_decimal_p(x = stats_df$p.value[[1]], k = k, p.value = TRUE),
           n = .prettyNum(sample_size)
         )
@@ -512,24 +471,15 @@ expr_anova_robust <- function(data,
     # heteroscedastic one-way ANOVA for trimmed means
     mod <-
       WRS2::t1way(
-        formula = rlang::new_formula({{ y }}, {{ x }}),
+        formula = rlang::new_formula(y, x),
         data = data,
         tr = tr,
         alpha = 1 - conf.level,
         nboot = nboot
       )
 
-    # create a dataframe
-    stats_df <-
-      tibble(
-        statistic = mod$test[[1]],
-        parameter1 = mod$df1[[1]],
-        parameter2 = mod$df2[[1]],
-        p.value = mod$p.value[[1]],
-        estimate = mod$effsize[[1]],
-        conf.low = mod$effsize_ci[[1]],
-        conf.high = mod$effsize_ci[[2]]
-      )
+    # parameter extraction
+    stats_df <- tidy_model_parameters(mod)
 
     # preparing expression
     expression <-

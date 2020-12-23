@@ -8,8 +8,8 @@ testthat::test_that(
     # statsExpression output
     set.seed(123)
     using_function1 <-
-      statsExpressions::expr_anova_parametric(
-        data = dplyr::sample_frac(statsExpressions::movies_long, 0.1),
+      expr_anova_parametric(
+        data = dplyr::sample_frac(movies_long, 0.1),
         x = genre,
         y = rating,
         effsize.type = "eta",
@@ -64,7 +64,7 @@ testthat::test_that(
     # statsExpression output
     set.seed(123)
     using_function1 <-
-      statsExpressions::expr_anova_parametric(
+      expr_anova_parametric(
         data = ggplot2::msleep,
         x = vore,
         y = "sleep_rem",
@@ -119,7 +119,7 @@ testthat::test_that(
     # statsExpression output
     set.seed(123)
     using_function1 <-
-      statsExpressions::expr_anova_parametric(
+      expr_anova_parametric(
         data = ggplot2::msleep,
         x = vore,
         y = sleep_rem,
@@ -175,8 +175,8 @@ testthat::test_that(
     # statsExpression output
     set.seed(123)
     using_function1 <-
-      statsExpressions::expr_anova_parametric(
-        data = statsExpressions::iris_long,
+      expr_anova_parametric(
+        data = iris_long,
         x = "condition",
         y = value,
         paired = TRUE,
@@ -221,10 +221,10 @@ testthat::test_that(
   }
 )
 
-# checking warning message when too few obs --------------------------------
+# too few obs -------------------------------------------------------
 
 testthat::test_that(
-  desc = "checking warning message when too few obs",
+  desc = "too few obs",
   code = {
     testthat::skip_on_cran()
     testthat::skip_if(getRversion() < "3.6")
@@ -289,7 +289,7 @@ testthat::test_that(
     # capture the message
     set.seed(123)
     p_sub <-
-      suppressWarnings(statsExpressions::expr_anova_parametric(
+      suppressWarnings(expr_anova_parametric(
         data = df,
         x = x,
         y = y,
@@ -303,9 +303,9 @@ testthat::test_that(
       ggplot2::expr(paste(
         italic("F")["Fisher"],
         "(",
-        "6",
+        "6.00",
         ",",
-        "24",
+        "24.00",
         ") = ",
         "43.14",
         ", ",
@@ -369,7 +369,7 @@ testthat::test_that(
     # incorrect
     set.seed(123)
     expr1 <-
-      statsExpressions::expr_anova_parametric(
+      expr_anova_parametric(
         data = df,
         x = condition,
         y = score,
@@ -380,7 +380,7 @@ testthat::test_that(
     # correct
     set.seed(123)
     expr2 <-
-      statsExpressions::expr_anova_parametric(
+      expr_anova_parametric(
         data = dplyr::arrange(df, id),
         x = condition,
         y = score,
@@ -397,7 +397,7 @@ testthat::test_that(
   desc = "dataframe",
   code = {
     testthat::expect_s3_class(
-      statsExpressions::expr_anova_parametric(
+      expr_anova_parametric(
         data = mtcars,
         x = cyl,
         y = wt,

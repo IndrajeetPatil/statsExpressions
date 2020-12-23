@@ -86,6 +86,9 @@ expr_template <- function(no.parameters,
   # if sample size nature is not specified, use generic n
   if (rlang::is_null(n.text)) n.text <- quote(italic("n"))
 
+  # rename effect size column
+  if ("effsize" %in% names(stats.df)) stats.df %<>% dplyr::rename(estimate = effsize)
+
   # extracting the common values
   statistic <- stats.df$statistic[[1]]
   p.value <- stats.df$p.value[[1]]
@@ -190,6 +193,15 @@ expr_template <- function(no.parameters,
   # ------------------ statistic with 2 degrees of freedom -----------------
 
   if (no.parameters == 2L) {
+    # renaming pattern from `easystats`
+    stats.df %<>%
+      dplyr::rename_all(
+        .tbl = .,
+        .funs = dplyr::recode,
+        df = "parameter1",
+        df.error = "parameter2"
+      )
+
     # preparing subtitle
     subtitle <-
       substitute(
@@ -279,6 +291,7 @@ effsize_type_switch <- function(effsize.type) {
 #'
 #' @importFrom parameters model_parameters
 #' @importFrom insight standardize_names
+#' @importFrom dplyr rename_all
 #'
 #' @examples
 #' model <- lm(mpg ~ wt + cyl, data = mtcars)
@@ -288,6 +301,7 @@ effsize_type_switch <- function(effsize.type) {
 tidy_model_parameters <- function(model, ...) {
   parameters::model_parameters(model, verbose = FALSE, ...) %>%
     parameters::standardize_names(data = ., style = "broom") %>%
+    dplyr::rename_all(., ~ gsub("omega2.|eta2.", "", .x)) %>%
     as_tibble(.)
 }
 

@@ -25,10 +25,10 @@ BugReports:
 Depends: 
     R (>= 3.6.0)
 Imports:
+    afex,
     correlation,
     dplyr,
     effectsize (>= 0.4.1),
-    ez,
     insight (>= 0.11.1.1),
     ipmisc,
     metafor,
@@ -51,7 +51,7 @@ Suggests:
 Remotes:
     easystats/insight,
     easystats/effectsize,
-    vincentarelbundock/parameters@centralize,
+    easystats/parameters,
     easystats/performance,
     IndrajeetPatil/tidyBF
 VignetteBuilder: 
@@ -64,4 +64,3 @@ Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
 RoxygenNote: 7.1.1
 Config/testthat/edition: 3
 Config/testthat/parallel: true
-Config/testthat/start-first: watcher, parallel*

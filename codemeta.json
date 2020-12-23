@@ -128,6 +128,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "afex",
+      "name": "afex",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=afex"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "correlation",
       "name": "correlation",
       "provider": {
@@ -162,18 +174,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://github.com/easystats/effectsize"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "ez",
-      "name": "ez",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=ez"
     },
     {
       "@type": "SoftwareApplication",
@@ -235,7 +235,7 @@
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=parameters"
+      "sameAs": "https://github.com/easystats/parameters"
     },
     {
       "@type": "SoftwareApplication",
@@ -374,6 +374,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3876.991KB",
+  "fileSize": "3874.496KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

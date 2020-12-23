@@ -1,5 +1,10 @@
 # statsExpressions 0.6.2.9000
 
+MINOR CHANGES
+
+  - Package internally relies on `afex` instead of `ez` for within-subjects
+    ANOVA.
+
 # statsExpressions 0.6.2
 
 MINOR CHANGES

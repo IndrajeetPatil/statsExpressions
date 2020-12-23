@@ -98,7 +98,7 @@
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2020-12-18</h4>
+            <h4 class="date">2020-12-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -409,13 +409,13 @@
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
-<span class="co">#&gt;   statistic parameter1 parameter2  p.value group           term      estimate</span>
-<span class="co">#&gt;       &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;        &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      20.6       2.63       229. 8.27e-11 rowid:condition condition   0.0783</span>
-<span class="co">#&gt;   ci.width conf.low conf.high</span>
+<span class="co">#&gt; # A tibble: 1 x 11</span>
+<span class="co">#&gt;   term      sumsq sum.squares.error    df df.error meansq statistic  p.value</span>
+<span class="co">#&gt;   &lt;chr&gt;     &lt;dbl&gt;             &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 condition  233.              984.  2.63     229.   4.30      20.6 8.27e-11</span>
+<span class="co">#&gt;   estimate conf.low conf.high</span>
 <span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     0.95   0.0217     0.140</span>
+<span class="co">#&gt; 1   0.0783   0.0217     0.140</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -449,10 +449,13 @@
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 4</span>
-<span class="co">#&gt;   statistic parameter1 parameter2  p.value</span>
-<span class="co">#&gt;       &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      21.2       2.69       191. 4.79e-11</span>
+<span class="co">#&gt; # A tibble: 1 x 5</span>
+<span class="co">#&gt;   statistic    df df.error  p.value</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      21.2  2.69     191. 4.79e-11</span>
+<span class="co">#&gt;   method                                                             </span>
+<span class="co">#&gt;   &lt;chr&gt;                                                              </span>
+<span class="co">#&gt; 1 A heteroscedastic one-way repeated measures ANOVA for trimmed means</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
@@ -535,16 +538,13 @@
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 9</span>
-<span class="co">#&gt;   statistic parameter1 parameter2  p.value</span>
-<span class="co">#&gt; *     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      139.          2       92.2 1.51e-28</span>
-<span class="co">#&gt;   method                                                   estimate ci.width</span>
-<span class="co">#&gt; * &lt;chr&gt;                                                       &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 One-way analysis of means (not assuming equal variances)    0.743     0.95</span>
-<span class="co">#&gt;   conf.low conf.high</span>
-<span class="co">#&gt; *    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    0.655     0.803</span>
+<span class="co">#&gt; # A tibble: 1 x 8</span>
+<span class="co">#&gt;   statistic    df df.error estimate conf.low conf.high  p.value</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      139.     2     92.2    0.743    0.655     0.803 1.51e-28</span>
+<span class="co">#&gt;   method                                                  </span>
+<span class="co">#&gt;   &lt;chr&gt;                                                   </span>
+<span class="co">#&gt; 1 One-way analysis of means (not assuming equal variances)</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
@@ -556,13 +556,13 @@
   var.equal <span class="op">=</span> <span class="cn">TRUE</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 9</span>
-<span class="co">#&gt;   statistic parameter1 parameter2  p.value method                    estimate</span>
-<span class="co">#&gt; *     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                        &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      119.          2        147 1.67e-31 One-way analysis of means    0.612</span>
-<span class="co">#&gt;   ci.width conf.low conf.high</span>
-<span class="co">#&gt; *    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     0.95    0.517     0.683</span>
+<span class="co">#&gt; # A tibble: 1 x 8</span>
+<span class="co">#&gt;   statistic    df df.error estimate conf.low conf.high  p.value</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      119.     2      147    0.612    0.517     0.683 1.67e-31</span>
+<span class="co">#&gt;   method                   </span>
+<span class="co">#&gt;   &lt;chr&gt;                    </span>
+<span class="co">#&gt; 1 One-way analysis of means</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -592,10 +592,13 @@
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 7</span>
-<span class="co">#&gt;   statistic parameter1 parameter2 p.value estimate conf.low conf.high</span>
-<span class="co">#&gt;       &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      124.          2       71.6       0    0.916    0.861     0.984</span>
+<span class="co">#&gt; # A tibble: 1 x 8</span>
+<span class="co">#&gt;   statistic    df df.error p.value effsize conf.low conf.high</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      124.     2     71.6       0   0.916    0.861     0.984</span>
+<span class="co">#&gt;   method                                           </span>
+<span class="co">#&gt;   &lt;chr&gt;                                            </span>
+<span class="co">#&gt; 1 A heteroscedastic one-way ANOVA for trimmed means</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
