@@ -338,7 +338,10 @@
     "robust-statistics",
     "non-parametric-statistics",
     "parametric",
-    "meta-analysis"
+    "meta-analysis",
+    "statistical-details",
+    "contingency-table",
+    "robust"
   ],
   "developmentStatus": ["https://www.tidyverse.org/lifecycle/", "https://www.repostatus.org/#active"],
   "releaseNotes": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/NEWS.md",
@@ -374,6 +377,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3874.496KB",
+  "fileSize": "3872.166KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

@@ -42,6 +42,7 @@
 #' @inheritParams expr_anova_parametric
 #'
 #' @importFrom rlang is_null
+#' @importFrom ipmisc format_num
 #'
 #' @examples
 #' set.seed(123)
@@ -80,21 +81,10 @@ expr_template <- function(no.parameters,
                           k = 2L,
                           k.parameter = 0L,
                           k.parameter2 = 0L,
-                          n.text = NULL,
+                          n.text = quote(italic("n")),
                           ...) {
-
-  # if sample size nature is not specified, use generic n
-  if (rlang::is_null(n.text)) n.text <- quote(italic("n"))
-
   # rename effect size column
   if ("effsize" %in% names(stats.df)) stats.df %<>% dplyr::rename(estimate = effsize)
-
-  # extracting the common values
-  statistic <- stats.df$statistic[[1]]
-  p.value <- stats.df$p.value[[1]]
-  effsize.estimate <- stats.df$estimate[[1]]
-  effsize.LL <- stats.df$conf.low[[1]]
-  effsize.UL <- stats.df$conf.high[[1]]
 
   # ------------------ statistic with 0 degrees of freedom --------------------
 
@@ -127,13 +117,13 @@ expr_template <- function(no.parameters,
         ),
         env = list(
           statistic.text = statistic.text,
-          statistic = specify_decimal_p(x = statistic, k = k),
-          p.value = specify_decimal_p(x = p.value, k = k, p.value = TRUE),
+          statistic = format_num(stats.df$statistic[[1]], k),
+          p.value = format_num(stats.df$p.value[[1]], k = k, p.value = TRUE),
           effsize.text = effsize.text,
-          effsize.estimate = specify_decimal_p(x = effsize.estimate, k = k),
-          conf.level = paste(conf.level * 100, "%", sep = ""),
-          effsize.LL = specify_decimal_p(x = effsize.LL, k = k),
-          effsize.UL = specify_decimal_p(x = effsize.UL, k = k),
+          effsize.estimate = format_num(stats.df$estimate[[1]], k),
+          conf.level = paste0(conf.level * 100, "%"),
+          effsize.LL = format_num(stats.df$conf.low[[1]], k),
+          effsize.UL = format_num(stats.df$conf.high[[1]], k),
           n = .prettyNum(n),
           n.text = n.text
         )
@@ -176,14 +166,14 @@ expr_template <- function(no.parameters,
         ),
         env = list(
           statistic.text = statistic.text,
-          statistic = specify_decimal_p(x = statistic, k = k),
-          parameter = specify_decimal_p(x = stats.df$parameter[[1]], k = k.parameter),
-          p.value = specify_decimal_p(x = p.value, k = k, p.value = TRUE),
+          statistic = format_num(stats.df$statistic[[1]], k),
+          parameter = format_num(stats.df$parameter[[1]], k = k.parameter),
+          p.value = format_num(stats.df$p.value[[1]], k = k, p.value = TRUE),
           effsize.text = effsize.text,
-          effsize.estimate = specify_decimal_p(x = effsize.estimate, k = k),
-          conf.level = paste(conf.level * 100, "%", sep = ""),
-          effsize.LL = specify_decimal_p(x = effsize.LL, k = k),
-          effsize.UL = specify_decimal_p(x = effsize.UL, k = k),
+          effsize.estimate = format_num(stats.df$estimate[[1]], k),
+          conf.level = paste0(conf.level * 100, "%"),
+          effsize.LL = format_num(stats.df$conf.low[[1]], k),
+          effsize.UL = format_num(stats.df$conf.high[[1]], k),
           n = .prettyNum(n),
           n.text = n.text
         )
@@ -234,15 +224,15 @@ expr_template <- function(no.parameters,
         ),
         env = list(
           statistic.text = statistic.text,
-          statistic = specify_decimal_p(x = statistic, k = k),
-          parameter1 = specify_decimal_p(x = stats.df$parameter1[[1]], k = k.parameter),
-          parameter2 = specify_decimal_p(x = stats.df$parameter2[[1]], k = k.parameter2),
-          p.value = specify_decimal_p(x = p.value, k = k, p.value = TRUE),
+          statistic = format_num(stats.df$statistic[[1]], k),
+          parameter1 = format_num(stats.df$parameter1[[1]], k = k.parameter),
+          parameter2 = format_num(stats.df$parameter2[[1]], k = k.parameter2),
+          p.value = format_num(stats.df$p.value[[1]], k = k, p.value = TRUE),
           effsize.text = effsize.text,
-          effsize.estimate = specify_decimal_p(x = effsize.estimate, k = k),
-          conf.level = paste(conf.level * 100, "%", sep = ""),
-          effsize.LL = specify_decimal_p(x = effsize.LL, k = k),
-          effsize.UL = specify_decimal_p(x = effsize.UL, k = k),
+          effsize.estimate = format_num(stats.df$estimate[[1]], k),
+          conf.level = paste0(conf.level * 100, "%"),
+          effsize.LL = format_num(stats.df$conf.low[[1]], k),
+          effsize.UL = format_num(stats.df$conf.high[[1]], k),
           n = .prettyNum(n),
           n.text = n.text
         )
@@ -271,16 +261,6 @@ rcompanion_cleaner <- function(object) {
     W = "estimate",
     lower.ci = "conf.low",
     upper.ci = "conf.high"
-  )
-}
-
-#' @noRd
-
-effsize_type_switch <- function(effsize.type) {
-  dplyr::case_when(
-    grepl("^u|^g|omega", effsize.type, TRUE) ~ "unbiased",
-    grepl("^b|^d|eta", effsize.type, TRUE) ~ "biased",
-    TRUE ~ "unbiased"
   )
 }
 

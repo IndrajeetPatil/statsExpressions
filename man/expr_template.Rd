@@ -14,7 +14,7 @@ expr_template(
   k = 2L,
   k.parameter = 0L,
   k.parameter2 = 0L,
-  n.text = NULL,
+  n.text = quote(italic("n")),
   ...
 )
 }
