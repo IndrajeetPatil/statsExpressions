@@ -281,7 +281,7 @@ rcompanion_cleaner <- function(object) {
 tidy_model_parameters <- function(model, ...) {
   parameters::model_parameters(model, verbose = FALSE, ...) %>%
     parameters::standardize_names(data = ., style = "broom") %>%
-    dplyr::rename_all(., ~ gsub("omega2.|eta2.", "", .x)) %>%
+    dplyr::rename_all(~ gsub("omega2\\.|eta2\\.|cohens\\.|cramers\\.|d\\.|g\\.", "", .x)) %>%
     as_tibble(.)
 }
 

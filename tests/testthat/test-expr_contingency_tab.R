@@ -108,7 +108,7 @@ testthat::test_that(
         data = ggplot2::msleep,
         x = vore,
         y = "conservation",
-        conf.level = .990
+        conf.level = 0.990
       ))
 
     # expected output

@@ -103,13 +103,15 @@ expr_t_onesample <- function(data,
   # ========================= parametric ====================================
 
   if (stats.type == "parametric") {
+    standardized_d <- hedges_g <- NULL
+
     # deciding which effect size to use (Hedge's g or Cohen's d)
     if (effsize.type %in% c("unbiased", "g")) {
+      hedges_g <- TRUE
       effsize.text <- quote(widehat(italic("g"))["Hedge"])
-      .f <- effectsize::hedges_g
     } else {
+      standardized_d <- TRUE
       effsize.text <- quote(widehat(italic("d"))["Cohen"])
-      .f <- effectsize::cohens_d
     }
 
     # setting up the t-test model and getting its summary
@@ -118,19 +120,13 @@ expr_t_onesample <- function(data,
         x = x_vec,
         mu = test.value,
         conf.level = conf.level,
-        alternative = "two.sided",
         na.action = na.omit
       ) %>%
-      tidy_model_parameters(.)
-
-    # creating effect size info
-    effsize_df <-
-      rlang::exec(
-        .fn = .f,
-        x = x_vec - test.value,
-        ci = conf.level
-      ) %>%
-      parameters::standardize_names(data = ., style = "broom")
+      tidy_model_parameters(
+        model = .,
+        standardized_d = standardized_d,
+        hedges_g = hedges_g
+      )
 
     # preparing expression parameters
     statistic.text <- quote(italic("t")["Student"])
@@ -166,6 +162,10 @@ expr_t_onesample <- function(data,
       ) %>%
       rcompanion_cleaner(.)
 
+    # combining dataframes
+    stats_df <-
+      dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("estimate|^conf")), effsize_df)
+
     # preparing expression parameters
     statistic.text <- quote("log"["e"](italic("V")["Wilcoxon"]))
     no.parameters <- 0L
@@ -174,10 +174,6 @@ expr_t_onesample <- function(data,
 
   # preparing expression
   if (stats.type %in% c("parametric", "nonparametric")) {
-    # combining dataframes
-    stats_df <-
-      dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("estimate|^conf")), effsize_df)
-
     # expression
     expression <-
       expr_template(
