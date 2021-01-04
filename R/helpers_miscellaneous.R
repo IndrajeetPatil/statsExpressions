@@ -279,8 +279,14 @@ rcompanion_cleaner <- function(object) {
 #' @export
 
 tidy_model_parameters <- function(model, ...) {
-  parameters::model_parameters(model, verbose = FALSE, ...) %>%
-    parameters::standardize_names(data = ., style = "broom") %>%
+  # extracting parameters
+  df <- parameters::model_parameters(model, verbose = FALSE, ...)
+
+  # special handling for t-test
+  if ("Difference" %in% names(df)) df %<>% dplyr::select(-dplyr::matches("Diff|^CI"))
+
+  # naming clean-up
+  parameters::standardize_names(data = df, style = "broom") %>%
     dplyr::rename_all(~ gsub("omega2\\.|eta2\\.|cohens\\.|cramers\\.|d\\.|g\\.", "", .x)) %>%
     as_tibble(.)
 }

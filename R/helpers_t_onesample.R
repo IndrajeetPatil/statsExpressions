@@ -107,11 +107,9 @@ expr_t_onesample <- function(data,
 
     # deciding which effect size to use (Hedge's g or Cohen's d)
     if (effsize.type %in% c("unbiased", "g")) {
-      hedges_g <- TRUE
-      effsize.text <- quote(widehat(italic("g"))["Hedge"])
+      c(hedges_g, effsize.text) %<-% c(TRUE, quote(widehat(italic("g"))["Hedge"]))
     } else {
-      standardized_d <- TRUE
-      effsize.text <- quote(widehat(italic("d"))["Cohen"])
+      c(standardized_d, effsize.text) %<-% c(TRUE, quote(widehat(italic("d"))["Cohen"]))
     }
 
     # setting up the t-test model and getting its summary
@@ -119,11 +117,11 @@ expr_t_onesample <- function(data,
       stats::t.test(
         x = x_vec,
         mu = test.value,
-        conf.level = conf.level,
         na.action = na.omit
       ) %>%
       tidy_model_parameters(
         model = .,
+        ci = conf.level,
         standardized_d = standardized_d,
         hedges_g = hedges_g
       )
@@ -140,10 +138,8 @@ expr_t_onesample <- function(data,
     stats_df <-
       stats::wilcox.test(
         x = x_vec,
-        alternative = "two.sided",
         na.action = na.omit,
-        mu = test.value,
-        exact = FALSE
+        mu = test.value
       ) %>%
       tidy_model_parameters(.) %>%
       dplyr::mutate(.data = ., statistic = log(statistic))
