@@ -121,7 +121,6 @@ expr_t_parametric <- function(data,
       formula = rlang::new_formula(y, x),
       data = data,
       paired = paired,
-      alternative = "two.sided",
       var.equal = var.equal,
       na.action = na.omit
     ) %>%
@@ -281,7 +280,6 @@ expr_t_nonparametric <- function(data,
       formula = rlang::new_formula(y, x),
       data = data,
       paired = paired,
-      alternative = "two.sided",
       na.action = na.omit,
       exact = FALSE
     ) %>%
