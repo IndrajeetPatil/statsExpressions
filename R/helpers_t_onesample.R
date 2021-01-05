@@ -204,13 +204,7 @@ expr_t_onesample <- function(data,
       )
 
     # create a dataframe
-    stats_df <-
-      tibble(
-        estimate = mod$estimate[[1]],
-        conf.low = mod$ci[[1]],
-        conf.high = mod$ci[[2]],
-        p.value = mod$p.value[[1]]
-      )
+    stats_df <- tidy_model_parameters(mod)
 
     # preparing the expression
     expression <-

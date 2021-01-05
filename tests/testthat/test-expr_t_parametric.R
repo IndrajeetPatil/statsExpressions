@@ -1,17 +1,17 @@
 # parametric t-test (between-subjects without NAs) ---------------------------
 
-testthat::test_that(
+test_that(
   desc = "parametric t-test works (between-subjects without NAs)",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # `statsExpressions` output
     set.seed(123)
     using_function1 <-
       suppressWarnings(
-        statsExpressions::expr_t_parametric(
+        expr_t_parametric(
           data = dplyr::filter(
-            statsExpressions::movies_long,
+            movies_long,
             genre == "Action" | genre == "Drama"
           ),
           x = genre,
@@ -55,24 +55,24 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_equal(using_function1, results1)
+    expect_equal(using_function1, results1)
   }
 )
 
 # parametric t-test (between-subjects with NAs) ------------------------------
 
-testthat::test_that(
+test_that(
   desc = "parametric t-test works (between-subjects with NAs)",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # `statsExpressions` output
     set.seed(123)
     using_function1 <-
       suppressWarnings(
-        statsExpressions::expr_t_parametric(
+        expr_t_parametric(
           data = dplyr::filter(
-            statsExpressions::movies_long,
+            movies_long,
             genre == "Action" | genre == "Drama"
           ),
           x = genre,
@@ -101,12 +101,12 @@ testthat::test_that(
           ", ",
           widehat(italic("g"))["Hedge"],
           " = ",
-          "-0.863",
+          "-0.924",
           ", CI"["90%"],
           " [",
-          "-0.968",
+          "-1.074",
           ", ",
-          "-0.658",
+          "-0.773",
           "]",
           ", ",
           italic("n")["obs"],
@@ -116,23 +116,23 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_equal(using_function1, results1)
+    expect_equal(using_function1, results1)
   }
 )
 
 # parametric t-test (within-subjects without NAs) ---------------------------
 
-testthat::test_that(
+test_that(
   desc = "parametric t-test works (within-subjects without NAs)",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # output from `statsExpressions` helper subtitle
     set.seed(123)
     subtitle <-
-      suppressWarnings(statsExpressions::expr_t_parametric(
+      suppressWarnings(expr_t_parametric(
         data = dplyr::filter(
-          statsExpressions::iris_long,
+          iris_long,
           condition %in% c("Sepal.Length", "Sepal.Width")
         ),
         x = condition,
@@ -174,23 +174,23 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(subtitle, expected)
+    expect_identical(subtitle, expected)
   }
 )
 
 
 # parametric t-test (within-subjects with NAs) ---------------------------
 
-testthat::test_that(
+test_that(
   desc = "parametric t-test works (within-subjects with NAs)",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # output from `statsExpressions` helper subtitle
     set.seed(123)
     subtitle <-
-      statsExpressions::expr_t_parametric(
-        data = dplyr::filter(statsExpressions::bugs_long, condition %in% c("HDHF", "HDLF")),
+      expr_t_parametric(
+        data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
         x = condition,
         y = desire,
         paired = TRUE,
@@ -229,16 +229,16 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(subtitle, expected)
+    expect_identical(subtitle, expected)
   }
 )
 
 # works with subject id ------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "works with subject id",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # data
     df <-
@@ -273,7 +273,7 @@ testthat::test_that(
     # incorrect
     set.seed(123)
     expr1 <-
-      statsExpressions::expr_t_parametric(
+      expr_t_parametric(
         data = df,
         x = condition,
         y = score,
@@ -284,30 +284,13 @@ testthat::test_that(
     # correct
     set.seed(123)
     expr2 <-
-      statsExpressions::expr_t_parametric(
+      expr_t_parametric(
         data = dplyr::arrange(df, id),
         x = condition,
         y = score,
         paired = TRUE
       )
 
-    testthat::expect_equal(expr1, expr2)
-  }
-)
-
-# dataframe -----------------------------------------------------------
-
-testthat::test_that(
-  desc = "dataframe",
-  code = {
-    testthat::expect_s3_class(
-      statsExpressions::expr_t_parametric(
-        data = dplyr::filter(movies_long, genre == "Action" | genre == "Drama"),
-        x = "genre",
-        y = rating,
-        output = "dataframe"
-      ),
-      "tbl_df"
-    )
+    expect_equal(expr1, expr2)
   }
 )

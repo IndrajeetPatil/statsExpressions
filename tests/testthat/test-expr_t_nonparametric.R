@@ -1,9 +1,9 @@
 # between-subjects design -----------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "expr_t_nonparametric works - between-subjects design",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # ggstatsplot output
     set.seed(123)
@@ -46,16 +46,16 @@ testthat::test_that(
       )
 
     # testing overall everything identical
-    testthat::expect_identical(using_function, results)
+    expect_identical(using_function, results)
   }
 )
 
 # within-subjects design -----------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "expr_t_nonparametric works - within-subjects design",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # made up data
     Input <- ("
@@ -92,7 +92,7 @@ testthat::test_that(
       )
 
     # expect error
-    testthat::expect_error(suppressWarnings(statsExpressions::expr_t_nonparametric(
+    expect_error(suppressWarnings(statsExpressions::expr_t_nonparametric(
       data = iris,
       x = Sepal.Length,
       y = Species
@@ -142,17 +142,17 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function2, results2)
+    expect_identical(using_function2, results2)
   }
 )
 
 
 # dataframe -----------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "dataframe",
   code = {
-    testthat::expect_s3_class(
+    expect_s3_class(
       statsExpressions::expr_t_nonparametric(
         data = dplyr::filter(movies_long, genre == "Action" | genre == "Drama"),
         x = "genre",
@@ -167,10 +167,10 @@ testthat::test_that(
 
 # works with subject id ------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "works with subject id",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # data
     df <-
@@ -223,6 +223,6 @@ testthat::test_that(
         paired = TRUE
       )
 
-    testthat::expect_equal(expr1, expr2)
+    expect_equal(expr1, expr2)
   }
 )

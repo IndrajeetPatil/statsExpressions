@@ -1,10 +1,10 @@
 
 # between-subjects -------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "expr_anova_robust works - between-subjects",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # `statsExpressions` output
     set.seed(123)
@@ -52,7 +52,7 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function1, results1)
+    expect_identical(using_function1, results1)
 
     # `statsExpressions` output
     set.seed(123)
@@ -100,16 +100,16 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function2, results2)
+    expect_identical(using_function2, results2)
   }
 )
 
 # within-subjects -------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "expr_anova_robust works - within-subjects",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # `statsExpressions` output
     set.seed(123)
@@ -146,7 +146,7 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function1, results1)
+    expect_identical(using_function1, results1)
 
     # `statsExpressions` output
     set.seed(123)
@@ -183,17 +183,17 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function1, results1)
+    expect_identical(using_function1, results1)
   }
 )
 
 
 # dataframe -----------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "dataframe",
   code = {
-    testthat::expect_s3_class(
+    expect_s3_class(
       statsExpressions::expr_anova_robust(
         data = mtcars,
         x = cyl,
@@ -207,10 +207,10 @@ testthat::test_that(
 
 # works with subject id ------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "works with subject id",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # data
     df <-
@@ -261,6 +261,6 @@ testthat::test_that(
         paired = TRUE
       )
 
-    testthat::expect_equal(expr1, expr2)
+    expect_equal(expr1, expr2)
   }
 )

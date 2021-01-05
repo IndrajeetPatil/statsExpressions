@@ -1,9 +1,9 @@
 # subtitle from meta-analysis -------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "expr_meta_random works",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # dataframe
     df_eg <-
@@ -44,7 +44,7 @@ testthat::test_that(
       )
 
     # output
-    testthat::expect_s3_class(df_res, "tbl_df")
+    expect_s3_class(df_res, "tbl_df")
 
     # expected subtitle output
     set.seed(123)
@@ -103,10 +103,10 @@ testthat::test_that(
       ))
 
     # testing overall call
-    testthat::expect_identical(using_function1, results1)
-    testthat::expect_identical(using_function2, results2)
+    expect_identical(using_function1, results1)
+    expect_identical(using_function2, results2)
 
     # error
-    testthat::expect_error(expr_meta_random(mtcars))
+    expect_error(expr_meta_random(mtcars))
   }
 )

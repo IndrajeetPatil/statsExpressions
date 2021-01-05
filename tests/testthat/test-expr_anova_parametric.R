@@ -1,9 +1,9 @@
 # parametric anova subtitles (without NAs) -----------------------------------
 
-testthat::test_that(
+test_that(
   desc = "parametric anova subtitles work (without NAs)",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # statsExpression output
     set.seed(123)
@@ -50,16 +50,16 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function1, results1)
+    expect_identical(using_function1, results1)
   }
 )
 
 # parametric anova subtitles (partial omega) ----------------------------------
 
-testthat::test_that(
+test_that(
   desc = "parametric anova subtitles with partial omega-squared",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # statsExpression output
     set.seed(123)
@@ -105,16 +105,16 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function1, results1)
+    expect_identical(using_function1, results1)
   }
 )
 
 # parametric anova subtitles (partial eta and NAs) --------------------------
 
-testthat::test_that(
+test_that(
   desc = "parametric anova subtitles with partial eta-squared and data with NAs",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # statsExpression output
     set.seed(123)
@@ -161,16 +161,16 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function1, results1)
+    expect_identical(using_function1, results1)
   }
 )
 
 # parametric repeated anova subtitles (basic) ---------------------------------
 
-testthat::test_that(
+test_that(
   desc = "parametric anova subtitles work (without NAs)",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # statsExpression output
     set.seed(123)
@@ -217,17 +217,17 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function1, results1)
+    expect_identical(using_function1, results1)
   }
 )
 
 # too few obs -------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "too few obs",
   code = {
-    testthat::skip_on_cran()
-    testthat::skip_if(getRversion() < "3.6")
+    skip_on_cran()
+    skip_if(getRversion() < "3.6")
     set.seed(123)
 
     # dataframe
@@ -298,7 +298,7 @@ testthat::test_that(
       ))
 
     # check that
-    testthat::expect_identical(
+    expect_identical(
       p_sub,
       ggplot2::expr(paste(
         italic("F")["Fisher"],
@@ -333,10 +333,10 @@ testthat::test_that(
 
 # works with subject id ------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "works with subject id",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # data
     df <-
@@ -387,16 +387,16 @@ testthat::test_that(
         paired = TRUE
       )
 
-    testthat::expect_equal(expr1, expr2)
+    expect_equal(expr1, expr2)
   }
 )
 
 # dataframe -----------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "dataframe",
   code = {
-    testthat::expect_s3_class(
+    expect_s3_class(
       expr_anova_parametric(
         data = mtcars,
         x = cyl,

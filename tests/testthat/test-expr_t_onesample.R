@@ -1,10 +1,10 @@
 
 # parametric -----------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "expr_t_onesample parametric works",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # Hedge's g and non-central
     set.seed(123)
@@ -93,17 +93,17 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function1, results1)
-    testthat::expect_identical(using_function2, results2)
+    expect_identical(using_function1, results1)
+    expect_identical(using_function2, results2)
   }
 )
 
 # non-parametric -----------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "expr_t_onesample non-parametric works",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # statsExpressions output
     set.seed(123)
@@ -146,7 +146,7 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function, results)
+    expect_identical(using_function, results)
 
     # statsExpressions output
     set.seed(123)
@@ -187,17 +187,17 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function2, results2)
+    expect_identical(using_function2, results2)
   }
 )
 
 
 # robust -----------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "expr_t_onesample robust works",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # statsExpressions output
     set.seed(123)
@@ -237,16 +237,16 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function, results)
+    expect_identical(using_function, results)
   }
 )
 
 # bayes factor -----------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "expr_t_onesample bayes factor works",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # statsExpressions output
     set.seed(123)
@@ -270,7 +270,7 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function, results)
+    expect_identical(using_function, results)
 
     # statsExpressions output
     set.seed(123)
@@ -296,17 +296,17 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function2, results2)
+    expect_identical(using_function2, results2)
   }
 )
 
 
 # dataframe -----------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "dataframe",
   code = {
-    testthat::expect_s3_class(
+    expect_s3_class(
       statsExpressions::expr_t_onesample(
         data = dplyr::sample_frac(movies_long, 0.05),
         x = length,

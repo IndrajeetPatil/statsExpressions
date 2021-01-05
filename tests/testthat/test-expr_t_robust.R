@@ -1,9 +1,9 @@
 # within-subjects ------------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "expr_t_robust - within-subjects - without NAs",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # subtitle
     set.seed(123)
@@ -47,14 +47,14 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function1, results1)
+    expect_identical(using_function1, results1)
   }
 )
 
-testthat::test_that(
+test_that(
   desc = "expr_t_robust - within-subjects - with NAs",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # subtitle
     set.seed(123)
@@ -98,17 +98,17 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function1, results1)
+    expect_identical(using_function1, results1)
   }
 )
 
 
 # between-subjects ------------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "expr_t_robust - between-subjects - without NAs",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # subtitle
     set.seed(123)
@@ -153,14 +153,14 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function1, results1)
+    expect_identical(using_function1, results1)
   }
 )
 
-testthat::test_that(
+test_that(
   desc = "expr_t_robust - between-subjects - with NAs",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # subtitle
     set.seed(123)
@@ -205,17 +205,17 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function1, results1)
+    expect_identical(using_function1, results1)
   }
 )
 
 
 # dataframe -----------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "dataframe",
   code = {
-    testthat::expect_s3_class(
+    expect_s3_class(
       statsExpressions::expr_t_robust(
         data = dplyr::filter(movies_long, genre == "Action" | genre == "Drama"),
         x = "genre",
@@ -230,10 +230,10 @@ testthat::test_that(
 
 # works with subject id ------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "works with subject id",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # data
     df <-
@@ -286,6 +286,6 @@ testthat::test_that(
         paired = TRUE
       )
 
-    testthat::expect_equal(expr1, expr2)
+    expect_equal(expr1, expr2)
   }
 )

@@ -1,9 +1,9 @@
 # subtitle from meta-analysis -------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "expr_meta_random works",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # setup
     library(metaplus)
@@ -36,10 +36,10 @@ testthat::test_that(
       )
 
     # output
-    testthat::expect_s3_class(df_res, "tbl_df")
+    expect_s3_class(df_res, "tbl_df")
 
     # test
-    testthat::expect_identical(
+    expect_identical(
       results1,
       ggplot2::expr(
         paste(

@@ -1,9 +1,9 @@
 # between-subjects design -----------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "expr_t_bayes works - between-subjects design",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # statsExpressions output
     set.seed(123)
@@ -30,14 +30,14 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function, results)
+    expect_identical(using_function, results)
   }
 )
 
-testthat::test_that(
+test_that(
   desc = "expr_t_bayes works - between-subjects design - with NA",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # statsExpressions output
     set.seed(123)
@@ -67,16 +67,16 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function, results)
+    expect_identical(using_function, results)
   }
 )
 
 # within-subjects design -----------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "expr_t_bayes_paired works - within-subjects design",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # made up data
     Input <- ("
@@ -140,14 +140,14 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function, results)
+    expect_identical(using_function, results)
   }
 )
 
-testthat::test_that(
+test_that(
   desc = "expr_t_bayes_paired works - within-subjects design - with NA",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # statsExpressions output
     set.seed(123)
@@ -177,17 +177,16 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function, results)
+    expect_identical(using_function, results)
   }
 )
 
-
 # dataframe -----------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "dataframe",
   code = {
-    testthat::expect_s3_class(
+    expect_s3_class(
       statsExpressions::expr_t_bayes(
         data = dplyr::filter(movies_long, genre == "Action" | genre == "Drama"),
         x = "genre",
@@ -202,10 +201,10 @@ testthat::test_that(
 
 # works with subject id ------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "works with subject id",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # data
     df <-
@@ -258,6 +257,6 @@ testthat::test_that(
         paired = TRUE
       )
 
-    testthat::expect_equal(expr1, expr2)
+    expect_equal(expr1, expr2)
   }
 )

@@ -1,9 +1,9 @@
 # expr_anova_bayes works (between-subjects) ----------------------------
 
-testthat::test_that(
+test_that(
   desc = "expr_anova_bayes works (between-subjects)",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # ggstatsplot output
     set.seed(123)
@@ -29,16 +29,16 @@ testthat::test_that(
       )
 
     # testing overall call
-    testthat::expect_identical(using_function1, results1)
+    expect_identical(using_function1, results1)
   }
 )
 
 # dataframe -----------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "dataframe",
   code = {
-    testthat::expect_s3_class(
+    expect_s3_class(
       statsExpressions::expr_anova_bayes(
         data = mtcars,
         x = cyl,

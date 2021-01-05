@@ -1,9 +1,9 @@
 # subtitle from meta-analysis -------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "expr_meta_random works",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # setup
     set.seed(123)
@@ -51,7 +51,7 @@ testthat::test_that(
       ))
 
     # test
-    testthat::expect_identical(as.character(results1)[5], "-7.513")
-    testthat::expect_s3_class(df, "tbl_df")
+    expect_identical(as.character(results1)[5], "-7.513")
+    expect_s3_class(df, "tbl_df")
   }
 )

@@ -133,7 +133,6 @@ expr_t_parametric <- function(data,
       x = rlang::new_formula(y, x),
       data = data,
       paired = paired,
-      pooled_sd = var.equal,
       ci = conf.level
     ) %>%
     parameters::standardize_names(data = ., style = "broom")

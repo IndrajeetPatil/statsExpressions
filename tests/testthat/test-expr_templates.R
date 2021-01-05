@@ -1,9 +1,9 @@
 # zero parameter -----------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "checking if subtitle template works without any parameter",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # subtitle
     set.seed(123)
@@ -56,16 +56,16 @@ testthat::test_that(
       )
 
     # check if they are equivalent
-    testthat::expect_identical(subtitle, template_0)
+    expect_identical(subtitle, template_0)
   }
 )
 
 # single parameter -----------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "checking if subtitle template works with a single parameter",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # subtitle
     set.seed(123)
@@ -119,16 +119,16 @@ testthat::test_that(
       )
 
     # check if they are equivalent
-    testthat::expect_identical(subtitle, template_1)
+    expect_identical(subtitle, template_1)
   }
 )
 
 # two parameters -----------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "checking if subtitle template works with two parameters",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     # subtitle
     set.seed(123)
@@ -190,6 +190,6 @@ testthat::test_that(
       )
 
     # check if they are equivalent
-    testthat::expect_identical(subtitle, template_1)
+    expect_identical(subtitle, template_1)
   }
 )
