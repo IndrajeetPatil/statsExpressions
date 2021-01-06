@@ -156,13 +156,13 @@ expr_anova_parametric(
   subject.id = subject,
   output = "dataframe"
 )
-#> # A tibble: 1 x 11
+#> # A tibble: 1 x 12
 #>   term      sumsq sum.squares.error    df df.error meansq statistic  p.value
 #>   <chr>     <dbl>             <dbl> <dbl>    <dbl>  <dbl>     <dbl>    <dbl>
 #> 1 condition  233.              984.  2.63     229.   4.30      20.6 8.27e-11
-#>   estimate conf.low conf.high
-#>      <dbl>    <dbl>     <dbl>
-#> 1   0.0783   0.0217     0.140
+#>   estimate conf.low conf.high method                   
+#>      <dbl>    <dbl>     <dbl> <chr>                    
+#> 1   0.0783   0.0217     0.140 One-way analysis of means
 ```
 
 # Primary functions

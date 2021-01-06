@@ -3,7 +3,7 @@
 test_that(
   desc = "checking if subtitle template works without any parameter",
   code = {
-    skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "4.0")
 
     # subtitle
     set.seed(123)
@@ -66,7 +66,7 @@ test_that(
 test_that(
   desc = "checking if subtitle template works with a single parameter",
   code = {
-    skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "4.0")
 
     # subtitle
     set.seed(123)
@@ -130,7 +130,7 @@ test_that(
 test_that(
   desc = "checking if subtitle template works with two parameters",
   code = {
-    skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "4.0")
 
     # subtitle
     set.seed(123)

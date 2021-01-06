@@ -4,7 +4,7 @@
 test_that(
   desc = "expr_t_onesample parametric works",
   code = {
-    skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "4.0")
 
     # Hedge's g and non-central
     set.seed(123)
@@ -103,7 +103,7 @@ test_that(
 test_that(
   desc = "expr_t_onesample non-parametric works",
   code = {
-    skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "4.0")
 
     # statsExpressions output
     set.seed(123)
@@ -197,7 +197,7 @@ test_that(
 test_that(
   desc = "expr_t_onesample robust works",
   code = {
-    skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "4.0")
 
     # statsExpressions output
     set.seed(123)
@@ -246,7 +246,7 @@ test_that(
 test_that(
   desc = "expr_t_onesample bayes factor works",
   code = {
-    skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "4.0")
 
     # statsExpressions output
     set.seed(123)
