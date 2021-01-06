@@ -161,7 +161,6 @@ expr_t_onesample <- function(data,
         statistic.text = statistic.text,
         effsize.text = effsize.text,
         n = length(x_vec),
-        n.text = quote(italic("n")["obs"]),
         conf.level = conf.level,
         k = k
       )
@@ -205,11 +204,11 @@ expr_t_onesample <- function(data,
           n
         ),
         env = list(
-          estimate = specify_decimal_p(x = stats_df$estimate[[1]], k = k),
+          estimate = format_num(x = stats_df$estimate[[1]], k = k),
           conf.level = paste(conf.level * 100, "%", sep = ""),
-          LL = specify_decimal_p(x = stats_df$conf.low[[1]], k = k),
-          UL = specify_decimal_p(x = stats_df$conf.high[[1]], k = k),
-          p.value = specify_decimal_p(x = stats_df$p.value[[1]], k = k, p.value = TRUE),
+          LL = format_num(x = stats_df$conf.low[[1]], k = k),
+          UL = format_num(x = stats_df$conf.high[[1]], k = k),
+          p.value = format_num(x = stats_df$p.value[[1]], k = k, p.value = TRUE),
           n = .prettyNum(length(x_vec))
         )
       )

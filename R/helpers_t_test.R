@@ -81,7 +81,7 @@ expr_t_parametric <- function(data,
   # make sure both quoted and unquoted arguments are supported
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
-  # have a proper cleanup with NA removal
+  # properly removing NAs if it's a paired design
   data %<>%
     long_to_wide_converter(
       data = .,
@@ -92,19 +92,8 @@ expr_t_parametric <- function(data,
       spread = FALSE
     )
 
-  # properly removing NAs if it's a paired design
-  if (isTRUE(paired)) {
-    # sample size
-    sample_size <- length(unique(data$rowid))
-    n.text <- quote(italic("n")["pairs"])
-  }
-
-  # remove NAs listwise for between-subjects design
-  if (isFALSE(paired)) {
-    # sample size
-    sample_size <- nrow(data)
-    n.text <- quote(italic("n")["obs"])
-  }
+  # sample size
+  sample_size <- ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data))
 
   # deciding which effect size to use (Hedge's g or Cohen's d)
   if (effsize.type %in% c("unbiased", "g")) {
@@ -138,8 +127,7 @@ expr_t_parametric <- function(data,
     parameters::standardize_names(data = ., style = "broom")
 
   # combining dataframes
-  stats_df <-
-    dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("estimate|^conf")), effsize_df)
+  stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("estimate|^conf")), effsize_df)
 
   # when paired samples t-test is run df is going to be integer
   # ditto for when variance is assumed to be equal
@@ -159,10 +147,10 @@ expr_t_parametric <- function(data,
       statistic.text = statistic.text,
       effsize.text = effsize.text,
       n = sample_size,
+      paired = paired,
       conf.level = conf.level,
       k = k,
-      k.parameter = k.df,
-      n.text = n.text
+      k.parameter = k.df
     )
 
   # return the output
@@ -258,7 +246,6 @@ expr_t_nonparametric <- function(data,
   if (isTRUE(paired)) {
     # expression details
     sample_size <- length(unique(data$rowid))
-    n.text <- quote(italic("n")["pairs"])
     statistic.text <- quote("log"["e"](italic("V")["Wilcoxon"]))
   }
 
@@ -266,7 +253,6 @@ expr_t_nonparametric <- function(data,
   if (isFALSE(paired)) {
     # expression details
     sample_size <- nrow(data)
-    n.text <- quote(italic("n")["obs"])
     statistic.text <- quote("log"["e"](italic("W")["Mann-Whitney"]))
   }
 
@@ -304,7 +290,7 @@ expr_t_nonparametric <- function(data,
       statistic.text = statistic.text,
       effsize.text = quote(widehat(italic("r"))["biserial"]^"rank"),
       n = sample_size,
-      n.text = n.text,
+      paired = paired,
       conf.level = conf.level,
       k = k
     )
@@ -409,9 +395,7 @@ expr_t_robust <- function(data,
     stats_df <- tidy_model_parameters(stats_obj)
 
     # expression parameters
-    k.parameter <- k
-    n.text <- quote(italic("n")["obs"])
-    effsize.text <- quote(widehat(italic(xi)))
+    c(k.parameter, effsize.text) %<-% c(k, quote(widehat(italic(xi))))
   }
 
   if (isTRUE(paired)) {
@@ -437,15 +421,11 @@ expr_t_robust <- function(data,
       dplyr::rename(estimate = Est, conf.low = ci.low, conf.high = ci.up)
 
     # expression parameters
-    k.parameter <- 0L
-    n.text <- quote(italic("n")["pairs"])
-    conf.level <- 0.95
-    effsize.text <- quote(widehat(italic(delta))["R"])
+    c(k.parameter, conf.level, effsize.text) %<-% c(0L, 0.95, quote(widehat(italic(delta))["R"]))
   }
 
   # combining dataframes
-  stats_df <-
-    dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("^est|^eff|conf")), effsize_df)
+  stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("^est|^eff|conf")), effsize_df)
 
   # preparing expression
   expression <-
@@ -455,7 +435,7 @@ expr_t_robust <- function(data,
       statistic.text = quote(italic("t")["Yuen"]),
       effsize.text = effsize.text,
       n = nrow(data),
-      n.text = n.text,
+      paired = paired,
       conf.level = conf.level,
       k = k,
       k.parameter = k.parameter

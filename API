@@ -14,7 +14,7 @@ expr_t_nonparametric(data, x, y, subject.id = NULL, paired = FALSE, k = 2L, conf
 expr_t_onesample(data, x, type = "parametric", test.value = 0, k = 2L, conf.level = 0.95, bf.prior = 0.707, robust.estimator = "onestep", effsize.type = "g", nboot = 100L, output = "expression", ...)
 expr_t_parametric(data, x, y, subject.id = NULL, paired = FALSE, k = 2L, conf.level = 0.95, effsize.type = "g", var.equal = FALSE, output = "expression", ...)
 expr_t_robust(data, x, y, subject.id = NULL, paired = FALSE, k = 2L, conf.level = 0.95, tr = 0.1, nboot = 100, output = "expression", ...)
-expr_template(no.parameters, statistic.text, stats.df, effsize.text, n, conf.level = 0.95, k = 2L, k.parameter = 0L, k.parameter2 = 0L, n.text = quote(italic("n")), ...)
+expr_template(no.parameters, statistic.text, stats.df, effsize.text, n, n.text = NULL, paired = FALSE, conf.level = 0.95, k = 2L, k.parameter = 0L, k.parameter2 = 0L, ...)
 tidy_model_parameters(model, ...)
 tidy_model_performance(model, ...)
 

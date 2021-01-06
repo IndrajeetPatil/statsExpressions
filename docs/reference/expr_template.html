@@ -157,11 +157,12 @@
   <span class='va'>stats.df</span>,
   <span class='va'>effsize.text</span>,
   <span class='va'>n</span>,
+  n.text <span class='op'>=</span> <span class='cn'>NULL</span>,
+  paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
   conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
   k <span class='op'>=</span> <span class='fl'>2L</span>,
   k.parameter <span class='op'>=</span> <span class='fl'>0L</span>,
   k.parameter2 <span class='op'>=</span> <span class='fl'>0L</span>,
-  n.text <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/substitute.html'>quote</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/grDevices/plotmath.html'>italic</a></span><span class='op'>(</span><span class='st'>"n"</span><span class='op'>)</span><span class='op'>)</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -211,6 +212,19 @@ want to use plotmath, you will have to quote the argument (e.g.,
       <td><p>An integer specifying the sample size used for the test.</p></td>
     </tr>
     <tr>
+      <th>n.text</th>
+      <td><p>A character that specifies the design, which will determine
+what the <code>n</code> stands for. If <code>NULL</code>, defaults to
+<code><a href='https://rdrr.io/r/base/substitute.html'>quote(italic("n")["pairs"])</a></code> if <code>paired = TRUE</code>, and to
+<code><a href='https://rdrr.io/r/base/substitute.html'>quote(italic("n")["obs"])</a></code> if <code>paired = FALSE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>paired</th>
+      <td><p>Logical that decides whether the experimental design is
+repeated measures/within-subjects or between-subjects. The default is
+<code>FALSE</code>.</p></td>
+    </tr>
+    <tr>
       <th>conf.level</th>
       <td><p>Scalar between 0 and 1. If unspecified, the defaults return
 <code>95%</code> confidence/credible intervals (<code>0.95</code>).</p></td>
@@ -224,14 +238,6 @@ want to use plotmath, you will have to quote the argument (e.g.,
       <th>k.parameter, k.parameter2</th>
       <td><p>Number of decimal places to display for the
 parameters (default: <code>0</code>).</p></td>
-    </tr>
-    <tr>
-      <th>n.text</th>
-      <td><p>A character that specifies the design, which will determine
-what the <code>n</code> stands for. For example, for repeated measures, this can be
-<code><a href='https://rdrr.io/r/base/substitute.html'>quote(italic("n")["pairs"])</a></code>, while for independent subjects design this
-can be <code><a href='https://rdrr.io/r/base/substitute.html'>quote(italic("n")["obs"])</a></code>. If <code>NULL</code>, defaults to generic
-<code><a href='https://rdrr.io/r/base/substitute.html'>quote(italic("n"))</a></code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -267,8 +273,8 @@ can be <code><a href='https://rdrr.io/r/base/substitute.html'>quote(italic("n")[
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; paste(italic("t"), "(", "29.234", ") = ", "5.494", ", ", italic("p"), 
 #&gt;     " = ", "1e-05", ", ", italic("d"), " = ", "-1.980", ", CI"["95%"], 
-#&gt;     " [", "-2.873", ", ", "-1.088", "]", ", ", italic("n"), " = ", 
-#&gt;     "32")</div></pre>
+#&gt;     " [", "-2.873", ", ", "-1.088", "]", ", ", italic("n")["obs"], 
+#&gt;     " = ", "32")</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

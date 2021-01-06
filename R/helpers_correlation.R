@@ -126,10 +126,10 @@ expr_corr_test <- function(data,
         stats.df = stats_df,
         statistic.text = statistic.text,
         effsize.text = effsize.text,
+        paired = TRUE,
         n = stats_df$n.obs[[1]],
         conf.level = conf.level,
-        k = k,
-        n.text = quote(italic("n")["pairs"])
+        k = k
       )
   } else {
     # bayes factor results

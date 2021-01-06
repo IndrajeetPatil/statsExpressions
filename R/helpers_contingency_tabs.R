@@ -108,20 +108,18 @@ expr_contingency_tab <- function(data,
 
     if (isFALSE(paired)) {
       # details for the expression
-      mod <- stats::chisq.test(x = x_arg, correct = FALSE)
+      mod <- stats::chisq.test(x_arg, correct = FALSE)
       .f <- effectsize::cramers_v
       effsize.text <- quote(widehat(italic("V"))["Cramer"])
-      n.text <- quote(italic("n")["obs"])
     }
 
     # ======================== McNemar's test ================================
 
     if (isTRUE(paired)) {
       # details for the expression
-      mod <- stats::mcnemar.test(x = x_arg, correct = FALSE)
+      mod <- stats::mcnemar.test(x_arg, correct = FALSE)
       .f <- effectsize::cohens_g
       effsize.text <- quote(widehat(italic("g"))["Cohen"])
-      n.text <- quote(italic("n")["pairs"])
     }
   }
 
@@ -132,12 +130,12 @@ expr_contingency_tab <- function(data,
     x_arg <- table(data %>% dplyr::pull({{ x }}))
 
     # checking if the chi-squared test can be run
-    mod <- stats::chisq.test(x = x_arg, correct = FALSE, p = ratio)
+    mod <- stats::chisq.test(x_arg, correct = FALSE, p = ratio)
 
     # details for the expression
     .f <- effectsize::cramers_v
+    paired <- FALSE
     effsize.text <- quote(widehat(italic("V"))["Cramer"])
-    n.text <- quote(italic("n")["obs"])
   }
 
   # which test was carried out?
@@ -153,11 +151,11 @@ expr_contingency_tab <- function(data,
   effsize_df <-
     rlang::exec(
       .fn = .f,
-      x = x_arg,
+      x_arg,
       adjust = TRUE,
       ci = conf.level
     ) %>%
-    parameters::standardize_names(data = ., style = "broom")
+    insight::standardize_names(data = ., style = "broom")
 
   # combining dataframes
   stats_df <- dplyr::bind_cols(tidy_model_parameters(mod), effsize_df)
@@ -170,7 +168,7 @@ expr_contingency_tab <- function(data,
       statistic.text = statistic.text,
       effsize.text = effsize.text,
       n = sample_size,
-      n.text = n.text,
+      paired = paired,
       conf.level = conf.level,
       k = k
     )

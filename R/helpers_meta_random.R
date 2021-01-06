@@ -124,11 +124,11 @@ expr_meta_random <- function(data,
         ),
         env = list(
           top.text = caption,
-          Q = specify_decimal_p(x = df_glance$cochransq, k = 0L),
-          df = specify_decimal_p(x = df_glance$df.error, k = 0L),
-          pvalue = specify_decimal_p(x = df_glance$p.cochransq, k = k, p.value = TRUE),
-          tau2 = specify_decimal_p(x = df_glance$tau2, k = k),
-          I2 = paste(specify_decimal_p(x = df_glance$i2 * 100, k = 2L), "%", sep = "")
+          Q = format_num(x = df_glance$cochransq, k = 0L),
+          df = format_num(x = df_glance$df.error, k = 0L),
+          pvalue = format_num(x = df_glance$p.cochransq, k = k, p.value = TRUE),
+          tau2 = format_num(x = df_glance$tau2, k = k),
+          I2 = paste0(format_num(x = df_glance$i2 * 100, k = 2L), "%")
         )
       )
   }

@@ -10,11 +10,12 @@ expr_template(
   stats.df,
   effsize.text,
   n,
+  n.text = NULL,
+  paired = FALSE,
   conf.level = 0.95,
   k = 2L,
   k.parameter = 0L,
   k.parameter2 = 0L,
-  n.text = quote(italic("n")),
   ...
 )
 }
@@ -52,6 +53,15 @@ want to use plotmath, you will have to quote the argument (e.g.,
 
 \item{n}{An integer specifying the sample size used for the test.}
 
+\item{n.text}{A character that specifies the design, which will determine
+what the \code{n} stands for. If \code{NULL}, defaults to
+\code{quote(italic("n")["pairs"])} if \code{paired = TRUE}, and to
+\code{quote(italic("n")["obs"])} if \code{paired = FALSE}.}
+
+\item{paired}{Logical that decides whether the experimental design is
+repeated measures/within-subjects or between-subjects. The default is
+\code{FALSE}.}
+
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} confidence/credible intervals (\code{0.95}).}
 
@@ -60,12 +70,6 @@ want to use plotmath, you will have to quote the argument (e.g.,
 
 \item{k.parameter, k.parameter2}{Number of decimal places to display for the
 parameters (default: \code{0}).}
-
-\item{n.text}{A character that specifies the design, which will determine
-what the \code{n} stands for. For example, for repeated measures, this can be
-\code{quote(italic("n")["pairs"])}, while for independent subjects design this
-can be \code{quote(italic("n")["obs"])}. If \code{NULL}, defaults to generic
-\code{quote(italic("n"))}.}
 
 \item{...}{Currently ignored.}
 }

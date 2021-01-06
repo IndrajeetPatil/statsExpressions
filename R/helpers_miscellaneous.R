@@ -28,18 +28,20 @@
 #'   For example, for Cohen's *d* statistic, `effsize.text = "d"`. If you
 #'   want to use plotmath, you will have to quote the argument (e.g.,
 #'   `quote(italic("d"))`).
+#' @param conf.level Scalar between 0 and 1. If unspecified, the defaults return
+#'   `95%` confidence/credible intervals (`0.95`).
 #' @param k Number of digits after decimal point (should be an integer)
 #'   (Default: `k = 2L`).
 #' @param k.parameter,k.parameter2 Number of decimal places to display for the
 #'   parameters (default: `0`).
 #' @param n An integer specifying the sample size used for the test.
 #' @param n.text A character that specifies the design, which will determine
-#'   what the `n` stands for. For example, for repeated measures, this can be
-#'   `quote(italic("n")["pairs"])`, while for independent subjects design this
-#'   can be `quote(italic("n")["obs"])`. If `NULL`, defaults to generic
-#'   `quote(italic("n"))`.
+#'   what the `n` stands for. If `NULL`, defaults to
+#'   `quote(italic("n")["pairs"])` if `paired = TRUE`, and to
+#'   `quote(italic("n")["obs"])` if `paired = FALSE`.
 #' @param ... Currently ignored.
 #' @inheritParams expr_anova_parametric
+#' @inheritParams ipmisc::long_to_wide_converter
 #'
 #' @importFrom rlang is_null
 #' @importFrom ipmisc format_num
@@ -77,14 +79,19 @@ expr_template <- function(no.parameters,
                           stats.df,
                           effsize.text,
                           n,
+                          n.text = NULL,
+                          paired = FALSE,
                           conf.level = 0.95,
                           k = 2L,
                           k.parameter = 0L,
                           k.parameter2 = 0L,
-                          n.text = quote(italic("n")),
                           ...) {
   # rename effect size column
   if ("effsize" %in% names(stats.df)) stats.df %<>% dplyr::rename(estimate = effsize)
+
+  # sample size info-related text
+  if (isTRUE(paired) && is.null(n.text)) n.text <- quote(italic("n")["pairs"])
+  if (isFALSE(paired) && is.null(n.text)) n.text <- quote(italic("n")["obs"])
 
   # ------------------ statistic with 0 degrees of freedom --------------------
 
@@ -185,12 +192,7 @@ expr_template <- function(no.parameters,
   if (no.parameters == 2L) {
     # renaming pattern from `easystats`
     stats.df %<>%
-      dplyr::rename_all(
-        .tbl = .,
-        .funs = dplyr::recode,
-        df = "parameter1",
-        df.error = "parameter2"
-      )
+      dplyr::rename_all(.funs = dplyr::recode, df = "parameter1", df.error = "parameter2")
 
     # preparing subtitle
     subtitle <-

@@ -5,8 +5,6 @@
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @inheritParams ipmisc::long_to_wide_converter
-#' @param conf.level Scalar between 0 and 1. If unspecified, the defaults return
-#'   `95%` confidence/credible intervals (`0.95`).
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
 #'   argument can be `"eta"` (partial eta-squared) or `"omega"` (partial
 #'   omega-squared).
@@ -22,7 +20,7 @@
 #' @importFrom rlang !! enquo eval_tidy expr ensym exec
 #' @importFrom stats oneway.test
 #' @importFrom afex aov_ez
-#' @importFrom ipmisc long_to_wide_converter specify_decimal_p
+#' @importFrom ipmisc long_to_wide_converter format_num
 #'
 #' @examples
 #' # for reproducibility
@@ -78,10 +76,9 @@ expr_anova_parametric <- function(data,
   if (effsize.type %in% c("unbiased", "omega")) omega_squared <- "partial"
   if (effsize.type %in% c("biased", "eta")) eta_squared <- "partial"
 
+  # effect size expression text
   if (!is.null(omega_squared)) effsize.text <- quote(widehat(omega["p"]^2))
   if (!is.null(eta_squared)) effsize.text <- quote(widehat(eta["p"]^2))
-
-  # --------------------- data preparation --------------------------------
 
   # have a proper cleanup with NA removal
   data %<>%
@@ -100,7 +97,6 @@ expr_anova_parametric <- function(data,
   if (isTRUE(paired)) {
     # sample size
     sample_size <- length(unique(data$rowid))
-    n.text <- quote(italic("n")["pairs"])
 
     # Fisher's ANOVA
     mod <-
@@ -117,7 +113,6 @@ expr_anova_parametric <- function(data,
   if (isFALSE(paired)) {
     # sample size
     sample_size <- nrow(data)
-    n.text <- quote(italic("n")["obs"])
 
     # Welch's ANOVA
     mod <-
@@ -155,7 +150,7 @@ expr_anova_parametric <- function(data,
       statistic.text = statistic.text,
       effsize.text = effsize.text,
       n = sample_size,
-      n.text = n.text,
+      paired = paired,
       conf.level = conf.level,
       k = k,
       k.parameter = k.df1,
@@ -229,8 +224,6 @@ expr_anova_nonparametric <- function(data,
   # make sure both quoted and unquoted arguments are allowed
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
-  # ============================ data preparation ==========================
-
   # have a proper cleanup with NA removal
   data %<>%
     ipmisc::long_to_wide_converter(
@@ -254,7 +247,6 @@ expr_anova_nonparametric <- function(data,
 
     # details for expression
     sample_size <- length(unique(data$rowid))
-    n.text <- quote(italic("n")["pairs"])
     statistic.text <- quote(chi["Friedman"]^2)
     effsize.text <- quote(widehat(italic("W"))["Kendall"])
   }
@@ -270,7 +262,6 @@ expr_anova_nonparametric <- function(data,
 
     # details for expression
     sample_size <- nrow(data)
-    n.text <- quote(italic("n")["obs"])
     statistic.text <- quote(chi["Kruskal-Wallis"]^2)
     effsize.text <- quote(widehat(epsilon)["ordinal"]^2)
   }
@@ -304,7 +295,7 @@ expr_anova_nonparametric <- function(data,
       statistic.text = statistic.text,
       effsize.text = effsize.text,
       n = sample_size,
-      n.text = n.text,
+      paired = paired,
       conf.level = conf.level,
       k = k
     )
@@ -373,8 +364,6 @@ expr_anova_robust <- function(data,
   # make sure both quoted and unquoted arguments are allowed
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
-  # ============================ data preparation ==========================
-
   # have a proper cleanup with NA removal
   data %<>%
     ipmisc::long_to_wide_converter(
@@ -426,10 +415,10 @@ expr_anova_robust <- function(data,
           n
         ),
         env = list(
-          statistic = specify_decimal_p(x = stats_df$statistic[[1]], k = k),
-          df1 = specify_decimal_p(x = stats_df$df[[1]], k = k),
-          df2 = specify_decimal_p(x = stats_df$df.error[[1]], k = k),
-          p.value = specify_decimal_p(x = stats_df$p.value[[1]], k = k, p.value = TRUE),
+          statistic = format_num(x = stats_df$statistic[[1]], k = k),
+          df1 = format_num(x = stats_df$df[[1]], k = k),
+          df2 = format_num(x = stats_df$df.error[[1]], k = k),
+          p.value = format_num(x = stats_df$p.value[[1]], k = k, p.value = TRUE),
           n = .prettyNum(sample_size)
         )
       )
@@ -440,7 +429,6 @@ expr_anova_robust <- function(data,
   if (isFALSE(paired)) {
     # sample size
     sample_size <- nrow(data)
-    n.text <- quote(italic("n")["obs"])
 
     # heteroscedastic one-way ANOVA for trimmed means
     mod <-
@@ -463,7 +451,7 @@ expr_anova_robust <- function(data,
         statistic.text = quote(italic("F")["trimmed-means"]),
         effsize.text = quote(widehat(italic(xi))),
         n = sample_size,
-        n.text = n.text,
+        paired = paired,
         conf.level = conf.level,
         k = k,
         k.parameter2 = k

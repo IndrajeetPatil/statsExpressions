@@ -52,6 +52,7 @@ test_that(
         conf.level = 0.99,
         k = 2L,
         n = 32,
+        n.text = quote(italic("n")),
         effsize.text = quote(widehat(italic("r")))
       )
 
@@ -115,6 +116,7 @@ test_that(
         stats.df = stats_df,
         statistic.text = quote(italic(chi)^2),
         n = 32,
+        n.text = quote(italic("n")),
         effsize.text = quote(widehat(italic("V")))
       )
 
@@ -186,6 +188,7 @@ test_that(
         k.parameter = 0L,
         k.parameter2 = 2L,
         n = 51L,
+        n.text = quote(italic("n")),
         effsize.text = quote(widehat(omega["p"]^2))
       )
 

@@ -358,7 +358,6 @@ test_that(
         paired = TRUE,
         k = 4,
         conf.level = 0.99,
-        conf.type = "basic",
         nboot = 50
       ))
 
