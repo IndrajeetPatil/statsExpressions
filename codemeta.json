@@ -185,7 +185,7 @@
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://github.com/easystats/effectsize"
+      "sameAs": "https://CRAN.R-project.org/package=effectsize"
     },
     {
       "@type": "SoftwareApplication",
@@ -261,18 +261,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://github.com/easystats/performance"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "rcompanion",
-      "name": "rcompanion",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=rcompanion"
     },
     {
       "@type": "SoftwareApplication",
@@ -389,6 +377,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3874.179KB",
+  "fileSize": "3875.627KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

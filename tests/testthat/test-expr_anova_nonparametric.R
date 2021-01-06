@@ -8,11 +8,10 @@ test_that(
     # `statsExpressions` output
     set.seed(123)
     using_function1 <-
-      statsExpressions::expr_anova_nonparametric(
-        data = dplyr::sample_frac(statsExpressions::movies_long, 0.1),
+      expr_anova_nonparametric(
+        data = dplyr::sample_frac(movies_long, 0.1),
         x = "genre",
         y = length,
-        conf.type = "norm",
         paired = FALSE,
         k = 5
       )
@@ -32,14 +31,14 @@ test_that(
           " = ",
           "2.1714e-08",
           ", ",
-          widehat(epsilon^2)["ordinal"],
+          widehat(epsilon)["ordinal"]^2,
           " = ",
           "0.32756",
           ", CI"["95%"],
           " [",
-          "0.15930",
+          "0.25737",
           ", ",
-          "0.43544",
+          "0.50585",
           "]",
           ", ",
           italic("n")["obs"],
@@ -54,14 +53,13 @@ test_that(
     # `statsExpressions` output
     set.seed(123)
     using_function2 <-
-      suppressWarnings(statsExpressions::expr_anova_nonparametric(
+      suppressWarnings(expr_anova_nonparametric(
         data = ggplot2::msleep,
         x = vore,
         y = sleep_cycle,
         k = 3,
         paired = FALSE,
-        conf.level = 0.99,
-        conf.type = "perc"
+        conf.level = 0.99
       ))
 
     # expected output
@@ -79,14 +77,14 @@ test_that(
           " = ",
           "0.155",
           ", ",
-          widehat(epsilon^2)["ordinal"],
+          widehat(epsilon)["ordinal"]^2,
           " = ",
           "0.175",
           ", CI"["99%"],
           " [",
-          "0.016",
+          "0.053",
           ", ",
-          "0.547",
+          "0.494",
           "]",
           ", ",
           italic("n")["obs"],
@@ -110,12 +108,11 @@ test_that(
     # `statsExpressions` output
     set.seed(123)
     using_function1 <-
-      statsExpressions::expr_anova_nonparametric(
+      expr_anova_nonparametric(
         data = bugs_long,
         x = condition,
         y = "desire",
         k = 4L,
-        conf.type = "norm",
         paired = TRUE,
         conf.level = 0.99
       )
@@ -137,12 +134,12 @@ test_that(
           ", ",
           widehat(italic("W"))["Kendall"],
           " = ",
-          "0.6148",
+          "0.6021",
           ", CI"["99%"],
           " [",
-          "0.3390",
+          "0.6021",
           ", ",
-          "0.7058",
+          "0.9748",
           "]",
           ", ",
           italic("n")["pairs"],
@@ -157,12 +154,11 @@ test_that(
     # `statsExpressions` output
     set.seed(123)
     using_function2 <-
-      statsExpressions::expr_anova_nonparametric(
+      expr_anova_nonparametric(
         data = iris_long,
         x = condition,
         y = "value",
         k = 3,
-        conf.type = "perc",
         paired = TRUE,
         conf.level = 0.90
       )
@@ -184,12 +180,12 @@ test_that(
           ", ",
           widehat(italic("W"))["Kendall"],
           " = ",
-          "0.486",
+          "0.484",
           ", CI"["90%"],
           " [",
-          "0.345",
+          "0.343",
           ", ",
-          "0.977",
+          "0.969",
           "]",
           ", ",
           italic("n")["pairs"],
@@ -210,7 +206,7 @@ test_that(
   desc = "dataframe",
   code = {
     expect_s3_class(
-      statsExpressions::expr_anova_nonparametric(
+      expr_anova_nonparametric(
         data = mtcars,
         x = cyl,
         y = wt,
@@ -220,7 +216,6 @@ test_that(
     )
   }
 )
-
 
 # works with subject id ------------------------------------------------------
 
@@ -260,7 +255,7 @@ test_that(
     # incorrect
     set.seed(123)
     expr1 <-
-      statsExpressions::expr_anova_nonparametric(
+      expr_anova_nonparametric(
         data = df,
         x = condition,
         y = score,
@@ -271,7 +266,7 @@ test_that(
     # correct
     set.seed(123)
     expr2 <-
-      statsExpressions::expr_anova_nonparametric(
+      expr_anova_nonparametric(
         data = dplyr::arrange(df, id),
         x = condition,
         y = score,

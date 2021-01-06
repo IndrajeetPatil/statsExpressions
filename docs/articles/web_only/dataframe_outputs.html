@@ -98,7 +98,7 @@
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2021-01-04</h4>
+            <h4 class="date">2021-01-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -142,12 +142,15 @@
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 10</span>
-<span class="co">#&gt;   term     mu statistic df.error p.value method            estimate ci.width</span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 x_vec 0.275    0.0504       55   0.960 One Sample t-test  0.00665     0.95</span>
-<span class="co">#&gt;   conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1   -0.254     0.267</span>
+<span class="co">#&gt;   term                                                                          </span>
+<span class="co">#&gt;   &lt;chr&gt;                                                                         </span>
+<span class="co">#&gt; 1 "structure(c(0.0155, 0.00029, 0.423, 0.07, 0.0982, 0.115, 0.0055, 0.0064, 0.0~</span>
+<span class="co">#&gt;      mu statistic df.error p.value method            estimate ci.width conf.low</span>
+<span class="co">#&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 0.275    0.0504       55   0.960 One Sample t-test  0.00665     0.95   -0.254</span>
+<span class="co">#&gt;   conf.high</span>
+<span class="co">#&gt;       &lt;dbl&gt;</span>
+<span class="co">#&gt; 1     0.267</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -160,13 +163,16 @@
   type <span class="op">=</span> <span class="st">"nonparametric"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 8</span>
-<span class="co">#&gt;   parameter1 parameter2 statistic    p.value method                    estimate</span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                        &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 x_vec      &lt;NA&gt;            5.51 0.00000738 Wilcoxon signed rank test     -0.6</span>
+<span class="co">#&gt; # A tibble: 1 x 9</span>
+<span class="co">#&gt;   parameter1                                                                    </span>
+<span class="co">#&gt;   &lt;chr&gt;                                                                         </span>
+<span class="co">#&gt; 1 "structure(c(0.0155, 0.00029, 0.423, 0.07, 0.0982, 0.115, 0.0055, 0.0064, 0.0~</span>
+<span class="co">#&gt;   parameter2 statistic    p.value method                    estimate ci.width</span>
+<span class="co">#&gt;   &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                        &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 &lt;NA&gt;            5.51 0.00000738 Wilcoxon signed rank test    0.689     0.95</span>
 <span class="co">#&gt;   conf.low conf.high</span>
 <span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1   -0.830    -0.393</span>
+<span class="co">#&gt; 1    0.400     0.922</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -179,10 +185,10 @@
   type <span class="op">=</span> <span class="st">"robust"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 4</span>
-<span class="co">#&gt;   estimate conf.low conf.high p.value</span>
-<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt; 1   0.0211   0.0107    0.0685       0</span>
+<span class="co">#&gt; # A tibble: 1 x 6</span>
+<span class="co">#&gt;   estimate conf.low conf.high p.value n.obs method                         </span>
+<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;                          </span>
+<span class="co">#&gt; 1   0.0211   0.0107    0.0685       0    56 One-sample percentile bootstrap</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
@@ -251,13 +257,13 @@
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 8</span>
+<span class="co">#&gt; # A tibble: 1 x 9</span>
 <span class="co">#&gt;   parameter1 parameter2 statistic      p.value method                   </span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;        &lt;dbl&gt; &lt;chr&gt;                    </span>
 <span class="co">#&gt; 1 desire     condition       7.72 0.0000000241 Wilcoxon signed rank test</span>
-<span class="co">#&gt;   estimate conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    0.580     0.47       0.7</span>
+<span class="co">#&gt;   estimate ci.width conf.low conf.high</span>
+<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1    0.761     0.95    0.600     0.874</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -328,7 +334,7 @@
 <span class="co">#&gt; 1 len   supp         20.7        17.0      1.92     55.3  0.0606</span>
 <span class="co">#&gt;   method                  estimate ci.width conf.low conf.high</span>
 <span class="co">#&gt;   &lt;chr&gt;                      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Welch Two Sample t-test    0.488     0.95  -0.0217     0.994</span>
+<span class="co">#&gt; 1 Welch Two Sample t-test    0.488     0.95  -0.0212     0.993</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
@@ -358,13 +364,13 @@
   y <span class="op">=</span> <span class="va">len</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 8</span>
+<span class="co">#&gt; # A tibble: 1 x 9</span>
 <span class="co">#&gt;   parameter1 parameter2 statistic p.value method                 estimate</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 len        supp            6.36  0.0645 Wilcoxon rank sum test     0.24</span>
-<span class="co">#&gt;   conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1  -0.0055      0.47</span>
+<span class="co">#&gt; 1 len        supp            6.36  0.0645 Wilcoxon rank sum test    0.279</span>
+<span class="co">#&gt;   ci.width conf.low conf.high</span>
+<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1     0.95  -0.0124     0.562</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -450,10 +456,10 @@
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 7</span>
-<span class="co">#&gt;   statistic    df  p.value method                 estimate conf.low conf.high</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      55.8     3 4.56e-12 Friedman rank sum test    0.615    0.615     0.906</span>
+<span class="co">#&gt; # A tibble: 1 x 4</span>
+<span class="co">#&gt;   statistic    df  p.value method                </span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                 </span>
+<span class="co">#&gt; 1      55.8     3 4.56e-12 Friedman rank sum test</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -580,13 +586,13 @@
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 9</span>
+<span class="co">#&gt; # A tibble: 1 x 6</span>
 <span class="co">#&gt;   parameter1   parameter2 statistic df.error  p.value</span>
 <span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;dbl&gt;    &lt;int&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Sepal.Length Species         96.9        2 8.92e-22</span>
-<span class="co">#&gt;   method                       estimate conf.low conf.high</span>
-<span class="co">#&gt;   &lt;chr&gt;                           &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Kruskal-Wallis rank sum test    0.651    0.560     0.724</span>
+<span class="co">#&gt;   method                      </span>
+<span class="co">#&gt;   &lt;chr&gt;                       </span>
+<span class="co">#&gt; 1 Kruskal-Wallis rank sum test</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 

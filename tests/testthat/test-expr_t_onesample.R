@@ -9,7 +9,7 @@ test_that(
     # Hedge's g and non-central
     set.seed(123)
     using_function1 <-
-      statsExpressions::expr_t_onesample(
+      expr_t_onesample(
         data = dplyr::sample_frac(movies_long, 0.05),
         x = length,
         test.value = 120,
@@ -51,7 +51,7 @@ test_that(
     set.seed(123)
     using_function2 <-
       suppressWarnings(
-        statsExpressions::expr_t_onesample(
+        expr_t_onesample(
           data = dplyr::sample_frac(movies_long, 0.05),
           x = "length",
           test.value = 120,
@@ -108,13 +108,13 @@ test_that(
     # statsExpressions output
     set.seed(123)
     using_function <-
-      statsExpressions::expr_t_onesample(
+      suppressWarnings(expr_t_onesample(
         data = ToothGrowth,
         x = len,
         test.value = 20,
         type = "np",
         k = 4
-      )
+      ))
 
     # expected output
     set.seed(123)
@@ -129,14 +129,14 @@ test_that(
           " = ",
           "0.3227",
           ", ",
-          widehat(italic("r")),
+          widehat(italic("r"))["biserial"]^"rank",
           " = ",
-          "-0.1282",
+          "0.1486",
           ", CI"["95%"],
           " [",
-          "-0.3827",
+          "0.0050",
           ", ",
-          "0.1522",
+          "0.4584",
           "]",
           ", ",
           italic("n")["obs"],
@@ -151,7 +151,7 @@ test_that(
     # statsExpressions output
     set.seed(123)
     using_function2 <-
-      statsExpressions::expr_t_onesample(
+      expr_t_onesample(
         data = ggplot2::msleep,
         x = names(ggplot2::msleep)[10],
         test.value = 0.25,
@@ -170,14 +170,14 @@ test_that(
           " = ",
           "1.253e-05",
           ", ",
-          widehat(italic("r")),
+          widehat(italic("r"))["biserial"]^"rank",
           " = ",
-          "-0.5840",
+          "0.6717",
           ", CI"["95%"],
           " [",
-          "-0.8133",
+          "0.4177",
           ", ",
-          "-0.3768",
+          "0.9052",
           "]",
           ", ",
           italic("n")["obs"],
@@ -202,7 +202,7 @@ test_that(
     # statsExpressions output
     set.seed(123)
     using_function <-
-      statsExpressions::expr_t_onesample(
+      expr_t_onesample(
         data = anscombe,
         x = "x1",
         test.value = 8,
@@ -251,7 +251,7 @@ test_that(
     # statsExpressions output
     set.seed(123)
     using_function <-
-      statsExpressions::expr_t_onesample(
+      expr_t_onesample(
         data = anscombe,
         x = "x2",
         test.value = 8,
@@ -275,7 +275,7 @@ test_that(
     # statsExpressions output
     set.seed(123)
     using_function2 <-
-      statsExpressions::expr_t_onesample(
+      expr_t_onesample(
         data = ggplot2::msleep,
         x = "brainwt",
         test.value = 0.25,
@@ -297,23 +297,5 @@ test_that(
 
     # testing overall call
     expect_identical(using_function2, results2)
-  }
-)
-
-
-# dataframe -----------------------------------------------------------
-
-test_that(
-  desc = "dataframe",
-  code = {
-    expect_s3_class(
-      statsExpressions::expr_t_onesample(
-        data = dplyr::sample_frac(movies_long, 0.05),
-        x = length,
-        test.value = 120,
-        output = "dataframe"
-      ),
-      "tbl_df"
-    )
   }
 )

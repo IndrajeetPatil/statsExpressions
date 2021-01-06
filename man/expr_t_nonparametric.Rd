@@ -12,7 +12,6 @@ expr_t_nonparametric(
   paired = FALSE,
   k = 2L,
   conf.level = 0.95,
-  conf.type = "norm",
   nboot = 100,
   output = "expression",
   ...
@@ -43,10 +42,6 @@ repeated measures/within-subjects or between-subjects. The default is
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} confidence/credible intervals (\code{0.95}).}
-
-\item{conf.type}{A vector of character strings representing the type of
-intervals required. The value should be any subset of the values \code{"norm"},
-\code{"basic"}, \code{"perc"}, \code{"bca"}. For more, see \code{?boot::boot.ci}.}
 
 \item{nboot}{Number of bootstrap samples for computing confidence interval
 for the effect size (Default: \code{100}).}

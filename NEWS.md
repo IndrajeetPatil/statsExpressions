@@ -5,6 +5,12 @@ MINOR CHANGES
   - Package internally relies on `afex` instead of `ez` for within-subjects
     ANOVA.
 
+MAJOR CHANGES
+
+  - All non-parametric functions now use `effectsize` package to compute effect
+    sizes and not `rcompanion`. This would lead to some changes in effect sizes
+    and their confidence intervals reported by the respective functions.
+
 # statsExpressions 0.6.2
 
 MINOR CHANGES

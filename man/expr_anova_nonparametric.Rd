@@ -12,7 +12,6 @@ expr_anova_nonparametric(
   paired = FALSE,
   k = 2L,
   conf.level = 0.95,
-  conf.type = "perc",
   nboot = 100L,
   output = "expression",
   ...
@@ -44,10 +43,6 @@ repeated measures/within-subjects or between-subjects. The default is
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} confidence/credible intervals (\code{0.95}).}
 
-\item{conf.type}{A vector of character strings representing the type of
-intervals required. The value should be any subset of the values \code{"norm"},
-\code{"basic"}, \code{"perc"}, \code{"bca"}. For more, see \code{?boot::boot.ci}.}
-
 \item{nboot}{Number of bootstrap samples for computing confidence interval
 for the effect size (Default: \code{100}).}
 
@@ -67,8 +62,7 @@ Making text expression for non-parametric ANOVA.
 \details{
 For paired designs, the effect size is Kendall's coefficient of
 concordance (\emph{W}), while for between-subjects designs, the effect size is
-epsilon-squared (for more, see \code{?rcompanion::epsilonSquared} and
-\code{?rcompanion::kendallW}).
+rank epsilon-squared.
 }
 \examples{
 # setup
@@ -93,8 +87,6 @@ expr_anova_nonparametric(
   data = ggplot2::msleep,
   x = vore,
   y = sleep_rem,
-  paired = FALSE,
-  conf.level = 0.99,
-  conf.type = "perc"
+  paired = FALSE
 )
 }

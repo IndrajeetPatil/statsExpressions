@@ -18,7 +18,7 @@ test_that(
           y = rating,
           effsize.type = "d",
           var.equal = TRUE,
-          conf.level = .99,
+          conf.level = 0.99,
           k = 5
         )
       )

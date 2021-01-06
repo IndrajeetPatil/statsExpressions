@@ -27,9 +27,8 @@
 #'
 #' @importFrom dplyr select mutate pull rename_all recode
 #' @importFrom WRS2 onesampb
-#' @importFrom rcompanion wilcoxonOneSampleR
 #' @importFrom ipmisc stats_type_switch
-#' @importFrom effectsize cohens_d hedges_g
+#' @importFrom effectsize cohens_d hedges_g rank_biserial
 #' @importFrom stats t.test wilcox.test na.omit
 #' @importFrom rlang !! ensym new_formula exec
 #'
@@ -84,16 +83,12 @@ expr_t_onesample <- function(data,
                              test.value = 0,
                              k = 2L,
                              conf.level = 0.95,
-                             conf.type = "norm",
                              bf.prior = 0.707,
                              robust.estimator = "onestep",
                              effsize.type = "g",
                              nboot = 100L,
                              output = "expression",
                              ...) {
-
-  # ====================== data ========================================
-
   # preparing the vector
   x_vec <- stats::na.omit(data %>% dplyr::pull({{ x }}))
 
@@ -103,78 +98,60 @@ expr_t_onesample <- function(data,
   # ========================= parametric ====================================
 
   if (stats.type == "parametric") {
-    # deciding which effect size to use (Hedge's g or Cohen's d)
-    if (effsize.type %in% c("unbiased", "g")) {
-      effsize.text <- quote(widehat(italic("g"))["Hedge"])
-      .f <- effectsize::hedges_g
-    } else {
-      effsize.text <- quote(widehat(italic("d"))["Cohen"])
-      .f <- effectsize::cohens_d
-    }
-
-    # setting up the t-test model and getting its summary
-    stats_df <-
-      stats::t.test(
-        x = x_vec,
-        mu = test.value,
-        conf.level = conf.level,
-        na.action = na.omit
-      ) %>%
-      tidy_model_parameters(.)
-
-    # creating effect size info
-    effsize_df <-
-      rlang::exec(
-        .fn = .f,
-        x = x_vec - test.value,
-        ci = conf.level
-      ) %>%
-      parameters::standardize_names(data = ., style = "broom")
-
     # preparing expression parameters
     statistic.text <- quote(italic("t")["Student"])
     no.parameters <- 1L
+    .f <- stats::t.test
+
+    # deciding which effect size to use (Hedge's g or Cohen's d)
+    if (effsize.type %in% c("unbiased", "g")) {
+      effsize.text <- quote(widehat(italic("g"))["Hedge"])
+      .f.es <- effectsize::hedges_g
+    } else {
+      effsize.text <- quote(widehat(italic("d"))["Cohen"])
+      .f.es <- effectsize::cohens_d
+    }
   }
 
   # ========================== non-parametric ==============================
 
   if (stats.type == "nonparametric") {
-    # setting up the Mann-Whitney U-test and getting its summary
-    stats_df <-
-      stats::wilcox.test(
-        x = x_vec,
-        na.action = na.omit,
-        mu = test.value,
-        exact = FALSE
-      ) %>%
-      tidy_model_parameters(.) %>%
-      dplyr::mutate(.data = ., statistic = log(statistic))
-
-    # effect size dataframe
-    effsize_df <-
-      rcompanion::wilcoxonOneSampleR(
-        x = x_vec,
-        mu = test.value,
-        ci = TRUE,
-        conf = conf.level,
-        type = conf.type,
-        R = nboot,
-        digits = 5,
-        reportIncomplete = TRUE
-      ) %>%
-      rcompanion_cleaner(.)
-
     # preparing expression parameters
     statistic.text <- quote("log"["e"](italic("V")["Wilcoxon"]))
     no.parameters <- 0L
-    effsize.text <- quote(widehat(italic("r")))
+    effsize.text <- quote(widehat(italic("r"))["biserial"]^"rank")
+    .f <- stats::wilcox.test
+    .f.es <- effectsize::rank_biserial
   }
 
   # preparing expression
   if (stats.type %in% c("parametric", "nonparametric")) {
-    # combining dataframes
+    # extracting test details
     stats_df <-
-      dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("estimate|^conf")), effsize_df)
+      rlang::exec(
+        .fn = .f,
+        x = x_vec,
+        mu = test.value,
+        na.action = na.omit,
+        exact = FALSE
+      ) %>%
+      tidy_model_parameters(.)
+
+    # extracting effect size details
+    effsize_df <-
+      rlang::exec(
+        .fn = .f.es,
+        x = x_vec - test.value,
+        ci = conf.level,
+        iterations = nboot
+      ) %>%
+      insight::standardize_names(data = ., style = "broom")
+
+    # these can be really big values
+    if (stats.type == "nonparametric") stats_df %<>% dplyr::mutate(statistic = log(statistic))
+
+    # combining dataframes
+    stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("estimate|^conf")), effsize_df)
 
     # expression
     expression <-
@@ -257,5 +234,5 @@ expr_t_onesample <- function(data,
   }
 
   # return the output
-  switch(output, "dataframe" = stats_df, expression)
+  switch(output, "dataframe" = as_tibble(stats_df), expression)
 }

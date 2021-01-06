@@ -29,14 +29,14 @@ test_that(
           " = ",
           "4.35e-05",
           ", ",
-          widehat(italic("r")),
+          widehat(italic("r"))["biserial"]^"rank",
           " = ",
-          "0.727",
+          "0.873",
           ", CI"["90%"],
           " [",
-          "0.608",
+          "0.691",
           ", ",
-          "0.873",
+          "1.000",
           "]",
           ", ",
           italic("n")["obs"],
@@ -57,39 +57,29 @@ test_that(
   code = {
     skip_if(getRversion() < "3.6")
 
-    # made up data
-    Input <- ("
-              Bird   Typical  Odd
-              A     -0.255   -0.324
-              B     -0.213   -0.185
-              C     -0.190   -0.299
-              D     -0.185   -0.144
-              E     -0.045   -0.027
-              F     -0.025   -0.039
-              G     -0.015   -0.264
-              H      0.003   -0.077
-              I      0.015   -0.017
-              J      0.020   -0.169
-              K      0.023   -0.096
-              L      0.040   -0.330
-              M      0.040   -0.346
-              N      0.050   -0.191
-              O      0.055   -0.128
-              P      0.058   -0.182
-              ")
-
-    # creating a dataframe
-    df_bird <- read.table(textConnection(Input), header = TRUE)
-
-    # converting to long format
-    df_bird %<>%
-      as_tibble(x = .) %>%
-      tidyr::gather(
-        data = .,
-        key = "type",
-        value = "length",
-        Typical:Odd
-      )
+    # data
+    df_bird <-
+      structure(list(Bird = c(
+        "A", "B", "C", "D", "E", "F", "G", "H",
+        "I", "J", "K", "L", "M", "N", "O", "P", "A", "B", "C", "D", "E",
+        "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"
+      ), type = c(
+        "Typical",
+        "Typical", "Typical", "Typical", "Typical", "Typical", "Typical",
+        "Typical", "Typical", "Typical", "Typical", "Typical", "Typical",
+        "Typical", "Typical", "Typical", "Odd", "Odd", "Odd", "Odd",
+        "Odd", "Odd", "Odd", "Odd", "Odd", "Odd", "Odd", "Odd", "Odd",
+        "Odd", "Odd", "Odd"
+      ), length = c(
+        -0.255, -0.213, -0.19, -0.185,
+        -0.045, -0.025, -0.015, 0.003, 0.015, 0.02, 0.023, 0.04, 0.04,
+        0.05, 0.055, 0.058, -0.324, -0.185, -0.299, -0.144, -0.027, -0.039,
+        -0.264, -0.077, -0.017, -0.169, -0.096, -0.33, -0.346, -0.191,
+        -0.128, -0.182
+      )), row.names = c(NA, -32L), class = c(
+        "tbl_df",
+        "tbl", "data.frame"
+      ))
 
     # expect error
     expect_error(suppressWarnings(statsExpressions::expr_t_nonparametric(
@@ -106,8 +96,6 @@ test_that(
         x = type,
         y = length,
         k = 5,
-        nboot = 25,
-        conf.type = "perc",
         conf.level = 0.99,
         paired = TRUE
       ))
@@ -125,14 +113,14 @@ test_that(
           " = ",
           "0.00295",
           ", ",
-          widehat(italic("r")),
+          widehat(italic("r"))["biserial"]^"rank",
           " = ",
-          "-0.75000",
+          "0.85294",
           ", CI"["99%"],
           " [",
-          "-0.88250",
+          "0.59551",
           ", ",
-          "-0.59500",
+          "1.00000",
           "]",
           ", ",
           italic("n")["pairs"],

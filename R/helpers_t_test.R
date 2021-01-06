@@ -166,7 +166,7 @@ expr_t_parametric <- function(data,
     )
 
   # return the output
-  switch(output, "dataframe" = stats_df, expression)
+  switch(output, "dataframe" = as_tibble(stats_df), expression)
 }
 
 
@@ -180,7 +180,7 @@ expr_t_parametric <- function(data,
 #' @importFrom dplyr select
 #' @importFrom rlang !! enquo exec new_formula
 #' @importFrom stats wilcox.test
-#' @importFrom rcompanion wilcoxonR wilcoxonPairedR
+#' @importFrom effectsize rank_biserial
 #'
 #' @details For the two independent samples case, the Mann-Whitney *U*-test is
 #'   calculated and *W* is reported from *stats::wilcox.test*. For the paired
@@ -236,7 +236,6 @@ expr_t_nonparametric <- function(data,
                                  paired = FALSE,
                                  k = 2L,
                                  conf.level = 0.95,
-                                 conf.type = "norm",
                                  nboot = 100,
                                  output = "expression",
                                  ...) {
@@ -260,7 +259,6 @@ expr_t_nonparametric <- function(data,
     # expression details
     sample_size <- length(unique(data$rowid))
     n.text <- quote(italic("n")["pairs"])
-    .f <- rcompanion::wilcoxonPairedR
     statistic.text <- quote("log"["e"](italic("V")["Wilcoxon"]))
   }
 
@@ -269,7 +267,6 @@ expr_t_nonparametric <- function(data,
     # expression details
     sample_size <- nrow(data)
     n.text <- quote(italic("n")["obs"])
-    .f <- rcompanion::wilcoxonR
     statistic.text <- quote("log"["e"](italic("W")["Mann-Whitney"]))
   }
 
@@ -287,22 +284,17 @@ expr_t_nonparametric <- function(data,
 
   # computing effect size
   effsize_df <-
-    rlang::exec(
-      .fn = .f,
-      x = data %>% dplyr::pull({{ y }}),
-      g = data %>% dplyr::pull({{ x }}),
-      ci = TRUE,
-      conf = conf.level,
-      type = conf.type,
-      R = nboot,
-      digits = k,
-      reportIncomplete = TRUE
+    effectsize::rank_biserial(
+      x = rlang::new_formula(y, x),
+      data = data,
+      paired = paired,
+      ci = conf.level,
+      iterations = nboot
     ) %>%
-    rcompanion_cleaner(.)
+    insight::standardize_names(data = ., style = "broom")
 
   # combining dataframes
-  stats_df <-
-    dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("estimate|^conf")), effsize_df)
+  stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("estimate|^conf")), effsize_df)
 
   # preparing expression
   expression <-
@@ -310,7 +302,7 @@ expr_t_nonparametric <- function(data,
       no.parameters = 0L,
       stats.df = stats_df,
       statistic.text = statistic.text,
-      effsize.text = quote(widehat(italic("r"))),
+      effsize.text = quote(widehat(italic("r"))["biserial"]^"rank"),
       n = sample_size,
       n.text = n.text,
       conf.level = conf.level,
@@ -318,7 +310,7 @@ expr_t_nonparametric <- function(data,
     )
 
   # return the output
-  switch(output, "dataframe" = stats_df, expression)
+  switch(output, "dataframe" = as_tibble(stats_df), expression)
 }
 
 #' @title Expression containing results from a robust *t*-test
@@ -470,7 +462,7 @@ expr_t_robust <- function(data,
     )
 
   # return the output
-  switch(output, "dataframe" = stats_df, expression)
+  switch(output, "dataframe" = as_tibble(stats_df), expression)
 }
 
 #' @title Making expression containing Bayesian *t*-test results

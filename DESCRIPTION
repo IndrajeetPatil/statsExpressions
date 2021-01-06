@@ -35,7 +35,6 @@ Imports:
     metaplus,
     parameters (>= 0.10.1.1),
     performance (>= 0.6.1.1),
-    rcompanion,
     rlang,
     stats,
     tidyBF (>= 0.4.2),
@@ -51,7 +50,7 @@ Suggests:
     utils
 Remotes:
     easystats/insight,
-    easystats/effectsize,
+    easystats/effectsize@dev,
     easystats/parameters,
     easystats/performance,
     IndrajeetPatil/tidyBF
