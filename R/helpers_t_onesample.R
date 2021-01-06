@@ -130,11 +130,9 @@ expr_t_onesample <- function(data,
     stats_df <-
       rlang::exec(
         .fn = .f,
-        # common
         x = x_vec,
         mu = test.value,
         na.action = na.omit,
-        # Wilcox/Mann-Whitney
         exact = FALSE
       ) %>%
       tidy_model_parameters(.)
@@ -144,9 +142,8 @@ expr_t_onesample <- function(data,
       rlang::exec(
         .fn = .f.es,
         x = x_vec - test.value,
-        ci = conf.level
-        # ,
-        # iterations = nboot
+        ci = conf.level,
+        iterations = nboot
       ) %>%
       insight::standardize_names(data = ., style = "broom")
 

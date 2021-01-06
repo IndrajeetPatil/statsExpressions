@@ -2,7 +2,7 @@
 test_that(
   desc = " dataframes for parametric t-tests",
   code = {
-    skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "4.0")
 
     # dataframes for one-sample t-test (with NAs) ---------
     set.seed(123)
