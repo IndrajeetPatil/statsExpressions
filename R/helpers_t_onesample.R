@@ -99,7 +99,6 @@ expr_t_onesample <- function(data,
 
   if (stats.type == "parametric") {
     # preparing expression parameters
-    statistic.text <- quote(italic("t")["Student"])
     no.parameters <- 1L
     .f <- stats::t.test
 
@@ -117,7 +116,6 @@ expr_t_onesample <- function(data,
 
   if (stats.type == "nonparametric") {
     # preparing expression parameters
-    statistic.text <- quote("log"["e"](italic("V")["Wilcoxon"]))
     no.parameters <- 0L
     effsize.text <- quote(widehat(italic("r"))["biserial"]^"rank")
     .f <- stats::wilcox.test
@@ -158,7 +156,6 @@ expr_t_onesample <- function(data,
       expr_template(
         no.parameters = no.parameters,
         stats.df = stats_df,
-        statistic.text = statistic.text,
         effsize.text = effsize.text,
         n = length(x_vec),
         conf.level = conf.level,

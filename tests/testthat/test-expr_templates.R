@@ -137,7 +137,7 @@ test_that(
     subtitle <-
       ggplot2::expr(
         paste(
-          italic("F"),
+          NULL,
           "(",
           "3",
           ",",
@@ -174,7 +174,8 @@ test_that(
         p.value = 0.107,
         estimate = 0.00,
         conf.low = -0.08,
-        conf.high = 0.10
+        conf.high = 0.10,
+        method = "lala"
       )
 
     # created using a template maker
@@ -182,7 +183,6 @@ test_that(
       statsExpressions::expr_template(
         no.parameters = 2L,
         stats.df = stats_df,
-        statistic.text = quote(italic("F")),
         conf.level = 0.95,
         k = 2L,
         k.parameter = 0L,

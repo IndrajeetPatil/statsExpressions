@@ -90,8 +90,7 @@ expr_corr_test <- function(data,
         method = corr.method,
         ci = conf.level
       ) %>%
-      parameters::standardize_names(data = ., style = "broom") %>%
-      as_tibble(.)
+      parameters::standardize_names(data = ., style = "broom")
   }
 
   # ------------------------ expression elements -----------------------------
@@ -99,20 +98,17 @@ expr_corr_test <- function(data,
   # preparing other needed objects
   if (stats_type == "parametric") {
     no.parameters <- 1L
-    statistic.text <- quote(italic("t")["Student"])
     effsize.text <- quote(widehat(italic("r"))["Pearson"])
   }
 
   if (stats_type == "nonparametric") {
-    stats_df %<>% dplyr::mutate(.data = ., statistic = log(statistic))
+    stats_df %<>% dplyr::mutate(statistic = log(statistic))
     no.parameters <- 0L
-    statistic.text <- quote("log"["e"](italic("S")))
     effsize.text <- quote(widehat(italic(rho))["Spearman"])
   }
 
   if (stats_type == "robust") {
     no.parameters <- 1L
-    statistic.text <- quote(italic("t")["Student"])
     effsize.text <- quote(widehat(italic(rho))["% bend"])
   }
 
@@ -124,7 +120,6 @@ expr_corr_test <- function(data,
       expr_template(
         no.parameters = no.parameters,
         stats.df = stats_df,
-        statistic.text = statistic.text,
         effsize.text = effsize.text,
         paired = TRUE,
         n = stats_df$n.obs[[1]],
@@ -148,5 +143,5 @@ expr_corr_test <- function(data,
   }
 
   # return the output
-  switch(output, "dataframe" = stats_df, expression)
+  switch(output, "dataframe" = as_tibble(stats_df), expression)
 }

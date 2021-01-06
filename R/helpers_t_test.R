@@ -19,27 +19,6 @@
 #' @references For more details, see-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
-#' @details Cohen's *d* is calculated in the traditional fashion as the
-#'   difference between means or mean minus *mu* divided by the estimated
-#'   standardized deviation.  By default Hedge's correction is applied
-#'   (*N*-3)/(*N*-2.25) to produce *g*. For independent samples *t*-test, there
-#'   are two possibilities implemented. If the *t*-test did not make a
-#'   homogeneity of variance assumption, (the Welch test), the variance term
-#'   will mirror the Welch test, otherwise a pooled and weighted estimate is
-#'   used. If a paired samples *t*-test was requested, then effect size desired
-#'   is based on the standard deviation of the differences.
-#'
-#'   The computation of the confidence intervals defaults to a use of
-#'   non-central Student-*t* distributions.
-#'
-#'   When computing confidence intervals the variance of the effect size *d* or
-#'   *g* is computed using the conversion formula reported in Cooper et al.
-#'   (2009)
-#'
-#'   - `((n1+n2)/(n1*n2) + .5*d^2/df) * ((n1+n2)/df)` (independent samples)
-#'
-#'   - `sqrt(((1 / n) + (d^2 / n)) * 2 * (1 - r))`  (paired case)
-#'
 #' @examples
 #' # for reproducibility
 #' set.seed(123)
@@ -92,9 +71,6 @@ expr_t_parametric <- function(data,
       spread = FALSE
     )
 
-  # sample size
-  sample_size <- ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data))
-
   # deciding which effect size to use (Hedge's g or Cohen's d)
   if (effsize.type %in% c("unbiased", "g")) {
     effsize.text <- quote(widehat(italic("g"))["Hedge"])
@@ -129,24 +105,16 @@ expr_t_parametric <- function(data,
   # combining dataframes
   stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("estimate|^conf")), effsize_df)
 
-  # when paired samples t-test is run df is going to be integer
-  # ditto for when variance is assumed to be equal
+  # details for expression
   k.df <- ifelse(isTRUE(paired) || isTRUE(var.equal), 0L, k)
-  statistic.text <-
-    if (isTRUE(paired) || isTRUE(var.equal)) {
-      quote(italic("t")["Student"])
-    } else {
-      quote(italic("t")["Welch"])
-    }
 
   # preparing expression
   expression <-
     expr_template(
       no.parameters = 1L,
       stats.df = stats_df,
-      statistic.text = statistic.text,
       effsize.text = effsize.text,
-      n = sample_size,
+      n = ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data)),
       paired = paired,
       conf.level = conf.level,
       k = k,
@@ -170,24 +138,12 @@ expr_t_parametric <- function(data,
 #' @importFrom stats wilcox.test
 #' @importFrom effectsize rank_biserial
 #'
-#' @details For the two independent samples case, the Mann-Whitney *U*-test is
-#'   calculated and *W* is reported from *stats::wilcox.test*. For the paired
-#'   samples case the Wilcoxon signed rank test is run and *V* is reported.
-#'
-#'   Since there is no single commonly accepted method for reporting effect size
-#'   for these tests we are computing and reporting *r* (computed as
-#'   \eqn{Z/\sqrt{N}}) along with the confidence intervals associated with the
-#'   estimate. Note that *N* here corresponds to total *sample size* for
-#'   independent/between-subjects designs, and to total number of *pairs* (and
-#'   **not** *observations*) for repeated measures/within-subjects designs.
-#'
-#'   *Note:* The *stats::wilcox.test* function does not follow the
-#'   same convention as *stats::t.test*. The sign of the *V* test statistic
-#'   will always be positive since it is **the sum of the positive signed ranks**.
-#'   Therefore, *V* will vary in magnitude but not significance based solely
-#'   on the order of the grouping variable. Consider manually
-#'   reordering your factor levels if appropriate as shown in the second example
-#'   below.
+#' @note The *stats::wilcox.test* function does not follow the same convention
+#'   as *stats::t.test*. The sign of the *V* test statistic will always be
+#'   positive since it is **the sum of the positive signed ranks**. Therefore,
+#'   *V* will vary in magnitude but not significance based solely on the order
+#'   of the grouping variable. Consider manually reordering your factor levels
+#'   if appropriate as shown in the second example below.
 #'
 #' @references For more details, see-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
@@ -242,20 +198,6 @@ expr_t_nonparametric <- function(data,
       spread = FALSE
     )
 
-  # properly removing NAs if it's a paired design
-  if (isTRUE(paired)) {
-    # expression details
-    sample_size <- length(unique(data$rowid))
-    statistic.text <- quote("log"["e"](italic("V")["Wilcoxon"]))
-  }
-
-  # remove NAs listwise for between-subjects design
-  if (isFALSE(paired)) {
-    # expression details
-    sample_size <- nrow(data)
-    statistic.text <- quote("log"["e"](italic("W")["Mann-Whitney"]))
-  }
-
   # setting up the test and getting its summary
   stats_df <-
     stats::wilcox.test(
@@ -287,9 +229,8 @@ expr_t_nonparametric <- function(data,
     expr_template(
       no.parameters = 0L,
       stats.df = stats_df,
-      statistic.text = statistic.text,
       effsize.text = quote(widehat(italic("r"))["biserial"]^"rank"),
-      n = sample_size,
+      n = ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data)),
       paired = paired,
       conf.level = conf.level,
       k = k
@@ -363,10 +304,10 @@ expr_t_robust <- function(data,
       spread = paired
     )
 
-  # running Bayesian analysis
+  # running robust analysis
   if (isFALSE(paired)) {
     # computing effect size and its confidence interval
-    effsize_obj <-
+    mod2 <-
       WRS2::yuen.effect.ci(
         formula = rlang::new_formula(y, x),
         data = data,
@@ -375,16 +316,8 @@ expr_t_robust <- function(data,
         alpha = 1 - conf.level
       )
 
-    # effect size dataframe
-    effsize_df <-
-      tibble(
-        estimate = effsize_obj$effsize[[1]],
-        conf.low = effsize_obj$CI[[1]],
-        conf.high = effsize_obj$CI[[2]]
-      )
-
     # Yuen's test for trimmed means
-    stats_obj <-
+    mod <-
       WRS2::yuen(
         formula = rlang::new_formula(y, x),
         data = data,
@@ -392,31 +325,27 @@ expr_t_robust <- function(data,
       )
 
     # tidying it up
-    stats_df <- tidy_model_parameters(stats_obj)
+    stats_df <- tidy_model_parameters(mod)
+    effsize_df <-
+      tibble(
+        estimate = mod2$effsize[[1]],
+        conf.low = mod2$CI[[1]],
+        conf.high = mod2$CI[[2]]
+      )
 
     # expression parameters
     c(k.parameter, effsize.text) %<-% c(k, quote(widehat(italic(xi))))
   }
 
   if (isTRUE(paired)) {
-    # running robust paired t-test
-    stats_obj <- WRS2::yuend(x = data[2], y = data[3], tr = tr)
+    # running robust paired t-test and its effect size
+    mod <- WRS2::yuend(x = data[2], y = data[3], tr = tr)
+    mod2 <- WRS2::dep.effect(x = data[2], y = data[3], tr = tr, nboot = nboot)
 
-    # create a dataframe
-    stats_df <- tidy_model_parameters(stats_obj)
-
-    # computing effect size
-    fit2 <-
-      WRS2::dep.effect(
-        x = data[2],
-        y = data[3],
-        tr = tr,
-        nboot = nboot
-      )
-
-    # create a dataframe
+    # tidying it up
+    stats_df <- tidy_model_parameters(mod)
     effsize_df <-
-      as_tibble(as.data.frame(fit2), rownames = "effect_size") %>%
+      as_tibble(as.data.frame(mod2), rownames = "effect_size") %>%
       dplyr::filter(effect_size == "AKP") %>%
       dplyr::rename(estimate = Est, conf.low = ci.low, conf.high = ci.up)
 
@@ -432,7 +361,6 @@ expr_t_robust <- function(data,
     expr_template(
       no.parameters = 1L,
       stats.df = stats_df,
-      statistic.text = quote(italic("t")["Yuen"]),
       effsize.text = effsize.text,
       n = nrow(data),
       paired = paired,

@@ -89,9 +89,6 @@ expr_contingency_tab <- function(data,
   # untable the dataframe based on the count for each observation
   if (".counts" %in% names(data)) data %<>% tidyr::uncount(data = ., weights = .counts)
 
-  # sample size
-  sample_size <- nrow(data)
-
   # ratio
   if (is.null(ratio)) {
     x_vec <- data %>% dplyr::pull({{ x }})
@@ -138,15 +135,6 @@ expr_contingency_tab <- function(data,
     effsize.text <- quote(widehat(italic("V"))["Cramer"])
   }
 
-  # which test was carried out?
-  # done separately to handle edge cases where gof instead of Pearson is run
-  if (mod$method == "Chi-squared test for given probabilities") {
-    statistic.text <- quote(chi["gof"]^2)
-  } else {
-    if (isTRUE(paired)) statistic.text <- quote(chi["McNemar"]^2)
-    if (isFALSE(paired)) statistic.text <- quote(chi["Pearson"]^2)
-  }
-
   # computing effect size + CI
   effsize_df <-
     rlang::exec(
@@ -160,6 +148,15 @@ expr_contingency_tab <- function(data,
   # combining dataframes
   stats_df <- dplyr::bind_cols(tidy_model_parameters(mod), effsize_df)
 
+  # which test was carried out?
+  statistic.text <-
+    switch(
+      stats_df$method[[1]],
+      "Chi-squared test for given probabilities" = quote(chi["gof"]^2),
+      "Pearson's Chi-squared test" = quote(chi["Pearson"]^2),
+      "McNemar's Chi-squared test" = quote(chi["McNemar"]^2)
+    )
+
   # expression
   expression <-
     expr_template(
@@ -167,7 +164,7 @@ expr_contingency_tab <- function(data,
       stats.df = stats_df,
       statistic.text = statistic.text,
       effsize.text = effsize.text,
-      n = sample_size,
+      n = nrow(data),
       paired = paired,
       conf.level = conf.level,
       k = k

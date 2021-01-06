@@ -55,25 +55,13 @@ results.}
 \description{
 Making expression for Mann-Whitney \emph{U}-test/Wilcoxon test results
 }
-\details{
-For the two independent samples case, the Mann-Whitney \emph{U}-test is
-calculated and \emph{W} is reported from \emph{stats::wilcox.test}. For the paired
-samples case the Wilcoxon signed rank test is run and \emph{V} is reported.
-
-Since there is no single commonly accepted method for reporting effect size
-for these tests we are computing and reporting \emph{r} (computed as
-\eqn{Z/\sqrt{N}}) along with the confidence intervals associated with the
-estimate. Note that \emph{N} here corresponds to total \emph{sample size} for
-independent/between-subjects designs, and to total number of \emph{pairs} (and
-\strong{not} \emph{observations}) for repeated measures/within-subjects designs.
-
-\emph{Note:} The \emph{stats::wilcox.test} function does not follow the
-same convention as \emph{stats::t.test}. The sign of the \emph{V} test statistic
-will always be positive since it is \strong{the sum of the positive signed ranks}.
-Therefore, \emph{V} will vary in magnitude but not significance based solely
-on the order of the grouping variable. Consider manually
-reordering your factor levels if appropriate as shown in the second example
-below.
+\note{
+The \emph{stats::wilcox.test} function does not follow the same convention
+as \emph{stats::t.test}. The sign of the \emph{V} test statistic will always be
+positive since it is \strong{the sum of the positive signed ranks}. Therefore,
+\emph{V} will vary in magnitude but not significance based solely on the order
+of the grouping variable. Consider manually reordering your factor levels
+if appropriate as shown in the second example below.
 }
 \examples{
 # for reproducibility

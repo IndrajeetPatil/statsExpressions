@@ -91,14 +91,8 @@ expr_anova_parametric <- function(data,
       spread = FALSE
     )
 
-  # -------------- within-subjects design --------------------------------
-
-  # properly removing NAs if it's a paired design
+  # Fisher's ANOVA
   if (isTRUE(paired)) {
-    # sample size
-    sample_size <- length(unique(data$rowid))
-
-    # Fisher's ANOVA
     mod <-
       afex::aov_ez(
         id = "rowid",
@@ -108,13 +102,8 @@ expr_anova_parametric <- function(data,
       )
   }
 
-  # ------------------- between-subjects design ------------------------------
-
+  # Welch's ANOVA
   if (isFALSE(paired)) {
-    # sample size
-    sample_size <- nrow(data)
-
-    # Welch's ANOVA
     mod <-
       stats::oneway.test(
         formula = rlang::new_formula(y, x),
@@ -123,8 +112,6 @@ expr_anova_parametric <- function(data,
         var.equal = var.equal
       )
   }
-
-  # ------------------- parameter extraction ------------------------------
 
   # tidy up the stats object
   stats_df <-
@@ -135,11 +122,8 @@ expr_anova_parametric <- function(data,
       ci = conf.level
     ))
 
-  # test details
-  if (isTRUE(paired) || isTRUE(var.equal)) {
-    statistic.text <- quote(italic("F")["Fisher"])
-  } else {
-    statistic.text <- quote(italic("F")["Welch"])
+  if (!"method" %in% names(stats_df)) {
+    stats_df %<>% dplyr::mutate(method = "One-way analysis of means")
   }
 
   # preparing expression
@@ -147,9 +131,8 @@ expr_anova_parametric <- function(data,
     expr_template(
       no.parameters = 2L,
       stats.df = stats_df,
-      statistic.text = statistic.text,
       effsize.text = effsize.text,
-      n = sample_size,
+      n = ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data)),
       paired = paired,
       conf.level = conf.level,
       k = k,
@@ -244,10 +227,6 @@ expr_anova_nonparametric <- function(data,
     .f.args <- list(formula = new_formula({{ enexpr(y) }}, expr(!!enexpr(x) | rowid)))
     .f.es <- effectsize::kendalls_w
     .f.es.args <- list(x = new_formula({{ enexpr(y) }}, expr(!!enexpr(x) | rowid)))
-
-    # details for expression
-    sample_size <- length(unique(data$rowid))
-    statistic.text <- quote(chi["Friedman"]^2)
     effsize.text <- quote(widehat(italic("W"))["Kendall"])
   }
 
@@ -259,10 +238,6 @@ expr_anova_nonparametric <- function(data,
     .f.args <- list(formula = rlang::new_formula(y, x))
     .f.es <- effectsize::rank_epsilon_squared
     .f.es.args <- list(x = rlang::new_formula(y, x))
-
-    # details for expression
-    sample_size <- nrow(data)
-    statistic.text <- quote(chi["Kruskal-Wallis"]^2)
     effsize.text <- quote(widehat(epsilon)["ordinal"]^2)
   }
 
@@ -292,9 +267,8 @@ expr_anova_nonparametric <- function(data,
     expr_template(
       no.parameters = 1L,
       stats.df = dplyr::bind_cols(stats_df, effsize_df),
-      statistic.text = statistic.text,
       effsize.text = effsize.text,
-      n = sample_size,
+      n = ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data)),
       paired = paired,
       conf.level = conf.level,
       k = k

@@ -75,7 +75,7 @@
 
 # function body
 expr_template <- function(no.parameters,
-                          statistic.text,
+                          statistic.text = NULL,
                           stats.df,
                           effsize.text,
                           n,
@@ -92,6 +92,8 @@ expr_template <- function(no.parameters,
   # sample size info-related text
   if (isTRUE(paired) && is.null(n.text)) n.text <- quote(italic("n")["pairs"])
   if (isFALSE(paired) && is.null(n.text)) n.text <- quote(italic("n")["obs"])
+
+  if (is.null(statistic.text)) statistic.text <- method_switch(stats.df$method[[1]])
 
   # ------------------ statistic with 0 degrees of freedom --------------------
 
@@ -245,51 +247,30 @@ expr_template <- function(no.parameters,
   return(subtitle)
 }
 
-#' @name tidy_model_parameters
-#' @title Convert `parameters` output to `tidymodels` convention
-#'
-#' @inheritParams parameters::model_parameters
-#'
-#' @importFrom parameters model_parameters
-#' @importFrom insight standardize_names
-#' @importFrom dplyr rename_all
-#'
-#' @examples
-#' model <- lm(mpg ~ wt + cyl, data = mtcars)
-#' tidy_model_parameters(model)
-#' @export
+#' @noRd
 
-tidy_model_parameters <- function(model, ...) {
-  # extracting parameters
-  df <- parameters::model_parameters(model, verbose = FALSE, ...)
-
-  # special handling for t-test
-  if ("Difference" %in% names(df)) df %<>% dplyr::select(-dplyr::matches("Diff|^CI"))
-
-  # naming clean-up
-  parameters::standardize_names(data = df, style = "broom") %>%
-    dplyr::rename_all(~ gsub("omega2\\.|eta2\\.|cohens\\.|cramers\\.|d\\.|g\\.", "", .x)) %>%
-    as_tibble(.)
+method_switch <- function(method) {
+  switch(
+    method,
+    "Wilcoxon signed rank test" = quote("log"["e"](italic("V")["Wilcoxon"])),
+    "Pearson" = ,
+    "Percentage Bend" = ,
+    "One Sample t-test" = ,
+    "Two Sample t-test" = ,
+    "Paired t-test" = quote(italic("t")["Student"]),
+    "Welch Two Sample t-test" = quote(italic("t")["Welch"]),
+    "Wilcoxon rank sum test" = quote("log"["e"](italic("W")["Mann-Whitney"])),
+    "Wilcoxon signed rank test" = quote("log"["e"](italic("V")["Wilcoxon"])),
+    "Yuen's test on trimmed means for independent samples" = ,
+    "Yuen's test on trimmed means for dependent samples" = quote(italic("t")["Yuen"]),
+    "One-way analysis of means (not assuming equal variances)" = quote(italic("F")["Welch"]),
+    "One-way analysis of means" = quote(italic("F")["Fisher"]),
+    "Friedman rank sum test" = quote(chi["Friedman"]^2),
+    "Kruskal-Wallis rank sum test" = quote(chi["Kruskal-Wallis"]^2),
+    "Spearman" = quote("log"["e"](italic("S"))),
+    NULL
+  )
 }
-
-#' @name tidy_model_performance
-#' @title Convert `performance` output to `tidymodels` convention
-#'
-#' @inheritParams performance::model_performance
-#'
-#' @importFrom performance model_performance
-#'
-#' @examples
-#' model <- lm(mpg ~ wt + cyl, data = mtcars)
-#' tidy_model_parameters(model)
-#' @export
-
-tidy_model_performance <- function(model, ...) {
-  performance::model_performance(model, verbose = FALSE, ...) %>%
-    parameters::standardize_names(data = ., style = "broom") %>%
-    as_tibble(.)
-}
-
 
 #' @noRd
 
