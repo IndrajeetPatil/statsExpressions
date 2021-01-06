@@ -12,7 +12,6 @@ expr_t_onesample(
   test.value = 0,
   k = 2L,
   conf.level = 0.95,
-  conf.type = "norm",
   bf.prior = 0.707,
   robust.estimator = "onestep",
   effsize.type = "g",
@@ -40,10 +39,6 @@ or \code{"robust"} or \code{"bayes"}).Corresponding abbreviations are also accep
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} confidence/credible intervals (\code{0.95}).}
-
-\item{conf.type}{A vector of character strings representing the type of
-intervals required. The value should be any subset of the values \code{"norm"},
-\code{"basic"}, \code{"perc"}, \code{"bca"}. For more, see \code{?boot::boot.ci}.}
 
 \item{bf.prior}{A number between \code{0.5} and \code{2} (default \code{0.707}), the prior
 width to use in calculating Bayes factors.}

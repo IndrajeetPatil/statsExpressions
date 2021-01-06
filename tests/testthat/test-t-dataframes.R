@@ -21,10 +21,9 @@ test_that(
       )
 
     expect_equal(
-      df_1,
+      dplyr::select(df_1, -term),
       structure(
         list(
-          term = c("x_vec", "x_vec", "x_vec", "x_vec"),
           mu = c(0.25, 0.25, 0.25, 0.25),
           statistic = c(
             0.242042658015805,
@@ -68,10 +67,7 @@ test_that(
             0.121770038540287
           )
         ),
-        row.names = c(
-          NA,
-          -4L
-        ),
+        row.names = c(NA, -4L),
         class = c("tbl_df", "tbl", "data.frame")
       ),
       tolerance = 0.001

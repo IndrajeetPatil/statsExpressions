@@ -159,7 +159,6 @@
   paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
   k <span class='op'>=</span> <span class='fl'>2L</span>,
   conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
-  conf.type <span class='op'>=</span> <span class='st'>"norm"</span>,
   nboot <span class='op'>=</span> <span class='fl'>100</span>,
   output <span class='op'>=</span> <span class='st'>"expression"</span>,
   <span class='va'>...</span>
@@ -206,12 +205,6 @@ repeated measures/within-subjects or between-subjects. The default is
       <th>conf.level</th>
       <td><p>Scalar between 0 and 1. If unspecified, the defaults return
 <code>95%</code> confidence/credible intervals (<code>0.95</code>).</p></td>
-    </tr>
-    <tr>
-      <th>conf.type</th>
-      <td><p>A vector of character strings representing the type of
-intervals required. The value should be any subset of the values <code>"norm"</code>,
-<code>"basic"</code>, <code>"perc"</code>, <code>"bca"</code>. For more, see <code><a href='https://rdrr.io/pkg/boot/man/boot.ci.html'>?boot::boot.ci</a></code>.</p></td>
     </tr>
     <tr>
       <th>nboot</th>
@@ -266,8 +259,8 @@ below.</p>
   y <span class='op'>=</span> <span class='va'>extra</span>
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; paste("log"["e"](italic("W")["Mann-Whitney"]), " = ", "3.24", 
-#&gt;     ", ", italic("p"), " = ", "0.069", ", ", widehat(italic("r")), 
-#&gt;     " = ", "-0.41", ", CI"["95%"], " [", "-0.84", ", ", "-0.04", 
+#&gt;     ", ", italic("p"), " = ", "0.069", ", ", widehat(italic("r"))["biserial"]^"rank", 
+#&gt;     " = ", "-0.49", ", CI"["95%"], " [", "-0.86", ", ", "-0.07", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", "20")</div><div class='input'>
 <span class='co'># -------------- within-subjects design ------------------------</span>
 
@@ -278,9 +271,9 @@ below.</p>
   paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
   subject.id <span class='op'>=</span> <span class='va'>id</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; paste("log"["e"](italic("V")["Wilcoxon"]), " = ", "1.50", ", ", 
-#&gt;     italic("p"), " = ", "0.001", ", ", widehat(italic("r")), 
-#&gt;     " = ", "-0.57", ", CI"["95%"], " [", "-0.67", ", ", "-0.44", 
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Zeros detected. These cannot be sign-rank transformed.</span></div><div class='output co'>#&gt; paste("log"["e"](italic("V")["Wilcoxon"]), " = ", "1.50", ", ", 
+#&gt;     italic("p"), " = ", "0.001", ", ", widehat(italic("r"))["biserial"]^"rank", 
+#&gt;     " = ", "0.93", ", CI"["95%"], " [", "0.76", ", ", "1.00", 
 #&gt;     "]", ", ", italic("n")["pairs"], " = ", "34")</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

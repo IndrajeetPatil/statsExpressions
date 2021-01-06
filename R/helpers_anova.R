@@ -163,7 +163,7 @@ expr_anova_parametric <- function(data,
     )
 
   # return the output
-  switch(output, "dataframe" = stats_df, expression)
+  switch(output, "dataframe" = as_tibble(stats_df), expression)
 }
 
 #' @title Making text expression for non-parametric ANOVA.
@@ -171,15 +171,11 @@ expr_anova_parametric <- function(data,
 #'
 #' @details For paired designs, the effect size is Kendall's coefficient of
 #'   concordance (*W*), while for between-subjects designs, the effect size is
-#'   epsilon-squared (for more, see `?rcompanion::epsilonSquared` and
-#'   `?rcompanion::kendallW`).
+#'   rank epsilon-squared.
 #'
 #' @return For more details, see-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
-#' @param conf.type A vector of character strings representing the type of
-#'   intervals required. The value should be any subset of the values `"norm"`,
-#'   `"basic"`, `"perc"`, `"bca"`. For more, see `?boot::boot.ci`.
 #' @param nboot Number of bootstrap samples for computing confidence interval
 #'   for the effect size (Default: `100`).
 #' @inheritParams ipmisc::long_to_wide_converter
@@ -187,9 +183,9 @@ expr_anova_parametric <- function(data,
 #' @inheritParams expr_template
 #'
 #' @importFrom dplyr select
-#' @importFrom rlang !! enquo
+#' @importFrom rlang !! !!! enquo enexpr expr new_formula exec
 #' @importFrom stats friedman.test kruskal.test na.omit
-#' @importFrom rcompanion epsilonSquared kendallW
+#' @importFrom effectsize rank_epsilon_squared kendalls_w
 #'
 #' @examples
 #' # setup
@@ -214,9 +210,7 @@ expr_anova_parametric <- function(data,
 #'   data = ggplot2::msleep,
 #'   x = vore,
 #'   y = sleep_rem,
-#'   paired = FALSE,
-#'   conf.level = 0.99,
-#'   conf.type = "perc"
+#'   paired = FALSE
 #' )
 #' @export
 
@@ -228,7 +222,6 @@ expr_anova_nonparametric <- function(data,
                                      paired = FALSE,
                                      k = 2L,
                                      conf.level = 0.95,
-                                     conf.type = "perc",
                                      nboot = 100L,
                                      output = "expression",
                                      ...) {
@@ -253,24 +246,13 @@ expr_anova_nonparametric <- function(data,
 
   # properly removing NAs if it's a paired design
   if (isTRUE(paired)) {
-    # setting up the anova model (`y ~ x | id`) and getting its summary
-    mod <-
-      stats::friedman.test(
-        formula = rlang::new_formula(
-          {{ rlang::enexpr(y) }}, rlang::expr(!!rlang::enexpr(x) | rowid)
-        ),
-        data = data,
-        na.action = na.omit
-      )
+    # functions and their arguments
+    .f <- stats::friedman.test
+    .f.args <- list(formula = new_formula({{ enexpr(y) }}, expr(!!enexpr(x) | rowid)))
+    .f.es <- effectsize::kendalls_w
+    .f.es.args <- list(x = new_formula({{ enexpr(y) }}, expr(!!enexpr(x) | rowid)))
 
-    # details for expression creator
-    .f <- rcompanion::kendallW
-    arg_list <-
-      list(
-        x = dplyr::select(ipmisc::long_to_wide_converter(data, {{ x }}, {{ y }}), -rowid),
-        correct = TRUE,
-        na.rm = TRUE
-      )
+    # details for expression
     sample_size <- length(unique(data$rowid))
     n.text <- quote(italic("n")["pairs"])
     statistic.text <- quote(chi["Friedman"]^2)
@@ -280,50 +262,45 @@ expr_anova_nonparametric <- function(data,
   # ------------------- between-subjects design ------------------------------
 
   if (isFALSE(paired)) {
-    # setting up the anova model and getting its summary
-    mod <-
-      stats::kruskal.test(
-        formula = rlang::new_formula(y, x),
-        data = data,
-        na.action = na.omit
-      )
+    # functions and their arguments
+    .f <- stats::kruskal.test
+    .f.args <- list(formula = rlang::new_formula(y, x))
+    .f.es <- effectsize::rank_epsilon_squared
+    .f.es.args <- list(x = rlang::new_formula(y, x))
 
-    # details for expression creator
-    .f <- rcompanion::epsilonSquared
-    arg_list <-
-      list(
-        x = data %>% dplyr::pull({{ y }}),
-        g = data %>% dplyr::pull({{ x }}),
-        group = "row",
-        reportIncomplete = FALSE
-      )
+    # details for expression
     sample_size <- nrow(data)
     n.text <- quote(italic("n")["obs"])
     statistic.text <- quote(chi["Kruskal-Wallis"]^2)
-    effsize.text <- quote(widehat(epsilon^2)["ordinal"])
+    effsize.text <- quote(widehat(epsilon)["ordinal"]^2)
   }
+
+  # extracting test details
+  stats_df <-
+    rlang::exec(
+      .fn = .f,
+      !!!.f.args,
+      data = data,
+      na.action = na.omit
+    ) %>%
+    tidy_model_parameters(.)
 
   # computing respective effect sizes
   effsize_df <-
     rlang::exec(
-      .fn = .f,
-      !!!arg_list,
-      ci = TRUE,
-      conf = conf.level,
-      type = conf.type,
-      R = nboot,
-      digits = 5
+      .fn = .f.es,
+      data = data,
+      ci = conf.level,
+      iterations = nboot,
+      !!!.f.es.args
     ) %>%
-    rcompanion_cleaner(.)
-
-  # combining dataframes
-  stats_df <- dplyr::bind_cols(tidy_model_parameters(mod), effsize_df)
+    insight::standardize_names(data = ., style = "broom")
 
   # preparing expression
   expression <-
     expr_template(
       no.parameters = 1L,
-      stats.df = stats_df,
+      stats.df = dplyr::bind_cols(stats_df, effsize_df),
       statistic.text = statistic.text,
       effsize.text = effsize.text,
       n = sample_size,
@@ -333,7 +310,7 @@ expr_anova_nonparametric <- function(data,
     )
 
   # return the output
-  switch(output, "dataframe" = stats_df, expression)
+  switch(output, "dataframe" = as_tibble(stats_df), expression)
 }
 
 #' @title Expression containing results from heteroscedastic one-way ANOVA for
@@ -494,7 +471,7 @@ expr_anova_robust <- function(data,
   }
 
   # return the output
-  switch(output, "dataframe" = stats_df, expression)
+  switch(output, "dataframe" = as_tibble(stats_df), expression)
 }
 
 

@@ -243,27 +243,6 @@ expr_template <- function(no.parameters,
   return(subtitle)
 }
 
-#' @noRd
-#' @note Cleans outputs from `rcompanion` to make writing wrapper functions
-#'   easier. This doesn't have much usage outside of this package context.
-#'
-#' @importFrom dplyr rename_all recode
-#'
-#' @keywords internal
-
-# rename columns uniformly
-rcompanion_cleaner <- function(object) {
-  dplyr::rename_all(
-    .tbl = as_tibble(object),
-    .funs = dplyr::recode,
-    epsilon.squared = "estimate",
-    r = "estimate",
-    W = "estimate",
-    lower.ci = "conf.low",
-    upper.ci = "conf.high"
-  )
-}
-
 #' @name tidy_model_parameters
 #' @title Convert `parameters` output to `tidymodels` convention
 #'
