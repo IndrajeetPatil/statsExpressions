@@ -218,8 +218,6 @@ expr_anova_nonparametric <- function(data,
       spread = FALSE
     )
 
-  # ------------------- within-subjects design ------------------------------
-
   # properly removing NAs if it's a paired design
   if (isTRUE(paired)) {
     # functions and their arguments
@@ -229,8 +227,6 @@ expr_anova_nonparametric <- function(data,
     .f.es.args <- list(x = new_formula({{ enexpr(y) }}, expr(!!enexpr(x) | rowid)))
     effsize.text <- quote(widehat(italic("W"))["Kendall"])
   }
-
-  # ------------------- between-subjects design ------------------------------
 
   if (isFALSE(paired)) {
     # functions and their arguments
@@ -349,13 +345,8 @@ expr_anova_robust <- function(data,
       spread = FALSE
     )
 
-  # -------------- within-subjects design --------------------------------
-
   # properly removing NAs if it's a paired design
   if (isTRUE(paired)) {
-    # sample size
-    sample_size <- length(unique(data$rowid))
-
     # test
     mod <-
       WRS2::rmanova(
@@ -393,17 +384,12 @@ expr_anova_robust <- function(data,
           df1 = format_num(x = stats_df$df[[1]], k = k),
           df2 = format_num(x = stats_df$df.error[[1]], k = k),
           p.value = format_num(x = stats_df$p.value[[1]], k = k, p.value = TRUE),
-          n = .prettyNum(sample_size)
+          n = .prettyNum(length(unique(data$rowid)))
         )
       )
   }
 
-  # -------------- between-subjects design --------------------------------
-
   if (isFALSE(paired)) {
-    # sample size
-    sample_size <- nrow(data)
-
     # heteroscedastic one-way ANOVA for trimmed means
     mod <-
       WRS2::t1way(
@@ -424,8 +410,7 @@ expr_anova_robust <- function(data,
         stats.df = stats_df,
         statistic.text = quote(italic("F")["trimmed-means"]),
         effsize.text = quote(widehat(italic(xi))),
-        n = sample_size,
-        paired = paired,
+        n = nrow(data),
         conf.level = conf.level,
         k = k,
         k.parameter2 = k

@@ -103,7 +103,7 @@ expr_t_parametric <- function(data,
     parameters::standardize_names(data = ., style = "broom")
 
   # combining dataframes
-  stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("estimate|^conf")), effsize_df)
+  stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("^est|^conf")), effsize_df)
 
   # details for expression
   k.df <- ifelse(isTRUE(paired) || isTRUE(var.equal), 0L, k)
@@ -208,7 +208,7 @@ expr_t_nonparametric <- function(data,
       exact = FALSE
     ) %>%
     tidy_model_parameters(.) %>%
-    dplyr::mutate(.data = ., statistic = log(statistic))
+    dplyr::mutate(statistic = log(statistic))
 
   # computing effect size
   effsize_df <-
@@ -222,7 +222,7 @@ expr_t_nonparametric <- function(data,
     insight::standardize_names(data = ., style = "broom")
 
   # combining dataframes
-  stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("estimate|^conf")), effsize_df)
+  stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("^est|^conf")), effsize_df)
 
   # preparing expression
   expression <-
@@ -326,12 +326,7 @@ expr_t_robust <- function(data,
 
     # tidying it up
     stats_df <- tidy_model_parameters(mod)
-    effsize_df <-
-      tibble(
-        estimate = mod2$effsize[[1]],
-        conf.low = mod2$CI[[1]],
-        conf.high = mod2$CI[[2]]
-      )
+    effsize_df <- tibble(estimate = mod2$effsize[[1]], conf.low = mod2$CI[[1]], conf.high = mod2$CI[[2]])
 
     # expression parameters
     c(k.parameter, effsize.text) %<-% c(k, quote(widehat(italic(xi))))

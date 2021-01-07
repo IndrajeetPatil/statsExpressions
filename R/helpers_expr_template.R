@@ -252,7 +252,6 @@ expr_template <- function(no.parameters,
 method_switch <- function(method) {
   switch(
     method,
-    "Wilcoxon signed rank test" = quote("log"["e"](italic("V")["Wilcoxon"])),
     "Pearson" = ,
     "Percentage Bend" = ,
     "One Sample t-test" = ,
