@@ -43,7 +43,6 @@
 #' @inheritParams expr_anova_parametric
 #' @inheritParams ipmisc::long_to_wide_converter
 #'
-#' @importFrom rlang is_null
 #' @importFrom ipmisc format_num
 #'
 #' @examples

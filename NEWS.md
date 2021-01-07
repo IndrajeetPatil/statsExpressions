@@ -1,5 +1,12 @@
 # statsExpressions 0.6.2.9000
 
+BREAKING CHANGES
+
+  - To be consistent with `expr_t_onesample`, `expr_t_parametric`,
+    `expr_t_nonparametric`, `expr_t_robust`, `expr_t_bayes` are now removed in
+    favor of a single function `expr_t_twosample`, where the `type` argument can
+    be used to specify which type of statistical approach is to be used.
+
 MAJOR CHANGES
 
   - All non-parametric functions now use `effectsize` package to compute effect
@@ -10,7 +17,7 @@ MINOR CHANGES
 
   - Package internally relies on `afex` instead of `ez` for within-subjects
     ANOVA.
-    
+
   - `expr_template` gains `paired` argument.
 
 # statsExpressions 0.6.2

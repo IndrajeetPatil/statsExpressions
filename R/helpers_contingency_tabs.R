@@ -26,7 +26,7 @@
 #'   This means if there are two levels this will be `ratio = c(0.5,0.5)` or if
 #'   there are four levels this will be `ratio = c(0.25,0.25,0.25,0.25)`, etc.
 #' @param ... Additional arguments (currently ignored).
-#' @inheritParams expr_t_parametric
+#' @inheritParams expr_t_twosample
 #' @inheritParams stats::chisq.test
 #' @inheritParams expr_anova_parametric
 #' @inheritParams expr_anova_nonparametric

@@ -429,7 +429,7 @@ expr_anova_robust <- function(data,
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @inheritParams expr_anova_parametric
-#' @inheritParams expr_t_bayes
+#' @inheritParams expr_t_twosample
 #'
 #' @importFrom tidyBF bf_oneway_anova
 #' @importFrom parameters model_parameters

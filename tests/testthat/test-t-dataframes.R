@@ -86,7 +86,7 @@ test_that(
           conf.level = list(0.89, 0.99, 0.90, 0.50),
           output = list("dataframe")
         ),
-        .f = statsExpressions::expr_t_parametric
+        .f = statsExpressions::expr_t_twosample
       )
 
     expect_equal(
@@ -173,7 +173,7 @@ test_that(
           conf.level = list(0.89, 0.99, 0.90, 0.50),
           output = list("dataframe")
         ),
-        .f = statsExpressions::expr_t_parametric
+        .f = statsExpressions::expr_t_twosample
       )
 
     expect_equal(

@@ -287,7 +287,7 @@ ggplot(ToothGrowth, aes(supp, len)) +
   # adding a subtitle with
   labs(
     title = "Two-Sample Welch's t-test",
-    subtitle = expr_t_parametric(ToothGrowth, supp, len)
+    subtitle = expr_t_twosample(ToothGrowth, supp, len)
   )
 ```
 
@@ -315,15 +315,14 @@ gghistogram(
 ) + # displaying stats results
   labs(
     title = "Yuen's two-sample test for trimmed means",
-    subtitle = expr_t_robust(
+    subtitle = expr_t_twosample(
       data = data.frame(
         sex = factor(rep(c("F", "M"), each = 200)),
         weight = c(rnorm(200, 55), rnorm(200, 58))
       ),
       x = sex,
       y = weight,
-      type = "robust",
-      messages = FALSE
+      type = "robust"
     )
   )
 ```
@@ -345,7 +344,7 @@ ggDot(heightweight, aes(sex, heightIn, fill = sex),
 ) +
   labs(
     title = "Mann-Whitney test",
-    subtitle = expr_t_nonparametric(heightweight, sex, heightIn, type = "np")
+    subtitle = expr_t_twosample(heightweight, sex, heightIn, type = "nonparametric")
   )
 ```
 
@@ -367,12 +366,13 @@ paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject")
   # `statsExpressions` needs data in the tidy format
   labs(
     title = "Two-sample Wilcoxon paired test",
-    subtitle = expr_t_nonparametric(
+    subtitle = expr_t_twosample(
       data = pivot_longer(PrisonStress, starts_with("PSS"), "PSS", values_to = "stress"),
       x = PSS,
       y = stress,
       paired = TRUE,
-      subject.id = Subject
+      subject.id = Subject,
+      type = "np"
     )
   )
 ```

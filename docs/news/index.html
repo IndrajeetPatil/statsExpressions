@@ -149,6 +149,10 @@
 <h1 class="page-header" data-toc-text="0.6.2.9000">
 <a href="#statsexpressions-0629000" class="anchor"></a>statsExpressions 0.6.2.9000<small> Unreleased </small>
 </h1>
+<p>BREAKING CHANGES</p>
+<ul>
+<li>To be consistent with <code>expr_t_onesample</code>, <code>expr_t_parametric</code>, <code>expr_t_nonparametric</code>, <code>expr_t_robust</code>, <code>expr_t_bayes</code> are now removed in favor of a single function <code>expr_t_twosample</code>, where the <code>type</code> argument can be used to specify which type of statistical approach is to be used.</li>
+</ul>
 <p>MAJOR CHANGES</p>
 <ul>
 <li>All non-parametric functions now use <code>effectsize</code> package to compute effect sizes and not <code>rcompanion</code>. This would lead to some changes in effect sizes and their confidence intervals reported by the respective functions.</li>

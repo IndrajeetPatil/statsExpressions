@@ -8,11 +8,12 @@ test_that(
     # statsExpressions output
     set.seed(123)
     using_function <-
-      statsExpressions::expr_t_bayes(
+      expr_t_twosample(
+        type = "bayes",
         data = dplyr::filter(movies_long, genre == "Action" | genre == "Drama"),
         x = "genre",
         y = rating,
-        bf.prior = .9,
+        bf.prior = 0.9,
         paired = FALSE,
         k = 5
       )
@@ -23,7 +24,7 @@ test_that(
         data = dplyr::filter(movies_long, genre == "Action" | genre == "Drama"),
         x = "genre",
         y = rating,
-        bf.prior = .9,
+        bf.prior = 0.9,
         paired = FALSE,
         k = 5,
         output = "h1"
@@ -42,7 +43,8 @@ test_that(
     # statsExpressions output
     set.seed(123)
     using_function <-
-      statsExpressions::expr_t_bayes(
+      expr_t_twosample(
+        type = "bayes",
         data = dplyr::filter(ggplot2::msleep, vore %in% c("omni", "carni")),
         x = vore,
         y = bodywt,
@@ -115,7 +117,8 @@ test_that(
     # statsExpressions output
     set.seed(123)
     using_function <-
-      statsExpressions::expr_t_bayes(
+      expr_t_twosample(
+        type = "bayes",
         data = df_bird,
         x = type,
         y = "length",
@@ -152,8 +155,9 @@ test_that(
     # statsExpressions output
     set.seed(123)
     using_function <-
-      statsExpressions::expr_t_bayes(
-        data = dplyr::filter(statsExpressions::bugs_long, condition %in% c("LDLF", "HDLF")),
+      expr_t_twosample(
+        type = "bayes",
+        data = dplyr::filter(bugs_long, condition %in% c("LDLF", "HDLF")),
         x = condition,
         y = desire,
         bf.prior = 0.77,
@@ -166,7 +170,7 @@ test_that(
     set.seed(123)
     results <-
       tidyBF::bf_ttest(
-        data = dplyr::filter(statsExpressions::bugs_long, condition %in% c("LDLF", "HDLF")),
+        data = dplyr::filter(bugs_long, condition %in% c("LDLF", "HDLF")),
         x = condition,
         y = desire,
         bf.prior = 0.77,
@@ -187,7 +191,8 @@ test_that(
   desc = "dataframe",
   code = {
     expect_s3_class(
-      statsExpressions::expr_t_bayes(
+      expr_t_twosample(
+        type = "bayes",
         data = dplyr::filter(movies_long, genre == "Action" | genre == "Drama"),
         x = "genre",
         y = rating,
@@ -239,7 +244,8 @@ test_that(
     # incorrect
     set.seed(123)
     expr1 <-
-      statsExpressions::expr_t_bayes(
+      expr_t_twosample(
+        type = "bayes",
         data = df,
         x = condition,
         y = score,
@@ -250,7 +256,8 @@ test_that(
     # correct
     set.seed(123)
     expr2 <-
-      statsExpressions::expr_t_bayes(
+      expr_t_twosample(
+        type = "bayes",
         data = dplyr::arrange(df, id),
         x = condition,
         y = score,

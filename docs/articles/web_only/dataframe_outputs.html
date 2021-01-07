@@ -98,7 +98,7 @@
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2021-01-06</h4>
+            <h4 class="date">2021-01-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -229,10 +229,11 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_t_parametric.html">expr_t_parametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">df</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
+  type <span class="op">=</span> <span class="st">"p"</span>,
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
@@ -249,10 +250,11 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_t_nonparametric.html">expr_t_nonparametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">df</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
+  type <span class="op">=</span> <span class="st">"np"</span>,
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
@@ -269,10 +271,11 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_t_robust.html">expr_t_robust</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">df</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
+  type <span class="op">=</span> <span class="st">"r"</span>,
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
@@ -292,10 +295,11 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_t_bayes.html">expr_t_bayes</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">df</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
+  type <span class="op">=</span> <span class="st">"bf"</span>,
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
@@ -322,10 +326,11 @@
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># unequal variance</span>
-<span class="fu"><a href="../../reference/expr_t_parametric.html">expr_t_parametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
   y <span class="op">=</span> <span class="va">len</span>,
+  type <span class="op">=</span> <span class="st">"p"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 12</span>
@@ -339,10 +344,11 @@
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># equal variance</span>
-<span class="fu"><a href="../../reference/expr_t_parametric.html">expr_t_parametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
   y <span class="op">=</span> <span class="va">len</span>,
+  type <span class="op">=</span> <span class="st">"p"</span>,
   var.equal <span class="op">=</span> <span class="cn">TRUE</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
@@ -358,10 +364,11 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_t_nonparametric.html">expr_t_nonparametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
   y <span class="op">=</span> <span class="va">len</span>,
+  type <span class="op">=</span> <span class="st">"np"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 9</span>
@@ -376,10 +383,11 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_t_robust.html">expr_t_robust</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
   y <span class="op">=</span> <span class="va">len</span>,
+  type <span class="op">=</span> <span class="st">"r"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 7</span>
@@ -397,10 +405,11 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_t_bayes.html">expr_t_bayes</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
   y <span class="op">=</span> <span class="va">len</span>,
+  type <span class="op">=</span> <span class="st">"bf"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 2 x 11</span>
@@ -700,7 +709,7 @@
 
 <span class="co"># paired</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu">statsExpressions</span><span class="fu">::</span><span class="fu"><a href="../../reference/expr_contingency_tab.html">expr_contingency_tab</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_contingency_tab.html">expr_contingency_tab</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">paired_data</span>,
   x <span class="op">=</span> <span class="va">response_before</span>,
   y <span class="op">=</span> <span class="va">response_after</span>,

@@ -1,0 +1,316 @@
+#' @title Making expression containing *t*-test results
+#' @name expr_t_twosample
+#'
+#' @param effsize.type Type of effect size needed for *parametric* tests. The
+#'   argument can be `"d"` (for Cohen's *d*) or `"g"` (for Hedge's *g*).
+#' @inheritParams expr_t_onesample
+#' @inheritParams expr_anova_parametric
+#' @inheritParams WRS2::rmanova
+#' @inheritParams stats::t.test
+#' @inheritParams expr_template
+#'
+#' @importFrom dplyr select rename_all recode mutate
+#' @importFrom rlang !! ensym new_formula exec
+#' @importFrom tidyr drop_na
+#' @importFrom stats t.test  wilcox.test
+#' @importFrom WRS2 yuen yuen.effect.ci yuend dep.effect
+#' @importFrom tidyBF bf_ttest
+#' @importFrom effectsize cohens_d hedges_g rank_biserial
+#'
+#' @return Expression containing details from results of a two-sample test and
+#'   effect size plus confidence intervals.
+#'
+#' @note The *stats::wilcox.test* function does not follow the same convention
+#'   as *stats::t.test*. The sign of the *V* test statistic will always be
+#'   positive since it is **the sum of the positive signed ranks**. Therefore,
+#'   *V* will vary in magnitude but not significance based solely on the order
+#'   of the grouping variable. Consider manually reordering your factor levels
+#'   if appropriate as shown in the second example below.
+#'
+#' @references For more details, see-
+#' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
+#'
+#' @examples
+#' # for reproducibility
+#' set.seed(123)
+#' library(statsExpressions)
+#'
+#' # ----------------------- parametric -------------------------------------
+#'
+#' # between-subjects design
+#' expr_t_twosample(
+#'   data = sleep,
+#'   x = group,
+#'   y = extra,
+#'   type = "p"
+#' )
+#'
+#' # within-subjects design
+#' expr_t_twosample(
+#'   data = VR_dilemma,
+#'   x = modality,
+#'   y = score,
+#'   paired = TRUE,
+#'   subject.id = id,
+#'   type = "p",
+#'   output = "dataframe"
+#' )
+#'
+#' # ----------------------- non-parametric ----------------------------------
+#'
+#' # between-subjects design
+#' expr_t_twosample(
+#'   data = sleep,
+#'   x = group,
+#'   y = extra,
+#'   type = "np"
+#' )
+#'
+#' # within-subjects design
+#' expr_t_twosample(
+#'   data = VR_dilemma,
+#'   x = modality,
+#'   y = score,
+#'   paired = TRUE,
+#'   subject.id = id,
+#'   type = "np",
+#'   output = "dataframe"
+#' )
+#'
+#' # ------------------------------ robust ----------------------------------
+#'
+#' # between-subjects design
+#' expr_t_twosample(
+#'   data = sleep,
+#'   x = group,
+#'   y = extra,
+#'   type = "r"
+#' )
+#'
+#' # within-subjects design
+#' expr_t_twosample(
+#'   data = VR_dilemma,
+#'   x = modality,
+#'   y = score,
+#'   paired = TRUE,
+#'   subject.id = id,
+#'   type = "r",
+#'   output = "dataframe"
+#' )
+#'
+#' #' # ------------------------------ Bayesian ------------------------------
+#'
+#' # between-subjects design
+#' expr_t_twosample(
+#'   data = sleep,
+#'   x = group,
+#'   y = extra,
+#'   type = "bayes"
+#' )
+#'
+#' # within-subjects design
+#' expr_t_twosample(
+#'   data = VR_dilemma,
+#'   x = modality,
+#'   y = score,
+#'   paired = TRUE,
+#'   subject.id = id,
+#'   type = "bayes",
+#'   output = "dataframe"
+#' )
+#' @export
+
+# function body
+expr_t_twosample <- function(data,
+                             x,
+                             y,
+                             subject.id = NULL,
+                             type = "parametric",
+                             paired = FALSE,
+                             k = 2L,
+                             conf.level = 0.95,
+                             effsize.type = "g",
+                             var.equal = FALSE,
+                             bf.prior = 0.707,
+                             tr = 0.1,
+                             nboot = 100,
+                             output = "expression",
+                             ...) {
+
+  # standardize the type of statistics
+  stats.type <- ipmisc::stats_type_switch(type)
+
+  # make sure both quoted and unquoted arguments are supported
+  c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
+
+  # data cleanup
+  if (stats.type != "bayes") {
+    # whether to switch from long to wide depends on the test
+    spread <- ifelse(stats.type == "robust", paired, FALSE)
+
+    # properly removing NAs if it's a paired design
+    data %<>%
+      long_to_wide_converter(
+        data = .,
+        x = {{ x }},
+        y = {{ y }},
+        subject.id = {{ subject.id }},
+        paired = paired,
+        spread = spread
+      )
+  }
+
+  # ----------------------- parametric ---------------------------------------
+
+  if (stats.type == "parametric") {
+    # preparing expression parameters
+    no.parameters <- 1L
+    .f <- stats::t.test
+    k.parameter <- ifelse(isTRUE(paired) || isTRUE(var.equal), 0L, k)
+
+    # deciding which effect size to use (Hedge's g or Cohen's d)
+    if (effsize.type %in% c("unbiased", "g")) {
+      .f.es <- effectsize::hedges_g
+      effsize.text <- quote(widehat(italic("g"))["Hedge"])
+    } else {
+      .f.es <- effectsize::cohens_d
+      effsize.text <- quote(widehat(italic("d"))["Cohen"])
+    }
+  }
+
+  # ----------------------- non-parametric ------------------------------------
+
+  if (stats.type == "nonparametric") {
+    # preparing expression parameters
+    no.parameters <- 0L
+    .f <- stats::wilcox.test
+    .f.es <- effectsize::rank_biserial
+    effsize.text <- quote(widehat(italic("r"))["biserial"]^"rank")
+  }
+
+  # preparing expression
+  if (stats.type %in% c("parametric", "nonparametric")) {
+    sample_size <- ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data))
+
+    # extracting test details
+    stats_df <-
+      rlang::exec(
+        .fn = .f,
+        formula = rlang::new_formula(y, x),
+        data = data,
+        paired = paired,
+        var.equal = var.equal,
+        na.action = na.omit,
+        exact = FALSE
+      ) %>%
+      tidy_model_parameters(.)
+
+    # extracting effect size details
+    effsize_df <-
+      rlang::exec(
+        .fn = .f.es,
+        x = rlang::new_formula(y, x),
+        data = data,
+        paired = paired,
+        ci = conf.level,
+        iterations = nboot
+      ) %>%
+      insight::standardize_names(data = ., style = "broom")
+
+    # these can be really big values
+    if (stats.type == "nonparametric") stats_df %<>% dplyr::mutate(statistic = log(statistic))
+  }
+
+  # ----------------------- robust ---------------------------------------
+
+  if (stats.type == "robust") {
+    no.parameters <- 1L
+    sample_size <- nrow(data)
+
+    # running robust analysis
+    if (isFALSE(paired)) {
+      # computing effect size and its confidence interval
+      mod2 <-
+        WRS2::yuen.effect.ci(
+          formula = rlang::new_formula(y, x),
+          data = data,
+          tr = tr,
+          nboot = nboot,
+          alpha = 1 - conf.level
+        )
+
+      # Yuen's test for trimmed means
+      mod <-
+        WRS2::yuen(
+          formula = rlang::new_formula(y, x),
+          data = data,
+          tr = tr
+        )
+
+      # tidying it up
+      stats_df <- tidy_model_parameters(mod)
+      effsize_df <- tibble(estimate = mod2$effsize[[1]], conf.low = mod2$CI[[1]], conf.high = mod2$CI[[2]])
+
+      # expression parameters
+      c(k.parameter, effsize.text) %<-% c(k, quote(widehat(italic(xi))))
+    }
+
+    if (isTRUE(paired)) {
+      # running robust paired t-test and its effect size
+      mod <- WRS2::yuend(x = data[2], y = data[3], tr = tr)
+      mod2 <- WRS2::dep.effect(x = data[2], y = data[3], tr = tr, nboot = nboot)
+
+      # tidying it up
+      stats_df <- tidy_model_parameters(mod)
+      effsize_df <-
+        as_tibble(as.data.frame(mod2), rownames = "effect_size") %>%
+        dplyr::filter(effect_size == "AKP") %>%
+        dplyr::rename(estimate = Est, conf.low = ci.low, conf.high = ci.up)
+
+      # expression parameters
+      c(k.parameter, conf.level, effsize.text) %<-% c(0L, 0.95, quote(widehat(italic(delta))["R"]))
+    }
+  }
+
+  # final returns
+  if (stats.type != "bayes") {
+    # combining dataframes
+    stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("^est|^eff|conf")), effsize_df)
+
+    # expression
+    expression <-
+      expr_template(
+        no.parameters = no.parameters,
+        stats.df = stats_df,
+        effsize.text = effsize.text,
+        paired = paired,
+        n = sample_size,
+        conf.level = conf.level,
+        k = k,
+        k.parameter = k.parameter
+      )
+  }
+
+  # ----------------------- Bayesian ---------------------------------------
+
+  # running Bayesian t-test
+  if (stats.type == "bayes") {
+    stats_df <-
+      tidyBF::bf_ttest(
+        data = data,
+        x = {{ x }},
+        y = {{ y }},
+        subject.id = {{ subject.id }},
+        paired = paired,
+        bf.prior = bf.prior,
+        output = output,
+        k = k,
+        ...
+      )
+
+    expression <- stats_df
+  }
+
+  # return the output
+  switch(output, "dataframe" = as_tibble(stats_df), expression)
+}

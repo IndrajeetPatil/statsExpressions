@@ -13,7 +13,7 @@
 #'   (`"onestep"` (Default), `"mom"`, or `"median"`). For more, see
 #'   `?WRS2::onesampb`.
 #' @param ... Additional arguments passed to `tidyBF::bf_ttest`.
-#' @inheritParams expr_t_parametric
+#' @inheritParams expr_t_twosample
 #' @inheritParams tidyBF::bf_corr_test
 #' @inheritParams expr_anova_parametric
 #' @inheritParams expr_anova_nonparametric
@@ -95,7 +95,7 @@ expr_t_onesample <- function(data,
   # standardize the type of statistics
   stats.type <- ipmisc::stats_type_switch(type)
 
-  # ========================= parametric ====================================
+  # ----------------------- parametric ---------------------------------------
 
   if (stats.type == "parametric") {
     # preparing expression parameters
@@ -104,22 +104,22 @@ expr_t_onesample <- function(data,
 
     # deciding which effect size to use (Hedge's g or Cohen's d)
     if (effsize.type %in% c("unbiased", "g")) {
-      effsize.text <- quote(widehat(italic("g"))["Hedge"])
       .f.es <- effectsize::hedges_g
+      effsize.text <- quote(widehat(italic("g"))["Hedge"])
     } else {
-      effsize.text <- quote(widehat(italic("d"))["Cohen"])
       .f.es <- effectsize::cohens_d
+      effsize.text <- quote(widehat(italic("d"))["Cohen"])
     }
   }
 
-  # ========================== non-parametric ==============================
+  # ----------------------- non-parametric ---------------------------------------
 
   if (stats.type == "nonparametric") {
     # preparing expression parameters
     no.parameters <- 0L
-    effsize.text <- quote(widehat(italic("r"))["biserial"]^"rank")
     .f <- stats::wilcox.test
     .f.es <- effectsize::rank_biserial
+    effsize.text <- quote(widehat(italic("r"))["biserial"]^"rank")
   }
 
   # preparing expression
@@ -149,7 +149,7 @@ expr_t_onesample <- function(data,
     if (stats.type == "nonparametric") stats_df %<>% dplyr::mutate(statistic = log(statistic))
 
     # combining dataframes
-    stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("estimate|^conf")), effsize_df)
+    stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("^est|^conf")), effsize_df)
 
     # expression
     expression <-
@@ -163,7 +163,7 @@ expr_t_onesample <- function(data,
       )
   }
 
-  # ======================= robust =========================================
+  # ----------------------- robust ---------------------------------------
 
   if (stats.type == "robust") {
     # running one-sample percentile bootstrap
@@ -201,17 +201,17 @@ expr_t_onesample <- function(data,
           n
         ),
         env = list(
-          estimate = format_num(x = stats_df$estimate[[1]], k = k),
-          conf.level = paste(conf.level * 100, "%", sep = ""),
-          LL = format_num(x = stats_df$conf.low[[1]], k = k),
-          UL = format_num(x = stats_df$conf.high[[1]], k = k),
-          p.value = format_num(x = stats_df$p.value[[1]], k = k, p.value = TRUE),
+          estimate = format_num(stats_df$estimate[[1]], k = k),
+          conf.level = paste0(conf.level * 100, "%"),
+          LL = format_num(stats_df$conf.low[[1]], k = k),
+          UL = format_num(stats_df$conf.high[[1]], k = k),
+          p.value = format_num(stats_df$p.value[[1]], k = k, p.value = TRUE),
           n = .prettyNum(length(x_vec))
         )
       )
   }
 
-  # ======================== bayes ============================================
+  # ----------------------- Bayesian ---------------------------------------
 
   # running Bayesian one-sample t-test
   if (stats.type == "bayes") {
