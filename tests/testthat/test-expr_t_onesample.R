@@ -131,12 +131,12 @@ test_that(
           ", ",
           widehat(italic("r"))["biserial"]^"rank",
           " = ",
-          "0.1486",
+          "-0.1486",
           ", CI"["95%"],
           " [",
-          "0.0050",
+          "-0.4584",
           ", ",
-          "0.4584",
+          "0.1206",
           "]",
           ", ",
           italic("n")["obs"],
@@ -172,12 +172,12 @@ test_that(
           ", ",
           widehat(italic("r"))["biserial"]^"rank",
           " = ",
-          "0.6717",
+          "-0.6717",
           ", CI"["95%"],
           " [",
-          "0.4177",
+          "-0.9052",
           ", ",
-          "0.9052",
+          "-0.4177",
           "]",
           ", ",
           italic("n")["obs"],
@@ -208,8 +208,7 @@ test_that(
         test.value = 8,
         type = "r",
         k = 4,
-        conf.level = 0.99,
-        messages = TRUE
+        conf.level = 0.99
       )
 
     # expected output

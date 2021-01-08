@@ -2,7 +2,7 @@
 % Please edit documentation in R/helpers_easystats.R
 \name{tidy_model_performance}
 \alias{tidy_model_performance}
-\title{Convert \code{performance} output to \code{tidymodels} convention}
+\title{Convert \code{performance} package output to \code{tidyverse} conventions}
 \usage{
 tidy_model_performance(model, ...)
 }
@@ -14,7 +14,7 @@ tidy_model_performance(model, ...)
 different classes).}
 }
 \description{
-Convert \code{performance} output to \code{tidymodels} convention
+Convert \code{performance} package output to \code{tidyverse} conventions
 }
 \examples{
 model <- lm(mpg ~ wt + cyl, data = mtcars)

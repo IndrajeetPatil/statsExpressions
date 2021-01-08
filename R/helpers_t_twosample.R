@@ -4,8 +4,7 @@
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
 #'   argument can be `"d"` (for Cohen's *d*) or `"g"` (for Hedge's *g*).
 #' @inheritParams expr_t_onesample
-#' @inheritParams expr_anova_parametric
-#' @inheritParams WRS2::rmanova
+#' @inheritParams expr_anova_robust
 #' @inheritParams stats::t.test
 #' @inheritParams expr_template
 #'
@@ -167,15 +166,8 @@ expr_t_twosample <- function(data,
     no.parameters <- 1L
     .f <- stats::t.test
     k.parameter <- ifelse(isTRUE(paired) || isTRUE(var.equal), 0L, k)
-
-    # deciding which effect size to use (Hedge's g or Cohen's d)
-    if (effsize.type %in% c("unbiased", "g")) {
-      .f.es <- effectsize::hedges_g
-      effsize.text <- quote(widehat(italic("g"))["Hedge"])
-    } else {
-      .f.es <- effectsize::cohens_d
-      effsize.text <- quote(widehat(italic("d"))["Cohen"])
-    }
+    if (effsize.type %in% c("unbiased", "g")) .f.es <- effectsize::hedges_g
+    if (effsize.type %in% c("biased", "d")) .f.es <- effectsize::cohens_d
   }
 
   # ----------------------- non-parametric ------------------------------------
@@ -185,7 +177,6 @@ expr_t_twosample <- function(data,
     no.parameters <- 0L
     .f <- stats::wilcox.test
     .f.es <- effectsize::rank_biserial
-    effsize.text <- quote(widehat(italic("r"))["biserial"]^"rank")
   }
 
   # preparing expression
@@ -215,7 +206,7 @@ expr_t_twosample <- function(data,
         ci = conf.level,
         iterations = nboot
       ) %>%
-      insight::standardize_names(data = ., style = "broom")
+      tidy_model_effectsize(.)
 
     # these can be really big values
     if (stats.type == "nonparametric") stats_df %<>% dplyr::mutate(statistic = log(statistic))
@@ -224,8 +215,8 @@ expr_t_twosample <- function(data,
   # ----------------------- robust ---------------------------------------
 
   if (stats.type == "robust") {
-    no.parameters <- 1L
-    sample_size <- nrow(data)
+    # expression parameters
+    c(no.parameters, sample_size, k.parameter) %<-% c(1L, nrow(data), k)
 
     # running robust analysis
     if (isFALSE(paired)) {
@@ -249,13 +240,19 @@ expr_t_twosample <- function(data,
 
       # tidying it up
       stats_df <- tidy_model_parameters(mod)
-      effsize_df <- tibble(estimate = mod2$effsize[[1]], conf.low = mod2$CI[[1]], conf.high = mod2$CI[[2]])
-
-      # expression parameters
-      c(k.parameter, effsize.text) %<-% c(k, quote(widehat(italic(xi))))
+      effsize_df <-
+        tibble(
+          estimate = mod2$effsize[[1]],
+          conf.low = mod2$CI[[1]],
+          conf.high = mod2$CI[[2]],
+          effectsize = "Explanatory measure of effect size"
+        )
     }
 
     if (isTRUE(paired)) {
+      # expression parameters
+      c(k.parameter, conf.level) %<-% c(0L, 0.95)
+
       # running robust paired t-test and its effect size
       mod <- WRS2::yuend(x = data[2], y = data[3], tr = tr)
       mod2 <- WRS2::dep.effect(x = data[2], y = data[3], tr = tr, nboot = nboot)
@@ -263,12 +260,9 @@ expr_t_twosample <- function(data,
       # tidying it up
       stats_df <- tidy_model_parameters(mod)
       effsize_df <-
-        as_tibble(as.data.frame(mod2), rownames = "effect_size") %>%
-        dplyr::filter(effect_size == "AKP") %>%
+        as_tibble(as.data.frame(mod2), rownames = "effectsize") %>%
+        dplyr::filter(effectsize == "AKP") %>%
         dplyr::rename(estimate = Est, conf.low = ci.low, conf.high = ci.up)
-
-      # expression parameters
-      c(k.parameter, conf.level, effsize.text) %<-% c(0L, 0.95, quote(widehat(italic(delta))["R"]))
     }
   }
 
@@ -282,7 +276,6 @@ expr_t_twosample <- function(data,
       expr_template(
         no.parameters = no.parameters,
         stats.df = stats_df,
-        effsize.text = effsize.text,
         paired = paired,
         n = sample_size,
         conf.level = conf.level,

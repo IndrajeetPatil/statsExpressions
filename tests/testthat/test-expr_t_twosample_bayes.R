@@ -50,8 +50,7 @@ test_that(
         y = bodywt,
         paired = FALSE,
         bf.prior = 0.8,
-        k = 4,
-        messages = FALSE
+        k = 4
       )
 
     # expected output
@@ -64,7 +63,6 @@ test_that(
         paired = FALSE,
         bf.prior = 0.8,
         k = 4,
-        messages = FALSE,
         output = "h1"
       )
 
@@ -124,8 +122,7 @@ test_that(
         y = "length",
         bf.prior = 0.6,
         k = 5,
-        paired = TRUE,
-        messages = FALSE
+        paired = TRUE
       )
 
     # expected output
@@ -138,7 +135,6 @@ test_that(
         bf.prior = 0.6,
         k = 5,
         paired = TRUE,
-        messages = FALSE,
         output = "h1"
       )
 
@@ -162,8 +158,7 @@ test_that(
         y = desire,
         bf.prior = 0.77,
         k = 4,
-        paired = TRUE,
-        messages = FALSE
+        paired = TRUE
       )
 
     # expected output
@@ -176,7 +171,6 @@ test_that(
         bf.prior = 0.77,
         k = 4,
         paired = TRUE,
-        messages = FALSE,
         output = "h1"
       )
 

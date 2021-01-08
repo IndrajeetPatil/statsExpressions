@@ -189,6 +189,7 @@ expr_t_twosample(
 
 ```{r}
 # setup
+set.seed(123)
 library(statsExpressions)
 
 # ----------------------- parametric ---------------------------------------
@@ -380,7 +381,6 @@ expr_anova_bayes(
 # Contingency table analyses
 
 ```{r}
-
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
@@ -429,7 +429,6 @@ expr_contingency_tab(
   output = "dataframe"
 )
 
-
 # ------------------------ goodness of fit tests ---------------------------
 
 # with counts
@@ -445,7 +444,8 @@ expr_contingency_tab(
 # Correlation analyses
 
 ```{r}
-# setup
+# for reproducibility
+set.seed(123)
 library(statsExpressions)
 
 # ----------------------- parametric ---------------------------------------
@@ -500,7 +500,7 @@ expr_corr_test(
 # Meta-analysis
 
 ```{r}
-# setup
+# for reproducibility
 set.seed(123)
 library(statsExpressions)
 library(metaplus)

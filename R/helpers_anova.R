@@ -20,6 +20,7 @@
 #' @importFrom rlang !! enquo eval_tidy expr ensym exec
 #' @importFrom stats oneway.test
 #' @importFrom afex aov_ez
+#' @importFrom effectsize omega_squared eta_squared
 #' @importFrom ipmisc long_to_wide_converter format_num
 #'
 #' @examples
@@ -64,22 +65,6 @@ expr_anova_parametric <- function(data,
   # make sure both quoted and unquoted arguments are allowed
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
-  # for paired designs, variance is going to be equal across grouping levels
-  if (isTRUE(paired)) var.equal <- TRUE
-
-  # determine number of decimal places for both degrees of freedom
-  k.df1 <- ifelse(isFALSE(paired), 0L, k)
-  k.df2 <- ifelse(isFALSE(paired) && isTRUE(var.equal), 0L, k)
-
-  # which effect size?
-  eta_squared <- omega_squared <- NULL
-  if (effsize.type %in% c("unbiased", "omega")) omega_squared <- "partial"
-  if (effsize.type %in% c("biased", "eta")) eta_squared <- "partial"
-
-  # effect size expression text
-  if (!is.null(omega_squared)) effsize.text <- quote(widehat(omega["p"]^2))
-  if (!is.null(eta_squared)) effsize.text <- quote(widehat(eta["p"]^2))
-
   # have a proper cleanup with NA removal
   data %<>%
     ipmisc::long_to_wide_converter(
@@ -90,6 +75,17 @@ expr_anova_parametric <- function(data,
       paired = paired,
       spread = FALSE
     )
+
+  # for paired designs, variance is going to be equal across grouping levels
+  if (isTRUE(paired)) var.equal <- TRUE
+
+  # determine number of decimal places for both degrees of freedom
+  k.df1 <- ifelse(isFALSE(paired), 0L, k)
+  k.df2 <- ifelse(isFALSE(paired) && isTRUE(var.equal), 0L, k)
+
+  # which effect size?
+  if (effsize.type %in% c("unbiased", "omega")) .f.es <- effectsize::omega_squared
+  if (effsize.type %in% c("biased", "eta")) .f.es <- effectsize::eta_squared
 
   # Fisher's ANOVA
   if (isTRUE(paired)) {
@@ -113,25 +109,27 @@ expr_anova_parametric <- function(data,
       )
   }
 
-  # tidy up the stats object
-  stats_df <-
-    suppressMessages(tidy_model_parameters(
+  # tidying it up
+  stats_df <- tidy_model_parameters(mod)
+  effsize_df <-
+    suppressWarnings(rlang::exec(
+      .fn = .f.es,
       model = mod,
-      eta_squared = eta_squared,
-      omega_squared = omega_squared,
       ci = conf.level
-    ))
+    )) %>%
+    tidy_model_effectsize(.)
 
+  # combining dataframes
   if (!"method" %in% names(stats_df)) {
     stats_df %<>% dplyr::mutate(method = "One-way analysis of means")
   }
+  stats_df <- dplyr::bind_cols(stats_df, effsize_df)
 
   # preparing expression
   expression <-
     expr_template(
       no.parameters = 2L,
       stats.df = stats_df,
-      effsize.text = effsize.text,
       n = ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data)),
       paired = paired,
       conf.level = conf.level,
@@ -225,7 +223,6 @@ expr_anova_nonparametric <- function(data,
     .f.args <- list(formula = new_formula({{ enexpr(y) }}, expr(!!enexpr(x) | rowid)))
     .f.es <- effectsize::kendalls_w
     .f.es.args <- list(x = new_formula({{ enexpr(y) }}, expr(!!enexpr(x) | rowid)))
-    effsize.text <- quote(widehat(italic("W"))["Kendall"])
   }
 
   if (isFALSE(paired)) {
@@ -234,7 +231,6 @@ expr_anova_nonparametric <- function(data,
     .f.args <- list(formula = rlang::new_formula(y, x))
     .f.es <- effectsize::rank_epsilon_squared
     .f.es.args <- list(x = rlang::new_formula(y, x))
-    effsize.text <- quote(widehat(epsilon)["ordinal"]^2)
   }
 
   # extracting test details
@@ -256,14 +252,16 @@ expr_anova_nonparametric <- function(data,
       iterations = nboot,
       !!!.f.es.args
     ) %>%
-    insight::standardize_names(data = ., style = "broom")
+    tidy_model_effectsize(.)
+
+  # dataframe
+  stats_df <- dplyr::bind_cols(stats_df, effsize_df)
 
   # preparing expression
   expression <-
     expr_template(
       no.parameters = 1L,
-      stats.df = dplyr::bind_cols(stats_df, effsize_df),
-      effsize.text = effsize.text,
+      stats.df = stats_df,
       n = ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data)),
       paired = paired,
       conf.level = conf.level,
@@ -330,7 +328,6 @@ expr_anova_robust <- function(data,
                               nboot = 100L,
                               output = "expression",
                               ...) {
-
   # make sure both quoted and unquoted arguments are allowed
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
@@ -409,7 +406,6 @@ expr_anova_robust <- function(data,
         no.parameters = 2L,
         stats.df = stats_df,
         statistic.text = quote(italic("F")["trimmed-means"]),
-        effsize.text = quote(widehat(italic(xi))),
         n = nrow(data),
         conf.level = conf.level,
         k = k,

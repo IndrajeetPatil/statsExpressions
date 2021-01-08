@@ -50,7 +50,7 @@ Suggests:
     utils
 Remotes:
     easystats/insight,
-    easystats/effectsize,
+    easystats/effectsize@dev,
     easystats/parameters,
     easystats/performance,
     IndrajeetPatil/tidyBF

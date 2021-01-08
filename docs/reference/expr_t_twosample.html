@@ -226,11 +226,9 @@ argument can be <code>"d"</code> (for Cohen's <em>d</em>) or <code>"g"</code> (f
     <tr>
       <th>var.equal</th>
       <td><p>a logical variable indicating whether to treat the
-    variances in the samples as equal.  If <code>TRUE</code>, then a simple F
-    test for the equality of means in a one-way analysis of variance is
-    performed.  If <code>FALSE</code>, an approximate method of Welch (1951)
-    is used, which generalizes the commonly known 2-sample Welch test to
-    the case of arbitrarily many samples.</p></td>
+    two variances as being equal. If <code>TRUE</code> then the pooled
+    variance is used to estimate the variance otherwise the Welch
+    (or Satterthwaite) approximation to the degrees of freedom is used.</p></td>
     </tr>
     <tr>
       <th>bf.prior</th>
@@ -239,7 +237,11 @@ width to use in calculating Bayes factors.</p></td>
     </tr>
     <tr>
       <th>tr</th>
-      <td><p>trim level for the mean.</p></td>
+      <td><p>Trim level for the mean when carrying out <code>robust</code> tests. If you
+get error stating "Standard error cannot be computed because of Winsorized
+variance of 0 (e.g., due to ties). Try to decrease the trimming level.",
+try to play around with the value of <code>tr</code>, which is by default set to
+<code>0.1</code>. Lowering the value might help.</p></td>
     </tr>
     <tr>
       <th>nboot</th>
@@ -303,13 +305,13 @@ if appropriate as shown in the second example below.</p>
   type <span class='op'>=</span> <span class='st'>"p"</span>,
   output <span class='op'>=</span> <span class='st'>"dataframe"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 10</span><span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 11</span><span>
 #&gt;   </span><span style='font-weight: bold;'>term</span><span>  </span><span style='font-weight: bold;'>group</span><span>    </span><span style='font-weight: bold;'>statistic</span><span> </span><span style='font-weight: bold;'>df.error</span><span>  </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>method</span><span>        </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>ci.width</span><span>
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span> score modality     -</span><span style='color: #BB0000;'>3.96</span><span>       33 </span><span style='color: #555555;'>0.000</span><span style='text-decoration: underline;'>373</span><span> Paired t-test   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>664</span><span>     </span><span style='color: #555555;'>0.</span><span>95
-#&gt;   </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>
-#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>    -</span><span style='color: #BB0000;'>1.04</span><span>    -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>299</span><span></div><div class='input'>
+#&gt;   </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>effectsize</span><span>
+#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; </span><span style='color: #555555;'>1</span><span>    -</span><span style='color: #BB0000;'>1.04</span><span>    -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>299</span><span> Hedges' g </div><div class='input'>
 <span class='co'># ----------------------- non-parametric ----------------------------------</span>
 
 <span class='co'># between-subjects design</span>
@@ -333,13 +335,13 @@ if appropriate as shown in the second example below.</p>
   type <span class='op'>=</span> <span class='st'>"np"</span>,
   output <span class='op'>=</span> <span class='st'>"dataframe"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Zeros detected. These cannot be sign-rank transformed.</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 9</span><span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Zeros detected. These cannot be sign-rank transformed.</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 10</span><span>
 #&gt;   </span><span style='font-weight: bold;'>parameter1</span><span> </span><span style='font-weight: bold;'>parameter2</span><span> </span><span style='font-weight: bold;'>statistic</span><span>  </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>method</span><span>                    </span><span style='font-weight: bold;'>estimate</span><span>
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> score      modality        1.50 </span><span style='color: #555555;'>0.000</span><span style='text-decoration: underline;'>886</span><span> Wilcoxon signed rank test    </span><span style='color: #555555;'>0.</span><span>934
-#&gt;   </span><span style='font-weight: bold;'>ci.width</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>
-#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>     </span><span style='color: #555555;'>0.</span><span>95    </span><span style='color: #555555;'>0.</span><span>761         1</div><div class='input'>
+#&gt; </span><span style='color: #555555;'>1</span><span> score      modality        1.50 </span><span style='color: #555555;'>0.000</span><span style='text-decoration: underline;'>886</span><span> Wilcoxon signed rank test   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>934</span><span>
+#&gt;   </span><span style='font-weight: bold;'>ci.width</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>effectsize</span><span>       
+#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>            
+#&gt; </span><span style='color: #555555;'>1</span><span>     </span><span style='color: #555555;'>0.</span><span>95       -</span><span style='color: #BB0000;'>1</span><span>    -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>761</span><span> r (rank biserial)</div><div class='input'>
 <span class='co'># ------------------------------ robust ----------------------------------</span>
 
 <span class='co'># between-subjects design</span>
@@ -367,9 +369,9 @@ if appropriate as shown in the second example below.</p>
 #&gt;   </span><span style='font-weight: bold;'>statistic</span><span> </span><span style='font-weight: bold;'>df.error</span><span> </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>method</span><span>                                            
 #&gt;       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                             
 #&gt; </span><span style='color: #555555;'>1</span><span>     -</span><span style='color: #BB0000;'>3.07</span><span>       27 </span><span style='color: #555555;'>0.00</span><span>4</span><span style='text-decoration: underline;'>79</span><span> Yuen's test on trimmed means for dependent samples
-#&gt;   </span><span style='font-weight: bold;'>effect_size</span><span> </span><span style='font-weight: bold;'>`NULL`</span><span> </span><span style='font-weight: bold;'>estimate</span><span>     </span><span style='font-weight: bold;'>S</span><span>     </span><span style='font-weight: bold;'>M</span><span>     </span><span style='font-weight: bold;'>L</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> AKP              </span><span style='color: #555555;'>0</span><span>   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>593</span><span>   </span><span style='color: #555555;'>0.</span><span>1   </span><span style='color: #555555;'>0.</span><span>3   </span><span style='color: #555555;'>0.</span><span>5   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>836</span><span>    -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>296</span><span></div><div class='input'>
+#&gt;   </span><span style='font-weight: bold;'>effectsize</span><span> </span><span style='font-weight: bold;'>`NULL`</span><span> </span><span style='font-weight: bold;'>estimate</span><span>     </span><span style='font-weight: bold;'>S</span><span>     </span><span style='font-weight: bold;'>M</span><span>     </span><span style='font-weight: bold;'>L</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> AKP             </span><span style='color: #555555;'>0</span><span>   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>593</span><span>   </span><span style='color: #555555;'>0.</span><span>1   </span><span style='color: #555555;'>0.</span><span>3   </span><span style='color: #555555;'>0.</span><span>5   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>836</span><span>    -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>296</span><span></div><div class='input'>
 <span class='co'>#' # ------------------------------ Bayesian ------------------------------</span>
 
 <span class='co'># between-subjects design</span>

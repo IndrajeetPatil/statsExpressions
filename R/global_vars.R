@@ -7,7 +7,7 @@ utils::globalVariables(
     "ci.low",
     "ci.up",
     "effsize",
-    "effect_size",
+    "effectsize",
     "estimate",
     "int_df",
     "rowid",
@@ -18,7 +18,8 @@ utils::globalVariables(
     "df",
     "df.error",
     "k.parameter",
-    "effsize.text"
+    "effsize.text",
+    "method"
   ),
   package = "statsExpressions",
   add = FALSE

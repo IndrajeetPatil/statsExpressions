@@ -101,22 +101,16 @@ expr_contingency_tab <- function(data,
     # creating a matrix with frequencies and cleaning it up
     x_arg <- table(data %>% dplyr::pull({{ x }}), data %>% dplyr::pull({{ y }}))
 
-    # ======================== Pearson's test ================================
-
+    # Pearson's test
     if (isFALSE(paired)) {
-      # details for the expression
       mod <- stats::chisq.test(x_arg, correct = FALSE)
-      .f <- effectsize::cramers_v
-      effsize.text <- quote(widehat(italic("V"))["Cramer"])
+      .f.es <- effectsize::cramers_v
     }
 
-    # ======================== McNemar's test ================================
-
+    # McNemar's test
     if (isTRUE(paired)) {
-      # details for the expression
       mod <- stats::mcnemar.test(x_arg, correct = FALSE)
-      .f <- effectsize::cohens_g
-      effsize.text <- quote(widehat(italic("g"))["Cohen"])
+      .f.es <- effectsize::cohens_g
     }
   }
 
@@ -130,40 +124,28 @@ expr_contingency_tab <- function(data,
     mod <- stats::chisq.test(x_arg, correct = FALSE, p = ratio)
 
     # details for the expression
-    .f <- effectsize::cramers_v
+    .f.es <- effectsize::cramers_v
     paired <- FALSE
-    effsize.text <- quote(widehat(italic("V"))["Cramer"])
   }
 
   # computing effect size + CI
   effsize_df <-
     rlang::exec(
-      .fn = .f,
+      .fn = .f.es,
       x_arg,
       adjust = TRUE,
       ci = conf.level
     ) %>%
-    insight::standardize_names(data = ., style = "broom")
+    tidy_model_effectsize(.)
 
   # combining dataframes
   stats_df <- dplyr::bind_cols(tidy_model_parameters(mod), effsize_df)
-
-  # which test was carried out?
-  statistic.text <-
-    switch(
-      stats_df$method[[1]],
-      "Chi-squared test for given probabilities" = quote(chi["gof"]^2),
-      "Pearson's Chi-squared test" = quote(chi["Pearson"]^2),
-      "McNemar's Chi-squared test" = quote(chi["McNemar"]^2)
-    )
 
   # expression
   expression <-
     expr_template(
       no.parameters = 1L,
       stats.df = stats_df,
-      statistic.text = statistic.text,
-      effsize.text = effsize.text,
       n = nrow(data),
       paired = paired,
       conf.level = conf.level,

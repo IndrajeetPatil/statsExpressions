@@ -101,15 +101,8 @@ expr_t_onesample <- function(data,
     # preparing expression parameters
     no.parameters <- 1L
     .f <- stats::t.test
-
-    # deciding which effect size to use (Hedge's g or Cohen's d)
-    if (effsize.type %in% c("unbiased", "g")) {
-      .f.es <- effectsize::hedges_g
-      effsize.text <- quote(widehat(italic("g"))["Hedge"])
-    } else {
-      .f.es <- effectsize::cohens_d
-      effsize.text <- quote(widehat(italic("d"))["Cohen"])
-    }
+    if (effsize.type %in% c("unbiased", "g")) .f.es <- effectsize::hedges_g
+    if (effsize.type %in% c("biased", "d")) .f.es <- effectsize::cohens_d
   }
 
   # ----------------------- non-parametric ---------------------------------------
@@ -119,7 +112,6 @@ expr_t_onesample <- function(data,
     no.parameters <- 0L
     .f <- stats::wilcox.test
     .f.es <- effectsize::rank_biserial
-    effsize.text <- quote(widehat(italic("r"))["biserial"]^"rank")
   }
 
   # preparing expression
@@ -143,20 +135,19 @@ expr_t_onesample <- function(data,
         ci = conf.level,
         iterations = nboot
       ) %>%
-      insight::standardize_names(data = ., style = "broom")
+      tidy_model_effectsize(.)
 
     # these can be really big values
     if (stats.type == "nonparametric") stats_df %<>% dplyr::mutate(statistic = log(statistic))
 
-    # combining dataframes
-    stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("^est|^conf")), effsize_df)
+    # dataframe
+    stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("^est|^conf|^diff")), effsize_df)
 
     # expression
     expression <-
       expr_template(
         no.parameters = no.parameters,
         stats.df = stats_df,
-        effsize.text = effsize.text,
         n = length(x_vec),
         conf.level = conf.level,
         k = k

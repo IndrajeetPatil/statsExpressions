@@ -74,9 +74,9 @@
 
 # function body
 expr_template <- function(no.parameters,
-                          statistic.text = NULL,
                           stats.df,
-                          effsize.text,
+                          statistic.text = NULL,
+                          effsize.text = NULL,
                           n,
                           n.text = NULL,
                           paired = FALSE,
@@ -92,7 +92,9 @@ expr_template <- function(no.parameters,
   if (isTRUE(paired) && is.null(n.text)) n.text <- quote(italic("n")["pairs"])
   if (isFALSE(paired) && is.null(n.text)) n.text <- quote(italic("n")["obs"])
 
+  # if expression elements are NULL
   if (is.null(statistic.text)) statistic.text <- method_switch(stats.df$method[[1]])
+  if (is.null(effsize.text)) effsize.text <- effectsize_switch(stats.df$effectsize[[1]])
 
   # ------------------ statistic with 0 degrees of freedom --------------------
 
@@ -266,7 +268,34 @@ method_switch <- function(method) {
     "Friedman rank sum test" = quote(chi["Friedman"]^2),
     "Kruskal-Wallis rank sum test" = quote(chi["Kruskal-Wallis"]^2),
     "Spearman" = quote("log"["e"](italic("S"))),
+    "Chi-squared test for given probabilities" = quote(chi["gof"]^2),
+    "Pearson's Chi-squared test" = quote(chi["Pearson"]^2),
+    "McNemar's Chi-squared test" = quote(chi["McNemar"]^2),
     NULL
+  )
+}
+
+#' @noRd
+
+effectsize_switch <- function(type) {
+  switch(
+    type,
+    "Pearson" = quote(widehat(italic("r"))["Pearson"]),
+    "Spearman" = quote(widehat(italic(rho))["Spearman"]),
+    "Percentage Bend" = quote(widehat(italic(rho))["% bend"]),
+    "Cohen's d" = quote(widehat(italic("d"))["Cohen"]),
+    "Hedges' g" = quote(widehat(italic("g"))["Hedge"]),
+    "r (rank biserial)" = quote(widehat(italic("r"))["biserial"]^"rank"),
+    "Explanatory measure of effect size" = quote(widehat(italic(xi))),
+    "AKP" = quote(widehat(italic(delta))["R"]),
+    "Eta2" = ,
+    "Eta2 (partial)" = quote(widehat(eta["p"]^2)),
+    "Omega2" = ,
+    "Omega2 (partial)" = quote(widehat(omega["p"]^2)),
+    "Kendall's W" = quote(widehat(italic("W"))["Kendall"]),
+    "Epsilon2 (rank)" = quote(widehat(epsilon)["ordinal"]^2),
+    "Cramer's V (adj.)" = quote(widehat(italic("V"))["Cramer"]),
+    "Cohen's g" = quote(widehat(italic("g"))["Cohen"])
   )
 }
 
