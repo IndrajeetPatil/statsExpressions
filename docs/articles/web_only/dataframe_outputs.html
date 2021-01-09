@@ -185,13 +185,13 @@
   type <span class="op">=</span> <span class="st">"robust"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 7</span>
-<span class="co">#&gt;   estimate conf.low conf.high p.value n.obs effectsize             </span>
-<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;                  </span>
-<span class="co">#&gt; 1   0.0211   0.0107    0.0685       0    56 Robust location measure</span>
-<span class="co">#&gt;   method                         </span>
-<span class="co">#&gt;   &lt;chr&gt;                          </span>
-<span class="co">#&gt; 1 One-sample percentile bootstrap</span>
+<span class="co">#&gt; # A tibble: 1 x 8</span>
+<span class="co">#&gt;   estimate conf.low conf.high statistic p.value     n effectsize  </span>
+<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt; 1   0.0660  0.00500     0.127     -8.78       0    56 Trimmed mean</span>
+<span class="co">#&gt;   method                                </span>
+<span class="co">#&gt;   &lt;chr&gt;                                 </span>
+<span class="co">#&gt; 1 Bootstrap-t method for one-sample test</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
@@ -922,8 +922,8 @@
 <span class="co">#&gt; 2 tau        0.486     0.183    0.168     0.845     NA  53.0  1.00 3824.</span>
 <span class="co">#&gt;   component prior.distribution prior.location prior.scale log_e_bf10</span>
 <span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 meta      t                               1        0.15       3.97</span>
-<span class="co">#&gt; 2 meta      invgamma                        1        0.15       3.97</span></code></pre></div>
+<span class="co">#&gt; 1 meta      Student's t                     0       0.707       3.97</span>
+<span class="co">#&gt; 2 meta      Inverse gamma                   1       0.15        3.97</span></code></pre></div>
 </div>
 <div id="suggestions" class="section level1">
 <h1 class="hasAnchor">

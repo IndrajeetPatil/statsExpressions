@@ -159,9 +159,15 @@
 </ul>
 </li>
 </ul>
+<p>BUG FIXES</p>
+<ul>
+<li>
+<code>expr_contingency_tab</code> ignored <code>ratio</code> argument while computing Cramer’s <em>V</em> for one-sample test. This is fixed.</li>
+</ul>
 <p>MAJOR CHANGES</p>
 <ul>
-<li>All non-parametric functions now use <code>effectsize</code> package to compute effect sizes and not <code>rcompanion</code>. This would lead to some changes in effect sizes and their confidence intervals reported by the respective functions.</li>
+<li><p>All non-parametric functions now use <code>effectsize</code> package to compute effect sizes and not <code>rcompanion</code>. This would lead to some changes in effect sizes and their confidence intervals reported by the respective functions.</p></li>
+<li><p>Robust one-sample test is changed from one-sample percentile bootstrap to bootstrap-<em>t</em> method for one-sample test, which uses trimmed mean like the rest of the robust functions in this package.</p></li>
 </ul>
 <p>MINOR CHANGES</p>
 <ul>

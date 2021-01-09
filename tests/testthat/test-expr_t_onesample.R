@@ -216,18 +216,23 @@ test_that(
     results <-
       ggplot2::expr(
         paste(
-          italic("M")["robust"],
+          italic("t")["bootstrapped"],
+          " = ",
+          "0.8748",
+          ", ",
+          italic("p"),
+          " = ",
+          "0.2500",
+          ", ",
+          widehat(italic(mu))["trimmed"],
           " = ",
           "9.0000",
           ", CI"["99%"],
           " [",
-          "6.0128",
+          "4.4493",
           ", ",
-          "11.6299",
-          "], ",
-          italic("p"),
-          " = ",
-          "0.3000",
+          "13.5507",
+          "]",
           ", ",
           italic("n")["obs"],
           " = ",
@@ -237,6 +242,50 @@ test_that(
 
     # testing overall call
     expect_identical(using_function, results)
+
+    # statsExpressions output
+    set.seed(123)
+    using_function2 <-
+      expr_t_onesample(
+        data = ggplot2::msleep,
+        x = brainwt,
+        test.value = 0.1,
+        type = "r",
+        k = 4,
+        conf.level = 0.90
+      )
+
+    # expected output
+    set.seed(123)
+    results2 <-
+      ggplot2::expr(
+        paste(
+          italic("t")["bootstrapped"],
+          " = ",
+          "-1.4272",
+          ", ",
+          italic("p"),
+          " = ",
+          "0.2000",
+          ", ",
+          widehat(italic(mu))["trimmed"],
+          " = ",
+          "0.0660",
+          ", CI"["90%"],
+          " [",
+          "0.0201",
+          ", ",
+          "0.1119",
+          "]",
+          ", ",
+          italic("n")["obs"],
+          " = ",
+          "56"
+        )
+      )
+
+    # testing overall call
+    expect_identical(using_function2, results2)
   }
 )
 

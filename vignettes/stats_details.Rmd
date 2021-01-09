@@ -141,10 +141,6 @@ Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | -------
 $\delta_{R}$ | 0.10 – < 0.30 | 0.30 – < 0.50 | ≥ 0.50 | [0,1]
 
-**Reference**:
-- <https://CRAN.R-project.org/package=WRS2/vignettes/WRS2.pdf>
-- <https://journals.sagepub.com/doi/10.1177/0013164406288161>
-
 ## between-subjects design
 
 ### parametric
@@ -168,8 +164,6 @@ Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | ---------- 
 *r* | 0.10 – < 0.30 | 0.30 – < 0.50 | ≥ 0.50 | [0,1]
 
-**Reference**: <https://rcompanion.org/handbook/F_04.html>
-
 ### robust
 
 **Test**: Yuen's independent sample trimmed means *t*-test <br>
@@ -179,8 +173,6 @@ Effect size | Small | Medium | Large | Range
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | --------
 $\xi$ | 0.10 – < 0.30 | 0.30 – < 0.50 | ≥ 0.50 | [0,1]
-
-**Reference**: <https://CRAN.R-project.org/package=WRS2/vignettes/WRS2.pdf>
 
 # One-way ANOVAs
 
@@ -243,8 +235,6 @@ Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | -------- 
 $\epsilon^2$ | 0.01 – < 0.08 | 0.08 – < 0.26 | ≥ 0.26 | [0,1]
 
-**Reference**:  <https://rcompanion.org/handbook/F_08.html>
-
 ### robust
 
 **Test**: Heteroscedastic one-way ANOVA for trimmed means <br>
@@ -254,8 +244,6 @@ $\epsilon^2$ | 0.01 – < 0.08 | 0.08 – < 0.26 | ≥ 0.26 | [0,1]
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | --------
 $\xi$ | 0.10 – < 0.30 | 0.30 – < 0.50 | ≥ 0.50 | [0,1]
-
-**Reference**: <https://CRAN.R-project.org/package=WRS2/vignettes/WRS2.pdf>
 
 # Contingency table analyses
 
@@ -274,8 +262,6 @@ or columns.
 *k* = 3 | 0.07 – < 0.20 | 0.20 – < 0.35 | ≥ 0.35 | [0,1]
 *k* = 4 | 0.06 – < 0.17 | 0.17 – < 0.29 | ≥ 0.29 | [0,1]
 
-**Reference**: <https://rcompanion.org/handbook/H_10.html>
-
 ## association test - paired 
 
 **Test**: McNemar's test <br>
@@ -285,8 +271,6 @@ or columns.
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | --------
 Cohen’s *g* | 0.05 – < 0.15 | 0.15 – < 0.25 | ≥ 0.25 | [0,1]
-
-**Reference**: <https://rcompanion.org/handbook/H_05.html>
 
 ## goodness-of-fit test 
 
@@ -307,8 +291,6 @@ In the following table, *k* is the number of categories.
 *k* = 8 | 0.042 – < 0.127 | 0.127 – < 0.212 | ≥ 0.212 | [0,1]
 *k* = 9 | 0.042 – < 0.125 | 0.125 – < 0.209 | ≥ 0.209 | [0,1]
 *k* = 10 | 0.041 – < 0.124 | 0.124 – < 0.207 | ≥ 0.207 | [0,1]
-
-**Reference**: <https://rcompanion.org/handbook/H_03.html>
 
 # Correlation analyses
 
@@ -370,6 +352,17 @@ details.
 
 For a more detailed summary of these dataframe:
 <https://indrajeetpatil.github.io/statsExpressions//articles/web_only/dataframe_outputs.html>
+
+# References
+
+  - For parametric and non-parametric effect sizes:
+    <https://easystats.github.io/effectsize/articles/simple_htests.html>
+
+  - For robust effect sizes:
+    <https://CRAN.R-project.org/package=WRS2/vignettes/WRS2.pdf>
+
+  - For Bayesian posterior estimates:
+    <https://easystats.github.io/bayestestR/articles/bayes_factors.html>
 
 # Suggestions
 

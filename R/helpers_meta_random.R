@@ -186,13 +186,6 @@ expr_meta_random <- function(data,
     subtitle <- stats_df
   }
 
-  #---------------------------- return ---------------------------------
-
   # what needs to be returned?
-  switch(
-    EXPR = output,
-    "dataframe" = stats_df,
-    "caption" = caption,
-    subtitle
-  )
+  switch(output, "dataframe" = as_tibble(stats_df), "caption" = caption, subtitle)
 }

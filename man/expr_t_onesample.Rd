@@ -12,8 +12,8 @@ expr_t_onesample(
   test.value = 0,
   k = 2L,
   conf.level = 0.95,
+  tr = 0.1,
   bf.prior = 0.707,
-  robust.estimator = "onestep",
   effsize.type = "g",
   nboot = 100L,
   output = "expression",
@@ -40,12 +40,14 @@ or \code{"robust"} or \code{"bayes"}).Corresponding abbreviations are also accep
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} confidence/credible intervals (\code{0.95}).}
 
+\item{tr}{Trim level for the mean when carrying out \code{robust} tests. If you
+get error stating "Standard error cannot be computed because of Winsorized
+variance of 0 (e.g., due to ties). Try to decrease the trimming level.",
+try to play around with the value of \code{tr}, which is by default set to
+\code{0.1}. Lowering the value might help.}
+
 \item{bf.prior}{A number between \code{0.5} and \code{2} (default \code{0.707}), the prior
 width to use in calculating Bayes factors.}
-
-\item{robust.estimator}{If \code{type = "robust"}, a robust estimator to be used
-(\code{"onestep"} (Default), \code{"mom"}, or \code{"median"}). For more, see
-\code{?WRS2::onesampb}.}
 
 \item{effsize.type}{Type of effect size needed for \emph{parametric} tests. The
 argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \emph{g}).}

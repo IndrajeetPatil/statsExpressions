@@ -25,6 +25,10 @@ MAJOR CHANGES
     sizes and not `rcompanion`. This would lead to some changes in effect sizes
     and their confidence intervals reported by the respective functions.
 
+  - Robust one-sample test is changed from one-sample percentile bootstrap to
+    bootstrap-*t* method for one-sample test, which uses trimmed mean like the
+    rest of the robust functions in this package.
+
 MINOR CHANGES
 
   - Package internally relies on `afex` instead of `ez` for within-subjects

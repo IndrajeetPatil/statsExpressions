@@ -9,9 +9,6 @@
 #'   or `"robust"` or `"bayes"`).Corresponding abbreviations are also accepted:
 #'   `"p"` (for parametric), `"np"` (nonparametric), `"r"` (robust), or
 #'   `"bf"`resp.
-#' @param robust.estimator If `type = "robust"`, a robust estimator to be used
-#'   (`"onestep"` (Default), `"mom"`, or `"median"`). For more, see
-#'   `?WRS2::onesampb`.
 #' @inheritParams ipmisc::long_to_wide_converter
 #' @inheritParams expr_t_twosample
 #' @inheritParams expr_template
@@ -26,7 +23,6 @@
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @importFrom dplyr select mutate pull rename_all recode
-#' @importFrom WRS2 onesampb
 #' @importFrom ipmisc stats_type_switch
 #' @importFrom effectsize cohens_d hedges_g rank_biserial
 #' @importFrom stats t.test wilcox.test na.omit
@@ -83,8 +79,8 @@ expr_t_onesample <- function(data,
                              test.value = 0,
                              k = 2L,
                              conf.level = 0.95,
+                             tr = 0.1,
                              bf.prior = 0.707,
-                             robust.estimator = "onestep",
                              effsize.type = "g",
                              nboot = 100L,
                              output = "expression",
@@ -142,8 +138,25 @@ expr_t_onesample <- function(data,
 
     # dataframe
     stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("^est|^conf|^diff")), effsize_df)
+  }
 
-    # expression
+  # ----------------------- robust ---------------------------------------
+
+  if (stats.type == "robust") {
+    # bootstrap-t method for one-sample test
+    no.parameters <- 0L
+    stats_df <-
+      trimcibt(
+        x = x_vec,
+        tr = tr,
+        nboot = nboot,
+        nv = test.value,
+        alpha = 1 - conf.level
+      )
+  }
+
+  # expression
+  if (stats.type != "bayes") {
     expression <-
       expr_template(
         no.parameters = no.parameters,
@@ -151,54 +164,6 @@ expr_t_onesample <- function(data,
         n = length(x_vec),
         conf.level = conf.level,
         k = k
-      )
-  }
-
-  # ----------------------- robust ---------------------------------------
-
-  if (stats.type == "robust") {
-    # running one-sample percentile bootstrap
-    mod <-
-      WRS2::onesampb(
-        x = x_vec,
-        est = robust.estimator,
-        nboot = nboot,
-        nv = test.value,
-        alpha = 1 - conf.level
-      )
-
-    # create a dataframe
-    stats_df <- tidy_model_parameters(mod)
-
-    # preparing the expression
-    expression <-
-      substitute(
-        expr = paste(
-          italic("M")["robust"],
-          " = ",
-          estimate,
-          ", CI"[conf.level],
-          " [",
-          LL,
-          ", ",
-          UL,
-          "], ",
-          italic("p"),
-          " = ",
-          p.value,
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          n
-        ),
-        env = list(
-          estimate = format_num(stats_df$estimate[[1]], k = k),
-          conf.level = paste0(conf.level * 100, "%"),
-          LL = format_num(stats_df$conf.low[[1]], k = k),
-          UL = format_num(stats_df$conf.high[[1]], k = k),
-          p.value = format_num(stats_df$p.value[[1]], k = k, p.value = TRUE),
-          n = .prettyNum(length(x_vec))
-        )
       )
   }
 
@@ -222,4 +187,26 @@ expr_t_onesample <- function(data,
 
   # return the output
   switch(output, "dataframe" = as_tibble(stats_df), expression)
+}
+
+#' bootstrap-t method for one-sample test
+#' @importFrom WRS2 trimse
+#' @noRd
+
+trimcibt <- function(x, tr = 0.2, nboot = 200, nv = 0, alpha = 0.05, ...) {
+  test <- (mean(x, tr) - nv) / WRS2::trimse(x, tr)
+  data <- matrix(sample(x, size = length(x) * nboot, replace = TRUE), nrow = nboot) - mean(x, tr)
+  tval <- sort(abs(apply(data, 1, mean, tr) / apply(data, 1, WRS2::trimse, tr)))
+  icrit <- round((1 - alpha) * nboot)
+
+  tibble(
+    estimate = mean(x, tr),
+    conf.low = mean(x, tr) - tval[icrit] * WRS2::trimse(x, tr),
+    conf.high = mean(x, tr) + tval[icrit] * WRS2::trimse(x, tr),
+    statistic = test,
+    p.value = (sum(abs(test) <= abs(tval))) / nboot,
+    n = length(x),
+    effectsize = "Trimmed mean",
+    method = "Bootstrap-t method for one-sample test"
+  )
 }
