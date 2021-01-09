@@ -95,6 +95,7 @@ of the grouping variable. Consider manually reordering your factor levels
 if appropriate as shown in the second example below.
 }
 \examples{
+\donttest{
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
@@ -182,6 +183,7 @@ expr_t_twosample(
   type = "bayes",
   output = "dataframe"
 )
+}
 }
 \references{
 For more details, see-

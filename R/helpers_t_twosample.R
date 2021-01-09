@@ -32,6 +32,7 @@
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @examples
+#' \donttest{
 #' # for reproducibility
 #' set.seed(123)
 #' library(statsExpressions)
@@ -119,6 +120,7 @@
 #'   type = "bayes",
 #'   output = "dataframe"
 #' )
+#' }
 #' @export
 
 # function body

@@ -37,6 +37,7 @@
 #' @importFrom performance model_performance
 #'
 #' @examples
+#' \donttest{
 #' # for reproducibility
 #' set.seed(123)
 #' library(statsExpressions)
@@ -122,6 +123,7 @@
 #'   type = "bayes",
 #'   output = "dataframe"
 #' )
+#' }
 #' @export
 
 # function body

@@ -85,14 +85,10 @@ expr_template <- function(no.parameters,
                           k.parameter = 0L,
                           k.parameter2 = 0L,
                           ...) {
-  # rename effect size column
-  if ("effsize" %in% names(stats.df)) stats.df %<>% dplyr::rename(estimate = effsize)
 
-  # sample size info-related text
+  # if expression elements are `NULL`
   if (isTRUE(paired) && is.null(n.text)) n.text <- quote(italic("n")["pairs"])
   if (isFALSE(paired) && is.null(n.text)) n.text <- quote(italic("n")["obs"])
-
-  # if expression elements are NULL
   if (is.null(statistic.text)) statistic.text <- method_switch(stats.df$method[[1]])
   if (is.null(effsize.text)) effsize.text <- effectsize_switch(stats.df$effectsize[[1]])
 

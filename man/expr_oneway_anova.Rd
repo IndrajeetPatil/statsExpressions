@@ -88,6 +88,7 @@ For more details, see-
 Expression containing ANOVA results
 }
 \examples{
+\donttest{
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
@@ -173,4 +174,5 @@ expr_oneway_anova(
   type = "bayes",
   output = "dataframe"
 )
+}
 }
