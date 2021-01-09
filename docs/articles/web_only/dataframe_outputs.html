@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.6.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.7.0</span>
       </span>
     </div>
 
@@ -98,7 +98,7 @@
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2021-01-08</h4>
+            <h4 class="date">2021-01-09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -205,15 +205,15 @@
   bf.prior <span class="op">=</span> <span class="fl">0.8</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2 x 11</span>
+<span class="co">#&gt; # A tibble: 2 x 12</span>
 <span class="co">#&gt;   term       estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Difference  0.00952  -0.250      0.255 0.532          0.619 </span>
 <span class="co">#&gt; 2 Cohens_d    0.276     0.0153     0.536 0.978          0.0525</span>
-<span class="co">#&gt;   prior.distribution prior.location prior.scale  bf10 log_e_bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 cauchy                          0         0.8 0.130      -2.04</span>
-<span class="co">#&gt; 2 cauchy                          0         0.8 0.130      -2.04</span></code></pre></div>
+<span class="co">#&gt;   prior.distribution prior.location prior.scale  bf10 method          log_e_bf10</span>
+<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 cauchy                          0         0.8 0.130 Bayesian t-test      -2.04</span>
+<span class="co">#&gt; 2 cauchy                          0         0.8 0.130 Bayesian t-test      -2.04</span></code></pre></div>
 </div>
 <div id="two-sample-tests" class="section level1">
 <h1 class="hasAnchor">
@@ -236,9 +236,9 @@
   data <span class="op">=</span> <span class="va">df</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
-  type <span class="op">=</span> <span class="st">"p"</span>,
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
+  type <span class="op">=</span> <span class="st">"p"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 11</span>
@@ -257,9 +257,9 @@
   data <span class="op">=</span> <span class="va">df</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
-  type <span class="op">=</span> <span class="st">"np"</span>,
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
+  type <span class="op">=</span> <span class="st">"np"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 10</span>
@@ -278,9 +278,9 @@
   data <span class="op">=</span> <span class="va">df</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
-  type <span class="op">=</span> <span class="st">"r"</span>,
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
+  type <span class="op">=</span> <span class="st">"r"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 12</span>
@@ -302,20 +302,24 @@
   data <span class="op">=</span> <span class="va">df</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
-  type <span class="op">=</span> <span class="st">"bf"</span>,
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
+  type <span class="op">=</span> <span class="st">"bf"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2 x 11</span>
+<span class="co">#&gt; # A tibble: 2 x 12</span>
 <span class="co">#&gt;   term       estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Difference   -1.62    -2.12     -1.14      1               0</span>
 <span class="co">#&gt; 2 Cohens_d      0.680    0.449     0.901     1               0</span>
-<span class="co">#&gt;   prior.distribution prior.location prior.scale     bf10 log_e_bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 cauchy                          0       0.707 4762370.       15.4</span>
-<span class="co">#&gt; 2 cauchy                          0       0.707 4762370.       15.4</span></code></pre></div>
+<span class="co">#&gt;   prior.distribution prior.location prior.scale     bf10 method         </span>
+<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;          </span>
+<span class="co">#&gt; 1 cauchy                          0       0.707 4762370. Bayesian t-test</span>
+<span class="co">#&gt; 2 cauchy                          0       0.707 4762370. Bayesian t-test</span>
+<span class="co">#&gt;   log_e_bf10</span>
+<span class="co">#&gt;        &lt;dbl&gt;</span>
+<span class="co">#&gt; 1       15.4</span>
+<span class="co">#&gt; 2       15.4</span></code></pre></div>
 </div>
 <div id="between-subjects-design" class="section level2">
 <h2 class="hasAnchor">
@@ -352,8 +356,8 @@
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
   y <span class="op">=</span> <span class="va">len</span>,
-  type <span class="op">=</span> <span class="st">"p"</span>,
   var.equal <span class="op">=</span> <span class="cn">TRUE</span>,
+  type <span class="op">=</span> <span class="st">"p"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 13</span>
@@ -416,15 +420,15 @@
   type <span class="op">=</span> <span class="st">"bf"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2 x 11</span>
+<span class="co">#&gt; # A tibble: 2 x 12</span>
 <span class="co">#&gt;   term       estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Difference   -3.16   -6.66       0.528 0.960          0.0424</span>
 <span class="co">#&gt; 2 Cohens_d      0.416  -0.0277     0.921 0.964          0.0494</span>
-<span class="co">#&gt;   prior.distribution prior.location prior.scale  bf10 log_e_bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 cauchy                          0       0.707  1.20      0.181</span>
-<span class="co">#&gt; 2 cauchy                          0       0.707  1.20      0.181</span></code></pre></div>
+<span class="co">#&gt;   prior.distribution prior.location prior.scale  bf10 method          log_e_bf10</span>
+<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 cauchy                          0       0.707  1.20 Bayesian t-test      0.181</span>
+<span class="co">#&gt; 2 cauchy                          0       0.707  1.20 Bayesian t-test      0.181</span></code></pre></div>
 </div>
 </div>
 <div id="one-way-anovas" class="section level1">
@@ -441,12 +445,13 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_anova_parametric.html">expr_anova_parametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">bugs_long</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
+  type <span class="op">=</span> <span class="st">"p"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 14</span>
@@ -464,12 +469,13 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_anova_nonparametric.html">expr_anova_nonparametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">bugs_long</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
+  type <span class="op">=</span> <span class="st">"np"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 9</span>
@@ -484,12 +490,13 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_anova_robust.html">expr_anova_robust</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">bugs_long</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
+  type <span class="op">=</span> <span class="st">"r"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 5</span>
@@ -504,15 +511,16 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_anova_bayes.html">expr_anova_bayes</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">bugs_long</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
+  type <span class="op">=</span> <span class="st">"bayes"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 96 x 19</span>
+<span class="co">#&gt; # A tibble: 96 x 20</span>
 <span class="co">#&gt;    term           estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;    &lt;chr&gt;             &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 mu                6.88     6.43      7.33  1              0     </span>
@@ -537,18 +545,30 @@
 <span class="co">#&gt;  8 cauchy                          0       1     random conditional 1372773375.</span>
 <span class="co">#&gt;  9 cauchy                          0       1     random conditional 1372773375.</span>
 <span class="co">#&gt; 10 cauchy                          0       1     random conditional 1372773375.</span>
-<span class="co">#&gt;    log_e_bf10    r2 std.dev ci.width r2.conf.low r2.conf.high r2.component</span>
-<span class="co">#&gt;         &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt; &lt;chr&gt;       </span>
-<span class="co">#&gt;  1       21.0 0.529  0.0330       95       0.460        0.586 conditional </span>
-<span class="co">#&gt;  2       21.0 0.529  0.0330       95       0.460        0.586 conditional </span>
-<span class="co">#&gt;  3       21.0 0.529  0.0330       95       0.460        0.586 conditional </span>
-<span class="co">#&gt;  4       21.0 0.529  0.0330       95       0.460        0.586 conditional </span>
-<span class="co">#&gt;  5       21.0 0.529  0.0330       95       0.460        0.586 conditional </span>
-<span class="co">#&gt;  6       21.0 0.529  0.0330       95       0.460        0.586 conditional </span>
-<span class="co">#&gt;  7       21.0 0.529  0.0330       95       0.460        0.586 conditional </span>
-<span class="co">#&gt;  8       21.0 0.529  0.0330       95       0.460        0.586 conditional </span>
-<span class="co">#&gt;  9       21.0 0.529  0.0330       95       0.460        0.586 conditional </span>
-<span class="co">#&gt; 10       21.0 0.529  0.0330       95       0.460        0.586 conditional </span>
+<span class="co">#&gt;    method                          log_e_bf10    r2 std.dev ci.width r2.conf.low</span>
+<span class="co">#&gt;    &lt;chr&gt;                                &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
+<span class="co">#&gt;  2 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
+<span class="co">#&gt;  3 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
+<span class="co">#&gt;  4 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
+<span class="co">#&gt;  5 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
+<span class="co">#&gt;  6 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
+<span class="co">#&gt;  7 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
+<span class="co">#&gt;  8 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
+<span class="co">#&gt;  9 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
+<span class="co">#&gt; 10 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
+<span class="co">#&gt;    r2.conf.high r2.component</span>
+<span class="co">#&gt;           &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt;  1        0.586 conditional </span>
+<span class="co">#&gt;  2        0.586 conditional </span>
+<span class="co">#&gt;  3        0.586 conditional </span>
+<span class="co">#&gt;  4        0.586 conditional </span>
+<span class="co">#&gt;  5        0.586 conditional </span>
+<span class="co">#&gt;  6        0.586 conditional </span>
+<span class="co">#&gt;  7        0.586 conditional </span>
+<span class="co">#&gt;  8        0.586 conditional </span>
+<span class="co">#&gt;  9        0.586 conditional </span>
+<span class="co">#&gt; 10        0.586 conditional </span>
 <span class="co">#&gt; # ... with 86 more rows</span></code></pre></div>
 </div>
 <div id="between-subjects-design-1" class="section level2">
@@ -563,10 +583,11 @@
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># unequal variance</span>
-<span class="fu"><a href="../../reference/expr_anova_parametric.html">expr_anova_parametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
+  type <span class="op">=</span> <span class="st">"p"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 10</span>
@@ -583,11 +604,12 @@
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># equal variance</span>
-<span class="fu"><a href="../../reference/expr_anova_parametric.html">expr_anova_parametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
   var.equal <span class="op">=</span> <span class="cn">TRUE</span>,
+  type <span class="op">=</span> <span class="st">"p"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 10</span>
@@ -602,10 +624,11 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_anova_nonparametric.html">expr_anova_nonparametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
+  type <span class="op">=</span> <span class="st">"np"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 11</span>
@@ -623,16 +646,17 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_anova_robust.html">expr_anova_robust</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
+  type <span class="op">=</span> <span class="st">"r"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 9</span>
-<span class="co">#&gt;   statistic    df df.error p.value effsize conf.low conf.high</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      124.     2     71.6       0   0.916    0.861     0.984</span>
+<span class="co">#&gt;   statistic    df df.error p.value estimate conf.low conf.high</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      124.     2     71.6       0    0.916    0.861     0.984</span>
 <span class="co">#&gt;   effectsize                        </span>
 <span class="co">#&gt;   &lt;chr&gt;                             </span>
 <span class="co">#&gt; 1 Explanatory measure of effect size</span>
@@ -644,13 +668,14 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_anova_bayes.html">expr_anova_bayes</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
+  type <span class="op">=</span> <span class="st">"bayes"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 17</span>
+<span class="co">#&gt; # A tibble: 6 x 18</span>
 <span class="co">#&gt;   term               estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 mu                   5.84     5.76       5.93  1               0    </span>
@@ -659,22 +684,30 @@
 <span class="co">#&gt; 4 Species-virginica    0.737    0.618      0.852 1               0    </span>
 <span class="co">#&gt; 5 sig2                 0.267    0.210      0.335 1               0    </span>
 <span class="co">#&gt; 6 g_Species            2.15     0.188     15.0   1               0    </span>
-<span class="co">#&gt;   prior.distribution prior.location prior.scale component      bf10 log_e_bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 cauchy                          0       0.707 extra       1.87e28       65.1</span>
-<span class="co">#&gt; 2 cauchy                          0       0.707 conditional 1.87e28       65.1</span>
-<span class="co">#&gt; 3 cauchy                          0       0.707 conditional 1.87e28       65.1</span>
-<span class="co">#&gt; 4 cauchy                          0       0.707 conditional 1.87e28       65.1</span>
-<span class="co">#&gt; 5 cauchy                          0       0.707 extra       1.87e28       65.1</span>
-<span class="co">#&gt; 6 cauchy                          0       0.707 extra       1.87e28       65.1</span>
-<span class="co">#&gt;      r2 std.dev ci.width r2.conf.low r2.conf.high</span>
-<span class="co">#&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 0.612  0.0311       95       0.544        0.667</span>
-<span class="co">#&gt; 2 0.612  0.0311       95       0.544        0.667</span>
-<span class="co">#&gt; 3 0.612  0.0311       95       0.544        0.667</span>
-<span class="co">#&gt; 4 0.612  0.0311       95       0.544        0.667</span>
-<span class="co">#&gt; 5 0.612  0.0311       95       0.544        0.667</span>
-<span class="co">#&gt; 6 0.612  0.0311       95       0.544        0.667</span></code></pre></div>
+<span class="co">#&gt;   prior.distribution prior.location prior.scale component      bf10</span>
+<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 cauchy                          0       0.707 extra       1.87e28</span>
+<span class="co">#&gt; 2 cauchy                          0       0.707 conditional 1.87e28</span>
+<span class="co">#&gt; 3 cauchy                          0       0.707 conditional 1.87e28</span>
+<span class="co">#&gt; 4 cauchy                          0       0.707 conditional 1.87e28</span>
+<span class="co">#&gt; 5 cauchy                          0       0.707 extra       1.87e28</span>
+<span class="co">#&gt; 6 cauchy                          0       0.707 extra       1.87e28</span>
+<span class="co">#&gt;   method                          log_e_bf10    r2 std.dev ci.width r2.conf.low</span>
+<span class="co">#&gt;   &lt;chr&gt;                                &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Bayes factors for linear models       65.1 0.612  0.0311       95       0.544</span>
+<span class="co">#&gt; 2 Bayes factors for linear models       65.1 0.612  0.0311       95       0.544</span>
+<span class="co">#&gt; 3 Bayes factors for linear models       65.1 0.612  0.0311       95       0.544</span>
+<span class="co">#&gt; 4 Bayes factors for linear models       65.1 0.612  0.0311       95       0.544</span>
+<span class="co">#&gt; 5 Bayes factors for linear models       65.1 0.612  0.0311       95       0.544</span>
+<span class="co">#&gt; 6 Bayes factors for linear models       65.1 0.612  0.0311       95       0.544</span>
+<span class="co">#&gt;   r2.conf.high</span>
+<span class="co">#&gt;          &lt;dbl&gt;</span>
+<span class="co">#&gt; 1        0.667</span>
+<span class="co">#&gt; 2        0.667</span>
+<span class="co">#&gt; 3        0.667</span>
+<span class="co">#&gt; 4        0.667</span>
+<span class="co">#&gt; 5        0.667</span>
+<span class="co">#&gt; 6        0.667</span></code></pre></div>
 </div>
 </div>
 <div id="contingency-table-analyses" class="section level1">
@@ -837,13 +870,13 @@
   type <span class="op">=</span> <span class="st">"bayes"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 11</span>
+<span class="co">#&gt; # A tibble: 1 x 12</span>
 <span class="co">#&gt;   term  estimate conf.low conf.high    pd rope.percentage prior.distribution</span>
 <span class="co">#&gt;   &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;             </span>
 <span class="co">#&gt; 1 rho     -0.843   -0.934    -0.734     1               0 cauchy            </span>
-<span class="co">#&gt;   prior.location prior.scale      bf10 log_e_bf10</span>
-<span class="co">#&gt;            &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1              0       0.707 56223033.       17.8</span></code></pre></div>
+<span class="co">#&gt;   prior.location prior.scale      bf10 method                        log_e_bf10</span>
+<span class="co">#&gt;            &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;                              &lt;dbl&gt;</span>
+<span class="co">#&gt; 1              0       0.707 56223033. Bayesian correlation analysis       17.8</span></code></pre></div>
 </div>
 <div id="meta-analysis" class="section level1">
 <h1 class="hasAnchor">

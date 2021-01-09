@@ -23,8 +23,7 @@
 #'   `"bf"` (for bayes factor), resp.
 #' @param beta bending constant (Default: `0.1`). For more, see [WRS2::pbcor()].
 #' @inheritParams tidyBF::bf_corr_test
-#' @inheritParams expr_anova_parametric
-#' @inheritParams expr_anova_nonparametric
+#' @inheritParams expr_oneway_anova
 #'
 #' @importFrom dplyr select rename_all recode
 #' @importFrom correlation correlation
@@ -57,10 +56,10 @@
 expr_corr_test <- function(data,
                            x,
                            y,
+                           type = "parametric",
                            k = 2L,
                            conf.level = 0.95,
                            beta = 0.1,
-                           type = "parametric",
                            bf.prior = 0.707,
                            output = "expression",
                            ...) {

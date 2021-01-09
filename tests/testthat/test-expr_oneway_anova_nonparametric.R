@@ -8,7 +8,8 @@ test_that(
     # `statsExpressions` output
     set.seed(123)
     using_function1 <-
-      expr_anova_nonparametric(
+      expr_oneway_anova(
+        type = "np",
         data = dplyr::sample_frac(movies_long, 0.1),
         x = "genre",
         y = length,
@@ -53,7 +54,8 @@ test_that(
     # `statsExpressions` output
     set.seed(123)
     using_function2 <-
-      suppressWarnings(expr_anova_nonparametric(
+      suppressWarnings(expr_oneway_anova(
+        type = "np",
         data = ggplot2::msleep,
         x = vore,
         y = sleep_cycle,
@@ -108,7 +110,8 @@ test_that(
     # `statsExpressions` output
     set.seed(123)
     using_function1 <-
-      expr_anova_nonparametric(
+      expr_oneway_anova(
+        type = "np",
         data = bugs_long,
         x = condition,
         y = "desire",
@@ -154,7 +157,8 @@ test_that(
     # `statsExpressions` output
     set.seed(123)
     using_function2 <-
-      expr_anova_nonparametric(
+      expr_oneway_anova(
+        type = "np",
         data = iris_long,
         x = condition,
         y = "value",
@@ -206,7 +210,8 @@ test_that(
   desc = "dataframe",
   code = {
     expect_s3_class(
-      expr_anova_nonparametric(
+      expr_oneway_anova(
+        type = "np",
         data = mtcars,
         x = cyl,
         y = wt,
@@ -255,7 +260,8 @@ test_that(
     # incorrect
     set.seed(123)
     expr1 <-
-      expr_anova_nonparametric(
+      expr_oneway_anova(
+        type = "np",
         data = df,
         x = condition,
         y = score,
@@ -266,7 +272,8 @@ test_that(
     # correct
     set.seed(123)
     expr2 <-
-      expr_anova_nonparametric(
+      expr_oneway_anova(
+        type = "np",
         data = dplyr::arrange(df, id),
         x = condition,
         y = score,

@@ -87,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.6.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.7.0</span>
       </span>
     </div>
 
@@ -145,13 +145,19 @@
       <small>Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="statsexpressions-0629000" class="section level1">
-<h1 class="page-header" data-toc-text="0.6.2.9000">
-<a href="#statsexpressions-0629000" class="anchor"></a>statsExpressions 0.6.2.9000<small> Unreleased </small>
+    <div id="statsexpressions-070" class="section level1">
+<h1 class="page-header" data-toc-text="0.7.0">
+<a href="#statsexpressions-070" class="anchor"></a>statsExpressions 0.7.0<small> Unreleased </small>
 </h1>
 <p>BREAKING CHANGES</p>
 <ul>
-<li>To be consistent with <code>expr_t_onesample</code>, <code>expr_t_parametric</code>, <code>expr_t_nonparametric</code>, <code>expr_t_robust</code>, <code>expr_t_bayes</code> are now removed in favor of a single function <code>expr_t_twosample</code>, where the <code>type</code> argument can be used to specify which type of statistical approach is to be used.</li>
+<li>
+<p>To be consistent with <code>ggstatsplot</code>’s overall syntax philosophy the <code>type</code> argument can be used to specify which type of statistical approach is to be used for all functions.</p>
+<ul>
+<li><p><code>expr_t_parametric</code>, <code>expr_t_nonparametric</code>, <code>expr_t_robust</code>, <code>expr_t_bayes</code> are now removed in favor of a single function <code>expr_t_twosample</code>.</p></li>
+<li><p><code>expr_anova_parametric</code>, <code>expr_anova_nonparametric</code>, <code>expr_anova_robust</code>, <code>expr_anova_bayes</code> are now removed in favor of a single function <code>expr_oneway_anova</code>.</p></li>
+</ul>
+</li>
 </ul>
 <p>MAJOR CHANGES</p>
 <ul>

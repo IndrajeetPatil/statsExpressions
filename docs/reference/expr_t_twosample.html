@@ -88,7 +88,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.6.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.7.0</span>
       </span>
     </div>
 
@@ -179,7 +179,7 @@ be taken. A matrix or tables will <strong>not</strong> be accepted.</p></td>
     </tr>
     <tr>
       <th>x</th>
-      <td><p>A numeric variable from the dataframe <code>data</code>.</p></td>
+      <td><p>The grouping variable from the dataframe <code>data</code>.</p></td>
     </tr>
     <tr>
       <th>y</th>
@@ -256,7 +256,7 @@ results.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Additional arguments passed to <code><a href='https://indrajeetpatil.github.io/tidyBF//reference/bf_ttest.html'>tidyBF::bf_ttest</a></code>.</p></td>
+      <td><p>Currently ignored.</p></td>
     </tr>
     </table>
 
@@ -394,15 +394,15 @@ if appropriate as shown in the second example below.</p>
   type <span class='op'>=</span> <span class='st'>"bayes"</span>,
   output <span class='op'>=</span> <span class='st'>"dataframe"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 2 x 11</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 2 x 12</span><span>
 #&gt;   </span><span style='font-weight: bold;'>term</span><span>       </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>    </span><span style='font-weight: bold;'>pd</span><span> </span><span style='font-weight: bold;'>rope.percentage</span><span>
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span> Difference    </span><span style='color: #555555;'>0.</span><span>172   </span><span style='color: #555555;'>0.0</span><span>81</span><span style='text-decoration: underline;'>8</span><span>     </span><span style='color: #555555;'>0.</span><span>266 1                   </span><span style='color: #555555;'>0</span><span>
 #&gt; </span><span style='color: #555555;'>2</span><span> Cohens_d     -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>637</span><span>  -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>992</span><span>     -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>258</span><span> </span><span style='color: #555555;'>0.</span><span>999               </span><span style='color: #555555;'>0</span><span>
-#&gt;   </span><span style='font-weight: bold;'>prior.distribution</span><span> </span><span style='font-weight: bold;'>prior.location</span><span> </span><span style='font-weight: bold;'>prior.scale</span><span>  </span><span style='font-weight: bold;'>bf10</span><span> </span><span style='font-weight: bold;'>log_e_bf10</span><span>
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> cauchy                          </span><span style='color: #555555;'>0</span><span>       </span><span style='color: #555555;'>0.</span><span>707  77.1       4.34
-#&gt; </span><span style='color: #555555;'>2</span><span> cauchy                          </span><span style='color: #555555;'>0</span><span>       </span><span style='color: #555555;'>0.</span><span>707  77.1       4.34</div></span></pre>
+#&gt;   </span><span style='font-weight: bold;'>prior.distribution</span><span> </span><span style='font-weight: bold;'>prior.location</span><span> </span><span style='font-weight: bold;'>prior.scale</span><span>  </span><span style='font-weight: bold;'>bf10</span><span> </span><span style='font-weight: bold;'>method</span><span>          </span><span style='font-weight: bold;'>log_e_bf10</span><span>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> cauchy                          </span><span style='color: #555555;'>0</span><span>       </span><span style='color: #555555;'>0.</span><span>707  77.1 Bayesian t-test       4.34
+#&gt; </span><span style='color: #555555;'>2</span><span> cauchy                          </span><span style='color: #555555;'>0</span><span>       </span><span style='color: #555555;'>0.</span><span>707  77.1 Bayesian t-test       4.34</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

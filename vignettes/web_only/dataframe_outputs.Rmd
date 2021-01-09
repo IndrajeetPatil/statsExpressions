@@ -136,9 +136,9 @@ expr_t_twosample(
   data = df,
   x = condition,
   y = desire,
-  type = "p",
   paired = TRUE,
   subject.id = subject,
+  type = "p",
   output = "dataframe"
 )
 
@@ -150,9 +150,9 @@ expr_t_twosample(
   data = df,
   x = condition,
   y = desire,
-  type = "np",
   paired = TRUE,
   subject.id = subject,
+  type = "np",
   output = "dataframe"
 )
 
@@ -164,9 +164,9 @@ expr_t_twosample(
   data = df,
   x = condition,
   y = desire,
-  type = "r",
   paired = TRUE,
   subject.id = subject,
+  type = "r",
   output = "dataframe"
 )
 
@@ -178,9 +178,9 @@ expr_t_twosample(
   data = df,
   x = condition,
   y = desire,
-  type = "bf",
   paired = TRUE,
   subject.id = subject,
+  type = "bf",
   output = "dataframe"
 )
 ```
@@ -212,8 +212,8 @@ expr_t_twosample(
   data = ToothGrowth,
   x = supp,
   y = len,
-  type = "p",
   var.equal = TRUE,
+  type = "p",
   output = "dataframe"
 )
 
@@ -266,12 +266,13 @@ library(statsExpressions)
 
 # for reproducibility
 set.seed(123)
-expr_anova_parametric(
+expr_oneway_anova(
   data = bugs_long,
   x = condition,
   y = desire,
   paired = TRUE,
   subject.id = subject,
+  type = "p",
   output = "dataframe"
 )
 
@@ -279,12 +280,13 @@ expr_anova_parametric(
 
 # for reproducibility
 set.seed(123)
-expr_anova_nonparametric(
+expr_oneway_anova(
   data = bugs_long,
   x = condition,
   y = desire,
   paired = TRUE,
   subject.id = subject,
+  type = "np",
   output = "dataframe"
 )
 
@@ -292,12 +294,13 @@ expr_anova_nonparametric(
 
 # for reproducibility
 set.seed(123)
-expr_anova_robust(
+expr_oneway_anova(
   data = bugs_long,
   x = condition,
   y = desire,
   paired = TRUE,
   subject.id = subject,
+  type = "r",
   output = "dataframe"
 )
 
@@ -305,12 +308,13 @@ expr_anova_robust(
 
 # for reproducibility
 set.seed(123)
-expr_anova_bayes(
+expr_oneway_anova(
   data = bugs_long,
   x = condition,
   y = desire,
   paired = TRUE,
   subject.id = subject,
+  type = "bayes",
   output = "dataframe"
 )
 ```
@@ -326,21 +330,23 @@ library(statsExpressions)
 # for reproducibility
 set.seed(123)
 # unequal variance
-expr_anova_parametric(
+expr_oneway_anova(
   data = iris,
   x = Species,
   y = Sepal.Length,
+  type = "p",
   output = "dataframe"
 )
 
 # for reproducibility
 set.seed(123)
 # equal variance
-expr_anova_parametric(
+expr_oneway_anova(
   data = iris,
   x = Species,
   y = Sepal.Length,
   var.equal = TRUE,
+  type = "p",
   output = "dataframe"
 )
 
@@ -348,10 +354,11 @@ expr_anova_parametric(
 
 # for reproducibility
 set.seed(123)
-expr_anova_nonparametric(
+expr_oneway_anova(
   data = iris,
   x = Species,
   y = Sepal.Length,
+  type = "np",
   output = "dataframe"
 )
 
@@ -359,10 +366,11 @@ expr_anova_nonparametric(
 
 # for reproducibility
 set.seed(123)
-expr_anova_robust(
+expr_oneway_anova(
   data = iris,
   x = Species,
   y = Sepal.Length,
+  type = "r",
   output = "dataframe"
 )
 
@@ -370,10 +378,11 @@ expr_anova_robust(
 
 # for reproducibility
 set.seed(123)
-expr_anova_bayes(
+expr_oneway_anova(
   data = iris,
   x = Species,
   y = Sepal.Length,
+  type = "bayes",
   output = "dataframe"
 )
 ```

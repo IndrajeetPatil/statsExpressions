@@ -8,8 +8,9 @@ test_that(
     # ggstatsplot output
     set.seed(123)
     using_function1 <-
-      statsExpressions::expr_anova_bayes(
-        data = statsExpressions::movies_long,
+      expr_oneway_anova(
+        type = "bayes",
+        data = movies_long,
         x = genre,
         y = rating,
         k = 5,
@@ -20,7 +21,7 @@ test_that(
     set.seed(123)
     results1 <-
       tidyBF::bf_oneway_anova(
-        data = statsExpressions::movies_long,
+        data = movies_long,
         x = genre,
         y = rating,
         k = 5,
@@ -39,7 +40,8 @@ test_that(
   desc = "dataframe",
   code = {
     expect_s3_class(
-      statsExpressions::expr_anova_bayes(
+      expr_oneway_anova(
+        type = "bayes",
         data = mtcars,
         x = cyl,
         y = wt,

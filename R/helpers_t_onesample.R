@@ -12,11 +12,11 @@
 #' @param robust.estimator If `type = "robust"`, a robust estimator to be used
 #'   (`"onestep"` (Default), `"mom"`, or `"median"`). For more, see
 #'   `?WRS2::onesampb`.
-#' @param ... Additional arguments passed to `tidyBF::bf_ttest`.
+#' @inheritParams ipmisc::long_to_wide_converter
 #' @inheritParams expr_t_twosample
-#' @inheritParams tidyBF::bf_corr_test
-#' @inheritParams expr_anova_parametric
-#' @inheritParams expr_anova_nonparametric
+#' @inheritParams expr_template
+#' @inheritParams expr_oneway_anova
+#' @inheritParams tidyBF::bf_ttest
 #'
 #' @return Expression containing results from a one-sample test. The exact test
 #'   and the effect size details contained will be dependent on the `type`
@@ -30,7 +30,7 @@
 #' @importFrom ipmisc stats_type_switch
 #' @importFrom effectsize cohens_d hedges_g rank_biserial
 #' @importFrom stats t.test wilcox.test na.omit
-#' @importFrom rlang !! ensym new_formula exec
+#' @importFrom rlang !! !!! enquo eval_tidy expr enexpr ensym exec new_formula
 #'
 #' @examples
 #' \donttest{

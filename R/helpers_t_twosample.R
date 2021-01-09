@@ -1,15 +1,17 @@
 #' @title Making expression containing *t*-test results
 #' @name expr_t_twosample
 #'
+#' @inheritParams ipmisc::long_to_wide_converter
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
 #'   argument can be `"d"` (for Cohen's *d*) or `"g"` (for Hedge's *g*).
 #' @inheritParams expr_t_onesample
-#' @inheritParams expr_anova_robust
+#' @inheritParams expr_oneway_anova
 #' @inheritParams stats::t.test
 #' @inheritParams expr_template
+#' @inheritParams tidyBF::bf_ttest
 #'
 #' @importFrom dplyr select rename_all recode mutate
-#' @importFrom rlang !! ensym new_formula exec
+#' @importFrom rlang !! !!! enquo eval_tidy expr enexpr ensym exec new_formula
 #' @importFrom tidyr drop_na
 #' @importFrom stats t.test  wilcox.test
 #' @importFrom WRS2 yuen yuen.effect.ci yuend dep.effect

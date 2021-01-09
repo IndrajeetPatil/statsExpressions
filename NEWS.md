@@ -1,11 +1,18 @@
-# statsExpressions 0.6.2.9000
+# statsExpressions 0.7.0
 
 BREAKING CHANGES
 
-  - To be consistent with `expr_t_onesample`, `expr_t_parametric`,
-    `expr_t_nonparametric`, `expr_t_robust`, `expr_t_bayes` are now removed in
-    favor of a single function `expr_t_twosample`, where the `type` argument can
-    be used to specify which type of statistical approach is to be used.
+  - To be consistent with `ggstatsplot`'s overall syntax philosophy the `type`
+    argument can be used to specify which type of statistical approach is to be
+    used for all functions.
+
+    * `expr_t_parametric`, `expr_t_nonparametric`, `expr_t_robust`,
+      `expr_t_bayes` are now removed in favor of a single function
+      `expr_t_twosample`.
+
+    * `expr_anova_parametric`, `expr_anova_nonparametric`, `expr_anova_robust`,
+      `expr_anova_bayes` are now removed in favor of a single function
+      `expr_oneway_anova`.
 
 MAJOR CHANGES
 

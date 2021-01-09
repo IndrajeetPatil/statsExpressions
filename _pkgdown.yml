@@ -26,22 +26,22 @@ reference:
   - title: Expressions for one-way ANOVA
     desc: Functions to create expressions for one-way (both between-and within-subject designs) ANOVA
     contents:
-      - matches("_anova_")
+      - matches("anova")
 
   - title: Expressions for correlation analysis
     desc: Functions to create expressions for correlation tests
     contents:
-      - matches("expr_corr_")
+      - matches("_corr_")
 
   - title: Expressions for contingency table analysis
     desc: Functions to create expressions for contingency table analysis and one-sample goodness of fit proportion test
     contents:
-      - matches("expr_contingency_")
+      - matches("_contingency_")
 
   - title: Expressions for meta-analysis
     desc: Functions to create expressions for random-effects meta-analysis
     contents:
-      - matches("expr_meta_")
+      - matches("_meta_")
 
   - title: Helper functions
     contents:

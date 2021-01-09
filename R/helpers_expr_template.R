@@ -40,7 +40,7 @@
 #'   `quote(italic("n")["pairs"])` if `paired = TRUE`, and to
 #'   `quote(italic("n")["obs"])` if `paired = FALSE`.
 #' @param ... Currently ignored.
-#' @inheritParams expr_anova_parametric
+#' @inheritParams expr_oneway_anova
 #' @inheritParams ipmisc::long_to_wide_converter
 #'
 #' @importFrom ipmisc format_num
@@ -267,6 +267,7 @@ method_switch <- function(method) {
     "One-way analysis of means" = quote(italic("F")["Fisher"]),
     "Friedman rank sum test" = quote(chi["Friedman"]^2),
     "Kruskal-Wallis rank sum test" = quote(chi["Kruskal-Wallis"]^2),
+    "A heteroscedastic one-way ANOVA for trimmed means" = quote(italic("F")["trimmed-means"]),
     "Spearman" = quote("log"["e"](italic("S"))),
     "Chi-squared test for given probabilities" = quote(chi["gof"]^2),
     "Pearson's Chi-squared test" = quote(chi["Pearson"]^2),

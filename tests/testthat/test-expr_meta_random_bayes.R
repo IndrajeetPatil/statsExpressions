@@ -3,7 +3,7 @@
 test_that(
   desc = "expr_meta_random works",
   code = {
-    skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "4.0")
 
     # setup
     set.seed(123)

@@ -88,7 +88,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.6.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.7.0</span>
       </span>
     </div>
 
@@ -155,10 +155,10 @@
   <span class='va'>data</span>,
   <span class='va'>x</span>,
   <span class='va'>y</span>,
+  type <span class='op'>=</span> <span class='st'>"parametric"</span>,
   k <span class='op'>=</span> <span class='fl'>2L</span>,
   conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
   beta <span class='op'>=</span> <span class='fl'>0.1</span>,
-  type <span class='op'>=</span> <span class='st'>"parametric"</span>,
   bf.prior <span class='op'>=</span> <span class='fl'>0.707</span>,
   output <span class='op'>=</span> <span class='st'>"expression"</span>,
   <span class='va'>...</span>
@@ -185,6 +185,16 @@ be plotted on the <code>y</code>-axis. Can be entered either as a character stri
 (e.g., <code>"y"</code>) or as a bare expression (e.g, <code>y</code>).</p></td>
     </tr>
     <tr>
+      <th>type</th>
+      <td><p>Type of association between paired samples required
+("<code>"parametric"</code>: Pearson's product moment correlation coefficient" or
+"<code>"nonparametric"</code>: Spearman's rho" or "<code>"robust"</code>: percentage bend
+correlation coefficient" or "<code>"bayes"</code>: Bayes Factor for Pearson's <em>r</em>").
+Corresponding abbreviations are also accepted: <code>"p"</code> (for
+parametric/pearson), <code>"np"</code> (nonparametric/spearman), <code>"r"</code> (robust),
+<code>"bf"</code> (for bayes factor), resp.</p></td>
+    </tr>
+    <tr>
       <th>k</th>
       <td><p>Number of digits after decimal point (should be an integer)
 (Default: <code>k = 2L</code>).</p></td>
@@ -197,16 +207,6 @@ be plotted on the <code>y</code>-axis. Can be entered either as a character stri
     <tr>
       <th>beta</th>
       <td><p>bending constant (Default: <code>0.1</code>). For more, see <code><a href='https://rdrr.io/pkg/WRS2/man/pbcor.html'>WRS2::pbcor()</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>type</th>
-      <td><p>Type of association between paired samples required
-("<code>"parametric"</code>: Pearson's product moment correlation coefficient" or
-"<code>"nonparametric"</code>: Spearman's rho" or "<code>"robust"</code>: percentage bend
-correlation coefficient" or "<code>"bayes"</code>: Bayes Factor for Pearson's <em>r</em>").
-Corresponding abbreviations are also accepted: <code>"p"</code> (for
-parametric/pearson), <code>"np"</code> (nonparametric/spearman), <code>"r"</code> (robust),
-<code>"bf"</code> (for bayes factor), resp.</p></td>
     </tr>
     <tr>
       <th>bf.prior</th>

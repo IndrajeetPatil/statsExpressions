@@ -28,8 +28,7 @@
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams expr_t_twosample
 #' @inheritParams stats::chisq.test
-#' @inheritParams expr_anova_parametric
-#' @inheritParams expr_anova_nonparametric
+#' @inheritParams expr_oneway_anova
 #'
 #' @importFrom dplyr select mutate rename filter
 #' @importFrom rlang enquo as_name ensym exec
