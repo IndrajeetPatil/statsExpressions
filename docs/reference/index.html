@@ -87,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.6.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.7.0</span>
       </span>
     </div>
 
@@ -155,8 +155,8 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-expressions-for-one-sample-t-test" class="hasAnchor"><a href="#section-expressions-for-one-sample-t-test" class="anchor"></a>Expressions for one-sample t-test</h2>
-          <p class="section-desc"><p>Functions to create expressions for one-sample t-tests</p></p>
+          <h2 id="section-expressions-for-one-and-two-sample-t-tests" class="hasAnchor"><a href="#section-expressions-for-one-and-two-sample-t-tests" class="anchor"></a>Expressions for one-and two-sample t-tests</h2>
+          <p class="section-desc"><p>Functions to extract exressions or dataframes for one-and two-sample t-tests</p></p>
         </th>
       </tr>
       
@@ -171,43 +171,12 @@
         </td>
         <td><p>Expression for one sample <em>t</em>-test and its non-parametric and
 robust equivalents</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-expressions-for-two-sample-t-test" class="hasAnchor"><a href="#section-expressions-for-two-sample-t-test" class="anchor"></a>Expressions for two-sample t-test</h2>
-          <p class="section-desc"><p>Functions to create expressions for two-sample (both between-and within-subject designs) t-tests</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="expr_t_bayes.html">expr_t_bayes()</a></code> </p>
-        </td>
-        <td><p>Making expression containing Bayesian <em>t</em>-test results</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="expr_t_nonparametric.html">expr_t_nonparametric()</a></code> </p>
-        </td>
-        <td><p>Making expression for Mann-Whitney <em>U</em>-test/Wilcoxon test results</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="expr_t_parametric.html">expr_t_parametric()</a></code> </p>
+          <p><code><a href="expr_t_twosample.html">expr_t_twosample()</a></code> </p>
         </td>
         <td><p>Making expression containing <em>t</em>-test results</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="expr_t_robust.html">expr_t_robust()</a></code> </p>
-        </td>
-        <td><p>Expression containing results from a robust <em>t</em>-test</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -224,28 +193,9 @@ robust equivalents</p></td>
       <tr>
         
         <td>
-          <p><code><a href="expr_anova_bayes.html">expr_anova_bayes()</a></code> </p>
+          <p><code><a href="expr_oneway_anova.html">expr_oneway_anova()</a></code> </p>
         </td>
-        <td><p>Expression containing Bayesian one-way ANOVA results</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="expr_anova_nonparametric.html">expr_anova_nonparametric()</a></code> </p>
-        </td>
-        <td><p>Making text expression for non-parametric ANOVA.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="expr_anova_parametric.html">expr_anova_parametric()</a></code> </p>
-        </td>
-        <td><p>Expression containing parametric ANOVA results</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="expr_anova_robust.html">expr_anova_robust()</a></code> </p>
-        </td>
-        <td><p>Expression containing results from heteroscedastic one-way ANOVA for
-trimmed means</p></td>
+        <td><p>Expression containing ANOVA results</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -325,15 +275,21 @@ trimmed means</p></td>
       </tr><tr>
         
         <td>
+          <p><code><a href="tidy_model_effectsize.html">tidy_model_effectsize()</a></code> </p>
+        </td>
+        <td><p>Convert <code>effectsize</code> package output to <code>tidyverse</code> conventions</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="tidy_model_parameters.html">tidy_model_parameters()</a></code> </p>
         </td>
-        <td><p>Convert <code>parameters</code> output to <code>tidymodels</code> convention</p></td>
+        <td><p>Convert <code>parameters</code> package output to <code>tidyverse</code> conventions</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="tidy_model_performance.html">tidy_model_performance()</a></code> </p>
         </td>
-        <td><p>Convert <code>performance</code> output to <code>tidymodels</code> convention</p></td>
+        <td><p>Convert <code>performance</code> package output to <code>tidyverse</code> conventions</p></td>
       </tr>
     </tbody><tbody>
       <tr>

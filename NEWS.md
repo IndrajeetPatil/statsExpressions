@@ -1,4 +1,23 @@
-# statsExpressions 0.6.2.9000
+# statsExpressions 0.7.0
+
+BREAKING CHANGES
+
+  - To be consistent with `ggstatsplot`'s overall syntax philosophy the `type`
+    argument can be used to specify which type of statistical approach is to be
+    used for all functions.
+
+    * `expr_t_parametric`, `expr_t_nonparametric`, `expr_t_robust`,
+      `expr_t_bayes` are now removed in favor of a single function
+      `expr_t_twosample`.
+
+    * `expr_anova_parametric`, `expr_anova_nonparametric`, `expr_anova_robust`,
+      `expr_anova_bayes` are now removed in favor of a single function
+      `expr_oneway_anova`.
+
+BUG FIXES
+
+  - `expr_contingency_tab` ignored `ratio` argument while computing Cramer's *V*
+    for one-sample test. This is fixed.
 
 MAJOR CHANGES
 
@@ -10,7 +29,7 @@ MINOR CHANGES
 
   - Package internally relies on `afex` instead of `ez` for within-subjects
     ANOVA.
-    
+
   - `expr_template` gains `paired` argument.
 
 # statsExpressions 0.6.2

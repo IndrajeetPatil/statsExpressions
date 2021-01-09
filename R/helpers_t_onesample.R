@@ -12,11 +12,11 @@
 #' @param robust.estimator If `type = "robust"`, a robust estimator to be used
 #'   (`"onestep"` (Default), `"mom"`, or `"median"`). For more, see
 #'   `?WRS2::onesampb`.
-#' @param ... Additional arguments passed to `tidyBF::bf_ttest`.
-#' @inheritParams expr_t_parametric
-#' @inheritParams tidyBF::bf_corr_test
-#' @inheritParams expr_anova_parametric
-#' @inheritParams expr_anova_nonparametric
+#' @inheritParams ipmisc::long_to_wide_converter
+#' @inheritParams expr_t_twosample
+#' @inheritParams expr_template
+#' @inheritParams expr_oneway_anova
+#' @inheritParams tidyBF::bf_ttest
 #'
 #' @return Expression containing results from a one-sample test. The exact test
 #'   and the effect size details contained will be dependent on the `type`
@@ -30,7 +30,7 @@
 #' @importFrom ipmisc stats_type_switch
 #' @importFrom effectsize cohens_d hedges_g rank_biserial
 #' @importFrom stats t.test wilcox.test na.omit
-#' @importFrom rlang !! ensym new_formula exec
+#' @importFrom rlang !! !!! enquo eval_tidy expr enexpr ensym exec new_formula
 #'
 #' @examples
 #' \donttest{
@@ -95,29 +95,21 @@ expr_t_onesample <- function(data,
   # standardize the type of statistics
   stats.type <- ipmisc::stats_type_switch(type)
 
-  # ========================= parametric ====================================
+  # ----------------------- parametric ---------------------------------------
 
   if (stats.type == "parametric") {
     # preparing expression parameters
     no.parameters <- 1L
     .f <- stats::t.test
-
-    # deciding which effect size to use (Hedge's g or Cohen's d)
-    if (effsize.type %in% c("unbiased", "g")) {
-      effsize.text <- quote(widehat(italic("g"))["Hedge"])
-      .f.es <- effectsize::hedges_g
-    } else {
-      effsize.text <- quote(widehat(italic("d"))["Cohen"])
-      .f.es <- effectsize::cohens_d
-    }
+    if (effsize.type %in% c("unbiased", "g")) .f.es <- effectsize::hedges_g
+    if (effsize.type %in% c("biased", "d")) .f.es <- effectsize::cohens_d
   }
 
-  # ========================== non-parametric ==============================
+  # ----------------------- non-parametric ---------------------------------------
 
   if (stats.type == "nonparametric") {
     # preparing expression parameters
     no.parameters <- 0L
-    effsize.text <- quote(widehat(italic("r"))["biserial"]^"rank")
     .f <- stats::wilcox.test
     .f.es <- effectsize::rank_biserial
   }
@@ -143,27 +135,26 @@ expr_t_onesample <- function(data,
         ci = conf.level,
         iterations = nboot
       ) %>%
-      insight::standardize_names(data = ., style = "broom")
+      tidy_model_effectsize(.)
 
     # these can be really big values
     if (stats.type == "nonparametric") stats_df %<>% dplyr::mutate(statistic = log(statistic))
 
-    # combining dataframes
-    stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("estimate|^conf")), effsize_df)
+    # dataframe
+    stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("^est|^conf|^diff")), effsize_df)
 
     # expression
     expression <-
       expr_template(
         no.parameters = no.parameters,
         stats.df = stats_df,
-        effsize.text = effsize.text,
         n = length(x_vec),
         conf.level = conf.level,
         k = k
       )
   }
 
-  # ======================= robust =========================================
+  # ----------------------- robust ---------------------------------------
 
   if (stats.type == "robust") {
     # running one-sample percentile bootstrap
@@ -201,17 +192,17 @@ expr_t_onesample <- function(data,
           n
         ),
         env = list(
-          estimate = format_num(x = stats_df$estimate[[1]], k = k),
-          conf.level = paste(conf.level * 100, "%", sep = ""),
-          LL = format_num(x = stats_df$conf.low[[1]], k = k),
-          UL = format_num(x = stats_df$conf.high[[1]], k = k),
-          p.value = format_num(x = stats_df$p.value[[1]], k = k, p.value = TRUE),
+          estimate = format_num(stats_df$estimate[[1]], k = k),
+          conf.level = paste0(conf.level * 100, "%"),
+          LL = format_num(stats_df$conf.low[[1]], k = k),
+          UL = format_num(stats_df$conf.high[[1]], k = k),
+          p.value = format_num(stats_df$p.value[[1]], k = k, p.value = TRUE),
           n = .prettyNum(length(x_vec))
         )
       )
   }
 
-  # ======================== bayes ============================================
+  # ----------------------- Bayesian ---------------------------------------
 
   # running Bayesian one-sample t-test
   if (stats.type == "bayes") {

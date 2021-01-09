@@ -10,7 +10,7 @@
 #' @inheritParams expr_t_onesample
 #' @inheritParams tidyBF::bf_meta_random
 #' @inheritParams metaplus::metaplus
-#' @inheritParams expr_anova_parametric
+#' @inheritParams expr_oneway_anova
 #' @param ... Additional arguments passed to the respective meta-analysis
 #'   function.
 #'

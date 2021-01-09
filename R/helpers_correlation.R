@@ -23,8 +23,7 @@
 #'   `"bf"` (for bayes factor), resp.
 #' @param beta bending constant (Default: `0.1`). For more, see [WRS2::pbcor()].
 #' @inheritParams tidyBF::bf_corr_test
-#' @inheritParams expr_anova_parametric
-#' @inheritParams expr_anova_nonparametric
+#' @inheritParams expr_oneway_anova
 #'
 #' @importFrom dplyr select rename_all recode
 #' @importFrom correlation correlation
@@ -57,10 +56,10 @@
 expr_corr_test <- function(data,
                            x,
                            y,
+                           type = "parametric",
                            k = 2L,
                            conf.level = 0.95,
                            beta = 0.1,
-                           type = "parametric",
                            bf.prior = 0.707,
                            output = "expression",
                            ...) {
@@ -90,27 +89,18 @@ expr_corr_test <- function(data,
         method = corr.method,
         ci = conf.level
       ) %>%
-      parameters::standardize_names(data = ., style = "broom")
+      parameters::standardize_names(data = ., style = "broom") %>%
+      dplyr::mutate(effectsize = method)
   }
 
   # ------------------------ expression elements -----------------------------
 
-  # preparing other needed objects
-  if (stats_type == "parametric") {
-    no.parameters <- 1L
-    effsize.text <- quote(widehat(italic("r"))["Pearson"])
-  }
+  # no. of parameters
+  if (stats_type == "parametric") no.parameters <- 1L
+  if (stats_type == "nonparametric") no.parameters <- 0L
+  if (stats_type == "robust") no.parameters <- 1L
 
-  if (stats_type == "nonparametric") {
-    stats_df %<>% dplyr::mutate(statistic = log(statistic))
-    no.parameters <- 0L
-    effsize.text <- quote(widehat(italic(rho))["Spearman"])
-  }
-
-  if (stats_type == "robust") {
-    no.parameters <- 1L
-    effsize.text <- quote(widehat(italic(rho))["% bend"])
-  }
+  if (stats_type == "nonparametric") stats_df %<>% dplyr::mutate(statistic = log(statistic))
 
   # ---------------------- preparing expression ---------------------------------
 
@@ -120,7 +110,6 @@ expr_corr_test <- function(data,
       expr_template(
         no.parameters = no.parameters,
         stats.df = stats_df,
-        effsize.text = effsize.text,
         paired = TRUE,
         n = stats_df$n.obs[[1]],
         conf.level = conf.level,

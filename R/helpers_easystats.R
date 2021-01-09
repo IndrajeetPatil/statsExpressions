@@ -1,12 +1,12 @@
 
 #' @name tidy_model_parameters
-#' @title Convert `parameters` output to `tidymodels` convention
+#' @title Convert `parameters` package output to `tidyverse` conventions
 #'
 #' @inheritParams parameters::model_parameters
 #'
 #' @importFrom parameters model_parameters
 #' @importFrom insight standardize_names
-#' @importFrom dplyr rename_all
+#' @importFrom dplyr select matches
 #'
 #' @examples
 #' model <- lm(mpg ~ wt + cyl, data = mtcars)
@@ -14,20 +14,14 @@
 #' @export
 
 tidy_model_parameters <- function(model, ...) {
-  # extracting parameters
-  df <- parameters::model_parameters(model, verbose = FALSE, ...)
-
-  # special handling for t-test
-  if ("Difference" %in% names(df)) df %<>% dplyr::select(-dplyr::matches("Diff|^CI"))
-
-  # naming clean-up
-  parameters::standardize_names(data = df, style = "broom") %>%
-    dplyr::rename_all(~ gsub("omega2\\.|eta2\\.|cohens\\.|cramers\\.|d\\.|g\\.", "", .x)) %>%
+  parameters::model_parameters(model, verbose = FALSE, ...) %>%
+    dplyr::select(-dplyr::matches("Difference")) %>%
+    parameters::standardize_names(data = ., style = "broom") %>%
     as_tibble(.)
 }
 
 #' @name tidy_model_performance
-#' @title Convert `performance` output to `tidymodels` convention
+#' @title Convert `performance` package output to `tidyverse` conventions
 #'
 #' @inheritParams performance::model_performance
 #'
@@ -41,5 +35,26 @@ tidy_model_parameters <- function(model, ...) {
 tidy_model_performance <- function(model, ...) {
   performance::model_performance(model, verbose = FALSE, ...) %>%
     parameters::standardize_names(data = ., style = "broom") %>%
+    as_tibble(.)
+}
+
+
+#' @name tidy_model_effectsize
+#' @title Convert `effectsize` package output to `tidyverse` conventions
+#'
+#' @param data Dataframe returned by `effectsize` functions.
+#'
+#' @importFrom effectsize get_effectsize_label
+#'
+#' @examples
+#' df <- effectsize::cohens_d(sleep$extra, sleep$group)
+#' tidy_model_effectsize(df)
+#' @export
+
+tidy_model_effectsize <- function(data) {
+  data %>%
+    dplyr::mutate(effectsize = stats::na.omit(effectsize::get_effectsize_label(colnames(.)))[[1]]) %>%
+    parameters::standardize_names(data = ., style = "broom") %>%
+    dplyr::select(-dplyr::contains("term")) %>%
     as_tibble(.)
 }

@@ -1,191 +1,44 @@
-# between-subjects ----------------------------------------------------------
+# within-subjects ------------------------------------------------------------
 
 test_that(
-  desc = "between-subjects - data with and without NAs",
+  desc = "expr_t_robust - within-subjects - without NAs",
   code = {
     skip_if(getRversion() < "3.6")
 
-    # `statsExpressions` output
+    # subtitle
     set.seed(123)
     using_function1 <-
-      expr_anova_nonparametric(
-        data = dplyr::sample_frac(movies_long, 0.1),
-        x = "genre",
-        y = length,
-        paired = FALSE,
-        k = 5
+      expr_t_twosample(
+        type = "r",
+        data = dplyr::filter(iris_long, condition %in% c("Sepal.Length", "Sepal.Width")),
+        x = "condition",
+        y = value,
+        paired = TRUE,
+        k = 4
       )
 
-    # expected output
-    set.seed(123)
+    # expected
     results1 <-
       ggplot2::expr(
         paste(
-          chi["Kruskal-Wallis"]^2,
+          italic("t")["Yuen"],
           "(",
-          "8",
+          "119",
           ") = ",
-          "51.42672",
+          "31.9809",
           ", ",
           italic("p"),
           " = ",
-          "2.1714e-08",
+          "0e+00",
           ", ",
-          widehat(epsilon)["ordinal"]^2,
+          widehat(italic(delta))["R"],
           " = ",
-          "0.32756",
+          "2.6018",
           ", CI"["95%"],
           " [",
-          "0.25737",
+          "2.2905",
           ", ",
-          "0.50585",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          "158"
-        )
-      )
-
-    # testing overall call
-    expect_identical(using_function1, results1)
-
-    # `statsExpressions` output
-    set.seed(123)
-    using_function2 <-
-      suppressWarnings(expr_anova_nonparametric(
-        data = ggplot2::msleep,
-        x = vore,
-        y = sleep_cycle,
-        k = 3,
-        paired = FALSE,
-        conf.level = 0.99
-      ))
-
-    # expected output
-    set.seed(123)
-    results2 <-
-      ggplot2::expr(
-        paste(
-          chi["Kruskal-Wallis"]^2,
-          "(",
-          "3",
-          ") = ",
-          "5.240",
-          ", ",
-          italic("p"),
-          " = ",
-          "0.155",
-          ", ",
-          widehat(epsilon)["ordinal"]^2,
-          " = ",
-          "0.175",
-          ", CI"["99%"],
-          " [",
-          "0.053",
-          ", ",
-          "0.494",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          "31"
-        )
-      )
-
-    # testing overall call
-    expect_identical(using_function2, results2)
-  }
-)
-
-# within-subjects -------------------------------------------------------
-
-test_that(
-  desc = "within-subjects - data with and without NAs",
-  code = {
-    skip_if(getRversion() < "3.6")
-
-    # `statsExpressions` output
-    set.seed(123)
-    using_function1 <-
-      expr_anova_nonparametric(
-        data = bugs_long,
-        x = condition,
-        y = "desire",
-        k = 4L,
-        paired = TRUE,
-        conf.level = 0.99
-      )
-
-    # expected output
-    set.seed(123)
-    results1 <-
-      ggplot2::expr(
-        paste(
-          chi["Friedman"]^2,
-          "(",
-          "3",
-          ") = ",
-          "55.8338",
-          ", ",
-          italic("p"),
-          " = ",
-          "4.558e-12",
-          ", ",
-          widehat(italic("W"))["Kendall"],
-          " = ",
-          "0.6021",
-          ", CI"["99%"],
-          " [",
-          "0.6021",
-          ", ",
-          "0.9748",
-          "]",
-          ", ",
-          italic("n")["pairs"],
-          " = ",
-          "88"
-        )
-      )
-
-    # testing overall call
-    expect_identical(using_function1, results1)
-
-    # `statsExpressions` output
-    set.seed(123)
-    using_function2 <-
-      expr_anova_nonparametric(
-        data = iris_long,
-        x = condition,
-        y = "value",
-        k = 3,
-        paired = TRUE,
-        conf.level = 0.90
-      )
-
-    # expected output
-    set.seed(123)
-    results2 <-
-      ggplot2::expr(
-        paste(
-          chi["Friedman"]^2,
-          "(",
-          "3",
-          ") = ",
-          "410.000",
-          ", ",
-          italic("p"),
-          " = ",
-          "1.51e-88",
-          ", ",
-          widehat(italic("W"))["Kendall"],
-          " = ",
-          "0.484",
-          ", CI"["90%"],
-          " [",
-          "0.343",
-          ", ",
-          "0.969",
+          "2.8700",
           "]",
           ", ",
           italic("n")["pairs"],
@@ -195,7 +48,168 @@ test_that(
       )
 
     # testing overall call
-    expect_identical(using_function2, results2)
+    expect_identical(using_function1, results1)
+  }
+)
+
+test_that(
+  desc = "expr_t_robust - within-subjects - with NAs",
+  code = {
+    skip_if(getRversion() < "3.6")
+
+    # subtitle
+    set.seed(123)
+    using_function1 <-
+      expr_t_twosample(
+        type = "r",
+        data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+        x = "condition",
+        y = desire,
+        paired = TRUE,
+        k = 3
+      )
+
+    # expected
+    results1 <-
+      ggplot2::expr(
+        paste(
+          italic("t")["Yuen"],
+          "(",
+          "71",
+          ") = ",
+          "3.274",
+          ", ",
+          italic("p"),
+          " = ",
+          "0.002",
+          ", ",
+          widehat(italic(delta))["R"],
+          " = ",
+          "0.418",
+          ", CI"["95%"],
+          " [",
+          "0.210",
+          ", ",
+          "0.599",
+          "]",
+          ", ",
+          italic("n")["pairs"],
+          " = ",
+          "90"
+        )
+      )
+
+    # testing overall call
+    expect_identical(using_function1, results1)
+  }
+)
+
+
+# between-subjects ------------------------------------------------------------
+
+test_that(
+  desc = "expr_t_robust - between-subjects - without NAs",
+  code = {
+    skip_if(getRversion() < "3.6")
+
+    # subtitle
+    set.seed(123)
+    using_function1 <-
+      expr_t_twosample(
+        type = "r",
+        data = mtcars,
+        x = am,
+        y = "wt",
+        paired = FALSE,
+        conf.level = 0.99,
+        k = 3
+      )
+
+    # expected
+    results1 <-
+      ggplot2::expr(
+        paste(
+          italic("t")["Yuen"],
+          "(",
+          "24.816",
+          ") = ",
+          "5.255",
+          ", ",
+          italic("p"),
+          " = ",
+          "1.97e-05",
+          ", ",
+          widehat(italic(xi)),
+          " = ",
+          "0.818",
+          ", CI"["99%"],
+          " [",
+          "0.727",
+          ", ",
+          "0.985",
+          "]",
+          ", ",
+          italic("n")["obs"],
+          " = ",
+          "32"
+        )
+      )
+
+    # testing overall call
+    expect_identical(using_function1, results1)
+  }
+)
+
+test_that(
+  desc = "expr_t_robust - between-subjects - with NAs",
+  code = {
+    skip_if(getRversion() < "3.6")
+
+    # subtitle
+    set.seed(123)
+    using_function1 <-
+      expr_t_twosample(
+        type = "r",
+        data = dplyr::filter(ggplot2::msleep, vore %in% c("carni", "herbi")),
+        x = "vore",
+        y = "brainwt",
+        paired = FALSE,
+        conf.level = 0.90,
+        k = 4
+      )
+
+    # expected
+    results1 <-
+      ggplot2::expr(
+        paste(
+          italic("t")["Yuen"],
+          "(",
+          "20.9388",
+          ") = ",
+          "0.6891",
+          ", ",
+          italic("p"),
+          " = ",
+          "0.4983",
+          ", ",
+          widehat(italic(xi)),
+          " = ",
+          "0.2874",
+          ", CI"["90%"],
+          " [",
+          "0.0000",
+          ", ",
+          "0.5875",
+          "]",
+          ", ",
+          italic("n")["obs"],
+          " = ",
+          "29"
+        )
+      )
+
+    # testing overall call
+    expect_identical(using_function1, results1)
   }
 )
 
@@ -206,16 +220,18 @@ test_that(
   desc = "dataframe",
   code = {
     expect_s3_class(
-      expr_anova_nonparametric(
-        data = mtcars,
-        x = cyl,
-        y = wt,
+      statsExpressions::expr_t_twosample(
+        type = "r",
+        data = dplyr::filter(movies_long, genre == "Action" | genre == "Drama"),
+        x = "genre",
+        y = rating,
         output = "dataframe"
       ),
       "tbl_df"
     )
   }
 )
+
 
 # works with subject id ------------------------------------------------------
 
@@ -252,10 +268,13 @@ test_that(
         45L
       ), class = "data.frame")
 
+    df <- dplyr::filter(df, condition %in% c(1, 5))
+
     # incorrect
     set.seed(123)
     expr1 <-
-      expr_anova_nonparametric(
+      statsExpressions::expr_t_twosample(
+        type = "r",
         data = df,
         x = condition,
         y = score,
@@ -266,7 +285,8 @@ test_that(
     # correct
     set.seed(123)
     expr2 <-
-      expr_anova_nonparametric(
+      statsExpressions::expr_t_twosample(
+        type = "r",
         data = dplyr::arrange(df, id),
         x = condition,
         y = score,

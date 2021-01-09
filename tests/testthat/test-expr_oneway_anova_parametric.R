@@ -8,7 +8,7 @@ test_that(
     # statsExpression output
     set.seed(123)
     using_function1 <-
-      expr_anova_parametric(
+      expr_oneway_anova(
         data = dplyr::sample_frac(movies_long, 0.1),
         x = genre,
         y = rating,
@@ -64,7 +64,7 @@ test_that(
     # statsExpression output
     set.seed(123)
     using_function1 <-
-      expr_anova_parametric(
+      expr_oneway_anova(
         data = ggplot2::msleep,
         x = vore,
         y = "sleep_rem",
@@ -119,7 +119,7 @@ test_that(
     # statsExpression output
     set.seed(123)
     using_function1 <-
-      expr_anova_parametric(
+      expr_oneway_anova(
         data = ggplot2::msleep,
         x = vore,
         y = sleep_rem,
@@ -175,7 +175,7 @@ test_that(
     # statsExpression output
     set.seed(123)
     using_function1 <-
-      expr_anova_parametric(
+      expr_oneway_anova(
         data = iris_long,
         x = "condition",
         y = value,
@@ -289,7 +289,7 @@ test_that(
     # capture the message
     set.seed(123)
     p_sub <-
-      suppressWarnings(expr_anova_parametric(
+      suppressWarnings(expr_oneway_anova(
         data = df,
         x = x,
         y = y,
@@ -369,7 +369,7 @@ test_that(
     # incorrect
     set.seed(123)
     expr1 <-
-      expr_anova_parametric(
+      expr_oneway_anova(
         data = df,
         x = condition,
         y = score,
@@ -380,7 +380,7 @@ test_that(
     # correct
     set.seed(123)
     expr2 <-
-      expr_anova_parametric(
+      expr_oneway_anova(
         data = dplyr::arrange(df, id),
         x = condition,
         y = score,
@@ -397,7 +397,7 @@ test_that(
   desc = "dataframe",
   code = {
     expect_s3_class(
-      expr_anova_parametric(
+      expr_oneway_anova(
         data = mtcars,
         x = cyl,
         y = wt,

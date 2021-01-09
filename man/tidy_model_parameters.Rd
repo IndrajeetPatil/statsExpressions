@@ -2,7 +2,7 @@
 % Please edit documentation in R/helpers_easystats.R
 \name{tidy_model_parameters}
 \alias{tidy_model_parameters}
-\title{Convert \code{parameters} output to \code{tidymodels} convention}
+\title{Convert \code{parameters} package output to \code{tidyverse} conventions}
 \usage{
 tidy_model_parameters(model, ...)
 }
@@ -12,7 +12,7 @@ tidy_model_parameters(model, ...)
 \item{...}{Arguments passed to or from other methods. Non-documented arguments are \code{digits}, \code{p_digits} and \code{ci_digits} to set the number of digits for the output. See 'Examples' in \code{\link[parameters]{model_parameters.default}}.}
 }
 \description{
-Convert \code{parameters} output to \code{tidymodels} convention
+Convert \code{parameters} package output to \code{tidyverse} conventions
 }
 \examples{
 model <- lm(mpg ~ wt + cyl, data = mtcars)

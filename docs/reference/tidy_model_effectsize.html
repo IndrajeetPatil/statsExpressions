@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Making text expression for non-parametric ANOVA. — expr_anova_nonparametric • statsExpressions</title>
+<title>Convert effectsize package output to tidyverse conventions — tidy_model_effectsize • statsExpressions</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,8 +54,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Making text expression for non-parametric ANOVA. — expr_anova_nonparametric" />
-<meta property="og:description" content="Making text expression for non-parametric ANOVA." />
+<meta property="og:title" content="Convert effectsize package output to tidyverse conventions — tidy_model_effectsize" />
+<meta property="og:description" content="Convert effectsize package output to tidyverse conventions" />
 <meta property="og:image" content="https://indrajeetpatil.github.io/statsExpressions/logo.png" />
 
 
@@ -88,7 +88,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.6.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.7.0</span>
       </span>
     </div>
 
@@ -142,129 +142,34 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Making text expression for non-parametric ANOVA.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/helpers_anova.R'><code>R/helpers_anova.R</code></a></small>
-    <div class="hidden name"><code>expr_anova_nonparametric.Rd</code></div>
+    <h1>Convert <code>effectsize</code> package output to <code>tidyverse</code> conventions</h1>
+    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/helpers_easystats.R'><code>R/helpers_easystats.R</code></a></small>
+    <div class="hidden name"><code>tidy_model_effectsize.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Making text expression for non-parametric ANOVA.</p>
+    <p>Convert <code>effectsize</code> package output to <code>tidyverse</code> conventions</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expr_anova_nonparametric</span><span class='op'>(</span>
-  <span class='va'>data</span>,
-  <span class='va'>x</span>,
-  <span class='va'>y</span>,
-  subject.id <span class='op'>=</span> <span class='cn'>NULL</span>,
-  paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  k <span class='op'>=</span> <span class='fl'>2L</span>,
-  conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
-  nboot <span class='op'>=</span> <span class='fl'>100L</span>,
-  output <span class='op'>=</span> <span class='st'>"expression"</span>,
-  <span class='va'>...</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>tidy_model_effectsize</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>A dataframe (or a tibble) from which variables specified are to
-be taken. A matrix or tables will <strong>not</strong> be accepted.</p></td>
-    </tr>
-    <tr>
-      <th>x</th>
-      <td><p>The grouping variable from the dataframe <code>data</code>.</p></td>
-    </tr>
-    <tr>
-      <th>y</th>
-      <td><p>The response (a.k.a. outcome or dependent) variable from the
-dataframe <code>data</code>.</p></td>
-    </tr>
-    <tr>
-      <th>subject.id</th>
-      <td><p>In case of repeated measures design (<code>paired = TRUE</code>,
-i.e.), this argument specifies the subject or repeated measures id. Note
-that if this argument is <code>NULL</code> (which is the default), the function
-assumes that the data has already been sorted by such an id by the user and
-creates an internal identifier. So if your data is <strong>not</strong> sorted and you
-leave this argument unspecified, the results can be inaccurate.</p></td>
-    </tr>
-    <tr>
-      <th>paired</th>
-      <td><p>Logical that decides whether the experimental design is
-repeated measures/within-subjects or between-subjects. The default is
-<code>FALSE</code>.</p></td>
-    </tr>
-    <tr>
-      <th>k</th>
-      <td><p>Number of digits after decimal point (should be an integer)
-(Default: <code>k = 2L</code>).</p></td>
-    </tr>
-    <tr>
-      <th>conf.level</th>
-      <td><p>Scalar between 0 and 1. If unspecified, the defaults return
-<code>95%</code> confidence/credible intervals (<code>0.95</code>).</p></td>
-    </tr>
-    <tr>
-      <th>nboot</th>
-      <td><p>Number of bootstrap samples for computing confidence interval
-for the effect size (Default: <code>100</code>).</p></td>
-    </tr>
-    <tr>
-      <th>output</th>
-      <td><p>If <code>"expression"</code>, will return expression with statistical
-details, while <code>"dataframe"</code> will return a dataframe containing the
-results.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Currently ignored.</p></td>
+      <td><p>Dataframe returned by <code>effectsize</code> functions.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>For more details, see-
-<a href='https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html'>https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html</a></p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>For paired designs, the effect size is Kendall's coefficient of
-concordance (<em>W</em>), while for between-subjects designs, the effect size is
-rank epsilon-squared.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># setup</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://indrajeetpatil.github.io/statsExpressions/'>statsExpressions</a></span><span class='op'>)</span>
-
-<span class='co'># -------------- within-subjects design --------------------------------</span>
-
-<span class='co'># creating the expression</span>
-<span class='fu'>expr_anova_nonparametric</span><span class='op'>(</span>
-  data <span class='op'>=</span> <span class='va'>bugs_long</span>,
-  x <span class='op'>=</span> <span class='va'>condition</span>,
-  y <span class='op'>=</span> <span class='va'>desire</span>,
-  paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  conf.level <span class='op'>=</span> <span class='fl'>0.99</span>,
-  k <span class='op'>=</span> <span class='fl'>2</span>
-<span class='op'>)</span>
-</div><div class='output co'>#&gt; paste(chi["Friedman"]^2, "(", "3", ") = ", "55.83", ", ", italic("p"), 
-#&gt;     " = ", "4.56e-12", ", ", widehat(italic("W"))["Kendall"], 
-#&gt;     " = ", "0.60", ", CI"["99%"], " [", "0.60", ", ", "0.97", 
-#&gt;     "]", ", ", italic("n")["pairs"], " = ", "88")</div><div class='input'>
-<span class='co'># -------------- between-subjects design --------------------------------</span>
-
-<span class='fu'>expr_anova_nonparametric</span><span class='op'>(</span>
-  data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
-  x <span class='op'>=</span> <span class='va'>vore</span>,
-  y <span class='op'>=</span> <span class='va'>sleep_rem</span>,
-  paired <span class='op'>=</span> <span class='cn'>FALSE</span>
-<span class='op'>)</span>
-</div><div class='output co'>#&gt; paste(chi["Kruskal-Wallis"]^2, "(", "3", ") = ", "9.06", ", ", 
-#&gt;     italic("p"), " = ", "0.028", ", ", widehat(epsilon)["ordinal"]^2, 
-#&gt;     " = ", "0.16", ", CI"["95%"], " [", "0.05", ", ", "0.36", 
-#&gt;     "]", ", ", italic("n")["obs"], " = ", "56")</div></pre>
+    <pre class="examples"><div class='input'><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>effectsize</span><span class='fu'>::</span><span class='fu'><a href='https://easystats.github.io/effectsize/reference/cohens_d.html'>cohens_d</a></span><span class='op'>(</span><span class='va'>sleep</span><span class='op'>$</span><span class='va'>extra</span>, <span class='va'>sleep</span><span class='op'>$</span><span class='va'>group</span><span class='op'>)</span>
+<span class='fu'>tidy_model_effectsize</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 5</span><span>
+#&gt;   </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>ci.width</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>effectsize</span><span>
+#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; </span><span style='color: #555555;'>1</span><span>   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>832</span><span>     </span><span style='color: #555555;'>0.</span><span>95    -</span><span style='color: #BB0000;'>1.74</span><span>    </span><span style='color: #555555;'>0.0</span><span>95</span><span style='text-decoration: underline;'>5</span><span> Cohen's d </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

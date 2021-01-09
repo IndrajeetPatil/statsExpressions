@@ -57,7 +57,7 @@ for the effect size (Default: \code{100}).}
 details, while \code{"dataframe"} will return a dataframe containing the
 results.}
 
-\item{...}{Additional arguments passed to \code{tidyBF::bf_ttest}.}
+\item{...}{Currently ignored.}
 }
 \value{
 Expression containing results from a one-sample test. The exact test

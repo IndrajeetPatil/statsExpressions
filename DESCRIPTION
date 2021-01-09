@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Expressions and Dataframes with Statistical Details
-Version: 0.6.2.9000
+Version: 0.7.0
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",

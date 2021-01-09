@@ -9,7 +9,8 @@ test_that(
     # `statsExpressions` output
     set.seed(123)
     using_function1 <-
-      statsExpressions::expr_anova_robust(
+      expr_oneway_anova(
+        type = "robust",
         data = mtcars,
         x = cyl,
         y = "wt",
@@ -57,7 +58,8 @@ test_that(
     # `statsExpressions` output
     set.seed(123)
     using_function2 <-
-      suppressWarnings(statsExpressions::expr_anova_robust(
+      suppressWarnings(expr_oneway_anova(
+        type = "robust",
         data = dplyr::filter(ggplot2::msleep, vore != "insecti"),
         x = vore,
         y = sleep_total,
@@ -114,8 +116,9 @@ test_that(
     # `statsExpressions` output
     set.seed(123)
     using_function1 <-
-      statsExpressions::expr_anova_robust(
-        data = statsExpressions::bugs_long,
+      expr_oneway_anova(
+        type = "robust",
+        data = bugs_long,
         x = "condition",
         y = desire,
         k = 4,
@@ -151,7 +154,8 @@ test_that(
     # `statsExpressions` output
     set.seed(123)
     using_function2 <-
-      statsExpressions::expr_anova_robust(
+      expr_oneway_anova(
+        type = "robust",
         data = iris_long,
         x = condition,
         y = value,
@@ -194,7 +198,8 @@ test_that(
   desc = "dataframe",
   code = {
     expect_s3_class(
-      statsExpressions::expr_anova_robust(
+      expr_oneway_anova(
+        type = "robust",
         data = mtcars,
         x = cyl,
         y = wt,
@@ -243,7 +248,8 @@ test_that(
     # incorrect
     set.seed(123)
     expr1 <-
-      statsExpressions::expr_anova_robust(
+      expr_oneway_anova(
+        type = "robust",
         data = df,
         x = condition,
         y = score,
@@ -254,7 +260,8 @@ test_that(
     # correct
     set.seed(123)
     expr2 <-
-      statsExpressions::expr_anova_robust(
+      expr_oneway_anova(
+        type = "robust",
         data = dplyr::arrange(df, id),
         x = condition,
         y = score,

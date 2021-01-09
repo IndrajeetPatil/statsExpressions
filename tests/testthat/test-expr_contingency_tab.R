@@ -8,7 +8,7 @@ test_that(
     # `statsExpressions` output
     set.seed(123)
     using_function1 <-
-      suppressWarnings(statsExpressions::expr_contingency_tab(
+      suppressWarnings(expr_contingency_tab(
         data = mtcars,
         x = "am",
         y = cyl,
@@ -53,7 +53,7 @@ test_that(
     # with counts
     set.seed(123)
     using_function2 <-
-      statsExpressions::expr_contingency_tab(
+      expr_contingency_tab(
         data = as.data.frame(Titanic),
         x = names(as.data.frame(Titanic))[2],
         y = Survived,
@@ -104,7 +104,7 @@ test_that(
     # introduce NAs
     set.seed(123)
     using_function1 <-
-      suppressWarnings(statsExpressions::expr_contingency_tab(
+      suppressWarnings(expr_contingency_tab(
         data = ggplot2::msleep,
         x = vore,
         y = "conservation",
@@ -179,7 +179,7 @@ test_that(
     set.seed(123)
     using_function1 <-
       suppressWarnings(
-        statsExpressions::expr_contingency_tab(
+        expr_contingency_tab(
           data = paired_data,
           x = "response_before",
           y = response_after,
@@ -269,7 +269,7 @@ test_that(
     set.seed(123)
     using_function1 <-
       suppressWarnings(
-        statsExpressions::expr_contingency_tab(
+        expr_contingency_tab(
           data = paired_data,
           x = response_before,
           y = "response_after",
@@ -350,7 +350,7 @@ test_that(
     # `statsExpressions` output
     set.seed(123)
     subtitle1 <-
-      suppressWarnings(statsExpressions::expr_contingency_tab(
+      suppressWarnings(expr_contingency_tab(
         data = df,
         x = Var1,
         y = Var2,
@@ -405,7 +405,7 @@ test_that(
     # subtitle
     set.seed(123)
     subtitle2 <-
-      statsExpressions::expr_contingency_tab(
+      expr_contingency_tab(
         data = dfEx,
         x = cat1,
         y = cat2,
@@ -456,7 +456,7 @@ test_that(
     # `statsExpressions` output
     set.seed(123)
     using_function1 <-
-      suppressWarnings(statsExpressions::expr_contingency_tab(
+      suppressWarnings(expr_contingency_tab(
         data = mtcars,
         x = "am",
         conf.level = 0.99,
@@ -500,7 +500,7 @@ test_that(
     # with counts
     set.seed(123)
     using_function2 <-
-      statsExpressions::expr_contingency_tab(
+      expr_contingency_tab(
         data = as.data.frame(Titanic),
         x = Sex,
         counts = "Freq"
@@ -550,7 +550,7 @@ test_that(
     # `statsExpressions` output
     set.seed(123)
     using_function1 <-
-      statsExpressions::expr_contingency_tab(
+      expr_contingency_tab(
         data = as.data.frame(Titanic),
         x = Sex,
         counts = "Freq",
@@ -603,7 +603,7 @@ test_that(
     # from function
     set.seed(123)
     using_function <-
-      statsExpressions::expr_contingency_tab(
+      expr_contingency_tab(
         data = ggplot2::msleep,
         x = vore,
         ratio = c(0.2, 0.2, 0.3, 0.3)
@@ -625,12 +625,12 @@ test_that(
           ", ",
           widehat(italic("V"))["Cramer"],
           " = ",
-          "0.27",
+          "0.37",
           ", CI"["95%"],
           " [",
-          "0.11",
+          "0.22",
           ", ",
-          "0.38",
+          "0.49",
           "]",
           ", ",
           italic("n")["obs"],
@@ -660,7 +660,7 @@ test_that(
     # subtitle
     set.seed(123)
     sub <- suppressWarnings(
-      statsExpressions::expr_contingency_tab(df, x, y, messages = FALSE)
+      expr_contingency_tab(df, x, y, messages = FALSE)
     )
 
     # test
@@ -742,7 +742,7 @@ test_that(
   desc = "dataframe",
   code = {
     expect_s3_class(
-      statsExpressions::expr_contingency_tab(
+      expr_contingency_tab(
         data = as.data.frame(HairEyeColor),
         x = Eye,
         counts = Freq,

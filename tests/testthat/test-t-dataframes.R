@@ -65,6 +65,12 @@ test_that(
             0.374701843243403,
             0.254339866355058,
             0.121770038540287
+          ),
+          effectsize = c(
+            "Cohen's d",
+            "Hedges' g",
+            "Cohen's d",
+            "Hedges' g"
           )
         ),
         row.names = c(NA, -4L),
@@ -86,7 +92,7 @@ test_that(
           conf.level = list(0.89, 0.99, 0.90, 0.50),
           output = list("dataframe")
         ),
-        .f = statsExpressions::expr_t_parametric
+        .f = statsExpressions::expr_t_twosample
       )
 
     expect_equal(
@@ -148,6 +154,12 @@ test_that(
             2.92929408313073,
             2.59414985250707,
             2.11415288387047
+          ),
+          effectsize = c(
+            "Cohen's d",
+            "Hedges' g",
+            "Cohen's d",
+            "Hedges' g"
           )
         ),
         row.names = c(
@@ -173,7 +185,7 @@ test_that(
           conf.level = list(0.89, 0.99, 0.90, 0.50),
           output = list("dataframe")
         ),
-        .f = statsExpressions::expr_t_parametric
+        .f = statsExpressions::expr_t_twosample
       )
 
     expect_equal(
@@ -222,6 +234,12 @@ test_that(
             0.659309890984744,
             0.562603847478034,
             0.452141340639216
+          ),
+          effectsize = c(
+            "Cohen's d",
+            "Hedges' g",
+            "Cohen's d",
+            "Hedges' g"
           )
         ),
         row.names = c(

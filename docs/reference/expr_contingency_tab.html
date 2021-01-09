@@ -88,7 +88,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.6.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.7.0</span>
       </span>
     </div>
 
@@ -243,7 +243,7 @@ categorical variable.</p>
 
 <span class='co'># ------------------------ association tests -----------------------------</span>
 
-<span class='co'># without counts data</span>
+<span class='co'># without counts and between-subjects</span>
 <span class='fu'>expr_contingency_tab</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>mtcars</span>,
   x <span class='op'>=</span> <span class='va'>am</span>,
@@ -265,7 +265,7 @@ categorical variable.</p>
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; paste(chi["gof"]^2, "(", "3", ") = ", "278.96", ", ", italic("p"), 
 #&gt;     " = ", "3.56e-60", ", ", widehat(italic("V"))["Cramer"], 
-#&gt;     " = ", "0.27", ", CI"["95%"], " [", "0.22", ", ", "0.32", 
+#&gt;     " = ", "0.40", ", CI"["95%"], " [", "0.35", ", ", "0.44", 
 #&gt;     "]", ", ", italic("n")["obs"], " = ", "592")</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

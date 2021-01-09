@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.6.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.7.0</span>
       </span>
     </div>
 
@@ -98,7 +98,7 @@
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2021-01-06</h4>
+            <h4 class="date">2021-01-09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -141,16 +141,16 @@
   type <span class="op">=</span> <span class="st">"parametric"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
+<span class="co">#&gt; # A tibble: 1 x 11</span>
 <span class="co">#&gt;   term                                                                          </span>
 <span class="co">#&gt;   &lt;chr&gt;                                                                         </span>
 <span class="co">#&gt; 1 "structure(c(0.0155, 0.00029, 0.423, 0.07, 0.0982, 0.115, 0.0055, 0.0064, 0.0~</span>
 <span class="co">#&gt;      mu statistic df.error p.value method            estimate ci.width conf.low</span>
 <span class="co">#&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 0.275    0.0504       55   0.960 One Sample t-test  0.00665     0.95   -0.254</span>
-<span class="co">#&gt;   conf.high</span>
-<span class="co">#&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     0.267</span>
+<span class="co">#&gt;   conf.high effectsize</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;     </span>
+<span class="co">#&gt; 1     0.267 Hedges' g</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -163,16 +163,16 @@
   type <span class="op">=</span> <span class="st">"nonparametric"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 9</span>
+<span class="co">#&gt; # A tibble: 1 x 10</span>
 <span class="co">#&gt;   parameter1                                                                    </span>
 <span class="co">#&gt;   &lt;chr&gt;                                                                         </span>
 <span class="co">#&gt; 1 "structure(c(0.0155, 0.00029, 0.423, 0.07, 0.0982, 0.115, 0.0055, 0.0064, 0.0~</span>
 <span class="co">#&gt;   parameter2 statistic    p.value method                    estimate ci.width</span>
 <span class="co">#&gt;   &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                        &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 &lt;NA&gt;            5.51 0.00000738 Wilcoxon signed rank test    0.689     0.95</span>
-<span class="co">#&gt;   conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    0.437     0.929</span>
+<span class="co">#&gt; 1 &lt;NA&gt;            5.51 0.00000738 Wilcoxon signed rank test   -0.689     0.95</span>
+<span class="co">#&gt;   conf.low conf.high effectsize       </span>
+<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;            </span>
+<span class="co">#&gt; 1   -0.929    -0.437 r (rank biserial)</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -185,10 +185,13 @@
   type <span class="op">=</span> <span class="st">"robust"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 6</span>
-<span class="co">#&gt;   estimate conf.low conf.high p.value n.obs method                         </span>
-<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;                          </span>
-<span class="co">#&gt; 1   0.0211   0.0107    0.0685       0    56 One-sample percentile bootstrap</span>
+<span class="co">#&gt; # A tibble: 1 x 7</span>
+<span class="co">#&gt;   estimate conf.low conf.high p.value n.obs effectsize             </span>
+<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;                  </span>
+<span class="co">#&gt; 1   0.0211   0.0107    0.0685       0    56 Robust location measure</span>
+<span class="co">#&gt;   method                         </span>
+<span class="co">#&gt;   &lt;chr&gt;                          </span>
+<span class="co">#&gt; 1 One-sample percentile bootstrap</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
@@ -202,15 +205,15 @@
   bf.prior <span class="op">=</span> <span class="fl">0.8</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2 x 11</span>
+<span class="co">#&gt; # A tibble: 2 x 12</span>
 <span class="co">#&gt;   term       estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Difference  0.00952  -0.250      0.255 0.532          0.619 </span>
 <span class="co">#&gt; 2 Cohens_d    0.276     0.0153     0.536 0.978          0.0525</span>
-<span class="co">#&gt;   prior.distribution prior.location prior.scale  bf10 log_e_bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 cauchy                          0         0.8 0.130      -2.04</span>
-<span class="co">#&gt; 2 cauchy                          0         0.8 0.130      -2.04</span></code></pre></div>
+<span class="co">#&gt;   prior.distribution prior.location prior.scale  bf10 method          log_e_bf10</span>
+<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 cauchy                          0         0.8 0.130 Bayesian t-test      -2.04</span>
+<span class="co">#&gt; 2 cauchy                          0         0.8 0.130 Bayesian t-test      -2.04</span></code></pre></div>
 </div>
 <div id="two-sample-tests" class="section level1">
 <h1 class="hasAnchor">
@@ -229,61 +232,64 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_t_parametric.html">expr_t_parametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">df</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
+  type <span class="op">=</span> <span class="st">"p"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
+<span class="co">#&gt; # A tibble: 1 x 11</span>
 <span class="co">#&gt;   term   group     statistic df.error       p.value method        estimate</span>
 <span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 desire condition      6.65       90 0.00000000222 Paired t-test    0.691</span>
-<span class="co">#&gt;   ci.width conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     0.95    0.465     0.922</span>
+<span class="co">#&gt;   ci.width conf.low conf.high effectsize</span>
+<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     </span>
+<span class="co">#&gt; 1     0.95    0.465     0.922 Hedges' g</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_t_nonparametric.html">expr_t_nonparametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">df</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
+  type <span class="op">=</span> <span class="st">"np"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 9</span>
+<span class="co">#&gt; # A tibble: 1 x 10</span>
 <span class="co">#&gt;   parameter1 parameter2 statistic      p.value method                   </span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;        &lt;dbl&gt; &lt;chr&gt;                    </span>
 <span class="co">#&gt; 1 desire     condition       7.72 0.0000000241 Wilcoxon signed rank test</span>
-<span class="co">#&gt;   estimate ci.width conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    0.761     0.95    0.600     0.874</span>
+<span class="co">#&gt;   estimate ci.width conf.low conf.high effectsize       </span>
+<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;            </span>
+<span class="co">#&gt; 1    0.761     0.95    0.600     0.874 r (rank biserial)</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_t_robust.html">expr_t_robust</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">df</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
+  type <span class="op">=</span> <span class="st">"r"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 12</span>
 <span class="co">#&gt;   statistic df.error       p.value</span>
 <span class="co">#&gt;       &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;</span>
 <span class="co">#&gt; 1      6.71       72 0.00000000375</span>
-<span class="co">#&gt;   method                                             effect_size `NULL` estimate</span>
-<span class="co">#&gt;   &lt;chr&gt;                                              &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Yuen's test on trimmed means for dependent samples AKP              0    0.621</span>
+<span class="co">#&gt;   method                                             effectsize `NULL` estimate</span>
+<span class="co">#&gt;   &lt;chr&gt;                                              &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Yuen's test on trimmed means for dependent samples AKP             0    0.621</span>
 <span class="co">#&gt;       S     M     L conf.low conf.high</span>
 <span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt; 1   0.1   0.3   0.5    0.385     0.798</span>
@@ -292,29 +298,35 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_t_bayes.html">expr_t_bayes</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">df</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
+  type <span class="op">=</span> <span class="st">"bf"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2 x 11</span>
+<span class="co">#&gt; # A tibble: 2 x 12</span>
 <span class="co">#&gt;   term       estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Difference   -1.62    -2.12     -1.14      1               0</span>
 <span class="co">#&gt; 2 Cohens_d      0.680    0.449     0.901     1               0</span>
-<span class="co">#&gt;   prior.distribution prior.location prior.scale     bf10 log_e_bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 cauchy                          0       0.707 4762370.       15.4</span>
-<span class="co">#&gt; 2 cauchy                          0       0.707 4762370.       15.4</span></code></pre></div>
+<span class="co">#&gt;   prior.distribution prior.location prior.scale     bf10 method         </span>
+<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;          </span>
+<span class="co">#&gt; 1 cauchy                          0       0.707 4762370. Bayesian t-test</span>
+<span class="co">#&gt; 2 cauchy                          0       0.707 4762370. Bayesian t-test</span>
+<span class="co">#&gt;   log_e_bf10</span>
+<span class="co">#&gt;        &lt;dbl&gt;</span>
+<span class="co">#&gt; 1       15.4</span>
+<span class="co">#&gt; 2       15.4</span></code></pre></div>
 </div>
 <div id="between-subjects-design" class="section level2">
 <h2 class="hasAnchor">
 <a href="#between-subjects-design" class="anchor"></a>between-subjects design</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
 
 <span class="co"># ----------------------- parametric ---------------------------------------</span>
@@ -322,96 +334,101 @@
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># unequal variance</span>
-<span class="fu"><a href="../../reference/expr_t_parametric.html">expr_t_parametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
   y <span class="op">=</span> <span class="va">len</span>,
+  type <span class="op">=</span> <span class="st">"p"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 12</span>
+<span class="co">#&gt; # A tibble: 1 x 13</span>
 <span class="co">#&gt;   term  group mean.group1 mean.group2 statistic df.error p.value</span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 len   supp         20.7        17.0      1.92     55.3  0.0606</span>
-<span class="co">#&gt;   method                  estimate ci.width conf.low conf.high</span>
-<span class="co">#&gt;   &lt;chr&gt;                      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Welch Two Sample t-test    0.488     0.95  -0.0212     0.993</span>
+<span class="co">#&gt;   method                  estimate ci.width conf.low conf.high effectsize</span>
+<span class="co">#&gt;   &lt;chr&gt;                      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     </span>
+<span class="co">#&gt; 1 Welch Two Sample t-test    0.488     0.95  -0.0212     0.993 Hedges' g</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># equal variance</span>
-<span class="fu"><a href="../../reference/expr_t_parametric.html">expr_t_parametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
   y <span class="op">=</span> <span class="va">len</span>,
   var.equal <span class="op">=</span> <span class="cn">TRUE</span>,
+  type <span class="op">=</span> <span class="st">"p"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 12</span>
+<span class="co">#&gt; # A tibble: 1 x 13</span>
 <span class="co">#&gt;   term  group mean.group1 mean.group2 statistic df.error p.value</span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 len   supp         20.7        17.0      1.92       58  0.0604</span>
-<span class="co">#&gt;   method            estimate ci.width conf.low conf.high</span>
-<span class="co">#&gt;   &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Two Sample t-test    0.488     0.95  -0.0212     0.993</span>
+<span class="co">#&gt;   method            estimate ci.width conf.low conf.high effectsize</span>
+<span class="co">#&gt;   &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     </span>
+<span class="co">#&gt; 1 Two Sample t-test    0.488     0.95  -0.0212     0.993 Hedges' g</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_t_nonparametric.html">expr_t_nonparametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
   y <span class="op">=</span> <span class="va">len</span>,
+  type <span class="op">=</span> <span class="st">"np"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 9</span>
+<span class="co">#&gt; # A tibble: 1 x 10</span>
 <span class="co">#&gt;   parameter1 parameter2 statistic p.value method                 estimate</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 len        supp            6.36  0.0645 Wilcoxon rank sum test    0.279</span>
-<span class="co">#&gt;   ci.width conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     0.95  -0.0124     0.561</span>
+<span class="co">#&gt;   ci.width conf.low conf.high effectsize       </span>
+<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;            </span>
+<span class="co">#&gt; 1     0.95  -0.0124     0.561 r (rank biserial)</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_t_robust.html">expr_t_robust</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
   y <span class="op">=</span> <span class="va">len</span>,
+  type <span class="op">=</span> <span class="st">"r"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 7</span>
+<span class="co">#&gt; # A tibble: 1 x 8</span>
 <span class="co">#&gt;   statistic df.error p.value</span>
 <span class="co">#&gt;       &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span>
 <span class="co">#&gt; 1      2.05     45.2  0.0460</span>
 <span class="co">#&gt;   method                                               estimate conf.low</span>
 <span class="co">#&gt;   &lt;chr&gt;                                                   &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Yuen's test on trimmed means for independent samples    0.384   0.0401</span>
-<span class="co">#&gt;   conf.high</span>
-<span class="co">#&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     0.659</span>
+<span class="co">#&gt;   conf.high effectsize                        </span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;                             </span>
+<span class="co">#&gt; 1     0.659 Explanatory measure of effect size</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_t_bayes.html">expr_t_bayes</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
   y <span class="op">=</span> <span class="va">len</span>,
+  type <span class="op">=</span> <span class="st">"bf"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2 x 11</span>
+<span class="co">#&gt; # A tibble: 2 x 12</span>
 <span class="co">#&gt;   term       estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Difference   -3.16   -6.66       0.528 0.960          0.0424</span>
 <span class="co">#&gt; 2 Cohens_d      0.416  -0.0277     0.921 0.964          0.0494</span>
-<span class="co">#&gt;   prior.distribution prior.location prior.scale  bf10 log_e_bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 cauchy                          0       0.707  1.20      0.181</span>
-<span class="co">#&gt; 2 cauchy                          0       0.707  1.20      0.181</span></code></pre></div>
+<span class="co">#&gt;   prior.distribution prior.location prior.scale  bf10 method          log_e_bf10</span>
+<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 cauchy                          0       0.707  1.20 Bayesian t-test      0.181</span>
+<span class="co">#&gt; 2 cauchy                          0       0.707  1.20 Bayesian t-test      0.181</span></code></pre></div>
 </div>
 </div>
 <div id="one-way-anovas" class="section level1">
@@ -428,49 +445,58 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_anova_parametric.html">expr_anova_parametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">bugs_long</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
+  type <span class="op">=</span> <span class="st">"p"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 12</span>
+<span class="co">#&gt; # A tibble: 1 x 14</span>
 <span class="co">#&gt;   term      sumsq sum.squares.error    df df.error meansq statistic  p.value</span>
 <span class="co">#&gt;   &lt;chr&gt;     &lt;dbl&gt;             &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 condition  233.              984.  2.63     229.   4.30      20.6 8.27e-11</span>
-<span class="co">#&gt;   estimate conf.low conf.high method                   </span>
-<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;                    </span>
-<span class="co">#&gt; 1   0.0783   0.0217     0.140 One-way analysis of means</span>
+<span class="co">#&gt;   method                    estimate ci.width conf.low conf.high</span>
+<span class="co">#&gt;   &lt;chr&gt;                        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 One-way analysis of means   0.0783     0.95   0.0217     0.140</span>
+<span class="co">#&gt;   effectsize      </span>
+<span class="co">#&gt;   &lt;chr&gt;           </span>
+<span class="co">#&gt; 1 Omega2 (partial)</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_anova_nonparametric.html">expr_anova_nonparametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">bugs_long</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
+  type <span class="op">=</span> <span class="st">"np"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 4</span>
-<span class="co">#&gt;   statistic    df  p.value method                </span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                 </span>
-<span class="co">#&gt; 1      55.8     3 4.56e-12 Friedman rank sum test</span>
+<span class="co">#&gt; # A tibble: 1 x 9</span>
+<span class="co">#&gt;   statistic    df  p.value method                 estimate ci.width conf.low</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      55.8     3 4.56e-12 Friedman rank sum test    0.602     0.95    0.602</span>
+<span class="co">#&gt;   conf.high effectsize </span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;      </span>
+<span class="co">#&gt; 1     0.818 Kendall's W</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_anova_robust.html">expr_anova_robust</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">bugs_long</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
+  type <span class="op">=</span> <span class="st">"r"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 5</span>
@@ -485,15 +511,16 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_anova_bayes.html">expr_anova_bayes</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">bugs_long</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
+  type <span class="op">=</span> <span class="st">"bayes"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 96 x 19</span>
+<span class="co">#&gt; # A tibble: 96 x 20</span>
 <span class="co">#&gt;    term           estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;    &lt;chr&gt;             &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 mu                6.88     6.43      7.33  1              0     </span>
@@ -518,18 +545,30 @@
 <span class="co">#&gt;  8 cauchy                          0       1     random conditional 1372773375.</span>
 <span class="co">#&gt;  9 cauchy                          0       1     random conditional 1372773375.</span>
 <span class="co">#&gt; 10 cauchy                          0       1     random conditional 1372773375.</span>
-<span class="co">#&gt;    log_e_bf10    r2 std.dev ci.width r2.conf.low r2.conf.high r2.component</span>
-<span class="co">#&gt;         &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt; &lt;chr&gt;       </span>
-<span class="co">#&gt;  1       21.0 0.529  0.0330       95       0.460        0.586 conditional </span>
-<span class="co">#&gt;  2       21.0 0.529  0.0330       95       0.460        0.586 conditional </span>
-<span class="co">#&gt;  3       21.0 0.529  0.0330       95       0.460        0.586 conditional </span>
-<span class="co">#&gt;  4       21.0 0.529  0.0330       95       0.460        0.586 conditional </span>
-<span class="co">#&gt;  5       21.0 0.529  0.0330       95       0.460        0.586 conditional </span>
-<span class="co">#&gt;  6       21.0 0.529  0.0330       95       0.460        0.586 conditional </span>
-<span class="co">#&gt;  7       21.0 0.529  0.0330       95       0.460        0.586 conditional </span>
-<span class="co">#&gt;  8       21.0 0.529  0.0330       95       0.460        0.586 conditional </span>
-<span class="co">#&gt;  9       21.0 0.529  0.0330       95       0.460        0.586 conditional </span>
-<span class="co">#&gt; 10       21.0 0.529  0.0330       95       0.460        0.586 conditional </span>
+<span class="co">#&gt;    method                          log_e_bf10    r2 std.dev ci.width r2.conf.low</span>
+<span class="co">#&gt;    &lt;chr&gt;                                &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
+<span class="co">#&gt;  2 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
+<span class="co">#&gt;  3 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
+<span class="co">#&gt;  4 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
+<span class="co">#&gt;  5 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
+<span class="co">#&gt;  6 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
+<span class="co">#&gt;  7 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
+<span class="co">#&gt;  8 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
+<span class="co">#&gt;  9 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
+<span class="co">#&gt; 10 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
+<span class="co">#&gt;    r2.conf.high r2.component</span>
+<span class="co">#&gt;           &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt;  1        0.586 conditional </span>
+<span class="co">#&gt;  2        0.586 conditional </span>
+<span class="co">#&gt;  3        0.586 conditional </span>
+<span class="co">#&gt;  4        0.586 conditional </span>
+<span class="co">#&gt;  5        0.586 conditional </span>
+<span class="co">#&gt;  6        0.586 conditional </span>
+<span class="co">#&gt;  7        0.586 conditional </span>
+<span class="co">#&gt;  8        0.586 conditional </span>
+<span class="co">#&gt;  9        0.586 conditional </span>
+<span class="co">#&gt; 10        0.586 conditional </span>
 <span class="co">#&gt; # ... with 86 more rows</span></code></pre></div>
 </div>
 <div id="between-subjects-design-1" class="section level2">
@@ -544,70 +583,83 @@
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># unequal variance</span>
-<span class="fu"><a href="../../reference/expr_anova_parametric.html">expr_anova_parametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
+  type <span class="op">=</span> <span class="st">"p"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 8</span>
-<span class="co">#&gt;   statistic    df df.error estimate conf.low conf.high  p.value</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      139.     2     92.2    0.743    0.655     0.803 1.51e-28</span>
-<span class="co">#&gt;   method                                                  </span>
-<span class="co">#&gt;   &lt;chr&gt;                                                   </span>
-<span class="co">#&gt; 1 One-way analysis of means (not assuming equal variances)</span>
+<span class="co">#&gt; # A tibble: 1 x 10</span>
+<span class="co">#&gt;   statistic    df df.error  p.value</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      139.     2     92.2 1.51e-28</span>
+<span class="co">#&gt;   method                                                   estimate ci.width</span>
+<span class="co">#&gt;   &lt;chr&gt;                                                       &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 One-way analysis of means (not assuming equal variances)    0.743     0.95</span>
+<span class="co">#&gt;   conf.low conf.high effectsize</span>
+<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     </span>
+<span class="co">#&gt; 1    0.655     0.803 Omega2</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># equal variance</span>
-<span class="fu"><a href="../../reference/expr_anova_parametric.html">expr_anova_parametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
   var.equal <span class="op">=</span> <span class="cn">TRUE</span>,
+  type <span class="op">=</span> <span class="st">"p"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 8</span>
-<span class="co">#&gt;   statistic    df df.error estimate conf.low conf.high  p.value</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      119.     2      147    0.612    0.517     0.683 1.67e-31</span>
-<span class="co">#&gt;   method                   </span>
-<span class="co">#&gt;   &lt;chr&gt;                    </span>
-<span class="co">#&gt; 1 One-way analysis of means</span>
+<span class="co">#&gt; # A tibble: 1 x 10</span>
+<span class="co">#&gt;   statistic    df df.error  p.value method                    estimate ci.width</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                        &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      119.     2      147 1.67e-31 One-way analysis of means    0.612     0.95</span>
+<span class="co">#&gt;   conf.low conf.high effectsize</span>
+<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     </span>
+<span class="co">#&gt; 1    0.517     0.683 Omega2</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_anova_nonparametric.html">expr_anova_nonparametric</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
+  type <span class="op">=</span> <span class="st">"np"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 6</span>
+<span class="co">#&gt; # A tibble: 1 x 11</span>
 <span class="co">#&gt;   parameter1   parameter2 statistic df.error  p.value</span>
 <span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;dbl&gt;    &lt;int&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Sepal.Length Species         96.9        2 8.92e-22</span>
-<span class="co">#&gt;   method                      </span>
-<span class="co">#&gt;   &lt;chr&gt;                       </span>
-<span class="co">#&gt; 1 Kruskal-Wallis rank sum test</span>
+<span class="co">#&gt;   method                       estimate ci.width conf.low conf.high</span>
+<span class="co">#&gt;   &lt;chr&gt;                           &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Kruskal-Wallis rank sum test    0.651     0.95    0.588     0.722</span>
+<span class="co">#&gt;   effectsize     </span>
+<span class="co">#&gt;   &lt;chr&gt;          </span>
+<span class="co">#&gt; 1 Epsilon2 (rank)</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_anova_robust.html">expr_anova_robust</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
+  type <span class="op">=</span> <span class="st">"r"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 8</span>
-<span class="co">#&gt;   statistic    df df.error p.value effsize conf.low conf.high</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      124.     2     71.6       0   0.916    0.861     0.984</span>
+<span class="co">#&gt; # A tibble: 1 x 9</span>
+<span class="co">#&gt;   statistic    df df.error p.value estimate conf.low conf.high</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      124.     2     71.6       0    0.916    0.861     0.984</span>
+<span class="co">#&gt;   effectsize                        </span>
+<span class="co">#&gt;   &lt;chr&gt;                             </span>
+<span class="co">#&gt; 1 Explanatory measure of effect size</span>
 <span class="co">#&gt;   method                                           </span>
 <span class="co">#&gt;   &lt;chr&gt;                                            </span>
 <span class="co">#&gt; 1 A heteroscedastic one-way ANOVA for trimmed means</span>
@@ -616,13 +668,14 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/expr_anova_bayes.html">expr_anova_bayes</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
+  type <span class="op">=</span> <span class="st">"bayes"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 17</span>
+<span class="co">#&gt; # A tibble: 6 x 18</span>
 <span class="co">#&gt;   term               estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 mu                   5.84     5.76       5.93  1               0    </span>
@@ -631,30 +684,37 @@
 <span class="co">#&gt; 4 Species-virginica    0.737    0.618      0.852 1               0    </span>
 <span class="co">#&gt; 5 sig2                 0.267    0.210      0.335 1               0    </span>
 <span class="co">#&gt; 6 g_Species            2.15     0.188     15.0   1               0    </span>
-<span class="co">#&gt;   prior.distribution prior.location prior.scale component      bf10 log_e_bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 cauchy                          0       0.707 extra       1.87e28       65.1</span>
-<span class="co">#&gt; 2 cauchy                          0       0.707 conditional 1.87e28       65.1</span>
-<span class="co">#&gt; 3 cauchy                          0       0.707 conditional 1.87e28       65.1</span>
-<span class="co">#&gt; 4 cauchy                          0       0.707 conditional 1.87e28       65.1</span>
-<span class="co">#&gt; 5 cauchy                          0       0.707 extra       1.87e28       65.1</span>
-<span class="co">#&gt; 6 cauchy                          0       0.707 extra       1.87e28       65.1</span>
-<span class="co">#&gt;      r2 std.dev ci.width r2.conf.low r2.conf.high</span>
-<span class="co">#&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 0.612  0.0311       95       0.544        0.667</span>
-<span class="co">#&gt; 2 0.612  0.0311       95       0.544        0.667</span>
-<span class="co">#&gt; 3 0.612  0.0311       95       0.544        0.667</span>
-<span class="co">#&gt; 4 0.612  0.0311       95       0.544        0.667</span>
-<span class="co">#&gt; 5 0.612  0.0311       95       0.544        0.667</span>
-<span class="co">#&gt; 6 0.612  0.0311       95       0.544        0.667</span></code></pre></div>
+<span class="co">#&gt;   prior.distribution prior.location prior.scale component      bf10</span>
+<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 cauchy                          0       0.707 extra       1.87e28</span>
+<span class="co">#&gt; 2 cauchy                          0       0.707 conditional 1.87e28</span>
+<span class="co">#&gt; 3 cauchy                          0       0.707 conditional 1.87e28</span>
+<span class="co">#&gt; 4 cauchy                          0       0.707 conditional 1.87e28</span>
+<span class="co">#&gt; 5 cauchy                          0       0.707 extra       1.87e28</span>
+<span class="co">#&gt; 6 cauchy                          0       0.707 extra       1.87e28</span>
+<span class="co">#&gt;   method                          log_e_bf10    r2 std.dev ci.width r2.conf.low</span>
+<span class="co">#&gt;   &lt;chr&gt;                                &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Bayes factors for linear models       65.1 0.612  0.0311       95       0.544</span>
+<span class="co">#&gt; 2 Bayes factors for linear models       65.1 0.612  0.0311       95       0.544</span>
+<span class="co">#&gt; 3 Bayes factors for linear models       65.1 0.612  0.0311       95       0.544</span>
+<span class="co">#&gt; 4 Bayes factors for linear models       65.1 0.612  0.0311       95       0.544</span>
+<span class="co">#&gt; 5 Bayes factors for linear models       65.1 0.612  0.0311       95       0.544</span>
+<span class="co">#&gt; 6 Bayes factors for linear models       65.1 0.612  0.0311       95       0.544</span>
+<span class="co">#&gt;   r2.conf.high</span>
+<span class="co">#&gt;          &lt;dbl&gt;</span>
+<span class="co">#&gt; 1        0.667</span>
+<span class="co">#&gt; 2        0.667</span>
+<span class="co">#&gt; 3        0.667</span>
+<span class="co">#&gt; 4        0.667</span>
+<span class="co">#&gt; 5        0.667</span>
+<span class="co">#&gt; 6        0.667</span></code></pre></div>
 </div>
 </div>
 <div id="contingency-table-analyses" class="section level1">
 <h1 class="hasAnchor">
 <a href="#contingency-table-analyses" class="anchor"></a>Contingency table analyses</h1>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># for reproducibility</span>
+<code class="sourceCode R"><span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
 
@@ -690,17 +750,17 @@
   paired <span class="op">=</span> <span class="cn">FALSE</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 8</span>
+<span class="co">#&gt; # A tibble: 1 x 9</span>
 <span class="co">#&gt;   statistic    df p.value method                     estimate ci.width conf.low</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1      8.74     2  0.0126 Pearson's Chi-squared test    0.464     0.95        0</span>
-<span class="co">#&gt;   conf.high</span>
-<span class="co">#&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     0.777</span>
+<span class="co">#&gt;   conf.high effectsize       </span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;            </span>
+<span class="co">#&gt; 1     0.777 Cramer's V (adj.)</span>
 
 <span class="co"># paired</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu">statsExpressions</span><span class="fu">::</span><span class="fu"><a href="../../reference/expr_contingency_tab.html">expr_contingency_tab</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/expr_contingency_tab.html">expr_contingency_tab</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">paired_data</span>,
   x <span class="op">=</span> <span class="va">response_before</span>,
   y <span class="op">=</span> <span class="va">response_after</span>,
@@ -708,14 +768,13 @@
   counts <span class="op">=</span> <span class="st">"Freq"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 8</span>
+<span class="co">#&gt; # A tibble: 1 x 9</span>
 <span class="co">#&gt;   statistic    df  p.value method                     estimate ci.width conf.low</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1      13.3     1 0.000261 McNemar's Chi-squared test    0.333     0.95    0.164</span>
-<span class="co">#&gt;   conf.high</span>
-<span class="co">#&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     0.427</span>
-
+<span class="co">#&gt;   conf.high effectsize</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;     </span>
+<span class="co">#&gt; 1     0.427 Cohen's g</span>
 
 <span class="co"># ------------------------ goodness of fit tests ---------------------------</span>
 
@@ -727,19 +786,20 @@
   counts <span class="op">=</span> <span class="va">Freq</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 8</span>
+<span class="co">#&gt; # A tibble: 1 x 9</span>
 <span class="co">#&gt;   statistic    df  p.value method                                   estimate</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                                       &lt;dbl&gt;</span>
 <span class="co">#&gt; 1      133.     3 9.65e-29 Chi-squared test for given probabilities    0.272</span>
-<span class="co">#&gt;   ci.width conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     0.95    0.222     0.316</span></code></pre></div>
+<span class="co">#&gt;   ci.width conf.low conf.high effectsize       </span>
+<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;            </span>
+<span class="co">#&gt; 1     0.95    0.222     0.316 Cramer's V (adj.)</span></code></pre></div>
 </div>
 <div id="correlation-analyses" class="section level1">
 <h1 class="hasAnchor">
 <a href="#correlation-analyses" class="anchor"></a>Correlation analyses</h1>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># setup</span>
+<code class="sourceCode R"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
 
 <span class="co"># ----------------------- parametric ---------------------------------------</span>
@@ -753,13 +813,13 @@
   type <span class="op">=</span> <span class="st">"parametric"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
+<span class="co">#&gt; # A tibble: 1 x 11</span>
 <span class="co">#&gt;   parameter1 parameter2 estimate conf.low conf.high statistic    df  p.value</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 wt         mpg          -0.868   -0.934    -0.744     -9.56    30 1.29e-10</span>
-<span class="co">#&gt;   method  n.obs</span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;int&gt;</span>
-<span class="co">#&gt; 1 Pearson    32</span>
+<span class="co">#&gt;   method  n.obs effectsize</span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;     </span>
+<span class="co">#&gt; 1 Pearson    32 Pearson</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -772,13 +832,13 @@
   type <span class="op">=</span> <span class="st">"nonparametric"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 9</span>
+<span class="co">#&gt; # A tibble: 1 x 10</span>
 <span class="co">#&gt;   parameter1 parameter2 estimate conf.low conf.high statistic  p.value method  </span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;   </span>
 <span class="co">#&gt; 1 wt         mpg          -0.886   -0.945    -0.774      9.24 1.49e-11 Spearman</span>
-<span class="co">#&gt;   n.obs</span>
-<span class="co">#&gt;   &lt;int&gt;</span>
-<span class="co">#&gt; 1    32</span>
+<span class="co">#&gt;   n.obs effectsize</span>
+<span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;     </span>
+<span class="co">#&gt; 1    32 Spearman</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -791,13 +851,13 @@
   type <span class="op">=</span> <span class="st">"robust"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
+<span class="co">#&gt; # A tibble: 1 x 11</span>
 <span class="co">#&gt;   parameter1 parameter2 estimate conf.low conf.high statistic    df  p.value</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 wt         mpg          -0.896   -0.948    -0.796     -11.1    30 4.15e-12</span>
-<span class="co">#&gt;   method          n.obs</span>
-<span class="co">#&gt;   &lt;chr&gt;           &lt;int&gt;</span>
-<span class="co">#&gt; 1 Percentage Bend    32</span>
+<span class="co">#&gt;   method          n.obs effectsize     </span>
+<span class="co">#&gt;   &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;          </span>
+<span class="co">#&gt; 1 Percentage Bend    32 Percentage Bend</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
@@ -810,19 +870,19 @@
   type <span class="op">=</span> <span class="st">"bayes"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 11</span>
+<span class="co">#&gt; # A tibble: 1 x 12</span>
 <span class="co">#&gt;   term  estimate conf.low conf.high    pd rope.percentage prior.distribution</span>
 <span class="co">#&gt;   &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;             </span>
 <span class="co">#&gt; 1 rho     -0.843   -0.934    -0.734     1               0 cauchy            </span>
-<span class="co">#&gt;   prior.location prior.scale      bf10 log_e_bf10</span>
-<span class="co">#&gt;            &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1              0       0.707 56223033.       17.8</span></code></pre></div>
+<span class="co">#&gt;   prior.location prior.scale      bf10 method                        log_e_bf10</span>
+<span class="co">#&gt;            &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;                              &lt;dbl&gt;</span>
+<span class="co">#&gt; 1              0       0.707 56223033. Bayesian correlation analysis       17.8</span></code></pre></div>
 </div>
 <div id="meta-analysis" class="section level1">
 <h1 class="hasAnchor">
 <a href="#meta-analysis" class="anchor"></a>Meta-analysis</h1>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># setup</span>
+<code class="sourceCode R"><span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">metaplus</span><span class="op">)</span>
@@ -836,9 +896,9 @@
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/expr_meta_random.html">expr_meta_random</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, output <span class="op">=</span> <span class="st">"dataframe"</span>, type <span class="op">=</span> <span class="st">"parametric"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 8</span>
-<span class="co">#&gt;   term    estimate sterror conf.low conf.high statistic  p.value weight</span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Overall   -0.767   0.212    -1.18    -0.351     -3.62 0.000295     NA</span>
+<span class="co">#&gt;   term    estimate std.error conf.low conf.high statistic  p.value weight</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Overall   -0.767     0.212    -1.18    -0.351     -3.62 0.000295     NA</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -846,9 +906,9 @@
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/expr_meta_random.html">expr_meta_random</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, output <span class="op">=</span> <span class="st">"dataframe"</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 8</span>
-<span class="co">#&gt;   term    estimate sterror conf.low conf.high statistic  p.value weight</span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Overall   -0.746   0.234    -1.26    -0.343     -3.19 0.000777     NA</span>
+<span class="co">#&gt;   term    estimate std.error conf.low conf.high statistic  p.value weight</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Overall   -0.746     0.234    -1.26    -0.343     -3.19 0.000777     NA</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
@@ -858,12 +918,12 @@
 <span class="co">#&gt; # A tibble: 2 x 14</span>
 <span class="co">#&gt;   term    estimate std.error conf.low conf.high weight  bf10  rhat   ess</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Overall   -0.467     0.165   -0.788    -0.143     NA  39.2  1    6575.</span>
-<span class="co">#&gt; 2 tau        0.439     0.185    0.140     0.809     NA  39.2  1.00 4260.</span>
+<span class="co">#&gt; 1 Overall   -0.654     0.221   -1.10     -0.242     NA  53.0  1    4758.</span>
+<span class="co">#&gt; 2 tau        0.486     0.183    0.168     0.845     NA  53.0  1.00 3824.</span>
 <span class="co">#&gt;   component prior.distribution prior.location prior.scale log_e_bf10</span>
 <span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 meta      norm                            0        0.3        3.67</span>
-<span class="co">#&gt; 2 meta      invgamma                        1        0.15       3.67</span></code></pre></div>
+<span class="co">#&gt; 1 meta      t                               1        0.15       3.97</span>
+<span class="co">#&gt; 2 meta      invgamma                        1        0.15       3.97</span></code></pre></div>
 </div>
 <div id="suggestions" class="section level1">
 <h1 class="hasAnchor">

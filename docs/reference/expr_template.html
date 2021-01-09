@@ -88,7 +88,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.6.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.7.0</span>
       </span>
     </div>
 
@@ -153,9 +153,9 @@
 
     <pre class="usage"><span class='fu'>expr_template</span><span class='op'>(</span>
   <span class='va'>no.parameters</span>,
-  statistic.text <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>stats.df</span>,
-  <span class='va'>effsize.text</span>,
+  statistic.text <span class='op'>=</span> <span class='cn'>NULL</span>,
+  effsize.text <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>n</span>,
   n.text <span class='op'>=</span> <span class='cn'>NULL</span>,
   paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -177,13 +177,6 @@ tests based on <em>t</em>-statistic or chi-squared statistic, <code>2</code> for
 on <em>F</em>-statistic.</p></td>
     </tr>
     <tr>
-      <th>statistic.text</th>
-      <td><p>A character that specifies the relevant test statistic.
-For example, for tests with <em>t</em>-statistic, <code>statistic.text = "t"</code>. If you
-want to use plotmath, you will have to quote the argument (e.g.,
-<code><a href='https://rdrr.io/r/base/substitute.html'>quote(italic("t"))</a></code>).</p></td>
-    </tr>
-    <tr>
       <th>stats.df</th>
       <td><p>A dataframe containing details from the statistical analysis
 and should contain some of the the following columns:</p><ul>
@@ -199,6 +192,13 @@ statistic.</p></li>
 <li><p><em>conf.low</em>:  lower bound for effect size estimate.</p></li>
 <li><p><em>conf.high</em>: upper bound for effect size estimate.</p></li>
 </ul></td>
+    </tr>
+    <tr>
+      <th>statistic.text</th>
+      <td><p>A character that specifies the relevant test statistic.
+For example, for tests with <em>t</em>-statistic, <code>statistic.text = "t"</code>. If you
+want to use plotmath, you will have to quote the argument (e.g.,
+<code><a href='https://rdrr.io/r/base/substitute.html'>quote(italic("t"))</a></code>).</p></td>
     </tr>
     <tr>
       <th>effsize.text</th>

@@ -48,7 +48,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.6.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.7.0</span>
       </span>
     </div>
 
@@ -125,7 +125,7 @@
 <td><a href="https://CRAN.R-project.org/package=statsExpressions"><img src="http://www.r-pkg.org/badges/version-ago/statsExpressions" alt="CRAN_Release_Badge"></a></td>
 <td><a href="https://travis-ci.org/IndrajeetPatil/statsExpressions"><img src="https://travis-ci.org/IndrajeetPatil/statsExpressions.svg?branch=master" alt="Build Status"></a></td>
 <td><a href="https://CRAN.R-project.org/package=statsExpressions"><img src="https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue" alt="Daily downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/"><img src="https://img.shields.io/badge/GitHub-0.6.0-orange.svg?style=flat-square" alt="GitHub version"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/"><img src="https://img.shields.io/badge/GitHub-0.7.0-orange.svg?style=flat-square" alt="GitHub version"></a></td>
 <td><a href="https://indrajeetpatil.github.io/statsExpressions/"><img src="https://img.shields.io/badge/website-statsExpressions-orange.svg?colorB=E91E63" alt="Website"></a></td>
 </tr>
 <tr class="even">
@@ -139,8 +139,8 @@
 <td><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg" alt="minimal R version"></a></td>
 <td><a href="https://www.tidyverse.org/lifecycle/"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></td>
 <td><a href="https://CRAN.R-project.org/package=statsExpressions"><img src="https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue" alt="Monthly downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/issues"><img src="https://img.shields.io/badge/issues-6-red.svg" alt="Github Issues"></a></td>
-<td><a href="https://CRAN.R-project.org/package=statsExpressions/vignettes/"><img src="https://img.shields.io/badge/vignettes-0.4.3-orange.svg?colorB=FF5722" alt="vignettes"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/issues"><img src="https://img.shields.io/badge/issues-7-red.svg" alt="Github Issues"></a></td>
+<td><a href="https://CRAN.R-project.org/package=statsExpressions/vignettes/"><img src="https://img.shields.io/badge/vignettes-0.7.0-orange.svg?colorB=FF5722" alt="vignettes"></a></td>
 </tr>
 <tr class="even">
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions"><img src="https://img.shields.io/github/languages/code-size/IndrajeetPatil/statsExpressions.svg" alt="GitHub code size in bytes"></a></td>
@@ -153,7 +153,7 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/tests/README.md"><img src="https://img.shields.io/badge/covrpage-Last_Build_2020_03_22-yellowgreen.svg" alt="Covrpage Summary"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2021--01--06-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2021--01--09-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
@@ -322,7 +322,7 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 
-<span class="fu"><a href="reference/expr_anova_parametric.html">expr_anova_parametric</a></span><span class="op">(</span>
+<span class="fu"><a href="reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">bugs_long</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
@@ -330,13 +330,16 @@
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 12</span>
+<span class="co">#&gt; # A tibble: 1 x 14</span>
 <span class="co">#&gt;   term      sumsq sum.squares.error    df df.error meansq statistic  p.value</span>
 <span class="co">#&gt;   &lt;chr&gt;     &lt;dbl&gt;             &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 condition  233.              984.  2.63     229.   4.30      20.6 8.27e-11</span>
-<span class="co">#&gt;   estimate conf.low conf.high method                   </span>
-<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;                    </span>
-<span class="co">#&gt; 1   0.0783   0.0217     0.140 One-way analysis of means</span></code></pre></div>
+<span class="co">#&gt;   method                    estimate ci.width conf.low conf.high</span>
+<span class="co">#&gt;   &lt;chr&gt;                        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 One-way analysis of means   0.0783     0.95   0.0217     0.140</span>
+<span class="co">#&gt;   effectsize      </span>
+<span class="co">#&gt;   &lt;chr&gt;           </span>
+<span class="co">#&gt; 1 Omega2 (partial)</span></code></pre></div>
 </div>
 <div id="primary-functions" class="section level1">
 <h1 class="hasAnchor">
@@ -363,7 +366,7 @@
   <span class="fu"><a href="https://ggforce.data-imaginist.com/reference/geom_sina.html">geom_sina</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="st">"Fisher's one-way ANOVA"</span>,
-    subtitle <span class="op">=</span> <span class="fu"><a href="reference/expr_anova_parametric.html">expr_anova_parametric</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span>, <span class="va">Sepal.Length</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+    subtitle <span class="op">=</span> <span class="fu"><a href="reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span>, <span class="va">Sepal.Length</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-anova_parametric1-1.png" width="100%"></p>
 <p>In case you change your mind and now want to carry out a robust ANOVA instead. Also, let’s use a different kind of a visualization:</p>
@@ -372,7 +375,7 @@
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/ggridges">ggridges</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/ggridges/">ggridges</a></span><span class="op">)</span>
 
 <span class="co"># create a ridgeplot</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Sepal.Length</span>, y <span class="op">=</span> <span class="va">Species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -383,7 +386,7 @@
   <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="st">"A heteroscedastic one-way ANOVA for trimmed means"</span>,
-    subtitle <span class="op">=</span> <span class="fu"><a href="reference/expr_anova_robust.html">expr_anova_robust</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span>, <span class="va">Sepal.Length</span><span class="op">)</span>
+    subtitle <span class="op">=</span> <span class="fu"><a href="reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span>, <span class="va">Sepal.Length</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-anova_rob1-1.png" width="100%"></p>
 <p>Needless to say, you can also use these functions to display results in <code>ggplot</code>-extension packages. For example, <code>ggpubr</code>:</p>
@@ -404,7 +407,7 @@
 <span class="op">)</span> <span class="op">+</span> <span class="co"># adding results from stats analysis using `statsExpressions`</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="st">"Kruskall-Wallis test"</span>,
-    subtitle <span class="op">=</span> <span class="fu"><a href="reference/expr_anova_nonparametric.html">expr_anova_nonparametric</a></span><span class="op">(</span><span class="va">ToothGrowth</span>, <span class="va">dose</span>, <span class="va">len</span>, type <span class="op">=</span> <span class="st">"np"</span><span class="op">)</span>
+    subtitle <span class="op">=</span> <span class="fu"><a href="reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span><span class="va">ToothGrowth</span>, <span class="va">dose</span>, <span class="va">len</span>, type <span class="op">=</span> <span class="st">"np"</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-ggpubr_anova-1.png" width="100%"></p>
 </div>
@@ -425,7 +428,7 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="st">"Friedman's rank sum test"</span>,
     subtitle <span class="op">=</span> 
-      <span class="fu"><a href="reference/expr_anova_nonparametric.html">expr_anova_nonparametric</a></span><span class="op">(</span>
+      <span class="fu"><a href="reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
       <span class="va">WineTasting</span>,
       <span class="va">Wine</span>,
       <span class="va">Taste</span>,
@@ -460,7 +463,7 @@
   <span class="co"># adding a subtitle with</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="st">"Two-Sample Welch's t-test"</span>,
-    subtitle <span class="op">=</span> <span class="fu"><a href="reference/expr_t_parametric.html">expr_t_parametric</a></span><span class="op">(</span><span class="va">ToothGrowth</span>, <span class="va">supp</span>, <span class="va">len</span><span class="op">)</span>
+    subtitle <span class="op">=</span> <span class="fu"><a href="reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span><span class="va">ToothGrowth</span>, <span class="va">supp</span>, <span class="va">len</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-t_two-1.png" width="100%"></p>
 <p>Example with <code>ggpubr</code>:</p>
@@ -486,15 +489,14 @@
 <span class="op">)</span> <span class="op">+</span> <span class="co"># displaying stats results</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="st">"Yuen's two-sample test for trimmed means"</span>,
-    subtitle <span class="op">=</span> <span class="fu"><a href="reference/expr_t_robust.html">expr_t_robust</a></span><span class="op">(</span>
+    subtitle <span class="op">=</span> <span class="fu"><a href="reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span>
       data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
         sex <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">200</span><span class="op">)</span><span class="op">)</span>,
         weight <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">200</span>, <span class="fl">55</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">200</span>, <span class="fl">58</span><span class="op">)</span><span class="op">)</span>
       <span class="op">)</span>,
       x <span class="op">=</span> <span class="va">sex</span>,
       y <span class="op">=</span> <span class="va">weight</span>,
-      type <span class="op">=</span> <span class="st">"robust"</span>,
-      messages <span class="op">=</span> <span class="cn">FALSE</span>
+      type <span class="op">=</span> <span class="st">"robust"</span>
     <span class="op">)</span>
   <span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-t_two_ggpubr-1.png" width="100%"></p>
@@ -514,7 +516,7 @@
 <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="st">"Mann-Whitney test"</span>,
-    subtitle <span class="op">=</span> <span class="fu"><a href="reference/expr_t_nonparametric.html">expr_t_nonparametric</a></span><span class="op">(</span><span class="va">heightweight</span>, <span class="va">sex</span>, <span class="va">heightIn</span>, type <span class="op">=</span> <span class="st">"np"</span><span class="op">)</span>
+    subtitle <span class="op">=</span> <span class="fu"><a href="reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span><span class="va">heightweight</span>, <span class="va">sex</span>, <span class="va">heightIn</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-t_ggiraphExtra-1.png" width="100%"></p>
 </div>
@@ -536,12 +538,13 @@
   <span class="co"># `statsExpressions` needs data in the tidy format</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="st">"Two-sample Wilcoxon paired test"</span>,
-    subtitle <span class="op">=</span> <span class="fu"><a href="reference/expr_t_nonparametric.html">expr_t_nonparametric</a></span><span class="op">(</span>
+    subtitle <span class="op">=</span> <span class="fu"><a href="reference/expr_t_twosample.html">expr_t_twosample</a></span><span class="op">(</span>
       data <span class="op">=</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="va">PrisonStress</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"PSS"</span><span class="op">)</span>, <span class="st">"PSS"</span>, values_to <span class="op">=</span> <span class="st">"stress"</span><span class="op">)</span>,
       x <span class="op">=</span> <span class="va">PSS</span>,
       y <span class="op">=</span> <span class="va">stress</span>,
       paired <span class="op">=</span> <span class="cn">TRUE</span>,
-      subject.id <span class="op">=</span> <span class="va">Subject</span>
+      subject.id <span class="op">=</span> <span class="va">Subject</span>,
+      type <span class="op">=</span> <span class="st">"np"</span>
     <span class="op">)</span>
   <span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-t_two_paired1-1.png" width="100%"></p>
@@ -704,7 +707,7 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
 
 <span class="co"># extracting detailed expression</span>
-<span class="op">(</span><span class="va">res_expr</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/expr_anova_parametric.html">expr_anova_parametric</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span>, <span class="va">Sepal.Length</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
+<span class="op">(</span><span class="va">res_expr</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/expr_oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span>, <span class="va">Sepal.Length</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; paste(italic("F")["Fisher"], "(", "2", ",", "147", ") = ", "119.26", </span>
 <span class="co">#&gt;     ", ", italic("p"), " = ", "1.67e-31", ", ", widehat(omega["p"]^2), </span>
 <span class="co">#&gt;     " = ", "0.61", ", CI"["95%"], " [", "0.52", ", ", "0.68", </span>
