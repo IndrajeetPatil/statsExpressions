@@ -19,7 +19,9 @@ utils::globalVariables(
     "df.error",
     "k.parameter",
     "effsize.text",
-    "method"
+    "method",
+    ".f",
+    ".f.es"
   ),
   package = "statsExpressions",
   add = FALSE

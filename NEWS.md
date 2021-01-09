@@ -14,6 +14,11 @@ BREAKING CHANGES
       `expr_anova_bayes` are now removed in favor of a single function
       `expr_oneway_anova`.
 
+BUG FIXES
+
+  - `expr_contingency_tab` ignored `ratio` argument while computing Cramer's *V*
+    for one-sample test. This is fixed.
+
 MAJOR CHANGES
 
   - All non-parametric functions now use `effectsize` package to compute effect

@@ -70,7 +70,7 @@ library(statsExpressions)
 
 # ------------------------ association tests -----------------------------
 
-# without counts data
+# without counts and between-subjects
 expr_contingency_tab(
   data = mtcars,
   x = am,

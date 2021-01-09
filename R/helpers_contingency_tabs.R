@@ -30,7 +30,7 @@
 #' @inheritParams stats::chisq.test
 #' @inheritParams expr_oneway_anova
 #'
-#' @importFrom dplyr select mutate rename filter
+#' @importFrom dplyr select mutate rename filter pull
 #' @importFrom rlang enquo as_name ensym exec
 #' @importFrom tidyr uncount drop_na
 #' @importFrom stats mcnemar.test chisq.test
@@ -44,7 +44,7 @@
 #'
 #' # ------------------------ association tests -----------------------------
 #'
-#' # without counts data
+#' # without counts and between-subjects
 #' expr_contingency_tab(
 #'   data = mtcars,
 #'   x = am,
@@ -77,68 +77,54 @@ expr_contingency_tab <- function(data,
   # one-way or two-way table?
   test <- ifelse(!rlang::quo_is_null(rlang::enquo(y)), "two.way", "one.way")
 
-  # =============================== dataframe ================================
-
   # creating a dataframe
   data %<>%
     dplyr::select(.data = ., {{ x }}, {{ y }}, .counts = {{ counts }}) %>%
-    tidyr::drop_na(.) %>%
-    as_tibble(.)
+    tidyr::drop_na(.)
 
   # untable the dataframe based on the count for each observation
   if (".counts" %in% names(data)) data %<>% tidyr::uncount(data = ., weights = .counts)
 
-  # ratio
-  if (is.null(ratio)) {
-    x_vec <- data %>% dplyr::pull({{ x }})
-    ratio <- rep(1 / length(table(x_vec)), length(table(x_vec)))
-  }
+  # variables needed for both one-way and two-way analysis
+  x_vec <- data %>% dplyr::pull({{ x }})
+  if (is.null(ratio)) ratio <- rep(1 / length(table(x_vec)), length(table(x_vec)))
 
-  # =============================== association tests ========================
+  # ----------------------- arguments ---------------------------------------
 
+  # default functions for analysis (only change for McNemar's test)
+  c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::cramers_v)
+
+  # Pearson's or McNemar's test
   if (test == "two.way") {
-    # creating a matrix with frequencies and cleaning it up
-    x_arg <- table(data %>% dplyr::pull({{ x }}), data %>% dplyr::pull({{ y }}))
-
-    # Pearson's test
-    if (isFALSE(paired)) {
-      mod <- stats::chisq.test(x_arg, correct = FALSE)
-      .f.es <- effectsize::cramers_v
-    }
-
-    # McNemar's test
-    if (isTRUE(paired)) {
-      mod <- stats::mcnemar.test(x_arg, correct = FALSE)
-      .f.es <- effectsize::cohens_g
-    }
+    if (isTRUE(paired)) c(.f, .f.es) %<-% c(stats::mcnemar.test, effectsize::cohens_g)
+    .f.args <- list(x = table(x_vec, data %>% dplyr::pull({{ y }})), correct = FALSE)
   }
 
-  # ======================== goodness of fit test ========================
-
+  # goodness of fit test
   if (test == "one.way") {
-    # frequency table
-    x_arg <- table(data %>% dplyr::pull({{ x }}))
-
-    # checking if the chi-squared test can be run
-    mod <- stats::chisq.test(x_arg, correct = FALSE, p = ratio)
-
-    # details for the expression
-    .f.es <- effectsize::cramers_v
+    .f.args <- list(x = table(x_vec), p = ratio, correct = FALSE)
     paired <- FALSE
   }
+
+  # ----------------------- returns ---------------------------------------
+
+  # stats
+  stats_df <-
+    rlang::exec(.fn = .f, !!!.f.args) %>%
+    tidy_model_parameters(.)
 
   # computing effect size + CI
   effsize_df <-
     rlang::exec(
       .fn = .f.es,
-      x_arg,
       adjust = TRUE,
-      ci = conf.level
+      ci = conf.level,
+      !!!.f.args
     ) %>%
     tidy_model_effectsize(.)
 
   # combining dataframes
-  stats_df <- dplyr::bind_cols(tidy_model_parameters(mod), effsize_df)
+  stats_df <- dplyr::bind_cols(stats_df, effsize_df)
 
   # expression
   expression <-

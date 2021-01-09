@@ -165,14 +165,17 @@ expr_oneway_anova(
 )
 
 # within-subjects design
-expr_oneway_anova(
-  data = iris_long,
-  x = condition,
-  y = value,
-  subject.id = id,
-  paired = TRUE,
-  type = "bayes",
-  output = "dataframe"
-)
+# needs `BayesFactor 0.9.12-4.3` or above
+if (utils::packageVersion("BayesFactor") >= package_version("0.9.12-4.3")) {
+  expr_oneway_anova(
+    data = iris_long,
+    x = condition,
+    y = value,
+    subject.id = id,
+    paired = TRUE,
+    type = "bayes",
+    output = "dataframe"
+  )
+}
 }
 }
