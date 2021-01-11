@@ -205,9 +205,6 @@ expr_oneway_anova <- function(data,
       tidy_model_effectsize(.)
 
     # combining dataframes
-    if (!"method" %in% names(stats_df)) {
-      stats_df %<>% dplyr::mutate(method = "One-way analysis of means")
-    }
     stats_df <- dplyr::bind_cols(stats_df, effsize_df)
 
     # expression details

@@ -57,8 +57,8 @@ Making expression for random-effects meta-analysis
 This analysis is carried out using-
 \itemize{
 \item parametric: \code{metafor::rma}
-\item  robust: \code{metaplus::metaplus}
-\item  Bayesian: \code{metaBMA::meta_random}
+\item robust: \code{metaplus::metaplus}
+\item Bayesian: \code{metaBMA::meta_random}
 }
 }
 \examples{

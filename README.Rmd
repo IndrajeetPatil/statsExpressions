@@ -392,7 +392,7 @@ ggplot(mtcars, aes(wt)) +
   # adding a caption with a non-parametric one-sample test
   labs(
     title = "One-Sample Wilcoxon Signed Rank Test",
-    subtitle = expr_t_onesample(mtcars, wt, test.value = 3, type = "robust")
+    subtitle = expr_t_onesample(mtcars, wt, test.value = 3, type = "nonparametric")
   )
 ```
 

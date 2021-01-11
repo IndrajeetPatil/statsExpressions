@@ -106,8 +106,7 @@ expr_t_onesample <- function(data,
   if (stats.type == "nonparametric") {
     # preparing expression parameters
     no.parameters <- 0L
-    .f <- stats::wilcox.test
-    .f.es <- effectsize::rank_biserial
+    c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
   }
 
   # preparing expression
@@ -121,7 +120,8 @@ expr_t_onesample <- function(data,
         na.action = na.omit,
         exact = FALSE
       ) %>%
-      tidy_model_parameters(.)
+      tidy_model_parameters(.) %>%
+      dplyr::select(-dplyr::matches("^est|^conf|^diff|^term"))
 
     # extracting effect size details
     effsize_df <-
@@ -137,7 +137,7 @@ expr_t_onesample <- function(data,
     if (stats.type == "nonparametric") stats_df %<>% dplyr::mutate(statistic = log(statistic))
 
     # dataframe
-    stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("^est|^conf|^diff")), effsize_df)
+    stats_df <- dplyr::bind_cols(stats_df, effsize_df)
   }
 
   # ----------------------- robust ---------------------------------------

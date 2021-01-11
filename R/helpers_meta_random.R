@@ -17,13 +17,12 @@
 #' @details This analysis is carried out using-
 #' \itemize{
 #'   \item parametric: `metafor::rma`
-#'   \item  robust: `metaplus::metaplus`
-#'   \item  Bayesian: `metaBMA::meta_random`
+#'   \item robust: `metaplus::metaplus`
+#'   \item Bayesian: `metaBMA::meta_random`
 #' }
 #'
 #' @importFrom metafor rma
 #' @importFrom metaplus metaplus
-#' @importFrom dplyr rename_all recode mutate
 #' @importFrom tidyBF bf_meta_random
 #'
 #' @examples
@@ -79,7 +78,7 @@ expr_meta_random <- function(data,
                              output = "expression",
                              ...) {
   # check the data contains needed column
-  stats.type <- stats_type_switch(type)
+  stats.type <- ipmisc::stats_type_switch(type)
 
   #----------------------- parametric ------------------------------------
 
@@ -124,11 +123,11 @@ expr_meta_random <- function(data,
         ),
         env = list(
           top.text = caption,
-          Q = format_num(x = df_glance$cochransq, k = 0L),
-          df = format_num(x = df_glance$df.error, k = 0L),
-          pvalue = format_num(x = df_glance$p.cochransq, k = k, p.value = TRUE),
-          tau2 = format_num(x = df_glance$tau2, k = k),
-          I2 = paste0(format_num(x = df_glance$i2 * 100, k = 2L), "%")
+          Q = format_num(df_glance$cochransq, k = 0L),
+          df = format_num(df_glance$df.error, k = 0L),
+          pvalue = format_num(df_glance$p.cochransq, k = k, p.value = TRUE),
+          tau2 = format_num(df_glance$tau2, k = k),
+          I2 = paste0(format_num(df_glance$i2 * 100, k = 2L), "%")
         )
       )
   }
@@ -145,8 +144,6 @@ expr_meta_random <- function(data,
         random = random,
         ...
       )
-
-    caption <- NULL
   }
 
   # clean up
@@ -154,12 +151,13 @@ expr_meta_random <- function(data,
     # create a dataframe with coefficients
     stats_df <- tidy_model_parameters(mod, include_studies = FALSE)
 
+    # informative column
+    stats_df %<>% dplyr::mutate(effectsize = "meta-analytic summary estimate")
+
     # preparing the subtitle
     subtitle <-
       expr_template(
         stats.df = stats_df,
-        statistic.text = quote(italic("z")),
-        effsize.text = quote(widehat(beta)["summary"]^"meta"),
         n = nrow(data),
         n.text = quote(italic("n")["effects"]),
         no.parameters = 0L,
@@ -182,7 +180,6 @@ expr_meta_random <- function(data,
         ...
       )
 
-    caption <- NULL
     subtitle <- stats_df
   }
 

@@ -179,8 +179,7 @@ expr_t_twosample <- function(data,
   if (stats.type == "nonparametric") {
     # preparing expression parameters
     no.parameters <- 0L
-    .f <- stats::wilcox.test
-    .f.es <- effectsize::rank_biserial
+    c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
   }
 
   # preparing expression
@@ -266,7 +265,8 @@ expr_t_twosample <- function(data,
       effsize_df <-
         as_tibble(as.data.frame(mod2), rownames = "effectsize") %>%
         dplyr::filter(effectsize == "AKP") %>%
-        dplyr::rename(estimate = Est, conf.low = ci.low, conf.high = ci.up)
+        dplyr::mutate(effectsize = "Robust standardized difference similar to Cohen's d") %>%
+        dplyr::select(estimate = Est, conf.low = ci.low, conf.high = ci.up, effectsize)
     }
   }
 

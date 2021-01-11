@@ -89,7 +89,7 @@ expr_template <- function(no.parameters,
   # if expression elements are `NULL`
   if (isTRUE(paired) && is.null(n.text)) n.text <- quote(italic("n")["pairs"])
   if (isFALSE(paired) && is.null(n.text)) n.text <- quote(italic("n")["obs"])
-  if (is.null(statistic.text)) statistic.text <- method_switch(stats.df$method[[1]])
+  if (is.null(statistic.text)) statistic.text <- stat_text_switch(stats.df$method[[1]])
   if (is.null(effsize.text)) effsize.text <- effectsize_switch(stats.df$effectsize[[1]])
 
   # ------------------ statistic with 0 degrees of freedom --------------------
@@ -246,7 +246,7 @@ expr_template <- function(no.parameters,
 
 #' @noRd
 
-method_switch <- function(method) {
+stat_text_switch <- function(method) {
   switch(
     method,
     "Pearson" = ,
@@ -261,7 +261,8 @@ method_switch <- function(method) {
     "Yuen's test on trimmed means for independent samples" = ,
     "Yuen's test on trimmed means for dependent samples" = quote(italic("t")["Yuen"]),
     "One-way analysis of means (not assuming equal variances)" = quote(italic("F")["Welch"]),
-    "One-way analysis of means" = quote(italic("F")["Fisher"]),
+    "One-way analysis of means" = ,
+    "ANOVA estimation for factorial designs using 'afex'" = quote(italic("F")["Fisher"]),
     "Friedman rank sum test" = quote(chi["Friedman"]^2),
     "Kruskal-Wallis rank sum test" = quote(chi["Kruskal-Wallis"]^2),
     "A heteroscedastic one-way ANOVA for trimmed means" = quote(italic("F")["trimmed-means"]),
@@ -269,6 +270,8 @@ method_switch <- function(method) {
     "Chi-squared test for given probabilities" = quote(chi["gof"]^2),
     "Pearson's Chi-squared test" = quote(chi["Pearson"]^2),
     "McNemar's Chi-squared test" = quote(chi["McNemar"]^2),
+    "Meta-analysis using 'metafor'" = ,
+    "Robust meta-analysis using 'metaplus'" = quote(italic("z")),
     NULL
   )
 }
@@ -285,7 +288,7 @@ effectsize_switch <- function(type) {
     "Hedges' g" = quote(widehat(italic("g"))["Hedge"]),
     "r (rank biserial)" = quote(widehat(italic("r"))["biserial"]^"rank"),
     "Explanatory measure of effect size" = quote(widehat(italic(xi))),
-    "AKP" = quote(widehat(italic(delta))["R"]),
+    "Robust standardized difference similar to Cohen's d" = quote(widehat(italic(delta))["R"]),
     "Trimmed mean" = quote(widehat(italic(mu))["trimmed"]),
     "Eta2" = ,
     "Eta2 (partial)" = quote(widehat(eta["p"]^2)),
@@ -294,7 +297,8 @@ effectsize_switch <- function(type) {
     "Kendall's W" = quote(widehat(italic("W"))["Kendall"]),
     "Epsilon2 (rank)" = quote(widehat(epsilon)["ordinal"]^2),
     "Cramer's V (adj.)" = quote(widehat(italic("V"))["Cramer"]),
-    "Cohen's g" = quote(widehat(italic("g"))["Cohen"])
+    "Cohen's g" = quote(widehat(italic("g"))["Cohen"]),
+    "meta-analytic summary estimate" = quote(widehat(beta)["summary"]^"meta")
   )
 }
 

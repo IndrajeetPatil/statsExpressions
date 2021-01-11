@@ -21,7 +21,7 @@ test_that(
       )
 
     expect_equal(
-      dplyr::select(df_1, -term),
+     df_1,
       structure(
         list(
           mu = c(0.25, 0.25, 0.25, 0.25),
