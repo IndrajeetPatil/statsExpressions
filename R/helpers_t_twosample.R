@@ -139,7 +139,6 @@ expr_t_twosample <- function(data,
                              nboot = 100,
                              output = "expression",
                              ...) {
-
   # standardize the type of statistics
   stats.type <- ipmisc::stats_type_switch(type)
 
@@ -184,8 +183,6 @@ expr_t_twosample <- function(data,
 
   # preparing expression
   if (stats.type %in% c("parametric", "nonparametric")) {
-    sample_size <- ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data))
-
     # extracting test details
     stats_df <-
       rlang::exec(
@@ -219,7 +216,7 @@ expr_t_twosample <- function(data,
 
   if (stats.type == "robust") {
     # expression parameters
-    c(no.parameters, sample_size, k.parameter) %<-% c(1L, nrow(data), k)
+    c(no.parameters, k.parameter) %<-% c(1L, k)
 
     # running robust analysis
     if (isFALSE(paired)) {
@@ -265,7 +262,7 @@ expr_t_twosample <- function(data,
       effsize_df <-
         as_tibble(as.data.frame(mod2), rownames = "effectsize") %>%
         dplyr::filter(effectsize == "AKP") %>%
-        dplyr::mutate(effectsize = "Robust standardized difference similar to Cohen's d") %>%
+        dplyr::mutate(effectsize = "Algina-Keselman-Penfield robust standardized difference") %>%
         dplyr::select(estimate = Est, conf.low = ci.low, conf.high = ci.up, effectsize)
     }
   }
@@ -281,7 +278,7 @@ expr_t_twosample <- function(data,
         no.parameters = no.parameters,
         stats.df = stats_df,
         paired = paired,
-        n = sample_size,
+        n = ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data)),
         conf.level = conf.level,
         k = k,
         k.parameter = k.parameter

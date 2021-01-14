@@ -260,7 +260,6 @@ expr_oneway_anova <- function(data,
 
     # expression details
     c(no.parameters, k.parameter, k.parameter2) %<-% c(1L, 0L, 0L)
-    sample_size <- ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data))
   }
 
   # ----------------------- robust ---------------------------------------
@@ -293,54 +292,34 @@ expr_oneway_anova <- function(data,
     # parameter extraction
     stats_df <- tidy_model_parameters(mod)
 
+    # for paired designs, WRS2 currently doesn't return effect size
+    if (isTRUE(paired)) {
+      effsize_df <-
+        long_to_wide_converter(data, {{ x }}, {{ y }}, paired = TRUE, spread = TRUE) %>%
+        wAKPavg(dplyr::select(-rowid), tr = tr, nboot = nboot) %>%
+        dplyr::mutate(effectsize = "Algina-Keselman-Penfield robust standardized difference average")
+
+      # combine dataframes
+      stats_df <- dplyr::bind_cols(stats_df, effsize_df)
+    }
+
     # expression details
-    c(no.parameters, sample_size, k.parameter, k.parameter2) %<-% c(2L, nrow(data), 0L, k)
+    c(no.parameters, k.parameter, k.parameter2) %<-% c(2L, ifelse(isTRUE(paired), k, 0L), k)
   }
 
   # final returns
   if (stats.type != "bayes") {
-    # preparing the expression
-    if (stats.type == "robust" && isTRUE(paired)) {
-      expression <-
-        substitute(
-          expr = paste(
-            italic("F")["trimmed-means"],
-            "(",
-            df1,
-            ",",
-            df2,
-            ") = ",
-            statistic,
-            ", ",
-            italic("p"),
-            " = ",
-            p.value,
-            ", ",
-            italic("n")["pairs"],
-            " = ",
-            n
-          ),
-          env = list(
-            statistic = format_num(stats_df$statistic[[1]], k = k),
-            df1 = format_num(stats_df$df[[1]], k = k),
-            df2 = format_num(stats_df$df.error[[1]], k = k),
-            p.value = format_num(stats_df$p.value[[1]], k = k, p.value = TRUE),
-            n = .prettyNum(length(unique(data$rowid)))
-          )
-        )
-    } else {
-      expression <-
-        expr_template(
-          no.parameters = no.parameters,
-          stats.df = stats_df,
-          n = sample_size,
-          paired = paired,
-          conf.level = conf.level,
-          k = k,
-          k.parameter = k.parameter,
-          k.parameter2 = k.parameter2
-        )
-    }
+    expression <-
+      expr_template(
+        no.parameters = no.parameters,
+        stats.df = stats_df,
+        n = ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data)),
+        paired = paired,
+        conf.level = conf.level,
+        k = k,
+        k.parameter = k.parameter,
+        k.parameter2 = k.parameter2
+      )
   }
 
   # ----------------------- Bayesian ---------------------------------------
@@ -365,4 +344,41 @@ expr_oneway_anova <- function(data,
 
   # return the output
   switch(output, "dataframe" = as_tibble(stats_df), expression)
+}
+
+
+#' @name wAKPavg
+#' @note Adapted from Rand Wilcox's script
+#'
+#' @param x A dataframe in wide format.
+#'
+#' @importFrom WRS2 dep.effect
+#'
+#' @examples
+#' before <- c(190, 210, 300, 240, 280, 170, 280, 250, 240, 220)
+#' now <- c(170, 280, 250, 240, 190, 260, 180, 200, 100, 200)
+#' after <- c(210, 210, 340, 190, 260, 180, 200, 220, 230, 200)
+#' df <- data.frame(before, now, after)
+#' wAKPavg(df)
+#' @noRd
+
+wAKPavg <- function(x, tr = 0.2, nboot = 100, ...) {
+  x <- as.list(x) # dataframe to a list
+  J <- length(x)
+  C <- (J^2 - J) / 2
+  A <- matrix(NA, nrow = C, ncol = 3)
+  dimnames(A) <- list(NULL, c("estimate", "conf.low", "conf.high"))
+  ic <- 0
+  for (j in 1:J) {
+    for (k in 1:J) {
+      if (j < k) {
+        ic <- ic + 1
+        A[ic, 1] <- WRS2::dep.effect(x[[j]], x[[k]], tr = tr, nboot = nboot)[5]
+        A[ic, 2] <- WRS2::dep.effect(x[[j]], x[[k]], tr = tr, nboot = nboot)[21]
+        A[ic, 3] <- WRS2::dep.effect(x[[j]], x[[k]], tr = tr, nboot = nboot)[25]
+      }
+    }
+  }
+
+  tibble("estimate" = mean(A[, 1]), "conf.low" = mean(A[, 2]), "conf.high" = mean(A[, 3]))
 }

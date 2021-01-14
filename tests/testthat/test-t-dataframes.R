@@ -21,7 +21,7 @@ test_that(
       )
 
     expect_equal(
-     df_1,
+      df_1,
       structure(
         list(
           mu = c(0.25, 0.25, 0.25, 0.25),

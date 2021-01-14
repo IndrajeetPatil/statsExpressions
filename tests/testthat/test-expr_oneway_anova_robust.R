@@ -36,7 +36,7 @@ test_that(
           " = ",
           "2e-05",
           ", ",
-          widehat(italic(xi)),
+          widehat(xi),
           " = ",
           "0.85858",
           ", CI"["95%"],
@@ -85,7 +85,7 @@ test_that(
           " = ",
           "0.7653",
           ", ",
-          widehat(italic(xi)),
+          widehat(xi),
           " = ",
           "0.1793",
           ", CI"["99%"],
@@ -142,47 +142,19 @@ test_that(
           " = ",
           "1.146e-10",
           ", ",
+          widehat(delta)["R-avg"]^"AKP",
+          " = ",
+          "0.6635",
+          ", CI"["95%"],
+          " [",
+          "0.4660",
+          ", ",
+          "0.9707",
+          "]",
+          ", ",
           italic("n")["pairs"],
           " = ",
           "88"
-        )
-      )
-
-    # testing overall call
-    expect_identical(using_function1, results1)
-
-    # `statsExpressions` output
-    set.seed(123)
-    using_function2 <-
-      expr_oneway_anova(
-        type = "robust",
-        data = iris_long,
-        x = condition,
-        y = value,
-        k = 3,
-        paired = TRUE
-      )
-
-    # expected output
-    set.seed(123)
-    results2 <-
-      ggplot2::expr(
-        paste(
-          italic("F")["trimmed-means"],
-          "(",
-          "1.091",
-          ",",
-          "97.096",
-          ") = ",
-          "367.791",
-          ", ",
-          italic("p"),
-          " = ",
-          "0e+00",
-          ", ",
-          italic("n")["pairs"],
-          " = ",
-          150L
         )
       )
 
@@ -207,67 +179,5 @@ test_that(
       ),
       "tbl_df"
     )
-  }
-)
-
-# works with subject id ------------------------------------------------------
-
-test_that(
-  desc = "works with subject id",
-  code = {
-    skip_if(getRversion() < "3.6")
-
-    # data
-    df <-
-      structure(list(
-        score = c(
-          70, 82.5, 97.5, 100, 52.5, 62.5,
-          92.5, 70, 90, 92.5, 90, 75, 60, 90, 85, 67.5, 90, 72.5, 45, 60,
-          72.5, 80, 100, 100, 97.5, 95, 65, 87.5, 90, 62.5, 100, 100, 97.5,
-          100, 97.5, 95, 82.5, 82.5, 40, 92.5, 85, 72.5, 35, 27.5, 82.5
-        ), condition = structure(c(
-          5L, 1L, 2L, 3L, 4L, 4L, 5L, 1L,
-          2L, 3L, 2L, 3L, 3L, 4L, 2L, 1L, 5L, 5L, 4L, 1L, 1L, 4L, 3L, 5L,
-          2L, 5L, 1L, 2L, 3L, 4L, 4L, 5L, 1L, 2L, 3L, 2L, 3L, 4L, 1L, 5L,
-          3L, 2L, 5L, 4L, 1L
-        ), .Label = c("1", "2", "3", "4", "5"), class = "factor"),
-        id = structure(c(
-          1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L,
-          2L, 3L, 3L, 4L, 3L, 4L, 3L, 4L, 3L, 4L, 4L, 5L, 5L, 5L, 5L,
-          5L, 6L, 6L, 6L, 6L, 6L, 7L, 7L, 7L, 7L, 7L, 8L, 8L, 8L, 8L,
-          8L, 9L, 9L, 9L, 9L, 9L
-        ), .Label = c(
-          "1", "2", "3", "4", "5",
-          "6", "7", "8", "9"
-        ), class = "factor")
-      ), row.names = c(
-        NA,
-        45L
-      ), class = "data.frame")
-
-    # incorrect
-    set.seed(123)
-    expr1 <-
-      expr_oneway_anova(
-        type = "robust",
-        data = df,
-        x = condition,
-        y = score,
-        subject.id = id,
-        paired = TRUE
-      )
-
-    # correct
-    set.seed(123)
-    expr2 <-
-      expr_oneway_anova(
-        type = "robust",
-        data = dplyr::arrange(df, id),
-        x = condition,
-        y = score,
-        paired = TRUE
-      )
-
-    expect_equal(expr1, expr2)
   }
 )

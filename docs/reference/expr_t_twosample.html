@@ -353,9 +353,9 @@ if appropriate as shown in the second example below.</p>
   type <span class='op'>=</span> <span class='st'>"r"</span>
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; paste(italic("t")["Yuen"], "(", "13.90", ") = ", "1.57", ", ", 
-#&gt;     italic("p"), " = ", "0.139", ", ", widehat(italic(xi)), " = ", 
-#&gt;     "0.52", ", CI"["95%"], " [", "0.00", ", ", "0.89", "]", ", ", 
-#&gt;     italic("n")["obs"], " = ", "20")</div><div class='input'>
+#&gt;     italic("p"), " = ", "0.139", ", ", widehat(xi), " = ", "0.52", 
+#&gt;     ", CI"["95%"], " [", "0.00", ", ", "0.89", "]", ", ", italic("n")["obs"], 
+#&gt;     " = ", "20")</div><div class='input'>
 <span class='co'># within-subjects design</span>
 <span class='fu'>expr_t_twosample</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>VR_dilemma</span>,
@@ -373,9 +373,9 @@ if appropriate as shown in the second example below.</p>
 #&gt;   </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>
 #&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span>   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>593</span><span>   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>836</span><span>    -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>296</span><span>
-#&gt;   </span><span style='font-weight: bold;'>effectsize</span><span>                                         
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                              
-#&gt; </span><span style='color: #555555;'>1</span><span> Robust standardized difference similar to Cohen's d</div><div class='input'>
+#&gt;   </span><span style='font-weight: bold;'>effectsize</span><span>                                             
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                  
+#&gt; </span><span style='color: #555555;'>1</span><span> Algina-Keselman-Penfield robust standardized difference</div><div class='input'>
 <span class='co'>#' # ------------------------------ Bayesian ------------------------------</span>
 
 <span class='co'># between-subjects design</span>

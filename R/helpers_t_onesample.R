@@ -85,11 +85,11 @@ expr_t_onesample <- function(data,
                              nboot = 100L,
                              output = "expression",
                              ...) {
-  # preparing the vector
-  x_vec <- stats::na.omit(data %>% dplyr::pull({{ x }}))
-
   # standardize the type of statistics
   stats.type <- ipmisc::stats_type_switch(type)
+
+  # preparing the vector
+  x_vec <- stats::na.omit(data %>% dplyr::pull({{ x }}))
 
   # ----------------------- parametric ---------------------------------------
 
@@ -200,13 +200,12 @@ trimcibt <- function(x, tr = 0.2, nboot = 200, nv = 0, alpha = 0.05, ...) {
   icrit <- round((1 - alpha) * nboot)
 
   tibble(
+    statistic = test,
+    p.value = (sum(abs(test) <= abs(tval))) / nboot,
+    method = "Bootstrap-t method for one-sample test",
     estimate = mean(x, tr),
     conf.low = mean(x, tr) - tval[icrit] * WRS2::trimse(x, tr),
     conf.high = mean(x, tr) + tval[icrit] * WRS2::trimse(x, tr),
-    statistic = test,
-    p.value = (sum(abs(test) <= abs(tval))) / nboot,
-    n = length(x),
-    effectsize = "Trimmed mean",
-    method = "Bootstrap-t method for one-sample test"
+    effectsize = "Trimmed mean"
   )
 }
