@@ -231,12 +231,7 @@ expr_t_twosample <- function(data,
         )
 
       # Yuen's test for trimmed means
-      mod <-
-        WRS2::yuen(
-          formula = rlang::new_formula(y, x),
-          data = data,
-          tr = tr
-        )
+      mod <- WRS2::yuen(formula = rlang::new_formula(y, x), data = data, tr = tr)
 
       # tidying it up
       stats_df <- tidy_model_parameters(mod)

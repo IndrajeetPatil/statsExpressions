@@ -38,8 +38,7 @@
 #' expr_corr_test(
 #'   data = ggplot2::midwest,
 #'   x = area,
-#'   y = percblack,
-#'   type = "parametric"
+#'   y = percblack
 #' )
 #'
 #' # changing defaults
@@ -47,8 +46,8 @@
 #'   data = ggplot2::midwest,
 #'   x = area,
 #'   y = percblack,
-#'   beta = 0.2,
-#'   type = "robust"
+#'   type = "robust",
+#'   output = "dataframe"
 #' )
 #' @export
 
@@ -93,19 +92,14 @@ expr_corr_test <- function(data,
       dplyr::mutate(effectsize = method)
   }
 
-  # ------------------------ expression elements -----------------------------
+  # ---------------------- preparing expression -------------------------------
 
   # no. of parameters
-  if (stats_type == "parametric") no.parameters <- 1L
-  if (stats_type == "nonparametric") no.parameters <- 0L
-  if (stats_type == "robust") no.parameters <- 1L
-
+  no.parameters <- ifelse(stats_type %in% c("parametric", "robust"), 1L, 0L)
   if (stats_type == "nonparametric") stats_df %<>% dplyr::mutate(statistic = log(statistic))
 
-  # ---------------------- preparing expression ---------------------------------
-
+  # preparing expression
   if (stats_type != "bayes") {
-    # preparing expression
     expression <-
       expr_template(
         no.parameters = no.parameters,
@@ -115,8 +109,10 @@ expr_corr_test <- function(data,
         conf.level = conf.level,
         k = k
       )
-  } else {
-    # bayes factor results
+  }
+
+  # bayes factor results
+  if (stats_type == "bayes") {
     stats_df <-
       tidyBF::bf_corr_test(
         data = data,

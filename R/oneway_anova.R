@@ -211,7 +211,6 @@ expr_oneway_anova <- function(data,
     if (isTRUE(paired)) var.equal <- TRUE
     k.parameter <- ifelse(isFALSE(paired), 0L, k)
     k.parameter2 <- ifelse(isFALSE(paired) && isTRUE(var.equal), 0L, k)
-    sample_size <- ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data))
     no.parameters <- 2L
   }
 
@@ -220,17 +219,15 @@ expr_oneway_anova <- function(data,
   if (stats.type == "nonparametric") {
     # Friedman test
     if (isTRUE(paired)) {
-      .f <- stats::friedman.test
+      c(.f, .f.es) %<-% c(stats::friedman.test, effectsize::kendalls_w)
       .f.args <- list(formula = new_formula({{ enexpr(y) }}, expr(!!enexpr(x) | rowid)))
-      .f.es <- effectsize::kendalls_w
       .f.es.args <- list(x = new_formula({{ enexpr(y) }}, expr(!!enexpr(x) | rowid)))
     }
 
     # Kruskal-Wallis test
     if (isFALSE(paired)) {
-      .f <- stats::kruskal.test
+      c(.f, .f.es) %<-% c(stats::kruskal.test, effectsize::rank_epsilon_squared)
       .f.args <- list(formula = rlang::new_formula(y, x))
-      .f.es <- effectsize::rank_epsilon_squared
       .f.es.args <- list(x = rlang::new_formula(y, x))
     }
 
