@@ -2,7 +2,7 @@
 % Please edit documentation in R/corr_test.R
 \name{expr_corr_test}
 \alias{expr_corr_test}
-\title{Making expression for correlation analysis}
+\title{Expression and dataframe for correlation analysis}
 \usage{
 expr_corr_test(
   data,
@@ -64,7 +64,7 @@ intervals for the correlation coefficient estimate. Results are extracted
 via \code{correlation::correlation}.
 }
 \description{
-Making expression for correlation analysis
+Expression and dataframe for correlation analysis
 }
 \examples{
 # for reproducibility

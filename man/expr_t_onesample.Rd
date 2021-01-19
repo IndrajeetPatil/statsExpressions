@@ -2,8 +2,7 @@
 % Please edit documentation in R/t_onesample.R
 \name{expr_t_onesample}
 \alias{expr_t_onesample}
-\title{Expression for one sample \emph{t}-test and its non-parametric and
-robust equivalents}
+\title{Expression and dataframe for one-sample \emph{t}-test}
 \usage{
 expr_t_onesample(
   data,
@@ -71,8 +70,7 @@ and the effect size details contained will be dependent on the \code{type}
 argument.
 }
 \description{
-Expression for one sample \emph{t}-test and its non-parametric and
-robust equivalents
+Expression and dataframe for one-sample \emph{t}-test
 }
 \examples{
 \donttest{

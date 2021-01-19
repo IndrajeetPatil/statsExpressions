@@ -1,7 +1,7 @@
+#' @title Expression and dataframe for contingency table analysis
 #' @name expr_contingency_tab
-#' @title Making expression for contingency table analysis
 #'
-#' @return Expression or a dataframe for contingency analysis (Pearson's
+#' @return Expression or a dataframe for contingency table analysis (Pearson's
 #'   chi-square test for independence for between-subjects design or McNemar's
 #'   test for within-subjects design) or goodness of fit test for a single
 #'   categorical variable.

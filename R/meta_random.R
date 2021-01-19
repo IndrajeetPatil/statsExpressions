@@ -1,4 +1,4 @@
-#' @title Making expression for random-effects meta-analysis
+#' @title Expression and dataframe for random-effects meta-analysis
 #' @name expr_meta_random
 #'
 #' @param data A dataframe. It **must** contain columns named `estimate` (effect

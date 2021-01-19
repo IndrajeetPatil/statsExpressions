@@ -196,3 +196,12 @@ test_that(
     expect_identical(subtitle, template_1)
   }
 )
+
+
+test_that(
+  desc = "switches default to NULL",
+  code = {
+    expect_null(estimate_type_switch("x"))
+    expect_null(stat_text_switch("x"))
+  }
+)

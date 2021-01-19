@@ -2,7 +2,7 @@
 % Please edit documentation in R/t_twosample.R
 \name{expr_t_twosample}
 \alias{expr_t_twosample}
-\title{Making expression containing \emph{t}-test results}
+\title{Expression and dataframe for two-sample \emph{t}-test}
 \usage{
 expr_t_twosample(
   data,
@@ -58,11 +58,9 @@ repeated measures/within-subjects or between-subjects. The default is
 argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \emph{g}).}
 
 \item{var.equal}{a logical variable indicating whether to treat the
-    variances in the samples as equal.  If \code{TRUE}, then a simple F
-    test for the equality of means in a one-way analysis of variance is
-    performed.  If \code{FALSE}, an approximate method of Welch (1951)
-    is used, which generalizes the commonly known 2-sample Welch test to
-    the case of arbitrarily many samples.}
+    two variances as being equal. If \code{TRUE} then the pooled
+    variance is used to estimate the variance otherwise the Welch
+    (or Satterthwaite) approximation to the degrees of freedom is used.}
 
 \item{bf.prior}{A number between \code{0.5} and \code{2} (default \code{0.707}), the prior
 width to use in calculating Bayes factors.}
@@ -90,7 +88,7 @@ Expression containing details from results of a two-sample test and
 effect size plus confidence intervals.
 }
 \description{
-Making expression containing \emph{t}-test results
+Expression and dataframe for two-sample \emph{t}-test
 }
 \note{
 The \emph{stats::wilcox.test} function does not follow the same convention

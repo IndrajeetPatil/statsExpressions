@@ -1,5 +1,4 @@
-#' @title Expression for one sample *t*-test and its non-parametric and
-#'   robust equivalents
+#' @title Expression and dataframe for one-sample *t*-test
 #' @name expr_t_onesample
 #'
 #' @param x A numeric variable from the dataframe `data`.
@@ -7,6 +6,7 @@
 #'   (Default: `0`).
 #' @inheritParams ipmisc::long_to_wide_converter
 #' @inheritParams expr_template
+#' @inheritParams bf_extractor
 #' @inheritParams expr_t_twosample
 #' @inheritParams expr_oneway_anova
 #'

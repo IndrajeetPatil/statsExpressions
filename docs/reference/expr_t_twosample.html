@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Making expression containing t-test results — expr_t_twosample • statsExpressions</title>
+<title>Expression and dataframe for two-sample t-test — expr_t_twosample • statsExpressions</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,8 +54,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Making expression containing t-test results — expr_t_twosample" />
-<meta property="og:description" content="Making expression containing t-test results" />
+<meta property="og:title" content="Expression and dataframe for two-sample t-test — expr_t_twosample" />
+<meta property="og:description" content="Expression and dataframe for two-sample t-test" />
 <meta property="og:image" content="https://indrajeetpatil.github.io/statsExpressions/logo.png" />
 
 
@@ -142,13 +142,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Making expression containing <em>t</em>-test results</h1>
+    <h1>Expression and dataframe for two-sample <em>t</em>-test</h1>
     <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/t_twosample.R'><code>R/t_twosample.R</code></a></small>
     <div class="hidden name"><code>expr_t_twosample.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Making expression containing <em>t</em>-test results</p>
+    <p>Expression and dataframe for two-sample <em>t</em>-test</p>
     </div>
 
     <pre class="usage"><span class='fu'>expr_t_twosample</span><span class='op'>(</span>
@@ -227,11 +227,9 @@ argument can be <code>"d"</code> (for Cohen's <em>d</em>) or <code>"g"</code> (f
     <tr>
       <th>var.equal</th>
       <td><p>a logical variable indicating whether to treat the
-    variances in the samples as equal.  If <code>TRUE</code>, then a simple F
-    test for the equality of means in a one-way analysis of variance is
-    performed.  If <code>FALSE</code>, an approximate method of Welch (1951)
-    is used, which generalizes the commonly known 2-sample Welch test to
-    the case of arbitrarily many samples.</p></td>
+    two variances as being equal. If <code>TRUE</code> then the pooled
+    variance is used to estimate the variance otherwise the Welch
+    (or Satterthwaite) approximation to the degrees of freedom is used.</p></td>
     </tr>
     <tr>
       <th>bf.prior</th>

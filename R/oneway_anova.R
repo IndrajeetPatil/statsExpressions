@@ -1,4 +1,4 @@
-#' @title Expression containing ANOVA results
+#' @title Expression and dataframe for one-way ANOVA
 #' @name expr_oneway_anova
 #'
 #' @return For more details, see-
