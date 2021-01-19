@@ -18,6 +18,7 @@ expr_oneway_anova(
   bf.prior = 0.707,
   tr = 0.1,
   nboot = 100,
+  top.text = NULL,
   output = "expression",
   ...
 )
@@ -58,9 +59,11 @@ argument can be \code{"eta"} (partial eta-squared) or \code{"omega"} (partial
 omega-squared).}
 
 \item{var.equal}{a logical variable indicating whether to treat the
-    two variances as being equal. If \code{TRUE} then the pooled
-    variance is used to estimate the variance otherwise the Welch
-    (or Satterthwaite) approximation to the degrees of freedom is used.}
+    variances in the samples as equal.  If \code{TRUE}, then a simple F
+    test for the equality of means in a one-way analysis of variance is
+    performed.  If \code{FALSE}, an approximate method of Welch (1951)
+    is used, which generalizes the commonly known 2-sample Welch test to
+    the case of arbitrarily many samples.}
 
 \item{bf.prior}{A number between \code{0.5} and \code{2} (default \code{0.707}), the prior
 width to use in calculating Bayes factors.}
@@ -73,6 +76,9 @@ try to play around with the value of \code{tr}, which is by default set to
 
 \item{nboot}{Number of bootstrap samples for computing confidence interval
 for the effect size (Default: \code{100}).}
+
+\item{top.text}{Text to display on top of the Bayes Factor message. This is
+mostly relevant in the context of \code{ggstatsplot} functions.}
 
 \item{output}{If \code{"expression"}, will return expression with statistical
 details, while \code{"dataframe"} will return a dataframe containing the

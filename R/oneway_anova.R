@@ -5,6 +5,10 @@
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @inheritParams ipmisc::long_to_wide_converter
+#' @param type Type of statistic expected (`"parametric"` or `"nonparametric"`
+#'   or `"robust"` or `"bayes"`).Corresponding abbreviations are also accepted:
+#'   `"p"` (for parametric), `"np"` (nonparametric), `"r"` (robust), or
+#'   `"bf"`resp.
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
 #'   argument can be `"eta"` (partial eta-squared) or `"omega"` (partial
 #'   omega-squared).
@@ -18,13 +22,16 @@
 #'   `0.1`. Lowering the value might help.
 #' @param nboot Number of bootstrap samples for computing confidence interval
 #'   for the effect size (Default: `100`).
+#' @param bf.prior A number between `0.5` and `2` (default `0.707`), the prior
+#'   width to use in calculating Bayes factors.
 #' @inheritParams expr_t_twosample
 #' @inheritParams expr_template
+#' @inheritParams bf_extractor
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams stats::oneway.test
 #'
 #' @importFrom dplyr select rename matches
-#' @importFrom rlang !! !!! enquo eval_tidy expr enexpr ensym exec new_formula
+#' @importFrom rlang !! !!! quo_is_null eval_tidy expr enexpr ensym exec new_formula
 #' @importFrom stats oneway.test
 #' @importFrom afex aov_ez
 #' @importFrom WRS2 t1way rmanova
@@ -32,7 +39,7 @@
 #' @importFrom effectsize rank_epsilon_squared kendalls_w
 #' @importFrom effectsize omega_squared eta_squared
 #' @importFrom ipmisc long_to_wide_converter format_num
-#' @importFrom tidyBF bf_oneway_anova
+#' @importFrom BayesFactor ttestBF anovaBF
 #' @importFrom parameters model_parameters
 #' @importFrom performance model_performance
 #'
@@ -143,6 +150,7 @@ expr_oneway_anova <- function(data,
                               bf.prior = 0.707,
                               tr = 0.1,
                               nboot = 100,
+                              top.text = NULL,
                               output = "expression",
                               ...) {
 
@@ -153,17 +161,16 @@ expr_oneway_anova <- function(data,
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
   # data cleanup
-  if (stats.type != "bayes") {
-    data %<>%
-      ipmisc::long_to_wide_converter(
-        data = .,
-        x = {{ x }},
-        y = {{ y }},
-        subject.id = {{ subject.id }},
-        paired = paired,
-        spread = FALSE
-      )
-  }
+  data %<>%
+    ipmisc::long_to_wide_converter(
+      data = .,
+      x = {{ x }},
+      y = {{ y }},
+      subject.id = {{ subject.id }},
+      paired = paired,
+      spread = FALSE
+    ) %>%
+    dplyr::mutate(rowid = as.factor(rowid))
 
   # ----------------------- parametric ---------------------------------------
 
@@ -323,20 +330,24 @@ expr_oneway_anova <- function(data,
 
   # running Bayesian t-test
   if (stats.type == "bayes") {
-    stats_df <-
-      tidyBF::bf_oneway_anova(
-        data = data,
-        x = {{ x }},
-        y = {{ y }},
-        subject.id = {{ subject.id }},
-        paired = paired,
-        bf.prior = bf.prior,
-        k = k,
-        output = output,
-        ...
+    if (!paired) .f.args <- list(formula = new_formula(y, x), rscaleFixed = bf.prior)
+    if (paired) {
+      .f.args <- list(
+        formula = new_formula(rlang::enexpr(y), expr(!!rlang::enexpr(x) + rowid)),
+        rscaleFixed = bf.prior, whichRandom = "rowid", rscaleRandom = 1
       )
+    }
 
-    expression <- stats_df
+    # creating a `BayesFactor` object
+    bf_object <- rlang::exec(
+      .fn = BayesFactor::anovaBF,
+      data = as.data.frame(data),
+      progress = FALSE,
+      !!!.f.args
+    )
+
+    # final return
+    expression <- stats_df <- bf_extractor(bf_object, conf.level, k = k, top.text = top.text, output = output)
   }
 
   # return the output

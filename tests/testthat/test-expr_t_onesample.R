@@ -295,55 +295,79 @@ test_that(
   desc = "expr_t_onesample bayes factor works",
   code = {
     skip_if(getRversion() < "4.0")
+    skip_on_cran()
 
-    # statsExpressions output
+    # extracting results from where this function is implemented
     set.seed(123)
-    using_function <-
+    df_results <-
       expr_t_onesample(
-        data = anscombe,
-        x = "x2",
-        test.value = 8,
-        type = "bf"
+        type = "bayes",
+        data = iris,
+        x = Petal.Length,
+        y = NULL,
+        test.value = 5.5,
+        bf.prior = 0.99,
+        output = "dataframe"
       )
 
-    # expected output
-    set.seed(123)
-    results <-
-      tidyBF::bf_ttest(
-        data = anscombe,
-        x = "x2",
-        test.value = 8,
-        type = "bf",
-        output = "expr"
-      )
+    # check Bayes factor values
+    expect_equal(df_results$bf10[[1]], 5.958171e+20, tolerance = 0.001)
+    expect_equal(df_results$log_e_bf10[[1]], 47.83647, tolerance = 0.001)
 
-    # testing overall call
-    expect_identical(using_function, results)
-
-    # statsExpressions output
+    # extracting subtitle (without NA)
     set.seed(123)
-    using_function2 <-
+    subtitle <-
       expr_t_onesample(
-        data = ggplot2::msleep,
-        x = "brainwt",
-        test.value = 0.25,
-        type = "bf",
-        k = 4
+        type = "bayes",
+        data = iris,
+        x = "Petal.Length",
+        y = NULL,
+        test.value = 5.5,
+        bf.prior = 0.99,
+        output = "expression",
+        centrality = "mean",
+        conf.level = 0.90
       )
 
-    # expected result
+    expect_type(subtitle, "language")
+
+    expect_identical(
+      subtitle,
+      ggplot2::expr(
+        paste(
+          "log"["e"] * "(BF"["01"] * ") = " * "-47.84" * ", ",
+          widehat(italic(delta))["median"]^"posterior" * " = " * "1.76" * ", ",
+          "CI"["90%"]^"HDI" * " [" * "1.52" * ", " * "1.99" * "], ",
+          italic("r")["Cauchy"]^"JZS" * " = " * "0.99"
+        )
+      )
+    )
+
+    # extracting subtitle (with NA)
     set.seed(123)
-    results2 <-
-      tidyBF::bf_ttest(
+    subtitle2 <-
+      expr_t_onesample(
+        type = "bayes",
         data = ggplot2::msleep,
-        x = "brainwt",
+        x = brainwt,
+        y = NULL,
         test.value = 0.25,
-        type = "bf",
-        k = 4,
-        output = "expression"
+        bf.prior = 0.9,
+        k = 3,
+        output = "subtitle",
+        conf.method = "eti"
       )
 
-    # testing overall call
-    expect_identical(using_function2, results2)
+    expect_identical(
+      subtitle2,
+      ggplot2::expr(
+        paste(
+          "log"["e"] * "(BF"["01"] * ") = " * "2.125" * ", ",
+          widehat(italic(delta))["median"]^"posterior" * " = " * "-0.018" * ", ",
+          "CI"["95%"]^"HDI" * " [" * "-0.265" * ", " * "0.242" * "], ",
+          italic("r")["Cauchy"]^"JZS" * " = " * "0.900"
+        )
+      )
+    )
   }
 )

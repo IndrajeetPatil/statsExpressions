@@ -21,7 +21,11 @@ utils::globalVariables(
     "effsize.text",
     "method",
     ".f",
-    ".f.es"
+    ".f.es",
+    "bf10",
+    "estimate.LB",
+    "estimate.UB",
+    "r2.component"
   ),
   package = "statsExpressions",
   add = FALSE

@@ -5,15 +5,10 @@
 #' @param x A numeric variable from the dataframe `data`.
 #' @param test.value A number specifying the value of the null hypothesis
 #'   (Default: `0`).
-#' @param type Type of statistic expected (`"parametric"` or `"nonparametric"`
-#'   or `"robust"` or `"bayes"`).Corresponding abbreviations are also accepted:
-#'   `"p"` (for parametric), `"np"` (nonparametric), `"r"` (robust), or
-#'   `"bf"`resp.
 #' @inheritParams ipmisc::long_to_wide_converter
-#' @inheritParams expr_t_twosample
 #' @inheritParams expr_template
+#' @inheritParams expr_t_twosample
 #' @inheritParams expr_oneway_anova
-#' @inheritParams tidyBF::bf_ttest
 #'
 #' @return Expression containing results from a one-sample test. The exact test
 #'   and the effect size details contained will be dependent on the `type`
@@ -27,6 +22,7 @@
 #' @importFrom effectsize cohens_d hedges_g rank_biserial
 #' @importFrom stats t.test wilcox.test na.omit
 #' @importFrom rlang !! !!! enquo eval_tidy expr enexpr ensym exec new_formula
+#' @importFrom BayesFactor ttestBF
 #'
 #' @examples
 #' \donttest{
@@ -61,7 +57,7 @@
 #'   type = "robust"
 #' )
 #'
-#' # ----------------------- Bayes Factor -----------------------------------
+#' # ---------------------------- Bayesian -----------------------------------
 #'
 #' expr_t_onesample(
 #'   data = ggplot2::msleep,
@@ -83,6 +79,7 @@ expr_t_onesample <- function(data,
                              bf.prior = 0.707,
                              effsize.type = "g",
                              nboot = 100L,
+                             top.text = NULL,
                              output = "expression",
                              ...) {
   # standardize the type of statistics
@@ -171,18 +168,10 @@ expr_t_onesample <- function(data,
 
   # running Bayesian one-sample t-test
   if (stats.type == "bayes") {
-    stats_df <-
-      tidyBF::bf_ttest(
-        data = data,
-        x = {{ x }},
-        test.value = test.value,
-        bf.prior = bf.prior,
-        output = output,
-        k = k,
-        ...
-      )
+    bf_object <- BayesFactor::ttestBF(x_vec, rscale = bf.prior, mu = test.value)
 
-    expression <- stats_df
+    # final return
+    expression <- stats_df <- bf_extractor(bf_object, conf.level, k = k, top.text = top.text, output = output)
   }
 
   # return the output

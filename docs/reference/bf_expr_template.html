@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Objects exported from other packages — reexports • statsExpressions</title>
+<title>Expression template for Bayes Factor results — bf_expr_template • statsExpressions</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,17 +54,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Objects exported from other packages — reexports" />
-<meta property="og:description" content="These objects are imported from other packages. Follow the links
-below to see their documentation.
-
-  correlationcorrelation
-
-  ipmisc%$%, %&amp;lt;-%, %&amp;lt;&amp;gt;%, %&amp;gt;%, as_tibble, tibble
-
-  rlang%|%, %||%, :=
-
-" />
+<meta property="og:title" content="Expression template for Bayes Factor results — bf_expr_template" />
+<meta property="og:description" content="Expression template for Bayes Factor results" />
 <meta property="og:image" content="https://indrajeetpatil.github.io/statsExpressions/logo.png" />
 
 
@@ -151,25 +142,76 @@ below to see their documentation.
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Objects exported from other packages</h1>
-    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/reexports.R'><code>R/reexports.R</code></a></small>
-    <div class="hidden name"><code>reexports.Rd</code></div>
+    <h1>Expression template for Bayes Factor results</h1>
+    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/bf_expr_template.R'><code>R/bf_expr_template.R</code></a></small>
+    <div class="hidden name"><code>bf_expr_template.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>These objects are imported from other packages. Follow the links
-below to see their documentation.</p>
-<dl>
-  <dt>correlation</dt><dd><p><code><a href='https://easystats.github.io/correlation/reference/correlation.html'>correlation</a></code></p></dd>
-
-  <dt>ipmisc</dt><dd><p><code><a href='https://magrittr.tidyverse.org/reference/exposition.html'>%$%</a></code>, <code>%&lt;-%</code>, <code>%&lt;&gt;%</code>, <code>%&gt;%</code>, <code>as_tibble</code>, <code>tibble</code></p></dd>
-
-  <dt>rlang</dt><dd><p><code><a href='https://rlang.r-lib.org/reference/op-na-default.html'>%|%</a></code>, <code><a href='https://rlang.r-lib.org/reference/op-null-default.html'>%||%</a></code>, <code><a href='https://rlang.r-lib.org/reference/nse-force.html'>:=</a></code></p></dd>
-
-</dl>
+    <p>Expression template for Bayes Factor results</p>
     </div>
 
+    <pre class="usage"><span class='fu'>bf_expr_template</span><span class='op'>(</span>
+  <span class='va'>top.text</span>,
+  <span class='va'>estimate.df</span>,
+  prior.type <span class='op'>=</span> <span class='cn'>NULL</span>,
+  estimate.type <span class='op'>=</span> <span class='cn'>NULL</span>,
+  centrality <span class='op'>=</span> <span class='st'>"median"</span>,
+  conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
+  conf.method <span class='op'>=</span> <span class='st'>"HDI"</span>,
+  k <span class='op'>=</span> <span class='fl'>2L</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>top.text</th>
+      <td><p>Text to display on top of the Bayes Factor message. This is
+mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
+    </tr>
+    <tr>
+      <th>estimate.df</th>
+      <td><p>Dataframe containing estimates and their credible
+intervals along with Bayes Factor value. The columns should be named as
+<code>estimate</code>, <code>estimate.LB</code>, <code>estimate.UB</code>, and <code>bf10</code>.</p></td>
+    </tr>
+    <tr>
+      <th>prior.type</th>
+      <td><p>A character that specifies the prior type.</p></td>
+    </tr>
+    <tr>
+      <th>estimate.type</th>
+      <td><p>A character that specifies the relevant effect size.</p></td>
+    </tr>
+    <tr>
+      <th>centrality</th>
+      <td><p>The point-estimates (centrality indices) to compute.
+Character (vector) or list with one or more of these options: <code>"median"</code>,
+<code>"mean"</code>, <code>"MAP"</code> or <code>"all"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>conf.level</th>
+      <td><p>Confidence/Credible Interval (CI) level. Default to <code>0.95</code>
+(<code>95%</code>).</p></td>
+    </tr>
+    <tr>
+      <th>conf.method</th>
+      <td><p>The type of index used for Credible Interval. Can be
+<code>"hdi"</code> (default), <code>"eti"</code>, or <code>"si"</code> (see <code>si()</code>, <code>hdi()</code>, <code>eti()</code>
+functions from <code>bayestestR</code> package).</p></td>
+    </tr>
+    <tr>
+      <th>k</th>
+      <td><p>Number of digits after decimal point (should be an integer)
+(Default: <code>k = 2L</code>).</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Currently ignored.</p></td>
+    </tr>
+    </table>
 
 
   </div>

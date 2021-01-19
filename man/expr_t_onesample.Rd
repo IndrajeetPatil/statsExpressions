@@ -16,6 +16,7 @@ expr_t_onesample(
   bf.prior = 0.707,
   effsize.type = "g",
   nboot = 100L,
+  top.text = NULL,
   output = "expression",
   ...
 )
@@ -54,6 +55,9 @@ argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \em
 
 \item{nboot}{Number of bootstrap samples for computing confidence interval
 for the effect size (Default: \code{100}).}
+
+\item{top.text}{Text to display on top of the Bayes Factor message. This is
+mostly relevant in the context of \code{ggstatsplot} functions.}
 
 \item{output}{If \code{"expression"}, will return expression with statistical
 details, while \code{"dataframe"} will return a dataframe containing the
@@ -103,7 +107,7 @@ expr_t_onesample(
   type = "robust"
 )
 
-# ----------------------- Bayes Factor -----------------------------------
+# ---------------------------- Bayesian -----------------------------------
 
 expr_t_onesample(
   data = ggplot2::msleep,

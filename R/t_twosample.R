@@ -8,14 +8,13 @@
 #' @inheritParams expr_oneway_anova
 #' @inheritParams stats::t.test
 #' @inheritParams expr_template
-#' @inheritParams tidyBF::bf_ttest
 #'
 #' @importFrom dplyr select rename_all recode mutate
 #' @importFrom rlang !! !!! enquo eval_tidy expr enexpr ensym exec new_formula
 #' @importFrom tidyr drop_na
 #' @importFrom stats t.test  wilcox.test
+#' @importFrom BayesFactor ttestBF
 #' @importFrom WRS2 yuen yuen.effect.ci yuend dep.effect
-#' @importFrom tidyBF bf_ttest
 #' @importFrom effectsize cohens_d hedges_g rank_biserial
 #'
 #' @return Expression containing details from results of a two-sample test and
@@ -137,6 +136,7 @@ expr_t_twosample <- function(data,
                              bf.prior = 0.707,
                              tr = 0.1,
                              nboot = 100,
+                             top.text = NULL,
                              output = "expression",
                              ...) {
   # standardize the type of statistics
@@ -145,22 +145,19 @@ expr_t_twosample <- function(data,
   # make sure both quoted and unquoted arguments are supported
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
-  # data cleanup
-  if (stats.type != "bayes") {
-    # whether to switch from long to wide depends on the test
-    spread <- ifelse(stats.type == "robust", paired, FALSE)
+  # whether to switch from long to wide depends on the test
+  spread <- ifelse(stats.type %in% c("bayes", "robust"), paired, FALSE)
 
-    # properly removing NAs if it's a paired design
-    data %<>%
-      long_to_wide_converter(
-        data = .,
-        x = {{ x }},
-        y = {{ y }},
-        subject.id = {{ subject.id }},
-        paired = paired,
-        spread = spread
-      )
-  }
+  # properly removing NAs if it's a paired design
+  data %<>%
+    long_to_wide_converter(
+      data = .,
+      x = {{ x }},
+      y = {{ y }},
+      subject.id = {{ subject.id }},
+      paired = paired,
+      spread = spread
+    )
 
   # ----------------------- parametric ---------------------------------------
 
@@ -284,20 +281,14 @@ expr_t_twosample <- function(data,
 
   # running Bayesian t-test
   if (stats.type == "bayes") {
-    stats_df <-
-      tidyBF::bf_ttest(
-        data = data,
-        x = {{ x }},
-        y = {{ y }},
-        subject.id = {{ subject.id }},
-        paired = paired,
-        bf.prior = bf.prior,
-        output = output,
-        k = k,
-        ...
-      )
+    if (!paired) .f.args <- list(formula = new_formula(y, x), rscale = bf.prior, paired = paired)
+    if (paired) .f.args <- list(x = data[[2]], y = data[[3]], rscale = bf.prior, paired = paired)
 
-    expression <- stats_df
+    # creating a `BayesFactor` object
+    bf_object <- rlang::exec(.fn = BayesFactor::ttestBF, data = as.data.frame(data), !!!.f.args)
+
+    # final return
+    expression <- stats_df <- bf_extractor(bf_object, conf.level, k = k, top.text = top.text, output = output)
   }
 
   # return the output

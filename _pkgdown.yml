@@ -45,8 +45,9 @@ reference:
 
   - title: Helper functions
     contents:
-      - expr_template
+      - matches("_template")
       - matches("tidy_")
+      - bf_extractor
 
   - title: Reexported functions
     desc:  Useful functions re-exported from other packages.
