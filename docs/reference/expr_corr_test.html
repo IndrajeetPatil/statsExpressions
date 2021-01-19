@@ -160,6 +160,7 @@
   conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
   beta <span class='op'>=</span> <span class='fl'>0.1</span>,
   bf.prior <span class='op'>=</span> <span class='fl'>0.707</span>,
+  top.text <span class='op'>=</span> <span class='cn'>NULL</span>,
   output <span class='op'>=</span> <span class='st'>"expression"</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
@@ -214,6 +215,11 @@ parametric/pearson), <code>"np"</code> (nonparametric/spearman), <code>"r"</code
 width to use in calculating Bayes factors.</p></td>
     </tr>
     <tr>
+      <th>top.text</th>
+      <td><p>Text to display on top of the Bayes Factor message. This is
+mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
+    </tr>
+    <tr>
       <th>output</th>
       <td><p>If <code>"expression"</code>, will return expression with statistical
 details, while <code>"dataframe"</code> will return a dataframe containing the
@@ -221,24 +227,7 @@ results.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Arguments passed on to <code><a href='https://indrajeetpatil.github.io/tidyBF//reference/bf_extractor.html'>bf_extractor</a></code></p><dl>
-    <dt><code>conf.level</code></dt><dd><p>Confidence/Credible Interval (CI) level. Default to <code>0.95</code>
-(<code>95%</code>).</p></dd>
-    <dt><code>centrality</code></dt><dd><p>The point-estimates (centrality indices) to compute.
-Character (vector) or list with one or more of these options: <code>"median"</code>,
-<code>"mean"</code>, <code>"MAP"</code> or <code>"all"</code>.</p></dd>
-    <dt><code>conf.method</code></dt><dd><p>The type of index used for Credible Interval. Can be
-<code>"hdi"</code> (default), <code>"eti"</code>, or <code>"si"</code> (see <code>si()</code>, <code>hdi()</code>, <code>eti()</code>
-functions from <code>bayestestR</code> package).</p></dd>
-    <dt><code>k</code></dt><dd><p>Number of digits after decimal point (should be an integer)
-(Default: <code>k = 2L</code>).</p></dd>
-    <dt><code>top.text</code></dt><dd><p>Text to display on top of the Bayes Factor message. This is
-mostly relevant in the context of <code>ggstatsplot</code> functions.</p></dd>
-    <dt><code>output</code></dt><dd><p>If <code>"expression"</code>, will return expression with statistical
-details, while <code>"dataframe"</code> will return a dataframe containing the
-results.</p></dd>
-  
-</dl></td>
+      <td><p>Additional arguments (currently ignored).</p></td>
     </tr>
     </table>
 

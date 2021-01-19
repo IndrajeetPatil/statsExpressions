@@ -415,7 +415,9 @@ paired_data <-
     row.names = c(NA, -4L)
   )
 
-# ------------------------ association tests -----------------------------
+# ------------------------ non-Bayesian -----------------------------
+
+# association tests
 
 # unpaired
 set.seed(123)
@@ -438,7 +440,7 @@ expr_contingency_tab(
   output = "dataframe"
 )
 
-# ------------------------ goodness of fit tests ---------------------------
+# goodness-of-fit tests
 
 # with counts
 set.seed(123)
@@ -446,6 +448,28 @@ expr_contingency_tab(
   data = as.data.frame(HairEyeColor),
   x = Eye,
   counts = Freq,
+  output = "dataframe"
+)
+
+# ------------------------ Bayesian -----------------------------
+
+# association test
+expr_contingency_tab(
+  data = mtcars,
+  x = am,
+  y = cyl,
+  paired = FALSE,
+  type = "bayes",
+  output = "dataframe"
+)
+
+# goodness-of-fit test
+expr_contingency_tab(
+  data = as.data.frame(HairEyeColor),
+  x = Eye,
+  counts = Freq,
+  ratio = c(0.2, 0.2, 0.3, 0.3),
+  type = "bayes",
   output = "dataframe"
 )
 ```

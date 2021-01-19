@@ -232,8 +232,7 @@ function.</p></td>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://indrajeetpatil.github.io/statsExpressions/'>statsExpressions</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>metaplus</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Note: The second parameter is the study standard error not the standard error squared as in the metafor package.</span></div><div class='input'>
+
 <span class='co'># renaming to what `statsExpressions` expects</span>
 <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span><span class='va'>mag</span>, estimate <span class='op'>=</span> <span class='va'>yi</span>, std.error <span class='op'>=</span> <span class='va'>sei</span><span class='op'>)</span>
 
@@ -275,9 +274,9 @@ function.</p></td>
     control <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>adapt_delta <span class='op'>=</span> <span class='fl'>0.99</span>, max_treedepth <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span>
   <span class='op'>)</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Could not get model data.</span></div><div class='output co'>#&gt; paste("log"["e"], "(BF"["01"], ") = ", "-3.970", ", ", widehat(italic(delta))["mean"]^"posterior", 
-#&gt;     " = ", "-0.650", ", CI"["95%"]^"HDI", " [", "-1.100", ", ", 
-#&gt;     "-0.235", "]", ", ", italic("r")["Cauchy"]^"JZS", " = ", 
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Could not get model data.</span></div><div class='output co'>#&gt; paste("log"["e"] * "(BF"["01"] * ") = " * "-3.970" * ", ", widehat(italic(delta))["mean"]^"posterior" * 
+#&gt;     " = " * "-0.650" * ", ", "CI"["95%"]^"HDI" * " [" * "-1.100" * 
+#&gt;     ", " * "-0.235" * "], ", italic("r")["Cauchy"]^"JZS" * " = " * 
 #&gt;     "0.707")</div><div class='input'><span class='co'># }</span>
 </div></span></pre>
   </div>

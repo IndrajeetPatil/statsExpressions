@@ -1,202 +1,115 @@
-# between-subjects design -----------------------------------------------
+# bayes factor (independent samples t-test) ----------------------
 
 test_that(
-  desc = "expr_t_bayes works - between-subjects design",
+  desc = "bayes factor (independent samples t-test)",
   code = {
-    skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "4.0")
+    skip_on_cran()
 
-    # statsExpressions output
+    # from Bayes Factor
+    df <- suppressMessages(bf_extractor(
+      BayesFactor::ttestBF(
+        formula = len ~ supp,
+        data = as.data.frame(ToothGrowth),
+        rscale = 0.99,
+        paired = FALSE
+      )
+    ))
+
+    # check bayes factor values
+    expect_type(df, "list")
+    expect_identical(class(df), c("tbl_df", "tbl", "data.frame"))
+    expect_equal(df$log_e_bf10[[1]], -0.001119132, tolerance = 0.001)
+
+    # expression
     set.seed(123)
-    using_function <-
+    bf_expr <-
       expr_t_twosample(
         type = "bayes",
-        data = dplyr::filter(movies_long, genre == "Action" | genre == "Drama"),
-        x = "genre",
-        y = rating,
-        bf.prior = 0.9,
+        data = ToothGrowth,
+        x = supp,
+        y = len,
         paired = FALSE,
-        k = 5
+        conf.level = 0.99
       )
 
-    set.seed(123)
-    results <-
-      tidyBF::bf_ttest(
-        data = dplyr::filter(movies_long, genre == "Action" | genre == "Drama"),
-        x = "genre",
-        y = rating,
-        bf.prior = 0.9,
-        paired = FALSE,
-        k = 5,
-        output = "h1"
+    # call
+    expect_identical(
+      bf_expr,
+      ggplot2::expr(
+        paste("log"["e"] * "(BF"["01"] * ") = " *
+          "-0.18" * ", ", widehat(italic(delta))["median"]^"posterior" *
+          " = " * "-3.16" * ", ", "CI"["99%"]^"HDI" *
+          " [" * "-8.13" * ", " * "1.35" *
+          "], ", italic("r")["Cauchy"]^"JZS" *
+          " = " * "0.71")
       )
-
-    # testing overall call
-    expect_identical(using_function, results)
-  }
-)
-
-test_that(
-  desc = "expr_t_bayes works - between-subjects design - with NA",
-  code = {
-    skip_if(getRversion() < "3.6")
-
-    # statsExpressions output
-    set.seed(123)
-    using_function <-
-      expr_t_twosample(
-        type = "bayes",
-        data = dplyr::filter(ggplot2::msleep, vore %in% c("omni", "carni")),
-        x = vore,
-        y = bodywt,
-        paired = FALSE,
-        bf.prior = 0.8,
-        k = 4
-      )
-
-    # expected output
-    set.seed(123)
-    results <-
-      tidyBF::bf_ttest(
-        data = dplyr::filter(ggplot2::msleep, vore %in% c("omni", "carni")),
-        x = vore,
-        y = bodywt,
-        paired = FALSE,
-        bf.prior = 0.8,
-        k = 4,
-        output = "h1"
-      )
-
-    # testing overall call
-    expect_identical(using_function, results)
-  }
-)
-
-# within-subjects design -----------------------------------------------
-
-test_that(
-  desc = "expr_t_bayes_paired works - within-subjects design",
-  code = {
-    skip_if(getRversion() < "3.6")
-
-    # made up data
-    Input <- ("
-              Bird   Typical  Odd
-              A     -0.255   -0.324
-              B     -0.213   -0.185
-              C     -0.190   -0.299
-              D     -0.185   -0.144
-              E     -0.045   -0.027
-              F     -0.025   -0.039
-              G     -0.015   -0.264
-              H      0.003   -0.077
-              I      0.015   -0.017
-              J      0.020   -0.169
-              K      0.023   -0.096
-              L      0.040   -0.330
-              M      0.040   -0.346
-              N      0.050   -0.191
-              O      0.055   -0.128
-              P      0.058   -0.182
-              ")
-
-    # creating a dataframe
-    df_bird <- read.table(textConnection(Input), header = TRUE)
-
-    # converting to long format
-    df_bird %<>%
-      as_tibble(x = .) %>%
-      tidyr::gather(
-        data = .,
-        key = "type",
-        value = "length",
-        Typical:Odd
-      )
-
-    # statsExpressions output
-    set.seed(123)
-    using_function <-
-      expr_t_twosample(
-        type = "bayes",
-        data = df_bird,
-        x = type,
-        y = "length",
-        bf.prior = 0.6,
-        k = 5,
-        paired = TRUE
-      )
-
-    # expected output
-    set.seed(123)
-    results <-
-      tidyBF::bf_ttest(
-        data = df_bird,
-        x = type,
-        y = "length",
-        bf.prior = 0.6,
-        k = 5,
-        paired = TRUE,
-        output = "h1"
-      )
-
-    # testing overall call
-    expect_identical(using_function, results)
-  }
-)
-
-test_that(
-  desc = "expr_t_bayes_paired works - within-subjects design - with NA",
-  code = {
-    skip_if(getRversion() < "3.6")
-
-    # statsExpressions output
-    set.seed(123)
-    using_function <-
-      expr_t_twosample(
-        type = "bayes",
-        data = dplyr::filter(bugs_long, condition %in% c("LDLF", "HDLF")),
-        x = condition,
-        y = desire,
-        bf.prior = 0.77,
-        k = 4,
-        paired = TRUE
-      )
-
-    # expected output
-    set.seed(123)
-    results <-
-      tidyBF::bf_ttest(
-        data = dplyr::filter(bugs_long, condition %in% c("LDLF", "HDLF")),
-        x = condition,
-        y = desire,
-        bf.prior = 0.77,
-        k = 4,
-        paired = TRUE,
-        output = "h1"
-      )
-
-    # testing overall call
-    expect_identical(using_function, results)
-  }
-)
-
-# dataframe -----------------------------------------------------------
-
-test_that(
-  desc = "dataframe",
-  code = {
-    expect_s3_class(
-      expr_t_twosample(
-        type = "bayes",
-        data = dplyr::filter(movies_long, genre == "Action" | genre == "Drama"),
-        x = "genre",
-        y = rating,
-        output = "dataframe"
-      ),
-      "tbl_df"
     )
   }
 )
 
+# Bayes factor (paired t-test) ---------------------------------------------
+
+test_that(
+  desc = "bayes factor (paired t-test)",
+  code = {
+    skip_if(getRversion() < "3.6")
+    skip_on_cran()
+
+    # data
+    dat <- tidyr::spread(bugs_long, condition, desire) %>%
+      dplyr::filter(.data = ., !is.na(HDLF), !is.na(HDHF))
+
+    # creating a tidy dataframe
+    dat_tidy <- dplyr::filter(bugs_long, condition %in% c("HDLF", "HDHF"))
+
+    # extracting results from where this function is implemented
+    set.seed(123)
+    df_results <-
+      expr_t_twosample(
+        type = "bayes",
+        data = dat_tidy,
+        x = "condition",
+        y = desire,
+        paired = TRUE,
+        bf.prior = 0.8,
+        output = "dataframe"
+      )
+
+    # check bayes factor values
+    expect_equal(df_results$bf10[[1]], 40.36079, tolerance = 0.001)
+    expect_equal(df_results$log_e_bf10[[1]], 3.697859, tolerance = 0.001)
+
+    # expression
+    set.seed(123)
+    bf_expr <-
+      expr_t_twosample(
+        type = "bayes",
+        data = dat_tidy,
+        x = "condition",
+        y = desire,
+        paired = TRUE,
+        bf.prior = 0.8,
+        top.text = "bla"
+      )
+
+    # call
+    expect_identical(
+      bf_expr,
+      ggplot2::expr(
+        atop(displaystyle("bla"),
+          expr = paste(
+            "log"["e"] *
+              "(BF"["01"] * ") = " * "-3.70" * ", ",
+            widehat(italic(delta))["median"]^"posterior" * " = " * "-1.09" * ", ",
+            "CI"["95%"]^"HDI" * " [" * "-1.70" * ", " * "-0.49" * "], ",
+            italic("r")["Cauchy"]^"JZS" * " = " * "0.80"
+          )
+        )
+      )
+    )
+  }
+)
 
 # works with subject id ------------------------------------------------------
 
@@ -258,6 +171,6 @@ test_that(
         paired = TRUE
       )
 
-    expect_equal(expr1, expr2)
+    expect_equal(expr1, expr2, tolerance = 0.001)
   }
 )

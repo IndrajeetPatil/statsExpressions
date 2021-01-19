@@ -8,11 +8,16 @@ expr_contingency_tab(
   data,
   x,
   y = NULL,
-  counts = NULL,
   paired = FALSE,
+  type = "parametric",
+  counts = NULL,
   ratio = NULL,
   k = 2L,
   conf.level = 0.95,
+  sampling.plan = "indepMulti",
+  fixed.margin = "rows",
+  prior.concentration = 1,
+  top.text = NULL,
   output = "expression",
   ...
 )
@@ -28,13 +33,18 @@ Default is \code{NULL}. If \code{NULL}, one-sample proportion test (a goodness o
 test) will be run for the \code{x} variable. Otherwise association test will be
 carried out.}
 
-\item{counts}{A string naming a variable in data containing counts, or \code{NULL}
-if each row represents a single observation.}
-
 \item{paired}{Logical indicating whether data came from a within-subjects or
 repeated measures design study (Default: \code{FALSE}). If \code{TRUE}, McNemar's
 test expression will be returned. If \code{FALSE}, Pearson's chi-square test will
 be returned.}
+
+\item{type}{Type of statistic expected (\code{"parametric"} or \code{"nonparametric"}
+or \code{"robust"} or \code{"bayes"}).Corresponding abbreviations are also accepted:
+\code{"p"} (for parametric), \code{"np"} (nonparametric), \code{"r"} (robust), or
+\code{"bf"}resp.}
+
+\item{counts}{A string naming a variable in data containing counts, or \code{NULL}
+if each row represents a single observation.}
 
 \item{ratio}{A vector of proportions: the expected proportions for the
 proportion test (should sum to 1). Default is \code{NULL}, which means the null
@@ -47,6 +57,22 @@ there are four levels this will be \code{ratio = c(0.25,0.25,0.25,0.25)}, etc.}
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} confidence/credible intervals (\code{0.95}).}
+
+\item{sampling.plan}{Character describing the sampling plan. Possible options
+are \code{"indepMulti"} (independent multinomial; default), \code{"poisson"},
+\code{"jointMulti"} (joint multinomial), \code{"hypergeom"} (hypergeometric). For
+more, see \code{?BayesFactor::contingencyTableBF()}.}
+
+\item{fixed.margin}{For the independent multinomial sampling plan, which
+margin is fixed (\code{"rows"} or \code{"cols"}). Defaults to \code{"rows"}.}
+
+\item{prior.concentration}{Specifies the prior concentration parameter, set
+to \code{1} by default. It indexes the expected deviation from the null
+hypothesis under the alternative, and corresponds to Gunel and Dickey's
+(1974) \code{"a"} parameter.}
+
+\item{top.text}{Text to display on top of the Bayes Factor message. This is
+mostly relevant in the context of \code{ggstatsplot} functions.}
 
 \item{output}{If \code{"expression"}, will return expression with statistical
 details, while \code{"dataframe"} will return a dataframe containing the
@@ -64,13 +90,14 @@ categorical variable.
 Making expression for contingency table analysis
 }
 \examples{
+\donttest{
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
 
-# ------------------------ association tests -----------------------------
+# ------------------------ non-Bayesian -----------------------------
 
-# without counts and between-subjects
+# association test
 expr_contingency_tab(
   data = mtcars,
   x = am,
@@ -78,15 +105,34 @@ expr_contingency_tab(
   paired = FALSE
 )
 
-# ------------------------ goodness of fit tests ---------------------------
-
-# with counts
+# goodness-of-fit test
 expr_contingency_tab(
   data = as.data.frame(HairEyeColor),
   x = Eye,
   counts = Freq,
   ratio = c(0.2, 0.2, 0.3, 0.3)
 )
+
+# ------------------------ Bayesian -----------------------------
+
+# association test
+expr_contingency_tab(
+  data = mtcars,
+  x = am,
+  y = cyl,
+  paired = FALSE,
+  type = "bayes"
+)
+
+# goodness-of-fit test
+expr_contingency_tab(
+  data = as.data.frame(HairEyeColor),
+  x = Eye,
+  counts = Freq,
+  ratio = c(0.2, 0.2, 0.3, 0.3),
+  type = "bayes"
+)
+}
 }
 \references{
 For more details, see-

@@ -8,7 +8,8 @@
 #' @param caption Text to display as caption. This argument is relevant only
 #'   when `output = "caption"`.
 #' @inheritParams expr_t_onesample
-#' @inheritParams tidyBF::bf_meta_random
+#' @param metaBMA.args A list of additional arguments to be passed to
+#'   `metaBMA::meta_random`.
 #' @inheritParams metaplus::metaplus
 #' @inheritParams expr_oneway_anova
 #' @param ... Additional arguments passed to the respective meta-analysis
@@ -23,7 +24,8 @@
 #'
 #' @importFrom metafor rma
 #' @importFrom metaplus metaplus
-#' @importFrom tidyBF bf_meta_random
+#' @importFrom metaBMA meta_random prior
+#' @importFrom rlang exec !!!
 #'
 #' @examples
 #' \donttest{
@@ -77,7 +79,7 @@ expr_meta_random <- function(data,
                              caption = NULL,
                              output = "expression",
                              ...) {
-  # check the data contains needed column
+  # check the type of test
   stats.type <- ipmisc::stats_type_switch(type)
 
   #----------------------- parametric ------------------------------------
@@ -169,18 +171,17 @@ expr_meta_random <- function(data,
   #---------------------------- Bayes Factor ---------------------------------
 
   if (stats.type == "bayes") {
-    # bayes factor results
-    stats_df <-
-      tidyBF::bf_meta_random(
-        data = data,
-        metaBMA.args = metaBMA.args,
-        k = k,
-        conf.level = conf.level,
-        output = output,
-        ...
+    # extracting results from random-effects meta-analysis
+    bf_object <-
+      rlang::exec(
+        .fn = metaBMA::meta_random,
+        y = data$estimate,
+        SE = data$std.error,
+        !!!metaBMA.args
       )
 
-    subtitle <- stats_df
+    # final return
+    subtitle <- stats_df <- bf_extractor(bf_object, conf.level, k = k, centrality = "mean", output = output)
   }
 
   # what needs to be returned?

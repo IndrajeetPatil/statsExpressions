@@ -152,6 +152,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "BayesFactor",
+      "name": "BayesFactor",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=BayesFactor"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "correlation",
       "name": "correlation",
       "provider": {
@@ -211,6 +223,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=ipmisc"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "metaBMA",
+      "name": "metaBMA",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=metaBMA"
     },
     {
       "@type": "SoftwareApplication",
@@ -277,19 +301,6 @@
       "@type": "SoftwareApplication",
       "identifier": "stats",
       "name": "stats"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "tidyBF",
-      "name": "tidyBF",
-      "version": ">= 0.4.2",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=tidyBF"
     },
     {
       "@type": "SoftwareApplication",
@@ -376,6 +387,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3842.017KB",
+  "fileSize": "3916.064KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

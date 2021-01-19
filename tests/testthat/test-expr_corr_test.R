@@ -206,43 +206,6 @@ test_that(
   }
 )
 
-
-# bayes ----------------------------------------------------------------
-
-test_that(
-  desc = "expr_corr_test works - bayes",
-  code = {
-    skip_if(getRversion() < "3.6")
-
-    # using function
-    set.seed(123)
-    using_function <-
-      statsExpressions::expr_corr_test(
-        data = ggplot2::msleep,
-        x = names(ggplot2::msleep)[10],
-        y = sleep_rem,
-        type = "bayes",
-        k = 3
-      )
-
-    # expected
-    set.seed(123)
-    expected <-
-      tidyBF::bf_corr_test(
-        data = ggplot2::msleep,
-        x = names(ggplot2::msleep)[10],
-        y = sleep_rem,
-        type = "bf",
-        k = 3,
-        output = "expression"
-      )
-
-    # testing overall call
-    expect_identical(using_function, expected)
-  }
-)
-
-
 # dataframe -----------------------------------------------------------
 
 test_that(

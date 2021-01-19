@@ -158,6 +158,7 @@
 <li><p><code>expr_anova_parametric</code>, <code>expr_anova_nonparametric</code>, <code>expr_anova_robust</code>, <code>expr_anova_bayes</code> are now removed in favor of a single function <code>expr_oneway_anova</code>.</p></li>
 </ul>
 </li>
+<li><p><code>statsExpressions</code> no longer internally relies on <code>tidyBF</code>. All Bayesian analysis is carried out in this package itself. This was done to make the maintenance of this package easier and helps with some major internal code refactoring. As such, all re-exported functions from <code>tidyBF</code> have also been removed.</p></li>
 </ul>
 <p>BUG FIXES</p>
 <ul>

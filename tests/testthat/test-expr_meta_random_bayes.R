@@ -4,55 +4,71 @@ test_that(
   desc = "expr_meta_random works",
   code = {
     skip_if(getRversion() < "4.0")
+    skip_on_cran()
 
     # setup
     set.seed(123)
+    library(metaBMA)
 
     # creating a dataframe
     df1 <-
       structure(
         .Data = list(
+          term = c("1", "2", "3", "4", "5"),
           estimate = c(
-            1.5, -0.221, 0.14, 0.161, -0.181, 1.54, 0.847, 1.008, 1.008,
-            -0.221, 0.473, 0.283, 0.201, 0.855, 0.772, 0.06, -0.408, 0.494,
-            0.43, 1.805, 0.926, 0.516, 0.262, 0.631, 0.008, -0.046, 0.126,
-            0.772, -0.368, 0.464, 0.425, 0.57, 0.453, -0.427, -0.079, 0.142,
-            0.915, 0.542
+            0.382047603321706,
+            0.780783111514665,
+            0.425607573765058,
+            0.558365541235078,
+            0.956473848429961
           ),
           std.error = c(
-            0.44, 0.44, 0.25, 0.21, 0.33, 1.13, 0.66, 0.42, 0.62, 0.34,
-            0.36, 0.67, 0.14, 0.23, 0.43, 0.4, 0.38, 0.26, 0.21, 0.29, 0.24,
-            0.17, 0.33, 0.33, 0.17, 0.2, 0.2, 0.29, 0.2, 0.25, 0.33, 0.16,
-            0.16, 0.26, 0.25, 0.26, 0.33, 0.22
+            0.0465576338644502,
+            0.0330218199731529,
+            0.0362834986178494,
+            0.0480571500648261,
+            0.062215818388157
           )
         ),
-        row.names = c(NA, -10L),
+        row.names = c(NA, -5L),
         class = c("tbl_df", "tbl", "data.frame")
       )
 
-    # subtitle
+    # getting bayes factor in favor of null hypothesis
     set.seed(123)
-    results1 <-
+    subtitle1 <-
       suppressWarnings(expr_meta_random(
-        data = df1,
         type = "bayes",
+        data = df1,
         k = 3,
-        iter = 1000
+        metaBMA.args = list(iter = 1000, summarize = "integrate"),
+        output = "expression"
       ))
 
-    # subtitle
     set.seed(123)
     df <-
       suppressWarnings(expr_meta_random(
-        data = df1,
         type = "bayes",
-        iter = 1000,
-        output = "dataframe"
+        data = df1,
+        k = 3,
+        metaBMA.args = list(iter = 1000, summarize = "integrate"),
+        output = "dataframe",
+        top.text = "ayyo"
       ))
 
-    # test
-    expect_identical(as.character(results1)[5], "-6.941")
-    expect_type(results1, "language")
-    expect_s3_class(df, "tbl_df")
+    expect_type(df, "list")
+    expect_identical(class(df), c("tbl_df", "tbl", "data.frame"))
+
+    expect_identical(
+      subtitle1,
+      ggplot2::expr(
+        paste(
+          "log"["e"] * "(BF"["01"] * ") = " * "-3.587" * ", ",
+          widehat(italic(delta))["mean"]^"posterior" * " = " * "0.596" * ", ",
+          "CI"["95%"]^"HDI" * " [" * "0.321" * ", " * "0.854" * "], ",
+          italic("r")["Cauchy"]^"JZS" * " = " * "0.707"
+        )
+      )
+    )
   }
 )

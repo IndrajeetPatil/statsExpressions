@@ -22,12 +22,12 @@
 #'   parametric/pearson), `"np"` (nonparametric/spearman), `"r"` (robust),
 #'   `"bf"` (for bayes factor), resp.
 #' @param beta bending constant (Default: `0.1`). For more, see [WRS2::pbcor()].
-#' @inheritParams tidyBF::bf_corr_test
 #' @inheritParams expr_oneway_anova
 #'
-#' @importFrom dplyr select rename_all recode
+#' @importFrom dplyr select rename_all recode pull
 #' @importFrom correlation correlation
 #' @importFrom ipmisc stats_type_switch
+#' @importFrom BayesFactor correlationBF
 #'
 #' @examples
 #' # for reproducibility
@@ -60,6 +60,7 @@ expr_corr_test <- function(data,
                            conf.level = 0.95,
                            beta = 0.1,
                            bf.prior = 0.707,
+                           top.text = NULL,
                            output = "expression",
                            ...) {
 
@@ -113,18 +114,16 @@ expr_corr_test <- function(data,
 
   # bayes factor results
   if (stats_type == "bayes") {
-    stats_df <-
-      tidyBF::bf_corr_test(
-        data = data,
-        x = {{ x }},
-        y = {{ y }},
-        bf.prior = bf.prior,
-        output = output,
-        k = k,
-        ...
+    # extracting results from Bayesian test and creating a dataframe
+    bf_object <-
+      BayesFactor::correlationBF(
+        x = data %>% dplyr::pull({{ x }}),
+        y = data %>% dplyr::pull({{ y }}),
+        rscale = bf.prior
       )
 
-    expression <- stats_df
+    # final return
+    expression <- stats_df <- bf_extractor(bf_object, conf.level, k = k, top.text = top.text, output = output)
   }
 
   # return the output

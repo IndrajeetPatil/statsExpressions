@@ -167,6 +167,7 @@ robust equivalents</p>
   bf.prior <span class='op'>=</span> <span class='fl'>0.707</span>,
   effsize.type <span class='op'>=</span> <span class='st'>"g"</span>,
   nboot <span class='op'>=</span> <span class='fl'>100L</span>,
+  top.text <span class='op'>=</span> <span class='cn'>NULL</span>,
   output <span class='op'>=</span> <span class='st'>"expression"</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
@@ -227,6 +228,11 @@ argument can be <code>"d"</code> (for Cohen's <em>d</em>) or <code>"g"</code> (f
       <th>nboot</th>
       <td><p>Number of bootstrap samples for computing confidence interval
 for the effect size (Default: <code>100</code>).</p></td>
+    </tr>
+    <tr>
+      <th>top.text</th>
+      <td><p>Text to display on top of the Bayes Factor message. This is
+mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
     </tr>
     <tr>
       <th>output</th>
@@ -292,7 +298,7 @@ argument.</p>
 #&gt;     " = ", "0e+00", ", ", widehat(mu)["trimmed"], " = ", "0.07", 
 #&gt;     ", CI"["95%"], " [", "0.01", ", ", "0.12", "]", ", ", italic("n")["obs"], 
 #&gt;     " = ", "56")</div><div class='input'>
-<span class='co'># ----------------------- Bayes Factor -----------------------------------</span>
+<span class='co'># ---------------------------- Bayesian -----------------------------------</span>
 
 <span class='fu'>expr_t_onesample</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
@@ -301,9 +307,10 @@ argument.</p>
   type <span class='op'>=</span> <span class='st'>"bayes"</span>,
   bf.prior <span class='op'>=</span> <span class='fl'>0.8</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; paste("log"["e"], "(BF"["01"], ") = ", "2.04", ", ", widehat(italic(delta))["median"]^"posterior", 
-#&gt;     " = ", "0.01", ", CI"["95%"]^"HDI", " [", "-0.25", ", ", 
-#&gt;     "0.26", "]", ", ", italic("r")["Cauchy"]^"JZS", " = ", "0.80")</div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; paste("log"["e"] * "(BF"["01"] * ") = " * "2.04" * ", ", widehat(italic(delta))["median"]^"posterior" * 
+#&gt;     " = " * "0.01" * ", ", "CI"["95%"]^"HDI" * " [" * "-0.25" * 
+#&gt;     ", " * "0.26" * "], ", italic("r")["Cauchy"]^"JZS" * " = " * 
+#&gt;     "0.80")</div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

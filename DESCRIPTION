@@ -26,18 +26,19 @@ Depends:
     R (>= 3.6.0)
 Imports:
     afex,
+    BayesFactor,
     correlation,
     dplyr,
     effectsize (>= 0.4.3),
     insight (>= 0.12.0),
     ipmisc,
+    metaBMA,
     metafor,
     metaplus,
     parameters (>= 0.11.0),
     performance,
     rlang,
     stats,
-    tidyBF (>= 0.4.2),
     tidyr,
     WRS2
 Suggests:
