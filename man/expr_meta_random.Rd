@@ -2,7 +2,7 @@
 % Please edit documentation in R/meta_random.R
 \name{expr_meta_random}
 \alias{expr_meta_random}
-\title{Making expression for random-effects meta-analysis}
+\title{Expression and dataframe for random-effects meta-analysis}
 \usage{
 expr_meta_random(
   data,
@@ -51,7 +51,7 @@ results.}
 function.}
 }
 \description{
-Making expression for random-effects meta-analysis
+Expression and dataframe for random-effects meta-analysis
 }
 \details{
 This analysis is carried out using-

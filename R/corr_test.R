@@ -1,4 +1,4 @@
-#' @title Making expression for correlation analysis
+#' @title Expression and dataframe for correlation analysis
 #' @name expr_corr_test
 #'
 #' @return Expression containing results from correlation test with confidence

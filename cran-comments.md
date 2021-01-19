@@ -8,6 +8,7 @@
 0 errors | 0 warnings | 0 note
 
   - Fixes failing CRAN tests due to `effectsize` and `metaBMA` package updates.
+  
   - All `donttest` examples have been checked on CI platforms.
   
 ## Reverse dependencies check

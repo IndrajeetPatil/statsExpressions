@@ -90,9 +90,6 @@ bf_extractor <- function(bf.object,
 
       # combine everything
       df %<>% dplyr::bind_cols(., df_r2)
-
-      # for expression
-      c(centrality, conf.method) %<-% c("median", "hdi")
     }
 
     # ------------------------ contingency tabs ------------------------------
@@ -106,7 +103,7 @@ bf_extractor <- function(bf.object,
   bf_expr_01 <-
     bf_expr_template(
       top.text = top.text,
-      estimate.df = df,
+      stats.df = df,
       centrality = centrality,
       conf.level = conf.level,
       conf.method = conf.method,

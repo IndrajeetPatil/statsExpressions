@@ -9,7 +9,6 @@ utils::globalVariables(
     "effsize",
     "effectsize",
     "estimate",
-    "int_df",
     "rowid",
     "statistic",
     "std.error",

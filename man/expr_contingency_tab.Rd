@@ -2,7 +2,7 @@
 % Please edit documentation in R/contingency_tabs.R
 \name{expr_contingency_tab}
 \alias{expr_contingency_tab}
-\title{Making expression for contingency table analysis}
+\title{Expression and dataframe for contingency table analysis}
 \usage{
 expr_contingency_tab(
   data,
@@ -81,13 +81,13 @@ results.}
 \item{...}{Additional arguments (currently ignored).}
 }
 \value{
-Expression or a dataframe for contingency analysis (Pearson's
+Expression or a dataframe for contingency table analysis (Pearson's
 chi-square test for independence for between-subjects design or McNemar's
 test for within-subjects design) or goodness of fit test for a single
 categorical variable.
 }
 \description{
-Making expression for contingency table analysis
+Expression and dataframe for contingency table analysis
 }
 \examples{
 \donttest{

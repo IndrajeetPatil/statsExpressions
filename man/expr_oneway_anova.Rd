@@ -2,7 +2,7 @@
 % Please edit documentation in R/oneway_anova.R
 \name{expr_oneway_anova}
 \alias{expr_oneway_anova}
-\title{Expression containing ANOVA results}
+\title{Expression and dataframe for one-way ANOVA}
 \usage{
 expr_oneway_anova(
   data,
@@ -59,11 +59,9 @@ argument can be \code{"eta"} (partial eta-squared) or \code{"omega"} (partial
 omega-squared).}
 
 \item{var.equal}{a logical variable indicating whether to treat the
-    variances in the samples as equal.  If \code{TRUE}, then a simple F
-    test for the equality of means in a one-way analysis of variance is
-    performed.  If \code{FALSE}, an approximate method of Welch (1951)
-    is used, which generalizes the commonly known 2-sample Welch test to
-    the case of arbitrarily many samples.}
+    two variances as being equal. If \code{TRUE} then the pooled
+    variance is used to estimate the variance otherwise the Welch
+    (or Satterthwaite) approximation to the degrees of freedom is used.}
 
 \item{bf.prior}{A number between \code{0.5} and \code{2} (default \code{0.707}), the prior
 width to use in calculating Bayes factors.}
@@ -91,7 +89,7 @@ For more details, see-
 \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }
 \description{
-Expression containing ANOVA results
+Expression and dataframe for one-way ANOVA
 }
 \examples{
 \donttest{

@@ -1,4 +1,4 @@
-#' @title Template for subtitles with statistical details for tests
+#' @title Template for expressions with statistical details
 #' @name expr_template
 #'
 #' @param no.parameters An integer that specifies that the number of parameters
@@ -59,7 +59,7 @@
 #'     conf.high = -1.088
 #'   )
 #'
-#' # subtitle for *t*-statistic with Cohen's *d* as effect size
+#' # expression for *t*-statistic with Cohen's *d* as effect size
 #' statsExpressions::expr_template(
 #'   no.parameters = 1L,
 #'   stats.df = stats_df,
@@ -90,13 +90,13 @@ expr_template <- function(no.parameters,
   if (isTRUE(paired) && is.null(n.text)) n.text <- quote(italic("n")["pairs"])
   if (isFALSE(paired) && is.null(n.text)) n.text <- quote(italic("n")["obs"])
   if (is.null(statistic.text)) statistic.text <- stat_text_switch(stats.df$method[[1]])
-  if (is.null(effsize.text)) effsize.text <- effectsize_switch(stats.df$effectsize[[1]])
+  if (is.null(effsize.text)) effsize.text <- estimate_type_switch(stats.df$effectsize[[1]])
 
   # ------------------ statistic with 0 degrees of freedom --------------------
 
   if (no.parameters == 0L) {
-    # preparing subtitle
-    subtitle <-
+    # preparing expression
+    expression <-
       substitute(
         expr = paste(
           statistic.text,
@@ -109,12 +109,12 @@ expr_template <- function(no.parameters,
           ", ",
           effsize.text,
           " = ",
-          effsize.estimate,
+          estimate,
           ", CI"[conf.level],
           " [",
-          effsize.LL,
+          estimate.LB,
           ", ",
-          effsize.UL,
+          estimate.UB,
           "]",
           ", ",
           n.text,
@@ -126,10 +126,10 @@ expr_template <- function(no.parameters,
           statistic = format_num(stats.df$statistic[[1]], k),
           p.value = format_num(stats.df$p.value[[1]], k = k, p.value = TRUE),
           effsize.text = effsize.text,
-          effsize.estimate = format_num(stats.df$estimate[[1]], k),
+          estimate = format_num(stats.df$estimate[[1]], k),
           conf.level = paste0(conf.level * 100, "%"),
-          effsize.LL = format_num(stats.df$conf.low[[1]], k),
-          effsize.UL = format_num(stats.df$conf.high[[1]], k),
+          estimate.LB = format_num(stats.df$conf.low[[1]], k),
+          estimate.UB = format_num(stats.df$conf.high[[1]], k),
           n = .prettyNum(n),
           n.text = n.text
         )
@@ -142,8 +142,8 @@ expr_template <- function(no.parameters,
     if ("df" %in% names(stats.df)) stats.df %<>% dplyr::rename("parameter" = "df")
     if ("df.error" %in% names(stats.df)) stats.df %<>% dplyr::rename("parameter" = "df.error")
 
-    # preparing subtitle
-    subtitle <-
+    # preparing expression
+    expression <-
       substitute(
         expr = paste(
           statistic.text,
@@ -158,12 +158,12 @@ expr_template <- function(no.parameters,
           ", ",
           effsize.text,
           " = ",
-          effsize.estimate,
+          estimate,
           ", CI"[conf.level],
           " [",
-          effsize.LL,
+          estimate.LB,
           ", ",
-          effsize.UL,
+          estimate.UB,
           "]",
           ", ",
           n.text,
@@ -176,10 +176,10 @@ expr_template <- function(no.parameters,
           parameter = format_num(stats.df$parameter[[1]], k = k.parameter),
           p.value = format_num(stats.df$p.value[[1]], k = k, p.value = TRUE),
           effsize.text = effsize.text,
-          effsize.estimate = format_num(stats.df$estimate[[1]], k),
+          estimate = format_num(stats.df$estimate[[1]], k),
           conf.level = paste0(conf.level * 100, "%"),
-          effsize.LL = format_num(stats.df$conf.low[[1]], k),
-          effsize.UL = format_num(stats.df$conf.high[[1]], k),
+          estimate.LB = format_num(stats.df$conf.low[[1]], k),
+          estimate.UB = format_num(stats.df$conf.high[[1]], k),
           n = .prettyNum(n),
           n.text = n.text
         )
@@ -190,11 +190,10 @@ expr_template <- function(no.parameters,
 
   if (no.parameters == 2L) {
     # renaming pattern from `easystats`
-    stats.df %<>%
-      dplyr::rename_all(.funs = dplyr::recode, df = "parameter1", df.error = "parameter2")
+    stats.df %<>% dplyr::rename_all(.funs = dplyr::recode, df = "parameter1", df.error = "parameter2")
 
-    # preparing subtitle
-    subtitle <-
+    # preparing expression
+    expression <-
       substitute(
         expr = paste(
           statistic.text,
@@ -211,12 +210,12 @@ expr_template <- function(no.parameters,
           ", ",
           effsize.text,
           " = ",
-          effsize.estimate,
+          estimate,
           ", CI"[conf.level],
           " [",
-          effsize.LL,
+          estimate.LB,
           ", ",
-          effsize.UL,
+          estimate.UB,
           "]",
           ", ",
           n.text,
@@ -230,19 +229,91 @@ expr_template <- function(no.parameters,
           parameter2 = format_num(stats.df$parameter2[[1]], k = k.parameter2),
           p.value = format_num(stats.df$p.value[[1]], k = k, p.value = TRUE),
           effsize.text = effsize.text,
-          effsize.estimate = format_num(stats.df$estimate[[1]], k),
+          estimate = format_num(stats.df$estimate[[1]], k),
           conf.level = paste0(conf.level * 100, "%"),
-          effsize.LL = format_num(stats.df$conf.low[[1]], k),
-          effsize.UL = format_num(stats.df$conf.high[[1]], k),
+          estimate.LB = format_num(stats.df$conf.low[[1]], k),
+          estimate.UB = format_num(stats.df$conf.high[[1]], k),
           n = .prettyNum(n),
           n.text = n.text
         )
       )
   }
 
-  # return the formatted subtitle
-  return(subtitle)
+  # return the formatted expression
+  expression
 }
+
+#' @title Expression template for Bayes Factor results
+#' @name bf_expr_template
+#'
+#' @param prior.type A character that specifies the prior type.
+#' @param estimate.type A character that specifies the relevant effect size.
+#' @param stats.df Dataframe containing estimates and their credible
+#'   intervals along with Bayes Factor value. The columns should be named as
+#'   `estimate`, `estimate.LB`, `estimate.UB`, and `bf10`.
+#' @param ... Currently ignored.
+#' @inheritParams bf_extractor
+#' @inheritParams expr_t_twosample
+#'
+#' @importFrom ipmisc format_num
+#'
+#' @export
+
+bf_expr_template <- function(top.text,
+                             stats.df,
+                             prior.type = NULL,
+                             estimate.type = NULL,
+                             centrality = "median",
+                             conf.level = 0.95,
+                             conf.method = "HDI",
+                             k = 2L,
+                             ...) {
+  # extracting estimate values
+  if ("r2" %in% names(stats.df)) {
+    # for ANOVA designs
+    c(estimate, estimate.LB, estimate.UB) %<-%
+      c(stats.df$r2[[1]], stats.df$r2.conf.low[[1]], stats.df$r2.conf.high[[1]])
+  } else {
+    # for non-ANOVA designs
+    c(estimate, estimate.LB, estimate.UB) %<-%
+      c(stats.df$estimate[[1]], stats.df$conf.low[[1]], stats.df$conf.high[[1]])
+  }
+
+  # if expression elements are `NULL`
+  if (is.null(prior.type)) prior.type <- prior_type_switch(stats.df$method[[1]])
+  if (is.null(estimate.type)) estimate.type <- estimate_type_switch(stats.df$method[[1]])
+
+  # prepare the Bayes Factor message
+  expression <-
+    substitute(
+      atop(
+        displaystyle(top.text),
+        expr = paste(
+          "log"["e"] * "(BF"["01"] * ") = " * bf * ", ",
+          widehat(estimate.type)[centrality]^"posterior" * " = " * estimate * ", ",
+          "CI"[conf.level]^conf.method * " [" * estimate.LB * ", " * estimate.UB * "], ",
+          prior.type * " = " * bf.prior
+        )
+      ),
+      env = list(
+        top.text = top.text,
+        estimate.type = estimate.type,
+        centrality = centrality,
+        conf.level = paste0(conf.level * 100, "%"),
+        conf.method = toupper(conf.method),
+        bf = format_num(-log(stats.df$bf10[[1]]), k = k),
+        estimate = format_num(estimate, k = k),
+        estimate.LB = format_num(estimate.LB, k = k),
+        estimate.UB = format_num(estimate.UB, k = k),
+        prior.type = prior.type,
+        bf.prior = format_num(stats.df$prior.scale[[1]], k = k)
+      )
+    )
+
+  # return the final expression
+  if (is.null(top.text)) expression$expr else expression
+}
+
 
 #' @noRd
 
@@ -279,9 +350,9 @@ stat_text_switch <- function(method) {
 
 #' @noRd
 
-effectsize_switch <- function(type) {
+estimate_type_switch <- function(method) {
   switch(
-    type,
+    method,
     "Pearson" = quote(widehat(italic("r"))["Pearson"]),
     "Spearman" = quote(widehat(rho)["Spearman"]),
     "Percentage Bend" = quote(widehat(rho)["% bend"]),
@@ -300,7 +371,23 @@ effectsize_switch <- function(type) {
     "Epsilon2 (rank)" = quote(widehat(epsilon)["ordinal"]^2),
     "Cramer's V (adj.)" = quote(widehat(italic("V"))["Cramer"]),
     "Cohen's g" = quote(widehat(italic("g"))["Cohen"]),
-    "meta-analytic summary estimate" = quote(widehat(beta)["summary"]^"meta")
+    "meta-analytic summary estimate" = quote(widehat(beta)["summary"]^"meta"),
+    "Bayesian contingency tabs analysis" = quote(italic("V")),
+    "Bayesian correlation analysis" = quote(italic(rho)),
+    "Bayesian meta-analysis using 'metaBMA'" = ,
+    "Bayesian t-test" = quote(italic(delta)),
+    "Bayes factors for linear models" = quote(italic(R^"2")),
+    NULL
+  )
+}
+
+#' @noRd
+
+prior_type_switch <- function(method) {
+  switch(
+    method,
+    "Bayesian contingency tabs analysis" = quote(italic("a")["Gunel-Dickey"]),
+    quote(italic("r")["Cauchy"]^"JZS")
   )
 }
 
