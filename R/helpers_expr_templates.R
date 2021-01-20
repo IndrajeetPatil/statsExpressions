@@ -6,7 +6,7 @@
 #'   tests based on *t*-statistic or chi-squared statistic, `2` for tests based
 #'   on *F*-statistic.
 #' @param stats.df A dataframe containing details from the statistical analysis
-#'   and should contain some of the the following columns:
+#'   and should contain some or all of the the following columns:
 #' \itemize{
 #'   \item *statistic*: the numeric value of a statistic.
 #'   \item *parameter*: the numeric value of a parameter being modeled (often
@@ -17,17 +17,15 @@
 #'   \item *p.value* the two-sided *p*-value associated with the observed
 #' statistic.
 #'  \item *estimate*: estimated value of the effect size.
-#'   \item *conf.low*:  lower bound for effect size estimate.
+#'   \item *conf.low*: lower bound for effect size estimate.
 #'   \item *conf.high*: upper bound for effect size estimate.
+#'   \item *`bf10`* Bayes Factor value (if `bayesian = TRUE`).
+#'   \item *method*: method describing the test carried out.
 #' }
 #' @param statistic.text A character that specifies the relevant test statistic.
-#'   For example, for tests with *t*-statistic, `statistic.text = "t"`. If you
-#'   want to use plotmath, you will have to quote the argument (e.g.,
-#'   `quote(italic("t"))`).
-#' @param effsize.text A character that specifies the relevant effect size.
-#'   For example, for Cohen's *d* statistic, `effsize.text = "d"`. If you
-#'   want to use plotmath, you will have to quote the argument (e.g.,
-#'   `quote(italic("d"))`).
+#'   For example, for tests with *t*-statistic, `statistic.text = "t"`.
+#' @param effsize.text A character that specifies the relevant effect size or
+#'   posterior estimate.
 #' @param conf.level Scalar between 0 and 1. If unspecified, the defaults return
 #'   `95%` confidence/credible intervals (`0.95`).
 #' @param k Number of digits after decimal point (should be an integer)
@@ -39,7 +37,12 @@
 #'   what the `n` stands for. If `NULL`, defaults to
 #'   `quote(italic("n")["pairs"])` if `paired = TRUE`, and to
 #'   `quote(italic("n")["obs"])` if `paired = FALSE`.
+#' @param prior.text A character that specifies the prior type.
+#' @param effsize.text A character that specifies the relevant effect size.
+#' @param bayesian Is this Bayesian analysis? Defaults to `FALSE`. The template
+#'   is slightly different for Bayesian analysis.
 #' @param ... Currently ignored.
+#' @inheritParams bf_extractor
 #' @inheritParams expr_oneway_anova
 #' @inheritParams ipmisc::long_to_wide_converter
 #'
@@ -60,6 +63,7 @@
 #'   )
 #'
 #' # expression for *t*-statistic with Cohen's *d* as effect size
+#' # note that the plotmath expressions need to be quoted
 #' statsExpressions::expr_template(
 #'   no.parameters = 1L,
 #'   stats.df = stats_df,
@@ -73,28 +77,81 @@
 #' @export
 
 # function body
-expr_template <- function(no.parameters,
-                          stats.df,
+expr_template <- function(stats.df,
+                          no.parameters = 0L,
+                          bayesian = FALSE,
                           statistic.text = NULL,
                           effsize.text = NULL,
-                          n,
+                          top.text = NULL,
+                          prior.text = NULL,
+                          n = NULL,
                           n.text = NULL,
                           paired = FALSE,
                           conf.level = 0.95,
+                          centrality = "median",
+                          conf.method = "HDI",
                           k = 2L,
                           k.parameter = 0L,
                           k.parameter2 = 0L,
                           ...) {
 
-  # if expression elements are `NULL`
+  # extracting estimate values
+  if ("r2" %in% names(stats.df)) {
+    # for ANOVA designs
+    c(estimate, estimate.LB, estimate.UB) %<-%
+      c(stats.df$r2[[1]], stats.df$r2.conf.low[[1]], stats.df$r2.conf.high[[1]])
+  } else {
+    # for non-ANOVA designs
+    c(estimate, estimate.LB, estimate.UB) %<-%
+      c(stats.df$estimate[[1]], stats.df$conf.low[[1]], stats.df$conf.high[[1]])
+  }
+
+  # if not present, create a new column for Bayesian analysis
+  if (!"effectsize" %in% names(stats.df) && bayesian) stats.df %<>% dplyr::mutate(effectsize = method)
+
+  # if expression text elements are `NULL`
   if (isTRUE(paired) && is.null(n.text)) n.text <- quote(italic("n")["pairs"])
   if (isFALSE(paired) && is.null(n.text)) n.text <- quote(italic("n")["obs"])
   if (is.null(statistic.text)) statistic.text <- stat_text_switch(stats.df$method[[1]])
   if (is.null(effsize.text)) effsize.text <- estimate_type_switch(stats.df$effectsize[[1]])
+  if (is.null(prior.text) && bayesian) prior.text <- prior_type_switch(stats.df$method[[1]])
+
+  # -------------------------- Bayesian analysis ------------------------------
+
+  if (isTRUE(bayesian)) {
+    expression <-
+      substitute(
+        atop(
+          displaystyle(top.text),
+          expr = paste(
+            "log"["e"] * "(BF"["01"] * ") = " * bf * ", ",
+            widehat(effsize.text)[centrality]^"posterior" * " = " * estimate * ", ",
+            "CI"[conf.level]^conf.method * " [" * estimate.LB * ", " * estimate.UB * "], ",
+            prior.text * " = " * bf.prior
+          )
+        ),
+        env = list(
+          top.text = top.text,
+          effsize.text = effsize.text,
+          centrality = centrality,
+          conf.level = paste0(conf.level * 100, "%"),
+          conf.method = toupper(conf.method),
+          bf = format_num(-log(stats.df$bf10[[1]]), k = k),
+          estimate = format_num(estimate, k = k),
+          estimate.LB = format_num(estimate.LB, k = k),
+          estimate.UB = format_num(estimate.UB, k = k),
+          prior.text = prior.text,
+          bf.prior = format_num(stats.df$prior.scale[[1]], k = k)
+        )
+      )
+
+    # return the final expression
+    if (is.null(top.text)) expression <- expression$expr
+  }
 
   # ------------------ statistic with 0 degrees of freedom --------------------
 
-  if (no.parameters == 0L) {
+  if (isFALSE(bayesian) && no.parameters == 0L) {
     # preparing expression
     expression <-
       substitute(
@@ -126,10 +183,10 @@ expr_template <- function(no.parameters,
           statistic = format_num(stats.df$statistic[[1]], k),
           p.value = format_num(stats.df$p.value[[1]], k = k, p.value = TRUE),
           effsize.text = effsize.text,
-          estimate = format_num(stats.df$estimate[[1]], k),
+          estimate = format_num(estimate, k),
           conf.level = paste0(conf.level * 100, "%"),
-          estimate.LB = format_num(stats.df$conf.low[[1]], k),
-          estimate.UB = format_num(stats.df$conf.high[[1]], k),
+          estimate.LB = format_num(estimate.LB, k),
+          estimate.UB = format_num(estimate.UB, k),
           n = .prettyNum(n),
           n.text = n.text
         )
@@ -138,7 +195,7 @@ expr_template <- function(no.parameters,
 
   # ------------------ statistic with 1 degree of freedom --------------------
 
-  if (no.parameters == 1L) {
+  if (isFALSE(bayesian) && no.parameters == 1L) {
     if ("df" %in% names(stats.df)) stats.df %<>% dplyr::rename("parameter" = "df")
     if ("df.error" %in% names(stats.df)) stats.df %<>% dplyr::rename("parameter" = "df.error")
 
@@ -176,10 +233,10 @@ expr_template <- function(no.parameters,
           parameter = format_num(stats.df$parameter[[1]], k = k.parameter),
           p.value = format_num(stats.df$p.value[[1]], k = k, p.value = TRUE),
           effsize.text = effsize.text,
-          estimate = format_num(stats.df$estimate[[1]], k),
+          estimate = format_num(estimate, k),
           conf.level = paste0(conf.level * 100, "%"),
-          estimate.LB = format_num(stats.df$conf.low[[1]], k),
-          estimate.UB = format_num(stats.df$conf.high[[1]], k),
+          estimate.LB = format_num(estimate.LB, k),
+          estimate.UB = format_num(estimate.UB, k),
           n = .prettyNum(n),
           n.text = n.text
         )
@@ -188,7 +245,7 @@ expr_template <- function(no.parameters,
 
   # ------------------ statistic with 2 degrees of freedom -----------------
 
-  if (no.parameters == 2L) {
+  if (isFALSE(bayesian) && no.parameters == 2L) {
     # renaming pattern from `easystats`
     stats.df %<>% dplyr::rename_all(.funs = dplyr::recode, df = "parameter1", df.error = "parameter2")
 
@@ -229,10 +286,10 @@ expr_template <- function(no.parameters,
           parameter2 = format_num(stats.df$parameter2[[1]], k = k.parameter2),
           p.value = format_num(stats.df$p.value[[1]], k = k, p.value = TRUE),
           effsize.text = effsize.text,
-          estimate = format_num(stats.df$estimate[[1]], k),
+          estimate = format_num(estimate, k),
           conf.level = paste0(conf.level * 100, "%"),
-          estimate.LB = format_num(stats.df$conf.low[[1]], k),
-          estimate.UB = format_num(stats.df$conf.high[[1]], k),
+          estimate.LB = format_num(estimate.LB, k),
+          estimate.UB = format_num(estimate.UB, k),
           n = .prettyNum(n),
           n.text = n.text
         )
@@ -242,78 +299,6 @@ expr_template <- function(no.parameters,
   # return the formatted expression
   expression
 }
-
-#' @title Expression template for Bayes Factor results
-#' @name bf_expr_template
-#'
-#' @param prior.type A character that specifies the prior type.
-#' @param estimate.type A character that specifies the relevant effect size.
-#' @param stats.df Dataframe containing estimates and their credible
-#'   intervals along with Bayes Factor value. The columns should be named as
-#'   `estimate`, `estimate.LB`, `estimate.UB`, and `bf10`.
-#' @param ... Currently ignored.
-#' @inheritParams bf_extractor
-#' @inheritParams expr_t_twosample
-#'
-#' @importFrom ipmisc format_num
-#'
-#' @export
-
-bf_expr_template <- function(top.text,
-                             stats.df,
-                             prior.type = NULL,
-                             estimate.type = NULL,
-                             centrality = "median",
-                             conf.level = 0.95,
-                             conf.method = "HDI",
-                             k = 2L,
-                             ...) {
-  # extracting estimate values
-  if ("r2" %in% names(stats.df)) {
-    # for ANOVA designs
-    c(estimate, estimate.LB, estimate.UB) %<-%
-      c(stats.df$r2[[1]], stats.df$r2.conf.low[[1]], stats.df$r2.conf.high[[1]])
-  } else {
-    # for non-ANOVA designs
-    c(estimate, estimate.LB, estimate.UB) %<-%
-      c(stats.df$estimate[[1]], stats.df$conf.low[[1]], stats.df$conf.high[[1]])
-  }
-
-  # if expression elements are `NULL`
-  if (is.null(prior.type)) prior.type <- prior_type_switch(stats.df$method[[1]])
-  if (is.null(estimate.type)) estimate.type <- estimate_type_switch(stats.df$method[[1]])
-
-  # prepare the Bayes Factor message
-  expression <-
-    substitute(
-      atop(
-        displaystyle(top.text),
-        expr = paste(
-          "log"["e"] * "(BF"["01"] * ") = " * bf * ", ",
-          widehat(estimate.type)[centrality]^"posterior" * " = " * estimate * ", ",
-          "CI"[conf.level]^conf.method * " [" * estimate.LB * ", " * estimate.UB * "], ",
-          prior.type * " = " * bf.prior
-        )
-      ),
-      env = list(
-        top.text = top.text,
-        estimate.type = estimate.type,
-        centrality = centrality,
-        conf.level = paste0(conf.level * 100, "%"),
-        conf.method = toupper(conf.method),
-        bf = format_num(-log(stats.df$bf10[[1]]), k = k),
-        estimate = format_num(estimate, k = k),
-        estimate.LB = format_num(estimate.LB, k = k),
-        estimate.UB = format_num(estimate.UB, k = k),
-        prior.type = prior.type,
-        bf.prior = format_num(stats.df$prior.scale[[1]], k = k)
-      )
-    )
-
-  # return the final expression
-  if (is.null(top.text)) expression$expr else expression
-}
-
 
 #' @noRd
 

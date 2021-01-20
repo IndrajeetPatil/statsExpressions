@@ -1,3 +1,10 @@
+# statsExpressions 0.7.0.9000
+
+MAJOR CHANGES
+
+  - `expr_template` gains a new argument `bayesian`, which can return an
+    expression for Bayesian analysis, which has a slightly different template.
+
 # statsExpressions 0.7.0
 
 BREAKING CHANGES

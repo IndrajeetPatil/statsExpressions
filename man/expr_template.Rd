@@ -5,14 +5,19 @@
 \title{Template for expressions with statistical details}
 \usage{
 expr_template(
-  no.parameters,
   stats.df,
+  no.parameters = 0L,
+  bayesian = FALSE,
   statistic.text = NULL,
   effsize.text = NULL,
-  n,
+  top.text = NULL,
+  prior.text = NULL,
+  n = NULL,
   n.text = NULL,
   paired = FALSE,
   conf.level = 0.95,
+  centrality = "median",
+  conf.method = "HDI",
   k = 2L,
   k.parameter = 0L,
   k.parameter2 = 0L,
@@ -20,13 +25,8 @@ expr_template(
 )
 }
 \arguments{
-\item{no.parameters}{An integer that specifies that the number of parameters
-for the statistical test. Can be \code{0} for non-parametric tests, \code{1} for
-tests based on \emph{t}-statistic or chi-squared statistic, \code{2} for tests based
-on \emph{F}-statistic.}
-
 \item{stats.df}{A dataframe containing details from the statistical analysis
-and should contain some of the the following columns:
+and should contain some or all of the the following columns:
 \itemize{
 \item \emph{statistic}: the numeric value of a statistic.
 \item \emph{parameter}: the numeric value of a parameter being modeled (often
@@ -37,19 +37,29 @@ has two degrees of freedom (e.g., anova).
 \item \emph{p.value} the two-sided \emph{p}-value associated with the observed
 statistic.
 \item \emph{estimate}: estimated value of the effect size.
-\item \emph{conf.low}:  lower bound for effect size estimate.
+\item \emph{conf.low}: lower bound for effect size estimate.
 \item \emph{conf.high}: upper bound for effect size estimate.
+\item \emph{\code{bf10}} Bayes Factor value (if \code{bayesian = TRUE}).
+\item \emph{method}: method describing the test carried out.
 }}
 
-\item{statistic.text}{A character that specifies the relevant test statistic.
-For example, for tests with \emph{t}-statistic, \code{statistic.text = "t"}. If you
-want to use plotmath, you will have to quote the argument (e.g.,
-\code{quote(italic("t"))}).}
+\item{no.parameters}{An integer that specifies that the number of parameters
+for the statistical test. Can be \code{0} for non-parametric tests, \code{1} for
+tests based on \emph{t}-statistic or chi-squared statistic, \code{2} for tests based
+on \emph{F}-statistic.}
 
-\item{effsize.text}{A character that specifies the relevant effect size.
-For example, for Cohen's \emph{d} statistic, \code{effsize.text = "d"}. If you
-want to use plotmath, you will have to quote the argument (e.g.,
-\code{quote(italic("d"))}).}
+\item{bayesian}{Is this Bayesian analysis? Defaults to \code{FALSE}. The template
+is slightly different for Bayesian analysis.}
+
+\item{statistic.text}{A character that specifies the relevant test statistic.
+For example, for tests with \emph{t}-statistic, \code{statistic.text = "t"}.}
+
+\item{effsize.text}{A character that specifies the relevant effect size.}
+
+\item{top.text}{Text to display on top of the Bayes Factor message. This is
+mostly relevant in the context of \code{ggstatsplot} functions.}
+
+\item{prior.text}{A character that specifies the prior type.}
 
 \item{n}{An integer specifying the sample size used for the test.}
 
@@ -64,6 +74,14 @@ repeated measures/within-subjects or between-subjects. The default is
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} confidence/credible intervals (\code{0.95}).}
+
+\item{centrality}{The point-estimates (centrality indices) to compute.
+Character (vector) or list with one or more of these options: \code{"median"},
+\code{"mean"}, \code{"MAP"} or \code{"all"}.}
+
+\item{conf.method}{The type of index used for Credible Interval. Can be
+\code{"hdi"} (default), \code{"eti"}, or \code{"si"} (see \code{si()}, \code{hdi()}, \code{eti()}
+functions from \code{bayestestR} package).}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2L}).}
@@ -91,6 +109,7 @@ stats_df <-
   )
 
 # expression for *t*-statistic with Cohen's *d* as effect size
+# note that the plotmath expressions need to be quoted
 statsExpressions::expr_template(
   no.parameters = 1L,
   stats.df = stats_df,

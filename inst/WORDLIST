@@ -19,6 +19,7 @@ MPAA
 McNemar's
 NumGenre
 Otterstetter
+Satterthwaite
 WRS
 Welch
 Welch's
@@ -57,7 +58,6 @@ noncentrality
 normals
 pb
 pearson
-plotmath
 setosa
 spearman
 sphericity

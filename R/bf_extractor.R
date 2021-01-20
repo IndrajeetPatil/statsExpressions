@@ -25,7 +25,6 @@
 #' @importFrom performance r2_bayes
 #' @importFrom tidyr fill
 #' @importFrom parameters model_parameters
-#' @importFrom effectsize effectsize
 #'
 #' @note *Important*: don't enter `1/bf.object` to extract results for null
 #'   hypothesis; doing so will return wrong results.
@@ -100,16 +99,17 @@ bf_extractor <- function(bf.object,
   }
 
   # Bayes Factor expression
-  bf_expr_01 <-
-    bf_expr_template(
+  expression <-
+    expr_template(
       top.text = top.text,
       stats.df = df,
       centrality = centrality,
       conf.level = conf.level,
       conf.method = conf.method,
-      k = k
+      k = k,
+      bayesian = TRUE
     )
 
   # return the text results or the dataframe with results
-  switch(output, "dataframe" = as_tibble(df), bf_expr_01)
+  switch(output, "dataframe" = as_tibble(df), expression)
 }
