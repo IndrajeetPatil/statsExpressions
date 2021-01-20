@@ -11,7 +11,6 @@ expr_meta_random(
   random = "mixture",
   k = 2L,
   conf.level = 0.95,
-  caption = NULL,
   output = "expression",
   ...
 )
@@ -39,9 +38,6 @@ The type of random effects distribution. One of "normal","t-dist","mixture", for
 
 \item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
 \verb{95\%} confidence/credible intervals (\code{0.95}).}
-
-\item{caption}{Text to display as caption. This argument is relevant only
-when \code{output = "caption"}.}
 
 \item{output}{If \code{"expression"}, will return expression with statistical
 details, while \code{"dataframe"} will return a dataframe containing the

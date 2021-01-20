@@ -5,7 +5,7 @@
 #' @inheritParams parameters::model_parameters
 #'
 #' @importFrom parameters model_parameters
-#' @importFrom insight standardize_names
+#' @importFrom parameters standardize_names
 #' @importFrom dplyr select matches
 #'
 #' @examples
@@ -16,24 +16,6 @@
 tidy_model_parameters <- function(model, ...) {
   parameters::model_parameters(model, verbose = FALSE, ...) %>%
     dplyr::select(-dplyr::matches("Difference")) %>%
-    parameters::standardize_names(data = ., style = "broom") %>%
-    as_tibble(.)
-}
-
-#' @name tidy_model_performance
-#' @title Convert `performance` package output to `tidyverse` conventions
-#'
-#' @inheritParams performance::model_performance
-#'
-#' @importFrom performance model_performance
-#'
-#' @examples
-#' model <- lm(mpg ~ wt + cyl, data = mtcars)
-#' tidy_model_parameters(model)
-#' @export
-
-tidy_model_performance <- function(model, ...) {
-  performance::model_performance(model, verbose = FALSE, ...) %>%
     parameters::standardize_names(data = ., style = "broom") %>%
     as_tibble(.)
 }

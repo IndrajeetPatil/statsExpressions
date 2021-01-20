@@ -25,16 +25,6 @@ test_that(
         output = "subtitle"
       )
 
-    # caption output
-    set.seed(123)
-    using_function2 <-
-      expr_meta_random(
-        data = df_eg,
-        k = 2,
-        caption = "this is caption",
-        output = "caption"
-      )
-
     # dataframe output
     set.seed(123)
     df_res <-
@@ -75,36 +65,8 @@ test_that(
         )
       )
 
-    # expected subtitle output
-    set.seed(123)
-    results2 <-
-      ggplot2::expr(atop(
-        displaystyle("this is caption"),
-        expr = paste(
-          "Heterogeneity: ",
-          italic("Q"),
-          "(",
-          "4",
-          ") = ",
-          "6083",
-          ", ",
-          italic("p"),
-          " = ",
-          "0e+00",
-          ", ",
-          tau["REML"]^2,
-          " = ",
-          "0.19",
-          ", ",
-          "I"^2,
-          " = ",
-          "99.90%"
-        )
-      ))
-
     # testing overall call
     expect_identical(using_function1, results1)
-    expect_identical(using_function2, results2)
 
     # error
     expect_error(expr_meta_random(mtcars))

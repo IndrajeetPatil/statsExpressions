@@ -5,8 +5,6 @@
 #'   sizes or outcomes)  and `std.error` (corresponding standard errors). These
 #'   two columns will be used for `yi`  and `sei` arguments in `metafor::rma`
 #'   (for parametric analysis) or `metaplus::metaplus` (for robust analysis).
-#' @param caption Text to display as caption. This argument is relevant only
-#'   when `output = "caption"`.
 #' @inheritParams expr_t_onesample
 #' @param metaBMA.args A list of additional arguments to be passed to
 #'   `metaBMA::meta_random`.
@@ -24,7 +22,7 @@
 #'
 #' @importFrom metafor rma
 #' @importFrom metaplus metaplus
-#' @importFrom metaBMA meta_random prior
+#' @importFrom metaBMA meta_random
 #' @importFrom rlang exec !!!
 #'
 #' @examples
@@ -76,7 +74,6 @@ expr_meta_random <- function(data,
                              random = "mixture",
                              k = 2L,
                              conf.level = 0.95,
-                             caption = NULL,
                              output = "expression",
                              ...) {
   # check the type of test
@@ -94,44 +91,6 @@ expr_meta_random <- function(data,
         level = conf.level * 100,
         ...
       )
-
-    # model summary
-    df_glance <- tidy_model_performance(mod)
-
-    # preparing the subtitle
-    caption <-
-      substitute(
-        atop(displaystyle(top.text),
-          expr = paste(
-            "Heterogeneity: ",
-            italic("Q"),
-            "(",
-            df,
-            ") = ",
-            Q,
-            ", ",
-            italic("p"),
-            " = ",
-            pvalue,
-            ", ",
-            tau["REML"]^2,
-            " = ",
-            tau2,
-            ", ",
-            "I"^2,
-            " = ",
-            I2
-          )
-        ),
-        env = list(
-          top.text = caption,
-          Q = format_num(df_glance$cochransq, k = 0L),
-          df = format_num(df_glance$df.error, k = 0L),
-          pvalue = format_num(df_glance$p.cochransq, k = k, p.value = TRUE),
-          tau2 = format_num(df_glance$tau2, k = k),
-          I2 = paste0(format_num(df_glance$i2 * 100, k = 2L), "%")
-        )
-      )
   }
 
   #----------------------- robust ------------------------------------
@@ -146,6 +105,9 @@ expr_meta_random <- function(data,
         random = random,
         ...
       )
+
+    # this level can't be changed for robust one
+    conf.level <- 0.95
   }
 
   # clean up
@@ -163,7 +125,7 @@ expr_meta_random <- function(data,
         n = nrow(data),
         n.text = quote(italic("n")["effects"]),
         no.parameters = 0L,
-        conf.level = 0.95,
+        conf.level = conf.level,
         k = k
       )
   }
@@ -185,5 +147,5 @@ expr_meta_random <- function(data,
   }
 
   # what needs to be returned?
-  switch(output, "dataframe" = as_tibble(stats_df), "caption" = caption, subtitle)
+  switch(output, "dataframe" = as_tibble(stats_df), subtitle)
 }

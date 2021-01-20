@@ -5,6 +5,13 @@ MAJOR CHANGES
   - `expr_template` gains a new argument `bayesian`, which can return an
     expression for Bayesian analysis, which has a slightly different template.
 
+  - Retires the additional caption-making functionality that was unique to
+    `expr_meta_random` when `type = "parametric"`. This was the only context in
+    which this feature was supported and was therefore inconsistent.
+
+  - Removes `tidy_model_performance` function, which is no longer used
+    internally.
+
 # statsExpressions 0.7.0
 
 BREAKING CHANGES
