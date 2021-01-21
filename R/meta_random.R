@@ -112,10 +112,9 @@ expr_meta_random <- function(data,
   # clean up
   if (stats.type %in% c("parametric", "robust")) {
     # create a dataframe with coefficients
-    stats_df <- tidy_model_parameters(mod, include_studies = FALSE, ci = conf.level)
-
-    # informative column
-    stats_df %<>% dplyr::mutate(effectsize = "meta-analytic summary estimate")
+    stats_df <-
+      tidy_model_parameters(mod, include_studies = FALSE, ci = conf.level) %>%
+      dplyr::mutate(effectsize = "meta-analytic summary estimate", ci.width = conf.level)
 
     # preparing the subtitle
     subtitle <-
@@ -124,7 +123,6 @@ expr_meta_random <- function(data,
         n = nrow(data),
         n.text = quote(italic("n")["effects"]),
         no.parameters = 0L,
-        conf.level = conf.level,
         k = k
       )
   }

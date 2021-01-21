@@ -38,7 +38,8 @@ Although the primary focus of this package is to get expressions containing
 statistical results, one can also use it to extract dataframes containing these
 details. This vignette catalogs dataframe outputs from all functions.
 
-A dataframe will typically contain the following columns:
+A dataframe will typically contain the following columns (the exact details
+depend on the test and statistical approach):
 
   - *statistic*: the numeric value of a statistic.
 
@@ -46,16 +47,22 @@ A dataframe will typically contain the following columns:
     of freedom for the test); note that if `no.parameters = 0L` (e.g., for
     non-parametric tests), this column will be irrelevant.
 
-  - *parameter1*, *parameter2* relevant only if the statistic in question has
+  - *parameter1*, *parameter2*: relevant only if the statistic in question has
     two degrees of freedom (e.g., anova).
 
-  - *p.value* the two-sided *p*-value associated with the observed statistic.
+  - *p.value*: the two-sided *p*-value associated with the observed statistic.
+  
+  - *method*: the details of the statistical test carried out.
 
   - *estimate*: estimated value of the effect size.
 
   - *conf.low*: lower bound for effect size estimate.
 
   - *conf.high*: upper bound for effect size estimate.
+  
+  - *ci.width*: width of the confidence interval.
+  
+  - *effectsize*: the details of the effect size.
 
 For details about the tests and types of effect size estimates they correspond
 to, see:

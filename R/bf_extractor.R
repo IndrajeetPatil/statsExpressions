@@ -68,6 +68,7 @@ bf_extractor <- function(bf.object,
       ...
     )) %>%
     parameters::standardize_names(data = ., style = "broom") %>%
+    dplyr::mutate(ci.width = attributes(.)$ci) %>%
     dplyr::rename("bf10" = "bayes.factor") %>%
     tidyr::fill(data = ., dplyr::matches("^prior|^bf"), .direction = "updown") %>%
     dplyr::mutate(log_e_bf10 = log(bf10))
@@ -81,7 +82,8 @@ bf_extractor <- function(bf.object,
         performance::r2_bayes(bf.object, average = TRUE, ci = conf.level) %>%
         as_tibble(.) %>%
         parameters::standardize_names(data = ., style = "broom") %>%
-        dplyr::rename_with(.fn = ~ paste0("r2.", .x), .cols = dplyr::matches("^conf|^comp"))
+        dplyr::rename_with(.fn = ~ paste0("r2.", .x), .cols = dplyr::matches("^conf|^comp")) %>%
+        dplyr::select(-ci.width)
 
       # for within-subjects design, retain only marginal component
       if ("r2.component" %in% names(df_r2)) df_r2 %<>% dplyr::filter(r2.component == "conditional")
@@ -103,7 +105,6 @@ bf_extractor <- function(bf.object,
       top.text = top.text,
       stats.df = df,
       centrality = centrality,
-      conf.level = conf.level,
       conf.method = conf.method,
       k = k,
       bayesian = TRUE

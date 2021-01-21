@@ -172,7 +172,6 @@ expr_contingency_tab <- function(data,
         stats.df = stats_df,
         n = nrow(data),
         paired = paired,
-        conf.level = conf.level,
         k = k
       )
   }

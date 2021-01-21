@@ -87,7 +87,7 @@ expr_template <- function(stats.df,
                           n = NULL,
                           n.text = NULL,
                           paired = FALSE,
-                          conf.level = 0.95,
+                          conf.level = NULL,
                           centrality = "median",
                           conf.method = "HDI",
                           k = 2L,
@@ -115,6 +115,7 @@ expr_template <- function(stats.df,
   if (is.null(statistic.text)) statistic.text <- stat_text_switch(stats.df$method[[1]])
   if (is.null(effsize.text)) effsize.text <- estimate_type_switch(stats.df$effectsize[[1]])
   if (is.null(prior.text) && bayesian) prior.text <- prior_type_switch(stats.df$method[[1]])
+  if (is.null(conf.level)) conf.level <- stats.df$ci.width[[1]]
 
   # -------------------------- Bayesian analysis ------------------------------
 

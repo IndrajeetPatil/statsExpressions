@@ -111,15 +111,18 @@
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
 <p>Although the primary focus of this package is to get expressions containing statistical results, one can also use it to extract dataframes containing these details. This vignette catalogs dataframe outputs from all functions.</p>
-<p>A dataframe will typically contain the following columns:</p>
+<p>A dataframe will typically contain the following columns (the exact details depend on the test and statistical approach):</p>
 <ul>
 <li><p><em>statistic</em>: the numeric value of a statistic.</p></li>
 <li><p><em>parameter</em>: the numeric value of a parameter being modeled (often degrees of freedom for the test); note that if <code>no.parameters = 0L</code> (e.g., for non-parametric tests), this column will be irrelevant.</p></li>
-<li><p><em>parameter1</em>, <em>parameter2</em> relevant only if the statistic in question has two degrees of freedom (e.g., anova).</p></li>
-<li><p><em>p.value</em> the two-sided <em>p</em>-value associated with the observed statistic.</p></li>
+<li><p><em>parameter1</em>, <em>parameter2</em>: relevant only if the statistic in question has two degrees of freedom (e.g., anova).</p></li>
+<li><p><em>p.value</em>: the two-sided <em>p</em>-value associated with the observed statistic.</p></li>
+<li><p><em>method</em>: the details of the statistical test carried out.</p></li>
 <li><p><em>estimate</em>: estimated value of the effect size.</p></li>
 <li><p><em>conf.low</em>: lower bound for effect size estimate.</p></li>
 <li><p><em>conf.high</em>: upper bound for effect size estimate.</p></li>
+<li><p><em>ci.width</em>: width of the confidence interval.</p></li>
+<li><p><em>effectsize</em>: the details of the effect size.</p></li>
 </ul>
 <p>For details about the tests and types of effect size estimates they correspond to, see: <a href="https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html</a></p>
 </div>
@@ -179,13 +182,13 @@
   type <span class="op">=</span> <span class="st">"robust"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 7</span>
+<span class="co">#&gt; # A tibble: 1 x 8</span>
 <span class="co">#&gt;   statistic p.value method                                 estimate conf.low</span>
 <span class="co">#&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                                     &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1     -8.78       0 Bootstrap-t method for one-sample test   0.0660  0.00500</span>
-<span class="co">#&gt;   conf.high effectsize  </span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;       </span>
-<span class="co">#&gt; 1     0.127 Trimmed mean</span>
+<span class="co">#&gt;   conf.high ci.width effectsize  </span>
+<span class="co">#&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt; 1     0.127     0.95 Trimmed mean</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
@@ -199,15 +202,19 @@
   bf.prior <span class="op">=</span> <span class="fl">0.8</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2 x 12</span>
+<span class="co">#&gt; # A tibble: 2 x 13</span>
 <span class="co">#&gt;   term       estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Difference  0.00952  -0.250      0.255 0.532          0.619 </span>
 <span class="co">#&gt; 2 Cohens_d    0.276     0.0153     0.536 0.978          0.0525</span>
-<span class="co">#&gt;   prior.distribution prior.location prior.scale  bf10 method          log_e_bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 cauchy                          0         0.8 0.130 Bayesian t-test      -2.04</span>
-<span class="co">#&gt; 2 cauchy                          0         0.8 0.130 Bayesian t-test      -2.04</span></code></pre></div>
+<span class="co">#&gt;   prior.distribution prior.location prior.scale  bf10 method          ci.width</span>
+<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 cauchy                          0         0.8 0.130 Bayesian t-test     0.95</span>
+<span class="co">#&gt; 2 cauchy                          0         0.8 0.130 Bayesian t-test     0.95</span>
+<span class="co">#&gt;   log_e_bf10</span>
+<span class="co">#&gt;        &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      -2.04</span>
+<span class="co">#&gt; 2      -2.04</span></code></pre></div>
 </div>
 <div id="two-sample-tests" class="section level1">
 <h1 class="hasAnchor">
@@ -277,16 +284,16 @@
   type <span class="op">=</span> <span class="st">"r"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 8</span>
+<span class="co">#&gt; # A tibble: 1 x 9</span>
 <span class="co">#&gt;   statistic df.error       p.value</span>
 <span class="co">#&gt;       &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;</span>
 <span class="co">#&gt; 1      6.71       72 0.00000000375</span>
 <span class="co">#&gt;   method                                             estimate conf.low conf.high</span>
 <span class="co">#&gt;   &lt;chr&gt;                                                 &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Yuen's test on trimmed means for dependent samples    0.621    0.385     0.798</span>
-<span class="co">#&gt;   effectsize                                             </span>
-<span class="co">#&gt;   &lt;chr&gt;                                                  </span>
-<span class="co">#&gt; 1 Algina-Keselman-Penfield robust standardized difference</span>
+<span class="co">#&gt;   ci.width effectsize                                             </span>
+<span class="co">#&gt;      &lt;dbl&gt; &lt;chr&gt;                                                  </span>
+<span class="co">#&gt; 1     0.95 Algina-Keselman-Penfield robust standardized difference</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
@@ -301,7 +308,7 @@
   type <span class="op">=</span> <span class="st">"bf"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2 x 12</span>
+<span class="co">#&gt; # A tibble: 2 x 13</span>
 <span class="co">#&gt;   term       estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Difference   -1.62    -2.12     -1.14      1               0</span>
@@ -310,10 +317,10 @@
 <span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;          </span>
 <span class="co">#&gt; 1 cauchy                          0       0.707 4762370. Bayesian t-test</span>
 <span class="co">#&gt; 2 cauchy                          0       0.707 4762370. Bayesian t-test</span>
-<span class="co">#&gt;   log_e_bf10</span>
-<span class="co">#&gt;        &lt;dbl&gt;</span>
-<span class="co">#&gt; 1       15.4</span>
-<span class="co">#&gt; 2       15.4</span></code></pre></div>
+<span class="co">#&gt;   ci.width log_e_bf10</span>
+<span class="co">#&gt;      &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1     0.95       15.4</span>
+<span class="co">#&gt; 2     0.95       15.4</span></code></pre></div>
 </div>
 <div id="between-subjects-design" class="section level2">
 <h2 class="hasAnchor">
@@ -392,16 +399,16 @@
   type <span class="op">=</span> <span class="st">"r"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 8</span>
+<span class="co">#&gt; # A tibble: 1 x 9</span>
 <span class="co">#&gt;   statistic df.error p.value</span>
 <span class="co">#&gt;       &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span>
 <span class="co">#&gt; 1      2.05     45.2  0.0460</span>
 <span class="co">#&gt;   method                                               estimate conf.low</span>
 <span class="co">#&gt;   &lt;chr&gt;                                                   &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Yuen's test on trimmed means for independent samples    0.384   0.0401</span>
-<span class="co">#&gt;   conf.high effectsize                        </span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;                             </span>
-<span class="co">#&gt; 1     0.659 Explanatory measure of effect size</span>
+<span class="co">#&gt;   conf.high ci.width effectsize                        </span>
+<span class="co">#&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                             </span>
+<span class="co">#&gt; 1     0.659     0.95 Explanatory measure of effect size</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
@@ -414,15 +421,19 @@
   type <span class="op">=</span> <span class="st">"bf"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2 x 12</span>
+<span class="co">#&gt; # A tibble: 2 x 13</span>
 <span class="co">#&gt;   term       estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Difference   -3.16   -6.66       0.528 0.960          0.0424</span>
 <span class="co">#&gt; 2 Cohens_d      0.416  -0.0277     0.921 0.964          0.0494</span>
-<span class="co">#&gt;   prior.distribution prior.location prior.scale  bf10 method          log_e_bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 cauchy                          0       0.707  1.20 Bayesian t-test      0.181</span>
-<span class="co">#&gt; 2 cauchy                          0       0.707  1.20 Bayesian t-test      0.181</span></code></pre></div>
+<span class="co">#&gt;   prior.distribution prior.location prior.scale  bf10 method          ci.width</span>
+<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 cauchy                          0       0.707  1.20 Bayesian t-test     0.95</span>
+<span class="co">#&gt; 2 cauchy                          0       0.707  1.20 Bayesian t-test     0.95</span>
+<span class="co">#&gt;   log_e_bf10</span>
+<span class="co">#&gt;        &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      0.181</span>
+<span class="co">#&gt; 2      0.181</span></code></pre></div>
 </div>
 </div>
 <div id="one-way-anovas" class="section level1">
@@ -493,16 +504,16 @@
   type <span class="op">=</span> <span class="st">"r"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 9</span>
+<span class="co">#&gt; # A tibble: 1 x 10</span>
 <span class="co">#&gt;   statistic    df df.error  p.value</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1      21.2  2.69     191. 4.79e-11</span>
 <span class="co">#&gt;   method                                                              estimate</span>
 <span class="co">#&gt;   &lt;chr&gt;                                                                  &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 A heteroscedastic one-way repeated measures ANOVA for trimmed means    0.740</span>
-<span class="co">#&gt;   conf.low conf.high</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    0.526     0.986</span>
+<span class="co">#&gt;   conf.low conf.high ci.width</span>
+<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1    0.526     0.986     0.95</span>
 <span class="co">#&gt;   effectsize                                                     </span>
 <span class="co">#&gt;   &lt;chr&gt;                                                          </span>
 <span class="co">#&gt; 1 Algina-Keselman-Penfield robust standardized difference average</span>
@@ -545,18 +556,18 @@
 <span class="co">#&gt;  8 cauchy                          0       1     random conditional 1372773375.</span>
 <span class="co">#&gt;  9 cauchy                          0       1     random conditional 1372773375.</span>
 <span class="co">#&gt; 10 cauchy                          0       1     random conditional 1372773375.</span>
-<span class="co">#&gt;    method                          log_e_bf10    r2 std.dev ci.width r2.conf.low</span>
-<span class="co">#&gt;    &lt;chr&gt;                                &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
-<span class="co">#&gt;  2 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
-<span class="co">#&gt;  3 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
-<span class="co">#&gt;  4 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
-<span class="co">#&gt;  5 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
-<span class="co">#&gt;  6 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
-<span class="co">#&gt;  7 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
-<span class="co">#&gt;  8 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
-<span class="co">#&gt;  9 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
-<span class="co">#&gt; 10 Bayes factors for linear models       21.0 0.529  0.0330       95       0.460</span>
+<span class="co">#&gt;    method                          ci.width log_e_bf10    r2 std.dev r2.conf.low</span>
+<span class="co">#&gt;    &lt;chr&gt;                              &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Bayes factors for linear models     0.95       21.0 0.529  0.0330       0.460</span>
+<span class="co">#&gt;  2 Bayes factors for linear models     0.95       21.0 0.529  0.0330       0.460</span>
+<span class="co">#&gt;  3 Bayes factors for linear models     0.95       21.0 0.529  0.0330       0.460</span>
+<span class="co">#&gt;  4 Bayes factors for linear models     0.95       21.0 0.529  0.0330       0.460</span>
+<span class="co">#&gt;  5 Bayes factors for linear models     0.95       21.0 0.529  0.0330       0.460</span>
+<span class="co">#&gt;  6 Bayes factors for linear models     0.95       21.0 0.529  0.0330       0.460</span>
+<span class="co">#&gt;  7 Bayes factors for linear models     0.95       21.0 0.529  0.0330       0.460</span>
+<span class="co">#&gt;  8 Bayes factors for linear models     0.95       21.0 0.529  0.0330       0.460</span>
+<span class="co">#&gt;  9 Bayes factors for linear models     0.95       21.0 0.529  0.0330       0.460</span>
+<span class="co">#&gt; 10 Bayes factors for linear models     0.95       21.0 0.529  0.0330       0.460</span>
 <span class="co">#&gt;    r2.conf.high r2.component</span>
 <span class="co">#&gt;           &lt;dbl&gt; &lt;chr&gt;       </span>
 <span class="co">#&gt;  1        0.586 conditional </span>
@@ -653,16 +664,16 @@
   type <span class="op">=</span> <span class="st">"r"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 9</span>
+<span class="co">#&gt; # A tibble: 1 x 10</span>
 <span class="co">#&gt;   statistic    df df.error p.value estimate conf.low conf.high</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt; 1      124.     2     71.6       0    0.916    0.861     0.984</span>
 <span class="co">#&gt;   effectsize                        </span>
 <span class="co">#&gt;   &lt;chr&gt;                             </span>
 <span class="co">#&gt; 1 Explanatory measure of effect size</span>
-<span class="co">#&gt;   method                                           </span>
-<span class="co">#&gt;   &lt;chr&gt;                                            </span>
-<span class="co">#&gt; 1 A heteroscedastic one-way ANOVA for trimmed means</span>
+<span class="co">#&gt;   method                                            ci.width</span>
+<span class="co">#&gt;   &lt;chr&gt;                                                &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 A heteroscedastic one-way ANOVA for trimmed means     0.95</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
@@ -692,14 +703,14 @@
 <span class="co">#&gt; 4 cauchy                          0       0.707 conditional 1.87e28</span>
 <span class="co">#&gt; 5 cauchy                          0       0.707 extra       1.87e28</span>
 <span class="co">#&gt; 6 cauchy                          0       0.707 extra       1.87e28</span>
-<span class="co">#&gt;   method                          log_e_bf10    r2 std.dev ci.width r2.conf.low</span>
-<span class="co">#&gt;   &lt;chr&gt;                                &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Bayes factors for linear models       65.1 0.612  0.0311       95       0.544</span>
-<span class="co">#&gt; 2 Bayes factors for linear models       65.1 0.612  0.0311       95       0.544</span>
-<span class="co">#&gt; 3 Bayes factors for linear models       65.1 0.612  0.0311       95       0.544</span>
-<span class="co">#&gt; 4 Bayes factors for linear models       65.1 0.612  0.0311       95       0.544</span>
-<span class="co">#&gt; 5 Bayes factors for linear models       65.1 0.612  0.0311       95       0.544</span>
-<span class="co">#&gt; 6 Bayes factors for linear models       65.1 0.612  0.0311       95       0.544</span>
+<span class="co">#&gt;   method                          ci.width log_e_bf10    r2 std.dev r2.conf.low</span>
+<span class="co">#&gt;   &lt;chr&gt;                              &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Bayes factors for linear models     0.95       65.1 0.612  0.0311       0.544</span>
+<span class="co">#&gt; 2 Bayes factors for linear models     0.95       65.1 0.612  0.0311       0.544</span>
+<span class="co">#&gt; 3 Bayes factors for linear models     0.95       65.1 0.612  0.0311       0.544</span>
+<span class="co">#&gt; 4 Bayes factors for linear models     0.95       65.1 0.612  0.0311       0.544</span>
+<span class="co">#&gt; 5 Bayes factors for linear models     0.95       65.1 0.612  0.0311       0.544</span>
+<span class="co">#&gt; 6 Bayes factors for linear models     0.95       65.1 0.612  0.0311       0.544</span>
 <span class="co">#&gt;   r2.conf.high</span>
 <span class="co">#&gt;          &lt;dbl&gt;</span>
 <span class="co">#&gt; 1        0.667</span>
@@ -807,16 +818,16 @@
   type <span class="op">=</span> <span class="st">"bayes"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 12</span>
+<span class="co">#&gt; # A tibble: 1 x 13</span>
 <span class="co">#&gt;   term      estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Cramers_v    0.478    0.221     0.725     1               0</span>
 <span class="co">#&gt;   prior.distribution      prior.location prior.scale  bf10</span>
 <span class="co">#&gt;   &lt;chr&gt;                            &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 independent multinomial              0           1  16.8</span>
-<span class="co">#&gt;   method                             log_e_bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;                                   &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Bayesian contingency tabs analysis       2.82</span>
+<span class="co">#&gt;   method                             ci.width log_e_bf10</span>
+<span class="co">#&gt;   &lt;chr&gt;                                 &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Bayesian contingency tabs analysis     0.95       2.82</span>
 
 <span class="co"># goodness-of-fit test</span>
 <span class="fu"><a href="../../reference/expr_contingency_tab.html">expr_contingency_tab</a></span><span class="op">(</span>
@@ -851,13 +862,13 @@
   type <span class="op">=</span> <span class="st">"parametric"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 11</span>
+<span class="co">#&gt; # A tibble: 1 x 12</span>
 <span class="co">#&gt;   parameter1 parameter2 estimate conf.low conf.high statistic    df  p.value</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 wt         mpg          -0.868   -0.934    -0.744     -9.56    30 1.29e-10</span>
-<span class="co">#&gt;   method  n.obs effectsize</span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;     </span>
-<span class="co">#&gt; 1 Pearson    32 Pearson</span>
+<span class="co">#&gt;   method  n.obs effectsize ci.width</span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;         &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Pearson    32 Pearson        0.95</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -870,13 +881,13 @@
   type <span class="op">=</span> <span class="st">"nonparametric"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
+<span class="co">#&gt; # A tibble: 1 x 11</span>
 <span class="co">#&gt;   parameter1 parameter2 estimate conf.low conf.high statistic  p.value method  </span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;   </span>
 <span class="co">#&gt; 1 wt         mpg          -0.886   -0.945    -0.774      9.24 1.49e-11 Spearman</span>
-<span class="co">#&gt;   n.obs effectsize</span>
-<span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;     </span>
-<span class="co">#&gt; 1    32 Spearman</span>
+<span class="co">#&gt;   n.obs effectsize ci.width</span>
+<span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;         &lt;dbl&gt;</span>
+<span class="co">#&gt; 1    32 Spearman       0.95</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -889,13 +900,13 @@
   type <span class="op">=</span> <span class="st">"robust"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 11</span>
+<span class="co">#&gt; # A tibble: 1 x 12</span>
 <span class="co">#&gt;   parameter1 parameter2 estimate conf.low conf.high statistic    df  p.value</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 wt         mpg          -0.896   -0.948    -0.796     -11.1    30 4.15e-12</span>
-<span class="co">#&gt;   method          n.obs effectsize     </span>
-<span class="co">#&gt;   &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;          </span>
-<span class="co">#&gt; 1 Percentage Bend    32 Percentage Bend</span>
+<span class="co">#&gt;   method          n.obs effectsize      ci.width</span>
+<span class="co">#&gt;   &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;              &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Percentage Bend    32 Percentage Bend     0.95</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
@@ -908,16 +919,16 @@
   type <span class="op">=</span> <span class="st">"bayes"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 15</span>
+<span class="co">#&gt; # A tibble: 1 x 16</span>
 <span class="co">#&gt;   parameter1 parameter2 estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 wt         mpg          -0.843   -0.919    -0.759     1               0</span>
 <span class="co">#&gt;        bf10 prior.distribution prior.location prior.scale method           n.obs</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;            &lt;int&gt;</span>
 <span class="co">#&gt; 1 56223033. cauchy                          0       0.707 Bayesian Pearson    32</span>
-<span class="co">#&gt;   effectsize       log_e_bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;                 &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Bayesian Pearson       17.8</span></code></pre></div>
+<span class="co">#&gt;   effectsize       ci.width log_e_bf10</span>
+<span class="co">#&gt;   &lt;chr&gt;               &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Bayesian Pearson     0.95       17.8</span></code></pre></div>
 </div>
 <div id="meta-analysis" class="section level1">
 <h1 class="hasAnchor">
@@ -936,33 +947,33 @@
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/expr_meta_random.html">expr_meta_random</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, output <span class="op">=</span> <span class="st">"dataframe"</span>, type <span class="op">=</span> <span class="st">"parametric"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
+<span class="co">#&gt; # A tibble: 1 x 11</span>
 <span class="co">#&gt;   term    estimate std.error conf.low conf.high statistic  p.value weight</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Overall   -0.767     0.212    -1.18    -0.351     -3.62 0.000295     NA</span>
-<span class="co">#&gt;   method                        effectsize                    </span>
-<span class="co">#&gt;   &lt;chr&gt;                         &lt;chr&gt;                         </span>
-<span class="co">#&gt; 1 Meta-analysis using 'metafor' meta-analytic summary estimate</span>
+<span class="co">#&gt;   method                        effectsize                     ci.width</span>
+<span class="co">#&gt;   &lt;chr&gt;                         &lt;chr&gt;                             &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Meta-analysis using 'metafor' meta-analytic summary estimate     0.95</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/expr_meta_random.html">expr_meta_random</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, output <span class="op">=</span> <span class="st">"dataframe"</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
+<span class="co">#&gt; # A tibble: 1 x 11</span>
 <span class="co">#&gt;   term    estimate std.error conf.low conf.high statistic  p.value weight</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Overall   -0.746     0.234    -1.26    -0.343     -3.19 0.000777     NA</span>
-<span class="co">#&gt;   method                                effectsize                    </span>
-<span class="co">#&gt;   &lt;chr&gt;                                 &lt;chr&gt;                         </span>
-<span class="co">#&gt; 1 Robust meta-analysis using 'metaplus' meta-analytic summary estimate</span>
+<span class="co">#&gt;   method                                effectsize                     ci.width</span>
+<span class="co">#&gt;   &lt;chr&gt;                                 &lt;chr&gt;                             &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Robust meta-analysis using 'metaplus' meta-analytic summary estimate     0.95</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/expr_meta_random.html">expr_meta_random</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, output <span class="op">=</span> <span class="st">"dataframe"</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2 x 15</span>
+<span class="co">#&gt; # A tibble: 2 x 16</span>
 <span class="co">#&gt;   term    estimate std.error conf.low conf.high weight  bf10  rhat   ess</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Overall   -0.654     0.221   -1.10     -0.242     NA  53.0  1    4758.</span>
@@ -971,10 +982,10 @@
 <span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 meta      Student's t                     0       0.707</span>
 <span class="co">#&gt; 2 meta      Inverse gamma                   1       0.15 </span>
-<span class="co">#&gt;   method                                 log_e_bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;                                       &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Bayesian meta-analysis using 'metaBMA'       3.97</span>
-<span class="co">#&gt; 2 Bayesian meta-analysis using 'metaBMA'       3.97</span></code></pre></div>
+<span class="co">#&gt;   method                                 ci.width log_e_bf10</span>
+<span class="co">#&gt;   &lt;chr&gt;                                     &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Bayesian meta-analysis using 'metaBMA'     0.95       3.97</span>
+<span class="co">#&gt; 2 Bayesian meta-analysis using 'metaBMA'     0.95       3.97</span></code></pre></div>
 </div>
 <div id="suggestions" class="section level1">
 <h1 class="hasAnchor">

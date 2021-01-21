@@ -15,7 +15,7 @@ expr_template(
   n = NULL,
   n.text = NULL,
   paired = FALSE,
-  conf.level = 0.95,
+  conf.level = NULL,
   centrality = "median",
   conf.method = "HDI",
   k = 2L,

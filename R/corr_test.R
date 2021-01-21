@@ -91,7 +91,7 @@ expr_corr_test <- function(data,
       bayesian_ci_method = "hdi"
     ) %>%
     parameters::standardize_names(data = ., style = "broom") %>%
-    dplyr::mutate(effectsize = method)
+    dplyr::mutate(effectsize = method, ci.width = attributes(.)$ci)
 
   # only relevant for Bayesian
   if (stats.type == "bayes") {
@@ -113,7 +113,6 @@ expr_corr_test <- function(data,
       stats.df = stats_df,
       paired = TRUE,
       n = stats_df$n.obs[[1]],
-      conf.level = conf.level,
       top.text = top.text,
       k = k,
       bayesian = ifelse(stats.type == "bayes", TRUE, FALSE)

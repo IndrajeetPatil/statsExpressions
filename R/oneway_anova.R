@@ -309,6 +309,9 @@ expr_oneway_anova <- function(data,
 
     # expression details
     c(no.parameters, k.parameter, k.parameter2) %<-% c(2L, ifelse(isTRUE(paired), k, 0L), k)
+
+    # if confidence level is not present
+    if (!"ci.width" %in% names(stats_df)) stats_df %<>% dplyr::mutate(ci.width = conf.level)
   }
 
   # final returns
@@ -319,7 +322,6 @@ expr_oneway_anova <- function(data,
         stats.df = stats_df,
         n = ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data)),
         paired = paired,
-        conf.level = conf.level,
         k = k,
         k.parameter = k.parameter,
         k.parameter2 = k.parameter2
@@ -388,5 +390,11 @@ wAKPavg <- function(x, tr = 0.2, nboot = 100, ...) {
     }
   }
 
-  tibble("estimate" = mean(A[, 1]), "conf.low" = mean(A[, 2]), "conf.high" = mean(A[, 3]))
+  # return as a dataframe
+  tibble(
+    "estimate" = mean(A[, 1]),
+    "conf.low" = mean(A[, 2]),
+    "conf.high" = mean(A[, 3]),
+    "ci.width" = 0.95
+  )
 }

@@ -237,6 +237,7 @@ expr_t_twosample <- function(data,
           estimate = mod2$effsize[[1]],
           conf.low = mod2$CI[[1]],
           conf.high = mod2$CI[[2]],
+          ci.width = conf.level,
           effectsize = "Explanatory measure of effect size"
         )
     }
@@ -254,8 +255,11 @@ expr_t_twosample <- function(data,
       effsize_df <-
         as_tibble(as.data.frame(mod2), rownames = "effectsize") %>%
         dplyr::filter(effectsize == "AKP") %>%
-        dplyr::mutate(effectsize = "Algina-Keselman-Penfield robust standardized difference") %>%
-        dplyr::select(estimate = Est, conf.low = ci.low, conf.high = ci.up, effectsize)
+        dplyr::mutate(
+          effectsize = "Algina-Keselman-Penfield robust standardized difference",
+          ci.width = 0.95
+        ) %>%
+        dplyr::select(estimate = Est, conf.low = ci.low, conf.high = ci.up, ci.width, effectsize)
     }
   }
 
@@ -271,7 +275,6 @@ expr_t_twosample <- function(data,
         stats.df = stats_df,
         paired = paired,
         n = ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data)),
-        conf.level = conf.level,
         k = k,
         k.parameter = k.parameter
       )

@@ -114,6 +114,7 @@ test_that(
       statsExpressions::expr_template(
         no.parameters = 1L,
         stats.df = stats_df,
+        conf.level = 0.95,
         statistic.text = quote(italic(chi)^2),
         n = 32,
         n.text = quote(italic("n")),

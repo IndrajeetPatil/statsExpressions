@@ -159,7 +159,6 @@ expr_t_onesample <- function(data,
         no.parameters = no.parameters,
         stats.df = stats_df,
         n = length(x_vec),
-        conf.level = conf.level,
         k = k
       )
   }
@@ -195,6 +194,7 @@ trimcibt <- function(x, tr = 0.2, nboot = 200, nv = 0, alpha = 0.05, ...) {
     estimate = mean(x, tr),
     conf.low = mean(x, tr) - tval[icrit] * WRS2::trimse(x, tr),
     conf.high = mean(x, tr) + tval[icrit] * WRS2::trimse(x, tr),
+    ci.width = 1 - alpha,
     effectsize = "Trimmed mean"
   )
 }
