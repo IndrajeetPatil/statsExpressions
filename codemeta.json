@@ -5,7 +5,7 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "statsExpressions",
-  "description": "Statistical processing backend for 'ggstatsplot',\n    this package creates expressions with details from statistical tests.\n    It can additionally return dataframes with these results, which also\n    make these functions a more pipe-friendly way to do statistical\n    analysis. Currently, it supports only the most common types of\n    statistical tests: parametric, nonparametric, robust, and Bayesian\n    versions of t-test/ANOVA, correlation analyses, contingency table\n    analysis, and meta-analysis.",
+  "description": "Statistical processing backend for 'ggstatsplot',\n    this package creates expressions with details from statistical tests.\n    It can additionally return dataframes with these results, which also\n    make these functions a more pipe-friendly way to do statistical\n    analysis. Currently, it supports only the most common types of\n    statistical approaches and tests: parametric, nonparametric, robust, and Bayesian\n    versions of t-test/ANOVA, correlation analyses, contingency table\n    analysis, and meta-analysis.",
   "name": "statsExpressions: Expressions and Dataframes with Statistical Details",
   "codeRepository": "https://github.com/IndrajeetPatil/statsExpressions",
   "relatedLink": [
@@ -201,19 +201,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "insight",
-      "name": "insight",
-      "version": ">= 0.12.0",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=insight"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "ipmisc",
       "name": "ipmisc",
       "provider": {
@@ -387,6 +374,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3905.593KB",
+  "fileSize": "3889.644KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

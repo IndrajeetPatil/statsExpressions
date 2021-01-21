@@ -21,7 +21,7 @@
 #' @importFrom ipmisc stats_type_switch
 #' @importFrom effectsize cohens_d hedges_g rank_biserial
 #' @importFrom stats t.test wilcox.test na.omit
-#' @importFrom rlang !! !!! enquo eval_tidy expr enexpr ensym exec new_formula
+#' @importFrom rlang !!! exec
 #' @importFrom BayesFactor ttestBF
 #'
 #' @examples

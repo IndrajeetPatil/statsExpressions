@@ -14,7 +14,7 @@ Description: Statistical processing backend for 'ggstatsplot',
     It can additionally return dataframes with these results, which also
     make these functions a more pipe-friendly way to do statistical
     analysis. Currently, it supports only the most common types of
-    statistical tests: parametric, nonparametric, robust, and Bayesian
+    statistical approaches and tests: parametric, nonparametric, robust, and Bayesian
     versions of t-test/ANOVA, correlation analyses, contingency table
     analysis, and meta-analysis.
 License: GPL-3 | file LICENSE
@@ -30,7 +30,6 @@ Imports:
     correlation,
     dplyr,
     effectsize (>= 0.4.3),
-    insight (>= 0.12.0),
     ipmisc,
     metaBMA,
     metafor,

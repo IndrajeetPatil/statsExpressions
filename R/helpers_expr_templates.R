@@ -358,7 +358,7 @@ estimate_type_switch <- function(method) {
     "Cohen's g" = quote(widehat(italic("g"))["Cohen"]),
     "meta-analytic summary estimate" = quote(widehat(beta)["summary"]^"meta"),
     "Bayesian contingency tabs analysis" = quote(italic("V")),
-    "Bayesian correlation analysis" = quote(italic(rho)),
+    "Bayesian Pearson" = quote(rho),
     "Bayesian meta-analysis using 'metaBMA'" = ,
     "Bayesian t-test" = quote(italic(delta)),
     "Bayes factors for linear models" = quote(italic(R^"2")),

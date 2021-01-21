@@ -21,10 +21,9 @@
 #'   [parameters::model_parameters.BFBayesFactor()].
 #'
 #' @importFrom dplyr mutate filter rename rename_with matches
-#' @importFrom insight standardize_names
 #' @importFrom performance r2_bayes
 #' @importFrom tidyr fill
-#' @importFrom parameters model_parameters
+#' @importFrom parameters model_parameters standardize_names
 #'
 #' @note *Important*: don't enter `1/bf.object` to extract results for null
 #'   hypothesis; doing so will return wrong results.
@@ -68,7 +67,7 @@ bf_extractor <- function(bf.object,
       include_studies = FALSE,
       ...
     )) %>%
-    insight::standardize_names(data = ., style = "broom") %>%
+    parameters::standardize_names(data = ., style = "broom") %>%
     dplyr::rename("bf10" = "bayes.factor") %>%
     tidyr::fill(data = ., dplyr::matches("^prior|^bf"), .direction = "updown") %>%
     dplyr::mutate(log_e_bf10 = log(bf10))
@@ -81,7 +80,7 @@ bf_extractor <- function(bf.object,
       df_r2 <-
         performance::r2_bayes(bf.object, average = TRUE, ci = conf.level) %>%
         as_tibble(.) %>%
-        insight::standardize_names(data = ., style = "broom") %>%
+        parameters::standardize_names(data = ., style = "broom") %>%
         dplyr::rename_with(.fn = ~ paste0("r2.", .x), .cols = dplyr::matches("^conf|^comp"))
 
       # for within-subjects design, retain only marginal component

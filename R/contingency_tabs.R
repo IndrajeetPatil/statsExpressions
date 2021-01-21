@@ -42,7 +42,7 @@
 #'
 #' @importFrom BayesFactor contingencyTableBF logMeanExpLogs
 #' @importFrom dplyr pull select rename mutate
-#' @importFrom rlang enquo as_name ensym exec
+#' @importFrom rlang enquo quo_is_null exec !!!
 #' @importFrom tidyr uncount drop_na
 #' @importFrom stats mcnemar.test chisq.test dmultinom rgamma
 #' @importFrom effectsize cramers_v cohens_g

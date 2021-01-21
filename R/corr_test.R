@@ -27,7 +27,6 @@
 #' @importFrom dplyr select rename_all recode pull
 #' @importFrom correlation correlation
 #' @importFrom ipmisc stats_type_switch
-#' @importFrom BayesFactor correlationBF
 #'
 #' @examples
 #' # for reproducibility
@@ -67,12 +66,13 @@ expr_corr_test <- function(data,
   # -------------------------- checking corr.method --------------------------
 
   # see which method was used to specify type of correlation
-  stats_type <- ipmisc::stats_type_switch(type)
+  stats.type <- ipmisc::stats_type_switch(type)
 
   # if any of the abbreviations have been entered, change them
   corr.method <-
     switch(
-      EXPR = stats_type,
+      EXPR = stats.type,
+      "bayes" = ,
       "parametric" = "pearson",
       "nonparametric" = "spearman",
       "robust" = "percentage"
@@ -80,51 +80,44 @@ expr_corr_test <- function(data,
 
   # ----------------- creating correlation dataframes -----------------------
 
-  # for all except `bayes`
-  if (stats_type != "bayes") {
-    # creating a dataframe of results
-    stats_df <-
-      correlation::correlation(
-        data = dplyr::select(.data = data, {{ x }}, {{ y }}),
-        method = corr.method,
-        ci = conf.level
-      ) %>%
-      parameters::standardize_names(data = ., style = "broom") %>%
-      dplyr::mutate(effectsize = method)
+  # creating a dataframe of results
+  stats_df <-
+    correlation::correlation(
+      data = dplyr::select(.data = data, {{ x }}, {{ y }}),
+      method = corr.method,
+      ci = conf.level,
+      bayesian = ifelse(stats.type == "bayes", TRUE, FALSE),
+      bayesian_prior = bf.prior,
+      bayesian_ci_method = "hdi"
+    ) %>%
+    parameters::standardize_names(data = ., style = "broom") %>%
+    dplyr::mutate(effectsize = method)
+
+  # only relevant for Bayesian
+  if (stats.type == "bayes") {
+    stats_df %<>%
+      dplyr::rename("bf10" = "bayes.factor") %>%
+      dplyr::mutate(log_e_bf10 = log(bf10))
   }
 
   # ---------------------- preparing expression -------------------------------
 
   # no. of parameters
-  no.parameters <- ifelse(stats_type %in% c("parametric", "robust"), 1L, 0L)
-  if (stats_type == "nonparametric") stats_df %<>% dplyr::mutate(statistic = log(statistic))
+  no.parameters <- ifelse(stats.type %in% c("parametric", "robust"), 1L, 0L)
+  if (stats.type == "nonparametric") stats_df %<>% dplyr::mutate(statistic = log(statistic))
 
   # preparing expression
-  if (stats_type != "bayes") {
-    expression <-
-      expr_template(
-        no.parameters = no.parameters,
-        stats.df = stats_df,
-        paired = TRUE,
-        n = stats_df$n.obs[[1]],
-        conf.level = conf.level,
-        k = k
-      )
-  }
-
-  # bayes factor results
-  if (stats_type == "bayes") {
-    # extracting results from Bayesian test and creating a dataframe
-    bf_object <-
-      BayesFactor::correlationBF(
-        x = data %>% dplyr::pull({{ x }}),
-        y = data %>% dplyr::pull({{ y }}),
-        rscale = bf.prior
-      )
-
-    # final return
-    expression <- stats_df <- bf_extractor(bf_object, conf.level, k = k, top.text = top.text, output = output)
-  }
+  expression <-
+    expr_template(
+      no.parameters = no.parameters,
+      stats.df = stats_df,
+      paired = TRUE,
+      n = stats_df$n.obs[[1]],
+      conf.level = conf.level,
+      top.text = top.text,
+      k = k,
+      bayesian = ifelse(stats.type == "bayes", TRUE, FALSE)
+    )
 
   # return the output
   switch(output, "dataframe" = as_tibble(stats_df), expression)

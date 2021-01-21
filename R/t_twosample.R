@@ -10,7 +10,7 @@
 #' @inheritParams expr_template
 #'
 #' @importFrom dplyr select rename_all recode mutate
-#' @importFrom rlang !! !!! enquo eval_tidy expr enexpr ensym exec new_formula
+#' @importFrom rlang !!! expr enexpr ensym exec new_formula
 #' @importFrom tidyr drop_na
 #' @importFrom stats t.test  wilcox.test
 #' @importFrom BayesFactor ttestBF
