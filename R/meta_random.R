@@ -88,7 +88,6 @@ expr_meta_random <- function(data,
         yi = estimate,
         sei = std.error,
         data = data,
-        level = conf.level * 100,
         ...
       )
   }
@@ -113,7 +112,7 @@ expr_meta_random <- function(data,
   # clean up
   if (stats.type %in% c("parametric", "robust")) {
     # create a dataframe with coefficients
-    stats_df <- tidy_model_parameters(mod, include_studies = FALSE)
+    stats_df <- tidy_model_parameters(mod, include_studies = FALSE, ci = conf.level)
 
     # informative column
     stats_df %<>% dplyr::mutate(effectsize = "meta-analytic summary estimate")
