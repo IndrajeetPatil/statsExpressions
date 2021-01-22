@@ -104,9 +104,6 @@ expr_meta_random <- function(data,
         random = random,
         ...
       )
-
-    # this level can't be changed for robust one
-    conf.level <- 0.95
   }
 
   # clean up
@@ -114,7 +111,7 @@ expr_meta_random <- function(data,
     # create a dataframe with coefficients
     stats_df <-
       tidy_model_parameters(mod, include_studies = FALSE, ci = conf.level) %>%
-      dplyr::mutate(effectsize = "meta-analytic summary estimate", ci.width = conf.level)
+      dplyr::mutate(effectsize = "meta-analytic summary estimate")
 
     # preparing the subtitle
     subtitle <-

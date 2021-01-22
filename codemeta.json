@@ -251,14 +251,14 @@
       "@type": "SoftwareApplication",
       "identifier": "parameters",
       "name": "parameters",
-      "version": ">= 0.11.0",
+      "version": ">= 0.11.0.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=parameters"
+      "sameAs": "https://github.com/easystats/parameters"
     },
     {
       "@type": "SoftwareApplication",
@@ -338,7 +338,11 @@
     "meta-analysis",
     "statistical-details",
     "contingency-table",
-    "robust"
+    "robust",
+    "bayesian-inference",
+    "bayesian-statistics",
+    "effectsize",
+    "tidy"
   ],
   "developmentStatus": ["https://www.tidyverse.org/lifecycle/", "https://www.repostatus.org/#active"],
   "releaseNotes": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/NEWS.md",
@@ -374,6 +378,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3889.644KB",
+  "fileSize": "3893.197KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

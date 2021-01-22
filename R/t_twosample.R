@@ -266,7 +266,7 @@ expr_t_twosample <- function(data,
   # final returns
   if (stats.type != "bayes") {
     # combining dataframes
-    stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("^est|^eff|conf")), effsize_df)
+    stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("^est|^eff|conf|^ci")), effsize_df)
 
     # expression
     expression <-

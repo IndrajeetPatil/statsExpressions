@@ -34,7 +34,7 @@ Imports:
     metaBMA,
     metafor,
     metaplus,
-    parameters (>= 0.11.0),
+    parameters (>= 0.11.0.1),
     performance,
     rlang,
     stats,
@@ -48,6 +48,8 @@ Suggests:
     spelling,
     testthat,
     utils
+Remotes:
+    easystats/parameters
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

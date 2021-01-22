@@ -118,7 +118,7 @@ expr_t_onesample <- function(data,
         exact = FALSE
       ) %>%
       tidy_model_parameters(.) %>%
-      dplyr::select(-dplyr::matches("^est|^conf|^diff|^term"))
+      dplyr::select(-dplyr::matches("^est|^conf|^diff|^term|^ci"))
 
     # extracting effect size details
     effsize_df <-
