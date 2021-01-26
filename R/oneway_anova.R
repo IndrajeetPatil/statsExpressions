@@ -309,9 +309,6 @@ expr_oneway_anova <- function(data,
 
     # expression details
     c(no.parameters, k.parameter, k.parameter2) %<-% c(2L, ifelse(isTRUE(paired), k, 0L), k)
-
-    # if confidence level is not present
-    if (!"ci.width" %in% names(stats_df)) stats_df %<>% dplyr::mutate(ci.width = conf.level)
   }
 
   # final returns

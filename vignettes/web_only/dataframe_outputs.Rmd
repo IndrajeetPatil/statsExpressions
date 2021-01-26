@@ -38,8 +38,8 @@ Although the primary focus of this package is to get expressions containing
 statistical results, one can also use it to extract dataframes containing these
 details. This vignette catalogs dataframe outputs from all functions.
 
-A dataframe will typically contain the following columns (the exact details
-depend on the test and statistical approach):
+A dataframe will contain the following columns (the exact details depend on the
+test and the statistical approach):
 
   - *statistic*: the numeric value of a statistic.
 

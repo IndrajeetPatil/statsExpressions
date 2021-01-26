@@ -72,7 +72,7 @@ what the \code{n} stands for. If \code{NULL}, defaults to
 repeated measures/within-subjects or between-subjects. The default is
 \code{FALSE}.}
 
-\item{conf.level}{Scalar between 0 and 1. If unspecified, the defaults return
+\item{conf.level}{Scalar between \code{0} and \code{1}. If unspecified, the defaults return
 \verb{95\%} confidence/credible intervals (\code{0.95}).}
 
 \item{centrality}{The point-estimates (centrality indices) to compute.

@@ -57,7 +57,7 @@ bf_extractor <- function(bf.object,
                          output = "dataframe",
                          ...) {
   # basic parameters dataframe
-  df <-
+  stats_df <-
     suppressMessages(parameters::model_parameters(
       model = bf.object,
       ci = conf.level,
@@ -68,15 +68,14 @@ bf_extractor <- function(bf.object,
       ...
     )) %>%
     parameters::standardize_names(data = ., style = "broom") %>%
-    dplyr::mutate(ci.width = attributes(.)$ci) %>%
     dplyr::rename("bf10" = "bayes.factor") %>%
     tidyr::fill(data = ., dplyr::matches("^prior|^bf"), .direction = "updown") %>%
     dplyr::mutate(log_e_bf10 = log(bf10))
 
   # ------------------------ ANOVA designs ------------------------------
 
-  if ("method" %in% names(df)) {
-    if (df$method[[1]] == "Bayes factors for linear models") {
+  if ("method" %in% names(stats_df)) {
+    if (stats_df$method[[1]] == "Bayes factors for linear models") {
       # dataframe with posterior estimates for R-squared
       df_r2 <-
         performance::r2_bayes(bf.object, average = TRUE, ci = conf.level) %>%
@@ -89,13 +88,13 @@ bf_extractor <- function(bf.object,
       if ("r2.component" %in% names(df_r2)) df_r2 %<>% dplyr::filter(r2.component == "conditional")
 
       # combine everything
-      df %<>% dplyr::bind_cols(., df_r2)
+      stats_df %<>% dplyr::bind_cols(., df_r2)
     }
 
     # ------------------------ contingency tabs ------------------------------
 
-    if (df$method[[1]] == "Bayesian contingency tabs analysis") {
-      df %<>% dplyr::filter(grepl("cramer", term, TRUE))
+    if (stats_df$method[[1]] == "Bayesian contingency tabs analysis") {
+      stats_df %<>% dplyr::filter(grepl("cramer", term, TRUE))
     }
   }
 
@@ -103,7 +102,7 @@ bf_extractor <- function(bf.object,
   expression <-
     expr_template(
       top.text = top.text,
-      stats.df = df,
+      stats.df = stats_df,
       centrality = centrality,
       conf.method = conf.method,
       k = k,
@@ -111,5 +110,5 @@ bf_extractor <- function(bf.object,
     )
 
   # return the text results or the dataframe with results
-  switch(output, "dataframe" = as_tibble(df), expression)
+  switch(output, "dataframe" = as_tibble(stats_df), expression)
 }

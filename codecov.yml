@@ -11,7 +11,7 @@ coverage:
     project:
       default:
         target: auto
-        threshold: 1%
+        threshold: 5%
         branches: null
         informational: true
 
@@ -19,13 +19,13 @@ coverage:
       default:
         target: auto
         branches: null
-        threshold: 1%
+        threshold: 5%
         informational: true
 
     changes:
       default:
         branches: null
-        threshold: 1%
+        threshold: 5%
         informational: true
 
 comment:

@@ -26,7 +26,7 @@
 #'   For example, for tests with *t*-statistic, `statistic.text = "t"`.
 #' @param effsize.text A character that specifies the relevant effect size or
 #'   posterior estimate.
-#' @param conf.level Scalar between 0 and 1. If unspecified, the defaults return
+#' @param conf.level Scalar between `0` and `1`. If unspecified, the defaults return
 #'   `95%` confidence/credible intervals (`0.95`).
 #' @param k Number of digits after decimal point (should be an integer)
 #'   (Default: `k = 2L`).
@@ -117,6 +117,7 @@ expr_template <- function(stats.df,
   if (is.null(prior.text) && bayesian) prior.text <- prior_type_switch(stats.df$method[[1]])
   if (is.null(conf.level)) conf.level <- stats.df$ci.width[[1]]
 
+  # TO DO: remove once `eaystats` has implemented this
   if (conf.level > 1) conf.level <- conf.level / 100
 
   # -------------------------- Bayesian analysis ------------------------------

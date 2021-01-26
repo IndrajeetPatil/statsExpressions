@@ -9,7 +9,10 @@ tidy_model_parameters(model, ...)
 \arguments{
 \item{model}{Statistical Model.}
 
-\item{...}{Arguments passed to or from other methods. Non-documented arguments are \code{digits}, \code{p_digits} and \code{ci_digits} to set the number of digits for the output. See 'Examples' in \code{\link[parameters]{model_parameters.default}}.}
+\item{...}{Arguments passed to or from other methods. Non-documented
+arguments are \code{digits}, \code{p_digits} and \code{ci_digits} to set
+the number of digits for the output. See 'Examples' in
+\code{\link[parameters]{model_parameters.default}}.}
 }
 \description{
 Convert \code{parameters} package output to \code{tidyverse} conventions
