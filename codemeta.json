@@ -344,7 +344,7 @@
     "effectsize",
     "tidy"
   ],
-  "developmentStatus": ["https://www.tidyverse.org/lifecycle/", "https://www.repostatus.org/#active"],
+  "developmentStatus": ["https://lifecycle.r-lib.org/articles/stages.html/", "https://www.repostatus.org/#active"],
   "releaseNotes": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/NEWS.md",
   "citation": [
     {
@@ -378,6 +378,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3893.522KB",
+  "fileSize": "3893.489KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

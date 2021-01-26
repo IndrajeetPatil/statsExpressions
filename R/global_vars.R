@@ -25,7 +25,9 @@ utils::globalVariables(
     "estimate.LB",
     "estimate.UB",
     "r2.component",
-    "ci.width"
+    "ci.width",
+    ".fn",
+    ".ns"
   ),
   package = "statsExpressions",
   add = FALSE

@@ -23,7 +23,7 @@
 #' @importFrom metafor rma
 #' @importFrom metaplus metaplus
 #' @importFrom metaBMA meta_random
-#' @importFrom rlang exec !!!
+#' @importFrom rlang exec !!! call2
 #'
 #' @examples
 #' \donttest{
@@ -79,39 +79,27 @@ expr_meta_random <- function(data,
   # check the type of test
   stats.type <- ipmisc::stats_type_switch(type)
 
-  #----------------------- parametric ------------------------------------
+  # additional arguments
+  .f.args <- list(random = random, ...)
 
-  if (stats.type == "parametric") {
-    # object from meta-analysis
-    mod <-
-      metafor::rma(
-        yi = estimate,
-        sei = std.error,
-        data = data,
-        ...
-      )
-  }
-
-  #----------------------- robust ------------------------------------
-
-  if (stats.type == "robust") {
-    # object from meta-analysis
-    mod <-
-      metaplus::metaplus(
-        yi = estimate,
-        sei = std.error,
-        data = data,
-        random = random,
-        ...
-      )
-  }
+  # functions
+  if (stats.type == "parametric") c(.fn, .ns) %<-% c("rma", "metafor")
+  if (stats.type == "robust") c(.fn, .ns) %<-% c("metaplus", "metaplus")
 
   # clean up
   if (stats.type %in% c("parametric", "robust")) {
-    # create a dataframe with coefficients
-    stats_df <-
-      tidy_model_parameters(mod, include_studies = FALSE, ci = conf.level) %>%
-      dplyr::mutate(effectsize = "meta-analytic summary estimate")
+    # create a call and then extract dataframe with coefficients
+    suppressMessages(suppressWarnings(stats_df <-
+      eval(rlang::call2(
+        .fn = .fn,
+        .ns = .ns,
+        yi = quote(estimate),
+        sei = quote(std.error),
+        data = data,
+        !!!.f.args
+      )) %>%
+      tidy_model_parameters(., include_studies = FALSE, ci = conf.level) %>%
+      dplyr::mutate(effectsize = "meta-analytic summary estimate")))
 
     # preparing the subtitle
     subtitle <-
