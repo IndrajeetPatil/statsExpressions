@@ -17,7 +17,6 @@ test_that(
 
     # check bayes factor values
     expect_equal(df$bf10[[1]], 8.990505, tolerance = 0.001)
-    expect_equal(df$log_e_bf10[[1]], 2.196169, tolerance = 0.001)
 
     if (utils::packageVersion("BayesFactor") >= package_version("0.9.12-4.3")) {
       suppressPackageStartupMessages(library(BayesFactor))

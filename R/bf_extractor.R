@@ -58,19 +58,15 @@ bf_extractor <- function(bf.object,
                          ...) {
   # basic parameters dataframe
   stats_df <-
-    suppressMessages(parameters::model_parameters(
+    suppressMessages(tidy_model_parameters(
       model = bf.object,
       ci = conf.level,
       ci_method = conf.method,
       centrality = centrality,
-      verbose = FALSE,
-      include_studies = FALSE,
       ...
     )) %>%
-    parameters::standardize_names(data = ., style = "broom") %>%
     dplyr::rename("bf10" = "bayes.factor") %>%
-    tidyr::fill(data = ., dplyr::matches("^prior|^bf"), .direction = "updown") %>%
-    dplyr::mutate(log_e_bf10 = log(bf10))
+    tidyr::fill(data = ., dplyr::matches("^prior|^bf"), .direction = "updown")
 
   # ------------------------ ANOVA designs ------------------------------
 

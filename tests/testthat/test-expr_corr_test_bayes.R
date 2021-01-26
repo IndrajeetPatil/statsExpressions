@@ -19,7 +19,6 @@ test_that(
 
     # check bayes factor values
     expect_equal(df$bf10, 0.3445379, tolerance = 0.001)
-    expect_equal(df$log_e_bf10, -1.065551, tolerance = 0.001)
 
     set.seed(123)
     subtitle1 <-
@@ -65,7 +64,6 @@ test_that(
 
     # check bayes factor values
     expect_equal(df$bf10, 0.6539296, tolerance = 0.001)
-    expect_equal(df$log_e_bf10, -0.4247555, tolerance = 0.001)
 
     set.seed(123)
     subtitle1 <-

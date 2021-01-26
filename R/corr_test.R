@@ -93,18 +93,12 @@ expr_corr_test <- function(data,
     parameters::standardize_names(data = ., style = "broom") %>%
     dplyr::mutate(effectsize = method, ci.width = attributes(.)$ci)
 
-  # only relevant for Bayesian
-  if (type == "bayes") {
-    stats_df %<>%
-      dplyr::rename("bf10" = "bayes.factor") %>%
-      dplyr::mutate(log_e_bf10 = log(bf10))
-  }
-
   # ---------------------- preparing expression -------------------------------
 
   # no. of parameters
   no.parameters <- ifelse(type %in% c("parametric", "robust"), 1L, 0L)
   if (type == "nonparametric") stats_df %<>% dplyr::mutate(statistic = log(statistic))
+  if (type == "bayes") stats_df %<>% dplyr::rename("bf10" = "bayes.factor")
 
   # preparing expression
   expression <-

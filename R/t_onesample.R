@@ -181,7 +181,7 @@ expr_t_onesample <- function(data,
 #' @importFrom WRS2 trimse
 #' @noRd
 
-trimcibt <- function(x, tr = 0.2, nboot = 200, nv = 0, alpha = 0.05, ...) {
+trimcibt <- function(x, tr = 0.2, nboot = 100, nv = 0, alpha = 0.05, ...) {
   test <- (mean(x, tr) - nv) / WRS2::trimse(x, tr)
   data <- matrix(sample(x, size = length(x) * nboot, replace = TRUE), nrow = nboot) - mean(x, tr)
   tval <- sort(abs(apply(data, 1, mean, tr) / apply(data, 1, WRS2::trimse, tr)))

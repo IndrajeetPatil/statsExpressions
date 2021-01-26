@@ -218,9 +218,7 @@ expr_contingency_tab <- function(data,
         stats::dmultinom(as.matrix(xtab), prob = ratio, log = TRUE)
 
       # computing Bayes Factor and formatting the results
-      stats_df <-
-        tibble(bf10 = exp(bf)) %>%
-        dplyr::mutate(log_e_bf10 = log(bf10), prior.scale = prior.concentration)
+      stats_df <- tibble(bf10 = exp(bf), prior.scale = prior.concentration)
 
       # final expression
       expression <-
@@ -234,8 +232,8 @@ expr_contingency_tab <- function(data,
           ),
           env = list(
             top.text = top.text,
-            bf = format_num(-log(stats_df$bf10[[1]]), k = k),
-            a = format_num(stats_df$prior.scale[[1]], k = k)
+            bf = format_num(-log(stats_df$bf10[[1]]), k),
+            a = format_num(stats_df$prior.scale[[1]], k)
           )
         )
 

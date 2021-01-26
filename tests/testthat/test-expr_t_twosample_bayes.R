@@ -19,7 +19,7 @@ test_that(
     # check bayes factor values
     expect_type(df, "list")
     expect_identical(class(df), c("tbl_df", "tbl", "data.frame"))
-    expect_equal(df$log_e_bf10[[1]], -0.001119132, tolerance = 0.001)
+    expect_equal(df$bf10[[1]], 0.9988815, tolerance = 0.001)
 
     # expression
     set.seed(123)
@@ -78,7 +78,6 @@ test_that(
 
     # check bayes factor values
     expect_equal(df_results$bf10[[1]], 40.36079, tolerance = 0.001)
-    expect_equal(df_results$log_e_bf10[[1]], 3.697859, tolerance = 0.001)
 
     # expression
     set.seed(123)

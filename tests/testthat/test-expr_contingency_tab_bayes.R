@@ -18,7 +18,6 @@ test_that(
 
     # check bayes factor values
     expect_equal(df$bf10, 0.2465787, tolerance = 0.001)
-    expect_equal(df$log_e_bf10, -1.400074, tolerance = 0.001)
 
     # expr
     set.seed(123)
@@ -73,7 +72,6 @@ test_that(
 
     # check bayes factor values
     expect_equal(df_results$bf10[[1]], 28.07349, tolerance = 0.001)
-    expect_equal(df_results$log_e_bf10[[1]], 3.334826, tolerance = 0.001)
 
     # expr
     set.seed(123)

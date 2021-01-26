@@ -118,6 +118,9 @@ expr_template <- function(stats.df,
   if (is.null(prior.text) && bayesian) prior.text <- prior_type_switch(stats.df$method[[1]])
   if (is.null(conf.level)) conf.level <- stats.df$ci.width[[1]]
 
+  # TO DO: remove once `eaystats` has implemented this
+  if (conf.level > 1) conf.level <- conf.level / 100
+
   # -------------------------- Bayesian analysis ------------------------------
 
   if (isTRUE(bayesian)) {
