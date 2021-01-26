@@ -83,14 +83,14 @@ expr_t_onesample <- function(data,
                              output = "expression",
                              ...) {
   # standardize the type of statistics
-  stats.type <- ipmisc::stats_type_switch(type)
+  type <- ipmisc::stats_type_switch(type)
 
   # preparing the vector
   x_vec <- stats::na.omit(data %>% dplyr::pull({{ x }}))
 
   # ----------------------- parametric ---------------------------------------
 
-  if (stats.type == "parametric") {
+  if (type == "parametric") {
     # preparing expression parameters
     no.parameters <- 1L
     .f <- stats::t.test
@@ -100,14 +100,14 @@ expr_t_onesample <- function(data,
 
   # ----------------------- non-parametric ---------------------------------------
 
-  if (stats.type == "nonparametric") {
+  if (type == "nonparametric") {
     # preparing expression parameters
     no.parameters <- 0L
     c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
   }
 
   # preparing expression
-  if (stats.type %in% c("parametric", "nonparametric")) {
+  if (type %in% c("parametric", "nonparametric")) {
     # extracting test details
     stats_df <-
       rlang::exec(
@@ -131,7 +131,7 @@ expr_t_onesample <- function(data,
       tidy_model_effectsize(.)
 
     # these can be really big values
-    if (stats.type == "nonparametric") stats_df %<>% dplyr::mutate(statistic = log(statistic))
+    if (type == "nonparametric") stats_df %<>% dplyr::mutate(statistic = log(statistic))
 
     # dataframe
     stats_df <- dplyr::bind_cols(stats_df, effsize_df)
@@ -139,7 +139,7 @@ expr_t_onesample <- function(data,
 
   # ----------------------- robust ---------------------------------------
 
-  if (stats.type == "robust") {
+  if (type == "robust") {
     # bootstrap-t method for one-sample test
     no.parameters <- 0L
     stats_df <-
@@ -153,7 +153,7 @@ expr_t_onesample <- function(data,
   }
 
   # expression
-  if (stats.type != "bayes") {
+  if (type != "bayes") {
     expression <-
       expr_template(
         no.parameters = no.parameters,
@@ -166,7 +166,7 @@ expr_t_onesample <- function(data,
   # ----------------------- Bayesian ---------------------------------------
 
   # running Bayesian one-sample t-test
-  if (stats.type == "bayes") {
+  if (type == "bayes") {
     bf_object <- BayesFactor::ttestBF(x_vec, rscale = bf.prior, mu = test.value)
 
     # final return

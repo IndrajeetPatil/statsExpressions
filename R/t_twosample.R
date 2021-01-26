@@ -140,13 +140,13 @@ expr_t_twosample <- function(data,
                              output = "expression",
                              ...) {
   # standardize the type of statistics
-  stats.type <- ipmisc::stats_type_switch(type)
+  type <- ipmisc::stats_type_switch(type)
 
   # make sure both quoted and unquoted arguments are supported
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
   # whether to switch from long to wide depends on the test
-  spread <- ifelse(stats.type %in% c("bayes", "robust"), paired, FALSE)
+  spread <- ifelse(type %in% c("bayes", "robust"), paired, FALSE)
 
   # properly removing NAs if it's a paired design
   data %<>%
@@ -161,7 +161,7 @@ expr_t_twosample <- function(data,
 
   # ----------------------- parametric ---------------------------------------
 
-  if (stats.type == "parametric") {
+  if (type == "parametric") {
     # preparing expression parameters
     no.parameters <- 1L
     .f <- stats::t.test
@@ -172,14 +172,14 @@ expr_t_twosample <- function(data,
 
   # ----------------------- non-parametric ------------------------------------
 
-  if (stats.type == "nonparametric") {
+  if (type == "nonparametric") {
     # preparing expression parameters
     no.parameters <- 0L
     c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
   }
 
   # preparing expression
-  if (stats.type %in% c("parametric", "nonparametric")) {
+  if (type %in% c("parametric", "nonparametric")) {
     # extracting test details
     stats_df <-
       rlang::exec(
@@ -206,12 +206,12 @@ expr_t_twosample <- function(data,
       tidy_model_effectsize(.)
 
     # these can be really big values
-    if (stats.type == "nonparametric") stats_df %<>% dplyr::mutate(statistic = log(statistic))
+    if (type == "nonparametric") stats_df %<>% dplyr::mutate(statistic = log(statistic))
   }
 
   # ----------------------- robust ---------------------------------------
 
-  if (stats.type == "robust") {
+  if (type == "robust") {
     # expression parameters
     c(no.parameters, k.parameter) %<-% c(1L, k)
 
@@ -264,7 +264,7 @@ expr_t_twosample <- function(data,
   }
 
   # final returns
-  if (stats.type != "bayes") {
+  if (type != "bayes") {
     # combining dataframes
     stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("^est|^eff|conf|^ci")), effsize_df)
 
@@ -283,7 +283,7 @@ expr_t_twosample <- function(data,
   # ----------------------- Bayesian ---------------------------------------
 
   # running Bayesian t-test
-  if (stats.type == "bayes") {
+  if (type == "bayes") {
     if (!paired) .f.args <- list(formula = new_formula(y, x), rscale = bf.prior, paired = paired)
     if (paired) .f.args <- list(x = data[[2]], y = data[[3]], rscale = bf.prior, paired = paired)
 

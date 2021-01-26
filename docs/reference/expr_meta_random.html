@@ -154,10 +154,10 @@
     <pre class="usage"><span class='fu'>expr_meta_random</span><span class='op'>(</span>
   <span class='va'>data</span>,
   type <span class='op'>=</span> <span class='st'>"parametric"</span>,
-  metaBMA.args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
   random <span class='op'>=</span> <span class='st'>"mixture"</span>,
   k <span class='op'>=</span> <span class='fl'>2L</span>,
   conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
+  top.text <span class='op'>=</span> <span class='cn'>NULL</span>,
   output <span class='op'>=</span> <span class='st'>"expression"</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
@@ -180,11 +180,6 @@ or <code>"robust"</code> or <code>"bayes"</code>).Corresponding abbreviations ar
 <code>"bf"</code>resp.</p></td>
     </tr>
     <tr>
-      <th>metaBMA.args</th>
-      <td><p>A list of additional arguments to be passed to
-<code><a href='https://rdrr.io/pkg/metaBMA/man/meta_random.html'>metaBMA::meta_random</a></code>.</p></td>
-    </tr>
-    <tr>
       <th>random</th>
       <td><p>The type of random effects distribution. One of "normal","t-dist","mixture", for standard normal, \(t\)-distribution or mixture of normals respectively.</p></td>
     </tr>
@@ -197,6 +192,11 @@ or <code>"robust"</code> or <code>"bayes"</code>).Corresponding abbreviations ar
       <th>conf.level</th>
       <td><p>Scalar between <code>0</code> and <code>1</code>. If unspecified, the defaults return
 <code>95%</code> confidence/credible intervals (<code>0.95</code>).</p></td>
+    </tr>
+    <tr>
+      <th>top.text</th>
+      <td><p>Text to display on top of the Bayes Factor message. This is
+mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
     </tr>
     <tr>
       <th>output</th>
@@ -256,19 +256,17 @@ function.</p></td>
 #&gt; </span><span style='color: #555555;'>1</span><span>     </span><span style='color: #555555;'>0.</span><span>95 Robust meta-analysis using 'metaplus' meta-analytic summary estimate</div><div class='input'>
 <span class='co'># ----------------------- Bayes Factor -----------------------------------</span>
 
-<span class='co'># making subtitle</span>
+<span class='co'># making expression</span>
 <span class='fu'>expr_meta_random</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>df</span>,
   type <span class='op'>=</span> <span class='st'>"bayes"</span>,
   k <span class='op'>=</span> <span class='fl'>3</span>,
   <span class='co'># additional arguments given to `metaBMA`</span>
-  metaBMA.args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-    iter <span class='op'>=</span> <span class='fl'>5000</span>,
-    summarize <span class='op'>=</span> <span class='st'>"integrate"</span>,
-    control <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>adapt_delta <span class='op'>=</span> <span class='fl'>0.99</span>, max_treedepth <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span>
-  <span class='op'>)</span>
+  iter <span class='op'>=</span> <span class='fl'>5000</span>,
+  summarize <span class='op'>=</span> <span class='st'>"integrate"</span>,
+  control <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>adapt_delta <span class='op'>=</span> <span class='fl'>0.99</span>, max_treedepth <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Could not get model data.</span></div><div class='output co'>#&gt; paste("log"["e"] * "(BF"["01"] * ") = " * "-3.970" * ", ", widehat(italic(delta))["mean"]^"posterior" * 
+</div><div class='output co'>#&gt; paste("log"["e"] * "(BF"["01"] * ") = " * "-3.970" * ", ", widehat(italic(delta))["mean"]^"posterior" * 
 #&gt;     " = " * "-0.650" * ", ", "CI"["95%"]^"HDI" * " [" * "-1.100" * 
 #&gt;     ", " * "-0.235" * "], ", italic("r")["Cauchy"]^"JZS" * " = " * 
 #&gt;     "0.707")</div><div class='input'><span class='co'># }</span>

@@ -108,6 +108,7 @@ expr_template <- function(stats.df,
 
   # if not present, create a new column for Bayesian analysis
   if (!"effectsize" %in% names(stats.df) && bayesian) stats.df %<>% dplyr::mutate(effectsize = method)
+  if ("bayes.factor" %in% names(stats.df)) stats.df %<>% dplyr::rename("bf10" = "bayes.factor")
 
   # if expression text elements are `NULL`
   if (isTRUE(paired) && is.null(n.text)) n.text <- quote(italic("n")["pairs"])
@@ -116,9 +117,6 @@ expr_template <- function(stats.df,
   if (is.null(effsize.text)) effsize.text <- estimate_type_switch(stats.df$effectsize[[1]])
   if (is.null(prior.text) && bayesian) prior.text <- prior_type_switch(stats.df$method[[1]])
   if (is.null(conf.level)) conf.level <- stats.df$ci.width[[1]]
-
-  # TO DO: remove once `eaystats` has implemented this
-  if (conf.level > 1) conf.level <- conf.level / 100
 
   # -------------------------- Bayesian analysis ------------------------------
 
@@ -363,7 +361,7 @@ estimate_type_switch <- function(method) {
     "meta-analytic summary estimate" = quote(widehat(beta)["summary"]^"meta"),
     "Bayesian contingency tabs analysis" = quote(italic("V")),
     "Bayesian Pearson" = quote(rho),
-    "Bayesian meta-analysis using 'metaBMA'" = ,
+    "meta-analytic posterior estimate" = ,
     "Bayesian t-test" = quote(italic(delta)),
     "Bayes factors for linear models" = quote(italic(R^"2")),
     NULL
