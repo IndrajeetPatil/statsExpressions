@@ -4,7 +4,6 @@ test_that(
   desc = "bayes factor (independent samples t-test)",
   code = {
     skip_if(getRversion() < "4.0")
-    skip_on_cran()
 
     # from Bayes Factor
     df <- suppressMessages(bf_extractor(
@@ -54,7 +53,6 @@ test_that(
   desc = "bayes factor (paired t-test)",
   code = {
     skip_if(getRversion() < "3.6")
-    skip_on_cran()
 
     # data
     dat <- tidyr::spread(bugs_long, condition, desire) %>%

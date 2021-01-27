@@ -7,12 +7,14 @@ MAJOR CHANGES
 
   - Retires the additional caption-making functionality that was unique to
     `expr_meta_random` when `type = "parametric"`. This was the only context in
-    which this feature was supported and was therefore inconsistent.
+    which this feature was supported and was therefore inconsistent with the
+    rest of the package API.
 
   - Removes `tidy_model_performance` function, which is no longer used
     internally.
-    
-  - Removes `log` values of columns as they are relevant only for expressions.
+
+  - Removes column containing `log` values of Bayes Factor as they are relevant
+    only for expressions.
 
 # statsExpressions 0.7.0
 

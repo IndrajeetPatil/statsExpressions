@@ -4,7 +4,6 @@ test_that(
   desc = "bayes factor (proportion test)",
   code = {
     skip_if(getRversion() < "3.6")
-    skip_on_cran()
 
     # extracting results from where this function is implemented
     set.seed(123)
@@ -52,7 +51,6 @@ test_that(
   desc = "bayes factor (contingency tab)",
   code = {
     skip_if(getRversion() < "3.6")
-    skip_on_cran()
 
     # extracting results from where this function is implemented
     set.seed(123)
