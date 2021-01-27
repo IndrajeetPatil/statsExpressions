@@ -4,12 +4,6 @@
 #' @param bf.object An object from `BayesFactor` package.
 #' @param conf.level Confidence/Credible Interval (CI) level. Default to `0.95`
 #'   (`95%`).
-#' @param centrality The point-estimates (centrality indices) to compute.
-#'   Character (vector) or list with one or more of these options: `"median"`,
-#'   `"mean"`, `"MAP"` or `"all"`.
-#' @param conf.method The type of index used for Credible Interval. Can be
-#'   `"hdi"` (default), `"eti"`, or `"si"` (see `si()`, `hdi()`, `eti()`
-#'   functions from `bayestestR` package).
 #' @param k Number of digits after decimal point (should be an integer)
 #'   (Default: `k = 2L`).
 #' @param top.text Text to display on top of the Bayes Factor message. This is
@@ -50,21 +44,13 @@
 # function body
 bf_extractor <- function(bf.object,
                          conf.level = 0.95,
-                         centrality = "median",
-                         conf.method = "hdi",
                          k = 2L,
                          top.text = NULL,
                          output = "dataframe",
                          ...) {
   # basic parameters dataframe
   stats_df <-
-    suppressMessages(tidy_model_parameters(
-      model = bf.object,
-      ci = conf.level,
-      ci_method = conf.method,
-      centrality = centrality,
-      ...
-    )) %>%
+    suppressMessages(tidy_model_parameters(bf.object, ci = conf.level, ...)) %>%
     dplyr::rename("bf10" = "bayes.factor") %>%
     tidyr::fill(data = ., dplyr::matches("^prior|^bf"), .direction = "updown")
 
@@ -99,8 +85,6 @@ bf_extractor <- function(bf.object,
     expr_template(
       top.text = top.text,
       stats.df = stats_df,
-      centrality = centrality,
-      conf.method = conf.method,
       k = k,
       bayesian = TRUE
     )

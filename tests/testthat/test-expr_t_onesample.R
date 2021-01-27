@@ -295,7 +295,6 @@ test_that(
   desc = "expr_t_onesample bayes factor works",
   code = {
     skip_if(getRversion() < "4.0")
-    skip_on_cran()
 
     # extracting results from where this function is implemented
     set.seed(123)

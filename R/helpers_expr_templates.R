@@ -41,6 +41,12 @@
 #' @param effsize.text A character that specifies the relevant effect size.
 #' @param bayesian Is this Bayesian analysis? Defaults to `FALSE`. The template
 #'   is slightly different for Bayesian analysis.
+#' @param centrality The point-estimates (centrality indices) to compute.
+#'   Character (vector) or list with one or more of these options: `"median"`,
+#'   `"mean"`, `"MAP"` or `"all"`.
+#' @param conf.method The type of index used for Credible Interval. Can be
+#'   `"hdi"` (default), `"eti"`, or `"si"` (see `si()`, `hdi()`, `eti()`
+#'   functions from `bayestestR` package).
 #' @param ... Currently ignored.
 #' @inheritParams bf_extractor
 #' @inheritParams expr_oneway_anova

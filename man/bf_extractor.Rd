@@ -7,8 +7,6 @@
 bf_extractor(
   bf.object,
   conf.level = 0.95,
-  centrality = "median",
-  conf.method = "hdi",
   k = 2L,
   top.text = NULL,
   output = "dataframe",
@@ -20,14 +18,6 @@ bf_extractor(
 
 \item{conf.level}{Confidence/Credible Interval (CI) level. Default to \code{0.95}
 (\verb{95\%}).}
-
-\item{centrality}{The point-estimates (centrality indices) to compute.
-Character (vector) or list with one or more of these options: \code{"median"},
-\code{"mean"}, \code{"MAP"} or \code{"all"}.}
-
-\item{conf.method}{The type of index used for Credible Interval. Can be
-\code{"hdi"} (default), \code{"eti"}, or \code{"si"} (see \code{si()}, \code{hdi()}, \code{eti()}
-functions from \code{bayestestR} package).}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2L}).}

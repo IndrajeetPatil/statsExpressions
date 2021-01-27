@@ -4,8 +4,6 @@
 test_that(
   desc = "expr_corr_test works in loop",
   code = {
-    skip_on_cran()
-
     col.name <- colnames(mtcars)
 
     set.seed(123)
@@ -28,8 +26,6 @@ test_that(
 test_that(
   desc = "expr_contingency_tab works in loop",
   code = {
-    skip_on_cran()
-
     df <- dplyr::select(mtcars, am, cyl, vs)
     col.name <- colnames(df)
 
@@ -52,7 +48,6 @@ test_that(
 test_that(
   desc = "expr_ttest works in loop",
   code = {
-    skip_on_cran()
 
     # working with loops
     df <- dplyr::select(mtcars, am, wt, mpg)

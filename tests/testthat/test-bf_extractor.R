@@ -4,7 +4,6 @@ test_that(
   desc = "bayes factor (correlation)",
   code = {
     skip_if(getRversion() < "3.6")
-    skip_on_cran()
 
     # creating a dataframe
     set.seed(123)
@@ -12,11 +11,15 @@ test_that(
       BayesFactor::correlationBF(
         x = ggplot2::msleep$brainwt,
         y = ggplot2::msleep$sleep_total
-      )
+      ),
+      # additional arguments are being read
+      ci_method = "eti",
+      centrality = "mean"
     ))
 
     # check bayes factor values
     expect_equal(df$bf10[[1]], 8.990505, tolerance = 0.001)
+    expect_equal(df$estimate[[1]], -0.3230473, tolerance = 0.001)
 
     if (utils::packageVersion("BayesFactor") >= package_version("0.9.12-4.3")) {
       suppressPackageStartupMessages(library(BayesFactor))
