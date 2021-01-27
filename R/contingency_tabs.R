@@ -112,7 +112,7 @@ expr_contingency_tab <- function(data,
                                  ...) {
 
   # check the data contains needed column
-  stats.type <- ipmisc::stats_type_switch(type)
+  type <- ipmisc::stats_type_switch(type)
 
   # one-way or two-way table?
   test <- ifelse(!rlang::quo_is_null(rlang::enquo(y)), "two.way", "one.way")
@@ -131,7 +131,7 @@ expr_contingency_tab <- function(data,
 
   # ----------------------- non-Bayesian ---------------------------------------
 
-  if (stats.type != "bayes") {
+  if (type != "bayes") {
     # default functions for analysis (only change for McNemar's test)
     c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::cramers_v)
 
@@ -178,7 +178,7 @@ expr_contingency_tab <- function(data,
 
   # ----------------------- Bayesian ---------------------------------------
 
-  if (stats.type == "bayes") {
+  if (type == "bayes") {
     if (test == "two.way") {
       # Bayes Factor object
       bf_object <-
@@ -218,9 +218,7 @@ expr_contingency_tab <- function(data,
         stats::dmultinom(as.matrix(xtab), prob = ratio, log = TRUE)
 
       # computing Bayes Factor and formatting the results
-      stats_df <-
-        tibble(bf10 = exp(bf)) %>%
-        dplyr::mutate(log_e_bf10 = log(bf10), prior.scale = prior.concentration)
+      stats_df <- tibble(bf10 = exp(bf), prior.scale = prior.concentration)
 
       # final expression
       expression <-
@@ -234,8 +232,8 @@ expr_contingency_tab <- function(data,
           ),
           env = list(
             top.text = top.text,
-            bf = format_num(-log(stats_df$bf10[[1]]), k = k),
-            a = format_num(stats_df$prior.scale[[1]], k = k)
+            bf = format_num(-log(stats_df$bf10[[1]]), k),
+            a = format_num(stats_df$prior.scale[[1]], k)
           )
         )
 

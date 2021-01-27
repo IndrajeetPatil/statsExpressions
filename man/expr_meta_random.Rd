@@ -7,10 +7,10 @@
 expr_meta_random(
   data,
   type = "parametric",
-  metaBMA.args = list(),
   random = "mixture",
   k = 2L,
   conf.level = 0.95,
+  top.text = NULL,
   output = "expression",
   ...
 )
@@ -26,9 +26,6 @@ or \code{"robust"} or \code{"bayes"}).Corresponding abbreviations are also accep
 \code{"p"} (for parametric), \code{"np"} (nonparametric), \code{"r"} (robust), or
 \code{"bf"}resp.}
 
-\item{metaBMA.args}{A list of additional arguments to be passed to
-\code{metaBMA::meta_random}.}
-
 \item{random}{
 The type of random effects distribution. One of "normal","t-dist","mixture", for standard normal, \eqn{t}-distribution or mixture of normals respectively.
 }
@@ -38,6 +35,9 @@ The type of random effects distribution. One of "normal","t-dist","mixture", for
 
 \item{conf.level}{Scalar between \code{0} and \code{1}. If unspecified, the defaults return
 \verb{95\%} confidence/credible intervals (\code{0.95}).}
+
+\item{top.text}{Text to display on top of the Bayes Factor message. This is
+mostly relevant in the context of \code{ggstatsplot} functions.}
 
 \item{output}{If \code{"expression"}, will return expression with statistical
 details, while \code{"dataframe"} will return a dataframe containing the
@@ -84,17 +84,15 @@ expr_meta_random(
 
 # ----------------------- Bayes Factor -----------------------------------
 
-# making subtitle
+# making expression
 expr_meta_random(
   data = df,
   type = "bayes",
   k = 3,
   # additional arguments given to `metaBMA`
-  metaBMA.args = list(
-    iter = 5000,
-    summarize = "integrate",
-    control = list(adapt_delta = 0.99, max_treedepth = 15)
-  )
+  iter = 5000,
+  summarize = "integrate",
+  control = list(adapt_delta = 0.99, max_treedepth = 15)
 )
 }
 }

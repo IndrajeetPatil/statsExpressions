@@ -11,6 +11,8 @@ MAJOR CHANGES
 
   - Removes `tidy_model_performance` function, which is no longer used
     internally.
+    
+  - Removes `log` values of columns as they are relevant only for expressions.
 
 # statsExpressions 0.7.0
 

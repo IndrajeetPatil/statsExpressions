@@ -33,7 +33,6 @@ test_that(
 
     # check bayes factor values
     expect_equal(df_results$bf10[[1]], 0.1177186, tolerance = 0.001)
-    expect_equal(df_results$log_e_bf10[[1]], -2.139458, tolerance = 0.001)
 
     # call
     expect_identical(
@@ -135,7 +134,6 @@ test_that(
 
       # check bayes factor values
       expect_equal(df_results$bf10[[1]], 6.364917, tolerance = 0.001)
-      expect_equal(df_results$log_e_bf10[[1]], 1.850801, tolerance = 0.001)
 
       # extracting expression
       set.seed(123)

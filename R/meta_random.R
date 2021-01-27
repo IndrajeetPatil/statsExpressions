@@ -6,8 +6,6 @@
 #'   two columns will be used for `yi`  and `sei` arguments in `metafor::rma`
 #'   (for parametric analysis) or `metaplus::metaplus` (for robust analysis).
 #' @inheritParams expr_t_onesample
-#' @param metaBMA.args A list of additional arguments to be passed to
-#'   `metaBMA::meta_random`.
 #' @inheritParams metaplus::metaplus
 #' @inheritParams expr_oneway_anova
 #' @param ... Additional arguments passed to the respective meta-analysis
@@ -23,7 +21,7 @@
 #' @importFrom metafor rma
 #' @importFrom metaplus metaplus
 #' @importFrom metaBMA meta_random
-#' @importFrom rlang exec !!!
+#' @importFrom rlang exec !!! call2
 #'
 #' @examples
 #' \donttest{
@@ -52,17 +50,15 @@
 #'
 #' # ----------------------- Bayes Factor -----------------------------------
 #'
-#' # making subtitle
+#' # making expression
 #' expr_meta_random(
 #'   data = df,
 #'   type = "bayes",
 #'   k = 3,
 #'   # additional arguments given to `metaBMA`
-#'   metaBMA.args = list(
-#'     iter = 5000,
-#'     summarize = "integrate",
-#'     control = list(adapt_delta = 0.99, max_treedepth = 15)
-#'   )
+#'   iter = 5000,
+#'   summarize = "integrate",
+#'   control = list(adapt_delta = 0.99, max_treedepth = 15)
 #' )
 #' }
 #' @export
@@ -70,76 +66,54 @@
 # function body
 expr_meta_random <- function(data,
                              type = "parametric",
-                             metaBMA.args = list(),
                              random = "mixture",
                              k = 2L,
                              conf.level = 0.95,
+                             top.text = NULL,
                              output = "expression",
                              ...) {
   # check the type of test
-  stats.type <- ipmisc::stats_type_switch(type)
+  type <- ipmisc::stats_type_switch(type)
 
-  #----------------------- parametric ------------------------------------
-
-  if (stats.type == "parametric") {
-    # object from meta-analysis
-    mod <-
-      metafor::rma(
-        yi = estimate,
-        sei = std.error,
-        data = data,
-        ...
-      )
+  # additional arguments
+  if (type != "bayes") {
+    .f.args <- list(random = random, yi = quote(estimate), sei = quote(std.error), ...)
+  } else {
+    .f.args <- list(y = quote(estimate), SE = quote(std.error), ...)
   }
 
-  #----------------------- robust ------------------------------------
+  # functions
+  if (type == "parametric") c(.ns, .fn) %<-% c("metafor", "rma")
+  if (type == "robust") c(.ns, .fn) %<-% c("metaplus", "metaplus")
+  if (type == "bayes") c(.ns, .fn) %<-% c("metaBMA", "meta_random")
 
-  if (stats.type == "robust") {
-    # object from meta-analysis
-    mod <-
-      metaplus::metaplus(
-        yi = estimate,
-        sei = std.error,
-        data = data,
-        random = random,
-        ...
-      )
-  }
+  # create a call and then extract dataframe with coefficients
+  suppressMessages(suppressWarnings(stats_df <-
+    eval(rlang::call2(
+      .fn = .fn,
+      .ns = .ns,
+      data = data,
+      !!!.f.args
+    )) %>%
+    tidy_model_parameters(., include_studies = FALSE, ci = conf.level)))
 
-  # clean up
-  if (stats.type %in% c("parametric", "robust")) {
-    # create a dataframe with coefficients
-    stats_df <-
-      tidy_model_parameters(mod, include_studies = FALSE, ci = conf.level) %>%
-      dplyr::mutate(effectsize = "meta-analytic summary estimate")
+  # new column
+  if (type != "bayes") stats_df %<>% dplyr::mutate(effectsize = "meta-analytic summary estimate")
+  if (type == "bayes") stats_df %<>% dplyr::mutate(effectsize = "meta-analytic posterior estimate")
 
-    # preparing the subtitle
-    subtitle <-
-      expr_template(
-        stats.df = stats_df,
-        n = nrow(data),
-        n.text = quote(italic("n")["effects"]),
-        no.parameters = 0L,
-        k = k
-      )
-  }
-
-  #---------------------------- Bayes Factor ---------------------------------
-
-  if (stats.type == "bayes") {
-    # extracting results from random-effects meta-analysis
-    bf_object <-
-      rlang::exec(
-        .fn = metaBMA::meta_random,
-        y = data$estimate,
-        SE = data$std.error,
-        !!!metaBMA.args
-      )
-
-    # final return
-    subtitle <- stats_df <- bf_extractor(bf_object, conf.level, k = k, centrality = "mean", output = output)
-  }
+  # preparing the expression
+  expression <-
+    expr_template(
+      stats.df = stats_df,
+      n = nrow(data),
+      n.text = quote(italic("n")["effects"]),
+      no.parameters = 0L,
+      k = k,
+      top.text = top.text,
+      centrality = "mean",
+      bayesian = ifelse(type == "bayes", TRUE, FALSE)
+    )
 
   # what needs to be returned?
-  switch(output, "dataframe" = as_tibble(stats_df), subtitle)
+  switch(output, "dataframe" = as_tibble(stats_df), expression)
 }

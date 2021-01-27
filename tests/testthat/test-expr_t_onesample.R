@@ -312,7 +312,6 @@ test_that(
 
     # check Bayes factor values
     expect_equal(df_results$bf10[[1]], 5.958171e+20, tolerance = 0.001)
-    expect_equal(df_results$log_e_bf10[[1]], 47.83647, tolerance = 0.001)
 
     # extracting subtitle (without NA)
     set.seed(123)

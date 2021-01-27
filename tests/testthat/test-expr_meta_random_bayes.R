@@ -41,7 +41,8 @@ test_that(
         type = "bayes",
         data = df1,
         k = 3,
-        metaBMA.args = list(iter = 1000, summarize = "integrate"),
+        iter = 1000,
+        summarize = "integrate",
         output = "expression"
       ))
 
@@ -51,7 +52,8 @@ test_that(
         type = "bayes",
         data = df1,
         k = 3,
-        metaBMA.args = list(iter = 1000, summarize = "integrate"),
+        iter = 1000,
+        summarize = "integrate",
         output = "dataframe",
         top.text = "ayyo"
       ))

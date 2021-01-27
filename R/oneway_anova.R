@@ -155,7 +155,7 @@ expr_oneway_anova <- function(data,
                               ...) {
 
   # standardize the type of statistics
-  stats.type <- ipmisc::stats_type_switch(type)
+  type <- ipmisc::stats_type_switch(type)
 
   # make sure both quoted and unquoted arguments are supported
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
@@ -174,7 +174,7 @@ expr_oneway_anova <- function(data,
 
   # ----------------------- parametric ---------------------------------------
 
-  if (stats.type == "parametric") {
+  if (type == "parametric") {
     # which effect size?
     if (effsize.type %in% c("unbiased", "omega")) .f.es <- effectsize::omega_squared
     if (effsize.type %in% c("biased", "eta")) .f.es <- effectsize::eta_squared
@@ -223,7 +223,7 @@ expr_oneway_anova <- function(data,
 
   # ----------------------- non-parametric ------------------------------------
 
-  if (stats.type == "nonparametric") {
+  if (type == "nonparametric") {
     # Friedman test
     if (isTRUE(paired)) {
       c(.f, .f.es) %<-% c(stats::friedman.test, effectsize::kendalls_w)
@@ -268,7 +268,7 @@ expr_oneway_anova <- function(data,
 
   # ----------------------- robust ---------------------------------------
 
-  if (stats.type == "robust") {
+  if (type == "robust") {
     # heteroscedastic one-way repeated measures ANOVA for trimmed means
     if (isTRUE(paired)) {
       # test
@@ -299,7 +299,7 @@ expr_oneway_anova <- function(data,
     # for paired designs, WRS2 currently doesn't return effect size
     if (isTRUE(paired)) {
       effsize_df <-
-        long_to_wide_converter(data, {{ x }}, {{ y }}, paired = TRUE, spread = TRUE) %>%
+        ipmisc::long_to_wide_converter(data, {{ x }}, {{ y }}, paired = TRUE, spread = TRUE) %>%
         wAKPavg(dplyr::select(-rowid), tr = tr, nboot = nboot) %>%
         dplyr::mutate(effectsize = "Algina-Keselman-Penfield robust standardized difference average")
 
@@ -312,7 +312,7 @@ expr_oneway_anova <- function(data,
   }
 
   # final returns
-  if (stats.type != "bayes") {
+  if (type != "bayes") {
     expression <-
       expr_template(
         no.parameters = no.parameters,
@@ -328,7 +328,7 @@ expr_oneway_anova <- function(data,
   # ----------------------- Bayesian ---------------------------------------
 
   # running Bayesian t-test
-  if (stats.type == "bayes") {
+  if (type == "bayes") {
     if (!paired) .f.args <- list(formula = new_formula(y, x), rscaleFixed = bf.prior)
     if (paired) {
       .f.args <- list(
