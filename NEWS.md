@@ -1,4 +1,4 @@
-# statsExpressions 0.7.0.9000
+# statsExpressions 0.7.1
 
 MAJOR CHANGES
 
@@ -15,6 +15,9 @@ MAJOR CHANGES
 
   - Removes column containing `log` values of Bayes Factor as they are relevant
     only for expressions.
+
+  - All meta-analysis packages move from `Imports` to `Suggests` to reduce the
+    installation time for the user.
 
 # statsExpressions 0.7.0
 

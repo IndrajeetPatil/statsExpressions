@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Expressions and Dataframes with Statistical Details
-Version: 0.7.0.9000
+Version: 0.7.1
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -31,9 +31,6 @@ Imports:
     dplyr,
     effectsize (>= 0.4.3),
     ipmisc,
-    metaBMA,
-    metafor,
-    metaplus,
     parameters (>= 0.11.0.1),
     performance,
     rlang,
@@ -43,6 +40,9 @@ Imports:
 Suggests:
     ggplot2,
     knitr,
+    metaBMA,
+    metafor,
+    metaplus,
     purrr,
     rmarkdown,
     spelling,

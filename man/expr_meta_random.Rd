@@ -19,7 +19,9 @@ expr_meta_random(
 \item{data}{A dataframe. It \strong{must} contain columns named \code{estimate} (effect
 sizes or outcomes)  and \code{std.error} (corresponding standard errors). These
 two columns will be used for \code{yi}  and \code{sei} arguments in \code{metafor::rma}
-(for parametric analysis) or \code{metaplus::metaplus} (for robust analysis).}
+(for parametric analysis) or \code{metaplus::metaplus} (for robust analysis),
+and for \code{y} and \code{SE} arguments in \code{metaBMA::meta_random} (for Bayesian
+analysis).}
 
 \item{type}{Type of statistic expected (\code{"parametric"} or \code{"nonparametric"}
 or \code{"robust"} or \code{"bayes"}).Corresponding abbreviations are also accepted:
@@ -49,50 +51,57 @@ function.}
 \description{
 Expression and dataframe for random-effects meta-analysis
 }
-\details{
-This analysis is carried out using-
-\itemize{
-\item parametric: \code{metafor::rma}
-\item robust: \code{metaplus::metaplus}
-\item Bayesian: \code{metaBMA::meta_random}
-}
+\note{
+\strong{Important}: The function assumes that you have already downloaded
+the needed package (\code{metafor}, \code{metaplus}, or \code{metaBMA}) for meta-analysis.
 }
 \examples{
 \donttest{
-# setup
-set.seed(123)
-library(statsExpressions)
-library(metaplus)
+# run examples only if the needed packages are available
+if (all(unlist(lapply(
+  c("metaplus", "metafor", "metaBMA"), # needed packages
+  require,
+  character.only = TRUE,
+  quietly = TRUE,
+  warn.conflicts = FALSE
+)))) {
+  # note that the `print` calls below are not necessary for you to write
+  # they are in the documentation so that the website renders them
 
-# renaming to what `statsExpressions` expects
-df <- dplyr::rename(mag, estimate = yi, std.error = sei)
+  # setup
+  set.seed(123)
+  library(statsExpressions)
 
-# ----------------------- parametric ---------------------------------------
+  # renaming to what `statsExpressions` expects
+  df <- dplyr::rename(mag, estimate = yi, std.error = sei)
 
-# creating expression
-expr_meta_random(data = df, k = 3)
+  # ----------------------- parametric ---------------------------------------
 
-# ----------------------- random -----------------------------------------
+  # creating expression
+  print(expr_meta_random(data = df, output = "dataframe"))
 
-# creating expression
-expr_meta_random(
-  data = df,
-  type = "random",
-  random = "normal",
-  output = "dataframe"
-)
+  # ----------------------- random -----------------------------------------
 
-# ----------------------- Bayes Factor -----------------------------------
+  # creating expression
+  print(expr_meta_random(
+    data = df,
+    type = "random",
+    random = "normal",
+    output = "dataframe"
+  ))
 
-# making expression
-expr_meta_random(
-  data = df,
-  type = "bayes",
-  k = 3,
-  # additional arguments given to `metaBMA`
-  iter = 5000,
-  summarize = "integrate",
-  control = list(adapt_delta = 0.99, max_treedepth = 15)
-)
+  # ----------------------- Bayes Factor -----------------------------------
+
+  # making expression
+  expr_meta_random(
+    data = df,
+    type = "bayes",
+    output = "dataframe",
+    # additional arguments given to `metaBMA`
+    iter = 5000,
+    summarize = "integrate",
+    control = list(adapt_delta = 0.99, max_treedepth = 15)
+  )
+}
 }
 }
