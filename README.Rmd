@@ -508,6 +508,7 @@ expr_contingency_tab(mtcars, am, cyl)
 set.seed(123)
 library(metaviz)
 library(ggplot2)
+library(metaplus)
 
 # meta-analysis forest plot with results random-effects meta-analysis
 viz_forest(
