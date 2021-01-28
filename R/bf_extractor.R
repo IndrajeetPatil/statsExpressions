@@ -14,10 +14,9 @@
 #' @param ... Additional arguments passed to
 #'   [parameters::model_parameters.BFBayesFactor()].
 #'
-#' @importFrom dplyr mutate filter rename rename_with matches
+#' @importFrom dplyr mutate filter rename_with matches
 #' @importFrom performance r2_bayes
-#' @importFrom tidyr fill
-#' @importFrom parameters model_parameters standardize_names
+#' @importFrom parameters standardize_names
 #'
 #' @note *Important*: don't enter `1/bf.object` to extract results for null
 #'   hypothesis; doing so will return wrong results.
@@ -49,10 +48,7 @@ bf_extractor <- function(bf.object,
                          output = "dataframe",
                          ...) {
   # basic parameters dataframe
-  stats_df <-
-    suppressMessages(tidy_model_parameters(bf.object, ci = conf.level, ...)) %>%
-    dplyr::rename("bf10" = "bayes.factor") %>%
-    tidyr::fill(data = ., dplyr::matches("^prior|^bf"), .direction = "updown")
+  stats_df <- suppressMessages(tidy_model_parameters(bf.object, ci = conf.level, ...))
 
   # ------------------------ ANOVA designs ------------------------------
 
@@ -71,12 +67,6 @@ bf_extractor <- function(bf.object,
 
       # combine everything
       stats_df %<>% dplyr::bind_cols(., df_r2)
-    }
-
-    # ------------------------ contingency tabs ------------------------------
-
-    if (stats_df$method[[1]] == "Bayesian contingency tabs analysis") {
-      stats_df %<>% dplyr::filter(grepl("cramer", term, TRUE))
     }
   }
 

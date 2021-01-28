@@ -798,16 +798,37 @@
   type <span class="op">=</span> <span class="st">"bayes"</span>,
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 12</span>
+<span class="co">#&gt; # A tibble: 8 x 12</span>
 <span class="co">#&gt;   term      estimate ci.width conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Cramers_v    0.478     0.95    0.221     0.725     1               0</span>
+<span class="co">#&gt; 1 cell[1,1]    3.15      0.95    0.692     6.55      1               0</span>
+<span class="co">#&gt; 2 cell[2,1]    7.47      0.95    3.34     11.7       1               0</span>
+<span class="co">#&gt; 3 cell[1,2]    3.96      0.95    1.20      7.70      1               0</span>
+<span class="co">#&gt; 4 cell[2,2]    3.18      0.95    0.778     6.51      1               0</span>
+<span class="co">#&gt; 5 cell[1,3]   10.8       0.95    6.56     15.9       1               0</span>
+<span class="co">#&gt; 6 cell[2,3]    2.27      0.95    0.332     5.31      1               0</span>
+<span class="co">#&gt; 7 Ratio       NA        NA      NA        NA        NA              NA</span>
+<span class="co">#&gt; 8 Cramers_v    0.478     0.95    0.221     0.725     1               0</span>
 <span class="co">#&gt;   prior.distribution      prior.location prior.scale  bf10</span>
 <span class="co">#&gt;   &lt;chr&gt;                            &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 independent multinomial              0           1  16.8</span>
-<span class="co">#&gt;   method                            </span>
-<span class="co">#&gt;   &lt;chr&gt;                             </span>
-<span class="co">#&gt; 1 Bayesian contingency tabs analysis</span>
+<span class="co">#&gt; 2 independent multinomial              0           1  16.8</span>
+<span class="co">#&gt; 3 independent multinomial              0           1  16.8</span>
+<span class="co">#&gt; 4 independent multinomial              0           1  16.8</span>
+<span class="co">#&gt; 5 independent multinomial              0           1  16.8</span>
+<span class="co">#&gt; 6 independent multinomial              0           1  16.8</span>
+<span class="co">#&gt; 7 independent multinomial              0           1  16.8</span>
+<span class="co">#&gt; 8 independent multinomial              0           1  16.8</span>
+<span class="co">#&gt;   method                             </span>
+<span class="co">#&gt;   &lt;chr&gt;                              </span>
+<span class="co">#&gt; 1 Bayesian contingency table analysis</span>
+<span class="co">#&gt; 2 Bayesian contingency table analysis</span>
+<span class="co">#&gt; 3 Bayesian contingency table analysis</span>
+<span class="co">#&gt; 4 Bayesian contingency table analysis</span>
+<span class="co">#&gt; 5 Bayesian contingency table analysis</span>
+<span class="co">#&gt; 6 Bayesian contingency table analysis</span>
+<span class="co">#&gt; 7 Bayesian contingency table analysis</span>
+<span class="co">#&gt; 8 Bayesian contingency table analysis</span>
 
 <span class="co"># goodness-of-fit test</span>
 <span class="fu"><a href="../../reference/expr_contingency_tab.html">expr_contingency_tab</a></span><span class="op">(</span>
@@ -954,14 +975,14 @@
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/expr_meta_random.html">expr_meta_random</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, output <span class="op">=</span> <span class="st">"dataframe"</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 2 x 16</span>
-<span class="co">#&gt;   term    estimate std.error ci.width conf.low conf.high weight bayes.factor</span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;        &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Overall   -0.654     0.221     0.95   -1.10     -0.242     NA         53.0</span>
-<span class="co">#&gt; 2 tau        0.486     0.183     0.95    0.168     0.845     NA         NA  </span>
-<span class="co">#&gt;    rhat   ess component prior.distribution prior.location prior.scale</span>
-<span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt; 1  1    4758. meta      Student's t                     0       0.707</span>
-<span class="co">#&gt; 2  1.00 3824. meta      Inverse gamma                   1       0.15 </span>
+<span class="co">#&gt;   term    estimate std.error ci.width conf.low conf.high weight  bf10  rhat</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Overall   -0.654     0.221     0.95   -1.10     -0.242     NA  53.0  1   </span>
+<span class="co">#&gt; 2 tau        0.486     0.183     0.95    0.168     0.845     NA  53.0  1.00</span>
+<span class="co">#&gt;     ess component prior.distribution prior.location prior.scale</span>
+<span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 4758. meta      Student's t                     0       0.707</span>
+<span class="co">#&gt; 2 3824. meta      Inverse gamma                   1       0.15 </span>
 <span class="co">#&gt;   method                                 effectsize                      </span>
 <span class="co">#&gt;   &lt;chr&gt;                                  &lt;chr&gt;                           </span>
 <span class="co">#&gt; 1 Bayesian meta-analysis using 'metaBMA' meta-analytic posterior estimate</span>

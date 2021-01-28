@@ -61,7 +61,8 @@
 #'   data = mtcars,
 #'   x = am,
 #'   y = cyl,
-#'   paired = FALSE
+#'   paired = FALSE,
+#'   output = "dataframe"
 #' )
 #'
 #' # goodness-of-fit test
@@ -80,7 +81,8 @@
 #'   x = am,
 #'   y = cyl,
 #'   paired = FALSE,
-#'   type = "bayes"
+#'   type = "bayes",
+#'   output = "dataframe"
 #' )
 #'
 #' # goodness-of-fit test

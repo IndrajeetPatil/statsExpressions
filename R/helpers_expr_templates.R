@@ -101,6 +101,15 @@ expr_template <- function(stats.df,
                           k.parameter2 = 0L,
                           ...) {
 
+  # special case for Bayesian analysis
+  if (isTRUE(bayesian)) {
+    # if not present, create a new column for Bayesian analysis
+    if (!"effectsize" %in% names(stats.df)) stats.df %<>% dplyr::mutate(effectsize = method)
+
+    # special handling of contingency tabs analysis
+    if (grepl("contingency", stats.df$method[[1]])) stats.df %<>% dplyr::filter(grepl("cramer", term, TRUE))
+  }
+
   # extracting estimate values
   if ("r2" %in% names(stats.df)) {
     # for ANOVA designs
@@ -112,9 +121,7 @@ expr_template <- function(stats.df,
       c(stats.df$estimate[[1]], stats.df$conf.low[[1]], stats.df$conf.high[[1]])
   }
 
-  # if not present, create a new column for Bayesian analysis
-  if (!"effectsize" %in% names(stats.df) && bayesian) stats.df %<>% dplyr::mutate(effectsize = method)
-  if ("bayes.factor" %in% names(stats.df)) stats.df %<>% dplyr::rename("bf10" = "bayes.factor")
+
 
   # if expression text elements are `NULL`
   if (isTRUE(paired) && is.null(n.text)) n.text <- quote(italic("n")["pairs"])
@@ -130,6 +137,7 @@ expr_template <- function(stats.df,
   # -------------------------- Bayesian analysis ------------------------------
 
   if (isTRUE(bayesian)) {
+    # Bayesian expression
     expression <-
       substitute(
         atop(
@@ -147,12 +155,12 @@ expr_template <- function(stats.df,
           centrality = centrality,
           conf.level = paste0(conf.level * 100, "%"),
           conf.method = toupper(conf.method),
-          bf = format_num(-log(stats.df$bf10[[1]]), k = k),
-          estimate = format_num(estimate, k = k),
-          estimate.LB = format_num(estimate.LB, k = k),
-          estimate.UB = format_num(estimate.UB, k = k),
+          bf = format_num(-log(stats.df$bf10[[1]]), k),
+          estimate = format_num(estimate, k),
+          estimate.LB = format_num(estimate.LB, k),
+          estimate.UB = format_num(estimate.UB, k),
           prior.text = prior.text,
-          bf.prior = format_num(stats.df$prior.scale[[1]], k = k)
+          bf.prior = format_num(stats.df$prior.scale[[1]], k)
         )
       )
 
@@ -192,7 +200,7 @@ expr_template <- function(stats.df,
         env = list(
           statistic.text = statistic.text,
           statistic = format_num(stats.df$statistic[[1]], k),
-          p.value = format_num(stats.df$p.value[[1]], k = k, p.value = TRUE),
+          p.value = format_num(stats.df$p.value[[1]], k, p.value = TRUE),
           effsize.text = effsize.text,
           estimate = format_num(estimate, k),
           conf.level = paste0(conf.level * 100, "%"),
@@ -241,8 +249,8 @@ expr_template <- function(stats.df,
         env = list(
           statistic.text = statistic.text,
           statistic = format_num(stats.df$statistic[[1]], k),
-          parameter = format_num(stats.df$parameter[[1]], k = k.parameter),
-          p.value = format_num(stats.df$p.value[[1]], k = k, p.value = TRUE),
+          parameter = format_num(stats.df$parameter[[1]], k.parameter),
+          p.value = format_num(stats.df$p.value[[1]], k, p.value = TRUE),
           effsize.text = effsize.text,
           estimate = format_num(estimate, k),
           conf.level = paste0(conf.level * 100, "%"),
@@ -293,9 +301,9 @@ expr_template <- function(stats.df,
         env = list(
           statistic.text = statistic.text,
           statistic = format_num(stats.df$statistic[[1]], k),
-          parameter1 = format_num(stats.df$parameter1[[1]], k = k.parameter),
-          parameter2 = format_num(stats.df$parameter2[[1]], k = k.parameter2),
-          p.value = format_num(stats.df$p.value[[1]], k = k, p.value = TRUE),
+          parameter1 = format_num(stats.df$parameter1[[1]], k.parameter),
+          parameter2 = format_num(stats.df$parameter2[[1]], k.parameter2),
+          p.value = format_num(stats.df$p.value[[1]], k, p.value = TRUE),
           effsize.text = effsize.text,
           estimate = format_num(estimate, k),
           conf.level = paste0(conf.level * 100, "%"),
@@ -368,7 +376,7 @@ estimate_type_switch <- function(method) {
     "Cramer's V (adj.)" = quote(widehat(italic("V"))["Cramer"]),
     "Cohen's g" = quote(widehat(italic("g"))["Cohen"]),
     "meta-analytic summary estimate" = quote(widehat(beta)["summary"]^"meta"),
-    "Bayesian contingency tabs analysis" = quote(italic("V")),
+    "Bayesian contingency table analysis" = quote(italic("V")),
     "Bayesian Pearson" = quote(rho),
     "meta-analytic posterior estimate" = ,
     "Bayesian t-test" = quote(italic(delta)),
@@ -382,7 +390,7 @@ estimate_type_switch <- function(method) {
 prior_type_switch <- function(method) {
   switch(
     method,
-    "Bayesian contingency tabs analysis" = quote(italic("a")["Gunel-Dickey"]),
+    "Bayesian contingency table analysis" = quote(italic("a")["Gunel-Dickey"]),
     quote(italic("r")["Cauchy"]^"JZS")
   )
 }
