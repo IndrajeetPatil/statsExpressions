@@ -102,7 +102,8 @@ expr_contingency_tab(
   data = mtcars,
   x = am,
   y = cyl,
-  paired = FALSE
+  paired = FALSE,
+  output = "dataframe"
 )
 
 # goodness-of-fit test
@@ -121,7 +122,8 @@ expr_contingency_tab(
   x = am,
   y = cyl,
   paired = FALSE,
-  type = "bayes"
+  type = "bayes",
+  output = "dataframe"
 )
 
 # goodness-of-fit test
