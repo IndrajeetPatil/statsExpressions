@@ -45,11 +45,11 @@ test_that(
 
     # created using a template maker
     template_0 <-
-      statsExpressions::expr_template(
+      expr_template(
         no.parameters = 0L,
         stats.df = stats_df,
         statistic.text = quote(italic("W")),
-        conf.level = 0.99,
+        conf.level = 99,
         k = 2L,
         n = 32,
         n.text = quote(italic("n")),
@@ -111,7 +111,7 @@ test_that(
 
     # created using a template maker
     template_1 <-
-      statsExpressions::expr_template(
+      expr_template(
         no.parameters = 1L,
         stats.df = stats_df,
         conf.level = 0.95,
@@ -181,7 +181,7 @@ test_that(
 
     # created using a template maker
     template_1 <-
-      statsExpressions::expr_template(
+      expr_template(
         no.parameters = 2L,
         stats.df = stats_df,
         conf.level = 0.95,
