@@ -319,37 +319,34 @@ expr_template <- function(stats.df,
   expression
 }
 
+
+#' @importFrom dplyr case_when
 #' @noRd
 
 stat_text_switch <- function(method) {
-  switch(
-    method,
-    "Pearson" = ,
-    "Percentage Bend" = ,
-    "One Sample t-test" = ,
-    "Two Sample t-test" = ,
-    "Paired t-test" = quote(italic("t")["Student"]),
-    "Bootstrap-t method for one-sample test" = quote(italic("t")["bootstrapped"]),
-    "Welch Two Sample t-test" = quote(italic("t")["Welch"]),
-    "Wilcoxon rank sum test" = quote("log"["e"](italic("W")["Mann-Whitney"])),
-    "Wilcoxon signed rank test" = quote("log"["e"](italic("V")["Wilcoxon"])),
-    "Yuen's test on trimmed means for independent samples" = ,
-    "Yuen's test on trimmed means for dependent samples" = quote(italic("t")["Yuen"]),
-    "One-way analysis of means (not assuming equal variances)" = quote(italic("F")["Welch"]),
-    "One-way analysis of means" = ,
-    "ANOVA estimation for factorial designs using 'afex'" = quote(italic("F")["Fisher"]),
-    "Friedman rank sum test" = quote(chi["Friedman"]^2),
-    "Kruskal-Wallis rank sum test" = quote(chi["Kruskal-Wallis"]^2),
-    "A heteroscedastic one-way repeated measures ANOVA for trimmed means" = ,
-    "A heteroscedastic one-way ANOVA for trimmed means" = quote(italic("F")["trimmed-means"]),
-    "Spearman" = quote("log"["e"](italic("S"))),
-    "Chi-squared test for given probabilities" = quote(chi["gof"]^2),
-    "Pearson's Chi-squared test" = quote(chi["Pearson"]^2),
-    "McNemar's Chi-squared test" = quote(chi["McNemar"]^2),
-    "Meta-analysis using 'metafor'" = ,
-    "Robust meta-analysis using 'metaplus'" = quote(italic("z")),
-    NULL
-  )
+  # to make life easier
+  method <- tolower(method)
+
+  # need to list because `case_when` can't handle outputs of different lengths
+  dplyr::case_when(
+    grepl("^one sample|^two sample|bend|^paired|^pearson$", method) ~ list(quote(italic("t")["Student"])),
+    grepl("^boot", method) ~ list(quote(italic("t")["bootstrapped"])),
+    grepl("^welch", method) ~ list(quote(italic("t")["Welch"])),
+    grepl("wilcoxon rank", method) ~ list(quote("log"["e"](italic("W")["Mann-Whitney"]))),
+    grepl("wilcoxon signed", method) ~ list(quote("log"["e"](italic("V")["Wilcoxon"]))),
+    grepl("afex| of means$", method) ~ list(quote(italic("F")["Fisher"])),
+    grepl("variances", method) ~ list(quote(italic("F")["Welch"])),
+    grepl("friedman", method) ~ list(quote(chi["Friedman"]^2)),
+    grepl("kruskal", method) ~ list(quote(chi["Kruskal-Wallis"]^2)),
+    grepl("spearman", method) ~ list(quote("log"["e"](italic("S")))),
+    grepl("yuen", method) ~ list(quote(italic("t")["Yuen"])),
+    grepl("heteroscedastic", method) ~ list(quote(italic("F")["trimmed-means"])),
+    grepl("probabilities", method) ~ list(quote(chi["gof"]^2)),
+    grepl("pearson's chi", method) ~ list(quote(chi["Pearson"]^2)),
+    grepl("mcnemar's chi", method) ~ list(quote(chi["McNemar"]^2)),
+    grepl("meta", method) ~ list(quote(italic("z"))),
+    TRUE ~ list(NULL)
+  )[[1]]
 }
 
 #' @noRd
@@ -388,10 +385,9 @@ estimate_type_switch <- function(method) {
 #' @noRd
 
 prior_type_switch <- function(method) {
-  switch(
-    method,
-    "Bayesian contingency table analysis" = quote(italic("a")["Gunel-Dickey"]),
-    quote(italic("r")["Cauchy"]^"JZS")
+  dplyr::case_when(
+    grepl("contingency", tolower(method)) ~ quote(italic("a")["Gunel-Dickey"]),
+    TRUE ~ quote(italic("r")["Cauchy"]^"JZS")
   )
 }
 
