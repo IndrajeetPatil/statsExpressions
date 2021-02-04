@@ -16,7 +16,7 @@ utils::globalVariables(
     ".counts",
     "df",
     "df.error",
-    "k.parameter",
+    "k.df",
     "effsize.text",
     "method",
     ".f",
@@ -25,7 +25,7 @@ utils::globalVariables(
     "estimate.LB",
     "estimate.UB",
     "r2.component",
-    "ci.width",
+    "conf.level",
     ".fn",
     ".ns"
   ),

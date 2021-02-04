@@ -60,6 +60,8 @@
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -151,7 +153,7 @@
 </h1>
 <p>MAJOR CHANGES</p>
 <ul>
-<li><p><code>expr_template</code> gains a new argument <code>bayesian</code>, which can return an expression for Bayesian analysis, which has a slightly different template.</p></li>
+<li><p><code>expr_template</code> gains a new argument <code>bayesian</code>, which can return an expression for Bayesian analysis, which has a slightly different template. Additionally, it has changed its conventions about the column names it expects.</p></li>
 <li><p>Retires the additional caption-making functionality that was unique to <code>expr_meta_random</code> when <code>type = "parametric"</code>. This was the only context in which this feature was supported and was therefore inconsistent with the rest of the package API.</p></li>
 <li><p>Removes <code>tidy_model_performance</code> function, which is no longer used internally.</p></li>
 <li><p>Removes column containing <code>log</code> values of Bayes Factor as they are relevant only for expressions.</p></li>
@@ -217,7 +219,7 @@
 <p>BREAKING CHANGES</p>
 <ul>
 <li><p>Removes the alias <code>expr_onesample_proptest</code>.</p></li>
-<li><p>The <code>expr_template</code> function retires <code>effsize.df</code> argument. Now all details need to be entered only in <code>stats.df</code>.</p></li>
+<li><p>The <code>expr_template</code> function retires <code>effsize.df</code> argument. Now all details need to be entered only in <code>data</code>.</p></li>
 <li><p>All meta-analyses are now carried out using <code>expr_meta_random</code> and the individual functions have been removed.</p></li>
 </ul>
 <p>MAJOR CHANGES</p>
@@ -336,7 +338,7 @@
 <p>BREAKING CHANGES</p>
 <ul>
 <li>
-<code>expr_template</code> function now expects two dataframes: <code>stats.df</code> and <code>effsize.df</code> that contain the details needed for creating expressions instead of providing each individual values. This makes the function more friendly work with using modeling packages like <code>broom</code>.</li>
+<code>expr_template</code> function now expects two dataframes: <code>data</code> and <code>effsize.df</code> that contain the details needed for creating expressions instead of providing each individual values. This makes the function more friendly work with using modeling packages like <code>broom</code>.</li>
 </ul>
 <p>MINOR CHANGES</p>
 <ul>

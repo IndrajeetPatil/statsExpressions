@@ -20,13 +20,14 @@
 #'   correlation coefficient" or "`"bayes"`: Bayes Factor for Pearson's *r*").
 #'   Corresponding abbreviations are also accepted: `"p"` (for
 #'   parametric/pearson), `"np"` (nonparametric/spearman), `"r"` (robust),
-#'   `"bf"` (for bayes factor), resp.
+#'   `"bf"` (for Bayes Factor/Bayesian Pearson), resp.
 #' @param beta bending constant (Default: `0.1`). For more, see [WRS2::pbcor()].
 #' @inheritParams expr_oneway_anova
 #'
-#' @importFrom dplyr select rename_all recode pull
+#' @importFrom dplyr select case_when
 #' @importFrom correlation correlation
 #' @importFrom ipmisc stats_type_switch
+#' @importFrom parameters standardize_names
 #'
 #' @examples
 #' # for reproducibility
@@ -70,12 +71,10 @@ expr_corr_test <- function(data,
 
   # if any of the abbreviations have been entered, change them
   corr.method <-
-    switch(
-      EXPR = type,
-      "bayes" = ,
-      "parametric" = "pearson",
-      "nonparametric" = "spearman",
-      "robust" = "percentage"
+    dplyr::case_when(
+      type %in% c("bayes", "parametric") ~ "pearson",
+      type == "nonparametric" ~ "spearman",
+      type == "robust" ~ "percentage"
     )
 
   # ----------------- creating correlation dataframes -----------------------
@@ -90,8 +89,8 @@ expr_corr_test <- function(data,
       bayesian_prior = bf.prior,
       bayesian_ci_method = "hdi"
     ) %>%
-    parameters::standardize_names(data = ., style = "broom") %>%
-    dplyr::mutate(effectsize = method, ci.width = attributes(.)$ci)
+    parameters::standardize_names(style = "broom") %>%
+    dplyr::mutate(effectsize = method)
 
   # ---------------------- preparing expression -------------------------------
 
@@ -103,15 +102,18 @@ expr_corr_test <- function(data,
   # preparing expression
   expression <-
     expr_template(
+      data = stats_df,
       no.parameters = no.parameters,
-      stats.df = stats_df,
+      top.text = top.text,
       paired = TRUE,
       n = stats_df$n.obs[[1]],
-      top.text = top.text,
       k = k,
       bayesian = ifelse(type == "bayes", TRUE, FALSE)
     )
 
   # return the output
-  switch(output, "dataframe" = as_tibble(stats_df), expression)
+  switch(output,
+    "dataframe" = as_tibble(stats_df),
+    expression
+  )
 }

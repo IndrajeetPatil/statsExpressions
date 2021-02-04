@@ -13,6 +13,7 @@
 \alias{tibble}
 \alias{as_tibble}
 \alias{correlation}
+\alias{standardize_names}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -21,6 +22,8 @@ below to see their documentation.
 
 \describe{
   \item{correlation}{\code{\link[correlation]{correlation}}}
+
+  \item{insight}{\code{\link[insight]{standardize_names}}}
 
   \item{ipmisc}{\code{\link[ipmisc:reexports]{\%$\%}}, \code{\link[ipmisc:reexports]{\%<-\%}}, \code{\link[ipmisc:reexports]{\%<>\%}}, \code{\link[ipmisc:reexports]{\%>\%}}, \code{\link[ipmisc:reexports]{as_tibble}}, \code{\link[ipmisc:reexports]{tibble}}}
 

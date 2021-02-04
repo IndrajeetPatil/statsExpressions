@@ -165,7 +165,7 @@ expr_t_twosample <- function(data,
     # preparing expression parameters
     no.parameters <- 1L
     .f <- stats::t.test
-    k.parameter <- ifelse(isTRUE(paired) || isTRUE(var.equal), 0L, k)
+    k.df <- ifelse(isTRUE(paired) || isTRUE(var.equal), 0L, k)
     if (effsize.type %in% c("unbiased", "g")) .f.es <- effectsize::hedges_g
     if (effsize.type %in% c("biased", "d")) .f.es <- effectsize::cohens_d
   }
@@ -213,7 +213,7 @@ expr_t_twosample <- function(data,
 
   if (type == "robust") {
     # expression parameters
-    c(no.parameters, k.parameter) %<-% c(1L, k)
+    c(no.parameters, k.df) %<-% c(1L, k)
 
     # running robust analysis
     if (isFALSE(paired)) {
@@ -237,14 +237,14 @@ expr_t_twosample <- function(data,
           estimate = mod2$effsize[[1]],
           conf.low = mod2$CI[[1]],
           conf.high = mod2$CI[[2]],
-          ci.width = conf.level,
+          conf.level = conf.level,
           effectsize = "Explanatory measure of effect size"
         )
     }
 
     if (isTRUE(paired)) {
       # expression parameters
-      c(k.parameter, conf.level) %<-% c(0L, 0.95)
+      c(k.df, conf.level) %<-% c(0L, 0.95)
 
       # running robust paired t-test and its effect size
       mod <- WRS2::yuend(x = data[2], y = data[3], tr = tr)
@@ -257,9 +257,9 @@ expr_t_twosample <- function(data,
         dplyr::filter(effectsize == "AKP") %>%
         dplyr::mutate(
           effectsize = "Algina-Keselman-Penfield robust standardized difference",
-          ci.width = 0.95
+          conf.level = 0.95
         ) %>%
-        dplyr::select(estimate = Est, conf.low = ci.low, conf.high = ci.up, ci.width, effectsize)
+        dplyr::select(estimate = Est, conf.low = ci.low, conf.high = ci.up, conf.level, effectsize)
     }
   }
 
@@ -272,11 +272,11 @@ expr_t_twosample <- function(data,
     expression <-
       expr_template(
         no.parameters = no.parameters,
-        stats.df = stats_df,
+        data = stats_df,
         paired = paired,
         n = ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data)),
         k = k,
-        k.parameter = k.parameter
+        k.df = k.df
       )
   }
 
@@ -295,5 +295,8 @@ expr_t_twosample <- function(data,
   }
 
   # return the output
-  switch(output, "dataframe" = as_tibble(stats_df), expression)
+  switch(output,
+    "dataframe" = as_tibble(stats_df),
+    expression
+  )
 }

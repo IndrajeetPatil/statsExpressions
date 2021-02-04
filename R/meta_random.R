@@ -110,7 +110,7 @@ expr_meta_random <- function(data,
   # preparing the expression
   expression <-
     expr_template(
-      stats.df = stats_df,
+      data = stats_df,
       n = nrow(data),
       n.text = quote(italic("n")["effects"]),
       no.parameters = 0L,
@@ -121,5 +121,8 @@ expr_meta_random <- function(data,
     )
 
   # what needs to be returned?
-  switch(output, "dataframe" = as_tibble(stats_df), expression)
+  switch(output,
+    "dataframe" = as_tibble(stats_df),
+    expression
+  )
 }

@@ -58,15 +58,14 @@ bf_extractor <- function(bf.object,
       df_r2 <-
         performance::r2_bayes(bf.object, average = TRUE, ci = conf.level) %>%
         as_tibble(.) %>%
-        parameters::standardize_names(data = ., style = "broom") %>%
-        dplyr::rename_with(.fn = ~ paste0("r2.", .x), .cols = dplyr::matches("^conf|^comp")) %>%
-        dplyr::select(-ci.width)
+        parameters::standardize_names(style = "broom") %>%
+        dplyr::rename_with(.fn = ~ paste0("r2.", .x), .cols = dplyr::matches("^conf|^comp"))
 
       # for within-subjects design, retain only marginal component
       if ("r2.component" %in% names(df_r2)) df_r2 %<>% dplyr::filter(r2.component == "conditional")
 
       # combine everything
-      stats_df %<>% dplyr::bind_cols(., df_r2)
+      stats_df %<>% dplyr::bind_cols(df_r2)
     }
   }
 
@@ -74,11 +73,14 @@ bf_extractor <- function(bf.object,
   expression <-
     expr_template(
       top.text = top.text,
-      stats.df = stats_df,
+      data = stats_df,
       k = k,
       bayesian = TRUE
     )
 
   # return the text results or the dataframe with results
-  switch(output, "dataframe" = as_tibble(stats_df), expression)
+  switch(output,
+    "dataframe" = as_tibble(stats_df),
+    expression
+  )
 }

@@ -171,7 +171,7 @@ expr_contingency_tab <- function(data,
     expression <-
       expr_template(
         no.parameters = 1L,
-        stats.df = stats_df,
+        data = stats_df,
         n = nrow(data),
         paired = paired,
         k = k
@@ -245,7 +245,10 @@ expr_contingency_tab <- function(data,
   }
 
   # return the output
-  switch(output, "dataframe" = as_tibble(stats_df), expression)
+  switch(output,
+    "dataframe" = as_tibble(stats_df),
+    expression
+  )
 }
 
 

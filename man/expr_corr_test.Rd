@@ -36,13 +36,13 @@ be plotted on the \code{y}-axis. Can be entered either as a character string
 correlation coefficient" or "\code{"bayes"}: Bayes Factor for Pearson's \emph{r}").
 Corresponding abbreviations are also accepted: \code{"p"} (for
 parametric/pearson), \code{"np"} (nonparametric/spearman), \code{"r"} (robust),
-\code{"bf"} (for bayes factor), resp.}
+\code{"bf"} (for Bayes Factor/Bayesian Pearson), resp.}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2L}).}
 
-\item{conf.level}{Scalar between \code{0} and \code{1}. If unspecified, the defaults return
-\verb{95\%} confidence/credible intervals (\code{0.95}).}
+\item{conf.level}{Scalar between \code{0} and \code{1}. If unspecified, the defaults
+return \verb{95\%} confidence/credible intervals (\code{0.95}).}
 
 \item{beta}{bending constant (Default: \code{0.1}). For more, see \code{\link[WRS2:pbcor]{WRS2::pbcor()}}.}
 

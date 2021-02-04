@@ -5,7 +5,7 @@
 \title{Template for expressions with statistical details}
 \usage{
 expr_template(
-  stats.df,
+  data,
   no.parameters = 0L,
   bayesian = FALSE,
   statistic.text = NULL,
@@ -15,28 +15,28 @@ expr_template(
   n = NULL,
   n.text = NULL,
   paired = FALSE,
-  conf.level = NULL,
   centrality = "median",
   conf.method = "HDI",
   k = 2L,
-  k.parameter = 0L,
-  k.parameter2 = 0L,
+  k.df = 0L,
+  k.df.error = 0L,
   ...
 )
 }
 \arguments{
-\item{stats.df}{A dataframe containing details from the statistical analysis
+\item{data}{A dataframe containing details from the statistical analysis
 and should contain some or all of the the following columns:
 \itemize{
 \item \emph{statistic}: the numeric value of a statistic.
-\item \emph{parameter}: the numeric value of a parameter being modeled (often
+\item \emph{df.error}: the numeric value of a parameter being modeled (often
 degrees of freedom for the test); note that if \code{no.parameters = 0L} (e.g.,
 for non-parametric tests), this column will be irrelevant.
-\item \emph{parameter1}, \emph{parameter2} relevant only if the statistic in question
+\item \emph{df} relevant only if the statistic in question
 has two degrees of freedom (e.g., anova).
 \item \emph{p.value} the two-sided \emph{p}-value associated with the observed
 statistic.
 \item \emph{estimate}: estimated value of the effect size.
+\item \emph{conf.level}: width for the confidence intervals.
 \item \emph{conf.low}: lower bound for effect size estimate.
 \item \emph{conf.high}: upper bound for effect size estimate.
 \item \emph{\code{bf10}} Bayes Factor value (if \code{bayesian = TRUE}).
@@ -72,9 +72,6 @@ what the \code{n} stands for. If \code{NULL}, defaults to
 repeated measures/within-subjects or between-subjects. The default is
 \code{FALSE}.}
 
-\item{conf.level}{Scalar between \code{0} and \code{1}. If unspecified, the defaults return
-\verb{95\%} confidence/credible intervals (\code{0.95}).}
-
 \item{centrality}{The point-estimates (centrality indices) to compute.
 Character (vector) or list with one or more of these options: \code{"median"},
 \code{"mean"}, \code{"MAP"} or \code{"all"}.}
@@ -86,13 +83,17 @@ functions from \code{bayestestR} package).}
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2L}).}
 
-\item{k.parameter, k.parameter2}{Number of decimal places to display for the
+\item{k.df, k.df.error}{Number of decimal places to display for the
 parameters (default: \code{0}).}
 
 \item{...}{Currently ignored.}
 }
 \description{
-Template for expressions with statistical details
+\Sexpr[results=rd, stage=render]{rlang:::lifecycle("questioning")}
+
+Creates an expression from a dataframe containing statistical details.
+Ideally, this dataframe would come from having run \code{tidy_model_parameters}
+function on your model object.
 }
 \examples{
 set.seed(123)
@@ -101,9 +102,10 @@ set.seed(123)
 stats_df <-
   cbind.data.frame(
     statistic = 5.494,
-    parameter = 29.234,
+    df = 29.234,
     p.value = 0.00001,
     estimate = -1.980,
+    conf.level = 0.95,
     conf.low = -2.873,
     conf.high = -1.088
   )
@@ -112,12 +114,11 @@ stats_df <-
 # note that the plotmath expressions need to be quoted
 statsExpressions::expr_template(
   no.parameters = 1L,
-  stats.df = stats_df,
+  data = stats_df,
   statistic.text = quote(italic("t")),
   effsize.text = quote(italic("d")),
   n = 32L,
-  conf.level = 0.95,
   k = 3L,
-  k.parameter = 3L
+  k.df = 3L
 )
 }

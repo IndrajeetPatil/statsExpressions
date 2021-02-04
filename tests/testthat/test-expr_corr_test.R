@@ -10,7 +10,7 @@ test_that(
       # `statsExpressions` output
       set.seed(123)
       using_function <-
-        suppressWarnings(statsExpressions::expr_corr_test(
+        suppressWarnings(expr_corr_test(
           data = dplyr::sample_frac(movies_long, 0.05),
           x = rating,
           y = "length",
@@ -53,7 +53,7 @@ test_that(
       # `statsExpressions` output
       set.seed(123)
       using_function2 <-
-        statsExpressions::expr_corr_test(
+        expr_corr_test(
           data = mtcars,
           x = names(mtcars)[6],
           y = mpg,
@@ -104,7 +104,7 @@ test_that(
       # `statsExpressions` output
       set.seed(123)
       using_function <-
-        suppressWarnings(statsExpressions::expr_corr_test(
+        suppressWarnings(expr_corr_test(
           data = ggplot2::msleep,
           x = brainwt,
           y = sleep_rem,
@@ -161,7 +161,7 @@ test_that(
       # using function
       set.seed(123)
       using_function <-
-        statsExpressions::expr_corr_test(
+        expr_corr_test(
           data = ggplot2::msleep,
           x = names(ggplot2::msleep)[10],
           y = "sleep_total",
@@ -212,7 +212,7 @@ test_that(
   desc = "dataframe",
   code = {
     expect_s3_class(
-      statsExpressions::expr_corr_test(
+      expr_corr_test(
         data = mtcars,
         x = mpg,
         y = wt,

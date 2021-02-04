@@ -27,9 +27,10 @@ Depends:
 Imports:
     afex,
     BayesFactor,
-    correlation,
+    correlation (>= 0.5.0.1),
     dplyr,
     effectsize (>= 0.4.3),
+    insight (>= 0.12.0.1),
     ipmisc,
     parameters (>= 0.11.0.1),
     performance,
@@ -49,7 +50,9 @@ Suggests:
     testthat,
     utils
 Remotes:
-    easystats/parameters
+    easystats/insight,
+    easystats/parameters,
+    easystats/correlation
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
