@@ -41,3 +41,7 @@ ipmisc::as_tibble
 #' @export
 #' @importFrom correlation correlation
 correlation::correlation
+
+#' @export
+#' @importFrom insight standardize_names
+insight::standardize_names

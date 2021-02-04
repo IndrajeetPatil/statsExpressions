@@ -55,8 +55,13 @@
   
 
 <meta property="og:title" content="Template for expressions with statistical details — expr_template" />
-<meta property="og:description" content="Template for expressions with statistical details" />
+<meta property="og:description" content="
+Creates an expression from a dataframe containing statistical details.
+Ideally, this dataframe would come from having run tidy_model_parameters
+function on your model object." />
 <meta property="og:image" content="https://indrajeetpatil.github.io/statsExpressions/logo.png" />
+
+
 
 
 
@@ -148,11 +153,14 @@
     </div>
 
     <div class="ref-description">
-    <p>Template for expressions with statistical details</p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#questioning'><img src='figures/lifecycle-questioning.svg' alt='Questioning lifecycle'></a></p>
+<p>Creates an expression from a dataframe containing statistical details.
+Ideally, this dataframe would come from having run <code>tidy_model_parameters</code>
+function on your model object.</p>
     </div>
 
     <pre class="usage"><span class='fu'>expr_template</span><span class='op'>(</span>
-  <span class='va'>stats.df</span>,
+  <span class='va'>data</span>,
   no.parameters <span class='op'>=</span> <span class='fl'>0L</span>,
   bayesian <span class='op'>=</span> <span class='cn'>FALSE</span>,
   statistic.text <span class='op'>=</span> <span class='cn'>NULL</span>,
@@ -162,12 +170,11 @@
   n <span class='op'>=</span> <span class='cn'>NULL</span>,
   n.text <span class='op'>=</span> <span class='cn'>NULL</span>,
   paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  conf.level <span class='op'>=</span> <span class='cn'>NULL</span>,
   centrality <span class='op'>=</span> <span class='st'>"median"</span>,
   conf.method <span class='op'>=</span> <span class='st'>"HDI"</span>,
   k <span class='op'>=</span> <span class='fl'>2L</span>,
-  k.parameter <span class='op'>=</span> <span class='fl'>0L</span>,
-  k.parameter2 <span class='op'>=</span> <span class='fl'>0L</span>,
+  k.df <span class='op'>=</span> <span class='fl'>0L</span>,
+  k.df.error <span class='op'>=</span> <span class='fl'>0L</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -175,18 +182,19 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>stats.df</th>
+      <th>data</th>
       <td><p>A dataframe containing details from the statistical analysis
 and should contain some or all of the the following columns:</p><ul>
 <li><p><em>statistic</em>: the numeric value of a statistic.</p></li>
-<li><p><em>parameter</em>: the numeric value of a parameter being modeled (often
+<li><p><em>df.error</em>: the numeric value of a parameter being modeled (often
 degrees of freedom for the test); note that if <code>no.parameters = 0L</code> (e.g.,
 for non-parametric tests), this column will be irrelevant.</p></li>
-<li><p><em>parameter1</em>, <em>parameter2</em> relevant only if the statistic in question
+<li><p><em>df</em> relevant only if the statistic in question
 has two degrees of freedom (e.g., anova).</p></li>
 <li><p><em>p.value</em> the two-sided <em>p</em>-value associated with the observed
 statistic.</p></li>
 <li><p><em>estimate</em>: estimated value of the effect size.</p></li>
+<li><p><em>conf.level</em>: width for the confidence intervals.</p></li>
 <li><p><em>conf.low</em>: lower bound for effect size estimate.</p></li>
 <li><p><em>conf.high</em>: upper bound for effect size estimate.</p></li>
 <li><p><em><code>bf10</code></em> Bayes Factor value (if <code>bayesian = TRUE</code>).</p></li>
@@ -241,11 +249,6 @@ repeated measures/within-subjects or between-subjects. The default is
 <code>FALSE</code>.</p></td>
     </tr>
     <tr>
-      <th>conf.level</th>
-      <td><p>Scalar between <code>0</code> and <code>1</code>. If unspecified, the defaults return
-<code>95%</code> confidence/credible intervals (<code>0.95</code>).</p></td>
-    </tr>
-    <tr>
       <th>centrality</th>
       <td><p>The point-estimates (centrality indices) to compute.
 Character (vector) or list with one or more of these options: <code>"median"</code>,
@@ -263,7 +266,7 @@ functions from <code>bayestestR</code> package).</p></td>
 (Default: <code>k = 2L</code>).</p></td>
     </tr>
     <tr>
-      <th>k.parameter, k.parameter2</th>
+      <th>k.df, k.df.error</th>
       <td><p>Number of decimal places to display for the
 parameters (default: <code>0</code>).</p></td>
     </tr>
@@ -281,9 +284,10 @@ parameters (default: <code>0</code>).</p></td>
 <span class='va'>stats_df</span> <span class='op'>&lt;-</span>
   <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind.data.frame</a></span><span class='op'>(</span>
     statistic <span class='op'>=</span> <span class='fl'>5.494</span>,
-    parameter <span class='op'>=</span> <span class='fl'>29.234</span>,
+    df <span class='op'>=</span> <span class='fl'>29.234</span>,
     p.value <span class='op'>=</span> <span class='fl'>0.00001</span>,
     estimate <span class='op'>=</span> <span class='op'>-</span><span class='fl'>1.980</span>,
+    conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
     conf.low <span class='op'>=</span> <span class='op'>-</span><span class='fl'>2.873</span>,
     conf.high <span class='op'>=</span> <span class='op'>-</span><span class='fl'>1.088</span>
   <span class='op'>)</span>
@@ -292,13 +296,12 @@ parameters (default: <code>0</code>).</p></td>
 <span class='co'># note that the plotmath expressions need to be quoted</span>
 <span class='fu'>statsExpressions</span><span class='fu'>::</span><span class='fu'>expr_template</span><span class='op'>(</span>
   no.parameters <span class='op'>=</span> <span class='fl'>1L</span>,
-  stats.df <span class='op'>=</span> <span class='va'>stats_df</span>,
+  data <span class='op'>=</span> <span class='va'>stats_df</span>,
   statistic.text <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/substitute.html'>quote</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/grDevices/plotmath.html'>italic</a></span><span class='op'>(</span><span class='st'>"t"</span><span class='op'>)</span><span class='op'>)</span>,
   effsize.text <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/substitute.html'>quote</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/grDevices/plotmath.html'>italic</a></span><span class='op'>(</span><span class='st'>"d"</span><span class='op'>)</span><span class='op'>)</span>,
   n <span class='op'>=</span> <span class='fl'>32L</span>,
-  conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
   k <span class='op'>=</span> <span class='fl'>3L</span>,
-  k.parameter <span class='op'>=</span> <span class='fl'>3L</span>
+  k.df <span class='op'>=</span> <span class='fl'>3L</span>
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; paste(italic("t"), "(", "29.234", ") = ", "5.494", ", ", italic("p"), 
 #&gt;     " = ", "1e-05", ", ", italic("d"), " = ", "-1.980", ", CI"["95%"], 

@@ -4,6 +4,8 @@ MAJOR CHANGES
 
   - `expr_template` gains a new argument `bayesian`, which can return an
     expression for Bayesian analysis, which has a slightly different template.
+    Additionally, it has changed its conventions about the column names it
+    expects.
 
   - Retires the additional caption-making functionality that was unique to
     `expr_meta_random` when `type = "parametric"`. This was the only context in
@@ -92,7 +94,7 @@ BREAKING CHANGES
   - Removes the alias `expr_onesample_proptest`.
 
   - The `expr_template` function retires `effsize.df` argument. Now all details
-    need to be entered only in `stats.df`.
+    need to be entered only in `data`.
 
   - All meta-analyses are now carried out using `expr_meta_random` and the
     individual functions have been removed.
@@ -229,10 +231,10 @@ NEW FEATURES
 
 BREAKING CHANGES
 
-  - `expr_template` function now expects two dataframes: `stats.df` and
-    `effsize.df` that contain the details needed for creating expressions
-    instead of providing each individual values. This makes the function more
-    friendly work with using modeling packages like `broom`.
+  - `expr_template` function now expects two dataframes: `data` and `effsize.df`
+    that contain the details needed for creating expressions instead of
+    providing each individual values. This makes the function more friendly work
+    with using modeling packages like `broom`.
 
 MINOR CHANGES
 

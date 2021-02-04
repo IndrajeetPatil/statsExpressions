@@ -157,7 +157,7 @@ expr_t_onesample <- function(data,
     expression <-
       expr_template(
         no.parameters = no.parameters,
-        stats.df = stats_df,
+        data = stats_df,
         n = length(x_vec),
         k = k
       )
@@ -174,7 +174,10 @@ expr_t_onesample <- function(data,
   }
 
   # return the output
-  switch(output, "dataframe" = as_tibble(stats_df), expression)
+  switch(output,
+    "dataframe" = as_tibble(stats_df),
+    expression
+  )
 }
 
 #' bootstrap-t method for one-sample test
@@ -194,7 +197,7 @@ trimcibt <- function(x, tr = 0.2, nboot = 100, nv = 0, alpha = 0.05, ...) {
     estimate = mean(x, tr),
     conf.low = mean(x, tr) - tval[icrit] * WRS2::trimse(x, tr),
     conf.high = mean(x, tr) + tval[icrit] * WRS2::trimse(x, tr),
-    ci.width = 1 - alpha,
+    conf.level = 1 - alpha,
     effectsize = "Trimmed mean"
   )
 }

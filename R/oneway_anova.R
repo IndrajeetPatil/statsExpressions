@@ -9,6 +9,8 @@
 #'   or `"robust"` or `"bayes"`).Corresponding abbreviations are also accepted:
 #'   `"p"` (for parametric), `"np"` (nonparametric), `"r"` (robust), or
 #'   `"bf"`resp.
+#' @param conf.level Scalar between `0` and `1`. If unspecified, the defaults
+#'   return `95%` confidence/credible intervals (`0.95`).
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
 #'   argument can be `"eta"` (partial eta-squared) or `"omega"` (partial
 #'   omega-squared).
@@ -216,8 +218,8 @@ expr_oneway_anova <- function(data,
 
     # expression details
     if (isTRUE(paired)) var.equal <- TRUE
-    k.parameter <- ifelse(isFALSE(paired), 0L, k)
-    k.parameter2 <- ifelse(isFALSE(paired) && isTRUE(var.equal), 0L, k)
+    k.df <- ifelse(isFALSE(paired), 0L, k)
+    k.df.error <- ifelse(isFALSE(paired) && isTRUE(var.equal), 0L, k)
     no.parameters <- 2L
   }
 
@@ -263,7 +265,7 @@ expr_oneway_anova <- function(data,
     stats_df <- dplyr::bind_cols(stats_df, effsize_df)
 
     # expression details
-    c(no.parameters, k.parameter, k.parameter2) %<-% c(1L, 0L, 0L)
+    c(no.parameters, k.df, k.df.error) %<-% c(1L, 0L, 0L)
   }
 
   # ----------------------- robust ---------------------------------------
@@ -308,7 +310,7 @@ expr_oneway_anova <- function(data,
     }
 
     # expression details
-    c(no.parameters, k.parameter, k.parameter2) %<-% c(2L, ifelse(isTRUE(paired), k, 0L), k)
+    c(no.parameters, k.df, k.df.error) %<-% c(2L, ifelse(isTRUE(paired), k, 0L), k)
   }
 
   # final returns
@@ -316,12 +318,12 @@ expr_oneway_anova <- function(data,
     expression <-
       expr_template(
         no.parameters = no.parameters,
-        stats.df = stats_df,
+        data = stats_df,
         n = ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data)),
         paired = paired,
         k = k,
-        k.parameter = k.parameter,
-        k.parameter2 = k.parameter2
+        k.df = k.df,
+        k.df.error = k.df.error
       )
   }
 
@@ -350,7 +352,10 @@ expr_oneway_anova <- function(data,
   }
 
   # return the output
-  switch(output, "dataframe" = as_tibble(stats_df), expression)
+  switch(output,
+    "dataframe" = as_tibble(stats_df),
+    expression
+  )
 }
 
 
@@ -392,6 +397,6 @@ wAKPavg <- function(x, tr = 0.2, nboot = 100, ...) {
     "estimate" = mean(A[, 1]),
     "conf.low" = mean(A[, 2]),
     "conf.high" = mean(A[, 3]),
-    "ci.width" = 0.95
+    "conf.level" = 0.95
   )
 }
