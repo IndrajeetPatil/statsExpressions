@@ -318,70 +318,70 @@ expr_template <- function(data,
 #' @importFrom dplyr case_when
 #' @noRd
 
-stat_text_switch <- function(method) {
+stat_text_switch <- function(x) {
   # to make life easier
-  method <- tolower(method)
+  x <- tolower(x)
 
   # need to list because `case_when` can't handle outputs of different lengths
   dplyr::case_when(
-    grepl("^one sample|^two sample|bend|^paired|^pearson$", method) ~ list(quote(italic("t")["Student"])),
-    grepl("^boot", method) ~ list(quote(italic("t")["bootstrapped"])),
-    grepl("^welch", method) ~ list(quote(italic("t")["Welch"])),
-    grepl("wilcoxon rank", method) ~ list(quote("log"["e"](italic("W")["Mann-Whitney"]))),
-    grepl("wilcoxon signed", method) ~ list(quote("log"["e"](italic("V")["Wilcoxon"]))),
-    grepl("afex| of means$", method) ~ list(quote(italic("F")["Fisher"])),
-    grepl("variances", method) ~ list(quote(italic("F")["Welch"])),
-    grepl("friedman", method) ~ list(quote(chi["Friedman"]^2)),
-    grepl("kruskal", method) ~ list(quote(chi["Kruskal-Wallis"]^2)),
-    grepl("spearman", method) ~ list(quote("log"["e"](italic("S")))),
-    grepl("yuen", method) ~ list(quote(italic("t")["Yuen"])),
-    grepl("heteroscedastic", method) ~ list(quote(italic("F")["trimmed-means"])),
-    grepl("probabilities", method) ~ list(quote(chi["gof"]^2)),
-    grepl("pearson's chi", method) ~ list(quote(chi["Pearson"]^2)),
-    grepl("mcnemar's chi", method) ~ list(quote(chi["McNemar"]^2)),
-    grepl("meta", method) ~ list(quote(italic("z"))),
+    grepl("^one sample|^two sample|bend|^paired|pearson correlation$", x) ~ list(quote(italic("t")["Student"])),
+    grepl("^boot", x) ~ list(quote(italic("t")["bootstrapped"])),
+    grepl("^welch", x) ~ list(quote(italic("t")["Welch"])),
+    grepl("wilcoxon rank", x) ~ list(quote("log"["e"](italic("W")["Mann-Whitney"]))),
+    grepl("wilcoxon signed", x) ~ list(quote("log"["e"](italic("V")["Wilcoxon"]))),
+    grepl("afex| of means$", x) ~ list(quote(italic("F")["Fisher"])),
+    grepl("variances", x) ~ list(quote(italic("F")["Welch"])),
+    grepl("friedman", x) ~ list(quote(chi["Friedman"]^2)),
+    grepl("kruskal", x) ~ list(quote(chi["Kruskal-Wallis"]^2)),
+    grepl("spearman", x) ~ list(quote("log"["e"](italic("S")))),
+    grepl("yuen", x) ~ list(quote(italic("t")["Yuen"])),
+    grepl("heteroscedastic", x) ~ list(quote(italic("F")["trimmed-means"])),
+    grepl("probabilities", x) ~ list(quote(chi["gof"]^2)),
+    grepl("pearson's chi", x) ~ list(quote(chi["Pearson"]^2)),
+    grepl("mcnemar's chi", x) ~ list(quote(chi["McNemar"]^2)),
+    grepl("meta", x) ~ list(quote(italic("z"))),
     TRUE ~ list(NULL)
   )[[1]]
 }
 
 #' @noRd
 
-estimate_type_switch <- function(method) {
-  switch(
-    method,
-    "Pearson" = quote(widehat(italic("r"))["Pearson"]),
-    "Spearman" = quote(widehat(rho)["Spearman"]),
-    "Percentage Bend" = quote(widehat(rho)["% bend"]),
-    "Cohen's d" = quote(widehat(italic("d"))["Cohen"]),
-    "Hedges' g" = quote(widehat(italic("g"))["Hedge"]),
-    "r (rank biserial)" = quote(widehat(italic("r"))["biserial"]^"rank"),
-    "Explanatory measure of effect size" = quote(widehat(xi)),
-    "Algina-Keselman-Penfield robust standardized difference" = quote(widehat(delta)["R"]^"AKP"),
-    "Algina-Keselman-Penfield robust standardized difference average" = quote(widehat(delta)["R-avg"]^"AKP"),
-    "Trimmed mean" = quote(widehat(mu)["trimmed"]),
-    "Eta2" = ,
-    "Eta2 (partial)" = quote(widehat(eta["p"]^2)),
-    "Omega2" = ,
-    "Omega2 (partial)" = quote(widehat(omega["p"]^2)),
-    "Kendall's W" = quote(widehat(italic("W"))["Kendall"]),
-    "Epsilon2 (rank)" = quote(widehat(epsilon)["ordinal"]^2),
-    "Cramer's V (adj.)" = quote(widehat(italic("V"))["Cramer"]),
-    "Cohen's g" = quote(widehat(italic("g"))["Cohen"]),
-    "meta-analytic summary estimate" = quote(widehat(beta)["summary"]^"meta"),
-    "Bayesian contingency table analysis" = quote(italic("V")),
-    "Bayesian Pearson" = quote(rho),
-    "meta-analytic posterior estimate" = ,
-    "Bayesian t-test" = quote(italic(delta)),
-    "Bayes factors for linear models" = quote(italic(R^"2")),
-    NULL
-  )
+estimate_type_switch <- function(x) {
+  # to make life easier
+  x <- tolower(x)
+
+  # need to list because `case_when` can't handle outputs of different lengths
+  dplyr::case_when(
+    grepl("^pearson", x) ~ list(quote(widehat(italic("r"))["Pearson"])),
+    grepl("spearman", x) ~ list(quote(widehat(rho)["Spearman"])),
+    grepl("bend", x) ~ list(quote(widehat(rho)["% bend"])),
+    grepl("cohen's d", x) ~ list(quote(widehat(italic("d"))["Cohen"])),
+    grepl("hedges' g", x) ~ list(quote(widehat(italic("g"))["Hedge"])),
+    grepl("^eta2", x) ~ list(quote(widehat(eta["p"]^2))),
+    grepl("^omega2", x) ~ list(quote(widehat(omega["p"]^2))),
+    grepl("biserial", x) ~ list(quote(widehat(italic("r"))["biserial"]^"rank")),
+    grepl("^trimmed", x) ~ list(quote(widehat(mu)["trimmed"])),
+    grepl("^kendall", x) ~ list(quote(widehat(italic("W"))["Kendall"])),
+    grepl("^epsilon2", x) ~ list(quote(widehat(epsilon)["ordinal"]^2)),
+    grepl("cramer", x) ~ list(quote(widehat(italic("V"))["Cramer"])),
+    grepl("cohen's g", x) ~ list(quote(widehat(italic("g"))["Cohen"])),
+    grepl("^explanatory", x) ~ list(quote(widehat(xi))),
+    grepl("difference$", x) ~ list(quote(widehat(delta)["R"]^"AKP")),
+    grepl("average$", x) ~ list(quote(widehat(delta)["R-avg"]^"AKP")),
+    grepl("^bayesian pearson", x) ~ list(quote(rho)),
+    grepl("posterior|t-", x) ~ list(quote(italic(delta))),
+    grepl("contingency", x) ~ list(quote(italic("V"))),
+    grepl("linear", x) ~ list(quote(italic(R^"2"))),
+    grepl("^meta", x) ~ list(quote(widehat(beta)["summary"]^"meta")),
+    TRUE ~ list(NULL)
+  )[[1]]
 }
 
 #' @noRd
 
-prior_type_switch <- function(method) {
+prior_type_switch <- function(x) {
   dplyr::case_when(
-    grepl("contingency", tolower(method)) ~ quote(italic("a")["Gunel-Dickey"]),
+    grepl("contingency", tolower(x)) ~ quote(italic("a")["Gunel-Dickey"]),
     TRUE ~ quote(italic("r")["Cauchy"]^"JZS")
   )
 }
