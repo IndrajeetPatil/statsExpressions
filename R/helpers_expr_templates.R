@@ -324,7 +324,7 @@ stat_text_switch <- function(x) {
 
   # need to list because `case_when` can't handle outputs of different lengths
   dplyr::case_when(
-    grepl("^one sample|^two sample|bend|^paired|pearson correlation$", x) ~ list(quote(italic("t")["Student"])),
+    grepl("^one sample|^two sample|^pair|pearson correlation$", x) ~ list(quote(italic("t")["Student"])),
     grepl("^boot", x) ~ list(quote(italic("t")["bootstrapped"])),
     grepl("^welch", x) ~ list(quote(italic("t")["Welch"])),
     grepl("wilcoxon rank", x) ~ list(quote("log"["e"](italic("W")["Mann-Whitney"]))),
@@ -354,7 +354,7 @@ estimate_type_switch <- function(x) {
   dplyr::case_when(
     grepl("^pearson", x) ~ list(quote(widehat(italic("r"))["Pearson"])),
     grepl("spearman", x) ~ list(quote(widehat(rho)["Spearman"])),
-    grepl("bend", x) ~ list(quote(widehat(rho)["% bend"])),
+    grepl("^winsor", x) ~ list(quote(widehat(italic("r"))["Winsorized"])),
     grepl("cohen's d", x) ~ list(quote(widehat(italic("d"))["Cohen"])),
     grepl("hedges' g", x) ~ list(quote(widehat(italic("g"))["Hedge"])),
     grepl("^eta2", x) ~ list(quote(widehat(eta["p"]^2))),

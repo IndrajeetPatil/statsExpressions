@@ -21,13 +21,13 @@
 #'   Corresponding abbreviations are also accepted: `"p"` (for
 #'   parametric/pearson), `"np"` (nonparametric/spearman), `"r"` (robust),
 #'   `"bf"` (for Bayes Factor/Bayesian Pearson), resp.
-#' @param beta bending constant (Default: `0.1`). For more, see [WRS2::pbcor()].
 #' @inheritParams expr_oneway_anova
 #'
 #' @importFrom dplyr select case_when
 #' @importFrom correlation correlation
 #' @importFrom ipmisc stats_type_switch
 #' @importFrom parameters standardize_names
+#' @importFrom tidyr drop_na
 #'
 #' @examples
 #' # for reproducibility
@@ -58,36 +58,27 @@ expr_corr_test <- function(data,
                            type = "parametric",
                            k = 2L,
                            conf.level = 0.95,
-                           beta = 0.1,
+                           tr = 0.1,
                            bf.prior = 0.707,
                            top.text = NULL,
                            output = "expression",
                            ...) {
 
-  # -------------------------- checking corr.method --------------------------
-
   # see which method was used to specify type of correlation
   type <- ipmisc::stats_type_switch(type)
-
-  # if any of the abbreviations have been entered, change them
-  corr.method <-
-    dplyr::case_when(
-      type %in% c("bayes", "parametric") ~ "pearson",
-      type == "nonparametric" ~ "spearman",
-      type == "robust" ~ "percentage"
-    )
 
   # ----------------- creating correlation dataframes -----------------------
 
   # creating a dataframe of results
   stats_df <-
     correlation::correlation(
-      data = dplyr::select(.data = data, {{ x }}, {{ y }}),
-      method = corr.method,
+      data = tidyr::drop_na(dplyr::select(data, {{ x }}, {{ y }})),
+      method = ifelse(type == "nonparametric", "spearman", "pearson"),
       ci = conf.level,
       bayesian = ifelse(type == "bayes", TRUE, FALSE),
       bayesian_prior = bf.prior,
-      bayesian_ci_method = "hdi"
+      bayesian_ci_method = "hdi",
+      winsorize = ifelse(type == "robust", tr, FALSE)
     ) %>%
     parameters::standardize_names(style = "broom") %>%
     dplyr::mutate(effectsize = method)
