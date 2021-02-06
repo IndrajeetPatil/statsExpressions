@@ -160,7 +160,7 @@
   type <span class='op'>=</span> <span class='st'>"parametric"</span>,
   k <span class='op'>=</span> <span class='fl'>2L</span>,
   conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
-  beta <span class='op'>=</span> <span class='fl'>0.1</span>,
+  tr <span class='op'>=</span> <span class='fl'>0.1</span>,
   bf.prior <span class='op'>=</span> <span class='fl'>0.707</span>,
   top.text <span class='op'>=</span> <span class='cn'>NULL</span>,
   output <span class='op'>=</span> <span class='st'>"expression"</span>,
@@ -208,8 +208,12 @@ parametric/pearson), <code>"np"</code> (nonparametric/spearman), <code>"r"</code
 return <code>95%</code> confidence/credible intervals (<code>0.95</code>).</p></td>
     </tr>
     <tr>
-      <th>beta</th>
-      <td><p>bending constant (Default: <code>0.1</code>). For more, see <code><a href='https://rdrr.io/pkg/WRS2/man/pbcor.html'>WRS2::pbcor()</a></code>.</p></td>
+      <th>tr</th>
+      <td><p>Trim level for the mean when carrying out <code>robust</code> tests. If you
+get error stating "Standard error cannot be computed because of Winsorized
+variance of 0 (e.g., due to ties). Try to decrease the trimming level.",
+try to play around with the value of <code>tr</code>, which is by default set to
+<code>0.1</code>. Lowering the value might help.</p></td>
     </tr>
     <tr>
       <th>bf.prior</th>
@@ -269,10 +273,13 @@ via <code><a href='https://easystats.github.io/correlation/reference/correlation
 </div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 12</span><span>
 #&gt;   </span><span style='font-weight: bold;'>parameter1</span><span> </span><span style='font-weight: bold;'>parameter2</span><span> </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>statistic</span><span>
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> area       percblack   </span><span style='color: #555555;'>0.00</span><span>2</span><span style='text-decoration: underline;'>40</span><span>       </span><span style='color: #555555;'>0.</span><span>95  -</span><span style='color: #555555;'>0.0</span><span style='color: #BB0000;'>91</span><span style='color: #BB0000;text-decoration: underline;'>4</span><span>    </span><span style='color: #555555;'>0.0</span><span>96</span><span style='text-decoration: underline;'>2</span><span>    </span><span style='color: #555555;'>0.0</span><span>50</span><span style='text-decoration: underline;'>0</span><span>
-#&gt;   </span><span style='font-weight: bold;'>df.error</span><span> </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>method</span><span>          </span><span style='font-weight: bold;'>n.obs</span><span> </span><span style='font-weight: bold;'>effectsize</span><span>     
-#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          
-#&gt; </span><span style='color: #555555;'>1</span><span>      435   </span><span style='color: #555555;'>0.</span><span>960 Percentage Bend   437 Percentage Bend</div></span></pre>
+#&gt; </span><span style='color: #555555;'>1</span><span> area       percblack  </span><span style='color: #555555;'>0.000</span><span style='text-decoration: underline;'>247</span><span>       </span><span style='color: #555555;'>0.</span><span>95  -</span><span style='color: #555555;'>0.0</span><span style='color: #BB0000;'>93</span><span style='color: #BB0000;text-decoration: underline;'>6</span><span>    </span><span style='color: #555555;'>0.0</span><span>94</span><span style='text-decoration: underline;'>0</span><span>   </span><span style='color: #555555;'>0.00</span><span>5</span><span style='text-decoration: underline;'>15</span><span>
+#&gt;   </span><span style='font-weight: bold;'>df.error</span><span> </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>method</span><span>                         </span><span style='font-weight: bold;'>n.obs</span><span>
+#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                          </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>      435   </span><span style='color: #555555;'>0.</span><span>996 Winsorized Pearson correlation   437
+#&gt;   </span><span style='font-weight: bold;'>effectsize</span><span>                    
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                         
+#&gt; </span><span style='color: #555555;'>1</span><span> Winsorized Pearson correlation</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

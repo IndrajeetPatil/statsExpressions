@@ -155,7 +155,6 @@ test_that(
   desc = "expr_corr_test works - robust",
   code = {
     skip_if(getRversion() < "3.6")
-    skip_on_cran()
 
     if (utils::packageVersion("correlation") > package_version("0.4.0")) {
       # using function
@@ -178,20 +177,20 @@ test_that(
             "(",
             "54",
             ") = ",
-            "-5.3621",
+            "-5.0440",
             ", ",
             italic("p"),
             " = ",
-            "1.756e-06",
+            "5.484e-06",
             ", ",
-            widehat(rho)["% bend"],
+            widehat(italic("r"))["Winsorized"],
             " = ",
-            "-0.5894",
+            "-0.5659",
             ", CI"["50%"],
             " [",
-            "-0.6466",
+            "-0.6256",
             ", ",
-            "-0.5257",
+            "-0.4997",
             "]",
             ", ",
             italic("n")["pairs"],

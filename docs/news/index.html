@@ -158,6 +158,7 @@
 <li><p>Removes <code>tidy_model_performance</code> function, which is no longer used internally.</p></li>
 <li><p>Removes column containing <code>log</code> values of Bayes Factor as they are relevant only for expressions.</p></li>
 <li><p>All meta-analysis packages move from <code>Imports</code> to <code>Suggests</code> to reduce the installation time for the user.</p></li>
+<li><p>All robust tests in this package were based on trimmed means, except for correlation test. This has been changed: the robust correlation measure is now Winsorized correlation, which is based on trimming. Therefore, the <code>beta</code> argument has been replaced by <code>tr</code> argument. This should result only in minor changes in correlation coefficient estimates.</p></li>
 </ul>
 </div>
     <div id="statsexpressions-070" class="section level1">

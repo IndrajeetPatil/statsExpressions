@@ -21,6 +21,12 @@ MAJOR CHANGES
   - All meta-analysis packages move from `Imports` to `Suggests` to reduce the
     installation time for the user.
 
+  - All robust tests in this package were based on trimmed means, except for
+    correlation test. This has been changed: the robust correlation measure is
+    now Winsorized correlation, which is based on trimming. Therefore, the
+    `beta` argument has been replaced by `tr` argument. This should result only
+    in minor changes in correlation coefficient estimates.
+
 # statsExpressions 0.7.0
 
 BREAKING CHANGES
