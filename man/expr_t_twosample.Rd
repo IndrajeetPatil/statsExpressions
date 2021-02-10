@@ -16,7 +16,7 @@ expr_t_twosample(
   effsize.type = "g",
   var.equal = FALSE,
   bf.prior = 0.707,
-  tr = 0.1,
+  tr = 0.2,
   nboot = 100,
   top.text = NULL,
   output = "expression",
@@ -69,7 +69,7 @@ width to use in calculating Bayes factors.}
 get error stating "Standard error cannot be computed because of Winsorized
 variance of 0 (e.g., due to ties). Try to decrease the trimming level.",
 try to play around with the value of \code{tr}, which is by default set to
-\code{0.1}. Lowering the value might help.}
+\code{0.2}. Lowering the value might help.}
 
 \item{nboot}{Number of bootstrap samples for computing confidence interval
 for the effect size (Default: \code{100}).}

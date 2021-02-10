@@ -11,7 +11,7 @@ expr_t_onesample(
   test.value = 0,
   k = 2L,
   conf.level = 0.95,
-  tr = 0.1,
+  tr = 0.2,
   bf.prior = 0.707,
   effsize.type = "g",
   nboot = 100L,
@@ -44,7 +44,7 @@ or \code{"robust"} or \code{"bayes"}).Corresponding abbreviations are also accep
 get error stating "Standard error cannot be computed because of Winsorized
 variance of 0 (e.g., due to ties). Try to decrease the trimming level.",
 try to play around with the value of \code{tr}, which is by default set to
-\code{0.1}. Lowering the value might help.}
+\code{0.2}. Lowering the value might help.}
 
 \item{bf.prior}{A number between \code{0.5} and \code{2} (default \code{0.707}), the prior
 width to use in calculating Bayes factors.}

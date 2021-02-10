@@ -98,7 +98,7 @@
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2021-02-05</h4>
+            <h4 class="date">2021-02-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -185,10 +185,10 @@
 <span class="co">#&gt; # A tibble: 1 x 8</span>
 <span class="co">#&gt;   statistic p.value method                                 estimate conf.low</span>
 <span class="co">#&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                                     &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     -8.78       0 Bootstrap-t method for one-sample test   0.0660  0.00500</span>
+<span class="co">#&gt; 1     -14.7       0 Bootstrap-t method for one-sample test   0.0390  0.00201</span>
 <span class="co">#&gt;   conf.high conf.level effectsize  </span>
 <span class="co">#&gt;       &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;       </span>
-<span class="co">#&gt; 1     0.127       0.95 Trimmed mean</span>
+<span class="co">#&gt; 1    0.0759       0.95 Trimmed mean</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
@@ -281,12 +281,12 @@
   output <span class="op">=</span> <span class="st">"dataframe"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 9</span>
-<span class="co">#&gt;   statistic df.error       p.value</span>
-<span class="co">#&gt;       &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      6.71       72 0.00000000375</span>
+<span class="co">#&gt;   statistic df.error      p.value</span>
+<span class="co">#&gt;       &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      6.46       54 0.0000000313</span>
 <span class="co">#&gt;   method                                             estimate conf.low conf.high</span>
 <span class="co">#&gt;   &lt;chr&gt;                                                 &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Yuen's test on trimmed means for dependent samples    0.621    0.385     0.798</span>
+<span class="co">#&gt; 1 Yuen's test on trimmed means for dependent samples    0.533    0.369     0.707</span>
 <span class="co">#&gt;   conf.level effectsize                                             </span>
 <span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;                                                  </span>
 <span class="co">#&gt; 1       0.95 Algina-Keselman-Penfield robust standardized difference</span>
@@ -394,13 +394,13 @@
 <span class="co">#&gt; # A tibble: 1 x 9</span>
 <span class="co">#&gt;   statistic df.error p.value</span>
 <span class="co">#&gt;       &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      2.05     45.2  0.0460</span>
+<span class="co">#&gt; 1      2.29     33.5  0.0286</span>
 <span class="co">#&gt;   method                                               estimate conf.low</span>
 <span class="co">#&gt;   &lt;chr&gt;                                                   &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Yuen's test on trimmed means for independent samples    0.384   0.0401</span>
+<span class="co">#&gt; 1 Yuen's test on trimmed means for independent samples    0.400   0.0228</span>
 <span class="co">#&gt;   conf.high conf.level effectsize                        </span>
 <span class="co">#&gt;       &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                             </span>
-<span class="co">#&gt; 1     0.659       0.95 Explanatory measure of effect size</span>
+<span class="co">#&gt; 1     0.733       0.95 Explanatory measure of effect size</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
@@ -495,13 +495,13 @@
 <span class="co">#&gt; # A tibble: 1 x 10</span>
 <span class="co">#&gt;   statistic    df df.error  p.value</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      21.2  2.69     191. 4.79e-11</span>
+<span class="co">#&gt; 1      21.0  2.73     145. 1.15e-10</span>
 <span class="co">#&gt;   method                                                              estimate</span>
 <span class="co">#&gt;   &lt;chr&gt;                                                                  &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 A heteroscedastic one-way repeated measures ANOVA for trimmed means    0.740</span>
+<span class="co">#&gt; 1 A heteroscedastic one-way repeated measures ANOVA for trimmed means    0.664</span>
 <span class="co">#&gt;   conf.low conf.high conf.level</span>
 <span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    0.526     0.986       0.95</span>
+<span class="co">#&gt; 1    0.466     0.971       0.95</span>
 <span class="co">#&gt;   effectsize                                                     </span>
 <span class="co">#&gt;   &lt;chr&gt;                                                          </span>
 <span class="co">#&gt; 1 Algina-Keselman-Penfield robust standardized difference average</span>
@@ -655,7 +655,7 @@
 <span class="co">#&gt; # A tibble: 1 x 10</span>
 <span class="co">#&gt;   statistic    df df.error p.value estimate conf.level conf.low conf.high</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      124.     2     71.6       0    0.916       0.95    0.861     0.984</span>
+<span class="co">#&gt; 1      112.     2     53.8       0    0.846       0.95    0.759     0.933</span>
 <span class="co">#&gt;   effectsize                        </span>
 <span class="co">#&gt;   &lt;chr&gt;                             </span>
 <span class="co">#&gt; 1 Explanatory measure of effect size</span>
@@ -912,10 +912,10 @@
 <span class="co">#&gt; # A tibble: 1 x 12</span>
 <span class="co">#&gt;   parameter1 parameter2 estimate conf.level conf.low conf.high statistic</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 wt         mpg          -0.897       0.95   -0.949    -0.797     -11.1</span>
+<span class="co">#&gt; 1 wt         mpg          -0.864       0.95   -0.932    -0.738     -9.41</span>
 <span class="co">#&gt;   df.error  p.value method                         n.obs</span>
 <span class="co">#&gt;      &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;                          &lt;int&gt;</span>
-<span class="co">#&gt; 1       30 3.81e-12 Winsorized Pearson correlation    32</span>
+<span class="co">#&gt; 1       30 1.84e-10 Winsorized Pearson correlation    32</span>
 <span class="co">#&gt;   effectsize                    </span>
 <span class="co">#&gt;   &lt;chr&gt;                         </span>
 <span class="co">#&gt; 1 Winsorized Pearson correlation</span>

@@ -21,7 +21,7 @@
 #'   get error stating "Standard error cannot be computed because of Winsorized
 #'   variance of 0 (e.g., due to ties). Try to decrease the trimming level.",
 #'   try to play around with the value of `tr`, which is by default set to
-#'   `0.1`. Lowering the value might help.
+#'   `0.2`. Lowering the value might help.
 #' @param nboot Number of bootstrap samples for computing confidence interval
 #'   for the effect size (Default: `100`).
 #' @param bf.prior A number between `0.5` and `2` (default `0.707`), the prior
@@ -150,7 +150,7 @@ expr_oneway_anova <- function(data,
                               effsize.type = "omega",
                               var.equal = FALSE,
                               bf.prior = 0.707,
-                              tr = 0.1,
+                              tr = 0.2,
                               nboot = 100,
                               top.text = NULL,
                               output = "expression",

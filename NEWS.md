@@ -1,5 +1,10 @@
 # statsExpressions 0.7.1
 
+BREAKING CHANGES
+
+  - To avoid confusion among users, the trimming level for all functions is now
+    changed from `tr = 0.1` to `tr = 0.2` (which is what `WRS2` defaults to).
+
 MAJOR CHANGES
 
   - `expr_template` gains a new argument `bayesian`, which can return an
