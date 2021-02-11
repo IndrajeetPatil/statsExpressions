@@ -55,8 +55,9 @@ test_that(
     skip_if(getRversion() < "3.6")
 
     # data
-    dat <- tidyr::spread(bugs_long, condition, desire) %>%
-      dplyr::filter(.data = ., !is.na(HDLF), !is.na(HDHF))
+    dat <-
+      tidyr::spread(bugs_long, condition, desire) %>%
+      dplyr::filter(!is.na(HDLF), !is.na(HDHF))
 
     # creating a tidy dataframe
     dat_tidy <- dplyr::filter(bugs_long, condition %in% c("HDLF", "HDHF"))

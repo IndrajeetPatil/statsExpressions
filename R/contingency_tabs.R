@@ -121,11 +121,11 @@ expr_contingency_tab <- function(data,
 
   # creating a dataframe
   data %<>%
-    dplyr::select(.data = ., {{ x }}, {{ y }}, .counts = {{ counts }}) %>%
+    dplyr::select({{ x }}, {{ y }}, .counts = {{ counts }}) %>%
     tidyr::drop_na(.)
 
   # untable the dataframe based on the count for each observation
-  if (".counts" %in% names(data)) data %<>% tidyr::uncount(data = ., weights = .counts)
+  if (".counts" %in% names(data)) data %<>% tidyr::uncount(weights = .counts)
 
   # variables needed for both one-way and two-way analysis
   x_vec <- data %>% dplyr::pull({{ x }})

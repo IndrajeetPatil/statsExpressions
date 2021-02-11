@@ -254,7 +254,7 @@ test_that(
       )
 
     # expanding the dataframe
-    paired_data %<>% tidyr::uncount(data = ., weights = Freq)
+    paired_data %<>% tidyr::uncount(weights = Freq)
 
     # introduce NAs
     # check that 2-by-2 doesn't produce continuity correction
@@ -339,8 +339,9 @@ test_that(
     ))
 
     # cleaning the factor levels
-    df <- as.data.frame(as.table(matrix_df)) %>%
-      dplyr::mutate(.data = ., Var2 = dplyr::case_when(
+    df <-
+      as.data.frame(as.table(matrix_df)) %>%
+      dplyr::mutate(Var2 = dplyr::case_when(
         Var2 == "Pastafarian2" ~ "Pastafarian",
         Var2 == "Discordiant2" ~ "Discordiant",
         Var2 == "Dudist2" ~ "Dudist",

@@ -151,7 +151,6 @@ expr_t_twosample <- function(data,
   # properly removing NAs if it's a paired design
   data %<>%
     long_to_wide_converter(
-      data = .,
       x = {{ x }},
       y = {{ y }},
       subject.id = {{ subject.id }},

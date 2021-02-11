@@ -174,7 +174,6 @@ expr_oneway_anova <- function(data,
   # data cleanup
   data %<>%
     ipmisc::long_to_wide_converter(
-      data = .,
       x = {{ x }},
       y = {{ y }},
       subject.id = {{ subject.id }},
