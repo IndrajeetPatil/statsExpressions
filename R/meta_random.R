@@ -116,7 +116,6 @@ expr_meta_random <- function(data,
       no.parameters = 0L,
       k = k,
       top.text = top.text,
-      centrality = "mean",
       bayesian = ifelse(type == "bayes", TRUE, FALSE)
     )
 

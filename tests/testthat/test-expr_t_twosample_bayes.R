@@ -37,7 +37,7 @@ test_that(
       bf_expr,
       ggplot2::expr(
         paste("log"["e"] * "(BF"["01"] * ") = " *
-          "-0.18" * ", ", widehat(italic(delta))["median"]^"posterior" *
+          "-0.18" * ", ", widehat(italic(delta))["difference"]^"posterior" *
           " = " * "-3.16" * ", ", "CI"["99%"]^"HDI" *
           " [" * "-8.13" * ", " * "1.35" *
           "], ", italic("r")["Cauchy"]^"JZS" *
@@ -98,7 +98,7 @@ test_that(
           expr = paste(
             "log"["e"] *
               "(BF"["01"] * ") = " * "-3.70" * ", ",
-            widehat(italic(delta))["median"]^"posterior" * " = " * "-1.09" * ", ",
+            widehat(italic(delta))["difference"]^"posterior" * " = " * "-1.09" * ", ",
             "CI"["95%"]^"HDI" * " [" * "-1.70" * ", " * "-0.49" * "], ",
             italic("r")["Cauchy"]^"JZS" * " = " * "0.80"
           )

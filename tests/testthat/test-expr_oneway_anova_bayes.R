@@ -40,7 +40,7 @@ test_that(
       ggplot2::expr(
         paste(
           "log"["e"] * "(BF"["01"] * ") = " * "1.92" * ", ",
-          widehat(italic(R^"2"))["median"]^"posterior" * " = " * "0.00" * ", ",
+          widehat(italic(R^"2"))["Bayesian"]^"posterior" * " = " * "0.00" * ", ",
           "CI"["95%"]^"HDI" * " [" * "0.00" * ", " * "0.08" * "], ",
           italic("r")["Cauchy"]^"JZS" * " = " * "0.88"
         )
@@ -66,7 +66,7 @@ test_that(
       ggplot2::expr(
         paste(
           "log"["e"] * "(BF"["01"] * ") = " * "-65.10" * ", ",
-          widehat(italic(R^"2"))["median"]^"posterior" * " = " * "0.61" * ", ",
+          widehat(italic(R^"2"))["Bayesian"]^"posterior" * " = " * "0.61" * ", ",
           "CI"["99%"]^"HDI" * " [" * "0.51" * ", " * "0.68" * "], ",
           italic("r")["Cauchy"]^"JZS" * " = " * "0.71"
         )
@@ -171,7 +171,7 @@ test_that(
         ggplot2::expr(
           paste(
             "log"["e"] * "(BF"["01"] * ") = " * "-1.96" * ", ",
-            widehat(italic(R^"2"))["median"]^"posterior" * " = " * "0.89" * ", ",
+            widehat(italic(R^"2"))["Bayesian"]^"posterior" * " = " * "0.89" * ", ",
             "CI"["95%"]^"HDI" * " [" * "0.85" * ", " * "0.92" * "], ",
             italic("r")["Cauchy"]^"JZS" * " = " * "0.88"
           )
@@ -183,7 +183,7 @@ test_that(
         ggplot2::expr(
           paste(
             "log"["e"] * "(BF"["01"] * ") = " * "-21.04" * ", ",
-            widehat(italic(R^"2"))["median"]^"posterior" * " = " * "0.53" * ", ",
+            widehat(italic(R^"2"))["Bayesian"]^"posterior" * " = " * "0.53" * ", ",
             "CI"["95%"]^"HDI" * " [" * "0.46" * ", " * "0.59" * "], ",
             italic("r")["Cauchy"]^"JZS" * " = " * "0.71"
           )

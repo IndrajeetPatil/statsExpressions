@@ -9,6 +9,9 @@
 #' Ideally, this dataframe would come from having run `tidy_model_parameters`
 #' function on your model object.
 #'
+#' This function is currently **not** stable and should not be used outside of
+#' this package context.
+#'
 #' @param no.parameters An integer that specifies that the number of parameters
 #'   for the statistical test. Can be `0` for non-parametric tests, `1` for
 #'   tests based on *t*-statistic or chi-squared statistic, `2` for tests based
@@ -44,13 +47,11 @@
 #'   what the `n` stands for. If `NULL`, defaults to
 #'   `quote(italic("n")["pairs"])` if `paired = TRUE`, and to
 #'   `quote(italic("n")["obs"])` if `paired = FALSE`.
-#' @param prior.text A character that specifies the prior type.
+#' @param prior.distribution A character that specifies the prior type.
 #' @param effsize.text A character that specifies the relevant effect size.
 #' @param bayesian Is this Bayesian analysis? Defaults to `FALSE`. The template
 #'   is slightly different for Bayesian analysis.
-#' @param centrality The point-estimates (centrality indices) to compute.
-#'   Character (vector) or list with one or more of these options: `"median"`,
-#'   `"mean"`, `"MAP"` or `"all"`.
+#' @param prior.type The type of prior.
 #' @param conf.method The type of index used for Credible Interval. Can be
 #'   `"hdi"` (default), `"eti"`, or `"si"` (see `si()`, `hdi()`, `eti()`
 #'   functions from `bayestestR` package).
@@ -96,11 +97,11 @@ expr_template <- function(data,
                           statistic.text = NULL,
                           effsize.text = NULL,
                           top.text = NULL,
-                          prior.text = NULL,
+                          prior.distribution = NULL,
+                          prior.type = NULL,
                           n = NULL,
                           n.text = NULL,
                           paired = FALSE,
-                          centrality = "median",
                           conf.method = "HDI",
                           k = 2L,
                           k.df = 0L,
@@ -130,12 +131,14 @@ expr_template <- function(data,
   if (isFALSE(paired) && is.null(n.text)) n.text <- quote(italic("n")["obs"])
   if (is.null(statistic.text)) statistic.text <- stat_text_switch(data$method[[1]])
   if (is.null(effsize.text)) effsize.text <- estimate_type_switch(data$effectsize[[1]])
-  if (is.null(prior.text) && bayesian) prior.text <- prior_type_switch(data$method[[1]])
   if ("conf.level" %in% names(data)) conf.level <- data$conf.level[[1]] else conf.level <- 0.95
 
   # -------------------------- Bayesian analysis ------------------------------
 
   if (isTRUE(bayesian)) {
+    if (is.null(prior.distribution)) prior.distribution <- prior_switch(data$method[[1]])
+    if (is.null(prior.type)) prior.type <- prior_type_switch(data$method[[1]])
+
     # Bayesian expression
     expression <-
       substitute(
@@ -143,22 +146,22 @@ expr_template <- function(data,
           displaystyle(top.text),
           expr = paste(
             "log"["e"] * "(BF"["01"] * ") = " * bf * ", ",
-            widehat(effsize.text)[centrality]^"posterior" * " = " * estimate * ", ",
+            widehat(effsize.text)[prior.type]^"posterior" * " = " * estimate * ", ",
             "CI"[conf.level]^conf.method * " [" * estimate.LB * ", " * estimate.UB * "], ",
-            prior.text * " = " * bf.prior
+            prior.distribution * " = " * bf.prior
           )
         ),
         env = list(
           top.text = top.text,
           effsize.text = effsize.text,
-          centrality = centrality,
+          prior.type = prior.type,
           conf.level = paste0(conf.level * 100, "%"),
           conf.method = toupper(conf.method),
           bf = format_num(-log(data$bf10[[1]]), k),
           estimate = format_num(estimate, k),
           estimate.LB = format_num(estimate.LB, k),
           estimate.UB = format_num(estimate.UB, k),
-          prior.text = prior.text,
+          prior.distribution = prior.distribution,
           bf.prior = format_num(data$prior.scale[[1]], k)
         )
       )
@@ -379,11 +382,24 @@ estimate_type_switch <- function(x) {
 
 #' @noRd
 
-prior_type_switch <- function(x) {
+prior_switch <- function(x) {
   dplyr::case_when(
     grepl("contingency", tolower(x)) ~ quote(italic("a")["Gunel-Dickey"]),
+    grepl("correlation", tolower(x)) ~ quote(italic("r")["beta"]^"JZS"),
     TRUE ~ quote(italic("r")["Cauchy"]^"JZS")
   )
+}
+
+#' @noRd
+
+prior_type_switch <- function(x) {
+  dplyr::case_when(
+    grepl("contingency", tolower(x)) ~ list("Cramer"),
+    grepl("correlation", tolower(x)) ~ list("Pearson"),
+    grepl("t-|meta-", tolower(x)) ~ list("difference"),
+    grepl("linear", tolower(x)) ~ list("Bayesian"),
+    TRUE ~ list(NULL)
+  )[[1]]
 }
 
 #' @noRd

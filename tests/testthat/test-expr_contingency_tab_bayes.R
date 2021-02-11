@@ -97,10 +97,9 @@ test_that(
         counts = "Freq",
         sampling.plan = "jointMulti",
         fixed.margin = "rows",
-        k = 3L,
-        output = "expression",
         conf.level = 0.99,
-        centrality = "mean"
+        k = 3L,
+        output = "expression"
       )
 
     # with counts
@@ -123,7 +122,7 @@ test_that(
       ggplot2::expr(
         paste(
           "log"["e"] * "(BF"["01"] * ") = " * "-3.335" * ", ",
-          widehat(italic("V"))["median"]^"posterior" * " = " * "0.479" * ", ",
+          widehat(italic("V"))["Cramer"]^"posterior" * " = " * "0.479" * ", ",
           "CI"["89%"]^"HDI" * " [" * "0.285" * ", " * "0.692" * "], ",
           italic("a")["Gunel-Dickey"] * " = " * "1.000"
         )
@@ -138,7 +137,7 @@ test_that(
       ggplot2::expr(
         paste(
           "log"["e"] * "(BF"["01"] * ") = " * "-214.255" * ", ",
-          widehat(italic("V"))["median"]^"posterior" * " = " * "0.455" * ", ",
+          widehat(italic("V"))["Cramer"]^"posterior" * " = " * "0.455" * ", ",
           "CI"["99%"]^"HDI" * " [" * "0.402" * ", " * "0.508" * "], ",
           italic("a")["Gunel-Dickey"] * " = " * "1.000"
         )
@@ -150,7 +149,7 @@ test_that(
       ggplot2::expr(
         paste(
           "log"["e"] * "(BF"["01"] * ") = " * "-213.873" * ", ",
-          widehat(italic("V"))["median"]^"posterior" * " = " * "0.454" * ", ",
+          widehat(italic("V"))["Cramer"]^"posterior" * " = " * "0.454" * ", ",
           "CI"["95%"]^"HDI" * " [" * "0.417" * ", " * "0.495" * "], ",
           italic("a")["Gunel-Dickey"] * " = " * "1.500"
         )

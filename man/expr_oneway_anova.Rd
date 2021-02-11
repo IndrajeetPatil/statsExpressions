@@ -91,6 +91,16 @@ For more details, see-
 \description{
 Expression and dataframe for one-way ANOVA
 }
+\note{
+\enumerate{
+\item Please note that the function expects that the data is
+already sorted by subject/repeated measures ID.
+\item To carry out Bayesian analysis for ANOVA designs, you will need to install
+the development version of \code{BayesFactor} (\verb{0.9.12-4.3}). You can download it
+by running:
+\code{remotes::install_github("richarddmorey/BayesFactor/pkg/BayesFactor")}.
+}
+}
 \examples{
 \donttest{
 # for reproducibility

@@ -323,7 +323,6 @@ test_that(
         test.value = 5.5,
         bf.prior = 0.99,
         output = "expression",
-        centrality = "mean",
         conf.level = 0.90
       )
 
@@ -334,7 +333,7 @@ test_that(
       ggplot2::expr(
         paste(
           "log"["e"] * "(BF"["01"] * ") = " * "-47.84" * ", ",
-          widehat(italic(delta))["median"]^"posterior" * " = " * "1.76" * ", ",
+          widehat(italic(delta))["difference"]^"posterior" * " = " * "1.76" * ", ",
           "CI"["90%"]^"HDI" * " [" * "1.52" * ", " * "1.99" * "], ",
           italic("r")["Cauchy"]^"JZS" * " = " * "0.99"
         )
@@ -361,7 +360,7 @@ test_that(
       ggplot2::expr(
         paste(
           "log"["e"] * "(BF"["01"] * ") = " * "2.125" * ", ",
-          widehat(italic(delta))["median"]^"posterior" * " = " * "-0.018" * ", ",
+          widehat(italic(delta))["difference"]^"posterior" * " = " * "-0.018" * ", ",
           "CI"["95%"]^"HDI" * " [" * "-0.265" * ", " * "0.242" * "], ",
           italic("r")["Cauchy"]^"JZS" * " = " * "0.900"
         )

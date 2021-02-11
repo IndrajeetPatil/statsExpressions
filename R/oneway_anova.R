@@ -32,6 +32,15 @@
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams stats::oneway.test
 #'
+#' @note
+#' 1. Please note that the function expects that the data is
+#'   already sorted by subject/repeated measures ID.
+#'
+#' 2. To carry out Bayesian analysis for ANOVA designs, you will need to install
+#' the development version of `BayesFactor` (`0.9.12-4.3`). You can download it
+#' by running:
+#' `remotes::install_github("richarddmorey/BayesFactor/pkg/BayesFactor")`.
+#'
 #' @importFrom dplyr select rename matches
 #' @importFrom rlang !! !!! quo_is_null eval_tidy expr enexpr ensym exec new_formula
 #' @importFrom stats oneway.test
@@ -206,11 +215,7 @@ expr_oneway_anova <- function(data,
     # tidying it up
     stats_df <- tidy_model_parameters(mod)
     effsize_df <-
-      suppressWarnings(rlang::exec(
-        .fn = .f.es,
-        model = mod,
-        ci = conf.level
-      )) %>%
+      suppressWarnings(rlang::exec(.fn = .f.es, model = mod, ci = conf.level)) %>%
       tidy_model_effectsize(.)
 
     # combining dataframes

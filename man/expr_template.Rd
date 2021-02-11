@@ -11,11 +11,11 @@ expr_template(
   statistic.text = NULL,
   effsize.text = NULL,
   top.text = NULL,
-  prior.text = NULL,
+  prior.distribution = NULL,
+  prior.type = NULL,
   n = NULL,
   n.text = NULL,
   paired = FALSE,
-  centrality = "median",
   conf.method = "HDI",
   k = 2L,
   k.df = 0L,
@@ -59,7 +59,9 @@ For example, for tests with \emph{t}-statistic, \code{statistic.text = "t"}.}
 \item{top.text}{Text to display on top of the Bayes Factor message. This is
 mostly relevant in the context of \code{ggstatsplot} functions.}
 
-\item{prior.text}{A character that specifies the prior type.}
+\item{prior.distribution}{A character that specifies the prior type.}
+
+\item{prior.type}{The type of prior.}
 
 \item{n}{An integer specifying the sample size used for the test.}
 
@@ -71,10 +73,6 @@ what the \code{n} stands for. If \code{NULL}, defaults to
 \item{paired}{Logical that decides whether the experimental design is
 repeated measures/within-subjects or between-subjects. The default is
 \code{FALSE}.}
-
-\item{centrality}{The point-estimates (centrality indices) to compute.
-Character (vector) or list with one or more of these options: \code{"median"},
-\code{"mean"}, \code{"MAP"} or \code{"all"}.}
 
 \item{conf.method}{The type of index used for Credible Interval. Can be
 \code{"hdi"} (default), \code{"eti"}, or \code{"si"} (see \code{si()}, \code{hdi()}, \code{eti()}
@@ -94,6 +92,9 @@ parameters (default: \code{0}).}
 Creates an expression from a dataframe containing statistical details.
 Ideally, this dataframe would come from having run \code{tidy_model_parameters}
 function on your model object.
+
+This function is currently \strong{not} stable and should not be used outside of
+this package context.
 }
 \examples{
 set.seed(123)

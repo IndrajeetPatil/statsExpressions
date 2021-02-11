@@ -5,8 +5,13 @@ output: github_document
   <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, echo = FALSE}
-# show me all columns
-options(tibble.width = Inf, pillar.bold = TRUE, pillar.subtle_num = TRUE)
+options(
+  tibble.width = Inf,
+  pillar.bold = TRUE,
+  pillar.neg = TRUE,
+  pillar.subtle_num = TRUE,
+  pillar.min_chars = Inf
+)
 
 knitr::opts_chunk$set(
   collapse = TRUE,

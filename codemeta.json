@@ -22,7 +22,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R Under development (unstable) (2021-01-13 r79826)",
+  "runtimePlatform": "R version 4.0.3 (2020-10-10)",
   "author": [
     {
       "@type": "Person",
@@ -202,7 +202,7 @@
       "@type": "SoftwareApplication",
       "identifier": "correlation",
       "name": "correlation",
-      "version": ">= 0.5.0.1",
+      "version": ">= 0.5.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -392,6 +392,5 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3910.285KB",
-  "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
+  "fileSize": "3833.346KB"
 }
