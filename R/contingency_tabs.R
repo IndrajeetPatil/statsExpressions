@@ -160,7 +160,6 @@ expr_contingency_tab <- function(data,
         .fn = .f.es,
         adjust = TRUE,
         ci = conf.level,
-        verbose = FALSE,
         !!!.f.args
       ) %>%
       tidy_model_effectsize(.)
