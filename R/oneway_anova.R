@@ -45,7 +45,7 @@
 #' @importFrom rlang !! !!! quo_is_null eval_tidy expr enexpr ensym exec new_formula
 #' @importFrom stats oneway.test
 #' @importFrom afex aov_ez
-#' @importFrom WRS2 t1way rmanova
+#' @importFrom WRS2 t1way rmanova wmcpAKP
 #' @importFrom stats friedman.test kruskal.test na.omit
 #' @importFrom effectsize rank_epsilon_squared kendalls_w
 #' @importFrom effectsize omega_squared eta_squared
@@ -206,7 +206,6 @@ expr_oneway_anova <- function(data,
         stats::oneway.test(
           formula = rlang::new_formula(y, x),
           data = data,
-          na.action = na.omit,
           var.equal = var.equal
         )
     }
@@ -369,44 +368,9 @@ expr_oneway_anova <- function(data,
 }
 
 
-#' @name wAKPavg
-#' @note Adapted from Rand Wilcox's script
-#'
-#' @param x A dataframe in wide format.
-#'
-#' @importFrom WRS2 dep.effect
-#'
-#' @examples
-#' before <- c(190, 210, 300, 240, 280, 170, 280, 250, 240, 220)
-#' now <- c(170, 280, 250, 240, 190, 260, 180, 200, 100, 200)
-#' after <- c(210, 210, 340, 190, 260, 180, 200, 220, 230, 200)
-#' df <- data.frame(before, now, after)
-#' wAKPavg(df)
 #' @noRd
 
 wAKPavg <- function(x, tr = 0.2, nboot = 100, ...) {
-  x <- as.list(x) # dataframe to a list
-  J <- length(x)
-  C <- (J^2 - J) / 2
-  A <- matrix(NA, nrow = C, ncol = 3)
-  dimnames(A) <- list(NULL, c("estimate", "conf.low", "conf.high"))
-  ic <- 0
-  for (j in 1:J) {
-    for (k in 1:J) {
-      if (j < k) {
-        ic <- ic + 1
-        A[ic, 1] <- WRS2::dep.effect(x[[j]], x[[k]], tr = tr, nboot = nboot)[5]
-        A[ic, 2] <- WRS2::dep.effect(x[[j]], x[[k]], tr = tr, nboot = nboot)[21]
-        A[ic, 3] <- WRS2::dep.effect(x[[j]], x[[k]], tr = tr, nboot = nboot)[25]
-      }
-    }
-  }
-
-  # return as a dataframe
-  tibble(
-    "estimate" = mean(A[, 1]),
-    "conf.low" = mean(A[, 2]),
-    "conf.high" = mean(A[, 3]),
-    "conf.level" = 0.95
-  )
+  A <- WRS2::wmcpAKP(x, tr, nboot)
+  tibble("estimate" = A[[1]], "conf.low" = A[[2]], "conf.high" = A[[3]], "conf.level" = 0.95)
 }

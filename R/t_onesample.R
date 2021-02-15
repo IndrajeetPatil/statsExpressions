@@ -114,7 +114,6 @@ expr_t_onesample <- function(data,
         .fn = .f,
         x = x_vec,
         mu = test.value,
-        na.action = na.omit,
         exact = FALSE
       ) %>%
       tidy_model_parameters(.) %>%

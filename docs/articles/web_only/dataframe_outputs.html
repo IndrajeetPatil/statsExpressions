@@ -98,9 +98,9 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Dataframe outputs</h1>
-                        <h4 class="author">Indrajeet Patil</h4>
+                        <h4 data-toc-skip class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2021-02-15</h4>
+            <h4 data-toc-skip class="date">2021-02-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -113,7 +113,7 @@
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
 <p>Although the primary focus of this package is to get expressions containing statistical results, one can also use it to extract dataframes containing these details. This vignette catalogs dataframe outputs from all functions.</p>
-<p>A dataframe will contain the following columns (the exact details depend on the test and the statistical approach):</p>
+<p>A dataframe will contain the following columns (the exact columns will depend on the test and the statistical approach):</p>
 <ul>
 <li><p><em>statistic</em>: the numeric value of a statistic.</p></li>
 <li><p><em>parameter</em>: the numeric value of a parameter being modeled (often degrees of freedom for the test); note that if <code>no.parameters = 0L</code> (e.g., for non-parametric tests), this column will be irrelevant.</p></li>

@@ -145,9 +145,6 @@ expr_t_twosample <- function(data,
   # make sure both quoted and unquoted arguments are supported
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
-  # whether to switch from long to wide depends on the test
-  spread <- ifelse(type %in% c("bayes", "robust"), paired, FALSE)
-
   # properly removing NAs if it's a paired design
   data %<>%
     long_to_wide_converter(
@@ -155,16 +152,16 @@ expr_t_twosample <- function(data,
       y = {{ y }},
       subject.id = {{ subject.id }},
       paired = paired,
-      spread = spread
+      spread = ifelse(type %in% c("bayes", "robust"), paired, FALSE)
     )
 
   # ----------------------- parametric ---------------------------------------
 
   if (type == "parametric") {
     # preparing expression parameters
-    no.parameters <- 1L
+    c(no.parameters, k.df) %<-% c(1L, ifelse(isTRUE(paired) || isTRUE(var.equal), 0L, k))
     .f <- stats::t.test
-    k.df <- ifelse(isTRUE(paired) || isTRUE(var.equal), 0L, k)
+
     if (effsize.type %in% c("unbiased", "g")) .f.es <- effectsize::hedges_g
     if (effsize.type %in% c("biased", "d")) .f.es <- effectsize::cohens_d
   }
@@ -187,7 +184,6 @@ expr_t_twosample <- function(data,
         data = data,
         paired = paired,
         var.equal = var.equal,
-        na.action = na.omit,
         exact = FALSE
       ) %>%
       tidy_model_parameters(.)
@@ -213,7 +209,7 @@ expr_t_twosample <- function(data,
 
   if (type == "robust") {
     # expression parameters
-    c(no.parameters, k.df) %<-% c(1L, k)
+    c(no.parameters, k.df) %<-% c(1L, ifelse(isTRUE(paired), 0L, k))
 
     # running robust analysis
     if (isFALSE(paired)) {
@@ -243,9 +239,6 @@ expr_t_twosample <- function(data,
     }
 
     if (isTRUE(paired)) {
-      # expression parameters
-      c(k.df, conf.level) %<-% c(0L, 0.95)
-
       # running robust paired t-test and its effect size
       mod <- WRS2::yuend(x = data[2], y = data[3], tr = tr)
       mod2 <- WRS2::dep.effect(x = data[2], y = data[3], tr = tr, nboot = nboot)

@@ -150,9 +150,7 @@ expr_contingency_tab <- function(data,
     }
 
     # stats
-    stats_df <-
-      rlang::exec(.fn = .f, !!!.f.args) %>%
-      tidy_model_parameters(.)
+    stats_df <- tidy_model_parameters(rlang::exec(.fn = .f, !!!.f.args))
 
     # computing effect size + CI
     effsize_df <-

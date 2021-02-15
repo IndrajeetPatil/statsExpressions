@@ -20,7 +20,13 @@ vignette: >
 
 ```{r setup, include = FALSE}
 # show me all columns
-options(tibble.width = Inf, pillar.bold = TRUE, pillar.subtle_num = TRUE)
+options(
+  tibble.width = Inf,
+  pillar.bold = TRUE,
+  pillar.neg = TRUE,
+  pillar.subtle_num = TRUE,
+  pillar.min_chars = Inf
+)
 
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -38,8 +44,8 @@ Although the primary focus of this package is to get expressions containing
 statistical results, one can also use it to extract dataframes containing these
 details. This vignette catalogs dataframe outputs from all functions.
 
-A dataframe will contain the following columns (the exact details depend on the
-test and the statistical approach):
+A dataframe will contain the following columns (the exact columns will depend on
+the test and the statistical approach):
 
   - *statistic*: the numeric value of a statistic.
 
