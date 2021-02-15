@@ -31,7 +31,7 @@ test_that(
           " = ",
           "0.00910",
           ", ",
-          widehat(italic("g"))["Hedge"],
+          widehat(italic("g"))["Hedges"],
           " = ",
           "-0.29805",
           ", CI"["95%"],

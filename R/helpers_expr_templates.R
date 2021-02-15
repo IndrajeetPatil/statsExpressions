@@ -359,7 +359,7 @@ estimate_type_switch <- function(x) {
     grepl("spearman", x) ~ list(quote(widehat(rho)["Spearman"])),
     grepl("^winsor", x) ~ list(quote(widehat(italic("r"))["Winsorized"])),
     grepl("cohen's d", x) ~ list(quote(widehat(italic("d"))["Cohen"])),
-    grepl("hedges' g", x) ~ list(quote(widehat(italic("g"))["Hedge"])),
+    grepl("hedges' g", x) ~ list(quote(widehat(italic("g"))["Hedges"])),
     grepl("^eta2", x) ~ list(quote(widehat(eta["p"]^2))),
     grepl("^omega2", x) ~ list(quote(widehat(omega["p"]^2))),
     grepl("biserial", x) ~ list(quote(widehat(italic("r"))["biserial"]^"rank")),

@@ -200,6 +200,7 @@ expr_t_twosample <- function(data,
         data = data,
         paired = paired,
         ci = conf.level,
+        verbose = FALSE,
         iterations = nboot
       ) %>%
       tidy_model_effectsize(.)

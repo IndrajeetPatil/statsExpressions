@@ -214,7 +214,12 @@ expr_oneway_anova <- function(data,
     # tidying it up
     stats_df <- tidy_model_parameters(mod)
     effsize_df <-
-      suppressWarnings(rlang::exec(.fn = .f.es, model = mod, ci = conf.level)) %>%
+      suppressWarnings(rlang::exec(
+        .fn = .f.es,
+        model = mod,
+        ci = conf.level,
+        verbose = FALSE
+      )) %>%
       tidy_model_effectsize(.)
 
     # combining dataframes
@@ -261,6 +266,7 @@ expr_oneway_anova <- function(data,
         data = data,
         ci = conf.level,
         iterations = nboot,
+        verbose = FALSE,
         !!!.f.es.args
       ) %>%
       tidy_model_effectsize(.)
@@ -305,7 +311,7 @@ expr_oneway_anova <- function(data,
     # for paired designs, WRS2 currently doesn't return effect size
     if (isTRUE(paired)) {
       effsize_df <-
-        ipmisc::long_to_wide_converter(data, {{ x }}, {{ y }}, paired = TRUE, spread = TRUE) %>%
+        ipmisc::long_to_wide_converter(data, {{ x }}, {{ y }}) %>%
         wAKPavg(dplyr::select(-rowid), tr = tr, nboot = nboot) %>%
         dplyr::mutate(effectsize = "Algina-Keselman-Penfield robust standardized difference average")
 

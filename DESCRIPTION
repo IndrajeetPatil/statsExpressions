@@ -27,7 +27,7 @@ Depends:
 Imports:
     afex,
     BayesFactor,
-    correlation (>= 0.5.1),
+    correlation (>= 0.6.0),
     dplyr,
     effectsize (>= 0.4.3),
     insight (>= 0.12.0.1),
@@ -60,6 +60,6 @@ Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
     "collate", "pkgapi::api_roclet"))
-RoxygenNote: 7.1.1.9000
+RoxygenNote: 7.1.1.9001
 Config/testthat/edition: 3
 Config/testthat/parallel: true

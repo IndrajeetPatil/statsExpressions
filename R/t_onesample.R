@@ -126,6 +126,7 @@ expr_t_onesample <- function(data,
         .fn = .f.es,
         x = x_vec - test.value,
         ci = conf.level,
+        verbose = FALSE,
         iterations = nboot
       ) %>%
       tidy_model_effectsize(.)
