@@ -55,7 +55,10 @@
   
 
 <meta property="og:title" content="Expression and dataframe for correlation analysis — expr_corr_test" />
-<meta property="og:description" content="Expression and dataframe for correlation analysis" />
+<meta property="og:description" content="
+A dataframe containing results from correlation test with confidence
+intervals for the correlation coefficient estimate. Results are extracted
+via correlation::correlation." />
 <meta property="og:image" content="https://indrajeetpatil.github.io/statsExpressions/logo.png" />
 
 
@@ -156,7 +159,10 @@
     </div>
 
     <div class="ref-description">
-    <p>Expression and dataframe for correlation analysis</p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a></p>
+<p>A dataframe containing results from correlation test with confidence
+intervals for the correlation coefficient estimate. Results are extracted
+via <code><a href='https://easystats.github.io/correlation/reference/correlation.html'>correlation::correlation</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>expr_corr_test</span><span class='op'>(</span>
@@ -195,13 +201,17 @@ be plotted on the <code>y</code>-axis. Can be entered either as a character stri
     </tr>
     <tr>
       <th>type</th>
-      <td><p>Type of association between paired samples required
-("<code>"parametric"</code>: Pearson's product moment correlation coefficient" or
-"<code>"nonparametric"</code>: Spearman's rho" or "<code>"robust"</code>: percentage bend
-correlation coefficient" or "<code>"bayes"</code>: Bayes Factor for Pearson's <em>r</em>").
-Corresponding abbreviations are also accepted: <code>"p"</code> (for
-parametric/pearson), <code>"np"</code> (nonparametric/spearman), <code>"r"</code> (robust),
-<code>"bf"</code> (for Bayes Factor/Bayesian Pearson), resp.</p></td>
+      <td><p>A character specifying the type of statistical approach.
+Four possible options:</p>
+<ul>
+<li><p><code>"parametric"</code></p></li>
+<li><p><code>"nonparametric"</code></p></li>
+<li><p><code>"robust"</code></p></li>
+<li><p><code>"bayes"</code></p></li>
+</ul>
+
+<p>Corresponding abbreviations are also accepted: <code>"p"</code> (for parametric),
+<code>"np"</code> (for nonparametric), <code>"r"</code> (for robust), or <code>"bf"</code> (for Bayesian).</p></td>
     </tr>
     <tr>
       <th>k</th>
@@ -215,16 +225,14 @@ return <code>95%</code> confidence/credible intervals (<code>0.95</code>).</p></
     </tr>
     <tr>
       <th>tr</th>
-      <td><p>Trim level for the mean when carrying out <code>robust</code> tests. If you
-get error stating "Standard error cannot be computed because of Winsorized
-variance of 0 (e.g., due to ties). Try to decrease the trimming level.",
-try to play around with the value of <code>tr</code>, which is by default set to
+      <td><p>Trim level for the mean when carrying out <code>robust</code> tests. In case
+of an error, try reducing the value of <code>tr</code>, which is by default set to
 <code>0.2</code>. Lowering the value might help.</p></td>
     </tr>
     <tr>
       <th>bf.prior</th>
       <td><p>A number between <code>0.5</code> and <code>2</code> (default <code>0.707</code>), the prior
-width to use in calculating Bayes factors.</p></td>
+width to use in calculating Bayes factors and posterior estimates.</p></td>
     </tr>
     <tr>
       <th>top.text</th>
@@ -243,11 +251,6 @@ results.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Expression containing results from correlation test with confidence
-intervals for the correlation coefficient estimate. Results are extracted
-via <code><a href='https://easystats.github.io/correlation/reference/correlation.html'>correlation::correlation</a></code>.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>For more details, see-

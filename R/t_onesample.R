@@ -10,11 +10,14 @@
 #' @inheritParams expr_t_twosample
 #' @inheritParams expr_oneway_anova
 #'
-#' @return Expression containing results from a one-sample test. The exact test
-#'   and the effect size details contained will be dependent on the `type`
-#'   argument.
+#' @description
 #'
-#' @references For more details, see-
+#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("maturing")}
+#'
+#' A dataframe containing results from a one-sample test. The exact test and the
+#' effect size details contained will depend on the `type` argument.
+#'
+#' For more details, see-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @importFrom dplyr select mutate pull rename_all recode

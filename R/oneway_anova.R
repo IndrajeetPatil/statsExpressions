@@ -1,14 +1,28 @@
 #' @title Expression and dataframe for one-way ANOVA
 #' @name expr_oneway_anova
 #'
-#' @return For more details, see-
+#' @description
+#'
+#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("maturing")}
+#'
+#' A dataframe containing results for one-way ANOVA.
+#'
+#' For more details, see-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @inheritParams ipmisc::long_to_wide_converter
-#' @param type Type of statistic expected (`"parametric"` or `"nonparametric"`
-#'   or `"robust"` or `"bayes"`).Corresponding abbreviations are also accepted:
-#'   `"p"` (for parametric), `"np"` (nonparametric), `"r"` (robust), or
-#'   `"bf"`resp.
+#' @param type A character specifying the type of statistical approach.
+#' Four possible options:
+#'
+#' \itemize{
+#'   \item `"parametric"`
+#'   \item `"nonparametric"`
+#'   \item `"robust"`
+#'   \item `"bayes"`
+#' }
+#'
+#'   Corresponding abbreviations are also accepted: `"p"` (for parametric),
+#'   `"np"` (for nonparametric), `"r"` (for robust), or `"bf"` (for Bayesian).
 #' @param conf.level Scalar between `0` and `1`. If unspecified, the defaults
 #'   return `95%` confidence/credible intervals (`0.95`).
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
@@ -17,15 +31,13 @@
 #' @param output If `"expression"`, will return expression with statistical
 #'   details, while `"dataframe"` will return a dataframe containing the
 #'   results.
-#' @param tr Trim level for the mean when carrying out `robust` tests. If you
-#'   get error stating "Standard error cannot be computed because of Winsorized
-#'   variance of 0 (e.g., due to ties). Try to decrease the trimming level.",
-#'   try to play around with the value of `tr`, which is by default set to
+#' @param tr Trim level for the mean when carrying out `robust` tests. In case
+#'   of an error, try reducing the value of `tr`, which is by default set to
 #'   `0.2`. Lowering the value might help.
 #' @param nboot Number of bootstrap samples for computing confidence interval
 #'   for the effect size (Default: `100`).
 #' @param bf.prior A number between `0.5` and `2` (default `0.707`), the prior
-#'   width to use in calculating Bayes factors.
+#'   width to use in calculating Bayes factors and posterior estimates.
 #' @inheritParams expr_t_twosample
 #' @inheritParams expr_template
 #' @inheritParams bf_extractor

@@ -4,7 +4,7 @@ pkgdown_sha: 1c28ef9d9476e35974e1933de76a9aaa24d4cd27
 articles:
   stats_details: stats_details.html
   web_only/dataframe_outputs: dataframe_outputs.html
-last_built: 2021-02-15T16:44Z
+last_built: 2021-02-16T20:27Z
 urls:
   reference: https://indrajeetpatil.github.io/statsExpressions//reference
   article: https://indrajeetpatil.github.io/statsExpressions//articles

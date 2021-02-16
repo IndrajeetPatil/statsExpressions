@@ -38,10 +38,18 @@ repeated measures design study (Default: \code{FALSE}). If \code{TRUE}, McNemar'
 test expression will be returned. If \code{FALSE}, Pearson's chi-square test will
 be returned.}
 
-\item{type}{Type of statistic expected (\code{"parametric"} or \code{"nonparametric"}
-or \code{"robust"} or \code{"bayes"}).Corresponding abbreviations are also accepted:
-\code{"p"} (for parametric), \code{"np"} (nonparametric), \code{"r"} (robust), or
-\code{"bf"}resp.}
+\item{type}{A character specifying the type of statistical approach.
+Four possible options:
+
+\itemize{
+\item \code{"parametric"}
+\item \code{"nonparametric"}
+\item \code{"robust"}
+\item \code{"bayes"}
+}
+
+Corresponding abbreviations are also accepted: \code{"p"} (for parametric),
+\code{"np"} (for nonparametric), \code{"r"} (for robust), or \code{"bf"} (for Bayesian).}
 
 \item{counts}{A string naming a variable in data containing counts, or \code{NULL}
 if each row represents a single observation.}
@@ -80,14 +88,14 @@ results.}
 
 \item{...}{Additional arguments (currently ignored).}
 }
-\value{
-Expression or a dataframe for contingency table analysis (Pearson's
-chi-square test for independence for between-subjects design or McNemar's
-test for within-subjects design) or goodness of fit test for a single
-categorical variable.
-}
 \description{
-Expression and dataframe for contingency table analysis
+\Sexpr[results=rd, stage=render]{rlang:::lifecycle("maturing")}
+
+A dataframe containing results from for contingency table analysis or
+goodness of fit test.
+
+For more details, see-
+\url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }
 \examples{
 \donttest{
@@ -135,8 +143,4 @@ expr_contingency_tab(
   type = "bayes"
 )
 }
-}
-\references{
-For more details, see-
-\url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }

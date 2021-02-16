@@ -1,9 +1,13 @@
 #' @title Expression and dataframe for correlation analysis
 #' @name expr_corr_test
 #'
-#' @return Expression containing results from correlation test with confidence
-#'   intervals for the correlation coefficient estimate. Results are extracted
-#'   via `correlation::correlation`.
+#' @description
+#'
+#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("maturing")}
+#'
+#'  A dataframe containing results from correlation test with confidence
+#'  intervals for the correlation coefficient estimate. Results are extracted
+#'  via `correlation::correlation`.
 #'
 #' @references For more details, see-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
@@ -14,13 +18,6 @@
 #' @param y The column in `data` containing the response (outcome) variable to
 #'   be plotted on the `y`-axis. Can be entered either as a character string
 #'   (e.g., `"y"`) or as a bare expression (e.g, `y`).
-#' @param type Type of association between paired samples required
-#'   ("`"parametric"`: Pearson's product moment correlation coefficient" or
-#'   "`"nonparametric"`: Spearman's rho" or "`"robust"`: percentage bend
-#'   correlation coefficient" or "`"bayes"`: Bayes Factor for Pearson's *r*").
-#'   Corresponding abbreviations are also accepted: `"p"` (for
-#'   parametric/pearson), `"np"` (nonparametric/spearman), `"r"` (robust),
-#'   `"bf"` (for Bayes Factor/Bayesian Pearson), resp.
 #' @inheritParams expr_oneway_anova
 #'
 #' @importFrom dplyr select case_when

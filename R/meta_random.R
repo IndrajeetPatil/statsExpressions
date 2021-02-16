@@ -13,6 +13,15 @@
 #' @param ... Additional arguments passed to the respective meta-analysis
 #'   function.
 #'
+#' @description
+#'
+#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("maturing")}
+#'
+#' A dataframe containing results from random-effects meta-analysis.
+#'
+#' For more details, see-
+#' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
+#'
 #' @note **Important**: The function assumes that you have already downloaded
 #'   the needed package (`metafor`, `metaplus`, or `metaBMA`) for meta-analysis.
 #'

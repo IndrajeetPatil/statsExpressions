@@ -17,8 +17,15 @@
 #' @importFrom WRS2 yuen yuen.effect.ci yuend dep.effect
 #' @importFrom effectsize cohens_d hedges_g rank_biserial
 #'
-#' @return Expression containing details from results of a two-sample test and
-#'   effect size plus confidence intervals.
+#' @description
+#'
+#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("maturing")}
+#'
+#'  A dataframe containing details from results of a two-sample test and effect
+#'  size plus confidence intervals.
+#'
+#'  For more details, see-
+#'  \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @note The *stats::wilcox.test* function does not follow the same convention
 #'   as *stats::t.test*. The sign of the *V* test statistic will always be
@@ -26,9 +33,6 @@
 #'   *V* will vary in magnitude but not significance based solely on the order
 #'   of the grouping variable. Consider manually reordering your factor levels
 #'   if appropriate as shown in the second example below.
-#'
-#' @references For more details, see-
-#' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @examples
 #' \donttest{

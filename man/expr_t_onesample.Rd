@@ -26,10 +26,18 @@ be taken. A matrix or tables will \strong{not} be accepted.}
 
 \item{x}{A numeric variable from the dataframe \code{data}.}
 
-\item{type}{Type of statistic expected (\code{"parametric"} or \code{"nonparametric"}
-or \code{"robust"} or \code{"bayes"}).Corresponding abbreviations are also accepted:
-\code{"p"} (for parametric), \code{"np"} (nonparametric), \code{"r"} (robust), or
-\code{"bf"}resp.}
+\item{type}{A character specifying the type of statistical approach.
+Four possible options:
+
+\itemize{
+\item \code{"parametric"}
+\item \code{"nonparametric"}
+\item \code{"robust"}
+\item \code{"bayes"}
+}
+
+Corresponding abbreviations are also accepted: \code{"p"} (for parametric),
+\code{"np"} (for nonparametric), \code{"r"} (for robust), or \code{"bf"} (for Bayesian).}
 
 \item{test.value}{A number specifying the value of the null hypothesis
 (Default: \code{0}).}
@@ -40,14 +48,12 @@ or \code{"robust"} or \code{"bayes"}).Corresponding abbreviations are also accep
 \item{conf.level}{Confidence/Credible Interval (CI) level. Default to \code{0.95}
 (\verb{95\%}).}
 
-\item{tr}{Trim level for the mean when carrying out \code{robust} tests. If you
-get error stating "Standard error cannot be computed because of Winsorized
-variance of 0 (e.g., due to ties). Try to decrease the trimming level.",
-try to play around with the value of \code{tr}, which is by default set to
+\item{tr}{Trim level for the mean when carrying out \code{robust} tests. In case
+of an error, try reducing the value of \code{tr}, which is by default set to
 \code{0.2}. Lowering the value might help.}
 
 \item{bf.prior}{A number between \code{0.5} and \code{2} (default \code{0.707}), the prior
-width to use in calculating Bayes factors.}
+width to use in calculating Bayes factors and posterior estimates.}
 
 \item{effsize.type}{Type of effect size needed for \emph{parametric} tests. The
 argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \emph{g}).}
@@ -64,13 +70,14 @@ results.}
 
 \item{...}{Currently ignored.}
 }
-\value{
-Expression containing results from a one-sample test. The exact test
-and the effect size details contained will be dependent on the \code{type}
-argument.
-}
 \description{
-Expression and dataframe for one-sample \emph{t}-test
+\Sexpr[results=rd, stage=render]{rlang:::lifecycle("maturing")}
+
+A dataframe containing results from a one-sample test. The exact test and the
+effect size details contained will depend on the \code{type} argument.
+
+For more details, see-
+\url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }
 \examples{
 \donttest{
@@ -115,8 +122,4 @@ expr_t_onesample(
   bf.prior = 0.8
 )
 }
-}
-\references{
-For more details, see-
-\url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }

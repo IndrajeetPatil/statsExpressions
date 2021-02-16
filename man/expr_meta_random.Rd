@@ -23,10 +23,18 @@ two columns will be used for \code{yi}  and \code{sei} arguments in \code{metafo
 and for \code{y} and \code{SE} arguments in \code{metaBMA::meta_random} (for Bayesian
 analysis).}
 
-\item{type}{Type of statistic expected (\code{"parametric"} or \code{"nonparametric"}
-or \code{"robust"} or \code{"bayes"}).Corresponding abbreviations are also accepted:
-\code{"p"} (for parametric), \code{"np"} (nonparametric), \code{"r"} (robust), or
-\code{"bf"}resp.}
+\item{type}{A character specifying the type of statistical approach.
+Four possible options:
+
+\itemize{
+\item \code{"parametric"}
+\item \code{"nonparametric"}
+\item \code{"robust"}
+\item \code{"bayes"}
+}
+
+Corresponding abbreviations are also accepted: \code{"p"} (for parametric),
+\code{"np"} (for nonparametric), \code{"r"} (for robust), or \code{"bf"} (for Bayesian).}
 
 \item{random}{
 The type of random effects distribution. One of "normal","t-dist","mixture", for standard normal, \eqn{t}-distribution or mixture of normals respectively.
@@ -49,7 +57,12 @@ results.}
 function.}
 }
 \description{
-Expression and dataframe for random-effects meta-analysis
+\Sexpr[results=rd, stage=render]{rlang:::lifecycle("maturing")}
+
+A dataframe containing results from random-effects meta-analysis.
+
+For more details, see-
+\url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }
 \note{
 \strong{Important}: The function assumes that you have already downloaded

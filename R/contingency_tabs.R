@@ -1,12 +1,14 @@
 #' @title Expression and dataframe for contingency table analysis
 #' @name expr_contingency_tab
 #'
-#' @return Expression or a dataframe for contingency table analysis (Pearson's
-#'   chi-square test for independence for between-subjects design or McNemar's
-#'   test for within-subjects design) or goodness of fit test for a single
-#'   categorical variable.
+#' @description
 #'
-#' @references For more details, see-
+#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("maturing")}
+#'
+#' A dataframe containing results from for contingency table analysis or
+#' goodness of fit test.
+#'
+#' For more details, see-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @param x The variable to use as the **rows** in the contingency table.

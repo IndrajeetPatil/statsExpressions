@@ -114,7 +114,7 @@ versions of:
 The table below summarizes all the different types of analyses currently
 supported in this package-
 
-Description | Parametric | Non-parametric | Robust | Bayes Factor
+Description | Parametric | Non-parametric | Robust | Bayesian
 ------------------ | ---- | ----- | ----| ----- 
 Between group/condition comparisons | <font color="green">Yes</font> | <font color="green">Yes</font> | <font color="green">Yes</font> | <font color="green">Yes</font>
 Within group/condition comparisons | <font color="green">Yes</font> | <font color="green">Yes</font> | <font color="green">Yes</font> | <font color="green">Yes</font>

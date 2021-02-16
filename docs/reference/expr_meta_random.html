@@ -55,7 +55,10 @@
   
 
 <meta property="og:title" content="Expression and dataframe for random-effects meta-analysis — expr_meta_random" />
-<meta property="og:description" content="Expression and dataframe for random-effects meta-analysis" />
+<meta property="og:description" content="
+A dataframe containing results from random-effects meta-analysis.
+For more details, see-
+https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" />
 <meta property="og:image" content="https://indrajeetpatil.github.io/statsExpressions/logo.png" />
 
 
@@ -156,7 +159,10 @@
     </div>
 
     <div class="ref-description">
-    <p>Expression and dataframe for random-effects meta-analysis</p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a></p>
+<p>A dataframe containing results from random-effects meta-analysis.</p>
+<p>For more details, see-
+<a href='https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html'>https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html</a></p>
     </div>
 
     <pre class="usage"><span class='fu'>expr_meta_random</span><span class='op'>(</span>
@@ -184,10 +190,17 @@ analysis).</p></td>
     </tr>
     <tr>
       <th>type</th>
-      <td><p>Type of statistic expected (<code>"parametric"</code> or <code>"nonparametric"</code>
-or <code>"robust"</code> or <code>"bayes"</code>).Corresponding abbreviations are also accepted:
-<code>"p"</code> (for parametric), <code>"np"</code> (nonparametric), <code>"r"</code> (robust), or
-<code>"bf"</code>resp.</p></td>
+      <td><p>A character specifying the type of statistical approach.
+Four possible options:</p>
+<ul>
+<li><p><code>"parametric"</code></p></li>
+<li><p><code>"nonparametric"</code></p></li>
+<li><p><code>"robust"</code></p></li>
+<li><p><code>"bayes"</code></p></li>
+</ul>
+
+<p>Corresponding abbreviations are also accepted: <code>"p"</code> (for parametric),
+<code>"np"</code> (for nonparametric), <code>"r"</code> (for robust), or <code>"bf"</code> (for Bayesian).</p></td>
     </tr>
     <tr>
       <th>random</th>
