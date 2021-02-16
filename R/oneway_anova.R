@@ -250,12 +250,7 @@ expr_oneway_anova <- function(data,
 
     # extracting test details
     stats_df <-
-      rlang::exec(
-        .fn = .f,
-        !!!.f.args,
-        data = data,
-        na.action = na.omit
-      ) %>%
+      rlang::exec(.fn = .f, !!!.f.args, data = data) %>%
       tidy_model_parameters(.)
 
     # computing respective effect sizes

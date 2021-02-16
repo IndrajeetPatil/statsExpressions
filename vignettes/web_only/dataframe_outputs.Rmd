@@ -76,7 +76,7 @@ to, see:
 
 # One-sample tests
 
-```{r}
+```{r onesample}
 # setup
 library(statsExpressions)
 
@@ -134,7 +134,7 @@ expr_t_onesample(
 
 ## within-subjects design
 
-```{r}
+```{r twosample_w}
 # setup
 library(statsExpressions)
 
@@ -193,14 +193,14 @@ expr_t_twosample(
   y = desire,
   paired = TRUE,
   subject.id = subject,
-  type = "bf",
+  type = "bayes",
   output = "dataframe"
 )
 ```
 
 ## between-subjects design
 
-```{r}
+```{r twosample_b}
 # setup
 set.seed(123)
 library(statsExpressions)
@@ -262,7 +262,7 @@ expr_t_twosample(
   data = ToothGrowth,
   x = supp,
   y = len,
-  type = "bf",
+  type = "bayes",
   output = "dataframe"
 )
 ```
@@ -271,7 +271,7 @@ expr_t_twosample(
 
 ## within-subjects design
 
-```{r}
+```{r anova_w}
 # setup
 library(statsExpressions)
 
@@ -334,7 +334,7 @@ expr_oneway_anova(
 
 ## between-subjects design
 
-```{r}
+```{r anova_b}
 # setup
 library(statsExpressions)
 
@@ -402,7 +402,7 @@ expr_oneway_anova(
 
 # Contingency table analyses
 
-```{r}
+```{r conttabs}
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
@@ -489,7 +489,7 @@ expr_contingency_tab(
 
 # Correlation analyses
 
-```{r}
+```{r corr}
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
@@ -545,7 +545,7 @@ expr_corr_test(
 
 # Meta-analysis
 
-```{r}
+```{r meta}
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
