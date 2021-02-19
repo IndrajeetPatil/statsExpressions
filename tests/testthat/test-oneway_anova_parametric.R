@@ -8,7 +8,7 @@ test_that(
     # statsExpression output
     set.seed(123)
     using_function1 <-
-      expr_oneway_anova(
+      oneway_anova(
         data = dplyr::sample_frac(movies_long, 0.1),
         x = genre,
         y = rating,
@@ -50,7 +50,7 @@ test_that(
       )
 
     # testing overall call
-    expect_identical(using_function1, results1)
+    expect_identical(using_function1$expression[[1]], results1)
   }
 )
 
@@ -64,7 +64,7 @@ test_that(
     # statsExpression output
     set.seed(123)
     using_function1 <-
-      expr_oneway_anova(
+      oneway_anova(
         data = ggplot2::msleep,
         x = vore,
         y = "sleep_rem",
@@ -105,7 +105,7 @@ test_that(
       )
 
     # testing overall call
-    expect_identical(using_function1, results1)
+    expect_identical(using_function1$expression[[1]], results1)
   }
 )
 
@@ -115,11 +115,10 @@ test_that(
   desc = "parametric anova subtitles with partial eta-squared and data with NAs",
   code = {
 
-
     # statsExpression output
     set.seed(123)
     using_function1 <-
-      expr_oneway_anova(
+      oneway_anova(
         data = ggplot2::msleep,
         x = vore,
         y = sleep_rem,
@@ -161,7 +160,7 @@ test_that(
       )
 
     # testing overall call
-    expect_identical(using_function1, results1)
+    expect_identical(using_function1$expression[[1]], results1)
   }
 )
 
@@ -171,11 +170,10 @@ test_that(
   desc = "parametric anova subtitles work (without NAs)",
   code = {
 
-
     # statsExpression output
     set.seed(123)
     using_function1 <-
-      expr_oneway_anova(
+      oneway_anova(
         data = iris_long,
         x = "condition",
         y = value,
@@ -217,7 +215,7 @@ test_that(
       )
 
     # testing overall call
-    expect_identical(using_function1, results1)
+    expect_identical(using_function1$expression[[1]], results1)
   }
 )
 
@@ -287,7 +285,7 @@ test_that(
     # capture the message
     set.seed(123)
     p_sub <-
-      suppressWarnings(expr_oneway_anova(
+      suppressWarnings(oneway_anova(
         data = df,
         x = x,
         y = y,
@@ -297,7 +295,7 @@ test_that(
 
     # check that
     expect_identical(
-      p_sub,
+      p_sub$expression[[1]],
       ggplot2::expr(paste(
         italic("F")["Fisher"],
         "(",
@@ -367,7 +365,7 @@ test_that(
     # incorrect
     set.seed(123)
     expr1 <-
-      expr_oneway_anova(
+      oneway_anova(
         data = df,
         x = condition,
         y = score,
@@ -378,7 +376,7 @@ test_that(
     # correct
     set.seed(123)
     expr2 <-
-      expr_oneway_anova(
+      oneway_anova(
         data = dplyr::arrange(df, id),
         x = condition,
         y = score,
@@ -395,11 +393,10 @@ test_that(
   desc = "dataframe",
   code = {
     expect_s3_class(
-      expr_oneway_anova(
+      oneway_anova(
         data = mtcars,
         x = cyl,
-        y = wt,
-        output = "dataframe"
+        y = wt
       ),
       "tbl_df"
     )

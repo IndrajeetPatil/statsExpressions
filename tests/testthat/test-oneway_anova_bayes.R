@@ -7,30 +7,27 @@ if (packageVersion("parameters") > "0.11.0") {
     code = {
       skip_if(getRversion() < "4.0")
 
-
       # extracting results from where this function is implemented
       set.seed(123)
       df_results <-
-        expr_oneway_anova(
+        oneway_anova(
           type = "bayes",
           data = ggplot2::msleep,
           x = "vore",
           y = brainwt,
-          bf.prior = 0.99,
-          output = "dataframe"
+          bf.prior = 0.99
         )
 
       # extracting expr
       set.seed(123)
       results <-
-        expr_oneway_anova(
+        oneway_anova(
           type = "bayes",
           data = ggplot2::msleep,
           x = vore,
           y = "brainwt",
           bf.prior = 0.88,
-          k = 2, # don't change; tests fail on Ubuntu otherwise
-          output = "expression"
+          k = 2 # don't change; tests fail on Ubuntu otherwise
         )
 
       # check bayes factor values
@@ -38,7 +35,7 @@ if (packageVersion("parameters") > "0.11.0") {
 
       # call
       expect_identical(
-        results,
+        results$expression[[1]],
         ggplot2::expr(
           paste(
             "log"["e"] * "(BF"["01"] * ") = " * "1.92" * ", ",
@@ -52,19 +49,18 @@ if (packageVersion("parameters") > "0.11.0") {
       # data where it works
       set.seed(123)
       results2 <-
-        expr_oneway_anova(
+        oneway_anova(
           type = "bayes",
           data = iris,
           x = Species,
           y = Sepal.Length,
           conf.level = 0.99,
           conf.method = "eti",
-          output = "expression",
           k = 2 # don't change; tests fail on Ubuntu otherwise
         )
 
       expect_identical(
-        results2,
+        results2$expression[[1]],
         ggplot2::expr(
           paste(
             "log"["e"] * "(BF"["01"] * ") = " * "-65.10" * ", ",
@@ -121,14 +117,13 @@ if (packageVersion("parameters") > "0.11.0") {
         # extracting results from where this function is implemented
         set.seed(123)
         df_results <-
-          expr_oneway_anova(
+          oneway_anova(
             type = "bayes",
             data = dat,
             x = Wine,
             y = "Taste",
             paired = TRUE,
-            bf.prior = 0.99,
-            output = "dataframe"
+            bf.prior = 0.99
           )
 
         # check bayes factor values
@@ -137,36 +132,34 @@ if (packageVersion("parameters") > "0.11.0") {
         # extracting expression
         set.seed(123)
         results <-
-          expr_oneway_anova(
+          oneway_anova(
             type = "bayes",
             data = dat,
             x = "Wine",
             y = Taste,
             k = 2, # don't change; tests fail on Ubuntu otherwise
             paired = TRUE,
-            bf.prior = 0.88,
-            output = "expression"
+            bf.prior = 0.88
           )
 
         # data with NA
         set.seed(123)
         results_na <-
-          expr_oneway_anova(
+          oneway_anova(
             type = "bayes",
             data = bugs_long,
             x = condition,
             y = "desire",
-            paired = TRUE,
-            output = "expression"
+            paired = TRUE
           )
 
         # testing expression
-        expect_type(results, "language")
-        expect_type(results_na, "language")
+        expect_type(results$expression[[1]], "language")
+        expect_type(results_na$expression[[1]], "language")
 
         # checking expressions
         expect_identical(
-          results,
+          results$expression[[1]],
           ggplot2::expr(
             paste(
               "log"["e"] * "(BF"["01"] * ") = " * "-1.96" * ", ",
@@ -178,7 +171,7 @@ if (packageVersion("parameters") > "0.11.0") {
         )
 
         expect_identical(
-          results_na,
+          results_na$expression[[1]],
           ggplot2::expr(
             paste(
               "log"["e"] * "(BF"["01"] * ") = " * "-21.04" * ", ",
@@ -222,7 +215,7 @@ if (packageVersion("parameters") > "0.11.0") {
         # incorrect
         set.seed(123)
         expr1 <-
-          expr_oneway_anova(
+          oneway_anova(
             type = "bayes",
             data = df,
             x = condition,
@@ -234,7 +227,7 @@ if (packageVersion("parameters") > "0.11.0") {
         # correct
         set.seed(123)
         expr2 <-
-          expr_oneway_anova(
+          oneway_anova(
             type = "bayes",
             data = dplyr::arrange(df, id),
             x = condition,

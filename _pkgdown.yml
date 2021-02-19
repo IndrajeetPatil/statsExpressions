@@ -21,7 +21,7 @@ reference:
   - title: Expressions for one-and two-sample t-tests
     desc: Functions to extract exressions or dataframes for one-and two-sample t-tests
     contents:
-      - matches("_t_")
+      - matches("t_")
 
   - title: Expressions for one-way ANOVA
     desc: Functions to create expressions for one-way (both between-and within-subject designs) ANOVA
@@ -31,17 +31,17 @@ reference:
   - title: Expressions for correlation analysis
     desc: Functions to create expressions for correlation tests
     contents:
-      - matches("_corr_")
+      - matches("corr_")
 
   - title: Expressions for contingency table analysis
     desc: Functions to create expressions for contingency table analysis and one-sample goodness of fit proportion test
     contents:
-      - matches("_contingency_")
+      - matches("contingency_")
 
   - title: Expressions for meta-analysis
     desc: Functions to create expressions for random-effects meta-analysis
     contents:
-      - matches("_meta_")
+      - matches("meta_")
 
   - title: Helper functions
     contents:

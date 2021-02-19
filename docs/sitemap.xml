@@ -10,34 +10,28 @@
     <loc>https://indrajeetpatil.github.io/statsExpressions//reference/bugs_long.html</loc>
   </url>
   <url>
-    <loc>https://indrajeetpatil.github.io/statsExpressions//reference/expr_contingency_tab.html</loc>
+    <loc>https://indrajeetpatil.github.io/statsExpressions//reference/contingency_tab.html</loc>
   </url>
   <url>
     <loc>https://indrajeetpatil.github.io/statsExpressions//reference/corr_test.html</loc>
   </url>
   <url>
-    <loc>https://indrajeetpatil.github.io/statsExpressions//reference/expr_meta_random.html</loc>
-  </url>
-  <url>
-    <loc>https://indrajeetpatil.github.io/statsExpressions//reference/expr_oneway_anova.html</loc>
-  </url>
-  <url>
     <loc>https://indrajeetpatil.github.io/statsExpressions//reference/expr_template.html</loc>
   </url>
   <url>
-    <loc>https://indrajeetpatil.github.io/statsExpressions//reference/expr_t_onesample.html</loc>
-  </url>
-  <url>
-    <loc>https://indrajeetpatil.github.io/statsExpressions//reference/expr_t_twosample.html</loc>
-  </url>
-  <url>
     <loc>https://indrajeetpatil.github.io/statsExpressions//reference/iris_long.html</loc>
+  </url>
+  <url>
+    <loc>https://indrajeetpatil.github.io/statsExpressions//reference/meta_random.html</loc>
   </url>
   <url>
     <loc>https://indrajeetpatil.github.io/statsExpressions//reference/movies_long.html</loc>
   </url>
   <url>
     <loc>https://indrajeetpatil.github.io/statsExpressions//reference/movies_wide.html</loc>
+  </url>
+  <url>
+    <loc>https://indrajeetpatil.github.io/statsExpressions//reference/oneway_anova.html</loc>
   </url>
   <url>
     <loc>https://indrajeetpatil.github.io/statsExpressions//reference/reexports.html</loc>
@@ -47,6 +41,12 @@
   </url>
   <url>
     <loc>https://indrajeetpatil.github.io/statsExpressions//reference/tidy_model_parameters.html</loc>
+  </url>
+  <url>
+    <loc>https://indrajeetpatil.github.io/statsExpressions//reference/t_onesample.html</loc>
+  </url>
+  <url>
+    <loc>https://indrajeetpatil.github.io/statsExpressions//reference/t_twosample.html</loc>
   </url>
   <url>
     <loc>https://indrajeetpatil.github.io/statsExpressions//reference/VR_dilemma.html</loc>

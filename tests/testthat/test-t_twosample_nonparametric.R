@@ -1,14 +1,14 @@
 # between-subjects design -----------------------------------------------
 
 test_that(
-  desc = "expr_t_nonparametric works - between-subjects design",
+  desc = "t_nonparametric works - between-subjects design",
   code = {
 
 
     # ggstatsplot output
     set.seed(123)
     using_function <-
-      expr_t_twosample(
+      t_twosample(
         type = "np",
         data = mtcars,
         x = am,
@@ -47,14 +47,14 @@ test_that(
       )
 
     # testing overall everything identical
-    expect_identical(using_function, results)
+    expect_identical(using_function$expression[[1]], results)
   }
 )
 
 # within-subjects design -----------------------------------------------
 
 test_that(
-  desc = "expr_t_nonparametric works - within-subjects design",
+  desc = "t_nonparametric works - within-subjects design",
   code = {
 
 
@@ -83,7 +83,7 @@ test_that(
       ))
 
     # expect error
-    expect_error(suppressWarnings(expr_t_twosample(
+    expect_error(suppressWarnings(t_twosample(
       type = "np",
       data = iris,
       x = Sepal.Length,
@@ -93,7 +93,7 @@ test_that(
     # ggstatsplot output
     set.seed(123)
     using_function2 <-
-      suppressWarnings(expr_t_twosample(
+      suppressWarnings(t_twosample(
         type = "np",
         data = df_bird,
         x = type,
@@ -133,7 +133,7 @@ test_that(
       )
 
     # testing overall call
-    expect_identical(using_function2, results2)
+    expect_identical(using_function2$expression[[1]], results2)
   }
 )
 
@@ -144,12 +144,11 @@ test_that(
   desc = "dataframe",
   code = {
     expect_s3_class(
-      expr_t_twosample(
+      t_twosample(
         type = "np",
         data = dplyr::filter(movies_long, genre == "Action" | genre == "Drama"),
         x = "genre",
         y = rating,
-        output = "dataframe"
       ),
       "tbl_df"
     )
@@ -197,7 +196,7 @@ test_that(
     # incorrect
     set.seed(123)
     expr1 <-
-      expr_t_twosample(
+      t_twosample(
         type = "np",
         data = df,
         x = condition,
@@ -209,7 +208,7 @@ test_that(
     # correct
     set.seed(123)
     expr2 <-
-      expr_t_twosample(
+      t_twosample(
         type = "np",
         data = dplyr::arrange(df, id),
         x = condition,

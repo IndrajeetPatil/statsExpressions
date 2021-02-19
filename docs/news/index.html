@@ -95,7 +95,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.7.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.0.9000</span>
       </span>
     </div>
 
@@ -153,9 +153,17 @@
       <small>Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="statsexpressions-1009000" class="section level1">
+<h1 class="page-header" data-toc-text="1.0.0.9000">
+<a href="#statsexpressions-1009000" class="anchor"></a>statsExpressions 1.0.0.9000<small> Unreleased </small>
+</h1>
+<p>There is good news and there is bad news:</p>
+<p>The bad news is that the API for the package has changed <strong>completely</strong>: Now all functions return a <em>dataframe</em>, and not an <em>expression</em>. The expression is contained in a list column in the returned dataframe. So, to salvage your functions from breaking, you will have to add <code>$expression[[1]]</code> to your function calls. For example, if you were using the function <code><a href="../reference/t_onesample.html">expr_t_onesample()</a></code>, you will now have to specify <code>expr_t_onesample()$expression[[1]]</code>, so on and so forth.</p>
+<p>The good news is that this is <code>1.0.0</code> release, which is going to be the first <strong>stable</strong> release of the package. This means that there will not be any more changes made to any of the current functions, except for any change that might be required for maintenance or bug squashing.</p>
+</div>
     <div id="statsexpressions-071" class="section level1">
 <h1 class="page-header" data-toc-text="0.7.1">
-<a href="#statsexpressions-071" class="anchor"></a>statsExpressions 0.7.1<small> Unreleased </small>
+<a href="#statsexpressions-071" class="anchor"></a>statsExpressions 0.7.1<small> 2021-02-19 </small>
 </h1>
 <p>BREAKING CHANGES</p>
 <ul>
@@ -180,8 +188,8 @@
 <li>
 <p>To be consistent with <code>ggstatsplot</code>’s overall syntax philosophy the <code>type</code> argument can be used to specify which type of statistical approach is to be used for all functions.</p>
 <ul>
-<li><p><code>expr_t_parametric</code>, <code>expr_t_nonparametric</code>, <code>expr_t_robust</code>, <code>expr_t_bayes</code> are now removed in favor of a single function <code>expr_t_twosample</code>.</p></li>
-<li><p><code>expr_anova_parametric</code>, <code>expr_anova_nonparametric</code>, <code>expr_anova_robust</code>, <code>expr_anova_bayes</code> are now removed in favor of a single function <code>expr_oneway_anova</code>.</p></li>
+<li><p><code>t_parametric</code>, <code>t_nonparametric</code>, <code>t_robust</code>, <code>t_bayes</code> are now removed in favor of a single function <code>t_twosample</code>.</p></li>
+<li><p><code>expr_anova_parametric</code>, <code>expr_anova_nonparametric</code>, <code>expr_anova_robust</code>, <code>expr_anova_bayes</code> are now removed in favor of a single function <code>oneway_anova</code>.</p></li>
 </ul>
 </li>
 <li><p><code>statsExpressions</code> no longer internally relies on <code>tidyBF</code>. All Bayesian analysis is carried out in this package itself. This was done to make the maintenance of this package easier and helps with some major internal code refactoring. As such, all re-exported functions from <code>tidyBF</code> have also been removed.</p></li>
@@ -189,7 +197,7 @@
 <p>BUG FIXES</p>
 <ul>
 <li>
-<code>expr_contingency_tab</code> ignored <code>ratio</code> argument while computing Cramer’s <em>V</em> for one-sample test. This is fixed.</li>
+<code>contingency_tab</code> ignored <code>ratio</code> argument while computing Cramer’s <em>V</em> for one-sample test. This is fixed.</li>
 </ul>
 <p>MAJOR CHANGES</p>
 <ul>
@@ -236,7 +244,7 @@
 <p>MAJOR CHANGES</p>
 <ul>
 <li><p>All effect sizes for contingency tabs are now calculated via <code>effectsize</code> instead of <code>rcompanion</code>. This would lead to slight differences in effect sizes and their CIs but the computations will be faster. Additionally, the lower bound will never be negative and will be restricted to [0,1].</p></li>
-<li><p><code>expr_contingency_tab</code> function has been made less robust. It now fails instead of returning <code>NULL</code> when it is not supposed to work. This is done to be consistent with the other functions in the package which also fail instead of returning <code>NULL</code>.</p></li>
+<li><p><code>contingency_tab</code> function has been made less robust. It now fails instead of returning <code>NULL</code> when it is not supposed to work. This is done to be consistent with the other functions in the package which also fail instead of returning <code>NULL</code>.</p></li>
 <li><p><code>expr_anova_parametric</code> always applies sphericity correction for <em>p</em>-values for repeated measures ANOVA.</p></li>
 <li><p><code>expr_anova_parametric</code> retires non-partial variants of effect sizes (eta-squared and omega-squared, i.e.) for parametric analyses.</p></li>
 <li><p>The <em>t</em>-test and ANOVA tests get <code>subject.id</code> argument relevant for repeated measures design.</p></li>
@@ -267,7 +275,7 @@
 <ul>
 <li><p>Adapts to changes made in <code>tidyBF</code> package.</p></li>
 <li><p>Re-exports <code><a href="https://easystats.github.io/correlation/reference/correlation.html" class="external-link">correlation::correlation</a></code> needed for <code>ggstatsplot</code>.</p></li>
-<li><p>The <code>expr_t_nonparametric</code> subtitle now clarifies whether it’s a Wilcoxon test or a Mann-Whitney test.</p></li>
+<li><p>The <code>t_nonparametric</code> subtitle now clarifies whether it’s a Wilcoxon test or a Mann-Whitney test.</p></li>
 </ul>
 </div>
     <div id="statsexpressions-042" class="section level1">

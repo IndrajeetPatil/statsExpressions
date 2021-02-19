@@ -3,7 +3,7 @@
 #'
 #' @description
 #'
-#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("maturing")}
+#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
 #'
 #'  A dataframe containing results from correlation test with confidence
 #'  intervals for the correlation coefficient estimate. Results are extracted
@@ -18,7 +18,7 @@
 #' @param y The column in `data` containing the response (outcome) variable to
 #'   be plotted on the `y`-axis. Can be entered either as a character string
 #'   (e.g., `"y"`) or as a bare expression (e.g, `y`).
-#' @inheritParams expr_oneway_anova
+#' @inheritParams oneway_anova
 #'
 #' @importFrom dplyr select case_when
 #' @importFrom correlation correlation

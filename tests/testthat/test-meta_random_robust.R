@@ -31,7 +31,6 @@ if (require("metaplus")) {
           data = df,
           type = "robust",
           random = "normal",
-          output = "dataframe"
         )
 
       # output
@@ -39,7 +38,7 @@ if (require("metaplus")) {
 
       # test
       expect_identical(
-        results1,
+        results1$expression[[1]],
         ggplot2::expr(
           paste(
             italic("z"),

@@ -23,8 +23,7 @@ if (require("metafor")) {
       using_function1 <-
         expr_meta_random(
           data = df_eg,
-          k = 4,
-          output = "subtitle"
+          k = 4
         )
 
       # dataframe output
@@ -32,7 +31,6 @@ if (require("metafor")) {
       df_res <-
         expr_meta_random(
           data = df_eg,
-          output = "dataframe"
         )
 
       # output
@@ -68,7 +66,7 @@ if (require("metafor")) {
         )
 
       # testing overall call
-      expect_identical(using_function1, results1)
+      expect_identical(using_function1$expression[[1]], results1)
 
       # error
       expect_error(expr_meta_random(mtcars))

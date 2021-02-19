@@ -42,8 +42,7 @@ if (require("metaBMA") && packageVersion("parameters") > "0.11.0") {
           data = df1,
           k = 3,
           iter = 1000,
-          summarize = "integrate",
-          output = "expression"
+          summarize = "integrate"
         ))
 
       set.seed(123)
@@ -54,7 +53,6 @@ if (require("metaBMA") && packageVersion("parameters") > "0.11.0") {
           k = 3,
           iter = 1000,
           summarize = "integrate",
-          output = "dataframe",
           top.text = "ayyo"
         ))
 
@@ -62,7 +60,7 @@ if (require("metaBMA") && packageVersion("parameters") > "0.11.0") {
       expect_identical(class(df), c("tbl_df", "tbl", "data.frame"))
 
       expect_identical(
-        subtitle1,
+        subtitle1$expression[[1]],
         ggplot2::expr(
           paste(
             "log"["e"] * "(BF"["01"] * ") = " * "-3.587" * ", ",

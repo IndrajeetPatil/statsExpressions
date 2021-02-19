@@ -1,26 +1,19 @@
-# parametric t-test (between-subjects without NAs) ---------------------------
+# between-subjects ----------------------------------------------------------
 
 test_that(
-  desc = "parametric t-test works (between-subjects without NAs)",
+  desc = "between-subjects - data with and without NAs",
   code = {
-
 
     # `statsExpressions` output
     set.seed(123)
     using_function1 <-
-      suppressWarnings(
-        expr_t_twosample(
-          data = dplyr::filter(
-            movies_long,
-            genre == "Action" | genre == "Drama"
-          ),
-          x = genre,
-          y = rating,
-          effsize.type = "d",
-          var.equal = TRUE,
-          conf.level = 0.99,
-          k = 5
-        )
+      oneway_anova(
+        type = "np",
+        data = dplyr::sample_frac(movies_long, 0.1),
+        x = "genre",
+        y = length,
+        paired = FALSE,
+        k = 5
       )
 
     # expected output
@@ -28,143 +21,174 @@ test_that(
     results1 <-
       ggplot2::expr(
         paste(
-          italic("t")["Student"],
+          chi["Kruskal-Wallis"]^2,
           "(",
-          "612",
+          "8",
           ") = ",
-          "-10.52948",
+          "51.42672",
           ", ",
           italic("p"),
           " = ",
-          "6.0984e-24",
+          "2.1714e-08",
           ", ",
-          widehat(italic("d"))["Cohen"],
+          widehat(epsilon)["ordinal"]^2,
           " = ",
-          "-0.92473",
-          ", CI"["99%"],
+          "0.32756",
+          ", CI"["95%"],
           " [",
-          "-1.16064",
+          "0.25737",
           ", ",
-          "-0.68822",
+          "0.50585",
           "]",
           ", ",
           italic("n")["obs"],
           " = ",
-          "614"
+          "158"
         )
       )
 
     # testing overall call
-    expect_equal(using_function1, results1)
-  }
-)
-
-# parametric t-test (between-subjects with NAs) ------------------------------
-
-test_that(
-  desc = "parametric t-test works (between-subjects with NAs)",
-  code = {
-
+    expect_identical(using_function1$expression[[1]], results1)
 
     # `statsExpressions` output
     set.seed(123)
-    using_function1 <-
-      suppressWarnings(
-        expr_t_twosample(
-          data = dplyr::filter(
-            movies_long,
-            genre == "Action" | genre == "Drama"
-          ),
-          x = genre,
-          y = rating,
-          effsize.type = "g",
-          var.equal = FALSE,
-          conf.level = 0.90,
-          k = 3
-        )
-      )
-
-    # expected output
-    set.seed(123)
-    results1 <-
-      ggplot2::expr(
-        paste(
-          italic("t")["Welch"],
-          "(",
-          "271.302",
-          ") = ",
-          "-9.275",
-          ", ",
-          italic("p"),
-          " = ",
-          "5.8e-18",
-          ", ",
-          widehat(italic("g"))["Hedges"],
-          " = ",
-          "-0.924",
-          ", CI"["90%"],
-          " [",
-          "-1.074",
-          ", ",
-          "-0.773",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          "614"
-        )
-      )
-
-    # testing overall call
-    expect_equal(using_function1, results1)
-  }
-)
-
-# parametric t-test (within-subjects without NAs) ---------------------------
-
-test_that(
-  desc = "parametric t-test works (within-subjects without NAs)",
-  code = {
-
-
-    # output from `statsExpressions` helper subtitle
-    set.seed(123)
-    subtitle <-
-      suppressWarnings(expr_t_twosample(
-        data = dplyr::filter(
-          iris_long,
-          condition %in% c("Sepal.Length", "Sepal.Width")
-        ),
-        x = condition,
-        y = value,
-        paired = TRUE,
-        effsize.type = "g",
-        k = 4,
-        conf.level = 0.50
+    using_function2 <-
+      suppressWarnings(oneway_anova(
+        type = "np",
+        data = ggplot2::msleep,
+        x = vore,
+        y = sleep_cycle,
+        k = 3,
+        paired = FALSE,
+        conf.level = 0.99
       ))
 
-    # expected
-    expected <-
+    # expected output
+    set.seed(123)
+    results2 <-
       ggplot2::expr(
         paste(
-          italic("t")["Student"],
+          chi["Kruskal-Wallis"]^2,
           "(",
-          "149",
+          "3",
           ") = ",
-          "34.8152",
+          "5.240",
           ", ",
           italic("p"),
           " = ",
-          "1.85e-73",
+          "0.155",
           ", ",
-          widehat(italic("g"))["Hedges"],
+          widehat(epsilon)["ordinal"]^2,
           " = ",
-          "2.8283",
-          ", CI"["50%"],
+          "0.175",
+          ", CI"["99%"],
           " [",
-          "2.7086",
+          "0.053",
           ", ",
-          "2.9560",
+          "0.494",
+          "]",
+          ", ",
+          italic("n")["obs"],
+          " = ",
+          "31"
+        )
+      )
+
+    # testing overall call
+    expect_identical(using_function2$expression[[1]], results2)
+  }
+)
+
+# within-subjects -------------------------------------------------------
+
+test_that(
+  desc = "within-subjects - data with and without NAs",
+  code = {
+
+
+    # `statsExpressions` output
+    set.seed(123)
+    using_function1 <-
+      oneway_anova(
+        type = "np",
+        data = bugs_long,
+        x = condition,
+        y = "desire",
+        k = 4L,
+        paired = TRUE,
+        conf.level = 0.99
+      )
+
+    # expected output
+    set.seed(123)
+    results1 <-
+      ggplot2::expr(
+        paste(
+          chi["Friedman"]^2,
+          "(",
+          "3",
+          ") = ",
+          "55.8338",
+          ", ",
+          italic("p"),
+          " = ",
+          "4.558e-12",
+          ", ",
+          widehat(italic("W"))["Kendall"],
+          " = ",
+          "0.6021",
+          ", CI"["99%"],
+          " [",
+          "0.6021",
+          ", ",
+          "0.9748",
+          "]",
+          ", ",
+          italic("n")["pairs"],
+          " = ",
+          "88"
+        )
+      )
+
+    # testing overall call
+    expect_identical(using_function1$expression[[1]], results1)
+
+    # `statsExpressions` output
+    set.seed(123)
+    using_function2 <-
+      oneway_anova(
+        type = "np",
+        data = iris_long,
+        x = condition,
+        y = "value",
+        k = 3,
+        paired = TRUE,
+        conf.level = 0.90
+      )
+
+    # expected output
+    set.seed(123)
+    results2 <-
+      ggplot2::expr(
+        paste(
+          chi["Friedman"]^2,
+          "(",
+          "3",
+          ") = ",
+          "410.000",
+          ", ",
+          italic("p"),
+          " = ",
+          "1.51e-88",
+          ", ",
+          widehat(italic("W"))["Kendall"],
+          " = ",
+          "0.484",
+          ", CI"["90%"],
+          " [",
+          "0.343",
+          ", ",
+          "0.969",
           "]",
           ", ",
           italic("n")["pairs"],
@@ -174,62 +198,25 @@ test_that(
       )
 
     # testing overall call
-    expect_identical(subtitle, expected)
+    expect_identical(using_function2$expression[[1]], results2)
   }
 )
 
 
-# parametric t-test (within-subjects with NAs) ---------------------------
+# dataframe -----------------------------------------------------------
 
 test_that(
-  desc = "parametric t-test works (within-subjects with NAs)",
+  desc = "dataframe",
   code = {
-
-
-    # output from `statsExpressions` helper subtitle
-    set.seed(123)
-    subtitle <-
-      expr_t_twosample(
-        data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
-        x = condition,
-        y = desire,
-        paired = TRUE,
-        effsize.type = "d",
-        k = 3
-      )
-
-    # expected
-    expected <-
-      ggplot2::expr(
-        paste(
-          italic("t")["Student"],
-          "(",
-          "89",
-          ") = ",
-          "3.613",
-          ", ",
-          italic("p"),
-          " = ",
-          "5e-04",
-          ", ",
-          widehat(italic("d"))["Cohen"],
-          " = ",
-          "0.381",
-          ", CI"["95%"],
-          " [",
-          "0.167",
-          ", ",
-          "0.597",
-          "]",
-          ", ",
-          italic("n")["pairs"],
-          " = ",
-          "90"
-        )
-      )
-
-    # testing overall call
-    expect_identical(subtitle, expected)
+    expect_s3_class(
+      oneway_anova(
+        type = "np",
+        data = mtcars,
+        x = cyl,
+        y = wt,
+      ),
+      "tbl_df"
+    )
   }
 )
 
@@ -268,12 +255,11 @@ test_that(
         45L
       ), class = "data.frame")
 
-    df <- dplyr::filter(df, condition %in% c(1, 5))
-
     # incorrect
     set.seed(123)
     expr1 <-
-      expr_t_twosample(
+      oneway_anova(
+        type = "np",
         data = df,
         x = condition,
         y = score,
@@ -284,7 +270,8 @@ test_that(
     # correct
     set.seed(123)
     expr2 <-
-      expr_t_twosample(
+      oneway_anova(
+        type = "np",
         data = dplyr::arrange(df, id),
         x = condition,
         y = score,

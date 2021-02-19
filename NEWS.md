@@ -1,4 +1,19 @@
-# statsExpressions 0.7.1.9000
+# statsExpressions 1.0.0.9000
+
+There is good news and there is bad news:
+
+The bad news is that the API for the package has changed **completely**: 
+Now all functions return a *dataframe*, and not an *expression*. The expression
+is contained in a list column in the returned dataframe. So, to salvage your
+functions from breaking, you will have to add `$expression[[1]]` to your
+function calls. For example, if you were using the function
+`expr_t_onesample()`, you will now have to specify
+`expr_t_onesample()$expression[[1]]`, so on and so forth.
+
+The good news is that this is `1.0.0` release, which is going to be the first
+**stable** release of the package. This means that there will not be any more
+changes made to any of the current functions, except for any change that might
+be required for maintenance or bug squashing.
 
 # statsExpressions 0.7.1
 
@@ -42,13 +57,12 @@ BREAKING CHANGES
     argument can be used to specify which type of statistical approach is to be
     used for all functions.
 
-    * `expr_t_parametric`, `expr_t_nonparametric`, `expr_t_robust`,
-      `expr_t_bayes` are now removed in favor of a single function
-      `expr_t_twosample`.
+    * `t_parametric`, `t_nonparametric`, `t_robust`, `t_bayes` are now removed
+      in favor of a single function `t_twosample`.
 
     * `expr_anova_parametric`, `expr_anova_nonparametric`, `expr_anova_robust`,
       `expr_anova_bayes` are now removed in favor of a single function
-      `expr_oneway_anova`.
+      `oneway_anova`.
 
   - `statsExpressions` no longer internally relies on `tidyBF`. All Bayesian
     analysis is carried out in this package itself. This was done to make the
@@ -58,8 +72,8 @@ BREAKING CHANGES
 
 BUG FIXES
 
-  - `expr_contingency_tab` ignored `ratio` argument while computing Cramer's *V*
-    for one-sample test. This is fixed.
+  - `contingency_tab` ignored `ratio` argument while computing Cramer's *V* for
+    one-sample test. This is fixed.
 
 MAJOR CHANGES
 
@@ -119,10 +133,10 @@ MAJOR CHANGES
     sizes and their CIs but the computations will be faster. Additionally, the
     lower bound will never be negative and will be restricted to [0,1].
 
-  - `expr_contingency_tab` function has been made less robust. It now fails
-    instead of returning `NULL` when it is not supposed to work. This is done to
-    be consistent with the other functions in the package which also fail
-    instead of returning `NULL`.
+  - `contingency_tab` function has been made less robust. It now fails instead
+    of returning `NULL` when it is not supposed to work. This is done to be
+    consistent with the other functions in the package which also fail instead
+    of returning `NULL`.
 
   - `expr_anova_parametric` always applies sphericity correction for *p*-values
     for repeated measures ANOVA.
@@ -162,8 +176,8 @@ MINOR CHANGES
 
   - Re-exports `correlation::correlation` needed for `ggstatsplot`.
 
-  - The `expr_t_nonparametric` subtitle now clarifies whether it's a Wilcoxon
-    test or a Mann-Whitney test.
+  - The `t_nonparametric` subtitle now clarifies whether it's a Wilcoxon test or
+    a Mann-Whitney test.
 
 # statsExpressions 0.4.2
 

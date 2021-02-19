@@ -2,14 +2,14 @@
 # parametric -----------------------------------------------------------
 
 test_that(
-  desc = "expr_t_onesample parametric works",
+  desc = "t_onesample parametric works",
   code = {
     skip_if(getRversion() < "4.0")
 
     # Hedge's g and non-central
     set.seed(123)
     using_function1 <-
-      expr_t_onesample(
+      t_onesample(
         data = dplyr::sample_frac(movies_long, 0.05),
         x = length,
         test.value = 120,
@@ -51,7 +51,7 @@ test_that(
     set.seed(123)
     using_function2 <-
       suppressWarnings(
-        expr_t_onesample(
+        t_onesample(
           data = dplyr::sample_frac(movies_long, 0.05),
           x = "length",
           test.value = 120,
@@ -93,22 +93,22 @@ test_that(
       )
 
     # testing overall call
-    expect_identical(using_function1, results1)
-    expect_identical(using_function2, results2)
+    expect_identical(using_function1$expression[[1]], results1)
+    expect_identical(using_function2$expression[[1]], results2)
   }
 )
 
 # non-parametric -----------------------------------------------------------
 
 test_that(
-  desc = "expr_t_onesample non-parametric works",
+  desc = "t_onesample non-parametric works",
   code = {
     skip_if(getRversion() < "4.0")
 
     # statsExpressions output
     set.seed(123)
     using_function <-
-      suppressWarnings(expr_t_onesample(
+      suppressWarnings(t_onesample(
         data = ToothGrowth,
         x = len,
         test.value = 20,
@@ -146,12 +146,12 @@ test_that(
       )
 
     # testing overall call
-    expect_identical(using_function, results)
+    expect_identical(using_function$expression[[1]], results)
 
     # statsExpressions output
     set.seed(123)
     using_function2 <-
-      expr_t_onesample(
+      t_onesample(
         data = ggplot2::msleep,
         x = names(ggplot2::msleep)[10],
         test.value = 0.25,
@@ -187,7 +187,7 @@ test_that(
       )
 
     # testing overall call
-    expect_identical(using_function2, results2)
+    expect_identical(using_function2$expression[[1]], results2)
   }
 )
 
@@ -195,14 +195,14 @@ test_that(
 # robust -----------------------------------------------------------
 
 test_that(
-  desc = "expr_t_onesample robust works",
+  desc = "t_onesample robust works",
   code = {
     skip_if(getRversion() < "4.0")
 
     # statsExpressions output
     set.seed(123)
     using_function <-
-      expr_t_onesample(
+      t_onesample(
         data = anscombe,
         x = "x1",
         test.value = 8,
@@ -241,12 +241,12 @@ test_that(
       )
 
     # testing overall call
-    expect_identical(using_function, results)
+    expect_identical(using_function$expression[[1]], results)
 
     # statsExpressions output
     set.seed(123)
     using_function2 <-
-      expr_t_onesample(
+      t_onesample(
         data = ggplot2::msleep,
         x = brainwt,
         test.value = 0.1,
@@ -285,7 +285,7 @@ test_that(
       )
 
     # testing overall call
-    expect_identical(using_function2, results2)
+    expect_identical(using_function2$expression[[1]], results2)
   }
 )
 
@@ -294,21 +294,20 @@ if (packageVersion("parameters") > "0.11.0") {
   # bayes factor -----------------------------------------------------------
 
   test_that(
-    desc = "expr_t_onesample bayes factor works",
+    desc = "t_onesample bayes factor works",
     code = {
       skip_if(getRversion() < "4.0")
 
       # extracting results from where this function is implemented
       set.seed(123)
       df_results <-
-        expr_t_onesample(
+        t_onesample(
           type = "bayes",
           data = iris,
           x = Petal.Length,
           y = NULL,
           test.value = 5.5,
           bf.prior = 0.99,
-          output = "dataframe"
         )
 
       # check Bayes factor values
@@ -317,21 +316,20 @@ if (packageVersion("parameters") > "0.11.0") {
       # extracting subtitle (without NA)
       set.seed(123)
       subtitle <-
-        expr_t_onesample(
+        t_onesample(
           type = "bayes",
           data = iris,
           x = "Petal.Length",
           y = NULL,
           test.value = 5.5,
           bf.prior = 0.99,
-          output = "expression",
           conf.level = 0.90
         )
 
-      expect_type(subtitle, "language")
+      expect_type(subtitle$expression[[1]], "language")
 
       expect_identical(
-        subtitle,
+        subtitle$expression[[1]],
         ggplot2::expr(
           paste(
             "log"["e"] * "(BF"["01"] * ") = " * "-47.84" * ", ",
@@ -345,7 +343,7 @@ if (packageVersion("parameters") > "0.11.0") {
       # extracting subtitle (with NA)
       set.seed(123)
       subtitle2 <-
-        expr_t_onesample(
+        t_onesample(
           type = "bayes",
           data = ggplot2::msleep,
           x = brainwt,
@@ -353,12 +351,11 @@ if (packageVersion("parameters") > "0.11.0") {
           test.value = 0.25,
           bf.prior = 0.9,
           k = 3,
-          output = "subtitle",
           conf.method = "eti"
         )
 
       expect_identical(
-        subtitle2,
+        subtitle2$expression[[1]],
         ggplot2::expr(
           paste(
             "log"["e"] * "(BF"["01"] * ") = " * "2.125" * ", ",
