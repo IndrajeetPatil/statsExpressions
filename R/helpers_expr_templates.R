@@ -57,7 +57,7 @@
 #'   functions from `bayestestR` package).
 #' @param ... Currently ignored.
 #' @inheritParams bf_extractor
-#' @inheritParams expr_oneway_anova
+#' @inheritParams oneway_anova
 #' @inheritParams ipmisc::long_to_wide_converter
 #'
 #' @importFrom ipmisc format_num

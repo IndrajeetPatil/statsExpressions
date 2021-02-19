@@ -9,7 +9,7 @@ test_that(
     # `statsExpressions` output
     set.seed(123)
     using_function1 <-
-      expr_oneway_anova(
+      oneway_anova(
         type = "robust",
         data = mtcars,
         x = cyl,
@@ -53,12 +53,12 @@ test_that(
       )
 
     # testing overall call
-    expect_identical(using_function1, results1)
+    expect_identical(using_function1$expression[[1]], results1)
 
     # `statsExpressions` output
     set.seed(123)
     using_function2 <-
-      suppressWarnings(expr_oneway_anova(
+      suppressWarnings(oneway_anova(
         type = "robust",
         data = dplyr::filter(ggplot2::msleep, vore != "insecti"),
         x = vore,
@@ -102,7 +102,7 @@ test_that(
       )
 
     # testing overall call
-    expect_identical(using_function2, results2)
+    expect_identical(using_function2$expression[[1]], results2)
   }
 )
 
@@ -116,7 +116,7 @@ test_that(
     # `statsExpressions` output
     set.seed(123)
     using_function1 <-
-      expr_oneway_anova(
+      oneway_anova(
         type = "robust",
         data = bugs_long,
         x = "condition",
@@ -159,7 +159,7 @@ test_that(
       )
 
     # testing overall call
-    expect_identical(using_function1, results1)
+    expect_identical(using_function1$expression[[1]], results1)
   }
 )
 
@@ -170,12 +170,11 @@ test_that(
   desc = "dataframe",
   code = {
     expect_s3_class(
-      expr_oneway_anova(
+      oneway_anova(
         type = "robust",
         data = mtcars,
         x = cyl,
-        y = wt,
-        output = "dataframe"
+        y = wt
       ),
       "tbl_df"
     )

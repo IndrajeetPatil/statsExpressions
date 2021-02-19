@@ -1,11 +1,11 @@
 #' @title Expression and dataframe for two-sample *t*-test
-#' @name expr_t_twosample
+#' @name t_twosample
 #'
 #' @inheritParams ipmisc::long_to_wide_converter
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
 #'   argument can be `"d"` (for Cohen's *d*) or `"g"` (for Hedge's *g*).
-#' @inheritParams expr_t_onesample
-#' @inheritParams expr_oneway_anova
+#' @inheritParams t_onesample
+#' @inheritParams oneway_anova
 #' @inheritParams stats::t.test
 #' @inheritParams expr_template
 #'
@@ -19,7 +19,7 @@
 #'
 #' @description
 #'
-#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("maturing")}
+#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
 #'
 #'  A dataframe containing details from results of a two-sample test and effect
 #'  size plus confidence intervals.
@@ -43,7 +43,7 @@
 #' # ----------------------- parametric -------------------------------------
 #'
 #' # between-subjects design
-#' expr_t_twosample(
+#' t_twosample(
 #'   data = sleep,
 #'   x = group,
 #'   y = extra,
@@ -51,20 +51,19 @@
 #' )
 #'
 #' # within-subjects design
-#' expr_t_twosample(
+#' t_twosample(
 #'   data = VR_dilemma,
 #'   x = modality,
 #'   y = score,
 #'   paired = TRUE,
 #'   subject.id = id,
-#'   type = "p",
-#'   output = "dataframe"
+#'   type = "p"
 #' )
 #'
 #' # ----------------------- non-parametric ----------------------------------
 #'
 #' # between-subjects design
-#' expr_t_twosample(
+#' t_twosample(
 #'   data = sleep,
 #'   x = group,
 #'   y = extra,
@@ -72,20 +71,19 @@
 #' )
 #'
 #' # within-subjects design
-#' expr_t_twosample(
+#' t_twosample(
 #'   data = VR_dilemma,
 #'   x = modality,
 #'   y = score,
 #'   paired = TRUE,
 #'   subject.id = id,
-#'   type = "np",
-#'   output = "dataframe"
+#'   type = "np"
 #' )
 #'
 #' # ------------------------------ robust ----------------------------------
 #'
 #' # between-subjects design
-#' expr_t_twosample(
+#' t_twosample(
 #'   data = sleep,
 #'   x = group,
 #'   y = extra,
@@ -93,20 +91,19 @@
 #' )
 #'
 #' # within-subjects design
-#' expr_t_twosample(
+#' t_twosample(
 #'   data = VR_dilemma,
 #'   x = modality,
 #'   y = score,
 #'   paired = TRUE,
 #'   subject.id = id,
-#'   type = "r",
-#'   output = "dataframe"
+#'   type = "r"
 #' )
 #'
 #' #' # ------------------------------ Bayesian ------------------------------
 #'
 #' # between-subjects design
-#' expr_t_twosample(
+#' t_twosample(
 #'   data = sleep,
 #'   x = group,
 #'   y = extra,
@@ -114,35 +111,33 @@
 #' )
 #'
 #' # within-subjects design
-#' expr_t_twosample(
+#' t_twosample(
 #'   data = VR_dilemma,
 #'   x = modality,
 #'   y = score,
 #'   paired = TRUE,
 #'   subject.id = id,
-#'   type = "bayes",
-#'   output = "dataframe"
+#'   type = "bayes"
 #' )
 #' }
 #' @export
 
 # function body
-expr_t_twosample <- function(data,
-                             x,
-                             y,
-                             subject.id = NULL,
-                             type = "parametric",
-                             paired = FALSE,
-                             k = 2L,
-                             conf.level = 0.95,
-                             effsize.type = "g",
-                             var.equal = FALSE,
-                             bf.prior = 0.707,
-                             tr = 0.2,
-                             nboot = 100,
-                             top.text = NULL,
-                             output = "expression",
-                             ...) {
+t_twosample <- function(data,
+                        x,
+                        y,
+                        subject.id = NULL,
+                        type = "parametric",
+                        paired = FALSE,
+                        k = 2L,
+                        conf.level = 0.95,
+                        effsize.type = "g",
+                        var.equal = FALSE,
+                        bf.prior = 0.707,
+                        tr = 0.2,
+                        nboot = 100,
+                        top.text = NULL,
+                        ...) {
   # standardize the type of statistics
   type <- ipmisc::stats_type_switch(type)
 
@@ -266,15 +261,15 @@ expr_t_twosample <- function(data,
     stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("^est|^eff|conf|^ci")), effsize_df)
 
     # expression
-    expression <-
-      expr_template(
+    stats_df %<>%
+      dplyr::mutate(expression = list(expr_template(
         no.parameters = no.parameters,
-        data = stats_df,
+        data = .,
         paired = paired,
         n = ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data)),
         k = k,
         k.df = k.df
-      )
+      )))
   }
 
   # ----------------------- Bayesian ---------------------------------------
@@ -288,12 +283,15 @@ expr_t_twosample <- function(data,
     bf_object <- rlang::exec(.fn = BayesFactor::ttestBF, data = as.data.frame(data), !!!.f.args)
 
     # final return
-    expression <- stats_df <- bf_extractor(bf_object, conf.level, k = k, top.text = top.text, output = output)
+    stats_df <- bf_extractor(bf_object, conf.level, k = k, top.text = top.text)
   }
 
   # return the output
-  switch(output,
-    "dataframe" = as_tibble(stats_df),
-    expression
-  )
+  as_tibble(stats_df)
 }
+
+#' @rdname t_twosample
+#' @aliases t_twosample
+#' @export
+
+expr_t_twosample <- t_twosample

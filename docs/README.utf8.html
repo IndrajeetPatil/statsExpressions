@@ -447,7 +447,7 @@
   <span class="co"># adding a subtitle with</span>
   <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/labs.html">labs</a></span>(
     <span class="kw">title</span> <span class="kw">=</span> <span class="st">"Two-Sample Welch's t-test"</span>,
-    <span class="kw">subtitle</span> <span class="kw">=</span> <span class="fu"><a href="reference/expr_t_parametric.html">expr_t_parametric</a></span>(<span class="no">ToothGrowth</span>, <span class="no">supp</span>, <span class="no">len</span>)
+    <span class="kw">subtitle</span> <span class="kw">=</span> <span class="fu"><a href="reference/t_parametric.html">t_parametric</a></span>(<span class="no">ToothGrowth</span>, <span class="no">supp</span>, <span class="no">len</span>)
   )</pre></html></div>
 <p><img src="man/figures/README-t_two-1.png" width="100%"></p>
 <p>Example with <code>ggpubr</code>:</p>
@@ -472,7 +472,7 @@
 ) + <span class="co"># displaying stats results</span>
   <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/labs.html">labs</a></span>(
     <span class="kw">title</span> <span class="kw">=</span> <span class="st">"Yuen's two-sample test for trimmed means"</span>,
-    <span class="kw">subtitle</span> <span class="kw">=</span> <span class="fu"><a href="reference/expr_t_robust.html">expr_t_robust</a></span>(
+    <span class="kw">subtitle</span> <span class="kw">=</span> <span class="fu"><a href="reference/t_robust.html">t_robust</a></span>(
       <span class="kw">data</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(
         <span class="kw">sex</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"F"</span>, <span class="st">"M"</span>), <span class="kw">each</span> <span class="kw">=</span> <span class="fl">200</span>)),
         <span class="kw">weight</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="fl">200</span>, <span class="fl">55</span>), <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="fl">200</span>, <span class="fl">58</span>))
@@ -499,7 +499,7 @@
 ) +
   <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/labs.html">labs</a></span>(
     <span class="kw">title</span> <span class="kw">=</span> <span class="st">"Wilcoxon two-sample test"</span>,
-    <span class="kw">subtitle</span> <span class="kw">=</span> <span class="fu"><a href="reference/expr_t_nonparametric.html">expr_t_nonparametric</a></span>(<span class="no">heightweight</span>, <span class="no">sex</span>, <span class="no">heightIn</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="st">"np"</span>)
+    <span class="kw">subtitle</span> <span class="kw">=</span> <span class="fu"><a href="reference/t_nonparametric.html">t_nonparametric</a></span>(<span class="no">heightweight</span>, <span class="no">sex</span>, <span class="no">heightIn</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="st">"np"</span>)
   )</pre></html></div>
 <p><img src="man/figures/README-t_ggiraphExtra-1.png" width="100%"></p>
 </div>
@@ -520,7 +520,7 @@
   <span class="co"># `statsExpressions` needs data in the tidy format</span>
   <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/labs.html">labs</a></span>(
     <span class="kw">title</span> <span class="kw">=</span> <span class="st">"Two-sample Wilcoxon paired test"</span>,
-    <span class="kw">subtitle</span> <span class="kw">=</span> <span class="fu"><a href="reference/expr_t_nonparametric.html">expr_t_nonparametric</a></span>(
+    <span class="kw">subtitle</span> <span class="kw">=</span> <span class="fu"><a href="reference/t_nonparametric.html">t_nonparametric</a></span>(
       <span class="kw">data</span> <span class="kw">=</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span>(<span class="no">PrisonStress</span>, <span class="fu"><a href="https://tidyr.tidyverse.org/reference/reexports.html">starts_with</a></span>(<span class="st">"PSS"</span>), <span class="st">"PSS"</span>, <span class="kw">values_to</span> <span class="kw">=</span> <span class="st">"stress"</span>),
       <span class="kw">x</span> <span class="kw">=</span> <span class="no">PSS</span>,
       <span class="kw">y</span> <span class="kw">=</span> <span class="no">stress</span>,
@@ -545,7 +545,7 @@
   <span class="co"># adding a caption with a non-parametric one-sample test</span>
   <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/labs.html">labs</a></span>(
     <span class="kw">title</span> <span class="kw">=</span> <span class="st">"One-Sample Wilcoxon Signed Rank Test"</span>,
-    <span class="kw">subtitle</span> <span class="kw">=</span> <span class="fu"><a href="reference/expr_t_onesample.html">expr_t_onesample</a></span>(<span class="no">mtcars</span>, <span class="no">wt</span>, <span class="kw">test.value</span> <span class="kw">=</span> <span class="fl">3</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="st">"nonparametric"</span>)
+    <span class="kw">subtitle</span> <span class="kw">=</span> <span class="fu"><a href="reference/t_onesample.html">t_onesample</a></span>(<span class="no">mtcars</span>, <span class="no">wt</span>, <span class="kw">test.value</span> <span class="kw">=</span> <span class="fl">3</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="st">"nonparametric"</span>)
   )</pre></html></div>
 <p><img src="man/figures/README-t_one-1.png" width="100%"></p>
 </div>
@@ -564,7 +564,7 @@
   <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_smooth.html">geom_smooth</a></span>(<span class="kw">method</span> <span class="kw">=</span> <span class="st">"lm"</span>) +
   <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/labs.html">labs</a></span>(
     <span class="kw">title</span> <span class="kw">=</span> <span class="st">"Spearman's rank correlation coefficient"</span>,
-    <span class="kw">subtitle</span> <span class="kw">=</span> <span class="fu"><a href="reference/expr_corr_test.html">expr_corr_test</a></span>(<span class="no">mtcars</span>, <span class="no">mpg</span>, <span class="no">wt</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="st">"nonparametric"</span>)
+    <span class="kw">subtitle</span> <span class="kw">=</span> <span class="fu"><a href="reference/corr_test.html">corr_test</a></span>(<span class="no">mtcars</span>, <span class="no">mpg</span>, <span class="no">wt</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="st">"nonparametric"</span>)
   )</pre></html></div>
 <p><img src="man/figures/README-corr-1.png" width="100%"></p>
 </div>
@@ -588,7 +588,7 @@
     <span class="kw">x</span> <span class="kw">=</span> <span class="kw">NULL</span>,
     <span class="kw">y</span> <span class="kw">=</span> <span class="kw">NULL</span>,
     <span class="kw">title</span> <span class="kw">=</span> <span class="st">"Pie Chart of class (type of car)"</span>,
-    <span class="kw">subtitle</span> <span class="kw">=</span> <span class="fu"><a href="reference/expr_contingency_tab.html">expr_onesample_proptest</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="no">mpg</span>$<span class="no">class</span>)), <span class="no">Var1</span>, <span class="kw">counts</span> <span class="kw">=</span> <span class="no">Freq</span>),
+    <span class="kw">subtitle</span> <span class="kw">=</span> <span class="fu"><a href="reference/contingency_tab.html">expr_onesample_proptest</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="no">mpg</span>$<span class="no">class</span>)), <span class="no">Var1</span>, <span class="kw">counts</span> <span class="kw">=</span> <span class="no">Freq</span>),
     <span class="kw">caption</span> <span class="kw">=</span> <span class="st">"One-sample goodness of fit proportion test"</span>
   )</pre></html></div>
 <p><img src="man/figures/README-gof-1.png" width="100%"></p>
@@ -599,7 +599,7 @@
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">statsExpressions</span>)
 
 <span class="co"># Pearson's chi-squared test of independence</span>
-<span class="fu"><a href="reference/expr_contingency_tab.html">expr_contingency_tab</a></span>(<span class="no">mtcars</span>, <span class="no">am</span>, <span class="no">cyl</span>)
+<span class="fu"><a href="reference/contingency_tab.html">contingency_tab</a></span>(<span class="no">mtcars</span>, <span class="no">am</span>, <span class="no">cyl</span>)
 <span class="co">#&gt; paste(NULL, chi["Pearson"]^2, "(", "2", ") = ", "8.74", ", ", </span>
 <span class="co">#&gt;     italic("p"), " = ", "0.013", ", ", widehat(italic("V"))["Cramer"], </span>
 <span class="co">#&gt;     " = ", "0.46", ", CI"["95%"], " [", "0.08", ", ", "0.75", </span>

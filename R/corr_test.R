@@ -1,9 +1,9 @@
-#' @title Expression and dataframe for correlation analysis
-#' @name expr_corr_test
+#' @title A dataframe with expression for correlation analysis
+#' @name corr_test
 #'
 #' @description
 #'
-#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("maturing")}
+#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
 #'
 #'  A dataframe containing results from correlation test with confidence
 #'  intervals for the correlation coefficient estimate. Results are extracted
@@ -18,7 +18,7 @@
 #' @param y The column in `data` containing the response (outcome) variable to
 #'   be plotted on the `y`-axis. Can be entered either as a character string
 #'   (e.g., `"y"`) or as a bare expression (e.g, `y`).
-#' @inheritParams expr_oneway_anova
+#' @inheritParams oneway_anova
 #'
 #' @importFrom dplyr select case_when
 #' @importFrom correlation correlation
@@ -32,34 +32,32 @@
 #' library(statsExpressions)
 #'
 #' # without changing defaults
-#' expr_corr_test(
+#' corr_test(
 #'   data = ggplot2::midwest,
 #'   x = area,
 #'   y = percblack
 #' )
 #'
 #' # changing defaults
-#' expr_corr_test(
+#' corr_test(
 #'   data = ggplot2::midwest,
 #'   x = area,
 #'   y = percblack,
-#'   type = "robust",
-#'   output = "dataframe"
+#'   type = "robust"
 #' )
 #' @export
 
 # function body
-expr_corr_test <- function(data,
-                           x,
-                           y,
-                           type = "parametric",
-                           k = 2L,
-                           conf.level = 0.95,
-                           tr = 0.2,
-                           bf.prior = 0.707,
-                           top.text = NULL,
-                           output = "expression",
-                           ...) {
+corr_test <- function(data,
+                      x,
+                      y,
+                      type = "parametric",
+                      k = 2L,
+                      conf.level = 0.95,
+                      tr = 0.2,
+                      bf.prior = 0.707,
+                      top.text = NULL,
+                      ...) {
 
   # see which method was used to specify type of correlation
   type <- ipmisc::stats_type_switch(type)
@@ -88,8 +86,8 @@ expr_corr_test <- function(data,
   if (type == "bayes") stats_df %<>% dplyr::rename("bf10" = "bayes.factor")
 
   # preparing expression
-  expression <-
-    expr_template(
+  as_tibble(stats_df) %>%
+    dplyr::mutate(expression = list(expr_template(
       data = stats_df,
       no.parameters = no.parameters,
       top.text = top.text,
@@ -97,11 +95,11 @@ expr_corr_test <- function(data,
       n = stats_df$n.obs[[1]],
       k = k,
       bayesian = ifelse(type == "bayes", TRUE, FALSE)
-    )
-
-  # return the output
-  switch(output,
-    "dataframe" = as_tibble(stats_df),
-    expression
-  )
+    )))
 }
+
+#' @rdname corr_test
+#' @aliases corr_test
+#' @export
+
+expr_corr_test <- corr_test

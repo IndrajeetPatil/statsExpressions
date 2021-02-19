@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Expression and dataframe for one-way ANOVA — expr_oneway_anova • statsExpressions</title>
+<title>A dataframe with an expression for one-way ANOVA — oneway_anova • statsExpressions</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,7 +54,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Expression and dataframe for one-way ANOVA — expr_oneway_anova" />
+<meta property="og:title" content="A dataframe with an expression for one-way ANOVA — oneway_anova" />
 <meta property="og:description" content="
 A dataframe containing results for one-way ANOVA.
 For more details, see-
@@ -99,7 +99,7 @@ https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" /
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.7.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.0.9000</span>
       </span>
     </div>
 
@@ -153,19 +153,19 @@ https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" /
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Expression and dataframe for one-way ANOVA</h1>
+    <h1>A dataframe with an expression for one-way ANOVA</h1>
     <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/oneway_anova.R'><code>R/oneway_anova.R</code></a></small>
-    <div class="hidden name"><code>expr_oneway_anova.Rd</code></div>
+    <div class="hidden name"><code>oneway_anova.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a></p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#stable'><img src='figures/lifecycle-stable.svg' alt='Stable lifecycle'></a></p>
 <p>A dataframe containing results for one-way ANOVA.</p>
 <p>For more details, see-
 <a href='https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html'>https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html</a></p>
     </div>
 
-    <pre class="usage"><span class='fu'>expr_oneway_anova</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>oneway_anova</span><span class='op'>(</span>
   <span class='va'>data</span>,
   <span class='va'>x</span>,
   <span class='va'>y</span>,
@@ -180,7 +180,24 @@ https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" /
   tr <span class='op'>=</span> <span class='fl'>0.2</span>,
   nboot <span class='op'>=</span> <span class='fl'>100</span>,
   top.text <span class='op'>=</span> <span class='cn'>NULL</span>,
-  output <span class='op'>=</span> <span class='st'>"expression"</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span>
+
+<span class='fu'>expr_oneway_anova</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  <span class='va'>x</span>,
+  <span class='va'>y</span>,
+  subject.id <span class='op'>=</span> <span class='cn'>NULL</span>,
+  type <span class='op'>=</span> <span class='st'>"parametric"</span>,
+  paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  k <span class='op'>=</span> <span class='fl'>2L</span>,
+  conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
+  effsize.type <span class='op'>=</span> <span class='st'>"omega"</span>,
+  var.equal <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  bf.prior <span class='op'>=</span> <span class='fl'>0.707</span>,
+  tr <span class='op'>=</span> <span class='fl'>0.2</span>,
+  nboot <span class='op'>=</span> <span class='fl'>100</span>,
+  top.text <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -275,12 +292,6 @@ for the effect size (Default: <code>100</code>).</p></td>
 mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
     </tr>
     <tr>
-      <th>output</th>
-      <td><p>If <code>"expression"</code>, will return expression with statistical
-details, while <code>"dataframe"</code> will return a dataframe containing the
-results.</p></td>
-    </tr>
-    <tr>
       <th>...</th>
       <td><p>Additional arguments (currently ignored).</p></td>
     </tr>
@@ -308,88 +319,100 @@ by running:
 <span class='co'># ----------------------- parametric -------------------------------------</span>
 
 <span class='co'># between-subjects</span>
-<span class='fu'>expr_oneway_anova</span><span class='op'>(</span>
+<span class='fu'>oneway_anova</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
   x <span class='op'>=</span> <span class='va'>vore</span>,
   y <span class='op'>=</span> <span class='va'>sleep_rem</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; paste(italic("F")["Welch"], "(", "3", ",", "11.10", ") = ", "2.63", 
-#&gt;     ", ", italic("p"), " = ", "0.102", ", ", widehat(omega["p"]^2), 
-#&gt;     " = ", "0.24", ", CI"["95%"], " [", "0.00", ", ", "0.54", 
-#&gt;     "]", ", ", italic("n")["obs"], " = ", "56")</div><div class='input'>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 11</span><span>
+#&gt;   </span><span style='font-weight: bold;'>statistic</span><span>    </span><span style='font-weight: bold;'>df</span><span> </span><span style='font-weight: bold;'>df.error</span><span> </span><span style='font-weight: bold;'>p.value</span><span>
+#&gt;       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>      2.63     3     11.1   </span><span style='color: #555555;'>0.</span><span>102
+#&gt;   </span><span style='font-weight: bold;'>method</span><span>                                                   </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> One-way analysis of means (not assuming equal variances)    </span><span style='color: #555555;'>0.</span><span>245       </span><span style='color: #555555;'>0.</span><span>95
+#&gt;   </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>effectsize</span><span> </span><span style='font-weight: bold;'>expression</span><span>
+#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'>1</span><span>        </span><span style='color: #555555;'>0</span><span>     </span><span style='color: #555555;'>0.</span><span>539 Omega2     </span><span style='color: #555555;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='co'># within-subjects design</span>
-<span class='fu'>expr_oneway_anova</span><span class='op'>(</span>
+<span class='fu'>oneway_anova</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>iris_long</span>,
   x <span class='op'>=</span> <span class='va'>condition</span>,
   y <span class='op'>=</span> <span class='va'>value</span>,
   subject.id <span class='op'>=</span> <span class='va'>id</span>,
-  paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  output <span class='op'>=</span> <span class='st'>"dataframe"</span>
+  paired <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 14</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 15</span><span>
 #&gt;   </span><span style='font-weight: bold;'>term</span><span>      </span><span style='font-weight: bold;'>sumsq</span><span> </span><span style='font-weight: bold;'>sum.squares.error</span><span>    </span><span style='font-weight: bold;'>df</span><span> </span><span style='font-weight: bold;'>df.error</span><span> </span><span style='font-weight: bold;'>meansq</span><span> </span><span style='font-weight: bold;'>statistic</span><span>  </span><span style='font-weight: bold;'>p.value</span><span>
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>             </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span> condition </span><span style='text-decoration: underline;'>1</span><span>65</span><span style='color: #555555;'>6</span><span>.              318.  1.15     171.   1.86      776. 1.32</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-69</span><span>
 #&gt;   </span><span style='font-weight: bold;'>method</span><span>                                              </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span>
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span> ANOVA estimation for factorial designs using 'afex'    </span><span style='color: #555555;'>0.</span><span>707       </span><span style='color: #555555;'>0.</span><span>95
-#&gt;   </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>effectsize</span><span>      
-#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
-#&gt; </span><span style='color: #555555;'>1</span><span>    </span><span style='color: #555555;'>0.</span><span>666     </span><span style='color: #555555;'>0.</span><span>740 Omega2 (partial)</div><div class='input'>
+#&gt;   </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>effectsize</span><span>       </span><span style='font-weight: bold;'>expression</span><span>
+#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'>1</span><span>    </span><span style='color: #555555;'>0.</span><span>666     </span><span style='color: #555555;'>0.</span><span>740 Omega2 (partial) </span><span style='color: #555555;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='co'># ----------------------- non-parametric ----------------------------------</span>
 
 <span class='co'># between-subjects</span>
-<span class='fu'>expr_oneway_anova</span><span class='op'>(</span>
+<span class='fu'>oneway_anova</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
   x <span class='op'>=</span> <span class='va'>vore</span>,
   y <span class='op'>=</span> <span class='va'>sleep_rem</span>,
   type <span class='op'>=</span> <span class='st'>"np"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; paste(chi["Kruskal-Wallis"]^2, "(", "3", ") = ", "9.06", ", ", 
-#&gt;     italic("p"), " = ", "0.028", ", ", widehat(epsilon)["ordinal"]^2, 
-#&gt;     " = ", "0.16", ", CI"["95%"], " [", "0.05", ", ", "0.36", 
-#&gt;     "]", ", ", italic("n")["obs"], " = ", "56")</div><div class='input'>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 12</span><span>
+#&gt;   </span><span style='font-weight: bold;'>parameter1</span><span> </span><span style='font-weight: bold;'>parameter2</span><span> </span><span style='font-weight: bold;'>statistic</span><span> </span><span style='font-weight: bold;'>df.error</span><span> </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>method</span><span>                      
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                       
+#&gt; </span><span style='color: #555555;'>1</span><span> sleep_rem  vore            9.06        3  </span><span style='color: #555555;'>0.0</span><span>28</span><span style='text-decoration: underline;'>5</span><span> Kruskal-Wallis rank sum test
+#&gt;   </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>effectsize</span><span>      </span><span style='font-weight: bold;'>expression</span><span>
+#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'>1</span><span>    </span><span style='color: #555555;'>0.</span><span>165       </span><span style='color: #555555;'>0.</span><span>95   </span><span style='color: #555555;'>0.0</span><span>50</span><span style='text-decoration: underline;'>3</span><span>     </span><span style='color: #555555;'>0.</span><span>364 Epsilon2 (rank) </span><span style='color: #555555;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='co'># within-subjects design</span>
-<span class='fu'>expr_oneway_anova</span><span class='op'>(</span>
+<span class='fu'>oneway_anova</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>iris_long</span>,
   x <span class='op'>=</span> <span class='va'>condition</span>,
   y <span class='op'>=</span> <span class='va'>value</span>,
   subject.id <span class='op'>=</span> <span class='va'>id</span>,
   paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  type <span class='op'>=</span> <span class='st'>"np"</span>,
-  output <span class='op'>=</span> <span class='st'>"dataframe"</span>
+  type <span class='op'>=</span> <span class='st'>"np"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 9</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 10</span><span>
 #&gt;   </span><span style='font-weight: bold;'>statistic</span><span>    </span><span style='font-weight: bold;'>df</span><span>  </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>method</span><span>                 </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span>
 #&gt;       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span>       410     3 1.51</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-88</span><span> Friedman rank sum test    </span><span style='color: #555555;'>0.</span><span>484       </span><span style='color: #555555;'>0.</span><span>95    </span><span style='color: #555555;'>0.</span><span>340
-#&gt;   </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>effectsize</span><span> 
-#&gt;       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      
-#&gt; </span><span style='color: #555555;'>1</span><span>     </span><span style='color: #555555;'>0.</span><span>969 Kendall's W</div><div class='input'>
+#&gt;   </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>effectsize</span><span>  </span><span style='font-weight: bold;'>expression</span><span>
+#&gt;       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'>1</span><span>     </span><span style='color: #555555;'>0.</span><span>969 Kendall's W </span><span style='color: #555555;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='co'># ----------------------- robust -------------------------------------</span>
 
 <span class='co'># between-subjects</span>
-<span class='fu'>expr_oneway_anova</span><span class='op'>(</span>
+<span class='fu'>oneway_anova</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
   x <span class='op'>=</span> <span class='va'>vore</span>,
   y <span class='op'>=</span> <span class='va'>sleep_rem</span>,
   type <span class='op'>=</span> <span class='st'>"r"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; paste(italic("F")["trimmed-means"], "(", "3", ",", "9.37", ") = ", 
-#&gt;     "2.76", ", ", italic("p"), " = ", "0.102", ", ", widehat(xi), 
-#&gt;     " = ", "0.81", ", CI"["95%"], " [", "0.44", ", ", "1.41", 
-#&gt;     "]", ", ", italic("n")["obs"], " = ", "56")</div><div class='input'>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 11</span><span>
+#&gt;   </span><span style='font-weight: bold;'>statistic</span><span>    </span><span style='font-weight: bold;'>df</span><span> </span><span style='font-weight: bold;'>df.error</span><span> </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>
+#&gt;       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>      2.76     3     9.37   </span><span style='color: #555555;'>0.</span><span>102    </span><span style='color: #555555;'>0.</span><span>811       </span><span style='color: #555555;'>0.</span><span>95    </span><span style='color: #555555;'>0.</span><span>440      1.41
+#&gt;   </span><span style='font-weight: bold;'>effectsize</span><span>                        
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                             
+#&gt; </span><span style='color: #555555;'>1</span><span> Explanatory measure of effect size
+#&gt;   </span><span style='font-weight: bold;'>method</span><span>                                            </span><span style='font-weight: bold;'>expression</span><span>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                             </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'>1</span><span> A heteroscedastic one-way ANOVA for trimmed means </span><span style='color: #555555;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='co'># within-subjects design</span>
-<span class='fu'>expr_oneway_anova</span><span class='op'>(</span>
+<span class='fu'>oneway_anova</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>iris_long</span>,
   x <span class='op'>=</span> <span class='va'>condition</span>,
   y <span class='op'>=</span> <span class='va'>value</span>,
   subject.id <span class='op'>=</span> <span class='va'>id</span>,
   paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  type <span class='op'>=</span> <span class='st'>"r"</span>,
-  output <span class='op'>=</span> <span class='st'>"dataframe"</span>
+  type <span class='op'>=</span> <span class='st'>"r"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 10</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 11</span><span>
 #&gt;   </span><span style='font-weight: bold;'>statistic</span><span>    </span><span style='font-weight: bold;'>df</span><span> </span><span style='font-weight: bold;'>df.error</span><span> </span><span style='font-weight: bold;'>p.value</span><span>
 #&gt;       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span>      368.  1.09     97.1       </span><span style='color: #555555;'>0</span><span>
@@ -399,36 +422,68 @@ by running:
 #&gt;   </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>conf.level</span><span>
 #&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span>   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>935</span><span>     </span><span style='color: #555555;'>0.</span><span>140       </span><span style='color: #555555;'>0.</span><span>95
-#&gt;   </span><span style='font-weight: bold;'>effectsize</span><span>                                                     
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                          
-#&gt; </span><span style='color: #555555;'>1</span><span> Algina-Keselman-Penfield robust standardized difference average</div><div class='input'>
+#&gt;   </span><span style='font-weight: bold;'>effectsize</span><span>                                                      </span><span style='font-weight: bold;'>expression</span><span>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                           </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'>1</span><span> Algina-Keselman-Penfield robust standardized difference average </span><span style='color: #555555;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='co'># ----------------------- Bayesian -------------------------------------</span>
 
 <span class='co'># between-subjects</span>
-<span class='fu'>expr_oneway_anova</span><span class='op'>(</span>
+<span class='fu'>oneway_anova</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
   x <span class='op'>=</span> <span class='va'>vore</span>,
   y <span class='op'>=</span> <span class='va'>sleep_rem</span>,
   type <span class='op'>=</span> <span class='st'>"bayes"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; paste("log"["e"] * "(BF"["01"] * ") = " * "-1.23" * ", ", widehat(italic(R^"2"))["Bayesian"]^"posterior" * 
-#&gt;     " = " * "0.11" * ", ", "CI"["95%"]^"HDI" * " [" * "0.00" * 
-#&gt;     ", " * "0.27" * "], ", italic("r")["Cauchy"]^"JZS" * " = " * 
-#&gt;     "0.71")</div><div class='input'>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 7 x 19</span><span>
+#&gt;   </span><span style='font-weight: bold;'>term</span><span>         </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>    </span><span style='font-weight: bold;'>pd</span><span> </span><span style='font-weight: bold;'>rope.percentage</span><span>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> mu             2.18         </span><span style='color: #555555;'>0.</span><span>95   1.79       2.58  1              </span><span style='color: #555555;'>0</span><span>     
+#&gt; </span><span style='color: #555555;'>2</span><span> vore-carni     </span><span style='color: #555555;'>0.0</span><span>78</span><span style='text-decoration: underline;'>8</span><span>       </span><span style='color: #555555;'>0.</span><span>95  -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>534</span><span>      </span><span style='color: #555555;'>0.</span><span>682 </span><span style='color: #555555;'>0.</span><span>599          </span><span style='color: #555555;'>0.</span><span>359 
+#&gt; </span><span style='color: #555555;'>3</span><span> vore-herbi    -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>732</span><span>        </span><span style='color: #555555;'>0.</span><span>95  -</span><span style='color: #BB0000;'>1.24</span><span>      -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>166</span><span> </span><span style='color: #555555;'>0.</span><span>996          </span><span style='color: #555555;'>0</span><span>     
+#&gt; </span><span style='color: #555555;'>4</span><span> vore-insecti   </span><span style='color: #555555;'>0.</span><span>847        </span><span style='color: #555555;'>0.</span><span>95  -</span><span style='color: #555555;'>0.0</span><span style='color: #BB0000;'>47</span><span style='color: #BB0000;text-decoration: underline;'>6</span><span>     1.77  </span><span style='color: #555555;'>0.</span><span>974          </span><span style='color: #555555;'>0.0</span><span>16</span><span style='text-decoration: underline;'>6</span><span>
+#&gt; </span><span style='color: #555555;'>5</span><span> vore-omni     -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>194</span><span>        </span><span style='color: #555555;'>0.</span><span>95  -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>764</span><span>      </span><span style='color: #555555;'>0.</span><span>321 </span><span style='color: #555555;'>0.</span><span>760          </span><span style='color: #555555;'>0.</span><span>339 
+#&gt; </span><span style='color: #555555;'>6</span><span> sig2           1.55         </span><span style='color: #555555;'>0.</span><span>95   1.04       2.25  1              </span><span style='color: #555555;'>0</span><span>     
+#&gt; </span><span style='color: #555555;'>7</span><span> g_vore         </span><span style='color: #555555;'>0.</span><span>437        </span><span style='color: #555555;'>0.</span><span>95   </span><span style='color: #555555;'>0.0</span><span>36</span><span style='text-decoration: underline;'>8</span><span>     2.62  1              </span><span style='color: #555555;'>0.0</span><span>81</span><span style='text-decoration: underline;'>2</span><span>
+#&gt;   </span><span style='font-weight: bold;'>prior.distribution</span><span> </span><span style='font-weight: bold;'>prior.location</span><span> </span><span style='font-weight: bold;'>prior.scale</span><span> </span><span style='font-weight: bold;'>component</span><span>    </span><span style='font-weight: bold;'>bf10</span><span>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> cauchy                          </span><span style='color: #555555;'>0</span><span>       </span><span style='color: #555555;'>0.</span><span>707 extra        3.41
+#&gt; </span><span style='color: #555555;'>2</span><span> cauchy                          </span><span style='color: #555555;'>0</span><span>       </span><span style='color: #555555;'>0.</span><span>707 conditional  3.41
+#&gt; </span><span style='color: #555555;'>3</span><span> cauchy                          </span><span style='color: #555555;'>0</span><span>       </span><span style='color: #555555;'>0.</span><span>707 conditional  3.41
+#&gt; </span><span style='color: #555555;'>4</span><span> cauchy                          </span><span style='color: #555555;'>0</span><span>       </span><span style='color: #555555;'>0.</span><span>707 conditional  3.41
+#&gt; </span><span style='color: #555555;'>5</span><span> cauchy                          </span><span style='color: #555555;'>0</span><span>       </span><span style='color: #555555;'>0.</span><span>707 conditional  3.41
+#&gt; </span><span style='color: #555555;'>6</span><span> cauchy                          </span><span style='color: #555555;'>0</span><span>       </span><span style='color: #555555;'>0.</span><span>707 extra        3.41
+#&gt; </span><span style='color: #555555;'>7</span><span> cauchy                          </span><span style='color: #555555;'>0</span><span>       </span><span style='color: #555555;'>0.</span><span>707 extra        3.41
+#&gt;   </span><span style='font-weight: bold;'>method</span><span>                             </span><span style='font-weight: bold;'>r2</span><span> </span><span style='font-weight: bold;'>std.dev</span><span> </span><span style='font-weight: bold;'>r2.conf.level</span><span> </span><span style='font-weight: bold;'>r2.conf.low</span><span>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                           </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> Bayes factors for linear models </span><span style='color: #555555;'>0.</span><span>112   </span><span style='color: #555555;'>0.</span><span>109          </span><span style='color: #555555;'>0.</span><span>95           </span><span style='color: #555555;'>0</span><span>
+#&gt; </span><span style='color: #555555;'>2</span><span> Bayes factors for linear models </span><span style='color: #555555;'>0.</span><span>112   </span><span style='color: #555555;'>0.</span><span>109          </span><span style='color: #555555;'>0.</span><span>95           </span><span style='color: #555555;'>0</span><span>
+#&gt; </span><span style='color: #555555;'>3</span><span> Bayes factors for linear models </span><span style='color: #555555;'>0.</span><span>112   </span><span style='color: #555555;'>0.</span><span>109          </span><span style='color: #555555;'>0.</span><span>95           </span><span style='color: #555555;'>0</span><span>
+#&gt; </span><span style='color: #555555;'>4</span><span> Bayes factors for linear models </span><span style='color: #555555;'>0.</span><span>112   </span><span style='color: #555555;'>0.</span><span>109          </span><span style='color: #555555;'>0.</span><span>95           </span><span style='color: #555555;'>0</span><span>
+#&gt; </span><span style='color: #555555;'>5</span><span> Bayes factors for linear models </span><span style='color: #555555;'>0.</span><span>112   </span><span style='color: #555555;'>0.</span><span>109          </span><span style='color: #555555;'>0.</span><span>95           </span><span style='color: #555555;'>0</span><span>
+#&gt; </span><span style='color: #555555;'>6</span><span> Bayes factors for linear models </span><span style='color: #555555;'>0.</span><span>112   </span><span style='color: #555555;'>0.</span><span>109          </span><span style='color: #555555;'>0.</span><span>95           </span><span style='color: #555555;'>0</span><span>
+#&gt; </span><span style='color: #555555;'>7</span><span> Bayes factors for linear models </span><span style='color: #555555;'>0.</span><span>112   </span><span style='color: #555555;'>0.</span><span>109          </span><span style='color: #555555;'>0.</span><span>95           </span><span style='color: #555555;'>0</span><span>
+#&gt;   </span><span style='font-weight: bold;'>r2.conf.high</span><span> </span><span style='font-weight: bold;'>expression</span><span>
+#&gt;          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'>1</span><span>        </span><span style='color: #555555;'>0.</span><span>267 </span><span style='color: #555555;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>2</span><span>        </span><span style='color: #555555;'>0.</span><span>267 </span><span style='color: #555555;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>3</span><span>        </span><span style='color: #555555;'>0.</span><span>267 </span><span style='color: #555555;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>4</span><span>        </span><span style='color: #555555;'>0.</span><span>267 </span><span style='color: #555555;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>5</span><span>        </span><span style='color: #555555;'>0.</span><span>267 </span><span style='color: #555555;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>6</span><span>        </span><span style='color: #555555;'>0.</span><span>267 </span><span style='color: #555555;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>7</span><span>        </span><span style='color: #555555;'>0.</span><span>267 </span><span style='color: #555555;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='co'># within-subjects design</span>
 <span class='co'># needs `BayesFactor 0.9.12-4.3` or above</span>
 <span class='kw'>if</span> <span class='op'>(</span><span class='fu'>utils</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/utils/packageDescription.html'>packageVersion</a></span><span class='op'>(</span><span class='st'>"BayesFactor"</span><span class='op'>)</span> <span class='op'>&gt;=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric_version.html'>package_version</a></span><span class='op'>(</span><span class='st'>"0.9.12-4.3"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='fu'>expr_oneway_anova</span><span class='op'>(</span>
+  <span class='fu'>oneway_anova</span><span class='op'>(</span>
     data <span class='op'>=</span> <span class='va'>iris_long</span>,
     x <span class='op'>=</span> <span class='va'>condition</span>,
     y <span class='op'>=</span> <span class='va'>value</span>,
     subject.id <span class='op'>=</span> <span class='va'>id</span>,
     paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
-    type <span class='op'>=</span> <span class='st'>"bayes"</span>,
-    output <span class='op'>=</span> <span class='st'>"dataframe"</span>
+    type <span class='op'>=</span> <span class='st'>"bayes"</span>
   <span class='op'>)</span>
 <span class='op'>}</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 158 x 20</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 158 x 21</span><span>
 #&gt;    </span><span style='font-weight: bold;'>term</span><span>                   </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>    </span><span style='font-weight: bold;'>pd</span><span>
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'> 1</span><span> mu                        3.46        </span><span style='color: #555555;'>0.</span><span>95    3.35     3.60   1    
@@ -465,18 +520,18 @@ by running:
 #&gt; </span><span style='color: #555555;'> 8</span><span> conditional 1.58</span><span style='color: #555555;'>e</span><span>182 Bayes factors for linear models </span><span style='color: #555555;'>0.</span><span>818 </span><span style='color: #555555;'>0.00</span><span>8</span><span style='text-decoration: underline;'>62</span><span>
 #&gt; </span><span style='color: #555555;'> 9</span><span> conditional 1.58</span><span style='color: #555555;'>e</span><span>182 Bayes factors for linear models </span><span style='color: #555555;'>0.</span><span>818 </span><span style='color: #555555;'>0.00</span><span>8</span><span style='text-decoration: underline;'>62</span><span>
 #&gt; </span><span style='color: #555555;'>10</span><span> conditional 1.58</span><span style='color: #555555;'>e</span><span>182 Bayes factors for linear models </span><span style='color: #555555;'>0.</span><span>818 </span><span style='color: #555555;'>0.00</span><span>8</span><span style='text-decoration: underline;'>62</span><span>
-#&gt;    </span><span style='font-weight: bold;'>r2.conf.level</span><span> </span><span style='font-weight: bold;'>r2.conf.low</span><span> </span><span style='font-weight: bold;'>r2.conf.high</span><span> </span><span style='font-weight: bold;'>r2.component</span><span>
-#&gt;            </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
-#&gt; </span><span style='color: #555555;'> 1</span><span>          </span><span style='color: #555555;'>0.</span><span>95       </span><span style='color: #555555;'>0.</span><span>800        </span><span style='color: #555555;'>0.</span><span>833 conditional 
-#&gt; </span><span style='color: #555555;'> 2</span><span>          </span><span style='color: #555555;'>0.</span><span>95       </span><span style='color: #555555;'>0.</span><span>800        </span><span style='color: #555555;'>0.</span><span>833 conditional 
-#&gt; </span><span style='color: #555555;'> 3</span><span>          </span><span style='color: #555555;'>0.</span><span>95       </span><span style='color: #555555;'>0.</span><span>800        </span><span style='color: #555555;'>0.</span><span>833 conditional 
-#&gt; </span><span style='color: #555555;'> 4</span><span>          </span><span style='color: #555555;'>0.</span><span>95       </span><span style='color: #555555;'>0.</span><span>800        </span><span style='color: #555555;'>0.</span><span>833 conditional 
-#&gt; </span><span style='color: #555555;'> 5</span><span>          </span><span style='color: #555555;'>0.</span><span>95       </span><span style='color: #555555;'>0.</span><span>800        </span><span style='color: #555555;'>0.</span><span>833 conditional 
-#&gt; </span><span style='color: #555555;'> 6</span><span>          </span><span style='color: #555555;'>0.</span><span>95       </span><span style='color: #555555;'>0.</span><span>800        </span><span style='color: #555555;'>0.</span><span>833 conditional 
-#&gt; </span><span style='color: #555555;'> 7</span><span>          </span><span style='color: #555555;'>0.</span><span>95       </span><span style='color: #555555;'>0.</span><span>800        </span><span style='color: #555555;'>0.</span><span>833 conditional 
-#&gt; </span><span style='color: #555555;'> 8</span><span>          </span><span style='color: #555555;'>0.</span><span>95       </span><span style='color: #555555;'>0.</span><span>800        </span><span style='color: #555555;'>0.</span><span>833 conditional 
-#&gt; </span><span style='color: #555555;'> 9</span><span>          </span><span style='color: #555555;'>0.</span><span>95       </span><span style='color: #555555;'>0.</span><span>800        </span><span style='color: #555555;'>0.</span><span>833 conditional 
-#&gt; </span><span style='color: #555555;'>10</span><span>          </span><span style='color: #555555;'>0.</span><span>95       </span><span style='color: #555555;'>0.</span><span>800        </span><span style='color: #555555;'>0.</span><span>833 conditional 
+#&gt;    </span><span style='font-weight: bold;'>r2.conf.level</span><span> </span><span style='font-weight: bold;'>r2.conf.low</span><span> </span><span style='font-weight: bold;'>r2.conf.high</span><span> </span><span style='font-weight: bold;'>r2.component</span><span> </span><span style='font-weight: bold;'>expression</span><span>
+#&gt;            </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 1</span><span>          </span><span style='color: #555555;'>0.</span><span>95       </span><span style='color: #555555;'>0.</span><span>800        </span><span style='color: #555555;'>0.</span><span>833 conditional  </span><span style='color: #555555;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 2</span><span>          </span><span style='color: #555555;'>0.</span><span>95       </span><span style='color: #555555;'>0.</span><span>800        </span><span style='color: #555555;'>0.</span><span>833 conditional  </span><span style='color: #555555;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 3</span><span>          </span><span style='color: #555555;'>0.</span><span>95       </span><span style='color: #555555;'>0.</span><span>800        </span><span style='color: #555555;'>0.</span><span>833 conditional  </span><span style='color: #555555;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 4</span><span>          </span><span style='color: #555555;'>0.</span><span>95       </span><span style='color: #555555;'>0.</span><span>800        </span><span style='color: #555555;'>0.</span><span>833 conditional  </span><span style='color: #555555;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 5</span><span>          </span><span style='color: #555555;'>0.</span><span>95       </span><span style='color: #555555;'>0.</span><span>800        </span><span style='color: #555555;'>0.</span><span>833 conditional  </span><span style='color: #555555;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 6</span><span>          </span><span style='color: #555555;'>0.</span><span>95       </span><span style='color: #555555;'>0.</span><span>800        </span><span style='color: #555555;'>0.</span><span>833 conditional  </span><span style='color: #555555;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 7</span><span>          </span><span style='color: #555555;'>0.</span><span>95       </span><span style='color: #555555;'>0.</span><span>800        </span><span style='color: #555555;'>0.</span><span>833 conditional  </span><span style='color: #555555;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 8</span><span>          </span><span style='color: #555555;'>0.</span><span>95       </span><span style='color: #555555;'>0.</span><span>800        </span><span style='color: #555555;'>0.</span><span>833 conditional  </span><span style='color: #555555;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 9</span><span>          </span><span style='color: #555555;'>0.</span><span>95       </span><span style='color: #555555;'>0.</span><span>800        </span><span style='color: #555555;'>0.</span><span>833 conditional  </span><span style='color: #555555;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>10</span><span>          </span><span style='color: #555555;'>0.</span><span>95       </span><span style='color: #555555;'>0.</span><span>800        </span><span style='color: #555555;'>0.</span><span>833 conditional  </span><span style='color: #555555;'>&lt;language&gt;</span><span>
 #&gt; </span><span style='color: #555555;'># ... with 148 more rows</span><span></div><div class='input'><span class='co'># }</span>
 </div></span></pre>
   </div>

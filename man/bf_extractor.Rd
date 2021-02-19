@@ -4,14 +4,7 @@
 \alias{bf_extractor}
 \title{Extract Bayes Factors from \code{BayesFactor} model object.}
 \usage{
-bf_extractor(
-  bf.object,
-  conf.level = 0.95,
-  k = 2L,
-  top.text = NULL,
-  output = "dataframe",
-  ...
-)
+bf_extractor(bf.object, conf.level = 0.95, k = 2L, top.text = NULL, ...)
 }
 \arguments{
 \item{bf.object}{An object from \code{BayesFactor} package.}
@@ -24,10 +17,6 @@ bf_extractor(
 
 \item{top.text}{Text to display on top of the Bayes Factor message. This is
 mostly relevant in the context of \code{ggstatsplot} functions.}
-
-\item{output}{If \code{"expression"}, will return expression with statistical
-details, while \code{"dataframe"} will return a dataframe containing the
-results.}
 
 \item{...}{Additional arguments passed to
 \code{\link[parameters:model_parameters.BFBayesFactor]{parameters::model_parameters.BFBayesFactor()}}.}

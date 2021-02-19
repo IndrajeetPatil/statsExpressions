@@ -8,9 +8,6 @@
 #'   (Default: `k = 2L`).
 #' @param top.text Text to display on top of the Bayes Factor message. This is
 #'   mostly relevant in the context of `ggstatsplot` functions.
-#' @param output If `"expression"`, will return expression with statistical
-#'   details, while `"dataframe"` will return a dataframe containing the
-#'   results.
 #' @param ... Additional arguments passed to
 #'   [parameters::model_parameters.BFBayesFactor()].
 #'
@@ -45,7 +42,6 @@ bf_extractor <- function(bf.object,
                          conf.level = 0.95,
                          k = 2L,
                          top.text = NULL,
-                         output = "dataframe",
                          ...) {
   # basic parameters dataframe
   stats_df <- suppressMessages(tidy_model_parameters(bf.object, ci = conf.level, ...))
@@ -70,17 +66,13 @@ bf_extractor <- function(bf.object,
   }
 
   # Bayes Factor expression
-  expression <-
-    expr_template(
-      top.text = top.text,
-      data = stats_df,
-      k = k,
-      bayesian = TRUE
+  stats_df %>%
+    dplyr::mutate(
+      expression = list(expr_template(
+        data = .,
+        k = k,
+        top.text = top.text,
+        bayesian = TRUE
+      ))
     )
-
-  # return the text results or the dataframe with results
-  switch(output,
-    "dataframe" = as_tibble(stats_df),
-    expression
-  )
 }

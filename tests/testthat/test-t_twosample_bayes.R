@@ -25,7 +25,7 @@ if (packageVersion("parameters") > "0.11.0") {
       # expression
       set.seed(123)
       bf_expr <-
-        expr_t_twosample(
+        t_twosample(
           type = "bayes",
           data = ToothGrowth,
           x = supp,
@@ -36,7 +36,7 @@ if (packageVersion("parameters") > "0.11.0") {
 
       # call
       expect_identical(
-        bf_expr,
+        bf_expr$expression[[1]],
         ggplot2::expr(
           paste("log"["e"] * "(BF"["01"] * ") = " *
             "-0.18" * ", ", widehat(italic(delta))["difference"]^"posterior" *
@@ -67,14 +67,13 @@ if (packageVersion("parameters") > "0.11.0") {
       # extracting results from where this function is implemented
       set.seed(123)
       df_results <-
-        expr_t_twosample(
+        t_twosample(
           type = "bayes",
           data = dat_tidy,
           x = "condition",
           y = desire,
           paired = TRUE,
           bf.prior = 0.8,
-          output = "dataframe"
         )
 
       # check bayes factor values
@@ -83,7 +82,7 @@ if (packageVersion("parameters") > "0.11.0") {
       # expression
       set.seed(123)
       bf_expr <-
-        expr_t_twosample(
+        t_twosample(
           type = "bayes",
           data = dat_tidy,
           x = "condition",
@@ -95,7 +94,7 @@ if (packageVersion("parameters") > "0.11.0") {
 
       # call
       expect_identical(
-        bf_expr,
+        bf_expr$expression[[1]],
         ggplot2::expr(
           atop(displaystyle("bla"),
             expr = paste(
@@ -151,7 +150,7 @@ if (packageVersion("parameters") > "0.11.0") {
       # incorrect
       set.seed(123)
       expr1 <-
-        expr_t_twosample(
+        t_twosample(
           type = "bayes",
           data = df,
           x = condition,
@@ -163,7 +162,7 @@ if (packageVersion("parameters") > "0.11.0") {
       # correct
       set.seed(123)
       expr2 <-
-        expr_t_twosample(
+        t_twosample(
           type = "bayes",
           data = dplyr::arrange(df, id),
           x = condition,
