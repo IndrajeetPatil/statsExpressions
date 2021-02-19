@@ -86,7 +86,7 @@ test_that(
 test_that(
   desc = "expr_anova works in loop",
   code = {
-    skip_on_cran()
+    # skip_on_cran()
 
     # working with loops
     df <- dplyr::select(mtcars, cyl, wt, mpg)

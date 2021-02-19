@@ -3,8 +3,8 @@
 test_that(
   desc = "expr_corr_test works - nonparametric",
   code = {
-    skip_if(getRversion() < "3.6")
-    skip_on_cran()
+
+    # skip_on_cran()
 
     if (utils::packageVersion("correlation") > package_version("0.4.0")) {
       # `statsExpressions` output
@@ -97,8 +97,8 @@ test_that(
 test_that(
   desc = "expr_corr_test works - parametric",
   code = {
-    skip_if(getRversion() < "3.6")
-    skip_on_cran()
+
+    # skip_on_cran()
 
     if (utils::packageVersion("correlation") > package_version("0.4.0")) {
       # `statsExpressions` output
@@ -154,8 +154,6 @@ test_that(
 test_that(
   desc = "expr_corr_test works - robust",
   code = {
-    skip_if(getRversion() < "3.6")
-
     if (utils::packageVersion("correlation") > package_version("0.4.0")) {
       # using function
       set.seed(123)

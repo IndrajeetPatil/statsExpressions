@@ -3,7 +3,7 @@
 test_that(
   desc = "expr_contingency_tab works - data without NAs",
   code = {
-    skip_if(getRversion() < "3.6")
+
 
     # `statsExpressions` output
     set.seed(123)
@@ -99,7 +99,7 @@ test_that(
 test_that(
   desc = "expr_contingency_tab works - data with NAs",
   code = {
-    skip_if(getRversion() < "3.6")
+
 
     # introduce NAs
     set.seed(123)
@@ -152,7 +152,7 @@ test_that(
 test_that(
   desc = "paired expr_contingency_tab works - counts data without NAs",
   code = {
-    skip_if(getRversion() < "3.6")
+
 
     # create data structure
     paired_data <-
@@ -230,7 +230,7 @@ test_that(
 test_that(
   desc = "paired expr_contingency_tab works - with NAs",
   code = {
-    skip_if(getRversion() < "3.6")
+
 
     # create data structure
     paired_data <-
@@ -320,7 +320,6 @@ test_that(
 test_that(
   desc = "paired data 4-by-4",
   code = {
-    skip_if(getRversion() < "3.6")
     set.seed(123)
 
     # making data
@@ -452,7 +451,7 @@ test_that(
 test_that(
   desc = "Goodness of Fit expr_contingency_tab works without counts",
   code = {
-    skip_if(getRversion() < "3.6")
+
 
     # `statsExpressions` output
     set.seed(123)
@@ -546,7 +545,7 @@ test_that(
 test_that(
   desc = "Goodness of Fit expr_contingency_tab works with counts",
   code = {
-    skip_if(getRversion() < "3.6")
+
 
     # `statsExpressions` output
     set.seed(123)
@@ -599,7 +598,7 @@ test_that(
 test_that(
   desc = "works with dataframes with NAs and with ratio",
   code = {
-    skip_if(getRversion() < "3.6")
+
 
     # from function
     set.seed(123)
@@ -650,7 +649,7 @@ test_that(
 test_that(
   desc = "works even in edge cases",
   code = {
-    skip_if(getRversion() < "3.6")
+
 
     # too few observations
     df <- data.frame(

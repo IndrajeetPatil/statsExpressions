@@ -3,7 +3,7 @@
 test_that(
   desc = "expr_t_robust - within-subjects - without NAs",
   code = {
-    skip_if(getRversion() < "3.6")
+
 
     # subtitle
     set.seed(123)
@@ -55,7 +55,7 @@ test_that(
 test_that(
   desc = "expr_t_robust - within-subjects - with NAs",
   code = {
-    skip_if(getRversion() < "3.6")
+
 
     # subtitle
     set.seed(123)
@@ -110,7 +110,7 @@ test_that(
 test_that(
   desc = "expr_t_robust - between-subjects - without NAs",
   code = {
-    skip_if(getRversion() < "3.6")
+
 
     # subtitle
     set.seed(123)
@@ -163,7 +163,7 @@ test_that(
 test_that(
   desc = "expr_t_robust - between-subjects - with NAs",
   code = {
-    skip_if(getRversion() < "3.6")
+
 
     # subtitle
     set.seed(123)
@@ -238,7 +238,7 @@ test_that(
 test_that(
   desc = "works with subject id",
   code = {
-    skip_if(getRversion() < "3.6")
+
 
     # data
     df <-

@@ -3,7 +3,7 @@
 test_that(
   desc = "expr_t_nonparametric works - between-subjects design",
   code = {
-    skip_if(getRversion() < "3.6")
+
 
     # ggstatsplot output
     set.seed(123)
@@ -56,7 +56,7 @@ test_that(
 test_that(
   desc = "expr_t_nonparametric works - within-subjects design",
   code = {
-    skip_if(getRversion() < "3.6")
+
 
     # data
     df_bird <-
@@ -162,7 +162,7 @@ test_that(
 test_that(
   desc = "works with subject id",
   code = {
-    skip_if(getRversion() < "3.6")
+
 
     # data
     df <-

@@ -4,8 +4,6 @@
 test_that(
   desc = "expr_corr_test works in loop",
   code = {
-    skip_if(getRversion() < "3.6")
-
     col.name <- colnames(mtcars)
 
     ls <-
@@ -26,8 +24,6 @@ test_that(
 test_that(
   desc = "expr_onesample works in loop",
   code = {
-    skip_if(getRversion() < "3.6")
-
     col.name <- colnames(mtcars)
 
     ls <-
@@ -49,8 +45,6 @@ test_that(
 test_that(
   desc = "expr_contingency_tab works in loop",
   code = {
-    skip_if(getRversion() < "3.6")
-
     df <- dplyr::select(mtcars, am, cyl, vs)
     col.name <- colnames(df)
 

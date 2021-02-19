@@ -3,7 +3,7 @@
 test_that(
   desc = "parametric anova subtitles work (without NAs)",
   code = {
-    skip_if(getRversion() < "3.6")
+
 
     # statsExpression output
     set.seed(123)
@@ -59,7 +59,7 @@ test_that(
 test_that(
   desc = "parametric anova subtitles with partial omega-squared",
   code = {
-    skip_if(getRversion() < "3.6")
+
 
     # statsExpression output
     set.seed(123)
@@ -114,7 +114,7 @@ test_that(
 test_that(
   desc = "parametric anova subtitles with partial eta-squared and data with NAs",
   code = {
-    skip_if(getRversion() < "3.6")
+
 
     # statsExpression output
     set.seed(123)
@@ -170,7 +170,7 @@ test_that(
 test_that(
   desc = "parametric anova subtitles work (without NAs)",
   code = {
-    skip_if(getRversion() < "3.6")
+
 
     # statsExpression output
     set.seed(123)
@@ -226,8 +226,8 @@ test_that(
 test_that(
   desc = "too few obs",
   code = {
-    skip_on_cran()
-    skip_if(getRversion() < "3.6")
+    # skip_on_cran()
+
     set.seed(123)
 
     # dataframe
@@ -336,7 +336,7 @@ test_that(
 test_that(
   desc = "works with subject id",
   code = {
-    skip_if(getRversion() < "3.6")
+
 
     # data
     df <-
