@@ -1,4 +1,4 @@
-if (packageVersion("insight") > "0.11.0") {
+if (packageVersion("parameters") > "0.11.0") {
 
   # bayes factor (proportion test) --------------------------------------
 

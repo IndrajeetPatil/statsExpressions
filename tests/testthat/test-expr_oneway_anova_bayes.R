@@ -1,4 +1,4 @@
-if (packageVersion("insight") > "0.11.0") {
+if (packageVersion("parameters") > "0.11.0") {
 
   # bayes factor (between-subjects - anova) ---------------------------------
 
@@ -6,7 +6,7 @@ if (packageVersion("insight") > "0.11.0") {
     desc = "bayes factor (between-subjects - anova)",
     code = {
       skip_if(getRversion() < "4.0")
-      # skip_on_cran()
+
 
       # extracting results from where this function is implemented
       set.seed(123)
@@ -82,9 +82,6 @@ if (packageVersion("insight") > "0.11.0") {
   test_that(
     desc = "bayes factor (within-subjects - anova)",
     code = {
-
-      # skip_on_cran()
-
       if (utils::packageVersion("BayesFactor") >= package_version("0.9.12-4.3")) {
 
         # dataframe

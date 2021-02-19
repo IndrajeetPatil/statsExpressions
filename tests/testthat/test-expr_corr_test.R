@@ -3,9 +3,6 @@
 test_that(
   desc = "expr_corr_test works - nonparametric",
   code = {
-
-    # skip_on_cran()
-
     if (utils::packageVersion("correlation") > package_version("0.4.0")) {
       # `statsExpressions` output
       set.seed(123)
@@ -97,9 +94,6 @@ test_that(
 test_that(
   desc = "expr_corr_test works - parametric",
   code = {
-
-    # skip_on_cran()
-
     if (utils::packageVersion("correlation") > package_version("0.4.0")) {
       # `statsExpressions` output
       set.seed(123)

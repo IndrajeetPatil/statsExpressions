@@ -226,8 +226,6 @@ test_that(
 test_that(
   desc = "too few obs",
   code = {
-    # skip_on_cran()
-
     set.seed(123)
 
     # dataframe
