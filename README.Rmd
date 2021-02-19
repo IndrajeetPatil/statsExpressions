@@ -414,10 +414,10 @@ library(statsExpressions)
 # create a scatter plot
 ggplot(mtcars, aes(mpg, wt)) +
   geom_point() +
-  geom_smooth(method = "lm") +
+  geom_smooth(method = "lm", formula = y ~ x) +
   labs(
     title = "Spearman's rank correlation coefficient",
-    subtitle = expr_corr_test(mtcars, mpg, wt, type = "nonparametric")
+    subtitle = corr_test(mtcars, mpg, wt, type = "nonparametric")$expression[[1]]
   )
 ```
 
@@ -437,7 +437,7 @@ p <-
   geom_smooth(method = "lm") +
   labs(
     title = "Pearson's correlation coefficient",
-    subtitle = expr_corr_test(mtcars, mpg, wt, type = "parametric")
+    subtitle = corr_test(mtcars, mpg, wt, type = "parametric")$expression[[1]]
   )
 
 # add

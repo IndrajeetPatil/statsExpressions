@@ -498,7 +498,7 @@ library(statsExpressions)
 
 # for reproducibility
 set.seed(123)
-expr_corr_test(
+corr_test(
   data = mtcars,
   x = wt,
   y = mpg,
@@ -510,7 +510,7 @@ expr_corr_test(
 
 # for reproducibility
 set.seed(123)
-expr_corr_test(
+corr_test(
   data = mtcars,
   x = wt,
   y = mpg,
@@ -522,7 +522,7 @@ expr_corr_test(
 
 # for reproducibility
 set.seed(123)
-expr_corr_test(
+corr_test(
   data = mtcars,
   x = wt,
   y = mpg,
@@ -534,7 +534,7 @@ expr_corr_test(
 
 # for reproducibility
 set.seed(123)
-expr_corr_test(
+corr_test(
   data = mtcars,
   x = wt,
   y = mpg,

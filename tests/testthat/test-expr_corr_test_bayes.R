@@ -10,12 +10,11 @@ if (packageVersion("parameters") > "0.11.0") {
       # extracting results from where this function is implemented
       set.seed(123)
       df <-
-        expr_corr_test(
+        corr_test(
           type = "bayes",
           data = iris,
           y = Sepal.Length,
-          x = "Sepal.Width",
-          output = "dataframe"
+          x = "Sepal.Width"
         )
 
       # check bayes factor values
@@ -23,17 +22,16 @@ if (packageVersion("parameters") > "0.11.0") {
 
       set.seed(123)
       subtitle1 <-
-        expr_corr_test(
+        corr_test(
           type = "bayes",
           data = iris,
           y = Sepal.Length,
           x = Sepal.Width,
-          output = "expression",
           top.text = "huh"
         )
 
       expect_identical(
-        subtitle1,
+        subtitle1$expression[[1]],
         ggplot2::expr(
           atop(displaystyle("huh"), expr = paste(
             "log"["e"] * "(BF"["01"] * ") = " * "1.07" * ", ",
@@ -54,7 +52,7 @@ if (packageVersion("parameters") > "0.11.0") {
       # extracting results from where this function is implemented
       set.seed(123)
       df <-
-        expr_corr_test(
+        corr_test(
           type = "bayes",
           data = ggplot2::msleep,
           y = names(ggplot2::msleep)[10],
@@ -67,7 +65,7 @@ if (packageVersion("parameters") > "0.11.0") {
 
       set.seed(123)
       subtitle1 <-
-        expr_corr_test(
+        corr_test(
           type = "bayes",
           data = ggplot2::msleep,
           y = brainwt,
@@ -79,7 +77,7 @@ if (packageVersion("parameters") > "0.11.0") {
         )
 
       expect_identical(
-        subtitle1,
+        subtitle1$expression[[1]],
         ggplot2::expr(
           paste(
             "log"["e"] * "(BF"["01"] * ") = " * "0.487" * ", ",

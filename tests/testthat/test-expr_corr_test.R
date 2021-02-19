@@ -1,13 +1,13 @@
 # nonparametric ----------------------------------------------------------
 
 test_that(
-  desc = "expr_corr_test works - nonparametric",
+  desc = "corr_test works - nonparametric",
   code = {
     if (utils::packageVersion("correlation") > package_version("0.4.0")) {
       # `statsExpressions` output
       set.seed(123)
       using_function <-
-        suppressWarnings(expr_corr_test(
+        suppressWarnings(corr_test(
           data = dplyr::sample_frac(movies_long, 0.05),
           x = rating,
           y = "length",
@@ -45,12 +45,12 @@ test_that(
         )
 
       # testing overall call
-      expect_identical(using_function, expected)
+      expect_identical(using_function$expression[[1]], expected)
 
       # `statsExpressions` output
       set.seed(123)
       using_function2 <-
-        expr_corr_test(
+        corr_test(
           data = mtcars,
           x = names(mtcars)[6],
           y = mpg,
@@ -84,7 +84,7 @@ test_that(
           )
         )
 
-      expect_identical(using_function2, expected2)
+      expect_identical(using_function2$expression[[1]], expected2)
     }
   }
 )
@@ -92,13 +92,13 @@ test_that(
 # parametric --------------------------------------------------------------
 
 test_that(
-  desc = "expr_corr_test works - parametric",
+  desc = "corr_test works - parametric",
   code = {
     if (utils::packageVersion("correlation") > package_version("0.4.0")) {
       # `statsExpressions` output
       set.seed(123)
       using_function <-
-        suppressWarnings(expr_corr_test(
+        suppressWarnings(corr_test(
           data = ggplot2::msleep,
           x = brainwt,
           y = sleep_rem,
@@ -138,7 +138,7 @@ test_that(
         )
 
       # testing overall call
-      expect_identical(using_function, expected)
+      expect_identical(using_function$expression[[1]], expected)
     }
   }
 )
@@ -146,13 +146,13 @@ test_that(
 # robust ----------------------------------------------------------------
 
 test_that(
-  desc = "expr_corr_test works - robust",
+  desc = "corr_test works - robust",
   code = {
     if (utils::packageVersion("correlation") > package_version("0.4.0")) {
       # using function
       set.seed(123)
       using_function <-
-        expr_corr_test(
+        corr_test(
           data = ggplot2::msleep,
           x = names(ggplot2::msleep)[10],
           y = "sleep_total",
@@ -192,7 +192,7 @@ test_that(
         )
 
       # testing overall call
-      expect_identical(using_function, expected)
+      expect_identical(using_function$expression[[1]], expected)
     }
   }
 )
@@ -203,11 +203,10 @@ test_that(
   desc = "dataframe",
   code = {
     expect_s3_class(
-      expr_corr_test(
+      corr_test(
         data = mtcars,
         x = mpg,
-        y = wt,
-        output = "dataframe"
+        y = wt
       ),
       "tbl_df"
     )

@@ -53,9 +53,9 @@ Functions | Type | Test | Effect size | 95% CI available?
 `expr_contingency_tab` (unpaired) | Parametric | $\text{Pearson's}~ \chi^2 ~\text{test}$ | Cramér's *V* | <font color="green">$\checkmark$</font>
 `expr_contingency_tab` (paired) | Parametric | McNemar's test | Cohen's *g* | <font color="green">$\checkmark$</font>
 `expr_contingency_tab` | Parametric | One-sample proportion test | Cramér's *V* | <font color="green">$\checkmark$</font>
-`expr_corr_test` | Parametric | Pearson's *r* | *r* | <font color="green">$\checkmark$</font>
-`expr_corr_test` | Non-parametric | $\text{Spearman's}~ \rho$ | $\rho$ | <font color="green">$\checkmark$</font>
-`expr_corr_test` | Robust | Percentage bend correlation | *r* | <font color="green">$\checkmark$</font>
+`corr_test` | Parametric | Pearson's *r* | *r* | <font color="green">$\checkmark$</font>
+`corr_test` | Non-parametric | $\text{Spearman's}~ \rho$ | $\rho$ | <font color="green">$\checkmark$</font>
+`corr_test` | Robust | Percentage bend correlation | *r* | <font color="green">$\checkmark$</font>
 `expr_t_onesample` | Parametric | One-sample *t*-test | Cohen's *d*, Hedge's *g* | <font color="green">$\checkmark$</font>
 `expr_t_onesample` | Non-parametric | One-sample Wilcoxon signed rank test | *r* | <font color="green">$\checkmark$</font>
 `expr_t_onesample` | Robust | One-sample percentile bootstrap | robust estimator | <font color="green">$\checkmark$</font>

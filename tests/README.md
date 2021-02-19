@@ -43,7 +43,7 @@ Unit Test summary is created using the
 | [test-expr\_anova\_parametric.R](testthat/test-expr_anova_parametric.R)       |  11 |  2.55 |     0 |      0 |       1 |       0 | \+   |
 | [test-expr\_anova\_robust.R](testthat/test-expr_anova_robust.R)               |   4 |  2.22 |     0 |      0 |       0 |       0 |      |
 | [test-expr\_contingency\_tab.R](testthat/test-expr_contingency_tab.R)         |  14 |  1.37 |     0 |      0 |       0 |       0 |      |
-| [test-expr\_corr\_test.R](testthat/test-expr_corr_test.R)                     |   4 |  0.13 |     0 |      0 |       0 |       0 |      |
+| [test-expr\_corr\_test.R](testthat/test-corr_test.R)                     |   4 |  0.13 |     0 |      0 |       0 |       0 |      |
 | [test-expr\_meta\_bayes.R](testthat/test-expr_meta_bayes.R)                   |   2 |  3.95 |     0 |      0 |       0 |       0 |      |
 | [test-expr\_meta\_parametric.R](testthat/test-expr_meta_parametric.R)         |  14 |  0.16 |     0 |      0 |       0 |       0 |      |
 | [test-expr\_meta\_robust.R](testthat/test-expr_meta_robust.R)                 |   1 |  0.22 |     0 |      0 |       0 |       0 |      |
@@ -97,10 +97,10 @@ Unit Test summary is created using the
 | [test-expr\_contingency\_tab.R](testthat/test-expr_contingency_tab.R#L629)         | expr\_contingency\_tab                     |       Goodness of Fit expr\_contingency\_tab works with counts        | PASS    |  1 |  0.09 |      |
 | [test-expr\_contingency\_tab.R](testthat/test-expr_contingency_tab.R#L683)         | expr\_contingency\_tab                     |             works with dataframes with NAs and with ratio             | PASS    |  1 |  0.03 |      |
 | [test-expr\_contingency\_tab.R](testthat/test-expr_contingency_tab.R#L699_L702)    | expr\_contingency\_tab                     |                       works even in edge cases                        | PASS    |  3 |  0.16 |      |
-| [test-expr\_corr\_test.R](testthat/test-expr_corr_test.R#L54)                      | expr\_corr\_test                           |                expr\_corr\_test works - nonparametric                 | PASS    |  1 |  0.03 |      |
-| [test-expr\_corr\_test.R](testthat/test-expr_corr_test.R#L112)                     | expr\_corr\_test                           |                  expr\_corr\_test works - parametric                  | PASS    |  1 |  0.02 |      |
-| [test-expr\_corr\_test.R](testthat/test-expr_corr_test.R#L170)                     | expr\_corr\_test                           |                    expr\_corr\_test works - robust                    | PASS    |  1 |  0.04 |      |
-| [test-expr\_corr\_test.R](testthat/test-expr_corr_test.R#L212)                     | expr\_corr\_test                           |                    expr\_corr\_test works - bayes                     | PASS    |  1 |  0.04 |      |
+| [test-expr\_corr\_test.R](testthat/test-corr_test.R#L54)                      | expr\_corr\_test                           |                expr\_corr\_test works - nonparametric                 | PASS    |  1 |  0.03 |      |
+| [test-expr\_corr\_test.R](testthat/test-corr_test.R#L112)                     | expr\_corr\_test                           |                  expr\_corr\_test works - parametric                  | PASS    |  1 |  0.02 |      |
+| [test-expr\_corr\_test.R](testthat/test-corr_test.R#L170)                     | expr\_corr\_test                           |                    expr\_corr\_test works - robust                    | PASS    |  1 |  0.04 |      |
+| [test-expr\_corr\_test.R](testthat/test-corr_test.R#L212)                     | expr\_corr\_test                           |                    expr\_corr\_test works - bayes                     | PASS    |  1 |  0.04 |      |
 | [test-expr\_meta\_bayes.R](testthat/test-expr_meta_bayes.R#L47)                    | expr\_meta\_bayes                          |                        expr\_meta\_bayes works                        | PASS    |  2 |  3.95 |      |
 | [test-expr\_meta\_parametric.R](testthat/test-expr_meta_parametric.R#L100)         | expr\_meta\_parametric                     |                     expr\_meta\_parametric works                      | PASS    | 13 |  0.11 |      |
 | [test-expr\_meta\_parametric.R](testthat/test-expr_meta_parametric.R#L163_L166)    | expr\_meta\_parametric                     |                 checking meta-analysis results object                 | PASS    |  1 |  0.05 |      |

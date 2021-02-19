@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Expression and dataframe for correlation analysis — expr_corr_test • statsExpressions</title>
+<title>Expression and dataframe for correlation analysis — corr_test • statsExpressions</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,7 +54,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Expression and dataframe for correlation analysis — expr_corr_test" />
+<meta property="og:title" content="Expression and dataframe for correlation analysis — corr_test" />
 <meta property="og:description" content="
 A dataframe containing results from correlation test with confidence
 intervals for the correlation coefficient estimate. Results are extracted
@@ -155,7 +155,7 @@ via correlation::correlation." />
     <div class="page-header">
     <h1>Expression and dataframe for correlation analysis</h1>
     <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/corr_test.R'><code>R/corr_test.R</code></a></small>
-    <div class="hidden name"><code>expr_corr_test.Rd</code></div>
+    <div class="hidden name"><code>corr_test.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -165,7 +165,7 @@ intervals for the correlation coefficient estimate. Results are extracted
 via <code><a href='https://easystats.github.io/correlation/reference/correlation.html'>correlation::correlation</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expr_corr_test</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>corr_test</span><span class='op'>(</span>
   <span class='va'>data</span>,
   <span class='va'>x</span>,
   <span class='va'>y</span>,
@@ -262,7 +262,7 @@ results.</p></td>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://indrajeetpatil.github.io/statsExpressions/'>statsExpressions</a></span><span class='op'>)</span>
 
 <span class='co'># without changing defaults</span>
-<span class='fu'>expr_corr_test</span><span class='op'>(</span>
+<span class='fu'>corr_test</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/midwest.html'>midwest</a></span>,
   x <span class='op'>=</span> <span class='va'>area</span>,
   y <span class='op'>=</span> <span class='va'>percblack</span>
@@ -272,7 +272,7 @@ results.</p></td>
 #&gt;     " = ", "-0.05", ", CI"["95%"], " [", "-0.14", ", ", "0.05", 
 #&gt;     "]", ", ", italic("n")["pairs"], " = ", "437")</div><div class='input'>
 <span class='co'># changing defaults</span>
-<span class='fu'>expr_corr_test</span><span class='op'>(</span>
+<span class='fu'>corr_test</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/midwest.html'>midwest</a></span>,
   x <span class='op'>=</span> <span class='va'>area</span>,
   y <span class='op'>=</span> <span class='va'>percblack</span>,
