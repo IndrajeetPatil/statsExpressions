@@ -26,7 +26,7 @@ Depends:
     R (>= 3.6.0)
 Imports:
     afex,
-    BayesFactor,
+    BayesFactor (>= 0.9.12-4.2),
     correlation (>= 0.6.0),
     dplyr,
     effectsize (>= 0.4.3),
@@ -49,6 +49,8 @@ Suggests:
     spelling,
     testthat,
     utils
+Remotes:
+    richarddmorey/BayesFactor/pkg/BayesFactor
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

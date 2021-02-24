@@ -190,13 +190,14 @@
       "@type": "SoftwareApplication",
       "identifier": "BayesFactor",
       "name": "BayesFactor",
+      "version": ">= 0.9.12-4.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=BayesFactor"
+      "sameAs": "https://github.com/richarddmorey/BayesFactor/pkg/BayesFactor"
     },
     {
       "@type": "SoftwareApplication",
@@ -394,6 +395,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "4097.436KB",
+  "fileSize": "4048.066KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }
