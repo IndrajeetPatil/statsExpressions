@@ -1,5 +1,5 @@
 #' @title A dataframe with an expression for random-effects meta-analysis
-#' @name meta_random
+#' @name meta_analysis
 #'
 #' @param data A dataframe. It **must** contain columns named `estimate` (effect
 #'   sizes or outcomes)  and `std.error` (corresponding standard errors). These
@@ -7,7 +7,7 @@
 #'   (for parametric analysis) or `metaplus::metaplus` (for robust analysis),
 #'   and for `y` and `SE` arguments in `metaBMA::meta_random` (for Bayesian
 #'   analysis).
-#' @inheritParams t_onesample
+#' @inheritParams one_sample_test
 #' @inheritParams metaplus::metaplus
 #' @inheritParams oneway_anova
 #' @param ... Additional arguments passed to the respective meta-analysis
@@ -78,13 +78,13 @@
 #' @export
 
 # function body
-meta_random <- function(data,
-                        type = "parametric",
-                        random = "mixture",
-                        k = 2L,
-                        conf.level = 0.95,
-                        top.text = NULL,
-                        ...) {
+meta_analysis <- function(data,
+                          type = "parametric",
+                          random = "mixture",
+                          k = 2L,
+                          conf.level = 0.95,
+                          top.text = NULL,
+                          ...) {
   # check the type of test
   type <- ipmisc::stats_type_switch(type)
 
@@ -125,8 +125,8 @@ meta_random <- function(data,
   as_tibble(stats_df)
 }
 
-#' @rdname meta_random
-#' @aliases meta_random
+#' @rdname meta_analysis
+#' @aliases meta_analysis
 #' @export
 
-expr_meta_random <- meta_random
+expr_meta_random <- meta_analysis

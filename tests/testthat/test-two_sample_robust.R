@@ -8,7 +8,7 @@ test_that(
     # subtitle
     set.seed(123)
     using_function1 <-
-      t_twosample(
+      two_sample_test(
         type = "r",
         data = dplyr::filter(iris_long, condition %in% c("Sepal.Length", "Sepal.Width")),
         x = "condition",
@@ -60,7 +60,7 @@ test_that(
     # subtitle
     set.seed(123)
     using_function1 <-
-      t_twosample(
+      two_sample_test(
         type = "r",
         data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
         x = "condition",
@@ -115,7 +115,7 @@ test_that(
     # subtitle
     set.seed(123)
     using_function1 <-
-      t_twosample(
+      two_sample_test(
         type = "r",
         data = mtcars,
         x = am,
@@ -168,7 +168,7 @@ test_that(
     # subtitle
     set.seed(123)
     using_function1 <-
-      t_twosample(
+      two_sample_test(
         type = "r",
         data = dplyr::filter(ggplot2::msleep, vore %in% c("carni", "herbi")),
         x = "vore",
@@ -220,7 +220,7 @@ test_that(
   desc = "dataframe",
   code = {
     expect_s3_class(
-      statsExpressions::t_twosample(
+      statsExpressions::two_sample_test(
         type = "r",
         data = dplyr::filter(movies_long, genre == "Action" | genre == "Drama"),
         x = "genre",
@@ -272,7 +272,7 @@ test_that(
     # incorrect
     set.seed(123)
     expr1 <-
-      statsExpressions::t_twosample(
+      statsExpressions::two_sample_test(
         type = "r",
         data = df,
         x = condition,
@@ -284,7 +284,7 @@ test_that(
     # correct
     set.seed(123)
     expr2 <-
-      statsExpressions::t_twosample(
+      statsExpressions::two_sample_test(
         type = "r",
         data = dplyr::arrange(df, id),
         x = condition,

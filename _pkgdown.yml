@@ -21,7 +21,7 @@ reference:
   - title: Expressions for one-and two-sample t-tests
     desc: Functions to extract exressions or dataframes for one-and two-sample t-tests
     contents:
-      - matches("t_")
+      - matches("sample")
 
   - title: Expressions for one-way ANOVA
     desc: Functions to create expressions for one-way (both between-and within-subject designs) ANOVA

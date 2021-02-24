@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Expression and dataframe for two-sample t-test — t_twosample • statsExpressions</title>
+<title>Expression and dataframe for two-sample t-test — two_sample_test • statsExpressions</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,7 +54,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Expression and dataframe for two-sample t-test — t_twosample" />
+<meta property="og:title" content="Expression and dataframe for two-sample t-test — two_sample_test" />
 <meta property="og:description" content="
 A dataframe containing details from results of a two-sample test and effect
 size plus confidence intervals.
@@ -155,8 +155,8 @@ https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" /
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Expression and dataframe for two-sample <em>t</em>-test</h1>
-    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/t_twosample.R'><code>R/t_twosample.R</code></a></small>
-    <div class="hidden name"><code>t_twosample.Rd</code></div>
+    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/two_sample_test.R'><code>R/two_sample_test.R</code></a></small>
+    <div class="hidden name"><code>two_sample_test.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -167,7 +167,7 @@ size plus confidence intervals.</p>
 <a href='https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html'>https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html</a></p>
     </div>
 
-    <pre class="usage"><span class='fu'>t_twosample</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>two_sample_test</span><span class='op'>(</span>
   <span class='va'>data</span>,
   <span class='va'>x</span>,
   <span class='va'>y</span>,
@@ -316,24 +316,24 @@ if appropriate as shown in the second example below.</p>
 <span class='co'># ----------------------- parametric -------------------------------------</span>
 
 <span class='co'># between-subjects design</span>
-<span class='fu'>t_twosample</span><span class='op'>(</span>
+<span class='fu'>two_sample_test</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>sleep</span>,
   x <span class='op'>=</span> <span class='va'>group</span>,
   y <span class='op'>=</span> <span class='va'>extra</span>,
   type <span class='op'>=</span> <span class='st'>"p"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 14</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 14</span><span>
 #&gt;   </span><span style='font-weight: bold;'>term</span><span>  </span><span style='font-weight: bold;'>group</span><span> </span><span style='font-weight: bold;'>mean.group1</span><span> </span><span style='font-weight: bold;'>mean.group2</span><span> </span><span style='font-weight: bold;'>statistic</span><span> </span><span style='font-weight: bold;'>df.error</span><span> </span><span style='font-weight: bold;'>p.value</span><span>
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> extra group        </span><span style='color: #555555;'>0.</span><span>75        2.33     -</span><span style='color: #BB0000;'>1.86</span><span>     17.8  </span><span style='color: #555555;'>0.0</span><span>79</span><span style='text-decoration: underline;'>4</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> extra group        </span><span style='color: #949494;'>0.</span><span>75        2.33     -</span><span style='color: #BB0000;'>1.86</span><span>     17.8  </span><span style='color: #949494;'>0.0</span><span>79</span><span style='text-decoration: underline;'>4</span><span>
 #&gt;   </span><span style='font-weight: bold;'>method</span><span>                  </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>effectsize</span><span>
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; </span><span style='color: #555555;'>1</span><span> Welch Two Sample t-test   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>797</span><span>       </span><span style='color: #555555;'>0.</span><span>95    -</span><span style='color: #BB0000;'>1.67</span><span>    </span><span style='color: #555555;'>0.0</span><span>91</span><span style='text-decoration: underline;'>4</span><span> Hedges' g 
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Welch Two Sample t-test   -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>797</span><span>       </span><span style='color: #949494;'>0.</span><span>95    -</span><span style='color: #BB0000;'>1.67</span><span>    </span><span style='color: #949494;'>0.0</span><span>91</span><span style='text-decoration: underline;'>4</span><span> Hedges' g 
 #&gt;   </span><span style='font-weight: bold;'>expression</span><span>
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'>1</span><span> </span><span style='color: #555555;'>&lt;language&gt;</span><span></div><div class='input'>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> </span><span style='color: #949494;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='co'># within-subjects design</span>
-<span class='fu'>t_twosample</span><span class='op'>(</span>
+<span class='fu'>two_sample_test</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>VR_dilemma</span>,
   x <span class='op'>=</span> <span class='va'>modality</span>,
   y <span class='op'>=</span> <span class='va'>score</span>,
@@ -341,31 +341,31 @@ if appropriate as shown in the second example below.</p>
   subject.id <span class='op'>=</span> <span class='va'>id</span>,
   type <span class='op'>=</span> <span class='st'>"p"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 12</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 12</span><span>
 #&gt;   </span><span style='font-weight: bold;'>term</span><span>  </span><span style='font-weight: bold;'>group</span><span>    </span><span style='font-weight: bold;'>statistic</span><span> </span><span style='font-weight: bold;'>df.error</span><span>  </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>method</span><span>        </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span>
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> score modality     -</span><span style='color: #BB0000;'>3.96</span><span>       33 </span><span style='color: #555555;'>0.000</span><span style='text-decoration: underline;'>373</span><span> Paired t-test   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>664</span><span>       </span><span style='color: #555555;'>0.</span><span>95
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> score modality     -</span><span style='color: #BB0000;'>3.96</span><span>       33 </span><span style='color: #949494;'>0.000</span><span style='text-decoration: underline;'>373</span><span> Paired t-test   -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>664</span><span>       </span><span style='color: #949494;'>0.</span><span>95
 #&gt;   </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>effectsize</span><span> </span><span style='font-weight: bold;'>expression</span><span>
-#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'>1</span><span>    -</span><span style='color: #BB0000;'>1.04</span><span>    -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>299</span><span> Hedges' g  </span><span style='color: #555555;'>&lt;language&gt;</span><span></div><div class='input'>
+#&gt;      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    -</span><span style='color: #BB0000;'>1.04</span><span>    -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>299</span><span> Hedges' g  </span><span style='color: #949494;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='co'># ----------------------- non-parametric ----------------------------------</span>
 
 <span class='co'># between-subjects design</span>
-<span class='fu'>t_twosample</span><span class='op'>(</span>
+<span class='fu'>two_sample_test</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>sleep</span>,
   x <span class='op'>=</span> <span class='va'>group</span>,
   y <span class='op'>=</span> <span class='va'>extra</span>,
   type <span class='op'>=</span> <span class='st'>"np"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 11</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 11</span><span>
 #&gt;   </span><span style='font-weight: bold;'>parameter1</span><span> </span><span style='font-weight: bold;'>parameter2</span><span> </span><span style='font-weight: bold;'>statistic</span><span> </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>method</span><span>                 </span><span style='font-weight: bold;'>estimate</span><span>
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> extra      group           3.24  </span><span style='color: #555555;'>0.0</span><span>69</span><span style='text-decoration: underline;'>3</span><span> Wilcoxon rank sum test    -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>49</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> extra      group           3.24  </span><span style='color: #949494;'>0.0</span><span>69</span><span style='text-decoration: underline;'>3</span><span> Wilcoxon rank sum test    -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>49</span><span>
 #&gt;   </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>effectsize</span><span>        </span><span style='font-weight: bold;'>expression</span><span>
-#&gt;        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'>1</span><span>       </span><span style='color: #555555;'>0.</span><span>95   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>850</span><span>    -</span><span style='color: #555555;'>0.0</span><span style='color: #BB0000;'>69</span><span> r (rank biserial) </span><span style='color: #555555;'>&lt;language&gt;</span><span></div><div class='input'>
+#&gt;        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>       </span><span style='color: #949494;'>0.</span><span>95   -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>850</span><span>    -</span><span style='color: #949494;'>0.0</span><span style='color: #BB0000;'>69</span><span> r (rank biserial) </span><span style='color: #949494;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='co'># within-subjects design</span>
-<span class='fu'>t_twosample</span><span class='op'>(</span>
+<span class='fu'>two_sample_test</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>VR_dilemma</span>,
   x <span class='op'>=</span> <span class='va'>modality</span>,
   y <span class='op'>=</span> <span class='va'>score</span>,
@@ -373,34 +373,34 @@ if appropriate as shown in the second example below.</p>
   subject.id <span class='op'>=</span> <span class='va'>id</span>,
   type <span class='op'>=</span> <span class='st'>"np"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 11</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 11</span><span>
 #&gt;   </span><span style='font-weight: bold;'>parameter1</span><span> </span><span style='font-weight: bold;'>parameter2</span><span> </span><span style='font-weight: bold;'>statistic</span><span>  </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>method</span><span>                    </span><span style='font-weight: bold;'>estimate</span><span>
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> score      modality        1.50 </span><span style='color: #555555;'>0.000</span><span style='text-decoration: underline;'>886</span><span> Wilcoxon signed rank test   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>934</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> score      modality        1.50 </span><span style='color: #949494;'>0.000</span><span style='text-decoration: underline;'>886</span><span> Wilcoxon signed rank test   -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>934</span><span>
 #&gt;   </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>effectsize</span><span>        </span><span style='font-weight: bold;'>expression</span><span>
-#&gt;        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'>1</span><span>       </span><span style='color: #555555;'>0.</span><span>95       -</span><span style='color: #BB0000;'>1</span><span>    -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>761</span><span> r (rank biserial) </span><span style='color: #555555;'>&lt;language&gt;</span><span></div><div class='input'>
+#&gt;        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>       </span><span style='color: #949494;'>0.</span><span>95       -</span><span style='color: #BB0000;'>1</span><span>    -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>761</span><span> r (rank biserial) </span><span style='color: #949494;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='co'># ------------------------------ robust ----------------------------------</span>
 
 <span class='co'># between-subjects design</span>
-<span class='fu'>t_twosample</span><span class='op'>(</span>
+<span class='fu'>two_sample_test</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>sleep</span>,
   x <span class='op'>=</span> <span class='va'>group</span>,
   y <span class='op'>=</span> <span class='va'>extra</span>,
   type <span class='op'>=</span> <span class='st'>"r"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 10</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 10</span><span>
 #&gt;   </span><span style='font-weight: bold;'>statistic</span><span> </span><span style='font-weight: bold;'>df.error</span><span> </span><span style='font-weight: bold;'>p.value</span><span>
-#&gt;       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>      1.62     8.26   </span><span style='color: #555555;'>0.</span><span>143
+#&gt;       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>      1.62     8.26   </span><span style='color: #949494;'>0.</span><span>143
 #&gt;   </span><span style='font-weight: bold;'>method</span><span>                                               </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.low</span><span>
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> Yuen's test on trimmed means for independent samples    </span><span style='color: #555555;'>0.</span><span>516        </span><span style='color: #555555;'>0</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                                   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Yuen's test on trimmed means for independent samples    </span><span style='color: #949494;'>0.</span><span>516        </span><span style='color: #949494;'>0</span><span>
 #&gt;   </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>effectsize</span><span>                         </span><span style='font-weight: bold;'>expression</span><span>
-#&gt;       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                              </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'>1</span><span>     </span><span style='color: #555555;'>0.</span><span>877       </span><span style='color: #555555;'>0.</span><span>95 Explanatory measure of effect size </span><span style='color: #555555;'>&lt;language&gt;</span><span></div><div class='input'>
+#&gt;       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                              </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     </span><span style='color: #949494;'>0.</span><span>877       </span><span style='color: #949494;'>0.</span><span>95 Explanatory measure of effect size </span><span style='color: #949494;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='co'># within-subjects design</span>
-<span class='fu'>t_twosample</span><span class='op'>(</span>
+<span class='fu'>two_sample_test</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>VR_dilemma</span>,
   x <span class='op'>=</span> <span class='va'>modality</span>,
   y <span class='op'>=</span> <span class='va'>score</span>,
@@ -408,36 +408,36 @@ if appropriate as shown in the second example below.</p>
   subject.id <span class='op'>=</span> <span class='va'>id</span>,
   type <span class='op'>=</span> <span class='st'>"r"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: the standard deviation is zero</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 10</span><span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: the standard deviation is zero</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 10</span><span>
 #&gt;   </span><span style='font-weight: bold;'>statistic</span><span> </span><span style='font-weight: bold;'>df.error</span><span> </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>method</span><span>                                            
-#&gt;       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                             
-#&gt; </span><span style='color: #555555;'>1</span><span>     -</span><span style='color: #BB0000;'>2.56</span><span>       21  </span><span style='color: #555555;'>0.0</span><span>18</span><span style='text-decoration: underline;'>2</span><span> Yuen's test on trimmed means for dependent samples
+#&gt;       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                             
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     -</span><span style='color: #BB0000;'>2.56</span><span>       21  </span><span style='color: #949494;'>0.0</span><span>18</span><span style='text-decoration: underline;'>2</span><span> Yuen's test on trimmed means for dependent samples
 #&gt;   </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>conf.level</span><span>
-#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>381</span><span>   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>650</span><span>    -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>177</span><span>       </span><span style='color: #555555;'>0.</span><span>95
+#&gt;      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>   -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>381</span><span>   -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>650</span><span>    -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>177</span><span>       </span><span style='color: #949494;'>0.</span><span>95
 #&gt;   </span><span style='font-weight: bold;'>effectsize</span><span>                                              </span><span style='font-weight: bold;'>expression</span><span>
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                   </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'>1</span><span> Algina-Keselman-Penfield robust standardized difference </span><span style='color: #555555;'>&lt;language&gt;</span><span></div><div class='input'>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                                   </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Algina-Keselman-Penfield robust standardized difference </span><span style='color: #949494;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='co'>#' # ------------------------------ Bayesian ------------------------------</span>
 
 <span class='co'># between-subjects design</span>
-<span class='fu'>t_twosample</span><span class='op'>(</span>
+<span class='fu'>two_sample_test</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>sleep</span>,
   x <span class='op'>=</span> <span class='va'>group</span>,
   y <span class='op'>=</span> <span class='va'>extra</span>,
   type <span class='op'>=</span> <span class='st'>"bayes"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 2 x 13</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 2 x 13</span><span>
 #&gt;   </span><span style='font-weight: bold;'>term</span><span>       </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>    </span><span style='font-weight: bold;'>pd</span><span> </span><span style='font-weight: bold;'>rope.percentage</span><span>
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> Difference    1.15        </span><span style='color: #555555;'>0.</span><span>95   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>400</span><span>     2.70  </span><span style='color: #555555;'>0.</span><span>934          </span><span style='color: #555555;'>0.0</span><span>67</span><span style='text-decoration: underline;'>4</span><span>
-#&gt; </span><span style='color: #555555;'>2</span><span> Cohens_d     -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>601</span><span>       </span><span style='color: #555555;'>0.</span><span>95   -</span><span style='color: #BB0000;'>1.50</span><span>      </span><span style='color: #555555;'>0.</span><span>210 </span><span style='color: #555555;'>0.</span><span>930          </span><span style='color: #555555;'>0.0</span><span>83</span><span style='text-decoration: underline;'>4</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Difference    1.15        </span><span style='color: #949494;'>0.</span><span>95   -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>400</span><span>     2.70  </span><span style='color: #949494;'>0.</span><span>934          </span><span style='color: #949494;'>0.0</span><span>67</span><span style='text-decoration: underline;'>4</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Cohens_d     -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>601</span><span>       </span><span style='color: #949494;'>0.</span><span>95   -</span><span style='color: #BB0000;'>1.50</span><span>      </span><span style='color: #949494;'>0.</span><span>210 </span><span style='color: #949494;'>0.</span><span>930          </span><span style='color: #949494;'>0.0</span><span>83</span><span style='text-decoration: underline;'>4</span><span>
 #&gt;   </span><span style='font-weight: bold;'>prior.distribution</span><span> </span><span style='font-weight: bold;'>prior.location</span><span> </span><span style='font-weight: bold;'>prior.scale</span><span>  </span><span style='font-weight: bold;'>bf10</span><span> </span><span style='font-weight: bold;'>method</span><span>          </span><span style='font-weight: bold;'>expression</span><span>
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'>1</span><span> cauchy                          </span><span style='color: #555555;'>0</span><span>       </span><span style='color: #555555;'>0.</span><span>707  1.27 Bayesian t-test </span><span style='color: #555555;'>&lt;language&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>2</span><span> cauchy                          </span><span style='color: #555555;'>0</span><span>       </span><span style='color: #555555;'>0.</span><span>707  1.27 Bayesian t-test </span><span style='color: #555555;'>&lt;language&gt;</span><span></div><div class='input'>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> cauchy                          </span><span style='color: #949494;'>0</span><span>       </span><span style='color: #949494;'>0.</span><span>707  1.27 Bayesian t-test </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> cauchy                          </span><span style='color: #949494;'>0</span><span>       </span><span style='color: #949494;'>0.</span><span>707  1.27 Bayesian t-test </span><span style='color: #949494;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='co'># within-subjects design</span>
-<span class='fu'>t_twosample</span><span class='op'>(</span>
+<span class='fu'>two_sample_test</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>VR_dilemma</span>,
   x <span class='op'>=</span> <span class='va'>modality</span>,
   y <span class='op'>=</span> <span class='va'>score</span>,
@@ -445,15 +445,15 @@ if appropriate as shown in the second example below.</p>
   subject.id <span class='op'>=</span> <span class='va'>id</span>,
   type <span class='op'>=</span> <span class='st'>"bayes"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 2 x 13</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 2 x 13</span><span>
 #&gt;   </span><span style='font-weight: bold;'>term</span><span>       </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>    </span><span style='font-weight: bold;'>pd</span><span> </span><span style='font-weight: bold;'>rope.percentage</span><span>
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> Difference    </span><span style='color: #555555;'>0.</span><span>172       </span><span style='color: #555555;'>0.</span><span>95   </span><span style='color: #555555;'>0.0</span><span>81</span><span style='text-decoration: underline;'>8</span><span>     </span><span style='color: #555555;'>0.</span><span>266 1                   </span><span style='color: #555555;'>0</span><span>
-#&gt; </span><span style='color: #555555;'>2</span><span> Cohens_d     -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>637</span><span>       </span><span style='color: #555555;'>0.</span><span>95  -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>992</span><span>     -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>258</span><span> </span><span style='color: #555555;'>0.</span><span>999               </span><span style='color: #555555;'>0</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Difference    </span><span style='color: #949494;'>0.</span><span>172       </span><span style='color: #949494;'>0.</span><span>95   </span><span style='color: #949494;'>0.0</span><span>81</span><span style='text-decoration: underline;'>8</span><span>     </span><span style='color: #949494;'>0.</span><span>266 1                   </span><span style='color: #949494;'>0</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Cohens_d     -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>637</span><span>       </span><span style='color: #949494;'>0.</span><span>95  -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>992</span><span>     -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>258</span><span> </span><span style='color: #949494;'>0.</span><span>999               </span><span style='color: #949494;'>0</span><span>
 #&gt;   </span><span style='font-weight: bold;'>prior.distribution</span><span> </span><span style='font-weight: bold;'>prior.location</span><span> </span><span style='font-weight: bold;'>prior.scale</span><span>  </span><span style='font-weight: bold;'>bf10</span><span> </span><span style='font-weight: bold;'>method</span><span>          </span><span style='font-weight: bold;'>expression</span><span>
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'>1</span><span> cauchy                          </span><span style='color: #555555;'>0</span><span>       </span><span style='color: #555555;'>0.</span><span>707  77.1 Bayesian t-test </span><span style='color: #555555;'>&lt;language&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>2</span><span> cauchy                          </span><span style='color: #555555;'>0</span><span>       </span><span style='color: #555555;'>0.</span><span>707  77.1 Bayesian t-test </span><span style='color: #555555;'>&lt;language&gt;</span><span></div><div class='input'><span class='co'># }</span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> cauchy                          </span><span style='color: #949494;'>0</span><span>       </span><span style='color: #949494;'>0.</span><span>707  77.1 Bayesian t-test </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> cauchy                          </span><span style='color: #949494;'>0</span><span>       </span><span style='color: #949494;'>0.</span><span>707  77.1 Bayesian t-test </span><span style='color: #949494;'>&lt;language&gt;</span><span></div><div class='input'><span class='co'># }</span>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -466,11 +466,11 @@ if appropriate as shown in the second example below.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='https://sites.google.com/site/indrajeetspatilmorality/'>Indrajeet Patil</a>.</p>
+  <p>Developed by <a href="https://sites.google.com/site/indrajeetspatilmorality/" class="external-link">Indrajeet Patil</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

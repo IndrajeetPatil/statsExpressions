@@ -58,7 +58,7 @@ BREAKING CHANGES
     used for all functions.
 
     * `t_parametric`, `t_nonparametric`, `t_robust`, `t_bayes` are now removed
-      in favor of a single function `t_twosample`.
+      in favor of a single function `two_sample_test`.
 
     * `expr_anova_parametric`, `expr_anova_nonparametric`, `expr_anova_robust`,
       `expr_anova_bayes` are now removed in favor of a single function
@@ -72,7 +72,7 @@ BREAKING CHANGES
 
 BUG FIXES
 
-  - `contingency_tab` ignored `ratio` argument while computing Cramer's *V* for
+  - `contingency_table` ignored `ratio` argument while computing Cramer's *V* for
     one-sample test. This is fixed.
 
 MAJOR CHANGES
@@ -133,7 +133,7 @@ MAJOR CHANGES
     sizes and their CIs but the computations will be faster. Additionally, the
     lower bound will never be negative and will be restricted to [0,1].
 
-  - `contingency_tab` function has been made less robust. It now fails instead
+  - `contingency_table` function has been made less robust. It now fails instead
     of returning `NULL` when it is not supposed to work. This is done to be
     consistent with the other functions in the package which also fail instead
     of returning `NULL`.

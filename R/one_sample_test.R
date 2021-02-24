@@ -1,5 +1,5 @@
 #' @title Expression and dataframe for one-sample *t*-test
-#' @name t_onesample
+#' @name one_sample_test
 #'
 #' @param x A numeric variable from the dataframe `data`.
 #' @param test.value A number indicating the true value of the mean (Default:
@@ -7,7 +7,7 @@
 #' @inheritParams ipmisc::long_to_wide_converter
 #' @inheritParams expr_template
 #' @inheritParams bf_extractor
-#' @inheritParams t_twosample
+#' @inheritParams two_sample_test
 #' @inheritParams oneway_anova
 #'
 #' @description
@@ -35,7 +35,7 @@
 #'
 #' # ----------------------- parametric ---------------------------------------
 #'
-#' t_onesample(
+#' one_sample_test(
 #'   data = ggplot2::msleep,
 #'   x = brainwt,
 #'   test.value = 0.275,
@@ -44,7 +44,7 @@
 #'
 #' # ----------------------- non-parametric -----------------------------------
 #'
-#' t_onesample(
+#' one_sample_test(
 #'   data = ggplot2::msleep,
 #'   x = brainwt,
 #'   test.value = 0.275,
@@ -53,7 +53,7 @@
 #'
 #' # ----------------------- robust --------------------------------------------
 #'
-#' t_onesample(
+#' one_sample_test(
 #'   data = ggplot2::msleep,
 #'   x = brainwt,
 #'   test.value = 0.275,
@@ -62,7 +62,7 @@
 #'
 #' # ---------------------------- Bayesian -----------------------------------
 #'
-#' t_onesample(
+#' one_sample_test(
 #'   data = ggplot2::msleep,
 #'   x = brainwt,
 #'   test.value = 0.275,
@@ -72,18 +72,18 @@
 #' }
 #' @export
 
-t_onesample <- function(data,
-                        x,
-                        type = "parametric",
-                        test.value = 0,
-                        k = 2L,
-                        conf.level = 0.95,
-                        tr = 0.2,
-                        bf.prior = 0.707,
-                        effsize.type = "g",
-                        nboot = 100L,
-                        top.text = NULL,
-                        ...) {
+one_sample_test <- function(data,
+                            x,
+                            type = "parametric",
+                            test.value = 0,
+                            k = 2L,
+                            conf.level = 0.95,
+                            tr = 0.2,
+                            bf.prior = 0.707,
+                            effsize.type = "g",
+                            nboot = 100L,
+                            top.text = NULL,
+                            ...) {
   # standardize the type of statistics
   type <- ipmisc::stats_type_switch(type)
 
@@ -179,11 +179,11 @@ t_onesample <- function(data,
   as_tibble(stats_df)
 }
 
-#' @rdname t_onesample
-#' @aliases t_onesample
+#' @rdname one_sample_test
+#' @aliases one_sample_test
 #' @export
 
-expr_t_onesample <- t_onesample
+expr_t_onesample <- one_sample_test
 
 #' bootstrap-t method for one-sample test
 #' @importFrom WRS2 trimse

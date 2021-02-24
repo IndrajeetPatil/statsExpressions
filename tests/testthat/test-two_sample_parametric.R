@@ -9,7 +9,7 @@ test_that(
     set.seed(123)
     using_function1 <-
       suppressWarnings(
-        t_twosample(
+        two_sample_test(
           data = dplyr::filter(
             movies_long,
             genre == "Action" | genre == "Drama"
@@ -70,7 +70,7 @@ test_that(
     set.seed(123)
     using_function1 <-
       suppressWarnings(
-        t_twosample(
+        two_sample_test(
           data = dplyr::filter(
             movies_long,
             genre == "Action" | genre == "Drama"
@@ -130,7 +130,7 @@ test_that(
     # output from `statsExpressions` helper subtitle
     set.seed(123)
     subtitle <-
-      suppressWarnings(t_twosample(
+      suppressWarnings(two_sample_test(
         data = dplyr::filter(
           iris_long,
           condition %in% c("Sepal.Length", "Sepal.Width")
@@ -189,7 +189,7 @@ test_that(
     # output from `statsExpressions` helper subtitle
     set.seed(123)
     subtitle <-
-      t_twosample(
+      two_sample_test(
         data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
         x = condition,
         y = desire,
@@ -273,7 +273,7 @@ test_that(
     # incorrect
     set.seed(123)
     expr1 <-
-      t_twosample(
+      two_sample_test(
         data = df,
         x = condition,
         y = score,
@@ -284,7 +284,7 @@ test_that(
     # correct
     set.seed(123)
     expr2 <-
-      t_twosample(
+      two_sample_test(
         data = dplyr::arrange(df, id),
         x = condition,
         y = score,

@@ -100,7 +100,7 @@
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 data-toc-skip class="author">Indrajeet Patil</h4>
             
-            <h4 data-toc-skip class="date">2021-02-19</h4>
+            <h4 data-toc-skip class="date">2021-02-24</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd" class="external-link"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -112,12 +112,11 @@
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
-<p>Although the primary focus of this package is to get expressions containing statistical results, one can also use it to extract dataframes containing these details. This vignette catalogs dataframe outputs from all functions.</p>
-<p>A dataframe will contain the following columns (the exact columns will depend on the test and the statistical approach):</p>
+<p>The returned dataframe will contain the following columns (the exact columns will depend on the test and the statistical approach):</p>
 <ul>
 <li><p><em>statistic</em>: the numeric value of a statistic.</p></li>
-<li><p><em>parameter</em>: the numeric value of a parameter being modeled (often degrees of freedom for the test); note that if <code>no.parameters = 0L</code> (e.g., for non-parametric tests), this column will be irrelevant.</p></li>
-<li><p><em>parameter1</em>, <em>parameter2</em>: relevant only if the statistic in question has two degrees of freedom (e.g., anova).</p></li>
+<li><p><em>df</em>: the numeric value of a parameter being modeled (often degrees of freedom for the test); note that if <code>no.parameters = 0L</code> (e.g., for non-parametric tests), this column will be irrelevant.</p></li>
+<li><p><em>df.error</em>, <em>df</em>: relevant only if the statistic in question has two degrees of freedom (e.g., anova).</p></li>
 <li><p><em>p.value</em>: the two-sided <em>p</em>-value associated with the observed statistic.</p></li>
 <li><p><em>method</em>: the details of the statistical test carried out.</p></li>
 <li><p><em>estimate</em>: estimated value of the effect size.</p></li>
@@ -139,7 +138,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/t_onesample.html">t_onesample</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,
   x <span class="op">=</span> <span class="va">brainwt</span>,
   test.value <span class="op">=</span> <span class="fl">0.275</span>,
@@ -157,7 +156,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/t_onesample.html">t_onesample</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,
   x <span class="op">=</span> <span class="va">brainwt</span>,
   test.value <span class="op">=</span> <span class="fl">0.275</span>,
@@ -175,7 +174,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/t_onesample.html">t_onesample</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,
   x <span class="op">=</span> <span class="va">brainwt</span>,
   test.value <span class="op">=</span> <span class="fl">0.275</span>,
@@ -193,7 +192,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/t_onesample.html">t_onesample</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,
   x <span class="op">=</span> <span class="va">brainwt</span>,
   test.value <span class="op">=</span> <span class="fl">0.275</span>,
@@ -227,7 +226,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/t_twosample.html">t_twosample</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">df</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
@@ -247,7 +246,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/t_twosample.html">t_twosample</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">df</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
@@ -267,7 +266,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/t_twosample.html">t_twosample</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">df</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
@@ -290,7 +289,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/t_twosample.html">t_twosample</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">df</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
@@ -325,7 +324,7 @@
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># unequal variance</span>
-<span class="fu"><a href="../../reference/t_twosample.html">t_twosample</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
   y <span class="op">=</span> <span class="va">len</span>,
@@ -345,7 +344,7 @@
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># equal variance</span>
-<span class="fu"><a href="../../reference/t_twosample.html">t_twosample</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
   y <span class="op">=</span> <span class="va">len</span>,
@@ -364,7 +363,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/t_twosample.html">t_twosample</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
   y <span class="op">=</span> <span class="va">len</span>,
@@ -382,7 +381,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/t_twosample.html">t_twosample</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
   y <span class="op">=</span> <span class="va">len</span>,
@@ -403,7 +402,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/t_twosample.html">t_twosample</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
   y <span class="op">=</span> <span class="va">len</span>,
@@ -731,7 +730,7 @@
 
 <span class="co"># unpaired</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/contingency_tab.html">expr_contingency_tab</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/contingency_table.html">expr_contingency_tab</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">mtcars</span>,
   x <span class="op">=</span> <span class="va">am</span>,
   y <span class="op">=</span> <span class="va">cyl</span>,
@@ -747,7 +746,7 @@
 
 <span class="co"># paired</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/contingency_tab.html">expr_contingency_tab</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/contingency_table.html">expr_contingency_tab</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">paired_data</span>,
   x <span class="op">=</span> <span class="va">response_before</span>,
   y <span class="op">=</span> <span class="va">response_after</span>,
@@ -766,7 +765,7 @@
 
 <span class="co"># with counts</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/contingency_tab.html">expr_contingency_tab</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/contingency_table.html">expr_contingency_tab</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">HairEyeColor</span><span class="op">)</span>,
   x <span class="op">=</span> <span class="va">Eye</span>,
   counts <span class="op">=</span> <span class="va">Freq</span>,
@@ -782,7 +781,7 @@
 <span class="co"># ------------------------ Bayesian -----------------------------</span>
 
 <span class="co"># association test</span>
-<span class="fu"><a href="../../reference/contingency_tab.html">expr_contingency_tab</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/contingency_table.html">expr_contingency_tab</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">mtcars</span>,
   x <span class="op">=</span> <span class="va">am</span>,
   y <span class="op">=</span> <span class="va">cyl</span>,
@@ -822,7 +821,7 @@
 <span class="co">#&gt; 8 Bayesian contingency table analysis &lt;language&gt;</span>
 
 <span class="co"># goodness-of-fit test</span>
-<span class="fu"><a href="../../reference/contingency_tab.html">expr_contingency_tab</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/contingency_table.html">expr_contingency_tab</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">HairEyeColor</span><span class="op">)</span>,
   x <span class="op">=</span> <span class="va">Eye</span>,
   counts <span class="op">=</span> <span class="va">Freq</span>,
@@ -936,7 +935,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/meta_random.html">expr_meta_random</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, type <span class="op">=</span> <span class="st">"parametric"</span><span class="op">)</span>
+<span class="fu"><a href="../../reference/meta_analysis.html">meta_analysis</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, type <span class="op">=</span> <span class="st">"parametric"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 12</span>
 <span class="co">#&gt;   term    estimate std.error conf.level conf.low conf.high statistic  p.value</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
@@ -949,7 +948,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/meta_random.html">expr_meta_random</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span>
+<span class="fu"><a href="../../reference/meta_analysis.html">meta_analysis</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 12</span>
 <span class="co">#&gt;   term    estimate std.error conf.low conf.high statistic  p.value weight</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;</span>
@@ -965,7 +964,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/meta_random.html">expr_meta_random</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span>
+<span class="fu"><a href="../../reference/meta_analysis.html">meta_analysis</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 2 x 17</span>
 <span class="co">#&gt;   term    estimate std.error conf.level conf.low conf.high weight  bf10  rhat</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
@@ -987,12 +986,12 @@
 <div id="suggestions" class="section level1">
 <h1 class="hasAnchor">
 <a href="#suggestions" class="anchor"></a>Suggestions</h1>
-<p>If you find any bugs or have any suggestions/remarks, please file an issue on GitHub: <a href="https://github.com/IndrajeetPatil/ggstatsplot/issues" class="external-link">https://github.com/IndrajeetPatil/ggstatsplot/issues</a></p>
+<p>If you find any bugs or have any suggestions/remarks, please file an issue on GitHub: <a href="https://github.com/IndrajeetPatil/ggstatsplot/issues" class="external-link uri">https://github.com/IndrajeetPatil/ggstatsplot/issues</a></p>
 </div>
 <div id="session-information" class="section level1">
 <h1 class="hasAnchor">
 <a href="#session-information" class="anchor"></a>Session Information</h1>
-<p>For details, see- <a href="https://indrajeetpatil.github.io/ggstatsplot/articles/web_only/session_info.html" class="external-link">https://indrajeetpatil.github.io/ggstatsplot/articles/web_only/session_info.html</a></p>
+<p>For details, see- <a href="https://indrajeetpatil.github.io/ggstatsplot/articles/web_only/session_info.html" class="external-link uri">https://indrajeetpatil.github.io/ggstatsplot/articles/web_only/session_info.html</a></p>
 </div>
   </div>
 
@@ -1007,11 +1006,11 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://sites.google.com/site/indrajeetspatilmorality/" class="external-link">Indrajeet Patil</a>.</p>
+  <p>Developed by <a href="https://sites.google.com/site/indrajeetspatilmorality/" class="external-link external-link">Indrajeet Patil</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

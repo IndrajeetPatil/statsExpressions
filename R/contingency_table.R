@@ -1,5 +1,5 @@
 #' @title A dataframe with an expression for contingency table analysis
-#' @name contingency_tab
+#' @name contingency_table
 #'
 #' @description
 #'
@@ -38,7 +38,7 @@
 #'   This means if there are two levels this will be `ratio = c(0.5,0.5)` or if
 #'   there are four levels this will be `ratio = c(0.25,0.25,0.25,0.25)`, etc.
 #' @param ... Additional arguments (currently ignored).
-#' @inheritParams t_twosample
+#' @inheritParams two_sample_test
 #' @inheritParams stats::chisq.test
 #' @inheritParams oneway_anova
 #'
@@ -59,7 +59,7 @@
 #' # ------------------------ non-Bayesian -----------------------------
 #'
 #' # association test
-#' contingency_tab(
+#' contingency_table(
 #'   data = mtcars,
 #'   x = am,
 #'   y = cyl,
@@ -67,7 +67,7 @@
 #' )
 #'
 #' # goodness-of-fit test
-#' contingency_tab(
+#' contingency_table(
 #'   data = as.data.frame(HairEyeColor),
 #'   x = Eye,
 #'   counts = Freq,
@@ -77,7 +77,7 @@
 #' # ------------------------ Bayesian -----------------------------
 #'
 #' # association test
-#' contingency_tab(
+#' contingency_table(
 #'   data = mtcars,
 #'   x = am,
 #'   y = cyl,
@@ -86,7 +86,7 @@
 #' )
 #'
 #' # goodness-of-fit test
-#' contingency_tab(
+#' contingency_table(
 #'   data = as.data.frame(HairEyeColor),
 #'   x = Eye,
 #'   counts = Freq,
@@ -97,20 +97,20 @@
 #' @export
 
 # function body
-contingency_tab <- function(data,
-                            x,
-                            y = NULL,
-                            paired = FALSE,
-                            type = "parametric",
-                            counts = NULL,
-                            ratio = NULL,
-                            k = 2L,
-                            conf.level = 0.95,
-                            sampling.plan = "indepMulti",
-                            fixed.margin = "rows",
-                            prior.concentration = 1,
-                            top.text = NULL,
-                            ...) {
+contingency_table <- function(data,
+                              x,
+                              y = NULL,
+                              paired = FALSE,
+                              type = "parametric",
+                              counts = NULL,
+                              ratio = NULL,
+                              k = 2L,
+                              conf.level = 0.95,
+                              sampling.plan = "indepMulti",
+                              fixed.margin = "rows",
+                              prior.concentration = 1,
+                              top.text = NULL,
+                              ...) {
 
   # check the data contains needed column
   type <- ipmisc::stats_type_switch(type)
@@ -251,11 +251,11 @@ contingency_tab <- function(data,
   return(stats_df)
 }
 
-#' @rdname contingency_tab
-#' @aliases contingency_tab
+#' @rdname contingency_table
+#' @aliases contingency_table
 #' @export
 
-expr_contingency_tab <- contingency_tab
+expr_contingency_tab <- contingency_table
 
 
 #' @title estimate log prob of data under null with Monte Carlo

@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# `statsExpressions`: Expressions and dataframes with statistical details
+# `statsExpressions`: Dataframes and expressions with statistical details
 
 Package | Status | Usage | GitHub | References
 ----------------- | ----------------- | ----------------- | ----------------- | -----------------
@@ -42,9 +42,9 @@ provides statistical processing backend for the
 [`ggstatsplot`](https://indrajeetpatil.github.io/ggstatsplot/) package, which
 combines `ggplot2` visualizations with expressions containing results from
 statistical tests. `statsExpressions` contains all functions needed to create
-these expressions. It can additionally return dataframes with these results,
-which also make these functions a more pipe-friendly way to do statistical
-analysis.
+these expressions. It return dataframes with rich details from inferential
+statistics. This also make these functions a more pipe-friendly way to execute
+some common statistical tests.
 
 # Installation
 
@@ -141,20 +141,44 @@ various functions:
 
 # Dataframe as output
 
-Although the primary focus of this package is to get expressions containing
-statistical results, one can also use it to extract dataframes containing these
-details. 
 
-For a more detailed summary of these dataframe:
+The returned dataframe will contain the following columns (the exact columns
+will depend on the test and the statistical approach):
+
+  - *statistic*: the numeric value of a statistic.
+
+  - *df*: the numeric value of a parameter being modeled (often degrees
+    of freedom for the test); note that if `no.parameters = 0L` (e.g., for
+    non-parametric tests), this column will be irrelevant.
+
+  - *df.error*, *df*: relevant only if the statistic in question has
+    two degrees of freedom (e.g., anova).
+
+  - *p.value*: the two-sided *p*-value associated with the observed statistic.
+  
+  - *method*: the details of the statistical test carried out.
+
+  - *estimate*: estimated value of the effect size.
+
+  - *conf.low*: lower bound for effect size estimate.
+
+  - *conf.high*: upper bound for effect size estimate.
+  
+  - *conf.level*: width of the confidence interval.
+  
+  - *effectsize*: the details of the effect size.
+
+All possible outputs from all functions are tabulated here:
 <https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html>
 
-For example,
+But here is one quick example:
 
 ```{r df}
 # setup
 library(statsExpressions)
 set.seed(123)
 
+# one-way repeated measures ANOVA - parametric
 oneway_anova(
   data = bugs_long,
   x = condition,
@@ -164,7 +188,21 @@ oneway_anova(
 )
 ```
 
-# Primary functions
+Needless to say this will also work with the `kable` function to generate a
+table:
+
+```{r kable}
+# setup
+library(statsExpressions)
+set.seed(123)
+
+# one-sample robust t-test
+one_sample_test(mtcars, wt, test.value = 3, type = "robust") %>%
+  dplyr::select(-expression) %>% # not needed for using just the dataframe
+  knitr::kable()
+```
+
+# Using expressions in custom plots
 
 A list of primary functions in this package can be found at the package website:
 <https://indrajeetpatil.github.io/statsExpressions/reference/index.html>
@@ -290,7 +328,7 @@ ggplot(ToothGrowth, aes(supp, len)) +
   # adding a subtitle with
   labs(
     title = "Two-Sample Welch's t-test",
-    subtitle = t_twosample(ToothGrowth, supp, len)$expression[[1]]
+    subtitle = two_sample_test(ToothGrowth, supp, len)$expression[[1]]
   )
 ```
 
@@ -318,7 +356,7 @@ gghistogram(
 ) + # displaying stats results
   labs(
     title = "Yuen's two-sample test for trimmed means",
-    subtitle = t_twosample(
+    subtitle = two_sample_test(
       data = data.frame(
         sex = factor(rep(c("F", "M"), each = 200)),
         weight = c(rnorm(200, 55), rnorm(200, 58))
@@ -347,7 +385,7 @@ ggDot(heightweight, aes(sex, heightIn, fill = sex),
 ) +
   labs(
     title = "Mann-Whitney test",
-    subtitle = t_twosample(heightweight, sex, heightIn, type = "nonparametric")$expression[[1]]
+    subtitle = two_sample_test(heightweight, sex, heightIn, type = "nonparametric")$expression[[1]]
   )
 ```
 
@@ -369,7 +407,7 @@ paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject")
   # `statsExpressions` needs data in the tidy format
   labs(
     title = "Two-sample Wilcoxon paired test",
-    subtitle = t_twosample(
+    subtitle = two_sample_test(
       data = pivot_longer(PrisonStress, starts_with("PSS"), "PSS", values_to = "stress"),
       x = PSS,
       y = stress,
@@ -395,7 +433,7 @@ ggplot(mtcars, aes(wt)) +
   # adding a caption with a non-parametric one-sample test
   labs(
     title = "One-Sample Wilcoxon Signed Rank Test",
-    subtitle = t_onesample(mtcars, wt, test.value = 3, type = "nonparametric")$expression[[1]]
+    subtitle = one_sample_test(mtcars, wt, test.value = 3, type = "nonparametric")$expression[[1]]
   )
 ```
 
@@ -463,7 +501,7 @@ ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1
     x = NULL,
     y = NULL,
     title = "Pie Chart of class (type of car)",
-    subtitle = contingency_tab(as.data.frame(table(mpg$class)), Var1, counts = Freq)$expression[[1]],
+    subtitle = contingency_table(as.data.frame(table(mpg$class)), Var1, counts = Freq)$expression[[1]],
     caption = "One-sample goodness of fit proportion test"
   )
 ```
@@ -487,7 +525,7 @@ ggSpine(
   labs(
     x = "diagnosis",
     title = "Pearson's chi-squared contingency table test for counts",
-    subtitle = contingency_tab(acs, Dx, smoking, paired = FALSE)$expression[[1]]
+    subtitle = contingency_table(acs, Dx, smoking, paired = FALSE)$expression[[1]]
   )
 ```
 
@@ -501,7 +539,7 @@ library(ggplot2)
 library(statsExpressions)
 
 # Pearson's chi-squared test of independence
-contingency_tab(mtcars, am, cyl)$expression[[1]]
+contingency_table(mtcars, am, cyl)$expression[[1]]
 ```
 
 ## Example: Expressions for meta-analysis

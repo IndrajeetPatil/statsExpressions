@@ -1,14 +1,14 @@
 # contingency tab - data without NAs -----------------------------------------
 
 test_that(
-  desc = "contingency_tab works - data without NAs",
+  desc = "contingency_table works - data without NAs",
   code = {
 
 
     # `statsExpressions` output
     set.seed(123)
     using_function1 <-
-      suppressWarnings(contingency_tab(
+      suppressWarnings(contingency_table(
         data = mtcars,
         x = "am",
         y = cyl,
@@ -53,7 +53,7 @@ test_that(
     # with counts
     set.seed(123)
     using_function2 <-
-      contingency_tab(
+      contingency_table(
         data = as.data.frame(Titanic),
         x = names(as.data.frame(Titanic))[2],
         y = Survived,
@@ -97,14 +97,14 @@ test_that(
 # contingency tab - data with NAs -----------------------------------------
 
 test_that(
-  desc = "contingency_tab works - data with NAs",
+  desc = "contingency_table works - data with NAs",
   code = {
 
 
     # introduce NAs
     set.seed(123)
     using_function1 <-
-      suppressWarnings(contingency_tab(
+      suppressWarnings(contingency_table(
         data = ggplot2::msleep,
         x = vore,
         y = "conservation",
@@ -150,7 +150,7 @@ test_that(
 # paired data without NAs and counts data -------------------------------------
 
 test_that(
-  desc = "paired contingency_tab works - counts data without NAs",
+  desc = "paired contingency_table works - counts data without NAs",
   code = {
 
 
@@ -179,7 +179,7 @@ test_that(
     set.seed(123)
     using_function1 <-
       suppressWarnings(
-        contingency_tab(
+        contingency_table(
           data = paired_data,
           x = "response_before",
           y = response_after,
@@ -228,7 +228,7 @@ test_that(
 # paired data with NAs  ---------------------------------------------
 
 test_that(
-  desc = "paired contingency_tab works - with NAs",
+  desc = "paired contingency_table works - with NAs",
   code = {
 
 
@@ -269,7 +269,7 @@ test_that(
     set.seed(123)
     using_function1 <-
       suppressWarnings(
-        contingency_tab(
+        contingency_table(
           data = paired_data,
           x = response_before,
           y = "response_after",
@@ -350,7 +350,7 @@ test_that(
     # `statsExpressions` output
     set.seed(123)
     subtitle1 <-
-      suppressWarnings(contingency_tab(
+      suppressWarnings(contingency_table(
         data = df,
         x = Var1,
         y = Var2,
@@ -405,7 +405,7 @@ test_that(
     # subtitle
     set.seed(123)
     subtitle2 <-
-      contingency_tab(
+      contingency_table(
         data = dfEx,
         x = cat1,
         y = cat2,
@@ -449,14 +449,14 @@ test_that(
 # one-sample test (without counts) -----------------------------------------
 
 test_that(
-  desc = "Goodness of Fit contingency_tab works without counts",
+  desc = "Goodness of Fit contingency_table works without counts",
   code = {
 
 
     # `statsExpressions` output
     set.seed(123)
     using_function1 <-
-      suppressWarnings(contingency_tab(
+      suppressWarnings(contingency_table(
         data = mtcars,
         x = "am",
         conf.level = 0.99,
@@ -500,7 +500,7 @@ test_that(
     # with counts
     set.seed(123)
     using_function2 <-
-      contingency_tab(
+      contingency_table(
         data = as.data.frame(Titanic),
         x = Sex,
         counts = "Freq"
@@ -543,14 +543,14 @@ test_that(
 # checking subtitle (with counts) -----------------------------------------
 
 test_that(
-  desc = "Goodness of Fit contingency_tab works with counts",
+  desc = "Goodness of Fit contingency_table works with counts",
   code = {
 
 
     # `statsExpressions` output
     set.seed(123)
     using_function1 <-
-      contingency_tab(
+      contingency_table(
         data = as.data.frame(Titanic),
         x = Sex,
         counts = "Freq",
@@ -603,7 +603,7 @@ test_that(
     # from function
     set.seed(123)
     using_function <-
-      contingency_tab(
+      contingency_table(
         data = ggplot2::msleep,
         x = vore,
         ratio = c(0.2, 0.2, 0.3, 0.3)
@@ -660,7 +660,7 @@ test_that(
     # subtitle
     set.seed(123)
     sub <- suppressWarnings(
-      contingency_tab(df, x, y, messages = FALSE)
+      contingency_table(df, x, y, messages = FALSE)
     )
 
     # test
@@ -699,7 +699,7 @@ test_that(
     df1 <- dplyr::filter(mtcars, am == "0")
 
     set.seed(123)
-    sub1 <- contingency_tab(df1, am, cyl)
+    sub1 <- contingency_table(df1, am, cyl)
 
     # test
     expect_identical(
@@ -742,7 +742,7 @@ test_that(
   desc = "dataframe - parametric",
   code = {
     expect_s3_class(
-      contingency_tab(
+      contingency_table(
         data = as.data.frame(HairEyeColor),
         x = Eye,
         counts = Freq,
@@ -764,7 +764,7 @@ if (packageVersion("parameters") > "0.11.0") {
       # extracting results from where this function is implemented
       set.seed(123)
       df <-
-        contingency_tab(
+        contingency_table(
           type = "bayes",
           data = mtcars,
           x = am
@@ -776,7 +776,7 @@ if (packageVersion("parameters") > "0.11.0") {
       # expr
       set.seed(123)
       expr_text <-
-        contingency_tab(
+        contingency_table(
           type = "bayes",
           data = mtcars,
           x = "cyl",
@@ -809,7 +809,7 @@ if (packageVersion("parameters") > "0.11.0") {
       # extracting results from where this function is implemented
       set.seed(123)
       df_results <-
-        contingency_tab(
+        contingency_table(
           type = "bayes",
           data = mtcars,
           x = "am",
@@ -827,7 +827,7 @@ if (packageVersion("parameters") > "0.11.0") {
       # expr
       set.seed(123)
       expr_text1 <-
-        contingency_tab(
+        contingency_table(
           type = "bayes",
           data = mtcars,
           x = colnames(mtcars)[9],
@@ -841,7 +841,7 @@ if (packageVersion("parameters") > "0.11.0") {
       # with counts
       set.seed(123)
       expr_text2 <-
-        contingency_tab(
+        contingency_table(
           type = "bayes",
           data = as.data.frame(Titanic),
           x = "Survived",
@@ -856,7 +856,7 @@ if (packageVersion("parameters") > "0.11.0") {
       # with counts
       set.seed(123)
       expr_text3 <-
-        contingency_tab(
+        contingency_table(
           type = "bayes",
           data = as.data.frame(Titanic),
           x = Survived,
@@ -915,7 +915,7 @@ if (packageVersion("parameters") > "0.11.0") {
     code = {
       df <- data.frame(x = c("a"))
 
-      expect_null(contingency_tab(type = "bayes", df, x))
+      expect_null(contingency_table(type = "bayes", df, x))
     }
   )
 }

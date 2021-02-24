@@ -25,7 +25,7 @@ if (packageVersion("parameters") > "0.11.0") {
       # expression
       set.seed(123)
       bf_expr <-
-        t_twosample(
+        two_sample_test(
           type = "bayes",
           data = ToothGrowth,
           x = supp,
@@ -67,7 +67,7 @@ if (packageVersion("parameters") > "0.11.0") {
       # extracting results from where this function is implemented
       set.seed(123)
       df_results <-
-        t_twosample(
+        two_sample_test(
           type = "bayes",
           data = dat_tidy,
           x = "condition",
@@ -82,7 +82,7 @@ if (packageVersion("parameters") > "0.11.0") {
       # expression
       set.seed(123)
       bf_expr <-
-        t_twosample(
+        two_sample_test(
           type = "bayes",
           data = dat_tidy,
           x = "condition",
@@ -150,7 +150,7 @@ if (packageVersion("parameters") > "0.11.0") {
       # incorrect
       set.seed(123)
       expr1 <-
-        t_twosample(
+        two_sample_test(
           type = "bayes",
           data = df,
           x = condition,
@@ -162,7 +162,7 @@ if (packageVersion("parameters") > "0.11.0") {
       # correct
       set.seed(123)
       expr2 <-
-        t_twosample(
+        two_sample_test(
           type = "bayes",
           data = dplyr::arrange(df, id),
           x = condition,

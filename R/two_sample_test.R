@@ -1,10 +1,10 @@
 #' @title Expression and dataframe for two-sample *t*-test
-#' @name t_twosample
+#' @name two_sample_test
 #'
 #' @inheritParams ipmisc::long_to_wide_converter
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
 #'   argument can be `"d"` (for Cohen's *d*) or `"g"` (for Hedge's *g*).
-#' @inheritParams t_onesample
+#' @inheritParams one_sample_test
 #' @inheritParams oneway_anova
 #' @inheritParams stats::t.test
 #' @inheritParams expr_template
@@ -43,7 +43,7 @@
 #' # ----------------------- parametric -------------------------------------
 #'
 #' # between-subjects design
-#' t_twosample(
+#' two_sample_test(
 #'   data = sleep,
 #'   x = group,
 #'   y = extra,
@@ -51,7 +51,7 @@
 #' )
 #'
 #' # within-subjects design
-#' t_twosample(
+#' two_sample_test(
 #'   data = VR_dilemma,
 #'   x = modality,
 #'   y = score,
@@ -63,7 +63,7 @@
 #' # ----------------------- non-parametric ----------------------------------
 #'
 #' # between-subjects design
-#' t_twosample(
+#' two_sample_test(
 #'   data = sleep,
 #'   x = group,
 #'   y = extra,
@@ -71,7 +71,7 @@
 #' )
 #'
 #' # within-subjects design
-#' t_twosample(
+#' two_sample_test(
 #'   data = VR_dilemma,
 #'   x = modality,
 #'   y = score,
@@ -83,7 +83,7 @@
 #' # ------------------------------ robust ----------------------------------
 #'
 #' # between-subjects design
-#' t_twosample(
+#' two_sample_test(
 #'   data = sleep,
 #'   x = group,
 #'   y = extra,
@@ -91,7 +91,7 @@
 #' )
 #'
 #' # within-subjects design
-#' t_twosample(
+#' two_sample_test(
 #'   data = VR_dilemma,
 #'   x = modality,
 #'   y = score,
@@ -103,7 +103,7 @@
 #' #' # ------------------------------ Bayesian ------------------------------
 #'
 #' # between-subjects design
-#' t_twosample(
+#' two_sample_test(
 #'   data = sleep,
 #'   x = group,
 #'   y = extra,
@@ -111,7 +111,7 @@
 #' )
 #'
 #' # within-subjects design
-#' t_twosample(
+#' two_sample_test(
 #'   data = VR_dilemma,
 #'   x = modality,
 #'   y = score,
@@ -123,21 +123,21 @@
 #' @export
 
 # function body
-t_twosample <- function(data,
-                        x,
-                        y,
-                        subject.id = NULL,
-                        type = "parametric",
-                        paired = FALSE,
-                        k = 2L,
-                        conf.level = 0.95,
-                        effsize.type = "g",
-                        var.equal = FALSE,
-                        bf.prior = 0.707,
-                        tr = 0.2,
-                        nboot = 100,
-                        top.text = NULL,
-                        ...) {
+two_sample_test <- function(data,
+                            x,
+                            y,
+                            subject.id = NULL,
+                            type = "parametric",
+                            paired = FALSE,
+                            k = 2L,
+                            conf.level = 0.95,
+                            effsize.type = "g",
+                            var.equal = FALSE,
+                            bf.prior = 0.707,
+                            tr = 0.2,
+                            nboot = 100,
+                            top.text = NULL,
+                            ...) {
   # standardize the type of statistics
   type <- ipmisc::stats_type_switch(type)
 
@@ -290,8 +290,8 @@ t_twosample <- function(data,
   as_tibble(stats_df)
 }
 
-#' @rdname t_twosample
-#' @aliases t_twosample
+#' @rdname two_sample_test
+#' @aliases two_sample_test
 #' @export
 
-expr_t_twosample <- t_twosample
+expr_t_twosample <- two_sample_test

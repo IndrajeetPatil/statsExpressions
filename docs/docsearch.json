@@ -2,21 +2,21 @@
   "index_name": "statsExpressions",
   "start_urls": [
     {
-      "url": "https://indrajeetpatil.github.io/statsExpressions//index.html",
+      "url": "https://indrajeetpatil.github.io/statsExpressions/index.html",
       "selectors_key": "homepage",
       "tags": [
         "homepage"
       ]
     },
     {
-      "url": "https://indrajeetpatil.github.io/statsExpressions//reference",
+      "url": "https://indrajeetpatil.github.io/statsExpressions/reference",
       "selectors_key": "reference",
       "tags": [
         "reference"
       ]
     },
     {
-      "url": "https://indrajeetpatil.github.io/statsExpressions//articles",
+      "url": "https://indrajeetpatil.github.io/statsExpressions/articles",
       "selectors_key": "articles",
       "tags": [
         "articles"
@@ -30,7 +30,7 @@
     "/articles/index.html"
   ],
   "sitemap_urls": [
-    "https://indrajeetpatil.github.io/statsExpressions//sitemap.xml"
+    "https://indrajeetpatil.github.io/statsExpressions/sitemap.xml"
   ],
   "selectors": {
     "homepage": {

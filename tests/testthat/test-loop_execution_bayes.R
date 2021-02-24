@@ -24,7 +24,7 @@ test_that(
 # loops - contingency tabs ---------------------------------------------------
 
 test_that(
-  desc = "contingency_tab works in loop",
+  desc = "contingency_table works in loop",
   code = {
     df <- dplyr::select(mtcars, am, cyl, vs)
     col.name <- colnames(df)
@@ -32,7 +32,7 @@ test_that(
     set.seed(123)
     ls <-
       capture.output(for (i in 1:3) {
-        print(contingency_tab(
+        print(contingency_table(
           data = mtcars,
           x = col.name[i],
           type = "bayes"
@@ -56,7 +56,7 @@ test_that(
     set.seed(123)
     ls1 <-
       capture.output(for (i in 2:length(col.name)) {
-        print(t_twosample(
+        print(two_sample_test(
           data = mtcars,
           x = am,
           y = !!col.name[i],
@@ -69,7 +69,7 @@ test_that(
     set.seed(123)
     ls2 <-
       capture.output(for (i in 2:length(col.name)) {
-        print(t_onesample(
+        print(one_sample_test(
           data = mtcars,
           x = col.name[i],
           test.value = 3,

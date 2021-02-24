@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A dataframe with an expression for random-effects meta-analysis — meta_random • statsExpressions</title>
+<title>A dataframe with an expression for random-effects meta-analysis — meta_analysis • statsExpressions</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,7 +54,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="A dataframe with an expression for random-effects meta-analysis — meta_random" />
+<meta property="og:title" content="A dataframe with an expression for random-effects meta-analysis — meta_analysis" />
 <meta property="og:description" content="
 A dataframe containing results from random-effects meta-analysis.
 For more details, see-
@@ -154,8 +154,8 @@ https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" /
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>A dataframe with an expression for random-effects meta-analysis</h1>
-    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/meta_random.R'><code>R/meta_random.R</code></a></small>
-    <div class="hidden name"><code>meta_random.Rd</code></div>
+    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/meta_analysis.R'><code>R/meta_analysis.R</code></a></small>
+    <div class="hidden name"><code>meta_analysis.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -165,7 +165,7 @@ https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" /
 <a href='https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html'>https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html</a></p>
     </div>
 
-    <pre class="usage"><span class='fu'>meta_random</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>meta_analysis</span><span class='op'>(</span>
   <span class='va'>data</span>,
   type <span class='op'>=</span> <span class='st'>"parametric"</span>,
   random <span class='op'>=</span> <span class='st'>"mixture"</span>,
@@ -289,41 +289,39 @@ the needed package (<code>metafor</code>, <code>metaplus</code>, or <code>metaBM
     control <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>adapt_delta <span class='op'>=</span> <span class='fl'>0.99</span>, max_treedepth <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span>
   <span class='op'>)</span>
 <span class='op'>}</span>
-</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Note: The second parameter is the study standard error not the standard error squared as in the metafor package.</span></div><div class='output co'>#&gt; <span class='message'>Loading 'metafor' package (version 2.4-0). For an overview </span>
-#&gt; <span class='message'>and introduction to the package please type: help(metafor).</span></div><div class='output co'>#&gt; <span class='message'>This is metaBMA version 0.6.6</span></div><div class='output co'>#&gt; <span class='message'>- Default priors were changed in version 0.6.6.</span></div><div class='output co'>#&gt; <span class='message'>- Since default priors may change again, it is safest to specify priors (even when using the defaults).</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 12</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 12</span><span>
 #&gt;   </span><span style='font-weight: bold;'>term</span><span>    </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>std.error</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>statistic</span><span>  </span><span style='font-weight: bold;'>p.value</span><span>
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> Overall   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>767</span><span>     </span><span style='color: #555555;'>0.</span><span>212       </span><span style='color: #555555;'>0.</span><span>95    -</span><span style='color: #BB0000;'>1.18</span><span>    -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>351</span><span>     -</span><span style='color: #BB0000;'>3.62</span><span> </span><span style='color: #555555;'>0.000</span><span style='text-decoration: underline;'>295</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Overall   -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>767</span><span>     </span><span style='color: #949494;'>0.</span><span>212       </span><span style='color: #949494;'>0.</span><span>95    -</span><span style='color: #BB0000;'>1.18</span><span>    -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>351</span><span>     -</span><span style='color: #BB0000;'>3.62</span><span> </span><span style='color: #949494;'>0.000</span><span style='text-decoration: underline;'>295</span><span>
 #&gt;   </span><span style='font-weight: bold;'>weight</span><span> </span><span style='font-weight: bold;'>method</span><span>                        </span><span style='font-weight: bold;'>effectsize</span><span>                     </span><span style='font-weight: bold;'>expression</span><span>
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                          </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'>1</span><span>     </span><span style='color: #BB0000;'>NA</span><span> Meta-analysis using 'metafor' meta-analytic summary estimate </span><span style='color: #555555;'>&lt;language&gt;</span><span>
-#&gt; </span><span style='color: #555555;'># A tibble: 1 x 12</span><span>
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                          </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     </span><span style='color: #BB0000;'>NA</span><span> Meta-analysis using 'metafor' meta-analytic summary estimate </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #949494;'># A tibble: 1 x 12</span><span>
 #&gt;   </span><span style='font-weight: bold;'>term</span><span>    </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>std.error</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>statistic</span><span>  </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>weight</span><span>
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> Overall   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>746</span><span>     </span><span style='color: #555555;'>0.</span><span>234    -</span><span style='color: #BB0000;'>1.26</span><span>    -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>343</span><span>     -</span><span style='color: #BB0000;'>3.20</span><span> </span><span style='color: #555555;'>0.000</span><span style='text-decoration: underline;'>501</span><span>     </span><span style='color: #BB0000;'>NA</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Overall   -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>746</span><span>     </span><span style='color: #949494;'>0.</span><span>234    -</span><span style='color: #BB0000;'>1.26</span><span>    -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>343</span><span>     -</span><span style='color: #BB0000;'>3.20</span><span> </span><span style='color: #949494;'>0.000</span><span style='text-decoration: underline;'>501</span><span>     </span><span style='color: #BB0000;'>NA</span><span>
 #&gt;   </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>method</span><span>                               
-#&gt;        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                
-#&gt; </span><span style='color: #555555;'>1</span><span>       </span><span style='color: #555555;'>0.</span><span>95 Robust meta-analysis using 'metaplus'
+#&gt;        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>       </span><span style='color: #949494;'>0.</span><span>95 Robust meta-analysis using 'metaplus'
 #&gt;   </span><span style='font-weight: bold;'>effectsize</span><span>                     </span><span style='font-weight: bold;'>expression</span><span>
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                          </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'>1</span><span> meta-analytic summary estimate </span><span style='color: #555555;'>&lt;language&gt;</span><span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 2 x 17</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                          </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> meta-analytic summary estimate </span><span style='color: #949494;'>&lt;language&gt;</span><span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 2 x 17</span><span>
 #&gt;   </span><span style='font-weight: bold;'>term</span><span>    </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>std.error</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>weight</span><span>  </span><span style='font-weight: bold;'>bf10</span><span>  </span><span style='font-weight: bold;'>rhat</span><span>
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> Overall   -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>650</span><span>     </span><span style='color: #555555;'>0.</span><span>222       </span><span style='color: #555555;'>0.</span><span>95   -</span><span style='color: #BB0000;'>1.10</span><span>     -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>235</span><span>     </span><span style='color: #BB0000;'>NA</span><span>  53.0    </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #555555;'>2</span><span> tau        </span><span style='color: #555555;'>0.</span><span>486     </span><span style='color: #555555;'>0.</span><span>184       </span><span style='color: #555555;'>0.</span><span>95    </span><span style='color: #555555;'>0.</span><span>167     </span><span style='color: #555555;'>0.</span><span>848     </span><span style='color: #BB0000;'>NA</span><span>  53.0    </span><span style='color: #BB0000;'>NA</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Overall   -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>650</span><span>     </span><span style='color: #949494;'>0.</span><span>222       </span><span style='color: #949494;'>0.</span><span>95   -</span><span style='color: #BB0000;'>1.10</span><span>     -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>235</span><span>     </span><span style='color: #BB0000;'>NA</span><span>  53.0    </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> tau        </span><span style='color: #949494;'>0.</span><span>486     </span><span style='color: #949494;'>0.</span><span>184       </span><span style='color: #949494;'>0.</span><span>95    </span><span style='color: #949494;'>0.</span><span>167     </span><span style='color: #949494;'>0.</span><span>848     </span><span style='color: #BB0000;'>NA</span><span>  53.0    </span><span style='color: #BB0000;'>NA</span><span>
 #&gt;     </span><span style='font-weight: bold;'>ess</span><span> </span><span style='font-weight: bold;'>component</span><span> </span><span style='font-weight: bold;'>prior.distribution</span><span> </span><span style='font-weight: bold;'>prior.location</span><span> </span><span style='font-weight: bold;'>prior.scale</span><span>
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>    </span><span style='color: #BB0000;'>NA</span><span> meta      Student's t                     </span><span style='color: #555555;'>0</span><span>       </span><span style='color: #555555;'>0.</span><span>707
-#&gt; </span><span style='color: #555555;'>2</span><span>    </span><span style='color: #BB0000;'>NA</span><span> meta      Inverse gamma                   1       </span><span style='color: #555555;'>0.</span><span>15 
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    </span><span style='color: #BB0000;'>NA</span><span> meta      Student's t                     </span><span style='color: #949494;'>0</span><span>       </span><span style='color: #949494;'>0.</span><span>707
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>    </span><span style='color: #BB0000;'>NA</span><span> meta      Inverse gamma                   1       </span><span style='color: #949494;'>0.</span><span>15 
 #&gt;   </span><span style='font-weight: bold;'>method</span><span>                                 </span><span style='font-weight: bold;'>effectsize</span><span>                      
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                           
-#&gt; </span><span style='color: #555555;'>1</span><span> Bayesian meta-analysis using 'metaBMA' meta-analytic posterior estimate
-#&gt; </span><span style='color: #555555;'>2</span><span> Bayesian meta-analysis using 'metaBMA' meta-analytic posterior estimate
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                           
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Bayesian meta-analysis using 'metaBMA' meta-analytic posterior estimate
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Bayesian meta-analysis using 'metaBMA' meta-analytic posterior estimate
 #&gt;   </span><span style='font-weight: bold;'>expression</span><span>
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'>1</span><span> </span><span style='color: #555555;'>&lt;language&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>2</span><span> </span><span style='color: #555555;'>&lt;language&gt;</span><span></div><div class='input'><span class='co'># }</span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> </span><span style='color: #949494;'>&lt;language&gt;</span><span></div><div class='input'><span class='co'># }</span>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -336,11 +334,11 @@ the needed package (<code>metafor</code>, <code>metaplus</code>, or <code>metaBM
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='https://sites.google.com/site/indrajeetspatilmorality/'>Indrajeet Patil</a>.</p>
+  <p>Developed by <a href="https://sites.google.com/site/indrajeetspatilmorality/" class="external-link">Indrajeet Patil</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

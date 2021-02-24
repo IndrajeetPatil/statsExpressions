@@ -2,14 +2,14 @@
 # parametric -----------------------------------------------------------
 
 test_that(
-  desc = "t_onesample parametric works",
+  desc = "one_sample_test parametric works",
   code = {
     skip_if(getRversion() < "4.0")
 
     # Hedge's g and non-central
     set.seed(123)
     using_function1 <-
-      t_onesample(
+      one_sample_test(
         data = dplyr::sample_frac(movies_long, 0.05),
         x = length,
         test.value = 120,
@@ -51,7 +51,7 @@ test_that(
     set.seed(123)
     using_function2 <-
       suppressWarnings(
-        t_onesample(
+        one_sample_test(
           data = dplyr::sample_frac(movies_long, 0.05),
           x = "length",
           test.value = 120,
@@ -101,14 +101,14 @@ test_that(
 # non-parametric -----------------------------------------------------------
 
 test_that(
-  desc = "t_onesample non-parametric works",
+  desc = "one_sample_test non-parametric works",
   code = {
     skip_if(getRversion() < "4.0")
 
     # statsExpressions output
     set.seed(123)
     using_function <-
-      suppressWarnings(t_onesample(
+      suppressWarnings(one_sample_test(
         data = ToothGrowth,
         x = len,
         test.value = 20,
@@ -151,7 +151,7 @@ test_that(
     # statsExpressions output
     set.seed(123)
     using_function2 <-
-      t_onesample(
+      one_sample_test(
         data = ggplot2::msleep,
         x = names(ggplot2::msleep)[10],
         test.value = 0.25,
@@ -195,14 +195,14 @@ test_that(
 # robust -----------------------------------------------------------
 
 test_that(
-  desc = "t_onesample robust works",
+  desc = "one_sample_test robust works",
   code = {
     skip_if(getRversion() < "4.0")
 
     # statsExpressions output
     set.seed(123)
     using_function <-
-      t_onesample(
+      one_sample_test(
         data = anscombe,
         x = "x1",
         test.value = 8,
@@ -246,7 +246,7 @@ test_that(
     # statsExpressions output
     set.seed(123)
     using_function2 <-
-      t_onesample(
+      one_sample_test(
         data = ggplot2::msleep,
         x = brainwt,
         test.value = 0.1,
@@ -294,14 +294,14 @@ if (packageVersion("parameters") > "0.11.0") {
   # bayes factor -----------------------------------------------------------
 
   test_that(
-    desc = "t_onesample bayes factor works",
+    desc = "one_sample_test bayes factor works",
     code = {
       skip_if(getRversion() < "4.0")
 
       # extracting results from where this function is implemented
       set.seed(123)
       df_results <-
-        t_onesample(
+        one_sample_test(
           type = "bayes",
           data = iris,
           x = Petal.Length,
@@ -316,7 +316,7 @@ if (packageVersion("parameters") > "0.11.0") {
       # extracting subtitle (without NA)
       set.seed(123)
       subtitle <-
-        t_onesample(
+        one_sample_test(
           type = "bayes",
           data = iris,
           x = "Petal.Length",
@@ -343,7 +343,7 @@ if (packageVersion("parameters") > "0.11.0") {
       # extracting subtitle (with NA)
       set.seed(123)
       subtitle2 <-
-        t_onesample(
+        one_sample_test(
           type = "bayes",
           data = ggplot2::msleep,
           x = brainwt,

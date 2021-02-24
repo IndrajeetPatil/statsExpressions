@@ -8,7 +8,7 @@ test_that(
     # ggstatsplot output
     set.seed(123)
     using_function <-
-      t_twosample(
+      two_sample_test(
         type = "np",
         data = mtcars,
         x = am,
@@ -83,7 +83,7 @@ test_that(
       ))
 
     # expect error
-    expect_error(suppressWarnings(t_twosample(
+    expect_error(suppressWarnings(two_sample_test(
       type = "np",
       data = iris,
       x = Sepal.Length,
@@ -93,7 +93,7 @@ test_that(
     # ggstatsplot output
     set.seed(123)
     using_function2 <-
-      suppressWarnings(t_twosample(
+      suppressWarnings(two_sample_test(
         type = "np",
         data = df_bird,
         x = type,
@@ -144,7 +144,7 @@ test_that(
   desc = "dataframe",
   code = {
     expect_s3_class(
-      t_twosample(
+      two_sample_test(
         type = "np",
         data = dplyr::filter(movies_long, genre == "Action" | genre == "Drama"),
         x = "genre",
@@ -196,7 +196,7 @@ test_that(
     # incorrect
     set.seed(123)
     expr1 <-
-      t_twosample(
+      two_sample_test(
         type = "np",
         data = df,
         x = condition,
@@ -208,7 +208,7 @@ test_that(
     # correct
     set.seed(123)
     expr2 <-
-      t_twosample(
+      two_sample_test(
         type = "np",
         data = dplyr::arrange(df, id),
         x = condition,

@@ -40,20 +40,16 @@ knitr::opts_chunk$set(
 
 # Introduction
 
-Although the primary focus of this package is to get expressions containing
-statistical results, one can also use it to extract dataframes containing these
-details. This vignette catalogs dataframe outputs from all functions.
-
-A dataframe will contain the following columns (the exact columns will depend on
-the test and the statistical approach):
+The returned dataframe will contain the following columns (the exact columns
+will depend on the test and the statistical approach):
 
   - *statistic*: the numeric value of a statistic.
 
-  - *parameter*: the numeric value of a parameter being modeled (often degrees
+  - *df*: the numeric value of a parameter being modeled (often degrees
     of freedom for the test); note that if `no.parameters = 0L` (e.g., for
     non-parametric tests), this column will be irrelevant.
 
-  - *parameter1*, *parameter2*: relevant only if the statistic in question has
+  - *df.error*, *df*: relevant only if the statistic in question has
     two degrees of freedom (e.g., anova).
 
   - *p.value*: the two-sided *p*-value associated with the observed statistic.
@@ -84,7 +80,7 @@ library(statsExpressions)
 
 # for reproducibility
 set.seed(123)
-t_onesample(
+one_sample_test(
   data = ggplot2::msleep,
   x = brainwt,
   test.value = 0.275,
@@ -95,7 +91,7 @@ t_onesample(
 
 # for reproducibility
 set.seed(123)
-t_onesample(
+one_sample_test(
   data = ggplot2::msleep,
   x = brainwt,
   test.value = 0.275,
@@ -106,7 +102,7 @@ t_onesample(
 
 # for reproducibility
 set.seed(123)
-t_onesample(
+one_sample_test(
   data = ggplot2::msleep,
   x = brainwt,
   test.value = 0.275,
@@ -117,7 +113,7 @@ t_onesample(
 
 # for reproducibility
 set.seed(123)
-t_onesample(
+one_sample_test(
   data = ggplot2::msleep,
   x = brainwt,
   test.value = 0.275,
@@ -141,7 +137,7 @@ df <- dplyr::filter(bugs_long, condition %in% c("LDLF", "LDHF"))
 
 # for reproducibility
 set.seed(123)
-t_twosample(
+two_sample_test(
   data = df,
   x = condition,
   y = desire,
@@ -154,7 +150,7 @@ t_twosample(
 
 # for reproducibility
 set.seed(123)
-t_twosample(
+two_sample_test(
   data = df,
   x = condition,
   y = desire,
@@ -167,7 +163,7 @@ t_twosample(
 
 # for reproducibility
 set.seed(123)
-t_twosample(
+two_sample_test(
   data = df,
   x = condition,
   y = desire,
@@ -180,7 +176,7 @@ t_twosample(
 
 # for reproducibility
 set.seed(123)
-t_twosample(
+two_sample_test(
   data = df,
   x = condition,
   y = desire,
@@ -202,7 +198,7 @@ library(statsExpressions)
 # for reproducibility
 set.seed(123)
 # unequal variance
-t_twosample(
+two_sample_test(
   data = ToothGrowth,
   x = supp,
   y = len,
@@ -212,7 +208,7 @@ t_twosample(
 # for reproducibility
 set.seed(123)
 # equal variance
-t_twosample(
+two_sample_test(
   data = ToothGrowth,
   x = supp,
   y = len,
@@ -224,7 +220,7 @@ t_twosample(
 
 # for reproducibility
 set.seed(123)
-t_twosample(
+two_sample_test(
   data = ToothGrowth,
   x = supp,
   y = len,
@@ -235,7 +231,7 @@ t_twosample(
 
 # for reproducibility
 set.seed(123)
-t_twosample(
+two_sample_test(
   data = ToothGrowth,
   x = supp,
   y = len,
@@ -246,7 +242,7 @@ t_twosample(
 
 # for reproducibility
 set.seed(123)
-t_twosample(
+two_sample_test(
   data = ToothGrowth,
   x = supp,
   y = len,
@@ -527,19 +523,19 @@ df <- dplyr::rename(mag, estimate = yi, std.error = sei)
 
 # for reproducibility
 set.seed(123)
-expr_meta_random(data = df, type = "parametric")
+meta_analysis(data = df, type = "parametric")
 
 # ----------------------- robust --------------------------------------------
 
 # for reproducibility
 set.seed(123)
-expr_meta_random(data = df, type = "robust")
+meta_analysis(data = df, type = "robust")
 
 # ----------------------- Bayes Factor ---------------------------------------
 
 # for reproducibility
 set.seed(123)
-expr_meta_random(data = df, type = "bayes")
+meta_analysis(data = df, type = "bayes")
 ```
 
 # Suggestions

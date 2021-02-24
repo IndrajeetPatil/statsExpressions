@@ -16,7 +16,7 @@ test_that(
           var.equal = list(TRUE, FALSE, TRUE, FALSE),
           conf.level = list(0.89, 0.99, 0.90, 0.50)
         ),
-        .f = statsExpressions::t_onesample
+        .f = statsExpressions::one_sample_test
       )
 
     set.seed(123)
@@ -34,7 +34,7 @@ test_that(
           var.equal = list(TRUE, FALSE, TRUE, FALSE),
           conf.level = list(0.89, 0.99, 0.90, 0.50)
         ),
-        .f = statsExpressions::t_twosample
+        .f = statsExpressions::two_sample_test
       )
 
     set.seed(123)
@@ -53,7 +53,7 @@ test_that(
           var.equal = list(TRUE, FALSE, TRUE, FALSE),
           conf.level = list(0.89, 0.99, 0.90, 0.50)
         ),
-        .f = statsExpressions::t_twosample
+        .f = statsExpressions::two_sample_test
       )
 
     set.seed(123)

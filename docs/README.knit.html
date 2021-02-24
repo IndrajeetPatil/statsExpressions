@@ -545,7 +545,7 @@
   <span class="co"># adding a caption with a non-parametric one-sample test</span>
   <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/labs.html">labs</a></span>(
     <span class="kw">title</span> <span class="kw">=</span> <span class="st">"One-Sample Wilcoxon Signed Rank Test"</span>,
-    <span class="kw">subtitle</span> <span class="kw">=</span> <span class="fu"><a href="reference/t_onesample.html">t_onesample</a></span>(<span class="no">mtcars</span>, <span class="no">wt</span>, <span class="kw">test.value</span> <span class="kw">=</span> <span class="fl">3</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="st">"nonparametric"</span>)
+    <span class="kw">subtitle</span> <span class="kw">=</span> <span class="fu"><a href="reference/one_sample_test.html">one_sample_test</a></span>(<span class="no">mtcars</span>, <span class="no">wt</span>, <span class="kw">test.value</span> <span class="kw">=</span> <span class="fl">3</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="st">"nonparametric"</span>)
   )</pre></html></div>
 <p><img src="man/figures/README-t_one-1.png" width="100%"></p>
 </div>
@@ -588,7 +588,7 @@
     <span class="kw">x</span> <span class="kw">=</span> <span class="kw">NULL</span>,
     <span class="kw">y</span> <span class="kw">=</span> <span class="kw">NULL</span>,
     <span class="kw">title</span> <span class="kw">=</span> <span class="st">"Pie Chart of class (type of car)"</span>,
-    <span class="kw">subtitle</span> <span class="kw">=</span> <span class="fu"><a href="reference/contingency_tab.html">expr_onesample_proptest</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="no">mpg</span>$<span class="no">class</span>)), <span class="no">Var1</span>, <span class="kw">counts</span> <span class="kw">=</span> <span class="no">Freq</span>),
+    <span class="kw">subtitle</span> <span class="kw">=</span> <span class="fu"><a href="reference/contingency_table.html">expr_onesample_proptest</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="no">mpg</span>$<span class="no">class</span>)), <span class="no">Var1</span>, <span class="kw">counts</span> <span class="kw">=</span> <span class="no">Freq</span>),
     <span class="kw">caption</span> <span class="kw">=</span> <span class="st">"One-sample goodness of fit proportion test"</span>
   )</pre></html></div>
 <p><img src="man/figures/README-gof-1.png" width="100%"></p>
@@ -599,7 +599,7 @@
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">statsExpressions</span>)
 
 <span class="co"># Pearson's chi-squared test of independence</span>
-<span class="fu"><a href="reference/contingency_tab.html">contingency_tab</a></span>(<span class="no">mtcars</span>, <span class="no">am</span>, <span class="no">cyl</span>)
+<span class="fu"><a href="reference/contingency_table.html">contingency_table</a></span>(<span class="no">mtcars</span>, <span class="no">am</span>, <span class="no">cyl</span>)
 <span class="co">#&gt; paste(NULL, chi["Pearson"]^2, "(", "2", ") = ", "8.74", ", ", </span>
 <span class="co">#&gt;     italic("p"), " = ", "0.013", ", ", widehat(italic("V"))["Cramer"], </span>
 <span class="co">#&gt;     " = ", "0.46", ", CI"["95%"], " [", "0.08", ", ", "0.75", </span>

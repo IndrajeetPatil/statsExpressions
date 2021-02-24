@@ -35,7 +35,7 @@
 #'   for the effect size (Default: `100`).
 #' @param bf.prior A number between `0.5` and `2` (default `0.707`), the prior
 #'   width to use in calculating Bayes factors and posterior estimates.
-#' @inheritParams t_twosample
+#' @inheritParams two_sample_test
 #' @inheritParams expr_template
 #' @inheritParams bf_extractor
 #' @param ... Additional arguments (currently ignored).
