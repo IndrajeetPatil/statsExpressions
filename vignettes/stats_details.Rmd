@@ -38,29 +38,29 @@ various functions:
 
 Functions | Type | Test | Effect size | 95% CI available? 
 ------------ | ----------- | -------------------- | -------- | ---  
-`expr_anova_parametric` (2 groups) | Parametric | Student's and Welch's *t*-test | Cohen's *d*, Hedge's *g* | <font color="green">$\checkmark$</font>
-`expr_anova_parametric` (> 2 groups) | Parametric | Fisher's and Welch's one-way ANOVA | $\eta^2_p, \omega^2_p$ | <font color="green">$\checkmark$</font>
-`expr_anova_nonparametric` (2 groups) | Non-parametric | Mann-Whitney *U*-test | *r* | <font color="green">$\checkmark$</font>
-`expr_anova_nonparametric` (> 2 groups) | Non-parametric | Kruskal-Wallis Rank Sum Test | $\epsilon^2$ | <font color="green">$\checkmark$</font>
-`expr_anova_robust` (2 groups) | Robust | Yuen's test for trimmed means | $\xi$ | <font color="green">$\checkmark$</font>
-`expr_anova_robust` (> 2 groups) | Robust | Heteroscedastic one-way ANOVA for trimmed means | $\xi$ | <font color="green">$\checkmark$</font>
-`expr_anova_parametric` (2 groups) | Parametric | Student's *t*-test | Cohen's *d*, Hedge's *g* | <font color="green">$\checkmark$</font>
-`expr_anova_parametric` (> 2 groups) | Parametric | Fisher's one-way repeated measures ANOVA | $\eta^2_p, \omega^2$ | <font color="green">$\checkmark$</font>
-`expr_anova_nonparametric` (2 groups) | Non-parametric | Wilcoxon signed-rank test | *r* | <font color="green">$\checkmark$</font>
-`expr_anova_nonparametric` (> 2 groups) | Non-parametric | Friedman rank sum test | $W_{Kendall}$ | <font color="green">$\checkmark$</font>
-`expr_anova_robust` (2 groups) | Robust | Yuen's test on trimmed means for dependent samples | $\xi$ | <font color="green">$\checkmark$</font>
-`expr_anova_robust` (> 2 groups) | Robust | Heteroscedastic one-way repeated measures ANOVA for trimmed means | <font color="red">$\times$</font> | <font color="red">$\times$</font>
-`expr_contingency_tab` (unpaired) | Parametric | $\text{Pearson's}~ \chi^2 ~\text{test}$ | Cramér's *V* | <font color="green">$\checkmark$</font>
-`expr_contingency_tab` (paired) | Parametric | McNemar's test | Cohen's *g* | <font color="green">$\checkmark$</font>
-`expr_contingency_tab` | Parametric | One-sample proportion test | Cramér's *V* | <font color="green">$\checkmark$</font>
+`oneway_anova` (2 groups) | Parametric | Student's and Welch's *t*-test | Cohen's *d*, Hedge's *g* | <font color="green">$\checkmark$</font>
+`oneway_anova` (> 2 groups) | Parametric | Fisher's and Welch's one-way ANOVA | $\eta^2_p, \omega^2_p$ | <font color="green">$\checkmark$</font>
+`oneway_anova` (2 groups) | Non-parametric | Mann-Whitney *U*-test | *r* | <font color="green">$\checkmark$</font>
+`oneway_anova` (> 2 groups) | Non-parametric | Kruskal-Wallis Rank Sum Test | $\epsilon^2$ | <font color="green">$\checkmark$</font>
+`oneway_anova` (2 groups) | Robust | Yuen's test for trimmed means | $\xi$ | <font color="green">$\checkmark$</font>
+`oneway_anova` (> 2 groups) | Robust | Heteroscedastic one-way ANOVA for trimmed means | $\xi$ | <font color="green">$\checkmark$</font>
+`oneway_anova` (2 groups) | Parametric | Student's *t*-test | Cohen's *d*, Hedge's *g* | <font color="green">$\checkmark$</font>
+`oneway_anova` (> 2 groups) | Parametric | Fisher's one-way repeated measures ANOVA | $\eta^2_p, \omega^2$ | <font color="green">$\checkmark$</font>
+`oneway_anova` (2 groups) | Non-parametric | Wilcoxon signed-rank test | *r* | <font color="green">$\checkmark$</font>
+`oneway_anova` (> 2 groups) | Non-parametric | Friedman rank sum test | $W_{Kendall}$ | <font color="green">$\checkmark$</font>
+`oneway_anova` (2 groups) | Robust | Yuen's test on trimmed means for dependent samples | $\xi$ | <font color="green">$\checkmark$</font>
+`oneway_anova` (> 2 groups) | Robust | Heteroscedastic one-way repeated measures ANOVA for trimmed means | <font color="red">$\times$</font> | <font color="red">$\times$</font>
+`contingency_table` (unpaired) | Parametric | $\text{Pearson's}~ \chi^2 ~\text{test}$ | Cramér's *V* | <font color="green">$\checkmark$</font>
+`contingency_table` (paired) | Parametric | McNemar's test | Cohen's *g* | <font color="green">$\checkmark$</font>
+`contingency_table` | Parametric | One-sample proportion test | Cramér's *V* | <font color="green">$\checkmark$</font>
 `corr_test` | Parametric | Pearson's *r* | *r* | <font color="green">$\checkmark$</font>
 `corr_test` | Non-parametric | $\text{Spearman's}~ \rho$ | $\rho$ | <font color="green">$\checkmark$</font>
 `corr_test` | Robust | Percentage bend correlation | *r* | <font color="green">$\checkmark$</font>
 `one_sample_test` | Parametric | One-sample *t*-test | Cohen's *d*, Hedge's *g* | <font color="green">$\checkmark$</font>
 `one_sample_test` | Non-parametric | One-sample Wilcoxon signed rank test | *r* | <font color="green">$\checkmark$</font>
 `one_sample_test` | Robust | One-sample percentile bootstrap | robust estimator | <font color="green">$\checkmark$</font>
-`expr_meta_random` | Parametric | Meta-analysis via random-effects models | $\beta$ | <font color="green">$\checkmark$</font>
-`expr_meta_random` | Robust | Meta-analysis via robust random-effects models | $\beta$ | <font color="green">$\checkmark$</font>
+`meta_analysis` | Parametric | Meta-analysis via random-effects models | $\beta$ | <font color="green">$\checkmark$</font>
+`meta_analysis` | Robust | Meta-analysis via robust random-effects models | $\beta$ | <font color="green">$\checkmark$</font>
 
 
 Note that the following recommendations on how to interpret the effect sizes are
@@ -93,7 +93,7 @@ Hedge's *g* | 0 – < 0.20 | 0.20 – < 0.50 | ≥ 0.80 | [-Inf,Inf]
 
 **Test**: One-sample Wilcoxon Signed-rank Test <br>
 **Effect size**: $r$ ( = $Z/\sqrt(N_{obs})$) <br>
-**Function**: `rcompanion::wilcoxonOneSampleR`
+**Function**: `effectsize::rank_biserial`
 
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | -------
@@ -124,7 +124,7 @@ Hedge's *g* | 0.20 | 0.50 | 0.80 | [0,1]
 
 **Test**: Wilcoxon signed-rank test <br>
 **Effect size**: $r$ ( = $Z/\sqrt(N_{pairs})$) <br>
-**Function**: `rcompanion::wilcoxonPairedR`
+**Function**: `effectsize::rank_biserial`
 
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | -------
@@ -158,7 +158,7 @@ Hedge's *g* | 0.20 | 0.50 | 0.80 | [-Inf,Inf]
 
 **Test**: Two-sample Mann–Whitney *U* Test <br>
 **Effect size**: $r$ ( = $Z/\sqrt(N_{obs})$) <br>
-**Function**: `rcompanion::wilcoxonR`
+**Function**: `effectsize::rank_biserial`
 
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | ---------- 
@@ -193,7 +193,7 @@ $\eta^2_p$ | 0.01 – < 0.06 | 0.06 – < 0.14 | ≥ 0.14 | [0,1]
 
 **Test**: Friedman's rank sum test <br>
 **Effect size**: Kendall's *W* <br>
-**Function**: `rcompanion::kendallW`
+**Function**: `kendalls_w`
 
 In the following table, *k* is the number of treatments, groups, or things being
 rated.
@@ -229,7 +229,7 @@ $\omega^2_p$ | 0.01 – < 0.06 | 0.06 – < 0.14 | ≥ 0.14 | [0,1]
 
 **Test**: Kruskal–Wallis test <br>
 **Effect size**: $\epsilon^2$ <br>
-**Function**: `rcompanion::epsilonSquared`
+**Function**: `rank_epsilon_squared`
 
 Effect size | Small | Medium | Large | Range
 ----- | ---------- | ---------- | ---------- | -------- 

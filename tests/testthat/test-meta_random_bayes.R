@@ -3,7 +3,7 @@ if (require("metaBMA") && packageVersion("parameters") > "0.11.0") {
   # subtitle from meta-analysis -------------------------------------------
 
   test_that(
-    desc = "expr_meta_random works",
+    desc = "meta_analysis works",
     code = {
       skip_if(getRversion() < "4.0")
 
@@ -37,7 +37,7 @@ if (require("metaBMA") && packageVersion("parameters") > "0.11.0") {
       # getting bayes factor in favor of null hypothesis
       set.seed(123)
       subtitle1 <-
-        suppressWarnings(expr_meta_random(
+        suppressWarnings(meta_analysis(
           type = "bayes",
           data = df1,
           k = 3,
@@ -47,7 +47,7 @@ if (require("metaBMA") && packageVersion("parameters") > "0.11.0") {
 
       set.seed(123)
       df <-
-        suppressWarnings(expr_meta_random(
+        suppressWarnings(meta_analysis(
           type = "bayes",
           data = df1,
           k = 3,

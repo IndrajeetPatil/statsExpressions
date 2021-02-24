@@ -600,7 +600,7 @@ viz_forest(
 ) + # use `statsExpressions` to create expression containing results
   labs(
     title = "Meta-analysis of Pietschnig, Voracek, and Formann (2010) on the Mozart effect",
-    subtitle = expr_meta_random(dplyr::rename(mozart, estimate = d, std.error = se))$expression[[1]]
+    subtitle = meta_analysis(dplyr::rename(mozart, estimate = d, std.error = se))$expression[[1]]
   ) +
   theme(text = element_text(size = 12))
 ```

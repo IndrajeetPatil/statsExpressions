@@ -260,16 +260,18 @@ library(statsExpressions)
 
 # ----------------------- parametric ---------------------------------------
 
-# for reproducibility
-set.seed(123)
-oneway_anova(
-  data = bugs_long,
-  x = condition,
-  y = desire,
-  paired = TRUE,
-  subject.id = subject,
-  type = "p"
-)
+if (utils::packageVersion("BayesFactor") >= package_version("0.9.12-4.3")) {
+  # for reproducibility
+  set.seed(123)
+  oneway_anova(
+    data = bugs_long,
+    x = condition,
+    y = desire,
+    paired = TRUE,
+    subject.id = subject,
+    type = "p"
+  )
+}
 
 # ----------------------- non-parametric -----------------------------------
 
@@ -301,7 +303,7 @@ oneway_anova(
 
 # for reproducibility
 set.seed(123)
-expr_oneway_anova(
+oneway_anova(
   data = bugs_long,
   x = condition,
   y = desire,
@@ -322,7 +324,7 @@ library(statsExpressions)
 # for reproducibility
 set.seed(123)
 # unequal variance
-expr_oneway_anova(
+oneway_anova(
   data = iris,
   x = Species,
   y = Sepal.Length,
@@ -332,7 +334,7 @@ expr_oneway_anova(
 # for reproducibility
 set.seed(123)
 # equal variance
-expr_oneway_anova(
+oneway_anova(
   data = iris,
   x = Species,
   y = Sepal.Length,
@@ -344,7 +346,7 @@ expr_oneway_anova(
 
 # for reproducibility
 set.seed(123)
-expr_oneway_anova(
+oneway_anova(
   data = iris,
   x = Species,
   y = Sepal.Length,
@@ -355,7 +357,7 @@ expr_oneway_anova(
 
 # for reproducibility
 set.seed(123)
-expr_oneway_anova(
+oneway_anova(
   data = iris,
   x = Species,
   y = Sepal.Length,
@@ -366,7 +368,7 @@ expr_oneway_anova(
 
 # for reproducibility
 set.seed(123)
-expr_oneway_anova(
+oneway_anova(
   data = iris,
   x = Species,
   y = Sepal.Length,
@@ -408,7 +410,7 @@ paired_data <-
 
 # unpaired
 set.seed(123)
-expr_contingency_tab(
+contingency_table(
   data = mtcars,
   x = am,
   y = cyl,
@@ -417,7 +419,7 @@ expr_contingency_tab(
 
 # paired
 set.seed(123)
-expr_contingency_tab(
+contingency_table(
   data = paired_data,
   x = response_before,
   y = response_after,
@@ -429,7 +431,7 @@ expr_contingency_tab(
 
 # with counts
 set.seed(123)
-expr_contingency_tab(
+contingency_table(
   data = as.data.frame(HairEyeColor),
   x = Eye,
   counts = Freq,
@@ -438,7 +440,7 @@ expr_contingency_tab(
 # ------------------------ Bayesian -----------------------------
 
 # association test
-expr_contingency_tab(
+contingency_table(
   data = mtcars,
   x = am,
   y = cyl,
@@ -447,7 +449,7 @@ expr_contingency_tab(
 )
 
 # goodness-of-fit test
-expr_contingency_tab(
+contingency_table(
   data = as.data.frame(HairEyeColor),
   x = Eye,
   counts = Freq,

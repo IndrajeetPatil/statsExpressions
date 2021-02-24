@@ -132,7 +132,7 @@
 <tbody>
 <tr class="odd">
 <td>
-<code>expr_anova_parametric</code> (2 groups)</td>
+<code>oneway_anova</code> (2 groups)</td>
 <td>Parametric</td>
 <td>Student’s and Welch’s <em>t</em>-test</td>
 <td>Cohen’s <em>d</em>, Hedge’s <em>g</em>
@@ -141,7 +141,7 @@
 </tr>
 <tr class="even">
 <td>
-<code>expr_anova_parametric</code> (&gt; 2 groups)</td>
+<code>oneway_anova</code> (&gt; 2 groups)</td>
 <td>Parametric</td>
 <td>Fisher’s and Welch’s one-way ANOVA</td>
 <td><span class="math inline">\(\eta^2_p, \omega^2_p\)</span></td>
@@ -149,7 +149,7 @@
 </tr>
 <tr class="odd">
 <td>
-<code>expr_anova_nonparametric</code> (2 groups)</td>
+<code>oneway_anova</code> (2 groups)</td>
 <td>Non-parametric</td>
 <td>Mann-Whitney <em>U</em>-test</td>
 <td><em>r</em></td>
@@ -157,7 +157,7 @@
 </tr>
 <tr class="even">
 <td>
-<code>expr_anova_nonparametric</code> (&gt; 2 groups)</td>
+<code>oneway_anova</code> (&gt; 2 groups)</td>
 <td>Non-parametric</td>
 <td>Kruskal-Wallis Rank Sum Test</td>
 <td><span class="math inline">\(\epsilon^2\)</span></td>
@@ -165,7 +165,7 @@
 </tr>
 <tr class="odd">
 <td>
-<code>expr_anova_robust</code> (2 groups)</td>
+<code>oneway_anova</code> (2 groups)</td>
 <td>Robust</td>
 <td>Yuen’s test for trimmed means</td>
 <td><span class="math inline">\(\xi\)</span></td>
@@ -173,7 +173,7 @@
 </tr>
 <tr class="even">
 <td>
-<code>expr_anova_robust</code> (&gt; 2 groups)</td>
+<code>oneway_anova</code> (&gt; 2 groups)</td>
 <td>Robust</td>
 <td>Heteroscedastic one-way ANOVA for trimmed means</td>
 <td><span class="math inline">\(\xi\)</span></td>
@@ -181,7 +181,7 @@
 </tr>
 <tr class="odd">
 <td>
-<code>expr_anova_parametric</code> (2 groups)</td>
+<code>oneway_anova</code> (2 groups)</td>
 <td>Parametric</td>
 <td>Student’s <em>t</em>-test</td>
 <td>Cohen’s <em>d</em>, Hedge’s <em>g</em>
@@ -190,7 +190,7 @@
 </tr>
 <tr class="even">
 <td>
-<code>expr_anova_parametric</code> (&gt; 2 groups)</td>
+<code>oneway_anova</code> (&gt; 2 groups)</td>
 <td>Parametric</td>
 <td>Fisher’s one-way repeated measures ANOVA</td>
 <td><span class="math inline">\(\eta^2_p, \omega^2\)</span></td>
@@ -198,7 +198,7 @@
 </tr>
 <tr class="odd">
 <td>
-<code>expr_anova_nonparametric</code> (2 groups)</td>
+<code>oneway_anova</code> (2 groups)</td>
 <td>Non-parametric</td>
 <td>Wilcoxon signed-rank test</td>
 <td><em>r</em></td>
@@ -206,7 +206,7 @@
 </tr>
 <tr class="even">
 <td>
-<code>expr_anova_nonparametric</code> (&gt; 2 groups)</td>
+<code>oneway_anova</code> (&gt; 2 groups)</td>
 <td>Non-parametric</td>
 <td>Friedman rank sum test</td>
 <td><span class="math inline">\(W_{Kendall}\)</span></td>
@@ -214,7 +214,7 @@
 </tr>
 <tr class="odd">
 <td>
-<code>expr_anova_robust</code> (2 groups)</td>
+<code>oneway_anova</code> (2 groups)</td>
 <td>Robust</td>
 <td>Yuen’s test on trimmed means for dependent samples</td>
 <td><span class="math inline">\(\xi\)</span></td>
@@ -222,7 +222,7 @@
 </tr>
 <tr class="even">
 <td>
-<code>expr_anova_robust</code> (&gt; 2 groups)</td>
+<code>oneway_anova</code> (&gt; 2 groups)</td>
 <td>Robust</td>
 <td>Heteroscedastic one-way repeated measures ANOVA for trimmed means</td>
 <td><font color="red"><span class="math inline">\(\times\)</span></font></td>
@@ -230,7 +230,7 @@
 </tr>
 <tr class="odd">
 <td>
-<code>expr_contingency_tab</code> (unpaired)</td>
+<code>contingency_table</code> (unpaired)</td>
 <td>Parametric</td>
 <td><span class="math inline">\(\text{Pearson's}~ \chi^2 ~\text{test}\)</span></td>
 <td>Cramér’s <em>V</em>
@@ -239,7 +239,7 @@
 </tr>
 <tr class="even">
 <td>
-<code>expr_contingency_tab</code> (paired)</td>
+<code>contingency_table</code> (paired)</td>
 <td>Parametric</td>
 <td>McNemar’s test</td>
 <td>Cohen’s <em>g</em>
@@ -247,7 +247,7 @@
 <td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
 </tr>
 <tr class="odd">
-<td><code>expr_contingency_tab</code></td>
+<td><code>contingency_table</code></td>
 <td>Parametric</td>
 <td>One-sample proportion test</td>
 <td>Cramér’s <em>V</em>
@@ -299,14 +299,14 @@
 <td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
 </tr>
 <tr class="even">
-<td><code>expr_meta_random</code></td>
+<td><code>meta_analysis</code></td>
 <td>Parametric</td>
 <td>Meta-analysis via random-effects models</td>
 <td><span class="math inline">\(\beta\)</span></td>
 <td><font color="green"><span class="math inline">\(\checkmark\)</span></font></td>
 </tr>
 <tr class="odd">
-<td><code>expr_meta_random</code></td>
+<td><code>meta_analysis</code></td>
 <td>Robust</td>
 <td>Meta-analysis via robust random-effects models</td>
 <td><span class="math inline">\(\beta\)</span></td>
@@ -355,7 +355,7 @@
 <div id="non-parametric" class="section level2">
 <h2 class="hasAnchor">
 <a href="#non-parametric" class="anchor"></a>non-parametric</h2>
-<p><strong>Test</strong>: One-sample Wilcoxon Signed-rank Test <br><strong>Effect size</strong>: <span class="math inline">\(r\)</span> ( = <span class="math inline">\(Z/\sqrt(N_{obs})\)</span>) <br><strong>Function</strong>: <code><a href="https://rdrr.io/pkg/rcompanion/man/wilcoxonOneSampleR.html" class="external-link">rcompanion::wilcoxonOneSampleR</a></code></p>
+<p><strong>Test</strong>: One-sample Wilcoxon Signed-rank Test <br><strong>Effect size</strong>: <span class="math inline">\(r\)</span> ( = <span class="math inline">\(Z/\sqrt(N_{obs})\)</span>) <br><strong>Function</strong>: <code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html" class="external-link">effectsize::rank_biserial</a></code></p>
 <table class="table">
 <thead><tr class="header">
 <th>Effect size</th>
@@ -420,7 +420,7 @@
 <div id="non-parametric-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#non-parametric-1" class="anchor"></a>non-parametric</h3>
-<p><strong>Test</strong>: Wilcoxon signed-rank test <br><strong>Effect size</strong>: <span class="math inline">\(r\)</span> ( = <span class="math inline">\(Z/\sqrt(N_{pairs})\)</span>) <br><strong>Function</strong>: <code><a href="https://rdrr.io/pkg/rcompanion/man/wilcoxonPairedR.html" class="external-link">rcompanion::wilcoxonPairedR</a></code></p>
+<p><strong>Test</strong>: Wilcoxon signed-rank test <br><strong>Effect size</strong>: <span class="math inline">\(r\)</span> ( = <span class="math inline">\(Z/\sqrt(N_{pairs})\)</span>) <br><strong>Function</strong>: <code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html" class="external-link">effectsize::rank_biserial</a></code></p>
 <table class="table">
 <thead><tr class="header">
 <th>Effect size</th>
@@ -498,7 +498,7 @@
 <div id="non-parametric-2" class="section level3">
 <h3 class="hasAnchor">
 <a href="#non-parametric-2" class="anchor"></a>non-parametric</h3>
-<p><strong>Test</strong>: Two-sample Mann–Whitney <em>U</em> Test <br><strong>Effect size</strong>: <span class="math inline">\(r\)</span> ( = <span class="math inline">\(Z/\sqrt(N_{obs})\)</span>) <br><strong>Function</strong>: <code><a href="https://rdrr.io/pkg/rcompanion/man/wilcoxonR.html" class="external-link">rcompanion::wilcoxonR</a></code></p>
+<p><strong>Test</strong>: Two-sample Mann–Whitney <em>U</em> Test <br><strong>Effect size</strong>: <span class="math inline">\(r\)</span> ( = <span class="math inline">\(Z/\sqrt(N_{obs})\)</span>) <br><strong>Function</strong>: <code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html" class="external-link">effectsize::rank_biserial</a></code></p>
 <table class="table">
 <thead><tr class="header">
 <th>Effect size</th>
@@ -578,7 +578,7 @@
 <div id="non-parametric-3" class="section level3">
 <h3 class="hasAnchor">
 <a href="#non-parametric-3" class="anchor"></a>non-parametric</h3>
-<p><strong>Test</strong>: Friedman’s rank sum test <br><strong>Effect size</strong>: Kendall’s <em>W</em> <br><strong>Function</strong>: <code><a href="https://rdrr.io/pkg/rcompanion/man/kendallW.html" class="external-link">rcompanion::kendallW</a></code></p>
+<p><strong>Test</strong>: Friedman’s rank sum test <br><strong>Effect size</strong>: Kendall’s <em>W</em> <br><strong>Function</strong>: <code>kendalls_w</code></p>
 <p>In the following table, <em>k</em> is the number of treatments, groups, or things being rated.</p>
 <table class="table">
 <thead><tr class="header">
@@ -680,7 +680,7 @@
 <div id="non-parametric-4" class="section level3">
 <h3 class="hasAnchor">
 <a href="#non-parametric-4" class="anchor"></a>non-parametric</h3>
-<p><strong>Test</strong>: Kruskal–Wallis test <br><strong>Effect size</strong>: <span class="math inline">\(\epsilon^2\)</span> <br><strong>Function</strong>: <code><a href="https://rdrr.io/pkg/rcompanion/man/epsilonSquared.html" class="external-link">rcompanion::epsilonSquared</a></code></p>
+<p><strong>Test</strong>: Kruskal–Wallis test <br><strong>Effect size</strong>: <span class="math inline">\(\epsilon^2\)</span> <br><strong>Function</strong>: <code>rank_epsilon_squared</code></p>
 <table class="table">
 <thead><tr class="header">
 <th>Effect size</th>

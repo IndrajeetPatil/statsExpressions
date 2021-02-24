@@ -431,16 +431,18 @@
 
 <span class="co"># ----------------------- parametric ---------------------------------------</span>
 
-<span class="co"># for reproducibility</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">bugs_long</span>,
-  x <span class="op">=</span> <span class="va">condition</span>,
-  y <span class="op">=</span> <span class="va">desire</span>,
-  paired <span class="op">=</span> <span class="cn">TRUE</span>,
-  subject.id <span class="op">=</span> <span class="va">subject</span>,
-  type <span class="op">=</span> <span class="st">"p"</span>
-<span class="op">)</span>
+<span class="kw">if</span> <span class="op">(</span><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html" class="external-link">packageVersion</a></span><span class="op">(</span><span class="st">"BayesFactor"</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric_version.html" class="external-link">package_version</a></span><span class="op">(</span><span class="st">"0.9.12-4.3"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="co"># for reproducibility</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+  <span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
+    data <span class="op">=</span> <span class="va">bugs_long</span>,
+    x <span class="op">=</span> <span class="va">condition</span>,
+    y <span class="op">=</span> <span class="va">desire</span>,
+    paired <span class="op">=</span> <span class="cn">TRUE</span>,
+    subject.id <span class="op">=</span> <span class="va">subject</span>,
+    type <span class="op">=</span> <span class="st">"p"</span>
+  <span class="op">)</span>
+<span class="op">}</span>
 <span class="co">#&gt; # A tibble: 1 x 15</span>
 <span class="co">#&gt;   term      sumsq sum.squares.error    df df.error meansq statistic  p.value</span>
 <span class="co">#&gt;   &lt;chr&gt;     &lt;dbl&gt;             &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
@@ -502,7 +504,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">bugs_long</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
   y <span class="op">=</span> <span class="va">desire</span>,
@@ -573,7 +575,7 @@
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># unequal variance</span>
-<span class="fu"><a href="../../reference/oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
@@ -593,7 +595,7 @@
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># equal variance</span>
-<span class="fu"><a href="../../reference/oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
@@ -612,7 +614,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
@@ -633,7 +635,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
@@ -654,7 +656,7 @@
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/oneway_anova.html">expr_oneway_anova</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
@@ -730,7 +732,7 @@
 
 <span class="co"># unpaired</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/contingency_table.html">expr_contingency_tab</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">mtcars</span>,
   x <span class="op">=</span> <span class="va">am</span>,
   y <span class="op">=</span> <span class="va">cyl</span>,
@@ -746,7 +748,7 @@
 
 <span class="co"># paired</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/contingency_table.html">expr_contingency_tab</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">paired_data</span>,
   x <span class="op">=</span> <span class="va">response_before</span>,
   y <span class="op">=</span> <span class="va">response_after</span>,
@@ -765,7 +767,7 @@
 
 <span class="co"># with counts</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/contingency_table.html">expr_contingency_tab</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">HairEyeColor</span><span class="op">)</span>,
   x <span class="op">=</span> <span class="va">Eye</span>,
   counts <span class="op">=</span> <span class="va">Freq</span>,
@@ -781,7 +783,7 @@
 <span class="co"># ------------------------ Bayesian -----------------------------</span>
 
 <span class="co"># association test</span>
-<span class="fu"><a href="../../reference/contingency_table.html">expr_contingency_tab</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">mtcars</span>,
   x <span class="op">=</span> <span class="va">am</span>,
   y <span class="op">=</span> <span class="va">cyl</span>,
@@ -821,7 +823,7 @@
 <span class="co">#&gt; 8 Bayesian contingency table analysis &lt;language&gt;</span>
 
 <span class="co"># goodness-of-fit test</span>
-<span class="fu"><a href="../../reference/contingency_table.html">expr_contingency_tab</a></span><span class="op">(</span>
+<span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">HairEyeColor</span><span class="op">)</span>,
   x <span class="op">=</span> <span class="va">Eye</span>,
   counts <span class="op">=</span> <span class="va">Freq</span>,
