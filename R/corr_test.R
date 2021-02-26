@@ -20,7 +20,7 @@
 #'   (e.g., `"y"`) or as a bare expression (e.g, `y`).
 #' @inheritParams oneway_anova
 #'
-#' @importFrom dplyr select case_when
+#' @importFrom dplyr select case_when ungroup
 #' @importFrom correlation correlation
 #' @importFrom ipmisc stats_type_switch
 #' @importFrom parameters standardize_names
@@ -67,7 +67,7 @@ corr_test <- function(data,
   # creating a dataframe of results
   stats_df <-
     correlation::correlation(
-      data = tidyr::drop_na(dplyr::select(data, {{ x }}, {{ y }})),
+      data = tidyr::drop_na(dplyr::select(dplyr::ungroup(data), {{ x }}, {{ y }})),
       method = ifelse(type == "nonparametric", "spearman", "pearson"),
       ci = conf.level,
       bayesian = ifelse(type == "bayes", TRUE, FALSE),

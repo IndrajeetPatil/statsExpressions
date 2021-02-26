@@ -2,9 +2,9 @@
 
 There is good news and there is bad news:
 
-The bad news is that the API for the package has changed **completely**: 
-Now all functions return a *dataframe*, and not an *expression*. The expression
-is contained in a list column in the returned dataframe. So, to salvage your
+The bad news is that the API for the package has changed **completely**: Now all
+functions return a *dataframe*, and not an *expression*. The expression is
+contained in a list column in the returned dataframe. So, to salvage your
 functions from breaking, you will have to add `$expression[[1]]` to your
 function calls. For example, if you were using the function
 `expr_t_onesample()`, you will now have to specify
@@ -14,6 +14,11 @@ The good news is that this is `1.0.0` release, which is going to be the first
 **stable** release of the package. This means that there will not be any more
 changes made to any of the current functions, except for any change that might
 be required for maintenance or bug squashing.
+
+BUG FIXES
+
+  - If the entered dataframe is `grouped`-tibble, the function internally
+    ungroups this (#79).
 
 # statsExpressions 0.7.1
 
@@ -72,8 +77,8 @@ BREAKING CHANGES
 
 BUG FIXES
 
-  - `contingency_table` ignored `ratio` argument while computing Cramer's *V* for
-    one-sample test. This is fixed.
+  - `contingency_table` ignored `ratio` argument while computing Cramer's *V*
+    for one-sample test. This is fixed.
 
 MAJOR CHANGES
 
