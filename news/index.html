@@ -158,6 +158,10 @@
 <p>There is good news and there is bad news:</p>
 <p>The bad news is that the API for the package has changed <strong>completely</strong>: Now all functions return a <em>dataframe</em>, and not an <em>expression</em>. The expression is contained in a list column in the returned dataframe. So, to salvage your functions from breaking, you will have to add <code>$expression[[1]]</code> to your function calls. For example, if you were using the function <code><a href="../reference/one_sample_test.html">expr_t_onesample()</a></code>, you will now have to specify <code>expr_t_onesample()$expression[[1]]</code>, so on and so forth.</p>
 <p>The good news is that this is <code>1.0.0</code> release, which is going to be the first <strong>stable</strong> release of the package. This means that there will not be any more changes made to any of the current functions, except for any change that might be required for maintenance or bug squashing.</p>
+<p>BUG FIXES</p>
+<ul>
+<li>If the entered dataframe is <code>grouped</code>-tibble, the function internally ungroups this (<a href='https://github.com/IndrajeetPatil/statsExpressions/issues/79'>#79</a>).</li>
+</ul>
 </div>
     <div id="statsexpressions-071" class="section level1">
 <h1 class="page-header" data-toc-text="0.7.1">
