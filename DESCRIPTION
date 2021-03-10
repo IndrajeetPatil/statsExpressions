@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Dataframes and Expressions with Statistical Details
-Version: 1.0.0.9000
+Version: 1.0.0
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -9,19 +9,19 @@ Authors@R:
            email = "patilindrajeet.science@gmail.com",
            comment = c(ORCID = "0000-0003-1995-6531", Twitter = "@patilindrajeets"))
 Maintainer: Indrajeet Patil <patilindrajeet.science@gmail.com>
-Description: Statistical processing backend for 'ggstatsplot',
-    this package creates expressions with details from statistical tests.
-    It can additionally return dataframes with these results, which also
-    make these functions a more pipe-friendly way to do statistical
-    analysis. Currently, it supports only the most common types of
-    statistical approaches and tests: parametric, nonparametric, robust, and Bayesian
-    versions of t-test/ANOVA, correlation analyses, contingency table
-    analysis, and meta-analysis.
+Description: Utilities for producing dataframes with rich details for the
+    most common types of statistical approaches and tests: parametric,
+    nonparametric, robust, and Bayesian t-test, one-way ANOVA, correlation
+    analyses, contingency table analyses, and meta-analyses.  The
+    functions are pipe-friendly and provide a consistent syntax to work
+    with tidy data. These dataframes additionally contain expressions with
+    statistical details, and can be used in graphing packages. This
+    package also forms the statistical processing backend for
+    'ggstatsplot'.
 License: GPL-3 | file LICENSE
 URL: https://indrajeetpatil.github.io/statsExpressions/,
     https://github.com/IndrajeetPatil/statsExpressions
-BugReports: 
-    https://github.com/IndrajeetPatil/statsExpressions/issues
+BugReports: https://github.com/IndrajeetPatil/statsExpressions/issues
 Depends: 
     R (>= 3.6.0)
 Imports:
@@ -50,13 +50,14 @@ Suggests:
     testthat,
     utils
 Remotes:
-    richarddmorey/BayesFactor/pkg/BayesFactor
+    richarddmorey/BayesFactor/pkg/BayesFactor    
 VignetteBuilder: 
     knitr
+Config/testthat/edition: 3
+Config/testthat/parallel: true
 Encoding: UTF-8
 Language: en-US
 LazyData: true
-Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate", "pkgapi::api_roclet"))
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate",
+    "pkgapi::api_roclet"))
 RoxygenNote: 7.1.1.9001
-Config/testthat/edition: 3
-Config/testthat/parallel: true

@@ -1,4 +1,4 @@
-#' @title A dataframe with an expression for contingency table analysis
+#' @title Contingency table analyses
 #' @name contingency_table
 #'
 #' @description
@@ -169,8 +169,8 @@ contingency_table <- function(data,
     stats_df %<>%
       dplyr::mutate(
         expression = list(expr_template(
-          no.parameters = 1L,
           data = .,
+          no.parameters = 1L,
           n = nrow(data),
           paired = paired,
           k = k

@@ -1,4 +1,4 @@
-#' @title A dataframe with expression for correlation analysis
+#' @title Correlation analyses
 #' @name corr_test
 #'
 #' @description

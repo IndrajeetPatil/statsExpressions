@@ -1,4 +1,4 @@
-#' @title Expression and dataframe for one-sample *t*-test
+#' @title One-sample tests
 #' @name one_sample_test
 #'
 #' @param x A numeric variable from the dataframe `data`.

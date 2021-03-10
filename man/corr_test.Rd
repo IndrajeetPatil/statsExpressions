@@ -3,7 +3,7 @@
 \name{corr_test}
 \alias{corr_test}
 \alias{expr_corr_test}
-\title{A dataframe with expression for correlation analysis}
+\title{Correlation analyses}
 \usage{
 corr_test(
   data,

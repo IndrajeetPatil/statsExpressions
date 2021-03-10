@@ -48,6 +48,7 @@ reference:
       - matches("_template")
       - matches("tidy_")
       - bf_extractor
+      - matches("package")
 
   - title: Reexported functions
     desc:  Useful functions re-exported from other packages.

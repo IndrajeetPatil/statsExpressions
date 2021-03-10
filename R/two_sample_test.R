@@ -1,4 +1,4 @@
-#' @title Expression and dataframe for two-sample *t*-test
+#' @title Two-sample tests
 #' @name two_sample_test
 #'
 #' @inheritParams ipmisc::long_to_wide_converter

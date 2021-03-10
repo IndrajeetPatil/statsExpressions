@@ -3,7 +3,7 @@
 \name{two_sample_test}
 \alias{two_sample_test}
 \alias{expr_t_twosample}
-\title{Expression and dataframe for two-sample \emph{t}-test}
+\title{Two-sample tests}
 \usage{
 two_sample_test(
   data,

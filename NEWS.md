@@ -1,25 +1,28 @@
-# statsExpressions 1.0.0.9000
+# statsExpressions 1.0.0
 
-There is good news and there is bad news:
+This is the first **stable** release of `statsExpressions`!
 
-The bad news is that the API for the package has changed **completely**: Now all
-functions return a *dataframe*, and not an *expression*. The expression is
-contained in a list column in the returned dataframe. So, to salvage your
-functions from breaking, you will have to add `$expression[[1]]` to your
-function calls. For example, if you were using the function
-`expr_t_onesample()`, you will now have to specify
-`expr_t_onesample()$expression[[1]]`, so on and so forth.
+There is good news and there is bad news that accompanies this milestone.
 
-The good news is that this is `1.0.0` release, which is going to be the first
-**stable** release of the package. This means that there will not be any more
-changes made to any of the current functions, except for any change that might
-be required for maintenance or bug squashing.
+- The **bad news**: The `API` for the package has changed **completely**: All
+  functions return a *dataframe*, and not an *expression*, as a default. The
+  expression is contained in a list column in the dataframe itself. So, to
+  salvage your functions from breaking, you will have to add `$expression[[1]]`
+  to your function calls. For example, if you were using the function
+  `expr_t_onesample()`, you will now have to specify
+  `expr_t_onesample()$expression[[1]]`, so on and so forth. But, in general, the
+  advice is to move away from using any of the `expr_*` functions, which are
+  vestigial names for new avatars of these functions. The new names are more
+  intuitive, e.g., `expr_t_onesample()` is now called `one_sample_test()`, etc.
+
+- The **good news**: There will not be any new changes to any of the current
+  functions, except for any change necessary for maintenance or bug squashing.
 
 BUG FIXES
 
   - If the entered dataframe is `grouped`-tibble, the function internally
     ungroups this (#79).
-    
+
 MINOR CHANGES
 
   - To reduce dependency load, `afex` has moved from `Imports` to `Suggests`.

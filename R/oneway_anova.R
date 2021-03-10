@@ -1,4 +1,4 @@
-#' @title A dataframe with an expression for one-way ANOVA
+#' @title One-way analysis of variance (ANOVA)
 #' @name oneway_anova
 #'
 #' @description

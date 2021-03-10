@@ -3,7 +3,7 @@
 \name{oneway_anova}
 \alias{oneway_anova}
 \alias{expr_oneway_anova}
-\title{A dataframe with an expression for one-way ANOVA}
+\title{One-way analysis of variance (ANOVA)}
 \usage{
 oneway_anova(
   data,

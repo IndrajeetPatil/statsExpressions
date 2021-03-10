@@ -3,7 +3,7 @@
 \name{contingency_table}
 \alias{contingency_table}
 \alias{expr_contingency_tab}
-\title{A dataframe with an expression for contingency table analysis}
+\title{Contingency table analyses}
 \usage{
 contingency_table(
   data,

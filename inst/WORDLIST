@@ -3,7 +3,6 @@ APA
 Algina
 AppVeyor
 Codecov
-Covrpage
 Cramer's
 DOI
 Github
@@ -19,6 +18,7 @@ Licence
 MPAA
 McNemar's
 NumGenre
+ORCID
 Otterstetter
 Penfield
 Satterthwaite
@@ -45,6 +45,7 @@ easystats
 effectsize
 et
 freighteningness
+ggplot
 ggstatsplot
 gh
 github
@@ -59,6 +60,7 @@ lifecycle
 mpaa
 noncentrality
 normals
+patilindrajeets
 setosa
 sphericity
 svg

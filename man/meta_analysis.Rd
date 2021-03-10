@@ -3,7 +3,7 @@
 \name{meta_analysis}
 \alias{meta_analysis}
 \alias{expr_meta_random}
-\title{A dataframe with an expression for random-effects meta-analysis}
+\title{Random-effects meta-analyses}
 \usage{
 meta_analysis(
   data,

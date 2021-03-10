@@ -3,7 +3,7 @@
 \name{one_sample_test}
 \alias{one_sample_test}
 \alias{expr_t_onesample}
-\title{Expression and dataframe for one-sample \emph{t}-test}
+\title{One-sample tests}
 \usage{
 one_sample_test(
   data,

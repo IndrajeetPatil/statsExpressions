@@ -15,17 +15,29 @@
 # Introduction <img src="man/figures/logo.png" align="right" width="240" />
 
 [`statsExpressions`](https://indrajeetpatil.github.io/statsExpressions/)
-provides statistical processing backend for the
-[`ggstatsplot`](https://indrajeetpatil.github.io/ggstatsplot/) package,
-which combines `ggplot2` visualizations with expressions containing
-results from statistical tests. `statsExpressions` contains all
-functions needed to create these expressions. It return dataframes with
-rich details from inferential statistics. This also make these functions
-a more pipe-friendly way to execute some common statistical tests.
+produces dataframes with rich details for the most common types of
+statistical approaches and tests: parametric, nonparametric, robust, and
+Bayesian t-test, one-way ANOVA, correlation analyses, contingency table
+analyses, and meta-analyses.
 
-Please note that the API for the package has changed significantly in
-`1.0.0` release and will break any code that used prior versions of this
-package.
+The functions are:
+
+-   pipe-friendly
+-   provide a consistent syntax to work with tidy data
+-   provide expressions with statistical details for graphing packages
+
+This package forms the statistical processing backend for
+[`ggstatsplot`](https://indrajeetpatil.github.io/ggstatsplot/) package.
+
+------------------------------------------------------------------------
+
+**Please note that the API for the package has changed significantly in
+`1.0.0`** **release and will break any code that used prior versions of
+this package.**
+
+See: <https://indrajeetpatil.github.io/statsExpressions/news/index.html>
+
+------------------------------------------------------------------------
 
 # Installation
 
@@ -119,7 +131,7 @@ supported in this package-
 | Correlation between two variables                 | <font color="green">Yes</font> | <font color="green">Yes</font> | <font color="green">Yes</font> | <font color="green">Yes</font> |
 | Association between categorical variables         | <font color="green">Yes</font> | `NA`                           | `NA`                           | <font color="green">Yes</font> |
 | Equal proportions for categorical variable levels | <font color="green">Yes</font> | `NA`                           | `NA`                           | <font color="green">Yes</font> |
-| Random-effects meta-analysis                      | <font color="green">Yes</font> | <font color="red">No</font>    | <font color="green">Yes</font> | <font color="green">Yes</font> |
+| Random-effects meta-analysis                      | <font color="green">Yes</font> | `NA`                           | <font color="green">Yes</font> | <font color="green">Yes</font> |
 
 # Statistical reporting
 
@@ -176,11 +188,7 @@ library(statsExpressions)
 set.seed(123)
 
 # one-way ANOVA - parametric
-oneway_anova(
-  data = mtcars,
-  x = cyl,
-  y = wt
-)
+mtcars %>% oneway_anova(x = cyl, y = wt)
 #> # A tibble: 1 x 11
 #>   statistic    df df.error   p.value
 #>       <dbl> <dbl>    <dbl>     <dbl>
@@ -202,14 +210,43 @@ library(statsExpressions)
 set.seed(123)
 
 # one-sample robust t-test
-one_sample_test(mtcars, wt, test.value = 3, type = "robust") %>%
-  dplyr::select(-expression) %>% # not needed for using just the dataframe
+# we will leave `expression` column out; it's not needed for using only the dataframe
+mtcars %>%
+  one_sample_test(wt, test.value = 3, type = "robust") %>%
+  dplyr::select(-expression) %>%
   knitr::kable()
 ```
 
 | statistic | p.value | method                                 | estimate | conf.low | conf.high | conf.level | effectsize   |
 |----------:|--------:|:---------------------------------------|---------:|---------:|----------:|-----------:|:-------------|
 |  1.179181 |    0.22 | Bootstrap-t method for one-sample test |    3.197 | 2.872163 |  3.521837 |       0.95 | Trimmed mean |
+
+These functions also play nicely with `dplyr` function. For example,
+let’s say we want to run a one-sample *t*-test for all levels of a
+certain grouping variable. Here is how you can do it:
+
+``` r
+# for reproducibility
+set.seed(123)
+library(dplyr)
+
+# grouped operation
+mtcars %>%
+  group_by(cyl) %>%
+  group_modify(~ one_sample_test(.x, wt, test.value = 3), .keep = TRUE) %>%
+  ungroup()
+#> # A tibble: 3 x 12
+#>     cyl    mu statistic df.error  p.value method            estimate conf.level
+#>   <dbl> <dbl>     <dbl>    <dbl>    <dbl> <chr>                <dbl>      <dbl>
+#> 1     4     3    -4.16        10 0.00195  One Sample t-test   -1.16        0.95
+#> 2     6     3     0.870        6 0.418    One Sample t-test    0.286       0.95
+#> 3     8     3     4.92        13 0.000278 One Sample t-test    1.24        0.95
+#>   conf.low conf.high effectsize expression
+#>      <dbl>     <dbl> <chr>      <list>    
+#> 1   -1.97     -0.422 Hedges' g  <language>
+#> 2   -0.419     1.01  Hedges' g  <language>
+#> 3    0.565     1.98  Hedges' g  <language>
+```
 
 # Using expressions in custom plots
 
