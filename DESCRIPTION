@@ -50,7 +50,7 @@ Suggests:
     testthat,
     utils
 Remotes:
-    richarddmorey/BayesFactor/pkg/BayesFactor    
+    richarddmorey/BayesFactor/pkg/BayesFactor
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3

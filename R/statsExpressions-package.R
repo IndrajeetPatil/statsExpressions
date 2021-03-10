@@ -1,6 +1,6 @@
-#' \code{ggstatsplot}
+#' \code{statsExpressions}
 #'
-#' @title ggstatsplot: 'ggplot2' Based Plots with Statistical Details
+#' @title statsExpressions: Dataframes and Expressions with Statistical Details
 #'
 #' @description
 #'

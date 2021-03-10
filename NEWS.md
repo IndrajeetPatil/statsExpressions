@@ -4,19 +4,22 @@ This is the first **stable** release of `statsExpressions`!
 
 There is good news and there is bad news that accompanies this milestone.
 
-- The **bad news**: The `API` for the package has changed **completely**: All
-  functions return a *dataframe*, and not an *expression*, as a default. The
-  expression is contained in a list column in the dataframe itself. So, to
-  salvage your functions from breaking, you will have to add `$expression[[1]]`
-  to your function calls. For example, if you were using the function
-  `expr_t_onesample()`, you will now have to specify
-  `expr_t_onesample()$expression[[1]]`, so on and so forth. But, in general, the
-  advice is to move away from using any of the `expr_*` functions, which are
-  vestigial names for new avatars of these functions. The new names are more
-  intuitive, e.g., `expr_t_onesample()` is now called `one_sample_test()`, etc.
+  - The **bad news**: The `API` for the package has changed **completely**: All
+    functions return a *dataframe*, and not an *expression*, as a default. The
+    expression is contained in a list column in the dataframe itself. So, to
+    salvage your functions from breaking, you will have to add
+    `$expression[[1]]` to your function calls. For example, if you were using
+    the function `expr_t_onesample()`, you will now have to specify
+    `expr_t_onesample()$expression[[1]]`, so on and so forth. But, in general,
+    the advice is to **not** use any of the `expr_*` functions, which are
+    vestigial names for new avatars of these functions. The new names are more
+    intuitive, e.g., `expr_t_onesample()` is now called `one_sample_test()`,
+    etc.
 
-- The **good news**: There will not be any new changes to any of the current
-  functions, except for any change necessary for maintenance or bug squashing.
+  - The **good news**: There will not be any new changes to any of the current
+    functions, except for any change necessary for maintenance or bug squashing.
+    Well, to be more precise, this is true only for the functions that have
+    **"stable"** [badge](https://lifecycle.r-lib.org/articles/stages.html).
 
 BUG FIXES
 

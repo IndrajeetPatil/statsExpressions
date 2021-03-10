@@ -5,7 +5,7 @@
 \alias{statsExpressions-package}
 \alias{_PACKAGE}
 \alias{statsExpressions}
-\title{ggstatsplot: 'ggplot2' Based Plots with Statistical Details}
+\title{statsExpressions: Dataframes and Expressions with Statistical Details}
 \description{
 \Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
 
@@ -22,7 +22,7 @@ For more documentation, see the dedicated
 \href{https://indrajeetpatil.github.io/statsExpressions/}{Website}.
 }
 \details{
-\code{ggstatsplot}
+\code{statsExpressions}
 }
 \seealso{
 Useful links:
