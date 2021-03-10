@@ -53,7 +53,6 @@
 #' @importFrom dplyr select rename matches
 #' @importFrom rlang !! !!! quo_is_null eval_tidy expr enexpr ensym exec new_formula
 #' @importFrom stats oneway.test
-#' @importFrom afex aov_ez
 #' @importFrom WRS2 t1way rmanova wmcpAKP
 #' @importFrom stats friedman.test kruskal.test na.omit
 #' @importFrom effectsize rank_epsilon_squared kendalls_w
@@ -78,14 +77,16 @@
 #'   y = sleep_rem
 #' )
 #'
-#' # within-subjects design
-#' oneway_anova(
-#'   data = iris_long,
-#'   x = condition,
-#'   y = value,
-#'   subject.id = id,
-#'   paired = TRUE
-#' )
+#' if (require("afex", quietly = TRUE)) {
+#'   # within-subjects design
+#'   oneway_anova(
+#'     data = iris_long,
+#'     x = condition,
+#'     y = value,
+#'     subject.id = id,
+#'     paired = TRUE
+#'   )
+#' }
 #'
 #' # ----------------------- non-parametric ----------------------------------
 #'
@@ -193,8 +194,11 @@ oneway_anova <- function(data,
     if (effsize.type %in% c("unbiased", "omega")) .f.es <- effectsize::omega_squared
     if (effsize.type %in% c("biased", "eta")) .f.es <- effectsize::eta_squared
 
-    # Fisher's ANOVA
     if (isTRUE(paired)) {
+      # check if `afex` is installed
+      if (!requireNamespace("afex", quietly = TRUE)) stop("Package 'afex' needs to be installed.")
+
+      # Fisher's ANOVA
       mod <-
         afex::aov_ez(
           id = "rowid",
@@ -204,8 +208,8 @@ oneway_anova <- function(data,
         )
     }
 
-    # Welch's ANOVA
     if (isFALSE(paired)) {
+      # Welch's ANOVA
       mod <-
         stats::oneway.test(
           formula = rlang::new_formula(y, x),

@@ -25,7 +25,6 @@ BugReports:
 Depends: 
     R (>= 3.6.0)
 Imports:
-    afex,
     BayesFactor (>= 0.9.12-4.2),
     correlation (>= 0.6.0),
     dplyr,
@@ -39,6 +38,7 @@ Imports:
     tidyr,
     WRS2 (>= 1.1-1)
 Suggests:
+    afex,
     ggplot2,
     knitr,
     metaBMA,

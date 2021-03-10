@@ -19,6 +19,10 @@ BUG FIXES
 
   - If the entered dataframe is `grouped`-tibble, the function internally
     ungroups this (#79).
+    
+MINOR CHANGES
+
+  - To reduce dependency load, `afex` has moved from `Imports` to `Suggests`.
 
 # statsExpressions 0.7.1
 
