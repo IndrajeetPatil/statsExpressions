@@ -87,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.0</span>
       </span>
     </div>
 
@@ -151,13 +151,16 @@
       <small>Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="statsexpressions-1009000" class="section level1">
-<h1 class="page-header" data-toc-text="1.0.0.9000">
-<a href="#statsexpressions-1009000" class="anchor"></a>statsExpressions 1.0.0.9000<small> Unreleased </small>
+    <div id="statsexpressions-100" class="section level1">
+<h1 class="page-header" data-toc-text="1.0.0">
+<a href="#statsexpressions-100" class="anchor"></a>statsExpressions 1.0.0<small> Unreleased </small>
 </h1>
-<p>There is good news and there is bad news:</p>
-<p>The bad news is that the API for the package has changed <strong>completely</strong>: Now all functions return a <em>dataframe</em>, and not an <em>expression</em>. The expression is contained in a list column in the returned dataframe. So, to salvage your functions from breaking, you will have to add <code>$expression[[1]]</code> to your function calls. For example, if you were using the function <code><a href="../reference/one_sample_test.html">expr_t_onesample()</a></code>, you will now have to specify <code>expr_t_onesample()$expression[[1]]</code>, so on and so forth.</p>
-<p>The good news is that this is <code>1.0.0</code> release, which is going to be the first <strong>stable</strong> release of the package. This means that there will not be any more changes made to any of the current functions, except for any change that might be required for maintenance or bug squashing.</p>
+<p>This is the first <strong>stable</strong> release of <code>statsExpressions</code>!</p>
+<p>There is good news and there is bad news that accompanies this milestone.</p>
+<ul>
+<li><p>The <strong>bad news</strong>: The <code>API</code> for the package has changed <strong>completely</strong>: All functions return a <em>dataframe</em>, and not an <em>expression</em>, as a default. The expression is contained in a list column in the dataframe itself. So, to salvage your functions from breaking, you will have to add <code>$expression[[1]]</code> to your function calls. For example, if you were using the function <code><a href="../reference/one_sample_test.html">expr_t_onesample()</a></code>, you will now have to specify <code>expr_t_onesample()$expression[[1]]</code>, so on and so forth. But, in general, the advice is to move away from using any of the <code>expr_*</code> functions, which are vestigial names for new avatars of these functions. The new names are more intuitive, e.g., <code><a href="../reference/one_sample_test.html">expr_t_onesample()</a></code> is now called <code><a href="../reference/one_sample_test.html">one_sample_test()</a></code>, etc.</p></li>
+<li><p>The <strong>good news</strong>: There will not be any new changes to any of the current functions, except for any change necessary for maintenance or bug squashing.</p></li>
+</ul>
 <p>BUG FIXES</p>
 <ul>
 <li>If the entered dataframe is <code>grouped</code>-tibble, the function internally ungroups this (<a href='https://github.com/IndrajeetPatil/statsExpressions/issues/79'>#79</a>).</li>
