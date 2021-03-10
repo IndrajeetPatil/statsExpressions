@@ -129,6 +129,7 @@ by running:
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
+options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 
 # ----------------------- parametric -------------------------------------
 

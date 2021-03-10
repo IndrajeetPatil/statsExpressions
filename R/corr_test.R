@@ -27,9 +27,11 @@
 #' @importFrom tidyr drop_na
 #'
 #' @examples
+#' \donttest{
 #' # for reproducibility
 #' set.seed(123)
 #' library(statsExpressions)
+#' options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 #'
 #' # without changing defaults
 #' corr_test(
@@ -45,6 +47,7 @@
 #'   y = percblack,
 #'   type = "robust"
 #' )
+#' }
 #' @export
 
 # function body

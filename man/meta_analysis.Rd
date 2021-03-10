@@ -90,19 +90,18 @@ if (all(unlist(lapply(
   # setup
   set.seed(123)
   library(statsExpressions)
+  options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 
   # renaming to what `statsExpressions` expects
   df <- dplyr::rename(mag, estimate = yi, std.error = sei)
 
   # ----------------------- parametric ---------------------------------------
 
-  # creating expression
-  print(expr_meta_random(data = df))
+  print(meta_analysis(data = df))
 
   # ----------------------- random -----------------------------------------
 
-  # creating expression
-  print(expr_meta_random(
+  print(meta_analysis(
     data = df,
     type = "random",
     random = "normal"
@@ -110,8 +109,7 @@ if (all(unlist(lapply(
 
   # ----------------------- Bayes Factor -----------------------------------
 
-  # making expression
-  expr_meta_random(
+  meta_analysis(
     data = df,
     type = "bayes",
 

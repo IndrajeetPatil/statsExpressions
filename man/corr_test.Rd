@@ -83,9 +83,11 @@ intervals for the correlation coefficient estimate. Results are extracted
 via \code{correlation::correlation}.
 }
 \examples{
+\donttest{
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
+options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 
 # without changing defaults
 corr_test(
@@ -101,6 +103,7 @@ corr_test(
   y = percblack,
   type = "robust"
 )
+}
 }
 \references{
 For more details, see-
