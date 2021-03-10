@@ -315,6 +315,7 @@ by running:
 <span class='co'># for reproducibility</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://indrajeetpatil.github.io/statsExpressions/'>statsExpressions</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span><span class='op'>(</span>tibble.width <span class='op'>=</span> <span class='cn'>Inf</span>, pillar.bold <span class='op'>=</span> <span class='cn'>TRUE</span>, pillar.neg <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
 <span class='co'># ----------------------- parametric -------------------------------------</span>
 
@@ -325,10 +326,15 @@ by running:
   y <span class='op'>=</span> <span class='va'>sleep_rem</span>
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 11</span><span>
-#&gt;   statistic    df df.error p.value method estimate conf.level conf.low conf.high
-#&gt;       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>      2.63     3     11.1   0.102 One-w…    0.245       0.95        0     0.539
-#&gt; </span><span style='color: #949494;'># … with 2 more variables: effectsize &lt;chr&gt;, expression &lt;list&gt;</span><span></div><div class='input'>
+#&gt;   </span><span style='font-weight: bold;'>statistic</span><span>    </span><span style='font-weight: bold;'>df</span><span> </span><span style='font-weight: bold;'>df.error</span><span> </span><span style='font-weight: bold;'>p.value</span><span>
+#&gt;       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>      2.63     3     11.1   0.102
+#&gt;   </span><span style='font-weight: bold;'>method</span><span>                                                   </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                                       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> One-way analysis of means (not assuming equal variances)    0.245       0.95
+#&gt;   </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>effectsize</span><span> </span><span style='font-weight: bold;'>expression</span><span>
+#&gt;      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>        0     0.539 Omega2     </span><span style='color: #949494;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='http://afex.singmann.science/'>"afex"</a></span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
   <span class='co'># within-subjects design</span>
   <span class='fu'>oneway_anova</span><span class='op'>(</span>
@@ -356,11 +362,15 @@ by running:
 #&gt; <span class='message'>Attaching package: ‘afex’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:lme4’:</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    lmer</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 15</span><span>
-#&gt;   term   sumsq sum.squares.err…    df df.error meansq statistic  p.value method 
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> condi… </span><span style='text-decoration: underline;'>1</span><span>656.             318.  1.15     171.   1.86      776. 1.32</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-69</span><span> ANOVA …
-#&gt; </span><span style='color: #949494;'># … with 6 more variables: estimate &lt;dbl&gt;, conf.level &lt;dbl&gt;, conf.low &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   conf.high &lt;dbl&gt;, effectsize &lt;chr&gt;, expression &lt;list&gt;</span><span></div><div class='input'>
+#&gt;   </span><span style='font-weight: bold;'>term</span><span>      </span><span style='font-weight: bold;'>sumsq</span><span> </span><span style='font-weight: bold;'>sum.squares.error</span><span>    </span><span style='font-weight: bold;'>df</span><span> </span><span style='font-weight: bold;'>df.error</span><span> </span><span style='font-weight: bold;'>meansq</span><span> </span><span style='font-weight: bold;'>statistic</span><span>  </span><span style='font-weight: bold;'>p.value</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> condition </span><span style='text-decoration: underline;'>1</span><span>656.              318.  1.15     171.   1.86      776. 1.32</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-69</span><span>
+#&gt;   </span><span style='font-weight: bold;'>method</span><span>                                              </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                                  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> ANOVA estimation for factorial designs using 'afex'    0.707       0.95
+#&gt;   </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>effectsize</span><span>       </span><span style='font-weight: bold;'>expression</span><span>
+#&gt;      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    0.666     0.740 Omega2 (partial) </span><span style='color: #949494;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='co'># ----------------------- non-parametric ----------------------------------</span>
 
 <span class='co'># between-subjects</span>
@@ -371,11 +381,12 @@ by running:
   type <span class='op'>=</span> <span class='st'>"np"</span>
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 12</span><span>
-#&gt;   parameter1 parameter2 statistic df.error p.value method    estimate conf.level
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> sleep_rem  vore            9.06        3  0.028</span><span style='text-decoration: underline;'>5</span><span> Kruskal-…    0.165       0.95
-#&gt; </span><span style='color: #949494;'># … with 4 more variables: conf.low &lt;dbl&gt;, conf.high &lt;dbl&gt;, effectsize &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   expression &lt;list&gt;</span><span></div><div class='input'>
+#&gt;   </span><span style='font-weight: bold;'>parameter1</span><span> </span><span style='font-weight: bold;'>parameter2</span><span> </span><span style='font-weight: bold;'>statistic</span><span> </span><span style='font-weight: bold;'>df.error</span><span> </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>method</span><span>                      
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                       
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> sleep_rem  vore            9.06        3  0.028</span><span style='text-decoration: underline;'>5</span><span> Kruskal-Wallis rank sum test
+#&gt;   </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>effectsize</span><span>      </span><span style='font-weight: bold;'>expression</span><span>
+#&gt;      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    0.165       0.95   0.050</span><span style='text-decoration: underline;'>3</span><span>     0.364 Epsilon2 (rank) </span><span style='color: #949494;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='co'># within-subjects design</span>
 <span class='fu'>oneway_anova</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>iris_long</span>,
@@ -386,10 +397,12 @@ by running:
   type <span class='op'>=</span> <span class='st'>"np"</span>
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 10</span><span>
-#&gt;   statistic    df  p.value method         estimate conf.level conf.low conf.high
-#&gt;       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>       410     3 1.51</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-88</span><span> Friedman rank…    0.484       0.95    0.340     0.969
-#&gt; </span><span style='color: #949494;'># … with 2 more variables: effectsize &lt;chr&gt;, expression &lt;list&gt;</span><span></div><div class='input'>
+#&gt;   </span><span style='font-weight: bold;'>statistic</span><span>    </span><span style='font-weight: bold;'>df</span><span>  </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>method</span><span>                 </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span>
+#&gt;       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>       410     3 1.51</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-88</span><span> Friedman rank sum test    0.484       0.95    0.340
+#&gt;   </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>effectsize</span><span>  </span><span style='font-weight: bold;'>expression</span><span>
+#&gt;       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     0.969 Kendall's W </span><span style='color: #949494;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='co'># ----------------------- robust -------------------------------------</span>
 
 <span class='co'># between-subjects</span>
@@ -400,10 +413,15 @@ by running:
   type <span class='op'>=</span> <span class='st'>"r"</span>
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 11</span><span>
-#&gt;   statistic    df df.error p.value estimate conf.level conf.low conf.high
+#&gt;   </span><span style='font-weight: bold;'>statistic</span><span>    </span><span style='font-weight: bold;'>df</span><span> </span><span style='font-weight: bold;'>df.error</span><span> </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>
 #&gt;       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'>1</span><span>      2.76     3     9.37   0.102    0.811       0.95    0.440      1.41
-#&gt; </span><span style='color: #949494;'># … with 3 more variables: effectsize &lt;chr&gt;, method &lt;chr&gt;, expression &lt;list&gt;</span><span></div><div class='input'>
+#&gt;   </span><span style='font-weight: bold;'>effectsize</span><span>                        
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                             
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Explanatory measure of effect size
+#&gt;   </span><span style='font-weight: bold;'>method</span><span>                                            </span><span style='font-weight: bold;'>expression</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                             </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> A heteroscedastic one-way ANOVA for trimmed means </span><span style='color: #949494;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='co'># within-subjects design</span>
 <span class='fu'>oneway_anova</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>iris_long</span>,
@@ -414,10 +432,18 @@ by running:
   type <span class='op'>=</span> <span class='st'>"r"</span>
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 11</span><span>
-#&gt;   statistic    df df.error p.value method estimate conf.low conf.high conf.level
-#&gt;       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>      368.  1.09     97.1       0 A het…   -</span><span style='color: #BB0000;'>0.349</span><span>   -</span><span style='color: #BB0000;'>0.935</span><span>     0.140       0.95
-#&gt; </span><span style='color: #949494;'># … with 2 more variables: effectsize &lt;chr&gt;, expression &lt;list&gt;</span><span></div><div class='input'>
+#&gt;   </span><span style='font-weight: bold;'>statistic</span><span>    </span><span style='font-weight: bold;'>df</span><span> </span><span style='font-weight: bold;'>df.error</span><span> </span><span style='font-weight: bold;'>p.value</span><span>
+#&gt;       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>      368.  1.09     97.1       0
+#&gt;   </span><span style='font-weight: bold;'>method</span><span>                                                              </span><span style='font-weight: bold;'>estimate</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                                                  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> A heteroscedastic one-way repeated measures ANOVA for trimmed means   -</span><span style='color: #BB0000;'>0.349</span><span>
+#&gt;   </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>conf.level</span><span>
+#&gt;      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>   -</span><span style='color: #BB0000;'>0.935</span><span>     0.140       0.95
+#&gt;   </span><span style='font-weight: bold;'>effectsize</span><span>                                                      </span><span style='font-weight: bold;'>expression</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                                           </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Algina-Keselman-Penfield robust standardized difference average </span><span style='color: #949494;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='co'># ----------------------- Bayesian -------------------------------------</span>
 
 <span class='co'># between-subjects</span>
@@ -428,7 +454,7 @@ by running:
   type <span class='op'>=</span> <span class='st'>"bayes"</span>
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 7 x 19</span><span>
-#&gt;   term         estimate conf.level conf.low conf.high    pd rope.percentage
+#&gt;   </span><span style='font-weight: bold;'>term</span><span>         </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>    </span><span style='font-weight: bold;'>pd</span><span> </span><span style='font-weight: bold;'>rope.percentage</span><span>
 #&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'>1</span><span> mu             2.18         0.95   1.79       2.58  1              0     
 #&gt; </span><span style='color: #BCBCBC;'>2</span><span> vore-carni     0.078</span><span style='text-decoration: underline;'>8</span><span>       0.95  -</span><span style='color: #BB0000;'>0.534</span><span>      0.682 0.599          0.359 
@@ -437,10 +463,33 @@ by running:
 #&gt; </span><span style='color: #BCBCBC;'>5</span><span> vore-omni     -</span><span style='color: #BB0000;'>0.194</span><span>        0.95  -</span><span style='color: #BB0000;'>0.764</span><span>      0.321 0.760          0.339 
 #&gt; </span><span style='color: #BCBCBC;'>6</span><span> sig2           1.55         0.95   1.04       2.25  1              0     
 #&gt; </span><span style='color: #BCBCBC;'>7</span><span> g_vore         0.437        0.95   0.036</span><span style='text-decoration: underline;'>8</span><span>     2.62  1              0.081</span><span style='text-decoration: underline;'>2</span><span>
-#&gt; </span><span style='color: #949494;'># … with 12 more variables: prior.distribution &lt;chr&gt;, prior.location &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   prior.scale &lt;dbl&gt;, component &lt;chr&gt;, bf10 &lt;dbl&gt;, method &lt;chr&gt;, r2 &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   std.dev &lt;dbl&gt;, r2.conf.level &lt;dbl&gt;, r2.conf.low &lt;dbl&gt;, r2.conf.high &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   expression &lt;list&gt;</span><span></div><div class='input'>
+#&gt;   </span><span style='font-weight: bold;'>prior.distribution</span><span> </span><span style='font-weight: bold;'>prior.location</span><span> </span><span style='font-weight: bold;'>prior.scale</span><span> </span><span style='font-weight: bold;'>component</span><span>    </span><span style='font-weight: bold;'>bf10</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> cauchy                          0       0.707 extra        3.41
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> cauchy                          0       0.707 conditional  3.41
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> cauchy                          0       0.707 conditional  3.41
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> cauchy                          0       0.707 conditional  3.41
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> cauchy                          0       0.707 conditional  3.41
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span> cauchy                          0       0.707 extra        3.41
+#&gt; </span><span style='color: #BCBCBC;'>7</span><span> cauchy                          0       0.707 extra        3.41
+#&gt;   </span><span style='font-weight: bold;'>method</span><span>                             </span><span style='font-weight: bold;'>r2</span><span> </span><span style='font-weight: bold;'>std.dev</span><span> </span><span style='font-weight: bold;'>r2.conf.level</span><span> </span><span style='font-weight: bold;'>r2.conf.low</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Bayes factors for linear models 0.112   0.109          0.95           0
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Bayes factors for linear models 0.112   0.109          0.95           0
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Bayes factors for linear models 0.112   0.109          0.95           0
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Bayes factors for linear models 0.112   0.109          0.95           0
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> Bayes factors for linear models 0.112   0.109          0.95           0
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span> Bayes factors for linear models 0.112   0.109          0.95           0
+#&gt; </span><span style='color: #BCBCBC;'>7</span><span> Bayes factors for linear models 0.112   0.109          0.95           0
+#&gt;   </span><span style='font-weight: bold;'>r2.conf.high</span><span> </span><span style='font-weight: bold;'>expression</span><span>
+#&gt;          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>        0.267 </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>        0.267 </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span>        0.267 </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span>        0.267 </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span>        0.267 </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span>        0.267 </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>7</span><span>        0.267 </span><span style='color: #949494;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='co'># within-subjects design</span>
 <span class='co'># needs `BayesFactor 0.9.12-4.3` or above</span>
 <span class='kw'>if</span> <span class='op'>(</span><span class='fu'>utils</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/utils/packageDescription.html'>packageVersion</a></span><span class='op'>(</span><span class='st'>"BayesFactor"</span><span class='op'>)</span> <span class='op'>&gt;=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric_version.html'>package_version</a></span><span class='op'>(</span><span class='st'>"0.9.12-4.3"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
@@ -454,23 +503,55 @@ by running:
   <span class='op'>)</span>
 <span class='op'>}</span>
 </div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 158 x 21</span><span>
-#&gt;    term             estimate conf.level conf.low conf.high    pd rope.percentage
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>               </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> mu                  3.46        0.95    3.35     3.60   1              0     
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> condition-Petal…    0.293       0.95    0.176    0.405  1              0     
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> condition-Petal…   -</span><span style='color: #BB0000;'>2.26</span><span>        0.95   -</span><span style='color: #BB0000;'>2.38</span><span>    -</span><span style='color: #BB0000;'>2.15</span><span>   1              0     
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> condition-Sepal…    2.37        0.95    2.26     2.48   1              0     
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> condition-Sepal…   -</span><span style='color: #BB0000;'>0.405</span><span>       0.95   -</span><span style='color: #BB0000;'>0.520</span><span>   -</span><span style='color: #BB0000;'>0.287</span><span>  1              0     
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> rowid-1            -</span><span style='color: #BB0000;'>0.662</span><span>       0.95   -</span><span style='color: #BB0000;'>1.39</span><span>     0.041</span><span style='text-decoration: underline;'>7</span><span> 0.962          0.042</span><span style='text-decoration: underline;'>4</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> rowid-2            -</span><span style='color: #BB0000;'>0.775</span><span>       0.95   -</span><span style='color: #BB0000;'>1.45</span><span>    -</span><span style='color: #BB0000;'>0.101</span><span>  0.986          0     
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> rowid-3            -</span><span style='color: #BB0000;'>0.810</span><span>       0.95   -</span><span style='color: #BB0000;'>1.49</span><span>    -</span><span style='color: #BB0000;'>0.056</span><span style='color: #BB0000;text-decoration: underline;'>4</span><span> 0.986          0     
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> rowid-4            -</span><span style='color: #BB0000;'>0.791</span><span>       0.95   -</span><span style='color: #BB0000;'>1.47</span><span>    -</span><span style='color: #BB0000;'>0.046</span><span style='color: #BB0000;text-decoration: underline;'>1</span><span> 0.985          0.011</span><span style='text-decoration: underline;'>5</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> rowid-5            -</span><span style='color: #BB0000;'>0.655</span><span>       0.95   -</span><span style='color: #BB0000;'>1.38</span><span>     0.049</span><span style='text-decoration: underline;'>9</span><span> 0.966          0.059</span><span style='text-decoration: underline;'>0</span><span>
-#&gt; </span><span style='color: #949494;'># … with 148 more rows, and 14 more variables: prior.distribution &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   prior.location &lt;dbl&gt;, prior.scale &lt;dbl&gt;, effect &lt;chr&gt;, component &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   bf10 &lt;dbl&gt;, method &lt;chr&gt;, r2 &lt;dbl&gt;, std.dev &lt;dbl&gt;, r2.conf.level &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   r2.conf.low &lt;dbl&gt;, r2.conf.high &lt;dbl&gt;, r2.component &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   expression &lt;list&gt;</span><span></div><div class='input'><span class='co'># }</span>
+#&gt;    </span><span style='font-weight: bold;'>term</span><span>                   </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>    </span><span style='font-weight: bold;'>pd</span><span>
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> mu                        3.46        0.95    3.35     3.60   1    
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> condition-Petal.Length    0.293       0.95    0.176    0.405  1    
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> condition-Petal.Width    -</span><span style='color: #BB0000;'>2.26</span><span>        0.95   -</span><span style='color: #BB0000;'>2.38</span><span>    -</span><span style='color: #BB0000;'>2.15</span><span>   1    
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> condition-Sepal.Length    2.37        0.95    2.26     2.48   1    
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> condition-Sepal.Width    -</span><span style='color: #BB0000;'>0.405</span><span>       0.95   -</span><span style='color: #BB0000;'>0.520</span><span>   -</span><span style='color: #BB0000;'>0.287</span><span>  1    
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> rowid-1                  -</span><span style='color: #BB0000;'>0.662</span><span>       0.95   -</span><span style='color: #BB0000;'>1.39</span><span>     0.041</span><span style='text-decoration: underline;'>7</span><span> 0.962
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> rowid-2                  -</span><span style='color: #BB0000;'>0.775</span><span>       0.95   -</span><span style='color: #BB0000;'>1.45</span><span>    -</span><span style='color: #BB0000;'>0.101</span><span>  0.986
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> rowid-3                  -</span><span style='color: #BB0000;'>0.810</span><span>       0.95   -</span><span style='color: #BB0000;'>1.49</span><span>    -</span><span style='color: #BB0000;'>0.056</span><span style='color: #BB0000;text-decoration: underline;'>4</span><span> 0.986
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> rowid-4                  -</span><span style='color: #BB0000;'>0.791</span><span>       0.95   -</span><span style='color: #BB0000;'>1.47</span><span>    -</span><span style='color: #BB0000;'>0.046</span><span style='color: #BB0000;text-decoration: underline;'>1</span><span> 0.985
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> rowid-5                  -</span><span style='color: #BB0000;'>0.655</span><span>       0.95   -</span><span style='color: #BB0000;'>1.38</span><span>     0.049</span><span style='text-decoration: underline;'>9</span><span> 0.966
+#&gt;    </span><span style='font-weight: bold;'>rope.percentage</span><span> </span><span style='font-weight: bold;'>prior.distribution</span><span> </span><span style='font-weight: bold;'>prior.location</span><span> </span><span style='font-weight: bold;'>prior.scale</span><span> </span><span style='font-weight: bold;'>effect</span><span>
+#&gt;              </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>          0      cauchy                          0       0.707 fixed 
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>          0      cauchy                          0       0.707 fixed 
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>          0      cauchy                          0       0.707 fixed 
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>          0      cauchy                          0       0.707 fixed 
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>          0      cauchy                          0       0.707 fixed 
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>          0.042</span><span style='text-decoration: underline;'>4</span><span> cauchy                          0       1     random
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>          0      cauchy                          0       1     random
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>          0      cauchy                          0       1     random
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>          0.011</span><span style='text-decoration: underline;'>5</span><span> cauchy                          0       1     random
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>          0.059</span><span style='text-decoration: underline;'>0</span><span> cauchy                          0       1     random
+#&gt;    </span><span style='font-weight: bold;'>component</span><span>       </span><span style='font-weight: bold;'>bf10</span><span> </span><span style='font-weight: bold;'>method</span><span>                             </span><span style='font-weight: bold;'>r2</span><span> </span><span style='font-weight: bold;'>std.dev</span><span>
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> extra       1.58</span><span style='color: #949494;'>e</span><span>182 Bayes factors for linear models 0.818 0.008</span><span style='text-decoration: underline;'>62</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> conditional 1.58</span><span style='color: #949494;'>e</span><span>182 Bayes factors for linear models 0.818 0.008</span><span style='text-decoration: underline;'>62</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> conditional 1.58</span><span style='color: #949494;'>e</span><span>182 Bayes factors for linear models 0.818 0.008</span><span style='text-decoration: underline;'>62</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> conditional 1.58</span><span style='color: #949494;'>e</span><span>182 Bayes factors for linear models 0.818 0.008</span><span style='text-decoration: underline;'>62</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> conditional 1.58</span><span style='color: #949494;'>e</span><span>182 Bayes factors for linear models 0.818 0.008</span><span style='text-decoration: underline;'>62</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> conditional 1.58</span><span style='color: #949494;'>e</span><span>182 Bayes factors for linear models 0.818 0.008</span><span style='text-decoration: underline;'>62</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> conditional 1.58</span><span style='color: #949494;'>e</span><span>182 Bayes factors for linear models 0.818 0.008</span><span style='text-decoration: underline;'>62</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> conditional 1.58</span><span style='color: #949494;'>e</span><span>182 Bayes factors for linear models 0.818 0.008</span><span style='text-decoration: underline;'>62</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> conditional 1.58</span><span style='color: #949494;'>e</span><span>182 Bayes factors for linear models 0.818 0.008</span><span style='text-decoration: underline;'>62</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> conditional 1.58</span><span style='color: #949494;'>e</span><span>182 Bayes factors for linear models 0.818 0.008</span><span style='text-decoration: underline;'>62</span><span>
+#&gt;    </span><span style='font-weight: bold;'>r2.conf.level</span><span> </span><span style='font-weight: bold;'>r2.conf.low</span><span> </span><span style='font-weight: bold;'>r2.conf.high</span><span> </span><span style='font-weight: bold;'>r2.component</span><span> </span><span style='font-weight: bold;'>expression</span><span>
+#&gt;            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>          0.95       0.800        0.833 conditional  </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>          0.95       0.800        0.833 conditional  </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>          0.95       0.800        0.833 conditional  </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>          0.95       0.800        0.833 conditional  </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>          0.95       0.800        0.833 conditional  </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>          0.95       0.800        0.833 conditional  </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>          0.95       0.800        0.833 conditional  </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>          0.95       0.800        0.833 conditional  </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>          0.95       0.800        0.833 conditional  </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>          0.95       0.800        0.833 conditional  </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #949494;'># … with 148 more rows</span><span></div><div class='input'><span class='co'># }</span>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -256,19 +256,18 @@ the needed package (<code>metafor</code>, <code>metaplus</code>, or <code>metaBM
   <span class='co'># setup</span>
   <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
   <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://indrajeetpatil.github.io/statsExpressions/'>statsExpressions</a></span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span><span class='op'>(</span>tibble.width <span class='op'>=</span> <span class='cn'>Inf</span>, pillar.bold <span class='op'>=</span> <span class='cn'>TRUE</span>, pillar.neg <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
   <span class='co'># renaming to what `statsExpressions` expects</span>
   <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span><span class='va'>mag</span>, estimate <span class='op'>=</span> <span class='va'>yi</span>, std.error <span class='op'>=</span> <span class='va'>sei</span><span class='op'>)</span>
 
   <span class='co'># ----------------------- parametric ---------------------------------------</span>
 
-  <span class='co'># creating expression</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'>expr_meta_random</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>df</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'>meta_analysis</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>df</span><span class='op'>)</span><span class='op'>)</span>
 
   <span class='co'># ----------------------- random -----------------------------------------</span>
 
-  <span class='co'># creating expression</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'>expr_meta_random</span><span class='op'>(</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'>meta_analysis</span><span class='op'>(</span>
     data <span class='op'>=</span> <span class='va'>df</span>,
     type <span class='op'>=</span> <span class='st'>"random"</span>,
     random <span class='op'>=</span> <span class='st'>"normal"</span>
@@ -276,8 +275,7 @@ the needed package (<code>metafor</code>, <code>metaplus</code>, or <code>metaBM
 
   <span class='co'># ----------------------- Bayes Factor -----------------------------------</span>
 
-  <span class='co'># making expression</span>
-  <span class='fu'>expr_meta_random</span><span class='op'>(</span>
+  <span class='fu'>meta_analysis</span><span class='op'>(</span>
     data <span class='op'>=</span> <span class='va'>df</span>,
     type <span class='op'>=</span> <span class='st'>"bayes"</span>,
 
@@ -290,24 +288,38 @@ the needed package (<code>metafor</code>, <code>metaplus</code>, or <code>metaBM
 </div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Note: The second parameter is the study standard error not the standard error squared as in the metafor package.</span></div><div class='output co'>#&gt; <span class='message'>Loading 'metafor' package (version 2.4-0). For an overview </span>
 #&gt; <span class='message'>and introduction to the package please type: help(metafor).</span></div><div class='output co'>#&gt; <span class='message'>This is metaBMA version 0.6.6</span></div><div class='output co'>#&gt; <span class='message'>- Default priors were changed in version 0.6.6.</span></div><div class='output co'>#&gt; <span class='message'>- Since default priors may change again, it is safest to specify priors (even when using the defaults).</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 12</span><span>
-#&gt;   term    estimate std.error conf.level conf.low conf.high statistic  p.value
+#&gt;   </span><span style='font-weight: bold;'>term</span><span>    </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>std.error</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>statistic</span><span>  </span><span style='font-weight: bold;'>p.value</span><span>
 #&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'>1</span><span> Overall   -</span><span style='color: #BB0000;'>0.767</span><span>     0.212       0.95    -</span><span style='color: #BB0000;'>1.18</span><span>    -</span><span style='color: #BB0000;'>0.351</span><span>     -</span><span style='color: #BB0000;'>3.62</span><span> 0.000</span><span style='text-decoration: underline;'>295</span><span>
-#&gt; </span><span style='color: #949494;'># … with 4 more variables: weight &lt;dbl&gt;, method &lt;chr&gt;, effectsize &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   expression &lt;list&gt;</span><span>
+#&gt;   </span><span style='font-weight: bold;'>weight</span><span> </span><span style='font-weight: bold;'>method</span><span>                        </span><span style='font-weight: bold;'>effectsize</span><span>                     </span><span style='font-weight: bold;'>expression</span><span>
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                          </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     </span><span style='color: #BB0000;'>NA</span><span> Meta-analysis using 'metafor' meta-analytic summary estimate </span><span style='color: #949494;'>&lt;language&gt;</span><span>
 #&gt; </span><span style='color: #949494;'># A tibble: 1 x 12</span><span>
-#&gt;   term    estimate std.error conf.low conf.high statistic  p.value weight
+#&gt;   </span><span style='font-weight: bold;'>term</span><span>    </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>std.error</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>statistic</span><span>  </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>weight</span><span>
 #&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'>1</span><span> Overall   -</span><span style='color: #BB0000;'>0.746</span><span>     0.234    -</span><span style='color: #BB0000;'>1.26</span><span>    -</span><span style='color: #BB0000;'>0.343</span><span>     -</span><span style='color: #BB0000;'>3.20</span><span> 0.000</span><span style='text-decoration: underline;'>501</span><span>     </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #949494;'># … with 4 more variables: conf.level &lt;dbl&gt;, method &lt;chr&gt;, effectsize &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   expression &lt;list&gt;</span><span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 2 x 17</span><span>
-#&gt;   term    estimate std.error conf.level conf.low conf.high weight  bf10  rhat
+#&gt;   </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>method</span><span>                               
+#&gt;        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>       0.95 Robust meta-analysis using 'metaplus'
+#&gt;   </span><span style='font-weight: bold;'>effectsize</span><span>                     </span><span style='font-weight: bold;'>expression</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                          </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> meta-analytic summary estimate </span><span style='color: #949494;'>&lt;language&gt;</span><span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 2 x 17</span><span>
+#&gt;   </span><span style='font-weight: bold;'>term</span><span>    </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>std.error</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>weight</span><span>  </span><span style='font-weight: bold;'>bf10</span><span>  </span><span style='font-weight: bold;'>rhat</span><span>
 #&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'>1</span><span> Overall   -</span><span style='color: #BB0000;'>0.650</span><span>     0.222       0.95   -</span><span style='color: #BB0000;'>1.10</span><span>     -</span><span style='color: #BB0000;'>0.235</span><span>     </span><span style='color: #BB0000;'>NA</span><span>  53.0    </span><span style='color: #BB0000;'>NA</span><span>
 #&gt; </span><span style='color: #BCBCBC;'>2</span><span> tau        0.486     0.184       0.95    0.167     0.848     </span><span style='color: #BB0000;'>NA</span><span>  53.0    </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #949494;'># … with 8 more variables: ess &lt;dbl&gt;, component &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   prior.distribution &lt;chr&gt;, prior.location &lt;dbl&gt;, prior.scale &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   method &lt;chr&gt;, effectsize &lt;chr&gt;, expression &lt;list&gt;</span><span></div><div class='input'><span class='co'># }</span>
+#&gt;     </span><span style='font-weight: bold;'>ess</span><span> </span><span style='font-weight: bold;'>component</span><span> </span><span style='font-weight: bold;'>prior.distribution</span><span> </span><span style='font-weight: bold;'>prior.location</span><span> </span><span style='font-weight: bold;'>prior.scale</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    </span><span style='color: #BB0000;'>NA</span><span> meta      Student's t                     0       0.707
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>    </span><span style='color: #BB0000;'>NA</span><span> meta      Inverse gamma                   1       0.15 
+#&gt;   </span><span style='font-weight: bold;'>method</span><span>                                 </span><span style='font-weight: bold;'>effectsize</span><span>                      
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                           
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Bayesian meta-analysis using 'metaBMA' meta-analytic posterior estimate
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Bayesian meta-analysis using 'metaBMA' meta-analytic posterior estimate
+#&gt;   </span><span style='font-weight: bold;'>expression</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> </span><span style='color: #949494;'>&lt;language&gt;</span><span></div><div class='input'><span class='co'># }</span>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
