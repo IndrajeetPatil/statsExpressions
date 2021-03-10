@@ -435,7 +435,7 @@
 
 <span class="co"># ----------------------- parametric ---------------------------------------</span>
 
-<span class="kw">if</span> <span class="op">(</span><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion</a></span><span class="op">(</span><span class="st">"BayesFactor"</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric_version.html">package_version</a></span><span class="op">(</span><span class="st">"0.9.12-4.3"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+<span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="http://afex.singmann.science/">"afex"</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
   <span class="co"># for reproducibility</span>
   <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
   <span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
@@ -506,16 +506,18 @@
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
-<span class="co"># for reproducibility</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">bugs_long</span>,
-  x <span class="op">=</span> <span class="va">condition</span>,
-  y <span class="op">=</span> <span class="va">desire</span>,
-  paired <span class="op">=</span> <span class="cn">TRUE</span>,
-  subject.id <span class="op">=</span> <span class="va">subject</span>,
-  type <span class="op">=</span> <span class="st">"bayes"</span>
-<span class="op">)</span>
+<span class="kw">if</span> <span class="op">(</span><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion</a></span><span class="op">(</span><span class="st">"BayesFactor"</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric_version.html">package_version</a></span><span class="op">(</span><span class="st">"0.9.12-4.3"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="co"># for reproducibility</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+  <span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
+    data <span class="op">=</span> <span class="va">bugs_long</span>,
+    x <span class="op">=</span> <span class="va">condition</span>,
+    y <span class="op">=</span> <span class="va">desire</span>,
+    paired <span class="op">=</span> <span class="cn">TRUE</span>,
+    subject.id <span class="op">=</span> <span class="va">subject</span>,
+    type <span class="op">=</span> <span class="st">"bayes"</span>
+  <span class="op">)</span>
+<span class="op">}</span>
 <span class="co">#&gt; # A tibble: 96 x 21</span>
 <span class="co">#&gt;    term           estimate conf.level conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;    &lt;chr&gt;             &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>

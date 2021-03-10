@@ -205,25 +205,27 @@ https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" /
     <tr>
       <th>data</th>
       <td><p>A dataframe (or a tibble) from which variables specified are to
-be taken. A matrix or a table will <strong>not</strong> be accepted.</p></td>
+be taken. Other data types (e.g., matrix,table, array, etc.) will <strong>not</strong>
+be accepted.</p></td>
     </tr>
     <tr>
       <th>x</th>
-      <td><p>The grouping variable from the dataframe <code>data</code>.</p></td>
+      <td><p>The grouping (or independent) variable from the dataframe <code>data</code>.</p></td>
     </tr>
     <tr>
       <th>y</th>
-      <td><p>The response (a.k.a. outcome or dependent) variable from the
+      <td><p>The response (or outcome or dependent) variable from the
 dataframe <code>data</code>.</p></td>
     </tr>
     <tr>
       <th>subject.id</th>
-      <td><p>Relevant in case of repeated measures design (<code>paired = TRUE</code>, i.e.), it specifies the subject or repeated measures identifier.
-<strong>Important</strong>: Note that if this argument is <code>NULL</code> (which is the default),
-the function assumes that the data has already been sorted by such an id by
-the user and creates an internal identifier. So if your data is <strong>not</strong>
-sorted and you leave this argument unspecified, the results can be
-inaccurate.</p></td>
+      <td><p>Relevant in case of repeated measures or within-subjects
+design (<code>paired = TRUE</code>, i.e.), it specifies the subject or repeated
+measures identifier. <strong>Important</strong>: Note that if this argument is <code>NULL</code>
+(which is the default), the function assumes that the data has already been
+sorted by such an id by the user and creates an internal identifier. So if
+your data is <strong>not</strong> sorted and you leave this argument unspecified, the
+results can be inaccurate.</p></td>
     </tr>
     <tr>
       <th>type</th>
@@ -327,15 +329,33 @@ by running:
 #&gt;       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'>1</span><span>      2.63     3     11.1   0.102 One-w…    0.245       0.95        0     0.539
 #&gt; </span><span style='color: #949494;'># … with 2 more variables: effectsize &lt;chr&gt;, expression &lt;list&gt;</span><span></div><div class='input'>
-<span class='co'># within-subjects design</span>
-<span class='fu'>oneway_anova</span><span class='op'>(</span>
-  data <span class='op'>=</span> <span class='va'>iris_long</span>,
-  x <span class='op'>=</span> <span class='va'>condition</span>,
-  y <span class='op'>=</span> <span class='va'>value</span>,
-  subject.id <span class='op'>=</span> <span class='va'>id</span>,
-  paired <span class='op'>=</span> <span class='cn'>TRUE</span>
-<span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 15</span><span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='http://afex.singmann.science/'>"afex"</a></span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='co'># within-subjects design</span>
+  <span class='fu'>oneway_anova</span><span class='op'>(</span>
+    data <span class='op'>=</span> <span class='va'>iris_long</span>,
+    x <span class='op'>=</span> <span class='va'>condition</span>,
+    y <span class='op'>=</span> <span class='va'>value</span>,
+    subject.id <span class='op'>=</span> <span class='va'>id</span>,
+    paired <span class='op'>=</span> <span class='cn'>TRUE</span>
+  <span class='op'>)</span>
+<span class='op'>}</span>
+</div><div class='output co'>#&gt; <span class='message'>Registered S3 methods overwritten by 'car':</span>
+#&gt; <span class='message'>  method                          from</span>
+#&gt; <span class='message'>  influence.merMod                lme4</span>
+#&gt; <span class='message'>  cooks.distance.influence.merMod lme4</span>
+#&gt; <span class='message'>  dfbeta.influence.merMod         lme4</span>
+#&gt; <span class='message'>  dfbetas.influence.merMod        lme4</span></div><div class='output co'>#&gt; <span class='message'>************</span>
+#&gt; <span class='message'>Welcome to afex. For support visit: http://afex.singmann.science/</span></div><div class='output co'>#&gt; <span class='message'>- Functions for ANOVAs: aov_car(), aov_ez(), and aov_4()</span>
+#&gt; <span class='message'>- Methods for calculating p-values with mixed(): 'KR', 'S', 'LRT', and 'PB'</span>
+#&gt; <span class='message'>- 'afex_aov' and 'mixed' objects can be passed to emmeans() for follow-up tests</span>
+#&gt; <span class='message'>- NEWS: library('emmeans') now needs to be called explicitly!</span>
+#&gt; <span class='message'>- Get and set global package options with: afex_options()</span>
+#&gt; <span class='message'>- Set orthogonal sum-to-zero contrasts globally: set_sum_contrasts()</span>
+#&gt; <span class='message'>- For example analyses see: browseVignettes("afex")</span>
+#&gt; <span class='message'>************</span></div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘afex’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:lme4’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    lmer</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 15</span><span>
 #&gt;   term   sumsq sum.squares.err…    df df.error meansq statistic  p.value method 
 #&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  
 #&gt; </span><span style='color: #BCBCBC;'>1</span><span> condi… </span><span style='text-decoration: underline;'>1</span><span>656.             318.  1.15     171.   1.86      776. 1.32</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-69</span><span> ANOVA …
