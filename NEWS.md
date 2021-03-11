@@ -1,3 +1,5 @@
+# statsExpressions 1.0.0.9000
+
 # statsExpressions 1.0.0
 
 This is the first **stable** release of `statsExpressions`!
