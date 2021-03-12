@@ -115,9 +115,6 @@ statistical approaches they support. For a more detailed description of the
 tests and outputs from these functions, the readers are encouraged to read
 vignettes on the package website: <https://indrajeetpatil.github.io/statsExpressions/articles/>.
 
-As can be seen, the package significantly simplifies and tidies up the syntax to
-run these different tests across different statistical frameworks.
-
 # Tidy Dataframes from Statistical Analysis
 
 All functions return dataframes containing exhaustive details from inferential
@@ -133,31 +130,28 @@ equality of a measure among two independent groups. We can use the
 If we first run a parametric *t*-test:
 
 ```{r df_p}
-# for reproducibility
+# loading needed package
 library(statsExpressions)
-set.seed(123)
 
 # Welch's t-test
-mtcars %>% two_sample_test(x = am, y = wt, type = "parametric")
+mtcars %>% two_sample_test(am, wt, type = "parametric")
 ```
 
 And then decide to run, instead, a robust *t*-test. The syntax remains the same:
 
 ```{r df_r}
 # Yuen's t-test
-mtcars %>% two_sample_test(x = am, y = wt, type = "robust")
+mtcars %>% two_sample_test(am, wt, type = "robust")
 ```
 
-These functions also play nicely with popular data manipulation packages. For
-example, let's say we want to use `dplyr` to repeat the same analysis across
-*all* levels of a certain grouping variable. Here is how we can do it:
+These functions also play nicely with other popular data manipulation packages.
+For example, we can use `dplyr` to repeat the same analysis across *all* levels
+of a certain grouping variable:
 
 ```{r grouped_df}
-# for reproducibility
-set.seed(123)
+# needed to do grouped analysis
 suppressPackageStartupMessages(library(dplyr))
 
-# grouped analysis
 # running one-sample proportion test for all levels of `cyl`
 mtcars %>%
   group_by(cyl) %>%
@@ -169,17 +163,13 @@ mtcars %>%
 
 In addition to other details contained in the dataframe, there is also a column
 titled `expression`, which contains expression with statistical details and can
-be displayed in a plot. Displaying statistical results in the context of a
-visualization is indeed a philosophy adopted by the `ggstatsplot` package
+be displayed in a plot (Figure 1). Displaying statistical results in the context
+of a visualization is indeed a philosophy adopted by the `ggstatsplot` package
 [@Patil2018], and `statsExpressions` functions as its statistical processing
 backend.
 
-The example below (Figure 1) shows how one can display results from Welch's
-one-way ANOVA in a custom plot:
-
-```{r welch, fig.cap="Example illustrating how `statsExpressions` functions can be used to display results from a statistical test in a plot."}
-# for reproducibility
-set.seed(123)
+```{r robanova, fig.cap="Example illustrating how `statsExpressions` functions can be used to display results from a statistical test in a plot."}
+# loading needed packages
 library(ggplot2)
 library(palmerpenguins) # for data
 library(ggridges) # for creating a ridgeplot

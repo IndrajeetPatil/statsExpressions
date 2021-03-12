@@ -97,9 +97,6 @@ statistical approaches they support. For a more detailed description of the
 tests and outputs from these functions, the readers are encouraged to read
 vignettes on the package website: <https://indrajeetpatil.github.io/statsExpressions/articles/>.
 
-As can be seen, the package significantly simplifies and tidies up the syntax to
-run these different tests across different statistical frameworks.
-
 # Tidy Dataframes from Statistical Analysis
 
 All functions return dataframes containing exhaustive details from inferential
@@ -116,12 +113,11 @@ If we first run a parametric *t*-test:
 
 
 ```r
-# for reproducibility
+# loading needed package
 library(statsExpressions)
-set.seed(123)
 
 # Welch's t-test
-mtcars %>% two_sample_test(x = am, y = wt, type = "parametric")
+mtcars %>% two_sample_test(am, wt, type = "parametric")
 #> # A tibble: 1 x 14
 #>   term  group mean.group1 mean.group2 statistic df.error    p.value
 #>   <chr> <chr>       <dbl>       <dbl>     <dbl>    <dbl>      <dbl>
@@ -139,30 +135,28 @@ And then decide to run, instead, a robust *t*-test. The syntax remains the same:
 
 ```r
 # Yuen's t-test
-mtcars %>% two_sample_test(x = am, y = wt, type = "robust")
+mtcars %>% two_sample_test(am, wt, type = "robust")
 #> # A tibble: 1 x 10
 #>   statistic df.error   p.value
 #>       <dbl>    <dbl>     <dbl>
 #> 1      5.84     13.6 0.0000485
 #>   method                                               estimate conf.low
 #>   <chr>                                                   <dbl>    <dbl>
-#> 1 Yuen's test on trimmed means for independent samples    0.915    0.754
+#> 1 Yuen's test on trimmed means for independent samples    0.921    0.707
 #>   conf.high conf.level effectsize                         expression
 #>       <dbl>      <dbl> <chr>                              <list>    
-#> 1     0.977       0.95 Explanatory measure of effect size <language>
+#> 1     0.973       0.95 Explanatory measure of effect size <language>
 ```
 
-These functions also play nicely with popular data manipulation packages. For
-example, let's say we want to use `dplyr` to repeat the same analysis across
-*all* levels of a certain grouping variable. Here is how we can do it:
+These functions also play nicely with other popular data manipulation packages.
+For example, we can use `dplyr` to repeat the same analysis across *all* levels
+of a certain grouping variable:
 
 
 ```r
-# for reproducibility
-set.seed(123)
+# needed to do grouped analysis
 suppressPackageStartupMessages(library(dplyr))
 
-# grouped analysis
 # running one-sample proportion test for all levels of `cyl`
 mtcars %>%
   group_by(cyl) %>%
@@ -185,18 +179,14 @@ mtcars %>%
 
 In addition to other details contained in the dataframe, there is also a column
 titled `expression`, which contains expression with statistical details and can
-be displayed in a plot. Displaying statistical results in the context of a
-visualization is indeed a philosophy adopted by the `ggstatsplot` package
+be displayed in a plot (Figure 1). Displaying statistical results in the context
+of a visualization is indeed a philosophy adopted by the `ggstatsplot` package
 [@Patil2018], and `statsExpressions` functions as its statistical processing
 backend.
 
-The example below (Figure 1) shows how one can display results from Welch's
-one-way ANOVA in a custom plot:
-
 
 ```r
-# for reproducibility
-set.seed(123)
+# loading needed packages
 library(ggplot2)
 library(palmerpenguins) # for data
 library(ggridges) # for creating a ridgeplot
@@ -218,7 +208,7 @@ ggplot(penguins, aes(x = bill_length_mm, y = species)) +
 ```
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{paper_files/figure-latex/welch-1} \caption{Example illustrating how `statsExpressions` functions can be used to display results from a statistical test in a plot.}\label{fig:welch}
+\includegraphics[width=1\linewidth]{paper_files/figure-latex/robanova-1} \caption{Example illustrating how `statsExpressions` functions can be used to display results from a statistical test in a plot.}\label{fig:robanova}
 \end{figure}
 
 The details contained in these expressions (Figure 2) attempt to follow the gold
