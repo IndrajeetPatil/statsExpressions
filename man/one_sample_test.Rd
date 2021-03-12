@@ -37,8 +37,7 @@ expr_t_onesample(
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to
-be taken. Other data types (e.g., matrix,table, array, etc.) will \strong{not}
-be accepted.}
+be taken. A matrix or a table will \strong{not} be accepted.}
 
 \item{x}{A numeric variable from the dataframe \code{data}.}
 

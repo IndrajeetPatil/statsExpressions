@@ -6,7 +6,7 @@
   "@type": "SoftwareSourceCode",
   "identifier": "statsExpressions",
   "description": "Utilities for producing dataframes with rich details for the\n    most common types of statistical approaches and tests: parametric,\n    nonparametric, robust, and Bayesian t-test, one-way ANOVA, correlation\n    analyses, contingency table analyses, and meta-analyses.  The\n    functions are pipe-friendly and provide a consistent syntax to work\n    with tidy data. These dataframes additionally contain expressions with\n    statistical details, and can be used in graphing packages. This\n    package also forms the statistical processing backend for\n    'ggstatsplot'.",
-  "name": "statsExpressions: Dataframes and Expressions with Statistical Details",
+  "name": "statsExpressions: Tidy Dataframes and Expressions with Statistical Details",
   "codeRepository": "https://github.com/IndrajeetPatil/statsExpressions",
   "relatedLink": [
     "https://indrajeetpatil.github.io/ggstatsplot/",
@@ -395,5 +395,5 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "1766.428KB"
+  "fileSize": "2354.312KB"
 }

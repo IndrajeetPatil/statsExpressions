@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# `statsExpressions`: Dataframes and expressions with statistical details
+# `statsExpressions`: Tidy dataframes and expressions with statistical details
 
 Package | Status | Usage | GitHub | References
 ----------------- | ----------------- | ----------------- | ----------------- | -----------------
@@ -154,7 +154,7 @@ Here is a summary table of all the statistical tests currently supported across
 various functions:
 <https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html>
 
-# Dataframe as output
+# Tidy dataframes
 
 The returned dataframe will contain the following columns (the exact columns
 will depend on the test and the statistical approach):
@@ -222,6 +222,7 @@ set.seed(123)
 library(dplyr)
 
 # grouped operation
+# running one-sample test for all levels of grouping variable `cyl`
 mtcars %>%
   group_by(cyl) %>%
   group_modify(~ one_sample_test(.x, wt, test.value = 3), .keep = TRUE) %>%
@@ -230,10 +231,9 @@ mtcars %>%
 
 # Using expressions in custom plots
 
-A list of primary functions in this package can be found at the package website:
-<https://indrajeetpatil.github.io/statsExpressions/reference/index.html>
-
-Following are few examples of how these functions can be used.
+In addition to other details contained in the dataframe, there is also a column
+titled `expression`, which contains expression with statistical details and can
+be displayed in a plot.
 
 ## Example: Expressions for one-way ANOVAs
 
@@ -275,7 +275,7 @@ ggplot(iris, aes(x = Sepal.Length, y = Species)) +
     jittered_points = TRUE, quantile_lines = TRUE,
     scale = 0.9, vline_size = 1, vline_color = "red",
     position = position_raincloud(adjust_vlines = TRUE)
-  ) +
+  ) + # use the expression in the dataframe to display results in the subtitle
   labs(
     title = "A heteroscedastic one-way ANOVA for trimmed means",
     subtitle = oneway_anova(iris, Species, Sepal.Length, type = "robust")$expression[[1]]
