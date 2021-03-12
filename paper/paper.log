@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2021.3.7)  12 MAR 2021 15:29
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2021.3.7)  12 MAR 2021 18:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1211,7 +1211,7 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <8> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 355.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 361.
 [1
 
 ]
@@ -1258,6 +1258,11 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
 [4]
+Underfull \hbox (badness 1082) in paragraph at lines 602--607
+\TU/lmr/m/it/10 model averaging for random and fixed effects meta-analysis\TU/l
+mr/m/n/10 . Retrieved from
+ []
+
 File: /Users/patil/Library/R/4.0/library/rticles/rmarkdown/templates/joss/resou
 rces/JOSS-logo.png Graphic file (type bmp)
 </Users/patil/Library/R/4.0/library/rticles/rmarkdown/templates/joss/resources/

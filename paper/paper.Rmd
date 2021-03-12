@@ -67,19 +67,22 @@ carry out common statistical tests across diverse statistical approaches.
 
 Behind the scenes, `statsExpressions` uses `stats` package for parametric and
 non-parametric [@base2021], `WRS2` package for robust [@Mair2020], and
-`BayesFactor` package for Bayesian statistics [@Morey2020]. So one can naturally
-ask why there needs to be another package that wraps around these packages.
+`BayesFactor` package for Bayesian statistics [@Morey2020]. Additionally,
+random-effects meta-analysis is carried out using `metafor` (parametric)
+[@Viechtbauer2010], `metaplus` (robust) [@Beath2016], and `metaBMA` (Bayesian)
+[@Heck2019] packages. So one can naturally ask why there needs to be another
+package that wraps around these packages.
 
 There is a lot of diversity among these packages in terms of their syntax and
 expected input type that can make it difficult to switch from one statistical
 approach to another. For example, some functions expect vectors as inputs, while
-others expect dataframes. Depending on whether it's a repeated measures design
+others expect dataframes. Depending on whether it is a repeated measures design
 or not, different functions might expect data to be in wide or long format. Some
 functions can internally omit missing values, while other functions error in
-their presence. Furthermore, if someone wishes to further utilize the objects
-returned by these packages in their workflow, this is not straightforward either
-because even functions from the same package can return a list, a matrix, an
-array, a dataframe, etc., depending on the function. So on and so forth.
+their presence. Furthermore, if someone wishes to utilize the objects returned
+by these packages downstream in their workflow, this is not straightforward
+either because even functions from the same package can return a list, a matrix,
+an array, a dataframe, etc., depending on the function. So on and so forth.
 
 The result of sustained exposure to such inconsistencies is that data
 exploration can become a cognitively demanding task and discourage users to
@@ -90,13 +93,13 @@ be preferred over null hypothesis significance testing in context of the
 problem).
 
 This is where `statsExpressions` comes in: It can be thought of as a unified
-portal through which most of the functionality afforded by these underlying
-packages can be accessed, with a little to no cognitive overhead. The package
-offers just six primary functions that lets users choose a statistical approach
-without changing the syntax. The users are always expected to provide a
-dataframe in tidy format [@Wickham2019] to functions, all functions work with
-missing data, and they always return a dataframe that can be further utilized
-downstream in the pipeline (for a visualization, e.g.).
+portal through which most of the functionality in these underlying packages can
+be accessed, with a little to no cognitive overhead. The package offers just six
+primary functions that let users choose a statistical approach without changing
+the syntax. The users are always expected to provide a dataframe in tidy format
+[@Wickham2019] to functions, all functions work with missing data, and they
+always return a dataframe that can be further utilized downstream in the
+pipeline (for a visualization, e.g.).
 
 Function | Parametric | Non-parametric | Robust | Bayesian
 ------------------ | ---- | ----- | ----| ----- 
