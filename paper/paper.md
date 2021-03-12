@@ -73,10 +73,12 @@ problem).
 
 This is where `statsExpressions` comes in: It can be thought of as a unified
 portal through which most of the functionality afforded by these underlying
-packages can be accessed with a little to no cognitive overhead. The package
-offers just six primary functions that lets users choose a statistical approach without changing the syntax. The users are always expected to
-enter a dataframe in tidy format [@Wickham2019], all functions work with
-missing data, and they always return a dataframe that can be further utilized downstream in the pipeline (for a visualization, e.g.).
+packages can be accessed, with a little to no cognitive overhead. The package
+offers just six primary functions that lets users choose a statistical approach
+without changing the syntax. The users are always expected to provide a
+dataframe in tidy format [@Wickham2019] to functions, all functions work with
+missing data, and they always return a dataframe that can be further utilized
+downstream in the pipeline (for a visualization, e.g.).
 
 Function | Parametric | Non-parametric | Robust | Bayesian
 ------------------ | ---- | ----- | ----| ----- 
@@ -90,29 +92,28 @@ Function | Parametric | Non-parametric | Robust | Bayesian
 : A summary table listing the primary functions in the package and the
 statistical approaches they support. For a more detailed description of the
 tests and outputs from these functions, the readers are encouraged to read
-vignettes on the package
-[website](https://indrajeetpatil.github.io/statsExpressions/articles/).
+vignettes on the package website: <https://indrajeetpatil.github.io/statsExpressions/articles/>.
 
-So, for example, if a user decides to run Kruskal–Wallis one-way ANOVA instead
-of Welch's one-way ANOVA, this amounts to simply changing `type` argument for
-function `oneway_anova` from `"parametric"` to `"nonparametric"`.
+As can be seen, the package significantly simplifies and tidies up the syntax to
+run these different tests across different statistical frameworks.
 
 # Tidy Dataframes from Statistical Analysis
 
 All functions return dataframes containing exhaustive details from inferential
 statistics, and appropriate effect size/posterior estimates and their
 confidence/credible intervals. The package internally relies on `easystats`
-ecosystem to achieve this [@Ben-Shachar2020; @Lüdecke2020parameters;
+ecosystem of packages to achieve this [@Ben-Shachar2020; @Lüdecke2020parameters;
 @Lüdecke2020performance; @Lüdecke2019; @Makowski2019; @Makowski2020].
 
-To illustrate, the simplicity of this syntax, let's say we want to compare
-equality of a measure among two independent groups. We can use the `two_sample_test` function here.
+To illustrate the simplicity of this syntax, let's say we want to compare
+equality of a measure among two independent groups. We can use the
+`two_sample_test` function here.
 
 If we first run a parametric *t*-test:
 
 
 ```r
-# setup
+# for reproducibility
 library(statsExpressions)
 set.seed(123)
 
@@ -134,10 +135,6 @@ And then decide to run, instead, a robust *t*-test. The syntax remains the same:
 
 
 ```r
-# setup
-library(statsExpressions)
-set.seed(123)
-
 # Yuen's t-test
 mtcars %>% two_sample_test(x = am, y = wt, type = "robust")
 #> # A tibble: 1 x 10
@@ -152,9 +149,9 @@ mtcars %>% two_sample_test(x = am, y = wt, type = "robust")
 #> 1     0.977       0.95 Explanatory measure of effect size <language>
 ```
 
-These functions also play nicely with `dplyr` functions. For example, let's say
-we want to repeat the same analysis across *all* levels of a certain grouping
-variable. Here is how we can do it:
+These functions also play nicely with popular data manipulation packages. For
+example, let's say we want to use `dplyr` to repeat the same analysis across
+*all* levels of a certain grouping variable. Here is how we can do it:
 
 
 ```r
@@ -190,15 +187,14 @@ visualization is indeed a philosophy adopted by the `ggstatsplot` package
 [@Patil2018], and `statsExpressions` functions as its statistical processing
 backend.
 
-The following example shows how one can display results from Welch's one-way
-ANOVA in a custom plot:
+The example below (Figure 1) shows how one can display results from Welch's
+one-way ANOVA in a custom plot:
 
 
 ```r
-# setup
+# for reproducibility
 set.seed(123)
 library(ggplot2)
-library(statsExpressions)
 library(palmerpenguins) # for data
 library(ggridges) # for creating a ridgeplot
 
@@ -208,11 +204,8 @@ res <- oneway_anova(penguins, species, bill_length_mm, type = "robust")
 # create a ridgeplot using `ggridges` package
 ggplot(penguins, aes(x = bill_length_mm, y = species)) +
   geom_density_ridges(
-    jittered_points = TRUE,
-    quantile_lines = TRUE,
-    scale = 0.9,
-    vline_size = 1,
-    vline_color = "red",
+    jittered_points = TRUE, quantile_lines = TRUE,
+    scale = 0.9, vline_size = 1, vline_color = "red",
     position = position_raincloud(adjust_vlines = TRUE)
   ) + # use 'expression' column to display results in the subtitle
   labs(
@@ -222,11 +215,12 @@ ggplot(penguins, aes(x = bill_length_mm, y = species)) +
 ```
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{paper_files/figure-latex/welch-1} \caption{Example illustrating how `statsExpressions` functions can be used to display statistical details in a plot.}\label{fig:welch}
+\includegraphics[width=1\linewidth]{paper_files/figure-latex/welch-1} \caption{Example illustrating how `statsExpressions` functions can be used to display results from a statistical test in a plot.}\label{fig:welch}
 \end{figure}
 
-The details contained in these expressions attempt to follow the gold standard
-in statistical reporting for both Bayesian [@van2020jasp] and non-Bayesian [@american1985publication] framework tests.
+The details contained in these expressions (Figure 2) attempt to follow the gold
+standard in statistical reporting for both Bayesian [@van2020jasp] and
+non-Bayesian [@american1985publication] framework tests.
 
 \begin{figure}
 \includegraphics[width=1\linewidth]{stats_reporting_format} \caption{The templates used in `statsExpressions` to display statistical details in a plot.}\label{fig:expr_template}
