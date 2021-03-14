@@ -13,18 +13,9 @@ authors:
     affiliation: 1
 affiliations:
   - name: Center for Humans and Machines, Max Planck Institute for Human Development, Berlin, Germany
-citation_author: Patil 
+    index: 1
 date: 13 March 2021
-year: 2021
 bibliography: paper.bib
-output: rticles::joss_article
-csl: apa.csl
-journal: JOSS
-link-citations: yes
-header-includes:
-  - \usepackage{tabularx}
-  - \usepackage{booktabs}
-  - \usepackage{tikz}
 ---
 
 
