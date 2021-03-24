@@ -100,9 +100,3 @@ corr_test <- function(data,
       bayesian = ifelse(type == "bayes", TRUE, FALSE)
     )))
 }
-
-#' @rdname corr_test
-#' @aliases corr_test
-#' @export
-
-expr_corr_test <- corr_test

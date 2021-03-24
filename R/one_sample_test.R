@@ -180,12 +180,6 @@ one_sample_test <- function(data,
   as_tibble(stats_df)
 }
 
-#' @rdname one_sample_test
-#' @aliases one_sample_test
-#' @export
-
-expr_t_onesample <- one_sample_test
-
 #' bootstrap-t method for one-sample test
 #' @importFrom WRS2 trimse
 #' @noRd

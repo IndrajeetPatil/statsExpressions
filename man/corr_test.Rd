@@ -2,7 +2,6 @@
 % Please edit documentation in R/corr_test.R
 \name{corr_test}
 \alias{corr_test}
-\alias{expr_corr_test}
 \title{Correlation analyses}
 \usage{
 corr_test(
@@ -17,23 +16,11 @@ corr_test(
   top.text = NULL,
   ...
 )
-
-expr_corr_test(
-  data,
-  x,
-  y,
-  type = "parametric",
-  k = 2L,
-  conf.level = 0.95,
-  tr = 0.2,
-  bf.prior = 0.707,
-  top.text = NULL,
-  ...
-)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to
-be taken. A matrix or a table will \strong{not} be accepted.}
+be taken. Other data types (e.g., matrix,table, array, etc.) will \strong{not}
+be accepted.}
 
 \item{x}{The column in \code{data} containing the explanatory variable to be
 plotted on the \code{x}-axis. Can be entered either as a character string (e.g.,

@@ -1,5 +1,9 @@
 # statsExpressions 1.0.0.9000
 
+BREAKING CHANGES
+
+- Retires all vestigial `expr_*` functions.
+
 # statsExpressions 1.0.0
 
 This is the first **stable** release of `statsExpressions`!
@@ -14,9 +18,9 @@ There is good news and there is bad news that accompanies this milestone.
     the function `expr_t_onesample()`, you will now have to specify
     `expr_t_onesample()$expression[[1]]`, so on and so forth. But, in general,
     the advice is to **not** use any of the `expr_*` functions, which are
-    vestigial names for new avatars of these functions. The new names are more
-    intuitive, e.g., `expr_t_onesample()` is now called `one_sample_test()`,
-    etc.
+    vestigial names for new avatars of these function and will be removed in
+    future. The new names are more intuitive, e.g., `expr_t_onesample()` is now
+    called `one_sample_test()`, etc.
 
   - The **good news**: There will not be any new changes to any of the current
     functions, except for any change necessary for maintenance or bug squashing.

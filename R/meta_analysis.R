@@ -122,9 +122,3 @@ meta_analysis <- function(data,
   # return the output
   as_tibble(stats_df)
 }
-
-#' @rdname meta_analysis
-#' @aliases meta_analysis
-#' @export
-
-expr_meta_random <- meta_analysis

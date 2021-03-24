@@ -367,12 +367,6 @@ oneway_anova <- function(data,
   as_tibble(stats_df)
 }
 
-#' @rdname oneway_anova
-#' @aliases oneway_anova
-#' @export
-
-expr_oneway_anova <- oneway_anova
-
 #' @noRd
 
 wAKPavg <- function(x, tr = 0.2, nboot = 100, ...) {
