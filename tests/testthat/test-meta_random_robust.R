@@ -3,7 +3,7 @@ if (require("metaplus")) {
   # subtitle from meta-analysis -------------------------------------------
 
   test_that(
-    desc = "expr_meta_random works",
+    desc = "meta_analysis works",
     code = {
       skip_if(getRversion() < "4.0")
 
@@ -17,7 +17,7 @@ if (require("metaplus")) {
       # subtitle
       set.seed(123)
       results1 <-
-        expr_meta_random(
+        meta_analysis(
           data = df,
           random = "normal",
           type = "robust",
@@ -27,7 +27,7 @@ if (require("metaplus")) {
       # df
       set.seed(123)
       df_res <-
-        expr_meta_random(
+        meta_analysis(
           data = df,
           type = "robust",
           random = "normal",

@@ -2,7 +2,6 @@
 % Please edit documentation in R/contingency_table.R
 \name{contingency_table}
 \alias{contingency_table}
-\alias{expr_contingency_tab}
 \title{Contingency table analyses}
 \usage{
 contingency_table(
@@ -21,27 +20,11 @@ contingency_table(
   top.text = NULL,
   ...
 )
-
-expr_contingency_tab(
-  data,
-  x,
-  y = NULL,
-  paired = FALSE,
-  type = "parametric",
-  counts = NULL,
-  ratio = NULL,
-  k = 2L,
-  conf.level = 0.95,
-  sampling.plan = "indepMulti",
-  fixed.margin = "rows",
-  prior.concentration = 1,
-  top.text = NULL,
-  ...
-)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to
-be taken. A matrix or a table will \strong{not} be accepted.}
+be taken. Other data types (e.g., matrix,table, array, etc.) will \strong{not}
+be accepted.}
 
 \item{x}{The variable to use as the \strong{rows} in the contingency table.}
 

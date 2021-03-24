@@ -249,14 +249,8 @@ contingency_table <- function(data,
   }
 
   # return the output
-  return(stats_df)
+  stats_df
 }
-
-#' @rdname contingency_table
-#' @aliases contingency_table
-#' @export
-
-expr_contingency_tab <- contingency_table
 
 
 #' @title estimate log prob of data under null with Monte Carlo

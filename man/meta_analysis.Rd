@@ -2,20 +2,9 @@
 % Please edit documentation in R/meta_analysis.R
 \name{meta_analysis}
 \alias{meta_analysis}
-\alias{expr_meta_random}
 \title{Random-effects meta-analyses}
 \usage{
 meta_analysis(
-  data,
-  type = "parametric",
-  random = "mixture",
-  k = 2L,
-  conf.level = 0.95,
-  top.text = NULL,
-  ...
-)
-
-expr_meta_random(
   data,
   type = "parametric",
   random = "mixture",

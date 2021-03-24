@@ -2,7 +2,6 @@
 % Please edit documentation in R/one_sample_test.R
 \name{one_sample_test}
 \alias{one_sample_test}
-\alias{expr_t_onesample}
 \title{One-sample tests}
 \usage{
 one_sample_test(
@@ -19,25 +18,11 @@ one_sample_test(
   top.text = NULL,
   ...
 )
-
-expr_t_onesample(
-  data,
-  x,
-  type = "parametric",
-  test.value = 0,
-  k = 2L,
-  conf.level = 0.95,
-  tr = 0.2,
-  bf.prior = 0.707,
-  effsize.type = "g",
-  nboot = 100L,
-  top.text = NULL,
-  ...
-)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to
-be taken. A matrix or a table will \strong{not} be accepted.}
+be taken. Other data types (e.g., matrix,table, array, etc.) will \strong{not}
+be accepted.}
 
 \item{x}{A numeric variable from the dataframe \code{data}.}
 

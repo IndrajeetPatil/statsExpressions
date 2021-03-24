@@ -2,7 +2,6 @@
 % Please edit documentation in R/oneway_anova.R
 \name{oneway_anova}
 \alias{oneway_anova}
-\alias{expr_oneway_anova}
 \title{One-way analysis of variance (ANOVA)}
 \usage{
 oneway_anova(
@@ -22,40 +21,24 @@ oneway_anova(
   top.text = NULL,
   ...
 )
-
-expr_oneway_anova(
-  data,
-  x,
-  y,
-  subject.id = NULL,
-  type = "parametric",
-  paired = FALSE,
-  k = 2L,
-  conf.level = 0.95,
-  effsize.type = "omega",
-  var.equal = FALSE,
-  bf.prior = 0.707,
-  tr = 0.2,
-  nboot = 100,
-  top.text = NULL,
-  ...
-)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to
-be taken. A matrix or a table will \strong{not} be accepted.}
+be taken. Other data types (e.g., matrix,table, array, etc.) will \strong{not}
+be accepted.}
 
-\item{x}{The grouping variable from the dataframe \code{data}.}
+\item{x}{The grouping (or independent) variable from the dataframe \code{data}.}
 
-\item{y}{The response (a.k.a. outcome or dependent) variable from the
+\item{y}{The response (or outcome or dependent) variable from the
 dataframe \code{data}.}
 
-\item{subject.id}{Relevant in case of repeated measures design (\code{paired = TRUE}, i.e.), it specifies the subject or repeated measures identifier.
-\strong{Important}: Note that if this argument is \code{NULL} (which is the default),
-the function assumes that the data has already been sorted by such an id by
-the user and creates an internal identifier. So if your data is \strong{not}
-sorted and you leave this argument unspecified, the results can be
-inaccurate.}
+\item{subject.id}{Relevant in case of repeated measures or within-subjects
+design (\code{paired = TRUE}, i.e.), it specifies the subject or repeated
+measures identifier. \strong{Important}: Note that if this argument is \code{NULL}
+(which is the default), the function assumes that the data has already been
+sorted by such an id by the user and creates an internal identifier. So if
+your data is \strong{not} sorted and you leave this argument unspecified, the
+results can be inaccurate.}
 
 \item{type}{A character specifying the type of statistical approach.
 Four possible options:
