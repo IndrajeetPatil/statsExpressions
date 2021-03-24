@@ -181,24 +181,6 @@ size plus confidence intervals.</p>
   nboot <span class='op'>=</span> <span class='fl'>100</span>,
   top.text <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>...</span>
-<span class='op'>)</span>
-
-<span class='fu'>expr_t_twosample</span><span class='op'>(</span>
-  <span class='va'>data</span>,
-  <span class='va'>x</span>,
-  <span class='va'>y</span>,
-  subject.id <span class='op'>=</span> <span class='cn'>NULL</span>,
-  type <span class='op'>=</span> <span class='st'>"parametric"</span>,
-  paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  k <span class='op'>=</span> <span class='fl'>2L</span>,
-  conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
-  effsize.type <span class='op'>=</span> <span class='st'>"g"</span>,
-  var.equal <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  bf.prior <span class='op'>=</span> <span class='fl'>0.707</span>,
-  tr <span class='op'>=</span> <span class='fl'>0.2</span>,
-  nboot <span class='op'>=</span> <span class='fl'>100</span>,
-  top.text <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -207,25 +189,27 @@ size plus confidence intervals.</p>
     <tr>
       <th>data</th>
       <td><p>A dataframe (or a tibble) from which variables specified are to
-be taken. A matrix or a table will <strong>not</strong> be accepted.</p></td>
+be taken. Other data types (e.g., matrix,table, array, etc.) will <strong>not</strong>
+be accepted.</p></td>
     </tr>
     <tr>
       <th>x</th>
-      <td><p>The grouping variable from the dataframe <code>data</code>.</p></td>
+      <td><p>The grouping (or independent) variable from the dataframe <code>data</code>.</p></td>
     </tr>
     <tr>
       <th>y</th>
-      <td><p>The response (a.k.a. outcome or dependent) variable from the
+      <td><p>The response (or outcome or dependent) variable from the
 dataframe <code>data</code>.</p></td>
     </tr>
     <tr>
       <th>subject.id</th>
-      <td><p>Relevant in case of repeated measures design (<code>paired = TRUE</code>, i.e.), it specifies the subject or repeated measures identifier.
-<strong>Important</strong>: Note that if this argument is <code>NULL</code> (which is the default),
-the function assumes that the data has already been sorted by such an id by
-the user and creates an internal identifier. So if your data is <strong>not</strong>
-sorted and you leave this argument unspecified, the results can be
-inaccurate.</p></td>
+      <td><p>Relevant in case of repeated measures or within-subjects
+design (<code>paired = TRUE</code>, i.e.), it specifies the subject or repeated
+measures identifier. <strong>Important</strong>: Note that if this argument is <code>NULL</code>
+(which is the default), the function assumes that the data has already been
+sorted by such an id by the user and creates an internal identifier. So if
+your data is <strong>not</strong> sorted and you leave this argument unspecified, the
+results can be inaccurate.</p></td>
     </tr>
     <tr>
       <th>type</th>

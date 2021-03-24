@@ -155,6 +155,10 @@
 <h1 class="page-header" data-toc-text="1.0.0.9000">
 <a href="#statsexpressions-1009000" class="anchor"></a>statsExpressions 1.0.0.9000<small> Unreleased </small>
 </h1>
+<p>BREAKING CHANGES</p>
+<ul>
+<li>Retires all vestigial <code>expr_*</code> functions.</li>
+</ul>
 </div>
     <div id="statsexpressions-100" class="section level1">
 <h1 class="page-header" data-toc-text="1.0.0">
@@ -163,7 +167,7 @@
 <p>This is the first <strong>stable</strong> release of <code>statsExpressions</code>!</p>
 <p>There is good news and there is bad news that accompanies this milestone.</p>
 <ul>
-<li><p>The <strong>bad news</strong>: The <code>API</code> for the package has changed <strong>completely</strong>: All functions return a <em>dataframe</em>, and not an <em>expression</em>, as a default. The expression is contained in a list column in the dataframe itself. So, to salvage your functions from breaking, you will have to add <code>$expression[[1]]</code> to your function calls. For example, if you were using the function <code><a href="../reference/one_sample_test.html">expr_t_onesample()</a></code>, you will now have to specify <code>expr_t_onesample()$expression[[1]]</code>, so on and so forth. But, in general, the advice is to <strong>not</strong> use any of the <code>expr_*</code> functions, which are vestigial names for new avatars of these functions. The new names are more intuitive, e.g., <code><a href="../reference/one_sample_test.html">expr_t_onesample()</a></code> is now called <code><a href="../reference/one_sample_test.html">one_sample_test()</a></code>, etc.</p></li>
+<li><p>The <strong>bad news</strong>: The <code>API</code> for the package has changed <strong>completely</strong>: All functions return a <em>dataframe</em>, and not an <em>expression</em>, as a default. The expression is contained in a list column in the dataframe itself. So, to salvage your functions from breaking, you will have to add <code>$expression[[1]]</code> to your function calls. For example, if you were using the function <code>expr_t_onesample()</code>, you will now have to specify <code>expr_t_onesample()$expression[[1]]</code>, so on and so forth. But, in general, the advice is to <strong>not</strong> use any of the <code>expr_*</code> functions, which are vestigial names for new avatars of these function and will be removed in future. The new names are more intuitive, e.g., <code>expr_t_onesample()</code> is now called <code><a href="../reference/one_sample_test.html">one_sample_test()</a></code>, etc.</p></li>
 <li><p>The <strong>good news</strong>: There will not be any new changes to any of the current functions, except for any change necessary for maintenance or bug squashing. Well, to be more precise, this is true only for the functions that have <strong>“stable”</strong> <a href="https://lifecycle.r-lib.org/articles/stages.html">badge</a>.</p></li>
 </ul>
 <p>BUG FIXES</p>
