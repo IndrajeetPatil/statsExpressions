@@ -4,7 +4,6 @@ test_that(
   desc = "contingency_table works - data without NAs",
   code = {
 
-
     # `statsExpressions` output
     set.seed(123)
     using_function1 <-
@@ -231,7 +230,6 @@ test_that(
   desc = "paired contingency_table works - with NAs",
   code = {
 
-
     # create data structure
     paired_data <-
       structure(
@@ -312,137 +310,6 @@ test_that(
 
     # testing overall call
     expect_identical(using_function1$expression[[1]], results1)
-  }
-)
-
-# paired data 4-by-4  ---------------------------------------------
-
-test_that(
-  desc = "paired data 4-by-4",
-  code = {
-    set.seed(123)
-
-    # making data
-    Input <- ("
-    Before        Pastafarian2   Discordiant2   Dudist2   Jedi2
-    Pastafarian   7              0              23         0
-    Discordiant   0              7               0        33
-    Dudist        3              0               7         1
-    Jedi          0              1               0         7
-    ")
-
-    # matrix
-    matrix_df <- as.matrix(read.table(textConnection(Input),
-      header = TRUE,
-      row.names = 1
-    ))
-
-    # cleaning the factor levels
-    df <-
-      as.data.frame(as.table(matrix_df)) %>%
-      dplyr::mutate(Var2 = dplyr::case_when(
-        Var2 == "Pastafarian2" ~ "Pastafarian",
-        Var2 == "Discordiant2" ~ "Discordiant",
-        Var2 == "Dudist2" ~ "Dudist",
-        Var2 == "Jedi2" ~ "Jedi"
-      ))
-
-    # `statsExpressions` output
-    set.seed(123)
-    subtitle1 <-
-      suppressWarnings(contingency_table(
-        data = df,
-        x = Var1,
-        y = Var2,
-        counts = "Freq",
-        paired = TRUE,
-        k = 4,
-        conf.level = 0.99,
-        nboot = 50
-      ))
-
-    # expected output
-    set.seed(123)
-    results1 <-
-      ggplot2::expr(
-        paste(
-          chi["McNemar"]^2,
-          "(",
-          "6",
-          ") = ",
-          "NaN",
-          ", ",
-          italic("p"),
-          " = ",
-          "NaN",
-          ", ",
-          widehat(italic("g"))["Cohen"],
-          " = ",
-          "0.2955",
-          ", CI"["99%"],
-          " [",
-          "0.1659",
-          ", ",
-          "0.3835",
-          "]",
-          ", ",
-          italic("n")["pairs"],
-          " = ",
-          "89"
-        )
-      )
-
-    # testing overall call
-    expect_identical(subtitle1$expression[[1]], results1)
-
-    # edge case
-    dfEx <-
-      data.frame(
-        cat1 = rep(c("A", "B"), 10),
-        cat2 = c(rep("C", 10), rep("D", 10))
-      )
-
-    # subtitle
-    set.seed(123)
-    subtitle2 <-
-      contingency_table(
-        data = dfEx,
-        x = cat1,
-        y = cat2,
-        paired = TRUE
-      )
-
-    results2 <-
-      ggplot2::expr(
-        paste(
-          chi["McNemar"]^2,
-          "(",
-          "1",
-          ") = ",
-          "0.00",
-          ", ",
-          italic("p"),
-          " = ",
-          "1.000",
-          ", ",
-          widehat(italic("g"))["Cohen"],
-          " = ",
-          "0.00",
-          ", CI"["95%"],
-          " [",
-          "-0.26",
-          ", ",
-          "0.26",
-          "]",
-          ", ",
-          italic("n")["pairs"],
-          " = ",
-          "20"
-        )
-      )
-
-    # testing overall call
-    expect_identical(subtitle2$expression[[1]], results2)
   }
 )
 

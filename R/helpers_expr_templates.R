@@ -61,6 +61,7 @@
 #' @inheritParams ipmisc::long_to_wide_converter
 #'
 #' @importFrom ipmisc format_num
+#' @importFrom insight format_value
 #'
 #' @examples
 #' set.seed(123)
@@ -157,12 +158,12 @@ expr_template <- function(data,
           prior.type = prior.type,
           conf.level = paste0(data$conf.level[[1]] * 100, "%"),
           conf.method = toupper(conf.method),
-          bf = format_num(-log(data$bf10[[1]]), k),
-          estimate = format_num(estimate, k),
-          estimate.LB = format_num(estimate.LB, k),
-          estimate.UB = format_num(estimate.UB, k),
+          bf = format_value(-log(data$bf10[[1]]), k),
+          estimate = format_value(estimate, k),
+          estimate.LB = format_value(estimate.LB, k),
+          estimate.UB = format_value(estimate.UB, k),
           prior.distribution = prior.distribution,
-          bf.prior = format_num(data$prior.scale[[1]], k)
+          bf.prior = format_value(data$prior.scale[[1]], k)
         )
       )
 
@@ -201,13 +202,13 @@ expr_template <- function(data,
         ),
         env = list(
           statistic.text = statistic.text,
-          statistic = format_num(data$statistic[[1]], k),
+          statistic = format_value(data$statistic[[1]], k),
           p.value = format_num(data$p.value[[1]], k, p.value = TRUE),
           effsize.text = effsize.text,
-          estimate = format_num(estimate, k),
+          estimate = format_value(estimate, k),
           conf.level = paste0(data$conf.level[[1]] * 100, "%"),
-          estimate.LB = format_num(estimate.LB, k),
-          estimate.UB = format_num(estimate.UB, k),
+          estimate.LB = format_value(estimate.LB, k),
+          estimate.UB = format_value(estimate.UB, k),
           n = .prettyNum(n),
           n.text = n.text
         )
@@ -249,14 +250,14 @@ expr_template <- function(data,
         ),
         env = list(
           statistic.text = statistic.text,
-          statistic = format_num(data$statistic[[1]], k),
-          parameter = format_num(data$df.error[[1]], k.df),
+          statistic = format_value(data$statistic[[1]], k),
+          parameter = format_value(data$df.error[[1]], k.df),
           p.value = format_num(data$p.value[[1]], k, p.value = TRUE),
           effsize.text = effsize.text,
-          estimate = format_num(estimate, k),
+          estimate = format_value(estimate, k),
           conf.level = paste0(data$conf.level[[1]] * 100, "%"),
-          estimate.LB = format_num(estimate.LB, k),
-          estimate.UB = format_num(estimate.UB, k),
+          estimate.LB = format_value(estimate.LB, k),
+          estimate.UB = format_value(estimate.UB, k),
           n = .prettyNum(n),
           n.text = n.text
         )
@@ -298,15 +299,15 @@ expr_template <- function(data,
         ),
         env = list(
           statistic.text = statistic.text,
-          statistic = format_num(data$statistic[[1]], k),
-          parameter1 = format_num(data$df[[1]], k.df),
-          parameter2 = format_num(data$df.error[[1]], k.df.error),
+          statistic = format_value(data$statistic[[1]], k),
+          parameter1 = format_value(data$df[[1]], k.df),
+          parameter2 = format_value(data$df.error[[1]], k.df.error),
           p.value = format_num(data$p.value[[1]], k, p.value = TRUE),
           effsize.text = effsize.text,
-          estimate = format_num(estimate, k),
+          estimate = format_value(estimate, k),
           conf.level = paste0(data$conf.level[[1]] * 100, "%"),
-          estimate.LB = format_num(estimate.LB, k),
-          estimate.UB = format_num(estimate.UB, k),
+          estimate.LB = format_value(estimate.LB, k),
+          estimate.UB = format_value(estimate.UB, k),
           n = .prettyNum(n),
           n.text = n.text
         )

@@ -49,6 +49,7 @@
 #' @importFrom stats mcnemar.test chisq.test dmultinom rgamma
 #' @importFrom effectsize cramers_v cohens_g
 #' @importFrom parameters standardize_names
+#' @importFrom insight format_value
 #'
 #' @examples
 #' \donttest{
@@ -235,8 +236,8 @@ contingency_table <- function(data,
           ),
           env = list(
             top.text = top.text,
-            bf = format_num(-log(stats_df$bf10[[1]]), k),
-            a = format_num(stats_df$prior.scale[[1]], k)
+            bf = format_value(-log(stats_df$bf10[[1]]), k),
+            a = format_value(stats_df$prior.scale[[1]], k)
           )
         )
 

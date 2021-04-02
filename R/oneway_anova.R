@@ -57,7 +57,7 @@
 #' @importFrom stats friedman.test kruskal.test na.omit
 #' @importFrom effectsize rank_epsilon_squared kendalls_w
 #' @importFrom effectsize omega_squared eta_squared
-#' @importFrom ipmisc long_to_wide_converter format_num
+#' @importFrom ipmisc long_to_wide_converter
 #' @importFrom BayesFactor ttestBF anovaBF
 #' @importFrom parameters model_parameters
 #' @importFrom performance model_performance
