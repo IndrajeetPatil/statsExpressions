@@ -289,82 +289,79 @@ test_that(
   }
 )
 
-if (packageVersion("parameters") > "0.11.0") {
+# bayes factor -----------------------------------------------------------
 
-  # bayes factor -----------------------------------------------------------
+test_that(
+  desc = "one_sample_test bayes factor works",
+  code = {
+    skip_if(getRversion() < "4.0")
 
-  test_that(
-    desc = "one_sample_test bayes factor works",
-    code = {
-      skip_if(getRversion() < "4.0")
-
-      # extracting results from where this function is implemented
-      set.seed(123)
-      df_results <-
-        one_sample_test(
-          type = "bayes",
-          data = iris,
-          x = Petal.Length,
-          y = NULL,
-          test.value = 5.5,
-          bf.prior = 0.99,
-        )
-
-      # check Bayes factor values
-      expect_equal(df_results$bf10[[1]], 5.958171e+20, tolerance = 0.001)
-
-      # extracting subtitle (without NA)
-      set.seed(123)
-      subtitle <-
-        one_sample_test(
-          type = "bayes",
-          data = iris,
-          x = "Petal.Length",
-          y = NULL,
-          test.value = 5.5,
-          bf.prior = 0.99,
-          conf.level = 0.90
-        )
-
-      expect_type(subtitle$expression[[1]], "language")
-
-      expect_identical(
-        subtitle$expression[[1]],
-        ggplot2::expr(
-          paste(
-            "log"["e"] * "(BF"["01"] * ") = " * "-47.84" * ", ",
-            widehat(italic(delta))["difference"]^"posterior" * " = " * "1.76" * ", ",
-            "CI"["90%"]^"HDI" * " [" * "1.52" * ", " * "1.99" * "], ",
-            italic("r")["Cauchy"]^"JZS" * " = " * "0.99"
-          )
-        )
+    # extracting results from where this function is implemented
+    set.seed(123)
+    df_results <-
+      one_sample_test(
+        type = "bayes",
+        data = iris,
+        x = Petal.Length,
+        y = NULL,
+        test.value = 5.5,
+        bf.prior = 0.99,
       )
 
-      # extracting subtitle (with NA)
-      set.seed(123)
-      subtitle2 <-
-        one_sample_test(
-          type = "bayes",
-          data = ggplot2::msleep,
-          x = brainwt,
-          y = NULL,
-          test.value = 0.25,
-          bf.prior = 0.9,
-          k = 3,
-          conf.method = "eti"
-        )
+    # check Bayes factor values
+    expect_equal(df_results$bf10[[1]], 5.958171e+20, tolerance = 0.001)
 
-      expect_identical(
-        subtitle2$expression[[1]],
-        ggplot2::expr(
-          paste(
-            "log"["e"] * "(BF"["01"] * ") = " * "2.125" * ", ",
-            widehat(italic(delta))["difference"]^"posterior" * " = " * "-0.018" * ", ",
-            "CI"["95%"]^"HDI" * " [" * "-0.265" * ", " * "0.242" * "], ",
-            italic("r")["Cauchy"]^"JZS" * " = " * "0.900"
-          )
+    # extracting subtitle (without NA)
+    set.seed(123)
+    subtitle <-
+      one_sample_test(
+        type = "bayes",
+        data = iris,
+        x = "Petal.Length",
+        y = NULL,
+        test.value = 5.5,
+        bf.prior = 0.99,
+        conf.level = 0.90
+      )
+
+    expect_type(subtitle$expression[[1]], "language")
+
+    expect_identical(
+      subtitle$expression[[1]],
+      ggplot2::expr(
+        paste(
+          "log"["e"] * "(BF"["01"] * ") = " * "-47.84" * ", ",
+          widehat(italic(delta))["difference"]^"posterior" * " = " * "1.76" * ", ",
+          "CI"["90%"]^"HDI" * " [" * "1.52" * ", " * "1.99" * "], ",
+          italic("r")["Cauchy"]^"JZS" * " = " * "0.99"
         )
       )
-    }
-  )
-}
+    )
+
+    # extracting subtitle (with NA)
+    set.seed(123)
+    subtitle2 <-
+      one_sample_test(
+        type = "bayes",
+        data = ggplot2::msleep,
+        x = brainwt,
+        y = NULL,
+        test.value = 0.25,
+        bf.prior = 0.9,
+        k = 3,
+        conf.method = "eti"
+      )
+
+    expect_identical(
+      subtitle2$expression[[1]],
+      ggplot2::expr(
+        paste(
+          "log"["e"] * "(BF"["01"] * ") = " * "2.125" * ", ",
+          widehat(italic(delta))["difference"]^"posterior" * " = " * "-0.018" * ", ",
+          "CI"["95%"]^"HDI" * " [" * "-0.265" * ", " * "0.242" * "], ",
+          italic("r")["Cauchy"]^"JZS" * " = " * "0.900"
+        )
+      )
+    )
+  }
+)

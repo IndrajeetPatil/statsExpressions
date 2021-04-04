@@ -1,4 +1,4 @@
-if (require("metaBMA") && packageVersion("parameters") > "0.11.0") {
+if (require("metaBMA")) {
 
   # subtitle from meta-analysis -------------------------------------------
 

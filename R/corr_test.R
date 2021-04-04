@@ -75,7 +75,6 @@ corr_test <- function(data,
       ci = conf.level,
       bayesian = ifelse(type == "bayes", TRUE, FALSE),
       bayesian_prior = bf.prior,
-      bayesian_ci_method = "hdi",
       winsorize = ifelse(type == "robust", tr, FALSE)
     ) %>%
     parameters::standardize_names(style = "broom") %>%

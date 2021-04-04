@@ -620,169 +620,166 @@ test_that(
 )
 
 
-if (packageVersion("parameters") > "0.11.0") {
+# bayes factor (proportion test) --------------------------------------
 
-  # bayes factor (proportion test) --------------------------------------
+test_that(
+  desc = "bayes factor (proportion test)",
+  code = {
 
-  test_that(
-    desc = "bayes factor (proportion test)",
-    code = {
-
-      # extracting results from where this function is implemented
-      set.seed(123)
-      df <-
-        contingency_table(
-          type = "bayes",
-          data = mtcars,
-          x = am
-        )
-
-      # check bayes factor values
-      expect_equal(df$bf10, 0.2465787, tolerance = 0.001)
-
-      # expr
-      set.seed(123)
-      expr_text <-
-        contingency_table(
-          type = "bayes",
-          data = mtcars,
-          x = "cyl",
-          prior.concentration = 10,
-          top.text = "duh"
-        )
-
-      expect_identical(
-        expr_text$expression[[1]],
-        ggplot2::expr(
-          atop(displaystyle("duh"),
-            expr =
-              paste(
-                "log"["e"] * "(BF"["01"] * ") = " * "0.55" * ", ",
-                italic("a")["Gunel-Dickey"] * " = " * "10.00"
-              )
-          )
-        )
-      )
-    }
-  )
-
-  # bayes factor (contingency tab) --------------------------------------
-
-  test_that(
-    desc = "bayes factor (contingency tab)",
-    code = {
-
-
-      # extracting results from where this function is implemented
-      set.seed(123)
-      df_results <-
-        contingency_table(
-          type = "bayes",
-          data = mtcars,
-          x = "am",
-          y = cyl,
-          sampling.plan = "jointMulti",
-          fixed.margin = "rows"
-        )
-
-      # objects
-      expect_identical(class(df_results), c("tbl_df", "tbl", "data.frame"))
-
-      # check bayes factor values
-      expect_equal(df_results$bf10[[1]], 28.07349, tolerance = 0.001)
-
-      # expr
-      set.seed(123)
-      expr_text1 <-
-        contingency_table(
-          type = "bayes",
-          data = mtcars,
-          x = colnames(mtcars)[9],
-          y = "cyl",
-          sampling.plan = "jointMulti",
-          fixed.margin = "rows",
-          conf.level = 0.89,
-          k = 3L
-        )
-
-      # with counts
-      set.seed(123)
-      expr_text2 <-
-        contingency_table(
-          type = "bayes",
-          data = as.data.frame(Titanic),
-          x = "Survived",
-          y = colnames(as.data.frame(Titanic))[2],
-          counts = "Freq",
-          sampling.plan = "jointMulti",
-          fixed.margin = "rows",
-          conf.level = 0.99,
-          k = 3L
-        )
-
-      # with counts
-      set.seed(123)
-      expr_text3 <-
-        contingency_table(
-          type = "bayes",
-          data = as.data.frame(Titanic),
-          x = Survived,
-          y = Sex,
-          counts = "Freq",
-          k = 3L,
-          prior.concentration = 1.5
-        )
-
-      # expr text
-      expect_identical(
-        expr_text1$expression[[1]],
-        ggplot2::expr(
-          paste(
-            "log"["e"] * "(BF"["01"] * ") = " * "-3.335" * ", ",
-            widehat(italic("V"))["Cramer"]^"posterior" * " = " * "0.479" * ", ",
-            "CI"["89%"]^"HDI" * " [" * "0.285" * ", " * "0.692" * "], ",
-            italic("a")["Gunel-Dickey"] * " = " * "1.000"
-          )
-        )
+    # extracting results from where this function is implemented
+    set.seed(123)
+    df <-
+      contingency_table(
+        type = "bayes",
+        data = mtcars,
+        x = am
       )
 
-      expect_type(expr_text2$expression[[1]], "language")
-      expect_type(expr_text3$expression[[1]], "language")
+    # check bayes factor values
+    expect_equal(df$bf10, 0.2465787, tolerance = 0.001)
 
-      expect_identical(
-        expr_text2$expression[[1]],
-        ggplot2::expr(
-          paste(
-            "log"["e"] * "(BF"["01"] * ") = " * "-214.255" * ", ",
-            widehat(italic("V"))["Cramer"]^"posterior" * " = " * "0.455" * ", ",
-            "CI"["99%"]^"HDI" * " [" * "0.402" * ", " * "0.508" * "], ",
-            italic("a")["Gunel-Dickey"] * " = " * "1.000"
-          )
-        )
+    # expr
+    set.seed(123)
+    expr_text <-
+      contingency_table(
+        type = "bayes",
+        data = mtcars,
+        x = "cyl",
+        prior.concentration = 10,
+        top.text = "duh"
       )
 
-      expect_identical(
-        expr_text3$expression[[1]],
-        ggplot2::expr(
-          paste(
-            "log"["e"] * "(BF"["01"] * ") = " * "-213.873" * ", ",
-            widehat(italic("V"))["Cramer"]^"posterior" * " = " * "0.454" * ", ",
-            "CI"["95%"]^"HDI" * " [" * "0.417" * ", " * "0.495" * "], ",
-            italic("a")["Gunel-Dickey"] * " = " * "1.500"
-          )
+    expect_identical(
+      expr_text$expression[[1]],
+      ggplot2::expr(
+        atop(displaystyle("duh"),
+          expr =
+            paste(
+              "log"["e"] * "(BF"["01"] * ") = " * "0.55" * ", ",
+              italic("a")["Gunel-Dickey"] * " = " * "10.00"
+            )
         )
       )
-    }
-  )
+    )
+  }
+)
 
-  # check edge cases - bayes --------------------------------------------
+# bayes factor (contingency tab) --------------------------------------
 
-  test_that(
-    desc = "check edge cases - bayes",
-    code = {
-      df <- data.frame(x = c("a"))
+test_that(
+  desc = "bayes factor (contingency tab)",
+  code = {
 
-      expect_null(contingency_table(type = "bayes", df, x))
-    }
-  )
-}
+
+    # extracting results from where this function is implemented
+    set.seed(123)
+    df_results <-
+      contingency_table(
+        type = "bayes",
+        data = mtcars,
+        x = "am",
+        y = cyl,
+        sampling.plan = "jointMulti",
+        fixed.margin = "rows"
+      )
+
+    # objects
+    expect_identical(class(df_results), c("tbl_df", "tbl", "data.frame"))
+
+    # check bayes factor values
+    expect_equal(df_results$bf10[[1]], 28.07349, tolerance = 0.001)
+
+    # expr
+    set.seed(123)
+    expr_text1 <-
+      contingency_table(
+        type = "bayes",
+        data = mtcars,
+        x = colnames(mtcars)[9],
+        y = "cyl",
+        sampling.plan = "jointMulti",
+        fixed.margin = "rows",
+        conf.level = 0.89,
+        k = 3L
+      )
+
+    # with counts
+    set.seed(123)
+    expr_text2 <-
+      contingency_table(
+        type = "bayes",
+        data = as.data.frame(Titanic),
+        x = "Survived",
+        y = colnames(as.data.frame(Titanic))[2],
+        counts = "Freq",
+        sampling.plan = "jointMulti",
+        fixed.margin = "rows",
+        conf.level = 0.99,
+        k = 3L
+      )
+
+    # with counts
+    set.seed(123)
+    expr_text3 <-
+      contingency_table(
+        type = "bayes",
+        data = as.data.frame(Titanic),
+        x = Survived,
+        y = Sex,
+        counts = "Freq",
+        k = 3L,
+        prior.concentration = 1.5
+      )
+
+    # expr text
+    expect_identical(
+      expr_text1$expression[[1]],
+      ggplot2::expr(
+        paste(
+          "log"["e"] * "(BF"["01"] * ") = " * "-3.335" * ", ",
+          widehat(italic("V"))["Cramer"]^"posterior" * " = " * "0.479" * ", ",
+          "CI"["89%"]^"HDI" * " [" * "0.285" * ", " * "0.692" * "], ",
+          italic("a")["Gunel-Dickey"] * " = " * "1.000"
+        )
+      )
+    )
+
+    expect_type(expr_text2$expression[[1]], "language")
+    expect_type(expr_text3$expression[[1]], "language")
+
+    expect_identical(
+      expr_text2$expression[[1]],
+      ggplot2::expr(
+        paste(
+          "log"["e"] * "(BF"["01"] * ") = " * "-214.255" * ", ",
+          widehat(italic("V"))["Cramer"]^"posterior" * " = " * "0.455" * ", ",
+          "CI"["99%"]^"HDI" * " [" * "0.402" * ", " * "0.508" * "], ",
+          italic("a")["Gunel-Dickey"] * " = " * "1.000"
+        )
+      )
+    )
+
+    expect_identical(
+      expr_text3$expression[[1]],
+      ggplot2::expr(
+        paste(
+          "log"["e"] * "(BF"["01"] * ") = " * "-213.873" * ", ",
+          widehat(italic("V"))["Cramer"]^"posterior" * " = " * "0.454" * ", ",
+          "CI"["95%"]^"HDI" * " [" * "0.417" * ", " * "0.495" * "], ",
+          italic("a")["Gunel-Dickey"] * " = " * "1.500"
+        )
+      )
+    )
+  }
+)
+
+# check edge cases - bayes --------------------------------------------
+
+test_that(
+  desc = "check edge cases - bayes",
+  code = {
+    df <- data.frame(x = c("a"))
+
+    expect_null(contingency_table(type = "bayes", df, x))
+  }
+)

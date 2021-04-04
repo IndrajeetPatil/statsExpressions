@@ -22,7 +22,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R Under development (unstable) (2021-02-11 r79990)",
+  "runtimePlatform": "R version 4.0.5 (2021-03-31)",
   "author": [
     {
       "@type": "Person",
@@ -254,7 +254,6 @@
       "@type": "SoftwareApplication",
       "identifier": "ipmisc",
       "name": "ipmisc",
-      "version": ">= 6.0.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -321,7 +320,6 @@
       "@type": "SoftwareApplication",
       "identifier": "WRS2",
       "name": "WRS2",
-      "version": ">= 1.1-1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -397,6 +395,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "2411.161KB",
+  "fileSize": "2358.135KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }
