@@ -16,7 +16,7 @@
   ],
   "issueTracker": "https://github.com/IndrajeetPatil/statsExpressions/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.0.0.9000",
+  "version": "1.0.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -197,13 +197,13 @@
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://github.com/richarddmorey/BayesFactor/pkg/BayesFactor"
+      "sameAs": "https://CRAN.R-project.org/package=BayesFactor"
     },
     {
       "@type": "SoftwareApplication",
       "identifier": "correlation",
       "name": "correlation",
-      "version": ">= 0.6.0",
+      "version": ">= 0.6.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -228,14 +228,14 @@
       "@type": "SoftwareApplication",
       "identifier": "effectsize",
       "name": "effectsize",
-      "version": ">= 0.4.4",
+      "version": ">= 0.4.4-1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://github.com/easystats/effectsize"
+      "sameAs": "https://CRAN.R-project.org/package=effectsize"
     },
     {
       "@type": "SoftwareApplication",
@@ -266,7 +266,7 @@
       "@type": "SoftwareApplication",
       "identifier": "parameters",
       "name": "parameters",
-      "version": ">= 0.12.0",
+      "version": ">= 0.13.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -279,6 +279,7 @@
       "@type": "SoftwareApplication",
       "identifier": "performance",
       "name": "performance",
+      "version": ">= 0.7.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -373,18 +374,15 @@
         }
       ],
       "name": "{statsExpressions}: R Package for Tidy Dataframes and Expressions with Statistical Details",
-      "identifier": "10.21105/joss.03111",
-      "pagination": "3111",
-      "@id": "https://doi.org/10.21105/joss.03111",
-      "sameAs": "https://doi.org/10.21105/joss.03111",
+      "identifier": "10.31234/osf.io/ntbvy",
+      "@id": "https://doi.org/10.31234/osf.io/ntbvy",
+      "sameAs": "https://doi.org/10.31234/osf.io/ntbvy",
       "isPartOf": {
         "@type": "PublicationIssue",
-        "issueNumber": "59",
         "datePublished": "2021",
         "isPartOf": {
           "@type": ["PublicationVolume", "Periodical"],
-          "volumeNumber": "6",
-          "name": "Journal of Open Source Software"
+          "name": "PsyArxiv"
         }
       }
     }
@@ -395,6 +393,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "2358.135KB",
+  "fileSize": "4958.544KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

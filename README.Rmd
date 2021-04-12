@@ -104,14 +104,6 @@ remotes::install_github(
 If you want to cite this package in a scientific journal or in any other
 context:
 
-> Patil, I., (2021). statsExpressions: R Package for Tidy
-  Dataframes and Expressions with Statistical Details. Journal
-  of Open Source Software, 6(59), 3111.
-  https://doi.org/10.21105/joss.03111
-
-If you wish to get a BibTeX entry for LaTeX, you can run the following code in
-your `R` console:
-
 ```{r citation}
 citation("statsExpressions")
 ```

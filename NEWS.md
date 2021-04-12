@@ -1,8 +1,12 @@
-# statsExpressions 1.0.0.9000
+# statsExpressions 1.0.1
 
 BREAKING CHANGES
 
-- Retires all vestigial `expr_*` functions.
+  - Retires all vestigial `expr_*` functions.
+
+MINOR CHANGES
+
+  - Adapts failing tests to changes in `effectsize`.
 
 # statsExpressions 1.0.0
 
