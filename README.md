@@ -92,7 +92,7 @@ citation("statsExpressions")
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Article{,
-#>     title = {{statsExpressions}: R Package for Tidy Dataframes and Expressions with Statistical Details},
+#>     title = {{statsExpressions}: {R} Package for Tidy Dataframes and Expressions with Statistical Details},
 #>     author = {Indrajeet Patil},
 #>     year = {2021},
 #>     journal = {PsyArxiv},

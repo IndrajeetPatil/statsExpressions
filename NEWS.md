@@ -6,7 +6,7 @@ BREAKING CHANGES
 
 MINOR CHANGES
 
-  - Adapts failing tests to changes in `effectsize`.
+  - Adapts failing tests due to changes in `effectsize`.
 
 # statsExpressions 1.0.0
 

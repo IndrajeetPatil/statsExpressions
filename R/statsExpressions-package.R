@@ -4,7 +4,7 @@
 #'
 #' @description
 #'
-#' 
+#'
 #'
 #' `statsExpressions` package produces tidy dataframes with rich details for the
 #' most common types of statistical approaches and tests: parametric,
