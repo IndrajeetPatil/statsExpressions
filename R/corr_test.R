@@ -3,7 +3,7 @@
 #'
 #' @description
 #'
-#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
+#' 
 #'
 #'  A dataframe containing results from correlation test with confidence
 #'  intervals for the correlation coefficient estimate. Results are extracted

@@ -3,7 +3,7 @@
 #'
 #' @description
 #'
-#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
+#' 
 #'
 #' A dataframe containing results from for contingency table analysis or
 #' goodness of fit test.

@@ -67,8 +67,6 @@ mostly relevant in the context of \code{ggstatsplot} functions.}
 \item{...}{Currently ignored.}
 }
 \description{
-\Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
-
 A dataframe containing results from a one-sample test. The exact test and the
 effect size details contained will depend on the \code{type} argument.
 

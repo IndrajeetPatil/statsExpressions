@@ -88,8 +88,6 @@ mostly relevant in the context of \code{ggstatsplot} functions.}
 \item{...}{Additional arguments (currently ignored).}
 }
 \description{
-\Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
-
 A dataframe containing results for one-way ANOVA.
 
 For more details, see-

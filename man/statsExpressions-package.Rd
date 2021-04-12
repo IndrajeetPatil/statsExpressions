@@ -7,8 +7,6 @@
 \alias{statsExpressions}
 \title{statsExpressions: Tidy Dataframes and Expressions with Statistical Details}
 \description{
-\Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
-
 \code{statsExpressions} package produces tidy dataframes with rich details for the
 most common types of statistical approaches and tests: parametric,
 nonparametric, robust, and Bayesian t-test, one-way ANOVA, correlation

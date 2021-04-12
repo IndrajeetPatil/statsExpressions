@@ -52,8 +52,6 @@ mostly relevant in the context of \code{ggstatsplot} functions.}
 function.}
 }
 \description{
-\Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
-
 A dataframe containing results from random-effects meta-analysis.
 
 For more details, see-

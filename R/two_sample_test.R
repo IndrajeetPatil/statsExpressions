@@ -19,7 +19,7 @@
 #'
 #' @description
 #'
-#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
+#' 
 #'
 #'  A dataframe containing details from results of a two-sample test and effect
 #'  size plus confidence intervals.

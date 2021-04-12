@@ -87,8 +87,6 @@ parameters (default: \code{0}).}
 \item{...}{Currently ignored.}
 }
 \description{
-\Sexpr[results=rd, stage=render]{rlang:::lifecycle("questioning")}
-
 Creates an expression from a dataframe containing statistical details.
 Ideally, this dataframe would come from having run \code{tidy_model_parameters}
 function on your model object.
