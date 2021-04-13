@@ -5,6 +5,7 @@ if (require("metaplus")) {
   test_that(
     desc = "meta_analysis works",
     code = {
+      skip_on_cran()
       skip_if(getRversion() < "4.0")
 
       # renaming to what `statsExpressions` expects

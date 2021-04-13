@@ -4,7 +4,7 @@
 test_that(
   desc = "expr_anova_robust works - between-subjects",
   code = {
-
+    skip_on_cran()
 
     # `statsExpressions` output
     set.seed(123)
@@ -111,7 +111,7 @@ test_that(
 test_that(
   desc = "expr_anova_robust works - within-subjects",
   code = {
-
+    skip_on_cran()
 
     # `statsExpressions` output
     set.seed(123)
