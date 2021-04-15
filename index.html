@@ -49,7 +49,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">statsExpressions</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.1.9000</span>
       </span>
     </div>
 
@@ -144,10 +144,10 @@
 </tr>
 <tr class="odd">
 <td><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg" alt="minimal R version"></a></td>
-<td><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></td>
+<td><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
 <td><a href="https://CRAN.R-project.org/package=statsExpressions"><img src="https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue" alt="Monthly downloads badge"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions/issues"><img src="https://img.shields.io/badge/issues-10-red.svg" alt="Github Issues"></a></td>
-<td><a href="https://CRAN.R-project.org/package=statsExpressions/vignettes/"><img src="https://img.shields.io/badge/vignettes-0.7.0-orange.svg?colorB=FF5722" alt="vignettes"></a></td>
+<td><a href="https://CRAN.R-project.org/package=statsExpressions/vignettes/"><img src="https://img.shields.io/badge/vignettes-1.0.1-orange.svg?colorB=FF5722" alt="vignettes"></a></td>
 </tr>
 <tr class="even">
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions"><img src="https://img.shields.io/github/languages/code-size/IndrajeetPatil/statsExpressions.svg" alt="GitHub code size in bytes"></a></td>
@@ -160,7 +160,7 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions"><img src="https://github.com/IndrajeetPatil/statsExpressions/workflows/lint/badge.svg" alt="lints"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2021--04--12-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2021--04--15-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
@@ -246,15 +246,45 @@
 <h1 class="hasAnchor">
 <a href="#summary-of-types-of-statistical-analyses" class="anchor"></a>Summary of types of statistical analyses</h1>
 <p>Currently, it supports only the most common types of statistical tests. Specifically, <strong>parametric</strong>, <strong>non-parametric</strong>, <strong>robust</strong>, and <strong>bayesian</strong> versions of:</p>
-<ul>
-<li><strong>t-test</strong></li>
-<li><strong>anova</strong></li>
-<li>
-<strong>correlation</strong> tests</li>
-<li>
-<strong>contingency table</strong> analysis</li>
-<li><strong>meta-analysis</strong></li>
-</ul>
+<table class="table">
+<thead><tr class="header">
+<th>Test</th>
+<th>Function</th>
+<th>Lifecycle</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>one-sample <em>t</em>-test</td>
+<td><code>one_sample_test</code></td>
+<td><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
+</tr>
+<tr class="even">
+<td>two-sample <em>t</em>-test</td>
+<td><code>two_sample_test</code></td>
+<td><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
+</tr>
+<tr class="odd">
+<td>one-way ANOVA</td>
+<td><code>oneway_anova</code></td>
+<td><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
+</tr>
+<tr class="even">
+<td>correlation analysis</td>
+<td><code>corr_test</code></td>
+<td><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
+</tr>
+<tr class="odd">
+<td>contingency table analysis</td>
+<td><code>contingency_table</code></td>
+<td><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
+</tr>
+<tr class="even">
+<td>meta-analysis</td>
+<td><code>meta_analysis</code></td>
+<td><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
+</tr>
+</tbody>
+</table>
 <p>The table below summarizes all the different types of analyses currently supported in this package-</p>
 <table class="table">
 <thead><tr class="header">
