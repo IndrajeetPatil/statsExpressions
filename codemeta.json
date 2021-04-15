@@ -16,7 +16,7 @@
   ],
   "issueTracker": "https://github.com/IndrajeetPatil/statsExpressions/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.0.1",
+  "version": "1.0.1.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -360,7 +360,7 @@
     "effectsize",
     "tidy"
   ],
-  "developmentStatus": ["https://lifecycle.r-lib.org/articles/stages.html", "https://www.repostatus.org/#active"],
+  "developmentStatus": ["https://lifecycle.r-lib.org/articles/stages.html", "https://www.repostatus.org/#active", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html"],
   "releaseNotes": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/NEWS.md",
   "citation": [
     {
@@ -373,7 +373,7 @@
           "familyName": "Patil"
         }
       ],
-      "name": "{statsExpressions}: R Package for Tidy Dataframes and Expressions with Statistical Details",
+      "name": "{statsExpressions}: {R} Package for Tidy Dataframes and Expressions with Statistical Details",
       "identifier": "10.31234/osf.io/ntbvy",
       "@id": "https://doi.org/10.31234/osf.io/ntbvy",
       "sameAs": "https://doi.org/10.31234/osf.io/ntbvy",
@@ -393,6 +393,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "4958.544KB",
+  "fileSize": "4959.973KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

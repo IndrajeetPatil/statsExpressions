@@ -35,7 +35,7 @@ there are also recommendations on how to interpret those effect sizes.
 
 ## `two_sample_test` + `oneway_anova`
 
-No. of groups: `2` => `two_sample_test`
+No. of groups: `2` => `two_sample_test`<br>
 No. of groups: `> 2` => `oneway_anova`
 
 ### between-subjects
