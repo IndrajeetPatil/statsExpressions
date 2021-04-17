@@ -3,7 +3,7 @@
 test_that(
   desc = "bayes factor (correlation)",
   code = {
-    skip_on_cran()
+    # skip_on_cran()
 
     # creating a dataframe
     set.seed(123)

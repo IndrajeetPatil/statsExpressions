@@ -5,7 +5,7 @@ if (require("metaBMA")) {
   test_that(
     desc = "meta_analysis works",
     code = {
-      skip_on_cran()
+      # skip_on_cran()
       skip_if(getRversion() < "4.0")
 
       # setup

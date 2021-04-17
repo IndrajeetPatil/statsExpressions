@@ -3,8 +3,6 @@
 #'
 #' @description
 #'
-#'
-#'
 #' A dataframe containing results for one-way ANOVA.
 #'
 #' For more details, see-

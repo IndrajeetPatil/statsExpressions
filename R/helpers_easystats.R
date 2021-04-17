@@ -1,4 +1,3 @@
-
 #' @name tidy_model_parameters
 #' @title Convert `parameters` package output to `tidyverse` conventions
 #'

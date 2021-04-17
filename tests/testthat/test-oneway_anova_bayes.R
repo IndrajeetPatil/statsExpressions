@@ -4,7 +4,7 @@ test_that(
   desc = "bayes factor (between-subjects - anova)",
   code = {
     skip_if(getRversion() < "4.0")
-    skip_on_cran()
+    # skip_on_cran()
 
     # extracting results from where this function is implemented
     set.seed(123)
@@ -77,7 +77,7 @@ test_that(
 test_that(
   desc = "bayes factor (within-subjects - anova)",
   code = {
-    skip_on_cran()
+    # skip_on_cran()
 
     if (utils::packageVersion("BayesFactor") >= package_version("0.9.12-4.3")) {
 

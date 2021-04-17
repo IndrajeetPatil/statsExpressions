@@ -15,8 +15,6 @@
 #'
 #' @description
 #'
-#'
-#'
 #' A dataframe containing results from random-effects meta-analysis.
 #'
 #' For more details, see-

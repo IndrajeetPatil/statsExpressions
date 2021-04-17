@@ -12,8 +12,6 @@
 #'
 #' @description
 #'
-#'
-#'
 #' A dataframe containing results from a one-sample test. The exact test and the
 #' effect size details contained will depend on the `type` argument.
 #'
