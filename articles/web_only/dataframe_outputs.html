@@ -104,7 +104,7 @@
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2021-04-17</h4>
+            <h4 class="date">2021-04-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -116,18 +116,19 @@
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
-<p>The returned dataframe will contain the following columns (the exact columns will depend on the test and the statistical approach):</p>
+<p>This vignette catalogs all possible dataframe outputs from <code>statsExpressions</code> functions.</p>
+<p>The dataframe will contain the following columns (the exact columns will depend on the test and the statistical approach):</p>
 <ul>
-<li><p><em>statistic</em>: the numeric value of a statistic.</p></li>
-<li><p><em>df</em>: the numeric value of a parameter being modeled (often degrees of freedom for the test); note that if <code>no.parameters = 0L</code> (e.g., for non-parametric tests), this column will be irrelevant.</p></li>
-<li><p><em>df.error</em>, <em>df</em>: relevant only if the statistic in question has two degrees of freedom (e.g., anova).</p></li>
-<li><p><em>p.value</em>: the two-sided <em>p</em>-value associated with the observed statistic.</p></li>
-<li><p><em>method</em>: the details of the statistical test carried out.</p></li>
-<li><p><em>estimate</em>: estimated value of the effect size.</p></li>
-<li><p><em>conf.low</em>: lower bound for effect size estimate.</p></li>
-<li><p><em>conf.high</em>: upper bound for effect size estimate.</p></li>
-<li><p><em>conf.level</em>: width of the confidence interval.</p></li>
-<li><p><em>effectsize</em>: the details of the effect size.</p></li>
+<li><p><code>statistic</code>: the numeric value of a statistic.</p></li>
+<li><p><code>df</code>: the numeric value of a parameter being modeled (often degrees of freedom for the test); note that if <code>no.parameters = 0L</code> (e.g., for non-parametric tests), this column will be irrelevant.</p></li>
+<li><p><code>df.error</code> and <code>df</code>: relevant only if the statistic in question has two degrees of freedom (e.g., anova).</p></li>
+<li><p><code>p.value</code>: the two-sided <em>p</em>-value associated with the observed statistic.</p></li>
+<li><p><code>method</code>: the details of the statistical test carried out.</p></li>
+<li><p><code>estimate</code>: estimated value of the effect size.</p></li>
+<li><p><code>conf.low</code>: lower bound for the effect size estimate.</p></li>
+<li><p><code>conf.high</code>: upper bound for the effect size estimate.</p></li>
+<li><p><code>conf.level</code>: width of the confidence interval.</p></li>
+<li><p><code>effectsize</code>: the type of the effect size.</p></li>
 </ul>
 <p>For details about the tests and types of effect size estimates they correspond to, see: <a href="https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html</a></p>
 </div>
