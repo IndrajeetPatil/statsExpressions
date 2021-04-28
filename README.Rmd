@@ -41,13 +41,13 @@ Package | Status | Usage | GitHub | References
 produces dataframes with rich details for the most common types of statistical
 approaches and tests: parametric, nonparametric, robust, and Bayesian t-test,
 one-way ANOVA, correlation analyses, contingency table analyses, and
-meta-analyses. 
+meta-analyses.
 
 The functions are:
 
 - pipe-friendly 
-- provide a consistent syntax to work with tidy data
-- provide expressions with statistical details for graphing packages
+- provide a consistent syntax to do statistical analysis with tidy data
+- provide expressions with statistical details for plotting functions
 
 This package forms the statistical processing backend for
 [`ggstatsplot`](https://indrajeetpatil.github.io/ggstatsplot/) package.
@@ -134,20 +134,20 @@ supported in this package-
 
 Description | Parametric | Non-parametric | Robust | Bayesian
 ------------------ | ---- | ----- | ----| ----- 
-Between group/condition comparisons | <font color="green">Yes</font> | <font color="green">Yes</font> | <font color="green">Yes</font> | <font color="green">Yes</font>
-Within group/condition comparisons | <font color="green">Yes</font> | <font color="green">Yes</font> | <font color="green">Yes</font> | <font color="green">Yes</font>
-Distribution of a numeric variable | <font color="green">Yes</font> | <font color="green">Yes</font> | <font color="green">Yes</font> | <font color="green">Yes</font>
-Correlation between two variables | <font color="green">Yes</font> | <font color="green">Yes</font> | <font color="green">Yes</font> | <font color="green">Yes</font>
-Association between categorical variables | <font color="green">Yes</font> | `NA` | `NA` | <font color="green">Yes</font>
-Equal proportions for categorical variable levels | <font color="green">Yes</font> | `NA` | `NA` | <font color="green">Yes</font>
-Random-effects meta-analysis | <font color="green">Yes</font> | `NA` | <font color="green">Yes</font> | <font color="green">Yes</font>
+Between group/condition comparisons | ✅ | ✅ | ✅ | ✅
+Within group/condition comparisons | ✅ | ✅ | ✅ | ✅
+Distribution of a numeric variable | ✅ | ✅ | ✅ | ✅
+Correlation between two variables | ✅ | ✅ | ✅ | ✅
+Association between categorical variables | ✅ | `NA` | `NA` | ✅
+Equal proportions for categorical variable levels | ✅ | `NA` | `NA` | ✅
+Random-effects meta-analysis | ✅ | `NA` | ✅ | ✅
 
 # Statistical reporting
 
-For **all** statistical test expressions, the default template abides by the
-[APA](https://my.ilstu.edu/~jhkahn/apastats.html) gold standard for statistical
-reporting. For example, here are results from Yuen's test for trimmed means
-(robust *t*-test):
+For **all** statistical test expressions, the default template attempt to follow
+the gold standard for statistical reporting.
+
+For example, here are results from Welch's *t*-test:
 
 <img src="man/figures/stats_reporting_format.png" align="center" />
 
@@ -159,31 +159,31 @@ various functions:
 
 # Tidy dataframes
 
-The returned dataframe will contain the following columns (the exact columns
-will depend on the test and the statistical approach):
+The dataframe will contain the following columns (the exact columns will depend
+on the test and the statistical approach):
 
-  - *statistic*: the numeric value of a statistic.
+  - `statistic`: the numeric value of a statistic.
 
-  - *df*: the numeric value of a parameter being modeled (often degrees
+  - `df`: the numeric value of a parameter being modeled (often degrees
     of freedom for the test); note that if `no.parameters = 0L` (e.g., for
     non-parametric tests), this column will be irrelevant.
 
-  - *df.error*, *df*: relevant only if the statistic in question has
+  - `df.error` and `df`: relevant only if the statistic in question has
     two degrees of freedom (e.g., anova).
 
-  - *p.value*: the two-sided *p*-value associated with the observed statistic.
+  - `p.value`: the two-sided *p*-value associated with the observed statistic.
   
-  - *method*: the details of the statistical test carried out.
+  - `method`: the details of the statistical test carried out.
 
-  - *estimate*: estimated value of the effect size.
+  - `estimate`: estimated value of the effect size.
 
-  - *conf.low*: lower bound for effect size estimate.
+  - `conf.low`: lower bound for the effect size estimate.
 
-  - *conf.high*: upper bound for effect size estimate.
+  - `conf.high`: upper bound for the effect size estimate.
   
-  - *conf.level*: width of the confidence interval.
+  - `conf.level`: width of the confidence interval.
   
-  - *effectsize*: the details of the effect size.
+  - `effectsize`: the type of the effect size.
 
 All possible outputs from all functions are tabulated here:
 <https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html>

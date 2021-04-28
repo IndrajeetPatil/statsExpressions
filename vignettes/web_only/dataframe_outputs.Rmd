@@ -40,31 +40,34 @@ knitr::opts_chunk$set(
 
 # Introduction
 
-The returned dataframe will contain the following columns (the exact columns
-will depend on the test and the statistical approach):
+This vignette catalogs all possible dataframe outputs from `statsExpressions`
+functions.
 
-  - *statistic*: the numeric value of a statistic.
+The dataframe will contain the following columns (the exact columns will depend
+on the test and the statistical approach):
 
-  - *df*: the numeric value of a parameter being modeled (often degrees
+  - `statistic`: the numeric value of a statistic.
+
+  - `df`: the numeric value of a parameter being modeled (often degrees
     of freedom for the test); note that if `no.parameters = 0L` (e.g., for
     non-parametric tests), this column will be irrelevant.
 
-  - *df.error*, *df*: relevant only if the statistic in question has
+  - `df.error` and `df`: relevant only if the statistic in question has
     two degrees of freedom (e.g., anova).
 
-  - *p.value*: the two-sided *p*-value associated with the observed statistic.
+  - `p.value`: the two-sided *p*-value associated with the observed statistic.
   
-  - *method*: the details of the statistical test carried out.
+  - `method`: the details of the statistical test carried out.
 
-  - *estimate*: estimated value of the effect size.
+  - `estimate`: estimated value of the effect size.
 
-  - *conf.low*: lower bound for effect size estimate.
+  - `conf.low`: lower bound for the effect size estimate.
 
-  - *conf.high*: upper bound for effect size estimate.
+  - `conf.high`: upper bound for the effect size estimate.
   
-  - *conf.level*: width of the confidence interval.
+  - `conf.level`: width of the confidence interval.
   
-  - *effectsize*: the details of the effect size.
+  - `effectsize`: the type of the effect size.
 
 For details about the tests and types of effect size estimates they correspond
 to, see:
