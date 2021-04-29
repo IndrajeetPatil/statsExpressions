@@ -14,12 +14,3 @@ h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
 pre, code {
   font-family: "Fira Code", Consolas, Inconsolata, monospace;
 }
-
-.navbar-default {
-  background-color: #f3f3f3;
-    border-color: #eee;
-}
-
-#tocnav ul ul {
-    margin-left: 25px;
-}

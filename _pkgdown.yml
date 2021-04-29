@@ -1,14 +1,7 @@
 url: https://indrajeetpatil.github.io/statsExpressions/
 
 template:
-  params:
-    docsearch:
-      api_key: cfa913c0232e74cf725e6865b064017b
-      index_name: statsExpressions
-    bootswatch: simplex
-
-development:
-  mode: unreleased
+  package: preferably
 
 toc:
   depth: 3
