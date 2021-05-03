@@ -13,8 +13,8 @@ authors:
     affiliation: 1
 affiliations:
   - name: Center for Humans and Machines, Max Planck Institute for Human Development, Berlin, Germany
-    index: 1
-date: 13 March 2021
+  - index: 1
+date: "2021-05-03"
 bibliography: paper.bib
 ---
 
@@ -31,7 +31,7 @@ to work with tidy data. These dataframes additionally contain expressions with
 statistical details, and can be used in graphing packages to display these
 details.
 
-# Aim of the Package
+# Statement of need
 
 The aim of this package is to provide an approachable and intuitive syntax to
 carry out common statistical tests across diverse statistical approaches.
@@ -88,6 +88,11 @@ statistical approaches they support. For a more detailed description of the
 tests and outputs from these functions, the readers are encouraged to read
 vignettes on the package website: <https://indrajeetpatil.github.io/statsExpressions/articles/>.
 
+Note that, unlike `broom` [@Robinson2021] or `parameters`
+[@Lüdecke2020parameters], the goal of `statsExpressions` is not to convert
+model objects into tidy dataframes, but to provide a consistent and easy syntax
+to carry out statistical tests.
+
 # Tidy Dataframes from Statistical Analysis
 
 All functions return dataframes containing exhaustive details from inferential
@@ -133,10 +138,10 @@ mtcars %>% two_sample_test(am, wt, type = "robust")
 #> 1      5.84     13.6 0.0000485
 #>   method                                               estimate conf.low
 #>   <chr>                                                   <dbl>    <dbl>
-#> 1 Yuen's test on trimmed means for independent samples    0.921    0.707
+#> 1 Yuen's test on trimmed means for independent samples    0.922    0.707
 #>   conf.high conf.level effectsize                         expression
 #>       <dbl>      <dbl> <chr>                              <list>    
-#> 1     0.973       0.95 Explanatory measure of effect size <language>
+#> 1     0.991       0.95 Explanatory measure of effect size <language>
 ```
 
 These functions also play nicely with other popular data manipulation packages.
@@ -172,7 +177,7 @@ In addition to other details contained in the dataframe, there is also a column
 titled `expression`, which contains expression with statistical details and can
 be displayed in a plot (Figure 1). Displaying statistical results in the context
 of a visualization is indeed a philosophy adopted by the `ggstatsplot` package
-[@Patil2018], and `statsExpressions` functions as its statistical processing
+[@Patil2021], and `statsExpressions` functions as its statistical processing
 backend.
 
 
@@ -212,14 +217,13 @@ non-Bayesian [@american1985publication] framework tests.
 
 # Licensing and Availability
 
-`statsExpressions` is licensed under the GNU General Public License (v3.0), with
-all source code stored at
-[GitHub](https://github.com/IndrajeetPatil/statsExpressions), and with a
-corresponding issue tracker for bug reporting and feature enhancements. In the
-spirit of honest and open science, we encourage requests/tips for fixes, feature
-updates, as well as general questions and concerns via direct interaction with
-contributors and developers, by [filing an issue](https://github.com/IndrajeetPatil/statsExpressions/issues). See the
-package's [*Contribution Guidelines*](https://github.com/IndrajeetPatil/statsExpressions/blob/master/.github/CODE_OF_CONDUCT.md).
+`statsExpressions` is licensed under the GNU General Public License (v3.0), with all
+source code stored at [GitHub](https://github.com/IndrajeetPatil/statsExpressions/).
+In the spirit of honest and open science, requests and suggestions for fixes,
+feature updates, as well as general questions and concerns are encouraged via
+direct interaction with contributors and developers by filing an
+[issue](https://github.com/IndrajeetPatil/statsExpressions/issues) while respecting
+[*Contribution Guidelines*](https://indrajeetpatil.github.io/statsExpressions/CONTRIBUTING.html).
 
 # Acknowledgements
 

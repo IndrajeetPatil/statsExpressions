@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2021.3.7)  12 MAR 2021 19:30
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.4.24)  3 MAY 2021 12:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -39,7 +39,7 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: xetex.def on input line 105.
 (/Users/patil/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/xetex.def
-File: xetex.def 2020/08/26 v5.0i Graphics/color driver for xetex
+File: xetex.def 2021/03/18 v5.0k Graphics/color driver for xetex
 ))
 \Gin@req@height=\dimen139
 \Gin@req@width=\dimen140
@@ -391,8 +391,9 @@ Package: hyperref 2021-02-27 v7.00k Hypertext links for LaTeX
 Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
 ) (/Users/patil/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2020/03/06 v1.0d TeX engine tests
-) (/Users/patil/Library/TinyTeX/texmf-dist/tex/latex/pdftexcmds/pdftexcmds.sty
-Package: pdftexcmds 2019/11/24 v0.31 Utility functions of pdfTeX for LuaTeX (HO
+) (/Users/patil/Library/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.st
+y
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
 )
 (/Users/patil/Library/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
@@ -436,8 +437,6 @@ Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 \Hy@SavedSpaceFactor=\count281
 (/Users/patil/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2021-02-27 v7.00k Hyperref: PDF Unicode definition (HO)
-) (/Users/patil/Library/TinyTeX/texmf-dist/tex/latex/latexconfig/hyperref.cfg
-File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Hyper figures OFF on input line 4192.
 Package hyperref Info: Link nesting OFF on input line 4197.
@@ -885,15 +884,16 @@ Package: expl3 2021-02-18 L3 programming layer (loader)
 
 (/Users/patil/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex.de
 f
-File: l3backend-xetex.def 2021-03-02 L3 backend support: XeTeX
+File: l3backend-xetex.def 2021-03-18 L3 backend support: XeTeX
 (|extractbb --version)
 \c__kernel_sys_dvipdfmx_version_int=\count436
 \l__color_backend_stack_int=\count437
-\g__graphics_track_int=\count438
+\g__color_backend_stack_int=\count438
+\g__graphics_track_int=\count439
 \l__pdf_internal_box=\box70
-\g__pdf_backend_object_int=\count439
-\g__pdf_backend_annotation_int=\count440
-\g__pdf_backend_link_int=\count441
+\g__pdf_backend_object_int=\count440
+\g__pdf_backend_annotation_int=\count441
+\g__pdf_backend_link_int=\count442
 ))
 (/Users/patil/Library/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/xparse-202
 0-10-01.sty
@@ -903,17 +903,17 @@ Package: fontspec 2020/02/21 v2.7i Font selection for XeLaTeX and LuaLaTeX
 (/Users/patil/Library/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
 Package: fontspec-xetex 2020/02/21 v2.7i Font selection for XeLaTeX and LuaLaTe
 X
-\l__fontspec_script_int=\count442
-\l__fontspec_language_int=\count443
-\l__fontspec_strnum_int=\count444
-\l__fontspec_tmp_int=\count445
-\l__fontspec_tmpa_int=\count446
-\l__fontspec_tmpb_int=\count447
-\l__fontspec_tmpc_int=\count448
-\l__fontspec_em_int=\count449
-\l__fontspec_emdef_int=\count450
-\l__fontspec_strong_int=\count451
-\l__fontspec_strongdef_int=\count452
+\l__fontspec_script_int=\count443
+\l__fontspec_language_int=\count444
+\l__fontspec_strnum_int=\count445
+\l__fontspec_tmp_int=\count446
+\l__fontspec_tmpa_int=\count447
+\l__fontspec_tmpb_int=\count448
+\l__fontspec_tmpc_int=\count449
+\l__fontspec_em_int=\count450
+\l__fontspec_emdef_int=\count451
+\l__fontspec_strong_int=\count452
+\l__fontspec_strongdef_int=\count453
 \l__fontspec_tmpa_dim=\dimen282
 \l__fontspec_tmpb_dim=\dimen283
 \l__fontspec_tmpc_dim=\dimen284
@@ -927,44 +927,39 @@ s/patil/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex
 \XKV@toks=\toks39
 \XKV@tempa@toks=\toks40
 )
-\XKV@depth=\count453
+\XKV@depth=\count454
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
-\c@eu@=\count454
-\c@eu@i=\count455
-\c@mkern=\count456
-) (/Users/patil/Library/TinyTeX/texmf-dist/tex/latex/upquote/upquote.sty
-Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
-tim
-(/Users/patil/Library/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
-Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
-)) (/Users/patil/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype.sty
-Package: microtype 2021/02/25 v2.8b Micro-typographical refinements (RS)
+\c@eu@=\count455
+\c@eu@i=\count456
+\c@mkern=\count457
+) (/Users/patil/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2021/03/14 v2.8c Micro-typographical refinements (RS)
 \MT@toks=\toks41
-\MT@count=\count457
-LaTeX Info: Redefining \textls on input line 788.
+\MT@count=\count458
+LaTeX Info: Redefining \textls on input line 790.
 \MT@outer@kern=\dimen285
-LaTeX Info: Redefining \textmicrotypecontext on input line 1358.
-\MT@listname@count=\count458
+LaTeX Info: Redefining \textmicrotypecontext on input line 1374.
+\MT@listname@count=\count459
 
 (/Users/patil/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype-xetex.de
 f
-File: microtype-xetex.def 2021/02/25 v2.8b Definitions specific to xetex (RS)
+File: microtype-xetex.def 2021/03/14 v2.8c Definitions specific to xetex (RS)
 LaTeX Info: Redefining \lsstyle on input line 254.
 )
 Package microtype Info: Loading configuration file microtype.cfg.
 (/Users/patil/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype.cfg
-File: microtype.cfg 2021/02/25 v2.8b microtype main configuration file (RS)
+File: microtype.cfg 2021/03/14 v2.8c microtype main configuration file (RS)
 ))
 Package hyperref Info: Option `unicode' set `true' on input line 151.
 Package hyperref Info: Option `breaklinks' set `true' on input line 151.
 (/Users/patil/Library/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2021/01/20 v3.7 verbatim text (tvz,hv)
-\FV@CodeLineNo=\count459
+\FV@CodeLineNo=\count460
 \FV@InFile=\read5
 \FV@TabBox=\box71
-\c@FancyVerbLine=\count460
-\FV@StepNumber=\count461
+\c@FancyVerbLine=\count461
+\FV@StepNumber=\count462
 \FV@OutFile=\write7
 ) (/Users/patil/Library/TinyTeX/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
@@ -979,16 +974,16 @@ Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
 \LTright=\skip93
 \LTpre=\skip94
 \LTpost=\skip95
-\LTchunksize=\count462
+\LTchunksize=\count463
 \LTcapwidth=\dimen290
 \LT@head=\box72
 \LT@firsthead=\box73
 \LT@foot=\box74
 \LT@lastfoot=\box75
-\LT@cols=\count463
-\LT@rows=\count464
-\c@LT@tables=\count465
-\c@LT@chunks=\count466
+\LT@cols=\count464
+\LT@rows=\count465
+\c@LT@tables=\count466
+\c@LT@chunks=\count467
 \LT@p@ftn=\toks42
 ) (/Users/patil/Library/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
@@ -1002,12 +997,12 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \cmidrulesep=\dimen298
 \cmidrulekern=\dimen299
 \defaultaddspace=\dimen300
-\@cmidla=\count467
-\@cmidlb=\count468
+\@cmidla=\count468
+\@cmidlb=\count469
 \@aboverulesep=\dimen301
 \@belowrulesep=\dimen302
-\@thisruleclass=\count469
-\@lastruleclass=\count470
+\@thisruleclass=\count470
+\@lastruleclass=\count471
 \@thisrulewidth=\dimen303
 ) (/Users/patil/Library/TinyTeX/texmf-dist/tex/latex/grffile/grffile.sty
 Package: grffile 2019/11/11 v2.1 Extended file name support for graphics (legac
@@ -1015,7 +1010,7 @@ y)
 Package grffile Info: This package is an empty stub for compatibility on input 
 line 40.
 ) (/Users/patil/Library/TinyTeX/texmf-dist/tex/latex/parskip/parskip.sty
-Package: parskip 2021-03-02 v2.0g non-zero parskip adjustments
+Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
 )
 \csllabelwidth=\skip96
 \cslhangindent=\skip97
@@ -1036,11 +1031,11 @@ Package: array 2020/10/01 v2.5c Tabular extension package (FMi)
 \TX@old@col=\dimen308
 \TX@target=\dimen309
 \TX@delta=\dimen310
-\TX@cols=\count471
+\TX@cols=\count472
 \TX@ftn=\toks44
 )
-\@quotelevel=\count472
-\@quotereset=\count473
+\@quotelevel=\count473
+\@quotereset=\count474
 (./paper.aux)
 \openout1 = `paper.aux'.
 
@@ -1079,7 +1074,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ing.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count474
+\c@section@level=\count475
 )
 LaTeX Info: Redefining \ref on input line 263.
 LaTeX Info: Redefining \pageref on input line 263.
@@ -1215,6 +1210,9 @@ LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <8> not available
 [1
 
 ]
+Overfull \vbox (0.54543pt too high) detected at line 441
+ []
+
 File: /Users/patil/Library/R/4.0/library/rticles/rmarkdown/templates/joss/resou
 rces/JOSS-logo.png Graphic file (type bmp)
 </Users/patil/Library/R/4.0/library/rticles/rmarkdown/templates/joss/resources/
@@ -1228,9 +1226,6 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
 [2]
-Overfull \vbox (1.00447pt too high) detected at line 517
- []
-
 File: /Users/patil/Library/R/4.0/library/rticles/rmarkdown/templates/joss/resou
 rces/JOSS-logo.png Graphic file (type bmp)
 </Users/patil/Library/R/4.0/library/rticles/rmarkdown/templates/joss/resources/
@@ -1261,7 +1256,7 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
 [4]
-Underfull \hbox (badness 1082) in paragraph at lines 590--595
+Underfull \hbox (badness 1082) in paragraph at lines 599--604
 \TU/lmr/m/it/10 model averaging for random and fixed effects meta-analysis\TU/l
 mr/m/n/10 . Retrieved from
  []
@@ -1293,18 +1288,18 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 
 [6] (./paper.aux)
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 1C6B2B095E5D46080C96E6BD94DC53CA;1229.
+(rerunfilecheck)             Checksum: A5CBF23631192BD4E07FFAD93AA66EED;1221.
 Package logreq Info: Writing requests to 'paper.run.xml'.
 \openout1 = `paper.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 35226 strings out of 478931
- 706798 string characters out of 5866285
- 1514597 words of memory out of 5000000
- 54491 multiletter control sequences out of 15000+600000
+ 35201 strings out of 478918
+ 706242 string characters out of 5865955
+ 1499290 words of memory out of 5000000
+ 54485 multiletter control sequences out of 15000+600000
  411839 words of font info for 80 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 95i,13n,103p,1194b,806s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 95i,12n,103p,1194b,806s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on paper.pdf (6 pages).
