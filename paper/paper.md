@@ -13,8 +13,9 @@ authors:
     affiliation: 1
 affiliations:
   - name: Center for Humans and Machines, Max Planck Institute for Human Development, Berlin, Germany
-  - index: 1
+    index: 1
 date: "2021-05-03"
+year: 2021
 bibliography: paper.bib
 ---
 
@@ -109,8 +110,8 @@ If we first run a parametric *t*-test:
 
 
 ```r
-# loading needed package
-library(statsExpressions)
+set.seed(123) # for reproducibility
+library(statsExpressions) # loading needed package
 
 # Welch's t-test
 mtcars %>% two_sample_test(am, wt, type = "parametric")
@@ -130,6 +131,8 @@ And then decide to run, instead, a robust *t*-test. The syntax remains the same:
 
 
 ```r
+set.seed(123) # for reproducibility
+
 # Yuen's t-test
 mtcars %>% two_sample_test(am, wt, type = "robust")
 #> # A tibble: 1 x 10
@@ -138,10 +141,10 @@ mtcars %>% two_sample_test(am, wt, type = "robust")
 #> 1      5.84     13.6 0.0000485
 #>   method                                               estimate conf.low
 #>   <chr>                                                   <dbl>    <dbl>
-#> 1 Yuen's test on trimmed means for independent samples    0.922    0.707
+#> 1 Yuen's test on trimmed means for independent samples    0.915    0.754
 #>   conf.high conf.level effectsize                         expression
 #>       <dbl>      <dbl> <chr>                              <list>    
-#> 1     0.991       0.95 Explanatory measure of effect size <language>
+#> 1     0.977       0.95 Explanatory measure of effect size <language>
 ```
 
 These functions also play nicely with other popular data manipulation packages.
@@ -150,8 +153,8 @@ of a certain grouping variable:
 
 
 ```r
-# needed to do grouped analysis
-suppressPackageStartupMessages(library(dplyr))
+set.seed(123) # for reproducibility
+library(dplyr) # loading needed package for groupwise analysis
 
 # running one-sample proportion test for all levels of `cyl`
 mtcars %>%
@@ -183,22 +186,23 @@ backend.
 
 ```r
 # loading needed packages
+set.seed(123) # for reproducibility
 library(ggplot2)
 library(palmerpenguins) # for data
 library(ggridges) # for creating a ridgeplot
 
 # creating a dataframe with results and expression
-res <- oneway_anova(penguins, species, bill_length_mm, type = "robust")
+res <- oneway_anova(penguins, species, body_mass_g, type = "nonparametric")
 
 # create a ridgeplot using `ggridges` package
-ggplot(penguins, aes(x = bill_length_mm, y = species)) +
+ggplot(penguins, aes(x = body_mass_g, y = species)) +
   geom_density_ridges(
     jittered_points = TRUE, quantile_lines = TRUE,
     scale = 0.9, vline_size = 1, vline_color = "red",
     position = position_raincloud(adjust_vlines = TRUE)
   ) + # use 'expression' column to display results in the subtitle
   labs(
-    title = "A heteroscedastic one-way ANOVA for trimmed means",
+    title = "Kruskal-Wallis Rank Sum Test",
     subtitle = res$expression[[1]]
   )
 ```

@@ -13,6 +13,7 @@ authors:
     affiliation: 1
 affiliations:
   - name: Center for Humans and Machines, Max Planck Institute for Human Development, Berlin, Germany
+    index: 1
 date: "`r Sys.Date()`"
 year: 2021
 bibliography: paper.bib
@@ -26,7 +27,7 @@ header-includes:
   - \usepackage{tikz}
 ---
 
-```{r echo=FALSE}
+```{r message=FALSE, warning=FALSE, echo=FALSE}
 # to pretty-print all columns in the output tibble
 options(
   tibble.width = Inf,
@@ -44,6 +45,9 @@ knitr::opts_chunk$set(
   out.width = "100%",
   comment = "#>"
 )
+
+library(dplyr)
+library(statsExpressions)
 ```
 
 # Summary
@@ -134,8 +138,8 @@ equality of a measure among two independent groups. We can use the
 If we first run a parametric *t*-test:
 
 ```{r df_p}
-# loading needed package
-library(statsExpressions)
+set.seed(123) # for reproducibility
+library(statsExpressions) # loading needed package
 
 # Welch's t-test
 mtcars %>% two_sample_test(am, wt, type = "parametric")
@@ -144,6 +148,8 @@ mtcars %>% two_sample_test(am, wt, type = "parametric")
 And then decide to run, instead, a robust *t*-test. The syntax remains the same:
 
 ```{r df_r}
+set.seed(123) # for reproducibility
+
 # Yuen's t-test
 mtcars %>% two_sample_test(am, wt, type = "robust")
 ```
@@ -153,8 +159,8 @@ For example, we can use `dplyr` to repeat the same analysis across *all* levels
 of a certain grouping variable:
 
 ```{r grouped_df}
-# needed to do grouped analysis
-suppressPackageStartupMessages(library(dplyr))
+set.seed(123) # for reproducibility
+library(dplyr) # loading needed package for groupwise analysis
 
 # running one-sample proportion test for all levels of `cyl`
 mtcars %>%
@@ -174,22 +180,23 @@ backend.
 
 ```{r robanova, fig.cap="Example illustrating how `statsExpressions` functions can be used to display results from a statistical test in a plot."}
 # loading needed packages
+set.seed(123) # for reproducibility
 library(ggplot2)
 library(palmerpenguins) # for data
 library(ggridges) # for creating a ridgeplot
 
 # creating a dataframe with results and expression
-res <- oneway_anova(penguins, species, bill_length_mm, type = "robust")
+res <- oneway_anova(penguins, species, body_mass_g, type = "nonparametric")
 
 # create a ridgeplot using `ggridges` package
-ggplot(penguins, aes(x = bill_length_mm, y = species)) +
+ggplot(penguins, aes(x = body_mass_g, y = species)) +
   geom_density_ridges(
     jittered_points = TRUE, quantile_lines = TRUE,
     scale = 0.9, vline_size = 1, vline_color = "red",
     position = position_raincloud(adjust_vlines = TRUE)
   ) + # use 'expression' column to display results in the subtitle
   labs(
-    title = "A heteroscedastic one-way ANOVA for trimmed means",
+    title = "Kruskal-Wallis Rank Sum Test",
     subtitle = res$expression[[1]]
   )
 ```
