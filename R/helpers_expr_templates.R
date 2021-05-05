@@ -16,22 +16,18 @@
 #'   on *F*-statistic.
 #' @param data A dataframe containing details from the statistical analysis
 #'   and should contain some or all of the the following columns:
-#' \itemize{
-#'   \item *statistic*: the numeric value of a statistic.
-#'   \item *df.error*: the numeric value of a parameter being modeled (often
-#' degrees of freedom for the test); note that if `no.parameters = 0L` (e.g.,
-#' for non-parametric tests), this column will be irrelevant.
-#'   \item *df* relevant only if the statistic in question
-#' has two degrees of freedom (e.g., anova).
-#'   \item *p.value* the two-sided *p*-value associated with the observed
-#' statistic.
-#'  \item *estimate*: estimated value of the effect size.
-#'  \item *conf.level*: width for the confidence intervals.
-#'   \item *conf.low*: lower bound for effect size estimate.
-#'   \item *conf.high*: upper bound for effect size estimate.
-#'   \item *`bf10`* Bayes Factor value (if `bayesian = TRUE`).
-#'   \item *method*: method describing the test carried out.
-#' }
+#' - *statistic*: the numeric value of a statistic.
+#' - *df.error*: the numeric value of a parameter being modeled (often degrees
+#' of freedom for the test); note that if `no.parameters = 0L` (e.g., for
+#' non-parametric tests), this column will be irrelevant.
+#' - *df* relevant only if the statistic in question has two degrees of freedom.
+#' - *p.value* the two-sided *p*-value associated with the observed statistic.
+#' - *estimate*: estimated value of the effect size.
+#' - *conf.level*: width for the confidence intervals.
+#' - *conf.low*: lower bound for effect size estimate.
+#' - *conf.high*: upper bound for effect size estimate.
+#' - *`bf10`* Bayes Factor value (if `bayesian = TRUE`).
+#' - *method*: method describing the test carried out.
 #' @param statistic.text A character that specifies the relevant test statistic.
 #'   For example, for tests with *t*-statistic, `statistic.text = "t"`.
 #' @param effsize.text A character that specifies the relevant effect size or

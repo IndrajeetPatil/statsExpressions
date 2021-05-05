@@ -570,7 +570,3 @@ meta_analysis(data = df, type = "bayes")
 # Suggestions
 
 If you find any bugs or have any suggestions/remarks, please file an issue on GitHub: <https://github.com/IndrajeetPatil/ggstatsplot/issues>
-
-# Session Information
-
-For details, see- <https://indrajeetpatil.github.io/ggstatsplot/articles/web_only/session_info.html>

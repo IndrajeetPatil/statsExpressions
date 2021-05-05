@@ -31,8 +31,6 @@ be plotted on the \code{y}-axis. Can be entered either as a character string
 (e.g., \code{"y"}) or as a bare expression (e.g, \code{y}).}
 
 \item{type}{A character specifying the type of statistical approach.
-Four possible options:
-
 \itemize{
 \item \code{"parametric"}
 \item \code{"nonparametric"}

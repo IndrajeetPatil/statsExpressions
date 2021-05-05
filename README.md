@@ -7,7 +7,7 @@
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)                  | [![Build Status](https://travis-ci.org/IndrajeetPatil/statsExpressions.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/statsExpressions)                                                      | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)     | [![GitHub version](https://img.shields.io/badge/GitHub-1.0.0-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/statsExpressions/)                         | [![Website](https://img.shields.io/badge/website-statsExpressions-orange.svg?colorB=E91E63)](https://indrajeetpatil.github.io/statsExpressions/)                          |
 | [![CRAN Checks](https://cranchecks.info/badges/summary/statsExpressions)](https://cran.r-project.org/web/checks/check_results_statsExpressions.html)      | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/statsExpressions?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/statsExpressions) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)   | [![Forks](https://img.shields.io/badge/forks-15-blue.svg)](https://github.com/IndrajeetPatil/statsExpressions/)                                                          | [![Features](https://img.shields.io/badge/features-statsExpressions-orange.svg?colorB=2196F3)](https://indrajeetpatil.github.io/statsExpressions/reference/index.html)    |
-| [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)                                                | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)                                                                        | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Github Issues](https://img.shields.io/badge/issues-12-red.svg)](https://github.com/IndrajeetPatil/statsExpressions/issues)                                            | [![pkgdown](https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/pkgdown/badge.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/actions)            |
+| [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)                                                | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)                                                                        | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Github Issues](https://img.shields.io/badge/issues-11-red.svg)](https://github.com/IndrajeetPatil/statsExpressions/issues)                                            | [![pkgdown](https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/pkgdown/badge.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/actions)            |
 | [![code size](https://img.shields.io/github/languages/code-size/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/statsExpressions/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/statsExpressions?branch=master)             | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)  | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/statsExpressions.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/statsExpressions) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2074621.svg)](https://doi.org/10.5281/zenodo.3386122)                                                                 |
 | [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                          | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master)                   | [![lints](https://github.com/IndrajeetPatil/statsExpressions/workflows/lint/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions)                 | [![Last-changedate](https://img.shields.io/badge/last%20change-2021--05--05-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master)         | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master) |
 | [![status](https://tinyverse.netlify.com/badge/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)                                    | [![R build status](https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions)                                            | [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/statsExpressions/community)                                                | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)                                                              | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/statsExpressions/issues)      |
@@ -278,34 +278,16 @@ In addition to other details contained in the dataframe, there is also a
 column titled `expression`, which contains expression with statistical
 details and can be displayed in a plot.
 
+There is also a gallery containing additional examples here:
+<https://indrajeetpatil.github.io/statsExpressions/articles/gallery.html>
+
 ## Example: Expressions for one-way ANOVAs
 
 ### Between-subjects design
 
 Let’s say we want to check differences in weight of the vehicle based on
-number of cylinders in the engine and wish to carry out Welch’s ANOVA:
-
-``` r
-# setup
-set.seed(123)
-library(ggplot2)
-library(ggforce)
-library(statsExpressions)
-
-# plot with subtitle
-ggplot(iris, aes(x = Species, y = Sepal.Length)) +
-  geom_violin() +
-  geom_sina() +
-  labs(
-    title = "Fisher's one-way ANOVA",
-    subtitle = oneway_anova(iris, Species, Sepal.Length, var.equal = TRUE)$expression[[1]]
-  )
-```
-
-<img src="man/figures/README-anova_parametric1-1.png" width="100%" />
-
-In case you change your mind and now want to carry out a robust ANOVA
-instead. Also, let’s use a different kind of a visualization:
+number of cylinders in the engine and wish to carry out robust
+trimmed-means ANOVA:
 
 ``` r
 # setup
@@ -328,32 +310,6 @@ ggplot(iris, aes(x = Sepal.Length, y = Species)) +
 ```
 
 <img src="man/figures/README-anova_rob1-1.png" width="100%" />
-
-Needless to say, you can also use these functions to display results in
-`ggplot`-extension packages. For example, `ggpubr`:
-
-``` r
-set.seed(123)
-library(ggpubr)
-library(ggplot2)
-
-# plot
-ggboxplot(
-  ToothGrowth,
-  x = "dose",
-  y = "len",
-  color = "dose",
-  palette = c("#00AFBB", "#E7B800", "#FC4E07"),
-  add = "jitter",
-  shape = "dose"
-) + # adding results from stats analysis using `statsExpressions`
-  labs(
-    title = "Kruskall-Wallis test",
-    subtitle = oneway_anova(ToothGrowth, dose, len, type = "np")$expression[[1]]
-  )
-```
-
-<img src="man/figures/README-ggpubr_anova-1.png" width="100%" />
 
 ### Within-subjects design
 
@@ -410,67 +366,6 @@ ggplot(ToothGrowth, aes(supp, len)) +
 ```
 
 <img src="man/figures/README-t_two-1.png" width="100%" />
-
-Example with `ggpubr`:
-
-``` r
-# setup
-set.seed(123)
-library(ggplot2)
-library(ggpubr)
-library(statsExpressions)
-
-# basic plot
-gghistogram(
-  data.frame(
-    sex = factor(rep(c("F", "M"), each = 200)),
-    weight = c(rnorm(200, 55), rnorm(200, 58))
-  ),
-  x = "weight",
-  add = "mean",
-  rug = TRUE,
-  fill = "sex",
-  palette = c("#00AFBB", "#E7B800"),
-  add_density = TRUE
-) + # displaying stats results
-  labs(
-    title = "Yuen's two-sample test for trimmed means",
-    subtitle = two_sample_test(
-      data = data.frame(
-        sex = factor(rep(c("F", "M"), each = 200)),
-        weight = c(rnorm(200, 55), rnorm(200, 58))
-      ),
-      x = sex,
-      y = weight,
-      type = "robust"
-    )$expression[[1]]
-  )
-```
-
-<img src="man/figures/README-t_two_ggpubr-1.png" width="100%" />
-
-Another example with `ggiraphExtra`:
-
-``` r
-# setup
-set.seed(123)
-library(ggplot2)
-library(ggiraphExtra)
-library(gcookbook)
-library(statsExpressions)
-
-# plot
-ggDot(heightweight, aes(sex, heightIn, fill = sex),
-  boxfill = "white",
-  binwidth = 0.4
-) +
-  labs(
-    title = "Mann-Whitney test",
-    subtitle = two_sample_test(heightweight, sex, heightIn, type = "nonparametric")$expression[[1]]
-  )
-```
-
-<img src="man/figures/README-t_ggiraphExtra-1.png" width="100%" />
 
 ### Within-subjects design
 
@@ -547,31 +442,6 @@ ggplot(mtcars, aes(mpg, wt)) +
 
 <img src="man/figures/README-corr-1.png" width="100%" />
 
-Another example
-
-``` r
-# setup
-set.seed(123)
-library(ggplot2)
-library(ggExtra)
-library(statsExpressions)
-
-# basic plot
-p <-
-  ggplot(mtcars, aes(mpg, wt)) +
-  geom_point() +
-  geom_smooth(method = "lm") +
-  labs(
-    title = "Pearson's correlation coefficient",
-    subtitle = corr_test(mtcars, mpg, wt, type = "parametric")$expression[[1]]
-  )
-
-# add
-ggMarginal(p, type = "histogram", xparams = list(binwidth = 1, fill = "orange"))
-```
-
-<img src="man/figures/README-corr2-1.png" width="100%" />
-
 ## Example: Expressions for contingency table analysis
 
 For categorical/nominal data - one-sample:
@@ -599,31 +469,6 @@ ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1
 ```
 
 <img src="man/figures/README-gof-1.png" width="100%" />
-
-Another example of contingency tabs analysis:
-
-``` r
-# setup
-set.seed(123)
-library(moonBook)
-library(ggiraphExtra)
-library(statsExpressions)
-
-# plot
-ggSpine(
-  data = acs,
-  aes(x = Dx, fill = smoking),
-  addlabel = TRUE,
-  interactive = FALSE
-) +
-  labs(
-    x = "diagnosis",
-    title = "Pearson's chi-squared contingency table test for counts",
-    subtitle = contingency_table(acs, Dx, smoking, paired = FALSE)$expression[[1]]
-  )
-```
-
-<img src="man/figures/README-cont_tabs1-1.png" width="100%" />
 
 You can also use these function to get the expression in return without
 having to display them in plots:
@@ -848,7 +693,7 @@ For detailed documentation, see the package website:
 Here is an example from `ggstatsplot` of what the plots look like when
 the expressions are displayed in the subtitle-
 
-<img src="man/figures/README-ggbetweenstats1-1.png" align="center" />
+<img src="man/figures/ggstatsplot.png" align="center" />
 
 # Acknowledgments
 

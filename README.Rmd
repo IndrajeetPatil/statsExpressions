@@ -254,32 +254,15 @@ In addition to other details contained in the dataframe, there is also a column
 titled `expression`, which contains expression with statistical details and can
 be displayed in a plot.
 
+There is also a gallery containing additional examples here:
+<https://indrajeetpatil.github.io/statsExpressions/articles/gallery.html>
+
 ## Example: Expressions for one-way ANOVAs
 
 ### Between-subjects design
 
-Let's say we want to check differences in weight of the vehicle based on number of
-cylinders in the engine and wish to carry out Welch's ANOVA:
-
-```{r anova_parametric1}
-# setup
-set.seed(123)
-library(ggplot2)
-library(ggforce)
-library(statsExpressions)
-
-# plot with subtitle
-ggplot(iris, aes(x = Species, y = Sepal.Length)) +
-  geom_violin() +
-  geom_sina() +
-  labs(
-    title = "Fisher's one-way ANOVA",
-    subtitle = oneway_anova(iris, Species, Sepal.Length, var.equal = TRUE)$expression[[1]]
-  )
-```
-
-In case you change your mind and now want to carry out a robust ANOVA instead.
-Also, let's use a different kind of a visualization:
+Let's say we want to check differences in weight of the vehicle based on number
+of cylinders in the engine and wish to carry out robust trimmed-means ANOVA:
 
 ```{r anova_rob1}
 # setup
@@ -298,30 +281,6 @@ ggplot(iris, aes(x = Sepal.Length, y = Species)) +
   labs(
     title = "A heteroscedastic one-way ANOVA for trimmed means",
     subtitle = oneway_anova(iris, Species, Sepal.Length, type = "robust")$expression[[1]]
-  )
-```
-
-Needless to say, you can also use these functions to display results in
-`ggplot`-extension packages. For example, `ggpubr`:
-
-```{r ggpubr_anova}
-set.seed(123)
-library(ggpubr)
-library(ggplot2)
-
-# plot
-ggboxplot(
-  ToothGrowth,
-  x = "dose",
-  y = "len",
-  color = "dose",
-  palette = c("#00AFBB", "#E7B800", "#FC4E07"),
-  add = "jitter",
-  shape = "dose"
-) + # adding results from stats analysis using `statsExpressions`
-  labs(
-    title = "Kruskall-Wallis test",
-    subtitle = oneway_anova(ToothGrowth, dose, len, type = "np")$expression[[1]]
   )
 ```
 
@@ -374,63 +333,6 @@ ggplot(ToothGrowth, aes(supp, len)) +
   labs(
     title = "Two-Sample Welch's t-test",
     subtitle = two_sample_test(ToothGrowth, supp, len)$expression[[1]]
-  )
-```
-
-Example with `ggpubr`:
-
-```{r t_two_ggpubr}
-# setup
-set.seed(123)
-library(ggplot2)
-library(ggpubr)
-library(statsExpressions)
-
-# basic plot
-gghistogram(
-  data.frame(
-    sex = factor(rep(c("F", "M"), each = 200)),
-    weight = c(rnorm(200, 55), rnorm(200, 58))
-  ),
-  x = "weight",
-  add = "mean",
-  rug = TRUE,
-  fill = "sex",
-  palette = c("#00AFBB", "#E7B800"),
-  add_density = TRUE
-) + # displaying stats results
-  labs(
-    title = "Yuen's two-sample test for trimmed means",
-    subtitle = two_sample_test(
-      data = data.frame(
-        sex = factor(rep(c("F", "M"), each = 200)),
-        weight = c(rnorm(200, 55), rnorm(200, 58))
-      ),
-      x = sex,
-      y = weight,
-      type = "robust"
-    )$expression[[1]]
-  )
-```
-
-Another example with `ggiraphExtra`:
-
-```{r t_ggiraphExtra}
-# setup
-set.seed(123)
-library(ggplot2)
-library(ggiraphExtra)
-library(gcookbook)
-library(statsExpressions)
-
-# plot
-ggDot(heightweight, aes(sex, heightIn, fill = sex),
-  boxfill = "white",
-  binwidth = 0.4
-) +
-  labs(
-    title = "Mann-Whitney test",
-    subtitle = two_sample_test(heightweight, sex, heightIn, type = "nonparametric")$expression[[1]]
   )
 ```
 
@@ -502,29 +404,6 @@ ggplot(mtcars, aes(mpg, wt)) +
   )
 ```
 
-Another example
-
-```{r corr2}
-# setup
-set.seed(123)
-library(ggplot2)
-library(ggExtra)
-library(statsExpressions)
-
-# basic plot
-p <-
-  ggplot(mtcars, aes(mpg, wt)) +
-  geom_point() +
-  geom_smooth(method = "lm") +
-  labs(
-    title = "Pearson's correlation coefficient",
-    subtitle = corr_test(mtcars, mpg, wt, type = "parametric")$expression[[1]]
-  )
-
-# add
-ggMarginal(p, type = "histogram", xparams = list(binwidth = 1, fill = "orange"))
-```
-
 ## Example: Expressions for contingency table analysis
 
 For categorical/nominal data - one-sample:
@@ -548,29 +427,6 @@ ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1
     title = "Pie Chart of class (type of car)",
     subtitle = contingency_table(as.data.frame(table(mpg$class)), Var1, counts = Freq)$expression[[1]],
     caption = "One-sample goodness of fit proportion test"
-  )
-```
-
-Another example of contingency tabs analysis:
-
-```{r cont_tabs1}
-# setup
-set.seed(123)
-library(moonBook)
-library(ggiraphExtra)
-library(statsExpressions)
-
-# plot
-ggSpine(
-  data = acs,
-  aes(x = Dx, fill = smoking),
-  addlabel = TRUE,
-  interactive = FALSE
-) +
-  labs(
-    x = "diagnosis",
-    title = "Pearson's chi-squared contingency table test for counts",
-    subtitle = contingency_table(acs, Dx, smoking, paired = FALSE)$expression[[1]]
   )
 ```
 
@@ -780,7 +636,7 @@ For detailed documentation, see the package website:
 Here is an example from `ggstatsplot` of what the plots look like when the
 expressions are displayed in the subtitle-
 
-<img src="man/figures/README-ggbetweenstats1-1.png" align="center" />
+<img src="man/figures/ggstatsplot.png" align="center" />
 
 # Acknowledgments
 

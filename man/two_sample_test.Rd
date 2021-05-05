@@ -41,8 +41,6 @@ your data is \strong{not} sorted and you leave this argument unspecified, the
 results can be inaccurate.}
 
 \item{type}{A character specifying the type of statistical approach.
-Four possible options:
-
 \itemize{
 \item \code{"parametric"}
 \item \code{"nonparametric"}
@@ -83,7 +81,7 @@ of an error, try reducing the value of \code{tr}, which is by default set to
 \code{0.2}. Lowering the value might help.}
 
 \item{nboot}{Number of bootstrap samples for computing confidence interval
-for the effect size (Default: \code{100}).}
+for the effect size (Default: \code{100L}).}
 
 \item{top.text}{Text to display on top of the Bayes Factor message. This is
 mostly relevant in the context of \code{ggstatsplot} functions.}
@@ -91,8 +89,8 @@ mostly relevant in the context of \code{ggstatsplot} functions.}
 \item{...}{Currently ignored.}
 }
 \description{
-A dataframe containing details from results of a two-sample test and effect
-size plus confidence intervals.
+A dataframe containing results from a two-sample test and effect size plus
+confidence intervals.
 
 To see details about functions which are internally used to carry out these
 analyses, see the following vignette-

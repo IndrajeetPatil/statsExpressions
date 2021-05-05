@@ -23,8 +23,6 @@ and for \code{y} and \code{SE} arguments in \code{metaBMA::meta_random} (for Bay
 analysis).}
 
 \item{type}{A character specifying the type of statistical approach.
-Four possible options:
-
 \itemize{
 \item \code{"parametric"}
 \item \code{"nonparametric"}

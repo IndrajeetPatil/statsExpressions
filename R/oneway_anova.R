@@ -11,14 +11,10 @@
 #'
 #' @inheritParams ipmisc::long_to_wide_converter
 #' @param type A character specifying the type of statistical approach.
-#' Four possible options:
-#'
-#' \itemize{
-#'   \item `"parametric"`
-#'   \item `"nonparametric"`
-#'   \item `"robust"`
-#'   \item `"bayes"`
-#' }
+#'   - `"parametric"`
+#'   - `"nonparametric"`
+#'   - `"robust"`
+#'   - `"bayes"`
 #'
 #'   Corresponding abbreviations are also accepted: `"p"` (for parametric),
 #'   `"np"` (for nonparametric), `"r"` (for robust), or `"bf"` (for Bayesian).
@@ -31,7 +27,7 @@
 #'   of an error, try reducing the value of `tr`, which is by default set to
 #'   `0.2`. Lowering the value might help.
 #' @param nboot Number of bootstrap samples for computing confidence interval
-#'   for the effect size (Default: `100`).
+#'   for the effect size (Default: `100L`).
 #' @param bf.prior A number between `0.5` and `2` (default `0.707`), the prior
 #'   width to use in calculating Bayes factors and posterior estimates. In
 #'   addition to numeric arguments, several named values are also recognized:

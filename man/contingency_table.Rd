@@ -39,8 +39,6 @@ test expression will be returned. If \code{FALSE}, Pearson's chi-square test wil
 be returned.}
 
 \item{type}{A character specifying the type of statistical approach.
-Four possible options:
-
 \itemize{
 \item \code{"parametric"}
 \item \code{"nonparametric"}

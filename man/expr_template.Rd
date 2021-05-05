@@ -28,13 +28,11 @@ expr_template(
 and should contain some or all of the the following columns:
 \itemize{
 \item \emph{statistic}: the numeric value of a statistic.
-\item \emph{df.error}: the numeric value of a parameter being modeled (often
-degrees of freedom for the test); note that if \code{no.parameters = 0L} (e.g.,
-for non-parametric tests), this column will be irrelevant.
-\item \emph{df} relevant only if the statistic in question
-has two degrees of freedom (e.g., anova).
-\item \emph{p.value} the two-sided \emph{p}-value associated with the observed
-statistic.
+\item \emph{df.error}: the numeric value of a parameter being modeled (often degrees
+of freedom for the test); note that if \code{no.parameters = 0L} (e.g., for
+non-parametric tests), this column will be irrelevant.
+\item \emph{df} relevant only if the statistic in question has two degrees of freedom.
+\item \emph{p.value} the two-sided \emph{p}-value associated with the observed statistic.
 \item \emph{estimate}: estimated value of the effect size.
 \item \emph{conf.level}: width for the confidence intervals.
 \item \emph{conf.low}: lower bound for effect size estimate.

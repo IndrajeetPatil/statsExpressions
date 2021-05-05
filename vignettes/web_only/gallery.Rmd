@@ -1,0 +1,191 @@
+---
+title: "Gallery of examples with `ggplot2` extension packages"
+author: "Indrajeet Patil"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    fig_width: 6
+    fig.align: 'center'
+    fig.asp: 0.618
+    dpi: 300
+    toc: true
+    toc_depth: 3
+    warning: FALSE
+    message: FALSE
+vignette: >
+  %\VignetteIndexEntry{Gallery of examples with `ggplot2` extension packages}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+# show me all columns
+options(
+  tibble.width = Inf,
+  pillar.bold = TRUE,
+  pillar.neg = TRUE,
+  pillar.subtle_num = TRUE,
+  pillar.min_chars = Inf
+)
+
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  dpi = 300,
+  out.width = "100%",
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+# Introduction
+
+`statsExpressions` dataframes contain *expression*, meaning **a pre-formatted in-text statistical result**.
+
+These expressions can be used to display statistical analysis results for any
+`ggplot` plot, which means it can also be used with any of the `ggplot2`
+extension packages. This vignette provides a gallery of such examples.
+
+# Examples
+
+## `ggforce`
+
+```{r ggforce1}
+# setup
+set.seed(123)
+library(ggplot2)
+library(ggforce)
+library(statsExpressions)
+# plot with subtitle
+ggplot(iris, aes(x = Species, y = Sepal.Length)) +
+  geom_violin() +
+  geom_sina() +
+  labs(
+    title = "Fisher's one-way ANOVA",
+    subtitle = oneway_anova(iris, Species, Sepal.Length, var.equal = TRUE)$expression[[1]]
+  )
+```
+
+## `ggExtra`
+
+```{r ggExtra1}
+# setup
+set.seed(123)
+library(ggplot2)
+library(ggExtra)
+library(statsExpressions)
+# basic plot
+p <-
+  ggplot(mtcars, aes(mpg, wt)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(
+    title = "Pearson's correlation coefficient",
+    subtitle = corr_test(mtcars, mpg, wt, type = "parametric")$expression[[1]]
+  )
+# add
+ggMarginal(p, type = "histogram", xparams = list(binwidth = 1, fill = "orange"))
+```
+
+## `ggpubr`
+
+```{r ggpubr1}
+set.seed(123)
+library(ggpubr)
+library(ggplot2)
+
+# plot
+ggboxplot(
+  ToothGrowth,
+  x = "dose",
+  y = "len",
+  color = "dose",
+  palette = c("#00AFBB", "#E7B800", "#FC4E07"),
+  add = "jitter",
+  shape = "dose"
+) + # adding results from stats analysis using `statsExpressions`
+  labs(
+    title = "Kruskall-Wallis test",
+    subtitle = oneway_anova(ToothGrowth, dose, len, type = "np")$expression[[1]]
+  )
+```
+
+```{r ggpubr2}
+# setup
+set.seed(123)
+library(ggplot2)
+library(ggpubr)
+library(statsExpressions)
+
+# basic plot
+gghistogram(
+  data.frame(
+    sex = factor(rep(c("F", "M"), each = 200)),
+    weight = c(rnorm(200, 55), rnorm(200, 58))
+  ),
+  x = "weight",
+  add = "mean",
+  rug = TRUE,
+  fill = "sex",
+  palette = c("#00AFBB", "#E7B800"),
+  add_density = TRUE
+) + # displaying stats results
+  labs(
+    title = "Yuen's two-sample test for trimmed means",
+    subtitle = two_sample_test(
+      data = data.frame(
+        sex = factor(rep(c("F", "M"), each = 200)),
+        weight = c(rnorm(200, 55), rnorm(200, 58))
+      ),
+      x = sex,
+      y = weight,
+      type = "robust"
+    )$expression[[1]]
+  )
+```
+
+## `ggiraphExtra`
+
+```{r ggiraphExtra1}
+# setup
+set.seed(123)
+library(ggplot2)
+library(ggiraphExtra)
+library(gcookbook)
+library(statsExpressions)
+
+# plot
+ggDot(heightweight, aes(sex, heightIn, fill = sex),
+  boxfill = "white",
+  binwidth = 0.4
+) +
+  labs(
+    title = "Mann-Whitney test",
+    subtitle = two_sample_test(heightweight, sex, heightIn, type = "nonparametric")$expression[[1]]
+  )
+```
+
+```{r ggiraphExtra2}
+# setup
+set.seed(123)
+library(moonBook)
+library(ggiraphExtra)
+library(statsExpressions)
+
+# plot
+ggSpine(
+  data = acs,
+  aes(x = Dx, fill = smoking),
+  addlabel = TRUE,
+  interactive = FALSE
+) +
+  labs(
+    x = "diagnosis",
+    title = "Pearson's chi-squared contingency table test for counts",
+    subtitle = contingency_table(acs, Dx, smoking, paired = FALSE)$expression[[1]]
+  )
+```
+
+# Suggestions
+
+If you find any bugs or have any suggestions/remarks, please file an issue on GitHub: <https://github.com/IndrajeetPatil/ggstatsplot/issues>

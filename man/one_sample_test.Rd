@@ -27,8 +27,6 @@ be accepted.}
 \item{x}{A numeric variable from the dataframe \code{data}.}
 
 \item{type}{A character specifying the type of statistical approach.
-Four possible options:
-
 \itemize{
 \item \code{"parametric"}
 \item \code{"nonparametric"}
@@ -63,7 +61,7 @@ corresponds to scale for fixed effects.}
 argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \emph{g}).}
 
 \item{nboot}{Number of bootstrap samples for computing confidence interval
-for the effect size (Default: \code{100}).}
+for the effect size (Default: \code{100L}).}
 
 \item{top.text}{Text to display on top of the Bayes Factor message. This is
 mostly relevant in the context of \code{ggstatsplot} functions.}

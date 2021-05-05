@@ -19,8 +19,8 @@
 #'
 #' @description
 #'
-#'  A dataframe containing details from results of a two-sample test and effect
-#'  size plus confidence intervals.
+#'  A dataframe containing results from a two-sample test and effect size plus
+#'  confidence intervals.
 #'
 #'  To see details about functions which are internally used to carry out these
 #'  analyses, see the following vignette-
