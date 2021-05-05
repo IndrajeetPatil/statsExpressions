@@ -77,7 +77,8 @@
 <meta property="og:title" content="Two-sample tests — two_sample_test" />
 <meta property="og:description" content="A dataframe containing details from results of a two-sample test and effect
 size plus confidence intervals.
-For more details, see-
+To see details about functions which are internally used to carry out these
+analyses, see the following vignette-
 https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" />
 <meta property="og:image" content="https://indrajeetpatil.github.io/statsExpressions/logo.png" />
 
@@ -181,7 +182,8 @@ https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" /
     <div class="ref-description">
     <p>A dataframe containing details from results of a two-sample test and effect
 size plus confidence intervals.</p>
-<p>For more details, see-
+<p>To see details about functions which are internally used to carry out these
+analyses, see the following vignette-
 <a href='https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html'>https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html</a></p>
     </div>
 
@@ -198,7 +200,7 @@ size plus confidence intervals.</p>
   var.equal <span class='op'>=</span> <span class='cn'>FALSE</span>,
   bf.prior <span class='op'>=</span> <span class='fl'>0.707</span>,
   tr <span class='op'>=</span> <span class='fl'>0.2</span>,
-  nboot <span class='op'>=</span> <span class='fl'>100</span>,
+  nboot <span class='op'>=</span> <span class='fl'>100L</span>,
   top.text <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
@@ -276,7 +278,11 @@ argument can be <code>"d"</code> (for Cohen's <em>d</em>) or <code>"g"</code> (f
     <tr>
       <th>bf.prior</th>
       <td><p>A number between <code>0.5</code> and <code>2</code> (default <code>0.707</code>), the prior
-width to use in calculating Bayes factors and posterior estimates.</p></td>
+width to use in calculating Bayes factors and posterior estimates. In
+addition to numeric arguments, several named values are also recognized:
+<code>"medium"</code>, <code>"wide"</code>, and <code>"ultrawide"</code>, corresponding to <em>r</em> scale values
+of 1/2, sqrt(2)/2, and 1, respectively. In case of an ANOVA, this value
+corresponds to scale for fixed effects.</p></td>
     </tr>
     <tr>
       <th>tr</th>
@@ -300,14 +306,6 @@ mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>The <em>stats::wilcox.test</em> function does not follow the same convention
-as <em>stats::t.test</em>. The sign of the <em>V</em> test statistic will always be
-positive since it is <strong>the sum of the positive signed ranks</strong>. Therefore,
-<em>V</em> will vary in magnitude but not significance based solely on the order
-of the grouping variable. Consider manually reordering your factor levels
-if appropriate as shown in the second example below.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>

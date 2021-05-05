@@ -76,7 +76,8 @@
 
 <meta property="og:title" content="One-way analysis of variance (ANOVA) — oneway_anova" />
 <meta property="og:description" content="A dataframe containing results for one-way ANOVA.
-For more details, see-
+To see details about functions which are internally used to carry out these
+analyses, see the following vignette-
 https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" />
 <meta property="og:image" content="https://indrajeetpatil.github.io/statsExpressions/logo.png" />
 
@@ -179,7 +180,8 @@ https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" /
 
     <div class="ref-description">
     <p>A dataframe containing results for one-way ANOVA.</p>
-<p>For more details, see-
+<p>To see details about functions which are internally used to carry out these
+analyses, see the following vignette-
 <a href='https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html'>https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html</a></p>
     </div>
 
@@ -196,7 +198,7 @@ https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" /
   var.equal <span class='op'>=</span> <span class='cn'>FALSE</span>,
   bf.prior <span class='op'>=</span> <span class='fl'>0.707</span>,
   tr <span class='op'>=</span> <span class='fl'>0.2</span>,
-  nboot <span class='op'>=</span> <span class='fl'>100</span>,
+  nboot <span class='op'>=</span> <span class='fl'>100L</span>,
   top.text <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
@@ -275,7 +277,11 @@ omega-squared).</p></td>
     <tr>
       <th>bf.prior</th>
       <td><p>A number between <code>0.5</code> and <code>2</code> (default <code>0.707</code>), the prior
-width to use in calculating Bayes factors and posterior estimates.</p></td>
+width to use in calculating Bayes factors and posterior estimates. In
+addition to numeric arguments, several named values are also recognized:
+<code>"medium"</code>, <code>"wide"</code>, and <code>"ultrawide"</code>, corresponding to <em>r</em> scale values
+of 1/2, sqrt(2)/2, and 1, respectively. In case of an ANOVA, this value
+corresponds to scale for fixed effects.</p></td>
     </tr>
     <tr>
       <th>tr</th>

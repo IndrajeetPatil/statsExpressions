@@ -77,7 +77,8 @@
 <meta property="og:title" content="One-sample tests — one_sample_test" />
 <meta property="og:description" content="A dataframe containing results from a one-sample test. The exact test and the
 effect size details contained will depend on the type argument.
-For more details, see-
+To see details about functions which are internally used to carry out these
+analyses, see the following vignette-
 https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" />
 <meta property="og:image" content="https://indrajeetpatil.github.io/statsExpressions/logo.png" />
 
@@ -181,7 +182,8 @@ https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" /
     <div class="ref-description">
     <p>A dataframe containing results from a one-sample test. The exact test and the
 effect size details contained will depend on the <code>type</code> argument.</p>
-<p>For more details, see-
+<p>To see details about functions which are internally used to carry out these
+analyses, see the following vignette-
 <a href='https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html'>https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html</a></p>
     </div>
 
@@ -251,7 +253,11 @@ of an error, try reducing the value of <code>tr</code>, which is by default set 
     <tr>
       <th>bf.prior</th>
       <td><p>A number between <code>0.5</code> and <code>2</code> (default <code>0.707</code>), the prior
-width to use in calculating Bayes factors and posterior estimates.</p></td>
+width to use in calculating Bayes factors and posterior estimates. In
+addition to numeric arguments, several named values are also recognized:
+<code>"medium"</code>, <code>"wide"</code>, and <code>"ultrawide"</code>, corresponding to <em>r</em> scale values
+of 1/2, sqrt(2)/2, and 1, respectively. In case of an ANOVA, this value
+corresponds to scale for fixed effects.</p></td>
     </tr>
     <tr>
       <th>effsize.type</th>
