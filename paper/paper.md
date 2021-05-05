@@ -15,16 +15,7 @@ affiliations:
   - name: Center for Humans and Machines, Max Planck Institute for Human Development, Berlin, Germany
     index: 1
 date: "2021-05-05"
-year: 2021
 bibliography: paper.bib
-output: rticles::joss_article
-csl: apa.csl
-journal: JOSS
-link-citations: yes
-header-includes:
-  - \usepackage{tabularx}
-  - \usepackage{booktabs}
-  - \usepackage{tikz}
 ---
 
 
@@ -97,11 +88,10 @@ Additionally, it relies on `easystats` packages [@Ben-Shachar2020;
 appropriate effect size/posterior estimates and their confidence/credible
 intervals.
 
-To illustrate the simplicity of this syntax, let's say we want to compare
-equality of a measure among two independent groups. We can use the
-`two_sample_test` function here. If we first run a parametric *t*-test and then
-decide to run a robust *t*-test instead, the syntax remains the same and the
-statistical approach can be modified by changing a single argument:
+To illustrate the simplicity of this syntax, let's say we want to run a
+two-sample *t*-test. If we first run a parametric *t*-test and then decide to
+run a robust *t*-test instead, the syntax remains the same and the statistical
+approach can be modified by changing a single argument:
 
 
 ```r
@@ -131,10 +121,7 @@ mtcars %>% two_sample_test(am, wt, type = "robust") # Yuen's t-test
 ```
 
 These functions are also compatible with other popular data manipulation
-packages. For example, we can use `dplyr` to repeat the same analysis across
-grouping variables.
-
-
+packages (see Appendix for an example).
 
 # Expressions for Plots
 
@@ -153,22 +140,8 @@ results in the context of a visualization is indeed a philosophy adopted by the
 `ggstatsplot` package [@Patil2021], and `statsExpressions` functions as its
 statistical processing backend.
 
-
-```r
-# creating a dataframe (for the `penguins` dataset from `palmerpenguins` package)
-res <- oneway_anova(penguins, species, body_mass_g, type = "nonparametric")
-
-# create a ridgeplot using `ggridges` package
-ggplot(penguins, aes(x = body_mass_g, y = species)) +
-  geom_density_ridges(
-    jittered_points = TRUE, quantile_lines = TRUE, scale = 0.9, vline_size = 1, 
-    vline_color = "red", position = position_raincloud(adjust_vlines = TRUE)
-  ) + # use 'expression' column to display results in the subtitle
-  labs(title = "Kruskal-Wallis Rank Sum Test", subtitle = res$expression[[1]])
-```
-
 \begin{figure}
-\includegraphics[width=1\linewidth]{paper_files/figure-latex/anova_example-1} \caption{Example illustrating how `statsExpressions` functions can be used to display results from a statistical test in a plot.}\label{fig:anova_example}
+\includegraphics[width=1\linewidth]{paper_files/figure-latex/anova_example-1} \caption{Example illustrating how `statsExpressions` functions can be used to display results from a statistical test in a plot. Code to create this figure is reported in Appendix.}\label{fig:anova_example}
 \end{figure}
 
 # Licensing and Availability
@@ -190,3 +163,63 @@ collaborative project created to facilitate the usage of `R` for statistical
 analyses. Thus, I would like to thank the [members of easystats](https://github.com/orgs/easystats/people) as well as the users.
 
 # References
+
+<div id="refs"></div>
+
+# Appendix
+
+## Example with `dplyr`
+
+We can use combination of `dplyr` and `statsExpressions` to repeat the same
+statistical analysis across grouping variables.
+
+
+```r
+# running one-sample proportion test for all levels of `cyl`
+mtcars %>%
+  group_by(cyl) %>%
+  group_modify(~ contingency_table(.x, am), .keep = TRUE) %>%
+  ungroup()
+#> # A tibble: 3 x 11
+#>     cyl statistic    df p.value method                                  
+#>   <dbl>     <dbl> <dbl>   <dbl> <chr>                                   
+#> 1     4     2.27      1 0.132   Chi-squared test for given probabilities
+#> 2     6     0.143     1 0.705   Chi-squared test for given probabilities
+#> 3     8     7.14      1 0.00753 Chi-squared test for given probabilities
+#>   estimate conf.level conf.low conf.high effectsize        expression
+#>      <dbl>      <dbl>    <dbl>     <dbl> <chr>             <list>    
+#> 1    0.344       0.95    0         0.917 Cramer's V (adj.) <language>
+#> 2    0           0.95    0         0     Cramer's V (adj.) <language>
+#> 3    0.685       0.95    0.127     1.18  Cramer's V (adj.) <language>
+```
+
+## Code to reproduce for Figure 2
+
+
+```r
+# needed libraries
+library(statsExpressions)
+library(ggplot2)
+library(ggridges)
+library(palmerpenguins) # `penguins` dataset is from this package
+
+# creating a dataframe
+res <- oneway_anova(penguins, species, body_mass_g, type = "nonparametric")
+
+# create a ridgeplot using `ggridges` package
+ggplot(penguins, aes(x = body_mass_g, y = species)) +
+  geom_density_ridges(
+    jittered_points = TRUE,
+    quantile_lines = TRUE,
+    scale = 0.9,
+    vline_size = 1,
+    vline_color = "red",
+    position = position_raincloud(adjust_vlines = TRUE)
+  ) + # use 'expression' column to display results in the subtitle
+  labs(
+    x = "Penguin species",
+    y = "Body mass (in grams)",
+    title = "Kruskal-Wallis Rank Sum Test",
+    subtitle = res$expression[[1]]
+  )
+```
