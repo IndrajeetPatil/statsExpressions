@@ -14,41 +14,35 @@ authors:
 affiliations:
   - name: Center for Humans and Machines, Max Planck Institute for Human Development, Berlin, Germany
     index: 1
-date: "2021-05-03"
+date: "2021-05-05"
 year: 2021
 bibliography: paper.bib
+output: rticles::joss_article
+csl: apa.csl
+journal: JOSS
+link-citations: yes
+header-includes:
+  - \usepackage{tabularx}
+  - \usepackage{booktabs}
+  - \usepackage{tikz}
 ---
 
 
 
 # Summary
 
-The `statsExpressions` package is designed to facilitate producing dataframes
-with rich statistical details for the most common types of statistical
-approaches and tests: parametric, nonparametric, robust, and Bayesian *t*-test,
-one-way ANOVA, correlation analyses, contingency table analyses, and
-meta-analyses. The functions are pipe-friendly and provide a consistent syntax
-to work with tidy data. These dataframes additionally contain expressions with
-statistical details, and can be used in graphing packages to display these
-details.
+The `statsExpressions` package has two key aims: to provide a consistent syntax
+to do statistical analysis with tidy data, and to provide statistical
+expressions (i.e., a pre-formatted in-text statistical result) for plotting
+functions. Currently, it supports common types of statistical approaches and
+tests: parametric, nonparametric, robust, and Bayesian *t*-test, one-way ANOVA,
+correlation analyses, contingency table analyses, and meta-analyses. The
+functions are pipe-friendly and compatible with tidy data.
 
 # Statement of need
 
-The aim of this package is to provide an approachable and intuitive syntax to
-carry out common statistical tests across diverse statistical approaches.
-
-# Comparison to Other Packages
-
-Behind the scenes, `statsExpressions` uses `stats` package for parametric and
-non-parametric [@base2021], `WRS2` package for robust [@Mair2020], and
-`BayesFactor` package for Bayesian statistics [@Morey2020]. Additionally,
-random-effects meta-analysis is carried out using `metafor` (parametric)
-[@Viechtbauer2010], `metaplus` (robust) [@Beath2016], and `metaBMA` (Bayesian)
-[@Heck2019] packages. So one can naturally ask why there needs to be another
-package that wraps around these packages.
-
-There is a lot of diversity among these packages in terms of their syntax and
-expected input type that can make it difficult to switch from one statistical
+Statistical packages exhibit substantial diversity in terms of their syntax and
+expected input type. This can make it difficult to switch from one statistical
 approach to another. For example, some functions expect vectors as inputs, while
 others expect dataframes. Depending on whether it is a repeated measures design
 or not, different functions might expect data to be in wide or long format. Some
@@ -56,24 +50,27 @@ functions can internally omit missing values, while other functions error in
 their presence. Furthermore, if someone wishes to utilize the objects returned
 by these packages downstream in their workflow, this is not straightforward
 either because even functions from the same package can return a list, a matrix,
-an array, a dataframe, etc., depending on the function. So on and so forth.
-
-The result of sustained exposure to such inconsistencies is that data
-exploration can become a cognitively demanding task and discourage users to
-explore different statistical approaches. In the long run, this might even
-solidify into a habit of sticking to the defaults without giving much thought to
-the alternative approaches (e.g., exploring if Bayesian hypothesis testing is to
-be preferred over null hypothesis significance testing in context of the
-problem).
+an array, a dataframe, etc., depending on the function.
 
 This is where `statsExpressions` comes in: It can be thought of as a unified
 portal through which most of the functionality in these underlying packages can
-be accessed, with a little to no cognitive overhead. The package offers just six
-primary functions that let users choose a statistical approach without changing
-the syntax. The users are always expected to provide a dataframe in tidy format
-[@Wickham2019] to functions, all functions work with missing data, and they
-always return a dataframe that can be further utilized downstream in the
-pipeline (for a visualization, e.g.).
+be accessed, with a simpler interface and no requirement to change data format.
+
+# Comparison to Other Packages
+
+Unlike `broom` [@Robinson2021] or `parameters` [@Lüdecke2020parameters], the
+goal of `statsExpressions` is not to convert model objects into tidy dataframes,
+but to provide a consistent and easy syntax to carry out statistical tests.
+Additionally, none of these packages return statistical expressions.
+
+# Tidy Dataframes from Statistical Analysis
+
+The package offers six primary functions that let users choose a statistical
+approach without changing the syntax (i.e., by only specifying a single
+argument). The users are always expected to provide a dataframe in tidy format
+[@Wickham2019], and all functions work with missing data. Moreover, they always
+return a dataframe that can be further utilized downstream in the workflow (for
+a visualization, e.g.).
 
 Function | Parametric | Non-parametric | Robust | Bayesian
 ------------------ | ---- | ----- | ----| ----- 
@@ -89,32 +86,26 @@ statistical approaches they support. For a more detailed description of the
 tests and outputs from these functions, the readers are encouraged to read
 vignettes on the package website: <https://indrajeetpatil.github.io/statsExpressions/articles/>.
 
-Note that, unlike `broom` [@Robinson2021] or `parameters`
-[@Lüdecke2020parameters], the goal of `statsExpressions` is not to convert
-model objects into tidy dataframes, but to provide a consistent and easy syntax
-to carry out statistical tests.
-
-# Tidy Dataframes from Statistical Analysis
-
-All functions return dataframes containing exhaustive details from inferential
-statistics, and appropriate effect size/posterior estimates and their
-confidence/credible intervals. The package internally relies on `easystats`
-ecosystem of packages to achieve this [@Ben-Shachar2020; @Lüdecke2020parameters;
-@Lüdecke2020performance; @Lüdecke2019; @Makowski2019; @Makowski2020].
+`statsExpressions` internally relies on `stats` package for parametric and
+non-parametric [@base2021], `WRS2` package for robust [@Mair2020], and
+`BayesFactor` package for Bayesian statistics [@Morey2020]. The random-effects
+meta-analysis is carried out using `metafor` (parametric) [@Viechtbauer2010],
+`metaplus` (robust) [@Beath2016], and `metaBMA` (Bayesian) [@Heck2019] packages.
+Additionally, it relies on `easystats` packages [@Ben-Shachar2020;
+@Lüdecke2020parameters;
+@Lüdecke2020performance; @Lüdecke2019; @Makowski2019; @Makowski2020] to compute
+appropriate effect size/posterior estimates and their confidence/credible
+intervals.
 
 To illustrate the simplicity of this syntax, let's say we want to compare
 equality of a measure among two independent groups. We can use the
-`two_sample_test` function here.
-
-If we first run a parametric *t*-test:
+`two_sample_test` function here. If we first run a parametric *t*-test and then
+decide to run a robust *t*-test instead, the syntax remains the same and the
+statistical approach can be modified by changing a single argument:
 
 
 ```r
-set.seed(123) # for reproducibility
-library(statsExpressions) # loading needed package
-
-# Welch's t-test
-mtcars %>% two_sample_test(am, wt, type = "parametric")
+mtcars %>% two_sample_test(am, wt, type = "parametric") # Welch's t-test
 #> # A tibble: 1 x 14
 #>   term  group mean.group1 mean.group2 statistic df.error    p.value
 #>   <chr> <chr>       <dbl>       <dbl>     <dbl>    <dbl>      <dbl>
@@ -125,16 +116,8 @@ mtcars %>% two_sample_test(am, wt, type = "parametric")
 #>   expression
 #>   <list>    
 #> 1 <language>
-```
 
-And then decide to run, instead, a robust *t*-test. The syntax remains the same:
-
-
-```r
-set.seed(123) # for reproducibility
-
-# Yuen's t-test
-mtcars %>% two_sample_test(am, wt, type = "robust")
+mtcars %>% two_sample_test(am, wt, type = "robust") # Yuen's t-test
 #> # A tibble: 1 x 10
 #>   statistic df.error   p.value
 #>       <dbl>    <dbl>     <dbl>
@@ -147,76 +130,45 @@ mtcars %>% two_sample_test(am, wt, type = "robust")
 #> 1     0.977       0.95 Explanatory measure of effect size <language>
 ```
 
-These functions also play nicely with other popular data manipulation packages.
-For example, we can use `dplyr` to repeat the same analysis across *all* levels
-of a certain grouping variable:
+These functions are also compatible with other popular data manipulation
+packages. For example, we can use `dplyr` to repeat the same analysis across
+grouping variables.
 
 
-```r
-set.seed(123) # for reproducibility
-library(dplyr) # loading needed package for groupwise analysis
-
-# running one-sample proportion test for all levels of `cyl`
-mtcars %>%
-  group_by(cyl) %>%
-  group_modify(~ contingency_table(.x, am), .keep = TRUE) %>%
-  ungroup()
-#> # A tibble: 3 x 11
-#>     cyl statistic    df p.value method                                  
-#>   <dbl>     <dbl> <dbl>   <dbl> <chr>                                   
-#> 1     4     2.27      1 0.132   Chi-squared test for given probabilities
-#> 2     6     0.143     1 0.705   Chi-squared test for given probabilities
-#> 3     8     7.14      1 0.00753 Chi-squared test for given probabilities
-#>   estimate conf.level conf.low conf.high effectsize        expression
-#>      <dbl>      <dbl>    <dbl>     <dbl> <chr>             <list>    
-#> 1    0.344       0.95    0         0.917 Cramer's V (adj.) <language>
-#> 2    0           0.95    0         0     Cramer's V (adj.) <language>
-#> 3    0.685       0.95    0.127     1.18  Cramer's V (adj.) <language>
-```
 
 # Expressions for Plots
 
 In addition to other details contained in the dataframe, there is also a column
-titled `expression`, which contains expression with statistical details and can
-be displayed in a plot (Figure 1). Displaying statistical results in the context
-of a visualization is indeed a philosophy adopted by the `ggstatsplot` package
-[@Patil2021], and `statsExpressions` functions as its statistical processing
-backend.
+titled `expression`, which contains a pre-formatted text with statistical
+details. These expressions (Figure 1) attempt to follow the gold standard in
+statistical reporting for both Bayesian [@van2020jasp] and Frequentist
+[@american2019publication] frameworks.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{stats_reporting_format} \caption{The templates used in `statsExpressions` to display statistical details in a plot.}\label{fig:expr_template}
+\end{figure}
+
+This expression be easily displayed in a plot (Figure 2). Displaying statistical
+results in the context of a visualization is indeed a philosophy adopted by the
+`ggstatsplot` package [@Patil2021], and `statsExpressions` functions as its
+statistical processing backend.
 
 
 ```r
-# loading needed packages
-set.seed(123) # for reproducibility
-library(ggplot2)
-library(palmerpenguins) # for data
-library(ggridges) # for creating a ridgeplot
-
-# creating a dataframe with results and expression
+# creating a dataframe (for the `penguins` dataset from `palmerpenguins` package)
 res <- oneway_anova(penguins, species, body_mass_g, type = "nonparametric")
 
 # create a ridgeplot using `ggridges` package
 ggplot(penguins, aes(x = body_mass_g, y = species)) +
   geom_density_ridges(
-    jittered_points = TRUE, quantile_lines = TRUE,
-    scale = 0.9, vline_size = 1, vline_color = "red",
-    position = position_raincloud(adjust_vlines = TRUE)
+    jittered_points = TRUE, quantile_lines = TRUE, scale = 0.9, vline_size = 1, 
+    vline_color = "red", position = position_raincloud(adjust_vlines = TRUE)
   ) + # use 'expression' column to display results in the subtitle
-  labs(
-    title = "Kruskal-Wallis Rank Sum Test",
-    subtitle = res$expression[[1]]
-  )
+  labs(title = "Kruskal-Wallis Rank Sum Test", subtitle = res$expression[[1]])
 ```
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{paper_files/figure-latex/robanova-1} \caption{Example illustrating how `statsExpressions` functions can be used to display results from a statistical test in a plot.}\label{fig:robanova}
-\end{figure}
-
-The details contained in these expressions (Figure 2) attempt to follow the gold
-standard in statistical reporting for both Bayesian [@van2020jasp] and
-non-Bayesian [@american1985publication] framework tests.
-
-\begin{figure}
-\includegraphics[width=1\linewidth]{stats_reporting_format} \caption{The templates used in `statsExpressions` to display statistical details in a plot.}\label{fig:expr_template}
+\includegraphics[width=1\linewidth]{paper_files/figure-latex/anova_example-1} \caption{Example illustrating how `statsExpressions` functions can be used to display results from a statistical test in a plot.}\label{fig:anova_example}
 \end{figure}
 
 # Licensing and Availability

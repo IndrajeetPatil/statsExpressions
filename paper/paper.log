@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.4.24)  3 MAY 2021 12:26
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.4.24)  5 MAY 2021 11:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1206,7 +1206,7 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <8> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 361.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 375.
 [1
 
 ]
@@ -1223,6 +1223,10 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
 [2]
+File: stats_reporting_format.png Graphic file (type bmp)
+<stats_reporting_format.png>
+File: paper_files/figure-latex/anova_example-1.pdf Graphic file (type pdf)
+<use paper_files/figure-latex/anova_example-1.pdf>
 File: /Users/patil/Library/R/4.0/library/rticles/rmarkdown/templates/joss/resou
 rces/JOSS-logo.png Graphic file (type bmp)
 </Users/patil/Library/R/4.0/library/rticles/rmarkdown/templates/joss/resources/
@@ -1236,24 +1240,7 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
 [3]
-File: paper_files/figure-latex/robanova-1.pdf Graphic file (type pdf)
-<use paper_files/figure-latex/robanova-1.pdf>
-File: stats_reporting_format.png Graphic file (type bmp)
-<stats_reporting_format.png>
-File: /Users/patil/Library/R/4.0/library/rticles/rmarkdown/templates/joss/resou
-rces/JOSS-logo.png Graphic file (type bmp)
-</Users/patil/Library/R/4.0/library/rticles/rmarkdown/templates/joss/resources/
-JOSS-logo.png>
-
-Package fancyhdr Warning: \headheight is too small (62.59596pt): 
-(fancyhdr)                Make it at least 63.55022pt, for example:
-(fancyhdr)                \setlength{\headheight}{63.55022pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
-
-[4]
-Underfull \hbox (badness 1082) in paragraph at lines 602--607
+Underfull \hbox (badness 1082) in paragraph at lines 538--543
 \TU/lmr/m/it/10 model averaging for random and fixed effects meta-analysis\TU/l
 mr/m/n/10 . Retrieved from
  []
@@ -1270,7 +1257,7 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
-[5]
+[4]
 File: /Users/patil/Library/R/4.0/library/rticles/rmarkdown/templates/joss/resou
 rces/JOSS-logo.png Graphic file (type bmp)
 </Users/patil/Library/R/4.0/library/rticles/rmarkdown/templates/joss/resources/
@@ -1283,7 +1270,7 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
-[6] (./paper.aux)
+[5] (./paper.aux)
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: A5CBF23631192BD4E07FFAD93AA66EED;1221.
 Package logreq Info: Writing requests to 'paper.run.xml'.
@@ -1292,11 +1279,11 @@ Package logreq Info: Writing requests to 'paper.run.xml'.
  ) 
 Here is how much of TeX's memory you used:
  35201 strings out of 478918
- 706242 string characters out of 5865955
- 1499290 words of memory out of 5000000
+ 706282 string characters out of 5865955
+ 1501290 words of memory out of 5000000
  54485 multiletter control sequences out of 15000+600000
  411839 words of font info for 80 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  95i,13n,103p,1194b,806s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on paper.pdf (6 pages).
+Output written on paper.pdf (5 pages).
