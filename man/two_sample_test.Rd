@@ -17,7 +17,7 @@ two_sample_test(
   var.equal = FALSE,
   bf.prior = 0.707,
   tr = 0.2,
-  nboot = 100,
+  nboot = 100L,
   top.text = NULL,
   ...
 )
@@ -72,7 +72,11 @@ argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \em
     (or Satterthwaite) approximation to the degrees of freedom is used.}
 
 \item{bf.prior}{A number between \code{0.5} and \code{2} (default \code{0.707}), the prior
-width to use in calculating Bayes factors and posterior estimates.}
+width to use in calculating Bayes factors and posterior estimates. In
+addition to numeric arguments, several named values are also recognized:
+\code{"medium"}, \code{"wide"}, and \code{"ultrawide"}, corresponding to \emph{r} scale values
+of 1/2, sqrt(2)/2, and 1, respectively. In case of an ANOVA, this value
+corresponds to scale for fixed effects.}
 
 \item{tr}{Trim level for the mean when carrying out \code{robust} tests. In case
 of an error, try reducing the value of \code{tr}, which is by default set to
@@ -90,16 +94,9 @@ mostly relevant in the context of \code{ggstatsplot} functions.}
 A dataframe containing details from results of a two-sample test and effect
 size plus confidence intervals.
 
-For more details, see-
+To see details about functions which are internally used to carry out these
+analyses, see the following vignette-
 \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
-}
-\note{
-The \emph{stats::wilcox.test} function does not follow the same convention
-as \emph{stats::t.test}. The sign of the \emph{V} test statistic will always be
-positive since it is \strong{the sum of the positive signed ranks}. Therefore,
-\emph{V} will vary in magnitude but not significance based solely on the order
-of the grouping variable. Consider manually reordering your factor levels
-if appropriate as shown in the second example below.
 }
 \examples{
 \donttest{

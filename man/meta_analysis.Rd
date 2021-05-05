@@ -54,12 +54,14 @@ function.}
 \description{
 A dataframe containing results from random-effects meta-analysis.
 
-For more details, see-
+To see details about functions which are internally used to carry out these
+analyses, see the following vignette-
 \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }
 \note{
 \strong{Important}: The function assumes that you have already downloaded
 the needed package (\code{metafor}, \code{metaplus}, or \code{metaBMA}) for meta-analysis.
+If they are not available, you will be asked to install them.
 }
 \examples{
 \donttest{

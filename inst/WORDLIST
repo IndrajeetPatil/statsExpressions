@@ -1,9 +1,9 @@
 AKP
-APA
 Algina
 AppVeyor
 Codecov
 Cramer's
+Cramer’s
 DOI
 Github
 Gitter
@@ -15,8 +15,10 @@ Keselman
 LDLF
 LFHD
 Licence
+Lifecycle
 MPAA
 McNemar's
+McNemar’s
 NumGenre
 ORCID
 Otterstetter
@@ -37,7 +39,6 @@ bayesian
 bayestestR
 biserial
 changedate
-codecov
 conf
 df
 disgustingness
@@ -46,7 +47,6 @@ effectsize
 et
 freighteningness
 ggstatsplot
-gh
 github
 hexsticker
 htests
@@ -60,6 +60,8 @@ mpaa
 noncentrality
 normals
 patilindrajeets
+pkgdown
+pre
 setosa
 sphericity
 svg
@@ -68,5 +70,11 @@ ungroups
 versicolor
 virginica
 widehat
-wilcox
 yellowgreen
+β
+δ
+η
+ξ
+χ
+ω
+ϵ

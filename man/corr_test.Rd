@@ -54,7 +54,11 @@ of an error, try reducing the value of \code{tr}, which is by default set to
 \code{0.2}. Lowering the value might help.}
 
 \item{bf.prior}{A number between \code{0.5} and \code{2} (default \code{0.707}), the prior
-width to use in calculating Bayes factors and posterior estimates.}
+width to use in calculating Bayes factors and posterior estimates. In
+addition to numeric arguments, several named values are also recognized:
+\code{"medium"}, \code{"wide"}, and \code{"ultrawide"}, corresponding to \emph{r} scale values
+of 1/2, sqrt(2)/2, and 1, respectively. In case of an ANOVA, this value
+corresponds to scale for fixed effects.}
 
 \item{top.text}{Text to display on top of the Bayes Factor message. This is
 mostly relevant in the context of \code{ggstatsplot} functions.}
@@ -63,8 +67,7 @@ mostly relevant in the context of \code{ggstatsplot} functions.}
 }
 \description{
 A dataframe containing results from correlation test with confidence
-intervals for the correlation coefficient estimate. Results are extracted
-via \code{correlation::correlation}.
+intervals for the correlation coefficient estimate.
 }
 \examples{
 \donttest{
@@ -90,6 +93,7 @@ corr_test(
 }
 }
 \references{
-For more details, see-
+To see details about functions which are internally used to carry
+out these analyses, see the following vignette-
 \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }

@@ -4,10 +4,10 @@
 #' @description
 #'
 #'  A dataframe containing results from correlation test with confidence
-#'  intervals for the correlation coefficient estimate. Results are extracted
-#'  via `correlation::correlation`.
+#'  intervals for the correlation coefficient estimate.
 #'
-#' @references For more details, see-
+#' @references To see details about functions which are internally used to carry
+#'   out these analyses, see the following vignette-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @param x The column in `data` containing the explanatory variable to be

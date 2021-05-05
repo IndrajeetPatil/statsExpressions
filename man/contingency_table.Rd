@@ -88,7 +88,8 @@ mostly relevant in the context of \code{ggstatsplot} functions.}
 A dataframe containing results from for contingency table analysis or
 goodness of fit test.
 
-For more details, see-
+To see details about functions which are internally used to carry out these
+analyses, see the following vignette-
 \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }
 \examples{

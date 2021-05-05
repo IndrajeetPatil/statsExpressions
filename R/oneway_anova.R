@@ -5,7 +5,8 @@
 #'
 #' A dataframe containing results for one-way ANOVA.
 #'
-#' For more details, see-
+#' To see details about functions which are internally used to carry out these
+#' analyses, see the following vignette-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @inheritParams ipmisc::long_to_wide_converter
@@ -32,7 +33,11 @@
 #' @param nboot Number of bootstrap samples for computing confidence interval
 #'   for the effect size (Default: `100`).
 #' @param bf.prior A number between `0.5` and `2` (default `0.707`), the prior
-#'   width to use in calculating Bayes factors and posterior estimates.
+#'   width to use in calculating Bayes factors and posterior estimates. In
+#'   addition to numeric arguments, several named values are also recognized:
+#'   `"medium"`, `"wide"`, and `"ultrawide"`, corresponding to *r* scale values
+#'   of 1/2, sqrt(2)/2, and 1, respectively. In case of an ANOVA, this value
+#'   corresponds to scale for fixed effects.
 #' @inheritParams two_sample_test
 #' @inheritParams expr_template
 #' @inheritParams bf_extractor
@@ -165,7 +170,7 @@ oneway_anova <- function(data,
                          var.equal = FALSE,
                          bf.prior = 0.707,
                          tr = 0.2,
-                         nboot = 100,
+                         nboot = 100L,
                          top.text = NULL,
                          ...) {
 

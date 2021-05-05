@@ -7,7 +7,7 @@
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)                  | [![Build Status](https://travis-ci.org/IndrajeetPatil/statsExpressions.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/statsExpressions)                                                      | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)     | [![GitHub version](https://img.shields.io/badge/GitHub-1.0.0-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/statsExpressions/)                         | [![Website](https://img.shields.io/badge/website-statsExpressions-orange.svg?colorB=E91E63)](https://indrajeetpatil.github.io/statsExpressions/)                          |
 | [![CRAN Checks](https://cranchecks.info/badges/summary/statsExpressions)](https://cran.r-project.org/web/checks/check_results_statsExpressions.html)      | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/statsExpressions?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/statsExpressions) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)   | [![Forks](https://img.shields.io/badge/forks-15-blue.svg)](https://github.com/IndrajeetPatil/statsExpressions/)                                                          | [![Features](https://img.shields.io/badge/features-statsExpressions-orange.svg?colorB=2196F3)](https://indrajeetpatil.github.io/statsExpressions/reference/index.html)    |
-| [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)                                                | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)                                                                        | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Github Issues](https://img.shields.io/badge/issues-13-red.svg)](https://github.com/IndrajeetPatil/statsExpressions/issues)                                            | [![pkgdown](https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/pkgdown/badge.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/actions)            |
+| [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)                                                | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)                                                                        | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Github Issues](https://img.shields.io/badge/issues-12-red.svg)](https://github.com/IndrajeetPatil/statsExpressions/issues)                                            | [![pkgdown](https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/pkgdown/badge.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/actions)            |
 | [![code size](https://img.shields.io/github/languages/code-size/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/statsExpressions/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/statsExpressions?branch=master)             | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)  | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/statsExpressions.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/statsExpressions) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2074621.svg)](https://doi.org/10.5281/zenodo.3386122)                                                                 |
 | [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                          | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master)                   | [![lints](https://github.com/IndrajeetPatil/statsExpressions/workflows/lint/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions)                 | [![Last-changedate](https://img.shields.io/badge/last%20change-2021--05--05-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master)         | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master) |
 | [![status](https://tinyverse.netlify.com/badge/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)                                    | [![R build status](https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions)                                            | [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/statsExpressions/community)                                                | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)                                                              | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/statsExpressions/issues)      |
@@ -700,6 +700,142 @@ ggplot(iris, aes(x = Species, y = Sepal.Length)) +
 
 <img src="man/figures/README-custom_expr-1.png" width="100%" />
 
+# Summary of tests and effect sizes
+
+Here a go-to summary about statistical test carried out and the returned
+effect size for each function is provided. This should be useful if one
+needs to find out more information about how an argument is resolved in
+the underlying package or if one wishes to browse the source code. So,
+for example, if you want to know more about how one-way
+(between-subjects) ANOVA, you can run `?stats::oneway.test` in your R
+console.
+
+## `two_sample_test` + `oneway_anova`
+
+No. of groups: `2` =&gt; `two_sample_test`<br> No. of groups: `> 2`
+=&gt; `oneway_anova`
+
+### between-subjects
+
+Following (between-subjects) tests are carried out for each type of
+analyses-
+
+| Type           | No. of groups | Test                                            | Function used          |
+|----------------|---------------|-------------------------------------------------|------------------------|
+| Parametric     | &gt; 2        | Fisher’s or Welch’s one-way ANOVA               | `stats::oneway.test`   |
+| Non-parametric | &gt; 2        | Kruskal–Wallis one-way ANOVA                    | `stats::kruskal.test`  |
+| Robust         | &gt; 2        | Heteroscedastic one-way ANOVA for trimmed means | `WRS2::t1way`          |
+| Bayes Factor   | &gt; 2        | Fisher’s ANOVA                                  | `BayesFactor::anovaBF` |
+| Parametric     | 2             | Student’s or Welch’s *t*-test                   | `stats::t.test`        |
+| Non-parametric | 2             | Mann–Whitney *U* test                           | `stats::wilcox.test`   |
+| Robust         | 2             | Yuen’s test for trimmed means                   | `WRS2::yuen`           |
+| Bayesian       | 2             | Student’s *t*-test                              | `BayesFactor::ttestBF` |
+
+Following effect sizes (and confidence intervals/CI) are available for
+each type of test-
+
+| Type           | No. of groups | Effect size                                                  | CI? | Function used                                          |
+|----------------|---------------|--------------------------------------------------------------|-----|--------------------------------------------------------|
+| Parametric     | &gt; 2        | *η*<sub>*p*</sub><sup>2</sup>, *ω*<sub>*p*</sub><sup>2</sup> | ✅   | `effectsize::omega_squared`, `effectsize::eta_squared` |
+| Non-parametric | &gt; 2        | *ϵ*<sub>*o**r**d**i**n**a**l*</sub><sup>2</sup>              | ✅   | `effectsize::rank_epsilon_squared`                     |
+| Robust         | &gt; 2        | *ξ* (Explanatory measure of effect size)                     | ✅   | `WRS2::t1way`                                          |
+| Bayes Factor   | &gt; 2        | *R*<sub>*p**o**s**t**e**r**i**o**r*</sub><sup>2</sup>        | ✅   | `performance::r2_bayes`                                |
+| Parametric     | 2             | Cohen’s *d*, Hedge’s *g*                                     | ✅   | `effectsize::cohens_d`, `effectsize::hedges_g`         |
+| Non-parametric | 2             | *r* (rank-biserial correlation)                              | ✅   | `effectsize::rank_biserial`                            |
+| Robust         | 2             | *ξ* (Explanatory measure of effect size)                     | ✅   | `WRS2::yuen.effect.ci`                                 |
+| Bayesian       | 2             | *δ*<sub>*p**o**s**t**e**r**i**o**r*</sub>                    | ✅   | `bayestestR::describe_posterior`                       |
+
+### within-subjects
+
+Following (within-subjects) tests are carried out for each type of
+analyses-
+
+| Type           | No. of groups | Test                                                              | Function used          |
+|----------------|---------------|-------------------------------------------------------------------|------------------------|
+| Parametric     | &gt; 2        | One-way repeated measures ANOVA                                   | `afex::aov_ez`         |
+| Non-parametric | &gt; 2        | Friedman rank sum test                                            | `stats::friedman.test` |
+| Robust         | &gt; 2        | Heteroscedastic one-way repeated measures ANOVA for trimmed means | `WRS2::rmanova`        |
+| Bayes Factor   | &gt; 2        | One-way repeated measures ANOVA                                   | `BayesFactor::anovaBF` |
+| Parametric     | 2             | Student’s *t*-test                                                | `stats::t.test`        |
+| Non-parametric | 2             | Wilcoxon signed-rank test                                         | `stats::wilcox.test`   |
+| Robust         | 2             | Yuen’s test on trimmed means for dependent samples                | `WRS2::yuend`          |
+| Bayesian       | 2             | Student’s *t*-test                                                | `BayesFactor::ttestBF` |
+
+Following effect sizes (and confidence intervals/CI) are available for
+each type of test-
+
+| Type           | No. of groups | Effect size                                                                                     | CI? | Function used                                                   |
+|----------------|---------------|-------------------------------------------------------------------------------------------------|-----|-----------------------------------------------------------------|
+| Parametric     | &gt; 2        | *η*<sub>*p*</sub><sup>2</sup>, *ω*<sub>*p*</sub><sup>2</sup>                                    | ✅   | `effectsize::omega_squared`, `effectsize::eta_squared`          |
+| Non-parametric | &gt; 2        | *W*<sub>*K**e**n**d**a**l**l*</sub> (Kendall’s coefficient of concordance)                      | ✅   | `effectsize::kendalls_w`                                        |
+| Robust         | &gt; 2        | *δ*<sub>*R* − *a**v**g*</sub><sup>*A**K**P*</sup>                                               | ✅   | Algina-Keselman-Penfield robust standardized difference average |
+| Bayes Factor   | &gt; 2        | *R*<sub>*p**o**s**t**e**r**i**o**r*</sub><sup>2</sup>                                           | ✅   | `performance::r2_bayes`                                         |
+| Parametric     | 2             | Cohen’s *d*, Hedge’s *g*                                                                        | ✅   | `effectsize::cohens_d`, `effectsize::hedges_g`                  |
+| Non-parametric | 2             | *r* (rank-biserial correlation)                                                                 | ✅   | `effectsize::rank_biserial`                                     |
+| Robust         | 2             | *δ*<sub>*R*</sub><sup>*A**K**P*</sup> (Algina-Keselman-Penfield robust standardized difference) | ✅   | `WRS2::dep.effect`                                              |
+| Bayesian       | 2             | *δ*<sub>*p**o**s**t**e**r**i**o**r*</sub>                                                       | ✅   | `bayestestR::describe_posterior`                                |
+
+## `one_sample_test`
+
+Following tests are carried out for each type of analyses-
+
+| Type           | Test                                     | Function used          |
+|----------------|------------------------------------------|------------------------|
+| Parametric     | One-sample Student’s *t*-test            | `stats::t.test`        |
+| Non-parametric | One-sample Wilcoxon test                 | `stats::wilcox.test`   |
+| Robust         | Bootstrap-*t* method for one-sample test | `trimcibt` (custom)    |
+| Bayesian       | One-sample Student’s *t*-test            | `BayesFactor::ttestBF` |
+
+Following effect sizes (and confidence intervals/CI) are available for
+each type of test-
+
+| Type           | Effect size                               | CI? | Function used                                  |
+|----------------|-------------------------------------------|-----|------------------------------------------------|
+| Parametric     | Cohen’s *d*, Hedge’s *g*                  | ✅   | `effectsize::cohens_d`, `effectsize::hedges_g` |
+| Non-parametric | *r* (rank-biserial correlation)           | ✅   | `effectsize::rank_biserial`                    |
+| Robust         | trimmed mean                              | ✅   | `trimcibt` (custom)                            |
+| Bayes Factor   | *δ*<sub>*p**o**s**t**e**r**i**o**r*</sub> | ✅   | `bayestestR::describe_posterior`               |
+
+## `corr_test`
+
+Following tests are carried out for each type of analyses. Additionally,
+the correlation coefficients (and their confidence intervals) are used
+as effect sizes-
+
+| Type           | Test                                       | CI? | Function used              |
+|----------------|--------------------------------------------|-----|----------------------------|
+| Parametric     | Pearson’s correlation coefficient          | ✅   | `correlation::correlation` |
+| Non-parametric | Spearman’s rank correlation coefficient    | ✅   | `correlation::correlation` |
+| Robust         | Winsorized Pearson correlation coefficient | ✅   | `correlation::correlation` |
+| Bayesian       | Pearson’s correlation coefficient          | ✅   | `correlation::correlation` |
+
+## `contingency_table`
+
+Following tests are carried out for each type of analyses-
+
+| Type of data | Design                      | Test                                   | Function used         |
+|--------------|-----------------------------|----------------------------------------|-----------------------|
+| Unpaired     | *n* × *p* contingency table | Pearson’s *χ*<sup>2</sup> test         | `stats::chisq.test`   |
+| Paired       | *n* × *p* contingency table | McNemar’s *χ*<sup>2</sup> test         | `stats::mcnemar.test` |
+| Frequency    | *n* × 1 contingency table   | Goodness of fit (*χ*<sup>2</sup> test) | `stats::chisq.test`   |
+
+Following effect sizes (and confidence intervals/CI) are available for
+each type of test-
+
+| Test                           | Effect size  | CI? | Function used           |
+|--------------------------------|--------------|-----|-------------------------|
+| Pearson’s *χ*<sup>2</sup> test | Cramer’s *V* | ✅   | `effectsize::cramers_v` |
+| McNemar’s test                 | Cohen’s *g*  | ✅   | `effectsize::cohens_g`  |
+| Goodness of fit                | Cramer’s *V* | ✅   | `effectsize::cramers_v` |
+
+## `meta_analysis`
+
+| Type       | Test                                             | Effect size | CI? | Function used          |
+|------------|--------------------------------------------------|-------------|-----|------------------------|
+| Parametric | Meta-analysis via random-effects models          | *β*         | ✅   | `metafor::metafor`     |
+| Robust     | Meta-analysis via robust random-effects models   | *β*         | ✅   | `metaplus::metaplus`   |
+| Bayes      | Meta-analysis via Bayesian random-effects models | *β*         | ✅   | `metaBMA::meta_random` |
+
 # Usage in `ggstatsplot`
 
 Note that these functions were initially written to display results from
@@ -718,12 +854,6 @@ the expressions are displayed in the subtitle-
 
 The hexsticker was generously designed by Sarah Otterstetter (Max Planck
 Institute for Human Development, Berlin).
-
-# Code coverage
-
-As the code stands right now, here is the code coverage for all primary
-functions involved:
-<https://codecov.io/gh/IndrajeetPatil/statsExpressions/tree/master/R>
 
 # Contributing
 

@@ -22,15 +22,9 @@
 #'  A dataframe containing details from results of a two-sample test and effect
 #'  size plus confidence intervals.
 #'
-#'  For more details, see-
+#'  To see details about functions which are internally used to carry out these
+#'  analyses, see the following vignette-
 #'  \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
-#'
-#' @note The *stats::wilcox.test* function does not follow the same convention
-#'   as *stats::t.test*. The sign of the *V* test statistic will always be
-#'   positive since it is **the sum of the positive signed ranks**. Therefore,
-#'   *V* will vary in magnitude but not significance based solely on the order
-#'   of the grouping variable. Consider manually reordering your factor levels
-#'   if appropriate as shown in the second example below.
 #'
 #' @examples
 #' \donttest{
@@ -134,7 +128,7 @@ two_sample_test <- function(data,
                             var.equal = FALSE,
                             bf.prior = 0.707,
                             tr = 0.2,
-                            nboot = 100,
+                            nboot = 100L,
                             top.text = NULL,
                             ...) {
   # standardize the type of statistics
