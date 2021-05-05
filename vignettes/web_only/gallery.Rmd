@@ -1,5 +1,5 @@
 ---
-title: "Gallery of examples with `ggplot2` extension packages"
+title: "Gallery of examples"
 author: "Indrajeet Patil"
 date: "`r Sys.Date()`"
 output:
@@ -12,8 +12,9 @@ output:
     toc_depth: 3
     warning: FALSE
     message: FALSE
+    eval: FALSE
 vignette: >
-  %\VignetteIndexEntry{Gallery of examples with `ggplot2` extension packages}
+  %\VignetteIndexEntry{Gallery of examples}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -34,7 +35,8 @@ knitr::opts_chunk$set(
   out.width = "100%",
   comment = "#>",
   warning = FALSE,
-  message = FALSE
+  message = FALSE,
+  eval = FALSE
 )
 ```
 
