@@ -39,7 +39,7 @@
 <meta property="og:description" content="Utilities for producing dataframes with rich details for the
     most common types of statistical approaches and tests: parametric,
     nonparametric, robust, and Bayesian t-test, one-way ANOVA, correlation
-    analyses, contingency table analyses, and meta-analyses.  The
+    analyses, contingency table analyses, and meta-analyses. The
     functions are pipe-friendly and provide a consistent syntax to work
     with tidy data. These dataframes additionally contain expressions with
     statistical details, and can be used in graphing packages. This
@@ -145,14 +145,14 @@
 <td><a href="https://cran.r-project.org/web/checks/check_results_statsExpressions.html"><img src="https://cranchecks.info/badges/summary/statsExpressions" alt="CRAN Checks"></a></td>
 <td><a href="https://ci.appveyor.com/project/IndrajeetPatil/statsExpressions"><img src="https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/statsExpressions?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></td>
 <td><a href="https://CRAN.R-project.org/package=statsExpressions"><img src="https://cranlogs.r-pkg.org/badges/last-week/statsExpressions?color=blue" alt="Weekly downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/"><img src="https://img.shields.io/badge/forks-14-blue.svg" alt="Forks"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/"><img src="https://img.shields.io/badge/forks-15-blue.svg" alt="Forks"></a></td>
 <td><a href="https://indrajeetpatil.github.io/statsExpressions/reference/index.html"><img src="https://img.shields.io/badge/features-statsExpressions-orange.svg?colorB=2196F3" alt="Features"></a></td>
 </tr>
 <tr class="odd">
 <td><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg" alt="minimal R version"></a></td>
 <td><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
 <td><a href="https://CRAN.R-project.org/package=statsExpressions"><img src="https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue" alt="Monthly downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/issues"><img src="https://img.shields.io/badge/issues-11-red.svg" alt="Github Issues"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/issues"><img src="https://img.shields.io/badge/issues-13-red.svg" alt="Github Issues"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/actions"><img src="https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/pkgdown/badge.svg" alt="pkgdown"></a></td>
 </tr>
 <tr class="even">
@@ -166,7 +166,7 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions"><img src="https://github.com/IndrajeetPatil/statsExpressions/workflows/lint/badge.svg" alt="lints"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2021--04--29-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2021--05--05-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
@@ -183,13 +183,14 @@
 <h1 class="hasAnchor">
 <a href="#introduction-" class="anchor"></a>Introduction <img src="reference/figures/logo.png" align="right" width="240">
 </h1>
-<p><a href="https://indrajeetpatil.github.io/statsExpressions/"><code>statsExpressions</code></a> produces dataframes with rich details for the most common types of statistical approaches and tests: parametric, nonparametric, robust, and Bayesian t-test, one-way ANOVA, correlation analyses, contingency table analyses, and meta-analyses.</p>
-<p>The functions are:</p>
+<p>The <code>statsExpressions</code> package has two key aims:</p>
 <ul>
-<li>pipe-friendly</li>
-<li>provide a consistent syntax to do statistical analysis with tidy data</li>
-<li>provide expressions with statistical details for plotting functions</li>
+<li>to provide a consistent syntax to do statistical analysis with tidy data,</li>
+<li>to provide statistical expressions (i.e., a pre-formatted in-text statistical result) for plotting functions.</li>
 </ul>
+<p>Currently, it supports common types of statistical approaches and tests: parametric, nonparametric, robust, and Bayesian <em>t</em>-test, one-way ANOVA, correlation analyses, contingency table analyses, and meta-analyses. The functions are pipe-friendly and compatible with tidy data.</p>
+<p>Statistical packages exhibit substantial diversity in terms of their syntax and expected input type. This can make it difficult to switch from one statistical approach to another. For example, some functions expect vectors as inputs, while others expect dataframes. Depending on whether it is a repeated measures design or not, different functions might expect data to be in wide or long format. Some functions can internally omit missing values, while other functions error in their presence. Furthermore, if someone wishes to utilize the objects returned by these packages downstream in their workflow, this is not straightforward either because even functions from the same package can return a list, a matrix, an array, a dataframe, etc., depending on the function.</p>
+<p>This is where <code>statsExpressions</code> comes in: It can be thought of as a unified portal through which most of the functionality in these underlying packages can be accessed, with a simpler interface and no requirement to change data format.</p>
 <p>This package forms the statistical processing backend for <a href="https://indrajeetpatil.github.io/ggstatsplot/"><code>ggstatsplot</code></a> package.</p>
 <hr>
 <p><strong>Please note that the API for the package has changed significantly in <code>1.0.0</code></strong> <strong>release and will break any code that used prior versions of this package.</strong></p>
@@ -471,6 +472,7 @@
 <div id="using-expressions-in-custom-plots" class="section level1">
 <h1 class="hasAnchor">
 <a href="#using-expressions-in-custom-plots" class="anchor"></a>Using expressions in custom plots</h1>
+<p>Note that <em>expression</em> here means <strong>a pre-formatted in-text statistical result</strong>.</p>
 <p>In addition to other details contained in the dataframe, there is also a column titled <code>expression</code>, which contains expression with statistical details and can be displayed in a plot.</p>
 <div id="example-expressions-for-one-way-anovas" class="section level2">
 <h2 class="hasAnchor">
