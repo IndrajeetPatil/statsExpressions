@@ -75,8 +75,8 @@
   
 
 <meta property="og:title" content="Two-sample tests — two_sample_test" />
-<meta property="og:description" content="A dataframe containing details from results of a two-sample test and effect
-size plus confidence intervals.
+<meta property="og:description" content="A dataframe containing results from a two-sample test and effect size plus
+confidence intervals.
 To see details about functions which are internally used to carry out these
 analyses, see the following vignette-
 https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" />
@@ -143,6 +143,9 @@ https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" /
     <li>
       <a href="../articles/web_only/dataframe_outputs.html">Dataframe outputs</a>
     </li>
+    <li>
+      <a href="../articles/web_only/gallery.html">Gallery of examples</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -180,8 +183,8 @@ https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" /
     </div>
 
     <div class="ref-description">
-    <p>A dataframe containing details from results of a two-sample test and effect
-size plus confidence intervals.</p>
+    <p>A dataframe containing results from a two-sample test and effect size plus
+confidence intervals.</p>
 <p>To see details about functions which are internally used to carry out these
 analyses, see the following vignette-
 <a href='https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html'>https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html</a></p>
@@ -235,9 +238,7 @@ results can be inaccurate.</p></td>
     </tr>
     <tr>
       <th>type</th>
-      <td><p>A character specifying the type of statistical approach.
-Four possible options:</p>
-<ul>
+      <td><p>A character specifying the type of statistical approach.</p><ul>
 <li><p><code>"parametric"</code></p></li>
 <li><p><code>"nonparametric"</code></p></li>
 <li><p><code>"robust"</code></p></li>
@@ -293,7 +294,7 @@ of an error, try reducing the value of <code>tr</code>, which is by default set 
     <tr>
       <th>nboot</th>
       <td><p>Number of bootstrap samples for computing confidence interval
-for the effect size (Default: <code>100</code>).</p></td>
+for the effect size (Default: <code>100L</code>).</p></td>
     </tr>
     <tr>
       <th>top.text</th>
