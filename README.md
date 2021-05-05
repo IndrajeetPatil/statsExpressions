@@ -278,9 +278,6 @@ In addition to other details contained in the dataframe, there is also a
 column titled `expression`, which contains expression with statistical
 details and can be displayed in a plot.
 
-There is also a gallery containing additional examples here:
-<https://indrajeetpatil.github.io/statsExpressions/articles/gallery.html>
-
 ## Example: Expressions for one-way ANOVAs
 
 ### Between-subjects design
