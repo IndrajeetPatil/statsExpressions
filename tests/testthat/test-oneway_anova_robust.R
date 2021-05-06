@@ -50,6 +50,7 @@ test_that(
 test_that(
   desc = "expr_anova_robust works - within-subjects",
   code = {
+    options(tibble.width = Inf)
 
     # `statsExpressions` output
     set.seed(123)
@@ -59,8 +60,7 @@ test_that(
         data = bugs_long,
         x = "condition",
         y = desire,
-        k = 4,
-        tr = 0.2,
+        k = 4L,
         paired = TRUE
       )
 

@@ -241,7 +241,7 @@
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
-      "version": ">= 0.13.0",
+      "version": ">= 0.13.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -393,6 +393,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3730.025KB",
+  "fileSize": "3730.057KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

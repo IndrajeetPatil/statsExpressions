@@ -73,19 +73,6 @@
 ---
 
     Code
-      dplyr::select(df2, -expression)
-    Output
-      # A tibble: 1 x 11
-        parameter1 parameter2 statistic df.error  p.value method                
-        <chr>      <chr>          <dbl>    <dbl>    <dbl> <chr>                 
-      1 value      condition        410        3 1.51e-88 Friedman rank sum test
-        estimate conf.level conf.low conf.high effectsize 
-           <dbl>      <dbl>    <dbl>     <dbl> <chr>      
-      1    0.911        0.9    0.905     0.918 Kendall's W
-
----
-
-    Code
       df2$expression[[1]]
     Output
       paste(chi["Friedman"]^2, "(", "3", ") = ", "410.000", ", ", italic("p"), 

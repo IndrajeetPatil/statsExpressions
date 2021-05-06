@@ -47,7 +47,7 @@ test_that(
 test_that(
   desc = "within-subjects - data with and without NAs",
   code = {
-
+    options(tibble.width = Inf)
 
     # `statsExpressions` output
     set.seed(123)
@@ -82,7 +82,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df2, -expression))
+    #expect_snapshot(dplyr::select(df2, -expression))
     expect_snapshot(df2$expression[[1]])
   }
 )
