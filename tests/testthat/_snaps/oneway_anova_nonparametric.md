@@ -50,19 +50,6 @@
 # within-subjects - data with and without NAs
 
     Code
-      dplyr::select(df1, -expression)
-    Output
-      # A tibble: 1 x 11
-        parameter1 parameter2 statistic df.error  p.value method                
-        <chr>      <chr>          <dbl>    <dbl>    <dbl> <chr>                 
-      1 desire     condition       55.8        3 4.56e-12 Friedman rank sum test
-        estimate conf.level conf.low conf.high effectsize 
-           <dbl>      <dbl>    <dbl>     <dbl> <chr>      
-      1    0.175       0.99    0.115     0.279 Kendall's W
-
----
-
-    Code
       df1$expression[[1]]
     Output
       paste(chi["Friedman"]^2, "(", "3", ") = ", "55.8338", ", ", italic("p"), 
