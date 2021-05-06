@@ -14,7 +14,7 @@ authors:
 affiliations:
   - name: Center for Humans and Machines, Max Planck Institute for Human Development, Berlin, Germany
     index: 1
-date: "2021-05-05"
+date: "2021-05-06"
 bibliography: paper.bib
 ---
 
@@ -33,19 +33,23 @@ functions are pipe-friendly and compatible with tidy data.
 # Statement of need
 
 Statistical packages exhibit substantial diversity in terms of their syntax and
-expected input type. This can make it difficult to switch from one statistical
-approach to another. For example, some functions expect vectors as inputs, while
-others expect dataframes. Depending on whether it is a repeated measures design
-or not, different functions might expect data to be in wide or long format. Some
-functions can internally omit missing values, while other functions error in
-their presence. Furthermore, if someone wishes to utilize the objects returned
-by these packages downstream in their workflow, this is not straightforward
-either because even functions from the same package can return a list, a matrix,
-an array, a dataframe, etc., depending on the function.
+expected input and output data type. For example, some functions expect vectors
+as inputs, while others expect dataframes. Depending on whether it is a repeated
+measures design or not, functions from the same package might expect data to be
+in wide or tidy format. Some functions can internally omit missing values, while
+other functions error in their presence. Furthermore, the statistical test
+objects returned by the test functions might not have all required information
+(e.g., degrees of freedom, significance, Bayes factor, etc.) accessible in a
+consistent data type. Depending on the specific test object and statistic in
+question, details may be returned as a list, a matrix, an array, or a dataframe.
+This diversity can make it difficult to easily access all needed information for
+hypothesis testing and estimation, and to switch from one statistical approach
+to another.
 
 This is where `statsExpressions` comes in: It can be thought of as a unified
 portal through which most of the functionality in these underlying packages can
-be accessed, with a simpler interface and no requirement to change data format.
+be accessed, with a simpler interface and no requirement to change tidy data
+format.
 
 # Comparison to Other Packages
 
@@ -107,7 +111,7 @@ mtcars %>% two_sample_test(am, wt, type = "parametric") # Welch's t-test
 #>   <list>    
 #> 1 <language>
 
-mtcars %>% two_sample_test(am, wt, type = "robust") # Yuen's t-test
+mtcars %>% two_sample_test(am, wt, type = "robust")     # Yuen's t-test
 #> # A tibble: 1 x 10
 #>   statistic df.error   p.value
 #>       <dbl>    <dbl>     <dbl>
