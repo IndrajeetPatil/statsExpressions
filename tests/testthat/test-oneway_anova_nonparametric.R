@@ -3,10 +3,11 @@
 test_that(
   desc = "between-subjects - data with and without NAs",
   code = {
+    options(tibble.width = Inf)
 
     # `statsExpressions` output
     set.seed(123)
-    using_function1 <-
+    df1 <-
       oneway_anova(
         type = "np",
         data = dplyr::sample_frac(movies_long, 0.1),
@@ -16,43 +17,14 @@ test_that(
         k = 5
       )
 
-    # expected output
+    # testing all details
     set.seed(123)
-    results1 <-
-      ggplot2::expr(
-        paste(
-          chi["Kruskal-Wallis"]^2,
-          "(",
-          "8",
-          ") = ",
-          "51.42672",
-          ", ",
-          italic("p"),
-          " = ",
-          "2.1714e-08",
-          ", ",
-          widehat(epsilon)["ordinal"]^2,
-          " = ",
-          "0.32756",
-          ", CI"["95%"],
-          " [",
-          "0.25737",
-          ", ",
-          "0.50585",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          "158"
-        )
-      )
-
-    # testing overall call
-    expect_identical(using_function1$expression[[1]], results1)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression[[1]])
 
     # `statsExpressions` output
     set.seed(123)
-    using_function2 <-
+    df2 <-
       suppressWarnings(oneway_anova(
         type = "np",
         data = ggplot2::msleep,
@@ -63,39 +35,10 @@ test_that(
         conf.level = 0.99
       ))
 
-    # expected output
+    # testing all details
     set.seed(123)
-    results2 <-
-      ggplot2::expr(
-        paste(
-          chi["Kruskal-Wallis"]^2,
-          "(",
-          "3",
-          ") = ",
-          "5.240",
-          ", ",
-          italic("p"),
-          " = ",
-          "0.155",
-          ", ",
-          widehat(epsilon)["ordinal"]^2,
-          " = ",
-          "0.175",
-          ", CI"["99%"],
-          " [",
-          "0.053",
-          ", ",
-          "0.494",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          "31"
-        )
-      )
-
-    # testing overall call
-    expect_identical(using_function2$expression[[1]], results2)
+    expect_snapshot(dplyr::select(df2, -expression))
+    expect_snapshot(df2$expression[[1]])
   }
 )
 
@@ -108,7 +51,7 @@ test_that(
 
     # `statsExpressions` output
     set.seed(123)
-    using_function1 <-
+    df1 <-
       oneway_anova(
         type = "np",
         data = bugs_long,
@@ -119,43 +62,14 @@ test_that(
         conf.level = 0.99
       )
 
-    # expected output
+    # testing all details
     set.seed(123)
-    results1 <-
-      ggplot2::expr(
-        paste(
-          chi["Friedman"]^2,
-          "(",
-          "3",
-          ") = ",
-          "55.8338",
-          ", ",
-          italic("p"),
-          " = ",
-          "4.558e-12",
-          ", ",
-          widehat(italic("W"))["Kendall"],
-          " = ",
-          "0.1750",
-          ", CI"["99%"],
-          " [",
-          "0.1146",
-          ", ",
-          "0.2793",
-          "]",
-          ", ",
-          italic("n")["pairs"],
-          " = ",
-          "88"
-        )
-      )
-
-    # testing overall call
-    expect_identical(using_function1$expression[[1]], results1)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression[[1]])
 
     # `statsExpressions` output
     set.seed(123)
-    using_function2 <-
+    df2 <-
       oneway_anova(
         type = "np",
         data = iris_long,
@@ -166,57 +80,10 @@ test_that(
         conf.level = 0.90
       )
 
-    # expected output
+    # testing all details
     set.seed(123)
-    results2 <-
-      ggplot2::expr(
-        paste(
-          chi["Friedman"]^2,
-          "(",
-          "3",
-          ") = ",
-          "410.000",
-          ", ",
-          italic("p"),
-          " = ",
-          "1.51e-88",
-          ", ",
-          widehat(italic("W"))["Kendall"],
-          " = ",
-          "0.911",
-          ", CI"["90%"],
-          " [",
-          "0.905",
-          ", ",
-          "0.918",
-          "]",
-          ", ",
-          italic("n")["pairs"],
-          " = ",
-          "150"
-        )
-      )
-
-    # testing overall call
-    expect_identical(using_function2$expression[[1]], results2)
-  }
-)
-
-
-# dataframe -----------------------------------------------------------
-
-test_that(
-  desc = "dataframe",
-  code = {
-    expect_s3_class(
-      oneway_anova(
-        type = "np",
-        data = mtcars,
-        x = cyl,
-        y = wt,
-      ),
-      "tbl_df"
-    )
+    expect_snapshot(dplyr::select(df2, -expression))
+    expect_snapshot(df2$expression[[1]])
   }
 )
 
@@ -225,7 +92,6 @@ test_that(
 test_that(
   desc = "works with subject id",
   code = {
-
 
     # data
     df <-

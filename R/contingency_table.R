@@ -209,11 +209,10 @@ contingency_table <- function(data,
       p1s <- rdirichlet_int(n = 100000, alpha = prior.concentration * ratio)
 
       # prob
-      tmp_pr_h1 <-
-        sapply(
-          X = 1:100000,
-          FUN = function(i) stats::dmultinom(x = as.matrix(xtab), prob = p1s[i, ], log = TRUE)
-        )
+      tmp_pr_h1 <- sapply(
+        X = 1:100000,
+        FUN = function(i) stats::dmultinom(x = as.matrix(xtab), prob = p1s[i, ], log = TRUE)
+      )
 
       # BF = (log) prob of data under alternative - (log) prob of data under null
       bf <-

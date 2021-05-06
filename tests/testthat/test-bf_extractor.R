@@ -3,7 +3,6 @@
 test_that(
   desc = "bayes factor (correlation)",
   code = {
-    # skip_on_cran()
 
     # creating a dataframe
     set.seed(123)
@@ -27,14 +26,13 @@ test_that(
 
       # model
       set.seed(123)
-      result <-
-        anovaBF(
-          RT ~ shape * color + ID,
-          data = puzzles,
-          whichRandom = "ID",
-          whichModels = "top",
-          progress = FALSE
-        )
+      result <- anovaBF(
+        RT ~ shape * color + ID,
+        data = puzzles,
+        whichRandom = "ID",
+        whichModels = "top",
+        progress = FALSE
+      )
 
       # extract details
       df2 <- bf_extractor(result)

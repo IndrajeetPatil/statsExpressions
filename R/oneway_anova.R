@@ -199,34 +199,31 @@ oneway_anova <- function(data,
       if (!requireNamespace("afex", quietly = TRUE)) stop("Package 'afex' needs to be installed.")
 
       # Fisher's ANOVA
-      mod <-
-        afex::aov_ez(
-          id = "rowid",
-          dv = rlang::as_string(y),
-          data = data,
-          within = rlang::as_string(x)
-        )
+      mod <- afex::aov_ez(
+        id = "rowid",
+        dv = rlang::as_string(y),
+        data = data,
+        within = rlang::as_string(x)
+      )
     }
 
     if (isFALSE(paired)) {
       # Welch's ANOVA
-      mod <-
-        stats::oneway.test(
-          formula = rlang::new_formula(y, x),
-          data = data,
-          var.equal = var.equal
-        )
+      mod <- stats::oneway.test(
+        formula = rlang::new_formula(y, x),
+        data = data,
+        var.equal = var.equal
+      )
     }
 
     # tidying it up
     stats_df <- tidy_model_parameters(mod)
-    effsize_df <-
-      suppressWarnings(rlang::exec(
-        .fn = .f.es,
-        model = mod,
-        ci = conf.level,
-        verbose = FALSE
-      )) %>%
+    effsize_df <- suppressWarnings(rlang::exec(
+      .fn = .f.es,
+      model = mod,
+      ci = conf.level,
+      verbose = FALSE
+    )) %>%
       tidy_model_effectsize(.)
 
     # combining dataframes
@@ -257,20 +254,18 @@ oneway_anova <- function(data,
     }
 
     # extracting test details
-    stats_df <-
-      rlang::exec(.fn = .f, !!!.f.args, data = data) %>%
+    stats_df <- rlang::exec(.fn = .f, !!!.f.args, data = data) %>%
       tidy_model_parameters(.)
 
     # computing respective effect sizes
-    effsize_df <-
-      rlang::exec(
-        .fn = .f.es,
-        data = data,
-        ci = conf.level,
-        iterations = nboot,
-        verbose = FALSE,
-        !!!.f.es.args
-      ) %>%
+    effsize_df <- rlang::exec(
+      .fn = .f.es,
+      data = data,
+      ci = conf.level,
+      iterations = nboot,
+      verbose = FALSE,
+      !!!.f.es.args
+    ) %>%
       tidy_model_effectsize(.)
 
     # dataframe
@@ -286,25 +281,23 @@ oneway_anova <- function(data,
     # heteroscedastic one-way repeated measures ANOVA for trimmed means
     if (isTRUE(paired)) {
       # test
-      mod <-
-        WRS2::rmanova(
-          y = data[[rlang::as_name(y)]],
-          groups = data[[rlang::as_name(x)]],
-          blocks = data[["rowid"]],
-          tr = tr
-        )
+      mod <- WRS2::rmanova(
+        y = data[[rlang::as_name(y)]],
+        groups = data[[rlang::as_name(x)]],
+        blocks = data[["rowid"]],
+        tr = tr
+      )
     }
 
     # heteroscedastic one-way ANOVA for trimmed means
     if (isFALSE(paired)) {
-      mod <-
-        WRS2::t1way(
-          formula = rlang::new_formula(y, x),
-          data = data,
-          tr = tr,
-          alpha = 1 - conf.level,
-          nboot = nboot
-        )
+      mod <- WRS2::t1way(
+        formula = rlang::new_formula(y, x),
+        data = data,
+        tr = tr,
+        alpha = 1 - conf.level,
+        nboot = nboot
+      )
     }
 
     # parameter extraction
@@ -312,8 +305,7 @@ oneway_anova <- function(data,
 
     # for paired designs, WRS2 currently doesn't return effect size
     if (isTRUE(paired)) {
-      effsize_df <-
-        ipmisc::long_to_wide_converter(data, {{ x }}, {{ y }}) %>%
+      effsize_df <- ipmisc::long_to_wide_converter(data, {{ x }}, {{ y }}) %>%
         wAKPavg(dplyr::select(-rowid), tr = tr, nboot = nboot) %>%
         dplyr::mutate(effectsize = "Algina-Keselman-Penfield robust standardized difference average")
 
@@ -368,7 +360,7 @@ oneway_anova <- function(data,
 
 #' @noRd
 
-wAKPavg <- function(x, tr = 0.2, nboot = 100, ...) {
+wAKPavg <- function(x, tr = 0.2, nboot = 100L, ...) {
   A <- WRS2::wmcpAKP(x, tr, nboot)
   tibble("estimate" = A[[1]], "conf.low" = A[[2]], "conf.high" = A[[3]], "conf.level" = 0.95)
 }

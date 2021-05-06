@@ -4,7 +4,7 @@ test_that(
   desc = "bayes factor (between-subjects - anova)",
   code = {
     skip_if(getRversion() < "4.0")
-    # skip_on_cran()
+
 
     # extracting results from where this function is implemented
     set.seed(123)
@@ -33,17 +33,7 @@ test_that(
     expect_equal(df_results$bf10[[1]], 0.1177186, tolerance = 0.001)
 
     # call
-    expect_identical(
-      results$expression[[1]],
-      ggplot2::expr(
-        paste(
-          "log"["e"] * "(BF"["01"] * ") = " * "1.92" * ", ",
-          widehat(italic(R^"2"))["Bayesian"]^"posterior" * " = " * "0.00" * ", ",
-          "CI"["95%"]^"HDI" * " [" * "0.00" * ", " * "0.08" * "], ",
-          italic("r")["Cauchy"]^"JZS" * " = " * "0.88"
-        )
-      )
-    )
+    expect_snapshot(results$expression[[1]])
 
     # data where it works
     set.seed(123)
@@ -58,17 +48,7 @@ test_that(
         k = 2 # don't change; tests fail on Ubuntu otherwise
       )
 
-    expect_identical(
-      results2$expression[[1]],
-      ggplot2::expr(
-        paste(
-          "log"["e"] * "(BF"["01"] * ") = " * "-65.10" * ", ",
-          widehat(italic(R^"2"))["Bayesian"]^"posterior" * " = " * "0.61" * ", ",
-          "CI"["99%"]^"HDI" * " [" * "0.51" * ", " * "0.68" * "], ",
-          italic("r")["Cauchy"]^"JZS" * " = " * "0.71"
-        )
-      )
-    )
+    expect_snapshot(results2$expression[[1]])
   }
 )
 
@@ -77,8 +57,6 @@ test_that(
 test_that(
   desc = "bayes factor (within-subjects - anova)",
   code = {
-    # skip_on_cran()
-
     if (utils::packageVersion("BayesFactor") >= package_version("0.9.12-4.3")) {
 
       # dataframe
@@ -159,29 +137,8 @@ test_that(
       expect_type(results_na$expression[[1]], "language")
 
       # checking expressions
-      expect_identical(
-        results$expression[[1]],
-        ggplot2::expr(
-          paste(
-            "log"["e"] * "(BF"["01"] * ") = " * "-1.96" * ", ",
-            widehat(italic(R^"2"))["Bayesian"]^"posterior" * " = " * "0.89" * ", ",
-            "CI"["95%"]^"HDI" * " [" * "0.85" * ", " * "0.92" * "], ",
-            italic("r")["Cauchy"]^"JZS" * " = " * "0.88"
-          )
-        )
-      )
-
-      expect_identical(
-        results_na$expression[[1]],
-        ggplot2::expr(
-          paste(
-            "log"["e"] * "(BF"["01"] * ") = " * "-21.04" * ", ",
-            widehat(italic(R^"2"))["Bayesian"]^"posterior" * " = " * "0.53" * ", ",
-            "CI"["95%"]^"HDI" * " [" * "0.46" * ", " * "0.59" * "], ",
-            italic("r")["Cauchy"]^"JZS" * " = " * "0.71"
-          )
-        )
-      )
+      expect_snapshot(results$expression[[1]])
+      expect_snapshot(results_na$expression[[1]])
 
       # with subject.id ---------------------------------
 

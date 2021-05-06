@@ -3,11 +3,11 @@
 test_that(
   desc = "parametric t-test works (between-subjects without NAs)",
   code = {
-
+    options(tibble.width = Inf)
 
     # `statsExpressions` output
     set.seed(123)
-    using_function1 <-
+    df1 <-
       suppressWarnings(
         two_sample_test(
           data = dplyr::filter(
@@ -23,39 +23,10 @@ test_that(
         )
       )
 
-    # expected output
+    # testing all details
     set.seed(123)
-    results1 <-
-      ggplot2::expr(
-        paste(
-          italic("t")["Student"],
-          "(",
-          "612",
-          ") = ",
-          "-10.52948",
-          ", ",
-          italic("p"),
-          " = ",
-          "6.0984e-24",
-          ", ",
-          widehat(italic("d"))["Cohen"],
-          " = ",
-          "-0.92473",
-          ", CI"["99%"],
-          " [",
-          "-1.16064",
-          ", ",
-          "-0.68822",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          "614"
-        )
-      )
-
-    # testing overall call
-    expect_equal(using_function1$expression[[1]], results1)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression[[1]])
   }
 )
 
@@ -64,11 +35,9 @@ test_that(
 test_that(
   desc = "parametric t-test works (between-subjects with NAs)",
   code = {
-
-
     # `statsExpressions` output
     set.seed(123)
-    using_function1 <-
+    df1 <-
       suppressWarnings(
         two_sample_test(
           data = dplyr::filter(
@@ -84,39 +53,10 @@ test_that(
         )
       )
 
-    # expected output
+    # testing all details
     set.seed(123)
-    results1 <-
-      ggplot2::expr(
-        paste(
-          italic("t")["Welch"],
-          "(",
-          "271.302",
-          ") = ",
-          "-9.275",
-          ", ",
-          italic("p"),
-          " = ",
-          "5.8e-18",
-          ", ",
-          widehat(italic("g"))["Hedges"],
-          " = ",
-          "-0.924",
-          ", CI"["90%"],
-          " [",
-          "-1.074",
-          ", ",
-          "-0.773",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          "614"
-        )
-      )
-
-    # testing overall call
-    expect_equal(using_function1$expression[[1]], results1)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression[[1]])
   }
 )
 
@@ -126,10 +66,9 @@ test_that(
   desc = "parametric t-test works (within-subjects without NAs)",
   code = {
 
-
     # output from `statsExpressions` helper subtitle
     set.seed(123)
-    subtitle <-
+    df1 <-
       suppressWarnings(two_sample_test(
         data = dplyr::filter(
           iris_long,
@@ -143,52 +82,21 @@ test_that(
         conf.level = 0.50
       ))
 
-    # expected
-    expected <-
-      ggplot2::expr(
-        paste(
-          italic("t")["Student"],
-          "(",
-          "149",
-          ") = ",
-          "34.8152",
-          ", ",
-          italic("p"),
-          " = ",
-          "1.85e-73",
-          ", ",
-          widehat(italic("g"))["Hedges"],
-          " = ",
-          "2.8283",
-          ", CI"["50%"],
-          " [",
-          "2.7086",
-          ", ",
-          "2.9560",
-          "]",
-          ", ",
-          italic("n")["pairs"],
-          " = ",
-          "150"
-        )
-      )
-
-    # testing overall call
-    expect_identical(subtitle$expression[[1]], expected)
+    # testing all details
+    set.seed(123)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression[[1]])
   }
 )
-
 
 # parametric t-test (within-subjects with NAs) ---------------------------
 
 test_that(
   desc = "parametric t-test works (within-subjects with NAs)",
   code = {
-
-
     # output from `statsExpressions` helper subtitle
     set.seed(123)
-    subtitle <-
+    df1 <-
       two_sample_test(
         data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
         x = condition,
@@ -198,38 +106,10 @@ test_that(
         k = 3
       )
 
-    # expected
-    expected <-
-      ggplot2::expr(
-        paste(
-          italic("t")["Student"],
-          "(",
-          "89",
-          ") = ",
-          "3.613",
-          ", ",
-          italic("p"),
-          " = ",
-          "5e-04",
-          ", ",
-          widehat(italic("d"))["Cohen"],
-          " = ",
-          "0.381",
-          ", CI"["95%"],
-          " [",
-          "0.167",
-          ", ",
-          "0.597",
-          "]",
-          ", ",
-          italic("n")["pairs"],
-          " = ",
-          "90"
-        )
-      )
-
-    # testing overall call
-    expect_identical(subtitle$expression[[1]], expected)
+    # testing all details
+    set.seed(123)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression[[1]])
   }
 )
 
@@ -238,7 +118,6 @@ test_that(
 test_that(
   desc = "works with subject id",
   code = {
-
 
     # data
     df <-

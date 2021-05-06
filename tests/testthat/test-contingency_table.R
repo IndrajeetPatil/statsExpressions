@@ -3,10 +3,11 @@
 test_that(
   desc = "contingency_table works - data without NAs",
   code = {
+    options(tibble.width = Inf)
 
     # `statsExpressions` output
     set.seed(123)
-    using_function1 <-
+    df1 <-
       suppressWarnings(contingency_table(
         data = mtcars,
         x = "am",
@@ -15,43 +16,14 @@ test_that(
         conf.level = 0.99
       ))
 
-    # expected output
+    # testing all details
     set.seed(123)
-    results1 <-
-      ggplot2::expr(
-        paste(
-          chi["Pearson"]^2,
-          "(",
-          "2",
-          ") = ",
-          "8.74073",
-          ", ",
-          italic("p"),
-          " = ",
-          "0.01265",
-          ", ",
-          widehat(italic("V"))["Cramer"],
-          " = ",
-          "0.46431",
-          ", CI"["99%"],
-          " [",
-          "0.00000",
-          ", ",
-          "0.88767",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          "32"
-        )
-      )
-
-    # testing overall call
-    expect_identical(using_function1$expression[[1]], results1)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression[[1]])
 
     # with counts
     set.seed(123)
-    using_function2 <-
+    df2 <-
       contingency_table(
         data = as.data.frame(Titanic),
         x = names(as.data.frame(Titanic))[2],
@@ -59,37 +31,10 @@ test_that(
         counts = "Freq"
       )
 
-    results2 <-
-      ggplot2::expr(
-        paste(
-          chi["Pearson"]^2,
-          "(",
-          "1",
-          ") = ",
-          "456.87",
-          ", ",
-          italic("p"),
-          " = ",
-          "2.3e-101",
-          ", ",
-          widehat(italic("V"))["Cramer"],
-          " = ",
-          "0.46",
-          ", CI"["95%"],
-          " [",
-          "0.41",
-          ", ",
-          "0.50",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          "2,201"
-        )
-      )
-
-    # testing overall call
-    expect_identical(using_function2$expression[[1]], results2)
+    # testing all details
+    set.seed(123)
+    expect_snapshot(dplyr::select(df2, -expression))
+    expect_snapshot(df2$expression[[1]])
   }
 )
 
@@ -99,10 +44,9 @@ test_that(
   desc = "contingency_table works - data with NAs",
   code = {
 
-
     # introduce NAs
     set.seed(123)
-    using_function1 <-
+    df1 <-
       suppressWarnings(contingency_table(
         data = ggplot2::msleep,
         x = vore,
@@ -110,39 +54,10 @@ test_that(
         conf.level = 0.990
       ))
 
-    # expected output
+    # testing all details
     set.seed(123)
-    results1 <-
-      ggplot2::expr(
-        paste(
-          chi["Pearson"]^2,
-          "(",
-          "15",
-          ") = ",
-          "15.75",
-          ", ",
-          italic("p"),
-          " = ",
-          "0.399",
-          ", ",
-          widehat(italic("V"))["Cramer"],
-          " = ",
-          "0.06",
-          ", CI"["99%"],
-          " [",
-          "0.00",
-          ", ",
-          "0.00",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          "52"
-        )
-      )
-
-    # testing overall call
-    expect_identical(using_function1$expression[[1]], results1)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression[[1]])
   }
 )
 
@@ -151,7 +66,6 @@ test_that(
 test_that(
   desc = "paired contingency_table works - counts data without NAs",
   code = {
-
 
     # create data structure
     paired_data <-
@@ -176,7 +90,7 @@ test_that(
 
     # `statsExpressions` output
     set.seed(123)
-    using_function1 <-
+    df1 <-
       suppressWarnings(
         contingency_table(
           data = paired_data,
@@ -188,39 +102,10 @@ test_that(
         )
       )
 
-    # expected output
+    # testing all details
     set.seed(123)
-    results1 <-
-      ggplot2::expr(
-        paste(
-          chi["McNemar"]^2,
-          "(",
-          "1",
-          ") = ",
-          "13.33333",
-          ", ",
-          italic("p"),
-          " = ",
-          "2.6073e-04",
-          ", ",
-          widehat(italic("g"))["Cohen"],
-          " = ",
-          "0.33333",
-          ", CI"["95%"],
-          " [",
-          "0.16436",
-          ", ",
-          "0.42663",
-          "]",
-          ", ",
-          italic("n")["pairs"],
-          " = ",
-          "100"
-        )
-      )
-
-    # testing overall call
-    expect_identical(using_function1$expression[[1]], results1)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression[[1]])
   }
 )
 
@@ -265,7 +150,7 @@ test_that(
 
     # `statsExpressions` output
     set.seed(123)
-    using_function1 <-
+    df1 <-
       suppressWarnings(
         contingency_table(
           data = paired_data,
@@ -277,39 +162,10 @@ test_that(
         )
       )
 
-    # expected output
+    # testing all details
     set.seed(123)
-    results1 <-
-      ggplot2::expr(
-        paste(
-          chi["McNemar"]^2,
-          "(",
-          "1",
-          ") = ",
-          "13.333",
-          ", ",
-          italic("p"),
-          " = ",
-          "2.61e-04",
-          ", ",
-          widehat(italic("g"))["Cohen"],
-          " = ",
-          "0.333",
-          ", CI"["90%"],
-          " [",
-          "0.195",
-          ", ",
-          "0.416",
-          "]",
-          ", ",
-          italic("n")["pairs"],
-          " = ",
-          "95"
-        )
-      )
-
-    # testing overall call
-    expect_identical(using_function1$expression[[1]], results1)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression[[1]])
   }
 )
 
@@ -319,10 +175,9 @@ test_that(
   desc = "Goodness of Fit contingency_table works without counts",
   code = {
 
-
     # `statsExpressions` output
     set.seed(123)
-    using_function1 <-
+    df1 <-
       suppressWarnings(contingency_table(
         data = mtcars,
         x = "am",
@@ -330,80 +185,24 @@ test_that(
         k = 5
       ))
 
-    # expected output
+    # testing all details
     set.seed(123)
-    results1 <-
-      ggplot2::expr(
-        paste(
-          chi["gof"]^2,
-          "(",
-          "1",
-          ") = ",
-          "1.12500",
-          ", ",
-          italic("p"),
-          " = ",
-          "0.28884",
-          ", ",
-          widehat(italic("V"))["Cramer"],
-          " = ",
-          "0.05472",
-          ", CI"["99%"],
-          " [",
-          "0.00000",
-          ", ",
-          "0.49920",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          "32"
-        )
-      )
-
-    # testing overall call
-    expect_identical(using_function1$expression[[1]], results1)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression[[1]])
 
     # with counts
     set.seed(123)
-    using_function2 <-
+    df2 <-
       contingency_table(
         data = as.data.frame(Titanic),
         x = Sex,
         counts = "Freq"
       )
 
-    results2 <-
-      ggplot2::expr(
-        paste(
-          chi["gof"]^2,
-          "(",
-          "1",
-          ") = ",
-          "722.45",
-          ", ",
-          italic("p"),
-          " = ",
-          "3.92e-159",
-          ", ",
-          widehat(italic("V"))["Cramer"],
-          " = ",
-          "0.57",
-          ", CI"["95%"],
-          " [",
-          "0.47",
-          ", ",
-          "0.62",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          "2,201"
-        )
-      )
-
-    # testing overall call
-    expect_identical(using_function2$expression[[1]], results2)
+    # testing all details
+    set.seed(123)
+    expect_snapshot(dplyr::select(df2, -expression))
+    expect_snapshot(df2$expression[[1]])
   }
 )
 
@@ -413,10 +212,9 @@ test_that(
   desc = "Goodness of Fit contingency_table works with counts",
   code = {
 
-
     # `statsExpressions` output
     set.seed(123)
-    using_function1 <-
+    df1 <-
       contingency_table(
         data = as.data.frame(Titanic),
         x = Sex,
@@ -424,39 +222,10 @@ test_that(
         k = 3
       )
 
-    # expected output
+    # testing all details
     set.seed(123)
-    results1 <-
-      ggplot2::expr(
-        paste(
-          chi["gof"]^2,
-          "(",
-          "1",
-          ") = ",
-          "722.454",
-          ", ",
-          italic("p"),
-          " = ",
-          "3.92e-159",
-          ", ",
-          widehat(italic("V"))["Cramer"],
-          " = ",
-          "0.573",
-          ", CI"["95%"],
-          " [",
-          "0.465",
-          ", ",
-          "0.615",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          "2,201"
-        )
-      )
-
-    # testing overall call
-    expect_identical(using_function1$expression[[1]], results1)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression[[1]])
   }
 )
 
@@ -466,48 +235,19 @@ test_that(
   desc = "works with dataframes with NAs and with ratio",
   code = {
 
-
     # from function
     set.seed(123)
-    using_function <-
+    df1 <-
       contingency_table(
         data = ggplot2::msleep,
         x = vore,
         ratio = c(0.2, 0.2, 0.3, 0.3)
       )
 
-    # expected
-    expected <-
-      ggplot2::expr(
-        paste(
-          chi["gof"]^2,
-          "(",
-          "3",
-          ") = ",
-          "33.76",
-          ", ",
-          italic("p"),
-          " = ",
-          "2.23e-07",
-          ", ",
-          widehat(italic("V"))["Cramer"],
-          " = ",
-          "0.37",
-          ", CI"["95%"],
-          " [",
-          "0.22",
-          ", ",
-          "0.49",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          "76"
-        )
-      )
-
-    # testing if these are equivalent
-    expect_identical(using_function$expression[[1]], expected)
+    # testing all details
+    set.seed(123)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression[[1]])
   }
 )
 
@@ -517,108 +257,33 @@ test_that(
   desc = "works even in edge cases",
   code = {
 
-
     # too few observations
-    df <- data.frame(
+    data1 <- data.frame(
       x = c("a", "b", "b", "c", "c", "c"),
       y = c("a", "a", "a", "a", "b", "b")
     )
 
     # subtitle
     set.seed(123)
-    sub <- suppressWarnings(
-      contingency_table(df, x, y, messages = FALSE)
-    )
+    df1 <- suppressWarnings(contingency_table(data1, x, y))
 
-    # test
-    expect_identical(
-      sub$expression[[1]],
-      ggplot2::expr(
-        paste(
-          chi["Pearson"]^2,
-          "(",
-          "2",
-          ") = ",
-          "3.00",
-          ", ",
-          italic("p"),
-          " = ",
-          "0.223",
-          ", ",
-          widehat(italic("V"))["Cramer"],
-          " = ",
-          "0.35",
-          ", CI"["95%"],
-          " [",
-          "0.00",
-          ", ",
-          "0.95",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          "6"
-        )
-      )
-    )
+    # testing all details
+    set.seed(123)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression[[1]])
 
-    # another dataset
-    df1 <- dplyr::filter(mtcars, am == "0")
+    # another dataset with a dropped level
+    data2 <- dplyr::filter(mtcars, am == "0")
 
     set.seed(123)
-    sub1 <- contingency_table(df1, am, cyl)
+    df2 <- contingency_table(data2, am, cyl)
 
-    # test
-    expect_identical(
-      sub1$expression[[1]],
-      ggplot2::expr(
-        paste(
-          chi["gof"]^2,
-          "(",
-          "2",
-          ") = ",
-          "7.68",
-          ", ",
-          italic("p"),
-          " = ",
-          "0.021",
-          ", ",
-          widehat(italic("V"))["Cramer"],
-          " = ",
-          "0.41",
-          ", CI"["95%"],
-          " [",
-          "0.00",
-          ", ",
-          "0.67",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          "19"
-        )
-      )
-    )
+    # testing all details
+    set.seed(123)
+    expect_snapshot(dplyr::select(df2, -expression))
+    expect_snapshot(df2$expression[[1]])
   }
 )
-
-
-# dataframe - parametric -----------------------------------------------------------
-
-test_that(
-  desc = "dataframe - parametric",
-  code = {
-    expect_s3_class(
-      contingency_table(
-        data = as.data.frame(HairEyeColor),
-        x = Eye,
-        counts = Freq,
-      ),
-      "tbl_df"
-    )
-  }
-)
-
 
 # bayes factor (proportion test) --------------------------------------
 
@@ -649,18 +314,7 @@ test_that(
         top.text = "duh"
       )
 
-    expect_identical(
-      expr_text$expression[[1]],
-      ggplot2::expr(
-        atop(displaystyle("duh"),
-          expr =
-            paste(
-              "log"["e"] * "(BF"["01"] * ") = " * "0.55" * ", ",
-              italic("a")["Gunel-Dickey"] * " = " * "10.00"
-            )
-        )
-      )
-    )
+    expect_snapshot(expr_text$expression[[1]])
   }
 )
 
@@ -669,7 +323,6 @@ test_that(
 test_that(
   desc = "bayes factor (contingency tab)",
   code = {
-
 
     # extracting results from where this function is implemented
     set.seed(123)
@@ -732,44 +385,11 @@ test_that(
       )
 
     # expr text
-    expect_identical(
+    expect_snapshot(list(
       expr_text1$expression[[1]],
-      ggplot2::expr(
-        paste(
-          "log"["e"] * "(BF"["01"] * ") = " * "-3.335" * ", ",
-          widehat(italic("V"))["Cramer"]^"posterior" * " = " * "0.479" * ", ",
-          "CI"["89%"]^"HDI" * " [" * "0.285" * ", " * "0.692" * "], ",
-          italic("a")["Gunel-Dickey"] * " = " * "1.000"
-        )
-      )
-    )
-
-    expect_type(expr_text2$expression[[1]], "language")
-    expect_type(expr_text3$expression[[1]], "language")
-
-    expect_identical(
       expr_text2$expression[[1]],
-      ggplot2::expr(
-        paste(
-          "log"["e"] * "(BF"["01"] * ") = " * "-214.255" * ", ",
-          widehat(italic("V"))["Cramer"]^"posterior" * " = " * "0.455" * ", ",
-          "CI"["99%"]^"HDI" * " [" * "0.402" * ", " * "0.508" * "], ",
-          italic("a")["Gunel-Dickey"] * " = " * "1.000"
-        )
-      )
-    )
-
-    expect_identical(
-      expr_text3$expression[[1]],
-      ggplot2::expr(
-        paste(
-          "log"["e"] * "(BF"["01"] * ") = " * "-213.873" * ", ",
-          widehat(italic("V"))["Cramer"]^"posterior" * " = " * "0.454" * ", ",
-          "CI"["95%"]^"HDI" * " [" * "0.417" * ", " * "0.495" * "], ",
-          italic("a")["Gunel-Dickey"] * " = " * "1.500"
-        )
-      )
-    )
+      expr_text3$expression[[1]]
+    ))
   }
 )
 
