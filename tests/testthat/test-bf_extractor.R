@@ -1,8 +1,7 @@
-# bayes factor extractor works --------------------------
-
 test_that(
   desc = "bayes factor (correlation)",
   code = {
+    # bayes factor extractor works --------------------------
 
     # creating a dataframe
     set.seed(123)

@@ -1,9 +1,9 @@
-# parametric anova subtitles (without NAs) -----------------------------------
-
 test_that(
   desc = "parametric anova subtitles work (without NAs)",
   code = {
     options(tibble.width = Inf)
+
+    # parametric anova subtitles (without NAs) ------------------------------
 
     # statsExpression output
     set.seed(123)
@@ -23,17 +23,18 @@ test_that(
   }
 )
 
-# parametric anova subtitles (partial omega) ----------------------------------
-
 test_that(
   desc = "parametric anova subtitles with partial omega-squared",
   code = {
+
+    # parametric anova subtitles (partial omega) ------------------------------
+
     # statsExpression output
     set.seed(123)
     df1 <- oneway_anova(
       data = ggplot2::msleep,
       x = vore,
-      y = "sleep_rem",
+      y = "brainwt",
       effsize.type = "unbiased",
       k = 4
     )
@@ -45,37 +46,12 @@ test_that(
   }
 )
 
-# parametric anova subtitles (partial eta and NAs) --------------------------
-
-test_that(
-  desc = "parametric anova subtitles with partial eta-squared and data with NAs",
-  code = {
-
-    # statsExpression output
-    set.seed(123)
-    df1 <-
-      oneway_anova(
-        data = ggplot2::msleep,
-        x = vore,
-        y = sleep_rem,
-        var.equal = TRUE,
-        effsize.type = "biased",
-        k = 4
-      )
-
-    # testing all details
-    set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
-    expect_snapshot(df1$expression[[1]])
-  }
-)
-
-# parametric repeated anova subtitles (basic) ---------------------------------
-
 test_that(
   desc = "paired parametric anova subtitles work (without NAs)",
   code = {
     skip_if_not_installed("afex")
+
+    # parametric repeated anova subtitles (basic) ----------------------------
 
     # statsExpression output
     set.seed(123)
@@ -96,11 +72,11 @@ test_that(
   }
 )
 
-# too few obs -------------------------------------------------------
-
 test_that(
   desc = "too few obs",
   code = {
+    # too few obs -------------------------------------------------------
+
     skip_if_not_installed("afex")
     set.seed(123)
 
@@ -176,11 +152,12 @@ test_that(
   }
 )
 
-# works with subject id ------------------------------------------------------
-
 test_that(
   desc = "works with subject id",
   code = {
+
+    # works with subject id ------------------------------------------------------
+
     skip_if_not_installed("afex")
 
     # data

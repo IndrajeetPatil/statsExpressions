@@ -111,25 +111,18 @@ one_sample_test <- function(data,
   # preparing expression
   if (type %in% c("parametric", "nonparametric")) {
     # extracting test details
-    stats_df <-
-      rlang::exec(
-        .fn = .f,
-        x = x_vec,
-        mu = test.value,
-        exact = FALSE
-      ) %>%
+    stats_df <- rlang::exec(.f, x = x_vec, mu = test.value, exact = FALSE) %>%
       tidy_model_parameters(.) %>%
       dplyr::select(-dplyr::matches("^est|^conf|^diff|^term|^ci"))
 
     # extracting effect size details
-    effsize_df <-
-      rlang::exec(
-        .fn = .f.es,
-        x = x_vec - test.value,
-        ci = conf.level,
-        verbose = FALSE,
-        iterations = nboot
-      ) %>%
+    effsize_df <- rlang::exec(
+      .f.es,
+      x = x_vec - test.value,
+      ci = conf.level,
+      verbose = FALSE,
+      iterations = nboot
+    ) %>%
       tidy_model_effectsize(.)
 
     # these can be really big values
@@ -144,14 +137,13 @@ one_sample_test <- function(data,
   if (type == "robust") {
     # bootstrap-t method for one-sample test
     no.parameters <- 0L
-    stats_df <-
-      trimcibt(
-        x = x_vec,
-        tr = tr,
-        nboot = nboot,
-        nv = test.value,
-        alpha = 1 - conf.level
-      )
+    stats_df <- trimcibt(
+      x = x_vec,
+      tr = tr,
+      nboot = nboot,
+      nv = test.value,
+      alpha = 1 - conf.level
+    )
   }
 
   # expression

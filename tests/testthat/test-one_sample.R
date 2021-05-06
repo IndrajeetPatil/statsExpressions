@@ -1,11 +1,10 @@
-
-# parametric -----------------------------------------------------------
-
 test_that(
   desc = "one_sample_test parametric works",
   code = {
     options(tibble.width = Inf)
     skip_if(getRversion() < "4.0")
+
+    # parametric -----------------------------------------------------------
 
     # Hedge's g and non-central
     set.seed(123)
@@ -43,12 +42,12 @@ test_that(
   }
 )
 
-# non-parametric -----------------------------------------------------------
-
 test_that(
   desc = "one_sample_test non-parametric works",
   code = {
     skip_if(getRversion() < "4.0")
+
+    # non-parametric -----------------------------------------------------------
 
     # statsExpressions output
     set.seed(123)
@@ -82,13 +81,12 @@ test_that(
   }
 )
 
-
-# robust -----------------------------------------------------------
-
 test_that(
   desc = "one_sample_test robust works",
   code = {
     skip_if(getRversion() < "4.0")
+
+    # robust -----------------------------------------------------------
 
     # statsExpressions output
     set.seed(123)
@@ -124,12 +122,12 @@ test_that(
   }
 )
 
-# bayes factor -----------------------------------------------------------
-
 test_that(
   desc = "one_sample_test bayes factor works",
   code = {
     skip_if(getRversion() < "4.0")
+
+    # Bayesian -----------------------------------------------------------
 
     # extracting results from where this function is implemented
     set.seed(123)

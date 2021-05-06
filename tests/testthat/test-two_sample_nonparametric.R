@@ -1,9 +1,9 @@
-# between-subjects design -----------------------------------------------
-
 test_that(
   desc = "t_nonparametric works - between-subjects design",
   code = {
     options(tibble.width = Inf)
+
+    # between-subjects design -----------------------------------------------
 
     # output
     set.seed(123)
@@ -24,11 +24,10 @@ test_that(
   }
 )
 
-# within-subjects design -----------------------------------------------
-
 test_that(
   desc = "t_nonparametric works - within-subjects design",
   code = {
+    # within-subjects design -----------------------------------------------
 
     # data
     df_bird <-
@@ -82,11 +81,11 @@ test_that(
   }
 )
 
-# works with subject id ------------------------------------------------------
-
 test_that(
   desc = "works with subject id",
   code = {
+    # works with subject id --------------------------------------------------
+
     # data
     df <-
       structure(list(

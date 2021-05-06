@@ -1,4 +1,4 @@
-# meta_analysis works
+# meta_analysis works - bayesian
 
     Code
       subtitle1$expression[[1]]

@@ -1,8 +1,8 @@
-# between-subjects ----------------------------------------------------------
-
 test_that(
   desc = "between-subjects - data with and without NAs",
   code = {
+    # between-subjects ----------------------------------------------
+
     options(tibble.width = Inf)
 
     # `statsExpressions` output
@@ -42,12 +42,12 @@ test_that(
   }
 )
 
-# within-subjects -------------------------------------------------------
-
 test_that(
   desc = "within-subjects - data with and without NAs",
   code = {
     options(tibble.width = Inf)
+
+    # within-subjects -------------------------------------------------------
 
     # `statsExpressions` output
     set.seed(123)
@@ -64,7 +64,6 @@ test_that(
 
     # testing all details
     set.seed(123)
-    #expect_snapshot(dplyr::select(df1, -expression))
     expect_snapshot(df1$expression[[1]])
 
     # `statsExpressions` output
@@ -82,16 +81,14 @@ test_that(
 
     # testing all details
     set.seed(123)
-    #expect_snapshot(dplyr::select(df2, -expression))
     expect_snapshot(df2$expression[[1]])
   }
 )
 
-# works with subject id ------------------------------------------------------
-
 test_that(
   desc = "works with subject id",
   code = {
+    # works with subject id -----------------------------------------------
 
     # data
     df <-

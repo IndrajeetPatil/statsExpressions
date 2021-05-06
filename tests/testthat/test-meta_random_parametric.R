@@ -1,9 +1,6 @@
 if (require("metafor")) {
-
-  # subtitle from meta-analysis -------------------------------------------
-
   test_that(
-    desc = "meta_analysis works",
+    desc = "meta_analysis works - parametric",
     code = {
       options(tibble.width = Inf)
       skip_if(getRversion() < "4.0")

@@ -1,4 +1,4 @@
-#  dataframes for parametric t-tests
+#  parametric t-tests
 
     Code
       df_1
@@ -60,4 +60,48 @@
       2   0.0984     0.659 Hedges' g  <language>
       3   0.201      0.563 Cohen's d  <language>
       4   0.305      0.452 Hedges' g  <language>
+
+---
+
+    Code
+      df_3_between
+    Output
+      # A tibble: 4 x 11
+        statistic    df df.error p.value
+            <dbl> <dbl>    <dbl>   <dbl>
+      1      4.14     3     52    0.0105
+      2      2.63     3     11.1  0.102 
+      3      4.14     3     52    0.0105
+      4      2.63     3     11.1  0.102 
+        method                                                   estimate conf.level
+        <chr>                                                       <dbl>      <dbl>
+      1 One-way analysis of means                                   0.193       0.89
+      2 One-way analysis of means (not assuming equal variances)    0.245       0.8 
+      3 One-way analysis of means                                   0.193       0.9 
+      4 One-way analysis of means (not assuming equal variances)    0.245       0.5 
+        conf.low conf.high effectsize expression
+           <dbl>     <dbl> <chr>      <list>    
+      1   0.0335     0.321 Eta2       <language>
+      2   0          0.414 Omega2     <language>
+      3   0.0307     0.326 Eta2       <language>
+      4   0          0.275 Omega2     <language>
+
+---
+
+    Code
+      df_3_within
+    Output
+      # A tibble: 2 x 15
+        term      sumsq sum.squares.error    df df.error meansq statistic  p.value
+        <chr>     <dbl>             <dbl> <dbl>    <dbl>  <dbl>     <dbl>    <dbl>
+      1 condition  233.              984.  2.63     229.   4.30      20.6 8.27e-11
+      2 condition  233.              984.  2.63     229.   4.30      20.6 8.27e-11
+        method                                              estimate conf.level
+        <chr>                                                  <dbl>      <dbl>
+      1 ANOVA estimation for factorial designs using 'afex'   0.191        0.89
+      2 ANOVA estimation for factorial designs using 'afex'   0.0783       0.9 
+        conf.low conf.high effectsize       expression
+           <dbl>     <dbl> <chr>            <list>    
+      1   0.122      0.254 Eta2 (partial)   <language>
+      2   0.0280     0.128 Omega2 (partial) <language>
 

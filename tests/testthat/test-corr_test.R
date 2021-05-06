@@ -1,9 +1,9 @@
-# nonparametric ----------------------------------------------------------
-
 test_that(
   desc = "corr_test works - nonparametric",
   code = {
     options(tibble.width = Inf)
+
+    # nonparametric ----------------------------------------------------------
 
     # `statsExpressions` output
     set.seed(123)
@@ -39,11 +39,11 @@ test_that(
   }
 )
 
-# parametric --------------------------------------------------------------
-
 test_that(
   desc = "corr_test works - parametric",
   code = {
+    # parametric --------------------------------------------------------------
+
     # `statsExpressions` output
     set.seed(123)
     df <-
@@ -63,11 +63,11 @@ test_that(
   }
 )
 
-# robust ----------------------------------------------------------------
-
 test_that(
   desc = "corr_test works - robust",
   code = {
+    # robust ----------------------------------------------------------------
+
     # using function
     set.seed(123)
     df <-
@@ -87,11 +87,11 @@ test_that(
   }
 )
 
-# bayes factor (correlation test) --------------------------------------
-
 test_that(
   desc = "bayes factor (correlation test) - without NAs",
   code = {
+    # bayes factor (correlation test) --------------------------------------
+
     skip_if(getRversion() < "4.0")
 
     # extracting results from where this function is implemented

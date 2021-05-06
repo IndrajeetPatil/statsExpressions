@@ -1,4 +1,4 @@
-# meta_analysis works
+# meta_analysis works - parametric
 
     Code
       dplyr::select(df, -expression)

@@ -1,9 +1,6 @@
 if (require("metaBMA")) {
-
-  # subtitle from meta-analysis -------------------------------------------
-
   test_that(
-    desc = "meta_analysis works",
+    desc = "meta_analysis works - bayesian",
     code = {
       skip_if(getRversion() < "4.0")
 

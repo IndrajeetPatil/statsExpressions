@@ -1,8 +1,8 @@
-# parametric t-test (between-subjects without NAs) ---------------------------
-
 test_that(
   desc = "parametric t-test works (between-subjects without NAs)",
   code = {
+    # parametric t-test (between-subjects without NAs) ----------------------
+
     options(tibble.width = Inf)
 
     # `statsExpressions` output
@@ -30,11 +30,11 @@ test_that(
   }
 )
 
-# parametric t-test (between-subjects with NAs) ------------------------------
-
 test_that(
   desc = "parametric t-test works (between-subjects with NAs)",
   code = {
+    # parametric t-test (between-subjects with NAs) --------------------------
+
     # `statsExpressions` output
     set.seed(123)
     df1 <-
@@ -60,11 +60,10 @@ test_that(
   }
 )
 
-# parametric t-test (within-subjects without NAs) ---------------------------
-
 test_that(
   desc = "parametric t-test works (within-subjects without NAs)",
   code = {
+    # parametric t-test (within-subjects without NAs) -----------------------
 
     # output from `statsExpressions` helper subtitle
     set.seed(123)
@@ -89,11 +88,12 @@ test_that(
   }
 )
 
-# parametric t-test (within-subjects with NAs) ---------------------------
 
 test_that(
   desc = "parametric t-test works (within-subjects with NAs)",
   code = {
+    # parametric t-test (within-subjects with NAs) ---------------------------
+
     # output from `statsExpressions` helper subtitle
     set.seed(123)
     df1 <-
@@ -113,11 +113,10 @@ test_that(
   }
 )
 
-# works with subject id ------------------------------------------------------
-
 test_that(
   desc = "works with subject id",
   code = {
+    # works with subject id ------------------------------------------------
 
     # data
     df <-

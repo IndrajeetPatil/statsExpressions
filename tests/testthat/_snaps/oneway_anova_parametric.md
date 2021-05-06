@@ -32,46 +32,23 @@
       # A tibble: 1 x 10
         statistic    df df.error p.value
             <dbl> <dbl>    <dbl>   <dbl>
-      1      2.63     3     11.1   0.102
+      1      2.27     3     24.0   0.107
         method                                                   estimate conf.level
         <chr>                                                       <dbl>      <dbl>
-      1 One-way analysis of means (not assuming equal variances)    0.245       0.95
+      1 One-way analysis of means (not assuming equal variances)    0.119       0.95
         conf.low conf.high effectsize
            <dbl>     <dbl> <chr>     
-      1        0     0.539 Omega2    
+      1        0     0.326 Omega2    
 
 ---
 
     Code
       df1$expression[[1]]
     Output
-      paste(italic("F")["Welch"], "(", "3", ",", "11.1010", ") = ", 
-          "2.6325", ", ", italic("p"), " = ", "0.1017", ", ", widehat(omega["p"]^2), 
-          " = ", "0.2449", ", CI"["95%"], " [", "0.0000", ", ", "0.5391", 
-          "]", ", ", italic("n")["obs"], " = ", "56")
-
-# parametric anova subtitles with partial eta-squared and data with NAs
-
-    Code
-      dplyr::select(df1, -expression)
-    Output
-      # A tibble: 1 x 10
-        statistic    df df.error p.value method                    estimate conf.level
-            <dbl> <dbl>    <dbl>   <dbl> <chr>                        <dbl>      <dbl>
-      1      4.14     3       52  0.0105 One-way analysis of means    0.193       0.95
-        conf.low conf.high effectsize
-           <dbl>     <dbl> <chr>     
-      1   0.0139     0.355 Eta2      
-
----
-
-    Code
-      df1$expression[[1]]
-    Output
-      paste(italic("F")["Fisher"], "(", "3", ",", "52", ") = ", "4.1361", 
-          ", ", italic("p"), " = ", "0.0105", ", ", widehat(eta["p"]^2), 
-          " = ", "0.1926", ", CI"["95%"], " [", "0.0139", ", ", "0.3555", 
-          "]", ", ", italic("n")["obs"], " = ", "56")
+      paste(italic("F")["Welch"], "(", "3", ",", "24.0475", ") = ", 
+          "2.2653", ", ", italic("p"), " = ", "0.1066", ", ", widehat(omega["p"]^2), 
+          " = ", "0.1192", ", CI"["95%"], " [", "0.0000", ", ", "0.3261", 
+          "]", ", ", italic("n")["obs"], " = ", "51")
 
 # paired parametric anova subtitles work (without NAs)
 

@@ -1,9 +1,9 @@
-# between-subjects -------------------------------------------------------
-
 test_that(
   desc = "expr_anova_robust works - between-subjects",
   code = {
     options(tibble.width = Inf)
+
+    # between-subjects -------------------------------------------------------
 
     # `statsExpressions` output
     set.seed(123)
@@ -45,12 +45,12 @@ test_that(
   }
 )
 
-# within-subjects -------------------------------------------------------
-
 test_that(
   desc = "expr_anova_robust works - within-subjects",
   code = {
     options(tibble.width = Inf)
+
+    # within-subjects -------------------------------------------------------
 
     # `statsExpressions` output
     set.seed(123)

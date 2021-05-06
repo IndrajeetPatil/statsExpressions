@@ -50,11 +50,10 @@ test_that(
 )
 
 
-# between-subjects ------------------------------------------------------------
-
 test_that(
   desc = "t_robust - between-subjects - without NAs",
   code = {
+    # between-subjects ------------------------------------------------------
 
     # subtitle
     set.seed(123)
@@ -99,11 +98,10 @@ test_that(
   }
 )
 
-# works with subject id ------------------------------------------------------
-
 test_that(
   desc = "works with subject id",
   code = {
+    # works with subject id --------------------------------------
 
     # data
     df <-

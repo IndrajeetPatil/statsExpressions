@@ -66,15 +66,14 @@ corr_test <- function(data,
   # ----------------- creating correlation dataframes -----------------------
 
   # creating a dataframe of results
-  stats_df <-
-    correlation::correlation(
-      data = tidyr::drop_na(dplyr::select(dplyr::ungroup(data), {{ x }}, {{ y }})),
-      method = ifelse(type == "nonparametric", "spearman", "pearson"),
-      ci = conf.level,
-      bayesian = ifelse(type == "bayes", TRUE, FALSE),
-      bayesian_prior = bf.prior,
-      winsorize = ifelse(type == "robust", tr, FALSE)
-    ) %>%
+  stats_df <- correlation::correlation(
+    data = tidyr::drop_na(dplyr::select(dplyr::ungroup(data), {{ x }}, {{ y }})),
+    method = ifelse(type == "nonparametric", "spearman", "pearson"),
+    ci = conf.level,
+    bayesian = ifelse(type == "bayes", TRUE, FALSE),
+    bayesian_prior = bf.prior,
+    winsorize = ifelse(type == "robust", tr, FALSE)
+  ) %>%
     parameters::standardize_names(style = "broom") %>%
     dplyr::mutate(effectsize = method)
 

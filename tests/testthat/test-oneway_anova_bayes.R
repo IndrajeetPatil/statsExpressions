@@ -1,10 +1,9 @@
-# bayes factor (between-subjects - anova) ---------------------------------
-
 test_that(
   desc = "bayes factor (between-subjects - anova)",
   code = {
     skip_if(getRversion() < "4.0")
 
+    # bayes factor (between-subjects - anova) ---------------------------------
 
     # extracting results from where this function is implemented
     set.seed(123)
@@ -52,11 +51,11 @@ test_that(
   }
 )
 
-# bayes factor (within-subjects - anova) ---------------------------------
-
 test_that(
   desc = "bayes factor (within-subjects - anova)",
   code = {
+    # bayes factor (within-subjects - anova) ---------------------------------
+
     if (utils::packageVersion("BayesFactor") >= package_version("0.9.12-4.3")) {
 
       # dataframe

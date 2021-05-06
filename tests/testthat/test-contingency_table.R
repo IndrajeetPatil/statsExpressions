@@ -1,9 +1,9 @@
-# contingency tab - data without NAs -----------------------------------------
-
 test_that(
-  desc = "contingency_table works - data without NAs",
+  desc = "contingency_table works",
   code = {
     options(tibble.width = Inf)
+
+    # contingency tab - without NAs ---------------------------------
 
     # `statsExpressions` output
     set.seed(123)
@@ -35,18 +35,12 @@ test_that(
     set.seed(123)
     expect_snapshot(dplyr::select(df2, -expression))
     expect_snapshot(df2$expression[[1]])
-  }
-)
 
-# contingency tab - data with NAs -----------------------------------------
-
-test_that(
-  desc = "contingency_table works - data with NAs",
-  code = {
+    # contingency tab - with NAs --------------------------------------
 
     # introduce NAs
     set.seed(123)
-    df1 <-
+    df3 <-
       suppressWarnings(contingency_table(
         data = ggplot2::msleep,
         x = vore,
@@ -56,16 +50,15 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
-    expect_snapshot(df1$expression[[1]])
+    expect_snapshot(dplyr::select(df3, -expression))
+    expect_snapshot(df3$expression[[1]])
   }
 )
 
-# paired data without NAs and counts data -------------------------------------
-
 test_that(
-  desc = "paired contingency_table works - counts data without NAs",
+  desc = "paired contingency_table works ",
   code = {
+    # paired data - without NAs and counts data ----------------------------
 
     # create data structure
     paired_data <-
@@ -106,35 +99,8 @@ test_that(
     set.seed(123)
     expect_snapshot(dplyr::select(df1, -expression))
     expect_snapshot(df1$expression[[1]])
-  }
-)
 
-# paired data with NAs  ---------------------------------------------
-
-test_that(
-  desc = "paired contingency_table works - with NAs",
-  code = {
-
-    # create data structure
-    paired_data <-
-      structure(
-        list(
-          response_before =
-            structure(
-              c(1L, 2L, 1L, 2L),
-              .Label = c("no", "yes"),
-              class = "factor"
-            ),
-          response_after = structure(
-            c(1L, 1L, 2L, 2L),
-            .Label = c("no", "yes"),
-            class = "factor"
-          ),
-          Freq = c(65L, 25L, 5L, 5L)
-        ),
-        class = "data.frame",
-        row.names = c(NA, -4L)
-      )
+    # paired data with NAs  ---------------------------------------------
 
     # expanding the dataframe
     paired_data %<>% tidyr::uncount(weights = Freq)
@@ -150,7 +116,7 @@ test_that(
 
     # `statsExpressions` output
     set.seed(123)
-    df1 <-
+    df2 <-
       suppressWarnings(
         contingency_table(
           data = paired_data,
@@ -164,16 +130,15 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
-    expect_snapshot(df1$expression[[1]])
+    expect_snapshot(dplyr::select(df2, -expression))
+    expect_snapshot(df2$expression[[1]])
   }
 )
-
-# one-sample test (without counts) -----------------------------------------
 
 test_that(
   desc = "Goodness of Fit contingency_table works without counts",
   code = {
+    # one-sample test (without NAs) -------------------------------------
 
     # `statsExpressions` output
     set.seed(123)
@@ -203,41 +168,12 @@ test_that(
     set.seed(123)
     expect_snapshot(dplyr::select(df2, -expression))
     expect_snapshot(df2$expression[[1]])
-  }
-)
 
-# checking subtitle (with counts) -----------------------------------------
-
-test_that(
-  desc = "Goodness of Fit contingency_table works with counts",
-  code = {
-
-    # `statsExpressions` output
-    set.seed(123)
-    df1 <-
-      contingency_table(
-        data = as.data.frame(Titanic),
-        x = Sex,
-        counts = "Freq",
-        k = 3
-      )
-
-    # testing all details
-    set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
-    expect_snapshot(df1$expression[[1]])
-  }
-)
-
-# dataframe with NA  and with ratio ----------------------------------------
-
-test_that(
-  desc = "works with dataframes with NAs and with ratio",
-  code = {
+    # one-sample test (with NAs) -------------------------------------
 
     # from function
     set.seed(123)
-    df1 <-
+    df3 <-
       contingency_table(
         data = ggplot2::msleep,
         x = vore,
@@ -246,50 +182,15 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
-    expect_snapshot(df1$expression[[1]])
+    expect_snapshot(dplyr::select(df3, -expression))
+    expect_snapshot(df3$expression[[1]])
   }
 )
-
-# checking edge cases --------------------------------------------------------
-
-test_that(
-  desc = "works even in edge cases",
-  code = {
-
-    # too few observations
-    data1 <- data.frame(
-      x = c("a", "b", "b", "c", "c", "c"),
-      y = c("a", "a", "a", "a", "b", "b")
-    )
-
-    # subtitle
-    set.seed(123)
-    df1 <- suppressWarnings(contingency_table(data1, x, y))
-
-    # testing all details
-    set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
-    expect_snapshot(df1$expression[[1]])
-
-    # another dataset with a dropped level
-    data2 <- dplyr::filter(mtcars, am == "0")
-
-    set.seed(123)
-    df2 <- contingency_table(data2, am, cyl)
-
-    # testing all details
-    set.seed(123)
-    expect_snapshot(dplyr::select(df2, -expression))
-    expect_snapshot(df2$expression[[1]])
-  }
-)
-
-# bayes factor (proportion test) --------------------------------------
 
 test_that(
   desc = "bayes factor (proportion test)",
   code = {
+    # bayes factor (proportion test) --------------------------------------
 
     # extracting results from where this function is implemented
     set.seed(123)
@@ -318,11 +219,10 @@ test_that(
   }
 )
 
-# bayes factor (contingency tab) --------------------------------------
-
 test_that(
   desc = "bayes factor (contingency tab)",
   code = {
+    # bayes factor (contingency tab) --------------------------------------
 
     # extracting results from where this function is implemented
     set.seed(123)
@@ -393,13 +293,41 @@ test_that(
   }
 )
 
-# check edge cases - bayes --------------------------------------------
 
 test_that(
-  desc = "check edge cases - bayes",
+  desc = "works even in edge cases",
   code = {
-    df <- data.frame(x = c("a"))
+    # checking edge cases -------------------------------------------------
 
-    expect_null(contingency_table(type = "bayes", df, x))
+    # too few observations
+    data1 <- data.frame(
+      x = c("a", "b", "b", "c", "c", "c"),
+      y = c("a", "a", "a", "a", "b", "b")
+    )
+
+    # subtitle
+    set.seed(123)
+    df1 <- suppressWarnings(contingency_table(data1, x, y))
+
+    # testing all details
+    set.seed(123)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression[[1]])
+
+    # another dataset with a dropped level
+    data2 <- dplyr::filter(mtcars, am == "0")
+
+    set.seed(123)
+    df2 <- contingency_table(data2, am, cyl)
+
+    # testing all details
+    set.seed(123)
+    expect_snapshot(dplyr::select(df2, -expression))
+    expect_snapshot(df2$expression[[1]])
+
+
+    df_eg <- data.frame(x = c("a"))
+
+    expect_null(contingency_table(type = "bayes", df_eg, x))
   }
 )

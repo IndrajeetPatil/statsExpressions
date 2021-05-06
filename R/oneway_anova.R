@@ -254,8 +254,7 @@ oneway_anova <- function(data,
     }
 
     # extracting test details
-    stats_df <- rlang::exec(.fn = .f, !!!.f.args, data = data) %>%
-      tidy_model_parameters(.)
+    stats_df <- tidy_model_parameters(rlang::exec(.f, !!!.f.args, data = data))
 
     # computing respective effect sizes
     effsize_df <- rlang::exec(

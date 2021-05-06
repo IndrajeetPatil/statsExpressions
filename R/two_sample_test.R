@@ -169,28 +169,26 @@ two_sample_test <- function(data,
   # preparing expression
   if (type %in% c("parametric", "nonparametric")) {
     # extracting test details
-    stats_df <-
-      rlang::exec(
-        .fn = .f,
-        formula = rlang::new_formula(y, x),
-        data = data,
-        paired = paired,
-        var.equal = var.equal,
-        exact = FALSE
-      ) %>%
+    stats_df <- rlang::exec(
+      .fn = .f,
+      formula = rlang::new_formula(y, x),
+      data = data,
+      paired = paired,
+      var.equal = var.equal,
+      exact = FALSE
+    ) %>%
       tidy_model_parameters(.)
 
     # extracting effect size details
-    effsize_df <-
-      rlang::exec(
-        .fn = .f.es,
-        x = rlang::new_formula(y, x),
-        data = data,
-        paired = paired,
-        ci = conf.level,
-        verbose = FALSE,
-        iterations = nboot
-      ) %>%
+    effsize_df <- rlang::exec(
+      .fn = .f.es,
+      x = rlang::new_formula(y, x),
+      data = data,
+      paired = paired,
+      ci = conf.level,
+      verbose = FALSE,
+      iterations = nboot
+    ) %>%
       tidy_model_effectsize(.)
 
     # these can be really big values
@@ -206,28 +204,26 @@ two_sample_test <- function(data,
     # running robust analysis
     if (isFALSE(paired)) {
       # computing effect size and its confidence interval
-      mod2 <-
-        WRS2::yuen.effect.ci(
-          formula = rlang::new_formula(y, x),
-          data = data,
-          tr = tr,
-          nboot = nboot,
-          alpha = 1 - conf.level
-        )
+      mod2 <- WRS2::yuen.effect.ci(
+        formula = rlang::new_formula(y, x),
+        data = data,
+        tr = tr,
+        nboot = nboot,
+        alpha = 1 - conf.level
+      )
 
       # Yuen's test for trimmed means
       mod <- WRS2::yuen(formula = rlang::new_formula(y, x), data = data, tr = tr)
 
       # tidying it up
       stats_df <- tidy_model_parameters(mod)
-      effsize_df <-
-        tibble(
-          estimate = mod2$effsize[[1]],
-          conf.low = mod2$CI[[1]],
-          conf.high = mod2$CI[[2]],
-          conf.level = conf.level,
-          effectsize = "Explanatory measure of effect size"
-        )
+      effsize_df <- tibble(
+        estimate = mod2$effsize[[1]],
+        conf.low = mod2$CI[[1]],
+        conf.high = mod2$CI[[2]],
+        conf.level = conf.level,
+        effectsize = "Explanatory measure of effect size"
+      )
     }
 
     if (isTRUE(paired)) {
@@ -237,8 +233,7 @@ two_sample_test <- function(data,
 
       # tidying it up
       stats_df <- tidy_model_parameters(mod)
-      effsize_df <-
-        as_tibble(as.data.frame(mod2), rownames = "effectsize") %>%
+      effsize_df <- as_tibble(as.data.frame(mod2), rownames = "effectsize") %>%
         dplyr::filter(effectsize == "AKP") %>%
         dplyr::mutate(
           effectsize = "Algina-Keselman-Penfield robust standardized difference",
@@ -273,7 +268,7 @@ two_sample_test <- function(data,
     if (paired) .f.args <- list(x = data[[2]], y = data[[3]], rscale = bf.prior, paired = paired)
 
     # creating a `BayesFactor` object
-    bf_object <- rlang::exec(.fn = BayesFactor::ttestBF, data = as.data.frame(data), !!!.f.args)
+    bf_object <- rlang::exec(BayesFactor::ttestBF, data = as.data.frame(data), !!!.f.args)
 
     # final return
     stats_df <- bf_extractor(bf_object, conf.level, k = k, top.text = top.text)

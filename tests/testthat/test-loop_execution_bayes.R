@@ -1,6 +1,3 @@
-
-# loops - correlation ---------------------------------------------------------
-
 test_that(
   desc = "corr_test works in loop",
   code = {
@@ -21,8 +18,6 @@ test_that(
   }
 )
 
-# loops - contingency tabs ---------------------------------------------------
-
 test_that(
   desc = "contingency_table works in loop",
   code = {
@@ -42,8 +37,6 @@ test_that(
     expect_true(length(ls) >= 10L)
   }
 )
-
-# loops - expr_ttest ---------------------------------------------------
 
 test_that(
   desc = "expr_ttest works in loop",
@@ -82,13 +75,9 @@ test_that(
   }
 )
 
-# loops - expr_anova ---------------------------------------------------
-
 test_that(
   desc = "expr_anova works in loop",
   code = {
-
-
     # working with loops
     df <- dplyr::select(mtcars, cyl, wt, mpg)
     col.name <- colnames(df)

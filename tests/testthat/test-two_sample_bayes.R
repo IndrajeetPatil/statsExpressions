@@ -1,10 +1,9 @@
-
-# bayes factor (independent samples t-test) ----------------------
-
 test_that(
   desc = "bayes factor (independent samples t-test)",
   code = {
     skip_if(getRversion() < "4.0")
+
+    # bayes factor (independent samples t-test) ----------------------
 
     # from Bayes Factor
     df <- suppressMessages(bf_extractor(
@@ -38,11 +37,11 @@ test_that(
   }
 )
 
-# Bayes factor (paired t-test) ---------------------------------------------
-
 test_that(
   desc = "bayes factor (paired t-test)",
   code = {
+
+    # Bayes factor (paired t-test) ---------------------------------------------
 
     # data
     dat <-
@@ -85,11 +84,12 @@ test_that(
   }
 )
 
-# works with subject id ------------------------------------------------------
-
 test_that(
   desc = "works with subject id",
   code = {
+
+    # works with subject id -----------------------------------------------
+
     # data
     df <-
       structure(list(
