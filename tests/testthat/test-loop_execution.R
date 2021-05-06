@@ -1,6 +1,3 @@
-
-# loops - correlation ---------------------------------------------------------
-
 test_that(
   desc = "corr_test works in loop",
   code = {
@@ -19,8 +16,6 @@ test_that(
   }
 )
 
-# loops - one-sample ---------------------------------------------------------
-
 test_that(
   desc = "expr_onesample works in loop",
   code = {
@@ -38,9 +33,6 @@ test_that(
     expect_true(length(ls) >= 12L)
   }
 )
-
-
-# loops - contingency tabs ---------------------------------------------------
 
 test_that(
   desc = "contingency_table works in loop",

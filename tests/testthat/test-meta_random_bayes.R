@@ -1,11 +1,7 @@
 if (require("metaBMA")) {
-
-  # subtitle from meta-analysis -------------------------------------------
-
   test_that(
-    desc = "meta_analysis works",
+    desc = "meta_analysis works - bayesian",
     code = {
-      # skip_on_cran()
       skip_if(getRversion() < "4.0")
 
       # setup
@@ -60,17 +56,7 @@ if (require("metaBMA")) {
       expect_type(df, "list")
       expect_identical(class(df), c("tbl_df", "tbl", "data.frame"))
 
-      expect_identical(
-        subtitle1$expression[[1]],
-        ggplot2::expr(
-          paste(
-            "log"["e"] * "(BF"["01"] * ") = " * "-3.587" * ", ",
-            widehat(italic(delta))["difference"]^"posterior" * " = " * "0.596" * ", ",
-            "CI"["95%"]^"HDI" * " [" * "0.321" * ", " * "0.854" * "], ",
-            italic("r")["Cauchy"]^"JZS" * " = " * "0.707"
-          )
-        )
-      )
+      expect_snapshot(subtitle1$expression[[1]])
     }
   )
 }

@@ -1,13 +1,13 @@
-# between-subjects design -----------------------------------------------
-
 test_that(
   desc = "t_nonparametric works - between-subjects design",
   code = {
+    options(tibble.width = Inf)
 
+    # between-subjects design -----------------------------------------------
 
-    # ggstatsplot output
+    # output
     set.seed(123)
-    using_function <-
+    df <-
       two_sample_test(
         type = "np",
         data = mtcars,
@@ -17,46 +17,17 @@ test_that(
         conf.level = 0.90
       )
 
-    # expected output
+    # testing all details
     set.seed(123)
-    results <-
-      ggplot2::expr(
-        paste(
-          "log"["e"](italic("W")["Mann-Whitney"]),
-          " = ",
-          "5.440",
-          ", ",
-          italic("p"),
-          " = ",
-          "4.35e-05",
-          ", ",
-          widehat(italic("r"))["biserial"]^"rank",
-          " = ",
-          "0.866",
-          ", CI"["90%"],
-          " [",
-          "0.688",
-          ", ",
-          "1.000",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          "32"
-        )
-      )
-
-    # testing overall everything identical
-    expect_identical(using_function$expression[[1]], results)
+    expect_snapshot(dplyr::select(df, -expression))
+    expect_snapshot(df$expression[[1]])
   }
 )
-
-# within-subjects design -----------------------------------------------
 
 test_that(
   desc = "t_nonparametric works - within-subjects design",
   code = {
-
+    # within-subjects design -----------------------------------------------
 
     # data
     df_bird <-
@@ -92,7 +63,7 @@ test_that(
 
     # ggstatsplot output
     set.seed(123)
-    using_function2 <-
+    df2 <-
       suppressWarnings(two_sample_test(
         type = "np",
         data = df_bird,
@@ -103,65 +74,17 @@ test_that(
         paired = TRUE
       ))
 
-    # expected output
+    # testing all details
     set.seed(123)
-    results2 <-
-      ggplot2::expr(
-        paste(
-          "log"["e"](italic("V")["Wilcoxon"]),
-          " = ",
-          "2.30259",
-          ", ",
-          italic("p"),
-          " = ",
-          "0.00295",
-          ", ",
-          widehat(italic("r"))["biserial"]^"rank",
-          " = ",
-          "-0.85294",
-          ", CI"["99%"],
-          " [",
-          "-1.00000",
-          ", ",
-          "-0.59551",
-          "]",
-          ", ",
-          italic("n")["pairs"],
-          " = ",
-          "16"
-        )
-      )
-
-    # testing overall call
-    expect_identical(using_function2$expression[[1]], results2)
+    expect_snapshot(dplyr::select(df2, -expression))
+    expect_snapshot(df2$expression[[1]])
   }
 )
-
-
-# dataframe -----------------------------------------------------------
-
-test_that(
-  desc = "dataframe",
-  code = {
-    expect_s3_class(
-      two_sample_test(
-        type = "np",
-        data = dplyr::filter(movies_long, genre == "Action" | genre == "Drama"),
-        x = "genre",
-        y = rating,
-      ),
-      "tbl_df"
-    )
-  }
-)
-
-
-# works with subject id ------------------------------------------------------
 
 test_that(
   desc = "works with subject id",
   code = {
-
+    # works with subject id --------------------------------------------------
 
     # data
     df <-

@@ -135,31 +135,30 @@ expr_template <- function(data,
     if (is.null(prior.type)) prior.type <- prior_type_switch(data$method[[1]])
 
     # Bayesian expression
-    expression <-
-      substitute(
-        atop(
-          displaystyle(top.text),
-          expr = paste(
-            "log"["e"] * "(BF"["01"] * ") = " * bf * ", ",
-            widehat(effsize.text)[prior.type]^"posterior" * " = " * estimate * ", ",
-            "CI"[conf.level]^conf.method * " [" * estimate.LB * ", " * estimate.UB * "], ",
-            prior.distribution * " = " * bf.prior
-          )
-        ),
-        env = list(
-          top.text = top.text,
-          effsize.text = effsize.text,
-          prior.type = prior.type,
-          conf.level = paste0(data$conf.level[[1]] * 100, "%"),
-          conf.method = toupper(conf.method),
-          bf = format_value(-log(data$bf10[[1]]), k),
-          estimate = format_value(estimate, k),
-          estimate.LB = format_value(estimate.LB, k),
-          estimate.UB = format_value(estimate.UB, k),
-          prior.distribution = prior.distribution,
-          bf.prior = format_value(data$prior.scale[[1]], k)
+    expression <- substitute(
+      atop(
+        displaystyle(top.text),
+        expr = paste(
+          "log"["e"] * "(BF"["01"] * ") = " * bf * ", ",
+          widehat(effsize.text)[prior.type]^"posterior" * " = " * estimate * ", ",
+          "CI"[conf.level]^conf.method * " [" * estimate.LB * ", " * estimate.UB * "], ",
+          prior.distribution * " = " * bf.prior
         )
+      ),
+      env = list(
+        top.text = top.text,
+        effsize.text = effsize.text,
+        prior.type = prior.type,
+        conf.level = paste0(data$conf.level[[1]] * 100, "%"),
+        conf.method = toupper(conf.method),
+        bf = format_value(-log(data$bf10[[1]]), k),
+        estimate = format_value(estimate, k),
+        estimate.LB = format_value(estimate.LB, k),
+        estimate.UB = format_value(estimate.UB, k),
+        prior.distribution = prior.distribution,
+        bf.prior = format_value(data$prior.scale[[1]], k)
       )
+    )
 
     # return the final expression
     if (is.null(top.text)) expression <- expression$expr
@@ -169,44 +168,43 @@ expr_template <- function(data,
 
   if (isFALSE(bayesian) && no.parameters == 0L) {
     # preparing expression
-    expression <-
-      substitute(
-        expr = paste(
-          statistic.text,
-          " = ",
-          statistic,
-          ", ",
-          italic("p"),
-          " = ",
-          p.value,
-          ", ",
-          effsize.text,
-          " = ",
-          estimate,
-          ", CI"[conf.level],
-          " [",
-          estimate.LB,
-          ", ",
-          estimate.UB,
-          "]",
-          ", ",
-          n.text,
-          " = ",
-          n
-        ),
-        env = list(
-          statistic.text = statistic.text,
-          statistic = format_value(data$statistic[[1]], k),
-          p.value = format_num(data$p.value[[1]], k, p.value = TRUE),
-          effsize.text = effsize.text,
-          estimate = format_value(estimate, k),
-          conf.level = paste0(data$conf.level[[1]] * 100, "%"),
-          estimate.LB = format_value(estimate.LB, k),
-          estimate.UB = format_value(estimate.UB, k),
-          n = .prettyNum(n),
-          n.text = n.text
-        )
+    expression <- substitute(
+      expr = paste(
+        statistic.text,
+        " = ",
+        statistic,
+        ", ",
+        italic("p"),
+        " = ",
+        p.value,
+        ", ",
+        effsize.text,
+        " = ",
+        estimate,
+        ", CI"[conf.level],
+        " [",
+        estimate.LB,
+        ", ",
+        estimate.UB,
+        "]",
+        ", ",
+        n.text,
+        " = ",
+        n
+      ),
+      env = list(
+        statistic.text = statistic.text,
+        statistic = format_value(data$statistic[[1]], k),
+        p.value = format_num(data$p.value[[1]], k, p.value = TRUE),
+        effsize.text = effsize.text,
+        estimate = format_value(estimate, k),
+        conf.level = paste0(data$conf.level[[1]] * 100, "%"),
+        estimate.LB = format_value(estimate.LB, k),
+        estimate.UB = format_value(estimate.UB, k),
+        n = .prettyNum(n),
+        n.text = n.text
       )
+    )
   }
 
   # ------------------ statistic with 1 degree of freedom --------------------
@@ -215,97 +213,95 @@ expr_template <- function(data,
     if ("df" %in% names(data)) data %<>% mutate(df.error = df)
 
     # preparing expression
-    expression <-
-      substitute(
-        expr = paste(
-          statistic.text,
-          "(",
-          parameter,
-          ") = ",
-          statistic,
-          ", ",
-          italic("p"),
-          " = ",
-          p.value,
-          ", ",
-          effsize.text,
-          " = ",
-          estimate,
-          ", CI"[conf.level],
-          " [",
-          estimate.LB,
-          ", ",
-          estimate.UB,
-          "]",
-          ", ",
-          n.text,
-          " = ",
-          n
-        ),
-        env = list(
-          statistic.text = statistic.text,
-          statistic = format_value(data$statistic[[1]], k),
-          parameter = format_value(data$df.error[[1]], k.df),
-          p.value = format_num(data$p.value[[1]], k, p.value = TRUE),
-          effsize.text = effsize.text,
-          estimate = format_value(estimate, k),
-          conf.level = paste0(data$conf.level[[1]] * 100, "%"),
-          estimate.LB = format_value(estimate.LB, k),
-          estimate.UB = format_value(estimate.UB, k),
-          n = .prettyNum(n),
-          n.text = n.text
-        )
+    expression <- substitute(
+      expr = paste(
+        statistic.text,
+        "(",
+        parameter,
+        ") = ",
+        statistic,
+        ", ",
+        italic("p"),
+        " = ",
+        p.value,
+        ", ",
+        effsize.text,
+        " = ",
+        estimate,
+        ", CI"[conf.level],
+        " [",
+        estimate.LB,
+        ", ",
+        estimate.UB,
+        "]",
+        ", ",
+        n.text,
+        " = ",
+        n
+      ),
+      env = list(
+        statistic.text = statistic.text,
+        statistic = format_value(data$statistic[[1]], k),
+        parameter = format_value(data$df.error[[1]], k.df),
+        p.value = format_num(data$p.value[[1]], k, p.value = TRUE),
+        effsize.text = effsize.text,
+        estimate = format_value(estimate, k),
+        conf.level = paste0(data$conf.level[[1]] * 100, "%"),
+        estimate.LB = format_value(estimate.LB, k),
+        estimate.UB = format_value(estimate.UB, k),
+        n = .prettyNum(n),
+        n.text = n.text
       )
+    )
   }
 
   # ------------------ statistic with 2 degrees of freedom -----------------
 
   if (isFALSE(bayesian) && no.parameters == 2L) {
     # preparing expression
-    expression <-
-      substitute(
-        expr = paste(
-          statistic.text,
-          "(",
-          parameter1,
-          ",",
-          parameter2,
-          ") = ",
-          statistic,
-          ", ",
-          italic("p"),
-          " = ",
-          p.value,
-          ", ",
-          effsize.text,
-          " = ",
-          estimate,
-          ", CI"[conf.level],
-          " [",
-          estimate.LB,
-          ", ",
-          estimate.UB,
-          "]",
-          ", ",
-          n.text,
-          " = ",
-          n
-        ),
-        env = list(
-          statistic.text = statistic.text,
-          statistic = format_value(data$statistic[[1]], k),
-          parameter1 = format_value(data$df[[1]], k.df),
-          parameter2 = format_value(data$df.error[[1]], k.df.error),
-          p.value = format_num(data$p.value[[1]], k, p.value = TRUE),
-          effsize.text = effsize.text,
-          estimate = format_value(estimate, k),
-          conf.level = paste0(data$conf.level[[1]] * 100, "%"),
-          estimate.LB = format_value(estimate.LB, k),
-          estimate.UB = format_value(estimate.UB, k),
-          n = .prettyNum(n),
-          n.text = n.text
-        )
+    expression <- substitute(
+      expr = paste(
+        statistic.text,
+        "(",
+        parameter1,
+        ",",
+        parameter2,
+        ") = ",
+        statistic,
+        ", ",
+        italic("p"),
+        " = ",
+        p.value,
+        ", ",
+        effsize.text,
+        " = ",
+        estimate,
+        ", CI"[conf.level],
+        " [",
+        estimate.LB,
+        ", ",
+        estimate.UB,
+        "]",
+        ", ",
+        n.text,
+        " = ",
+        n
+      ),
+      env = list(
+        statistic.text = statistic.text,
+        statistic = format_value(data$statistic[[1]], k),
+        parameter1 = format_value(data$df[[1]], k.df),
+        parameter2 = format_value(data$df.error[[1]], k.df.error),
+        p.value = format_num(data$p.value[[1]], k, p.value = TRUE),
+        effsize.text = effsize.text,
+        estimate = format_value(estimate, k),
+        conf.level = paste0(data$conf.level[[1]] * 100, "%"),
+        estimate.LB = format_value(estimate.LB, k),
+        estimate.UB = format_value(estimate.UB, k),
+        n = .prettyNum(n),
+        n.text = n.text
       )
+    )
   }
 
   # return the formatted expression

@@ -3,118 +3,61 @@
 test_that(
   desc = "t_robust - within-subjects - without NAs",
   code = {
-
+    options(tibble.width = Inf)
 
     # subtitle
     set.seed(123)
-    using_function1 <-
+    df1 <-
       two_sample_test(
         type = "r",
-        data = dplyr::filter(iris_long, condition %in% c("Sepal.Length", "Sepal.Width")),
+        data = dplyr::filter(
+          iris_long,
+          condition %in% c("Sepal.Length", "Sepal.Width")
+        ),
         x = "condition",
         y = value,
         paired = TRUE,
         k = 4
       )
 
-    # expected
-    results1 <-
-      ggplot2::expr(
-        paste(
-          italic("t")["Yuen"],
-          "(",
-          "89",
-          ") = ",
-          "28.7230",
-          ", ",
-          italic("p"),
-          " = ",
-          "0e+00",
-          ", ",
-          widehat(delta)["R"]^"AKP",
-          " = ",
-          "2.3582",
-          ", CI"["95%"],
-          " [",
-          "1.9615",
-          ", ",
-          "2.6081",
-          "]",
-          ", ",
-          italic("n")["pairs"],
-          " = ",
-          "150"
-        )
-      )
-
-    # testing overall call
-    expect_identical(using_function1$expression[[1]], results1)
+    # testing all details
+    set.seed(123)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression[[1]])
   }
 )
 
 test_that(
   desc = "t_robust - within-subjects - with NAs",
   code = {
-
-
     # subtitle
     set.seed(123)
-    using_function1 <-
+    df1 <-
       two_sample_test(
         type = "r",
         data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
         x = "condition",
         y = desire,
         paired = TRUE,
-        k = 3
+        k = 3L
       )
 
-    # expected
-    results1 <-
-      ggplot2::expr(
-        paste(
-          italic("t")["Yuen"],
-          "(",
-          "53",
-          ") = ",
-          "2.909",
-          ", ",
-          italic("p"),
-          " = ",
-          "0.005",
-          ", ",
-          widehat(delta)["R"]^"AKP",
-          " = ",
-          "0.410",
-          ", CI"["95%"],
-          " [",
-          "0.238",
-          ", ",
-          "0.611",
-          "]",
-          ", ",
-          italic("n")["pairs"],
-          " = ",
-          "90"
-        )
-      )
-
-    # testing overall call
-    expect_identical(using_function1$expression[[1]], results1)
+    # testing all details
+    set.seed(123)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression[[1]])
   }
 )
 
 
-# between-subjects ------------------------------------------------------------
-
 test_that(
   desc = "t_robust - between-subjects - without NAs",
   code = {
-
+    # between-subjects ------------------------------------------------------
 
     # subtitle
     set.seed(123)
-    using_function1 <-
+    df1 <-
       two_sample_test(
         type = "r",
         data = mtcars,
@@ -125,49 +68,19 @@ test_that(
         k = 3
       )
 
-    # expected
-    results1 <-
-      ggplot2::expr(
-        paste(
-          italic("t")["Yuen"],
-          "(",
-          "13.584",
-          ") = ",
-          "5.840",
-          ", ",
-          italic("p"),
-          " = ",
-          "4.85e-05",
-          ", ",
-          widehat(xi),
-          " = ",
-          "0.915",
-          ", CI"["99%"],
-          " [",
-          "0.702",
-          ", ",
-          "0.979",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          "32"
-        )
-      )
-
-    # testing overall call
-    expect_identical(using_function1$expression[[1]], results1)
+    # testing all details
+    set.seed(123)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression[[1]])
   }
 )
 
 test_that(
   desc = "t_robust - between-subjects - with NAs",
   code = {
-
-
     # subtitle
     set.seed(123)
-    using_function1 <-
+    df1 <-
       two_sample_test(
         type = "r",
         data = dplyr::filter(ggplot2::msleep, vore %in% c("carni", "herbi")),
@@ -178,66 +91,17 @@ test_that(
         k = 4
       )
 
-    # expected
-    results1 <-
-      ggplot2::expr(
-        paste(
-          italic("t")["Yuen"],
-          "(",
-          "13.8476",
-          ") = ",
-          "0.4521",
-          ", ",
-          italic("p"),
-          " = ",
-          "0.6582",
-          ", ",
-          widehat(xi),
-          " = ",
-          "0.3659",
-          ", CI"["90%"],
-          " [",
-          "0.0000",
-          ", ",
-          "0.7768",
-          "]",
-          ", ",
-          italic("n")["obs"],
-          " = ",
-          "29"
-        )
-      )
-
-    # testing overall call
-    expect_identical(using_function1$expression[[1]], results1)
+    # testing all details
+    set.seed(123)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression[[1]])
   }
 )
-
-
-# dataframe -----------------------------------------------------------
-
-test_that(
-  desc = "dataframe",
-  code = {
-    expect_s3_class(
-      statsExpressions::two_sample_test(
-        type = "r",
-        data = dplyr::filter(movies_long, genre == "Action" | genre == "Drama"),
-        x = "genre",
-        y = rating,
-      ),
-      "tbl_df"
-    )
-  }
-)
-
-
-# works with subject id ------------------------------------------------------
 
 test_that(
   desc = "works with subject id",
   code = {
-
+    # works with subject id --------------------------------------
 
     # data
     df <-
@@ -272,7 +136,7 @@ test_that(
     # incorrect
     set.seed(123)
     expr1 <-
-      statsExpressions::two_sample_test(
+      two_sample_test(
         type = "r",
         data = df,
         x = condition,
@@ -284,7 +148,7 @@ test_that(
     # correct
     set.seed(123)
     expr2 <-
-      statsExpressions::two_sample_test(
+      two_sample_test(
         type = "r",
         data = dplyr::arrange(df, id),
         x = condition,

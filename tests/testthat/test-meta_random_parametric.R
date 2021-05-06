@@ -1,11 +1,8 @@
 if (require("metafor")) {
-
-  # subtitle from meta-analysis -------------------------------------------
-
   test_that(
-    desc = "meta_analysis works",
+    desc = "meta_analysis works - parametric",
     code = {
-      # skip_on_cran()
+      options(tibble.width = Inf)
       skip_if(getRversion() < "4.0")
 
       # dataframe
@@ -19,55 +16,14 @@ if (require("metafor")) {
           class = c("tbl_df", "tbl", "data.frame")
         )
 
-      # subtitle output
-      set.seed(123)
-      using_function1 <-
-        meta_analysis(
-          data = df_eg,
-          k = 4
-        )
-
       # dataframe output
       set.seed(123)
-      df_res <-
-        meta_analysis(
-          data = df_eg,
-        )
+      df <- meta_analysis(df_eg)
 
-      # output
-      expect_s3_class(df_res, "tbl_df")
-
-      # expected subtitle output
+      # testing all details
       set.seed(123)
-      results1 <-
-        ggplot2::expr(
-          paste(
-            italic("z"),
-            " = ",
-            "2.1697",
-            ", ",
-            italic("p"),
-            " = ",
-            "0.0300",
-            ", ",
-            widehat(beta)["summary"]^"meta",
-            " = ",
-            "0.4377",
-            ", CI"["95%"],
-            " [",
-            "0.0423",
-            ", ",
-            "0.8331",
-            "]",
-            ", ",
-            italic("n")["effects"],
-            " = ",
-            "5"
-          )
-        )
-
-      # testing overall call
-      expect_identical(using_function1$expression[[1]], results1)
+      expect_snapshot(dplyr::select(df, -expression))
+      expect_snapshot(df$expression[[1]])
 
       # error
       expect_error(meta_analysis(mtcars))

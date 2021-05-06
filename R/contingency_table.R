@@ -153,13 +153,12 @@ contingency_table <- function(data,
     stats_df <- tidy_model_parameters(rlang::exec(.fn = .f, !!!.f.args))
 
     # computing effect size + CI
-    effsize_df <-
-      rlang::exec(
-        .fn = .f.es,
-        adjust = TRUE,
-        ci = conf.level,
-        !!!.f.args
-      ) %>%
+    effsize_df <- rlang::exec(
+      .fn = .f.es,
+      adjust = TRUE,
+      ci = conf.level,
+      !!!.f.args
+    ) %>%
       tidy_model_effectsize(.)
 
     # combining dataframes
@@ -184,13 +183,12 @@ contingency_table <- function(data,
     # two-way table
     if (test == "two.way") {
       # Bayes Factor object
-      bf_object <-
-        BayesFactor::contingencyTableBF(
-          table(data %>% dplyr::pull({{ x }}), data %>% dplyr::pull({{ y }})),
-          sampleType = sampling.plan,
-          fixedMargin = fixed.margin,
-          priorConcentration = prior.concentration
-        )
+      bf_object <- BayesFactor::contingencyTableBF(
+        table(data %>% dplyr::pull({{ x }}), data %>% dplyr::pull({{ y }})),
+        sampleType = sampling.plan,
+        fixedMargin = fixed.margin,
+        priorConcentration = prior.concentration
+      )
 
       # Bayes Factor expression
       stats_df <- bf_extractor(bf_object, conf.level, k = k, top.text = top.text)
@@ -209,36 +207,33 @@ contingency_table <- function(data,
       p1s <- rdirichlet_int(n = 100000, alpha = prior.concentration * ratio)
 
       # prob
-      tmp_pr_h1 <-
-        sapply(
-          X = 1:100000,
-          FUN = function(i) stats::dmultinom(x = as.matrix(xtab), prob = p1s[i, ], log = TRUE)
-        )
+      tmp_pr_h1 <- sapply(
+        X = 1:100000,
+        FUN = function(i) stats::dmultinom(x = as.matrix(xtab), prob = p1s[i, ], log = TRUE)
+      )
 
       # BF = (log) prob of data under alternative - (log) prob of data under null
-      bf <-
-        BayesFactor::logMeanExpLogs(tmp_pr_h1) -
+      bf <- BayesFactor::logMeanExpLogs(tmp_pr_h1) -
         stats::dmultinom(as.matrix(xtab), prob = ratio, log = TRUE)
 
       # computing Bayes Factor and formatting the results
       stats_df <- tibble(bf10 = exp(bf), prior.scale = prior.concentration)
 
       # final expression
-      expression <-
-        substitute(
-          atop(
-            displaystyle(top.text),
-            expr = paste(
-              "log"["e"] * "(BF"["01"] * ") = " * bf * ", ",
-              italic("a")["Gunel-Dickey"] * " = " * a
-            )
-          ),
-          env = list(
-            top.text = top.text,
-            bf = format_value(-log(stats_df$bf10[[1]]), k),
-            a = format_value(stats_df$prior.scale[[1]], k)
+      expression <- substitute(
+        atop(
+          displaystyle(top.text),
+          expr = paste(
+            "log"["e"] * "(BF"["01"] * ") = " * bf * ", ",
+            italic("a")["Gunel-Dickey"] * " = " * a
           )
+        ),
+        env = list(
+          top.text = top.text,
+          bf = format_value(-log(stats_df$bf10[[1]]), k),
+          a = format_value(stats_df$prior.scale[[1]], k)
         )
+      )
 
       # the final expression
       if (is.null(top.text)) expression <- expression$expr
