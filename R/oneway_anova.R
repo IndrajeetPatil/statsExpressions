@@ -10,14 +10,7 @@
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @inheritParams ipmisc::long_to_wide_converter
-#' @param type A character specifying the type of statistical approach.
-#'   - `"parametric"`
-#'   - `"nonparametric"`
-#'   - `"robust"`
-#'   - `"bayes"`
-#'
-#'   Corresponding abbreviations are also accepted: `"p"` (for parametric),
-#'   `"np"` (for nonparametric), `"r"` (for robust), or `"bf"` (for Bayesian).
+#' @inheritParams ipmisc::stats_type_switch
 #' @param conf.level Scalar between `0` and `1`. If unspecified, the defaults
 #'   return `95%` confidence/credible intervals (`0.95`).
 #' @param effsize.type Type of effect size needed for *parametric* tests. The

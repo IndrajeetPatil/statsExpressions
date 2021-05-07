@@ -36,7 +36,7 @@ Imports:
     rlang,
     stats,
     tidyr,
-    WRS2
+    WRS2 (>= 1.1-1)
 Suggests:
     afex,
     ggplot2,

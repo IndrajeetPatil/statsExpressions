@@ -2,6 +2,7 @@
 #' @name two_sample_test
 #'
 #' @inheritParams ipmisc::long_to_wide_converter
+#' @inheritParams ipmisc::stats_type_switch
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
 #'   argument can be `"d"` (for Cohen's *d*) or `"g"` (for Hedge's *g*).
 #' @inheritParams one_sample_test

@@ -26,7 +26,7 @@ be accepted.}
 
 \item{x}{A numeric variable from the dataframe \code{data}.}
 
-\item{type}{A character specifying the type of statistical approach.
+\item{type}{A character specifying the type of statistical approach:
 \itemize{
 \item \code{"parametric"}
 \item \code{"nonparametric"}
@@ -34,8 +34,9 @@ be accepted.}
 \item \code{"bayes"}
 }
 
-Corresponding abbreviations are also accepted: \code{"p"} (for parametric),
-\code{"np"} (for nonparametric), \code{"r"} (for robust), or \code{"bf"} (for Bayesian).}
+This argument also accepts the following abbreviations: \code{"p"} (for
+\emph{parametric}), \code{"np"} (for \emph{nonparametric}), \code{"r"} (for \emph{robust}), \code{"bf"}
+(for \emph{Bayes Factor} or \emph{Bayesian}).}
 
 \item{test.value}{A number indicating the true value of the mean (Default:
 \code{0}).}

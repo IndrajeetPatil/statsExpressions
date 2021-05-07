@@ -22,7 +22,7 @@ two columns will be used for \code{yi}  and \code{sei} arguments in \code{metafo
 and for \code{y} and \code{SE} arguments in \code{metaBMA::meta_random} (for Bayesian
 analysis).}
 
-\item{type}{A character specifying the type of statistical approach.
+\item{type}{A character specifying the type of statistical approach:
 \itemize{
 \item \code{"parametric"}
 \item \code{"nonparametric"}
@@ -30,8 +30,9 @@ analysis).}
 \item \code{"bayes"}
 }
 
-Corresponding abbreviations are also accepted: \code{"p"} (for parametric),
-\code{"np"} (for nonparametric), \code{"r"} (for robust), or \code{"bf"} (for Bayesian).}
+This argument also accepts the following abbreviations: \code{"p"} (for
+\emph{parametric}), \code{"np"} (for \emph{nonparametric}), \code{"r"} (for \emph{robust}), \code{"bf"}
+(for \emph{Bayes Factor} or \emph{Bayesian}).}
 
 \item{random}{
 The type of random effects distribution. One of "normal","t-dist","mixture", for standard normal, \eqn{t}-distribution or mixture of normals respectively.

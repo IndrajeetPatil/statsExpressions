@@ -321,6 +321,7 @@
       "@type": "SoftwareApplication",
       "identifier": "WRS2",
       "name": "WRS2",
+      "version": ">= 1.1-1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -393,6 +394,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3730.057KB",
+  "fileSize": "3728.054KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

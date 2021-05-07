@@ -5,6 +5,7 @@
 #' @param test.value A number indicating the true value of the mean (Default:
 #'   `0`).
 #' @inheritParams ipmisc::long_to_wide_converter
+#' @inheritParams ipmisc::stats_type_switch
 #' @inheritParams expr_template
 #' @inheritParams bf_extractor
 #' @inheritParams two_sample_test

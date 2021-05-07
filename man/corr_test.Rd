@@ -30,7 +30,7 @@ plotted on the \code{x}-axis. Can be entered either as a character string (e.g.,
 be plotted on the \code{y}-axis. Can be entered either as a character string
 (e.g., \code{"y"}) or as a bare expression (e.g, \code{y}).}
 
-\item{type}{A character specifying the type of statistical approach.
+\item{type}{A character specifying the type of statistical approach:
 \itemize{
 \item \code{"parametric"}
 \item \code{"nonparametric"}
@@ -38,8 +38,9 @@ be plotted on the \code{y}-axis. Can be entered either as a character string
 \item \code{"bayes"}
 }
 
-Corresponding abbreviations are also accepted: \code{"p"} (for parametric),
-\code{"np"} (for nonparametric), \code{"r"} (for robust), or \code{"bf"} (for Bayesian).}
+This argument also accepts the following abbreviations: \code{"p"} (for
+\emph{parametric}), \code{"np"} (for \emph{nonparametric}), \code{"r"} (for \emph{robust}), \code{"bf"}
+(for \emph{Bayes Factor} or \emph{Bayesian}).}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2L}).}

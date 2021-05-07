@@ -27,20 +27,28 @@ two_sample_test(
 be taken. Other data types (e.g., matrix,table, array, etc.) will \strong{not}
 be accepted.}
 
-\item{x}{The grouping (or independent) variable from the dataframe \code{data}.}
+\item{x}{The grouping (or independent) variable from the dataframe \code{data}. In
+case of a repeated measures or within-subjects design, if \code{subject.id}
+argument is not available or not explicitly specified, the function assumes
+that the data has already been sorted by such an id by the user and creates
+an internal identifier. So if your data is \strong{not} sorted, the results
+\emph{can} be inaccurate when there are more than two levels in \code{x} and there
+are \code{NA}s present. The data is expected to be sorted by user in
+subject-1,subject-2, ..., pattern.}
 
 \item{y}{The response (or outcome or dependent) variable from the
 dataframe \code{data}.}
 
-\item{subject.id}{Relevant in case of repeated measures or within-subjects
+\item{subject.id}{Relevant in case of a repeated measures or within-subjects
 design (\code{paired = TRUE}, i.e.), it specifies the subject or repeated
 measures identifier. \strong{Important}: Note that if this argument is \code{NULL}
 (which is the default), the function assumes that the data has already been
 sorted by such an id by the user and creates an internal identifier. So if
 your data is \strong{not} sorted and you leave this argument unspecified, the
-results can be inaccurate.}
+results \emph{can} be inaccurate when there are more than two levels in \code{x} and
+there are \code{NA}s present.}
 
-\item{type}{A character specifying the type of statistical approach.
+\item{type}{A character specifying the type of statistical approach:
 \itemize{
 \item \code{"parametric"}
 \item \code{"nonparametric"}
@@ -48,8 +56,9 @@ results can be inaccurate.}
 \item \code{"bayes"}
 }
 
-Corresponding abbreviations are also accepted: \code{"p"} (for parametric),
-\code{"np"} (for nonparametric), \code{"r"} (for robust), or \code{"bf"} (for Bayesian).}
+This argument also accepts the following abbreviations: \code{"p"} (for
+\emph{parametric}), \code{"np"} (for \emph{nonparametric}), \code{"r"} (for \emph{robust}), \code{"bf"}
+(for \emph{Bayes Factor} or \emph{Bayesian}).}
 
 \item{paired}{Logical that decides whether the experimental design is
 repeated measures/within-subjects or between-subjects. The default is
