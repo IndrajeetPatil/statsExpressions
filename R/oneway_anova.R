@@ -34,25 +34,22 @@
 #' @inheritParams stats::oneway.test
 #'
 #' @note
-#' 1. Please note that the function expects that the data is
-#'   already sorted by subject/repeated measures ID.
-#'
-#' 2. To carry out Bayesian analysis for ANOVA designs, you will need to install
-#' the development version of `BayesFactor` (`0.9.12-4.3`). You can download it
-#' by running:
+#' To carry out Bayesian posterior estimation for ANOVA designs, you will need
+#' to install the development version of `BayesFactor` (`0.9.12-4.3`). You can
+#' download it by running:
 #' `remotes::install_github("richarddmorey/BayesFactor/pkg/BayesFactor")`.
 #'
-#' @importFrom dplyr select rename matches
-#' @importFrom rlang !! !!! quo_is_null eval_tidy expr enexpr ensym exec new_formula
+#' @importFrom dplyr select rename
+#' @importFrom rlang !! !!! expr enexpr ensym exec new_formula
 #' @importFrom stats oneway.test
 #' @importFrom WRS2 t1way rmanova wmcpAKP
-#' @importFrom stats friedman.test kruskal.test na.omit
-#' @importFrom effectsize rank_epsilon_squared kendalls_w
-#' @importFrom effectsize omega_squared eta_squared
+#' @importFrom stats friedman.test kruskal.test
+#' @importFrom effectsize rank_epsilon_squared kendalls_w omega_squared eta_squared
 #' @importFrom ipmisc long_to_wide_converter
 #' @importFrom BayesFactor ttestBF anovaBF
 #' @importFrom parameters model_parameters
 #' @importFrom performance model_performance
+#' @importFrom insight check_if_installed
 #'
 #' @examples
 #' \donttest{
@@ -189,7 +186,7 @@ oneway_anova <- function(data,
 
     if (isTRUE(paired)) {
       # check if `afex` is installed
-      if (!requireNamespace("afex", quietly = TRUE)) stop("Package 'afex' needs to be installed.")
+      insight::check_if_installed("afex")
 
       # Fisher's ANOVA
       mod <- afex::aov_ez(
