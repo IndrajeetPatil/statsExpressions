@@ -9,7 +9,7 @@
       1 len   supp         20.7        17.0      1.92       58  0.0604
         method            estimate conf.level conf.low conf.high effectsize
         <chr>                <dbl>      <dbl>    <dbl>     <dbl> <chr>     
-      1 Two Sample t-test    0.495       0.99   -0.183      1.17 Cohen's d 
+      1 Two Sample t-test    0.495       0.99   -0.184      1.17 Cohen's d 
 
 ---
 
@@ -18,8 +18,8 @@
     Output
       paste(italic("t")["Student"], "(", "58", ") = ", "1.91527", ", ", 
           italic("p"), " = ", "0.06039", ", ", widehat(italic("d"))["Cohen"], 
-          " = ", "0.49452", ", CI"["99%"], " [", "-0.18295", ", ", 
-          "1.16798", "]", ", ", italic("n")["obs"], " = ", "60")
+          " = ", "0.49452", ", CI"["99%"], " [", "-0.18354", ", ", 
+          "1.16839", "]", ", ", italic("n")["obs"], " = ", "60")
 
 # parametric t-test works (between-subjects with NAs)
 
@@ -32,7 +32,7 @@
       1 len   supp         20.7        17.0      1.92     55.3  0.0606
         method                  estimate conf.level conf.low conf.high effectsize
         <chr>                      <dbl>      <dbl>    <dbl>     <dbl> <chr>     
-      1 Welch Two Sample t-test    0.488        0.9   0.0603     0.912 Hedges' g 
+      1 Welch Two Sample t-test    0.488        0.9   0.0599     0.912 Hedges' g 
 
 ---
 

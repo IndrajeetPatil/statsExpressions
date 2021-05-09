@@ -7,6 +7,9 @@ MAJOR CHANGES
     easier to understand and interpret given its a robust cousin of Cohen's
     *d*.
 
+  - Cohen's *d* and Hedge's *g* use non-pooled standard deviation (cf.
+    https://psyarxiv.com/tu6mp/).
+
 # statsExpressions 1.0.1
 
 BREAKING CHANGES

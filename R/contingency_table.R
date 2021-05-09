@@ -150,15 +150,10 @@ contingency_table <- function(data,
     }
 
     # stats
-    stats_df <- tidy_model_parameters(rlang::exec(.fn = .f, !!!.f.args))
+    stats_df <- tidy_model_parameters(rlang::exec(.f, !!!.f.args))
 
     # computing effect size + CI
-    effsize_df <- rlang::exec(
-      .fn = .f.es,
-      adjust = TRUE,
-      ci = conf.level,
-      !!!.f.args
-    ) %>%
+    effsize_df <- rlang::exec(.f.es, adjust = TRUE, ci = conf.level, !!!.f.args) %>%
       tidy_model_effectsize(.)
 
     # combining dataframes

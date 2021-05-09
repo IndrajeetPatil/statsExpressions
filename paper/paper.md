@@ -16,14 +16,6 @@ affiliations:
     index: 1
 date: "2021-05-09"
 bibliography: paper.bib
-output: rticles::joss_article
-csl: apa.csl
-journal: JOSS
-link-citations: yes
-header-includes:
-  - \usepackage{tabularx}
-  - \usepackage{booktabs}
-  - \usepackage{tikz}
 ---
 
 

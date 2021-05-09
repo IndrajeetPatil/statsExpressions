@@ -186,6 +186,7 @@ two_sample_test <- function(data,
       x = rlang::new_formula(y, x),
       data = data,
       paired = paired,
+      pooled_sd = FALSE,
       ci = conf.level,
       verbose = FALSE,
       iterations = nboot
