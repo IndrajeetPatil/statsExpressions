@@ -1,5 +1,12 @@
 # statsExpressions 1.0.1.9000
 
+MAJOR CHANGES
+
+  - The effect size for independent trimmed means two-sample test has been
+    changed from explanatory measure of effect size to AKP's delta, which is
+    easier to understand and interpret given its a robust cousin of Cohen's
+    *d*.
+
 # statsExpressions 1.0.1
 
 BREAKING CHANGES

@@ -10,12 +10,9 @@ test_that(
     df1 <-
       suppressWarnings(
         two_sample_test(
-          data = dplyr::filter(
-            movies_long,
-            genre == "Action" | genre == "Drama"
-          ),
-          x = genre,
-          y = rating,
+          ToothGrowth,
+          x = supp,
+          y = len,
           effsize.type = "d",
           var.equal = TRUE,
           conf.level = 0.99,
@@ -40,12 +37,9 @@ test_that(
     df1 <-
       suppressWarnings(
         two_sample_test(
-          data = dplyr::filter(
-            movies_long,
-            genre == "Action" | genre == "Drama"
-          ),
-          x = genre,
-          y = rating,
+          ToothGrowth,
+          x = supp,
+          y = len,
           effsize.type = "g",
           var.equal = FALSE,
           conf.level = 0.90,

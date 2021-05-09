@@ -14,7 +14,7 @@ authors:
 affiliations:
   - name: Center for Humans and Machines, Max Planck Institute for Human Development, Berlin, Germany
     index: 1
-date: "2021-05-06"
+date: "2021-05-09"
 bibliography: paper.bib
 ---
 
@@ -116,12 +116,15 @@ mtcars %>% two_sample_test(am, wt, type = "robust")     # Yuen's t-test
 #>   statistic df.error   p.value
 #>       <dbl>    <dbl>     <dbl>
 #> 1      5.84     13.6 0.0000485
-#>   method                                               estimate conf.low
-#>   <chr>                                                   <dbl>    <dbl>
-#> 1 Yuen's test on trimmed means for independent samples    0.915    0.754
-#>   conf.high conf.level effectsize                         expression
-#>       <dbl>      <dbl> <chr>                              <list>    
-#> 1     0.977       0.95 Explanatory measure of effect size <language>
+#>   method                                               estimate conf.level
+#>   <chr>                                                   <dbl>      <dbl>
+#> 1 Yuen's test on trimmed means for independent samples     2.48       0.95
+#>   conf.low conf.high effectsize                                             
+#>      <dbl>     <dbl> <chr>                                                  
+#> 1    0.924      4.84 Algina-Keselman-Penfield robust standardized difference
+#>   expression
+#>   <list>    
+#> 1 <language>
 ```
 
 These functions are also compatible with other popular data manipulation

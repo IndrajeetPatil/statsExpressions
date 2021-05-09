@@ -59,12 +59,12 @@
         statistic df.error   p.value
             <dbl>    <dbl>     <dbl>
       1      5.84     13.6 0.0000485
-        method                                               estimate conf.low
-        <chr>                                                   <dbl>    <dbl>
-      1 Yuen's test on trimmed means for independent samples    0.915    0.702
-        conf.high conf.level effectsize                        
-            <dbl>      <dbl> <chr>                             
-      1     0.979       0.99 Explanatory measure of effect size
+        method                                               estimate conf.level
+        <chr>                                                   <dbl>      <dbl>
+      1 Yuen's test on trimmed means for independent samples     2.48       0.95
+        conf.low conf.high effectsize                                             
+           <dbl>     <dbl> <chr>                                                  
+      1    0.738      5.13 Algina-Keselman-Penfield robust standardized difference
 
 ---
 
@@ -72,9 +72,9 @@
       df1$expression[[1]]
     Output
       paste(italic("t")["Yuen"], "(", "13.584", ") = ", "5.840", ", ", 
-          italic("p"), " = ", "4.85e-05", ", ", widehat(xi), " = ", 
-          "0.915", ", CI"["99%"], " [", "0.702", ", ", "0.979", "]", 
-          ", ", italic("n")["obs"], " = ", "32")
+          italic("p"), " = ", "4.85e-05", ", ", widehat(delta)["R"]^"AKP", 
+          " = ", "2.482", ", CI"["95%"], " [", "0.738", ", ", "5.128", 
+          "]", ", ", italic("n")["obs"], " = ", "32")
 
 # t_robust - between-subjects - with NAs
 
@@ -85,12 +85,12 @@
         statistic df.error p.value
             <dbl>    <dbl>   <dbl>
       1     0.452     13.8   0.658
-        method                                               estimate conf.low
-        <chr>                                                   <dbl>    <dbl>
-      1 Yuen's test on trimmed means for independent samples    0.366        0
-        conf.high conf.level effectsize                        
-            <dbl>      <dbl> <chr>                             
-      1     0.777        0.9 Explanatory measure of effect size
+        method                                               estimate conf.level
+        <chr>                                                   <dbl>      <dbl>
+      1 Yuen's test on trimmed means for independent samples   -0.358       0.95
+        conf.low conf.high effectsize                                             
+           <dbl>     <dbl> <chr>                                                  
+      1    -7.16     0.406 Algina-Keselman-Penfield robust standardized difference
 
 ---
 
@@ -98,7 +98,7 @@
       df1$expression[[1]]
     Output
       paste(italic("t")["Yuen"], "(", "13.8476", ") = ", "0.4521", 
-          ", ", italic("p"), " = ", "0.6582", ", ", widehat(xi), " = ", 
-          "0.3659", ", CI"["90%"], " [", "0.0000", ", ", "0.7768", 
+          ", ", italic("p"), " = ", "0.6582", ", ", widehat(delta)["R"]^"AKP", 
+          " = ", "-0.3583", ", CI"["95%"], " [", "-7.1637", ", ", "0.4061", 
           "]", ", ", italic("n")["obs"], " = ", "29")
 

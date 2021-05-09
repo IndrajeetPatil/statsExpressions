@@ -529,7 +529,7 @@ Robust | > 2 | $\xi$ (Explanatory measure of effect size) | ✅ | `WRS2::t1way`
 Bayes Factor | > 2 | $R_{posterior}^2$ | ✅ | `performance::r2_bayes`
 Parametric | 2 | Cohen's *d*, Hedge's *g* | ✅ | `effectsize::cohens_d`, `effectsize::hedges_g`
 Non-parametric | 2 | *r* (rank-biserial correlation) | ✅ | `effectsize::rank_biserial`
-Robust | 2 |  $\xi$ (Explanatory measure of effect size) | ✅ | `WRS2::yuen.effect.ci`
+Robust | 2 |  $\delta_{R}^{AKP}$ (Algina-Keselman-Penfield robust standardized difference) | ✅ | `WRS2::akp.effect`
 Bayesian | 2 | $\delta_{posterior}$ | ✅ | `bayestestR::describe_posterior`
 
 ### within-subjects

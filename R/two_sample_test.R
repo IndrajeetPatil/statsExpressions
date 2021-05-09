@@ -15,7 +15,7 @@
 #' @importFrom tidyr drop_na
 #' @importFrom stats t.test  wilcox.test
 #' @importFrom BayesFactor ttestBF
-#' @importFrom WRS2 yuen yuen.effect.ci yuend dep.effect
+#' @importFrom WRS2 yuen akp.effect yuend dep.effect
 #' @importFrom effectsize cohens_d hedges_g rank_biserial
 #'
 #' @description
@@ -171,7 +171,7 @@ two_sample_test <- function(data,
   if (type %in% c("parametric", "nonparametric")) {
     # extracting test details
     stats_df <- rlang::exec(
-      .fn = .f,
+      .f,
       formula = rlang::new_formula(y, x),
       data = data,
       paired = paired,
@@ -182,7 +182,7 @@ two_sample_test <- function(data,
 
     # extracting effect size details
     effsize_df <- rlang::exec(
-      .fn = .f.es,
+      .f.es,
       x = rlang::new_formula(y, x),
       data = data,
       paired = paired,
@@ -205,9 +205,10 @@ two_sample_test <- function(data,
     # running robust analysis
     if (isFALSE(paired)) {
       # computing effect size and its confidence interval
-      mod2 <- WRS2::yuen.effect.ci(
+      mod2 <- WRS2::akp.effect(
         formula = rlang::new_formula(y, x),
         data = data,
+        EQVAR = FALSE,
         tr = tr,
         nboot = nboot,
         alpha = 1 - conf.level
@@ -218,13 +219,7 @@ two_sample_test <- function(data,
 
       # tidying it up
       stats_df <- tidy_model_parameters(mod)
-      effsize_df <- tibble(
-        estimate = mod2$effsize[[1]],
-        conf.low = mod2$CI[[1]],
-        conf.high = mod2$CI[[2]],
-        conf.level = conf.level,
-        effectsize = "Explanatory measure of effect size"
-      )
+      effsize_df <- tidy_model_parameters(mod2)
     }
 
     if (isTRUE(paired)) {
