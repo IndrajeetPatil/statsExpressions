@@ -16,6 +16,14 @@ affiliations:
     index: 1
 date: "2021-05-09"
 bibliography: paper.bib
+output: rticles::joss_article
+csl: apa.csl
+journal: JOSS
+link-citations: yes
+header-includes:
+  - \usepackage{tabularx}
+  - \usepackage{booktabs}
+  - \usepackage{tikz}
 ---
 
 
@@ -92,39 +100,36 @@ Additionally, it relies on `easystats` packages [@Ben-Shachar2020;
 appropriate effect size/posterior estimates and their confidence/credible
 intervals.
 
-To illustrate the simplicity of this syntax, let's say we want to run a
-two-sample *t*-test. If we first run a parametric *t*-test and then decide to
-run a robust *t*-test instead, the syntax remains the same and the statistical
-approach can be modified by changing a single argument:
+To illustrate the simplicity of this syntax, let's say we want to run a one-way
+ANOVA. If we first run a non-parametric ANOVA and then decide to run a robust
+ANOVA instead, the syntax remains the same and the statistical approach can be
+modified by changing a single argument:
 
 
 ```r
-mtcars %>% two_sample_test(am, wt, type = "parametric") # Welch's t-test
-#> # A tibble: 1 x 14
-#>   term  group mean.group1 mean.group2 statistic df.error    p.value
-#>   <chr> <chr>       <dbl>       <dbl>     <dbl>    <dbl>      <dbl>
-#> 1 wt    am           3.77        2.41      5.49     29.2 0.00000627
-#>   method                  estimate conf.level conf.low conf.high effectsize
-#>   <chr>                      <dbl>      <dbl>    <dbl>     <dbl> <chr>     
-#> 1 Welch Two Sample t-test     1.84       0.95     1.00      2.66 Hedges' g 
-#>   expression
-#>   <list>    
-#> 1 <language>
+mtcars %>% oneway_anova(cyl, wt, type = "nonparametric") 
+#> # A tibble: 1 x 12
+#>   parameter1 parameter2 statistic df.error   p.value
+#>   <chr>      <chr>          <dbl>    <int>     <dbl>
+#> 1 wt         cyl             22.8        2 0.0000112
+#>   method                       estimate conf.level conf.low conf.high
+#>   <chr>                           <dbl>      <dbl>    <dbl>     <dbl>
+#> 1 Kruskal-Wallis rank sum test    0.736       0.95    0.613     0.831
+#>   effectsize      expression
+#>   <chr>           <list>    
+#> 1 Epsilon2 (rank) <language>
 
-mtcars %>% two_sample_test(am, wt, type = "robust")     # Yuen's t-test
-#> # A tibble: 1 x 10
-#>   statistic df.error   p.value
-#>       <dbl>    <dbl>     <dbl>
-#> 1      5.84     13.6 0.0000485
-#>   method                                               estimate conf.level
-#>   <chr>                                                   <dbl>      <dbl>
-#> 1 Yuen's test on trimmed means for independent samples     2.48       0.95
-#>   conf.low conf.high effectsize                                             
-#>      <dbl>     <dbl> <chr>                                                  
-#> 1    0.924      4.84 Algina-Keselman-Penfield robust standardized difference
-#>   expression
-#>   <list>    
-#> 1 <language>
+mtcars %>% oneway_anova(cyl, wt, type = "robust")
+#> # A tibble: 1 x 11
+#>   statistic    df df.error p.value estimate conf.level conf.low conf.high
+#>       <dbl> <dbl>    <dbl>   <dbl>    <dbl>      <dbl>    <dbl>     <dbl>
+#> 1      12.7     2     12.2 0.00102     1.05       0.95    0.843      1.50
+#>   effectsize                        
+#>   <chr>                             
+#> 1 Explanatory measure of effect size
+#>   method                                            expression
+#>   <chr>                                             <list>    
+#> 1 A heteroscedastic one-way ANOVA for trimmed means <language>
 ```
 
 These functions are also compatible with other popular data manipulation

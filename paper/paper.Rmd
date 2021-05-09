@@ -128,15 +128,15 @@ Additionally, it relies on `easystats` packages [@Ben-Shachar2020;
 appropriate effect size/posterior estimates and their confidence/credible
 intervals.
 
-To illustrate the simplicity of this syntax, let's say we want to run a
-two-sample *t*-test. If we first run a parametric *t*-test and then decide to
-run a robust *t*-test instead, the syntax remains the same and the statistical
-approach can be modified by changing a single argument:
+To illustrate the simplicity of this syntax, let's say we want to run a one-way
+ANOVA. If we first run a non-parametric ANOVA and then decide to run a robust
+ANOVA instead, the syntax remains the same and the statistical approach can be
+modified by changing a single argument:
 
 ```{r df_p}
-mtcars %>% two_sample_test(am, wt, type = "parametric") # Welch's t-test
+mtcars %>% oneway_anova(cyl, wt, type = "nonparametric") 
 
-mtcars %>% two_sample_test(am, wt, type = "robust")     # Yuen's t-test
+mtcars %>% oneway_anova(cyl, wt, type = "robust")
 ```
 
 These functions are also compatible with other popular data manipulation
