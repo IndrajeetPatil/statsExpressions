@@ -101,7 +101,7 @@ meta_analysis <- function(data,
   # create a call and then extract dataframe with coefficients
   suppressMessages(suppressWarnings(stats_df <-
     eval(rlang::call2(.fn = .fn, .ns = .ns, data = data, !!!.f.args)) %>%
-    tidy_model_parameters(., include_studies = FALSE, ci = conf.level)))
+    tidy_model_parameters(include_studies = FALSE, ci = conf.level)))
 
   # new column
   if (type != "bayes") stats_df %<>% dplyr::mutate(effectsize = "meta-analytic summary estimate")

@@ -1,3 +1,7 @@
+# there is z in this file's name for a reason
+# Bayesian meta-analysis often crashes R session on macOS
+# this makes sure this test will be run after all others
+
 if (require("metaBMA")) {
   test_that(
     desc = "meta_analysis works - bayesian",

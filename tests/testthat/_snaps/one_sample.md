@@ -19,7 +19,7 @@
       paste(italic("t")["Student"], "(", "78", ") = ", "-2.67496", 
           ", ", italic("p"), " = ", "0.00910", ", ", widehat(italic("g"))["Hedges"], 
           " = ", "-0.29805", ", CI"["95%"], " [", "-0.52379", ", ", 
-          "-0.07429", "]", ", ", italic("n")["obs"], " = ", "79")
+          "-0.07429", "], ", italic("n")["obs"], " = ", "79")
 
 ---
 
@@ -42,7 +42,7 @@
       paste(italic("t")["Student"], "(", "78", ") = ", "-2.6750", ", ", 
           italic("p"), " = ", "0.0091", ", ", widehat(italic("d"))["Cohen"], 
           " = ", "-0.3010", ", CI"["90%"], " [", "-0.4924", ", ", "-0.1115", 
-          "]", ", ", italic("n")["obs"], " = ", "79")
+          "], ", italic("n")["obs"], " = ", "79")
 
 # one_sample_test non-parametric works
 
@@ -65,7 +65,7 @@
       paste("log"["e"](italic("V")["Wilcoxon"]), " = ", "6.6247", ", ", 
           italic("p"), " = ", "0.3227", ", ", widehat(italic("r"))["biserial"]^"rank", 
           " = ", "-0.1486", ", CI"["95%"], " [", "-0.4584", ", ", "0.1206", 
-          "]", ", ", italic("n")["obs"], " = ", "60")
+          "], ", italic("n")["obs"], " = ", "60")
 
 ---
 
@@ -88,7 +88,7 @@
       paste("log"["e"](italic("V")["Wilcoxon"]), " = ", "5.5683", ", ", 
           italic("p"), " = ", "1.253e-05", ", ", widehat(italic("r"))["biserial"]^"rank", 
           " = ", "-0.6717", ", CI"["95%"], " [", "-0.9052", ", ", "-0.4177", 
-          "]", ", ", italic("n")["obs"], " = ", "56")
+          "], ", italic("n")["obs"], " = ", "56")
 
 # one_sample_test robust works
 
@@ -110,8 +110,8 @@
     Output
       paste(italic("t")["bootstrapped"], " = ", "0.7866", ", ", italic("p"), 
           " = ", "0.3000", ", ", widehat(mu)["trimmed"], " = ", "9.0000", 
-          ", CI"["99%"], " [", "3.8097", ", ", "14.1903", "]", ", ", 
-          italic("n")["obs"], " = ", "11")
+          ", CI"["99%"], " [", "3.8097", ", ", "14.1903", "], ", italic("n")["obs"], 
+          " = ", "11")
 
 ---
 
@@ -133,8 +133,8 @@
     Output
       paste(italic("t")["bootstrapped"], " = ", "-3.8075", ", ", italic("p"), 
           " = ", "0.0200", ", ", widehat(mu)["trimmed"], " = ", "0.0390", 
-          ", CI"["90%"], " [", "0.0112", ", ", "0.0667", "]", ", ", 
-          italic("n")["obs"], " = ", "56")
+          ", CI"["90%"], " [", "0.0112", ", ", "0.0667", "], ", italic("n")["obs"], 
+          " = ", "56")
 
 # one_sample_test bayes factor works
 

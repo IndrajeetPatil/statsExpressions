@@ -19,7 +19,7 @@
       paste("log"["e"](italic("S")), " = ", "10.63231", ", ", italic("p"), 
           " = ", "3.4438e-06", ", ", widehat(rho)["Spearman"], " = ", 
           "0.49546", ", CI"["99.9%"], " [", "0.15344", ", ", "0.73147", 
-          "]", ", ", italic("n")["pairs"], " = ", "79")
+          "], ", italic("n")["pairs"], " = ", "79")
 
 ---
 
@@ -41,8 +41,8 @@
     Output
       paste("log"["e"](italic("S")), " = ", "9.24", ", ", italic("p"), 
           " = ", "1.49e-11", ", ", widehat(rho)["Spearman"], " = ", 
-          "-0.89", ", CI"["95%"], " [", "-0.94", ", ", "-0.77", "]", 
-          ", ", italic("n")["pairs"], " = ", "32")
+          "-0.89", ", CI"["95%"], " [", "-0.94", ", ", "-0.77", "], ", 
+          italic("n")["pairs"], " = ", "32")
 
 # corr_test works - parametric
 
@@ -65,7 +65,7 @@
       paste(italic("t")["Student"], "(", "46", ") = ", "-1.539", ", ", 
           italic("p"), " = ", "0.131", ", ", widehat(italic("r"))["Pearson"], 
           " = ", "-0.221", ", CI"["90%"], " [", "-0.438", ", ", "0.020", 
-          "]", ", ", italic("n")["pairs"], " = ", "48")
+          "], ", italic("n")["pairs"], " = ", "48")
 
 # corr_test works - robust
 
@@ -91,7 +91,7 @@
       paste(italic("t")["Student"], "(", "54", ") = ", "-4.8286", ", ", 
           italic("p"), " = ", "1.172e-05", ", ", widehat(italic("r"))["Winsorized"], 
           " = ", "-0.5491", ", CI"["50%"], " [", "-0.6106", ", ", "-0.4812", 
-          "]", ", ", italic("n")["pairs"], " = ", "56")
+          "], ", italic("n")["pairs"], " = ", "56")
 
 # bayes factor (correlation test) - without NAs
 

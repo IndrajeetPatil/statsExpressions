@@ -18,6 +18,6 @@
     Output
       paste(italic("z"), " = ", "2.17", ", ", italic("p"), " = ", "0.030", 
           ", ", widehat(beta)["summary"]^"meta", " = ", "0.44", ", CI"["95%"], 
-          " [", "0.04", ", ", "0.83", "]", ", ", italic("n")["effects"], 
+          " [", "0.04", ", ", "0.83", "], ", italic("n")["effects"], 
           " = ", "5")
 

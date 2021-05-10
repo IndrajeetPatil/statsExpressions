@@ -19,7 +19,7 @@
       paste("log"["e"](italic("W")["Mann-Whitney"]), " = ", "5.440", 
           ", ", italic("p"), " = ", "4.35e-05", ", ", widehat(italic("r"))["biserial"]^"rank", 
           " = ", "0.866", ", CI"["90%"], " [", "0.688", ", ", "1.000", 
-          "]", ", ", italic("n")["obs"], " = ", "32")
+          "], ", italic("n")["obs"], " = ", "32")
 
 # t_nonparametric works - within-subjects design
 
@@ -42,5 +42,5 @@
       paste("log"["e"](italic("V")["Wilcoxon"]), " = ", "2.30259", 
           ", ", italic("p"), " = ", "0.00295", ", ", widehat(italic("r"))["biserial"]^"rank", 
           " = ", "-0.85294", ", CI"["99%"], " [", "-1.00000", ", ", 
-          "-0.59551", "]", ", ", italic("n")["pairs"], " = ", "16")
+          "-0.59551", "], ", italic("n")["pairs"], " = ", "16")
 
