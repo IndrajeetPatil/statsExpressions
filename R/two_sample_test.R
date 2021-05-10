@@ -3,8 +3,6 @@
 #'
 #' @inheritParams ipmisc::long_to_wide_converter
 #' @inheritParams ipmisc::stats_type_switch
-#' @param effsize.type Type of effect size needed for *parametric* tests. The
-#'   argument can be `"d"` (for Cohen's *d*) or `"g"` (for Hedge's *g*).
 #' @inheritParams one_sample_test
 #' @inheritParams oneway_anova
 #' @inheritParams stats::t.test
@@ -123,6 +121,7 @@ two_sample_test <- function(data,
                             subject.id = NULL,
                             type = "parametric",
                             paired = FALSE,
+                            alternative = "two.sided",
                             k = 2L,
                             conf.level = 0.95,
                             effsize.type = "g",
@@ -175,6 +174,7 @@ two_sample_test <- function(data,
       formula = rlang::new_formula(y, x),
       data = data,
       paired = paired,
+      alternative = alternative,
       var.equal = var.equal,
       exact = FALSE
     ) %>%

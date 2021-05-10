@@ -14,8 +14,6 @@ one_sample_test(
   tr = 0.2,
   bf.prior = 0.707,
   effsize.type = "g",
-  .f.args = list(),
-  .f.es.args = list(verbose = FALSE, ci = conf.level),
   top.text = NULL,
   ...
 )
@@ -61,23 +59,6 @@ corresponds to scale for fixed effects.}
 
 \item{effsize.type}{Type of effect size needed for \emph{parametric} tests. The
 argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \emph{g}).}
-
-\item{.f.args, .f.es.args}{A \strong{list} of additional arguments to be passed to
-internal functions \code{.f} and \code{.f.es}. These are used to carry out
-statistical tests and to compute effect sizes, respectively. To see what
-additional arguments are available, you can have a look at the
-documentation for the respective function. Note that the chosen internal
-functions (\code{.f} and \code{.f.es}) will themselves depend on the specified \code{type}
-argument. The defaults reflect arguments relevant for parametric tests
-because that's the default value for \code{type}. See \code{Details} section to see
-which internal functions are used. The function might fail if you provide
-an argument in a list which the underlying function does not take. This can
-happen when you forget that you changed \code{type} argument, but forget to
-change the \code{.f.args} and \code{.f.es.args} accordingly. Also, note that these
-arguments are useful to provide \emph{additional arguments}. Therefore, you
-can's re-specify an argument you have already specified. For example, for
-robust tests, you can use \code{tr} argument to specify trimming level, but then
-you can't specify \code{tr} again inside list passed to \code{.f.args}}
 
 \item{top.text}{Text to display on top of the Bayes Factor message. This is
 mostly relevant in the context of \code{ggstatsplot} functions.}
