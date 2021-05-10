@@ -14,7 +14,8 @@ one_sample_test(
   tr = 0.2,
   bf.prior = 0.707,
   effsize.type = "g",
-  nboot = 100L,
+  .f.args = list(),
+  .f.es.args = list(verbose = FALSE, ci = conf.level),
   top.text = NULL,
   ...
 )
@@ -61,8 +62,22 @@ corresponds to scale for fixed effects.}
 \item{effsize.type}{Type of effect size needed for \emph{parametric} tests. The
 argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \emph{g}).}
 
-\item{nboot}{Number of bootstrap samples for computing confidence interval
-for the effect size (Default: \code{100L}).}
+\item{.f.args, .f.es.args}{A \strong{list} of additional arguments to be passed to
+internal functions \code{.f} and \code{.f.es}. These are used to carry out
+statistical tests and to compute effect sizes, respectively. To see what
+additional arguments are available, you can have a look at the
+documentation for the respective function. Note that the chosen internal
+functions (\code{.f} and \code{.f.es}) will themselves depend on the specified \code{type}
+argument. The defaults reflect arguments relevant for parametric tests
+because that's the default value for \code{type}. See \code{Details} section to see
+which internal functions are used. The function might fail if you provide
+an argument in a list which the underlying function does not take. This can
+happen when you forget that you changed \code{type} argument, but forget to
+change the \code{.f.args} and \code{.f.es.args} accordingly. Also, note that these
+arguments are useful to provide \emph{additional arguments}. Therefore, you
+can's re-specify an argument you have already specified. For example, for
+robust tests, you can use \code{tr} argument to specify trimming level, but then
+you can't specify \code{tr} again inside list passed to \code{.f.args}}
 
 \item{top.text}{Text to display on top of the Bayes Factor message. This is
 mostly relevant in the context of \code{ggstatsplot} functions.}
@@ -70,11 +85,29 @@ mostly relevant in the context of \code{ggstatsplot} functions.}
 \item{...}{Currently ignored.}
 }
 \description{
-A dataframe containing results from a one-sample test. The exact test and the
-effect size details contained will depend on the \code{type} argument.
+A dataframe containing results from a one-sample test.
+}
+\details{
+The exact test and the effect size details contained will depend on the
+\code{type} argument.
 
-To see details about functions which are internally used to carry out these
-analyses, see the following vignette-
+Internal function \code{.f} used to carry out statistical test:
+\itemize{
+\item \strong{parametric}: \code{stats::t.test}
+\item \strong{nonparametric}: \code{stats::wilcox.test}
+\item \strong{robust}: \code{trimcibt} (custom)
+\item \strong{bayes}: \code{BayesFactor::ttestBF}
+}
+
+Internal function \code{.f.es} used to compute effect size:
+\itemize{
+\item \strong{parametric}: \code{effectsize::cohens_d}, \code{effectsize::hedges_g}
+\item \strong{nonparametric}: \code{effectsize::rank_biserial}
+\item \strong{robust}: \code{trimcibt} (custom)
+\item \strong{bayes}: \code{bayestestR::describe_posterior}
+}
+
+For more, see-
 \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }
 \examples{
