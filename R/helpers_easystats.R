@@ -3,8 +3,7 @@
 #'
 #' @inheritParams parameters::model_parameters
 #'
-#' @importFrom parameters model_parameters
-#' @importFrom parameters standardize_names
+#' @importFrom parameters model_parameters standardize_names
 #' @importFrom dplyr select matches rename_all recode contains
 #' @importFrom tidyr fill
 #'

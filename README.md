@@ -7,9 +7,9 @@
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)                  | [![Build Status](https://travis-ci.org/IndrajeetPatil/statsExpressions.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/statsExpressions)                                                      | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)     | [![GitHub version](https://img.shields.io/badge/GitHub-1.0.0-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/statsExpressions/)                         | [![Website](https://img.shields.io/badge/website-statsExpressions-orange.svg?colorB=E91E63)](https://indrajeetpatil.github.io/statsExpressions/)                          |
 | [![CRAN Checks](https://cranchecks.info/badges/summary/statsExpressions)](https://cran.r-project.org/web/checks/check_results_statsExpressions.html)      | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/statsExpressions?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/statsExpressions) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)   | [![Forks](https://img.shields.io/badge/forks-15-blue.svg)](https://github.com/IndrajeetPatil/statsExpressions/)                                                          | [![Features](https://img.shields.io/badge/features-statsExpressions-orange.svg?colorB=2196F3)](https://indrajeetpatil.github.io/statsExpressions/reference/index.html)    |
-| [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)                                                | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)                                                                        | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Github Issues](https://img.shields.io/badge/issues-11-red.svg)](https://github.com/IndrajeetPatil/statsExpressions/issues)                                            | [![pkgdown](https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/pkgdown/badge.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/actions)            |
+| [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)                                                | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)                                                                        | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Github Issues](https://img.shields.io/badge/issues-12-red.svg)](https://github.com/IndrajeetPatil/statsExpressions/issues)                                            | [![pkgdown](https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/pkgdown/badge.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/actions)            |
 | [![code size](https://img.shields.io/github/languages/code-size/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/statsExpressions/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/statsExpressions?branch=master)             | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)  | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/statsExpressions.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/statsExpressions) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2074621.svg)](https://doi.org/10.5281/zenodo.3386122)                                                                 |
-| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                          | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master)                   | [![lints](https://github.com/IndrajeetPatil/statsExpressions/workflows/lint/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions)                 | [![Last-changedate](https://img.shields.io/badge/last%20change-2021--05--05-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master)         | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master) |
+| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                          | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master)                   | [![lints](https://github.com/IndrajeetPatil/statsExpressions/workflows/lint/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions)                 | [![Last-changedate](https://img.shields.io/badge/last%20change-2021--05--10-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master)         | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master) |
 | [![status](https://tinyverse.netlify.com/badge/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)                                    | [![R build status](https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions)                                            | [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/statsExpressions/community)                                                | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)                                                              | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/statsExpressions/issues)      |
 
 # Introduction <img src="man/figures/logo.png" align="right" width="240" />
@@ -149,8 +149,8 @@ supported in this package-
 | Within group/condition comparisons                | ✅          | ✅              | ✅      | ✅        |
 | Distribution of a numeric variable                | ✅          | ✅              | ✅      | ✅        |
 | Correlation between two variables                 | ✅          | ✅              | ✅      | ✅        |
-| Association between categorical variables         | ✅          | `NA`           | `NA`   | ✅        |
-| Equal proportions for categorical variable levels | ✅          | `NA`           | `NA`   | ✅        |
+| Association between categorical variables         | ✅          | ✅              | `NA`   | ✅        |
+| Equal proportions for categorical variable levels | ✅          | ✅              | `NA`   | ✅        |
 | Random-effects meta-analysis                      | ✅          | `NA`           | ✅      | ✅        |
 
 # Statistical reporting
@@ -480,7 +480,7 @@ library(statsExpressions)
 contingency_table(mtcars, am, cyl)$expression[[1]]
 #> paste(chi["Pearson"]^2, "(", "2", ") = ", "8.74", ", ", italic("p"), 
 #>     " = ", "0.013", ", ", widehat(italic("V"))["Cramer"], " = ", 
-#>     "0.46", ", CI"["95%"], " [", "0.00", ", ", "0.78", "]", ", ", 
+#>     "0.46", ", CI"["95%"], " [", "0.00", ", ", "0.78", "], ", 
 #>     italic("n")["obs"], " = ", "32")
 ```
 
@@ -528,7 +528,7 @@ library(statsExpressions)
 #> paste(italic("F")["Fisher"], "(", "2", ",", "147", ") = ", "119.26", 
 #>     ", ", italic("p"), " = ", "1.67e-31", ", ", widehat(omega["p"]^2), 
 #>     " = ", "0.61", ", CI"["95%"], " [", "0.52", ", ", "0.68", 
-#>     "]", ", ", italic("n")["obs"], " = ", "150")
+#>     "], ", italic("n")["obs"], " = ", "150")
 
 # adapting the details to your liking
 ggplot(iris, aes(x = Species, y = Sepal.Length)) +
@@ -576,16 +576,16 @@ analyses-
 Following effect sizes (and confidence intervals/CI) are available for
 each type of test-
 
-| Type           | No. of groups | Effect size                                                  | CI? | Function used                                          |
-|----------------|---------------|--------------------------------------------------------------|-----|--------------------------------------------------------|
-| Parametric     | &gt; 2        | *η*<sub>*p*</sub><sup>2</sup>, *ω*<sub>*p*</sub><sup>2</sup> | ✅   | `effectsize::omega_squared`, `effectsize::eta_squared` |
-| Non-parametric | &gt; 2        | *ϵ*<sub>*o**r**d**i**n**a**l*</sub><sup>2</sup>              | ✅   | `effectsize::rank_epsilon_squared`                     |
-| Robust         | &gt; 2        | *ξ* (Explanatory measure of effect size)                     | ✅   | `WRS2::t1way`                                          |
-| Bayes Factor   | &gt; 2        | *R*<sub>*p**o**s**t**e**r**i**o**r*</sub><sup>2</sup>        | ✅   | `performance::r2_bayes`                                |
-| Parametric     | 2             | Cohen’s *d*, Hedge’s *g*                                     | ✅   | `effectsize::cohens_d`, `effectsize::hedges_g`         |
-| Non-parametric | 2             | *r* (rank-biserial correlation)                              | ✅   | `effectsize::rank_biserial`                            |
-| Robust         | 2             | *ξ* (Explanatory measure of effect size)                     | ✅   | `WRS2::yuen.effect.ci`                                 |
-| Bayesian       | 2             | *δ*<sub>*p**o**s**t**e**r**i**o**r*</sub>                    | ✅   | `bayestestR::describe_posterior`                       |
+| Type           | No. of groups | Effect size                                                                                     | CI? | Function used                                          |
+|----------------|---------------|-------------------------------------------------------------------------------------------------|-----|--------------------------------------------------------|
+| Parametric     | &gt; 2        | *η*<sub>*p*</sub><sup>2</sup>, *ω*<sub>*p*</sub><sup>2</sup>                                    | ✅   | `effectsize::omega_squared`, `effectsize::eta_squared` |
+| Non-parametric | &gt; 2        | *ϵ*<sub>*o**r**d**i**n**a**l*</sub><sup>2</sup>                                                 | ✅   | `effectsize::rank_epsilon_squared`                     |
+| Robust         | &gt; 2        | *ξ* (Explanatory measure of effect size)                                                        | ✅   | `WRS2::t1way`                                          |
+| Bayes Factor   | &gt; 2        | *R*<sub>*p**o**s**t**e**r**i**o**r*</sub><sup>2</sup>                                           | ✅   | `performance::r2_bayes`                                |
+| Parametric     | 2             | Cohen’s *d*, Hedge’s *g*                                                                        | ✅   | `effectsize::cohens_d`, `effectsize::hedges_g`         |
+| Non-parametric | 2             | *r* (rank-biserial correlation)                                                                 | ✅   | `effectsize::rank_biserial`                            |
+| Robust         | 2             | *δ*<sub>*R*</sub><sup>*A**K**P*</sup> (Algina-Keselman-Penfield robust standardized difference) | ✅   | `WRS2::akp.effect`                                     |
+| Bayesian       | 2             | *δ*<sub>*p**o**s**t**e**r**i**o**r*</sub>                                                       | ✅   | `bayestestR::describe_posterior`                       |
 
 ### within-subjects
 

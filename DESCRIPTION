@@ -28,7 +28,7 @@ Imports:
     BayesFactor (>= 0.9.12-4.2),
     correlation (>= 0.6.1),
     dplyr,
-    effectsize (>= 0.4.4-1),
+    effectsize (>= 0.4.4-2),
     insight (>= 0.14.0),
     ipmisc,
     parameters (>= 0.13.0),
@@ -49,13 +49,14 @@ Suggests:
     spelling,
     testthat,
     utils
+Remotes:
+    easystats/effectsize
 VignetteBuilder: 
     knitr
-Config/testthat/edition: 3
-Config/testthat/parallel: true
 Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate",
     "pkgapi::api_roclet"))
 RoxygenNote: 7.1.1.9001
+Config/testthat/edition: 3

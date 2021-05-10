@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.4.24)  6 MAY 2021 07:52
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.4.24)  9 MAY 2021 19:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1240,7 +1240,7 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
 [3]
-Underfull \hbox (badness 1082) in paragraph at lines 522--527
+Underfull \hbox (badness 1082) in paragraph at lines 521--526
 \TU/lmr/m/it/10 model averaging for random and fixed effects meta-analysis\TU/l
 mr/m/n/10 . Retrieved from
  []
@@ -1259,7 +1259,7 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 
 [4]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 605.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 604.
 File: /Users/patil/Library/R/4.0/library/rticles/rmarkdown/templates/joss/resou
 rces/JOSS-logo.png Graphic file (type bmp)
 </Users/patil/Library/R/4.0/library/rticles/rmarkdown/templates/joss/resources/
@@ -1295,7 +1295,7 @@ Package logreq Info: Writing requests to 'paper.run.xml'.
 Here is how much of TeX's memory you used:
  35212 strings out of 478918
  706482 string characters out of 5865955
- 1502013 words of memory out of 5000000
+ 1502014 words of memory out of 5000000
  54494 multiletter control sequences out of 15000+600000
  411847 words of font info for 81 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191

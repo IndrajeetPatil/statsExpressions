@@ -22,7 +22,7 @@
       paste(chi["Kruskal-Wallis"]^2, "(", "8", ") = ", "51.42672", 
           ", ", italic("p"), " = ", "2.1714e-08", ", ", widehat(epsilon)["ordinal"]^2, 
           " = ", "0.32756", ", CI"["95%"], " [", "0.25737", ", ", "0.50585", 
-          "]", ", ", italic("n")["obs"], " = ", "158")
+          "], ", italic("n")["obs"], " = ", "158")
 
 ---
 
@@ -45,7 +45,7 @@
       paste(chi["Kruskal-Wallis"]^2, "(", "3", ") = ", "5.240", ", ", 
           italic("p"), " = ", "0.155", ", ", widehat(epsilon)["ordinal"]^2, 
           " = ", "0.175", ", CI"["99%"], " [", "0.053", ", ", "0.494", 
-          "]", ", ", italic("n")["obs"], " = ", "31")
+          "], ", italic("n")["obs"], " = ", "31")
 
 # within-subjects - data with and without NAs
 
@@ -55,7 +55,7 @@
       paste(chi["Friedman"]^2, "(", "3", ") = ", "55.8338", ", ", italic("p"), 
           " = ", "4.558e-12", ", ", widehat(italic("W"))["Kendall"], 
           " = ", "0.1750", ", CI"["99%"], " [", "0.1146", ", ", "0.2793", 
-          "]", ", ", italic("n")["pairs"], " = ", "88")
+          "], ", italic("n")["pairs"], " = ", "88")
 
 ---
 
@@ -65,5 +65,5 @@
       paste(chi["Friedman"]^2, "(", "3", ") = ", "410.000", ", ", italic("p"), 
           " = ", "1.51e-88", ", ", widehat(italic("W"))["Kendall"], 
           " = ", "0.911", ", CI"["90%"], " [", "0.905", ", ", "0.918", 
-          "]", ", ", italic("n")["pairs"], " = ", "150")
+          "], ", italic("n")["pairs"], " = ", "150")
 

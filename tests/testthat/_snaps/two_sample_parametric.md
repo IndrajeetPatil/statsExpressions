@@ -4,22 +4,22 @@
       dplyr::select(df1, -expression)
     Output
       # A tibble: 1 x 13
-        term   group mean.group1 mean.group2 statistic df.error  p.value
-        <chr>  <chr>       <dbl>       <dbl>     <dbl>    <dbl>    <dbl>
-      1 rating genre        5.43        6.55     -10.5      612 6.10e-24
+        term  group mean.group1 mean.group2 statistic df.error p.value
+        <chr> <chr>       <dbl>       <dbl>     <dbl>    <dbl>   <dbl>
+      1 len   supp         20.7        17.0      1.92       58  0.0604
         method            estimate conf.level conf.low conf.high effectsize
         <chr>                <dbl>      <dbl>    <dbl>     <dbl> <chr>     
-      1 Two Sample t-test   -0.925       0.99    -1.16    -0.688 Cohen's d 
+      1 Two Sample t-test    0.495       0.99   -0.184      1.17 Cohen's d 
 
 ---
 
     Code
       df1$expression[[1]]
     Output
-      paste(italic("t")["Student"], "(", "612", ") = ", "-10.52948", 
-          ", ", italic("p"), " = ", "6.0984e-24", ", ", widehat(italic("d"))["Cohen"], 
-          " = ", "-0.92473", ", CI"["99%"], " [", "-1.16064", ", ", 
-          "-0.68822", "]", ", ", italic("n")["obs"], " = ", "614")
+      paste(italic("t")["Student"], "(", "58", ") = ", "1.91527", ", ", 
+          italic("p"), " = ", "0.06039", ", ", widehat(italic("d"))["Cohen"], 
+          " = ", "0.49452", ", CI"["99%"], " [", "-0.18354", ", ", 
+          "1.16839", "], ", italic("n")["obs"], " = ", "60")
 
 # parametric t-test works (between-subjects with NAs)
 
@@ -27,22 +27,22 @@
       dplyr::select(df1, -expression)
     Output
       # A tibble: 1 x 13
-        term   group mean.group1 mean.group2 statistic df.error  p.value
-        <chr>  <chr>       <dbl>       <dbl>     <dbl>    <dbl>    <dbl>
-      1 rating genre        5.43        6.55     -9.27     271. 5.80e-18
+        term  group mean.group1 mean.group2 statistic df.error p.value
+        <chr> <chr>       <dbl>       <dbl>     <dbl>    <dbl>   <dbl>
+      1 len   supp         20.7        17.0      1.92     55.3  0.0606
         method                  estimate conf.level conf.low conf.high effectsize
         <chr>                      <dbl>      <dbl>    <dbl>     <dbl> <chr>     
-      1 Welch Two Sample t-test   -0.924        0.9    -1.07    -0.773 Hedges' g 
+      1 Welch Two Sample t-test    0.488        0.9   0.0599     0.911 Hedges' g 
 
 ---
 
     Code
       df1$expression[[1]]
     Output
-      paste(italic("t")["Welch"], "(", "271.302", ") = ", "-9.275", 
-          ", ", italic("p"), " = ", "5.8e-18", ", ", widehat(italic("g"))["Hedges"], 
-          " = ", "-0.924", ", CI"["90%"], " [", "-1.074", ", ", "-0.773", 
-          "]", ", ", italic("n")["obs"], " = ", "614")
+      paste(italic("t")["Welch"], "(", "55.309", ") = ", "1.915", ", ", 
+          italic("p"), " = ", "0.061", ", ", widehat(italic("g"))["Hedges"], 
+          " = ", "0.488", ", CI"["90%"], " [", "0.060", ", ", "0.911", 
+          "], ", italic("n")["obs"], " = ", "60")
 
 # parametric t-test works (within-subjects without NAs)
 
@@ -65,7 +65,7 @@
       paste(italic("t")["Student"], "(", "149", ") = ", "34.8152", 
           ", ", italic("p"), " = ", "1.85e-73", ", ", widehat(italic("g"))["Hedges"], 
           " = ", "2.8283", ", CI"["50%"], " [", "2.7086", ", ", "2.9560", 
-          "]", ", ", italic("n")["pairs"], " = ", "150")
+          "], ", italic("n")["pairs"], " = ", "150")
 
 # parametric t-test works (within-subjects with NAs)
 
@@ -88,5 +88,5 @@
       paste(italic("t")["Student"], "(", "89", ") = ", "3.613", ", ", 
           italic("p"), " = ", "5e-04", ", ", widehat(italic("d"))["Cohen"], 
           " = ", "0.381", ", CI"["95%"], " [", "0.167", ", ", "0.597", 
-          "]", ", ", italic("n")["pairs"], " = ", "90")
+          "], ", italic("n")["pairs"], " = ", "90")
 
