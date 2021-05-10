@@ -149,8 +149,8 @@ supported in this package-
 | Within group/condition comparisons                | ✅          | ✅              | ✅      | ✅        |
 | Distribution of a numeric variable                | ✅          | ✅              | ✅      | ✅        |
 | Correlation between two variables                 | ✅          | ✅              | ✅      | ✅        |
-| Association between categorical variables         | ✅          | `NA`           | `NA`   | ✅        |
-| Equal proportions for categorical variable levels | ✅          | `NA`           | `NA`   | ✅        |
+| Association between categorical variables         | ✅          | ✅              | `NA`   | ✅        |
+| Equal proportions for categorical variable levels | ✅          | ✅              | `NA`   | ✅        |
 | Random-effects meta-analysis                      | ✅          | `NA`           | ✅      | ✅        |
 
 # Statistical reporting
