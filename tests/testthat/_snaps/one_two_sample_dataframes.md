@@ -31,10 +31,10 @@
       4 wt    am           3.77        2.41      5.49     29.2 0.00000627
         method                  estimate conf.level conf.low conf.high effectsize
         <chr>                      <dbl>      <dbl>    <dbl>     <dbl> <chr>     
-      1 Two Sample t-test           1.93       0.89    1.26       2.67 Cohen's d 
-      2 Welch Two Sample t-test     1.89       0.99    0.811      3.03 Hedges' g 
-      3 Two Sample t-test           1.93       0.9     1.24       2.69 Cohen's d 
-      4 Welch Two Sample t-test     1.89       0.5     1.62       2.20 Hedges' g 
+      1 Two Sample t-test           1.93       0.89    1.23       2.61 Cohen's d 
+      2 Welch Two Sample t-test     1.88       0.99    0.793      2.97 Hedges' g 
+      3 Two Sample t-test           1.93       0.9     1.21       2.63 Cohen's d 
+      4 Welch Two Sample t-test     1.88       0.5     1.58       2.15 Hedges' g 
         expression
         <list>    
       1 <language>

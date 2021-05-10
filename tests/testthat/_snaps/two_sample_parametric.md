@@ -32,7 +32,7 @@
       1 len   supp         20.7        17.0      1.92     55.3  0.0606
         method                  estimate conf.level conf.low conf.high effectsize
         <chr>                      <dbl>      <dbl>    <dbl>     <dbl> <chr>     
-      1 Welch Two Sample t-test    0.488        0.9   0.0599     0.912 Hedges' g 
+      1 Welch Two Sample t-test    0.488        0.9   0.0599     0.911 Hedges' g 
 
 ---
 
@@ -41,7 +41,7 @@
     Output
       paste(italic("t")["Welch"], "(", "55.309", ") = ", "1.915", ", ", 
           italic("p"), " = ", "0.061", ", ", widehat(italic("g"))["Hedges"], 
-          " = ", "0.488", ", CI"["90%"], " [", "0.060", ", ", "0.912", 
+          " = ", "0.488", ", CI"["90%"], " [", "0.060", ", ", "0.911", 
           "]", ", ", italic("n")["obs"], " = ", "60")
 
 # parametric t-test works (within-subjects without NAs)
