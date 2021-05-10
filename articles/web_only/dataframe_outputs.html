@@ -117,7 +117,7 @@
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2021-05-07</h4>
+            <h4 class="date">2021-05-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -360,7 +360,7 @@
 <span class="co">#&gt; 1 len   supp         20.7        17.0      1.92     55.3  0.0606</span>
 <span class="co">#&gt;   method                  estimate conf.level conf.low conf.high effectsize</span>
 <span class="co">#&gt;   &lt;chr&gt;                      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     </span>
-<span class="co">#&gt; 1 Welch Two Sample t-test    0.488       0.95  -0.0212     0.993 Hedges' g </span>
+<span class="co">#&gt; 1 Welch Two Sample t-test    0.488       0.95  -0.0217     0.993 Hedges' g </span>
 <span class="co">#&gt;   expression</span>
 <span class="co">#&gt;   &lt;list&gt;    </span>
 <span class="co">#&gt; 1 &lt;language&gt;</span>
@@ -381,7 +381,7 @@
 <span class="co">#&gt; 1 len   supp         20.7        17.0      1.92       58  0.0604</span>
 <span class="co">#&gt;   method            estimate conf.level conf.low conf.high effectsize expression</span>
 <span class="co">#&gt;   &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;list&gt;    </span>
-<span class="co">#&gt; 1 Two Sample t-test    0.488       0.95  -0.0212     0.993 Hedges' g  &lt;language&gt;</span>
+<span class="co">#&gt; 1 Two Sample t-test    0.488       0.95  -0.0217     0.993 Hedges' g  &lt;language&gt;</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -415,12 +415,15 @@
 <span class="co">#&gt;   statistic df.error p.value</span>
 <span class="co">#&gt;       &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span>
 <span class="co">#&gt; 1      2.29     33.5  0.0286</span>
-<span class="co">#&gt;   method                                               estimate conf.low</span>
-<span class="co">#&gt;   &lt;chr&gt;                                                   &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Yuen's test on trimmed means for independent samples    0.400   0.0228</span>
-<span class="co">#&gt;   conf.high conf.level effectsize                         expression</span>
-<span class="co">#&gt;       &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                              &lt;list&gt;    </span>
-<span class="co">#&gt; 1     0.733       0.95 Explanatory measure of effect size &lt;language&gt;</span>
+<span class="co">#&gt;   method                                               estimate conf.level</span>
+<span class="co">#&gt;   &lt;chr&gt;                                                   &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Yuen's test on trimmed means for independent samples    0.683       0.95</span>
+<span class="co">#&gt;   conf.low conf.high effectsize                                             </span>
+<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;                                                  </span>
+<span class="co">#&gt; 1 -0.00736      2.36 Algina-Keselman-Penfield robust standardized difference</span>
+<span class="co">#&gt;   expression</span>
+<span class="co">#&gt;   &lt;list&gt;    </span>
+<span class="co">#&gt; 1 &lt;language&gt;</span>
 
 <span class="co"># ----------------------- Bayes Factor ---------------------------------------</span>
 
