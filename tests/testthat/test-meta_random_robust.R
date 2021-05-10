@@ -8,6 +8,7 @@ test_that(
 
     # renaming to what `statsExpressions` expects
     set.seed(123)
+    data(mag, package = "metaplus")
     dat <-
       mag %>%
       dplyr::rename(estimate = yi, std.error = sei) %>%
@@ -15,12 +16,11 @@ test_that(
 
     # df
     set.seed(123)
-    df <-
-      meta_analysis(
-        data = dat,
-        type = "robust",
-        random = "normal",
-      )
+    df <- meta_analysis(
+      data = dat,
+      type = "robust",
+      random = "normal",
+    )
 
     # testing all details
     set.seed(123)
