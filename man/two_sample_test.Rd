@@ -11,6 +11,7 @@ two_sample_test(
   subject.id = NULL,
   type = "parametric",
   paired = FALSE,
+  alternative = "two.sided",
   k = 2L,
   conf.level = 0.95,
   effsize.type = "g",
@@ -63,6 +64,11 @@ This argument also accepts the following abbreviations: \code{"p"} (for
 \item{paired}{Logical that decides whether the experimental design is
 repeated measures/within-subjects or between-subjects. The default is
 \code{FALSE}.}
+
+\item{alternative}{a character string specifying the alternative
+    hypothesis, must be one of \code{"two.sided"} (default),
+    \code{"greater"} or \code{"less"}.  You can specify just the initial
+    letter.}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2L}).}

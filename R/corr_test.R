@@ -11,11 +11,9 @@
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @param x The column in `data` containing the explanatory variable to be
-#'   plotted on the `x`-axis. Can be entered either as a character string (e.g.,
-#'   `"x"`) or as a bare expression (e.g, `x`).
+#'   plotted on the `x`-axis.
 #' @param y The column in `data` containing the response (outcome) variable to
-#'   be plotted on the `y`-axis. Can be entered either as a character string
-#'   (e.g., `"y"`) or as a bare expression (e.g, `y`).
+#'   be plotted on the `y`-axis.
 #' @inheritParams oneway_anova
 #'
 #' @importFrom dplyr select case_when ungroup

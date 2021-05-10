@@ -26,8 +26,8 @@
         term  group mean.group1 mean.group2 statistic df.error    p.value
         <chr> <chr>       <dbl>       <dbl>     <dbl>    <dbl>      <dbl>
       1 wt    am           3.77        2.41      5.26     30   0.0000113 
-      2 wt    am           3.77        2.41      5.49     29.2 0.00000627
-      3 wt    am           3.77        2.41      5.26     30   0.0000113 
+      2 wt    am           3.77        2.41      5.49     29.2 1.00      
+      3 wt    am           3.77        2.41      5.26     30   0.00000563
       4 wt    am           3.77        2.41      5.49     29.2 0.00000627
         method                  estimate conf.level conf.low conf.high effectsize
         <chr>                      <dbl>      <dbl>    <dbl>     <dbl> <chr>     

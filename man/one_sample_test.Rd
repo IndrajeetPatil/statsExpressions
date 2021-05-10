@@ -14,7 +14,6 @@ one_sample_test(
   tr = 0.2,
   bf.prior = 0.707,
   effsize.type = "g",
-  nboot = 100L,
   top.text = NULL,
   ...
 )
@@ -61,20 +60,35 @@ corresponds to scale for fixed effects.}
 \item{effsize.type}{Type of effect size needed for \emph{parametric} tests. The
 argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \emph{g}).}
 
-\item{nboot}{Number of bootstrap samples for computing confidence interval
-for the effect size (Default: \code{100L}).}
-
 \item{top.text}{Text to display on top of the Bayes Factor message. This is
 mostly relevant in the context of \code{ggstatsplot} functions.}
 
 \item{...}{Currently ignored.}
 }
 \description{
-A dataframe containing results from a one-sample test. The exact test and the
-effect size details contained will depend on the \code{type} argument.
+A dataframe containing results from a one-sample test.
+}
+\details{
+The exact test and the effect size details contained will depend on the
+\code{type} argument.
 
-To see details about functions which are internally used to carry out these
-analyses, see the following vignette-
+Internal function \code{.f} used to carry out statistical test:
+\itemize{
+\item \strong{parametric}: \code{stats::t.test}
+\item \strong{nonparametric}: \code{stats::wilcox.test}
+\item \strong{robust}: \code{trimcibt} (custom)
+\item \strong{bayes}: \code{BayesFactor::ttestBF}
+}
+
+Internal function \code{.f.es} used to compute effect size:
+\itemize{
+\item \strong{parametric}: \code{effectsize::cohens_d}, \code{effectsize::hedges_g}
+\item \strong{nonparametric}: \code{effectsize::rank_biserial}
+\item \strong{robust}: \code{trimcibt} (custom)
+\item \strong{bayes}: \code{bayestestR::describe_posterior}
+}
+
+For more, see-
 \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }
 \examples{

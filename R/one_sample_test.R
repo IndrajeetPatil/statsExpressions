@@ -4,6 +4,8 @@
 #' @param x A numeric variable from the dataframe `data`.
 #' @param test.value A number indicating the true value of the mean (Default:
 #'   `0`).
+#' @param effsize.type Type of effect size needed for *parametric* tests. The
+#'   argument can be `"d"` (for Cohen's *d*) or `"g"` (for Hedge's *g*).
 #' @inheritParams ipmisc::long_to_wide_converter
 #' @inheritParams ipmisc::stats_type_switch
 #' @inheritParams expr_template
@@ -13,11 +15,26 @@
 #'
 #' @description
 #'
-#' A dataframe containing results from a one-sample test. The exact test and the
-#' effect size details contained will depend on the `type` argument.
+#' A dataframe containing results from a one-sample test.
 #'
-#' To see details about functions which are internally used to carry out these
-#' analyses, see the following vignette-
+#' @details
+#'
+#' The exact test and the effect size details contained will depend on the
+#' `type` argument.
+#'
+#'   Internal function `.f` used to carry out statistical test:
+#'   - **parametric**: `stats::t.test`
+#'   - **nonparametric**: `stats::wilcox.test`
+#'   - **robust**: `trimcibt` (custom)
+#'   - **bayes**: `BayesFactor::ttestBF`
+#'
+#'   Internal function `.f.es` used to compute effect size:
+#'   - **parametric**: `effectsize::cohens_d`, `effectsize::hedges_g`
+#'   - **nonparametric**: `effectsize::rank_biserial`
+#'   - **robust**: `trimcibt` (custom)
+#'   - **bayes**: `bayestestR::describe_posterior`
+#'
+#' For more, see-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @importFrom dplyr select mutate pull rename_all recode
@@ -82,7 +99,6 @@ one_sample_test <- function(data,
                             tr = 0.2,
                             bf.prior = 0.707,
                             effsize.type = "g",
-                            nboot = 100L,
                             top.text = NULL,
                             ...) {
   # standardize the type of statistics
@@ -112,18 +128,18 @@ one_sample_test <- function(data,
   # preparing expression
   if (type %in% c("parametric", "nonparametric")) {
     # extracting test details
-    stats_df <- rlang::exec(.f, x = x_vec, mu = test.value, exact = FALSE) %>%
+    stats_df <- rlang::exec(.f, x = x_vec, mu = test.value) %>%
       tidy_model_parameters(.) %>%
       dplyr::select(-dplyr::matches("^est|^conf|^diff|^term|^ci"))
 
     # extracting effect size details
     effsize_df <- rlang::exec(
-      .f.es,
-      x = x_vec - test.value,
-      ci = conf.level,
-      verbose = FALSE,
-      iterations = nboot
-    ) %>%
+        .f.es,
+        x = x_vec,
+        mu = test.value,
+        verbose = FALSE,
+        ci = conf.level
+      ) %>%
       tidy_model_effectsize(.)
 
     # these can be really big values
@@ -138,13 +154,7 @@ one_sample_test <- function(data,
   if (type == "robust") {
     # bootstrap-t method for one-sample test
     no.parameters <- 0L
-    stats_df <- trimcibt(
-      x = x_vec,
-      tr = tr,
-      nboot = nboot,
-      nv = test.value,
-      alpha = 1 - conf.level
-    )
+    stats_df <- rlang::exec(trimcibt, x = x_vec, nv = test.value, tr = tr, ci = conf.level)
   }
 
   # expression
@@ -176,11 +186,11 @@ one_sample_test <- function(data,
 #' @importFrom WRS2 trimse
 #' @noRd
 
-trimcibt <- function(x, tr = 0.2, nboot = 100, nv = 0, alpha = 0.05, ...) {
+trimcibt <- function(x, nv = 0, tr = 0.2, nboot = 100L, ci = 0.95, ...) {
   test <- (mean(x, tr) - nv) / WRS2::trimse(x, tr)
   data <- matrix(sample(x, size = length(x) * nboot, replace = TRUE), nrow = nboot) - mean(x, tr)
   tval <- sort(abs(apply(data, 1, mean, tr) / apply(data, 1, WRS2::trimse, tr)))
-  icrit <- round((1 - alpha) * nboot)
+  icrit <- round(ci * nboot)
 
   tibble(
     statistic = test,
@@ -189,7 +199,7 @@ trimcibt <- function(x, tr = 0.2, nboot = 100, nv = 0, alpha = 0.05, ...) {
     estimate = mean(x, tr),
     conf.low = mean(x, tr) - tval[icrit] * WRS2::trimse(x, tr),
     conf.high = mean(x, tr) + tval[icrit] * WRS2::trimse(x, tr),
-    conf.level = 1 - alpha,
+    conf.level = ci,
     effectsize = "Trimmed mean"
   )
 }

@@ -23,12 +23,10 @@ be taken. Other data types (e.g., matrix,table, array, etc.) will \strong{not}
 be accepted.}
 
 \item{x}{The column in \code{data} containing the explanatory variable to be
-plotted on the \code{x}-axis. Can be entered either as a character string (e.g.,
-\code{"x"}) or as a bare expression (e.g, \code{x}).}
+plotted on the \code{x}-axis.}
 
 \item{y}{The column in \code{data} containing the response (outcome) variable to
-be plotted on the \code{y}-axis. Can be entered either as a character string
-(e.g., \code{"y"}) or as a bare expression (e.g, \code{y}).}
+be plotted on the \code{y}-axis.}
 
 \item{type}{A character specifying the type of statistical approach:
 \itemize{

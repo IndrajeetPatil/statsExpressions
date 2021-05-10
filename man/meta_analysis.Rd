@@ -17,10 +17,13 @@ meta_analysis(
 \arguments{
 \item{data}{A dataframe. It \strong{must} contain columns named \code{estimate} (effect
 sizes or outcomes)  and \code{std.error} (corresponding standard errors). These
-two columns will be used for \code{yi}  and \code{sei} arguments in \code{metafor::rma}
-(for parametric analysis) or \code{metaplus::metaplus} (for robust analysis),
-and for \code{y} and \code{SE} arguments in \code{metaBMA::meta_random} (for Bayesian
-analysis).}
+two columns will be used:
+\itemize{
+\item as \code{yi}  and \code{sei} arguments in \code{metafor::rma} (for \strong{parametric} test)
+or \code{metaplus::metaplus} (for \strong{robust} test)
+\item as \code{y} and \code{SE} arguments in \code{metaBMA::meta_random} (for \strong{Bayesian}
+test).
+}}
 
 \item{type}{A character specifying the type of statistical approach:
 \itemize{

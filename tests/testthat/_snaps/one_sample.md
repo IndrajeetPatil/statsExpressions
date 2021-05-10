@@ -52,10 +52,10 @@
       # A tibble: 1 x 8
         statistic p.value method                    estimate conf.level conf.low
             <dbl>   <dbl> <chr>                        <dbl>      <dbl>    <dbl>
-      1      6.62   0.323 Wilcoxon signed rank test   -0.149       0.95   -0.458
+      1      6.62   0.323 Wilcoxon signed rank test   -0.149       0.95   -0.424
         conf.high effectsize       
             <dbl> <chr>            
-      1     0.121 r (rank biserial)
+      1    0.0888 r (rank biserial)
 
 ---
 
@@ -64,7 +64,7 @@
     Output
       paste("log"["e"](italic("V")["Wilcoxon"]), " = ", "6.6247", ", ", 
           italic("p"), " = ", "0.3227", ", ", widehat(italic("r"))["biserial"]^"rank", 
-          " = ", "-0.1486", ", CI"["95%"], " [", "-0.4584", ", ", "0.1206", 
+          " = ", "-0.1486", ", CI"["95%"], " [", "-0.4240", ", ", "0.0888", 
           "], ", italic("n")["obs"], " = ", "60")
 
 ---
@@ -75,10 +75,10 @@
       # A tibble: 1 x 8
         statistic   p.value method                    estimate conf.level conf.low
             <dbl>     <dbl> <chr>                        <dbl>      <dbl>    <dbl>
-      1      5.57 0.0000125 Wilcoxon signed rank test   -0.672       0.95   -0.905
+      1      5.57 0.0000125 Wilcoxon signed rank test   -0.672       0.95   -0.911
         conf.high effectsize       
             <dbl> <chr>            
-      1    -0.418 r (rank biserial)
+      1    -0.388 r (rank biserial)
 
 ---
 
@@ -87,7 +87,7 @@
     Output
       paste("log"["e"](italic("V")["Wilcoxon"]), " = ", "5.5683", ", ", 
           italic("p"), " = ", "1.253e-05", ", ", widehat(italic("r"))["biserial"]^"rank", 
-          " = ", "-0.6717", ", CI"["95%"], " [", "-0.9052", ", ", "-0.4177", 
+          " = ", "-0.6717", ", CI"["95%"], " [", "-0.9112", ", ", "-0.3884", 
           "], ", italic("n")["obs"], " = ", "56")
 
 # one_sample_test robust works

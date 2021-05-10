@@ -2,6 +2,7 @@ test_that(
   desc = " parametric t-tests",
   code = {
     skip_if(getRversion() < "4.0")
+    options(tibble.width = Inf)
 
     # one-sample t-test (with NAs) ---------
 
@@ -33,6 +34,7 @@ test_that(
           y = list("wt"),
           effsize.type = list("d", "g", "d", "g"),
           var.equal = list(TRUE, FALSE, TRUE, FALSE),
+          alternative = c("two.sided", "less", "greater", "two.sided"),
           conf.level = list(0.89, 0.99, 0.90, 0.50)
         ),
         .f = statsExpressions::two_sample_test
