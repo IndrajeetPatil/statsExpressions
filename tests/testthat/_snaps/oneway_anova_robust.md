@@ -56,18 +56,12 @@
       dplyr::select(df1, -expression)
     Output
       # A tibble: 1 x 10
-        statistic    df df.error  p.value
-            <dbl> <dbl>    <dbl>    <dbl>
-      1      21.0  2.73     145. 1.15e-10
-        method                                                              estimate
-        <chr>                                                                  <dbl>
-      1 A heteroscedastic one-way repeated measures ANOVA for trimmed means    0.664
-        conf.low conf.high conf.level
-           <dbl>     <dbl>      <dbl>
-      1    0.466     0.971       0.95
-        effectsize                                                     
-        <chr>                                                          
-      1 Algina-Keselman-Penfield robust standardized difference average
+        statistic    df df.error  p.value method                                                             
+            <dbl> <dbl>    <dbl>    <dbl> <chr>                                                              
+      1      21.0  2.73     145. 1.15e-10 A heteroscedastic one-way repeated measures ANOVA for trimmed means
+        estimate conf.low conf.high conf.level effectsize                                                     
+           <dbl>    <dbl>     <dbl>      <dbl> <chr>                                                          
+      1    0.664    0.466     0.971       0.95 Algina-Keselman-Penfield robust standardized difference average
 
 ---
 

@@ -134,12 +134,12 @@ one_sample_test <- function(data,
 
     # extracting effect size details
     effsize_df <- rlang::exec(
-        .f.es,
-        x = x_vec,
-        mu = test.value,
-        verbose = FALSE,
-        ci = conf.level
-      ) %>%
+      .f.es,
+      x = x_vec,
+      mu = test.value,
+      verbose = FALSE,
+      ci = conf.level
+    ) %>%
       tidy_model_effectsize(.)
 
     # these can be really big values
