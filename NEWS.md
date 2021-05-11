@@ -4,8 +4,9 @@ MAJOR CHANGES
 
   - The effect size for independent trimmed means two-sample test has been
     changed from explanatory measure of effect size to AKP's delta, which is
-    easier to understand and interpret given its a robust cousin of Cohen's
-    *d*.
+    easier to understand and interpret since its a robust cousin of Cohen's *d*.
+    This also makes it consistent with the effect size for robust one-way ANOVA
+    where the effect size measure is average of pairwise AKP's deltas.
 
   - `two_sample_test` gains `alternative` argument to specify alternative
     hypothesis (#86).
