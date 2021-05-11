@@ -152,7 +152,7 @@
 <td><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg" alt="minimal R version"></a></td>
 <td><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
 <td><a href="https://CRAN.R-project.org/package=statsExpressions"><img src="https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue" alt="Monthly downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/issues"><img src="https://img.shields.io/badge/issues-12-red.svg" alt="Github Issues"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/issues"><img src="https://img.shields.io/badge/issues-7-red.svg" alt="Github Issues"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/actions"><img src="https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/pkgdown/badge.svg" alt="pkgdown"></a></td>
 </tr>
 <tr class="even">
@@ -166,7 +166,7 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions"><img src="https://github.com/IndrajeetPatil/statsExpressions/workflows/lint/badge.svg" alt="lints"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2021--05--10-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2021--05--11-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
@@ -334,20 +334,55 @@
 <td>Association between categorical variables</td>
 <td>✅</td>
 <td>✅</td>
-<td><code>NA</code></td>
+<td>❌</td>
 <td>✅</td>
 </tr>
 <tr class="even">
 <td>Equal proportions for categorical variable levels</td>
 <td>✅</td>
 <td>✅</td>
-<td><code>NA</code></td>
+<td>❌</td>
 <td>✅</td>
 </tr>
 <tr class="odd">
 <td>Random-effects meta-analysis</td>
 <td>✅</td>
-<td><code>NA</code></td>
+<td>❌</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p>Summary of Bayesian analysis</p>
+<table class="table">
+<thead><tr class="header">
+<th>Analysis</th>
+<th>Hypothesis testing</th>
+<th>Estimation</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>(one/two-sample) <em>t</em>-test</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>one-way ANOVA</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>correlation</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>(one/two-way) contingency table</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>random-effects meta-analysis</td>
 <td>✅</td>
 <td>✅</td>
 </tr>
@@ -730,7 +765,7 @@
 <div id="between-subjects" class="section level3">
 <h3 class="hasAnchor">
 <a href="#between-subjects" class="anchor"></a>between-subjects</h3>
-<p>Following (between-subjects) tests are carried out for each type of analyses-</p>
+<p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <thead><tr class="header">
 <th>Type</th>
@@ -789,7 +824,7 @@
 </tr>
 </tbody>
 </table>
-<p>Following effect sizes (and confidence intervals/CI) are available for each type of test-</p>
+<p><strong>Effect size estimation</strong></p>
 <table class="table">
 <colgroup>
 <col width="8%">
@@ -838,7 +873,7 @@
 <td>Bayes Factor</td>
 <td>&gt; 2</td>
 <td>
-<em>R</em><sub><em>p<strong>o</strong>s<strong>t</strong>e<strong>r</strong>i<strong>o</strong>r</em></sub><sup>2</sup>
+<em>R</em><sub>*B<strong>a</strong>y<strong>e</strong>s<strong>i</strong>a**n*</sub><sup>2</sup>
 </td>
 <td>✅</td>
 <td><code><a href="https://easystats.github.io/performance/reference/r2_bayes.html">performance::r2_bayes</a></code></td>
@@ -884,7 +919,7 @@
 <div id="within-subjects" class="section level3">
 <h3 class="hasAnchor">
 <a href="#within-subjects" class="anchor"></a>within-subjects</h3>
-<p>Following (within-subjects) tests are carried out for each type of analyses-</p>
+<p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <colgroup>
 <col width="13%">
@@ -949,7 +984,7 @@
 </tr>
 </tbody>
 </table>
-<p>Following effect sizes (and confidence intervals/CI) are available for each type of test-</p>
+<p><strong>Effect size estimation</strong></p>
 <table class="table">
 <colgroup>
 <col width="8%">
@@ -998,7 +1033,7 @@
 <td>Bayes Factor</td>
 <td>&gt; 2</td>
 <td>
-<em>R</em><sub><em>p<strong>o</strong>s<strong>t</strong>e<strong>r</strong>i<strong>o</strong>r</em></sub><sup>2</sup>
+<em>R</em><sub>*B<strong>a</strong>y<strong>e</strong>s<strong>i</strong>a**n*</sub><sup>2</sup>
 </td>
 <td>✅</td>
 <td><code><a href="https://easystats.github.io/performance/reference/r2_bayes.html">performance::r2_bayes</a></code></td>
@@ -1046,7 +1081,7 @@
 <h2 class="hasAnchor">
 <a href="#one_sample_test" class="anchor"></a><code>one_sample_test</code>
 </h2>
-<p>Following tests are carried out for each type of analyses-</p>
+<p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <thead><tr class="header">
 <th>Type</th>
@@ -1077,7 +1112,7 @@
 </tr>
 </tbody>
 </table>
-<p>Following effect sizes (and confidence intervals/CI) are available for each type of test-</p>
+<p><strong>Effect size estimation</strong></p>
 <table class="table">
 <colgroup>
 <col width="14%">
@@ -1130,7 +1165,7 @@
 <h2 class="hasAnchor">
 <a href="#corr_test" class="anchor"></a><code>corr_test</code>
 </h2>
-<p>Following tests are carried out for each type of analyses. Additionally, the correlation coefficients (and their confidence intervals) are used as effect sizes-</p>
+<p><strong>Hypothesis testing</strong> and <strong>Effect size estimation</strong></p>
 <table class="table">
 <colgroup>
 <col width="17%">
@@ -1176,81 +1211,148 @@
 <h2 class="hasAnchor">
 <a href="#contingency_table" class="anchor"></a><code>contingency_table</code>
 </h2>
-<p>Following tests are carried out for each type of analyses-</p>
+<div id="two-way-table" class="section level3">
+<h3 class="hasAnchor">
+<a href="#two-way-table" class="anchor"></a>two-way table</h3>
+<p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <colgroup>
-<col width="13%">
-<col width="27%">
-<col width="37%">
-<col width="21%">
+<col width="23%">
+<col width="8%">
+<col width="36%">
+<col width="30%">
 </colgroup>
 <thead><tr class="header">
-<th>Type of data</th>
+<th>Type</th>
 <th>Design</th>
 <th>Test</th>
 <th>Function used</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
+<td>Parametric/Non-parametric</td>
 <td>Unpaired</td>
-<td>
-<em>n</em> × <em>p</em> contingency table</td>
 <td>Pearson’s <em>χ</em><sup>2</sup> test</td>
 <td><code><a href="https://rdrr.io/r/stats/chisq.test.html">stats::chisq.test</a></code></td>
 </tr>
 <tr class="even">
+<td>Bayesian</td>
+<td>Unpaired</td>
+<td>Bayesian Pearson’s <em>χ</em><sup>2</sup> test</td>
+<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/contingencyTableBF.html">BayesFactor::contingencyTableBF</a></code></td>
+</tr>
+<tr class="odd">
+<td>Parametric/Non-parametric</td>
 <td>Paired</td>
-<td>
-<em>n</em> × <em>p</em> contingency table</td>
 <td>McNemar’s <em>χ</em><sup>2</sup> test</td>
 <td><code><a href="https://rdrr.io/r/stats/mcnemar.test.html">stats::mcnemar.test</a></code></td>
 </tr>
-<tr class="odd">
-<td>Frequency</td>
-<td>
-<em>n</em> × 1 contingency table</td>
-<td>Goodness of fit (<em>χ</em><sup>2</sup> test)</td>
-<td><code><a href="https://rdrr.io/r/stats/chisq.test.html">stats::chisq.test</a></code></td>
+<tr class="even">
+<td>Bayesian</td>
+<td>Paired</td>
+<td>❌</td>
+<td>❌</td>
 </tr>
 </tbody>
 </table>
-<p>Following effect sizes (and confidence intervals/CI) are available for each type of test-</p>
+<p><strong>Effect size estimation</strong></p>
 <table class="table">
 <thead><tr class="header">
-<th>Test</th>
+<th>Type</th>
+<th>Design</th>
 <th>Effect size</th>
 <th>CI?</th>
 <th>Function used</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td>Pearson’s <em>χ</em><sup>2</sup> test</td>
+<td>Parametric/Non-parametric</td>
+<td>Unpaired</td>
 <td>Cramer’s <em>V</em>
 </td>
 <td>✅</td>
 <td><code><a href="https://easystats.github.io/effectsize/reference/phi.html">effectsize::cramers_v</a></code></td>
 </tr>
 <tr class="even">
-<td>McNemar’s test</td>
-<td>Cohen’s <em>g</em>
-</td>
-<td>✅</td>
-<td><code><a href="https://easystats.github.io/effectsize/reference/phi.html">effectsize::cohens_g</a></code></td>
-</tr>
-<tr class="odd">
-<td>Goodness of fit</td>
+<td>Bayesian</td>
+<td>Unpaired</td>
 <td>Cramer’s <em>V</em>
 </td>
 <td>✅</td>
 <td><code><a href="https://easystats.github.io/effectsize/reference/phi.html">effectsize::cramers_v</a></code></td>
 </tr>
+<tr class="odd">
+<td>Parametric/Non-parametric</td>
+<td>Paired</td>
+<td>Cohen’s <em>g</em>
+</td>
+<td>✅</td>
+<td><code><a href="https://easystats.github.io/effectsize/reference/phi.html">effectsize::cohens_g</a></code></td>
+</tr>
+<tr class="even">
+<td>Bayesian</td>
+<td>Paired</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
 </tbody>
 </table>
+</div>
+<div id="one-way-table" class="section level3">
+<h3 class="hasAnchor">
+<a href="#one-way-table" class="anchor"></a>one-way table</h3>
+<p><strong>Hypothesis testing</strong></p>
+<table class="table">
+<thead><tr class="header">
+<th>Type</th>
+<th>Test</th>
+<th>Function used</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Parametric/Non-parametric</td>
+<td>Goodness of fit <em>χ</em><sup>2</sup> test</td>
+<td><code><a href="https://rdrr.io/r/stats/chisq.test.html">stats::chisq.test</a></code></td>
+</tr>
+<tr class="even">
+<td>Bayesian</td>
+<td>Bayesian Goodness of fit <em>χ</em><sup>2</sup> test</td>
+<td>(custom)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Effect size estimation</strong></p>
+<table class="table">
+<thead><tr class="header">
+<th>Type</th>
+<th>Effect size</th>
+<th>CI?</th>
+<th>Function used</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Parametric/Non-parametric</td>
+<td>Cramer’s <em>V</em>
+</td>
+<td>✅</td>
+<td><code><a href="https://easystats.github.io/bayestestR/reference/describe_posterior.html">bayestestR::describe_posterior</a></code></td>
+</tr>
+<tr class="even">
+<td>Bayesian</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div id="meta_analysis" class="section level2">
 <h2 class="hasAnchor">
 <a href="#meta_analysis" class="anchor"></a><code>meta_analysis</code>
 </h2>
+<p><strong>Hypothesis testing</strong> and <strong>Effect size estimation</strong></p>
 <table class="table">
 <colgroup>
 <col width="11%">
