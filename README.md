@@ -612,16 +612,16 @@ No. of groups: `2` =&gt; `two_sample_test`<br> No. of groups: `> 2`
 
 **Effect size estimation**
 
-| Type           | No. of groups | Effect size                                                                                     | CI? | Function used                                                   |
-|----------------|---------------|-------------------------------------------------------------------------------------------------|-----|-----------------------------------------------------------------|
-| Parametric     | &gt; 2        | *η*<sub>*p*</sub><sup>2</sup>, *ω*<sub>*p*</sub><sup>2</sup>                                    | ✅   | `effectsize::omega_squared`, `effectsize::eta_squared`          |
-| Non-parametric | &gt; 2        | *W*<sub>*K**e**n**d**a**l**l*</sub> (Kendall’s coefficient of concordance)                      | ✅   | `effectsize::kendalls_w`                                        |
-| Robust         | &gt; 2        | *δ*<sub>*R* − *a**v**g*</sub><sup>*A**K**P*</sup>                                               | ✅   | Algina-Keselman-Penfield robust standardized difference average |
-| Bayes Factor   | &gt; 2        | *R*<sub>*B**a**y**e**s**i**a**n*</sub><sup>2</sup>                                              | ✅   | `performance::r2_bayes`                                         |
-| Parametric     | 2             | Cohen’s *d*, Hedge’s *g*                                                                        | ✅   | `effectsize::cohens_d`, `effectsize::hedges_g`                  |
-| Non-parametric | 2             | *r* (rank-biserial correlation)                                                                 | ✅   | `effectsize::rank_biserial`                                     |
-| Robust         | 2             | *δ*<sub>*R*</sub><sup>*A**K**P*</sup> (Algina-Keselman-Penfield robust standardized difference) | ✅   | `WRS2::dep.effect`                                              |
-| Bayesian       | 2             | *δ*<sub>*p**o**s**t**e**r**i**o**r*</sub>                                                       | ✅   | `bayestestR::describe_posterior`                                |
+| Type           | No. of groups | Effect size                                                                                                         | CI? | Function used                                          |
+|----------------|---------------|---------------------------------------------------------------------------------------------------------------------|-----|--------------------------------------------------------|
+| Parametric     | &gt; 2        | *η*<sub>*p*</sub><sup>2</sup>, *ω*<sub>*p*</sub><sup>2</sup>                                                        | ✅   | `effectsize::omega_squared`, `effectsize::eta_squared` |
+| Non-parametric | &gt; 2        | *W*<sub>*K**e**n**d**a**l**l*</sub> (Kendall’s coefficient of concordance)                                          | ✅   | `effectsize::kendalls_w`                               |
+| Robust         | &gt; 2        | *δ*<sub>*R* − *a**v**g*</sub><sup>*A**K**P*</sup> (Algina-Keselman-Penfield robust standardized difference average) | ✅   | `WRS2::wmcpAKP`                                        |
+| Bayes Factor   | &gt; 2        | *R*<sub>*B**a**y**e**s**i**a**n*</sub><sup>2</sup>                                                                  | ✅   | `performance::r2_bayes`                                |
+| Parametric     | 2             | Cohen’s *d*, Hedge’s *g*                                                                                            | ✅   | `effectsize::cohens_d`, `effectsize::hedges_g`         |
+| Non-parametric | 2             | *r* (rank-biserial correlation)                                                                                     | ✅   | `effectsize::rank_biserial`                            |
+| Robust         | 2             | *δ*<sub>*R*</sub><sup>*A**K**P*</sup> (Algina-Keselman-Penfield robust standardized difference)                     | ✅   | `WRS2::wmcpAKP`                                        |
+| Bayesian       | 2             | *δ*<sub>*p**o**s**t**e**r**i**o**r*</sub>                                                                           | ✅   | `bayestestR::describe_posterior`                       |
 
 ## `one_sample_test`
 
