@@ -4,13 +4,19 @@ MAJOR CHANGES
 
   - The effect size for independent trimmed means two-sample test has been
     changed from explanatory measure of effect size to AKP's delta, which is
-    easier to understand and interpret since its a robust cousin of Cohen's *d*.
+    easier to understand and interpret since its a robust cousin of Cohen's
+    *d*.
 
   - `two_sample_test` gains `alternative` argument to specify alternative
     hypothesis (#86).
 
   - Cohen's *d* and Hedge's *g* use non-pooled standard deviation (cf.
     https://psyarxiv.com/tu6mp/).
+
+MINOR CHANGES
+
+  - The output dataframes now contain columns with additional information about
+    how confidence intervals are computed.
 
 # statsExpressions 1.0.1
 

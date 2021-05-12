@@ -193,7 +193,8 @@ oneway_anova <- function(data,
         id = "rowid",
         dv = rlang::as_string(y),
         data = data,
-        within = rlang::as_string(x)
+        within = rlang::as_string(x),
+        include_aov = TRUE
       )
     }
 

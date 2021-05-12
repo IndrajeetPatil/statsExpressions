@@ -28,6 +28,8 @@ tidy_model_parameters <- function(model, ...) {
 #' @param data Dataframe returned by `effectsize` functions.
 #'
 #' @importFrom effectsize get_effectsize_label
+#' @importFrom purrr compose attr_getter
+#' @importFrom dplyr select mutate contains rename_with
 #'
 #' @examples
 #' df <- effectsize::cohens_d(sleep$extra, sleep$group)
@@ -35,9 +37,17 @@ tidy_model_parameters <- function(model, ...) {
 #' @export
 
 tidy_model_effectsize <- function(data) {
-  data %>%
-    dplyr::mutate(effectsize = stats::na.omit(effectsize::get_effectsize_label(colnames(.)))[[1]]) %>%
-    parameters::standardize_names(style = "broom") %>%
-    dplyr::select(-dplyr::contains("term")) %>%
-    as_tibble(.)
+  dplyr::bind_cols(
+    data %>%
+      dplyr::mutate(effectsize = stats::na.omit(effectsize::get_effectsize_label(colnames(.)))[[1]]) %>%
+      parameters::standardize_names(style = "broom") %>%
+      dplyr::select(-dplyr::contains("term")) %>%
+      as_tibble(.),
+    dplyr::rename_with(get_ci_method(data), ~ paste0("conf.", .x))
+  )
 }
+
+#' helper to get ci-related info stored as attributes in `effectsize` outputs
+#' @noRd
+
+get_ci_method <- purrr::compose(as_tibble, purrr::attr_getter("ci_method"))

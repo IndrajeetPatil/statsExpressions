@@ -3,16 +3,16 @@
     Code
       dplyr::select(df, -expression)
     Output
-      # A tibble: 1 x 10
+      # A tibble: 1 x 12
         statistic    df df.error   p.value
             <dbl> <dbl>    <dbl>     <dbl>
       1      20.2     2     19.0 0.0000196
         method                                                   estimate conf.level
         <chr>                                                       <dbl>      <dbl>
       1 One-way analysis of means (not assuming equal variances)    0.681       0.95
-        conf.low conf.high effectsize
-           <dbl>     <dbl> <chr>     
-      1    0.377     0.813 Eta2      
+        conf.low conf.high effectsize conf.method conf.distribution
+           <dbl>     <dbl> <chr>      <chr>       <chr>            
+      1    0.377     0.813 Eta2       ncp         F                
 
 ---
 
@@ -29,16 +29,16 @@
     Code
       dplyr::select(df1, -expression)
     Output
-      # A tibble: 1 x 10
+      # A tibble: 1 x 12
         statistic    df df.error p.value
             <dbl> <dbl>    <dbl>   <dbl>
       1      2.27     3     24.0   0.107
         method                                                   estimate conf.level
         <chr>                                                       <dbl>      <dbl>
       1 One-way analysis of means (not assuming equal variances)    0.119       0.95
-        conf.low conf.high effectsize
-           <dbl>     <dbl> <chr>     
-      1        0     0.326 Omega2    
+        conf.low conf.high effectsize conf.method conf.distribution
+           <dbl>     <dbl> <chr>      <chr>       <chr>            
+      1        0     0.326 Omega2     ncp         F                
 
 ---
 
@@ -55,16 +55,16 @@
     Code
       dplyr::select(df1, -expression)
     Output
-      # A tibble: 1 x 14
+      # A tibble: 1 x 16
         term      sumsq sum.squares.error    df df.error meansq statistic  p.value
         <chr>     <dbl>             <dbl> <dbl>    <dbl>  <dbl>     <dbl>    <dbl>
       1 condition 1656.              318.  1.15     171.   1.86      776. 1.32e-69
         method                                              estimate conf.level
         <chr>                                                  <dbl>      <dbl>
       1 ANOVA estimation for factorial designs using 'afex'    0.707       0.99
-        conf.low conf.high effectsize      
-           <dbl>     <dbl> <chr>           
-      1    0.653     0.750 Omega2 (partial)
+        conf.low conf.high effectsize       conf.method conf.distribution
+           <dbl>     <dbl> <chr>            <chr>       <chr>            
+      1    0.653     0.750 Omega2 (partial) ncp         F                
 
 ---
 

@@ -3,13 +3,13 @@
     Code
       dplyr::select(df1, -expression)
     Output
-      # A tibble: 1 x 9
+      # A tibble: 1 x 11
         statistic    df p.value method                     estimate conf.level
             <dbl> <int>   <dbl> <chr>                         <dbl>      <dbl>
       1      8.74     2  0.0126 Pearson's Chi-squared test    0.464       0.99
-        conf.low conf.high effectsize       
-           <dbl>     <dbl> <chr>            
-      1        0     0.888 Cramer's V (adj.)
+        conf.low conf.high effectsize        conf.method conf.distribution
+           <dbl>     <dbl> <chr>             <chr>       <chr>            
+      1        0     0.888 Cramer's V (adj.) ncp         chisq            
 
 ---
 
@@ -26,13 +26,13 @@
     Code
       dplyr::select(df2, -expression)
     Output
-      # A tibble: 1 x 9
+      # A tibble: 1 x 11
         statistic    df   p.value method                     estimate conf.level
             <dbl> <int>     <dbl> <chr>                         <dbl>      <dbl>
       1      457.     1 2.30e-101 Pearson's Chi-squared test    0.455       0.95
-        conf.low conf.high effectsize       
-           <dbl>     <dbl> <chr>            
-      1    0.413     0.497 Cramer's V (adj.)
+        conf.low conf.high effectsize        conf.method conf.distribution
+           <dbl>     <dbl> <chr>             <chr>       <chr>            
+      1    0.413     0.497 Cramer's V (adj.) ncp         chisq            
 
 ---
 
@@ -49,13 +49,13 @@
     Code
       dplyr::select(df3, -expression)
     Output
-      # A tibble: 1 x 9
+      # A tibble: 1 x 11
         statistic    df p.value method                     estimate conf.level
             <dbl> <int>   <dbl> <chr>                         <dbl>      <dbl>
       1      15.8    15   0.399 Pearson's Chi-squared test   0.0558       0.99
-        conf.low conf.high effectsize       
-           <dbl>     <dbl> <chr>            
-      1        0         0 Cramer's V (adj.)
+        conf.low conf.high effectsize        conf.method conf.distribution
+           <dbl>     <dbl> <chr>             <chr>       <chr>            
+      1        0         0 Cramer's V (adj.) ncp         chisq            
 
 ---
 
@@ -72,13 +72,13 @@
     Code
       dplyr::select(df1, -expression)
     Output
-      # A tibble: 1 x 9
+      # A tibble: 1 x 10
         statistic    df  p.value method                     estimate conf.level
             <dbl> <dbl>    <dbl> <chr>                         <dbl>      <dbl>
       1      13.3     1 0.000261 McNemar's Chi-squared test    0.333       0.95
-        conf.low conf.high effectsize
-           <dbl>     <dbl> <chr>     
-      1    0.164     0.427 Cohen's g 
+        conf.low conf.high effectsize conf.method
+           <dbl>     <dbl> <chr>      <chr>      
+      1    0.164     0.427 Cohen's g  binomial   
 
 ---
 
@@ -95,13 +95,13 @@
     Code
       dplyr::select(df2, -expression)
     Output
-      # A tibble: 1 x 9
+      # A tibble: 1 x 10
         statistic    df  p.value method                     estimate conf.level
             <dbl> <dbl>    <dbl> <chr>                         <dbl>      <dbl>
       1      13.3     1 0.000261 McNemar's Chi-squared test    0.333        0.9
-        conf.low conf.high effectsize
-           <dbl>     <dbl> <chr>     
-      1    0.195     0.416 Cohen's g 
+        conf.low conf.high effectsize conf.method
+           <dbl>     <dbl> <chr>      <chr>      
+      1    0.195     0.416 Cohen's g  binomial   
 
 ---
 
@@ -118,13 +118,13 @@
     Code
       dplyr::select(df1, -expression)
     Output
-      # A tibble: 1 x 9
+      # A tibble: 1 x 11
         statistic    df p.value method                                   estimate
             <dbl> <dbl>   <dbl> <chr>                                       <dbl>
       1      1.12     1   0.289 Chi-squared test for given probabilities   0.0547
-        conf.level conf.low conf.high effectsize       
-             <dbl>    <dbl>     <dbl> <chr>            
-      1       0.99        0     0.499 Cramer's V (adj.)
+        conf.level conf.low conf.high effectsize        conf.method conf.distribution
+             <dbl>    <dbl>     <dbl> <chr>             <chr>       <chr>            
+      1       0.99        0     0.499 Cramer's V (adj.) ncp         chisq            
 
 ---
 
@@ -141,13 +141,13 @@
     Code
       dplyr::select(df2, -expression)
     Output
-      # A tibble: 1 x 9
+      # A tibble: 1 x 11
         statistic    df   p.value method                                   estimate
             <dbl> <dbl>     <dbl> <chr>                                       <dbl>
       1      722.     1 3.92e-159 Chi-squared test for given probabilities    0.573
-        conf.level conf.low conf.high effectsize       
-             <dbl>    <dbl>     <dbl> <chr>            
-      1       0.95    0.465     0.615 Cramer's V (adj.)
+        conf.level conf.low conf.high effectsize        conf.method conf.distribution
+             <dbl>    <dbl>     <dbl> <chr>             <chr>       <chr>            
+      1       0.95    0.465     0.615 Cramer's V (adj.) ncp         chisq            
 
 ---
 
@@ -164,13 +164,13 @@
     Code
       dplyr::select(df3, -expression)
     Output
-      # A tibble: 1 x 9
+      # A tibble: 1 x 11
         statistic    df     p.value method                                   estimate
             <dbl> <dbl>       <dbl> <chr>                                       <dbl>
       1      33.8     3 0.000000223 Chi-squared test for given probabilities    0.375
-        conf.level conf.low conf.high effectsize       
-             <dbl>    <dbl>     <dbl> <chr>            
-      1       0.95    0.222     0.486 Cramer's V (adj.)
+        conf.level conf.low conf.high effectsize        conf.method conf.distribution
+             <dbl>    <dbl>     <dbl> <chr>             <chr>       <chr>            
+      1       0.95    0.222     0.486 Cramer's V (adj.) ncp         chisq            
 
 ---
 
@@ -221,13 +221,13 @@
     Code
       dplyr::select(df1, -expression)
     Output
-      # A tibble: 1 x 9
+      # A tibble: 1 x 11
         statistic    df p.value method                     estimate conf.level
             <dbl> <int>   <dbl> <chr>                         <dbl>      <dbl>
       1         3     2   0.223 Pearson's Chi-squared test    0.354       0.95
-        conf.low conf.high effectsize       
-           <dbl>     <dbl> <chr>            
-      1        0     0.949 Cramer's V (adj.)
+        conf.low conf.high effectsize        conf.method conf.distribution
+           <dbl>     <dbl> <chr>             <chr>       <chr>            
+      1        0     0.949 Cramer's V (adj.) ncp         chisq            
 
 ---
 
@@ -244,13 +244,13 @@
     Code
       dplyr::select(df2, -expression)
     Output
-      # A tibble: 1 x 9
+      # A tibble: 1 x 11
         statistic    df p.value method                                   estimate
             <dbl> <dbl>   <dbl> <chr>                                       <dbl>
       1      7.68     2  0.0214 Chi-squared test for given probabilities    0.406
-        conf.level conf.low conf.high effectsize       
-             <dbl>    <dbl>     <dbl> <chr>            
-      1       0.95        0     0.675 Cramer's V (adj.)
+        conf.level conf.low conf.high effectsize        conf.method conf.distribution
+             <dbl>    <dbl>     <dbl> <chr>             <chr>       <chr>            
+      1       0.95        0     0.675 Cramer's V (adj.) ncp         chisq            
 
 ---
 

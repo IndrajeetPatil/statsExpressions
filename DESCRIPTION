@@ -33,6 +33,7 @@ Imports:
     ipmisc,
     parameters (>= 0.13.0),
     performance (>= 0.7.1),
+    purrr,
     rlang,
     stats,
     tidyr,
@@ -44,7 +45,6 @@ Suggests:
     metaBMA,
     metafor,
     metaplus,
-    purrr,
     rmarkdown,
     spelling,
     testthat,
@@ -60,3 +60,4 @@ Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate",
     "pkgapi::api_roclet"))
 RoxygenNote: 7.1.1.9001
 Config/testthat/edition: 3
+Config/testthat/parallel: true

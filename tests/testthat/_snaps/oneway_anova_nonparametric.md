@@ -3,16 +3,16 @@
     Code
       dplyr::select(df1, -expression)
     Output
-      # A tibble: 1 x 11
+      # A tibble: 1 x 13
         parameter1 parameter2 statistic df.error      p.value
         <chr>      <chr>          <dbl>    <int>        <dbl>
       1 length     genre           51.4        8 0.0000000217
         method                       estimate conf.level conf.low conf.high
         <chr>                           <dbl>      <dbl>    <dbl>     <dbl>
       1 Kruskal-Wallis rank sum test    0.328       0.95    0.257     0.506
-        effectsize     
-        <chr>          
-      1 Epsilon2 (rank)
+        effectsize      conf.method conf.iterations
+        <chr>           <chr>                 <int>
+      1 Epsilon2 (rank) bootstrap               100
 
 ---
 
@@ -29,13 +29,16 @@
     Code
       dplyr::select(df2, -expression)
     Output
-      # A tibble: 1 x 11
+      # A tibble: 1 x 13
         parameter1  parameter2 statistic df.error p.value method                      
         <chr>       <chr>          <dbl>    <int>   <dbl> <chr>                       
       1 sleep_cycle vore            5.24        3   0.155 Kruskal-Wallis rank sum test
-        estimate conf.level conf.low conf.high effectsize     
-           <dbl>      <dbl>    <dbl>     <dbl> <chr>          
-      1    0.175       0.99   0.0526     0.494 Epsilon2 (rank)
+        estimate conf.level conf.low conf.high effectsize      conf.method
+           <dbl>      <dbl>    <dbl>     <dbl> <chr>           <chr>      
+      1    0.175       0.99   0.0526     0.494 Epsilon2 (rank) bootstrap  
+        conf.iterations
+                  <int>
+      1             100
 
 ---
 
