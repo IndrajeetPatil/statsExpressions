@@ -117,7 +117,7 @@
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2021-05-11</h4>
+            <h4 class="date">2021-05-12</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -168,13 +168,13 @@
   test.value <span class="op">=</span> <span class="fl">0.275</span>,
   type <span class="op">=</span> <span class="st">"parametric"</span>,
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 11</span>
+<span class="co">#&gt; # A tibble: 1 x 13</span>
 <span class="co">#&gt;      mu statistic df.error p.value method            estimate conf.level</span>
 <span class="co">#&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 0.275    0.0504       55   0.960 One Sample t-test  0.00665       0.95</span>
-<span class="co">#&gt;   conf.low conf.high effectsize expression</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;list&gt;    </span>
-<span class="co">#&gt; 1   -0.254     0.267 Hedges' g  &lt;language&gt;</span>
+<span class="co">#&gt;   conf.low conf.high effectsize conf.method conf.distribution expression</span>
+<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;             &lt;list&gt;    </span>
+<span class="co">#&gt; 1   -0.254     0.267 Hedges' g  ncp         t                 &lt;language&gt;</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -186,13 +186,13 @@
   test.value <span class="op">=</span> <span class="fl">0.275</span>,
   type <span class="op">=</span> <span class="st">"nonparametric"</span>,
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 9</span>
+<span class="co">#&gt; # A tibble: 1 x 11</span>
 <span class="co">#&gt;   statistic    p.value method                    estimate conf.level conf.low</span>
 <span class="co">#&gt;       &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                        &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1      5.51 0.00000738 Wilcoxon signed rank test   -0.689       0.95   -0.922</span>
-<span class="co">#&gt;   conf.high effectsize        expression</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;             &lt;list&gt;    </span>
-<span class="co">#&gt; 1    -0.400 r (rank biserial) &lt;language&gt;</span>
+<span class="co">#&gt;   conf.high effectsize        conf.method conf.iterations expression</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;                 &lt;dbl&gt; &lt;list&gt;    </span>
+<span class="co">#&gt; 1    -0.400 r (rank biserial) bootstrap               200 &lt;language&gt;</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -258,13 +258,16 @@
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   type <span class="op">=</span> <span class="st">"p"</span>,
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 12</span>
+<span class="co">#&gt; # A tibble: 1 x 14</span>
 <span class="co">#&gt;   term   group     statistic df.error       p.value method        estimate</span>
 <span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 desire condition      6.65       90 0.00000000222 Paired t-test    0.691</span>
-<span class="co">#&gt;   conf.level conf.low conf.high effectsize expression</span>
-<span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;list&gt;    </span>
-<span class="co">#&gt; 1       0.95    0.465     0.922 Hedges' g  &lt;language&gt;</span>
+<span class="co">#&gt;   conf.level conf.low conf.high effectsize conf.method conf.distribution</span>
+<span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;            </span>
+<span class="co">#&gt; 1       0.95    0.465     0.922 Hedges' g  ncp         t                </span>
+<span class="co">#&gt;   expression</span>
+<span class="co">#&gt;   &lt;list&gt;    </span>
+<span class="co">#&gt; 1 &lt;language&gt;</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -278,13 +281,16 @@
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   type <span class="op">=</span> <span class="st">"np"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 11</span>
+<span class="co">#&gt; # A tibble: 1 x 13</span>
 <span class="co">#&gt;   parameter1 parameter2 statistic      p.value method                   </span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;        &lt;dbl&gt; &lt;chr&gt;                    </span>
 <span class="co">#&gt; 1 desire     condition       7.72 0.0000000241 Wilcoxon signed rank test</span>
-<span class="co">#&gt;   estimate conf.level conf.low conf.high effectsize        expression</span>
-<span class="co">#&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;             &lt;list&gt;    </span>
-<span class="co">#&gt; 1    0.761       0.95    0.600     0.874 r (rank biserial) &lt;language&gt;</span>
+<span class="co">#&gt;   estimate conf.level conf.low conf.high effectsize        conf.method</span>
+<span class="co">#&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;      </span>
+<span class="co">#&gt; 1    0.761       0.95    0.600     0.874 r (rank biserial) bootstrap  </span>
+<span class="co">#&gt;   conf.iterations expression</span>
+<span class="co">#&gt;             &lt;int&gt; &lt;list&gt;    </span>
+<span class="co">#&gt; 1             100 &lt;language&gt;</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -354,16 +360,16 @@
   y <span class="op">=</span> <span class="va">len</span>,
   type <span class="op">=</span> <span class="st">"p"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 14</span>
+<span class="co">#&gt; # A tibble: 1 x 16</span>
 <span class="co">#&gt;   term  group mean.group1 mean.group2 statistic df.error p.value</span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 len   supp         20.7        17.0      1.92     55.3  0.0606</span>
 <span class="co">#&gt;   method                  estimate conf.level conf.low conf.high effectsize</span>
 <span class="co">#&gt;   &lt;chr&gt;                      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     </span>
 <span class="co">#&gt; 1 Welch Two Sample t-test    0.488       0.95  -0.0217     0.993 Hedges' g </span>
-<span class="co">#&gt;   expression</span>
-<span class="co">#&gt;   &lt;list&gt;    </span>
-<span class="co">#&gt; 1 &lt;language&gt;</span>
+<span class="co">#&gt;   conf.method conf.distribution expression</span>
+<span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;             &lt;list&gt;    </span>
+<span class="co">#&gt; 1 ncp         t                 &lt;language&gt;</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
@@ -375,13 +381,16 @@
   var.equal <span class="op">=</span> <span class="cn">TRUE</span>,
   type <span class="op">=</span> <span class="st">"p"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 14</span>
+<span class="co">#&gt; # A tibble: 1 x 16</span>
 <span class="co">#&gt;   term  group mean.group1 mean.group2 statistic df.error p.value</span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 len   supp         20.7        17.0      1.92       58  0.0604</span>
-<span class="co">#&gt;   method            estimate conf.level conf.low conf.high effectsize expression</span>
-<span class="co">#&gt;   &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;list&gt;    </span>
-<span class="co">#&gt; 1 Two Sample t-test    0.488       0.95  -0.0217     0.993 Hedges' g  &lt;language&gt;</span>
+<span class="co">#&gt;   method            estimate conf.level conf.low conf.high effectsize</span>
+<span class="co">#&gt;   &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     </span>
+<span class="co">#&gt; 1 Two Sample t-test    0.488       0.95  -0.0217     0.993 Hedges' g </span>
+<span class="co">#&gt;   conf.method conf.distribution expression</span>
+<span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;             &lt;list&gt;    </span>
+<span class="co">#&gt; 1 ncp         t                 &lt;language&gt;</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -393,13 +402,16 @@
   y <span class="op">=</span> <span class="va">len</span>,
   type <span class="op">=</span> <span class="st">"np"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 11</span>
+<span class="co">#&gt; # A tibble: 1 x 13</span>
 <span class="co">#&gt;   parameter1 parameter2 statistic p.value method                 estimate</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 len        supp            6.36  0.0645 Wilcoxon rank sum test    0.279</span>
-<span class="co">#&gt;   conf.level conf.low conf.high effectsize        expression</span>
-<span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;             &lt;list&gt;    </span>
-<span class="co">#&gt; 1       0.95  -0.0124     0.561 r (rank biserial) &lt;language&gt;</span>
+<span class="co">#&gt;   conf.level conf.low conf.high effectsize        conf.method conf.iterations</span>
+<span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;                 &lt;int&gt;</span>
+<span class="co">#&gt; 1       0.95  -0.0124     0.561 r (rank biserial) bootstrap               100</span>
+<span class="co">#&gt;   expression</span>
+<span class="co">#&gt;   &lt;list&gt;    </span>
+<span class="co">#&gt; 1 &lt;language&gt;</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -470,16 +482,16 @@
     type <span class="op">=</span> <span class="st">"p"</span>
   <span class="op">)</span>
 <span class="op">}</span>
-<span class="co">#&gt; # A tibble: 1 x 15</span>
+<span class="co">#&gt; # A tibble: 1 x 17</span>
 <span class="co">#&gt;   term      sumsq sum.squares.error    df df.error meansq statistic  p.value</span>
 <span class="co">#&gt;   &lt;chr&gt;     &lt;dbl&gt;             &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 condition  233.              984.  2.63     229.   4.30      20.6 8.27e-11</span>
 <span class="co">#&gt;   method                                              estimate conf.level</span>
 <span class="co">#&gt;   &lt;chr&gt;                                                  &lt;dbl&gt;      &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 ANOVA estimation for factorial designs using 'afex'   0.0783       0.95</span>
-<span class="co">#&gt;   conf.low conf.high effectsize       expression</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;            &lt;list&gt;    </span>
-<span class="co">#&gt; 1   0.0217     0.140 Omega2 (partial) &lt;language&gt;</span>
+<span class="co">#&gt;   conf.low conf.high effectsize       conf.method conf.distribution expression</span>
+<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;       &lt;chr&gt;             &lt;list&gt;    </span>
+<span class="co">#&gt; 1   0.0217     0.140 Omega2 (partial) ncp         F                 &lt;language&gt;</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -493,13 +505,16 @@
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   type <span class="op">=</span> <span class="st">"np"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 12</span>
+<span class="co">#&gt; # A tibble: 1 x 14</span>
 <span class="co">#&gt;   parameter1 parameter2 statistic df.error  p.value method                </span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                 </span>
 <span class="co">#&gt; 1 desire     condition       55.8        3 4.56e-12 Friedman rank sum test</span>
-<span class="co">#&gt;   estimate conf.level conf.low conf.high effectsize  expression</span>
-<span class="co">#&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       &lt;list&gt;    </span>
-<span class="co">#&gt; 1    0.175       0.95    0.118     0.248 Kendall's W &lt;language&gt;</span>
+<span class="co">#&gt;   estimate conf.level conf.low conf.high effectsize  conf.method conf.iterations</span>
+<span class="co">#&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;                 &lt;int&gt;</span>
+<span class="co">#&gt; 1    0.175       0.95    0.118     0.248 Kendall's W bootstrap               100</span>
+<span class="co">#&gt;   expression</span>
+<span class="co">#&gt;   &lt;list&gt;    </span>
+<span class="co">#&gt; 1 &lt;language&gt;</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -560,16 +575,16 @@
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
   type <span class="op">=</span> <span class="st">"p"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 11</span>
+<span class="co">#&gt; # A tibble: 1 x 13</span>
 <span class="co">#&gt;   statistic    df df.error  p.value</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1      139.     2     92.2 1.51e-28</span>
 <span class="co">#&gt;   method                                                   estimate conf.level</span>
 <span class="co">#&gt;   &lt;chr&gt;                                                       &lt;dbl&gt;      &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 One-way analysis of means (not assuming equal variances)    0.743       0.95</span>
-<span class="co">#&gt;   conf.low conf.high effectsize expression</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;list&gt;    </span>
-<span class="co">#&gt; 1    0.655     0.803 Omega2     &lt;language&gt;</span>
+<span class="co">#&gt;   conf.low conf.high effectsize conf.method conf.distribution expression</span>
+<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;             &lt;list&gt;    </span>
+<span class="co">#&gt; 1    0.655     0.803 Omega2     ncp         F                 &lt;language&gt;</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
@@ -581,13 +596,16 @@
   var.equal <span class="op">=</span> <span class="cn">TRUE</span>,
   type <span class="op">=</span> <span class="st">"p"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 11</span>
+<span class="co">#&gt; # A tibble: 1 x 13</span>
 <span class="co">#&gt;   statistic    df df.error  p.value method                    estimate</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                        &lt;dbl&gt;</span>
 <span class="co">#&gt; 1      119.     2      147 1.67e-31 One-way analysis of means    0.612</span>
-<span class="co">#&gt;   conf.level conf.low conf.high effectsize expression</span>
-<span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;list&gt;    </span>
-<span class="co">#&gt; 1       0.95    0.517     0.683 Omega2     &lt;language&gt;</span>
+<span class="co">#&gt;   conf.level conf.low conf.high effectsize conf.method conf.distribution</span>
+<span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;            </span>
+<span class="co">#&gt; 1       0.95    0.517     0.683 Omega2     ncp         F                </span>
+<span class="co">#&gt;   expression</span>
+<span class="co">#&gt;   &lt;list&gt;    </span>
+<span class="co">#&gt; 1 &lt;language&gt;</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -599,16 +617,16 @@
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
   type <span class="op">=</span> <span class="st">"np"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 12</span>
+<span class="co">#&gt; # A tibble: 1 x 14</span>
 <span class="co">#&gt;   parameter1   parameter2 statistic df.error  p.value</span>
 <span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;dbl&gt;    &lt;int&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Sepal.Length Species         96.9        2 8.92e-22</span>
 <span class="co">#&gt;   method                       estimate conf.level conf.low conf.high</span>
 <span class="co">#&gt;   &lt;chr&gt;                           &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Kruskal-Wallis rank sum test    0.651       0.95    0.588     0.722</span>
-<span class="co">#&gt;   effectsize      expression</span>
-<span class="co">#&gt;   &lt;chr&gt;           &lt;list&gt;    </span>
-<span class="co">#&gt; 1 Epsilon2 (rank) &lt;language&gt;</span>
+<span class="co">#&gt;   effectsize      conf.method conf.iterations expression</span>
+<span class="co">#&gt;   &lt;chr&gt;           &lt;chr&gt;                 &lt;int&gt; &lt;list&gt;    </span>
+<span class="co">#&gt; 1 Epsilon2 (rank) bootstrap               100 &lt;language&gt;</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -717,13 +735,13 @@
   y <span class="op">=</span> <span class="va">cyl</span>,
   paired <span class="op">=</span> <span class="cn">FALSE</span>,
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
+<span class="co">#&gt; # A tibble: 1 x 12</span>
 <span class="co">#&gt;   statistic    df p.value method                     estimate conf.level</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;      &lt;dbl&gt;</span>
 <span class="co">#&gt; 1      8.74     2  0.0126 Pearson's Chi-squared test    0.464       0.95</span>
-<span class="co">#&gt;   conf.low conf.high effectsize        expression</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;             &lt;list&gt;    </span>
-<span class="co">#&gt; 1        0     0.777 Cramer's V (adj.) &lt;language&gt;</span>
+<span class="co">#&gt;   conf.low conf.high effectsize        conf.method conf.distribution expression</span>
+<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;       &lt;chr&gt;             &lt;list&gt;    </span>
+<span class="co">#&gt; 1        0     0.777 Cramer's V (adj.) ncp         chisq             &lt;language&gt;</span>
 
 <span class="co"># paired</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
@@ -734,13 +752,13 @@
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   counts <span class="op">=</span> <span class="st">"Freq"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
+<span class="co">#&gt; # A tibble: 1 x 11</span>
 <span class="co">#&gt;   statistic    df  p.value method                     estimate conf.level</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;      &lt;dbl&gt;</span>
 <span class="co">#&gt; 1      13.3     1 0.000261 McNemar's Chi-squared test    0.333       0.95</span>
-<span class="co">#&gt;   conf.low conf.high effectsize expression</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;list&gt;    </span>
-<span class="co">#&gt; 1    0.164     0.427 Cohen's g  &lt;language&gt;</span>
+<span class="co">#&gt;   conf.low conf.high effectsize conf.method expression</span>
+<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;list&gt;    </span>
+<span class="co">#&gt; 1    0.164     0.427 Cohen's g  binomial    &lt;language&gt;</span>
 
 <span class="co"># goodness-of-fit tests</span>
 
@@ -751,13 +769,16 @@
   x <span class="op">=</span> <span class="va">Eye</span>,
   counts <span class="op">=</span> <span class="va">Freq</span>,
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
+<span class="co">#&gt; # A tibble: 1 x 12</span>
 <span class="co">#&gt;   statistic    df  p.value method                                   estimate</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                                       &lt;dbl&gt;</span>
 <span class="co">#&gt; 1      133.     3 9.65e-29 Chi-squared test for given probabilities    0.272</span>
-<span class="co">#&gt;   conf.level conf.low conf.high effectsize        expression</span>
-<span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;             &lt;list&gt;    </span>
-<span class="co">#&gt; 1       0.95    0.222     0.316 Cramer's V (adj.) &lt;language&gt;</span>
+<span class="co">#&gt;   conf.level conf.low conf.high effectsize        conf.method conf.distribution</span>
+<span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;       &lt;chr&gt;            </span>
+<span class="co">#&gt; 1       0.95    0.222     0.316 Cramer's V (adj.) ncp         chisq            </span>
+<span class="co">#&gt;   expression</span>
+<span class="co">#&gt;   &lt;list&gt;    </span>
+<span class="co">#&gt; 1 &lt;language&gt;</span>
 
 <span class="co"># ------------------------ Bayesian -----------------------------</span>
 
