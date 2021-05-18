@@ -199,7 +199,7 @@
     Output
       [[1]]
       paste("log"["e"] * "(BF"["01"] * ") = " * "-3.335" * ", ", widehat(italic("V"))["Cramer"]^"posterior" * 
-          " = " * "0.479" * ", ", "CI"["89%"]^"HDI" * " [" * "0.285" * 
+          " = " * "0.473" * ", ", "CI"["89%"]^"HDI" * " [" * "0.285" * 
           ", " * "0.692" * "], ", italic("a")["Gunel-Dickey"] * " = " * 
           "1.000")
       
@@ -211,7 +211,7 @@
       
       [[3]]
       paste("log"["e"] * "(BF"["01"] * ") = " * "-213.873" * ", ", 
-          widehat(italic("V"))["Cramer"]^"posterior" * " = " * "0.454" * 
+          widehat(italic("V"))["Cramer"]^"posterior" * " = " * "0.455" * 
               ", ", "CI"["95%"]^"HDI" * " [" * "0.417" * ", " * "0.495" * 
               "], ", italic("a")["Gunel-Dickey"] * " = " * "1.500")
       

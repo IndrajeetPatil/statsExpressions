@@ -109,8 +109,8 @@
     Code
       subtitle1$expression[[1]]
     Output
-      paste("log"["e"] * "(BF"["01"] * ") = " * "0.487" * ", ", widehat(rho)["Pearson"]^"posterior" * 
-          " = " * "-0.210" * ", ", "CI"["99%"]^"HDI" * " [" * "-0.410" * 
-          ", " * "0.026" * "], ", italic("r")["beta"]^"JZS" * " = " * 
-          "1.250")
+      paste("log"["e"] * "(BF"["01"] * ") = " * "0.49" * ", ", widehat(rho)["Pearson"]^"posterior" * 
+          " = " * "-0.21" * ", ", "CI"["99%"]^"HDI" * " [" * "-0.41" * 
+          ", " * "0.03" * "], ", italic("r")["beta"]^"JZS" * " = " * 
+          "1.25")
 

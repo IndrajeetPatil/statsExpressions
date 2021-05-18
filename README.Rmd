@@ -1,10 +1,12 @@
 ---
-output: github_document
+output: 
+  github_document:
+    pandoc_args: --webtex=https://chart.apis.google.com/chart?cht=tx&chl=
 ---
 
   <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, echo = FALSE}
+```{r, echo=FALSE}
 options(
   tibble.width = Inf,
   pillar.bold = TRUE,
@@ -79,7 +81,7 @@ See: <https://indrajeetpatil.github.io/statsExpressions/news/index.html>
 
 To get the latest, stable `CRAN` release:
 
-```{r installationCRAN, eval = FALSE}
+```{r installationCRAN, eval=FALSE}
 install.packages("statsExpressions")
 ```
 
@@ -91,7 +93,7 @@ release on `CRAN`, you can check the detailed log of changes here:
 If you are in hurry and want to reduce the time of installation,
 prefer-
 
-```{r installation1, eval = FALSE}
+```{r installation1, eval=FALSE}
 # needed package to download from GitHub repo
 install.packages("remotes")
 
@@ -105,7 +107,7 @@ remotes::install_github(
 
 If time is not a constraint-
 
-```{r installation2, eval = FALSE}
+```{r installation2, eval=FALSE}
 remotes::install_github(
   repo = "IndrajeetPatil/statsExpressions", # package path on GitHub
   dependencies = TRUE, # installs packages which statsExpressions depends on

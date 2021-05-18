@@ -147,8 +147,7 @@ test_that(
         y = brainwt,
         x = sleep_rem,
         bf.prior = 0.8,
-        conf.level = 0.99,
-        k = 3
+        conf.level = 0.99
       )
 
     expect_snapshot(subtitle1$expression[[1]])
