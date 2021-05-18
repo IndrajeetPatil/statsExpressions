@@ -206,31 +206,29 @@ two_sample_test <- function(data,
     # running robust analysis
     if (isFALSE(paired)) {
       # computing effect size and its confidence interval
-      mod2 <- WRS2::akp.effect(
+      effsize_df <- WRS2::akp.effect(
         formula = rlang::new_formula(y, x),
         data = data,
         EQVAR = FALSE,
         tr = tr,
         nboot = nboot,
         alpha = 1 - conf.level
-      )
+      ) %>%
+        tidy_model_parameters(.)
 
       # Yuen's test for trimmed means
-      mod <- WRS2::yuen(formula = rlang::new_formula(y, x), data = data, tr = tr)
-
-      # tidying it up
-      stats_df <- tidy_model_parameters(mod)
-      effsize_df <- tidy_model_parameters(mod2)
+      stats_df <- WRS2::yuen(formula = rlang::new_formula(y, x), data = data, tr = tr) %>%
+        tidy_model_parameters(.)
     }
 
     if (isTRUE(paired)) {
-      # running robust paired t-test and its effect size
-      mod <- WRS2::yuend(x = data[2], y = data[3], tr = tr)
-      mod2 <- WRS2::dep.effect(x = data[2], y = data[3], tr = tr, nboot = nboot)
+      # Yuen's paired test for trimmed means
+      stats_df <- WRS2::yuend(x = data[2], y = data[3], tr = tr) %>%
+        tidy_model_parameters(.)
 
-      # tidying it up
-      stats_df <- tidy_model_parameters(mod)
-      effsize_df <- as_tibble(as.data.frame(mod2), rownames = "effectsize") %>%
+      # computing effect size and its confidence interval
+      effsize_df <- WRS2::dep.effect(x = data[2], y = data[3], tr = tr, nboot = nboot) %>%
+        as_tibble(as.data.frame(.), rownames = "effectsize") %>%
         dplyr::filter(effectsize == "AKP") %>%
         dplyr::mutate(
           effectsize = "Algina-Keselman-Penfield robust standardized difference",

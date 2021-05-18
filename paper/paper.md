@@ -14,7 +14,7 @@ authors:
 affiliations:
   - name: Center for Humans and Machines, Max Planck Institute for Human Development, Berlin, Germany
     index: 1
-date: "2021-05-09"
+date: "2021-05-18"
 bibliography: paper.bib
 ---
 
@@ -100,16 +100,16 @@ modified by changing a single argument:
 
 ```r
 mtcars %>% oneway_anova(cyl, wt, type = "nonparametric") 
-#> # A tibble: 1 x 12
+#> # A tibble: 1 x 14
 #>   parameter1 parameter2 statistic df.error   p.value
 #>   <chr>      <chr>          <dbl>    <int>     <dbl>
 #> 1 wt         cyl             22.8        2 0.0000112
 #>   method                       estimate conf.level conf.low conf.high
 #>   <chr>                           <dbl>      <dbl>    <dbl>     <dbl>
 #> 1 Kruskal-Wallis rank sum test    0.736       0.95    0.613     0.831
-#>   effectsize      expression
-#>   <chr>           <list>    
-#> 1 Epsilon2 (rank) <language>
+#>   effectsize      conf.method conf.iterations expression
+#>   <chr>           <chr>                 <int> <list>    
+#> 1 Epsilon2 (rank) bootstrap               100 <language>
 
 mtcars %>% oneway_anova(cyl, wt, type = "robust")
 #> # A tibble: 1 x 11
@@ -184,17 +184,22 @@ mtcars %>%
   group_by(cyl) %>%
   group_modify(~ contingency_table(.x, am), .keep = TRUE) %>%
   ungroup()
-#> # A tibble: 3 x 11
+#> # A tibble: 3 x 13
 #>     cyl statistic    df p.value method                                  
 #>   <dbl>     <dbl> <dbl>   <dbl> <chr>                                   
 #> 1     4     2.27      1 0.132   Chi-squared test for given probabilities
 #> 2     6     0.143     1 0.705   Chi-squared test for given probabilities
 #> 3     8     7.14      1 0.00753 Chi-squared test for given probabilities
-#>   estimate conf.level conf.low conf.high effectsize        expression
-#>      <dbl>      <dbl>    <dbl>     <dbl> <chr>             <list>    
-#> 1    0.344       0.95    0         0.917 Cramer's V (adj.) <language>
-#> 2    0           0.95    0         0     Cramer's V (adj.) <language>
-#> 3    0.685       0.95    0.127     1.18  Cramer's V (adj.) <language>
+#>   estimate conf.level conf.low conf.high effectsize        conf.method
+#>      <dbl>      <dbl>    <dbl>     <dbl> <chr>             <chr>      
+#> 1    0.344       0.95    0         0.917 Cramer's V (adj.) ncp        
+#> 2    0           0.95    0         0     Cramer's V (adj.) ncp        
+#> 3    0.685       0.95    0.127     1.18  Cramer's V (adj.) ncp        
+#>   conf.distribution expression
+#>   <chr>             <list>    
+#> 1 chisq             <language>
+#> 2 chisq             <language>
+#> 3 chisq             <language>
 ```
 
 ## Code to reproduce for Figure 2

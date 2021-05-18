@@ -4,7 +4,7 @@
       bf_expr$expression[[1]]
     Output
       paste("log"["e"] * "(BF"["01"] * ") = " * "-0.18" * ", ", widehat(italic(delta))["difference"]^"posterior" * 
-          " = " * "-3.16" * ", ", "CI"["99%"]^"HDI" * " [" * "-8.13" * 
+          " = " * "-3.19" * ", ", "CI"["99%"]^"HDI" * " [" * "-8.13" * 
           ", " * "1.35" * "], ", italic("r")["Cauchy"]^"JZS" * " = " * 
           "0.71")
 

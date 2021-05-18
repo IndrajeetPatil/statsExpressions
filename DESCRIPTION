@@ -32,7 +32,7 @@ Imports:
     insight (>= 0.14.0),
     ipmisc,
     parameters (>= 0.13.0),
-    performance (>= 0.7.1),
+    performance (>= 0.7.2),
     purrr,
     rlang,
     stats,
@@ -50,7 +50,8 @@ Suggests:
     testthat,
     utils
 Remotes:
-    easystats/effectsize
+    easystats/effectsize,
+    easystats/parameters
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
