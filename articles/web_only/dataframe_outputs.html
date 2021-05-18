@@ -117,7 +117,7 @@
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2021-05-12</h4>
+            <h4 class="date">2021-05-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -168,13 +168,16 @@
   test.value <span class="op">=</span> <span class="fl">0.275</span>,
   type <span class="op">=</span> <span class="st">"parametric"</span>,
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 13</span>
-<span class="co">#&gt;      mu statistic df.error p.value method            estimate conf.level</span>
-<span class="co">#&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 0.275    0.0504       55   0.960 One Sample t-test  0.00665       0.95</span>
-<span class="co">#&gt;   conf.low conf.high effectsize conf.method conf.distribution expression</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;             &lt;list&gt;    </span>
-<span class="co">#&gt; 1   -0.254     0.267 Hedges' g  ncp         t                 &lt;language&gt;</span>
+<span class="co">#&gt; # A tibble: 1 x 14</span>
+<span class="co">#&gt;      mu statistic df.error p.value method            alternative estimate</span>
+<span class="co">#&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;          &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 0.275    0.0504       55   0.960 One Sample t-test two.sided    0.00665</span>
+<span class="co">#&gt;   conf.level conf.low conf.high effectsize conf.method conf.distribution</span>
+<span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;            </span>
+<span class="co">#&gt; 1       0.95   -0.254     0.267 Hedges' g  ncp         t                </span>
+<span class="co">#&gt;   expression</span>
+<span class="co">#&gt;   &lt;list&gt;    </span>
+<span class="co">#&gt; 1 &lt;language&gt;</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -186,13 +189,13 @@
   test.value <span class="op">=</span> <span class="fl">0.275</span>,
   type <span class="op">=</span> <span class="st">"nonparametric"</span>,
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 11</span>
-<span class="co">#&gt;   statistic    p.value method                    estimate conf.level conf.low</span>
-<span class="co">#&gt;       &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                        &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      5.51 0.00000738 Wilcoxon signed rank test   -0.689       0.95   -0.922</span>
-<span class="co">#&gt;   conf.high effectsize        conf.method conf.iterations expression</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;                 &lt;dbl&gt; &lt;list&gt;    </span>
-<span class="co">#&gt; 1    -0.400 r (rank biserial) bootstrap               200 &lt;language&gt;</span>
+<span class="co">#&gt; # A tibble: 1 x 12</span>
+<span class="co">#&gt;   statistic    p.value method                    alternative estimate conf.level</span>
+<span class="co">#&gt;       &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                     &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      5.51 0.00000738 Wilcoxon signed rank test two.sided     -0.689       0.95</span>
+<span class="co">#&gt;   conf.low conf.high effectsize        conf.method conf.iterations expression</span>
+<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;                 &lt;dbl&gt; &lt;list&gt;    </span>
+<span class="co">#&gt; 1   -0.922    -0.400 r (rank biserial) bootstrap               200 &lt;language&gt;</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -223,15 +226,19 @@
   type <span class="op">=</span> <span class="st">"bayes"</span>,
   bf.prior <span class="op">=</span> <span class="fl">0.8</span>,
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2 x 13</span>
+<span class="co">#&gt; # A tibble: 2 x 14</span>
 <span class="co">#&gt;   term       estimate conf.level conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Difference  0.00952       0.95  -0.250      0.255 0.532          0.619 </span>
-<span class="co">#&gt; 2 Cohens_d    0.276         0.95   0.0153     0.536 0.978          0.0525</span>
-<span class="co">#&gt;   prior.distribution prior.location prior.scale  bf10 method          expression</span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           &lt;list&gt;    </span>
-<span class="co">#&gt; 1 cauchy                          0         0.8 0.130 Bayesian t-test &lt;language&gt;</span>
-<span class="co">#&gt; 2 cauchy                          0         0.8 0.130 Bayesian t-test &lt;language&gt;</span></code></pre></div>
+<span class="co">#&gt; 1 Difference  0.00839       0.95  -0.250      0.255 0.532          0.619 </span>
+<span class="co">#&gt; 2 Cohens_d    0.273         0.95   0.0153     0.536 0.978          0.0525</span>
+<span class="co">#&gt;   std.dev prior.distribution prior.location prior.scale  bf10 method         </span>
+<span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;          </span>
+<span class="co">#&gt; 1   0.128 cauchy                          0         0.8 0.130 Bayesian t-test</span>
+<span class="co">#&gt; 2  NA     cauchy                          0         0.8 0.130 Bayesian t-test</span>
+<span class="co">#&gt;   expression</span>
+<span class="co">#&gt;   &lt;list&gt;    </span>
+<span class="co">#&gt; 1 &lt;language&gt;</span>
+<span class="co">#&gt; 2 &lt;language&gt;</span></code></pre></div>
 </div>
 <div id="two-sample-tests" class="section level1">
 <h1 class="hasAnchor">
@@ -258,16 +265,16 @@
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   type <span class="op">=</span> <span class="st">"p"</span>,
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 14</span>
-<span class="co">#&gt;   term   group     statistic df.error       p.value method        estimate</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 desire condition      6.65       90 0.00000000222 Paired t-test    0.691</span>
-<span class="co">#&gt;   conf.level conf.low conf.high effectsize conf.method conf.distribution</span>
-<span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;            </span>
-<span class="co">#&gt; 1       0.95    0.465     0.922 Hedges' g  ncp         t                </span>
-<span class="co">#&gt;   expression</span>
-<span class="co">#&gt;   &lt;list&gt;    </span>
-<span class="co">#&gt; 1 &lt;language&gt;</span>
+<span class="co">#&gt; # A tibble: 1 x 15</span>
+<span class="co">#&gt;   term   group     statistic df.error       p.value method        alternative</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;      </span>
+<span class="co">#&gt; 1 desire condition      6.65       90 0.00000000222 Paired t-test two.sided  </span>
+<span class="co">#&gt;   estimate conf.level conf.low conf.high effectsize conf.method</span>
+<span class="co">#&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      </span>
+<span class="co">#&gt; 1    0.691       0.95    0.465     0.922 Hedges' g  ncp        </span>
+<span class="co">#&gt;   conf.distribution expression</span>
+<span class="co">#&gt;   &lt;chr&gt;             &lt;list&gt;    </span>
+<span class="co">#&gt; 1 t                 &lt;language&gt;</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -281,16 +288,16 @@
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   type <span class="op">=</span> <span class="st">"np"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 13</span>
+<span class="co">#&gt; # A tibble: 1 x 14</span>
 <span class="co">#&gt;   parameter1 parameter2 statistic      p.value method                   </span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;        &lt;dbl&gt; &lt;chr&gt;                    </span>
 <span class="co">#&gt; 1 desire     condition       7.72 0.0000000241 Wilcoxon signed rank test</span>
-<span class="co">#&gt;   estimate conf.level conf.low conf.high effectsize        conf.method</span>
-<span class="co">#&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;      </span>
-<span class="co">#&gt; 1    0.761       0.95    0.600     0.874 r (rank biserial) bootstrap  </span>
-<span class="co">#&gt;   conf.iterations expression</span>
-<span class="co">#&gt;             &lt;int&gt; &lt;list&gt;    </span>
-<span class="co">#&gt; 1             100 &lt;language&gt;</span>
+<span class="co">#&gt;   alternative estimate conf.level conf.low conf.high effectsize       </span>
+<span class="co">#&gt;   &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;            </span>
+<span class="co">#&gt; 1 two.sided      0.761       0.95    0.600     0.874 r (rank biserial)</span>
+<span class="co">#&gt;   conf.method conf.iterations expression</span>
+<span class="co">#&gt;   &lt;chr&gt;                 &lt;int&gt; &lt;list&gt;    </span>
+<span class="co">#&gt; 1 bootstrap               100 &lt;language&gt;</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -327,15 +334,15 @@
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   type <span class="op">=</span> <span class="st">"bayes"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2 x 13</span>
+<span class="co">#&gt; # A tibble: 2 x 14</span>
 <span class="co">#&gt;   term       estimate conf.level conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Difference   -1.62        0.95   -2.12     -1.14      1               0</span>
-<span class="co">#&gt; 2 Cohens_d      0.680       0.95    0.449     0.901     1               0</span>
-<span class="co">#&gt;   prior.distribution prior.location prior.scale     bf10 method         </span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;          </span>
-<span class="co">#&gt; 1 cauchy                          0       0.707 4762370. Bayesian t-test</span>
-<span class="co">#&gt; 2 cauchy                          0       0.707 4762370. Bayesian t-test</span>
+<span class="co">#&gt; 2 Cohens_d      0.678       0.95    0.449     0.901     1               0</span>
+<span class="co">#&gt;   std.dev prior.distribution prior.location prior.scale     bf10 method         </span>
+<span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;          </span>
+<span class="co">#&gt; 1   0.250 cauchy                          0       0.707 4762370. Bayesian t-test</span>
+<span class="co">#&gt; 2  NA     cauchy                          0       0.707 4762370. Bayesian t-test</span>
 <span class="co">#&gt;   expression</span>
 <span class="co">#&gt;   &lt;list&gt;    </span>
 <span class="co">#&gt; 1 &lt;language&gt;</span>
@@ -360,16 +367,16 @@
   y <span class="op">=</span> <span class="va">len</span>,
   type <span class="op">=</span> <span class="st">"p"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 16</span>
+<span class="co">#&gt; # A tibble: 1 x 17</span>
 <span class="co">#&gt;   term  group mean.group1 mean.group2 statistic df.error p.value</span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 len   supp         20.7        17.0      1.92     55.3  0.0606</span>
-<span class="co">#&gt;   method                  estimate conf.level conf.low conf.high effectsize</span>
-<span class="co">#&gt;   &lt;chr&gt;                      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     </span>
-<span class="co">#&gt; 1 Welch Two Sample t-test    0.488       0.95  -0.0217     0.993 Hedges' g </span>
-<span class="co">#&gt;   conf.method conf.distribution expression</span>
-<span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;             &lt;list&gt;    </span>
-<span class="co">#&gt; 1 ncp         t                 &lt;language&gt;</span>
+<span class="co">#&gt;   method                  alternative estimate conf.level conf.low conf.high</span>
+<span class="co">#&gt;   &lt;chr&gt;                   &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Welch Two Sample t-test two.sided      0.488       0.95  -0.0217     0.993</span>
+<span class="co">#&gt;   effectsize conf.method conf.distribution expression</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;             &lt;list&gt;    </span>
+<span class="co">#&gt; 1 Hedges' g  ncp         t                 &lt;language&gt;</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
@@ -381,16 +388,16 @@
   var.equal <span class="op">=</span> <span class="cn">TRUE</span>,
   type <span class="op">=</span> <span class="st">"p"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 16</span>
+<span class="co">#&gt; # A tibble: 1 x 17</span>
 <span class="co">#&gt;   term  group mean.group1 mean.group2 statistic df.error p.value</span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 len   supp         20.7        17.0      1.92       58  0.0604</span>
-<span class="co">#&gt;   method            estimate conf.level conf.low conf.high effectsize</span>
-<span class="co">#&gt;   &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     </span>
-<span class="co">#&gt; 1 Two Sample t-test    0.488       0.95  -0.0217     0.993 Hedges' g </span>
-<span class="co">#&gt;   conf.method conf.distribution expression</span>
-<span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;             &lt;list&gt;    </span>
-<span class="co">#&gt; 1 ncp         t                 &lt;language&gt;</span>
+<span class="co">#&gt;   method            alternative estimate conf.level conf.low conf.high</span>
+<span class="co">#&gt;   &lt;chr&gt;             &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Two Sample t-test two.sided      0.488       0.95  -0.0217     0.993</span>
+<span class="co">#&gt;   effectsize conf.method conf.distribution expression</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;             &lt;list&gt;    </span>
+<span class="co">#&gt; 1 Hedges' g  ncp         t                 &lt;language&gt;</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -402,16 +409,16 @@
   y <span class="op">=</span> <span class="va">len</span>,
   type <span class="op">=</span> <span class="st">"np"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 13</span>
-<span class="co">#&gt;   parameter1 parameter2 statistic p.value method                 estimate</span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 len        supp            6.36  0.0645 Wilcoxon rank sum test    0.279</span>
-<span class="co">#&gt;   conf.level conf.low conf.high effectsize        conf.method conf.iterations</span>
-<span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;                 &lt;int&gt;</span>
-<span class="co">#&gt; 1       0.95  -0.0124     0.561 r (rank biserial) bootstrap               100</span>
-<span class="co">#&gt;   expression</span>
-<span class="co">#&gt;   &lt;list&gt;    </span>
-<span class="co">#&gt; 1 &lt;language&gt;</span>
+<span class="co">#&gt; # A tibble: 1 x 14</span>
+<span class="co">#&gt;   parameter1 parameter2 statistic p.value method                 alternative</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                  &lt;chr&gt;      </span>
+<span class="co">#&gt; 1 len        supp            6.36  0.0645 Wilcoxon rank sum test two.sided  </span>
+<span class="co">#&gt;   estimate conf.level conf.low conf.high effectsize        conf.method</span>
+<span class="co">#&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;      </span>
+<span class="co">#&gt; 1    0.279       0.95  -0.0124     0.561 r (rank biserial) bootstrap  </span>
+<span class="co">#&gt;   conf.iterations expression</span>
+<span class="co">#&gt;             &lt;int&gt; &lt;list&gt;    </span>
+<span class="co">#&gt; 1             100 &lt;language&gt;</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -447,15 +454,19 @@
   y <span class="op">=</span> <span class="va">len</span>,
   type <span class="op">=</span> <span class="st">"bayes"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2 x 13</span>
+<span class="co">#&gt; # A tibble: 2 x 14</span>
 <span class="co">#&gt;   term       estimate conf.level conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Difference   -3.16        0.95  -6.66       0.528 0.960          0.0424</span>
-<span class="co">#&gt; 2 Cohens_d      0.416       0.95  -0.0277     0.921 0.964          0.0494</span>
-<span class="co">#&gt;   prior.distribution prior.location prior.scale  bf10 method          expression</span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           &lt;list&gt;    </span>
-<span class="co">#&gt; 1 cauchy                          0       0.707  1.20 Bayesian t-test &lt;language&gt;</span>
-<span class="co">#&gt; 2 cauchy                          0       0.707  1.20 Bayesian t-test &lt;language&gt;</span></code></pre></div>
+<span class="co">#&gt; 1 Difference   -3.19        0.95  -6.66       0.528 0.960          0.0424</span>
+<span class="co">#&gt; 2 Cohens_d      0.423       0.95  -0.0277     0.921 0.964          0.0494</span>
+<span class="co">#&gt;   std.dev prior.distribution prior.location prior.scale  bf10 method         </span>
+<span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;          </span>
+<span class="co">#&gt; 1    1.85 cauchy                          0       0.707  1.20 Bayesian t-test</span>
+<span class="co">#&gt; 2   NA    cauchy                          0       0.707  1.20 Bayesian t-test</span>
+<span class="co">#&gt;   expression</span>
+<span class="co">#&gt;   &lt;list&gt;    </span>
+<span class="co">#&gt; 1 &lt;language&gt;</span>
+<span class="co">#&gt; 2 &lt;language&gt;</span></code></pre></div>
 </div>
 </div>
 <div id="one-way-anovas" class="section level1">
@@ -659,15 +670,15 @@
   y <span class="op">=</span> <span class="va">Sepal.Length</span>,
   type <span class="op">=</span> <span class="st">"bayes"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 19</span>
-<span class="co">#&gt;   term               estimate conf.level conf.low conf.high    pd</span>
-<span class="co">#&gt;   &lt;chr&gt;                 &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 mu                   5.84         0.95   5.76       5.93  1    </span>
-<span class="co">#&gt; 2 Species-setosa      -0.829        0.95  -0.947     -0.713 1    </span>
-<span class="co">#&gt; 3 Species-versicolor   0.0916       0.95  -0.0275     0.208 0.936</span>
-<span class="co">#&gt; 4 Species-virginica    0.737        0.95   0.618      0.852 1    </span>
-<span class="co">#&gt; 5 sig2                 0.267        0.95   0.210      0.335 1    </span>
-<span class="co">#&gt; 6 g_Species            2.15         0.95   0.188     15.0   1    </span>
+<span class="co">#&gt; # A tibble: 6 x 20</span>
+<span class="co">#&gt;   term               estimate std.dev...3 conf.level conf.low conf.high    pd</span>
+<span class="co">#&gt;   &lt;chr&gt;                 &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 mu                   5.84        0.0430       0.95   5.76       5.93  1    </span>
+<span class="co">#&gt; 2 Species-setosa      -0.828       0.0598       0.95  -0.947     -0.713 1    </span>
+<span class="co">#&gt; 3 Species-versicolor   0.0915      0.0601       0.95  -0.0275     0.208 0.936</span>
+<span class="co">#&gt; 4 Species-virginica    0.737       0.0600       0.95   0.618      0.852 1    </span>
+<span class="co">#&gt; 5 sig2                 0.270       0.0324       0.95   0.210      0.335 1    </span>
+<span class="co">#&gt; 6 g_Species            5.74       63.9          0.95   0.188     15.0   1    </span>
 <span class="co">#&gt;   rope.percentage prior.distribution prior.location prior.scale component  </span>
 <span class="co">#&gt;             &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;      </span>
 <span class="co">#&gt; 1           0     cauchy                          0       0.707 extra      </span>
@@ -676,14 +687,14 @@
 <span class="co">#&gt; 4           0     cauchy                          0       0.707 conditional</span>
 <span class="co">#&gt; 5           0     cauchy                          0       0.707 extra      </span>
 <span class="co">#&gt; 6           0     cauchy                          0       0.707 extra      </span>
-<span class="co">#&gt;      bf10 method                             r2 std.dev r2.conf.level</span>
-<span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt;                           &lt;dbl&gt;   &lt;dbl&gt;         &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 1.87e28 Bayes factors for linear models 0.612  0.0311          0.95</span>
-<span class="co">#&gt; 2 1.87e28 Bayes factors for linear models 0.612  0.0311          0.95</span>
-<span class="co">#&gt; 3 1.87e28 Bayes factors for linear models 0.612  0.0311          0.95</span>
-<span class="co">#&gt; 4 1.87e28 Bayes factors for linear models 0.612  0.0311          0.95</span>
-<span class="co">#&gt; 5 1.87e28 Bayes factors for linear models 0.612  0.0311          0.95</span>
-<span class="co">#&gt; 6 1.87e28 Bayes factors for linear models 0.612  0.0311          0.95</span>
+<span class="co">#&gt;      bf10 method                             r2 std.dev...16 r2.conf.level</span>
+<span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt;                           &lt;dbl&gt;        &lt;dbl&gt;         &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 1.87e28 Bayes factors for linear models 0.612       0.0311          0.95</span>
+<span class="co">#&gt; 2 1.87e28 Bayes factors for linear models 0.612       0.0311          0.95</span>
+<span class="co">#&gt; 3 1.87e28 Bayes factors for linear models 0.612       0.0311          0.95</span>
+<span class="co">#&gt; 4 1.87e28 Bayes factors for linear models 0.612       0.0311          0.95</span>
+<span class="co">#&gt; 5 1.87e28 Bayes factors for linear models 0.612       0.0311          0.95</span>
+<span class="co">#&gt; 6 1.87e28 Bayes factors for linear models 0.612       0.0311          0.95</span>
 <span class="co">#&gt;   r2.conf.low r2.conf.high expression</span>
 <span class="co">#&gt;         &lt;dbl&gt;        &lt;dbl&gt; &lt;list&gt;    </span>
 <span class="co">#&gt; 1       0.544        0.667 &lt;language&gt;</span>
@@ -790,17 +801,17 @@
   paired <span class="op">=</span> <span class="cn">FALSE</span>,
   type <span class="op">=</span> <span class="st">"bayes"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 8 x 13</span>
-<span class="co">#&gt;   term      estimate conf.level conf.low conf.high    pd rope.percentage</span>
-<span class="co">#&gt;   &lt;chr&gt;        &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 cell[1,1]    3.15        0.95    0.692     6.55      1               0</span>
-<span class="co">#&gt; 2 cell[2,1]    7.47        0.95    3.34     11.7       1               0</span>
-<span class="co">#&gt; 3 cell[1,2]    3.96        0.95    1.20      7.70      1               0</span>
-<span class="co">#&gt; 4 cell[2,2]    3.18        0.95    0.778     6.51      1               0</span>
-<span class="co">#&gt; 5 cell[1,3]   10.8         0.95    6.56     15.9       1               0</span>
-<span class="co">#&gt; 6 cell[2,3]    2.27        0.95    0.332     5.31      1               0</span>
-<span class="co">#&gt; 7 Ratio       NA          NA      NA        NA        NA              NA</span>
-<span class="co">#&gt; 8 Cramers_v    0.478       0.95    0.221     0.725     1               0</span>
+<span class="co">#&gt; # A tibble: 8 x 14</span>
+<span class="co">#&gt;   term      estimate conf.level conf.low conf.high    pd rope.percentage std.dev</span>
+<span class="co">#&gt;   &lt;chr&gt;        &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 cell[1,1]    3.38        0.95    0.692     6.55      1               0    1.60</span>
+<span class="co">#&gt; 2 cell[2,1]    7.60        0.95    3.34     11.7       1               0    2.18</span>
+<span class="co">#&gt; 3 cell[1,2]    4.16        0.95    1.20      7.70      1               0    1.75</span>
+<span class="co">#&gt; 4 cell[2,2]    3.39        0.95    0.778     6.51      1               0    1.57</span>
+<span class="co">#&gt; 5 cell[1,3]   11.0         0.95    6.56     15.9       1               0    2.41</span>
+<span class="co">#&gt; 6 cell[2,3]    2.50        0.95    0.332     5.31      1               0    1.40</span>
+<span class="co">#&gt; 7 Ratio       NA          NA      NA        NA        NA              NA   NA   </span>
+<span class="co">#&gt; 8 Cramers_v    0.472       0.95    0.221     0.725     1               0   NA   </span>
 <span class="co">#&gt;   prior.distribution      prior.location prior.scale  bf10</span>
 <span class="co">#&gt;   &lt;chr&gt;                            &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 independent multinomial              0           1  16.8</span>
@@ -910,10 +921,10 @@
   y <span class="op">=</span> <span class="va">mpg</span>,
   type <span class="op">=</span> <span class="st">"bayes"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 16</span>
-<span class="co">#&gt;   parameter1 parameter2 estimate conf.level conf.low conf.high    pd</span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 wt         mpg          -0.843       0.95   -0.919    -0.759     1</span>
+<span class="co">#&gt; # A tibble: 1 x 17</span>
+<span class="co">#&gt;   parameter1 parameter2 estimate conf.level conf.low conf.high std.dev    pd</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 wt         mpg          -0.836       0.95   -0.919    -0.759  0.0539     1</span>
 <span class="co">#&gt;   rope.percentage      bf10 prior.distribution prior.location prior.scale</span>
 <span class="co">#&gt;             &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;</span>
 <span class="co">#&gt; 1               0 56223033. beta                         1.41        1.41</span>

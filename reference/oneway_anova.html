@@ -466,43 +466,45 @@ download it by running:
   y <span class='op'>=</span> <span class='va'>sleep_rem</span>,
   type <span class='op'>=</span> <span class='st'>"bayes"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 7 x 19</span><span>
-#&gt;   </span><span style='font-weight: bold;'>term</span><span>         </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>    </span><span style='font-weight: bold;'>pd</span><span> </span><span style='font-weight: bold;'>rope.percentage</span><span>
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> mu             2.18         0.95   1.77       2.58  1              0     
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> vore-carni     0.083</span><span style='text-decoration: underline;'>6</span><span>       0.95  -</span><span style='color: #BB0000;'>0.554</span><span>      0.688 0.602          0.349 
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> vore-herbi    -</span><span style='color: #BB0000;'>0.738</span><span>        0.95  -</span><span style='color: #BB0000;'>1.27</span><span>      -</span><span style='color: #BB0000;'>0.219</span><span> 0.998          0     
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> vore-insecti   0.845        0.95  -</span><span style='color: #BB0000;'>0.047</span><span style='color: #BB0000;text-decoration: underline;'>6</span><span>     1.77  0.975          0.023</span><span style='text-decoration: underline;'>9</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> vore-omni     -</span><span style='color: #BB0000;'>0.196</span><span>        0.95  -</span><span style='color: #BB0000;'>0.739</span><span>      0.322 0.758          0.337 
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> sig2           1.55         0.95   1.05       2.26  1              0     
-#&gt; </span><span style='color: #BCBCBC;'>7</span><span> g_vore         0.456        0.95   0.044</span><span style='text-decoration: underline;'>1</span><span>     2.61  1              0.080</span><span style='text-decoration: underline;'>6</span><span>
-#&gt;   </span><span style='font-weight: bold;'>prior.distribution</span><span> </span><span style='font-weight: bold;'>prior.location</span><span> </span><span style='font-weight: bold;'>prior.scale</span><span> </span><span style='font-weight: bold;'>component</span><span>    </span><span style='font-weight: bold;'>bf10</span><span>
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> cauchy                          0       0.707 extra        3.41
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> cauchy                          0       0.707 conditional  3.41
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> cauchy                          0       0.707 conditional  3.41
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> cauchy                          0       0.707 conditional  3.41
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> cauchy                          0       0.707 conditional  3.41
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> cauchy                          0       0.707 extra        3.41
-#&gt; </span><span style='color: #BCBCBC;'>7</span><span> cauchy                          0       0.707 extra        3.41
-#&gt;   </span><span style='font-weight: bold;'>method</span><span>                             </span><span style='font-weight: bold;'>r2</span><span> </span><span style='font-weight: bold;'>std.dev</span><span> </span><span style='font-weight: bold;'>r2.conf.level</span><span> </span><span style='font-weight: bold;'>r2.conf.low</span><span>
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Bayes factors for linear models 0.111   0.111          0.95           0
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Bayes factors for linear models 0.111   0.111          0.95           0
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Bayes factors for linear models 0.111   0.111          0.95           0
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Bayes factors for linear models 0.111   0.111          0.95           0
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> Bayes factors for linear models 0.111   0.111          0.95           0
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> Bayes factors for linear models 0.111   0.111          0.95           0
-#&gt; </span><span style='color: #BCBCBC;'>7</span><span> Bayes factors for linear models 0.111   0.111          0.95           0
-#&gt;   </span><span style='font-weight: bold;'>r2.conf.high</span><span> </span><span style='font-weight: bold;'>expression</span><span>
-#&gt;          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>        0.271 </span><span style='color: #949494;'>&lt;language&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span>        0.271 </span><span style='color: #949494;'>&lt;language&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span>        0.271 </span><span style='color: #949494;'>&lt;language&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span>        0.271 </span><span style='color: #949494;'>&lt;language&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span>        0.271 </span><span style='color: #949494;'>&lt;language&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span>        0.271 </span><span style='color: #949494;'>&lt;language&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>7</span><span>        0.271 </span><span style='color: #949494;'>&lt;language&gt;</span><span></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='message'>New names:</span>
+#&gt; <span class='message'>* std.dev -&gt; std.dev...3</span>
+#&gt; <span class='message'>* std.dev -&gt; std.dev...16</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 7 x 20</span><span>
+#&gt;   </span><span style='font-weight: bold;'>term</span><span>         </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>std.dev...3</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>    </span><span style='font-weight: bold;'>pd</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> mu             2.18         0.207       0.95   1.77       2.58  1    
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> vore-carni     0.079</span><span style='text-decoration: underline;'>1</span><span>       0.319       0.95  -</span><span style='color: #BB0000;'>0.554</span><span>      0.688 0.602
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> vore-herbi    -</span><span style='color: #BB0000;'>0.737</span><span>        0.274       0.95  -</span><span style='color: #BB0000;'>1.27</span><span>      -</span><span style='color: #BB0000;'>0.219</span><span> 0.998
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> vore-insecti   0.856        0.465       0.95  -</span><span style='color: #BB0000;'>0.047</span><span style='color: #BB0000;text-decoration: underline;'>6</span><span>     1.77  0.975
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> vore-omni     -</span><span style='color: #BB0000;'>0.198</span><span>        0.275       0.95  -</span><span style='color: #BB0000;'>0.739</span><span>      0.322 0.758
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span> sig2           1.59         0.324       0.95   1.05       2.26  1    
+#&gt; </span><span style='color: #BCBCBC;'>7</span><span> g_vore         0.860        1.89        0.95   0.044</span><span style='text-decoration: underline;'>1</span><span>     2.61  1    
+#&gt;   </span><span style='font-weight: bold;'>rope.percentage</span><span> </span><span style='font-weight: bold;'>prior.distribution</span><span> </span><span style='font-weight: bold;'>prior.location</span><span> </span><span style='font-weight: bold;'>prior.scale</span><span> </span><span style='font-weight: bold;'>component</span><span>  
+#&gt;             </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>          0      cauchy                          0       0.707 extra      
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>          0.349  cauchy                          0       0.707 conditional
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span>          0      cauchy                          0       0.707 conditional
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span>          0.023</span><span style='text-decoration: underline;'>9</span><span> cauchy                          0       0.707 conditional
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span>          0.337  cauchy                          0       0.707 conditional
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span>          0      cauchy                          0       0.707 extra      
+#&gt; </span><span style='color: #BCBCBC;'>7</span><span>          0.080</span><span style='text-decoration: underline;'>6</span><span> cauchy                          0       0.707 extra      
+#&gt;    </span><span style='font-weight: bold;'>bf10</span><span> </span><span style='font-weight: bold;'>method</span><span>                             </span><span style='font-weight: bold;'>r2</span><span> </span><span style='font-weight: bold;'>std.dev...16</span><span> </span><span style='font-weight: bold;'>r2.conf.level</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>  3.41 Bayes factors for linear models 0.111        0.111          0.95
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>  3.41 Bayes factors for linear models 0.111        0.111          0.95
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span>  3.41 Bayes factors for linear models 0.111        0.111          0.95
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span>  3.41 Bayes factors for linear models 0.111        0.111          0.95
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span>  3.41 Bayes factors for linear models 0.111        0.111          0.95
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span>  3.41 Bayes factors for linear models 0.111        0.111          0.95
+#&gt; </span><span style='color: #BCBCBC;'>7</span><span>  3.41 Bayes factors for linear models 0.111        0.111          0.95
+#&gt;   </span><span style='font-weight: bold;'>r2.conf.low</span><span> </span><span style='font-weight: bold;'>r2.conf.high</span><span> </span><span style='font-weight: bold;'>expression</span><span>
+#&gt;         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>           0        0.271 </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>           0        0.271 </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span>           0        0.271 </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span>           0        0.271 </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span>           0        0.271 </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span>           0        0.271 </span><span style='color: #949494;'>&lt;language&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>7</span><span>           0        0.271 </span><span style='color: #949494;'>&lt;language&gt;</span><span></div><div class='input'>
 <span class='co'># within-subjects design</span>
 <span class='co'># needs `BayesFactor 0.9.12-4.3` or above</span>
 <span class='kw'>if</span> <span class='op'>(</span><span class='fu'>utils</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/utils/packageDescription.html'>packageVersion</a></span><span class='op'>(</span><span class='st'>"BayesFactor"</span><span class='op'>)</span> <span class='op'>&gt;=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric_version.html'>package_version</a></span><span class='op'>(</span><span class='st'>"0.9.12-4.3"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
