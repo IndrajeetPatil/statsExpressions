@@ -14,7 +14,7 @@ authors:
 affiliations:
   - name: Center for Humans and Machines, Max Planck Institute for Human Development, Berlin, Germany
     index: 1
-date: "2021-05-18"
+date: "2021-05-19"
 bibliography: paper.bib
 ---
 
@@ -24,7 +24,7 @@ bibliography: paper.bib
 
 The `statsExpressions` package has two key aims: to provide a consistent syntax
 to do statistical analysis with tidy data, and to provide statistical
-expressions (i.e., a pre-formatted in-text statistical result) for plotting
+expressions (i.e., pre-formatted in-text statistical results) for plotting
 functions. Currently, it supports common types of statistical approaches and
 tests: parametric, nonparametric, robust, and Bayesian *t*-test, one-way ANOVA,
 correlation analyses, contingency table analyses, and meta-analyses. The
@@ -37,19 +37,17 @@ expected input and output data type. For example, some functions expect vectors
 as inputs, while others expect dataframes. Depending on whether it is a repeated
 measures design or not, functions from the same package might expect data to be
 in wide or tidy format. Some functions can internally omit missing values, while
-other functions error in their presence. Furthermore, the statistical test
-objects returned by the test functions might not have all required information
-(e.g., degrees of freedom, significance, Bayes factor, etc.) accessible in a
-consistent data type. Depending on the specific test object and statistic in
-question, details may be returned as a list, a matrix, an array, or a dataframe.
-This diversity can make it difficult to easily access all needed information for
-hypothesis testing and estimation, and to switch from one statistical approach
-to another.
+others do not. Furthermore, the statistical test objects returned by the test
+functions might not have all required information (e.g., degrees of freedom,
+significance, Bayes factor, etc.) accessible in a consistent data type.
+Depending on the specific test object and statistic in question, details may be
+returned as a list, a matrix, an array, or a dataframe. This diversity can make
+it difficult to easily access all needed information for hypothesis testing and
+estimation, and to switch from one statistical approach to another.
 
 This is where `statsExpressions` comes in: It can be thought of as a unified
 portal through which most of the functionality in these underlying packages can
-be accessed, with a simpler interface and no requirement to change tidy data
-format.
+be accessed, with a simpler interface and with tidy data format.
 
 # Comparison to Other Packages
 
@@ -58,14 +56,13 @@ goal of `statsExpressions` is not to convert model objects into tidy dataframes,
 but to provide a consistent and easy syntax to carry out statistical tests.
 Additionally, none of these packages return statistical expressions.
 
-# Tidy Dataframes from Statistical Analysis
+# Consistent Syntax for Statistical Analysis
 
-The package offers six primary functions that let users choose a statistical
-approach without changing the syntax (i.e., by only specifying a single
-argument). The users are always expected to provide a dataframe in tidy format
-[@Wickham2019], and all functions work with missing data. Moreover, they always
-return a dataframe that can be further utilized downstream in the workflow (for
-a visualization, e.g.).
+The package offers functions that allow users choose a statistical approach
+without changing the syntax (i.e., by only specifying a single argument). The
+functions always require a dataframe in tidy format [@Wickham2019], and work
+with missing data. Moreover, they always return a dataframe that can be further
+utilized downstream in the workflow (such as visualization).
 
 Function | Parametric | Non-parametric | Robust | Bayesian
 ------------------ | ---- | ----- | ----| ----- 
@@ -77,9 +74,8 @@ Function | Parametric | Non-parametric | Robust | Bayesian
 `meta_analysis` | \checkmark | - | \checkmark | \checkmark
 
 : A summary table listing the primary functions in the package and the
-statistical approaches they support. For a more detailed description of the
-tests and outputs from these functions, the readers are encouraged to read
-vignettes on the package website: <https://indrajeetpatil.github.io/statsExpressions/articles/>.
+statistical approaches they support. More detailed description of the
+tests and outputs from these functions can be found on the package website: <https://indrajeetpatil.github.io/statsExpressions/articles/>.
 
 `statsExpressions` internally relies on `stats` package for parametric and
 non-parametric [@base2021], `WRS2` package for robust [@Mair2020], and
@@ -91,6 +87,8 @@ Additionally, it relies on `easystats` packages [@Ben-Shachar2020;
 @Lüdecke2020performance; @Lüdecke2019; @Makowski2019; @Makowski2020] to compute
 appropriate effect size/posterior estimates and their confidence/credible
 intervals.
+
+# Tidy Dataframes from Statistical Analysis
 
 To illustrate the simplicity of this syntax, let's say we want to run a one-way
 ANOVA. If we first run a non-parametric ANOVA and then decide to run a robust
