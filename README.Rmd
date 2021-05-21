@@ -24,6 +24,8 @@ knitr::opts_chunk$set(
   message = FALSE,
   fig.path = "man/figures/README-"
 )
+
+library(statsExpressions)
 ```
 
 # `statsExpressions`: Tidy dataframes and expressions with statistical details
@@ -44,20 +46,6 @@ The `statsExpressions` package has two key aims:
 - to provide a consistent syntax to do statistical analysis with tidy data (in pipe-friendly manner),
 - to provide statistical expressions (pre-formatted in-text statistical
 results) for plotting functions.
-
-Currently, it can be used to-
-
-Carry out statistical tests from different statistical approaches: <br>
-✅ parametric  <br>
-✅ non-parametric <br>
-✅ robust  <br>
-✅ Bayesian 
-
-Simultaneously get details from both: <br>
-🧪 hypothesis-testing <br>
-🧮 estimation
-
-# Statement of Need
 
 Statistical packages exhibit substantial diversity in terms of their syntax and
 expected input type. This can make it difficult to switch from one statistical
@@ -92,17 +80,27 @@ The package can be cited as:
 citation("statsExpressions")
 ```
 
-# Documentation and Examples
-
-To see the documentation relevant for the **development** version of the package,
-see the dedicated website for `statsExpressions`, which is updated after every new
-commit: <https://indrajeetpatil.github.io/statsExpressions/>.
-
 # Summary of types of statistical analyses
 
-Currently, it supports only the most common types of statistical tests.
-Specifically, **parametric**, **non-parametric**, **robust**, and **bayesian**
-versions of:
+---
+
+The `statsExpressions` package can be used to-
+
+Carry out statistical tests from different statistical approaches: <br>
+
+✅ parametric  <br>
+✅ non-parametric <br>
+✅ robust  <br>
+✅ Bayesian 
+
+Simultaneously get details from both: <br>
+
+🧪 hypothesis-testing <br>
+🧮 estimation
+
+---
+
+Here is a tabular summary of available tests:
 
 Test | Function | Lifecycle
 ------------------ | -------- | ----- 
@@ -136,62 +134,23 @@ correlation | ✅ | ✅
 (one/two-way) contingency table | ✅ | ✅
 random-effects meta-analysis | ✅ | ✅
 
-# Statistical reporting
+# Tidy Dataframes from Statistical Analysis
 
-For **all** statistical test expressions, the default template attempt to follow
-the gold standard for statistical reporting.
-
-For example, here are results from Welch's *t*-test:
-
-<img src="man/figures/stats_reporting_format.png" align="center" />
-
-# Summary of statistical tests and effect sizes
-
-Here is a summary table of all the statistical tests currently supported across
-various functions:
-<https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html>
-
-# Tidy dataframes
-
-The dataframe will contain the following columns (the exact columns will depend
-on the test and the statistical approach):
-
-  - `statistic`: the numeric value of a statistic.
-
-  - `df`: the numeric value of a parameter being modeled (often degrees
-    of freedom for the test); note that if `no.parameters = 0L` (e.g., for
-    non-parametric tests), this column will be irrelevant.
-
-  - `df.error` and `df`: relevant only if the statistic in question has
-    two degrees of freedom (e.g., anova).
-
-  - `p.value`: the two-sided *p*-value associated with the observed statistic.
-  
-  - `method`: the details of the statistical test carried out.
-
-  - `estimate`: estimated value of the effect size.
-
-  - `conf.low`: lower bound for the effect size estimate.
-
-  - `conf.high`: upper bound for the effect size estimate.
-  
-  - `conf.level`: width of the confidence interval.
-  
-  - `effectsize`: the type of the effect size.
-
-All possible outputs from all functions are tabulated here:
-<https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html>
-
-But here is one quick example:
+To illustrate the simplicity of this syntax, let's say we want to run a one-way
+ANOVA. If we first run a non-parametric ANOVA and then decide to run a robust
+ANOVA instead, the syntax remains the same and the statistical approach can be
+modified by changing a single argument:
 
 ```{r df}
-# setup
 library(statsExpressions)
-set.seed(123)
 
-# one-way ANOVA - parametric
-mtcars %>% oneway_anova(x = cyl, y = wt)
+mtcars %>% oneway_anova(cyl, wt, type = "nonparametric") 
+
+mtcars %>% oneway_anova(cyl, wt, type = "robust")
 ```
+
+All possible output dataframes from functions are tabulated here:
+<https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html>
 
 Needless to say this will also work with the `kable` function to generate a
 table:
@@ -229,10 +188,16 @@ mtcars %>%
 # Using expressions in custom plots
 
 Note that *expression* here means **a pre-formatted in-text statistical result**.
-
 In addition to other details contained in the dataframe, there is also a column
 titled `expression`, which contains expression with statistical details and can
 be displayed in a plot.
+
+For **all** statistical test expressions, the default template attempt to follow
+the gold standard for statistical reporting.
+
+For example, here are results from Welch's *t*-test:
+
+<img src="man/figures/stats_reporting_format.png" align="center" />
 
 ## Example: Expressions for one-way ANOVAs
 

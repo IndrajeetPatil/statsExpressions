@@ -21,16 +21,6 @@ The `statsExpressions` package has two key aims:
 -   to provide statistical expressions (pre-formatted in-text
     statistical results) for plotting functions.
 
-Currently, it can be used to-
-
-Carry out statistical tests from different statistical approaches: <br>
-✅ parametric <br> ✅ non-parametric <br> ✅ robust <br> ✅ Bayesian
-
-Simultaneously get details from both: <br> 🧪 hypothesis-testing <br> 🧮
-estimation
-
-# Statement of Need
-
 Statistical packages exhibit substantial diversity in terms of their
 syntax and expected input type. This can make it difficult to switch
 from one statistical approach to another. For example, some functions
@@ -86,18 +76,23 @@ A BibTeX entry for LaTeX users is
   }
 ```
 
-# Documentation and Examples
-
-To see the documentation relevant for the **development** version of the
-package, see the dedicated website for `statsExpressions`, which is
-updated after every new commit:
-<https://indrajeetpatil.github.io/statsExpressions/>.
-
 # Summary of types of statistical analyses
 
-Currently, it supports only the most common types of statistical tests.
-Specifically, **parametric**, **non-parametric**, **robust**, and
-**bayesian** versions of:
+------------------------------------------------------------------------
+
+The `statsExpressions` package can be used to-
+
+Carry out statistical tests from different statistical approaches: <br>
+
+✅ parametric <br> ✅ non-parametric <br> ✅ robust <br> ✅ Bayesian
+
+Simultaneously get details from both: <br>
+
+🧪 hypothesis-testing <br> 🧮 estimation
+
+------------------------------------------------------------------------
+
+Here is a tabular summary of available tests:
 
 | Test                       | Function            | Lifecycle                                                                                                                       |
 |----------------------------|---------------------|---------------------------------------------------------------------------------------------------------------------------------|
@@ -131,73 +126,43 @@ Summary of Bayesian analysis
 | (one/two-way) contingency table | ✅                  | ✅          |
 | random-effects meta-analysis    | ✅                  | ✅          |
 
-# Statistical reporting
+# Tidy Dataframes from Statistical Analysis
 
-For **all** statistical test expressions, the default template attempt
-to follow the gold standard for statistical reporting.
-
-For example, here are results from Welch’s *t*-test:
-
-<img src="man/figures/stats_reporting_format.png" align="center" />
-
-# Summary of statistical tests and effect sizes
-
-Here is a summary table of all the statistical tests currently supported
-across various functions:
-<https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html>
-
-# Tidy dataframes
-
-The dataframe will contain the following columns (the exact columns will
-depend on the test and the statistical approach):
-
--   `statistic`: the numeric value of a statistic.
-
--   `df`: the numeric value of a parameter being modeled (often degrees
-    of freedom for the test); note that if `no.parameters = 0L` (e.g.,
-    for non-parametric tests), this column will be irrelevant.
-
--   `df.error` and `df`: relevant only if the statistic in question has
-    two degrees of freedom (e.g., anova).
-
--   `p.value`: the two-sided *p*-value associated with the observed
-    statistic.
-
--   `method`: the details of the statistical test carried out.
-
--   `estimate`: estimated value of the effect size.
-
--   `conf.low`: lower bound for the effect size estimate.
-
--   `conf.high`: upper bound for the effect size estimate.
-
--   `conf.level`: width of the confidence interval.
-
--   `effectsize`: the type of the effect size.
-
-All possible outputs from all functions are tabulated here:
-<https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html>
-
-But here is one quick example:
+To illustrate the simplicity of this syntax, let’s say we want to run a
+one-way ANOVA. If we first run a non-parametric ANOVA and then decide to
+run a robust ANOVA instead, the syntax remains the same and the
+statistical approach can be modified by changing a single argument:
 
 ``` r
-# setup
 library(statsExpressions)
-set.seed(123)
 
-# one-way ANOVA - parametric
-mtcars %>% oneway_anova(x = cyl, y = wt)
-#> # A tibble: 1 x 13
-#>   statistic    df df.error   p.value
-#>       <dbl> <dbl>    <dbl>     <dbl>
-#> 1      20.2     2     19.0 0.0000196
-#>   method                                                   estimate conf.level
-#>   <chr>                                                       <dbl>      <dbl>
-#> 1 One-way analysis of means (not assuming equal variances)    0.637       0.95
-#>   conf.low conf.high effectsize conf.method conf.distribution expression
-#>      <dbl>     <dbl> <chr>      <chr>       <chr>             <list>    
-#> 1    0.309     0.785 Omega2     ncp         F                 <language>
+mtcars %>% oneway_anova(cyl, wt, type = "nonparametric") 
+#> # A tibble: 1 x 14
+#>   parameter1 parameter2 statistic df.error   p.value
+#>   <chr>      <chr>          <dbl>    <int>     <dbl>
+#> 1 wt         cyl             22.8        2 0.0000112
+#>   method                       estimate conf.level conf.low conf.high
+#>   <chr>                           <dbl>      <dbl>    <dbl>     <dbl>
+#> 1 Kruskal-Wallis rank sum test    0.736       0.95    0.671     0.831
+#>   effectsize      conf.method conf.iterations expression
+#>   <chr>           <chr>                 <int> <list>    
+#> 1 Epsilon2 (rank) bootstrap               100 <language>
+
+mtcars %>% oneway_anova(cyl, wt, type = "robust")
+#> # A tibble: 1 x 11
+#>   statistic    df df.error p.value estimate conf.level conf.low conf.high
+#>       <dbl> <dbl>    <dbl>   <dbl>    <dbl>      <dbl>    <dbl>     <dbl>
+#> 1      12.7     2     12.2 0.00102     1.04       0.95    0.807      1.75
+#>   effectsize                        
+#>   <chr>                             
+#> 1 Explanatory measure of effect size
+#>   method                                            expression
+#>   <chr>                                             <list>    
+#> 1 A heteroscedastic one-way ANOVA for trimmed means <language>
 ```
+
+All possible output dataframes from functions are tabulated here:
+<https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html>
 
 Needless to say this will also work with the `kable` function to
 generate a table:
@@ -250,11 +215,16 @@ mtcars %>%
 # Using expressions in custom plots
 
 Note that *expression* here means **a pre-formatted in-text statistical
-result**.
+result**. In addition to other details contained in the dataframe, there
+is also a column titled `expression`, which contains expression with
+statistical details and can be displayed in a plot.
 
-In addition to other details contained in the dataframe, there is also a
-column titled `expression`, which contains expression with statistical
-details and can be displayed in a plot.
+For **all** statistical test expressions, the default template attempt
+to follow the gold standard for statistical reporting.
+
+For example, here are results from Welch’s *t*-test:
+
+<img src="man/figures/stats_reporting_format.png" align="center" />
 
 ## Example: Expressions for one-way ANOVAs
 
