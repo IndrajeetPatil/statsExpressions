@@ -188,13 +188,6 @@
 <li>to provide a consistent syntax to do statistical analysis with tidy data (in pipe-friendly manner),</li>
 <li>to provide statistical expressions (pre-formatted in-text statistical results) for plotting functions.</li>
 </ul>
-<p>Currently, it can be used to-</p>
-<p>Carry out statistical tests from different statistical approaches: <br> ✅ parametric <br> ✅ non-parametric <br> ✅ robust <br> ✅ Bayesian</p>
-<p>Simultaneously get details from both: <br> 🧪 hypothesis-testing <br> 🧮 estimation</p>
-</div>
-<div id="statement-of-need" class="section level1">
-<h1 class="hasAnchor">
-<a href="#statement-of-need" class="anchor"></a>Statement of Need</h1>
 <p>Statistical packages exhibit substantial diversity in terms of their syntax and expected input type. This can make it difficult to switch from one statistical approach to another. For example, some functions expect vectors as inputs, while others expect dataframes. Depending on whether it is a repeated measures design or not, different functions might expect data to be in wide or long format. Some functions can internally omit missing values, while other functions error in their presence. Furthermore, if someone wishes to utilize the objects returned by these packages downstream in their workflow, this is not straightforward either because even functions from the same package can return a list, a matrix, an array, a dataframe, etc., depending on the function.</p>
 <p>This is where <code>statsExpressions</code> comes in: It can be thought of as a unified portal through which most of the functionality in these underlying packages can be accessed, with a simpler interface and no requirement to change data format.</p>
 <p>This package forms the statistical processing backend for <a href="https://indrajeetpatil.github.io/ggstatsplot/"><code>ggstatsplot</code></a> package.</p>
@@ -252,15 +245,17 @@
 <span id="cb1-19"><a href="#cb1-19"></a>    journal =<span class="st"> </span>{{Journal of Open Source Software}},</span>
 <span id="cb1-20"><a href="#cb1-20"></a>  }</span></code></pre></div>
 </div>
-<div id="documentation-and-examples" class="section level1">
-<h1 class="hasAnchor">
-<a href="#documentation-and-examples" class="anchor"></a>Documentation and Examples</h1>
-<p>To see the documentation relevant for the <strong>development</strong> version of the package, see the dedicated website for <code>statsExpressions</code>, which is updated after every new commit: <a href="https://indrajeetpatil.github.io/statsExpressions/" class="uri">https://indrajeetpatil.github.io/statsExpressions/</a>.</p>
-</div>
 <div id="summary-of-types-of-statistical-analyses" class="section level1">
 <h1 class="hasAnchor">
 <a href="#summary-of-types-of-statistical-analyses" class="anchor"></a>Summary of types of statistical analyses</h1>
-<p>Currently, it supports only the most common types of statistical tests. Specifically, <strong>parametric</strong>, <strong>non-parametric</strong>, <strong>robust</strong>, and <strong>bayesian</strong> versions of:</p>
+<hr>
+<p>The <code>statsExpressions</code> package can be used to-</p>
+<p>Carry out statistical tests from different statistical approaches: <br></p>
+<p>✅ parametric <br> ✅ non-parametric <br> ✅ robust <br> ✅ Bayesian</p>
+<p>Simultaneously get details from both: <br></p>
+<p>🧪 hypothesis-testing <br> 🧮 estimation</p>
+<hr>
+<p>Here is a tabular summary of available tests:</p>
 <table class="table">
 <thead><tr class="header">
 <th>Test</th>
@@ -397,53 +392,37 @@
 </tbody>
 </table>
 </div>
-<div id="statistical-reporting" class="section level1">
+<div id="tidy-dataframes-from-statistical-analysis" class="section level1">
 <h1 class="hasAnchor">
-<a href="#statistical-reporting" class="anchor"></a>Statistical reporting</h1>
-<p>For <strong>all</strong> statistical test expressions, the default template attempt to follow the gold standard for statistical reporting.</p>
-<p>For example, here are results from Welch’s <em>t</em>-test:</p>
-<p><img src="reference/figures/stats_reporting_format.png" align="center"></p>
-</div>
-<div id="summary-of-statistical-tests-and-effect-sizes" class="section level1">
-<h1 class="hasAnchor">
-<a href="#summary-of-statistical-tests-and-effect-sizes" class="anchor"></a>Summary of statistical tests and effect sizes</h1>
-<p>Here is a summary table of all the statistical tests currently supported across various functions: <a href="https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html</a></p>
-</div>
-<div id="tidy-dataframes" class="section level1">
-<h1 class="hasAnchor">
-<a href="#tidy-dataframes" class="anchor"></a>Tidy dataframes</h1>
-<p>The dataframe will contain the following columns (the exact columns will depend on the test and the statistical approach):</p>
-<ul>
-<li><p><code>statistic</code>: the numeric value of a statistic.</p></li>
-<li><p><code>df</code>: the numeric value of a parameter being modeled (often degrees of freedom for the test); note that if <code>no.parameters = 0L</code> (e.g., for non-parametric tests), this column will be irrelevant.</p></li>
-<li><p><code>df.error</code> and <code>df</code>: relevant only if the statistic in question has two degrees of freedom (e.g., anova).</p></li>
-<li><p><code>p.value</code>: the two-sided <em>p</em>-value associated with the observed statistic.</p></li>
-<li><p><code>method</code>: the details of the statistical test carried out.</p></li>
-<li><p><code>estimate</code>: estimated value of the effect size.</p></li>
-<li><p><code>conf.low</code>: lower bound for the effect size estimate.</p></li>
-<li><p><code>conf.high</code>: upper bound for the effect size estimate.</p></li>
-<li><p><code>conf.level</code>: width of the confidence interval.</p></li>
-<li><p><code>effectsize</code>: the type of the effect size.</p></li>
-</ul>
-<p>All possible outputs from all functions are tabulated here: <a href="https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html</a></p>
-<p>But here is one quick example:</p>
+<a href="#tidy-dataframes-from-statistical-analysis" class="anchor"></a>Tidy Dataframes from Statistical Analysis</h1>
+<p>To illustrate the simplicity of this syntax, let’s say we want to run a one-way ANOVA. If we first run a non-parametric ANOVA and then decide to run a robust ANOVA instead, the syntax remains the same and the statistical approach can be modified by changing a single argument:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># setup</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
 
-<span class="co"># one-way ANOVA - parametric</span>
-<span class="va">mtcars</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cyl</span>, y <span class="op">=</span> <span class="va">wt</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 13</span>
-<span class="co">#&gt;   statistic    df df.error   p.value</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      20.2     2     19.0 0.0000196</span>
-<span class="co">#&gt;   method                                                   estimate conf.level</span>
-<span class="co">#&gt;   &lt;chr&gt;                                                       &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 One-way analysis of means (not assuming equal variances)    0.637       0.95</span>
-<span class="co">#&gt;   conf.low conf.high effectsize conf.method conf.distribution expression</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;             &lt;list&gt;    </span>
-<span class="co">#&gt; 1    0.309     0.785 Omega2     ncp         F                 &lt;language&gt;</span></code></pre></div>
+<span class="va">mtcars</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span> 
+<span class="co">#&gt; # A tibble: 1 x 14</span>
+<span class="co">#&gt;   parameter1 parameter2 statistic df.error   p.value</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 wt         cyl             22.8        2 0.0000112</span>
+<span class="co">#&gt;   method                       estimate conf.level conf.low conf.high</span>
+<span class="co">#&gt;   &lt;chr&gt;                           &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Kruskal-Wallis rank sum test    0.736       0.95    0.671     0.831</span>
+<span class="co">#&gt;   effectsize      conf.method conf.iterations expression</span>
+<span class="co">#&gt;   &lt;chr&gt;           &lt;chr&gt;                 &lt;int&gt; &lt;list&gt;    </span>
+<span class="co">#&gt; 1 Epsilon2 (rank) bootstrap               100 &lt;language&gt;</span>
+
+<span class="va">mtcars</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 1 x 11</span>
+<span class="co">#&gt;   statistic    df df.error p.value estimate conf.level conf.low conf.high</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      12.7     2     12.2 0.00102     1.04       0.95    0.807      1.75</span>
+<span class="co">#&gt;   effectsize                        </span>
+<span class="co">#&gt;   &lt;chr&gt;                             </span>
+<span class="co">#&gt; 1 Explanatory measure of effect size</span>
+<span class="co">#&gt;   method                                            expression</span>
+<span class="co">#&gt;   &lt;chr&gt;                                             &lt;list&gt;    </span>
+<span class="co">#&gt; 1 A heteroscedastic one-way ANOVA for trimmed means &lt;language&gt;</span></code></pre></div>
+<p>All possible output dataframes from functions are tabulated here: <a href="https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html</a></p>
 <p>Needless to say this will also work with the <code>kable</code> function to generate a table:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
@@ -515,8 +494,10 @@
 <div id="using-expressions-in-custom-plots" class="section level1">
 <h1 class="hasAnchor">
 <a href="#using-expressions-in-custom-plots" class="anchor"></a>Using expressions in custom plots</h1>
-<p>Note that <em>expression</em> here means <strong>a pre-formatted in-text statistical result</strong>.</p>
-<p>In addition to other details contained in the dataframe, there is also a column titled <code>expression</code>, which contains expression with statistical details and can be displayed in a plot.</p>
+<p>Note that <em>expression</em> here means <strong>a pre-formatted in-text statistical result</strong>. In addition to other details contained in the dataframe, there is also a column titled <code>expression</code>, which contains expression with statistical details and can be displayed in a plot.</p>
+<p>For <strong>all</strong> statistical test expressions, the default template attempt to follow the gold standard for statistical reporting.</p>
+<p>For example, here are results from Welch’s <em>t</em>-test:</p>
+<p><img src="reference/figures/stats_reporting_format.png" align="center"></p>
 <div id="example-expressions-for-one-way-anovas" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example-expressions-for-one-way-anovas" class="anchor"></a>Example: Expressions for one-way ANOVAs</h2>
