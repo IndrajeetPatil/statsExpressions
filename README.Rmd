@@ -47,13 +47,13 @@ results) for plotting functions.
 
 Currently, it can be used to-
 
-1. Carry out statistical tests from different statistical approaches:
+Carry out statistical tests from different statistical approaches: <br>
 ✅ parametric  <br>
 ✅ non-parametric <br>
 ✅ robust  <br>
 ✅ Bayesian 
 
-2. Simultaneously get details from both:
+Simultaneously get details from both: <br>
 🧪 hypothesis-testing <br>
 🧮 estimation
 
@@ -76,15 +76,6 @@ be accessed, with a simpler interface and no requirement to change data format.
 
 This package forms the statistical processing backend for
 [`ggstatsplot`](https://indrajeetpatil.github.io/ggstatsplot/) package.
-
----
-
-**Please note that the API for the package has changed significantly in `1.0.0`**
-**release and will break any code that used prior versions of this package.**
-
-See: <https://indrajeetpatil.github.io/statsExpressions/news/index.html>
-
----
 
 # Installation
 
