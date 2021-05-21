@@ -12,6 +12,7 @@
 #' @inheritParams bf_extractor
 #' @inheritParams two_sample_test
 #' @inheritParams oneway_anova
+#' @inheritParams stats::t.test
 #'
 #' @description
 #'
@@ -94,6 +95,7 @@ one_sample_test <- function(data,
                             x,
                             type = "parametric",
                             test.value = 0,
+                            alternative = "two.sided",
                             k = 2L,
                             conf.level = 0.95,
                             tr = 0.2,
@@ -128,7 +130,7 @@ one_sample_test <- function(data,
   # preparing expression
   if (type %in% c("parametric", "nonparametric")) {
     # extracting test details
-    stats_df <- rlang::exec(.f, x = x_vec, mu = test.value) %>%
+    stats_df <- rlang::exec(.f, x = x_vec, mu = test.value, alternative = alternative) %>%
       tidy_model_parameters(.) %>%
       dplyr::select(-dplyr::matches("^est|^conf|^diff|^term|^ci"))
 

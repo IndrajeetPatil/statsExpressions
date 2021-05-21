@@ -3,16 +3,13 @@
     Code
       dplyr::select(df, -expression)
     Output
-      # A tibble: 1 x 13
-        parameter1 parameter2 statistic   p.value method                 alternative
-        <chr>      <chr>          <dbl>     <dbl> <chr>                  <chr>      
-      1 wt         am              5.44 0.0000435 Wilcoxon rank sum test two.sided  
-        estimate conf.level conf.low conf.high effectsize        conf.method
-           <dbl>      <dbl>    <dbl>     <dbl> <chr>             <chr>      
-      1    0.866        0.9    0.688         1 r (rank biserial) bootstrap  
-        conf.iterations
-                  <int>
-      1             100
+      # A tibble: 1 x 12
+        parameter1 parameter2 statistic   p.value method                 estimate
+        <chr>      <chr>          <dbl>     <dbl> <chr>                     <dbl>
+      1 wt         am              5.44 0.0000435 Wilcoxon rank sum test    0.866
+        conf.level conf.low conf.high effectsize        conf.method conf.iterations
+             <dbl>    <dbl>     <dbl> <chr>             <chr>                 <int>
+      1        0.9    0.688         1 r (rank biserial) bootstrap               100
 
 ---
 
@@ -29,16 +26,13 @@
     Code
       dplyr::select(df2, -expression)
     Output
-      # A tibble: 1 x 13
-        parameter1 parameter2 statistic p.value method                    alternative
-        <chr>      <chr>          <dbl>   <dbl> <chr>                     <chr>      
-      1 length     type            2.30 0.00295 Wilcoxon signed rank test two.sided  
-        estimate conf.level conf.low conf.high effectsize        conf.method
-           <dbl>      <dbl>    <dbl>     <dbl> <chr>             <chr>      
-      1   -0.853       0.99       -1    -0.596 r (rank biserial) bootstrap  
-        conf.iterations
-                  <int>
-      1             100
+      # A tibble: 1 x 12
+        parameter1 parameter2 statistic p.value method                    estimate
+        <chr>      <chr>          <dbl>   <dbl> <chr>                        <dbl>
+      1 length     type            2.30 0.00295 Wilcoxon signed rank test   -0.853
+        conf.level conf.low conf.high effectsize        conf.method conf.iterations
+             <dbl>    <dbl>     <dbl> <chr>             <chr>                 <int>
+      1       0.99       -1    -0.596 r (rank biserial) bootstrap               100
 
 ---
 

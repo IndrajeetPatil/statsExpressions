@@ -3,13 +3,13 @@
     Code
       dplyr::select(df1, -expression)
     Output
-      # A tibble: 1 x 13
-           mu statistic df.error p.value method            alternative estimate
-        <dbl>     <dbl>    <dbl>   <dbl> <chr>             <chr>          <dbl>
-      1   120     -2.67       78 0.00910 One Sample t-test two.sided     -0.298
-        conf.level conf.low conf.high effectsize conf.method conf.distribution
-             <dbl>    <dbl>     <dbl> <chr>      <chr>       <chr>            
-      1       0.95   -0.524   -0.0743 Hedges' g  ncp         t                
+      # A tibble: 1 x 12
+           mu statistic df.error p.value method            estimate conf.level
+        <dbl>     <dbl>    <dbl>   <dbl> <chr>                <dbl>      <dbl>
+      1   120     -2.67       78 0.00910 One Sample t-test   -0.298       0.95
+        conf.low conf.high effectsize conf.method conf.distribution
+           <dbl>     <dbl> <chr>      <chr>       <chr>            
+      1   -0.524   -0.0743 Hedges' g  ncp         t                
 
 ---
 
@@ -26,13 +26,13 @@
     Code
       dplyr::select(df2, -expression)
     Output
-      # A tibble: 1 x 13
-           mu statistic df.error p.value method            alternative estimate
-        <dbl>     <dbl>    <dbl>   <dbl> <chr>             <chr>          <dbl>
-      1   120     -2.67       78 0.00910 One Sample t-test two.sided     -0.301
-        conf.level conf.low conf.high effectsize conf.method conf.distribution
-             <dbl>    <dbl>     <dbl> <chr>      <chr>       <chr>            
-      1        0.9   -0.492    -0.111 Cohen's d  ncp         t                
+      # A tibble: 1 x 12
+           mu statistic df.error p.value method            estimate conf.level
+        <dbl>     <dbl>    <dbl>   <dbl> <chr>                <dbl>      <dbl>
+      1   120     -2.67       78 0.00910 One Sample t-test   -0.301        0.9
+        conf.low conf.high effectsize conf.method conf.distribution
+           <dbl>     <dbl> <chr>      <chr>       <chr>            
+      1   -0.492    -0.111 Cohen's d  ncp         t                
 
 ---
 
@@ -49,13 +49,13 @@
     Code
       dplyr::select(df1, -expression)
     Output
-      # A tibble: 1 x 11
-        statistic p.value method                    alternative estimate conf.level
-            <dbl>   <dbl> <chr>                     <chr>          <dbl>      <dbl>
-      1      6.62   0.323 Wilcoxon signed rank test two.sided     -0.149       0.95
-        conf.low conf.high effectsize        conf.method conf.iterations
-           <dbl>     <dbl> <chr>             <chr>                 <dbl>
-      1   -0.424    0.0888 r (rank biserial) bootstrap               200
+      # A tibble: 1 x 10
+        statistic p.value method                    estimate conf.level conf.low
+            <dbl>   <dbl> <chr>                        <dbl>      <dbl>    <dbl>
+      1      6.62   0.323 Wilcoxon signed rank test   -0.149       0.95   -0.424
+        conf.high effectsize        conf.method conf.iterations
+            <dbl> <chr>             <chr>                 <dbl>
+      1    0.0888 r (rank biserial) bootstrap               200
 
 ---
 
@@ -72,13 +72,13 @@
     Code
       dplyr::select(df2, -expression)
     Output
-      # A tibble: 1 x 11
-        statistic   p.value method                    alternative estimate conf.level
-            <dbl>     <dbl> <chr>                     <chr>          <dbl>      <dbl>
-      1      5.57 0.0000125 Wilcoxon signed rank test two.sided     -0.672       0.95
-        conf.low conf.high effectsize        conf.method conf.iterations
-           <dbl>     <dbl> <chr>             <chr>                 <dbl>
-      1   -0.911    -0.388 r (rank biserial) bootstrap               200
+      # A tibble: 1 x 10
+        statistic   p.value method                    estimate conf.level conf.low
+            <dbl>     <dbl> <chr>                        <dbl>      <dbl>    <dbl>
+      1      5.57 0.0000125 Wilcoxon signed rank test   -0.672       0.95   -0.911
+        conf.high effectsize        conf.method conf.iterations
+            <dbl> <chr>             <chr>                 <dbl>
+      1    -0.388 r (rank biserial) bootstrap               200
 
 ---
 
@@ -142,7 +142,7 @@
       subtitle$expression[[1]]
     Output
       paste("log"["e"] * "(BF"["01"] * ") = " * "-47.84" * ", ", widehat(italic(delta))["difference"]^"posterior" * 
-          " = " * "1.75" * ", ", "CI"["90%"]^"HDI" * " [" * "1.52" * 
+          " = " * "1.76" * ", ", "CI"["90%"]^"HDI" * " [" * "1.52" * 
           ", " * "1.99" * "], ", italic("r")["Cauchy"]^"JZS" * " = " * 
           "0.99")
 
@@ -152,7 +152,7 @@
       subtitle2$expression[[1]]
     Output
       paste("log"["e"] * "(BF"["01"] * ") = " * "2.125" * ", ", widehat(italic(delta))["difference"]^"posterior" * 
-          " = " * "-0.019" * ", ", "CI"["95%"]^"HDI" * " [" * "-0.265" * 
+          " = " * "-0.018" * ", ", "CI"["95%"]^"HDI" * " [" * "-0.265" * 
           ", " * "0.242" * "], ", italic("r")["Cauchy"]^"JZS" * " = " * 
           "0.900")
 

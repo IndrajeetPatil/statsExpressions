@@ -1,9 +1,14 @@
 bibentry(
   "Article",
-  title = "{statsExpressions}: {R} Package for Tidy Dataframes and Expressions with Statistical Details",
-  author = "Indrajeet Patil",
+  doi = "10.21105/joss.03236",
+  url = "https://doi.org/10.21105/joss.03236",
   year = 2021,
-  journal = "PsyArxiv",
-  doi = "10.31234/osf.io/ntbvy",
-  textVersion = "Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressions with Statistical Details. PsyArxiv. https://doi.org/10.31234/osf.io/ntbvy"
+  publisher = "{The Open Journal}",
+  volume = 6,
+  number = 61,
+  pages = 3236,
+  author = "{Indrajeet Patil}",
+  title = "{statsExpressions: {R} Package for Tidy Dataframes and Expressions with Statistical Details}",
+  journal = "{Journal of Open Source Software}",
+  textVersion = "Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressions with Statistical Details. Journal of Open Source Software, 6(61), 3236, https://doi.org/10.21105/joss.03236"
 )

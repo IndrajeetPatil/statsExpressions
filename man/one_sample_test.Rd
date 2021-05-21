@@ -9,6 +9,7 @@ one_sample_test(
   x,
   type = "parametric",
   test.value = 0,
+  alternative = "two.sided",
   k = 2L,
   conf.level = 0.95,
   tr = 0.2,
@@ -37,6 +38,11 @@ You can specify just the initial letter.}
 
 \item{test.value}{A number indicating the true value of the mean (Default:
 \code{0}).}
+
+\item{alternative}{a character string specifying the alternative
+    hypothesis, must be one of \code{"two.sided"} (default),
+    \code{"greater"} or \code{"less"}.  You can specify just the initial
+    letter.}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2L}).}
