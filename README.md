@@ -88,7 +88,7 @@ Carry out statistical tests from different statistical approaches: <br>
 
 Simultaneously get details from both: <br>
 
-🧪 hypothesis-testing <br> 🧮 estimation
+✅ hypothesis-testing <br> ✅ estimation
 
 ------------------------------------------------------------------------
 
@@ -143,7 +143,7 @@ mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
 #> 1 wt         cyl             22.8        2 0.0000112
 #>   method                       estimate conf.level conf.low conf.high
 #>   <chr>                           <dbl>      <dbl>    <dbl>     <dbl>
-#> 1 Kruskal-Wallis rank sum test    0.736       0.95    0.638     0.830
+#> 1 Kruskal-Wallis rank sum test    0.736       0.95    0.639     0.837
 #>   effectsize      conf.method conf.iterations expression
 #>   <chr>           <chr>                 <int> <list>    
 #> 1 Epsilon2 (rank) bootstrap               100 <language>
@@ -152,7 +152,7 @@ mtcars %>% oneway_anova(cyl, wt, type = "robust")
 #> # A tibble: 1 x 11
 #>   statistic    df df.error p.value estimate conf.level conf.low conf.high
 #>       <dbl> <dbl>    <dbl>   <dbl>    <dbl>      <dbl>    <dbl>     <dbl>
-#> 1      12.7     2     12.2 0.00102     1.02       0.95    0.834      1.57
+#> 1      12.7     2     12.2 0.00102     1.02       0.95    0.812      1.48
 #>   effectsize                        
 #>   <chr>                             
 #> 1 Explanatory measure of effect size

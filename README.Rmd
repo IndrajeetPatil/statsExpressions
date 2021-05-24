@@ -95,8 +95,8 @@ Carry out statistical tests from different statistical approaches: <br>
 
 Simultaneously get details from both: <br>
 
-🧪 hypothesis-testing <br>
-🧮 estimation
+✅ hypothesis-testing <br>
+✅ estimation
 
 ---
 
