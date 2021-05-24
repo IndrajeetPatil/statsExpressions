@@ -3,6 +3,7 @@ r:
   - release
   - oldrel
   - devel
+  - 3.6
 latex: true
 warnings_are_errors: TRUE
 
