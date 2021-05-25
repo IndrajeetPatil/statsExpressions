@@ -231,20 +231,20 @@ hypothesis; doing so will return wrong results.</p>
 
 <span class='co'># extracting Bayes Factors in a dataframe</span>
 <span class='fu'>bf_extractor</span><span class='op'>(</span><span class='va'>bf_obj</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 19</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 19</span>
 #&gt;   term              estimate conf.level conf.low conf.high    pd rope.percentage
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> mu                  5.84         0.95   5.76       5.93  1               0    
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Species-setosa     -</span><span style='color: #BB0000;'>0.828</span><span>        0.95  -</span><span style='color: #BB0000;'>0.941</span><span>     -</span><span style='color: #BB0000;'>0.706</span><span> 1               0    
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Species-versicol…   0.091</span><span style='text-decoration: underline;'>6</span><span>       0.95  -</span><span style='color: #BB0000;'>0.027</span><span style='color: #BB0000;text-decoration: underline;'>5</span><span>     0.208 0.936           0.434
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Species-virginica   0.737        0.95   0.617      0.850 1               0    
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> sig2                0.268        0.95   0.211      0.337 1               0    
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> g_Species           2.04         0.95   0.179     14.2   1               0    
-#&gt; </span><span style='color: #949494;'># … with 12 more variables: prior.distribution &lt;chr&gt;, prior.location &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   prior.scale &lt;dbl&gt;, component &lt;chr&gt;, bf10 &lt;dbl&gt;, method &lt;chr&gt;, r2 &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   std.dev &lt;dbl&gt;, r2.conf.level &lt;dbl&gt;, r2.conf.low &lt;dbl&gt;, r2.conf.high &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   expression &lt;list&gt;</span><span></div><div class='input'><span class='co'># }</span>
-</div></span></pre>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> mu                  5.84         0.95   5.76       5.93  1               0    
+#&gt; <span style='color: #BCBCBC;'>2</span> Species-setosa     -<span style='color: #BB0000;'>0.828</span>        0.95  -<span style='color: #BB0000;'>0.941</span>     -<span style='color: #BB0000;'>0.706</span> 1               0    
+#&gt; <span style='color: #BCBCBC;'>3</span> Species-versicol…   0.091<span style='text-decoration: underline;'>6</span>       0.95  -<span style='color: #BB0000;'>0.027</span><span style='color: #BB0000; text-decoration: underline;'>5</span>     0.208 0.936           0.434
+#&gt; <span style='color: #BCBCBC;'>4</span> Species-virginica   0.737        0.95   0.617      0.850 1               0    
+#&gt; <span style='color: #BCBCBC;'>5</span> sig2                0.268        0.95   0.211      0.337 1               0    
+#&gt; <span style='color: #BCBCBC;'>6</span> g_Species           2.04         0.95   0.179     14.2   1               0    
+#&gt; <span style='color: #949494;'># … with 12 more variables: prior.distribution &lt;chr&gt;, prior.location &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   prior.scale &lt;dbl&gt;, component &lt;chr&gt;, bf10 &lt;dbl&gt;, method &lt;chr&gt;, r2 &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   std.dev &lt;dbl&gt;, r2.conf.level &lt;dbl&gt;, r2.conf.low &lt;dbl&gt;, r2.conf.high &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   expression &lt;list&gt;</span></div><div class='input'><span class='co'># }</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
