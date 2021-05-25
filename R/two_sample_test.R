@@ -188,8 +188,7 @@ two_sample_test <- function(data,
       paired = paired,
       pooled_sd = FALSE,
       ci = conf.level,
-      verbose = FALSE,
-      iterations = nboot
+      verbose = FALSE
     ) %>%
       tidy_model_effectsize(.)
 

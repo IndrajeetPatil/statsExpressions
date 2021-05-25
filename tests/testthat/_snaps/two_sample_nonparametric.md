@@ -3,13 +3,13 @@
     Code
       dplyr::select(df, -expression)
     Output
-      # A tibble: 1 x 12
+      # A tibble: 1 x 11
         parameter1 parameter2 statistic   p.value method                 estimate
         <chr>      <chr>          <dbl>     <dbl> <chr>                     <dbl>
       1 wt         am              5.44 0.0000435 Wilcoxon rank sum test    0.866
-        conf.level conf.low conf.high effectsize        conf.method conf.iterations
-             <dbl>    <dbl>     <dbl> <chr>             <chr>                 <int>
-      1        0.9    0.688         1 r (rank biserial) bootstrap               100
+        conf.level conf.low conf.high effectsize        conf.method
+             <dbl>    <dbl>     <dbl> <chr>             <chr>      
+      1        0.9    0.749     0.931 r (rank biserial) normal     
 
 ---
 
@@ -18,7 +18,7 @@
     Output
       paste("log"["e"](italic("W")["Mann-Whitney"]), " = ", "5.440", 
           ", ", italic("p"), " = ", "4.35e-05", ", ", widehat(italic("r"))["biserial"]^"rank", 
-          " = ", "0.866", ", CI"["90%"], " [", "0.688", ", ", "1.000", 
+          " = ", "0.866", ", CI"["90%"], " [", "0.749", ", ", "0.931", 
           "], ", italic("n")["obs"], " = ", "32")
 
 # t_nonparametric works - within-subjects design
@@ -26,13 +26,13 @@
     Code
       dplyr::select(df2, -expression)
     Output
-      # A tibble: 1 x 12
+      # A tibble: 1 x 11
         parameter1 parameter2 statistic p.value method                    estimate
         <chr>      <chr>          <dbl>   <dbl> <chr>                        <dbl>
       1 length     type            2.30 0.00295 Wilcoxon signed rank test   -0.853
-        conf.level conf.low conf.high effectsize        conf.method conf.iterations
-             <dbl>    <dbl>     <dbl> <chr>             <chr>                 <int>
-      1       0.99       -1    -0.596 r (rank biserial) bootstrap               100
+        conf.level conf.low conf.high effectsize        conf.method
+             <dbl>    <dbl>     <dbl> <chr>             <chr>      
+      1       0.99   -0.964    -0.489 r (rank biserial) normal     
 
 ---
 
@@ -41,6 +41,6 @@
     Output
       paste("log"["e"](italic("V")["Wilcoxon"]), " = ", "2.30259", 
           ", ", italic("p"), " = ", "0.00295", ", ", widehat(italic("r"))["biserial"]^"rank", 
-          " = ", "-0.85294", ", CI"["99%"], " [", "-1.00000", ", ", 
-          "-0.59551", "], ", italic("n")["pairs"], " = ", "16")
+          " = ", "-0.85294", ", CI"["99%"], " [", "-0.96399", ", ", 
+          "-0.48865", "], ", italic("n")["pairs"], " = ", "16")
 

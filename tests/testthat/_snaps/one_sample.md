@@ -49,13 +49,13 @@
     Code
       dplyr::select(df1, -expression)
     Output
-      # A tibble: 1 x 10
+      # A tibble: 1 x 9
         statistic p.value method                    estimate conf.level conf.low
             <dbl>   <dbl> <chr>                        <dbl>      <dbl>    <dbl>
-      1      6.62   0.323 Wilcoxon signed rank test   -0.149       0.95   -0.424
-        conf.high effectsize        conf.method conf.iterations
-            <dbl> <chr>             <chr>                 <dbl>
-      1    0.0888 r (rank biserial) bootstrap               200
+      1      6.62   0.323 Wilcoxon signed rank test   -0.149       0.95   -0.416
+        conf.high effectsize        conf.method
+            <dbl> <chr>             <chr>      
+      1     0.143 r (rank biserial) normal     
 
 ---
 
@@ -64,7 +64,7 @@
     Output
       paste("log"["e"](italic("V")["Wilcoxon"]), " = ", "6.6247", ", ", 
           italic("p"), " = ", "0.3227", ", ", widehat(italic("r"))["biserial"]^"rank", 
-          " = ", "-0.1486", ", CI"["95%"], " [", "-0.4240", ", ", "0.0888", 
+          " = ", "-0.1486", ", CI"["95%"], " [", "-0.4162", ", ", "0.1427", 
           "], ", italic("n")["obs"], " = ", "60")
 
 ---
@@ -72,13 +72,13 @@
     Code
       dplyr::select(df2, -expression)
     Output
-      # A tibble: 1 x 10
+      # A tibble: 1 x 9
         statistic   p.value method                    estimate conf.level conf.low
             <dbl>     <dbl> <chr>                        <dbl>      <dbl>    <dbl>
-      1      5.57 0.0000125 Wilcoxon signed rank test   -0.672       0.95   -0.911
-        conf.high effectsize        conf.method conf.iterations
-            <dbl> <chr>             <chr>                 <dbl>
-      1    -0.388 r (rank biserial) bootstrap               200
+      1      5.57 0.0000125 Wilcoxon signed rank test   -0.672       0.95   -0.806
+        conf.high effectsize        conf.method
+            <dbl> <chr>             <chr>      
+      1    -0.472 r (rank biserial) normal     
 
 ---
 
@@ -87,7 +87,7 @@
     Output
       paste("log"["e"](italic("V")["Wilcoxon"]), " = ", "5.5683", ", ", 
           italic("p"), " = ", "1.253e-05", ", ", widehat(italic("r"))["biserial"]^"rank", 
-          " = ", "-0.6717", ", CI"["95%"], " [", "-0.9112", ", ", "-0.3884", 
+          " = ", "-0.6717", ", CI"["95%"], " [", "-0.8058", ", ", "-0.4720", 
           "], ", italic("n")["obs"], " = ", "56")
 
 # one_sample_test robust works
