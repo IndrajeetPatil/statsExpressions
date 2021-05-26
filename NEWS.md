@@ -1,8 +1,8 @@
-# statsExpressions 1.0.1.9000
+# statsExpressions 1.1.0
 
 MAJOR CHANGES
 
-  - There is a new _JOSS_ paper about `statsExpressions` package:
+  - There is a new _JOSS_ paper about `statsExpressions` package!!
     <https://joss.theoj.org/papers/10.21105/joss.03236>
 
   - The effect size for independent trimmed means two-sample test has been

@@ -1,8 +1,8 @@
 ## Test environments
 
-* local OS X install, R 4.0.3
+* local OS X install, R 4.0.5
 
-* ubuntu 14.04 (on travis-ci), R 4.0.3
+* ubuntu 14.04 (on github actions ci), R 4.0.5
 
 * win-builder (devel and release)
 
@@ -11,7 +11,6 @@
 0 errors | 0 warnings | 0 note
 
   - Fixes failing tests due to updates to `effectsize` packages.
-  - Fixes failing test in additional checks.
 
 ## revdepcheck results
 

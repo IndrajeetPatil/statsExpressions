@@ -124,16 +124,10 @@ expr_template <- function(data,
   # if expression text elements are `NULL`
   if (isTRUE(paired) && is.null(n.text)) n.text <- quote(italic("n")["pairs"])
   if (isFALSE(paired) && is.null(n.text)) n.text <- quote(italic("n")["obs"])
-  if (is.null(statistic.text)) statistic.text <- stat_text_switch(data$method[[1]])
-  if (is.null(effsize.text)) effsize.text <- estimate_type_switch(data$effectsize[[1]])
-  if (!"conf.level" %in% names(data)) data %<>% dplyr::mutate(conf.level = 0.95)
 
   # -------------------------- Bayesian analysis ------------------------------
 
   if (isTRUE(bayesian)) {
-    if (is.null(prior.distribution)) prior.distribution <- prior_switch(data$method[[1]])
-    if (is.null(prior.type)) prior.type <- prior_type_switch(data$method[[1]])
-
     # Bayesian expression
     expression <- substitute(
       atop(
@@ -147,15 +141,15 @@ expr_template <- function(data,
       ),
       env = list(
         top.text = top.text,
-        effsize.text = effsize.text,
-        prior.type = prior.type,
+        effsize.text = effsize.text %||% estimate_type_switch(data$effectsize[[1]]),
+        prior.type = prior.type %||% prior_type_switch(data$method[[1]]),
         conf.level = paste0(data$conf.level[[1]] * 100, "%"),
         conf.method = toupper(conf.method),
         bf = format_value(-log(data$bf10[[1]]), k),
         estimate = format_value(estimate, k),
         estimate.LB = format_value(estimate.LB, k),
         estimate.UB = format_value(estimate.UB, k),
-        prior.distribution = prior.distribution,
+        prior.distribution = prior.distribution %||% prior_switch(data$method[[1]]),
         bf.prior = format_value(data$prior.scale[[1]], k)
       )
     )
@@ -177,10 +171,10 @@ expr_template <- function(data,
         n.text, " = ", n
       ),
       env = list(
-        statistic.text = statistic.text,
+        statistic.text = statistic.text %||% stat_text_switch(data$method[[1]]),
         statistic = format_value(data$statistic[[1]], k),
         p.value = format_num(data$p.value[[1]], k, p.value = TRUE),
-        effsize.text = effsize.text,
+        effsize.text = effsize.text %||% estimate_type_switch(data$effectsize[[1]]),
         estimate = format_value(estimate, k),
         conf.level = paste0(data$conf.level[[1]] * 100, "%"),
         estimate.LB = format_value(estimate.LB, k),
@@ -206,11 +200,11 @@ expr_template <- function(data,
         n.text, " = ", n
       ),
       env = list(
-        statistic.text = statistic.text,
+        statistic.text = statistic.text %||% stat_text_switch(data$method[[1]]),
         statistic = format_value(data$statistic[[1]], k),
         parameter = format_value(data$df.error[[1]], k.df),
         p.value = format_num(data$p.value[[1]], k, p.value = TRUE),
-        effsize.text = effsize.text,
+        effsize.text = effsize.text %||% estimate_type_switch(data$effectsize[[1]]),
         estimate = format_value(estimate, k),
         conf.level = paste0(data$conf.level[[1]] * 100, "%"),
         estimate.LB = format_value(estimate.LB, k),
@@ -234,12 +228,12 @@ expr_template <- function(data,
         n.text, " = ", n
       ),
       env = list(
-        statistic.text = statistic.text,
+        statistic.text = statistic.text %||% stat_text_switch(data$method[[1]]),
         statistic = format_value(data$statistic[[1]], k),
         parameter1 = format_value(data$df[[1]], k.df),
         parameter2 = format_value(data$df.error[[1]], k.df.error),
         p.value = format_num(data$p.value[[1]], k, p.value = TRUE),
-        effsize.text = effsize.text,
+        effsize.text = effsize.text %||% estimate_type_switch(data$effectsize[[1]]),
         estimate = format_value(estimate, k),
         conf.level = paste0(data$conf.level[[1]] * 100, "%"),
         estimate.LB = format_value(estimate.LB, k),

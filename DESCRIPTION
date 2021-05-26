@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Tidy Dataframes and Expressions with Statistical Details
-Version: 1.0.1.9000
+Version: 1.1.0
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -28,7 +28,7 @@ Imports:
     BayesFactor (>= 0.9.12-4.2),
     correlation (>= 0.6.1),
     dplyr,
-    effectsize (>= 0.4.4-2),
+    effectsize (>= 0.4.5),
     insight (>= 0.14.0),
     ipmisc,
     parameters (>= 0.13.0),
@@ -50,7 +50,6 @@ Suggests:
     testthat,
     utils
 Remotes:
-    easystats/effectsize,
     easystats/parameters
 VignetteBuilder: 
     knitr
