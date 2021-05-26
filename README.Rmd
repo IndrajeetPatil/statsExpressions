@@ -80,25 +80,13 @@ The package can be cited as:
 citation("statsExpressions")
 ```
 
+# General Workflow
+
+```{r, echo=FALSE}
+knitr::include_graphics("man/figures/schematic_illustration.png")
+```
+
 # Summary of types of statistical analyses
-
----
-
-The `statsExpressions` package can be used to-
-
-Carry out statistical tests from different statistical approaches: <br>
-
-✅ parametric  <br>
-✅ non-parametric <br>
-✅ robust  <br>
-✅ Bayesian 
-
-Simultaneously get details from both: <br>
-
-✅ hypothesis-testing <br>
-✅ estimation
-
----
 
 Here is a tabular summary of available tests:
 
@@ -134,7 +122,7 @@ correlation | ✅ | ✅
 (one/two-way) contingency table | ✅ | ✅
 random-effects meta-analysis | ✅ | ✅
 
-# Tidy Dataframes from Statistical Analysis
+# Tidy dataframes from statistical analysis
 
 To illustrate the simplicity of this syntax, let's say we want to run a one-way
 ANOVA. If we first run a non-parametric ANOVA and then decide to run a robust
@@ -598,8 +586,9 @@ expressions are displayed in the subtitle-
 
 # Acknowledgments
 
-The hexsticker was generously designed by Sarah Otterstetter (Max Planck
-Institute for Human Development, Berlin).
+The hexsticker and the schematic illustration of general workflow were
+generously designed by Sarah Otterstetter (Max Planck Institute for Human
+Development, Berlin).
 
 # Contributing
 

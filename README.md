@@ -76,21 +76,11 @@ A BibTeX entry for LaTeX users is
   }
 ```
 
+# General Workflow
+
+<img src="man/figures/schematic_illustration.png" width="100%" />
+
 # Summary of types of statistical analyses
-
-------------------------------------------------------------------------
-
-The `statsExpressions` package can be used to-
-
-Carry out statistical tests from different statistical approaches: <br>
-
-✅ parametric <br> ✅ non-parametric <br> ✅ robust <br> ✅ Bayesian
-
-Simultaneously get details from both: <br>
-
-✅ hypothesis-testing <br> ✅ estimation
-
-------------------------------------------------------------------------
 
 Here is a tabular summary of available tests:
 
@@ -126,7 +116,7 @@ Summary of Bayesian analysis
 | (one/two-way) contingency table | ✅                  | ✅          |
 | random-effects meta-analysis    | ✅                  | ✅          |
 
-# Tidy Dataframes from Statistical Analysis
+# Tidy dataframes from statistical analysis
 
 To illustrate the simplicity of this syntax, let’s say we want to run a
 one-way ANOVA. If we first run a non-parametric ANOVA and then decide to
@@ -143,7 +133,7 @@ mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
 #> 1 wt         cyl             22.8        2 0.0000112
 #>   method                       estimate conf.level conf.low conf.high
 #>   <chr>                           <dbl>      <dbl>    <dbl>     <dbl>
-#> 1 Kruskal-Wallis rank sum test    0.736       0.95    0.609     0.841
+#> 1 Kruskal-Wallis rank sum test    0.736       0.95    0.589     0.841
 #>   effectsize      conf.method          conf.iterations expression
 #>   <chr>           <chr>                          <int> <list>    
 #> 1 Epsilon2 (rank) percentile bootstrap             100 <language>
@@ -152,7 +142,7 @@ mtcars %>% oneway_anova(cyl, wt, type = "robust")
 #> # A tibble: 1 x 11
 #>   statistic    df df.error p.value estimate conf.level conf.low conf.high
 #>       <dbl> <dbl>    <dbl>   <dbl>    <dbl>      <dbl>    <dbl>     <dbl>
-#> 1      12.7     2     12.2 0.00102     1.01       0.95    0.837      1.41
+#> 1      12.7     2     12.2 0.00102     1.08       0.95    0.837      1.57
 #>   effectsize                        
 #>   <chr>                             
 #> 1 Explanatory measure of effect size
@@ -656,8 +646,9 @@ the expressions are displayed in the subtitle-
 
 # Acknowledgments
 
-The hexsticker was generously designed by Sarah Otterstetter (Max Planck
-Institute for Human Development, Berlin).
+The hexsticker and the schematic illustration of general workflow were
+generously designed by Sarah Otterstetter (Max Planck Institute for
+Human Development, Berlin).
 
 # Contributing
 
