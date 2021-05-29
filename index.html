@@ -152,7 +152,7 @@
 <td><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg" alt="minimal R version"></a></td>
 <td><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
 <td><a href="https://CRAN.R-project.org/package=statsExpressions"><img src="https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue" alt="Monthly downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/issues"><img src="https://img.shields.io/badge/issues-6-red.svg" alt="Github Issues"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/issues"><img src="https://img.shields.io/badge/issues-8-red.svg" alt="Github Issues"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/actions"><img src="https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/pkgdown/badge.svg" alt="pkgdown"></a></td>
 </tr>
 <tr class="even">
@@ -166,7 +166,7 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions"><img src="https://github.com/IndrajeetPatil/statsExpressions/workflows/lint/badge.svg" alt="lints"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2021--05--26-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2021--05--29-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
@@ -404,7 +404,7 @@
 <span class="co">#&gt; 1 wt         cyl             22.8        2 0.0000112</span>
 <span class="co">#&gt;   method                       estimate conf.level conf.low conf.high</span>
 <span class="co">#&gt;   &lt;chr&gt;                           &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Kruskal-Wallis rank sum test    0.736       0.95    0.589     0.841</span>
+<span class="co">#&gt; 1 Kruskal-Wallis rank sum test    0.736       0.95    0.600     0.868</span>
 <span class="co">#&gt;   effectsize      conf.method          conf.iterations expression</span>
 <span class="co">#&gt;   &lt;chr&gt;           &lt;chr&gt;                          &lt;int&gt; &lt;list&gt;    </span>
 <span class="co">#&gt; 1 Epsilon2 (rank) percentile bootstrap             100 &lt;language&gt;</span>
@@ -413,7 +413,7 @@
 <span class="co">#&gt; # A tibble: 1 x 11</span>
 <span class="co">#&gt;   statistic    df df.error p.value estimate conf.level conf.low conf.high</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      12.7     2     12.2 0.00102     1.08       0.95    0.837      1.57</span>
+<span class="co">#&gt; 1      12.7     2     12.2 0.00102     1.04       0.95    0.787      1.60</span>
 <span class="co">#&gt;   effectsize                        </span>
 <span class="co">#&gt;   &lt;chr&gt;                             </span>
 <span class="co">#&gt; 1 Explanatory measure of effect size</span>
@@ -477,17 +477,22 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_map.html">group_modify</a></span><span class="op">(</span><span class="op">~</span> <span class="fu"><a href="reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span><span class="va">.x</span>, <span class="va">wt</span>, test.value <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>, .keep <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 3 x 14</span>
-<span class="co">#&gt;     cyl    mu statistic df.error  p.value method            estimate conf.level</span>
-<span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     4     3    -4.16        10 0.00195  One Sample t-test   -1.16        0.95</span>
-<span class="co">#&gt; 2     6     3     0.870        6 0.418    One Sample t-test    0.286       0.95</span>
-<span class="co">#&gt; 3     8     3     4.92        13 0.000278 One Sample t-test    1.24        0.95</span>
-<span class="co">#&gt;   conf.low conf.high effectsize conf.method conf.distribution expression</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;             &lt;list&gt;    </span>
-<span class="co">#&gt; 1   -1.97     -0.422 Hedges' g  ncp         t                 &lt;language&gt;</span>
-<span class="co">#&gt; 2   -0.419     1.01  Hedges' g  ncp         t                 &lt;language&gt;</span>
-<span class="co">#&gt; 3    0.565     1.98  Hedges' g  ncp         t                 &lt;language&gt;</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 3 x 15</span>
+<span class="co">#&gt;     cyl    mu statistic df.error  p.value method            alternative estimate</span>
+<span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;          &lt;dbl&gt;</span>
+<span class="co">#&gt; 1     4     3    -4.16        10 0.00195  One Sample t-test two.sided     -1.16 </span>
+<span class="co">#&gt; 2     6     3     0.870        6 0.418    One Sample t-test two.sided      0.286</span>
+<span class="co">#&gt; 3     8     3     4.92        13 0.000278 One Sample t-test two.sided      1.24 </span>
+<span class="co">#&gt;   conf.level conf.low conf.high effectsize conf.method conf.distribution</span>
+<span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;            </span>
+<span class="co">#&gt; 1       0.95   -1.97     -0.422 Hedges' g  ncp         t                </span>
+<span class="co">#&gt; 2       0.95   -0.419     1.01  Hedges' g  ncp         t                </span>
+<span class="co">#&gt; 3       0.95    0.565     1.98  Hedges' g  ncp         t                </span>
+<span class="co">#&gt;   expression</span>
+<span class="co">#&gt;   &lt;list&gt;    </span>
+<span class="co">#&gt; 1 &lt;language&gt;</span>
+<span class="co">#&gt; 2 &lt;language&gt;</span>
+<span class="co">#&gt; 3 &lt;language&gt;</span></code></pre></div>
 </div>
 <div id="using-expressions-in-custom-plots" class="section level1">
 <h1 class="hasAnchor">
