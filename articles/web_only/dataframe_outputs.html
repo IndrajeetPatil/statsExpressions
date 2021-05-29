@@ -117,7 +117,7 @@
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2021-05-26</h4>
+            <h4 class="date">2021-05-29</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -168,13 +168,16 @@
   test.value <span class="op">=</span> <span class="fl">0.275</span>,
   type <span class="op">=</span> <span class="st">"parametric"</span>,
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 13</span>
-<span class="co">#&gt;      mu statistic df.error p.value method            estimate conf.level</span>
-<span class="co">#&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 0.275    0.0504       55   0.960 One Sample t-test  0.00665       0.95</span>
-<span class="co">#&gt;   conf.low conf.high effectsize conf.method conf.distribution expression</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;             &lt;list&gt;    </span>
-<span class="co">#&gt; 1   -0.254     0.267 Hedges' g  ncp         t                 &lt;language&gt;</span>
+<span class="co">#&gt; # A tibble: 1 x 14</span>
+<span class="co">#&gt;      mu statistic df.error p.value method            alternative estimate</span>
+<span class="co">#&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;          &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 0.275    0.0504       55   0.960 One Sample t-test two.sided    0.00665</span>
+<span class="co">#&gt;   conf.level conf.low conf.high effectsize conf.method conf.distribution</span>
+<span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;            </span>
+<span class="co">#&gt; 1       0.95   -0.254     0.267 Hedges' g  ncp         t                </span>
+<span class="co">#&gt;   expression</span>
+<span class="co">#&gt;   &lt;list&gt;    </span>
+<span class="co">#&gt; 1 &lt;language&gt;</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -186,13 +189,13 @@
   test.value <span class="op">=</span> <span class="fl">0.275</span>,
   type <span class="op">=</span> <span class="st">"nonparametric"</span>,
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
-<span class="co">#&gt;   statistic    p.value method                    estimate conf.level conf.low</span>
-<span class="co">#&gt;       &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                        &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      5.51 0.00000738 Wilcoxon signed rank test   -0.689       0.95   -0.817</span>
-<span class="co">#&gt;   conf.high effectsize        conf.method expression</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;       &lt;list&gt;    </span>
-<span class="co">#&gt; 1    -0.497 r (rank biserial) normal      &lt;language&gt;</span>
+<span class="co">#&gt; # A tibble: 1 x 11</span>
+<span class="co">#&gt;   statistic    p.value method                    alternative estimate conf.level</span>
+<span class="co">#&gt;       &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                     &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      5.51 0.00000738 Wilcoxon signed rank test two.sided     -0.689       0.95</span>
+<span class="co">#&gt;   conf.low conf.high effectsize        conf.method expression</span>
+<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;       &lt;list&gt;    </span>
+<span class="co">#&gt; 1   -0.817    -0.497 r (rank biserial) normal      &lt;language&gt;</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -258,16 +261,16 @@
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   type <span class="op">=</span> <span class="st">"p"</span>,
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 14</span>
-<span class="co">#&gt;   term   group     statistic df.error       p.value method        estimate</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 desire condition      6.65       90 0.00000000222 Paired t-test    0.691</span>
-<span class="co">#&gt;   conf.level conf.low conf.high effectsize conf.method conf.distribution</span>
-<span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;            </span>
-<span class="co">#&gt; 1       0.95    0.465     0.922 Hedges' g  ncp         t                </span>
-<span class="co">#&gt;   expression</span>
-<span class="co">#&gt;   &lt;list&gt;    </span>
-<span class="co">#&gt; 1 &lt;language&gt;</span>
+<span class="co">#&gt; # A tibble: 1 x 15</span>
+<span class="co">#&gt;   term   group     statistic df.error       p.value method        alternative</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;      </span>
+<span class="co">#&gt; 1 desire condition      6.65       90 0.00000000222 Paired t-test two.sided  </span>
+<span class="co">#&gt;   estimate conf.level conf.low conf.high effectsize conf.method</span>
+<span class="co">#&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      </span>
+<span class="co">#&gt; 1    0.691       0.95    0.465     0.922 Hedges' g  ncp        </span>
+<span class="co">#&gt;   conf.distribution expression</span>
+<span class="co">#&gt;   &lt;chr&gt;             &lt;list&gt;    </span>
+<span class="co">#&gt; 1 t                 &lt;language&gt;</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -281,16 +284,16 @@
   subject.id <span class="op">=</span> <span class="va">subject</span>,
   type <span class="op">=</span> <span class="st">"np"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 12</span>
+<span class="co">#&gt; # A tibble: 1 x 13</span>
 <span class="co">#&gt;   parameter1 parameter2 statistic      p.value method                   </span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;        &lt;dbl&gt; &lt;chr&gt;                    </span>
 <span class="co">#&gt; 1 desire     condition       7.72 0.0000000241 Wilcoxon signed rank test</span>
-<span class="co">#&gt;   estimate conf.level conf.low conf.high effectsize        conf.method</span>
-<span class="co">#&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;      </span>
-<span class="co">#&gt; 1    0.761       0.95    0.642     0.844 r (rank biserial) normal     </span>
-<span class="co">#&gt;   expression</span>
-<span class="co">#&gt;   &lt;list&gt;    </span>
-<span class="co">#&gt; 1 &lt;language&gt;</span>
+<span class="co">#&gt;   alternative estimate conf.level conf.low conf.high effectsize       </span>
+<span class="co">#&gt;   &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;            </span>
+<span class="co">#&gt; 1 two.sided      0.761       0.95    0.642     0.844 r (rank biserial)</span>
+<span class="co">#&gt;   conf.method expression</span>
+<span class="co">#&gt;   &lt;chr&gt;       &lt;list&gt;    </span>
+<span class="co">#&gt; 1 normal      &lt;language&gt;</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
@@ -360,16 +363,16 @@
   y <span class="op">=</span> <span class="va">len</span>,
   type <span class="op">=</span> <span class="st">"p"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 16</span>
+<span class="co">#&gt; # A tibble: 1 x 17</span>
 <span class="co">#&gt;   term  group mean.group1 mean.group2 statistic df.error p.value</span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 len   supp         20.7        17.0      1.92     55.3  0.0606</span>
-<span class="co">#&gt;   method                  estimate conf.level conf.low conf.high effectsize</span>
-<span class="co">#&gt;   &lt;chr&gt;                      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     </span>
-<span class="co">#&gt; 1 Welch Two Sample t-test    0.488       0.95  -0.0217     0.993 Hedges' g </span>
-<span class="co">#&gt;   conf.method conf.distribution expression</span>
-<span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;             &lt;list&gt;    </span>
-<span class="co">#&gt; 1 ncp         t                 &lt;language&gt;</span>
+<span class="co">#&gt;   method                  alternative estimate conf.level conf.low conf.high</span>
+<span class="co">#&gt;   &lt;chr&gt;                   &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Welch Two Sample t-test two.sided      0.488       0.95  -0.0217     0.993</span>
+<span class="co">#&gt;   effectsize conf.method conf.distribution expression</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;             &lt;list&gt;    </span>
+<span class="co">#&gt; 1 Hedges' g  ncp         t                 &lt;language&gt;</span>
 
 <span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
@@ -381,16 +384,16 @@
   var.equal <span class="op">=</span> <span class="cn">TRUE</span>,
   type <span class="op">=</span> <span class="st">"p"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 16</span>
+<span class="co">#&gt; # A tibble: 1 x 17</span>
 <span class="co">#&gt;   term  group mean.group1 mean.group2 statistic df.error p.value</span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 len   supp         20.7        17.0      1.92       58  0.0604</span>
-<span class="co">#&gt;   method            estimate conf.level conf.low conf.high effectsize</span>
-<span class="co">#&gt;   &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     </span>
-<span class="co">#&gt; 1 Two Sample t-test    0.488       0.95  -0.0217     0.993 Hedges' g </span>
-<span class="co">#&gt;   conf.method conf.distribution expression</span>
-<span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;             &lt;list&gt;    </span>
-<span class="co">#&gt; 1 ncp         t                 &lt;language&gt;</span>
+<span class="co">#&gt;   method            alternative estimate conf.level conf.low conf.high</span>
+<span class="co">#&gt;   &lt;chr&gt;             &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Two Sample t-test two.sided      0.488       0.95  -0.0217     0.993</span>
+<span class="co">#&gt;   effectsize conf.method conf.distribution expression</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;             &lt;list&gt;    </span>
+<span class="co">#&gt; 1 Hedges' g  ncp         t                 &lt;language&gt;</span>
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
@@ -402,13 +405,16 @@
   y <span class="op">=</span> <span class="va">len</span>,
   type <span class="op">=</span> <span class="st">"np"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 12</span>
-<span class="co">#&gt;   parameter1 parameter2 statistic p.value method                 estimate</span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 len        supp            6.36  0.0645 Wilcoxon rank sum test    0.279</span>
-<span class="co">#&gt;   conf.level conf.low conf.high effectsize        conf.method expression</span>
-<span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;       &lt;list&gt;    </span>
-<span class="co">#&gt; 1       0.95 -0.00812     0.523 r (rank biserial) normal      &lt;language&gt;</span>
+<span class="co">#&gt; # A tibble: 1 x 13</span>
+<span class="co">#&gt;   parameter1 parameter2 statistic p.value method                 alternative</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                  &lt;chr&gt;      </span>
+<span class="co">#&gt; 1 len        supp            6.36  0.0645 Wilcoxon rank sum test two.sided  </span>
+<span class="co">#&gt;   estimate conf.level conf.low conf.high effectsize        conf.method</span>
+<span class="co">#&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;      </span>
+<span class="co">#&gt; 1    0.279       0.95 -0.00812     0.523 r (rank biserial) normal     </span>
+<span class="co">#&gt;   expression</span>
+<span class="co">#&gt;   &lt;list&gt;    </span>
+<span class="co">#&gt; 1 &lt;language&gt;</span>
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
