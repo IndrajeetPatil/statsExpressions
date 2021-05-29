@@ -3,13 +3,13 @@
     Code
       dplyr::select(df1, -expression)
     Output
-      # A tibble: 1 x 12
-           mu statistic df.error p.value method            estimate conf.level
-        <dbl>     <dbl>    <dbl>   <dbl> <chr>                <dbl>      <dbl>
-      1   120     -2.67       78 0.00910 One Sample t-test   -0.298       0.95
-        conf.low conf.high effectsize conf.method conf.distribution
-           <dbl>     <dbl> <chr>      <chr>       <chr>            
-      1   -0.524   -0.0743 Hedges' g  ncp         t                
+      # A tibble: 1 x 13
+           mu statistic df.error p.value method            alternative estimate
+        <dbl>     <dbl>    <dbl>   <dbl> <chr>             <chr>          <dbl>
+      1   120     -2.67       78 0.00910 One Sample t-test two.sided     -0.298
+        conf.level conf.low conf.high effectsize conf.method conf.distribution
+             <dbl>    <dbl>     <dbl> <chr>      <chr>       <chr>            
+      1       0.95   -0.524   -0.0743 Hedges' g  ncp         t                
 
 ---
 
@@ -26,13 +26,13 @@
     Code
       dplyr::select(df2, -expression)
     Output
-      # A tibble: 1 x 12
-           mu statistic df.error p.value method            estimate conf.level
-        <dbl>     <dbl>    <dbl>   <dbl> <chr>                <dbl>      <dbl>
-      1   120     -2.67       78 0.00910 One Sample t-test   -0.301        0.9
-        conf.low conf.high effectsize conf.method conf.distribution
-           <dbl>     <dbl> <chr>      <chr>       <chr>            
-      1   -0.492    -0.111 Cohen's d  ncp         t                
+      # A tibble: 1 x 13
+           mu statistic df.error p.value method            alternative estimate
+        <dbl>     <dbl>    <dbl>   <dbl> <chr>             <chr>          <dbl>
+      1   120     -2.67       78 0.00910 One Sample t-test two.sided     -0.301
+        conf.level conf.low conf.high effectsize conf.method conf.distribution
+             <dbl>    <dbl>     <dbl> <chr>      <chr>       <chr>            
+      1        0.9   -0.492    -0.111 Cohen's d  ncp         t                
 
 ---
 
@@ -49,13 +49,13 @@
     Code
       dplyr::select(df1, -expression)
     Output
-      # A tibble: 1 x 9
-        statistic p.value method                    estimate conf.level conf.low
-            <dbl>   <dbl> <chr>                        <dbl>      <dbl>    <dbl>
-      1      6.62   0.323 Wilcoxon signed rank test   -0.149       0.95   -0.416
-        conf.high effectsize        conf.method
-            <dbl> <chr>             <chr>      
-      1     0.143 r (rank biserial) normal     
+      # A tibble: 1 x 10
+        statistic p.value method                    alternative estimate conf.level
+            <dbl>   <dbl> <chr>                     <chr>          <dbl>      <dbl>
+      1      6.62   0.323 Wilcoxon signed rank test two.sided     -0.149       0.95
+        conf.low conf.high effectsize        conf.method
+           <dbl>     <dbl> <chr>             <chr>      
+      1   -0.416     0.143 r (rank biserial) normal     
 
 ---
 
@@ -72,13 +72,13 @@
     Code
       dplyr::select(df2, -expression)
     Output
-      # A tibble: 1 x 9
-        statistic   p.value method                    estimate conf.level conf.low
-            <dbl>     <dbl> <chr>                        <dbl>      <dbl>    <dbl>
-      1      5.57 0.0000125 Wilcoxon signed rank test   -0.672       0.95   -0.806
-        conf.high effectsize        conf.method
-            <dbl> <chr>             <chr>      
-      1    -0.472 r (rank biserial) normal     
+      # A tibble: 1 x 10
+        statistic   p.value method                    alternative estimate conf.level
+            <dbl>     <dbl> <chr>                     <chr>          <dbl>      <dbl>
+      1      5.57 0.0000125 Wilcoxon signed rank test two.sided     -0.672       0.95
+        conf.low conf.high effectsize        conf.method
+           <dbl>     <dbl> <chr>             <chr>      
+      1   -0.806    -0.472 r (rank biserial) normal     
 
 ---
 
