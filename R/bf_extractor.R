@@ -51,8 +51,7 @@ bf_extractor <- function(bf.object,
   if ("method" %in% names(stats_df)) {
     if (stats_df$method[[1]] == "Bayes factors for linear models") {
       # dataframe with posterior estimates for R-squared
-      df_r2 <-
-        performance::r2_bayes(bf.object, average = TRUE, ci = conf.level) %>%
+      df_r2 <- performance::r2_bayes(bf.object, average = TRUE, ci = conf.level) %>%
         as_tibble(.) %>%
         parameters::standardize_names(style = "broom") %>%
         dplyr::rename_with(.fn = ~ paste0("r2.", .x), .cols = dplyr::matches("^conf|^comp"))
