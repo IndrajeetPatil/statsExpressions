@@ -156,9 +156,11 @@ mtcars %>%
   knitr::kable()
 ```
 
-These functions also play nicely with `dplyr` function. For example, let's say
-we want to run a one-sample *t*-test for all levels of a certain grouping
-variable. Here is how you can do it:
+These functions are also compatible with other popular data manipulation
+packages. 
+
+For example, let's say we want to run a one-sample *t*-test for all levels of a
+certain grouping variable. We can use `dplyr` to do so:
 
 ```{r grouped_df}
 # for reproducibility
