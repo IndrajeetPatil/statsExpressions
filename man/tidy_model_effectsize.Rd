@@ -4,10 +4,12 @@
 \alias{tidy_model_effectsize}
 \title{Convert \code{effectsize} package output to \code{tidyverse} conventions}
 \usage{
-tidy_model_effectsize(data)
+tidy_model_effectsize(data, ...)
 }
 \arguments{
 \item{data}{Dataframe returned by \code{effectsize} functions.}
+
+\item{...}{Currently ignored.}
 }
 \description{
 Convert \code{effectsize} package output to \code{tidyverse} conventions

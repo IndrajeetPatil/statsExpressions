@@ -36,7 +36,7 @@ test).
 You can specify just the initial letter.}
 
 \item{random}{
-The type of random effects distribution. One of "normal","t-dist","mixture", for standard normal, \eqn{t}-distribution or mixture of normals respectively.
+The type of random effects distribution. One of "normal", "t-dist", "mixture", for standard normal, \eqn{t}-distribution or mixture of normals respectively.
 }
 
 \item{k}{Number of digits after decimal point (should be an integer)

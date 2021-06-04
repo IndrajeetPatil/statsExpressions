@@ -175,8 +175,6 @@ one_sample_test <- function(data,
   # running Bayesian one-sample t-test
   if (type == "bayes") {
     bf_object <- BayesFactor::ttestBF(x_vec, rscale = bf.prior, mu = test.value)
-
-    # final return
     stats_df <- bf_extractor(bf_object, conf.level, k = k, top.text = top.text)
   }
 

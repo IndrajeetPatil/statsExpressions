@@ -26,6 +26,7 @@ tidy_model_parameters <- function(model, ...) {
 #' @title Convert `effectsize` package output to `tidyverse` conventions
 #'
 #' @param data Dataframe returned by `effectsize` functions.
+#' @param ... Currently ignored.
 #'
 #' @importFrom effectsize get_effectsize_label
 #' @importFrom purrr compose attr_getter
@@ -36,7 +37,7 @@ tidy_model_parameters <- function(model, ...) {
 #' tidy_model_effectsize(df)
 #' @export
 
-tidy_model_effectsize <- function(data) {
+tidy_model_effectsize <- function(data, ...) {
   dplyr::bind_cols(
     data %>%
       dplyr::mutate(effectsize = stats::na.omit(effectsize::get_effectsize_label(colnames(.)))[[1]]) %>%
