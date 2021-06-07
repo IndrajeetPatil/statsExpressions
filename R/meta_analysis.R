@@ -59,24 +59,12 @@
 #' library(statsExpressions)
 #' options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 #'
-#' # ----------------------- parametric ---------------------------------------
+#' meta_analysis(df) # parametric
 #'
-#' meta_analysis(df)
-#'
-#' # ----------------------- random -----------------------------------------
-#'
-#' meta_analysis(df, type = "random", random = "normal")
-#'
-#' # ----------------------- Bayes Factor -----------------------------------
-#'
-#' meta_analysis(
-#'   df,
-#'   type = "bayes",
-#'   # additional arguments to `metaBMA::meta_random()`
-#'   iter = 5000,
-#'   summarize = "integrate",
-#'   control = list(adapt_delta = 0.99, max_treedepth = 15)
-#' )
+#' \dontrun{
+#' meta_analysis(df, type = "random", random = "normal") # random
+#' meta_analysis(df, type = "bayes") # Bayesian
+#' }
 #' }
 #' @export
 
