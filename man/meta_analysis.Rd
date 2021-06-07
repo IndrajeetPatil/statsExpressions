@@ -2,7 +2,7 @@
 % Please edit documentation in R/meta_analysis.R
 \name{meta_analysis}
 \alias{meta_analysis}
-\title{#' @title Random-effects meta-analyses}
+\title{Random-effects meta-analyses}
 \usage{
 meta_analysis(
   data,

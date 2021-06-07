@@ -1,4 +1,4 @@
-#' #' @title Random-effects meta-analyses
+#' @title Random-effects meta-analyses
 #' @name meta_analysis
 #'
 #' @param data A dataframe. It **must** contain columns named `estimate` (effect
