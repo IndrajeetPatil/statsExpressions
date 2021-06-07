@@ -24,6 +24,29 @@
           " = ", "0.68097", ", CI"["95%"], " [", "0.37741", ", ", "0.81259", 
           "], ", italic("n")["obs"], " = ", "32")
 
+---
+
+    Code
+      dplyr::select(df1, -expression)
+    Output
+      # A tibble: 1 x 12
+        statistic    df df.error    p.value method                    estimate
+            <dbl> <dbl>    <dbl>      <dbl> <chr>                        <dbl>
+      1      22.9     2       29 0.00000107 One-way analysis of means    0.612
+        conf.level conf.low conf.high effectsize conf.method conf.distribution
+             <dbl>    <dbl>     <dbl> <chr>      <chr>       <chr>            
+      1       0.95    0.357     0.749 Eta2       ncp         F                
+
+---
+
+    Code
+      df1$expression[[1]]
+    Output
+      paste(italic("F")["Fisher"], "(", "2", ",", "29", ") = ", "22.91139", 
+          ", ", italic("p"), " = ", "1.0747e-06", ", ", widehat(eta["p"]^2), 
+          " = ", "0.61242", ", CI"["95%"], " [", "0.35703", ", ", "0.74867", 
+          "], ", italic("n")["obs"], " = ", "32")
+
 # parametric anova subtitles with partial omega-squared
 
     Code

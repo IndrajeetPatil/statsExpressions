@@ -179,6 +179,11 @@ oneway_anova <- function(data,
   # ----------------------- parametric ---------------------------------------
 
   if (type == "parametric") {
+    # expression details
+    k.df <- ifelse(isFALSE(paired), 0L, k)
+    k.df.error <- ifelse(isFALSE(paired) && isTRUE(var.equal), 0L, k)
+    no.parameters <- 2L
+
     # which effect size?
     if (effsize.type %in% c("unbiased", "omega")) .f.es <- effectsize::omega_squared
     if (effsize.type %in% c("biased", "eta")) .f.es <- effectsize::eta_squared
@@ -213,17 +218,14 @@ oneway_anova <- function(data,
 
     # combining dataframes
     stats_df <- dplyr::bind_cols(stats_df, effsize_df)
-
-    # expression details
-    if (isTRUE(paired)) var.equal <- TRUE
-    k.df <- ifelse(isFALSE(paired), 0L, k)
-    k.df.error <- ifelse(isFALSE(paired) && isTRUE(var.equal), 0L, k)
-    no.parameters <- 2L
   }
 
   # ----------------------- non-parametric ------------------------------------
 
   if (type == "nonparametric") {
+    # expression details
+    c(no.parameters, k.df, k.df.error) %<-% c(1L, 0L, 0L)
+
     # Friedman test
     if (isTRUE(paired)) {
       c(.f, .f.es) %<-% c(stats::friedman.test, effectsize::kendalls_w)
@@ -254,14 +256,14 @@ oneway_anova <- function(data,
 
     # dataframe
     stats_df <- dplyr::bind_cols(stats_df, effsize_df)
-
-    # expression details
-    c(no.parameters, k.df, k.df.error) %<-% c(1L, 0L, 0L)
   }
 
   # ----------------------- robust ---------------------------------------
 
   if (type == "robust") {
+    # expression details
+    c(no.parameters, k.df, k.df.error) %<-% c(2L, ifelse(isTRUE(paired), k, 0L), k)
+
     # heteroscedastic one-way repeated measures ANOVA for trimmed means
     if (isTRUE(paired)) {
       mod <- WRS2::rmanova(
@@ -295,9 +297,6 @@ oneway_anova <- function(data,
       # combine dataframes
       stats_df <- dplyr::bind_cols(stats_df, effsize_df)
     }
-
-    # expression details
-    c(no.parameters, k.df, k.df.error) %<-% c(2L, ifelse(isTRUE(paired), k, 0L), k)
   }
 
   # ----------------------- Bayesian ---------------------------------------
@@ -321,6 +320,8 @@ oneway_anova <- function(data,
     ) %>%
       tidy_model_parameters(ci = conf.level)
   }
+
+  # ----------------------- expression ---------------------------------------
 
   as_tibble(stats_df) %>%
     dplyr::mutate(expression = list(expr_template(

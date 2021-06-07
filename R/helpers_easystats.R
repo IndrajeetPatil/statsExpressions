@@ -18,8 +18,7 @@ tidy_model_parameters <- function(model, ...) {
     dplyr::select(-dplyr::matches("Difference")) %>%
     parameters::standardize_names(style = "broom") %>%
     dplyr::rename_all(.funs = dplyr::recode, "bayes.factor" = "bf10") %>%
-    tidyr::fill(dplyr::matches("^prior|^bf"), .direction = "updown") %>%
-    as_tibble(.)
+    tidyr::fill(dplyr::matches("^prior|^bf"), .direction = "updown")
 
   # ------------------------ Bayesian ANOVA designs -------------------------
 
@@ -39,7 +38,7 @@ tidy_model_parameters <- function(model, ...) {
     }
   }
 
-  stats_df
+  as_tibble(stats_df)
 }
 
 
@@ -63,8 +62,7 @@ tidy_model_effectsize <- function(data, ...) {
     data %>%
       dplyr::mutate(effectsize = stats::na.omit(effectsize::get_effectsize_label(colnames(.)))[[1]]) %>%
       parameters::standardize_names(style = "broom") %>%
-      dplyr::select(-dplyr::contains("term")) %>%
-      as_tibble(.),
+      dplyr::select(-dplyr::contains("term")),
     dplyr::rename_with(get_ci_method(data), ~ paste0("conf.", .x))
   )
 }

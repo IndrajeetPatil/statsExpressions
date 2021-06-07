@@ -166,6 +166,8 @@ one_sample_test <- function(data,
       tidy_model_parameters(ci = conf.level)
   }
 
+  # ----------------------- expression ---------------------------------------
+
   # return the output
   as_tibble(stats_df) %>%
     dplyr::mutate(expression = list(expr_template(

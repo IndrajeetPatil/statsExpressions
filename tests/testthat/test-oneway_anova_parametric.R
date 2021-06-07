@@ -20,6 +20,22 @@ test_that(
     set.seed(123)
     expect_snapshot(dplyr::select(df, -expression))
     expect_snapshot(df$expression[[1]])
+
+    # statsExpression output
+    set.seed(123)
+    df1 <- oneway_anova(
+      data = mtcars,
+      x = cyl,
+      y = wt,
+      effsize.type = "eta",
+      k = 5,
+      var.equal = TRUE
+    )
+
+    # testing all details
+    set.seed(123)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression[[1]])
   }
 )
 
@@ -62,6 +78,7 @@ test_that(
         y = value,
         paired = TRUE,
         k = 3,
+        var.equal = FALSE, # shouldn't make a difference
         conf.level = 0.99
       )
 

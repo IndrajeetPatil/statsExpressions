@@ -161,7 +161,7 @@ contingency_table <- function(data,
   if (type == "bayes") {
     # two-way table
     if (test == "two.way") {
-      # Bayes Factor object
+      # extract a tidy dataframe
       stats_df <- BayesFactor::contingencyTableBF(
         table(data %>% dplyr::pull({{ x }}), data %>% dplyr::pull({{ y }})),
         sampleType = sampling.plan,
@@ -220,8 +220,9 @@ contingency_table <- function(data,
     }
   }
 
+  # ----------------------- expression ---------------------------------------
+
   if (!(type == "bayes" && test == "one.way")) {
-    # add expression column
     stats_df %<>%
       dplyr::mutate(
         expression = list(expr_template(

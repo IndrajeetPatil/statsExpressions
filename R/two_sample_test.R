@@ -151,7 +151,7 @@ two_sample_test <- function(data,
 
   if (type == "parametric") {
     # preparing expression parameters
-    c(no.parameters, k.df) %<-% c(1L, ifelse(isTRUE(paired) || isTRUE(var.equal), 0L, k))
+    c(no.parameters, k.df) %<-% c(1L, ifelse(paired || var.equal, 0L, k))
     .f <- stats::t.test
 
     if (effsize.type %in% c("unbiased", "g")) .f.es <- effectsize::hedges_g
@@ -254,6 +254,8 @@ two_sample_test <- function(data,
     stats_df <- rlang::exec(BayesFactor::ttestBF, data = as.data.frame(data), !!!.f.args) %>%
       tidy_model_parameters(ci = conf.level)
   }
+
+  # ----------------------- expression ---------------------------------------
 
   # return the output
   as_tibble(stats_df) %>%

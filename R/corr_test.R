@@ -75,10 +75,9 @@ corr_test <- function(data,
     parameters::standardize_names(style = "broom") %>%
     dplyr::mutate(effectsize = method)
 
-  # ---------------------- preparing expression -------------------------------
+  # ----------------------- expression ---------------------------------------
 
   # no. of parameters
-  no.parameters <- ifelse(type %in% c("parametric", "robust"), 1L, 0L)
   if (type == "nonparametric") stats_df %<>% dplyr::mutate(statistic = log(statistic))
   if (type == "bayes") stats_df %<>% dplyr::rename("bf10" = "bayes.factor")
 
@@ -86,7 +85,7 @@ corr_test <- function(data,
   as_tibble(stats_df) %>%
     dplyr::mutate(expression = list(expr_template(
       data = .,
-      no.parameters = no.parameters,
+      no.parameters = ifelse(type %in% c("parametric", "robust"), 1L, 0L),
       top.text = top.text,
       paired = TRUE,
       n = stats_df$n.obs[[1]],

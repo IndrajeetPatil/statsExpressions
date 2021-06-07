@@ -88,15 +88,16 @@ meta_analysis <- function(data,
   # package installed?
   insight::check_if_installed(.ns)
 
-  # create a call and then extract dataframe with coefficients
+  # construct a call and then extract a tidy dataframe
   stats_df <- eval(rlang::call2(.fn = .fn, .ns = .ns, data = data, !!!.f.args)) %>%
     tidy_model_parameters(include_studies = FALSE, ci = conf.level)
 
-  # new column
+  # add a column describing effect size
   if (type != "bayes") stats_df %<>% dplyr::mutate(effectsize = "meta-analytic summary estimate")
   if (type == "bayes") stats_df %<>% dplyr::mutate(effectsize = "meta-analytic posterior estimate")
 
-  # preparing the expression
+  # ----------------------- expression ---------------------------------------
+
   as_tibble(stats_df) %>%
     dplyr::mutate(expression = list(expr_template(
       data = .,
