@@ -49,8 +49,11 @@
 #' @param conf.method The type of index used for Credible Interval. Can be
 #'   `"hdi"` (default), `"eti"`, or `"si"` (see `si()`, `hdi()`, `eti()`
 #'   functions from `bayestestR` package).
+#' @param k Number of digits after decimal point (should be an integer)
+#'   (Default: `k = 2L`).
+#' @param top.text Text to display on top of the Bayes Factor message. This is
+#'   mostly relevant in the context of `ggstatsplot` functions.
 #' @param ... Currently ignored.
-#' @inheritParams bf_extractor
 #' @inheritParams oneway_anova
 #' @inheritParams ipmisc::long_to_wide_converter
 #'

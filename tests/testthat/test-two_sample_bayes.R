@@ -5,21 +5,6 @@ test_that(
 
     # bayes factor (independent samples t-test) ----------------------
 
-    # from Bayes Factor
-    df <- suppressMessages(bf_extractor(
-      BayesFactor::ttestBF(
-        formula = len ~ supp,
-        data = as.data.frame(ToothGrowth),
-        rscale = 0.99,
-        paired = FALSE
-      )
-    ))
-
-    # check bayes factor values
-    expect_type(df, "list")
-    expect_identical(class(df), c("tbl_df", "tbl", "data.frame"))
-    expect_equal(df$bf10[[1]], 0.9988815, tolerance = 0.001)
-
     # expression
     set.seed(123)
     bf_expr <-

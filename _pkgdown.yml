@@ -37,10 +37,10 @@ reference:
       - matches("meta_")
 
   - title: Helper functions
+    desc: Note that these helper functions are not stable and may change in the future.
     contents:
       - matches("_template")
       - matches("tidy_")
-      - bf_extractor
       - matches("package")
 
   - title: Reexported functions

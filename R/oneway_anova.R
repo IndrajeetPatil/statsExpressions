@@ -29,7 +29,6 @@
 #'   corresponds to scale for fixed effects.
 #' @inheritParams two_sample_test
 #' @inheritParams expr_template
-#' @inheritParams bf_extractor
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams stats::oneway.test
 #'
@@ -301,20 +300,6 @@ oneway_anova <- function(data,
     c(no.parameters, k.df, k.df.error) %<-% c(2L, ifelse(isTRUE(paired), k, 0L), k)
   }
 
-  # final returns
-  if (type != "bayes") {
-    stats_df %<>%
-      dplyr::mutate(expression = list(expr_template(
-        data = .,
-        no.parameters = no.parameters,
-        n = ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data)),
-        paired = paired,
-        k = k,
-        k.df = k.df,
-        k.df.error = k.df.error
-      )))
-  }
-
   # ----------------------- Bayesian ---------------------------------------
 
   # running Bayesian t-test
@@ -327,19 +312,28 @@ oneway_anova <- function(data,
       )
     }
 
-    # creating a `BayesFactor` object
-    bf_object <- rlang::exec(
+    # extract a dataframe
+    stats_df <- rlang::exec(
       BayesFactor::anovaBF,
       data = as.data.frame(data),
       progress = FALSE,
       !!!.f.args
-    )
-
-    # extract a dataframe
-    stats_df <- bf_extractor(bf_object, conf.level, k = k, top.text = top.text)
+    ) %>%
+      tidy_model_parameters(ci = conf.level)
   }
 
-  as_tibble(stats_df)
+  as_tibble(stats_df) %>%
+    dplyr::mutate(expression = list(expr_template(
+      data = .,
+      no.parameters = no.parameters,
+      n = ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data)),
+      paired = paired,
+      k = k,
+      k.df = k.df,
+      k.df.error = k.df.error,
+      top.text = top.text,
+      bayesian = ifelse(type == "bayes", TRUE, FALSE)
+    )))
 }
 
 #' @noRd

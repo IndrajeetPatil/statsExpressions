@@ -149,27 +149,11 @@ contingency_table <- function(data,
       paired <- FALSE
     }
 
-    # stats
-    stats_df <- tidy_model_parameters(rlang::exec(.f, !!!.f.args))
-
-    # computing effect size + CI
-    effsize_df <- rlang::exec(.f.es, adjust = TRUE, ci = conf.level, !!!.f.args) %>%
-      tidy_model_effectsize(.)
-
-    # combining dataframes
-    stats_df <- dplyr::bind_cols(stats_df, effsize_df)
-
-    # add expression column
-    stats_df %<>%
-      dplyr::mutate(
-        expression = list(expr_template(
-          data = .,
-          no.parameters = 1L,
-          n = nrow(data),
-          paired = paired,
-          k = k
-        ))
-      )
+    # combining dataframes: inferential stats + effect sizes
+    stats_df <- dplyr::bind_cols(
+      tidy_model_parameters(rlang::exec(.f, !!!.f.args)),
+      tidy_model_effectsize(rlang::exec(.f.es, adjust = TRUE, ci = conf.level, !!!.f.args))
+    )
   }
 
   # ----------------------- Bayesian ---------------------------------------
@@ -178,15 +162,13 @@ contingency_table <- function(data,
     # two-way table
     if (test == "two.way") {
       # Bayes Factor object
-      bf_object <- BayesFactor::contingencyTableBF(
+      stats_df <- BayesFactor::contingencyTableBF(
         table(data %>% dplyr::pull({{ x }}), data %>% dplyr::pull({{ y }})),
         sampleType = sampling.plan,
         fixedMargin = fixed.margin,
         priorConcentration = prior.concentration
-      )
-
-      # Bayes Factor expression
-      stats_df <- bf_extractor(bf_object, conf.level, k = k, top.text = top.text)
+      ) %>%
+        tidy_model_parameters(ci = conf.level)
     }
 
     # one-way table
@@ -236,6 +218,22 @@ contingency_table <- function(data,
       # computing Bayes Factor and formatting the results
       stats_df %<>% dplyr::mutate(expression = list(expression))
     }
+  }
+
+  if (!(type == "bayes" && test == "one.way")) {
+    # add expression column
+    stats_df %<>%
+      dplyr::mutate(
+        expression = list(expr_template(
+          data = .,
+          no.parameters = 1L,
+          n = nrow(data),
+          paired = paired,
+          k = k,
+          top.text = top.text,
+          bayesian = ifelse(type == "bayes", TRUE, FALSE)
+        ))
+      )
   }
 
   # return the output

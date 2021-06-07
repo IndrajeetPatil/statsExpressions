@@ -9,7 +9,6 @@
 #' @inheritParams ipmisc::long_to_wide_converter
 #' @inheritParams ipmisc::stats_type_switch
 #' @inheritParams expr_template
-#' @inheritParams bf_extractor
 #' @inheritParams two_sample_test
 #' @inheritParams oneway_anova
 #' @inheritParams stats::t.test
@@ -159,27 +158,24 @@ one_sample_test <- function(data,
     stats_df <- rlang::exec(trimcibt, x = x_vec, nv = test.value, tr = tr, ci = conf.level)
   }
 
-  # expression
-  if (type != "bayes") {
-    stats_df %<>%
-      dplyr::mutate(expression = list(expr_template(
-        data = .,
-        no.parameters = no.parameters,
-        n = length(x_vec),
-        k = k
-      )))
-  }
-
   # ----------------------- Bayesian ---------------------------------------
 
   # running Bayesian one-sample t-test
   if (type == "bayes") {
-    bf_object <- BayesFactor::ttestBF(x_vec, rscale = bf.prior, mu = test.value)
-    stats_df <- bf_extractor(bf_object, conf.level, k = k, top.text = top.text)
+    stats_df <- BayesFactor::ttestBF(x_vec, rscale = bf.prior, mu = test.value) %>%
+      tidy_model_parameters(ci = conf.level)
   }
 
   # return the output
-  as_tibble(stats_df)
+  as_tibble(stats_df) %>%
+    dplyr::mutate(expression = list(expr_template(
+      data = .,
+      no.parameters = no.parameters,
+      n = length(x_vec),
+      k = k,
+      top.text = top.text,
+      bayesian = ifelse(type == "bayes", TRUE, FALSE)
+    )))
 }
 
 #' bootstrap-t method for one-sample test

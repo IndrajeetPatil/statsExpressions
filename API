@@ -2,7 +2,6 @@
 
 ## Exported functions
 
-bf_extractor(bf.object, conf.level = 0.95, k = 2L, top.text = NULL, ...)
 contingency_table(data, x, y = NULL, paired = FALSE, type = "parametric", counts = NULL, ratio = NULL, k = 2L, conf.level = 0.95, sampling.plan = "indepMulti", fixed.margin = "rows", prior.concentration = 1, top.text = NULL, ...)
 corr_test(data, x, y, type = "parametric", k = 2L, conf.level = 0.95, tr = 0.2, bf.prior = 0.707, top.text = NULL, ...)
 expr_template(data, no.parameters = 0L, bayesian = FALSE, statistic.text = NULL, effsize.text = NULL, top.text = NULL, prior.distribution = NULL, prior.type = NULL, n = NULL, n.text = NULL, paired = FALSE, conf.method = "HDI", k = 2L, k.df = 0L, k.df.error = 0L, ...)
