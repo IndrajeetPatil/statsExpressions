@@ -163,8 +163,8 @@ one_sample_test <- function(data,
   if (type != "bayes") {
     stats_df %<>%
       dplyr::mutate(expression = list(expr_template(
-        no.parameters = no.parameters,
         data = .,
+        no.parameters = no.parameters,
         n = length(x_vec),
         k = k
       )))

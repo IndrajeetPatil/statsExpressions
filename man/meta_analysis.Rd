@@ -95,10 +95,7 @@ library(statsExpressions)
 options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 
 meta_analysis(df) # parametric
-
-\dontrun{
-meta_analysis(df, type = "random", random = "normal") # random
-meta_analysis(df, type = "bayes") # Bayesian
-}
+# meta_analysis(df, type = "random", random = "normal") # robust
+# meta_analysis(df, type = "bayes") # Bayesian
 }
 }

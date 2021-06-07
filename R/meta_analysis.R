@@ -60,11 +60,8 @@
 #' options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 #'
 #' meta_analysis(df) # parametric
-#'
-#' \dontrun{
-#' meta_analysis(df, type = "random", random = "normal") # random
-#' meta_analysis(df, type = "bayes") # Bayesian
-#' }
+#' # meta_analysis(df, type = "random", random = "normal") # robust
+#' # meta_analysis(df, type = "bayes") # Bayesian
 #' }
 #' @export
 
@@ -80,11 +77,8 @@ meta_analysis <- function(data,
   type <- ipmisc::stats_type_switch(type)
 
   # additional arguments
-  if (type != "bayes") {
-    .f.args <- list(random = random, yi = quote(estimate), sei = quote(std.error), ...)
-  } else {
-    .f.args <- list(y = quote(estimate), SE = quote(std.error), ...)
-  }
+  if (type != "bayes") .f.args <- list(random = random, yi = quote(estimate), sei = quote(std.error), ...)
+  if (type == "bayes") .f.args <- list(y = quote(estimate), SE = quote(std.error), ...)
 
   # functions
   if (type == "parametric") c(.ns, .fn) %<-% c("metafor", "rma")
@@ -95,16 +89,15 @@ meta_analysis <- function(data,
   insight::check_if_installed(.ns)
 
   # create a call and then extract dataframe with coefficients
-  suppressMessages(suppressWarnings(stats_df <-
-    eval(rlang::call2(.fn = .fn, .ns = .ns, data = data, !!!.f.args)) %>%
-    tidy_model_parameters(include_studies = FALSE, ci = conf.level)))
+  stats_df <- eval(rlang::call2(.fn = .fn, .ns = .ns, data = data, !!!.f.args)) %>%
+    tidy_model_parameters(include_studies = FALSE, ci = conf.level)
 
   # new column
   if (type != "bayes") stats_df %<>% dplyr::mutate(effectsize = "meta-analytic summary estimate")
   if (type == "bayes") stats_df %<>% dplyr::mutate(effectsize = "meta-analytic posterior estimate")
 
   # preparing the expression
-  stats_df %<>%
+  as_tibble(stats_df) %>%
     dplyr::mutate(expression = list(expr_template(
       data = .,
       n = nrow(data),
@@ -114,7 +107,4 @@ meta_analysis <- function(data,
       top.text = top.text,
       bayesian = ifelse(type == "bayes", TRUE, FALSE)
     )))
-
-  # return the output
-  as_tibble(stats_df)
 }

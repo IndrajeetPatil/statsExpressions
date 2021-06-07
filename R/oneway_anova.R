@@ -265,7 +265,6 @@ oneway_anova <- function(data,
   if (type == "robust") {
     # heteroscedastic one-way repeated measures ANOVA for trimmed means
     if (isTRUE(paired)) {
-      # test
       mod <- WRS2::rmanova(
         y = data[[rlang::as_name(y)]],
         groups = data[[rlang::as_name(x)]],
@@ -306,8 +305,8 @@ oneway_anova <- function(data,
   if (type != "bayes") {
     stats_df %<>%
       dplyr::mutate(expression = list(expr_template(
-        no.parameters = no.parameters,
         data = .,
+        no.parameters = no.parameters,
         n = ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data)),
         paired = paired,
         k = k,
@@ -336,7 +335,7 @@ oneway_anova <- function(data,
       !!!.f.args
     )
 
-    # final return
+    # extract a dataframe
     stats_df <- bf_extractor(bf_object, conf.level, k = k, top.text = top.text)
   }
 
