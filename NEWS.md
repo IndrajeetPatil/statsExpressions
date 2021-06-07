@@ -1,5 +1,10 @@
 # statsExpressions 1.1.0.9000
 
+MAJOR CHANGES
+
+  - Removes the redundant `bf_extractor` function. The `tidy_model_parameters`
+    does the same thing.
+
 # statsExpressions 1.1.0
 
 MAJOR CHANGES

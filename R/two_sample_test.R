@@ -241,17 +241,6 @@ two_sample_test <- function(data,
   if (type != "bayes") {
     # combining dataframes
     stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("^est|^eff|conf|^ci")), effsize_df)
-
-    # expression
-    stats_df %<>%
-      dplyr::mutate(expression = list(expr_template(
-        no.parameters = no.parameters,
-        data = .,
-        paired = paired,
-        n = ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data)),
-        k = k,
-        k.df = k.df
-      )))
   }
 
   # ----------------------- Bayesian ---------------------------------------
@@ -262,12 +251,20 @@ two_sample_test <- function(data,
     if (paired) .f.args <- list(x = data[[2]], y = data[[3]], rscale = bf.prior, paired = paired)
 
     # creating a `BayesFactor` object
-    bf_object <- rlang::exec(BayesFactor::ttestBF, data = as.data.frame(data), !!!.f.args)
-
-    # final return
-    stats_df <- bf_extractor(bf_object, conf.level, k = k, top.text = top.text)
+    stats_df <- rlang::exec(BayesFactor::ttestBF, data = as.data.frame(data), !!!.f.args) %>%
+      tidy_model_parameters(ci = conf.level)
   }
 
   # return the output
-  as_tibble(stats_df)
+  as_tibble(stats_df) %>%
+    dplyr::mutate(expression = list(expr_template(
+      no.parameters = no.parameters,
+      data = .,
+      paired = paired,
+      n = ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data)),
+      k = k,
+      k.df = k.df,
+      top.text = top.text,
+      bayesian = ifelse(type == "bayes", TRUE, FALSE)
+    )))
 }

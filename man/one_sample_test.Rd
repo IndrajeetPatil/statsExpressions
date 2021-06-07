@@ -47,8 +47,8 @@ You can specify just the initial letter.}
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2L}).}
 
-\item{conf.level}{Confidence/Credible Interval (CI) level. Default to \code{0.95}
-(\verb{95\%}).}
+\item{conf.level}{Scalar between \code{0} and \code{1}. If unspecified, the defaults
+return \verb{95\%} confidence/credible intervals (\code{0.95}).}
 
 \item{tr}{Trim level for the mean when carrying out \code{robust} tests. In case
 of an error, try reducing the value of \code{tr}, which is by default set to

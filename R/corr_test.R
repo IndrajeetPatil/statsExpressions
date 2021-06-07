@@ -85,7 +85,7 @@ corr_test <- function(data,
   # preparing expression
   as_tibble(stats_df) %>%
     dplyr::mutate(expression = list(expr_template(
-      data = stats_df,
+      data = .,
       no.parameters = no.parameters,
       top.text = top.text,
       paired = TRUE,
