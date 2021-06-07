@@ -22,7 +22,7 @@
   }
 </script>
 
-<title>Random-effects meta-analyses — meta_analysis • statsExpressions</title>
+<title>#' @title Random-effects meta-analyses — meta_analysis • statsExpressions</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -74,7 +74,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Random-effects meta-analyses — meta_analysis" />
+<meta property="og:title" content="#' @title Random-effects meta-analyses — meta_analysis" />
 <meta property="og:description" content="A dataframe containing results from random-effects meta-analysis.
 To see details about functions which are internally used to carry out these
 analyses, see the following vignette-
@@ -173,7 +173,7 @@ https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" /
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Random-effects meta-analyses</h1>
+    <h1>#' @title Random-effects meta-analyses</h1>
     <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/meta_analysis.R'><code>R/meta_analysis.R</code></a></small>
     <div class="hidden name"><code>meta_analysis.Rd</code></div>
     </div>
@@ -254,60 +254,49 @@ If they are not available, you will be asked to install them.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='co'># run examples only if the needed packages are available</span>
-<span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"metaplus"</span>, <span class='st'>"metafor"</span>, <span class='st'>"metaBMA"</span><span class='op'>)</span>, <span class='co'># needed packages</span>
-  <span class='va'>require</span>,
-  character.only <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  quietly <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  warn.conflicts <span class='op'>=</span> <span class='cn'>FALSE</span>
-<span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='co'># note that the `print` calls below are not necessary for you to write</span>
-  <span class='co'># they are in the documentation so that the website renders them</span>
+<span class='co'># a dataframe with estimates and standard errors (`mag` dataset from `metaplus`)</span>
+<span class='va'>df</span> <span class='op'>&lt;-</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+    study <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+      <span class='fl'>8L</span>, <span class='fl'>10L</span>, <span class='fl'>15L</span>, <span class='fl'>1L</span>, <span class='fl'>4L</span>, <span class='fl'>11L</span>, <span class='fl'>3L</span>, <span class='fl'>2L</span>, <span class='fl'>14L</span>, <span class='fl'>9L</span>, <span class='fl'>12L</span>, <span class='fl'>5L</span>, <span class='fl'>16L</span>, <span class='fl'>7L</span>, <span class='fl'>13L</span>, <span class='fl'>6L</span>
+    <span class='op'>)</span>, .Label <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+      <span class='st'>"Abraham"</span>, <span class='st'>"Bertschat"</span>, <span class='st'>"Ceremuzynski"</span>, <span class='st'>"Feldstedt"</span>, <span class='st'>"Golf"</span>,
+      <span class='st'>"ISIS-4"</span>, <span class='st'>"LIMIT-2"</span>, <span class='st'>"Morton"</span>, <span class='st'>"Pereira"</span>, <span class='st'>"Rasmussen"</span>, <span class='st'>"Schechter"</span>, <span class='st'>"Schechter 1"</span>,
+      <span class='st'>"Schechter 2"</span>, <span class='st'>"Singh"</span>, <span class='st'>"Smith"</span>, <span class='st'>"Thogersen"</span>
+    <span class='op'>)</span>, class <span class='op'>=</span> <span class='st'>"factor"</span><span class='op'>)</span>,
+    estimate <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+      <span class='op'>-</span><span class='fl'>0.8303483</span>, <span class='op'>-</span><span class='fl'>1.056053</span>, <span class='op'>-</span><span class='fl'>1.27834</span>, <span class='op'>-</span><span class='fl'>0.0434851</span>, <span class='fl'>0.2231435</span>,
+      <span class='op'>-</span><span class='fl'>2.40752</span>, <span class='op'>-</span><span class='fl'>1.280934</span>, <span class='op'>-</span><span class='fl'>1.191703</span>, <span class='op'>-</span><span class='fl'>0.695748</span>, <span class='op'>-</span><span class='fl'>2.208274</span>, <span class='op'>-</span><span class='fl'>2.03816</span>,
+      <span class='op'>-</span><span class='fl'>0.8501509</span>, <span class='op'>-</span><span class='fl'>0.7932307</span>, <span class='op'>-</span><span class='fl'>0.2993399</span>, <span class='op'>-</span><span class='fl'>1.570789</span>, <span class='fl'>0.0575873</span>
+    <span class='op'>)</span>,
+    std.error <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+      <span class='fl'>1.24701799987009</span>, <span class='fl'>0.41407060026039</span>, <span class='fl'>0.808139200261935</span>,
+      <span class='fl'>1.42950999996502</span>, <span class='fl'>0.489168400451215</span>, <span class='fl'>1.07220799987689</span>, <span class='fl'>1.1937340001022</span>,
+      <span class='fl'>1.66129199992054</span>, <span class='fl'>0.536177600240816</span>, <span class='fl'>1.10964800004326</span>, <span class='fl'>0.780726300312728</span>,
+      <span class='fl'>0.618448600127771</span>, <span class='fl'>0.625866199758383</span>, <span class='fl'>0.146572899950844</span>,
+      <span class='fl'>0.574039500383031</span>, <span class='fl'>0.0316420922190679</span>
+    <span class='op'>)</span>
+  <span class='op'>)</span>, row.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='op'>-</span><span class='fl'>16L</span><span class='op'>)</span>, class <span class='op'>=</span> <span class='st'>"data.frame"</span><span class='op'>)</span>
 
-  <span class='co'># setup</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
-  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://indrajeetpatil.github.io/statsExpressions/'>statsExpressions</a></span><span class='op'>)</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span><span class='op'>(</span>tibble.width <span class='op'>=</span> <span class='cn'>Inf</span>, pillar.bold <span class='op'>=</span> <span class='cn'>TRUE</span>, pillar.neg <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='co'># setup</span>
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://indrajeetpatil.github.io/statsExpressions/'>statsExpressions</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span><span class='op'>(</span>tibble.width <span class='op'>=</span> <span class='cn'>Inf</span>, pillar.bold <span class='op'>=</span> <span class='cn'>TRUE</span>, pillar.neg <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-  <span class='co'># renaming to what `statsExpressions` expects</span>
-  <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span><span class='va'>mag</span>, estimate <span class='op'>=</span> <span class='va'>yi</span>, std.error <span class='op'>=</span> <span class='va'>sei</span><span class='op'>)</span>
+<span class='co'># ----------------------- parametric ---------------------------------------</span>
 
-  <span class='co'># ----------------------- parametric ---------------------------------------</span>
-
-  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'>meta_analysis</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>df</span><span class='op'>)</span><span class='op'>)</span>
-
-  <span class='co'># ----------------------- random -----------------------------------------</span>
-
-  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'>meta_analysis</span><span class='op'>(</span>
-    data <span class='op'>=</span> <span class='va'>df</span>,
-    type <span class='op'>=</span> <span class='st'>"random"</span>,
-    random <span class='op'>=</span> <span class='st'>"normal"</span>
-  <span class='op'>)</span><span class='op'>)</span>
-
-  <span class='co'># ----------------------- Bayes Factor -----------------------------------</span>
-
-  <span class='fu'>meta_analysis</span><span class='op'>(</span>
-    data <span class='op'>=</span> <span class='va'>df</span>,
-    type <span class='op'>=</span> <span class='st'>"bayes"</span>,
-
-    <span class='co'># additional arguments given to `metaBMA`</span>
-    iter <span class='op'>=</span> <span class='fl'>5000</span>,
-    summarize <span class='op'>=</span> <span class='st'>"integrate"</span>,
-    control <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>adapt_delta <span class='op'>=</span> <span class='fl'>0.99</span>, max_treedepth <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span>
-  <span class='op'>)</span>
-<span class='op'>}</span>
-</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Note: The second parameter is the study standard error not the standard error squared as in the metafor package.</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Loading the 'metafor' package (version 3.0-1). For an</span>
-#&gt; <span class='message'>introduction to the package please type: help(metafor)</span></div><div class='output co'>#&gt; <span class='message'>This is metaBMA version 0.6.7</span></div><div class='output co'>#&gt; <span class='message'>- Default priors were changed in version 0.6.6.</span></div><div class='output co'>#&gt; <span class='message'>- Since default priors may change again, it is safest to specify priors (even when using the defaults).</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 12</span>
+<span class='fu'>meta_analysis</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 12</span>
 #&gt;   <span style='font-weight: bold;'>term</span>    <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>std.error</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span> <span style='font-weight: bold;'>statistic</span>  <span style='font-weight: bold;'>p.value</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span> Overall   -<span style='color: #BB0000;'>0.767</span>     0.212       0.95    -<span style='color: #BB0000;'>1.18</span>    -<span style='color: #BB0000;'>0.351</span>     -<span style='color: #BB0000;'>3.62</span> 0.000<span style='text-decoration: underline;'>295</span>
 #&gt;   <span style='font-weight: bold;'>weight</span> <span style='font-weight: bold;'>method</span>                        <span style='font-weight: bold;'>effectsize</span>                     <span style='font-weight: bold;'>expression</span>
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                          <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
-#&gt; <span style='color: #BCBCBC;'>1</span>     <span style='color: #BB0000;'>NA</span> Meta-analysis using 'metafor' meta-analytic summary estimate <span style='color: #949494;'>&lt;language&gt;</span>
-#&gt; <span style='color: #949494;'># A tibble: 1 x 12</span>
+#&gt; <span style='color: #BCBCBC;'>1</span>     <span style='color: #BB0000;'>NA</span> Meta-analysis using 'metafor' meta-analytic summary estimate <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
+<span class='co'># ----------------------- random -----------------------------------------</span>
+
+<span class='fu'>meta_analysis</span><span class='op'>(</span><span class='va'>df</span>, type <span class='op'>=</span> <span class='st'>"random"</span>, random <span class='op'>=</span> <span class='st'>"normal"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 12</span>
 #&gt;   <span style='font-weight: bold;'>term</span>    <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>std.error</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span> <span style='font-weight: bold;'>statistic</span>  <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>weight</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span> Overall   -<span style='color: #BB0000;'>0.746</span>     0.234    -<span style='color: #BB0000;'>1.26</span>    -<span style='color: #BB0000;'>0.343</span>     -<span style='color: #BB0000;'>3.20</span> 0.000<span style='text-decoration: underline;'>501</span>     <span style='color: #BB0000;'>NA</span>
@@ -316,7 +305,18 @@ If they are not available, you will be asked to install them.</p>
 #&gt; <span style='color: #BCBCBC;'>1</span>       0.95 Robust meta-analysis using 'metaplus'
 #&gt;   <span style='font-weight: bold;'>effectsize</span>                     <span style='font-weight: bold;'>expression</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                          <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
-#&gt; <span style='color: #BCBCBC;'>1</span> meta-analytic summary estimate <span style='color: #949494;'>&lt;language&gt;</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 17</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> meta-analytic summary estimate <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
+<span class='co'># ----------------------- Bayes Factor -----------------------------------</span>
+
+<span class='fu'>meta_analysis</span><span class='op'>(</span>
+  <span class='va'>df</span>,
+  type <span class='op'>=</span> <span class='st'>"bayes"</span>,
+  <span class='co'># additional arguments to `metaBMA::meta_random()`</span>
+  iter <span class='op'>=</span> <span class='fl'>5000</span>,
+  summarize <span class='op'>=</span> <span class='st'>"integrate"</span>,
+  control <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>adapt_delta <span class='op'>=</span> <span class='fl'>0.99</span>, max_treedepth <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 17</span>
 #&gt;   <span style='font-weight: bold;'>term</span>    <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>std.error</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span> <span style='font-weight: bold;'>weight</span>  <span style='font-weight: bold;'>bf10</span>  <span style='font-weight: bold;'>rhat</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span> Overall   -<span style='color: #BB0000;'>0.650</span>     0.222       0.95   -<span style='color: #BB0000;'>1.10</span>     -<span style='color: #BB0000;'>0.235</span>     <span style='color: #BB0000;'>NA</span>  53.0    <span style='color: #BB0000;'>NA</span>
