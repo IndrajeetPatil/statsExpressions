@@ -6,8 +6,8 @@
 #'   `0`).
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
 #'   argument can be `"d"` (for Cohen's *d*) or `"g"` (for Hedge's *g*).
-#' @inheritParams ipmisc::long_to_wide_converter
-#' @inheritParams ipmisc::stats_type_switch
+#' @inheritParams long_to_wide_converter
+#' @inheritParams stats_type_switch
 #' @inheritParams expr_template
 #' @inheritParams two_sample_test
 #' @inheritParams oneway_anova
@@ -38,7 +38,6 @@
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
 #' @importFrom dplyr select mutate pull rename_all recode
-#' @importFrom ipmisc stats_type_switch
 #' @importFrom effectsize cohens_d hedges_g rank_biserial
 #' @importFrom stats t.test wilcox.test na.omit
 #' @importFrom rlang !!! exec
@@ -103,7 +102,7 @@ one_sample_test <- function(data,
                             top.text = NULL,
                             ...) {
   # standardize the type of statistics
-  type <- ipmisc::stats_type_switch(type)
+  type <- stats_type_switch(type)
 
   # preparing the vector
   x_vec <- stats::na.omit(data %>% dplyr::pull({{ x }}))

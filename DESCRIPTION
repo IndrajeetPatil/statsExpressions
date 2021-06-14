@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Tidy Dataframes and Expressions with Statistical Details
-Version: 1.1.0.9000
+Version: 1.2.0
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -30,14 +30,16 @@ Imports:
     dplyr,
     effectsize (>= 0.4.5),
     insight (>= 0.14.1),
-    ipmisc,
+    magrittr,
     parameters (>= 0.14.0),
-    performance (>= 0.7.2),
+    performance,
     purrr,
     rlang,
     stats,
+    tibble,
     tidyr,
-    WRS2 (>= 1.1-1)
+    WRS2 (>= 1.1-1),
+    zeallot
 Suggests:
     afex,
     ggplot2,

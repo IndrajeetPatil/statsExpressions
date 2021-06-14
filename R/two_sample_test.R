@@ -1,8 +1,8 @@
 #' @title Two-sample tests
 #' @name two_sample_test
 #'
-#' @inheritParams ipmisc::long_to_wide_converter
-#' @inheritParams ipmisc::stats_type_switch
+#' @inheritParams long_to_wide_converter
+#' @inheritParams stats_type_switch
 #' @inheritParams one_sample_test
 #' @inheritParams oneway_anova
 #' @inheritParams stats::t.test
@@ -132,7 +132,7 @@ two_sample_test <- function(data,
                             top.text = NULL,
                             ...) {
   # standardize the type of statistics
-  type <- ipmisc::stats_type_switch(type)
+  type <- stats_type_switch(type)
 
   # make sure both quoted and unquoted arguments are supported
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))

@@ -18,7 +18,6 @@
 #'
 #' @importFrom dplyr select case_when ungroup
 #' @importFrom correlation correlation
-#' @importFrom ipmisc stats_type_switch
 #' @importFrom parameters standardize_names
 #' @importFrom tidyr drop_na
 #'
@@ -59,7 +58,7 @@ corr_test <- function(data,
                       ...) {
 
   # see which method was used to specify type of correlation
-  type <- ipmisc::stats_type_switch(type)
+  type <- stats_type_switch(type)
 
   # ----------------- creating correlation dataframes -----------------------
 

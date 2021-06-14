@@ -60,7 +60,7 @@ tidy_model_parameters <- function(model, ...) {
 tidy_model_effectsize <- function(data, ...) {
   dplyr::bind_cols(
     data %>%
-      dplyr::mutate(effectsize = stats::na.omit(effectsize::get_effectsize_label(colnames(.)))[[1]]) %>%
+      dplyr::mutate(effectsize = stats::na.omit(effectsize::get_effectsize_label(colnames(.)))) %>%
       parameters::standardize_names(style = "broom") %>%
       dplyr::select(-dplyr::contains("term")),
     dplyr::rename_with(get_ci_method(data), ~ paste0("conf.", .x))

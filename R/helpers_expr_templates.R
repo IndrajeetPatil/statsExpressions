@@ -55,9 +55,8 @@
 #'   mostly relevant in the context of `ggstatsplot` functions.
 #' @param ... Currently ignored.
 #' @inheritParams oneway_anova
-#' @inheritParams ipmisc::long_to_wide_converter
+#' @inheritParams long_to_wide_converter
 #'
-#' @importFrom ipmisc format_num
 #' @importFrom insight format_value
 #'
 #' @examples
@@ -125,8 +124,8 @@ expr_template <- function(data,
   }
 
   # if expression text elements are `NULL`
-  if (isTRUE(paired) && is.null(n.text)) n.text <- quote(italic("n")["pairs"])
-  if (isFALSE(paired) && is.null(n.text)) n.text <- quote(italic("n")["obs"])
+  if (isTRUE(paired)) n.text <- n.text %||% quote(italic("n")["pairs"])
+  if (isFALSE(paired)) n.text <- n.text %||% quote(italic("n")["obs"])
 
   # -------------------------- Bayesian analysis ------------------------------
 
@@ -318,8 +317,8 @@ estimate_type_switch <- function(x) {
 
 prior_switch <- function(x) {
   dplyr::case_when(
-    grepl("contingency", tolower(x)) ~ quote(italic("a")["Gunel-Dickey"]),
-    grepl("correlation", tolower(x)) ~ quote(italic("r")["beta"]^"JZS"),
+    grepl("contingency", x, TRUE) ~ quote(italic("a")["Gunel-Dickey"]),
+    grepl("correlation", x, TRUE) ~ quote(italic("r")["beta"]^"JZS"),
     TRUE ~ quote(italic("r")["Cauchy"]^"JZS")
   )
 }
@@ -328,10 +327,10 @@ prior_switch <- function(x) {
 
 prior_type_switch <- function(x) {
   dplyr::case_when(
-    grepl("contingency", tolower(x)) ~ list("Cramer"),
-    grepl("correlation", tolower(x)) ~ list("Pearson"),
-    grepl("t-|meta-", tolower(x)) ~ list("difference"),
-    grepl("linear", tolower(x)) ~ list("Bayesian"),
+    grepl("contingency", x, TRUE) ~ list("Cramer"),
+    grepl("correlation", x, TRUE) ~ list("Pearson"),
+    grepl("t-|meta-", x, TRUE) ~ list("difference"),
+    grepl("linear", x, TRUE) ~ list("Bayesian"),
     TRUE ~ list(NULL)
   )[[1]]
 }

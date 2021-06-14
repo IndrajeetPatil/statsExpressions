@@ -16,7 +16,7 @@
   ],
   "issueTracker": "https://github.com/IndrajeetPatil/statsExpressions/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.1.0.9000",
+  "version": "1.2.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -240,15 +240,15 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "ipmisc",
-      "name": "ipmisc",
+      "identifier": "magrittr",
+      "name": "magrittr",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=ipmisc"
+      "sameAs": "https://CRAN.R-project.org/package=magrittr"
     },
     {
       "@type": "SoftwareApplication",
@@ -267,7 +267,6 @@
       "@type": "SoftwareApplication",
       "identifier": "performance",
       "name": "performance",
-      "version": ">= 0.7.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -307,6 +306,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "tibble",
+      "name": "tibble",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=tibble"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "tidyr",
       "name": "tidyr",
       "provider": {
@@ -329,6 +340,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=WRS2"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "zeallot",
+      "name": "zeallot",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=zeallot"
     }
   ],
   "contIntegration": ["https://travis-ci.org/IndrajeetPatil/statsExpressions", "https://ci.appveyor.com/project/IndrajeetPatil/statsExpressions", "https://coveralls.io/github/IndrajeetPatil/statsExpressions?branch=master", "https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master"],
@@ -398,6 +421,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "5198.54KB",
+  "fileSize": "5220.16KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }
