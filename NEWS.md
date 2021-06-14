@@ -1,9 +1,12 @@
-# statsExpressions 1.1.0.9000
+# statsExpressions 1.2.0
 
 MAJOR CHANGES
 
   - Removes the redundant `bf_extractor` function. The `tidy_model_parameters`
     does the same thing.
+
+  - Exports more utility functions (`long_to_wide_converter`, `format_num`,
+    `stats_type_switch`) to get rid of reliance on `ipmisc` package.
 
 # statsExpressions 1.1.0
 

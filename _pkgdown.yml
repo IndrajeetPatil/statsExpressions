@@ -42,6 +42,9 @@ reference:
       - matches("_template")
       - matches("tidy_")
       - matches("package")
+      - format_num
+      - stats_type_switch
+      - long_to_wide_converter
 
   - title: Reexported functions
     desc:  Useful functions re-exported from other packages.

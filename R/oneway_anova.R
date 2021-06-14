@@ -9,8 +9,8 @@
 #' analyses, see the following vignette-
 #' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 #'
-#' @inheritParams ipmisc::long_to_wide_converter
-#' @inheritParams ipmisc::stats_type_switch
+#' @inheritParams long_to_wide_converter
+#' @inheritParams stats_type_switch
 #' @param conf.level Scalar between `0` and `1`. If unspecified, the defaults
 #'   return `95%` confidence/credible intervals (`0.95`).
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
@@ -44,7 +44,6 @@
 #' @importFrom WRS2 t1way rmanova wmcpAKP
 #' @importFrom stats friedman.test kruskal.test
 #' @importFrom effectsize rank_epsilon_squared kendalls_w omega_squared eta_squared
-#' @importFrom ipmisc long_to_wide_converter
 #' @importFrom BayesFactor ttestBF anovaBF
 #' @importFrom parameters model_parameters
 #' @importFrom performance model_performance
@@ -160,14 +159,14 @@ oneway_anova <- function(data,
                          ...) {
 
   # standardize the type of statistics
-  type <- ipmisc::stats_type_switch(type)
+  type <- stats_type_switch(type)
 
   # make sure both quoted and unquoted arguments are supported
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
   # data cleanup
   data %<>%
-    ipmisc::long_to_wide_converter(
+    long_to_wide_converter(
       x = {{ x }},
       y = {{ y }},
       subject.id = {{ subject.id }},
@@ -290,7 +289,7 @@ oneway_anova <- function(data,
 
     # for paired designs, WRS2 currently doesn't return effect size
     if (isTRUE(paired)) {
-      effsize_df <- ipmisc::long_to_wide_converter(data, {{ x }}, {{ y }}) %>%
+      effsize_df <- long_to_wide_converter(data, {{ x }}, {{ y }}) %>%
         wAKPavg(dplyr::select(-rowid), tr = tr, nboot = nboot) %>%
         dplyr::mutate(effectsize = "Algina-Keselman-Penfield robust standardized difference average")
 

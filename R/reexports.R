@@ -1,20 +1,32 @@
 # ----------------------- tidyverse -------------------------------------
 
 #' @export
-#' @importFrom ipmisc "%>%"
-ipmisc::`%>%`
+#' @importFrom magrittr "%>%"
+magrittr::`%>%`
 
 #' @export
-#' @importFrom ipmisc "%<>%"
-ipmisc::`%<>%`
+#' @importFrom magrittr "%<>%"
+magrittr::`%<>%`
 
 #' @export
-#' @importFrom ipmisc "%$%"
-ipmisc::`%$%`
+#' @importFrom magrittr "%$%"
+magrittr::`%$%`
 
 #' @export
-#' @importFrom ipmisc "%<-%"
-ipmisc::`%<-%`
+#' @importFrom magrittr "%T>%"
+magrittr::`%T>%`
+
+#' @export
+#' @importFrom tibble tibble
+tibble::tibble
+
+#' @export
+#' @importFrom tibble enframe
+tibble::enframe
+
+#' @export
+#' @importFrom tibble as_tibble
+tibble::as_tibble
 
 #' @export
 #' @importFrom rlang "%||%"
@@ -28,20 +40,18 @@ rlang::`%|%`
 #' @importFrom rlang ":="
 rlang::`:=`
 
-#' @export
-#' @importFrom ipmisc tibble
-ipmisc::tibble
+# ----------------------- zeallot -------------------------------------
 
 #' @export
-#' @importFrom ipmisc as_tibble
-ipmisc::as_tibble
+#' @importFrom zeallot "%<-%"
+zeallot::`%<-%`
+
+#' @export
+#' @importFrom zeallot "%->%"
+zeallot::`%->%`
 
 # ----------------------- easystats -------------------------------------
 
 #' @export
 #' @importFrom correlation correlation
 correlation::correlation
-
-#' @export
-#' @importFrom insight standardize_names
-insight::standardize_names

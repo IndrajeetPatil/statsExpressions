@@ -114,7 +114,7 @@ contingency_table <- function(data,
                               ...) {
 
   # check the data contains needed column
-  type <- ipmisc::stats_type_switch(type)
+  type <- stats_type_switch(type)
 
   # one-way or two-way table?
   test <- ifelse(!rlang::quo_is_null(rlang::enquo(y)), "two.way", "one.way")

@@ -74,7 +74,7 @@ meta_analysis <- function(data,
                           top.text = NULL,
                           ...) {
   # check the type of test
-  type <- ipmisc::stats_type_switch(type)
+  type <- stats_type_switch(type)
 
   # additional arguments
   if (type != "bayes") .f.args <- list(random = random, yi = quote(estimate), sei = quote(std.error), ...)
