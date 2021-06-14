@@ -19,7 +19,13 @@
     <loc>https://indrajeetpatil.github.io/statsExpressions//reference/expr_template.html</loc>
   </url>
   <url>
+    <loc>https://indrajeetpatil.github.io/statsExpressions//reference/format_num.html</loc>
+  </url>
+  <url>
     <loc>https://indrajeetpatil.github.io/statsExpressions//reference/iris_long.html</loc>
+  </url>
+  <url>
+    <loc>https://indrajeetpatil.github.io/statsExpressions//reference/long_to_wide_converter.html</loc>
   </url>
   <url>
     <loc>https://indrajeetpatil.github.io/statsExpressions//reference/meta_analysis.html</loc>
@@ -41,6 +47,9 @@
   </url>
   <url>
     <loc>https://indrajeetpatil.github.io/statsExpressions//reference/statsExpressions-package.html</loc>
+  </url>
+  <url>
+    <loc>https://indrajeetpatil.github.io/statsExpressions//reference/stats_type_switch.html</loc>
   </url>
   <url>
     <loc>https://indrajeetpatil.github.io/statsExpressions//reference/tidy_model_effectsize.html</loc>
