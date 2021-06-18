@@ -1,5 +1,11 @@
 # statsExpressions 1.2.0
 
+NEW FUNCTIONS
+
+  - `centrality_description()` function added to describe distribution for each
+    level of a grouping variable and create an expression describing a
+    centrality measure.
+
 MAJOR CHANGES
 
   - Removes the redundant `bf_extractor` function. The `tidy_model_parameters`

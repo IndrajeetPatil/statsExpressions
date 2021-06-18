@@ -567,6 +567,30 @@ set.seed(123)
 meta_analysis(data = df, type = "bayes")
 ```
 
+# Centrality description
+
+```{r centrality}
+# ----------------------- parametric -----------------------
+
+set.seed(123)
+centrality_description(iris, Species, Sepal.Length)
+
+# ----------------------- non-parametric -------------------
+
+set.seed(123)
+centrality_description(mtcars, am, wt, type = "n")
+
+# ----------------------- robust ---------------------------
+
+set.seed(123)
+centrality_description(ToothGrowth, supp, len, type = "r")
+
+# ----------------------- Bayesian -------------------------
+
+set.seed(123)
+centrality_description(sleep, group, extra, type = "b")
+```
+
 # Suggestions
 
-If you find any bugs or have any suggestions/remarks, please file an issue on GitHub: <https://github.com/IndrajeetPatil/ggstatsplot/issues>
+If you find any bugs or have any suggestions/remarks, please file an issue on GitHub: <https://github.com/IndrajeetPatil/statsExpressions/issues>

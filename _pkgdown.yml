@@ -36,6 +36,11 @@ reference:
     contents:
       - matches("meta_")
 
+  - title: Expressions for centrality measure
+    desc: Functions to create expressions for mean, median, trimmed mean, MAP
+    contents:
+      - matches("centrality_")
+
   - title: Helper functions
     desc: Note that these helper functions are not stable and may change in the future.
     contents:

@@ -27,7 +27,8 @@ utils::globalVariables(
     "r2.component",
     "conf.level",
     ".fn",
-    ".ns"
+    ".ns",
+    "n"
   ),
   package = "statsExpressions",
   add = FALSE
