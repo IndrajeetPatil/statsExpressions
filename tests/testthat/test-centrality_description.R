@@ -4,6 +4,7 @@ test_that(
     options(tibble.width = Inf)
 
     # data without NAs
+    set.seed(123)
     df <- purrr::pmap_dfr(
       .l = list(
         data = list(iris),
@@ -20,6 +21,7 @@ test_that(
     expect_snapshot(df)
 
     # data with NAs
+    set.seed(123)
     df_na <- purrr::pmap_dfr(
       .l = list(
         data = list(bugs_long),

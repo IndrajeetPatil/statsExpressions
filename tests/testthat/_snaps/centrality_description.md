@@ -6,18 +6,18 @@
       # A tibble: 12 x 16
          Species    Sepal.Length n_obs variable     std.dev   iqr conf.low conf.high
          <fct>             <dbl> <int> <chr>          <dbl> <dbl>    <dbl>     <dbl>
-       1 setosa             5.01    50 Sepal.Length   0.352 0.400     4.90      5.08
-       2 versicolor         5.94    50 Sepal.Length   0.516 0.7       5.81      6.06
-       3 virginica          6.59    50 Sepal.Length   0.636 0.750     6.42      6.74
+       1 setosa             5.01    50 Sepal.Length   0.352 0.400     4.90      5.10
+       2 versicolor         5.94    50 Sepal.Length   0.516 0.7       5.80      6.07
+       3 virginica          6.59    50 Sepal.Length   0.636 0.750     6.39      6.79
        4 setosa             5       50 Sepal.Length  NA     0.400     4.9       5.1 
        5 versicolor         5.9     50 Sepal.Length  NA     0.7       5.7       6.1 
-       6 virginica          6.5     50 Sepal.Length  NA     0.750     6.3       6.7 
-       7 setosa             5       50 Sepal.Length   0.352 0.400     4.88      5.11
-       8 versicolor         5.91    50 Sepal.Length   0.516 0.7       5.77      6.07
-       9 virginica          6.55    50 Sepal.Length   0.636 0.750     6.42      6.75
-      10 setosa             5.02    50 Sepal.Length  NA     0.400     4.92      5.11
-      11 versicolor         5.75    50 Sepal.Length  NA     0.7       5.58      6.18
-      12 virginica          6.40    50 Sepal.Length  NA     0.750     6.26      6.72
+       6 virginica          6.5     50 Sepal.Length  NA     0.750     6.4       6.7 
+       7 setosa             5       50 Sepal.Length   0.352 0.400     4.92      5.10
+       8 versicolor         5.91    50 Sepal.Length   0.516 0.7       5.77      6.09
+       9 virginica          6.55    50 Sepal.Length   0.636 0.750     6.37      6.74
+      10 setosa             5.02    50 Sepal.Length  NA     0.400     4.91      5.11
+      11 versicolor         5.75    50 Sepal.Length  NA     0.7       5.57      6.13
+      12 virginica          6.40    50 Sepal.Length  NA     0.750     6.26      6.53
            min   max skewness kurtosis n.missing expression                          
          <dbl> <dbl>    <dbl>    <dbl>     <int> <chr>                               
        1   4.3   5.8    0.120  -0.253          0 list(~widehat(mu)[mean]=='5.01')    
