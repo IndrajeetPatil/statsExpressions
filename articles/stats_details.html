@@ -117,7 +117,7 @@
       <h1 data-toc-skip>Test and effect size details</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2021-06-17</h4>
+            <h4 class="date">2021-06-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/stats_details.Rmd"><code>vignettes/stats_details.Rmd</code></a></small>
       <div class="hidden name"><code>stats_details.Rmd</code></div>
@@ -236,6 +236,45 @@
 <h1 class="hasAnchor">
 <a href="#summary-of-tests-and-effect-sizes" class="anchor"></a>Summary of tests and effect sizes</h1>
 <p>Here a go-to summary about statistical test carried out and the returned effect size for each function is provided. This should be useful if one needs to find out more information about how an argument is resolved in the underlying package or if one wishes to browse the source code. So, for example, if you want to know more about how one-way (between-subjects) ANOVA, you can run <code><a href="https://rdrr.io/r/stats/oneway.test.html">?stats::oneway.test</a></code> in your R console.</p>
+<div id="centrality_description" class="section level2">
+<h2 class="hasAnchor">
+<a href="#centrality_description" class="anchor"></a><code>centrality_description</code>
+</h2>
+<table class="table">
+<colgroup>
+<col width="28%">
+<col width="23%">
+<col width="47%">
+</colgroup>
+<thead><tr class="header">
+<th>Type</th>
+<th>Measure</th>
+<th>Function used</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Parametric</td>
+<td>mean</td>
+<td><code><a href="https://easystats.github.io/parameters/reference/describe_distribution.html">parameters::describe_distribution</a></code></td>
+</tr>
+<tr class="even">
+<td>Non-parametric</td>
+<td>median</td>
+<td><code><a href="https://easystats.github.io/parameters/reference/describe_distribution.html">parameters::describe_distribution</a></code></td>
+</tr>
+<tr class="odd">
+<td>Robust</td>
+<td>trimmed mean</td>
+<td><code><a href="https://easystats.github.io/parameters/reference/describe_distribution.html">parameters::describe_distribution</a></code></td>
+</tr>
+<tr class="even">
+<td>Bayesian</td>
+<td>MAP (maximum <em>a posteriori</em> probability) estimate</td>
+<td><code><a href="https://easystats.github.io/parameters/reference/describe_distribution.html">parameters::describe_distribution</a></code></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div id="two_sample_test-oneway_anova" class="section level2">
 <h2 class="hasAnchor">
 <a href="#two_sample_test-oneway_anova" class="anchor"></a><code>two_sample_test</code> + <code>oneway_anova</code>
@@ -884,7 +923,7 @@
 <div id="suggestions" class="section level1">
 <h1 class="hasAnchor">
 <a href="#suggestions" class="anchor"></a>Suggestions</h1>
-<p>If you find any bugs or have any suggestions/remarks, please file an issue on GitHub: <a href="https://github.com/IndrajeetPatil/ggstatsplot/issues" class="uri">https://github.com/IndrajeetPatil/ggstatsplot/issues</a></p>
+<p>If you find any bugs or have any suggestions/remarks, please file an issue on GitHub: <a href="https://github.com/IndrajeetPatil/statsExpressions/issues" class="uri">https://github.com/IndrajeetPatil/statsExpressions/issues</a></p>
 </div>
   </div>
 

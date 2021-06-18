@@ -166,7 +166,7 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions"><img src="https://github.com/IndrajeetPatil/statsExpressions/workflows/lint/badge.svg" alt="lints"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2021--06--14-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/badge/last%20change-2021--06--18-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/statsExpressions/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
@@ -404,7 +404,7 @@
 <span class="co">#&gt; 1 wt         cyl             22.8        2 0.0000112</span>
 <span class="co">#&gt;   method                       estimate conf.level conf.low conf.high</span>
 <span class="co">#&gt;   &lt;chr&gt;                           &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Kruskal-Wallis rank sum test    0.736       0.95    0.590     0.837</span>
+<span class="co">#&gt; 1 Kruskal-Wallis rank sum test    0.736       0.95    0.602     0.839</span>
 <span class="co">#&gt;   effectsize      conf.method          conf.iterations expression</span>
 <span class="co">#&gt;   &lt;chr&gt;           &lt;chr&gt;                          &lt;int&gt; &lt;list&gt;    </span>
 <span class="co">#&gt; 1 Epsilon2 (rank) percentile bootstrap             100 &lt;language&gt;</span>
@@ -413,7 +413,7 @@
 <span class="co">#&gt; # A tibble: 1 x 11</span>
 <span class="co">#&gt;   statistic    df df.error p.value estimate conf.level conf.low conf.high</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      12.7     2     12.2 0.00102     1.06       0.95    0.816      1.42</span>
+<span class="co">#&gt; 1      12.7     2     12.2 0.00102     1.03       0.95    0.791      1.53</span>
 <span class="co">#&gt;   effectsize                        </span>
 <span class="co">#&gt;   &lt;chr&gt;                             </span>
 <span class="co">#&gt; 1 Explanatory measure of effect size</span>
@@ -502,6 +502,19 @@
 <p>For <strong>all</strong> statistical test expressions, the default template attempt to follow the gold standard for statistical reporting.</p>
 <p>For example, here are results from Welch’s <em>t</em>-test:</p>
 <p><img src="reference/figures/stats_reporting_format.png" align="center"></p>
+<div id="example-expressions-for-centrality-measure" class="section level2">
+<h2 class="hasAnchor">
+<a href="#example-expressions-for-centrality-measure" class="anchor"></a>Example: Expressions for centrality measure</h2>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+
+<span class="co"># displaying mean for each level of `cyl`</span>
+<span class="fu"><a href="reference/centrality_description.html">centrality_description</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span><span class="op">)</span> |&gt;
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">wt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_label</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">expression</span><span class="op">)</span>, parse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<p><img src="reference/figures/README-centrality-1.png" width="100%"></p>
+</div>
 <div id="example-expressions-for-one-way-anovas" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example-expressions-for-one-way-anovas" class="anchor"></a>Example: Expressions for one-way ANOVAs</h2>
@@ -509,7 +522,7 @@
 <h3 class="hasAnchor">
 <a href="#between-subjects-design" class="anchor"></a>Between-subjects design</h3>
 <p>Let’s say we want to check differences in weight of the vehicle based on number of cylinders in the engine and wish to carry out robust trimmed-means ANOVA:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -533,7 +546,7 @@
 <h3 class="hasAnchor">
 <a href="#within-subjects-design" class="anchor"></a>Within-subjects design</h3>
 <p>Let’s now see an example of a repeated measures one-way ANOVA.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -563,7 +576,7 @@
 <div id="between-subjects-design-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#between-subjects-design-1" class="anchor"></a>Between-subjects design</h3>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -588,7 +601,7 @@
 <h3 class="hasAnchor">
 <a href="#within-subjects-design-1" class="anchor"></a>Within-subjects design</h3>
 <p>We can also have a look at a repeated measures design and the related expressions.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -617,7 +630,7 @@
 <div id="example-expressions-for-one-sample-tests" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example-expressions-for-one-sample-tests" class="anchor"></a>Example: Expressions for one-sample tests</h2>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -638,7 +651,7 @@
 <h2 class="hasAnchor">
 <a href="#example-expressions-for-correlation-analyses" class="anchor"></a>Example: Expressions for correlation analyses</h2>
 <p>Let’s look at another example where we want to run correlation analysis:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -658,7 +671,7 @@
 <h2 class="hasAnchor">
 <a href="#example-expressions-for-contingency-table-analysis" class="anchor"></a>Example: Expressions for contingency table analysis</h2>
 <p>For categorical/nominal data - one-sample:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -680,7 +693,7 @@
   <span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-gof-1.png" width="100%"></p>
 <p>You can also use these function to get the expression in return without having to display them in plots:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -696,7 +709,7 @@
 <div id="example-expressions-for-meta-analysis" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example-expressions-for-meta-analysis" class="anchor"></a>Example: Expressions for meta-analysis</h2>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">metaviz</span><span class="op">)</span>
@@ -723,7 +736,7 @@
 <h1 class="hasAnchor">
 <a href="#customizing-details-to-your-liking" class="anchor"></a>Customizing details to your liking</h1>
 <p>Sometimes you may not wish include so many details in the subtitle. In that case, you can extract the expression and copy-paste only the part you wish to include. For example, here only statistic and <em>p</em>-values are included:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -750,6 +763,45 @@
 <h1 class="hasAnchor">
 <a href="#summary-of-tests-and-effect-sizes" class="anchor"></a>Summary of tests and effect sizes</h1>
 <p>Here a go-to summary about statistical test carried out and the returned effect size for each function is provided. This should be useful if one needs to find out more information about how an argument is resolved in the underlying package or if one wishes to browse the source code. So, for example, if you want to know more about how one-way (between-subjects) ANOVA, you can run <code><a href="https://rdrr.io/r/stats/oneway.test.html">?stats::oneway.test</a></code> in your R console.</p>
+<div id="centrality_description" class="section level2">
+<h2 class="hasAnchor">
+<a href="#centrality_description" class="anchor"></a><code>centrality_description</code>
+</h2>
+<table class="table">
+<colgroup>
+<col width="15%">
+<col width="49%">
+<col width="35%">
+</colgroup>
+<thead><tr class="header">
+<th>Type</th>
+<th>Measure</th>
+<th>Function used</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Parametric</td>
+<td>mean</td>
+<td><code><a href="https://easystats.github.io/parameters/reference/describe_distribution.html">parameters::describe_distribution</a></code></td>
+</tr>
+<tr class="even">
+<td>Non-parametric</td>
+<td>median</td>
+<td><code><a href="https://easystats.github.io/parameters/reference/describe_distribution.html">parameters::describe_distribution</a></code></td>
+</tr>
+<tr class="odd">
+<td>Robust</td>
+<td>trimmed mean</td>
+<td><code><a href="https://easystats.github.io/parameters/reference/describe_distribution.html">parameters::describe_distribution</a></code></td>
+</tr>
+<tr class="even">
+<td>Bayesian</td>
+<td>MAP (maximum <em>a posteriori</em> probability) estimate</td>
+<td><code><a href="https://easystats.github.io/parameters/reference/describe_distribution.html">parameters::describe_distribution</a></code></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div id="two_sample_test--oneway_anova" class="section level2">
 <h2 class="hasAnchor">
 <a href="#two_sample_test--oneway_anova" class="anchor"></a><code>two_sample_test</code> + <code>oneway_anova</code>

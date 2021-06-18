@@ -117,7 +117,7 @@
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2021-06-17</h4>
+            <h4 class="date">2021-06-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -988,10 +988,81 @@
 <span class="co">#&gt; 1 &lt;language&gt;</span>
 <span class="co">#&gt; 2 &lt;language&gt;</span></code></pre></div>
 </div>
+<div id="centrality-description" class="section level1">
+<h1 class="hasAnchor">
+<a href="#centrality-description" class="anchor"></a>Centrality description</h1>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># ----------------------- parametric -----------------------</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="fu"><a href="../../reference/centrality_description.html">centrality_description</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span>, <span class="va">Sepal.Length</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 3 x 15</span>
+<span class="co">#&gt;   Species    Sepal.Length n_obs variable     std.dev   iqr conf.low conf.high</span>
+<span class="co">#&gt;   &lt;fct&gt;             &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 setosa             5.01    50 Sepal.Length   0.352 0.400     4.90      5.10</span>
+<span class="co">#&gt; 2 versicolor         5.94    50 Sepal.Length   0.516 0.7       5.80      6.07</span>
+<span class="co">#&gt; 3 virginica          6.59    50 Sepal.Length   0.636 0.750     6.39      6.79</span>
+<span class="co">#&gt;     min   max skewness kurtosis n.missing expression                      </span>
+<span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;int&gt; &lt;chr&gt;                           </span>
+<span class="co">#&gt; 1   4.3   5.8    0.120  -0.253          0 list(~widehat(mu)[mean]=='5.01')</span>
+<span class="co">#&gt; 2   4.9   7      0.105  -0.533          0 list(~widehat(mu)[mean]=='5.94')</span>
+<span class="co">#&gt; 3   4.9   7.9    0.118   0.0329         0 list(~widehat(mu)[mean]=='6.59')</span>
+<span class="co">#&gt;   n_label               </span>
+<span class="co">#&gt;   &lt;chr&gt;                 </span>
+<span class="co">#&gt; 1 "setosa\n(n = 50)"    </span>
+<span class="co">#&gt; 2 "versicolor\n(n = 50)"</span>
+<span class="co">#&gt; 3 "virginica\n(n = 50)"</span>
+
+<span class="co"># ----------------------- non-parametric -------------------</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="fu"><a href="../../reference/centrality_description.html">centrality_description</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">am</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 2 x 15</span>
+<span class="co">#&gt;   am       wt n_obs variable   mad   iqr conf.low conf.high   min   max skewness</span>
+<span class="co">#&gt;   &lt;fct&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 0      3.52    19 wt       0.452 0.41      3.44      3.84  2.46  5.42    1.15 </span>
+<span class="co">#&gt; 2 1      2.32    13 wt       0.682 0.942     1.94      2.78  1.51  3.57    0.269</span>
+<span class="co">#&gt;   kurtosis n.missing expression                         n_label      </span>
+<span class="co">#&gt;      &lt;dbl&gt;     &lt;int&gt; &lt;chr&gt;                              &lt;chr&gt;        </span>
+<span class="co">#&gt; 1    1.06          0 list(~widehat(mu)[median]=='3.52') "0\n(n = 19)"</span>
+<span class="co">#&gt; 2   -0.654         0 list(~widehat(mu)[median]=='2.32') "1\n(n = 13)"</span>
+
+<span class="co"># ----------------------- robust ---------------------------</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="fu"><a href="../../reference/centrality_description.html">centrality_description</a></span><span class="op">(</span><span class="va">ToothGrowth</span>, <span class="va">supp</span>, <span class="va">len</span>, type <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 2 x 15</span>
+<span class="co">#&gt;   supp    len n_obs variable std.dev   iqr conf.low conf.high   min   max</span>
+<span class="co">#&gt;   &lt;fct&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 OJ     21.7    30 len         6.61  10.9     18.1      23.6   8.2  30.9</span>
+<span class="co">#&gt; 2 VC     16.6    30 len         8.27  12.5     13.6      19.9   4.2  33.9</span>
+<span class="co">#&gt;   skewness kurtosis n.missing expression                          </span>
+<span class="co">#&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;int&gt; &lt;chr&gt;                               </span>
+<span class="co">#&gt; 1   -0.580   -0.831         0 list(~widehat(mu)[trimmed]=='21.71')</span>
+<span class="co">#&gt; 2    0.306   -0.700         0 list(~widehat(mu)[trimmed]=='16.58')</span>
+<span class="co">#&gt;   n_label       </span>
+<span class="co">#&gt;   &lt;chr&gt;         </span>
+<span class="co">#&gt; 1 "OJ\n(n = 30)"</span>
+<span class="co">#&gt; 2 "VC\n(n = 30)"</span>
+
+<span class="co"># ----------------------- Bayesian -------------------------</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="fu"><a href="../../reference/centrality_description.html">centrality_description</a></span><span class="op">(</span><span class="va">sleep</span>, <span class="va">group</span>, <span class="va">extra</span>, type <span class="op">=</span> <span class="st">"b"</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 2 x 14</span>
+<span class="co">#&gt;   group  extra n_obs variable   iqr conf.low conf.high   min   max skewness</span>
+<span class="co">#&gt;   &lt;fct&gt;  &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 1     0.0579    10 extra     2.8   -1.29        3.55  -1.6   3.7    0.581</span>
+<span class="co">#&gt; 2 2     0.973     10 extra     3.82   0.0527      4.79  -0.1   5.5    0.386</span>
+<span class="co">#&gt;   kurtosis n.missing expression                      n_label      </span>
+<span class="co">#&gt;      &lt;dbl&gt;     &lt;int&gt; &lt;chr&gt;                           &lt;chr&gt;        </span>
+<span class="co">#&gt; 1   -0.630         0 list(~widehat(mu)[MAP]=='0.06') "1\n(n = 10)"</span>
+<span class="co">#&gt; 2   -1.42          0 list(~widehat(mu)[MAP]=='0.97') "2\n(n = 10)"</span></code></pre></div>
+</div>
 <div id="suggestions" class="section level1">
 <h1 class="hasAnchor">
 <a href="#suggestions" class="anchor"></a>Suggestions</h1>
-<p>If you find any bugs or have any suggestions/remarks, please file an issue on GitHub: <a href="https://github.com/IndrajeetPatil/ggstatsplot/issues" class="uri">https://github.com/IndrajeetPatil/ggstatsplot/issues</a></p>
+<p>If you find any bugs or have any suggestions/remarks, please file an issue on GitHub: <a href="https://github.com/IndrajeetPatil/statsExpressions/issues" class="uri">https://github.com/IndrajeetPatil/statsExpressions/issues</a></p>
 </div>
   </div>
 
