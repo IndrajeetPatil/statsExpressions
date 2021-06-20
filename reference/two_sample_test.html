@@ -453,15 +453,19 @@ mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
   y <span class='op'>=</span> <span class='va'>extra</span>,
   type <span class='op'>=</span> <span class='st'>"bayes"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 13</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 14</span>
 #&gt;   <span style='font-weight: bold;'>term</span>       <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span>    <span style='font-weight: bold;'>pd</span> <span style='font-weight: bold;'>rope.percentage</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span> Difference    1.15        0.95   -<span style='color: #BB0000;'>0.400</span>     2.73  0.937          0.061<span style='text-decoration: underline;'>2</span>
 #&gt; <span style='color: #BCBCBC;'>2</span> Cohens_d     -<span style='color: #BB0000;'>0.593</span>       0.95   -<span style='color: #BB0000;'>1.46</span>      0.227 0.934          0.060<span style='text-decoration: underline;'>9</span>
-#&gt;   <span style='font-weight: bold;'>prior.distribution</span> <span style='font-weight: bold;'>prior.location</span> <span style='font-weight: bold;'>prior.scale</span>  <span style='font-weight: bold;'>bf10</span> <span style='font-weight: bold;'>method</span>          <span style='font-weight: bold;'>expression</span>
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
-#&gt; <span style='color: #BCBCBC;'>1</span> cauchy                          0       0.707  1.27 Bayesian t-test <span style='color: #949494;'>&lt;language&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>2</span> cauchy                          0       0.707  1.27 Bayesian t-test <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
+#&gt;   <span style='font-weight: bold;'>prior.distribution</span> <span style='font-weight: bold;'>prior.location</span> <span style='font-weight: bold;'>prior.scale</span>  <span style='font-weight: bold;'>bf10</span> <span style='font-weight: bold;'>method</span>          <span style='font-weight: bold;'>log_e_bf10</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> cauchy                          0       0.707  1.27 Bayesian t-test      0.236
+#&gt; <span style='color: #BCBCBC;'>2</span> cauchy                          0       0.707  1.27 Bayesian t-test     <span style='color: #BB0000;'>NA</span>    
+#&gt;   <span style='font-weight: bold;'>expression</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
+#&gt; <span style='color: #BCBCBC;'>1</span> <span style='color: #949494;'>&lt;language&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>2</span> <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
 <span class='co'># within-subjects design</span>
 <span class='fu'>two_sample_test</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>VR_dilemma</span>,
@@ -471,15 +475,19 @@ mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
   subject.id <span class='op'>=</span> <span class='va'>id</span>,
   type <span class='op'>=</span> <span class='st'>"bayes"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 13</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 14</span>
 #&gt;   <span style='font-weight: bold;'>term</span>       <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span>    <span style='font-weight: bold;'>pd</span> <span style='font-weight: bold;'>rope.percentage</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span> Difference    0.172       0.95   0.073<span style='text-decoration: underline;'>3</span>     0.259  1.00               0
 #&gt; <span style='color: #BCBCBC;'>2</span> Cohens_d     -<span style='color: #BB0000;'>0.632</span>       0.95  -<span style='color: #BB0000;'>0.986</span>     -<span style='color: #BB0000;'>0.258</span>  1.00               0
-#&gt;   <span style='font-weight: bold;'>prior.distribution</span> <span style='font-weight: bold;'>prior.location</span> <span style='font-weight: bold;'>prior.scale</span>  <span style='font-weight: bold;'>bf10</span> <span style='font-weight: bold;'>method</span>          <span style='font-weight: bold;'>expression</span>
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
-#&gt; <span style='color: #BCBCBC;'>1</span> cauchy                          0       0.707  77.1 Bayesian t-test <span style='color: #949494;'>&lt;language&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>2</span> cauchy                          0       0.707  77.1 Bayesian t-test <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'><span class='co'># }</span>
+#&gt;   <span style='font-weight: bold;'>prior.distribution</span> <span style='font-weight: bold;'>prior.location</span> <span style='font-weight: bold;'>prior.scale</span>  <span style='font-weight: bold;'>bf10</span> <span style='font-weight: bold;'>method</span>          <span style='font-weight: bold;'>log_e_bf10</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> cauchy                          0       0.707  77.1 Bayesian t-test       4.34
+#&gt; <span style='color: #BCBCBC;'>2</span> cauchy                          0       0.707  77.1 Bayesian t-test      <span style='color: #BB0000;'>NA</span>   
+#&gt;   <span style='font-weight: bold;'>expression</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
+#&gt; <span style='color: #BCBCBC;'>1</span> <span style='color: #949494;'>&lt;language&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>2</span> <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
