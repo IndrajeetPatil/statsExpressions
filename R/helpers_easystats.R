@@ -4,7 +4,7 @@
 #' @inheritParams parameters::model_parameters
 #'
 #' @importFrom parameters model_parameters standardize_names
-#' @importFrom dplyr select matches rename_all recode contains filter bind_cols
+#' @importFrom dplyr select matches rename_all recode contains filter bind_cols across
 #' @importFrom tidyr fill
 #' @importFrom performance r2_bayes
 #'
@@ -18,6 +18,7 @@ tidy_model_parameters <- function(model, ...) {
     dplyr::select(-dplyr::matches("Difference")) %>%
     parameters::standardize_names(style = "broom") %>%
     dplyr::rename_all(.funs = dplyr::recode, "bayes.factor" = "bf10") %>%
+    mutate(dplyr::across(matches("bf10"), ~ log(.x), .names = "log_e_{.col}")) %>%
     tidyr::fill(dplyr::matches("^prior|^bf"), .direction = "updown")
 
   # ------------------------ Bayesian ANOVA designs -------------------------

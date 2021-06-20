@@ -14,6 +14,9 @@ MAJOR CHANGES
   - Exports more utility functions (`long_to_wide_converter`, `format_num`,
     `stats_type_switch`) to get rid of reliance on `ipmisc` package.
 
+  - To be consistent with the expressions, the dataframe for Bayesian analysis
+    now also contain log of Bayes Factor values.
+
 # statsExpressions 1.1.0
 
 MAJOR CHANGES

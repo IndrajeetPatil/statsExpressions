@@ -139,6 +139,17 @@
 # one_sample_test bayes factor works
 
     Code
+      names(df_results)
+    Output
+       [1] "term"               "estimate"           "conf.level"        
+       [4] "conf.low"           "conf.high"          "pd"                
+       [7] "rope.percentage"    "prior.distribution" "prior.location"    
+      [10] "prior.scale"        "bf10"               "method"            
+      [13] "log_e_bf10"         "expression"        
+
+---
+
+    Code
       subtitle$expression[[1]]
     Output
       paste("log"["e"] * "(BF"["01"] * ") = " * "-47.84" * ", ", widehat(italic(delta))["difference"]^"posterior" * 
