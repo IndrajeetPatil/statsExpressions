@@ -23,6 +23,7 @@ zeallot::%->%
 zeallot::%<-%
 magrittr::%<>%
 magrittr::%>%
+rlang::%@%
 magrittr::%T>%
 rlang::%|%
 rlang::%||%
