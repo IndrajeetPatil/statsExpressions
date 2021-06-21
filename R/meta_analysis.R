@@ -20,7 +20,7 @@
 #'
 #' To see details about functions which are internally used to carry out these
 #' analyses, see the following vignette-
-#' \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
+#' <https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html>
 #'
 #' @note **Important**: The function assumes that you have already downloaded
 #'   the needed package (`metafor`, `metaplus`, or `metaBMA`) for meta-analysis.

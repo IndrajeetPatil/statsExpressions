@@ -17,7 +17,7 @@ A data frame with 1,579 rows and 13 variables
 \item action, animation, comedy, drama, documentary, romance, short. Binary
 variables representing if movie was classified as belonging to that genre.
 \item NumGenre.  The number of different genres a film was classified in an
-integer between one and four
+integer between one and four.
 }
 }
 \source{
