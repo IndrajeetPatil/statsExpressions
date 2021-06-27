@@ -179,14 +179,15 @@
 </h1>
 <p>NEW FUNCTIONS</p>
 <ul>
-<li>
-<code><a href="../reference/centrality_description.html">centrality_description()</a></code> function added to describe distribution for each level of a grouping variable and create an expression describing a centrality measure.</li>
+<li><p><code><a href="../reference/centrality_description.html">centrality_description()</a></code> function added to describe distribution for each level of a grouping variable and create an expression describing a centrality measure.</p></li>
+<li><p>Adds new experimental function <code><a href="../reference/tidy_model_expressions.html">tidy_model_expressions()</a></code> to create expressions for dataframes containing tidied results from regression model objects.</p></li>
 </ul>
 <p>MAJOR CHANGES</p>
 <ul>
 <li><p>Removes the redundant <code>bf_extractor</code> function. The <code>tidy_model_parameters</code> does the same thing.</p></li>
 <li><p>Exports more utility functions (<code>long_to_wide_converter</code>, <code>format_num</code>, <code>stats_type_switch</code>) to get rid of reliance on <code>ipmisc</code> package.</p></li>
 <li><p>To be consistent with the expressions, the dataframe for Bayesian analysis now also contain log of Bayes Factor values.</p></li>
+<li><p>The <code>tidy_model_effectsize()</code> function is no longer exported as it is helpful only for the internal workings of the package.</p></li>
 </ul>
 </div>
     <div id="statsexpressions-110" class="section level1">

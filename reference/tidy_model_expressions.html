@@ -22,7 +22,7 @@
   }
 </script>
 
-<title>Convert effectsize package output to tidyverse conventions — tidy_model_effectsize • statsExpressions</title>
+<title>Expressions with statistics for tidy regression dataframes — tidy_model_expressions • statsExpressions</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -74,8 +74,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Convert effectsize package output to tidyverse conventions — tidy_model_effectsize" />
-<meta property="og:description" content="Convert effectsize package output to tidyverse conventions" />
+<meta property="og:title" content="Expressions with statistics for tidy regression dataframes — tidy_model_expressions" />
+<meta property="og:description" content="Expressions with statistics for tidy regression dataframes" />
 <meta property="og:image" content="https://indrajeetpatil.github.io/statsExpressions/logo.png" />
 
 
@@ -170,23 +170,45 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Convert <code>effectsize</code> package output to <code>tidyverse</code> conventions</h1>
-    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/helpers_easystats.R'><code>R/helpers_easystats.R</code></a></small>
-    <div class="hidden name"><code>tidy_model_effectsize.Rd</code></div>
+    <h1>Expressions with statistics for tidy regression dataframes</h1>
+    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/statsExpressions/blob/master/R/tidy_model_expressions.R'><code>R/tidy_model_expressions.R</code></a></small>
+    <div class="hidden name"><code>tidy_model_expressions.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Convert <code>effectsize</code> package output to <code>tidyverse</code> conventions</p>
+    <p>Expressions with statistics for tidy regression dataframes</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tidy_model_effectsize</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>tidy_model_expressions</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  statistic <span class='op'>=</span> <span class='cn'>NULL</span>,
+  k <span class='op'>=</span> <span class='fl'>2L</span>,
+  effsize.type <span class='op'>=</span> <span class='st'>"omega"</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>Dataframe returned by <code>effectsize</code> functions.</p></td>
+      <td><p>A tidy dataframe from regression model object.</p></td>
+    </tr>
+    <tr>
+      <th>statistic</th>
+      <td><p>Which statistic is to be displayed (either <code>"t"</code> or <code>"f"</code>or
+<code>"z"</code> or <code>"chi"</code>) in the label.</p></td>
+    </tr>
+    <tr>
+      <th>k</th>
+      <td><p>Number of digits after decimal point (should be an integer)
+(Default: <code>k = 2L</code>).</p></td>
+    </tr>
+    <tr>
+      <th>effsize.type</th>
+      <td><p>Type of effect size needed for <em>parametric</em> tests. The
+argument can be <code>"eta"</code> (partial eta-squared) or <code>"omega"</code> (partial
+omega-squared).</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -194,14 +216,38 @@
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>This is an experimental function and may change in the future. Please
+do not use it yet in your workflow.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>effectsize</span><span class='fu'>::</span><span class='fu'><a href='https://easystats.github.io/effectsize/reference/cohens_d.html'>cohens_d</a></span><span class='op'>(</span><span class='va'>sleep</span><span class='op'>$</span><span class='va'>extra</span>, <span class='va'>sleep</span><span class='op'>$</span><span class='va'>group</span><span class='op'>)</span>
-<span class='fu'>tidy_model_effectsize</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;     estimate conf.level  conf.low  conf.high effectsize conf.method
-#&gt; 1 -0.8321811       0.95 -1.738817 0.09545044  Cohen's d         ncp
-#&gt;   conf.distribution
-#&gt; 1                 t</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
+
+<span class='co'># tidy dataframe</span>
+<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='tidy_model_parameters.html'>tidy_model_parameters</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>wt</span> <span class='op'>~</span> <span class='va'>am</span> <span class='op'>*</span> <span class='va'>cyl</span>, <span class='va'>mtcars</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'># create a column containing expressions</span>
+<span class='fu'>tidy_model_expressions</span><span class='op'>(</span><span class='va'>df</span>, statistic <span class='op'>=</span> <span class='st'>"t"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 10</span>
+#&gt;   <span style='font-weight: bold;'>term</span>        <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>std.error</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span> <span style='font-weight: bold;'>statistic</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> (Intercept)   1.66      0.587        0.95    0.455     2.86      2.82 
+#&gt; <span style='color: #BCBCBC;'>2</span> am           -<span style='color: #BB0000;'>0.956</span>     0.793        0.95   -<span style='color: #BB0000;'>2.58</span>      0.668    -<span style='color: #BB0000;'>1.21</span> 
+#&gt; <span style='color: #BCBCBC;'>3</span> cyl           0.304     0.082<span style='text-decoration: underline;'>6</span>       0.95    0.135     0.473     3.68 
+#&gt; <span style='color: #BCBCBC;'>4</span> am:cyl        0.032<span style='text-decoration: underline;'>8</span>    0.130        0.95   -<span style='color: #BB0000;'>0.234</span>     0.300     0.252
+#&gt;   <span style='font-weight: bold;'>df.error</span>  <span style='font-weight: bold;'>p.value</span>
+#&gt;      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span>       28 0.008<span style='text-decoration: underline;'>64</span> 
+#&gt; <span style='color: #BCBCBC;'>2</span>       28 0.238   
+#&gt; <span style='color: #BCBCBC;'>3</span>       28 0.000<span style='text-decoration: underline;'>989</span>
+#&gt; <span style='color: #BCBCBC;'>4</span>       28 0.803   
+#&gt;   <span style='font-weight: bold;'>label</span>                                                                         
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                                                         
+#&gt; <span style='color: #BCBCBC;'>1</span> list(~widehat(italic(beta))=='1.66', ~italic(t)('28')=='2.82', ~italic(p)=='0…
+#&gt; <span style='color: #BCBCBC;'>2</span> list(~widehat(italic(beta))=='-0.96', ~italic(t)('28')=='-1.21', ~italic(p)==…
+#&gt; <span style='color: #BCBCBC;'>3</span> list(~widehat(italic(beta))=='0.30', ~italic(t)('28')=='3.68', ~italic(p)=='0…
+#&gt; <span style='color: #BCBCBC;'>4</span> list(~widehat(italic(beta))=='0.03', ~italic(t)('28')=='0.25', ~italic(p)=='0…</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
