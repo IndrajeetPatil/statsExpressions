@@ -7,14 +7,14 @@
 #' grouping variable in `x` by a set of indices (e.g., measures of centrality,
 #' dispersion, range, skewness, kurtosis). It additionally returns an expression
 #' containing a specified centrality measure. The function internally relies on
-#' `parameters::describe_distribution` function.
+#' `datawizard::describe_distribution` function.
 #'
 #' @param x The grouping (or independent) variable from the dataframe data.
 #' @inheritParams oneway_anova
 #' @param ... Currently ignored.
 #'
 #' @importFrom rlang !! enquo ensym exec
-#' @importFrom parameters describe_distribution
+#' @importFrom datawizard describe_distribution
 #' @importFrom insight standardize_names format_value
 #' @importFrom dplyr select group_by mutate rowwise group_modify arrange ungroup
 #' @importFrom rlang !! enquo ensym :=
@@ -65,12 +65,12 @@ centrality_description <- function(data,
     dplyr::mutate({{ x }} := droplevels(as.factor({{ x }}))) %>%
     dplyr::group_by({{ x }}) %>%
     dplyr::group_modify(
-      .f = ~ parameters::standardize_names(
-        data = parameters::describe_distribution(
+      .f = ~ insight::standardize_names(
+        data = datawizard::describe_distribution(
           x = .,
           centrality = centrality,
           threshold = tr,
-          # verbose = FALSE,
+          verbose = FALSE,
           ci = 0.95 # TODO: https://github.com/easystats/bayestestR/issues/429
         ),
         style = "broom"

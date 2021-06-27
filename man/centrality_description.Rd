@@ -43,7 +43,7 @@ This function describes a distribution for \code{y} variable for each level of t
 grouping variable in \code{x} by a set of indices (e.g., measures of centrality,
 dispersion, range, skewness, kurtosis). It additionally returns an expression
 containing a specified centrality measure. The function internally relies on
-\code{parameters::describe_distribution} function.
+\code{datawizard::describe_distribution} function.
 }
 \examples{
 set.seed(123)

@@ -50,17 +50,18 @@ tidy_model_parameters <- function(model, ...) {
 #' @param ... Currently ignored.
 #'
 #' @importFrom effectsize get_effectsize_label
-#' @importFrom dplyr select mutate contains rename_with
+#' @importFrom dplyr select mutate contains rename_with bind_cols
+#' @importFrom stats na.omit
 #'
 #' @examples
 #' df <- effectsize::cohens_d(sleep$extra, sleep$group)
 #' tidy_model_effectsize(df)
-#' @export
+#' @noRd
 
 tidy_model_effectsize <- function(data, ...) {
   dplyr::bind_cols(
     data %>%
-      dplyr::mutate(effectsize = stats::na.omit(effectsize::get_effectsize_label(colnames(.)))) %>%
+      dplyr::mutate(effectsize = na.omit(effectsize::get_effectsize_label(colnames(.)))) %>%
       parameters::standardize_names(style = "broom") %>%
       dplyr::select(-dplyr::contains("term")),
     dplyr::rename_with(as_tibble(data %@% "ci_method"), ~ paste0("conf.", .x))
