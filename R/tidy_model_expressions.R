@@ -29,16 +29,15 @@ tidy_model_expressions <- function(data,
                                    effsize.type = "omega",
                                    ...) {
 
+  # standardize
+  statistic <- substring(tolower(statistic), 1L, 1L)
+
   # all operations will have to be done rowwise
   data %<>% dplyr::rowwise()
 
-  #--------------------------- t-statistic ------------------------------------
+  #--------------------------- t-statistic --------------------------------
 
-  # if the statistic is t-value
   if (statistic == "t") {
-    # if not present, add NA column for dfs
-    if (!"df.error" %in% names(data)) data %<>% dplyr::mutate(df.error = NA)
-
     data %<>%
       dplyr::mutate(
         label = dplyr::case_when(
@@ -70,13 +69,9 @@ tidy_model_expressions <- function(data,
       )
   }
 
-  #--------------------------- chi^2-statistic ---------------------------------
+  #--------------------------- chi^2-statistic -----------------------------
 
-  # if the statistic is chi^2-value
   if (statistic == "c") {
-    # if not present, add NA column for dfs
-    if (!"df.error" %in% names(data)) data %<>% dplyr::mutate(df.error = NA)
-
     data %<>%
       dplyr::mutate(
         label = paste0(

@@ -22,7 +22,7 @@
     Code
       tidy_model_expressions(tidy_model_parameters(mod_chi), statistic = "chi")
     Output
-      # A tibble: 2 x 9
+      # A tibble: 2 x 10
         term  estimate std.error conf.level conf.low conf.high statistic df.error
         <chr>    <dbl>     <dbl>      <dbl>    <dbl>     <dbl>     <dbl>    <int>
       1 age     0.0170   0.00923       0.95 -0.00106    0.0351      3.40      225
@@ -31,6 +31,10 @@
           <dbl>
       1 0.0650 
       2 0.00228
+        label                                                                         
+        <chr>                                                                         
+      1 list(~widehat(italic(beta))=='0.02', ~italic(chi)^2~('225')=='3.40', ~italic(~
+      2 list(~widehat(italic(beta))=='-0.51', ~italic(chi)^2~('225')=='9.31', ~italic~
 
 ---
 
