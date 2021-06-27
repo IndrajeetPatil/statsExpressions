@@ -3,14 +3,12 @@
 
 # `statsExpressions`: Tidy dataframes and expressions with statistical details
 
-| Package                                                                                                                                                   | Status                                                                                                                                                                                                 | Usage                                                                                                                                                       | GitHub                                                                                                                                                                   | Miscellaneous                                                                                                                                                                   |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)                  | [![Build Status](https://travis-ci.org/IndrajeetPatil/statsExpressions.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/statsExpressions)                                                      | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)     | [![GitHub version](https://img.shields.io/badge/GitHub-1.1.0-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/statsExpressions/)                         | [![Website](https://img.shields.io/badge/website-statsExpressions-orange.svg?colorB=E91E63)](https://indrajeetpatil.github.io/statsExpressions/)                                |
-| [![CRAN Checks](https://cranchecks.info/badges/summary/statsExpressions)](https://cran.r-project.org/web/checks/check_results_statsExpressions.html)      | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/statsExpressions?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/statsExpressions) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)   | [![Forks](https://img.shields.io/badge/forks-17-blue.svg)](https://github.com/IndrajeetPatil/statsExpressions/)                                                          | [![CodeFactor](https://www.codefactor.io/repository/github/indrajeetpatil/statsExpressions/badge)](https://www.codefactor.io/repository/github/indrajeetpatil/statsExpressions) |
-| [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)                                                | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)                                                                        | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Github Issues](https://img.shields.io/badge/issues-11-red.svg)](https://github.com/IndrajeetPatil/statsExpressions/issues)                                            | [![pkgdown](https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/pkgdown/badge.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/actions)                  |
-| [![code size](https://img.shields.io/github/languages/code-size/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/statsExpressions/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/statsExpressions?branch=master)             | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)  | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/statsExpressions.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/statsExpressions) | [![DOI](https://joss.theoj.org/papers/10.21105/joss.03236/status.svg)](https://doi.org/10.21105/joss.03236)                                                                     |
-| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                          | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master)                   | [![lints](https://github.com/IndrajeetPatil/statsExpressions/workflows/lint/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions)                 | [![Last-changedate](https://img.shields.io/badge/last%20change-2021--06--27-yellowgreen.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master)         | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/statsExpressions.svg)](https://github.com/IndrajeetPatil/statsExpressions/commits/master)       |
-| [![status](https://tinyverse.netlify.com/badge/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)                                    | [![R build status](https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions)                                            | [![CoC](https://img.shields.io/badge/CoC-v2.0%20adopted-ff69b4.svg)](https://www.contributor-covenant.org/version/2/0/code_of_conduct.html)                 | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)                                                              | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/statsExpressions/issues)            |
+| Package                                                                                                                                              | Status                                                                                                                                                                 | Usage                                                                                                                                                       | GitHub                                                                                                                                                                   | Miscellaneous                                                                                                                                                                   |
+|------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [![CRAN\_Release\_Badge](https://www.r-pkg.org/badges/version-ago/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)            | [![R build status](https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions)            | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)     | [![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/statsExpressions/issues)             | [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                                |
+| [![CRAN Checks](https://cranchecks.info/badges/summary/statsExpressions)](https://cran.r-project.org/web/checks/check_results_statsExpressions.html) | [![lints](https://github.com/IndrajeetPatil/statsExpressions/workflows/lint/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions)                            | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)   | [![status](https://tinyverse.netlify.com/badge/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)                                                   | [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)                                                                      |
+| [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)                           | [![Codecov](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master) | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![CoC](https://img.shields.io/badge/CoC-v2.0%20adopted-ff69b4.svg)](https://www.contributor-covenant.org/version/2/0/code_of_conduct.html)                              | [![CodeFactor](https://www.codefactor.io/repository/github/indrajeetpatil/statsExpressions/badge)](https://www.codefactor.io/repository/github/indrajeetpatil/statsExpressions) |
+| [![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)                                         | [![DOI](https://joss.theoj.org/papers/10.21105/joss.03236/status.svg)](https://doi.org/10.21105/joss.03236)                                                            | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)  | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/statsExpressions.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/statsExpressions) | [![pkgdown](https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/pkgdown/badge.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/actions)                  |
 
 # Introduction <img src="man/figures/logo.png" align="right" width="240" />
 
@@ -38,9 +36,6 @@ This is where `statsExpressions` comes in: It can be thought of as a
 unified portal through which most of the functionality in these
 underlying packages can be accessed, with a simpler interface and no
 requirement to change data format.
-
-This package forms the statistical processing backend for
-[`ggstatsplot`](https://indrajeetpatil.github.io/ggstatsplot/) package.
 
 # Installation
 
@@ -133,7 +128,7 @@ mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
 #> 1 wt         cyl             22.8        2 0.0000112
 #>   method                       estimate conf.level conf.low conf.high
 #>   <chr>                           <dbl>      <dbl>    <dbl>     <dbl>
-#> 1 Kruskal-Wallis rank sum test    0.736       0.95    0.616     0.841
+#> 1 Kruskal-Wallis rank sum test    0.736       0.95    0.608     0.849
 #>   effectsize      conf.method          conf.iterations expression
 #>   <chr>           <chr>                          <int> <list>    
 #> 1 Epsilon2 (rank) percentile bootstrap             100 <language>
@@ -142,7 +137,7 @@ mtcars %>% oneway_anova(cyl, wt, type = "robust")
 #> # A tibble: 1 x 11
 #>   statistic    df df.error p.value estimate conf.level conf.low conf.high
 #>       <dbl> <dbl>    <dbl>   <dbl>    <dbl>      <dbl>    <dbl>     <dbl>
-#> 1      12.7     2     12.2 0.00102     1.02       0.95    0.815      1.57
+#> 1      12.7     2     12.2 0.00102     1.01       0.95    0.797      1.51
 #>   effectsize                        
 #>   <chr>                             
 #> 1 Explanatory measure of effect size
@@ -307,12 +302,11 @@ library(ggplot2)
 library(gghalves)
 library(ggbeeswarm)
 library(hrbrthemes)
-library(statsExpressions)
 
 # create a plot
 ggplot(ToothGrowth, aes(supp, len)) +
   geom_half_boxplot() +
-  geom_beeswarm(beeswarmArgs = list(side = 1)) +
+  geom_beeswarm() +
   theme_ipsum_rc() +
   # adding a subtitle with
   labs(
@@ -332,18 +326,19 @@ expressions.
 # setup
 set.seed(123)
 library(ggplot2)
-library(statsExpressions)
 library(tidyr)
 library(PairedData)
 data(PrisonStress)
 
+# get data in tidy format
+df <- pivot_longer(PrisonStress, starts_with("PSS"), "PSS", values_to = "stress")
+
 # plot
 paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject") +
-  # `statsExpressions` needs data in the tidy format
   labs(
     title = "Two-sample Wilcoxon paired test",
     subtitle = two_sample_test(
-      data = pivot_longer(PrisonStress, starts_with("PSS"), "PSS", values_to = "stress"),
+      data = df,
       x = PSS,
       y = stress,
       paired = TRUE,
@@ -361,7 +356,6 @@ paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject")
 # setup
 set.seed(123)
 library(ggplot2)
-library(statsExpressions)
 
 # creating a histogram plot
 ggplot(mtcars, aes(wt)) +
@@ -384,7 +378,6 @@ Let’s look at another example where we want to run correlation analysis:
 # setup
 set.seed(123)
 library(ggplot2)
-library(statsExpressions)
 
 # create a scatter plot
 ggplot(mtcars, aes(mpg, wt)) +
@@ -406,7 +399,6 @@ For categorical/nominal data - one-sample:
 # setup
 set.seed(123)
 library(ggplot2)
-library(statsExpressions)
 
 # basic pie chart
 ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1))) +
@@ -433,7 +425,6 @@ having to display them in plots:
 # setup
 set.seed(123)
 library(ggplot2)
-library(statsExpressions)
 
 # Pearson's chi-squared test of independence
 contingency_table(mtcars, am, cyl)$expression[[1]]
@@ -480,7 +471,6 @@ included:
 # setup
 set.seed(123)
 library(ggplot2)
-library(statsExpressions)
 
 # extracting detailed expression
 (res_expr <- oneway_anova(iris, Species, Sepal.Length, var.equal = TRUE)$expression[[1]])
