@@ -49,6 +49,7 @@ Suggests:
     purrr,
     rmarkdown,
     spelling,
+    survival,
     testthat,
     utils
 VignetteBuilder: 

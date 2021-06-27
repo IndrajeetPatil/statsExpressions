@@ -70,7 +70,7 @@ centrality_description <- function(data,
           x = .,
           centrality = centrality,
           threshold = tr,
-          # verbose = FALSE,
+          verbose = FALSE,
           ci = 0.95 # TODO: https://github.com/easystats/bayestestR/issues/429
         ),
         style = "broom"

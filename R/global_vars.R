@@ -28,7 +28,8 @@ utils::globalVariables(
     "conf.level",
     ".fn",
     ".ns",
-    "n"
+    "n",
+    "p.value"
   ),
   package = "statsExpressions",
   add = FALSE

@@ -6,6 +6,10 @@ NEW FUNCTIONS
     level of a grouping variable and create an expression describing a
     centrality measure.
 
+  - Adds new experimental function `tidy_model_expressions()` to create
+    expressions for dataframes containing tidied results from regression model
+    objects.
+
 MAJOR CHANGES
 
   - Removes the redundant `bf_extractor` function. The `tidy_model_parameters`
@@ -16,6 +20,9 @@ MAJOR CHANGES
 
   - To be consistent with the expressions, the dataframe for Bayesian analysis
     now also contain log of Bayes Factor values.
+
+  - The `tidy_model_effectsize()` function is no longer exported as it is
+    helpful only for the internal workings of the package.
 
 # statsExpressions 1.1.0
 
