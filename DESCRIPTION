@@ -27,6 +27,7 @@ Depends:
 Imports:
     BayesFactor (>= 0.9.12-4.2),
     correlation (>= 0.6.1),
+    datawizard,
     dplyr,
     effectsize (>= 0.4.5),
     insight (>= 0.14.1),
