@@ -4,15 +4,15 @@
       dplyr::select(df1, -expression)
     Output
       # A tibble: 1 x 10
-        statistic    df df.error   p.value estimate conf.level conf.low conf.high
-            <dbl> <dbl>    <dbl>     <dbl>    <dbl>      <dbl>    <dbl>     <dbl>
-      1      20.2     2     19.0 0.0000196    0.859       0.95    0.853     0.864
-        effectsize                        
-        <chr>                             
-      1 Explanatory measure of effect size
-        method                                           
-        <chr>                                            
-      1 A heteroscedastic one-way ANOVA for trimmed means
+        statistic    df df.error   p.value
+            <dbl> <dbl>    <dbl>     <dbl>
+      1      20.2     2     19.0 0.0000196
+        method                                            estimate conf.level conf.low
+        <chr>                                                <dbl>      <dbl>    <dbl>
+      1 A heteroscedastic one-way ANOVA for trimmed means    0.859       0.95    0.853
+        conf.high effectsize                        
+            <dbl> <chr>                             
+      1     0.864 Explanatory measure of effect size
 
 ---
 
@@ -30,15 +30,15 @@
       dplyr::select(df2, -expression)
     Output
       # A tibble: 1 x 10
-        statistic    df df.error p.value estimate conf.level conf.low conf.high
-            <dbl> <dbl>    <dbl>   <dbl>    <dbl>      <dbl>    <dbl>     <dbl>
-      1    0.0503     2     21.7   0.951    0.201       0.95   0.0872     0.754
-        effectsize                        
-        <chr>                             
-      1 Explanatory measure of effect size
-        method                                           
-        <chr>                                            
-      1 A heteroscedastic one-way ANOVA for trimmed means
+        statistic    df df.error p.value
+            <dbl> <dbl>    <dbl>   <dbl>
+      1    0.0503     2     21.7   0.951
+        method                                            estimate conf.level conf.low
+        <chr>                                                <dbl>      <dbl>    <dbl>
+      1 A heteroscedastic one-way ANOVA for trimmed means    0.201       0.95   0.0872
+        conf.high effectsize                        
+            <dbl> <chr>                             
+      1     0.754 Explanatory measure of effect size
 
 ---
 
@@ -62,9 +62,9 @@
         method                                                              estimate
         <chr>                                                                  <dbl>
       1 A heteroscedastic one-way repeated measures ANOVA for trimmed means    0.664
-        conf.low conf.high conf.level
-           <dbl>     <dbl>      <dbl>
-      1    0.466     0.971       0.95
+        conf.level conf.low conf.high
+             <dbl>    <dbl>     <dbl>
+      1       0.95    0.466     0.971
         effectsize                                                     
         <chr>                                                          
       1 Algina-Keselman-Penfield robust standardized difference average
