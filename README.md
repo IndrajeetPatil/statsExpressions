@@ -128,22 +128,22 @@ mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
 #> 1 wt         cyl             22.8        2 0.0000112
 #>   method                       estimate conf.level conf.low conf.high
 #>   <chr>                           <dbl>      <dbl>    <dbl>     <dbl>
-#> 1 Kruskal-Wallis rank sum test    0.736       0.95    0.608     0.849
+#> 1 Kruskal-Wallis rank sum test    0.736       0.95    0.608     0.847
 #>   effectsize      conf.method          conf.iterations expression
 #>   <chr>           <chr>                          <int> <list>    
 #> 1 Epsilon2 (rank) percentile bootstrap             100 <language>
 
 mtcars %>% oneway_anova(cyl, wt, type = "robust")
 #> # A tibble: 1 x 11
-#>   statistic    df df.error p.value estimate conf.level conf.low conf.high
-#>       <dbl> <dbl>    <dbl>   <dbl>    <dbl>      <dbl>    <dbl>     <dbl>
-#> 1      12.7     2     12.2 0.00102     1.01       0.95    0.797      1.51
-#>   effectsize                        
-#>   <chr>                             
-#> 1 Explanatory measure of effect size
-#>   method                                            expression
-#>   <chr>                                             <list>    
-#> 1 A heteroscedastic one-way ANOVA for trimmed means <language>
+#>   statistic    df df.error p.value
+#>       <dbl> <dbl>    <dbl>   <dbl>
+#> 1      12.7     2     12.2 0.00102
+#>   method                                            estimate conf.level conf.low
+#>   <chr>                                                <dbl>      <dbl>    <dbl>
+#> 1 A heteroscedastic one-way ANOVA for trimmed means     1.04       0.95    0.810
+#>   conf.high effectsize                         expression
+#>       <dbl> <chr>                              <list>    
+#> 1      1.44 Explanatory measure of effect size <language>
 ```
 
 All possible output dataframes from functions are tabulated here:
@@ -165,9 +165,9 @@ mtcars %>%
   knitr::kable()
 ```
 
-| statistic | p.value | method                                 | estimate | conf.low | conf.high | conf.level | effectsize   |
-|----------:|--------:|:---------------------------------------|---------:|---------:|----------:|-----------:|:-------------|
-|  1.179181 |    0.22 | Bootstrap-t method for one-sample test |    3.197 | 2.872163 |  3.521837 |       0.95 | Trimmed mean |
+| statistic | p.value | n.obs | method                                 | estimate | conf.level | conf.low | conf.high | effectsize   |
+|----------:|--------:|------:|:---------------------------------------|---------:|-----------:|---------:|----------:|:-------------|
+|  1.179181 |   0.275 |    32 | Bootstrap-t method for one-sample test |    3.197 |       0.95 | 2.854246 |  3.539754 | Trimmed mean |
 
 These functions are also compatible with other popular data manipulation
 packages.
@@ -579,7 +579,7 @@ No. of groups: `2` =&gt; `two_sample_test`<br> No. of groups: `> 2`
 |----------------|------------------------------------------|------------------------|
 | Parametric     | One-sample Student’s *t*-test            | `stats::t.test`        |
 | Non-parametric | One-sample Wilcoxon test                 | `stats::wilcox.test`   |
-| Robust         | Bootstrap-*t* method for one-sample test | `trimcibt` (custom)    |
+| Robust         | Bootstrap-*t* method for one-sample test | `WRS2::trimcibt`       |
 | Bayesian       | One-sample Student’s *t*-test            | `BayesFactor::ttestBF` |
 
 **Effect size estimation**

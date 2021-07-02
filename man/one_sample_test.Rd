@@ -80,7 +80,7 @@ Internal function \code{.f} used to carry out statistical test:
 \itemize{
 \item \strong{parametric}: \code{stats::t.test}
 \item \strong{nonparametric}: \code{stats::wilcox.test}
-\item \strong{robust}: \code{trimcibt} (custom)
+\item \strong{robust}: \code{WRS2::trimcibt}
 \item \strong{bayes}: \code{BayesFactor::ttestBF}
 }
 
@@ -88,7 +88,7 @@ Internal function \code{.f.es} used to compute effect size:
 \itemize{
 \item \strong{parametric}: \code{effectsize::cohens_d}, \code{effectsize::hedges_g}
 \item \strong{nonparametric}: \code{effectsize::rank_biserial}
-\item \strong{robust}: \code{trimcibt} (custom)
+\item \strong{robust}: \code{WRS2::trimcibt}
 \item \strong{bayes}: \code{bayestestR::describe_posterior}
 }
 

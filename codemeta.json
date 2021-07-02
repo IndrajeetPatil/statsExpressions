@@ -265,7 +265,7 @@
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
-      "version": ">= 0.14.1",
+      "version": ">= 0.14.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -290,14 +290,14 @@
       "@type": "SoftwareApplication",
       "identifier": "parameters",
       "name": "parameters",
-      "version": ">= 0.14.0",
+      "version": ">= 0.14.0.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=parameters"
+      "sameAs": "https://github.com/easystats/parameters"
     },
     {
       "@type": "SoftwareApplication",
@@ -356,7 +356,7 @@
       "@type": "SoftwareApplication",
       "identifier": "WRS2",
       "name": "WRS2",
-      "version": ">= 1.1-1",
+      "version": ">= 1.1-2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -378,7 +378,7 @@
       "sameAs": "https://CRAN.R-project.org/package=zeallot"
     }
   ],
-  "contIntegration": ["https://travis-ci.org/IndrajeetPatil/statsExpressions", "https://ci.appveyor.com/project/IndrajeetPatil/statsExpressions", "https://coveralls.io/github/IndrajeetPatil/statsExpressions?branch=master", "https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master"],
+  "contIntegration": "https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master",
   "keywords": [
     "ggplot-extension",
     "statistical-tests",
@@ -445,6 +445,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "5346.861KB",
+  "fileSize": "5343.752KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

@@ -97,7 +97,7 @@ test_that(
         test.value = 8,
         type = "r",
         k = 4,
-        conf.level = 0.99
+        conf.level = 0.95 # TODO: change
       )
 
     # statsExpressions output
@@ -109,7 +109,7 @@ test_that(
         test.value = 0.1,
         type = "r",
         k = 4,
-        conf.level = 0.90
+        conf.level = 0.95 # TODO: change
       )
 
     # testing all details

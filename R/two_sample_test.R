@@ -8,7 +8,7 @@
 #' @inheritParams stats::t.test
 #' @inheritParams expr_template
 #'
-#' @importFrom dplyr select rename_all recode mutate
+#' @importFrom dplyr select mutate
 #' @importFrom rlang !!! expr enexpr ensym exec new_formula
 #' @importFrom tidyr drop_na
 #' @importFrom stats t.test  wilcox.test
@@ -227,13 +227,9 @@ two_sample_test <- function(data,
 
       # computing effect size and its confidence interval
       effsize_df <- WRS2::dep.effect(x = data[2], y = data[3], tr = tr, nboot = nboot) %>%
-        as_tibble(as.data.frame(.), rownames = "effectsize") %>%
+        tidy_model_parameters(.) %>%
         dplyr::filter(effectsize == "AKP") %>%
-        dplyr::mutate(
-          effectsize = "Algina-Keselman-Penfield robust standardized difference",
-          conf.level = 0.95
-        ) %>%
-        dplyr::select(estimate = Est, conf.low = ci.low, conf.high = ci.up, conf.level, effectsize)
+        dplyr::mutate(effectsize = "Algina-Keselman-Penfield robust standardized difference")
     }
   }
 

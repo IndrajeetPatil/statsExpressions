@@ -516,7 +516,7 @@ Type | Test | Function used
 ------------------ | ------------------------- | -----
 Parametric | One-sample Student's *t*-test | `stats::t.test`
 Non-parametric | One-sample Wilcoxon test | `stats::wilcox.test`
-Robust | Bootstrap-*t* method for one-sample test | `trimcibt` (custom)
+Robust | Bootstrap-*t* method for one-sample test | `WRS2::trimcibt`
 Bayesian | One-sample Student's *t*-test | `BayesFactor::ttestBF`
 
 **Effect size estimation**
