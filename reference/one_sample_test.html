@@ -278,14 +278,14 @@ mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
 <p>Internal function <code>.f</code> used to carry out statistical test:</p><ul>
 <li><p><strong>parametric</strong>: <code><a href='https://rdrr.io/r/stats/t.test.html'>stats::t.test</a></code></p></li>
 <li><p><strong>nonparametric</strong>: <code><a href='https://rdrr.io/r/stats/wilcox.test.html'>stats::wilcox.test</a></code></p></li>
-<li><p><strong>robust</strong>: <code>trimcibt</code> (custom)</p></li>
+<li><p><strong>robust</strong>: <code><a href='https://rdrr.io/pkg/WRS2/man/trimcibt.html'>WRS2::trimcibt</a></code></p></li>
 <li><p><strong>bayes</strong>: <code><a href='https://rdrr.io/pkg/BayesFactor/man/ttestBF.html'>BayesFactor::ttestBF</a></code></p></li>
 </ul>
 
 <p>Internal function <code>.f.es</code> used to compute effect size:</p><ul>
 <li><p><strong>parametric</strong>: <code><a href='https://easystats.github.io/effectsize/reference/cohens_d.html'>effectsize::cohens_d</a></code>, <code><a href='https://easystats.github.io/effectsize/reference/cohens_d.html'>effectsize::hedges_g</a></code></p></li>
 <li><p><strong>nonparametric</strong>: <code><a href='https://easystats.github.io/effectsize/reference/rank_biserial.html'>effectsize::rank_biserial</a></code></p></li>
-<li><p><strong>robust</strong>: <code>trimcibt</code> (custom)</p></li>
+<li><p><strong>robust</strong>: <code><a href='https://rdrr.io/pkg/WRS2/man/trimcibt.html'>WRS2::trimcibt</a></code></p></li>
 <li><p><strong>bayes</strong>: <code><a href='https://easystats.github.io/bayestestR/reference/describe_posterior.html'>bayestestR::describe_posterior</a></code></p></li>
 </ul>
 
@@ -340,13 +340,13 @@ mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
   test.value <span class='op'>=</span> <span class='fl'>0.275</span>,
   type <span class='op'>=</span> <span class='st'>"robust"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 9</span>
-#&gt;   <span style='font-weight: bold;'>statistic</span> <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>method</span>                                 <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.low</span>
-#&gt;       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span>     -<span style='color: #BB0000;'>14.7</span>       0 Bootstrap-t method for one-sample test   0.039<span style='text-decoration: underline;'>0</span>  0.002<span style='text-decoration: underline;'>01</span>
-#&gt;   <span style='font-weight: bold;'>conf.high</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>effectsize</span>   <span style='font-weight: bold;'>expression</span>
-#&gt;       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
-#&gt; <span style='color: #BCBCBC;'>1</span>    0.075<span style='text-decoration: underline;'>9</span>       0.95 Trimmed mean <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 10</span>
+#&gt;   <span style='font-weight: bold;'>statistic</span> <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>n.obs</span> <span style='font-weight: bold;'>method</span>                                 <span style='font-weight: bold;'>estimate</span>
+#&gt;       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span>     -<span style='color: #BB0000;'>14.7</span>       0    56 Bootstrap-t method for one-sample test   0.039<span style='text-decoration: underline;'>0</span>
+#&gt;   <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span> <span style='font-weight: bold;'>effectsize</span>   <span style='font-weight: bold;'>expression</span>
+#&gt;        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
+#&gt; <span style='color: #BCBCBC;'>1</span>       0.95  -<span style='color: #BB0000;'>0.013</span><span style='color: #BB0000; text-decoration: underline;'>2</span>    0.091<span style='text-decoration: underline;'>1</span> Trimmed mean <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
 <span class='co'># ---------------------------- Bayesian -----------------------------------</span>
 
 <span class='fu'>one_sample_test</span><span class='op'>(</span>
@@ -359,8 +359,8 @@ mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 14</span>
 #&gt;   <span style='font-weight: bold;'>term</span>       <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span>    <span style='font-weight: bold;'>pd</span> <span style='font-weight: bold;'>rope.percentage</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> Difference  0.008<span style='text-decoration: underline;'>51</span>       0.95  -<span style='color: #BB0000;'>0.251</span>      0.263 0.528          0.626 
-#&gt; <span style='color: #BCBCBC;'>2</span> Cohens_d    0.276         0.95   0.015<span style='text-decoration: underline;'>6</span>     0.536 0.980          0.057<span style='text-decoration: underline;'>6</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> Difference  0.009<span style='text-decoration: underline;'>25</span>       0.95  -<span style='color: #BB0000;'>0.246</span>      0.263 0.532          0.621 
+#&gt; <span style='color: #BCBCBC;'>2</span> Cohens_d    0.276         0.95   0.012<span style='text-decoration: underline;'>7</span>     0.540 0.978          0.059<span style='text-decoration: underline;'>5</span>
 #&gt;   <span style='font-weight: bold;'>prior.distribution</span> <span style='font-weight: bold;'>prior.location</span> <span style='font-weight: bold;'>prior.scale</span>  <span style='font-weight: bold;'>bf10</span> <span style='font-weight: bold;'>method</span>          <span style='font-weight: bold;'>log_e_bf10</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span> cauchy                          0         0.8 0.130 Bayesian t-test      -<span style='color: #BB0000;'>2.04</span>

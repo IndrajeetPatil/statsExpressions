@@ -434,16 +434,19 @@ mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
   subject.id <span class='op'>=</span> <span class='va'>id</span>,
   type <span class='op'>=</span> <span class='st'>"r"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: the standard deviation is zero</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 10</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: the standard deviation is zero</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 14</span>
 #&gt;   <span style='font-weight: bold;'>statistic</span> <span style='font-weight: bold;'>df.error</span> <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>method</span>                                            
 #&gt;       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                             
 #&gt; <span style='color: #BCBCBC;'>1</span>     -<span style='color: #BB0000;'>2.56</span>       21  0.018<span style='text-decoration: underline;'>2</span> Yuen's test on trimmed means for dependent samples
-#&gt;   <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span> <span style='font-weight: bold;'>conf.level</span>
-#&gt;      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span>   -<span style='color: #BB0000;'>0.381</span>   -<span style='color: #BB0000;'>0.717</span>    -<span style='color: #BB0000;'>0.248</span>       0.95
-#&gt;   <span style='font-weight: bold;'>effectsize</span>                                              <span style='font-weight: bold;'>expression</span>
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                                   <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
-#&gt; <span style='color: #BCBCBC;'>1</span> Algina-Keselman-Penfield robust standardized difference <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
+#&gt;   <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span>
+#&gt;      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span>   -<span style='color: #BB0000;'>0.381</span>       0.95   -<span style='color: #BB0000;'>0.717</span>    -<span style='color: #BB0000;'>0.248</span>
+#&gt;   <span style='font-weight: bold;'>effectsize</span>                                                 <span style='font-weight: bold;'>mu</span> <span style='font-weight: bold;'>small</span> <span style='font-weight: bold;'>medium</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                                   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> Algina-Keselman-Penfield robust standardized difference     0   0.1    0.3
+#&gt;   <span style='font-weight: bold;'>large</span> <span style='font-weight: bold;'>expression</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
+#&gt; <span style='color: #BCBCBC;'>1</span>   0.5 <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
 <span class='co'>#' # ------------------------------ Bayesian ------------------------------</span>
 
 <span class='co'># between-subjects design</span>

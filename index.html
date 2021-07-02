@@ -396,22 +396,22 @@
 <span class="co">#&gt; 1 wt         cyl             22.8        2 0.0000112</span>
 <span class="co">#&gt;   method                       estimate conf.level conf.low conf.high</span>
 <span class="co">#&gt;   &lt;chr&gt;                           &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Kruskal-Wallis rank sum test    0.736       0.95    0.608     0.849</span>
+<span class="co">#&gt; 1 Kruskal-Wallis rank sum test    0.736       0.95    0.608     0.847</span>
 <span class="co">#&gt;   effectsize      conf.method          conf.iterations expression</span>
 <span class="co">#&gt;   &lt;chr&gt;           &lt;chr&gt;                          &lt;int&gt; &lt;list&gt;    </span>
 <span class="co">#&gt; 1 Epsilon2 (rank) percentile bootstrap             100 &lt;language&gt;</span>
 
 <span class="va">mtcars</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 11</span>
-<span class="co">#&gt;   statistic    df df.error p.value estimate conf.level conf.low conf.high</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      12.7     2     12.2 0.00102     1.01       0.95    0.797      1.51</span>
-<span class="co">#&gt;   effectsize                        </span>
-<span class="co">#&gt;   &lt;chr&gt;                             </span>
-<span class="co">#&gt; 1 Explanatory measure of effect size</span>
-<span class="co">#&gt;   method                                            expression</span>
-<span class="co">#&gt;   &lt;chr&gt;                                             &lt;list&gt;    </span>
-<span class="co">#&gt; 1 A heteroscedastic one-way ANOVA for trimmed means &lt;language&gt;</span></code></pre></div>
+<span class="co">#&gt;   statistic    df df.error p.value</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      12.7     2     12.2 0.00102</span>
+<span class="co">#&gt;   method                                            estimate conf.level conf.low</span>
+<span class="co">#&gt;   &lt;chr&gt;                                                &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 A heteroscedastic one-way ANOVA for trimmed means     1.04       0.95    0.810</span>
+<span class="co">#&gt;   conf.high effectsize                         expression</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;                              &lt;list&gt;    </span>
+<span class="co">#&gt; 1      1.44 Explanatory measure of effect size &lt;language&gt;</span></code></pre></div>
 <p>All possible output dataframes from functions are tabulated here: <a href="https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html</a></p>
 <p>Needless to say this will also work with the <code>kable</code> function to generate a table:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -427,33 +427,36 @@
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <colgroup>
-<col width="9%">
+<col width="8%">
 <col width="7%">
-<col width="34%">
-<col width="8%">
+<col width="5%">
+<col width="32%">
 <col width="8%">
 <col width="9%">
-<col width="10%">
+<col width="8%">
+<col width="8%">
 <col width="11%">
 </colgroup>
 <thead><tr class="header">
 <th align="right">statistic</th>
 <th align="right">p.value</th>
+<th align="right">n.obs</th>
 <th align="left">method</th>
 <th align="right">estimate</th>
+<th align="right">conf.level</th>
 <th align="right">conf.low</th>
 <th align="right">conf.high</th>
-<th align="right">conf.level</th>
 <th align="left">effectsize</th>
 </tr></thead>
 <tbody><tr class="odd">
 <td align="right">1.179181</td>
-<td align="right">0.22</td>
+<td align="right">0.275</td>
+<td align="right">32</td>
 <td align="left">Bootstrap-t method for one-sample test</td>
 <td align="right">3.197</td>
-<td align="right">2.872163</td>
-<td align="right">3.521837</td>
 <td align="right">0.95</td>
+<td align="right">2.854246</td>
+<td align="right">3.539754</td>
 <td align="left">Trimmed mean</td>
 </tr></tbody>
 </table>
@@ -1123,8 +1126,7 @@
 <tr class="odd">
 <td>Robust</td>
 <td>Bootstrap-<em>t</em> method for one-sample test</td>
-<td>
-<code>trimcibt</code> (custom)</td>
+<td><code><a href="https://rdrr.io/pkg/WRS2/man/trimcibt.html">WRS2::trimcibt</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
