@@ -95,13 +95,13 @@
     Code
       dplyr::select(df1, -expression)
     Output
-      # A tibble: 1 x 8
-        statistic p.value method                                 estimate conf.low
-            <dbl>   <dbl> <chr>                                     <dbl>    <dbl>
-      1     0.787     0.3 Bootstrap-t method for one-sample test        9     3.81
-        conf.high conf.level effectsize  
-            <dbl>      <dbl> <chr>       
-      1      14.2       0.99 Trimmed mean
+      # A tibble: 1 x 9
+        statistic p.value n.obs method                                 estimate
+            <dbl>   <dbl> <int> <chr>                                     <dbl>
+      1     0.787   0.455    11 Bootstrap-t method for one-sample test        9
+        conf.level conf.low conf.high effectsize  
+             <dbl>    <dbl>     <dbl> <chr>       
+      1       0.95     6.09      11.9 Trimmed mean
 
 ---
 
@@ -109,8 +109,8 @@
       df1$expression[[1]]
     Output
       paste(italic("t")["bootstrapped"], " = ", "0.7866", ", ", italic("p"), 
-          " = ", "0.3000", ", ", widehat(mu)["trimmed"], " = ", "9.0000", 
-          ", CI"["99%"], " [", "3.8097", ", ", "14.1903", "], ", italic("n")["obs"], 
+          " = ", "0.4550", ", ", widehat(mu)["trimmed"], " = ", "9.0000", 
+          ", CI"["95%"], " [", "6.0950", ", ", "11.9050", "], ", italic("n")["obs"], 
           " = ", "11")
 
 ---
@@ -118,13 +118,13 @@
     Code
       dplyr::select(df2, -expression)
     Output
-      # A tibble: 1 x 8
-        statistic p.value method                                 estimate conf.low
-            <dbl>   <dbl> <chr>                                     <dbl>    <dbl>
-      1     -3.81    0.02 Bootstrap-t method for one-sample test   0.0390   0.0112
-        conf.high conf.level effectsize  
-            <dbl>      <dbl> <chr>       
-      1    0.0667        0.9 Trimmed mean
+      # A tibble: 1 x 9
+        statistic p.value n.obs method                                 estimate
+            <dbl>   <dbl> <int> <chr>                                     <dbl>
+      1     -3.81    0.04    56 Bootstrap-t method for one-sample test   0.0390
+        conf.level conf.low conf.high effectsize  
+             <dbl>    <dbl>     <dbl> <chr>       
+      1       0.95  -0.0132    0.0911 Trimmed mean
 
 ---
 
@@ -132,8 +132,8 @@
       df2$expression[[1]]
     Output
       paste(italic("t")["bootstrapped"], " = ", "-3.8075", ", ", italic("p"), 
-          " = ", "0.0200", ", ", widehat(mu)["trimmed"], " = ", "0.0390", 
-          ", CI"["90%"], " [", "0.0112", ", ", "0.0667", "], ", italic("n")["obs"], 
+          " = ", "0.0400", ", ", widehat(mu)["trimmed"], " = ", "0.0390", 
+          ", CI"["95%"], " [", "-0.0132", ", ", "0.0911", "], ", italic("n")["obs"], 
           " = ", "56")
 
 # one_sample_test bayes factor works

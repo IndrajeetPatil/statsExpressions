@@ -3,16 +3,19 @@
     Code
       dplyr::select(df1, -expression)
     Output
-      # A tibble: 1 x 9
+      # A tibble: 1 x 13
         statistic df.error p.value method                                            
             <dbl>    <dbl>   <dbl> <chr>                                             
       1      28.7       89       0 Yuen's test on trimmed means for dependent samples
-        estimate conf.low conf.high conf.level
-           <dbl>    <dbl>     <dbl>      <dbl>
-      1     2.36     1.96      2.61       0.95
-        effectsize                                             
-        <chr>                                                  
-      1 Algina-Keselman-Penfield robust standardized difference
+        estimate conf.level conf.low conf.high
+           <dbl>      <dbl>    <dbl>     <dbl>
+      1     2.36       0.95     1.96      2.61
+        effectsize                                                 mu small medium
+        <chr>                                                   <dbl> <dbl>  <dbl>
+      1 Algina-Keselman-Penfield robust standardized difference     0   0.1    0.3
+        large
+        <dbl>
+      1   0.5
 
 ---
 
@@ -29,16 +32,19 @@
     Code
       dplyr::select(df1, -expression)
     Output
-      # A tibble: 1 x 9
+      # A tibble: 1 x 13
         statistic df.error p.value method                                            
             <dbl>    <dbl>   <dbl> <chr>                                             
       1      2.91       53 0.00528 Yuen's test on trimmed means for dependent samples
-        estimate conf.low conf.high conf.level
-           <dbl>    <dbl>     <dbl>      <dbl>
-      1    0.410    0.238     0.611       0.95
-        effectsize                                             
-        <chr>                                                  
-      1 Algina-Keselman-Penfield robust standardized difference
+        estimate conf.level conf.low conf.high
+           <dbl>      <dbl>    <dbl>     <dbl>
+      1    0.410       0.95    0.238     0.611
+        effectsize                                                 mu small medium
+        <chr>                                                   <dbl> <dbl>  <dbl>
+      1 Algina-Keselman-Penfield robust standardized difference     0   0.1    0.3
+        large
+        <dbl>
+      1   0.5
 
 ---
 

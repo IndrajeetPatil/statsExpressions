@@ -290,8 +290,8 @@ oneway_anova <- function(data,
     # for paired designs, WRS2 currently doesn't return effect size
     if (isTRUE(paired)) {
       effsize_df <- long_to_wide_converter(data, {{ x }}, {{ y }}) %>%
-        wAKPavg(dplyr::select(-rowid), tr = tr, nboot = nboot) %>%
-        dplyr::mutate(effectsize = "Algina-Keselman-Penfield robust standardized difference average")
+        WRS2::wmcpAKP(dplyr::select(-rowid), tr = tr, nboot = nboot) %>%
+        tidy_model_parameters(.)
 
       # combine dataframes
       stats_df <- dplyr::bind_cols(stats_df, effsize_df)
@@ -334,11 +334,4 @@ oneway_anova <- function(data,
       top.text = top.text,
       bayesian = ifelse(type == "bayes", TRUE, FALSE)
     )))
-}
-
-#' @noRd
-
-wAKPavg <- function(x, tr = 0.2, nboot = 100L, ...) {
-  A <- WRS2::wmcpAKP(x, tr, nboot)
-  tibble("estimate" = A[[1]], "conf.low" = A[[2]], "conf.high" = A[[3]], "conf.level" = 0.95)
 }

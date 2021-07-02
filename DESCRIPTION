@@ -30,15 +30,15 @@ Imports:
     datawizard,
     dplyr,
     effectsize (>= 0.4.5),
-    insight (>= 0.14.1),
+    insight (>= 0.14.2),
     magrittr,
-    parameters (>= 0.14.0),
+    parameters (>= 0.14.0.1),
     performance,
     rlang,
     stats,
     tibble,
     tidyr,
-    WRS2 (>= 1.1-1),
+    WRS2 (>= 1.1-2),
     zeallot
 Suggests:
     afex,
@@ -53,6 +53,8 @@ Suggests:
     survival,
     testthat,
     utils
+Remotes:
+    easystats/parameters
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
