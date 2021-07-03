@@ -81,7 +81,7 @@ long_to_wide_converter <- function(data,
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
   # for non-paired data, even if specified, ignore it
-  if (isFALSE(paired)) subject.id <- NULL
+  if (!paired) subject.id <- NULL
 
   # initial cleanup
   data %<>%

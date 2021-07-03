@@ -125,7 +125,7 @@ expr_template <- function(data,
 
   # if expression text elements are `NULL`
   if (isTRUE(paired)) n.text <- n.text %||% quote(italic("n")["pairs"])
-  if (isFALSE(paired)) n.text <- n.text %||% quote(italic("n")["obs"])
+  if (!paired) n.text <- n.text %||% quote(italic("n")["obs"])
 
   # -------------------------- Bayesian analysis ------------------------------
 

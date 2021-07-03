@@ -179,15 +179,15 @@ oneway_anova <- function(data,
 
   if (type == "parametric") {
     # expression details
-    k.df <- ifelse(isFALSE(paired), 0L, k)
-    k.df.error <- ifelse(isFALSE(paired) && isTRUE(var.equal), 0L, k)
+    k.df <- ifelse(!paired, 0L, k)
+    k.df.error <- ifelse(!paired && var.equal, 0L, k)
     no.parameters <- 2L
 
     # which effect size?
     if (effsize.type %in% c("unbiased", "omega")) .f.es <- effectsize::omega_squared
     if (effsize.type %in% c("biased", "eta")) .f.es <- effectsize::eta_squared
 
-    if (isTRUE(paired)) {
+    if (paired) {
       # check if `afex` is installed
       insight::check_if_installed("afex")
 
@@ -201,7 +201,7 @@ oneway_anova <- function(data,
       )
     }
 
-    if (isFALSE(paired)) {
+    if (!paired) {
       # Welch's ANOVA
       mod <- stats::oneway.test(
         formula = rlang::new_formula(y, x),
@@ -226,14 +226,14 @@ oneway_anova <- function(data,
     c(no.parameters, k.df, k.df.error) %<-% c(1L, 0L, 0L)
 
     # Friedman test
-    if (isTRUE(paired)) {
+    if (paired) {
       c(.f, .f.es) %<-% c(stats::friedman.test, effectsize::kendalls_w)
       .f.args <- list(formula = new_formula({{ enexpr(y) }}, expr(!!enexpr(x) | rowid)))
       .f.es.args <- list(x = new_formula({{ enexpr(y) }}, expr(!!enexpr(x) | rowid)))
     }
 
     # Kruskal-Wallis test
-    if (isFALSE(paired)) {
+    if (!paired) {
       c(.f, .f.es) %<-% c(stats::kruskal.test, effectsize::rank_epsilon_squared)
       .f.args <- list(formula = rlang::new_formula(y, x))
       .f.es.args <- list(x = rlang::new_formula(y, x))
@@ -264,7 +264,7 @@ oneway_anova <- function(data,
     c(no.parameters, k.df, k.df.error) %<-% c(2L, ifelse(isTRUE(paired), k, 0L), k)
 
     # heteroscedastic one-way repeated measures ANOVA for trimmed means
-    if (isTRUE(paired)) {
+    if (paired) {
       mod <- WRS2::rmanova(
         y = data[[rlang::as_name(y)]],
         groups = data[[rlang::as_name(x)]],
@@ -274,7 +274,7 @@ oneway_anova <- function(data,
     }
 
     # heteroscedastic one-way ANOVA for trimmed means
-    if (isFALSE(paired)) {
+    if (!paired) {
       mod <- WRS2::t1way(
         formula = rlang::new_formula(y, x),
         data = data,
@@ -288,7 +288,7 @@ oneway_anova <- function(data,
     stats_df <- tidy_model_parameters(mod)
 
     # for paired designs, WRS2 currently doesn't return effect size
-    if (isTRUE(paired)) {
+    if (paired) {
       effsize_df <- long_to_wide_converter(data, {{ x }}, {{ y }}) %>%
         WRS2::wmcpAKP(dplyr::select(-rowid), tr = tr, nboot = nboot) %>%
         tidy_model_parameters(.)

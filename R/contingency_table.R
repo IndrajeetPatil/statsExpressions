@@ -117,7 +117,7 @@ contingency_table <- function(data,
   type <- stats_type_switch(type)
 
   # one-way or two-way table?
-  test <- ifelse(!rlang::quo_is_null(rlang::enquo(y)), "two.way", "one.way")
+  test <- ifelse(!rlang::quo_is_null(rlang::enquo(y)), "2way", "1way")
 
   # creating a dataframe
   data %<>%
@@ -136,23 +136,18 @@ contingency_table <- function(data,
   if (type != "bayes") {
     # default functions for analysis (only change for McNemar's test)
     c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::cramers_v)
+    if (test == "2way" && paired) c(.f, .f.es) %<-% c(stats::mcnemar.test, effectsize::cohens_g)
+
+    # argument lists for tests
+    if (test == "1way") .f.args <- list(x = table(x_vec), p = ratio, correct = FALSE)
+    if (test == "2way") .f.args <- list(x = table(data), correct = FALSE)
 
     # Pearson's or McNemar's test
-    if (test == "two.way") {
-      if (isTRUE(paired)) c(.f, .f.es) %<-% c(stats::mcnemar.test, effectsize::cohens_g)
-      .f.args <- list(x = table(x_vec, data %>% dplyr::pull({{ y }})), correct = FALSE)
-    }
-
-    # goodness of fit test
-    if (test == "one.way") {
-      .f.args <- list(x = table(x_vec), p = ratio, correct = FALSE)
-      paired <- FALSE
-    }
 
     # combining dataframes: inferential stats + effect sizes
     stats_df <- dplyr::bind_cols(
       tidy_model_parameters(rlang::exec(.f, !!!.f.args)),
-      tidy_model_effectsize(rlang::exec(.f.es, adjust = TRUE, ci = conf.level, !!!.f.args))
+      tidy_model_effectsize(rlang::exec(.f.es, !!!.f.args, adjust = TRUE, ci = conf.level))
     )
   }
 
@@ -160,10 +155,10 @@ contingency_table <- function(data,
 
   if (type == "bayes") {
     # two-way table
-    if (test == "two.way") {
+    if (test == "2way") {
       # extract a tidy dataframe
       stats_df <- BayesFactor::contingencyTableBF(
-        table(data %>% dplyr::pull({{ x }}), data %>% dplyr::pull({{ y }})),
+        table(data),
         sampleType = sampling.plan,
         fixedMargin = fixed.margin,
         priorConcentration = prior.concentration
@@ -172,29 +167,24 @@ contingency_table <- function(data,
     }
 
     # one-way table
-    if (test == "one.way") {
-      xtab <- table(data %>% dplyr::pull({{ x }}))
-
-      # probability can't be exactly 0 or 1
-      if (1 / length(as.vector(xtab)) == 0 || 1 / length(as.vector(xtab)) == 1) {
-        return(NULL)
-      }
+    if (test == "1way") {
+      xtab <- table(x_vec)
 
       # use it
-      p1s <- rdirichlet_int(n = 100000, alpha = prior.concentration * ratio)
+      p1s <- rdirichlet(n = 100000L, alpha = prior.concentration * ratio)
 
       # prob
-      tmp_pr_h1 <- sapply(
+      pr_h1 <- sapply(
         X = 1:100000,
-        FUN = function(i) stats::dmultinom(x = as.matrix(xtab), prob = p1s[i, ], log = TRUE)
+        FUN = function(i) stats::dmultinom(as.matrix(xtab), prob = p1s[i, ], log = TRUE)
       )
 
       # BF = (log) prob of data under alternative - (log) prob of data under null
-      bf <- BayesFactor::logMeanExpLogs(tmp_pr_h1) -
-        stats::dmultinom(as.matrix(xtab), prob = ratio, log = TRUE)
-
       # computing Bayes Factor and formatting the results
-      stats_df <- tibble(bf10 = exp(bf), prior.scale = prior.concentration)
+      stats_df <- tibble(
+        bf10 = exp(logMeanExpLogs(pr_h1) - dmultinom(as.matrix(xtab), NULL, ratio, TRUE)),
+        prior.scale = prior.concentration
+      )
 
       # final expression
       expression <- substitute(
@@ -207,8 +197,8 @@ contingency_table <- function(data,
         ),
         env = list(
           top.text = top.text,
-          bf = format_value(-log(stats_df$bf10[[1]]), k),
-          a = format_value(stats_df$prior.scale[[1]], k)
+          bf = format_value(-log(stats_df$bf10), k),
+          a = format_value(stats_df$prior.scale, k)
         )
       )
 
@@ -222,7 +212,7 @@ contingency_table <- function(data,
 
   # ----------------------- expression ---------------------------------------
 
-  if (!(type == "bayes" && test == "one.way")) {
+  if (!(type == "bayes" && test == "1way")) {
     stats_df %<>%
       dplyr::mutate(
         expression = list(expr_template(
@@ -246,7 +236,7 @@ contingency_table <- function(data,
 #' @note `rdirichlet` function from `MCMCpack`
 #' @noRd
 
-rdirichlet_int <- function(n, alpha) {
+rdirichlet <- function(n, alpha) {
   l <- length(alpha)
   x <- matrix(stats::rgamma(l * n, alpha), ncol = l, byrow = TRUE)
   x / as.vector(x %*% rep(1, l))

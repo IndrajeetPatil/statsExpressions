@@ -197,10 +197,10 @@ two_sample_test <- function(data,
 
   if (type == "robust") {
     # expression parameters
-    c(no.parameters, k.df) %<-% c(1L, ifelse(isTRUE(paired), 0L, k))
+    c(no.parameters, k.df) %<-% c(1L, ifelse(paired, 0L, k))
 
     # running robust analysis
-    if (isFALSE(paired)) {
+    if (!paired) {
       # computing effect size and its confidence interval
       effsize_df <- WRS2::akp.effect(
         formula = rlang::new_formula(y, x),
@@ -217,7 +217,7 @@ two_sample_test <- function(data,
         tidy_model_parameters(.)
     }
 
-    if (isTRUE(paired)) {
+    if (paired) {
       # Yuen's paired test for trimmed means
       stats_df <- WRS2::yuend(x = data[2], y = data[3], tr = tr) %>%
         tidy_model_parameters(.)
