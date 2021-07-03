@@ -199,32 +199,20 @@ two_sample_test <- function(data,
     # expression parameters
     c(no.parameters, k.df) %<-% c(1L, ifelse(paired, 0L, k))
 
-    # running robust analysis
-    if (!paired) {
-      # computing effect size and its confidence interval
-      effsize_df <- WRS2::akp.effect(
-        formula = rlang::new_formula(y, x),
-        data = data,
-        EQVAR = FALSE,
-        tr = tr,
-        nboot = nboot,
-        alpha = 1 - conf.level
-      ) %>%
-        tidy_model_parameters(.)
+    # common arguments
+    .f.args <- list(formula = new_formula(y, x), data = data, x = data[2], y = data[3], tr = tr)
+    .f.es.args <- list(EQVAR = FALSE, nboot = nboot, alpha = 1 - conf.level)
 
-      # Yuen's test for trimmed means
-      stats_df <- WRS2::yuen(formula = rlang::new_formula(y, x), data = data, tr = tr) %>%
-        tidy_model_parameters(.)
-    }
+    # which functions to be used for hypothesis testing and estimation?
+    if (!paired) c(.f, .f.es) %<-% c(WRS2::yuen, WRS2::akp.effect)
+    if (paired) c(.f, .f.es) %<-% c(WRS2::yuend, WRS2::dep.effect)
+
+
+    effsize_df <- tidy_model_parameters(rlang::exec(.f.es, !!!.f.args, !!!.f.es.args))
+    stats_df <- tidy_model_parameters(rlang::exec(.f, !!!.f.args, !!!.f.es.args))
 
     if (paired) {
-      # Yuen's paired test for trimmed means
-      stats_df <- WRS2::yuend(x = data[2], y = data[3], tr = tr) %>%
-        tidy_model_parameters(.)
-
-      # computing effect size and its confidence interval
-      effsize_df <- WRS2::dep.effect(x = data[2], y = data[3], tr = tr, nboot = nboot) %>%
-        tidy_model_parameters(.) %>%
+      effsize_df %<>%
         dplyr::filter(effectsize == "AKP") %>%
         dplyr::mutate(effectsize = "Algina-Keselman-Penfield robust standardized difference")
     }
