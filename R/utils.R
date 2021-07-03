@@ -27,16 +27,17 @@
 #' @export
 
 # function body
-format_num <- function(x, k = 3L, p.value = FALSE, ...) {
+format_num <- function(x, k = 2L, p.value = FALSE, ...) {
 
   # for example, if p.value is 0.002, it should be displayed as such
-  if (k < 3L && isTRUE(p.value)) k <- 3L
+  if (k < 3L && p.value) k <- 3L
 
   # formatting the output properly
-  output <- trimws(format(round(x, digits = k), nsmall = k), which = "both")
+  output <- format(round(x, digits = k), nsmall = k)
 
   # if it's a p-value, then format it properly
-  if (isTRUE(p.value) && output < 0.001) output <- prettyNum(x, scientific = TRUE, digits = k)
+  if (p.value && x < 0.001) output <- prettyNum(x, scientific = TRUE, digits = k)
+  if (!p.value && x > 1000) output <- prettyNum(x, scientific = TRUE, digits = 2L)
 
   # this will return a character
   output

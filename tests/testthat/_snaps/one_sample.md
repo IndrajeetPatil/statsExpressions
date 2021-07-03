@@ -52,7 +52,7 @@
       # A tibble: 1 x 10
         statistic p.value method                    alternative estimate conf.level
             <dbl>   <dbl> <chr>                     <chr>          <dbl>      <dbl>
-      1      6.62   0.323 Wilcoxon signed rank test two.sided     -0.149       0.95
+      1      754.   0.323 Wilcoxon signed rank test two.sided     -0.149       0.95
         conf.low conf.high effectsize        conf.method
            <dbl>     <dbl> <chr>             <chr>      
       1   -0.416     0.143 r (rank biserial) normal     
@@ -62,8 +62,8 @@
     Code
       df1$expression[[1]]
     Output
-      paste("log"["e"](italic("V")["Wilcoxon"]), " = ", "6.6247", ", ", 
-          italic("p"), " = ", "0.3227", ", ", widehat(italic("r"))["biserial"]^"rank", 
+      paste(italic("V")["Wilcoxon"], " = ", "753.5000", ", ", italic("p"), 
+          " = ", "0.3227", ", ", widehat(italic("r"))["biserial"]^"rank", 
           " = ", "-0.1486", ", CI"["95%"], " [", "-0.4162", ", ", "0.1427", 
           "], ", italic("n")["obs"], " = ", "60")
 
@@ -75,7 +75,7 @@
       # A tibble: 1 x 10
         statistic   p.value method                    alternative estimate conf.level
             <dbl>     <dbl> <chr>                     <chr>          <dbl>      <dbl>
-      1      5.57 0.0000125 Wilcoxon signed rank test two.sided     -0.672       0.95
+      1       262 0.0000125 Wilcoxon signed rank test two.sided     -0.672       0.95
         conf.low conf.high effectsize        conf.method
            <dbl>     <dbl> <chr>             <chr>      
       1   -0.806    -0.472 r (rank biserial) normal     
@@ -85,8 +85,8 @@
     Code
       df2$expression[[1]]
     Output
-      paste("log"["e"](italic("V")["Wilcoxon"]), " = ", "5.5683", ", ", 
-          italic("p"), " = ", "1.253e-05", ", ", widehat(italic("r"))["biserial"]^"rank", 
+      paste(italic("V")["Wilcoxon"], " = ", "262.0000", ", ", italic("p"), 
+          " = ", "1.253e-05", ", ", widehat(italic("r"))["biserial"]^"rank", 
           " = ", "-0.6717", ", CI"["95%"], " [", "-0.8058", ", ", "-0.4720", 
           "], ", italic("n")["obs"], " = ", "56")
 

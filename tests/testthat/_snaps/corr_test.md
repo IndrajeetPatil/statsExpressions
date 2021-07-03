@@ -6,7 +6,7 @@
       # A tibble: 1 x 11
         parameter1 parameter2 estimate conf.level conf.low conf.high statistic
         <chr>      <chr>         <dbl>      <dbl>    <dbl>     <dbl>     <dbl>
-      1 rating     length        0.495      0.999    0.153     0.731      10.6
+      1 rating     length        0.495      0.999    0.153     0.731    41453.
            p.value method               n.obs effectsize          
              <dbl> <chr>                <int> <chr>               
       1 0.00000344 Spearman correlation    79 Spearman correlation
@@ -16,10 +16,10 @@
     Code
       df1$expression[[1]]
     Output
-      paste("log"["e"](italic("S")), " = ", "10.63231", ", ", italic("p"), 
-          " = ", "3.4438e-06", ", ", widehat(rho)["Spearman"], " = ", 
-          "0.49546", ", CI"["99.9%"], " [", "0.15344", ", ", "0.73147", 
-          "], ", italic("n")["pairs"], " = ", "79")
+      paste(italic("S"), " = ", "4.1e+04", ", ", italic("p"), " = ", 
+          "3.4438e-06", ", ", widehat(rho)["Spearman"], " = ", "0.49546", 
+          ", CI"["99.9%"], " [", "0.15344", ", ", "0.73147", "], ", 
+          italic("n")["pairs"], " = ", "79")
 
 ---
 
@@ -29,7 +29,7 @@
       # A tibble: 1 x 11
         parameter1 parameter2 estimate conf.level conf.low conf.high statistic
         <chr>      <chr>         <dbl>      <dbl>    <dbl>     <dbl>     <dbl>
-      1 wt         mpg          -0.886       0.95   -0.945    -0.774      9.24
+      1 wt         mpg          -0.886       0.95   -0.945    -0.774    10292.
          p.value method               n.obs effectsize          
            <dbl> <chr>                <int> <chr>               
       1 1.49e-11 Spearman correlation    32 Spearman correlation
@@ -39,10 +39,10 @@
     Code
       df2$expression[[1]]
     Output
-      paste("log"["e"](italic("S")), " = ", "9.24", ", ", italic("p"), 
-          " = ", "1.49e-11", ", ", widehat(rho)["Spearman"], " = ", 
-          "-0.89", ", CI"["95%"], " [", "-0.94", ", ", "-0.77", "], ", 
-          italic("n")["pairs"], " = ", "32")
+      paste(italic("S"), " = ", "1e+04", ", ", italic("p"), " = ", 
+          "1.49e-11", ", ", widehat(rho)["Spearman"], " = ", "-0.89", 
+          ", CI"["95%"], " [", "-0.94", ", ", "-0.77", "], ", italic("n")["pairs"], 
+          " = ", "32")
 
 # corr_test works - parametric
 

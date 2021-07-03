@@ -191,9 +191,6 @@ two_sample_test <- function(data,
       verbose = FALSE
     ) %>%
       tidy_model_effectsize(.)
-
-    # these can be really big values
-    if (type == "nonparametric") stats_df %<>% dplyr::mutate(statistic = log(statistic))
   }
 
   # ----------------------- robust ---------------------------------------

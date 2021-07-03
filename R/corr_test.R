@@ -77,7 +77,6 @@ corr_test <- function(data,
   # ----------------------- expression ---------------------------------------
 
   # no. of parameters
-  if (type == "nonparametric") stats_df %<>% dplyr::mutate(statistic = log(statistic))
   if (type == "bayes") stats_df %<>% dplyr::rename("bf10" = "bayes.factor")
 
   # preparing expression

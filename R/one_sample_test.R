@@ -143,9 +143,6 @@ one_sample_test <- function(data,
     ) %>%
       tidy_model_effectsize(.)
 
-    # these can be really big values
-    if (type == "nonparametric") stats_df %<>% dplyr::mutate(statistic = log(statistic))
-
     # dataframe
     stats_df <- dplyr::bind_cols(stats_df, effsize_df)
   }

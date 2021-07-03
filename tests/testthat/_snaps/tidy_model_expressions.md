@@ -54,7 +54,7 @@
       3      Inf 1.45e- 2
         label                                                                         
         <chr>                                                                         
-      1 list(~widehat(italic(beta))=='-0.78', ~italic(z)=='-3.47', ~italic(p)=='0.001~
+      1 list(~widehat(italic(beta))=='-0.78', ~italic(z)=='-3.47', ~italic(p)=='5.14e~
       2 list(~widehat(italic(beta))=='2.29', ~italic(z)=='19.13', ~italic(p)=='1.54e-~
       3 list(~widehat(italic(beta))=='-0.56', ~italic(z)=='-2.44', ~italic(p)=='0.014~
 

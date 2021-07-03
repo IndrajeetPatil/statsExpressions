@@ -4,7 +4,7 @@
 \alias{format_num}
 \title{Formatting numeric values}
 \usage{
-format_num(x, k = 3L, p.value = FALSE, ...)
+format_num(x, k = 2L, p.value = FALSE, ...)
 }
 \arguments{
 \item{x}{A numeric value.}

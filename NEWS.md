@@ -24,6 +24,13 @@ MAJOR CHANGES
   - The `tidy_model_effectsize()` function is no longer exported as it is
     helpful only for the internal workings of the package.
 
+  - Given that these values can be really high, the statistic values for
+    non-parametric tests were shown on a log scale, but this is a highly
+    non-standard practice that has caused a lot of confusion among users. In
+    light of this feedback, the functions no longer return these values on a log
+    scale but in a scientific notation to keep the statistical expressions
+    short.
+
 # statsExpressions 1.1.0
 
 MAJOR CHANGES
