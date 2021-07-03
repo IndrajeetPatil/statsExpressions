@@ -188,6 +188,7 @@
 <li><p>Exports more utility functions (<code>long_to_wide_converter</code>, <code>format_num</code>, <code>stats_type_switch</code>) to get rid of reliance on <code>ipmisc</code> package.</p></li>
 <li><p>To be consistent with the expressions, the dataframe for Bayesian analysis now also contain log of Bayes Factor values.</p></li>
 <li><p>The <code>tidy_model_effectsize()</code> function is no longer exported as it is helpful only for the internal workings of the package.</p></li>
+<li><p>Given that these values can be really high, the statistic values for non-parametric tests were shown on a log scale, but this is a highly non-standard practice that has caused a lot of confusion among users. In light of this feedback, the functions no longer return these values on a log scale but in a scientific notation to keep the statistical expressions short.</p></li>
 </ul>
 </div>
     <div id="statsexpressions-110" class="section level1">
