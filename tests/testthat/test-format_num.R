@@ -48,5 +48,8 @@ test_that(
         format_num(123445678, k = 1)
       )
     )
+
+    expect_identical(format_num(NA), "NA")
+    expect_identical(format_num(NA_complex_), "NA")
   }
 )

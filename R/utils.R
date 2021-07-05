@@ -36,8 +36,10 @@ format_num <- function(x, k = 2L, p.value = FALSE, ...) {
   output <- format(round(x, digits = k), nsmall = k)
 
   # if it's a p-value, then format it properly
-  if (p.value && x < 0.001) output <- prettyNum(x, scientific = TRUE, digits = k)
-  if (!p.value && x > 1000) output <- prettyNum(x, scientific = TRUE, digits = 2L)
+  if (!is.na(x)) {
+    if (p.value && x < 0.001) output <- prettyNum(x, scientific = TRUE, digits = k)
+    if (!p.value && x > 1000) output <- prettyNum(x, scientific = TRUE, digits = 2L)
+  }
 
   # this will return a character
   output
