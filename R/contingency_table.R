@@ -170,6 +170,11 @@ contingency_table <- function(data,
     if (test == "1way") {
       xtab <- table(x_vec)
 
+      # probability can't be exactly 0 or 1
+      if (1 / length(as.vector(xtab)) == 0 || 1 / length(as.vector(xtab)) == 1) {
+        return(NULL)
+      }
+
       # use it
       p1s <- rdirichlet(n = 100000L, alpha = prior.concentration * ratio)
 

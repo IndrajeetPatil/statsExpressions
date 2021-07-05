@@ -324,5 +324,9 @@ test_that(
     set.seed(123)
     expect_snapshot(dplyr::select(df2, -expression))
     expect_snapshot(df2$expression[[1]])
+
+    df_eg <- data.frame(x = c("a"))
+
+    expect_null(contingency_table(type = "bayes", df_eg, x))
   }
 )
