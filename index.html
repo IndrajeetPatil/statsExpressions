@@ -396,7 +396,7 @@
 <span class="co">#&gt; 1 wt         cyl             22.8        2 0.0000112</span>
 <span class="co">#&gt;   method                       estimate conf.level conf.low conf.high</span>
 <span class="co">#&gt;   &lt;chr&gt;                           &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Kruskal-Wallis rank sum test    0.736       0.95    0.540     0.840</span>
+<span class="co">#&gt; 1 Kruskal-Wallis rank sum test    0.736       0.95    0.581     0.835</span>
 <span class="co">#&gt;   effectsize      conf.method          conf.iterations expression</span>
 <span class="co">#&gt;   &lt;chr&gt;           &lt;chr&gt;                          &lt;int&gt; &lt;list&gt;    </span>
 <span class="co">#&gt; 1 Epsilon2 (rank) percentile bootstrap             100 &lt;language&gt;</span>
@@ -408,10 +408,10 @@
 <span class="co">#&gt; 1      12.7     2     12.2 0.00102</span>
 <span class="co">#&gt;   method                                            estimate conf.level conf.low</span>
 <span class="co">#&gt;   &lt;chr&gt;                                                &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 A heteroscedastic one-way ANOVA for trimmed means     1.04       0.95    0.833</span>
+<span class="co">#&gt; 1 A heteroscedastic one-way ANOVA for trimmed means     1.08       0.95    0.826</span>
 <span class="co">#&gt;   conf.high effectsize                         expression</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;                              &lt;list&gt;    </span>
-<span class="co">#&gt; 1      1.46 Explanatory measure of effect size &lt;language&gt;</span></code></pre></div>
+<span class="co">#&gt; 1      1.67 Explanatory measure of effect size &lt;language&gt;</span></code></pre></div>
 <p>All possible output dataframes from functions are tabulated here: <a href="https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html</a></p>
 <p>Needless to say this will also work with the <code>kable</code> function to generate a table:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -864,9 +864,9 @@
 <colgroup>
 <col width="5%">
 <col width="5%">
-<col width="68%">
+<col width="66%">
 <col width="1%">
-<col width="19%">
+<col width="20%">
 </colgroup>
 <thead><tr class="header">
 <th>Type</th>
@@ -880,7 +880,7 @@
 <td>Parametric</td>
 <td>&gt; 2</td>
 <td>
-<img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ceta_%7Bp%7D%5E2" title="\eta_{p}^2" alt="\eta_{p}^2">, <img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=%5Comega_%7Bp%7D%5E2" title="\omega_{p}^2" alt="\omega_{p}^2">
+<embed src="https://latex.codecogs.com/svg.latex?%5Ceta_%7Bp%7D%5E2" title="\eta_{p}^2"></embed>, <embed src="https://latex.codecogs.com/svg.latex?%5Comega_%7Bp%7D%5E2" title="\omega_{p}^2"></embed>
 </td>
 <td>✅</td>
 <td>
@@ -890,7 +890,7 @@
 <tr class="even">
 <td>Non-parametric</td>
 <td>&gt; 2</td>
-<td><img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cepsilon_%7Bordinal%7D%5E2" title="\epsilon_{ordinal}^2" alt="\epsilon_{ordinal}^2"></td>
+<td><embed src="https://latex.codecogs.com/svg.latex?%5Cepsilon_%7Bordinal%7D%5E2" title="\epsilon_{ordinal}^2"></embed></td>
 <td>✅</td>
 <td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html">effectsize::rank_epsilon_squared</a></code></td>
 </tr>
@@ -898,14 +898,14 @@
 <td>Robust</td>
 <td>&gt; 2</td>
 <td>
-<img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cxi" title="\xi" alt="\xi"> (Explanatory measure of effect size)</td>
+<embed src="https://latex.codecogs.com/svg.latex?%5Cxi" title="\xi"></embed> (Explanatory measure of effect size)</td>
 <td>✅</td>
 <td><code><a href="https://rdrr.io/pkg/WRS2/man/t1way.html">WRS2::t1way</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayes Factor</td>
 <td>&gt; 2</td>
-<td><img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=R_%7BBayesian%7D%5E2" title="R_{Bayesian}^2" alt="R_{Bayesian}^2"></td>
+<td><embed src="https://latex.codecogs.com/svg.latex?R_%7BBayesian%7D%5E2" title="R_{Bayesian}^2"></embed></td>
 <td>✅</td>
 <td><code><a href="https://easystats.github.io/performance/reference/r2_bayes.html">performance::r2_bayes</a></code></td>
 </tr>
@@ -931,14 +931,14 @@
 <td>Robust</td>
 <td>2</td>
 <td>
-<img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta_%7BR%7D%5E%7BAKP%7D" title="\delta_{R}^{AKP}" alt="\delta_{R}^{AKP}"> (Algina-Keselman-Penfield robust standardized difference)</td>
+<embed src="https://latex.codecogs.com/svg.latex?%5Cdelta_%7BR%7D%5E%7BAKP%7D" title="\delta_{R}^{AKP}"></embed> (Algina-Keselman-Penfield robust standardized difference)</td>
 <td>✅</td>
 <td><code><a href="https://rdrr.io/pkg/WRS2/man/yuen.html">WRS2::akp.effect</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
 <td>2</td>
-<td><img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta_%7Bposterior%7D" title="\delta_{posterior}" alt="\delta_{posterior}"></td>
+<td><embed src="https://latex.codecogs.com/svg.latex?%5Cdelta_%7Bposterior%7D" title="\delta_{posterior}"></embed></td>
 <td>✅</td>
 <td><code><a href="https://easystats.github.io/bayestestR/reference/describe_posterior.html">bayestestR::describe_posterior</a></code></td>
 </tr>
@@ -1018,9 +1018,9 @@
 <colgroup>
 <col width="5%">
 <col width="5%">
-<col width="68%">
+<col width="67%">
 <col width="1%">
-<col width="19%">
+<col width="20%">
 </colgroup>
 <thead><tr class="header">
 <th>Type</th>
@@ -1034,7 +1034,7 @@
 <td>Parametric</td>
 <td>&gt; 2</td>
 <td>
-<img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ceta_%7Bp%7D%5E2" title="\eta_{p}^2" alt="\eta_{p}^2">, <img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=%5Comega_%7Bp%7D%5E2" title="\omega_{p}^2" alt="\omega_{p}^2">
+<embed src="https://latex.codecogs.com/svg.latex?%5Ceta_%7Bp%7D%5E2" title="\eta_{p}^2"></embed>, <embed src="https://latex.codecogs.com/svg.latex?%5Comega_%7Bp%7D%5E2" title="\omega_{p}^2"></embed>
 </td>
 <td>✅</td>
 <td>
@@ -1045,7 +1045,7 @@
 <td>Non-parametric</td>
 <td>&gt; 2</td>
 <td>
-<img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=W_%7BKendall%7D" title="W_{Kendall}" alt="W_{Kendall}"> (Kendall’s coefficient of concordance)</td>
+<embed src="https://latex.codecogs.com/svg.latex?W_%7BKendall%7D" title="W_{Kendall}"></embed> (Kendall’s coefficient of concordance)</td>
 <td>✅</td>
 <td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html">effectsize::kendalls_w</a></code></td>
 </tr>
@@ -1053,14 +1053,14 @@
 <td>Robust</td>
 <td>&gt; 2</td>
 <td>
-<img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta_%7BR-avg%7D%5E%7BAKP%7D" title="\delta_{R-avg}^{AKP}" alt="\delta_{R-avg}^{AKP}"> (Algina-Keselman-Penfield robust standardized difference average)</td>
+<embed src="https://latex.codecogs.com/svg.latex?%5Cdelta_%7BR-avg%7D%5E%7BAKP%7D" title="\delta_{R-avg}^{AKP}"></embed> (Algina-Keselman-Penfield robust standardized difference average)</td>
 <td>✅</td>
 <td><code><a href="https://rdrr.io/pkg/WRS2/man/wmcpAKP.html">WRS2::wmcpAKP</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayes Factor</td>
 <td>&gt; 2</td>
-<td><img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=R_%7BBayesian%7D%5E2" title="R_{Bayesian}^2" alt="R_{Bayesian}^2"></td>
+<td><embed src="https://latex.codecogs.com/svg.latex?R_%7BBayesian%7D%5E2" title="R_{Bayesian}^2"></embed></td>
 <td>✅</td>
 <td><code><a href="https://easystats.github.io/performance/reference/r2_bayes.html">performance::r2_bayes</a></code></td>
 </tr>
@@ -1086,14 +1086,14 @@
 <td>Robust</td>
 <td>2</td>
 <td>
-<img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta_%7BR%7D%5E%7BAKP%7D" title="\delta_{R}^{AKP}" alt="\delta_{R}^{AKP}"> (Algina-Keselman-Penfield robust standardized difference)</td>
+<embed src="https://latex.codecogs.com/svg.latex?%5Cdelta_%7BR%7D%5E%7BAKP%7D" title="\delta_{R}^{AKP}"></embed> (Algina-Keselman-Penfield robust standardized difference)</td>
 <td>✅</td>
 <td><code><a href="https://rdrr.io/pkg/WRS2/man/wmcpAKP.html">WRS2::wmcpAKP</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
 <td>2</td>
-<td><img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta_%7Bposterior%7D" title="\delta_{posterior}" alt="\delta_{posterior}"></td>
+<td><embed src="https://latex.codecogs.com/svg.latex?%5Cdelta_%7Bposterior%7D" title="\delta_{posterior}"></embed></td>
 <td>✅</td>
 <td><code><a href="https://easystats.github.io/bayestestR/reference/describe_posterior.html">bayestestR::describe_posterior</a></code></td>
 </tr>
@@ -1139,9 +1139,9 @@
 <table class="table">
 <colgroup>
 <col width="8%">
-<col width="63%">
+<col width="61%">
 <col width="2%">
-<col width="25%">
+<col width="26%">
 </colgroup>
 <thead><tr class="header">
 <th>Type</th>
@@ -1175,7 +1175,7 @@
 </tr>
 <tr class="even">
 <td>Bayes Factor</td>
-<td><img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta_%7Bposterior%7D" title="\delta_{posterior}" alt="\delta_{posterior}"></td>
+<td><embed src="https://latex.codecogs.com/svg.latex?%5Cdelta_%7Bposterior%7D" title="\delta_{posterior}"></embed></td>
 <td>✅</td>
 <td><code><a href="https://easystats.github.io/bayestestR/reference/describe_posterior.html">bayestestR::describe_posterior</a></code></td>
 </tr>
@@ -1238,10 +1238,10 @@
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <colgroup>
-<col width="15%">
-<col width="5%">
-<col width="59%">
-<col width="19%">
+<col width="16%">
+<col width="6%">
+<col width="56%">
+<col width="21%">
 </colgroup>
 <thead><tr class="header">
 <th>Type</th>
@@ -1253,19 +1253,19 @@
 <tr class="odd">
 <td>Parametric/Non-parametric</td>
 <td>Unpaired</td>
-<td>Pearson’s <img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cchi%5E2" title="\chi^2" alt="\chi^2"> test</td>
+<td>Pearson’s <embed src="https://latex.codecogs.com/svg.latex?%5Cchi%5E2" title="\chi^2"></embed> test</td>
 <td><code><a href="https://rdrr.io/r/stats/chisq.test.html">stats::chisq.test</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
 <td>Unpaired</td>
-<td>Bayesian Pearson’s <img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cchi%5E2" title="\chi^2" alt="\chi^2"> test</td>
+<td>Bayesian Pearson’s <embed src="https://latex.codecogs.com/svg.latex?%5Cchi%5E2" title="\chi^2"></embed> test</td>
 <td><code><a href="https://rdrr.io/pkg/BayesFactor/man/contingencyTableBF.html">BayesFactor::contingencyTableBF</a></code></td>
 </tr>
 <tr class="odd">
 <td>Parametric/Non-parametric</td>
 <td>Paired</td>
-<td>McNemar’s <img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cchi%5E2" title="\chi^2" alt="\chi^2"> test</td>
+<td>McNemar’s <embed src="https://latex.codecogs.com/svg.latex?%5Cchi%5E2" title="\chi^2"></embed> test</td>
 <td><code><a href="https://rdrr.io/r/stats/mcnemar.test.html">stats::mcnemar.test</a></code></td>
 </tr>
 <tr class="even">
@@ -1289,7 +1289,7 @@
 <tr class="odd">
 <td>Parametric/Non-parametric</td>
 <td>Unpaired</td>
-<td>Cramer’s <img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=V" title="V" alt="V">
+<td>Cramer’s <embed src="https://latex.codecogs.com/svg.latex?V" title="V"></embed>
 </td>
 <td>✅</td>
 <td><code><a href="https://easystats.github.io/effectsize/reference/phi.html">effectsize::cramers_v</a></code></td>
@@ -1297,7 +1297,7 @@
 <tr class="even">
 <td>Bayesian</td>
 <td>Unpaired</td>
-<td>Cramer’s <img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=V" title="V" alt="V">
+<td>Cramer’s <embed src="https://latex.codecogs.com/svg.latex?V" title="V"></embed>
 </td>
 <td>✅</td>
 <td><code><a href="https://easystats.github.io/effectsize/reference/phi.html">effectsize::cramers_v</a></code></td>
@@ -1305,7 +1305,7 @@
 <tr class="odd">
 <td>Parametric/Non-parametric</td>
 <td>Paired</td>
-<td>Cohen’s <img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=g" title="g" alt="g">
+<td>Cohen’s <embed src="https://latex.codecogs.com/svg.latex?g" title="g"></embed>
 </td>
 <td>✅</td>
 <td><code><a href="https://easystats.github.io/effectsize/reference/phi.html">effectsize::cohens_g</a></code></td>
@@ -1333,12 +1333,12 @@
 <tbody>
 <tr class="odd">
 <td>Parametric/Non-parametric</td>
-<td>Goodness of fit <img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cchi%5E2" title="\chi^2" alt="\chi^2"> test</td>
+<td>Goodness of fit <embed src="https://latex.codecogs.com/svg.latex?%5Cchi%5E2" title="\chi^2"></embed> test</td>
 <td><code><a href="https://rdrr.io/r/stats/chisq.test.html">stats::chisq.test</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
-<td>Bayesian Goodness of fit <img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cchi%5E2" title="\chi^2" alt="\chi^2"> test</td>
+<td>Bayesian Goodness of fit <embed src="https://latex.codecogs.com/svg.latex?%5Cchi%5E2" title="\chi^2"></embed> test</td>
 <td>(custom)</td>
 </tr>
 </tbody>
@@ -1354,7 +1354,7 @@
 <tbody>
 <tr class="odd">
 <td>Parametric/Non-parametric</td>
-<td>Cramer’s <img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=V" title="V" alt="V">
+<td>Cramer’s <embed src="https://latex.codecogs.com/svg.latex?V" title="V"></embed>
 </td>
 <td>✅</td>
 <td><code><a href="https://easystats.github.io/bayestestR/reference/describe_posterior.html">bayestestR::describe_posterior</a></code></td>
@@ -1377,10 +1377,10 @@
 <table class="table">
 <colgroup>
 <col width="7%">
-<col width="30%">
-<col width="45%">
+<col width="32%">
+<col width="41%">
 <col width="3%">
-<col width="14%">
+<col width="15%">
 </colgroup>
 <thead><tr class="header">
 <th>Type</th>
@@ -1393,21 +1393,21 @@
 <tr class="odd">
 <td>Parametric</td>
 <td>Meta-analysis via random-effects models</td>
-<td><img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta" title="\beta" alt="\beta"></td>
+<td><embed src="https://latex.codecogs.com/svg.latex?%5Cbeta" title="\beta"></embed></td>
 <td>✅</td>
 <td><code><a href="https://wviechtb.github.io/metafor/reference/metafor-package.html">metafor::metafor</a></code></td>
 </tr>
 <tr class="even">
 <td>Robust</td>
 <td>Meta-analysis via robust random-effects models</td>
-<td><img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta" title="\beta" alt="\beta"></td>
+<td><embed src="https://latex.codecogs.com/svg.latex?%5Cbeta" title="\beta"></embed></td>
 <td>✅</td>
 <td><code><a href="https://rdrr.io/pkg/metaplus/man/metaplus.html">metaplus::metaplus</a></code></td>
 </tr>
 <tr class="odd">
 <td>Bayes</td>
 <td>Meta-analysis via Bayesian random-effects models</td>
-<td><img src="https://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta" title="\beta" alt="\beta"></td>
+<td><embed src="https://latex.codecogs.com/svg.latex?%5Cbeta" title="\beta"></embed></td>
 <td>✅</td>
 <td><code><a href="https://rdrr.io/pkg/metaBMA/man/meta_random.html">metaBMA::meta_random</a></code></td>
 </tr>
