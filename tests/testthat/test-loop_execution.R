@@ -3,14 +3,13 @@ test_that(
   code = {
     col.name <- colnames(mtcars)
 
-    ls <-
-      capture.output(for (i in 4:5) {
-        print(corr_test(
-          data = mtcars,
-          x = disp,
-          y = col.name[i]
-        ))
-      })
+    ls <- capture.output(for (i in 4:5) {
+      print(corr_test(
+        data = mtcars,
+        x = disp,
+        y = col.name[i]
+      ))
+    })
 
     expect_true(length(ls) >= 8L)
   }
@@ -21,14 +20,13 @@ test_that(
   code = {
     col.name <- colnames(mtcars)
 
-    ls <-
-      capture.output(for (i in 3:5) {
-        print(one_sample_test(
-          data = mtcars,
-          x = col.name[i],
-          test.value = 3
-        ))
-      })
+    ls <- capture.output(for (i in 3:5) {
+      print(one_sample_test(
+        data = mtcars,
+        x = col.name[i],
+        test.value = 3
+      ))
+    })
 
     expect_true(length(ls) >= 12L)
   }
@@ -41,13 +39,12 @@ test_that(
     col.name <- colnames(df)
 
     set.seed(123)
-    ls <-
-      capture.output(for (i in 1:3) {
-        print(contingency_table(
-          data = mtcars,
-          x = col.name[i]
-        ))
-      })
+    ls <- capture.output(for (i in 1:3) {
+      print(contingency_table(
+        data = mtcars,
+        x = col.name[i]
+      ))
+    })
 
     expect_true(length(ls) >= 12L)
   }

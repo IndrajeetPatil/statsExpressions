@@ -3,30 +3,28 @@ test_that(
   code = {
     skip_if(getRversion() < "4.0")
 
-    # bayes factor (between-subjects - anova) ---------------------------------
+    # bayes factor (between-subjects - anova) ------------------------------
 
     # extracting results from where this function is implemented
     set.seed(123)
-    df_results <-
-      oneway_anova(
-        type = "bayes",
-        data = ggplot2::msleep,
-        x = "vore",
-        y = brainwt,
-        bf.prior = 0.99
-      )
+    df_results <- oneway_anova(
+      type = "bayes",
+      data = ggplot2::msleep,
+      x = vore,
+      y = brainwt,
+      bf.prior = 0.99
+    )
 
     # extracting expr
     set.seed(123)
-    results <-
-      oneway_anova(
-        type = "bayes",
-        data = ggplot2::msleep,
-        x = vore,
-        y = "brainwt",
-        bf.prior = 0.88,
-        k = 2 # don't change; tests fail on Ubuntu otherwise
-      )
+    results <- oneway_anova(
+      type = "bayes",
+      data = ggplot2::msleep,
+      x = vore,
+      y = brainwt,
+      bf.prior = 0.88,
+      k = 2 # don't change; tests fail on Ubuntu otherwise
+    )
 
     # check bayes factor values
     expect_equal(df_results$bf10[[1]], 0.1177186, tolerance = 0.001)
@@ -94,42 +92,39 @@ test_that(
 
       # extracting results from where this function is implemented
       set.seed(123)
-      df_results <-
-        oneway_anova(
-          type = "bayes",
-          data = dat,
-          x = Wine,
-          y = "Taste",
-          paired = TRUE,
-          bf.prior = 0.99
-        )
+      df_results <- oneway_anova(
+        type = "bayes",
+        data = dat,
+        x = Wine,
+        y = Taste,
+        paired = TRUE,
+        bf.prior = 0.99
+      )
 
       # check bayes factor values
       expect_equal(df_results$bf10[[1]], 6.364917, tolerance = 0.001)
 
       # extracting expression
       set.seed(123)
-      results <-
-        oneway_anova(
-          type = "bayes",
-          data = dat,
-          x = "Wine",
-          y = Taste,
-          k = 2, # don't change; tests fail on Ubuntu otherwise
-          paired = TRUE,
-          bf.prior = 0.88
-        )
+      results <- oneway_anova(
+        type = "bayes",
+        data = dat,
+        x = Wine,
+        y = Taste,
+        k = 2, # don't change; tests fail on Ubuntu otherwise
+        paired = TRUE,
+        bf.prior = 0.88
+      )
 
       # data with NA
       set.seed(123)
-      results_na <-
-        oneway_anova(
-          type = "bayes",
-          data = bugs_long,
-          x = condition,
-          y = "desire",
-          paired = TRUE
-        )
+      results_na <- oneway_anova(
+        type = "bayes",
+        data = bugs_long,
+        x = condition,
+        y = desire,
+        paired = TRUE
+      )
 
       # testing expression
       expect_type(results$expression[[1]], "language")

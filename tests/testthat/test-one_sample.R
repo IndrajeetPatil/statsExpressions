@@ -8,29 +8,27 @@ test_that(
 
     # Hedge's g and non-central
     set.seed(123)
-    df1 <-
+    df1 <- one_sample_test(
+      data = dplyr::sample_frac(movies_long, 0.05),
+      x = length,
+      test.value = 120,
+      type = "p",
+      k = 5
+    )
+
+    # Cohen's d and non-central
+    set.seed(123)
+    df2 <- suppressWarnings(
       one_sample_test(
         data = dplyr::sample_frac(movies_long, 0.05),
         x = length,
         test.value = 120,
         type = "p",
-        k = 5
+        effsize.type = "d",
+        k = 4,
+        conf.level = 0.90
       )
-
-    # Cohen's d and non-central
-    set.seed(123)
-    df2 <-
-      suppressWarnings(
-        one_sample_test(
-          data = dplyr::sample_frac(movies_long, 0.05),
-          x = "length",
-          test.value = 120,
-          type = "p",
-          effsize.type = "d",
-          k = 4,
-          conf.level = 0.90
-        )
-      )
+    )
 
     # testing all details
     set.seed(123)
@@ -51,25 +49,23 @@ test_that(
 
     # statsExpressions output
     set.seed(123)
-    df1 <-
-      suppressWarnings(one_sample_test(
-        data = ToothGrowth,
-        x = len,
-        test.value = 20,
-        type = "np",
-        k = 4
-      ))
+    df1 <- suppressWarnings(one_sample_test(
+      data = ToothGrowth,
+      x = len,
+      test.value = 20,
+      type = "np",
+      k = 4
+    ))
 
     # statsExpressions output
     set.seed(123)
-    df2 <-
-      one_sample_test(
-        data = ggplot2::msleep,
-        x = names(ggplot2::msleep)[10],
-        test.value = 0.25,
-        type = "np",
-        k = 4
-      )
+    df2 <- one_sample_test(
+      data = ggplot2::msleep,
+      x = names(ggplot2::msleep)[10],
+      test.value = 0.25,
+      type = "np",
+      k = 4
+    )
 
     # testing all details
     set.seed(123)
@@ -90,27 +86,25 @@ test_that(
 
     # statsExpressions output
     set.seed(123)
-    df1 <-
-      one_sample_test(
-        data = anscombe,
-        x = "x1",
-        test.value = 8,
-        type = "r",
-        k = 4,
-        conf.level = 0.95 # TODO: change
-      )
+    df1 <- one_sample_test(
+      data = anscombe,
+      x = x1,
+      test.value = 8,
+      type = "r",
+      k = 4,
+      conf.level = 0.95 # TODO: change
+    )
 
     # statsExpressions output
     set.seed(123)
-    df2 <-
-      one_sample_test(
-        data = ggplot2::msleep,
-        x = brainwt,
-        test.value = 0.1,
-        type = "r",
-        k = 4,
-        conf.level = 0.95 # TODO: change
-      )
+    df2 <- one_sample_test(
+      data = ggplot2::msleep,
+      x = brainwt,
+      test.value = 0.1,
+      type = "r",
+      k = 4,
+      conf.level = 0.95 # TODO: change
+    )
 
     # testing all details
     set.seed(123)
@@ -148,32 +142,30 @@ test_that(
 
     # extracting subtitle (without NA)
     set.seed(123)
-    subtitle <-
-      one_sample_test(
-        type = "bayes",
-        data = iris,
-        x = "Petal.Length",
-        y = NULL,
-        test.value = 5.5,
-        bf.prior = 0.99,
-        conf.level = 0.90
-      )
+    subtitle <- one_sample_test(
+      type = "bayes",
+      data = iris,
+      x = Petal.Length,
+      y = NULL,
+      test.value = 5.5,
+      bf.prior = 0.99,
+      conf.level = 0.90
+    )
 
     expect_snapshot(subtitle$expression[[1]])
 
     # extracting subtitle (with NA)
     set.seed(123)
-    subtitle2 <-
-      one_sample_test(
-        type = "bayes",
-        data = ggplot2::msleep,
-        x = brainwt,
-        y = NULL,
-        test.value = 0.25,
-        bf.prior = 0.9,
-        k = 3,
-        conf.method = "eti"
-      )
+    subtitle2 <- one_sample_test(
+      type = "bayes",
+      data = ggplot2::msleep,
+      x = brainwt,
+      y = NULL,
+      test.value = 0.25,
+      bf.prior = 0.9,
+      k = 3,
+      conf.method = "eti"
+    )
 
     expect_snapshot(subtitle2$expression[[1]])
   }

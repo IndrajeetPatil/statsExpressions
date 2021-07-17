@@ -3,7 +3,6 @@
 test_that(
   desc = "format_num works",
   code = {
-
     # for reproducibility
     set.seed(123)
 

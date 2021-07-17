@@ -7,18 +7,17 @@ test_that(
 
     # subtitle
     set.seed(123)
-    df1 <-
-      two_sample_test(
-        type = "r",
-        data = dplyr::filter(
-          iris_long,
-          condition %in% c("Sepal.Length", "Sepal.Width")
-        ),
-        x = "condition",
-        y = value,
-        paired = TRUE,
-        k = 4
-      )
+    df1 <- two_sample_test(
+      type = "r",
+      data = dplyr::filter(
+        iris_long,
+        condition %in% c("Sepal.Length", "Sepal.Width")
+      ),
+      x = condition,
+      y = value,
+      paired = TRUE,
+      k = 4
+    )
 
     # testing all details
     set.seed(123)
@@ -32,15 +31,14 @@ test_that(
   code = {
     # subtitle
     set.seed(123)
-    df1 <-
-      two_sample_test(
-        type = "r",
-        data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
-        x = "condition",
-        y = desire,
-        paired = TRUE,
-        k = 3L
-      )
+    df1 <- two_sample_test(
+      type = "r",
+      data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+      x = condition,
+      y = desire,
+      paired = TRUE,
+      k = 3L
+    )
 
     # testing all details
     set.seed(123)
@@ -57,16 +55,15 @@ test_that(
 
     # subtitle
     set.seed(123)
-    df1 <-
-      two_sample_test(
-        type = "r",
-        data = mtcars,
-        x = am,
-        y = "wt",
-        paired = FALSE,
-        conf.level = 0.99,
-        k = 3
-      )
+    df1 <- two_sample_test(
+      type = "r",
+      data = mtcars,
+      x = am,
+      y = wt,
+      paired = FALSE,
+      conf.level = 0.99,
+      k = 3
+    )
 
     # testing all details
     set.seed(123)
@@ -80,16 +77,15 @@ test_that(
   code = {
     # subtitle
     set.seed(123)
-    df1 <-
-      two_sample_test(
-        type = "r",
-        data = dplyr::filter(ggplot2::msleep, vore %in% c("carni", "herbi")),
-        x = "vore",
-        y = "brainwt",
-        paired = FALSE,
-        conf.level = 0.90,
-        k = 4
-      )
+    df1 <- two_sample_test(
+      type = "r",
+      data = dplyr::filter(ggplot2::msleep, vore %in% c("carni", "herbi")),
+      x = vore,
+      y = brainwt,
+      paired = FALSE,
+      conf.level = 0.90,
+      k = 4
+    )
 
     # testing all details
     set.seed(123)
@@ -135,26 +131,24 @@ test_that(
 
     # incorrect
     set.seed(123)
-    expr1 <-
-      two_sample_test(
-        type = "r",
-        data = df,
-        x = condition,
-        y = score,
-        subject.id = id,
-        paired = TRUE
-      )
+    expr1 <- two_sample_test(
+      type = "r",
+      data = df,
+      x = condition,
+      y = score,
+      subject.id = id,
+      paired = TRUE
+    )
 
     # correct
     set.seed(123)
-    expr2 <-
-      two_sample_test(
-        type = "r",
-        data = dplyr::arrange(df, id),
-        x = condition,
-        y = score,
-        paired = TRUE
-      )
+    expr2 <- two_sample_test(
+      type = "r",
+      data = dplyr::arrange(df, id),
+      x = condition,
+      y = score,
+      paired = TRUE
+    )
 
     expect_equal(expr1, expr2)
   }

@@ -7,18 +7,17 @@ test_that(
 
     # `statsExpressions` output
     set.seed(123)
-    df1 <-
-      suppressWarnings(
-        two_sample_test(
-          ToothGrowth,
-          x = supp,
-          y = len,
-          effsize.type = "d",
-          var.equal = TRUE,
-          conf.level = 0.99,
-          k = 5
-        )
+    df1 <- suppressWarnings(
+      two_sample_test(
+        ToothGrowth,
+        x = supp,
+        y = len,
+        effsize.type = "d",
+        var.equal = TRUE,
+        conf.level = 0.99,
+        k = 5
       )
+    )
 
     # testing all details
     set.seed(123)
@@ -34,18 +33,17 @@ test_that(
 
     # `statsExpressions` output
     set.seed(123)
-    df1 <-
-      suppressWarnings(
-        two_sample_test(
-          ToothGrowth,
-          x = supp,
-          y = len,
-          effsize.type = "g",
-          var.equal = FALSE,
-          conf.level = 0.90,
-          k = 3
-        )
+    df1 <- suppressWarnings(
+      two_sample_test(
+        ToothGrowth,
+        x = supp,
+        y = len,
+        effsize.type = "g",
+        var.equal = FALSE,
+        conf.level = 0.90,
+        k = 3
       )
+    )
 
     # testing all details
     set.seed(123)
@@ -61,19 +59,18 @@ test_that(
 
     # output from `statsExpressions` helper subtitle
     set.seed(123)
-    df1 <-
-      suppressWarnings(two_sample_test(
-        data = dplyr::filter(
-          iris_long,
-          condition %in% c("Sepal.Length", "Sepal.Width")
-        ),
-        x = condition,
-        y = value,
-        paired = TRUE,
-        effsize.type = "g",
-        k = 4,
-        conf.level = 0.50
-      ))
+    df1 <- suppressWarnings(two_sample_test(
+      data = dplyr::filter(
+        iris_long,
+        condition %in% c("Sepal.Length", "Sepal.Width")
+      ),
+      x = condition,
+      y = value,
+      paired = TRUE,
+      effsize.type = "g",
+      k = 4,
+      conf.level = 0.50
+    ))
 
     # testing all details
     set.seed(123)
@@ -90,15 +87,14 @@ test_that(
 
     # output from `statsExpressions` helper subtitle
     set.seed(123)
-    df1 <-
-      two_sample_test(
-        data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
-        x = condition,
-        y = desire,
-        paired = TRUE,
-        effsize.type = "d",
-        k = 3
-      )
+    df1 <- two_sample_test(
+      data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+      x = condition,
+      y = desire,
+      paired = TRUE,
+      effsize.type = "d",
+      k = 3
+    )
 
     # testing all details
     set.seed(123)

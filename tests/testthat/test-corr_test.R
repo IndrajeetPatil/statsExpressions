@@ -7,15 +7,14 @@ test_that(
 
     # `statsExpressions` output
     set.seed(123)
-    df1 <-
-      suppressWarnings(corr_test(
-        data = dplyr::sample_frac(movies_long, 0.05),
-        x = rating,
-        y = "length",
-        type = "nonparametric",
-        k = 5,
-        conf.level = 0.999
-      ))
+    df1 <- suppressWarnings(corr_test(
+      data = dplyr::sample_frac(movies_long, 0.05),
+      x = rating,
+      y = length,
+      type = "nonparametric",
+      k = 5,
+      conf.level = 0.999
+    ))
 
     # testing all details
     set.seed(123)
@@ -24,13 +23,12 @@ test_that(
 
     # `statsExpressions` output
     set.seed(123)
-    df2 <-
-      corr_test(
-        data = mtcars,
-        x = names(mtcars)[6],
-        y = mpg,
-        type = "np"
-      )
+    df2 <- corr_test(
+      data = mtcars,
+      x = wt,
+      y = mpg,
+      type = "np"
+    )
 
     # testing all details
     set.seed(123)
@@ -46,15 +44,14 @@ test_that(
 
     # `statsExpressions` output
     set.seed(123)
-    df <-
-      suppressWarnings(corr_test(
-        data = ggplot2::msleep,
-        x = brainwt,
-        y = sleep_rem,
-        type = "parametric",
-        k = 3,
-        conf.level = 0.90
-      ))
+    df <- suppressWarnings(corr_test(
+      data = ggplot2::msleep,
+      x = brainwt,
+      y = sleep_rem,
+      type = "parametric",
+      k = 3,
+      conf.level = 0.90
+    ))
 
     # testing all details
     set.seed(123)
@@ -70,15 +67,14 @@ test_that(
 
     # using function
     set.seed(123)
-    df <-
-      corr_test(
-        data = ggplot2::msleep,
-        x = names(ggplot2::msleep)[10],
-        y = "sleep_total",
-        type = "r",
-        k = 4,
-        conf.level = .50
-      )
+    df <- corr_test(
+      data = ggplot2::msleep,
+      x = brainwt,
+      y = sleep_total,
+      type = "r",
+      k = 4,
+      conf.level = 0.50
+    )
 
     # testing all details
     set.seed(123)
@@ -96,13 +92,12 @@ test_that(
 
     # extracting results from where this function is implemented
     set.seed(123)
-    df <-
-      corr_test(
-        type = "bayes",
-        data = iris,
-        y = Sepal.Length,
-        x = "Sepal.Width"
-      )
+    df <- corr_test(
+      type = "bayes",
+      data = iris,
+      y = Sepal.Length,
+      x = Sepal.Width
+    )
 
     # check bayes factor values
     expect_equal(df$bf10, 0.3445379, tolerance = 0.001)
@@ -132,23 +127,22 @@ test_that(
       corr_test(
         type = "bayes",
         data = ggplot2::msleep,
-        y = names(ggplot2::msleep)[10],
-        x = "sleep_rem",
+        y = brainwt,
+        x = sleep_rem,
       )
 
     # check bayes factor values
     expect_equal(df$bf10, 0.6539296, tolerance = 0.001)
 
     set.seed(123)
-    subtitle1 <-
-      corr_test(
-        type = "bayes",
-        data = ggplot2::msleep,
-        y = brainwt,
-        x = sleep_rem,
-        bf.prior = 0.8,
-        conf.level = 0.99
-      )
+    subtitle1 <- corr_test(
+      type = "bayes",
+      data = ggplot2::msleep,
+      y = brainwt,
+      x = sleep_rem,
+      bf.prior = 0.8,
+      conf.level = 0.99
+    )
 
     expect_snapshot(subtitle1$expression[[1]])
   }
