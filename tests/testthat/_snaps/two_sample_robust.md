@@ -67,7 +67,7 @@
       1      5.84     13.6 0.0000485
         method                                               estimate conf.level
         <chr>                                                   <dbl>      <dbl>
-      1 Yuen's test on trimmed means for independent samples     2.48       0.95
+      1 Yuen's test on trimmed means for independent samples     2.48       0.99
         conf.low conf.high effectsize                                             
            <dbl>     <dbl> <chr>                                                  
       1    0.738      5.13 Algina-Keselman-Penfield robust standardized difference
@@ -79,7 +79,7 @@
     Output
       paste(italic("t")["Yuen"], "(", "13.584", ") = ", "5.840", ", ", 
           italic("p"), " = ", "4.85e-05", ", ", widehat(delta)["R"]^"AKP", 
-          " = ", "2.482", ", CI"["95%"], " [", "0.738", ", ", "5.128", 
+          " = ", "2.482", ", CI"["99%"], " [", "0.738", ", ", "5.128", 
           "], ", italic("n")["obs"], " = ", "32")
 
 # t_robust - between-subjects - with NAs
@@ -93,7 +93,7 @@
       1     0.452     13.8   0.658
         method                                               estimate conf.level
         <chr>                                                   <dbl>      <dbl>
-      1 Yuen's test on trimmed means for independent samples   -0.358       0.95
+      1 Yuen's test on trimmed means for independent samples   -0.358        0.9
         conf.low conf.high effectsize                                             
            <dbl>     <dbl> <chr>                                                  
       1    -7.16     0.406 Algina-Keselman-Penfield robust standardized difference
@@ -105,6 +105,6 @@
     Output
       paste(italic("t")["Yuen"], "(", "13.8476", ") = ", "0.4521", 
           ", ", italic("p"), " = ", "0.6582", ", ", widehat(delta)["R"]^"AKP", 
-          " = ", "-0.3583", ", CI"["95%"], " [", "-7.1637", ", ", "0.4061", 
+          " = ", "-0.3583", ", CI"["90%"], " [", "-7.1637", ", ", "0.4061", 
           "], ", italic("n")["obs"], " = ", "29")
 

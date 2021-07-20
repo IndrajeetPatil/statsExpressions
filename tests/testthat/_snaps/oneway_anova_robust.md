@@ -36,7 +36,7 @@
       1    0.0503     2     21.7   0.951
         method                                            estimate conf.level conf.low
         <chr>                                                <dbl>      <dbl>    <dbl>
-      1 A heteroscedastic one-way ANOVA for trimmed means    0.201       0.95   0.0872
+      1 A heteroscedastic one-way ANOVA for trimmed means    0.201       0.99   0.0872
         conf.high effectsize                        
             <dbl> <chr>                             
       1     0.754 Explanatory measure of effect size
@@ -48,7 +48,7 @@
     Output
       paste(italic("F")["trimmed-means"], "(", "2", ",", "21.6869", 
           ") = ", "0.0503", ", ", italic("p"), " = ", "0.9511", ", ", 
-          widehat(xi), " = ", "0.2013", ", CI"["95%"], " [", "0.0872", 
+          widehat(xi), " = ", "0.2013", ", CI"["99%"], " [", "0.0872", 
           ", ", "0.7537", "], ", italic("n")["obs"], " = ", "71")
 
 # expr_anova_robust works - within-subjects
