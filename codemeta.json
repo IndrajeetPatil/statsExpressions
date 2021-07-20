@@ -235,7 +235,7 @@
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=datawizard"
+      "sameAs": "https://github.com/easystats/datawizard"
     },
     {
       "@type": "SoftwareApplication",
@@ -447,6 +447,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "5334.191KB",
+  "fileSize": "5334.217KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }
