@@ -54,6 +54,7 @@ Suggests:
     testthat,
     utils
 Remotes:
+    easystats/datawizard,
     easystats/insight,
     easystats/parameters,
     easystats/performance,
