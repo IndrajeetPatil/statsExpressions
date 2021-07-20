@@ -215,19 +215,20 @@
       "@type": "SoftwareApplication",
       "identifier": "correlation",
       "name": "correlation",
-      "version": ">= 0.6.1",
+      "version": ">= 0.7.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=correlation"
+      "sameAs": "https://github.com/easystats/correlation"
     },
     {
       "@type": "SoftwareApplication",
       "identifier": "datawizard",
       "name": "datawizard",
+      "version": ">= 0.1.0.9000",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -252,27 +253,27 @@
       "@type": "SoftwareApplication",
       "identifier": "effectsize",
       "name": "effectsize",
-      "version": ">= 0.4.5",
+      "version": ">= 0.4.5.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=effectsize"
+      "sameAs": "https://github.com/easystats/effectsize"
     },
     {
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
-      "version": ">= 0.14.2",
+      "version": ">= 0.14.2.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=insight"
+      "sameAs": "https://github.com/easystats/insight"
     },
     {
       "@type": "SoftwareApplication",
@@ -303,13 +304,14 @@
       "@type": "SoftwareApplication",
       "identifier": "performance",
       "name": "performance",
+      "version": ">= 0.7.2.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=performance"
+      "sameAs": "https://github.com/easystats/performance"
     },
     {
       "@type": "SoftwareApplication",
@@ -445,6 +447,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "5334.055KB",
+  "fileSize": "5334.191KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

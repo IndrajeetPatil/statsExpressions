@@ -26,14 +26,14 @@ Depends:
     R (>= 3.6.0)
 Imports:
     BayesFactor (>= 0.9.12-4.2),
-    correlation (>= 0.6.1),
-    datawizard,
+    correlation (>= 0.7.0),
+    datawizard (>= 0.1.0.9000),
     dplyr,
-    effectsize (>= 0.4.5),
-    insight (>= 0.14.2),
+    effectsize (>= 0.4.5.1),
+    insight (>= 0.14.2.1),
     magrittr,
     parameters (>= 0.14.0.1),
-    performance,
+    performance (>= 0.7.2.1),
     rlang,
     stats,
     tibble,
@@ -54,7 +54,11 @@ Suggests:
     testthat,
     utils
 Remotes:
-    easystats/parameters
+    easystats/insight,
+    easystats/parameters,
+    easystats/performance,
+    easystats/effectsize,
+    easystats/correlation
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
