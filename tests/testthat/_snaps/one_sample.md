@@ -101,7 +101,7 @@
       1     0.787   0.455    11 Bootstrap-t method for one-sample test        9
         conf.level conf.low conf.high effectsize  
              <dbl>    <dbl>     <dbl> <chr>       
-      1       0.95     6.09      11.9 Trimmed mean
+      1        0.9     6.55      11.5 Trimmed mean
 
 ---
 
@@ -110,7 +110,7 @@
     Output
       paste(italic("t")["bootstrapped"], " = ", "0.7866", ", ", italic("p"), 
           " = ", "0.4550", ", ", widehat(mu)["trimmed"], " = ", "9.0000", 
-          ", CI"["95%"], " [", "6.0950", ", ", "11.9050", "], ", italic("n")["obs"], 
+          ", CI"["90%"], " [", "6.5487", ", ", "11.4513", "], ", italic("n")["obs"], 
           " = ", "11")
 
 ---
@@ -124,7 +124,7 @@
       1     -3.81    0.04    56 Bootstrap-t method for one-sample test   0.0390
         conf.level conf.low conf.high effectsize  
              <dbl>    <dbl>     <dbl> <chr>       
-      1       0.95  -0.0132    0.0911 Trimmed mean
+      1       0.99  -0.0669     0.145 Trimmed mean
 
 ---
 
@@ -133,7 +133,7 @@
     Output
       paste(italic("t")["bootstrapped"], " = ", "-3.8075", ", ", italic("p"), 
           " = ", "0.0400", ", ", widehat(mu)["trimmed"], " = ", "0.0390", 
-          ", CI"["95%"], " [", "-0.0132", ", ", "0.0911", "], ", italic("n")["obs"], 
+          ", CI"["99%"], " [", "-0.0669", ", ", "0.1448", "], ", italic("n")["obs"], 
           " = ", "56")
 
 # one_sample_test bayes factor works

@@ -92,7 +92,7 @@ long_to_wide_converter <- function(data,
   # if `subject.id` wasn't provided, create one for internal usage
   if (!"rowid" %in% names(data)) {
     # the row number needs to be assigned for each participant in paired data
-    if (isTRUE(paired)) data %<>% dplyr::group_by({{ x }})
+    if (paired) data %<>% dplyr::group_by({{ x }})
 
     # unique id for each participant
     data %<>% dplyr::mutate(rowid = dplyr::row_number())

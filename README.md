@@ -128,7 +128,7 @@ mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
 #> 1 wt         cyl             22.8        2 0.0000112
 #>   method                       estimate conf.level conf.low conf.high
 #>   <chr>                           <dbl>      <dbl>    <dbl>     <dbl>
-#> 1 Kruskal-Wallis rank sum test    0.736       0.95    0.581     0.835
+#> 1 Kruskal-Wallis rank sum test    0.736       0.95    0.578     0.841
 #>   effectsize      conf.method          conf.iterations expression
 #>   <chr>           <chr>                          <int> <list>    
 #> 1 Epsilon2 (rank) percentile bootstrap             100 <language>
@@ -140,10 +140,10 @@ mtcars %>% oneway_anova(cyl, wt, type = "robust")
 #> 1      12.7     2     12.2 0.00102
 #>   method                                            estimate conf.level conf.low
 #>   <chr>                                                <dbl>      <dbl>    <dbl>
-#> 1 A heteroscedastic one-way ANOVA for trimmed means     1.08       0.95    0.826
+#> 1 A heteroscedastic one-way ANOVA for trimmed means     1.03       0.95    0.826
 #>   conf.high effectsize                         expression
 #>       <dbl> <chr>                              <list>    
-#> 1      1.67 Explanatory measure of effect size <language>
+#> 1      1.57 Explanatory measure of effect size <language>
 ```
 
 All possible output dataframes from functions are tabulated here:

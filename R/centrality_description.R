@@ -44,7 +44,7 @@ centrality_description <- function(data,
                                    k = 2L,
                                    ...) {
 
-  # ------------------------ measure -------------------------------------
+  # measure -------------------------------------
 
   # standardize
   type <- stats_type_switch(type)
@@ -57,7 +57,7 @@ centrality_description <- function(data,
     type == "bayes" ~ "MAP"
   )
 
-  # ------------------------ dataframe -------------------------------------
+  # dataframe -------------------------------------
 
   # creating the dataframe
   dplyr::select(data, {{ x }}, {{ y }}) %>%

@@ -124,10 +124,10 @@ expr_template <- function(data,
   }
 
   # if expression text elements are `NULL`
-  if (isTRUE(paired)) n.text <- n.text %||% quote(italic("n")["pairs"])
+  if (paired) n.text <- n.text %||% quote(italic("n")["pairs"])
   if (!paired) n.text <- n.text %||% quote(italic("n")["obs"])
 
-  # -------------------------- Bayesian analysis ------------------------------
+  # Bayesian analysis ------------------------------
 
   if (isTRUE(bayesian)) {
     # Bayesian expression
@@ -160,7 +160,7 @@ expr_template <- function(data,
     if (is.null(top.text)) expression <- expression$expr
   }
 
-  # ------------------ statistic with 0 degrees of freedom --------------------
+  # statistic with 0 degrees of freedom --------------------
 
   if (isFALSE(bayesian) && no.parameters == 0L) {
     # preparing expression
@@ -187,7 +187,7 @@ expr_template <- function(data,
     )
   }
 
-  # ------------------ statistic with 1 degree of freedom --------------------
+  # statistic with 1 degree of freedom --------------------
 
   if (isFALSE(bayesian) && no.parameters == 1L) {
     if ("df" %in% names(data)) data %<>% mutate(df.error = df)
@@ -217,7 +217,7 @@ expr_template <- function(data,
     )
   }
 
-  # ------------------ statistic with 2 degrees of freedom -----------------
+  # statistic with 2 degrees of freedom -----------------
 
   if (isFALSE(bayesian) && no.parameters == 2L) {
     # preparing expression

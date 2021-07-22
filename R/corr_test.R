@@ -60,7 +60,7 @@ corr_test <- function(data,
   # see which method was used to specify type of correlation
   type <- stats_type_switch(type)
 
-  # ----------------- creating correlation dataframes -----------------------
+  # correlation dataframes -----------------------
 
   # creating a dataframe of results
   stats_df <- correlation::correlation(
@@ -74,7 +74,7 @@ corr_test <- function(data,
     parameters::standardize_names(style = "broom") %>%
     dplyr::mutate(effectsize = method)
 
-  # ----------------------- expression ---------------------------------------
+  # expression ---------------------------------------
 
   # no. of parameters
   if (type == "bayes") stats_df %<>% dplyr::rename("bf10" = "bayes.factor")

@@ -31,8 +31,8 @@ omega-squared).}
 Expressions with statistics for tidy regression dataframes
 }
 \note{
-This is an experimental function and may change in the future. Please
-do not use it yet in your workflow.
+This is an \strong{experimental} function and may change in the future.
+Please do not use it yet in your workflow.
 }
 \examples{
 set.seed(123)

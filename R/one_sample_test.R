@@ -108,7 +108,7 @@ one_sample_test <- function(data,
   # preparing the vector
   x_vec <- stats::na.omit(data %>% dplyr::pull({{ x }}))
 
-  # ----------------------- parametric ---------------------------------------
+  # parametric ---------------------------------------
 
   if (type == "parametric") {
     # preparing expression parameters
@@ -118,7 +118,7 @@ one_sample_test <- function(data,
     if (effsize.type %in% c("biased", "d")) .f.es <- effectsize::cohens_d
   }
 
-  # ----------------------- non-parametric ---------------------------------------
+  # non-parametric ---------------------------------------
 
   if (type == "nonparametric") {
     # preparing expression parameters
@@ -147,7 +147,7 @@ one_sample_test <- function(data,
     stats_df <- dplyr::bind_cols(stats_df, effsize_df)
   }
 
-  # ----------------------- robust ---------------------------------------
+  # robust ---------------------------------------
 
   if (type == "robust") {
     # bootstrap-t method for one-sample test
@@ -156,7 +156,7 @@ one_sample_test <- function(data,
       tidy_model_parameters(.)
   }
 
-  # ----------------------- Bayesian ---------------------------------------
+  # Bayesian ---------------------------------------
 
   # running Bayesian one-sample t-test
   if (type == "bayes") {
@@ -164,7 +164,7 @@ one_sample_test <- function(data,
       tidy_model_parameters(ci = conf.level)
   }
 
-  # ----------------------- expression ---------------------------------------
+  # expression ---------------------------------------
 
   # return the output
   as_tibble(stats_df) %>%

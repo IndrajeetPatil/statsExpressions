@@ -9,8 +9,8 @@
 #'
 #' @importFrom dplyr mutate rowwise case_when ungroup
 #'
-#' @note This is an experimental function and may change in the future. Please
-#'   do not use it yet in your workflow.
+#' @note This is an **experimental** function and may change in the future.
+#'   Please do not use it yet in your workflow.
 #'
 #' @examples
 #' set.seed(123)
@@ -35,7 +35,7 @@ tidy_model_expressions <- function(data,
   # all operations will have to be done rowwise
   data %<>% dplyr::rowwise()
 
-  #--------------------------- t-statistic --------------------------------
+  # t-statistic --------------------------------
 
   if (statistic == "t") {
     data %<>%
@@ -55,7 +55,7 @@ tidy_model_expressions <- function(data,
       )
   }
 
-  #--------------------------- z-statistic ---------------------------------
+  # z-statistic ---------------------------------
 
   # if the statistic is z-value
   if (statistic == "z") {
@@ -69,7 +69,7 @@ tidy_model_expressions <- function(data,
       )
   }
 
-  #--------------------------- chi^2-statistic -----------------------------
+  # chi^2-statistic -----------------------------
 
   if (statistic == "c") {
     data %<>%
@@ -82,7 +82,7 @@ tidy_model_expressions <- function(data,
       )
   }
 
-  #--------------------------- f-statistic ---------------------------------
+  # f-statistic ---------------------------------
 
   if (statistic == "f") {
     # which effect size is needed?

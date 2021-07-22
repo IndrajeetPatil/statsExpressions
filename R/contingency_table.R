@@ -131,7 +131,7 @@ contingency_table <- function(data,
   x_vec <- data %>% dplyr::pull({{ x }})
   if (is.null(ratio)) ratio <- rep(1 / length(table(x_vec)), length(table(x_vec)))
 
-  # ----------------------- non-Bayesian ---------------------------------------
+  # non-Bayesian ---------------------------------------
 
   if (type != "bayes") {
     # default functions for analysis (only change for McNemar's test)
@@ -151,7 +151,7 @@ contingency_table <- function(data,
     )
   }
 
-  # ----------------------- Bayesian ---------------------------------------
+  # Bayesian ---------------------------------------
 
   if (type == "bayes") {
     # two-way table
@@ -215,7 +215,7 @@ contingency_table <- function(data,
     }
   }
 
-  # ----------------------- expression ---------------------------------------
+  # expression ---------------------------------------
 
   if (!(type == "bayes" && test == "1way")) {
     stats_df %<>%

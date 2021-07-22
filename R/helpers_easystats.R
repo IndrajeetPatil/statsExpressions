@@ -21,7 +21,7 @@ tidy_model_parameters <- function(model, ...) {
     tidyr::fill(dplyr::matches("^prior|^bf"), .direction = "updown") %>%
     mutate(dplyr::across(matches("bf10"), ~ log(.x), .names = "log_e_{.col}"))
 
-  # ------------------------ Bayesian ANOVA designs -------------------------
+  # Bayesian ANOVA designs -----------------------------------
 
   if ("method" %in% names(stats_df)) {
     if (stats_df$method[[1]] == "Bayes factors for linear models") {

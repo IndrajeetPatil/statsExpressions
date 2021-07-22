@@ -57,6 +57,7 @@
       "@type": "SoftwareApplication",
       "identifier": "afex",
       "name": "afex",
+      "version": ">= 1.0-0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -304,7 +305,7 @@
       "@type": "SoftwareApplication",
       "identifier": "performance",
       "name": "performance",
-      "version": ">= 0.7.2.1",
+      "version": ">= 0.7.3.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -447,6 +448,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "5334.217KB",
+  "fileSize": "5333.563KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

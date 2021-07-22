@@ -4,7 +4,7 @@ test_that(
     options(tibble.width = Inf)
     skip_if(getRversion() < "4.0")
 
-    # parametric -----------------------------------------------------------
+    # parametric -------------------------------------------------
 
     # Hedge's g and non-central
     set.seed(123)
@@ -45,7 +45,7 @@ test_that(
   code = {
     skip_if(getRversion() < "4.0")
 
-    # non-parametric -----------------------------------------------------------
+    # non-parametric --------------------------------------------------
 
     # statsExpressions output
     set.seed(123)
@@ -82,7 +82,7 @@ test_that(
   code = {
     skip_if(getRversion() < "4.0")
 
-    # robust -----------------------------------------------------------
+    # robust --------------------------------------------------
 
     # statsExpressions output
     set.seed(123)
@@ -92,7 +92,7 @@ test_that(
       test.value = 8,
       type = "r",
       k = 4,
-      conf.level = 0.95 # TODO: change
+      conf.level = 0.90
     )
 
     # statsExpressions output
@@ -103,7 +103,7 @@ test_that(
       test.value = 0.1,
       type = "r",
       k = 4,
-      conf.level = 0.95 # TODO: change
+      conf.level = 0.99
     )
 
     # testing all details
@@ -121,7 +121,7 @@ test_that(
   code = {
     skip_if(getRversion() < "4.0")
 
-    # Bayesian -----------------------------------------------------------
+    # Bayesian -----------------------------------------------
 
     # extracting results from where this function is implemented
     set.seed(123)

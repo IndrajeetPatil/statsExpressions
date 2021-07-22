@@ -175,7 +175,7 @@ oneway_anova <- function(data,
     ) %>%
     dplyr::mutate(rowid = as.factor(rowid))
 
-  # ----------------------- parametric ---------------------------------------
+  #  parametric ---------------------------------------
 
   if (type == "parametric") {
     # expression details
@@ -189,7 +189,7 @@ oneway_anova <- function(data,
 
     if (paired) {
       # check if `afex` is installed
-      insight::check_if_installed("afex")
+      insight::check_if_installed("afex", minimum_version = "1.0-0")
 
       # Fisher's ANOVA
       mod <- afex::aov_ez(
@@ -219,7 +219,7 @@ oneway_anova <- function(data,
     stats_df <- dplyr::bind_cols(stats_df, effsize_df)
   }
 
-  # ----------------------- non-parametric ------------------------------------
+  # non-parametric ------------------------------------
 
   if (type == "nonparametric") {
     # expression details
@@ -257,7 +257,7 @@ oneway_anova <- function(data,
     stats_df <- dplyr::bind_cols(stats_df, effsize_df)
   }
 
-  # ----------------------- robust ---------------------------------------
+  # robust ---------------------------------------
 
   if (type == "robust") {
     # expression details
@@ -298,7 +298,7 @@ oneway_anova <- function(data,
     }
   }
 
-  # ----------------------- Bayesian ---------------------------------------
+  # Bayesian ---------------------------------------
 
   # running Bayesian t-test
   if (type == "bayes") {
@@ -320,7 +320,7 @@ oneway_anova <- function(data,
       tidy_model_parameters(ci = conf.level)
   }
 
-  # ----------------------- expression ---------------------------------------
+  # expression ---------------------------------------
 
   as_tibble(stats_df) %>%
     dplyr::mutate(expression = list(expr_template(
