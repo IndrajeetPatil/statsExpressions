@@ -307,7 +307,7 @@ mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
   test.value <span class='op'>=</span> <span class='fl'>0.275</span>,
   type <span class='op'>=</span> <span class='st'>"parametric"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 14</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 14</span>
 #&gt;      <span style='font-weight: bold;'>mu</span> <span style='font-weight: bold;'>statistic</span> <span style='font-weight: bold;'>df.error</span> <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>method</span>            <span style='font-weight: bold;'>alternative</span> <span style='font-weight: bold;'>estimate</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span> 0.275    0.050<span style='text-decoration: underline;'>4</span>       55   0.960 One Sample t-test two.sided    0.006<span style='text-decoration: underline;'>65</span>
@@ -325,7 +325,7 @@ mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
   test.value <span class='op'>=</span> <span class='fl'>0.275</span>,
   type <span class='op'>=</span> <span class='st'>"nonparametric"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 11</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 11</span>
 #&gt;   <span style='font-weight: bold;'>statistic</span>    <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>method</span>                    <span style='font-weight: bold;'>alternative</span> <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span>
 #&gt;       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span>       248 0.000<span style='text-decoration: underline;'>007</span>38 Wilcoxon signed rank test two.sided     -<span style='color: #BB0000;'>0.689</span>       0.95
@@ -340,7 +340,7 @@ mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
   test.value <span class='op'>=</span> <span class='fl'>0.275</span>,
   type <span class='op'>=</span> <span class='st'>"robust"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 10</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 10</span>
 #&gt;   <span style='font-weight: bold;'>statistic</span> <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>n.obs</span> <span style='font-weight: bold;'>method</span>                                 <span style='font-weight: bold;'>estimate</span>
 #&gt;       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span>     -<span style='color: #BB0000;'>14.7</span>       0    56 Bootstrap-t method for one-sample test   0.039<span style='text-decoration: underline;'>0</span>
@@ -356,7 +356,7 @@ mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
   type <span class='op'>=</span> <span class='st'>"bayes"</span>,
   bf.prior <span class='op'>=</span> <span class='fl'>0.8</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 14</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 × 14</span>
 #&gt;   <span style='font-weight: bold;'>term</span>       <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span>    <span style='font-weight: bold;'>pd</span> <span style='font-weight: bold;'>rope.percentage</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span> Difference  0.009<span style='text-decoration: underline;'>25</span>       0.95  -<span style='color: #BB0000;'>0.246</span>      0.263 0.532          0.621 
