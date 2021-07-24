@@ -122,28 +122,28 @@ statistical approach can be modified by changing a single argument:
 library(statsExpressions)
 
 mtcars %>% oneway_anova(cyl, wt, type = "nonparametric") 
-#> # A tibble: 1 x 14
+#> # A tibble: 1 × 14
 #>   parameter1 parameter2 statistic df.error   p.value
 #>   <chr>      <chr>          <dbl>    <int>     <dbl>
 #> 1 wt         cyl             22.8        2 0.0000112
 #>   method                       estimate conf.level conf.low conf.high
 #>   <chr>                           <dbl>      <dbl>    <dbl>     <dbl>
-#> 1 Kruskal-Wallis rank sum test    0.736       0.95    0.578     0.841
+#> 1 Kruskal-Wallis rank sum test    0.736       0.95    0.558     0.840
 #>   effectsize      conf.method          conf.iterations expression
 #>   <chr>           <chr>                          <int> <list>    
 #> 1 Epsilon2 (rank) percentile bootstrap             100 <language>
 
 mtcars %>% oneway_anova(cyl, wt, type = "robust")
-#> # A tibble: 1 x 11
+#> # A tibble: 1 × 11
 #>   statistic    df df.error p.value
 #>       <dbl> <dbl>    <dbl>   <dbl>
 #> 1      12.7     2     12.2 0.00102
 #>   method                                            estimate conf.level conf.low
 #>   <chr>                                                <dbl>      <dbl>    <dbl>
-#> 1 A heteroscedastic one-way ANOVA for trimmed means     1.03       0.95    0.826
+#> 1 A heteroscedastic one-way ANOVA for trimmed means     1.05       0.95    0.826
 #>   conf.high effectsize                         expression
 #>       <dbl> <chr>                              <list>    
-#> 1      1.57 Explanatory measure of effect size <language>
+#> 1      1.58 Explanatory measure of effect size <language>
 ```
 
 All possible output dataframes from functions are tabulated here:
@@ -186,7 +186,7 @@ mtcars %>%
   group_by(cyl) %>%
   group_modify(~ one_sample_test(.x, wt, test.value = 3), .keep = TRUE) %>%
   ungroup()
-#> # A tibble: 3 x 15
+#> # A tibble: 3 × 15
 #>     cyl    mu statistic df.error  p.value method            alternative estimate
 #>   <dbl> <dbl>     <dbl>    <dbl>    <dbl> <chr>             <chr>          <dbl>
 #> 1     4     3    -4.16        10 0.00195  One Sample t-test two.sided     -1.16 

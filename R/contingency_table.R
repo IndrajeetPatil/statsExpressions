@@ -146,8 +146,8 @@ contingency_table <- function(data,
 
     # combining dataframes: inferential stats + effect sizes
     stats_df <- dplyr::bind_cols(
-      tidy_model_parameters(rlang::exec(.f, !!!.f.args)),
-      tidy_model_effectsize(rlang::exec(.f.es, !!!.f.args, adjust = TRUE, ci = conf.level))
+      tidy_model_parameters(exec(.f, !!!.f.args)),
+      tidy_model_effectsize(exec(.f.es, !!!.f.args, adjust = TRUE, ci = conf.level))
     )
   }
 

@@ -31,4 +31,5 @@ rlang:::=
 tibble::as_tibble
 correlation::correlation
 tibble::enframe
+rlang::exec
 tibble::tibble

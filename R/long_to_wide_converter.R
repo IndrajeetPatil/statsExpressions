@@ -77,9 +77,6 @@ long_to_wide_converter <- function(data,
                                    paired = TRUE,
                                    spread = TRUE,
                                    ...) {
-  # make sure both quoted and unquoted arguments are allowed
-  c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
-
   # for non-paired data, even if specified, ignore it
   if (!paired) subject.id <- NULL
 

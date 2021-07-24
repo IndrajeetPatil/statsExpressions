@@ -212,7 +212,7 @@ oneway_anova <- function(data,
 
     # tidying it up
     stats_df <- tidy_model_parameters(mod)
-    effsize_df <- rlang::exec(.f.es, model = mod, ci = conf.level, verbose = FALSE) %>%
+    effsize_df <- exec(.f.es, model = mod, ci = conf.level, verbose = FALSE) %>%
       tidy_model_effectsize(.)
 
     # combining dataframes
@@ -240,10 +240,10 @@ oneway_anova <- function(data,
     }
 
     # extracting test details
-    stats_df <- tidy_model_parameters(rlang::exec(.f, !!!.f.args, data = data))
+    stats_df <- tidy_model_parameters(exec(.f, !!!.f.args, data = data))
 
     # computing respective effect sizes
-    effsize_df <- rlang::exec(
+    effsize_df <- exec(
       .fn = .f.es,
       data = data,
       ci = conf.level,
@@ -311,7 +311,7 @@ oneway_anova <- function(data,
     }
 
     # extract a dataframe
-    stats_df <- rlang::exec(
+    stats_df <- exec(
       BayesFactor::anovaBF,
       data = as.data.frame(data),
       progress = FALSE,

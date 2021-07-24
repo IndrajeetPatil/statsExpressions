@@ -116,7 +116,7 @@ set.seed(123)
 library(statsExpressions)
 options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 
-# ----------------------- parametric -------------------------------------
+# parametric -------------------------------------
 
 # between-subjects design
 two_sample_test(
@@ -128,15 +128,15 @@ two_sample_test(
 
 # within-subjects design
 two_sample_test(
-  data = VR_dilemma,
-  x = modality,
-  y = score,
+  data = dplyr::filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
+  x = condition,
+  y = desire,
   paired = TRUE,
-  subject.id = id,
+  subject.id = subject,
   type = "p"
 )
 
-# ----------------------- non-parametric ----------------------------------
+# non-parametric ----------------------------------
 
 # between-subjects design
 two_sample_test(
@@ -148,15 +148,15 @@ two_sample_test(
 
 # within-subjects design
 two_sample_test(
-  data = VR_dilemma,
-  x = modality,
-  y = score,
+  data = dplyr::filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
+  x = condition,
+  y = desire,
   paired = TRUE,
-  subject.id = id,
+  subject.id = subject,
   type = "np"
 )
 
-# ------------------------------ robust ----------------------------------
+# robust ----------------------------------
 
 # between-subjects design
 two_sample_test(
@@ -168,15 +168,15 @@ two_sample_test(
 
 # within-subjects design
 two_sample_test(
-  data = VR_dilemma,
-  x = modality,
-  y = score,
+  data = dplyr::filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
+  x = condition,
+  y = desire,
   paired = TRUE,
-  subject.id = id,
+  subject.id = subject,
   type = "r"
 )
 
-#' # ------------------------------ Bayesian ------------------------------
+#' # Bayesian ------------------------------
 
 # between-subjects design
 two_sample_test(
@@ -188,11 +188,11 @@ two_sample_test(
 
 # within-subjects design
 two_sample_test(
-  data = VR_dilemma,
-  x = modality,
-  y = score,
+  data = dplyr::filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
+  x = condition,
+  y = desire,
   paired = TRUE,
-  subject.id = id,
+  subject.id = subject,
   type = "bayes"
 )
 }

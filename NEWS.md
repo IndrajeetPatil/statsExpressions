@@ -31,6 +31,11 @@ MAJOR CHANGES
     scale but in a scientific notation to keep the statistical expressions
     short.
 
+MINOR CHANGES
+
+  - Removes `VR_dilemma` dataset, which lacked enough variation to be a good
+    dataset to use in examples or tests.
+
 # statsExpressions 1.1.0
 
 MAJOR CHANGES

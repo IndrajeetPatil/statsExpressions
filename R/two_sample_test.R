@@ -32,7 +32,7 @@
 #' library(statsExpressions)
 #' options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 #'
-#' # ----------------------- parametric -------------------------------------
+#' # parametric -------------------------------------
 #'
 #' # between-subjects design
 #' two_sample_test(
@@ -44,15 +44,15 @@
 #'
 #' # within-subjects design
 #' two_sample_test(
-#'   data = VR_dilemma,
-#'   x = modality,
-#'   y = score,
+#'   data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+#'   x = condition,
+#'   y = desire,
 #'   paired = TRUE,
-#'   subject.id = id,
+#'   subject.id = subject,
 #'   type = "p"
 #' )
 #'
-#' # ----------------------- non-parametric ----------------------------------
+#' # non-parametric ----------------------------------
 #'
 #' # between-subjects design
 #' two_sample_test(
@@ -64,15 +64,15 @@
 #'
 #' # within-subjects design
 #' two_sample_test(
-#'   data = VR_dilemma,
-#'   x = modality,
-#'   y = score,
+#'   data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+#'   x = condition,
+#'   y = desire,
 #'   paired = TRUE,
-#'   subject.id = id,
+#'   subject.id = subject,
 #'   type = "np"
 #' )
 #'
-#' # ------------------------------ robust ----------------------------------
+#' # robust ----------------------------------
 #'
 #' # between-subjects design
 #' two_sample_test(
@@ -84,15 +84,15 @@
 #'
 #' # within-subjects design
 #' two_sample_test(
-#'   data = VR_dilemma,
-#'   x = modality,
-#'   y = score,
+#'   data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+#'   x = condition,
+#'   y = desire,
 #'   paired = TRUE,
-#'   subject.id = id,
+#'   subject.id = subject,
 #'   type = "r"
 #' )
 #'
-#' #' # ------------------------------ Bayesian ------------------------------
+#' #' # Bayesian ------------------------------
 #'
 #' # between-subjects design
 #' two_sample_test(
@@ -104,11 +104,11 @@
 #'
 #' # within-subjects design
 #' two_sample_test(
-#'   data = VR_dilemma,
-#'   x = modality,
-#'   y = score,
+#'   data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+#'   x = condition,
+#'   y = desire,
 #'   paired = TRUE,
-#'   subject.id = id,
+#'   subject.id = subject,
 #'   type = "bayes"
 #' )
 #' }
@@ -147,7 +147,7 @@ two_sample_test <- function(data,
       spread = ifelse(type %in% c("bayes", "robust"), paired, FALSE)
     )
 
-  # ----------------------- parametric ---------------------------------------
+  # parametric ---------------------------------------
 
   if (type == "parametric") {
     # preparing expression parameters
@@ -158,7 +158,7 @@ two_sample_test <- function(data,
     if (effsize.type %in% c("biased", "d")) .f.es <- effectsize::cohens_d
   }
 
-  # ----------------------- non-parametric ------------------------------------
+  # non-parametric ------------------------------------
 
   if (type == "nonparametric") {
     # preparing expression parameters
@@ -169,7 +169,7 @@ two_sample_test <- function(data,
   # preparing expression
   if (type %in% c("parametric", "nonparametric")) {
     # extracting test details
-    stats_df <- rlang::exec(
+    stats_df <- exec(
       .f,
       formula = rlang::new_formula(y, x),
       data = data,
@@ -181,7 +181,7 @@ two_sample_test <- function(data,
       tidy_model_parameters(.)
 
     # extracting effect size details
-    effsize_df <- rlang::exec(
+    effsize_df <- exec(
       .f.es,
       x = rlang::new_formula(y, x),
       data = data,
@@ -193,7 +193,7 @@ two_sample_test <- function(data,
       tidy_model_effectsize(.)
   }
 
-  # ----------------------- robust ---------------------------------------
+  # robust ---------------------------------------
 
   if (type == "robust") {
     # expression parameters
@@ -207,24 +207,17 @@ two_sample_test <- function(data,
     if (!paired) c(.f, .f.es) %<-% c(WRS2::yuen, WRS2::akp.effect)
     if (paired) c(.f, .f.es) %<-% c(WRS2::yuend, WRS2::dep.effect)
 
-
-    effsize_df <- tidy_model_parameters(rlang::exec(.f.es, !!!.f.args, !!!.f.es.args))
-    stats_df <- tidy_model_parameters(rlang::exec(.f, !!!.f.args, !!!.f.es.args))
-
-    if (paired) {
-      effsize_df %<>%
-        dplyr::filter(effectsize == "AKP") %>%
-        dplyr::mutate(effectsize = "Algina-Keselman-Penfield robust standardized difference")
-    }
+    effsize_df <- tidy_model_parameters(exec(.f.es, !!!.f.args, !!!.f.es.args), keep = "AKP")
+    stats_df <- tidy_model_parameters(exec(.f, !!!.f.args, !!!.f.es.args))
   }
 
   # final returns
   if (type != "bayes") {
     # combining dataframes
-    stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("^est|^eff|conf|^ci")), effsize_df)
+    stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("^est|^eff|conf|^ci")), dplyr::select(effsize_df, -dplyr::matches("term")))
   }
 
-  # ----------------------- Bayesian ---------------------------------------
+  # Bayesian ---------------------------------------
 
   # running Bayesian t-test
   if (type == "bayes") {
@@ -232,11 +225,11 @@ two_sample_test <- function(data,
     if (paired) .f.args <- list(x = data[[2]], y = data[[3]], rscale = bf.prior, paired = paired)
 
     # creating a `BayesFactor` object
-    stats_df <- rlang::exec(BayesFactor::ttestBF, data = as.data.frame(data), !!!.f.args) %>%
+    stats_df <- exec(BayesFactor::ttestBF, data = as.data.frame(data), !!!.f.args) %>%
       tidy_model_parameters(ci = conf.level)
   }
 
-  # ----------------------- expression ---------------------------------------
+  # expression ---------------------------------------
 
   # return the output
   as_tibble(stats_df) %>%

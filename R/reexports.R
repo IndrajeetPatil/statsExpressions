@@ -44,6 +44,10 @@ rlang::`:=`
 #' @importFrom rlang "%@%"
 rlang::`%@%`
 
+#' @export
+#' @importFrom rlang exec
+rlang::exec
+
 # ----------------------- zeallot -------------------------------------
 
 #' @export
