@@ -13,8 +13,8 @@ tidy_model_parameters(model, ...)
 arguments are \code{digits}, \code{p_digits}, \code{ci_digits} and
 \code{footer_digits} to set the number of digits for the output.
 \code{group} can also be passed to the \code{print()} method. See details
-in \code{\link[parameters]{print.parameters_model}} and 'Examples' in
-\code{\link[parameters]{model_parameters.default}}.}
+in \code{\link[parameters:print.parameters_model]{print.parameters_model()}} and 'Examples' in
+\code{\link[parameters:model_parameters.default]{model_parameters.default()}}.}
 }
 \description{
 Convert \code{parameters} package output to \code{tidyverse} conventions

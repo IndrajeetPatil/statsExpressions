@@ -200,8 +200,8 @@ two_sample_test <- function(data,
     c(no.parameters, k.df) %<-% c(1L, ifelse(paired, 0L, k))
 
     # common arguments
-    .f.args <- list(formula = new_formula(y, x), data = data, x = data[2], y = data[3], tr = tr)
-    .f.es.args <- list(EQVAR = FALSE, nboot = nboot, alpha = 1 - conf.level)
+    .f.args <- list(formula = new_formula(y, x), data = data, x = data[[2]], y = data[[3]])
+    .f.es.args <- list(EQVAR = FALSE, nboot = nboot, alpha = 1 - conf.level, tr = tr)
 
     # which functions to be used for hypothesis testing and estimation?
     if (!paired) c(.f, .f.es) %<-% c(WRS2::yuen, WRS2::akp.effect)
@@ -221,11 +221,11 @@ two_sample_test <- function(data,
 
   # running Bayesian t-test
   if (type == "bayes") {
-    if (!paired) .f.args <- list(formula = new_formula(y, x), rscale = bf.prior, paired = paired)
-    if (paired) .f.args <- list(x = data[[2]], y = data[[3]], rscale = bf.prior, paired = paired)
+    if (!paired) .f.args <- list(formula = new_formula(y, x), paired = paired)
+    if (paired) .f.args <- list(x = data[[2]], y = data[[3]], paired = paired)
 
     # creating a `BayesFactor` object
-    stats_df <- exec(BayesFactor::ttestBF, data = as.data.frame(data), !!!.f.args) %>%
+    stats_df <- exec(BayesFactor::ttestBF, data = data, rscale = bf.prior, !!!.f.args) %>%
       tidy_model_parameters(ci = conf.level)
   }
 
