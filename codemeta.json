@@ -22,7 +22,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.1.0 (2021-05-18)",
+  "runtimePlatform": "R version 4.1.1 (2021-08-10)",
   "author": [
     {
       "@type": "Person",
@@ -254,7 +254,7 @@
       "@type": "SoftwareApplication",
       "identifier": "effectsize",
       "name": "effectsize",
-      "version": ">= 0.4.5.1",
+      "version": ">= 0.4.5",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -381,7 +381,7 @@
       "sameAs": "https://CRAN.R-project.org/package=zeallot"
     }
   ],
-  "contIntegration": "https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master",
+  "contIntegration": ["https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master", "https://github.com/IndrajeetPatil/pairwiseComparisons/actions"],
   "keywords": [
     "ggplot-extension",
     "statistical-tests",
@@ -448,6 +448,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "5330.243KB",
+  "fileSize": "5330.4KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

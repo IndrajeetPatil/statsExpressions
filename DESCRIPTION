@@ -29,7 +29,7 @@ Imports:
     correlation (>= 0.7.0),
     datawizard (>= 0.1.0.9000),
     dplyr,
-    effectsize (>= 0.4.5.1),
+    effectsize (>= 0.4.5),
     insight (>= 0.14.2.1),
     magrittr,
     parameters (>= 0.14.0.1),
