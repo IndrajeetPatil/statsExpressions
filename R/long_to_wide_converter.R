@@ -39,10 +39,6 @@
 #'   `paired = TRUE`.
 #' @param ... Currently ignored.
 #'
-#' @importFrom dplyr row_number select mutate group_by ungroup arrange relocate
-#' @importFrom dplyr nest_by filter
-#' @importFrom tidyr pivot_longer unnest
-#'
 #' @return A dataframe with `NA`s removed while respecting the
 #'   between-or-within-subjects nature of the dataset.
 #'

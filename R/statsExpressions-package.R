@@ -31,3 +31,9 @@
 #' @aliases statsExpressions statsExpressions-package
 #' @name statsExpressions-package
 "_PACKAGE"
+
+
+## statsExpressions namespace: start
+#' @import rlang
+## statsExpressions namespace: end
+NULL

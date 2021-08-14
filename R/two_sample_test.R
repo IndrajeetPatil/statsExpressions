@@ -8,14 +8,6 @@
 #' @inheritParams stats::t.test
 #' @inheritParams expr_template
 #'
-#' @importFrom dplyr select mutate
-#' @importFrom rlang !!! expr enexpr ensym exec new_formula
-#' @importFrom tidyr drop_na
-#' @importFrom stats t.test  wilcox.test
-#' @importFrom BayesFactor ttestBF
-#' @importFrom WRS2 yuen akp.effect yuend dep.effect
-#' @importFrom effectsize cohens_d hedges_g rank_biserial
-#'
 #' @description
 #'
 #'  A dataframe containing results from a two-sample test and effect size plus
@@ -135,7 +127,7 @@ two_sample_test <- function(data,
   type <- stats_type_switch(type)
 
   # make sure both quoted and unquoted arguments are supported
-  c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
+  c(x, y) %<-% c(ensym(x), ensym(y))
 
   # properly removing NAs if it's a paired design
   data %<>%
@@ -171,7 +163,7 @@ two_sample_test <- function(data,
     # extracting test details
     stats_df <- exec(
       .f,
-      formula = rlang::new_formula(y, x),
+      formula = new_formula(y, x),
       data = data,
       paired = paired,
       alternative = alternative,
@@ -183,7 +175,7 @@ two_sample_test <- function(data,
     # extracting effect size details
     effsize_df <- exec(
       .f.es,
-      x = rlang::new_formula(y, x),
+      x = new_formula(y, x),
       data = data,
       paired = paired,
       pooled_sd = FALSE,

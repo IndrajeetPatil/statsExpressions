@@ -13,13 +13,6 @@
 #' @inheritParams oneway_anova
 #' @param ... Currently ignored.
 #'
-#' @importFrom rlang !! enquo ensym exec
-#' @importFrom datawizard describe_distribution
-#' @importFrom insight standardize_names format_value
-#' @importFrom dplyr select group_by mutate rowwise group_modify arrange ungroup
-#' @importFrom rlang !! enquo ensym :=
-#' @importFrom tidyr drop_na
-#'
 #' @examples
 #' set.seed(123)
 #'
@@ -82,7 +75,7 @@ centrality_description <- function(data,
     dplyr::ungroup() %>%
     dplyr::mutate(n_label = paste0({{ x }}, "\n(n = ", .prettyNum(n), ")")) %>%
     dplyr::arrange({{ x }}) %>%
-    dplyr::select({{ x }}, !!as.character(rlang::ensym(y)) := estimate,
+    dplyr::select({{ x }}, !!as.character(ensym(y)) := estimate,
       n_obs = n, dplyr::everything()
     )
 }

@@ -57,8 +57,6 @@
 #' @inheritParams oneway_anova
 #' @inheritParams long_to_wide_converter
 #'
-#' @importFrom insight format_value
-#'
 #' @examples
 #' set.seed(123)
 #'
@@ -190,7 +188,7 @@ expr_template <- function(data,
   # statistic with 1 degree of freedom --------------------
 
   if (isFALSE(bayesian) && no.parameters == 1L) {
-    if ("df" %in% names(data)) data %<>% mutate(df.error = df)
+    if ("df" %in% names(data)) data %<>% dplyr::mutate(df.error = df)
 
     # preparing expression
     expression <- substitute(
@@ -251,7 +249,6 @@ expr_template <- function(data,
 }
 
 
-#' @importFrom dplyr case_when
 #' @noRd
 
 stat_text_switch <- function(x) {

@@ -37,13 +37,6 @@
 #' For more, see-
 #' <https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html>
 #'
-#' @importFrom dplyr select mutate pull
-#' @importFrom effectsize cohens_d hedges_g rank_biserial
-#' @importFrom stats t.test wilcox.test na.omit
-#' @importFrom rlang !!! exec
-#' @importFrom BayesFactor ttestBF
-#' @importFrom WRS2 trimcibt
-#'
 #' @examples
 #' \donttest{
 #' # for reproducibility

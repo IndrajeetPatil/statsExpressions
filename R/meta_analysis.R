@@ -26,8 +26,6 @@
 #'   the needed package (`metafor`, `metaplus`, or `metaBMA`) for meta-analysis.
 #'   If they are not available, you will be asked to install them.
 #'
-#' @importFrom rlang exec !!! call2
-#'
 #' @examples
 #' \donttest{
 #' # a dataframe with estimates and standard errors (`mag` dataset from `metaplus`)

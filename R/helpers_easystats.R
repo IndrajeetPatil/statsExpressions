@@ -3,11 +3,6 @@
 #'
 #' @inheritParams parameters::model_parameters
 #'
-#' @importFrom parameters model_parameters standardize_names
-#' @importFrom dplyr select matches rename_all recode contains filter bind_cols across
-#' @importFrom tidyr fill
-#' @importFrom performance r2_bayes
-#'
 #' @examples
 #' model <- lm(mpg ~ wt + cyl, data = mtcars)
 #' tidy_model_parameters(model)
@@ -19,7 +14,7 @@ tidy_model_parameters <- function(model, ...) {
     parameters::standardize_names(style = "broom") %>%
     dplyr::rename_all(.funs = dplyr::recode, "bayes.factor" = "bf10") %>%
     tidyr::fill(dplyr::matches("^prior|^bf"), .direction = "updown") %>%
-    mutate(dplyr::across(matches("bf10"), ~ log(.x), .names = "log_e_{.col}"))
+    dplyr::mutate(dplyr::across(dplyr::matches("bf10"), ~ log(.x), .names = "log_e_{.col}"))
 
   # Bayesian ANOVA designs -----------------------------------
 
@@ -49,10 +44,6 @@ tidy_model_parameters <- function(model, ...) {
 #' @param data Dataframe returned by `effectsize` functions.
 #' @param ... Currently ignored.
 #'
-#' @importFrom effectsize get_effectsize_label
-#' @importFrom dplyr select mutate contains rename_with bind_cols
-#' @importFrom stats na.omit
-#'
 #' @examples
 #' df <- effectsize::cohens_d(sleep$extra, sleep$group)
 #' tidy_model_effectsize(df)
@@ -61,7 +52,7 @@ tidy_model_parameters <- function(model, ...) {
 tidy_model_effectsize <- function(data, ...) {
   dplyr::bind_cols(
     data %>%
-      dplyr::mutate(effectsize = na.omit(effectsize::get_effectsize_label(colnames(.)))) %>%
+      dplyr::mutate(effectsize = stats::na.omit(effectsize::get_effectsize_label(colnames(.)))) %>%
       parameters::standardize_names(style = "broom") %>%
       dplyr::select(-dplyr::contains("term")),
     dplyr::rename_with(as_tibble(data %@% "ci_method"), ~ paste0("conf.", .x))
