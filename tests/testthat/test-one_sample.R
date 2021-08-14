@@ -9,7 +9,7 @@ test_that(
     # Hedge's g and non-central
     set.seed(123)
     df1 <- one_sample_test(
-      data = dplyr::sample_frac(movies_long, 0.05),
+      data = sample_frac(movies_long, 0.05),
       x = length,
       test.value = 120,
       type = "p",
@@ -20,7 +20,7 @@ test_that(
     set.seed(123)
     df2 <- suppressWarnings(
       one_sample_test(
-        data = dplyr::sample_frac(movies_long, 0.05),
+        data = sample_frac(movies_long, 0.05),
         x = length,
         test.value = 120,
         type = "p",
@@ -32,10 +32,10 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression[[1]])
 
-    expect_snapshot(dplyr::select(df2, -expression))
+    expect_snapshot(select(df2, -expression))
     expect_snapshot(df2$expression[[1]])
   }
 )
@@ -69,10 +69,10 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression[[1]])
 
-    expect_snapshot(dplyr::select(df2, -expression))
+    expect_snapshot(select(df2, -expression))
     expect_snapshot(df2$expression[[1]])
   }
 )
@@ -108,10 +108,10 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression[[1]])
 
-    expect_snapshot(dplyr::select(df2, -expression))
+    expect_snapshot(select(df2, -expression))
     expect_snapshot(df2$expression[[1]])
   }
 )

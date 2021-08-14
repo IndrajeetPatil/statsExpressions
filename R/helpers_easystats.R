@@ -10,11 +10,11 @@
 
 tidy_model_parameters <- function(model, ...) {
   stats_df <- parameters::model_parameters(model, verbose = FALSE, ...) %>%
-    dplyr::select(-dplyr::matches("Difference")) %>%
+    select(-matches("Difference")) %>%
     parameters::standardize_names(style = "broom") %>%
-    dplyr::rename_all(.funs = dplyr::recode, "bayes.factor" = "bf10") %>%
-    tidyr::fill(dplyr::matches("^prior|^bf"), .direction = "updown") %>%
-    dplyr::mutate(dplyr::across(dplyr::matches("bf10"), ~ log(.x), .names = "log_e_{.col}"))
+    rename_all(.funs = recode, "bayes.factor" = "bf10") %>%
+    tidyr::fill(matches("^prior|^bf"), .direction = "updown") %>%
+    mutate(across(matches("bf10"), ~ log(.x), .names = "log_e_{.col}"))
 
   # Bayesian ANOVA designs -----------------------------------
 
@@ -24,13 +24,13 @@ tidy_model_parameters <- function(model, ...) {
       df_r2 <- performance::r2_bayes(model, average = TRUE, ci = stats_df$conf.level[[1]]) %>%
         as_tibble(.) %>%
         parameters::standardize_names(style = "broom") %>%
-        dplyr::rename_with(.fn = ~ paste0("r2.", .x), .cols = dplyr::matches("^conf|^comp"))
+        rename_with(.fn = ~ paste0("r2.", .x), .cols = matches("^conf|^comp"))
 
       # for within-subjects design, retain only marginal component
-      if ("r2.component" %in% names(df_r2)) df_r2 %<>% dplyr::filter(r2.component == "conditional")
+      if ("r2.component" %in% names(df_r2)) df_r2 %<>% filter(r2.component == "conditional")
 
       # combine everything
-      stats_df %<>% dplyr::bind_cols(df_r2)
+      stats_df %<>% bind_cols(df_r2)
     }
   }
 
@@ -50,11 +50,11 @@ tidy_model_parameters <- function(model, ...) {
 #' @noRd
 
 tidy_model_effectsize <- function(data, ...) {
-  dplyr::bind_cols(
+  bind_cols(
     data %>%
-      dplyr::mutate(effectsize = stats::na.omit(effectsize::get_effectsize_label(colnames(.)))) %>%
+      mutate(effectsize = stats::na.omit(effectsize::get_effectsize_label(colnames(.)))) %>%
       parameters::standardize_names(style = "broom") %>%
-      dplyr::select(-dplyr::contains("term")),
-    dplyr::rename_with(as_tibble(data %@% "ci_method"), ~ paste0("conf.", .x))
+      select(-contains("term")),
+    rename_with(as_tibble(data %@% "ci_method"), ~ paste0("conf.", .x))
   )
 }

@@ -31,10 +31,10 @@ test_that(
     # data
     dat <-
       tidyr::spread(bugs_long, condition, desire) %>%
-      dplyr::filter(!is.na(HDLF), !is.na(HDHF))
+      filter(!is.na(HDLF), !is.na(HDHF))
 
     # creating a tidy dataframe
-    dat_tidy <- dplyr::filter(bugs_long, condition %in% c("HDLF", "HDHF"))
+    dat_tidy <- filter(bugs_long, condition %in% c("HDLF", "HDHF"))
 
     # extracting results from where this function is implemented
     set.seed(123)
@@ -103,7 +103,7 @@ test_that(
         45L
       ), class = "data.frame")
 
-    df <- dplyr::filter(df, condition %in% c(1, 5))
+    df <- filter(df, condition %in% c(1, 5))
 
     # incorrect
     set.seed(123)
@@ -122,7 +122,7 @@ test_that(
     expr2 <-
       two_sample_test(
         type = "bayes",
-        data = dplyr::arrange(df, id),
+        data = arrange(df, id),
         x = condition,
         y = score,
         paired = TRUE

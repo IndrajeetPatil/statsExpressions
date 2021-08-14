@@ -10,7 +10,7 @@ test_that(
     df1 <-
       oneway_anova(
         type = "np",
-        data = dplyr::sample_frac(movies_long, 0.1),
+        data = sample_frac(movies_long, 0.1),
         x = "genre",
         y = length,
         paired = FALSE,
@@ -19,7 +19,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression[[1]])
 
     # `statsExpressions` output
@@ -37,7 +37,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df2, -expression))
+    expect_snapshot(select(df2, -expression))
     expect_snapshot(df2$expression[[1]])
   }
 )
@@ -135,7 +135,7 @@ test_that(
     expr2 <-
       oneway_anova(
         type = "np",
-        data = dplyr::arrange(df, id),
+        data = arrange(df, id),
         x = condition,
         y = score,
         paired = TRUE

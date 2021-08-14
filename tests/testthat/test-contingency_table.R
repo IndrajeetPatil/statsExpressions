@@ -17,7 +17,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression[[1]])
 
     # with counts
@@ -31,7 +31,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df2, -expression))
+    expect_snapshot(select(df2, -expression))
     expect_snapshot(df2$expression[[1]])
 
     # contingency tab - with NAs --------------------------------------
@@ -47,7 +47,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df3, -expression))
+    expect_snapshot(select(df3, -expression))
     expect_snapshot(df3$expression[[1]])
   }
 )
@@ -93,7 +93,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression[[1]])
 
     # paired data with NAs  ---------------------------------------------
@@ -125,7 +125,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df2, -expression))
+    expect_snapshot(select(df2, -expression))
     expect_snapshot(df2$expression[[1]])
   }
 )
@@ -146,7 +146,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression[[1]])
 
     # with counts
@@ -159,7 +159,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df2, -expression))
+    expect_snapshot(select(df2, -expression))
     expect_snapshot(df2$expression[[1]])
 
     # one-sample test (with NAs) -------------------------------------
@@ -174,7 +174,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df3, -expression))
+    expect_snapshot(select(df3, -expression))
     expect_snapshot(df3$expression[[1]])
   }
 )
@@ -297,18 +297,18 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression[[1]])
 
     # another dataset with a dropped level
-    data2 <- dplyr::filter(mtcars, am == "0")
+    data2 <- filter(mtcars, am == "0")
 
     set.seed(123)
     df2 <- contingency_table(data2, am, cyl)
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df2, -expression))
+    expect_snapshot(select(df2, -expression))
     expect_snapshot(df2$expression[[1]])
 
     df_eg <- data.frame(x = c("a"))

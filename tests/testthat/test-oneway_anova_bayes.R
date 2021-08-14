@@ -181,7 +181,7 @@ test_that(
       expr2 <-
         oneway_anova(
           type = "bayes",
-          data = dplyr::arrange(df, id),
+          data = arrange(df, id),
           x = condition,
           y = score,
           paired = TRUE

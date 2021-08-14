@@ -106,10 +106,10 @@ expr_template <- function(data,
   # special case for Bayesian analysis
   if (isTRUE(bayesian)) {
     # if not present, create a new column for Bayesian analysis
-    if (!"effectsize" %in% names(data)) data %<>% dplyr::mutate(effectsize = method)
+    if (!"effectsize" %in% names(data)) data %<>% mutate(effectsize = method)
 
     # special handling of contingency tabs analysis
-    if (grepl("contingency", data$method[[1]])) data %<>% dplyr::filter(grepl("cramer", term, TRUE))
+    if (grepl("contingency", data$method[[1]])) data %<>% filter(grepl("cramer", term, TRUE))
   }
 
   # extracting estimate values
@@ -188,7 +188,7 @@ expr_template <- function(data,
   # statistic with 1 degree of freedom --------------------
 
   if (isFALSE(bayesian) && no.parameters == 1L) {
-    if ("df" %in% names(data)) data %<>% dplyr::mutate(df.error = df)
+    if ("df" %in% names(data)) data %<>% mutate(df.error = df)
 
     # preparing expression
     expression <- substitute(
@@ -256,7 +256,7 @@ stat_text_switch <- function(x) {
   x <- tolower(x)
 
   # need to list because `case_when` can't handle outputs of different lengths
-  dplyr::case_when(
+  case_when(
     grepl("^one sample|^two sample|^pair|pearson correlation$", x) ~ list(quote(italic("t")["Student"])),
     grepl("^boot", x) ~ list(quote(italic("t")["bootstrapped"])),
     grepl("^welch", x) ~ list(quote(italic("t")["Welch"])),
@@ -284,7 +284,7 @@ estimate_type_switch <- function(x) {
   x <- tolower(x)
 
   # need to list because `case_when` can't handle outputs of different lengths
-  dplyr::case_when(
+  case_when(
     grepl("^pearson", x) ~ list(quote(widehat(italic("r"))["Pearson"])),
     grepl("spearman", x) ~ list(quote(widehat(rho)["Spearman"])),
     grepl("^winsor", x) ~ list(quote(widehat(italic("r"))["Winsorized"])),
@@ -313,7 +313,7 @@ estimate_type_switch <- function(x) {
 #' @noRd
 
 prior_switch <- function(x) {
-  dplyr::case_when(
+  case_when(
     grepl("contingency", x, TRUE) ~ quote(italic("a")["Gunel-Dickey"]),
     grepl("correlation", x, TRUE) ~ quote(italic("r")["beta"]^"JZS"),
     TRUE ~ quote(italic("r")["Cauchy"]^"JZS")
@@ -323,7 +323,7 @@ prior_switch <- function(x) {
 #' @noRd
 
 prior_type_switch <- function(x) {
-  dplyr::case_when(
+  case_when(
     grepl("contingency", x, TRUE) ~ list("Cramer"),
     grepl("correlation", x, TRUE) ~ list("Pearson"),
     grepl("t-|meta-", x, TRUE) ~ list("difference"),

@@ -78,29 +78,29 @@ long_to_wide_converter <- function(data,
 
   # initial cleanup
   data %<>%
-    dplyr::select({{ x }}, {{ y }}, rowid = {{ subject.id }}) %>%
-    dplyr::mutate({{ x }} := droplevels(as.factor({{ x }}))) %>%
-    dplyr::arrange({{ x }})
+    select({{ x }}, {{ y }}, rowid = {{ subject.id }}) %>%
+    mutate({{ x }} := droplevels(as.factor({{ x }}))) %>%
+    arrange({{ x }})
 
   # if `subject.id` wasn't provided, create one for internal usage
   if (!"rowid" %in% names(data)) {
     # the row number needs to be assigned for each participant in paired data
-    if (paired) data %<>% dplyr::group_by({{ x }})
+    if (paired) data %<>% group_by({{ x }})
 
     # unique id for each participant
-    data %<>% dplyr::mutate(rowid = dplyr::row_number())
+    data %<>% mutate(rowid = row_number())
   }
 
   # NA removal
   data %<>%
-    dplyr::ungroup(.) %>%
-    dplyr::nest_by(rowid, .key = "df") %>%
-    dplyr::filter(sum(is.na(df)) == 0) %>%
+    ungroup(.) %>%
+    nest_by(rowid, .key = "df") %>%
+    filter(sum(is.na(df)) == 0) %>%
     tidyr::unnest(cols = c(df))
 
   # convert to wide?
   if (spread && paired) data %<>% tidyr::pivot_wider(names_from = {{ x }}, values_from = {{ y }})
 
   # final clean-up
-  as_tibble(dplyr::relocate(data, rowid) %>% dplyr::arrange(rowid))
+  as_tibble(relocate(data, rowid) %>% arrange(rowid))
 }

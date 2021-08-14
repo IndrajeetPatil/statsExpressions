@@ -9,7 +9,7 @@ test_that(
     set.seed(123)
     df1 <- two_sample_test(
       type = "r",
-      data = dplyr::filter(
+      data = filter(
         iris_long,
         condition %in% c("Sepal.Length", "Sepal.Width")
       ),
@@ -21,7 +21,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression[[1]])
   }
 )
@@ -33,7 +33,7 @@ test_that(
     set.seed(123)
     df1 <- two_sample_test(
       type = "r",
-      data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+      data = filter(bugs_long, condition %in% c("HDHF", "HDLF")),
       x = condition,
       y = desire,
       paired = TRUE,
@@ -42,7 +42,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression[[1]])
   }
 )
@@ -67,7 +67,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression[[1]])
   }
 )
@@ -79,7 +79,7 @@ test_that(
     set.seed(123)
     df1 <- two_sample_test(
       type = "r",
-      data = dplyr::filter(ggplot2::msleep, vore %in% c("carni", "herbi")),
+      data = filter(ggplot2::msleep, vore %in% c("carni", "herbi")),
       x = vore,
       y = brainwt,
       paired = FALSE,
@@ -89,7 +89,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression[[1]])
   }
 )
@@ -127,7 +127,7 @@ test_that(
         45L
       ), class = "data.frame")
 
-    df <- dplyr::filter(df, condition %in% c(1, 5))
+    df <- filter(df, condition %in% c(1, 5))
 
     # incorrect
     set.seed(123)
@@ -144,7 +144,7 @@ test_that(
     set.seed(123)
     expr2 <- two_sample_test(
       type = "r",
-      data = dplyr::arrange(df, id),
+      data = arrange(df, id),
       x = condition,
       y = score,
       paired = TRUE

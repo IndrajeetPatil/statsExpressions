@@ -162,7 +162,7 @@ oneway_anova <- function(data,
       paired = paired,
       spread = FALSE
     ) %>%
-    dplyr::mutate(rowid = as.factor(rowid))
+    mutate(rowid = as.factor(rowid))
 
   #  parametric ---------------------------------------
 
@@ -205,7 +205,7 @@ oneway_anova <- function(data,
       tidy_model_effectsize(.)
 
     # combining dataframes
-    stats_df <- dplyr::bind_cols(stats_df, effsize_df)
+    stats_df <- bind_cols(stats_df, effsize_df)
   }
 
   # non-parametric ------------------------------------
@@ -243,7 +243,7 @@ oneway_anova <- function(data,
       tidy_model_effectsize(.)
 
     # dataframe
-    stats_df <- dplyr::bind_cols(stats_df, effsize_df)
+    stats_df <- bind_cols(stats_df, effsize_df)
   }
 
   # robust ---------------------------------------
@@ -279,11 +279,11 @@ oneway_anova <- function(data,
     # for paired designs, WRS2 currently doesn't return effect size
     if (paired) {
       effsize_df <- long_to_wide_converter(data, {{ x }}, {{ y }}) %>%
-        WRS2::wmcpAKP(dplyr::select(-rowid), tr = tr, nboot = nboot) %>%
+        WRS2::wmcpAKP(select(-rowid), tr = tr, nboot = nboot) %>%
         tidy_model_parameters(.)
 
       # combine dataframes
-      stats_df <- dplyr::bind_cols(stats_df, effsize_df)
+      stats_df <- bind_cols(stats_df, effsize_df)
     }
   }
 

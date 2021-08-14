@@ -91,13 +91,13 @@ meta_analysis <- function(data,
     tidy_model_parameters(include_studies = FALSE, ci = conf.level)
 
   # add a column describing effect size
-  if (type != "bayes") stats_df %<>% dplyr::mutate(effectsize = "meta-analytic summary estimate")
-  if (type == "bayes") stats_df %<>% dplyr::mutate(effectsize = "meta-analytic posterior estimate")
+  if (type != "bayes") stats_df %<>% mutate(effectsize = "meta-analytic summary estimate")
+  if (type == "bayes") stats_df %<>% mutate(effectsize = "meta-analytic posterior estimate")
 
   # ----------------------- expression ---------------------------------------
 
   as_tibble(stats_df) %>%
-    dplyr::mutate(expression = list(expr_template(
+    mutate(expression = list(expr_template(
       data = .,
       n = nrow(data),
       n.text = quote(italic("n")["effects"]),

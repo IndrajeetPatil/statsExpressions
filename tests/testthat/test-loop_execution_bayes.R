@@ -20,7 +20,7 @@ test_that(
 test_that(
   desc = "contingency_table works in loop",
   code = {
-    df <- dplyr::select(mtcars, am, cyl, vs)
+    df <- select(mtcars, am, cyl, vs)
     col.name <- colnames(df)
 
     set.seed(123)
@@ -40,7 +40,7 @@ test_that(
   desc = "expr_ttest works in loop",
   code = {
     # working with loops
-    df <- dplyr::select(mtcars, am, wt, mpg)
+    df <- select(mtcars, am, wt, mpg)
     col.name <- colnames(df)
 
     set.seed(123)
@@ -74,7 +74,7 @@ test_that(
   desc = "expr_anova works in loop",
   code = {
     # working with loops
-    df <- dplyr::select(mtcars, cyl, wt, mpg)
+    df <- select(mtcars, cyl, wt, mpg)
     col.name <- colnames(df)
 
     set.seed(123)

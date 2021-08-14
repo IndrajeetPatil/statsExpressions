@@ -2,7 +2,7 @@ test_that(
   desc = "results don't differ for grouped versus ungrouped",
   code = {
     # create a grouped dataframe and forget to ungroup it
-    df <- dplyr::group_by(mtcars, am)
+    df <- group_by(mtcars, am)
 
     # correlation ---------------------------------------------------
 
