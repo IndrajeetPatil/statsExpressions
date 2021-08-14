@@ -1,7 +1,7 @@
 # expr_anova_robust works - between-subjects
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 10
         statistic    df df.error   p.value
@@ -28,7 +28,7 @@
 ---
 
     Code
-      dplyr::select(df2, -expression)
+      select(df2, -expression)
     Output
       # A tibble: 1 x 10
         statistic    df df.error p.value
@@ -54,7 +54,7 @@
 # expr_anova_robust works - within-subjects
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 10
         statistic    df df.error  p.value

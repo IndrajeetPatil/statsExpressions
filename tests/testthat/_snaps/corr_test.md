@@ -1,7 +1,7 @@
 # corr_test works - nonparametric
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 11
         parameter1 parameter2 estimate conf.level conf.low conf.high statistic
@@ -24,7 +24,7 @@
 ---
 
     Code
-      dplyr::select(df2, -expression)
+      select(df2, -expression)
     Output
       # A tibble: 1 x 11
         parameter1 parameter2 estimate conf.level conf.low conf.high statistic
@@ -47,7 +47,7 @@
 # corr_test works - parametric
 
     Code
-      dplyr::select(df, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 12
         parameter1 parameter2 estimate conf.level conf.low conf.high statistic
@@ -70,7 +70,7 @@
 # corr_test works - robust
 
     Code
-      dplyr::select(df, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 12
         parameter1 parameter2  estimate conf.level conf.low conf.high statistic

@@ -1,7 +1,7 @@
 # t_nonparametric works - between-subjects design
 
     Code
-      dplyr::select(df, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 12
         parameter1 parameter2 statistic   p.value method                 alternative
@@ -24,7 +24,7 @@
 # t_nonparametric works - within-subjects design
 
     Code
-      dplyr::select(df2, -expression)
+      select(df2, -expression)
     Output
       # A tibble: 1 x 12
         parameter1 parameter2 statistic p.value method                    alternative
