@@ -18,7 +18,7 @@ stats_type_switch(type)
 You can specify just the initial letter.}
 }
 \description{
-Relevant mostly for \code{ggstatsplot} and \code{statsExpressions} packages, where
+Relevant mostly for \code{{ggstatsplot}} and \code{{statsExpressions}} packages, where
 different statistical approaches are supported via this argument: parametric,
 non-parametric, robust, and Bayesian. This switch function converts strings
 entered by users to a common pattern for convenience.

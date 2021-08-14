@@ -128,11 +128,10 @@ mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
 #> 1 wt         cyl             22.8        2 0.0000112
 #>   method                       estimate conf.level conf.low conf.high
 #>   <chr>                           <dbl>      <dbl>    <dbl>     <dbl>
-#> 1 Kruskal-Wallis rank sum test    0.736       0.95    0.558     0.840
+#> 1 Kruskal-Wallis rank sum test    0.736       0.95    0.642     0.847
 #>   effectsize      conf.method          conf.iterations expression
 #>   <chr>           <chr>                          <int> <list>    
 #> 1 Epsilon2 (rank) percentile bootstrap             100 <language>
-
 mtcars %>% oneway_anova(cyl, wt, type = "robust")
 #> # A tibble: 1 × 11
 #>   statistic    df df.error p.value
@@ -140,10 +139,10 @@ mtcars %>% oneway_anova(cyl, wt, type = "robust")
 #> 1      12.7     2     12.2 0.00102
 #>   method                                            estimate conf.level conf.low
 #>   <chr>                                                <dbl>      <dbl>    <dbl>
-#> 1 A heteroscedastic one-way ANOVA for trimmed means     1.05       0.95    0.826
+#> 1 A heteroscedastic one-way ANOVA for trimmed means     1.06       0.95    0.784
 #>   conf.high effectsize                         expression
 #>       <dbl> <chr>                              <list>    
-#> 1      1.58 Explanatory measure of effect size <language>
+#> 1      1.50 Explanatory measure of effect size <language>
 ```
 
 All possible output dataframes from functions are tabulated here:
@@ -478,7 +477,6 @@ library(ggplot2)
 #>     ", ", italic("p"), " = ", "1.67e-31", ", ", widehat(omega["p"]^2), 
 #>     " = ", "0.61", ", CI"["95%"], " [", "0.52", ", ", "0.68", 
 #>     "], ", italic("n")["obs"], " = ", "150")
-
 # adapting the details to your liking
 ggplot(iris, aes(x = Species, y = Sepal.Length)) +
   geom_boxplot() +

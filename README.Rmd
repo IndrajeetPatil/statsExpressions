@@ -118,8 +118,6 @@ correlation | ✅ | ✅
 (one/two-way) contingency table | ✅ | ✅
 random-effects meta-analysis | ✅ | ✅
 
-
-
 # Tidy dataframes from statistical analysis
 
 To illustrate the simplicity of this syntax, let's say we want to run a one-way
