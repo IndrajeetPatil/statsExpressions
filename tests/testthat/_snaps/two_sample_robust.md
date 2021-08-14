@@ -1,7 +1,7 @@
 # t_robust - within-subjects - without NAs
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 13
         statistic df.error p.value method                                            
@@ -30,7 +30,7 @@
 # t_robust - within-subjects - with NAs
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 13
         statistic df.error p.value method                                            
@@ -59,7 +59,7 @@
 # t_robust - between-subjects - without NAs
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 9
         statistic df.error   p.value
@@ -85,7 +85,7 @@
 # t_robust - between-subjects - with NAs
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 9
         statistic df.error p.value

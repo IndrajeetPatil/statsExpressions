@@ -47,7 +47,7 @@ test_that(
     set.seed(123)
     df_2_within <- purrr::pmap_dfr(
       .l = list(
-        data = list(dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF"))),
+        data = list(filter(bugs_long, condition %in% c("HDHF", "HDLF"))),
         x = list("condition"),
         y = list("desire"),
         paired = list(TRUE),

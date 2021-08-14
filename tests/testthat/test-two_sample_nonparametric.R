@@ -19,7 +19,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df, -expression))
+    expect_snapshot(select(df, -expression))
     expect_snapshot(df$expression[[1]])
   }
 )
@@ -76,7 +76,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df2, -expression))
+    expect_snapshot(select(df2, -expression))
     expect_snapshot(df2$expression[[1]])
   }
 )
@@ -114,7 +114,7 @@ test_that(
         45L
       ), class = "data.frame")
 
-    df <- dplyr::filter(df, condition %in% c(1, 5))
+    df <- filter(df, condition %in% c(1, 5))
 
     # incorrect
     set.seed(123)
@@ -133,7 +133,7 @@ test_that(
     expr2 <-
       two_sample_test(
         type = "np",
-        data = dplyr::arrange(df, id),
+        data = arrange(df, id),
         x = condition,
         y = score,
         paired = TRUE

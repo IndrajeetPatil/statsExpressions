@@ -31,3 +31,10 @@
 #' @aliases statsExpressions statsExpressions-package
 #' @name statsExpressions-package
 "_PACKAGE"
+
+
+## statsExpressions namespace: start
+#' @import rlang
+#' @import dplyr
+## statsExpressions namespace: end
+NULL

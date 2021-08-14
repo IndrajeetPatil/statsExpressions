@@ -35,7 +35,7 @@ test_that(
 test_that(
   desc = "contingency_table works in loop",
   code = {
-    df <- dplyr::select(mtcars, am, cyl, vs)
+    df <- select(mtcars, am, cyl, vs)
     col.name <- colnames(df)
 
     set.seed(123)

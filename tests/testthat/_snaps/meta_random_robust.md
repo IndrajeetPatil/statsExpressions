@@ -1,7 +1,7 @@
 # meta_analysis works - robust
 
     Code
-      dplyr::select(df, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 11
         term    estimate std.error conf.low conf.high statistic p.value weight

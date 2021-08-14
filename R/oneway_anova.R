@@ -38,17 +38,6 @@
 #' download it by running:
 #' `remotes::install_github("richarddmorey/BayesFactor/pkg/BayesFactor")`.
 #'
-#' @importFrom dplyr select rename
-#' @importFrom rlang !! !!! expr enexpr ensym exec new_formula
-#' @importFrom stats oneway.test
-#' @importFrom WRS2 t1way rmanova wmcpAKP
-#' @importFrom stats friedman.test kruskal.test
-#' @importFrom effectsize rank_epsilon_squared kendalls_w omega_squared eta_squared
-#' @importFrom BayesFactor ttestBF anovaBF
-#' @importFrom parameters model_parameters
-#' @importFrom performance model_performance
-#' @importFrom insight check_if_installed
-#'
 #' @examples
 #' \donttest{
 #' # for reproducibility
@@ -162,7 +151,7 @@ oneway_anova <- function(data,
   type <- stats_type_switch(type)
 
   # make sure both quoted and unquoted arguments are supported
-  c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
+  c(x, y) %<-% c(ensym(x), ensym(y))
 
   # data cleanup
   data %<>%
@@ -173,7 +162,7 @@ oneway_anova <- function(data,
       paired = paired,
       spread = FALSE
     ) %>%
-    dplyr::mutate(rowid = as.factor(rowid))
+    mutate(rowid = as.factor(rowid))
 
   #  parametric ---------------------------------------
 
@@ -194,9 +183,9 @@ oneway_anova <- function(data,
       # Fisher's ANOVA
       mod <- afex::aov_ez(
         id = "rowid",
-        dv = rlang::as_string(y),
+        dv = as_string(y),
         data = data,
-        within = rlang::as_string(x),
+        within = as_string(x),
         include_aov = TRUE
       )
     }
@@ -204,7 +193,7 @@ oneway_anova <- function(data,
     if (!paired) {
       # Welch's ANOVA
       mod <- stats::oneway.test(
-        formula = rlang::new_formula(y, x),
+        formula = new_formula(y, x),
         data = data,
         var.equal = var.equal
       )
@@ -216,7 +205,7 @@ oneway_anova <- function(data,
       tidy_model_effectsize(.)
 
     # combining dataframes
-    stats_df <- dplyr::bind_cols(stats_df, effsize_df)
+    stats_df <- bind_cols(stats_df, effsize_df)
   }
 
   # non-parametric ------------------------------------
@@ -235,8 +224,8 @@ oneway_anova <- function(data,
     # Kruskal-Wallis test
     if (!paired) {
       c(.f, .f.es) %<-% c(stats::kruskal.test, effectsize::rank_epsilon_squared)
-      .f.args <- list(formula = rlang::new_formula(y, x))
-      .f.es.args <- list(x = rlang::new_formula(y, x))
+      .f.args <- list(formula = new_formula(y, x))
+      .f.es.args <- list(x = new_formula(y, x))
     }
 
     # extracting test details
@@ -254,7 +243,7 @@ oneway_anova <- function(data,
       tidy_model_effectsize(.)
 
     # dataframe
-    stats_df <- dplyr::bind_cols(stats_df, effsize_df)
+    stats_df <- bind_cols(stats_df, effsize_df)
   }
 
   # robust ---------------------------------------
@@ -266,8 +255,8 @@ oneway_anova <- function(data,
     # heteroscedastic one-way repeated measures ANOVA for trimmed means
     if (paired) {
       mod <- WRS2::rmanova(
-        y = data[[rlang::as_name(y)]],
-        groups = data[[rlang::as_name(x)]],
+        y = data[[as_name(y)]],
+        groups = data[[as_name(x)]],
         blocks = data[["rowid"]],
         tr = tr
       )
@@ -276,7 +265,7 @@ oneway_anova <- function(data,
     # heteroscedastic one-way ANOVA for trimmed means
     if (!paired) {
       mod <- WRS2::t1way(
-        formula = rlang::new_formula(y, x),
+        formula = new_formula(y, x),
         data = data,
         tr = tr,
         alpha = 1 - conf.level,
@@ -290,11 +279,11 @@ oneway_anova <- function(data,
     # for paired designs, WRS2 currently doesn't return effect size
     if (paired) {
       effsize_df <- long_to_wide_converter(data, {{ x }}, {{ y }}) %>%
-        WRS2::wmcpAKP(dplyr::select(-rowid), tr = tr, nboot = nboot) %>%
+        WRS2::wmcpAKP(select(-rowid), tr = tr, nboot = nboot) %>%
         tidy_model_parameters(.)
 
       # combine dataframes
-      stats_df <- dplyr::bind_cols(stats_df, effsize_df)
+      stats_df <- bind_cols(stats_df, effsize_df)
     }
   }
 

@@ -1,7 +1,7 @@
 # one_sample_test parametric works
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 13
            mu statistic df.error p.value method            alternative estimate
@@ -24,7 +24,7 @@
 ---
 
     Code
-      dplyr::select(df2, -expression)
+      select(df2, -expression)
     Output
       # A tibble: 1 x 13
            mu statistic df.error p.value method            alternative estimate
@@ -47,7 +47,7 @@
 # one_sample_test non-parametric works
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 10
         statistic p.value method                    alternative estimate conf.level
@@ -70,7 +70,7 @@
 ---
 
     Code
-      dplyr::select(df2, -expression)
+      select(df2, -expression)
     Output
       # A tibble: 1 x 10
         statistic   p.value method                    alternative estimate conf.level
@@ -93,7 +93,7 @@
 # one_sample_test robust works
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 9
         statistic p.value n.obs method                                 estimate
@@ -116,7 +116,7 @@
 ---
 
     Code
-      dplyr::select(df2, -expression)
+      select(df2, -expression)
     Output
       # A tibble: 1 x 9
         statistic p.value n.obs method                                 estimate

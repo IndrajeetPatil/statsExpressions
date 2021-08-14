@@ -1,7 +1,7 @@
 # parametric anova subtitles work (without NAs)
 
     Code
-      dplyr::select(df, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 12
         statistic    df df.error   p.value
@@ -28,7 +28,7 @@
 ---
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 12
         statistic    df df.error    p.value method                    estimate
@@ -51,7 +51,7 @@
 # parametric anova subtitles with partial omega-squared
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 12
         statistic    df df.error p.value
@@ -77,7 +77,7 @@
 # paired parametric anova subtitles work (without NAs)
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 16
         term      sumsq sum.squares.error    df df.error meansq statistic  p.value

@@ -23,13 +23,11 @@ zeallot::%->%
 zeallot::%<-%
 magrittr::%<>%
 magrittr::%>%
-rlang::%@%
 magrittr::%T>%
 rlang::%|%
 rlang::%||%
-rlang:::=
 tibble::as_tibble
 correlation::correlation
 tibble::enframe
-rlang::exec
+insight::format_value
 tibble::tibble

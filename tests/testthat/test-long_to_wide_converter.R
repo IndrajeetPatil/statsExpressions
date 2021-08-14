@@ -118,7 +118,7 @@ test_that(
     class = c("tbl_df", "tbl", "data.frame")
     )
 
-    df1 <- dplyr::arrange(df, id)
+    df1 <- arrange(df, id)
 
     expect_equal(
       long_to_wide_converter(df1, condition, score),
@@ -127,9 +127,9 @@ test_that(
 
     expect_equal(
       long_to_wide_converter(df1, condition, score, spread = FALSE) %>%
-        dplyr::arrange(rowid),
+        arrange(rowid),
       long_to_wide_converter(df, condition, score, id, spread = FALSE) %>%
-        dplyr::arrange(rowid)
+        arrange(rowid)
     )
   }
 )
@@ -141,20 +141,20 @@ test_that(
   desc = "with rowid - with NA",
   code = {
     df <- bugs_long
-    df1 <- dplyr::arrange(bugs_long, subject)
+    df1 <- arrange(bugs_long, subject)
 
     expect_equal(
       long_to_wide_converter(df1, condition, desire) %>%
-        dplyr::select(-rowid),
+        select(-rowid),
       long_to_wide_converter(df, condition, desire, subject) %>%
-        dplyr::select(-rowid)
+        select(-rowid)
     )
 
     expect_equal(
       long_to_wide_converter(df1, condition, desire, spread = FALSE) %>%
-        dplyr::select(-rowid),
+        select(-rowid),
       long_to_wide_converter(df, condition, desire, subject, spread = FALSE) %>%
-        dplyr::select(-rowid)
+        select(-rowid)
     )
   }
 )

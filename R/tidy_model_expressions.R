@@ -7,8 +7,6 @@
 #'   `"z"` or `"chi"`) in the label.
 #' @inheritParams oneway_anova
 #'
-#' @importFrom dplyr mutate rowwise case_when ungroup
-#'
 #' @note This is an **experimental** function and may change in the future.
 #'   Please do not use it yet in your workflow.
 #'

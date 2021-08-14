@@ -1,7 +1,7 @@
 # between-subjects - data with and without NAs
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 13
         parameter1 parameter2 statistic df.error      p.value
@@ -27,7 +27,7 @@
 ---
 
     Code
-      dplyr::select(df2, -expression)
+      select(df2, -expression)
     Output
       # A tibble: 1 x 13
         parameter1  parameter2 statistic df.error p.value method                      

@@ -22,7 +22,7 @@ test_that(
     set.seed(123)
     df2 <- suppressWarnings(oneway_anova(
       type = "robust",
-      data = dplyr::filter(ggplot2::msleep, vore != "insecti"),
+      data = filter(ggplot2::msleep, vore != "insecti"),
       x = vore,
       y = sleep_total,
       paired = FALSE,
@@ -33,12 +33,12 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression[[1]])
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df2, -expression))
+    expect_snapshot(select(df2, -expression))
     expect_snapshot(df2$expression[[1]])
   }
 )
@@ -63,7 +63,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression[[1]])
   }
 )

@@ -22,7 +22,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df, -expression))
+    expect_snapshot(select(df, -expression))
     expect_snapshot(df$expression[[1]])
 
     # error

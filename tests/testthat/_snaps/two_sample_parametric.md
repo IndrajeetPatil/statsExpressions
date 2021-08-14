@@ -1,7 +1,7 @@
 # parametric t-test works (between-subjects without NAs)
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 16
         term  group mean.group1 mean.group2 statistic df.error p.value
@@ -27,7 +27,7 @@
 # parametric t-test works (between-subjects with NAs)
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 16
         term  group mean.group1 mean.group2 statistic df.error p.value
@@ -53,7 +53,7 @@
 # parametric t-test works (within-subjects without NAs)
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 14
         term  group     statistic df.error  p.value method        alternative estimate
@@ -76,7 +76,7 @@
 # parametric t-test works (within-subjects with NAs)
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 14
         term   group     statistic df.error  p.value method        alternative

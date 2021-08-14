@@ -41,15 +41,6 @@
 #' @inheritParams stats::chisq.test
 #' @inheritParams oneway_anova
 #'
-#' @importFrom BayesFactor contingencyTableBF logMeanExpLogs
-#' @importFrom dplyr pull select rename mutate
-#' @importFrom rlang enquo quo_is_null exec !!!
-#' @importFrom tidyr uncount drop_na
-#' @importFrom stats mcnemar.test chisq.test dmultinom rgamma
-#' @importFrom effectsize cramers_v cohens_g
-#' @importFrom parameters standardize_names
-#' @importFrom insight format_value
-#'
 #' @examples
 #' \donttest{
 #' # for reproducibility
@@ -117,7 +108,7 @@ contingency_table <- function(data,
   type <- stats_type_switch(type)
 
   # one-way or two-way table?
-  test <- ifelse(!rlang::quo_is_null(rlang::enquo(y)), "2way", "1way")
+  test <- ifelse(!quo_is_null(enquo(y)), "2way", "1way")
 
   # creating a dataframe
   data %<>%
@@ -187,7 +178,7 @@ contingency_table <- function(data,
       # BF = (log) prob of data under alternative - (log) prob of data under null
       # computing Bayes Factor and formatting the results
       stats_df <- tibble(
-        bf10 = exp(logMeanExpLogs(pr_h1) - dmultinom(as.matrix(xtab), NULL, ratio, TRUE)),
+        bf10 = exp(BayesFactor::logMeanExpLogs(pr_h1) - stats::dmultinom(as.matrix(xtab), NULL, ratio, TRUE)),
         prior.scale = prior.concentration
       )
 

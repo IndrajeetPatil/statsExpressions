@@ -8,7 +8,7 @@ test_that(
     # `statsExpressions` output
     set.seed(123)
     df1 <- suppressWarnings(corr_test(
-      data = dplyr::sample_frac(movies_long, 0.05),
+      data = sample_frac(movies_long, 0.05),
       x = rating,
       y = length,
       type = "nonparametric",
@@ -18,7 +18,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression[[1]])
 
     # `statsExpressions` output
@@ -32,7 +32,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df2, -expression))
+    expect_snapshot(select(df2, -expression))
     expect_snapshot(df2$expression[[1]])
   }
 )
@@ -55,7 +55,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df, -expression))
+    expect_snapshot(select(df, -expression))
     expect_snapshot(df$expression[[1]])
   }
 )
@@ -78,7 +78,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df, -expression))
+    expect_snapshot(select(df, -expression))
     expect_snapshot(df$expression[[1]])
   }
 )

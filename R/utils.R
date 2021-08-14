@@ -64,15 +64,13 @@ format_num <- function(x, k = 2L, p.value = FALSE, ...) {
 #'
 #' You can specify just the initial letter.
 #'
-#' @importFrom dplyr case_when
-#'
 #' @examples
 #' stats_type_switch("p")
 #' stats_type_switch("bf")
 #' @export
 
 stats_type_switch <- function(type) {
-  dplyr::case_when(
+  case_when(
     grepl("^p", type, TRUE) ~ "parametric",
     grepl("^n|^s", type, TRUE) ~ "nonparametric", # s is for Spearman's rho
     grepl("^r", type, TRUE) ~ "robust",

@@ -1,7 +1,7 @@
 # contingency_table works
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 11
         statistic    df p.value method                     estimate conf.level
@@ -24,7 +24,7 @@
 ---
 
     Code
-      dplyr::select(df2, -expression)
+      select(df2, -expression)
     Output
       # A tibble: 1 x 11
         statistic    df   p.value method                     estimate conf.level
@@ -47,7 +47,7 @@
 ---
 
     Code
-      dplyr::select(df3, -expression)
+      select(df3, -expression)
     Output
       # A tibble: 1 x 11
         statistic    df p.value method                     estimate conf.level
@@ -70,7 +70,7 @@
 # paired contingency_table works 
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 10
         statistic    df  p.value method                     estimate conf.level
@@ -93,7 +93,7 @@
 ---
 
     Code
-      dplyr::select(df2, -expression)
+      select(df2, -expression)
     Output
       # A tibble: 1 x 10
         statistic    df  p.value method                     estimate conf.level
@@ -116,7 +116,7 @@
 # Goodness of Fit contingency_table works without counts
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 11
         statistic    df p.value method                                   estimate
@@ -139,7 +139,7 @@
 ---
 
     Code
-      dplyr::select(df2, -expression)
+      select(df2, -expression)
     Output
       # A tibble: 1 x 11
         statistic    df   p.value method                                   estimate
@@ -162,7 +162,7 @@
 ---
 
     Code
-      dplyr::select(df3, -expression)
+      select(df3, -expression)
     Output
       # A tibble: 1 x 11
         statistic    df     p.value method                                   estimate
@@ -219,7 +219,7 @@
 # works even in edge cases
 
     Code
-      dplyr::select(df1, -expression)
+      select(df1, -expression)
     Output
       # A tibble: 1 x 11
         statistic    df p.value method                     estimate conf.level
@@ -242,7 +242,7 @@
 ---
 
     Code
-      dplyr::select(df2, -expression)
+      select(df2, -expression)
     Output
       # A tibble: 1 x 11
         statistic    df p.value method                                   estimate

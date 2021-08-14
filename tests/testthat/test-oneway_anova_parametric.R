@@ -18,7 +18,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df, -expression))
+    expect_snapshot(select(df, -expression))
     expect_snapshot(df$expression[[1]])
 
     # statsExpression output
@@ -34,7 +34,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression[[1]])
   }
 )
@@ -57,7 +57,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression[[1]])
   }
 )
@@ -83,7 +83,7 @@ test_that(
 
     # testing all details
     set.seed(123)
-    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression[[1]])
   }
 )
@@ -214,7 +214,7 @@ test_that(
     # correct
     set.seed(123)
     expr2 <- oneway_anova(
-      data = dplyr::arrange(df, id),
+      data = arrange(df, id),
       x = condition,
       y = score,
       paired = TRUE

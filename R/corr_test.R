@@ -16,11 +16,6 @@
 #'   be plotted on the `y`-axis.
 #' @inheritParams oneway_anova
 #'
-#' @importFrom dplyr select case_when ungroup
-#' @importFrom correlation correlation
-#' @importFrom parameters standardize_names
-#' @importFrom tidyr drop_na
-#'
 #' @examples
 #' \donttest{
 #' # for reproducibility
