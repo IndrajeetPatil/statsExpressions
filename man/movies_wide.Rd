@@ -43,6 +43,6 @@ and NC-17 movies were removed.
 \examples{
 dim(movies_wide)
 head(movies_wide)
-glimpse(movies_wide)
+dplyr::glimpse(movies_wide)
 }
 \keyword{datasets}

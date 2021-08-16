@@ -38,6 +38,6 @@ all anthropods. Subset of the data reported by Ryan et al. (2013).
 \examples{
 dim(bugs_long)
 head(bugs_long)
-glimpse(bugs_long)
+dplyr::glimpse(bugs_long)
 }
 \keyword{datasets}

@@ -41,6 +41,6 @@ genre category.
 \examples{
 dim(movies_long)
 head(movies_long)
-glimpse(movies_long)
+dplyr::glimpse(movies_long)
 }
 \keyword{datasets}
