@@ -36,7 +36,7 @@
 #'
 #' # within-subjects design
 #' two_sample_test(
-#'   data = filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+#'   data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
 #'   x = condition,
 #'   y = desire,
 #'   paired = TRUE,
@@ -56,7 +56,7 @@
 #'
 #' # within-subjects design
 #' two_sample_test(
-#'   data = filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+#'   data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
 #'   x = condition,
 #'   y = desire,
 #'   paired = TRUE,
@@ -76,7 +76,7 @@
 #'
 #' # within-subjects design
 #' two_sample_test(
-#'   data = filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+#'   data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
 #'   x = condition,
 #'   y = desire,
 #'   paired = TRUE,
@@ -96,7 +96,7 @@
 #'
 #' # within-subjects design
 #' two_sample_test(
-#'   data = filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+#'   data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
 #'   x = condition,
 #'   y = desire,
 #'   paired = TRUE,
