@@ -348,23 +348,14 @@ mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
 #&gt; <span style='color: #BCBCBC;'>1</span> Hedges' g  ncp         t                 <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
 <span class='co'># within-subjects design</span>
 <span class='fu'>two_sample_test</span><span class='op'>(</span>
-  data <span class='op'>=</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>bugs_long</span>, <span class='va'>condition</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HDHF"</span>, <span class='st'>"HDLF"</span><span class='op'>)</span><span class='op'>)</span>,
+  data <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>bugs_long</span>, <span class='va'>condition</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HDHF"</span>, <span class='st'>"HDLF"</span><span class='op'>)</span><span class='op'>)</span>,
   x <span class='op'>=</span> <span class='va'>condition</span>,
   y <span class='op'>=</span> <span class='va'>desire</span>,
   paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
   subject.id <span class='op'>=</span> <span class='va'>subject</span>,
   type <span class='op'>=</span> <span class='st'>"p"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 15</span>
-#&gt;   <span style='font-weight: bold;'>term</span>   <span style='font-weight: bold;'>group</span>     <span style='font-weight: bold;'>statistic</span> <span style='font-weight: bold;'>df.error</span>  <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>method</span>        <span style='font-weight: bold;'>alternative</span>
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      
-#&gt; <span style='color: #BCBCBC;'>1</span> desire condition      3.61       89 0.000<span style='text-decoration: underline;'>500</span> Paired t-test two.sided  
-#&gt;   <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span> <span style='font-weight: bold;'>effectsize</span> <span style='font-weight: bold;'>conf.method</span>
-#&gt;      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      
-#&gt; <span style='color: #BCBCBC;'>1</span>    0.378       0.95    0.165     0.592 Hedges' g  ncp        
-#&gt;   <span style='font-weight: bold;'>conf.distribution</span> <span style='font-weight: bold;'>expression</span>
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
-#&gt; <span style='color: #BCBCBC;'>1</span> t                 <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='error'>Error in condition %in% c("HDHF", "HDLF"): object 'condition' not found</span></div><div class='input'>
 <span class='co'># non-parametric ----------------------------------</span>
 
 <span class='co'># between-subjects design</span>
@@ -386,23 +377,14 @@ mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
 #&gt; <span style='color: #BCBCBC;'>1</span> <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
 <span class='co'># within-subjects design</span>
 <span class='fu'>two_sample_test</span><span class='op'>(</span>
-  data <span class='op'>=</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>bugs_long</span>, <span class='va'>condition</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HDHF"</span>, <span class='st'>"HDLF"</span><span class='op'>)</span><span class='op'>)</span>,
+  data <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>bugs_long</span>, <span class='va'>condition</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HDHF"</span>, <span class='st'>"HDLF"</span><span class='op'>)</span><span class='op'>)</span>,
   x <span class='op'>=</span> <span class='va'>condition</span>,
   y <span class='op'>=</span> <span class='va'>desire</span>,
   paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
   subject.id <span class='op'>=</span> <span class='va'>subject</span>,
   type <span class='op'>=</span> <span class='st'>"np"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 13</span>
-#&gt;   <span style='font-weight: bold;'>parameter1</span> <span style='font-weight: bold;'>parameter2</span> <span style='font-weight: bold;'>statistic</span>  <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>method</span>                    <span style='font-weight: bold;'>alternative</span>
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      
-#&gt; <span style='color: #BCBCBC;'>1</span> desire     condition       <span style='text-decoration: underline;'>1</span>796 0.000<span style='text-decoration: underline;'>430</span> Wilcoxon signed rank test two.sided  
-#&gt;   <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span> <span style='font-weight: bold;'>effectsize</span>        <span style='font-weight: bold;'>conf.method</span>
-#&gt;      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      
-#&gt; <span style='color: #BCBCBC;'>1</span>    0.487       0.95    0.285     0.648 r (rank biserial) normal     
-#&gt;   <span style='font-weight: bold;'>expression</span>
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
-#&gt; <span style='color: #BCBCBC;'>1</span> <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='error'>Error in condition %in% c("HDHF", "HDLF"): object 'condition' not found</span></div><div class='input'>
 <span class='co'># robust ----------------------------------</span>
 
 <span class='co'># between-subjects design</span>
@@ -427,26 +409,14 @@ mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
 #&gt; <span style='color: #BCBCBC;'>1</span> <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
 <span class='co'># within-subjects design</span>
 <span class='fu'>two_sample_test</span><span class='op'>(</span>
-  data <span class='op'>=</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>bugs_long</span>, <span class='va'>condition</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HDHF"</span>, <span class='st'>"HDLF"</span><span class='op'>)</span><span class='op'>)</span>,
+  data <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>bugs_long</span>, <span class='va'>condition</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HDHF"</span>, <span class='st'>"HDLF"</span><span class='op'>)</span><span class='op'>)</span>,
   x <span class='op'>=</span> <span class='va'>condition</span>,
   y <span class='op'>=</span> <span class='va'>desire</span>,
   paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
   subject.id <span class='op'>=</span> <span class='va'>subject</span>,
   type <span class='op'>=</span> <span class='st'>"r"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 14</span>
-#&gt;   <span style='font-weight: bold;'>statistic</span> <span style='font-weight: bold;'>df.error</span> <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>method</span>                                            
-#&gt;       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                             
-#&gt; <span style='color: #BCBCBC;'>1</span>      2.91       53 0.005<span style='text-decoration: underline;'>28</span> Yuen's test on trimmed means for dependent samples
-#&gt;   <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span>
-#&gt;      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span>    0.410       0.95    0.255     0.592
-#&gt;   <span style='font-weight: bold;'>effectsize</span>                                                 <span style='font-weight: bold;'>mu</span> <span style='font-weight: bold;'>small</span> <span style='font-weight: bold;'>medium</span>
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                                   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> Algina-Keselman-Penfield robust standardized difference     0   0.1    0.3
-#&gt;   <span style='font-weight: bold;'>large</span> <span style='font-weight: bold;'>expression</span>
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
-#&gt; <span style='color: #BCBCBC;'>1</span>   0.5 <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='error'>Error in condition %in% c("HDHF", "HDLF"): object 'condition' not found</span></div><div class='input'>
 <span class='co'>#' # Bayesian ------------------------------</span>
 
 <span class='co'># between-subjects design</span>
@@ -459,8 +429,8 @@ mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
 </div><div class='output co'>#&gt; <span class='warning'>Warning: data coerced from tibble to data frame</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 × 14</span>
 #&gt;   <span style='font-weight: bold;'>term</span>       <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span>    <span style='font-weight: bold;'>pd</span> <span style='font-weight: bold;'>rope.percentage</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> Difference    1.13        0.95   -<span style='color: #BB0000;'>0.353</span>     2.77  0.935          0.075<span style='text-decoration: underline;'>5</span>
-#&gt; <span style='color: #BCBCBC;'>2</span> Cohens_d     -<span style='color: #BB0000;'>0.605</span>       0.95   -<span style='color: #BB0000;'>1.44</span>      0.234 0.930          0.081<span style='text-decoration: underline;'>6</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> Difference    1.16        0.95   -<span style='color: #BB0000;'>0.508</span>     2.71  0.935          0.061<span style='text-decoration: underline;'>8</span>
+#&gt; <span style='color: #BCBCBC;'>2</span> Cohens_d     -<span style='color: #BB0000;'>0.587</span>       0.95   -<span style='color: #BB0000;'>1.46</span>      0.179 0.936          0.078<span style='text-decoration: underline;'>9</span>
 #&gt;   <span style='font-weight: bold;'>prior.distribution</span> <span style='font-weight: bold;'>prior.location</span> <span style='font-weight: bold;'>prior.scale</span>  <span style='font-weight: bold;'>bf10</span> <span style='font-weight: bold;'>method</span>          <span style='font-weight: bold;'>log_e_bf10</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span> cauchy                          0       0.707  1.27 Bayesian t-test      0.236
@@ -471,26 +441,14 @@ mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
 #&gt; <span style='color: #BCBCBC;'>2</span> <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
 <span class='co'># within-subjects design</span>
 <span class='fu'>two_sample_test</span><span class='op'>(</span>
-  data <span class='op'>=</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>bugs_long</span>, <span class='va'>condition</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HDHF"</span>, <span class='st'>"HDLF"</span><span class='op'>)</span><span class='op'>)</span>,
+  data <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>bugs_long</span>, <span class='va'>condition</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"HDHF"</span>, <span class='st'>"HDLF"</span><span class='op'>)</span><span class='op'>)</span>,
   x <span class='op'>=</span> <span class='va'>condition</span>,
   y <span class='op'>=</span> <span class='va'>desire</span>,
   paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
   subject.id <span class='op'>=</span> <span class='va'>subject</span>,
   type <span class='op'>=</span> <span class='st'>"bayes"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: data coerced from tibble to data frame</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 × 14</span>
-#&gt;   <span style='font-weight: bold;'>term</span>       <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span>    <span style='font-weight: bold;'>pd</span> <span style='font-weight: bold;'>rope.percentage</span>
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> Difference   -<span style='color: #BB0000;'>1.10</span>        0.95   -<span style='color: #BB0000;'>1.68</span>     -<span style='color: #BB0000;'>0.467</span>  1.00               0
-#&gt; <span style='color: #BCBCBC;'>2</span> Cohens_d      0.368       0.95    0.161     0.579  1                  0
-#&gt;   <span style='font-weight: bold;'>prior.distribution</span> <span style='font-weight: bold;'>prior.location</span> <span style='font-weight: bold;'>prior.scale</span>  <span style='font-weight: bold;'>bf10</span> <span style='font-weight: bold;'>method</span>          <span style='font-weight: bold;'>log_e_bf10</span>
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> cauchy                          0       0.707  43.5 Bayesian t-test       3.77
-#&gt; <span style='color: #BCBCBC;'>2</span> cauchy                          0       0.707  43.5 Bayesian t-test       3.77
-#&gt;   <span style='font-weight: bold;'>expression</span>
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
-#&gt; <span style='color: #BCBCBC;'>1</span> <span style='color: #949494;'>&lt;language&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>2</span> <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in condition %in% c("HDHF", "HDLF"): object 'condition' not found</span></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
