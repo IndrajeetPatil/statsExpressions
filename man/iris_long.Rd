@@ -36,6 +36,6 @@ This is a modified dataset from \code{datasets} package.
 \examples{
 dim(iris_long)
 head(iris_long)
-dplyr::glimpse(iris_long)
+glimpse(iris_long)
 }
 \keyword{datasets}

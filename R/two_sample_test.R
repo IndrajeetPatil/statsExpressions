@@ -36,7 +36,7 @@
 #'
 #' # within-subjects design
 #' two_sample_test(
-#'   data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+#'   data = filter(bugs_long, condition %in% c("HDHF", "HDLF")),
 #'   x = condition,
 #'   y = desire,
 #'   paired = TRUE,
@@ -56,7 +56,7 @@
 #'
 #' # within-subjects design
 #' two_sample_test(
-#'   data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+#'   data = filter(bugs_long, condition %in% c("HDHF", "HDLF")),
 #'   x = condition,
 #'   y = desire,
 #'   paired = TRUE,
@@ -76,7 +76,7 @@
 #'
 #' # within-subjects design
 #' two_sample_test(
-#'   data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+#'   data = filter(bugs_long, condition %in% c("HDHF", "HDLF")),
 #'   x = condition,
 #'   y = desire,
 #'   paired = TRUE,
@@ -96,7 +96,7 @@
 #'
 #' # within-subjects design
 #' two_sample_test(
-#'   data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+#'   data = filter(bugs_long, condition %in% c("HDHF", "HDLF")),
 #'   x = condition,
 #'   y = desire,
 #'   paired = TRUE,
@@ -206,7 +206,7 @@ two_sample_test <- function(data,
   # final returns
   if (type != "bayes") {
     # combining dataframes
-    stats_df <- dplyr::bind_cols(dplyr::select(stats_df, -dplyr::matches("^est|^eff|conf|^ci")), dplyr::select(effsize_df, -dplyr::matches("term")))
+    stats_df <- bind_cols(select(stats_df, -matches("^est|^eff|conf|^ci")), select(effsize_df, -matches("term")))
   }
 
   # Bayesian ---------------------------------------
@@ -225,7 +225,7 @@ two_sample_test <- function(data,
 
   # return the output
   as_tibble(stats_df) %>%
-    dplyr::mutate(expression = list(expr_template(
+    mutate(expression = list(expr_template(
       no.parameters = no.parameters,
       data = .,
       paired = paired,

@@ -59,7 +59,7 @@ corr_test <- function(data,
 
   # creating a dataframe of results
   stats_df <- correlation::correlation(
-    data = tidyr::drop_na(dplyr::select(dplyr::ungroup(data), {{ x }}, {{ y }})),
+    data = tidyr::drop_na(select(ungroup(data), {{ x }}, {{ y }})),
     method = ifelse(type == "nonparametric", "spearman", "pearson"),
     ci = conf.level,
     bayesian = ifelse(type == "bayes", TRUE, FALSE),
@@ -67,16 +67,16 @@ corr_test <- function(data,
     winsorize = ifelse(type == "robust", tr, FALSE)
   ) %>%
     parameters::standardize_names(style = "broom") %>%
-    dplyr::mutate(effectsize = method)
+    mutate(effectsize = method)
 
   # expression ---------------------------------------
 
   # no. of parameters
-  if (type == "bayes") stats_df %<>% dplyr::rename("bf10" = "bayes.factor")
+  if (type == "bayes") stats_df %<>% rename("bf10" = "bayes.factor")
 
   # preparing expression
   as_tibble(stats_df) %>%
-    dplyr::mutate(expression = list(expr_template(
+    mutate(expression = list(expr_template(
       data = .,
       no.parameters = ifelse(type %in% c("parametric", "robust"), 1L, 0L),
       top.text = top.text,

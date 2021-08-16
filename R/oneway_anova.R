@@ -312,7 +312,7 @@ oneway_anova <- function(data,
   # expression ---------------------------------------
 
   as_tibble(stats_df) %>%
-    dplyr::mutate(expression = list(expr_template(
+    mutate(expression = list(expr_template(
       data = .,
       no.parameters = no.parameters,
       n = ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data)),

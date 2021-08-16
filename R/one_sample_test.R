@@ -99,7 +99,7 @@ one_sample_test <- function(data,
   type <- stats_type_switch(type)
 
   # preparing the vector
-  x_vec <- stats::na.omit(data %>% dplyr::pull({{ x }}))
+  x_vec <- stats::na.omit(data %>% pull({{ x }}))
 
   # parametric ---------------------------------------
 
@@ -124,7 +124,7 @@ one_sample_test <- function(data,
     # extracting test details
     stats_df <- exec(.f, x = x_vec, mu = test.value, alternative = alternative) %>%
       tidy_model_parameters(.) %>%
-      dplyr::select(-dplyr::matches("^est|^conf|^diff|^term|^ci"))
+      select(-matches("^est|^conf|^diff|^term|^ci"))
 
     # extracting effect size details
     effsize_df <- exec(
@@ -137,7 +137,7 @@ one_sample_test <- function(data,
       tidy_model_effectsize(.)
 
     # dataframe
-    stats_df <- dplyr::bind_cols(stats_df, effsize_df)
+    stats_df <- bind_cols(stats_df, effsize_df)
   }
 
   # robust ---------------------------------------
@@ -161,7 +161,7 @@ one_sample_test <- function(data,
 
   # return the output
   as_tibble(stats_df) %>%
-    dplyr::mutate(expression = list(expr_template(
+    mutate(expression = list(expr_template(
       data = .,
       no.parameters = no.parameters,
       n = length(x_vec),

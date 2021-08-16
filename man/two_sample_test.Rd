@@ -128,7 +128,7 @@ two_sample_test(
 
 # within-subjects design
 two_sample_test(
-  data = dplyr::filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
+  data = filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
   x = condition,
   y = desire,
   paired = TRUE,
@@ -148,7 +148,7 @@ two_sample_test(
 
 # within-subjects design
 two_sample_test(
-  data = dplyr::filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
+  data = filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
   x = condition,
   y = desire,
   paired = TRUE,
@@ -168,7 +168,7 @@ two_sample_test(
 
 # within-subjects design
 two_sample_test(
-  data = dplyr::filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
+  data = filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
   x = condition,
   y = desire,
   paired = TRUE,
@@ -188,7 +188,7 @@ two_sample_test(
 
 # within-subjects design
 two_sample_test(
-  data = dplyr::filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
+  data = filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
   x = condition,
   y = desire,
   paired = TRUE,

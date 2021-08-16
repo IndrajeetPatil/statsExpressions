@@ -43,7 +43,7 @@ centrality_description <- function(data,
   type <- stats_type_switch(type)
 
   # which centrality measure?
-  centrality <- dplyr::case_when(
+  centrality <- case_when(
     type == "parametric" ~ "mean",
     type == "nonparametric" ~ "median",
     type == "robust" ~ "trimmed",
@@ -53,11 +53,11 @@ centrality_description <- function(data,
   # dataframe -------------------------------------
 
   # creating the dataframe
-  dplyr::select(data, {{ x }}, {{ y }}) %>%
+  select(data, {{ x }}, {{ y }}) %>%
     tidyr::drop_na(.) %>%
-    dplyr::mutate({{ x }} := droplevels(as.factor({{ x }}))) %>%
-    dplyr::group_by({{ x }}) %>%
-    dplyr::group_modify(
+    mutate({{ x }} := droplevels(as.factor({{ x }}))) %>%
+    group_by({{ x }}) %>%
+    group_modify(
       .f = ~ insight::standardize_names(
         data = datawizard::describe_distribution(
           x = .,
@@ -69,13 +69,13 @@ centrality_description <- function(data,
         style = "broom"
       )
     ) %>%
-    dplyr::ungroup() %>%
-    dplyr::rowwise() %>%
-    dplyr::mutate(expression = paste0("list(~widehat(mu)[", centrality, "]=='", format_value(estimate, k), "')")) %>%
-    dplyr::ungroup() %>%
-    dplyr::mutate(n_label = paste0({{ x }}, "\n(n = ", .prettyNum(n), ")")) %>%
-    dplyr::arrange({{ x }}) %>%
-    dplyr::select({{ x }}, !!as.character(ensym(y)) := estimate,
-      n_obs = n, dplyr::everything()
+    ungroup() %>%
+    rowwise() %>%
+    mutate(expression = paste0("list(~widehat(mu)[", centrality, "]=='", format_value(estimate, k), "')")) %>%
+    ungroup() %>%
+    mutate(n_label = paste0({{ x }}, "\n(n = ", .prettyNum(n), ")")) %>%
+    arrange({{ x }}) %>%
+    select({{ x }}, !!as.character(ensym(y)) := estimate,
+      n_obs = n, everything()
     )
 }

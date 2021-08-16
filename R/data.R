@@ -29,7 +29,7 @@
 #' @examples
 #' dim(movies_wide)
 #' head(movies_wide)
-#' dplyr::glimpse(movies_wide)
+#' glimpse(movies_wide)
 "movies_wide"
 
 #' @title Movie information and user ratings from IMDB.com (long format).
@@ -61,7 +61,7 @@
 #' @examples
 #' dim(movies_long)
 #' head(movies_long)
-#' dplyr::glimpse(movies_long)
+#' glimpse(movies_long)
 "movies_long"
 
 
@@ -90,7 +90,7 @@
 #' @examples
 #' dim(iris_long)
 #' head(iris_long)
-#' dplyr::glimpse(iris_long)
+#' glimpse(iris_long)
 "iris_long"
 
 #' @title Tidy version of the "Bugs" dataset.
@@ -120,5 +120,5 @@
 #' @examples
 #' dim(bugs_long)
 #' head(bugs_long)
-#' dplyr::glimpse(bugs_long)
+#' glimpse(bugs_long)
 "bugs_long"

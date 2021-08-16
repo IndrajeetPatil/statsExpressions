@@ -31,14 +31,14 @@ tidy_model_expressions <- function(data,
   statistic <- substring(tolower(statistic), 1L, 1L)
 
   # all operations will have to be done rowwise
-  data %<>% dplyr::rowwise()
+  data %<>% rowwise()
 
   # t-statistic --------------------------------
 
   if (statistic == "t") {
     data %<>%
-      dplyr::mutate(
-        label = dplyr::case_when(
+      mutate(
+        label = case_when(
           is.na(df.error) || is.infinite(df.error) ~ paste0(
             "list(~widehat(italic(beta))=='", format_value(estimate, k),
             "', ~italic(t)=='", format_value(statistic, k),
@@ -58,7 +58,7 @@ tidy_model_expressions <- function(data,
   # if the statistic is z-value
   if (statistic == "z") {
     data %<>%
-      dplyr::mutate(
+      mutate(
         label = paste0(
           "list(~widehat(italic(beta))=='", format_value(estimate, k),
           "', ~italic(z)=='", format_value(statistic, k),
@@ -71,7 +71,7 @@ tidy_model_expressions <- function(data,
 
   if (statistic == "c") {
     data %<>%
-      dplyr::mutate(
+      mutate(
         label = paste0(
           "list(~widehat(italic(beta))=='", format_value(estimate, k),
           "', ~italic(chi)^2~", "('", format_value(df.error, 0L), "')=='", format_value(statistic, k),
@@ -89,7 +89,7 @@ tidy_model_expressions <- function(data,
 
     # which effect size is needed?
     data %<>%
-      dplyr::mutate(
+      mutate(
         label = paste0(
           "list(~italic(F)", "('", format_value(df, 0L), "'*\",\"*'", format_value(df.error, 0L),
           "')=='", format_value(statistic, k),
@@ -100,5 +100,5 @@ tidy_model_expressions <- function(data,
   }
 
   # return the ungrouped dataframe
-  dplyr::ungroup(data)
+  ungroup(data)
 }

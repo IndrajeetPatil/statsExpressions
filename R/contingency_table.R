@@ -112,14 +112,14 @@ contingency_table <- function(data,
 
   # creating a dataframe
   data %<>%
-    dplyr::select({{ x }}, {{ y }}, .counts = {{ counts }}) %>%
+    select({{ x }}, {{ y }}, .counts = {{ counts }}) %>%
     tidyr::drop_na(.)
 
   # untable the dataframe based on the count for each observation
   if (".counts" %in% names(data)) data %<>% tidyr::uncount(weights = .counts)
 
   # variables needed for both one-way and two-way analysis
-  x_vec <- data %>% dplyr::pull({{ x }})
+  x_vec <- data %>% pull({{ x }})
   if (is.null(ratio)) ratio <- rep(1 / length(table(x_vec)), length(table(x_vec)))
 
   # non-Bayesian ---------------------------------------
@@ -136,7 +136,7 @@ contingency_table <- function(data,
     # Pearson's or McNemar's test
 
     # combining dataframes: inferential stats + effect sizes
-    stats_df <- dplyr::bind_cols(
+    stats_df <- bind_cols(
       tidy_model_parameters(exec(.f, !!!.f.args)),
       tidy_model_effectsize(exec(.f.es, !!!.f.args, adjust = TRUE, ci = conf.level))
     )
@@ -202,7 +202,7 @@ contingency_table <- function(data,
       if (is.null(top.text)) expression <- expression$expr
 
       # computing Bayes Factor and formatting the results
-      stats_df %<>% dplyr::mutate(expression = list(expression))
+      stats_df %<>% mutate(expression = list(expression))
     }
   }
 
@@ -210,7 +210,7 @@ contingency_table <- function(data,
 
   if (!(type == "bayes" && test == "1way")) {
     stats_df %<>%
-      dplyr::mutate(
+      mutate(
         expression = list(expr_template(
           data = .,
           no.parameters = 1L,
