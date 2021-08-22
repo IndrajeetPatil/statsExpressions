@@ -26,7 +26,7 @@ Depends:
     R (>= 3.6.0)
 Imports:
     BayesFactor (>= 0.9.12-4.2),
-    correlation (>= 0.7.0),
+    correlation (>= 0.6.1),
     datawizard (>= 0.1.0.9000),
     dplyr,
     effectsize (>= 0.4.5),
