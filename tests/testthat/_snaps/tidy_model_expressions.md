@@ -1,9 +1,8 @@
 # tidy_model_expressions works
 
     Code
-      tidy_model_expressions(tidy_model_parameters(mod_t), statistic = "t")
-    Warning <simpleWarning>
-      the condition has length > 1 and only the first element will be used
+      suppressWarnings(tidy_model_expressions(tidy_model_parameters(mod_t),
+      statistic = "t"))
     Output
       # A tibble: 2 x 10
         term        estimate std.error conf.level conf.low conf.high statistic
@@ -22,9 +21,8 @@
 ---
 
     Code
-      tidy_model_expressions(tidy_model_parameters(mod_chi), statistic = "chi")
-    Warning <simpleWarning>
-      the condition has length > 1 and only the first element will be used
+      suppressWarnings(tidy_model_expressions(tidy_model_parameters(mod_chi),
+      statistic = "chi"))
     Output
       # A tibble: 2 x 10
         term  estimate std.error conf.level conf.low conf.high statistic df.error
@@ -43,7 +41,8 @@
 ---
 
     Code
-      tidy_model_expressions(tidy_model_parameters(mod_z), statistic = "z")
+      suppressWarnings(tidy_model_expressions(tidy_model_parameters(mod_z),
+      statistic = "z"))
     Output
       # A tibble: 3 x 10
         term        estimate std.error conf.level conf.low conf.high statistic
