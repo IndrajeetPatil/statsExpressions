@@ -1,7 +1,7 @@
 url: https://indrajeetpatil.github.io/statsExpressions/
 
-template:
-  package: preferably
+# template:
+#   package: preferably
 
 toc:
   depth: 3
