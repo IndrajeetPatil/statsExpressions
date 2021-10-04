@@ -4,12 +4,12 @@
       select(df1, -expression)
     Output
       # A tibble: 1 x 13
-           mu statistic df.error p.value method            alternative estimate
-        <dbl>     <dbl>    <dbl>   <dbl> <chr>             <chr>          <dbl>
-      1   120     -2.67       78 0.00910 One Sample t-test two.sided     -0.298
-        conf.level conf.low conf.high effectsize conf.method conf.distribution
-             <dbl>    <dbl>     <dbl> <chr>      <chr>       <chr>            
-      1       0.95   -0.524   -0.0743 Hedges' g  ncp         t                
+           mu statistic df.error p.value method            alternative effectsize
+        <dbl>     <dbl>    <dbl>   <dbl> <chr>             <chr>       <chr>     
+      1   120     -2.67       78 0.00910 One Sample t-test two.sided   Hedges' g 
+        estimate conf.level conf.low conf.high conf.method conf.distribution
+           <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>            
+      1   -0.298       0.95   -0.524   -0.0743 ncp         t                
 
 ---
 
@@ -27,12 +27,12 @@
       select(df2, -expression)
     Output
       # A tibble: 1 x 13
-           mu statistic df.error p.value method            alternative estimate
-        <dbl>     <dbl>    <dbl>   <dbl> <chr>             <chr>          <dbl>
-      1   120     -2.67       78 0.00910 One Sample t-test two.sided     -0.301
-        conf.level conf.low conf.high effectsize conf.method conf.distribution
-             <dbl>    <dbl>     <dbl> <chr>      <chr>       <chr>            
-      1        0.9   -0.492    -0.111 Cohen's d  ncp         t                
+           mu statistic df.error p.value method            alternative effectsize
+        <dbl>     <dbl>    <dbl>   <dbl> <chr>             <chr>       <chr>     
+      1   120     -2.67       78 0.00910 One Sample t-test two.sided   Cohen's d 
+        estimate conf.level conf.low conf.high conf.method conf.distribution
+           <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>            
+      1   -0.301        0.9   -0.492    -0.111 ncp         t                
 
 ---
 
@@ -50,12 +50,12 @@
       select(df1, -expression)
     Output
       # A tibble: 1 x 10
-        statistic p.value method                    alternative estimate conf.level
-            <dbl>   <dbl> <chr>                     <chr>          <dbl>      <dbl>
-      1      754.   0.323 Wilcoxon signed rank test two.sided     -0.149       0.95
-        conf.low conf.high effectsize        conf.method
-           <dbl>     <dbl> <chr>             <chr>      
-      1   -0.416     0.143 r (rank biserial) normal     
+        statistic p.value method                    alternative effectsize       
+            <dbl>   <dbl> <chr>                     <chr>       <chr>            
+      1      754.   0.323 Wilcoxon signed rank test two.sided   r (rank biserial)
+        estimate conf.level conf.low conf.high conf.method
+           <dbl>      <dbl>    <dbl>     <dbl> <chr>      
+      1   -0.149       0.95   -0.416     0.143 normal     
 
 ---
 
@@ -73,12 +73,12 @@
       select(df2, -expression)
     Output
       # A tibble: 1 x 10
-        statistic   p.value method                    alternative estimate conf.level
-            <dbl>     <dbl> <chr>                     <chr>          <dbl>      <dbl>
-      1       262 0.0000125 Wilcoxon signed rank test two.sided     -0.672       0.95
-        conf.low conf.high effectsize        conf.method
-           <dbl>     <dbl> <chr>             <chr>      
-      1   -0.806    -0.472 r (rank biserial) normal     
+        statistic   p.value method                    alternative effectsize       
+            <dbl>     <dbl> <chr>                     <chr>       <chr>            
+      1       262 0.0000125 Wilcoxon signed rank test two.sided   r (rank biserial)
+        estimate conf.level conf.low conf.high conf.method
+           <dbl>      <dbl>    <dbl>     <dbl> <chr>      
+      1   -0.672       0.95   -0.806    -0.472 normal     
 
 ---
 
@@ -96,12 +96,12 @@
       select(df1, -expression)
     Output
       # A tibble: 1 x 9
-        statistic p.value n.obs method                                 estimate
-            <dbl>   <dbl> <int> <chr>                                     <dbl>
-      1     0.787   0.455    11 Bootstrap-t method for one-sample test        9
-        conf.level conf.low conf.high effectsize  
-             <dbl>    <dbl>     <dbl> <chr>       
-      1        0.9     6.55      11.5 Trimmed mean
+        statistic p.value n.obs method                                 effectsize  
+            <dbl>   <dbl> <int> <chr>                                  <chr>       
+      1     0.787   0.455    11 Bootstrap-t method for one-sample test Trimmed mean
+        estimate conf.level conf.low conf.high
+           <dbl>      <dbl>    <dbl>     <dbl>
+      1        9        0.9     6.55      11.5
 
 ---
 
@@ -119,12 +119,12 @@
       select(df2, -expression)
     Output
       # A tibble: 1 x 9
-        statistic p.value n.obs method                                 estimate
-            <dbl>   <dbl> <int> <chr>                                     <dbl>
-      1     -3.81    0.04    56 Bootstrap-t method for one-sample test   0.0390
-        conf.level conf.low conf.high effectsize  
-             <dbl>    <dbl>     <dbl> <chr>       
-      1       0.99  -0.0669     0.145 Trimmed mean
+        statistic p.value n.obs method                                 effectsize  
+            <dbl>   <dbl> <int> <chr>                                  <chr>       
+      1     -3.81    0.04    56 Bootstrap-t method for one-sample test Trimmed mean
+        estimate conf.level conf.low conf.high
+           <dbl>      <dbl>    <dbl>     <dbl>
+      1   0.0390       0.99  -0.0669     0.145
 
 ---
 

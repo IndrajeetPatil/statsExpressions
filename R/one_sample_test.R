@@ -160,7 +160,7 @@ one_sample_test <- function(data,
   # expression ---------------------------------------
 
   # return the output
-  as_tibble(stats_df) %>%
+  polish_data(stats_df) %>%
     mutate(expression = list(expr_template(
       data = .,
       no.parameters = no.parameters,

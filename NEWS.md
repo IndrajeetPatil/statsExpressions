@@ -1,5 +1,15 @@
 # statsExpressions 1.2.0
 
+BREAKING CHANGES
+
+  - A number of effect size estimates and their confidence intervals have
+    changed due to respective changes made in `{effectsize}` package version
+    `0.5` release. For full details of these changes, see:
+    <https://easystats.github.io/effectsize/news/index.html>
+
+  - For the same reason, the effect size for one-way contingency table has
+    changed from Cramer's *V* to Pearson's *C*.
+
 NEW FUNCTIONS
 
   - `centrality_description()` function added to describe distribution for each

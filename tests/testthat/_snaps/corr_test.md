@@ -4,12 +4,12 @@
       select(df1, -expression)
     Output
       # A tibble: 1 x 11
-        parameter1 parameter2 estimate conf.level conf.low conf.high statistic
-        <chr>      <chr>         <dbl>      <dbl>    <dbl>     <dbl>     <dbl>
-      1 rating     length        0.495      0.999    0.153     0.731    41453.
-           p.value method               n.obs effectsize          
-             <dbl> <chr>                <int> <chr>               
-      1 0.00000344 Spearman correlation    79 Spearman correlation
+        parameter1 parameter2 effectsize           estimate conf.level conf.low
+        <chr>      <chr>      <chr>                   <dbl>      <dbl>    <dbl>
+      1 rating     length     Spearman correlation    0.495      0.999    0.153
+        conf.high statistic    p.value method               n.obs
+            <dbl>     <dbl>      <dbl> <chr>                <int>
+      1     0.731    41453. 0.00000344 Spearman correlation    79
 
 ---
 
@@ -27,12 +27,12 @@
       select(df2, -expression)
     Output
       # A tibble: 1 x 11
-        parameter1 parameter2 estimate conf.level conf.low conf.high statistic
-        <chr>      <chr>         <dbl>      <dbl>    <dbl>     <dbl>     <dbl>
-      1 wt         mpg          -0.886       0.95   -0.945    -0.774    10292.
-         p.value method               n.obs effectsize          
-           <dbl> <chr>                <int> <chr>               
-      1 1.49e-11 Spearman correlation    32 Spearman correlation
+        parameter1 parameter2 effectsize           estimate conf.level conf.low
+        <chr>      <chr>      <chr>                   <dbl>      <dbl>    <dbl>
+      1 wt         mpg        Spearman correlation   -0.886       0.95   -0.945
+        conf.high statistic  p.value method               n.obs
+            <dbl>     <dbl>    <dbl> <chr>                <int>
+      1    -0.774    10292. 1.49e-11 Spearman correlation    32
 
 ---
 
@@ -50,12 +50,12 @@
       select(df, -expression)
     Output
       # A tibble: 1 x 12
-        parameter1 parameter2 estimate conf.level conf.low conf.high statistic
-        <chr>      <chr>         <dbl>      <dbl>    <dbl>     <dbl>     <dbl>
-      1 brainwt    sleep_rem    -0.221        0.9   -0.438    0.0201     -1.54
-        df.error p.value method              n.obs effectsize         
-           <int>   <dbl> <chr>               <int> <chr>              
-      1       46   0.131 Pearson correlation    48 Pearson correlation
+        parameter1 parameter2 effectsize          estimate conf.level conf.low
+        <chr>      <chr>      <chr>                  <dbl>      <dbl>    <dbl>
+      1 brainwt    sleep_rem  Pearson correlation   -0.221        0.9   -0.438
+        conf.high statistic df.error p.value method              n.obs
+            <dbl>     <dbl>    <int>   <dbl> <chr>               <int>
+      1    0.0201     -1.54       46   0.131 Pearson correlation    48
 
 ---
 
@@ -73,15 +73,15 @@
       select(df, -expression)
     Output
       # A tibble: 1 x 12
-        parameter1 parameter2  estimate conf.level conf.low conf.high statistic
-        <chr>      <chr>          <dbl>      <dbl>    <dbl>     <dbl>     <dbl>
-      1 brainwt    sleep_total   -0.549        0.5   -0.611    -0.481     -4.83
-        df.error   p.value method                         n.obs
-           <int>     <dbl> <chr>                          <int>
-      1       54 0.0000117 Winsorized Pearson correlation    56
-        effectsize                    
-        <chr>                         
-      1 Winsorized Pearson correlation
+        parameter1 parameter2  effectsize                     estimate conf.level
+        <chr>      <chr>       <chr>                             <dbl>      <dbl>
+      1 brainwt    sleep_total Winsorized Pearson correlation   -0.549        0.5
+        conf.low conf.high statistic df.error   p.value method                        
+           <dbl>     <dbl>     <dbl>    <int>     <dbl> <chr>                         
+      1   -0.611    -0.481     -4.83       54 0.0000117 Winsorized Pearson correlation
+        n.obs
+        <int>
+      1    56
 
 ---
 

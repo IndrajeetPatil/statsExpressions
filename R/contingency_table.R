@@ -125,13 +125,15 @@ contingency_table <- function(data,
   # non-Bayesian ---------------------------------------
 
   if (type != "bayes") {
-    # default functions for analysis (only change for McNemar's test)
-    c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::cramers_v)
-    if (test == "2way" && paired) c(.f, .f.es) %<-% c(stats::mcnemar.test, effectsize::cohens_g)
-
-    # argument lists for tests
+    # one-way table
+    if (test == "1way") c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::pearsons_c)
     if (test == "1way") .f.args <- list(x = table(x_vec), p = ratio, correct = FALSE)
+
+    # two-way table
     if (test == "2way") .f.args <- list(x = table(data), correct = FALSE)
+    if (test == "2way" && paired) c(.f, .f.es) %<-% c(stats::mcnemar.test, effectsize::cohens_g)
+    if (test == "2way" && !paired) c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::cramers_v)
+
 
     # Pearson's or McNemar's test
 

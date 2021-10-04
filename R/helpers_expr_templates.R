@@ -285,6 +285,7 @@ estimate_type_switch <- function(x) {
 
   # need to list because `case_when` can't handle outputs of different lengths
   case_when(
+    grepl("pearson's c", x) ~ list(quote(widehat(italic("C"))["Pearson"])),
     grepl("^pearson", x) ~ list(quote(widehat(italic("r"))["Pearson"])),
     grepl("spearman", x) ~ list(quote(widehat(rho)["Spearman"])),
     grepl("^winsor", x) ~ list(quote(widehat(italic("r"))["Winsorized"])),

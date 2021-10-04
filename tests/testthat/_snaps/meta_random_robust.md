@@ -4,15 +4,12 @@
       select(df, -expression)
     Output
       # A tibble: 1 x 11
-        term    estimate std.error conf.low conf.high statistic p.value weight
-        <chr>      <dbl>     <dbl>    <dbl>     <dbl>     <dbl>   <dbl>  <dbl>
-      1 Overall   -0.693     0.368    -1.56    -0.118     -1.88  0.0230     NA
-        conf.level method                               
-             <dbl> <chr>                                
-      1       0.95 Robust meta-analysis using 'metaplus'
-        effectsize                    
-        <chr>                         
-      1 meta-analytic summary estimate
+        term    effectsize                     estimate std.error conf.low conf.high
+        <chr>   <chr>                             <dbl>     <dbl>    <dbl>     <dbl>
+      1 Overall meta-analytic summary estimate   -0.693     0.368    -1.56    -0.118
+        statistic p.value weight conf.level method                               
+            <dbl>   <dbl>  <dbl>      <dbl> <chr>                                
+      1     -1.88  0.0230     NA       0.95 Robust meta-analysis using 'metaplus'
 
 ---
 

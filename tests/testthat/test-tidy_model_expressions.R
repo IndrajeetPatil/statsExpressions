@@ -9,10 +9,10 @@ test_that("tidy_model_expressions works", {
   mod_t <- lm(wt ~ mpg, data = mtcars)
 
   set.seed(123)
-  expect_snapshot(tidy_model_expressions(
+  expect_snapshot(suppressWarnings(tidy_model_expressions(
     tidy_model_parameters(mod_t),
     statistic = "t"
-  ))
+  )))
 
   ## chi2-statistic --------------------------------
 
@@ -26,10 +26,10 @@ test_that("tidy_model_expressions works", {
   )
 
   set.seed(123)
-  expect_snapshot(tidy_model_expressions(
+  expect_snapshot(suppressWarnings(tidy_model_expressions(
     tidy_model_parameters(mod_chi),
     statistic = "chi"
-  ))
+  )))
 
   ## z-statistic --------------------------------
 
@@ -45,8 +45,8 @@ test_that("tidy_model_expressions works", {
   )
 
   set.seed(123)
-  expect_snapshot(tidy_model_expressions(
+  expect_snapshot(suppressWarnings(tidy_model_expressions(
     tidy_model_parameters(mod_z),
     statistic = "z"
-  ))
+  )))
 })

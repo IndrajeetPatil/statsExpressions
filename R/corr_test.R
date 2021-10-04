@@ -75,7 +75,7 @@ corr_test <- function(data,
   if (type == "bayes") stats_df %<>% rename("bf10" = "bayes.factor")
 
   # preparing expression
-  as_tibble(stats_df) %>%
+  polish_data(stats_df) %>%
     mutate(expression = list(expr_template(
       data = .,
       no.parameters = ifelse(type %in% c("parametric", "robust"), 1L, 0L),

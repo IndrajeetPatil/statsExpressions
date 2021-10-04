@@ -208,7 +208,7 @@ Bayesian | Bayesian Goodness of fit $\chi^2$ test | (custom)
 
 Type | Effect size | CI? | Function used
 ----------- | ------------------------- | --- | -----
-Parametric/Non-parametric | Cramer's $V$ | ✅ | `bayestestR::describe_posterior`
+Parametric/Non-parametric | Pearson's $C$ | ✅ | `effectsize::pearsons_c`
 Bayesian | ❌ | ❌ | ❌
 
 ## `meta_analysis`

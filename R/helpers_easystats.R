@@ -58,3 +58,13 @@ tidy_model_effectsize <- function(data, ...) {
     rename_with(as_tibble(data %@% "ci_method"), ~ paste0("conf.", .x))
   )
 }
+
+
+#' Final polishing before data is returned
+#' first have inferential statistics details and then estimation
+#' @noRd
+
+polish_data <- function(data) {
+  as_tibble(data) %>%
+    relocate(matches("^effectsize$"), .before = matches("^estimate$"))
+}

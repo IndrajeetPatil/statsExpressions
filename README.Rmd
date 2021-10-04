@@ -363,7 +363,7 @@ ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1
     y = NULL,
     title = "Pie Chart of class (type of car)",
     subtitle = contingency_table(as.data.frame(table(mpg$class)), Var1, counts = Freq)$expression[[1]],
-    caption = "One-sample goodness of fit proportion test"
+    caption = "One-sample goodness-of-fit test"
   )
 ```
 
@@ -572,7 +572,7 @@ Bayesian | Bayesian Goodness of fit $\chi^2$ test | (custom)
 
 Type | Effect size | CI? | Function used
 ----------- | ------------------------- | --- | -----
-Parametric/Non-parametric | Cramer's $V$ | ✅ | `bayestestR::describe_posterior`
+Parametric/Non-parametric | Pearson's $C$ | ✅ | `effectsize::pearsons_c`
 Bayesian | ❌ | ❌ | ❌
 
 ## `meta_analysis`

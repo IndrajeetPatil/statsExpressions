@@ -1,8 +1,8 @@
 ## Test environments
 
-* local OS X install, R 4.1.0
+* local OS X install, R 4.1.1
 
-* ubuntu 14.04 (on github actions ci), R 4.1.0
+* ubuntu 18.04 (on github actions ci), R 4.1.1
 
 * win-builder (devel and release)
 
@@ -10,7 +10,7 @@
 
 0 errors | 0 warnings | 0 note
 
-  - Major internal refactoring to get rid of `ipmisc` dependency.
+  - Fixes failing tests due to `{effectsize}` package update.
 
 ## revdepcheck results
 

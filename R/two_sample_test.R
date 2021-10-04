@@ -217,14 +217,14 @@ two_sample_test <- function(data,
     if (paired) .f.args <- list(x = data[[2]], y = data[[3]], paired = paired)
 
     # creating a `BayesFactor` object
-    stats_df <- exec(BayesFactor::ttestBF, data = data, rscale = bf.prior, !!!.f.args) %>%
+    stats_df <- exec(BayesFactor::ttestBF, data = as.data.frame(data), rscale = bf.prior, !!!.f.args) %>%
       tidy_model_parameters(ci = conf.level)
   }
 
   # expression ---------------------------------------
 
   # return the output
-  as_tibble(stats_df) %>%
+  polish_data(stats_df) %>%
     mutate(expression = list(expr_template(
       no.parameters = no.parameters,
       data = .,
