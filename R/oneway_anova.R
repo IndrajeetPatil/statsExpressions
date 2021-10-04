@@ -311,7 +311,7 @@ oneway_anova <- function(data,
 
   # expression ---------------------------------------
 
-  as_tibble(stats_df) %>%
+  polish_data(stats_df) %>%
     mutate(expression = list(expr_template(
       data = .,
       no.parameters = no.parameters,

@@ -126,24 +126,27 @@ mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
 #>   parameter1 parameter2 statistic df.error   p.value
 #>   <chr>      <chr>          <dbl>    <int>     <dbl>
 #> 1 wt         cyl             22.8        2 0.0000112
-#>   method                       estimate conf.level conf.low conf.high
-#>   <chr>                           <dbl>      <dbl>    <dbl>     <dbl>
-#> 1 Kruskal-Wallis rank sum test    0.736       0.95    0.636         1
-#>   effectsize      conf.method          conf.iterations expression
-#>   <chr>           <chr>                          <int> <list>    
-#> 1 Epsilon2 (rank) percentile bootstrap             100 <language>
+#>   method                       effectsize      estimate conf.level conf.low
+#>   <chr>                        <chr>              <dbl>      <dbl>    <dbl>
+#> 1 Kruskal-Wallis rank sum test Epsilon2 (rank)    0.736       0.95    0.620
+#>   conf.high conf.method          conf.iterations expression
+#>       <dbl> <chr>                          <int> <list>    
+#> 1         1 percentile bootstrap             100 <language>
 
 mtcars %>% oneway_anova(cyl, wt, type = "robust")
 #> # A tibble: 1 x 11
 #>   statistic    df df.error p.value
 #>       <dbl> <dbl>    <dbl>   <dbl>
 #> 1      12.7     2     12.2 0.00102
-#>   method                                            estimate conf.level conf.low
-#>   <chr>                                                <dbl>      <dbl>    <dbl>
-#> 1 A heteroscedastic one-way ANOVA for trimmed means     1.02       0.95    0.827
-#>   conf.high effectsize                         expression
-#>       <dbl> <chr>                              <list>    
-#> 1      1.46 Explanatory measure of effect size <language>
+#>   method                                           
+#>   <chr>                                            
+#> 1 A heteroscedastic one-way ANOVA for trimmed means
+#>   effectsize                         estimate conf.level conf.low conf.high
+#>   <chr>                                 <dbl>      <dbl>    <dbl>     <dbl>
+#> 1 Explanatory measure of effect size     1.01       0.95    0.838      1.31
+#>   expression
+#>   <list>    
+#> 1 <language>
 ```
 
 All possible output dataframes from functions are tabulated here:
@@ -165,9 +168,9 @@ mtcars %>%
   knitr::kable()
 ```
 
-| statistic | p.value | n.obs | method                                 | estimate | conf.level | conf.low | conf.high | effectsize   |
-|----------:|--------:|------:|:---------------------------------------|---------:|-----------:|---------:|----------:|:-------------|
-|  1.179181 |   0.275 |    32 | Bootstrap-t method for one-sample test |    3.197 |       0.95 | 2.854246 |  3.539754 | Trimmed mean |
+| statistic | p.value | n.obs | method                                 | effectsize   | estimate | conf.level | conf.low | conf.high |
+|----------:|--------:|------:|:---------------------------------------|:-------------|---------:|-----------:|---------:|----------:|
+|  1.179181 |   0.275 |    32 | Bootstrap-t method for one-sample test | Trimmed mean |    3.197 |       0.95 | 2.854246 |  3.539754 |
 
 These functions are also compatible with other popular data manipulation
 packages.
@@ -187,21 +190,21 @@ mtcars %>%
   group_modify(~ one_sample_test(.x, wt, test.value = 3), .keep = TRUE) %>%
   ungroup()
 #> # A tibble: 3 x 15
-#>     cyl    mu statistic df.error  p.value method            alternative estimate
-#>   <dbl> <dbl>     <dbl>    <dbl>    <dbl> <chr>             <chr>          <dbl>
-#> 1     4     3    -4.16        10 0.00195  One Sample t-test two.sided     -1.16 
-#> 2     6     3     0.870        6 0.418    One Sample t-test two.sided      0.286
-#> 3     8     3     4.92        13 0.000278 One Sample t-test two.sided      1.24 
-#>   conf.level conf.low conf.high effectsize conf.method conf.distribution
-#>        <dbl>    <dbl>     <dbl> <chr>      <chr>       <chr>            
-#> 1       0.95   -1.97     -0.422 Hedges' g  ncp         t                
-#> 2       0.95   -0.419     1.01  Hedges' g  ncp         t                
-#> 3       0.95    0.565     1.98  Hedges' g  ncp         t                
-#>   expression
-#>   <list>    
-#> 1 <language>
-#> 2 <language>
-#> 3 <language>
+#>     cyl    mu statistic df.error  p.value method            alternative
+#>   <dbl> <dbl>     <dbl>    <dbl>    <dbl> <chr>             <chr>      
+#> 1     4     3    -4.16        10 0.00195  One Sample t-test two.sided  
+#> 2     6     3     0.870        6 0.418    One Sample t-test two.sided  
+#> 3     8     3     4.92        13 0.000278 One Sample t-test two.sided  
+#>   effectsize estimate conf.level conf.low conf.high conf.method
+#>   <chr>         <dbl>      <dbl>    <dbl>     <dbl> <chr>      
+#> 1 Hedges' g    -1.16        0.95   -1.97     -0.422 ncp        
+#> 2 Hedges' g     0.286       0.95   -0.419     1.01  ncp        
+#> 3 Hedges' g     1.24        0.95    0.565     1.98  ncp        
+#>   conf.distribution expression
+#>   <chr>             <list>    
+#> 1 t                 <language>
+#> 2 t                 <language>
+#> 3 t                 <language>
 ```
 
 # Using expressions in custom plots

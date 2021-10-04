@@ -7,15 +7,12 @@
         statistic df.error p.value method                                            
             <dbl>    <dbl>   <dbl> <chr>                                             
       1      28.7       89       0 Yuen's test on trimmed means for dependent samples
-        estimate conf.level conf.low conf.high
-           <dbl>      <dbl>    <dbl>     <dbl>
-      1     2.36       0.95     1.96      2.61
-        effectsize                                                 mu small medium
-        <chr>                                                   <dbl> <dbl>  <dbl>
-      1 Algina-Keselman-Penfield robust standardized difference     0   0.1    0.3
-        large
-        <dbl>
-      1   0.5
+        effectsize                                              estimate conf.level
+        <chr>                                                      <dbl>      <dbl>
+      1 Algina-Keselman-Penfield robust standardized difference     2.36       0.95
+        conf.low conf.high    mu small medium large
+           <dbl>     <dbl> <dbl> <dbl>  <dbl> <dbl>
+      1     1.96      2.61     0   0.1    0.3   0.5
 
 ---
 
@@ -36,15 +33,12 @@
         statistic df.error p.value method                                            
             <dbl>    <dbl>   <dbl> <chr>                                             
       1      2.91       53 0.00528 Yuen's test on trimmed means for dependent samples
-        estimate conf.level conf.low conf.high
-           <dbl>      <dbl>    <dbl>     <dbl>
-      1    0.410       0.95    0.238     0.611
-        effectsize                                                 mu small medium
-        <chr>                                                   <dbl> <dbl>  <dbl>
-      1 Algina-Keselman-Penfield robust standardized difference     0   0.1    0.3
-        large
-        <dbl>
-      1   0.5
+        effectsize                                              estimate conf.level
+        <chr>                                                      <dbl>      <dbl>
+      1 Algina-Keselman-Penfield robust standardized difference    0.410       0.95
+        conf.low conf.high    mu small medium large
+           <dbl>     <dbl> <dbl> <dbl>  <dbl> <dbl>
+      1    0.238     0.611     0   0.1    0.3   0.5
 
 ---
 
@@ -65,12 +59,15 @@
         statistic df.error   p.value
             <dbl>    <dbl>     <dbl>
       1      5.84     13.6 0.0000485
-        method                                               estimate conf.level
-        <chr>                                                   <dbl>      <dbl>
-      1 Yuen's test on trimmed means for independent samples     2.48       0.99
-        conf.low conf.high effectsize                                             
-           <dbl>     <dbl> <chr>                                                  
-      1    0.738      5.13 Algina-Keselman-Penfield robust standardized difference
+        method                                              
+        <chr>                                               
+      1 Yuen's test on trimmed means for independent samples
+        effectsize                                              estimate conf.level
+        <chr>                                                      <dbl>      <dbl>
+      1 Algina-Keselman-Penfield robust standardized difference     2.48       0.99
+        conf.low conf.high
+           <dbl>     <dbl>
+      1    0.738      5.13
 
 ---
 
@@ -91,12 +88,15 @@
         statistic df.error p.value
             <dbl>    <dbl>   <dbl>
       1     0.452     13.8   0.658
-        method                                               estimate conf.level
-        <chr>                                                   <dbl>      <dbl>
-      1 Yuen's test on trimmed means for independent samples   -0.358        0.9
-        conf.low conf.high effectsize                                             
-           <dbl>     <dbl> <chr>                                                  
-      1    -7.16     0.406 Algina-Keselman-Penfield robust standardized difference
+        method                                              
+        <chr>                                               
+      1 Yuen's test on trimmed means for independent samples
+        effectsize                                              estimate conf.level
+        <chr>                                                      <dbl>      <dbl>
+      1 Algina-Keselman-Penfield robust standardized difference   -0.358        0.9
+        conf.low conf.high
+           <dbl>     <dbl>
+      1    -7.16     0.406
 
 ---
 

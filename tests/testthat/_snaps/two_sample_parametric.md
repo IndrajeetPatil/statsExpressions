@@ -7,12 +7,12 @@
         term  group mean.group1 mean.group2 statistic df.error p.value
         <chr> <chr>       <dbl>       <dbl>     <dbl>    <dbl>   <dbl>
       1 len   supp         20.7        17.0      1.92       58  0.0604
-        method            alternative estimate conf.level conf.low conf.high
-        <chr>             <chr>          <dbl>      <dbl>    <dbl>     <dbl>
-      1 Two Sample t-test two.sided      0.495       0.99   -0.184      1.17
-        effectsize conf.method conf.distribution
-        <chr>      <chr>       <chr>            
-      1 Cohen's d  ncp         t                
+        method            alternative effectsize estimate conf.level conf.low
+        <chr>             <chr>       <chr>         <dbl>      <dbl>    <dbl>
+      1 Two Sample t-test two.sided   Cohen's d     0.495       0.99   -0.184
+        conf.high conf.method conf.distribution
+            <dbl> <chr>       <chr>            
+      1      1.17 ncp         t                
 
 ---
 
@@ -33,12 +33,12 @@
         term  group mean.group1 mean.group2 statistic df.error p.value
         <chr> <chr>       <dbl>       <dbl>     <dbl>    <dbl>   <dbl>
       1 len   supp         20.7        17.0      1.92     55.3  0.0606
-        method                  alternative estimate conf.level conf.low conf.high
-        <chr>                   <chr>          <dbl>      <dbl>    <dbl>     <dbl>
-      1 Welch Two Sample t-test two.sided      0.488        0.9   0.0599     0.911
-        effectsize conf.method conf.distribution
-        <chr>      <chr>       <chr>            
-      1 Hedges' g  ncp         t                
+        method                  alternative effectsize estimate conf.level conf.low
+        <chr>                   <chr>       <chr>         <dbl>      <dbl>    <dbl>
+      1 Welch Two Sample t-test two.sided   Hedges' g     0.488        0.9   0.0599
+        conf.high conf.method conf.distribution
+            <dbl> <chr>       <chr>            
+      1     0.911 ncp         t                
 
 ---
 
@@ -56,12 +56,15 @@
       select(df1, -expression)
     Output
       # A tibble: 1 x 14
-        term  group     statistic df.error  p.value method        alternative estimate
-        <chr> <chr>         <dbl>    <dbl>    <dbl> <chr>         <chr>          <dbl>
-      1 value condition      34.8      149 1.85e-73 Paired t-test two.sided       2.83
-        conf.level conf.low conf.high effectsize conf.method conf.distribution
-             <dbl>    <dbl>     <dbl> <chr>      <chr>       <chr>            
-      1        0.5     2.71      2.96 Hedges' g  ncp         t                
+        term  group     statistic df.error  p.value method        alternative
+        <chr> <chr>         <dbl>    <dbl>    <dbl> <chr>         <chr>      
+      1 value condition      34.8      149 1.85e-73 Paired t-test two.sided  
+        effectsize estimate conf.level conf.low conf.high conf.method
+        <chr>         <dbl>      <dbl>    <dbl>     <dbl> <chr>      
+      1 Hedges' g      2.83        0.5     2.71      2.96 ncp        
+        conf.distribution
+        <chr>            
+      1 t                
 
 ---
 
@@ -82,9 +85,9 @@
         term   group     statistic df.error  p.value method        alternative
         <chr>  <chr>         <dbl>    <dbl>    <dbl> <chr>         <chr>      
       1 desire condition      3.61       89 0.000500 Paired t-test two.sided  
-        estimate conf.level conf.low conf.high effectsize conf.method
-           <dbl>      <dbl>    <dbl>     <dbl> <chr>      <chr>      
-      1    0.381       0.95    0.167     0.597 Cohen's d  ncp        
+        effectsize estimate conf.level conf.low conf.high conf.method
+        <chr>         <dbl>      <dbl>    <dbl>     <dbl> <chr>      
+      1 Cohen's d     0.381       0.95    0.167     0.597 ncp        
         conf.distribution
         <chr>            
       1 t                

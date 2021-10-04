@@ -7,12 +7,12 @@
         parameter1 parameter2 statistic df.error      p.value
         <chr>      <chr>          <dbl>    <int>        <dbl>
       1 length     genre           51.4        8 0.0000000217
-        method                       estimate conf.level conf.low conf.high
-        <chr>                           <dbl>      <dbl>    <dbl>     <dbl>
-      1 Kruskal-Wallis rank sum test    0.328       0.95    0.258         1
-        effectsize      conf.method          conf.iterations
-        <chr>           <chr>                          <int>
-      1 Epsilon2 (rank) percentile bootstrap             100
+        method                       effectsize      estimate conf.level conf.low
+        <chr>                        <chr>              <dbl>      <dbl>    <dbl>
+      1 Kruskal-Wallis rank sum test Epsilon2 (rank)    0.328       0.95    0.258
+        conf.high conf.method          conf.iterations
+            <dbl> <chr>                          <int>
+      1         1 percentile bootstrap             100
 
 ---
 
@@ -33,9 +33,9 @@
         parameter1  parameter2 statistic df.error p.value method                      
         <chr>       <chr>          <dbl>    <int>   <dbl> <chr>                       
       1 sleep_cycle vore            5.24        3   0.155 Kruskal-Wallis rank sum test
-        estimate conf.level conf.low conf.high effectsize      conf.method         
-           <dbl>      <dbl>    <dbl>     <dbl> <chr>           <chr>               
-      1    0.175       0.99   0.0445         1 Epsilon2 (rank) percentile bootstrap
+        effectsize      estimate conf.level conf.low conf.high conf.method         
+        <chr>              <dbl>      <dbl>    <dbl>     <dbl> <chr>               
+      1 Epsilon2 (rank)    0.175       0.99   0.0445         1 percentile bootstrap
         conf.iterations
                   <int>
       1             100
