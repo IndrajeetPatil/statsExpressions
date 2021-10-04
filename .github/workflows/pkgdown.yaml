@@ -26,6 +26,11 @@ jobs:
           extra-packages: pkgdown
           needs: website
 
+      - name: Install dependencies
+        run: |
+          remotes::install_github("amirmasoudabdol/preferably", type = "source")
+        shell: Rscript {0}
+
       - name: Deploy package
         run: |
           git config --local user.name "$GITHUB_ACTOR"
