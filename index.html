@@ -5,32 +5,15 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Inform modern browsers that this page supports both dark and light color schemes,
-  and the page author prefers light. --><meta name="color-scheme" content="dark light">
-<script>
-  // If `prefers-color-scheme` is not supported, fall back to light mode.
-  // i.e. In this case, inject the `light` CSS before the others, with
-  // no media filter so that it will be downloaded with highest priority.
-  if (window.matchMedia("(prefers-color-scheme: dark)").media === "not all") {
-    document.documentElement.style.display = "none";
-    document.head.insertAdjacentHTML(
-      "beforeend",
-      "<link id=\"css\" rel=\"stylesheet\" href=\"https://bootswatch.com/3/flatly/bootstrap.css\" onload=\"document.documentElement.style.display = ''\">"
-    );
-  }
-</script><title>Tidy Dataframes and Expressions with Statistical Details • statsExpressions</title>
+<title>Tidy Dataframes and Expressions with Statistical Details • statsExpressions</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- Flatly Theme - Light  --><link id="css-light" rel="stylesheet" href="https://bootswatch.com/3/flatly/bootstrap.css" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)">
-<!-- Darkly Theme - Dark --><link id="css-dark" rel="stylesheet" href="https://bootswatch.com/3/darkly/bootstrap.css" media="(prefers-color-scheme: dark)">
-<!-- preferably CSS --><link rel="stylesheet" href="preferably.css">
-<link id="css-code-light" rel="stylesheet" href="code-color-scheme-light.css" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)">
-<link id="css-code-dark" rel="stylesheet" href="code-color-scheme-dark.css" media="(prefers-color-scheme: dark)">
-<!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
@@ -105,10 +88,6 @@
      
   </a>
 </li>
-        
-        
-
-
       </ul>
 </div>
 <!--/.nav-collapse -->
@@ -207,7 +186,7 @@
 <tr class="even">
 <td>Development</td>
 <td>GitHub</td>
-<td><code><a href="https://remotes.r-lib.org/reference/install_github.html">remotes::install_github("IndrajeetPatil/statsExpressions")</a></code></td>
+<td><code>remotes::install_github("IndrajeetPatil/statsExpressions")</code></td>
 </tr>
 </tbody>
 </table>
@@ -390,27 +369,31 @@
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
 
 <span class="va">mtcars</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span> 
-<span class="co">#&gt; # A tibble: 1 × 14</span>
+<span class="co">#&gt; # A tibble: 1 x 14</span>
 <span class="co">#&gt;   parameter1 parameter2 statistic df.error   p.value</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 wt         cyl             22.8        2 0.0000112</span>
-<span class="co">#&gt;   method                       estimate conf.level conf.low conf.high</span>
-<span class="co">#&gt;   &lt;chr&gt;                           &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Kruskal-Wallis rank sum test    0.736       0.95    0.642     0.847</span>
-<span class="co">#&gt;   effectsize      conf.method          conf.iterations expression</span>
-<span class="co">#&gt;   &lt;chr&gt;           &lt;chr&gt;                          &lt;int&gt; &lt;list&gt;    </span>
-<span class="co">#&gt; 1 Epsilon2 (rank) percentile bootstrap             100 &lt;language&gt;</span>
+<span class="co">#&gt;   method                       effectsize      estimate conf.level conf.low</span>
+<span class="co">#&gt;   &lt;chr&gt;                        &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Kruskal-Wallis rank sum test Epsilon2 (rank)    0.736       0.95    0.620</span>
+<span class="co">#&gt;   conf.high conf.method          conf.iterations expression</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;                          &lt;int&gt; &lt;list&gt;    </span>
+<span class="co">#&gt; 1         1 percentile bootstrap             100 &lt;language&gt;</span>
+
 <span class="va">mtcars</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 × 11</span>
+<span class="co">#&gt; # A tibble: 1 x 11</span>
 <span class="co">#&gt;   statistic    df df.error p.value</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span>
 <span class="co">#&gt; 1      12.7     2     12.2 0.00102</span>
-<span class="co">#&gt;   method                                            estimate conf.level conf.low</span>
-<span class="co">#&gt;   &lt;chr&gt;                                                &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 A heteroscedastic one-way ANOVA for trimmed means     1.06       0.95    0.784</span>
-<span class="co">#&gt;   conf.high effectsize                         expression</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;                              &lt;list&gt;    </span>
-<span class="co">#&gt; 1      1.50 Explanatory measure of effect size &lt;language&gt;</span></code></pre></div>
+<span class="co">#&gt;   method                                           </span>
+<span class="co">#&gt;   &lt;chr&gt;                                            </span>
+<span class="co">#&gt; 1 A heteroscedastic one-way ANOVA for trimmed means</span>
+<span class="co">#&gt;   effectsize                         estimate conf.level conf.low conf.high</span>
+<span class="co">#&gt;   &lt;chr&gt;                                 &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Explanatory measure of effect size     1.01       0.95    0.838      1.31</span>
+<span class="co">#&gt;   expression</span>
+<span class="co">#&gt;   &lt;list&gt;    </span>
+<span class="co">#&gt; 1 &lt;language&gt;</span></code></pre></div>
 <p>All possible output dataframes from functions are tabulated here: <a href="https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html</a></p>
 <p>Needless to say this will also work with the <code>kable</code> function to generate a table:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -430,33 +413,33 @@
 <col width="7%">
 <col width="5%">
 <col width="32%">
+<col width="11%">
 <col width="8%">
 <col width="9%">
 <col width="8%">
 <col width="8%">
-<col width="11%">
 </colgroup>
 <thead><tr class="header">
 <th align="right">statistic</th>
 <th align="right">p.value</th>
 <th align="right">n.obs</th>
 <th align="left">method</th>
+<th align="left">effectsize</th>
 <th align="right">estimate</th>
 <th align="right">conf.level</th>
 <th align="right">conf.low</th>
 <th align="right">conf.high</th>
-<th align="left">effectsize</th>
 </tr></thead>
 <tbody><tr class="odd">
 <td align="right">1.179181</td>
 <td align="right">0.275</td>
 <td align="right">32</td>
 <td align="left">Bootstrap-t method for one-sample test</td>
+<td align="left">Trimmed mean</td>
 <td align="right">3.197</td>
 <td align="right">0.95</td>
 <td align="right">2.854246</td>
 <td align="right">3.539754</td>
-<td align="left">Trimmed mean</td>
 </tr></tbody>
 </table>
 <p>These functions are also compatible with other popular data manipulation packages.</p>
@@ -472,22 +455,22 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_map.html">group_modify</a></span><span class="op">(</span><span class="op">~</span> <span class="fu"><a href="reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span><span class="va">.x</span>, <span class="va">wt</span>, test.value <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>, .keep <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 3 × 15</span>
-<span class="co">#&gt;     cyl    mu statistic df.error  p.value method            alternative estimate</span>
-<span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;          &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     4     3    -4.16        10 0.00195  One Sample t-test two.sided     -1.16 </span>
-<span class="co">#&gt; 2     6     3     0.870        6 0.418    One Sample t-test two.sided      0.286</span>
-<span class="co">#&gt; 3     8     3     4.92        13 0.000278 One Sample t-test two.sided      1.24 </span>
-<span class="co">#&gt;   conf.level conf.low conf.high effectsize conf.method conf.distribution</span>
-<span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;            </span>
-<span class="co">#&gt; 1       0.95   -1.97     -0.422 Hedges' g  ncp         t                </span>
-<span class="co">#&gt; 2       0.95   -0.419     1.01  Hedges' g  ncp         t                </span>
-<span class="co">#&gt; 3       0.95    0.565     1.98  Hedges' g  ncp         t                </span>
-<span class="co">#&gt;   expression</span>
-<span class="co">#&gt;   &lt;list&gt;    </span>
-<span class="co">#&gt; 1 &lt;language&gt;</span>
-<span class="co">#&gt; 2 &lt;language&gt;</span>
-<span class="co">#&gt; 3 &lt;language&gt;</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 3 x 15</span>
+<span class="co">#&gt;     cyl    mu statistic df.error  p.value method            alternative</span>
+<span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;      </span>
+<span class="co">#&gt; 1     4     3    -4.16        10 0.00195  One Sample t-test two.sided  </span>
+<span class="co">#&gt; 2     6     3     0.870        6 0.418    One Sample t-test two.sided  </span>
+<span class="co">#&gt; 3     8     3     4.92        13 0.000278 One Sample t-test two.sided  </span>
+<span class="co">#&gt;   effectsize estimate conf.level conf.low conf.high conf.method</span>
+<span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      </span>
+<span class="co">#&gt; 1 Hedges' g    -1.16        0.95   -1.97     -0.422 ncp        </span>
+<span class="co">#&gt; 2 Hedges' g     0.286       0.95   -0.419     1.01  ncp        </span>
+<span class="co">#&gt; 3 Hedges' g     1.24        0.95    0.565     1.98  ncp        </span>
+<span class="co">#&gt;   conf.distribution expression</span>
+<span class="co">#&gt;   &lt;chr&gt;             &lt;list&gt;    </span>
+<span class="co">#&gt; 1 t                 &lt;language&gt;</span>
+<span class="co">#&gt; 2 t                 &lt;language&gt;</span>
+<span class="co">#&gt; 3 t                 &lt;language&gt;</span></code></pre></div>
 </div>
 <div id="using-expressions-in-custom-plots" class="section level1">
 <h1 class="hasAnchor">
@@ -680,7 +663,7 @@
     y <span class="op">=</span> <span class="cn">NULL</span>,
     title <span class="op">=</span> <span class="st">"Pie Chart of class (type of car)"</span>,
     subtitle <span class="op">=</span> <span class="fu"><a href="reference/contingency_table.html">contingency_table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">$</span><span class="va">class</span><span class="op">)</span><span class="op">)</span>, <span class="va">Var1</span>, counts <span class="op">=</span> <span class="va">Freq</span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,
-    caption <span class="op">=</span> <span class="st">"One-sample goodness of fit proportion test"</span>
+    caption <span class="op">=</span> <span class="st">"One-sample goodness-of-fit test"</span>
   <span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-gof-1.png" width="100%"></p>
 <p>You can also use these function to get the expression in return without having to display them in plots:</p>
@@ -693,7 +676,7 @@
 <span class="fu"><a href="reference/contingency_table.html">contingency_table</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">am</span>, <span class="va">cyl</span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
 <span class="co">#&gt; paste(chi["Pearson"]^2, "(", "2", ") = ", "8.74", ", ", italic("p"), </span>
 <span class="co">#&gt;     " = ", "0.013", ", ", widehat(italic("V"))["Cramer"], " = ", </span>
-<span class="co">#&gt;     "0.46", ", CI"["95%"], " [", "0.00", ", ", "0.78", "], ", </span>
+<span class="co">#&gt;     "0.46", ", CI"["95%"], " [", "0.00", ", ", "1.00", "], ", </span>
 <span class="co">#&gt;     italic("n")["obs"], " = ", "32")</span></code></pre></div>
 </div>
 <div id="example-expressions-for-meta-analysis" class="section level2">
@@ -735,8 +718,9 @@
 <span class="op">(</span><span class="va">res_expr</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span>, <span class="va">Sepal.Length</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
 <span class="co">#&gt; paste(italic("F")["Fisher"], "(", "2", ",", "147", ") = ", "119.26", </span>
 <span class="co">#&gt;     ", ", italic("p"), " = ", "1.67e-31", ", ", widehat(omega["p"]^2), </span>
-<span class="co">#&gt;     " = ", "0.61", ", CI"["95%"], " [", "0.52", ", ", "0.68", </span>
+<span class="co">#&gt;     " = ", "0.61", ", CI"["95%"], " [", "0.53", ", ", "1.00", </span>
 <span class="co">#&gt;     "], ", italic("n")["obs"], " = ", "150")</span>
+
 <span class="co"># adapting the details to your liking</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Species</span>, y <span class="op">=</span> <span class="va">Sepal.Length</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
@@ -1352,10 +1336,10 @@
 <tbody>
 <tr class="odd">
 <td>Parametric/Non-parametric</td>
-<td>Cramer’s <embed src="https://latex.codecogs.com/svg.latex?V" title="V"></embed>
+<td>Pearson’s <embed src="https://latex.codecogs.com/svg.latex?C" title="C"></embed>
 </td>
 <td>✅</td>
-<td><code><a href="https://easystats.github.io/bayestestR/reference/describe_posterior.html">bayestestR::describe_posterior</a></code></td>
+<td><code><a href="https://easystats.github.io/effectsize/reference/phi.html">effectsize::pearsons_c</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
@@ -1493,7 +1477,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Made with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1, using <a href="https://preferably.amirmasoudabdol.name/?source=footer">preferably</a> template.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -6,22 +6,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Inform modern browsers that this page supports both dark and light color schemes,
-  and the page author prefers light. -->
-<meta name="color-scheme" content="dark light">
-<script>
-  // If `prefers-color-scheme` is not supported, fall back to light mode.
-  // i.e. In this case, inject the `light` CSS before the others, with
-  // no media filter so that it will be downloaded with highest priority.
-  if (window.matchMedia("(prefers-color-scheme: dark)").media === "not all") {
-    document.documentElement.style.display = "none";
-    document.head.insertAdjacentHTML(
-      "beforeend",
-      "<link id=\"css\" rel=\"stylesheet\" href=\"https://bootswatch.com/3/flatly/bootstrap.css\" onload=\"document.documentElement.style.display = ''\">"
-    );
-  }
-</script>
-
 <title>One-way analysis of variance (ANOVA) — oneway_anova • statsExpressions</title>
 
 <!-- favicons -->
@@ -36,19 +20,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
-
-<!-- Flatly Theme - Light  -->
-<link id="css-light" rel="stylesheet" href="https://bootswatch.com/3/flatly/bootstrap.css" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)">
-
-<!-- Darkly Theme - Dark -->
-<link id="css-dark" rel="stylesheet" href="https://bootswatch.com/3/darkly/bootstrap.css" media="(prefers-color-scheme: dark)">
-
-<!-- preferably CSS -->
-<link rel="stylesheet" href="../preferably.css">
-<link id="css-code-light" rel="stylesheet" href="../code-color-scheme-light.css" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)">
-<link id="css-code-dark" rel="stylesheet" href="../code-color-scheme-dark.css" media="(prefers-color-scheme: dark)">
-
 
 <!-- bootstrap-toc -->
 <link rel="stylesheet" href="../bootstrap-toc.css">
@@ -87,9 +61,6 @@ https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" /
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
-
-
-
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -149,17 +120,12 @@ https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" /
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
         <li>
   <a href="https://github.com/IndrajeetPatil/statsExpressions/">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
-        
-        
-
-
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -315,7 +281,7 @@ mostly relevant in the context of <code>ggstatsplot</code> functions.</p></td>
     <p>To carry out Bayesian posterior estimation for ANOVA designs, you will need
 to install the development version of <code>BayesFactor</code> (<code>0.9.12-4.3</code>). You can
 download it by running:
-<code><a href='https://remotes.r-lib.org/reference/install_github.html'>remotes::install_github("richarddmorey/BayesFactor/pkg/BayesFactor")</a></code>.</p>
+<code>remotes::install_github("richarddmorey/BayesFactor/pkg/BayesFactor")</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
@@ -336,12 +302,12 @@ download it by running:
 #&gt;   <span style='font-weight: bold;'>statistic</span>    <span style='font-weight: bold;'>df</span> <span style='font-weight: bold;'>df.error</span> <span style='font-weight: bold;'>p.value</span>
 #&gt;       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span>      2.63     3     11.1   0.102
-#&gt;   <span style='font-weight: bold;'>method</span>                                                   <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span>
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                                       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> One-way analysis of means (not assuming equal variances)    0.245       0.95
-#&gt;   <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span> <span style='font-weight: bold;'>effectsize</span> <span style='font-weight: bold;'>conf.method</span> <span style='font-weight: bold;'>conf.distribution</span> <span style='font-weight: bold;'>expression</span>
-#&gt;      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
-#&gt; <span style='color: #BCBCBC;'>1</span>        0     0.539 Omega2     ncp         F                 <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
+#&gt;   <span style='font-weight: bold;'>method</span>                                                   <span style='font-weight: bold;'>effectsize</span> <span style='font-weight: bold;'>estimate</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                                    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> One-way analysis of means (not assuming equal variances) Omega2        0.245
+#&gt;   <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span> <span style='font-weight: bold;'>conf.method</span> <span style='font-weight: bold;'>conf.distribution</span> <span style='font-weight: bold;'>expression</span>
+#&gt;        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
+#&gt; <span style='color: #BCBCBC;'>1</span>       0.95        0         1 ncp         F                 <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
 <span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='http://afex.singmann.science/'>"afex"</a></span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
   <span class='co'># within-subjects design</span>
   <span class='fu'>oneway_anova</span><span class='op'>(</span>
@@ -367,12 +333,12 @@ download it by running:
 #&gt;   <span style='font-weight: bold;'>term</span>      <span style='font-weight: bold;'>sumsq</span> <span style='font-weight: bold;'>sum.squares.error</span>    <span style='font-weight: bold;'>df</span> <span style='font-weight: bold;'>df.error</span> <span style='font-weight: bold;'>meansq</span> <span style='font-weight: bold;'>statistic</span>  <span style='font-weight: bold;'>p.value</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span> condition <span style='text-decoration: underline;'>1</span>656.              318.  1.15     171.   1.86      776. 1.32<span style='color: #949494;'>e</span><span style='color: #BB0000;'>-69</span>
-#&gt;   <span style='font-weight: bold;'>method</span>                                              <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span>
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                                  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> ANOVA estimation for factorial designs using 'afex'    0.707       0.95
-#&gt;   <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span> <span style='font-weight: bold;'>effectsize</span>       <span style='font-weight: bold;'>conf.method</span> <span style='font-weight: bold;'>conf.distribution</span> <span style='font-weight: bold;'>expression</span>
-#&gt;      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
-#&gt; <span style='color: #BCBCBC;'>1</span>    0.666     0.740 Omega2 (partial) ncp         F                 <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
+#&gt;   <span style='font-weight: bold;'>method</span>                                              <span style='font-weight: bold;'>effectsize</span>       <span style='font-weight: bold;'>estimate</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                               <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>               <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> ANOVA estimation for factorial designs using 'afex' Omega2 (partial)    0.707
+#&gt;   <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span> <span style='font-weight: bold;'>conf.method</span> <span style='font-weight: bold;'>conf.distribution</span> <span style='font-weight: bold;'>expression</span>
+#&gt;        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
+#&gt; <span style='color: #BCBCBC;'>1</span>       0.95    0.673         1 ncp         F                 <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
 <span class='co'># ----------------------- non-parametric ----------------------------------</span>
 
 <span class='co'># between-subjects</span>
@@ -386,9 +352,9 @@ download it by running:
 #&gt;   <span style='font-weight: bold;'>parameter1</span> <span style='font-weight: bold;'>parameter2</span> <span style='font-weight: bold;'>statistic</span> <span style='font-weight: bold;'>df.error</span> <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>method</span>                      
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                       
 #&gt; <span style='color: #BCBCBC;'>1</span> sleep_rem  vore            9.06        3  0.028<span style='text-decoration: underline;'>5</span> Kruskal-Wallis rank sum test
-#&gt;   <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span> <span style='font-weight: bold;'>effectsize</span>      <span style='font-weight: bold;'>conf.method</span>         
-#&gt;      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>               
-#&gt; <span style='color: #BCBCBC;'>1</span>    0.165       0.95   0.038<span style='text-decoration: underline;'>4</span>     0.369 Epsilon2 (rank) percentile bootstrap
+#&gt;   <span style='font-weight: bold;'>effectsize</span>      <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span> <span style='font-weight: bold;'>conf.method</span>         
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>               
+#&gt; <span style='color: #BCBCBC;'>1</span> Epsilon2 (rank)    0.165       0.95   0.070<span style='text-decoration: underline;'>6</span>         1 percentile bootstrap
 #&gt;   <span style='font-weight: bold;'>conf.iterations</span> <span style='font-weight: bold;'>expression</span>
 #&gt;             <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
 #&gt; <span style='color: #BCBCBC;'>1</span>             100 <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
@@ -405,9 +371,9 @@ download it by running:
 #&gt;   <span style='font-weight: bold;'>parameter1</span> <span style='font-weight: bold;'>parameter2</span> <span style='font-weight: bold;'>statistic</span> <span style='font-weight: bold;'>df.error</span>  <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>method</span>                
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                 
 #&gt; <span style='color: #BCBCBC;'>1</span> value      condition        410        3 1.51<span style='color: #949494;'>e</span><span style='color: #BB0000;'>-88</span> Friedman rank sum test
-#&gt;   <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span> <span style='font-weight: bold;'>effectsize</span>  <span style='font-weight: bold;'>conf.method</span>         
-#&gt;      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>               
-#&gt; <span style='color: #BCBCBC;'>1</span>    0.911       0.95    0.903     0.923 Kendall's W percentile bootstrap
+#&gt;   <span style='font-weight: bold;'>effectsize</span>  <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span> <span style='font-weight: bold;'>conf.method</span>         
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>               
+#&gt; <span style='color: #BCBCBC;'>1</span> Kendall's W    0.911       0.95    0.903         1 percentile bootstrap
 #&gt;   <span style='font-weight: bold;'>conf.iterations</span> <span style='font-weight: bold;'>expression</span>
 #&gt;             <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
 #&gt; <span style='color: #BCBCBC;'>1</span>             100 <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
@@ -424,12 +390,15 @@ download it by running:
 #&gt;   <span style='font-weight: bold;'>statistic</span>    <span style='font-weight: bold;'>df</span> <span style='font-weight: bold;'>df.error</span> <span style='font-weight: bold;'>p.value</span>
 #&gt;       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span>      2.76     3     9.37   0.102
-#&gt;   <span style='font-weight: bold;'>method</span>                                            <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span>
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                                <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> A heteroscedastic one-way ANOVA for trimmed means    0.806       0.95    0.363
-#&gt;   <span style='font-weight: bold;'>conf.high</span> <span style='font-weight: bold;'>effectsize</span>                         <span style='font-weight: bold;'>expression</span>
-#&gt;       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                              <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
-#&gt; <span style='color: #BCBCBC;'>1</span>      1.58 Explanatory measure of effect size <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
+#&gt;   <span style='font-weight: bold;'>method</span>                                           
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                            
+#&gt; <span style='color: #BCBCBC;'>1</span> A heteroscedastic one-way ANOVA for trimmed means
+#&gt;   <span style='font-weight: bold;'>effectsize</span>                         <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                 <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> Explanatory measure of effect size    0.806       0.95    0.363      1.58
+#&gt;   <span style='font-weight: bold;'>expression</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
+#&gt; <span style='color: #BCBCBC;'>1</span> <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
 <span class='co'># within-subjects design</span>
 <span class='fu'>oneway_anova</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>iris_long</span>,
@@ -443,15 +412,15 @@ download it by running:
 #&gt;   <span style='font-weight: bold;'>statistic</span>    <span style='font-weight: bold;'>df</span> <span style='font-weight: bold;'>df.error</span> <span style='font-weight: bold;'>p.value</span>
 #&gt;       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span>      368.  1.09     97.1       0
-#&gt;   <span style='font-weight: bold;'>method</span>                                                              <span style='font-weight: bold;'>estimate</span>
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                                                  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> A heteroscedastic one-way repeated measures ANOVA for trimmed means   -<span style='color: #BB0000;'>0.349</span>
-#&gt;   <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span>
-#&gt;        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span>       0.95   -<span style='color: #BB0000;'>0.740</span>     0.152
-#&gt;   <span style='font-weight: bold;'>effectsize</span>                                                      <span style='font-weight: bold;'>expression</span>
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                                           <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
-#&gt; <span style='color: #BCBCBC;'>1</span> Algina-Keselman-Penfield robust standardized difference average <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
+#&gt;   <span style='font-weight: bold;'>method</span>                                                             
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                                              
+#&gt; <span style='color: #BCBCBC;'>1</span> A heteroscedastic one-way repeated measures ANOVA for trimmed means
+#&gt;   <span style='font-weight: bold;'>effectsize</span>                                                      <span style='font-weight: bold;'>estimate</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                                              <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> Algina-Keselman-Penfield robust standardized difference average   -<span style='color: #BB0000;'>0.349</span>
+#&gt;   <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span> <span style='font-weight: bold;'>expression</span>
+#&gt;        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>    
+#&gt; <span style='color: #BCBCBC;'>1</span>       0.95   -<span style='color: #BB0000;'>0.740</span>     0.152 <span style='color: #949494;'>&lt;language&gt;</span></div><div class='input'>
 <span class='co'># ----------------------- Bayesian -------------------------------------</span>
 
 <span class='co'># between-subjects</span>
@@ -527,7 +496,7 @@ download it by running:
 </div>
 
 <div class="pkgdown">
-  <p>Made with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1, using <a href="https://preferably.amirmasoudabdol.name/?source=footer">preferably</a> template.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
