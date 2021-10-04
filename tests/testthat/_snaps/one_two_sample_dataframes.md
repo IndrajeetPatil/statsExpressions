@@ -93,10 +93,10 @@
       4 One-way analysis of means (not assuming equal variances)    0.245       0.5 
         conf.low conf.high effectsize conf.method conf.distribution expression
            <dbl>     <dbl> <chr>      <chr>       <chr>             <list>    
-      1   0.0335     0.321 Eta2       ncp         F                 <language>
-      2   0          0.414 Omega2     ncp         F                 <language>
-      3   0.0307     0.326 Eta2       ncp         F                 <language>
-      4   0          0.275 Omega2     ncp         F                 <language>
+      1   0.0585         1 Eta2       ncp         F                 <language>
+      2   0              1 Omega2     ncp         F                 <language>
+      3   0.0545         1 Eta2       ncp         F                 <language>
+      4   0.0974         1 Omega2     ncp         F                 <language>
 
 ---
 
@@ -114,6 +114,6 @@
       2 ANOVA estimation for factorial designs using 'afex'   0.0783       0.9 
         conf.low conf.high effectsize       conf.method conf.distribution expression
            <dbl>     <dbl> <chr>            <chr>       <chr>             <list>    
-      1   0.122      0.254 Eta2 (partial)   ncp         F                 <language>
-      2   0.0280     0.128 Omega2 (partial) ncp         F                 <language>
+      1   0.136          1 Eta2 (partial)   ncp         F                 <language>
+      2   0.0362         1 Omega2 (partial) ncp         F                 <language>
 

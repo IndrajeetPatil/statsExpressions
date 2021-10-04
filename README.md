@@ -5,7 +5,7 @@
 
 | Package                                                                                                                                              | Status                                                                                                                                                                 | Usage                                                                                                                                                       | GitHub                                                                                                                                                                   | Miscellaneous                                                                                                                                                                   |
 |------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [![CRAN\_Release\_Badge](https://www.r-pkg.org/badges/version-ago/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)            | [![R build status](https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions)            | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)     | [![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/statsExpressions/issues)             | [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                                |
+| [![CRAN_Release_Badge](https://www.r-pkg.org/badges/version-ago/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)              | [![R build status](https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions)            | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)     | [![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/statsExpressions/issues)             | [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                                |
 | [![CRAN Checks](https://cranchecks.info/badges/summary/statsExpressions)](https://cran.r-project.org/web/checks/check_results_statsExpressions.html) | [![lints](https://github.com/IndrajeetPatil/statsExpressions/workflows/lint/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions)                            | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)   | [![status](https://tinyverse.netlify.com/badge/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)                                                   | [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)                                                                      |
 | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)                           | [![Codecov](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master) | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![CoC](https://img.shields.io/badge/CoC-v2.0%20adopted-ff69b4.svg)](https://www.contributor-covenant.org/version/2/0/code_of_conduct.html)                              | [![CodeFactor](https://www.codefactor.io/repository/github/indrajeetpatil/statsExpressions/badge)](https://www.codefactor.io/repository/github/indrajeetpatil/statsExpressions) |
 | [![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)                                         | [![DOI](https://joss.theoj.org/papers/10.21105/joss.03236/status.svg)](https://doi.org/10.21105/joss.03236)                                                            | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)  | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/statsExpressions.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/statsExpressions) | [![pkgdown](https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/pkgdown/badge.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/actions)                  |
@@ -122,27 +122,28 @@ statistical approach can be modified by changing a single argument:
 library(statsExpressions)
 
 mtcars %>% oneway_anova(cyl, wt, type = "nonparametric") 
-#> # A tibble: 1 × 14
+#> # A tibble: 1 x 14
 #>   parameter1 parameter2 statistic df.error   p.value
 #>   <chr>      <chr>          <dbl>    <int>     <dbl>
 #> 1 wt         cyl             22.8        2 0.0000112
 #>   method                       estimate conf.level conf.low conf.high
 #>   <chr>                           <dbl>      <dbl>    <dbl>     <dbl>
-#> 1 Kruskal-Wallis rank sum test    0.736       0.95    0.642     0.847
+#> 1 Kruskal-Wallis rank sum test    0.736       0.95    0.636         1
 #>   effectsize      conf.method          conf.iterations expression
 #>   <chr>           <chr>                          <int> <list>    
 #> 1 Epsilon2 (rank) percentile bootstrap             100 <language>
+
 mtcars %>% oneway_anova(cyl, wt, type = "robust")
-#> # A tibble: 1 × 11
+#> # A tibble: 1 x 11
 #>   statistic    df df.error p.value
 #>       <dbl> <dbl>    <dbl>   <dbl>
 #> 1      12.7     2     12.2 0.00102
 #>   method                                            estimate conf.level conf.low
 #>   <chr>                                                <dbl>      <dbl>    <dbl>
-#> 1 A heteroscedastic one-way ANOVA for trimmed means     1.06       0.95    0.784
+#> 1 A heteroscedastic one-way ANOVA for trimmed means     1.02       0.95    0.827
 #>   conf.high effectsize                         expression
 #>       <dbl> <chr>                              <list>    
-#> 1      1.50 Explanatory measure of effect size <language>
+#> 1      1.46 Explanatory measure of effect size <language>
 ```
 
 All possible output dataframes from functions are tabulated here:
@@ -185,7 +186,7 @@ mtcars %>%
   group_by(cyl) %>%
   group_modify(~ one_sample_test(.x, wt, test.value = 3), .keep = TRUE) %>%
   ungroup()
-#> # A tibble: 3 × 15
+#> # A tibble: 3 x 15
 #>     cyl    mu statistic df.error  p.value method            alternative estimate
 #>   <dbl> <dbl>     <dbl>    <dbl>    <dbl> <chr>             <chr>          <dbl>
 #> 1     4     3    -4.16        10 0.00195  One Sample t-test two.sided     -1.16 
@@ -411,7 +412,7 @@ ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1
     y = NULL,
     title = "Pie Chart of class (type of car)",
     subtitle = contingency_table(as.data.frame(table(mpg$class)), Var1, counts = Freq)$expression[[1]],
-    caption = "One-sample goodness of fit proportion test"
+    caption = "One-sample goodness-of-fit test"
   )
 ```
 
@@ -429,7 +430,7 @@ library(ggplot2)
 contingency_table(mtcars, am, cyl)$expression[[1]]
 #> paste(chi["Pearson"]^2, "(", "2", ") = ", "8.74", ", ", italic("p"), 
 #>     " = ", "0.013", ", ", widehat(italic("V"))["Cramer"], " = ", 
-#>     "0.46", ", CI"["95%"], " [", "0.00", ", ", "0.78", "], ", 
+#>     "0.46", ", CI"["95%"], " [", "0.00", ", ", "1.00", "], ", 
 #>     italic("n")["obs"], " = ", "32")
 ```
 
@@ -475,8 +476,9 @@ library(ggplot2)
 (res_expr <- oneway_anova(iris, Species, Sepal.Length, var.equal = TRUE)$expression[[1]])
 #> paste(italic("F")["Fisher"], "(", "2", ",", "147", ") = ", "119.26", 
 #>     ", ", italic("p"), " = ", "1.67e-31", ", ", widehat(omega["p"]^2), 
-#>     " = ", "0.61", ", CI"["95%"], " [", "0.52", ", ", "0.68", 
+#>     " = ", "0.61", ", CI"["95%"], " [", "0.53", ", ", "1.00", 
 #>     "], ", italic("n")["obs"], " = ", "150")
+
 # adapting the details to your liking
 ggplot(iris, aes(x = Species, y = Sepal.Length)) +
   geom_boxplot() +
@@ -510,8 +512,8 @@ console.
 
 ## `two_sample_test` + `oneway_anova`
 
-No. of groups: `2` =&gt; `two_sample_test`<br> No. of groups: `> 2`
-=&gt; `oneway_anova`
+No. of groups: `2` => `two_sample_test`<br> No. of groups: `> 2` =>
+`oneway_anova`
 
 ### between-subjects
 
@@ -519,10 +521,10 @@ No. of groups: `2` =&gt; `two_sample_test`<br> No. of groups: `> 2`
 
 | Type           | No. of groups | Test                                            | Function used          |
 |----------------|---------------|-------------------------------------------------|------------------------|
-| Parametric     | &gt; 2        | Fisher’s or Welch’s one-way ANOVA               | `stats::oneway.test`   |
-| Non-parametric | &gt; 2        | Kruskal–Wallis one-way ANOVA                    | `stats::kruskal.test`  |
-| Robust         | &gt; 2        | Heteroscedastic one-way ANOVA for trimmed means | `WRS2::t1way`          |
-| Bayes Factor   | &gt; 2        | Fisher’s ANOVA                                  | `BayesFactor::anovaBF` |
+| Parametric     | \> 2          | Fisher’s or Welch’s one-way ANOVA               | `stats::oneway.test`   |
+| Non-parametric | \> 2          | Kruskal–Wallis one-way ANOVA                    | `stats::kruskal.test`  |
+| Robust         | \> 2          | Heteroscedastic one-way ANOVA for trimmed means | `WRS2::t1way`          |
+| Bayes Factor   | \> 2          | Fisher’s ANOVA                                  | `BayesFactor::anovaBF` |
 | Parametric     | 2             | Student’s or Welch’s *t*-test                   | `stats::t.test`        |
 | Non-parametric | 2             | Mann–Whitney *U* test                           | `stats::wilcox.test`   |
 | Robust         | 2             | Yuen’s test for trimmed means                   | `WRS2::yuen`           |
@@ -532,10 +534,10 @@ No. of groups: `2` =&gt; `two_sample_test`<br> No. of groups: `> 2`
 
 | Type           | No. of groups | Effect size                                                                                                                                                                        | CI? | Function used                                          |
 |----------------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|--------------------------------------------------------|
-| Parametric     | &gt; 2        | ![\\eta\_{p}^2](https://latex.codecogs.com/svg.latex?%5Ceta_%7Bp%7D%5E2 "\eta_{p}^2"), ![\\omega\_{p}^2](https://latex.codecogs.com/svg.latex?%5Comega_%7Bp%7D%5E2 "\omega_{p}^2") | ✅   | `effectsize::omega_squared`, `effectsize::eta_squared` |
-| Non-parametric | &gt; 2        | ![\\epsilon\_{ordinal}^2](https://latex.codecogs.com/svg.latex?%5Cepsilon_%7Bordinal%7D%5E2 "\epsilon_{ordinal}^2")                                                                | ✅   | `effectsize::rank_epsilon_squared`                     |
-| Robust         | &gt; 2        | ![\\xi](https://latex.codecogs.com/svg.latex?%5Cxi "\xi") (Explanatory measure of effect size)                                                                                     | ✅   | `WRS2::t1way`                                          |
-| Bayes Factor   | &gt; 2        | ![R\_{Bayesian}^2](https://latex.codecogs.com/svg.latex?R_%7BBayesian%7D%5E2 "R_{Bayesian}^2")                                                                                     | ✅   | `performance::r2_bayes`                                |
+| Parametric     | \> 2          | ![\\eta\_{p}^2](https://latex.codecogs.com/svg.latex?%5Ceta_%7Bp%7D%5E2 "\eta_{p}^2"), ![\\omega\_{p}^2](https://latex.codecogs.com/svg.latex?%5Comega_%7Bp%7D%5E2 "\omega_{p}^2") | ✅   | `effectsize::omega_squared`, `effectsize::eta_squared` |
+| Non-parametric | \> 2          | ![\\epsilon\_{ordinal}^2](https://latex.codecogs.com/svg.latex?%5Cepsilon_%7Bordinal%7D%5E2 "\epsilon_{ordinal}^2")                                                                | ✅   | `effectsize::rank_epsilon_squared`                     |
+| Robust         | \> 2          | ![\\xi](https://latex.codecogs.com/svg.latex?%5Cxi "\xi") (Explanatory measure of effect size)                                                                                     | ✅   | `WRS2::t1way`                                          |
+| Bayes Factor   | \> 2          | ![R\_{Bayesian}^2](https://latex.codecogs.com/svg.latex?R_%7BBayesian%7D%5E2 "R_{Bayesian}^2")                                                                                     | ✅   | `performance::r2_bayes`                                |
 | Parametric     | 2             | Cohen’s *d*, Hedge’s *g*                                                                                                                                                           | ✅   | `effectsize::cohens_d`, `effectsize::hedges_g`         |
 | Non-parametric | 2             | *r* (rank-biserial correlation)                                                                                                                                                    | ✅   | `effectsize::rank_biserial`                            |
 | Robust         | 2             | ![\\delta\_{R}^{AKP}](https://latex.codecogs.com/svg.latex?%5Cdelta_%7BR%7D%5E%7BAKP%7D "\delta_{R}^{AKP}") (Algina-Keselman-Penfield robust standardized difference)              | ✅   | `WRS2::akp.effect`                                     |
@@ -547,10 +549,10 @@ No. of groups: `2` =&gt; `two_sample_test`<br> No. of groups: `> 2`
 
 | Type           | No. of groups | Test                                                              | Function used          |
 |----------------|---------------|-------------------------------------------------------------------|------------------------|
-| Parametric     | &gt; 2        | One-way repeated measures ANOVA                                   | `afex::aov_ez`         |
-| Non-parametric | &gt; 2        | Friedman rank sum test                                            | `stats::friedman.test` |
-| Robust         | &gt; 2        | Heteroscedastic one-way repeated measures ANOVA for trimmed means | `WRS2::rmanova`        |
-| Bayes Factor   | &gt; 2        | One-way repeated measures ANOVA                                   | `BayesFactor::anovaBF` |
+| Parametric     | \> 2          | One-way repeated measures ANOVA                                   | `afex::aov_ez`         |
+| Non-parametric | \> 2          | Friedman rank sum test                                            | `stats::friedman.test` |
+| Robust         | \> 2          | Heteroscedastic one-way repeated measures ANOVA for trimmed means | `WRS2::rmanova`        |
+| Bayes Factor   | \> 2          | One-way repeated measures ANOVA                                   | `BayesFactor::anovaBF` |
 | Parametric     | 2             | Student’s *t*-test                                                | `stats::t.test`        |
 | Non-parametric | 2             | Wilcoxon signed-rank test                                         | `stats::wilcox.test`   |
 | Robust         | 2             | Yuen’s test on trimmed means for dependent samples                | `WRS2::yuend`          |
@@ -560,10 +562,10 @@ No. of groups: `2` =&gt; `two_sample_test`<br> No. of groups: `> 2`
 
 | Type           | No. of groups | Effect size                                                                                                                                                                               | CI? | Function used                                          |
 |----------------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|--------------------------------------------------------|
-| Parametric     | &gt; 2        | ![\\eta\_{p}^2](https://latex.codecogs.com/svg.latex?%5Ceta_%7Bp%7D%5E2 "\eta_{p}^2"), ![\\omega\_{p}^2](https://latex.codecogs.com/svg.latex?%5Comega_%7Bp%7D%5E2 "\omega_{p}^2")        | ✅   | `effectsize::omega_squared`, `effectsize::eta_squared` |
-| Non-parametric | &gt; 2        | ![W\_{Kendall}](https://latex.codecogs.com/svg.latex?W_%7BKendall%7D "W_{Kendall}") (Kendall’s coefficient of concordance)                                                                | ✅   | `effectsize::kendalls_w`                               |
-| Robust         | &gt; 2        | ![\\delta\_{R-avg}^{AKP}](https://latex.codecogs.com/svg.latex?%5Cdelta_%7BR-avg%7D%5E%7BAKP%7D "\delta_{R-avg}^{AKP}") (Algina-Keselman-Penfield robust standardized difference average) | ✅   | `WRS2::wmcpAKP`                                        |
-| Bayes Factor   | &gt; 2        | ![R\_{Bayesian}^2](https://latex.codecogs.com/svg.latex?R_%7BBayesian%7D%5E2 "R_{Bayesian}^2")                                                                                            | ✅   | `performance::r2_bayes`                                |
+| Parametric     | \> 2          | ![\\eta\_{p}^2](https://latex.codecogs.com/svg.latex?%5Ceta_%7Bp%7D%5E2 "\eta_{p}^2"), ![\\omega\_{p}^2](https://latex.codecogs.com/svg.latex?%5Comega_%7Bp%7D%5E2 "\omega_{p}^2")        | ✅   | `effectsize::omega_squared`, `effectsize::eta_squared` |
+| Non-parametric | \> 2          | ![W\_{Kendall}](https://latex.codecogs.com/svg.latex?W_%7BKendall%7D "W_{Kendall}") (Kendall’s coefficient of concordance)                                                                | ✅   | `effectsize::kendalls_w`                               |
+| Robust         | \> 2          | ![\\delta\_{R-avg}^{AKP}](https://latex.codecogs.com/svg.latex?%5Cdelta_%7BR-avg%7D%5E%7BAKP%7D "\delta_{R-avg}^{AKP}") (Algina-Keselman-Penfield robust standardized difference average) | ✅   | `WRS2::wmcpAKP`                                        |
+| Bayes Factor   | \> 2          | ![R\_{Bayesian}^2](https://latex.codecogs.com/svg.latex?R_%7BBayesian%7D%5E2 "R_{Bayesian}^2")                                                                                            | ✅   | `performance::r2_bayes`                                |
 | Parametric     | 2             | Cohen’s *d*, Hedge’s *g*                                                                                                                                                                  | ✅   | `effectsize::cohens_d`, `effectsize::hedges_g`         |
 | Non-parametric | 2             | *r* (rank-biserial correlation)                                                                                                                                                           | ✅   | `effectsize::rank_biserial`                            |
 | Robust         | 2             | ![\\delta\_{R}^{AKP}](https://latex.codecogs.com/svg.latex?%5Cdelta_%7BR%7D%5E%7BAKP%7D "\delta_{R}^{AKP}") (Algina-Keselman-Penfield robust standardized difference)                     | ✅   | `WRS2::wmcpAKP`                                        |
@@ -633,10 +635,10 @@ No. of groups: `2` =&gt; `two_sample_test`<br> No. of groups: `> 2`
 
 **Effect size estimation**
 
-| Type                      | Effect size                                               | CI? | Function used                    |
-|---------------------------|-----------------------------------------------------------|-----|----------------------------------|
-| Parametric/Non-parametric | Cramer’s ![V](https://latex.codecogs.com/svg.latex?V "V") | ✅   | `bayestestR::describe_posterior` |
-| Bayesian                  | ❌                                                         | ❌   | ❌                                |
+| Type                      | Effect size                                                | CI? | Function used            |
+|---------------------------|------------------------------------------------------------|-----|--------------------------|
+| Parametric/Non-parametric | Pearson’s ![C](https://latex.codecogs.com/svg.latex?C "C") | ✅   | `effectsize::pearsons_c` |
+| Bayesian                  | ❌                                                          | ❌   | ❌                        |
 
 ## `meta_analysis`
 
