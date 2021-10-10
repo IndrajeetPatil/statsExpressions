@@ -103,7 +103,7 @@
 
 <div id="statsexpressions-tidy-dataframes-and-expressions-with-statistical-details" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#statsexpressions-tidy-dataframes-and-expressions-with-statistical-details" class="anchor"></a><code>statsExpressions</code>: Tidy dataframes and expressions with statistical details</h1></div>
+<a href="#statsexpressions-tidy-dataframes-and-expressions-with-statistical-details" class="anchor"></a><code>{statsExpressions}</code>: Tidy dataframes and expressions with statistical details</h1></div>
 <table class="table">
 <colgroup>
 <col width="18%">
@@ -155,13 +155,13 @@
 <h1 class="hasAnchor">
 <a href="#introduction-" class="anchor"></a>Introduction <img src="reference/figures/logo.png" align="right" width="240">
 </h1>
-<p>The <code>statsExpressions</code> package has two key aims:</p>
+<p>The <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> package has two key aims:</p>
 <ul>
 <li>to provide a consistent syntax to do statistical analysis with tidy data (in pipe-friendly manner),</li>
 <li>to provide statistical expressions (pre-formatted in-text statistical results) for plotting functions.</li>
 </ul>
 <p>Statistical packages exhibit substantial diversity in terms of their syntax and expected input type. This can make it difficult to switch from one statistical approach to another. For example, some functions expect vectors as inputs, while others expect dataframes. Depending on whether it is a repeated measures design or not, different functions might expect data to be in wide or long format. Some functions can internally omit missing values, while other functions error in their presence. Furthermore, if someone wishes to utilize the objects returned by these packages downstream in their workflow, this is not straightforward either because even functions from the same package can return a list, a matrix, an array, a dataframe, etc., depending on the function.</p>
-<p>This is where <code>statsExpressions</code> comes in: It can be thought of as a unified portal through which most of the functionality in these underlying packages can be accessed, with a simpler interface and no requirement to change data format.</p>
+<p>This is where <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> comes in: It can be thought of as a unified portal through which most of the functionality in these underlying packages can be accessed, with a simpler interface and no requirement to change data format.</p>
 </div>
 <div id="installation" class="section level1">
 <h1 class="hasAnchor">
@@ -696,7 +696,7 @@
   xlab <span class="op">=</span> <span class="st">"Cohen's d"</span>,
   variant <span class="op">=</span> <span class="st">"thick"</span>,
   type <span class="op">=</span> <span class="st">"cumulative"</span>
-<span class="op">)</span> <span class="op">+</span> <span class="co"># use `statsExpressions` to create expression containing results</span>
+<span class="op">)</span> <span class="op">+</span> <span class="co"># use `{statsExpressions}` to create expression containing results</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="st">"Meta-analysis of Pietschnig, Voracek, and Formann (2010) on the Mozart effect"</span>,
     subtitle <span class="op">=</span> <span class="fu"><a href="reference/meta_analysis.html">meta_analysis</a></span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="va">mozart</span>, estimate <span class="op">=</span> <span class="va">d</span>, std.error <span class="op">=</span> <span class="va">se</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>

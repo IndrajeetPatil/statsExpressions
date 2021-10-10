@@ -172,7 +172,7 @@
 </h1>
 <p>MAJOR CHANGES</p>
 <ul>
-<li><p>There is a new <em>JOSS</em> paper about <code>statsExpressions</code> package!! <a href="https://joss.theoj.org/papers/10.21105/joss.03236" class="uri">https://joss.theoj.org/papers/10.21105/joss.03236</a></p></li>
+<li><p>There is a new <em>JOSS</em> paper about <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> package!! <a href="https://joss.theoj.org/papers/10.21105/joss.03236" class="uri">https://joss.theoj.org/papers/10.21105/joss.03236</a></p></li>
 <li><p>The effect size for independent trimmed means two-sample test has been changed from explanatory measure of effect size to AKP’s delta, which is easier to understand and interpret since its a robust cousin of Cohen’s <em>d</em>.</p></li>
 <li><p><code>one_sample_test</code> and <code>two_sample_test</code> gain <code>alternative</code> argument to specify alternative hypothesis (<a href='https://github.com/IndrajeetPatil/statsExpressions/issues/86'>#86</a>).</p></li>
 <li><p>Cohen’s <em>d</em> and Hedge’s <em>g</em> use non-pooled standard deviation (cf. <a href="https://psyarxiv.com/tu6mp/" class="uri">https://psyarxiv.com/tu6mp/</a>).</p></li>
@@ -199,7 +199,7 @@
 <h1 class="page-header" data-toc-text="1.0.0">
 <a href="#statsexpressions-100" class="anchor"></a>statsExpressions 1.0.0<small> 2021-03-11 </small>
 </h1>
-<p>This is the first <strong>stable</strong> release of <code>statsExpressions</code>!</p>
+<p>This is the first <strong>stable</strong> release of <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a>!</p>
 <p>There is good news and there is bad news that accompanies this milestone.</p>
 <ul>
 <li><p>The <strong>bad news</strong>: The <code>API</code> for the package has changed <strong>completely</strong>: All functions return a <em>dataframe</em>, and not an <em>expression</em>, as a default. The expression is contained in a list column in the dataframe itself. So, to salvage your functions from breaking, you will have to add <code>$expression[[1]]</code> to your function calls. For example, if you were using the function <code>expr_t_onesample()</code>, you will now have to specify <code>expr_t_onesample()$expression[[1]]</code>, so on and so forth. But, in general, the advice is to <strong>not</strong> use any of the <code>expr_*</code> functions, which are vestigial names for new avatars of these function and will be removed in future. The new names are more intuitive, e.g., <code>expr_t_onesample()</code> is now called <code><a href="../reference/one_sample_test.html">one_sample_test()</a></code>, etc.</p></li>
@@ -245,7 +245,7 @@
 <li><p><code>expr_anova_parametric</code>, <code>expr_anova_nonparametric</code>, <code>expr_anova_robust</code>, <code>expr_anova_bayes</code> are now removed in favor of a single function <code>oneway_anova</code>.</p></li>
 </ul>
 </li>
-<li><p><code>statsExpressions</code> no longer internally relies on <code>tidyBF</code>. All Bayesian analysis is carried out in this package itself. This was done to make the maintenance of this package easier and helps with some major internal code refactoring. As such, all re-exported functions from <code>tidyBF</code> have also been removed.</p></li>
+<li><p><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> no longer internally relies on <code>tidyBF</code>. All Bayesian analysis is carried out in this package itself. This was done to make the maintenance of this package easier and helps with some major internal code refactoring. As such, all re-exported functions from <code>tidyBF</code> have also been removed.</p></li>
 </ul>
 <p>BUG FIXES</p>
 <ul>
@@ -368,7 +368,7 @@
 <p>MAJOR CHANGES</p>
 <ul>
 <li><p>Minimum R version bumped to <code>R 3.6.0</code>.</p></li>
-<li><p>Retires the internal <code>effsize_t_parametric</code> helper function in favor of relying functions from <code>effectsize</code>, which is now added as a dependency. Similarly, <code>statsExpressions</code> now relies on <code>effectsize</code> to compute effect sizes for ANOVA designs, instead of <code>sjstats</code>.</p></li>
+<li><p>Retires the internal <code>effsize_t_parametric</code> helper function in favor of relying functions from <code>effectsize</code>, which is now added as a dependency. Similarly, <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> now relies on <code>effectsize</code> to compute effect sizes for ANOVA designs, instead of <code>sjstats</code>.</p></li>
 <li><p>For parametric <em>t</em>-tests and ANOVAs, confidence intervals for effect sizes are estimated using the noncentrality parameter method. Centrality-based methods are deprecated.</p></li>
 <li><p>Correlation analysis is carried out using <code>correlation</code> package, which is now added as a dependency.</p></li>
 </ul>
