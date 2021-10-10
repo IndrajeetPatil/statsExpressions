@@ -5,7 +5,7 @@ test_that(
 
     # contingency tab - without NAs ---------------------------------
 
-    # `statsExpressions` output
+    # `{statsExpressions}` output
     set.seed(123)
     df1 <- suppressWarnings(contingency_table(
       data = mtcars,
@@ -78,7 +78,7 @@ test_that(
         row.names = c(NA, -4L)
       )
 
-    # `statsExpressions` output
+    # `{statsExpressions}` output
     set.seed(123)
     df1 <- suppressWarnings(
       contingency_table(
@@ -110,7 +110,7 @@ test_that(
     paired_data[24, 1] <- NA
     paired_data[65, 1] <- NA
 
-    # `statsExpressions` output
+    # `{statsExpressions}` output
     set.seed(123)
     df2 <- suppressWarnings(
       contingency_table(
@@ -135,7 +135,7 @@ test_that(
   code = {
     # one-sample test (without NAs) -------------------------------------
 
-    # `statsExpressions` output
+    # `{statsExpressions}` output
     set.seed(123)
     df1 <- suppressWarnings(contingency_table(
       data = mtcars,

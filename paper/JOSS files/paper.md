@@ -22,7 +22,7 @@ bibliography: paper.bib
 
 # Summary
 
-The `statsExpressions` package has two key aims: to provide a consistent syntax
+The `{statsExpressions}` package has two key aims: to provide a consistent syntax
 to do statistical analysis with tidy data, and to provide statistical
 expressions (i.e., pre-formatted in-text statistical results) for plotting
 functions. Currently, it supports common types of statistical approaches and
@@ -45,14 +45,14 @@ returned as a list, a matrix, an array, or a dataframe. This diversity can make
 it difficult to easily access all needed information for hypothesis testing and
 estimation, and to switch from one statistical approach to another.
 
-This is where `statsExpressions` comes in: It can be thought of as a unified
+This is where `{statsExpressions}` comes in: It can be thought of as a unified
 portal through which most of the functionality in these underlying packages can
 be accessed, with a simpler interface and with tidy data format.
 
 # Comparison to Other Packages
 
 Unlike `broom` [@Robinson2021] or `parameters` [@Lüdecke2020parameters], the
-goal of `statsExpressions` is not to convert model objects into tidy dataframes,
+goal of `{statsExpressions}` is not to convert model objects into tidy dataframes,
 but to provide a consistent and easy syntax to carry out statistical tests.
 Additionally, none of these packages return statistical expressions.
 
@@ -77,7 +77,7 @@ Function | Parametric | Non-parametric | Robust | Bayesian
 statistical approaches they support. More detailed description of the
 tests and outputs from these functions can be found on the package website: <https://indrajeetpatil.github.io/statsExpressions/articles/>.
 
-`statsExpressions` internally relies on `stats` package for parametric and
+`{statsExpressions}` internally relies on `stats` package for parametric and
 non-parametric [@base2021], `WRS2` package for robust [@Mair2020], and
 `BayesFactor` package for Bayesian statistics [@Morey2020]. The random-effects
 meta-analysis is carried out using `metafor` (parametric) [@Viechtbauer2010],
@@ -134,21 +134,21 @@ statistical reporting for both Bayesian [@van2020jasp] and Frequentist
 [@american2019publication] frameworks.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{stats_reporting_format} \caption{The templates used in `statsExpressions` to display statistical details in a plot.}\label{fig:expr_template}
+\includegraphics[width=1\linewidth]{stats_reporting_format} \caption{The templates used in `{statsExpressions}` to display statistical details in a plot.}\label{fig:expr_template}
 \end{figure}
 
 This expression be easily displayed in a plot (Figure 2). Displaying statistical
 results in the context of a visualization is indeed a philosophy adopted by the
-`ggstatsplot` package [@Patil2021], and `statsExpressions` functions as its
+`ggstatsplot` package [@Patil2021], and `{statsExpressions}` functions as its
 statistical processing backend.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{paper_files/figure-latex/anova_example-1} \caption{Example illustrating how `statsExpressions` functions can be used to display results from a statistical test in a plot. Code to create this figure is reported in Appendix.}\label{fig:anova_example}
+\includegraphics[width=1\linewidth]{paper_files/figure-latex/anova_example-1} \caption{Example illustrating how `{statsExpressions}` functions can be used to display results from a statistical test in a plot. Code to create this figure is reported in Appendix.}\label{fig:anova_example}
 \end{figure}
 
 # Licensing and Availability
 
-`statsExpressions` is licensed under the GNU General Public License (v3.0), with all
+`{statsExpressions}` is licensed under the GNU General Public License (v3.0), with all
 source code stored at [GitHub](https://github.com/IndrajeetPatil/statsExpressions/).
 In the spirit of honest and open science, requests and suggestions for fixes,
 feature updates, as well as general questions and concerns are encouraged via
@@ -159,7 +159,7 @@ direct interaction with contributors and developers by filing an
 # Acknowledgements
 
 I would like to acknowledge the support of Mina Cikara, Fiery Cushman, and Iyad
-Rahwan during the development of this project. `statsExpressions` relies heavily
+Rahwan during the development of this project. `{statsExpressions}` relies heavily
 on the [`easystats`](https://github.com/easystats/easystats) ecosystem, a
 collaborative project created to facilitate the usage of `R` for statistical
 analyses. Thus, I would like to thank the [members of easystats](https://github.com/orgs/easystats/people) as well as the users.
@@ -172,7 +172,7 @@ analyses. Thus, I would like to thank the [members of easystats](https://github.
 
 ## Example with `dplyr`
 
-We can use combination of `dplyr` and `statsExpressions` to repeat the same
+We can use combination of `dplyr` and `{statsExpressions}` to repeat the same
 statistical analysis across grouping variables.
 
 

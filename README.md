@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# `statsExpressions`: Tidy dataframes and expressions with statistical details
+# `{statsExpressions}`: Tidy dataframes and expressions with statistical details
 
 | Package                                                                                                                                              | Status                                                                                                                                                                 | Usage                                                                                                                                                       | GitHub                                                                                                                                                                   | Miscellaneous                                                                                                                                                                   |
 |------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -12,7 +12,7 @@
 
 # Introduction <img src="man/figures/logo.png" align="right" width="240" />
 
-The `statsExpressions` package has two key aims:
+The `{statsExpressions}` package has two key aims:
 
 -   to provide a consistent syntax to do statistical analysis with tidy
     data (in pipe-friendly manner),
@@ -32,7 +32,7 @@ straightforward either because even functions from the same package can
 return a list, a matrix, an array, a dataframe, etc., depending on the
 function.
 
-This is where `statsExpressions` comes in: It can be thought of as a
+This is where `{statsExpressions}` comes in: It can be thought of as a
 unified portal through which most of the functionality in these
 underlying packages can be accessed, with a simpler interface and no
 requirement to change data format.
@@ -453,7 +453,7 @@ viz_forest(
   xlab = "Cohen's d",
   variant = "thick",
   type = "cumulative"
-) + # use `statsExpressions` to create expression containing results
+) + # use `{statsExpressions}` to create expression containing results
   labs(
     title = "Meta-analysis of Pietschnig, Voracek, and Formann (2010) on the Mozart effect",
     subtitle = meta_analysis(dplyr::rename(mozart, estimate = d, std.error = se))$expression[[1]]

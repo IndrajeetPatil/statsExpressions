@@ -19,7 +19,7 @@ workflow, this is not straightforward either because even functions from the
 same package can return a list, a matrix, an array, a dataframe, etc.,
 depending on the function.
 
-This is where \code{statsExpressions} comes in: It can be thought of as a unified
+This is where \code{{statsExpressions}} comes in: It can be thought of as a unified
 portal through which most of the functionality in these underlying packages
 can be accessed, with a simpler interface and no requirement to change data
 format.

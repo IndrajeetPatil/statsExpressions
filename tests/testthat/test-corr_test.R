@@ -5,7 +5,7 @@ test_that(
 
     # nonparametric ----------------------------------------------------------
 
-    # `statsExpressions` output
+    # `{statsExpressions}` output
     set.seed(123)
     df1 <- suppressWarnings(corr_test(
       data = sample_frac(movies_long, 0.05),
@@ -21,7 +21,7 @@ test_that(
     expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression[[1]])
 
-    # `statsExpressions` output
+    # `{statsExpressions}` output
     set.seed(123)
     df2 <- corr_test(
       data = mtcars,
@@ -42,7 +42,7 @@ test_that(
   code = {
     # parametric --------------------------------------------------------------
 
-    # `statsExpressions` output
+    # `{statsExpressions}` output
     set.seed(123)
     df <- suppressWarnings(corr_test(
       data = ggplot2::msleep,

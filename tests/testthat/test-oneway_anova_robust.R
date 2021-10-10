@@ -5,7 +5,7 @@ test_that(
 
     # between-subjects -------------------------------------------------------
 
-    # `statsExpressions` output
+    # `{statsExpressions}` output
     set.seed(123)
     df1 <- oneway_anova(
       type = "robust",
@@ -18,7 +18,7 @@ test_that(
       nboot = 2
     )
 
-    # `statsExpressions` output
+    # `{statsExpressions}` output
     set.seed(123)
     df2 <- suppressWarnings(oneway_anova(
       type = "robust",
@@ -50,7 +50,7 @@ test_that(
 
     # within-subjects -------------------------------------------------------
 
-    # `statsExpressions` output
+    # `{statsExpressions}` output
     set.seed(123)
     df1 <- oneway_anova(
       type = "robust",

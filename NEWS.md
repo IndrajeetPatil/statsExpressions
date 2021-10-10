@@ -50,7 +50,7 @@ MINOR CHANGES
 
 MAJOR CHANGES
 
-  - There is a new _JOSS_ paper about `statsExpressions` package!!
+  - There is a new _JOSS_ paper about `{statsExpressions}` package!!
     <https://joss.theoj.org/papers/10.21105/joss.03236>
 
   - The effect size for independent trimmed means two-sample test has been
@@ -81,7 +81,7 @@ MINOR CHANGES
 
 # statsExpressions 1.0.0
 
-This is the first **stable** release of `statsExpressions`!
+This is the first **stable** release of `{statsExpressions}`!
 
 There is good news and there is bad news that accompanies this milestone.
 
@@ -160,7 +160,7 @@ BREAKING CHANGES
       `expr_anova_bayes` are now removed in favor of a single function
       `oneway_anova`.
 
-  - `statsExpressions` no longer internally relies on `tidyBF`. All Bayesian
+  - `{statsExpressions}` no longer internally relies on `tidyBF`. All Bayesian
     analysis is carried out in this package itself. This was done to make the
     maintenance of this package easier and helps with some major internal code
     refactoring. As such, all re-exported functions from `tidyBF` have also been
@@ -317,7 +317,7 @@ MAJOR CHANGES
 
   - Retires the internal `effsize_t_parametric` helper function in favor of
     relying functions from `effectsize`, which is now added as a dependency.
-    Similarly, `statsExpressions` now relies on `effectsize` to compute effect
+    Similarly, `{statsExpressions}` now relies on `effectsize` to compute effect
     sizes for ANOVA designs, instead of `sjstats`.
 
   - For parametric *t*-tests and ANOVAs, confidence intervals for effect sizes

@@ -6,7 +6,7 @@ test_that(
     skip_if(getRversion() < "4.0")
     skip_if_not_installed("metaplus")
 
-    # renaming to what `statsExpressions` expects
+    # renaming to what `{statsExpressions}` expects
     set.seed(123)
     data(mag, package = "metaplus")
     dat <-
