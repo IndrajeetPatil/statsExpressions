@@ -26,17 +26,17 @@
     Output
       # A tibble: 2 x 10
         term  estimate std.error conf.level conf.low conf.high statistic df.error
-        <chr>    <dbl>     <dbl>      <dbl>    <dbl>     <dbl>     <dbl>    <int>
-      1 age     0.0170   0.00923       0.95 -0.00106    0.0351      3.40      225
-      2 sex    -0.512    0.168         0.95 -0.840     -0.183       9.31      225
+        <chr>    <dbl>     <dbl>      <dbl>    <dbl>     <dbl>     <dbl>    <dbl>
+      1 age     0.0170   0.00923       0.95 -0.00106    0.0351      3.40        1
+      2 sex    -0.512    0.168         0.95 -0.840     -0.183       9.31        1
         p.value
           <dbl>
       1 0.0650 
       2 0.00228
         label                                                                         
         <chr>                                                                         
-      1 list(~widehat(italic(beta))=='0.02', ~italic(chi)^2~('225')=='3.40', ~italic(~
-      2 list(~widehat(italic(beta))=='-0.51', ~italic(chi)^2~('225')=='9.31', ~italic~
+      1 list(~widehat(italic(beta))=='0.02', ~italic(chi)^2~('1')=='3.40', ~italic(p)~
+      2 list(~widehat(italic(beta))=='-0.51', ~italic(chi)^2~('1')=='9.31', ~italic(p~
 
 ---
 
