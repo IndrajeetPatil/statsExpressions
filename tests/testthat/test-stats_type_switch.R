@@ -4,8 +4,6 @@
 test_that(
   desc = "switch for stats type works",
   code = {
-    skip_if(getRversion() < "3.6")
-
     expect_identical(stats_type_switch("p"), "parametric")
     expect_identical(stats_type_switch("pearson"), "parametric")
     expect_identical(stats_type_switch("non-parametric"), "nonparametric")
