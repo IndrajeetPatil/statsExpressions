@@ -23,7 +23,7 @@ URL: https://indrajeetpatil.github.io/statsExpressions/,
     https://github.com/IndrajeetPatil/statsExpressions
 BugReports: https://github.com/IndrajeetPatil/statsExpressions/issues
 Depends: 
-    R (>= 3.6.0)
+    R (>= 4.0.0)
 Imports:
     BayesFactor (>= 0.9.12-4.2),
     correlation (>= 0.7.0),

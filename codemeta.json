@@ -197,7 +197,7 @@
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
-      "version": ">= 3.6.0"
+      "version": ">= 4.0.0"
     },
     {
       "@type": "SoftwareApplication",
@@ -448,6 +448,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3650.131KB",
+  "fileSize": "3679.472KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }
