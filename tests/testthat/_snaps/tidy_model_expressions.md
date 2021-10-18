@@ -27,8 +27,8 @@
       # A tibble: 2 x 10
         term  estimate std.error conf.level conf.low conf.high statistic df.error
         <chr>    <dbl>     <dbl>      <dbl>    <dbl>     <dbl>     <dbl>    <dbl>
-      1 age     0.0170   0.00923       0.95   -0.100     0.134      3.40        1
-      2 sex    -0.512    0.168         0.95   -2.64      1.62       9.31        1
+      1 age     0.0170   0.00923       0.95 -0.00106    0.0351      3.40        1
+      2 sex    -0.512    0.168         0.95 -0.840     -0.183       9.31        1
         p.value
           <dbl>
       1 0.0650 
