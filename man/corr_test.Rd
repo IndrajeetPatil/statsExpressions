@@ -56,7 +56,7 @@ of 1/2, sqrt(2)/2, and 1, respectively. In case of an ANOVA, this value
 corresponds to scale for fixed effects.}
 
 \item{top.text}{Text to display on top of the Bayes Factor message. This is
-mostly relevant in the context of \code{ggstatsplot} functions.}
+mostly relevant in the context of \code{ggstatsplot} package functions.}
 
 \item{...}{Additional arguments (currently ignored).}
 }

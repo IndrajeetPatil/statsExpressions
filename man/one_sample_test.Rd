@@ -65,7 +65,7 @@ corresponds to scale for fixed effects.}
 argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \emph{g}).}
 
 \item{top.text}{Text to display on top of the Bayes Factor message. This is
-mostly relevant in the context of \code{ggstatsplot} functions.}
+mostly relevant in the context of \code{ggstatsplot} package functions.}
 
 \item{...}{Currently ignored.}
 }

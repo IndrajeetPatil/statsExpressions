@@ -75,7 +75,5 @@ centrality_description <- function(data,
     ungroup() %>%
     mutate(n_label = paste0({{ x }}, "\n(n = ", .prettyNum(n), ")")) %>%
     arrange({{ x }}) %>%
-    select({{ x }}, !!as.character(ensym(y)) := estimate,
-      n_obs = n, everything()
-    )
+    select({{ x }}, !!as.character(ensym(y)) := estimate, n_obs = n, everything())
 }

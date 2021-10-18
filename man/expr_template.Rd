@@ -6,16 +6,17 @@
 \usage{
 expr_template(
   data,
-  no.parameters = 0L,
+  paired = FALSE,
   bayesian = FALSE,
+  no.parameters = 0L,
   statistic.text = NULL,
   effsize.text = NULL,
   top.text = NULL,
   prior.distribution = NULL,
   prior.type = NULL,
   n = NULL,
-  n.text = NULL,
-  paired = FALSE,
+  n.text = ifelse(paired, list(quote(italic("n")["pairs"])),
+    list(quote(italic("n")["obs"])))[[1]],
   conf.method = "HDI",
   k = 2L,
   k.df = 0L,
@@ -31,23 +32,28 @@ and should contain some or all of the the following columns:
 \item \emph{df.error}: the numeric value of a parameter being modeled (often degrees
 of freedom for the test); note that if \code{no.parameters = 0L} (e.g., for
 non-parametric tests), this column will be irrelevant.
-\item \emph{df} relevant only if the statistic in question has two degrees of freedom.
-\item \emph{p.value} the two-sided \emph{p}-value associated with the observed statistic.
+\item \emph{df}: relevant only if the statistic in question has two degrees of freedom.
+\item \emph{p.value}: the two-sided \emph{p}-value associated with the observed statistic.
+\item \emph{method}: method describing the test carried out.
+\item \emph{effectsize}: name of the effect size (if not present, same as \code{method}).
 \item \emph{estimate}: estimated value of the effect size.
 \item \emph{conf.level}: width for the confidence intervals.
 \item \emph{conf.low}: lower bound for effect size estimate.
 \item \emph{conf.high}: upper bound for effect size estimate.
-\item \emph{\code{bf10}} Bayes Factor value (if \code{bayesian = TRUE}).
-\item \emph{method}: method describing the test carried out.
+\item \emph{bf10}: Bayes Factor value (if \code{bayesian = TRUE}).
 }}
+
+\item{paired}{Logical that decides whether the experimental design is
+repeated measures/within-subjects or between-subjects. The default is
+\code{FALSE}.}
+
+\item{bayesian}{Is this Bayesian analysis? Defaults to \code{FALSE}. The template
+is slightly different for Bayesian analysis.}
 
 \item{no.parameters}{An integer that specifies that the number of parameters
 for the statistical test. Can be \code{0} for non-parametric tests, \code{1} for
 tests based on \emph{t}-statistic or chi-squared statistic, \code{2} for tests based
 on \emph{F}-statistic.}
-
-\item{bayesian}{Is this Bayesian analysis? Defaults to \code{FALSE}. The template
-is slightly different for Bayesian analysis.}
 
 \item{statistic.text}{A character that specifies the relevant test statistic.
 For example, for tests with \emph{t}-statistic, \code{statistic.text = "t"}.}
@@ -55,7 +61,7 @@ For example, for tests with \emph{t}-statistic, \code{statistic.text = "t"}.}
 \item{effsize.text}{A character that specifies the relevant effect size.}
 
 \item{top.text}{Text to display on top of the Bayes Factor message. This is
-mostly relevant in the context of \code{ggstatsplot} functions.}
+mostly relevant in the context of \code{ggstatsplot} package functions.}
 
 \item{prior.distribution}{A character that specifies the prior type.}
 
@@ -64,13 +70,10 @@ mostly relevant in the context of \code{ggstatsplot} functions.}
 \item{n}{An integer specifying the sample size used for the test.}
 
 \item{n.text}{A character that specifies the design, which will determine
-what the \code{n} stands for. If \code{NULL}, defaults to
-\code{quote(italic("n")["pairs"])} if \code{paired = TRUE}, and to
-\code{quote(italic("n")["obs"])} if \code{paired = FALSE}.}
-
-\item{paired}{Logical that decides whether the experimental design is
-repeated measures/within-subjects or between-subjects. The default is
-\code{FALSE}.}
+what the \code{n} stands for. It defaults to \code{quote(italic("n")["pairs"])} if
+\code{paired = TRUE}, and to \code{quote(italic("n")["obs"])} if \code{paired = FALSE}. If
+you wish to customize this further, you will need to provide object of
+\code{language} type.}
 
 \item{conf.method}{The type of index used for Credible Interval. Can be
 \code{"hdi"} (default), \code{"eti"}, or \code{"si"} (see \code{si()}, \code{hdi()}, \code{eti()}
@@ -96,25 +99,25 @@ this package context.
 set.seed(123)
 
 # creating a dataframe with stats results
-stats_df <-
-  cbind.data.frame(
-    statistic = 5.494,
-    df = 29.234,
-    p.value = 0.00001,
-    estimate = -1.980,
-    conf.level = 0.95,
-    conf.low = -2.873,
-    conf.high = -1.088
-  )
+stats_df <- cbind.data.frame(
+  statistic = 5.494,
+  df = 29.234,
+  p.value = 0.00001,
+  estimate = -1.980,
+  conf.level = 0.95,
+  conf.low = -2.873,
+  conf.high = -1.088
+)
 
 # expression for *t*-statistic with Cohen's *d* as effect size
 # note that the plotmath expressions need to be quoted
-statsExpressions::expr_template(
+expr_template(
   no.parameters = 1L,
   data = stats_df,
   statistic.text = quote(italic("t")),
   effsize.text = quote(italic("d")),
   n = 32L,
+  n.text = quote(italic("n")["no.obs"]),
   k = 3L,
   k.df = 3L
 )

@@ -97,7 +97,7 @@ of an error, try reducing the value of \code{tr}, which is by default set to
 for the effect size (Default: \code{100L}).}
 
 \item{top.text}{Text to display on top of the Bayes Factor message. This is
-mostly relevant in the context of \code{ggstatsplot} functions.}
+mostly relevant in the context of \code{ggstatsplot} package functions.}
 
 \item{...}{Currently ignored.}
 }

@@ -77,7 +77,7 @@ hypothesis under the alternative, and corresponds to Gunel and Dickey's
 (1974) \code{"a"} parameter.}
 
 \item{top.text}{Text to display on top of the Bayes Factor message. This is
-mostly relevant in the context of \code{ggstatsplot} functions.}
+mostly relevant in the context of \code{ggstatsplot} package functions.}
 
 \item{...}{Additional arguments (currently ignored).}
 }

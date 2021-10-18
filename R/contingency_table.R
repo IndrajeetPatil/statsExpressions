@@ -126,14 +126,13 @@ contingency_table <- function(data,
 
   if (type != "bayes") {
     # one-way table
-    if (test == "1way") c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::pearsons_c)
     if (test == "1way") .f.args <- list(x = table(x_vec), p = ratio, correct = FALSE)
+    if (test == "1way") c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::pearsons_c)
 
     # two-way table
     if (test == "2way") .f.args <- list(x = table(data), correct = FALSE)
     if (test == "2way" && paired) c(.f, .f.es) %<-% c(stats::mcnemar.test, effectsize::cohens_g)
     if (test == "2way" && !paired) c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::cramers_v)
-
 
     # Pearson's or McNemar's test
 

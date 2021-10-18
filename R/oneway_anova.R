@@ -250,7 +250,7 @@ oneway_anova <- function(data,
 
   if (type == "robust") {
     # expression details
-    c(no.parameters, k.df, k.df.error) %<-% c(2L, ifelse(isTRUE(paired), k, 0L), k)
+    c(no.parameters, k.df, k.df.error) %<-% c(2L, ifelse(paired, k, 0L), k)
 
     # heteroscedastic one-way repeated measures ANOVA for trimmed means
     if (paired) {
@@ -315,7 +315,7 @@ oneway_anova <- function(data,
     mutate(expression = list(expr_template(
       data = .,
       no.parameters = no.parameters,
-      n = ifelse(isTRUE(paired), length(unique(data$rowid)), nrow(data)),
+      n = ifelse(paired, length(unique(data$rowid)), nrow(data)),
       paired = paired,
       k = k,
       k.df = k.df,
