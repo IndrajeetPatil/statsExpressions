@@ -26,6 +26,7 @@ knitr::opts_chunk$set(
 )
 
 library(statsExpressions)
+set.seed(123)
 ```
 
 # `{statsExpressions}`: Tidy dataframes and expressions with statistical details
