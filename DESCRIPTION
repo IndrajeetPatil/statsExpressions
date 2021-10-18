@@ -30,7 +30,7 @@ Imports:
     datawizard (>= 0.2.1),
     dplyr,
     effectsize (>= 0.5),
-    insight (>= 0.14.4),
+    insight (>= 0.14.5),
     magrittr,
     parameters (>= 0.14.0.3),
     performance (>= 0.8.0),
