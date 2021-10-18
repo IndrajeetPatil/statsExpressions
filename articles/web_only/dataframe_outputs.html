@@ -117,7 +117,7 @@
       <h1 data-toc-skip>Dataframe outputs</h1>
                         <h4 class="author">Indrajeet Patil</h4>
             
-            <h4 class="date">2021-10-14</h4>
+            <h4 class="date">2021-10-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/vignettes/web_only/dataframe_outputs.Rmd"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>dataframe_outputs.Rmd</code></div>
@@ -753,12 +753,12 @@
   paired <span class="op">=</span> <span class="cn">FALSE</span>,
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 × 12</span>
-<span class="co">#&gt;   statistic    df p.value method                     estimate conf.level</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      8.74     2  0.0126 Pearson's Chi-squared test    0.464       0.95</span>
-<span class="co">#&gt;   conf.low conf.high effectsize        conf.method conf.distribution expression</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;       &lt;chr&gt;             &lt;list&gt;    </span>
-<span class="co">#&gt; 1        0         1 Cramer's V (adj.) ncp         chisq             &lt;language&gt;</span>
+<span class="co">#&gt;   statistic    df p.value method                     effectsize        estimate</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;                      &lt;chr&gt;                &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      8.74     2  0.0126 Pearson's Chi-squared test Cramer's V (adj.)    0.464</span>
+<span class="co">#&gt;   conf.level conf.low conf.high conf.method conf.distribution expression</span>
+<span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;             &lt;list&gt;    </span>
+<span class="co">#&gt; 1       0.95        0         1 ncp         chisq             &lt;language&gt;</span>
 
 <span class="co"># paired</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
@@ -770,12 +770,12 @@
   counts <span class="op">=</span> <span class="st">"Freq"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 × 11</span>
-<span class="co">#&gt;   statistic    df  p.value method                     estimate conf.level</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      13.3     1 0.000261 McNemar's Chi-squared test    0.333       0.95</span>
-<span class="co">#&gt;   conf.low conf.high effectsize conf.method expression</span>
-<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;list&gt;    </span>
-<span class="co">#&gt; 1    0.164     0.427 Cohen's g  binomial    &lt;language&gt;</span>
+<span class="co">#&gt;   statistic    df  p.value method                     effectsize estimate</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                      &lt;chr&gt;         &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      13.3     1 0.000261 McNemar's Chi-squared test Cohen's g     0.333</span>
+<span class="co">#&gt;   conf.level conf.low conf.high conf.method expression</span>
+<span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       &lt;list&gt;    </span>
+<span class="co">#&gt; 1       0.95    0.164     0.427 binomial    &lt;language&gt;</span>
 
 <span class="co"># goodness-of-fit tests</span>
 
@@ -787,12 +787,12 @@
   counts <span class="op">=</span> <span class="va">Freq</span>,
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 × 12</span>
-<span class="co">#&gt;   statistic    df  p.value method                                   estimate</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                                       &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      133.     3 9.65e-29 Chi-squared test for given probabilities    0.429</span>
-<span class="co">#&gt;   conf.level conf.low conf.high effectsize  conf.method conf.distribution</span>
-<span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;            </span>
-<span class="co">#&gt; 1       0.95    0.374         1 Pearson's C ncp         chisq            </span>
+<span class="co">#&gt;   statistic    df  p.value method                                   effectsize </span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                                    &lt;chr&gt;      </span>
+<span class="co">#&gt; 1      133.     3 9.65e-29 Chi-squared test for given probabilities Pearson's C</span>
+<span class="co">#&gt;   estimate conf.level conf.low conf.high conf.method conf.distribution</span>
+<span class="co">#&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;            </span>
+<span class="co">#&gt; 1    0.429       0.95    0.374         1 ncp         chisq            </span>
 <span class="co">#&gt;   expression</span>
 <span class="co">#&gt;   &lt;list&gt;    </span>
 <span class="co">#&gt; 1 &lt;language&gt;</span>
