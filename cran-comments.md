@@ -14,7 +14,7 @@
 
 ## revdepcheck results
 
-We checked 1 reverse dependency (`ggstatsplot`), comparing R CMD check results
+We checked 1 reverse dependency (`{ggstatsplot}`), comparing R CMD check results
 across CRAN and dev versions of this package.
 
  * We saw 0 new problems
