@@ -16,7 +16,7 @@
   ],
   "issueTracker": "https://github.com/IndrajeetPatil/statsExpressions/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.2.0",
+  "version": "1.2.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -381,7 +381,7 @@
       "sameAs": "https://CRAN.R-project.org/package=zeallot"
     }
   ],
-  "contIntegration": ["https://codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master", "https://github.com/IndrajeetPatil/pairwiseComparisons/actions"],
+  "contIntegration": ["https://app.codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master", "https://github.com/IndrajeetPatil/pairwiseComparisons/actions"],
   "keywords": [
     "ggplot-extension",
     "statistical-tests",
@@ -448,6 +448,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3650.455KB",
+  "fileSize": "3650.517KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

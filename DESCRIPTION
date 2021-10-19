@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Tidy Dataframes and Expressions with Statistical Details
-Version: 1.2.0
+Version: 1.2.0.9000
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
