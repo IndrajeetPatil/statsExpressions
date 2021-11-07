@@ -4,37 +4,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Inform modern browsers that this page supports both dark and light color schemes,
-  and the page author prefers light. --><meta name="color-scheme" content="dark light">
-<script>
-  // If `prefers-color-scheme` is not supported, fall back to light mode.
-  // i.e. In this case, inject the `light` CSS before the others, with
-  // no media filter so that it will be downloaded with highest priority.
-  if (window.matchMedia("(prefers-color-scheme: dark)").media === "not all") {
-    document.documentElement.style.display = "none";
-    document.head.insertAdjacentHTML(
-      "beforeend",
-      "<link id=\"css\" rel=\"stylesheet\" href=\"https://bootswatch.com/3/flatly/bootstrap.css\" onload=\"document.documentElement.style.display = ''\">"
-    );
-  }
-</script><title>Tidy Dataframes and Expressions with Statistical Details • statsExpressions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Utilities for producing dataframes with rich details for the
+    most common types of statistical approaches and tests: parametric,
+    nonparametric, robust, and Bayesian t-test, one-way ANOVA, correlation
+    analyses, contingency table analyses, and meta-analyses. The
+    functions are pipe-friendly and provide a consistent syntax to work
+    with tidy data. These dataframes additionally contain expressions with
+    statistical details, and can be used in graphing packages. This
+    package also forms the statistical processing backend for
+    ggstatsplot.">
+<title>Tidy Dataframes and Expressions with Statistical Details • statsExpressions</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- Flatly Theme - Light  --><link id="css-light" rel="stylesheet" href="https://bootswatch.com/3/flatly/bootstrap.css" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)">
-<!-- Darkly Theme - Dark --><link id="css-dark" rel="stylesheet" href="https://bootswatch.com/3/darkly/bootstrap.css" media="(prefers-color-scheme: dark)">
-<!-- preferably CSS --><link rel="stylesheet" href="preferably.css">
-<link id="css-code-light" rel="stylesheet" href="code-color-scheme-light.css" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)">
-<link id="css-code-dark" rel="stylesheet" href="code-color-scheme-dark.css" media="(prefers-color-scheme: dark)">
-<!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
-<script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
 <meta property="og:title" content="Tidy Dataframes and Expressions with Statistical Details">
 <meta property="og:description" content="Utilities for producing dataframes with rich details for the
     most common types of statistical approaches and tests: parametric,
@@ -51,80 +42,59 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body data-spy="scroll" data-target="#toc">
-    <div class="container template-home">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">statsExpressions</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0.9000</span>
-      </span>
-    </div>
+<body>
+    <a href="#container" class="visually-hidden-focusable">Skip to contents</a>
+    
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="articles/stats_details.html">Test and effect size details</a>
-    </li>
-    <li>
-      <a href="articles/web_only/dataframe_outputs.html">Dataframe outputs</a>
-    </li>
-  </ul>
-</li>
-<li>
-  <a href="news/index.html">Changelog</a>
-</li>
-      </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/IndrajeetPatil/statsExpressions/">
-    <span class="fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
-        
-        
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-dark"><div class="container">
+    <a class="navbar-brand me-2" href="index.html">statsExpressions</a>
 
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0.9000</small>
 
-      </ul>
-</div>
-<!--/.nav-collapse -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-2">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item">
+  <a class="nav-link" href="reference/index.html">Reference</a>
+</li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="articles/stats_details.html">Test and effect size details</a>
+    <a class="dropdown-item" href="articles/web_only/dataframe_outputs.html">Dataframe outputs</a>
   </div>
-<!--/.container -->
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="news/index.html">Changelog</a>
+</li>
+      </ul>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/IndrajeetPatil/statsExpressions/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
-<!--/.navbar -->
-
-      
-
-      </header><div class="row">
+  </div>
+</nav><div class="container template-home" id="container">
+<div class="row">
   <div class="contents col-md-9">
 
-<div id="statsexpressions-tidy-dataframes-and-expressions-with-statistical-details" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#statsexpressions-tidy-dataframes-and-expressions-with-statistical-details" class="anchor"></a><code>{statsExpressions}</code>: Tidy dataframes and expressions with statistical details</h1></div>
+<div class="section level1">
+<div class="page-header">
+<img src="logo.png" class="logo" alt=""><h1 id="statsexpressions-tidy-dataframes-and-expressions-with-statistical-details">
+<code>{statsExpressions}</code>: Tidy dataframes and expressions with statistical details<a class="anchor" aria-label="anchor" href="#statsexpressions-tidy-dataframes-and-expressions-with-statistical-details"></a>
+</h1>
+</div>
 <table class="table">
 <colgroup>
 <col width="18%">
@@ -142,39 +112,38 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td><a href="https://CRAN.R-project.org/package=statsExpressions"><img src="https://www.r-pkg.org/badges/version-ago/statsExpressions" alt="CRAN_Release_Badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions"><img src="https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg" alt="R build status"></a></td>
-<td><a href="https://CRAN.R-project.org/package=statsExpressions"><img src="https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue" alt="Daily downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="contributions"></a></td>
-<td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
+<td><a href="https://CRAN.R-project.org/package=statsExpressions" class="external-link"><img src="https://www.r-pkg.org/badges/version-ago/statsExpressions" alt="CRAN_Release_Badge"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions" class="external-link"><img src="https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg" alt="R build status"></a></td>
+<td><a href="https://CRAN.R-project.org/package=statsExpressions" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue" alt="Daily downloads badge"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions/issues" class="external-link"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="contributions"></a></td>
+<td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html" class="external-link"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 </tr>
 <tr class="even">
-<td><a href="https://cran.r-project.org/web/checks/check_results_statsExpressions.html"><img src="https://cranchecks.info/badges/summary/statsExpressions" alt="CRAN Checks"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions"><img src="https://github.com/IndrajeetPatil/statsExpressions/workflows/lint/badge.svg" alt="lints"></a></td>
-<td><a href="https://CRAN.R-project.org/package=statsExpressions"><img src="https://cranlogs.r-pkg.org/badges/last-week/statsExpressions?color=blue" alt="Weekly downloads badge"></a></td>
-<td><a href="https://CRAN.R-project.org/package=statsExpressions"><img src="https://tinyverse.netlify.com/badge/statsExpressions" alt="status"></a></td>
-<td><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-4.0-6666ff.svg" alt="minimal R version"></a></td>
+<td><a href="https://cran.r-project.org/web/checks/check_results_statsExpressions.html" class="external-link"><img src="https://cranchecks.info/badges/summary/statsExpressions" alt="CRAN Checks"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions" class="external-link"><img src="https://github.com/IndrajeetPatil/statsExpressions/workflows/lint/badge.svg" alt="lints"></a></td>
+<td><a href="https://CRAN.R-project.org/package=statsExpressions" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/last-week/statsExpressions?color=blue" alt="Weekly downloads badge"></a></td>
+<td><a href="https://CRAN.R-project.org/package=statsExpressions" class="external-link"><img src="https://tinyverse.netlify.com/badge/statsExpressions" alt="status"></a></td>
+<td><a href="https://cran.r-project.org/" class="external-link"><img src="https://img.shields.io/badge/R%3E%3D-4.0-6666ff.svg" alt="minimal R version"></a></td>
 </tr>
 <tr class="odd">
-<td><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></td>
-<td><a href="https://app.codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg" alt="Codecov"></a></td>
-<td><a href="https://CRAN.R-project.org/package=statsExpressions"><img src="https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue" alt="Monthly downloads badge"></a></td>
-<td><a href="https://www.contributor-covenant.org/version/2/0/code_of_conduct.html"><img src="https://img.shields.io/badge/CoC-v2.0%20adopted-ff69b4.svg" alt="CoC"></a></td>
-<td><a href="https://www.codefactor.io/repository/github/indrajeetpatil/statsExpressions"><img src="https://www.codefactor.io/repository/github/indrajeetpatil/statsExpressions/badge" alt="CodeFactor"></a></td>
+<td><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></td>
+<td><a href="https://app.codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master" class="external-link"><img src="https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg" alt="Codecov"></a></td>
+<td><a href="https://CRAN.R-project.org/package=statsExpressions" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/last-month/statsExpressions?color=blue" alt="Monthly downloads badge"></a></td>
+<td><a href="https://www.contributor-covenant.org/version/2/0/code_of_conduct.html" class="external-link"><img src="https://img.shields.io/badge/CoC-v2.0%20adopted-ff69b4.svg" alt="CoC"></a></td>
+<td><a href="https://www.codefactor.io/repository/github/indrajeetpatil/statsExpressions" class="external-link"><img src="https://www.codefactor.io/repository/github/indrajeetpatil/statsExpressions/badge" alt="CodeFactor"></a></td>
 </tr>
 <tr class="even">
-<td><a href="https://www.repostatus.org/#active"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status"></a></td>
-<td><a href="https://doi.org/10.21105/joss.03236"><img src="https://joss.theoj.org/papers/10.21105/joss.03236/status.svg" alt="DOI"></a></td>
-<td><a href="https://CRAN.R-project.org/package=statsExpressions"><img src="https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue" alt="Total downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/statsExpressions"><img src="https://img.shields.io/github/stars/IndrajeetPatil/statsExpressions.svg?style=social&amp;label=Github" alt="Github Stars"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/actions"><img src="https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/pkgdown/badge.svg" alt="pkgdown"></a></td>
+<td><a href="https://www.repostatus.org/#active" class="external-link"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status"></a></td>
+<td><a href="https://doi.org/10.21105/joss.03236" class="external-link"><img src="https://joss.theoj.org/papers/10.21105/joss.03236/status.svg" alt="DOI"></a></td>
+<td><a href="https://CRAN.R-project.org/package=statsExpressions" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue" alt="Total downloads badge"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/statsExpressions" class="external-link"><img src="https://img.shields.io/github/stars/IndrajeetPatil/statsExpressions.svg?style=social&amp;label=Github" alt="Github Stars"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/actions" class="external-link"><img src="https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/pkgdown/badge.svg" alt="pkgdown"></a></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="introduction-" class="section level1">
-<h1 class="hasAnchor">
-<a href="#introduction-" class="anchor"></a>Introduction <img src="reference/figures/logo.png" align="right" width="240">
+<div class="section level1">
+<h1 id="introduction-">Introduction <a class="anchor" aria-label="anchor" href="#introduction-"></a>
 </h1>
 <p>The <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> package has two key aims:</p>
 <ul>
@@ -184,9 +153,9 @@
 <p>Statistical packages exhibit substantial diversity in terms of their syntax and expected input type. This can make it difficult to switch from one statistical approach to another. For example, some functions expect vectors as inputs, while others expect dataframes. Depending on whether it is a repeated measures design or not, different functions might expect data to be in wide or long format. Some functions can internally omit missing values, while other functions error in their presence. Furthermore, if someone wishes to utilize the objects returned by these packages downstream in their workflow, this is not straightforward either because even functions from the same package can return a list, a matrix, an array, a dataframe, etc., depending on the function.</p>
 <p>This is where <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> comes in: It can be thought of as a unified portal through which most of the functionality in these underlying packages can be accessed, with a simpler interface and no requirement to change data format.</p>
 </div>
-<div id="installation" class="section level1">
-<h1 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h1>
+<div class="section level1">
+<h1 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h1>
 <table class="table">
 <colgroup>
 <col width="15%">
@@ -202,19 +171,19 @@
 <tr class="odd">
 <td>Release</td>
 <td>CRAN</td>
-<td><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("statsExpressions")</a></code></td>
+<td><code>install.packages("statsExpressions")</code></td>
 </tr>
 <tr class="even">
 <td>Development</td>
 <td>GitHub</td>
-<td><code><a href="https://remotes.r-lib.org/reference/install_github.html">remotes::install_github("IndrajeetPatil/statsExpressions")</a></code></td>
+<td><code>remotes::install_github("IndrajeetPatil/statsExpressions")</code></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="citation" class="section level1">
-<h1 class="hasAnchor">
-<a href="#citation" class="anchor"></a>Citation</h1>
+<div class="section level1">
+<h1 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h1>
 <p>The package can be cited as:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">"statsExpressions"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -237,14 +206,14 @@
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    journal <span class="ot">=</span> {{Journal of Open Source Software}},</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
 </div>
-<div id="general-workflow" class="section level1">
-<h1 class="hasAnchor">
-<a href="#general-workflow" class="anchor"></a>General Workflow</h1>
+<div class="section level1">
+<h1 id="general-workflow">General Workflow<a class="anchor" aria-label="anchor" href="#general-workflow"></a>
+</h1>
 <p><img src="reference/figures/schematic_illustration.png" width="100%"></p>
 </div>
-<div id="summary-of-types-of-statistical-analyses" class="section level1">
-<h1 class="hasAnchor">
-<a href="#summary-of-types-of-statistical-analyses" class="anchor"></a>Summary of types of statistical analyses</h1>
+<div class="section level1">
+<h1 id="summary-of-types-of-statistical-analyses">Summary of types of statistical analyses<a class="anchor" aria-label="anchor" href="#summary-of-types-of-statistical-analyses"></a>
+</h1>
 <p>Here is a tabular summary of available tests:</p>
 <table class="table">
 <thead><tr class="header">
@@ -256,32 +225,32 @@
 <tr class="odd">
 <td>one-sample <em>t</em>-test</td>
 <td><code>one_sample_test</code></td>
-<td><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
+<td><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
 </tr>
 <tr class="even">
 <td>two-sample <em>t</em>-test</td>
 <td><code>two_sample_test</code></td>
-<td><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
+<td><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
 </tr>
 <tr class="odd">
 <td>one-way ANOVA</td>
 <td><code>oneway_anova</code></td>
-<td><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
+<td><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
 </tr>
 <tr class="even">
 <td>correlation analysis</td>
 <td><code>corr_test</code></td>
-<td><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
+<td><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
 </tr>
 <tr class="odd">
 <td>contingency table analysis</td>
 <td><code>contingency_table</code></td>
-<td><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
+<td><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
 </tr>
 <tr class="even">
 <td>meta-analysis</td>
 <td><code>meta_analysis</code></td>
-<td><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
+<td><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a></td>
 </tr>
 </tbody>
 </table>
@@ -382,14 +351,14 @@
 </tbody>
 </table>
 </div>
-<div id="tidy-dataframes-from-statistical-analysis" class="section level1">
-<h1 class="hasAnchor">
-<a href="#tidy-dataframes-from-statistical-analysis" class="anchor"></a>Tidy dataframes from statistical analysis</h1>
+<div class="section level1">
+<h1 id="tidy-dataframes-from-statistical-analysis">Tidy dataframes from statistical analysis<a class="anchor" aria-label="anchor" href="#tidy-dataframes-from-statistical-analysis"></a>
+</h1>
 <p>To illustrate the simplicity of this syntax, let’s say we want to run a one-way ANOVA. If we first run a non-parametric ANOVA and then decide to run a robust ANOVA instead, the syntax remains the same and the statistical approach can be modified by changing a single argument:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
 
-<span class="va">mtcars</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span> 
+<span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span> 
 <span class="co">#&gt; # A tibble: 1 x 14</span>
 <span class="co">#&gt;   parameter1 parameter2 statistic df.error   p.value</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span>
@@ -401,7 +370,7 @@
 <span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;                          &lt;int&gt; &lt;list&gt;    </span>
 <span class="co">#&gt; 1         1 percentile bootstrap             100 &lt;language&gt;</span>
 
-<span class="va">mtcars</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span>
+<span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 11</span>
 <span class="co">#&gt;   statistic    df df.error p.value</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span>
@@ -419,15 +388,15 @@
 <p>Needless to say this will also work with the <code>kable</code> function to generate a table:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 
 <span class="co"># one-sample robust t-test</span>
 <span class="co"># we will leave `expression` column out; it's not needed for using only the dataframe</span>
-<span class="va">mtcars</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span><span class="va">wt</span>, test.value <span class="op">=</span> <span class="fl">3</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">expression</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span><span class="va">wt</span>, test.value <span class="op">=</span> <span class="fl">3</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">expression</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <colgroup>
 <col width="8%">
@@ -467,15 +436,15 @@
 <p>For example, let’s say we want to run a one-sample <em>t</em>-test for all levels of a certain grouping variable. We can use <code>dplyr</code> to do so:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># for reproducibility</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
 
 <span class="co"># grouped operation</span>
 <span class="co"># running one-sample test for all levels of grouping variable `cyl`</span>
-<span class="va">mtcars</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_map.html">group_modify</a></span><span class="op">(</span><span class="op">~</span> <span class="fu"><a href="reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span><span class="va">.x</span>, <span class="va">wt</span>, test.value <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>, .keep <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_map.html" class="external-link">group_modify</a></span><span class="op">(</span><span class="op">~</span> <span class="fu"><a href="reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span><span class="va">.x</span>, <span class="va">wt</span>, test.value <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>, .keep <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 3 x 15</span>
 <span class="co">#&gt;     cyl    mu statistic df.error  p.value method            alternative</span>
 <span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;      </span>
@@ -493,68 +462,68 @@
 <span class="co">#&gt; 2 t                 &lt;language&gt;</span>
 <span class="co">#&gt; 3 t                 &lt;language&gt;</span></code></pre></div>
 </div>
-<div id="using-expressions-in-custom-plots" class="section level1">
-<h1 class="hasAnchor">
-<a href="#using-expressions-in-custom-plots" class="anchor"></a>Using expressions in custom plots</h1>
+<div class="section level1">
+<h1 id="using-expressions-in-custom-plots">Using expressions in custom plots<a class="anchor" aria-label="anchor" href="#using-expressions-in-custom-plots"></a>
+</h1>
 <p>Note that <em>expression</em> here means <strong>a pre-formatted in-text statistical result</strong>. In addition to other details contained in the dataframe, there is also a column titled <code>expression</code>, which contains expression with statistical details and can be displayed in a plot.</p>
 <p>For <strong>all</strong> statistical test expressions, the default template attempt to follow the gold standard for statistical reporting.</p>
 <p>For example, here are results from Welch’s <em>t</em>-test:</p>
 <p><img src="reference/figures/stats_reporting_format.png" align="center"></p>
-<div id="example-expressions-for-centrality-measure" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example-expressions-for-centrality-measure" class="anchor"></a>Example: Expressions for centrality measure</h2>
+<div class="section level2">
+<h2 id="example-expressions-for-centrality-measure">Example: Expressions for centrality measure<a class="anchor" aria-label="anchor" href="#example-expressions-for-centrality-measure"></a>
+</h2>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
 
 <span class="co"># displaying mean for each level of `cyl`</span>
 <span class="fu"><a href="reference/centrality_description.html">centrality_description</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span><span class="op">)</span> |&gt;
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">wt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_label</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">expression</span><span class="op">)</span>, parse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">wt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_label</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">expression</span><span class="op">)</span>, parse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-centrality-1.png" width="100%"></p>
 </div>
-<div id="example-expressions-for-one-way-anovas" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example-expressions-for-one-way-anovas" class="anchor"></a>Example: Expressions for one-way ANOVAs</h2>
-<div id="between-subjects-design" class="section level3">
-<h3 class="hasAnchor">
-<a href="#between-subjects-design" class="anchor"></a>Between-subjects design</h3>
+<div class="section level2">
+<h2 id="example-expressions-for-one-way-anovas">Example: Expressions for one-way ANOVAs<a class="anchor" aria-label="anchor" href="#example-expressions-for-one-way-anovas"></a>
+</h2>
+<div class="section level3">
+<h3 id="between-subjects-design">Between-subjects design<a class="anchor" aria-label="anchor" href="#between-subjects-design"></a>
+</h3>
 <p>Let’s say we want to check differences in weight of the vehicle based on number of cylinders in the engine and wish to carry out robust trimmed-means ANOVA:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">ggridges</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/ggridges/" class="external-link">ggridges</a></span><span class="op">)</span>
 
 <span class="co"># create a ridgeplot</span>
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Sepal.Length</span>, y <span class="op">=</span> <span class="va">Species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Sepal.Length</span>, y <span class="op">=</span> <span class="va">Species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_density_ridges</span><span class="op">(</span>
     jittered_points <span class="op">=</span> <span class="cn">TRUE</span>, quantile_lines <span class="op">=</span> <span class="cn">TRUE</span>,
     scale <span class="op">=</span> <span class="fl">0.9</span>, vline_size <span class="op">=</span> <span class="fl">1</span>, vline_color <span class="op">=</span> <span class="st">"red"</span>,
     position <span class="op">=</span> <span class="fu">position_raincloud</span><span class="op">(</span>adjust_vlines <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
   <span class="op">)</span> <span class="op">+</span> <span class="co"># use the expression in the dataframe to display results in the subtitle</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="st">"A heteroscedastic one-way ANOVA for trimmed means"</span>,
     subtitle <span class="op">=</span> <span class="fu"><a href="reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span>, <span class="va">Sepal.Length</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
   <span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-anova_rob1-1.png" width="100%"></p>
 </div>
-<div id="within-subjects-design" class="section level3">
-<h3 class="hasAnchor">
-<a href="#within-subjects-design" class="anchor"></a>Within-subjects design</h3>
+<div class="section level3">
+<h3 id="within-subjects-design">Within-subjects design<a class="anchor" aria-label="anchor" href="#within-subjects-design"></a>
+</h3>
 <p>Let’s now see an example of a repeated measures one-way ANOVA.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-forge.r-project.org/projects/psychor/">WRS2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">ggbeeswarm</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-forge.r-project.org/projects/psychor/" class="external-link">WRS2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/eclarke/ggbeeswarm" class="external-link">ggbeeswarm</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
 
-<span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">WineTasting</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">Wine</span>, <span class="va">Taste</span>, color <span class="op">=</span> <span class="va">Wine</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+<span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">WineTasting</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">Wine</span>, <span class="va">Taste</span>, color <span class="op">=</span> <span class="va">Wine</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_quasirandom</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="st">"Friedman's rank sum test"</span>,
     subtitle <span class="op">=</span> <span class="fu"><a href="reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
       <span class="va">WineTasting</span>,
@@ -568,50 +537,50 @@
 <p><img src="reference/figures/README-anova_parametric2-1.png" width="100%"></p>
 </div>
 </div>
-<div id="example-expressions-for-two-sample-tests" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example-expressions-for-two-sample-tests" class="anchor"></a>Example: Expressions for two-sample tests</h2>
-<div id="between-subjects-design-1" class="section level3">
-<h3 class="hasAnchor">
-<a href="#between-subjects-design-1" class="anchor"></a>Between-subjects design</h3>
+<div class="section level2">
+<h2 id="example-expressions-for-two-sample-tests">Example: Expressions for two-sample tests<a class="anchor" aria-label="anchor" href="#example-expressions-for-two-sample-tests"></a>
+</h2>
+<div class="section level3">
+<h3 id="between-subjects-design-1">Between-subjects design<a class="anchor" aria-label="anchor" href="#between-subjects-design-1"></a>
+</h3>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">gghalves</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">ggbeeswarm</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">hrbrthemes</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/erocoar/gghalves" class="external-link">gghalves</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/eclarke/ggbeeswarm" class="external-link">ggbeeswarm</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://github.com/hrbrmstr/hrbrthemes" class="external-link">hrbrthemes</a></span><span class="op">)</span>
 
 <span class="co"># create a plot</span>
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">ToothGrowth</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">supp</span>, <span class="va">len</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">ToothGrowth</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">supp</span>, <span class="va">len</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_half_boxplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_beeswarm</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">theme_ipsum_rc</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="co"># adding a subtitle with</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="st">"Two-Sample Welch's t-test"</span>,
     subtitle <span class="op">=</span> <span class="fu"><a href="reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span><span class="va">ToothGrowth</span>, <span class="va">supp</span>, <span class="va">len</span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
   <span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-t_two-1.png" width="100%"></p>
 </div>
-<div id="within-subjects-design-1" class="section level3">
-<h3 class="hasAnchor">
-<a href="#within-subjects-design-1" class="anchor"></a>Within-subjects design</h3>
+<div class="section level3">
+<h3 id="within-subjects-design-1">Within-subjects design<a class="anchor" aria-label="anchor" href="#within-subjects-design-1"></a>
+</h3>
 <p>We can also have a look at a repeated measures design and the related expressions.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">PairedData</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">PrisonStress</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">PairedData</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">PrisonStress</span><span class="op">)</span>
 
 <span class="co"># get data in tidy format</span>
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="va">PrisonStress</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"PSS"</span><span class="op">)</span>, <span class="st">"PSS"</span>, values_to <span class="op">=</span> <span class="st">"stress"</span><span class="op">)</span>
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span><span class="va">PrisonStress</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">starts_with</a></span><span class="op">(</span><span class="st">"PSS"</span><span class="op">)</span>, <span class="st">"PSS"</span>, values_to <span class="op">=</span> <span class="st">"stress"</span><span class="op">)</span>
 
 <span class="co"># plot</span>
 <span class="fu">paired.plotProfiles</span><span class="op">(</span><span class="va">PrisonStress</span>, <span class="st">"PSSbefore"</span>, <span class="st">"PSSafter"</span>, subjects <span class="op">=</span> <span class="st">"Subject"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="st">"Two-sample Wilcoxon paired test"</span>,
     subtitle <span class="op">=</span> <span class="fu"><a href="reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
       data <span class="op">=</span> <span class="va">df</span>,
@@ -625,73 +594,73 @@
 <p><img src="reference/figures/README-t_two_paired1-1.png" width="100%"></p>
 </div>
 </div>
-<div id="example-expressions-for-one-sample-tests" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example-expressions-for-one-sample-tests" class="anchor"></a>Example: Expressions for one-sample tests</h2>
+<div class="section level2">
+<h2 id="example-expressions-for-one-sample-tests">Example: Expressions for one-sample tests<a class="anchor" aria-label="anchor" href="#example-expressions-for-one-sample-tests"></a>
+</h2>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
 
 <span class="co"># creating a histogram plot</span>
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">wt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">$</span><span class="va">wt</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">wt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" class="external-link">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">$</span><span class="va">wt</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
   <span class="co"># adding a caption with a non-parametric one-sample test</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="st">"One-Sample Wilcoxon Signed Rank Test"</span>,
     subtitle <span class="op">=</span> <span class="fu"><a href="reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, test.value <span class="op">=</span> <span class="fl">3</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
   <span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-t_one-1.png" width="100%"></p>
 </div>
-<div id="example-expressions-for-correlation-analyses" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example-expressions-for-correlation-analyses" class="anchor"></a>Example: Expressions for correlation analyses</h2>
+<div class="section level2">
+<h2 id="example-expressions-for-correlation-analyses">Example: Expressions for correlation analyses<a class="anchor" aria-label="anchor" href="#example-expressions-for-correlation-analyses"></a>
+</h2>
 <p>Let’s look at another example where we want to run correlation analysis:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
 
 <span class="co"># create a scatter plot</span>
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="va">wt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="va">wt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="st">"Spearman's rank correlation coefficient"</span>,
     subtitle <span class="op">=</span> <span class="fu"><a href="reference/corr_test.html">corr_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">mpg</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
   <span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-corr-1.png" width="100%"></p>
 </div>
-<div id="example-expressions-for-contingency-table-analysis" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example-expressions-for-contingency-table-analysis" class="anchor"></a>Example: Expressions for contingency table analysis</h2>
+<div class="section level2">
+<h2 id="example-expressions-for-contingency-table-analysis">Example: Expressions for contingency table analysis<a class="anchor" aria-label="anchor" href="#example-expressions-for-contingency-table-analysis"></a>
+</h2>
 <p>For categorical/nominal data - one-sample:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
 
 <span class="co"># basic pie chart</span>
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">$</span><span class="va">class</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">""</span>, y <span class="op">=</span> <span class="va">Freq</span>, fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">Var1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">1</span>, stat <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.line <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">$</span><span class="va">class</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">""</span>, y <span class="op">=</span> <span class="va">Freq</span>, fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Var1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">1</span>, stat <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>axis.line <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="co"># cleaning up the chart and adding results from one-sample proportion test</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_polar.html">coord_polar</a></span><span class="op">(</span>theta <span class="op">=</span> <span class="st">"y"</span>, start <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_polar.html" class="external-link">coord_polar</a></span><span class="op">(</span>theta <span class="op">=</span> <span class="st">"y"</span>, start <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>
     fill <span class="op">=</span> <span class="st">"Class"</span>,
     x <span class="op">=</span> <span class="cn">NULL</span>,
     y <span class="op">=</span> <span class="cn">NULL</span>,
     title <span class="op">=</span> <span class="st">"Pie Chart of class (type of car)"</span>,
-    subtitle <span class="op">=</span> <span class="fu"><a href="reference/contingency_table.html">contingency_table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">$</span><span class="va">class</span><span class="op">)</span><span class="op">)</span>, <span class="va">Var1</span>, counts <span class="op">=</span> <span class="va">Freq</span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,
+    subtitle <span class="op">=</span> <span class="fu"><a href="reference/contingency_table.html">contingency_table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">$</span><span class="va">class</span><span class="op">)</span><span class="op">)</span>, <span class="va">Var1</span>, counts <span class="op">=</span> <span class="va">Freq</span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,
     caption <span class="op">=</span> <span class="st">"One-sample goodness-of-fit test"</span>
   <span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-gof-1.png" width="100%"></p>
 <p>You can also use these function to get the expression in return without having to display them in plots:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
 
 <span class="co"># Pearson's chi-squared test of independence</span>
 <span class="fu"><a href="reference/contingency_table.html">contingency_table</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">am</span>, <span class="va">cyl</span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
@@ -700,40 +669,40 @@
 <span class="co">#&gt;     "0.46", ", CI"["95%"], " [", "0.00", ", ", "1.00", "], ", </span>
 <span class="co">#&gt;     italic("n")["obs"], " = ", "32")</span></code></pre></div>
 </div>
-<div id="example-expressions-for-meta-analysis" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example-expressions-for-meta-analysis" class="anchor"></a>Example: Expressions for meta-analysis</h2>
+<div class="section level2">
+<h2 id="example-expressions-for-meta-analysis">Example: Expressions for meta-analysis<a class="anchor" aria-label="anchor" href="#example-expressions-for-meta-analysis"></a>
+</h2>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">metaviz</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">metaplus</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Mkossmeier/metaviz" class="external-link">metaviz</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">metaplus</span><span class="op">)</span>
 
 <span class="co"># meta-analysis forest plot with results random-effects meta-analysis</span>
 <span class="fu">viz_forest</span><span class="op">(</span>
-  x <span class="op">=</span> <span class="va">mozart</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"d"</span>, <span class="st">"se"</span><span class="op">)</span><span class="op">]</span>,
+  x <span class="op">=</span> <span class="va">mozart</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"d"</span>, <span class="st">"se"</span><span class="op">)</span><span class="op">]</span>,
   study_labels <span class="op">=</span> <span class="va">mozart</span><span class="op">[</span>, <span class="st">"study_name"</span><span class="op">]</span>,
   xlab <span class="op">=</span> <span class="st">"Cohen's d"</span>,
   variant <span class="op">=</span> <span class="st">"thick"</span>,
   type <span class="op">=</span> <span class="st">"cumulative"</span>
 <span class="op">)</span> <span class="op">+</span> <span class="co"># use `{statsExpressions}` to create expression containing results</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="st">"Meta-analysis of Pietschnig, Voracek, and Formann (2010) on the Mozart effect"</span>,
-    subtitle <span class="op">=</span> <span class="fu"><a href="reference/meta_analysis.html">meta_analysis</a></span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="va">mozart</span>, estimate <span class="op">=</span> <span class="va">d</span>, std.error <span class="op">=</span> <span class="va">se</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
+    subtitle <span class="op">=</span> <span class="fu"><a href="reference/meta_analysis.html">meta_analysis</a></span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span><span class="va">mozart</span>, estimate <span class="op">=</span> <span class="va">d</span>, std.error <span class="op">=</span> <span class="va">se</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
   <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-metaanalysis-1.png" width="100%"></p>
 </div>
 </div>
-<div id="customizing-details-to-your-liking" class="section level1">
-<h1 class="hasAnchor">
-<a href="#customizing-details-to-your-liking" class="anchor"></a>Customizing details to your liking</h1>
+<div class="section level1">
+<h1 id="customizing-details-to-your-liking">Customizing details to your liking<a class="anchor" aria-label="anchor" href="#customizing-details-to-your-liking"></a>
+</h1>
 <p>Sometimes you may not wish include so many details in the subtitle. In that case, you can extract the expression and copy-paste only the part you wish to include. For example, here only statistic and <em>p</em>-values are included:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
 
 <span class="co"># extracting detailed expression</span>
 <span class="op">(</span><span class="va">res_expr</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span>, <span class="va">Sepal.Length</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
@@ -743,22 +712,22 @@
 <span class="co">#&gt;     "], ", italic("n")["obs"], " = ", "150")</span>
 
 <span class="co"># adapting the details to your liking</span>
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Species</span>, y <span class="op">=</span> <span class="va">Sepal.Length</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/tidyeval.html">expr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span>
-    <span class="cn">NULL</span>, <span class="fu"><a href="https://rdrr.io/r/grDevices/plotmath.html">italic</a></span><span class="op">(</span><span class="st">"F"</span><span class="op">)</span>, <span class="st">"("</span>, <span class="st">"2"</span>,
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Species</span>, y <span class="op">=</span> <span class="va">Sepal.Length</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html" class="external-link">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/tidyeval.html" class="external-link">expr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span>
+    <span class="cn">NULL</span>, <span class="fu"><a href="https://rdrr.io/r/grDevices/plotmath.html" class="external-link">italic</a></span><span class="op">(</span><span class="st">"F"</span><span class="op">)</span>, <span class="st">"("</span>, <span class="st">"2"</span>,
     <span class="st">","</span>, <span class="st">"147"</span>, <span class="st">") = "</span>, <span class="st">"119.26"</span>, <span class="st">", "</span>,
-    <span class="fu"><a href="https://rdrr.io/r/grDevices/plotmath.html">italic</a></span><span class="op">(</span><span class="st">"p"</span><span class="op">)</span>, <span class="st">" = "</span>, <span class="st">"1.67e-31"</span>
+    <span class="fu"><a href="https://rdrr.io/r/grDevices/plotmath.html" class="external-link">italic</a></span><span class="op">(</span><span class="st">"p"</span><span class="op">)</span>, <span class="st">" = "</span>, <span class="st">"1.67e-31"</span>
   <span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-custom_expr-1.png" width="100%"></p>
 </div>
-<div id="summary-of-tests-and-effect-sizes" class="section level1">
-<h1 class="hasAnchor">
-<a href="#summary-of-tests-and-effect-sizes" class="anchor"></a>Summary of tests and effect sizes</h1>
-<p>Here a go-to summary about statistical test carried out and the returned effect size for each function is provided. This should be useful if one needs to find out more information about how an argument is resolved in the underlying package or if one wishes to browse the source code. So, for example, if you want to know more about how one-way (between-subjects) ANOVA, you can run <code><a href="https://rdrr.io/r/stats/oneway.test.html">?stats::oneway.test</a></code> in your R console.</p>
-<div id="centrality_description" class="section level2">
-<h2 class="hasAnchor">
-<a href="#centrality_description" class="anchor"></a><code>centrality_description</code>
+<div class="section level1">
+<h1 id="summary-of-tests-and-effect-sizes">Summary of tests and effect sizes<a class="anchor" aria-label="anchor" href="#summary-of-tests-and-effect-sizes"></a>
+</h1>
+<p>Here a go-to summary about statistical test carried out and the returned effect size for each function is provided. This should be useful if one needs to find out more information about how an argument is resolved in the underlying package or if one wishes to browse the source code. So, for example, if you want to know more about how one-way (between-subjects) ANOVA, you can run <code><a href="https://rdrr.io/r/stats/oneway.test.html" class="external-link">?stats::oneway.test</a></code> in your R console.</p>
+<div class="section level2">
+<h2 id="centrality_description">
+<code>centrality_description</code><a class="anchor" aria-label="anchor" href="#centrality_description"></a>
 </h2>
 <table class="table">
 <colgroup>
@@ -775,34 +744,35 @@
 <tr class="odd">
 <td>Parametric</td>
 <td>mean</td>
-<td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html">parameters::describe_distribution</a></code></td>
+<td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">parameters::describe_distribution</a></code></td>
 </tr>
 <tr class="even">
 <td>Non-parametric</td>
 <td>median</td>
-<td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html">parameters::describe_distribution</a></code></td>
+<td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">parameters::describe_distribution</a></code></td>
 </tr>
 <tr class="odd">
 <td>Robust</td>
 <td>trimmed mean</td>
-<td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html">parameters::describe_distribution</a></code></td>
+<td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">parameters::describe_distribution</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
 <td>MAP (maximum <em>a posteriori</em> probability) estimate</td>
-<td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html">parameters::describe_distribution</a></code></td>
+<td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">parameters::describe_distribution</a></code></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="two_sample_test--oneway_anova" class="section level2">
-<h2 class="hasAnchor">
-<a href="#two_sample_test--oneway_anova" class="anchor"></a><code>two_sample_test</code> + <code>oneway_anova</code>
+<div class="section level2">
+<h2 id="two_sample_test--oneway_anova">
+<code>two_sample_test</code> + <code>oneway_anova</code>
+<a class="anchor" aria-label="anchor" href="#two_sample_test--oneway_anova"></a>
 </h2>
 <p>No. of groups: <code>2</code> =&gt; <code>two_sample_test</code><br> No. of groups: <code>&gt; 2</code> =&gt; <code>oneway_anova</code></p>
-<div id="between-subjects" class="section level3">
-<h3 class="hasAnchor">
-<a href="#between-subjects" class="anchor"></a>between-subjects</h3>
+<div class="section level3">
+<h3 id="between-subjects">between-subjects<a class="anchor" aria-label="anchor" href="#between-subjects"></a>
+</h3>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <thead><tr class="header">
@@ -816,49 +786,49 @@
 <td>Parametric</td>
 <td>&gt; 2</td>
 <td>Fisher’s or Welch’s one-way ANOVA</td>
-<td><code><a href="https://rdrr.io/r/stats/oneway.test.html">stats::oneway.test</a></code></td>
+<td><code><a href="https://rdrr.io/r/stats/oneway.test.html" class="external-link">stats::oneway.test</a></code></td>
 </tr>
 <tr class="even">
 <td>Non-parametric</td>
 <td>&gt; 2</td>
 <td>Kruskal–Wallis one-way ANOVA</td>
-<td><code><a href="https://rdrr.io/r/stats/kruskal.test.html">stats::kruskal.test</a></code></td>
+<td><code><a href="https://rdrr.io/r/stats/kruskal.test.html" class="external-link">stats::kruskal.test</a></code></td>
 </tr>
 <tr class="odd">
 <td>Robust</td>
 <td>&gt; 2</td>
 <td>Heteroscedastic one-way ANOVA for trimmed means</td>
-<td><code><a href="https://rdrr.io/pkg/WRS2/man/t1way.html">WRS2::t1way</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/WRS2/man/t1way.html" class="external-link">WRS2::t1way</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayes Factor</td>
 <td>&gt; 2</td>
 <td>Fisher’s ANOVA</td>
-<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/anovaBF.html">BayesFactor::anovaBF</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/anovaBF.html" class="external-link">BayesFactor::anovaBF</a></code></td>
 </tr>
 <tr class="odd">
 <td>Parametric</td>
 <td>2</td>
 <td>Student’s or Welch’s <em>t</em>-test</td>
-<td><code><a href="https://rdrr.io/r/stats/t.test.html">stats::t.test</a></code></td>
+<td><code><a href="https://rdrr.io/r/stats/t.test.html" class="external-link">stats::t.test</a></code></td>
 </tr>
 <tr class="even">
 <td>Non-parametric</td>
 <td>2</td>
 <td>Mann–Whitney <em>U</em> test</td>
-<td><code><a href="https://rdrr.io/r/stats/wilcox.test.html">stats::wilcox.test</a></code></td>
+<td><code><a href="https://rdrr.io/r/stats/wilcox.test.html" class="external-link">stats::wilcox.test</a></code></td>
 </tr>
 <tr class="odd">
 <td>Robust</td>
 <td>2</td>
 <td>Yuen’s test for trimmed means</td>
-<td><code><a href="https://rdrr.io/pkg/WRS2/man/yuen.html">WRS2::yuen</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/WRS2/man/yuen.html" class="external-link">WRS2::yuen</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
 <td>2</td>
 <td>Student’s <em>t</em>-test</td>
-<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/ttestBF.html">BayesFactor::ttestBF</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/ttestBF.html" class="external-link">BayesFactor::ttestBF</a></code></td>
 </tr>
 </tbody>
 </table>
@@ -887,7 +857,7 @@
 </td>
 <td>✅</td>
 <td>
-<code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html">effectsize::omega_squared</a></code>, <code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html">effectsize::eta_squared</a></code>
+<code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::omega_squared</a></code>, <code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::eta_squared</a></code>
 </td>
 </tr>
 <tr class="even">
@@ -895,7 +865,7 @@
 <td>&gt; 2</td>
 <td><embed src="https://latex.codecogs.com/svg.latex?%5Cepsilon_%7Bordinal%7D%5E2" title="\epsilon_{ordinal}^2"></embed></td>
 <td>✅</td>
-<td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html">effectsize::rank_epsilon_squared</a></code></td>
+<td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html" class="external-link">effectsize::rank_epsilon_squared</a></code></td>
 </tr>
 <tr class="odd">
 <td>Robust</td>
@@ -903,14 +873,14 @@
 <td>
 <embed src="https://latex.codecogs.com/svg.latex?%5Cxi" title="\xi"></embed> (Explanatory measure of effect size)</td>
 <td>✅</td>
-<td><code><a href="https://rdrr.io/pkg/WRS2/man/t1way.html">WRS2::t1way</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/WRS2/man/t1way.html" class="external-link">WRS2::t1way</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayes Factor</td>
 <td>&gt; 2</td>
 <td><embed src="https://latex.codecogs.com/svg.latex?R_%7BBayesian%7D%5E2" title="R_{Bayesian}^2"></embed></td>
 <td>✅</td>
-<td><code><a href="https://easystats.github.io/performance/reference/r2_bayes.html">performance::r2_bayes</a></code></td>
+<td><code><a href="https://easystats.github.io/performance/reference/r2_bayes.html" class="external-link">performance::r2_bayes</a></code></td>
 </tr>
 <tr class="odd">
 <td>Parametric</td>
@@ -919,7 +889,7 @@
 </td>
 <td>✅</td>
 <td>
-<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html">effectsize::cohens_d</a></code>, <code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html">effectsize::hedges_g</a></code>
+<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::cohens_d</a></code>, <code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::hedges_g</a></code>
 </td>
 </tr>
 <tr class="even">
@@ -928,7 +898,7 @@
 <td>
 <em>r</em> (rank-biserial correlation)</td>
 <td>✅</td>
-<td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html">effectsize::rank_biserial</a></code></td>
+<td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html" class="external-link">effectsize::rank_biserial</a></code></td>
 </tr>
 <tr class="odd">
 <td>Robust</td>
@@ -936,21 +906,21 @@
 <td>
 <embed src="https://latex.codecogs.com/svg.latex?%5Cdelta_%7BR%7D%5E%7BAKP%7D" title="\delta_{R}^{AKP}"></embed> (Algina-Keselman-Penfield robust standardized difference)</td>
 <td>✅</td>
-<td><code><a href="https://rdrr.io/pkg/WRS2/man/yuen.html">WRS2::akp.effect</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/WRS2/man/yuen.html" class="external-link">WRS2::akp.effect</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
 <td>2</td>
 <td><embed src="https://latex.codecogs.com/svg.latex?%5Cdelta_%7Bposterior%7D" title="\delta_{posterior}"></embed></td>
 <td>✅</td>
-<td><code><a href="https://easystats.github.io/bayestestR/reference/describe_posterior.html">bayestestR::describe_posterior</a></code></td>
+<td><code><a href="https://easystats.github.io/bayestestR/reference/describe_posterior.html" class="external-link">bayestestR::describe_posterior</a></code></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="within-subjects" class="section level3">
-<h3 class="hasAnchor">
-<a href="#within-subjects" class="anchor"></a>within-subjects</h3>
+<div class="section level3">
+<h3 id="within-subjects">within-subjects<a class="anchor" aria-label="anchor" href="#within-subjects"></a>
+</h3>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <colgroup>
@@ -970,49 +940,49 @@
 <td>Parametric</td>
 <td>&gt; 2</td>
 <td>One-way repeated measures ANOVA</td>
-<td><code><a href="https://rdrr.io/pkg/afex/man/aov_car.html">afex::aov_ez</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/afex/man/aov_car.html" class="external-link">afex::aov_ez</a></code></td>
 </tr>
 <tr class="even">
 <td>Non-parametric</td>
 <td>&gt; 2</td>
 <td>Friedman rank sum test</td>
-<td><code><a href="https://rdrr.io/r/stats/friedman.test.html">stats::friedman.test</a></code></td>
+<td><code><a href="https://rdrr.io/r/stats/friedman.test.html" class="external-link">stats::friedman.test</a></code></td>
 </tr>
 <tr class="odd">
 <td>Robust</td>
 <td>&gt; 2</td>
 <td>Heteroscedastic one-way repeated measures ANOVA for trimmed means</td>
-<td><code><a href="https://rdrr.io/pkg/WRS2/man/rmanova.html">WRS2::rmanova</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/WRS2/man/rmanova.html" class="external-link">WRS2::rmanova</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayes Factor</td>
 <td>&gt; 2</td>
 <td>One-way repeated measures ANOVA</td>
-<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/anovaBF.html">BayesFactor::anovaBF</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/anovaBF.html" class="external-link">BayesFactor::anovaBF</a></code></td>
 </tr>
 <tr class="odd">
 <td>Parametric</td>
 <td>2</td>
 <td>Student’s <em>t</em>-test</td>
-<td><code><a href="https://rdrr.io/r/stats/t.test.html">stats::t.test</a></code></td>
+<td><code><a href="https://rdrr.io/r/stats/t.test.html" class="external-link">stats::t.test</a></code></td>
 </tr>
 <tr class="even">
 <td>Non-parametric</td>
 <td>2</td>
 <td>Wilcoxon signed-rank test</td>
-<td><code><a href="https://rdrr.io/r/stats/wilcox.test.html">stats::wilcox.test</a></code></td>
+<td><code><a href="https://rdrr.io/r/stats/wilcox.test.html" class="external-link">stats::wilcox.test</a></code></td>
 </tr>
 <tr class="odd">
 <td>Robust</td>
 <td>2</td>
 <td>Yuen’s test on trimmed means for dependent samples</td>
-<td><code><a href="https://rdrr.io/pkg/WRS2/man/yuend.html">WRS2::yuend</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/WRS2/man/yuend.html" class="external-link">WRS2::yuend</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
 <td>2</td>
 <td>Student’s <em>t</em>-test</td>
-<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/ttestBF.html">BayesFactor::ttestBF</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/ttestBF.html" class="external-link">BayesFactor::ttestBF</a></code></td>
 </tr>
 </tbody>
 </table>
@@ -1041,7 +1011,7 @@
 </td>
 <td>✅</td>
 <td>
-<code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html">effectsize::omega_squared</a></code>, <code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html">effectsize::eta_squared</a></code>
+<code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::omega_squared</a></code>, <code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::eta_squared</a></code>
 </td>
 </tr>
 <tr class="even">
@@ -1050,7 +1020,7 @@
 <td>
 <embed src="https://latex.codecogs.com/svg.latex?W_%7BKendall%7D" title="W_{Kendall}"></embed> (Kendall’s coefficient of concordance)</td>
 <td>✅</td>
-<td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html">effectsize::kendalls_w</a></code></td>
+<td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html" class="external-link">effectsize::kendalls_w</a></code></td>
 </tr>
 <tr class="odd">
 <td>Robust</td>
@@ -1058,14 +1028,14 @@
 <td>
 <embed src="https://latex.codecogs.com/svg.latex?%5Cdelta_%7BR-avg%7D%5E%7BAKP%7D" title="\delta_{R-avg}^{AKP}"></embed> (Algina-Keselman-Penfield robust standardized difference average)</td>
 <td>✅</td>
-<td><code><a href="https://rdrr.io/pkg/WRS2/man/wmcpAKP.html">WRS2::wmcpAKP</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/WRS2/man/wmcpAKP.html" class="external-link">WRS2::wmcpAKP</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayes Factor</td>
 <td>&gt; 2</td>
 <td><embed src="https://latex.codecogs.com/svg.latex?R_%7BBayesian%7D%5E2" title="R_{Bayesian}^2"></embed></td>
 <td>✅</td>
-<td><code><a href="https://easystats.github.io/performance/reference/r2_bayes.html">performance::r2_bayes</a></code></td>
+<td><code><a href="https://easystats.github.io/performance/reference/r2_bayes.html" class="external-link">performance::r2_bayes</a></code></td>
 </tr>
 <tr class="odd">
 <td>Parametric</td>
@@ -1074,7 +1044,7 @@
 </td>
 <td>✅</td>
 <td>
-<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html">effectsize::cohens_d</a></code>, <code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html">effectsize::hedges_g</a></code>
+<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::cohens_d</a></code>, <code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::hedges_g</a></code>
 </td>
 </tr>
 <tr class="even">
@@ -1083,7 +1053,7 @@
 <td>
 <em>r</em> (rank-biserial correlation)</td>
 <td>✅</td>
-<td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html">effectsize::rank_biserial</a></code></td>
+<td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html" class="external-link">effectsize::rank_biserial</a></code></td>
 </tr>
 <tr class="odd">
 <td>Robust</td>
@@ -1091,22 +1061,22 @@
 <td>
 <embed src="https://latex.codecogs.com/svg.latex?%5Cdelta_%7BR%7D%5E%7BAKP%7D" title="\delta_{R}^{AKP}"></embed> (Algina-Keselman-Penfield robust standardized difference)</td>
 <td>✅</td>
-<td><code><a href="https://rdrr.io/pkg/WRS2/man/wmcpAKP.html">WRS2::wmcpAKP</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/WRS2/man/wmcpAKP.html" class="external-link">WRS2::wmcpAKP</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
 <td>2</td>
 <td><embed src="https://latex.codecogs.com/svg.latex?%5Cdelta_%7Bposterior%7D" title="\delta_{posterior}"></embed></td>
 <td>✅</td>
-<td><code><a href="https://easystats.github.io/bayestestR/reference/describe_posterior.html">bayestestR::describe_posterior</a></code></td>
+<td><code><a href="https://easystats.github.io/bayestestR/reference/describe_posterior.html" class="external-link">bayestestR::describe_posterior</a></code></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<div id="one_sample_test" class="section level2">
-<h2 class="hasAnchor">
-<a href="#one_sample_test" class="anchor"></a><code>one_sample_test</code>
+<div class="section level2">
+<h2 id="one_sample_test">
+<code>one_sample_test</code><a class="anchor" aria-label="anchor" href="#one_sample_test"></a>
 </h2>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
@@ -1119,22 +1089,22 @@
 <tr class="odd">
 <td>Parametric</td>
 <td>One-sample Student’s <em>t</em>-test</td>
-<td><code><a href="https://rdrr.io/r/stats/t.test.html">stats::t.test</a></code></td>
+<td><code><a href="https://rdrr.io/r/stats/t.test.html" class="external-link">stats::t.test</a></code></td>
 </tr>
 <tr class="even">
 <td>Non-parametric</td>
 <td>One-sample Wilcoxon test</td>
-<td><code><a href="https://rdrr.io/r/stats/wilcox.test.html">stats::wilcox.test</a></code></td>
+<td><code><a href="https://rdrr.io/r/stats/wilcox.test.html" class="external-link">stats::wilcox.test</a></code></td>
 </tr>
 <tr class="odd">
 <td>Robust</td>
 <td>Bootstrap-<em>t</em> method for one-sample test</td>
-<td><code><a href="https://rdrr.io/pkg/WRS2/man/trimcibt.html">WRS2::trimcibt</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/WRS2/man/trimcibt.html" class="external-link">WRS2::trimcibt</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
 <td>One-sample Student’s <em>t</em>-test</td>
-<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/ttestBF.html">BayesFactor::ttestBF</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/ttestBF.html" class="external-link">BayesFactor::ttestBF</a></code></td>
 </tr>
 </tbody>
 </table>
@@ -1159,7 +1129,7 @@
 </td>
 <td>✅</td>
 <td>
-<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html">effectsize::cohens_d</a></code>, <code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html">effectsize::hedges_g</a></code>
+<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::cohens_d</a></code>, <code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::hedges_g</a></code>
 </td>
 </tr>
 <tr class="even">
@@ -1167,7 +1137,7 @@
 <td>
 <em>r</em> (rank-biserial correlation)</td>
 <td>✅</td>
-<td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html">effectsize::rank_biserial</a></code></td>
+<td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html" class="external-link">effectsize::rank_biserial</a></code></td>
 </tr>
 <tr class="odd">
 <td>Robust</td>
@@ -1180,14 +1150,14 @@
 <td>Bayes Factor</td>
 <td><embed src="https://latex.codecogs.com/svg.latex?%5Cdelta_%7Bposterior%7D" title="\delta_{posterior}"></embed></td>
 <td>✅</td>
-<td><code><a href="https://easystats.github.io/bayestestR/reference/describe_posterior.html">bayestestR::describe_posterior</a></code></td>
+<td><code><a href="https://easystats.github.io/bayestestR/reference/describe_posterior.html" class="external-link">bayestestR::describe_posterior</a></code></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="corr_test" class="section level2">
-<h2 class="hasAnchor">
-<a href="#corr_test" class="anchor"></a><code>corr_test</code>
+<div class="section level2">
+<h2 id="corr_test">
+<code>corr_test</code><a class="anchor" aria-label="anchor" href="#corr_test"></a>
 </h2>
 <p><strong>Hypothesis testing</strong> and <strong>Effect size estimation</strong></p>
 <table class="table">
@@ -1208,36 +1178,36 @@
 <td>Parametric</td>
 <td>Pearson’s correlation coefficient</td>
 <td>✅</td>
-<td><code><a href="https://easystats.github.io/correlation/reference/correlation.html">correlation::correlation</a></code></td>
+<td><code><a href="https://easystats.github.io/correlation/reference/correlation.html" class="external-link">correlation::correlation</a></code></td>
 </tr>
 <tr class="even">
 <td>Non-parametric</td>
 <td>Spearman’s rank correlation coefficient</td>
 <td>✅</td>
-<td><code><a href="https://easystats.github.io/correlation/reference/correlation.html">correlation::correlation</a></code></td>
+<td><code><a href="https://easystats.github.io/correlation/reference/correlation.html" class="external-link">correlation::correlation</a></code></td>
 </tr>
 <tr class="odd">
 <td>Robust</td>
 <td>Winsorized Pearson correlation coefficient</td>
 <td>✅</td>
-<td><code><a href="https://easystats.github.io/correlation/reference/correlation.html">correlation::correlation</a></code></td>
+<td><code><a href="https://easystats.github.io/correlation/reference/correlation.html" class="external-link">correlation::correlation</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
 <td>Pearson’s correlation coefficient</td>
 <td>✅</td>
-<td><code><a href="https://easystats.github.io/correlation/reference/correlation.html">correlation::correlation</a></code></td>
+<td><code><a href="https://easystats.github.io/correlation/reference/correlation.html" class="external-link">correlation::correlation</a></code></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="contingency_table" class="section level2">
-<h2 class="hasAnchor">
-<a href="#contingency_table" class="anchor"></a><code>contingency_table</code>
+<div class="section level2">
+<h2 id="contingency_table">
+<code>contingency_table</code><a class="anchor" aria-label="anchor" href="#contingency_table"></a>
 </h2>
-<div id="two-way-table" class="section level3">
-<h3 class="hasAnchor">
-<a href="#two-way-table" class="anchor"></a>two-way table</h3>
+<div class="section level3">
+<h3 id="two-way-table">two-way table<a class="anchor" aria-label="anchor" href="#two-way-table"></a>
+</h3>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <colgroup>
@@ -1257,19 +1227,19 @@
 <td>Parametric/Non-parametric</td>
 <td>Unpaired</td>
 <td>Pearson’s <embed src="https://latex.codecogs.com/svg.latex?%5Cchi%5E2" title="\chi^2"></embed> test</td>
-<td><code><a href="https://rdrr.io/r/stats/chisq.test.html">stats::chisq.test</a></code></td>
+<td><code><a href="https://rdrr.io/r/stats/chisq.test.html" class="external-link">stats::chisq.test</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
 <td>Unpaired</td>
 <td>Bayesian Pearson’s <embed src="https://latex.codecogs.com/svg.latex?%5Cchi%5E2" title="\chi^2"></embed> test</td>
-<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/contingencyTableBF.html">BayesFactor::contingencyTableBF</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/contingencyTableBF.html" class="external-link">BayesFactor::contingencyTableBF</a></code></td>
 </tr>
 <tr class="odd">
 <td>Parametric/Non-parametric</td>
 <td>Paired</td>
 <td>McNemar’s <embed src="https://latex.codecogs.com/svg.latex?%5Cchi%5E2" title="\chi^2"></embed> test</td>
-<td><code><a href="https://rdrr.io/r/stats/mcnemar.test.html">stats::mcnemar.test</a></code></td>
+<td><code><a href="https://rdrr.io/r/stats/mcnemar.test.html" class="external-link">stats::mcnemar.test</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
@@ -1295,7 +1265,7 @@
 <td>Cramer’s <embed src="https://latex.codecogs.com/svg.latex?V" title="V"></embed>
 </td>
 <td>✅</td>
-<td><code><a href="https://easystats.github.io/effectsize/reference/phi.html">effectsize::cramers_v</a></code></td>
+<td><code><a href="https://easystats.github.io/effectsize/reference/phi.html" class="external-link">effectsize::cramers_v</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
@@ -1303,7 +1273,7 @@
 <td>Cramer’s <embed src="https://latex.codecogs.com/svg.latex?V" title="V"></embed>
 </td>
 <td>✅</td>
-<td><code><a href="https://easystats.github.io/effectsize/reference/phi.html">effectsize::cramers_v</a></code></td>
+<td><code><a href="https://easystats.github.io/effectsize/reference/phi.html" class="external-link">effectsize::cramers_v</a></code></td>
 </tr>
 <tr class="odd">
 <td>Parametric/Non-parametric</td>
@@ -1311,7 +1281,7 @@
 <td>Cohen’s <embed src="https://latex.codecogs.com/svg.latex?g" title="g"></embed>
 </td>
 <td>✅</td>
-<td><code><a href="https://easystats.github.io/effectsize/reference/phi.html">effectsize::cohens_g</a></code></td>
+<td><code><a href="https://easystats.github.io/effectsize/reference/phi.html" class="external-link">effectsize::cohens_g</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
@@ -1323,9 +1293,9 @@
 </tbody>
 </table>
 </div>
-<div id="one-way-table" class="section level3">
-<h3 class="hasAnchor">
-<a href="#one-way-table" class="anchor"></a>one-way table</h3>
+<div class="section level3">
+<h3 id="one-way-table">one-way table<a class="anchor" aria-label="anchor" href="#one-way-table"></a>
+</h3>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <thead><tr class="header">
@@ -1337,7 +1307,7 @@
 <tr class="odd">
 <td>Parametric/Non-parametric</td>
 <td>Goodness of fit <embed src="https://latex.codecogs.com/svg.latex?%5Cchi%5E2" title="\chi^2"></embed> test</td>
-<td><code><a href="https://rdrr.io/r/stats/chisq.test.html">stats::chisq.test</a></code></td>
+<td><code><a href="https://rdrr.io/r/stats/chisq.test.html" class="external-link">stats::chisq.test</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
@@ -1360,7 +1330,7 @@
 <td>Pearson’s <embed src="https://latex.codecogs.com/svg.latex?C" title="C"></embed>
 </td>
 <td>✅</td>
-<td><code><a href="https://easystats.github.io/effectsize/reference/phi.html">effectsize::pearsons_c</a></code></td>
+<td><code><a href="https://easystats.github.io/effectsize/reference/phi.html" class="external-link">effectsize::pearsons_c</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
@@ -1372,9 +1342,9 @@
 </table>
 </div>
 </div>
-<div id="meta_analysis" class="section level2">
-<h2 class="hasAnchor">
-<a href="#meta_analysis" class="anchor"></a><code>meta_analysis</code>
+<div class="section level2">
+<h2 id="meta_analysis">
+<code>meta_analysis</code><a class="anchor" aria-label="anchor" href="#meta_analysis"></a>
 </h2>
 <p><strong>Hypothesis testing</strong> and <strong>Effect size estimation</strong></p>
 <table class="table">
@@ -1398,43 +1368,43 @@
 <td>Meta-analysis via random-effects models</td>
 <td><embed src="https://latex.codecogs.com/svg.latex?%5Cbeta" title="\beta"></embed></td>
 <td>✅</td>
-<td><code><a href="https://wviechtb.github.io/metafor/reference/metafor-package.html">metafor::metafor</a></code></td>
+<td><code><a href="https://wviechtb.github.io/metafor/reference/metafor-package.html" class="external-link">metafor::metafor</a></code></td>
 </tr>
 <tr class="even">
 <td>Robust</td>
 <td>Meta-analysis via robust random-effects models</td>
 <td><embed src="https://latex.codecogs.com/svg.latex?%5Cbeta" title="\beta"></embed></td>
 <td>✅</td>
-<td><code><a href="https://rdrr.io/pkg/metaplus/man/metaplus.html">metaplus::metaplus</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/metaplus/man/metaplus.html" class="external-link">metaplus::metaplus</a></code></td>
 </tr>
 <tr class="odd">
 <td>Bayes</td>
 <td>Meta-analysis via Bayesian random-effects models</td>
 <td><embed src="https://latex.codecogs.com/svg.latex?%5Cbeta" title="\beta"></embed></td>
 <td>✅</td>
-<td><code><a href="https://rdrr.io/pkg/metaBMA/man/meta_random.html">metaBMA::meta_random</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/metaBMA/man/meta_random.html" class="external-link">metaBMA::meta_random</a></code></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<div id="usage-in-ggstatsplot" class="section level1">
-<h1 class="hasAnchor">
-<a href="#usage-in-ggstatsplot" class="anchor"></a>Usage in <code>ggstatsplot</code>
+<div class="section level1">
+<h1 id="usage-in-ggstatsplot">Usage in <code>ggstatsplot</code>
+<a class="anchor" aria-label="anchor" href="#usage-in-ggstatsplot"></a>
 </h1>
 <p>Note that these functions were initially written to display results from statistical tests on ready-made <code>ggplot2</code> plots implemented in <code>ggstatsplot</code>.</p>
-<p>For detailed documentation, see the package website: <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="uri">https://indrajeetpatil.github.io/ggstatsplot/</a></p>
+<p>For detailed documentation, see the package website: <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link uri">https://indrajeetpatil.github.io/ggstatsplot/</a></p>
 <p>Here is an example from <code>ggstatsplot</code> of what the plots look like when the expressions are displayed in the subtitle-</p>
 <p><img src="reference/figures/ggstatsplot.png" align="center"></p>
 </div>
-<div id="acknowledgments" class="section level1">
-<h1 class="hasAnchor">
-<a href="#acknowledgments" class="anchor"></a>Acknowledgments</h1>
+<div class="section level1">
+<h1 id="acknowledgments">Acknowledgments<a class="anchor" aria-label="anchor" href="#acknowledgments"></a>
+</h1>
 <p>The hexsticker and the schematic illustration of general workflow were generously designed by Sarah Otterstetter (Max Planck Institute for Human Development, Berlin).</p>
 </div>
-<div id="contributing" class="section level1">
-<h1 class="hasAnchor">
-<a href="#contributing" class="anchor"></a>Contributing</h1>
+<div class="section level1">
+<h1 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
+</h1>
 <p>I’m happy to receive bug reports, suggestions, questions, and (most of all) contributions to fix problems and add features. I personally prefer using the <code>GitHub</code> issues system over trying to reach out to me in other ways (personal e-mail, Twitter, etc.). Pull Requests for contributions are encouraged.</p>
 <p>Here are some simple ways in which you can contribute (in the increasing order of commitment):</p>
 <ul>
@@ -1443,69 +1413,75 @@
 <li><p>Review code</p></li>
 <li><p>Add new functionality (in the form of new plotting functions or helpers for preparing subtitles)</p></li>
 </ul>
-<p>Please note that this project is released with a <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/.github/CODE_OF_CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
+<p>Please note that this project is released with a <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/.github/CODE_OF_CONDUCT.md" class="external-link">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
 
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div class="links">
-<h2>Links</h2>
+  <div class="col-md-3" id="pkgdown-sidebar">
+<div class="links">
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=statsExpressions">https://​cloud.r-project.org/​package=statsExpressions</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/IndrajeetPatil/statsExpressions/">https://​github.com/​IndrajeetPatil/​statsExpressions/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/IndrajeetPatil/statsExpressions/issues">https://​github.com/​IndrajeetPatil/​statsExpressions/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=statsExpressions" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/IndrajeetPatil/statsExpressions/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/IndrajeetPatil/statsExpressions/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a> | file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a> | file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
+
 <div class="citation">
-<h2>Citation</h2>
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
 <li><a href="authors.html">Citing statsExpressions</a></li>
 </ul>
 </div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://sites.google.com/site/indrajeetspatilmorality/">Indrajeet Patil</a> <br><small class="roles"> Maintainer, author, copyright holder </small> <a href="https://orcid.org/0000-0003-1995-6531" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> <br><small>(@patilindrajeets)</small>
-</li>
+<a href="https://sites.google.com/site/indrajeetspatilmorality/" class="external-link">Indrajeet Patil</a> <br><small class="roles"> Maintainer, author, copyright holder </small> <a href="https://orcid.org/0000-0003-1995-6531" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
+
+
 
   </div>
 </div>
 
 
-      <footer><div class="copyright">
-  <p>Developed by <a href="https://sites.google.com/site/indrajeetspatilmorality/">Indrajeet Patil</a>.</p>
+    <footer><div class="pkgdown-footer-left">
+  <p></p>
+<p>Developed by <a href="https://sites.google.com/site/indrajeetspatilmorality/" class="external-link">Indrajeet Patil</a>.</p>
 </div>
 
-<div class="pkgdown">
-  <p>Made with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1, using <a href="https://preferably.amirmasoudabdol.name/?source=footer">preferably</a> template.</p>
+<div class="pkgdown-footer-right">
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
   
 
+  
 
   </body>
 </html>
