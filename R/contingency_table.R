@@ -155,7 +155,7 @@ contingency_table <- function(data,
         fixedMargin = fixed.margin,
         priorConcentration = prior.concentration
       ) %>%
-        tidy_model_parameters(ci = conf.level)
+        tidy_model_parameters(ci = conf.level, cramers_v = TRUE)
     }
 
     # one-way table

@@ -188,7 +188,7 @@
 # bayes factor (proportion test)
 
     Code
-      expr_text$expression[[1]]
+      df2$expression[[1]]
     Output
       atop(displaystyle("duh"), expr = paste("log"["e"] * "(BF"["01"] * 
           ") = " * "0.55" * ", ", italic("a")["Gunel-Dickey"] * " = " * 

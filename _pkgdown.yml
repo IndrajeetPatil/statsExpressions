@@ -1,14 +1,20 @@
 url: https://indrajeetpatil.github.io/statsExpressions/
 
-template:
-  package: preferably
+authors:
+  Indrajeet Patil:
+    href: https://sites.google.com/site/indrajeetspatilmorality/
 
 toc:
   depth: 3
 
-authors:
-  Indrajeet Patil:
-    href: https://sites.google.com/site/indrajeetspatilmorality/
+template:
+  bootstrap: 5
+  bootswatch: cyborg
+  theme: arrow-dark
+  bslib:
+    primary: "#0054AD"
+    border-radius: 0.5rem
+    btn-border-radius: 0.25rem
 
 reference:
   - title: Expressions for one-and two-sample t-tests

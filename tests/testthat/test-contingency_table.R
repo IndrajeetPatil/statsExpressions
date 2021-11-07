@@ -186,18 +186,18 @@ test_that(
 
     # extracting results from where this function is implemented
     set.seed(123)
-    df <- contingency_table(
+    df1 <- contingency_table(
       data = mtcars,
       x = am,
       type = "bayes"
     )
 
     # check bayes factor values
-    expect_equal(df$bf10, 0.2465787, tolerance = 0.001)
+    expect_equal(df1$bf10, 0.2465787, tolerance = 0.001)
 
     # expr
     set.seed(123)
-    expr_text <- contingency_table(
+    df2 <- contingency_table(
       type = "bayes",
       data = mtcars,
       x = cyl,
@@ -205,7 +205,7 @@ test_that(
       top.text = "duh"
     )
 
-    expect_snapshot(expr_text$expression[[1]])
+    expect_snapshot(df2$expression[[1]])
   }
 )
 
