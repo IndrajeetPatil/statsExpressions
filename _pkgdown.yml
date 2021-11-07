@@ -4,8 +4,8 @@ authors:
   Indrajeet Patil:
     href: https://sites.google.com/site/indrajeetspatilmorality/
 
-toc:
-  depth: 3
+# toc:
+#   depth: 3
 
 template:
   bootstrap: 5
@@ -17,33 +17,33 @@ template:
     btn-border-radius: 0.25rem
 
 reference:
-  - title: Expressions for one-and two-sample t-tests
+  - title: One-and two-sample t-tests
     desc: Functions to extract exressions or dataframes for one-and two-sample t-tests
     contents:
       - matches("sample")
 
-  - title: Expressions for one-way ANOVA
-    desc: Functions to create expressions for one-way (both between-and within-subject designs) ANOVA
+  - title: One-way ANOVA
+    desc: Functions to create one-way (both between-and within-subject designs) ANOVA
     contents:
       - matches("anova")
 
-  - title: Expressions for correlation analysis
-    desc: Functions to create expressions for correlation tests
+  - title: Correlation analysis
+    desc: Functions to create correlation tests
     contents:
       - matches("corr_")
 
-  - title: Expressions for contingency table analysis
-    desc: Functions to create expressions for contingency table analysis and one-sample goodness of fit proportion test
+  - title: Contingency table analysis
+    desc: Functions to create contingency table analysis and one-sample goodness of fit proportion test
     contents:
       - matches("contingency_")
 
-  - title: Expressions for meta-analysis
-    desc: Functions to create expressions for random-effects meta-analysis
+  - title: Meta-analysis
+    desc: Functions to create random-effects meta-analysis
     contents:
       - matches("meta_")
 
-  - title: Expressions for centrality measure
-    desc: Functions to create expressions for mean, median, trimmed mean, MAP
+  - title: Centrality measure
+    desc: Functions to create mean, median, trimmed mean, MAP
     contents:
       - matches("centrality_")
 
