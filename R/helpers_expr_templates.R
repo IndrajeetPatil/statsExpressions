@@ -115,7 +115,7 @@ expr_template <- function(data,
     if (!"effectsize" %in% names(data)) data %<>% mutate(effectsize = method)
 
     # special handling of contingency tabs analysis
-    if (grepl("contingency", data$method[[1]])) data %<>% filter(grepl("cramer", term, TRUE))
+    if (grepl("contingency", data$method[[1]])) data %<>% mutate(effectsize = "Cramers_v")
   }
 
   # extracting estimate values
@@ -296,6 +296,7 @@ estimate_type_switch <- function(x) {
     grepl("^trimmed", x) ~ list(quote(widehat(mu)["trimmed"])),
     grepl("^kendall", x) ~ list(quote(widehat(italic("W"))["Kendall"])),
     grepl("^epsilon2", x) ~ list(quote(widehat(epsilon)["ordinal"]^2)),
+    grepl("^cramers_v$", x) ~ list(quote(italic("V"))),
     grepl("cramer", x) ~ list(quote(widehat(italic("V"))["Cramer"])),
     grepl("cohen's g", x) ~ list(quote(widehat(italic("g"))["Cohen"])),
     grepl("^explanatory", x) ~ list(quote(widehat(xi))),
@@ -303,7 +304,6 @@ estimate_type_switch <- function(x) {
     grepl("average$", x) ~ list(quote(widehat(delta)["R-avg"]^"AKP")),
     grepl("^bayesian pearson", x) ~ list(quote(rho)),
     grepl("posterior|t-", x) ~ list(quote(italic(delta))),
-    grepl("contingency", x) ~ list(quote(italic("V"))),
     grepl("linear", x) ~ list(quote(italic(R^"2"))),
     grepl("^meta", x) ~ list(quote(widehat(beta)["summary"]^"meta")),
     TRUE ~ list(NULL)

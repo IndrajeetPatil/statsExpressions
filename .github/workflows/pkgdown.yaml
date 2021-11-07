@@ -34,9 +34,11 @@ jobs:
 
       - name: Install dependencies
         run: |
+          install.packages("remotes")
+          # To get links for homepage
+          remotes::install_cran("devtools")
           remotes::install_deps(dependencies = TRUE)
-          install.packages("pkgdown", type = "binary")
-          remotes::install_github("amirmasoudabdol/preferably", type = "source")
+          remotes::install_dev("pkgdown")
         shell: Rscript {0}
 
       - name: Install package

@@ -10,8 +10,10 @@
 
 tidy_model_parameters <- function(model, ...) {
   stats_df <- parameters::model_parameters(model, verbose = FALSE, ...) %>%
+    select(where(~ !all(is.na(.x)))) %>% # remove columns where all rows are NAs
     select(-matches("Difference")) %>%
     insight::standardize_names(style = "broom") %>%
+    rename_all(~ gsub("cramers.", "", .x)) %>%
     rename_all(.funs = recode, "bayes.factor" = "bf10") %>%
     tidyr::fill(matches("^prior|^bf"), .direction = "updown") %>%
     mutate(across(matches("bf10"), ~ log(.x), .names = "log_e_{.col}"))

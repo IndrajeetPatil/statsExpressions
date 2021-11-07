@@ -294,7 +294,7 @@ oneway_anova <- function(data,
     if (!paired) .f.args <- list(formula = new_formula(y, x), rscaleFixed = bf.prior)
     if (paired) {
       .f.args <- list(
-        formula = new_formula(rlang::enexpr(y), expr(!!rlang::enexpr(x) + rowid)),
+        formula = new_formula(enexpr(y), expr(!!enexpr(x) + rowid)),
         rscaleFixed = bf.prior, whichRandom = "rowid", rscaleRandom = 1
       )
     }

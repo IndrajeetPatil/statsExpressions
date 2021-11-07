@@ -87,7 +87,7 @@ meta_analysis <- function(data,
   insight::check_if_installed(.ns)
 
   # construct a call and then extract a tidy dataframe
-  stats_df <- eval(rlang::call2(.fn = .fn, .ns = .ns, data = data, !!!.f.args)) %>%
+  stats_df <- eval(call2(.fn = .fn, .ns = .ns, data = data, !!!.f.args)) %>%
     tidy_model_parameters(include_studies = FALSE, ci = conf.level)
 
   # add a column describing effect size

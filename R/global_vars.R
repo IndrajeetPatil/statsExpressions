@@ -29,7 +29,8 @@ utils::globalVariables(
     ".fn",
     ".ns",
     "n",
-    "p.value"
+    "p.value",
+    "where"
   ),
   package = "statsExpressions",
   add = FALSE
