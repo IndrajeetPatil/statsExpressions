@@ -96,14 +96,16 @@ meta_analysis <- function(data,
 
   # ----------------------- expression ---------------------------------------
 
+  # styler: off
   polish_data(stats_df) %>%
     mutate(expression = list(expr_template(
-      data = .,
-      n = nrow(data),
-      n.text = quote(italic("n")["effects"]),
-      no.parameters = 0L,
-      k = k,
-      top.text = top.text,
-      bayesian = ifelse(type == "bayes", TRUE, FALSE)
+      data            = .,
+      n               = nrow(data),
+      n.text          = quote(italic("n")["effects"]),
+      no.parameters   = 0L,
+      k               = k,
+      top.text        = top.text,
+      bayesian        = ifelse(type == "bayes", TRUE, FALSE)
     )))
+  # styler: on
 }

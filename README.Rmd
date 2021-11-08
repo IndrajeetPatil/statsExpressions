@@ -186,7 +186,7 @@ For example, here are results from Welch's *t*-test:
 
 <img src="man/figures/stats_reporting_format.png" align="center" />
 
-## Example: Expressions for centrality measure
+## Expressions for centrality measure
 
 ```{r centrality}
 library(ggplot2)
@@ -198,7 +198,9 @@ centrality_description(mtcars, cyl, wt) |>
   geom_label(aes(label = expression), parse = TRUE)
 ```
 
-## Example: Expressions for one-way ANOVAs
+Here are a few examples for supported analyeses.
+
+## Expressions for one-way ANOVAs
 
 ### Between-subjects design
 
@@ -252,7 +254,7 @@ ggplot2::ggplot(WineTasting, aes(Wine, Taste, color = Wine)) +
   )
 ```
 
-## Example: Expressions for two-sample tests
+## Expressions for two-sample tests
 
 ### Between-subjects design
 
@@ -306,7 +308,7 @@ paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject")
   )
 ```
 
-## Example: Expressions for one-sample tests
+## Expressions for one-sample tests
 
 ```{r t_one}
 # setup
@@ -324,7 +326,7 @@ ggplot(mtcars, aes(wt)) +
   )
 ```
 
-## Example: Expressions for correlation analyses
+## Expressions for correlation analysis
 
 Let's look at another example where we want to run correlation analysis:
 
@@ -343,7 +345,7 @@ ggplot(mtcars, aes(mpg, wt)) +
   )
 ```
 
-## Example: Expressions for contingency table analysis
+## Expressions for contingency table analysis
 
 For categorical/nominal data - one-sample:
 
@@ -380,7 +382,7 @@ library(ggplot2)
 contingency_table(mtcars, am, cyl)$expression[[1]]
 ```
 
-## Example: Expressions for meta-analysis
+## Expressions for meta-analysis
 
 ```{r metaanalysis, fig.height=14, fig.width=12}
 # setup

@@ -8,8 +8,8 @@ output:
     fig.align: 'center'
     fig.asp: 0.618
     dpi: 300
-    #toc: true
-    #toc_depth: 3
+    toc: true
+    toc_depth: 3
 vignette: >
   %\VignetteIndexEntry{Dataframe outputs}
   %\VignetteEngine{knitr::rmarkdown}

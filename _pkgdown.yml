@@ -4,8 +4,8 @@ authors:
   Indrajeet Patil:
     href: https://sites.google.com/site/indrajeetspatilmorality/
 
-# toc:
-#   depth: 3
+toc:
+  depth: 3
 
 template:
   bootstrap: 5
@@ -18,32 +18,32 @@ template:
 
 reference:
   - title: One-and two-sample t-tests
-    desc: Functions to extract exressions or dataframes for one-and two-sample t-tests
+    desc: Dataframes and expressions for one-and two-sample t-tests
     contents:
       - matches("sample")
 
   - title: One-way ANOVA
-    desc: Functions to create one-way (both between-and within-subject designs) ANOVA
+    desc: Dataframes and expressions one-way (both between-and within-subject designs) ANOVA
     contents:
       - matches("anova")
 
   - title: Correlation analysis
-    desc: Functions to create correlation tests
+    desc: Dataframes and expressions for correlation tests
     contents:
       - matches("corr_")
 
   - title: Contingency table analysis
-    desc: Functions to create contingency table analysis and one-sample goodness of fit proportion test
+    desc: Dataframes and expressions for contingency table analysis and one-sample goodness of fit proportion test
     contents:
       - matches("contingency_")
 
   - title: Meta-analysis
-    desc: Functions to create random-effects meta-analysis
+    desc: Dataframes and expressions for random-effects meta-analysis
     contents:
       - matches("meta_")
 
   - title: Centrality measure
-    desc: Functions to create mean, median, trimmed mean, MAP
+    desc: Dataframes and expressions for descriptive statistics
     contents:
       - matches("centrality_")
 

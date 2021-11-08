@@ -153,16 +153,18 @@ oneway_anova <- function(data,
   # make sure both quoted and unquoted arguments are supported
   c(x, y) %<-% c(ensym(x), ensym(y))
 
+  # styler: off
   # data cleanup
   data %<>%
     long_to_wide_converter(
-      x = {{ x }},
-      y = {{ y }},
+      x          = {{ x }},
+      y          = {{ y }},
       subject.id = {{ subject.id }},
-      paired = paired,
-      spread = FALSE
+      paired     = paired,
+      spread     = FALSE
     ) %>%
     mutate(rowid = as.factor(rowid))
+  # styler: on
 
   #  parametric ---------------------------------------
 
@@ -181,22 +183,20 @@ oneway_anova <- function(data,
       insight::check_if_installed("afex", minimum_version = "1.0-0")
 
       # Fisher's ANOVA
+      # styler: off
       mod <- afex::aov_ez(
-        id = "rowid",
-        dv = as_string(y),
-        data = data,
-        within = as_string(x),
+        id          = "rowid",
+        dv          = as_string(y),
+        data        = data,
+        within      = as_string(x),
         include_aov = TRUE
       )
+      # styler: on
     }
 
     if (!paired) {
       # Welch's ANOVA
-      mod <- stats::oneway.test(
-        formula = new_formula(y, x),
-        data = data,
-        var.equal = var.equal
-      )
+      mod <- stats::oneway.test(new_formula(y, x), data, var.equal = var.equal)
     }
 
     # tidying it up
@@ -232,15 +232,17 @@ oneway_anova <- function(data,
     stats_df <- tidy_model_parameters(exec(.f, !!!.f.args, data = data))
 
     # computing respective effect sizes
+    # styler: off
     effsize_df <- exec(
-      .fn = .f.es,
-      data = data,
-      ci = conf.level,
+      .fn        = .f.es,
+      data       = data,
+      ci         = conf.level,
       iterations = nboot,
-      verbose = FALSE,
+      verbose    = FALSE,
       !!!.f.es.args
     ) %>%
       tidy_model_effectsize(.)
+    # styler: on
 
     # dataframe
     stats_df <- bind_cols(stats_df, effsize_df)
@@ -252,13 +254,14 @@ oneway_anova <- function(data,
     # expression details
     c(no.parameters, k.df, k.df.error) %<-% c(2L, ifelse(paired, k, 0L), k)
 
+    # styler: off
     # heteroscedastic one-way repeated measures ANOVA for trimmed means
     if (paired) {
       mod <- WRS2::rmanova(
-        y = data[[as_name(y)]],
-        groups = data[[as_name(x)]],
-        blocks = data[["rowid"]],
-        tr = tr
+        y       = data[[as_name(y)]],
+        groups  = data[[as_name(x)]],
+        blocks  = data[["rowid"]],
+        tr      = tr
       )
     }
 
@@ -266,12 +269,13 @@ oneway_anova <- function(data,
     if (!paired) {
       mod <- WRS2::t1way(
         formula = new_formula(y, x),
-        data = data,
-        tr = tr,
-        alpha = 1 - conf.level,
-        nboot = nboot
+        data    = data,
+        tr      = tr,
+        alpha   = 1 - conf.level,
+        nboot   = nboot
       )
     }
+    # styler: on
 
     # parameter extraction
     stats_df <- tidy_model_parameters(mod)
@@ -311,16 +315,18 @@ oneway_anova <- function(data,
 
   # expression ---------------------------------------
 
+  # styler: off
   polish_data(stats_df) %>%
     mutate(expression = list(expr_template(
-      data = .,
-      no.parameters = no.parameters,
-      n = ifelse(paired, length(unique(data$rowid)), nrow(data)),
-      paired = paired,
-      k = k,
-      k.df = k.df,
-      k.df.error = k.df.error,
-      top.text = top.text,
-      bayesian = ifelse(type == "bayes", TRUE, FALSE)
+      data            = .,
+      no.parameters   = no.parameters,
+      n               = ifelse(paired, length(unique(data$rowid)), nrow(data)),
+      paired          = paired,
+      k               = k,
+      k.df            = k.df,
+      k.df.error      = k.df.error,
+      top.text        = top.text,
+      bayesian        = ifelse(type == "bayes", TRUE, FALSE)
     )))
+  # styler: on
 }

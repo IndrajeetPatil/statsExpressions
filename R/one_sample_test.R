@@ -127,14 +127,16 @@ one_sample_test <- function(data,
       select(-matches("^est|^conf|^diff|^term|^ci"))
 
     # extracting effect size details
+    # styler: off
     effsize_df <- exec(
       .f.es,
-      x = x_vec,
-      mu = test.value,
+      x       = x_vec,
+      mu      = test.value,
       verbose = FALSE,
-      ci = conf.level
+      ci      = conf.level
     ) %>%
       tidy_model_effectsize(.)
+    # styler: on
 
     # dataframe
     stats_df <- bind_cols(stats_df, effsize_df)
@@ -160,13 +162,15 @@ one_sample_test <- function(data,
   # expression ---------------------------------------
 
   # return the output
+  # styler: off
   polish_data(stats_df) %>%
     mutate(expression = list(expr_template(
-      data = .,
-      no.parameters = no.parameters,
-      n = length(x_vec),
-      k = k,
-      top.text = top.text,
-      bayesian = ifelse(type == "bayes", TRUE, FALSE)
+      data            = .,
+      no.parameters   = no.parameters,
+      n               = length(x_vec),
+      k               = k,
+      top.text        = top.text,
+      bayesian        = ifelse(type == "bayes", TRUE, FALSE)
     )))
+  # styler: on
 }

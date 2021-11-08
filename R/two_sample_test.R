@@ -130,14 +130,16 @@ two_sample_test <- function(data,
   c(x, y) %<-% c(ensym(x), ensym(y))
 
   # properly removing NAs if it's a paired design
+  # styler: off
   data %<>%
     long_to_wide_converter(
-      x = {{ x }},
-      y = {{ y }},
+      x          = {{ x }},
+      y          = {{ y }},
       subject.id = {{ subject.id }},
-      paired = paired,
-      spread = ifelse(type %in% c("bayes", "robust"), paired, FALSE)
+      paired     = paired,
+      spread     = ifelse(type %in% c("bayes", "robust"), paired, FALSE)
     )
+  # styler: on
 
   # parametric ---------------------------------------
 
@@ -160,29 +162,31 @@ two_sample_test <- function(data,
 
   # preparing expression
   if (type %in% c("parametric", "nonparametric")) {
+    # styler: off
     # extracting test details
     stats_df <- exec(
       .f,
-      formula = new_formula(y, x),
-      data = data,
-      paired = paired,
+      formula     = new_formula(y, x),
+      data        = data,
+      paired      = paired,
       alternative = alternative,
-      var.equal = var.equal,
-      exact = FALSE
+      var.equal   = var.equal,
+      exact       = FALSE
     ) %>%
       tidy_model_parameters(.)
 
     # extracting effect size details
     effsize_df <- exec(
       .f.es,
-      x = new_formula(y, x),
-      data = data,
-      paired = paired,
-      pooled_sd = FALSE,
-      ci = conf.level,
-      verbose = FALSE
+      x           = new_formula(y, x),
+      data        = data,
+      paired      = paired,
+      pooled_sd   = FALSE,
+      ci          = conf.level,
+      verbose     = FALSE
     ) %>%
       tidy_model_effectsize(.)
+    # styler: on
   }
 
   # robust ---------------------------------------
@@ -224,15 +228,17 @@ two_sample_test <- function(data,
   # expression ---------------------------------------
 
   # return the output
+  # # styler: off
   polish_data(stats_df) %>%
     mutate(expression = list(expr_template(
-      no.parameters = no.parameters,
-      data = .,
-      paired = paired,
-      n = ifelse(paired, length(unique(data$rowid)), nrow(data)),
-      k = k,
-      k.df = k.df,
-      top.text = top.text,
-      bayesian = ifelse(type == "bayes", TRUE, FALSE)
+      no.parameters   = no.parameters,
+      data            = .,
+      paired          = paired,
+      n               = ifelse(paired, length(unique(data$rowid)), nrow(data)),
+      k               = k,
+      k.df            = k.df,
+      top.text        = top.text,
+      bayesian        = ifelse(type == "bayes", TRUE, FALSE)
     )))
+  # styler: on
 }

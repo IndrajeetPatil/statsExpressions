@@ -149,13 +149,15 @@ contingency_table <- function(data,
     # two-way table
     if (test == "2way") {
       # extract a tidy dataframe
+      # styler: off
       stats_df <- BayesFactor::contingencyTableBF(
         table(data),
-        sampleType = sampling.plan,
-        fixedMargin = fixed.margin,
+        sampleType         = sampling.plan,
+        fixedMargin        = fixed.margin,
         priorConcentration = prior.concentration
       ) %>%
         tidy_model_parameters(ci = conf.level, cramers_v = TRUE)
+      # styler: on
     }
 
     # one-way table
@@ -209,20 +211,23 @@ contingency_table <- function(data,
 
   # expression ---------------------------------------
 
+
   if (!(type == "bayes" && test == "1way")) {
+    # styler: off
     stats_df %<>%
       mutate(
-        expression = list(expr_template(
-          data = .,
+        expression      = list(expr_template(
+          data          = .,
           no.parameters = 1L,
-          n = nrow(data),
-          paired = paired,
-          k = k,
-          top.text = top.text,
-          bayesian = ifelse(type == "bayes", TRUE, FALSE)
+          n             = nrow(data),
+          paired        = paired,
+          k             = k,
+          top.text      = top.text,
+          bayesian      = ifelse(type == "bayes", TRUE, FALSE)
         ))
       ) %>%
       polish_data()
+    # styler:on
   }
 
   # return the output

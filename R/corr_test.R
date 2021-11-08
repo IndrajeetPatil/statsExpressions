@@ -51,6 +51,7 @@ corr_test <- function(data,
                       bf.prior = 0.707,
                       top.text = NULL,
                       ...) {
+  # styler: off
 
   # see which method was used to specify type of correlation
   type <- stats_type_switch(type)
@@ -59,12 +60,12 @@ corr_test <- function(data,
 
   # creating a dataframe of results
   stats_df <- correlation::correlation(
-    data = tidyr::drop_na(select(ungroup(data), {{ x }}, {{ y }})),
-    method = ifelse(type == "nonparametric", "spearman", "pearson"),
-    ci = conf.level,
-    bayesian = ifelse(type == "bayes", TRUE, FALSE),
+    data           = tidyr::drop_na(select(ungroup(data), {{ x }}, {{ y }})),
+    method         = ifelse(type == "nonparametric", "spearman", "pearson"),
+    ci             = conf.level,
+    bayesian       = ifelse(type == "bayes", TRUE, FALSE),
     bayesian_prior = bf.prior,
-    winsorize = ifelse(type == "robust", tr, FALSE)
+    winsorize      = ifelse(type == "robust", tr, FALSE)
   ) %>%
     insight::standardize_names(style = "broom") %>%
     mutate(effectsize = method)
@@ -77,12 +78,14 @@ corr_test <- function(data,
   # preparing expression
   polish_data(stats_df) %>%
     mutate(expression = list(expr_template(
-      data = .,
-      no.parameters = ifelse(type %in% c("parametric", "robust"), 1L, 0L),
-      top.text = top.text,
-      paired = TRUE,
-      n = stats_df$n.obs[[1]],
-      k = k,
-      bayesian = ifelse(type == "bayes", TRUE, FALSE)
+      data            = .,
+      no.parameters   = ifelse(type %in% c("parametric", "robust"), 1L, 0L),
+      top.text        = top.text,
+      paired          = TRUE,
+      n               = stats_df$n.obs[[1]],
+      k               = k,
+      bayesian        = ifelse(type == "bayes", TRUE, FALSE)
     )))
+
+  # styler: on
 }
