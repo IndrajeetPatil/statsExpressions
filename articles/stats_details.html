@@ -85,15 +85,15 @@
 
     
     
-<div class="section level1">
-<h1 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
-</h1>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
 <p>Here a go-to summary about statistical test carried out and the returned effect size for each function is provided. This should be useful if one needs to find out more information about how an argument is resolved in the underlying package or if one wishes to browse the source code. So, for example, if you want to know more about how one-way (between-subjects) ANOVA, you can run <code><a href="https://rdrr.io/r/stats/oneway.test.html" class="external-link">?stats::oneway.test</a></code> in your R console.</p>
 <p>Abbreviations used: CI = Confidence Interval</p>
 </div>
-<div class="section level1">
-<h1 id="birds-eye-view-summary">Bird’s-eye view summary<a class="anchor" aria-label="anchor" href="#birds-eye-view-summary"></a>
-</h1>
+<div class="section level2">
+<h2 id="birds-eye-view-summary">Bird’s-eye view summary<a class="anchor" aria-label="anchor" href="#birds-eye-view-summary"></a>
+</h2>
 <p>The table below summarizes all the different types of analyses currently supported in this package-</p>
 <table class="table">
 <thead><tr class="header">
@@ -191,14 +191,14 @@
 </tbody>
 </table>
 </div>
-<div class="section level1">
-<h1 id="summary-of-tests-and-effect-sizes">Summary of tests and effect sizes<a class="anchor" aria-label="anchor" href="#summary-of-tests-and-effect-sizes"></a>
-</h1>
-<p>Here a go-to summary about statistical test carried out and the returned effect size for each function is provided. This should be useful if one needs to find out more information about how an argument is resolved in the underlying package or if one wishes to browse the source code. So, for example, if you want to know more about how one-way (between-subjects) ANOVA, you can run <code><a href="https://rdrr.io/r/stats/oneway.test.html" class="external-link">?stats::oneway.test</a></code> in your R console.</p>
 <div class="section level2">
-<h2 id="centrality_description">
-<code>centrality_description</code><a class="anchor" aria-label="anchor" href="#centrality_description"></a>
+<h2 id="summary-of-tests-and-effect-sizes">Summary of tests and effect sizes<a class="anchor" aria-label="anchor" href="#summary-of-tests-and-effect-sizes"></a>
 </h2>
+<p>Here a go-to summary about statistical test carried out and the returned effect size for each function is provided. This should be useful if one needs to find out more information about how an argument is resolved in the underlying package or if one wishes to browse the source code. So, for example, if you want to know more about how one-way (between-subjects) ANOVA, you can run <code><a href="https://rdrr.io/r/stats/oneway.test.html" class="external-link">?stats::oneway.test</a></code> in your R console.</p>
+<div class="section level3">
+<h3 id="centrality_description">
+<code>centrality_description</code><a class="anchor" aria-label="anchor" href="#centrality_description"></a>
+</h3>
 <table class="table">
 <colgroup>
 <col width="28%">
@@ -234,14 +234,14 @@
 </tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="two_sample_test-oneway_anova">
-<code>two_sample_test</code> + <code>oneway_anova</code><a class="anchor" aria-label="anchor" href="#two_sample_test-oneway_anova"></a>
-</h2>
-<p>No. of groups: <code>2</code> =&gt; <code>two_sample_test</code><br> No. of groups: <code>&gt; 2</code> =&gt; <code>oneway_anova</code></p>
 <div class="section level3">
-<h3 id="between-subjects">between-subjects<a class="anchor" aria-label="anchor" href="#between-subjects"></a>
+<h3 id="two_sample_test-oneway_anova">
+<code>two_sample_test</code> + <code>oneway_anova</code><a class="anchor" aria-label="anchor" href="#two_sample_test-oneway_anova"></a>
 </h3>
+<p>No. of groups: <code>2</code> =&gt; <code>two_sample_test</code><br> No. of groups: <code>&gt; 2</code> =&gt; <code>oneway_anova</code></p>
+<div class="section level4">
+<h4 id="between-subjects">between-subjects<a class="anchor" aria-label="anchor" href="#between-subjects"></a>
+</h4>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <thead><tr class="header">
@@ -387,9 +387,9 @@
 </tbody>
 </table>
 </div>
-<div class="section level3">
-<h3 id="within-subjects">within-subjects<a class="anchor" aria-label="anchor" href="#within-subjects"></a>
-</h3>
+<div class="section level4">
+<h4 id="within-subjects">within-subjects<a class="anchor" aria-label="anchor" href="#within-subjects"></a>
+</h4>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <colgroup>
@@ -543,10 +543,10 @@
 </table>
 </div>
 </div>
-<div class="section level2">
-<h2 id="one_sample_test">
+<div class="section level3">
+<h3 id="one_sample_test">
 <code>one_sample_test</code><a class="anchor" aria-label="anchor" href="#one_sample_test"></a>
-</h2>
+</h3>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <thead><tr class="header">
@@ -624,10 +624,10 @@
 </tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="corr_test">
+<div class="section level3">
+<h3 id="corr_test">
 <code>corr_test</code><a class="anchor" aria-label="anchor" href="#corr_test"></a>
-</h2>
+</h3>
 <p><strong>Hypothesis testing</strong> and <strong>Effect size estimation</strong></p>
 <table class="table">
 <colgroup>
@@ -670,13 +670,13 @@
 </tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="contingency_table">
-<code>contingency_table</code><a class="anchor" aria-label="anchor" href="#contingency_table"></a>
-</h2>
 <div class="section level3">
-<h3 id="two-way-table">two-way table<a class="anchor" aria-label="anchor" href="#two-way-table"></a>
+<h3 id="contingency_table">
+<code>contingency_table</code><a class="anchor" aria-label="anchor" href="#contingency_table"></a>
 </h3>
+<div class="section level4">
+<h4 id="two-way-table">two-way table<a class="anchor" aria-label="anchor" href="#two-way-table"></a>
+</h4>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <colgroup>
@@ -762,9 +762,9 @@
 </tbody>
 </table>
 </div>
-<div class="section level3">
-<h3 id="one-way-table">one-way table<a class="anchor" aria-label="anchor" href="#one-way-table"></a>
-</h3>
+<div class="section level4">
+<h4 id="one-way-table">one-way table<a class="anchor" aria-label="anchor" href="#one-way-table"></a>
+</h4>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <thead><tr class="header">
@@ -811,10 +811,10 @@
 </table>
 </div>
 </div>
-<div class="section level2">
-<h2 id="meta_analysis">
+<div class="section level3">
+<h3 id="meta_analysis">
 <code>meta_analysis</code><a class="anchor" aria-label="anchor" href="#meta_analysis"></a>
-</h2>
+</h3>
 <p><strong>Hypothesis testing</strong> and <strong>Effect size estimation</strong></p>
 <table class="table">
 <colgroup>
@@ -857,30 +857,30 @@
 </table>
 </div>
 </div>
-<div class="section level1">
-<h1 id="effect-size-interpretation">Effect size interpretation<a class="anchor" aria-label="anchor" href="#effect-size-interpretation"></a>
-</h1>
+<div class="section level2">
+<h2 id="effect-size-interpretation">Effect size interpretation<a class="anchor" aria-label="anchor" href="#effect-size-interpretation"></a>
+</h2>
 <p>See <code>effectsize</code>’s interpretation functions to check different rules/conventions to interpret effect sizes:</p>
 <p><a href="https://easystats.github.io/effectsize/reference/index.html#section-interpretation" class="external-link uri">https://easystats.github.io/effectsize/reference/index.html#section-interpretation</a></p>
 </div>
-<div class="section level1">
-<h1 id="dataframe-as-output">Dataframe as output<a class="anchor" aria-label="anchor" href="#dataframe-as-output"></a>
-</h1>
+<div class="section level2">
+<h2 id="dataframe-as-output">Dataframe as output<a class="anchor" aria-label="anchor" href="#dataframe-as-output"></a>
+</h2>
 <p>Although the primary focus of this package is to get expressions containing statistical results, one can also use it to extract dataframes containing these details.</p>
 <p>For a more detailed summary of these dataframe: <a href="https://indrajeetpatil.github.io/statsExpressions//articles/web_only/dataframe_outputs.html" class="uri">https://indrajeetpatil.github.io/statsExpressions//articles/web_only/dataframe_outputs.html</a></p>
 </div>
-<div class="section level1">
-<h1 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
-</h1>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
 <ul>
 <li><p>For parametric and non-parametric effect sizes: <a href="https://easystats.github.io/effectsize/articles/simple_htests.html" class="external-link uri">https://easystats.github.io/effectsize/articles/simple_htests.html</a></p></li>
 <li><p>For robust effect sizes: <a href="https://CRAN.R-project.org/package=WRS2/vignettes/WRS2.pdf" class="external-link uri">https://CRAN.R-project.org/package=WRS2/vignettes/WRS2.pdf</a></p></li>
 <li><p>For Bayesian posterior estimates: <a href="https://easystats.github.io/bayestestR/articles/bayes_factors.html" class="external-link uri">https://easystats.github.io/bayestestR/articles/bayes_factors.html</a></p></li>
 </ul>
 </div>
-<div class="section level1">
-<h1 id="suggestions">Suggestions<a class="anchor" aria-label="anchor" href="#suggestions"></a>
-</h1>
+<div class="section level2">
+<h2 id="suggestions">Suggestions<a class="anchor" aria-label="anchor" href="#suggestions"></a>
+</h2>
 <p>If you find any bugs or have any suggestions/remarks, please file an issue on GitHub: <a href="https://github.com/IndrajeetPatil/statsExpressions/issues" class="external-link uri">https://github.com/IndrajeetPatil/statsExpressions/issues</a></p>
 </div>
   </div>

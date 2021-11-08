@@ -85,16 +85,16 @@
 
     
     
-<div class="section level1">
-<h1 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
-</h1>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
 <p>The <code>statsExpressions</code> package has two key aims: to provide a consistent syntax to do statistical analysis with tidy data, and to provide statistical expressions (i.e., a pre-formatted in-text statistical result) for plotting functions. Currently, it supports common types of statistical approaches and tests: parametric, nonparametric, robust, and Bayesian <em>t</em>-test, one-way ANOVA, correlation analyses, contingency table analyses, and meta-analyses. The functions are pipe-friendly and compatible with tidy data.</p>
 <p>Statistical packages exhibit substantial diversity in terms of their syntax and expected input type. This can make it difficult to switch from one statistical approach to another. For example, some functions expect vectors as inputs, while others expect dataframes. Depending on whether it is a repeated measures design or not, different functions might expect data to be in wide or long format. Some functions can internally omit missing values, while other functions error in their presence. Furthermore, if someone wishes to utilize the objects returned by these packages downstream in their workflow, this is not straightforward either because even functions from the same package can return a list, a matrix, an array, a dataframe, etc., depending on the function.</p>
 <p>This is where <code>statsExpressions</code> comes in: It can be thought of as a unified portal through which most of the functionality in these underlying packages can be accessed, with a simpler interface and no requirement to change data format.</p>
 </div>
-<div class="section level1">
-<h1 id="dataframes">Dataframes<a class="anchor" aria-label="anchor" href="#dataframes"></a>
-</h1>
+<div class="section level2">
+<h2 id="dataframes">Dataframes<a class="anchor" aria-label="anchor" href="#dataframes"></a>
+</h2>
 <p>The dataframe will contain the following columns (the exact columns will depend on the test and the statistical approach):</p>
 <ul>
 <li><p><code>statistic</code>: the numeric value of a statistic.</p></li>
@@ -109,17 +109,17 @@
 <li><p><code>effectsize</code>: the type of the effect size.</p></li>
 </ul>
 <p>For details about the tests and types of effect size estimates they correspond to, see: <a href="https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html</a></p>
+<p>Note that all examples are preceded by <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed()</a></code> calls for reproducibility.</p>
 </div>
-<div class="section level1">
-<h1 id="one-sample-tests">One-sample tests<a class="anchor" aria-label="anchor" href="#one-sample-tests"></a>
-</h1>
+<div class="section level2">
+<h2 id="one-sample-tests">One-sample tests<a class="anchor" aria-label="anchor" href="#one-sample-tests"></a>
+</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
 
 <span class="co"># ----------------------- parametric ---------------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,
@@ -140,7 +140,6 @@
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,
@@ -158,7 +157,6 @@
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,
@@ -176,7 +174,6 @@
 
 <span class="co"># ----------------------- Bayesian ---------------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,
@@ -196,12 +193,12 @@
 <span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">1</span> <span style="color: #949494;">&lt;language&gt;</span></span></code></pre></div>
 </div>
-<div class="section level1">
-<h1 id="two-sample-tests">Two-sample tests<a class="anchor" aria-label="anchor" href="#two-sample-tests"></a>
-</h1>
 <div class="section level2">
-<h2 id="within-subjects-design">within-subjects design<a class="anchor" aria-label="anchor" href="#within-subjects-design"></a>
+<h2 id="two-sample-tests">Two-sample tests<a class="anchor" aria-label="anchor" href="#two-sample-tests"></a>
 </h2>
+<div class="section level3">
+<h3 id="within-subjects-design">within-subjects design<a class="anchor" aria-label="anchor" href="#within-subjects-design"></a>
+</h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
@@ -211,7 +208,6 @@
 
 <span class="co"># ----------------------- parametric ---------------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">df</span>,
@@ -234,7 +230,6 @@
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">df</span>,
@@ -257,7 +252,6 @@
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">df</span>,
@@ -283,7 +277,6 @@
 
 <span class="co"># ----------------------- Bayesian ---------------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">df</span>,
@@ -304,9 +297,9 @@
 <span class="co">#&gt;        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">1</span>       15.4 <span style="color: #949494;">&lt;language&gt;</span></span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="between-subjects-design">between-subjects design<a class="anchor" aria-label="anchor" href="#between-subjects-design"></a>
-</h2>
+<div class="section level3">
+<h3 id="between-subjects-design">between-subjects design<a class="anchor" aria-label="anchor" href="#between-subjects-design"></a>
+</h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
@@ -314,9 +307,8 @@
 
 <span class="co"># ----------------------- parametric ---------------------------------------</span>
 
-<span class="co"># for reproducibility</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># unequal variance</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
@@ -334,9 +326,8 @@
 <span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     <span style="color: #949494;">0.</span>993 ncp         t                 <span style="color: #949494;">&lt;language&gt;</span></span>
 
-<span class="co"># for reproducibility</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># equal variance</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
   x <span class="op">=</span> <span class="va">supp</span>,
@@ -357,7 +348,6 @@
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
@@ -378,7 +368,6 @@
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
@@ -402,7 +391,6 @@
 
 <span class="co"># ----------------------- Bayesian ---------------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">ToothGrowth</span>,
@@ -422,12 +410,12 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;">1</span> <span style="color: #949494;">&lt;language&gt;</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level1">
-<h1 id="one-way-anovas">One-way ANOVAs<a class="anchor" aria-label="anchor" href="#one-way-anovas"></a>
-</h1>
 <div class="section level2">
-<h2 id="within-subjects-design-1">within-subjects design<a class="anchor" aria-label="anchor" href="#within-subjects-design-1"></a>
+<h2 id="one-way-anovas">One-way ANOVAs<a class="anchor" aria-label="anchor" href="#one-way-anovas"></a>
 </h2>
+<div class="section level3">
+<h3 id="within-subjects-design-1">within-subjects design<a class="anchor" aria-label="anchor" href="#within-subjects-design-1"></a>
+</h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
@@ -435,7 +423,6 @@
 <span class="co"># ----------------------- parametric ---------------------------------------</span>
 
 <span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="http://afex.singmann.science/" class="external-link">"afex"</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="co"># for reproducibility</span>
   <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
   <span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
     data <span class="op">=</span> <span class="va">bugs_long</span>,
@@ -459,7 +446,6 @@
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">bugs_long</span>,
@@ -482,7 +468,6 @@
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">bugs_long</span>,
@@ -509,7 +494,6 @@
 <span class="co"># ----------------------- Bayesian ---------------------------------------</span>
 
 <span class="kw">if</span> <span class="op">(</span><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html" class="external-link">packageVersion</a></span><span class="op">(</span><span class="st">"BayesFactor"</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric_version.html" class="external-link">package_version</a></span><span class="op">(</span><span class="st">"0.9.12-4.3"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="co"># for reproducibility</span>
   <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
   <span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
     data <span class="op">=</span> <span class="va">bugs_long</span>,
@@ -521,18 +505,17 @@
   <span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="between-subjects-design-1">between-subjects design<a class="anchor" aria-label="anchor" href="#between-subjects-design-1"></a>
-</h2>
+<div class="section level3">
+<h3 id="between-subjects-design-1">between-subjects design<a class="anchor" aria-label="anchor" href="#between-subjects-design-1"></a>
+</h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># setup</span>
+<code class="sourceCode R"><span class="co">## setup</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
 
 <span class="co"># ----------------------- parametric ---------------------------------------</span>
 
-<span class="co"># for reproducibility</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># unequal variance</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
@@ -550,9 +533,8 @@
 <span class="co">#&gt;        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">1</span>       <span style="color: #949494;">0.</span>95    <span style="color: #949494;">0.</span>671         1 ncp         F                 <span style="color: #949494;">&lt;language&gt;</span></span>
 
-<span class="co"># for reproducibility</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="co"># equal variance</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
   x <span class="op">=</span> <span class="va">Species</span>,
@@ -573,7 +555,6 @@
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
@@ -594,7 +575,6 @@
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
@@ -618,7 +598,6 @@
 
 <span class="co"># ----------------------- Bayesian ---------------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">iris</span>,
@@ -661,15 +640,36 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;">6</span>       <span style="color: #949494;">0.</span>544        <span style="color: #949494;">0.</span>667 <span style="color: #949494;">&lt;language&gt;</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level1">
-<h1 id="contingency-table-analyses">Contingency table analyses<a class="anchor" aria-label="anchor" href="#contingency-table-analyses"></a>
-</h1>
+<div class="section level2">
+<h2 id="contingency-table-analyses">Contingency table analyses<a class="anchor" aria-label="anchor" href="#contingency-table-analyses"></a>
+</h2>
+<div class="section level3">
+<h3 id="association-test">association test<a class="anchor" aria-label="anchor" href="#association-test"></a>
+</h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># for reproducibility</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
 
-<span class="co"># create data structure</span>
+<span class="co"># ------------------------ frequentist -----------------------------</span>
+
+<span class="co"># unpaired</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span>
+  data <span class="op">=</span> <span class="va">mtcars</span>,
+  x <span class="op">=</span> <span class="va">am</span>,
+  y <span class="op">=</span> <span class="va">cyl</span>,
+  paired <span class="op">=</span> <span class="cn">FALSE</span>
+<span class="op">)</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 12</span></span>
+<span class="co">#&gt;   <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">df</span> <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>                     <span style="font-weight: bold;">effectsize</span>        <span style="font-weight: bold;">estimate</span></span>
+<span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>      8.74     2  <span style="color: #949494;">0.0</span>12<span style="text-decoration: underline;">6</span> Pearson's Chi-squared test Cramer's V (adj.)    <span style="color: #949494;">0.</span>464</span>
+<span class="co">#&gt;   <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span> <span style="font-weight: bold;">conf.method</span> <span style="font-weight: bold;">conf.distribution</span> <span style="font-weight: bold;">expression</span></span>
+<span class="co">#&gt;        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>       <span style="color: #949494;">0.</span>95        <span style="color: #949494;">0</span>         1 ncp         chisq             <span style="color: #949494;">&lt;language&gt;</span></span>
+
+<span class="co"># paired</span>
+<span class="co">## create data structure</span>
 <span class="va">paired_data</span> <span class="op">&lt;-</span>
   <span class="fu"><a href="https://rdrr.io/r/base/structure.html" class="external-link">structure</a></span><span class="op">(</span>
     <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
@@ -690,27 +690,7 @@
     row.names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="op">-</span><span class="fl">4L</span><span class="op">)</span>
   <span class="op">)</span>
 
-<span class="co"># ------------------------ non-Bayesian -----------------------------</span>
 
-<span class="co"># association tests</span>
-
-<span class="co"># unpaired</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">mtcars</span>,
-  x <span class="op">=</span> <span class="va">am</span>,
-  y <span class="op">=</span> <span class="va">cyl</span>,
-  paired <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 12</span></span>
-<span class="co">#&gt;   <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">df</span> <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>                     <span style="font-weight: bold;">effectsize</span>        <span style="font-weight: bold;">estimate</span></span>
-<span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>      8.74     2  <span style="color: #949494;">0.0</span>12<span style="text-decoration: underline;">6</span> Pearson's Chi-squared test Cramer's V (adj.)    <span style="color: #949494;">0.</span>464</span>
-<span class="co">#&gt;   <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span> <span style="font-weight: bold;">conf.method</span> <span style="font-weight: bold;">conf.distribution</span> <span style="font-weight: bold;">expression</span></span>
-<span class="co">#&gt;        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>       <span style="color: #949494;">0.</span>95        <span style="color: #949494;">0</span>         1 ncp         chisq             <span style="color: #949494;">&lt;language&gt;</span></span>
-
-<span class="co"># paired</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">paired_data</span>,
@@ -727,7 +707,33 @@
 <span class="co">#&gt;        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">1</span>       <span style="color: #949494;">0.</span>95    <span style="color: #949494;">0.</span>164     <span style="color: #949494;">0.</span>427 binomial    <span style="color: #949494;">&lt;language&gt;</span></span>
 
-<span class="co"># goodness-of-fit tests</span>
+<span class="co"># ------------------------ Bayesian -----------------------------</span>
+
+<span class="co"># unpaired</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span>
+  data <span class="op">=</span> <span class="va">mtcars</span>,
+  x <span class="op">=</span> <span class="va">am</span>,
+  y <span class="op">=</span> <span class="va">cyl</span>,
+  paired <span class="op">=</span> <span class="cn">FALSE</span>,
+  type <span class="op">=</span> <span class="st">"bayes"</span>
+<span class="op">)</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 12</span></span>
+<span class="co">#&gt;   <span style="font-weight: bold;">term</span>  <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span> <span style="font-weight: bold;">prior.distribution</span>     </span>
+<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Ratio       <span style="color: #949494;">0.</span>95    <span style="color: #949494;">0.</span>478    <span style="color: #949494;">0.</span>221     <span style="color: #949494;">0.</span>725 independent multinomial</span>
+<span class="co">#&gt;   <span style="font-weight: bold;">prior.location</span> <span style="font-weight: bold;">prior.scale</span>  <span style="font-weight: bold;">bf10</span> <span style="font-weight: bold;">method</span>                             </span>
+<span class="co">#&gt;            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                              </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>              <span style="color: #949494;">0</span>           1  16.8 Bayesian contingency table analysis</span>
+<span class="co">#&gt;   <span style="font-weight: bold;">log_e_bf10</span> <span style="font-weight: bold;">expression</span></span>
+<span class="co">#&gt;        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>       2.82 <span style="color: #949494;">&lt;language&gt;</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="goodness-of-fit-tests">goodness-of-fit tests<a class="anchor" aria-label="anchor" href="#goodness-of-fit-tests"></a>
+</h3>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># ------------------------ frequentist -----------------------------</span>
 
 <span class="co"># with counts</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
@@ -749,26 +755,7 @@
 
 <span class="co"># ------------------------ Bayesian -----------------------------</span>
 
-<span class="co"># association test</span>
-<span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">mtcars</span>,
-  x <span class="op">=</span> <span class="va">am</span>,
-  y <span class="op">=</span> <span class="va">cyl</span>,
-  paired <span class="op">=</span> <span class="cn">FALSE</span>,
-  type <span class="op">=</span> <span class="st">"bayes"</span>
-<span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 12</span></span>
-<span class="co">#&gt;   <span style="font-weight: bold;">term</span>  <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span> <span style="font-weight: bold;">prior.distribution</span>     </span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Ratio       <span style="color: #949494;">0.</span>95    <span style="color: #949494;">0.</span>478    <span style="color: #949494;">0.</span>221     <span style="color: #949494;">0.</span>725 independent multinomial</span>
-<span class="co">#&gt;   <span style="font-weight: bold;">prior.location</span> <span style="font-weight: bold;">prior.scale</span>  <span style="font-weight: bold;">bf10</span> <span style="font-weight: bold;">method</span>                             </span>
-<span class="co">#&gt;            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                              </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>              <span style="color: #949494;">0</span>           1  16.8 Bayesian contingency table analysis</span>
-<span class="co">#&gt;   <span style="font-weight: bold;">log_e_bf10</span> <span style="font-weight: bold;">expression</span></span>
-<span class="co">#&gt;        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>       2.82 <span style="color: #949494;">&lt;language&gt;</span></span>
-
-<span class="co"># goodness-of-fit test</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">HairEyeColor</span><span class="op">)</span>,
   x <span class="op">=</span> <span class="va">Eye</span>,
@@ -779,19 +766,18 @@
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 3</span></span>
 <span class="co">#&gt;      <span style="font-weight: bold;">bf10</span> <span style="font-weight: bold;">prior.scale</span> <span style="font-weight: bold;">expression</span></span>
 <span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 3.74<span style="color: #949494;">e</span>55           1 <span style="color: #949494;">&lt;language&gt;</span></span></code></pre></div>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 4.17<span style="color: #949494;">e</span>55           1 <span style="color: #949494;">&lt;language&gt;</span></span></code></pre></div>
 </div>
-<div class="section level1">
-<h1 id="correlation-analyses">Correlation analyses<a class="anchor" aria-label="anchor" href="#correlation-analyses"></a>
-</h1>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># for reproducibility</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+</div>
+<div class="section level2">
+<h2 id="correlation-analyses">Correlation analyses<a class="anchor" aria-label="anchor" href="#correlation-analyses"></a>
+</h2>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
 
 <span class="co"># ----------------------- parametric ---------------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/corr_test.html">corr_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">mtcars</span>,
@@ -809,7 +795,6 @@
 
 <span class="co"># ----------------------- non-parametric -----------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/corr_test.html">corr_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">mtcars</span>,
@@ -827,7 +812,6 @@
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/corr_test.html">corr_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">mtcars</span>,
@@ -848,7 +832,6 @@
 
 <span class="co"># ----------------------- Bayesian ---------------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/corr_test.html">corr_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">mtcars</span>,
@@ -867,12 +850,11 @@
 <span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">1</span>        1.41 56<span style="text-decoration: underline;">2</span><span style="color: #949494; text-decoration: underline;">23</span><span style="color: #949494;">033</span>. Bayesian Pearson correlation    32 <span style="color: #949494;">&lt;language&gt;</span></span></code></pre></div>
 </div>
-<div class="section level1">
-<h1 id="meta-analysis">Meta-analysis<a class="anchor" aria-label="anchor" href="#meta-analysis"></a>
-</h1>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># for reproducibility</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<div class="section level2">
+<h2 id="meta-analysis">Meta-analysis<a class="anchor" aria-label="anchor" href="#meta-analysis"></a>
+</h2>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">metaplus</span><span class="op">)</span>
 
@@ -881,7 +863,6 @@
 
 <span class="co"># ----------------------- parametric ---------------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/meta_analysis.html">meta_analysis</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, type <span class="op">=</span> <span class="st">"parametric"</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 11</span></span>
@@ -894,7 +875,6 @@
 
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/meta_analysis.html">meta_analysis</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 11</span></span>
@@ -907,7 +887,6 @@
 
 <span class="co"># ----------------------- Bayesian ---------------------------------------</span>
 
-<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/meta_analysis.html">meta_analysis</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 17</span></span>
@@ -928,10 +907,10 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;">1</span> <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">2</span> <span style="color: #949494;">&lt;language&gt;</span></span></code></pre></div>
 </div>
-<div class="section level1">
-<h1 id="centrality-description">Centrality description<a class="anchor" aria-label="anchor" href="#centrality-description"></a>
-</h1>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="section level2">
+<h2 id="centrality-description">Centrality description<a class="anchor" aria-label="anchor" href="#centrality-description"></a>
+</h2>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># ----------------------- parametric -----------------------</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
@@ -999,9 +978,9 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;">1</span>   -<span style="color: #949494;">0.</span><span style="color: #BB0000;">630</span>         <span style="color: #949494;">0</span> list(~widehat(mu)[MAP]=='0.06') <span style="color: #949494;">"</span>1\n(n = 10)<span style="color: #949494;">"</span></span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">2</span>   -<span style="color: #BB0000;">1.42</span>          <span style="color: #949494;">0</span> list(~widehat(mu)[MAP]=='0.97') <span style="color: #949494;">"</span>2\n(n = 10)<span style="color: #949494;">"</span></span></code></pre></div>
 </div>
-<div class="section level1">
-<h1 id="suggestions">Suggestions<a class="anchor" aria-label="anchor" href="#suggestions"></a>
-</h1>
+<div class="section level2">
+<h2 id="suggestions">Suggestions<a class="anchor" aria-label="anchor" href="#suggestions"></a>
+</h2>
 <p>If you find any bugs or have any suggestions/remarks, please file an issue on GitHub: <a href="https://github.com/IndrajeetPatil/statsExpressions/issues" class="external-link uri">https://github.com/IndrajeetPatil/statsExpressions/issues</a></p>
 </div>
   </div>
