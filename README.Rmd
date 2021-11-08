@@ -1,7 +1,7 @@
 ---
 output: 
   github_document:
-    pandoc_args: --webtex=https://latex.codecogs.com/svg.latex?
+    pandoc_args: --webtex=http://chart.apis.google.com/chart?cht=tx&chl=
 ---
 
   <!-- README.md is generated from README.Rmd. Please edit that file -->

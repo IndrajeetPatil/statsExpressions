@@ -537,16 +537,16 @@ No. of groups: `2` => `two_sample_test`<br> No. of groups: `> 2` =>
 
 **Effect size estimation**
 
-| Type           | No. of groups | Effect size                                                                                                                                                                        | CI? | Function used                                          |
-|----------------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|--------------------------------------------------------|
-| Parametric     | \> 2          | ![\\eta\_{p}^2](https://latex.codecogs.com/svg.latex?%5Ceta_%7Bp%7D%5E2 "\eta_{p}^2"), ![\\omega\_{p}^2](https://latex.codecogs.com/svg.latex?%5Comega_%7Bp%7D%5E2 "\omega_{p}^2") | ✅  | `effectsize::omega_squared`, `effectsize::eta_squared` |
-| Non-parametric | \> 2          | ![\\epsilon\_{ordinal}^2](https://latex.codecogs.com/svg.latex?%5Cepsilon_%7Bordinal%7D%5E2 "\epsilon_{ordinal}^2")                                                                | ✅  | `effectsize::rank_epsilon_squared`                     |
-| Robust         | \> 2          | ![\\xi](https://latex.codecogs.com/svg.latex?%5Cxi "\xi") (Explanatory measure of effect size)                                                                                     | ✅  | `WRS2::t1way`                                          |
-| Bayes Factor   | \> 2          | ![R\_{Bayesian}^2](https://latex.codecogs.com/svg.latex?R_%7BBayesian%7D%5E2 "R_{Bayesian}^2")                                                                                     | ✅  | `performance::r2_bayes`                                |
-| Parametric     | 2             | Cohen’s *d*, Hedge’s *g*                                                                                                                                                           | ✅  | `effectsize::cohens_d`, `effectsize::hedges_g`         |
-| Non-parametric | 2             | *r* (rank-biserial correlation)                                                                                                                                                    | ✅  | `effectsize::rank_biserial`                            |
-| Robust         | 2             | ![\\delta\_{R}^{AKP}](https://latex.codecogs.com/svg.latex?%5Cdelta_%7BR%7D%5E%7BAKP%7D "\delta_{R}^{AKP}") (Algina-Keselman-Penfield robust standardized difference)              | ✅  | `WRS2::akp.effect`                                     |
-| Bayesian       | 2             | ![\\delta\_{posterior}](https://latex.codecogs.com/svg.latex?%5Cdelta_%7Bposterior%7D "\delta_{posterior}")                                                                        | ✅  | `bayestestR::describe_posterior`                       |
+| Type           | No. of groups | Effect size                                                                                                                                                                                          | CI? | Function used                                          |
+|----------------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|--------------------------------------------------------|
+| Parametric     | \> 2          | ![\\eta\_{p}^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Ceta_%7Bp%7D%5E2 "\eta_{p}^2"), ![\\omega\_{p}^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Comega_%7Bp%7D%5E2 "\omega_{p}^2") | ✅  | `effectsize::omega_squared`, `effectsize::eta_squared` |
+| Non-parametric | \> 2          | ![\\epsilon\_{ordinal}^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_%7Bordinal%7D%5E2 "\epsilon_{ordinal}^2")                                                                         | ✅  | `effectsize::rank_epsilon_squared`                     |
+| Robust         | \> 2          | ![\\xi](http://chart.apis.google.com/chart?cht=tx&chl=%5Cxi "\xi") (Explanatory measure of effect size)                                                                                              | ✅  | `WRS2::t1way`                                          |
+| Bayes Factor   | \> 2          | ![R\_{Bayesian}^2](http://chart.apis.google.com/chart?cht=tx&chl=R_%7BBayesian%7D%5E2 "R_{Bayesian}^2")                                                                                              | ✅  | `performance::r2_bayes`                                |
+| Parametric     | 2             | Cohen’s *d*, Hedge’s *g*                                                                                                                                                                             | ✅  | `effectsize::cohens_d`, `effectsize::hedges_g`         |
+| Non-parametric | 2             | *r* (rank-biserial correlation)                                                                                                                                                                      | ✅  | `effectsize::rank_biserial`                            |
+| Robust         | 2             | ![\\delta\_{R}^{AKP}](http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta_%7BR%7D%5E%7BAKP%7D "\delta_{R}^{AKP}") (Algina-Keselman-Penfield robust standardized difference)                       | ✅  | `WRS2::akp.effect`                                     |
+| Bayesian       | 2             | ![\\delta\_{posterior}](http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta_%7Bposterior%7D "\delta_{posterior}")                                                                                 | ✅  | `bayestestR::describe_posterior`                       |
 
 ### within-subjects
 
@@ -565,16 +565,16 @@ No. of groups: `2` => `two_sample_test`<br> No. of groups: `> 2` =>
 
 **Effect size estimation**
 
-| Type           | No. of groups | Effect size                                                                                                                                                                               | CI? | Function used                                          |
-|----------------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|--------------------------------------------------------|
-| Parametric     | \> 2          | ![\\eta\_{p}^2](https://latex.codecogs.com/svg.latex?%5Ceta_%7Bp%7D%5E2 "\eta_{p}^2"), ![\\omega\_{p}^2](https://latex.codecogs.com/svg.latex?%5Comega_%7Bp%7D%5E2 "\omega_{p}^2")        | ✅  | `effectsize::omega_squared`, `effectsize::eta_squared` |
-| Non-parametric | \> 2          | ![W\_{Kendall}](https://latex.codecogs.com/svg.latex?W_%7BKendall%7D "W_{Kendall}") (Kendall’s coefficient of concordance)                                                                | ✅  | `effectsize::kendalls_w`                               |
-| Robust         | \> 2          | ![\\delta\_{R-avg}^{AKP}](https://latex.codecogs.com/svg.latex?%5Cdelta_%7BR-avg%7D%5E%7BAKP%7D "\delta_{R-avg}^{AKP}") (Algina-Keselman-Penfield robust standardized difference average) | ✅  | `WRS2::wmcpAKP`                                        |
-| Bayes Factor   | \> 2          | ![R\_{Bayesian}^2](https://latex.codecogs.com/svg.latex?R_%7BBayesian%7D%5E2 "R_{Bayesian}^2")                                                                                            | ✅  | `performance::r2_bayes`                                |
-| Parametric     | 2             | Cohen’s *d*, Hedge’s *g*                                                                                                                                                                  | ✅  | `effectsize::cohens_d`, `effectsize::hedges_g`         |
-| Non-parametric | 2             | *r* (rank-biserial correlation)                                                                                                                                                           | ✅  | `effectsize::rank_biserial`                            |
-| Robust         | 2             | ![\\delta\_{R}^{AKP}](https://latex.codecogs.com/svg.latex?%5Cdelta_%7BR%7D%5E%7BAKP%7D "\delta_{R}^{AKP}") (Algina-Keselman-Penfield robust standardized difference)                     | ✅  | `WRS2::wmcpAKP`                                        |
-| Bayesian       | 2             | ![\\delta\_{posterior}](https://latex.codecogs.com/svg.latex?%5Cdelta_%7Bposterior%7D "\delta_{posterior}")                                                                               | ✅  | `bayestestR::describe_posterior`                       |
+| Type           | No. of groups | Effect size                                                                                                                                                                                          | CI? | Function used                                          |
+|----------------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|--------------------------------------------------------|
+| Parametric     | \> 2          | ![\\eta\_{p}^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Ceta_%7Bp%7D%5E2 "\eta_{p}^2"), ![\\omega\_{p}^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Comega_%7Bp%7D%5E2 "\omega_{p}^2") | ✅  | `effectsize::omega_squared`, `effectsize::eta_squared` |
+| Non-parametric | \> 2          | ![W\_{Kendall}](http://chart.apis.google.com/chart?cht=tx&chl=W_%7BKendall%7D "W_{Kendall}") (Kendall’s coefficient of concordance)                                                                  | ✅  | `effectsize::kendalls_w`                               |
+| Robust         | \> 2          | ![\\delta\_{R-avg}^{AKP}](http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta_%7BR-avg%7D%5E%7BAKP%7D "\delta_{R-avg}^{AKP}") (Algina-Keselman-Penfield robust standardized difference average)   | ✅  | `WRS2::wmcpAKP`                                        |
+| Bayes Factor   | \> 2          | ![R\_{Bayesian}^2](http://chart.apis.google.com/chart?cht=tx&chl=R_%7BBayesian%7D%5E2 "R_{Bayesian}^2")                                                                                              | ✅  | `performance::r2_bayes`                                |
+| Parametric     | 2             | Cohen’s *d*, Hedge’s *g*                                                                                                                                                                             | ✅  | `effectsize::cohens_d`, `effectsize::hedges_g`         |
+| Non-parametric | 2             | *r* (rank-biserial correlation)                                                                                                                                                                      | ✅  | `effectsize::rank_biserial`                            |
+| Robust         | 2             | ![\\delta\_{R}^{AKP}](http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta_%7BR%7D%5E%7BAKP%7D "\delta_{R}^{AKP}") (Algina-Keselman-Penfield robust standardized difference)                       | ✅  | `WRS2::wmcpAKP`                                        |
+| Bayesian       | 2             | ![\\delta\_{posterior}](http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta_%7Bposterior%7D "\delta_{posterior}")                                                                                 | ✅  | `bayestestR::describe_posterior`                       |
 
 ## `one_sample_test`
 
@@ -589,12 +589,12 @@ No. of groups: `2` => `two_sample_test`<br> No. of groups: `> 2` =>
 
 **Effect size estimation**
 
-| Type           | Effect size                                                                                                 | CI? | Function used                                  |
-|----------------|-------------------------------------------------------------------------------------------------------------|-----|------------------------------------------------|
-| Parametric     | Cohen’s *d*, Hedge’s *g*                                                                                    | ✅  | `effectsize::cohens_d`, `effectsize::hedges_g` |
-| Non-parametric | *r* (rank-biserial correlation)                                                                             | ✅  | `effectsize::rank_biserial`                    |
-| Robust         | trimmed mean                                                                                                | ✅  | `trimcibt` (custom)                            |
-| Bayes Factor   | ![\\delta\_{posterior}](https://latex.codecogs.com/svg.latex?%5Cdelta_%7Bposterior%7D "\delta_{posterior}") | ✅  | `bayestestR::describe_posterior`               |
+| Type           | Effect size                                                                                                          | CI? | Function used                                  |
+|----------------|----------------------------------------------------------------------------------------------------------------------|-----|------------------------------------------------|
+| Parametric     | Cohen’s *d*, Hedge’s *g*                                                                                             | ✅  | `effectsize::cohens_d`, `effectsize::hedges_g` |
+| Non-parametric | *r* (rank-biserial correlation)                                                                                      | ✅  | `effectsize::rank_biserial`                    |
+| Robust         | trimmed mean                                                                                                         | ✅  | `trimcibt` (custom)                            |
+| Bayes Factor   | ![\\delta\_{posterior}](http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta_%7Bposterior%7D "\delta_{posterior}") | ✅  | `bayestestR::describe_posterior`               |
 
 ## `corr_test`
 
@@ -613,47 +613,47 @@ No. of groups: `2` => `two_sample_test`<br> No. of groups: `> 2` =>
 
 **Hypothesis testing**
 
-| Type                      | Design   | Test                                                                                         | Function used                     |
-|---------------------------|----------|----------------------------------------------------------------------------------------------|-----------------------------------|
-| Parametric/Non-parametric | Unpaired | Pearson’s ![\\chi^2](https://latex.codecogs.com/svg.latex?%5Cchi%5E2 "\chi^2") test          | `stats::chisq.test`               |
-| Bayesian                  | Unpaired | Bayesian Pearson’s ![\\chi^2](https://latex.codecogs.com/svg.latex?%5Cchi%5E2 "\chi^2") test | `BayesFactor::contingencyTableBF` |
-| Parametric/Non-parametric | Paired   | McNemar’s ![\\chi^2](https://latex.codecogs.com/svg.latex?%5Cchi%5E2 "\chi^2") test          | `stats::mcnemar.test`             |
-| Bayesian                  | Paired   | ❌                                                                                           | ❌                                |
+| Type                      | Design   | Test                                                                                                  | Function used                     |
+|---------------------------|----------|-------------------------------------------------------------------------------------------------------|-----------------------------------|
+| Parametric/Non-parametric | Unpaired | Pearson’s ![\\chi^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Cchi%5E2 "\chi^2") test          | `stats::chisq.test`               |
+| Bayesian                  | Unpaired | Bayesian Pearson’s ![\\chi^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Cchi%5E2 "\chi^2") test | `BayesFactor::contingencyTableBF` |
+| Parametric/Non-parametric | Paired   | McNemar’s ![\\chi^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Cchi%5E2 "\chi^2") test          | `stats::mcnemar.test`             |
+| Bayesian                  | Paired   | ❌                                                                                                    | ❌                                |
 
 **Effect size estimation**
 
-| Type                      | Design   | Effect size                                               | CI? | Function used           |
-|---------------------------|----------|-----------------------------------------------------------|-----|-------------------------|
-| Parametric/Non-parametric | Unpaired | Cramer’s ![V](https://latex.codecogs.com/svg.latex?V "V") | ✅  | `effectsize::cramers_v` |
-| Bayesian                  | Unpaired | Cramer’s ![V](https://latex.codecogs.com/svg.latex?V "V") | ✅  | `effectsize::cramers_v` |
-| Parametric/Non-parametric | Paired   | Cohen’s ![g](https://latex.codecogs.com/svg.latex?g "g")  | ✅  | `effectsize::cohens_g`  |
-| Bayesian                  | Paired   | ❌                                                        | ❌  | ❌                      |
+| Type                      | Design   | Effect size                                                        | CI? | Function used           |
+|---------------------------|----------|--------------------------------------------------------------------|-----|-------------------------|
+| Parametric/Non-parametric | Unpaired | Cramer’s ![V](http://chart.apis.google.com/chart?cht=tx&chl=V "V") | ✅  | `effectsize::cramers_v` |
+| Bayesian                  | Unpaired | Cramer’s ![V](http://chart.apis.google.com/chart?cht=tx&chl=V "V") | ✅  | `effectsize::cramers_v` |
+| Parametric/Non-parametric | Paired   | Cohen’s ![g](http://chart.apis.google.com/chart?cht=tx&chl=g "g")  | ✅  | `effectsize::cohens_g`  |
+| Bayesian                  | Paired   | ❌                                                                 | ❌  | ❌                      |
 
 ### one-way table
 
 **Hypothesis testing**
 
-| Type                      | Test                                                                                               | Function used       |
-|---------------------------|----------------------------------------------------------------------------------------------------|---------------------|
-| Parametric/Non-parametric | Goodness of fit ![\\chi^2](https://latex.codecogs.com/svg.latex?%5Cchi%5E2 "\chi^2") test          | `stats::chisq.test` |
-| Bayesian                  | Bayesian Goodness of fit ![\\chi^2](https://latex.codecogs.com/svg.latex?%5Cchi%5E2 "\chi^2") test | (custom)            |
+| Type                      | Test                                                                                                        | Function used       |
+|---------------------------|-------------------------------------------------------------------------------------------------------------|---------------------|
+| Parametric/Non-parametric | Goodness of fit ![\\chi^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Cchi%5E2 "\chi^2") test          | `stats::chisq.test` |
+| Bayesian                  | Bayesian Goodness of fit ![\\chi^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Cchi%5E2 "\chi^2") test | (custom)            |
 
 **Effect size estimation**
 
-| Type                      | Effect size                                                | CI? | Function used            |
-|---------------------------|------------------------------------------------------------|-----|--------------------------|
-| Parametric/Non-parametric | Pearson’s ![C](https://latex.codecogs.com/svg.latex?C "C") | ✅  | `effectsize::pearsons_c` |
-| Bayesian                  | ❌                                                         | ❌  | ❌                       |
+| Type                      | Effect size                                                         | CI? | Function used            |
+|---------------------------|---------------------------------------------------------------------|-----|--------------------------|
+| Parametric/Non-parametric | Pearson’s ![C](http://chart.apis.google.com/chart?cht=tx&chl=C "C") | ✅  | `effectsize::pearsons_c` |
+| Bayesian                  | ❌                                                                  | ❌  | ❌                       |
 
 ## `meta_analysis`
 
 **Hypothesis testing** and **Effect size estimation**
 
-| Type       | Test                                             | Effect size                                                     | CI? | Function used          |
-|------------|--------------------------------------------------|-----------------------------------------------------------------|-----|------------------------|
-| Parametric | Meta-analysis via random-effects models          | ![\\beta](https://latex.codecogs.com/svg.latex?%5Cbeta "\beta") | ✅  | `metafor::metafor`     |
-| Robust     | Meta-analysis via robust random-effects models   | ![\\beta](https://latex.codecogs.com/svg.latex?%5Cbeta "\beta") | ✅  | `metaplus::metaplus`   |
-| Bayes      | Meta-analysis via Bayesian random-effects models | ![\\beta](https://latex.codecogs.com/svg.latex?%5Cbeta "\beta") | ✅  | `metaBMA::meta_random` |
+| Type       | Test                                             | Effect size                                                              | CI? | Function used          |
+|------------|--------------------------------------------------|--------------------------------------------------------------------------|-----|------------------------|
+| Parametric | Meta-analysis via random-effects models          | ![\\beta](http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta "\beta") | ✅  | `metafor::metafor`     |
+| Robust     | Meta-analysis via robust random-effects models   | ![\\beta](http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta "\beta") | ✅  | `metaplus::metaplus`   |
+| Bayes      | Meta-analysis via Bayesian random-effects models | ![\\beta](http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta "\beta") | ✅  | `metaBMA::meta_random` |
 
 # Usage in `ggstatsplot`
 
