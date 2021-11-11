@@ -69,18 +69,18 @@ set.seed(123)
 
 # repeated measures design
 long_to_wide_converter(
-  data = bugs_long,
-  x = condition,
-  y = desire,
+  data       = bugs_long,
+  x          = condition,
+  y          = desire,
   subject.id = subject,
-  paired = TRUE
+  paired     = TRUE
 )
 
 # independent measures design
 long_to_wide_converter(
-  data = ggplot2::msleep,
-  x = vore,
-  y = brainwt,
+  data   = ggplot2::msleep,
+  x      = vore,
+  y      = brainwt,
   paired = FALSE
 )
 }

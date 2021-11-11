@@ -29,19 +29,19 @@
 #' # between-subjects design
 #' two_sample_test(
 #'   data = sleep,
-#'   x = group,
-#'   y = extra,
+#'   x    = group,
+#'   y    = extra,
 #'   type = "p"
 #' )
 #'
 #' # within-subjects design
 #' two_sample_test(
-#'   data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
-#'   x = condition,
-#'   y = desire,
-#'   paired = TRUE,
+#'   data       = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+#'   x          = condition,
+#'   y          = desire,
+#'   paired     = TRUE,
 #'   subject.id = subject,
-#'   type = "p"
+#'   type       = "p"
 #' )
 #'
 #' # non-parametric ----------------------------------
@@ -49,19 +49,19 @@
 #' # between-subjects design
 #' two_sample_test(
 #'   data = sleep,
-#'   x = group,
-#'   y = extra,
+#'   x    = group,
+#'   y    = extra,
 #'   type = "np"
 #' )
 #'
 #' # within-subjects design
 #' two_sample_test(
-#'   data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
-#'   x = condition,
-#'   y = desire,
-#'   paired = TRUE,
+#'   data       = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+#'   x          = condition,
+#'   y          = desire,
+#'   paired     = TRUE,
 #'   subject.id = subject,
-#'   type = "np"
+#'   type       = "np"
 #' )
 #'
 #' # robust ----------------------------------
@@ -69,19 +69,19 @@
 #' # between-subjects design
 #' two_sample_test(
 #'   data = sleep,
-#'   x = group,
-#'   y = extra,
+#'   x    = group,
+#'   y    = extra,
 #'   type = "r"
 #' )
 #'
 #' # within-subjects design
 #' two_sample_test(
-#'   data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
-#'   x = condition,
-#'   y = desire,
-#'   paired = TRUE,
+#'   data       = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+#'   x          = condition,
+#'   y          = desire,
+#'   paired     = TRUE,
 #'   subject.id = subject,
-#'   type = "r"
+#'   type       = "r"
 #' )
 #'
 #' #' # Bayesian ------------------------------
@@ -89,19 +89,19 @@
 #' # between-subjects design
 #' two_sample_test(
 #'   data = sleep,
-#'   x = group,
-#'   y = extra,
+#'   x    = group,
+#'   y    = extra,
 #'   type = "bayes"
 #' )
 #'
 #' # within-subjects design
 #' two_sample_test(
-#'   data = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
-#'   x = condition,
-#'   y = desire,
-#'   paired = TRUE,
+#'   data       = dplyr::filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+#'   x          = condition,
+#'   y          = desire,
+#'   paired     = TRUE,
 #'   subject.id = subject,
-#'   type = "bayes"
+#'   type       = "bayes"
 #' )
 #' }
 #' @export
@@ -130,7 +130,6 @@ two_sample_test <- function(data,
   c(x, y) %<-% c(ensym(x), ensym(y))
 
   # properly removing NAs if it's a paired design
-  # styler: off
   data %<>%
     long_to_wide_converter(
       x          = {{ x }},
@@ -139,7 +138,6 @@ two_sample_test <- function(data,
       paired     = paired,
       spread     = ifelse(type %in% c("bayes", "robust"), paired, FALSE)
     )
-  # styler: on
 
   # parametric ---------------------------------------
 
@@ -148,8 +146,10 @@ two_sample_test <- function(data,
     c(no.parameters, k.df) %<-% c(1L, ifelse(paired || var.equal, 0L, k))
     .f <- stats::t.test
 
+    # styler: off
     if (effsize.type %in% c("unbiased", "g")) .f.es <- effectsize::hedges_g
-    if (effsize.type %in% c("biased", "d")) .f.es <- effectsize::cohens_d
+    if (effsize.type %in% c("biased", "d")) .f.es   <- effectsize::cohens_d
+    # styler: on
   }
 
   # non-parametric ------------------------------------
@@ -162,7 +162,6 @@ two_sample_test <- function(data,
 
   # preparing expression
   if (type %in% c("parametric", "nonparametric")) {
-    # styler: off
     # extracting test details
     stats_df <- exec(
       .f,
@@ -186,7 +185,6 @@ two_sample_test <- function(data,
       verbose     = FALSE
     ) %>%
       tidy_model_effectsize(.)
-    # styler: on
   }
 
   # robust ---------------------------------------
@@ -195,21 +193,22 @@ two_sample_test <- function(data,
     # expression parameters
     c(no.parameters, k.df) %<-% c(1L, ifelse(paired, 0L, k))
 
-    # common arguments
-    .f.args <- list(formula = new_formula(y, x), data = data, x = data[[2]], y = data[[3]])
-    .f.es.args <- list(EQVAR = FALSE, nboot = nboot, alpha = 1 - conf.level, tr = tr)
-
     # which functions to be used for hypothesis testing and estimation?
     if (!paired) c(.f, .f.es) %<-% c(WRS2::yuen, WRS2::akp.effect)
     if (paired) c(.f, .f.es) %<-% c(WRS2::yuend, WRS2::dep.effect)
 
+    # common arguments
+    # styler: off
+    .f.args    <- list(formula = new_formula(y, x), data = data, x = data[[2]], y = data[[3]])
+    .f.es.args <- list(EQVAR = FALSE, nboot = nboot, alpha = 1 - conf.level, tr = tr)
+
     effsize_df <- tidy_model_parameters(exec(.f.es, !!!.f.args, !!!.f.es.args), keep = "AKP")
-    stats_df <- tidy_model_parameters(exec(.f, !!!.f.args, !!!.f.es.args))
+    stats_df   <- tidy_model_parameters(exec(.f, !!!.f.args, !!!.f.es.args))
+    # styler: on
   }
 
-  # final returns
+  # combining dataframes
   if (type != "bayes") {
-    # combining dataframes
     stats_df <- bind_cols(select(stats_df, -matches("^est|^eff|conf|^ci")), select(effsize_df, -matches("term")))
   }
 
@@ -217,8 +216,10 @@ two_sample_test <- function(data,
 
   # running Bayesian t-test
   if (type == "bayes") {
+    # styler: off
     if (!paired) .f.args <- list(formula = new_formula(y, x), paired = paired)
-    if (paired) .f.args <- list(x = data[[2]], y = data[[3]], paired = paired)
+    if (paired) .f.args  <- list(x = data[[2]], y = data[[3]], paired = paired)
+    # styler: on
 
     # creating a `BayesFactor` object
     stats_df <- exec(BayesFactor::ttestBF, data = as.data.frame(data), rscale = bf.prior, !!!.f.args) %>%
@@ -227,8 +228,7 @@ two_sample_test <- function(data,
 
   # expression ---------------------------------------
 
-  # return the output
-  # # styler: off
+  # add column with expression
   polish_data(stats_df) %>%
     mutate(expression = list(expr_template(
       no.parameters   = no.parameters,
@@ -240,5 +240,4 @@ two_sample_test <- function(data,
       top.text        = top.text,
       bayesian        = ifelse(type == "bayes", TRUE, FALSE)
     )))
-  # styler: on
 }

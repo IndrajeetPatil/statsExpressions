@@ -121,18 +121,18 @@ options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 # between-subjects
 oneway_anova(
   data = ggplot2::msleep,
-  x = vore,
-  y = sleep_rem
+  x    = vore,
+  y    = sleep_rem
 )
 
 if (require("afex", quietly = TRUE)) {
   # within-subjects design
   oneway_anova(
-    data = iris_long,
-    x = condition,
-    y = value,
+    data       = iris_long,
+    x          = condition,
+    y          = value,
     subject.id = id,
-    paired = TRUE
+    paired     = TRUE
   )
 }
 
@@ -141,19 +141,19 @@ if (require("afex", quietly = TRUE)) {
 # between-subjects
 oneway_anova(
   data = ggplot2::msleep,
-  x = vore,
-  y = sleep_rem,
+  x    = vore,
+  y    = sleep_rem,
   type = "np"
 )
 
 # within-subjects design
 oneway_anova(
-  data = iris_long,
-  x = condition,
-  y = value,
+  data       = iris_long,
+  x          = condition,
+  y          = value,
   subject.id = id,
-  paired = TRUE,
-  type = "np"
+  paired     = TRUE,
+  type       = "np"
 )
 
 # ----------------------- robust -------------------------------------
@@ -161,19 +161,19 @@ oneway_anova(
 # between-subjects
 oneway_anova(
   data = ggplot2::msleep,
-  x = vore,
-  y = sleep_rem,
+  x    = vore,
+  y    = sleep_rem,
   type = "r"
 )
 
 # within-subjects design
 oneway_anova(
-  data = iris_long,
-  x = condition,
-  y = value,
+  data       = iris_long,
+  x          = condition,
+  y          = value,
   subject.id = id,
-  paired = TRUE,
-  type = "r"
+  paired     = TRUE,
+  type       = "r"
 )
 
 # ----------------------- Bayesian -------------------------------------
@@ -181,8 +181,8 @@ oneway_anova(
 # between-subjects
 oneway_anova(
   data = ggplot2::msleep,
-  x = vore,
-  y = sleep_rem,
+  x    = vore,
+  y    = sleep_rem,
   type = "bayes"
 )
 
@@ -190,12 +190,12 @@ oneway_anova(
 # needs `BayesFactor 0.9.12-4.3` or above
 if (utils::packageVersion("BayesFactor") >= package_version("0.9.12-4.3")) {
   oneway_anova(
-    data = iris_long,
-    x = condition,
-    y = value,
+    data       = iris_long,
+    x          = condition,
+    y          = value,
     subject.id = id,
-    paired = TRUE,
-    type = "bayes"
+    paired     = TRUE,
+    type       = "bayes"
   )
 }
 }

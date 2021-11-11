@@ -142,17 +142,17 @@ expr_template <- function(data,
         )
       ),
       env = list(
-        top.text = top.text,
-        effsize.text = effsize.text %||% estimate_type_switch(data$effectsize[[1]]),
-        prior.type = prior.type %||% prior_type_switch(data$method[[1]]),
-        conf.level = paste0(data$conf.level[[1]] * 100, "%"),
-        conf.method = toupper(conf.method),
-        bf = format_value(-log(data$bf10[[1]]), k),
-        estimate = format_value(estimate, k),
-        conf.low = format_value(conf.low, k),
-        conf.high = format_value(conf.high, k),
+        top.text           = top.text,
+        effsize.text       = effsize.text %||% estimate_type_switch(data$effectsize[[1]]),
+        prior.type         = prior.type %||% prior_type_switch(data$method[[1]]),
+        conf.level         = paste0(data$conf.level[[1]] * 100, "%"),
+        conf.method        = toupper(conf.method),
+        bf                 = format_value(-log(data$bf10[[1]]), k),
+        estimate           = format_value(estimate, k),
+        conf.low           = format_value(conf.low, k),
+        conf.high          = format_value(conf.high, k),
         prior.distribution = prior.distribution %||% prior_switch(data$method[[1]]),
-        bf.prior = format_value(data$prior.scale[[1]], k)
+        bf.prior           = format_value(data$prior.scale[[1]], k)
       )
     )
 
@@ -173,15 +173,15 @@ expr_template <- function(data,
       ),
       env = list(
         statistic.text = statistic.text %||% stat_text_switch(data$method[[1]]),
-        statistic = format_num(data$statistic[[1]], k),
-        p.value = format_num(data$p.value[[1]], k, p.value = TRUE),
-        effsize.text = effsize.text %||% estimate_type_switch(data$effectsize[[1]]),
-        estimate = format_value(estimate, k),
-        conf.level = paste0(data$conf.level[[1]] * 100, "%"),
-        conf.low = format_value(conf.low, k),
-        conf.high = format_value(conf.high, k),
-        n = .prettyNum(n),
-        n.text = n.text
+        statistic      = format_num(data$statistic[[1]], k),
+        p.value        = format_num(data$p.value[[1]], k, p.value = TRUE),
+        effsize.text   = effsize.text %||% estimate_type_switch(data$effectsize[[1]]),
+        estimate       = format_value(estimate, k),
+        conf.level     = paste0(data$conf.level[[1]] * 100, "%"),
+        conf.low       = format_value(conf.low, k),
+        conf.high      = format_value(conf.high, k),
+        n              = .prettyNum(n),
+        n.text         = n.text
       )
     )
   }
@@ -201,16 +201,16 @@ expr_template <- function(data,
       ),
       env = list(
         statistic.text = statistic.text %||% stat_text_switch(data$method[[1]]),
-        statistic = format_num(data$statistic[[1]], k),
-        parameter = format_value(data$df.error[[1]], k.df),
-        p.value = format_num(data$p.value[[1]], k, p.value = TRUE),
-        effsize.text = effsize.text %||% estimate_type_switch(data$effectsize[[1]]),
-        estimate = format_value(estimate, k),
-        conf.level = paste0(data$conf.level[[1]] * 100, "%"),
-        conf.low = format_value(conf.low, k),
-        conf.high = format_value(conf.high, k),
-        n = .prettyNum(n),
-        n.text = n.text
+        statistic      = format_num(data$statistic[[1]], k),
+        parameter      = format_value(data$df.error[[1]], k.df),
+        p.value        = format_num(data$p.value[[1]], k, p.value = TRUE),
+        effsize.text   = effsize.text %||% estimate_type_switch(data$effectsize[[1]]),
+        estimate       = format_value(estimate, k),
+        conf.level     = paste0(data$conf.level[[1]] * 100, "%"),
+        conf.low       = format_value(conf.low, k),
+        conf.high      = format_value(conf.high, k),
+        n              = .prettyNum(n),
+        n.text         = n.text
       )
     )
   }
@@ -228,17 +228,17 @@ expr_template <- function(data,
       ),
       env = list(
         statistic.text = statistic.text %||% stat_text_switch(data$method[[1]]),
-        statistic = format_num(data$statistic[[1]], k),
-        parameter1 = format_value(data$df[[1]], k.df),
-        parameter2 = format_value(data$df.error[[1]], k.df.error),
-        p.value = format_num(data$p.value[[1]], k, p.value = TRUE),
-        effsize.text = effsize.text %||% estimate_type_switch(data$effectsize[[1]]),
-        estimate = format_value(estimate, k),
-        conf.level = paste0(data$conf.level[[1]] * 100, "%"),
-        conf.low = format_value(conf.low, k),
-        conf.high = format_value(conf.high, k),
-        n = .prettyNum(n),
-        n.text = n.text
+        statistic      = format_num(data$statistic[[1]], k),
+        parameter1     = format_value(data$df[[1]], k.df),
+        parameter2     = format_value(data$df.error[[1]], k.df.error),
+        p.value        = format_num(data$p.value[[1]], k, p.value = TRUE),
+        effsize.text   = effsize.text %||% estimate_type_switch(data$effectsize[[1]]),
+        estimate       = format_value(estimate, k),
+        conf.level     = paste0(data$conf.level[[1]] * 100, "%"),
+        conf.low       = format_value(conf.low, k),
+        conf.high      = format_value(conf.high, k),
+        n              = .prettyNum(n),
+        n.text         = n.text
       )
     )
   }

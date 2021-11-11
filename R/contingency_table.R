@@ -52,38 +52,38 @@
 #'
 #' # association test
 #' contingency_table(
-#'   data = mtcars,
-#'   x = am,
-#'   y = cyl,
+#'   data   = mtcars,
+#'   x      = am,
+#'   y      = cyl,
 #'   paired = FALSE
 #' )
 #'
 #' # goodness-of-fit test
 #' contingency_table(
-#'   data = as.data.frame(HairEyeColor),
-#'   x = Eye,
+#'   data   = as.data.frame(HairEyeColor),
+#'   x      = Eye,
 #'   counts = Freq,
-#'   ratio = c(0.2, 0.2, 0.3, 0.3)
+#'   ratio  = c(0.2, 0.2, 0.3, 0.3)
 #' )
 #'
 #' # ------------------------ Bayesian -----------------------------
 #'
 #' # association test
 #' contingency_table(
-#'   data = mtcars,
-#'   x = am,
-#'   y = cyl,
+#'   data   = mtcars,
+#'   x      = am,
+#'   y      = cyl,
 #'   paired = FALSE,
-#'   type = "bayes"
+#'   type   = "bayes"
 #' )
 #'
 #' # goodness-of-fit test
 #' contingency_table(
-#'   data = as.data.frame(HairEyeColor),
-#'   x = Eye,
+#'   data   = as.data.frame(HairEyeColor),
+#'   x      = Eye,
 #'   counts = Freq,
-#'   ratio = c(0.2, 0.2, 0.3, 0.3),
-#'   type = "bayes"
+#'   ratio  = c(0.2, 0.2, 0.3, 0.3),
+#'   type   = "bayes"
 #' )
 #' }
 #' @export
@@ -149,7 +149,6 @@ contingency_table <- function(data,
     # two-way table
     if (test == "2way") {
       # extract a tidy dataframe
-      # styler: off
       stats_df <- BayesFactor::contingencyTableBF(
         table(data),
         sampleType         = sampling.plan,
@@ -157,7 +156,6 @@ contingency_table <- function(data,
         priorConcentration = prior.concentration
       ) %>%
         tidy_model_parameters(ci = conf.level, cramers_v = TRUE)
-      # styler: on
     }
 
     # one-way table
@@ -211,12 +209,10 @@ contingency_table <- function(data,
 
   # expression ---------------------------------------
 
-
   if (!(type == "bayes" && test == "1way")) {
-    # styler: off
     stats_df %<>%
       mutate(
-        expression      = list(expr_template(
+        expression = list(expr_template(
           data          = .,
           no.parameters = 1L,
           n             = nrow(data),
@@ -227,10 +223,9 @@ contingency_table <- function(data,
         ))
       ) %>%
       polish_data()
-    # styler:on
   }
 
-  # return the output
+  # add column with expression
   stats_df
 }
 

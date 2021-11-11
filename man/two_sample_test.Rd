@@ -121,19 +121,19 @@ options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 # between-subjects design
 two_sample_test(
   data = sleep,
-  x = group,
-  y = extra,
+  x    = group,
+  y    = extra,
   type = "p"
 )
 
 # within-subjects design
 two_sample_test(
-  data = dplyr::filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
-  x = condition,
-  y = desire,
-  paired = TRUE,
+  data       = dplyr::filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
+  x          = condition,
+  y          = desire,
+  paired     = TRUE,
   subject.id = subject,
-  type = "p"
+  type       = "p"
 )
 
 # non-parametric ----------------------------------
@@ -141,19 +141,19 @@ two_sample_test(
 # between-subjects design
 two_sample_test(
   data = sleep,
-  x = group,
-  y = extra,
+  x    = group,
+  y    = extra,
   type = "np"
 )
 
 # within-subjects design
 two_sample_test(
-  data = dplyr::filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
-  x = condition,
-  y = desire,
-  paired = TRUE,
+  data       = dplyr::filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
+  x          = condition,
+  y          = desire,
+  paired     = TRUE,
   subject.id = subject,
-  type = "np"
+  type       = "np"
 )
 
 # robust ----------------------------------
@@ -161,19 +161,19 @@ two_sample_test(
 # between-subjects design
 two_sample_test(
   data = sleep,
-  x = group,
-  y = extra,
+  x    = group,
+  y    = extra,
   type = "r"
 )
 
 # within-subjects design
 two_sample_test(
-  data = dplyr::filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
-  x = condition,
-  y = desire,
-  paired = TRUE,
+  data       = dplyr::filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
+  x          = condition,
+  y          = desire,
+  paired     = TRUE,
   subject.id = subject,
-  type = "r"
+  type       = "r"
 )
 
 #' # Bayesian ------------------------------
@@ -181,19 +181,19 @@ two_sample_test(
 # between-subjects design
 two_sample_test(
   data = sleep,
-  x = group,
-  y = extra,
+  x    = group,
+  y    = extra,
   type = "bayes"
 )
 
 # within-subjects design
 two_sample_test(
-  data = dplyr::filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
-  x = condition,
-  y = desire,
-  paired = TRUE,
+  data       = dplyr::filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
+  x          = condition,
+  y          = desire,
+  paired     = TRUE,
   subject.id = subject,
-  type = "bayes"
+  type       = "bayes"
 )
 }
 }

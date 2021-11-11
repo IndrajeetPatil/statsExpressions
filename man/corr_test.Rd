@@ -74,15 +74,15 @@ options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 # without changing defaults
 corr_test(
   data = ggplot2::midwest,
-  x = area,
-  y = percblack
+  x    = area,
+  y    = percblack
 )
 
 # changing defaults
 corr_test(
   data = ggplot2::midwest,
-  x = area,
-  y = percblack,
+  x    = area,
+  y    = percblack,
   type = "robust"
 )
 }

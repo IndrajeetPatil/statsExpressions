@@ -47,38 +47,38 @@
 #' # ----------------------- parametric ---------------------------------------
 #'
 #' one_sample_test(
-#'   data = ggplot2::msleep,
-#'   x = brainwt,
+#'   data       = ggplot2::msleep,
+#'   x          = brainwt,
 #'   test.value = 0.275,
-#'   type = "parametric"
+#'   type       = "parametric"
 #' )
 #'
 #' # ----------------------- non-parametric -----------------------------------
 #'
 #' one_sample_test(
-#'   data = ggplot2::msleep,
-#'   x = brainwt,
+#'   data       = ggplot2::msleep,
+#'   x          = brainwt,
 #'   test.value = 0.275,
-#'   type = "nonparametric"
+#'   type       = "nonparametric"
 #' )
 #'
 #' # ----------------------- robust --------------------------------------------
 #'
 #' one_sample_test(
-#'   data = ggplot2::msleep,
-#'   x = brainwt,
+#'   data       = ggplot2::msleep,
+#'   x          = brainwt,
 #'   test.value = 0.275,
-#'   type = "robust"
+#'   type       = "robust"
 #' )
 #'
 #' # ---------------------------- Bayesian -----------------------------------
 #'
 #' one_sample_test(
-#'   data = ggplot2::msleep,
-#'   x = brainwt,
+#'   data       = ggplot2::msleep,
+#'   x          = brainwt,
 #'   test.value = 0.275,
-#'   type = "bayes",
-#'   bf.prior = 0.8
+#'   type       = "bayes",
+#'   bf.prior   = 0.8
 #' )
 #' }
 #' @export
@@ -107,8 +107,10 @@ one_sample_test <- function(data,
     # preparing expression parameters
     no.parameters <- 1L
     .f <- stats::t.test
+    # styler: off
     if (effsize.type %in% c("unbiased", "g")) .f.es <- effectsize::hedges_g
-    if (effsize.type %in% c("biased", "d")) .f.es <- effectsize::cohens_d
+    if (effsize.type %in% c("biased", "d")) .f.es   <- effectsize::cohens_d
+    # styler: on
   }
 
   # non-parametric ---------------------------------------
@@ -127,7 +129,6 @@ one_sample_test <- function(data,
       select(-matches("^est|^conf|^diff|^term|^ci"))
 
     # extracting effect size details
-    # styler: off
     effsize_df <- exec(
       .f.es,
       x       = x_vec,
@@ -136,7 +137,6 @@ one_sample_test <- function(data,
       ci      = conf.level
     ) %>%
       tidy_model_effectsize(.)
-    # styler: on
 
     # dataframe
     stats_df <- bind_cols(stats_df, effsize_df)
@@ -161,8 +161,8 @@ one_sample_test <- function(data,
 
   # expression ---------------------------------------
 
-  # return the output
-  # styler: off
+  # add column with expression
+
   polish_data(stats_df) %>%
     mutate(expression = list(expr_template(
       data            = .,
@@ -172,5 +172,4 @@ one_sample_test <- function(data,
       top.text        = top.text,
       bayesian        = ifelse(type == "bayes", TRUE, FALSE)
     )))
-  # styler: on
 }
