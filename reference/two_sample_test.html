@@ -179,8 +179,8 @@ mostly relevant in the context of <code>ggstatsplot</code> package functions.</p
 <span class="r-in"><span class="co"># between-subjects design</span></span>
 <span class="r-in"><span class="fu">two_sample_test</span><span class="op">(</span></span>
 <span class="r-in">  data <span class="op">=</span> <span class="va">sleep</span>,</span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">group</span>,</span>
-<span class="r-in">  y <span class="op">=</span> <span class="va">extra</span>,</span>
+<span class="r-in">  x    <span class="op">=</span> <span class="va">group</span>,</span>
+<span class="r-in">  y    <span class="op">=</span> <span class="va">extra</span>,</span>
 <span class="r-in">  type <span class="op">=</span> <span class="st">"p"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 17</span></span>
@@ -196,12 +196,12 @@ mostly relevant in the context of <code>ggstatsplot</code> package functions.</p
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># within-subjects design</span></span>
 <span class="r-in"><span class="fu">two_sample_test</span><span class="op">(</span></span>
-<span class="r-in">  data <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">bugs_long</span>, <span class="va">condition</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"HDHF"</span>, <span class="st">"HDLF"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">condition</span>,</span>
-<span class="r-in">  y <span class="op">=</span> <span class="va">desire</span>,</span>
-<span class="r-in">  paired <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span class="r-in">  data       <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">bugs_long</span>, <span class="va">condition</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"HDHF"</span>, <span class="st">"HDLF"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span class="r-in">  x          <span class="op">=</span> <span class="va">condition</span>,</span>
+<span class="r-in">  y          <span class="op">=</span> <span class="va">desire</span>,</span>
+<span class="r-in">  paired     <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span class="r-in">  subject.id <span class="op">=</span> <span class="va">subject</span>,</span>
-<span class="r-in">  type <span class="op">=</span> <span class="st">"p"</span></span>
+<span class="r-in">  type       <span class="op">=</span> <span class="st">"p"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 15</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">term</span>   <span style="font-weight: bold;">group</span>     <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">df.error</span>  <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>        <span style="font-weight: bold;">alternative</span></span>
@@ -219,8 +219,8 @@ mostly relevant in the context of <code>ggstatsplot</code> package functions.</p
 <span class="r-in"><span class="co"># between-subjects design</span></span>
 <span class="r-in"><span class="fu">two_sample_test</span><span class="op">(</span></span>
 <span class="r-in">  data <span class="op">=</span> <span class="va">sleep</span>,</span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">group</span>,</span>
-<span class="r-in">  y <span class="op">=</span> <span class="va">extra</span>,</span>
+<span class="r-in">  x    <span class="op">=</span> <span class="va">group</span>,</span>
+<span class="r-in">  y    <span class="op">=</span> <span class="va">extra</span>,</span>
 <span class="r-in">  type <span class="op">=</span> <span class="st">"np"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 13</span></span>
@@ -236,12 +236,12 @@ mostly relevant in the context of <code>ggstatsplot</code> package functions.</p
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># within-subjects design</span></span>
 <span class="r-in"><span class="fu">two_sample_test</span><span class="op">(</span></span>
-<span class="r-in">  data <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">bugs_long</span>, <span class="va">condition</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"HDHF"</span>, <span class="st">"HDLF"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">condition</span>,</span>
-<span class="r-in">  y <span class="op">=</span> <span class="va">desire</span>,</span>
-<span class="r-in">  paired <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span class="r-in">  data       <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">bugs_long</span>, <span class="va">condition</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"HDHF"</span>, <span class="st">"HDLF"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span class="r-in">  x          <span class="op">=</span> <span class="va">condition</span>,</span>
+<span class="r-in">  y          <span class="op">=</span> <span class="va">desire</span>,</span>
+<span class="r-in">  paired     <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span class="r-in">  subject.id <span class="op">=</span> <span class="va">subject</span>,</span>
-<span class="r-in">  type <span class="op">=</span> <span class="st">"np"</span></span>
+<span class="r-in">  type       <span class="op">=</span> <span class="st">"np"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 13</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">parameter1</span> <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">statistic</span>  <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>                    <span style="font-weight: bold;">alternative</span></span>
@@ -259,8 +259,8 @@ mostly relevant in the context of <code>ggstatsplot</code> package functions.</p
 <span class="r-in"><span class="co"># between-subjects design</span></span>
 <span class="r-in"><span class="fu">two_sample_test</span><span class="op">(</span></span>
 <span class="r-in">  data <span class="op">=</span> <span class="va">sleep</span>,</span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">group</span>,</span>
-<span class="r-in">  y <span class="op">=</span> <span class="va">extra</span>,</span>
+<span class="r-in">  x    <span class="op">=</span> <span class="va">group</span>,</span>
+<span class="r-in">  y    <span class="op">=</span> <span class="va">extra</span>,</span>
 <span class="r-in">  type <span class="op">=</span> <span class="st">"r"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 10</span></span>
@@ -279,12 +279,12 @@ mostly relevant in the context of <code>ggstatsplot</code> package functions.</p
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># within-subjects design</span></span>
 <span class="r-in"><span class="fu">two_sample_test</span><span class="op">(</span></span>
-<span class="r-in">  data <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">bugs_long</span>, <span class="va">condition</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"HDHF"</span>, <span class="st">"HDLF"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">condition</span>,</span>
-<span class="r-in">  y <span class="op">=</span> <span class="va">desire</span>,</span>
-<span class="r-in">  paired <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span class="r-in">  data       <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">bugs_long</span>, <span class="va">condition</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"HDHF"</span>, <span class="st">"HDLF"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span class="r-in">  x          <span class="op">=</span> <span class="va">condition</span>,</span>
+<span class="r-in">  y          <span class="op">=</span> <span class="va">desire</span>,</span>
+<span class="r-in">  paired     <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span class="r-in">  subject.id <span class="op">=</span> <span class="va">subject</span>,</span>
-<span class="r-in">  type <span class="op">=</span> <span class="st">"r"</span></span>
+<span class="r-in">  type       <span class="op">=</span> <span class="st">"r"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 14</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">df.error</span> <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>                                            </span>
@@ -302,8 +302,8 @@ mostly relevant in the context of <code>ggstatsplot</code> package functions.</p
 <span class="r-in"><span class="co"># between-subjects design</span></span>
 <span class="r-in"><span class="fu">two_sample_test</span><span class="op">(</span></span>
 <span class="r-in">  data <span class="op">=</span> <span class="va">sleep</span>,</span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">group</span>,</span>
-<span class="r-in">  y <span class="op">=</span> <span class="va">extra</span>,</span>
+<span class="r-in">  x    <span class="op">=</span> <span class="va">group</span>,</span>
+<span class="r-in">  y    <span class="op">=</span> <span class="va">extra</span>,</span>
 <span class="r-in">  type <span class="op">=</span> <span class="st">"bayes"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 14</span></span>
@@ -319,12 +319,12 @@ mostly relevant in the context of <code>ggstatsplot</code> package functions.</p
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># within-subjects design</span></span>
 <span class="r-in"><span class="fu">two_sample_test</span><span class="op">(</span></span>
-<span class="r-in">  data <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">bugs_long</span>, <span class="va">condition</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"HDHF"</span>, <span class="st">"HDLF"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">condition</span>,</span>
-<span class="r-in">  y <span class="op">=</span> <span class="va">desire</span>,</span>
-<span class="r-in">  paired <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span class="r-in">  data       <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">bugs_long</span>, <span class="va">condition</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"HDHF"</span>, <span class="st">"HDLF"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span class="r-in">  x          <span class="op">=</span> <span class="va">condition</span>,</span>
+<span class="r-in">  y          <span class="op">=</span> <span class="va">desire</span>,</span>
+<span class="r-in">  paired     <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span class="r-in">  subject.id <span class="op">=</span> <span class="va">subject</span>,</span>
-<span class="r-in">  type <span class="op">=</span> <span class="st">"bayes"</span></span>
+<span class="r-in">  type       <span class="op">=</span> <span class="st">"bayes"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 14</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">term</span>       <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span>    <span style="font-weight: bold;">pd</span> <span style="font-weight: bold;">rope.percentage</span></span>

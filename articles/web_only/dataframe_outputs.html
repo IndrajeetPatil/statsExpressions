@@ -77,7 +77,7 @@
       <img src="../../logo.png" class="logo" alt=""><h1>Dataframe outputs</h1>
                         <h4 data-toc-skip class="author">Indrajeet Patil</h4>
             
-            <h4 data-toc-skip class="date">2021-11-08</h4>
+            <h4 data-toc-skip class="date">2021-11-11</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/HEAD/vignettes/web_only/dataframe_outputs.Rmd" class="external-link"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="d-none name"><code>dataframe_outputs.Rmd</code></div>
@@ -88,9 +88,9 @@
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>The <code>statsExpressions</code> package has two key aims: to provide a consistent syntax to do statistical analysis with tidy data, and to provide statistical expressions (i.e., a pre-formatted in-text statistical result) for plotting functions. Currently, it supports common types of statistical approaches and tests: parametric, nonparametric, robust, and Bayesian <em>t</em>-test, one-way ANOVA, correlation analyses, contingency table analyses, and meta-analyses. The functions are pipe-friendly and compatible with tidy data.</p>
+<p>The <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> package has two key aims: to provide a consistent syntax to do statistical analysis with tidy data, and to provide statistical expressions (i.e., a pre-formatted in-text statistical result) for plotting functions. Currently, it supports common types of statistical approaches and tests: parametric, nonparametric, robust, and Bayesian <em>t</em>-test, one-way ANOVA, correlation analyses, contingency table analyses, and meta-analyses. The functions are pipe-friendly and compatible with tidy data.</p>
 <p>Statistical packages exhibit substantial diversity in terms of their syntax and expected input type. This can make it difficult to switch from one statistical approach to another. For example, some functions expect vectors as inputs, while others expect dataframes. Depending on whether it is a repeated measures design or not, different functions might expect data to be in wide or long format. Some functions can internally omit missing values, while other functions error in their presence. Furthermore, if someone wishes to utilize the objects returned by these packages downstream in their workflow, this is not straightforward either because even functions from the same package can return a list, a matrix, an array, a dataframe, etc., depending on the function.</p>
-<p>This is where <code>statsExpressions</code> comes in: It can be thought of as a unified portal through which most of the functionality in these underlying packages can be accessed, with a simpler interface and no requirement to change data format.</p>
+<p>This is where <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> comes in: It can be thought of as a unified portal through which most of the functionality in these underlying packages can be accessed, with a simpler interface and no requirement to change data format.</p>
 </div>
 <div class="section level2">
 <h2 id="dataframes">Dataframes<a class="anchor" aria-label="anchor" href="#dataframes"></a>
@@ -122,10 +122,10 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,
-  x <span class="op">=</span> <span class="va">brainwt</span>,
+  data       <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,
+  x          <span class="op">=</span> <span class="va">brainwt</span>,
   test.value <span class="op">=</span> <span class="fl">0.275</span>,
-  type <span class="op">=</span> <span class="st">"parametric"</span>,
+  type       <span class="op">=</span> <span class="st">"parametric"</span>,
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 14</span></span>
 <span class="co">#&gt;      <span style="font-weight: bold;">mu</span> <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">df.error</span> <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>            <span style="font-weight: bold;">alternative</span> <span style="font-weight: bold;">effectsize</span></span>
@@ -142,10 +142,10 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,
-  x <span class="op">=</span> <span class="va">brainwt</span>,
+  data       <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,
+  x          <span class="op">=</span> <span class="va">brainwt</span>,
   test.value <span class="op">=</span> <span class="fl">0.275</span>,
-  type <span class="op">=</span> <span class="st">"nonparametric"</span>,
+  type       <span class="op">=</span> <span class="st">"nonparametric"</span>,
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 11</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>                    <span style="font-weight: bold;">alternative</span> <span style="font-weight: bold;">effectsize</span>       </span>
@@ -159,10 +159,10 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,
-  x <span class="op">=</span> <span class="va">brainwt</span>,
+  data       <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,
+  x          <span class="op">=</span> <span class="va">brainwt</span>,
   test.value <span class="op">=</span> <span class="fl">0.275</span>,
-  type <span class="op">=</span> <span class="st">"robust"</span>,
+  type       <span class="op">=</span> <span class="st">"robust"</span>,
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 10</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">method</span>                                 <span style="font-weight: bold;">effectsize</span>  </span>
@@ -176,11 +176,11 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,
-  x <span class="op">=</span> <span class="va">brainwt</span>,
+  data       <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,
+  x          <span class="op">=</span> <span class="va">brainwt</span>,
   test.value <span class="op">=</span> <span class="fl">0.275</span>,
-  type <span class="op">=</span> <span class="st">"bayes"</span>,
-  bf.prior <span class="op">=</span> <span class="fl">0.8</span>
+  type       <span class="op">=</span> <span class="st">"bayes"</span>,
+  bf.prior   <span class="op">=</span> <span class="fl">0.8</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 14</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">term</span>       <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span>    <span style="font-weight: bold;">pd</span> <span style="font-weight: bold;">rope.percentage</span></span>
@@ -210,12 +210,12 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">df</span>,
-  x <span class="op">=</span> <span class="va">condition</span>,
-  y <span class="op">=</span> <span class="va">desire</span>,
-  paired <span class="op">=</span> <span class="cn">TRUE</span>,
+  data       <span class="op">=</span> <span class="va">df</span>,
+  x          <span class="op">=</span> <span class="va">condition</span>,
+  y          <span class="op">=</span> <span class="va">desire</span>,
+  paired     <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
-  type <span class="op">=</span> <span class="st">"p"</span>
+  type       <span class="op">=</span> <span class="st">"p"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 15</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">term</span>   <span style="font-weight: bold;">group</span>     <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">df.error</span>       <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>        <span style="font-weight: bold;">alternative</span></span>
@@ -232,12 +232,12 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">df</span>,
-  x <span class="op">=</span> <span class="va">condition</span>,
-  y <span class="op">=</span> <span class="va">desire</span>,
-  paired <span class="op">=</span> <span class="cn">TRUE</span>,
+  data       <span class="op">=</span> <span class="va">df</span>,
+  x          <span class="op">=</span> <span class="va">condition</span>,
+  y          <span class="op">=</span> <span class="va">desire</span>,
+  paired     <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
-  type <span class="op">=</span> <span class="st">"np"</span>
+  type       <span class="op">=</span> <span class="st">"np"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 13</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">parameter1</span> <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">statistic</span>      <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>                   </span>
@@ -254,12 +254,12 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">df</span>,
-  x <span class="op">=</span> <span class="va">condition</span>,
-  y <span class="op">=</span> <span class="va">desire</span>,
-  paired <span class="op">=</span> <span class="cn">TRUE</span>,
+  data       <span class="op">=</span> <span class="va">df</span>,
+  x          <span class="op">=</span> <span class="va">condition</span>,
+  y          <span class="op">=</span> <span class="va">desire</span>,
+  paired     <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
-  type <span class="op">=</span> <span class="st">"r"</span>
+  type       <span class="op">=</span> <span class="st">"r"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 14</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">df.error</span>      <span style="font-weight: bold;">p.value</span></span>
@@ -279,12 +279,12 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">df</span>,
-  x <span class="op">=</span> <span class="va">condition</span>,
-  y <span class="op">=</span> <span class="va">desire</span>,
-  paired <span class="op">=</span> <span class="cn">TRUE</span>,
+  data       <span class="op">=</span> <span class="va">df</span>,
+  x          <span class="op">=</span> <span class="va">condition</span>,
+  y          <span class="op">=</span> <span class="va">desire</span>,
+  paired     <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
-  type <span class="op">=</span> <span class="st">"bayes"</span>
+  type       <span class="op">=</span> <span class="st">"bayes"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 14</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">term</span>       <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span>    <span style="font-weight: bold;">pd</span> <span style="font-weight: bold;">rope.percentage</span></span>
@@ -310,10 +310,10 @@
 <span class="co"># unequal variance</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">ToothGrowth</span>,
-  x <span class="op">=</span> <span class="va">supp</span>,
-  y <span class="op">=</span> <span class="va">len</span>,
-  type <span class="op">=</span> <span class="st">"p"</span>
+  data      <span class="op">=</span> <span class="va">ToothGrowth</span>,
+  x         <span class="op">=</span> <span class="va">supp</span>,
+  y         <span class="op">=</span> <span class="va">len</span>,
+  type      <span class="op">=</span> <span class="st">"p"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 17</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">term</span>  <span style="font-weight: bold;">group</span> <span style="font-weight: bold;">mean.group1</span> <span style="font-weight: bold;">mean.group2</span> <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">df.error</span> <span style="font-weight: bold;">p.value</span></span>
@@ -329,11 +329,11 @@
 <span class="co"># equal variance</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">ToothGrowth</span>,
-  x <span class="op">=</span> <span class="va">supp</span>,
-  y <span class="op">=</span> <span class="va">len</span>,
+  data      <span class="op">=</span> <span class="va">ToothGrowth</span>,
+  x         <span class="op">=</span> <span class="va">supp</span>,
+  y         <span class="op">=</span> <span class="va">len</span>,
   var.equal <span class="op">=</span> <span class="cn">TRUE</span>,
-  type <span class="op">=</span> <span class="st">"p"</span>
+  type      <span class="op">=</span> <span class="st">"p"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 17</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">term</span>  <span style="font-weight: bold;">group</span> <span style="font-weight: bold;">mean.group1</span> <span style="font-weight: bold;">mean.group2</span> <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">df.error</span> <span style="font-weight: bold;">p.value</span></span>
@@ -350,10 +350,10 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">ToothGrowth</span>,
-  x <span class="op">=</span> <span class="va">supp</span>,
-  y <span class="op">=</span> <span class="va">len</span>,
-  type <span class="op">=</span> <span class="st">"np"</span>
+  data      <span class="op">=</span> <span class="va">ToothGrowth</span>,
+  x         <span class="op">=</span> <span class="va">supp</span>,
+  y         <span class="op">=</span> <span class="va">len</span>,
+  type      <span class="op">=</span> <span class="st">"np"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 13</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">parameter1</span> <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>                 <span style="font-weight: bold;">alternative</span></span>
@@ -370,10 +370,10 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">ToothGrowth</span>,
-  x <span class="op">=</span> <span class="va">supp</span>,
-  y <span class="op">=</span> <span class="va">len</span>,
-  type <span class="op">=</span> <span class="st">"r"</span>
+  data      <span class="op">=</span> <span class="va">ToothGrowth</span>,
+  x         <span class="op">=</span> <span class="va">supp</span>,
+  y         <span class="op">=</span> <span class="va">len</span>,
+  type      <span class="op">=</span> <span class="st">"r"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 10</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">df.error</span> <span style="font-weight: bold;">p.value</span></span>
@@ -393,10 +393,10 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">ToothGrowth</span>,
-  x <span class="op">=</span> <span class="va">supp</span>,
-  y <span class="op">=</span> <span class="va">len</span>,
-  type <span class="op">=</span> <span class="st">"bayes"</span>
+  data      <span class="op">=</span> <span class="va">ToothGrowth</span>,
+  x         <span class="op">=</span> <span class="va">supp</span>,
+  y         <span class="op">=</span> <span class="va">len</span>,
+  type      <span class="op">=</span> <span class="st">"bayes"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 14</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">term</span>       <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span>    <span style="font-weight: bold;">pd</span> <span style="font-weight: bold;">rope.percentage</span></span>
@@ -425,12 +425,12 @@
 <span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="http://afex.singmann.science/" class="external-link">"afex"</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
   <span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
-    data <span class="op">=</span> <span class="va">bugs_long</span>,
-    x <span class="op">=</span> <span class="va">condition</span>,
-    y <span class="op">=</span> <span class="va">desire</span>,
-    paired <span class="op">=</span> <span class="cn">TRUE</span>,
+    data       <span class="op">=</span> <span class="va">bugs_long</span>,
+    x          <span class="op">=</span> <span class="va">condition</span>,
+    y          <span class="op">=</span> <span class="va">desire</span>,
+    paired     <span class="op">=</span> <span class="cn">TRUE</span>,
     subject.id <span class="op">=</span> <span class="va">subject</span>,
-    type <span class="op">=</span> <span class="st">"p"</span>
+    type       <span class="op">=</span> <span class="st">"p"</span>
   <span class="op">)</span>
 <span class="op">}</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 17</span></span>
@@ -448,12 +448,12 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">bugs_long</span>,
-  x <span class="op">=</span> <span class="va">condition</span>,
-  y <span class="op">=</span> <span class="va">desire</span>,
-  paired <span class="op">=</span> <span class="cn">TRUE</span>,
+  data       <span class="op">=</span> <span class="va">bugs_long</span>,
+  x          <span class="op">=</span> <span class="va">condition</span>,
+  y          <span class="op">=</span> <span class="va">desire</span>,
+  paired     <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
-  type <span class="op">=</span> <span class="st">"np"</span>
+  type       <span class="op">=</span> <span class="st">"np"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 14</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">parameter1</span> <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">df.error</span>  <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>                </span>
@@ -470,12 +470,12 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">bugs_long</span>,
-  x <span class="op">=</span> <span class="va">condition</span>,
-  y <span class="op">=</span> <span class="va">desire</span>,
-  paired <span class="op">=</span> <span class="cn">TRUE</span>,
+  data       <span class="op">=</span> <span class="va">bugs_long</span>,
+  x          <span class="op">=</span> <span class="va">condition</span>,
+  y          <span class="op">=</span> <span class="va">desire</span>,
+  paired     <span class="op">=</span> <span class="cn">TRUE</span>,
   subject.id <span class="op">=</span> <span class="va">subject</span>,
-  type <span class="op">=</span> <span class="st">"r"</span>
+  type       <span class="op">=</span> <span class="st">"r"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 11</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">df</span> <span style="font-weight: bold;">df.error</span>  <span style="font-weight: bold;">p.value</span></span>
@@ -496,12 +496,12 @@
 <span class="kw">if</span> <span class="op">(</span><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html" class="external-link">packageVersion</a></span><span class="op">(</span><span class="st">"BayesFactor"</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric_version.html" class="external-link">package_version</a></span><span class="op">(</span><span class="st">"0.9.12-4.3"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
   <span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
-    data <span class="op">=</span> <span class="va">bugs_long</span>,
-    x <span class="op">=</span> <span class="va">condition</span>,
-    y <span class="op">=</span> <span class="va">desire</span>,
-    paired <span class="op">=</span> <span class="cn">TRUE</span>,
+    data       <span class="op">=</span> <span class="va">bugs_long</span>,
+    x          <span class="op">=</span> <span class="va">condition</span>,
+    y          <span class="op">=</span> <span class="va">desire</span>,
+    paired     <span class="op">=</span> <span class="cn">TRUE</span>,
     subject.id <span class="op">=</span> <span class="va">subject</span>,
-    type <span class="op">=</span> <span class="st">"bayes"</span>
+    type       <span class="op">=</span> <span class="st">"bayes"</span>
   <span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </div>
@@ -517,10 +517,10 @@
 <span class="co"># unequal variance</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">iris</span>,
-  x <span class="op">=</span> <span class="va">Species</span>,
-  y <span class="op">=</span> <span class="va">Sepal.Length</span>,
-  type <span class="op">=</span> <span class="st">"p"</span>
+  data      <span class="op">=</span> <span class="va">iris</span>,
+  x         <span class="op">=</span> <span class="va">Species</span>,
+  y         <span class="op">=</span> <span class="va">Sepal.Length</span>,
+  type      <span class="op">=</span> <span class="st">"p"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 13</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">df</span> <span style="font-weight: bold;">df.error</span>  <span style="font-weight: bold;">p.value</span></span>
@@ -536,11 +536,11 @@
 <span class="co"># equal variance</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">iris</span>,
-  x <span class="op">=</span> <span class="va">Species</span>,
-  y <span class="op">=</span> <span class="va">Sepal.Length</span>,
+  data      <span class="op">=</span> <span class="va">iris</span>,
+  x         <span class="op">=</span> <span class="va">Species</span>,
+  y         <span class="op">=</span> <span class="va">Sepal.Length</span>,
   var.equal <span class="op">=</span> <span class="cn">TRUE</span>,
-  type <span class="op">=</span> <span class="st">"p"</span>
+  type      <span class="op">=</span> <span class="st">"p"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 13</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">df</span> <span style="font-weight: bold;">df.error</span>  <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>                    <span style="font-weight: bold;">effectsize</span></span>
@@ -557,10 +557,10 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">iris</span>,
-  x <span class="op">=</span> <span class="va">Species</span>,
-  y <span class="op">=</span> <span class="va">Sepal.Length</span>,
-  type <span class="op">=</span> <span class="st">"np"</span>
+  data      <span class="op">=</span> <span class="va">iris</span>,
+  x         <span class="op">=</span> <span class="va">Species</span>,
+  y         <span class="op">=</span> <span class="va">Sepal.Length</span>,
+  type      <span class="op">=</span> <span class="st">"np"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 14</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">parameter1</span>   <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">df.error</span>  <span style="font-weight: bold;">p.value</span></span>
@@ -577,10 +577,10 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">iris</span>,
-  x <span class="op">=</span> <span class="va">Species</span>,
-  y <span class="op">=</span> <span class="va">Sepal.Length</span>,
-  type <span class="op">=</span> <span class="st">"r"</span>
+  data      <span class="op">=</span> <span class="va">iris</span>,
+  x         <span class="op">=</span> <span class="va">Species</span>,
+  y         <span class="op">=</span> <span class="va">Sepal.Length</span>,
+  type      <span class="op">=</span> <span class="st">"r"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 11</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">df</span> <span style="font-weight: bold;">df.error</span> <span style="font-weight: bold;">p.value</span></span>
@@ -600,10 +600,10 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">iris</span>,
-  x <span class="op">=</span> <span class="va">Species</span>,
-  y <span class="op">=</span> <span class="va">Sepal.Length</span>,
-  type <span class="op">=</span> <span class="st">"bayes"</span>
+  data      <span class="op">=</span> <span class="va">iris</span>,
+  x         <span class="op">=</span> <span class="va">Species</span>,
+  y         <span class="op">=</span> <span class="va">Sepal.Length</span>,
+  type      <span class="op">=</span> <span class="st">"bayes"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 20</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">term</span>               <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span>    <span style="font-weight: bold;">pd</span></span>
@@ -655,9 +655,9 @@
 <span class="co"># unpaired</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">mtcars</span>,
-  x <span class="op">=</span> <span class="va">am</span>,
-  y <span class="op">=</span> <span class="va">cyl</span>,
+  data   <span class="op">=</span> <span class="va">mtcars</span>,
+  x      <span class="op">=</span> <span class="va">am</span>,
+  y      <span class="op">=</span> <span class="va">cyl</span>,
   paired <span class="op">=</span> <span class="cn">FALSE</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 12</span></span>
@@ -693,9 +693,9 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">paired_data</span>,
-  x <span class="op">=</span> <span class="va">response_before</span>,
-  y <span class="op">=</span> <span class="va">response_after</span>,
+  data   <span class="op">=</span> <span class="va">paired_data</span>,
+  x      <span class="op">=</span> <span class="va">response_before</span>,
+  y      <span class="op">=</span> <span class="va">response_after</span>,
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   counts <span class="op">=</span> <span class="st">"Freq"</span>
 <span class="op">)</span>
@@ -712,11 +712,11 @@
 <span class="co"># unpaired</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">mtcars</span>,
-  x <span class="op">=</span> <span class="va">am</span>,
-  y <span class="op">=</span> <span class="va">cyl</span>,
+  data   <span class="op">=</span> <span class="va">mtcars</span>,
+  x      <span class="op">=</span> <span class="va">am</span>,
+  y      <span class="op">=</span> <span class="va">cyl</span>,
   paired <span class="op">=</span> <span class="cn">FALSE</span>,
-  type <span class="op">=</span> <span class="st">"bayes"</span>
+  type   <span class="op">=</span> <span class="st">"bayes"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 12</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">term</span>  <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span> <span style="font-weight: bold;">prior.distribution</span>     </span>
@@ -738,8 +738,8 @@
 <span class="co"># with counts</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">HairEyeColor</span><span class="op">)</span>,
-  x <span class="op">=</span> <span class="va">Eye</span>,
+  data   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">HairEyeColor</span><span class="op">)</span>,
+  x      <span class="op">=</span> <span class="va">Eye</span>,
   counts <span class="op">=</span> <span class="va">Freq</span>,
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 12</span></span>
@@ -757,11 +757,11 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">HairEyeColor</span><span class="op">)</span>,
-  x <span class="op">=</span> <span class="va">Eye</span>,
+  data   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">HairEyeColor</span><span class="op">)</span>,
+  x      <span class="op">=</span> <span class="va">Eye</span>,
   counts <span class="op">=</span> <span class="va">Freq</span>,
-  ratio <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span><span class="op">)</span>,
-  type <span class="op">=</span> <span class="st">"bayes"</span>
+  ratio  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span><span class="op">)</span>,
+  type   <span class="op">=</span> <span class="st">"bayes"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 3</span></span>
 <span class="co">#&gt;      <span style="font-weight: bold;">bf10</span> <span style="font-weight: bold;">prior.scale</span> <span style="font-weight: bold;">expression</span></span>
@@ -781,8 +781,8 @@
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/corr_test.html">corr_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">mtcars</span>,
-  x <span class="op">=</span> <span class="va">wt</span>,
-  y <span class="op">=</span> <span class="va">mpg</span>,
+  x    <span class="op">=</span> <span class="va">wt</span>,
+  y    <span class="op">=</span> <span class="va">mpg</span>,
   type <span class="op">=</span> <span class="st">"parametric"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 13</span></span>
@@ -798,8 +798,8 @@
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/corr_test.html">corr_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">mtcars</span>,
-  x <span class="op">=</span> <span class="va">wt</span>,
-  y <span class="op">=</span> <span class="va">mpg</span>,
+  x    <span class="op">=</span> <span class="va">wt</span>,
+  y    <span class="op">=</span> <span class="va">mpg</span>,
   type <span class="op">=</span> <span class="st">"nonparametric"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 12</span></span>
@@ -815,8 +815,8 @@
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/corr_test.html">corr_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">mtcars</span>,
-  x <span class="op">=</span> <span class="va">wt</span>,
-  y <span class="op">=</span> <span class="va">mpg</span>,
+  x    <span class="op">=</span> <span class="va">wt</span>,
+  y    <span class="op">=</span> <span class="va">mpg</span>,
   type <span class="op">=</span> <span class="st">"robust"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 13</span></span>
@@ -835,8 +835,8 @@
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/corr_test.html">corr_test</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">mtcars</span>,
-  x <span class="op">=</span> <span class="va">wt</span>,
-  y <span class="op">=</span> <span class="va">mpg</span>,
+  x    <span class="op">=</span> <span class="va">wt</span>,
+  y    <span class="op">=</span> <span class="va">mpg</span>,
   type <span class="op">=</span> <span class="st">"bayes"</span>
 <span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 16</span></span>
@@ -858,13 +858,13 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">metaplus</span><span class="op">)</span>
 
-<span class="co"># renaming to what `statsExpressions` expects</span>
+<span class="co"># renaming to what `{statsExpressions}` expects</span>
 <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span><span class="va">mag</span>, estimate <span class="op">=</span> <span class="va">yi</span>, std.error <span class="op">=</span> <span class="va">sei</span><span class="op">)</span>
 
 <span class="co"># ----------------------- parametric ---------------------------------------</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/meta_analysis.html">meta_analysis</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, type <span class="op">=</span> <span class="st">"parametric"</span><span class="op">)</span>
+<span class="fu"><a href="../../reference/meta_analysis.html">meta_analysis</a></span><span class="op">(</span><span class="va">df</span>, type <span class="op">=</span> <span class="st">"parametric"</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 11</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">term</span>    <span style="font-weight: bold;">effectsize</span>                     <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">std.error</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span></span>
 <span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -876,7 +876,7 @@
 <span class="co"># ----------------------- robust --------------------------------------------</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/meta_analysis.html">meta_analysis</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span>
+<span class="fu"><a href="../../reference/meta_analysis.html">meta_analysis</a></span><span class="op">(</span><span class="va">df</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 11</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">term</span>    <span style="font-weight: bold;">effectsize</span>                     <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">std.error</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span></span>
 <span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -888,7 +888,7 @@
 <span class="co"># ----------------------- Bayesian ---------------------------------------</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/meta_analysis.html">meta_analysis</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span>
+<span class="fu"><a href="../../reference/meta_analysis.html">meta_analysis</a></span><span class="op">(</span><span class="va">df</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 17</span></span>
 <span class="co">#&gt;   <span style="font-weight: bold;">term</span>    <span style="font-weight: bold;">effectsize</span>                       <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">std.error</span> <span style="font-weight: bold;">conf.level</span></span>
 <span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>

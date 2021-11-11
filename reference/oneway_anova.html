@@ -178,8 +178,8 @@ download it by running:
 <span class="r-in"><span class="co"># between-subjects</span></span>
 <span class="r-in"><span class="fu">oneway_anova</span><span class="op">(</span></span>
 <span class="r-in">  data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,</span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">vore</span>,</span>
-<span class="r-in">  y <span class="op">=</span> <span class="va">sleep_rem</span></span>
+<span class="r-in">  x    <span class="op">=</span> <span class="va">vore</span>,</span>
+<span class="r-in">  y    <span class="op">=</span> <span class="va">sleep_rem</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 13</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">df</span> <span style="font-weight: bold;">df.error</span> <span style="font-weight: bold;">p.value</span></span>
@@ -195,11 +195,11 @@ download it by running:
 <span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="http://afex.singmann.science/" class="external-link">"afex"</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in">  <span class="co"># within-subjects design</span></span>
 <span class="r-in">  <span class="fu">oneway_anova</span><span class="op">(</span></span>
-<span class="r-in">    data <span class="op">=</span> <span class="va">iris_long</span>,</span>
-<span class="r-in">    x <span class="op">=</span> <span class="va">condition</span>,</span>
-<span class="r-in">    y <span class="op">=</span> <span class="va">value</span>,</span>
+<span class="r-in">    data       <span class="op">=</span> <span class="va">iris_long</span>,</span>
+<span class="r-in">    x          <span class="op">=</span> <span class="va">condition</span>,</span>
+<span class="r-in">    y          <span class="op">=</span> <span class="va">value</span>,</span>
 <span class="r-in">    subject.id <span class="op">=</span> <span class="va">id</span>,</span>
-<span class="r-in">    paired <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span class="r-in">    paired     <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span class="r-in">  <span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ************</span>
@@ -233,8 +233,8 @@ download it by running:
 <span class="r-in"><span class="co"># between-subjects</span></span>
 <span class="r-in"><span class="fu">oneway_anova</span><span class="op">(</span></span>
 <span class="r-in">  data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,</span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">vore</span>,</span>
-<span class="r-in">  y <span class="op">=</span> <span class="va">sleep_rem</span>,</span>
+<span class="r-in">  x    <span class="op">=</span> <span class="va">vore</span>,</span>
+<span class="r-in">  y    <span class="op">=</span> <span class="va">sleep_rem</span>,</span>
 <span class="r-in">  type <span class="op">=</span> <span class="st">"np"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 14</span></span>
@@ -250,12 +250,12 @@ download it by running:
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># within-subjects design</span></span>
 <span class="r-in"><span class="fu">oneway_anova</span><span class="op">(</span></span>
-<span class="r-in">  data <span class="op">=</span> <span class="va">iris_long</span>,</span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">condition</span>,</span>
-<span class="r-in">  y <span class="op">=</span> <span class="va">value</span>,</span>
+<span class="r-in">  data       <span class="op">=</span> <span class="va">iris_long</span>,</span>
+<span class="r-in">  x          <span class="op">=</span> <span class="va">condition</span>,</span>
+<span class="r-in">  y          <span class="op">=</span> <span class="va">value</span>,</span>
 <span class="r-in">  subject.id <span class="op">=</span> <span class="va">id</span>,</span>
-<span class="r-in">  paired <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">  type <span class="op">=</span> <span class="st">"np"</span></span>
+<span class="r-in">  paired     <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span class="r-in">  type       <span class="op">=</span> <span class="st">"np"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 14</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">parameter1</span> <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">df.error</span>  <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>                </span>
@@ -273,8 +273,8 @@ download it by running:
 <span class="r-in"><span class="co"># between-subjects</span></span>
 <span class="r-in"><span class="fu">oneway_anova</span><span class="op">(</span></span>
 <span class="r-in">  data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,</span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">vore</span>,</span>
-<span class="r-in">  y <span class="op">=</span> <span class="va">sleep_rem</span>,</span>
+<span class="r-in">  x    <span class="op">=</span> <span class="va">vore</span>,</span>
+<span class="r-in">  y    <span class="op">=</span> <span class="va">sleep_rem</span>,</span>
 <span class="r-in">  type <span class="op">=</span> <span class="st">"r"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 11</span></span>
@@ -293,12 +293,12 @@ download it by running:
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># within-subjects design</span></span>
 <span class="r-in"><span class="fu">oneway_anova</span><span class="op">(</span></span>
-<span class="r-in">  data <span class="op">=</span> <span class="va">iris_long</span>,</span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">condition</span>,</span>
-<span class="r-in">  y <span class="op">=</span> <span class="va">value</span>,</span>
+<span class="r-in">  data       <span class="op">=</span> <span class="va">iris_long</span>,</span>
+<span class="r-in">  x          <span class="op">=</span> <span class="va">condition</span>,</span>
+<span class="r-in">  y          <span class="op">=</span> <span class="va">value</span>,</span>
 <span class="r-in">  subject.id <span class="op">=</span> <span class="va">id</span>,</span>
-<span class="r-in">  paired <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">  type <span class="op">=</span> <span class="st">"r"</span></span>
+<span class="r-in">  paired     <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span class="r-in">  type       <span class="op">=</span> <span class="st">"r"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 11</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">df</span> <span style="font-weight: bold;">df.error</span> <span style="font-weight: bold;">p.value</span></span>
@@ -319,8 +319,8 @@ download it by running:
 <span class="r-in"><span class="co"># between-subjects</span></span>
 <span class="r-in"><span class="fu">oneway_anova</span><span class="op">(</span></span>
 <span class="r-in">  data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,</span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">vore</span>,</span>
-<span class="r-in">  y <span class="op">=</span> <span class="va">sleep_rem</span>,</span>
+<span class="r-in">  x    <span class="op">=</span> <span class="va">vore</span>,</span>
+<span class="r-in">  y    <span class="op">=</span> <span class="va">sleep_rem</span>,</span>
 <span class="r-in">  type <span class="op">=</span> <span class="st">"bayes"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 20</span></span>
@@ -365,12 +365,12 @@ download it by running:
 <span class="r-in"><span class="co"># needs `BayesFactor 0.9.12-4.3` or above</span></span>
 <span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html" class="external-link">packageVersion</a></span><span class="op">(</span><span class="st">"BayesFactor"</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric_version.html" class="external-link">package_version</a></span><span class="op">(</span><span class="st">"0.9.12-4.3"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in">  <span class="fu">oneway_anova</span><span class="op">(</span></span>
-<span class="r-in">    data <span class="op">=</span> <span class="va">iris_long</span>,</span>
-<span class="r-in">    x <span class="op">=</span> <span class="va">condition</span>,</span>
-<span class="r-in">    y <span class="op">=</span> <span class="va">value</span>,</span>
+<span class="r-in">    data       <span class="op">=</span> <span class="va">iris_long</span>,</span>
+<span class="r-in">    x          <span class="op">=</span> <span class="va">condition</span>,</span>
+<span class="r-in">    y          <span class="op">=</span> <span class="va">value</span>,</span>
 <span class="r-in">    subject.id <span class="op">=</span> <span class="va">id</span>,</span>
-<span class="r-in">    paired <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">    type <span class="op">=</span> <span class="st">"bayes"</span></span>
+<span class="r-in">    paired     <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span class="r-in">    type       <span class="op">=</span> <span class="st">"bayes"</span></span>
 <span class="r-in">  <span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
 <span class="r-in"><span class="co"># }</span></span>

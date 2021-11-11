@@ -158,9 +158,9 @@ mostly relevant in the context of <code>ggstatsplot</code> package functions.</p
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># association test</span></span>
 <span class="r-in"><span class="fu">contingency_table</span><span class="op">(</span></span>
-<span class="r-in">  data <span class="op">=</span> <span class="va">mtcars</span>,</span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">am</span>,</span>
-<span class="r-in">  y <span class="op">=</span> <span class="va">cyl</span>,</span>
+<span class="r-in">  data   <span class="op">=</span> <span class="va">mtcars</span>,</span>
+<span class="r-in">  x      <span class="op">=</span> <span class="va">am</span>,</span>
+<span class="r-in">  y      <span class="op">=</span> <span class="va">cyl</span>,</span>
 <span class="r-in">  paired <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Chi-squared approximation may be incorrect</span>
@@ -174,10 +174,10 @@ mostly relevant in the context of <code>ggstatsplot</code> package functions.</p
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># goodness-of-fit test</span></span>
 <span class="r-in"><span class="fu">contingency_table</span><span class="op">(</span></span>
-<span class="r-in">  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">HairEyeColor</span><span class="op">)</span>,</span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">Eye</span>,</span>
+<span class="r-in">  data   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">HairEyeColor</span><span class="op">)</span>,</span>
+<span class="r-in">  x      <span class="op">=</span> <span class="va">Eye</span>,</span>
 <span class="r-in">  counts <span class="op">=</span> <span class="va">Freq</span>,</span>
-<span class="r-in">  ratio <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span><span class="op">)</span></span>
+<span class="r-in">  ratio  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 12</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">df</span>  <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>                                   <span style="font-weight: bold;">effectsize</span> </span>
@@ -194,11 +194,11 @@ mostly relevant in the context of <code>ggstatsplot</code> package functions.</p
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># association test</span></span>
 <span class="r-in"><span class="fu">contingency_table</span><span class="op">(</span></span>
-<span class="r-in">  data <span class="op">=</span> <span class="va">mtcars</span>,</span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">am</span>,</span>
-<span class="r-in">  y <span class="op">=</span> <span class="va">cyl</span>,</span>
+<span class="r-in">  data   <span class="op">=</span> <span class="va">mtcars</span>,</span>
+<span class="r-in">  x      <span class="op">=</span> <span class="va">am</span>,</span>
+<span class="r-in">  y      <span class="op">=</span> <span class="va">cyl</span>,</span>
 <span class="r-in">  paired <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span class="r-in">  type <span class="op">=</span> <span class="st">"bayes"</span></span>
+<span class="r-in">  type   <span class="op">=</span> <span class="st">"bayes"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 12</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">term</span>  <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span> <span style="font-weight: bold;">prior.distribution</span>     </span>
@@ -213,11 +213,11 @@ mostly relevant in the context of <code>ggstatsplot</code> package functions.</p
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># goodness-of-fit test</span></span>
 <span class="r-in"><span class="fu">contingency_table</span><span class="op">(</span></span>
-<span class="r-in">  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">HairEyeColor</span><span class="op">)</span>,</span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">Eye</span>,</span>
+<span class="r-in">  data   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">HairEyeColor</span><span class="op">)</span>,</span>
+<span class="r-in">  x      <span class="op">=</span> <span class="va">Eye</span>,</span>
 <span class="r-in">  counts <span class="op">=</span> <span class="va">Freq</span>,</span>
-<span class="r-in">  ratio <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span><span class="op">)</span>,</span>
-<span class="r-in">  type <span class="op">=</span> <span class="st">"bayes"</span></span>
+<span class="r-in">  ratio  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span><span class="op">)</span>,</span>
+<span class="r-in">  type   <span class="op">=</span> <span class="st">"bayes"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="font-weight: bold;">bf10</span> <span style="font-weight: bold;">prior.scale</span> <span style="font-weight: bold;">expression</span></span>

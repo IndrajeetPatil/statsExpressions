@@ -132,11 +132,11 @@ between-or-within-subjects nature of the dataset.</p>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># repeated measures design</span></span>
 <span class="r-in"><span class="fu">long_to_wide_converter</span><span class="op">(</span></span>
-<span class="r-in">  data <span class="op">=</span> <span class="va">bugs_long</span>,</span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">condition</span>,</span>
-<span class="r-in">  y <span class="op">=</span> <span class="va">desire</span>,</span>
+<span class="r-in">  data       <span class="op">=</span> <span class="va">bugs_long</span>,</span>
+<span class="r-in">  x          <span class="op">=</span> <span class="va">condition</span>,</span>
+<span class="r-in">  y          <span class="op">=</span> <span class="va">desire</span>,</span>
 <span class="r-in">  subject.id <span class="op">=</span> <span class="va">subject</span>,</span>
-<span class="r-in">  paired <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span class="r-in">  paired     <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 88 × 5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="font-weight: bold;">rowid</span>  <span style="font-weight: bold;">HDHF</span>  <span style="font-weight: bold;">HDLF</span>  <span style="font-weight: bold;">LDHF</span>  <span style="font-weight: bold;">LDLF</span></span>
@@ -155,9 +155,9 @@ between-or-within-subjects nature of the dataset.</p>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># independent measures design</span></span>
 <span class="r-in"><span class="fu">long_to_wide_converter</span><span class="op">(</span></span>
-<span class="r-in">  data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,</span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">vore</span>,</span>
-<span class="r-in">  y <span class="op">=</span> <span class="va">brainwt</span>,</span>
+<span class="r-in">  data   <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,</span>
+<span class="r-in">  x      <span class="op">=</span> <span class="va">vore</span>,</span>
+<span class="r-in">  y      <span class="op">=</span> <span class="va">brainwt</span>,</span>
 <span class="r-in">  paired <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 51 × 3</span></span>
