@@ -100,38 +100,38 @@ options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 
 # association test
 contingency_table(
-  data = mtcars,
-  x = am,
-  y = cyl,
+  data   = mtcars,
+  x      = am,
+  y      = cyl,
   paired = FALSE
 )
 
 # goodness-of-fit test
 contingency_table(
-  data = as.data.frame(HairEyeColor),
-  x = Eye,
+  data   = as.data.frame(HairEyeColor),
+  x      = Eye,
   counts = Freq,
-  ratio = c(0.2, 0.2, 0.3, 0.3)
+  ratio  = c(0.2, 0.2, 0.3, 0.3)
 )
 
 # ------------------------ Bayesian -----------------------------
 
 # association test
 contingency_table(
-  data = mtcars,
-  x = am,
-  y = cyl,
+  data   = mtcars,
+  x      = am,
+  y      = cyl,
   paired = FALSE,
-  type = "bayes"
+  type   = "bayes"
 )
 
 # goodness-of-fit test
 contingency_table(
-  data = as.data.frame(HairEyeColor),
-  x = Eye,
+  data   = as.data.frame(HairEyeColor),
+  x      = Eye,
   counts = Freq,
-  ratio = c(0.2, 0.2, 0.3, 0.3),
-  type = "bayes"
+  ratio  = c(0.2, 0.2, 0.3, 0.3),
+  type   = "bayes"
 )
 }
 }

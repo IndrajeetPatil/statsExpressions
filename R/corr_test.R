@@ -26,15 +26,15 @@
 #' # without changing defaults
 #' corr_test(
 #'   data = ggplot2::midwest,
-#'   x = area,
-#'   y = percblack
+#'   x    = area,
+#'   y    = percblack
 #' )
 #'
 #' # changing defaults
 #' corr_test(
 #'   data = ggplot2::midwest,
-#'   x = area,
-#'   y = percblack,
+#'   x    = area,
+#'   y    = percblack,
 #'   type = "robust"
 #' )
 #' }
@@ -51,7 +51,6 @@ corr_test <- function(data,
                       bf.prior = 0.707,
                       top.text = NULL,
                       ...) {
-  # styler: off
 
   # see which method was used to specify type of correlation
   type <- stats_type_switch(type)
@@ -86,6 +85,4 @@ corr_test <- function(data,
       k               = k,
       bayesian        = ifelse(type == "bayes", TRUE, FALSE)
     )))
-
-  # styler: on
 }

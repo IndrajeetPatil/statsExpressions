@@ -105,38 +105,38 @@ options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 # ----------------------- parametric ---------------------------------------
 
 one_sample_test(
-  data = ggplot2::msleep,
-  x = brainwt,
+  data       = ggplot2::msleep,
+  x          = brainwt,
   test.value = 0.275,
-  type = "parametric"
+  type       = "parametric"
 )
 
 # ----------------------- non-parametric -----------------------------------
 
 one_sample_test(
-  data = ggplot2::msleep,
-  x = brainwt,
+  data       = ggplot2::msleep,
+  x          = brainwt,
   test.value = 0.275,
-  type = "nonparametric"
+  type       = "nonparametric"
 )
 
 # ----------------------- robust --------------------------------------------
 
 one_sample_test(
-  data = ggplot2::msleep,
-  x = brainwt,
+  data       = ggplot2::msleep,
+  x          = brainwt,
   test.value = 0.275,
-  type = "robust"
+  type       = "robust"
 )
 
 # ---------------------------- Bayesian -----------------------------------
 
 one_sample_test(
-  data = ggplot2::msleep,
-  x = brainwt,
+  data       = ggplot2::msleep,
+  x          = brainwt,
   test.value = 0.275,
-  type = "bayes",
-  bf.prior = 0.8
+  type       = "bayes",
+  bf.prior   = 0.8
 )
 }
 }
