@@ -71,7 +71,6 @@ this package context.</p>
   <span class="va">data</span>,
   paired <span class="op">=</span> <span class="cn">FALSE</span>,
   bayesian <span class="op">=</span> <span class="cn">FALSE</span>,
-  no.parameters <span class="op">=</span> <span class="fl">0L</span>,
   statistic.text <span class="op">=</span> <span class="cn">NULL</span>,
   effsize.text <span class="op">=</span> <span class="cn">NULL</span>,
   top.text <span class="op">=</span> <span class="cn">NULL</span>,
@@ -95,8 +94,8 @@ this package context.</p>
 <dd><p>A dataframe containing details from the statistical analysis
 and should contain some or all of the the following columns:</p><ul><li><p><em>statistic</em>: the numeric value of a statistic.</p></li>
 <li><p><em>df.error</em>: the numeric value of a parameter being modeled (often degrees
-of freedom for the test); note that if <code>no.parameters = 0L</code> (e.g., for
-non-parametric tests), this column will be irrelevant.</p></li>
+of freedom for the test); note that if there are no degrees of freedom (e.g.,
+for non-parametric tests), this column will be irrelevant.</p></li>
 <li><p><em>df</em>: relevant only if the statistic in question has two degrees of freedom.</p></li>
 <li><p><em>p.value</em>: the two-sided <em>p</em>-value associated with the observed statistic.</p></li>
 <li><p><em>method</em>: method describing the test carried out.</p></li>
@@ -114,11 +113,6 @@ repeated measures/within-subjects or between-subjects. The default is
 <dt>bayesian</dt>
 <dd><p>Is this Bayesian analysis? Defaults to <code>FALSE</code>. The template
 is slightly different for Bayesian analysis.</p></dd>
-<dt>no.parameters</dt>
-<dd><p>An integer that specifies that the number of parameters
-for the statistical test. Can be <code>0</code> for non-parametric tests, <code>1</code> for
-tests based on <em>t</em>-statistic or chi-squared statistic, <code>2</code> for tests based
-on <em>F</em>-statistic.</p></dd>
 <dt>statistic.text</dt>
 <dd><p>A character that specifies the relevant test statistic.
 For example, for tests with <em>t</em>-statistic, <code>statistic.text = "t"</code>.</p></dd>
@@ -172,7 +166,6 @@ parameters (default: <code>0</code>).</p></dd>
 <span class="r-in"><span class="co"># expression for *t*-statistic with Cohen's *d* as effect size</span></span>
 <span class="r-in"><span class="co"># note that the plotmath expressions need to be quoted</span></span>
 <span class="r-in"><span class="fu">expr_template</span><span class="op">(</span></span>
-<span class="r-in">  no.parameters <span class="op">=</span> <span class="fl">1L</span>,</span>
 <span class="r-in">  data <span class="op">=</span> <span class="va">stats_df</span>,</span>
 <span class="r-in">  statistic.text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">quote</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/grDevices/plotmath.html" class="external-link">italic</a></span><span class="op">(</span><span class="st">"t"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span class="r-in">  effsize.text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">quote</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/grDevices/plotmath.html" class="external-link">italic</a></span><span class="op">(</span><span class="st">"d"</span><span class="op">)</span><span class="op">)</span>,</span>
