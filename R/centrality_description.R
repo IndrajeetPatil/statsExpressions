@@ -42,13 +42,15 @@ centrality_description <- function(data,
   # standardize
   type <- stats_type_switch(type)
 
+  # styler: off
   # which centrality measure?
   centrality <- case_when(
-    type == "parametric" ~ "mean",
+    type == "parametric"    ~ "mean",
     type == "nonparametric" ~ "median",
-    type == "robust" ~ "trimmed",
-    type == "bayes" ~ "MAP"
+    type == "robust"        ~ "trimmed",
+    type == "bayes"         ~ "MAP"
   )
+  # styler: on
 
   # dataframe -------------------------------------
 

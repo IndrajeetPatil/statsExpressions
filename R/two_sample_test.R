@@ -156,7 +156,6 @@ two_sample_test <- function(data,
   # preparing expression parameters
   if (type == "nonparametric") c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
 
-
   # preparing expression
   if (type %in% c("parametric", "nonparametric")) {
     # extracting test details
@@ -190,9 +189,11 @@ two_sample_test <- function(data,
     # expression parameters
     k.df <- ifelse(paired, 0L, k)
 
+    # styler: off
     # which functions to be used for hypothesis testing and estimation?
     if (!paired) c(.f, .f.es) %<-% c(WRS2::yuen, WRS2::akp.effect)
-    if (paired) c(.f, .f.es) %<-% c(WRS2::yuend, WRS2::dep.effect)
+    if (paired) c(.f, .f.es)  %<-% c(WRS2::yuend, WRS2::dep.effect)
+    # styler: on
 
     # common arguments
     # styler: off
@@ -233,7 +234,6 @@ two_sample_test <- function(data,
       n               = ifelse(paired, length(unique(data$rowid)), nrow(data)),
       k               = k,
       k.df            = k.df,
-      top.text        = top.text,
-      bayesian        = ifelse(type == "bayes", TRUE, FALSE)
+      top.text        = top.text
     )))
 }

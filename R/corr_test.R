@@ -81,7 +81,6 @@ corr_test <- function(data,
       top.text        = top.text,
       paired          = TRUE,
       n               = stats_df$n.obs[[1]],
-      k               = k,
-      bayesian        = ifelse(type == "bayes", TRUE, FALSE)
+      k               = k
     )))
 }

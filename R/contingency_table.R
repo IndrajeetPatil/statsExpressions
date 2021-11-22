@@ -217,8 +217,7 @@ contingency_table <- function(data,
           n             = nrow(data),
           paired        = paired,
           k             = k,
-          top.text      = top.text,
-          bayesian      = ifelse(type == "bayes", TRUE, FALSE)
+          top.text      = top.text
         ))
       ) %>%
       polish_data()

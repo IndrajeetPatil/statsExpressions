@@ -104,7 +104,6 @@ meta_analysis <- function(data,
       n               = nrow(data),
       n.text          = quote(italic("n")["effects"]),
       k               = k,
-      top.text        = top.text,
-      bayesian        = ifelse(type == "bayes", TRUE, FALSE)
+      top.text        = top.text
     )))
 }

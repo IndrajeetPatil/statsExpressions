@@ -41,8 +41,6 @@
 #'   `language` type.
 #' @param prior.distribution A character that specifies the prior type.
 #' @param effsize.text A character that specifies the relevant effect size.
-#' @param bayesian Is this Bayesian analysis? Defaults to `FALSE`. The template
-#'   is slightly different for Bayesian analysis.
 #' @param prior.type The type of prior.
 #' @param conf.method The type of index used for Credible Interval. Can be
 #'   `"hdi"` (default), `"eti"`, or `"si"` (see `si()`, `hdi()`, `eti()`
@@ -60,32 +58,31 @@
 #'
 #' # creating a dataframe with stats results
 #' stats_df <- cbind.data.frame(
-#'   statistic = 5.494,
-#'   df = 29.234,
-#'   p.value = 0.00001,
-#'   estimate = -1.980,
+#'   statistic  = 5.494,
+#'   df         = 29.234,
+#'   p.value    = 0.00001,
+#'   estimate   = -1.980,
 #'   conf.level = 0.95,
-#'   conf.low = -2.873,
-#'   conf.high = -1.088
+#'   conf.low   = -2.873,
+#'   conf.high  = -1.088
 #' )
 #'
 #' # expression for *t*-statistic with Cohen's *d* as effect size
 #' # note that the plotmath expressions need to be quoted
 #' expr_template(
-#'   data = stats_df,
+#'   data           = stats_df,
 #'   statistic.text = quote(italic("t")),
-#'   effsize.text = quote(italic("d")),
-#'   n = 32L,
-#'   n.text = quote(italic("n")["no.obs"]),
-#'   k = 3L,
-#'   k.df = 3L
+#'   effsize.text   = quote(italic("d")),
+#'   n              = 32L,
+#'   n.text         = quote(italic("n")["no.obs"]),
+#'   k              = 3L,
+#'   k.df           = 3L
 #' )
 #' @export
 
 # function body
 expr_template <- function(data,
                           paired = FALSE,
-                          bayesian = FALSE,
                           statistic.text = NULL,
                           effsize.text = NULL,
                           top.text = NULL,
@@ -102,6 +99,8 @@ expr_template <- function(data,
                           k.df = 0L,
                           k.df.error = 0L,
                           ...) {
+  # is this Bayesian test?
+  bayesian <- ifelse("bf10" %in% names(data), TRUE, FALSE)
 
   # special case for Bayesian analysis
   if (bayesian) {
