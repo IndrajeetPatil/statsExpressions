@@ -69,12 +69,14 @@ format_num <- function(x, k = 2L, p.value = FALSE, ...) {
 #' stats_type_switch("bf")
 #' @export
 
+# styler: off
 stats_type_switch <- function(type) {
   case_when(
-    grepl("^p", type, TRUE) ~ "parametric",
+    grepl("^p", type, TRUE)    ~ "parametric",
     grepl("^n|^s", type, TRUE) ~ "nonparametric", # s is for Spearman's rho
-    grepl("^r", type, TRUE) ~ "robust",
-    grepl("^b", type, TRUE) ~ "bayes",
-    TRUE ~ "parametric"
+    grepl("^r", type, TRUE)    ~ "robust",
+    grepl("^b", type, TRUE)    ~ "bayes",
+    TRUE                       ~ "parametric"
   )
 }
+# styler: on
