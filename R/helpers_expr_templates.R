@@ -153,9 +153,11 @@ expr_template <- function(data,
     if (is.null(top.text)) expression <- expression$expr
   }
 
-  # 0 degrees of freedom --------------------
 
+  # how many parameters?
   no.parameters <- sum("df.error" %in% names(data) + "df" %in% names(data))
+
+  # 0 degrees of freedom --------------------
 
   if (!bayesian && no.parameters == 0L) {
     # preparing expression

@@ -1,7 +1,7 @@
 # tidy_model_expressions works - F
 
     Code
-      dplyr::select(df1, -label)
+      select(df1, -label)
     Output
       # A tibble: 3 x 11
         term  statistic    df df.error p.value group   sumsq meansq  estimate
@@ -27,7 +27,7 @@
 ---
 
     Code
-      dplyr::select(df2, -label)
+      select(df2, -label)
     Output
       # A tibble: 3 x 11
         term  statistic    df df.error p.value group   sumsq meansq estimate

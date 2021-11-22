@@ -85,7 +85,7 @@ meta_analysis <- function(data,
   # styler: on
 
   # package installed?
-  insight::check_if_installed(.ns)
+  check_if_installed(.ns)
 
   # construct a call and then extract a tidy dataframe
   stats_df <- eval(call2(.fn = .fn, .ns = .ns, data = data, !!!.f.args)) %>%

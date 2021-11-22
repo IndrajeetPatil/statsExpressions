@@ -14,13 +14,13 @@ test_that("tidy_model_expressions works", {
     statistic = "t"
   ))
 
-  expect_snapshot(dplyr::select(df_t, -label))
+  expect_snapshot(select(df_t, -label))
   expect_snapshot(df_t$label)
 
   # with NA df.error
   set.seed(123)
   df_t_na <- suppressWarnings(tidy_model_expressions(
-    dplyr::mutate(tidy_model_parameters(mod_t), df.error = NA_real_),
+    mutate(tidy_model_parameters(mod_t), df.error = NA_real_),
     statistic = "t"
   ))
 
@@ -29,7 +29,7 @@ test_that("tidy_model_expressions works", {
   # with infinity as error
   set.seed(123)
   df_t_inf <- suppressWarnings(tidy_model_expressions(
-    dplyr::mutate(tidy_model_parameters(mod_t), df.error = Inf),
+    mutate(tidy_model_parameters(mod_t), df.error = Inf),
     statistic = "t"
   ))
 
@@ -52,7 +52,7 @@ test_that("tidy_model_expressions works", {
     statistic = "chi"
   ))
 
-  expect_snapshot(dplyr::select(df_chi, -label))
+  expect_snapshot(select(df_chi, -label))
   expect_snapshot(df_chi$label)
 
   ## z-statistic --------------------------------
@@ -74,6 +74,6 @@ test_that("tidy_model_expressions works", {
     statistic = "z"
   ))
 
-  expect_snapshot(dplyr::select(df_z, -label))
+  expect_snapshot(select(df_z, -label))
   expect_snapshot(df_z$label)
 })

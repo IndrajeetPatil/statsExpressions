@@ -27,7 +27,6 @@ magrittr::%T>%
 rlang::%|%
 rlang::%||%
 tibble::as_tibble
-correlation::correlation
 tibble::enframe
 insight::format_value
 tibble::tibble

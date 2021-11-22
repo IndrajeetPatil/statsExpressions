@@ -30,36 +30,33 @@ tidy_model_expressions <- function(data,
   # standardize the statistic naming
   statistic <- substring(tolower(statistic), 1L, 1L)
 
-  # convert the necessary to character type for expression
+  # convert the necessary columns to character type for expression
   df <- .data_to_char(data, k)
+
+  # effect size text for the expression (common for t, z, and chi^2)
+  es.text <- list(quote(widehat(italic(beta))))
 
   # t-statistic --------------------------------
 
-  es.text <- list(quote(widehat(italic(beta))))
-
   if (statistic == "t") {
-    df %<>%
-      mutate(
-        label = case_when(
-          df.error %in% c("", "Inf") ~ glue("list({es.text}=='{estimate}', italic(t)=='{statistic}', italic(p)=='{p.value}')"),
-          TRUE ~ glue("list({es.text}=='{estimate}', italic(t)('{df.error}')=='{statistic}', italic(p)=='{p.value}')")
-        )
+    df %<>% mutate(
+      label = case_when(
+        df.error %in% c("", "Inf") ~ glue("list({es.text}=='{estimate}', italic(t)=='{statistic}', italic(p)=='{p.value}')"),
+        TRUE ~ glue("list({es.text}=='{estimate}', italic(t)('{df.error}')=='{statistic}', italic(p)=='{p.value}')")
       )
+    )
   }
 
   # z-statistic ---------------------------------
 
-  # if the statistic is z-value
   if (statistic == "z") {
-    df %<>%
-      mutate(label = glue("list({es.text}=='{estimate}', italic(z)=='{statistic}', italic(p)=='{p.value}')"))
+    df %<>% mutate(label = glue("list({es.text}=='{estimate}', italic(z)=='{statistic}', italic(p)=='{p.value}')"))
   }
 
   # chi^2-statistic -----------------------------
 
   if (statistic == "c") {
-    df %<>%
-      mutate(label = glue("list({es.text}=='{estimate}', italic(chi)^2*('{df.error}')=='{statistic}', italic(p)=='{p.value}')"))
+    df %<>% mutate(label = glue("list({es.text}=='{estimate}', italic(chi)^2*('{df.error}')=='{statistic}', italic(p)=='{p.value}')"))
   }
 
   # f-statistic ---------------------------------
@@ -70,21 +67,9 @@ tidy_model_expressions <- function(data,
     if (effsize.type == "omega") es.text <- list(quote(widehat(italic(omega)[p]^2)))
 
     # which effect size is needed?
-    df %<>%
-      mutate(label = glue("list({es.text}=='{estimate}', italic(F)('{df}', '{df.error}')=='{statistic}', italic(p)=='{p.value}')"))
+    df %<>% mutate(label = glue("list({es.text}=='{estimate}', italic(F)('{df}', '{df.error}')=='{statistic}', italic(p)=='{p.value}')"))
   }
 
-  # return the ungrouped dataframe
+  # add the label column to the original dataframe
   left_join(data, select(df, term, label), by = "term")
-}
-
-#' Helper function to convert certain numeric columns to character type
-#' @noRd
-
-.data_to_char <- function(data, k = 2L, k.df = 0L) {
-  data %>%
-    mutate(
-      across(.fns = ~ format_value(.x, k), .cols = matches("^est|^sta|p.value")),
-      across(.fns = ~ format_value(.x, k.df), .cols = matches("^df"))
-    )
 }

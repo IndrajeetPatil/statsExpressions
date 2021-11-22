@@ -14,7 +14,6 @@
 \alias{\%|\%}
 \alias{\%<-\%}
 \alias{\%->\%}
-\alias{correlation}
 \alias{format_value}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -23,8 +22,6 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{correlation}{\code{\link[correlation]{correlation}}}
-
   \item{insight}{\code{\link[insight]{format_value}}}
 
   \item{magrittr}{\code{\link[magrittr:exposition]{\%$\%}}, \code{\link[magrittr:compound]{\%<>\%}}, \code{\link[magrittr:pipe]{\%>\%}}, \code{\link[magrittr:tee]{\%T>\%}}}

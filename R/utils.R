@@ -80,3 +80,16 @@ stats_type_switch <- function(type) {
   )
 }
 # styler: on
+
+
+#' Helper function to convert certain numeric columns to character type
+#' @noRd
+
+.data_to_char <- function(data, k = 2L, k.df = 0L, k.df.error = 0L) {
+  data %>%
+    mutate(
+      across(.fns = ~ format_value(.x, k), .cols = matches("^est|^sta|p.value|.scale$|.low$|.high$")),
+      across(.fns = ~ format_value(.x, k.df), .cols = matches("^df$")),
+      across(.fns = ~ format_value(.x, k.df.error), .cols = matches("^df.error$"))
+    )
+}

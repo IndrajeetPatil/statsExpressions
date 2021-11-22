@@ -15,7 +15,7 @@ test_that("tidy_model_expressions works - F", {
     statistic = "f"
   )
 
-  expect_snapshot(dplyr::select(df1, -label))
+  expect_snapshot(select(df1, -label))
   expect_snapshot(df1$label)
 
   set.seed(123)
@@ -28,6 +28,6 @@ test_that("tidy_model_expressions works - F", {
     effsize.type = "eta"
   )
 
-  expect_snapshot(dplyr::select(df2, -label))
+  expect_snapshot(select(df2, -label))
   expect_snapshot(df2$label)
 })

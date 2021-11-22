@@ -66,7 +66,7 @@ corr_test <- function(data,
     bayesian_prior = bf.prior,
     winsorize      = ifelse(type == "robust", tr, FALSE)
   ) %>%
-    insight::standardize_names(style = "broom") %>%
+    standardize_names(style = "broom") %>%
     mutate(effectsize = method)
 
   # expression ---------------------------------------

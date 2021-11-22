@@ -1,7 +1,7 @@
 # tidy_model_expressions works
 
     Code
-      dplyr::select(df_t, -label)
+      select(df_t, -label)
     Output
       # A tibble: 2 x 9
         term        estimate std.error conf.level conf.low conf.high statistic
@@ -40,7 +40,7 @@
 ---
 
     Code
-      dplyr::select(df_chi, -label)
+      select(df_chi, -label)
     Output
       # A tibble: 2 x 9
         term  estimate std.error conf.level conf.low conf.high statistic df.error
@@ -63,7 +63,7 @@
 ---
 
     Code
-      dplyr::select(df_z, -label)
+      select(df_z, -label)
     Output
       # A tibble: 3 x 9
         term        estimate std.error conf.level conf.low conf.high statistic

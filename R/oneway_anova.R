@@ -178,7 +178,7 @@ oneway_anova <- function(data,
 
     if (paired) {
       # check if `afex` is installed
-      insight::check_if_installed("afex", minimum_version = "1.0-0")
+      check_if_installed("afex", minimum_version = "1.0-0")
 
       # Fisher's ANOVA
       mod <- afex::aov_ez(

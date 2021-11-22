@@ -60,7 +60,7 @@ centrality_description <- function(data,
     mutate({{ x }} := droplevels(as.factor({{ x }}))) %>%
     group_by({{ x }}) %>%
     group_modify(
-      .f = ~ insight::standardize_names(
+      .f = ~ standardize_names(
         data = datawizard::describe_distribution(
           x          = .,
           centrality = centrality,
