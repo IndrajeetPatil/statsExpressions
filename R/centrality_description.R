@@ -62,11 +62,11 @@ centrality_description <- function(data,
     group_modify(
       .f = ~ insight::standardize_names(
         data = datawizard::describe_distribution(
-          x = .,
+          x          = .,
           centrality = centrality,
-          threshold = tr,
-          verbose = FALSE,
-          ci = 0.95 # TODO: https://github.com/easystats/bayestestR/issues/429
+          threshold  = tr,
+          verbose    = FALSE,
+          ci         = 0.95 # TODO: https://github.com/easystats/bayestestR/issues/429
         ),
         style = "broom"
       )

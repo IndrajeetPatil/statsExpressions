@@ -73,9 +73,6 @@ long_to_wide_converter <- function(data,
                                    paired = TRUE,
                                    spread = TRUE,
                                    ...) {
-  # for non-paired data, even if specified, ignore it
-  if (!paired) subject.id <- NULL
-
   # initial cleanup
   data %<>%
     select({{ x }}, {{ y }}, rowid = {{ subject.id }}) %>%
