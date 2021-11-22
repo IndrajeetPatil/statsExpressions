@@ -8,7 +8,6 @@ expr_template(
   data,
   paired = FALSE,
   bayesian = FALSE,
-  no.parameters = 0L,
   statistic.text = NULL,
   effsize.text = NULL,
   top.text = NULL,
@@ -30,8 +29,8 @@ and should contain some or all of the the following columns:
 \itemize{
 \item \emph{statistic}: the numeric value of a statistic.
 \item \emph{df.error}: the numeric value of a parameter being modeled (often degrees
-of freedom for the test); note that if \code{no.parameters = 0L} (e.g., for
-non-parametric tests), this column will be irrelevant.
+of freedom for the test); note that if there are no degrees of freedom (e.g.,
+for non-parametric tests), this column will be irrelevant.
 \item \emph{df}: relevant only if the statistic in question has two degrees of freedom.
 \item \emph{p.value}: the two-sided \emph{p}-value associated with the observed statistic.
 \item \emph{method}: method describing the test carried out.
@@ -49,11 +48,6 @@ repeated measures/within-subjects or between-subjects. The default is
 
 \item{bayesian}{Is this Bayesian analysis? Defaults to \code{FALSE}. The template
 is slightly different for Bayesian analysis.}
-
-\item{no.parameters}{An integer that specifies that the number of parameters
-for the statistical test. Can be \code{0} for non-parametric tests, \code{1} for
-tests based on \emph{t}-statistic or chi-squared statistic, \code{2} for tests based
-on \emph{F}-statistic.}
 
 \item{statistic.text}{A character that specifies the relevant test statistic.
 For example, for tests with \emph{t}-statistic, \code{statistic.text = "t"}.}
@@ -112,7 +106,6 @@ stats_df <- cbind.data.frame(
 # expression for *t*-statistic with Cohen's *d* as effect size
 # note that the plotmath expressions need to be quoted
 expr_template(
-  no.parameters = 1L,
   data = stats_df,
   statistic.text = quote(italic("t")),
   effsize.text = quote(italic("d")),

@@ -171,7 +171,6 @@ oneway_anova <- function(data,
     # styler: off
     k.df          <- ifelse(!paired, 0L, k)
     k.df.error    <- ifelse(!paired && var.equal, 0L, k)
-    no.parameters <- 2L
     # styler: on
 
     # which effect size?
@@ -209,7 +208,7 @@ oneway_anova <- function(data,
 
   if (type == "nonparametric") {
     # expression details
-    c(no.parameters, k.df, k.df.error) %<-% c(1L, 0L, 0L)
+    c(k.df, k.df.error) %<-% c(0L, 0L)
 
     # styler: off
     # Friedman test
@@ -249,7 +248,7 @@ oneway_anova <- function(data,
 
   if (type == "robust") {
     # expression details
-    c(no.parameters, k.df, k.df.error) %<-% c(2L, ifelse(paired, k, 0L), k)
+    c(k.df, k.df.error) %<-% c(ifelse(paired, k, 0L), k)
 
     # heteroscedastic one-way repeated measures ANOVA for trimmed means
     if (paired) {
@@ -313,7 +312,6 @@ oneway_anova <- function(data,
   polish_data(stats_df) %>%
     mutate(expression = list(expr_template(
       data            = .,
-      no.parameters   = no.parameters,
       n               = ifelse(paired, length(unique(data$rowid)), nrow(data)),
       paired          = paired,
       k               = k,

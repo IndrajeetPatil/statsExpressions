@@ -14,8 +14,8 @@
 #'   and should contain some or all of the the following columns:
 #' - *statistic*: the numeric value of a statistic.
 #' - *df.error*: the numeric value of a parameter being modeled (often degrees
-#' of freedom for the test); note that if `no.parameters = 0L` (e.g., for
-#' non-parametric tests), this column will be irrelevant.
+#' of freedom for the test); note that if there are no degrees of freedom (e.g.,
+#' for non-parametric tests), this column will be irrelevant.
 #' - *df*: relevant only if the statistic in question has two degrees of freedom.
 #' - *p.value*: the two-sided *p*-value associated with the observed statistic.
 #' - *method*: method describing the test carried out.
@@ -25,10 +25,6 @@
 #' - *conf.low*: lower bound for effect size estimate.
 #' - *conf.high*: upper bound for effect size estimate.
 #' - *bf10*: Bayes Factor value (if `bayesian = TRUE`).
-#' @param no.parameters An integer that specifies that the number of parameters
-#'   for the statistical test. Can be `0` for non-parametric tests, `1` for
-#'   tests based on *t*-statistic or chi-squared statistic, `2` for tests based
-#'   on *F*-statistic.
 #' @param statistic.text A character that specifies the relevant test statistic.
 #'   For example, for tests with *t*-statistic, `statistic.text = "t"`.
 #' @param effsize.text A character that specifies the relevant effect size or
@@ -76,7 +72,6 @@
 #' # expression for *t*-statistic with Cohen's *d* as effect size
 #' # note that the plotmath expressions need to be quoted
 #' expr_template(
-#'   no.parameters = 1L,
 #'   data = stats_df,
 #'   statistic.text = quote(italic("t")),
 #'   effsize.text = quote(italic("d")),
@@ -91,7 +86,6 @@
 expr_template <- function(data,
                           paired = FALSE,
                           bayesian = FALSE,
-                          no.parameters = 0L,
                           statistic.text = NULL,
                           effsize.text = NULL,
                           top.text = NULL,
@@ -110,7 +104,7 @@ expr_template <- function(data,
                           ...) {
 
   # special case for Bayesian analysis
-  if (isTRUE(bayesian)) {
+  if (bayesian) {
     # if not present, create a new column for Bayesian analysis
     if (!"effectsize" %in% names(data)) data %<>% mutate(effectsize = method)
 
@@ -129,7 +123,7 @@ expr_template <- function(data,
 
   # Bayesian analysis ------------------------------
 
-  if (isTRUE(bayesian)) {
+  if (bayesian) {
     # Bayesian expression
     expression <- substitute(
       atop(
@@ -160,9 +154,11 @@ expr_template <- function(data,
     if (is.null(top.text)) expression <- expression$expr
   }
 
-  # statistic with 0 degrees of freedom --------------------
+  # 0 degrees of freedom --------------------
 
-  if (isFALSE(bayesian) && no.parameters == 0L) {
+  no.parameters <- sum("df.error" %in% names(data) + "df" %in% names(data))
+
+  if (!bayesian && no.parameters == 0L) {
     # preparing expression
     expression <- substitute(
       expr = paste(
@@ -186,9 +182,10 @@ expr_template <- function(data,
     )
   }
 
-  # statistic with 1 degree of freedom --------------------
+  # 1 degree of freedom --------------------
 
-  if (isFALSE(bayesian) && no.parameters == 1L) {
+  if (!bayesian && no.parameters == 1L) {
+    # for chi-squared statistic
     if ("df" %in% names(data)) data %<>% mutate(df.error = df)
 
     # preparing expression
@@ -215,9 +212,9 @@ expr_template <- function(data,
     )
   }
 
-  # statistic with 2 degrees of freedom -----------------
+  # 2 degrees of freedom -----------------
 
-  if (isFALSE(bayesian) && no.parameters == 2L) {
+  if (!bayesian && no.parameters == 2L) {
     # preparing expression
     expression <- substitute(
       expr = paste(

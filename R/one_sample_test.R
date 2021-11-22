@@ -105,7 +105,6 @@ one_sample_test <- function(data,
 
   if (type == "parametric") {
     # preparing expression parameters
-    no.parameters <- 1L
     .f <- stats::t.test
     # styler: off
     if (effsize.type %in% c("unbiased", "g")) .f.es <- effectsize::hedges_g
@@ -115,11 +114,8 @@ one_sample_test <- function(data,
 
   # non-parametric ---------------------------------------
 
-  if (type == "nonparametric") {
-    # preparing expression parameters
-    no.parameters <- 0L
-    c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
-  }
+  # preparing expression parameters
+  if (type == "nonparametric") c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
 
   # preparing expression
   if (type %in% c("parametric", "nonparametric")) {
@@ -146,7 +142,6 @@ one_sample_test <- function(data,
 
   if (type == "robust") {
     # bootstrap-t method for one-sample test
-    no.parameters <- 0L
     stats_df <- exec(WRS2::trimcibt, x = x_vec, nv = test.value, tr = tr, alpha = 1 - conf.level) %>%
       tidy_model_parameters(.)
   }
@@ -162,11 +157,9 @@ one_sample_test <- function(data,
   # expression ---------------------------------------
 
   # add column with expression
-
   polish_data(stats_df) %>%
     mutate(expression = list(expr_template(
       data            = .,
-      no.parameters   = no.parameters,
       n               = length(x_vec),
       k               = k,
       top.text        = top.text,
