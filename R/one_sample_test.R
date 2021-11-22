@@ -103,8 +103,8 @@ one_sample_test <- function(data,
 
   # parametric ---------------------------------------
 
+  # preparing expression parameters
   if (type == "parametric") {
-    # preparing expression parameters
     .f <- stats::t.test
     # styler: off
     if (effsize.type %in% c("unbiased", "g")) .f.es <- effectsize::hedges_g
@@ -150,7 +150,7 @@ one_sample_test <- function(data,
 
   # running Bayesian one-sample t-test
   if (type == "bayes") {
-    stats_df <- BayesFactor::ttestBF(x_vec, rscale = bf.prior, mu = test.value) %>%
+    stats_df <- BayesFactor::ttestBF(x = x_vec, rscale = bf.prior, mu = test.value) %>%
       tidy_model_parameters(ci = conf.level)
   }
 
@@ -162,7 +162,6 @@ one_sample_test <- function(data,
       data            = .,
       n               = length(x_vec),
       k               = k,
-      top.text        = top.text,
-      bayesian        = ifelse(type == "bayes", TRUE, FALSE)
+      top.text        = top.text
     )))
 }

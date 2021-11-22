@@ -7,7 +7,6 @@
 expr_template(
   data,
   paired = FALSE,
-  bayesian = FALSE,
   statistic.text = NULL,
   effsize.text = NULL,
   top.text = NULL,
@@ -45,9 +44,6 @@ for non-parametric tests), this column will be irrelevant.
 \item{paired}{Logical that decides whether the experimental design is
 repeated measures/within-subjects or between-subjects. The default is
 \code{FALSE}.}
-
-\item{bayesian}{Is this Bayesian analysis? Defaults to \code{FALSE}. The template
-is slightly different for Bayesian analysis.}
 
 \item{statistic.text}{A character that specifies the relevant test statistic.
 For example, for tests with \emph{t}-statistic, \code{statistic.text = "t"}.}
@@ -94,24 +90,24 @@ set.seed(123)
 
 # creating a dataframe with stats results
 stats_df <- cbind.data.frame(
-  statistic = 5.494,
-  df = 29.234,
-  p.value = 0.00001,
-  estimate = -1.980,
+  statistic  = 5.494,
+  df         = 29.234,
+  p.value    = 0.00001,
+  estimate   = -1.980,
   conf.level = 0.95,
-  conf.low = -2.873,
-  conf.high = -1.088
+  conf.low   = -2.873,
+  conf.high  = -1.088
 )
 
 # expression for *t*-statistic with Cohen's *d* as effect size
 # note that the plotmath expressions need to be quoted
 expr_template(
-  data = stats_df,
+  data           = stats_df,
   statistic.text = quote(italic("t")),
-  effsize.text = quote(italic("d")),
-  n = 32L,
-  n.text = quote(italic("n")["no.obs"]),
-  k = 3L,
-  k.df = 3L
+  effsize.text   = quote(italic("d")),
+  n              = 32L,
+  n.text         = quote(italic("n")["no.obs"]),
+  k              = 3L,
+  k.df           = 3L
 )
 }

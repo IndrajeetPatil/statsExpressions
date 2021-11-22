@@ -2,9 +2,9 @@
 
 MINOR CHANGES
 
-  - The `expr_template()` function loses `no.parameters` argument since the
-    function can internally figure this out based on whether `df` and `df.error`
-    columns are present.
+  - The `expr_template()` function loses `no.parameters` and `bayesian`
+    arguments since the function can internally figure this out based on whether
+    `df` and `df.error`, and `bf10` columns are present.
 
 # statsExpressions 1.2.0
 

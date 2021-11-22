@@ -168,10 +168,7 @@ oneway_anova <- function(data,
 
   if (type == "parametric") {
     # expression details
-    # styler: off
-    k.df          <- ifelse(!paired, 0L, k)
-    k.df.error    <- ifelse(!paired && var.equal, 0L, k)
-    # styler: on
+    c(k.df, k.df.error) %<-% c(ifelse(!paired, 0L, k), ifelse(!paired && var.equal, 0L, k))
 
     # which effect size?
     # styler: off
@@ -292,8 +289,10 @@ oneway_anova <- function(data,
     if (!paired) .f.args <- list(formula = new_formula(y, x), rscaleFixed = bf.prior)
     if (paired) {
       .f.args <- list(
-        formula = new_formula(enexpr(y), expr(!!enexpr(x) + rowid)),
-        rscaleFixed = bf.prior, whichRandom = "rowid", rscaleRandom = 1
+        formula      = new_formula(enexpr(y), expr(!!enexpr(x) + rowid)),
+        rscaleFixed  = bf.prior,
+        whichRandom  = "rowid",
+        rscaleRandom = 1
       )
     }
 
@@ -317,7 +316,6 @@ oneway_anova <- function(data,
       k               = k,
       k.df            = k.df,
       k.df.error      = k.df.error,
-      top.text        = top.text,
-      bayesian        = ifelse(type == "bayes", TRUE, FALSE)
+      top.text        = top.text
     )))
 }
