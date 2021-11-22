@@ -1,10 +1,9 @@
 # tidy_model_expressions works - F
 
     Code
-      tidy_model_expressions(tidy_model_parameters(mod_f, omega_squared = "partial",
-        table_wide = TRUE), statistic = "f")
+      dplyr::select(df1, -label)
     Output
-      # A tibble: 3 x 12
+      # A tibble: 3 x 11
         term  statistic    df df.error p.value group   sumsq meansq  estimate
         <chr>     <dbl> <dbl>    <dbl>   <dbl> <chr>   <dbl>  <dbl>     <dbl>
       1 N         9.04      1       15 0.00885 Within 189.   189.    0.184   
@@ -15,19 +14,22 @@
       1              314.              314.
       2              314.              314.
       3              314.              314.
-        label                                                                         
-        <chr>                                                                         
-      1 "list(~italic(F)('1'*\",\"*'15')=='9.04', ~italic(p)=='0.009', ~widehat(itali~
-      2 "list(~italic(F)('1'*\",\"*'15')=='0.40', ~italic(p)=='0.536', ~widehat(itali~
-      3 "list(~italic(F)('1'*\",\"*'15')=='1.02', ~italic(p)=='0.329', ~widehat(itali~
 
 ---
 
     Code
-      tidy_model_expressions(tidy_model_parameters(mod_f, eta_squared = "partial",
-        table_wide = TRUE), statistic = "f", effsize.type = "eta")
+      df1$label
     Output
-      # A tibble: 3 x 12
+      list(widehat(italic(omega)[p]^2)=='0.18', italic(F)('1', '15')=='9.04', italic(p)=='8.85e-03')
+      list(widehat(italic(omega)[p]^2)=='-0.02', italic(F)('1', '15')=='0.40', italic(p)=='0.54')
+      list(widehat(italic(omega)[p]^2)=='4.57e-04', italic(F)('1', '15')=='1.02', italic(p)=='0.33')
+
+---
+
+    Code
+      dplyr::select(df2, -label)
+    Output
+      # A tibble: 3 x 11
         term  statistic    df df.error p.value group   sumsq meansq estimate
         <chr>     <dbl> <dbl>    <dbl>   <dbl> <chr>   <dbl>  <dbl>    <dbl>
       1 N         9.04      1       15 0.00885 Within 189.   189.     0.376 
@@ -38,9 +40,13 @@
       1              314.              314.
       2              314.              314.
       3              314.              314.
-        label                                                                         
-        <chr>                                                                         
-      1 "list(~italic(F)('1'*\",\"*'15')=='9.04', ~italic(p)=='0.009', ~widehat(itali~
-      2 "list(~italic(F)('1'*\",\"*'15')=='0.40', ~italic(p)=='0.536', ~widehat(itali~
-      3 "list(~italic(F)('1'*\",\"*'15')=='1.02', ~italic(p)=='0.329', ~widehat(itali~
+
+---
+
+    Code
+      df2$label
+    Output
+      list(widehat(italic(eta)[p]^2)=='0.38', italic(F)('1', '15')=='9.04', italic(p)=='8.85e-03')
+      list(widehat(italic(eta)[p]^2)=='0.03', italic(F)('1', '15')=='0.40', italic(p)=='0.54')
+      list(widehat(italic(eta)[p]^2)=='0.06', italic(F)('1', '15')=='1.02', italic(p)=='0.33')
 

@@ -36,5 +36,6 @@
 ## statsExpressions namespace: start
 #' @import rlang
 #' @import dplyr
+#' @import glue
 ## statsExpressions namespace: end
 NULL

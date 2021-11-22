@@ -18,20 +18,20 @@
       10 setosa             5.02    50 Sepal.Length  NA     0.400     4.91      5.11
       11 versicolor         5.75    50 Sepal.Length  NA     0.7       5.57      6.13
       12 virginica          6.40    50 Sepal.Length  NA     0.750     6.26      6.53
-           min   max skewness kurtosis n.missing expression                          
-         <dbl> <dbl>    <dbl>    <dbl>     <int> <chr>                               
-       1   4.3   5.8    0.120  -0.253          0 list(~widehat(mu)[mean]=='5.01')    
-       2   4.9   7      0.105  -0.533          0 list(~widehat(mu)[mean]=='5.94')    
-       3   4.9   7.9    0.118   0.0329         0 list(~widehat(mu)[mean]=='6.59')    
-       4   4.3   5.8    0.120  -0.253          0 list(~widehat(mu)[median]=='5.000') 
-       5   4.9   7      0.105  -0.533          0 list(~widehat(mu)[median]=='5.900') 
-       6   4.9   7.9    0.118   0.0329         0 list(~widehat(mu)[median]=='6.500') 
-       7   4.3   5.8    0.120  -0.253          0 list(~widehat(mu)[trimmed]=='5.000')
-       8   4.9   7      0.105  -0.533          0 list(~widehat(mu)[trimmed]=='5.910')
-       9   4.9   7.9    0.118   0.0329         0 list(~widehat(mu)[trimmed]=='6.547')
-      10   4.3   5.8    0.120  -0.253          0 list(~widehat(mu)[MAP]=='5.02')     
-      11   4.9   7      0.105  -0.533          0 list(~widehat(mu)[MAP]=='5.75')     
-      12   4.9   7.9    0.118   0.0329         0 list(~widehat(mu)[MAP]=='6.40')     
+           min   max skewness kurtosis n.missing expression                   
+         <dbl> <dbl>    <dbl>    <dbl>     <int> <glue>                       
+       1   4.3   5.8    0.120  -0.253          0 widehat(mu)[mean]=='5.01'    
+       2   4.9   7      0.105  -0.533          0 widehat(mu)[mean]=='5.94'    
+       3   4.9   7.9    0.118   0.0329         0 widehat(mu)[mean]=='6.59'    
+       4   4.3   5.8    0.120  -0.253          0 widehat(mu)[median]=='5.000' 
+       5   4.9   7      0.105  -0.533          0 widehat(mu)[median]=='5.900' 
+       6   4.9   7.9    0.118   0.0329         0 widehat(mu)[median]=='6.500' 
+       7   4.3   5.8    0.120  -0.253          0 widehat(mu)[trimmed]=='5.000'
+       8   4.9   7      0.105  -0.533          0 widehat(mu)[trimmed]=='5.910'
+       9   4.9   7.9    0.118   0.0329         0 widehat(mu)[trimmed]=='6.547'
+      10   4.3   5.8    0.120  -0.253          0 widehat(mu)[MAP]=='5.02'     
+      11   4.9   7      0.105  -0.533          0 widehat(mu)[MAP]=='5.75'     
+      12   4.9   7.9    0.118   0.0329         0 widehat(mu)[MAP]=='6.40'     
          n_label                   mad
          <chr>                   <dbl>
        1 "setosa\n(n = 50)"     NA    
@@ -71,40 +71,40 @@
       14 HDLF        9.73    91 desire     NA      5       8.39      9.99   0      10
       15 LDHF        9.85    91 desire     NA      3.5     7.86      9.99   0.5    10
       16 LDLF        5.99    93 desire     NA      4       2.80      8.52   0      10
-         skewness kurtosis n.missing expression                          
-            <dbl>    <dbl>     <int> <chr>                               
-       1   -1.13     0.486         0 list(~widehat(mu)[mean]=='7.85')    
-       2   -0.740   -0.663         0 list(~widehat(mu)[mean]=='6.74')    
-       3   -0.947    0.160         0 list(~widehat(mu)[mean]=='7.38')    
-       4   -0.132   -0.761         0 list(~widehat(mu)[mean]=='5.72')    
-       5   -1.13     0.486         0 list(~widehat(mu)[median]=='8.750') 
-       6   -0.740   -0.663         0 list(~widehat(mu)[median]=='8.000') 
-       7   -0.947    0.160         0 list(~widehat(mu)[median]=='8.000') 
-       8   -0.132   -0.761         0 list(~widehat(mu)[median]=='6.000') 
-       9   -1.13     0.486         0 list(~widehat(mu)[trimmed]=='8.473')
-      10   -0.740   -0.663         0 list(~widehat(mu)[trimmed]=='7.318')
-      11   -0.947    0.160         0 list(~widehat(mu)[trimmed]=='7.882')
-      12   -0.132   -0.761         0 list(~widehat(mu)[trimmed]=='5.719')
-      13   -1.13     0.486         0 list(~widehat(mu)[MAP]=='9.98')     
-      14   -0.740   -0.663         0 list(~widehat(mu)[MAP]=='9.73')     
-      15   -0.947    0.160         0 list(~widehat(mu)[MAP]=='9.85')     
-      16   -0.132   -0.761         0 list(~widehat(mu)[MAP]=='5.99')     
-         n_label            mad
-         <chr>            <dbl>
-       1 "HDHF\n(n = 92)" NA   
-       2 "HDLF\n(n = 91)" NA   
-       3 "LDHF\n(n = 91)" NA   
-       4 "LDLF\n(n = 93)" NA   
-       5 "HDHF\n(n = 92)"  1.85
-       6 "HDLF\n(n = 91)"  2.97
-       7 "LDHF\n(n = 91)"  2.97
-       8 "LDLF\n(n = 93)"  2.97
-       9 "HDHF\n(n = 92)" NA   
-      10 "HDLF\n(n = 91)" NA   
-      11 "LDHF\n(n = 91)" NA   
-      12 "LDLF\n(n = 93)" NA   
-      13 "HDHF\n(n = 92)" NA   
-      14 "HDLF\n(n = 91)" NA   
-      15 "LDHF\n(n = 91)" NA   
-      16 "LDLF\n(n = 93)" NA   
+         skewness kurtosis n.missing expression                    n_label         
+            <dbl>    <dbl>     <int> <glue>                        <chr>           
+       1   -1.13     0.486         0 widehat(mu)[mean]=='7.85'     "HDHF\n(n = 92)"
+       2   -0.740   -0.663         0 widehat(mu)[mean]=='6.74'     "HDLF\n(n = 91)"
+       3   -0.947    0.160         0 widehat(mu)[mean]=='7.38'     "LDHF\n(n = 91)"
+       4   -0.132   -0.761         0 widehat(mu)[mean]=='5.72'     "LDLF\n(n = 93)"
+       5   -1.13     0.486         0 widehat(mu)[median]=='8.750'  "HDHF\n(n = 92)"
+       6   -0.740   -0.663         0 widehat(mu)[median]=='8.000'  "HDLF\n(n = 91)"
+       7   -0.947    0.160         0 widehat(mu)[median]=='8.000'  "LDHF\n(n = 91)"
+       8   -0.132   -0.761         0 widehat(mu)[median]=='6.000'  "LDLF\n(n = 93)"
+       9   -1.13     0.486         0 widehat(mu)[trimmed]=='8.473' "HDHF\n(n = 92)"
+      10   -0.740   -0.663         0 widehat(mu)[trimmed]=='7.318' "HDLF\n(n = 91)"
+      11   -0.947    0.160         0 widehat(mu)[trimmed]=='7.882' "LDHF\n(n = 91)"
+      12   -0.132   -0.761         0 widehat(mu)[trimmed]=='5.719' "LDLF\n(n = 93)"
+      13   -1.13     0.486         0 widehat(mu)[MAP]=='9.98'      "HDHF\n(n = 92)"
+      14   -0.740   -0.663         0 widehat(mu)[MAP]=='9.73'      "HDLF\n(n = 91)"
+      15   -0.947    0.160         0 widehat(mu)[MAP]=='9.85'      "LDHF\n(n = 91)"
+      16   -0.132   -0.761         0 widehat(mu)[MAP]=='5.99'      "LDLF\n(n = 93)"
+           mad
+         <dbl>
+       1 NA   
+       2 NA   
+       3 NA   
+       4 NA   
+       5  1.85
+       6  2.97
+       7  2.97
+       8  2.97
+       9 NA   
+      10 NA   
+      11 NA   
+      12 NA   
+      13 NA   
+      14 NA   
+      15 NA   
+      16 NA   
 

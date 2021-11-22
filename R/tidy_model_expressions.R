@@ -27,28 +27,22 @@ tidy_model_expressions <- function(data,
                                    effsize.type = "omega",
                                    ...) {
 
-  # standardize
+  # standardize the statistic naming
   statistic <- substring(tolower(statistic), 1L, 1L)
 
-  # all operations will have to be done rowwise
-  data %<>% rowwise()
+  # convert the necessary to character type for expression
+  df <- .data_to_char(data, k)
 
   # t-statistic --------------------------------
 
+  es.text <- list(quote(widehat(italic(beta))))
+
   if (statistic == "t") {
-    data %<>%
+    df %<>%
       mutate(
         label = case_when(
-          is.na(df.error) || is.infinite(df.error) ~ paste0(
-            "list(~widehat(italic(beta))=='", format_value(estimate, k),
-            "', ~italic(t)=='", format_value(statistic, k),
-            "', ~italic(p)=='", format_num(p.value, k, TRUE), "')"
-          ),
-          TRUE ~ paste0(
-            "list(~widehat(italic(beta))=='", format_value(estimate, k),
-            "', ~italic(t)", "('", format_value(df.error, 0L), "')=='", format_value(statistic, k),
-            "', ~italic(p)=='", format_num(p.value, k, TRUE), "')"
-          )
+          df.error %in% c("", "Inf") ~ glue("list({es.text}=='{estimate}', italic(t)=='{statistic}', italic(p)=='{p.value}')"),
+          TRUE ~ glue("list({es.text}=='{estimate}', italic(t)('{df.error}')=='{statistic}', italic(p)=='{p.value}')")
         )
       )
   }
@@ -57,27 +51,15 @@ tidy_model_expressions <- function(data,
 
   # if the statistic is z-value
   if (statistic == "z") {
-    data %<>%
-      mutate(
-        label = paste0(
-          "list(~widehat(italic(beta))=='", format_value(estimate, k),
-          "', ~italic(z)=='", format_value(statistic, k),
-          "', ~italic(p)=='", format_num(p.value, k, TRUE), "')"
-        )
-      )
+    df %<>%
+      mutate(label = glue("list({es.text}=='{estimate}', italic(z)=='{statistic}', italic(p)=='{p.value}')"))
   }
 
   # chi^2-statistic -----------------------------
 
   if (statistic == "c") {
-    data %<>%
-      mutate(
-        label = paste0(
-          "list(~widehat(italic(beta))=='", format_value(estimate, k),
-          "', ~italic(chi)^2~", "('", format_value(df.error, 0L), "')=='", format_value(statistic, k),
-          "', ~italic(p)=='", format_num(p.value, k, TRUE), "')"
-        )
-      )
+    df %<>%
+      mutate(label = glue("list({es.text}=='{estimate}', italic(chi)^2*('{df.error}')=='{statistic}', italic(p)=='{p.value}')"))
   }
 
   # f-statistic ---------------------------------
@@ -88,17 +70,21 @@ tidy_model_expressions <- function(data,
     if (effsize.type == "omega") es.text <- list(quote(widehat(italic(omega)[p]^2)))
 
     # which effect size is needed?
-    data %<>%
-      mutate(
-        label = paste0(
-          "list(~italic(F)", "('", format_value(df, 0L), "'*\",\"*'", format_value(df.error, 0L),
-          "')=='", format_value(statistic, k),
-          "', ~italic(p)=='", format_num(p.value, k, TRUE),
-          "', ~", es.text, "=='", format_value(estimate, k), "')"
-        )
-      )
+    df %<>%
+      mutate(label = glue("list({es.text}=='{estimate}', italic(F)('{df}', '{df.error}')=='{statistic}', italic(p)=='{p.value}')"))
   }
 
   # return the ungrouped dataframe
-  ungroup(data)
+  left_join(data, select(df, term, label), by = "term")
+}
+
+#' Helper function to convert certain numeric columns to character type
+#' @noRd
+
+.data_to_char <- function(data, k = 2L, k.df = 0L) {
+  data %>%
+    mutate(
+      across(.fns = ~ format_value(.x, k), .cols = matches("^est|^sta|p.value")),
+      across(.fns = ~ format_value(.x, k.df), .cols = matches("^df"))
+    )
 }
