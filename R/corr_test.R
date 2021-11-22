@@ -78,7 +78,6 @@ corr_test <- function(data,
   polish_data(stats_df) %>%
     mutate(expression = list(expr_template(
       data            = .,
-      no.parameters   = ifelse(type %in% c("parametric", "robust"), 1L, 0L),
       top.text        = top.text,
       paired          = TRUE,
       n               = stats_df$n.obs[[1]],

@@ -142,11 +142,10 @@ two_sample_test <- function(data,
   # parametric ---------------------------------------
 
   if (type == "parametric") {
-    # preparing expression parameters
-    c(no.parameters, k.df) %<-% c(1L, ifelse(paired || var.equal, 0L, k))
-    .f <- stats::t.test
-
     # styler: off
+    # preparing expression parameters
+    k.df <- ifelse(paired || var.equal, 0L, k)
+    .f   <- stats::t.test
     if (effsize.type %in% c("unbiased", "g")) .f.es <- effectsize::hedges_g
     if (effsize.type %in% c("biased", "d")) .f.es   <- effectsize::cohens_d
     # styler: on
@@ -154,11 +153,9 @@ two_sample_test <- function(data,
 
   # non-parametric ------------------------------------
 
-  if (type == "nonparametric") {
-    # preparing expression parameters
-    no.parameters <- 0L
-    c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
-  }
+  # preparing expression parameters
+  if (type == "nonparametric") c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
+
 
   # preparing expression
   if (type %in% c("parametric", "nonparametric")) {
@@ -191,7 +188,7 @@ two_sample_test <- function(data,
 
   if (type == "robust") {
     # expression parameters
-    c(no.parameters, k.df) %<-% c(1L, ifelse(paired, 0L, k))
+    k.df <- ifelse(paired, 0L, k)
 
     # which functions to be used for hypothesis testing and estimation?
     if (!paired) c(.f, .f.es) %<-% c(WRS2::yuen, WRS2::akp.effect)
@@ -203,7 +200,7 @@ two_sample_test <- function(data,
     .f.es.args <- list(EQVAR = FALSE, nboot = nboot, alpha = 1 - conf.level, tr = tr)
 
     effsize_df <- tidy_model_parameters(exec(.f.es, !!!.f.args, !!!.f.es.args), keep = "AKP")
-    stats_df   <- tidy_model_parameters(exec(.f, !!!.f.args, !!!.f.es.args))
+    stats_df   <- tidy_model_parameters(exec(.f,    !!!.f.args, !!!.f.es.args))
     # styler: on
   }
 
@@ -231,7 +228,6 @@ two_sample_test <- function(data,
   # add column with expression
   polish_data(stats_df) %>%
     mutate(expression = list(expr_template(
-      no.parameters   = no.parameters,
       data            = .,
       paired          = paired,
       n               = ifelse(paired, length(unique(data$rowid)), nrow(data)),

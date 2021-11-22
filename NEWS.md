@@ -1,5 +1,11 @@
 # statsExpressions 1.2.0.9000
 
+MINOR CHANGES
+
+  - The `expr_template()` function loses `no.parameters` argument since the
+    function can internally figure this out based on whether `df` and `df.error`
+    columns are present.
+
 # statsExpressions 1.2.0
 
 BREAKING CHANGES

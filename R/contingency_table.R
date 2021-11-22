@@ -214,7 +214,6 @@ contingency_table <- function(data,
       mutate(
         expression = list(expr_template(
           data          = .,
-          no.parameters = 1L,
           n             = nrow(data),
           paired        = paired,
           k             = k,
