@@ -78,7 +78,7 @@ citation("statsExpressions")
 # General Workflow
 
 ```{r, echo=FALSE}
-knitr::include_graphics("man/figures/schematic_illustration.png")
+knitr::include_graphics("man/figures/card.png")
 ```
 
 # Summary of types of statistical analyses

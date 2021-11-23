@@ -8,6 +8,12 @@ toc:
   depth: 3
 
 template:
+  opengraph:
+    image:
+      src: man/figures/card.png
+    twitter:
+      creator: "@patilindrajeets"
+      card: summary_large_image
   bootstrap: 5
   bootswatch: cyborg
   theme: arrow-dark
