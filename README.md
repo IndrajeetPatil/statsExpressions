@@ -128,9 +128,9 @@ mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
 #>   method                       effectsize      estimate conf.level conf.low
 #>   <chr>                        <chr>              <dbl>      <dbl>    <dbl>
 #> 1 Kruskal-Wallis rank sum test Epsilon2 (rank)    0.736       0.95    0.624
-#>   conf.high conf.method          conf.iterations expression
-#>       <dbl> <chr>                          <int> <list>    
-#> 1         1 percentile bootstrap             100 <language>
+#>   conf.high conf.method          conf.iterations expression  
+#>       <dbl> <chr>                          <int> <list>      
+#> 1         1 percentile bootstrap             100 <expression>
 
 mtcars %>% oneway_anova(cyl, wt, type = "robust")
 #> # A tibble: 1 x 11
@@ -143,9 +143,9 @@ mtcars %>% oneway_anova(cyl, wt, type = "robust")
 #>   effectsize                         estimate conf.level conf.low conf.high
 #>   <chr>                                 <dbl>      <dbl>    <dbl>     <dbl>
 #> 1 Explanatory measure of effect size     1.05       0.95    0.843      1.50
-#>   expression
-#>   <list>    
-#> 1 <language>
+#>   expression  
+#>   <list>      
+#> 1 <expression>
 ```
 
 All possible output dataframes from functions are tabulated here:
@@ -199,11 +199,11 @@ mtcars %>%
 #> 1 Hedges' g    -1.16        0.95   -1.97     -0.422 ncp        
 #> 2 Hedges' g     0.286       0.95   -0.419     1.01  ncp        
 #> 3 Hedges' g     1.24        0.95    0.565     1.98  ncp        
-#>   conf.distribution expression
-#>   <chr>             <list>    
-#> 1 t                 <language>
-#> 2 t                 <language>
-#> 3 t                 <language>
+#>   conf.distribution expression  
+#>   <chr>             <list>      
+#> 1 t                 <expression>
+#> 2 t                 <expression>
+#> 3 t                 <expression>
 ```
 
 # Using expressions in custom plots
@@ -432,10 +432,9 @@ library(ggplot2)
 
 # Pearson's chi-squared test of independence
 contingency_table(mtcars, am, cyl)$expression[[1]]
-#> paste(chi["Pearson"]^2, "(", "2", ") = ", "8.74", ", ", italic("p"), 
-#>     " = ", "0.013", ", ", widehat(italic("V"))["Cramer"], " = ", 
-#>     "0.46", ", CI"["95%"], " [", "0.00", ", ", "1.00", "], ", 
-#>     italic("n")["obs"], " = ", "32")
+#> expression(list(chi["Pearson"]^2 * "(" * 2 * ")" == "8.74", italic(p) == 
+#>     "0.01", widehat(italic("V"))["Cramer"] == "0.46", CI["95%"] ~ 
+#>     "[" * "0.00", "1.00" * "]", italic("n")["obs"] == "32"))
 ```
 
 ## Expressions for meta-analysis
@@ -478,10 +477,9 @@ library(ggplot2)
 
 # extracting detailed expression
 (res_expr <- oneway_anova(iris, Species, Sepal.Length, var.equal = TRUE)$expression[[1]])
-#> paste(italic("F")["Fisher"], "(", "2", ",", "147", ") = ", "119.26", 
-#>     ", ", italic("p"), " = ", "1.67e-31", ", ", widehat(omega["p"]^2), 
-#>     " = ", "0.61", ", CI"["95%"], " [", "0.53", ", ", "1.00", 
-#>     "], ", italic("n")["obs"], " = ", "150")
+#> expression(list(italic("F")["Fisher"](2, 147) == "119.26", italic(p) == 
+#>     "1.67e-31", widehat(omega["p"]^2) == "0.61", CI["95%"] ~ 
+#>     "[" * "0.53", "1.00" * "]", italic("n")["obs"] == "150"))
 
 # adapting the details to your liking
 ggplot(iris, aes(x = Species, y = Sepal.Length)) +

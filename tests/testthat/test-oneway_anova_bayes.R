@@ -30,7 +30,7 @@ test_that(
     expect_equal(df_results$bf10[[1]], 0.1177186, tolerance = 0.001)
 
     # call
-    expect_snapshot(results$expression[[1]])
+    expect_snapshot(as.character(results$expression[[1]]))
 
     # data where it works
     set.seed(123)
@@ -45,7 +45,7 @@ test_that(
         k = 2 # don't change; tests fail on Ubuntu otherwise
       )
 
-    expect_snapshot(results2$expression[[1]])
+    expect_snapshot(as.character(results2$expression[[1]]))
   }
 )
 
@@ -125,13 +125,9 @@ test_that(
         paired = TRUE
       )
 
-      # testing expression
-      expect_type(results$expression[[1]], "language")
-      expect_type(results_na$expression[[1]], "language")
-
       # checking expressions
-      expect_snapshot(results$expression[[1]])
-      expect_snapshot(results_na$expression[[1]])
+      expect_snapshot(as.character(results$expression[[1]]))
+      expect_snapshot(as.character(results_na$expression[[1]]))
 
       # with subject.id ---------------------------------
 
@@ -186,7 +182,7 @@ test_that(
           paired = TRUE
         )
 
-      expect_equal(expr2, expr1)
+      expect_equal(expr2, expr1, ignore_attr = TRUE)
     }
   }
 )

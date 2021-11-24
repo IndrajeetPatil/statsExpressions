@@ -57,6 +57,6 @@ test_that(
     expect_type(df, "list")
     expect_identical(class(df), c("tbl_df", "tbl", "data.frame"))
 
-    expect_snapshot(subtitle1$expression[[1]])
+    expect_snapshot(as.character(subtitle1$expression[[1]]))
   }
 )

@@ -32,14 +32,13 @@
 #' @param k Number of digits after decimal point (should be an integer)
 #'   (Default: `k = 2L`).
 #' @param k.df,k.df.error Number of decimal places to display for the
-#'   parameters (default: `0`).
+#'   parameters (default: `0L`).
 #' @param n An integer specifying the sample size used for the test.
 #' @param n.text A character that specifies the design, which will determine
 #'   what the `n` stands for. It defaults to `quote(italic("n")["pairs"])` if
 #'   `paired = TRUE`, and to `quote(italic("n")["obs"])` if `paired = FALSE`. If
 #'   you wish to customize this further, you will need to provide object of
 #'   `language` type.
-#' @param prior.distribution A character that specifies the prior type.
 #' @param effsize.text A character that specifies the relevant effect size.
 #' @param prior.type The type of prior.
 #' @param conf.method The type of index used for Credible Interval. Can be
@@ -64,17 +63,18 @@
 #'   estimate   = -1.980,
 #'   conf.level = 0.95,
 #'   conf.low   = -2.873,
-#'   conf.high  = -1.088
+#'   conf.high  = -1.088,
+#'   method     = "Student's t-test"
 #' )
 #'
 #' # expression for *t*-statistic with Cohen's *d* as effect size
 #' # note that the plotmath expressions need to be quoted
 #' expr_template(
 #'   data           = stats_df,
-#'   statistic.text = quote(italic("t")),
-#'   effsize.text   = quote(italic("d")),
+#'   statistic.text = list(quote(italic("t"))),
+#'   effsize.text   = list(quote(italic("d"))),
 #'   n              = 32L,
-#'   n.text         = quote(italic("n")["no.obs"]),
+#'   n.text         = list(quote(italic("n")["no.obs"])),
 #'   k              = 3L,
 #'   k.df           = 3L
 #' )
@@ -86,18 +86,17 @@ expr_template <- function(data,
                           statistic.text = NULL,
                           effsize.text = NULL,
                           top.text = NULL,
-                          prior.distribution = NULL,
                           prior.type = NULL,
                           n = NULL,
                           n.text = ifelse(
                             paired,
                             list(quote(italic("n")["pairs"])),
                             list(quote(italic("n")["obs"]))
-                          )[[1]],
+                          ),
                           conf.method = "HDI",
                           k = 2L,
                           k.df = 0L,
-                          k.df.error = 0L,
+                          k.df.error = k.df,
                           ...) {
   # is this Bayesian test?
   bayesian <- ifelse("bf10" %in% names(data), TRUE, FALSE)
@@ -120,39 +119,37 @@ expr_template <- function(data,
     c(estimate, conf.low, conf.high) %<-% c(data$estimate[[1]], data$conf.low[[1]], data$conf.high[[1]])
   }
 
+  # convert needed columns to character type
+  df <- .data_to_char(data, k, k.df, k.df.error)
+
+  # adding a few other columns
+  df %<>% mutate(
+    statistic.text = statistic.text %||% stat_text_switch(method),
+    es.text = effsize.text %||% estimate_type_switch(effectsize),
+    prior.type = prior.type %||% prior_type_switch(method),
+    prior.distribution = prior_switch(method),
+    conf.method = toupper(conf.method),
+    n.obs = .prettyNum(n)
+  )
+
   # Bayesian analysis ------------------------------
 
   if (bayesian) {
-    # Bayesian expression
-    expression <- substitute(
-      atop(
-        displaystyle(top.text),
-        expr = paste(
-          "log"["e"] * "(BF"["01"] * ") = " * bf * ", ",
-          widehat(effsize.text)[prior.type]^"posterior" * " = " * estimate * ", ",
-          "CI"[conf.level]^conf.method * " [" * conf.low * ", " * conf.high * "], ",
-          prior.distribution * " = " * bf.prior
-        )
-      ),
-      env = list(
-        top.text           = top.text,
-        effsize.text       = effsize.text %||% estimate_type_switch(data$effectsize[[1]]),
-        prior.type         = prior.type %||% prior_type_switch(data$method[[1]]),
-        conf.level         = paste0(data$conf.level[[1]] * 100, "%"),
-        conf.method        = toupper(conf.method),
-        bf                 = format_value(-log(data$bf10[[1]]), k),
-        estimate           = format_value(estimate, k),
-        conf.low           = format_value(conf.low, k),
-        conf.high          = format_value(conf.high, k),
-        prior.distribution = prior.distribution %||% prior_switch(data$method[[1]]),
-        bf.prior           = format_value(data$prior.scale[[1]], k)
-      )
-    )
-
-    # return the final expression
-    if (is.null(top.text)) expression <- expression$expr
+    if (is.null(top.text)) {
+      df %<>% mutate(expression = glue("list(
+            log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
+            {es.text}[{prior.type}]^'posterior'=='{estimate}',
+            CI['{conf.level}']^{conf.method}~'['*'{conf.low}', '{conf.high}'*']',
+            {prior.distribution}=='{prior.scale}')"))
+    } else {
+      df %<>% mutate(expression = glue("list(
+            atop(displaystyle({top.text}),
+            list(log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
+            {es.text}[{prior.type}]^'posterior'=='{estimate}',
+            CI['{conf.level}']^{conf.method}~'['*'{conf.low}', '{conf.high}'*']',
+            {prior.distribution}=='{prior.scale}')))"))
+    }
   }
-
 
   # how many parameters?
   no.parameters <- sum("df.error" %in% names(data) + "df" %in% names(data))
@@ -160,89 +157,35 @@ expr_template <- function(data,
   # 0 degrees of freedom --------------------
 
   if (!bayesian && no.parameters == 0L) {
-    # preparing expression
-    expression <- substitute(
-      expr = paste(
-        statistic.text, " = ", statistic, ", ",
-        italic("p"), " = ", p.value, ", ",
-        effsize.text, " = ", estimate, ", CI"[conf.level], " [", conf.low, ", ", conf.high, "], ",
-        n.text, " = ", n
-      ),
-      env = list(
-        statistic.text = statistic.text %||% stat_text_switch(data$method[[1]]),
-        statistic      = format_num(data$statistic[[1]], k),
-        p.value        = format_num(data$p.value[[1]], k, p.value = TRUE),
-        effsize.text   = effsize.text %||% estimate_type_switch(data$effectsize[[1]]),
-        estimate       = format_value(estimate, k),
-        conf.level     = paste0(data$conf.level[[1]] * 100, "%"),
-        conf.low       = format_value(conf.low, k),
-        conf.high      = format_value(conf.high, k),
-        n              = .prettyNum(n),
-        n.text         = n.text
-      )
-    )
+    df %<>% mutate(expression = glue("list(
+            {statistic.text}=='{statistic}', italic(p)=='{p.value}',
+            {es.text}=='{estimate}', CI['{conf.level}']~'['*'{conf.low}', '{conf.high}'*']',
+            {n.text}=='{n.obs}')"))
   }
 
   # 1 degree of freedom --------------------
 
   if (!bayesian && no.parameters == 1L) {
     # for chi-squared statistic
-    if ("df" %in% names(data)) data %<>% mutate(df.error = df)
+    if ("df" %in% names(df)) df %<>% mutate(df.error = df)
 
-    # preparing expression
-    expression <- substitute(
-      expr = paste(
-        statistic.text, "(", parameter, ") = ", statistic, ", ",
-        italic("p"), " = ", p.value, ", ",
-        effsize.text, " = ", estimate, ", CI"[conf.level], " [", conf.low, ", ", conf.high, "], ",
-        n.text, " = ", n
-      ),
-      env = list(
-        statistic.text = statistic.text %||% stat_text_switch(data$method[[1]]),
-        statistic      = format_num(data$statistic[[1]], k),
-        parameter      = format_value(data$df.error[[1]], k.df),
-        p.value        = format_num(data$p.value[[1]], k, p.value = TRUE),
-        effsize.text   = effsize.text %||% estimate_type_switch(data$effectsize[[1]]),
-        estimate       = format_value(estimate, k),
-        conf.level     = paste0(data$conf.level[[1]] * 100, "%"),
-        conf.low       = format_value(conf.low, k),
-        conf.high      = format_value(conf.high, k),
-        n              = .prettyNum(n),
-        n.text         = n.text
-      )
-    )
+    df %<>% mutate(expression = glue("list(
+            {statistic.text}*'('*{df.error}*')'=='{statistic}', italic(p)=='{p.value}',
+            {es.text}=='{estimate}', CI['{conf.level}']~'['*'{conf.low}', '{conf.high}'*']',
+            {n.text}=='{n.obs}')"))
   }
 
   # 2 degrees of freedom -----------------
 
   if (!bayesian && no.parameters == 2L) {
-    # preparing expression
-    expression <- substitute(
-      expr = paste(
-        statistic.text, "(", parameter1, ",", parameter2, ") = ", statistic, ", ",
-        italic("p"), " = ", p.value, ", ",
-        effsize.text, " = ", estimate, ", CI"[conf.level], " [", conf.low, ", ", conf.high, "], ",
-        n.text, " = ", n
-      ),
-      env = list(
-        statistic.text = statistic.text %||% stat_text_switch(data$method[[1]]),
-        statistic      = format_num(data$statistic[[1]], k),
-        parameter1     = format_value(data$df[[1]], k.df),
-        parameter2     = format_value(data$df.error[[1]], k.df.error),
-        p.value        = format_num(data$p.value[[1]], k, p.value = TRUE),
-        effsize.text   = effsize.text %||% estimate_type_switch(data$effectsize[[1]]),
-        estimate       = format_value(estimate, k),
-        conf.level     = paste0(data$conf.level[[1]] * 100, "%"),
-        conf.low       = format_value(conf.low, k),
-        conf.high      = format_value(conf.high, k),
-        n              = .prettyNum(n),
-        n.text         = n.text
-      )
-    )
+    df %<>% mutate(expression = glue("list(
+            {statistic.text}({df}, {df.error})=='{statistic}', italic(p)=='{p.value}',
+            {es.text}=='{estimate}', CI['{conf.level}']~'['*'{conf.low}', '{conf.high}'*']',
+            {n.text}=='{n.obs}')"))
   }
 
   # return the formatted expression
-  expression
+  parse(text = df$expression[[1]])
 }
 
 
@@ -271,7 +214,7 @@ stat_text_switch <- function(x) {
     grepl("mcnemar's chi", x) ~ list(quote(chi["McNemar"]^2)),
     grepl("meta", x) ~ list(quote(italic("z"))),
     TRUE ~ list(NULL)
-  )[[1]]
+  )
 }
 
 #' @noRd
@@ -305,16 +248,16 @@ estimate_type_switch <- function(x) {
     grepl("linear", x) ~ list(quote(italic(R^"2"))),
     grepl("^meta", x) ~ list(quote(widehat(beta)["summary"]^"meta")),
     TRUE ~ list(NULL)
-  )[[1]]
+  )
 }
 
 #' @noRd
 
 prior_switch <- function(x) {
   case_when(
-    grepl("contingency", x, TRUE) ~ quote(italic("a")["Gunel-Dickey"]),
-    grepl("correlation", x, TRUE) ~ quote(italic("r")["beta"]^"JZS"),
-    TRUE ~ quote(italic("r")["Cauchy"]^"JZS")
+    grepl("contingency", x, TRUE) ~ list(quote(italic("a")["Gunel-Dickey"])),
+    grepl("correlation", x, TRUE) ~ list(quote(italic("r")["beta"]^"JZS")),
+    TRUE ~ list(quote(italic("r")["Cauchy"]^"JZS"))
   )
 }
 
@@ -327,7 +270,7 @@ prior_type_switch <- function(x) {
     grepl("t-|meta-", x, TRUE) ~ list("difference"),
     grepl("linear", x, TRUE) ~ list("Bayesian"),
     TRUE ~ list(NULL)
-  )[[1]]
+  )
 }
 
 #' @noRd

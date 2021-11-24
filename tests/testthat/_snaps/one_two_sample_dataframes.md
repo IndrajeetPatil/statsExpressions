@@ -16,12 +16,12 @@
       2   0.0319       0.99  -0.311      0.375 ncp         t                
       3   0.0323       0.9   -0.189      0.254 ncp         t                
       4   0.0319       0.5   -0.0577     0.122 ncp         t                
-        expression
-        <list>    
-      1 <language>
-      2 <language>
-      3 <language>
-      4 <language>
+        expression  
+        <list>      
+      1 <expression>
+      2 <expression>
+      3 <expression>
+      4 <expression>
 
 ---
 
@@ -41,12 +41,12 @@
       2 Welch Two Sample t-test less        Hedges' g      1.88       0.99    0.793
       3 Two Sample t-test       greater     Cohen's d      1.93       0.9     1.21 
       4 Welch Two Sample t-test two.sided   Hedges' g      1.88       0.5     1.58 
-        conf.high conf.method conf.distribution expression
-            <dbl> <chr>       <chr>             <list>    
-      1      2.61 ncp         t                 <language>
-      2      2.97 ncp         t                 <language>
-      3      2.63 ncp         t                 <language>
-      4      2.15 ncp         t                 <language>
+        conf.high conf.method conf.distribution expression  
+            <dbl> <chr>       <chr>             <list>      
+      1      2.61 ncp         t                 <expression>
+      2      2.97 ncp         t                 <expression>
+      3      2.63 ncp         t                 <expression>
+      4      2.15 ncp         t                 <expression>
 
 ---
 
@@ -66,12 +66,12 @@
       2 Hedges' g     0.378       0.99   0.0984     0.659 ncp        
       3 Cohen's d     0.381       0.9    0.201      0.563 ncp        
       4 Hedges' g     0.378       0.5    0.305      0.452 ncp        
-        conf.distribution expression
-        <chr>             <list>    
-      1 t                 <language>
-      2 t                 <language>
-      3 t                 <language>
-      4 t                 <language>
+        conf.distribution expression  
+        <chr>             <list>      
+      1 t                 <expression>
+      2 t                 <expression>
+      3 t                 <expression>
+      4 t                 <expression>
 
 ---
 
@@ -91,12 +91,12 @@
       2 One-way analysis of means (not assuming equal variances) Omega2        0.245
       3 One-way analysis of means                                Eta2          0.193
       4 One-way analysis of means (not assuming equal variances) Omega2        0.245
-        conf.level conf.low conf.high conf.method conf.distribution expression
-             <dbl>    <dbl>     <dbl> <chr>       <chr>             <list>    
-      1       0.89   0.0585         1 ncp         F                 <language>
-      2       0.8    0              1 ncp         F                 <language>
-      3       0.9    0.0545         1 ncp         F                 <language>
-      4       0.5    0.0974         1 ncp         F                 <language>
+        conf.level conf.low conf.high conf.method conf.distribution expression  
+             <dbl>    <dbl>     <dbl> <chr>       <chr>             <list>      
+      1       0.89   0.0585         1 ncp         F                 <expression>
+      2       0.8    0              1 ncp         F                 <expression>
+      3       0.9    0.0545         1 ncp         F                 <expression>
+      4       0.5    0.0974         1 ncp         F                 <expression>
 
 ---
 
@@ -112,8 +112,8 @@
         <chr>                                               <chr>               <dbl>
       1 ANOVA estimation for factorial designs using 'afex' Eta2 (partial)     0.191 
       2 ANOVA estimation for factorial designs using 'afex' Omega2 (partial)   0.0783
-        conf.level conf.low conf.high conf.method conf.distribution expression
-             <dbl>    <dbl>     <dbl> <chr>       <chr>             <list>    
-      1       0.89   0.136          1 ncp         F                 <language>
-      2       0.9    0.0362         1 ncp         F                 <language>
+        conf.level conf.low conf.high conf.method conf.distribution expression  
+             <dbl>    <dbl>     <dbl> <chr>       <chr>             <list>      
+      1       0.89   0.136          1 ncp         F                 <expression>
+      2       0.9    0.0362         1 ncp         F                 <expression>
 

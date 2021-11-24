@@ -23,7 +23,7 @@ test_that(
     # testing all details
     set.seed(123)
     expect_snapshot(select(df, -expression))
-    expect_snapshot(df$expression[[1]])
+    expect_snapshot(as.character(df$expression[[1]]))
 
     # error
     expect_error(meta_analysis(mtcars))

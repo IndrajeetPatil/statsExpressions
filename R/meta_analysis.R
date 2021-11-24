@@ -102,7 +102,7 @@ meta_analysis <- function(data,
     mutate(expression = list(expr_template(
       data            = .,
       n               = nrow(data),
-      n.text          = quote(italic("n")["effects"]),
+      n.text          = list(quote(italic("n")["effects"])),
       k               = k,
       top.text        = top.text
     )))

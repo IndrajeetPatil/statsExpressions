@@ -14,12 +14,9 @@
 ---
 
     Code
-      df1$expression[[1]]
+      as.character(df1$expression[[1]])
     Output
-      paste(chi["Pearson"]^2, "(", "2", ") = ", "8.74073", ", ", italic("p"), 
-          " = ", "0.01265", ", ", widehat(italic("V"))["Cramer"], " = ", 
-          "0.46431", ", CI"["99%"], " [", "0.00000", ", ", "1.00000", 
-          "], ", italic("n")["obs"], " = ", "32")
+      [1] "list(chi[\"Pearson\"]^2 * \"(\" * 2 * \")\" == \"8.74073\", italic(p) == \"0.01265\", widehat(italic(\"V\"))[\"Cramer\"] == \"0.46431\", CI[\"99%\"] ~ \"[\" * \"0.00000\", \"1.00000\" * \"]\", italic(\"n\")[\"obs\"] == \"32\")"
 
 ---
 
@@ -37,12 +34,9 @@
 ---
 
     Code
-      df2$expression[[1]]
+      as.character(df2$expression[[1]])
     Output
-      paste(chi["Pearson"]^2, "(", "1", ") = ", "456.87", ", ", italic("p"), 
-          " = ", "2.3e-101", ", ", widehat(italic("V"))["Cramer"], 
-          " = ", "0.46", ", CI"["95%"], " [", "0.42", ", ", "1.00", 
-          "], ", italic("n")["obs"], " = ", "2,201")
+      [1] "list(chi[\"Pearson\"]^2 * \"(\" * 1 * \")\" == \"456.87\", italic(p) == \"2.30e-101\", widehat(italic(\"V\"))[\"Cramer\"] == \"0.46\", CI[\"95%\"] ~ \"[\" * \"0.42\", \"1.00\" * \"]\", italic(\"n\")[\"obs\"] == \"2,201\")"
 
 ---
 
@@ -60,12 +54,9 @@
 ---
 
     Code
-      df3$expression[[1]]
+      as.character(df3$expression[[1]])
     Output
-      paste(chi["Pearson"]^2, "(", "15", ") = ", "15.75", ", ", italic("p"), 
-          " = ", "0.399", ", ", widehat(italic("V"))["Cramer"], " = ", 
-          "0.06", ", CI"["99%"], " [", "0.00", ", ", "1.00", "], ", 
-          italic("n")["obs"], " = ", "52")
+      [1] "list(chi[\"Pearson\"]^2 * \"(\" * 15 * \")\" == \"15.75\", italic(p) == \"0.40\", widehat(italic(\"V\"))[\"Cramer\"] == \"0.06\", CI[\"99%\"] ~ \"[\" * \"0.00\", \"1.00\" * \"]\", italic(\"n\")[\"obs\"] == \"52\")"
 
 # paired contingency_table works 
 
@@ -83,12 +74,9 @@
 ---
 
     Code
-      df1$expression[[1]]
+      as.character(df1$expression[[1]])
     Output
-      paste(chi["McNemar"]^2, "(", "1", ") = ", "13.33333", ", ", italic("p"), 
-          " = ", "2.6073e-04", ", ", widehat(italic("g"))["Cohen"], 
-          " = ", "0.33333", ", CI"["95%"], " [", "0.16436", ", ", "0.42663", 
-          "], ", italic("n")["pairs"], " = ", "100")
+      [1] "list(chi[\"McNemar\"]^2 * \"(\" * 1 * \")\" == \"13.33333\", italic(p) == \"0.00026\", widehat(italic(\"g\"))[\"Cohen\"] == \"0.33333\", CI[\"95%\"] ~ \"[\" * \"0.16436\", \"0.42663\" * \"]\", italic(\"n\")[\"pairs\"] == \"100\")"
 
 ---
 
@@ -106,12 +94,9 @@
 ---
 
     Code
-      df2$expression[[1]]
+      as.character(df2$expression[[1]])
     Output
-      paste(chi["McNemar"]^2, "(", "1", ") = ", "13.333", ", ", italic("p"), 
-          " = ", "2.61e-04", ", ", widehat(italic("g"))["Cohen"], " = ", 
-          "0.333", ", CI"["90%"], " [", "0.195", ", ", "0.416", "], ", 
-          italic("n")["pairs"], " = ", "95")
+      [1] "list(chi[\"McNemar\"]^2 * \"(\" * 1 * \")\" == \"13.333\", italic(p) == \"2.607e-04\", widehat(italic(\"g\"))[\"Cohen\"] == \"0.333\", CI[\"90%\"] ~ \"[\" * \"0.195\", \"0.416\" * \"]\", italic(\"n\")[\"pairs\"] == \"95\")"
 
 # Goodness of Fit contingency_table works without counts
 
@@ -129,12 +114,9 @@
 ---
 
     Code
-      df1$expression[[1]]
+      as.character(df1$expression[[1]])
     Output
-      paste(chi["gof"]^2, "(", "1", ") = ", "1.12500", ", ", italic("p"), 
-          " = ", "0.28884", ", ", widehat(italic("C"))["Pearson"], 
-          " = ", "0.18429", ", CI"["99%"], " [", "0.00000", ", ", "1.00000", 
-          "], ", italic("n")["obs"], " = ", "32")
+      [1] "list(chi[\"gof\"]^2 * \"(\" * 1 * \")\" == \"1.12500\", italic(p) == \"0.28884\", widehat(italic(\"C\"))[\"Pearson\"] == \"0.18429\", CI[\"99%\"] ~ \"[\" * \"0.00000\", \"1.00000\" * \"]\", italic(\"n\")[\"obs\"] == \"32\")"
 
 ---
 
@@ -152,12 +134,9 @@
 ---
 
     Code
-      df2$expression[[1]]
+      as.character(df2$expression[[1]])
     Output
-      paste(chi["gof"]^2, "(", "1", ") = ", "722.45", ", ", italic("p"), 
-          " = ", "3.92e-159", ", ", widehat(italic("C"))["Pearson"], 
-          " = ", "0.50", ", CI"["95%"], " [", "0.47", ", ", "1.00", 
-          "], ", italic("n")["obs"], " = ", "2,201")
+      [1] "list(chi[\"gof\"]^2 * \"(\" * 1 * \")\" == \"722.45\", italic(p) == \"3.92e-159\", widehat(italic(\"C\"))[\"Pearson\"] == \"0.50\", CI[\"95%\"] ~ \"[\" * \"0.47\", \"1.00\" * \"]\", italic(\"n\")[\"obs\"] == \"2,201\")"
 
 ---
 
@@ -178,44 +157,32 @@
 ---
 
     Code
-      df3$expression[[1]]
+      as.character(df3$expression[[1]])
     Output
-      paste(chi["gof"]^2, "(", "3", ") = ", "33.76", ", ", italic("p"), 
-          " = ", "2.23e-07", ", ", widehat(italic("C"))["Pearson"], 
-          " = ", "0.55", ", CI"["95%"], " [", "0.41", ", ", "1.00", 
-          "], ", italic("n")["obs"], " = ", "76")
+      [1] "list(chi[\"gof\"]^2 * \"(\" * 3 * \")\" == \"33.76\", italic(p) == \"2.23e-07\", widehat(italic(\"C\"))[\"Pearson\"] == \"0.55\", CI[\"95%\"] ~ \"[\" * \"0.41\", \"1.00\" * \"]\", italic(\"n\")[\"obs\"] == \"76\")"
 
 # bayes factor (proportion test)
 
     Code
-      df2$expression[[1]]
+      as.character(df2$expression[[1]])
     Output
-      atop(displaystyle("duh"), expr = paste("log"["e"] * "(BF"["01"] * 
-          ") = " * "0.55" * ", ", italic("a")["Gunel-Dickey"] * " = " * 
-          "10.00"))
+      [1] "atop"                                                                                                                         
+      [2] "displaystyle(\"duh\")"                                                                                                        
+      [3] "paste(\"log\"[\"e\"] * \"(BF\"[\"01\"] * \") = \" * \"0.55\" * \", \", italic(\"a\")[\"Gunel-Dickey\"] * \" = \" * \"10.00\")"
 
 # bayes factor (contingency tab)
 
     Code
-      list(expr_text1$expression[[1]], expr_text2$expression[[1]], expr_text3$
-        expression[[1]])
+      list(as.character(expr_text1$expression[[1]]), as.character(expr_text2$
+        expression[[1]]), as.character(expr_text3$expression[[1]]))
     Output
       [[1]]
-      paste("log"["e"] * "(BF"["01"] * ") = " * "-3.335" * ", ", widehat(italic("V"))["Cramer"]^"posterior" * 
-          " = " * "0.479" * ", ", "CI"["89%"]^"HDI" * " [" * "0.285" * 
-          ", " * "0.692" * "], ", italic("a")["Gunel-Dickey"] * " = " * 
-          "1.000")
+      [1] "list(log[e] * (BF[\"01\"]) == \"-3.335\", italic(\"V\")[Cramer]^\"posterior\" == \"0.479\", CI[\"89%\"]^HDI ~ \"[\" * \"0.285\", \"0.692\" * \"]\", italic(\"a\")[\"Gunel-Dickey\"] == \"1.000\")"
       
       [[2]]
-      paste("log"["e"] * "(BF"["01"] * ") = " * "-214.255" * ", ", 
-          widehat(italic("V"))["Cramer"]^"posterior" * " = " * "0.455" * 
-              ", ", "CI"["99%"]^"HDI" * " [" * "0.402" * ", " * "0.508" * 
-              "], ", italic("a")["Gunel-Dickey"] * " = " * "1.000")
+      [1] "list(log[e] * (BF[\"01\"]) == \"-214.255\", italic(\"V\")[Cramer]^\"posterior\" == \"0.455\", CI[\"99%\"]^HDI ~ \"[\" * \"0.402\", \"0.508\" * \"]\", italic(\"a\")[\"Gunel-Dickey\"] == \"1.000\")"
       
       [[3]]
-      paste("log"["e"] * "(BF"["01"] * ") = " * "-213.873" * ", ", 
-          widehat(italic("V"))["Cramer"]^"posterior" * " = " * "0.454" * 
-              ", ", "CI"["95%"]^"HDI" * " [" * "0.417" * ", " * "0.495" * 
-              "], ", italic("a")["Gunel-Dickey"] * " = " * "1.500")
+      [1] "list(log[e] * (BF[\"01\"]) == \"-213.873\", italic(\"V\")[Cramer]^\"posterior\" == \"0.454\", CI[\"95%\"]^HDI ~ \"[\" * \"0.417\", \"0.495\" * \"]\", italic(\"a\")[\"Gunel-Dickey\"] == \"1.500\")"
       
 

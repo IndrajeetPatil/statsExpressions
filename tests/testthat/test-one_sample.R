@@ -33,10 +33,10 @@ test_that(
     # testing all details
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(df1$expression[[1]])
+    expect_snapshot(as.character(df1$expression[[1]]))
 
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(df2$expression[[1]])
+    expect_snapshot(as.character(df2$expression[[1]]))
   }
 )
 
@@ -70,10 +70,10 @@ test_that(
     # testing all details
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(df1$expression[[1]])
+    expect_snapshot(as.character(df1$expression[[1]]))
 
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(df2$expression[[1]])
+    expect_snapshot(as.character(df2$expression[[1]]))
   }
 )
 
@@ -109,10 +109,10 @@ test_that(
     # testing all details
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(df1$expression[[1]])
+    expect_snapshot(as.character(df1$expression[[1]]))
 
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(df2$expression[[1]])
+    expect_snapshot(as.character(df2$expression[[1]]))
   }
 )
 
@@ -142,7 +142,7 @@ test_that(
 
     # extracting subtitle (without NA)
     set.seed(123)
-    subtitle <- one_sample_test(
+    df1 <- one_sample_test(
       type = "bayes",
       data = iris,
       x = Petal.Length,
@@ -152,11 +152,11 @@ test_that(
       conf.level = 0.90
     )
 
-    expect_snapshot(subtitle$expression[[1]])
+    expect_snapshot(as.character(df1$expression[[1]]))
 
     # extracting subtitle (with NA)
     set.seed(123)
-    subtitle2 <- one_sample_test(
+    df2 <- one_sample_test(
       type = "bayes",
       data = ggplot2::msleep,
       x = brainwt,
@@ -167,6 +167,6 @@ test_that(
       conf.method = "eti"
     )
 
-    expect_snapshot(subtitle2$expression[[1]])
+    expect_snapshot(as.character(df2$expression[[1]]))
   }
 )
