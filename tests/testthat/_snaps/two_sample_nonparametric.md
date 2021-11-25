@@ -3,13 +3,13 @@
     Code
       select(df, -expression)
     Output
-      # A tibble: 1 x 12
+      # A tibble: 1 x 13
         parameter1 parameter2 statistic   p.value method                 alternative
         <chr>      <chr>          <dbl>     <dbl> <chr>                  <chr>      
       1 wt         am              230. 0.0000435 Wilcoxon rank sum test two.sided  
-        effectsize        estimate conf.level conf.low conf.high conf.method
-        <chr>                <dbl>      <dbl>    <dbl>     <dbl> <chr>      
-      1 r (rank biserial)    0.866        0.9    0.749     0.931 normal     
+        effectsize        estimate conf.level conf.low conf.high conf.method n.obs
+        <chr>                <dbl>      <dbl>    <dbl>     <dbl> <chr>       <int>
+      1 r (rank biserial)    0.866        0.9    0.749     0.931 normal         32
 
 ---
 
@@ -23,13 +23,13 @@
     Code
       select(df2, -expression)
     Output
-      # A tibble: 1 x 12
+      # A tibble: 1 x 13
         parameter1 parameter2 statistic p.value method                    alternative
         <chr>      <chr>          <dbl>   <dbl> <chr>                     <chr>      
       1 length     type              10 0.00295 Wilcoxon signed rank test two.sided  
-        effectsize        estimate conf.level conf.low conf.high conf.method
-        <chr>                <dbl>      <dbl>    <dbl>     <dbl> <chr>      
-      1 r (rank biserial)   -0.853       0.99   -0.964    -0.489 normal     
+        effectsize        estimate conf.level conf.low conf.high conf.method n.obs
+        <chr>                <dbl>      <dbl>    <dbl>     <dbl> <chr>       <int>
+      1 r (rank biserial)   -0.853       0.99   -0.964    -0.489 normal         16
 
 ---
 

@@ -3,16 +3,16 @@
     Code
       select(df, -expression)
     Output
-      # A tibble: 1 x 12
+      # A tibble: 1 x 13
         statistic    df df.error   p.value
             <dbl> <dbl>    <dbl>     <dbl>
       1      20.2     2     19.0 0.0000196
         method                                                   effectsize estimate
         <chr>                                                    <chr>         <dbl>
       1 One-way analysis of means (not assuming equal variances) Eta2          0.681
-        conf.level conf.low conf.high conf.method conf.distribution
-             <dbl>    <dbl>     <dbl> <chr>       <chr>            
-      1       0.95    0.437         1 ncp         F                
+        conf.level conf.low conf.high conf.method conf.distribution n.obs
+             <dbl>    <dbl>     <dbl> <chr>       <chr>             <int>
+      1       0.95    0.437         1 ncp         F                    32
 
 ---
 
@@ -26,13 +26,13 @@
     Code
       select(df1, -expression)
     Output
-      # A tibble: 1 x 12
+      # A tibble: 1 x 13
         statistic    df df.error    p.value method                    effectsize
             <dbl> <dbl>    <dbl>      <dbl> <chr>                     <chr>     
       1      22.9     2       29 0.00000107 One-way analysis of means Eta2      
-        estimate conf.level conf.low conf.high conf.method conf.distribution
-           <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>            
-      1    0.612       0.95    0.404         1 ncp         F                
+        estimate conf.level conf.low conf.high conf.method conf.distribution n.obs
+           <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>             <int>
+      1    0.612       0.95    0.404         1 ncp         F                    32
 
 ---
 
@@ -46,16 +46,16 @@
     Code
       select(df1, -expression)
     Output
-      # A tibble: 1 x 12
+      # A tibble: 1 x 13
         statistic    df df.error p.value
             <dbl> <dbl>    <dbl>   <dbl>
       1      2.27     3     24.0   0.107
         method                                                   effectsize estimate
         <chr>                                                    <chr>         <dbl>
       1 One-way analysis of means (not assuming equal variances) Omega2        0.119
-        conf.level conf.low conf.high conf.method conf.distribution
-             <dbl>    <dbl>     <dbl> <chr>       <chr>            
-      1       0.95        0         1 ncp         F                
+        conf.level conf.low conf.high conf.method conf.distribution n.obs
+             <dbl>    <dbl>     <dbl> <chr>       <chr>             <int>
+      1       0.95        0         1 ncp         F                    51
 
 ---
 
@@ -69,16 +69,16 @@
     Code
       select(df1, -expression)
     Output
-      # A tibble: 1 x 16
+      # A tibble: 1 x 17
         term      sumsq sum.squares.error    df df.error meansq statistic  p.value
         <chr>     <dbl>             <dbl> <dbl>    <dbl>  <dbl>     <dbl>    <dbl>
       1 condition 1656.              318.  1.15     171.   1.86      776. 1.32e-69
         method                                              effectsize       estimate
         <chr>                                               <chr>               <dbl>
       1 ANOVA estimation for factorial designs using 'afex' Omega2 (partial)    0.707
-        conf.level conf.low conf.high conf.method conf.distribution
-             <dbl>    <dbl>     <dbl> <chr>       <chr>            
-      1       0.99    0.658         1 ncp         F                
+        conf.level conf.low conf.high conf.method conf.distribution n.obs
+             <dbl>    <dbl>     <dbl> <chr>       <chr>             <int>
+      1       0.99    0.658         1 ncp         F                   150
 
 ---
 

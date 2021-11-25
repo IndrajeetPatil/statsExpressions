@@ -98,11 +98,17 @@ add_expression_col <- function(data,
                                k.df = 0L,
                                k.df.error = k.df,
                                ...) {
+
+  # some cleanup before we begin
+  data %<>%
+    rename_all(.funs = recode, "bayes.factor" = "bf10") %>%
+    mutate(
+      effectsize = ifelse("effectsize" %in% names(.), effectsize, method),
+      n.obs = n
+    )
+
   # is this Bayesian test?
   bayesian <- ifelse("bf10" %in% names(data), TRUE, FALSE)
-
-  # if not present, create a new column for effectsize
-  if (!"effectsize" %in% names(data)) data %<>% mutate(effectsize = method)
 
   # special case for Bayesian analysis
   if (bayesian && grepl("contingency", data$method[[1]])) data %<>% mutate(effectsize = "Cramers_v")

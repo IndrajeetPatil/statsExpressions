@@ -3,16 +3,16 @@
     Code
       select(df1, -expression)
     Output
-      # A tibble: 1 x 13
+      # A tibble: 1 x 14
         statistic df.error p.value method                                            
             <dbl>    <dbl>   <dbl> <chr>                                             
       1      28.7       89       0 Yuen's test on trimmed means for dependent samples
         effectsize                                              estimate conf.level
         <chr>                                                      <dbl>      <dbl>
       1 Algina-Keselman-Penfield robust standardized difference     2.36       0.95
-        conf.low conf.high    mu small medium large
-           <dbl>     <dbl> <dbl> <dbl>  <dbl> <dbl>
-      1     1.96      2.61     0   0.1    0.3   0.5
+        conf.low conf.high    mu small medium large n.obs
+           <dbl>     <dbl> <dbl> <dbl>  <dbl> <dbl> <int>
+      1     1.96      2.61     0   0.1    0.3   0.5   150
 
 ---
 
@@ -26,16 +26,16 @@
     Code
       select(df1, -expression)
     Output
-      # A tibble: 1 x 13
+      # A tibble: 1 x 14
         statistic df.error p.value method                                            
             <dbl>    <dbl>   <dbl> <chr>                                             
       1      2.91       53 0.00528 Yuen's test on trimmed means for dependent samples
         effectsize                                              estimate conf.level
         <chr>                                                      <dbl>      <dbl>
       1 Algina-Keselman-Penfield robust standardized difference    0.410       0.95
-        conf.low conf.high    mu small medium large
-           <dbl>     <dbl> <dbl> <dbl>  <dbl> <dbl>
-      1    0.238     0.611     0   0.1    0.3   0.5
+        conf.low conf.high    mu small medium large n.obs
+           <dbl>     <dbl> <dbl> <dbl>  <dbl> <dbl> <int>
+      1    0.238     0.611     0   0.1    0.3   0.5    90
 
 ---
 
@@ -49,7 +49,7 @@
     Code
       select(df1, -expression)
     Output
-      # A tibble: 1 x 9
+      # A tibble: 1 x 10
         statistic df.error   p.value
             <dbl>    <dbl>     <dbl>
       1      5.84     13.6 0.0000485
@@ -59,9 +59,9 @@
         effectsize                                              estimate conf.level
         <chr>                                                      <dbl>      <dbl>
       1 Algina-Keselman-Penfield robust standardized difference     2.48       0.99
-        conf.low conf.high
-           <dbl>     <dbl>
-      1    0.738      5.13
+        conf.low conf.high n.obs
+           <dbl>     <dbl> <int>
+      1    0.738      5.13    32
 
 ---
 
@@ -75,7 +75,7 @@
     Code
       select(df1, -expression)
     Output
-      # A tibble: 1 x 9
+      # A tibble: 1 x 10
         statistic df.error p.value
             <dbl>    <dbl>   <dbl>
       1     0.452     13.8   0.658
@@ -85,9 +85,9 @@
         effectsize                                              estimate conf.level
         <chr>                                                      <dbl>      <dbl>
       1 Algina-Keselman-Penfield robust standardized difference   -0.358        0.9
-        conf.low conf.high
-           <dbl>     <dbl>
-      1    -7.16     0.406
+        conf.low conf.high n.obs
+           <dbl>     <dbl> <int>
+      1    -7.16     0.406    29
 
 ---
 

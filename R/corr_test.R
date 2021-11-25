@@ -70,9 +70,6 @@ corr_test <- function(data,
 
   # expression ---------------------------------------
 
-  # no. of parameters
-  if (type == "bayes") stats_df %<>% rename("bf10" = "bayes.factor")
-
   # preparing expression
   add_expression_col(
     data     = stats_df,

@@ -3,16 +3,16 @@
     Code
       select(df1, -expression)
     Output
-      # A tibble: 1 x 13
+      # A tibble: 1 x 14
         parameter1 parameter2 statistic df.error      p.value
         <chr>      <chr>          <dbl>    <int>        <dbl>
       1 length     genre           51.4        8 0.0000000217
         method                       effectsize      estimate conf.level conf.low
         <chr>                        <chr>              <dbl>      <dbl>    <dbl>
       1 Kruskal-Wallis rank sum test Epsilon2 (rank)    0.328       0.95    0.258
-        conf.high conf.method          conf.iterations
-            <dbl> <chr>                          <int>
-      1         1 percentile bootstrap             100
+        conf.high conf.method          conf.iterations n.obs
+            <dbl> <chr>                          <int> <int>
+      1         1 percentile bootstrap             100   158
 
 ---
 
@@ -26,16 +26,16 @@
     Code
       select(df2, -expression)
     Output
-      # A tibble: 1 x 13
+      # A tibble: 1 x 14
         parameter1  parameter2 statistic df.error p.value method                      
         <chr>       <chr>          <dbl>    <int>   <dbl> <chr>                       
       1 sleep_cycle vore            5.24        3   0.155 Kruskal-Wallis rank sum test
         effectsize      estimate conf.level conf.low conf.high conf.method         
         <chr>              <dbl>      <dbl>    <dbl>     <dbl> <chr>               
       1 Epsilon2 (rank)    0.175       0.99   0.0445         1 percentile bootstrap
-        conf.iterations
-                  <int>
-      1             100
+        conf.iterations n.obs
+                  <int> <int>
+      1             100    31
 
 ---
 

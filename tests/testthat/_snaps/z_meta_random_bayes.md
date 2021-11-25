@@ -3,7 +3,7 @@
     Code
       dplyr::select(df, -expression)
     Output
-      # A tibble: 2 x 14
+      # A tibble: 2 x 15
         term    effectsize                       estimate std.error conf.level
         <chr>   <chr>                               <dbl>     <dbl>      <dbl>
       1 Overall meta-analytic posterior estimate    0.596     0.133       0.95
@@ -12,10 +12,10 @@
            <dbl>     <dbl> <dbl> <chr>     <chr>                       <dbl>
       1    0.321     0.854  36.1 meta      Student's t                     0
       2    0.106     0.496  36.1 meta      Inverse gamma                   1
-        prior.scale method                                 log_e_bf10
-              <dbl> <chr>                                       <dbl>
-      1       0.707 Bayesian meta-analysis using 'metaBMA'       3.59
-      2       0.15  Bayesian meta-analysis using 'metaBMA'       3.59
+        prior.scale method                                 log_e_bf10 n.obs
+              <dbl> <chr>                                       <dbl> <int>
+      1       0.707 Bayesian meta-analysis using 'metaBMA'       3.59     5
+      2       0.15  Bayesian meta-analysis using 'metaBMA'       3.59     5
 
 ---
 

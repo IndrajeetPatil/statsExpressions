@@ -121,19 +121,19 @@ statistical approach can be modified by changing a single argument:
 library(statsExpressions)
 
 mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
-#> # A tibble: 1 x 14
+#> # A tibble: 1 x 15
 #>   parameter1 parameter2 statistic df.error   p.value
 #>   <chr>      <chr>          <dbl>    <int>     <dbl>
 #> 1 wt         cyl             22.8        2 0.0000112
 #>   method                       effectsize      estimate conf.level conf.low
 #>   <chr>                        <chr>              <dbl>      <dbl>    <dbl>
 #> 1 Kruskal-Wallis rank sum test Epsilon2 (rank)    0.736       0.95    0.624
-#>   conf.high conf.method          conf.iterations expression  
-#>       <dbl> <chr>                          <int> <list>      
-#> 1         1 percentile bootstrap             100 <expression>
+#>   conf.high conf.method          conf.iterations n.obs expression  
+#>       <dbl> <chr>                          <int> <int> <list>      
+#> 1         1 percentile bootstrap             100    32 <expression>
 
 mtcars %>% oneway_anova(cyl, wt, type = "robust")
-#> # A tibble: 1 x 11
+#> # A tibble: 1 x 12
 #>   statistic    df df.error p.value
 #>       <dbl> <dbl>    <dbl>   <dbl>
 #> 1      12.7     2     12.2 0.00102
@@ -143,9 +143,9 @@ mtcars %>% oneway_anova(cyl, wt, type = "robust")
 #>   effectsize                         estimate conf.level conf.low conf.high
 #>   <chr>                                 <dbl>      <dbl>    <dbl>     <dbl>
 #> 1 Explanatory measure of effect size     1.05       0.95    0.843      1.50
-#>   expression  
-#>   <list>      
-#> 1 <expression>
+#>   n.obs expression  
+#>   <int> <list>      
+#> 1    32 <expression>
 ```
 
 All possible output dataframes from functions are tabulated here:
@@ -188,7 +188,7 @@ mtcars %>%
   group_by(cyl) %>%
   group_modify(~ one_sample_test(.x, wt, test.value = 3), .keep = TRUE) %>%
   ungroup()
-#> # A tibble: 3 x 15
+#> # A tibble: 3 x 16
 #>     cyl    mu statistic df.error  p.value method            alternative
 #>   <dbl> <dbl>     <dbl>    <dbl>    <dbl> <chr>             <chr>      
 #> 1     4     3    -4.16        10 0.00195  One Sample t-test two.sided  
@@ -199,11 +199,11 @@ mtcars %>%
 #> 1 Hedges' g    -1.16        0.95   -1.97     -0.422 ncp        
 #> 2 Hedges' g     0.286       0.95   -0.419     1.01  ncp        
 #> 3 Hedges' g     1.24        0.95    0.565     1.98  ncp        
-#>   conf.distribution expression  
-#>   <chr>             <list>      
-#> 1 t                 <expression>
-#> 2 t                 <expression>
-#> 3 t                 <expression>
+#>   conf.distribution n.obs expression  
+#>   <chr>             <int> <list>      
+#> 1 t                    11 <expression>
+#> 2 t                     7 <expression>
+#> 3 t                    14 <expression>
 ```
 
 # Using expressions in custom plots

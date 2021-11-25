@@ -3,13 +3,13 @@
     Code
       select(df1, -expression)
     Output
-      # A tibble: 1 x 13
+      # A tibble: 1 x 14
            mu statistic df.error p.value method            alternative effectsize
         <dbl>     <dbl>    <dbl>   <dbl> <chr>             <chr>       <chr>     
       1   120     -2.67       78 0.00910 One Sample t-test two.sided   Hedges' g 
-        estimate conf.level conf.low conf.high conf.method conf.distribution
-           <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>            
-      1   -0.298       0.95   -0.524   -0.0743 ncp         t                
+        estimate conf.level conf.low conf.high conf.method conf.distribution n.obs
+           <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>             <int>
+      1   -0.298       0.95   -0.524   -0.0743 ncp         t                    79
 
 ---
 
@@ -23,13 +23,13 @@
     Code
       select(df2, -expression)
     Output
-      # A tibble: 1 x 13
+      # A tibble: 1 x 14
            mu statistic df.error p.value method            alternative effectsize
         <dbl>     <dbl>    <dbl>   <dbl> <chr>             <chr>       <chr>     
       1   120     -2.67       78 0.00910 One Sample t-test two.sided   Cohen's d 
-        estimate conf.level conf.low conf.high conf.method conf.distribution
-           <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>            
-      1   -0.301        0.9   -0.492    -0.111 ncp         t                
+        estimate conf.level conf.low conf.high conf.method conf.distribution n.obs
+           <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>             <int>
+      1   -0.301        0.9   -0.492    -0.111 ncp         t                    79
 
 ---
 
@@ -43,13 +43,13 @@
     Code
       select(df1, -expression)
     Output
-      # A tibble: 1 x 10
+      # A tibble: 1 x 11
         statistic p.value method                    alternative effectsize       
             <dbl>   <dbl> <chr>                     <chr>       <chr>            
       1      754.   0.323 Wilcoxon signed rank test two.sided   r (rank biserial)
-        estimate conf.level conf.low conf.high conf.method
-           <dbl>      <dbl>    <dbl>     <dbl> <chr>      
-      1   -0.149       0.95   -0.416     0.143 normal     
+        estimate conf.level conf.low conf.high conf.method n.obs
+           <dbl>      <dbl>    <dbl>     <dbl> <chr>       <int>
+      1   -0.149       0.95   -0.416     0.143 normal         60
 
 ---
 
@@ -63,13 +63,13 @@
     Code
       select(df2, -expression)
     Output
-      # A tibble: 1 x 10
+      # A tibble: 1 x 11
         statistic   p.value method                    alternative effectsize       
             <dbl>     <dbl> <chr>                     <chr>       <chr>            
       1       262 0.0000125 Wilcoxon signed rank test two.sided   r (rank biserial)
-        estimate conf.level conf.low conf.high conf.method
-           <dbl>      <dbl>    <dbl>     <dbl> <chr>      
-      1   -0.672       0.95   -0.806    -0.472 normal     
+        estimate conf.level conf.low conf.high conf.method n.obs
+           <dbl>      <dbl>    <dbl>     <dbl> <chr>       <int>
+      1   -0.672       0.95   -0.806    -0.472 normal         56
 
 ---
 
@@ -127,7 +127,8 @@
        [4] "conf.level"         "conf.low"           "conf.high"         
        [7] "pd"                 "rope.percentage"    "prior.distribution"
       [10] "prior.location"     "prior.scale"        "bf10"              
-      [13] "method"             "log_e_bf10"         "expression"        
+      [13] "method"             "log_e_bf10"         "n.obs"             
+      [16] "expression"        
 
 ---
 
