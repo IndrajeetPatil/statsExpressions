@@ -30,7 +30,9 @@ utils::globalVariables(
     ".ns",
     "n",
     "p.value",
-    "where"
+    "where",
+    "k.df.error",
+    "label"
   ),
   package = "statsExpressions",
   add = FALSE

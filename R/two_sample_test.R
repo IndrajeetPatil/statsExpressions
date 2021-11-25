@@ -6,7 +6,7 @@
 #' @inheritParams one_sample_test
 #' @inheritParams oneway_anova
 #' @inheritParams stats::t.test
-#' @inheritParams expr_template
+#' @inheritParams add_expression_col
 #'
 #' @description
 #'
@@ -227,13 +227,12 @@ two_sample_test <- function(data,
   # expression ---------------------------------------
 
   # add column with expression
-  polish_data(stats_df) %>%
-    mutate(expression = list(expr_template(
-      data            = .,
-      paired          = paired,
-      n               = ifelse(paired, length(unique(data$rowid)), nrow(data)),
-      k               = k,
-      k.df            = k.df,
-      top.text        = top.text
-    )))
+  add_expression_col(
+    data     = stats_df,
+    paired   = paired,
+    n        = ifelse(paired, length(unique(data$rowid)), nrow(data)),
+    k        = k,
+    k.df     = k.df,
+    top.text = top.text
+  )
 }

@@ -51,9 +51,5 @@ zeallot::`%->%`
 # easystats -------------------------------------
 
 #' @export
-#' @importFrom correlation correlation
-correlation::correlation
-
-#' @export
 #' @importFrom insight format_value
 insight::format_value

@@ -9,10 +9,10 @@
 #' @export
 
 tidy_model_parameters <- function(model, ...) {
-  stats_df <- parameters::model_parameters(model, verbose = FALSE, ...) %>%
+  stats_df <- model_parameters(model, verbose = FALSE, ...) %>%
     select(where(~ !all(is.na(.x)))) %>% # remove columns where all rows are NAs
     select(-matches("Difference")) %>%
-    insight::standardize_names(style = "broom") %>%
+    standardize_names(style = "broom") %>%
     rename_all(~ gsub("cramers.", "", .x)) %>%
     rename_all(.funs = recode, "bayes.factor" = "bf10") %>%
     tidyr::fill(matches("^prior|^bf"), .direction = "updown") %>%
@@ -20,19 +20,17 @@ tidy_model_parameters <- function(model, ...) {
 
   # Bayesian ANOVA designs -----------------------------------
 
-  if ("method" %in% names(stats_df)) {
-    if (stats_df$method[[1]] == "Bayes factors for linear models") {
-      # dataframe with posterior estimates for R-squared
-      # for within-subjects design, retain only marginal component
-      df_r2 <- performance::r2_bayes(model, average = TRUE, ci = stats_df$conf.level[[1]]) %>%
-        as_tibble(.) %>%
-        insight::standardize_names(style = "broom") %>%
-        rename_with(.fn = ~ paste0("r2.", .x), .cols = matches("^conf|^comp")) %>%
-        filter(if_any(matches("r2.component"), ~ (.x == "conditional")))
+  if ("method" %in% names(stats_df) && stats_df$method[[1]] == "Bayes factors for linear models") {
+    # dataframe with posterior estimates for R-squared
+    # for within-subjects design, retain only marginal component
+    df_r2 <- performance::r2_bayes(model, average = TRUE, ci = stats_df$conf.level[[1]]) %>%
+      as_tibble(.) %>%
+      standardize_names(style = "broom") %>%
+      rename_with(.fn = ~ paste0("r2.", .x), .cols = matches("^conf|^comp")) %>%
+      filter(if_any(matches("r2.component"), ~ (.x == "conditional")))
 
-      # combine everything
-      stats_df %<>% bind_cols(df_r2)
-    }
+    # combine everything
+    stats_df %<>% bind_cols(df_r2)
   }
 
   as_tibble(stats_df)
@@ -54,17 +52,8 @@ tidy_model_effectsize <- function(data, ...) {
   bind_cols(
     data %>%
       mutate(effectsize = stats::na.omit(effectsize::get_effectsize_label(colnames(.)))) %>%
-      insight::standardize_names(style = "broom") %>%
+      standardize_names(style = "broom") %>%
       select(-contains("term")),
     rename_with(as_tibble(data %@% "ci_method"), ~ paste0("conf.", .x))
   )
-}
-
-
-#' Final polishing before data is returned
-#' first have inferential statistics details and then estimation
-#' @noRd
-
-polish_data <- function(data) {
-  relocate(as_tibble(data), matches("^effectsize$"), .before = matches("^estimate$"))
 }

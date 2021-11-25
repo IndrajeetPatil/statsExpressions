@@ -28,7 +28,7 @@
 #'   of 1/2, sqrt(2)/2, and 1, respectively. In case of an ANOVA, this value
 #'   corresponds to scale for fixed effects.
 #' @inheritParams two_sample_test
-#' @inheritParams expr_template
+#' @inheritParams add_expression_col
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams stats::oneway.test
 #'
@@ -178,7 +178,7 @@ oneway_anova <- function(data,
 
     if (paired) {
       # check if `afex` is installed
-      insight::check_if_installed("afex", minimum_version = "1.0-0")
+      check_if_installed("afex", minimum_version = "1.0-0")
 
       # Fisher's ANOVA
       mod <- afex::aov_ez(
@@ -308,14 +308,13 @@ oneway_anova <- function(data,
 
   # expression ---------------------------------------
 
-  polish_data(stats_df) %>%
-    mutate(expression = list(expr_template(
-      data            = .,
-      n               = ifelse(paired, length(unique(data$rowid)), nrow(data)),
-      paired          = paired,
-      k               = k,
-      k.df            = k.df,
-      k.df.error      = k.df.error,
-      top.text        = top.text
-    )))
+  add_expression_col(
+    data       = stats_df,
+    n          = ifelse(paired, length(unique(data$rowid)), nrow(data)),
+    paired     = paired,
+    k          = k,
+    k.df       = k.df,
+    k.df.error = k.df.error,
+    top.text   = top.text
+  )
 }

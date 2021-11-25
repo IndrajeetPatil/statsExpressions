@@ -18,14 +18,14 @@ test_that(
 
     # dataframe output
     set.seed(123)
-    df <- meta_analysis(df_eg)
+    df <- suppressWarnings(meta_analysis(df_eg))
 
     # testing all details
     set.seed(123)
     expect_snapshot(select(df, -expression))
-    expect_snapshot(df$expression[[1]])
+    expect_snapshot(as.character(df$expression[[1]]))
 
     # error
-    expect_error(meta_analysis(mtcars))
+    expect_error(suppressWarnings(meta_analysis(mtcars)))
   }
 )

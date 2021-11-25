@@ -1,10 +1,9 @@
 # tidy_model_expressions works
 
     Code
-      suppressWarnings(tidy_model_expressions(tidy_model_parameters(mod_t),
-      statistic = "t"))
+      select(df_t, -label)
     Output
-      # A tibble: 2 x 10
+      # A tibble: 2 x 9
         term        estimate std.error conf.level conf.low conf.high statistic
         <chr>          <dbl>     <dbl>      <dbl>    <dbl>     <dbl>     <dbl>
       1 (Intercept)    6.05     0.309        0.95    5.42      6.68      19.6 
@@ -13,18 +12,37 @@
            <int>    <dbl>
       1       30 1.20e-18
       2       30 1.29e-10
-        label                                                                         
-        <chr>                                                                         
-      1 list(~widehat(italic(beta))=='6.05', ~italic(t)('30')=='19.59', ~italic(p)=='~
-      2 list(~widehat(italic(beta))=='-0.14', ~italic(t)('30')=='-9.56', ~italic(p)==~
 
 ---
 
     Code
-      suppressWarnings(tidy_model_expressions(tidy_model_parameters(mod_chi),
-      statistic = "chi"))
+      df_t$label
     Output
-      # A tibble: 2 x 10
+      list(widehat(italic(beta))=='6.05', italic(t)('30')=='19.59', italic(p)=='1.20e-18')
+      list(widehat(italic(beta))=='-0.14', italic(t)('30')=='-9.56', italic(p)=='1.29e-10')
+
+---
+
+    Code
+      df_t_na$label
+    Output
+      list(widehat(italic(beta))=='6.05', italic(t)=='19.59', italic(p)=='1.20e-18')
+      list(widehat(italic(beta))=='-0.14', italic(t)=='-9.56', italic(p)=='1.29e-10')
+
+---
+
+    Code
+      df_t_inf$label
+    Output
+      list(widehat(italic(beta))=='6.05', italic(t)=='19.59', italic(p)=='1.20e-18')
+      list(widehat(italic(beta))=='-0.14', italic(t)=='-9.56', italic(p)=='1.29e-10')
+
+---
+
+    Code
+      select(df_chi, -label)
+    Output
+      # A tibble: 2 x 9
         term  estimate std.error conf.level conf.low conf.high statistic df.error
         <chr>    <dbl>     <dbl>      <dbl>    <dbl>     <dbl>     <dbl>    <dbl>
       1 age     0.0170   0.00923       0.95 -0.00106    0.0351      3.40        1
@@ -33,18 +51,21 @@
           <dbl>
       1 0.0650 
       2 0.00228
-        label                                                                         
-        <chr>                                                                         
-      1 list(~widehat(italic(beta))=='0.02', ~italic(chi)^2~('1')=='3.40', ~italic(p)~
-      2 list(~widehat(italic(beta))=='-0.51', ~italic(chi)^2~('1')=='9.31', ~italic(p~
 
 ---
 
     Code
-      suppressWarnings(tidy_model_expressions(tidy_model_parameters(mod_z),
-      statistic = "z"))
+      df_chi$label
     Output
-      # A tibble: 3 x 10
+      list(widehat(italic(beta))=='0.02', italic(chi)^2*('1')=='3.40', italic(p)=='0.07')
+      list(widehat(italic(beta))=='-0.51', italic(chi)^2*('1')=='9.31', italic(p)=='2.28e-03')
+
+---
+
+    Code
+      select(df_z, -label)
+    Output
+      # A tibble: 3 x 9
         term        estimate std.error conf.level conf.low conf.high statistic
         <chr>          <dbl>     <dbl>      <dbl>    <dbl>     <dbl>     <dbl>
       1 (Intercept)   -0.780     0.225       0.95    -1.22    -0.342     -3.47
@@ -55,9 +76,13 @@
       1      Inf 5.14e- 4
       2      Inf 1.54e-81
       3      Inf 1.45e- 2
-        label                                                                         
-        <chr>                                                                         
-      1 list(~widehat(italic(beta))=='-0.78', ~italic(z)=='-3.47', ~italic(p)=='5.14e~
-      2 list(~widehat(italic(beta))=='2.29', ~italic(z)=='19.13', ~italic(p)=='1.54e-~
-      3 list(~widehat(italic(beta))=='-0.56', ~italic(z)=='-2.44', ~italic(p)=='0.014~
+
+---
+
+    Code
+      df_z$label
+    Output
+      list(widehat(italic(beta))=='-0.78', italic(z)=='-3.47', italic(p)=='5.14e-04')
+      list(widehat(italic(beta))=='2.29', italic(z)=='19.13', italic(p)=='1.54e-81')
+      list(widehat(italic(beta))=='-0.56', italic(z)=='-2.44', italic(p)=='0.01')
 

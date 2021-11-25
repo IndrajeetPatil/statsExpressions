@@ -7,7 +7,7 @@ test_that(
 
     # expression
     set.seed(123)
-    bf_expr <-
+    df <-
       two_sample_test(
         type = "bayes",
         data = ToothGrowth,
@@ -18,7 +18,7 @@ test_that(
       )
 
     # call
-    expect_snapshot(bf_expr$expression[[1]])
+    expect_snapshot(as.character(df$expression[[1]]))
   }
 )
 
@@ -31,10 +31,10 @@ test_that(
     # data
     dat <-
       tidyr::spread(bugs_long, condition, desire) %>%
-      filter(!is.na(HDLF), !is.na(HDHF))
+      dplyr::filter(!is.na(HDLF), !is.na(HDHF))
 
     # creating a tidy dataframe
-    dat_tidy <- filter(bugs_long, condition %in% c("HDLF", "HDHF"))
+    dat_tidy <- dplyr::filter(bugs_long, condition %in% c("HDLF", "HDHF"))
 
     # extracting results from where this function is implemented
     set.seed(123)
@@ -53,7 +53,7 @@ test_that(
 
     # expression
     set.seed(123)
-    bf_expr <-
+    df <-
       two_sample_test(
         type = "bayes",
         data = dat_tidy,
@@ -61,11 +61,11 @@ test_that(
         y = desire,
         paired = TRUE,
         bf.prior = 0.8,
-        top.text = "bla"
+        top.text = "bla is ulalala"
       )
 
     # call
-    expect_snapshot(bf_expr$expression[[1]])
+    expect_snapshot(as.character(df$expression[[1]]))
   }
 )
 
@@ -128,6 +128,6 @@ test_that(
         paired = TRUE
       )
 
-    expect_equal(expr1, expr2, tolerance = 0.001)
+    expect_equal(expr1, expr2, ignore_attr = TRUE)
   }
 )

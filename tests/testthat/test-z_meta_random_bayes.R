@@ -36,27 +36,19 @@ test_that(
 
     # getting bayes factor in favor of null hypothesis
     set.seed(123)
-    subtitle1 <- suppressWarnings(meta_analysis(
-      type = "bayes",
-      data = df1,
-      k = 3,
-      iter = 1000,
-      summarize = "integrate"
-    ))
-
-    set.seed(123)
     df <- suppressWarnings(meta_analysis(
       type = "bayes",
       data = df1,
       k = 3,
       iter = 1000,
       summarize = "integrate",
-      top.text = "ayyo"
+      top.text = "ayyo arecha"
     ))
 
     expect_type(df, "list")
     expect_identical(class(df), c("tbl_df", "tbl", "data.frame"))
 
-    expect_snapshot(subtitle1$expression[[1]])
+    expect_snapshot(dplyr::select(df, -expression))
+    expect_snapshot(as.character(df$expression[[1]]))
   }
 )

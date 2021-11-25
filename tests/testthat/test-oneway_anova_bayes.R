@@ -7,45 +7,44 @@ test_that(
 
     # extracting results from where this function is implemented
     set.seed(123)
-    df_results <- oneway_anova(
+    df_results <- suppressWarnings(oneway_anova(
       type = "bayes",
       data = ggplot2::msleep,
       x = vore,
       y = brainwt,
       bf.prior = 0.99
-    )
+    ))
 
     # extracting expr
     set.seed(123)
-    results <- oneway_anova(
+    results <- suppressWarnings(oneway_anova(
       type = "bayes",
       data = ggplot2::msleep,
       x = vore,
       y = brainwt,
       bf.prior = 0.88,
       k = 2 # don't change; tests fail on Ubuntu otherwise
-    )
+    ))
 
     # check bayes factor values
     expect_equal(df_results$bf10[[1]], 0.1177186, tolerance = 0.001)
 
     # call
-    expect_snapshot(results$expression[[1]])
+    expect_snapshot(as.character(results$expression[[1]]))
 
     # data where it works
     set.seed(123)
-    results2 <-
-      oneway_anova(
-        type = "bayes",
-        data = iris,
-        x = Species,
-        y = Sepal.Length,
-        conf.level = 0.99,
-        conf.method = "eti",
-        k = 2 # don't change; tests fail on Ubuntu otherwise
-      )
+    results2 <- suppressWarnings(oneway_anova(
+      type = "bayes",
+      data = iris,
+      x = Species,
+      y = Sepal.Length,
+      conf.level = 0.99,
+      conf.method = "eti",
+      k = 2 # don't change; tests fail on Ubuntu otherwise
+    ))
 
-    expect_snapshot(results2$expression[[1]])
+    expect_snapshot(as.character(results2$expression[[1]]))
   }
 )
 
@@ -125,68 +124,61 @@ test_that(
         paired = TRUE
       )
 
-      # testing expression
-      expect_type(results$expression[[1]], "language")
-      expect_type(results_na$expression[[1]], "language")
-
       # checking expressions
-      expect_snapshot(results$expression[[1]])
-      expect_snapshot(results_na$expression[[1]])
+      expect_snapshot(as.character(results$expression[[1]]))
+      expect_snapshot(as.character(results_na$expression[[1]]))
 
       # with subject.id ---------------------------------
 
       # data
-      df <-
-        structure(list(
-          score = c(
-            70, 82.5, 97.5, 100, 52.5, 62.5,
-            92.5, 70, 90, 92.5, 90, 75, 60, 90, 85, 67.5, 90, 72.5, 45, 60,
-            72.5, 80, 100, 100, 97.5, 95, 65, 87.5, 90, 62.5, 100, 100, 97.5,
-            100, 97.5, 95, 82.5, 82.5, 40, 92.5, 85, 72.5, 35, 27.5, 82.5
-          ), condition = structure(c(
-            5L, 1L, 2L, 3L, 4L, 4L, 5L, 1L,
-            2L, 3L, 2L, 3L, 3L, 4L, 2L, 1L, 5L, 5L, 4L, 1L, 1L, 4L, 3L, 5L,
-            2L, 5L, 1L, 2L, 3L, 4L, 4L, 5L, 1L, 2L, 3L, 2L, 3L, 4L, 1L, 5L,
-            3L, 2L, 5L, 4L, 1L
-          ), .Label = c("1", "2", "3", "4", "5"), class = "factor"),
-          id = structure(c(
-            1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L,
-            2L, 3L, 3L, 4L, 3L, 4L, 3L, 4L, 3L, 4L, 4L, 5L, 5L, 5L, 5L,
-            5L, 6L, 6L, 6L, 6L, 6L, 7L, 7L, 7L, 7L, 7L, 8L, 8L, 8L, 8L,
-            8L, 9L, 9L, 9L, 9L, 9L
-          ), .Label = c(
-            "1", "2", "3", "4", "5",
-            "6", "7", "8", "9"
-          ), class = "factor")
-        ), row.names = c(
-          NA,
-          45L
-        ), class = "data.frame")
+      df <- structure(list(
+        score = c(
+          70, 82.5, 97.5, 100, 52.5, 62.5,
+          92.5, 70, 90, 92.5, 90, 75, 60, 90, 85, 67.5, 90, 72.5, 45, 60,
+          72.5, 80, 100, 100, 97.5, 95, 65, 87.5, 90, 62.5, 100, 100, 97.5,
+          100, 97.5, 95, 82.5, 82.5, 40, 92.5, 85, 72.5, 35, 27.5, 82.5
+        ), condition = structure(c(
+          5L, 1L, 2L, 3L, 4L, 4L, 5L, 1L,
+          2L, 3L, 2L, 3L, 3L, 4L, 2L, 1L, 5L, 5L, 4L, 1L, 1L, 4L, 3L, 5L,
+          2L, 5L, 1L, 2L, 3L, 4L, 4L, 5L, 1L, 2L, 3L, 2L, 3L, 4L, 1L, 5L,
+          3L, 2L, 5L, 4L, 1L
+        ), .Label = c("1", "2", "3", "4", "5"), class = "factor"),
+        id = structure(c(
+          1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L,
+          2L, 3L, 3L, 4L, 3L, 4L, 3L, 4L, 3L, 4L, 4L, 5L, 5L, 5L, 5L,
+          5L, 6L, 6L, 6L, 6L, 6L, 7L, 7L, 7L, 7L, 7L, 8L, 8L, 8L, 8L,
+          8L, 9L, 9L, 9L, 9L, 9L
+        ), .Label = c(
+          "1", "2", "3", "4", "5",
+          "6", "7", "8", "9"
+        ), class = "factor")
+      ), row.names = c(
+        NA,
+        45L
+      ), class = "data.frame")
 
       # incorrect
       set.seed(123)
-      expr1 <-
-        oneway_anova(
-          type = "bayes",
-          data = df,
-          x = condition,
-          y = score,
-          subject.id = id,
-          paired = TRUE
-        )
+      expr1 <- oneway_anova(
+        type = "bayes",
+        data = df,
+        x = condition,
+        y = score,
+        subject.id = id,
+        paired = TRUE
+      )
 
       # correct
       set.seed(123)
-      expr2 <-
-        oneway_anova(
-          type = "bayes",
-          data = arrange(df, id),
-          x = condition,
-          y = score,
-          paired = TRUE
-        )
+      expr2 <- oneway_anova(
+        type = "bayes",
+        data = arrange(df, id),
+        x = condition,
+        y = score,
+        paired = TRUE
+      )
 
-      expect_equal(expr2, expr1)
+      expect_equal(expr2, expr1, ignore_attr = TRUE)
     }
   }
 )

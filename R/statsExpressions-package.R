@@ -36,5 +36,9 @@
 ## statsExpressions namespace: start
 #' @import rlang
 #' @import dplyr
+#' @import glue
+#'
+#' @importFrom insight format_value check_if_installed standardize_names
+#' @importFrom parameters model_parameters
 ## statsExpressions namespace: end
 NULL

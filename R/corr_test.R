@@ -66,21 +66,16 @@ corr_test <- function(data,
     bayesian_prior = bf.prior,
     winsorize      = ifelse(type == "robust", tr, FALSE)
   ) %>%
-    insight::standardize_names(style = "broom") %>%
-    mutate(effectsize = method)
+    standardize_names(style = "broom")
 
   # expression ---------------------------------------
 
-  # no. of parameters
-  if (type == "bayes") stats_df %<>% rename("bf10" = "bayes.factor")
-
   # preparing expression
-  polish_data(stats_df) %>%
-    mutate(expression = list(expr_template(
-      data            = .,
-      top.text        = top.text,
-      paired          = TRUE,
-      n               = stats_df$n.obs[[1]],
-      k               = k
-    )))
+  add_expression_col(
+    data     = stats_df,
+    top.text = top.text,
+    paired   = TRUE,
+    n        = stats_df$n.obs[[1]],
+    k        = k
+  )
 }

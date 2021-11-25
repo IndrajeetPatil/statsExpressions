@@ -1,10 +1,15 @@
 # statsExpressions 1.2.0.9000
 
+BREAKING CHANGES
+
+  - The `format_num()` has been removed in favor of `insight::format_value()`.
+
 MINOR CHANGES
 
-  - The `expr_template()` function loses `no.parameters` and `bayesian`
-    arguments since the function can internally figure this out based on whether
-    `df` and `df.error`, and `bf10` columns are present.
+  - The `expr_template()` has been renamed to more informative
+    `add_expression_col()` function and has a different API. It returns a
+    dataframe with the additional expression column instead of just the
+    expression.
 
 # statsExpressions 1.2.0
 

@@ -8,7 +8,7 @@
 #'   argument can be `"d"` (for Cohen's *d*) or `"g"` (for Hedge's *g*).
 #' @inheritParams long_to_wide_converter
 #' @inheritParams stats_type_switch
-#' @inheritParams expr_template
+#' @inheritParams add_expression_col
 #' @inheritParams two_sample_test
 #' @inheritParams oneway_anova
 #' @inheritParams stats::t.test
@@ -157,11 +157,10 @@ one_sample_test <- function(data,
   # expression ---------------------------------------
 
   # add column with expression
-  polish_data(stats_df) %>%
-    mutate(expression = list(expr_template(
-      data            = .,
-      n               = length(x_vec),
-      k               = k,
-      top.text        = top.text
-    )))
+  add_expression_col(
+    data     = stats_df,
+    n        = length(x_vec),
+    k        = k,
+    top.text = top.text
+  )
 }

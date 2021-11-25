@@ -5,7 +5,7 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "statsExpressions",
-  "description": "Utilities for producing dataframes with rich details for the\n    most common types of statistical approaches and tests: parametric,\n    nonparametric, robust, and Bayesian t-test, one-way ANOVA, correlation\n    analyses, contingency table analyses, and meta-analyses. The\n    functions are pipe-friendly and provide a consistent syntax to work\n    with tidy data. These dataframes additionally contain expressions with\n    statistical details, and can be used in graphing packages. This\n    package also forms the statistical processing backend for\n    'ggstatsplot'.",
+  "description": "Utilities for producing dataframes with rich details for the most common types of statistical approaches and tests: parametric, nonparametric, robust, and Bayesian t-test, one-way ANOVA, correlation analyses, contingency table analyses, and meta-analyses. The functions are pipe-friendly and provide a consistent syntax to work with tidy data. These dataframes additionally contain expressions with statistical details, and can be used in graphing packages. This package also forms the statistical processing backend for 'ggstatsplot'.",
   "name": "statsExpressions: Tidy Dataframes and Expressions with Statistical Details",
   "codeRepository": "https://github.com/IndrajeetPatil/statsExpressions",
   "relatedLink": [
@@ -265,6 +265,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "glue",
+      "name": "glue",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=glue"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
       "version": ">= 0.14.5.1",
@@ -381,7 +393,7 @@
       "sameAs": "https://CRAN.R-project.org/package=zeallot"
     }
   ],
-  "contIntegration": ["https://app.codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master", "https://github.com/IndrajeetPatil/pairwiseComparisons/actions"],
+  "contIntegration": ["https://app.codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master", "https://github.com/IndrajeetPatil/statsExpressions/actions"],
   "keywords": [
     "ggplot-extension",
     "statistical-tests",
@@ -411,7 +423,7 @@
     "effectsize",
     "tidy"
   ],
-  "developmentStatus": ["https://lifecycle.r-lib.org/articles/stages.html", "https://www.repostatus.org/#active", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html"],
+  "developmentStatus": ["https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html"],
   "releaseNotes": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/NEWS.md",
   "citation": [
     {
@@ -448,6 +460,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3650.544KB",
+  "fileSize": "3613.255KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

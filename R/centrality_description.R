@@ -60,7 +60,7 @@ centrality_description <- function(data,
     mutate({{ x }} := droplevels(as.factor({{ x }}))) %>%
     group_by({{ x }}) %>%
     group_modify(
-      .f = ~ insight::standardize_names(
+      .f = ~ standardize_names(
         data = datawizard::describe_distribution(
           x          = .,
           centrality = centrality,
@@ -72,10 +72,10 @@ centrality_description <- function(data,
       )
     ) %>%
     ungroup() %>%
-    rowwise() %>%
-    mutate(expression = paste0("list(~widehat(mu)[", centrality, "]=='", format_value(estimate, k), "')")) %>%
-    ungroup() %>%
-    mutate(n_label = paste0({{ x }}, "\n(n = ", .prettyNum(n), ")")) %>%
+    mutate(
+      expression = glue("widehat(mu)[{centrality}]=='{format_value(estimate, k)}'"),
+      n_label = paste0({{ x }}, "\n(n = ", .prettyNum(n), ")")
+    ) %>%
     arrange({{ x }}) %>%
     select({{ x }}, !!as.character(ensym(y)) := estimate, n_obs = n, everything())
 }
