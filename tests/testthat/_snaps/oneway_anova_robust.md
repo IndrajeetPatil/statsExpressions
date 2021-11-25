@@ -62,12 +62,12 @@
         method                                                             
         <chr>                                                              
       1 A heteroscedastic one-way repeated measures ANOVA for trimmed means
-        effectsize                                                      estimate conf.level conf.low
-        <chr>                                                              <dbl>      <dbl>    <dbl>
-      1 Algina-Keselman-Penfield robust standardized difference average    0.664       0.95    0.466
-        conf.high n.obs
-            <dbl> <int>
-      1     0.971    88
+        effectsize                                                      estimate
+        <chr>                                                              <dbl>
+      1 Algina-Keselman-Penfield robust standardized difference average    0.664
+        conf.level conf.low conf.high n.obs
+             <dbl>    <dbl>     <dbl> <int>
+      1       0.95    0.466     0.971    88
 
 ---
 
