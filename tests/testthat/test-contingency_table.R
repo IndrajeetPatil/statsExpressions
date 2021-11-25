@@ -192,8 +192,8 @@ test_that(
       type = "bayes"
     )
 
-    # check bayes factor values
-    expect_equal(df1$bf10, 0.2465787, tolerance = 0.001)
+    expect_snapshot(select(df1, -expression))
+    expect_snapshot(df1$expression[[1]])
 
     # expr
     set.seed(123)
@@ -205,7 +205,8 @@ test_that(
       top.text = "duh"
     )
 
-    expect_snapshot(as.character(df2$expression[[1]]))
+    expect_snapshot(select(df2, -expression))
+    expect_snapshot(df2$expression[[1]])
   }
 )
 

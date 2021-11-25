@@ -210,8 +210,7 @@ contingency_table <- function(data,
   # expression ---------------------------------------
 
   if (!(type == "bayes" && test == "1way")) {
-    stats_df <- add_expression_col(
-      data     = stats_df,
+    stats_df %<>% add_expression_col(
       n        = nrow(data),
       paired   = paired,
       k        = k,

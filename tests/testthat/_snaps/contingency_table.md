@@ -164,11 +164,39 @@
 # bayes factor (proportion test)
 
     Code
-      as.character(df2$expression[[1]])
+      select(df1, -expression)
     Output
-      [1] "atop"                                                                                                                         
-      [2] "displaystyle(\"duh\")"                                                                                                        
-      [3] "paste(\"log\"[\"e\"] * \"(BF\"[\"01\"] * \") = \" * \"0.55\" * \", \", italic(\"a\")[\"Gunel-Dickey\"] * \" = \" * \"10.00\")"
+      # A tibble: 1 x 2
+         bf10 prior.scale
+        <dbl>       <dbl>
+      1 0.247           1
+
+---
+
+    Code
+      df1$expression[[1]]
+    Output
+      paste("log"["e"] * "(BF"["01"] * ") = " * "1.40" * ", ", italic("a")["Gunel-Dickey"] * 
+          " = " * "1.00")
+
+---
+
+    Code
+      select(df2, -expression)
+    Output
+      # A tibble: 1 x 2
+         bf10 prior.scale
+        <dbl>       <dbl>
+      1 0.579          10
+
+---
+
+    Code
+      df2$expression[[1]]
+    Output
+      atop(displaystyle("duh"), expr = paste("log"["e"] * "(BF"["01"] * 
+          ") = " * "0.55" * ", ", italic("a")["Gunel-Dickey"] * " = " * 
+          "10.00"))
 
 # bayes factor (contingency tab)
 

@@ -101,14 +101,11 @@ add_expression_col <- function(data,
   # is this Bayesian test?
   bayesian <- ifelse("bf10" %in% names(data), TRUE, FALSE)
 
-  # special case for Bayesian analysis
-  if (bayesian) {
-    # if not present, create a new column for Bayesian analysis
-    if (!"effectsize" %in% names(data)) data %<>% mutate(effectsize = method)
+  # if not present, create a new column for effectsize
+  if (!"effectsize" %in% names(data)) data %<>% mutate(effectsize = method)
 
-    # special handling of contingency tabs analysis
-    if (grepl("contingency", data$method[[1]])) data %<>% mutate(effectsize = "Cramers_v")
-  }
+  # special case for Bayesian analysis
+  if (bayesian && grepl("contingency", data$method[[1]])) data %<>% mutate(effectsize = "Cramers_v")
 
   # extracting estimate values
   if ("r2" %in% names(data)) {
@@ -124,12 +121,12 @@ add_expression_col <- function(data,
 
   # adding a few other columns
   df_expr %<>% mutate(
-    statistic.text = statistic.text %||% stat_text_switch(method),
-    es.text = effsize.text %||% estimate_type_switch(effectsize),
-    prior.type = prior.type %||% prior_type_switch(method),
+    statistic.text     = statistic.text %||% stat_text_switch(method),
+    es.text            = effsize.text %||% estimate_type_switch(effectsize),
+    prior.type         = prior.type %||% prior_type_switch(method),
     prior.distribution = prior_switch(method),
-    conf.method = toupper(conf.method),
-    n.obs = .prettyNum(n)
+    conf.method        = toupper(conf.method),
+    n.obs              = .prettyNum(n)
   )
 
   # Bayesian analysis ------------------------------
@@ -184,9 +181,9 @@ add_expression_col <- function(data,
             {n.text}=='{n.obs}')"))
   }
 
-  # return the formatted expression
-  data %>%
-    polish_data(.) %>%
+  # return dataframe with some polish and formatted expression
+  as_tibble(data) %>%
+    relocate(matches("^effectsize$"), .before = matches("^estimate$")) %>%
     mutate(expression = list(parse(text = df_expr$expression[[1]])))
 }
 
@@ -205,7 +202,6 @@ add_expression_col <- function(data,
       across(.fns = ~ paste0(.x * 100, "%"), .cols = matches("^conf.level$"))
     )
 }
-
 
 #' @noRd
 
