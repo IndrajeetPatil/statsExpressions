@@ -36,7 +36,10 @@
     statistical details, and can be used in graphing packages. This
     package also forms the statistical processing backend for
     ggstatsplot.">
-<meta property="og:image" content="https://indrajeetpatil.github.io/statsExpressions/logo.png">
+<meta property="og:image" content="https://indrajeetpatil.github.io/statsExpressions/reference/figures/card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@patilindrajeets">
+<meta name="twitter:site" content="@patilindrajeets">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -187,7 +190,7 @@
 <div class="section level1">
 <h1 id="general-workflow">General Workflow<a class="anchor" aria-label="anchor" href="#general-workflow"></a>
 </h1>
-<p><img src="reference/figures/schematic_illustration.png" width="100%"></p>
+<p><img src="reference/figures/card.png" width="100%"></p>
 </div>
 <div class="section level1">
 <h1 id="summary-of-types-of-statistical-analyses">Summary of types of statistical analyses<a class="anchor" aria-label="anchor" href="#summary-of-types-of-statistical-analyses"></a>
@@ -336,20 +339,20 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
 
-<span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span> 
-<span class="co">#&gt; # A tibble: 1 x 14</span>
+<span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 1 x 15</span>
 <span class="co">#&gt;   parameter1 parameter2 statistic df.error   p.value</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 wt         cyl             22.8        2 0.0000112</span>
 <span class="co">#&gt;   method                       effectsize      estimate conf.level conf.low</span>
 <span class="co">#&gt;   &lt;chr&gt;                        &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Kruskal-Wallis rank sum test Epsilon2 (rank)    0.736       0.95    0.624</span>
-<span class="co">#&gt;   conf.high conf.method          conf.iterations expression</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;                          &lt;int&gt; &lt;list&gt;    </span>
-<span class="co">#&gt; 1         1 percentile bootstrap             100 &lt;language&gt;</span>
+<span class="co">#&gt;   conf.high conf.method          conf.iterations n.obs expression  </span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;                          &lt;int&gt; &lt;int&gt; &lt;list&gt;      </span>
+<span class="co">#&gt; 1         1 percentile bootstrap             100    32 &lt;expression&gt;</span>
 
 <span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 11</span>
+<span class="co">#&gt; # A tibble: 1 x 12</span>
 <span class="co">#&gt;   statistic    df df.error p.value</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span>
 <span class="co">#&gt; 1      12.7     2     12.2 0.00102</span>
@@ -359,9 +362,9 @@
 <span class="co">#&gt;   effectsize                         estimate conf.level conf.low conf.high</span>
 <span class="co">#&gt;   &lt;chr&gt;                                 &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Explanatory measure of effect size     1.05       0.95    0.843      1.50</span>
-<span class="co">#&gt;   expression</span>
-<span class="co">#&gt;   &lt;list&gt;    </span>
-<span class="co">#&gt; 1 &lt;language&gt;</span></code></pre></div>
+<span class="co">#&gt;   n.obs expression  </span>
+<span class="co">#&gt;   &lt;int&gt; &lt;list&gt;      </span>
+<span class="co">#&gt; 1    32 &lt;expression&gt;</span></code></pre></div>
 <p>All possible output dataframes from functions are tabulated here: <a href="https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html</a></p>
 <p>Needless to say this will also work with the <code>kable</code> function to generate a table:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -423,7 +426,7 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_map.html" class="external-link">group_modify</a></span><span class="op">(</span><span class="op">~</span> <span class="fu"><a href="reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span><span class="va">.x</span>, <span class="va">wt</span>, test.value <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>, .keep <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 3 x 15</span>
+<span class="co">#&gt; # A tibble: 3 x 16</span>
 <span class="co">#&gt;     cyl    mu statistic df.error  p.value method            alternative</span>
 <span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;      </span>
 <span class="co">#&gt; 1     4     3    -4.16        10 0.00195  One Sample t-test two.sided  </span>
@@ -434,11 +437,11 @@
 <span class="co">#&gt; 1 Hedges' g    -1.16        0.95   -1.97     -0.422 ncp        </span>
 <span class="co">#&gt; 2 Hedges' g     0.286       0.95   -0.419     1.01  ncp        </span>
 <span class="co">#&gt; 3 Hedges' g     1.24        0.95    0.565     1.98  ncp        </span>
-<span class="co">#&gt;   conf.distribution expression</span>
-<span class="co">#&gt;   &lt;chr&gt;             &lt;list&gt;    </span>
-<span class="co">#&gt; 1 t                 &lt;language&gt;</span>
-<span class="co">#&gt; 2 t                 &lt;language&gt;</span>
-<span class="co">#&gt; 3 t                 &lt;language&gt;</span></code></pre></div>
+<span class="co">#&gt;   conf.distribution n.obs expression  </span>
+<span class="co">#&gt;   &lt;chr&gt;             &lt;int&gt; &lt;list&gt;      </span>
+<span class="co">#&gt; 1 t                    11 &lt;expression&gt;</span>
+<span class="co">#&gt; 2 t                     7 &lt;expression&gt;</span>
+<span class="co">#&gt; 3 t                    14 &lt;expression&gt;</span></code></pre></div>
 </div>
 <div class="section level1">
 <h1 id="using-expressions-in-custom-plots">Using expressions in custom plots<a class="anchor" aria-label="anchor" href="#using-expressions-in-custom-plots"></a>
@@ -455,8 +458,8 @@
 
 <span class="co"># displaying mean for each level of `cyl`</span>
 <span class="fu"><a href="reference/centrality_description.html">centrality_description</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span><span class="op">)</span> |&gt;
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">wt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">wt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_label</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">expression</span><span class="op">)</span>, parse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-centrality-1.png" width="100%"></p>
 <p>Here are a few examples for supported analyses.</p>
@@ -581,14 +584,16 @@
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
 
+<span class="co"># dataframe with results</span>
+<span class="va">df_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, test.value <span class="op">=</span> <span class="fl">3</span>, type <span class="op">=</span> <span class="st">"bayes"</span>,
+                              top.text <span class="op">=</span> <span class="st">"Bayesian one-sample t-test"</span><span class="op">)</span>
+
 <span class="co"># creating a histogram plot</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">wt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" class="external-link">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">$</span><span class="va">wt</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="co"># adding a caption with a non-parametric one-sample test</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>
-    title <span class="op">=</span> <span class="st">"One-Sample Wilcoxon Signed Rank Test"</span>,
-    subtitle <span class="op">=</span> <span class="fu"><a href="reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, test.value <span class="op">=</span> <span class="fl">3</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
+    subtitle <span class="op">=</span> <span class="va">df_results</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
   <span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-t_one-1.png" width="100%"></p>
 </div>
@@ -620,6 +625,13 @@
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
 
+<span class="va">df_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/contingency_table.html">contingency_table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">$</span><span class="va">class</span><span class="op">)</span><span class="op">)</span>,
+  <span class="va">Var1</span>,
+  counts <span class="op">=</span> <span class="va">Freq</span>,
+  type <span class="op">=</span> <span class="st">"bayes"</span>,
+  top.text <span class="op">=</span> <span class="st">"One-sample goodness-of-fit test"</span>
+<span class="op">)</span>
+
 <span class="co"># basic pie chart</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">$</span><span class="va">class</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">""</span>, y <span class="op">=</span> <span class="va">Freq</span>, fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Var1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">1</span>, stat <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span> <span class="op">+</span>
@@ -631,8 +643,7 @@
     x <span class="op">=</span> <span class="cn">NULL</span>,
     y <span class="op">=</span> <span class="cn">NULL</span>,
     title <span class="op">=</span> <span class="st">"Pie Chart of class (type of car)"</span>,
-    subtitle <span class="op">=</span> <span class="fu"><a href="reference/contingency_table.html">contingency_table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">$</span><span class="va">class</span><span class="op">)</span><span class="op">)</span>, <span class="va">Var1</span>, counts <span class="op">=</span> <span class="va">Freq</span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,
-    caption <span class="op">=</span> <span class="st">"One-sample goodness-of-fit test"</span>
+    caption <span class="op">=</span> <span class="va">df_results</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
   <span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-gof-1.png" width="100%"></p>
 <p>You can also use these function to get the expression in return without having to display them in plots:</p>
@@ -643,10 +654,9 @@
 
 <span class="co"># Pearson's chi-squared test of independence</span>
 <span class="fu"><a href="reference/contingency_table.html">contingency_table</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">am</span>, <span class="va">cyl</span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
-<span class="co">#&gt; paste(chi["Pearson"]^2, "(", "2", ") = ", "8.74", ", ", italic("p"), </span>
-<span class="co">#&gt;     " = ", "0.013", ", ", widehat(italic("V"))["Cramer"], " = ", </span>
-<span class="co">#&gt;     "0.46", ", CI"["95%"], " [", "0.00", ", ", "1.00", "], ", </span>
-<span class="co">#&gt;     italic("n")["obs"], " = ", "32")</span></code></pre></div>
+<span class="co">#&gt; expression(list(chi["Pearson"]^2 * "(" * 2 * ")" == "8.74", italic(p) == </span>
+<span class="co">#&gt;     "0.01", widehat(italic("V"))["Cramer"] == "0.46", CI["95%"] ~ </span>
+<span class="co">#&gt;     "[" * "0.00", "1.00" * "]", italic("n")["obs"] == "32"))</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="expressions-for-meta-analysis">Expressions for meta-analysis<a class="anchor" aria-label="anchor" href="#expressions-for-meta-analysis"></a>
@@ -685,10 +695,9 @@
 
 <span class="co"># extracting detailed expression</span>
 <span class="op">(</span><span class="va">res_expr</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span>, <span class="va">Sepal.Length</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; paste(italic("F")["Fisher"], "(", "2", ",", "147", ") = ", "119.26", </span>
-<span class="co">#&gt;     ", ", italic("p"), " = ", "1.67e-31", ", ", widehat(omega["p"]^2), </span>
-<span class="co">#&gt;     " = ", "0.61", ", CI"["95%"], " [", "0.53", ", ", "1.00", </span>
-<span class="co">#&gt;     "], ", italic("n")["obs"], " = ", "150")</span>
+<span class="co">#&gt; expression(list(italic("F")["Fisher"](2, 147) == "119.26", italic(p) == </span>
+<span class="co">#&gt;     "1.67e-31", widehat(omega["p"]^2) == "0.61", CI["95%"] ~ </span>
+<span class="co">#&gt;     "[" * "0.53", "1.00" * "]", italic("n")["obs"] == "150"))</span>
 
 <span class="co"># adapting the details to your liking</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Species</span>, y <span class="op">=</span> <span class="va">Sepal.Length</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
