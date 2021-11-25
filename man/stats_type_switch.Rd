@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{stats_type_switch}
 \alias{stats_type_switch}
-\title{Switch type of statistics.}
+\title{Switch the type of statistics.}
 \usage{
 stats_type_switch(type)
 }

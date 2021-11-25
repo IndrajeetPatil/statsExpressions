@@ -1,5 +1,9 @@
 # statsExpressions 1.2.0.9000
 
+BREAKING CHANGES
+
+  - The `format_num()` has been removed in favor of `insight::format_value()`.
+
 MINOR CHANGES
 
   - The `expr_template()` function loses `no.parameters` and `bayesian`
