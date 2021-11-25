@@ -109,7 +109,7 @@ test_that(
         data = iris,
         y = Sepal.Length,
         x = Sepal.Width,
-        top.text = "huh"
+        top.text = "huh is duh"
       )
 
     expect_snapshot(as.character(subtitle1$expression[[1]]))

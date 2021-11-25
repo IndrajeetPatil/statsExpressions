@@ -120,7 +120,7 @@ statistical approach can be modified by changing a single argument:
 ``` r
 library(statsExpressions)
 
-mtcars %>% oneway_anova(cyl, wt, type = "nonparametric") 
+mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
 #> # A tibble: 1 x 14
 #>   parameter1 parameter2 statistic df.error   p.value
 #>   <chr>      <chr>          <dbl>    <int>     <dbl>
@@ -227,8 +227,8 @@ library(ggplot2)
 
 # displaying mean for each level of `cyl`
 centrality_description(mtcars, cyl, wt) |>
-  ggplot(aes(cyl, wt)) + 
-  geom_point() + 
+  ggplot(aes(cyl, wt)) +
+  geom_point() +
   geom_label(aes(label = expression), parse = TRUE)
 ```
 
@@ -361,14 +361,16 @@ paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject")
 set.seed(123)
 library(ggplot2)
 
+# dataframe with results
+df_results <- one_sample_test(mtcars, wt, test.value = 3, type = "bayes",
+                              top.text = "Bayesian one-sample t-test")
+
 # creating a histogram plot
 ggplot(mtcars, aes(wt)) +
   geom_histogram(alpha = 0.5) +
   geom_vline(xintercept = mean(mtcars$wt), color = "red") +
-  # adding a caption with a non-parametric one-sample test
   labs(
-    title = "One-Sample Wilcoxon Signed Rank Test",
-    subtitle = one_sample_test(mtcars, wt, test.value = 3, type = "nonparametric")$expression[[1]]
+    subtitle = df_results$expression[[1]]
   )
 ```
 
@@ -404,6 +406,13 @@ For categorical/nominal data - one-sample:
 set.seed(123)
 library(ggplot2)
 
+df_results <- contingency_table(as.data.frame(table(mpg$class)),
+  Var1,
+  counts = Freq,
+  type = "bayes",
+  top.text = "One-sample goodness-of-fit test"
+)
+
 # basic pie chart
 ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1))) +
   geom_bar(width = 1, stat = "identity") +
@@ -415,8 +424,7 @@ ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1
     x = NULL,
     y = NULL,
     title = "Pie Chart of class (type of car)",
-    subtitle = contingency_table(as.data.frame(table(mpg$class)), Var1, counts = Freq)$expression[[1]],
-    caption = "One-sample goodness-of-fit test"
+    caption = df_results$expression[[1]]
   )
 ```
 

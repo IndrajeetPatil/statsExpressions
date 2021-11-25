@@ -10,5 +10,5 @@
     Code
       as.character(df$expression[[1]])
     Output
-      [1] "list(atop(displaystyle(bla), list(log[e] * (BF[\"01\"]) == \"-3.70\", italic(delta)[difference]^\"posterior\" == \"1.09\", CI[\"95%\"]^HDI ~ \"[\" * \"0.49\", \"1.70\" * \"]\", italic(\"r\")[\"Cauchy\"]^\"JZS\" == \"0.80\")))"
+      [1] "list(atop(\"bla is ulalala\", list(log[e] * (BF[\"01\"]) == \"-3.70\", italic(delta)[difference]^\"posterior\" == \"1.09\", CI[\"95%\"]^HDI ~ \"[\" * \"0.49\", \"1.70\" * \"]\", italic(\"r\")[\"Cauchy\"]^\"JZS\" == \"0.80\")))"
 

@@ -31,10 +31,10 @@ test_that(
     # data
     dat <-
       tidyr::spread(bugs_long, condition, desire) %>%
-      filter(!is.na(HDLF), !is.na(HDHF))
+      dplyr::filter(!is.na(HDLF), !is.na(HDHF))
 
     # creating a tidy dataframe
-    dat_tidy <- filter(bugs_long, condition %in% c("HDLF", "HDHF"))
+    dat_tidy <- dplyr::filter(bugs_long, condition %in% c("HDLF", "HDHF"))
 
     # extracting results from where this function is implemented
     set.seed(123)
@@ -61,7 +61,7 @@ test_that(
         y = desire,
         paired = TRUE,
         bf.prior = 0.8,
-        top.text = "bla"
+        top.text = "bla is ulalala"
       )
 
     # call

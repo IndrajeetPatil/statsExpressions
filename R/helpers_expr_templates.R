@@ -143,7 +143,7 @@ expr_template <- function(data,
             {prior.distribution}=='{prior.scale}')"))
     } else {
       df %<>% mutate(expression = glue("list(
-            atop(displaystyle({top.text}),
+            atop('{top.text}',
             list(log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
             {es.text}[{prior.type}]^'posterior'=='{estimate}',
             CI['{conf.level}']^{conf.method}~'['*'{conf.low}', '{conf.high}'*']',
