@@ -183,27 +183,18 @@ contingency_table <- function(data,
         prior.scale = prior.concentration
       )
 
-      # final expression
-      expression <- substitute(
-        atop(
-          displaystyle(top.text),
-          expr = paste(
-            "log"["e"] * "(BF"["01"] * ") = " * bf * ", ",
-            italic("a")["Gunel-Dickey"] * " = " * a
-          )
-        ),
-        env = list(
-          top.text = top.text,
-          bf = format_value(-log(stats_df$bf10), k),
-          a = format_value(stats_df$prior.scale, k)
-        )
-      )
+      prior.distribution <- list(quote(italic("a")["Gunel-Dickey"]))
 
-      # the final expression
-      if (is.null(top.text)) expression <- expression$expr
-
-      # computing Bayes Factor and formatting the results
-      stats_df %<>% mutate(expression = list(expression))
+      if (is.null(top.text)) {
+        stats_df %<>% mutate(expression = list(parse(text = glue("list(
+            log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
+            {prior.distribution}=='{format_value(prior.scale, k)}')"))))
+      } else {
+        stats_df %<>% mutate(expression = list(parse(text = glue("list(
+            atop('{top.text}',
+            list(log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
+            {prior.distribution}=='{format_value(prior.scale, k)}')))"))))
+      }
     }
   }
 

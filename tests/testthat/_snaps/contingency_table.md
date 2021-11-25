@@ -174,10 +174,9 @@
 ---
 
     Code
-      df1$expression[[1]]
+      as.character(df1$expression[[1]])
     Output
-      paste("log"["e"] * "(BF"["01"] * ") = " * "1.40" * ", ", italic("a")["Gunel-Dickey"] * 
-          " = " * "1.00")
+      [1] "list(log[e] * (BF[\"01\"]) == \"1.40\", italic(\"a\")[\"Gunel-Dickey\"] == \"1.00\")"
 
 ---
 
@@ -192,11 +191,9 @@
 ---
 
     Code
-      df2$expression[[1]]
+      as.character(df2$expression[[1]])
     Output
-      atop(displaystyle("duh"), expr = paste("log"["e"] * "(BF"["01"] * 
-          ") = " * "0.55" * ", ", italic("a")["Gunel-Dickey"] * " = " * 
-          "10.00"))
+      [1] "list(atop(\"duh\", list(log[e] * (BF[\"01\"]) == \"0.55\", italic(\"a\")[\"Gunel-Dickey\"] == \"10.00\")))"
 
 # bayes factor (contingency tab)
 
