@@ -75,12 +75,11 @@ corr_test <- function(data,
   if (type == "bayes") stats_df %<>% rename("bf10" = "bayes.factor")
 
   # preparing expression
-  polish_data(stats_df) %>%
-    mutate(expression = list(expr_template(
-      data            = .,
-      top.text        = top.text,
-      paired          = TRUE,
-      n               = stats_df$n.obs[[1]],
-      k               = k
-    )))
+  add_expression_col(
+    data     = stats_df,
+    top.text = top.text,
+    paired   = TRUE,
+    n        = stats_df$n.obs[[1]],
+    k        = k
+  )
 }

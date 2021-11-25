@@ -123,11 +123,11 @@
     Code
       names(df_results)
     Output
-       [1] "term"               "estimate"           "conf.level"        
-       [4] "conf.low"           "conf.high"          "pd"                
-       [7] "rope.percentage"    "prior.distribution" "prior.location"    
-      [10] "prior.scale"        "bf10"               "method"            
-      [13] "log_e_bf10"         "expression"        
+       [1] "term"               "effectsize"         "estimate"          
+       [4] "conf.level"         "conf.low"           "conf.high"         
+       [7] "pd"                 "rope.percentage"    "prior.distribution"
+      [10] "prior.location"     "prior.scale"        "bf10"              
+      [13] "method"             "log_e_bf10"         "expression"        
 
 ---
 

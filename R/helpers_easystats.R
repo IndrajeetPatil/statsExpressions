@@ -59,7 +59,7 @@ tidy_model_effectsize <- function(data, ...) {
 }
 
 
-#' Final polishing before data is returned
+#' final polishing before the data is returned
 #' first have inferential statistics details and then estimation
 #' @noRd
 

@@ -74,7 +74,7 @@ meta_analysis <- function(data,
   type <- stats_type_switch(type)
 
   # additional arguments
-  if (type != "bayes") .f.args <- list(random = random, yi = quote(estimate), sei = quote(std.error), ...)
+  if (type != "bayes") .f.args <- list(yi = quote(estimate), sei = quote(std.error), random = random, ...)
   if (type == "bayes") .f.args <- list(y = quote(estimate), SE = quote(std.error), ...)
 
   # functions
@@ -84,7 +84,7 @@ meta_analysis <- function(data,
   if (type == "bayes") c(.ns, .fn)      %<-% c("metaBMA", "meta_random")
   # styler: on
 
-  # package installed?
+  # needed package installed?
   check_if_installed(.ns)
 
   # construct a call and then extract a tidy dataframe
@@ -95,15 +95,12 @@ meta_analysis <- function(data,
   if (type != "bayes") stats_df %<>% mutate(effectsize = "meta-analytic summary estimate")
   if (type == "bayes") stats_df %<>% mutate(effectsize = "meta-analytic posterior estimate")
 
-  # ----------------------- expression ---------------------------------------
-
-
-  polish_data(stats_df) %>%
-    mutate(expression = list(expr_template(
-      data            = .,
-      n               = nrow(data),
-      n.text          = list(quote(italic("n")["effects"])),
-      k               = k,
-      top.text        = top.text
-    )))
+  # add expression column
+  add_expression_col(
+    data     = stats_df,
+    n        = nrow(data),
+    n.text   = list(quote(italic("n")["effects"])),
+    k        = k,
+    top.text = top.text
+  )
 }
