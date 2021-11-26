@@ -23,14 +23,17 @@ tidy_model_parameters <- function(model, ...) {
   if ("method" %in% names(stats_df) && stats_df$method[[1]] == "Bayes factors for linear models") {
     # dataframe with posterior estimates for R-squared
     # for within-subjects design, retain only marginal component
-    df_r2 <- performance::r2_bayes(model, average = TRUE, ci = stats_df$conf.level[[1]]) %>%
+    df_r2 <- performance::r2_bayes(model, average = TRUE, verbose = FALSE, ci = stats_df$conf.level[[1]]) %>%
       as_tibble(.) %>%
       standardize_names(style = "broom") %>%
-      rename_with(.fn = ~ paste0("r2.", .x), .cols = matches("^conf|^comp")) %>%
-      filter(if_any(matches("r2.component"), ~ (.x == "conditional")))
+      filter(if_any(matches("component"), ~ (.x == "conditional"))) %>%
+      mutate(effectsize = "Bayesian R-squared")
 
-    # combine everything
-    stats_df %<>% bind_cols(df_r2)
+    # remove estimates and CIs and use R2 dataframe instead
+    stats_df %<>%
+      dplyr::select(-matches("^est|^conf|^comp")) %>%
+      filter(if_any(matches("effect"), ~ (.x == "fixed"))) %>%
+      bind_cols(df_r2)
   }
 
   as_tibble(stats_df)

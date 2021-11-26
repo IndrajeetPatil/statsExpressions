@@ -71,5 +71,5 @@ tidy_model_expressions <- function(data,
   }
 
   # add the label column to the original dataframe
-  left_join(data, select(df, term, label), by = "term")
+  left_join(data, select(df, term, label), by = "term") %>% as_tibble(.)
 }

@@ -113,15 +113,6 @@ add_expression_col <- function(data,
   # special case for Bayesian analysis
   if (bayesian && grepl("contingency", data$method[[1]])) data %<>% mutate(effectsize = "Cramers_v")
 
-  # extracting estimate values
-  if ("r2" %in% names(data)) {
-    # for ANOVA designs
-    c(estimate, conf.low, conf.high) %<-% c(data$r2[[1]], data$r2.conf.low[[1]], data$r2.conf.high[[1]])
-  } else {
-    # for non-ANOVA designs
-    c(estimate, conf.low, conf.high) %<-% c(data$estimate[[1]], data$conf.low[[1]], data$conf.high[[1]])
-  }
-
   # convert needed columns to character type
   df_expr <- .data_to_char(data, k, k.df, k.df.error)
 
