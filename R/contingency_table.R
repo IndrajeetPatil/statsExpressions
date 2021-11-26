@@ -179,8 +179,9 @@ contingency_table <- function(data,
       # BF = (log) prob of data under alternative - (log) prob of data under null
       # computing Bayes Factor and formatting the results
       stats_df <- tibble(
-        bf10 = exp(BayesFactor::logMeanExpLogs(pr_h1) - stats::dmultinom(as.matrix(xtab), NULL, ratio, TRUE)),
-        prior.scale = prior.concentration
+        bf10        = exp(BayesFactor::logMeanExpLogs(pr_h1) - stats::dmultinom(as.matrix(xtab), NULL, ratio, TRUE)),
+        prior.scale = prior.concentration,
+        method      = "Bayesian one-way contingency table analysis"
       )
 
       prior.distribution <- list(quote(italic("a")["Gunel-Dickey"]))

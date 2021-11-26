@@ -113,15 +113,6 @@ add_expression_col <- function(data,
   # special case for Bayesian analysis
   if (bayesian && grepl("contingency", data$method[[1]])) data %<>% mutate(effectsize = "Cramers_v")
 
-  # extracting estimate values
-  if ("r2" %in% names(data)) {
-    # for ANOVA designs
-    c(estimate, conf.low, conf.high) %<-% c(data$r2[[1]], data$r2.conf.low[[1]], data$r2.conf.high[[1]])
-  } else {
-    # for non-ANOVA designs
-    c(estimate, conf.low, conf.high) %<-% c(data$estimate[[1]], data$conf.low[[1]], data$conf.high[[1]])
-  }
-
   # convert needed columns to character type
   df_expr <- .data_to_char(data, k, k.df, k.df.error)
 
@@ -129,7 +120,6 @@ add_expression_col <- function(data,
   df_expr %<>% mutate(
     statistic.text     = statistic.text %||% stat_text_switch(method),
     es.text            = effsize.text %||% estimate_type_switch(effectsize),
-    prior.type         = prior.type %||% prior_type_switch(method),
     prior.distribution = prior_switch(method),
     conf.method        = toupper(conf.method),
     n.obs              = .prettyNum(n)
@@ -141,14 +131,14 @@ add_expression_col <- function(data,
     if (is.null(top.text)) {
       df_expr %<>% mutate(expression = glue("list(
             log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
-            {es.text}[{prior.type}]^'posterior'=='{estimate}',
+            {es.text}^'posterior'=='{estimate}',
             CI['{conf.level}']^{conf.method}~'['*'{conf.low}', '{conf.high}'*']',
             {prior.distribution}=='{prior.scale}')"))
     } else {
       df_expr %<>% mutate(expression = glue("list(
             atop('{top.text}',
             list(log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
-            {es.text}[{prior.type}]^'posterior'=='{estimate}',
+            {es.text}^'posterior'=='{estimate}',
             CI['{conf.level}']^{conf.method}~'['*'{conf.low}', '{conf.high}'*']',
             {prior.distribution}=='{prior.scale}')))"))
     }

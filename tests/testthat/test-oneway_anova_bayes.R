@@ -2,49 +2,38 @@ test_that(
   desc = "bayes factor (between-subjects - anova)",
   code = {
     skip_if(getRversion() < "4.0")
+    options(tibble.width = Inf)
 
     # bayes factor (between-subjects - anova) ------------------------------
 
     # extracting results from where this function is implemented
     set.seed(123)
-    df_results <- suppressWarnings(oneway_anova(
+    df1 <- suppressWarnings(oneway_anova(
       type = "bayes",
       data = ggplot2::msleep,
       x = vore,
       y = brainwt,
-      bf.prior = 0.99
+      bf.prior = 0.99,
+      k = 3
     ))
 
-    # extracting expr
-    set.seed(123)
-    results <- suppressWarnings(oneway_anova(
-      type = "bayes",
-      data = ggplot2::msleep,
-      x = vore,
-      y = brainwt,
-      bf.prior = 0.88,
-      k = 2 # don't change; tests fail on Ubuntu otherwise
-    ))
-
-    # check bayes factor values
-    expect_equal(df_results$bf10[[1]], 0.1177186, tolerance = 0.001)
-
-    # call
-    expect_snapshot(as.character(results$expression[[1]]))
+    expect_snapshot(dplyr::select(df1, -expression), variant = .Platform$OS.type)
+    expect_snapshot(as.character(df1$expression[[1]]), variant = .Platform$OS.type)
 
     # data where it works
     set.seed(123)
-    results2 <- suppressWarnings(oneway_anova(
+    df2 <- suppressWarnings(oneway_anova(
       type = "bayes",
       data = iris,
       x = Species,
       y = Sepal.Length,
       conf.level = 0.99,
       conf.method = "eti",
-      k = 2 # don't change; tests fail on Ubuntu otherwise
+      k = 4
     ))
 
-    expect_snapshot(as.character(results2$expression[[1]]))
+    expect_snapshot(dplyr::select(df2, -expression), variant = .Platform$OS.type)
+    expect_snapshot(as.character(df2$expression[[1]]), variant = .Platform$OS.type)
   }
 )
 
@@ -54,69 +43,22 @@ test_that(
     # bayes factor (within-subjects - anova) ---------------------------------
 
     if (utils::packageVersion("BayesFactor") >= package_version("0.9.12-4.3")) {
-
-      # dataframe
-      dat <- structure(list(Taste = c(
-        5.4, 5.5, 5.55, 5.85, 5.7, 5.75, 5.2,
-        5.6, 5.5, 5.55, 5.5, 5.4, 5.9, 5.85, 5.7, 5.45, 5.55, 5.6, 5.4,
-        5.4, 5.35, 5.45, 5.5, 5.35, 5.25, 5.15, 5, 5.85, 5.8, 5.7, 5.25,
-        5.2, 5.1, 5.65, 5.55, 5.45, 5.6, 5.35, 5.45, 5.05, 5, 4.95, 5.5,
-        5.5, 5.4, 5.45, 5.55, 5.5, 5.55, 5.55, 5.35, 5.45, 5.5, 5.55,
-        5.5, 5.45, 5.25, 5.65, 5.6, 5.4, 5.7, 5.65, 5.55, 6.3, 6.3, 6.25
-      ), Wine = structure(c(
-        1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
-        2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L,
-        3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
-        1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
-        2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L
-      ), .Label = c(
-        "Wine A", "Wine B",
-        "Wine C"
-      ), class = "factor"), Taster = structure(c(
-        1L, 1L, 1L,
-        2L, 2L, 2L, 3L, 3L, 3L, 4L, 4L, 4L, 5L, 5L, 5L, 6L, 6L, 6L, 7L,
-        7L, 7L, 8L, 8L, 8L, 9L, 9L, 9L, 10L, 10L, 10L, 11L, 11L, 11L,
-        12L, 12L, 12L, 13L, 13L, 13L, 14L, 14L, 14L, 15L, 15L, 15L, 16L,
-        16L, 16L, 17L, 17L, 17L, 18L, 18L, 18L, 19L, 19L, 19L, 20L, 20L,
-        20L, 21L, 21L, 21L, 22L, 22L, 22L
-      ), .Label = c(
-        "1", "2", "3",
-        "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
-        "16", "17", "18", "19", "20", "21", "22"
-      ), class = "factor")), row.names = c(
-        NA,
-        -66L
-      ), class = "data.frame")
-
-      # extracting results from where this function is implemented
       set.seed(123)
-      df_results <- oneway_anova(
+      df1 <- oneway_anova(
         type = "bayes",
-        data = dat,
+        data = WRS2::WineTasting,
         x = Wine,
         y = Taste,
-        paired = TRUE,
-        bf.prior = 0.99
-      )
-
-      # check bayes factor values
-      expect_equal(df_results$bf10[[1]], 6.364917, tolerance = 0.001)
-
-      # extracting expression
-      set.seed(123)
-      results <- oneway_anova(
-        type = "bayes",
-        data = dat,
-        x = Wine,
-        y = Taste,
-        k = 2, # don't change; tests fail on Ubuntu otherwise
         paired = TRUE,
         bf.prior = 0.88
       )
 
+      expect_snapshot(dplyr::select(df1, -expression), variant = .Platform$OS.type)
+      expect_snapshot(as.character(df1$expression[[1]]), variant = .Platform$OS.type)
+
       # data with NA
       set.seed(123)
-      results_na <- oneway_anova(
+      df2 <- oneway_anova(
         type = "bayes",
         data = bugs_long,
         x = condition,
@@ -124,9 +66,8 @@ test_that(
         paired = TRUE
       )
 
-      # checking expressions
-      expect_snapshot(as.character(results$expression[[1]]))
-      expect_snapshot(as.character(results_na$expression[[1]]))
+      expect_snapshot(dplyr::select(df2, -expression), variant = .Platform$OS.type)
+      expect_snapshot(as.character(df2$expression[[1]]), variant = .Platform$OS.type)
 
       # with subject.id ---------------------------------
 

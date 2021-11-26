@@ -166,10 +166,10 @@
     Code
       select(df1, -expression)
     Output
-      # A tibble: 1 x 2
-         bf10 prior.scale
-        <dbl>       <dbl>
-      1 0.247           1
+      # A tibble: 1 x 3
+         bf10 prior.scale method                                     
+        <dbl>       <dbl> <chr>                                      
+      1 0.247           1 Bayesian one-way contingency table analysis
 
 ---
 
@@ -183,10 +183,10 @@
     Code
       select(df2, -expression)
     Output
-      # A tibble: 1 x 2
-         bf10 prior.scale
-        <dbl>       <dbl>
-      1 0.579          10
+      # A tibble: 1 x 3
+         bf10 prior.scale method                                     
+        <dbl>       <dbl> <chr>                                      
+      1 0.579          10 Bayesian one-way contingency table analysis
 
 ---
 
@@ -202,12 +202,12 @@
         expression[[1]]), as.character(expr_text3$expression[[1]]))
     Output
       [[1]]
-      [1] "list(log[e] * (BF[\"01\"]) == \"-3.335\", italic(\"V\")[Cramer]^\"posterior\" == \"0.479\", CI[\"89%\"]^HDI ~ \"[\" * \"0.285\", \"0.692\" * \"]\", italic(\"a\")[\"Gunel-Dickey\"] == \"1.000\")"
+      [1] "list(log[e] * (BF[\"01\"]) == \"-3.335\", widehat(italic(\"V\"))[\"Cramer\"]^\"posterior\" == \"0.479\", CI[\"89%\"]^HDI ~ \"[\" * \"0.285\", \"0.692\" * \"]\", italic(\"a\")[\"Gunel-Dickey\"] == \"1.000\")"
       
       [[2]]
-      [1] "list(log[e] * (BF[\"01\"]) == \"-214.255\", italic(\"V\")[Cramer]^\"posterior\" == \"0.455\", CI[\"99%\"]^HDI ~ \"[\" * \"0.402\", \"0.508\" * \"]\", italic(\"a\")[\"Gunel-Dickey\"] == \"1.000\")"
+      [1] "list(log[e] * (BF[\"01\"]) == \"-214.255\", widehat(italic(\"V\"))[\"Cramer\"]^\"posterior\" == \"0.455\", CI[\"99%\"]^HDI ~ \"[\" * \"0.402\", \"0.508\" * \"]\", italic(\"a\")[\"Gunel-Dickey\"] == \"1.000\")"
       
       [[3]]
-      [1] "list(log[e] * (BF[\"01\"]) == \"-213.873\", italic(\"V\")[Cramer]^\"posterior\" == \"0.454\", CI[\"95%\"]^HDI ~ \"[\" * \"0.417\", \"0.495\" * \"]\", italic(\"a\")[\"Gunel-Dickey\"] == \"1.500\")"
+      [1] "list(log[e] * (BF[\"01\"]) == \"-213.873\", widehat(italic(\"V\"))[\"Cramer\"]^\"posterior\" == \"0.454\", CI[\"95%\"]^HDI ~ \"[\" * \"0.417\", \"0.495\" * \"]\", italic(\"a\")[\"Gunel-Dickey\"] == \"1.500\")"
       
 
