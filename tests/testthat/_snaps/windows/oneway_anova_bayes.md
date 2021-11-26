@@ -37,7 +37,7 @@
     Code
       as.character(df1$expression[[1]])
     Output
-      [1] "list(log[e] * (BF[\"01\"]) == \"2.14\", italic(R^\"2\")[Bayesian]^\"posterior\" == \"0.00\", CI[\"95%\"]^HDI ~ \"[\" * \"0.00\", \"0.08\" * \"]\", italic(\"r\")[\"Cauchy\"]^\"JZS\" == \"0.99\")"
+      [1] "list(log[e] * (BF[\"01\"]) == \"2.139\", italic(R^\"2\")[Bayesian]^\"posterior\" == \"0.000\", CI[\"95%\"]^HDI ~ \"[\" * \"0.000\", \"0.080\" * \"]\", italic(\"r\")[\"Cauchy\"]^\"JZS\" == \"0.990\")"
 
 ---
 
@@ -75,7 +75,7 @@
     Code
       as.character(df2$expression[[1]])
     Output
-      [1] "list(log[e] * (BF[\"01\"]) == \"-65.10\", italic(R^\"2\")[Bayesian]^\"posterior\" == \"0.61\", CI[\"99%\"]^HDI ~ \"[\" * \"0.51\", \"0.68\" * \"]\", italic(\"r\")[\"Cauchy\"]^\"JZS\" == \"0.71\")"
+      [1] "list(log[e] * (BF[\"01\"]) == \"-65.0969\", italic(R^\"2\")[Bayesian]^\"posterior\" == \"0.6118\", CI[\"99%\"]^HDI ~ \"[\" * \"0.5107\", \"0.6789\" * \"]\", italic(\"r\")[\"Cauchy\"]^\"JZS\" == \"0.7070\")"
 
 # bayes factor (within-subjects - anova)
 

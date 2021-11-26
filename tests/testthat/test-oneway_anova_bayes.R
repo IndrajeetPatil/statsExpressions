@@ -14,11 +14,11 @@ test_that(
       x = vore,
       y = brainwt,
       bf.prior = 0.99,
-      k = 2 # don't change; tests fail on Ubuntu otherwise
+      k = 3
     ))
 
-    expect_snapshot(dplyr::select(df1, -expression))
-    expect_snapshot(as.character(df1$expression[[1]]))
+    expect_snapshot(dplyr::select(df1, -expression), variant = .Platform$OS.type)
+    expect_snapshot(as.character(df1$expression[[1]]), variant = .Platform$OS.type)
 
     # data where it works
     set.seed(123)
@@ -29,11 +29,11 @@ test_that(
       y = Sepal.Length,
       conf.level = 0.99,
       conf.method = "eti",
-      k = 2 # don't change; tests fail on Ubuntu otherwise
+      k = 4
     ))
 
-    expect_snapshot(dplyr::select(df2, -expression))
-    expect_snapshot(as.character(df2$expression[[1]]))
+    expect_snapshot(dplyr::select(df2, -expression), variant = .Platform$OS.type)
+    expect_snapshot(as.character(df2$expression[[1]]), variant = .Platform$OS.type)
   }
 )
 
@@ -49,13 +49,12 @@ test_that(
         data = WRS2::WineTasting,
         x = Wine,
         y = Taste,
-        k = 2, # don't change; tests fail on Ubuntu otherwise
         paired = TRUE,
         bf.prior = 0.88
       )
 
-      expect_snapshot(dplyr::select(df1, -expression))
-      expect_snapshot(as.character(df1$expression[[1]]))
+      expect_snapshot(dplyr::select(df1, -expression), variant = .Platform$OS.type)
+      expect_snapshot(as.character(df1$expression[[1]]), variant = .Platform$OS.type)
 
       # data with NA
       set.seed(123)
@@ -67,8 +66,8 @@ test_that(
         paired = TRUE
       )
 
-      expect_snapshot(dplyr::select(df2, -expression))
-      expect_snapshot(as.character(df2$expression[[1]]))
+      expect_snapshot(dplyr::select(df2, -expression), variant = .Platform$OS.type)
+      expect_snapshot(as.character(df2$expression[[1]]), variant = .Platform$OS.type)
 
       # with subject.id ---------------------------------
 

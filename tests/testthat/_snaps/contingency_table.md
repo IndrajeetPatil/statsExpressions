@@ -166,10 +166,10 @@
     Code
       select(df1, -expression)
     Output
-      # A tibble: 1 x 2
-         bf10 prior.scale
-        <dbl>       <dbl>
-      1 0.247           1
+      # A tibble: 1 x 3
+         bf10 prior.scale method                                     
+        <dbl>       <dbl> <chr>                                      
+      1 0.247           1 Bayesian one-way contingency table analysis
 
 ---
 
@@ -183,10 +183,10 @@
     Code
       select(df2, -expression)
     Output
-      # A tibble: 1 x 2
-         bf10 prior.scale
-        <dbl>       <dbl>
-      1 0.579          10
+      # A tibble: 1 x 3
+         bf10 prior.scale method                                     
+        <dbl>       <dbl> <chr>                                      
+      1 0.579          10 Bayesian one-way contingency table analysis
 
 ---
 
