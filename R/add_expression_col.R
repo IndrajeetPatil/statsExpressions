@@ -120,7 +120,6 @@ add_expression_col <- function(data,
   df_expr %<>% mutate(
     statistic.text     = statistic.text %||% stat_text_switch(method),
     es.text            = effsize.text %||% estimate_type_switch(effectsize),
-    prior.type         = prior.type %||% prior_type_switch(method),
     prior.distribution = prior_switch(method),
     conf.method        = toupper(conf.method),
     n.obs              = .prettyNum(n)
@@ -132,14 +131,14 @@ add_expression_col <- function(data,
     if (is.null(top.text)) {
       df_expr %<>% mutate(expression = glue("list(
             log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
-            {es.text}[{prior.type}]^'posterior'=='{estimate}',
+            {es.text}^'posterior'=='{estimate}',
             CI['{conf.level}']^{conf.method}~'['*'{conf.low}', '{conf.high}'*']',
             {prior.distribution}=='{prior.scale}')"))
     } else {
       df_expr %<>% mutate(expression = glue("list(
             atop('{top.text}',
             list(log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
-            {es.text}[{prior.type}]^'posterior'=='{estimate}',
+            {es.text}^'posterior'=='{estimate}',
             CI['{conf.level}']^{conf.method}~'['*'{conf.low}', '{conf.high}'*']',
             {prior.distribution}=='{prior.scale}')))"))
     }

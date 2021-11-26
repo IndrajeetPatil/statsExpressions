@@ -48,20 +48,19 @@ estimate_type_switch <- function(x) {
     grepl("hedges' g", x)         ~ list(quote(widehat(italic("g"))["Hedges"])),
     grepl("biserial", x)          ~ list(quote(widehat(italic("r"))["biserial"]^"rank")),
     grepl("^kendall", x)          ~ list(quote(widehat(italic("W"))["Kendall"])),
+    grepl("cramer", x)            ~ list(quote(widehat(italic("V"))["Cramer"])),
+    grepl("cohen's g", x)         ~ list(quote(widehat(italic("g"))["Cohen"])),
+    grepl("r-squared", x)         ~ list(quote(widehat(italic(R^"2"))["Bayesian"])),
     grepl("spearman", x)          ~ list(quote(widehat(rho)["Spearman"])),
+    grepl("^bayesian pearson", x) ~ list(quote(widehat(rho)["Pearson"])),
+    grepl("posterior|t-", x)      ~ list(quote(widehat(delta)["difference"])),
+    grepl("difference$", x)       ~ list(quote(widehat(delta)["R"]^"AKP")),
+    grepl("average$", x)          ~ list(quote(widehat(delta)["R-avg"]^"AKP")),
     grepl("^eta2", x)             ~ list(quote(widehat(eta["p"]^2))),
     grepl("^omega2", x)           ~ list(quote(widehat(omega["p"]^2))),
     grepl("^trimmed", x)          ~ list(quote(widehat(mu)["trimmed"])),
     grepl("^epsilon2", x)         ~ list(quote(widehat(epsilon)["ordinal"]^2)),
-    grepl("^cramers_v$", x)       ~ list(quote(italic("V"))),
-    grepl("cramer", x)            ~ list(quote(widehat(italic("V"))["Cramer"])),
-    grepl("cohen's g", x)         ~ list(quote(widehat(italic("g"))["Cohen"])),
     grepl("^explanatory", x)      ~ list(quote(widehat(xi))),
-    grepl("difference$", x)       ~ list(quote(widehat(delta)["R"]^"AKP")),
-    grepl("average$", x)          ~ list(quote(widehat(delta)["R-avg"]^"AKP")),
-    grepl("^bayesian pearson", x) ~ list(quote(rho)),
-    grepl("posterior|t-", x)      ~ list(quote(italic(delta))),
-    grepl("r-squared", x)         ~ list(quote(italic(R^"2"))),
     grepl("^meta", x)             ~ list(quote(widehat(beta)["summary"]^"meta")),
     TRUE ~ list(NULL)
   )
@@ -94,19 +93,6 @@ stat_text_switch <- function(x) {
     TRUE                             ~ list(NULL)
   )
 }
-
-#' @noRd
-
-prior_type_switch <- function(x) {
-  case_when(
-    grepl("contingency", x, TRUE) ~ list("Cramer"),
-    grepl("correlation", x, TRUE) ~ list("Pearson"),
-    grepl("t-|meta-", x, TRUE)    ~ list("difference"),
-    grepl("linear", x, TRUE)      ~ list("Bayesian"),
-    TRUE ~ list(NULL)
-  )
-}
-
 
 #' @noRd
 

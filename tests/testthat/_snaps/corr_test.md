@@ -86,12 +86,12 @@
     Code
       as.character(subtitle1$expression[[1]])
     Output
-      [1] "list(atop(\"huh is duh\", list(log[e] * (BF[\"01\"]) == \"1.07\", rho[Pearson]^\"posterior\" == \"-0.12\", CI[\"95%\"]^HDI ~ \"[\" * \"-0.28\", \"0.04\" * \"]\", italic(\"r\")[\"beta\"]^\"JZS\" == \"1.41\")))"
+      [1] "list(atop(\"huh is duh\", list(log[e] * (BF[\"01\"]) == \"1.07\", widehat(rho)[\"Pearson\"]^\"posterior\" == \"-0.12\", CI[\"95%\"]^HDI ~ \"[\" * \"-0.28\", \"0.04\" * \"]\", italic(\"r\")[\"beta\"]^\"JZS\" == \"1.41\")))"
 
 # bayes factor (correlation test) - with NAs
 
     Code
       as.character(subtitle1$expression[[1]])
     Output
-      [1] "list(log[e] * (BF[\"01\"]) == \"0.49\", rho[Pearson]^\"posterior\" == \"-0.21\", CI[\"99%\"]^HDI ~ \"[\" * \"-0.47\", \"0.05\" * \"]\", italic(\"r\")[\"beta\"]^\"JZS\" == \"1.25\")"
+      [1] "list(log[e] * (BF[\"01\"]) == \"0.49\", widehat(rho)[\"Pearson\"]^\"posterior\" == \"-0.21\", CI[\"99%\"]^HDI ~ \"[\" * \"-0.47\", \"0.05\" * \"]\", italic(\"r\")[\"beta\"]^\"JZS\" == \"1.25\")"
 

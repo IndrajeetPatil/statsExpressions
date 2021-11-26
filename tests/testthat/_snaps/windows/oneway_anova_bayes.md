@@ -37,7 +37,7 @@
     Code
       as.character(df1$expression[[1]])
     Output
-      [1] "list(log[e] * (BF[\"01\"]) == \"2.139\", italic(R^\"2\")[Bayesian]^\"posterior\" == \"0.000\", CI[\"95%\"]^HDI ~ \"[\" * \"0.000\", \"0.080\" * \"]\", italic(\"r\")[\"Cauchy\"]^\"JZS\" == \"0.990\")"
+      [1] "list(log[e] * (BF[\"01\"]) == \"2.139\", widehat(italic(R^\"2\"))[\"Bayesian\"]^\"posterior\" == \"0.000\", CI[\"95%\"]^HDI ~ \"[\" * \"0.000\", \"0.080\" * \"]\", italic(\"r\")[\"Cauchy\"]^\"JZS\" == \"0.990\")"
 
 ---
 
@@ -75,7 +75,7 @@
     Code
       as.character(df2$expression[[1]])
     Output
-      [1] "list(log[e] * (BF[\"01\"]) == \"-65.0969\", italic(R^\"2\")[Bayesian]^\"posterior\" == \"0.6118\", CI[\"99%\"]^HDI ~ \"[\" * \"0.5107\", \"0.6789\" * \"]\", italic(\"r\")[\"Cauchy\"]^\"JZS\" == \"0.7070\")"
+      [1] "list(log[e] * (BF[\"01\"]) == \"-65.0969\", widehat(italic(R^\"2\"))[\"Bayesian\"]^\"posterior\" == \"0.6118\", CI[\"99%\"]^HDI ~ \"[\" * \"0.5107\", \"0.6789\" * \"]\", italic(\"r\")[\"Cauchy\"]^\"JZS\" == \"0.7070\")"
 
 # bayes factor (within-subjects - anova)
 
@@ -125,7 +125,7 @@
     Code
       as.character(df1$expression[[1]])
     Output
-      [1] "list(log[e] * (BF[\"01\"]) == \"-1.96\", italic(R^\"2\")[Bayesian]^\"posterior\" == \"0.89\", CI[\"95%\"]^HDI ~ \"[\" * \"0.85\", \"0.92\" * \"]\", italic(\"r\")[\"Cauchy\"]^\"JZS\" == \"0.88\")"
+      [1] "list(log[e] * (BF[\"01\"]) == \"-1.96\", widehat(italic(R^\"2\"))[\"Bayesian\"]^\"posterior\" == \"0.89\", CI[\"95%\"]^HDI ~ \"[\" * \"0.85\", \"0.92\" * \"]\", italic(\"r\")[\"Cauchy\"]^\"JZS\" == \"0.88\")"
 
 ---
 
@@ -179,5 +179,5 @@
     Code
       as.character(df2$expression[[1]])
     Output
-      [1] "list(log[e] * (BF[\"01\"]) == \"-21.04\", italic(R^\"2\")[Bayesian]^\"posterior\" == \"0.53\", CI[\"95%\"]^HDI ~ \"[\" * \"0.46\", \"0.59\" * \"]\", italic(\"r\")[\"Cauchy\"]^\"JZS\" == \"0.71\")"
+      [1] "list(log[e] * (BF[\"01\"]) == \"-21.04\", widehat(italic(R^\"2\"))[\"Bayesian\"]^\"posterior\" == \"0.53\", CI[\"95%\"]^HDI ~ \"[\" * \"0.46\", \"0.59\" * \"]\", italic(\"r\")[\"Cauchy\"]^\"JZS\" == \"0.71\")"
 

@@ -22,5 +22,5 @@
     Code
       as.character(df$expression[[1]])
     Output
-      [1] "list(atop(\"ayyo arecha\", list(log[e] * (BF[\"01\"]) == \"-3.587\", italic(delta)[difference]^\"posterior\" == \"0.596\", CI[\"95%\"]^HDI ~ \"[\" * \"0.321\", \"0.854\" * \"]\", italic(\"r\")[\"Cauchy\"]^\"JZS\" == \"0.707\")))"
+      [1] "list(atop(\"ayyo arecha\", list(log[e] * (BF[\"01\"]) == \"-3.587\", widehat(delta)[\"difference\"]^\"posterior\" == \"0.596\", CI[\"95%\"]^HDI ~ \"[\" * \"0.321\", \"0.854\" * \"]\", italic(\"r\")[\"Cauchy\"]^\"JZS\" == \"0.707\")))"
 
