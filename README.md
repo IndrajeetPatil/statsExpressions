@@ -72,7 +72,7 @@ A BibTeX entry for LaTeX users is
 
 # General Workflow
 
-<img src="man/figures/card.png" width="100%" />
+<img src="man/figures/card.png" width="50%" />
 
 # Summary of types of statistical analyses
 
