@@ -77,7 +77,7 @@ citation("statsExpressions")
 
 # General Workflow
 
-```{r, echo=FALSE, out.width="50%"}
+```{r, echo=FALSE, out.width="80%"}
 knitr::include_graphics("man/figures/card.png")
 ```
 
