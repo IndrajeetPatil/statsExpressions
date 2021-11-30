@@ -21,6 +21,10 @@ template:
     primary: "#0054AD"
     border-radius: 0.5rem
     btn-border-radius: 0.25rem
+    base_font: {google: "Roboto"}
+    heading_font: {google: "Roboto"}
+    code_font: {google: "JetBrains Mono"}
+
 
 reference:
   - title: One-and two-sample t-tests
