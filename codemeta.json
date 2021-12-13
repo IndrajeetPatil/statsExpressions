@@ -229,14 +229,14 @@
       "@type": "SoftwareApplication",
       "identifier": "datawizard",
       "name": "datawizard",
-      "version": ">= 0.2.1",
+      "version": ">= 0.2.1.9000",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=datawizard"
+      "sameAs": "https://github.com/easystats/datawizard"
     },
     {
       "@type": "SoftwareApplication",
@@ -460,6 +460,6 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3613.255KB",
+  "fileSize": "3652.703KB",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
 }

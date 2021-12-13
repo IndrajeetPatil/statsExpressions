@@ -27,7 +27,7 @@ Depends:
 Imports:
     BayesFactor (>= 0.9.12-4.2),
     correlation (>= 0.7.1),
-    datawizard (>= 0.2.1),
+    datawizard (>= 0.2.1.9000),
     dplyr,
     effectsize (>= 0.5.0.1),
     glue,
@@ -56,6 +56,7 @@ Suggests:
     utils
 Remotes:
     easystats/insight,
+    easystats/datawizard,
     easystats/parameters,
     easystats/effectsize
 VignetteBuilder: 

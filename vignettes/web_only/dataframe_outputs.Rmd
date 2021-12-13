@@ -36,6 +36,10 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r citation, echo=FALSE, comment = ""}
+citation("statsExpressions")
+```
+
 ## Introduction
 
 The `{statsExpressions}` package has two key aims: to provide a consistent syntax

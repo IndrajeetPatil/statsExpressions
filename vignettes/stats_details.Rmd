@@ -25,6 +25,10 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r citation, echo=FALSE, comment = ""}
+citation("statsExpressions")
+```
+
 ## Introduction
 
 Here a go-to summary about statistical test carried out and the returned effect
