@@ -103,12 +103,6 @@ To see details about functions which are internally used to carry out these
 analyses, see the following vignette-
 \url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }
-\note{
-To carry out Bayesian posterior estimation for ANOVA designs, you will need
-to install the development version of \code{BayesFactor} (\verb{0.9.12-4.3}). You can
-download it by running:
-\code{remotes::install_github("richarddmorey/BayesFactor/pkg/BayesFactor")}.
-}
 \examples{
 \donttest{
 # for reproducibility
@@ -187,16 +181,13 @@ oneway_anova(
 )
 
 # within-subjects design
-# needs `BayesFactor 0.9.12-4.3` or above
-if (utils::packageVersion("BayesFactor") >= package_version("0.9.12-4.3")) {
-  oneway_anova(
-    data       = iris_long,
-    x          = condition,
-    y          = value,
-    subject.id = id,
-    paired     = TRUE,
-    type       = "bayes"
-  )
-}
+oneway_anova(
+  data       = iris_long,
+  x          = condition,
+  y          = value,
+  subject.id = id,
+  paired     = TRUE,
+  type       = "bayes"
+)
 }
 }
