@@ -161,13 +161,6 @@ mostly relevant in the context of <code>ggstatsplot</code> package functions.</p
 <dt>...</dt>
 <dd><p>Additional arguments (currently ignored).</p></dd>
 </dl></div>
-    <div class="section level2">
-    <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
-    <p>To carry out Bayesian posterior estimation for ANOVA designs, you will need
-to install the development version of <code>BayesFactor</code> (<code>0.9.12-4.3</code>). You can
-download it by running:
-<code>remotes::install_github("richarddmorey/BayesFactor/pkg/BayesFactor")</code>.</p>
-    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
@@ -366,17 +359,14 @@ download it by running:
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> <span style="color: #949494;">&lt;expression&gt;</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># within-subjects design</span></span>
-<span class="r-in"><span class="co"># needs `BayesFactor 0.9.12-4.3` or above</span></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html" class="external-link">packageVersion</a></span><span class="op">(</span><span class="st">"BayesFactor"</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric_version.html" class="external-link">package_version</a></span><span class="op">(</span><span class="st">"0.9.12-4.3"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="fu">oneway_anova</span><span class="op">(</span></span>
-<span class="r-in">    data       <span class="op">=</span> <span class="va">iris_long</span>,</span>
-<span class="r-in">    x          <span class="op">=</span> <span class="va">condition</span>,</span>
-<span class="r-in">    y          <span class="op">=</span> <span class="va">value</span>,</span>
-<span class="r-in">    subject.id <span class="op">=</span> <span class="va">id</span>,</span>
-<span class="r-in">    paired     <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">    type       <span class="op">=</span> <span class="st">"bayes"</span></span>
-<span class="r-in">  <span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-in"><span class="fu">oneway_anova</span><span class="op">(</span></span>
+<span class="r-in">  data       <span class="op">=</span> <span class="va">iris_long</span>,</span>
+<span class="r-in">  x          <span class="op">=</span> <span class="va">condition</span>,</span>
+<span class="r-in">  y          <span class="op">=</span> <span class="va">value</span>,</span>
+<span class="r-in">  subject.id <span class="op">=</span> <span class="va">id</span>,</span>
+<span class="r-in">  paired     <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span class="r-in">  type       <span class="op">=</span> <span class="st">"bayes"</span></span>
+<span class="r-in"><span class="op">)</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Multiple `BFBayesFactor` models detected - posteriors are extracted from the first numerator model.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> See help("get_parameters", package = "insight").</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 8 × 19</span></span>
