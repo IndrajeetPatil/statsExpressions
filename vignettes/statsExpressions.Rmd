@@ -163,7 +163,7 @@ results in the context of a visualization is indeed a philosophy adopted by the
 `{ggstatsplot}` package [@Patil2021], and `{statsExpressions}` functions as its
 statistical processing backend.
 
-```{r anova_example, fig.width=8, fig.cap="Example illustrating how `{statsExpressions}` functions can be used to display results from a statistical test in a plot. Code to create this figure is reported in Appendix."}
+```{r anova_example, fig.width=8, fig.cap="Example illustrating how `{statsExpressions}` functions can be used to display results from a statistical test in a plot."}
 # needed libraries
 library(statsExpressions)
 library(ggplot2)

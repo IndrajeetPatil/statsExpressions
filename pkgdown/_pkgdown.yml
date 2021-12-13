@@ -23,7 +23,8 @@ template:
       creator: "@patilindrajeets"
       card: summary_large_image
 
-
+development:
+  mode: auto
 
 reference:
   - title: One-and two-sample t-tests
