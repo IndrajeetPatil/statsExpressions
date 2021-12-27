@@ -5,14 +5,14 @@ authors:
   Indrajeet Patil:
     href: https://sites.google.com/site/indrajeetspatilmorality/
 
-
 template:
   bootstrap: 5
   bootswatch: cyborg
   theme: arrow-dark
+  includes:
+    in_header: |
+      <script defer data-domain="indrajeetpatil.github.io/statsexpressions" src="https://plausible.io/js/plausible.js"></script>
   bslib:
-    border-radius: 0.5rem
-    btn-border-radius: 0.25rem
     base_font: {google: "Roboto"}
     heading_font: {google: "Roboto"}
     code_font: {google: "JetBrains Mono"}
@@ -23,7 +23,8 @@ template:
       creator: "@patilindrajeets"
       card: summary_large_image
 
-
+development:
+  mode: auto
 
 reference:
   - title: One-and two-sample t-tests
