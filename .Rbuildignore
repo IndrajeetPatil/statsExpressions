@@ -32,7 +32,6 @@ tests\^spelling
 ^\.lintr$
 ^\.circleci$
 ^tests/manual$
-^revdep$
 ^\.covrignore$
 ^\.github/ISSUE_TEMPLATE$
 ^paper.*$
@@ -47,3 +46,4 @@ references.bib
 ^\.github/workflows/pr-commands\.yaml$
 hextools
 ^WIP/.
+^CITATION\.cff$
