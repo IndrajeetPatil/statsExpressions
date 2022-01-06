@@ -1,19 +1,11 @@
 {
-  "@context": [
-    "https://doi.org/10.5063/schema/codemeta-2.0",
-    "http://schema.org"
-  ],
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "statsExpressions",
   "description": "Utilities for producing dataframes with rich details for the most common types of statistical approaches and tests: parametric, nonparametric, robust, and Bayesian t-test, one-way ANOVA, correlation analyses, contingency table analyses, and meta-analyses. The functions are pipe-friendly and provide a consistent syntax to work with tidy data. These dataframes additionally contain expressions with statistical details, and can be used in graphing packages. This package also forms the statistical processing backend for 'ggstatsplot'.",
   "name": "statsExpressions: Tidy Dataframes and Expressions with Statistical Details",
+  "relatedLink": "https://indrajeetpatil.github.io/statsExpressions/",
   "codeRepository": "https://github.com/IndrajeetPatil/statsExpressions",
-  "relatedLink": [
-    "https://indrajeetpatil.github.io/ggstatsplot/",
-    "https://indrajeetpatil.github.io/statsExpressions/",
-    "https://CRAN.R-project.org/package=statsExpressions",
-    "https://indrajeetpatil.github.io/statsExpressions"
-  ],
   "issueTracker": "https://github.com/IndrajeetPatil/statsExpressions/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
   "version": "1.2.0.9000",
@@ -23,6 +15,12 @@
     "url": "https://r-project.org"
   },
   "runtimePlatform": "R version 4.1.2 (2021-11-01)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
   "author": [
     {
       "@type": "Person",
@@ -32,7 +30,6 @@
       "@id": "https://orcid.org/0000-0003-1995-6531"
     }
   ],
-  "contributor": {},
   "copyrightHolder": [
     {
       "@type": "Person",
@@ -42,7 +39,6 @@
       "@id": "https://orcid.org/0000-0003-1995-6531"
     }
   ],
-  "funder": {},
   "maintainer": [
     {
       "@type": "Person",
@@ -192,14 +188,14 @@
       "name": "utils"
     }
   ],
-  "softwareRequirements": [
-    {
+  "softwareRequirements": {
+    "1": {
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
       "version": ">= 4.0.0"
     },
-    {
+    "2": {
       "@type": "SoftwareApplication",
       "identifier": "BayesFactor",
       "name": "BayesFactor",
@@ -212,7 +208,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=BayesFactor"
     },
-    {
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "correlation",
       "name": "correlation",
@@ -225,11 +221,11 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=correlation"
     },
-    {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "datawizard",
       "name": "datawizard",
-      "version": ">= 0.2.1.9000",
+      "version": ">= 0.2.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -238,7 +234,7 @@
       },
       "sameAs": "https://github.com/easystats/datawizard"
     },
-    {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "dplyr",
       "name": "dplyr",
@@ -250,11 +246,11 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=dplyr"
     },
-    {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "effectsize",
       "name": "effectsize",
-      "version": ">= 0.5.0.1",
+      "version": ">= 0.5.0.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -263,7 +259,7 @@
       },
       "sameAs": "https://github.com/easystats/effectsize"
     },
-    {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "glue",
       "name": "glue",
@@ -275,11 +271,11 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=glue"
     },
-    {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
-      "version": ">= 0.14.5.1",
+      "version": ">= 0.14.5.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -288,7 +284,7 @@
       },
       "sameAs": "https://github.com/easystats/insight"
     },
-    {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "magrittr",
       "name": "magrittr",
@@ -300,7 +296,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=magrittr"
     },
-    {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "parameters",
       "name": "parameters",
@@ -313,7 +309,7 @@
       },
       "sameAs": "https://github.com/easystats/parameters"
     },
-    {
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "performance",
       "name": "performance",
@@ -326,7 +322,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=performance"
     },
-    {
+    "12": {
       "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
@@ -338,12 +334,12 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rlang"
     },
-    {
+    "13": {
       "@type": "SoftwareApplication",
       "identifier": "stats",
       "name": "stats"
     },
-    {
+    "14": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
@@ -355,7 +351,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    {
+    "15": {
       "@type": "SoftwareApplication",
       "identifier": "tidyr",
       "name": "tidyr",
@@ -367,7 +363,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tidyr"
     },
-    {
+    "16": {
       "@type": "SoftwareApplication",
       "identifier": "WRS2",
       "name": "WRS2",
@@ -380,7 +376,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=WRS2"
     },
-    {
+    "17": {
       "@type": "SoftwareApplication",
       "identifier": "zeallot",
       "name": "zeallot",
@@ -391,40 +387,10 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=zeallot"
-    }
-  ],
-  "contIntegration": ["https://app.codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master", "https://github.com/IndrajeetPatil/statsExpressions/actions"],
-  "keywords": [
-    "ggplot-extension",
-    "statistical-tests",
-    "dataviz",
-    "r",
-    "statistical-analysis",
-    "visualization",
-    "datascience",
-    "violin-plot",
-    "plot",
-    "bayes-factors",
-    "regression-models",
-    "correlation",
-    "correlation-matrices",
-    "tidy-data",
-    "effect-size",
-    "mixed-models",
-    "robust-statistics",
-    "non-parametric-statistics",
-    "parametric",
-    "meta-analysis",
-    "statistical-details",
-    "contingency-table",
-    "robust",
-    "bayesian-inference",
-    "bayesian-statistics",
-    "effectsize",
-    "tidy"
-  ],
-  "developmentStatus": ["https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html"],
-  "releaseNotes": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/NEWS.md",
+    },
+    "SystemRequirements": null
+  },
+  "fileSize": "3649.516KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
@@ -454,12 +420,9 @@
       }
     }
   ],
-  "provider": {
-    "@id": "https://cran.r-project.org",
-    "@type": "Organization",
-    "name": "Comprehensive R Archive Network (CRAN)",
-    "url": "https://cran.r-project.org"
-  },
-  "fileSize": "3651.577KB",
-  "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md"
+  "releaseNotes": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/NEWS.md",
+  "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md",
+  "contIntegration": ["https://app.codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master", "https://github.com/IndrajeetPatil/statsExpressions/actions"],
+  "developmentStatus": ["https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html"],
+  "keywords": ["statistical-tests", "statistical-details", "meta-analysis", "contingency-table", "robust", "correlation", "parametric", "bayesian-inference", "bayesian-statistics", "robust-statistics", "effectsize", "tidy"]
 }
