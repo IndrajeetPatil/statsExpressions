@@ -54,11 +54,6 @@ Suggests:
     survival,
     testthat,
     utils
-Remotes:
-    easystats/insight,
-    easystats/datawizard,
-    easystats/parameters,
-    easystats/effectsize
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
