@@ -38,7 +38,7 @@
     
     <a class="navbar-brand me-2" href="../../index.html">statsExpressions</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,9 +88,10 @@
 <div class="row">
   <main id="main"><div class="page-header">
       <img src="../../logo.png" class="logo" alt=""><h1>Dataframe outputs</h1>
-                        <h4 data-toc-skip class="author">Indrajeet Patil</h4>
+                        <h4 data-toc-skip class="author">Indrajeet
+Patil</h4>
             
-            <h4 data-toc-skip class="date">2022-01-12</h4>
+            <h4 data-toc-skip class="date">2022-01-14</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/HEAD/vignettes/web_only/dataframe_outputs.Rmd" class="external-link"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="d-none name"><code>dataframe_outputs.Rmd</code></div>
@@ -120,28 +121,61 @@ A BibTeX entry for LaTeX users is
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>The <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> package has two key aims: to provide a consistent syntax to do statistical analysis with tidy data, and to provide statistical expressions (i.e., a pre-formatted in-text statistical result) for plotting functions. Currently, it supports common types of statistical approaches and tests: parametric, nonparametric, robust, and Bayesian <em>t</em>-test, one-way ANOVA, correlation analyses, contingency table analyses, and meta-analyses. The functions are pipe-friendly and compatible with tidy data.</p>
-<p>Statistical packages exhibit substantial diversity in terms of their syntax and expected input type. This can make it difficult to switch from one statistical approach to another. For example, some functions expect vectors as inputs, while others expect dataframes. Depending on whether it is a repeated measures design or not, different functions might expect data to be in wide or long format. Some functions can internally omit missing values, while other functions error in their presence. Furthermore, if someone wishes to utilize the objects returned by these packages downstream in their workflow, this is not straightforward either because even functions from the same package can return a list, a matrix, an array, a dataframe, etc., depending on the function.</p>
-<p>This is where <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> comes in: It can be thought of as a unified portal through which most of the functionality in these underlying packages can be accessed, with a simpler interface and no requirement to change data format.</p>
+<p>The <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> package has two key aims: to
+provide a consistent syntax to do statistical analysis with tidy data,
+and to provide statistical expressions (i.e., a pre-formatted in-text
+statistical result) for plotting functions. Currently, it supports
+common types of statistical approaches and tests: parametric,
+nonparametric, robust, and Bayesian <em>t</em>-test, one-way ANOVA,
+correlation analyses, contingency table analyses, and meta-analyses. The
+functions are pipe-friendly and compatible with tidy data.</p>
+<p>Statistical packages exhibit substantial diversity in terms of their
+syntax and expected input type. This can make it difficult to switch
+from one statistical approach to another. For example, some functions
+expect vectors as inputs, while others expect dataframes. Depending on
+whether it is a repeated measures design or not, different functions
+might expect data to be in wide or long format. Some functions can
+internally omit missing values, while other functions error in their
+presence. Furthermore, if someone wishes to utilize the objects returned
+by these packages downstream in their workflow, this is not
+straightforward either because even functions from the same package can
+return a list, a matrix, an array, a dataframe, etc., depending on the
+function.</p>
+<p>This is where <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> comes in: It can be
+thought of as a unified portal through which most of the functionality
+in these underlying packages can be accessed, with a simpler interface
+and no requirement to change data format.</p>
 </div>
 <div class="section level2">
 <h2 id="dataframes">Dataframes<a class="anchor" aria-label="anchor" href="#dataframes"></a>
 </h2>
-<p>The dataframe will contain the following columns (the exact columns will depend on the test and the statistical approach):</p>
+<p>The dataframe will contain the following columns (the exact columns
+will depend on the test and the statistical approach):</p>
 <ul>
-<li><p><code>statistic</code>: the numeric value of a statistic.</p></li>
-<li><p><code>df</code>: the numeric value of a parameter being modeled (often degrees of freedom for the test).</p></li>
-<li><p><code>df.error</code> and <code>df</code>: relevant only if the statistic in question has two degrees of freedom (e.g., anova).</p></li>
-<li><p><code>p.value</code>: the two-sided <em>p</em>-value associated with the observed statistic.</p></li>
-<li><p><code>method</code>: the details of the statistical test carried out.</p></li>
-<li><p><code>estimate</code>: estimated value of the effect size.</p></li>
-<li><p><code>conf.low</code>: lower bound for the effect size estimate.</p></li>
-<li><p><code>conf.high</code>: upper bound for the effect size estimate.</p></li>
-<li><p><code>conf.level</code>: width of the confidence interval.</p></li>
+<li><p><code>statistic</code>: the numeric value of a
+statistic.</p></li>
+<li><p><code>df</code>: the numeric value of a parameter being modeled
+(often degrees of freedom for the test).</p></li>
+<li><p><code>df.error</code> and <code>df</code>: relevant only if the
+statistic in question has two degrees of freedom (e.g., anova).</p></li>
+<li><p><code>p.value</code>: the two-sided <em>p</em>-value associated
+with the observed statistic.</p></li>
+<li><p><code>method</code>: the details of the statistical test carried
+out.</p></li>
+<li><p><code>estimate</code>: estimated value of the effect
+size.</p></li>
+<li><p><code>conf.low</code>: lower bound for the effect size
+estimate.</p></li>
+<li><p><code>conf.high</code>: upper bound for the effect size
+estimate.</p></li>
+<li><p><code>conf.level</code>: width of the confidence
+interval.</p></li>
 <li><p><code>effectsize</code>: the type of the effect size.</p></li>
 </ul>
-<p>For details about the tests and types of effect size estimates they correspond to, see: <a href="https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html</a></p>
-<p>Note that all examples are preceded by <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed()</a></code> calls for reproducibility.</p>
+<p>For details about the tests and types of effect size estimates they
+correspond to, see: <a href="https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html</a></p>
+<p>Note that all examples are preceded by <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed()</a></code> calls
+for reproducibility.</p>
 </div>
 <div class="section level2">
 <h2 id="one-sample-tests">One-sample tests<a class="anchor" aria-label="anchor" href="#one-sample-tests"></a>
@@ -1051,7 +1085,8 @@ A BibTeX entry for LaTeX users is
 <div class="section level2">
 <h2 id="suggestions">Suggestions<a class="anchor" aria-label="anchor" href="#suggestions"></a>
 </h2>
-<p>If you find any bugs or have any suggestions/remarks, please file an issue on GitHub: <a href="https://github.com/IndrajeetPatil/statsExpressions/issues" class="external-link uri">https://github.com/IndrajeetPatil/statsExpressions/issues</a></p>
+<p>If you find any bugs or have any suggestions/remarks, please file an
+issue on GitHub: <a href="https://github.com/IndrajeetPatil/statsExpressions/issues" class="external-link uri">https://github.com/IndrajeetPatil/statsExpressions/issues</a></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
@@ -1061,12 +1096,15 @@ A BibTeX entry for LaTeX users is
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by <a href="https://sites.google.com/site/indrajeetspatilmorality/" class="external-link">Indrajeet Patil</a>.</p>
+<p>Developed by
+<a href="https://sites.google.com/site/indrajeetspatilmorality/" class="external-link">Indrajeet
+Patil</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
+2.0.1.9000.</p>
 </div>
 
     </footer>
