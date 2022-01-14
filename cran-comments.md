@@ -10,13 +10,10 @@
 
 0 errors | 0 warnings | 0 note
 
-  - Fixes failing tests due to `{effectsize}` package update.
+  - Fixes failing tests due to `{insight}` package update.
 
 ## revdepcheck results
 
-We checked 1 reverse dependency (`{ggstatsplot}`), comparing R CMD check results
-across CRAN and dev versions of this package.
-
- * We saw 0 new problems
-
- * We failed to check 0 packages
+One reverse dependency (`{ggstatsplot}`) is adversely affected. I am the
+maintainer of this package and will be submitting an updated version to CRAN as
+soon as `{statsExpressions}` update makes it to CRAN.

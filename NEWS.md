@@ -1,4 +1,4 @@
-# statsExpressions 1.2.0.9000
+# statsExpressions 1.3.0
 
 BREAKING CHANGES
 

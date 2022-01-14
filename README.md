@@ -522,7 +522,7 @@ console.
 
 ## `two_sample_test` + `oneway_anova`
 
-No. of groups: `2` => `two_sample_test`<br> No. of groups: `> 2` =>
+No. of groups: `2` =\> `two_sample_test`<br> No. of groups: `> 2` =\>
 `oneway_anova`
 
 ### between-subjects
