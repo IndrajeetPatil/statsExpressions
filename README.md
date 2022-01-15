@@ -38,10 +38,10 @@ requirement to change data format.
 
 # Installation
 
-| Type        | Source | Command                                                      |
-|-------------|--------|--------------------------------------------------------------|
-| Release     | CRAN   | `install.packages("statsExpressions")`                       |
-| Development | GitHub | `remotes::install_github("IndrajeetPatil/statsExpressions")` |
+| Type        | Source                                                                                                                       | Command                                                      |
+|-------------|------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| Release     | [![CRAN Status](https://www.r-pkg.org/badges/version/statsExpressions)](https://cran.r-project.org/package=statsExpressions) | `install.packages("statsExpressions")`                       |
+| Development | [![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/##active)                | `remotes::install_github("IndrajeetPatil/statsExpressions")` |
 
 # Citation
 

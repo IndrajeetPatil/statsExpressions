@@ -4,7 +4,7 @@
   "identifier": "statsExpressions",
   "description": "Utilities for producing dataframes with rich details for the most common types of statistical approaches and tests: parametric, nonparametric, robust, and Bayesian t-test, one-way ANOVA, correlation analyses, contingency table analyses, and meta-analyses. The functions are pipe-friendly and provide a consistent syntax to work with tidy data. These dataframes additionally contain expressions with statistical details, and can be used in graphing packages. This package also forms the statistical processing backend for 'ggstatsplot'.",
   "name": "statsExpressions: Tidy Dataframes and Expressions with Statistical Details",
-  "relatedLink": "https://indrajeetpatil.github.io/statsExpressions/",
+  "relatedLink": ["https://indrajeetpatil.github.io/statsExpressions/", "https://CRAN.R-project.org/package=statsExpressions"],
   "codeRepository": "https://github.com/IndrajeetPatil/statsExpressions",
   "issueTracker": "https://github.com/IndrajeetPatil/statsExpressions/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
@@ -390,7 +390,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "3649.426KB",
+  "fileSize": "3649.898KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
@@ -423,6 +423,6 @@
   "releaseNotes": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/NEWS.md",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md",
   "contIntegration": ["https://app.codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master", "https://github.com/IndrajeetPatil/statsExpressions/actions"],
-  "developmentStatus": ["https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html"],
+  "developmentStatus": ["https://lifecycle.r-lib.org/articles/stages.html", "https://www.repostatus.org/##active", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html"],
   "keywords": ["statistical-tests", "statistical-details", "meta-analysis", "contingency-table", "robust", "correlation", "parametric", "bayesian-inference", "bayesian-statistics", "robust-statistics", "effectsize", "tidy"]
 }
