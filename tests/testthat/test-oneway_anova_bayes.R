@@ -9,12 +9,12 @@ test_that(
     # extracting results from where this function is implemented
     set.seed(123)
     df1 <- suppressWarnings(oneway_anova(
-      type = "bayes",
-      data = ggplot2::msleep,
-      x = vore,
-      y = brainwt,
+      type     = "bayes",
+      data     = ggplot2::msleep,
+      x        = vore,
+      y        = brainwt,
       bf.prior = 0.99,
-      k = 3
+      k        = 3L
     ))
 
     expect_snapshot(dplyr::select(df1, -expression), variant = .Platform$OS.type)
@@ -23,13 +23,13 @@ test_that(
     # data where it works
     set.seed(123)
     df2 <- suppressWarnings(oneway_anova(
-      type = "bayes",
-      data = iris,
-      x = Species,
-      y = Sepal.Length,
-      conf.level = 0.99,
+      type        = "bayes",
+      data        = iris,
+      x           = Species,
+      y           = Sepal.Length,
+      conf.level  = 0.99,
       conf.method = "eti",
-      k = 4
+      k           = 4L
     ))
 
     expect_snapshot(dplyr::select(df2, -expression), variant = .Platform$OS.type)
@@ -44,11 +44,11 @@ test_that(
 
     set.seed(123)
     df1 <- oneway_anova(
-      type = "bayes",
-      data = WRS2::WineTasting,
-      x = Wine,
-      y = Taste,
-      paired = TRUE,
+      type     = "bayes",
+      data     = WRS2::WineTasting,
+      x        = Wine,
+      y        = Taste,
+      paired   = TRUE,
       bf.prior = 0.88
     )
 
@@ -58,10 +58,10 @@ test_that(
     # data with NA
     set.seed(123)
     df2 <- oneway_anova(
-      type = "bayes",
-      data = bugs_long,
-      x = condition,
-      y = desire,
+      type   = "bayes",
+      data   = bugs_long,
+      x      = condition,
+      y      = desire,
       paired = TRUE
     )
 
@@ -100,21 +100,21 @@ test_that(
     # incorrect
     set.seed(123)
     expr1 <- oneway_anova(
-      type = "bayes",
-      data = df,
-      x = condition,
-      y = score,
+      type       = "bayes",
+      data       = df,
+      x          = condition,
+      y          = score,
       subject.id = id,
-      paired = TRUE
+      paired     = TRUE
     )
 
     # correct
     set.seed(123)
     expr2 <- oneway_anova(
-      type = "bayes",
-      data = arrange(df, id),
-      x = condition,
-      y = score,
+      type   = "bayes",
+      data   = arrange(df, id),
+      x      = condition,
+      y      = score,
       paired = TRUE
     )
 

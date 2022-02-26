@@ -53,7 +53,6 @@
       "@type": "SoftwareApplication",
       "identifier": "afex",
       "name": "afex",
-      "version": ">= 1.0-1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -212,7 +211,7 @@
       "@type": "SoftwareApplication",
       "identifier": "correlation",
       "name": "correlation",
-      "version": ">= 0.7.1",
+      "version": ">= 0.8.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -225,7 +224,7 @@
       "@type": "SoftwareApplication",
       "identifier": "datawizard",
       "name": "datawizard",
-      "version": ">= 0.2.2",
+      "version": ">= 0.2.3",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -250,7 +249,7 @@
       "@type": "SoftwareApplication",
       "identifier": "effectsize",
       "name": "effectsize",
-      "version": ">= 0.6.0",
+      "version": ">= 0.6.0.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -275,14 +274,14 @@
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
-      "version": ">= 0.15.0",
+      "version": ">= 0.16.0.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=insight"
+      "sameAs": "https://github.com/easystats/insight"
     },
     "9": {
       "@type": "SoftwareApplication",
@@ -390,7 +389,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "3649.898KB",
+  "fileSize": "3651.639KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
