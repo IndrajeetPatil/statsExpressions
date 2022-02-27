@@ -36,6 +36,12 @@ unified portal through which most of the functionality in these
 underlying packages can be accessed, with a simpler interface and no
 requirement to change data format.
 
+This package forms the statistical processing backend for
+[`ggstatsplot`](https://indrajeetpatil.github.io/ggstatsplot/) package.
+
+For more documentation, see the dedicated
+[website](https://indrajeetpatil.github.io/statsExpressions/).
+
 # Installation
 
 | Type        | Source                                                                                                                       | Command                                                      |
@@ -74,9 +80,9 @@ A BibTeX entry for LaTeX users is
 
 <img src="man/figures/card.png" width="80%" />
 
-# Summary of types of statistical analyses
+# Summary of functionality
 
-Here is a tabular summary of available tests:
+**Summary of available analyses**
 
 | Test                       | Function            | Lifecycle                                                                                                                       |
 |----------------------------|---------------------|---------------------------------------------------------------------------------------------------------------------------------|
@@ -87,8 +93,17 @@ Here is a tabular summary of available tests:
 | contingency table analysis | `contingency_table` | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
 | meta-analysis              | `meta_analysis`     | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
 
-The table below summarizes all the different types of analyses currently
-supported in this package-
+**Summary of details available for analyses**
+
+| Analysis                        | Hypothesis testing | Effect size estimation |
+|---------------------------------|--------------------|------------------------|
+| (one/two-sample) *t*-test       | ✅                 | ✅                     |
+| one-way ANOVA                   | ✅                 | ✅                     |
+| correlation                     | ✅                 | ✅                     |
+| (one/two-way) contingency table | ✅                 | ✅                     |
+| random-effects meta-analysis    | ✅                 | ✅                     |
+
+**Summary of supported statistical approaches**
 
 | Description                                       | Parametric | Non-parametric | Robust | Bayesian |
 |---------------------------------------------------|------------|----------------|--------|----------|
@@ -99,16 +114,6 @@ supported in this package-
 | Association between categorical variables         | ✅         | ✅             | ❌     | ✅       |
 | Equal proportions for categorical variable levels | ✅         | ✅             | ❌     | ✅       |
 | Random-effects meta-analysis                      | ✅         | ❌             | ✅     | ✅       |
-
-Summary of Bayesian analysis
-
-| Analysis                        | Hypothesis testing | Estimation |
-|---------------------------------|--------------------|------------|
-| (one/two-sample) *t*-test       | ✅                 | ✅         |
-| one-way ANOVA                   | ✅                 | ✅         |
-| correlation                     | ✅                 | ✅         |
-| (one/two-way) contingency table | ✅                 | ✅         |
-| random-effects meta-analysis    | ✅                 | ✅         |
 
 # Tidy dataframes from statistical analysis
 
@@ -362,8 +367,10 @@ set.seed(123)
 library(ggplot2)
 
 # dataframe with results
-df_results <- one_sample_test(mtcars, wt, test.value = 3, type = "bayes",
-                              top.text = "Bayesian one-sample t-test")
+df_results <- one_sample_test(mtcars, wt,
+  test.value = 3, type = "bayes",
+  top.text = "Bayesian one-sample t-test"
+)
 
 # creating a histogram plot
 ggplot(mtcars, aes(wt)) +
@@ -520,7 +527,7 @@ console.
 | Robust         | trimmed mean                                      | `parameters::describe_distribution()` |
 | Bayesian       | MAP (maximum *a posteriori* probability) estimate | `parameters::describe_distribution()` |
 
-### `oneway_anova`
+## `oneway_anova`
 
 #### between-subjects
 
@@ -562,7 +569,7 @@ console.
 | Robust         | \> 2          | Algina-Keselman-Penfield robust standardized difference average | Yes           | `WRS2::wmcpAKP()`                                          |
 | Bayes Factor   | \> 2          | Bayesian R-squared                                              | Yes           | `performance::r2_bayes()`                                  |
 
-### `two_sample_test`
+## `two_sample_test`
 
 #### between-subjects
 
@@ -635,7 +642,7 @@ console.
 | Robust         | Winsorized Pearson correlation coefficient | Yes           | `correlation::correlation()` |
 | Bayesian       | Bayesian Pearson’s correlation coefficient | Yes           | `correlation::correlation()` |
 
-### `contingency_table`
+## `contingency_table`
 
 #### two-way table
 
@@ -686,13 +693,13 @@ console.
 # Usage in `ggstatsplot`
 
 Note that these functions were initially written to display results from
-statistical tests on ready-made `ggplot2` plots implemented in
-`ggstatsplot`.
+statistical tests on ready-made `{ggplot2}` plots implemented in
+`{ggstatsplot}`.
 
 For detailed documentation, see the package website:
 <https://indrajeetpatil.github.io/ggstatsplot/>
 
-Here is an example from `ggstatsplot` of what the plots look like when
+Here is an example from `{ggstatsplot}` of what the plots look like when
 the expressions are displayed in the subtitle-
 
 <img src="man/figures/ggstatsplot.png" align="center" />

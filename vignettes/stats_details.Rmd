@@ -40,30 +40,11 @@ more about how one-way (between-subjects) ANOVA, you can run
 
 Abbreviations used: CI = Confidence Interval
 
-## Bird's-eye view summary
+## Summary of functionality
 
-The table below summarizes all the different types of analyses currently
-supported in this package-
+```{r child="../man/rmd-fragments/functionality.Rmd"}
 
-Description | Parametric | Non-parametric | Robust | Bayesian
------------------- | ---- | ----- | ----| ----- 
-Between group/condition comparisons | Yes | Yes | Yes | Yes
-Within group/condition comparisons | Yes | Yes | Yes | Yes
-Distribution of a numeric variable | Yes | Yes | Yes | Yes
-Correlation between two variables | Yes | Yes | Yes | Yes
-Association between categorical variables | Yes | Yes | No | Yes
-Equal proportions for categorical variable levels | Yes | Yes | No | Yes
-Random-effects meta-analysis | Yes | No | Yes | Yes
-
-Summary of Bayesian analysis
-
-Analysis | Hypothesis testing | Estimation
------------------- | ---------- | ---------
-(one/two-sample) *t*-test | Yes | Yes
-one-way ANOVA | Yes | Yes
-correlation | Yes | Yes
-(one/two-way) contingency table | Yes | Yes
-random-effects meta-analysis | Yes | Yes
+```
 
 ## Summary of tests and effect sizes
 

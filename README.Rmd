@@ -37,26 +37,9 @@ Status | Usage| Miscellaneous
  
 # Introduction <img src="man/figures/logo.png" align="right" width="240" />
 
-The `{statsExpressions}` package has two key aims: 
+```{r child="man/rmd-fragments/statsExpressions-package.Rmd"}
 
-- to provide a consistent syntax to do statistical analysis with tidy data (in pipe-friendly manner),
-- to provide statistical expressions (pre-formatted in-text statistical
-results) for plotting functions.
-
-Statistical packages exhibit substantial diversity in terms of their syntax and
-expected input type. This can make it difficult to switch from one statistical
-approach to another. For example, some functions expect vectors as inputs, while
-others expect dataframes. Depending on whether it is a repeated measures design
-or not, different functions might expect data to be in wide or long format. Some
-functions can internally omit missing values, while other functions error in
-their presence. Furthermore, if someone wishes to utilize the objects returned
-by these packages downstream in their workflow, this is not straightforward
-either because even functions from the same package can return a list, a matrix,
-an array, a dataframe, etc., depending on the function.
-
-This is where `{statsExpressions}` comes in: It can be thought of as a unified
-portal through which most of the functionality in these underlying packages can
-be accessed, with a simpler interface and no requirement to change data format.
+```
 
 # Installation
 
@@ -79,41 +62,11 @@ citation("statsExpressions")
 knitr::include_graphics("man/figures/card.png")
 ```
 
-# Summary of types of statistical analyses
+# Summary of functionality
 
-Here is a tabular summary of available tests:
+```{r child="man/rmd-fragments/functionality.Rmd"}
 
-Test | Function | Lifecycle
------------------- | -------- | ----- 
-one-sample *t*-test | `one_sample_test` | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
-two-sample *t*-test | `two_sample_test` | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
-one-way ANOVA | `oneway_anova` | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
-correlation analysis | `corr_test` | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
-contingency table analysis | `contingency_table` | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
-meta-analysis | `meta_analysis` | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
-
-The table below summarizes all the different types of analyses currently
-supported in this package-
-
-Description | Parametric | Non-parametric | Robust | Bayesian
------------------- | ---- | ----- | ----| ----- 
-Between group/condition comparisons | ✅ | ✅ | ✅ | ✅
-Within group/condition comparisons | ✅ | ✅ | ✅ | ✅
-Distribution of a numeric variable | ✅ | ✅ | ✅ | ✅
-Correlation between two variables | ✅ | ✅ | ✅ | ✅
-Association between categorical variables | ✅ | ✅ | ❌ | ✅
-Equal proportions for categorical variable levels | ✅ | ✅ | ❌ | ✅
-Random-effects meta-analysis | ✅ | ❌ | ✅ | ✅
-
-Summary of Bayesian analysis
-
-Analysis | Hypothesis testing | Estimation
------------------- | ---------- | ---------
-(one/two-sample) *t*-test | ✅ | ✅
-one-way ANOVA | ✅ | ✅
-correlation | ✅ | ✅
-(one/two-way) contingency table | ✅ | ✅
-random-effects meta-analysis | ✅ | ✅
+```
 
 # Tidy dataframes from statistical analysis
 
@@ -451,13 +404,13 @@ more about how one-way (between-subjects) ANOVA, you can run
 
 ```
 
-### `oneway_anova`
+## `oneway_anova`
 
 ```{r child="man/rmd-fragments/oneway_anova.Rmd"}
 
 ```
 
-### `two_sample_test` 
+## `two_sample_test` 
 
 ```{r child="man/rmd-fragments/two_sample_test.Rmd"}
 
@@ -475,7 +428,7 @@ more about how one-way (between-subjects) ANOVA, you can run
 
 ```
 
-### `contingency_table`
+## `contingency_table`
 
 ```{r child="man/rmd-fragments/contingency_table.Rmd"}
 
@@ -490,12 +443,12 @@ more about how one-way (between-subjects) ANOVA, you can run
 # Usage in `ggstatsplot`
 
 Note that these functions were initially written to display results from
-statistical tests on ready-made `ggplot2` plots implemented in `ggstatsplot`.
+statistical tests on ready-made `{ggplot2}` plots implemented in `{ggstatsplot}`.
 
 For detailed documentation, see the package website:
 <https://indrajeetpatil.github.io/ggstatsplot/>
 
-Here is an example from `ggstatsplot` of what the plots look like when the
+Here is an example from `{ggstatsplot}` of what the plots look like when the
 expressions are displayed in the subtitle-
 
 <img src="man/figures/ggstatsplot.png" align="center" />
