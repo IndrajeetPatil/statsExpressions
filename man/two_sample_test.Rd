@@ -101,13 +101,58 @@ mostly relevant in the context of \code{ggstatsplot} package functions.}
 
 \item{...}{Currently ignored.}
 }
-\description{
+\value{
 A dataframe containing results from a two-sample test and effect size plus
 confidence intervals.
+}
+\description{
+The table below provides summary about:
+\itemize{
+\item statistical test carried out for inferential statistics
+\item type of effect size estimate and a measure of uncertainty for this estimate
+\item functions used internally to compute these details
+}
+\subsection{between-subjects}{
 
-To see details about functions which are internally used to carry out these
-analyses, see the following vignette-
-\url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
+\strong{Hypothesis testing}\tabular{llll}{
+   Type \tab No. of groups \tab Test \tab Function used \cr
+   Parametric \tab 2 \tab Student's or Welch's \emph{t}-test \tab \code{stats::t.test()} \cr
+   Non-parametric \tab 2 \tab Mann-Whitney \emph{U} test \tab \code{stats::wilcox.test()} \cr
+   Robust \tab 2 \tab Yuen's test for trimmed means \tab \code{WRS2::yuen()} \cr
+   Bayesian \tab 2 \tab Student's \emph{t}-test \tab \code{BayesFactor::ttestBF()} \cr
+}
+
+
+\strong{Effect size estimation}\tabular{lllll}{
+   Type \tab No. of groups \tab Effect size \tab CI available? \tab Function used \cr
+   Parametric \tab 2 \tab Cohen's \emph{d}, Hedge's \emph{g} \tab Yes \tab \code{effectsize::cohens_d()}, \code{effectsize::hedges_g()} \cr
+   Non-parametric \tab 2 \tab \emph{r} (rank-biserial correlation) \tab Yes \tab \code{effectsize::rank_biserial()} \cr
+   Robust \tab 2 \tab Algina-Keselman-Penfield robust standardized difference \tab Yes \tab \code{WRS2::akp.effect()} \cr
+   Bayesian \tab 2 \tab difference \tab Yes \tab \code{bayestestR::describe_posterior()} \cr
+}
+
+}
+
+\subsection{within-subjects}{
+
+\strong{Hypothesis testing}\tabular{llll}{
+   Type \tab No. of groups \tab Test \tab Function used \cr
+   Parametric \tab 2 \tab Student's \emph{t}-test \tab \code{stats::t.test()} \cr
+   Non-parametric \tab 2 \tab Wilcoxon signed-rank test \tab \code{stats::wilcox.test()} \cr
+   Robust \tab 2 \tab Yuen's test on trimmed means for dependent samples \tab \code{WRS2::yuend()} \cr
+   Bayesian \tab 2 \tab Student's \emph{t}-test \tab \code{BayesFactor::ttestBF()} \cr
+}
+
+
+\strong{Effect size estimation}\tabular{lllll}{
+   Type \tab No. of groups \tab Effect size \tab CI available? \tab Function used \cr
+   Parametric \tab 2 \tab Cohen's \emph{d}, Hedge's \emph{g} \tab Yes \tab \code{effectsize::cohens_d()}, \code{effectsize::hedges_g()} \cr
+   Non-parametric \tab 2 \tab \emph{r} (rank-biserial correlation) \tab Yes \tab \code{effectsize::rank_biserial()} \cr
+   Robust \tab 2 \tab Algina-Keselman-Penfield robust standardized difference \tab Yes \tab \code{WRS2::wmcpAKP()} \cr
+   Bayesian \tab 2 \tab difference \tab Yes \tab \code{bayestestR::describe_posterior()} \cr
+}
+
+}
 }
 \examples{
 \donttest{

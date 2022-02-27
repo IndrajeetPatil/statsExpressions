@@ -1,17 +1,18 @@
 #' @title Correlation analyses
 #' @name corr_test
 #'
-#' @description
+#' @return
 #'
 #'  A dataframe containing results from correlation test with confidence
 #'  intervals for the correlation coefficient estimate.
 #'
-#' ```{r child="man/rmd-fragments/corr_test.Rmd"}
+#' @description
+#'
+#' ```{r child="man/rmd-fragments/table_intro.Rmd"}
 #' ```
 #'
-#' @references To see details about functions which are internally used to carry
-#'   out these analyses, see the following vignette-
-#' <https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html>
+#' ```{r child="man/rmd-fragments/corr_test.Rmd"}
+#' ```
 #'
 #' @param x The column in `data` containing the explanatory variable to be
 #'   plotted on the `x`-axis.

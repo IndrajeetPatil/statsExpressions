@@ -15,6 +15,14 @@
 #'
 #' @description
 #'
+#' ```{r child="man/rmd-fragments/table_intro.Rmd"}
+#' ```
+#'
+#' ```{r child="man/rmd-fragments/one_sample_test.Rmd"}
+#' ```
+#'
+#' @return
+#'
 #' A dataframe containing results from a one-sample test.
 #'
 #' @details

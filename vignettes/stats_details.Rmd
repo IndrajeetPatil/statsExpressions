@@ -47,23 +47,23 @@ supported in this package-
 
 Description | Parametric | Non-parametric | Robust | Bayesian
 ------------------ | ---- | ----- | ----| ----- 
-Between group/condition comparisons | ✅ | ✅ | ✅ | ✅
-Within group/condition comparisons | ✅ | ✅ | ✅ | ✅
-Distribution of a numeric variable | ✅ | ✅ | ✅ | ✅
-Correlation between two variables | ✅ | ✅ | ✅ | ✅
-Association between categorical variables | ✅ | ✅ | ❌ | ✅
-Equal proportions for categorical variable levels | ✅ | ✅ | ❌ | ✅
-Random-effects meta-analysis | ✅ | ❌ | ✅ | ✅
+Between group/condition comparisons | Yes | Yes | Yes | Yes
+Within group/condition comparisons | Yes | Yes | Yes | Yes
+Distribution of a numeric variable | Yes | Yes | Yes | Yes
+Correlation between two variables | Yes | Yes | Yes | Yes
+Association between categorical variables | Yes | Yes | No | Yes
+Equal proportions for categorical variable levels | Yes | Yes | No | Yes
+Random-effects meta-analysis | Yes | No | Yes | Yes
 
 Summary of Bayesian analysis
 
 Analysis | Hypothesis testing | Estimation
 ------------------ | ---------- | ---------
-(one/two-sample) *t*-test | ✅ | ✅
-one-way ANOVA | ✅ | ✅
-correlation | ✅ | ✅
-(one/two-way) contingency table | ✅ | ✅
-random-effects meta-analysis | ✅ | ✅
+(one/two-sample) *t*-test | Yes | Yes
+one-way ANOVA | Yes | Yes
+correlation | Yes | Yes
+(one/two-way) contingency table | Yes | Yes
+random-effects meta-analysis | Yes | Yes
 
 ## Summary of tests and effect sizes
 
@@ -83,86 +83,20 @@ Non-parametric | median | `parameters::describe_distribution`
 Robust | trimmed mean | `parameters::describe_distribution`
 Bayesian | MAP (maximum *a posteriori* probability) estimate | `parameters::describe_distribution`
 
-### `two_sample_test` + `oneway_anova`
+### `oneway_anova`
 
-No. of groups: `2` => `two_sample_test`<br>
-No. of groups: `> 2` => `oneway_anova`
+```{r child="../man/rmd-fragments/oneway_anova.Rmd"}
+```
 
-#### between-subjects
+### `two_sample_test` 
 
-**Hypothesis testing**
-
-Type | No. of groups | Test | Function used
------------ | --- | ------------------------- | -----
-Parametric | > 2 | Fisher's or Welch's one-way ANOVA | `stats::oneway.test`
-Non-parametric | > 2 | Kruskal–Wallis one-way ANOVA | `stats::kruskal.test`
-Robust | > 2 | Heteroscedastic one-way ANOVA for trimmed means | `WRS2::t1way`
-Bayes Factor | > 2 | Fisher's ANOVA | `BayesFactor::anovaBF`
-Parametric | 2 | Student's or Welch's *t*-test | `stats::t.test`
-Non-parametric | 2 | Mann–Whitney *U* test | `stats::wilcox.test`
-Robust | 2 |  Yuen's test for trimmed means | `WRS2::yuen`
-Bayesian | 2 | Student's *t*-test | `BayesFactor::ttestBF`
-
-**Effect size estimation**
-
-Type | No. of groups | Effect size | CI? | Function used
------------ | --- | ------------------------- | --- | -----
-Parametric | > 2 | $\eta_{p}^2$, $\omega_{p}^2$ | ✅ | `effectsize::omega_squared`, `effectsize::eta_squared`
-Non-parametric | > 2 | $\epsilon_{ordinal}^2$ | ✅ | `effectsize::rank_epsilon_squared`
-Robust | > 2 | $\xi$ (Explanatory measure of effect size) | ✅ | `WRS2::t1way`
-Bayes Factor | > 2 | $R_{Bayesian}^2$ | ✅ | `performance::r2_bayes`
-Parametric | 2 | Cohen's *d*, Hedge's *g* | ✅ | `effectsize::cohens_d`, `effectsize::hedges_g`
-Non-parametric | 2 | *r* (rank-biserial correlation) | ✅ | `effectsize::rank_biserial`
-Robust | 2 |  $\delta_{R}^{AKP}$ (Algina-Keselman-Penfield robust standardized difference) | ✅ | `WRS2::akp.effect`
-Bayesian | 2 | $\delta_{posterior}$ | ✅ | `bayestestR::describe_posterior`
-
-#### within-subjects
-
-**Hypothesis testing**
-
-Type | No. of groups | Test | Function used
------------ | --- | ------------------------- | -----
-Parametric | > 2 | One-way repeated measures ANOVA | `afex::aov_ez`
-Non-parametric | > 2 | Friedman rank sum test | `stats::friedman.test`
-Robust | > 2 | Heteroscedastic one-way repeated measures ANOVA for trimmed means | `WRS2::rmanova`
-Bayes Factor | > 2 | One-way repeated measures ANOVA | `BayesFactor::anovaBF`
-Parametric | 2 | Student's *t*-test | `stats::t.test`
-Non-parametric | 2 | Wilcoxon signed-rank test | `stats::wilcox.test`
-Robust | 2 | Yuen's test on trimmed means for dependent samples | `WRS2::yuend`
-Bayesian | 2 | Student's *t*-test | `BayesFactor::ttestBF`
-
-**Effect size estimation**
-
-Type | No. of groups | Effect size | CI? | Function used
------------ | --- | ------------------------- | --- | -----
-Parametric | > 2 | $\eta_{p}^2$, $\omega_{p}^2$ | ✅ | `effectsize::omega_squared`, `effectsize::eta_squared`
-Non-parametric | > 2 | $W_{Kendall}$ (Kendall's coefficient of concordance) | ✅ | `effectsize::kendalls_w`
-Robust | > 2 | $\delta_{R-avg}^{AKP}$ (Algina-Keselman-Penfield robust standardized difference average) | ✅ | `WRS2::wmcpAKP`
-Bayes Factor | > 2 | $R_{Bayesian}^2$ | ✅ | `performance::r2_bayes`
-Parametric | 2 | Cohen's *d*, Hedge's *g* | ✅ | `effectsize::cohens_d`, `effectsize::hedges_g`
-Non-parametric | 2 | *r* (rank-biserial correlation) | ✅ | `effectsize::rank_biserial`
-Robust | 2 |  $\delta_{R}^{AKP}$ (Algina-Keselman-Penfield robust standardized difference) | ✅ | `WRS2::wmcpAKP`
-Bayesian | 2 | $\delta_{posterior}$ | ✅ | `bayestestR::describe_posterior`
+```{r child="../man/rmd-fragments/two_sample_test.Rmd"}
+```
 
 ### `one_sample_test`
 
-**Hypothesis testing**
-
-Type | Test | Function used
------------------- | ------------------------- | -----
-Parametric | One-sample Student's *t*-test | `stats::t.test`
-Non-parametric | One-sample Wilcoxon test | `stats::wilcox.test`
-Robust | Bootstrap-*t* method for one-sample test | `WRS2::trimcibt`
-Bayesian | One-sample Student's *t*-test | `BayesFactor::ttestBF`
-
-**Effect size estimation**
-
-Type | Effect size | CI? | Function used
------------- | ----------------------- | --- | -----
-Parametric | Cohen's *d*, Hedge's *g* | ✅ | `effectsize::cohens_d`, `effectsize::hedges_g`
-Non-parametric | *r* (rank-biserial correlation) | ✅ | `effectsize::rank_biserial`
-Robust | trimmed mean | ✅ | `trimcibt` (custom)
-Bayes Factor | $\delta_{posterior}$ | ✅ | `bayestestR::describe_posterior`
+```{r child="../man/rmd-fragments/one_sample_test.Rmd"}
+```
 
 ### `corr_test`
 
@@ -180,16 +114,16 @@ Type | Design | Test | Function used
 Parametric/Non-parametric | Unpaired | Pearson's $\chi^2$ test | `stats::chisq.test`
 Bayesian | Unpaired | Bayesian Pearson's $\chi^2$ test | `BayesFactor::contingencyTableBF`
 Parametric/Non-parametric | Paired  | McNemar's $\chi^2$ test | `stats::mcnemar.test`
-Bayesian | Paired  | ❌ | ❌
+Bayesian | Paired  | No | ❌
 
 **Effect size estimation**
 
-Type | Design | Effect size | CI? | Function used
+Type | Design | Effect size | CI available? | Function used
 ----------- | ----- | ------------------------- | --- | -----
-Parametric/Non-parametric | Unpaired | Cramer's $V$ | ✅ | `effectsize::cramers_v`
-Bayesian | Unpaired | Cramer's $V$ | ✅ | `effectsize::cramers_v`
-Parametric/Non-parametric | Paired | Cohen's $g$ | ✅ | `effectsize::cohens_g`
-Bayesian | Paired | ❌ | ❌ | ❌
+Parametric/Non-parametric | Unpaired | Cramer's $V$ | Yes | `effectsize::cramers_v`
+Bayesian | Unpaired | Cramer's $V$ | Yes | `effectsize::cramers_v`
+Parametric/Non-parametric | Paired | Cohen's $g$ | Yes | `effectsize::cohens_g`
+Bayesian | Paired | No | No | ❌
 
 #### one-way table
 
@@ -202,20 +136,20 @@ Bayesian | Bayesian Goodness of fit $\chi^2$ test | (custom)
 
 **Effect size estimation**
 
-Type | Effect size | CI? | Function used
+Type | Effect size | CI available? | Function used
 ----------- | ------------------------- | --- | -----
-Parametric/Non-parametric | Pearson's $C$ | ✅ | `effectsize::pearsons_c`
-Bayesian | ❌ | ❌ | ❌
+Parametric/Non-parametric | Pearson's $C$ | Yes | `effectsize::pearsons_c`
+Bayesian | No | No | ❌
 
 ### `meta_analysis`
 
 **Hypothesis testing** and **Effect size estimation**
 
-Type | Test | Effect size | CI? | Function used
+Type | Test | Effect size | CI available? | Function used
 ----------- | -------------------- | -------- | ---  | -----
-Parametric | Meta-analysis via random-effects models | $\beta$ | ✅ | `metafor::metafor`
-Robust | Meta-analysis via robust random-effects models | $\beta$ | ✅ | `metaplus::metaplus`
-Bayes | Meta-analysis via Bayesian random-effects models | $\beta$ | ✅ | `metaBMA::meta_random`
+Parametric | Meta-analysis via random-effects models | $\beta$ | Yes | `metafor::metafor`
+Robust | Meta-analysis via robust random-effects models | $\beta$ | Yes | `metaplus::metaplus`
+Bayes | Meta-analysis via Bayesian random-effects models | $\beta$ | Yes | `metaBMA::meta_random`
 
 ## Effect size interpretation
 

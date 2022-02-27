@@ -520,66 +520,89 @@ console.
 | Robust         | trimmed mean                                      | `parameters::describe_distribution` |
 | Bayesian       | MAP (maximum *a posteriori* probability) estimate | `parameters::describe_distribution` |
 
-## `two_sample_test` + `oneway_anova`
+### `oneway_anova`
 
-No. of groups: `2` =\> `two_sample_test`<br> No. of groups: `> 2` =\>
-`oneway_anova`
-
-### between-subjects
+#### between-subjects
 
 **Hypothesis testing**
 
-| Type           | No. of groups | Test                                            | Function used          |
-|----------------|---------------|-------------------------------------------------|------------------------|
-| Parametric     | \> 2          | Fisher’s or Welch’s one-way ANOVA               | `stats::oneway.test`   |
-| Non-parametric | \> 2          | Kruskal–Wallis one-way ANOVA                    | `stats::kruskal.test`  |
-| Robust         | \> 2          | Heteroscedastic one-way ANOVA for trimmed means | `WRS2::t1way`          |
-| Bayes Factor   | \> 2          | Fisher’s ANOVA                                  | `BayesFactor::anovaBF` |
-| Parametric     | 2             | Student’s or Welch’s *t*-test                   | `stats::t.test`        |
-| Non-parametric | 2             | Mann–Whitney *U* test                           | `stats::wilcox.test`   |
-| Robust         | 2             | Yuen’s test for trimmed means                   | `WRS2::yuen`           |
-| Bayesian       | 2             | Student’s *t*-test                              | `BayesFactor::ttestBF` |
+| Type           | No. of groups | Test                                            | Function used            |
+|----------------|---------------|-------------------------------------------------|--------------------------|
+| Parametric     | \> 2          | Fisher’s or Welch’s one-way ANOVA               | `stats::oneway.test()`   |
+| Non-parametric | \> 2          | Kruskal-Wallis one-way ANOVA                    | `stats::kruskal.test()`  |
+| Robust         | \> 2          | Heteroscedastic one-way ANOVA for trimmed means | `WRS2::t1way()`          |
+| Bayes Factor   | \> 2          | Fisher’s ANOVA                                  | `BayesFactor::anovaBF()` |
 
 **Effect size estimation**
 
-| Type           | No. of groups | Effect size                                                                                                                                                                                          | CI? | Function used                                          |
-|----------------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|--------------------------------------------------------|
-| Parametric     | \> 2          | ![\\eta\_{p}^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Ceta_%7Bp%7D%5E2 "\eta_{p}^2"), ![\\omega\_{p}^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Comega_%7Bp%7D%5E2 "\omega_{p}^2") | ✅  | `effectsize::omega_squared`, `effectsize::eta_squared` |
-| Non-parametric | \> 2          | ![\\epsilon\_{ordinal}^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_%7Bordinal%7D%5E2 "\epsilon_{ordinal}^2")                                                                         | ✅  | `effectsize::rank_epsilon_squared`                     |
-| Robust         | \> 2          | ![\\xi](http://chart.apis.google.com/chart?cht=tx&chl=%5Cxi "\xi") (Explanatory measure of effect size)                                                                                              | ✅  | `WRS2::t1way`                                          |
-| Bayes Factor   | \> 2          | ![R\_{Bayesian}^2](http://chart.apis.google.com/chart?cht=tx&chl=R_%7BBayesian%7D%5E2 "R_{Bayesian}^2")                                                                                              | ✅  | `performance::r2_bayes`                                |
-| Parametric     | 2             | Cohen’s *d*, Hedge’s *g*                                                                                                                                                                             | ✅  | `effectsize::cohens_d`, `effectsize::hedges_g`         |
-| Non-parametric | 2             | *r* (rank-biserial correlation)                                                                                                                                                                      | ✅  | `effectsize::rank_biserial`                            |
-| Robust         | 2             | ![\\delta\_{R}^{AKP}](http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta_%7BR%7D%5E%7BAKP%7D "\delta_{R}^{AKP}") (Algina-Keselman-Penfield robust standardized difference)                       | ✅  | `WRS2::akp.effect`                                     |
-| Bayesian       | 2             | ![\\delta\_{posterior}](http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta_%7Bposterior%7D "\delta_{posterior}")                                                                                 | ✅  | `bayestestR::describe_posterior`                       |
+| Type           | No. of groups | Effect size                                | CI available? | Function used                                              |
+|----------------|---------------|--------------------------------------------|---------------|------------------------------------------------------------|
+| Parametric     | \> 2          | partial eta-squared, partial omega-squared | Yes           | `effectsize::omega_squared()`, `effectsize::eta_squared()` |
+| Non-parametric | \> 2          | rank epsilon squared                       | Yes           | `effectsize::rank_epsilon_squared()`                       |
+| Robust         | \> 2          | Explanatory measure of effect size         | Yes           | `WRS2::t1way()`                                            |
+| Bayes Factor   | \> 2          | Bayesian R-squared                         | Yes           | `performance::r2_bayes()`                                  |
 
-### within-subjects
+#### within-subjects
 
 **Hypothesis testing**
 
-| Type           | No. of groups | Test                                                              | Function used          |
-|----------------|---------------|-------------------------------------------------------------------|------------------------|
-| Parametric     | \> 2          | One-way repeated measures ANOVA                                   | `afex::aov_ez`         |
-| Non-parametric | \> 2          | Friedman rank sum test                                            | `stats::friedman.test` |
-| Robust         | \> 2          | Heteroscedastic one-way repeated measures ANOVA for trimmed means | `WRS2::rmanova`        |
-| Bayes Factor   | \> 2          | One-way repeated measures ANOVA                                   | `BayesFactor::anovaBF` |
-| Parametric     | 2             | Student’s *t*-test                                                | `stats::t.test`        |
-| Non-parametric | 2             | Wilcoxon signed-rank test                                         | `stats::wilcox.test`   |
-| Robust         | 2             | Yuen’s test on trimmed means for dependent samples                | `WRS2::yuend`          |
-| Bayesian       | 2             | Student’s *t*-test                                                | `BayesFactor::ttestBF` |
+| Type           | No. of groups | Test                                                              | Function used            |
+|----------------|---------------|-------------------------------------------------------------------|--------------------------|
+| Parametric     | \> 2          | One-way repeated measures ANOVA                                   | `afex::aov_ez()`         |
+| Non-parametric | \> 2          | Friedman rank sum test                                            | `stats::friedman.test()` |
+| Robust         | \> 2          | Heteroscedastic one-way repeated measures ANOVA for trimmed means | `WRS2::rmanova()`        |
+| Bayes Factor   | \> 2          | One-way repeated measures ANOVA                                   | `BayesFactor::anovaBF()` |
 
 **Effect size estimation**
 
-| Type           | No. of groups | Effect size                                                                                                                                                                                          | CI? | Function used                                          |
-|----------------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|--------------------------------------------------------|
-| Parametric     | \> 2          | ![\\eta\_{p}^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Ceta_%7Bp%7D%5E2 "\eta_{p}^2"), ![\\omega\_{p}^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Comega_%7Bp%7D%5E2 "\omega_{p}^2") | ✅  | `effectsize::omega_squared`, `effectsize::eta_squared` |
-| Non-parametric | \> 2          | ![W\_{Kendall}](http://chart.apis.google.com/chart?cht=tx&chl=W_%7BKendall%7D "W_{Kendall}") (Kendall’s coefficient of concordance)                                                                  | ✅  | `effectsize::kendalls_w`                               |
-| Robust         | \> 2          | ![\\delta\_{R-avg}^{AKP}](http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta_%7BR-avg%7D%5E%7BAKP%7D "\delta_{R-avg}^{AKP}") (Algina-Keselman-Penfield robust standardized difference average)   | ✅  | `WRS2::wmcpAKP`                                        |
-| Bayes Factor   | \> 2          | ![R\_{Bayesian}^2](http://chart.apis.google.com/chart?cht=tx&chl=R_%7BBayesian%7D%5E2 "R_{Bayesian}^2")                                                                                              | ✅  | `performance::r2_bayes`                                |
-| Parametric     | 2             | Cohen’s *d*, Hedge’s *g*                                                                                                                                                                             | ✅  | `effectsize::cohens_d`, `effectsize::hedges_g`         |
-| Non-parametric | 2             | *r* (rank-biserial correlation)                                                                                                                                                                      | ✅  | `effectsize::rank_biserial`                            |
-| Robust         | 2             | ![\\delta\_{R}^{AKP}](http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta_%7BR%7D%5E%7BAKP%7D "\delta_{R}^{AKP}") (Algina-Keselman-Penfield robust standardized difference)                       | ✅  | `WRS2::wmcpAKP`                                        |
-| Bayesian       | 2             | ![\\delta\_{posterior}](http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta_%7Bposterior%7D "\delta_{posterior}")                                                                                 | ✅  | `bayestestR::describe_posterior`                       |
+| Type           | No. of groups | Effect size                                                     | CI available? | Function used                                              |
+|----------------|---------------|-----------------------------------------------------------------|---------------|------------------------------------------------------------|
+| Parametric     | \> 2          | partial eta-squared, partial omega-squared                      | Yes           | `effectsize::omega_squared()`, `effectsize::eta_squared()` |
+| Non-parametric | \> 2          | Kendall’s coefficient of concordance                            | Yes           | `effectsize::kendalls_w()`                                 |
+| Robust         | \> 2          | Algina-Keselman-Penfield robust standardized difference average | Yes           | `WRS2::wmcpAKP()`                                          |
+| Bayes Factor   | \> 2          | Bayesian R-squared                                              | Yes           | `performance::r2_bayes()`                                  |
+
+### `two_sample_test`
+
+#### between-subjects
+
+**Hypothesis testing**
+
+| Type           | No. of groups | Test                          | Function used            |
+|----------------|---------------|-------------------------------|--------------------------|
+| Parametric     | 2             | Student’s or Welch’s *t*-test | `stats::t.test()`        |
+| Non-parametric | 2             | Mann-Whitney *U* test         | `stats::wilcox.test()`   |
+| Robust         | 2             | Yuen’s test for trimmed means | `WRS2::yuen()`           |
+| Bayesian       | 2             | Student’s *t*-test            | `BayesFactor::ttestBF()` |
+
+**Effect size estimation**
+
+| Type           | No. of groups | Effect size                                             | CI available? | Function used                                      |
+|----------------|---------------|---------------------------------------------------------|---------------|----------------------------------------------------|
+| Parametric     | 2             | Cohen’s *d*, Hedge’s *g*                                | Yes           | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
+| Non-parametric | 2             | *r* (rank-biserial correlation)                         | Yes           | `effectsize::rank_biserial()`                      |
+| Robust         | 2             | Algina-Keselman-Penfield robust standardized difference | Yes           | `WRS2::akp.effect()`                               |
+| Bayesian       | 2             | difference                                              | Yes           | `bayestestR::describe_posterior()`                 |
+
+#### within-subjects
+
+**Hypothesis testing**
+
+| Type           | No. of groups | Test                                               | Function used            |
+|----------------|---------------|----------------------------------------------------|--------------------------|
+| Parametric     | 2             | Student’s *t*-test                                 | `stats::t.test()`        |
+| Non-parametric | 2             | Wilcoxon signed-rank test                          | `stats::wilcox.test()`   |
+| Robust         | 2             | Yuen’s test on trimmed means for dependent samples | `WRS2::yuend()`          |
+| Bayesian       | 2             | Student’s *t*-test                                 | `BayesFactor::ttestBF()` |
+
+**Effect size estimation**
+
+| Type           | No. of groups | Effect size                                             | CI available? | Function used                                      |
+|----------------|---------------|---------------------------------------------------------|---------------|----------------------------------------------------|
+| Parametric     | 2             | Cohen’s *d*, Hedge’s *g*                                | Yes           | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
+| Non-parametric | 2             | *r* (rank-biserial correlation)                         | Yes           | `effectsize::rank_biserial()`                      |
+| Robust         | 2             | Algina-Keselman-Penfield robust standardized difference | Yes           | `WRS2::wmcpAKP()`                                  |
+| Bayesian       | 2             | difference                                              | Yes           | `bayestestR::describe_posterior()`                 |
 
 ## `one_sample_test`
 
@@ -594,12 +617,12 @@ No. of groups: `2` =\> `two_sample_test`<br> No. of groups: `> 2` =\>
 
 **Effect size estimation**
 
-| Type           | Effect size                                                                                                          | CI? | Function used                                  |
-|----------------|----------------------------------------------------------------------------------------------------------------------|-----|------------------------------------------------|
-| Parametric     | Cohen’s *d*, Hedge’s *g*                                                                                             | ✅  | `effectsize::cohens_d`, `effectsize::hedges_g` |
-| Non-parametric | *r* (rank-biserial correlation)                                                                                      | ✅  | `effectsize::rank_biserial`                    |
-| Robust         | trimmed mean                                                                                                         | ✅  | `trimcibt` (custom)                            |
-| Bayes Factor   | ![\\delta\_{posterior}](http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta_%7Bposterior%7D "\delta_{posterior}") | ✅  | `bayestestR::describe_posterior`               |
+| Type           | Effect size                     | CI available? | Function used                                      |
+|----------------|---------------------------------|---------------|----------------------------------------------------|
+| Parametric     | Cohen’s *d*, Hedge’s *g*        | Yes           | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
+| Non-parametric | *r* (rank-biserial correlation) | Yes           | `effectsize::rank_biserial()`                      |
+| Robust         | trimmed mean                    | Yes           | `WRS2::trimcibt()`                                 |
+| Bayes Factor   | difference                      | Yes           | `bayestestR::describe_posterior()`                 |
 
 ## `corr_test`
 

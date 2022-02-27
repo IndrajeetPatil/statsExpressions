@@ -1,0 +1,39 @@
+#### between-subjects
+
+**Hypothesis testing**
+
+Type | No. of groups | Test | Function used
+----------- | --- | ------------------------- | -----
+Parametric | 2 | Student's or Welch's *t*-test | `stats::t.test()`
+Non-parametric | 2 | Mann-Whitney *U* test | `stats::wilcox.test()`
+Robust | 2 |  Yuen's test for trimmed means | `WRS2::yuen()`
+Bayesian | 2 | Student's *t*-test | `BayesFactor::ttestBF()`
+
+**Effect size estimation**
+
+Type | No. of groups | Effect size | CI available? | Function used
+----------- | --- | ------------------------- | --- | -----
+Parametric | 2 | Cohen's *d*, Hedge's *g* | Yes | `effectsize::cohens_d()`, `effectsize::hedges_g()`
+Non-parametric | 2 | *r* (rank-biserial correlation) | Yes | `effectsize::rank_biserial()`
+Robust | 2 |  Algina-Keselman-Penfield robust standardized difference | Yes | `WRS2::akp.effect()`
+Bayesian | 2 | difference | Yes | `bayestestR::describe_posterior()`
+
+#### within-subjects
+
+**Hypothesis testing**
+
+Type | No. of groups | Test | Function used
+----------- | --- | ------------------------- | -----
+Parametric | 2 | Student's *t*-test | `stats::t.test()`
+Non-parametric | 2 | Wilcoxon signed-rank test | `stats::wilcox.test()`
+Robust | 2 | Yuen's test on trimmed means for dependent samples | `WRS2::yuend()`
+Bayesian | 2 | Student's *t*-test | `BayesFactor::ttestBF()`
+
+**Effect size estimation**
+
+Type | No. of groups | Effect size | CI available? | Function used
+----------- | --- | ------------------------- | --- | -----
+Parametric | 2 | Cohen's *d*, Hedge's *g* | Yes | `effectsize::cohens_d()`, `effectsize::hedges_g()`
+Non-parametric | 2 | *r* (rank-biserial correlation) | Yes | `effectsize::rank_biserial()`
+Robust | 2 |  Algina-Keselman-Penfield robust standardized difference | Yes | `WRS2::wmcpAKP()`
+Bayesian | 2 | difference | Yes | `bayestestR::describe_posterior()`

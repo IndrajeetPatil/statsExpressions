@@ -60,16 +60,24 @@ mostly relevant in the context of \code{ggstatsplot} package functions.}
 
 \item{...}{Additional arguments (currently ignored).}
 }
-\description{
+\value{
 A dataframe containing results from correlation test with confidence
 intervals for the correlation coefficient estimate.
+}
+\description{
+The table below provides summary about:
+\itemize{
+\item statistical test carried out for inferential statistics
+\item type of effect size estimate and a measure of uncertainty for this estimate
+\item functions used internally to compute these details
+}
 
 \strong{Hypothesis testing} and \strong{Effect size estimation}\tabular{llll}{
    Type \tab Test \tab CI available? \tab Function used \cr
    Parametric \tab Pearson's correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
    Non-parametric \tab Spearman's rank correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
    Robust \tab Winsorized Pearson correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
-   Bayesian \tab Pearson's correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
+   Bayesian \tab Bayesian Pearson's correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
 }
 }
 \examples{
@@ -94,9 +102,4 @@ corr_test(
   type = "robust"
 )
 }
-}
-\references{
-To see details about functions which are internally used to carry
-out these analyses, see the following vignette-
-\url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
 }

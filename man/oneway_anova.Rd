@@ -96,12 +96,57 @@ mostly relevant in the context of \code{ggstatsplot} package functions.}
 
 \item{...}{Additional arguments (currently ignored).}
 }
-\description{
+\value{
 A dataframe containing results for one-way ANOVA.
+}
+\description{
+The table below provides summary about:
+\itemize{
+\item statistical test carried out for inferential statistics
+\item type of effect size estimate and a measure of uncertainty for this estimate
+\item functions used internally to compute these details
+}
+\subsection{between-subjects}{
 
-To see details about functions which are internally used to carry out these
-analyses, see the following vignette-
-\url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
+\strong{Hypothesis testing}\tabular{llll}{
+   Type \tab No. of groups \tab Test \tab Function used \cr
+   Parametric \tab > 2 \tab Fisher's or Welch's one-way ANOVA \tab \code{stats::oneway.test()} \cr
+   Non-parametric \tab > 2 \tab Kruskal-Wallis one-way ANOVA \tab \code{stats::kruskal.test()} \cr
+   Robust \tab > 2 \tab Heteroscedastic one-way ANOVA for trimmed means \tab \code{WRS2::t1way()} \cr
+   Bayes Factor \tab > 2 \tab Fisher's ANOVA \tab \code{BayesFactor::anovaBF()} \cr
+}
+
+
+\strong{Effect size estimation}\tabular{lllll}{
+   Type \tab No. of groups \tab Effect size \tab CI available? \tab Function used \cr
+   Parametric \tab > 2 \tab partial eta-squared, partial omega-squared \tab Yes \tab \code{effectsize::omega_squared()}, \code{effectsize::eta_squared()} \cr
+   Non-parametric \tab > 2 \tab rank epsilon squared \tab Yes \tab \code{effectsize::rank_epsilon_squared()} \cr
+   Robust \tab > 2 \tab Explanatory measure of effect size \tab Yes \tab \code{WRS2::t1way()} \cr
+   Bayes Factor \tab > 2 \tab Bayesian R-squared \tab Yes \tab \code{performance::r2_bayes()} \cr
+}
+
+}
+
+\subsection{within-subjects}{
+
+\strong{Hypothesis testing}\tabular{llll}{
+   Type \tab No. of groups \tab Test \tab Function used \cr
+   Parametric \tab > 2 \tab One-way repeated measures ANOVA \tab \code{afex::aov_ez()} \cr
+   Non-parametric \tab > 2 \tab Friedman rank sum test \tab \code{stats::friedman.test()} \cr
+   Robust \tab > 2 \tab Heteroscedastic one-way repeated measures ANOVA for trimmed means \tab \code{WRS2::rmanova()} \cr
+   Bayes Factor \tab > 2 \tab One-way repeated measures ANOVA \tab \code{BayesFactor::anovaBF()} \cr
+}
+
+
+\strong{Effect size estimation}\tabular{lllll}{
+   Type \tab No. of groups \tab Effect size \tab CI available? \tab Function used \cr
+   Parametric \tab > 2 \tab partial eta-squared, partial omega-squared \tab Yes \tab \code{effectsize::omega_squared()}, \code{effectsize::eta_squared()} \cr
+   Non-parametric \tab > 2 \tab Kendall's coefficient of concordance \tab Yes \tab \code{effectsize::kendalls_w()} \cr
+   Robust \tab > 2 \tab Algina-Keselman-Penfield robust standardized difference average \tab Yes \tab \code{WRS2::wmcpAKP()} \cr
+   Bayes Factor \tab > 2 \tab Bayesian R-squared \tab Yes \tab \code{performance::r2_bayes()} \cr
+}
+
+}
 }
 \examples{
 \donttest{
