@@ -6,6 +6,9 @@
 #'  A dataframe containing results from correlation test with confidence
 #'  intervals for the correlation coefficient estimate.
 #'
+#' ```{r child="man/rmd-fragments/corr_test.Rmd"}
+#' ```
+#'
 #' @references To see details about functions which are internally used to carry
 #'   out these analyses, see the following vignette-
 #' <https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html>

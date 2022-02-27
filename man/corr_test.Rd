@@ -63,6 +63,14 @@ mostly relevant in the context of \code{ggstatsplot} package functions.}
 \description{
 A dataframe containing results from correlation test with confidence
 intervals for the correlation coefficient estimate.
+
+\strong{Hypothesis testing} and \strong{Effect size estimation}\tabular{llll}{
+   Type \tab Test \tab CI available? \tab Function used \cr
+   Parametric \tab Pearson's correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
+   Non-parametric \tab Spearman's rank correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
+   Robust \tab Winsorized Pearson correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
+   Bayesian \tab Pearson's correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
+}
 }
 \examples{
 \donttest{

@@ -605,12 +605,12 @@ No. of groups: `2` =\> `two_sample_test`<br> No. of groups: `> 2` =\>
 
 **Hypothesis testing** and **Effect size estimation**
 
-| Type           | Test                                       | CI? | Function used              |
-|----------------|--------------------------------------------|-----|----------------------------|
-| Parametric     | Pearson’s correlation coefficient          | ✅  | `correlation::correlation` |
-| Non-parametric | Spearman’s rank correlation coefficient    | ✅  | `correlation::correlation` |
-| Robust         | Winsorized Pearson correlation coefficient | ✅  | `correlation::correlation` |
-| Bayesian       | Pearson’s correlation coefficient          | ✅  | `correlation::correlation` |
+| Type           | Test                                       | CI available? | Function used                |
+|----------------|--------------------------------------------|---------------|------------------------------|
+| Parametric     | Pearson’s correlation coefficient          | Yes           | `correlation::correlation()` |
+| Non-parametric | Spearman’s rank correlation coefficient    | Yes           | `correlation::correlation()` |
+| Robust         | Winsorized Pearson correlation coefficient | Yes           | `correlation::correlation()` |
+| Bayesian       | Bayesian Pearson’s correlation coefficient | Yes           | `correlation::correlation()` |
 
 ## `contingency_table`
 
