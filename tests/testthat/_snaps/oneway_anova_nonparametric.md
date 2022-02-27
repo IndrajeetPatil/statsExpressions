@@ -49,7 +49,7 @@
     Code
       as.character(df1$expression[[1]])
     Output
-      [1] "list(chi[\"Friedman\"]^2 * \"(\" * 3 * \")\" == \"55.8338\", italic(p) == \"4.5584e-12\", widehat(italic(\"W\"))[\"Kendall\"] == \"-0.3517\", CI[\"99%\"] ~ \"[\" * \"0.1142\", \"1.0000\" * \"]\", italic(\"n\")[\"pairs\"] == \"88\")"
+      [1] "list(chi[\"Friedman\"]^2 * \"(\" * 3 * \")\" == \"55.8338\", italic(p) == \"4.5584e-12\", widehat(italic(\"W\"))[\"Kendall\"] == \"0.1750\", CI[\"99%\"] ~ \"[\" * \"0.1142\", \"1.0000\" * \"]\", italic(\"n\")[\"pairs\"] == \"88\")"
 
 ---
 
