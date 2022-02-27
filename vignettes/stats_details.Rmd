@@ -105,41 +105,8 @@ Bayesian | MAP (maximum *a posteriori* probability) estimate | `parameters::desc
 
 ### `contingency_table`
 
-#### two-way table
-
-**Hypothesis testing**
-
-Type | Design | Test | Function used
------------ | ----- | ------------------------- | -----
-Parametric/Non-parametric | Unpaired | Pearson's $\chi^2$ test | `stats::chisq.test`
-Bayesian | Unpaired | Bayesian Pearson's $\chi^2$ test | `BayesFactor::contingencyTableBF`
-Parametric/Non-parametric | Paired  | McNemar's $\chi^2$ test | `stats::mcnemar.test`
-Bayesian | Paired  | No | ❌
-
-**Effect size estimation**
-
-Type | Design | Effect size | CI available? | Function used
------------ | ----- | ------------------------- | --- | -----
-Parametric/Non-parametric | Unpaired | Cramer's $V$ | Yes | `effectsize::cramers_v`
-Bayesian | Unpaired | Cramer's $V$ | Yes | `effectsize::cramers_v`
-Parametric/Non-parametric | Paired | Cohen's $g$ | Yes | `effectsize::cohens_g`
-Bayesian | Paired | No | No | ❌
-
-#### one-way table
-
-**Hypothesis testing**
-
-Type | Test | Function used
------------ | ------------------------- | -----
-Parametric/Non-parametric | Goodness of fit $\chi^2$ test | `stats::chisq.test`
-Bayesian | Bayesian Goodness of fit $\chi^2$ test | (custom)
-
-**Effect size estimation**
-
-Type | Effect size | CI available? | Function used
------------ | ------------------------- | --- | -----
-Parametric/Non-parametric | Pearson's $C$ | Yes | `effectsize::pearsons_c`
-Bayesian | No | No | ❌
+```{r child="../man/rmd-fragments/contingency_table.Rmd"}
+```
 
 ### `meta_analysis`
 
@@ -147,9 +114,9 @@ Bayesian | No | No | ❌
 
 Type | Test | Effect size | CI available? | Function used
 ----------- | -------------------- | -------- | ---  | -----
-Parametric | Meta-analysis via random-effects models | $\beta$ | Yes | `metafor::metafor`
-Robust | Meta-analysis via robust random-effects models | $\beta$ | Yes | `metaplus::metaplus`
-Bayes | Meta-analysis via Bayesian random-effects models | $\beta$ | Yes | `metaBMA::meta_random`
+Parametric | Meta-analysis via random-effects models | *beta* | Yes | `metafor::metafor`
+Robust | Meta-analysis via robust random-effects models | *beta* | Yes | `metaplus::metaplus`
+Bayes | Meta-analysis via Bayesian random-effects models | *beta* | Yes | `metaBMA::meta_random`
 
 ## Effect size interpretation
 
