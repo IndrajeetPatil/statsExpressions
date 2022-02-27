@@ -77,36 +77,43 @@ more about how one-way (between-subjects) ANOVA, you can run
 ### `centrality_description`
 
 ```{r child="../man/rmd-fragments/centrality_description.Rmd"}
+
 ```
 
 ### `oneway_anova`
 
 ```{r child="../man/rmd-fragments/oneway_anova.Rmd"}
+
 ```
 
 ### `two_sample_test` 
 
 ```{r child="../man/rmd-fragments/two_sample_test.Rmd"}
+
 ```
 
 ### `one_sample_test`
 
 ```{r child="../man/rmd-fragments/one_sample_test.Rmd"}
+
 ```
 
 ### `corr_test`
 
 ```{r child="../man/rmd-fragments/corr_test.Rmd"}
+
 ```
 
 ### `contingency_table`
 
 ```{r child="../man/rmd-fragments/contingency_table.Rmd"}
+
 ```
 
 ### `meta_analysis`
 
 ```{r child="../man/rmd-fragments/meta_analysis.Rmd"}
+
 ```
 
 ## Effect size interpretation

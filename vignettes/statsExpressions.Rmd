@@ -129,7 +129,7 @@ ANOVA instead, the syntax remains the same and the statistical approach can be
 modified by changing a single argument:
 
 ```{r df_p}
-mtcars %>% oneway_anova(cyl, wt, type = "nonparametric") 
+mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
 
 mtcars %>% oneway_anova(cyl, wt, type = "robust")
 ```
