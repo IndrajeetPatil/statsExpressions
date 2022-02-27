@@ -76,12 +76,8 @@ more about how one-way (between-subjects) ANOVA, you can run
 
 ### `centrality_description`
 
-Type | Measure | Function used
------------ | --------- | ------------------ 
-Parametric | mean | `parameters::describe_distribution`
-Non-parametric | median | `parameters::describe_distribution`
-Robust | trimmed mean | `parameters::describe_distribution`
-Bayesian | MAP (maximum *a posteriori* probability) estimate | `parameters::describe_distribution`
+```{r child="../man/rmd-fragments/centrality_description.Rmd"}
+```
 
 ### `oneway_anova`
 
@@ -110,13 +106,8 @@ Bayesian | MAP (maximum *a posteriori* probability) estimate | `parameters::desc
 
 ### `meta_analysis`
 
-**Hypothesis testing** and **Effect size estimation**
-
-Type | Test | Effect size | CI available? | Function used
------------ | -------------------- | -------- | ---  | -----
-Parametric | Meta-analysis via random-effects models | *beta* | Yes | `metafor::metafor`
-Robust | Meta-analysis via robust random-effects models | *beta* | Yes | `metaplus::metaplus`
-Bayes | Meta-analysis via Bayesian random-effects models | *beta* | Yes | `metaBMA::meta_random`
+```{r child="../man/rmd-fragments/meta_analysis.Rmd"}
+```
 
 ## Effect size interpretation
 

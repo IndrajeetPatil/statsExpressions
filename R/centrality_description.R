@@ -7,7 +7,15 @@
 #' grouping variable in `x` by a set of indices (e.g., measures of centrality,
 #' dispersion, range, skewness, kurtosis). It additionally returns an expression
 #' containing a specified centrality measure. The function internally relies on
-#' `datawizard::describe_distribution` function.
+#' `datawizard::describe_distribution()` function.
+#'
+#' @description
+#'
+#' ```{r child="man/rmd-fragments/table_intro.Rmd"}
+#' ```
+#'
+#' ```{r child="man/rmd-fragments/centrality_description.Rmd"}
+#' ```
 #'
 #' @param x The grouping (or independent) variable from the dataframe data.
 #' @inheritParams oneway_anova

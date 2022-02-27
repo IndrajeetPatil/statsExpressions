@@ -513,12 +513,12 @@ console.
 
 ## `centrality_description`
 
-| Type           | Measure                                           | Function used                       |
-|----------------|---------------------------------------------------|-------------------------------------|
-| Parametric     | mean                                              | `parameters::describe_distribution` |
-| Non-parametric | median                                            | `parameters::describe_distribution` |
-| Robust         | trimmed mean                                      | `parameters::describe_distribution` |
-| Bayesian       | MAP (maximum *a posteriori* probability) estimate | `parameters::describe_distribution` |
+| Type           | Measure                                           | Function used                         |
+|----------------|---------------------------------------------------|---------------------------------------|
+| Parametric     | mean                                              | `parameters::describe_distribution()` |
+| Non-parametric | median                                            | `parameters::describe_distribution()` |
+| Robust         | trimmed mean                                      | `parameters::describe_distribution()` |
+| Bayesian       | MAP (maximum *a posteriori* probability) estimate | `parameters::describe_distribution()` |
 
 ### `oneway_anova`
 
@@ -635,53 +635,53 @@ console.
 | Robust         | Winsorized Pearson correlation coefficient | Yes           | `correlation::correlation()` |
 | Bayesian       | Bayesian Pearson’s correlation coefficient | Yes           | `correlation::correlation()` |
 
-## `contingency_table`
+### `contingency_table`
 
-### two-way table
-
-**Hypothesis testing**
-
-| Type                      | Design   | Test                                                                                                  | Function used                     |
-|---------------------------|----------|-------------------------------------------------------------------------------------------------------|-----------------------------------|
-| Parametric/Non-parametric | Unpaired | Pearson’s ![\\chi^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Cchi%5E2 "\chi^2") test          | `stats::chisq.test`               |
-| Bayesian                  | Unpaired | Bayesian Pearson’s ![\\chi^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Cchi%5E2 "\chi^2") test | `BayesFactor::contingencyTableBF` |
-| Parametric/Non-parametric | Paired   | McNemar’s ![\\chi^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Cchi%5E2 "\chi^2") test          | `stats::mcnemar.test`             |
-| Bayesian                  | Paired   | ❌                                                                                                    | ❌                                |
-
-**Effect size estimation**
-
-| Type                      | Design   | Effect size                                                        | CI? | Function used           |
-|---------------------------|----------|--------------------------------------------------------------------|-----|-------------------------|
-| Parametric/Non-parametric | Unpaired | Cramer’s ![V](http://chart.apis.google.com/chart?cht=tx&chl=V "V") | ✅  | `effectsize::cramers_v` |
-| Bayesian                  | Unpaired | Cramer’s ![V](http://chart.apis.google.com/chart?cht=tx&chl=V "V") | ✅  | `effectsize::cramers_v` |
-| Parametric/Non-parametric | Paired   | Cohen’s ![g](http://chart.apis.google.com/chart?cht=tx&chl=g "g")  | ✅  | `effectsize::cohens_g`  |
-| Bayesian                  | Paired   | ❌                                                                 | ❌  | ❌                      |
-
-### one-way table
+#### two-way table
 
 **Hypothesis testing**
 
-| Type                      | Test                                                                                                        | Function used       |
-|---------------------------|-------------------------------------------------------------------------------------------------------------|---------------------|
-| Parametric/Non-parametric | Goodness of fit ![\\chi^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Cchi%5E2 "\chi^2") test          | `stats::chisq.test` |
-| Bayesian                  | Bayesian Goodness of fit ![\\chi^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Cchi%5E2 "\chi^2") test | (custom)            |
+| Type                      | Design   | Test                                | Function used                       |
+|---------------------------|----------|-------------------------------------|-------------------------------------|
+| Parametric/Non-parametric | Unpaired | Pearson’s chi-squared test          | `stats::chisq.test()`               |
+| Bayesian                  | Unpaired | Bayesian Pearson’s chi-squared test | `BayesFactor::contingencyTableBF()` |
+| Parametric/Non-parametric | Paired   | McNemar’s chi-squared test          | `stats::mcnemar.test()`             |
+| Bayesian                  | Paired   | No                                  | No                                  |
 
 **Effect size estimation**
 
-| Type                      | Effect size                                                         | CI? | Function used            |
-|---------------------------|---------------------------------------------------------------------|-----|--------------------------|
-| Parametric/Non-parametric | Pearson’s ![C](http://chart.apis.google.com/chart?cht=tx&chl=C "C") | ✅  | `effectsize::pearsons_c` |
-| Bayesian                  | ❌                                                                  | ❌  | ❌                       |
+| Type                      | Design   | Effect size  | CI available? | Function used             |
+|---------------------------|----------|--------------|---------------|---------------------------|
+| Parametric/Non-parametric | Unpaired | Cramer’s *V* | Yes           | `effectsize::cramers_v()` |
+| Bayesian                  | Unpaired | Cramer’s *V* | Yes           | `effectsize::cramers_v()` |
+| Parametric/Non-parametric | Paired   | Cohen’s *g*  | Yes           | `effectsize::cohens_g()`  |
+| Bayesian                  | Paired   | No           | No            | No                        |
+
+#### one-way table
+
+**Hypothesis testing**
+
+| Type                      | Test                                      | Function used         |
+|---------------------------|-------------------------------------------|-----------------------|
+| Parametric/Non-parametric | Goodness of fit chi-squared test          | `stats::chisq.test()` |
+| Bayesian                  | Bayesian Goodness of fit chi-squared test | (custom)              |
+
+**Effect size estimation**
+
+| Type                      | Effect size   | CI available? | Function used              |
+|---------------------------|---------------|---------------|----------------------------|
+| Parametric/Non-parametric | Pearson’s *C* | Yes           | `effectsize::pearsons_c()` |
+| Bayesian                  | No            | No            | No                         |
 
 ## `meta_analysis`
 
 **Hypothesis testing** and **Effect size estimation**
 
-| Type       | Test                                             | Effect size                                                              | CI? | Function used          |
-|------------|--------------------------------------------------|--------------------------------------------------------------------------|-----|------------------------|
-| Parametric | Meta-analysis via random-effects models          | ![\\beta](http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta "\beta") | ✅  | `metafor::metafor`     |
-| Robust     | Meta-analysis via robust random-effects models   | ![\\beta](http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta "\beta") | ✅  | `metaplus::metaplus`   |
-| Bayes      | Meta-analysis via Bayesian random-effects models | ![\\beta](http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta "\beta") | ✅  | `metaBMA::meta_random` |
+| Type       | Test                                             | Effect size | CI available? | Function used            |
+|------------|--------------------------------------------------|-------------|---------------|--------------------------|
+| Parametric | Meta-analysis via random-effects models          | *beta*      | Yes           | `metafor::metafor()`     |
+| Robust     | Meta-analysis via robust random-effects models   | *beta*      | Yes           | `metaplus::metaplus()`   |
+| Bayes      | Meta-analysis via Bayesian random-effects models | *beta*      | Yes           | `metaBMA::meta_random()` |
 
 # Usage in `ggstatsplot`
 

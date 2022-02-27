@@ -51,21 +51,33 @@ mostly relevant in the context of \code{ggstatsplot} package functions.}
 \item{...}{Additional arguments passed to the respective meta-analysis
 function.}
 }
-\description{
+\value{
 A dataframe containing results from random-effects meta-analysis.
+}
+\description{
+The table below provides summary about:
+\itemize{
+\item statistical test carried out for inferential statistics
+\item type of effect size estimate and a measure of uncertainty for this estimate
+\item functions used internally to compute these details
+}
 
-To see details about functions which are internally used to carry out these
-analyses, see the following vignette-
-\url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
+\strong{Hypothesis testing} and \strong{Effect size estimation}\tabular{llll}{
+   Type \tab Test \tab CI available? \tab Function used \cr
+   Parametric \tab Pearson's correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
+   Non-parametric \tab Spearman's rank correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
+   Robust \tab Winsorized Pearson correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
+   Bayesian \tab Bayesian Pearson's correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
+}
 }
 \note{
 \strong{Important}: The function assumes that you have already downloaded
-the needed package (\code{metafor}, \code{metaplus}, or \code{metaBMA}) for meta-analysis.
+the needed package (\code{{metafor}}, \code{{metaplus}}, or \code{{metaBMA}}) for meta-analysis.
 If they are not available, you will be asked to install them.
 }
 \examples{
 \donttest{
-# a dataframe with estimates and standard errors (`mag` dataset from `metaplus`)
+# a dataframe with estimates and standard errors (`mag` dataset from `{metaplus}`)
 df <- structure(list(
   study = structure(c(
     8L, 10L, 15L, 1L, 4L, 11L, 3L, 2L, 14L, 9L, 12L, 5L, 16L, 7L, 13L, 6L
