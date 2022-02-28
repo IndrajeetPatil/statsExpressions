@@ -96,12 +96,79 @@ mostly relevant in the context of \code{ggstatsplot} package functions.}
 
 \item{...}{Additional arguments (currently ignored).}
 }
-\description{
-A dataframe containing results for one-way ANOVA.
+\value{
+The returned tibble dataframe can contain some or all of the following columns (the exact columns will depend on the statistical test):
+\itemize{
+\item \code{statistic}: the numeric value of a statistic
+\item \code{df}: the numeric value of a parameter being modeled (often degrees
+of freedom for the test)
+\item \code{df.error} and \code{df}: relevant only if the statistic in question has
+two degrees of freedom (e.g. anova)
+\item \code{p.value}: the two-sided \emph{p}-value associated with the observed statistic
+\item \code{method}: the name of the inferential statistical test
+\item \code{estimate}: estimated value of the effect size
+\item \code{conf.low}: lower bound for the effect size estimate
+\item \code{conf.high}: upper bound for the effect size estimate
+\item \code{conf.level}: width of the confidence interval
+\item \code{conf.method}: method used to compute confidence interval
+\item \code{conf.distribution}: statistical distribution for the effect
+\item \code{effectsize}: the name of the effect size
+\item \code{n.obs}: number of observations
+\item \code{expression}: pre-formatted expression containing statistical details
+}
 
-To see details about functions which are internally used to carry out these
-analyses, see the following vignette-
-\url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
+For examples of dataframe outputs, see examples and \href{https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html}{this vignette}.
+
+Note that all examples are preceded by \code{set.seed()} calls for reproducibility.
+}
+\description{
+The table below provides summary about:
+\itemize{
+\item statistical test carried out for inferential statistics
+\item type of effect size estimate and a measure of uncertainty for this estimate
+\item functions used internally to compute these details
+}
+\subsection{between-subjects}{
+
+\strong{Hypothesis testing}\tabular{llll}{
+   Type \tab No. of groups \tab Test \tab Function used \cr
+   Parametric \tab > 2 \tab Fisher's or Welch's one-way ANOVA \tab \code{stats::oneway.test()} \cr
+   Non-parametric \tab > 2 \tab Kruskal-Wallis one-way ANOVA \tab \code{stats::kruskal.test()} \cr
+   Robust \tab > 2 \tab Heteroscedastic one-way ANOVA for trimmed means \tab \code{WRS2::t1way()} \cr
+   Bayes Factor \tab > 2 \tab Fisher's ANOVA \tab \code{BayesFactor::anovaBF()} \cr
+}
+
+
+\strong{Effect size estimation}\tabular{lllll}{
+   Type \tab No. of groups \tab Effect size \tab CI available? \tab Function used \cr
+   Parametric \tab > 2 \tab partial eta-squared, partial omega-squared \tab Yes \tab \code{effectsize::omega_squared()}, \code{effectsize::eta_squared()} \cr
+   Non-parametric \tab > 2 \tab rank epsilon squared \tab Yes \tab \code{effectsize::rank_epsilon_squared()} \cr
+   Robust \tab > 2 \tab Explanatory measure of effect size \tab Yes \tab \code{WRS2::t1way()} \cr
+   Bayes Factor \tab > 2 \tab Bayesian R-squared \tab Yes \tab \code{performance::r2_bayes()} \cr
+}
+
+}
+
+\subsection{within-subjects}{
+
+\strong{Hypothesis testing}\tabular{llll}{
+   Type \tab No. of groups \tab Test \tab Function used \cr
+   Parametric \tab > 2 \tab One-way repeated measures ANOVA \tab \code{afex::aov_ez()} \cr
+   Non-parametric \tab > 2 \tab Friedman rank sum test \tab \code{stats::friedman.test()} \cr
+   Robust \tab > 2 \tab Heteroscedastic one-way repeated measures ANOVA for trimmed means \tab \code{WRS2::rmanova()} \cr
+   Bayes Factor \tab > 2 \tab One-way repeated measures ANOVA \tab \code{BayesFactor::anovaBF()} \cr
+}
+
+
+\strong{Effect size estimation}\tabular{lllll}{
+   Type \tab No. of groups \tab Effect size \tab CI available? \tab Function used \cr
+   Parametric \tab > 2 \tab partial eta-squared, partial omega-squared \tab Yes \tab \code{effectsize::omega_squared()}, \code{effectsize::eta_squared()} \cr
+   Non-parametric \tab > 2 \tab Kendall's coefficient of concordance \tab Yes \tab \code{effectsize::kendalls_w()} \cr
+   Robust \tab > 2 \tab Algina-Keselman-Penfield robust standardized difference average \tab Yes \tab \code{WRS2::wmcpAKP()} \cr
+   Bayes Factor \tab > 2 \tab Bayesian R-squared \tab Yes \tab \code{performance::r2_bayes()} \cr
+}
+
+}
 }
 \examples{
 \donttest{

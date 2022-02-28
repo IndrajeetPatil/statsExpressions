@@ -36,16 +36,28 @@ of an error, try reducing the value of \code{tr}, which is by default set to
 \item{...}{Currently ignored.}
 }
 \description{
-Dataframe and expression for distribution properties
+The table below provides summary about:
+\itemize{
+\item statistical test carried out for inferential statistics
+\item type of effect size estimate and a measure of uncertainty for this estimate
+\item functions used internally to compute these details
+}\tabular{lll}{
+   Type \tab Measure \tab Function used \cr
+   Parametric \tab mean \tab \code{parameters::describe_distribution()} \cr
+   Non-parametric \tab median \tab \code{parameters::describe_distribution()} \cr
+   Robust \tab trimmed mean \tab \code{parameters::describe_distribution()} \cr
+   Bayesian \tab MAP (maximum \emph{a posteriori} probability) estimate \tab \code{parameters::describe_distribution()} \cr
+}
 }
 \details{
 This function describes a distribution for \code{y} variable for each level of the
 grouping variable in \code{x} by a set of indices (e.g., measures of centrality,
 dispersion, range, skewness, kurtosis). It additionally returns an expression
 containing a specified centrality measure. The function internally relies on
-\code{datawizard::describe_distribution} function.
+\code{datawizard::describe_distribution()} function.
 }
 \examples{
+
 set.seed(123)
 
 # parametric -----------------------
@@ -59,4 +71,5 @@ centrality_description(ToothGrowth, supp, len, type = "r")
 
 # Bayesian -------------------------
 centrality_description(sleep, group, extra, type = "b")
+
 }

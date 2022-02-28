@@ -69,31 +69,55 @@ mostly relevant in the context of \code{ggstatsplot} package functions.}
 
 \item{...}{Currently ignored.}
 }
+\value{
+The returned tibble dataframe can contain some or all of the following columns (the exact columns will depend on the statistical test):
+\itemize{
+\item \code{statistic}: the numeric value of a statistic
+\item \code{df}: the numeric value of a parameter being modeled (often degrees
+of freedom for the test)
+\item \code{df.error} and \code{df}: relevant only if the statistic in question has
+two degrees of freedom (e.g. anova)
+\item \code{p.value}: the two-sided \emph{p}-value associated with the observed statistic
+\item \code{method}: the name of the inferential statistical test
+\item \code{estimate}: estimated value of the effect size
+\item \code{conf.low}: lower bound for the effect size estimate
+\item \code{conf.high}: upper bound for the effect size estimate
+\item \code{conf.level}: width of the confidence interval
+\item \code{conf.method}: method used to compute confidence interval
+\item \code{conf.distribution}: statistical distribution for the effect
+\item \code{effectsize}: the name of the effect size
+\item \code{n.obs}: number of observations
+\item \code{expression}: pre-formatted expression containing statistical details
+}
+
+For examples of dataframe outputs, see examples and \href{https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html}{this vignette}.
+
+Note that all examples are preceded by \code{set.seed()} calls for reproducibility.
+}
 \description{
-A dataframe containing results from a one-sample test.
-}
-\details{
-The exact test and the effect size details contained will depend on the
-\code{type} argument.
-
-Internal function \code{.f} used to carry out statistical test:
+The table below provides summary about:
 \itemize{
-\item \strong{parametric}: \code{stats::t.test}
-\item \strong{nonparametric}: \code{stats::wilcox.test}
-\item \strong{robust}: \code{WRS2::trimcibt}
-\item \strong{bayes}: \code{BayesFactor::ttestBF}
+\item statistical test carried out for inferential statistics
+\item type of effect size estimate and a measure of uncertainty for this estimate
+\item functions used internally to compute these details
 }
 
-Internal function \code{.f.es} used to compute effect size:
-\itemize{
-\item \strong{parametric}: \code{effectsize::cohens_d}, \code{effectsize::hedges_g}
-\item \strong{nonparametric}: \code{effectsize::rank_biserial}
-\item \strong{robust}: \code{WRS2::trimcibt}
-\item \strong{bayes}: \code{bayestestR::describe_posterior}
+\strong{Hypothesis testing}\tabular{lll}{
+   Type \tab Test \tab Function used \cr
+   Parametric \tab One-sample Student's \emph{t}-test \tab \code{stats::t.test} \cr
+   Non-parametric \tab One-sample Wilcoxon test \tab \code{stats::wilcox.test} \cr
+   Robust \tab Bootstrap-\emph{t} method for one-sample test \tab \code{WRS2::trimcibt} \cr
+   Bayesian \tab One-sample Student's \emph{t}-test \tab \code{BayesFactor::ttestBF} \cr
 }
 
-For more, see-
-\url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
+
+\strong{Effect size estimation}\tabular{llll}{
+   Type \tab Effect size \tab CI available? \tab Function used \cr
+   Parametric \tab Cohen's \emph{d}, Hedge's \emph{g} \tab Yes \tab \code{effectsize::cohens_d()}, \code{effectsize::hedges_g()} \cr
+   Non-parametric \tab \emph{r} (rank-biserial correlation) \tab Yes \tab \code{effectsize::rank_biserial()} \cr
+   Robust \tab trimmed mean \tab Yes \tab \code{WRS2::trimcibt()} \cr
+   Bayes Factor \tab difference \tab Yes \tab \code{bayestestR::describe_posterior()} \cr
+}
 }
 \examples{
 \donttest{

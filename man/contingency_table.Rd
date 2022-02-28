@@ -81,13 +81,75 @@ mostly relevant in the context of \code{ggstatsplot} package functions.}
 
 \item{...}{Additional arguments (currently ignored).}
 }
-\description{
-A dataframe containing results from for contingency table analysis or
-goodness of fit test.
+\value{
+The returned tibble dataframe can contain some or all of the following columns (the exact columns will depend on the statistical test):
+\itemize{
+\item \code{statistic}: the numeric value of a statistic
+\item \code{df}: the numeric value of a parameter being modeled (often degrees
+of freedom for the test)
+\item \code{df.error} and \code{df}: relevant only if the statistic in question has
+two degrees of freedom (e.g. anova)
+\item \code{p.value}: the two-sided \emph{p}-value associated with the observed statistic
+\item \code{method}: the name of the inferential statistical test
+\item \code{estimate}: estimated value of the effect size
+\item \code{conf.low}: lower bound for the effect size estimate
+\item \code{conf.high}: upper bound for the effect size estimate
+\item \code{conf.level}: width of the confidence interval
+\item \code{conf.method}: method used to compute confidence interval
+\item \code{conf.distribution}: statistical distribution for the effect
+\item \code{effectsize}: the name of the effect size
+\item \code{n.obs}: number of observations
+\item \code{expression}: pre-formatted expression containing statistical details
+}
 
-To see details about functions which are internally used to carry out these
-analyses, see the following vignette-
-\url{https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html}
+For examples of dataframe outputs, see examples and \href{https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html}{this vignette}.
+
+Note that all examples are preceded by \code{set.seed()} calls for reproducibility.
+}
+\description{
+The table below provides summary about:
+\itemize{
+\item statistical test carried out for inferential statistics
+\item type of effect size estimate and a measure of uncertainty for this estimate
+\item functions used internally to compute these details
+}
+\subsection{two-way table}{
+
+\strong{Hypothesis testing}\tabular{llll}{
+   Type \tab Design \tab Test \tab Function used \cr
+   Parametric/Non-parametric \tab Unpaired \tab Pearson's chi-squared test \tab \code{stats::chisq.test()} \cr
+   Bayesian \tab Unpaired \tab Bayesian Pearson's chi-squared test \tab \code{BayesFactor::contingencyTableBF()} \cr
+   Parametric/Non-parametric \tab Paired \tab McNemar's chi-squared test \tab \code{stats::mcnemar.test()} \cr
+   Bayesian \tab Paired \tab No \tab No \cr
+}
+
+
+\strong{Effect size estimation}\tabular{lllll}{
+   Type \tab Design \tab Effect size \tab CI available? \tab Function used \cr
+   Parametric/Non-parametric \tab Unpaired \tab Cramer's \emph{V} \tab Yes \tab \code{effectsize::cramers_v()} \cr
+   Bayesian \tab Unpaired \tab Cramer's \emph{V} \tab Yes \tab \code{effectsize::cramers_v()} \cr
+   Parametric/Non-parametric \tab Paired \tab Cohen's \emph{g} \tab Yes \tab \code{effectsize::cohens_g()} \cr
+   Bayesian \tab Paired \tab No \tab No \tab No \cr
+}
+
+}
+
+\subsection{one-way table}{
+
+\strong{Hypothesis testing}\tabular{lll}{
+   Type \tab Test \tab Function used \cr
+   Parametric/Non-parametric \tab Goodness of fit chi-squared test \tab \code{stats::chisq.test()} \cr
+   Bayesian \tab Bayesian Goodness of fit chi-squared test \tab (custom) \cr
+}
+
+
+\strong{Effect size estimation}\tabular{llll}{
+   Type \tab Effect size \tab CI available? \tab Function used \cr
+   Parametric/Non-parametric \tab Pearson's \emph{C} \tab Yes \tab \code{effectsize::pearsons_c()} \cr
+   Bayesian \tab No \tab No \tab No \cr
+}
+
+}
 }
 \examples{
 \donttest{

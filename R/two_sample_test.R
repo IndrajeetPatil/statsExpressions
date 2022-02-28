@@ -10,12 +10,16 @@
 #'
 #' @description
 #'
-#'  A dataframe containing results from a two-sample test and effect size plus
-#'  confidence intervals.
+#' ```{r child="man/rmd-fragments/table_intro.Rmd"}
+#' ```
 #'
-#'  To see details about functions which are internally used to carry out these
-#'  analyses, see the following vignette-
-#'  <https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html>
+#' ```{r child="man/rmd-fragments/two_sample_test.Rmd"}
+#' ```
+#'
+#' @return
+#'
+#' ```{r child="man/rmd-fragments/return.Rmd"}
+#' ```
 #'
 #' @examples
 #' \donttest{

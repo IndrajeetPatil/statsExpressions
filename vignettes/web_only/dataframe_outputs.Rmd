@@ -36,67 +36,11 @@ knitr::opts_chunk$set(
 )
 ```
 
+This vignette can be cited as:
+
 ```{r citation, echo=FALSE, comment = ""}
 citation("statsExpressions")
 ```
-
-## Introduction
-
-The `{statsExpressions}` package has two key aims: to provide a consistent syntax
-to do statistical analysis with tidy data, and to provide statistical
-expressions (i.e., a pre-formatted in-text statistical result) for plotting
-functions. Currently, it supports common types of statistical approaches and
-tests: parametric, nonparametric, robust, and Bayesian *t*-test, one-way ANOVA,
-correlation analyses, contingency table analyses, and meta-analyses. The
-functions are pipe-friendly and compatible with tidy data.
-
-Statistical packages exhibit substantial diversity in terms of their syntax and
-expected input type. This can make it difficult to switch from one statistical
-approach to another. For example, some functions expect vectors as inputs, while
-others expect dataframes. Depending on whether it is a repeated measures design
-or not, different functions might expect data to be in wide or long format. Some
-functions can internally omit missing values, while other functions error in
-their presence. Furthermore, if someone wishes to utilize the objects returned
-by these packages downstream in their workflow, this is not straightforward
-either because even functions from the same package can return a list, a matrix,
-an array, a dataframe, etc., depending on the function.
-
-This is where `{statsExpressions}` comes in: It can be thought of as a unified
-portal through which most of the functionality in these underlying packages can
-be accessed, with a simpler interface and no requirement to change data format.
-
-## Dataframes
-
-The dataframe will contain the following columns (the exact columns will depend
-on the test and the statistical approach):
-
-  - `statistic`: the numeric value of a statistic.
-
-  - `df`: the numeric value of a parameter being modeled (often degrees
-    of freedom for the test).
-
-  - `df.error` and `df`: relevant only if the statistic in question has
-    two degrees of freedom (e.g., anova).
-
-  - `p.value`: the two-sided *p*-value associated with the observed statistic.
-  
-  - `method`: the details of the statistical test carried out.
-
-  - `estimate`: estimated value of the effect size.
-
-  - `conf.low`: lower bound for the effect size estimate.
-
-  - `conf.high`: upper bound for the effect size estimate.
-  
-  - `conf.level`: width of the confidence interval.
-  
-  - `effectsize`: the type of the effect size.
-
-For details about the tests and types of effect size estimates they correspond
-to, see:
-<https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html>
-
-Note that all examples are preceded by `set.seed()` calls for reproducibility.
 
 ## One-sample tests
 

@@ -16,19 +16,24 @@
 #'
 #' @description
 #'
-#' A dataframe containing results from random-effects meta-analysis.
+#' ```{r child="man/rmd-fragments/table_intro.Rmd"}
+#' ```
 #'
-#' To see details about functions which are internally used to carry out these
-#' analyses, see the following vignette-
-#' <https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html>
+#' ```{r child="man/rmd-fragments/corr_test.Rmd"}
+#' ```
+#'
+#' @return
+#'
+#' ```{r child="man/rmd-fragments/return.Rmd"}
+#' ```
 #'
 #' @note **Important**: The function assumes that you have already downloaded
-#'   the needed package (`metafor`, `metaplus`, or `metaBMA`) for meta-analysis.
+#'   the needed package (`{metafor}`, `{metaplus}`, or `{metaBMA}`) for meta-analysis.
 #'   If they are not available, you will be asked to install them.
 #'
 #' @examples
 #' \donttest{
-#' # a dataframe with estimates and standard errors (`mag` dataset from `metaplus`)
+#' # a dataframe with estimates and standard errors (`mag` dataset from `{metaplus}`)
 #' df <- structure(list(
 #'   study = structure(c(
 #'     8L, 10L, 15L, 1L, 4L, 11L, 3L, 2L, 14L, 9L, 12L, 5L, 16L, 7L, 13L, 6L

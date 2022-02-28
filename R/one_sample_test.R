@@ -15,27 +15,16 @@
 #'
 #' @description
 #'
-#' A dataframe containing results from a one-sample test.
+#' ```{r child="man/rmd-fragments/table_intro.Rmd"}
+#' ```
 #'
-#' @details
+#' ```{r child="man/rmd-fragments/one_sample_test.Rmd"}
+#' ```
 #'
-#' The exact test and the effect size details contained will depend on the
-#' `type` argument.
+#' @return
 #'
-#'   Internal function `.f` used to carry out statistical test:
-#'   - **parametric**: `stats::t.test`
-#'   - **nonparametric**: `stats::wilcox.test`
-#'   - **robust**: `WRS2::trimcibt`
-#'   - **bayes**: `BayesFactor::ttestBF`
-#'
-#'   Internal function `.f.es` used to compute effect size:
-#'   - **parametric**: `effectsize::cohens_d`, `effectsize::hedges_g`
-#'   - **nonparametric**: `effectsize::rank_biserial`
-#'   - **robust**: `WRS2::trimcibt`
-#'   - **bayes**: `bayestestR::describe_posterior`
-#'
-#' For more, see-
-#' <https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html>
+#' ```{r child="man/rmd-fragments/return.Rmd"}
+#' ```
 #'
 #' @examples
 #' \donttest{

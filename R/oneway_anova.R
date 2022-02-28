@@ -3,11 +3,16 @@
 #'
 #' @description
 #'
-#' A dataframe containing results for one-way ANOVA.
+#' ```{r child="man/rmd-fragments/table_intro.Rmd"}
+#' ```
 #'
-#' To see details about functions which are internally used to carry out these
-#' analyses, see the following vignette-
-#' <https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html>
+#' ```{r child="man/rmd-fragments/oneway_anova.Rmd"}
+#' ```
+#'
+#' @return
+#'
+#' ```{r child="man/rmd-fragments/return.Rmd"}
+#' ```
 #'
 #' @inheritParams long_to_wide_converter
 #' @inheritParams stats_type_switch

@@ -3,12 +3,16 @@
 #'
 #' @description
 #'
-#' A dataframe containing results from for contingency table analysis or
-#' goodness of fit test.
+#' ```{r child="man/rmd-fragments/table_intro.Rmd"}
+#' ```
 #'
-#' To see details about functions which are internally used to carry out these
-#' analyses, see the following vignette-
-#' <https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html>
+#' ```{r child="man/rmd-fragments/contingency_table.Rmd"}
+#' ```
+#'
+#' @return
+#'
+#' ```{r child="man/rmd-fragments/return.Rmd"}
+#' ```
 #'
 #' @param x The variable to use as the **rows** in the contingency table.
 #' @param y The variable to use as the **columns** in the contingency table.

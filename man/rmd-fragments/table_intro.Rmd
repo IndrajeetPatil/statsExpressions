@@ -1,0 +1,5 @@
+The table below provides summary about:
+
+- statistical test carried out for inferential statistics
+- type of effect size estimate and a measure of uncertainty for this estimate
+- functions used internally to compute these details
