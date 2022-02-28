@@ -1,17 +1,17 @@
 #' @title Correlation analyses
 #' @name corr_test
 #'
-#' @return
-#'
-#'  A dataframe containing results from correlation test with confidence
-#'  intervals for the correlation coefficient estimate.
-#'
 #' @description
 #'
 #' ```{r child="man/rmd-fragments/table_intro.Rmd"}
 #' ```
 #'
 #' ```{r child="man/rmd-fragments/corr_test.Rmd"}
+#' ```
+#'
+#' @return
+#'
+#' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```
 #'
 #' @param x The column in `data` containing the explanatory variable to be

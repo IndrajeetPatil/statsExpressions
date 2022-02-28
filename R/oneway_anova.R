@@ -11,7 +11,8 @@
 #'
 #' @return
 #'
-#' A dataframe containing results for one-way ANOVA.
+#' ```{r child="man/rmd-fragments/return.Rmd"}
+#' ```
 #'
 #' @inheritParams long_to_wide_converter
 #' @inheritParams stats_type_switch

@@ -24,7 +24,8 @@
 #'
 #' @return
 #'
-#' A dataframe containing results from random-effects meta-analysis.
+#' ```{r child="man/rmd-fragments/return.Rmd"}
+#' ```
 #'
 #' @note **Important**: The function assumes that you have already downloaded
 #'   the needed package (`{metafor}`, `{metaplus}`, or `{metaBMA}`) for meta-analysis.

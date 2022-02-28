@@ -22,6 +22,7 @@
 #' @param ... Currently ignored.
 #'
 #' @examples
+#'
 #' set.seed(123)
 #'
 #' # parametric -----------------------
@@ -35,6 +36,7 @@
 #'
 #' # Bayesian -------------------------
 #' centrality_description(sleep, group, extra, type = "b")
+#'
 #' @export
 
 centrality_description <- function(data,

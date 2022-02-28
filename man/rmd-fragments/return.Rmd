@@ -1,0 +1,35 @@
+The returned tibble dataframe can contain some or all of the following columns (the exact columns will depend on the statistical test):
+
+  - `statistic`: the numeric value of a statistic
+
+  - `df`: the numeric value of a parameter being modeled (often degrees
+    of freedom for the test)
+
+  - `df.error` and `df`: relevant only if the statistic in question has
+    two degrees of freedom (e.g. anova)
+
+  - `p.value`: the two-sided *p*-value associated with the observed statistic
+  
+  - `method`: the name of the inferential statistical test
+
+  - `estimate`: estimated value of the effect size
+
+  - `conf.low`: lower bound for the effect size estimate
+
+  - `conf.high`: upper bound for the effect size estimate
+  
+  - `conf.level`: width of the confidence interval
+  
+  - `conf.method`: method used to compute confidence interval
+  
+  - `conf.distribution`: statistical distribution for the effect
+  
+  - `effectsize`: the name of the effect size
+
+  -  `n.obs`: number of observations
+  
+  - `expression`: pre-formatted expression containing statistical details
+
+For examples of dataframe outputs, see examples and [this vignette](https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html).
+
+Note that all examples are preceded by `set.seed()` calls for reproducibility.

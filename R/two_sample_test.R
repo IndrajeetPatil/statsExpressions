@@ -18,8 +18,8 @@
 #'
 #' @return
 #'
-#'  A dataframe containing results from a two-sample test and effect size plus
-#'  confidence intervals.
+#' ```{r child="man/rmd-fragments/return.Rmd"}
+#' ```
 #'
 #' @examples
 #' \donttest{

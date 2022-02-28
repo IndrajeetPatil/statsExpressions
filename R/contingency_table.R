@@ -11,8 +11,8 @@
 #'
 #' @return
 #'
-#' A dataframe containing results from for contingency table analysis or
-#' goodness of fit test.
+#' ```{r child="man/rmd-fragments/return.Rmd"}
+#' ```
 #'
 #' @param x The variable to use as the **rows** in the contingency table.
 #' @param y The variable to use as the **columns** in the contingency table.

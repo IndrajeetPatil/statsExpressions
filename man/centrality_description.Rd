@@ -57,6 +57,7 @@ containing a specified centrality measure. The function internally relies on
 \code{datawizard::describe_distribution()} function.
 }
 \examples{
+
 set.seed(123)
 
 # parametric -----------------------
@@ -70,4 +71,5 @@ centrality_description(ToothGrowth, supp, len, type = "r")
 
 # Bayesian -------------------------
 centrality_description(sleep, group, extra, type = "b")
+
 }
