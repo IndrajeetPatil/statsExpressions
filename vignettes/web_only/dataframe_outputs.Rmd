@@ -42,12 +42,6 @@ This vignette can be cited as:
 citation("statsExpressions")
 ```
 
-## Dataframes
-
-```{r child="../man/rmd-fragments/return.Rmd"}
-
-```
-
 ## One-sample tests
 
 ```{r onesample}
