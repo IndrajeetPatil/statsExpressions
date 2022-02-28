@@ -91,7 +91,7 @@
                         <h4 data-toc-skip class="author">Indrajeet
 Patil</h4>
             
-            <h4 data-toc-skip class="date">2022-02-26</h4>
+            <h4 data-toc-skip class="date">2022-02-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/HEAD/vignettes/web_only/dataframe_outputs.Rmd" class="external-link"><code>vignettes/web_only/dataframe_outputs.Rmd</code></a></small>
       <div class="d-none name"><code>dataframe_outputs.Rmd</code></div>
@@ -99,6 +99,7 @@ Patil</h4>
 
     
     
+<p>This vignette can be cited as:</p>
 <pre><code>
   Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes
   and Expressions with Statistical Details. Journal of Open Source
@@ -118,65 +119,6 @@ A BibTeX entry for LaTeX users is
     title = {{statsExpressions: {R} Package for Tidy Dataframes and Expressions with Statistical Details}},
     journal = {{Journal of Open Source Software}},
   }</code></pre>
-<div class="section level2">
-<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
-</h2>
-<p>The <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> package has two key aims: to
-provide a consistent syntax to do statistical analysis with tidy data,
-and to provide statistical expressions (i.e., a pre-formatted in-text
-statistical result) for plotting functions. Currently, it supports
-common types of statistical approaches and tests: parametric,
-nonparametric, robust, and Bayesian <em>t</em>-test, one-way ANOVA,
-correlation analyses, contingency table analyses, and meta-analyses. The
-functions are pipe-friendly and compatible with tidy data.</p>
-<p>Statistical packages exhibit substantial diversity in terms of their
-syntax and expected input type. This can make it difficult to switch
-from one statistical approach to another. For example, some functions
-expect vectors as inputs, while others expect dataframes. Depending on
-whether it is a repeated measures design or not, different functions
-might expect data to be in wide or long format. Some functions can
-internally omit missing values, while other functions error in their
-presence. Furthermore, if someone wishes to utilize the objects returned
-by these packages downstream in their workflow, this is not
-straightforward either because even functions from the same package can
-return a list, a matrix, an array, a dataframe, etc., depending on the
-function.</p>
-<p>This is where <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> comes in: It can be
-thought of as a unified portal through which most of the functionality
-in these underlying packages can be accessed, with a simpler interface
-and no requirement to change data format.</p>
-</div>
-<div class="section level2">
-<h2 id="dataframes">Dataframes<a class="anchor" aria-label="anchor" href="#dataframes"></a>
-</h2>
-<p>The dataframe will contain the following columns (the exact columns
-will depend on the test and the statistical approach):</p>
-<ul>
-<li><p><code>statistic</code>: the numeric value of a
-statistic.</p></li>
-<li><p><code>df</code>: the numeric value of a parameter being modeled
-(often degrees of freedom for the test).</p></li>
-<li><p><code>df.error</code> and <code>df</code>: relevant only if the
-statistic in question has two degrees of freedom (e.g., anova).</p></li>
-<li><p><code>p.value</code>: the two-sided <em>p</em>-value associated
-with the observed statistic.</p></li>
-<li><p><code>method</code>: the details of the statistical test carried
-out.</p></li>
-<li><p><code>estimate</code>: estimated value of the effect
-size.</p></li>
-<li><p><code>conf.low</code>: lower bound for the effect size
-estimate.</p></li>
-<li><p><code>conf.high</code>: upper bound for the effect size
-estimate.</p></li>
-<li><p><code>conf.level</code>: width of the confidence
-interval.</p></li>
-<li><p><code>effectsize</code>: the type of the effect size.</p></li>
-</ul>
-<p>For details about the tests and types of effect size estimates they
-correspond to, see: <a href="https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/stats_details.html</a></p>
-<p>Note that all examples are preceded by <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed()</a></code> calls
-for reproducibility.</p>
-</div>
 <div class="section level2">
 <h2 id="one-sample-tests">One-sample tests<a class="anchor" aria-label="anchor" href="#one-sample-tests"></a>
 </h2>

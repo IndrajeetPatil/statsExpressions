@@ -162,6 +162,9 @@ function.</p>
 thought of as a unified portal through which most of the functionality
 in these underlying packages can be accessed, with a simpler interface
 and no requirement to change data format.</p>
+<p>This package forms the statistical processing backend for <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link"><code>ggstatsplot</code></a>
+package.</p>
+<p>For more documentation, see the dedicated <a href="https://indrajeetpatil.github.io/statsExpressions/">website</a>.</p>
 </div>
 <div class="section level1">
 <h1 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -222,9 +225,9 @@ and no requirement to change data format.</p>
 <p><img src="reference/figures/card.png" width="80%"></p>
 </div>
 <div class="section level1">
-<h1 id="summary-of-types-of-statistical-analyses">Summary of types of statistical analyses<a class="anchor" aria-label="anchor" href="#summary-of-types-of-statistical-analyses"></a>
+<h1 id="summary-of-functionality">Summary of functionality<a class="anchor" aria-label="anchor" href="#summary-of-functionality"></a>
 </h1>
-<p>Here is a tabular summary of available tests:</p>
+<p><strong>Summary of available analyses</strong></p>
 <table class="table">
 <colgroup>
 <col width="15%">
@@ -269,8 +272,47 @@ and no requirement to change data format.</p>
 </tr>
 </tbody>
 </table>
-<p>The table below summarizes all the different types of analyses
-currently supported in this package-</p>
+<p><strong>Summary of details available for analyses</strong></p>
+<table style="width:100%;" class="table">
+<colgroup>
+<col width="42%">
+<col width="25%">
+<col width="31%">
+</colgroup>
+<thead><tr class="header">
+<th>Analysis</th>
+<th>Hypothesis testing</th>
+<th>Effect size estimation</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>(one/two-sample) <em>t</em>-test</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>one-way ANOVA</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>correlation</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>(one/two-way) contingency table</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>random-effects meta-analysis</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Summary of supported statistical approaches</strong></p>
 <table class="table">
 <colgroup>
 <col width="52%">
@@ -333,41 +375,6 @@ currently supported in this package-</p>
 <td>Random-effects meta-analysis</td>
 <td>✅</td>
 <td>❌</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-</tbody>
-</table>
-<p>Summary of Bayesian analysis</p>
-<table class="table">
-<thead><tr class="header">
-<th>Analysis</th>
-<th>Hypothesis testing</th>
-<th>Estimation</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>(one/two-sample) <em>t</em>-test</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr class="even">
-<td>one-way ANOVA</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr class="odd">
-<td>correlation</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr class="even">
-<td>(one/two-way) contingency table</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr class="odd">
-<td>random-effects meta-analysis</td>
 <td>✅</td>
 <td>✅</td>
 </tr>
@@ -643,8 +650,10 @@ expressions.</p>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
 
 <span class="co"># dataframe with results</span>
-<span class="va">df_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, test.value <span class="op">=</span> <span class="fl">3</span>, type <span class="op">=</span> <span class="st">"bayes"</span>,
-                              top.text <span class="op">=</span> <span class="st">"Bayesian one-sample t-test"</span><span class="op">)</span>
+<span class="va">df_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>,
+  test.value <span class="op">=</span> <span class="fl">3</span>, type <span class="op">=</span> <span class="st">"bayes"</span>,
+  top.text <span class="op">=</span> <span class="st">"Bayesian one-sample t-test"</span>
+<span class="op">)</span>
 
 <span class="co"># creating a histogram plot</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">wt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -789,8 +798,8 @@ in your R console.</p>
 <table class="table">
 <colgroup>
 <col width="15%">
-<col width="49%">
-<col width="35%">
+<col width="48%">
+<col width="36%">
 </colgroup>
 <thead><tr class="header">
 <th>Type</th>
@@ -801,43 +810,40 @@ in your R console.</p>
 <tr class="odd">
 <td>Parametric</td>
 <td>mean</td>
-<td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">parameters::describe_distribution</a></code></td>
+<td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">parameters::describe_distribution()</a></code></td>
 </tr>
 <tr class="even">
 <td>Non-parametric</td>
 <td>median</td>
-<td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">parameters::describe_distribution</a></code></td>
+<td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">parameters::describe_distribution()</a></code></td>
 </tr>
 <tr class="odd">
 <td>Robust</td>
 <td>trimmed mean</td>
-<td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">parameters::describe_distribution</a></code></td>
+<td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">parameters::describe_distribution()</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
 <td>MAP (maximum <em>a posteriori</em> probability) estimate</td>
-<td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">parameters::describe_distribution</a></code></td>
+<td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">parameters::describe_distribution()</a></code></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section level2">
-<h2 id="two_sample_test--oneway_anova">
-<code>two_sample_test</code> + <code>oneway_anova</code>
-<a class="anchor" aria-label="anchor" href="#two_sample_test--oneway_anova"></a>
+<h2 id="oneway_anova">
+<code>oneway_anova</code><a class="anchor" aria-label="anchor" href="#oneway_anova"></a>
 </h2>
-<p>No. of groups: <code>2</code> =&gt; <code>two_sample_test</code><br>
-No. of groups: <code>&gt; 2</code> =&gt; <code>oneway_anova</code></p>
-<div class="section level3">
-<h3 id="between-subjects">between-subjects<a class="anchor" aria-label="anchor" href="#between-subjects"></a>
-</h3>
+<div class="section level4">
+<h4 id="between-subjects">between-subjects<a class="anchor" aria-label="anchor" href="#between-subjects"></a>
+</h4>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <colgroup>
 <col width="15%">
 <col width="14%">
-<col width="47%">
-<col width="23%">
+<col width="46%">
+<col width="24%">
 </colgroup>
 <thead><tr class="header">
 <th>Type</th>
@@ -850,151 +856,89 @@ No. of groups: <code>&gt; 2</code> =&gt; <code>oneway_anova</code></p>
 <td>Parametric</td>
 <td>&gt; 2</td>
 <td>Fisher’s or Welch’s one-way ANOVA</td>
-<td><code><a href="https://rdrr.io/r/stats/oneway.test.html" class="external-link">stats::oneway.test</a></code></td>
+<td><code><a href="https://rdrr.io/r/stats/oneway.test.html" class="external-link">stats::oneway.test()</a></code></td>
 </tr>
 <tr class="even">
 <td>Non-parametric</td>
 <td>&gt; 2</td>
-<td>Kruskal–Wallis one-way ANOVA</td>
-<td><code><a href="https://rdrr.io/r/stats/kruskal.test.html" class="external-link">stats::kruskal.test</a></code></td>
+<td>Kruskal-Wallis one-way ANOVA</td>
+<td><code><a href="https://rdrr.io/r/stats/kruskal.test.html" class="external-link">stats::kruskal.test()</a></code></td>
 </tr>
 <tr class="odd">
 <td>Robust</td>
 <td>&gt; 2</td>
 <td>Heteroscedastic one-way ANOVA for trimmed means</td>
-<td><code><a href="https://rdrr.io/pkg/WRS2/man/t1way.html" class="external-link">WRS2::t1way</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/WRS2/man/t1way.html" class="external-link">WRS2::t1way()</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayes Factor</td>
 <td>&gt; 2</td>
 <td>Fisher’s ANOVA</td>
-<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/anovaBF.html" class="external-link">BayesFactor::anovaBF</a></code></td>
-</tr>
-<tr class="odd">
-<td>Parametric</td>
-<td>2</td>
-<td>Student’s or Welch’s <em>t</em>-test</td>
-<td><code><a href="https://rdrr.io/r/stats/t.test.html" class="external-link">stats::t.test</a></code></td>
-</tr>
-<tr class="even">
-<td>Non-parametric</td>
-<td>2</td>
-<td>Mann–Whitney <em>U</em> test</td>
-<td><code><a href="https://rdrr.io/r/stats/wilcox.test.html" class="external-link">stats::wilcox.test</a></code></td>
-</tr>
-<tr class="odd">
-<td>Robust</td>
-<td>2</td>
-<td>Yuen’s test for trimmed means</td>
-<td><code><a href="https://rdrr.io/pkg/WRS2/man/yuen.html" class="external-link">WRS2::yuen</a></code></td>
-</tr>
-<tr class="even">
-<td>Bayesian</td>
-<td>2</td>
-<td>Student’s <em>t</em>-test</td>
-<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/ttestBF.html" class="external-link">BayesFactor::ttestBF</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/anovaBF.html" class="external-link">BayesFactor::anovaBF()</a></code></td>
 </tr>
 </tbody>
 </table>
 <p><strong>Effect size estimation</strong></p>
 <table class="table">
 <colgroup>
-<col width="5%">
-<col width="5%">
-<col width="68%">
-<col width="1%">
-<col width="19%">
+<col width="10%">
+<col width="10%">
+<col width="29%">
+<col width="10%">
+<col width="40%">
 </colgroup>
 <thead><tr class="header">
 <th>Type</th>
 <th>No. of groups</th>
 <th>Effect size</th>
-<th>CI?</th>
+<th>CI available?</th>
 <th>Function used</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td>Parametric</td>
 <td>&gt; 2</td>
+<td>partial eta-squared, partial omega-squared</td>
+<td>Yes</td>
 <td>
-<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ceta_%7Bp%7D%5E2" title="\eta_{p}^2" alt="\eta_{p}^2">, <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Comega_%7Bp%7D%5E2" title="\omega_{p}^2" alt="\omega_{p}^2">
-</td>
-<td>✅</td>
-<td>
-<code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::omega_squared</a></code>,
-<code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::eta_squared</a></code>
+<code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::omega_squared()</a></code>,
+<code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::eta_squared()</a></code>
 </td>
 </tr>
 <tr class="even">
 <td>Non-parametric</td>
 <td>&gt; 2</td>
-<td><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cepsilon_%7Bordinal%7D%5E2" title="\epsilon_{ordinal}^2" alt="\epsilon_{ordinal}^2"></td>
-<td>✅</td>
-<td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html" class="external-link">effectsize::rank_epsilon_squared</a></code></td>
+<td>rank epsilon squared</td>
+<td>Yes</td>
+<td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html" class="external-link">effectsize::rank_epsilon_squared()</a></code></td>
 </tr>
 <tr class="odd">
 <td>Robust</td>
 <td>&gt; 2</td>
-<td>
-<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cxi" title="\xi" alt="\xi"> (Explanatory measure of effect size)</td>
-<td>✅</td>
-<td><code><a href="https://rdrr.io/pkg/WRS2/man/t1way.html" class="external-link">WRS2::t1way</a></code></td>
+<td>Explanatory measure of effect size</td>
+<td>Yes</td>
+<td><code><a href="https://rdrr.io/pkg/WRS2/man/t1way.html" class="external-link">WRS2::t1way()</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayes Factor</td>
 <td>&gt; 2</td>
-<td><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=R_%7BBayesian%7D%5E2" title="R_{Bayesian}^2" alt="R_{Bayesian}^2"></td>
-<td>✅</td>
-<td><code><a href="https://easystats.github.io/performance/reference/r2_bayes.html" class="external-link">performance::r2_bayes</a></code></td>
-</tr>
-<tr class="odd">
-<td>Parametric</td>
-<td>2</td>
-<td>Cohen’s <em>d</em>, Hedge’s <em>g</em>
-</td>
-<td>✅</td>
-<td>
-<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::cohens_d</a></code>,
-<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::hedges_g</a></code>
-</td>
-</tr>
-<tr class="even">
-<td>Non-parametric</td>
-<td>2</td>
-<td>
-<em>r</em> (rank-biserial correlation)</td>
-<td>✅</td>
-<td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html" class="external-link">effectsize::rank_biserial</a></code></td>
-</tr>
-<tr class="odd">
-<td>Robust</td>
-<td>2</td>
-<td>
-<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta_%7BR%7D%5E%7BAKP%7D" title="\delta_{R}^{AKP}" alt="\delta_{R}^{AKP}">
-(Algina-Keselman-Penfield robust standardized difference)</td>
-<td>✅</td>
-<td><code><a href="https://rdrr.io/pkg/WRS2/man/yuen.html" class="external-link">WRS2::akp.effect</a></code></td>
-</tr>
-<tr class="even">
-<td>Bayesian</td>
-<td>2</td>
-<td><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta_%7Bposterior%7D" title="\delta_{posterior}" alt="\delta_{posterior}"></td>
-<td>✅</td>
-<td><code><a href="https://easystats.github.io/bayestestR/reference/describe_posterior.html" class="external-link">bayestestR::describe_posterior</a></code></td>
+<td>Bayesian R-squared</td>
+<td>Yes</td>
+<td><code><a href="https://easystats.github.io/performance/reference/r2_bayes.html" class="external-link">performance::r2_bayes()</a></code></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section level3">
-<h3 id="within-subjects">within-subjects<a class="anchor" aria-label="anchor" href="#within-subjects"></a>
-</h3>
+<div class="section level4">
+<h4 id="within-subjects">within-subjects<a class="anchor" aria-label="anchor" href="#within-subjects"></a>
+</h4>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <colgroup>
-<col width="13%">
+<col width="12%">
 <col width="12%">
 <col width="54%">
-<col width="19%">
+<col width="20%">
 </colgroup>
 <thead><tr class="header">
 <th>Type</th>
@@ -1007,116 +951,155 @@ No. of groups: <code>&gt; 2</code> =&gt; <code>oneway_anova</code></p>
 <td>Parametric</td>
 <td>&gt; 2</td>
 <td>One-way repeated measures ANOVA</td>
-<td><code><a href="https://rdrr.io/pkg/afex/man/aov_car.html" class="external-link">afex::aov_ez</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/afex/man/aov_car.html" class="external-link">afex::aov_ez()</a></code></td>
 </tr>
 <tr class="even">
 <td>Non-parametric</td>
 <td>&gt; 2</td>
 <td>Friedman rank sum test</td>
-<td><code><a href="https://rdrr.io/r/stats/friedman.test.html" class="external-link">stats::friedman.test</a></code></td>
+<td><code><a href="https://rdrr.io/r/stats/friedman.test.html" class="external-link">stats::friedman.test()</a></code></td>
 </tr>
 <tr class="odd">
 <td>Robust</td>
 <td>&gt; 2</td>
 <td>Heteroscedastic one-way repeated measures ANOVA for trimmed
 means</td>
-<td><code><a href="https://rdrr.io/pkg/WRS2/man/rmanova.html" class="external-link">WRS2::rmanova</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/WRS2/man/rmanova.html" class="external-link">WRS2::rmanova()</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayes Factor</td>
 <td>&gt; 2</td>
 <td>One-way repeated measures ANOVA</td>
-<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/anovaBF.html" class="external-link">BayesFactor::anovaBF</a></code></td>
-</tr>
-<tr class="odd">
-<td>Parametric</td>
-<td>2</td>
-<td>Student’s <em>t</em>-test</td>
-<td><code><a href="https://rdrr.io/r/stats/t.test.html" class="external-link">stats::t.test</a></code></td>
-</tr>
-<tr class="even">
-<td>Non-parametric</td>
-<td>2</td>
-<td>Wilcoxon signed-rank test</td>
-<td><code><a href="https://rdrr.io/r/stats/wilcox.test.html" class="external-link">stats::wilcox.test</a></code></td>
-</tr>
-<tr class="odd">
-<td>Robust</td>
-<td>2</td>
-<td>Yuen’s test on trimmed means for dependent samples</td>
-<td><code><a href="https://rdrr.io/pkg/WRS2/man/yuend.html" class="external-link">WRS2::yuend</a></code></td>
-</tr>
-<tr class="even">
-<td>Bayesian</td>
-<td>2</td>
-<td>Student’s <em>t</em>-test</td>
-<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/ttestBF.html" class="external-link">BayesFactor::ttestBF</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/anovaBF.html" class="external-link">BayesFactor::anovaBF()</a></code></td>
 </tr>
 </tbody>
 </table>
 <p><strong>Effect size estimation</strong></p>
 <table class="table">
 <colgroup>
-<col width="5%">
-<col width="5%">
-<col width="68%">
-<col width="1%">
-<col width="19%">
+<col width="9%">
+<col width="8%">
+<col width="38%">
+<col width="8%">
+<col width="35%">
 </colgroup>
 <thead><tr class="header">
 <th>Type</th>
 <th>No. of groups</th>
 <th>Effect size</th>
-<th>CI?</th>
+<th>CI available?</th>
 <th>Function used</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td>Parametric</td>
 <td>&gt; 2</td>
+<td>partial eta-squared, partial omega-squared</td>
+<td>Yes</td>
 <td>
-<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ceta_%7Bp%7D%5E2" title="\eta_{p}^2" alt="\eta_{p}^2">, <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Comega_%7Bp%7D%5E2" title="\omega_{p}^2" alt="\omega_{p}^2">
-</td>
-<td>✅</td>
-<td>
-<code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::omega_squared</a></code>,
-<code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::eta_squared</a></code>
+<code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::omega_squared()</a></code>,
+<code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::eta_squared()</a></code>
 </td>
 </tr>
 <tr class="even">
 <td>Non-parametric</td>
 <td>&gt; 2</td>
-<td>
-<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=W_%7BKendall%7D" title="W_{Kendall}" alt="W_{Kendall}"> (Kendall’s coefficient of
-concordance)</td>
-<td>✅</td>
-<td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html" class="external-link">effectsize::kendalls_w</a></code></td>
+<td>Kendall’s coefficient of concordance</td>
+<td>Yes</td>
+<td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html" class="external-link">effectsize::kendalls_w()</a></code></td>
 </tr>
 <tr class="odd">
 <td>Robust</td>
 <td>&gt; 2</td>
-<td>
-<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta_%7BR-avg%7D%5E%7BAKP%7D" title="\delta_{R-avg}^{AKP}" alt="\delta_{R-avg}^{AKP}">
-(Algina-Keselman-Penfield robust standardized difference average)</td>
-<td>✅</td>
-<td><code><a href="https://rdrr.io/pkg/WRS2/man/wmcpAKP.html" class="external-link">WRS2::wmcpAKP</a></code></td>
+<td>Algina-Keselman-Penfield robust standardized difference average</td>
+<td>Yes</td>
+<td><code><a href="https://rdrr.io/pkg/WRS2/man/wmcpAKP.html" class="external-link">WRS2::wmcpAKP()</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayes Factor</td>
 <td>&gt; 2</td>
-<td><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=R_%7BBayesian%7D%5E2" title="R_{Bayesian}^2" alt="R_{Bayesian}^2"></td>
-<td>✅</td>
-<td><code><a href="https://easystats.github.io/performance/reference/r2_bayes.html" class="external-link">performance::r2_bayes</a></code></td>
+<td>Bayesian R-squared</td>
+<td>Yes</td>
+<td><code><a href="https://easystats.github.io/performance/reference/r2_bayes.html" class="external-link">performance::r2_bayes()</a></code></td>
 </tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section level2">
+<h2 id="two_sample_test">
+<code>two_sample_test</code><a class="anchor" aria-label="anchor" href="#two_sample_test"></a>
+</h2>
+<div class="section level4">
+<h4 id="between-subjects-1">between-subjects<a class="anchor" aria-label="anchor" href="#between-subjects-1"></a>
+</h4>
+<p><strong>Hypothesis testing</strong></p>
+<table class="table">
+<colgroup>
+<col width="18%">
+<col width="17%">
+<col width="35%">
+<col width="29%">
+</colgroup>
+<thead><tr class="header">
+<th>Type</th>
+<th>No. of groups</th>
+<th>Test</th>
+<th>Function used</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Parametric</td>
+<td>2</td>
+<td>Student’s or Welch’s <em>t</em>-test</td>
+<td><code><a href="https://rdrr.io/r/stats/t.test.html" class="external-link">stats::t.test()</a></code></td>
+</tr>
+<tr class="even">
+<td>Non-parametric</td>
+<td>2</td>
+<td>Mann-Whitney <em>U</em> test</td>
+<td><code><a href="https://rdrr.io/r/stats/wilcox.test.html" class="external-link">stats::wilcox.test()</a></code></td>
+</tr>
+<tr class="odd">
+<td>Robust</td>
+<td>2</td>
+<td>Yuen’s test for trimmed means</td>
+<td><code><a href="https://rdrr.io/pkg/WRS2/man/yuen.html" class="external-link">WRS2::yuen()</a></code></td>
+</tr>
+<tr class="even">
+<td>Bayesian</td>
+<td>2</td>
+<td>Student’s <em>t</em>-test</td>
+<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/ttestBF.html" class="external-link">BayesFactor::ttestBF()</a></code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Effect size estimation</strong></p>
+<table class="table">
+<colgroup>
+<col width="10%">
+<col width="9%">
+<col width="36%">
+<col width="9%">
+<col width="33%">
+</colgroup>
+<thead><tr class="header">
+<th>Type</th>
+<th>No. of groups</th>
+<th>Effect size</th>
+<th>CI available?</th>
+<th>Function used</th>
+</tr></thead>
+<tbody>
 <tr class="odd">
 <td>Parametric</td>
 <td>2</td>
 <td>Cohen’s <em>d</em>, Hedge’s <em>g</em>
 </td>
-<td>✅</td>
+<td>Yes</td>
 <td>
-<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::cohens_d</a></code>,
-<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::hedges_g</a></code>
+<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::cohens_d()</a></code>,
+<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::hedges_g()</a></code>
 </td>
 </tr>
 <tr class="even">
@@ -1124,24 +1107,119 @@ concordance)</td>
 <td>2</td>
 <td>
 <em>r</em> (rank-biserial correlation)</td>
-<td>✅</td>
-<td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html" class="external-link">effectsize::rank_biserial</a></code></td>
+<td>Yes</td>
+<td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html" class="external-link">effectsize::rank_biserial()</a></code></td>
 </tr>
 <tr class="odd">
 <td>Robust</td>
 <td>2</td>
-<td>
-<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta_%7BR%7D%5E%7BAKP%7D" title="\delta_{R}^{AKP}" alt="\delta_{R}^{AKP}">
-(Algina-Keselman-Penfield robust standardized difference)</td>
-<td>✅</td>
-<td><code><a href="https://rdrr.io/pkg/WRS2/man/wmcpAKP.html" class="external-link">WRS2::wmcpAKP</a></code></td>
+<td>Algina-Keselman-Penfield robust standardized difference</td>
+<td>Yes</td>
+<td><code><a href="https://rdrr.io/pkg/WRS2/man/yuen.html" class="external-link">WRS2::akp.effect()</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
 <td>2</td>
-<td><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta_%7Bposterior%7D" title="\delta_{posterior}" alt="\delta_{posterior}"></td>
-<td>✅</td>
-<td><code><a href="https://easystats.github.io/bayestestR/reference/describe_posterior.html" class="external-link">bayestestR::describe_posterior</a></code></td>
+<td>difference</td>
+<td>Yes</td>
+<td><code><a href="https://easystats.github.io/bayestestR/reference/describe_posterior.html" class="external-link">bayestestR::describe_posterior()</a></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section level4">
+<h4 id="within-subjects-1">within-subjects<a class="anchor" aria-label="anchor" href="#within-subjects-1"></a>
+</h4>
+<p><strong>Hypothesis testing</strong></p>
+<table class="table">
+<colgroup>
+<col width="14%">
+<col width="13%">
+<col width="47%">
+<col width="23%">
+</colgroup>
+<thead><tr class="header">
+<th>Type</th>
+<th>No. of groups</th>
+<th>Test</th>
+<th>Function used</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Parametric</td>
+<td>2</td>
+<td>Student’s <em>t</em>-test</td>
+<td><code><a href="https://rdrr.io/r/stats/t.test.html" class="external-link">stats::t.test()</a></code></td>
+</tr>
+<tr class="even">
+<td>Non-parametric</td>
+<td>2</td>
+<td>Wilcoxon signed-rank test</td>
+<td><code><a href="https://rdrr.io/r/stats/wilcox.test.html" class="external-link">stats::wilcox.test()</a></code></td>
+</tr>
+<tr class="odd">
+<td>Robust</td>
+<td>2</td>
+<td>Yuen’s test on trimmed means for dependent samples</td>
+<td><code><a href="https://rdrr.io/pkg/WRS2/man/yuend.html" class="external-link">WRS2::yuend()</a></code></td>
+</tr>
+<tr class="even">
+<td>Bayesian</td>
+<td>2</td>
+<td>Student’s <em>t</em>-test</td>
+<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/ttestBF.html" class="external-link">BayesFactor::ttestBF()</a></code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Effect size estimation</strong></p>
+<table class="table">
+<colgroup>
+<col width="10%">
+<col width="9%">
+<col width="36%">
+<col width="9%">
+<col width="33%">
+</colgroup>
+<thead><tr class="header">
+<th>Type</th>
+<th>No. of groups</th>
+<th>Effect size</th>
+<th>CI available?</th>
+<th>Function used</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Parametric</td>
+<td>2</td>
+<td>Cohen’s <em>d</em>, Hedge’s <em>g</em>
+</td>
+<td>Yes</td>
+<td>
+<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::cohens_d()</a></code>,
+<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::hedges_g()</a></code>
+</td>
+</tr>
+<tr class="even">
+<td>Non-parametric</td>
+<td>2</td>
+<td>
+<em>r</em> (rank-biserial correlation)</td>
+<td>Yes</td>
+<td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html" class="external-link">effectsize::rank_biserial()</a></code></td>
+</tr>
+<tr class="odd">
+<td>Robust</td>
+<td>2</td>
+<td>Algina-Keselman-Penfield robust standardized difference</td>
+<td>Yes</td>
+<td><code><a href="https://rdrr.io/pkg/WRS2/man/wmcpAKP.html" class="external-link">WRS2::wmcpAKP()</a></code></td>
+</tr>
+<tr class="even">
+<td>Bayesian</td>
+<td>2</td>
+<td>difference</td>
+<td>Yes</td>
+<td><code><a href="https://easystats.github.io/bayestestR/reference/describe_posterior.html" class="external-link">bayestestR::describe_posterior()</a></code></td>
 </tr>
 </tbody>
 </table>
@@ -1189,15 +1267,15 @@ concordance)</td>
 <p><strong>Effect size estimation</strong></p>
 <table class="table">
 <colgroup>
-<col width="8%">
-<col width="63%">
-<col width="2%">
-<col width="25%">
+<col width="13%">
+<col width="28%">
+<col width="12%">
+<col width="44%">
 </colgroup>
 <thead><tr class="header">
 <th>Type</th>
 <th>Effect size</th>
-<th>CI?</th>
+<th>CI available?</th>
 <th>Function used</th>
 </tr></thead>
 <tbody>
@@ -1205,31 +1283,30 @@ concordance)</td>
 <td>Parametric</td>
 <td>Cohen’s <em>d</em>, Hedge’s <em>g</em>
 </td>
-<td>✅</td>
+<td>Yes</td>
 <td>
-<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::cohens_d</a></code>,
-<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::hedges_g</a></code>
+<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::cohens_d()</a></code>,
+<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::hedges_g()</a></code>
 </td>
 </tr>
 <tr class="even">
 <td>Non-parametric</td>
 <td>
 <em>r</em> (rank-biserial correlation)</td>
-<td>✅</td>
-<td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html" class="external-link">effectsize::rank_biserial</a></code></td>
+<td>Yes</td>
+<td><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html" class="external-link">effectsize::rank_biserial()</a></code></td>
 </tr>
 <tr class="odd">
 <td>Robust</td>
 <td>trimmed mean</td>
-<td>✅</td>
-<td>
-<code>trimcibt</code> (custom)</td>
+<td>Yes</td>
+<td><code><a href="https://rdrr.io/pkg/WRS2/man/trimcibt.html" class="external-link">WRS2::trimcibt()</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayes Factor</td>
-<td><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta_%7Bposterior%7D" title="\delta_{posterior}" alt="\delta_{posterior}"></td>
-<td>✅</td>
-<td><code><a href="https://easystats.github.io/bayestestR/reference/describe_posterior.html" class="external-link">bayestestR::describe_posterior</a></code></td>
+<td>difference</td>
+<td>Yes</td>
+<td><code><a href="https://easystats.github.io/bayestestR/reference/describe_posterior.html" class="external-link">bayestestR::describe_posterior()</a></code></td>
 </tr>
 </tbody>
 </table>
@@ -1240,43 +1317,43 @@ concordance)</td>
 </h2>
 <p><strong>Hypothesis testing</strong> and <strong>Effect size
 estimation</strong></p>
-<table class="table">
+<table style="width:100%;" class="table">
 <colgroup>
-<col width="17%">
-<col width="47%">
-<col width="5%">
-<col width="30%">
+<col width="15%">
+<col width="41%">
+<col width="14%">
+<col width="28%">
 </colgroup>
 <thead><tr class="header">
 <th>Type</th>
 <th>Test</th>
-<th>CI?</th>
+<th>CI available?</th>
 <th>Function used</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td>Parametric</td>
 <td>Pearson’s correlation coefficient</td>
-<td>✅</td>
-<td><code><a href="https://easystats.github.io/correlation/reference/correlation.html" class="external-link">correlation::correlation</a></code></td>
+<td>Yes</td>
+<td><code><a href="https://easystats.github.io/correlation/reference/correlation.html" class="external-link">correlation::correlation()</a></code></td>
 </tr>
 <tr class="even">
 <td>Non-parametric</td>
 <td>Spearman’s rank correlation coefficient</td>
-<td>✅</td>
-<td><code><a href="https://easystats.github.io/correlation/reference/correlation.html" class="external-link">correlation::correlation</a></code></td>
+<td>Yes</td>
+<td><code><a href="https://easystats.github.io/correlation/reference/correlation.html" class="external-link">correlation::correlation()</a></code></td>
 </tr>
 <tr class="odd">
 <td>Robust</td>
 <td>Winsorized Pearson correlation coefficient</td>
-<td>✅</td>
-<td><code><a href="https://easystats.github.io/correlation/reference/correlation.html" class="external-link">correlation::correlation</a></code></td>
+<td>Yes</td>
+<td><code><a href="https://easystats.github.io/correlation/reference/correlation.html" class="external-link">correlation::correlation()</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
-<td>Pearson’s correlation coefficient</td>
-<td>✅</td>
-<td><code><a href="https://easystats.github.io/correlation/reference/correlation.html" class="external-link">correlation::correlation</a></code></td>
+<td>Bayesian Pearson’s correlation coefficient</td>
+<td>Yes</td>
+<td><code><a href="https://easystats.github.io/correlation/reference/correlation.html" class="external-link">correlation::correlation()</a></code></td>
 </tr>
 </tbody>
 </table>
@@ -1285,16 +1362,16 @@ estimation</strong></p>
 <h2 id="contingency_table">
 <code>contingency_table</code><a class="anchor" aria-label="anchor" href="#contingency_table"></a>
 </h2>
-<div class="section level3">
-<h3 id="two-way-table">two-way table<a class="anchor" aria-label="anchor" href="#two-way-table"></a>
-</h3>
+<div class="section level4">
+<h4 id="two-way-table">two-way table<a class="anchor" aria-label="anchor" href="#two-way-table"></a>
+</h4>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <colgroup>
-<col width="15%">
-<col width="5%">
-<col width="58%">
-<col width="20%">
+<col width="24%">
+<col width="9%">
+<col width="33%">
+<col width="33%">
 </colgroup>
 <thead><tr class="header">
 <th>Type</th>
@@ -1306,89 +1383,89 @@ estimation</strong></p>
 <tr class="odd">
 <td>Parametric/Non-parametric</td>
 <td>Unpaired</td>
-<td>Pearson’s <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cchi%5E2" title="\chi^2" alt="\chi^2"> test</td>
-<td><code><a href="https://rdrr.io/r/stats/chisq.test.html" class="external-link">stats::chisq.test</a></code></td>
+<td>Pearson’s chi-squared test</td>
+<td><code><a href="https://rdrr.io/r/stats/chisq.test.html" class="external-link">stats::chisq.test()</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
 <td>Unpaired</td>
-<td>Bayesian Pearson’s <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cchi%5E2" title="\chi^2" alt="\chi^2"> test</td>
-<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/contingencyTableBF.html" class="external-link">BayesFactor::contingencyTableBF</a></code></td>
+<td>Bayesian Pearson’s chi-squared test</td>
+<td><code><a href="https://rdrr.io/pkg/BayesFactor/man/contingencyTableBF.html" class="external-link">BayesFactor::contingencyTableBF()</a></code></td>
 </tr>
 <tr class="odd">
 <td>Parametric/Non-parametric</td>
 <td>Paired</td>
-<td>McNemar’s <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cchi%5E2" title="\chi^2" alt="\chi^2"> test</td>
-<td><code><a href="https://rdrr.io/r/stats/mcnemar.test.html" class="external-link">stats::mcnemar.test</a></code></td>
+<td>McNemar’s chi-squared test</td>
+<td><code><a href="https://rdrr.io/r/stats/mcnemar.test.html" class="external-link">stats::mcnemar.test()</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
 <td>Paired</td>
-<td>❌</td>
-<td>❌</td>
+<td>No</td>
+<td>No</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Effect size estimation</strong></p>
-<table style="width:100%;" class="table">
+<table class="table">
 <colgroup>
-<col width="20%">
-<col width="7%">
-<col width="50%">
-<col width="3%">
-<col width="18%">
+<col width="29%">
+<col width="10%">
+<col width="15%">
+<col width="16%">
+<col width="29%">
 </colgroup>
 <thead><tr class="header">
 <th>Type</th>
 <th>Design</th>
 <th>Effect size</th>
-<th>CI?</th>
+<th>CI available?</th>
 <th>Function used</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td>Parametric/Non-parametric</td>
 <td>Unpaired</td>
-<td>Cramer’s <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=V" title="V" alt="V">
+<td>Cramer’s <em>V</em>
 </td>
-<td>✅</td>
-<td><code><a href="https://easystats.github.io/effectsize/reference/phi.html" class="external-link">effectsize::cramers_v</a></code></td>
+<td>Yes</td>
+<td><code><a href="https://easystats.github.io/effectsize/reference/phi.html" class="external-link">effectsize::cramers_v()</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
 <td>Unpaired</td>
-<td>Cramer’s <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=V" title="V" alt="V">
+<td>Cramer’s <em>V</em>
 </td>
-<td>✅</td>
-<td><code><a href="https://easystats.github.io/effectsize/reference/phi.html" class="external-link">effectsize::cramers_v</a></code></td>
+<td>Yes</td>
+<td><code><a href="https://easystats.github.io/effectsize/reference/phi.html" class="external-link">effectsize::cramers_v()</a></code></td>
 </tr>
 <tr class="odd">
 <td>Parametric/Non-parametric</td>
 <td>Paired</td>
-<td>Cohen’s <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=g" title="g" alt="g">
+<td>Cohen’s <em>g</em>
 </td>
-<td>✅</td>
-<td><code><a href="https://easystats.github.io/effectsize/reference/phi.html" class="external-link">effectsize::cohens_g</a></code></td>
+<td>Yes</td>
+<td><code><a href="https://easystats.github.io/effectsize/reference/phi.html" class="external-link">effectsize::cohens_g()</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
 <td>Paired</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section level3">
-<h3 id="one-way-table">one-way table<a class="anchor" aria-label="anchor" href="#one-way-table"></a>
-</h3>
+<div class="section level4">
+<h4 id="one-way-table">one-way table<a class="anchor" aria-label="anchor" href="#one-way-table"></a>
+</h4>
 <p><strong>Hypothesis testing</strong></p>
-<table style="width:100%;" class="table">
+<table class="table">
 <colgroup>
-<col width="17%">
-<col width="69%">
-<col width="13%">
+<col width="29%">
+<col width="46%">
+<col width="24%">
 </colgroup>
 <thead><tr class="header">
 <th>Type</th>
@@ -1398,12 +1475,12 @@ estimation</strong></p>
 <tbody>
 <tr class="odd">
 <td>Parametric/Non-parametric</td>
-<td>Goodness of fit <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cchi%5E2" title="\chi^2" alt="\chi^2"> test</td>
-<td><code><a href="https://rdrr.io/r/stats/chisq.test.html" class="external-link">stats::chisq.test</a></code></td>
+<td>Goodness of fit chi-squared test</td>
+<td><code><a href="https://rdrr.io/r/stats/chisq.test.html" class="external-link">stats::chisq.test()</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
-<td>Bayesian Goodness of fit <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cchi%5E2" title="\chi^2" alt="\chi^2"> test</td>
+<td>Bayesian Goodness of fit chi-squared test</td>
 <td>(custom)</td>
 </tr>
 </tbody>
@@ -1411,30 +1488,30 @@ estimation</strong></p>
 <p><strong>Effect size estimation</strong></p>
 <table class="table">
 <colgroup>
-<col width="21%">
-<col width="54%">
-<col width="3%">
-<col width="20%">
+<col width="31%">
+<col width="17%">
+<col width="17%">
+<col width="32%">
 </colgroup>
 <thead><tr class="header">
 <th>Type</th>
 <th>Effect size</th>
-<th>CI?</th>
+<th>CI available?</th>
 <th>Function used</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td>Parametric/Non-parametric</td>
-<td>Pearson’s <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=C" title="C" alt="C">
+<td>Pearson’s <em>C</em>
 </td>
-<td>✅</td>
-<td><code><a href="https://easystats.github.io/effectsize/reference/phi.html" class="external-link">effectsize::pearsons_c</a></code></td>
+<td>Yes</td>
+<td><code><a href="https://easystats.github.io/effectsize/reference/phi.html" class="external-link">effectsize::pearsons_c()</a></code></td>
 </tr>
 <tr class="even">
 <td>Bayesian</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
 </tr>
 </tbody>
 </table>
@@ -1448,40 +1525,40 @@ estimation</strong></p>
 estimation</strong></p>
 <table class="table">
 <colgroup>
-<col width="7%">
-<col width="30%">
-<col width="44%">
-<col width="3%">
-<col width="14%">
+<col width="10%">
+<col width="43%">
+<col width="11%">
+<col width="12%">
+<col width="22%">
 </colgroup>
 <thead><tr class="header">
 <th>Type</th>
 <th>Test</th>
 <th>Effect size</th>
-<th>CI?</th>
+<th>CI available?</th>
 <th>Function used</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td>Parametric</td>
 <td>Meta-analysis via random-effects models</td>
-<td><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta" title="\beta" alt="\beta"></td>
-<td>✅</td>
-<td><code><a href="https://wviechtb.github.io/metafor/reference/metafor-package.html" class="external-link">metafor::metafor</a></code></td>
+<td><em>beta</em></td>
+<td>Yes</td>
+<td><code><a href="https://wviechtb.github.io/metafor/reference/metafor-package.html" class="external-link">metafor::metafor()</a></code></td>
 </tr>
 <tr class="even">
 <td>Robust</td>
 <td>Meta-analysis via robust random-effects models</td>
-<td><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta" title="\beta" alt="\beta"></td>
-<td>✅</td>
-<td><code><a href="https://rdrr.io/pkg/metaplus/man/metaplus.html" class="external-link">metaplus::metaplus</a></code></td>
+<td><em>beta</em></td>
+<td>Yes</td>
+<td><code><a href="https://rdrr.io/pkg/metaplus/man/metaplus.html" class="external-link">metaplus::metaplus()</a></code></td>
 </tr>
 <tr class="odd">
 <td>Bayes</td>
 <td>Meta-analysis via Bayesian random-effects models</td>
-<td><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta" title="\beta" alt="\beta"></td>
-<td>✅</td>
-<td><code><a href="https://rdrr.io/pkg/metaBMA/man/meta_random.html" class="external-link">metaBMA::meta_random</a></code></td>
+<td><em>beta</em></td>
+<td>Yes</td>
+<td><code><a href="https://rdrr.io/pkg/metaBMA/man/meta_random.html" class="external-link">metaBMA::meta_random()</a></code></td>
 </tr>
 </tbody>
 </table>
@@ -1492,10 +1569,10 @@ estimation</strong></p>
 <a class="anchor" aria-label="anchor" href="#usage-in-ggstatsplot"></a>
 </h1>
 <p>Note that these functions were initially written to display results
-from statistical tests on ready-made <code>ggplot2</code> plots
-implemented in <code>ggstatsplot</code>.</p>
+from statistical tests on ready-made <a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a> plots
+implemented in <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link">ggstatsplot</a>.</p>
 <p>For detailed documentation, see the package website: <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link uri">https://indrajeetpatil.github.io/ggstatsplot/</a></p>
-<p>Here is an example from <code>ggstatsplot</code> of what the plots
+<p>Here is an example from <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link">ggstatsplot</a> of what the plots
 look like when the expressions are displayed in the subtitle-</p>
 <p><img src="reference/figures/ggstatsplot.png" align="center"></p>
 </div>
