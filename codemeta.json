@@ -224,7 +224,7 @@
       "@type": "SoftwareApplication",
       "identifier": "datawizard",
       "name": "datawizard",
-      "version": ">= 0.2.3",
+      "version": ">= 0.3.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -389,7 +389,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "3651.639KB",
+  "fileSize": "3666.387KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
@@ -422,6 +422,6 @@
   "releaseNotes": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/NEWS.md",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/README.md",
   "contIntegration": ["https://app.codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master", "https://github.com/IndrajeetPatil/statsExpressions/actions"],
-  "developmentStatus": ["https://lifecycle.r-lib.org/articles/stages.html", "https://www.repostatus.org/##active", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html", "https://lifecycle.r-lib.org/articles/stages.html"],
+  "developmentStatus": ["https://lifecycle.r-lib.org/articles/stages.html", "https://www.repostatus.org/##active"],
   "keywords": ["statistical-tests", "statistical-details", "meta-analysis", "contingency-table", "robust", "correlation", "parametric", "bayesian-inference", "bayesian-statistics", "robust-statistics", "effectsize", "tidy"]
 }
