@@ -33,7 +33,7 @@ Imports:
     glue,
     insight (>= 0.16.0.1),
     magrittr,
-    parameters (>= 0.16.0),
+    parameters (>= 0.17.0),
     performance (>= 0.8.0),
     rlang,
     stats,
