@@ -225,5 +225,4 @@ mtcars %>%
 ## Code to reproduce for Figure 2
 
 ```{r ref.label="anova_example", echo=TRUE, eval=FALSE}
-
 ```
