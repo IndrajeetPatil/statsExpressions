@@ -67,7 +67,7 @@
 #' }
 #' @export
 
-# function body
+
 meta_analysis <- function(data,
                           type = "parametric",
                           random = "mixture",

@@ -92,7 +92,7 @@
 #' }
 #' @export
 
-# function body
+
 contingency_table <- function(data,
                               x,
                               y = NULL,

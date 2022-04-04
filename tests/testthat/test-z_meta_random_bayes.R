@@ -8,6 +8,8 @@ test_that(
     skip_if_not_installed("metaBMA")
     skip_if(getRversion() < "4.0")
 
+    options(tibble.width = Inf)
+
     # setup
     set.seed(123)
 
@@ -46,7 +48,6 @@ test_that(
     ))
 
     expect_type(df, "list")
-    expect_identical(class(df), c("tbl_df", "tbl", "data.frame"))
 
     expect_snapshot(dplyr::select(df, -expression))
     expect_snapshot(as.character(df$expression[[1]]))

@@ -40,6 +40,8 @@ test_that(
 test_that(
   desc = "bayes factor (within-subjects - anova)",
   code = {
+    options(tibble.width = Inf)
+
     # bayes factor (within-subjects - anova) ---------------------------------
 
     set.seed(123)

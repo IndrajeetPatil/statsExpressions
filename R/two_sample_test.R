@@ -110,7 +110,7 @@
 #' }
 #' @export
 
-# function body
+
 two_sample_test <- function(data,
                             x,
                             y,

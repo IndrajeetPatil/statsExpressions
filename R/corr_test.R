@@ -44,7 +44,7 @@
 #' }
 #' @export
 
-# function body
+
 corr_test <- function(data,
                       x,
                       y,
