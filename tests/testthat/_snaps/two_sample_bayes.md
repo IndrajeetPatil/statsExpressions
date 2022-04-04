@@ -3,7 +3,7 @@
     Code
       as.character(df$expression[[1]])
     Output
-      [1] "list(log[e] * (BF[\"01\"]) == \"-0.18\", widehat(delta)[\"difference\"]^\"posterior\" == \"3.16\", CI[\"99%\"]^HDI ~ \"[\" * \"-1.35\", \"8.13\" * \"]\", italic(\"r\")[\"Cauchy\"]^\"JZS\" == \"0.71\")"
+      [1] "list(log[e] * (BF[\"01\"]) == \"-0.18\", widehat(delta)[\"difference\"]^\"posterior\" == \"3.16\", CI[\"99%\"]^HDI ~ \"[\" * \"-1.43\", \"8.05\" * \"]\", italic(\"r\")[\"Cauchy\"]^\"JZS\" == \"0.71\")"
 
 # bayes factor (paired t-test)
 
