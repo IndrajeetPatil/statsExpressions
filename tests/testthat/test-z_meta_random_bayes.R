@@ -8,6 +8,8 @@ test_that(
     skip_if_not_installed("metaBMA")
     skip_if(getRversion() < "4.0")
 
+    options(tibble.width = Inf)
+
     # setup
     set.seed(123)
 

@@ -4,13 +4,18 @@
       dplyr::select(df, -expression)
     Output
       # A tibble: 2 x 15
-        term    effectsize      estimate std.error conf.level conf.low conf.high  bf10
-        <chr>   <chr>              <dbl>     <dbl>      <dbl>    <dbl>     <dbl> <dbl>
-      1 Overall meta-analytic ~    0.596     0.133       0.95    0.313     0.847  36.1
-      2 tau     meta-analytic ~    0.270     0.122       0.95    0.132     0.579  36.1
-      # ... with 7 more variables: component <chr>, prior.distribution <chr>,
-      #   prior.location <dbl>, prior.scale <dbl>, method <chr>, log_e_bf10 <dbl>,
-      #   n.obs <int>
+        term    effectsize                       estimate std.error conf.level
+        <chr>   <chr>                               <dbl>     <dbl>      <dbl>
+      1 Overall meta-analytic posterior estimate    0.596     0.133       0.95
+      2 tau     meta-analytic posterior estimate    0.270     0.122       0.95
+        conf.low conf.high  bf10 component prior.distribution prior.location
+           <dbl>     <dbl> <dbl> <chr>     <chr>                       <dbl>
+      1    0.313     0.847  36.1 meta      Student's t                     0
+      2    0.132     0.579  36.1 meta      Inverse gamma                   1
+        prior.scale method                                 log_e_bf10 n.obs
+              <dbl> <chr>                                       <dbl> <int>
+      1       0.707 Bayesian meta-analysis using 'metaBMA'       3.59     5
+      2       0.15  Bayesian meta-analysis using 'metaBMA'       3.59     5
 
 ---
 
