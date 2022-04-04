@@ -46,7 +46,6 @@ test_that(
     ))
 
     expect_type(df, "list")
-    expect_identical(class(df), c("tbl_df", "tbl", "data.frame"))
 
     expect_snapshot(dplyr::select(df, -expression))
     expect_snapshot(as.character(df$expression[[1]]))

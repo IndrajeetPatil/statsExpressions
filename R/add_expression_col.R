@@ -80,7 +80,7 @@
 #' )
 #' @export
 
-# function body
+
 add_expression_col <- function(data,
                                paired = FALSE,
                                statistic.text = NULL,

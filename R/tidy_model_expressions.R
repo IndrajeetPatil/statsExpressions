@@ -20,7 +20,7 @@
 #' tidy_model_expressions(df, statistic = "t")
 #' @export
 
-# function body
+
 tidy_model_expressions <- function(data,
                                    statistic = NULL,
                                    k = 2L,
