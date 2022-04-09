@@ -52,6 +52,11 @@ reference:
     contents:
       - matches("meta_")
 
+  - title: Pairwise comparisons
+    desc: Multiple pairwise comparison tests for one-way design
+    contents:
+      - matches("pairwise_")
+
   - title: Centrality measure
     desc: Dataframes and expressions for descriptive statistics
     contents:

@@ -314,18 +314,6 @@ references:
   url: https://easystats.github.io/performance/
   version: '>= 0.8.0'
 - type: software
-  title: PMCMRplus
-  abstract: 'PMCMRplus: Calculate Pairwise Multiple Comparisons of Mean Rank Sums
-    Extended'
-  notes: Imports
-  authors:
-  - family-names: Pohlert
-    given-names: Thorsten
-    email: thorsten.pohlert@gmx.de
-    orcid: https://orcid.org/0000-0003-3855-3025
-  year: '2022'
-  url: https://CRAN.R-project.org/package=PMCMRplus
-- type: software
   title: rlang
   abstract: 'rlang: Functions for Base Types and Core R and ''Tidyverse'' Features'
   notes: Imports
@@ -500,6 +488,18 @@ references:
   - name: R Development Core Team
   year: '2022'
   url: https://CRAN.R-project.org/package=metaplus
+- type: software
+  title: PMCMRplus
+  abstract: 'PMCMRplus: Calculate Pairwise Multiple Comparisons of Mean Rank Sums
+    Extended'
+  notes: Suggests
+  authors:
+  - family-names: Pohlert
+    given-names: Thorsten
+    email: thorsten.pohlert@gmx.de
+    orcid: https://orcid.org/0000-0003-3855-3025
+  year: '2022'
+  url: https://CRAN.R-project.org/package=PMCMRplus
 - type: software
   title: purrr
   abstract: 'purrr: Functional Programming Tools'
