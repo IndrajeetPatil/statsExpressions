@@ -32,7 +32,11 @@ utils::globalVariables(
     "p.value",
     "where",
     "k.df.error",
-    "label"
+    "label",
+    "group1",
+    "group2",
+    "log_e_bf10",
+    "p_adjust_text"
   ),
   package = "statsExpressions",
   add = FALSE

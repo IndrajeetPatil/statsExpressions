@@ -126,7 +126,7 @@ statistical approach can be modified by changing a single argument:
 library(statsExpressions)
 
 mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
-#> # A tibble: 1 x 15
+#> # A tibble: 1 × 15
 #>   parameter1 parameter2 statistic df.error   p.value
 #>   <chr>      <chr>          <dbl>    <int>     <dbl>
 #> 1 wt         cyl             22.8        2 0.0000112
@@ -138,7 +138,7 @@ mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
 #> 1         1 percentile bootstrap             100    32 <expression>
 
 mtcars %>% oneway_anova(cyl, wt, type = "robust")
-#> # A tibble: 1 x 12
+#> # A tibble: 1 × 12
 #>   statistic    df df.error p.value
 #>       <dbl> <dbl>    <dbl>   <dbl>
 #> 1      12.7     2     12.2 0.00102
@@ -193,7 +193,7 @@ mtcars %>%
   group_by(cyl) %>%
   group_modify(~ one_sample_test(.x, wt, test.value = 3), .keep = TRUE) %>%
   ungroup()
-#> # A tibble: 3 x 16
+#> # A tibble: 3 × 16
 #>     cyl    mu statistic df.error  p.value method            alternative
 #>   <dbl> <dbl>     <dbl>    <dbl>    <dbl> <chr>             <chr>      
 #> 1     4     3    -4.16        10 0.00195  One Sample t-test two.sided  
@@ -310,13 +310,10 @@ set.seed(123)
 library(ggplot2)
 library(gghalves)
 library(ggbeeswarm)
-library(hrbrthemes)
 
-# create a plot
 ggplot(ToothGrowth, aes(supp, len)) +
   geom_half_boxplot() +
   geom_beeswarm() +
-  theme_ipsum_rc() +
   # adding a subtitle with
   labs(
     title = "Two-Sample Welch's t-test",

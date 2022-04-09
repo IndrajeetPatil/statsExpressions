@@ -211,13 +211,10 @@ set.seed(123)
 library(ggplot2)
 library(gghalves)
 library(ggbeeswarm)
-library(hrbrthemes)
 
-# create a plot
 ggplot(ToothGrowth, aes(supp, len)) +
   geom_half_boxplot() +
   geom_beeswarm() +
-  theme_ipsum_rc() +
   # adding a subtitle with
   labs(
     title = "Two-Sample Welch's t-test",

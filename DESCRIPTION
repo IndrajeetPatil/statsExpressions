@@ -27,7 +27,7 @@ Depends:
 Imports:
     BayesFactor (>= 0.9.12-4.3),
     correlation (>= 0.8.0),
-    datawizard (>= 0.3.0),
+    datawizard (>= 0.4.0),
     dplyr,
     effectsize (>= 0.6.0.1),
     glue,
@@ -35,6 +35,7 @@ Imports:
     magrittr,
     parameters (>= 0.17.0),
     performance (>= 0.8.0),
+    PMCMRplus,
     rlang,
     stats,
     tibble,
@@ -63,5 +64,5 @@ Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate",
     "pkgapi::api_roclet"))
-RoxygenNote: 7.1.2.9000
+RoxygenNote: 7.1.2
 Config/testthat/edition: 3
