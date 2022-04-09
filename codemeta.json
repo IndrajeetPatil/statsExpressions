@@ -123,6 +123,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "PMCMRplus",
+      "name": "PMCMRplus",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=PMCMRplus"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "purrr",
       "name": "purrr",
       "provider": {
@@ -224,7 +236,7 @@
       "@type": "SoftwareApplication",
       "identifier": "datawizard",
       "name": "datawizard",
-      "version": ">= 0.3.0",
+      "version": ">= 0.4.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -389,7 +401,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "3599.978KB",
+  "fileSize": "5393.061KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",

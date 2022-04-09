@@ -79,8 +79,6 @@
 #'   k.df           = 3L
 #' )
 #' @export
-
-
 add_expression_col <- function(data,
                                paired = FALSE,
                                statistic.text = NULL,

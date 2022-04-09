@@ -1,5 +1,10 @@
 # statsExpressions 1.3.1.9000
 
+NEW FUNCTIONS
+
+  - The `pairwise_comparisons()` function to carry out one-way pairwise
+    comparison tests.
+
 # statsExpressions 1.3.1
 
   - Fixes breakages due to `{insight}` package update.
