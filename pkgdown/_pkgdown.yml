@@ -71,6 +71,7 @@ reference:
       - stats_type_switch
       - long_to_wide_converter
       - add_expression_col
+      - p_adjust_text
 
   - title: Reexported functions
     desc:  Useful functions re-exported from other packages.

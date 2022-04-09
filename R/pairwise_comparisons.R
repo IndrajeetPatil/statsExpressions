@@ -331,8 +331,8 @@ pairwise_comparisons <- function(data,
 #' @examples
 #' p_adjust_text("none")
 #' p_adjust_text("BY")
-#' @keywords internal
-#' @noRd
+#'
+#' @export
 p_adjust_text <- function(p.adjust.method) {
   case_when(
     grepl("^n|^bo|^h", p.adjust.method) ~ paste0(
