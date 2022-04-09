@@ -2,7 +2,7 @@
 % Please edit documentation in R/pairwise_comparisons.R
 \name{pairwise_comparisons}
 \alias{pairwise_comparisons}
-\title{Multiple pairwise comparison tests with tidy data}
+\title{Multiple pairwise comparison for one-way design}
 \usage{
 pairwise_comparisons(
   data,
@@ -85,13 +85,13 @@ comparisons. Possible methods are: \code{"holm"} (default), \code{"hochberg"},
 \item{...}{Additional arguments passed to other methods.}
 }
 \value{
-A tibble dataframe containing two columns corresponding to group
-levels being compared with each other (\code{group1} and \code{group2}) and \code{p.value}
-column corresponding to this comparison. The dataframe will also contain a
-\code{p.value.label} column containing a \emph{label} for this \emph{p}-value, in case
-this needs to be displayed in \code{ggsignif::geom_ggsignif}. In addition to
-these common columns across the different types of statistics, there will
-be additional columns specific to the \code{type} of test being run.
+A tibble dataframe containing two columns corresponding to group levels being
+compared with each other (\code{group1} and \code{group2}) and \code{p.value} column
+corresponding to this comparison. The dataframe will also contain a
+\code{p.value.label} column containing a \emph{label} for this \emph{p}-value, in case this
+needs to be displayed in \code{ggsignif::geom_ggsignif()}. In addition to these
+common columns across the different types of statistics, there will be
+additional columns specific to the \code{type} of test being run.
 
 This function provides a unified syntax to carry out pairwise comparison
 tests and internally relies on other packages to carry out these tests. For
@@ -114,10 +114,10 @@ comparisons between group levels with corrections for multiple testing.
 }
 \examples{
 \donttest{
-if (require("PMCMRplus")) {
   # for reproducibility
   set.seed(123)
   library(statsExpressions)
+  library(PMCMRplus)
 
   # show all columns and make the column titles bold
   # as a user, you don't need to do this; this is just for the package website
@@ -221,7 +221,6 @@ if (require("PMCMRplus")) {
     type       = "bayes",
     paired     = TRUE
   )
-}
 }
 }
 \references{

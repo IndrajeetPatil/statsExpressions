@@ -1,4 +1,4 @@
-#' @title Multiple pairwise comparison tests with tidy data
+#' @title Multiple pairwise comparison for one-way design
 #' @name pairwise_comparisons
 #'
 #' @description
@@ -16,13 +16,15 @@
 #' @inheritParams stats::t.test
 #' @inheritParams WRS2::rmmcp
 #'
-#' @return A tibble dataframe containing two columns corresponding to group
-#'   levels being compared with each other (`group1` and `group2`) and `p.value`
-#'   column corresponding to this comparison. The dataframe will also contain a
-#'   `p.value.label` column containing a *label* for this *p*-value, in case
-#'   this needs to be displayed in `ggsignif::geom_ggsignif`. In addition to
-#'   these common columns across the different types of statistics, there will
-#'   be additional columns specific to the `type` of test being run.
+#' @return
+#'
+#' A tibble dataframe containing two columns corresponding to group levels being
+#' compared with each other (`group1` and `group2`) and `p.value` column
+#' corresponding to this comparison. The dataframe will also contain a
+#' `p.value.label` column containing a *label* for this *p*-value, in case this
+#' needs to be displayed in `ggsignif::geom_ggsignif()`. In addition to these
+#' common columns across the different types of statistics, there will be
+#' additional columns specific to the `type` of test being run.
 #'
 #'   This function provides a unified syntax to carry out pairwise comparison
 #'   tests and internally relies on other packages to carry out these tests. For
@@ -45,114 +47,113 @@
 #'
 #' @examples
 #' \donttest{
-#' if (require("PMCMRplus")) {
-#'   # for reproducibility
-#'   set.seed(123)
-#'   library(statsExpressions)
+#' # for reproducibility
+#' set.seed(123)
+#' library(statsExpressions)
+#' library(PMCMRplus)
 #'
-#'   # show all columns and make the column titles bold
-#'   # as a user, you don't need to do this; this is just for the package website
-#'   options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE, pillar.subtle_num = TRUE)
+#' # show all columns and make the column titles bold
+#' # as a user, you don't need to do this; this is just for the package website
+#' options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE, pillar.subtle_num = TRUE)
 #'
-#'   #------------------- between-subjects design ----------------------------
+#' #------------------- between-subjects design ----------------------------
 #'
-#'   # parametric
-#'   # if `var.equal = TRUE`, then Student's t-test will be run
-#'   pairwise_comparisons(
-#'     data            = mtcars,
-#'     x               = cyl,
-#'     y               = wt,
-#'     type            = "parametric",
-#'     var.equal       = TRUE,
-#'     paired          = FALSE,
-#'     p.adjust.method = "none"
-#'   )
+#' # parametric
+#' # if `var.equal = TRUE`, then Student's t-test will be run
+#' pairwise_comparisons(
+#'   data            = mtcars,
+#'   x               = cyl,
+#'   y               = wt,
+#'   type            = "parametric",
+#'   var.equal       = TRUE,
+#'   paired          = FALSE,
+#'   p.adjust.method = "none"
+#' )
 #'
-#'   # if `var.equal = FALSE`, then Games-Howell test will be run
-#'   pairwise_comparisons(
-#'     data            = mtcars,
-#'     x               = cyl,
-#'     y               = wt,
-#'     type            = "parametric",
-#'     var.equal       = FALSE,
-#'     paired          = FALSE,
-#'     p.adjust.method = "bonferroni"
-#'   )
+#' # if `var.equal = FALSE`, then Games-Howell test will be run
+#' pairwise_comparisons(
+#'   data            = mtcars,
+#'   x               = cyl,
+#'   y               = wt,
+#'   type            = "parametric",
+#'   var.equal       = FALSE,
+#'   paired          = FALSE,
+#'   p.adjust.method = "bonferroni"
+#' )
 #'
-#'   # non-parametric (Dunn test)
-#'   pairwise_comparisons(
-#'     data            = mtcars,
-#'     x               = cyl,
-#'     y               = wt,
-#'     type            = "nonparametric",
-#'     paired          = FALSE,
-#'     p.adjust.method = "none"
-#'   )
+#' # non-parametric (Dunn test)
+#' pairwise_comparisons(
+#'   data            = mtcars,
+#'   x               = cyl,
+#'   y               = wt,
+#'   type            = "nonparametric",
+#'   paired          = FALSE,
+#'   p.adjust.method = "none"
+#' )
 #'
-#'   # robust (Yuen's trimmed means *t*-test)
-#'   pairwise_comparisons(
-#'     data            = mtcars,
-#'     x               = cyl,
-#'     y               = wt,
-#'     type            = "robust",
-#'     paired          = FALSE,
-#'     p.adjust.method = "fdr"
-#'   )
+#' # robust (Yuen's trimmed means *t*-test)
+#' pairwise_comparisons(
+#'   data            = mtcars,
+#'   x               = cyl,
+#'   y               = wt,
+#'   type            = "robust",
+#'   paired          = FALSE,
+#'   p.adjust.method = "fdr"
+#' )
 #'
-#'   # Bayes Factor (Student's *t*-test)
-#'   pairwise_comparisons(
-#'     data   = mtcars,
-#'     x      = cyl,
-#'     y      = wt,
-#'     type   = "bayes",
-#'     paired = FALSE
-#'   )
+#' # Bayes Factor (Student's *t*-test)
+#' pairwise_comparisons(
+#'   data   = mtcars,
+#'   x      = cyl,
+#'   y      = wt,
+#'   type   = "bayes",
+#'   paired = FALSE
+#' )
 #'
-#'   #------------------- within-subjects design ----------------------------
+#' #------------------- within-subjects design ----------------------------
 #'
-#'   # parametric (Student's *t*-test)
-#'   pairwise_comparisons(
-#'     data            = bugs_long,
-#'     x               = condition,
-#'     y               = desire,
-#'     subject.id      = subject,
-#'     type            = "parametric",
-#'     paired          = TRUE,
-#'     p.adjust.method = "BH"
-#'   )
+#' # parametric (Student's *t*-test)
+#' pairwise_comparisons(
+#'   data            = bugs_long,
+#'   x               = condition,
+#'   y               = desire,
+#'   subject.id      = subject,
+#'   type            = "parametric",
+#'   paired          = TRUE,
+#'   p.adjust.method = "BH"
+#' )
 #'
-#'   # non-parametric (Durbin-Conover test)
-#'   pairwise_comparisons(
-#'     data            = bugs_long,
-#'     x               = condition,
-#'     y               = desire,
-#'     subject.id      = subject,
-#'     type            = "nonparametric",
-#'     paired          = TRUE,
-#'     p.adjust.method = "BY"
-#'   )
+#' # non-parametric (Durbin-Conover test)
+#' pairwise_comparisons(
+#'   data            = bugs_long,
+#'   x               = condition,
+#'   y               = desire,
+#'   subject.id      = subject,
+#'   type            = "nonparametric",
+#'   paired          = TRUE,
+#'   p.adjust.method = "BY"
+#' )
 #'
-#'   # robust (Yuen's trimmed means t-test)
-#'   pairwise_comparisons(
-#'     data            = bugs_long,
-#'     x               = condition,
-#'     y               = desire,
-#'     subject.id      = subject,
-#'     type            = "robust",
-#'     paired          = TRUE,
-#'     p.adjust.method = "hommel"
-#'   )
+#' # robust (Yuen's trimmed means t-test)
+#' pairwise_comparisons(
+#'   data            = bugs_long,
+#'   x               = condition,
+#'   y               = desire,
+#'   subject.id      = subject,
+#'   type            = "robust",
+#'   paired          = TRUE,
+#'   p.adjust.method = "hommel"
+#' )
 #'
-#'   # Bayes Factor (Student's *t*-test)
-#'   pairwise_comparisons(
-#'     data       = bugs_long,
-#'     x          = condition,
-#'     y          = desire,
-#'     subject.id = subject,
-#'     type       = "bayes",
-#'     paired     = TRUE
-#'   )
-#' }
+#' # Bayes Factor (Student's *t*-test)
+#' pairwise_comparisons(
+#'   data       = bugs_long,
+#'   x          = condition,
+#'   y          = desire,
+#'   subject.id = subject,
+#'   type       = "bayes",
+#'   paired     = TRUE
+#' )
 #' }
 #' @export
 pairwise_comparisons <- function(data,
