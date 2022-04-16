@@ -13,7 +13,7 @@
       4 herbi   insecti   1     Student's t-test Bonferroni        
       5 herbi   omni      0.979 Student's t-test Bonferroni        
       6 insecti omni      1     Student's t-test Bonferroni        
-        label                                       
+        expression                                  
         <chr>                                       
       1 list(~italic(p)[Bonferroni-corrected]==1.00)
       2 list(~italic(p)[Bonferroni-corrected]==1.00)
@@ -40,7 +40,7 @@
       4 none         Games-Howell test Bonferroni        
       5 none         Games-Howell test Bonferroni        
       6 none         Games-Howell test Bonferroni        
-        label                                       
+        expression                                  
         <chr>                                       
       1 list(~italic(p)[Bonferroni-corrected]==1.00)
       2 list(~italic(p)[Bonferroni-corrected]==1.00)
@@ -67,7 +67,7 @@
       4 z            none         Dunn test    None              
       5 z            none         Dunn test    None              
       6 z            none         Dunn test    None              
-        label                              
+        expression                         
         <chr>                              
       1 list(~italic(p)[uncorrected]==0.56)
       2 list(~italic(p)[uncorrected]==0.06)
@@ -94,7 +94,7 @@
       4 Yuen's trimmed means test FDR               
       5 Yuen's trimmed means test FDR               
       6 Yuen's trimmed means test FDR               
-        label                                
+        expression                           
         <chr>                                
       1 list(~italic(p)[FDR-corrected]==0.79)
       2 list(~italic(p)[FDR-corrected]==0.55)
@@ -110,7 +110,7 @@
       1 PG     PG-13  0.316   Student's t-test Holm              
       2 PG     R      0.00283 Student's t-test Holm              
       3 PG-13  R      0.00310 Student's t-test Holm              
-        label                                     
+        expression                                
         <chr>                                     
       1 list(~italic(p)[Holm-corrected]==0.32)    
       2 list(~italic(p)[Holm-corrected]==2.83e-03)
@@ -121,17 +121,19 @@
 
     Code
       df2$label
+    Warning <rlang_warning>
+      Unknown or uninitialised column: `label`.
     Output
-      [1] "list(~italic(p)[uncorrected]==0.87)"
+      NULL
 
 # data without NAs
 
     Code
       df$label
+    Warning <rlang_warning>
+      Unknown or uninitialised column: `label`.
     Output
-      [1] "list(~italic(p)[FDR-corrected]==1.32e-15)"
-      [2] "list(~italic(p)[FDR-corrected]==6.64e-32)"
-      [3] "list(~italic(p)[FDR-corrected]==2.77e-09)"
+      NULL
 
 # `pairwise_comparisons()` works for within-subjects design - NAs
 
@@ -148,7 +150,7 @@
       4 HDLF   LDHF   3.37e- 1 Student's t-test Bonferroni        
       5 HDLF   LDLF   7.94e- 3 Student's t-test Bonferroni        
       6 LDHF   LDLF   1.33e- 8 Student's t-test Bonferroni        
-        label                                            
+        expression                                       
         <chr>                                            
       1 list(~italic(p)[Bonferroni-corrected]==0.003)    
       2 list(~italic(p)[Bonferroni-corrected]==0.421)    
@@ -183,7 +185,7 @@
       4 t            none         Durbin-Conover test BY                
       5 t            none         Durbin-Conover test BY                
       6 t            none         Durbin-Conover test BY                
-        label                                    
+        expression                               
         <chr>                                    
       1 list(~italic(p)[BY-corrected]==1.436e-05)
       2 list(~italic(p)[BY-corrected]==0.045)    
@@ -210,7 +212,7 @@
       4 Yuen's trimmed means test Hommel            
       5 Yuen's trimmed means test Hommel            
       6 Yuen's trimmed means test Hommel            
-        label                                        
+        expression                                   
         <chr>                                        
       1 list(~italic(p)[Hommel-corrected]==0.010)    
       2 list(~italic(p)[Hommel-corrected]==0.052)    
@@ -232,7 +234,7 @@
       1 Wine A Wine B 0.732    Student's t-test None              
       2 Wine A Wine C 0.0142   Student's t-test None              
       3 Wine B Wine C 0.000675 Student's t-test None              
-        label                                   
+        expression                              
         <chr>                                   
       1 list(~italic(p)[uncorrected]==0.732)    
       2 list(~italic(p)[uncorrected]==0.014)    
@@ -255,7 +257,7 @@
       1 t            none         Durbin-Conover test None              
       2 t            none         Durbin-Conover test None              
       3 t            none         Durbin-Conover test None              
-        label                                   
+        expression                              
         <chr>                                   
       1 list(~italic(p)[uncorrected]==0.301)    
       2 list(~italic(p)[uncorrected]==6.915e-04)
@@ -273,7 +275,7 @@
       1 Yuen's trimmed means test None              
       2 Yuen's trimmed means test None              
       3 Yuen's trimmed means test None              
-        label                               
+        expression                          
         <chr>                               
       1 list(~italic(p)[uncorrected]==0.195)
       2 list(~italic(p)[uncorrected]==0.005)
@@ -295,7 +297,7 @@
       4 HDLF   LDHF   9.72e- 1 Student's t-test None              
       5 HDLF   LDLF   6.62e- 4 Student's t-test None              
       6 LDHF   LDLF   1.11e- 9 Student's t-test None              
-        label                                  
+        expression                             
         <chr>                                  
       1 list(~italic(p)[uncorrected]==2.65e-04)
       2 list(~italic(p)[uncorrected]==0.04)    
@@ -314,7 +316,7 @@
       4 HDLF   LDHF    0.0281 Student's t-test None              
       5 HDLF   LDLF    0.999  Student's t-test None              
       6 LDHF   LDLF    1.00   Student's t-test None              
-        label                              
+        expression                         
         <chr>                              
       1 list(~italic(p)[uncorrected]==1.00)
       2 list(~italic(p)[uncorrected]==0.96)
@@ -330,7 +332,7 @@
       1 4      6        0.995 Student's t-test None              
       2 4      8        1.00  Student's t-test None              
       3 6      8        0.997 Student's t-test None              
-        label                              
+        expression                         
         <chr>                              
       1 list(~italic(p)[uncorrected]==0.99)
       2 list(~italic(p)[uncorrected]==1.00)
@@ -343,7 +345,7 @@
       1 4      6      0.00532     Student's t-test None              
       2 4      8      0.000000103 Student's t-test None              
       3 6      8      0.00258     Student's t-test None              
-        label                                  
+        expression                             
         <chr>                                  
       1 list(~italic(p)[uncorrected]==5.32e-03)
       2 list(~italic(p)[uncorrected]==1.03e-07)

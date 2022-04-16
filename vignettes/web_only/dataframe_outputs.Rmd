@@ -465,7 +465,6 @@ corr_test(
 ## Meta-analysis
 
 ```{r meta}
-set.seed(123)
 library(statsExpressions)
 library(metaplus)
 
@@ -510,6 +509,128 @@ centrality_description(ToothGrowth, supp, len, type = "r")
 
 set.seed(123)
 centrality_description(sleep, group, extra, type = "b")
+```
+
+## Pairwise comparisons for one-way design
+
+### Between-subjects design
+
+```{r}
+# for reproducibility
+set.seed(123)
+library(statsExpressions)
+
+# ----------------------- parametric -----------------------
+
+# if `var.equal = TRUE`, then Student's *t*-test will be run
+pairwise_comparisons(
+  data            = ggplot2::msleep,
+  x               = vore,
+  y               = brainwt,
+  type            = "parametric",
+  var.equal       = TRUE,
+  paired          = FALSE,
+  p.adjust.method = "bonferroni"
+)
+
+# if `var.equal = FALSE`, then Games-Howell test will be run
+pairwise_comparisons(
+  data            = ggplot2::msleep,
+  x               = vore,
+  y               = brainwt,
+  type            = "parametric",
+  var.equal       = FALSE,
+  paired          = FALSE,
+  p.adjust.method = "bonferroni"
+)
+
+# ----------------------- non-parametric -------------------
+
+pairwise_comparisons(
+  data            = ggplot2::msleep,
+  x               = vore,
+  y               = brainwt,
+  type            = "nonparametric",
+  paired          = FALSE,
+  p.adjust.method = "none"
+)
+
+# ----------------------- robust ---------------------------
+
+pairwise_comparisons(
+  data            = ggplot2::msleep,
+  x               = vore,
+  y               = brainwt,
+  type            = "robust",
+  paired          = FALSE,
+  p.adjust.method = "fdr"
+)
+
+# ----------------------- Bayesian -------------------------
+
+pairwise_comparisons(
+  data   = ggplot2::msleep,
+  x      = vore,
+  y      = brainwt,
+  type   = "bayes",
+  paired = FALSE
+)
+```
+
+
+### Within-subjects design
+
+```{r}
+# for reproducibility
+set.seed(123)
+
+# ----------------------- parametric -----------------------
+
+pairwise_comparisons(
+  data            = bugs_long,
+  x               = condition,
+  y               = desire,
+  subject.id      = subject,
+  type            = "parametric",
+  paired          = TRUE,
+  p.adjust.method = "BH"
+)
+
+# ----------------------- non-parametric -------------------
+
+pairwise_comparisons(
+  data            = bugs_long,
+  x               = condition,
+  y               = desire,
+  subject.id      = subject,
+  type            = "nonparametric",
+  paired          = TRUE,
+  p.adjust.method = "BY"
+)
+
+# ----------------------- robust ---------------------------
+
+pairwise_comparisons(
+  data            = bugs_long,
+  x               = condition,
+  y               = desire,
+  subject.id      = subject,
+  type            = "robust",
+  paired          = TRUE,
+  p.adjust.method = "hommel"
+)
+
+# ----------------------- Bayesian -------------------------
+
+pairwise_comparisons(
+  data       = bugs_long,
+  x          = condition,
+  y          = desire,
+  subject.id = subject,
+  type       = "bayes",
+  paired     = TRUE,
+  bf.prior   = 0.77
+)
 ```
 
 ## Suggestions

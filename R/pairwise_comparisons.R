@@ -21,10 +21,10 @@
 #' A tibble dataframe containing two columns corresponding to group levels being
 #' compared with each other (`group1` and `group2`) and `p.value` column
 #' corresponding to this comparison. The dataframe will also contain a
-#' `p.value.label` column containing a *label* for this *p*-value, in case this
-#' needs to be displayed in `ggsignif::geom_ggsignif()`. In addition to these
-#' common columns across the different types of statistics, there will be
-#' additional columns specific to the `type` of test being run.
+#' `expression` column containing an expression with a *p*-value, which can be
+#' helpful with `ggsignif::geom_ggsignif()`. In addition to these common columns
+#' across the different types of statistics, there will be additional columns
+#' specific to the `type` of test being run.
 #'
 #'   This function provides a unified syntax to carry out pairwise comparison
 #'   tests and internally relies on other packages to carry out these tests. For
@@ -275,7 +275,7 @@ pairwise_comparisons <- function(data,
     ) %>%
       filter(term == "Difference") %>%
       rowwise() %>%
-      mutate(label = paste0("list(~log[e](BF['01'])==", format_value(-log_e_bf10, k), ")")) %>%
+      mutate(expression = paste0("list(~log[e](BF['01'])==", format_value(-log_e_bf10, k), ")")) %>%
       ungroup() %>%
       mutate(test.details = "Student's t-test")
 
@@ -301,7 +301,7 @@ pairwise_comparisons <- function(data,
       ) %>%
       rowwise() %>%
       mutate(
-        label = case_when(
+        expression = case_when(
           p.value.adjustment != "None" ~ paste0(
             "list(~italic(p)[", p.value.adjustment, "-corrected]==", format_value(p.value, k), ")"
           ),
