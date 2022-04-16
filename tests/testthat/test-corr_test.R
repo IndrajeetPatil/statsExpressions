@@ -104,11 +104,11 @@ test_that(
 
     set.seed(123)
     subtitle1 <- corr_test(
-        type = "bayes",
-        data = iris,
-        y = Sepal.Length,
-        x = Sepal.Width
-      )
+      type = "bayes",
+      data = iris,
+      y = Sepal.Length,
+      x = Sepal.Width
+    )
 
     expect_snapshot(as.character(subtitle1$expression[[1]]))
   }

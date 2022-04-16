@@ -1,4 +1,4 @@
-# tidy_model_expressions works
+# tidy_model_expressions works - t
 
     Code
       select(df_t, -expression)
@@ -37,7 +37,7 @@
       list(widehat(italic(beta))=='6.05', italic(t)=='19.59', italic(p)=='1.20e-18')
       list(widehat(italic(beta))=='-0.14', italic(t)=='-9.56', italic(p)=='1.29e-10')
 
----
+# tidy_model_expressions works - chi2
 
     Code
       select(df_chi, -expression)
@@ -60,7 +60,7 @@
       list(widehat(italic(beta))=='0.02', italic(chi)^2*('1')=='3.40', italic(p)=='0.07')
       list(widehat(italic(beta))=='-0.51', italic(chi)^2*('1')=='9.31', italic(p)=='2.28e-03')
 
----
+# tidy_model_expressions works - z
 
     Code
       select(df_z, -expression)
@@ -85,4 +85,56 @@
       list(widehat(italic(beta))=='-0.78', italic(z)=='-3.47', italic(p)=='5.14e-04')
       list(widehat(italic(beta))=='2.29', italic(z)=='19.13', italic(p)=='1.54e-81')
       list(widehat(italic(beta))=='-0.56', italic(z)=='-2.44', italic(p)=='0.01')
+
+# tidy_model_expressions works - F
+
+    Code
+      select(df1, -expression)
+    Output
+      # A tibble: 3 x 11
+        term  statistic    df df.error p.value group   sumsq meansq  estimate
+        <chr>     <dbl> <dbl>    <dbl>   <dbl> <chr>   <dbl>  <dbl>     <dbl>
+      1 N         9.04      1       15 0.00885 Within 189.   189.    0.184   
+      2 P         0.401     1       15 0.536   Within   8.40   8.40 -0.0171  
+      3 N:P       1.02      1       15 0.329   Within  21.3   21.3   0.000457
+        sum.squares.error mean.square.error
+                    <dbl>             <dbl>
+      1              314.              314.
+      2              314.              314.
+      3              314.              314.
+
+---
+
+    Code
+      df1$expression
+    Output
+      list(widehat(italic(omega)[p]^2)=='0.18', italic(F)('1', '15')=='9.04', italic(p)=='8.85e-03')
+      list(widehat(italic(omega)[p]^2)=='-0.02', italic(F)('1', '15')=='0.40', italic(p)=='0.54')
+      list(widehat(italic(omega)[p]^2)=='4.57e-04', italic(F)('1', '15')=='1.02', italic(p)=='0.33')
+
+---
+
+    Code
+      select(df2, -expression)
+    Output
+      # A tibble: 3 x 11
+        term  statistic    df df.error p.value group   sumsq meansq estimate
+        <chr>     <dbl> <dbl>    <dbl>   <dbl> <chr>   <dbl>  <dbl>    <dbl>
+      1 N         9.04      1       15 0.00885 Within 189.   189.     0.376 
+      2 P         0.401     1       15 0.536   Within   8.40   8.40   0.0261
+      3 N:P       1.02      1       15 0.329   Within  21.3   21.3    0.0635
+        sum.squares.error mean.square.error
+                    <dbl>             <dbl>
+      1              314.              314.
+      2              314.              314.
+      3              314.              314.
+
+---
+
+    Code
+      df2$expression
+    Output
+      list(widehat(italic(eta)[p]^2)=='0.38', italic(F)('1', '15')=='9.04', italic(p)=='8.85e-03')
+      list(widehat(italic(eta)[p]^2)=='0.03', italic(F)('1', '15')=='0.40', italic(p)=='0.54')
+      list(widehat(italic(eta)[p]^2)=='0.06', italic(F)('1', '15')=='1.02', italic(p)=='0.33')
 
