@@ -2,8 +2,14 @@
 
 NEW FUNCTIONS
 
-  - The `pairwise_comparisons()` function to carry out one-way pairwise
-    comparison tests.
+  - The `pairwise_comparisons()` function to carry out pairwise comparison tests
+    for one-way designs.
+
+MAJOR CHANGES
+
+  - Expressions with statistical details were sometimes in a column named
+    `label`, while other times in `expression` column. Now it will be
+    consistently in the `expression` column.
 
 # statsExpressions 1.3.1
 

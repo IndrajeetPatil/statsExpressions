@@ -91,8 +91,6 @@
 #' )
 #' }
 #' @export
-
-
 contingency_table <- function(data,
                               x,
                               y = NULL,
@@ -124,7 +122,7 @@ contingency_table <- function(data,
 
   # variables needed for both one-way and two-way analysis
   x_vec <- data %>% pull({{ x }})
-  if (is.null(ratio)) ratio <- rep(1 / length(table(x_vec)), length(table(x_vec)))
+  ratio <- ratio %||% rep(1 / length(table(x_vec)), length(table(x_vec)))
 
   # non-Bayesian ---------------------------------------
 
@@ -214,7 +212,7 @@ contingency_table <- function(data,
     )
   }
 
-  # add column with expression
+
   stats_df
 }
 
@@ -222,7 +220,6 @@ contingency_table <- function(data,
 #' @title estimate log prob of data under null with Monte Carlo
 #' @note `rdirichlet` function from `MCMCpack`
 #' @noRd
-
 rdirichlet <- function(n, alpha) {
   l <- length(alpha)
   x <- matrix(stats::rgamma(l * n, alpha), ncol = l, byrow = TRUE)

@@ -31,7 +31,7 @@ Imports:
     dplyr,
     effectsize (>= 0.6.0.1),
     glue,
-    insight (>= 0.17.0),
+    insight (>= 0.17.0.3),
     magrittr,
     parameters (>= 0.17.0),
     performance (>= 0.8.0),
@@ -56,6 +56,7 @@ Suggests:
     testthat,
     utils
 Remotes:
+    easystats/insight,
     easystats/parameters
 VignetteBuilder: 
     knitr

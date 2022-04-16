@@ -27,9 +27,11 @@
 #' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```
 #'
-#' @note **Important**: The function assumes that you have already downloaded
-#'   the needed package (`{metafor}`, `{metaplus}`, or `{metaBMA}`) for meta-analysis.
-#'   If they are not available, you will be asked to install them.
+#' @note
+#'
+#' **Important**: The function assumes that you have already downloaded the
+#' needed package (`{metafor}`, `{metaplus}`, or `{metaBMA}`) for meta-analysis.
+#' If they are not available, you will be asked to install them.
 #'
 #' @examples
 #' \donttest{
@@ -66,8 +68,6 @@
 #' # meta_analysis(df, type = "bayes") # Bayesian
 #' }
 #' @export
-
-
 meta_analysis <- function(data,
                           type = "parametric",
                           random = "mixture",

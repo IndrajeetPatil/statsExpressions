@@ -71,7 +71,6 @@
 #' )
 #' }
 #' @export
-
 one_sample_test <- function(data,
                             x,
                             type = "parametric",
@@ -145,7 +144,7 @@ one_sample_test <- function(data,
 
   # expression ---------------------------------------
 
-  # add column with expression
+
   add_expression_col(
     data     = stats_df,
     n        = length(x_vec),

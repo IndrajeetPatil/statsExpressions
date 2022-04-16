@@ -1,4 +1,4 @@
-The returned tibble dataframe can contain some or all of the following columns (the exact columns will depend on the statistical test):
+The returned tibble data frame can contain some or all of the following columns (the exact columns will depend on the statistical test):
 
   - `statistic`: the numeric value of a statistic
 
@@ -26,7 +26,7 @@ The returned tibble dataframe can contain some or all of the following columns (
   
   - `effectsize`: the name of the effect size
 
-  -  `n.obs`: number of observations
+  - `n.obs`: number of observations
   
   - `expression`: pre-formatted expression containing statistical details
 

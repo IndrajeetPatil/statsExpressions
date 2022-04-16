@@ -4,11 +4,13 @@
 #' @param ... Currently ignored.
 #' @param data A tidy dataframe from regression model object.
 #' @param statistic Which statistic is to be displayed (either `"t"` or `"f"`or
-#'   `"z"` or `"chi"`) in the label.
+#'   `"z"` or `"chi"`) in the expression.
 #' @inheritParams oneway_anova
 #'
-#' @note This is an **experimental** function and may change in the future.
-#'   Please do not use it yet in your workflow.
+#' @note
+#'
+#' This is an **experimental** function and may change in the future. Please do
+#' not use it yet in your workflow.
 #'
 #' @examples
 #' set.seed(123)
@@ -19,8 +21,6 @@
 #' # create a column containing expressions
 #' tidy_model_expressions(df, statistic = "t")
 #' @export
-
-
 tidy_model_expressions <- function(data,
                                    statistic = NULL,
                                    k = 2L,
@@ -40,7 +40,7 @@ tidy_model_expressions <- function(data,
 
   if (statistic == "t") {
     df %<>% mutate(
-      label = case_when(
+      expression = case_when(
         df.error %in% c("", "Inf") ~ glue("list({es.text}=='{estimate}', italic(t)=='{statistic}', italic(p)=='{p.value}')"),
         TRUE ~ glue("list({es.text}=='{estimate}', italic(t)('{df.error}')=='{statistic}', italic(p)=='{p.value}')")
       )
@@ -50,13 +50,13 @@ tidy_model_expressions <- function(data,
   # z-statistic ---------------------------------
 
   if (statistic == "z") {
-    df %<>% mutate(label = glue("list({es.text}=='{estimate}', italic(z)=='{statistic}', italic(p)=='{p.value}')"))
+    df %<>% mutate(expression = glue("list({es.text}=='{estimate}', italic(z)=='{statistic}', italic(p)=='{p.value}')"))
   }
 
   # chi^2-statistic -----------------------------
 
   if (statistic == "c") {
-    df %<>% mutate(label = glue("list({es.text}=='{estimate}', italic(chi)^2*('{df.error}')=='{statistic}', italic(p)=='{p.value}')"))
+    df %<>% mutate(expression = glue("list({es.text}=='{estimate}', italic(chi)^2*('{df.error}')=='{statistic}', italic(p)=='{p.value}')"))
   }
 
   # f-statistic ---------------------------------
@@ -67,9 +67,9 @@ tidy_model_expressions <- function(data,
     if (effsize.type == "omega") es.text <- list(quote(widehat(italic(omega)[p]^2)))
 
     # which effect size is needed?
-    df %<>% mutate(label = glue("list({es.text}=='{estimate}', italic(F)('{df}', '{df.error}')=='{statistic}', italic(p)=='{p.value}')"))
+    df %<>% mutate(expression = glue("list({es.text}=='{estimate}', italic(F)('{df}', '{df.error}')=='{statistic}', italic(p)=='{p.value}')"))
   }
 
-  # add the label column to the original dataframe
-  left_join(data, select(df, term, label), by = "term") %>% as_tibble(.)
+  # add the `expression` column to the original data frame
+  left_join(data, select(df, term, expression), by = "term") %>% as_tibble(.)
 }

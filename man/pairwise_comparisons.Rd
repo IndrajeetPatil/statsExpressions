@@ -2,7 +2,7 @@
 % Please edit documentation in R/pairwise_comparisons.R
 \name{pairwise_comparisons}
 \alias{pairwise_comparisons}
-\title{Multiple pairwise comparison tests with tidy data}
+\title{Multiple pairwise comparison for one-way design}
 \usage{
 pairwise_comparisons(
   data,
@@ -85,143 +85,182 @@ comparisons. Possible methods are: \code{"holm"} (default), \code{"hochberg"},
 \item{...}{Additional arguments passed to other methods.}
 }
 \value{
-A tibble dataframe containing two columns corresponding to group
-levels being compared with each other (\code{group1} and \code{group2}) and \code{p.value}
-column corresponding to this comparison. The dataframe will also contain a
-\code{p.value.label} column containing a \emph{label} for this \emph{p}-value, in case
-this needs to be displayed in \code{ggsignif::geom_ggsignif}. In addition to
-these common columns across the different types of statistics, there will
-be additional columns specific to the \code{type} of test being run.
-
-This function provides a unified syntax to carry out pairwise comparison
-tests and internally relies on other packages to carry out these tests. For
-more details about the included tests, see the documentation for the
-respective functions:
+The returned tibble data frame can contain some or all of the following columns (the exact columns will depend on the statistical test):
 \itemize{
-\item \emph{parametric} : \code{\link[stats:pairwise.t.test]{stats::pairwise.t.test()}} (paired) and
-\code{\link[PMCMRplus:gamesHowellTest]{PMCMRplus::gamesHowellTest()}} (unpaired)
-\item \emph{non-parametric} :
-\code{\link[PMCMRplus:durbinAllPairsTest]{PMCMRplus::durbinAllPairsTest()}} (paired) and
-\code{\link[PMCMRplus:kwAllPairsDunnTest]{PMCMRplus::kwAllPairsDunnTest()}} (unpaired)
-\item \emph{robust} :
-\code{\link[WRS2:rmanova]{WRS2::rmmcp()}} (paired) and \code{\link[WRS2:t1way]{WRS2::lincon()}} (unpaired)
-\item \emph{Bayes Factor} : \code{\link[BayesFactor:ttestBF]{BayesFactor::ttestBF()}}
+\item \code{statistic}: the numeric value of a statistic
+\item \code{df}: the numeric value of a parameter being modeled (often degrees
+of freedom for the test)
+\item \code{df.error} and \code{df}: relevant only if the statistic in question has
+two degrees of freedom (e.g. anova)
+\item \code{p.value}: the two-sided \emph{p}-value associated with the observed statistic
+\item \code{method}: the name of the inferential statistical test
+\item \code{estimate}: estimated value of the effect size
+\item \code{conf.low}: lower bound for the effect size estimate
+\item \code{conf.high}: upper bound for the effect size estimate
+\item \code{conf.level}: width of the confidence interval
+\item \code{conf.method}: method used to compute confidence interval
+\item \code{conf.distribution}: statistical distribution for the effect
+\item \code{effectsize}: the name of the effect size
+\item \code{n.obs}: number of observations
+\item \code{expression}: pre-formatted expression containing statistical details
 }
+
+For examples of dataframe outputs, see examples and \href{https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html}{this vignette}.
+
+Note that all examples are preceded by \code{set.seed()} calls for reproducibility.
 }
 \description{
 Calculate parametric, non-parametric, robust, and Bayes Factor pairwise
 comparisons between group levels with corrections for multiple testing.
+
+The table below provides summary about:
+\itemize{
+\item statistical test carried out for inferential statistics
+\item type of effect size estimate and a measure of uncertainty for this estimate
+\item functions used internally to compute these details
+}
+\subsection{between-subjects}{
+
+\strong{Hypothesis testing}\tabular{lllll}{
+   Type \tab Equal variance? \tab Test \tab \emph{p}-value adjustment? \tab Function used \cr
+   Parametric \tab No \tab Games-Howell test \tab Yes \tab \code{PMCMRplus::gamesHowellTest()} \cr
+   Parametric \tab Yes \tab Student's \emph{t}-test \tab Yes \tab \code{stats::pairwise.t.test()} \cr
+   Non-parametric \tab No \tab Dunn test \tab Yes \tab \code{PMCMRplus::kwAllPairsDunnTest()} \cr
+   Robust \tab No \tab Yuen's trimmed means test \tab Yes \tab \code{WRS2::lincon()} \cr
+   Bayesian \tab \code{NA} \tab Student's \emph{t}-test \tab \code{NA} \tab \code{BayesFactor::ttestBF()} \cr
+}
+
+
+\strong{Effect size estimation}
+
+Not supported.
+}
+
+\subsection{within-subjects}{
+
+\strong{Hypothesis testing}\tabular{llll}{
+   Type \tab Test \tab \emph{p}-value adjustment? \tab Function used \cr
+   Parametric \tab Student's \emph{t}-test \tab Yes \tab \code{stats::pairwise.t.test()} \cr
+   Non-parametric \tab Durbin-Conover test \tab Yes \tab \code{PMCMRplus::durbinAllPairsTest()} \cr
+   Robust \tab Yuen's trimmed means test \tab Yes \tab \code{WRS2::rmmcp()} \cr
+   Bayesian \tab Student's \emph{t}-test \tab \code{NA} \tab \code{BayesFactor::ttestBF()} \cr
+}
+
+
+\strong{Effect size estimation}
+
+Not supported.
+}
 }
 \examples{
 \donttest{
-if (require("PMCMRplus")) {
-  # for reproducibility
-  set.seed(123)
-  library(statsExpressions)
+# for reproducibility
+set.seed(123)
+library(statsExpressions)
+library(PMCMRplus)
 
-  # show all columns and make the column titles bold
-  # as a user, you don't need to do this; this is just for the package website
-  options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE, pillar.subtle_num = TRUE)
+# show all columns and make the column titles bold
+# as a user, you don't need to do this; this is just for the package website
+options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE, pillar.subtle_num = TRUE)
 
-  #------------------- between-subjects design ----------------------------
+#------------------- between-subjects design ----------------------------
 
-  # parametric
-  # if `var.equal = TRUE`, then Student's t-test will be run
-  pairwise_comparisons(
-    data            = mtcars,
-    x               = cyl,
-    y               = wt,
-    type            = "parametric",
-    var.equal       = TRUE,
-    paired          = FALSE,
-    p.adjust.method = "none"
-  )
+# parametric
+# if `var.equal = TRUE`, then Student's t-test will be run
+pairwise_comparisons(
+  data            = mtcars,
+  x               = cyl,
+  y               = wt,
+  type            = "parametric",
+  var.equal       = TRUE,
+  paired          = FALSE,
+  p.adjust.method = "none"
+)
 
-  # if `var.equal = FALSE`, then Games-Howell test will be run
-  pairwise_comparisons(
-    data            = mtcars,
-    x               = cyl,
-    y               = wt,
-    type            = "parametric",
-    var.equal       = FALSE,
-    paired          = FALSE,
-    p.adjust.method = "bonferroni"
-  )
+# if `var.equal = FALSE`, then Games-Howell test will be run
+pairwise_comparisons(
+  data            = mtcars,
+  x               = cyl,
+  y               = wt,
+  type            = "parametric",
+  var.equal       = FALSE,
+  paired          = FALSE,
+  p.adjust.method = "bonferroni"
+)
 
-  # non-parametric (Dunn test)
-  pairwise_comparisons(
-    data            = mtcars,
-    x               = cyl,
-    y               = wt,
-    type            = "nonparametric",
-    paired          = FALSE,
-    p.adjust.method = "none"
-  )
+# non-parametric (Dunn test)
+pairwise_comparisons(
+  data            = mtcars,
+  x               = cyl,
+  y               = wt,
+  type            = "nonparametric",
+  paired          = FALSE,
+  p.adjust.method = "none"
+)
 
-  # robust (Yuen's trimmed means *t*-test)
-  pairwise_comparisons(
-    data            = mtcars,
-    x               = cyl,
-    y               = wt,
-    type            = "robust",
-    paired          = FALSE,
-    p.adjust.method = "fdr"
-  )
+# robust (Yuen's trimmed means *t*-test)
+pairwise_comparisons(
+  data            = mtcars,
+  x               = cyl,
+  y               = wt,
+  type            = "robust",
+  paired          = FALSE,
+  p.adjust.method = "fdr"
+)
 
-  # Bayes Factor (Student's *t*-test)
-  pairwise_comparisons(
-    data   = mtcars,
-    x      = cyl,
-    y      = wt,
-    type   = "bayes",
-    paired = FALSE
-  )
+# Bayes Factor (Student's *t*-test)
+pairwise_comparisons(
+  data   = mtcars,
+  x      = cyl,
+  y      = wt,
+  type   = "bayes",
+  paired = FALSE
+)
 
-  #------------------- within-subjects design ----------------------------
+#------------------- within-subjects design ----------------------------
 
-  # parametric (Student's *t*-test)
-  pairwise_comparisons(
-    data            = bugs_long,
-    x               = condition,
-    y               = desire,
-    subject.id      = subject,
-    type            = "parametric",
-    paired          = TRUE,
-    p.adjust.method = "BH"
-  )
+# parametric (Student's *t*-test)
+pairwise_comparisons(
+  data            = bugs_long,
+  x               = condition,
+  y               = desire,
+  subject.id      = subject,
+  type            = "parametric",
+  paired          = TRUE,
+  p.adjust.method = "BH"
+)
 
-  # non-parametric (Durbin-Conover test)
-  pairwise_comparisons(
-    data            = bugs_long,
-    x               = condition,
-    y               = desire,
-    subject.id      = subject,
-    type            = "nonparametric",
-    paired          = TRUE,
-    p.adjust.method = "BY"
-  )
+# non-parametric (Durbin-Conover test)
+pairwise_comparisons(
+  data            = bugs_long,
+  x               = condition,
+  y               = desire,
+  subject.id      = subject,
+  type            = "nonparametric",
+  paired          = TRUE,
+  p.adjust.method = "BY"
+)
 
-  # robust (Yuen's trimmed means t-test)
-  pairwise_comparisons(
-    data            = bugs_long,
-    x               = condition,
-    y               = desire,
-    subject.id      = subject,
-    type            = "robust",
-    paired          = TRUE,
-    p.adjust.method = "hommel"
-  )
+# robust (Yuen's trimmed means t-test)
+pairwise_comparisons(
+  data            = bugs_long,
+  x               = condition,
+  y               = desire,
+  subject.id      = subject,
+  type            = "robust",
+  paired          = TRUE,
+  p.adjust.method = "hommel"
+)
 
-  # Bayes Factor (Student's *t*-test)
-  pairwise_comparisons(
-    data       = bugs_long,
-    x          = condition,
-    y          = desire,
-    subject.id = subject,
-    type       = "bayes",
-    paired     = TRUE
-  )
-}
+# Bayes Factor (Student's *t*-test)
+pairwise_comparisons(
+  data       = bugs_long,
+  x          = condition,
+  y          = desire,
+  subject.id = subject,
+  type       = "bayes",
+  paired     = TRUE
+)
 }
 }
 \references{

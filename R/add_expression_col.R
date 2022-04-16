@@ -186,7 +186,6 @@ add_expression_col <- function(data,
 
 #' Helper function to convert certain numeric columns to character type
 #' @noRd
-
 .data_to_char <- function(data, k = 2L, k.df = 0L, k.df.error = 0L) {
   data %>%
     mutate(
@@ -198,5 +197,4 @@ add_expression_col <- function(data,
 }
 
 #' @noRd
-
 .prettyNum <- function(x) prettyNum(x, big.mark = ",", scientific = FALSE)

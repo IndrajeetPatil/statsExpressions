@@ -1,7 +1,7 @@
 # tidy_model_expressions works
 
     Code
-      select(df_t, -label)
+      select(df_t, -expression)
     Output
       # A tibble: 2 x 9
         term        estimate std.error conf.level conf.low conf.high statistic
@@ -16,7 +16,7 @@
 ---
 
     Code
-      df_t$label
+      df_t$expression
     Output
       list(widehat(italic(beta))=='6.05', italic(t)('30')=='19.59', italic(p)=='1.20e-18')
       list(widehat(italic(beta))=='-0.14', italic(t)('30')=='-9.56', italic(p)=='1.29e-10')
@@ -24,7 +24,7 @@
 ---
 
     Code
-      df_t_na$label
+      df_t_na$expression
     Output
       list(widehat(italic(beta))=='6.05', italic(t)=='19.59', italic(p)=='1.20e-18')
       list(widehat(italic(beta))=='-0.14', italic(t)=='-9.56', italic(p)=='1.29e-10')
@@ -32,7 +32,7 @@
 ---
 
     Code
-      df_t_inf$label
+      df_t_inf$expression
     Output
       list(widehat(italic(beta))=='6.05', italic(t)=='19.59', italic(p)=='1.20e-18')
       list(widehat(italic(beta))=='-0.14', italic(t)=='-9.56', italic(p)=='1.29e-10')
@@ -40,7 +40,7 @@
 ---
 
     Code
-      select(df_chi, -label)
+      select(df_chi, -expression)
     Output
       # A tibble: 2 x 9
         term  estimate std.error conf.level conf.low conf.high statistic df.error
@@ -55,7 +55,7 @@
 ---
 
     Code
-      df_chi$label
+      df_chi$expression
     Output
       list(widehat(italic(beta))=='0.02', italic(chi)^2*('1')=='3.40', italic(p)=='0.07')
       list(widehat(italic(beta))=='-0.51', italic(chi)^2*('1')=='9.31', italic(p)=='2.28e-03')
@@ -63,7 +63,7 @@
 ---
 
     Code
-      select(df_z, -label)
+      select(df_z, -expression)
     Output
       # A tibble: 3 x 9
         term        estimate std.error conf.level conf.low conf.high statistic
@@ -80,7 +80,7 @@
 ---
 
     Code
-      df_z$label
+      df_z$expression
     Output
       list(widehat(italic(beta))=='-0.78', italic(z)=='-3.47', italic(p)=='5.14e-04')
       list(widehat(italic(beta))=='2.29', italic(z)=='19.13', italic(p)=='1.54e-81')

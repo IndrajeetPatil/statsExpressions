@@ -14,8 +14,8 @@ test_that("tidy_model_expressions works", {
     statistic = "t"
   ))
 
-  expect_snapshot(select(df_t, -label))
-  expect_snapshot(df_t$label)
+  expect_snapshot(select(df_t, -expression))
+  expect_snapshot(df_t$expression)
 
   # with NA df.error
   set.seed(123)
@@ -24,7 +24,7 @@ test_that("tidy_model_expressions works", {
     statistic = "t"
   ))
 
-  expect_snapshot(df_t_na$label)
+  expect_snapshot(df_t_na$expression)
 
   # with infinity as error
   set.seed(123)
@@ -33,7 +33,7 @@ test_that("tidy_model_expressions works", {
     statistic = "t"
   ))
 
-  expect_snapshot(df_t_inf$label)
+  expect_snapshot(df_t_inf$expression)
 
   ## chi2-statistic --------------------------------
 
@@ -52,8 +52,8 @@ test_that("tidy_model_expressions works", {
     statistic = "chi"
   ))
 
-  expect_snapshot(select(df_chi, -label))
-  expect_snapshot(df_chi$label)
+  expect_snapshot(select(df_chi, -expression))
+  expect_snapshot(df_chi$expression)
 
   ## z-statistic --------------------------------
 
@@ -74,6 +74,6 @@ test_that("tidy_model_expressions works", {
     statistic = "z"
   ))
 
-  expect_snapshot(select(df_z, -label))
-  expect_snapshot(df_z$label)
+  expect_snapshot(select(df_z, -expression))
+  expect_snapshot(df_z$expression)
 })

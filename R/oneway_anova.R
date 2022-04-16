@@ -125,8 +125,6 @@
 #' )
 #' }
 #' @export
-
-
 oneway_anova <- function(data,
                          x,
                          y,

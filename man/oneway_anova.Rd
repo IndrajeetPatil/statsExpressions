@@ -97,7 +97,7 @@ mostly relevant in the context of \code{ggstatsplot} package functions.}
 \item{...}{Additional arguments (currently ignored).}
 }
 \value{
-The returned tibble dataframe can contain some or all of the following columns (the exact columns will depend on the statistical test):
+The returned tibble data frame can contain some or all of the following columns (the exact columns will depend on the statistical test):
 \itemize{
 \item \code{statistic}: the numeric value of a statistic
 \item \code{df}: the numeric value of a parameter being modeled (often degrees
