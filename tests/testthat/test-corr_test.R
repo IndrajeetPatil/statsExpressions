@@ -103,13 +103,11 @@ test_that(
     expect_equal(df$bf10, 0.3445379, tolerance = 0.001)
 
     set.seed(123)
-    subtitle1 <-
-      corr_test(
+    subtitle1 <- corr_test(
         type = "bayes",
         data = iris,
         y = Sepal.Length,
-        x = Sepal.Width,
-        top.text = "huh is duh"
+        x = Sepal.Width
       )
 
     expect_snapshot(as.character(subtitle1$expression[[1]]))

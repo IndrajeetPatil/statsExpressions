@@ -204,8 +204,7 @@ test_that(
       type = "bayes",
       data = mtcars,
       x = cyl,
-      prior.concentration = 10,
-      top.text = "duh"
+      prior.concentration = 10
     )
 
     expect_snapshot(select(df2, -expression))

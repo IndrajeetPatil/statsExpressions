@@ -15,7 +15,6 @@ one_sample_test(
   tr = 0.2,
   bf.prior = 0.707,
   effsize.type = "g",
-  top.text = NULL,
   ...
 )
 }
@@ -63,9 +62,6 @@ corresponds to scale for fixed effects.}
 
 \item{effsize.type}{Type of effect size needed for \emph{parametric} tests. The
 argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \emph{g}).}
-
-\item{top.text}{Text to display on top of the Bayes Factor message. This is
-mostly relevant in the context of \code{ggstatsplot} package functions.}
 
 \item{...}{Currently ignored.}
 }

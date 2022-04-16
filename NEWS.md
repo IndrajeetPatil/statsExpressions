@@ -11,6 +11,10 @@ MAJOR CHANGES
     `label`, while other times in `expression` column. Now it will be
     consistently in the `expression` column.
 
+  - The `top.text` parameter has been removed from all functions. It was
+    relevant only in the context of `{ggstatsplot}` package. As that package no
+    longer uses it, it is no longer necessary to retain it.
+
 # statsExpressions 1.3.1
 
   - Fixes breakages due to `{insight}` package update.

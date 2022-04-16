@@ -193,7 +193,7 @@
     Code
       as.character(df2$expression[[1]])
     Output
-      [1] "list(atop(\"duh\", list(log[e] * (BF[\"01\"]) == \"0.55\", italic(\"a\")[\"Gunel-Dickey\"] == \"10.00\")))"
+      [1] "list(log[e] * (BF[\"01\"]) == \"0.55\", italic(\"a\")[\"Gunel-Dickey\"] == \"10.00\")"
 
 # bayes factor (contingency tab)
 

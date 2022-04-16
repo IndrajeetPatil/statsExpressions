@@ -19,7 +19,6 @@ two_sample_test(
   bf.prior = 0.707,
   tr = 0.2,
   nboot = 100L,
-  top.text = NULL,
   ...
 )
 }
@@ -95,9 +94,6 @@ of an error, try reducing the value of \code{tr}, which is by default set to
 
 \item{nboot}{Number of bootstrap samples for computing confidence interval
 for the effect size (Default: \code{100L}).}
-
-\item{top.text}{Text to display on top of the Bayes Factor message. This is
-mostly relevant in the context of \code{ggstatsplot} package functions.}
 
 \item{...}{Currently ignored.}
 }

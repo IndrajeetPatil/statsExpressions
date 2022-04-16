@@ -5,9 +5,9 @@
 #'
 #' This function describes a distribution for `y` variable for each level of the
 #' grouping variable in `x` by a set of indices (e.g., measures of centrality,
-#' dispersion, range, skewness, kurtosis). It additionally returns an expression
-#' containing a specified centrality measure. The function internally relies on
-#' `datawizard::describe_distribution()` function.
+#' dispersion, range, skewness, kurtosis, etc.). It additionally returns an
+#' expression containing a specified centrality measure. The function internally
+#' relies on `datawizard::describe_distribution()` function.
 #'
 #' @description
 #'
@@ -38,7 +38,6 @@
 #' centrality_description(sleep, group, extra, type = "b")
 #'
 #' @export
-
 centrality_description <- function(data,
                                    x,
                                    y,
@@ -64,7 +63,6 @@ centrality_description <- function(data,
 
   # dataframe -------------------------------------
 
-  # creating the dataframe
   select(data, {{ x }}, {{ y }}) %>%
     tidyr::drop_na(.) %>%
     mutate({{ x }} := droplevels(as.factor({{ x }}))) %>%

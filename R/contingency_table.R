@@ -103,7 +103,6 @@ contingency_table <- function(data,
                               sampling.plan = "indepMulti",
                               fixed.margin = "rows",
                               prior.concentration = 1,
-                              top.text = NULL,
                               ...) {
 
   # check the data contains needed column
@@ -137,7 +136,6 @@ contingency_table <- function(data,
     if (test == "2way" && !paired) c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::cramers_v)
 
     # Pearson's or McNemar's test
-
     # combining dataframes: inferential stats + effect sizes
     stats_df <- bind_cols(
       tidy_model_parameters(exec(.f, !!!.f.args)),
@@ -188,16 +186,9 @@ contingency_table <- function(data,
 
       prior.distribution <- list(quote(italic("a")["Gunel-Dickey"]))
 
-      if (is.null(top.text)) {
-        stats_df %<>% mutate(expression = list(parse(text = glue("list(
+      stats_df %<>% mutate(expression = list(parse(text = glue("list(
             log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
             {prior.distribution}=='{format_value(prior.scale, k)}')"))))
-      } else {
-        stats_df %<>% mutate(expression = list(parse(text = glue("list(
-            atop('{top.text}',
-            list(log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
-            {prior.distribution}=='{format_value(prior.scale, k)}')))"))))
-      }
     }
   }
 
@@ -207,11 +198,9 @@ contingency_table <- function(data,
     stats_df %<>% add_expression_col(
       n        = nrow(data),
       paired   = paired,
-      k        = k,
-      top.text = top.text
+      k        = k
     )
   }
-
 
   stats_df
 }

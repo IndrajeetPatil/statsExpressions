@@ -9,7 +9,6 @@ add_expression_col(
   paired = FALSE,
   statistic.text = NULL,
   effsize.text = NULL,
-  top.text = NULL,
   prior.type = NULL,
   n = NULL,
   n.text = ifelse(paired, list(quote(italic("n")["pairs"])),
@@ -48,9 +47,6 @@ repeated measures/within-subjects or between-subjects. The default is
 For example, for tests with \emph{t}-statistic, \code{statistic.text = "t"}.}
 
 \item{effsize.text}{A character that specifies the relevant effect size.}
-
-\item{top.text}{Text to display on top of the Bayes Factor message. This is
-mostly relevant in the context of \code{ggstatsplot} package functions.}
 
 \item{prior.type}{The type of prior.}
 

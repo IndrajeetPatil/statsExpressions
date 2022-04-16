@@ -43,8 +43,7 @@ test_that(
       data = df1,
       k = 3,
       iter = 1000,
-      summarize = "integrate",
-      top.text = "ayyo arecha"
+      summarize = "integrate"
     ))
 
     expect_type(df, "list")

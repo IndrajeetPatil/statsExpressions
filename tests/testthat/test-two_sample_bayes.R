@@ -60,8 +60,7 @@ test_that(
         x = "condition",
         y = desire,
         paired = TRUE,
-        bf.prior = 0.8,
-        top.text = "bla is ulalala"
+        bf.prior = 0.8
       )
 
     # call

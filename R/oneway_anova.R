@@ -138,7 +138,6 @@ oneway_anova <- function(data,
                          bf.prior = 0.707,
                          tr = 0.2,
                          nboot = 100L,
-                         top.text = NULL,
                          ...) {
 
   # standardize the type of statistics
@@ -278,7 +277,6 @@ oneway_anova <- function(data,
 
   # Bayesian ---------------------------------------
 
-  # running Bayesian t-test
   if (type == "bayes") {
     if (!paired) .f.args <- list(formula = new_formula(y, x), rscaleFixed = bf.prior)
     if (paired) {
@@ -308,7 +306,6 @@ oneway_anova <- function(data,
     paired     = paired,
     k          = k,
     k.df       = k.df,
-    k.df.error = k.df.error,
-    top.text   = top.text
+    k.df.error = k.df.error
   )
 }
