@@ -64,8 +64,6 @@
 #'   paired = FALSE
 #' )
 #' @export
-
-
 long_to_wide_converter <- function(data,
                                    x,
                                    y,

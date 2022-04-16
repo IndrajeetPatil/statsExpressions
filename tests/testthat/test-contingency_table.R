@@ -176,6 +176,9 @@ test_that(
     set.seed(123)
     expect_snapshot(select(df3, -expression))
     expect_snapshot(as.character(df3$expression[[1]]))
+
+    # edge case
+    expect_null(contingency_table(data.frame(x = "x"), x, type = "bayes"))
   }
 )
 

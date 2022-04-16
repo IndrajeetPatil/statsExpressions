@@ -93,8 +93,8 @@ The table below provides summary about:
 }
 }
 \note{
-\strong{Important}: The function assumes that you have already downloaded
-the needed package (\code{{metafor}}, \code{{metaplus}}, or \code{{metaBMA}}) for meta-analysis.
+\strong{Important}: The function assumes that you have already downloaded the
+needed package (\code{{metafor}}, \code{{metaplus}}, or \code{{metaBMA}}) for meta-analysis.
 If they are not available, you will be asked to install them.
 }
 \examples{
