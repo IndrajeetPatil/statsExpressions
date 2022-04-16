@@ -260,10 +260,7 @@ set.seed(123)
 library(ggplot2)
 
 # dataframe with results
-df_results <- one_sample_test(mtcars, wt,
-  test.value = 3, type = "bayes",
-  top.text = "Bayesian one-sample t-test"
-)
+df_results <- one_sample_test(mtcars, wt, test.value = 3, type = "bayes")
 
 # creating a histogram plot
 ggplot(mtcars, aes(wt)) +
@@ -302,11 +299,11 @@ For categorical/nominal data - one-sample:
 set.seed(123)
 library(ggplot2)
 
-df_results <- contingency_table(as.data.frame(table(mpg$class)),
+df_results <- contingency_table(
+  as.data.frame(table(mpg$class)),
   Var1,
   counts = Freq,
-  type = "bayes",
-  top.text = "One-sample goodness-of-fit test"
+  type = "bayes"
 )
 
 # basic pie chart

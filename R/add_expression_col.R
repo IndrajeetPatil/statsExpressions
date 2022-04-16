@@ -46,8 +46,6 @@
 #'   functions from `bayestestR` package).
 #' @param k Number of digits after decimal point (should be an integer)
 #'   (Default: `k = 2L`).
-#' @param top.text Text to display on top of the Bayes Factor message. This is
-#'   mostly relevant in the context of `ggstatsplot` package functions.
 #' @param ... Currently ignored.
 #' @inheritParams oneway_anova
 #' @inheritParams long_to_wide_converter
@@ -83,7 +81,6 @@ add_expression_col <- function(data,
                                paired = FALSE,
                                statistic.text = NULL,
                                effsize.text = NULL,
-                               top.text = NULL,
                                prior.type = NULL,
                                n = NULL,
                                n.text = ifelse(
@@ -126,20 +123,11 @@ add_expression_col <- function(data,
   # Bayesian analysis ------------------------------
 
   if (bayesian) {
-    if (is.null(top.text)) {
-      df_expr %<>% mutate(expression = glue("list(
+    df_expr %<>% mutate(expression = glue("list(
             log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
             {es.text}^'posterior'=='{estimate}',
             CI['{conf.level}']^{conf.method}~'['*'{conf.low}', '{conf.high}'*']',
             {prior.distribution}=='{prior.scale}')"))
-    } else {
-      df_expr %<>% mutate(expression = glue("list(
-            atop('{top.text}',
-            list(log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
-            {es.text}^'posterior'=='{estimate}',
-            CI['{conf.level}']^{conf.method}~'['*'{conf.low}', '{conf.high}'*']',
-            {prior.distribution}=='{prior.scale}')))"))
-    }
   }
 
   # how many parameters?

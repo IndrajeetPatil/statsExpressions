@@ -7,7 +7,6 @@
 #' model <- lm(mpg ~ wt + cyl, data = mtcars)
 #' tidy_model_parameters(model)
 #' @export
-
 tidy_model_parameters <- function(model, ...) {
   stats_df <- model_parameters(model, verbose = FALSE, ...) %>%
     select(where(~ !all(is.na(.x))), -matches("Difference")) %>% # remove columns where all rows are NAs

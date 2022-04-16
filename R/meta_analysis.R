@@ -73,7 +73,6 @@ meta_analysis <- function(data,
                           random = "mixture",
                           k = 2L,
                           conf.level = 0.95,
-                          top.text = NULL,
                           ...) {
   # check the type of test
   type <- stats_type_switch(type)
@@ -82,7 +81,6 @@ meta_analysis <- function(data,
   if (type != "bayes") .f.args <- list(yi = quote(estimate), sei = quote(std.error), random = random, ...)
   if (type == "bayes") .f.args <- list(y = quote(estimate), SE = quote(std.error), ...)
 
-  # functions
   # styler: off
   if (type == "parametric") c(.ns, .fn) %<-% c("metafor", "rma")
   if (type == "robust") c(.ns, .fn)     %<-% c("metaplus", "metaplus")
@@ -106,6 +104,5 @@ meta_analysis <- function(data,
     n        = nrow(data),
     n.text   = list(quote(italic("n")["effects"])),
     k        = k,
-    top.text = top.text
   )
 }

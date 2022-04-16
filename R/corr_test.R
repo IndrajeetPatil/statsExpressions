@@ -43,8 +43,6 @@
 #' )
 #' }
 #' @export
-
-
 corr_test <- function(data,
                       x,
                       y,
@@ -53,7 +51,6 @@ corr_test <- function(data,
                       conf.level = 0.95,
                       tr = 0.2,
                       bf.prior = 0.707,
-                      top.text = NULL,
                       ...) {
 
   # see which method was used to specify type of correlation
@@ -61,7 +58,6 @@ corr_test <- function(data,
 
   # correlation dataframes -----------------------
 
-  # creating a dataframe of results
   stats_df <- correlation::correlation(
     data           = tidyr::drop_na(select(ungroup(data), {{ x }}, {{ y }})),
     method         = ifelse(type == "nonparametric", "spearman", "pearson"),
@@ -74,12 +70,10 @@ corr_test <- function(data,
 
   # expression ---------------------------------------
 
-  # preparing expression
   add_expression_col(
-    data     = stats_df,
-    top.text = top.text,
-    paired   = TRUE,
-    n        = stats_df$n.obs[[1]],
-    k        = k
+    data   = stats_df,
+    paired = TRUE,
+    n      = stats_df$n.obs[[1]],
+    k      = k
   )
 }

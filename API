@@ -2,20 +2,20 @@
 
 ## Exported functions
 
-add_expression_col(data, paired = FALSE, statistic.text = NULL, effsize.text = NULL, top.text = NULL, prior.type = NULL, n = NULL, n.text = ifelse(paired, list(quote(italic("n")["pairs"])), list(quote(italic("n")["obs"]))), conf.method = "HDI", k = 2L, k.df = 0L, k.df.error = k.df, ...)
+add_expression_col(data, paired = FALSE, statistic.text = NULL, effsize.text = NULL, prior.type = NULL, n = NULL, n.text = ifelse(paired, list(quote(italic("n")["pairs"])), list(quote(italic("n")["obs"]))), conf.method = "HDI", k = 2L, k.df = 0L, k.df.error = k.df, ...)
 centrality_description(data, x, y, type = "parametric", tr = 0.2, k = 2L, ...)
-contingency_table(data, x, y = NULL, paired = FALSE, type = "parametric", counts = NULL, ratio = NULL, k = 2L, conf.level = 0.95, sampling.plan = "indepMulti", fixed.margin = "rows", prior.concentration = 1, top.text = NULL, ...)
-corr_test(data, x, y, type = "parametric", k = 2L, conf.level = 0.95, tr = 0.2, bf.prior = 0.707, top.text = NULL, ...)
+contingency_table(data, x, y = NULL, paired = FALSE, type = "parametric", counts = NULL, ratio = NULL, k = 2L, conf.level = 0.95, sampling.plan = "indepMulti", fixed.margin = "rows", prior.concentration = 1, ...)
+corr_test(data, x, y, type = "parametric", k = 2L, conf.level = 0.95, tr = 0.2, bf.prior = 0.707, ...)
 long_to_wide_converter(data, x, y, subject.id = NULL, paired = TRUE, spread = TRUE, ...)
-meta_analysis(data, type = "parametric", random = "mixture", k = 2L, conf.level = 0.95, top.text = NULL, ...)
-one_sample_test(data, x, type = "parametric", test.value = 0, alternative = "two.sided", k = 2L, conf.level = 0.95, tr = 0.2, bf.prior = 0.707, effsize.type = "g", top.text = NULL, ...)
-oneway_anova(data, x, y, subject.id = NULL, type = "parametric", paired = FALSE, k = 2L, conf.level = 0.95, effsize.type = "omega", var.equal = FALSE, bf.prior = 0.707, tr = 0.2, nboot = 100L, top.text = NULL, ...)
+meta_analysis(data, type = "parametric", random = "mixture", k = 2L, conf.level = 0.95, ...)
+one_sample_test(data, x, type = "parametric", test.value = 0, alternative = "two.sided", k = 2L, conf.level = 0.95, tr = 0.2, bf.prior = 0.707, effsize.type = "g", ...)
+oneway_anova(data, x, y, subject.id = NULL, type = "parametric", paired = FALSE, k = 2L, conf.level = 0.95, effsize.type = "omega", var.equal = FALSE, bf.prior = 0.707, tr = 0.2, nboot = 100L, ...)
 p_adjust_text(p.adjust.method)
 pairwise_comparisons(data, x, y, subject.id = NULL, type = "parametric", paired = FALSE, var.equal = FALSE, tr = 0.2, bf.prior = 0.707, p.adjust.method = "holm", k = 2L, ...)
 stats_type_switch(type)
 tidy_model_expressions(data, statistic = NULL, k = 2L, effsize.type = "omega", ...)
 tidy_model_parameters(model, ...)
-two_sample_test(data, x, y, subject.id = NULL, type = "parametric", paired = FALSE, alternative = "two.sided", k = 2L, conf.level = 0.95, effsize.type = "g", var.equal = FALSE, bf.prior = 0.707, tr = 0.2, nboot = 100L, top.text = NULL, ...)
+two_sample_test(data, x, y, subject.id = NULL, type = "parametric", paired = FALSE, alternative = "two.sided", k = 2L, conf.level = 0.95, effsize.type = "g", var.equal = FALSE, bf.prior = 0.707, tr = 0.2, nboot = 100L, ...)
 
 ## Reexported objects
 

@@ -90,7 +90,7 @@ long_to_wide_converter <- function(data,
   data %<>%
     ungroup(.) %>%
     nest_by(rowid, .key = "df") %>%
-    filter(sum(is.na(df)) == 0) %>%
+    filter(sum(is.na(df)) == 0L) %>%
     tidyr::unnest(cols = c(df))
 
   # convert to wide?
