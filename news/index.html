@@ -28,7 +28,7 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/stats_details.html">Test and effect size details</a>
-    <a class="dropdown-item" href="../articles/web_only/dataframe_outputs.html">Dataframe outputs</a>
+    <a class="dropdown-item" href="../articles/web_only/dataframe_outputs.html">Data frame outputs</a>
   </div>
 </li>
 <li class="active nav-item">
@@ -58,7 +58,12 @@
 <h2 class="pkg-version" data-toc-text="1.3.1.9000" id="statsexpressions-1319000">statsExpressions 1.3.1.9000<a class="anchor" aria-label="anchor" href="#statsexpressions-1319000"></a></h2>
 <p>NEW FUNCTIONS</p>
 <ul><li>The <code><a href="../reference/pairwise_comparisons.html">pairwise_comparisons()</a></code> function to carry out
-one-way pairwise comparison tests.</li>
+pairwise comparison tests for one-way designs.</li>
+</ul><p>MAJOR CHANGES</p>
+<ul><li>Expressions with statistical details were sometimes in a column
+named <code>label</code>, while other times in <code>expression</code>
+column. Now it will be consistently in the <code>expression</code>
+column.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.3.1" id="statsexpressions-131">statsExpressions 1.3.1<a class="anchor" aria-label="anchor" href="#statsexpressions-131"></a></h2><p class="text-muted">CRAN release: 2022-03-29</p>
