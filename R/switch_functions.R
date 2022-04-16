@@ -20,11 +20,9 @@
 #' stats_type_switch("p")
 #' stats_type_switch("bf")
 #' @export
-
 # styler: off
 stats_type_switch <- function(type) {
   case_when(
-    grepl("^p", type, TRUE)    ~ "parametric",
     grepl("^n|^s", type, TRUE) ~ "nonparametric", # s is for Spearman's rho
     grepl("^r", type, TRUE)    ~ "robust",
     grepl("^b", type, TRUE)    ~ "bayes",
@@ -34,7 +32,6 @@ stats_type_switch <- function(type) {
 
 
 #' @noRd
-
 estimate_type_switch <- function(x) {
   # to make life easier
   x <- tolower(x)
@@ -67,7 +64,6 @@ estimate_type_switch <- function(x) {
 }
 
 #' @noRd
-
 stat_text_switch <- function(x) {
   # to make life easier
   x <- tolower(x)
@@ -95,7 +91,6 @@ stat_text_switch <- function(x) {
 }
 
 #' @noRd
-
 prior_switch <- function(x) {
   case_when(
     grepl("contingency", x, TRUE) ~ list(quote(italic("a")["Gunel-Dickey"])),
