@@ -78,7 +78,6 @@ this package context.</p>
   paired <span class="op">=</span> <span class="cn">FALSE</span>,
   statistic.text <span class="op">=</span> <span class="cn">NULL</span>,
   effsize.text <span class="op">=</span> <span class="cn">NULL</span>,
-  top.text <span class="op">=</span> <span class="cn">NULL</span>,
   prior.type <span class="op">=</span> <span class="cn">NULL</span>,
   n <span class="op">=</span> <span class="cn">NULL</span>,
   n.text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">paired</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">quote</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/grDevices/plotmath.html" class="external-link">italic</a></span><span class="op">(</span><span class="st">"n"</span><span class="op">)</span><span class="op">[</span><span class="st">"pairs"</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>,
@@ -118,9 +117,6 @@ repeated measures/within-subjects or between-subjects. The default is
 For example, for tests with <em>t</em>-statistic, <code>statistic.text = "t"</code>.</p></dd>
 <dt>effsize.text</dt>
 <dd><p>A character that specifies the relevant effect size.</p></dd>
-<dt>top.text</dt>
-<dd><p>Text to display on top of the Bayes Factor message. This is
-mostly relevant in the context of <code>ggstatsplot</code> package functions.</p></dd>
 <dt>prior.type</dt>
 <dd><p>The type of prior.</p></dd>
 <dt>n</dt>

@@ -647,10 +647,7 @@ expressions.</p>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
 
 <span class="co"># dataframe with results</span>
-<span class="va">df_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>,
-  test.value <span class="op">=</span> <span class="fl">3</span>, type <span class="op">=</span> <span class="st">"bayes"</span>,
-  top.text <span class="op">=</span> <span class="st">"Bayesian one-sample t-test"</span>
-<span class="op">)</span>
+<span class="va">df_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, test.value <span class="op">=</span> <span class="fl">3</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span>
 
 <span class="co"># creating a histogram plot</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">wt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -690,11 +687,11 @@ analysis:</p>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
 
-<span class="va">df_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/contingency_table.html">contingency_table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">$</span><span class="va">class</span><span class="op">)</span><span class="op">)</span>,
+<span class="va">df_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/contingency_table.html">contingency_table</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">$</span><span class="va">class</span><span class="op">)</span><span class="op">)</span>,
   <span class="va">Var1</span>,
   counts <span class="op">=</span> <span class="va">Freq</span>,
-  type <span class="op">=</span> <span class="st">"bayes"</span>,
-  top.text <span class="op">=</span> <span class="st">"One-sample goodness-of-fit test"</span>
+  type <span class="op">=</span> <span class="st">"bayes"</span>
 <span class="op">)</span>
 
 <span class="co"># basic pie chart</span>

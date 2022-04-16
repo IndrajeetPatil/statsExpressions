@@ -60,10 +60,14 @@
 <ul><li>The <code><a href="../reference/pairwise_comparisons.html">pairwise_comparisons()</a></code> function to carry out
 pairwise comparison tests for one-way designs.</li>
 </ul><p>MAJOR CHANGES</p>
-<ul><li>Expressions with statistical details were sometimes in a column
+<ul><li><p>Expressions with statistical details were sometimes in a column
 named <code>label</code>, while other times in <code>expression</code>
 column. Now it will be consistently in the <code>expression</code>
-column.</li>
+column.</p></li>
+<li><p>The <code>top.text</code> parameter has been removed from all
+functions. It was relevant only in the context of
+<a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link">ggstatsplot</a> package. As that package no longer uses it,
+it is no longer necessary to retain it.</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.3.1" id="statsexpressions-131">statsExpressions 1.3.1<a class="anchor" aria-label="anchor" href="#statsexpressions-131"></a></h2><p class="text-muted">CRAN release: 2022-03-29</p>
