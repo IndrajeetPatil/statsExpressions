@@ -5,6 +5,11 @@ NEW FUNCTIONS
   - The `pairwise_comparisons()` function to carry out one-way pairwise
     comparison tests.
 
+MAJOR CHANGES
+
+  - Expressions with statistical details were sometimes in a column named
+    `label`. Now this column is consistently called `expression`.
+
 # statsExpressions 1.3.1
 
   - Fixes breakages due to `{insight}` package update.

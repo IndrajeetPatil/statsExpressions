@@ -198,11 +198,8 @@ pairwise_comparisons <- function(data,
   # parametric ---------------------------------
 
   if (type %in% c("parametric", "bayes")) {
-    if (var.equal || paired) {
-      c(.f, test.details) %<-% c(stats::pairwise.t.test, "Student's t-test")
-    } else {
-      c(.f, test.details) %<-% c(PMCMRplus::gamesHowellTest, "Games-Howell test")
-    }
+    if (var.equal || paired) c(.f, test.details) %<-% c(stats::pairwise.t.test, "Student's t-test")
+    if (!(var.equal || paired)) c(.f, test.details) %<-% c(PMCMRplus::gamesHowellTest, "Games-Howell test")
   }
 
   # nonparametric ----------------------------
@@ -238,7 +235,6 @@ pairwise_comparisons <- function(data,
 
   # robust ----------------------------------
 
-  # extracting the robust pairwise comparisons
   if (type == "robust") {
     if (!paired) {
       c(.ns, .fn) %<-% c("WRS2", "lincon")
@@ -287,15 +283,15 @@ pairwise_comparisons <- function(data,
     df <- bind_cols(select(df, group1, group2), df_tidy)
   }
 
-  # cleanup ----------------------------------
+  # clean-up ----------------------------------
 
-  # final cleanup for p-value labels
+  # final clean-up for p-value labels
   df %<>%
     mutate_if(.predicate = is.factor, .funs = ~ as.character(.)) %>%
     arrange(group1, group2) %>%
     select(group1, group2, everything())
 
-  # clean-up for non-Bayes tests
+  # clean-up relevant for non-Bayesian tests
   if (type != "bayes") {
     df %<>%
       mutate(p.value = stats::p.adjust(p = p.value, method = p.adjust.method)) %>%
