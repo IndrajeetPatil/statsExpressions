@@ -16,7 +16,7 @@ tidy_model_expressions(
 \item{data}{A tidy dataframe from regression model object.}
 
 \item{statistic}{Which statistic is to be displayed (either \code{"t"} or \code{"f"}or
-\code{"z"} or \code{"chi"}) in the label.}
+\code{"z"} or \code{"chi"}) in the expression.}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2L}).}
@@ -31,8 +31,8 @@ omega-squared).}
 Expressions with statistics for tidy regression dataframes
 }
 \note{
-This is an \strong{experimental} function and may change in the future.
-Please do not use it yet in your workflow.
+This is an \strong{experimental} function and may change in the future. Please do
+not use it yet in your workflow.
 }
 \examples{
 set.seed(123)

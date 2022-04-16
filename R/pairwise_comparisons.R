@@ -16,31 +16,18 @@
 #' @inheritParams stats::t.test
 #' @inheritParams WRS2::rmmcp
 #'
+#' @description
+#'
+#' ```{r child="man/rmd-fragments/table_intro.Rmd"}
+#' ```
+#'
+#' ```{r child="man/rmd-fragments/pairwise_comparisons.Rmd"}
+#' ```
+#'
 #' @return
 #'
-#' A tibble dataframe containing two columns corresponding to group levels being
-#' compared with each other (`group1` and `group2`) and `p.value` column
-#' corresponding to this comparison. The dataframe will also contain a
-#' `expression` column containing an expression with a *p*-value, which can be
-#' helpful with `ggsignif::geom_ggsignif()`. In addition to these common columns
-#' across the different types of statistics, there will be additional columns
-#' specific to the `type` of test being run.
-#'
-#'   This function provides a unified syntax to carry out pairwise comparison
-#'   tests and internally relies on other packages to carry out these tests. For
-#'   more details about the included tests, see the documentation for the
-#'   respective functions:
-#'   - *parametric* : [stats::pairwise.t.test()] (paired) and
-#'   [PMCMRplus::gamesHowellTest()] (unpaired)
-#'   - *non-parametric* :
-#'   [PMCMRplus::durbinAllPairsTest()] (paired) and
-#'   [PMCMRplus::kwAllPairsDunnTest()] (unpaired)
-#'   - *robust* :
-#'   [WRS2::rmmcp()] (paired) and [WRS2::lincon()] (unpaired)
-#'   - *Bayes Factor* : [BayesFactor::ttestBF()]
-#'
-#' @importFrom stats p.adjust pairwise.t.test na.omit aov
-#' @importFrom WRS2 lincon rmmcp
+#' ```{r child="man/rmd-fragments/return.Rmd"}
+#' ```
 #'
 #' @references For more, see:
 #' <https://indrajeetpatil.github.io/ggstatsplot/articles/web_only/pairwise.html>
