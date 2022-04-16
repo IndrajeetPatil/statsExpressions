@@ -109,8 +109,6 @@
 #' )
 #' }
 #' @export
-
-
 two_sample_test <- function(data,
                             x,
                             y,
@@ -230,7 +228,6 @@ two_sample_test <- function(data,
 
   # expression ---------------------------------------
 
-  # add column with expression
   add_expression_col(
     data     = stats_df,
     paired   = paired,

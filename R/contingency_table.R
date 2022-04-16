@@ -91,8 +91,6 @@
 #' )
 #' }
 #' @export
-
-
 contingency_table <- function(data,
                               x,
                               y = NULL,
@@ -214,7 +212,7 @@ contingency_table <- function(data,
     )
   }
 
-  # add column with expression
+
   stats_df
 }
 
