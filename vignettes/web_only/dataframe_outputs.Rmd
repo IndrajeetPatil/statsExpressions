@@ -1,5 +1,5 @@
 ---
-title: "Dataframe outputs"
+title: "Data frame outputs"
 author: "Indrajeet Patil"
 date: "`r Sys.Date()`"
 output:
@@ -11,7 +11,7 @@ output:
     toc: true
     toc_depth: 4
 vignette: >
-  %\VignetteIndexEntry{Dataframe outputs}
+  %\VignetteIndexEntry{Data frame outputs}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

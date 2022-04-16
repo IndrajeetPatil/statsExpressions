@@ -1,7 +1,7 @@
 # tidy_model_expressions works - F
 
     Code
-      select(df1, -label)
+      select(df1, -expression)
     Output
       # A tibble: 3 x 11
         term  statistic    df df.error p.value group   sumsq meansq  estimate
@@ -18,7 +18,7 @@
 ---
 
     Code
-      df1$label
+      df1$expression
     Output
       list(widehat(italic(omega)[p]^2)=='0.18', italic(F)('1', '15')=='9.04', italic(p)=='8.85e-03')
       list(widehat(italic(omega)[p]^2)=='-0.02', italic(F)('1', '15')=='0.40', italic(p)=='0.54')
@@ -27,7 +27,7 @@
 ---
 
     Code
-      select(df2, -label)
+      select(df2, -expression)
     Output
       # A tibble: 3 x 11
         term  statistic    df df.error p.value group   sumsq meansq estimate
@@ -44,7 +44,7 @@
 ---
 
     Code
-      df2$label
+      df2$expression
     Output
       list(widehat(italic(eta)[p]^2)=='0.38', italic(F)('1', '15')=='9.04', italic(p)=='8.85e-03')
       list(widehat(italic(eta)[p]^2)=='0.03', italic(F)('1', '15')=='0.40', italic(p)=='0.54')

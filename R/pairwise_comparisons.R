@@ -283,15 +283,14 @@ pairwise_comparisons <- function(data,
     df <- bind_cols(select(df, group1, group2), df_tidy)
   }
 
-  # clean-up ----------------------------------
+  # expression formatting ----------------------------------
 
-  # final clean-up for p-value labels
   df %<>%
     mutate_if(.predicate = is.factor, .funs = ~ as.character(.)) %>%
     arrange(group1, group2) %>%
     select(group1, group2, everything())
 
-  # clean-up relevant for non-Bayesian tests
+  # relevant only for non-Bayesian tests
   if (type != "bayes") {
     df %<>%
       mutate(p.value = stats::p.adjust(p = p.value, method = p.adjust.method)) %>%
