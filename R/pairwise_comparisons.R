@@ -185,15 +185,15 @@ pairwise_comparisons <- function(data,
   # parametric ---------------------------------
 
   if (type %in% c("parametric", "bayes")) {
-    if (var.equal || paired) c(.f, test.details) %<-% c(stats::pairwise.t.test, "Student's t-test")
-    if (!(var.equal || paired)) c(.f, test.details) %<-% c(PMCMRplus::gamesHowellTest, "Games-Howell test")
+    if (var.equal || paired) c(.f, test) %<-% c(stats::pairwise.t.test, "Student's t")
+    if (!(var.equal || paired)) c(.f, test) %<-% c(PMCMRplus::gamesHowellTest, "Games-Howell")
   }
 
   # nonparametric ----------------------------
 
   if (type == "nonparametric") {
-    if (!paired) c(.f, test.details) %<-% c(PMCMRplus::kwAllPairsDunnTest, "Dunn test")
-    if (paired) c(.f, test.details) %<-% c(PMCMRplus::durbinAllPairsTest, "Durbin-Conover test")
+    if (!paired) c(.f, test) %<-% c(PMCMRplus::kwAllPairsDunnTest, "Dunn")
+    if (paired) c(.f, test) %<-% c(PMCMRplus::durbinAllPairsTest, "Durbin-Conover")
 
     # `exec` fails otherwise for `pairwise.t.test` because `y` is passed to `t.test`
     .f.args <- list(y = y_vec, ...)
@@ -226,7 +226,9 @@ pairwise_comparisons <- function(data,
     if (!paired) {
       c(.ns, .fn) %<-% c("WRS2", "lincon")
       .f.args <- list(formula = new_formula(y, x), data = data, method = "none")
-    } else {
+    }
+
+    if (paired) {
       c(.ns, .fn) %<-% c("WRS2", "rmmcp")
       .f.args <- list(y = quote(y_vec), groups = quote(x_vec), blocks = quote(g_vec))
     }
@@ -236,7 +238,7 @@ pairwise_comparisons <- function(data,
       tidy_model_parameters(.)
 
     # test details
-    test.details <- "Yuen's trimmed means test"
+    test <- "Yuen's trimmed means"
   }
 
   # Bayesian --------------------------------
@@ -264,7 +266,7 @@ pairwise_comparisons <- function(data,
       rowwise() %>%
       mutate(expression = paste0("list(~log[e](BF['01'])==", format_value(-log_e_bf10, k), ")")) %>%
       ungroup() %>%
-      mutate(test.details = "Student's t-test")
+      mutate(test = "Student's t")
 
     # combine it with the other details
     df <- bind_cols(select(df, group1, group2), df_tidy)
@@ -280,24 +282,22 @@ pairwise_comparisons <- function(data,
   # relevant only for non-Bayesian tests
   if (type != "bayes") {
     df %<>%
-      mutate(p.value = stats::p.adjust(p = p.value, method = p.adjust.method)) %>%
       mutate(
-        test.details = test.details,
-        p.value.adjustment = p_adjust_text(p.adjust.method)
+        p.value            = stats::p.adjust(p = p.value, method = p.adjust.method),
+        p.adjust.method    = p_adjust_text(p.adjust.method),
+        test               = test
       ) %>%
       rowwise() %>%
       mutate(
         expression = case_when(
-          p.value.adjustment != "None" ~ paste0(
-            "list(~italic(p)[", p.value.adjustment, "-corrected]==", format_value(p.value, k), ")"
-          ),
-          TRUE ~ paste0("list(~italic(p)[uncorrected]==", format_value(p.value, k), ")")
+          p.adjust.method == "None" ~ paste0("list(~italic(p)[unadj.]==", format_value(p.value, k), ")"),
+          TRUE ~ paste0("list(~italic(p)[", p.adjust.method, "-adj.]==", format_value(p.value, k), ")")
         )
       ) %>%
       ungroup()
   }
 
-  as_tibble(df)
+  as_tibble(select(df, everything(), -matches("p.adjustment|^method$")))
 }
 
 #' @title *p*-value adjustment method text

@@ -66,7 +66,6 @@ tidy_model_expressions <- function(data,
     if (effsize.type == "eta") es.text <- list(quote(widehat(italic(eta)[p]^2)))
     if (effsize.type == "omega") es.text <- list(quote(widehat(italic(omega)[p]^2)))
 
-    # which effect size is needed?
     df %<>% mutate(expression = glue("list({es.text}=='{estimate}', italic(F)('{df}', '{df.error}')=='{statistic}', italic(p)=='{p.value}')"))
   }
 
