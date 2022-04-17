@@ -16,26 +16,44 @@
 ---
 
     Code
-      df_t$expression
+      unlist(df_t$expression)
     Output
-      list(widehat(italic(beta))=='6.05', italic(t)('30')=='19.59', italic(p)=='1.20e-18')
-      list(widehat(italic(beta))=='-0.14', italic(t)('30')=='-9.56', italic(p)=='1.29e-10')
+      [[1]]
+      list(widehat(italic(beta)) == "6.05", italic(t)("30") == "19.59", 
+          italic(p) == "1.20e-18")
+      
+      [[2]]
+      list(widehat(italic(beta)) == "-0.14", italic(t)("30") == "-9.56", 
+          italic(p) == "1.29e-10")
+      
 
 ---
 
     Code
-      df_t_na$expression
+      unlist(df_t_na$expression)
     Output
-      list(widehat(italic(beta))=='6.05', italic(t)=='19.59', italic(p)=='1.20e-18')
-      list(widehat(italic(beta))=='-0.14', italic(t)=='-9.56', italic(p)=='1.29e-10')
+      [[1]]
+      list(widehat(italic(beta)) == "6.05", italic(t) == "19.59", italic(p) == 
+          "1.20e-18")
+      
+      [[2]]
+      list(widehat(italic(beta)) == "-0.14", italic(t) == "-9.56", 
+          italic(p) == "1.29e-10")
+      
 
 ---
 
     Code
-      df_t_inf$expression
+      unlist(df_t_inf$expression)
     Output
-      list(widehat(italic(beta))=='6.05', italic(t)=='19.59', italic(p)=='1.20e-18')
-      list(widehat(italic(beta))=='-0.14', italic(t)=='-9.56', italic(p)=='1.29e-10')
+      [[1]]
+      list(widehat(italic(beta)) == "6.05", italic(t) == "19.59", italic(p) == 
+          "1.20e-18")
+      
+      [[2]]
+      list(widehat(italic(beta)) == "-0.14", italic(t) == "-9.56", 
+          italic(p) == "1.29e-10")
+      
 
 # tidy_model_expressions works - chi2
 
@@ -55,10 +73,16 @@
 ---
 
     Code
-      df_chi$expression
+      unlist(df_chi$expression)
     Output
-      list(widehat(italic(beta))=='0.02', italic(chi)^2*('1')=='3.40', italic(p)=='0.07')
-      list(widehat(italic(beta))=='-0.51', italic(chi)^2*('1')=='9.31', italic(p)=='2.28e-03')
+      [[1]]
+      list(widehat(italic(beta)) == "0.02", italic(chi)^2 * ("1") == 
+          "3.40", italic(p) == "0.07")
+      
+      [[2]]
+      list(widehat(italic(beta)) == "-0.51", italic(chi)^2 * ("1") == 
+          "9.31", italic(p) == "2.28e-03")
+      
 
 # tidy_model_expressions works - z
 
@@ -80,11 +104,20 @@
 ---
 
     Code
-      df_z$expression
+      unlist(df_z$expression)
     Output
-      list(widehat(italic(beta))=='-0.78', italic(z)=='-3.47', italic(p)=='5.14e-04')
-      list(widehat(italic(beta))=='2.29', italic(z)=='19.13', italic(p)=='1.54e-81')
-      list(widehat(italic(beta))=='-0.56', italic(z)=='-2.44', italic(p)=='0.01')
+      [[1]]
+      list(widehat(italic(beta)) == "-0.78", italic(z) == "-3.47", 
+          italic(p) == "5.14e-04")
+      
+      [[2]]
+      list(widehat(italic(beta)) == "2.29", italic(z) == "19.13", italic(p) == 
+          "1.54e-81")
+      
+      [[3]]
+      list(widehat(italic(beta)) == "-0.56", italic(z) == "-2.44", 
+          italic(p) == "0.01")
+      
 
 # tidy_model_expressions works - F
 
@@ -106,11 +139,20 @@
 ---
 
     Code
-      df1$expression
+      unlist(df1$expression)
     Output
-      list(widehat(italic(omega)[p]^2)=='0.18', italic(F)('1', '15')=='9.04', italic(p)=='8.85e-03')
-      list(widehat(italic(omega)[p]^2)=='-0.02', italic(F)('1', '15')=='0.40', italic(p)=='0.54')
-      list(widehat(italic(omega)[p]^2)=='4.57e-04', italic(F)('1', '15')=='1.02', italic(p)=='0.33')
+      [[1]]
+      list(widehat(italic(omega)[p]^2) == "0.18", italic(F)("1", "15") == 
+          "9.04", italic(p) == "8.85e-03")
+      
+      [[2]]
+      list(widehat(italic(omega)[p]^2) == "-0.02", italic(F)("1", "15") == 
+          "0.40", italic(p) == "0.54")
+      
+      [[3]]
+      list(widehat(italic(omega)[p]^2) == "4.57e-04", italic(F)("1", 
+          "15") == "1.02", italic(p) == "0.33")
+      
 
 ---
 
@@ -132,9 +174,18 @@
 ---
 
     Code
-      df2$expression
+      unlist(df2$expression)
     Output
-      list(widehat(italic(eta)[p]^2)=='0.38', italic(F)('1', '15')=='9.04', italic(p)=='8.85e-03')
-      list(widehat(italic(eta)[p]^2)=='0.03', italic(F)('1', '15')=='0.40', italic(p)=='0.54')
-      list(widehat(italic(eta)[p]^2)=='0.06', italic(F)('1', '15')=='1.02', italic(p)=='0.33')
+      [[1]]
+      list(widehat(italic(eta)[p]^2) == "0.38", italic(F)("1", "15") == 
+          "9.04", italic(p) == "8.85e-03")
+      
+      [[2]]
+      list(widehat(italic(eta)[p]^2) == "0.03", italic(F)("1", "15") == 
+          "0.40", italic(p) == "0.54")
+      
+      [[3]]
+      list(widehat(italic(eta)[p]^2) == "0.06", italic(F)("1", "15") == 
+          "1.02", italic(p) == "0.33")
+      
 

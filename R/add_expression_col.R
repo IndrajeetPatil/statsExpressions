@@ -94,7 +94,7 @@ add_expression_col <- function(data,
                                k.df.error = k.df,
                                ...) {
 
-  # some cleanup before we begin
+  # initial cleanup
   data %<>%
     rename_all(.funs = recode, "bayes.factor" = "bf10") %>%
     mutate(
@@ -120,6 +120,9 @@ add_expression_col <- function(data,
     n.obs              = .prettyNum(n)
   )
 
+  # how many parameters?
+  no.parameters <- sum("df.error" %in% names(data) + "df" %in% names(data))
+
   # Bayesian analysis ------------------------------
 
   if (bayesian) {
@@ -129,9 +132,6 @@ add_expression_col <- function(data,
             CI['{conf.level}']^{conf.method}~'['*'{conf.low}', '{conf.high}'*']',
             {prior.distribution}=='{prior.scale}')"))
   }
-
-  # how many parameters?
-  no.parameters <- sum("df.error" %in% names(data) + "df" %in% names(data))
 
   # 0 degrees of freedom --------------------
 

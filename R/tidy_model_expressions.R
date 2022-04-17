@@ -70,5 +70,16 @@ tidy_model_expressions <- function(data,
   }
 
   # add the `expression` column to the original data frame
-  left_join(data, select(df, term, expression), by = "term") %>% as_tibble(.)
+  left_join(data, select(df, term, expression), by = "term") %>%
+    .glue_to_expression()
+}
+
+
+#' @keywords internal
+#' @noRd
+.glue_to_expression <- function(data) {
+  data %>%
+    rowwise() %>%
+    mutate(expression = list(parse(text = expression))) %>%
+    ungroup()
 }
