@@ -20,7 +20,7 @@ test_that(
     # testing all details
     set.seed(123)
     expect_snapshot(select(df, -expression))
-    expect_snapshot(as.character(df$expression[[1]]))
+    expect_snapshot(unlist(df$expression[[1]]))
   }
 )
 
@@ -77,7 +77,7 @@ test_that(
     # testing all details
     set.seed(123)
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(as.character(df2$expression[[1]]))
+    expect_snapshot(unlist(df2$expression[[1]]))
   }
 )
 

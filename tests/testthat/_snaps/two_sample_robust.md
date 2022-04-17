@@ -17,9 +17,12 @@
 ---
 
     Code
-      as.character(df1$expression[[1]])
+      unlist(df1$expression[[1]])
     Output
-      [1] "list(italic(\"t\")[\"Yuen\"] * \"(\" * 89 * \")\" == \"28.7230\", italic(p) == \"0.0000\", widehat(delta)[\"R\"]^\"AKP\" == \"2.3582\", CI[\"95%\"] ~ \"[\" * \"1.9615\", \"2.6081\" * \"]\", italic(\"n\")[\"pairs\"] == \"150\")"
+      expression(list(
+      italic("t")["Yuen"]*'('*89*')'=='28.7230', italic(p)=='0.0000',
+      widehat(delta)["R"]^"AKP"=='2.3582', CI['95%']~'['*'1.9615', '2.6081'*']',
+      italic("n")["pairs"]=='150'))
 
 # t_robust - within-subjects - with NAs
 
@@ -40,9 +43,12 @@
 ---
 
     Code
-      as.character(df1$expression[[1]])
+      unlist(df1$expression[[1]])
     Output
-      [1] "list(italic(\"t\")[\"Yuen\"] * \"(\" * 53 * \")\" == \"2.909\", italic(p) == \"0.005\", widehat(delta)[\"R\"]^\"AKP\" == \"0.410\", CI[\"95%\"] ~ \"[\" * \"0.238\", \"0.611\" * \"]\", italic(\"n\")[\"pairs\"] == \"90\")"
+      expression(list(
+      italic("t")["Yuen"]*'('*53*')'=='2.909', italic(p)=='0.005',
+      widehat(delta)["R"]^"AKP"=='0.410', CI['95%']~'['*'0.238', '0.611'*']',
+      italic("n")["pairs"]=='90'))
 
 # t_robust - between-subjects - without NAs
 
@@ -66,9 +72,12 @@
 ---
 
     Code
-      as.character(df1$expression[[1]])
+      unlist(df1$expression[[1]])
     Output
-      [1] "list(italic(\"t\")[\"Yuen\"] * \"(\" * 13.584 * \")\" == \"5.840\", italic(p) == \"4.846e-05\", widehat(delta)[\"R\"]^\"AKP\" == \"2.482\", CI[\"99%\"] ~ \"[\" * \"0.738\", \"5.128\" * \"]\", italic(\"n\")[\"obs\"] == \"32\")"
+      expression(list(
+      italic("t")["Yuen"]*'('*13.584*')'=='5.840', italic(p)=='4.846e-05',
+      widehat(delta)["R"]^"AKP"=='2.482', CI['99%']~'['*'0.738', '5.128'*']',
+      italic("n")["obs"]=='32'))
 
 # t_robust - between-subjects - with NAs
 
@@ -92,7 +101,10 @@
 ---
 
     Code
-      as.character(df1$expression[[1]])
+      unlist(df1$expression[[1]])
     Output
-      [1] "list(italic(\"t\")[\"Yuen\"] * \"(\" * 13.8476 * \")\" == \"0.4521\", italic(p) == \"0.6582\", widehat(delta)[\"R\"]^\"AKP\" == \"-0.3583\", CI[\"90%\"] ~ \"[\" * \"-7.1637\", \"0.4061\" * \"]\", italic(\"n\")[\"obs\"] == \"29\")"
+      expression(list(
+      italic("t")["Yuen"]*'('*13.8476*')'=='0.4521', italic(p)=='0.6582',
+      widehat(delta)["R"]^"AKP"=='-0.3583', CI['90%']~'['*'-7.1637', '0.4061'*']',
+      italic("n")["obs"]=='29'))
 

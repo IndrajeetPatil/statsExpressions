@@ -14,9 +14,12 @@
 ---
 
     Code
-      as.character(df1$expression[[1]])
+      unlist(df1$expression[[1]])
     Output
-      [1] "list(italic(\"S\") == \"41452.97684\", italic(p) == \"3.44384e-06\", widehat(rho)[\"Spearman\"] == \"0.49546\", CI[\"99.9%\"] ~ \"[\" * \"0.15344\", \"0.73147\" * \"]\", italic(\"n\")[\"pairs\"] == \"79\")"
+      expression(list(
+      italic("S")=='41452.97684', italic(p)=='3.44384e-06',
+      widehat(rho)["Spearman"]=='0.49546', CI['99.9%']~'['*'0.15344', '0.73147'*']',
+      italic("n")["pairs"]=='79'))
 
 ---
 
@@ -34,9 +37,12 @@
 ---
 
     Code
-      as.character(df2$expression[[1]])
+      unlist(df2$expression[[1]])
     Output
-      [1] "list(italic(\"S\") == \"10292.32\", italic(p) == \"1.49e-11\", widehat(rho)[\"Spearman\"] == \"-0.89\", CI[\"95%\"] ~ \"[\" * \"-0.94\", \"-0.77\" * \"]\", italic(\"n\")[\"pairs\"] == \"32\")"
+      expression(list(
+      italic("S")=='10292.32', italic(p)=='1.49e-11',
+      widehat(rho)["Spearman"]=='-0.89', CI['95%']~'['*'-0.94', '-0.77'*']',
+      italic("n")["pairs"]=='32'))
 
 # corr_test works - parametric
 
@@ -54,9 +60,12 @@
 ---
 
     Code
-      as.character(df$expression[[1]])
+      unlist(df$expression[[1]])
     Output
-      [1] "list(italic(\"t\")[\"Student\"] * \"(\" * 46 * \")\" == \"-1.539\", italic(p) == \"0.131\", widehat(italic(\"r\"))[\"Pearson\"] == \"-0.221\", CI[\"90%\"] ~ \"[\" * \"-0.438\", \"0.020\" * \"]\", italic(\"n\")[\"pairs\"] == \"48\")"
+      expression(list(
+      italic("t")["Student"]*'('*46*')'=='-1.539', italic(p)=='0.131',
+      widehat(italic("r"))["Pearson"]=='-0.221', CI['90%']~'['*'-0.438', '0.020'*']',
+      italic("n")["pairs"]=='48'))
 
 # corr_test works - robust
 
@@ -77,21 +86,32 @@
 ---
 
     Code
-      as.character(df$expression[[1]])
+      unlist(df$expression[[1]])
     Output
-      [1] "list(italic(\"t\")[\"Student\"] * \"(\" * 54 * \")\" == \"-4.8286\", italic(p) == \"1.1723e-05\", widehat(italic(\"r\"))[\"Winsorized\"] == \"-0.5491\", CI[\"50%\"] ~ \"[\" * \"-0.6106\", \"-0.4812\" * \"]\", italic(\"n\")[\"pairs\"] == \"56\")"
+      expression(list(
+      italic("t")["Student"]*'('*54*')'=='-4.8286', italic(p)=='1.1723e-05',
+      widehat(italic("r"))["Winsorized"]=='-0.5491', CI['50%']~'['*'-0.6106', '-0.4812'*']',
+      italic("n")["pairs"]=='56'))
 
 # bayes factor (correlation test) - without NAs
 
     Code
-      as.character(subtitle1$expression[[1]])
+      unlist(subtitle1$expression[[1]])
     Output
-      [1] "list(log[e] * (BF[\"01\"]) == \"1.07\", widehat(rho)[\"Pearson\"]^\"posterior\" == \"-0.12\", CI[\"95%\"]^HDI ~ \"[\" * \"-0.28\", \"0.04\" * \"]\", italic(\"r\")[\"beta\"]^\"JZS\" == \"1.41\")"
+      expression(list(
+      log[e]*(BF['01'])=='1.07',
+      widehat(rho)["Pearson"]^'posterior'=='-0.12',
+      CI['95%']^HDI~'['*'-0.28', '0.04'*']',
+      italic("r")["beta"]^"JZS"=='1.41'))
 
 # bayes factor (correlation test) - with NAs
 
     Code
-      as.character(subtitle1$expression[[1]])
+      unlist(subtitle1$expression[[1]])
     Output
-      [1] "list(log[e] * (BF[\"01\"]) == \"0.49\", widehat(rho)[\"Pearson\"]^\"posterior\" == \"-0.21\", CI[\"99%\"]^HDI ~ \"[\" * \"-0.47\", \"0.05\" * \"]\", italic(\"r\")[\"beta\"]^\"JZS\" == \"1.25\")"
+      expression(list(
+      log[e]*(BF['01'])=='0.49',
+      widehat(rho)["Pearson"]^'posterior'=='-0.21',
+      CI['99%']^HDI~'['*'-0.47', '0.05'*']',
+      italic("r")["beta"]^"JZS"=='1.25'))
 

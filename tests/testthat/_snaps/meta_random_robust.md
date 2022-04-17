@@ -14,7 +14,10 @@
 ---
 
     Code
-      as.character(df$expression[[1]])
+      unlist(df$expression[[1]])
     Output
-      [1] "list(italic(\"z\") == \"-1.88\", italic(p) == \"0.02\", widehat(beta)[\"summary\"]^\"meta\" == \"-0.69\", CI[\"95%\"] ~ \"[\" * \"-1.56\", \"-0.12\" * \"]\", italic(\"n\")[\"effects\"] == \"6\")"
+      expression(list(
+      italic("z")=='-1.88', italic(p)=='0.02',
+      widehat(beta)["summary"]^"meta"=='-0.69', CI['95%']~'['*'-1.56', '-0.12'*']',
+      italic("n")["effects"]=='6'))
 

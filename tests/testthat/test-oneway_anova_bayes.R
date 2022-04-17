@@ -18,7 +18,7 @@ test_that(
     ))
 
     expect_snapshot(dplyr::select(df1, -expression), variant = .Platform$OS.type)
-    expect_snapshot(as.character(df1$expression[[1]]), variant = .Platform$OS.type)
+    expect_snapshot(unlist(df1$expression[[1]]), variant = .Platform$OS.type)
 
     # data where it works
     set.seed(123)
@@ -33,7 +33,7 @@ test_that(
     ))
 
     expect_snapshot(dplyr::select(df2, -expression), variant = .Platform$OS.type)
-    expect_snapshot(as.character(df2$expression[[1]]), variant = .Platform$OS.type)
+    expect_snapshot(unlist(df2$expression[[1]]), variant = .Platform$OS.type)
   }
 )
 
@@ -55,7 +55,7 @@ test_that(
     )
 
     expect_snapshot(dplyr::select(df1, -expression), variant = .Platform$OS.type)
-    expect_snapshot(as.character(df1$expression[[1]]), variant = .Platform$OS.type)
+    expect_snapshot(unlist(df1$expression[[1]]), variant = .Platform$OS.type)
 
     # data with NA
     set.seed(123)
@@ -68,7 +68,7 @@ test_that(
     )
 
     expect_snapshot(dplyr::select(df2, -expression), variant = .Platform$OS.type)
-    expect_snapshot(as.character(df2$expression[[1]]), variant = .Platform$OS.type)
+    expect_snapshot(unlist(df2$expression[[1]]), variant = .Platform$OS.type)
 
     # with subject.id ---------------------------------
 

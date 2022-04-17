@@ -49,6 +49,6 @@ test_that(
     expect_type(df, "list")
 
     expect_snapshot(dplyr::select(df, -expression))
-    expect_snapshot(as.character(df$expression[[1]]))
+    expect_snapshot(unlist(df$expression[[1]]))
   }
 )

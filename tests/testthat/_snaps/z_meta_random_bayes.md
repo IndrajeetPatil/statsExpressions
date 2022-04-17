@@ -20,7 +20,11 @@
 ---
 
     Code
-      as.character(df$expression[[1]])
+      unlist(df$expression[[1]])
     Output
-      [1] "list(log[e] * (BF[\"01\"]) == \"-3.587\", widehat(delta)[\"difference\"]^\"posterior\" == \"0.596\", CI[\"95%\"]^HDI ~ \"[\" * \"0.313\", \"0.847\" * \"]\", italic(\"r\")[\"Cauchy\"]^\"JZS\" == \"0.707\")"
+      expression(list(
+      log[e]*(BF['01'])=='-3.587',
+      widehat(delta)["difference"]^'posterior'=='0.596',
+      CI['95%']^HDI~'['*'0.313', '0.847'*']',
+      italic("r")["Cauchy"]^"JZS"=='0.707'))
 

@@ -14,9 +14,12 @@
 ---
 
     Code
-      as.character(df$expression[[1]])
+      unlist(df$expression[[1]])
     Output
-      [1] "list(italic(\"W\")[\"Mann-Whitney\"] == \"230.500\", italic(p) == \"4.347e-05\", widehat(italic(\"r\"))[\"biserial\"]^\"rank\" == \"0.866\", CI[\"90%\"] ~ \"[\" * \"0.749\", \"0.931\" * \"]\", italic(\"n\")[\"obs\"] == \"32\")"
+      expression(list(
+      italic("W")["Mann-Whitney"]=='230.500', italic(p)=='4.347e-05',
+      widehat(italic("r"))["biserial"]^"rank"=='0.866', CI['90%']~'['*'0.749', '0.931'*']',
+      italic("n")["obs"]=='32'))
 
 # t_nonparametric works - within-subjects design
 
@@ -34,7 +37,10 @@
 ---
 
     Code
-      as.character(df2$expression[[1]])
+      unlist(df2$expression[[1]])
     Output
-      [1] "list(italic(\"V\")[\"Wilcoxon\"] == \"10.00000\", italic(p) == \"0.00295\", widehat(italic(\"r\"))[\"biserial\"]^\"rank\" == \"-0.85294\", CI[\"99%\"] ~ \"[\" * \"-0.96399\", \"-0.48865\" * \"]\", italic(\"n\")[\"pairs\"] == \"16\")"
+      expression(list(
+      italic("V")["Wilcoxon"]=='10.00000', italic(p)=='0.00295',
+      widehat(italic("r"))["biserial"]^"rank"=='-0.85294', CI['99%']~'['*'-0.96399', '-0.48865'*']',
+      italic("n")["pairs"]=='16'))
 

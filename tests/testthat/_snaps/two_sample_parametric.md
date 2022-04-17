@@ -17,9 +17,12 @@
 ---
 
     Code
-      as.character(df1$expression[[1]])
+      unlist(df1$expression[[1]])
     Output
-      [1] "list(italic(\"t\")[\"Student\"] * \"(\" * 58 * \")\" == \"1.91527\", italic(p) == \"0.06039\", widehat(italic(\"d\"))[\"Cohen\"] == \"0.49452\", CI[\"99%\"] ~ \"[\" * \"-0.18354\", \"1.16839\" * \"]\", italic(\"n\")[\"obs\"] == \"60\")"
+      expression(list(
+      italic("t")["Student"]*'('*58*')'=='1.91527', italic(p)=='0.06039',
+      widehat(italic("d"))["Cohen"]=='0.49452', CI['99%']~'['*'-0.18354', '1.16839'*']',
+      italic("n")["obs"]=='60'))
 
 # parametric t-test works (between-subjects with NAs)
 
@@ -40,9 +43,12 @@
 ---
 
     Code
-      as.character(df1$expression[[1]])
+      unlist(df1$expression[[1]])
     Output
-      [1] "list(italic(\"t\")[\"Welch\"] * \"(\" * 55.309 * \")\" == \"1.915\", italic(p) == \"0.061\", widehat(italic(\"g\"))[\"Hedges\"] == \"0.488\", CI[\"90%\"] ~ \"[\" * \"0.060\", \"0.911\" * \"]\", italic(\"n\")[\"obs\"] == \"60\")"
+      expression(list(
+      italic("t")["Welch"]*'('*55.309*')'=='1.915', italic(p)=='0.061',
+      widehat(italic("g"))["Hedges"]=='0.488', CI['90%']~'['*'0.060', '0.911'*']',
+      italic("n")["obs"]=='60'))
 
 # parametric t-test works (within-subjects without NAs)
 
@@ -63,9 +69,12 @@
 ---
 
     Code
-      as.character(df1$expression[[1]])
+      unlist(df1$expression[[1]])
     Output
-      [1] "list(italic(\"t\")[\"Student\"] * \"(\" * 149 * \")\" == \"34.8152\", italic(p) == \"1.8496e-73\", widehat(italic(\"g\"))[\"Hedges\"] == \"2.8283\", CI[\"50%\"] ~ \"[\" * \"2.7086\", \"2.9560\" * \"]\", italic(\"n\")[\"pairs\"] == \"150\")"
+      expression(list(
+      italic("t")["Student"]*'('*149*')'=='34.8152', italic(p)=='1.8496e-73',
+      widehat(italic("g"))["Hedges"]=='2.8283', CI['50%']~'['*'2.7086', '2.9560'*']',
+      italic("n")["pairs"]=='150'))
 
 # parametric t-test works (within-subjects with NAs)
 
@@ -86,7 +95,10 @@
 ---
 
     Code
-      as.character(df1$expression[[1]])
+      unlist(df1$expression[[1]])
     Output
-      [1] "list(italic(\"t\")[\"Student\"] * \"(\" * 89 * \")\" == \"3.613\", italic(p) == \"5.000e-04\", widehat(italic(\"d\"))[\"Cohen\"] == \"0.381\", CI[\"95%\"] ~ \"[\" * \"0.167\", \"0.597\" * \"]\", italic(\"n\")[\"pairs\"] == \"90\")"
+      expression(list(
+      italic("t")["Student"]*'('*89*')'=='3.613', italic(p)=='5.000e-04',
+      widehat(italic("d"))["Cohen"]=='0.381', CI['95%']~'['*'0.167', '0.597'*']',
+      italic("n")["pairs"]=='90'))
 
