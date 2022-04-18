@@ -12,7 +12,7 @@ test_that(
       oneway_anova(
         type = "np",
         data = sample_frac(movies_long, 0.1),
-        x = "genre",
+        x = genre,
         y = length,
         paired = FALSE
       )
@@ -51,7 +51,7 @@ test_that(
         type = "np",
         data = bugs_long,
         x = condition,
-        y = "desire",
+        y = desire,
         paired = TRUE,
         conf.level = 0.99
       )
@@ -67,7 +67,7 @@ test_that(
         type = "np",
         data = iris_long,
         x = condition,
-        y = "value",
+        y = value,
         paired = TRUE,
         conf.level = 0.90
       )
