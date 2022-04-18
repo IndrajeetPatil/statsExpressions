@@ -1,4 +1,4 @@
-# between-subjects - data with and without NAs
+# between-subjects
 
     Code
       select(df1, -expression)
@@ -20,10 +20,9 @@
       df1$expression
     Output
       [[1]]
-      list(chi["Kruskal-Wallis"]^2 * "(" * 8 * ")" == "51.42672", italic(p) == 
-          "2.17135e-08", widehat(epsilon)["ordinal"]^2 == "0.32756", 
-          CI["95%"] ~ "[" * "0.25829", "1.00000" * "]", italic("n")["obs"] == 
-              "158")
+      list(chi["Kruskal-Wallis"]^2 * "(" * 8 * ")" == "51.43", italic(p) == 
+          "2.17e-08", widehat(epsilon)["ordinal"]^2 == "0.33", CI["95%"] ~ 
+          "[" * "0.26", "1.00" * "]", italic("n")["obs"] == "158")
       
 
 ---
@@ -48,21 +47,20 @@
       df2$expression
     Output
       [[1]]
-      list(chi["Kruskal-Wallis"]^2 * "(" * 3 * ")" == "5.240", italic(p) == 
-          "0.155", widehat(epsilon)["ordinal"]^2 == "0.175", CI["99%"] ~ 
-          "[" * "0.045", "1.000" * "]", italic("n")["obs"] == "31")
+      list(chi["Kruskal-Wallis"]^2 * "(" * 3 * ")" == "5.24", italic(p) == 
+          "0.16", widehat(epsilon)["ordinal"]^2 == "0.17", CI["99%"] ~ 
+          "[" * "0.04", "1.00" * "]", italic("n")["obs"] == "31")
       
 
-# within-subjects - data with and without NAs
+# within-subjects
 
     Code
       df1$expression
     Output
       [[1]]
-      list(chi["Friedman"]^2 * "(" * 3 * ")" == "55.8338", italic(p) == 
-          "4.5584e-12", widehat(italic("W"))["Kendall"] == "-0.3517", 
-          CI["99%"] ~ "[" * "-0.8537", "1.0000" * "]", italic("n")["pairs"] == 
-              "88")
+      list(chi["Friedman"]^2 * "(" * 3 * ")" == "55.83", italic(p) == 
+          "4.56e-12", widehat(italic("W"))["Kendall"] == "-0.35", CI["99%"] ~ 
+          "[" * "-0.85", "1.00" * "]", italic("n")["pairs"] == "88")
       
 
 ---
@@ -71,9 +69,8 @@
       df2$expression
     Output
       [[1]]
-      list(chi["Friedman"]^2 * "(" * 3 * ")" == "410.000", italic(p) == 
-          "1.510e-88", widehat(italic("W"))["Kendall"] == "0.911", 
-          CI["90%"] ~ "[" * "0.906", "1.000" * "]", italic("n")["pairs"] == 
-              "150")
+      list(chi["Friedman"]^2 * "(" * 3 * ")" == "410.00", italic(p) == 
+          "1.51e-88", widehat(italic("W"))["Kendall"] == "0.91", CI["90%"] ~ 
+          "[" * "0.91", "1.00" * "]", italic("n")["pairs"] == "150")
       
 

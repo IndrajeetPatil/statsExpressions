@@ -1,5 +1,7 @@
 # don't test confidence intervals in data frames because they vary across
 # platforms, even with the same seed
+#
+# for the same reason, don't change `k` parameter
 
 # to print all tibble columns in the snapshot; don't remove
 options(tibble.width = Inf)
@@ -42,7 +44,6 @@ test_that(
 test_that(
   desc = "bayesian (within-subjects - anova)",
   code = {
-
     set.seed(123)
     df1 <- oneway_anova(
       type     = "bayes",
