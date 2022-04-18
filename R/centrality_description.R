@@ -81,9 +81,10 @@ centrality_description <- function(data,
     ) %>%
     ungroup() %>%
     mutate(
-      expression = glue("widehat(mu)[{centrality}]=='{format_value(estimate, k)}'"),
+      expression = glue("list(widehat(mu)[{centrality}]=='{format_value(estimate, k)}')"),
       n.expression = paste0({{ x }}, "\n(n = ", .prettyNum(n.obs), ")")
     ) %>%
     arrange({{ x }}) %>%
-    select({{ x }}, !!as.character(ensym(y)) := estimate, everything())
+    select({{ x }}, !!as.character(ensym(y)) := estimate, everything()) %>%
+    .glue_to_expression()
 }

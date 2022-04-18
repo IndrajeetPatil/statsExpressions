@@ -17,9 +17,13 @@
 ---
 
     Code
-      as.character(df$expression[[1]])
+      df$expression
     Output
-      [1] "list(italic(\"F\")[\"Welch\"](2, 18.97383) == \"20.24946\", italic(p) == \"0.00002\", widehat(eta[\"p\"]^2) == \"0.68097\", CI[\"95%\"] ~ \"[\" * \"0.43668\", \"1.00000\" * \"]\", italic(\"n\")[\"obs\"] == \"32\")"
+      [[1]]
+      list(italic("F")["Welch"](2, 18.97383) == "20.24946", italic(p) == 
+          "0.00002", widehat(eta["p"]^2) == "0.68097", CI["95%"] ~ 
+          "[" * "0.43668", "1.00000" * "]", italic("n")["obs"] == "32")
+      
 
 ---
 
@@ -37,9 +41,13 @@
 ---
 
     Code
-      as.character(df1$expression[[1]])
+      df1$expression
     Output
-      [1] "list(italic(\"F\")[\"Fisher\"](2, 29) == \"22.91139\", italic(p) == \"1.07468e-06\", widehat(eta[\"p\"]^2) == \"0.61242\", CI[\"95%\"] ~ \"[\" * \"0.40360\", \"1.00000\" * \"]\", italic(\"n\")[\"obs\"] == \"32\")"
+      [[1]]
+      list(italic("F")["Fisher"](2, 29) == "22.91139", italic(p) == 
+          "1.07468e-06", widehat(eta["p"]^2) == "0.61242", CI["95%"] ~ 
+          "[" * "0.40360", "1.00000" * "]", italic("n")["obs"] == "32")
+      
 
 # parametric anova subtitles with partial omega-squared
 
@@ -60,9 +68,13 @@
 ---
 
     Code
-      as.character(df1$expression[[1]])
+      df1$expression
     Output
-      [1] "list(italic(\"F\")[\"Welch\"](3, 24.0475) == \"2.2653\", italic(p) == \"0.1066\", widehat(omega[\"p\"]^2) == \"0.1192\", CI[\"95%\"] ~ \"[\" * \"0.0000\", \"1.0000\" * \"]\", italic(\"n\")[\"obs\"] == \"51\")"
+      [[1]]
+      list(italic("F")["Welch"](3, 24.0475) == "2.2653", italic(p) == 
+          "0.1066", widehat(omega["p"]^2) == "0.1192", CI["95%"] ~ 
+          "[" * "0.0000", "1.0000" * "]", italic("n")["obs"] == "51")
+      
 
 # paired parametric anova subtitles work (without NAs)
 
@@ -83,14 +95,22 @@
 ---
 
     Code
-      as.character(df1$expression[[1]])
+      df1$expression
     Output
-      [1] "list(italic(\"F\")[\"Fisher\"](1.149, 171.217) == \"776.318\", italic(p) == \"1.325e-69\", widehat(omega[\"p\"]^2) == \"0.707\", CI[\"99%\"] ~ \"[\" * \"0.658\", \"1.000\" * \"]\", italic(\"n\")[\"pairs\"] == \"150\")"
+      [[1]]
+      list(italic("F")["Fisher"](1.149, 171.217) == "776.318", italic(p) == 
+          "1.325e-69", widehat(omega["p"]^2) == "0.707", CI["99%"] ~ 
+          "[" * "0.658", "1.000" * "]", italic("n")["pairs"] == "150")
+      
 
 # too few obs
 
     Code
-      as.character(p_sub$expression[[1]])
+      p_sub$expression
     Output
-      [1] "list(italic(\"F\")[\"Fisher\"](6, 24) == \"43.14\", italic(p) == \"1.08e-11\", widehat(eta[\"p\"]^2) == \"0.92\", CI[\"95%\"] ~ \"[\" * \"0.85\", \"1.00\" * \"]\", italic(\"n\")[\"pairs\"] == \"5\")"
+      [[1]]
+      list(italic("F")["Fisher"](6, 24) == "43.14", italic(p) == "1.08e-11", 
+          widehat(eta["p"]^2) == "0.92", CI["95%"] ~ "[" * "0.85", 
+          "1.00" * "]", italic("n")["pairs"] == "5")
+      
 

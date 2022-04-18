@@ -22,9 +22,9 @@ test_that(
       random = "normal",
     )
 
-    # testing all details
+
     set.seed(123)
     expect_snapshot(select(df, -expression))
-    expect_snapshot(as.character(df$expression[[1]]))
+    expect_snapshot(df$expression)
   }
 )

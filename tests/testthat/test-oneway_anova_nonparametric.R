@@ -1,28 +1,27 @@
+# to print all tibble columns in the snapshot; don't remove
+options(tibble.width = Inf)
+
+# between-subjects ----------------------------------------------
+
 test_that(
-  desc = "between-subjects - data with and without NAs",
+  desc = "between-subjects",
   code = {
-    # between-subjects ----------------------------------------------
-
-    options(tibble.width = Inf)
-
-    # `{statsExpressions}` output
+    # without NA
     set.seed(123)
     df1 <-
       oneway_anova(
         type = "np",
         data = sample_frac(movies_long, 0.1),
-        x = "genre",
+        x = genre,
         y = length,
-        paired = FALSE,
-        k = 5
+        paired = FALSE
       )
 
-    # testing all details
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(as.character(df1$expression[[1]]))
+    expect_snapshot(df1$expression)
 
-    # `{statsExpressions}` output
+    # with NA
     set.seed(123)
     df2 <-
       suppressWarnings(oneway_anova(
@@ -30,58 +29,52 @@ test_that(
         data = ggplot2::msleep,
         x = vore,
         y = sleep_cycle,
-        k = 3,
         paired = FALSE,
         conf.level = 0.99
       ))
 
-    # testing all details
     set.seed(123)
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(as.character(df2$expression[[1]]))
+    expect_snapshot(df2$expression)
   }
 )
 
+# wthin-subjects ----------------------------------------------
+
 test_that(
-  desc = "within-subjects - data with and without NAs",
+  desc = "within-subjects",
   code = {
-    options(tibble.width = Inf)
-
-    # within-subjects -------------------------------------------------------
-
-    # `{statsExpressions}` output
+    #  with NAs
     set.seed(123)
     df1 <-
       oneway_anova(
         type = "np",
         data = bugs_long,
         x = condition,
-        y = "desire",
-        k = 4L,
+        y = desire,
         paired = TRUE,
         conf.level = 0.99
       )
 
-    # testing all details
-    set.seed(123)
-    expect_snapshot(as.character(df1$expression[[1]]))
 
-    # `{statsExpressions}` output
+    set.seed(123)
+    expect_snapshot(df1$expression)
+
+    # without NAs
     set.seed(123)
     df2 <-
       oneway_anova(
         type = "np",
         data = iris_long,
         x = condition,
-        y = "value",
-        k = 3,
+        y = value,
         paired = TRUE,
         conf.level = 0.90
       )
 
-    # testing all details
+
     set.seed(123)
-    expect_snapshot(as.character(df2$expression[[1]]))
+    expect_snapshot(df2$expression)
   }
 )
 
@@ -118,28 +111,24 @@ test_that(
         45L
       ), class = "data.frame")
 
-    # incorrect
     set.seed(123)
-    expr1 <-
-      oneway_anova(
-        type = "np",
-        data = df,
-        x = condition,
-        y = score,
-        subject.id = id,
-        paired = TRUE
-      )
+    expr1 <- oneway_anova(
+      type = "np",
+      data = df,
+      x = condition,
+      y = score,
+      subject.id = id,
+      paired = TRUE
+    )
 
-    # correct
     set.seed(123)
-    expr2 <-
-      oneway_anova(
-        type = "np",
-        data = arrange(df, id),
-        x = condition,
-        y = score,
-        paired = TRUE
-      )
+    expr2 <- oneway_anova(
+      type = "np",
+      data = arrange(df, id),
+      x = condition,
+      y = score,
+      paired = TRUE
+    )
 
     expect_equal(expr1, expr2, ignore_attr = TRUE)
   }

@@ -30,13 +30,13 @@ test_that(
       )
     )
 
-    # testing all details
+
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(as.character(df1$expression[[1]]))
+    expect_snapshot(df1$expression)
 
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(as.character(df2$expression[[1]]))
+    expect_snapshot(df2$expression)
   }
 )
 
@@ -67,13 +67,13 @@ test_that(
       k = 4
     )
 
-    # testing all details
+
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(as.character(df1$expression[[1]]))
+    expect_snapshot(df1$expression)
 
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(as.character(df2$expression[[1]]))
+    expect_snapshot(df2$expression)
   }
 )
 
@@ -106,18 +106,18 @@ test_that(
       conf.level = 0.99
     )
 
-    # testing all details
+
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(as.character(df1$expression[[1]]))
+    expect_snapshot(df1$expression)
 
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(as.character(df2$expression[[1]]))
+    expect_snapshot(df2$expression)
   }
 )
 
 test_that(
-  desc = "one_sample_test bayes factor works",
+  desc = "one_sample_test bayesian works",
   code = {
     skip_if(getRversion() < "4.0")
 
@@ -152,7 +152,7 @@ test_that(
       conf.level = 0.90
     )
 
-    expect_snapshot(as.character(df1$expression[[1]]))
+    expect_snapshot(df1$expression)
 
     # extracting subtitle (with NA)
     set.seed(123)
@@ -167,6 +167,6 @@ test_that(
       conf.method = "eti"
     )
 
-    expect_snapshot(as.character(df2$expression[[1]]))
+    expect_snapshot(df2$expression)
   }
 )

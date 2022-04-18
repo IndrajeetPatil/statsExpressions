@@ -20,10 +20,10 @@ test_that(
     set.seed(123)
     df <- suppressWarnings(meta_analysis(df_eg))
 
-    # testing all details
+
     set.seed(123)
     expect_snapshot(select(df, -expression))
-    expect_snapshot(as.character(df$expression[[1]]))
+    expect_snapshot(df$expression)
 
     # error
     expect_error(suppressWarnings(meta_analysis(mtcars)))

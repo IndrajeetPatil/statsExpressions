@@ -133,9 +133,9 @@ mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
 #>   method                       effectsize      estimate conf.level conf.low
 #>   <chr>                        <chr>              <dbl>      <dbl>    <dbl>
 #> 1 Kruskal-Wallis rank sum test Epsilon2 (rank)    0.736       0.95    0.624
-#>   conf.high conf.method          conf.iterations n.obs expression  
-#>       <dbl> <chr>                          <int> <int> <list>      
-#> 1         1 percentile bootstrap             100    32 <expression>
+#>   conf.high conf.method          conf.iterations n.obs expression
+#>       <dbl> <chr>                          <int> <int> <list>    
+#> 1         1 percentile bootstrap             100    32 <language>
 
 mtcars %>% oneway_anova(cyl, wt, type = "robust")
 #> # A tibble: 1 × 12
@@ -148,9 +148,9 @@ mtcars %>% oneway_anova(cyl, wt, type = "robust")
 #>   effectsize                         estimate conf.level conf.low conf.high
 #>   <chr>                                 <dbl>      <dbl>    <dbl>     <dbl>
 #> 1 Explanatory measure of effect size     1.05       0.95    0.843      1.50
-#>   n.obs expression  
-#>   <int> <list>      
-#> 1    32 <expression>
+#>   n.obs expression
+#>   <int> <list>    
+#> 1    32 <language>
 ```
 
 All possible output dataframes from functions are tabulated here:
@@ -204,11 +204,11 @@ mtcars %>%
 #> 1 Hedges' g    -1.16        0.95   -1.97     -0.422 ncp        
 #> 2 Hedges' g     0.286       0.95   -0.419     1.01  ncp        
 #> 3 Hedges' g     1.24        0.95    0.565     1.98  ncp        
-#>   conf.distribution n.obs expression  
-#>   <chr>             <int> <list>      
-#> 1 t                    11 <expression>
-#> 2 t                     7 <expression>
-#> 3 t                    14 <expression>
+#>   conf.distribution n.obs expression
+#>   <chr>             <int> <list>    
+#> 1 t                    11 <language>
+#> 2 t                     7 <language>
+#> 3 t                    14 <language>
 ```
 
 # Using expressions in custom plots
@@ -227,6 +227,9 @@ For example, here are results from Welch’s *t*-test:
 
 ## Expressions for centrality measure
 
+**Note that when used in a geometric layer, the expression need to be
+parsed.**
+
 ``` r
 library(ggplot2)
 
@@ -243,11 +246,20 @@ Here are a few examples for supported analyses.
 
 ## Expressions for one-way ANOVAs
 
-### Between-subjects design
+The returned data frame will always have a column called `expression`.
 
-Let’s say we want to check differences in weight of the vehicle based on
-number of cylinders in the engine and wish to carry out robust
-trimmed-means ANOVA:
+Assuming there is only a single result you need to display in a plot, to
+use it in a plot, you have two options:
+
+-   extract the expression from the list column
+    (`results_data$expression[[1]]`) without parsing
+-   use the list column as it, in which case you will need to parse it
+    (`parse(text = results_data$expression)`)
+
+If you want to display more than one expression in a plot, you will
+*have to* parse them.
+
+### Between-subjects design
 
 ``` r
 # setup
@@ -256,24 +268,24 @@ library(ggplot2)
 library(statsExpressions)
 library(ggridges)
 
+results_data <- oneway_anova(iris, Species, Sepal.Length, type = "robust")
+
 # create a ridgeplot
 ggplot(iris, aes(x = Sepal.Length, y = Species)) +
   geom_density_ridges(
     jittered_points = TRUE, quantile_lines = TRUE,
     scale = 0.9, vline_size = 1, vline_color = "red",
     position = position_raincloud(adjust_vlines = TRUE)
-  ) + # use the expression in the dataframe to display results in the subtitle
+  ) +
   labs(
     title = "A heteroscedastic one-way ANOVA for trimmed means",
-    subtitle = oneway_anova(iris, Species, Sepal.Length, type = "robust")$expression[[1]]
+    subtitle = results_data$expression[[1]]
   )
 ```
 
 <img src="man/figures/README-anova_rob1-1.png" width="100%" />
 
 ### Within-subjects design
-
-Let’s now see an example of a repeated measures one-way ANOVA.
 
 ``` r
 # setup
@@ -283,18 +295,20 @@ library(WRS2)
 library(ggbeeswarm)
 library(statsExpressions)
 
+results_data <- oneway_anova(
+  WineTasting,
+  Wine,
+  Taste,
+  paired = TRUE,
+  subject.id = Taster,
+  type = "np"
+)
+
 ggplot2::ggplot(WineTasting, aes(Wine, Taste, color = Wine)) +
   geom_quasirandom() +
   labs(
     title = "Friedman's rank sum test",
-    subtitle = oneway_anova(
-      WineTasting,
-      Wine,
-      Taste,
-      paired = TRUE,
-      subject.id = Taster,
-      type = "np"
-    )$expression[[1]]
+    subtitle = results_data$expression[[1]]
   )
 ```
 
@@ -311,22 +325,20 @@ library(ggplot2)
 library(gghalves)
 library(ggbeeswarm)
 
+results_data <- two_sample_test(ToothGrowth, supp, len)
+
 ggplot(ToothGrowth, aes(supp, len)) +
   geom_half_boxplot() +
   geom_beeswarm() +
-  # adding a subtitle with
   labs(
     title = "Two-Sample Welch's t-test",
-    subtitle = two_sample_test(ToothGrowth, supp, len)$expression[[1]]
+    subtitle = results_data$expression[[1]]
   )
 ```
 
 <img src="man/figures/README-t_two-1.png" width="100%" />
 
 ### Within-subjects design
-
-We can also have a look at a repeated measures design and the related
-expressions.
 
 ``` r
 # setup
@@ -339,18 +351,20 @@ data(PrisonStress)
 # get data in tidy format
 df <- pivot_longer(PrisonStress, starts_with("PSS"), "PSS", values_to = "stress")
 
+results_data <- two_sample_test(
+  data = df,
+  x = PSS,
+  y = stress,
+  paired = TRUE,
+  subject.id = Subject,
+  type = "np"
+)
+
 # plot
 paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject") +
   labs(
     title = "Two-sample Wilcoxon paired test",
-    subtitle = two_sample_test(
-      data = df,
-      x = PSS,
-      y = stress,
-      paired = TRUE,
-      subject.id = Subject,
-      type = "np"
-    )$expression[[1]]
+    subtitle = results_data$expression[[1]]
   )
 ```
 
@@ -364,15 +378,13 @@ set.seed(123)
 library(ggplot2)
 
 # dataframe with results
-df_results <- one_sample_test(mtcars, wt, test.value = 3, type = "bayes")
+results_data <- one_sample_test(mtcars, wt, test.value = 3, type = "bayes")
 
 # creating a histogram plot
 ggplot(mtcars, aes(wt)) +
   geom_histogram(alpha = 0.5) +
   geom_vline(xintercept = mean(mtcars$wt), color = "red") +
-  labs(
-    subtitle = df_results$expression[[1]]
-  )
+  labs(subtitle = results_data$expression[[1]])
 ```
 
 <img src="man/figures/README-t_one-1.png" width="100%" />
@@ -386,13 +398,16 @@ Let’s look at another example where we want to run correlation analysis:
 set.seed(123)
 library(ggplot2)
 
+# dataframe with results
+results_data <- corr_test(mtcars, mpg, wt, type = "nonparametric")
+
 # create a scatter plot
 ggplot(mtcars, aes(mpg, wt)) +
   geom_point() +
   geom_smooth(method = "lm", formula = y ~ x) +
   labs(
     title = "Spearman's rank correlation coefficient",
-    subtitle = corr_test(mtcars, mpg, wt, type = "nonparametric")$expression[[1]]
+    subtitle = results_data$expression[[1]]
   )
 ```
 
@@ -407,14 +422,15 @@ For categorical/nominal data - one-sample:
 set.seed(123)
 library(ggplot2)
 
-df_results <- contingency_table(
+# dataframe with results
+results_data <- contingency_table(
   as.data.frame(table(mpg$class)),
   Var1,
   counts = Freq,
   type = "bayes"
 )
 
-# basic pie chart
+# create a pie chart
 ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1))) +
   geom_bar(width = 1, stat = "identity") +
   theme(axis.line = element_blank()) +
@@ -425,7 +441,7 @@ ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1
     x = NULL,
     y = NULL,
     title = "Pie Chart of class (type of car)",
-    caption = df_results$expression[[1]]
+    caption = results_data$expression[[1]]
   )
 ```
 
@@ -441,9 +457,9 @@ library(ggplot2)
 
 # Pearson's chi-squared test of independence
 contingency_table(mtcars, am, cyl)$expression[[1]]
-#> expression(list(chi["Pearson"]^2 * "(" * 2 * ")" == "8.74", italic(p) == 
+#> list(chi["Pearson"]^2 * "(" * 2 * ")" == "8.74", italic(p) == 
 #>     "0.01", widehat(italic("V"))["Cramer"] == "0.46", CI["95%"] ~ 
-#>     "[" * "0.00", "1.00" * "]", italic("n")["obs"] == "32"))
+#>     "[" * "0.00", "1.00" * "]", italic("n")["obs"] == "32")
 ```
 
 ## Expressions for meta-analysis
@@ -455,6 +471,9 @@ library(metaviz)
 library(ggplot2)
 library(metaplus)
 
+# dataframe with results
+results_data <- meta_analysis(dplyr::rename(mozart, estimate = d, std.error = se))
+
 # meta-analysis forest plot with results random-effects meta-analysis
 viz_forest(
   x = mozart[, c("d", "se")],
@@ -462,10 +481,10 @@ viz_forest(
   xlab = "Cohen's d",
   variant = "thick",
   type = "cumulative"
-) + # use `{statsExpressions}` to create expression containing results
+) +
   labs(
     title = "Meta-analysis of Pietschnig, Voracek, and Formann (2010) on the Mozart effect",
-    subtitle = meta_analysis(dplyr::rename(mozart, estimate = d, std.error = se))$expression[[1]]
+    subtitle = results_data$expression[[1]]
   ) +
   theme(text = element_text(size = 12))
 ```
@@ -486,9 +505,9 @@ library(ggplot2)
 
 # extracting detailed expression
 (res_expr <- oneway_anova(iris, Species, Sepal.Length, var.equal = TRUE)$expression[[1]])
-#> expression(list(italic("F")["Fisher"](2, 147) == "119.26", italic(p) == 
+#> list(italic("F")["Fisher"](2, 147) == "119.26", italic(p) == 
 #>     "1.67e-31", widehat(omega["p"]^2) == "0.61", CI["95%"] ~ 
-#>     "[" * "0.53", "1.00" * "]", italic("n")["obs"] == "150"))
+#>     "[" * "0.53", "1.00" * "]", italic("n")["obs"] == "150")
 
 # adapting the details to your liking
 ggplot(iris, aes(x = Species, y = Sepal.Length)) +

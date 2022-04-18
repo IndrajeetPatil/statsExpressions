@@ -20,9 +20,14 @@
 ---
 
     Code
-      as.character(df1$expression[[1]])
+      df1$expression
     Output
-      [1] "list(italic(\"F\")[\"trimmed-means\"](2, 18.97383) == \"20.24946\", italic(p) == \"0.00002\", widehat(xi) == \"0.85858\", CI[\"95%\"] ~ \"[\" * \"0.85268\", \"0.86448\" * \"]\", italic(\"n\")[\"obs\"] == \"32\")"
+      [[1]]
+      list(italic("F")["trimmed-means"](2, 18.97383) == "20.24946", 
+          italic(p) == "0.00002", widehat(xi) == "0.85858", CI["95%"] ~ 
+              "[" * "0.85268", "0.86448" * "]", italic("n")["obs"] == 
+              "32")
+      
 
 ---
 
@@ -46,9 +51,13 @@
 ---
 
     Code
-      as.character(df2$expression[[1]])
+      df2$expression
     Output
-      [1] "list(italic(\"F\")[\"trimmed-means\"](2, 21.6869) == \"0.0503\", italic(p) == \"0.9511\", widehat(xi) == \"0.2013\", CI[\"99%\"] ~ \"[\" * \"0.0872\", \"0.7537\" * \"]\", italic(\"n\")[\"obs\"] == \"71\")"
+      [[1]]
+      list(italic("F")["trimmed-means"](2, 21.6869) == "0.0503", italic(p) == 
+          "0.9511", widehat(xi) == "0.2013", CI["99%"] ~ "[" * "0.0872", 
+          "0.7537" * "]", italic("n")["obs"] == "71")
+      
 
 # expr_anova_robust works - within-subjects
 
@@ -72,7 +81,12 @@
 ---
 
     Code
-      as.character(df1$expression[[1]])
+      df1$expression
     Output
-      [1] "list(italic(\"F\")[\"trimmed-means\"](2.7303, 144.7051) == \"20.9752\", italic(p) == \"1.1462e-10\", widehat(delta)[\"R-avg\"]^\"AKP\" == \"0.6635\", CI[\"95%\"] ~ \"[\" * \"0.4660\", \"0.9707\" * \"]\", italic(\"n\")[\"pairs\"] == \"88\")"
+      [[1]]
+      list(italic("F")["trimmed-means"](2.7303, 144.7051) == "20.9752", 
+          italic(p) == "1.1462e-10", widehat(delta)["R-avg"]^"AKP" == 
+              "0.6635", CI["95%"] ~ "[" * "0.4660", "0.9707" * "]", 
+          italic("n")["pairs"] == "88")
+      
 

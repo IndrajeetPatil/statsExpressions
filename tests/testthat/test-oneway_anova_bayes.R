@@ -1,49 +1,49 @@
+# don't test data frames because the values vary across platforms, even with the
+# same seed
+#
+# for the same reason, don't change `k` parameter
+
+# to print all tibble columns in the snapshot; don't remove
+options(tibble.width = Inf)
+
+# between-subjects ------------------------------
+
 test_that(
-  desc = "bayes factor (between-subjects - anova)",
+  desc = "bayesian (between-subjects - anova)",
   code = {
     skip_if(getRversion() < "4.0")
-    options(tibble.width = Inf)
 
-    # bayes factor (between-subjects - anova) ------------------------------
-
-    # extracting results from where this function is implemented
+    # with NA
     set.seed(123)
     df1 <- suppressWarnings(oneway_anova(
       type     = "bayes",
       data     = ggplot2::msleep,
       x        = vore,
-      y        = brainwt,
-      bf.prior = 0.99,
-      k        = 3L
+      y        = brainwt
     ))
 
-    expect_snapshot(dplyr::select(df1, -expression), variant = .Platform$OS.type)
-    expect_snapshot(as.character(df1$expression[[1]]), variant = .Platform$OS.type)
+    expect_snapshot(dim(df1))
+    expect_snapshot(df1$expression[[1]])
 
-    # data where it works
+    # without NA
     set.seed(123)
     df2 <- suppressWarnings(oneway_anova(
       type        = "bayes",
       data        = iris,
       x           = Species,
-      y           = Sepal.Length,
-      conf.level  = 0.99,
-      conf.method = "eti",
-      k           = 4L
+      y           = Sepal.Length
     ))
 
-    expect_snapshot(dplyr::select(df2, -expression), variant = .Platform$OS.type)
-    expect_snapshot(as.character(df2$expression[[1]]), variant = .Platform$OS.type)
+    expect_snapshot(dim(df2))
+    expect_snapshot(df2$expression[[1]])
   }
 )
 
+# within-subjects ------------------------------
+
 test_that(
-  desc = "bayes factor (within-subjects - anova)",
+  desc = "bayesian (within-subjects - anova)",
   code = {
-    options(tibble.width = Inf)
-
-    # bayes factor (within-subjects - anova) ---------------------------------
-
     set.seed(123)
     df1 <- oneway_anova(
       type     = "bayes",
@@ -54,8 +54,8 @@ test_that(
       bf.prior = 0.88
     )
 
-    expect_snapshot(dplyr::select(df1, -expression), variant = .Platform$OS.type)
-    expect_snapshot(as.character(df1$expression[[1]]), variant = .Platform$OS.type)
+    expect_snapshot(dim(df1))
+    expect_snapshot(df1$expression[[1]])
 
     # data with NA
     set.seed(123)
@@ -67,8 +67,8 @@ test_that(
       paired = TRUE
     )
 
-    expect_snapshot(dplyr::select(df2, -expression), variant = .Platform$OS.type)
-    expect_snapshot(as.character(df2$expression[[1]]), variant = .Platform$OS.type)
+    expect_snapshot(dim(df2))
+    expect_snapshot(df2$expression[[1]])
 
     # with subject.id ---------------------------------
 

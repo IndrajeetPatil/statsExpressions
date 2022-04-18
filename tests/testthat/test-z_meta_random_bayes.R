@@ -36,7 +36,7 @@ test_that(
       class = c("tbl_df", "tbl", "data.frame")
     )
 
-    # getting bayes factor in favor of null hypothesis
+    # getting bayesian in favor of null hypothesis
     set.seed(123)
     df <- suppressWarnings(meta_analysis(
       type = "bayes",
@@ -49,6 +49,6 @@ test_that(
     expect_type(df, "list")
 
     expect_snapshot(dplyr::select(df, -expression))
-    expect_snapshot(as.character(df$expression[[1]]))
+    expect_snapshot(df$expression)
   }
 )

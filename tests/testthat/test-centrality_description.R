@@ -1,5 +1,5 @@
 test_that(
-  desc = "contingency_table works",
+  desc = "centrality description works as expected",
   code = {
     options(tibble.width = Inf)
 
@@ -18,7 +18,8 @@ test_that(
     )
 
     set.seed(123)
-    expect_snapshot(df)
+    expect_snapshot(select(df, -expression))
+    expect_snapshot(df$expression)
 
     # data with NAs
     set.seed(123)
@@ -35,6 +36,7 @@ test_that(
     )
 
     set.seed(123)
-    expect_snapshot(df_na)
+    expect_snapshot(select(df_na, -expression))
+    expect_snapshot(df_na$expression)
   }
 )
