@@ -5,7 +5,7 @@ test_that(
 
     options(tibble.width = Inf)
 
-    # `{statsExpressions}` output
+
     set.seed(123)
     df1 <-
       oneway_anova(
@@ -17,12 +17,12 @@ test_that(
         k = 5
       )
 
-    # testing all details
+
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(unlist(df1$expression[[1]]))
+    expect_snapshot(df1$expression)
 
-    # `{statsExpressions}` output
+
     set.seed(123)
     df2 <-
       suppressWarnings(oneway_anova(
@@ -35,10 +35,10 @@ test_that(
         conf.level = 0.99
       ))
 
-    # testing all details
+
     set.seed(123)
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(unlist(df2$expression[[1]]))
+    expect_snapshot(df2$expression)
   }
 )
 
@@ -49,7 +49,7 @@ test_that(
 
     # within-subjects -------------------------------------------------------
 
-    # `{statsExpressions}` output
+
     set.seed(123)
     df1 <-
       oneway_anova(
@@ -62,11 +62,11 @@ test_that(
         conf.level = 0.99
       )
 
-    # testing all details
-    set.seed(123)
-    expect_snapshot(unlist(df1$expression[[1]]))
 
-    # `{statsExpressions}` output
+    set.seed(123)
+    expect_snapshot(df1$expression)
+
+
     set.seed(123)
     df2 <-
       oneway_anova(
@@ -79,9 +79,9 @@ test_that(
         conf.level = 0.90
       )
 
-    # testing all details
+
     set.seed(123)
-    expect_snapshot(unlist(df2$expression[[1]]))
+    expect_snapshot(df2$expression)
   }
 )
 

@@ -16,7 +16,7 @@
 ---
 
     Code
-      unlist(df_t$expression)
+      df_t$expression
     Output
       [[1]]
       list(widehat(italic(beta)) == "6.05", italic(t)("30") == "19.59", 
@@ -30,7 +30,7 @@
 ---
 
     Code
-      unlist(df_t_na$expression)
+      df_t_na$expression
     Output
       [[1]]
       list(widehat(italic(beta)) == "6.05", italic(t) == "19.59", italic(p) == 
@@ -44,7 +44,7 @@
 ---
 
     Code
-      unlist(df_t_inf$expression)
+      df_t_inf$expression
     Output
       [[1]]
       list(widehat(italic(beta)) == "6.05", italic(t) == "19.59", italic(p) == 
@@ -73,7 +73,7 @@
 ---
 
     Code
-      unlist(df_chi$expression)
+      df_chi$expression
     Output
       [[1]]
       list(widehat(italic(beta)) == "0.02", italic(chi)^2 * ("1") == 
@@ -104,7 +104,7 @@
 ---
 
     Code
-      unlist(df_z$expression)
+      df_z$expression
     Output
       [[1]]
       list(widehat(italic(beta)) == "-0.78", italic(z) == "-3.47", 
@@ -139,7 +139,7 @@
 ---
 
     Code
-      unlist(df1$expression)
+      df1$expression
     Output
       [[1]]
       list(widehat(italic(omega)[p]^2) == "0.18", italic(F)("1", "15") == 
@@ -174,7 +174,7 @@
 ---
 
     Code
-      unlist(df2$expression)
+      df2$expression
     Output
       [[1]]
       list(widehat(italic(eta)[p]^2) == "0.38", italic(F)("1", "15") == 

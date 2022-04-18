@@ -1,25 +1,131 @@
+# corr_test works - parametric
+
+    Code
+      select(df1, -expression)
+    Output
+      # A tibble: 1 x 12
+        parameter1 parameter2 effectsize          estimate conf.level conf.low
+        <chr>      <chr>      <chr>                  <dbl>      <dbl>    <dbl>
+      1 brainwt    sleep_rem  Pearson correlation   -0.221        0.9   -0.438
+        conf.high statistic df.error p.value method              n.obs
+            <dbl>     <dbl>    <int>   <dbl> <chr>               <int>
+      1    0.0201     -1.54       46   0.131 Pearson correlation    48
+
+---
+
+    Code
+      df1$expression
+    Output
+      [[1]]
+      list(italic("t")["Student"] * "(" * 46 * ")" == "-1.539", italic(p) == 
+          "0.131", widehat(italic("r"))["Pearson"] == "-0.221", CI["90%"] ~ 
+          "[" * "-0.438", "0.020" * "]", italic("n")["pairs"] == "48")
+      
+
+---
+
+    Code
+      select(df2, -expression)
+    Output
+      # A tibble: 1 x 12
+        parameter1 parameter2 effectsize          estimate conf.level conf.low
+        <chr>      <chr>      <chr>                  <dbl>      <dbl>    <dbl>
+      1 wt         mpg        Pearson correlation   -0.868       0.95   -0.934
+        conf.high statistic df.error  p.value method              n.obs
+            <dbl>     <dbl>    <int>    <dbl> <chr>               <int>
+      1    -0.744     -9.56       30 1.29e-10 Pearson correlation    32
+
+---
+
+    Code
+      df2$expression
+    Output
+      [[1]]
+      list(italic("t")["Student"] * "(" * 30 * ")" == "-9.559", italic(p) == 
+          "1.294e-10", widehat(italic("r"))["Pearson"] == "-0.868", 
+          CI["95%"] ~ "[" * "-0.934", "-0.744" * "]", italic("n")["pairs"] == 
+              "32")
+      
+
+# corr_test works - robust
+
+    Code
+      select(df1, -expression)
+    Output
+      # A tibble: 1 x 12
+        parameter1 parameter2  effectsize                     estimate conf.level
+        <chr>      <chr>       <chr>                             <dbl>      <dbl>
+      1 brainwt    sleep_total Winsorized Pearson correlation   -0.549        0.5
+        conf.low conf.high statistic df.error   p.value method                        
+           <dbl>     <dbl>     <dbl>    <int>     <dbl> <chr>                         
+      1   -0.611    -0.481     -4.83       54 0.0000117 Winsorized Pearson correlation
+        n.obs
+        <int>
+      1    56
+
+---
+
+    Code
+      df1$expression
+    Output
+      [[1]]
+      list(italic("t")["Student"] * "(" * 54 * ")" == "-4.8286", italic(p) == 
+          "1.1723e-05", widehat(italic("r"))["Winsorized"] == "-0.5491", 
+          CI["50%"] ~ "[" * "-0.6106", "-0.4812" * "]", italic("n")["pairs"] == 
+              "56")
+      
+
+---
+
+    Code
+      select(df2, -expression)
+    Output
+      # A tibble: 1 x 12
+        parameter1 parameter2 effectsize                     estimate conf.level
+        <chr>      <chr>      <chr>                             <dbl>      <dbl>
+      1 wt         mpg        Winsorized Pearson correlation   -0.864       0.95
+        conf.low conf.high statistic df.error  p.value method                        
+           <dbl>     <dbl>     <dbl>    <int>    <dbl> <chr>                         
+      1   -0.932    -0.738     -9.41       30 1.84e-10 Winsorized Pearson correlation
+        n.obs
+        <int>
+      1    32
+
+---
+
+    Code
+      df2$expression
+    Output
+      [[1]]
+      list(italic("t")["Student"] * "(" * 30 * ")" == "-9.41", italic(p) == 
+          "1.84e-10", widehat(italic("r"))["Winsorized"] == "-0.86", 
+          CI["95%"] ~ "[" * "-0.93", "-0.74" * "]", italic("n")["pairs"] == 
+              "32")
+      
+
 # corr_test works - nonparametric
 
     Code
       select(df1, -expression)
     Output
       # A tibble: 1 x 11
-        parameter1 parameter2 effectsize           estimate conf.level conf.low
-        <chr>      <chr>      <chr>                   <dbl>      <dbl>    <dbl>
-      1 rating     length     Spearman correlation    0.495      0.999    0.153
+        parameter1 parameter2  effectsize           estimate conf.level conf.low
+        <chr>      <chr>       <chr>                   <dbl>      <dbl>    <dbl>
+      1 brainwt    sleep_total Spearman correlation   -0.594        0.5   -0.652
         conf.high statistic    p.value method               n.obs
             <dbl>     <dbl>      <dbl> <chr>                <int>
-      1     0.731    41453. 0.00000344 Spearman correlation    79
+      1    -0.528    46627. 0.00000143 Spearman correlation    56
 
 ---
 
     Code
-      unlist(df1$expression[[1]])
+      df1$expression
     Output
-      expression(list(
-      italic("S")=='41452.97684', italic(p)=='3.44384e-06',
-      widehat(rho)["Spearman"]=='0.49546', CI['99.9%']~'['*'0.15344', '0.73147'*']',
-      italic("n")["pairs"]=='79'))
+      [[1]]
+      list(italic("S") == "46627.1234", italic(p) == "1.4262e-06", 
+          widehat(rho)["Spearman"] == "-0.5935", CI["50%"] ~ "[" * 
+              "-0.6518", "-0.5283" * "]", italic("n")["pairs"] == "56")
+      
 
 ---
 
@@ -37,81 +143,33 @@
 ---
 
     Code
-      unlist(df2$expression[[1]])
+      df2$expression
     Output
-      expression(list(
-      italic("S")=='10292.32', italic(p)=='1.49e-11',
-      widehat(rho)["Spearman"]=='-0.89', CI['95%']~'['*'-0.94', '-0.77'*']',
-      italic("n")["pairs"]=='32'))
+      [[1]]
+      list(italic("S") == "10292.3186", italic(p) == "1.4876e-11", 
+          widehat(rho)["Spearman"] == "-0.8864", CI["95%"] ~ "[" * 
+              "-0.9447", "-0.7740" * "]", italic("n")["pairs"] == "32")
+      
 
-# corr_test works - parametric
+# corr_test works - Bayesian
 
     Code
-      select(df, -expression)
+      df1$expression
     Output
-      # A tibble: 1 x 12
-        parameter1 parameter2 effectsize          estimate conf.level conf.low
-        <chr>      <chr>      <chr>                  <dbl>      <dbl>    <dbl>
-      1 brainwt    sleep_rem  Pearson correlation   -0.221        0.9   -0.438
-        conf.high statistic df.error p.value method              n.obs
-            <dbl>     <dbl>    <int>   <dbl> <chr>               <int>
-      1    0.0201     -1.54       46   0.131 Pearson correlation    48
+      [[1]]
+      list(log[e] * (BF["01"]) == "0.49", widehat(rho)["Pearson"]^"posterior" == 
+          "-0.21", CI["99%"]^HDI ~ "[" * "-0.47", "0.05" * "]", italic("r")["beta"]^"JZS" == 
+          "1.25")
+      
 
 ---
 
     Code
-      unlist(df$expression[[1]])
+      df2$expression
     Output
-      expression(list(
-      italic("t")["Student"]*'('*46*')'=='-1.539', italic(p)=='0.131',
-      widehat(italic("r"))["Pearson"]=='-0.221', CI['90%']~'['*'-0.438', '0.020'*']',
-      italic("n")["pairs"]=='48'))
-
-# corr_test works - robust
-
-    Code
-      select(df, -expression)
-    Output
-      # A tibble: 1 x 12
-        parameter1 parameter2  effectsize                     estimate conf.level
-        <chr>      <chr>       <chr>                             <dbl>      <dbl>
-      1 brainwt    sleep_total Winsorized Pearson correlation   -0.549        0.5
-        conf.low conf.high statistic df.error   p.value method                        
-           <dbl>     <dbl>     <dbl>    <int>     <dbl> <chr>                         
-      1   -0.611    -0.481     -4.83       54 0.0000117 Winsorized Pearson correlation
-        n.obs
-        <int>
-      1    56
-
----
-
-    Code
-      unlist(df$expression[[1]])
-    Output
-      expression(list(
-      italic("t")["Student"]*'('*54*')'=='-4.8286', italic(p)=='1.1723e-05',
-      widehat(italic("r"))["Winsorized"]=='-0.5491', CI['50%']~'['*'-0.6106', '-0.4812'*']',
-      italic("n")["pairs"]=='56'))
-
-# bayes factor (correlation test) - without NAs
-
-    Code
-      unlist(subtitle1$expression[[1]])
-    Output
-      expression(list(
-      log[e]*(BF['01'])=='1.07',
-      widehat(rho)["Pearson"]^'posterior'=='-0.12',
-      CI['95%']^HDI~'['*'-0.28', '0.04'*']',
-      italic("r")["beta"]^"JZS"=='1.41'))
-
-# bayes factor (correlation test) - with NAs
-
-    Code
-      unlist(subtitle1$expression[[1]])
-    Output
-      expression(list(
-      log[e]*(BF['01'])=='0.49',
-      widehat(rho)["Pearson"]^'posterior'=='-0.21',
-      CI['99%']^HDI~'['*'-0.47', '0.05'*']',
-      italic("r")["beta"]^"JZS"=='1.25'))
+      [[1]]
+      list(log[e] * (BF["01"]) == "-17.84", widehat(rho)["Pearson"]^"posterior" == 
+          "-0.84", CI["95%"]^HDI ~ "[" * "-0.93", "-0.73" * "]", italic("r")["beta"]^"JZS" == 
+          "1.41")
+      
 

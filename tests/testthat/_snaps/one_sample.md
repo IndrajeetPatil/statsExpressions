@@ -14,12 +14,14 @@
 ---
 
     Code
-      unlist(df1$expression[[1]])
+      df1$expression
     Output
-      expression(list(
-      italic("t")["Student"]*'('*78*')'=='-2.67496', italic(p)=='0.00910',
-      widehat(italic("g"))["Hedges"]=='-0.29805', CI['95%']~'['*'-0.52379', '-0.07429'*']',
-      italic("n")["obs"]=='79'))
+      [[1]]
+      list(italic("t")["Student"] * "(" * 78 * ")" == "-2.67496", italic(p) == 
+          "0.00910", widehat(italic("g"))["Hedges"] == "-0.29805", 
+          CI["95%"] ~ "[" * "-0.52379", "-0.07429" * "]", italic("n")["obs"] == 
+              "79")
+      
 
 ---
 
@@ -37,12 +39,13 @@
 ---
 
     Code
-      unlist(df2$expression[[1]])
+      df2$expression
     Output
-      expression(list(
-      italic("t")["Student"]*'('*78*')'=='-2.6750', italic(p)=='0.0091',
-      widehat(italic("d"))["Cohen"]=='-0.3010', CI['90%']~'['*'-0.4924', '-0.1115'*']',
-      italic("n")["obs"]=='79'))
+      [[1]]
+      list(italic("t")["Student"] * "(" * 78 * ")" == "-2.6750", italic(p) == 
+          "0.0091", widehat(italic("d"))["Cohen"] == "-0.3010", CI["90%"] ~ 
+          "[" * "-0.4924", "-0.1115" * "]", italic("n")["obs"] == "79")
+      
 
 # one_sample_test non-parametric works
 
@@ -60,12 +63,14 @@
 ---
 
     Code
-      unlist(df1$expression[[1]])
+      df1$expression
     Output
-      expression(list(
-      italic("V")["Wilcoxon"]=='753.5000', italic(p)=='0.3227',
-      widehat(italic("r"))["biserial"]^"rank"=='-0.1486', CI['95%']~'['*'-0.4162', '0.1427'*']',
-      italic("n")["obs"]=='60'))
+      [[1]]
+      list(italic("V")["Wilcoxon"] == "753.5000", italic(p) == "0.3227", 
+          widehat(italic("r"))["biserial"]^"rank" == "-0.1486", CI["95%"] ~ 
+              "[" * "-0.4162", "0.1427" * "]", italic("n")["obs"] == 
+              "60")
+      
 
 ---
 
@@ -83,12 +88,14 @@
 ---
 
     Code
-      unlist(df2$expression[[1]])
+      df2$expression
     Output
-      expression(list(
-      italic("V")["Wilcoxon"]=='262.0000', italic(p)=='1.2527e-05',
-      widehat(italic("r"))["biserial"]^"rank"=='-0.6717', CI['95%']~'['*'-0.8058', '-0.4720'*']',
-      italic("n")["obs"]=='56'))
+      [[1]]
+      list(italic("V")["Wilcoxon"] == "262.0000", italic(p) == "1.2527e-05", 
+          widehat(italic("r"))["biserial"]^"rank" == "-0.6717", CI["95%"] ~ 
+              "[" * "-0.8058", "-0.4720" * "]", italic("n")["obs"] == 
+              "56")
+      
 
 # one_sample_test robust works
 
@@ -106,12 +113,13 @@
 ---
 
     Code
-      unlist(df1$expression[[1]])
+      df1$expression
     Output
-      expression(list(
-      italic("t")["bootstrapped"]=='0.7866', italic(p)=='0.4550',
-      widehat(mu)["trimmed"]=='9.0000', CI['90%']~'['*'6.5487', '11.4513'*']',
-      italic("n")["obs"]=='11'))
+      [[1]]
+      list(italic("t")["bootstrapped"] == "0.7866", italic(p) == "0.4550", 
+          widehat(mu)["trimmed"] == "9.0000", CI["90%"] ~ "[" * "6.5487", 
+          "11.4513" * "]", italic("n")["obs"] == "11")
+      
 
 ---
 
@@ -129,12 +137,13 @@
 ---
 
     Code
-      unlist(df2$expression[[1]])
+      df2$expression
     Output
-      expression(list(
-      italic("t")["bootstrapped"]=='-3.8075', italic(p)=='0.0400',
-      widehat(mu)["trimmed"]=='0.0390', CI['99%']~'['*'-0.0669', '0.1448'*']',
-      italic("n")["obs"]=='56'))
+      [[1]]
+      list(italic("t")["bootstrapped"] == "-3.8075", italic(p) == "0.0400", 
+          widehat(mu)["trimmed"] == "0.0390", CI["99%"] ~ "[" * "-0.0669", 
+          "0.1448" * "]", italic("n")["obs"] == "56")
+      
 
 # one_sample_test bayes factor works
 
@@ -151,22 +160,22 @@
 ---
 
     Code
-      unlist(df1$expression[[1]])
+      df1$expression
     Output
-      expression(list(
-      log[e]*(BF['01'])=='-47.84',
-      widehat(delta)["difference"]^'posterior'=='-1.76',
-      CI['90%']^HDI~'['*'-1.99', '-1.51'*']',
-      italic("r")["Cauchy"]^"JZS"=='0.99'))
+      [[1]]
+      list(log[e] * (BF["01"]) == "-47.84", widehat(delta)["difference"]^"posterior" == 
+          "-1.76", CI["90%"]^HDI ~ "[" * "-1.99", "-1.51" * "]", italic("r")["Cauchy"]^"JZS" == 
+          "0.99")
+      
 
 ---
 
     Code
-      unlist(df2$expression[[1]])
+      df2$expression
     Output
-      expression(list(
-      log[e]*(BF['01'])=='2.125',
-      widehat(delta)["difference"]^'posterior'=='0.018',
-      CI['95%']^HDI~'['*'-0.234', '0.274'*']',
-      italic("r")["Cauchy"]^"JZS"=='0.900'))
+      [[1]]
+      list(log[e] * (BF["01"]) == "2.125", widehat(delta)["difference"]^"posterior" == 
+          "0.018", CI["95%"]^HDI ~ "[" * "-0.234", "0.274" * "]", italic("r")["Cauchy"]^"JZS" == 
+          "0.900")
+      
 

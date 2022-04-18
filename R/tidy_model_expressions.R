@@ -81,5 +81,6 @@ tidy_model_expressions <- function(data,
   data %>%
     rowwise() %>%
     mutate(expression = list(parse(text = expression))) %>%
-    ungroup()
+    ungroup() %>% # convert from `expression` to `language`
+    mutate(expression = unlist(expression))
 }

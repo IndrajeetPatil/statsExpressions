@@ -163,10 +163,13 @@ add_expression_col <- function(data,
             {n.text}=='{n.obs}')"))
   }
 
-  # return dataframe with some polish and formatted expression
+  # convert `expression` to `language`
+  df_expr %<>% .glue_to_expression()
+
+  # return data frame with some polish and formatted expression
   as_tibble(data) %>%
     relocate(matches("^effectsize$"), .before = matches("^estimate$")) %>%
-    mutate(expression = list(parse(text = df_expr$expression[[1]])))
+    mutate(expression = df_expr$expression)
 }
 
 

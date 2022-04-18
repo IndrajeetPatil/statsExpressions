@@ -5,7 +5,7 @@ test_that(
 
     # contingency tab - without NAs ---------------------------------
 
-    # `{statsExpressions}` output
+
     set.seed(123)
     df1 <- suppressWarnings(contingency_table(
       data = mtcars,
@@ -15,10 +15,10 @@ test_that(
       conf.level = 0.99
     ))
 
-    # testing all details
+
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(unlist(df1$expression[[1]]))
+    expect_snapshot(df1$expression)
 
     # with counts
     set.seed(123)
@@ -29,10 +29,10 @@ test_that(
       counts = Freq
     )
 
-    # testing all details
+
     set.seed(123)
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(unlist(df2$expression[[1]]))
+    expect_snapshot(df2$expression)
 
     # contingency tab - with NAs --------------------------------------
 
@@ -45,10 +45,10 @@ test_that(
       conf.level = 0.990
     ))
 
-    # testing all details
+
     set.seed(123)
     expect_snapshot(select(df3, -expression))
-    expect_snapshot(unlist(df3$expression[[1]]))
+    expect_snapshot(df3$expression)
   }
 )
 
@@ -78,7 +78,7 @@ test_that(
         row.names = c(NA, -4L)
       )
 
-    # `{statsExpressions}` output
+
     set.seed(123)
     df1 <- suppressWarnings(
       contingency_table(
@@ -91,10 +91,10 @@ test_that(
       )
     )
 
-    # testing all details
+
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(unlist(df1$expression[[1]]))
+    expect_snapshot(df1$expression)
 
     # paired data with NAs  ---------------------------------------------
 
@@ -110,7 +110,7 @@ test_that(
     paired_data[24, 1] <- NA
     paired_data[65, 1] <- NA
 
-    # `{statsExpressions}` output
+
     set.seed(123)
     df2 <- suppressWarnings(
       contingency_table(
@@ -123,10 +123,10 @@ test_that(
       )
     )
 
-    # testing all details
+
     set.seed(123)
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(unlist(df2$expression[[1]]))
+    expect_snapshot(df2$expression)
   }
 )
 
@@ -135,7 +135,7 @@ test_that(
   code = {
     # one-sample test (without NAs) -------------------------------------
 
-    # `{statsExpressions}` output
+
     set.seed(123)
     df1 <- suppressWarnings(contingency_table(
       data = mtcars,
@@ -144,10 +144,10 @@ test_that(
       k = 5
     ))
 
-    # testing all details
+
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(unlist(df1$expression[[1]]))
+    expect_snapshot(df1$expression)
 
     # with counts
     set.seed(123)
@@ -157,10 +157,10 @@ test_that(
       counts = Freq
     )
 
-    # testing all details
+
     set.seed(123)
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(unlist(df2$expression[[1]]))
+    expect_snapshot(df2$expression)
 
     # one-sample test (with NAs) -------------------------------------
 
@@ -172,10 +172,10 @@ test_that(
       ratio = c(0.2, 0.2, 0.3, 0.3)
     )
 
-    # testing all details
+
     set.seed(123)
     expect_snapshot(select(df3, -expression))
-    expect_snapshot(unlist(df3$expression[[1]]))
+    expect_snapshot(df3$expression)
 
     # edge case
     expect_null(contingency_table(data.frame(x = "x"), x, type = "bayes"))
@@ -196,7 +196,7 @@ test_that(
     )
 
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(unlist(df1$expression[[1]]))
+    expect_snapshot(df1$expression)
 
     # expr
     set.seed(123)
@@ -208,7 +208,7 @@ test_that(
     )
 
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(unlist(df2$expression[[1]]))
+    expect_snapshot(df2$expression)
   }
 )
 
@@ -275,9 +275,9 @@ test_that(
 
     # expr text
     expect_snapshot(list(
-      unlist(expr_text1$expression[[1]]),
-      unlist(expr_text2$expression[[1]]),
-      unlist(expr_text3$expression[[1]])
+      expr_text1$expression,
+      expr_text2$expression,
+      expr_text3$expression
     ))
   }
 )

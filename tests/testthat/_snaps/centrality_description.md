@@ -36,43 +36,43 @@
 ---
 
     Code
-      unlist(df$expression)
+      df$expression
     Output
       [[1]]
-      widehat(mu)[mean] == "5.01"
+      list(widehat(mu)[mean] == "5.01")
       
       [[2]]
-      widehat(mu)[mean] == "5.94"
+      list(widehat(mu)[mean] == "5.94")
       
       [[3]]
-      widehat(mu)[mean] == "6.59"
+      list(widehat(mu)[mean] == "6.59")
       
       [[4]]
-      widehat(mu)[median] == "5.000"
+      list(widehat(mu)[median] == "5.000")
       
       [[5]]
-      widehat(mu)[median] == "5.900"
+      list(widehat(mu)[median] == "5.900")
       
       [[6]]
-      widehat(mu)[median] == "6.500"
+      list(widehat(mu)[median] == "6.500")
       
       [[7]]
-      widehat(mu)[trimmed] == "5.000"
+      list(widehat(mu)[trimmed] == "5.000")
       
       [[8]]
-      widehat(mu)[trimmed] == "5.910"
+      list(widehat(mu)[trimmed] == "5.910")
       
       [[9]]
-      widehat(mu)[trimmed] == "6.547"
+      list(widehat(mu)[trimmed] == "6.547")
       
       [[10]]
-      widehat(mu)[MAP] == "5.02"
+      list(widehat(mu)[MAP] == "5.02")
       
       [[11]]
-      widehat(mu)[MAP] == "5.75"
+      list(widehat(mu)[MAP] == "5.75")
       
       [[12]]
-      widehat(mu)[MAP] == "6.40"
+      list(widehat(mu)[MAP] == "6.40")
       
 
 ---
@@ -121,54 +121,54 @@
 ---
 
     Code
-      unlist(df_na$expression)
+      df_na$expression
     Output
       [[1]]
-      widehat(mu)[mean] == "7.85"
+      list(widehat(mu)[mean] == "7.85")
       
       [[2]]
-      widehat(mu)[mean] == "6.74"
+      list(widehat(mu)[mean] == "6.74")
       
       [[3]]
-      widehat(mu)[mean] == "7.38"
+      list(widehat(mu)[mean] == "7.38")
       
       [[4]]
-      widehat(mu)[mean] == "5.72"
+      list(widehat(mu)[mean] == "5.72")
       
       [[5]]
-      widehat(mu)[median] == "8.750"
+      list(widehat(mu)[median] == "8.750")
       
       [[6]]
-      widehat(mu)[median] == "8.000"
+      list(widehat(mu)[median] == "8.000")
       
       [[7]]
-      widehat(mu)[median] == "8.000"
+      list(widehat(mu)[median] == "8.000")
       
       [[8]]
-      widehat(mu)[median] == "6.000"
+      list(widehat(mu)[median] == "6.000")
       
       [[9]]
-      widehat(mu)[trimmed] == "8.473"
+      list(widehat(mu)[trimmed] == "8.473")
       
       [[10]]
-      widehat(mu)[trimmed] == "7.318"
+      list(widehat(mu)[trimmed] == "7.318")
       
       [[11]]
-      widehat(mu)[trimmed] == "7.882"
+      list(widehat(mu)[trimmed] == "7.882")
       
       [[12]]
-      widehat(mu)[trimmed] == "5.719"
+      list(widehat(mu)[trimmed] == "5.719")
       
       [[13]]
-      widehat(mu)[MAP] == "9.98"
+      list(widehat(mu)[MAP] == "9.98")
       
       [[14]]
-      widehat(mu)[MAP] == "9.73"
+      list(widehat(mu)[MAP] == "9.73")
       
       [[15]]
-      widehat(mu)[MAP] == "9.85"
+      list(widehat(mu)[MAP] == "9.85")
       
       [[16]]
-      widehat(mu)[MAP] == "5.99"
+      list(widehat(mu)[MAP] == "5.99")
       
 
