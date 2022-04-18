@@ -1,5 +1,5 @@
-# don't test confidence intervals in data frames because they vary across
-# platforms, even with the same seed
+# don't test data frames because the values vary across platforms, even with the
+# same seed
 #
 # for the same reason, don't change `k` parameter
 
@@ -22,7 +22,7 @@ test_that(
       y        = brainwt
     ))
 
-    expect_snapshot(dplyr::select(df1, 1:3))
+    expect_snapshot(dim(df1))
     expect_snapshot(df1$expression[[1]])
 
     # without NA
@@ -34,7 +34,7 @@ test_that(
       y           = Sepal.Length
     ))
 
-    expect_snapshot(dplyr::select(df2, 1:3))
+    expect_snapshot(dim(df2))
     expect_snapshot(df2$expression[[1]])
   }
 )
@@ -54,7 +54,7 @@ test_that(
       bf.prior = 0.88
     )
 
-    expect_snapshot(dplyr::select(df1, 1:3))
+    expect_snapshot(dim(df1))
     expect_snapshot(df1$expression[[1]])
 
     # data with NA
@@ -67,7 +67,7 @@ test_that(
       paired = TRUE
     )
 
-    expect_snapshot(dplyr::select(df2, 1:3))
+    expect_snapshot(dim(df2))
     expect_snapshot(df2$expression[[1]])
 
     # with subject.id ---------------------------------
