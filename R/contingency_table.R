@@ -188,7 +188,8 @@ contingency_table <- function(data,
 
       stats_df %<>% mutate(expression = list(parse(text = glue("list(
             log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
-            {prior.distribution}=='{format_value(prior.scale, k)}')"))))
+            {prior.distribution}=='{format_value(prior.scale, k)}')")))) %>%
+        .glue_to_expression()
     }
   }
 

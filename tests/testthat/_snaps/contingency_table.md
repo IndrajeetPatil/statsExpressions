@@ -211,9 +211,8 @@
       df1$expression
     Output
       [[1]]
-      expression(list(
-      log[e]*(BF['01'])=='1.40',
-      italic("a")["Gunel-Dickey"]=='1.00'))
+      list(log[e] * (BF["01"]) == "1.40", italic("a")["Gunel-Dickey"] == 
+          "1.00")
       
 
 ---
@@ -232,9 +231,8 @@
       df2$expression
     Output
       [[1]]
-      expression(list(
-      log[e]*(BF['01'])=='0.55',
-      italic("a")["Gunel-Dickey"]=='10.00'))
+      list(log[e] * (BF["01"]) == "0.55", italic("a")["Gunel-Dickey"] == 
+          "10.00")
       
 
 # bayes factor (contingency tab)

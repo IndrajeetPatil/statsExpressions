@@ -17,8 +17,8 @@ test_that(
       k        = 3L
     ))
 
-    expect_snapshot(dplyr::select(df1, -expression), variant = .Platform$OS.type)
-    expect_snapshot(df1$expression, variant = .Platform$OS.type)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression)
 
     # data where it works
     set.seed(123)
@@ -32,8 +32,8 @@ test_that(
       k           = 4L
     ))
 
-    expect_snapshot(dplyr::select(df2, -expression), variant = .Platform$OS.type)
-    expect_snapshot(df2$expression, variant = .Platform$OS.type)
+    expect_snapshot(dplyr::select(df2, -expression))
+    expect_snapshot(df2$expression)
   }
 )
 
@@ -54,8 +54,8 @@ test_that(
       bf.prior = 0.88
     )
 
-    expect_snapshot(dplyr::select(df1, -expression), variant = .Platform$OS.type)
-    expect_snapshot(df1$expression, variant = .Platform$OS.type)
+    expect_snapshot(dplyr::select(df1, -expression))
+    expect_snapshot(df1$expression)
 
     # data with NA
     set.seed(123)
@@ -67,8 +67,8 @@ test_that(
       paired = TRUE
     )
 
-    expect_snapshot(dplyr::select(df2, -expression), variant = .Platform$OS.type)
-    expect_snapshot(df2$expression, variant = .Platform$OS.type)
+    expect_snapshot(dplyr::select(df2, -expression))
+    expect_snapshot(df2$expression)
 
     # with subject.id ---------------------------------
 
