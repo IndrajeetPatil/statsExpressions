@@ -91,7 +91,7 @@
                         <h4 data-toc-skip class="author">Indrajeet
 Patil</h4>
             
-            <h4 data-toc-skip class="date">2022-04-16</h4>
+            <h4 data-toc-skip class="date">2022-04-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/HEAD/vignettes/statsExpressions.Rmd" class="external-link"><code>vignettes/statsExpressions.Rmd</code></a></small>
       <div class="d-none name"><code>statsExpressions.Rmd</code></div>
@@ -261,9 +261,9 @@ statistical approach can be modified by changing a single argument:</p>
 <span class="co">#&gt;   <span style="font-weight: bold;">method</span>                       <span style="font-weight: bold;">effectsize</span>      <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span></span>
 <span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Kruskal-Wallis rank sum test Epsilon2 (rank)    <span style="color: #949494;">0.</span>736       <span style="color: #949494;">0.</span>95    <span style="color: #949494;">0.</span>624</span>
-<span class="co">#&gt;   <span style="font-weight: bold;">conf.high</span> <span style="font-weight: bold;">conf.method</span>          <span style="font-weight: bold;">conf.iterations</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span>  </span>
-<span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>         1 percentile bootstrap             100    32 <span style="color: #949494;">&lt;expression&gt;</span></span>
+<span class="co">#&gt;   <span style="font-weight: bold;">conf.high</span> <span style="font-weight: bold;">conf.method</span>          <span style="font-weight: bold;">conf.iterations</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span></span>
+<span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>         1 percentile bootstrap             100    32 <span style="color: #949494;">&lt;language&gt;</span></span>
 
 <span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 12</span></span>
@@ -276,9 +276,9 @@ statistical approach can be modified by changing a single argument:</p>
 <span class="co">#&gt;   <span style="font-weight: bold;">effectsize</span>                         <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span></span>
 <span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Explanatory measure of effect size     1.05       <span style="color: #949494;">0.</span>95    <span style="color: #949494;">0.</span>843      1.50</span>
-<span class="co">#&gt;   <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span>  </span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>    32 <span style="color: #949494;">&lt;expression&gt;</span></span></code></pre></div>
+<span class="co">#&gt;   <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span></span>
+<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>    32 <span style="color: #949494;">&lt;language&gt;</span></span></code></pre></div>
 <p>These functions are also compatible with other popular data
 manipulation packages. For example, we can use combination of
 <code>dplyr</code> and <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> to repeat the
@@ -300,11 +300,11 @@ same statistical analysis across grouping variables.</p>
 <span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Pearson's C    <span style="color: #949494;">0.</span>414       <span style="color: #949494;">0.</span>95    <span style="color: #949494;">0</span>             1 ncp        </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Pearson's C    <span style="color: #949494;">0.</span>141       <span style="color: #949494;">0.</span>95    <span style="color: #949494;">0</span>             1 ncp        </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Pearson's C    <span style="color: #949494;">0.</span>581       <span style="color: #949494;">0.</span>95    <span style="color: #949494;">0.</span>265         1 ncp        </span>
-<span class="co">#&gt;   <span style="font-weight: bold;">conf.distribution</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span>  </span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> chisq                11 <span style="color: #949494;">&lt;expression&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> chisq                 7 <span style="color: #949494;">&lt;expression&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> chisq                14 <span style="color: #949494;">&lt;expression&gt;</span></span></code></pre></div>
+<span class="co">#&gt;   <span style="font-weight: bold;">conf.distribution</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span></span>
+<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> chisq                11 <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> chisq                 7 <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> chisq                14 <span style="color: #949494;">&lt;language&gt;</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="expressions-for-plots">Expressions for Plots<a class="anchor" aria-label="anchor" href="#expressions-for-plots"></a>
