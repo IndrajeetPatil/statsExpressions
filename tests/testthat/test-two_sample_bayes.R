@@ -1,9 +1,9 @@
 test_that(
-  desc = "bayes factor (independent samples t-test)",
+  desc = "bayesian (independent samples t-test)",
   code = {
     skip_if(getRversion() < "4.0")
 
-    # bayes factor (independent samples t-test) ----------------------
+    # bayesian (independent samples t-test) ----------------------
 
     # expression
     set.seed(123)
@@ -23,7 +23,7 @@ test_that(
 )
 
 test_that(
-  desc = "bayes factor (paired t-test)",
+  desc = "bayesian (paired t-test)",
   code = {
 
     # Bayes factor (paired t-test) ---------------------------------------------
@@ -48,7 +48,7 @@ test_that(
         bf.prior = 0.8,
       )
 
-    # check bayes factor values
+    # check bayesian values
     expect_equal(df_results$bf10[[1]], 40.36079, tolerance = 0.001)
 
     # expression

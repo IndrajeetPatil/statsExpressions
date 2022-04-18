@@ -145,7 +145,7 @@
           "0.1448" * "]", italic("n")["obs"] == "56")
       
 
-# one_sample_test bayes factor works
+# one_sample_test bayesian works
 
     Code
       names(df_results)

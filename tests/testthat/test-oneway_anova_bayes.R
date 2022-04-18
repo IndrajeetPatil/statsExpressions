@@ -1,48 +1,47 @@
+# don't test confidence intervals in data frames because they vary across
+# platforms, even with the same seed
+
+# to print all tibble columns in the snapshot; don't remove
+options(tibble.width = Inf)
+
+# between-subjects ------------------------------
+
 test_that(
-  desc = "bayes factor (between-subjects - anova)",
+  desc = "bayesian (between-subjects - anova)",
   code = {
     skip_if(getRversion() < "4.0")
-    options(tibble.width = Inf)
 
-    # bayes factor (between-subjects - anova) ------------------------------
-
-    # extracting results from where this function is implemented
+    # with NA
     set.seed(123)
     df1 <- suppressWarnings(oneway_anova(
       type     = "bayes",
       data     = ggplot2::msleep,
       x        = vore,
-      y        = brainwt,
-      bf.prior = 0.99,
-      k        = 3L
+      y        = brainwt
     ))
 
-    expect_snapshot(dplyr::select(df1, -expression))
-    expect_snapshot(df1$expression)
+    expect_snapshot(dplyr::select(df1, -dplyr::matches("low$|high$")))
+    expect_snapshot(df1$expression[[1]])
 
-    # data where it works
+    # without NA
     set.seed(123)
     df2 <- suppressWarnings(oneway_anova(
       type        = "bayes",
       data        = iris,
       x           = Species,
-      y           = Sepal.Length,
-      conf.level  = 0.99,
-      conf.method = "eti",
-      k           = 4L
+      y           = Sepal.Length
     ))
 
-    expect_snapshot(dplyr::select(df2, -expression))
-    expect_snapshot(df2$expression)
+    expect_snapshot(dplyr::select(df2, -dplyr::matches("low$|high$")))
+    expect_snapshot(df2$expression[[1]])
   }
 )
 
-test_that(
-  desc = "bayes factor (within-subjects - anova)",
-  code = {
-    options(tibble.width = Inf)
+# within-subjects ------------------------------
 
-    # bayes factor (within-subjects - anova) ---------------------------------
+test_that(
+  desc = "bayesian (within-subjects - anova)",
+  code = {
 
     set.seed(123)
     df1 <- oneway_anova(
@@ -54,8 +53,8 @@ test_that(
       bf.prior = 0.88
     )
 
-    expect_snapshot(dplyr::select(df1, -expression))
-    expect_snapshot(df1$expression)
+    expect_snapshot(dplyr::select(df1, -dplyr::matches("low$|high$")))
+    expect_snapshot(df1$expression[[1]])
 
     # data with NA
     set.seed(123)
@@ -67,8 +66,8 @@ test_that(
       paired = TRUE
     )
 
-    expect_snapshot(dplyr::select(df2, -expression))
-    expect_snapshot(df2$expression)
+    expect_snapshot(dplyr::select(df2, -dplyr::matches("low$|high$")))
+    expect_snapshot(df2$expression[[1]])
 
     # with subject.id ---------------------------------
 

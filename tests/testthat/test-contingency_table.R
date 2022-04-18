@@ -183,9 +183,9 @@ test_that(
 )
 
 test_that(
-  desc = "bayes factor (proportion test)",
+  desc = "bayesian (proportion test)",
   code = {
-    # bayes factor (proportion test) --------------------------------------
+    # bayesian (proportion test) --------------------------------------
 
     # extracting results from where this function is implemented
     set.seed(123)
@@ -213,9 +213,9 @@ test_that(
 )
 
 test_that(
-  desc = "bayes factor (contingency tab)",
+  desc = "bayesian (contingency tab)",
   code = {
-    # bayes factor (contingency tab) --------------------------------------
+    # bayesian (contingency tab) --------------------------------------
 
     # extracting results from where this function is implemented
     set.seed(123)
@@ -231,7 +231,7 @@ test_that(
     # objects
     expect_identical(class(df_results), c("tbl_df", "tbl", "data.frame"))
 
-    # check bayes factor values
+    # check bayesian values
     expect_equal(df_results$bf10[[1]], 28.07349, tolerance = 0.001)
 
     # expr

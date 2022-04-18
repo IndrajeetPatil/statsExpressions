@@ -195,7 +195,7 @@
               "0.41", "1.00" * "]", italic("n")["obs"] == "76")
       
 
-# bayes factor (proportion test)
+# bayesian (proportion test)
 
     Code
       select(df1, -expression)
@@ -235,7 +235,7 @@
           "10.00")
       
 
-# bayes factor (contingency tab)
+# bayesian (contingency tab)
 
     Code
       list(expr_text1$expression, expr_text2$expression, expr_text3$expression)

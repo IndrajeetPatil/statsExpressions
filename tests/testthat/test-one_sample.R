@@ -117,7 +117,7 @@ test_that(
 )
 
 test_that(
-  desc = "one_sample_test bayes factor works",
+  desc = "one_sample_test bayesian works",
   code = {
     skip_if(getRversion() < "4.0")
 

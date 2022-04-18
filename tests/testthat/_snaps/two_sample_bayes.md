@@ -1,4 +1,4 @@
-# bayes factor (independent samples t-test)
+# bayesian (independent samples t-test)
 
     Code
       df$expression
@@ -9,7 +9,7 @@
           "0.71")
       
 
-# bayes factor (paired t-test)
+# bayesian (paired t-test)
 
     Code
       df$expression
