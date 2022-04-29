@@ -176,7 +176,7 @@ pairwise_comparisons <- function(data,
       spread     = FALSE
     )
 
-  # for some tests, it's better to have these as vectors
+  # a few functions expect these as vectors
   x_vec <- data %>% pull({{ x }})
   y_vec <- data %>% pull({{ y }})
   g_vec <- data$rowid
@@ -244,7 +244,6 @@ pairwise_comparisons <- function(data,
   # Bayesian --------------------------------
 
   if (type == "bayes") {
-    # combining results into a single dataframe and returning it
     df_tidy <- purrr::map_dfr(
       # creating a list of dataframes with subsections of data
       .x = purrr::map2(
@@ -252,7 +251,6 @@ pairwise_comparisons <- function(data,
         .y = as.character(df$group2),
         .f = function(a, b) droplevels(filter(data, {{ x }} %in% c(a, b)))
       ),
-      # internal function to carry out BF t-test
       .f = ~ two_sample_test(
         data     = .x,
         x        = {{ x }},
@@ -283,9 +281,9 @@ pairwise_comparisons <- function(data,
   if (type != "bayes") {
     df %<>%
       mutate(
-        p.value            = stats::p.adjust(p = p.value, method = p.adjust.method),
-        p.adjust.method    = p_adjust_text(p.adjust.method),
-        test               = test
+        p.value         = stats::p.adjust(p = p.value, method = p.adjust.method),
+        p.adjust.method = p_adjust_text(p.adjust.method),
+        test            = test
       ) %>%
       rowwise() %>%
       mutate(

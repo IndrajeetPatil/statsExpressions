@@ -53,7 +53,7 @@ Suggests:
     rmarkdown,
     spelling,
     survival,
-    testthat,
+    testthat (>= 3.1.4),
     utils
 Remotes:
     easystats/insight,

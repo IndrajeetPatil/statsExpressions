@@ -82,7 +82,7 @@
     Output
       # A tibble: 16 x 15
          condition desire variable std.dev   iqr conf.low conf.high   min   max
-         <fct>      <dbl> <chr>      <dbl> <dbl>    <dbl>     <dbl> <dbl> <dbl>
+         <chr>      <dbl> <chr>      <dbl> <dbl>    <dbl>     <dbl> <dbl> <dbl>
        1 HDHF        7.85 desire      2.47   4       7.42      8.33   0      10
        2 HDLF        6.74 desire      3.11   5       6.15      7.33   0      10
        3 LDHF        7.38 desire      2.52   3.5     6.96      7.95   0.5    10
