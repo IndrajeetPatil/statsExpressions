@@ -101,8 +101,7 @@
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header">
 <img src="logo.png" class="logo" alt=""><h1 id="statsexpressions-tidy-dataframes-and-expressions-with-statistical-details">
-<code>{statsExpressions}</code>: Tidy dataframes and expressions
-with statistical details<a class="anchor" aria-label="anchor" href="#statsexpressions-tidy-dataframes-and-expressions-with-statistical-details"></a>
+<code>{statsExpressions}</code>: Tidy dataframes and expressions with statistical details<a class="anchor" aria-label="anchor" href="#statsexpressions-tidy-dataframes-and-expressions-with-statistical-details"></a>
 </h1>
 </div>
 <table class="table">
@@ -136,34 +135,16 @@ with statistical details<a class="anchor" aria-label="anchor" href="#statsexpres
 </table>
 </div>
 <div class="section level1">
-<h1 id="introduction-">Introduction
-<a class="anchor" aria-label="anchor" href="#introduction-"></a>
+<h1 id="introduction-">Introduction <a class="anchor" aria-label="anchor" href="#introduction-"></a>
 </h1>
 <p>The <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> package has two key aims:</p>
 <ul>
-<li>to provide a consistent syntax to do statistical analysis with tidy
-data (in pipe-friendly manner),</li>
-<li>to provide statistical expressions (pre-formatted in-text
-statistical results) for plotting functions.</li>
+<li>to provide a consistent syntax to do statistical analysis with tidy data (in pipe-friendly manner),</li>
+<li>to provide statistical expressions (pre-formatted in-text statistical results) for plotting functions.</li>
 </ul>
-<p>Statistical packages exhibit substantial diversity in terms of their
-syntax and expected input type. This can make it difficult to switch
-from one statistical approach to another. For example, some functions
-expect vectors as inputs, while others expect dataframes. Depending on
-whether it is a repeated measures design or not, different functions
-might expect data to be in wide or long format. Some functions can
-internally omit missing values, while other functions error in their
-presence. Furthermore, if someone wishes to utilize the objects returned
-by these packages downstream in their workflow, this is not
-straightforward either because even functions from the same package can
-return a list, a matrix, an array, a dataframe, etc., depending on the
-function.</p>
-<p>This is where <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> comes in: It can be
-thought of as a unified portal through which most of the functionality
-in these underlying packages can be accessed, with a simpler interface
-and no requirement to change data format.</p>
-<p>This package forms the statistical processing backend for <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link"><code>ggstatsplot</code></a>
-package.</p>
+<p>Statistical packages exhibit substantial diversity in terms of their syntax and expected input type. This can make it difficult to switch from one statistical approach to another. For example, some functions expect vectors as inputs, while others expect dataframes. Depending on whether it is a repeated measures design or not, different functions might expect data to be in wide or long format. Some functions can internally omit missing values, while other functions error in their presence. Furthermore, if someone wishes to utilize the objects returned by these packages downstream in their workflow, this is not straightforward either because even functions from the same package can return a list, a matrix, an array, a dataframe, etc., depending on the function.</p>
+<p>This is where <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> comes in: It can be thought of as a unified portal through which most of the functionality in these underlying packages can be accessed, with a simpler interface and no requirement to change data format.</p>
+<p>This package forms the statistical processing backend for <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link"><code>ggstatsplot</code></a> package.</p>
 <p>For more documentation, see the dedicated <a href="https://indrajeetpatil.github.io/statsExpressions/">website</a>.</p>
 </div>
 <div class="section level1">
@@ -384,10 +365,7 @@ package.</p>
 <div class="section level1">
 <h1 id="tidy-dataframes-from-statistical-analysis">Tidy dataframes from statistical analysis<a class="anchor" aria-label="anchor" href="#tidy-dataframes-from-statistical-analysis"></a>
 </h1>
-<p>To illustrate the simplicity of this syntax, let’s say we want to run
-a one-way ANOVA. If we first run a non-parametric ANOVA and then decide
-to run a robust ANOVA instead, the syntax remains the same and the
-statistical approach can be modified by changing a single argument:</p>
+<p>To illustrate the simplicity of this syntax, let’s say we want to run a one-way ANOVA. If we first run a non-parametric ANOVA and then decide to run a robust ANOVA instead, the syntax remains the same and the statistical approach can be modified by changing a single argument:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
 
@@ -418,8 +396,7 @@ statistical approach can be modified by changing a single argument:</p>
 <span class="co">#&gt;   &lt;int&gt; &lt;list&gt;    </span>
 <span class="co">#&gt; 1    32 &lt;language&gt;</span></code></pre></div>
 <p>All possible output dataframes from functions are tabulated here: <a href="https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html</a></p>
-<p>Needless to say this will also work with the <code>kable</code>
-function to generate a table:</p>
+<p>Needless to say this will also work with the <code>kable</code> function to generate a table:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span>
@@ -466,11 +443,8 @@ function to generate a table:</p>
 <td align="right">3.539754</td>
 </tr></tbody>
 </table>
-<p>These functions are also compatible with other popular data
-manipulation packages.</p>
-<p>For example, let’s say we want to run a one-sample <em>t</em>-test
-for all levels of a certain grouping variable. We can use
-<code>dplyr</code> to do so:</p>
+<p>These functions are also compatible with other popular data manipulation packages.</p>
+<p>For example, let’s say we want to run a one-sample <em>t</em>-test for all levels of a certain grouping variable. We can use <code>dplyr</code> to do so:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
@@ -502,21 +476,14 @@ for all levels of a certain grouping variable. We can use
 <div class="section level1">
 <h1 id="using-expressions-in-custom-plots">Using expressions in custom plots<a class="anchor" aria-label="anchor" href="#using-expressions-in-custom-plots"></a>
 </h1>
-<p>Note that <em>expression</em> here means <strong>a pre-formatted
-in-text statistical result</strong>. In addition to other details
-contained in the dataframe, there is also a column titled
-<code>expression</code>, which contains expression with statistical
-details and can be displayed in a plot.</p>
-<p>For <strong>all</strong> statistical test expressions, the default
-template attempt to follow the gold standard for statistical
-reporting.</p>
+<p>Note that <em>expression</em> here means <strong>a pre-formatted in-text statistical result</strong>. In addition to other details contained in the dataframe, there is also a column titled <code>expression</code>, which contains expression with statistical details and can be displayed in a plot.</p>
+<p>For <strong>all</strong> statistical test expressions, the default template attempt to follow the gold standard for statistical reporting.</p>
 <p>For example, here are results from Welch’s <em>t</em>-test:</p>
 <p><img src="reference/figures/stats_reporting_format.png" align="center"></p>
 <div class="section level2">
 <h2 id="expressions-for-centrality-measure">Expressions for centrality measure<a class="anchor" aria-label="anchor" href="#expressions-for-centrality-measure"></a>
 </h2>
-<p><strong>Note that when used in a geometric layer, the expression need
-to be parsed.</strong></p>
+<p><strong>Note that when used in a geometric layer, the expression need to be parsed.</strong></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
 
@@ -531,18 +498,13 @@ to be parsed.</strong></p>
 <div class="section level2">
 <h2 id="expressions-for-one-way-anovas">Expressions for one-way ANOVAs<a class="anchor" aria-label="anchor" href="#expressions-for-one-way-anovas"></a>
 </h2>
-<p>The returned data frame will always have a column called
-<code>expression</code>.</p>
-<p>Assuming there is only a single result you need to display in a plot,
-to use it in a plot, you have two options:</p>
+<p>The returned data frame will always have a column called <code>expression</code>.</p>
+<p>Assuming there is only a single result you need to display in a plot, to use it in a plot, you have two options:</p>
 <ul>
-<li>extract the expression from the list column
-(<code>results_data$expression[[1]]</code>) without parsing</li>
-<li>use the list column as it, in which case you will need to parse it
-(<code>parse(text = results_data$expression)</code>)</li>
+<li>extract the expression from the list column (<code>results_data$expression[[1]]</code>) without parsing</li>
+<li>use the list column as it, in which case you will need to parse it (<code>parse(text = results_data$expression)</code>)</li>
 </ul>
-<p>If you want to display more than one expression in a plot, you will
-<em>have to</em> parse them.</p>
+<p>If you want to display more than one expression in a plot, you will <em>have to</em> parse them.</p>
 <div class="section level3">
 <h3 id="between-subjects-design">Between-subjects design<a class="anchor" aria-label="anchor" href="#between-subjects-design"></a>
 </h3>
@@ -674,8 +636,7 @@ to use it in a plot, you have two options:</p>
 <div class="section level2">
 <h2 id="expressions-for-correlation-analysis">Expressions for correlation analysis<a class="anchor" aria-label="anchor" href="#expressions-for-correlation-analysis"></a>
 </h2>
-<p>Let’s look at another example where we want to run correlation
-analysis:</p>
+<p>Let’s look at another example where we want to run correlation analysis:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
@@ -725,8 +686,7 @@ analysis:</p>
     caption <span class="op">=</span> <span class="va">results_data</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
   <span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-gof-1.png" width="100%"></p>
-<p>You can also use these function to get the expression in return
-without having to display them in plots:</p>
+<p>You can also use these function to get the expression in return without having to display them in plots:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
@@ -770,10 +730,7 @@ without having to display them in plots:</p>
 <div class="section level1">
 <h1 id="customizing-details-to-your-liking">Customizing details to your liking<a class="anchor" aria-label="anchor" href="#customizing-details-to-your-liking"></a>
 </h1>
-<p>Sometimes you may not wish include so many details in the subtitle.
-In that case, you can extract the expression and copy-paste only the
-part you wish to include. For example, here only statistic and
-<em>p</em>-values are included:</p>
+<p>Sometimes you may not wish include so many details in the subtitle. In that case, you can extract the expression and copy-paste only the part you wish to include. For example, here only statistic and <em>p</em>-values are included:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># setup</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
@@ -798,13 +755,7 @@ part you wish to include. For example, here only statistic and
 <div class="section level1">
 <h1 id="summary-of-tests-and-effect-sizes">Summary of tests and effect sizes<a class="anchor" aria-label="anchor" href="#summary-of-tests-and-effect-sizes"></a>
 </h1>
-<p>Here a go-to summary about statistical test carried out and the
-returned effect size for each function is provided. This should be
-useful if one needs to find out more information about how an argument
-is resolved in the underlying package or if one wishes to browse the
-source code. So, for example, if you want to know more about how one-way
-(between-subjects) ANOVA, you can run <code><a href="https://rdrr.io/r/stats/oneway.test.html" class="external-link">?stats::oneway.test</a></code>
-in your R console.</p>
+<p>Here a go-to summary about statistical test carried out and the returned effect size for each function is provided. This should be useful if one needs to find out more information about how an argument is resolved in the underlying package or if one wishes to browse the source code. So, for example, if you want to know more about how one-way (between-subjects) ANOVA, you can run <code><a href="https://rdrr.io/r/stats/oneway.test.html" class="external-link">?stats::oneway.test</a></code> in your R console.</p>
 <div class="section level2">
 <h2 id="centrality_description">
 <code>centrality_description</code><a class="anchor" aria-label="anchor" href="#centrality_description"></a>
@@ -915,8 +866,7 @@ in your R console.</p>
 <td>partial eta-squared, partial omega-squared</td>
 <td>Yes</td>
 <td>
-<code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::omega_squared()</a></code>,
-<code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::eta_squared()</a></code>
+<code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::omega_squared()</a></code>, <code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::eta_squared()</a></code>
 </td>
 </tr>
 <tr class="even">
@@ -976,8 +926,7 @@ in your R console.</p>
 <tr class="odd">
 <td>Robust</td>
 <td>&gt; 2</td>
-<td>Heteroscedastic one-way repeated measures ANOVA for trimmed
-means</td>
+<td>Heteroscedastic one-way repeated measures ANOVA for trimmed means</td>
 <td><code><a href="https://rdrr.io/pkg/WRS2/man/rmanova.html" class="external-link">WRS2::rmanova()</a></code></td>
 </tr>
 <tr class="even">
@@ -1011,8 +960,7 @@ means</td>
 <td>partial eta-squared, partial omega-squared</td>
 <td>Yes</td>
 <td>
-<code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::omega_squared()</a></code>,
-<code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::eta_squared()</a></code>
+<code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::omega_squared()</a></code>, <code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::eta_squared()</a></code>
 </td>
 </tr>
 <tr class="even">
@@ -1112,8 +1060,7 @@ means</td>
 </td>
 <td>Yes</td>
 <td>
-<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::cohens_d()</a></code>,
-<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::hedges_g()</a></code>
+<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::cohens_d()</a></code>, <code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::hedges_g()</a></code>
 </td>
 </tr>
 <tr class="even">
@@ -1209,8 +1156,7 @@ means</td>
 </td>
 <td>Yes</td>
 <td>
-<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::cohens_d()</a></code>,
-<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::hedges_g()</a></code>
+<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::cohens_d()</a></code>, <code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::hedges_g()</a></code>
 </td>
 </tr>
 <tr class="even">
@@ -1299,8 +1245,7 @@ means</td>
 </td>
 <td>Yes</td>
 <td>
-<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::cohens_d()</a></code>,
-<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::hedges_g()</a></code>
+<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::cohens_d()</a></code>, <code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::hedges_g()</a></code>
 </td>
 </tr>
 <tr class="even">
@@ -1329,8 +1274,7 @@ means</td>
 <h2 id="corr_test">
 <code>corr_test</code><a class="anchor" aria-label="anchor" href="#corr_test"></a>
 </h2>
-<p><strong>Hypothesis testing</strong> and <strong>Effect size
-estimation</strong></p>
+<p><strong>Hypothesis testing</strong> and <strong>Effect size estimation</strong></p>
 <table style="width:100%;" class="table">
 <colgroup>
 <col width="15%">
@@ -1535,8 +1479,7 @@ estimation</strong></p>
 <h2 id="meta_analysis">
 <code>meta_analysis</code><a class="anchor" aria-label="anchor" href="#meta_analysis"></a>
 </h2>
-<p><strong>Hypothesis testing</strong> and <strong>Effect size
-estimation</strong></p>
+<p><strong>Hypothesis testing</strong> and <strong>Effect size estimation</strong></p>
 <table class="table">
 <colgroup>
 <col width="10%">
@@ -1582,41 +1525,28 @@ estimation</strong></p>
 <h1 id="usage-in-ggstatsplot">Usage in <code>ggstatsplot</code>
 <a class="anchor" aria-label="anchor" href="#usage-in-ggstatsplot"></a>
 </h1>
-<p>Note that these functions were initially written to display results
-from statistical tests on ready-made <a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a> plots
-implemented in <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link">ggstatsplot</a>.</p>
+<p>Note that these functions were initially written to display results from statistical tests on ready-made <a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a> plots implemented in <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link">ggstatsplot</a>.</p>
 <p>For detailed documentation, see the package website: <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link uri">https://indrajeetpatil.github.io/ggstatsplot/</a></p>
-<p>Here is an example from <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link">ggstatsplot</a> of what the plots
-look like when the expressions are displayed in the subtitle-</p>
+<p>Here is an example from <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link">ggstatsplot</a> of what the plots look like when the expressions are displayed in the subtitle-</p>
 <p><img src="reference/figures/ggstatsplot.png" align="center"></p>
 </div>
 <div class="section level1">
 <h1 id="acknowledgments">Acknowledgments<a class="anchor" aria-label="anchor" href="#acknowledgments"></a>
 </h1>
-<p>The hexsticker and the schematic illustration of general workflow
-were generously designed by Sarah Otterstetter (Max Planck Institute for
-Human Development, Berlin).</p>
+<p>The hexsticker and the schematic illustration of general workflow were generously designed by Sarah Otterstetter (Max Planck Institute for Human Development, Berlin).</p>
 </div>
 <div class="section level1">
 <h1 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
 </h1>
-<p>I’m happy to receive bug reports, suggestions, questions, and (most
-of all) contributions to fix problems and add features. I personally
-prefer using the <code>GitHub</code> issues system over trying to reach
-out to me in other ways (personal e-mail, Twitter, etc.). Pull Requests
-for contributions are encouraged.</p>
-<p>Here are some simple ways in which you can contribute (in the
-increasing order of commitment):</p>
+<p>I’m happy to receive bug reports, suggestions, questions, and (most of all) contributions to fix problems and add features. I personally prefer using the <code>GitHub</code> issues system over trying to reach out to me in other ways (personal e-mail, Twitter, etc.). Pull Requests for contributions are encouraged.</p>
+<p>Here are some simple ways in which you can contribute (in the increasing order of commitment):</p>
 <ul>
 <li><p>Read and correct any inconsistencies in the <a href="https://indrajeetpatil.github.io/statsExpressions/">documentation</a></p></li>
 <li><p>Raise issues about bugs or wanted features</p></li>
 <li><p>Review code</p></li>
-<li><p>Add new functionality (in the form of new plotting functions or
-helpers for preparing subtitles)</p></li>
+<li><p>Add new functionality (in the form of new plotting functions or helpers for preparing subtitles)</p></li>
 </ul>
-<p>Please note that this project is released with a <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/.github/CODE_OF_CONDUCT.md" class="external-link">Contributor
-Code of Conduct</a>. By participating in this project you agree to abide
-by its terms.</p>
+<p>Please note that this project is released with a <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/master/.github/CODE_OF_CONDUCT.md" class="external-link">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
 
   </main><aside class="col-md-3"><div class="links">
@@ -1668,15 +1598,12 @@ by its terms.</p>
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by
-<a href="https://sites.google.com/site/indrajeetspatilmorality/" class="external-link">Indrajeet
-Patil</a>.</p>
+<p>Developed by <a href="https://sites.google.com/site/indrajeetspatilmorality/" class="external-link">Indrajeet Patil</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
 </div>
 
     </footer>
