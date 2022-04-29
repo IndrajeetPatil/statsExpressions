@@ -3,10 +3,6 @@
 utils::globalVariables(
   names = c(
     ".",
-    "Est",
-    "ci.low",
-    "ci.up",
-    "effsize",
     "effectsize",
     "estimate",
     "rowid",
@@ -34,7 +30,8 @@ utils::globalVariables(
     "group1",
     "group2",
     "log_e_bf10",
-    "p_adjust_text"
+    "p_adjust_text",
+    "n.obs"
   ),
   package = "statsExpressions",
   add = FALSE

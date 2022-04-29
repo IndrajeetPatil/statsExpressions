@@ -17,7 +17,7 @@
 #' ```{r child="man/rmd-fragments/centrality_description.Rmd"}
 #' ```
 #'
-#' @param x The grouping (or independent) variable from the dataframe data.
+#' @param x The grouping (or independent) variable in `data`.
 #' @inheritParams oneway_anova
 #' @param ... Currently ignored.
 #'
@@ -65,7 +65,6 @@ centrality_description <- function(data,
 
   select(data, {{ x }}, {{ y }}) %>%
     tidyr::drop_na(.) %>%
-    mutate({{ x }} := droplevels(as.factor({{ x }}))) %>%
     group_by({{ x }}) %>%
     group_modify(
       .f = ~ standardize_names(

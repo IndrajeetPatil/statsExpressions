@@ -176,7 +176,7 @@ pairwise_comparisons <- function(data,
       spread     = FALSE
     )
 
-  # for some tests, it's better to have these as vectors
+  # a few functions expect these as vectors
   x_vec <- data %>% pull({{ x }})
   y_vec <- data %>% pull({{ y }})
   g_vec <- data$rowid
@@ -244,7 +244,6 @@ pairwise_comparisons <- function(data,
   # Bayesian --------------------------------
 
   if (type == "bayes") {
-    # combining results into a single dataframe and returning it
     df_tidy <- purrr::map_dfr(
       # creating a list of dataframes with subsections of data
       .x = purrr::map2(
@@ -252,7 +251,6 @@ pairwise_comparisons <- function(data,
         .y = as.character(df$group2),
         .f = function(a, b) droplevels(filter(data, {{ x }} %in% c(a, b)))
       ),
-      # internal function to carry out BF t-test
       .f = ~ two_sample_test(
         data     = .x,
         x        = {{ x }},
@@ -263,9 +261,7 @@ pairwise_comparisons <- function(data,
       )
     ) %>%
       filter(term == "Difference") %>%
-      rowwise() %>%
-      mutate(expression = paste0("list(~log[e](BF['01'])==", format_value(-log_e_bf10, k), ")")) %>%
-      ungroup() %>%
+      mutate(expression = glue("list(log[e]*(BF['01'])=='{format_value(-log(bf10), k)}')")) %>%
       mutate(test = "Student's t")
 
     # combine it with the other details
@@ -283,21 +279,22 @@ pairwise_comparisons <- function(data,
   if (type != "bayes") {
     df %<>%
       mutate(
-        p.value            = stats::p.adjust(p = p.value, method = p.adjust.method),
-        p.adjust.method    = p_adjust_text(p.adjust.method),
-        test               = test
+        p.value         = stats::p.adjust(p = p.value, method = p.adjust.method),
+        p.adjust.method = p_adjust_text(p.adjust.method),
+        test            = test
       ) %>%
-      rowwise() %>%
       mutate(
         expression = case_when(
-          p.adjust.method == "None" ~ paste0("list(~italic(p)[unadj.]==", format_value(p.value, k), ")"),
-          TRUE ~ paste0("list(~italic(p)[", p.adjust.method, "-adj.]==", format_value(p.value, k), ")")
+          p.adjust.method == "None" ~ glue("list(italic(p)[unadj.]=='{format_value(p.value, k)}')"),
+          TRUE ~ glue("list(italic(p)['{p.adjust.method}'-adj.]=='{format_value(p.value, k)}')")
         )
-      ) %>%
-      ungroup()
+      )
   }
 
-  as_tibble(select(df, everything(), -matches("p.adjustment|^method$")))
+  # remove unnecessary columns and convert expression to language
+  select(df, everything(), -matches("p.adjustment|^method$")) %>%
+    .glue_to_expression() %>%
+    as_tibble()
 }
 
 #' @title *p*-value adjustment method text
