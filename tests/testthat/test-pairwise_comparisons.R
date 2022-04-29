@@ -20,6 +20,9 @@ test_that(
       p.adjust.method = "bonferroni"
     )
 
+    expect_snapshot(df1)
+    expect_snapshot(df1$expression)
+
     # games-howell
     df_msleep <- ggplot2::msleep
 
@@ -39,6 +42,9 @@ test_that(
       p.adjust.method = "bonferroni"
     )
 
+    expect_snapshot(df2)
+    expect_snapshot(df2$expression)
+
     # Dunn test
     set.seed(123)
     df3 <- pairwise_comparisons(
@@ -49,6 +55,9 @@ test_that(
       paired = FALSE,
       p.adjust.method = "none"
     )
+
+    expect_snapshot(df3)
+    expect_snapshot(df3$expression)
 
     # robust t test
     set.seed(123)
@@ -61,6 +70,9 @@ test_that(
       p.adjust.method = "fdr"
     )
 
+    expect_snapshot(df4)
+    expect_snapshot(df4$expression)
+
     # checking the edge case where factor level names contain `-`
     set.seed(123)
     df5 <- pairwise_comparisons(
@@ -69,6 +81,9 @@ test_that(
       y = rating,
       var.equal = TRUE
     )
+
+    expect_snapshot(df5)
+    expect_snapshot(df5$expression)
 
     # bayes test
     set.seed(123)
@@ -80,20 +95,8 @@ test_that(
       k = 3
     )
 
-    expect_snapshot(list(df1, df2, df3, df4, df5))
-
-
-    expect_equal(df6$log_e_bf10,
-      c(
-        -0.616556955077368,
-        -0.331816123738985,
-        -0.850766925918558,
-        -0.615915090483787,
-        -0.559562332764069,
-        -0.6062922675725
-      ),
-      tolerance = 0.01
-    )
+    expect_snapshot(df6)
+    expect_snapshot(df6$expression)
   }
 )
 
@@ -117,6 +120,9 @@ test_that(
       p.adjust.method = "none"
     )
 
+    expect_snapshot(df1)
+    expect_snapshot(df1$expression)
+
     set.seed(123)
     df2 <- pairwise_comparisons(
       data = ggplot2::msleep,
@@ -128,7 +134,6 @@ test_that(
 
 
     expect_equal(df1$statistic, df2$statistic, tolerance = 0.01)
-    expect_snapshot(df2$label)
   }
 )
 
@@ -148,7 +153,8 @@ test_that(
       var.equal = TRUE
     )
 
-    expect_snapshot(df$label)
+    expect_snapshot(df)
+    expect_snapshot(df$expression)
   }
 )
 
@@ -173,6 +179,9 @@ test_that(
       p.adjust.method = "bonferroni"
     )
 
+    expect_snapshot(df1)
+    expect_snapshot(df1$expression)
+
     # Durbin-Conover test
     set.seed(123)
     df2 <- pairwise_comparisons(
@@ -184,6 +193,9 @@ test_that(
       paired = TRUE,
       p.adjust.method = "BY"
     )
+
+    expect_snapshot(df2)
+    expect_snapshot(df2$expression)
 
     # robust t test
     set.seed(123)
@@ -197,7 +209,10 @@ test_that(
       p.adjust.method = "hommel"
     )
 
-    # bf
+    expect_snapshot(df3)
+    expect_snapshot(df3$expression)
+
+    # Bayesian
     set.seed(123)
     df4 <- pairwise_comparisons(
       data = bugs_long,
@@ -208,20 +223,8 @@ test_that(
       paired = TRUE
     )
 
-    set.seed(123)
-    expect_snapshot(list(df1, df2, df3))
-
-    expect_equal(df4$log_e_bf10,
-      c(
-        3.72728778555223,
-        -0.539360770276211,
-        23.2071488954099,
-        -0.3589384624894,
-        2.89663700378694,
-        15.3854222237555
-      ),
-      tolerance = 0.01
-    )
+    expect_snapshot(df4)
+    expect_snapshot(df4$expression)
   }
 )
 
@@ -247,6 +250,9 @@ test_that(
       p.adjust.method = "none"
     )
 
+    expect_snapshot(df1)
+    expect_snapshot(df1$expression)
+
     # Durbin-Conover test
     set.seed(123)
     df2 <- pairwise_comparisons(
@@ -258,6 +264,9 @@ test_that(
       paired = TRUE,
       p.adjust.method = "none"
     )
+
+    expect_snapshot(df2)
+    expect_snapshot(df2$expression)
 
     # robust t test
     set.seed(123)
@@ -271,7 +280,10 @@ test_that(
       p.adjust.method = "none"
     )
 
-    # bf
+    expect_snapshot(df3)
+    expect_snapshot(df3$expression)
+
+    # Bayesian
     set.seed(123)
     df4 <- pairwise_comparisons(
       data = WRS2::WineTasting,
@@ -282,12 +294,8 @@ test_that(
       paired = TRUE
     )
 
-    expect_snapshot(list(df1, df2, df3))
-
-    expect_equal(df4$log_e_bf10,
-      c(-1.44618964442711, 1.31224804728311, 3.92141234993467),
-      tolerance = 0.01
-    )
+    expect_snapshot(df4)
+    expect_snapshot(df4$expression)
   }
 )
 
@@ -352,6 +360,9 @@ test_that(
       alternative = "less"
     )
 
+    expect_snapshot(df1)
+    expect_snapshot(df1$expression)
+
     set.seed(123)
     df2 <- pairwise_comparisons(
       data = bugs_long,
@@ -361,6 +372,9 @@ test_that(
       p.adjust.method = "none",
       alternative = "greater"
     )
+
+    expect_snapshot(df2)
+    expect_snapshot(df2$expression)
 
     set.seed(123)
     df3 <- pairwise_comparisons(
@@ -372,6 +386,9 @@ test_that(
       alternative = "less"
     )
 
+    expect_snapshot(df3)
+    expect_snapshot(df3$expression)
+
     set.seed(123)
     df4 <- pairwise_comparisons(
       data = mtcars,
@@ -382,7 +399,7 @@ test_that(
       alternative = "greater"
     )
 
-    set.seed(123)
-    expect_snapshot(list(df1, df2, df3, df4))
+    expect_snapshot(df4)
+    expect_snapshot(df4$expression)
   }
 )
