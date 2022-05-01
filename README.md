@@ -56,6 +56,8 @@ The package can be cited as:
 ``` r
 citation("statsExpressions")
 
+To cite package 'statsExpressions' in publications use:
+
   Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes
   and Expressions with Statistical Details. Journal of Open Source
   Software, 6(61), 3236, https://doi.org/10.21105/joss.03236
@@ -84,14 +86,15 @@ A BibTeX entry for LaTeX users is
 
 **Summary of available analyses**
 
-| Test                       | Function            | Lifecycle                                                                                                                       |
-|----------------------------|---------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| one-sample *t*-test        | `one_sample_test`   | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
-| two-sample *t*-test        | `two_sample_test`   | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
-| one-way ANOVA              | `oneway_anova`      | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
-| correlation analysis       | `corr_test`         | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
-| contingency table analysis | `contingency_table` | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
-| meta-analysis              | `meta_analysis`     | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
+| Test                       | Function                 | Lifecycle                                                                                                                       |
+|----------------------------|--------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| one-sample *t*-test        | `one_sample_test()`      | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
+| two-sample *t*-test        | `two_sample_test()`      | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
+| one-way ANOVA              | `oneway_anova()`         | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
+| correlation analysis       | `corr_test()`            | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
+| contingency table analysis | `contingency_table()`    | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
+| meta-analysis              | `meta_analysis()`        | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
+| pairwise comparisons       | `pairwise_comparisons()` | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
 
 **Summary of details available for analyses**
 
@@ -253,7 +256,7 @@ use it in a plot, you have two options:
 
 -   extract the expression from the list column
     (`results_data$expression[[1]]`) without parsing
--   use the list column as it, in which case you will need to parse it
+-   use the list column as is, in which case you will need to parse it
     (`parse(text = results_data$expression)`)
 
 If you want to display more than one expression in a plot, you will
@@ -308,7 +311,7 @@ ggplot2::ggplot(WineTasting, aes(Wine, Taste, color = Wine)) +
   geom_quasirandom() +
   labs(
     title = "Friedman's rank sum test",
-    subtitle = results_data$expression[[1]]
+    subtitle = parse(text = results_data$expression)
   )
 ```
 
@@ -332,7 +335,7 @@ ggplot(ToothGrowth, aes(supp, len)) +
   geom_beeswarm() +
   labs(
     title = "Two-Sample Welch's t-test",
-    subtitle = results_data$expression[[1]]
+    subtitle = parse(text = results_data$expression)
   )
 ```
 
@@ -364,7 +367,7 @@ results_data <- two_sample_test(
 paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject") +
   labs(
     title = "Two-sample Wilcoxon paired test",
-    subtitle = results_data$expression[[1]]
+    subtitle = parse(text = results_data$expression)
   )
 ```
 
@@ -384,7 +387,7 @@ results_data <- one_sample_test(mtcars, wt, test.value = 3, type = "bayes")
 ggplot(mtcars, aes(wt)) +
   geom_histogram(alpha = 0.5) +
   geom_vline(xintercept = mean(mtcars$wt), color = "red") +
-  labs(subtitle = results_data$expression[[1]])
+  labs(subtitle = parse(text = results_data$expression))
 ```
 
 <img src="man/figures/README-t_one-1.png" width="100%" />
@@ -407,7 +410,7 @@ ggplot(mtcars, aes(mpg, wt)) +
   geom_smooth(method = "lm", formula = y ~ x) +
   labs(
     title = "Spearman's rank correlation coefficient",
-    subtitle = results_data$expression[[1]]
+    subtitle = parse(text = results_data$expression)
   )
 ```
 
@@ -441,7 +444,7 @@ ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1
     x = NULL,
     y = NULL,
     title = "Pie Chart of class (type of car)",
-    caption = results_data$expression[[1]]
+    caption = parse(text = results_data$expression)
   )
 ```
 
@@ -484,7 +487,7 @@ viz_forest(
 ) +
   labs(
     title = "Meta-analysis of Pietschnig, Voracek, and Formann (2010) on the Mozart effect",
-    subtitle = results_data$expression[[1]]
+    subtitle = parse(text = results_data$expression)
   ) +
   theme(text = element_text(size = 12))
 ```
@@ -725,24 +728,8 @@ Human Development, Berlin).
 
 # Contributing
 
-I’m happy to receive bug reports, suggestions, questions, and (most of
-all) contributions to fix problems and add features. I personally prefer
-using the `GitHub` issues system over trying to reach out to me in other
-ways (personal e-mail, Twitter, etc.). Pull Requests for contributions
-are encouraged.
-
-Here are some simple ways in which you can contribute (in the increasing
-order of commitment):
-
--   Read and correct any inconsistencies in the
-    [documentation](https://indrajeetpatil.github.io/statsExpressions/)
-
--   Raise issues about bugs or wanted features
-
--   Review code
-
--   Add new functionality (in the form of new plotting functions or
-    helpers for preparing subtitles)
+Bug reports, suggestions, questions, and (most of all) contributions are
+welcome.
 
 Please note that this project is released with a [Contributor Code of
 Conduct](https://github.com/IndrajeetPatil/statsExpressions/blob/master/.github/CODE_OF_CONDUCT.md).

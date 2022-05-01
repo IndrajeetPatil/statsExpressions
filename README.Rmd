@@ -207,7 +207,7 @@ ggplot2::ggplot(WineTasting, aes(Wine, Taste, color = Wine)) +
   geom_quasirandom() +
   labs(
     title = "Friedman's rank sum test",
-    subtitle = results_data$expression[[1]]
+    subtitle = parse(text = results_data$expression)
   )
 ```
 
@@ -229,7 +229,7 @@ ggplot(ToothGrowth, aes(supp, len)) +
   geom_beeswarm() +
   labs(
     title = "Two-Sample Welch's t-test",
-    subtitle = results_data$expression[[1]]
+    subtitle = parse(text = results_data$expression)
   )
 ```
 
@@ -259,7 +259,7 @@ results_data <- two_sample_test(
 paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject") +
   labs(
     title = "Two-sample Wilcoxon paired test",
-    subtitle = results_data$expression[[1]]
+    subtitle = parse(text = results_data$expression)
   )
 ```
 
@@ -277,7 +277,7 @@ results_data <- one_sample_test(mtcars, wt, test.value = 3, type = "bayes")
 ggplot(mtcars, aes(wt)) +
   geom_histogram(alpha = 0.5) +
   geom_vline(xintercept = mean(mtcars$wt), color = "red") +
-  labs(subtitle = results_data$expression[[1]])
+  labs(subtitle = parse(text = results_data$expression))
 ```
 
 ## Expressions for correlation analysis
@@ -298,7 +298,7 @@ ggplot(mtcars, aes(mpg, wt)) +
   geom_smooth(method = "lm", formula = y ~ x) +
   labs(
     title = "Spearman's rank correlation coefficient",
-    subtitle = results_data$expression[[1]]
+    subtitle = parse(text = results_data$expression)
   )
 ```
 
@@ -330,7 +330,7 @@ ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1
     x = NULL,
     y = NULL,
     title = "Pie Chart of class (type of car)",
-    caption = results_data$expression[[1]]
+    caption = parse(text = results_data$expression)
   )
 ```
 
@@ -368,7 +368,7 @@ viz_forest(
 ) +
   labs(
     title = "Meta-analysis of Pietschnig, Voracek, and Formann (2010) on the Mozart effect",
-    subtitle = results_data$expression[[1]]
+    subtitle = parse(text = results_data$expression)
   ) +
   theme(text = element_text(size = 12))
 ```
@@ -462,23 +462,8 @@ Development, Berlin).
 
 # Contributing
 
-I'm happy to receive bug reports, suggestions, questions, and (most of all)
-contributions to fix problems and add features. I personally prefer using the
-`GitHub` issues system over trying to reach out to me in other ways (personal
-e-mail, Twitter, etc.). Pull Requests for contributions are encouraged.
-
-Here are some simple ways in which you can contribute (in the increasing order
-of commitment):
-
-  - Read and correct any inconsistencies in the
-    [documentation](https://indrajeetpatil.github.io/statsExpressions/)
-
-  - Raise issues about bugs or wanted features
-
-  - Review code
-
-  - Add new functionality (in the form of new plotting functions or helpers for
-    preparing subtitles)
+Bug reports, suggestions, questions, and (most of all)
+contributions are welcome.
 
 Please note that this project is released with a 
 [Contributor Code of Conduct](https://github.com/IndrajeetPatil/statsExpressions/blob/master/.github/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
