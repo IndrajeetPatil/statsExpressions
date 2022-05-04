@@ -2,7 +2,7 @@
 % Please edit documentation in R/long_to_wide_converter.R
 \name{long_to_wide_converter}
 \alias{long_to_wide_converter}
-\title{Converts dataframe from long/tidy to wide format with \code{NA}s removed}
+\title{Convert long/tidy data frame to wide format with \code{NA}s removed}
 \usage{
 long_to_wide_converter(
   data,
@@ -15,21 +15,21 @@ long_to_wide_converter(
 )
 }
 \arguments{
-\item{data}{A dataframe (or a tibble) from which variables specified are to
+\item{data}{A data frame (or a tibble) from which variables specified are to
 be taken. Other data types (e.g., matrix,table, array, etc.) will \strong{not}
-be accepted.}
+be accepted. Additionally, grouped data frames from \code{{dplyr}} should be
+ungrouped before they are entered as \code{data}.}
 
-\item{x}{The grouping (or independent) variable from the dataframe \code{data}. In
-case of a repeated measures or within-subjects design, if \code{subject.id}
-argument is not available or not explicitly specified, the function assumes
-that the data has already been sorted by such an id by the user and creates
-an internal identifier. So if your data is \strong{not} sorted, the results
-\emph{can} be inaccurate when there are more than two levels in \code{x} and there
-are \code{NA}s present. The data is expected to be sorted by user in
+\item{x}{The grouping (or independent) variable from \code{data}. In case of a
+repeated measures or within-subjects design, if \code{subject.id} argument is
+not available or not explicitly specified, the function assumes that the
+data has already been sorted by such an id by the user and creates an
+internal identifier. So if your data is \strong{not} sorted, the results \emph{can}
+be inaccurate when there are more than two levels in \code{x} and there are
+\code{NA}s present. The data is expected to be sorted by user in
 subject-1,subject-2, ..., pattern.}
 
-\item{y}{The response (or outcome or dependent) variable from the
-dataframe \code{data}.}
+\item{y}{The response (or outcome or dependent) variable from \code{data}.}
 
 \item{subject.id}{Relevant in case of a repeated measures or within-subjects
 design (\code{paired = TRUE}, i.e.), it specifies the subject or repeated
@@ -44,7 +44,7 @@ there are \code{NA}s present.}
 repeated measures/within-subjects or between-subjects. The default is
 \code{FALSE}.}
 
-\item{spread}{Logical that decides whether the dataframe needs to be
+\item{spread}{Logical that decides whether the data frame needs to be
 converted from long/tidy to wide (default: \code{TRUE}). Relevant only if
 \code{paired = TRUE}.}
 
@@ -58,7 +58,7 @@ between-or-within-subjects nature of the dataset.
 This conversion is helpful mostly for repeated measures design, where
 removing \code{NA}s by participant can be a bit tedious.
 
-It does not make sense to spread the dataframe to wide format when the
+It does not make sense to spread the data frame to wide format when the
 measure is not repeated, so if \code{paired = TRUE}, \code{spread} argument will be
 ignored.
 }

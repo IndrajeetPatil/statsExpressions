@@ -19,8 +19,8 @@
 #'   Default is `NULL`. If `NULL`, one-sample proportion test (a goodness of fit
 #'   test) will be run for the `x` variable. Otherwise association test will be
 #'   carried out.
-#' @param counts A string naming a variable in data containing counts, or `NULL`
-#'   if each row represents a single observation.
+#' @param counts The variable in data containing counts, or `NULL` if each row
+#'   represents a single observation.
 #' @param paired Logical indicating whether data came from a within-subjects or
 #'   repeated measures design study (Default: `FALSE`). If `TRUE`, McNemar's
 #'   test expression will be returned. If `FALSE`, Pearson's chi-square test will
@@ -41,7 +41,6 @@
 #'   This means if there are two levels this will be `ratio = c(0.5,0.5)` or if
 #'   there are four levels this will be `ratio = c(0.25,0.25,0.25,0.25)`, etc.
 #' @param ... Additional arguments (currently ignored).
-#' @inheritParams two_sample_test
 #' @inheritParams stats::chisq.test
 #' @inheritParams oneway_anova
 #'
@@ -188,19 +187,14 @@ contingency_table <- function(data,
             log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
             {prior_switch(method)}=='{format_value(prior.scale, k)}')")))) %>%
       .glue_to_expression()
+
+    # special case: return early since the expression has already been prepared
+    return(stats_df)
   }
 
   # expression ---------------------------------------
 
-  if (!(type == "bayes" && test == "1way")) {
-    stats_df %<>% add_expression_col(
-      n        = nrow(data),
-      paired   = paired,
-      k        = k
-    )
-  }
-
-  stats_df
+  add_expression_col(stats_df, paired = paired, n = nrow(data), k = k)
 }
 
 

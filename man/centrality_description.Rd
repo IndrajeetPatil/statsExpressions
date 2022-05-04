@@ -7,14 +7,14 @@
 centrality_description(data, x, y, type = "parametric", tr = 0.2, k = 2L, ...)
 }
 \arguments{
-\item{data}{A dataframe (or a tibble) from which variables specified are to
+\item{data}{A data frame (or a tibble) from which variables specified are to
 be taken. Other data types (e.g., matrix,table, array, etc.) will \strong{not}
-be accepted.}
+be accepted. Additionally, grouped data frames from \code{{dplyr}} should be
+ungrouped before they are entered as \code{data}.}
 
 \item{x}{The grouping (or independent) variable in \code{data}.}
 
-\item{y}{The response (or outcome or dependent) variable from the
-dataframe \code{data}.}
+\item{y}{The response (or outcome or dependent) variable from \code{data}.}
 
 \item{type}{A character specifying the type of statistical approach:
 \itemize{
