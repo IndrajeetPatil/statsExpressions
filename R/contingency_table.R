@@ -19,8 +19,8 @@
 #'   Default is `NULL`. If `NULL`, one-sample proportion test (a goodness of fit
 #'   test) will be run for the `x` variable. Otherwise association test will be
 #'   carried out.
-#' @param counts A string naming a variable in data containing counts, or `NULL`
-#'   if each row represents a single observation.
+#' @param counts The variable in data containing counts, or `NULL` if each row
+#'   represents a single observation.
 #' @param paired Logical indicating whether data came from a within-subjects or
 #'   repeated measures design study (Default: `FALSE`). If `TRUE`, McNemar's
 #'   test expression will be returned. If `FALSE`, Pearson's chi-square test will
@@ -41,7 +41,6 @@
 #'   This means if there are two levels this will be `ratio = c(0.5,0.5)` or if
 #'   there are four levels this will be `ratio = c(0.25,0.25,0.25,0.25)`, etc.
 #' @param ... Additional arguments (currently ignored).
-#' @inheritParams two_sample_test
 #' @inheritParams stats::chisq.test
 #' @inheritParams oneway_anova
 #'
@@ -108,35 +107,38 @@ contingency_table <- function(data,
   # check the data contains needed column
   type <- stats_type_switch(type)
 
-  # one-way or two-way table?
-  test <- ifelse(!quo_is_null(enquo(y)), "2way", "1way")
+  # one-way or two-way table analysis?
+  test <- ifelse(quo_is_null(enquo(y)), "1way", "2way")
 
-  # creating a dataframe
+  # creating a data frame
   data %<>%
     select({{ x }}, {{ y }}, .counts = {{ counts }}) %>%
     tidyr::drop_na(.)
 
-  # untable the dataframe based on the count for each observation
+  # untable the data frame based on the counts for each observation (if present)
   if (".counts" %in% names(data)) data %<>% tidyr::uncount(weights = .counts)
 
   # variables needed for both one-way and two-way analysis
-  x_vec <- data %>% pull({{ x }})
-  ratio <- ratio %||% rep(1 / length(table(x_vec)), length(table(x_vec)))
+  xtab <- table(data)
+  ratio <- ratio %||% rep(1 / length(xtab), length(xtab))
 
   # non-Bayesian ---------------------------------------
 
+  # two-way table
+  if (type != "bayes" && test == "2way") {
+    if (paired) c(.f, .f.es) %<-% c(stats::mcnemar.test, effectsize::cohens_g)
+    if (!paired) c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::cramers_v)
+    .f.args <- list(x = xtab, correct = FALSE)
+  }
+
+  # one-way table
+  if (type != "bayes" && test == "1way") {
+    c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::pearsons_c)
+    .f.args <- list(x = xtab, p = ratio, correct = FALSE)
+  }
+
+  # executing tests and combining data frames: inferential stats + effect sizes
   if (type != "bayes") {
-    # one-way table
-    if (test == "1way") .f.args <- list(x = table(x_vec), p = ratio, correct = FALSE)
-    if (test == "1way") c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::pearsons_c)
-
-    # two-way table
-    if (test == "2way") .f.args <- list(x = table(data), correct = FALSE)
-    if (test == "2way" && paired) c(.f, .f.es) %<-% c(stats::mcnemar.test, effectsize::cohens_g)
-    if (test == "2way" && !paired) c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::cramers_v)
-
-    # Pearson's or McNemar's test
-    # combining dataframes: inferential stats + effect sizes
     stats_df <- bind_cols(
       tidy_model_parameters(exec(.f, !!!.f.args)),
       tidy_model_effectsize(exec(.f.es, !!!.f.args, adjust = TRUE, ci = conf.level))
@@ -145,70 +147,59 @@ contingency_table <- function(data,
 
   # Bayesian ---------------------------------------
 
-  if (type == "bayes") {
-    # two-way table
-    if (test == "2way") {
-      # extract a tidy dataframe
-      stats_df <- BayesFactor::contingencyTableBF(
-        table(data),
-        sampleType         = sampling.plan,
-        fixedMargin        = fixed.margin,
-        priorConcentration = prior.concentration
-      ) %>%
-        tidy_model_parameters(ci = conf.level, cramers_v = TRUE)
+  # two-way table
+  if (type == "bayes" && test == "2way") {
+    stats_df <- BayesFactor::contingencyTableBF(
+      xtab,
+      sampleType         = sampling.plan,
+      fixedMargin        = fixed.margin,
+      priorConcentration = prior.concentration
+    ) %>%
+      tidy_model_parameters(ci = conf.level, cramers_v = TRUE)
+  }
+
+  # one-way table
+  if (type == "bayes" && test == "1way") {
+    # probability can't be exactly 0 or 1
+    if (1 / length(as.vector(xtab)) == 0 || 1 / length(as.vector(xtab)) == 1) {
+      return(NULL)
     }
 
-    # one-way table
-    if (test == "1way") {
-      xtab <- table(x_vec)
+    # use it
+    p1s <- rdirichlet(n = 100000L, alpha = prior.concentration * ratio)
 
-      # probability can't be exactly 0 or 1
-      if (1 / length(as.vector(xtab)) == 0 || 1 / length(as.vector(xtab)) == 1) {
-        return(NULL)
-      }
+    # prob
+    pr_h1 <- sapply(
+      X = 1:100000,
+      FUN = function(i) stats::dmultinom(as.matrix(xtab), prob = p1s[i, ], log = TRUE)
+    )
 
-      # use it
-      p1s <- rdirichlet(n = 100000L, alpha = prior.concentration * ratio)
+    # BF = (log) prob of data under alternative - (log) prob of data under null
+    # computing Bayes Factor and formatting the results
+    stats_df <- tibble(
+      bf10        = exp(BayesFactor::logMeanExpLogs(pr_h1) - stats::dmultinom(as.matrix(xtab), NULL, ratio, TRUE)),
+      prior.scale = prior.concentration,
+      method      = "Bayesian one-way contingency table analysis"
+    )
 
-      # prob
-      pr_h1 <- sapply(
-        X = 1:100000,
-        FUN = function(i) stats::dmultinom(as.matrix(xtab), prob = p1s[i, ], log = TRUE)
-      )
-
-      # BF = (log) prob of data under alternative - (log) prob of data under null
-      # computing Bayes Factor and formatting the results
-      stats_df <- tibble(
-        bf10        = exp(BayesFactor::logMeanExpLogs(pr_h1) - stats::dmultinom(as.matrix(xtab), NULL, ratio, TRUE)),
-        prior.scale = prior.concentration,
-        method      = "Bayesian one-way contingency table analysis"
-      )
-
-      prior.distribution <- list(quote(italic("a")["Gunel-Dickey"]))
-
-      stats_df %<>% mutate(expression = list(parse(text = glue("list(
+    stats_df %<>%
+      mutate(expression = list(parse(text = glue("list(
             log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
-            {prior.distribution}=='{format_value(prior.scale, k)}')")))) %>%
-        .glue_to_expression()
-    }
+            {prior_switch(method)}=='{format_value(prior.scale, k)}')")))) %>%
+      .glue_to_expression()
+
+    # special case: return early since the expression has already been prepared
+    return(stats_df)
   }
 
   # expression ---------------------------------------
 
-  if (!(type == "bayes" && test == "1way")) {
-    stats_df %<>% add_expression_col(
-      n        = nrow(data),
-      paired   = paired,
-      k        = k
-    )
-  }
-
-  stats_df
+  add_expression_col(stats_df, paired = paired, n = nrow(data), k = k)
 }
 
 
 #' @title estimate log prob of data under null with Monte Carlo
-#' @note `rdirichlet` function from `MCMCpack`
+#' @note `rdirichlet` function from `{MCMCpack}`
 #' @noRd
 rdirichlet <- function(n, alpha) {
   l <- length(alpha)

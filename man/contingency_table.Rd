@@ -21,9 +21,10 @@ contingency_table(
 )
 }
 \arguments{
-\item{data}{A dataframe (or a tibble) from which variables specified are to
+\item{data}{A data frame (or a tibble) from which variables specified are to
 be taken. Other data types (e.g., matrix,table, array, etc.) will \strong{not}
-be accepted.}
+be accepted. Additionally, grouped data frames from \code{{dplyr}} should be
+ungrouped before they are entered as \code{data}.}
 
 \item{x}{The variable to use as the \strong{rows} in the contingency table.}
 
@@ -47,8 +48,8 @@ be returned.}
 
 You can specify just the initial letter.}
 
-\item{counts}{A string naming a variable in data containing counts, or \code{NULL}
-if each row represents a single observation.}
+\item{counts}{The variable in data containing counts, or \code{NULL} if each row
+represents a single observation.}
 
 \item{ratio}{A vector of proportions: the expected proportions for the
 proportion test (should sum to 1). Default is \code{NULL}, which means the null
