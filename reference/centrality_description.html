@@ -93,14 +93,14 @@ BayesianMAP (maximum a posteriori probability) estimateparameters::describe_dist
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
-<dd><p>A dataframe (or a tibble) from which variables specified are to
+<dd><p>A data frame (or a tibble) from which variables specified are to
 be taken. Other data types (e.g., matrix,table, array, etc.) will <strong>not</strong>
-be accepted.</p></dd>
+be accepted. Additionally, grouped data frames from <code>{dplyr}</code> should be
+ungrouped before they are entered as <code>data</code>.</p></dd>
 <dt>x</dt>
 <dd><p>The grouping (or independent) variable in <code>data</code>.</p></dd>
 <dt>y</dt>
-<dd><p>The response (or outcome or dependent) variable from the
-dataframe <code>data</code>.</p></dd>
+<dd><p>The response (or outcome or dependent) variable from <code>data</code>.</p></dd>
 <dt>type</dt>
 <dd><p>A character specifying the type of statistical approach:</p><ul><li><p><code>"parametric"</code></p></li>
 <li><p><code>"nonparametric"</code></p></li>

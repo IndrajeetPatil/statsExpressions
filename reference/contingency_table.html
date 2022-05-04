@@ -199,9 +199,10 @@ BayesianNoNoNo
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
-<dd><p>A dataframe (or a tibble) from which variables specified are to
+<dd><p>A data frame (or a tibble) from which variables specified are to
 be taken. Other data types (e.g., matrix,table, array, etc.) will <strong>not</strong>
-be accepted.</p></dd>
+be accepted. Additionally, grouped data frames from <code>{dplyr}</code> should be
+ungrouped before they are entered as <code>data</code>.</p></dd>
 <dt>x</dt>
 <dd><p>The variable to use as the <strong>rows</strong> in the contingency table.</p></dd>
 <dt>y</dt>
@@ -221,8 +222,8 @@ be returned.</p></dd>
 <li><p><code>"bayes"</code></p></li>
 </ul><p>You can specify just the initial letter.</p></dd>
 <dt>counts</dt>
-<dd><p>A string naming a variable in data containing counts, or <code>NULL</code>
-if each row represents a single observation.</p></dd>
+<dd><p>The variable in data containing counts, or <code>NULL</code> if each row
+represents a single observation.</p></dd>
 <dt>ratio</dt>
 <dd><p>A vector of proportions: the expected proportions for the
 proportion test (should sum to 1). Default is <code>NULL</code>, which means the null
