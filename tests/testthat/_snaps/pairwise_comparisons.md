@@ -208,56 +208,25 @@
 ---
 
     Code
-      df6
-    Output
-      # A tibble: 6 x 18
-        group1  group2  term       effectsize      estimate conf.level conf.low
-        <chr>   <chr>   <chr>      <chr>              <dbl>      <dbl>    <dbl>
-      1 carni   herbi   Difference Bayesian t-test  -0.376        0.95  -1.36  
-      2 carni   insecti Difference Bayesian t-test   0.0339       0.95  -0.0440
-      3 carni   omni    Difference Bayesian t-test  -0.0447       0.95  -0.241 
-      4 herbi   insecti Difference Bayesian t-test   0.353        0.95  -0.733 
-      5 herbi   omni    Difference Bayesian t-test   0.364        0.95  -0.313 
-      6 insecti omni    Difference Bayesian t-test  -0.0766       0.95  -0.337 
-        conf.high    pd rope.percentage prior.distribution prior.location prior.scale
-            <dbl> <dbl>           <dbl> <chr>                       <dbl>       <dbl>
-      1     0.508 0.800           0.171 cauchy                          0       0.707
-      2     0.127 0.812           0.136 cauchy                          0       0.707
-      3     0.145 0.688           0.214 cauchy                          0       0.707
-      4     1.62  0.742           0.178 cauchy                          0       0.707
-      5     1.10  0.848           0.164 cauchy                          0       0.707
-      6     0.164 0.743           0.171 cauchy                          0       0.707
-         bf10 log_e_bf10 n.obs expression test       
-        <dbl>      <dbl> <int> <list>     <chr>      
-      1 0.540     -0.617    29 <language> Student's t
-      2 0.718     -0.332    14 <language> Student's t
-      3 0.427     -0.851    26 <language> Student's t
-      4 0.540     -0.616    25 <language> Student's t
-      5 0.571     -0.560    37 <language> Student's t
-      6 0.545     -0.606    22 <language> Student's t
-
----
-
-    Code
       df6$expression
     Output
       [[1]]
-      list(log[e] * (BF["01"]) == "0.617")
+      list(italic(p)["Holm" - adj.] == "1.00")
       
       [[2]]
-      list(log[e] * (BF["01"]) == "0.332")
+      list(italic(p)["Holm" - adj.] == "1.00")
       
       [[3]]
-      list(log[e] * (BF["01"]) == "0.851")
+      list(italic(p)["Holm" - adj.] == "1.00")
       
       [[4]]
-      list(log[e] * (BF["01"]) == "0.616")
+      list(italic(p)["Holm" - adj.] == "1.00")
       
       [[5]]
-      list(log[e] * (BF["01"]) == "0.560")
+      list(italic(p)["Holm" - adj.] == "1.00")
       
       [[6]]
-      list(log[e] * (BF["01"]) == "0.606")
+      list(italic(p)["Holm" - adj.] == "1.00")
       
 
 # dropped levels are not included
@@ -445,56 +414,25 @@
 ---
 
     Code
-      df4
-    Output
-      # A tibble: 6 x 18
-        group1 group2 term       effectsize      estimate conf.level conf.low
-        <chr>  <chr>  <chr>      <chr>              <dbl>      <dbl>    <dbl>
-      1 HDHF   HDLF   Difference Bayesian t-test    1.10        0.95   0.488 
-      2 HDHF   LDHF   Difference Bayesian t-test    0.450       0.95  -0.0551
-      3 HDHF   LDLF   Difference Bayesian t-test    2.13        0.95   1.62  
-      4 HDLF   LDHF   Difference Bayesian t-test   -0.649       0.95  -1.32  
-      5 HDLF   LDLF   Difference Bayesian t-test    0.976       0.95   0.380 
-      6 LDHF   LDLF   Difference Bayesian t-test    1.66        0.95   1.15  
-        conf.high    pd rope.percentage prior.distribution prior.location prior.scale
-            <dbl> <dbl>           <dbl> <chr>                       <dbl>       <dbl>
-      1    1.72   1               0     cauchy                          0       0.707
-      2    0.951  0.954           0.192 cauchy                          0       0.707
-      3    2.63   1               0     cauchy                          0       0.707
-      4    0.0583 0.968           0.167 cauchy                          0       0.707
-      5    1.60   0.999           0     cauchy                          0       0.707
-      6    2.15   1               0     cauchy                          0       0.707
-            bf10 log_e_bf10 n.obs expression test       
-           <dbl>      <dbl> <int> <list>     <chr>      
-      1 4.16e+ 1      3.73     88 <language> Student's t
-      2 5.83e- 1     -0.539    88 <language> Student's t
-      3 1.20e+10     23.2      88 <language> Student's t
-      4 6.98e- 1     -0.359    88 <language> Student's t
-      5 1.81e+ 1      2.90     88 <language> Student's t
-      6 4.81e+ 6     15.4      88 <language> Student's t
-
----
-
-    Code
       df4$expression
     Output
       [[1]]
-      list(log[e] * (BF["01"]) == "-3.7273")
+      list(log[e] * (BF["01"]) == "-3.73")
       
       [[2]]
-      list(log[e] * (BF["01"]) == "0.5394")
+      list(log[e] * (BF["01"]) == "0.54")
       
       [[3]]
-      list(log[e] * (BF["01"]) == "-23.2071")
+      list(log[e] * (BF["01"]) == "-23.21")
       
       [[4]]
-      list(log[e] * (BF["01"]) == "0.3589")
+      list(log[e] * (BF["01"]) == "0.36")
       
       [[5]]
-      list(log[e] * (BF["01"]) == "-2.8966")
+      list(log[e] * (BF["01"]) == "-2.90")
       
       [[6]]
-      list(log[e] * (BF["01"]) == "-15.3854")
+      list(log[e] * (BF["01"]) == "-15.39")
       
 
 # `pairwise_comparisons()` works for within-subjects design - without NAs
@@ -591,38 +529,16 @@
 ---
 
     Code
-      df4
-    Output
-      # A tibble: 3 x 18
-        group1 group2 term       effectsize      estimate conf.level conf.low
-        <chr>  <chr>  <chr>      <chr>              <dbl>      <dbl>    <dbl>
-      1 Wine A Wine B Difference Bayesian t-test  0.00721       0.95  -0.0418
-      2 Wine A Wine C Difference Bayesian t-test  0.0755        0.95   0.0127
-      3 Wine B Wine C Difference Bayesian t-test  0.0693        0.95   0.0303
-        conf.high    pd rope.percentage prior.distribution prior.location prior.scale
-            <dbl> <dbl>           <dbl> <chr>                       <dbl>       <dbl>
-      1    0.0562 0.624         0.404   cauchy                          0       0.707
-      2    0.140  0.990         0.00553 cauchy                          0       0.707
-      3    0.110  1.00          0       cauchy                          0       0.707
-          bf10 log_e_bf10 n.obs expression test       
-         <dbl>      <dbl> <int> <list>     <chr>      
-      1  0.235      -1.45    22 <language> Student's t
-      2  3.71        1.31    22 <language> Student's t
-      3 50.5         3.92    22 <language> Student's t
-
----
-
-    Code
       df4$expression
     Output
       [[1]]
-      list(log[e] * (BF["01"]) == "1.4462")
+      list(log[e] * (BF["01"]) == "1.45")
       
       [[2]]
-      list(log[e] * (BF["01"]) == "-1.3122")
+      list(log[e] * (BF["01"]) == "-1.31")
       
       [[3]]
-      list(log[e] * (BF["01"]) == "-3.9214")
+      list(log[e] * (BF["01"]) == "-3.92")
       
 
 # additional arguments are passed to underlying methods
