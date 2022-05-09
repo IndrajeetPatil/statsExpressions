@@ -17,7 +17,7 @@ test_that(
         var.equal = list(TRUE, FALSE, TRUE, FALSE),
         conf.level = list(0.89, 0.99, 0.90, 0.50)
       ),
-      .f = statsExpressions::one_sample_test
+      .f = one_sample_test
     )
 
     set.seed(123)
@@ -36,7 +36,7 @@ test_that(
         alternative = c("two.sided", "less", "greater", "two.sided"),
         conf.level = list(0.89, 0.99, 0.90, 0.50)
       ),
-      .f = statsExpressions::two_sample_test
+      .f = two_sample_test
     )
 
     set.seed(123)
@@ -55,7 +55,7 @@ test_that(
         var.equal = list(TRUE, FALSE, TRUE, FALSE),
         conf.level = list(0.89, 0.99, 0.90, 0.50)
       ),
-      .f = statsExpressions::two_sample_test
+      .f = two_sample_test
     )
 
     set.seed(123)
@@ -73,7 +73,7 @@ test_that(
         var.equal = list(TRUE, FALSE, TRUE, FALSE),
         conf.level = list(0.89, 0.80, 0.90, 0.50)
       ),
-      .f = statsExpressions::oneway_anova
+      .f = oneway_anova
     )
 
     set.seed(123)
@@ -91,7 +91,7 @@ test_that(
         effsize.type = list("eta", "omega"),
         conf.level = list(0.89, 0.90)
       ),
-      .f = statsExpressions::oneway_anova
+      .f = oneway_anova
     )
 
     set.seed(123)

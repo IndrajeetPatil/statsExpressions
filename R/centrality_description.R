@@ -69,7 +69,7 @@ centrality_description <- function(data,
     group_modify(
       .f = ~ standardize_names(
         data = datawizard::describe_distribution(
-          x          = .,
+          x          = pull(., {{ y }}),
           centrality = centrality,
           threshold  = tr,
           verbose    = FALSE,
