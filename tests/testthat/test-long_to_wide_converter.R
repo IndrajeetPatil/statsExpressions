@@ -103,11 +103,10 @@ test_that(
   }
 )
 
-
-# with rowid - without NA ---------------------------------------------
+# with .rowid - without NA ---------------------------------------------
 
 test_that(
-  desc = "with rowid - without NA",
+  desc = "with .rowid - without NA",
   code = {
     df <- structure(list(
       score = c(90, 90, 72.5, 45),
@@ -127,34 +126,34 @@ test_that(
 
     expect_equal(
       long_to_wide_converter(df1, condition, score, spread = FALSE) %>%
-        arrange(rowid),
+        arrange(.rowid),
       long_to_wide_converter(df, condition, score, id, spread = FALSE) %>%
-        arrange(rowid)
+        arrange(.rowid)
     )
   }
 )
 
 
-# with rowid - with NA ---------------------------------------------
+# with .rowid - with NA ---------------------------------------------
 
 test_that(
-  desc = "with rowid - with NA",
+  desc = "with .rowid - with NA",
   code = {
     df <- bugs_long
     df1 <- arrange(bugs_long, subject)
 
     expect_equal(
       long_to_wide_converter(df1, condition, desire) %>%
-        select(-rowid),
+        select(-.rowid),
       long_to_wide_converter(df, condition, desire, subject) %>%
-        select(-rowid)
+        select(-.rowid)
     )
 
     expect_equal(
       long_to_wide_converter(df1, condition, desire, spread = FALSE) %>%
-        select(-rowid),
+        select(-.rowid),
       long_to_wide_converter(df, condition, desire, subject, spread = FALSE) %>%
-        select(-rowid)
+        select(-.rowid)
     )
   }
 )

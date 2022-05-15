@@ -177,9 +177,9 @@ pairwise_comparisons <- function(data,
     )
 
   # a few functions expect these as vectors
-  x_vec <- data %>% pull({{ x }})
-  y_vec <- data %>% pull({{ y }})
-  g_vec <- data$rowid
+  x_vec <- pull(data, {{ x }})
+  y_vec <- pull(data, {{ y }})
+  g_vec <- pull(data, .rowid)
   .f.args <- list(...)
 
   # parametric ---------------------------------

@@ -73,29 +73,29 @@ long_to_wide_converter <- function(data,
                                    ...) {
   # initial cleanup
   data %<>%
-    select({{ x }}, {{ y }}, rowid = {{ subject.id }}) %>%
+    select({{ x }}, {{ y }}, .rowid = {{ subject.id }}) %>%
     mutate({{ x }} := droplevels(as.factor({{ x }}))) %>%
     arrange({{ x }})
 
   # if `subject.id` wasn't provided, create one for internal usage
-  if (!"rowid" %in% names(data)) {
+  if (!".rowid" %in% names(data)) {
     # the row number needs to be assigned for each participant in paired data
     if (paired) data %<>% group_by({{ x }})
 
     # unique id for each participant
-    data %<>% mutate(rowid = row_number())
+    data %<>% mutate(.rowid = row_number())
   }
 
   # NA removal
   data %<>%
     ungroup(.) %>%
-    nest_by(rowid, .key = "df") %>%
-    filter(sum(is.na(df)) == 0L) %>%
-    tidyr::unnest(cols = c(df))
+    nest_by(.rowid, .key = "nested_data") %>%
+    filter(sum(is.na(nested_data)) == 0L) %>%
+    tidyr::unnest(cols = c(nested_data))
 
   # convert to wide?
   if (spread && paired) data %<>% tidyr::pivot_wider(names_from = {{ x }}, values_from = {{ y }})
 
   # final clean-up
-  as_tibble(relocate(data, rowid) %>% arrange(rowid))
+  as_tibble(relocate(data, .rowid) %>% arrange(.rowid))
 }
