@@ -5,7 +5,7 @@ utils::globalVariables(
     ".",
     "effectsize",
     "estimate",
-    "rowid",
+    ".rowid",
     "statistic",
     "std.error",
     "term",
