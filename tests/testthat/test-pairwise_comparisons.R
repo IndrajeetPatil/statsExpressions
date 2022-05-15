@@ -94,7 +94,7 @@ test_that(
     )
 
     # Too fragile to test across platforms
-    # expect_snapshot(df6)
+    expect_snapshot(df6)
     expect_snapshot(df6$expression)
   }
 )
@@ -222,7 +222,7 @@ test_that(
     )
 
     # Too fragile to test across platforms
-    # expect_snapshot(df4)
+    expect_snapshot(df4)
     expect_snapshot(df4$expression)
   }
 )
@@ -293,7 +293,7 @@ test_that(
     )
 
     # Too fragile to test across platforms
-    # expect_snapshot(df4)
+    expect_snapshot(df4)
     expect_snapshot(df4$expression)
   }
 )
