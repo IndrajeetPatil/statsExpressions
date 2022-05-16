@@ -55,8 +55,6 @@ Suggests:
     survival,
     testthat (>= 3.1.4),
     utils
-Remotes:
-    easystats/parameters
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
