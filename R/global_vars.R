@@ -10,6 +10,7 @@ utils::globalVariables(
     "std.error",
     "term",
     ".counts",
+    "nested_data",
     "df",
     "df.error",
     "k.df",
