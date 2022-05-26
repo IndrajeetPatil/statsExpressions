@@ -8,7 +8,7 @@ message: 'To cite package "statsExpressions" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'statsExpressions: Tidy Dataframes and Expressions with Statistical Details'
-version: 1.3.1.9000
+version: 1.3.2.9000
 doi: 10.21105/joss.03236
 abstract: 'Utilities for producing dataframes with rich details for the most common
   types of statistical approaches and tests: parametric, nonparametric, robust, and
@@ -115,7 +115,7 @@ references:
     orcid: https://orcid.org/0000-0002-4287-4801
   year: '2022'
   url: https://CRAN.R-project.org/package=correlation
-  version: '>= 0.8.0'
+  version: '>= 0.8.1'
 - type: software
   title: datawizard
   abstract: 'datawizard: Easy Data Wrangling'
@@ -143,7 +143,7 @@ references:
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2022'
   url: https://easystats.github.io/datawizard/
-  version: '>= 0.4.0'
+  version: '>= 0.4.1'
 - type: software
   title: dplyr
   abstract: 'dplyr: A Grammar of Data Manipulation'
@@ -190,7 +190,7 @@ references:
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2022'
   url: https://easystats.github.io/effectsize/
-  version: '>= 0.6.0.1'
+  version: '>= 0.7.0'
 - type: software
   title: glue
   abstract: 'glue: Interpreted String Literals'
@@ -234,9 +234,13 @@ references:
     given-names: Brenton M.
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
+  - family-names: Arel-Bundock
+    given-names: Vincent
+    email: vincent.arel-bundock@umontreal.ca
+    orcid: https://orcid.org/0000-0003-2042-7063
   year: '2022'
   url: https://easystats.github.io/insight/
-  version: '>= 0.17.0'
+  version: '>= 0.17.1'
 - type: software
   title: magrittr
   abstract: 'magrittr: A Forward-Pipe Operator for R'
@@ -280,7 +284,7 @@ references:
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2022'
   url: https://easystats.github.io/parameters/
-  version: '>= 0.17.0'
+  version: '>= 0.18.0'
 - type: software
   title: performance
   abstract: 'performance: Assessment of Regression Models Performance'
@@ -481,7 +485,7 @@ references:
   authors:
   - family-names: Beath
     given-names: Ken
-    email: ken.beath@mq.edu.au
+    email: ken@kjbeath.com.au
   - family-names: Bolker
     given-names: Ben
     email: bolker@mcmaster.ca
@@ -586,6 +590,7 @@ references:
     email: hadley@rstudio.com
   year: '2022'
   url: https://CRAN.R-project.org/package=testthat
+  version: '>= 3.1.4'
 - type: software
   title: utils
   abstract: 'R: A Language and Environment for Statistical Computing'
