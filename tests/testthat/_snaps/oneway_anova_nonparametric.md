@@ -59,8 +59,8 @@
     Output
       [[1]]
       list(chi["Friedman"]^2 * "(" * 3 * ")" == "55.83", italic(p) == 
-          "4.56e-12", widehat(italic("W"))["Kendall"] == "0.17", CI["99%"] ~ 
-          "[" * "0.11", "1.00" * "]", italic("n")["pairs"] == "88")
+          "4.56e-12", widehat(italic("W"))["Kendall"] == "-0.35", CI["99%"] ~ 
+          "[" * "-0.85", "1.00" * "]", italic("n")["pairs"] == "88")
       
 
 ---
