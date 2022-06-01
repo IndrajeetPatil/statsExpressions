@@ -56,8 +56,8 @@ test_that(
         conf.level = 0.99
       )
 
-
     set.seed(123)
+    expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression)
 
     # without NAs
@@ -72,8 +72,8 @@ test_that(
         conf.level = 0.90
       )
 
-
     set.seed(123)
+    expect_snapshot(select(df2, -expression))
     expect_snapshot(df2$expression)
   }
 )
