@@ -182,10 +182,9 @@ contingency_table <- function(data,
       method      = "Bayesian one-way contingency table analysis"
     )
 
-    stats_df %<>%
-      mutate(expression = list(parse(text = glue("list(
+    stats_df %<>% mutate(expression = glue("list(
             log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
-            {prior_switch(method)}=='{format_value(prior.scale, k)}')")))) %>%
+            {prior_switch(method)}=='{format_value(prior.scale, k)}')")) %>%
       .glue_to_expression()
 
     # special case: return early since the expression has already been prepared

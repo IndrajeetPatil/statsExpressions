@@ -80,7 +80,7 @@ tidy_model_expressions <- function(data,
 .glue_to_expression <- function(data) {
   data %>%
     rowwise() %>%
-    mutate(expression = list(parse(text = expression))) %>%
+    mutate(expression = list(parse_expr(expression))) %>%
     ungroup() %>% # convert from `expression` to `language`
     mutate(expression = unlist(expression))
 }
