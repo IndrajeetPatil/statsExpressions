@@ -63,7 +63,7 @@
       1 desire     condition       55.8        3 4.56e-12 Friedman rank sum test
         effectsize  estimate conf.level conf.low conf.high conf.method         
         <chr>          <dbl>      <dbl>    <dbl>     <dbl> <chr>               
-      1 Kendall's W   -0.352       0.99   -0.854         1 percentile bootstrap
+      1 Kendall's W    0.211       0.99    0.140         1 percentile bootstrap
         conf.iterations n.obs
                   <int> <int>
       1             100    88
@@ -75,8 +75,8 @@
     Output
       [[1]]
       list(chi["Friedman"]^2 * "(" * 3 * ")" == "55.83", italic(p) == 
-          "4.56e-12", widehat(italic("W"))["Kendall"] == "-0.35", CI["99%"] ~ 
-          "[" * "-0.85", "1.00" * "]", italic("n")["pairs"] == "88")
+          "4.56e-12", widehat(italic("W"))["Kendall"] == "0.21", CI["99%"] ~ 
+          "[" * "0.14", "1.00" * "]", italic("n")["pairs"] == "88")
       
 
 ---

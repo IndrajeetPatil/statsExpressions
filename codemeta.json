@@ -269,7 +269,7 @@
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=effectsize"
+      "sameAs": "https://github.com/easystats/effectsize"
     },
     "7": {
       "@type": "SoftwareApplication",
@@ -402,7 +402,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4157.438KB",
+  "fileSize": "4159.168KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",

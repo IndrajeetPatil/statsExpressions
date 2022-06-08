@@ -41,6 +41,8 @@ Imports:
     tidyr,
     WRS2 (>= 1.1-3),
     zeallot
+Remotes:
+    easystats/effectsize
 Suggests:
     afex,
     ggplot2,
