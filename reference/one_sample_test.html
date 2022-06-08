@@ -133,32 +133,48 @@ Bayes FactordifferenceYesbayestestR::describe_posterior()
 be taken. Other data types (e.g., matrix,table, array, etc.) will <strong>not</strong>
 be accepted. Additionally, grouped data frames from <code>{dplyr}</code> should be
 ungrouped before they are entered as <code>data</code>.</p></dd>
+
+
 <dt>x</dt>
 <dd><p>A numeric variable from the dataframe <code>data</code>.</p></dd>
+
+
 <dt>type</dt>
 <dd><p>A character specifying the type of statistical approach:</p><ul><li><p><code>"parametric"</code></p></li>
 <li><p><code>"nonparametric"</code></p></li>
 <li><p><code>"robust"</code></p></li>
 <li><p><code>"bayes"</code></p></li>
 </ul><p>You can specify just the initial letter.</p></dd>
+
+
 <dt>test.value</dt>
 <dd><p>A number indicating the true value of the mean (Default:
 <code>0</code>).</p></dd>
+
+
 <dt>alternative</dt>
 <dd><p>a character string specifying the alternative
     hypothesis, must be one of <code>"two.sided"</code> (default),
     <code>"greater"</code> or <code>"less"</code>.  You can specify just the initial
     letter.</p></dd>
+
+
 <dt>k</dt>
 <dd><p>Number of digits after decimal point (should be an integer)
 (Default: <code>k = 2L</code>).</p></dd>
+
+
 <dt>conf.level</dt>
 <dd><p>Scalar between <code>0</code> and <code>1</code>. If unspecified, the defaults
 return <code>95%</code> confidence/credible intervals (<code>0.95</code>).</p></dd>
+
+
 <dt>tr</dt>
 <dd><p>Trim level for the mean when carrying out <code>robust</code> tests. In case
 of an error, try reducing the value of <code>tr</code>, which is by default set to
 <code>0.2</code>. Lowering the value might help.</p></dd>
+
+
 <dt>bf.prior</dt>
 <dd><p>A number between <code>0.5</code> and <code>2</code> (default <code>0.707</code>), the prior
 width to use in calculating Bayes factors and posterior estimates. In
@@ -166,15 +182,22 @@ addition to numeric arguments, several named values are also recognized:
 <code>"medium"</code>, <code>"wide"</code>, and <code>"ultrawide"</code>, corresponding to <em>r</em> scale values
 of 1/2, sqrt(2)/2, and 1, respectively. In case of an ANOVA, this value
 corresponds to scale for fixed effects.</p></dd>
+
+
 <dt>effsize.type</dt>
 <dd><p>Type of effect size needed for <em>parametric</em> tests. The
 argument can be <code>"d"</code> (for Cohen's <em>d</em>) or <code>"g"</code> (for Hedge's <em>g</em>).</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Currently ignored.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>The returned tibble data frame can contain some or all of the following columns (the exact columns will depend on the statistical test):</p><ul><li><p><code>statistic</code>: the numeric value of a statistic</p></li>
+    
+
+<p>The returned tibble data frame can contain some or all of the following columns (the exact columns will depend on the statistical test):</p><ul><li><p><code>statistic</code>: the numeric value of a statistic</p></li>
 <li><p><code>df</code>: the numeric value of a parameter being modeled (often degrees
 of freedom for the test)</p></li>
 <li><p><code>df.error</code> and <code>df</code>: relevant only if the statistic in question has
@@ -190,8 +213,10 @@ two degrees of freedom (e.g. anova)</p></li>
 <li><p><code>effectsize</code>: the name of the effect size</p></li>
 <li><p><code>n.obs</code>: number of observations</p></li>
 <li><p><code>expression</code>: pre-formatted expression containing statistical details</p></li>
-</ul><p>For examples of dataframe outputs, see examples and <a href="https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html">this vignette</a>.
-Note that all examples are preceded by <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed()</a></code> calls for reproducibility.</p>
+</ul><p>For examples of dataframe outputs, see examples and <a href="https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html">this vignette</a>.</p>
+
+
+<p>Note that all examples are preceded by <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed()</a></code> calls for reproducibility.</p>
     </div>
 
     <div class="section level2">

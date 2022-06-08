@@ -91,6 +91,8 @@ ignored.</p>
 be taken. Other data types (e.g., matrix,table, array, etc.) will <strong>not</strong>
 be accepted. Additionally, grouped data frames from <code>{dplyr}</code> should be
 ungrouped before they are entered as <code>data</code>.</p></dd>
+
+
 <dt>x</dt>
 <dd><p>The grouping (or independent) variable from <code>data</code>. In case of a
 repeated measures or within-subjects design, if <code>subject.id</code> argument is
@@ -100,8 +102,12 @@ internal identifier. So if your data is <strong>not</strong> sorted, the results
 be inaccurate when there are more than two levels in <code>x</code> and there are
 <code>NA</code>s present. The data is expected to be sorted by user in
 subject-1,subject-2, ..., pattern.</p></dd>
+
+
 <dt>y</dt>
 <dd><p>The response (or outcome or dependent) variable from <code>data</code>.</p></dd>
+
+
 <dt>subject.id</dt>
 <dd><p>Relevant in case of a repeated measures or within-subjects
 design (<code>paired = TRUE</code>, i.e.), it specifies the subject or repeated
@@ -111,20 +117,29 @@ sorted by such an id by the user and creates an internal identifier. So if
 your data is <strong>not</strong> sorted and you leave this argument unspecified, the
 results <em>can</em> be inaccurate when there are more than two levels in <code>x</code> and
 there are <code>NA</code>s present.</p></dd>
+
+
 <dt>paired</dt>
 <dd><p>Logical that decides whether the experimental design is
 repeated measures/within-subjects or between-subjects. The default is
 <code>FALSE</code>.</p></dd>
+
+
 <dt>spread</dt>
 <dd><p>Logical that decides whether the data frame needs to be
 converted from long/tidy to wide (default: <code>TRUE</code>). Relevant only if
 <code>paired = TRUE</code>.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Currently ignored.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A dataframe with <code>NA</code>s removed while respecting the
+    
+
+<p>A dataframe with <code>NA</code>s removed while respecting the
 between-or-within-subjects nature of the dataset.</p>
     </div>
 

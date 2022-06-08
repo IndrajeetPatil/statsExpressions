@@ -111,27 +111,40 @@ or <code><a href="https://rdrr.io/pkg/metaplus/man/metaplus.html" class="externa
 <li><p>as <code>y</code> and <code>SE</code> arguments in <code><a href="https://rdrr.io/pkg/metaBMA/man/meta_random.html" class="external-link">metaBMA::meta_random</a></code> (for <strong>Bayesian</strong>
 test).</p></li>
 </ul></dd>
+
+
 <dt>type</dt>
 <dd><p>A character specifying the type of statistical approach:</p><ul><li><p><code>"parametric"</code></p></li>
 <li><p><code>"nonparametric"</code></p></li>
 <li><p><code>"robust"</code></p></li>
 <li><p><code>"bayes"</code></p></li>
 </ul><p>You can specify just the initial letter.</p></dd>
+
+
 <dt>random</dt>
 <dd><p>The type of random effects distribution. One of "normal", "t-dist", "mixture", for standard normal, \(t\)-distribution or mixture of normals respectively.</p></dd>
+
+
 <dt>k</dt>
 <dd><p>Number of digits after decimal point (should be an integer)
 (Default: <code>k = 2L</code>).</p></dd>
+
+
 <dt>conf.level</dt>
 <dd><p>Scalar between <code>0</code> and <code>1</code>. If unspecified, the defaults
 return <code>95%</code> confidence/credible intervals (<code>0.95</code>).</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Additional arguments passed to the respective meta-analysis
 function.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>The returned tibble data frame can contain some or all of the following columns (the exact columns will depend on the statistical test):</p><ul><li><p><code>statistic</code>: the numeric value of a statistic</p></li>
+    
+
+<p>The returned tibble data frame can contain some or all of the following columns (the exact columns will depend on the statistical test):</p><ul><li><p><code>statistic</code>: the numeric value of a statistic</p></li>
 <li><p><code>df</code>: the numeric value of a parameter being modeled (often degrees
 of freedom for the test)</p></li>
 <li><p><code>df.error</code> and <code>df</code>: relevant only if the statistic in question has
@@ -147,8 +160,10 @@ two degrees of freedom (e.g. anova)</p></li>
 <li><p><code>effectsize</code>: the name of the effect size</p></li>
 <li><p><code>n.obs</code>: number of observations</p></li>
 <li><p><code>expression</code>: pre-formatted expression containing statistical details</p></li>
-</ul><p>For examples of dataframe outputs, see examples and <a href="https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html">this vignette</a>.
-Note that all examples are preceded by <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed()</a></code> calls for reproducibility.</p>
+</ul><p>For examples of dataframe outputs, see examples and <a href="https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html">this vignette</a>.</p>
+
+
+<p>Note that all examples are preceded by <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed()</a></code> calls for reproducibility.</p>
     </div>
     <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>

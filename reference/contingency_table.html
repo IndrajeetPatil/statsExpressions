@@ -203,58 +203,85 @@ BayesianNoNoNo
 be taken. Other data types (e.g., matrix,table, array, etc.) will <strong>not</strong>
 be accepted. Additionally, grouped data frames from <code>{dplyr}</code> should be
 ungrouped before they are entered as <code>data</code>.</p></dd>
+
+
 <dt>x</dt>
 <dd><p>The variable to use as the <strong>rows</strong> in the contingency table.</p></dd>
+
+
 <dt>y</dt>
 <dd><p>The variable to use as the <strong>columns</strong> in the contingency table.
 Default is <code>NULL</code>. If <code>NULL</code>, one-sample proportion test (a goodness of fit
 test) will be run for the <code>x</code> variable. Otherwise association test will be
 carried out.</p></dd>
+
+
 <dt>paired</dt>
 <dd><p>Logical indicating whether data came from a within-subjects or
 repeated measures design study (Default: <code>FALSE</code>). If <code>TRUE</code>, McNemar's
 test expression will be returned. If <code>FALSE</code>, Pearson's chi-square test will
 be returned.</p></dd>
+
+
 <dt>type</dt>
 <dd><p>A character specifying the type of statistical approach:</p><ul><li><p><code>"parametric"</code></p></li>
 <li><p><code>"nonparametric"</code></p></li>
 <li><p><code>"robust"</code></p></li>
 <li><p><code>"bayes"</code></p></li>
 </ul><p>You can specify just the initial letter.</p></dd>
+
+
 <dt>counts</dt>
 <dd><p>The variable in data containing counts, or <code>NULL</code> if each row
 represents a single observation.</p></dd>
+
+
 <dt>ratio</dt>
 <dd><p>A vector of proportions: the expected proportions for the
 proportion test (should sum to 1). Default is <code>NULL</code>, which means the null
 is equal theoretical proportions across the levels of the nominal variable.
 This means if there are two levels this will be <code>ratio = c(0.5,0.5)</code> or if
 there are four levels this will be <code>ratio = c(0.25,0.25,0.25,0.25)</code>, etc.</p></dd>
+
+
 <dt>k</dt>
 <dd><p>Number of digits after decimal point (should be an integer)
 (Default: <code>k = 2L</code>).</p></dd>
+
+
 <dt>conf.level</dt>
 <dd><p>Scalar between <code>0</code> and <code>1</code>. If unspecified, the defaults
 return <code>95%</code> confidence/credible intervals (<code>0.95</code>).</p></dd>
+
+
 <dt>sampling.plan</dt>
 <dd><p>Character describing the sampling plan. Possible options
 are <code>"indepMulti"</code> (independent multinomial; default), <code>"poisson"</code>,
 <code>"jointMulti"</code> (joint multinomial), <code>"hypergeom"</code> (hypergeometric). For
 more, see <code>?BayesFactor::contingencyTableBF()</code>.</p></dd>
+
+
 <dt>fixed.margin</dt>
 <dd><p>For the independent multinomial sampling plan, which
 margin is fixed (<code>"rows"</code> or <code>"cols"</code>). Defaults to <code>"rows"</code>.</p></dd>
+
+
 <dt>prior.concentration</dt>
 <dd><p>Specifies the prior concentration parameter, set
 to <code>1</code> by default. It indexes the expected deviation from the null
 hypothesis under the alternative, and corresponds to Gunel and Dickey's
 (1974) <code>"a"</code> parameter.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Additional arguments (currently ignored).</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>The returned tibble data frame can contain some or all of the following columns (the exact columns will depend on the statistical test):</p><ul><li><p><code>statistic</code>: the numeric value of a statistic</p></li>
+    
+
+<p>The returned tibble data frame can contain some or all of the following columns (the exact columns will depend on the statistical test):</p><ul><li><p><code>statistic</code>: the numeric value of a statistic</p></li>
 <li><p><code>df</code>: the numeric value of a parameter being modeled (often degrees
 of freedom for the test)</p></li>
 <li><p><code>df.error</code> and <code>df</code>: relevant only if the statistic in question has
@@ -270,8 +297,10 @@ two degrees of freedom (e.g. anova)</p></li>
 <li><p><code>effectsize</code>: the name of the effect size</p></li>
 <li><p><code>n.obs</code>: number of observations</p></li>
 <li><p><code>expression</code>: pre-formatted expression containing statistical details</p></li>
-</ul><p>For examples of dataframe outputs, see examples and <a href="https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html">this vignette</a>.
-Note that all examples are preceded by <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed()</a></code> calls for reproducibility.</p>
+</ul><p>For examples of dataframe outputs, see examples and <a href="https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html">this vignette</a>.</p>
+
+
+<p>Note that all examples are preceded by <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed()</a></code> calls for reproducibility.</p>
     </div>
 
     <div class="section level2">
