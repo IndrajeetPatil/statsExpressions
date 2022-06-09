@@ -1,7 +1,7 @@
 test_that(
   desc = "t_nonparametric works - between-subjects design",
   code = {
-    options(tibble.width = Inf)
+    withr::local_options(list(tibble.width = Inf))
 
     # between-subjects design -----------------------------------------------
 
@@ -27,6 +27,8 @@ test_that(
 test_that(
   desc = "t_nonparametric works - within-subjects design",
   code = {
+    withr::local_options(list(tibble.width = Inf))
+
     # within-subjects design -----------------------------------------------
 
     # data
@@ -74,7 +76,6 @@ test_that(
         paired = TRUE
       ))
 
-
     set.seed(123)
     expect_snapshot(select(df2, -expression))
     expect_snapshot(df2$expression)
@@ -84,6 +85,8 @@ test_that(
 test_that(
   desc = "works with subject id",
   code = {
+    withr::local_options(list(tibble.width = Inf))
+
     # works with subject id --------------------------------------------------
 
     # data

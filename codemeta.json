@@ -198,6 +198,18 @@
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "withr",
+      "name": "withr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=withr"
     }
   ],
   "softwareRequirements": {
@@ -402,7 +414,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4159.168KB",
+  "fileSize": "4187.677KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",

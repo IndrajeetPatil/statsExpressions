@@ -1,7 +1,7 @@
 test_that(
   desc = "parametric anova subtitles work (without NAs)",
   code = {
-    options(tibble.width = Inf)
+    withr::local_options(list(tibble.width = Inf))
 
     # parametric anova subtitles (without NAs) ------------------------------
 
@@ -15,7 +15,6 @@ test_that(
       k = 5,
       var.equal = FALSE
     )
-
 
     set.seed(123)
     expect_snapshot(select(df, -expression))
@@ -32,7 +31,6 @@ test_that(
       var.equal = TRUE
     )
 
-
     set.seed(123)
     expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression)
@@ -42,6 +40,7 @@ test_that(
 test_that(
   desc = "parametric anova subtitles with partial omega-squared",
   code = {
+    withr::local_options(list(tibble.width = Inf))
 
     # parametric anova subtitles (partial omega) ------------------------------
 
@@ -65,6 +64,7 @@ test_that(
 test_that(
   desc = "paired parametric anova subtitles work (without NAs)",
   code = {
+    withr::local_options(list(tibble.width = Inf))
     skip_if_not_installed("afex")
 
     # parametric repeated anova subtitles (basic) ----------------------------
@@ -91,6 +91,8 @@ test_that(
 test_that(
   desc = "too few obs",
   code = {
+    withr::local_options(list(tibble.width = Inf))
+
     # too few obs -------------------------------------------------------
 
     skip_if_not_installed("afex")
@@ -169,6 +171,7 @@ test_that(
 test_that(
   desc = "works with subject id",
   code = {
+    withr::local_options(list(tibble.width = Inf))
 
     # works with subject id ------------------------------------------------------
 

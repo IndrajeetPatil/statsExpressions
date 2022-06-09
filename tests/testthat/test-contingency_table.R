@@ -1,7 +1,7 @@
 test_that(
   desc = "contingency_table works",
   code = {
-    options(tibble.width = Inf)
+    withr::local_options(list(tibble.width = Inf))
 
     # contingency tab - without NAs ---------------------------------
 
@@ -52,6 +52,8 @@ test_that(
 test_that(
   desc = "paired contingency_table works ",
   code = {
+    withr::local_options(list(tibble.width = Inf))
+
     # paired data - without NAs and counts data ----------------------------
 
     # create data structure
@@ -127,6 +129,8 @@ test_that(
 test_that(
   desc = "Goodness of Fit contingency_table works without counts",
   code = {
+    withr::local_options(list(tibble.width = Inf))
+
     # one-sample test (without NAs) -------------------------------------
 
     set.seed(123)
@@ -175,6 +179,8 @@ test_that(
 test_that(
   desc = "bayesian (proportion test)",
   code = {
+    withr::local_options(list(tibble.width = Inf))
+
     # bayesian (proportion test) --------------------------------------
 
     # extracting results from where this function is implemented
@@ -205,6 +211,8 @@ test_that(
 test_that(
   desc = "bayesian (contingency tab)",
   code = {
+    withr::local_options(list(tibble.width = Inf))
+
     # bayesian (contingency tab) --------------------------------------
 
     # extracting results from where this function is implemented
