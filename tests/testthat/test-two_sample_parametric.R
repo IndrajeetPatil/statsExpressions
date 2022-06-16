@@ -1,8 +1,8 @@
+withr::local_options(list(tibble.width = Inf))
+
 test_that(
   desc = "parametric t-test works (between-subjects without NAs)",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     # parametric t-test (between-subjects without NAs) ----------------------
 
     # `statsExpressions` output
@@ -28,8 +28,6 @@ test_that(
 test_that(
   desc = "parametric t-test works (between-subjects with NAs)",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     # parametric t-test (between-subjects with NAs) --------------------------
 
     # `statsExpressions` output
@@ -56,8 +54,6 @@ test_that(
 test_that(
   desc = "parametric t-test works (within-subjects without NAs)",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     # parametric t-test (within-subjects without NAs) -----------------------
 
     # output from `statsExpressions` helper subtitle
@@ -85,8 +81,6 @@ test_that(
 test_that(
   desc = "parametric t-test works (within-subjects with NAs)",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     # parametric t-test (within-subjects with NAs) ---------------------------
 
     # output from `statsExpressions` helper subtitle
@@ -110,8 +104,6 @@ test_that(
 test_that(
   desc = "works with subject id",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     # works with subject id ------------------------------------------------
 
     # data

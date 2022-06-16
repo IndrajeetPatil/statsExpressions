@@ -1,8 +1,8 @@
+withr::local_options(list(tibble.width = Inf))
+
 test_that(
   desc = "t_nonparametric works - between-subjects design",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     # between-subjects design -----------------------------------------------
 
     # output
@@ -27,8 +27,6 @@ test_that(
 test_that(
   desc = "t_nonparametric works - within-subjects design",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     # within-subjects design -----------------------------------------------
 
     # data
@@ -85,8 +83,6 @@ test_that(
 test_that(
   desc = "works with subject id",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     # works with subject id --------------------------------------------------
 
     # data

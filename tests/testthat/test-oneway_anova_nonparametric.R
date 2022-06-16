@@ -1,10 +1,10 @@
+withr::local_options(list(tibble.width = Inf))
+
 # between-subjects ----------------------------------------------
 
 test_that(
   desc = "between-subjects",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     # without NA
     set.seed(123)
     df1 <-
@@ -43,8 +43,6 @@ test_that(
 test_that(
   desc = "within-subjects",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     #  with NAs
     set.seed(123)
     df1 <-
@@ -82,8 +80,6 @@ test_that(
 test_that(
   desc = "works with subject id",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     # works with subject id -----------------------------------------------
 
     # data

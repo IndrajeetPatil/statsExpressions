@@ -26,7 +26,6 @@ tidy_model_expressions <- function(data,
                                    k = 2L,
                                    effsize.type = "omega",
                                    ...) {
-
   # standardize the statistic naming
   statistic <- substring(tolower(statistic), 1L, 1L)
 

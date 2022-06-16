@@ -1,8 +1,8 @@
+withr::local_options(list(tibble.width = Inf))
+
 test_that(
   desc = "parametric anova subtitles work (without NAs)",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     # parametric anova subtitles (without NAs) ------------------------------
 
     # statsExpression output
@@ -40,8 +40,6 @@ test_that(
 test_that(
   desc = "parametric anova subtitles with partial omega-squared",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     # parametric anova subtitles (partial omega) ------------------------------
 
     # statsExpression output
@@ -64,7 +62,6 @@ test_that(
 test_that(
   desc = "paired parametric anova subtitles work (without NAs)",
   code = {
-    withr::local_options(list(tibble.width = Inf))
     skip_if_not_installed("afex")
 
     # parametric repeated anova subtitles (basic) ----------------------------
@@ -91,8 +88,6 @@ test_that(
 test_that(
   desc = "too few obs",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     # too few obs -------------------------------------------------------
 
     skip_if_not_installed("afex")
@@ -171,8 +166,6 @@ test_that(
 test_that(
   desc = "works with subject id",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     # works with subject id ------------------------------------------------------
 
     skip_if_not_installed("afex")

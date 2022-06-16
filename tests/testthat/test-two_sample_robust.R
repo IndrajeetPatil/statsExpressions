@@ -1,10 +1,10 @@
+withr::local_options(list(tibble.width = Inf))
+
 # within-subjects ------------------------------------------------------------
 
 test_that(
   desc = "t_robust - within-subjects - without NAs",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     # subtitle
     set.seed(123)
     df1 <- two_sample_test(
@@ -28,8 +28,6 @@ test_that(
 test_that(
   desc = "t_robust - within-subjects - with NAs",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     # subtitle
     set.seed(123)
     df1 <- two_sample_test(
@@ -51,8 +49,6 @@ test_that(
 test_that(
   desc = "t_robust - between-subjects - without NAs",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     # between-subjects ------------------------------------------------------
 
     # subtitle
@@ -76,8 +72,6 @@ test_that(
 test_that(
   desc = "t_robust - between-subjects - with NAs",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     set.seed(123)
     df1 <- two_sample_test(
       type = "r",
@@ -98,8 +92,6 @@ test_that(
 test_that(
   desc = "works with subject id",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     # works with subject id --------------------------------------
 
     # data

@@ -93,7 +93,6 @@ add_expression_col <- function(data,
                                k.df = 0L,
                                k.df.error = k.df,
                                ...) {
-
   # initial cleanup
   data %<>%
     rename_all(.funs = recode, "bayes.factor" = "bf10") %>%

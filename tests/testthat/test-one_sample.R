@@ -1,7 +1,8 @@
+withr::local_options(list(tibble.width = Inf))
+
 test_that(
   desc = "one_sample_test parametric works",
   code = {
-    withr::local_options(list(tibble.width = Inf))
     skip_if(getRversion() < "4.0")
 
     # parametric -------------------------------------------------
@@ -42,7 +43,6 @@ test_that(
 test_that(
   desc = "one_sample_test non-parametric works",
   code = {
-    withr::local_options(list(tibble.width = Inf))
     skip_if(getRversion() < "4.0")
 
     # non-parametric --------------------------------------------------
@@ -79,7 +79,6 @@ test_that(
 test_that(
   desc = "one_sample_test robust works",
   code = {
-    withr::local_options(list(tibble.width = Inf))
     skip_if(getRversion() < "4.0")
 
     # robust --------------------------------------------------
@@ -119,7 +118,6 @@ test_that(
 test_that(
   desc = "one_sample_test bayesian works",
   code = {
-    withr::local_options(list(tibble.width = Inf))
     skip_if(getRversion() < "4.0")
 
     # Bayesian -----------------------------------------------

@@ -1,10 +1,10 @@
+withr::local_options(list(tibble.width = Inf))
+
 # parametric --------------------------------------------------------------
 
 test_that(
   desc = "corr_test works - parametric",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     # with NA
     set.seed(123)
     df1 <- corr_test(
@@ -41,8 +41,6 @@ test_that(
 test_that(
   desc = "corr_test works - robust",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     # with NA
     set.seed(123)
     df1 <- corr_test(
@@ -78,8 +76,6 @@ test_that(
 test_that(
   desc = "corr_test works - nonparametric",
   code = {
-    withr::local_options(list(tibble.width = Inf))
-
     # with NA
     set.seed(123)
     df1 <- corr_test(
@@ -116,7 +112,6 @@ test_that(
 test_that(
   desc = "corr_test works - Bayesian",
   code = {
-    withr::local_options(list(tibble.width = Inf))
     skip_if(getRversion() < "4.0")
 
     # with NA
