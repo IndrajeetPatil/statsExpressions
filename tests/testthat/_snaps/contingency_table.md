@@ -243,21 +243,21 @@
       [[1]]
       [[1]][[1]]
       list(log[e] * (BF["01"]) == "-3.335", widehat(italic("V"))["Cramer"]^"posterior" == 
-          "0.479", CI["89%"]^HDI ~ "[" * "0.253", "0.668" * "]", italic("a")["Gunel-Dickey"] == 
+          "0.479", CI["89%"]^ETI ~ "[" * "0.253", "0.668" * "]", italic("a")["Gunel-Dickey"] == 
           "1.000")
       
       
       [[2]]
       [[2]][[1]]
       list(log[e] * (BF["01"]) == "-214.255", widehat(italic("V"))["Cramer"]^"posterior" == 
-          "0.455", CI["99%"]^HDI ~ "[" * "0.401", "0.507" * "]", italic("a")["Gunel-Dickey"] == 
+          "0.455", CI["99%"]^ETI ~ "[" * "0.401", "0.507" * "]", italic("a")["Gunel-Dickey"] == 
           "1.000")
       
       
       [[3]]
       [[3]][[1]]
       list(log[e] * (BF["01"]) == "-213.873", widehat(italic("V"))["Cramer"]^"posterior" == 
-          "0.454", CI["95%"]^HDI ~ "[" * "0.415", "0.493" * "]", italic("a")["Gunel-Dickey"] == 
+          "0.454", CI["95%"]^ETI ~ "[" * "0.415", "0.493" * "]", italic("a")["Gunel-Dickey"] == 
           "1.500")
       
       

@@ -9,6 +9,7 @@
 #' @export
 tidy_model_parameters <- function(model, ...) {
   stats_df <- model_parameters(model, verbose = FALSE, ...) %>%
+    mutate(conf.method = . %@% "ci_method") %>%
     select(where(~ !all(is.na(.x))), -matches("Difference")) %>% # remove columns where all rows are NAs
     standardize_names(style = "broom") %>%
     rename_all(~ gsub("cramers.", "", .x)) %>%
@@ -26,7 +27,7 @@ tidy_model_parameters <- function(model, ...) {
       standardize_names(style = "broom") %>%
       rename("estimate" = "r.squared") %>%
       filter(if_any(matches("component"), ~ (.x == "conditional"))) %>%
-      mutate(effectsize = "Bayesian R-squared")
+      mutate(effectsize = "Bayesian R-squared", conf.method = "HDI")
 
     # remove estimates and CIs and use R2 dataframe instead
     stats_df %<>%

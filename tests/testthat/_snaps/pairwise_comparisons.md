@@ -439,7 +439,7 @@
     Code
       df4
     Output
-      # A tibble: 6 x 18
+      # A tibble: 6 x 19
         group1 group2 term       effectsize      estimate conf.level conf.low
         <chr>  <chr>  <chr>      <chr>              <dbl>      <dbl>    <dbl>
       1 HDHF   HDLF   Difference Bayesian t-test    1.10        0.95   0.488 
@@ -456,14 +456,14 @@
       4    0.0583 0.968           0.167 cauchy                          0       0.707
       5    1.60   0.999           0     cauchy                          0       0.707
       6    2.15   1               0     cauchy                          0       0.707
-            bf10 log_e_bf10 n.obs expression test       
-           <dbl>      <dbl> <int> <list>     <chr>      
-      1 4.16e+ 1      3.73     88 <language> Student's t
-      2 5.83e- 1     -0.539    88 <language> Student's t
-      3 1.20e+10     23.2      88 <language> Student's t
-      4 6.98e- 1     -0.359    88 <language> Student's t
-      5 1.81e+ 1      2.90     88 <language> Student's t
-      6 4.81e+ 6     15.4      88 <language> Student's t
+            bf10 conf.method log_e_bf10 n.obs expression test       
+           <dbl> <chr>            <dbl> <int> <list>     <chr>      
+      1 4.16e+ 1 ETI              3.73     88 <language> Student's t
+      2 5.83e- 1 ETI             -0.539    88 <language> Student's t
+      3 1.20e+10 ETI             23.2      88 <language> Student's t
+      4 6.98e- 1 ETI             -0.359    88 <language> Student's t
+      5 1.81e+ 1 ETI              2.90     88 <language> Student's t
+      6 4.81e+ 6 ETI             15.4      88 <language> Student's t
 
 ---
 
@@ -585,7 +585,7 @@
     Code
       df4
     Output
-      # A tibble: 3 x 18
+      # A tibble: 3 x 19
         group1 group2 term       effectsize      estimate conf.level conf.low
         <chr>  <chr>  <chr>      <chr>              <dbl>      <dbl>    <dbl>
       1 Wine A Wine B Difference Bayesian t-test  0.00721       0.95  -0.0418
@@ -596,11 +596,11 @@
       1    0.0562 0.624         0.404   cauchy                          0       0.707
       2    0.140  0.990         0.00553 cauchy                          0       0.707
       3    0.110  1.00          0       cauchy                          0       0.707
-          bf10 log_e_bf10 n.obs expression test       
-         <dbl>      <dbl> <int> <list>     <chr>      
-      1  0.235      -1.45    22 <language> Student's t
-      2  3.71        1.31    22 <language> Student's t
-      3 50.5         3.92    22 <language> Student's t
+          bf10 conf.method log_e_bf10 n.obs expression test       
+         <dbl> <chr>            <dbl> <int> <list>     <chr>      
+      1  0.235 ETI              -1.45    22 <language> Student's t
+      2  3.71  ETI               1.31    22 <language> Student's t
+      3 50.5   ETI               3.92    22 <language> Student's t
 
 ---
 

@@ -41,9 +41,6 @@
 #'   `language` type.
 #' @param effsize.text A character that specifies the relevant effect size.
 #' @param prior.type The type of prior.
-#' @param conf.method The type of index used for Credible Interval. Can be
-#'   `"hdi"` (default), `"eti"`, or `"si"` (see `si()`, `hdi()`, `eti()`
-#'   functions from `bayestestR` package).
 #' @param k Number of digits after decimal point (should be an integer)
 #'   (Default: `k = 2L`).
 #' @param ... Currently ignored.
@@ -88,7 +85,6 @@ add_expression_col <- function(data,
                                  list(quote(italic("n")["pairs"])),
                                  list(quote(italic("n")["obs"]))
                                ),
-                               conf.method = "HDI",
                                k = 2L,
                                k.df = 0L,
                                k.df.error = k.df,
@@ -115,7 +111,6 @@ add_expression_col <- function(data,
     statistic.text     = statistic.text %||% stat_text_switch(method),
     es.text            = effsize.text %||% estimate_type_switch(effectsize),
     prior.distribution = prior_switch(method),
-    conf.method        = toupper(conf.method),
     n.obs              = .prettyNum(n)
   )
 

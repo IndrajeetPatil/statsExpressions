@@ -3,7 +3,7 @@
     Code
       dim(df1)
     Output
-      [1]  7 17
+      [1]  7 18
 
 ---
 
@@ -19,7 +19,7 @@
     Code
       dim(df2)
     Output
-      [1]  6 17
+      [1]  6 18
 
 ---
 
@@ -35,7 +35,7 @@
     Code
       dim(df1)
     Output
-      [1]  7 19
+      [1]  7 20
 
 ---
 
@@ -51,7 +51,7 @@
     Code
       dim(df2)
     Output
-      [1]  8 19
+      [1]  8 20
 
 ---
 

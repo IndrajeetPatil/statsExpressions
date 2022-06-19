@@ -13,7 +13,6 @@ add_expression_col(
   n = NULL,
   n.text = ifelse(paired, list(quote(italic("n")["pairs"])),
     list(quote(italic("n")["obs"]))),
-  conf.method = "HDI",
   k = 2L,
   k.df = 0L,
   k.df.error = k.df,
@@ -57,10 +56,6 @@ what the \code{n} stands for. It defaults to \code{quote(italic("n")["pairs"])} 
 \code{paired = TRUE}, and to \code{quote(italic("n")["obs"])} if \code{paired = FALSE}. If
 you wish to customize this further, you will need to provide object of
 \code{language} type.}
-
-\item{conf.method}{The type of index used for Credible Interval. Can be
-\code{"hdi"} (default), \code{"eti"}, or \code{"si"} (see \code{si()}, \code{hdi()}, \code{eti()}
-functions from \code{bayestestR} package).}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2L}).}
