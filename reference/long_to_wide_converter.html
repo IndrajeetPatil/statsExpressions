@@ -73,15 +73,15 @@ ignored.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">long_to_wide_converter</span><span class="op">(</span>
-  <span class="va">data</span>,
-  <span class="va">x</span>,
-  <span class="va">y</span>,
-  subject.id <span class="op">=</span> <span class="cn">NULL</span>,
-  paired <span class="op">=</span> <span class="cn">TRUE</span>,
-  spread <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">long_to_wide_converter</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">y</span>,</span>
+<span>  subject.id <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  paired <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  spread <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -145,18 +145,18 @@ between-or-within-subjects nature of the dataset.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># for reproducibility</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># repeated measures design</span></span>
-<span class="r-in"><span class="fu">long_to_wide_converter</span><span class="op">(</span></span>
-<span class="r-in">  data       <span class="op">=</span> <span class="va">bugs_long</span>,</span>
-<span class="r-in">  x          <span class="op">=</span> <span class="va">condition</span>,</span>
-<span class="r-in">  y          <span class="op">=</span> <span class="va">desire</span>,</span>
-<span class="r-in">  subject.id <span class="op">=</span> <span class="va">subject</span>,</span>
-<span class="r-in">  paired     <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span class="r-in"><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># for reproducibility</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># repeated measures design</span></span></span>
+<span class="r-in"><span><span class="fu">long_to_wide_converter</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data       <span class="op">=</span> <span class="va">bugs_long</span>,</span></span>
+<span class="r-in"><span>  x          <span class="op">=</span> <span class="va">condition</span>,</span></span>
+<span class="r-in"><span>  y          <span class="op">=</span> <span class="va">desire</span>,</span></span>
+<span class="r-in"><span>  subject.id <span class="op">=</span> <span class="va">subject</span>,</span></span>
+<span class="r-in"><span>  paired     <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 88 × 5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="font-weight: bold;">.rowid</span>  <span style="font-weight: bold;">HDHF</span>  <span style="font-weight: bold;">HDLF</span>  <span style="font-weight: bold;">LDHF</span>  <span style="font-weight: bold;">LDLF</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -171,14 +171,14 @@ between-or-within-subjects nature of the dataset.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     11   0     0     2.5   0  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>     12  10     8.5   7.5   9.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 78 more rows</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># independent measures design</span></span>
-<span class="r-in"><span class="fu">long_to_wide_converter</span><span class="op">(</span></span>
-<span class="r-in">  data   <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,</span>
-<span class="r-in">  x      <span class="op">=</span> <span class="va">vore</span>,</span>
-<span class="r-in">  y      <span class="op">=</span> <span class="va">brainwt</span>,</span>
-<span class="r-in">  paired <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># independent measures design</span></span></span>
+<span class="r-in"><span><span class="fu">long_to_wide_converter</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data   <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,</span></span>
+<span class="r-in"><span>  x      <span class="op">=</span> <span class="va">vore</span>,</span></span>
+<span class="r-in"><span>  y      <span class="op">=</span> <span class="va">brainwt</span>,</span></span>
+<span class="r-in"><span>  paired <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 51 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="font-weight: bold;">.rowid</span> <span style="font-weight: bold;">vore</span>  <span style="font-weight: bold;">brainwt</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -204,7 +204,7 @@ between-or-within-subjects nature of the dataset.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.9000.</p>
 </div>
 
     </footer></div>

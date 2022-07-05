@@ -167,20 +167,20 @@ comparisons between group levels with corrections for multiple testing.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">pairwise_comparisons</span><span class="op">(</span>
-  <span class="va">data</span>,
-  <span class="va">x</span>,
-  <span class="va">y</span>,
-  subject.id <span class="op">=</span> <span class="cn">NULL</span>,
-  type <span class="op">=</span> <span class="st">"parametric"</span>,
-  paired <span class="op">=</span> <span class="cn">FALSE</span>,
-  var.equal <span class="op">=</span> <span class="cn">FALSE</span>,
-  tr <span class="op">=</span> <span class="fl">0.2</span>,
-  bf.prior <span class="op">=</span> <span class="fl">0.707</span>,
-  p.adjust.method <span class="op">=</span> <span class="st">"holm"</span>,
-  k <span class="op">=</span> <span class="fl">2L</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pairwise_comparisons</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">y</span>,</span>
+<span>  subject.id <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"parametric"</span>,</span>
+<span>  paired <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  var.equal <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  tr <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span>  bf.prior <span class="op">=</span> <span class="fl">0.707</span>,</span>
+<span>  p.adjust.method <span class="op">=</span> <span class="st">"holm"</span>,</span>
+<span>  k <span class="op">=</span> <span class="fl">2L</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -302,46 +302,46 @@ two degrees of freedom (e.g. anova)</p></li>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="co"># for reproducibility</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">PMCMRplus</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># show all columns and make the column titles bold</span></span>
-<span class="r-in"><span class="co"># as a user, you don't need to do this; this is just for the package website</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>tibble.width <span class="op">=</span> <span class="cn">Inf</span>, pillar.bold <span class="op">=</span> <span class="cn">TRUE</span>, pillar.neg <span class="op">=</span> <span class="cn">TRUE</span>, pillar.subtle_num <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">#------------------- between-subjects design ----------------------------</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># parametric</span></span>
-<span class="r-in"><span class="co"># if `var.equal = TRUE`, then Student's t-test will be run</span></span>
-<span class="r-in"><span class="fu">pairwise_comparisons</span><span class="op">(</span></span>
-<span class="r-in">  data            <span class="op">=</span> <span class="va">mtcars</span>,</span>
-<span class="r-in">  x               <span class="op">=</span> <span class="va">cyl</span>,</span>
-<span class="r-in">  y               <span class="op">=</span> <span class="va">wt</span>,</span>
-<span class="r-in">  type            <span class="op">=</span> <span class="st">"parametric"</span>,</span>
-<span class="r-in">  var.equal       <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">  paired          <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span class="r-in">  p.adjust.method <span class="op">=</span> <span class="st">"none"</span></span>
-<span class="r-in"><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="co"># for reproducibility</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">PMCMRplus</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># show all columns and make the column titles bold</span></span></span>
+<span class="r-in"><span><span class="co"># as a user, you don't need to do this; this is just for the package website</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>tibble.width <span class="op">=</span> <span class="cn">Inf</span>, pillar.bold <span class="op">=</span> <span class="cn">TRUE</span>, pillar.neg <span class="op">=</span> <span class="cn">TRUE</span>, pillar.subtle_num <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#------------------- between-subjects design ----------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># parametric</span></span></span>
+<span class="r-in"><span><span class="co"># if `var.equal = TRUE`, then Student's t-test will be run</span></span></span>
+<span class="r-in"><span><span class="fu">pairwise_comparisons</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data            <span class="op">=</span> <span class="va">mtcars</span>,</span></span>
+<span class="r-in"><span>  x               <span class="op">=</span> <span class="va">cyl</span>,</span></span>
+<span class="r-in"><span>  y               <span class="op">=</span> <span class="va">wt</span>,</span></span>
+<span class="r-in"><span>  type            <span class="op">=</span> <span class="st">"parametric"</span>,</span></span>
+<span class="r-in"><span>  var.equal       <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>  paired          <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
+<span class="r-in"><span>  p.adjust.method <span class="op">=</span> <span class="st">"none"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">group1</span> <span style="font-weight: bold;">group2</span>     <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">p.adjust.method</span> <span style="font-weight: bold;">test</span>        <span style="font-weight: bold;">expression</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 4      6      <span style="color: #949494;">0.0</span>10<span style="text-decoration: underline;">6</span>      None            Student's t <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 4      8      <span style="color: #949494;">0.000</span><span style="color: #949494; text-decoration: underline;">000</span>207 None            Student's t <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 6      8      <span style="color: #949494;">0.00</span>5<span style="text-decoration: underline;">16</span>     None            Student's t <span style="color: #949494;">&lt;language&gt;</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># if `var.equal = FALSE`, then Games-Howell test will be run</span></span>
-<span class="r-in"><span class="fu">pairwise_comparisons</span><span class="op">(</span></span>
-<span class="r-in">  data            <span class="op">=</span> <span class="va">mtcars</span>,</span>
-<span class="r-in">  x               <span class="op">=</span> <span class="va">cyl</span>,</span>
-<span class="r-in">  y               <span class="op">=</span> <span class="va">wt</span>,</span>
-<span class="r-in">  type            <span class="op">=</span> <span class="st">"parametric"</span>,</span>
-<span class="r-in">  var.equal       <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span class="r-in">  paired          <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span class="r-in">  p.adjust.method <span class="op">=</span> <span class="st">"bonferroni"</span></span>
-<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># if `var.equal = FALSE`, then Games-Howell test will be run</span></span></span>
+<span class="r-in"><span><span class="fu">pairwise_comparisons</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data            <span class="op">=</span> <span class="va">mtcars</span>,</span></span>
+<span class="r-in"><span>  x               <span class="op">=</span> <span class="va">cyl</span>,</span></span>
+<span class="r-in"><span>  y               <span class="op">=</span> <span class="va">wt</span>,</span></span>
+<span class="r-in"><span>  type            <span class="op">=</span> <span class="st">"parametric"</span>,</span></span>
+<span class="r-in"><span>  var.equal       <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
+<span class="r-in"><span>  paired          <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
+<span class="r-in"><span>  p.adjust.method <span class="op">=</span> <span class="st">"bonferroni"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 9</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">group1</span> <span style="font-weight: bold;">group2</span> <span style="font-weight: bold;">statistic</span>   <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">alternative</span> <span style="font-weight: bold;">distribution</span> <span style="font-weight: bold;">p.adjust.method</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span>
@@ -353,16 +353,16 @@ two degrees of freedom (e.g. anova)</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Games-Howell <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Games-Howell <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Games-Howell <span style="color: #949494;">&lt;language&gt;</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># non-parametric (Dunn test)</span></span>
-<span class="r-in"><span class="fu">pairwise_comparisons</span><span class="op">(</span></span>
-<span class="r-in">  data            <span class="op">=</span> <span class="va">mtcars</span>,</span>
-<span class="r-in">  x               <span class="op">=</span> <span class="va">cyl</span>,</span>
-<span class="r-in">  y               <span class="op">=</span> <span class="va">wt</span>,</span>
-<span class="r-in">  type            <span class="op">=</span> <span class="st">"nonparametric"</span>,</span>
-<span class="r-in">  paired          <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span class="r-in">  p.adjust.method <span class="op">=</span> <span class="st">"none"</span></span>
-<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># non-parametric (Dunn test)</span></span></span>
+<span class="r-in"><span><span class="fu">pairwise_comparisons</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data            <span class="op">=</span> <span class="va">mtcars</span>,</span></span>
+<span class="r-in"><span>  x               <span class="op">=</span> <span class="va">cyl</span>,</span></span>
+<span class="r-in"><span>  y               <span class="op">=</span> <span class="va">wt</span>,</span></span>
+<span class="r-in"><span>  type            <span class="op">=</span> <span class="st">"nonparametric"</span>,</span></span>
+<span class="r-in"><span>  paired          <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
+<span class="r-in"><span>  p.adjust.method <span class="op">=</span> <span class="st">"none"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 9</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">group1</span> <span style="font-weight: bold;">group2</span> <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">alternative</span> <span style="font-weight: bold;">distribution</span> <span style="font-weight: bold;">p.adjust.method</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span>
@@ -374,16 +374,16 @@ two degrees of freedom (e.g. anova)</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Dunn  <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Dunn  <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Dunn  <span style="color: #949494;">&lt;language&gt;</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># robust (Yuen's trimmed means *t*-test)</span></span>
-<span class="r-in"><span class="fu">pairwise_comparisons</span><span class="op">(</span></span>
-<span class="r-in">  data            <span class="op">=</span> <span class="va">mtcars</span>,</span>
-<span class="r-in">  x               <span class="op">=</span> <span class="va">cyl</span>,</span>
-<span class="r-in">  y               <span class="op">=</span> <span class="va">wt</span>,</span>
-<span class="r-in">  type            <span class="op">=</span> <span class="st">"robust"</span>,</span>
-<span class="r-in">  paired          <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span class="r-in">  p.adjust.method <span class="op">=</span> <span class="st">"fdr"</span></span>
-<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># robust (Yuen's trimmed means *t*-test)</span></span></span>
+<span class="r-in"><span><span class="fu">pairwise_comparisons</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data            <span class="op">=</span> <span class="va">mtcars</span>,</span></span>
+<span class="r-in"><span>  x               <span class="op">=</span> <span class="va">cyl</span>,</span></span>
+<span class="r-in"><span>  y               <span class="op">=</span> <span class="va">wt</span>,</span></span>
+<span class="r-in"><span>  type            <span class="op">=</span> <span class="st">"robust"</span>,</span></span>
+<span class="r-in"><span>  paired          <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
+<span class="r-in"><span>  p.adjust.method <span class="op">=</span> <span class="st">"fdr"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 10</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">group1</span> <span style="font-weight: bold;">group2</span> <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span>  <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">p.adjust.method</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span>
@@ -395,16 +395,16 @@ two degrees of freedom (e.g. anova)</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Yuen's trimmed means <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Yuen's trimmed means <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Yuen's trimmed means <span style="color: #949494;">&lt;language&gt;</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Bayes Factor (Student's *t*-test)</span></span>
-<span class="r-in"><span class="fu">pairwise_comparisons</span><span class="op">(</span></span>
-<span class="r-in">  data   <span class="op">=</span> <span class="va">mtcars</span>,</span>
-<span class="r-in">  x      <span class="op">=</span> <span class="va">cyl</span>,</span>
-<span class="r-in">  y      <span class="op">=</span> <span class="va">wt</span>,</span>
-<span class="r-in">  type   <span class="op">=</span> <span class="st">"bayes"</span>,</span>
-<span class="r-in">  paired <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 18</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Bayes Factor (Student's *t*-test)</span></span></span>
+<span class="r-in"><span><span class="fu">pairwise_comparisons</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data   <span class="op">=</span> <span class="va">mtcars</span>,</span></span>
+<span class="r-in"><span>  x      <span class="op">=</span> <span class="va">cyl</span>,</span></span>
+<span class="r-in"><span>  y      <span class="op">=</span> <span class="va">wt</span>,</span></span>
+<span class="r-in"><span>  type   <span class="op">=</span> <span class="st">"bayes"</span>,</span></span>
+<span class="r-in"><span>  paired <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 19</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">group1</span> <span style="font-weight: bold;">group2</span> <span style="font-weight: bold;">term</span>       <span style="font-weight: bold;">effectsize</span>      <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 4      6      Difference Bayesian t-test   -<span style="color: #949494;">0.</span><span style="color: #BB0000;">686</span>       <span style="color: #949494;">0.</span>95    -<span style="color: #BB0000;">1.22</span></span>
@@ -415,24 +415,24 @@ two degrees of freedom (e.g. anova)</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>   -<span style="color: #949494;">0.</span><span style="color: #BB0000;">157</span>  <span style="color: #949494;">0.</span>992               <span style="color: #949494;">0</span> cauchy                          <span style="color: #949494;">0</span>       <span style="color: #949494;">0.</span>707</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>   -<span style="color: #BB0000;">1.01</span>   1                   <span style="color: #949494;">0</span> cauchy                          <span style="color: #949494;">0</span>       <span style="color: #949494;">0.</span>707</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>   -<span style="color: #949494;">0.0</span><span style="color: #BB0000;">91</span><span style="color: #BB0000; text-decoration: underline;">0</span> <span style="color: #949494;">0.</span>987               <span style="color: #949494;">0</span> cauchy                          <span style="color: #949494;">0</span>       <span style="color: #949494;">0.</span>707</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="font-weight: bold;">bf10</span> <span style="font-weight: bold;">log_e_bf10</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span> <span style="font-weight: bold;">test</span>       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>   11.4        2.44    18 <span style="color: #949494;">&lt;language&gt;</span> Student's t</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> <span style="text-decoration: underline;">5</span>22<span style="color: #949494;">2</span>.         8.56    25 <span style="color: #949494;">&lt;language&gt;</span> Student's t</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>    5.36       1.68    21 <span style="color: #949494;">&lt;language&gt;</span> Student's t</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">#------------------- within-subjects design ----------------------------</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># parametric (Student's *t*-test)</span></span>
-<span class="r-in"><span class="fu">pairwise_comparisons</span><span class="op">(</span></span>
-<span class="r-in">  data            <span class="op">=</span> <span class="va">bugs_long</span>,</span>
-<span class="r-in">  x               <span class="op">=</span> <span class="va">condition</span>,</span>
-<span class="r-in">  y               <span class="op">=</span> <span class="va">desire</span>,</span>
-<span class="r-in">  subject.id      <span class="op">=</span> <span class="va">subject</span>,</span>
-<span class="r-in">  type            <span class="op">=</span> <span class="st">"parametric"</span>,</span>
-<span class="r-in">  paired          <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">  p.adjust.method <span class="op">=</span> <span class="st">"BH"</span></span>
-<span class="r-in"><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="font-weight: bold;">bf10</span> <span style="font-weight: bold;">conf.method</span> <span style="font-weight: bold;">log_e_bf10</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span> <span style="font-weight: bold;">test</span>       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>   11.4  ETI               2.44    18 <span style="color: #949494;">&lt;language&gt;</span> Student's t</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> <span style="text-decoration: underline;">5</span>22<span style="color: #949494;">2</span>.   ETI               8.56    25 <span style="color: #949494;">&lt;language&gt;</span> Student's t</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>    5.36 ETI               1.68    21 <span style="color: #949494;">&lt;language&gt;</span> Student's t</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#------------------- within-subjects design ----------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># parametric (Student's *t*-test)</span></span></span>
+<span class="r-in"><span><span class="fu">pairwise_comparisons</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data            <span class="op">=</span> <span class="va">bugs_long</span>,</span></span>
+<span class="r-in"><span>  x               <span class="op">=</span> <span class="va">condition</span>,</span></span>
+<span class="r-in"><span>  y               <span class="op">=</span> <span class="va">desire</span>,</span></span>
+<span class="r-in"><span>  subject.id      <span class="op">=</span> <span class="va">subject</span>,</span></span>
+<span class="r-in"><span>  type            <span class="op">=</span> <span class="st">"parametric"</span>,</span></span>
+<span class="r-in"><span>  paired          <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>  p.adjust.method <span class="op">=</span> <span class="st">"BH"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">group1</span> <span style="font-weight: bold;">group2</span>  <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">p.adjust.method</span> <span style="font-weight: bold;">test</span>        <span style="font-weight: bold;">expression</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
@@ -442,17 +442,17 @@ two degrees of freedom (e.g. anova)</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> HDLF   LDHF   6.74<span style="color: #949494;">e</span><span style="color: #BB0000;">- 2</span> FDR             Student's t <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> HDLF   LDLF   1.99<span style="color: #949494;">e</span><span style="color: #BB0000;">- 3</span> FDR             Student's t <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> LDHF   LDLF   6.66<span style="color: #949494;">e</span><span style="color: #BB0000;">- 9</span> FDR             Student's t <span style="color: #949494;">&lt;language&gt;</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># non-parametric (Durbin-Conover test)</span></span>
-<span class="r-in"><span class="fu">pairwise_comparisons</span><span class="op">(</span></span>
-<span class="r-in">  data            <span class="op">=</span> <span class="va">bugs_long</span>,</span>
-<span class="r-in">  x               <span class="op">=</span> <span class="va">condition</span>,</span>
-<span class="r-in">  y               <span class="op">=</span> <span class="va">desire</span>,</span>
-<span class="r-in">  subject.id      <span class="op">=</span> <span class="va">subject</span>,</span>
-<span class="r-in">  type            <span class="op">=</span> <span class="st">"nonparametric"</span>,</span>
-<span class="r-in">  paired          <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">  p.adjust.method <span class="op">=</span> <span class="st">"BY"</span></span>
-<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># non-parametric (Durbin-Conover test)</span></span></span>
+<span class="r-in"><span><span class="fu">pairwise_comparisons</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data            <span class="op">=</span> <span class="va">bugs_long</span>,</span></span>
+<span class="r-in"><span>  x               <span class="op">=</span> <span class="va">condition</span>,</span></span>
+<span class="r-in"><span>  y               <span class="op">=</span> <span class="va">desire</span>,</span></span>
+<span class="r-in"><span>  subject.id      <span class="op">=</span> <span class="va">subject</span>,</span></span>
+<span class="r-in"><span>  type            <span class="op">=</span> <span class="st">"nonparametric"</span>,</span></span>
+<span class="r-in"><span>  paired          <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>  p.adjust.method <span class="op">=</span> <span class="st">"BY"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 9</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">group1</span> <span style="font-weight: bold;">group2</span> <span style="font-weight: bold;">statistic</span>  <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">alternative</span> <span style="font-weight: bold;">distribution</span> <span style="font-weight: bold;">p.adjust.method</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span>
@@ -470,17 +470,17 @@ two degrees of freedom (e.g. anova)</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Durbin-Conover <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Durbin-Conover <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Durbin-Conover <span style="color: #949494;">&lt;language&gt;</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># robust (Yuen's trimmed means t-test)</span></span>
-<span class="r-in"><span class="fu">pairwise_comparisons</span><span class="op">(</span></span>
-<span class="r-in">  data            <span class="op">=</span> <span class="va">bugs_long</span>,</span>
-<span class="r-in">  x               <span class="op">=</span> <span class="va">condition</span>,</span>
-<span class="r-in">  y               <span class="op">=</span> <span class="va">desire</span>,</span>
-<span class="r-in">  subject.id      <span class="op">=</span> <span class="va">subject</span>,</span>
-<span class="r-in">  type            <span class="op">=</span> <span class="st">"robust"</span>,</span>
-<span class="r-in">  paired          <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">  p.adjust.method <span class="op">=</span> <span class="st">"hommel"</span></span>
-<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># robust (Yuen's trimmed means t-test)</span></span></span>
+<span class="r-in"><span><span class="fu">pairwise_comparisons</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data            <span class="op">=</span> <span class="va">bugs_long</span>,</span></span>
+<span class="r-in"><span>  x               <span class="op">=</span> <span class="va">condition</span>,</span></span>
+<span class="r-in"><span>  y               <span class="op">=</span> <span class="va">desire</span>,</span></span>
+<span class="r-in"><span>  subject.id      <span class="op">=</span> <span class="va">subject</span>,</span></span>
+<span class="r-in"><span>  type            <span class="op">=</span> <span class="st">"robust"</span>,</span></span>
+<span class="r-in"><span>  paired          <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>  p.adjust.method <span class="op">=</span> <span class="st">"hommel"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 11</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">group1</span> <span style="font-weight: bold;">group2</span> <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span>     <span style="font-weight: bold;">p.value</span>  <span style="font-weight: bold;">p.crit</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -498,17 +498,17 @@ two degrees of freedom (e.g. anova)</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Hommel          Yuen's trimmed means <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Hommel          Yuen's trimmed means <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Hommel          Yuen's trimmed means <span style="color: #949494;">&lt;language&gt;</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Bayes Factor (Student's *t*-test)</span></span>
-<span class="r-in"><span class="fu">pairwise_comparisons</span><span class="op">(</span></span>
-<span class="r-in">  data       <span class="op">=</span> <span class="va">bugs_long</span>,</span>
-<span class="r-in">  x          <span class="op">=</span> <span class="va">condition</span>,</span>
-<span class="r-in">  y          <span class="op">=</span> <span class="va">desire</span>,</span>
-<span class="r-in">  subject.id <span class="op">=</span> <span class="va">subject</span>,</span>
-<span class="r-in">  type       <span class="op">=</span> <span class="st">"bayes"</span>,</span>
-<span class="r-in">  paired     <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 18</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Bayes Factor (Student's *t*-test)</span></span></span>
+<span class="r-in"><span><span class="fu">pairwise_comparisons</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data       <span class="op">=</span> <span class="va">bugs_long</span>,</span></span>
+<span class="r-in"><span>  x          <span class="op">=</span> <span class="va">condition</span>,</span></span>
+<span class="r-in"><span>  y          <span class="op">=</span> <span class="va">desire</span>,</span></span>
+<span class="r-in"><span>  subject.id <span class="op">=</span> <span class="va">subject</span>,</span></span>
+<span class="r-in"><span>  type       <span class="op">=</span> <span class="st">"bayes"</span>,</span></span>
+<span class="r-in"><span>  paired     <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 19</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">group1</span> <span style="font-weight: bold;">group2</span> <span style="font-weight: bold;">term</span>       <span style="font-weight: bold;">effectsize</span>      <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> HDHF   HDLF   Difference Bayesian t-test    1.10        <span style="color: #949494;">0.</span>95   <span style="color: #949494;">0.</span>491 </span>
@@ -525,15 +525,15 @@ two degrees of freedom (e.g. anova)</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>    <span style="color: #949494;">0.0</span>31<span style="text-decoration: underline;">5</span> <span style="color: #949494;">0.</span>97            <span style="color: #949494;">0.</span>146 cauchy                          <span style="color: #949494;">0</span>       <span style="color: #949494;">0.</span>707</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>    1.57   <span style="color: #949494;">0.</span>999           <span style="color: #949494;">0</span>     cauchy                          <span style="color: #949494;">0</span>       <span style="color: #949494;">0.</span>707</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>    2.15   1               <span style="color: #949494;">0</span>     cauchy                          <span style="color: #949494;">0</span>       <span style="color: #949494;">0.</span>707</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="font-weight: bold;">bf10</span> <span style="font-weight: bold;">log_e_bf10</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span> <span style="font-weight: bold;">test</span>       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 4.16<span style="color: #949494;">e</span>+ 1      3.73     88 <span style="color: #949494;">&lt;language&gt;</span> Student's t</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 5.83<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span>     -<span style="color: #949494;">0.</span><span style="color: #BB0000;">539</span>    88 <span style="color: #949494;">&lt;language&gt;</span> Student's t</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 1.20<span style="color: #949494;">e</span>+10     23.2      88 <span style="color: #949494;">&lt;language&gt;</span> Student's t</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 6.98<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span>     -<span style="color: #949494;">0.</span><span style="color: #BB0000;">359</span>    88 <span style="color: #949494;">&lt;language&gt;</span> Student's t</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> 1.81<span style="color: #949494;">e</span>+ 1      2.90     88 <span style="color: #949494;">&lt;language&gt;</span> Student's t</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> 4.81<span style="color: #949494;">e</span>+ 6     15.4      88 <span style="color: #949494;">&lt;language&gt;</span> Student's t</span>
-<span class="r-in"><span class="co"># }</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="font-weight: bold;">bf10</span> <span style="font-weight: bold;">conf.method</span> <span style="font-weight: bold;">log_e_bf10</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span> <span style="font-weight: bold;">test</span>       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 4.16<span style="color: #949494;">e</span>+ 1 ETI              3.73     88 <span style="color: #949494;">&lt;language&gt;</span> Student's t</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 5.83<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span> ETI             -<span style="color: #949494;">0.</span><span style="color: #BB0000;">539</span>    88 <span style="color: #949494;">&lt;language&gt;</span> Student's t</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 1.20<span style="color: #949494;">e</span>+10 ETI             23.2      88 <span style="color: #949494;">&lt;language&gt;</span> Student's t</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 6.98<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span> ETI             -<span style="color: #949494;">0.</span><span style="color: #BB0000;">359</span>    88 <span style="color: #949494;">&lt;language&gt;</span> Student's t</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> 1.81<span style="color: #949494;">e</span>+ 1 ETI              2.90     88 <span style="color: #949494;">&lt;language&gt;</span> Student's t</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> 4.81<span style="color: #949494;">e</span>+ 6 ETI             15.4      88 <span style="color: #949494;">&lt;language&gt;</span> Student's t</span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -545,7 +545,7 @@ two degrees of freedom (e.g. anova)</p></li>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.9000.</p>
 </div>
 
     </footer></div>

@@ -61,13 +61,13 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">tidy_model_expressions</span><span class="op">(</span>
-  <span class="va">data</span>,
-  statistic <span class="op">=</span> <span class="cn">NULL</span>,
-  k <span class="op">=</span> <span class="fl">2L</span>,
-  effsize.type <span class="op">=</span> <span class="st">"omega"</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tidy_model_expressions</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  statistic <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  k <span class="op">=</span> <span class="fl">2L</span>,</span>
+<span>  effsize.type <span class="op">=</span> <span class="st">"omega"</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -104,26 +104,26 @@ not use it yet in your workflow.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># tidy dataframe</span></span>
-<span class="r-in"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="tidy_model_parameters.html">tidy_model_parameters</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">wt</span> <span class="op">~</span> <span class="va">am</span> <span class="op">*</span> <span class="va">cyl</span>, <span class="va">mtcars</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># create a column containing expressions</span></span>
-<span class="r-in"><span class="fu">tidy_model_expressions</span><span class="op">(</span><span class="va">df</span>, statistic <span class="op">=</span> <span class="st">"t"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 10</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># tidy dataframe</span></span></span>
+<span class="r-in"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="tidy_model_parameters.html">tidy_model_parameters</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">wt</span> <span class="op">~</span> <span class="va">am</span> <span class="op">*</span> <span class="va">cyl</span>, <span class="va">mtcars</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># create a column containing expressions</span></span></span>
+<span class="r-in"><span><span class="fu">tidy_model_expressions</span><span class="op">(</span><span class="va">df</span>, statistic <span class="op">=</span> <span class="st">"t"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 11</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">term</span>        <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">std.error</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span> <span style="font-weight: bold;">statistic</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> (Intercept)   1.66      <span style="color: #949494;">0.</span>587        <span style="color: #949494;">0.</span>95    <span style="color: #949494;">0.</span>455     2.86      2.82 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> am           -<span style="color: #949494;">0.</span><span style="color: #BB0000;">956</span>     <span style="color: #949494;">0.</span>793        <span style="color: #949494;">0.</span>95   -<span style="color: #BB0000;">2.58</span>      <span style="color: #949494;">0.</span>668    -<span style="color: #BB0000;">1.21</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> cyl           <span style="color: #949494;">0.</span>304     <span style="color: #949494;">0.0</span>82<span style="text-decoration: underline;">6</span>       <span style="color: #949494;">0.</span>95    <span style="color: #949494;">0.</span>135     <span style="color: #949494;">0.</span>473     3.68 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> am:cyl        <span style="color: #949494;">0.0</span>32<span style="text-decoration: underline;">8</span>    <span style="color: #949494;">0.</span>130        <span style="color: #949494;">0.</span>95   -<span style="color: #949494;">0.</span><span style="color: #BB0000;">234</span>     <span style="color: #949494;">0.</span>300     <span style="color: #949494;">0.</span>252</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">df.error</span>  <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">expression</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>       28 <span style="color: #949494;">0.00</span>8<span style="text-decoration: underline;">64</span>  <span style="color: #949494;">&lt;language&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>       28 <span style="color: #949494;">0.</span>238    <span style="color: #949494;">&lt;language&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>       28 <span style="color: #949494;">0.000</span><span style="text-decoration: underline;">989</span> <span style="color: #949494;">&lt;language&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>       28 <span style="color: #949494;">0.</span>803    <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">df.error</span>  <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">conf.method</span> <span style="font-weight: bold;">expression</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>       28 <span style="color: #949494;">0.00</span>8<span style="text-decoration: underline;">64</span>  Wald        <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>       28 <span style="color: #949494;">0.</span>238    Wald        <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>       28 <span style="color: #949494;">0.000</span><span style="text-decoration: underline;">989</span> Wald        <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>       28 <span style="color: #949494;">0.</span>803    Wald        <span style="color: #949494;">&lt;language&gt;</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -135,7 +135,7 @@ not use it yet in your workflow.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.9000.</p>
 </div>
 
     </footer></div>
