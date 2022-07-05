@@ -37,6 +37,8 @@ jobs:
             any::ggridges
             any::ggbeeswarm
             any::PairedData
+            any::metaviz
+            any::metaplus
 
       - name: Render README
         run: Rscript -e 'rmarkdown::render("README.Rmd")'
