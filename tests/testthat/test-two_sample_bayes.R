@@ -1,3 +1,5 @@
+withr::local_options(list(tibble.width = Inf))
+
 test_that(
   desc = "bayesian (independent samples t-test)",
   code = {
@@ -25,7 +27,6 @@ test_that(
 test_that(
   desc = "bayesian (paired t-test)",
   code = {
-
     # Bayes factor (paired t-test) ---------------------------------------------
 
     # data
@@ -71,7 +72,6 @@ test_that(
 test_that(
   desc = "works with subject id",
   code = {
-
     # works with subject id -----------------------------------------------
 
     # data

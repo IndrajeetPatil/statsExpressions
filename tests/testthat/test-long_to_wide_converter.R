@@ -1,9 +1,8 @@
-# long_to_wide_converter works ---------------------------------------------
+withr::local_options(list(tibble.width = Inf))
 
 test_that(
   desc = "long_to_wide_converter works - spread true",
   code = {
-
     # data without NAs ------------------------------
 
     # within-subjects
@@ -53,7 +52,6 @@ test_that(
 test_that(
   desc = "long_to_wide_converter works - spread false",
   code = {
-
     # ----------------------- data without NAs ------------------------------
 
     # within-subjects

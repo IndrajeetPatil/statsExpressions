@@ -1,7 +1,8 @@
+withr::local_options(list(tibble.width = Inf))
+
 test_that(
   desc = "one_sample_test parametric works",
   code = {
-    options(tibble.width = Inf)
     skip_if(getRversion() < "4.0")
 
     # parametric -------------------------------------------------
@@ -29,7 +30,6 @@ test_that(
         conf.level = 0.90
       )
     )
-
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))
@@ -66,7 +66,6 @@ test_that(
       type = "np",
       k = 4
     )
-
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))

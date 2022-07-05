@@ -1,5 +1,4 @@
-# to print all tibble columns in the snapshot; don't remove
-options(tibble.width = Inf)
+withr::local_options(list(tibble.width = Inf))
 
 # between-subjects ----------------------------------------------
 

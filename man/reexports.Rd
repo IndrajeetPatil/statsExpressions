@@ -24,7 +24,7 @@ below to see their documentation.
 \describe{
   \item{insight}{\code{\link[insight]{format_value}}}
 
-  \item{magrittr}{\code{\link[magrittr:compound]{\%<>\%}}, \code{\link[magrittr:pipe]{\%>\%}}, \code{\link[magrittr:exposition]{\%$\%}}, \code{\link[magrittr:tee]{\%T>\%}}}
+  \item{magrittr}{\code{\link[magrittr:exposition]{\%$\%}}, \code{\link[magrittr:compound]{\%<>\%}}, \code{\link[magrittr:pipe]{\%>\%}}, \code{\link[magrittr:tee]{\%T>\%}}}
 
   \item{rlang}{\code{\link[rlang:op-na-default]{\%|\%}}, \code{\link[rlang:op-null-default]{\%||\%}}}
 

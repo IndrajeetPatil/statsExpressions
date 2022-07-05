@@ -1,8 +1,8 @@
+withr::local_options(list(tibble.width = Inf))
+
 test_that(
   desc = "contingency_table works",
   code = {
-    options(tibble.width = Inf)
-
     # contingency tab - without NAs ---------------------------------
 
     set.seed(123)

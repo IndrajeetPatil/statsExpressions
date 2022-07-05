@@ -45,7 +45,6 @@ centrality_description <- function(data,
                                    tr = 0.2,
                                    k = 2L,
                                    ...) {
-
   # measure -------------------------------------
 
   # standardize

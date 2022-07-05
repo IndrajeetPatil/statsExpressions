@@ -1,8 +1,8 @@
+withr::local_options(list(tibble.width = Inf))
+
 test_that(
   desc = "t_nonparametric works - between-subjects design",
   code = {
-    options(tibble.width = Inf)
-
     # between-subjects design -----------------------------------------------
 
     # output
@@ -73,7 +73,6 @@ test_that(
         conf.level = 0.99,
         paired = TRUE
       ))
-
 
     set.seed(123)
     expect_snapshot(select(df2, -expression))

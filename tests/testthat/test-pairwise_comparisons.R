@@ -1,3 +1,5 @@
+withr::local_options(list(tibble.width = Inf))
+
 # between-subjects design --------------------------------------------------
 
 test_that(
@@ -5,8 +7,6 @@ test_that(
   code = {
     set.seed(123)
     skip_if_not_installed("PMCMRplus")
-
-    options(tibble.width = Inf)
 
     # student's t
     set.seed(123)
@@ -163,7 +163,6 @@ test_that(
 test_that(
   desc = "`pairwise_comparisons()` works for within-subjects design - NAs",
   code = {
-    options(tibble.width = Inf)
     skip_if_not_installed("PMCMRplus")
 
     # student's t test
@@ -234,7 +233,6 @@ test_that(
 test_that(
   desc = "`pairwise_comparisons()` works for within-subjects design - without NAs",
   code = {
-    options(tibble.width = Inf)
     skip_if_not_installed("PMCMRplus")
 
     # student's t test
@@ -345,7 +343,6 @@ test_that(
 test_that(
   desc = "additional arguments are passed to underlying methods",
   code = {
-    options(tibble.width = Inf)
     skip_if_not_installed("PMCMRplus")
 
     # student's t test

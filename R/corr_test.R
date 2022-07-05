@@ -52,7 +52,6 @@ corr_test <- function(data,
                       tr = 0.2,
                       bf.prior = 0.707,
                       ...) {
-
   # see which method was used to specify type of correlation
   type <- stats_type_switch(type)
 
@@ -66,7 +65,8 @@ corr_test <- function(data,
     bayesian_prior = bf.prior,
     winsorize      = ifelse(type == "robust", tr, FALSE)
   ) %>%
-    standardize_names(style = "broom")
+    standardize_names(style = "broom") %>%
+    dplyr::mutate(conf.method = ifelse(type == "bayes", "HDI", "normal"))
 
   # expression ---------------------------------------
 

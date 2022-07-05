@@ -1,8 +1,8 @@
+withr::local_options(list(tibble.width = Inf))
+
 test_that(
   desc = "centrality description works as expected",
   code = {
-    options(tibble.width = Inf)
-
     # data without NAs
     set.seed(123)
     df <- purrr::pmap_dfr(
@@ -45,8 +45,6 @@ test_that(
 test_that(
   desc = "centrality description works when variable is named `variable`",
   code = {
-    options(tibble.width = Inf)
-
     df_var <- dplyr::rename(mtcars, variable = cyl)
 
     set.seed(123)

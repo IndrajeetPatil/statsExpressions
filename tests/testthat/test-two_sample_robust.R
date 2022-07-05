@@ -1,10 +1,10 @@
+withr::local_options(list(tibble.width = Inf))
+
 # within-subjects ------------------------------------------------------------
 
 test_that(
   desc = "t_robust - within-subjects - without NAs",
   code = {
-    options(tibble.width = Inf)
-
     # subtitle
     set.seed(123)
     df1 <- two_sample_test(
@@ -18,7 +18,6 @@ test_that(
       paired = TRUE,
       k = 4
     )
-
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))
@@ -39,7 +38,6 @@ test_that(
       paired = TRUE,
       k = 3L
     )
-
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))
@@ -65,7 +63,6 @@ test_that(
       k = 3
     )
 
-
     set.seed(123)
     expect_snapshot(select(df1, -expression))
     expect_snapshot(df1$expression)
@@ -75,7 +72,6 @@ test_that(
 test_that(
   desc = "t_robust - between-subjects - with NAs",
   code = {
-    # subtitle
     set.seed(123)
     df1 <- two_sample_test(
       type = "r",
@@ -86,7 +82,6 @@ test_that(
       conf.level = 0.90,
       k = 4
     )
-
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))

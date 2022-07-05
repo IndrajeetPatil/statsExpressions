@@ -103,7 +103,6 @@ contingency_table <- function(data,
                               fixed.margin = "rows",
                               prior.concentration = 1,
                               ...) {
-
   # check the data contains needed column
   type <- stats_type_switch(type)
 

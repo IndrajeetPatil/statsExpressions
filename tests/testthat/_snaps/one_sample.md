@@ -154,8 +154,8 @@
        [4] "conf.level"         "conf.low"           "conf.high"         
        [7] "pd"                 "rope.percentage"    "prior.distribution"
       [10] "prior.location"     "prior.scale"        "bf10"              
-      [13] "method"             "log_e_bf10"         "n.obs"             
-      [16] "expression"        
+      [13] "method"             "conf.method"        "log_e_bf10"        
+      [16] "n.obs"              "expression"        
 
 ---
 
@@ -164,7 +164,7 @@
     Output
       [[1]]
       list(log[e] * (BF["01"]) == "-47.84", widehat(delta)["difference"]^"posterior" == 
-          "-1.76", CI["90%"]^HDI ~ "[" * "-1.99", "-1.51" * "]", italic("r")["Cauchy"]^"JZS" == 
+          "-1.76", CI["90%"]^ETI ~ "[" * "-1.99", "-1.51" * "]", italic("r")["Cauchy"]^"JZS" == 
           "0.99")
       
 
@@ -175,7 +175,7 @@
     Output
       [[1]]
       list(log[e] * (BF["01"]) == "2.125", widehat(delta)["difference"]^"posterior" == 
-          "0.018", CI["95%"]^HDI ~ "[" * "-0.234", "0.274" * "]", italic("r")["Cauchy"]^"JZS" == 
+          "0.018", CI["95%"]^ETI ~ "[" * "-0.234", "0.274" * "]", italic("r")["Cauchy"]^"JZS" == 
           "0.900")
       
 

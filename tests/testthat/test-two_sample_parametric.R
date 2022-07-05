@@ -1,9 +1,9 @@
+withr::local_options(list(tibble.width = Inf))
+
 test_that(
   desc = "parametric t-test works (between-subjects without NAs)",
   code = {
     # parametric t-test (between-subjects without NAs) ----------------------
-
-    options(tibble.width = Inf)
 
     # `statsExpressions` output
     set.seed(123)
@@ -18,7 +18,6 @@ test_that(
         k = 5
       )
     )
-
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))
@@ -71,7 +70,6 @@ test_that(
       k = 4,
       conf.level = 0.50
     ))
-
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))

@@ -1,5 +1,4 @@
-# to print all tibble columns in the snapshot; don't remove
-options(tibble.width = Inf)
+withr::local_options(list(tibble.width = Inf))
 
 # parametric --------------------------------------------------------------
 
@@ -77,7 +76,6 @@ test_that(
 test_that(
   desc = "corr_test works - nonparametric",
   code = {
-
     # with NA
     set.seed(123)
     df1 <- corr_test(
