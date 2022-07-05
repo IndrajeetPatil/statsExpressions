@@ -25,13 +25,13 @@ BugReports: https://github.com/IndrajeetPatil/statsExpressions/issues
 Depends: 
     R (>= 4.0.0)
 Imports:
-    BayesFactor (>= 0.9.12-4.3),
+    BayesFactor (>= 0.9.12-4.4),
     correlation (>= 0.8.1),
     datawizard (>= 0.4.1),
     dplyr,
     effectsize (>= 0.7.0),
     glue,
-    insight (>= 0.17.1),
+    insight (>= 0.18.0),
     magrittr,
     parameters (>= 0.18.0),
     performance (>= 0.8.0),

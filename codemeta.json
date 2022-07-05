@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.2.0 (2022-04-22)",
+  "runtimePlatform": "R version 4.2.1 (2022-06-23)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -223,7 +223,7 @@
       "@type": "SoftwareApplication",
       "identifier": "BayesFactor",
       "name": "BayesFactor",
-      "version": ">= 0.9.12-4.3",
+      "version": ">= 0.9.12-4.4",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -299,7 +299,7 @@
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
-      "version": ">= 0.17.1",
+      "version": ">= 0.18.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -331,7 +331,7 @@
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=parameters"
+      "sameAs": "https://github.com/easystats/parameters"
     },
     "11": {
       "@type": "SoftwareApplication",
@@ -414,7 +414,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4187.677KB",
+  "fileSize": "4156.32KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
