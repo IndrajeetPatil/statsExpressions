@@ -31,7 +31,7 @@ Imports:
     dplyr,
     effectsize (>= 0.7.0),
     glue,
-    insight (>= 0.18.0),
+    insight (>= 0.18.0.1),
     magrittr,
     parameters (>= 0.18.1.8),
     performance (>= 0.9.1.1),
@@ -42,6 +42,7 @@ Imports:
     WRS2 (>= 1.1-3),
     zeallot
 Remotes:
+    easystats/insight,
     easystats/effectsize,
     easystats/parameters,
     easystats/performance

@@ -204,9 +204,9 @@ mtcars %>%
 #> 3     8     3     4.92        13 0.000278 One Sample t-test two.sided  
 #>   effectsize estimate conf.level conf.low conf.high conf.method
 #>   <chr>         <dbl>      <dbl>    <dbl>     <dbl> <chr>      
-#> 1 Hedges' g    -1.16        0.95   -1.97     -0.422 ncp        
-#> 2 Hedges' g     0.286       0.95   -0.419     1.01  ncp        
-#> 3 Hedges' g     1.24        0.95    0.565     1.98  ncp        
+#> 1 Hedges' g    -1.16        0.95   -1.88     -0.402 ncp        
+#> 2 Hedges' g     0.286       0.95   -0.388     0.937 ncp        
+#> 3 Hedges' g     1.24        0.95    0.544     1.91  ncp        
 #>   conf.distribution n.obs expression
 #>   <chr>             <int> <list>    
 #> 1 t                    11 <language>

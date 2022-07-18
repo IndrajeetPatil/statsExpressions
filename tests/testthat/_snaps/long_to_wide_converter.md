@@ -18,6 +18,7 @@
        9      9          1.4         0.2          4.4         2.9
       10     10          1.5         0.1          4.9         3.1
       # ... with 140 more rows
+      # i Use `print(n = ...)` to see more rows
       
       [[2]]
       # A tibble: 32 x 3
@@ -34,6 +35,7 @@
        9      9 0      4.07
       10     10 0      3.73
       # ... with 22 more rows
+      # i Use `print(n = ...)` to see more rows
       
       [[3]]
       # A tibble: 88 x 5
@@ -50,6 +52,7 @@
        9     11   0     0     2.5   0  
       10     12  10     8.5   7.5   9.5
       # ... with 78 more rows
+      # i Use `print(n = ...)` to see more rows
       
       [[4]]
       # A tibble: 51 x 3
@@ -66,6 +69,7 @@
        9     19 carni  0.0504
       10     21 herbi  0.423 
       # ... with 41 more rows
+      # i Use `print(n = ...)` to see more rows
       
 
 # long_to_wide_converter works - spread false
@@ -88,6 +92,7 @@
        9      3 Petal.Length   1.3
       10      3 Petal.Width    0.2
       # ... with 590 more rows
+      # i Use `print(n = ...)` to see more rows
       
       [[2]]
       # A tibble: 32 x 3
@@ -104,6 +109,7 @@
        9      9 0      4.07
       10     10 0      3.73
       # ... with 22 more rows
+      # i Use `print(n = ...)` to see more rows
       
       [[3]]
       # A tibble: 352 x 3
@@ -120,6 +126,7 @@
        9      4 HDHF           9
       10      4 HDLF           6
       # ... with 342 more rows
+      # i Use `print(n = ...)` to see more rows
       
       [[4]]
       # A tibble: 51 x 3
@@ -136,5 +143,6 @@
        9     19 carni  0.0504
       10     21 herbi  0.423 
       # ... with 41 more rows
+      # i Use `print(n = ...)` to see more rows
       
 

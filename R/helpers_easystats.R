@@ -26,8 +26,7 @@ tidy_model_parameters <- function(model, ...) {
       as_tibble(.) %>%
       standardize_names(style = "broom") %>%
       rename("estimate" = "r.squared") %>%
-      filter(if_any(matches("component"), ~ (.x == "conditional"))) %>%
-      mutate(effectsize = "Bayesian R-squared", conf.method = "HDI")
+      filter(if_any(matches("component"), ~ (.x == "conditional")))
 
     # remove estimates and CIs and use R2 dataframe instead
     stats_df %<>%
