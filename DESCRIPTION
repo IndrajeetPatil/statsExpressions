@@ -31,10 +31,10 @@ Imports:
     dplyr,
     effectsize (>= 0.7.0),
     glue,
-    insight (>= 0.18.0),
+    insight (>= 0.18.0.1),
     magrittr,
-    parameters (>= 0.18.0),
-    performance (>= 0.8.0),
+    parameters (>= 0.18.1.8),
+    performance (>= 0.9.1.1),
     rlang,
     stats,
     tibble,
@@ -42,8 +42,10 @@ Imports:
     WRS2 (>= 1.1-3),
     zeallot
 Remotes:
+    easystats/insight,
     easystats/effectsize,
-    easystats/parameters
+    easystats/parameters,
+    easystats/performance
 Suggests:
     afex,
     ggplot2,
@@ -66,5 +68,5 @@ Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate",
     "pkgapi::api_roclet"))
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
 Config/testthat/edition: 3

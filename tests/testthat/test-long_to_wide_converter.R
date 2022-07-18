@@ -44,7 +44,8 @@ test_that(
 
     # checking datasets
     set.seed(123)
-    expect_snapshot(list(df1, df2, df3, df4))
+    expect_snapshot(purrr::walk(list(df1, df2, df3, df4), dplyr::glimpse))
+    expect_snapshot(purrr::map(list(df1, df2, df3, df4), summary))
   }
 )
 
@@ -97,7 +98,8 @@ test_that(
 
     # checking datasets
     set.seed(123)
-    expect_snapshot(list(df1, df2, df3, df4))
+    expect_snapshot(purrr::walk(list(df1, df2, df3, df4), dplyr::glimpse))
+    expect_snapshot(purrr::map(list(df1, df2, df3, df4), summary))
   }
 )
 

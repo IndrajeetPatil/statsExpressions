@@ -12,10 +12,10 @@
       4  0.25     0.242       55   0.810 One Sample t-test two.sided   Hedges' g 
         estimate conf.level conf.low conf.high conf.method conf.distribution n.obs
            <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>             <int>
-      1   0.0323       0.89  -0.183      0.248 ncp         t                    56
-      2   0.0319       0.99  -0.311      0.375 ncp         t                    56
-      3   0.0323       0.9   -0.189      0.254 ncp         t                    56
-      4   0.0319       0.5   -0.0577     0.122 ncp         t                    56
+      1   0.0323       0.89  -0.181      0.246 ncp         t                    56
+      2   0.0319       0.99  -0.308      0.371 ncp         t                    56
+      3   0.0323       0.9   -0.188      0.252 ncp         t                    56
+      4   0.0319       0.5   -0.0572     0.121 ncp         t                    56
         expression
         <list>    
       1 <language>
@@ -62,10 +62,10 @@
       4 desire condition      3.61       89 0.000500 Paired t-test two.sided  
         effectsize estimate conf.level conf.low conf.high conf.method
         <chr>         <dbl>      <dbl>    <dbl>     <dbl> <chr>      
-      1 Cohen's d     0.381       0.89   0.206      0.557 ncp        
-      2 Hedges' g     0.378       0.99   0.0984     0.659 ncp        
-      3 Cohen's d     0.381       0.9    0.201      0.563 ncp        
-      4 Hedges' g     0.378       0.5    0.305      0.452 ncp        
+      1 Cohen's d     0.381       0.89   0.205      0.554 ncp        
+      2 Hedges' g     0.378       0.99   0.0978     0.656 ncp        
+      3 Cohen's d     0.381       0.9    0.200      0.559 ncp        
+      4 Hedges' g     0.378       0.5    0.304      0.450 ncp        
         conf.distribution n.obs expression
         <chr>             <int> <list>    
       1 t                    90 <language>

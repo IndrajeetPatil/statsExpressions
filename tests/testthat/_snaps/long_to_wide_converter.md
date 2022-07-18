@@ -1,140 +1,154 @@
 # long_to_wide_converter works - spread true
 
     Code
-      list(df1, df2, df3, df4)
+      purrr::walk(list(df1, df2, df3, df4), dplyr::glimpse)
+    Output
+      Rows: 150
+      Columns: 5
+      $ .rowid       <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17~
+      $ Petal.Length <dbl> 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5, 1.5, 1.~
+      $ Petal.Width  <dbl> 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.~
+      $ Sepal.Length <dbl> 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9, 5.4, 4.~
+      $ Sepal.Width  <dbl> 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.~
+      Rows: 32
+      Columns: 3
+      $ .rowid <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, ~
+      $ am     <fct> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, ~
+      $ wt     <dbl> 3.215, 3.440, 3.460, 3.570, 3.190, 3.150, 3.440, 3.440, 4.070, ~
+      Rows: 88
+      Columns: 5
+      $ .rowid <int> 1, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,~
+      $ HDHF   <dbl> 10.0, 10.0, 9.0, 8.5, 3.0, 10.0, 10.0, 10.0, 0.0, 10.0, 8.5, 8.~
+      $ HDLF   <dbl> 9.0, 10.0, 6.0, 5.5, 7.5, 10.0, 9.0, 6.0, 0.0, 8.5, 6.5, 4.0, 6~
+      $ LDHF   <dbl> 6.0, 10.0, 9.0, 6.5, 0.5, 10.0, 10.0, 9.5, 2.5, 7.5, 8.5, 8.0, ~
+      $ LDLF   <dbl> 6.0, 5.0, 6.0, 3.0, 2.0, 10.0, 10.0, 9.5, 0.0, 9.5, 7.0, 3.0, 4~
+      Rows: 51
+      Columns: 3
+      $ .rowid  <int> 3, 4, 5, 7, 9, 12, 17, 18, 19, 21, 23, 24, 25, 26, 27, 28, 29,~
+      $ vore    <fct> carni, carni, carni, carni, carni, carni, carni, carni, carni,~
+      $ brainwt <dbl> 0.07000, 0.01080, 0.02560, 0.32500, 0.01250, 0.15700, 0.01750,~
+
+---
+
+    Code
+      purrr::map(list(df1, df2, df3, df4), summary)
     Output
       [[1]]
-      # A tibble: 150 x 5
-         .rowid Petal.Length Petal.Width Sepal.Length Sepal.Width
-          <int>        <dbl>       <dbl>        <dbl>       <dbl>
-       1      1          1.4         0.2          5.1         3.5
-       2      2          1.4         0.2          4.9         3  
-       3      3          1.3         0.2          4.7         3.2
-       4      4          1.5         0.2          4.6         3.1
-       5      5          1.4         0.2          5           3.6
-       6      6          1.7         0.4          5.4         3.9
-       7      7          1.4         0.3          4.6         3.4
-       8      8          1.5         0.2          5           3.4
-       9      9          1.4         0.2          4.4         2.9
-      10     10          1.5         0.1          4.9         3.1
-      # ... with 140 more rows
+           .rowid        Petal.Length    Petal.Width     Sepal.Length  
+       Min.   :  1.00   Min.   :1.000   Min.   :0.100   Min.   :4.300  
+       1st Qu.: 38.25   1st Qu.:1.600   1st Qu.:0.300   1st Qu.:5.100  
+       Median : 75.50   Median :4.350   Median :1.300   Median :5.800  
+       Mean   : 75.50   Mean   :3.758   Mean   :1.199   Mean   :5.843  
+       3rd Qu.:112.75   3rd Qu.:5.100   3rd Qu.:1.800   3rd Qu.:6.400  
+       Max.   :150.00   Max.   :6.900   Max.   :2.500   Max.   :7.900  
+        Sepal.Width   
+       Min.   :2.000  
+       1st Qu.:2.800  
+       Median :3.000  
+       Mean   :3.057  
+       3rd Qu.:3.300  
+       Max.   :4.400  
       
       [[2]]
-      # A tibble: 32 x 3
-         .rowid am       wt
-          <int> <fct> <dbl>
-       1      1 0      3.22
-       2      2 0      3.44
-       3      3 0      3.46
-       4      4 0      3.57
-       5      5 0      3.19
-       6      6 0      3.15
-       7      7 0      3.44
-       8      8 0      3.44
-       9      9 0      4.07
-      10     10 0      3.73
-      # ... with 22 more rows
+           .rowid      am           wt       
+       Min.   : 1.00   0:19   Min.   :1.513  
+       1st Qu.: 8.75   1:13   1st Qu.:2.581  
+       Median :16.50          Median :3.325  
+       Mean   :16.50          Mean   :3.217  
+       3rd Qu.:24.25          3rd Qu.:3.610  
+       Max.   :32.00          Max.   :5.424  
       
       [[3]]
-      # A tibble: 88 x 5
-         .rowid  HDHF  HDLF  LDHF  LDLF
-          <int> <dbl> <dbl> <dbl> <dbl>
-       1      1  10     9     6     6  
-       2      3  10    10    10     5  
-       3      4   9     6     9     6  
-       4      5   8.5   5.5   6.5   3  
-       5      6   3     7.5   0.5   2  
-       6      7  10    10    10    10  
-       7      8  10     9    10    10  
-       8      9  10     6     9.5   9.5
-       9     11   0     0     2.5   0  
-      10     12  10     8.5   7.5   9.5
-      # ... with 78 more rows
+           .rowid           HDHF             HDLF             LDHF       
+       Min.   : 1.00   Min.   : 0.000   Min.   : 0.000   Min.   : 0.500  
+       1st Qu.:24.75   1st Qu.: 6.000   1st Qu.: 4.375   1st Qu.: 6.000  
+       Median :47.50   Median : 8.500   Median : 7.750   Median : 8.000  
+       Mean   :47.57   Mean   : 7.824   Mean   : 6.676   Mean   : 7.352  
+       3rd Qu.:70.25   3rd Qu.:10.000   3rd Qu.: 9.500   3rd Qu.: 9.500  
+       Max.   :93.00   Max.   :10.000   Max.   :10.000   Max.   :10.000  
+            LDLF       
+       Min.   : 0.000  
+       1st Qu.: 3.500  
+       Median : 6.000  
+       Mean   : 5.659  
+       3rd Qu.: 7.500  
+       Max.   :10.000  
       
       [[4]]
-      # A tibble: 51 x 3
-         .rowid vore  brainwt
-          <int> <fct>   <dbl>
-       1      3 carni  0.07  
-       2      4 carni  0.0108
-       3      5 carni  0.0256
-       4      7 carni  0.325 
-       5      9 carni  0.0125
-       6     12 carni  0.157 
-       7     17 carni  0.0175
-       8     18 carni  0.0445
-       9     19 carni  0.0504
-      10     21 herbi  0.423 
-      # ... with 41 more rows
+           .rowid           vore       brainwt       
+       Min.   : 3.00   carni  : 9   Min.   :0.00014  
+       1st Qu.:25.50   herbi  :20   1st Qu.:0.00375  
+       Median :46.00   insecti: 5   Median :0.01550  
+       Mean   :42.96   omni   :17   Mean   :0.30844  
+       3rd Qu.:61.50                3rd Qu.:0.16300  
+       Max.   :76.00                Max.   :5.71200  
       
 
 # long_to_wide_converter works - spread false
 
     Code
-      list(df1, df2, df3, df4)
+      purrr::walk(list(df1, df2, df3, df4), dplyr::glimpse)
+    Output
+      Rows: 600
+      Columns: 3
+      $ .rowid    <int> 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, ~
+      $ condition <fct> Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Petal.~
+      $ value     <dbl> 1.4, 0.2, 5.1, 3.5, 1.4, 0.2, 4.9, 3.0, 1.3, 0.2, 4.7, 3.2, ~
+      Rows: 32
+      Columns: 3
+      $ .rowid <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, ~
+      $ am     <fct> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, ~
+      $ wt     <dbl> 3.215, 3.440, 3.460, 3.570, 3.190, 3.150, 3.440, 3.440, 4.070, ~
+      Rows: 352
+      Columns: 3
+      $ .rowid    <int> 1, 1, 1, 1, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, ~
+      $ condition <fct> HDHF, HDLF, LDHF, LDLF, HDHF, HDLF, LDHF, LDLF, HDHF, HDLF, ~
+      $ desire    <dbl> 10.0, 9.0, 6.0, 6.0, 10.0, 10.0, 10.0, 5.0, 9.0, 6.0, 9.0, 6~
+      Rows: 51
+      Columns: 3
+      $ .rowid  <int> 3, 4, 5, 7, 9, 12, 17, 18, 19, 21, 23, 24, 25, 26, 27, 28, 29,~
+      $ vore    <fct> carni, carni, carni, carni, carni, carni, carni, carni, carni,~
+      $ brainwt <dbl> 0.07000, 0.01080, 0.02560, 0.32500, 0.01250, 0.15700, 0.01750,~
+
+---
+
+    Code
+      purrr::map(list(df1, df2, df3, df4), summary)
     Output
       [[1]]
-      # A tibble: 600 x 3
-         .rowid condition    value
-          <int> <fct>        <dbl>
-       1      1 Petal.Length   1.4
-       2      1 Petal.Width    0.2
-       3      1 Sepal.Length   5.1
-       4      1 Sepal.Width    3.5
-       5      2 Petal.Length   1.4
-       6      2 Petal.Width    0.2
-       7      2 Sepal.Length   4.9
-       8      2 Sepal.Width    3  
-       9      3 Petal.Length   1.3
-      10      3 Petal.Width    0.2
-      # ... with 590 more rows
+           .rowid             condition       value      
+       Min.   :  1.0   Petal.Length:150   Min.   :0.100  
+       1st Qu.: 38.0   Petal.Width :150   1st Qu.:1.700  
+       Median : 75.5   Sepal.Length:150   Median :3.200  
+       Mean   : 75.5   Sepal.Width :150   Mean   :3.465  
+       3rd Qu.:113.0                      3rd Qu.:5.100  
+       Max.   :150.0                      Max.   :7.900  
       
       [[2]]
-      # A tibble: 32 x 3
-         .rowid am       wt
-          <int> <fct> <dbl>
-       1      1 0      3.22
-       2      2 0      3.44
-       3      3 0      3.46
-       4      4 0      3.57
-       5      5 0      3.19
-       6      6 0      3.15
-       7      7 0      3.44
-       8      8 0      3.44
-       9      9 0      4.07
-      10     10 0      3.73
-      # ... with 22 more rows
+           .rowid      am           wt       
+       Min.   : 1.00   0:19   Min.   :1.513  
+       1st Qu.: 8.75   1:13   1st Qu.:2.581  
+       Median :16.50          Median :3.325  
+       Mean   :16.50          Mean   :3.217  
+       3rd Qu.:24.25          3rd Qu.:3.610  
+       Max.   :32.00          Max.   :5.424  
       
       [[3]]
-      # A tibble: 352 x 3
-         .rowid condition desire
-          <int> <fct>      <dbl>
-       1      1 HDHF          10
-       2      1 HDLF           9
-       3      1 LDHF           6
-       4      1 LDLF           6
-       5      3 HDHF          10
-       6      3 HDLF          10
-       7      3 LDHF          10
-       8      3 LDLF           5
-       9      4 HDHF           9
-      10      4 HDLF           6
-      # ... with 342 more rows
+           .rowid      condition     desire      
+       Min.   : 1.00   HDHF:88   Min.   : 0.000  
+       1st Qu.:24.75   HDLF:88   1st Qu.: 5.000  
+       Median :47.50   LDHF:88   Median : 7.500  
+       Mean   :47.57   LDLF:88   Mean   : 6.878  
+       3rd Qu.:70.25             3rd Qu.: 9.500  
+       Max.   :93.00             Max.   :10.000  
       
       [[4]]
-      # A tibble: 51 x 3
-         .rowid vore  brainwt
-          <int> <fct>   <dbl>
-       1      3 carni  0.07  
-       2      4 carni  0.0108
-       3      5 carni  0.0256
-       4      7 carni  0.325 
-       5      9 carni  0.0125
-       6     12 carni  0.157 
-       7     17 carni  0.0175
-       8     18 carni  0.0445
-       9     19 carni  0.0504
-      10     21 herbi  0.423 
-      # ... with 41 more rows
+           .rowid           vore       brainwt       
+       Min.   : 3.00   carni  : 9   Min.   :0.00014  
+       1st Qu.:25.50   herbi  :20   1st Qu.:0.00375  
+       Median :46.00   insecti: 5   Median :0.01550  
+       Mean   :42.96   omni   :17   Mean   :0.30844  
+       3rd Qu.:61.50                3rd Qu.:0.16300  
+       Max.   :76.00                Max.   :5.71200  
       
 

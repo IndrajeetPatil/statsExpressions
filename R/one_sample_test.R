@@ -90,7 +90,6 @@ one_sample_test <- function(data,
 
   # parametric ---------------------------------------
 
-
   if (type == "parametric") {
     .f <- stats::t.test
     # styler: off
