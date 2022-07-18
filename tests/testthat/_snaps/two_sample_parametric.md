@@ -64,7 +64,7 @@
       1 value condition      34.8      149 1.85e-73 Paired t-test two.sided  
         effectsize estimate conf.level conf.low conf.high conf.method
         <chr>         <dbl>      <dbl>    <dbl>     <dbl> <chr>      
-      1 Hedges' g      2.83        0.5     2.71      2.96 ncp        
+      1 Hedges' g      2.83        0.5     2.70      2.95 ncp        
         conf.distribution n.obs
         <chr>             <int>
       1 t                   150
@@ -77,7 +77,7 @@
       [[1]]
       list(italic("t")["Student"] * "(" * 149 * ")" == "34.8152", italic(p) == 
           "1.8496e-73", widehat(italic("g"))["Hedges"] == "2.8283", 
-          CI["50%"] ~ "[" * "2.7086", "2.9560" * "]", italic("n")["pairs"] == 
+          CI["50%"] ~ "[" * "2.6996", "2.9462" * "]", italic("n")["pairs"] == 
               "150")
       
 
@@ -92,7 +92,7 @@
       1 desire condition      3.61       89 0.000500 Paired t-test two.sided  
         effectsize estimate conf.level conf.low conf.high conf.method
         <chr>         <dbl>      <dbl>    <dbl>     <dbl> <chr>      
-      1 Cohen's d     0.381       0.95    0.167     0.597 ncp        
+      1 Cohen's d     0.381       0.95    0.166     0.594 ncp        
         conf.distribution n.obs
         <chr>             <int>
       1 t                    90
@@ -105,6 +105,6 @@
       [[1]]
       list(italic("t")["Student"] * "(" * 89 * ")" == "3.613", italic(p) == 
           "5.000e-04", widehat(italic("d"))["Cohen"] == "0.381", CI["95%"] ~ 
-          "[" * "0.167", "0.597" * "]", italic("n")["pairs"] == "90")
+          "[" * "0.166", "0.594" * "]", italic("n")["pairs"] == "90")
       
 

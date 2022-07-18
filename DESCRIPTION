@@ -33,8 +33,8 @@ Imports:
     glue,
     insight (>= 0.18.0),
     magrittr,
-    parameters (>= 0.18.0),
-    performance (>= 0.8.0),
+    parameters (>= 0.18.1.8),
+    performance (>= 0.9.1.1),
     rlang,
     stats,
     tibble,
@@ -43,7 +43,8 @@ Imports:
     zeallot
 Remotes:
     easystats/effectsize,
-    easystats/parameters
+    easystats/parameters,
+    easystats/performance
 Suggests:
     afex,
     ggplot2,
