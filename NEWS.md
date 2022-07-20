@@ -1,5 +1,11 @@
 # statsExpressions 1.3.2.9000
 
+MINOR CHANGES
+
+  - When any of the necessary numeric column values are missing, for these rows
+    `tidy_model_expressions()` now returns a `NULL` instead of an expression with
+    empty strings.
+
 # statsExpressions 1.3.2
 
 NEW FUNCTIONS

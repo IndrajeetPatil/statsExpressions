@@ -51,6 +51,11 @@ test_that("tidy_model_expressions works - chi2", {
 
   expect_snapshot(select(df_chi, -expression))
   expect_snapshot(df_chi$expression)
+
+  df_chi$estimate[1] <- NA
+  df_chi <- dplyr::select(df_chi, -expression)
+  df_chi2 <- suppressWarnings(tidy_model_expressions(df_chi, statistic = "chi"))
+  expect_null(df_chi2$expression[[1]])
 })
 
 test_that("tidy_model_expressions works - z", {

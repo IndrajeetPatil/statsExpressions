@@ -2,7 +2,7 @@
 % Please edit documentation in R/tidy_model_expressions.R
 \name{tidy_model_expressions}
 \alias{tidy_model_expressions}
-\title{Expressions with statistics for tidy regression dataframes}
+\title{Expressions with statistics for tidy regression data frames}
 \usage{
 tidy_model_expressions(
   data,
@@ -13,7 +13,8 @@ tidy_model_expressions(
 )
 }
 \arguments{
-\item{data}{A tidy dataframe from regression model object.}
+\item{data}{A tidy data frame from regression model object (see
+\code{statsExpressions::tidy_model_parameters()}).}
 
 \item{statistic}{Which statistic is to be displayed (either \code{"t"} or \code{"f"}or
 \code{"z"} or \code{"chi"}) in the expression.}
@@ -28,7 +29,12 @@ omega-squared).}
 \item{...}{Currently ignored.}
 }
 \description{
-Expressions with statistics for tidy regression dataframes
+Expressions with statistics for tidy regression data frames
+}
+\details{
+When any of the necessary numeric column values (\code{estimate}, \code{statistic},
+\code{p.value}) are missing, for these rows, a \code{NULL} is returned instead of an
+expression with empty strings.
 }
 \note{
 This is an \strong{experimental} function and may change in the future. Please do

@@ -1,11 +1,17 @@
-#' @title Expressions with statistics for tidy regression dataframes
+#' @title Expressions with statistics for tidy regression data frames
 #' @name tidy_model_expressions
 #'
 #' @param ... Currently ignored.
-#' @param data A tidy dataframe from regression model object.
+#' @param data A tidy data frame from regression model object (see
+#'   `statsExpressions::tidy_model_parameters()`).
 #' @param statistic Which statistic is to be displayed (either `"t"` or `"f"`or
 #'   `"z"` or `"chi"`) in the expression.
 #' @inheritParams oneway_anova
+#'
+#' @details
+#' When any of the necessary numeric column values (`estimate`, `statistic`,
+#' `p.value`) are missing, for these rows, a `NULL` is returned instead of an
+#' expression with empty strings.
 #'
 #' @note
 #'
@@ -29,8 +35,16 @@ tidy_model_expressions <- function(data,
   # standardize the statistic naming
   statistic <- substring(tolower(statistic), 1L, 1L)
 
+  # if any of the necessary numeric columns are missing, there shouldn't be an
+  # expression corresponding to that row
+  #
   # convert the necessary columns to character type for expression
-  df <- .data_to_char(data, k)
+  df <- data %>%
+    filter(if_all(
+      .cols = c(matches("estimate|statistic|std.error|p.value")),
+      .fns = ~ !is.na(.)
+    )) %>%
+    .data_to_char(k)
 
   # effect size text for the expression (common for t, z, and chi^2)
   es.text <- list(quote(widehat(italic(beta))))
@@ -69,6 +83,10 @@ tidy_model_expressions <- function(data,
   }
 
   # add the `expression` column to the original data frame
+  #
+  # the rows for which no expression was created will have `NA`s in this column,
+  # which should instead be replaced with `NULL`, which when parsed in the plotting
+  # context, will not show anything instead of empty string
   left_join(data, select(df, term, expression), by = "term") %>%
     .glue_to_expression()
 }
@@ -81,5 +99,8 @@ tidy_model_expressions <- function(data,
     rowwise() %>%
     mutate(expression = list(parse_expr(expression))) %>%
     ungroup() %>% # convert from `expression` to `language`
-    mutate(expression = unlist(expression))
+    mutate(expression = case_when(
+      is.na(unlist(expression)) ~ list(NULL),
+      TRUE ~ unlist(expression)
+    ))
 }
