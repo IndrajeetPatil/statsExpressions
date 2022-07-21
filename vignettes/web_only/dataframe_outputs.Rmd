@@ -34,7 +34,8 @@ knitr::opts_chunk$set(
   out.width = "100%",
   comment = "#>",
   warning = FALSE,
-  message = FALSE
+  message = FALSE,
+  error = TRUE
 )
 ```
 
