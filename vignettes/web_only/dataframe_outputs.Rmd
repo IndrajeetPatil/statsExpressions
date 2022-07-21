@@ -16,7 +16,9 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include = FALSE}
+```{r}
+#| label = "setup",
+#| include = FALSE
 # show me all columns
 options(
   tibble.width = Inf,
@@ -38,13 +40,17 @@ knitr::opts_chunk$set(
 
 This vignette can be cited as:
 
-```{r citation, echo=FALSE, comment = ""}
+```{r}
+#| label = "citation",
+#| echo = FALSE,
+#| comment = ""
 citation("statsExpressions")
 ```
 
 ## One-sample tests
 
-```{r onesample}
+```{r}
+#| label = "onesample"
 # setup
 library(statsExpressions)
 
@@ -94,7 +100,8 @@ one_sample_test(
 
 ### within-subjects design
 
-```{r twosample_w}
+```{r}
+#| label = "twosample_w"
 # setup
 library(statsExpressions)
 
@@ -152,7 +159,8 @@ two_sample_test(
 
 ### between-subjects design
 
-```{r twosample_b}
+```{r}
+#| label = "twosample_b"
 # setup
 set.seed(123)
 library(statsExpressions)
@@ -213,7 +221,8 @@ two_sample_test(
 
 ### within-subjects design
 
-```{r anova_w}
+```{r}
+#| label = "anova_w"
 # setup
 library(statsExpressions)
 
@@ -270,7 +279,8 @@ oneway_anova(
 
 ### between-subjects design
 
-```{r anova_b}
+```{r}
+#| label = "anova_b"
 ## setup
 library(statsExpressions)
 
@@ -330,7 +340,8 @@ oneway_anova(
 
 ### association test
 
-```{r conttabs}
+```{r}
+#| label = "conttabs"
 set.seed(123)
 library(statsExpressions)
 
@@ -392,7 +403,8 @@ contingency_table(
 
 ### goodness-of-fit tests
 
-```{r gof}
+```{r}
+#| label = "gof"
 # ------------------------ frequentist -----------------------------
 
 # with counts
@@ -417,7 +429,8 @@ contingency_table(
 
 ## Correlation analyses
 
-```{r corr}
+```{r}
+#| label = "corr"
 set.seed(123)
 library(statsExpressions)
 
@@ -464,7 +477,8 @@ corr_test(
 
 ## Meta-analysis
 
-```{r meta}
+```{r}
+#| label = "meta"
 library(statsExpressions)
 library(metaplus)
 
@@ -489,7 +503,8 @@ meta_analysis(df, type = "bayes")
 
 ## Centrality description
 
-```{r centrality}
+```{r}
+#| label = "centrality"
 # ----------------------- parametric -----------------------
 
 set.seed(123)
