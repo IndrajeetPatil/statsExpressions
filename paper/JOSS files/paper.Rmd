@@ -26,7 +26,10 @@ header-includes:
   - \usepackage{tikz}
 ---
 
-```{r message=FALSE, warning=FALSE, echo=FALSE}
+```{r}
+#| message = FALSE,
+#| warning = FALSE,
+#| echo = FALSE
 # to pretty-print all columns in the output tibble
 options(
   tibble.width = Inf,
@@ -131,7 +134,8 @@ ANOVA. If we first run a non-parametric ANOVA and then decide to run a robust
 ANOVA instead, the syntax remains the same and the statistical approach can be
 modified by changing a single argument:
 
-```{r df_p}
+```{r}
+#| label = "df_p"
 mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
 
 mtcars %>% oneway_anova(cyl, wt, type = "robust")
@@ -148,7 +152,11 @@ details. These expressions (Figure 1) attempt to follow the gold standard in
 statistical reporting for both Bayesian [@van2020jasp] and Frequentist
 [@american2019publication] frameworks.
 
-```{r expr_template, echo=FALSE, fig.cap="The templates used in `{statsExpressions}` to display statistical details in a plot."}
+```{r}
+#| label = "expr_template",
+#| echo = FALSE,
+#| fig.cap = "The templates used in `{statsExpressions}` to display statistical details in a
+#| plot."
 knitr::include_graphics("stats_reporting_format.png")
 ```
 
@@ -157,7 +165,11 @@ results in the context of a visualization is indeed a philosophy adopted by the
 `ggstatsplot` package [@Patil2021], and `{statsExpressions}` functions as its
 statistical processing backend.
 
-```{r anova_example, echo=FALSE, fig.cap="Example illustrating how `{statsExpressions}` functions can be used to display results from a statistical test in a plot. Code to create this figure is reported in Appendix."}
+```{r}
+#| label = "anova_example",
+#| echo = FALSE,
+#| fig.cap = "Example illustrating how `{statsExpressions}` functions can be used to display
+#| results from a statistical test in a plot. Code to create this figure is reported in Appendix."
 # needed libraries
 library(statsExpressions)
 library(ggplot2)
@@ -214,7 +226,8 @@ analyses. Thus, I would like to thank the [members of easystats](https://github.
 We can use combination of `dplyr` and `{statsExpressions}` to repeat the same
 statistical analysis across grouping variables.
 
-```{r grouped_df}
+```{r}
+#| label = "grouped_df"
 # running one-sample proportion test for all levels of `cyl`
 mtcars %>%
   group_by(cyl) %>%
@@ -224,5 +237,8 @@ mtcars %>%
 
 ## Code to reproduce for Figure 2
 
-```{r ref.label="anova_example", echo=TRUE, eval=FALSE}
+```{r}
+#| ref.label = "anova_example",
+#| echo = TRUE,
+#| eval = FALSE
 ```

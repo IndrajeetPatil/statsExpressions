@@ -19,7 +19,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r message=FALSE, warning=FALSE, echo=FALSE}
+```{r}
+#| message = FALSE,
+#| warning = FALSE,
+#| echo = FALSE
 # to pretty-print all columns in the output tibble
 options(
   tibble.width = Inf,
@@ -49,7 +52,10 @@ set.seed(123)
 
 This vignette can be cited as:
 
-```{r citation, echo=FALSE, comment = ""}
+```{r}
+#| label = "citation",
+#| echo = FALSE,
+#| comment = ""
 citation("statsExpressions")
 ```
 
@@ -128,7 +134,8 @@ ANOVA. If we first run a non-parametric ANOVA and then decide to run a robust
 ANOVA instead, the syntax remains the same and the statistical approach can be
 modified by changing a single argument:
 
-```{r df_p}
+```{r}
+#| label = "df_p"
 mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
 
 mtcars %>% oneway_anova(cyl, wt, type = "robust")
@@ -138,7 +145,8 @@ These functions are also compatible with other popular data manipulation
 packages. For example, we can use combination of `dplyr` and `{statsExpressions}` to repeat the same
 statistical analysis across grouping variables.
 
-```{r grouped_df}
+```{r}
+#| label = "grouped_df"
 # running one-sample proportion test for all levels of `cyl`
 mtcars %>%
   group_by(cyl) %>%
@@ -154,7 +162,11 @@ details. These expressions (Figure 1) attempt to follow the gold standard in
 statistical reporting for both Bayesian [@van2020jasp] and Frequentist
 [@american2019publication] frameworks.
 
-```{r expr_template, echo=FALSE, fig.cap="The templates used in `{statsExpressions}` to display statistical details in a plot."}
+```{r}
+#| label = "expr_template",
+#| echo = FALSE,
+#| fig.cap = "The templates used in `{statsExpressions}` to display statistical details in a
+#| plot."
 knitr::include_graphics("../man/figures/stats_reporting_format.png")
 ```
 
@@ -163,7 +175,11 @@ results in the context of a visualization is indeed a philosophy adopted by the
 `{ggstatsplot}` package [@Patil2021], and `{statsExpressions}` functions as its
 statistical processing backend.
 
-```{r anova_example, fig.width=8, fig.cap="Example illustrating how `{statsExpressions}` functions can be used to display results from a statistical test in a plot."}
+```{r}
+#| label = "anova_example",
+#| fig.width = 8,
+#| fig.cap = "Example illustrating how `{statsExpressions}` functions can be used to display
+#| results from a statistical test in a plot."
 # needed libraries
 library(statsExpressions)
 library(ggplot2)
