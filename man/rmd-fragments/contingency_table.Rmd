@@ -2,34 +2,34 @@
 
 **Hypothesis testing**
 
-Type | Design | Test | Function used
------------ | ----- | ------------------------- | -----
-Parametric/Non-parametric | Unpaired | Pearson's chi-squared test | `stats::chisq.test()`
-Bayesian | Unpaired | Bayesian Pearson's chi-squared test | `BayesFactor::contingencyTableBF()`
-Parametric/Non-parametric | Paired  | McNemar's chi-squared test | `stats::mcnemar.test()`
-Bayesian | Paired  | No | No
+| Type                      | Design   | Test                                | Function used                       |
+| :------------------------ | :------- | :---------------------------------- | :---------------------------------- |
+| Parametric/Non-parametric | Unpaired | Pearson's chi-squared test          | `stats::chisq.test()`               |
+| Bayesian                  | Unpaired | Bayesian Pearson's chi-squared test | `BayesFactor::contingencyTableBF()` |
+| Parametric/Non-parametric | Paired   | McNemar's chi-squared test          | `stats::mcnemar.test()`             |
+| Bayesian                  | Paired   | No                                  | No                                  |
 
 **Effect size estimation**
 
-Type | Design | Effect size | CI available? | Function used
------------ | ----- | ------------------------- | --- | -----
-Parametric/Non-parametric | Unpaired | Cramer's *V* | Yes | `effectsize::cramers_v()`
-Bayesian | Unpaired | Cramer's *V* | Yes | `effectsize::cramers_v()`
-Parametric/Non-parametric | Paired | Cohen's *g* | Yes | `effectsize::cohens_g()`
-Bayesian | Paired | No | No | No
+| Type                      | Design   | Effect size  | CI available? | Function used             |
+| :------------------------ | :------- | :----------- | :------------ | :------------------------ |
+| Parametric/Non-parametric | Unpaired | Cramer's *V* | Yes           | `effectsize::cramers_v()` |
+| Bayesian                  | Unpaired | Cramer's *V* | Yes           | `effectsize::cramers_v()` |
+| Parametric/Non-parametric | Paired   | Cohen's *g*  | Yes           | `effectsize::cohens_g()`  |
+| Bayesian                  | Paired   | No           | No            | No                        |
 
 #### one-way table
 
 **Hypothesis testing**
 
-Type | Test | Function used
------------ | ------------------------- | -----
-Parametric/Non-parametric | Goodness of fit chi-squared test | `stats::chisq.test()`
-Bayesian | Bayesian Goodness of fit chi-squared test | (custom)
+| Type                      | Test                                      | Function used         |
+| :------------------------ | :---------------------------------------- | :-------------------- |
+| Parametric/Non-parametric | Goodness of fit chi-squared test          | `stats::chisq.test()` |
+| Bayesian                  | Bayesian Goodness of fit chi-squared test | (custom)              |
 
 **Effect size estimation**
 
-Type | Effect size | CI available? | Function used
------------ | ------------------------- | --- | -----
-Parametric/Non-parametric | Pearson's *C* | Yes | `effectsize::pearsons_c()`
-Bayesian | No | No | No
+| Type                      | Effect size   | CI available? | Function used              |
+| :------------------------ | :------------ | :------------ | :------------------------- |
+| Parametric/Non-parametric | Pearson's *C* | Yes           | `effectsize::pearsons_c()` |
+| Bayesian                  | No            | No            | No                         |

@@ -2,13 +2,13 @@
 
 **Hypothesis testing**
 
-Type | Equal variance? | Test | *p*-value adjustment? | Function used
------------ | --- | ------------------------- | --- | -----
-Parametric | No | Games-Howell test | Yes | `PMCMRplus::gamesHowellTest()`
-Parametric | Yes | Student's *t*-test | Yes | `stats::pairwise.t.test()`
-Non-parametric | No | Dunn test | Yes | `PMCMRplus::kwAllPairsDunnTest()`
-Robust | No | Yuen's trimmed means test | Yes | `WRS2::lincon()`
-Bayesian | `NA` | Student's *t*-test | `NA` | `BayesFactor::ttestBF()`
+| Type           | Equal variance? | Test                      | *p*-value adjustment? | Function used                     |
+| :------------- | :-------------- | :------------------------ | :-------------------- | :-------------------------------- |
+| Parametric     | No              | Games-Howell test         | Yes                   | `PMCMRplus::gamesHowellTest()`    |
+| Parametric     | Yes             | Student's *t*-test        | Yes                   | `stats::pairwise.t.test()`        |
+| Non-parametric | No              | Dunn test                 | Yes                   | `PMCMRplus::kwAllPairsDunnTest()` |
+| Robust         | No              | Yuen's trimmed means test | Yes                   | `WRS2::lincon()`                  |
+| Bayesian       | `NA`            | Student's *t*-test        | `NA`                  | `BayesFactor::ttestBF()`          |
 
 **Effect size estimation**
 
@@ -18,12 +18,12 @@ Not supported.
 
 **Hypothesis testing**
 
-Type | Test | *p*-value adjustment? | Function used
------------ | ---------------------------- | --- | -----
-Parametric | Student's *t*-test | Yes | `stats::pairwise.t.test()`
-Non-parametric | Durbin-Conover test | Yes | `PMCMRplus::durbinAllPairsTest()` 
-Robust | Yuen's trimmed means test | Yes | `WRS2::rmmcp()`
-Bayesian | Student's *t*-test | `NA` | `BayesFactor::ttestBF()`
+| Type           | Test                      | *p*-value adjustment? | Function used                     |
+| :------------- | :------------------------ | :-------------------- | :-------------------------------- |
+| Parametric     | Student's *t*-test        | Yes                   | `stats::pairwise.t.test()`        |
+| Non-parametric | Durbin-Conover test       | Yes                   | `PMCMRplus::durbinAllPairsTest()` |
+| Robust         | Yuen's trimmed means test | Yes                   | `WRS2::rmmcp()`                   |
+| Bayesian       | Student's *t*-test        | `NA`                  | `BayesFactor::ttestBF()`          |
 
 **Effect size estimation**
 

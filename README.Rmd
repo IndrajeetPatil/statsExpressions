@@ -4,7 +4,8 @@ output: github_document
 
   <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, echo=FALSE}
+```{r}
+#| echo = FALSE
 options(
   tibble.width      = Inf,
   pillar.bold       = TRUE,
@@ -37,7 +38,8 @@ Status | Usage| Miscellaneous
  
 # Introduction <img src="man/figures/logo.png" align="right" width="240" />
 
-```{r child="man/rmd-fragments/statsExpressions-package.Rmd"}
+```{r}
+#| child = "man/rmd-fragments/statsExpressions-package.Rmd"
 ```
 
 # Installation
@@ -51,19 +53,24 @@ Development | [![Project Status](https://www.repostatus.org/badges/latest/active
 
 The package can be cited as:
 
-```{r citation, comment=""}
+```{r}
+#| label = "citation",
+#| comment = ""
 citation("statsExpressions")
 ```
 
 # General Workflow
 
-```{r, echo=FALSE, out.width="80%"}
+```{r}
+#| echo = FALSE,
+#| out.width = "80%"
 knitr::include_graphics("man/figures/card.png")
 ```
 
 # Summary of functionality
 
-```{r child="man/rmd-fragments/functionality.Rmd"}
+```{r}
+#| child = "man/rmd-fragments/functionality.Rmd"
 ```
 
 # Tidy dataframes from statistical analysis
@@ -73,7 +80,8 @@ ANOVA. If we first run a non-parametric ANOVA and then decide to run a robust
 ANOVA instead, the syntax remains the same and the statistical approach can be
 modified by changing a single argument:
 
-```{r df}
+```{r}
+#| label = "df"
 library(statsExpressions)
 
 mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
@@ -87,7 +95,8 @@ All possible output dataframes from functions are tabulated here:
 Needless to say this will also work with the `kable` function to generate a
 table:
 
-```{r kable}
+```{r}
+#| label = "kable"
 # setup
 library(statsExpressions)
 set.seed(123)
@@ -106,7 +115,8 @@ packages.
 For example, let's say we want to run a one-sample *t*-test for all levels of a
 certain grouping variable. We can use `dplyr` to do so:
 
-```{r grouped_df}
+```{r}
+#| label = "grouped_df"
 # for reproducibility
 set.seed(123)
 library(dplyr)
@@ -137,7 +147,8 @@ For example, here are results from Welch's *t*-test:
 
 **Note that when used in a geometric layer, the expression need to be parsed.**
 
-```{r centrality}
+```{r}
+#| label = "centrality"
 library(ggplot2)
 
 # displaying mean for each level of `cyl`
@@ -162,7 +173,8 @@ If you want to display more than one expression in a plot, you will *have to* pa
 
 ### Between-subjects design
 
-```{r anova_rob1}
+```{r}
+#| label = "anova_rob1"
 # setup
 set.seed(123)
 library(ggplot2)
@@ -186,7 +198,8 @@ ggplot(iris, aes(x = Sepal.Length, y = Species)) +
 
 ### Within-subjects design
 
-```{r anova_parametric2}
+```{r}
+#| label = "anova_parametric2"
 # setup
 set.seed(123)
 library(ggplot2)
@@ -215,7 +228,8 @@ ggplot2::ggplot(WineTasting, aes(Wine, Taste, color = Wine)) +
 
 ### Between-subjects design
 
-```{r t_two}
+```{r}
+#| label = "t_two"
 # setup
 set.seed(123)
 library(ggplot2)
@@ -235,7 +249,8 @@ ggplot(ToothGrowth, aes(supp, len)) +
 
 ### Within-subjects design
 
-```{r t_two_paired1}
+```{r}
+#| label = "t_two_paired1"
 # setup
 set.seed(123)
 library(ggplot2)
@@ -265,7 +280,8 @@ paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject")
 
 ## Expressions for one-sample tests
 
-```{r t_one}
+```{r}
+#| label = "t_one"
 # setup
 set.seed(123)
 library(ggplot2)
@@ -284,7 +300,8 @@ ggplot(mtcars, aes(wt)) +
 
 Let's look at another example where we want to run correlation analysis:
 
-```{r corr}
+```{r}
+#| label = "corr"
 # setup
 set.seed(123)
 library(ggplot2)
@@ -306,7 +323,8 @@ ggplot(mtcars, aes(mpg, wt)) +
 
 For categorical/nominal data - one-sample:
 
-```{r gof}
+```{r}
+#| label = "gof"
 # setup
 set.seed(123)
 library(ggplot2)
@@ -337,7 +355,8 @@ ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1
 You can also use these function to get the expression in return without having
 to display them in plots:
 
-```{r expr_output}
+```{r}
+#| label = "expr_output"
 # setup
 set.seed(123)
 library(ggplot2)
@@ -348,7 +367,10 @@ contingency_table(mtcars, am, cyl)$expression[[1]]
 
 ## Expressions for meta-analysis
 
-```{r metaanalysis, fig.height=14, fig.width=12}
+```{r}
+#| label = "metaanalysis",
+#| fig.height = 14,
+#| fig.width = 12
 # setup
 set.seed(123)
 library(metaviz)
@@ -379,7 +401,8 @@ Sometimes you may not wish include so many details in the subtitle. In that
 case, you can extract the expression and copy-paste only the part you wish to
 include. For example, here only statistic and *p*-values are included:
 
-```{r custom_expr}
+```{r}
+#| label = "custom_expr"
 # setup
 set.seed(123)
 library(ggplot2)
@@ -408,37 +431,44 @@ more about how one-way (between-subjects) ANOVA, you can run
 
 ## `centrality_description`
 
-```{r child="man/rmd-fragments/centrality_description.Rmd"}
+```{r}
+#| child = "man/rmd-fragments/centrality_description.Rmd"
 ```
 
 ## `oneway_anova`
 
-```{r child="man/rmd-fragments/oneway_anova.Rmd"}
+```{r}
+#| child = "man/rmd-fragments/oneway_anova.Rmd"
 ```
 
 ## `two_sample_test` 
 
-```{r child="man/rmd-fragments/two_sample_test.Rmd"}
+```{r}
+#| child = "man/rmd-fragments/two_sample_test.Rmd"
 ```
 
 ## `one_sample_test`
 
-```{r child="man/rmd-fragments/one_sample_test.Rmd"}
+```{r}
+#| child = "man/rmd-fragments/one_sample_test.Rmd"
 ```
 
 ## `corr_test`
 
-```{r child="man/rmd-fragments/corr_test.Rmd"}
+```{r}
+#| child = "man/rmd-fragments/corr_test.Rmd"
 ```
 
 ## `contingency_table`
 
-```{r child="man/rmd-fragments/contingency_table.Rmd"}
+```{r}
+#| child = "man/rmd-fragments/contingency_table.Rmd"
 ```
 
 ## `meta_analysis`
 
-```{r child="man/rmd-fragments/meta_analysis.Rmd"}
+```{r}
+#| child = "man/rmd-fragments/meta_analysis.Rmd"
 ```
 
 # Usage in `ggstatsplot`

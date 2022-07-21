@@ -19,7 +19,9 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include = FALSE}
+```{r}
+#| label = "setup",
+#| include = FALSE
 # show me all columns
 options(
   tibble.width = Inf,
@@ -52,7 +54,8 @@ extension packages. This vignette provides a gallery of such examples.
 
 ## `ggforce`
 
-```{r ggforce1}
+```{r}
+#| label = "ggforce1"
 # setup
 set.seed(123)
 library(ggplot2)
@@ -70,7 +73,8 @@ ggplot(iris, aes(x = Species, y = Sepal.Length)) +
 
 ## `ggExtra`
 
-```{r ggExtra1}
+```{r}
+#| label = "ggExtra1"
 # setup
 set.seed(123)
 library(ggplot2)
@@ -91,7 +95,8 @@ ggMarginal(p, type = "histogram", xparams = list(binwidth = 1, fill = "orange"))
 
 ## `ggpubr`
 
-```{r ggpubr1}
+```{r}
+#| label = "ggpubr1"
 set.seed(123)
 library(ggpubr)
 library(ggplot2)
@@ -112,7 +117,8 @@ ggboxplot(
   )
 ```
 
-```{r ggpubr2}
+```{r}
+#| label = "ggpubr2"
 # setup
 set.seed(123)
 library(ggplot2)
@@ -148,7 +154,8 @@ gghistogram(
 
 ## `ggiraphExtra`
 
-```{r ggiraphExtra1}
+```{r}
+#| label = "ggiraphExtra1"
 # setup
 set.seed(123)
 library(ggplot2)
@@ -167,7 +174,8 @@ ggDot(heightweight, aes(sex, heightIn, fill = sex),
   )
 ```
 
-```{r ggiraphExtra2}
+```{r}
+#| label = "ggiraphExtra2"
 # setup
 set.seed(123)
 library(moonBook)
