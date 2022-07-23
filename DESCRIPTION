@@ -27,7 +27,7 @@ Depends:
 Imports:
     BayesFactor (>= 0.9.12-4.4),
     correlation (>= 0.8.1),
-    datawizard (>= 0.4.1),
+    datawizard (>= 0.4.1.10),
     dplyr,
     effectsize (>= 0.7.0),
     glue,
@@ -43,8 +43,10 @@ Imports:
     zeallot
 Remotes:
     easystats/insight,
+    easystats/datawizard,
     easystats/effectsize,
     easystats/parameters,
+    easystats/correlation,
     easystats/performance
 Suggests:
     afex,
