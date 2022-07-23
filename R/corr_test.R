@@ -70,10 +70,5 @@ corr_test <- function(data,
 
   # expression ---------------------------------------
 
-  add_expression_col(
-    data   = stats_df,
-    paired = TRUE,
-    n      = stats_df$n.obs[[1]],
-    k      = k
-  )
+  add_expression_col(stats_df, paired = TRUE, k = k)
 }

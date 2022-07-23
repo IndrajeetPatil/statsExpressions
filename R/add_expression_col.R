@@ -89,18 +89,15 @@ add_expression_col <- function(data,
                                k.df = 0L,
                                k.df.error = k.df,
                                ...) {
-  # initial cleanup
-  data %<>%
-    rename_all(.funs = recode, "bayes.factor" = "bf10") %>%
-    mutate(
-      effectsize = ifelse("effectsize" %in% names(.), effectsize, method),
-      n.obs = n
-    )
+  # make sure these columns are present
+  if (!"n.obs" %in% colnames(data)) data %<>% mutate(n.obs = n)
+  if (!"effectsize" %in% colnames(data)) data %<>% mutate(effectsize = method)
 
-  # is this Bayesian test?
-  bayesian <- ifelse("bf10" %in% names(data), TRUE, FALSE)
+  # is this a Bayesian test?
+  data %<>% rename_all(.funs = recode, "bayes.factor" = "bf10")
+  bayesian <- ifelse("bf10" %in% colnames(data), TRUE, FALSE)
 
-  # special case for Bayesian analysis
+  # special case for Bayesian contingency table analysis
   if (bayesian && grepl("contingency", data$method[[1]])) data %<>% mutate(effectsize = "Cramers_v")
 
   # convert needed columns to character type
@@ -111,7 +108,7 @@ add_expression_col <- function(data,
     statistic.text     = statistic.text %||% stat_text_switch(method),
     es.text            = effsize.text %||% estimate_type_switch(effectsize),
     prior.distribution = prior_switch(method),
-    n.obs              = .prettyNum(n)
+    n.obs              = .prettyNum(n.obs)
   )
 
   # how many parameters?
