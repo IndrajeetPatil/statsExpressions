@@ -21,7 +21,7 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(df1$expression)
+    expect_snapshot(df1[["expression"]])
   }
 )
 
@@ -41,7 +41,7 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(df1$expression)
+    expect_snapshot(df1[["expression"]])
   }
 )
 
@@ -65,7 +65,7 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(df1$expression)
+    expect_snapshot(df1[["expression"]])
   }
 )
 
@@ -85,7 +85,7 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(df1$expression)
+    expect_snapshot(df1[["expression"]])
   }
 )
 

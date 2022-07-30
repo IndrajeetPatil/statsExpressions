@@ -17,7 +17,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(chi["Kruskal-Wallis"]^2 * "(" * 8 * ")" == "51.43", italic(p) == 
@@ -44,7 +44,7 @@
 ---
 
     Code
-      df2$expression
+      df2[["expression"]]
     Output
       [[1]]
       list(chi["Kruskal-Wallis"]^2 * "(" * 3 * ")" == "5.24", italic(p) == 
@@ -71,7 +71,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(chi["Friedman"]^2 * "(" * 3 * ")" == "55.83", italic(p) == 
@@ -98,7 +98,7 @@
 ---
 
     Code
-      df2$expression
+      df2[["expression"]]
     Output
       [[1]]
       list(chi["Friedman"]^2 * "(" * 3 * ")" == "410.00", italic(p) == 

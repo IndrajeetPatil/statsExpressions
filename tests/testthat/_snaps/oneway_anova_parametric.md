@@ -17,7 +17,7 @@
 ---
 
     Code
-      df$expression
+      df[["expression"]]
     Output
       [[1]]
       list(italic("F")["Welch"](2, 18.97383) == "20.24946", italic(p) == 
@@ -41,7 +41,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic("F")["Fisher"](2, 29) == "22.91139", italic(p) == 
@@ -68,7 +68,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic("F")["Welch"](3, 24.0475) == "2.2653", italic(p) == 
@@ -95,22 +95,11 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic("F")["Fisher"](1.149, 171.217) == "776.318", italic(p) == 
           "1.325e-69", widehat(omega["p"]^2) == "0.707", CI["99%"] ~ 
           "[" * "0.658", "1.000" * "]", italic("n")["pairs"] == "150")
-      
-
-# too few obs
-
-    Code
-      p_sub$expression
-    Output
-      [[1]]
-      list(italic("F")["Fisher"](6, 24) == "43.14", italic(p) == "1.08e-11", 
-          widehat(eta["p"]^2) == "0.92", CI["95%"] ~ "[" * "0.85", 
-          "1.00" * "]", italic("n")["pairs"] == "5")
       
 

@@ -20,7 +20,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic("F")["trimmed-means"](2, 18.97383) == "20.24946", 
@@ -51,7 +51,7 @@
 ---
 
     Code
-      df2$expression
+      df2[["expression"]]
     Output
       [[1]]
       list(italic("F")["trimmed-means"](2, 21.6869) == "0.0503", italic(p) == 
@@ -81,7 +81,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic("F")["trimmed-means"](2.7303, 144.7051) == "20.9752", 

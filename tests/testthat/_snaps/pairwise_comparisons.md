@@ -16,7 +16,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic(p)["Bonferroni" - adj.] == "1.00")
@@ -63,7 +63,7 @@
 ---
 
     Code
-      df2$expression
+      df2[["expression"]]
     Output
       [[1]]
       list(italic(p)["Bonferroni" - adj.] == "1.00")
@@ -110,7 +110,7 @@
 ---
 
     Code
-      df3$expression
+      df3[["expression"]]
     Output
       [[1]]
       list(italic(p)[unadj.] == "0.56")
@@ -157,7 +157,7 @@
 ---
 
     Code
-      df4$expression
+      df4[["expression"]]
     Output
       [[1]]
       list(italic(p)["FDR" - adj.] == "0.79")
@@ -193,7 +193,7 @@
 ---
 
     Code
-      df5$expression
+      df5[["expression"]]
     Output
       [[1]]
       list(italic(p)["Holm" - adj.] == "0.32")
@@ -231,7 +231,7 @@
 ---
 
     Code
-      df6$expression
+      df6[["expression"]]
     Output
       [[1]]
       list(italic(p)["Holm" - adj.] == "1.00")
@@ -268,7 +268,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic(p)[unadj.] == "0.45")
@@ -289,7 +289,7 @@
 ---
 
     Code
-      df$expression
+      df[["expression"]]
     Output
       [[1]]
       list(italic(p)["FDR" - adj.] == "1.32e-15")
@@ -319,7 +319,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic(p)["Bonferroni" - adj.] == "0.003")
@@ -366,7 +366,7 @@
 ---
 
     Code
-      df2$expression
+      df2[["expression"]]
     Output
       [[1]]
       list(italic(p)["BY" - adj.] == "1.436e-05")
@@ -413,7 +413,7 @@
 ---
 
     Code
-      df3$expression
+      df3[["expression"]]
     Output
       [[1]]
       list(italic(p)["Hommel" - adj.] == "0.010")
@@ -468,7 +468,7 @@
 ---
 
     Code
-      df4$expression
+      df4[["expression"]]
     Output
       [[1]]
       list(log[e] * (BF["01"]) == "-3.73")
@@ -504,7 +504,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic(p)[unadj.] == "0.732")
@@ -536,7 +536,7 @@
 ---
 
     Code
-      df2$expression
+      df2[["expression"]]
     Output
       [[1]]
       list(italic(p)[unadj.] == "0.301")
@@ -568,7 +568,7 @@
 ---
 
     Code
-      df3$expression
+      df3[["expression"]]
     Output
       [[1]]
       list(italic(p)[unadj.] == "0.195")
@@ -605,7 +605,7 @@
 ---
 
     Code
-      df4$expression
+      df4[["expression"]]
     Output
       [[1]]
       list(log[e] * (BF["01"]) == "1.45")
@@ -635,7 +635,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic(p)[unadj.] == "2.65e-04")
@@ -674,7 +674,7 @@
 ---
 
     Code
-      df2$expression
+      df2[["expression"]]
     Output
       [[1]]
       list(italic(p)[unadj.] == "1.00")
@@ -710,7 +710,7 @@
 ---
 
     Code
-      df3$expression
+      df3[["expression"]]
     Output
       [[1]]
       list(italic(p)[unadj.] == "0.99")
@@ -737,7 +737,7 @@
 ---
 
     Code
-      df4$expression
+      df4[["expression"]]
     Output
       [[1]]
       list(italic(p)[unadj.] == "5.32e-03")

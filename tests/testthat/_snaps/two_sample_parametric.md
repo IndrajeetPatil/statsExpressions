@@ -17,7 +17,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic("t")["Student"] * "(" * 58 * ")" == "1.91527", italic(p) == 
@@ -45,7 +45,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic("t")["Welch"] * "(" * 55.309 * ")" == "1.915", italic(p) == 
@@ -72,7 +72,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic("t")["Student"] * "(" * 149 * ")" == "34.8152", italic(p) == 
@@ -100,7 +100,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic("t")["Student"] * "(" * 89 * ")" == "3.613", italic(p) == 

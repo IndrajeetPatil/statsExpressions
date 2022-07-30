@@ -20,7 +20,7 @@ test_that(
       )
 
     # call
-    expect_snapshot(df$expression)
+    expect_snapshot(df[["expression"]])
   }
 )
 
@@ -65,7 +65,7 @@ test_that(
       )
 
     # call
-    expect_snapshot(df$expression)
+    expect_snapshot(df[["expression"]])
   }
 )
 

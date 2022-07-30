@@ -17,7 +17,7 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(df1$expression)
+    expect_snapshot(df1[["expression"]])
 
     # with counts
     set.seed(123)
@@ -30,7 +30,7 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(df2$expression)
+    expect_snapshot(df2[["expression"]])
 
     # contingency tab - with NAs --------------------------------------
 
@@ -45,7 +45,7 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df3, -expression))
-    expect_snapshot(df3$expression)
+    expect_snapshot(df3[["expression"]])
   }
 )
 
@@ -89,7 +89,7 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(df1$expression)
+    expect_snapshot(df1[["expression"]])
 
     # paired data with NAs  ---------------------------------------------
 
@@ -120,7 +120,7 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(df2$expression)
+    expect_snapshot(df2[["expression"]])
   }
 )
 
@@ -139,7 +139,7 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(df1$expression)
+    expect_snapshot(df1[["expression"]])
 
     # with counts
     set.seed(123)
@@ -151,7 +151,7 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(df2$expression)
+    expect_snapshot(df2[["expression"]])
 
     # one-sample test (with NAs) -------------------------------------
 
@@ -165,7 +165,7 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df3, -expression))
-    expect_snapshot(df3$expression)
+    expect_snapshot(df3[["expression"]])
 
     # edge case
     expect_null(contingency_table(data.frame(x = "x"), x, type = "bayes"))
@@ -186,7 +186,7 @@ test_that(
     )
 
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(df1$expression)
+    expect_snapshot(df1[["expression"]])
 
     # expr
     set.seed(123)
@@ -198,7 +198,7 @@ test_that(
     )
 
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(df2$expression)
+    expect_snapshot(df2[["expression"]])
   }
 )
 
@@ -265,9 +265,9 @@ test_that(
 
     # expr text
     expect_snapshot(list(
-      expr_text1$expression,
-      expr_text2$expression,
-      expr_text3$expression
+      expr_text1[["expression"]],
+      expr_text2[["expression"]],
+      expr_text3[["expression"]]
     ))
   }
 )

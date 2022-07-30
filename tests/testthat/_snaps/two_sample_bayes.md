@@ -1,7 +1,7 @@
 # bayesian (independent samples t-test)
 
     Code
-      df$expression
+      df[["expression"]]
     Output
       [[1]]
       list(log[e] * (BF["01"]) == "-0.18", widehat(delta)["difference"]^"posterior" == 
@@ -12,7 +12,7 @@
 # bayesian (paired t-test)
 
     Code
-      df$expression
+      df[["expression"]]
     Output
       [[1]]
       list(log[e] * (BF["01"]) == "-3.70", widehat(delta)["difference"]^"posterior" == 

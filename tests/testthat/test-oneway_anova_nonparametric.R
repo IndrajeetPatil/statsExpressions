@@ -18,7 +18,7 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(df1$expression)
+    expect_snapshot(df1[["expression"]])
 
     # with NA
     set.seed(123)
@@ -34,7 +34,7 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(df2$expression)
+    expect_snapshot(df2[["expression"]])
   }
 )
 
@@ -57,7 +57,7 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(df1$expression)
+    expect_snapshot(df1[["expression"]])
 
     # without NAs
     set.seed(123)
@@ -73,7 +73,7 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(df2$expression)
+    expect_snapshot(df2[["expression"]])
   }
 )
 

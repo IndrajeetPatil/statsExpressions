@@ -24,7 +24,7 @@
 ---
 
     Code
-      df$expression
+      df[["expression"]]
     Output
       [[1]]
       list(log[e] * (BF["01"]) == "-3.587", widehat(delta)["difference"]^"posterior" == 

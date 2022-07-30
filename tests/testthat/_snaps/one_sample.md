@@ -14,7 +14,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic("t")["Student"] * "(" * 78 * ")" == "-2.67496", italic(p) == 
@@ -39,7 +39,7 @@
 ---
 
     Code
-      df2$expression
+      df2[["expression"]]
     Output
       [[1]]
       list(italic("t")["Student"] * "(" * 78 * ")" == "-2.6750", italic(p) == 
@@ -63,7 +63,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic("V")["Wilcoxon"] == "753.5000", italic(p) == "0.3227", 
@@ -88,7 +88,7 @@
 ---
 
     Code
-      df2$expression
+      df2[["expression"]]
     Output
       [[1]]
       list(italic("V")["Wilcoxon"] == "262.0000", italic(p) == "1.2527e-05", 
@@ -113,7 +113,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic("t")["bootstrapped"] == "0.7866", italic(p) == "0.4550", 
@@ -137,7 +137,7 @@
 ---
 
     Code
-      df2$expression
+      df2[["expression"]]
     Output
       [[1]]
       list(italic("t")["bootstrapped"] == "-3.8075", italic(p) == "0.0400", 
@@ -160,7 +160,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(log[e] * (BF["01"]) == "-47.84", widehat(delta)["difference"]^"posterior" == 
@@ -171,7 +171,7 @@
 ---
 
     Code
-      df2$expression
+      df2[["expression"]]
     Output
       [[1]]
       list(log[e] * (BF["01"]) == "2.125", widehat(delta)["difference"]^"posterior" == 
