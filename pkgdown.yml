@@ -1,11 +1,11 @@
-pandoc: '2.18'
+pandoc: '2.19'
 pkgdown: 2.0.6.9000
 pkgdown_sha: 956f076f661eb2de9413f64ea24a580cf444466d
 articles:
   statsExpressions: statsExpressions.html
   stats_details: stats_details.html
   dataframe_outputs: web_only/dataframe_outputs.html
-last_built: 2022-07-23T20:13Z
+last_built: 2022-08-05T10:51Z
 urls:
   reference: https://indrajeetpatil.github.io/statsExpressions/reference
   article: https://indrajeetpatil.github.io/statsExpressions/articles
