@@ -23,7 +23,7 @@ test_that(
     ))
 
     expect_snapshot(dim(df1))
-    expect_snapshot(df1$expression[[1]])
+    expect_snapshot(df1[["expression"]][[1]])
 
     # without NA
     set.seed(123)
@@ -35,7 +35,7 @@ test_that(
     ))
 
     expect_snapshot(dim(df2))
-    expect_snapshot(df2$expression[[1]])
+    expect_snapshot(df2[["expression"]][[1]])
   }
 )
 
@@ -55,7 +55,7 @@ test_that(
     )
 
     expect_snapshot(dim(df1))
-    expect_snapshot(df1$expression[[1]])
+    expect_snapshot(df1[["expression"]][[1]])
 
     # data with NA
     set.seed(123)
@@ -68,7 +68,7 @@ test_that(
     )
 
     expect_snapshot(dim(df2))
-    expect_snapshot(df2$expression[[1]])
+    expect_snapshot(df2[["expression"]][[1]])
 
     # with subject.id ---------------------------------
 

@@ -19,7 +19,7 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df, -expression))
-    expect_snapshot(df$expression)
+    expect_snapshot(df[["expression"]])
 
     # data with NAs
     set.seed(123)
@@ -37,7 +37,7 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df_na, -expression))
-    expect_snapshot(df_na$expression)
+    expect_snapshot(df_na[["expression"]])
   }
 )
 
@@ -52,6 +52,6 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(res, -expression))
-    expect_snapshot(res$expression)
+    expect_snapshot(res[["expression"]])
   }
 )

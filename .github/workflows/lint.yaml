@@ -27,4 +27,5 @@ jobs:
 
       - name: Lint
         run: lintr::lint_package()
+        #run: lintr::lint_package(linters = lintr::linters_with_tags(tags = NULL))
         shell: Rscript {0}

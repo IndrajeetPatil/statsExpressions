@@ -17,7 +17,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic("t")["Yuen"] * "(" * 89 * ")" == "28.7230", italic(p) == 
@@ -44,7 +44,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic("t")["Yuen"] * "(" * 53 * ")" == "2.909", italic(p) == 
@@ -74,7 +74,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic("t")["Yuen"] * "(" * 13.584 * ")" == "5.840", italic(p) == 
@@ -104,7 +104,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic("t")["Yuen"] * "(" * 13.8476 * ")" == "0.4521", italic(p) == 

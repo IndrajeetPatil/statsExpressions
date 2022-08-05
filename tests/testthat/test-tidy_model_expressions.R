@@ -11,7 +11,7 @@ test_that("tidy_model_expressions works - t", {
   ))
 
   expect_snapshot(select(df_t, -expression))
-  expect_snapshot(df_t$expression)
+  expect_snapshot(df_t[["expression"]])
 
   # with NA df.error
   set.seed(123)
@@ -20,7 +20,7 @@ test_that("tidy_model_expressions works - t", {
     statistic = "t"
   ))
 
-  expect_snapshot(df_t_na$expression)
+  expect_snapshot(df_t_na[["expression"]])
 
   # with infinity as error
   set.seed(123)
@@ -29,7 +29,7 @@ test_that("tidy_model_expressions works - t", {
     statistic = "t"
   ))
 
-  expect_snapshot(df_t_inf$expression)
+  expect_snapshot(df_t_inf[["expression"]])
 })
 
 test_that("tidy_model_expressions works - chi2", {
@@ -50,12 +50,12 @@ test_that("tidy_model_expressions works - chi2", {
   ))
 
   expect_snapshot(select(df_chi, -expression))
-  expect_snapshot(df_chi$expression)
+  expect_snapshot(df_chi[["expression"]])
 
   df_chi$estimate[1] <- NA
   df_chi <- dplyr::select(df_chi, -expression)
   df_chi2 <- suppressWarnings(tidy_model_expressions(df_chi, statistic = "chi"))
-  expect_null(df_chi2$expression[[1]])
+  expect_null(df_chi2[["expression"]][[1]])
 })
 
 test_that("tidy_model_expressions works - z", {
@@ -77,7 +77,7 @@ test_that("tidy_model_expressions works - z", {
   ))
 
   expect_snapshot(select(df_z, -expression))
-  expect_snapshot(df_z$expression)
+  expect_snapshot(df_z[["expression"]])
 })
 
 
@@ -99,7 +99,7 @@ test_that("tidy_model_expressions works - F", {
   )
 
   expect_snapshot(select(df1, -expression))
-  expect_snapshot(df1$expression)
+  expect_snapshot(df1[["expression"]])
 
   set.seed(123)
   df2 <- tidy_model_expressions(
@@ -112,5 +112,5 @@ test_that("tidy_model_expressions works - F", {
   )
 
   expect_snapshot(select(df2, -expression))
-  expect_snapshot(df2$expression)
+  expect_snapshot(df2[["expression"]])
 })

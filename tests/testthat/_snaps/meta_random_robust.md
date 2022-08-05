@@ -17,7 +17,7 @@
 ---
 
     Code
-      df$expression
+      df[["expression"]]
     Output
       [[1]]
       list(italic("z") == "-1.88", italic(p) == "0.02", widehat(beta)["summary"]^"meta" == 

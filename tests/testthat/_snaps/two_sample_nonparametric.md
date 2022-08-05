@@ -14,7 +14,7 @@
 ---
 
     Code
-      df$expression
+      df[["expression"]]
     Output
       [[1]]
       list(italic("W")["Mann-Whitney"] == "230.500", italic(p) == "4.347e-05", 
@@ -38,7 +38,7 @@
 ---
 
     Code
-      df2$expression
+      df2[["expression"]]
     Output
       [[1]]
       list(italic("V")["Wilcoxon"] == "10.00000", italic(p) == "0.00295", 

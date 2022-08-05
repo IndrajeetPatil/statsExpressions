@@ -33,10 +33,10 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(df1$expression)
+    expect_snapshot(df1[["expression"]])
 
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(df2$expression)
+    expect_snapshot(df2[["expression"]])
   }
 )
 
@@ -69,10 +69,10 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(df1$expression)
+    expect_snapshot(df1[["expression"]])
 
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(df2$expression)
+    expect_snapshot(df2[["expression"]])
   }
 )
 
@@ -108,10 +108,10 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))
-    expect_snapshot(df1$expression)
+    expect_snapshot(df1[["expression"]])
 
     expect_snapshot(select(df2, -expression))
-    expect_snapshot(df2$expression)
+    expect_snapshot(df2[["expression"]])
   }
 )
 
@@ -151,7 +151,7 @@ test_that(
       conf.level = 0.90
     )
 
-    expect_snapshot(df1$expression)
+    expect_snapshot(df1[["expression"]])
 
     # extracting subtitle (with NA)
     set.seed(123)
@@ -166,6 +166,6 @@ test_that(
       conf.method = "eti"
     )
 
-    expect_snapshot(df2$expression)
+    expect_snapshot(df2[["expression"]])
   }
 )

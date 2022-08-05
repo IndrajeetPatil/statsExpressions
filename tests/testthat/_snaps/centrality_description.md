@@ -36,7 +36,7 @@
 ---
 
     Code
-      df$expression
+      df[["expression"]]
     Output
       [[1]]
       list(widehat(mu)[mean] == "5.01")
@@ -121,7 +121,7 @@
 ---
 
     Code
-      df_na$expression
+      df_na[["expression"]]
     Output
       [[1]]
       list(widehat(mu)[mean] == "7.85")
@@ -192,7 +192,7 @@
 ---
 
     Code
-      res$expression
+      res[["expression"]]
     Output
       [[1]]
       list(widehat(mu)[mean] == "2.29")

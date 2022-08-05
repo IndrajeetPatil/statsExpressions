@@ -21,7 +21,7 @@ test_that(
     )
 
     expect_snapshot(df1)
-    expect_snapshot(df1$expression)
+    expect_snapshot(df1[["expression"]])
 
     # games-howell
     df_msleep <- ggplot2::msleep
@@ -43,7 +43,7 @@ test_that(
     )
 
     expect_snapshot(df2)
-    expect_snapshot(df2$expression)
+    expect_snapshot(df2[["expression"]])
 
     # Dunn test
     set.seed(123)
@@ -57,7 +57,7 @@ test_that(
     )
 
     expect_snapshot(df3)
-    expect_snapshot(df3$expression)
+    expect_snapshot(df3[["expression"]])
 
     # robust t test
     set.seed(123)
@@ -71,7 +71,7 @@ test_that(
     )
 
     expect_snapshot(df4)
-    expect_snapshot(df4$expression)
+    expect_snapshot(df4[["expression"]])
 
     # checking the edge case where factor level names contain `-`
     set.seed(123)
@@ -83,7 +83,7 @@ test_that(
     )
 
     expect_snapshot(df5)
-    expect_snapshot(df5$expression)
+    expect_snapshot(df5[["expression"]])
 
     # bayes test
     set.seed(123)
@@ -93,9 +93,9 @@ test_that(
       y = brainwt
     )
 
-    # Too fragile to test across platforms
+    
     expect_snapshot(df6)
-    expect_snapshot(df6$expression)
+    expect_snapshot(df6[["expression"]])
   }
 )
 
@@ -120,7 +120,7 @@ test_that(
     )
 
     expect_snapshot(df1)
-    expect_snapshot(df1$expression)
+    expect_snapshot(df1[["expression"]])
 
     set.seed(123)
     df2 <- pairwise_comparisons(
@@ -153,7 +153,7 @@ test_that(
     )
 
     expect_snapshot(df)
-    expect_snapshot(df$expression)
+    expect_snapshot(df[["expression"]])
   }
 )
 
@@ -178,7 +178,7 @@ test_that(
     )
 
     expect_snapshot(df1)
-    expect_snapshot(df1$expression)
+    expect_snapshot(df1[["expression"]])
 
     # Durbin-Conover test
     set.seed(123)
@@ -193,7 +193,7 @@ test_that(
     )
 
     expect_snapshot(df2)
-    expect_snapshot(df2$expression)
+    expect_snapshot(df2[["expression"]])
 
     # robust t test
     set.seed(123)
@@ -208,7 +208,7 @@ test_that(
     )
 
     expect_snapshot(df3)
-    expect_snapshot(df3$expression)
+    expect_snapshot(df3[["expression"]])
 
     # Bayesian
     set.seed(123)
@@ -220,9 +220,9 @@ test_that(
       paired = TRUE
     )
 
-    # Too fragile to test across platforms
+    
     expect_snapshot(df4)
-    expect_snapshot(df4$expression)
+    expect_snapshot(df4[["expression"]])
   }
 )
 
@@ -248,7 +248,7 @@ test_that(
     )
 
     expect_snapshot(df1)
-    expect_snapshot(df1$expression)
+    expect_snapshot(df1[["expression"]])
 
     # Durbin-Conover test
     set.seed(123)
@@ -263,7 +263,7 @@ test_that(
     )
 
     expect_snapshot(df2)
-    expect_snapshot(df2$expression)
+    expect_snapshot(df2[["expression"]])
 
     # robust t test
     set.seed(123)
@@ -278,7 +278,7 @@ test_that(
     )
 
     expect_snapshot(df3)
-    expect_snapshot(df3$expression)
+    expect_snapshot(df3[["expression"]])
 
     # Bayesian
     set.seed(123)
@@ -290,9 +290,9 @@ test_that(
       paired = TRUE
     )
 
-    # Too fragile to test across platforms
+    
     expect_snapshot(df4)
-    expect_snapshot(df4$expression)
+    expect_snapshot(df4[["expression"]])
   }
 )
 
@@ -333,7 +333,7 @@ test_that(
     )
 
     # columns should be same no matter the test
-    expect_equal(dplyr::select(df1, -expression), dplyr::select(df2, -expression))
+    expect_equal(dplyr::select(df1, -expression), dplyr::select(df2, -expression), ignore_attr = TRUE)
     expect_equal(dplyr::select(df1, expression), dplyr::select(df2, expression), ignore_attr = TRUE)
   }
 )
@@ -357,7 +357,7 @@ test_that(
     )
 
     expect_snapshot(df1)
-    expect_snapshot(df1$expression)
+    expect_snapshot(df1[["expression"]])
 
     set.seed(123)
     df2 <- pairwise_comparisons(
@@ -370,7 +370,7 @@ test_that(
     )
 
     expect_snapshot(df2)
-    expect_snapshot(df2$expression)
+    expect_snapshot(df2[["expression"]])
 
     set.seed(123)
     df3 <- pairwise_comparisons(
@@ -383,7 +383,7 @@ test_that(
     )
 
     expect_snapshot(df3)
-    expect_snapshot(df3$expression)
+    expect_snapshot(df3[["expression"]])
 
     set.seed(123)
     df4 <- pairwise_comparisons(
@@ -396,6 +396,6 @@ test_that(
     )
 
     expect_snapshot(df4)
-    expect_snapshot(df4$expression)
+    expect_snapshot(df4[["expression"]])
   }
 )

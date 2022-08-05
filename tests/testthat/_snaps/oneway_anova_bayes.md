@@ -8,7 +8,7 @@
 ---
 
     Code
-      df1$expression[[1]]
+      df1[["expression"]][[1]]
     Output
       list(log[e] * (BF["01"]) == "1.54", widehat(italic(R^"2"))["Bayesian"]^"posterior" == 
           "0.00", CI["95%"]^HDI ~ "[" * "0.00", "0.09" * "]", italic("r")["Cauchy"]^"JZS" == 
@@ -24,7 +24,7 @@
 ---
 
     Code
-      df2$expression[[1]]
+      df2[["expression"]][[1]]
     Output
       list(log[e] * (BF["01"]) == "-65.10", widehat(italic(R^"2"))["Bayesian"]^"posterior" == 
           "0.61", CI["95%"]^HDI ~ "[" * "0.54", "0.67" * "]", italic("r")["Cauchy"]^"JZS" == 
@@ -40,7 +40,7 @@
 ---
 
     Code
-      df1$expression[[1]]
+      df1[["expression"]][[1]]
     Output
       list(log[e] * (BF["01"]) == "-1.96", widehat(italic(R^"2"))["Bayesian"]^"posterior" == 
           "0.89", CI["95%"]^HDI ~ "[" * "0.85", "0.92" * "]", italic("r")["Cauchy"]^"JZS" == 
@@ -56,7 +56,7 @@
 ---
 
     Code
-      df2$expression[[1]]
+      df2[["expression"]][[1]]
     Output
       list(log[e] * (BF["01"]) == "-21.04", widehat(italic(R^"2"))["Bayesian"]^"posterior" == 
           "0.53", CI["95%"]^HDI ~ "[" * "0.46", "0.59" * "]", italic("r")["Cauchy"]^"JZS" == 

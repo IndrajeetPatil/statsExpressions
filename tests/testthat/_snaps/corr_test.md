@@ -14,7 +14,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic("t")["Student"] * "(" * 46 * ")" == "-1.539", italic(p) == 
@@ -38,7 +38,7 @@
 ---
 
     Code
-      df2$expression
+      df2[["expression"]]
     Output
       [[1]]
       list(italic("t")["Student"] * "(" * 30 * ")" == "-9.559", italic(p) == 
@@ -66,7 +66,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic("t")["Student"] * "(" * 54 * ")" == "-4.8286", italic(p) == 
@@ -94,7 +94,7 @@
 ---
 
     Code
-      df2$expression
+      df2[["expression"]]
     Output
       [[1]]
       list(italic("t")["Student"] * "(" * 30 * ")" == "-9.41", italic(p) == 
@@ -119,7 +119,7 @@
 ---
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(italic("S") == "46627.1234", italic(p) == "1.4262e-06", 
@@ -143,7 +143,7 @@
 ---
 
     Code
-      df2$expression
+      df2[["expression"]]
     Output
       [[1]]
       list(italic("S") == "10292.3186", italic(p) == "1.4876e-11", 
@@ -154,7 +154,7 @@
 # corr_test works - Bayesian
 
     Code
-      df1$expression
+      df1[["expression"]]
     Output
       [[1]]
       list(log[e] * (BF["01"]) == "0.49", widehat(rho)["Pearson"]^"posterior" == 
@@ -165,7 +165,7 @@
 ---
 
     Code
-      df2$expression
+      df2[["expression"]]
     Output
       [[1]]
       list(log[e] * (BF["01"]) == "-17.84", widehat(rho)["Pearson"]^"posterior" == 
