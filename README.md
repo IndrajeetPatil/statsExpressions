@@ -13,10 +13,10 @@
 
 The `{statsExpressions}` package has two key aims:
 
--   to provide a consistent syntax to do statistical analysis with tidy
-    data (in pipe-friendly manner),
--   to provide statistical expressions (pre-formatted in-text
-    statistical results) for plotting functions.
+- to provide a consistent syntax to do statistical analysis with tidy
+  data (in pipe-friendly manner),
+- to provide statistical expressions (pre-formatted in-text statistical
+  results) for plotting functions.
 
 Statistical packages exhibit substantial diversity in terms of their
 syntax and expected input type. This can make it difficult to switch
@@ -254,10 +254,10 @@ The returned data frame will always have a column called `expression`.
 Assuming there is only a single result you need to display in a plot, to
 use it in a plot, you have two options:
 
--   extract the expression from the list column
-    (`results_data$expression[[1]]`) without parsing
--   use the list column as is, in which case you will need to parse it
-    (`parse(text = results_data$expression)`)
+- extract the expression from the list column
+  (`results_data$expression[[1]]`) without parsing
+- use the list column as is, in which case you will need to parse it
+  (`parse(text = results_data$expression)`)
 
 If you want to display more than one expression in a plot, you will
 *have to* parse them.
@@ -550,7 +550,7 @@ console.
 **Hypothesis testing**
 
 | Type           | No. of groups | Test                                            | Function used            |
-|----------------|---------------|-------------------------------------------------|--------------------------|
+|:---------------|:--------------|:------------------------------------------------|:-------------------------|
 | Parametric     | \> 2          | Fisher’s or Welch’s one-way ANOVA               | `stats::oneway.test()`   |
 | Non-parametric | \> 2          | Kruskal-Wallis one-way ANOVA                    | `stats::kruskal.test()`  |
 | Robust         | \> 2          | Heteroscedastic one-way ANOVA for trimmed means | `WRS2::t1way()`          |
@@ -559,7 +559,7 @@ console.
 **Effect size estimation**
 
 | Type           | No. of groups | Effect size                                | CI available? | Function used                                              |
-|----------------|---------------|--------------------------------------------|---------------|------------------------------------------------------------|
+|:---------------|:--------------|:-------------------------------------------|:--------------|:-----------------------------------------------------------|
 | Parametric     | \> 2          | partial eta-squared, partial omega-squared | Yes           | `effectsize::omega_squared()`, `effectsize::eta_squared()` |
 | Non-parametric | \> 2          | rank epsilon squared                       | Yes           | `effectsize::rank_epsilon_squared()`                       |
 | Robust         | \> 2          | Explanatory measure of effect size         | Yes           | `WRS2::t1way()`                                            |
@@ -570,7 +570,7 @@ console.
 **Hypothesis testing**
 
 | Type           | No. of groups | Test                                                              | Function used            |
-|----------------|---------------|-------------------------------------------------------------------|--------------------------|
+|:---------------|:--------------|:------------------------------------------------------------------|:-------------------------|
 | Parametric     | \> 2          | One-way repeated measures ANOVA                                   | `afex::aov_ez()`         |
 | Non-parametric | \> 2          | Friedman rank sum test                                            | `stats::friedman.test()` |
 | Robust         | \> 2          | Heteroscedastic one-way repeated measures ANOVA for trimmed means | `WRS2::rmanova()`        |
@@ -579,7 +579,7 @@ console.
 **Effect size estimation**
 
 | Type           | No. of groups | Effect size                                                     | CI available? | Function used                                              |
-|----------------|---------------|-----------------------------------------------------------------|---------------|------------------------------------------------------------|
+|:---------------|:--------------|:----------------------------------------------------------------|:--------------|:-----------------------------------------------------------|
 | Parametric     | \> 2          | partial eta-squared, partial omega-squared                      | Yes           | `effectsize::omega_squared()`, `effectsize::eta_squared()` |
 | Non-parametric | \> 2          | Kendall’s coefficient of concordance                            | Yes           | `effectsize::kendalls_w()`                                 |
 | Robust         | \> 2          | Algina-Keselman-Penfield robust standardized difference average | Yes           | `WRS2::wmcpAKP()`                                          |
@@ -592,7 +592,7 @@ console.
 **Hypothesis testing**
 
 | Type           | No. of groups | Test                          | Function used            |
-|----------------|---------------|-------------------------------|--------------------------|
+|:---------------|:--------------|:------------------------------|:-------------------------|
 | Parametric     | 2             | Student’s or Welch’s *t*-test | `stats::t.test()`        |
 | Non-parametric | 2             | Mann-Whitney *U* test         | `stats::wilcox.test()`   |
 | Robust         | 2             | Yuen’s test for trimmed means | `WRS2::yuen()`           |
@@ -601,7 +601,7 @@ console.
 **Effect size estimation**
 
 | Type           | No. of groups | Effect size                                             | CI available? | Function used                                      |
-|----------------|---------------|---------------------------------------------------------|---------------|----------------------------------------------------|
+|:---------------|:--------------|:--------------------------------------------------------|:--------------|:---------------------------------------------------|
 | Parametric     | 2             | Cohen’s *d*, Hedge’s *g*                                | Yes           | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
 | Non-parametric | 2             | *r* (rank-biserial correlation)                         | Yes           | `effectsize::rank_biserial()`                      |
 | Robust         | 2             | Algina-Keselman-Penfield robust standardized difference | Yes           | `WRS2::akp.effect()`                               |
@@ -612,7 +612,7 @@ console.
 **Hypothesis testing**
 
 | Type           | No. of groups | Test                                               | Function used            |
-|----------------|---------------|----------------------------------------------------|--------------------------|
+|:---------------|:--------------|:---------------------------------------------------|:-------------------------|
 | Parametric     | 2             | Student’s *t*-test                                 | `stats::t.test()`        |
 | Non-parametric | 2             | Wilcoxon signed-rank test                          | `stats::wilcox.test()`   |
 | Robust         | 2             | Yuen’s test on trimmed means for dependent samples | `WRS2::yuend()`          |
@@ -621,7 +621,7 @@ console.
 **Effect size estimation**
 
 | Type           | No. of groups | Effect size                                             | CI available? | Function used                                      |
-|----------------|---------------|---------------------------------------------------------|---------------|----------------------------------------------------|
+|:---------------|:--------------|:--------------------------------------------------------|:--------------|:---------------------------------------------------|
 | Parametric     | 2             | Cohen’s *d*, Hedge’s *g*                                | Yes           | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
 | Non-parametric | 2             | *r* (rank-biserial correlation)                         | Yes           | `effectsize::rank_biserial()`                      |
 | Robust         | 2             | Algina-Keselman-Penfield robust standardized difference | Yes           | `WRS2::wmcpAKP()`                                  |
@@ -632,7 +632,7 @@ console.
 **Hypothesis testing**
 
 | Type           | Test                                     | Function used          |
-|----------------|------------------------------------------|------------------------|
+|:---------------|:-----------------------------------------|:-----------------------|
 | Parametric     | One-sample Student’s *t*-test            | `stats::t.test`        |
 | Non-parametric | One-sample Wilcoxon test                 | `stats::wilcox.test`   |
 | Robust         | Bootstrap-*t* method for one-sample test | `WRS2::trimcibt`       |
@@ -641,7 +641,7 @@ console.
 **Effect size estimation**
 
 | Type           | Effect size                     | CI available? | Function used                                      |
-|----------------|---------------------------------|---------------|----------------------------------------------------|
+|:---------------|:--------------------------------|:--------------|:---------------------------------------------------|
 | Parametric     | Cohen’s *d*, Hedge’s *g*        | Yes           | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
 | Non-parametric | *r* (rank-biserial correlation) | Yes           | `effectsize::rank_biserial()`                      |
 | Robust         | trimmed mean                    | Yes           | `WRS2::trimcibt()`                                 |
@@ -652,7 +652,7 @@ console.
 **Hypothesis testing** and **Effect size estimation**
 
 | Type           | Test                                       | CI available? | Function used                |
-|----------------|--------------------------------------------|---------------|------------------------------|
+|:---------------|:-------------------------------------------|:--------------|:-----------------------------|
 | Parametric     | Pearson’s correlation coefficient          | Yes           | `correlation::correlation()` |
 | Non-parametric | Spearman’s rank correlation coefficient    | Yes           | `correlation::correlation()` |
 | Robust         | Winsorized Pearson correlation coefficient | Yes           | `correlation::correlation()` |
@@ -665,7 +665,7 @@ console.
 **Hypothesis testing**
 
 | Type                      | Design   | Test                                | Function used                       |
-|---------------------------|----------|-------------------------------------|-------------------------------------|
+|:--------------------------|:---------|:------------------------------------|:------------------------------------|
 | Parametric/Non-parametric | Unpaired | Pearson’s chi-squared test          | `stats::chisq.test()`               |
 | Bayesian                  | Unpaired | Bayesian Pearson’s chi-squared test | `BayesFactor::contingencyTableBF()` |
 | Parametric/Non-parametric | Paired   | McNemar’s chi-squared test          | `stats::mcnemar.test()`             |
@@ -674,7 +674,7 @@ console.
 **Effect size estimation**
 
 | Type                      | Design   | Effect size  | CI available? | Function used             |
-|---------------------------|----------|--------------|---------------|---------------------------|
+|:--------------------------|:---------|:-------------|:--------------|:--------------------------|
 | Parametric/Non-parametric | Unpaired | Cramer’s *V* | Yes           | `effectsize::cramers_v()` |
 | Bayesian                  | Unpaired | Cramer’s *V* | Yes           | `effectsize::cramers_v()` |
 | Parametric/Non-parametric | Paired   | Cohen’s *g*  | Yes           | `effectsize::cohens_g()`  |
@@ -685,14 +685,14 @@ console.
 **Hypothesis testing**
 
 | Type                      | Test                                      | Function used         |
-|---------------------------|-------------------------------------------|-----------------------|
+|:--------------------------|:------------------------------------------|:----------------------|
 | Parametric/Non-parametric | Goodness of fit chi-squared test          | `stats::chisq.test()` |
 | Bayesian                  | Bayesian Goodness of fit chi-squared test | (custom)              |
 
 **Effect size estimation**
 
 | Type                      | Effect size   | CI available? | Function used              |
-|---------------------------|---------------|---------------|----------------------------|
+|:--------------------------|:--------------|:--------------|:---------------------------|
 | Parametric/Non-parametric | Pearson’s *C* | Yes           | `effectsize::pearsons_c()` |
 | Bayesian                  | No            | No            | No                         |
 
@@ -701,7 +701,7 @@ console.
 **Hypothesis testing** and **Effect size estimation**
 
 | Type       | Test                                             | Effect size | CI available? | Function used            |
-|------------|--------------------------------------------------|-------------|---------------|--------------------------|
+|:-----------|:-------------------------------------------------|:------------|:--------------|:-------------------------|
 | Parametric | Meta-analysis via random-effects models          | *beta*      | Yes           | `metafor::metafor()`     |
 | Robust     | Meta-analysis via robust random-effects models   | *beta*      | Yes           | `metaplus::metaplus()`   |
 | Bayes      | Meta-analysis via Bayesian random-effects models | *beta*      | Yes           | `metaBMA::meta_random()` |
