@@ -28,6 +28,7 @@ jobs:
           extra-packages: |
             deps::.
             any::statsExpressions
+            any::rcmdcheck
           dependencies: 'character()'
 
       - name: Install pdflatex
