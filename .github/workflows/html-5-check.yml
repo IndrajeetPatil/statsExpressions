@@ -25,7 +25,9 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rcmdcheck
+          extra-packages: |
+            deps::.
+            any::statsExpressions
           dependencies: 'character()'
 
       - name: Install pdflatex
