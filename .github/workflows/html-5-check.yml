@@ -29,6 +29,7 @@ jobs:
             deps::.
             any::statsExpressions
             any::rcmdcheck
+            any::rmarkdown
           dependencies: 'character()'
 
       - name: Install pdflatex
