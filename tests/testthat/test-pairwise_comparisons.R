@@ -93,7 +93,7 @@ test_that(
       y = brainwt
     )
 
-    
+
     expect_snapshot(df6)
     expect_snapshot(df6[["expression"]])
   }
@@ -220,7 +220,7 @@ test_that(
       paired = TRUE
     )
 
-    
+
     expect_snapshot(df4)
     expect_snapshot(df4[["expression"]])
   }
@@ -290,7 +290,7 @@ test_that(
       paired = TRUE
     )
 
-    
+
     expect_snapshot(df4)
     expect_snapshot(df4[["expression"]])
   }
