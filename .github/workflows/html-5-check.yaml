@@ -23,24 +23,9 @@ jobs:
           http-user-agent: 'release'
           use-public-rspm: true
 
-      - uses: r-lib/actions/setup-pandoc@v2
-
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: |
-            deps::.
-            any::statsExpressions
-            any::rcmdcheck
-            any::V8
-            any::rmarkdown
-            any::gghalves
-            any::ggplot2
-            any::ggridges
-            any::ggbeeswarm
-            any::PairedData
-            any::metaviz
-            any::metaplus
-          needs: check
+          extra-packages: any::rcmdcheck
           dependencies: 'character()'
 
       - name: Install pdflatex
@@ -52,7 +37,7 @@ jobs:
       - uses: r-lib/actions/check-r-package@v2
         with:
           args: 'c("--as-cran", "--no-codoc", "--no-examples", "--no-tests", "--no-vignettes", "--no-build-vignettes", "--ignore-vignettes", "--no-install")'
-          build_args: 'character()'
+          build_args: 'c("--no-build-vignettes")'
           error-on: '"note"'
         env:
           _R_CHECK_CRAN_INCOMING_REMOTE_: false
