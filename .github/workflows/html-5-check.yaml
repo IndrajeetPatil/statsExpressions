@@ -38,7 +38,7 @@ jobs:
         with:
           args: 'c("--as-cran", "--no-codoc", "--no-examples", "--no-tests", "--no-vignettes", "--no-build-vignettes", "--ignore-vignettes", "--no-install")'
           build_args: 'c("--no-build-vignettes")'
-          #error-on: '"note"'
+          error-on: '"error"' # '"note"'
         env:
           _R_CHECK_CRAN_INCOMING_REMOTE_: false
           _R_CHECK_CRAN_INCOMING_: false
