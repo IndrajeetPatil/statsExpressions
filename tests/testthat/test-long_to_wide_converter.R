@@ -108,13 +108,14 @@ test_that(
 test_that(
   desc = "with .rowid - without NA",
   code = {
-    df <- structure(list(
-      score = c(90, 90, 72.5, 45),
-      condition = structure(c(1L, 2L, 2L, 1L), .Label = c("4", "5"), class = "factor"),
-      id = c(1L, 2L, 1L, 2L)
-    ),
-    row.names = c(NA, -4L),
-    class = c("tbl_df", "tbl", "data.frame")
+    df <- structure(
+      list(
+        score = c(90, 90, 72.5, 45),
+        condition = structure(c(1L, 2L, 2L, 1L), .Label = c("4", "5"), class = "factor"),
+        id = c(1L, 2L, 1L, 2L)
+      ),
+      row.names = c(NA, -4L),
+      class = c("tbl_df", "tbl", "data.frame")
     )
 
     df1 <- arrange(df, id)
