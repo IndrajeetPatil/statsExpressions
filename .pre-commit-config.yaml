@@ -47,35 +47,28 @@ repos:
     -   id: spell-check
         exclude: >
           (?x)^(
+          \.github/.*\.yaml|
+          data/.*|
+          tests/testthat/.*|
+          touchstone/config\.json|
+          (.*/|)\.Rprofile|
+          (.*/|)\.Renviron|
+          (.*/|)\.gitignore|
+          (.*/|)NAMESPACE|
+          (.*/|)WORDLIST|
+          (.*/|)\.travis.yml|
+          (.*/|)appveyor.yml|
+          (.*/|)\.Rbuildignore|
+          (.*/|)\.pre-commit-.*|
           .*\.[rR]|
-          .*\.feather|
-          .*\.jpeg|
-          .*\.pdf|
-          .*\.png|
+          .*\.Rproj|
           .*\.py|
-          .*\.RData|
+          .*\.feather|
           .*\.rds|
           .*\.Rds|
-          .*\.Rproj|
           .*\.sh|
-          (.*/|)\.gitignore|
-          (.*/|)\.pre-commit-.*|
-          (.*/|)\.Rbuildignore|
-          (.*/|)\.Renviron|
-          (.*/|)\.Rprofile|
-          (.*/|)\.travis\.yml|
-          (.*/|)appveyor\.yml|
-          (.*/|)NAMESPACE|
-          (.*/|)renv/settings\.dcf|
-          (.*/|)renv\.lock|
-          (.*/|)WORDLIST|
-          \.github/workflows/.*|
-          data/.*|
-          inst/hooks/.*|
-          inst/pre-commit-.*|
-          inst/usethis-legacy-hook|
-          LICENSE|
-          tests/testthat/in/.*|
+          .*\.RData|
+          .*-in_tree
           )$
     -   id: readme-rmd-rendered
     -   id: parsable-R
