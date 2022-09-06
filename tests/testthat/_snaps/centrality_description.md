@@ -203,4 +203,3 @@
       [[3]]
       list(widehat(mu)[mean] == "4.00")
       
-

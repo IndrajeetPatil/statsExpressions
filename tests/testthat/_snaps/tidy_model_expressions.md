@@ -188,4 +188,3 @@
       list(widehat(italic(eta)[p]^2) == "0.06", italic(F)("1", "15") == 
           "1.02", italic(p) == "0.33")
       
-
