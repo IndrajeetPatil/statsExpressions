@@ -4,6 +4,7 @@ repos:
 -   repo: https://github.com/lorenzwalthert/precommit
     rev: v0.3.2.9001
     hooks:
+
     -   id: style-files
         args: [--style_pkg=styler, --style_fun=tidyverse_style, --cache-root=styler-perm]
         exclude: >
@@ -11,38 +12,7 @@ repos:
           tests/testthat/in/.*|
           renv/.*
           )$
-    -   id: roxygenize
-        additional_dependencies:
-        -    afex
-        -    BayesFactor
-        -    cli
-        -    correlation
-        -    datawizard
-        -    dplyr
-        -    effectsize
-        -    fs
-        -    git2r
-        -    here
-        -    insight
-        -    magrittr
-        -    metaBMA
-        -    metafor
-        -    metaplus
-        -    parameters
-        -    performance
-        -    purrr
-        -    R.cache
-        -    rlang
-        -    rprojroot
-        -    rstudioapi
-        -    tidyr
-        -    withr
-        -    WRS2
-        -    yaml
-        -    zeallot
-        -    r-lib/pkgapi
-    # codemeta must be above use-tidy-description when both are used
-    # -   id: codemeta-description-updated
+
     -   id: use-tidy-description
     -   id: spell-check
         exclude: >
@@ -70,22 +40,25 @@ repos:
           .*\.RData|
           .*-in_tree
           )$
-    -   id: readme-rmd-rendered
+
     -   id: parsable-R
         exclude: >
           (?x)^(
           tests/testthat/in/.*|
           )$
+
     -   id: no-browser-statement
         exclude: >
           (?x)^(
           tests/testthat/in/.*|
           )$
+
     -   id: no-debug-statement
         exclude: >
           (?x)^(
           tests/testthat/in/.*|
           )$
+
     -   id: deps-in-desc
         exclude: >
           (?x)^(
@@ -94,6 +67,7 @@ repos:
           renv/activate.R|
           vignettes/FAQ\.Rmd|
           )$
+
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
     hooks:
@@ -102,31 +76,21 @@ repos:
         exclude: '\.Rd' # sometimes roxygen fails to generate EOF blank line.
     -   id: file-contents-sorter
         files: '^\.Rbuildignore$'
+
 -   repo: https://github.com/pre-commit-ci/pre-commit-ci-config
     rev: v1.5.1
     hooks:
     # Only reuiqred when https://pre-commit.ci is used for config validation
     -   id: check-pre-commit-ci-config
+
 -   repo: https://github.com/lorenzwalthert/gitignore-tidy
     rev: a2260df7cc08de00d7312aeff68cea6bcba48c42
     hooks:
     -   id: tidy-gitignore
+
 -   repo: local
     hooks:
-    -   id: consistent-release-tag
-        name: consistent-release-tag
-        entry: Rscript inst/hooks/local/consistent-release-tag.R
-        language: r
-        additional_dependencies:
-        -    docopt
-        -    fs
-        -    yaml
-        -    purrr
-        -    rlang
-        -    git2r
-        -    desc
-        -    glue
-        stages: [commit, push]
+
     -   id: hooks-config-to-inst
         name: hooks-config-to-inst
         entry: Rscript inst/hooks/local/hooks-config-to-inst.R
@@ -135,12 +99,14 @@ repos:
         additional_dependencies:
         -    fs
         require_serial: True
+
     -   id: forbid-to-commit
         name: Don't commit common R artifacts
         entry: Cannot commit .Rhistory, .Rdata, .csv and similar.
         language: fail
         files: '\.(Rhistory|csv|RData|Rds|rds)$'
         # `exclude: <regex>` to allow committing specific files.
+
     -   id: spell-check-ordered-exclude
         name: Ordered regex pattern for spell-check exclusion
         description: Ensure alphabetical order in `exclude:` key of spell check.
