@@ -13,6 +13,7 @@ repos:
           )$
     -   id: roxygenize
         additional_dependencies:
+        -    afex
         -    BayesFactor
         -    cli
         -    correlation
@@ -24,6 +25,9 @@ repos:
         -    here
         -    insight
         -    magrittr
+        -    metaBMA
+        -    metafor
+        -    metaplus
         -    parameters
         -    performance
         -    purrr
