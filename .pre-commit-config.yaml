@@ -135,18 +135,6 @@ repos:
         additional_dependencies:
         -    fs
         require_serial: True
-    -   id: spell-check-exclude-identical
-        name: spell-check-exclude-identical
-        entry: Rscript inst/hooks/local/spell-check-exclude-identical.R
-        language: r
-        stages: [commit, push]
-        additional_dependencies:
-        -    magrittr
-        -    purrr
-        -    yaml
-        -    here
-        -    rlang
-        require_serial: True
     -   id: forbid-to-commit
         name: Don't commit common R artifacts
         entry: Cannot commit .Rhistory, .Rdata, .csv and similar.
@@ -164,6 +152,7 @@ repos:
         -    yaml
         -    purrr
         -    rlang
+        -    git2r
 
 default_stages: ["commit"]
 
