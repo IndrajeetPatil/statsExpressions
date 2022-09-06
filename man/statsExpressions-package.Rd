@@ -40,8 +40,8 @@ For more documentation, see the dedicated \href{https://indrajeetpatil.github.io
 Useful links:
 \itemize{
   \item \url{https://indrajeetpatil.github.io/statsExpressions/}
-  \item \url{https://github.com/IndrajeetPatil/statsExpressions}
-  \item Report bugs at \url{https://github.com/IndrajeetPatil/statsExpressions/issues}
+  \item \url{https://github.com/IndrajeetPatil/statsExpressions/}
+  \item Report bugs at \url{https://github.com/IndrajeetPatil/statsExpressions/issues/}
 }
 
 }

@@ -20,8 +20,8 @@ Description: Utilities for producing dataframes with rich details for the
     'ggstatsplot'.
 License: GPL-3 | file LICENSE
 URL: https://indrajeetpatil.github.io/statsExpressions/,
-    https://github.com/IndrajeetPatil/statsExpressions
-BugReports: https://github.com/IndrajeetPatil/statsExpressions/issues
+    https://github.com/IndrajeetPatil/statsExpressions/
+BugReports: https://github.com/IndrajeetPatil/statsExpressions/issues/
 Depends: 
     R (>= 4.0.0)
 Imports:

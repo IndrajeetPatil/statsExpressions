@@ -90,16 +90,6 @@ repos:
 
 -   repo: local
     hooks:
-
-    -   id: hooks-config-to-inst
-        name: hooks-config-to-inst
-        entry: Rscript inst/hooks/local/hooks-config-to-inst.R
-        language: r
-        stages: [commit, push]
-        additional_dependencies:
-        -    fs
-        require_serial: True
-
     -   id: forbid-to-commit
         name: Don't commit common R artifacts
         entry: Cannot commit .Rhistory, .Rdata, .csv and similar.
