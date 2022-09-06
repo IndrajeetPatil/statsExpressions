@@ -107,19 +107,6 @@ repos:
         files: '\.(Rhistory|csv|RData|Rds|rds)$'
         # `exclude: <regex>` to allow committing specific files.
 
-    -   id: spell-check-ordered-exclude
-        name: Ordered regex pattern for spell-check exclusion
-        description: Ensure alphabetical order in `exclude:` key of spell check.
-        entry: Rscript inst/hooks/local/spell-check-ordered-exclude.R
-        language: r
-        files: '^(.*/|)\.?pre-commit-config.*\.yaml$'
-        additional_dependencies:
-        -    magrittr
-        -    yaml
-        -    purrr
-        -    rlang
-        -    git2r
-
 default_stages: ["commit"]
 
 ci:
