@@ -19,9 +19,12 @@
 #' @import rlang
 #' @import dplyr
 #' @import glue
+#' @import tibble
 #'
 #' @importFrom insight format_value check_if_installed standardize_names
 #' @importFrom parameters model_parameters
+#' @importFrom magrittr "%$%"
+#' @importFrom zeallot "%<-%"
 #'
 ## statsExpressions namespace: end
 NULL
