@@ -13,17 +13,28 @@ repos:
           )$
     -   id: roxygenize
         additional_dependencies:
+        -    BayesFactor
         -    cli
+        -    correlation
+        -    datawizard
+        -    dplyr
+        -    effectsize
         -    fs
         -    here
+        -    insight
         -    magrittr
+        -    parameters
+        -    performance
         -    purrr
         -    R.cache
         -    rlang
         -    rprojroot
         -    rstudioapi
+        -    tidyr
         -    withr
+        -    WRS2
         -    yaml
+        -    zeallot
         -    r-lib/pkgapi
     # codemeta must be above use-tidy-description when both are used
     # -   id: codemeta-description-updated
