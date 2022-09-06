@@ -20,6 +20,7 @@ repos:
         -    dplyr
         -    effectsize
         -    fs
+        -    git2r
         -    here
         -    insight
         -    magrittr
