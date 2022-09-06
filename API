@@ -19,13 +19,9 @@ two_sample_test(data, x, y, subject.id = NULL, type = "parametric", paired = FAL
 
 ## Reexported objects
 
-magrittr::%$%
-zeallot::%->%
 zeallot::%<-%
 magrittr::%<>%
 magrittr::%>%
-magrittr::%T>%
-rlang::%|%
 rlang::%||%
 tibble::as_tibble
 tibble::enframe
