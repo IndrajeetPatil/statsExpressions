@@ -61,7 +61,7 @@ corr_test <- function(data,
     data           = tidyr::drop_na(select(ungroup(data), {{ x }}, {{ y }})),
     method         = ifelse(type == "nonparametric", "spearman", "pearson"),
     ci             = conf.level,
-    bayesian       = ifelse(type == "bayes", TRUE, FALSE),
+    bayesian       = type == "bayes",
     bayesian_prior = bf.prior,
     winsorize      = ifelse(type == "robust", tr, FALSE)
   ) %>%
