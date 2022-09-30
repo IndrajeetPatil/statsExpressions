@@ -2,7 +2,7 @@
 
 ## Exported functions
 
-add_expression_col(data, paired = FALSE, statistic.text = NULL, effsize.text = NULL, prior.type = NULL, n = NULL, n.text = ifelse(paired, list(quote(italic("n")["pairs"])), list(quote(italic("n")["obs"]))), conf.method = "HDI", k = 2L, k.df = 0L, k.df.error = k.df, ...)
+add_expression_col(data, paired = FALSE, statistic.text = NULL, effsize.text = NULL, prior.type = NULL, n = NULL, n.text = ifelse(paired, list(quote(italic("n")["pairs"])), list(quote(italic("n")["obs"]))), k = 2L, k.df = 0L, k.df.error = k.df, ...)
 centrality_description(data, x, y, type = "parametric", tr = 0.2, k = 2L, ...)
 contingency_table(data, x, y = NULL, paired = FALSE, type = "parametric", counts = NULL, ratio = NULL, k = 2L, conf.level = 0.95, sampling.plan = "indepMulti", fixed.margin = "rows", prior.concentration = 1, ...)
 corr_test(data, x, y, type = "parametric", k = 2L, conf.level = 0.95, tr = 0.2, bf.prior = 0.707, ...)

@@ -152,10 +152,10 @@
     Output
        [1] "term"               "effectsize"         "estimate"          
        [4] "conf.level"         "conf.low"           "conf.high"         
-       [7] "pd"                 "rope.percentage"    "prior.distribution"
-      [10] "prior.location"     "prior.scale"        "bf10"              
-      [13] "method"             "conf.method"        "log_e_bf10"        
-      [16] "n.obs"              "expression"        
+       [7] "pd"                 "prior.distribution" "prior.location"    
+      [10] "prior.scale"        "bf10"               "method"            
+      [13] "conf.method"        "log_e_bf10"         "n.obs"             
+      [16] "expression"        
 
 ---
 

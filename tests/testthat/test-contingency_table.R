@@ -14,7 +14,6 @@ test_that(
       conf.level = 0.99
     ))
 
-
     set.seed(123)
     expect_snapshot(select(df1, -expression))
     expect_snapshot(df1[["expression"]])
@@ -205,69 +204,27 @@ test_that(
 test_that(
   desc = "bayesian (contingency tab)",
   code = {
-    # bayesian (contingency tab) --------------------------------------
-
-    # extracting results from where this function is implemented
+    # without NAs
     set.seed(123)
-    df_results <- contingency_table(
+    df1 <- contingency_table(
       type = "bayes",
       data = mtcars,
       x = am,
-      y = cyl,
-      sampling.plan = "jointMulti",
-      fixed.margin = "rows"
+      y = cyl
     )
 
-    # objects
-    expect_identical(class(df_results), c("tbl_df", "tbl", "data.frame"))
+    expect_identical(class(df1), c("tbl_df", "tbl", "data.frame"))
+    expect_snapshot(df1[["expression"]])
 
-    # check bayesian values
-    expect_equal(df_results$bf10[[1]], 28.07349, tolerance = 0.001)
-
-    # expr
+    # with NAs
     set.seed(123)
-    expr_text1 <- contingency_table(
+    df2 <- contingency_table(
       type = "bayes",
-      data = mtcars,
-      x = colnames(mtcars)[9],
-      y = cyl,
-      sampling.plan = "jointMulti",
-      fixed.margin = "rows",
-      conf.level = 0.89,
-      k = 3L
+      data = ggplot2::msleep,
+      x = vore,
+      y = conservation
     )
 
-    # with counts
-    set.seed(123)
-    expr_text2 <- contingency_table(
-      data = as.data.frame(Titanic),
-      x = Survived,
-      y = colnames(as.data.frame(Titanic))[2],
-      counts = Freq,
-      sampling.plan = "jointMulti",
-      fixed.margin = "rows",
-      conf.level = 0.99,
-      type = "bayes",
-      k = 3L
-    )
-
-    # with counts
-    set.seed(123)
-    expr_text3 <- contingency_table(
-      data = as.data.frame(Titanic),
-      x = Survived,
-      y = Sex,
-      counts = Freq,
-      k = 3L,
-      type = "bayes",
-      prior.concentration = 1.5
-    )
-
-    # expr text
-    expect_snapshot(list(
-      expr_text1[["expression"]],
-      expr_text2[["expression"]],
-      expr_text3[["expression"]]
-    ))
+    expect_snapshot(df2[["expression"]])
   }
 )
