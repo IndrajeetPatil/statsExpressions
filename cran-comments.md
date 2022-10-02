@@ -2,7 +2,7 @@
 
 0 errors | 0 warnings | 0 note
 
-* Fixes breakages due to `{datawizard}` package update.
+* Fixes breakages due to `{effectsize}` and `{parameters}` package updates.
 
 ## revdepcheck results
 
