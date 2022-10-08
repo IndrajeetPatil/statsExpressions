@@ -236,20 +236,20 @@
       "@type": "SoftwareApplication",
       "identifier": "correlation",
       "name": "correlation",
-      "version": ">= 0.8.2",
+      "version": ">= 0.8.2.4",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=correlation"
+      "sameAs": "https://github.com/easystats/correlation"
     },
     "4": {
       "@type": "SoftwareApplication",
       "identifier": "datawizard",
       "name": "datawizard",
-      "version": ">= 0.6.0",
+      "version": ">= 0.6.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -299,7 +299,7 @@
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
-      "version": ">= 0.18.3",
+      "version": ">= 0.18.4",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -324,7 +324,7 @@
       "@type": "SoftwareApplication",
       "identifier": "parameters",
       "name": "parameters",
-      "version": ">= 0.18.2",
+      "version": ">= 0.19.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -337,7 +337,7 @@
       "@type": "SoftwareApplication",
       "identifier": "performance",
       "name": "performance",
-      "version": ">= 0.9.2",
+      "version": ">= 0.10.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -414,7 +414,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4166.908KB",
+  "fileSize": "4165.293KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
