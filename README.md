@@ -3,11 +3,10 @@
 
 # `{statsExpressions}`: Tidy dataframes and expressions with statistical details
 
-| Status                                                                                                                                                      | Usage                                                                                                                                                      | Miscellaneous                                                                                                                                                              |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [![R build status](https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions) | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Codecov](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/master/graph/badge.svg)](https://app.codecov.io/gh/IndrajeetPatil/statsExpressions?branch=master) |
-| [![lints](https://github.com/IndrajeetPatil/statsExpressions/workflows/lint/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions)                 | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)    | [![status](https://tinyverse.netlify.com/badge/statsExpressions)](https://CRAN.R-project.org/package=statsExpressions)                                                     |
-| [![pkgdown](https://github.com/IndrajeetPatil/statsExpressions/workflows/pkgdown/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions/actions)    | [![DOI](https://joss.theoj.org/papers/10.21105/joss.03236/status.svg)](https://doi.org/10.21105/joss.03236)                                                | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)                                                 |
+| Status                                                                                                                                                      | Usage                                                                                                                                                | Miscellaneous                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [![R build status](https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions) | [![Total downloads](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Codecov](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/main/graph/badge.svg)](https://app.codecov.io/gh/IndrajeetPatil/statsExpressions?branch=main) |
+| [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)                                  | [![Daily downloads](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)    | [![DOI](https://joss.theoj.org/papers/10.21105/joss.03236/status.svg)](https://doi.org/10.21105/joss.03236)                                                            |
 
 # Introduction <img src="man/figures/logo.png" align="right" width="240" />
 
@@ -44,10 +43,10 @@ For more documentation, see the dedicated
 
 # Installation
 
-| Type        | Source                                                                                                                       | Command                                                      |
-|-------------|------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
-| Release     | [![CRAN Status](https://www.r-pkg.org/badges/version/statsExpressions)](https://cran.r-project.org/package=statsExpressions) | `install.packages("statsExpressions")`                       |
-| Development | [![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/##active)                | `remotes::install_github("IndrajeetPatil/statsExpressions")` |
+| Type        | Source                                                                                                                       | Command                                       |
+|-------------|------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
+| Release     | [![CRAN Status](https://www.r-pkg.org/badges/version/statsExpressions)](https://cran.r-project.org/package=statsExpressions) | `install.packages("statsExpressions")`        |
+| Development | [![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/##active)                | `pak::pak("IndrajeetPatil/statsExpressions")` |
 
 # Citation
 
@@ -732,5 +731,5 @@ Bug reports, suggestions, questions, and (most of all) contributions are
 welcome.
 
 Please note that this project is released with a [Contributor Code of
-Conduct](https://github.com/IndrajeetPatil/statsExpressions/blob/master/.github/CODE_OF_CONDUCT.md).
+Conduct](https://github.com/IndrajeetPatil/statsExpressions/blob/main/.github/CODE_OF_CONDUCT.md).
 By participating in this project you agree to abide by its terms.

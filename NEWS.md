@@ -1,4 +1,6 @@
-# statsExpressions (development version)
+# statsExpressions 1.3.4
+
+- Fixes breakages due to `{effectsize}` package update.
 
 # statsExpressions 1.3.3
 
