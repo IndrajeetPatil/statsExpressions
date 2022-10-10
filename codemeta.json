@@ -236,14 +236,14 @@
       "@type": "SoftwareApplication",
       "identifier": "correlation",
       "name": "correlation",
-      "version": ">= 0.8.2.4",
+      "version": ">= 0.8.3",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://github.com/easystats/correlation"
+      "sameAs": "https://CRAN.R-project.org/package=correlation"
     },
     "4": {
       "@type": "SoftwareApplication",
@@ -274,14 +274,14 @@
       "@type": "SoftwareApplication",
       "identifier": "effectsize",
       "name": "effectsize",
-      "version": ">= 0.7.9.1999",
+      "version": ">= 0.8.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://github.com/easystats/effectsize"
+      "sameAs": "https://CRAN.R-project.org/package=effectsize"
     },
     "7": {
       "@type": "SoftwareApplication",
@@ -414,7 +414,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4165.293KB",
+  "fileSize": "4165.225KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",

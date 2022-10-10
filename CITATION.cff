@@ -114,8 +114,8 @@ references:
     email: matanshm@post.bgu.ac.il
     orcid: https://orcid.org/0000-0002-4287-4801
   year: '2022'
-  url: https://easystats.github.io/correlation/
-  version: '>= 0.8.2.4'
+  url: https://CRAN.R-project.org/package=correlation
+  version: '>= 0.8.3'
 - type: software
   title: datawizard
   abstract: 'datawizard: Easy Data Wrangling and Statistical Transformations'
@@ -145,9 +145,9 @@ references:
     given-names: Etienne
     email: etienne.bacher@protonmail.com
     orcid: https://orcid.org/0000-0002-9271-5075
-  year: '2022'
-  url: https://CRAN.R-project.org/package=datawizard
+  url: https://easystats.github.io/datawizard/
   version: '>= 0.6.2'
+  year: '2022'
 - type: software
   title: dplyr
   abstract: 'dplyr: A Grammar of Data Manipulation'
@@ -169,12 +169,12 @@ references:
   url: https://CRAN.R-project.org/package=dplyr
 - type: software
   title: effectsize
-  abstract: 'effectsize: Indices of Effect Size and Standardized Parameters'
+  abstract: 'effectsize: Indices of Effect Size'
   notes: Imports
   authors:
   - family-names: Ben-Shachar
     given-names: Mattan S.
-    email: matanshm@post.bgu.ac.il
+    email: mattansb@msbstats.info
     orcid: https://orcid.org/0000-0002-4287-4801
   - family-names: Makowski
     given-names: Dominique
@@ -193,8 +193,8 @@ references:
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2022'
-  url: https://easystats.github.io/effectsize/
-  version: '>= 0.7.9.1999'
+  url: https://CRAN.R-project.org/package=effectsize
+  version: '>= 0.8.0'
 - type: software
   title: glue
   abstract: 'glue: Interpreted String Literals'
