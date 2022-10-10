@@ -140,7 +140,7 @@ contingency_table <- function(data,
   if (type != "bayes") {
     stats_df <- bind_cols(
       tidy_model_parameters(exec(.f, !!!.f.args)),
-      tidy_model_effectsize(exec(.f.es, !!!.f.args, adjust = TRUE, ci = conf.level))
+      tidy_model_effectsize(exec(.f.es, !!!.f.args, ci = conf.level))
     )
   }
 
@@ -154,7 +154,7 @@ contingency_table <- function(data,
       fixedMargin        = fixed.margin,
       priorConcentration = prior.concentration
     ) %>%
-      tidy_model_parameters(ci = conf.level, cramers_v = TRUE)
+      tidy_model_parameters(ci = conf.level, effectsize_type = "cramers_v")
   }
 
   # one-way table

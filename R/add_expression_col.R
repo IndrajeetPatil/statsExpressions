@@ -95,7 +95,7 @@ add_expression_col <- function(data,
 
   # is this a Bayesian test?
   data %<>% rename_all(.funs = recode, "bayes.factor" = "bf10")
-  bayesian <- ifelse("bf10" %in% colnames(data), TRUE, FALSE)
+  bayesian <- any("bf10" == colnames(data))
 
   # special case for Bayesian contingency table analysis
   if (bayesian && grepl("contingency", data$method[[1]])) data %<>% mutate(effectsize = "Cramers_v")
@@ -137,7 +137,7 @@ add_expression_col <- function(data,
 
   if (!bayesian && no.parameters == 1L) {
     # for chi-squared statistic
-    if ("df" %in% names(df_expr)) df_expr %<>% mutate(df.error = df)
+    if ("df" %in% colnames(df_expr)) df_expr %<>% mutate(df.error = df)
 
     df_expr %<>% mutate(expression = glue("list(
             {statistic.text}*'('*{df.error}*')'=='{statistic}', italic(p)=='{p.value}',

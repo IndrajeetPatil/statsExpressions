@@ -17,6 +17,8 @@ tidy_model_parameters <- function(model, ...) {
     tidyr::fill(matches("^prior|^bf"), .direction = "updown") %>%
     mutate(across(matches("bf10"), ~ log(.x), .names = "log_e_{.col}"))
 
+  if (!"estimate" %in% colnames(stats_df)) stats_df %<>% select(-matches("^conf"))
+
   # Bayesian ANOVA designs -----------------------------------
 
   if ("method" %in% names(stats_df) && stats_df$method[[1]] == "Bayes factors for linear models") {
@@ -49,7 +51,6 @@ tidy_model_parameters <- function(model, ...) {
 #' df <- effectsize::cohens_d(sleep$extra, sleep$group)
 #' tidy_model_effectsize(df)
 #' @noRd
-
 tidy_model_effectsize <- function(data, ...) {
   bind_cols(
     data %>%
