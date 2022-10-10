@@ -108,7 +108,7 @@ For a more detailed summary of these dataframe:
 ## References
 
   - For parametric and non-parametric effect sizes:
-    <https://easystats.github.io/effectsize/articles/simple_htests.html>
+    <https://easystats.github.io/effectsize/articles/>
 
   - For robust effect sizes:
     <https://CRAN.R-project.org/package=WRS2/vignettes/WRS2.pdf>
