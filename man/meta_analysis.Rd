@@ -2,7 +2,7 @@
 % Please edit documentation in R/meta_analysis.R
 \name{meta_analysis}
 \alias{meta_analysis}
-\title{Random-effects meta-analyses}
+\title{Random-effects meta-analysis}
 \usage{
 meta_analysis(
   data,
@@ -73,6 +73,16 @@ For examples of dataframe outputs, see examples and \href{https://indrajeetpatil
 Note that all examples are preceded by \code{set.seed()} calls for reproducibility.
 }
 \description{
+Parametric, non-parametric, robust, and Bayesian random-effects meta-analysis.
+}
+\note{
+\strong{Important}: The function assumes that you have already downloaded the
+needed package (\code{{metafor}}, \code{{metaplus}}, or \code{{metaBMA}}) for meta-analysis.
+If they are not available, you will be asked to install them.
+}
+\section{Random-effects meta-analysis}{
+
+
 The table below provides summary about:
 \itemize{
 \item statistical test carried out for inferential statistics
@@ -88,11 +98,7 @@ The table below provides summary about:
    Bayesian \tab Bayesian Pearson's correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
 }
 }
-\note{
-\strong{Important}: The function assumes that you have already downloaded the
-needed package (\code{{metafor}}, \code{{metaplus}}, or \code{{metaBMA}}) for meta-analysis.
-If they are not available, you will be asked to install them.
-}
+
 \examples{
 \donttest{
 # a dataframe with estimates and standard errors (`mag` dataset from `{metaplus}`)

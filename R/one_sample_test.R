@@ -14,6 +14,9 @@
 #' @inheritParams stats::t.test
 #'
 #' @description
+#' Parametric, non-parametric, robust, and Bayesian one-sample tests.
+#'
+#' @section One-sample tests:
 #'
 #' ```{r child="man/rmd-fragments/table_intro.Rmd"}
 #' ```

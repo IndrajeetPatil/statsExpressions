@@ -2,6 +2,9 @@
 #' @name corr_test
 #'
 #' @description
+#' Parametric, non-parametric, robust, and Bayesian correlation test.
+#'
+#' @section Correlation analyses:
 #'
 #' ```{r child="man/rmd-fragments/table_intro.Rmd"}
 #' ```

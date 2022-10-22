@@ -112,6 +112,9 @@ Note that all examples are preceded by \code{set.seed()} calls for reproducibili
 \description{
 Calculate parametric, non-parametric, robust, and Bayes Factor pairwise
 comparisons between group levels with corrections for multiple testing.
+}
+\section{Pairwise comparison tests}{
+
 
 The table below provides summary about:
 \itemize{
@@ -152,6 +155,7 @@ Not supported.
 Not supported.
 }
 }
+
 \examples{
 \donttest{
 # for reproducibility

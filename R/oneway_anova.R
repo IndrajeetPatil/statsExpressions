@@ -2,6 +2,9 @@
 #' @name oneway_anova
 #'
 #' @description
+#' Parametric, non-parametric, robust, and Bayesian one-way ANOVA.
+#'
+#' @section One-way ANOVA:
 #'
 #' ```{r child="man/rmd-fragments/table_intro.Rmd"}
 #' ```

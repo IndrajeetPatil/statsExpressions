@@ -83,6 +83,11 @@ For examples of dataframe outputs, see examples and \href{https://indrajeetpatil
 Note that all examples are preceded by \code{set.seed()} calls for reproducibility.
 }
 \description{
+Parametric, non-parametric, robust, and Bayesian correlation test.
+}
+\section{Correlation analyses}{
+
+
 The table below provides summary about:
 \itemize{
 \item statistical test carried out for inferential statistics
@@ -98,6 +103,7 @@ The table below provides summary about:
    Bayesian \tab Bayesian Pearson's correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
 }
 }
+
 \examples{
 \donttest{
 # for reproducibility
