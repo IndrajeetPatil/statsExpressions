@@ -29,8 +29,6 @@ This is where \code{{statsExpressions}} comes in: It can be thought of as a unif
 portal through which most of the functionality in these underlying packages can
 be accessed, with a simpler interface and no requirement to change data format.
 
-References: Patil (2021) <10.21105/joss.03236>.
-
 This package forms the statistical processing backend for \href{https://indrajeetpatil.github.io/ggstatsplot/}{\code{ggstatsplot}} package.
 
 For more documentation, see the dedicated \href{https://indrajeetpatil.github.io/statsExpressions/}{website}.
