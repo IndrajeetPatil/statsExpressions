@@ -1,6 +1,9 @@
 #' @title Two-sample tests
 #' @name two_sample_test
 #'
+#' @description
+#' Parametric, non-parametric, robust, and Bayesian two-sample tests.
+#'
 #' @inheritParams long_to_wide_converter
 #' @inheritParams stats_type_switch
 #' @inheritParams one_sample_test
@@ -8,7 +11,7 @@
 #' @inheritParams stats::t.test
 #' @inheritParams add_expression_col
 #'
-#' @description
+#' @section Two-sample tests:
 #'
 #' ```{r child="man/rmd-fragments/table_intro.Rmd"}
 #' ```

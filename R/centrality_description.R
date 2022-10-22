@@ -1,4 +1,4 @@
-#' @title Dataframe and expression for distribution properties
+#' @title Data frame and expression for distribution properties
 #' @name centrality_description
 #'
 #' @details
@@ -10,6 +10,9 @@
 #' relies on `datawizard::describe_distribution()` function.
 #'
 #' @description
+#' Parametric, non-parametric, robust, and Bayesian measures of centrality.
+#'
+#' @section Centrality measures:
 #'
 #' ```{r child="man/rmd-fragments/table_intro.Rmd"}
 #' ```

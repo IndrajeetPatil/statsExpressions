@@ -16,7 +16,7 @@
 #' @inheritParams stats::t.test
 #' @inheritParams WRS2::rmmcp
 #'
-#' @description
+#' @section Pairwise comparison tests:
 #'
 #' ```{r child="man/rmd-fragments/table_intro.Rmd"}
 #' ```

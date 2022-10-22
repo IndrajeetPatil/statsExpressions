@@ -123,6 +123,11 @@ For examples of dataframe outputs, see examples and \href{https://indrajeetpatil
 Note that all examples are preceded by \code{set.seed()} calls for reproducibility.
 }
 \description{
+Parametric, non-parametric, robust, and Bayesian two-sample tests.
+}
+\section{Two-sample tests}{
+
+
 The table below provides summary about:
 \itemize{
 \item statistical test carried out for inferential statistics
@@ -171,6 +176,7 @@ The table below provides summary about:
 
 }
 }
+
 \examples{
 \donttest{
 # for reproducibility
