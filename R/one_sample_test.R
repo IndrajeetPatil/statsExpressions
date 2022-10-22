@@ -88,20 +88,14 @@ one_sample_test <- function(data,
   # preparing the vector
   x_vec <- stats::na.omit(data %>% pull({{ x }}))
 
-  # parametric ---------------------------------------
-
-  if (type == "parametric") {
-    .f <- stats::t.test
-    # styler: off
-    if (effsize.type %in% c("unbiased", "g")) .f.es <- effectsize::hedges_g
-    if (effsize.type %in% c("biased", "d")) .f.es   <- effectsize::cohens_d
-    # styler: on
-  }
+  c(.f, .f.es) %<-% switch(type,
+    "parametric"    = list(stats::t.test, effectsize::hedges_g),
+    "nonparametric" = list(stats::wilcox.test, effectsize::rank_biserial),
+    "robust"        = list(WRS2::trimcibt, NULL),
+    "bayes"         = list(BayesFactor::ttestBF, NULL)
+  )
 
   # non-parametric ---------------------------------------
-
-
-  if (type == "nonparametric") c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
 
   if (type %in% c("parametric", "nonparametric")) {
     # extracting test details
@@ -119,7 +113,6 @@ one_sample_test <- function(data,
     ) %>%
       tidy_model_effectsize(.)
 
-    # dataframe
     stats_df <- bind_cols(stats_df, effsize_df)
   }
 
@@ -127,14 +120,14 @@ one_sample_test <- function(data,
 
   if (type == "robust") {
     # bootstrap-t method for one-sample test
-    stats_df <- exec(WRS2::trimcibt, x = x_vec, nv = test.value, tr = tr, alpha = 1 - conf.level) %>%
+    stats_df <- exec(.f, x = x_vec, nv = test.value, tr = tr, alpha = 1 - conf.level) %>%
       tidy_model_parameters(.)
   }
 
   # Bayesian ---------------------------------------
 
   if (type == "bayes") {
-    stats_df <- BayesFactor::ttestBF(x = x_vec, rscale = bf.prior, mu = test.value) %>%
+    stats_df <- exec(.f, x = x_vec, rscale = bf.prior, mu = test.value) %>%
       tidy_model_parameters(ci = conf.level)
   }
 

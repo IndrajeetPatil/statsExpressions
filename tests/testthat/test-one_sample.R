@@ -25,7 +25,6 @@ test_that(
         x = length,
         test.value = 120,
         type = "p",
-        effsize.type = "d",
         k = 4,
         conf.level = 0.90
       )
