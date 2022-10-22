@@ -92,6 +92,11 @@ For examples of dataframe outputs, see examples and \href{https://indrajeetpatil
 Note that all examples are preceded by \code{set.seed()} calls for reproducibility.
 }
 \description{
+Parametric, non-parametric, robust, and Bayesian one-sample tests.
+}
+\section{One-sample tests}{
+
+
 The table below provides summary about:
 \itemize{
 \item statistical test carried out for inferential statistics
@@ -116,6 +121,7 @@ The table below provides summary about:
    Bayes Factor \tab difference \tab Yes \tab \code{bayestestR::describe_posterior()} \cr
 }
 }
+
 \examples{
 \donttest{
 # for reproducibility

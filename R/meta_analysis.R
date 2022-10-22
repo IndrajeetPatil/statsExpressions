@@ -1,5 +1,8 @@
-#' @title Random-effects meta-analyses
+#' @title Random-effects meta-analysis
 #' @name meta_analysis
+#'
+#' @description
+#' Parametric, non-parametric, robust, and Bayesian random-effects meta-analysis.
 #'
 #' @param data A dataframe. It **must** contain columns named `estimate` (effect
 #'   sizes or outcomes)  and `std.error` (corresponding standard errors). These
@@ -14,7 +17,7 @@
 #' @param ... Additional arguments passed to the respective meta-analysis
 #'   function.
 #'
-#' @description
+#' @section Random-effects meta-analysis:
 #'
 #' ```{r child="man/rmd-fragments/table_intro.Rmd"}
 #' ```

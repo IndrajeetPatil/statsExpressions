@@ -2,6 +2,9 @@
 #' @name contingency_table
 #'
 #' @description
+#' Parametric and Bayesian one-way and two-way contingency table analyses.
+#'
+#' @section Contingency table analyses:
 #'
 #' ```{r child="man/rmd-fragments/table_intro.Rmd"}
 #' ```
