@@ -3,8 +3,6 @@ withr::local_options(list(tibble.width = Inf))
 test_that(
   desc = "bayesian (independent samples t-test)",
   code = {
-    skip_if(getRversion() < "4.0")
-
     # bayesian (independent samples t-test) ----------------------
 
     # expression

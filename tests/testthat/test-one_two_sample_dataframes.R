@@ -3,9 +3,6 @@ withr::local_options(list(tibble.width = Inf))
 test_that(
   desc = " parametric t-tests",
   code = {
-    skip_if(getRversion() < "4.0")
-
-
     # one-sample t-test (with NAs) ---------
 
     set.seed(123)

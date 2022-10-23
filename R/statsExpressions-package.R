@@ -21,6 +21,8 @@
 #' @import dplyr
 #' @import glue
 #'
+#' @importFrom magrittr "%$%"
+#' @importFrom zeallot "%<-%"
 #' @importFrom insight format_value check_if_installed standardize_names
 #' @importFrom parameters model_parameters
 #'

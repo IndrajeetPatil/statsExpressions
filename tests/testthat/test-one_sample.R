@@ -3,8 +3,6 @@ withr::local_options(list(tibble.width = Inf))
 test_that(
   desc = "one_sample_test parametric works",
   code = {
-    skip_if(getRversion() < "4.0")
-
     # parametric -------------------------------------------------
 
     # Hedge's g and non-central
@@ -42,8 +40,6 @@ test_that(
 test_that(
   desc = "one_sample_test non-parametric works",
   code = {
-    skip_if(getRversion() < "4.0")
-
     # non-parametric --------------------------------------------------
 
     # statsExpressions output
@@ -78,8 +74,6 @@ test_that(
 test_that(
   desc = "one_sample_test robust works",
   code = {
-    skip_if(getRversion() < "4.0")
-
     # robust --------------------------------------------------
 
     # statsExpressions output
@@ -117,8 +111,6 @@ test_that(
 test_that(
   desc = "one_sample_test bayesian works",
   code = {
-    skip_if(getRversion() < "4.0")
-
     # Bayesian -----------------------------------------------
 
     # extracting results from where this function is implemented

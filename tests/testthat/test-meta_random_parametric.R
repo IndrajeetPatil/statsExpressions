@@ -3,7 +3,6 @@ withr::local_options(list(tibble.width = Inf))
 test_that(
   desc = "meta_analysis works - parametric",
   code = {
-    skip_if(getRversion() < "4.0")
     skip_if_not_installed("metafor")
 
     # dataframe
