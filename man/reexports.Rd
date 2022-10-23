@@ -10,11 +10,6 @@
 \alias{tibble}
 \alias{enframe}
 \alias{as_tibble}
-\alias{\%||\%}
-\alias{\%|\%}
-\alias{\%<-\%}
-\alias{\%->\%}
-\alias{format_value}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -22,14 +17,8 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{insight}{\code{\link[insight]{format_value}}}
-
   \item{magrittr}{\code{\link[magrittr:exposition]{\%$\%}}, \code{\link[magrittr:compound]{\%<>\%}}, \code{\link[magrittr:pipe]{\%>\%}}, \code{\link[magrittr:tee]{\%T>\%}}}
 
-  \item{rlang}{\code{\link[rlang:op-na-default]{\%|\%}}, \code{\link[rlang:op-null-default]{\%||\%}}}
-
   \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{enframe}}, \code{\link[tibble]{tibble}}}
-
-  \item{zeallot}{\code{\link[zeallot:operator]{\%->\%}}, \code{\link[zeallot:operator]{\%<-\%}}}
 }}
 

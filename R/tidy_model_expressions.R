@@ -42,7 +42,7 @@ tidy_model_expressions <- function(data,
   df <- data %>%
     filter(if_all(
       .cols = c(matches("estimate|statistic|std.error|p.value")),
-      .fns = ~ !is.na(.)
+      .fns = Negate(is.na)
     )) %>%
     .data_to_char(k)
 
