@@ -115,7 +115,7 @@ contingency_table <- function(data,
   # creating a data frame
   data %<>%
     select({{ x }}, {{ y }}, .counts = {{ counts }}) %>%
-    tidyr::drop_na(.)
+    tidyr::drop_na()
 
   # untable the data frame based on the counts for each observation (if present)
   if (".counts" %in% names(data)) data %<>% tidyr::uncount(weights = .counts)

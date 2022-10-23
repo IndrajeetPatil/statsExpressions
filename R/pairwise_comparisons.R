@@ -216,7 +216,7 @@ pairwise_comparisons <- function(data,
       # problematic for other methods
       !!!.f.args
     )) %>%
-      tidy_model_parameters(.) %>%
+      tidy_model_parameters() %>%
       rename(group2 = group1, group1 = group2)
   }
 
@@ -235,7 +235,7 @@ pairwise_comparisons <- function(data,
 
     # cleaning the raw object and getting it in the right format
     df <- eval(call2(.ns = .ns, .fn = .fn, tr = tr, !!!.f.args)) %>%
-      tidy_model_parameters(.)
+      tidy_model_parameters()
 
     # test details
     test <- "Yuen's trimmed means"
@@ -271,7 +271,7 @@ pairwise_comparisons <- function(data,
   # expression formatting ----------------------------------
 
   df %<>%
-    mutate_if(.predicate = is.factor, .funs = ~ as.character(.)) %>%
+    mutate_if(.predicate = is.factor, .funs = ~ as.character()) %>%
     arrange(group1, group2) %>%
     select(group1, group2, everything())
 

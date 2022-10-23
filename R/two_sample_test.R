@@ -170,7 +170,7 @@ two_sample_test <- function(data,
       var.equal   = var.equal,
       exact       = FALSE
     ) %>%
-      tidy_model_parameters(.)
+      tidy_model_parameters()
 
     # extracting effect size details
     effsize_df <- exec(
@@ -182,7 +182,7 @@ two_sample_test <- function(data,
       ci          = conf.level,
       verbose     = FALSE
     ) %>%
-      tidy_model_effectsize(.)
+      tidy_model_effectsize()
   }
 
   # robust ---------------------------------------

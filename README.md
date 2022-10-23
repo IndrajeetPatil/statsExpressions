@@ -85,20 +85,20 @@ A BibTeX entry for LaTeX users is
 
 **Summary of available analyses**
 
-| Test                       | Function                 | Lifecycle                                                                                                                       |
-|----------------------------|--------------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| one-sample *t*-test        | `one_sample_test()`      | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
-| two-sample *t*-test        | `two_sample_test()`      | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
-| one-way ANOVA              | `oneway_anova()`         | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
-| correlation analysis       | `corr_test()`            | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
-| contingency table analysis | `contingency_table()`    | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
-| meta-analysis              | `meta_analysis()`        | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
-| pairwise comparisons       | `pairwise_comparisons()` | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
+| Test                       | Function                 |
+|:---------------------------|:-------------------------|
+| one-sample *t*-test        | `one_sample_test()`      |
+| two-sample *t*-test        | `two_sample_test()`      |
+| one-way ANOVA              | `oneway_anova()`         |
+| correlation analysis       | `corr_test()`            |
+| contingency table analysis | `contingency_table()`    |
+| meta-analysis              | `meta_analysis()`        |
+| pairwise comparisons       | `pairwise_comparisons()` |
 
 **Summary of details available for analyses**
 
 | Analysis                        | Hypothesis testing | Effect size estimation |
-|---------------------------------|--------------------|------------------------|
+|:--------------------------------|:-------------------|:-----------------------|
 | (one/two-sample) *t*-test       | ✅                 | ✅                     |
 | one-way ANOVA                   | ✅                 | ✅                     |
 | correlation                     | ✅                 | ✅                     |
@@ -108,7 +108,7 @@ A BibTeX entry for LaTeX users is
 **Summary of supported statistical approaches**
 
 | Description                                       | Parametric | Non-parametric | Robust | Bayesian |
-|---------------------------------------------------|------------|----------------|--------|----------|
+|:--------------------------------------------------|:-----------|:---------------|:-------|:---------|
 | Between group/condition comparisons               | ✅         | ✅             | ✅     | ✅       |
 | Within group/condition comparisons                | ✅         | ✅             | ✅     | ✅       |
 | Distribution of a numeric variable                | ✅         | ✅             | ✅     | ✅       |

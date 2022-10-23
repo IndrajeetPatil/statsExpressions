@@ -125,11 +125,11 @@
       select(df1, -expression)
     Output
       # A tibble: 3 x 11
-        term  statistic    df df.error p.value group   sumsq meansq  estimate
-        <chr>     <dbl> <dbl>    <dbl>   <dbl> <chr>   <dbl>  <dbl>     <dbl>
-      1 N         9.04      1       15 0.00885 Within 189.   189.    0.184   
-      2 P         0.401     1       15 0.536   Within   8.40   8.40 -0.0171  
-      3 N:P       1.02      1       15 0.329   Within  21.3   21.3   0.000457
+        term  statistic    df df.error p.value group   sumsq meansq estimate
+        <chr>     <dbl> <dbl>    <dbl>   <dbl> <chr>   <dbl>  <dbl>    <dbl>
+      1 N         9.04      1       15 0.00885 Within 189.   189.   0.184   
+      2 P         0.401     1       15 0.536   Within   8.40   8.40 0       
+      3 N:P       1.02      1       15 0.329   Within  21.3   21.3  0.000457
         sum.squares.error mean.square.error
                     <dbl>             <dbl>
       1              314.              314.
@@ -146,7 +146,7 @@
           "9.04", italic(p) == "8.85e-03")
       
       [[2]]
-      list(widehat(italic(omega)[p]^2) == "-0.02", italic(F)("1", "15") == 
+      list(widehat(italic(omega)[p]^2) == "0.00", italic(F)("1", "15") == 
           "0.40", italic(p) == "0.54")
       
       [[3]]

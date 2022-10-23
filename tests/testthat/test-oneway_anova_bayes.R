@@ -11,8 +11,6 @@ withr::local_options(list(tibble.width = Inf))
 test_that(
   desc = "bayesian (between-subjects - anova)",
   code = {
-    skip_if(getRversion() < "4.0")
-
     # with NA
     set.seed(123)
     df1 <- suppressWarnings(oneway_anova(

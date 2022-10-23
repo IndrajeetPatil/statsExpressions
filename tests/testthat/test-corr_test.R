@@ -112,8 +112,6 @@ test_that(
 test_that(
   desc = "corr_test works - Bayesian",
   code = {
-    skip_if(getRversion() < "4.0")
-
     # with NA
     set.seed(123)
     df1 <- corr_test(
