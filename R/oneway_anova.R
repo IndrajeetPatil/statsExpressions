@@ -162,7 +162,6 @@ oneway_anova <- function(data,
   #  parametric ---------------------------------------
 
   if (type == "parametric") {
-    # expression details
     c(k.df, k.df.error) %<-% c(ifelse(!paired, 0L, k), ifelse(!paired && var.equal, 0L, k))
 
     # which effect size?
@@ -175,7 +174,6 @@ oneway_anova <- function(data,
       # check if `afex` is installed
       check_if_installed("afex", minimum_version = "1.0-0")
 
-      # Fisher's ANOVA
       mod <- afex::aov_ez(
         id          = ".rowid",
         dv          = as_string(y),
@@ -199,7 +197,6 @@ oneway_anova <- function(data,
   # non-parametric ------------------------------------
 
   if (type == "nonparametric") {
-    # expression details
     c(k.df, k.df.error) %<-% c(0L, 0L)
 
     # styler: off
@@ -239,7 +236,6 @@ oneway_anova <- function(data,
   # robust ---------------------------------------
 
   if (type == "robust") {
-    # expression details
     c(k.df, k.df.error) %<-% c(ifelse(paired, k, 0L), k)
 
     # heteroscedastic one-way repeated measures ANOVA for trimmed means

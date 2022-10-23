@@ -36,7 +36,6 @@ estimate_type_switch <- function(x) {
   # to make life easier
   x <- tolower(x)
 
-  # need to list because `case_when` can't handle outputs of different lengths
   case_when(
     grepl("pearson's c", x)       ~ list(quote(widehat(italic("C"))["Pearson"])),
     grepl("^pearson", x)          ~ list(quote(widehat(italic("r"))["Pearson"])),
@@ -65,10 +64,8 @@ estimate_type_switch <- function(x) {
 
 #' @noRd
 stat_text_switch <- function(x) {
-  # to make life easier
   x <- tolower(x)
 
-  # need to list because `case_when` can't handle outputs of different lengths
   case_when(
     grepl("^welch", x)               ~ list(quote(italic("t")["Welch"])),
     grepl("spearman", x)             ~ list(quote(italic("S"))),
