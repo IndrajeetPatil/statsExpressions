@@ -160,7 +160,6 @@ two_sample_test <- function(data,
   if (type == "nonparametric") c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
 
   if (type %in% c("parametric", "nonparametric")) {
-    # extracting test details
     stats_df <- exec(
       .f,
       formula     = new_formula(y, x),
@@ -172,7 +171,6 @@ two_sample_test <- function(data,
     ) %>%
       tidy_model_parameters()
 
-    # extracting effect size details
     effsize_df <- exec(
       .f.es,
       x           = new_formula(y, x),
@@ -192,7 +190,6 @@ two_sample_test <- function(data,
     k.df <- ifelse(paired, 0L, k)
 
     # styler: off
-    # which functions to be used for hypothesis testing and estimation?
     if (!paired) c(.f, .f.es) %<-% c(WRS2::yuen, WRS2::akp.effect)
     if (paired) c(.f, .f.es)  %<-% c(WRS2::yuend, WRS2::dep.effect)
     # styler: on
@@ -207,7 +204,7 @@ two_sample_test <- function(data,
     # styler: on
   }
 
-  # combining dataframes
+  # combining data frames
   if (type != "bayes") {
     stats_df <- bind_cols(select(stats_df, -matches("^est|^eff|conf|^ci")), select(effsize_df, -matches("term")))
   }

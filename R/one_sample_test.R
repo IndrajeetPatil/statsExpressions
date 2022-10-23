@@ -122,8 +122,7 @@ one_sample_test <- function(data,
   # robust ---------------------------------------
 
   if (type == "robust") {
-    # bootstrap-t method for one-sample test
-    stats_df <- exec(.f, x = x_vec, nv = test.value, tr = tr, alpha = 1 - conf.level) %>%
+    stats_df <- exec(WRS2::trimcibt, x = x_vec, nv = test.value, tr = tr, alpha = 1 - conf.level) %>%
       tidy_model_parameters()
   }
 
