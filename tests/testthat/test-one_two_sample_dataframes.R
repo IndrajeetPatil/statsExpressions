@@ -14,7 +14,6 @@ test_that(
         data = list(ggplot2::msleep),
         x = list("brainwt"),
         test.value = list(0.25),
-        effsize.type = list("d", "g", "d", "g"),
         alternative = c("two.sided", "less", "greater", "two.sided"),
         var.equal = list(TRUE, FALSE, TRUE, FALSE),
         conf.level = list(0.89, 0.99, 0.90, 0.50)

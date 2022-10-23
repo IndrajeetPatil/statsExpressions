@@ -6,15 +6,15 @@
       # A tibble: 4 x 15
            mu statistic df.error p.value method            alternative effectsize
         <dbl>     <dbl>    <dbl>   <dbl> <chr>             <chr>       <chr>     
-      1  0.25     0.242       55   0.810 One Sample t-test two.sided   Cohen's d 
+      1  0.25     0.242       55   0.810 One Sample t-test two.sided   Hedges' g 
       2  0.25     0.242       55   0.595 One Sample t-test less        Hedges' g 
-      3  0.25     0.242       55   0.405 One Sample t-test greater     Cohen's d 
+      3  0.25     0.242       55   0.405 One Sample t-test greater     Hedges' g 
       4  0.25     0.242       55   0.810 One Sample t-test two.sided   Hedges' g 
         estimate conf.level conf.low conf.high conf.method conf.distribution n.obs
            <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>             <int>
-      1   0.0323       0.89  -0.181      0.246 ncp         t                    56
+      1   0.0319       0.89  -0.179      0.242 ncp         t                    56
       2   0.0319       0.99  -0.308      0.371 ncp         t                    56
-      3   0.0323       0.9   -0.188      0.252 ncp         t                    56
+      3   0.0319       0.9   -0.185      0.249 ncp         t                    56
       4   0.0319       0.5   -0.0572     0.121 ncp         t                    56
         expression
         <list>    
