@@ -274,14 +274,14 @@
       "@type": "SoftwareApplication",
       "identifier": "effectsize",
       "name": "effectsize",
-      "version": ">= 0.8.1",
+      "version": ">= 0.8.1.09999",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=effectsize"
+      "sameAs": "https://github.com/easystats/effectsize"
     },
     "7": {
       "@type": "SoftwareApplication",
@@ -414,7 +414,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4165.62KB",
+  "fileSize": "4164.75KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
