@@ -66,7 +66,7 @@ centrality_description <- function(data,
   # dataframe -------------------------------------
 
   select(data, {{ x }}, {{ y }}) %>%
-    tidyr::drop_na(.) %>%
+    tidyr::drop_na() %>%
     group_by({{ x }}) %>%
     group_modify(
       .f = ~ standardize_names(

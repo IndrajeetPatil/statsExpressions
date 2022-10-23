@@ -109,7 +109,7 @@ one_sample_test <- function(data,
   if (type %in% c("parametric", "nonparametric")) {
     # extracting test details
     stats_df <- exec(.f, x = x_vec, mu = test.value, alternative = alternative) %>%
-      tidy_model_parameters(.) %>%
+      tidy_model_parameters() %>%
       select(-matches("^est|^conf|^diff|^term|^ci"))
 
     # extracting effect size details
@@ -120,7 +120,7 @@ one_sample_test <- function(data,
       verbose = FALSE,
       ci      = conf.level
     ) %>%
-      tidy_model_effectsize(.)
+      tidy_model_effectsize()
 
     # dataframe
     stats_df <- bind_cols(stats_df, effsize_df)
@@ -131,7 +131,7 @@ one_sample_test <- function(data,
   if (type == "robust") {
     # bootstrap-t method for one-sample test
     stats_df <- exec(WRS2::trimcibt, x = x_vec, nv = test.value, tr = tr, alpha = 1 - conf.level) %>%
-      tidy_model_parameters(.)
+      tidy_model_parameters()
   }
 
   # Bayesian ---------------------------------------

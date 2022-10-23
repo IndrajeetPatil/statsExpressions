@@ -2,7 +2,7 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "statsExpressions",
-  "description": "Utilities for producing dataframes with rich details for the most common types of statistical approaches and tests: parametric, nonparametric, robust, and Bayesian t-test, one-way ANOVA, correlation analyses, contingency table analyses, and meta-analyses. The functions are pipe-friendly and provide a consistent syntax to work with tidy data. These dataframes additionally contain expressions with statistical details, and can be used in graphing packages. This package also forms the statistical processing backend for 'ggstatsplot'.",
+  "description": "Utilities for producing dataframes with rich details for the most common types of statistical approaches and tests: parametric, nonparametric, robust, and Bayesian t-test, one-way ANOVA, correlation analyses, contingency table analyses, and meta-analyses. The functions are pipe-friendly and provide a consistent syntax to work with tidy data. These dataframes additionally contain expressions with statistical details, and can be used in graphing packages. This package also forms the statistical processing backend for 'ggstatsplot'. References: Patil (2021) <10.21105/joss.03236>.",
   "name": "statsExpressions: Tidy Dataframes and Expressions with Statistical Details",
   "relatedLink": ["https://indrajeetpatil.github.io/statsExpressions/", "https://CRAN.R-project.org/package=statsExpressions"],
   "codeRepository": "https://github.com/IndrajeetPatil/statsExpressions",
@@ -249,7 +249,7 @@
       "@type": "SoftwareApplication",
       "identifier": "datawizard",
       "name": "datawizard",
-      "version": ">= 0.6.2",
+      "version": ">= 0.6.3",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -274,7 +274,7 @@
       "@type": "SoftwareApplication",
       "identifier": "effectsize",
       "name": "effectsize",
-      "version": ">= 0.8.0",
+      "version": ">= 0.8.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -299,7 +299,7 @@
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
-      "version": ">= 0.18.4",
+      "version": ">= 0.18.5",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -414,7 +414,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4164.698KB",
+  "fileSize": "4165.62KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
