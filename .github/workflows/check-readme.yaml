@@ -7,10 +7,10 @@ on:
   pull_request:
     branches: [main, master]
 
-name: render-readme
+name: check-readme
 
 jobs:
-  render-readme:
+  check-readme:
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
