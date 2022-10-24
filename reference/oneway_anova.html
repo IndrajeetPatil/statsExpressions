@@ -228,37 +228,9 @@ two degrees of freedom (e.g. anova)</p></li>
 <span class="r-in"><span><span class="co"># for reproducibility</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>tibble.width <span class="op">=</span> <span class="cn">Inf</span>, pillar.bold <span class="op">=</span> <span class="cn">TRUE</span>, pillar.neg <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># ----------------------- parametric -------------------------------------</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># between-subjects</span></span></span>
-<span class="r-in"><span><span class="fu">oneway_anova</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,</span></span>
-<span class="r-in"><span>  x    <span class="op">=</span> <span class="va">vore</span>,</span></span>
-<span class="r-in"><span>  y    <span class="op">=</span> <span class="va">sleep_rem</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 14</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">df</span> <span style="font-weight: bold;">df.error</span> <span style="font-weight: bold;">p.value</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>      2.63     3     11.1   0.102</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">method</span>                                                   <span style="font-weight: bold;">effectsize</span> <span style="font-weight: bold;">estimate</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> One-way analysis of means (not assuming equal variances) Omega2        0.245</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span> <span style="font-weight: bold;">conf.method</span> <span style="font-weight: bold;">conf.distribution</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>       0.95        0         1 ncp         F                    56 <span style="color: #949494;">&lt;language&gt;</span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://afex.singmann.science/" class="external-link">"afex"</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="co"># within-subjects design</span></span></span>
-<span class="r-in"><span>  <span class="fu">oneway_anova</span><span class="op">(</span></span></span>
-<span class="r-in"><span>    data       <span class="op">=</span> <span class="va">iris_long</span>,</span></span>
-<span class="r-in"><span>    x          <span class="op">=</span> <span class="va">condition</span>,</span></span>
-<span class="r-in"><span>    y          <span class="op">=</span> <span class="va">value</span>,</span></span>
-<span class="r-in"><span>    subject.id <span class="op">=</span> <span class="va">id</span>,</span></span>
-<span class="r-in"><span>    paired     <span class="op">=</span> <span class="cn">TRUE</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://afex.singmann.science/" class="external-link">afex</a></span><span class="op">)</span> <span class="co"># for within-subjects parametric ANOVA</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: lme4</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: Matrix</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ************</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Welcome to afex. For support visit: http://afex.singmann.science/</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> - Functions for ANOVAs: aov_car(), aov_ez(), and aov_4()</span>
@@ -274,6 +246,35 @@ two degrees of freedom (e.g. anova)</p></li>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> The following object is masked from ‘package:lme4’:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     lmer</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>tibble.width <span class="op">=</span> <span class="cn">Inf</span>, pillar.bold <span class="op">=</span> <span class="cn">TRUE</span>, pillar.neg <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># ----------------------- parametric -------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># between-subjects</span></span></span>
+<span class="r-in"><span><span class="fu">oneway_anova</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span></span>
+<span class="r-in"><span>  x    <span class="op">=</span> <span class="va">cyl</span>,</span></span>
+<span class="r-in"><span>  y    <span class="op">=</span> <span class="va">wt</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 14</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">df</span> <span style="font-weight: bold;">df.error</span>   <span style="font-weight: bold;">p.value</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>      20.2     2     19.0 0.000<span style="text-decoration: underline;">019</span>6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">method</span>                                                   <span style="font-weight: bold;">effectsize</span> <span style="font-weight: bold;">estimate</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> One-way analysis of means (not assuming equal variances) Omega2        0.637</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span> <span style="font-weight: bold;">conf.method</span> <span style="font-weight: bold;">conf.distribution</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>       0.95    0.370         1 ncp         F                    32 <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># within-subjects design</span></span></span>
+<span class="r-in"><span><span class="fu">oneway_anova</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data       <span class="op">=</span> <span class="va">iris_long</span>,</span></span>
+<span class="r-in"><span>  x          <span class="op">=</span> <span class="va">condition</span>,</span></span>
+<span class="r-in"><span>  y          <span class="op">=</span> <span class="va">value</span>,</span></span>
+<span class="r-in"><span>  subject.id <span class="op">=</span> <span class="va">id</span>,</span></span>
+<span class="r-in"><span>  paired     <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 18</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">term</span>      <span style="font-weight: bold;">sumsq</span> <span style="font-weight: bold;">sum.squares.error</span>    <span style="font-weight: bold;">df</span> <span style="font-weight: bold;">df.error</span> <span style="font-weight: bold;">meansq</span> <span style="font-weight: bold;">statistic</span>  <span style="font-weight: bold;">p.value</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -289,21 +290,21 @@ two degrees of freedom (e.g. anova)</p></li>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># between-subjects</span></span></span>
 <span class="r-in"><span><span class="fu">oneway_anova</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,</span></span>
-<span class="r-in"><span>  x    <span class="op">=</span> <span class="va">vore</span>,</span></span>
-<span class="r-in"><span>  y    <span class="op">=</span> <span class="va">sleep_rem</span>,</span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span></span>
+<span class="r-in"><span>  x    <span class="op">=</span> <span class="va">cyl</span>,</span></span>
+<span class="r-in"><span>  y    <span class="op">=</span> <span class="va">wt</span>,</span></span>
 <span class="r-in"><span>  type <span class="op">=</span> <span class="st">"np"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 15</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">parameter1</span> <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">df.error</span> <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> sleep_rem  vore            9.06        3  0.028<span style="text-decoration: underline;">5</span> Kruskal-Wallis rank sum test</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">effectsize</span>      <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span> <span style="font-weight: bold;">conf.method</span>         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Epsilon2 (rank)    0.165       0.95   0.070<span style="text-decoration: underline;">6</span>         1 percentile bootstrap</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">conf.iterations</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>             100    56 <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">parameter1</span> <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">df.error</span>   <span style="font-weight: bold;">p.value</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> wt         cyl             22.8        2 0.000<span style="text-decoration: underline;">011</span>2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">method</span>                       <span style="font-weight: bold;">effectsize</span>      <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Kruskal-Wallis rank sum test Epsilon2 (rank)    0.736       0.95    0.624</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">conf.high</span> <span style="font-weight: bold;">conf.method</span>          <span style="font-weight: bold;">conf.iterations</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>         1 percentile bootstrap             100    32 <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># within-subjects design</span></span></span>
 <span class="r-in"><span><span class="fu">oneway_anova</span><span class="op">(</span></span></span>
@@ -320,7 +321,7 @@ two degrees of freedom (e.g. anova)</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> value      condition        410        3 1.51<span style="color: #949494;">e</span><span style="color: #BB0000;">-88</span> Friedman rank sum test</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">effectsize</span>  <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span> <span style="font-weight: bold;">conf.method</span>         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Kendall's W    0.911       0.95    0.903         1 percentile bootstrap</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Kendall's W    0.911       0.95    0.904         1 percentile bootstrap</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">conf.iterations</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>             100   150 <span style="color: #949494;">&lt;language&gt;</span></span>
@@ -329,24 +330,24 @@ two degrees of freedom (e.g. anova)</p></li>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># between-subjects</span></span></span>
 <span class="r-in"><span><span class="fu">oneway_anova</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,</span></span>
-<span class="r-in"><span>  x    <span class="op">=</span> <span class="va">vore</span>,</span></span>
-<span class="r-in"><span>  y    <span class="op">=</span> <span class="va">sleep_rem</span>,</span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span></span>
+<span class="r-in"><span>  x    <span class="op">=</span> <span class="va">cyl</span>,</span></span>
+<span class="r-in"><span>  y    <span class="op">=</span> <span class="va">wt</span>,</span></span>
 <span class="r-in"><span>  type <span class="op">=</span> <span class="st">"r"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 12</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">df</span> <span style="font-weight: bold;">df.error</span> <span style="font-weight: bold;">p.value</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>      2.76     3     9.37   0.102</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>      12.7     2     12.2 0.001<span style="text-decoration: underline;">02</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">method</span>                                           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                            </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> A heteroscedastic one-way ANOVA for trimmed means</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">effectsize</span>                         <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Explanatory measure of effect size    0.806       0.95    0.363      1.58</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Explanatory measure of effect size     1.02       0.95    0.828      1.35</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>    56 <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>    32 <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># within-subjects design</span></span></span>
 <span class="r-in"><span><span class="fu">oneway_anova</span><span class="op">(</span></span></span>
@@ -369,45 +370,42 @@ two degrees of freedom (e.g. anova)</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Algina-Keselman-Penfield robust standardized difference average   -<span style="color: #BB0000;">0.349</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>       0.95   -<span style="color: #BB0000;">0.740</span>     0.152   150 <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>       0.95   -<span style="color: #BB0000;">0.755</span>     0.123   150 <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># ----------------------- Bayesian -------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># between-subjects</span></span></span>
 <span class="r-in"><span><span class="fu">oneway_anova</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/msleep.html" class="external-link">msleep</a></span>,</span></span>
-<span class="r-in"><span>  x    <span class="op">=</span> <span class="va">vore</span>,</span></span>
-<span class="r-in"><span>  y    <span class="op">=</span> <span class="va">sleep_rem</span>,</span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span></span>
+<span class="r-in"><span>  x    <span class="op">=</span> <span class="va">cyl</span>,</span></span>
+<span class="r-in"><span>  y    <span class="op">=</span> <span class="va">wt</span>,</span></span>
 <span class="r-in"><span>  type <span class="op">=</span> <span class="st">"bayes"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 17</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">term</span>            <span style="font-weight: bold;">pd</span> <span style="font-weight: bold;">prior.distribution</span> <span style="font-weight: bold;">prior.location</span> <span style="font-weight: bold;">prior.scale</span>  <span style="font-weight: bold;">bf10</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> mu           1     cauchy                          0       0.707  3.41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> vore-carni   0.602 cauchy                          0       0.707  3.41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> vore-herbi   0.998 cauchy                          0       0.707  3.41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> vore-insecti 0.975 cauchy                          0       0.707  3.41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> vore-omni    0.758 cauchy                          0       0.707  3.41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> sig2         1     cauchy                          0       0.707  3.41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> g_vore       1     cauchy                          0       0.707  3.41</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 17</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">term</span>     <span style="font-weight: bold;">pd</span> <span style="font-weight: bold;">prior.distribution</span> <span style="font-weight: bold;">prior.location</span> <span style="font-weight: bold;">prior.scale</span>   <span style="font-weight: bold;">bf10</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> mu    1     cauchy                          0       0.707 <span style="text-decoration: underline;">20</span>968.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> cyl-4 1     cauchy                          0       0.707 <span style="text-decoration: underline;">20</span>968.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> cyl-6 0.552 cauchy                          0       0.707 <span style="text-decoration: underline;">20</span>968.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> cyl-8 1     cauchy                          0       0.707 <span style="text-decoration: underline;">20</span>968.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> sig2  1     cauchy                          0       0.707 <span style="text-decoration: underline;">20</span>968.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> g_cyl 1     cauchy                          0       0.707 <span style="text-decoration: underline;">20</span>968.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">method</span>                          <span style="font-weight: bold;">log_e_bf10</span> <span style="font-weight: bold;">effectsize</span>         <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">std.dev</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Bayes factors for linear models       1.23 Bayesian R-squared    0.111   0.111</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Bayes factors for linear models       1.23 Bayesian R-squared    0.111   0.111</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Bayes factors for linear models       1.23 Bayesian R-squared    0.111   0.111</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Bayes factors for linear models       1.23 Bayesian R-squared    0.111   0.111</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Bayes factors for linear models       1.23 Bayesian R-squared    0.111   0.111</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Bayes factors for linear models       1.23 Bayesian R-squared    0.111   0.111</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> Bayes factors for linear models       1.23 Bayesian R-squared    0.111   0.111</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Bayes factors for linear models       9.95 Bayesian R-squared    0.577  0.086<span style="text-decoration: underline;">9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Bayes factors for linear models       9.95 Bayesian R-squared    0.577  0.086<span style="text-decoration: underline;">9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Bayes factors for linear models       9.95 Bayesian R-squared    0.577  0.086<span style="text-decoration: underline;">9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Bayes factors for linear models       9.95 Bayesian R-squared    0.577  0.086<span style="text-decoration: underline;">9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Bayes factors for linear models       9.95 Bayesian R-squared    0.577  0.086<span style="text-decoration: underline;">9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Bayes factors for linear models       9.95 Bayesian R-squared    0.577  0.086<span style="text-decoration: underline;">9</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span> <span style="font-weight: bold;">conf.method</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>       0.95        0     0.271 HDI            56 <span style="color: #949494;">&lt;language&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>       0.95        0     0.271 HDI            56 <span style="color: #949494;">&lt;language&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>       0.95        0     0.271 HDI            56 <span style="color: #949494;">&lt;language&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>       0.95        0     0.271 HDI            56 <span style="color: #949494;">&lt;language&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>       0.95        0     0.271 HDI            56 <span style="color: #949494;">&lt;language&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>       0.95        0     0.271 HDI            56 <span style="color: #949494;">&lt;language&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span>       0.95        0     0.271 HDI            56 <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>       0.95    0.379     0.707 HDI            32 <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>       0.95    0.379     0.707 HDI            32 <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>       0.95    0.379     0.707 HDI            32 <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>       0.95    0.379     0.707 HDI            32 <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>       0.95    0.379     0.707 HDI            32 <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>       0.95    0.379     0.707 HDI            32 <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># within-subjects design</span></span></span>
 <span class="r-in"><span><span class="fu">oneway_anova</span><span class="op">(</span></span></span>
@@ -433,24 +431,24 @@ two degrees of freedom (e.g. anova)</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> g_.rowid                   1 cauchy                          0       1    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">effect</span>     <span style="font-weight: bold;">bf10</span> <span style="font-weight: bold;">method</span>                          <span style="font-weight: bold;">log_e_bf10</span> <span style="font-weight: bold;">effectsize</span>        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> fixed  1.58<span style="color: #949494;">e</span>182 Bayes factors for linear models       420. Bayesian R-squared</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> fixed  1.58<span style="color: #949494;">e</span>182 Bayes factors for linear models       420. Bayesian R-squared</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> fixed  1.58<span style="color: #949494;">e</span>182 Bayes factors for linear models       420. Bayesian R-squared</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> fixed  1.58<span style="color: #949494;">e</span>182 Bayes factors for linear models       420. Bayesian R-squared</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> fixed  1.58<span style="color: #949494;">e</span>182 Bayes factors for linear models       420. Bayesian R-squared</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> fixed  1.58<span style="color: #949494;">e</span>182 Bayes factors for linear models       420. Bayesian R-squared</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> fixed  1.58<span style="color: #949494;">e</span>182 Bayes factors for linear models       420. Bayesian R-squared</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> fixed  1.58<span style="color: #949494;">e</span>182 Bayes factors for linear models       420. Bayesian R-squared</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> fixed  1.55<span style="color: #949494;">e</span>182 Bayes factors for linear models       420. Bayesian R-squared</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> fixed  1.55<span style="color: #949494;">e</span>182 Bayes factors for linear models       420. Bayesian R-squared</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> fixed  1.55<span style="color: #949494;">e</span>182 Bayes factors for linear models       420. Bayesian R-squared</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> fixed  1.55<span style="color: #949494;">e</span>182 Bayes factors for linear models       420. Bayesian R-squared</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> fixed  1.55<span style="color: #949494;">e</span>182 Bayes factors for linear models       420. Bayesian R-squared</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> fixed  1.55<span style="color: #949494;">e</span>182 Bayes factors for linear models       420. Bayesian R-squared</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> fixed  1.55<span style="color: #949494;">e</span>182 Bayes factors for linear models       420. Bayesian R-squared</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> fixed  1.55<span style="color: #949494;">e</span>182 Bayes factors for linear models       420. Bayesian R-squared</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">std.dev</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span> <span style="font-weight: bold;">conf.method</span> <span style="font-weight: bold;">component</span>   <span style="font-weight: bold;">n.obs</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>    0.818 0.008<span style="text-decoration: underline;">53</span>       0.95    0.801     0.834 HDI         conditional   150</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>    0.818 0.008<span style="text-decoration: underline;">53</span>       0.95    0.801     0.834 HDI         conditional   150</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>    0.818 0.008<span style="text-decoration: underline;">53</span>       0.95    0.801     0.834 HDI         conditional   150</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>    0.818 0.008<span style="text-decoration: underline;">53</span>       0.95    0.801     0.834 HDI         conditional   150</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>    0.818 0.008<span style="text-decoration: underline;">53</span>       0.95    0.801     0.834 HDI         conditional   150</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>    0.818 0.008<span style="text-decoration: underline;">53</span>       0.95    0.801     0.834 HDI         conditional   150</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span>    0.818 0.008<span style="text-decoration: underline;">53</span>       0.95    0.801     0.834 HDI         conditional   150</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span>    0.818 0.008<span style="text-decoration: underline;">53</span>       0.95    0.801     0.834 HDI         conditional   150</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>    0.818 0.008<span style="text-decoration: underline;">59</span>       0.95    0.801     0.834 HDI         conditional   150</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>    0.818 0.008<span style="text-decoration: underline;">59</span>       0.95    0.801     0.834 HDI         conditional   150</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>    0.818 0.008<span style="text-decoration: underline;">59</span>       0.95    0.801     0.834 HDI         conditional   150</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>    0.818 0.008<span style="text-decoration: underline;">59</span>       0.95    0.801     0.834 HDI         conditional   150</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>    0.818 0.008<span style="text-decoration: underline;">59</span>       0.95    0.801     0.834 HDI         conditional   150</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>    0.818 0.008<span style="text-decoration: underline;">59</span>       0.95    0.801     0.834 HDI         conditional   150</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span>    0.818 0.008<span style="text-decoration: underline;">59</span>       0.95    0.801     0.834 HDI         conditional   150</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span>    0.818 0.008<span style="text-decoration: underline;">59</span>       0.95    0.801     0.834 HDI         conditional   150</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">expression</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> <span style="color: #949494;">&lt;language&gt;</span></span>
