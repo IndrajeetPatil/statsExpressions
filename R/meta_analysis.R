@@ -36,9 +36,14 @@
 #' needed package (`{metafor}`, `{metaplus}`, or `{metaBMA}`) for meta-analysis.
 #' If they are not available, you will be asked to install them.
 #'
-#' @examples
+#' @examplesIf requireNamespace("metafor", quietly = TRUE)
 #' \donttest{
-#' # a dataframe with estimates and standard errors (`mag` dataset from `{metaplus}`)
+#' # setup
+#' set.seed(123)
+#' library(statsExpressions)
+#' options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
+#'
+#' # a data frame with estimates and standard errors (`mag` dataset from `{metaplus}`)
 #' df <- structure(list(
 #'   study = structure(c(
 #'     8L, 10L, 15L, 1L, 4L, 11L, 3L, 2L, 14L, 9L, 12L, 5L, 16L, 7L, 13L, 6L
@@ -60,11 +65,6 @@
 #'     0.574039500383031, 0.0316420922190679
 #'   )
 #' ), row.names = c(NA, -16L), class = "data.frame")
-#'
-#' # setup
-#' set.seed(123)
-#' library(statsExpressions)
-#' options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 #'
 #' meta_analysis(df) # parametric
 #' # meta_analysis(df, type = "random", random = "normal") # robust

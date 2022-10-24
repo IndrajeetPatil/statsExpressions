@@ -1,4 +1,5 @@
 withr::local_options(list(tibble.width = Inf))
+skip_if_not_installed("boot")
 
 # between-subjects ----------------------------------------------
 
