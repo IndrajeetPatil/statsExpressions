@@ -36,7 +36,7 @@ test_that(
     # between-subjects
     set.seed(123)
     df4 <- long_to_wide_converter(
-      data = ggplot2::msleep,
+      data = msleep,
       x = vore,
       y = brainwt,
       paired = FALSE
@@ -89,7 +89,7 @@ test_that(
     # between-subjects
     set.seed(123)
     df4 <- long_to_wide_converter(
-      data = ggplot2::msleep,
+      data = msleep,
       x = vore,
       y = brainwt,
       paired = FALSE,

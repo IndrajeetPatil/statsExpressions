@@ -11,7 +11,7 @@ test_that(
     # student's t
     set.seed(123)
     df1 <- pairwise_comparisons(
-      data = ggplot2::msleep,
+      data = msleep,
       x = vore,
       y = brainwt,
       type = "p",
@@ -24,7 +24,7 @@ test_that(
     expect_snapshot(df1[["expression"]])
 
     # games-howell
-    df_msleep <- ggplot2::msleep
+    df_msleep <- msleep
 
     # adding empty factor level (shouldn't change results)
     df_msleep %<>% dplyr::mutate(vore = as.factor(vore))
@@ -48,7 +48,7 @@ test_that(
     # Dunn test
     set.seed(123)
     df3 <- pairwise_comparisons(
-      data = ggplot2::msleep,
+      data = msleep,
       x = vore,
       y = brainwt,
       type = "np",
@@ -62,7 +62,7 @@ test_that(
     # robust t test
     set.seed(123)
     df4 <- pairwise_comparisons(
-      data = ggplot2::msleep,
+      data = msleep,
       x = vore,
       y = brainwt,
       type = "r",
@@ -108,7 +108,7 @@ test_that(
     skip_if_not_installed("PMCMRplus")
 
     # drop levels
-    msleep2 <- dplyr::filter(.data = ggplot2::msleep, vore %in% c("carni", "omni"))
+    msleep2 <- dplyr::filter(.data = msleep, vore %in% c("carni", "omni"))
 
     # check those levels are not included
     set.seed(123)
@@ -124,7 +124,7 @@ test_that(
 
     set.seed(123)
     df2 <- pairwise_comparisons(
-      data = ggplot2::msleep,
+      data = msleep,
       x = vore,
       y = brainwt,
       p.adjust.method = "none"

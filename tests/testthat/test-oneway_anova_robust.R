@@ -22,7 +22,7 @@ test_that(
     set.seed(123)
     df2 <- suppressWarnings(oneway_anova(
       type = "robust",
-      data = filter(ggplot2::msleep, vore != "insecti"),
+      data = filter(msleep, vore != "insecti"),
       x = vore,
       y = sleep_total,
       paired = FALSE,

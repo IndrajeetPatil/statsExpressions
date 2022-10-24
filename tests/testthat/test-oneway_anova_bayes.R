@@ -15,7 +15,7 @@ test_that(
     set.seed(123)
     df1 <- suppressWarnings(oneway_anova(
       type     = "bayes",
-      data     = ggplot2::msleep,
+      data     = msleep,
       x        = vore,
       y        = brainwt
     ))

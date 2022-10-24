@@ -8,7 +8,7 @@ test_that(
     set.seed(123)
     df_1 <- purrr::pmap_dfr(
       .l = list(
-        data = list(ggplot2::msleep),
+        data = list(msleep),
         x = list("brainwt"),
         test.value = list(0.25),
         effsize.type = list("d", "g", "d", "g"),
@@ -65,7 +65,7 @@ test_that(
     set.seed(123)
     df_3_between <- purrr::pmap_dfr(
       .l = list(
-        data = list(ggplot2::msleep),
+        data = list(msleep),
         x = list("vore"),
         y = list("sleep_rem"),
         effsize.type = list("eta", "omega", "eta", "omega"),
