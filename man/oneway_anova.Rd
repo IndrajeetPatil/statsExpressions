@@ -173,39 +173,39 @@ The table below provides summary about:
 }
 
 \examples{
+\dontshow{if (requireNamespace("afex", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
+library(afex) # for within-subjects parametric ANOVA
 options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 
 # ----------------------- parametric -------------------------------------
 
 # between-subjects
 oneway_anova(
-  data = ggplot2::msleep,
-  x    = vore,
-  y    = sleep_rem
+  data = mtcars,
+  x    = cyl,
+  y    = wt
 )
 
-if (require("afex", quietly = TRUE)) {
-  # within-subjects design
-  oneway_anova(
-    data       = iris_long,
-    x          = condition,
-    y          = value,
-    subject.id = id,
-    paired     = TRUE
-  )
-}
+# within-subjects design
+oneway_anova(
+  data       = iris_long,
+  x          = condition,
+  y          = value,
+  subject.id = id,
+  paired     = TRUE
+)
 
 # ----------------------- non-parametric ----------------------------------
 
 # between-subjects
 oneway_anova(
-  data = ggplot2::msleep,
-  x    = vore,
-  y    = sleep_rem,
+  data = mtcars,
+  x    = cyl,
+  y    = wt,
   type = "np"
 )
 
@@ -223,9 +223,9 @@ oneway_anova(
 
 # between-subjects
 oneway_anova(
-  data = ggplot2::msleep,
-  x    = vore,
-  y    = sleep_rem,
+  data = mtcars,
+  x    = cyl,
+  y    = wt,
   type = "r"
 )
 
@@ -243,9 +243,9 @@ oneway_anova(
 
 # between-subjects
 oneway_anova(
-  data = ggplot2::msleep,
-  x    = vore,
-  y    = sleep_rem,
+  data = mtcars,
+  x    = cyl,
+  y    = wt,
   type = "bayes"
 )
 
@@ -259,4 +259,5 @@ oneway_anova(
   type       = "bayes"
 )
 }
+\dontshow{\}) # examplesIf}
 }

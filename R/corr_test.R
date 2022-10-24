@@ -31,19 +31,10 @@
 #' options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 #'
 #' # without changing defaults
-#' corr_test(
-#'   data = ggplot2::midwest,
-#'   x    = area,
-#'   y    = percblack
-#' )
+#' corr_test(mtcars, x = wt, y = mpg)
 #'
 #' # changing defaults
-#' corr_test(
-#'   data = ggplot2::midwest,
-#'   x    = area,
-#'   y    = percblack,
-#'   type = "robust"
-#' )
+#' corr_test(mtcars, x = wt, y = mpg, type = "robust")
 #' }
 #' @export
 corr_test <- function(data,

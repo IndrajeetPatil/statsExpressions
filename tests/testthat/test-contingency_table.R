@@ -36,7 +36,7 @@ test_that(
     # introduce NAs
     set.seed(123)
     df3 <- suppressWarnings(contingency_table(
-      data = ggplot2::msleep,
+      data = msleep,
       x = vore,
       y = conservation,
       conf.level = 0.990
@@ -157,7 +157,7 @@ test_that(
     # from function
     set.seed(123)
     df3 <- contingency_table(
-      data = ggplot2::msleep,
+      data = msleep,
       x = vore,
       ratio = c(0.2, 0.2, 0.3, 0.3)
     )
@@ -220,7 +220,7 @@ test_that(
     set.seed(123)
     df2 <- contingency_table(
       type = "bayes",
-      data = ggplot2::msleep,
+      data = msleep,
       x = vore,
       y = conservation
     )

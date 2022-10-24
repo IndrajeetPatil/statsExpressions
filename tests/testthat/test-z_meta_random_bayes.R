@@ -9,11 +9,8 @@ test_that(
   code = {
     skip_if_not_installed("metaBMA")
 
-
     # setup
     set.seed(123)
-
-    # creating a dataframe
     df1 <- structure(
       .Data = list(
         term = c("1", "2", "3", "4", "5"),

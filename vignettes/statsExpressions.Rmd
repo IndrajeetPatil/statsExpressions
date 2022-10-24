@@ -44,7 +44,6 @@ knitr::opts_chunk$set(
 # needed libraries
 library(dplyr)
 library(statsExpressions)
-library(ggplot2)
 
 # for reproducibility
 set.seed(123)
@@ -103,14 +102,14 @@ functions always require a dataframe in tidy format [@Wickham2019], and work
 with missing data. Moreover, they always return a dataframe that can be further
 utilized downstream in the workflow (such as visualization).
 
-Function | Parametric | Non-parametric | Robust | Bayesian
------------------- | ---- | ----- | ----| ----- 
-`one_sample_test` | ✅ | ✅ | ✅ | ✅
-`two_sample_test` | ✅ | ✅ | ✅ | ✅
-`oneway_anova` | ✅ | ✅ | ✅ | ✅
-`corr_test` | ✅ | ✅ | ✅ | ✅
-`contingency_table` | ✅ | ✅ | - | ✅
-`meta_analysis` | ✅ | - | ✅ | ✅
+| Function            | Parametric | Non-parametric | Robust | Bayesian |
+| :------------------ | :--------- | :------------- | :----- | :------- |
+| `one_sample_test`   | ✅         | ✅             | ✅     | ✅       |
+| `two_sample_test`   | ✅         | ✅             | ✅     | ✅       |
+| `oneway_anova`      | ✅         | ✅             | ✅     | ✅       |
+| `corr_test`         | ✅         | ✅             | ✅     | ✅       |
+| `contingency_table` | ✅         | ✅             | -      | ✅       |
+| `meta_analysis`     | ✅         | -              | ✅     | ✅       |
 
 : A summary table listing the primary functions in the package and the
 statistical approaches they support. More detailed description of the
@@ -177,6 +176,7 @@ statistical processing backend.
 
 ```{r}
 #| label = "anova_example",
+#| eval = requireNamespace("ggplot2", quietly = TRUE),
 #| fig.width = 8,
 #| fig.cap = "Example illustrating how `{statsExpressions}` functions can be used to display
 #| results from a statistical test in a plot."

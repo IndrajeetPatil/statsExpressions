@@ -123,10 +123,12 @@ The table below provides summary about:
 }
 
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
+library(ggplot2) # for data
 options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 
 # ----------------------- parametric ---------------------------------------
@@ -166,4 +168,5 @@ one_sample_test(
   bf.prior   = 0.8
 )
 }
+\dontshow{\}) # examplesIf}
 }

@@ -29,11 +29,12 @@
 #' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```
 #'
-#' @examples
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
 #' \donttest{
 #' # for reproducibility
 #' set.seed(123)
 #' library(statsExpressions)
+#' library(ggplot2) # for data
 #' options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 #'
 #' # ----------------------- parametric ---------------------------------------
