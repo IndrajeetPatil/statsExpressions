@@ -8,6 +8,8 @@ withr::local_options(list(tibble.width = Inf))
 
 # between-subjects ------------------------------
 
+skip_if_not_installed("rstantools")
+
 test_that(
   desc = "bayesian (between-subjects - anova)",
   code = {
