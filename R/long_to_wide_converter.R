@@ -58,9 +58,9 @@
 #'
 #' # independent measures design
 #' long_to_wide_converter(
-#'   data   = ggplot2::msleep,
-#'   x      = vore,
-#'   y      = brainwt,
+#'   data   = mtcars,
+#'   x      = cyl,
+#'   y      = wt,
 #'   paired = FALSE
 #' )
 #' @export

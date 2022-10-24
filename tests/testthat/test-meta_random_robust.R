@@ -21,7 +21,6 @@ test_that(
       random = "normal",
     )
 
-
     set.seed(123)
     expect_snapshot(select(df, -expression))
     expect_snapshot(df[["expression"]])
