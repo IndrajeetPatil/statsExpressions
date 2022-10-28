@@ -61,7 +61,16 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">centrality_description</span><span class="op">(</span><span class="va">data</span>, <span class="va">x</span>, <span class="va">y</span>, type <span class="op">=</span> <span class="st">"parametric"</span>, tr <span class="op">=</span> <span class="fl">0.2</span>, k <span class="op">=</span> <span class="fl">2L</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">centrality_description</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">y</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"parametric"</span>,</span>
+<span>  conf.level <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  tr <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span>  k <span class="op">=</span> <span class="fl">2L</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -87,6 +96,12 @@ ungrouped before they are entered as <code>data</code>.</p></dd>
 <li><p><code>"robust"</code></p></li>
 <li><p><code>"bayes"</code></p></li>
 </ul><p>You can specify just the initial letter.</p></dd>
+
+
+<dt>conf.level</dt>
+<dd><p>Scalar between <code>0</code> and <code>1</code> (default: <code>95%</code>
+confidence/credible intervals, <code>0.95</code>). If <code>NULL</code>, no confidence intervals
+will be computed.</p></dd>
 
 
 <dt>tr</dt>
@@ -129,45 +144,44 @@ relies on <code><a href="https://easystats.github.io/datawizard/reference/descri
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># parametric -----------------------</span></span></span>
 <span class="r-in"><span><span class="fu">centrality_description</span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span>, <span class="va">Sepal.Length</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 14</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Species    Sepal.L…¹ std.dev   iqr conf.…² conf.…³   min   max skewn…⁴ kurto…⁵</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> setosa          5.01   0.352 0.400    4.90    5.10   4.3   5.8   0.120 -<span style="color: #BB0000;">0.253</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> versicolor      5.94   0.516 0.7      5.80    6.07   4.9   7     0.105 -<span style="color: #BB0000;">0.533</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> virginica       6.59   0.636 0.750    6.39    6.79   4.9   7.9   0.118  0.032<span style="text-decoration: underline;">9</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 4 more variables: n.obs &lt;int&gt;, missing.obs &lt;int&gt;, expression &lt;list&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   n.expression &lt;chr&gt;, and abbreviated variable names ¹​Sepal.Length,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​conf.low, ³​conf.high, ⁴​skewness, ⁵​kurtosis</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 12</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Species    Sepal.Len…¹ std.dev   iqr   min   max skewn…² kurto…³ n.obs missi…⁴</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> setosa            5.01   0.352 0.400   4.3   5.8   0.120 -<span style="color: #BB0000;">0.253</span>     50       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> versicolor        5.94   0.516 0.7     4.9   7     0.105 -<span style="color: #BB0000;">0.533</span>     50       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> virginica         6.59   0.636 0.750   4.9   7.9   0.118  0.032<span style="text-decoration: underline;">9</span>    50       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 2 more variables: expression &lt;list&gt;, n.expression &lt;chr&gt;, and</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   abbreviated variable names ¹​Sepal.Length, ²​skewness, ³​kurtosis,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ⁴​missing.obs</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># non-parametric -------------------</span></span></span>
 <span class="r-in"><span><span class="fu">centrality_description</span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">am</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 14</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      am    wt   mad   iqr conf.low conf.high   min   max skewness kurtosis n.obs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     0  3.52 0.452 0.41      3.44      3.84  2.46  5.42    1.15     1.06     19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     1  2.32 0.682 0.942     1.94      2.78  1.51  3.57    0.269   -<span style="color: #BB0000;">0.654</span>    13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 3 more variables: missing.obs &lt;int&gt;, expression &lt;list&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   n.expression &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 12</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      am    wt   mad   iqr   min   max skewness kurtosis n.obs missi…¹ expression</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     0  3.52 0.452 0.41   2.46  5.42    1.15     1.06     19       0 <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     1  2.32 0.682 0.942  1.51  3.57    0.269   -<span style="color: #BB0000;">0.654</span>    13       0 <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: n.expression &lt;chr&gt;, and abbreviated variable name</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ¹​missing.obs</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># robust ---------------------------</span></span></span>
 <span class="r-in"><span><span class="fu">centrality_description</span><span class="op">(</span><span class="va">ToothGrowth</span>, <span class="va">supp</span>, <span class="va">len</span>, type <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 14</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   supp    len std.dev   iqr conf.low conf.high   min   max skewn…¹ kurto…² n.obs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> OJ     21.7    6.61  10.9     17.5      23.5   8.2  30.9  -<span style="color: #BB0000;">0.580</span>  -<span style="color: #BB0000;">0.831</span>    30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> VC     16.6    8.27  12.5     13.6      19.6   4.2  33.9   0.306  -<span style="color: #BB0000;">0.700</span>    30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 3 more variables: missing.obs &lt;int&gt;, expression &lt;list&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   n.expression &lt;chr&gt;, and abbreviated variable names ¹​skewness, ²​kurtosis</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 12</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   supp    len std.dev   iqr   min   max skewn…¹ kurto…² n.obs missi…³ expression</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> OJ     21.7    6.61  10.9   8.2  30.9  -<span style="color: #BB0000;">0.580</span>  -<span style="color: #BB0000;">0.831</span>    30       0 <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> VC     16.6    8.27  12.5   4.2  33.9   0.306  -<span style="color: #BB0000;">0.700</span>    30       0 <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: n.expression &lt;chr&gt;, and abbreviated variable names</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ¹​skewness, ²​kurtosis, ³​missing.obs</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Bayesian -------------------------</span></span></span>
 <span class="r-in"><span><span class="fu">centrality_description</span><span class="op">(</span><span class="va">sleep</span>, <span class="va">group</span>, <span class="va">extra</span>, type <span class="op">=</span> <span class="st">"b"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 13</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   group  extra   iqr conf.low conf.h…¹   min   max skewn…² kurto…³ n.obs missi…⁴</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 1     0.057<span style="text-decoration: underline;">9</span>  2.8   -<span style="color: #BB0000;">1.39</span>       3.65  -<span style="color: #BB0000;">1.6</span>   3.7   0.581  -<span style="color: #BB0000;">0.630</span>    10       0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 2     0.973   3.82   0.072<span style="text-decoration: underline;">8</span>     4.88  -<span style="color: #BB0000;">0.1</span>   5.5   0.386  -<span style="color: #BB0000;">1.42</span>     10       0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 2 more variables: expression &lt;list&gt;, n.expression &lt;chr&gt;, and</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   abbreviated variable names ¹​conf.high, ²​skewness, ³​kurtosis, ⁴​missing.obs</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 11</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   group  extra   iqr   min   max skewness kurtosis n.obs missing.obs expression</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 1     0.057<span style="text-decoration: underline;">9</span>  2.8   -<span style="color: #BB0000;">1.6</span>   3.7    0.581   -<span style="color: #BB0000;">0.630</span>    10           0 <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 2     0.973   3.82  -<span style="color: #BB0000;">0.1</span>   5.5    0.386   -<span style="color: #BB0000;">1.42</span>     10           0 <span style="color: #949494;">&lt;language&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: n.expression &lt;chr&gt;</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
