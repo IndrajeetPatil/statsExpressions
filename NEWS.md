@@ -1,5 +1,7 @@
 # statsExpressions (development version)
 
+- `centrality_description()` gets a new `conf.level` parameter.
+
 # statsExpressions 1.3.4
 
 - Fixes breakages due to `{effectsize}` package update.
