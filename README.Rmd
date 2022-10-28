@@ -15,13 +15,13 @@ options(
 )
 
 knitr::opts_chunk$set(
-  collapse          = TRUE,
-  dpi               = 300,
-  out.width         = "100%",
-  comment           = "#>",
-  warning           = FALSE,
-  message           = FALSE,
-  fig.path          = "man/figures/README-"
+  collapse  = TRUE,
+  dpi       = 300,
+  out.width = "100%",
+  comment   = "#>",
+  warning   = FALSE,
+  message   = FALSE,
+  fig.path  = "man/figures/README-"
 )
 
 set.seed(123)
