@@ -29,7 +29,7 @@ Imports:
     correlation (>= 0.8.3),
     datawizard (>= 0.6.3),
     dplyr,
-    effectsize (>= 0.8.1.09999),
+    effectsize (>= 0.8.2),
     glue,
     insight (>= 0.18.5),
     magrittr,
@@ -41,8 +41,6 @@ Imports:
     tidyr,
     WRS2 (>= 1.1-4),
     zeallot
-Remotes:
-    easystats/effectsize
 Suggests:
     afex,
     ggplot2,

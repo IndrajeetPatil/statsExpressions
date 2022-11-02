@@ -16,7 +16,7 @@ abstract: 'Utilities for producing dataframes with rich details for the most com
   and meta-analyses. The functions are pipe-friendly and provide a consistent syntax
   to work with tidy data. These dataframes additionally contain expressions with statistical
   details, and can be used in graphing packages. This package also forms the statistical
-  processing backend for ''ggstatsplot''.'
+  processing backend for ''ggstatsplot''. References: Patil (2021) <10.21105/joss.03236>.'
 authors:
 - family-names: Patil
   given-names: Indrajeet
@@ -113,9 +113,9 @@ references:
     given-names: Mattan S.
     email: matanshm@post.bgu.ac.il
     orcid: https://orcid.org/0000-0002-4287-4801
-  year: '2022'
-  url: https://CRAN.R-project.org/package=correlation
+  url: https://easystats.github.io/correlation/
   version: '>= 0.8.3'
+  year: '2022'
 - type: software
   title: datawizard
   abstract: 'datawizard: Easy Data Wrangling and Statistical Transformations'
@@ -147,7 +147,7 @@ references:
     orcid: https://orcid.org/0000-0002-9271-5075
   year: '2022'
   url: https://easystats.github.io/datawizard/
-  version: '>= 0.6.2'
+  version: '>= 0.6.3'
 - type: software
   title: dplyr
   abstract: 'dplyr: A Grammar of Data Manipulation'
@@ -194,7 +194,7 @@ references:
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2022'
   url: https://CRAN.R-project.org/package=effectsize
-  version: '>= 0.8.0'
+  version: '>= 0.8.2'
 - type: software
   title: glue
   abstract: 'glue: Interpreted String Literals'
@@ -244,7 +244,7 @@ references:
     orcid: https://orcid.org/0000-0003-2042-7063
   year: '2022'
   url: https://easystats.github.io/insight/
-  version: '>= 0.18.4'
+  version: '>= 0.18.5'
 - type: software
   title: magrittr
   abstract: 'magrittr: A Forward-Pipe Operator for R'
@@ -353,12 +353,12 @@ references:
   authors:
   - family-names: Müller
     given-names: Kirill
-    email: krlmlr+r@mailbox.org
+    email: kirill@cynkra.com
+    orcid: https://orcid.org/0000-0002-1416-3412
   - family-names: Wickham
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
-  url: https://CRAN.R-project.org/package=tibble
 - type: software
   title: tidyr
   abstract: 'tidyr: Tidy Messy Data'
