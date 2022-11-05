@@ -325,15 +325,12 @@ ggplot2::ggplot(WineTasting, aes(Wine, Taste, color = Wine)) +
 ``` r
 # setup
 set.seed(123)
-
 library(gghalves)
-library(ggbeeswarm)
 
 results_data <- two_sample_test(ToothGrowth, supp, len)
 
 ggplot(ToothGrowth, aes(supp, len)) +
-  geom_half_boxplot() +
-  geom_beeswarm() +
+  geom_half_dotplot() +
   labs(
     title = "Two-Sample Welch's t-test",
     subtitle = parse(text = results_data$expression)
