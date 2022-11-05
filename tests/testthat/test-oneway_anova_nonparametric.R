@@ -1,4 +1,5 @@
 withr::local_options(list(tibble.width = Inf))
+skip_if_not_installed("boot")
 
 # between-subjects ----------------------------------------------
 
@@ -25,7 +26,7 @@ test_that(
     df2 <-
       suppressWarnings(oneway_anova(
         type = "np",
-        data = ggplot2::msleep,
+        data = msleep,
         x = vore,
         y = sleep_cycle,
         paired = FALSE,

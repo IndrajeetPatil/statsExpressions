@@ -157,6 +157,7 @@ Not supported.
 }
 
 \examples{
+\dontshow{if (requireNamespace("PMCMRplus", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
 # for reproducibility
 set.seed(123)
@@ -266,6 +267,7 @@ pairwise_comparisons(
   paired     = TRUE
 )
 }
+\dontshow{\}) # examplesIf}
 }
 \references{
 For more, see:

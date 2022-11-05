@@ -55,8 +55,8 @@ test_that(
     # statsExpressions output
     set.seed(123)
     df2 <- one_sample_test(
-      data = ggplot2::msleep,
-      x = names(ggplot2::msleep)[10],
+      data = msleep,
+      x = names(msleep)[10],
       test.value = 0.25,
       type = "np",
       k = 4
@@ -90,7 +90,7 @@ test_that(
     # statsExpressions output
     set.seed(123)
     df2 <- one_sample_test(
-      data = ggplot2::msleep,
+      data = msleep,
       x = brainwt,
       test.value = 0.1,
       type = "r",
@@ -148,7 +148,7 @@ test_that(
     set.seed(123)
     df2 <- one_sample_test(
       type = "bayes",
-      data = ggplot2::msleep,
+      data = msleep,
       x = brainwt,
       y = NULL,
       test.value = 0.25,

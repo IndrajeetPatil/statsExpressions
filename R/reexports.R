@@ -1,4 +1,4 @@
-# tidyverse -------------------------------------
+# DO NOT REMOVE: Needed for `{ggstatsplot}`
 
 #' @export
 #' @importFrom magrittr "%>%"
@@ -7,6 +7,14 @@ magrittr::`%>%`
 #' @export
 #' @importFrom magrittr "%<>%"
 magrittr::`%<>%`
+
+#' @export
+#' @importFrom magrittr "%$%"
+magrittr::`%$%`
+
+#' @export
+#' @importFrom zeallot "%<-%"
+zeallot::`%<-%`
 
 #' @export
 #' @importFrom tibble tibble

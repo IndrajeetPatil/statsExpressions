@@ -45,7 +45,7 @@ test_that(
     # statsExpression output
     set.seed(123)
     df1 <- oneway_anova(
-      data = ggplot2::msleep,
+      data = msleep,
       x = vore,
       y = brainwt,
       effsize.type = "unbiased",

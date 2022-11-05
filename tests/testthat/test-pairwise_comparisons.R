@@ -1,17 +1,15 @@
 withr::local_options(list(tibble.width = Inf))
+skip_if_not_installed("PMCMRplus")
 
 # between-subjects design --------------------------------------------------
 
 test_that(
   desc = "`pairwise_comparisons()` works for between-subjects design",
   code = {
-    set.seed(123)
-    skip_if_not_installed("PMCMRplus")
-
     # student's t
     set.seed(123)
     df1 <- pairwise_comparisons(
-      data = ggplot2::msleep,
+      data = msleep,
       x = vore,
       y = brainwt,
       type = "p",
@@ -24,7 +22,7 @@ test_that(
     expect_snapshot(df1[["expression"]])
 
     # games-howell
-    df_msleep <- ggplot2::msleep
+    df_msleep <- msleep
 
     # adding empty factor level (shouldn't change results)
     df_msleep %<>% dplyr::mutate(vore = as.factor(vore))
@@ -48,7 +46,7 @@ test_that(
     # Dunn test
     set.seed(123)
     df3 <- pairwise_comparisons(
-      data = ggplot2::msleep,
+      data = msleep,
       x = vore,
       y = brainwt,
       type = "np",
@@ -62,7 +60,7 @@ test_that(
     # robust t test
     set.seed(123)
     df4 <- pairwise_comparisons(
-      data = ggplot2::msleep,
+      data = msleep,
       x = vore,
       y = brainwt,
       type = "r",
@@ -104,11 +102,8 @@ test_that(
 test_that(
   desc = "dropped levels are not included",
   code = {
-    set.seed(123)
-    skip_if_not_installed("PMCMRplus")
-
     # drop levels
-    msleep2 <- dplyr::filter(.data = ggplot2::msleep, vore %in% c("carni", "omni"))
+    msleep2 <- dplyr::filter(.data = msleep, vore %in% c("carni", "omni"))
 
     # check those levels are not included
     set.seed(123)
@@ -124,7 +119,7 @@ test_that(
 
     set.seed(123)
     df2 <- pairwise_comparisons(
-      data = ggplot2::msleep,
+      data = msleep,
       x = vore,
       y = brainwt,
       p.adjust.method = "none"
@@ -141,7 +136,6 @@ test_that(
 test_that(
   desc = "data without NAs",
   code = {
-    skip_if_not_installed("PMCMRplus")
     set.seed(123)
     df <- pairwise_comparisons(
       data = iris,
@@ -163,8 +157,6 @@ test_that(
 test_that(
   desc = "`pairwise_comparisons()` works for within-subjects design - NAs",
   code = {
-    skip_if_not_installed("PMCMRplus")
-
     # student's t test
     set.seed(123)
     df1 <- pairwise_comparisons(
@@ -233,8 +225,6 @@ test_that(
 test_that(
   desc = "`pairwise_comparisons()` works for within-subjects design - without NAs",
   code = {
-    skip_if_not_installed("PMCMRplus")
-
     # student's t test
     set.seed(123)
     df1 <- pairwise_comparisons(
@@ -301,10 +291,8 @@ test_that(
 test_that(
   desc = "works with subject id",
   code = {
-    set.seed(123)
-    skip_if_not_installed("PMCMRplus")
-
     # with subject id
+    set.seed(123)
     df1 <- purrr::pmap_dfr(
       .f = pairwise_comparisons,
       .l = list(
@@ -343,8 +331,6 @@ test_that(
 test_that(
   desc = "additional arguments are passed to underlying methods",
   code = {
-    skip_if_not_installed("PMCMRplus")
-
     # student's t test
     set.seed(123)
     df1 <- pairwise_comparisons(

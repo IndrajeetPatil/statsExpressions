@@ -47,8 +47,9 @@ You can specify just the initial letter.}
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2L}).}
 
-\item{conf.level}{Scalar between \code{0} and \code{1}. If unspecified, the defaults
-return \verb{95\%} confidence/credible intervals (\code{0.95}).}
+\item{conf.level}{Scalar between \code{0} and \code{1} (default: \verb{95\%}
+confidence/credible intervals, \code{0.95}). If \code{NULL}, no confidence intervals
+will be computed.}
 
 \item{tr}{Trim level for the mean when carrying out \code{robust} tests. In case
 of an error, try reducing the value of \code{tr}, which is by default set to
@@ -123,10 +124,12 @@ The table below provides summary about:
 }
 
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
+library(ggplot2) # for data
 options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 
 # ----------------------- parametric ---------------------------------------
@@ -166,4 +169,5 @@ one_sample_test(
   bf.prior   = 0.8
 )
 }
+\dontshow{\}) # examplesIf}
 }

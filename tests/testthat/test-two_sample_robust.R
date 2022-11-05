@@ -75,7 +75,7 @@ test_that(
     set.seed(123)
     df1 <- two_sample_test(
       type = "r",
-      data = filter(ggplot2::msleep, vore %in% c("carni", "herbi")),
+      data = filter(msleep, vore %in% c("carni", "herbi")),
       x = vore,
       y = brainwt,
       paired = FALSE,

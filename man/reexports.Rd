@@ -5,6 +5,8 @@
 \alias{reexports}
 \alias{\%>\%}
 \alias{\%<>\%}
+\alias{\%$\%}
+\alias{\%<-\%}
 \alias{tibble}
 \alias{as_tibble}
 \title{Objects exported from other packages}
@@ -14,8 +16,10 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{magrittr}{\code{\link[magrittr:compound]{\%<>\%}}, \code{\link[magrittr:pipe]{\%>\%}}}
+  \item{magrittr}{\code{\link[magrittr:exposition]{\%$\%}}, \code{\link[magrittr:compound]{\%<>\%}}, \code{\link[magrittr:pipe]{\%>\%}}}
 
   \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{tibble}}}
+
+  \item{zeallot}{\code{\link[zeallot:operator]{\%<-\%}}}
 }}
 

@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.2.1 (2022-06-23)",
+  "runtimePlatform": "R version 4.2.2 (2022-10-31)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -274,14 +274,14 @@
       "@type": "SoftwareApplication",
       "identifier": "effectsize",
       "name": "effectsize",
-      "version": ">= 0.8.1.09999",
+      "version": ">= 0.8.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://github.com/easystats/effectsize"
+      "sameAs": "https://CRAN.R-project.org/package=effectsize"
     },
     "7": {
       "@type": "SoftwareApplication",
@@ -414,7 +414,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4164.75KB",
+  "fileSize": "4168.659KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",

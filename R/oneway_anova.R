@@ -19,8 +19,9 @@
 #'
 #' @inheritParams long_to_wide_converter
 #' @inheritParams stats_type_switch
-#' @param conf.level Scalar between `0` and `1`. If unspecified, the defaults
-#'   return `95%` confidence/credible intervals (`0.95`).
+#' @param conf.level Scalar between `0` and `1` (default: `95%`
+#' confidence/credible intervals, `0.95`). If `NULL`, no confidence intervals
+#' will be computed.
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
 #'   argument can be `"eta"` (partial eta-squared) or `"omega"` (partial
 #'   omega-squared).
@@ -40,40 +41,39 @@
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams stats::oneway.test
 #'
-#' @examples
+#' @examplesIf requireNamespace("afex", quietly = TRUE)
 #' \donttest{
 #' # for reproducibility
 #' set.seed(123)
 #' library(statsExpressions)
+#' library(afex) # for within-subjects parametric ANOVA
 #' options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 #'
 #' # ----------------------- parametric -------------------------------------
 #'
 #' # between-subjects
 #' oneway_anova(
-#'   data = ggplot2::msleep,
-#'   x    = vore,
-#'   y    = sleep_rem
+#'   data = mtcars,
+#'   x    = cyl,
+#'   y    = wt
 #' )
 #'
-#' if (require("afex", quietly = TRUE)) {
-#'   # within-subjects design
-#'   oneway_anova(
-#'     data       = iris_long,
-#'     x          = condition,
-#'     y          = value,
-#'     subject.id = id,
-#'     paired     = TRUE
-#'   )
-#' }
+#' # within-subjects design
+#' oneway_anova(
+#'   data       = iris_long,
+#'   x          = condition,
+#'   y          = value,
+#'   subject.id = id,
+#'   paired     = TRUE
+#' )
 #'
 #' # ----------------------- non-parametric ----------------------------------
 #'
 #' # between-subjects
 #' oneway_anova(
-#'   data = ggplot2::msleep,
-#'   x    = vore,
-#'   y    = sleep_rem,
+#'   data = mtcars,
+#'   x    = cyl,
+#'   y    = wt,
 #'   type = "np"
 #' )
 #'
@@ -91,9 +91,9 @@
 #'
 #' # between-subjects
 #' oneway_anova(
-#'   data = ggplot2::msleep,
-#'   x    = vore,
-#'   y    = sleep_rem,
+#'   data = mtcars,
+#'   x    = cyl,
+#'   y    = wt,
 #'   type = "r"
 #' )
 #'
@@ -111,9 +111,9 @@
 #'
 #' # between-subjects
 #' oneway_anova(
-#'   data = ggplot2::msleep,
-#'   x    = vore,
-#'   y    = sleep_rem,
+#'   data = mtcars,
+#'   x    = cyl,
+#'   y    = wt,
 #'   type = "bayes"
 #' )
 #'

@@ -4,7 +4,16 @@
 \alias{centrality_description}
 \title{Data frame and expression for distribution properties}
 \usage{
-centrality_description(data, x, y, type = "parametric", tr = 0.2, k = 2L, ...)
+centrality_description(
+  data,
+  x,
+  y,
+  type = "parametric",
+  conf.level = NULL,
+  tr = 0.2,
+  k = 2L,
+  ...
+)
 }
 \arguments{
 \item{data}{A data frame (or a tibble) from which variables specified are to
@@ -25,6 +34,10 @@ ungrouped before they are entered as \code{data}.}
 }
 
 You can specify just the initial letter.}
+
+\item{conf.level}{Scalar between \code{0} and \code{1} (default: \verb{95\%}
+confidence/credible intervals, \code{0.95}). If \code{NULL}, no confidence intervals
+will be computed.}
 
 \item{tr}{Trim level for the mean when carrying out \code{robust} tests. In case
 of an error, try reducing the value of \code{tr}, which is by default set to

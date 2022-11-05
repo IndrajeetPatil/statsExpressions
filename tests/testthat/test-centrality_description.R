@@ -1,4 +1,5 @@
 withr::local_options(list(tibble.width = Inf))
+skip_if_not_installed("boot")
 
 test_that(
   desc = "centrality description works as expected",

@@ -45,6 +45,7 @@ centrality_description <- function(data,
                                    x,
                                    y,
                                    type = "parametric",
+                                   conf.level = NULL,
                                    tr = 0.2,
                                    k = 2L,
                                    ...) {
@@ -75,7 +76,7 @@ centrality_description <- function(data,
           centrality = centrality,
           threshold  = tr,
           verbose    = FALSE,
-          ci         = 0.95 # TODO: https://github.com/easystats/bayestestR/issues/429
+          ci         = conf.level
         ),
         style = "broom"
       )
