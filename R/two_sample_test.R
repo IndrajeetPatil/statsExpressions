@@ -134,14 +134,13 @@ two_sample_test <- function(data,
   c(x, y) %<-% c(ensym(x), ensym(y))
 
   # properly removing NAs if it's a paired design
-  data %<>%
-    long_to_wide_converter(
-      x          = {{ x }},
-      y          = {{ y }},
-      subject.id = {{ subject.id }},
-      paired     = paired,
-      spread     = ifelse(type %in% c("bayes", "robust"), paired, FALSE)
-    )
+  data %<>% long_to_wide_converter(
+    x          = {{ x }},
+    y          = {{ y }},
+    subject.id = {{ subject.id }},
+    paired     = paired,
+    spread     = ifelse(type %in% c("bayes", "robust"), paired, FALSE)
+  )
 
   # parametric ---------------------------------------
 

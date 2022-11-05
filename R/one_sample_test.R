@@ -92,6 +92,7 @@ one_sample_test <- function(data,
   # preparing the vector
   x_vec <- stats::na.omit(data %>% pull({{ x }}))
 
+  # functions for inferential statistics and estimation
   c(.f, .f.es) %<-% switch(type,
     "parametric"    = list(stats::t.test, effectsize::hedges_g),
     "nonparametric" = list(stats::wilcox.test, effectsize::rank_biserial),
@@ -99,42 +100,24 @@ one_sample_test <- function(data,
     "bayes"         = list(BayesFactor::ttestBF, NULL)
   )
 
-  # non-parametric ---------------------------------------
+  # styler: off
+  c(.f.args, .f.es.args) %<-% switch(type,
+    "parametric"    = ,
+    "nonparametric" = list(list(x = x_vec, mu = test.value, alternative = alternative), list(verbose = FALSE, ci = conf.level)),
+    "robust"        = list(list(x = x_vec, nv = test.value, tr = tr, alpha = 1 - conf.level), NULL),
+    "bayes"         = list(list(x = x_vec, rscale = bf.prior, mu = test.value), NULL)
+  )
+  # styler: on
 
   if (type %in% c("parametric", "nonparametric")) {
-    # extracting test details
-    stats_df <- exec(.f, x = x_vec, mu = test.value, alternative = alternative) %>%
-      tidy_model_parameters() %>%
-      select(-matches("^est|^conf|^diff|^term|^ci"))
+    stats_df <- exec(.f, !!!.f.args, !!!.f.es.args) %>% tidy_model_parameters()
+    effsize_df <- exec(.f.es, !!!.f.args, !!!.f.es.args) %>% tidy_model_effectsize()
 
-    # extracting effect size details
-    effsize_df <- exec(
-      .f.es,
-      x       = x_vec,
-      mu      = test.value,
-      verbose = FALSE,
-      ci      = conf.level
-    ) %>%
-      tidy_model_effectsize()
-
-    stats_df <- bind_cols(stats_df, effsize_df)
+    stats_df <- bind_cols(select(stats_df, -matches("^est|^conf|^diff|^term|^ci")), effsize_df)
   }
 
-  # robust ---------------------------------------
-
-  if (type == "robust") {
-    stats_df <- exec(WRS2::trimcibt, x = x_vec, nv = test.value, tr = tr, alpha = 1 - conf.level) %>%
-      tidy_model_parameters()
-  }
-
-  # Bayesian ---------------------------------------
-
-  if (type == "bayes") {
-    stats_df <- exec(.f, x = x_vec, rscale = bf.prior, mu = test.value) %>%
-      tidy_model_parameters(ci = conf.level)
-  }
-
-  # expression ---------------------------------------
+  if (type == "robust") stats_df <- exec(.f, !!!.f.args) %>% tidy_model_parameters()
+  if (type == "bayes") stats_df <- exec(.f, !!!.f.args) %>% tidy_model_parameters(ci = conf.level)
 
   add_expression_col(stats_df, n = length(x_vec), k = k)
 }

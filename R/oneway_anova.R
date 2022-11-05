@@ -215,7 +215,7 @@ oneway_anova <- function(data,
     }
     # styler: on
 
-    # extracting test details
+
     stats_df <- tidy_model_parameters(exec(.f, !!!.f.args, data = data))
 
     # computing respective effect sizes
