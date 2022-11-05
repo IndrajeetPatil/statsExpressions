@@ -86,13 +86,13 @@ one_sample_test <- function(data,
                             bf.prior = 0.707,
                             effsize.type = "g",
                             ...) {
-  # standardize the type of statistics
-  type <- stats_type_switch(type)
-
-  # preparing the vector
+  # Preparing the vector
   x_vec <- stats::na.omit(data %>% pull({{ x }}))
 
-  # functions for inferential statistics and estimation
+  # Standardize the type of statistics
+  type <- stats_type_switch(type)
+
+  # Functions for inferential statistics and estimation
   c(.f, .f.es) %<-% switch(type,
     "parametric"    = list(stats::t.test, effectsize::hedges_g),
     "nonparametric" = list(stats::wilcox.test, effectsize::rank_biserial),
@@ -100,6 +100,7 @@ one_sample_test <- function(data,
     "bayes"         = list(BayesFactor::ttestBF, NULL)
   )
 
+  # Arguments to be supplied to these functions
   # styler: off
   c(.f.args, .f.es.args) %<-% switch(type,
     "parametric"    = ,
@@ -109,15 +110,14 @@ one_sample_test <- function(data,
   )
   # styler: on
 
-  if (type %in% c("parametric", "nonparametric")) {
-    stats_df <- exec(.f, !!!.f.args, !!!.f.es.args) %>% tidy_model_parameters()
-    effsize_df <- exec(.f.es, !!!.f.args, !!!.f.es.args) %>% tidy_model_effectsize()
+  stats_df <- exec(.f, !!!.f.args, !!!.f.es.args) %>% tidy_model_parameters(ci = conf.level)
 
+  # These are exceptions because the tidier for the underlying object won't also contain the effect size details
+  # so those need to be extracted separately and merged
+  if (type %in% c("parametric", "nonparametric")) {
+    effsize_df <- exec(.f.es, !!!.f.args, !!!.f.es.args) %>% tidy_model_effectsize()
     stats_df <- bind_cols(select(stats_df, -matches("^est|^conf|^diff|^term|^ci")), effsize_df)
   }
-
-  if (type == "robust") stats_df <- exec(.f, !!!.f.args) %>% tidy_model_parameters()
-  if (type == "bayes") stats_df <- exec(.f, !!!.f.args) %>% tidy_model_parameters(ci = conf.level)
 
   add_expression_col(stats_df, n = length(x_vec), k = k)
 }
