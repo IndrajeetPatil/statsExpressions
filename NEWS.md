@@ -1,6 +1,8 @@
-# statsExpressions (development version)
+# statsExpressions 1.3.5
 
 - `centrality_description()` gets a new `conf.level` parameter.
+
+- Updates tests and examples to insure against removal of suggested packages.
 
 # statsExpressions 1.3.4
 
