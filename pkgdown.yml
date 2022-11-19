@@ -5,8 +5,5 @@ articles:
   statsExpressions: statsExpressions.html
   stats_details: stats_details.html
   dataframe_outputs: web_only/dataframe_outputs.html
-last_built: 2022-11-19T11:21Z
-urls:
-  reference: https://indrajeetpatil.github.io/statsExpressions/reference
-  article: https://indrajeetpatil.github.io/statsExpressions/articles
+last_built: 2022-11-19T14:04Z
 
