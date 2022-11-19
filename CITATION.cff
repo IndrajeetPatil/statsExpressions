@@ -1,5 +1,5 @@
 # -----------------------------------------------------------
-# CITATION file created with {cffr} R package, v0.3.0
+# CITATION file created with {cffr} R package, v0.4.0
 # See also: https://docs.ropensci.org/cffr/
 # -----------------------------------------------------------
  
@@ -16,7 +16,7 @@ abstract: 'Utilities for producing dataframes with rich details for the most com
   and meta-analyses. The functions are pipe-friendly and provide a consistent syntax
   to work with tidy data. These dataframes additionally contain expressions with statistical
   details, and can be used in graphing packages. This package also forms the statistical
-  processing backend for ''ggstatsplot''. References: Patil (2021) <10.21105/joss.03236>.'
+  processing backend for ''ggstatsplot''. References: Patil (2021) <doi:10.21105/joss.03236>.'
 authors:
 - family-names: Patil
   given-names: Indrajeet
@@ -65,12 +65,12 @@ references:
 - type: software
   title: 'R: A Language and Environment for Statistical Computing'
   notes: Depends
+  url: https://www.R-project.org/
   authors:
   - name: R Core Team
   location:
     name: Vienna, Austria
   year: '2022'
-  url: https://www.R-project.org/
   institution:
     name: R Foundation for Statistical Computing
   version: '>= 4.0.0'
@@ -78,6 +78,8 @@ references:
   title: BayesFactor
   abstract: 'BayesFactor: Computation of Bayes Factors for Common Designs'
   notes: Imports
+  url: https://richarddmorey.github.io/BayesFactor/
+  repository: https://CRAN.R-project.org/package=BayesFactor
   authors:
   - family-names: Morey
     given-names: Richard D.
@@ -86,12 +88,13 @@ references:
     given-names: Jeffrey N.
     email: jrouder@uci.edu
   year: '2022'
-  url: https://CRAN.R-project.org/package=BayesFactor
   version: '>= 0.9.12-4.4'
 - type: software
   title: correlation
   abstract: 'correlation: Methods for Correlation Analysis'
   notes: Imports
+  url: https://easystats.github.io/correlation/
+  repository: https://CRAN.R-project.org/package=correlation
   authors:
   - family-names: Makowski
     given-names: Dominique
@@ -113,13 +116,14 @@ references:
     given-names: Mattan S.
     email: matanshm@post.bgu.ac.il
     orcid: https://orcid.org/0000-0002-4287-4801
-  url: https://easystats.github.io/correlation/
   version: '>= 0.8.3'
   year: '2022'
 - type: software
   title: datawizard
   abstract: 'datawizard: Easy Data Wrangling and Statistical Transformations'
   notes: Imports
+  url: https://easystats.github.io/datawizard/
+  repository: https://CRAN.R-project.org/package=datawizard
   authors:
   - family-names: Patil
     given-names: Indrajeet
@@ -145,13 +149,14 @@ references:
     given-names: Etienne
     email: etienne.bacher@protonmail.com
     orcid: https://orcid.org/0000-0002-9271-5075
-  year: '2022'
-  url: https://easystats.github.io/datawizard/
   version: '>= 0.6.3'
+  year: '2022'
 - type: software
   title: dplyr
   abstract: 'dplyr: A Grammar of Data Manipulation'
   notes: Imports
+  url: https://dplyr.tidyverse.org
+  repository: https://CRAN.R-project.org/package=dplyr
   authors:
   - family-names: Wickham
     given-names: Hadley
@@ -166,11 +171,12 @@ references:
     given-names: Kirill
     orcid: https://orcid.org/0000-0002-1416-3412
   year: '2022'
-  url: https://CRAN.R-project.org/package=dplyr
 - type: software
   title: effectsize
   abstract: 'effectsize: Indices of Effect Size'
   notes: Imports
+  url: https://easystats.github.io/effectsize/
+  repository: https://easystats.r-universe.dev
   authors:
   - family-names: Ben-Shachar
     given-names: Mattan S.
@@ -193,12 +199,13 @@ references:
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2022'
-  url: https://CRAN.R-project.org/package=effectsize
   version: '>= 0.8.2'
 - type: software
   title: glue
   abstract: 'glue: Interpreted String Literals'
   notes: Imports
+  url: https://glue.tidyverse.org/
+  repository: https://CRAN.R-project.org/package=glue
   authors:
   - family-names: Hester
     given-names: Jim
@@ -208,11 +215,12 @@ references:
     email: jenny@rstudio.com
     orcid: https://orcid.org/0000-0002-6983-2759
   year: '2022'
-  url: https://CRAN.R-project.org/package=glue
 - type: software
   title: insight
   abstract: 'insight: Easy Access to Model Information for Various Model Objects'
   notes: Imports
+  url: https://easystats.github.io/insight/
+  repository: https://CRAN.R-project.org/package=insight
   authors:
   - family-names: Lüdecke
     given-names: Daniel
@@ -243,12 +251,13 @@ references:
     email: vincent.arel-bundock@umontreal.ca
     orcid: https://orcid.org/0000-0003-2042-7063
   year: '2022'
-  url: https://easystats.github.io/insight/
-  version: '>= 0.18.6'
+  version: '>= 0.18.7'
 - type: software
   title: magrittr
   abstract: 'magrittr: A Forward-Pipe Operator for R'
   notes: Imports
+  url: https://magrittr.tidyverse.org
+  repository: https://CRAN.R-project.org/package=magrittr
   authors:
   - family-names: Bache
     given-names: Stefan Milton
@@ -257,11 +266,12 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
-  url: https://CRAN.R-project.org/package=magrittr
 - type: software
   title: parameters
   abstract: 'parameters: Processing of Model Parameters'
   notes: Imports
+  url: https://easystats.github.io/parameters/
+  repository: https://easystats.r-universe.dev
   authors:
   - family-names: Lüdecke
     given-names: Daniel
@@ -287,12 +297,13 @@ references:
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2022'
-  url: https://easystats.github.io/parameters/
   version: '>= 0.19.0'
 - type: software
   title: performance
   abstract: 'performance: Assessment of Regression Models Performance'
   notes: Imports
+  url: https://easystats.github.io/performance/
+  repository: https://easystats.r-universe.dev
   authors:
   - family-names: Lüdecke
     given-names: Daniel
@@ -319,12 +330,13 @@ references:
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2022'
-  url: https://easystats.github.io/performance/
   version: '>= 0.10.0'
 - type: software
   title: rlang
   abstract: 'rlang: Functions for Base Types and Core R and ''Tidyverse'' Features'
   notes: Imports
+  url: https://rlang.r-lib.org
+  repository: https://CRAN.R-project.org/package=rlang
   authors:
   - family-names: Henry
     given-names: Lionel
@@ -333,7 +345,6 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
-  url: https://CRAN.R-project.org/package=rlang
 - type: software
   title: stats
   abstract: 'R: A Language and Environment for Statistical Computing'
@@ -343,13 +354,14 @@ references:
   location:
     name: Vienna, Austria
   year: '2022'
-  url: https://www.R-project.org/
   institution:
     name: R Foundation for Statistical Computing
 - type: software
   title: tibble
   abstract: 'tibble: Simple Data Frames'
   notes: Imports
+  url: https://tibble.tidyverse.org/
+  repository: https://CRAN.R-project.org/package=tibble
   authors:
   - family-names: Müller
     given-names: Kirill
@@ -363,6 +375,8 @@ references:
   title: tidyr
   abstract: 'tidyr: Tidy Messy Data'
   notes: Imports
+  url: https://tidyr.tidyverse.org
+  repository: https://CRAN.R-project.org/package=tidyr
   authors:
   - family-names: Wickham
     given-names: Hadley
@@ -370,11 +384,12 @@ references:
   - family-names: Girlich
     given-names: Maximilian
   year: '2022'
-  url: https://CRAN.R-project.org/package=tidyr
 - type: software
   title: WRS2
   abstract: 'WRS2: A Collection of Robust Statistical Methods'
   notes: Imports
+  url: https://r-forge.r-project.org/projects/psychor/
+  repository: https://CRAN.R-project.org/package=WRS2
   authors:
   - family-names: Mair
     given-names: Patrick
@@ -383,22 +398,24 @@ references:
     given-names: Rand
     email: rwilcox@usc.edu
   year: '2022'
-  url: https://CRAN.R-project.org/package=WRS2
   version: '>= 1.1-4'
 - type: software
   title: zeallot
   abstract: 'zeallot: Multiple, Unpacking, and Destructuring Assignment'
   notes: Imports
+  url: https://github.com/nteetor/zeallot
+  repository: https://CRAN.R-project.org/package=zeallot
   authors:
   - family-names: Teetor
     given-names: Nathan
     email: nathanteetor@gmail.com
   year: '2022'
-  url: https://CRAN.R-project.org/package=zeallot
 - type: software
   title: afex
   abstract: 'afex: Analysis of Factorial Experiments'
   notes: Suggests
+  url: https://afex.singmann.science/
+  repository: https://CRAN.R-project.org/package=afex
   authors:
   - family-names: Singmann
     given-names: Henrik
@@ -414,12 +431,13 @@ references:
   - family-names: Ben-Shachar
     given-names: Mattan S.
   year: '2022'
-  url: https://CRAN.R-project.org/package=afex
   version: '>= 1.2-0'
 - type: software
   title: ggplot2
   abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
   notes: Suggests
+  url: https://ggplot2.tidyverse.org
+  repository: https://CRAN.R-project.org/package=ggplot2
   authors:
   - family-names: Wickham
     given-names: Hadley
@@ -449,44 +467,47 @@ references:
     given-names: Dewey
     orcid: https://orcid.org/0000-0002-9415-4582
   year: '2022'
-  url: https://CRAN.R-project.org/package=ggplot2
 - type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
   notes: Suggests
+  url: https://yihui.org/knitr/
+  repository: https://CRAN.R-project.org/package=knitr
   authors:
   - family-names: Xie
     given-names: Yihui
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
   year: '2022'
-  url: https://CRAN.R-project.org/package=knitr
 - type: software
   title: metaBMA
   abstract: 'metaBMA: Bayesian Model Averaging for Random and Fixed Effects Meta-Analysis'
   notes: Suggests
+  url: https://github.com/danheck/metaBMA
+  repository: https://CRAN.R-project.org/package=metaBMA
   authors:
   - family-names: Heck
     given-names: Daniel W.
     email: dheck@uni-marburg.de
     orcid: https://orcid.org/0000-0002-6302-9252
   year: '2022'
-  url: https://CRAN.R-project.org/package=metaBMA
 - type: software
   title: metafor
   abstract: 'metafor: Meta-Analysis Package for R'
   notes: Suggests
+  url: https://www.metafor-project.org
+  repository: https://CRAN.R-project.org/package=metafor
   authors:
   - family-names: Viechtbauer
     given-names: Wolfgang
     email: wvb@metafor-project.org
     orcid: https://orcid.org/0000-0003-3463-4063
   year: '2022'
-  url: https://CRAN.R-project.org/package=metafor
 - type: software
   title: metaplus
   abstract: 'metaplus: Robust Meta-Analysis and Meta-Regression'
   notes: Suggests
+  repository: https://CRAN.R-project.org/package=metaplus
   authors:
   - family-names: Beath
     given-names: Ken
@@ -496,23 +517,24 @@ references:
     email: bolker@mcmaster.ca
   - name: R Development Core Team
   year: '2022'
-  url: https://CRAN.R-project.org/package=metaplus
 - type: software
   title: PMCMRplus
   abstract: 'PMCMRplus: Calculate Pairwise Multiple Comparisons of Mean Rank Sums
     Extended'
   notes: Suggests
+  repository: https://CRAN.R-project.org/package=PMCMRplus
   authors:
   - family-names: Pohlert
     given-names: Thorsten
     email: thorsten.pohlert@gmx.de
     orcid: https://orcid.org/0000-0003-3855-3025
   year: '2022'
-  url: https://CRAN.R-project.org/package=PMCMRplus
 - type: software
   title: purrr
   abstract: 'purrr: Functional Programming Tools'
   notes: Suggests
+  url: https://purrr.tidyverse.org/
+  repository: https://CRAN.R-project.org/package=purrr
   authors:
   - family-names: Henry
     given-names: Lionel
@@ -521,11 +543,12 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
-  url: https://CRAN.R-project.org/package=purrr
 - type: software
   title: rmarkdown
   abstract: 'rmarkdown: Dynamic Documents for R'
   notes: Suggests
+  url: https://pkgs.rstudio.com/rmarkdown/
+  repository: https://CRAN.R-project.org/package=rmarkdown
   authors:
   - family-names: Allaire
     given-names: JJ
@@ -560,11 +583,12 @@ references:
     email: rich@rstudio.com
     orcid: https://orcid.org/0000-0003-3925-190X
   year: '2022'
-  url: https://CRAN.R-project.org/package=rmarkdown
 - type: software
   title: spelling
   abstract: 'spelling: Tools for Spell Checking in R'
   notes: Suggests
+  url: https://docs.ropensci.org/spelling/
+  repository: https://CRAN.R-project.org/package=spelling
   authors:
   - family-names: Ooms
     given-names: Jeroen
@@ -574,27 +598,28 @@ references:
     given-names: Jim
     email: james.hester@rstudio.com
   year: '2022'
-  url: https://CRAN.R-project.org/package=spelling
 - type: software
   title: survival
   abstract: 'survival: Survival Analysis'
   notes: Suggests
+  url: https://github.com/therneau/survival
+  repository: https://CRAN.R-project.org/package=survival
   authors:
   - family-names: Therneau
     given-names: Terry M
     email: therneau.terry@mayo.edu
   year: '2022'
-  url: https://CRAN.R-project.org/package=survival
 - type: software
   title: testthat
   abstract: 'testthat: Unit Testing for R'
   notes: Suggests
+  url: https://testthat.r-lib.org
+  repository: https://CRAN.R-project.org/package=testthat
   authors:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
-  url: https://CRAN.R-project.org/package=testthat
   version: '>= 3.1.5'
 - type: software
   title: utils
@@ -605,13 +630,14 @@ references:
   location:
     name: Vienna, Austria
   year: '2022'
-  url: https://www.R-project.org/
   institution:
     name: R Foundation for Statistical Computing
 - type: software
   title: withr
   abstract: 'withr: Run Code ''With'' Temporarily Modified Global State'
   notes: Suggests
+  url: https://withr.r-lib.org
+  repository: https://CRAN.R-project.org/package=withr
   authors:
   - family-names: Hester
     given-names: Jim
@@ -630,4 +656,3 @@ references:
   - family-names: Chang
     given-names: Winston
   year: '2022'
-  url: https://CRAN.R-project.org/package=withr
