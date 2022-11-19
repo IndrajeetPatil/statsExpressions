@@ -1,6 +1,5 @@
 url: https://indrajeetpatil.github.io/statsExpressions/
 
-
 authors:
   Indrajeet Patil:
     href: https://sites.google.com/site/indrajeetspatilmorality/
@@ -13,9 +12,9 @@ template:
   #   in_header: |
   #     <script defer data-domain="indrajeetpatil.github.io/statsexpressions" src="https://plausible.io/js/plausible.js"></script>
   bslib:
-    base_font: {google: "Roboto"}
-    heading_font: {google: "Roboto"}
-    code_font: {google: "JetBrains Mono"}
+    base_font: { google: "Roboto" }
+    heading_font: { google: "Roboto" }
+    code_font: { google: "JetBrains Mono" }
   opengraph:
     image:
       src: man/figures/card.png
@@ -73,12 +72,12 @@ reference:
       - p_adjust_text
 
   - title: Reexported functions
-    desc:  Useful functions re-exported from other packages.
+    desc: Useful functions re-exported from other packages.
     contents:
       - tibble
 
   - title: Data
-    desc:  Datasets included in the package.
+    desc: Datasets included in the package.
     contents:
       - movies_wide
       - movies_long
