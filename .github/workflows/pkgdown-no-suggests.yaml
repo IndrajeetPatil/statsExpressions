@@ -10,10 +10,10 @@ on:
   pull_request:
     branches: [main, master]
 
-name: R-CMD-check-hard
+name: pkgdown-no-suggests
 
 jobs:
-  R-CMD-check-hard:
+  pkgdown-no-suggests:
     runs-on: ubuntu-latest
 
     env:
@@ -48,4 +48,7 @@ jobs:
           needs: website
 
       - name: Build site
-        run: Rscript -e 'pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)'
+        run: |
+          options(crayon.enabled = TRUE)
+          pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
+        shell: Rscript {0}
