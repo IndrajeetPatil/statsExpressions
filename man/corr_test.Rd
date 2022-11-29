@@ -109,6 +109,9 @@ The table below provides summary about:
 # for reproducibility
 set.seed(123)
 
+# for pretty-printing tibble
+options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
+
 # ----------------------- parametric -----------------------
 
 corr_test(mtcars, wt, mpg)

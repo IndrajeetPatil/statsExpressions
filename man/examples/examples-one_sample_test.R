@@ -6,16 +6,16 @@ options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 
 # ----------------------- parametric -----------------------
 
-centrality_description(iris, Species, Sepal.Length)
+one_sample_test(mtcars, wt, test.value = 3)
 
 # ----------------------- non-parametric -------------------
 
-centrality_description(mtcars, am, wt, type = "n")
+one_sample_test(mtcars, wt, test.value = 3, type = "n")
 
 # ----------------------- robust ---------------------------
 
-centrality_description(ToothGrowth, supp, len, type = "r")
+one_sample_test(mtcars, wt, test.value = 3, type = "r")
 
 # ----------------------- Bayesian -------------------------
 
-centrality_description(sleep, group, extra, type = "b")
+one_sample_test(mtcars, wt, test.value = 3, type = "b")

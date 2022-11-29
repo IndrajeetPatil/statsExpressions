@@ -39,7 +39,8 @@ citation("statsExpressions")
 ## One-sample tests
 
 ```{r}
-#| label = "onesample"
+#| label = "onesample",
+#| file = "../../man/examples/examples-one_sample_test.R"
 
 # ----------------------- parametric ---------------------------------------
 
@@ -405,7 +406,7 @@ contingency_table(
 ## Correlation analyses
 
 ```{r}
-#| label = "corr"
+#| label = "corr",
 #| file = "../../man/examples/examples-corr_test.R"
 ```
 
