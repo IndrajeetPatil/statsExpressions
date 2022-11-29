@@ -453,7 +453,8 @@ corr_test(
 ## Meta-analysis
 
 ```{r}
-#| label = "meta"
+#| label = "meta",
+#| eval = FALSE
 library(metaplus)
 
 # renaming to what `{statsExpressions}` expects
@@ -478,26 +479,8 @@ meta_analysis(df, type = "bayes")
 ## Centrality description
 
 ```{r}
-#| label = "centrality"
-# ----------------------- parametric -----------------------
-
-set.seed(123)
-centrality_description(iris, Species, Sepal.Length)
-
-# ----------------------- non-parametric -------------------
-
-set.seed(123)
-centrality_description(mtcars, am, wt, type = "n")
-
-# ----------------------- robust ---------------------------
-
-set.seed(123)
-centrality_description(ToothGrowth, supp, len, type = "r")
-
-# ----------------------- Bayesian -------------------------
-
-set.seed(123)
-centrality_description(sleep, group, extra, type = "b")
+#| label = "centrality",
+#| file = "../../man/examples/examples-centrality_description.R"
 ```
 
 ## Pairwise comparisons for one-way design

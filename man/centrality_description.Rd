@@ -76,19 +76,19 @@ The table below provides summary about:
 }
 
 \examples{
-
+# ----------------------- parametric -----------------------
 set.seed(123)
-
-# parametric -----------------------
 centrality_description(iris, Species, Sepal.Length)
 
-# non-parametric -------------------
+# ----------------------- non-parametric -------------------
+set.seed(123)
 centrality_description(mtcars, am, wt, type = "n")
 
-# robust ---------------------------
+# ----------------------- robust ---------------------------
+set.seed(123)
 centrality_description(ToothGrowth, supp, len, type = "r")
 
-# Bayesian -------------------------
+# ----------------------- Bayesian -------------------------
+set.seed(123)
 centrality_description(sleep, group, extra, type = "b")
-
 }
