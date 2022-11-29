@@ -406,55 +406,13 @@ contingency_table(
 
 ```{r}
 #| label = "corr"
-set.seed(123)
-library(statsExpressions)
-
-# ----------------------- parametric ---------------------------------------
-
-set.seed(123)
-corr_test(
-  data = mtcars,
-  x    = wt,
-  y    = mpg,
-  type = "parametric"
-)
-
-# ----------------------- non-parametric -----------------------------------
-
-set.seed(123)
-corr_test(
-  data = mtcars,
-  x    = wt,
-  y    = mpg,
-  type = "nonparametric"
-)
-
-# ----------------------- robust --------------------------------------------
-
-set.seed(123)
-corr_test(
-  data = mtcars,
-  x    = wt,
-  y    = mpg,
-  type = "robust"
-)
-
-# ----------------------- Bayesian ---------------------------------------
-
-set.seed(123)
-corr_test(
-  data = mtcars,
-  x    = wt,
-  y    = mpg,
-  type = "bayes"
-)
+#| file = "../../man/examples/examples-corr_test.R"
 ```
 
 ## Meta-analysis
 
 ```{r}
-#| label = "meta",
-#| eval = FALSE
+#| label = "meta"
 library(metaplus)
 
 # renaming to what `{statsExpressions}` expects

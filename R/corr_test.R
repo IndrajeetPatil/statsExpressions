@@ -23,19 +23,7 @@
 #'   be plotted on the `y`-axis.
 #' @inheritParams oneway_anova
 #'
-#' @examples
-#' \donttest{
-#' # for reproducibility
-#' set.seed(123)
-#' library(statsExpressions)
-#' options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
-#'
-#' # without changing defaults
-#' corr_test(mtcars, x = wt, y = mpg)
-#'
-#' # changing defaults
-#' corr_test(mtcars, x = wt, y = mpg, type = "robust")
-#' }
+#' @example man/examples/examples-corr_test.R
 #' @export
 corr_test <- function(data,
                       x,

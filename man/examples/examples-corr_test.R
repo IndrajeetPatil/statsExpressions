@@ -3,16 +3,16 @@ set.seed(123)
 
 # ----------------------- parametric -----------------------
 
-centrality_description(iris, Species, Sepal.Length)
+corr_test(mtcars, wt, mpg)
 
 # ----------------------- non-parametric -------------------
 
-centrality_description(mtcars, am, wt, type = "n")
+corr_test(mtcars, wt, mpg, type = "n")
 
 # ----------------------- robust ---------------------------
 
-centrality_description(ToothGrowth, supp, len, type = "r")
+corr_test(mtcars, wt, mpg, type = "r")
 
 # ----------------------- Bayesian -------------------------
 
-centrality_description(sleep, group, extra, type = "b")
+corr_test(mtcars, wt, mpg, type = "b")

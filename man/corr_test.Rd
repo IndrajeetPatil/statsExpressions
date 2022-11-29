@@ -106,16 +106,22 @@ The table below provides summary about:
 }
 
 \examples{
-\donttest{
 # for reproducibility
 set.seed(123)
-library(statsExpressions)
-options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 
-# without changing defaults
-corr_test(mtcars, x = wt, y = mpg)
+# ----------------------- parametric -----------------------
 
-# changing defaults
-corr_test(mtcars, x = wt, y = mpg, type = "robust")
-}
+corr_test(mtcars, wt, mpg)
+
+# ----------------------- non-parametric -------------------
+
+corr_test(mtcars, wt, mpg, type = "n")
+
+# ----------------------- robust ---------------------------
+
+corr_test(mtcars, wt, mpg, type = "r")
+
+# ----------------------- Bayesian -------------------------
+
+corr_test(mtcars, wt, mpg, type = "b")
 }
