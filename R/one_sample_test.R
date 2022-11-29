@@ -29,51 +29,7 @@
 #' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```
 #'
-#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
-#' \donttest{
-#' # for reproducibility
-#' set.seed(123)
-#' library(statsExpressions)
-#' library(ggplot2) # for data
-#' options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
-#'
-#' # ----------------------- parametric ---------------------------------------
-#'
-#' one_sample_test(
-#'   data       = ggplot2::msleep,
-#'   x          = brainwt,
-#'   test.value = 0.275,
-#'   type       = "parametric"
-#' )
-#'
-#' # ----------------------- non-parametric -----------------------------------
-#'
-#' one_sample_test(
-#'   data       = ggplot2::msleep,
-#'   x          = brainwt,
-#'   test.value = 0.275,
-#'   type       = "nonparametric"
-#' )
-#'
-#' # ----------------------- robust --------------------------------------------
-#'
-#' one_sample_test(
-#'   data       = ggplot2::msleep,
-#'   x          = brainwt,
-#'   test.value = 0.275,
-#'   type       = "robust"
-#' )
-#'
-#' # ---------------------------- Bayesian -----------------------------------
-#'
-#' one_sample_test(
-#'   data       = ggplot2::msleep,
-#'   x          = brainwt,
-#'   test.value = 0.275,
-#'   type       = "bayes",
-#'   bf.prior   = 0.8
-#' )
-#' }
+#' @example man/examples/examples-one_sample_test.R
 #' @export
 one_sample_test <- function(data,
                             x,

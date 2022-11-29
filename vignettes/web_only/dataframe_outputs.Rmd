@@ -4,10 +4,6 @@ author: "Indrajeet Patil"
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:
-    fig_width: 6
-    fig.align: 'center'
-    fig.asp: 0.618
-    dpi: 300
     toc: true
     toc_depth: 4
 vignette: >
@@ -18,24 +14,16 @@ vignette: >
 
 ```{r}
 #| label = "setup",
-#| include = FALSE
-# show me all columns
-options(
-  tibble.width = Inf,
-  pillar.bold = TRUE,
-  pillar.neg = TRUE,
-  pillar.subtle_num = TRUE,
-  pillar.min_chars = Inf
-)
+#| message = FALSE,
+#| warning = FALSE,
+#| include = FALSE,
+#| echo = FALSE
+source("../setup.R")
 
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  dpi = 300,
-  out.width = "100%",
-  comment = "#>",
-  warning = FALSE,
-  message = FALSE,
-  eval = requireNamespace("ggplot2", quietly = TRUE)
+  eval = requireNamespace("ggplot2", quietly = TRUE) &&
+    requireNamespace("afex", quietly = TRUE) &&
+    requireNamespace("metaplus", quietly = TRUE)
 )
 ```
 
@@ -51,9 +39,8 @@ citation("statsExpressions")
 ## One-sample tests
 
 ```{r}
-#| label = "onesample"
-# setup
-library(statsExpressions)
+#| label = "onesample",
+#| file = "../../man/examples/examples-one_sample_test.R"
 
 # ----------------------- parametric ---------------------------------------
 
@@ -103,8 +90,6 @@ one_sample_test(
 
 ```{r}
 #| label = "twosample_w"
-# setup
-library(statsExpressions)
 
 # data
 df <- dplyr::filter(bugs_long, condition %in% c("LDLF", "LDHF"))
@@ -162,9 +147,6 @@ two_sample_test(
 
 ```{r}
 #| label = "twosample_b"
-# setup
-set.seed(123)
-library(statsExpressions)
 
 # ----------------------- parametric ---------------------------------------
 
@@ -224,22 +206,19 @@ two_sample_test(
 
 ```{r}
 #| label = "anova_w"
-# setup
-library(statsExpressions)
+library(afex)
 
 # ----------------------- parametric ---------------------------------------
 
-if (require("afex", quietly = TRUE)) {
-  set.seed(123)
-  oneway_anova(
-    data       = bugs_long,
-    x          = condition,
-    y          = desire,
-    paired     = TRUE,
-    subject.id = subject,
-    type       = "p"
-  )
-}
+set.seed(123)
+oneway_anova(
+  data       = bugs_long,
+  x          = condition,
+  y          = desire,
+  paired     = TRUE,
+  subject.id = subject,
+  type       = "p"
+)
 
 # ----------------------- non-parametric -----------------------------------
 
@@ -282,8 +261,6 @@ oneway_anova(
 
 ```{r}
 #| label = "anova_b"
-## setup
-library(statsExpressions)
 
 # ----------------------- parametric ---------------------------------------
 
@@ -343,8 +320,6 @@ oneway_anova(
 
 ```{r}
 #| label = "conttabs"
-set.seed(123)
-library(statsExpressions)
 
 # ------------------------ frequentist -----------------------------
 
@@ -431,56 +406,14 @@ contingency_table(
 ## Correlation analyses
 
 ```{r}
-#| label = "corr"
-set.seed(123)
-library(statsExpressions)
-
-# ----------------------- parametric ---------------------------------------
-
-set.seed(123)
-corr_test(
-  data = mtcars,
-  x    = wt,
-  y    = mpg,
-  type = "parametric"
-)
-
-# ----------------------- non-parametric -----------------------------------
-
-set.seed(123)
-corr_test(
-  data = mtcars,
-  x    = wt,
-  y    = mpg,
-  type = "nonparametric"
-)
-
-# ----------------------- robust --------------------------------------------
-
-set.seed(123)
-corr_test(
-  data = mtcars,
-  x    = wt,
-  y    = mpg,
-  type = "robust"
-)
-
-# ----------------------- Bayesian ---------------------------------------
-
-set.seed(123)
-corr_test(
-  data = mtcars,
-  x    = wt,
-  y    = mpg,
-  type = "bayes"
-)
+#| label = "corr",
+#| file = "../../man/examples/examples-corr_test.R"
 ```
 
 ## Meta-analysis
 
 ```{r}
 #| label = "meta"
-library(statsExpressions)
 library(metaplus)
 
 # renaming to what `{statsExpressions}` expects
@@ -505,26 +438,8 @@ meta_analysis(df, type = "bayes")
 ## Centrality description
 
 ```{r}
-#| label = "centrality"
-# ----------------------- parametric -----------------------
-
-set.seed(123)
-centrality_description(iris, Species, Sepal.Length)
-
-# ----------------------- non-parametric -------------------
-
-set.seed(123)
-centrality_description(mtcars, am, wt, type = "n")
-
-# ----------------------- robust ---------------------------
-
-set.seed(123)
-centrality_description(ToothGrowth, supp, len, type = "r")
-
-# ----------------------- Bayesian -------------------------
-
-set.seed(123)
-centrality_description(sleep, group, extra, type = "b")
+#| label = "centrality",
+#| file = "../../man/examples/examples-centrality_description.R"
 ```
 
 ## Pairwise comparisons for one-way design
@@ -532,10 +447,6 @@ centrality_description(sleep, group, extra, type = "b")
 ### Between-subjects design
 
 ```{r}
-# for reproducibility
-set.seed(123)
-library(statsExpressions)
-
 # ----------------------- parametric -----------------------
 
 # if `var.equal = TRUE`, then Student's *t*-test will be run
@@ -597,9 +508,6 @@ pairwise_comparisons(
 ### Within-subjects design
 
 ```{r}
-# for reproducibility
-set.seed(123)
-
 # ----------------------- parametric -----------------------
 
 pairwise_comparisons(

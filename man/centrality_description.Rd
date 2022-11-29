@@ -68,27 +68,33 @@ The table below provides summary about:
 \item functions used internally to compute these details
 }\tabular{lll}{
    Type \tab Measure \tab Function used \cr
-   Parametric \tab mean \tab \code{parameters::describe_distribution()} \cr
-   Non-parametric \tab median \tab \code{parameters::describe_distribution()} \cr
-   Robust \tab trimmed mean \tab \code{parameters::describe_distribution()} \cr
-   Bayesian \tab MAP (maximum \emph{a posteriori} probability) estimate \tab \code{parameters::describe_distribution()} \cr
+   Parametric \tab mean \tab \code{datawizard::describe_distribution()} \cr
+   Non-parametric \tab median \tab \code{datawizard::describe_distribution()} \cr
+   Robust \tab trimmed mean \tab \code{datawizard::describe_distribution()} \cr
+   Bayesian \tab MAP \tab \code{datawizard::describe_distribution()} \cr
 }
 }
 
 \examples{
-
+# for reproducibility
 set.seed(123)
 
-# parametric -----------------------
+# for pretty-printing tibble
+options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
+
+# ----------------------- parametric -----------------------
+
 centrality_description(iris, Species, Sepal.Length)
 
-# non-parametric -------------------
+# ----------------------- non-parametric -------------------
+
 centrality_description(mtcars, am, wt, type = "n")
 
-# robust ---------------------------
+# ----------------------- robust ---------------------------
+
 centrality_description(ToothGrowth, supp, len, type = "r")
 
-# Bayesian -------------------------
-centrality_description(sleep, group, extra, type = "b")
+# ----------------------- Bayesian -------------------------
 
+centrality_description(sleep, group, extra, type = "b")
 }

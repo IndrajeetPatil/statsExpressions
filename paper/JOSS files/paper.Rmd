@@ -80,7 +80,7 @@ others do not. Furthermore, the statistical test objects returned by the test
 functions might not have all required information (e.g., degrees of freedom,
 significance, Bayes factor, etc.) accessible in a consistent data type.
 Depending on the specific test object and statistic in question, details may be
-returned as a list, a matrix, an array, or a dataframe. This diversity can make
+returned as a list, a matrix, an array, or a data frame. This diversity can make
 it difficult to easily access all needed information for hypothesis testing and
 estimation, and to switch from one statistical approach to another.
 

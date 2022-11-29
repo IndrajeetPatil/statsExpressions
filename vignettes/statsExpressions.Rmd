@@ -4,10 +4,6 @@ author: "Indrajeet Patil"
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:
-    fig_width: 6
-    fig.align: 'center'
-    fig.asp: 0.618
-    dpi: 300
     toc: true
     toc_depth: 4
 bibliography: paper.bib
@@ -20,33 +16,12 @@ vignette: >
 ---
 
 ```{r}
+#| label = "setup",
 #| message = FALSE,
 #| warning = FALSE,
+#| include = FALSE,
 #| echo = FALSE
-# to pretty-print all columns in the output tibble
-options(
-  tibble.width = Inf,
-  pillar.bold = TRUE,
-  pillar.neg = TRUE,
-  pillar.subtle_num = TRUE,
-  pillar.min_chars = Inf
-)
-
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  dpi = 300,
-  warning = FALSE,
-  message = FALSE,
-  out.width = "100%",
-  comment = "#>"
-)
-
-# needed libraries
-library(dplyr)
-library(statsExpressions)
-
-# for reproducibility
-set.seed(123)
+source("setup.R")
 ```
 
 This vignette can be cited as:
@@ -181,7 +156,6 @@ statistical processing backend.
 #| fig.cap = "Example illustrating how `{statsExpressions}` functions can be used to display
 #| results from a statistical test in a plot."
 # needed libraries
-library(statsExpressions)
 library(ggplot2)
 
 # creating a dataframe
