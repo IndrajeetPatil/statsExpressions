@@ -76,19 +76,25 @@ The table below provides summary about:
 }
 
 \examples{
-
+# for reproducibility
 set.seed(123)
 
-# parametric -----------------------
+# for pretty-printing tibble
+options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
+
+# ----------------------- parametric -----------------------
+
 centrality_description(iris, Species, Sepal.Length)
 
-# non-parametric -------------------
+# ----------------------- non-parametric -------------------
+
 centrality_description(mtcars, am, wt, type = "n")
 
-# robust ---------------------------
+# ----------------------- robust ---------------------------
+
 centrality_description(ToothGrowth, supp, len, type = "r")
 
-# Bayesian -------------------------
-centrality_description(sleep, group, extra, type = "b")
+# ----------------------- Bayesian -------------------------
 
+centrality_description(sleep, group, extra, type = "b")
 }

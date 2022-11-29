@@ -100,22 +100,31 @@ The table below provides summary about:
    Type \tab Test \tab CI available? \tab Function used \cr
    Parametric \tab Pearson's correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
    Non-parametric \tab Spearman's rank correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
-   Robust \tab Winsorized Pearson correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
+   Robust \tab Winsorized Pearson's correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
    Bayesian \tab Bayesian Pearson's correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
 }
 }
 
 \examples{
-\donttest{
 # for reproducibility
 set.seed(123)
-library(statsExpressions)
+
+# for pretty-printing tibble
 options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 
-# without changing defaults
-corr_test(mtcars, x = wt, y = mpg)
+# ----------------------- parametric -----------------------
 
-# changing defaults
-corr_test(mtcars, x = wt, y = mpg, type = "robust")
-}
+corr_test(mtcars, wt, mpg)
+
+# ----------------------- non-parametric -------------------
+
+corr_test(mtcars, wt, mpg, type = "n")
+
+# ----------------------- robust ---------------------------
+
+corr_test(mtcars, wt, mpg, type = "r")
+
+# ----------------------- Bayesian -------------------------
+
+corr_test(mtcars, wt, mpg, type = "b")
 }

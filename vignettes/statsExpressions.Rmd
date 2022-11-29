@@ -156,7 +156,6 @@ statistical processing backend.
 #| fig.cap = "Example illustrating how `{statsExpressions}` functions can be used to display
 #| results from a statistical test in a plot."
 # needed libraries
-library(statsExpressions)
 library(ggplot2)
 
 # creating a dataframe

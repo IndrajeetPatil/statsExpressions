@@ -39,7 +39,8 @@ citation("statsExpressions")
 ## One-sample tests
 
 ```{r}
-#| label = "onesample"
+#| label = "onesample",
+#| file = "../../man/examples/examples-one_sample_test.R"
 
 # ----------------------- parametric ---------------------------------------
 
@@ -405,49 +406,8 @@ contingency_table(
 ## Correlation analyses
 
 ```{r}
-#| label = "corr"
-set.seed(123)
-library(statsExpressions)
-
-# ----------------------- parametric ---------------------------------------
-
-set.seed(123)
-corr_test(
-  data = mtcars,
-  x    = wt,
-  y    = mpg,
-  type = "parametric"
-)
-
-# ----------------------- non-parametric -----------------------------------
-
-set.seed(123)
-corr_test(
-  data = mtcars,
-  x    = wt,
-  y    = mpg,
-  type = "nonparametric"
-)
-
-# ----------------------- robust --------------------------------------------
-
-set.seed(123)
-corr_test(
-  data = mtcars,
-  x    = wt,
-  y    = mpg,
-  type = "robust"
-)
-
-# ----------------------- Bayesian ---------------------------------------
-
-set.seed(123)
-corr_test(
-  data = mtcars,
-  x    = wt,
-  y    = mpg,
-  type = "bayes"
-)
+#| label = "corr",
+#| file = "../../man/examples/examples-corr_test.R"
 ```
 
 ## Meta-analysis
@@ -478,26 +438,8 @@ meta_analysis(df, type = "bayes")
 ## Centrality description
 
 ```{r}
-#| label = "centrality"
-# ----------------------- parametric -----------------------
-
-set.seed(123)
-centrality_description(iris, Species, Sepal.Length)
-
-# ----------------------- non-parametric -------------------
-
-set.seed(123)
-centrality_description(mtcars, am, wt, type = "n")
-
-# ----------------------- robust ---------------------------
-
-set.seed(123)
-centrality_description(ToothGrowth, supp, len, type = "r")
-
-# ----------------------- Bayesian -------------------------
-
-set.seed(123)
-centrality_description(sleep, group, extra, type = "b")
+#| label = "centrality",
+#| file = "../../man/examples/examples-centrality_description.R"
 ```
 
 ## Pairwise comparisons for one-way design
