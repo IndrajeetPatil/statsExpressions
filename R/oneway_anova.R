@@ -147,14 +147,13 @@ oneway_anova <- function(data,
 
   c(x, y) %<-% c(ensym(x), ensym(y))
 
-  data %<>%
-    long_to_wide_converter(
-      x          = {{ x }},
-      y          = {{ y }},
-      subject.id = {{ subject.id }},
-      paired     = paired,
-      spread     = FALSE
-    ) %>%
+  data %<>% long_to_wide_converter(
+    x          = {{ x }},
+    y          = {{ y }},
+    subject.id = {{ subject.id }},
+    paired     = paired,
+    spread     = FALSE
+  ) %>%
     mutate(.rowid = as.factor(.rowid))
 
   #  parametric ---------------------------------------

@@ -24,7 +24,7 @@ tidy_model_parameters <- function(model, ...) {
   if ("method" %in% names(stats_df) && stats_df$method[[1]] == "Bayes factors for linear models") {
     # for within-subjects design, retain only marginal component
     df_r2 <- performance::r2_bayes(model, average = TRUE, verbose = FALSE, ci = stats_df$conf.level[[1]]) %>%
-      as_tibble(.) %>%
+      as_tibble() %>%
       standardize_names(style = "broom") %>%
       rename("estimate" = "r.squared") %>%
       filter(if_any(matches("component"), ~ (.x == "conditional")))
