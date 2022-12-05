@@ -7,8 +7,7 @@ test_that(
 
     set.seed(123)
     data(mag, package = "metaplus")
-    dat <-
-      mag %>%
+    dat <- mag %>%
       rename(estimate = yi, std.error = sei) %>%
       sample_frac(0.4)
 

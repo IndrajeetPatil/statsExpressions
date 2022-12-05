@@ -522,12 +522,12 @@ console.
 
 ## `centrality_description`
 
-| Type           | Measure                                           | Function used                         |
-|----------------|---------------------------------------------------|---------------------------------------|
-| Parametric     | mean                                              | `parameters::describe_distribution()` |
-| Non-parametric | median                                            | `parameters::describe_distribution()` |
-| Robust         | trimmed mean                                      | `parameters::describe_distribution()` |
-| Bayesian       | MAP (maximum *a posteriori* probability) estimate | `parameters::describe_distribution()` |
+| Type           | Measure      | Function used                         |
+|:---------------|:-------------|:--------------------------------------|
+| Parametric     | mean         | `datawizard::describe_distribution()` |
+| Non-parametric | median       | `datawizard::describe_distribution()` |
+| Robust         | trimmed mean | `datawizard::describe_distribution()` |
+| Bayesian       | MAP          | `datawizard::describe_distribution()` |
 
 ## `oneway_anova`
 
@@ -637,12 +637,12 @@ console.
 
 **Hypothesis testing** and **Effect size estimation**
 
-| Type           | Test                                       | CI available? | Function used                |
-|:---------------|:-------------------------------------------|:--------------|:-----------------------------|
-| Parametric     | Pearson’s correlation coefficient          | Yes           | `correlation::correlation()` |
-| Non-parametric | Spearman’s rank correlation coefficient    | Yes           | `correlation::correlation()` |
-| Robust         | Winsorized Pearson correlation coefficient | Yes           | `correlation::correlation()` |
-| Bayesian       | Bayesian Pearson’s correlation coefficient | Yes           | `correlation::correlation()` |
+| Type           | Test                                         | CI available? | Function used                |
+|:---------------|:---------------------------------------------|:--------------|:-----------------------------|
+| Parametric     | Pearson’s correlation coefficient            | Yes           | `correlation::correlation()` |
+| Non-parametric | Spearman’s rank correlation coefficient      | Yes           | `correlation::correlation()` |
+| Robust         | Winsorized Pearson’s correlation coefficient | Yes           | `correlation::correlation()` |
+| Bayesian       | Bayesian Pearson’s correlation coefficient   | Yes           | `correlation::correlation()` |
 
 ## `contingency_table`
 
