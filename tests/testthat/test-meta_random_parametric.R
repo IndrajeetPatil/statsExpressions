@@ -15,10 +15,8 @@ test_that(
       class = c("tbl_df", "tbl", "data.frame")
     )
 
-    # dataframe output
     set.seed(123)
     df <- suppressWarnings(meta_analysis(df_eg))
-
 
     set.seed(123)
     expect_snapshot(select(df, -expression))

@@ -5,7 +5,6 @@ test_that(
   code = {
     skip_if_not_installed("metaplus")
 
-    # renaming to what `{statsExpressions}` expects
     set.seed(123)
     data(mag, package = "metaplus")
     dat <-
@@ -13,12 +12,11 @@ test_that(
       rename(estimate = yi, std.error = sei) %>%
       sample_frac(0.4)
 
-    # df
     set.seed(123)
     df <- meta_analysis(
       data = dat,
       type = "robust",
-      random = "normal",
+      random = "normal"
     )
 
     set.seed(123)

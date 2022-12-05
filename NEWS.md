@@ -1,3 +1,5 @@
+# statsExpressions 1.3.5.9000
+
 # statsExpressions 1.3.5
 
 - `centrality_description()` gets a new `conf.level` parameter.
