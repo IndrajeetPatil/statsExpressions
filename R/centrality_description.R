@@ -34,13 +34,9 @@ centrality_description <- function(data,
                                    tr = 0.2,
                                    k = 2L,
                                    ...) {
-  # measure -------------------------------------
-
-  # standardize
   type <- stats_type_switch(type)
 
   # styler: off
-  # which centrality measure?
   centrality <- case_when(
     type == "parametric"    ~ "mean",
     type == "nonparametric" ~ "median",
@@ -48,8 +44,6 @@ centrality_description <- function(data,
     type == "bayes"         ~ "MAP"
   )
   # styler: on
-
-  # dataframe -------------------------------------
 
   select(data, {{ x }}, {{ y }}) %>%
     tidyr::drop_na() %>%

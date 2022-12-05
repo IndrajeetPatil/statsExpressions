@@ -75,7 +75,6 @@ tidy_model_expressions <- function(data,
   # f-statistic ---------------------------------
 
   if (statistic == "f") {
-    # which effect size is needed?
     if (effsize.type == "eta") es.text <- list(quote(widehat(italic(eta)[p]^2)))
     if (effsize.type == "omega") es.text <- list(quote(widehat(italic(omega)[p]^2)))
 
