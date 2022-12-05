@@ -202,7 +202,6 @@ test_that(
       y = cyl
     )
 
-    expect_identical(class(df1), c("tbl_df", "tbl", "data.frame"))
     expect_snapshot(df1[["expression"]])
 
     # with NAs

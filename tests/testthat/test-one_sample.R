@@ -123,7 +123,7 @@ test_that(
         x = Petal.Length,
         y = NULL,
         test.value = 5.5,
-        bf.prior = 0.99,
+        bf.prior = 0.99
       )
 
     # check Bayes factor values
