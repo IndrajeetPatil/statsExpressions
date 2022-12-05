@@ -5,7 +5,6 @@ test_that(
   code = {
     # bayesian (independent samples t-test) ----------------------
 
-    # expression
     set.seed(123)
     df <-
       two_sample_test(
@@ -17,7 +16,6 @@ test_that(
         conf.level = 0.99
       )
 
-    # call
     expect_snapshot(df[["expression"]])
   }
 )

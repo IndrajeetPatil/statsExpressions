@@ -89,13 +89,12 @@ add_expression_col <- function(data,
                                k.df = 0L,
                                k.df.error = k.df,
                                ...) {
-  # make sure these columns are present
   if (!"n.obs" %in% colnames(data)) data %<>% mutate(n.obs = n)
   if (!"effectsize" %in% colnames(data)) data %<>% mutate(effectsize = method)
-
-  # is this a Bayesian test?
   data %<>% rename_all(.funs = recode, "bayes.factor" = "bf10")
+
   bayesian <- any("bf10" == colnames(data))
+  no.parameters <- sum("df.error" %in% names(data) + "df" %in% names(data))
 
   # special case for Bayesian contingency table analysis
   if (bayesian && grepl("contingency", data$method[[1]], fixed = TRUE)) data %<>% mutate(effectsize = "Cramers_v")
@@ -103,16 +102,12 @@ add_expression_col <- function(data,
   # convert needed columns to character type
   df_expr <- .data_to_char(data, k, k.df, k.df.error)
 
-  # adding a few other columns
   df_expr %<>% mutate(
     statistic.text     = statistic.text %||% stat_text_switch(method),
     es.text            = effsize.text %||% estimate_type_switch(effectsize),
     prior.distribution = prior_switch(method),
     n.obs              = .prettyNum(n.obs)
   )
-
-  # how many parameters?
-  no.parameters <- sum("df.error" %in% names(data) + "df" %in% names(data))
 
   # Bayesian analysis ------------------------------
 
@@ -157,7 +152,6 @@ add_expression_col <- function(data,
   # convert `expression` to `language`
   df_expr %<>% .glue_to_expression()
 
-  # return data frame with some polish and formatted expression
   as_tibble(data) %>%
     relocate(matches("^effectsize$"), .before = matches("^estimate$")) %>%
     mutate(expression = df_expr$expression)

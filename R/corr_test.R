@@ -34,10 +34,7 @@ corr_test <- function(data,
                       tr = 0.2,
                       bf.prior = 0.707,
                       ...) {
-  # see which method was used to specify type of correlation
   type <- stats_type_switch(type)
-
-  # correlation dataframes -----------------------
 
   stats_df <- correlation::correlation(
     data           = tidyr::drop_na(select(ungroup(data), {{ x }}, {{ y }})),
@@ -49,8 +46,6 @@ corr_test <- function(data,
   ) %>%
     standardize_names(style = "broom") %>%
     dplyr::mutate(conf.method = ifelse(type == "bayes", "HDI", "normal"))
-
-  # expression ---------------------------------------
 
   add_expression_col(stats_df, paired = TRUE, k = k)
 }

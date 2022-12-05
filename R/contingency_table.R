@@ -112,7 +112,6 @@ contingency_table <- function(data,
   # one-way or two-way table analysis?
   test <- ifelse(quo_is_null(enquo(y)), "1way", "2way")
 
-  # creating a data frame
   data %<>%
     select({{ x }}, {{ y }}, .counts = {{ counts }}) %>%
     tidyr::drop_na()
@@ -149,7 +148,6 @@ contingency_table <- function(data,
 
   # Bayesian ---------------------------------------
 
-  # two-way table
   if (type == "bayes" && test == "2way") {
     stats_df <- BayesFactor::contingencyTableBF(
       xtab,
@@ -160,17 +158,14 @@ contingency_table <- function(data,
       tidy_model_parameters(ci = conf.level, effectsize_type = "cramers_v")
   }
 
-  # one-way table
   if (type == "bayes" && test == "1way") {
     # probability can't be exactly 0 or 1
-    if (1 / length(as.vector(xtab)) == 0 || 1 / length(as.vector(xtab)) == 1) {
+    if ((1 / length(as.vector(xtab)) == 0) || (1 / length(as.vector(xtab)) == 1)) {
       return(NULL)
     }
 
-    # use it
     p1s <- rdirichlet(n = 100000L, alpha = prior.concentration * ratio)
 
-    # prob
     pr_h1 <- sapply(
       X = 1:100000,
       FUN = function(i) stats::dmultinom(as.matrix(xtab), prob = p1s[i, ], log = TRUE)
@@ -189,7 +184,6 @@ contingency_table <- function(data,
             {prior_switch(method)}=='{format_value(prior.scale, k)}')")) %>%
       .glue_to_expression()
 
-    # special case: return early since the expression has already been prepared
     return(stats_df)
   }
 
@@ -200,7 +194,7 @@ contingency_table <- function(data,
 
 
 #' @title estimate log prob of data under null with Monte Carlo
-#' @note `rdirichlet` function from `{MCMCpack}`
+#' @note `rdirichlet()` function from `{MCMCpack}`
 #' @noRd
 rdirichlet <- function(n, alpha) {
   l <- length(alpha)

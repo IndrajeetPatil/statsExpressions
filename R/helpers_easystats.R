@@ -22,7 +22,6 @@ tidy_model_parameters <- function(model, ...) {
   # Bayesian ANOVA designs -----------------------------------
 
   if ("method" %in% names(stats_df) && stats_df$method[[1]] == "Bayes factors for linear models") {
-    # dataframe with posterior estimates for R-squared
     # for within-subjects design, retain only marginal component
     df_r2 <- performance::r2_bayes(model, average = TRUE, verbose = FALSE, ci = stats_df$conf.level[[1]]) %>%
       as_tibble(.) %>%
@@ -30,7 +29,7 @@ tidy_model_parameters <- function(model, ...) {
       rename("estimate" = "r.squared") %>%
       filter(if_any(matches("component"), ~ (.x == "conditional")))
 
-    # remove estimates and CIs and use R2 dataframe instead
+    # remove estimates and CIs and use R2 data frame instead
     stats_df %<>%
       dplyr::select(-matches("^est|^conf|^comp")) %>%
       filter(if_any(matches("effect"), ~ (.x == "fixed"))) %>%

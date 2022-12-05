@@ -37,7 +37,7 @@ to collecting movie data supplied by studios and fans. It claims to be the
 biggest movie database on the web and is run by amazon.
 
 Movies were selected for inclusion if they had a known length and had been
-rated by at least one imdb user.  Small categories such as documentaries
+rated by at least one IMDB user. Small categories such as documentaries
 and NC-17 movies were removed.
 }
 \examples{

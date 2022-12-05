@@ -7,7 +7,7 @@
 #' biggest movie database on the web and is run by amazon.
 #'
 #' Movies were selected for inclusion if they had a known length and had been
-#' rated by at least one imdb user.  Small categories such as documentaries
+#' rated by at least one IMDB user. Small categories such as documentaries
 #' and NC-17 movies were removed.
 #'
 #' @format A data frame with 1,579 rows and 13 variables
