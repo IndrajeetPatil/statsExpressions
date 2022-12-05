@@ -165,14 +165,13 @@ pairwise_comparisons <- function(data,
 
   # data frame -------------------------------
 
-  data %<>%
-    long_to_wide_converter(
-      x          = {{ x }},
-      y          = {{ y }},
-      subject.id = {{ subject.id }},
-      paired     = paired,
-      spread     = FALSE
-    )
+  data %<>% long_to_wide_converter(
+    x          = {{ x }},
+    y          = {{ y }},
+    subject.id = {{ subject.id }},
+    paired     = paired,
+    spread     = FALSE
+  )
 
   # a few functions expect these as vectors
   x_vec <- pull(data, {{ x }})
