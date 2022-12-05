@@ -10,7 +10,7 @@ test_that(
       data = mtcars,
       x = am,
       y = cyl,
-      k = 5,
+      k = 5L,
       conf.level = 0.99
     ))
 
@@ -53,24 +53,14 @@ test_that(
   code = {
     # paired data - without NAs and counts data ----------------------------
 
-    # create data structure
     paired_data <-
       structure(
         list(
-          response_before =
-            structure(
-              c(1L, 2L, 1L, 2L),
-              .Label = c("no", "yes"),
-              class = "factor"
-            ),
-          response_after = structure(
-            c(1L, 1L, 2L, 2L),
-            .Label = c("no", "yes"),
-            class = "factor"
-          ),
+          response_before = structure(c(1L, 2L, 1L, 2L), levels = c("no", "yes"), class = "factor"),
+          response_after = structure(c(1L, 1L, 2L, 2L), levels = c("no", "yes"), class = "factor"),
           Freq = c(65L, 25L, 5L, 5L)
         ),
-        class = "data.frame",
+        class = c("tbl_df", "tbl", "data.frame"),
         row.names = c(NA, -4L)
       )
 
@@ -92,11 +82,10 @@ test_that(
 
     # paired data with NAs  ---------------------------------------------
 
-    # expanding the dataframe
+    # untabling the data frame
     paired_data %<>% tidyr::uncount(weights = Freq)
 
-    # introduce NAs
-    # check that 2-by-2 doesn't produce continuity correction
+    # deliberately introduce NAs
     set.seed(123)
     paired_data[1, 1] <- NA
     paired_data[12, 1] <- NA
@@ -111,7 +100,7 @@ test_that(
         x = response_before,
         y = response_after,
         paired = TRUE,
-        k = 3,
+        k = 3L,
         conf.level = 0.90
       )
     )
@@ -213,7 +202,6 @@ test_that(
       y = cyl
     )
 
-    expect_identical(class(df1), c("tbl_df", "tbl", "data.frame"))
     expect_snapshot(df1[["expression"]])
 
     # with NAs

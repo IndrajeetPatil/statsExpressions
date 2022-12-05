@@ -24,7 +24,7 @@ test_that(
         test.value = 120,
         type = "p",
         effsize.type = "d",
-        k = 4,
+        k = 4L,
         conf.level = 0.90
       )
     )
@@ -84,7 +84,7 @@ test_that(
       x = x1,
       test.value = 8,
       type = "r",
-      k = 4,
+      k = 4L,
       conf.level = 0.90
     )
 
@@ -95,7 +95,7 @@ test_that(
       x = brainwt,
       test.value = 0.1,
       type = "r",
-      k = 4,
+      k = 4L,
       conf.level = 0.99
     )
 
@@ -123,7 +123,7 @@ test_that(
         x = Petal.Length,
         y = NULL,
         test.value = 5.5,
-        bf.prior = 0.99,
+        bf.prior = 0.99
       )
 
     # check Bayes factor values
@@ -154,7 +154,7 @@ test_that(
       y = NULL,
       test.value = 0.25,
       bf.prior = 0.9,
-      k = 3,
+      k = 3L,
       conf.method = "eti"
     )
 

@@ -67,7 +67,7 @@ test_that(
       y = value,
       paired = TRUE,
       effsize.type = "g",
-      k = 4,
+      k = 4L,
       conf.level = 0.50
     ))
 
@@ -106,7 +106,6 @@ test_that(
   code = {
     # works with subject id ------------------------------------------------
 
-    # data
     df <-
       structure(list(
         score = c(

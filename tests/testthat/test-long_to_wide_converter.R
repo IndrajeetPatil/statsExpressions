@@ -120,12 +120,12 @@ test_that(
 
     df1 <- arrange(df, id)
 
-    expect_equal(
+    expect_identical(
       long_to_wide_converter(df1, condition, score),
       long_to_wide_converter(df, condition, score, id)
     )
 
-    expect_equal(
+    expect_identical(
       long_to_wide_converter(df1, condition, score, spread = FALSE) %>%
         arrange(.rowid),
       long_to_wide_converter(df, condition, score, id, spread = FALSE) %>%
@@ -143,14 +143,14 @@ test_that(
     df <- bugs_long
     df1 <- arrange(bugs_long, subject)
 
-    expect_equal(
+    expect_identical(
       long_to_wide_converter(df1, condition, desire) %>%
         select(-.rowid),
       long_to_wide_converter(df, condition, desire, subject) %>%
         select(-.rowid)
     )
 
-    expect_equal(
+    expect_identical(
       long_to_wide_converter(df1, condition, desire, spread = FALSE) %>%
         select(-.rowid),
       long_to_wide_converter(df, condition, desire, subject, spread = FALSE) %>%

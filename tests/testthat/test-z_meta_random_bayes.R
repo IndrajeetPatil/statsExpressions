@@ -38,7 +38,7 @@ test_that(
     df <- suppressWarnings(meta_analysis(
       type = "bayes",
       data = df1,
-      k = 3,
+      k = 3L,
       iter = 1000,
       summarize = "integrate"
     ))

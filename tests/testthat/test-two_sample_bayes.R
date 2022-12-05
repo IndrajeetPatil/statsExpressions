@@ -27,7 +27,6 @@ test_that(
   code = {
     # Bayes factor (paired t-test) ---------------------------------------------
 
-    # data
     dat <-
       tidyr::spread(bugs_long, condition, desire) %>%
       dplyr::filter(!is.na(HDLF), !is.na(HDHF))
@@ -44,7 +43,7 @@ test_that(
         x = "condition",
         y = desire,
         paired = TRUE,
-        bf.prior = 0.8,
+        bf.prior = 0.8
       )
 
     # check bayesian values
@@ -72,7 +71,6 @@ test_that(
   code = {
     # works with subject id -----------------------------------------------
 
-    # data
     df <-
       structure(list(
         score = c(

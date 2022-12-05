@@ -72,7 +72,6 @@ test_that(
 
     # with subject.id ---------------------------------
 
-    # data
     df <- structure(list(
       score = c(
         70, 82.5, 97.5, 100, 52.5, 62.5,

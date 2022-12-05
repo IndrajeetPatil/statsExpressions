@@ -12,7 +12,7 @@ test_that(
       x = brainwt,
       y = sleep_rem,
       type = "parametric",
-      k = 3,
+      k = 3L,
       conf.level = 0.90
     )
 
@@ -48,7 +48,7 @@ test_that(
       x = brainwt,
       y = sleep_total,
       type = "r",
-      k = 4,
+      k = 4L,
       conf.level = 0.50
     )
 

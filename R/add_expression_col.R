@@ -98,7 +98,7 @@ add_expression_col <- function(data,
   bayesian <- any("bf10" == colnames(data))
 
   # special case for Bayesian contingency table analysis
-  if (bayesian && grepl("contingency", data$method[[1]])) data %<>% mutate(effectsize = "Cramers_v")
+  if (bayesian && grepl("contingency", data$method[[1]], fixed = TRUE)) data %<>% mutate(effectsize = "Cramers_v")
 
   # convert needed columns to character type
   df_expr <- .data_to_char(data, k, k.df, k.df.error)

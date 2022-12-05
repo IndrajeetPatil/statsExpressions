@@ -12,7 +12,7 @@ test_that(
       x = cyl,
       y = wt,
       effsize.type = "eta",
-      k = 5,
+      k = 5L,
       var.equal = FALSE
     )
 
@@ -27,7 +27,7 @@ test_that(
       x = cyl,
       y = wt,
       effsize.type = "eta",
-      k = 5,
+      k = 5L,
       var.equal = TRUE
     )
 
@@ -72,7 +72,7 @@ test_that(
       x = condition,
       y = value,
       paired = TRUE,
-      k = 3,
+      k = 3L,
       var.equal = FALSE, # shouldn't make a difference
       conf.level = 0.99
     )
@@ -91,7 +91,6 @@ test_that(
 
     skip_if_not_installed("afex")
 
-    # data
     df <- structure(list(
       score = c(
         70, 82.5, 97.5, 100, 52.5, 62.5,
