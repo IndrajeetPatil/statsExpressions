@@ -130,17 +130,15 @@ two_sample_test <- function(data,
   # standardize the type of statistics
   type <- stats_type_switch(type)
 
-  # make sure both quoted and unquoted arguments are supported
   c(x, y) %<-% c(ensym(x), ensym(y))
 
-  # properly removing NAs if it's a paired design
   data %<>% long_to_wide_converter(
-    x          = {{ x }},
-    y          = {{ y }},
-    subject.id = {{ subject.id }},
-    paired     = paired,
-    spread     = ifelse(type %in% c("bayes", "robust"), paired, FALSE)
-  )
+      x          = {{ x }},
+      y          = {{ y }},
+      subject.id = {{ subject.id }},
+      paired     = paired,
+      spread     = ifelse(type %in% c("bayes", "robust"), paired, FALSE)
+    )
 
   # parametric ---------------------------------------
 
@@ -185,7 +183,6 @@ two_sample_test <- function(data,
   # robust ---------------------------------------
 
   if (type == "robust") {
-    # expression parameters
     k.df <- ifelse(paired, 0L, k)
 
     # styler: off
@@ -203,7 +200,6 @@ two_sample_test <- function(data,
     # styler: on
   }
 
-  # combining data frames
   if (type != "bayes") {
     stats_df <- bind_cols(select(stats_df, -matches("^est|^eff|conf|^ci")), select(effsize_df, -matches("term")))
   }

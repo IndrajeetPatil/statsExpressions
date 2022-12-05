@@ -77,7 +77,6 @@ meta_analysis <- function(data,
                           k = 2L,
                           conf.level = 0.95,
                           ...) {
-  # check the type of test
   type <- stats_type_switch(type)
 
   # additional arguments
@@ -90,22 +89,14 @@ meta_analysis <- function(data,
   if (type == "bayes") c(.ns, .fn)      %<-% c("metaBMA", "meta_random")
   # styler: on
 
-  # needed package installed?
   check_if_installed(.ns)
 
-  # construct a call and then extract a tidy dataframe
+  # construct a call and then extract a tidy data frame
   stats_df <- eval(call2(.fn = .fn, .ns = .ns, data = data, !!!.f.args)) %>%
     tidy_model_parameters(include_studies = FALSE, ci = conf.level)
 
-  # add a column describing effect size
   if (type != "bayes") stats_df %<>% mutate(effectsize = "meta-analytic summary estimate")
   if (type == "bayes") stats_df %<>% mutate(effectsize = "meta-analytic posterior estimate")
 
-  # add expression column
-  add_expression_col(
-    data     = stats_df,
-    n        = nrow(data),
-    n.text   = list(quote(italic("n")["effects"])),
-    k        = k,
-  )
+  add_expression_col(stats_df, n = nrow(data), n.text = list(quote(italic("n")["effects"])), k = k)
 }

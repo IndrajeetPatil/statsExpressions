@@ -33,7 +33,6 @@ stats_type_switch <- function(type) {
 
 #' @noRd
 estimate_type_switch <- function(x) {
-  # to make life easier
   x <- tolower(x)
 
   case_when(

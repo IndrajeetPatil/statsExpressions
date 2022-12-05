@@ -5,7 +5,6 @@ test_that(
   code = {
     # bayesian (independent samples t-test) ----------------------
 
-    # expression
     set.seed(123)
     df <-
       two_sample_test(
@@ -17,7 +16,6 @@ test_that(
         conf.level = 0.99
       )
 
-    # call
     expect_snapshot(df[["expression"]])
   }
 )
@@ -27,11 +25,6 @@ test_that(
   code = {
     # Bayes factor (paired t-test) ---------------------------------------------
 
-    dat <-
-      tidyr::spread(bugs_long, condition, desire) %>%
-      dplyr::filter(!is.na(HDLF), !is.na(HDHF))
-
-    # creating a tidy dataframe
     dat_tidy <- dplyr::filter(bugs_long, condition %in% c("HDLF", "HDHF"))
 
     # extracting results from where this function is implemented
@@ -46,10 +39,8 @@ test_that(
         bf.prior = 0.8
       )
 
-    # check bayesian values
     expect_equal(df_results$bf10[[1]], 40.36079, tolerance = 0.001)
 
-    # expression
     set.seed(123)
     df <-
       two_sample_test(
@@ -61,7 +52,6 @@ test_that(
         bf.prior = 0.8
       )
 
-    # call
     expect_snapshot(df[["expression"]])
   }
 )
