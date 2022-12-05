@@ -94,7 +94,6 @@ test_that(
   code = {
     # works with subject id --------------------------------------
 
-    # data
     df <-
       structure(list(
         score = c(
@@ -108,19 +107,19 @@ test_that(
           2L, 5L, 1L, 2L, 3L, 4L, 4L, 5L, 1L, 2L, 3L, 2L, 3L, 4L, 1L, 5L,
           3L, 2L, 5L, 4L, 1L
         ), .Label = c("1", "2", "3", "4", "5"), class = "factor"),
-        id = structure(c(
-          1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L,
-          2L, 3L, 3L, 4L, 3L, 4L, 3L, 4L, 3L, 4L, 4L, 5L, 5L, 5L, 5L,
-          5L, 6L, 6L, 6L, 6L, 6L, 7L, 7L, 7L, 7L, 7L, 8L, 8L, 8L, 8L,
-          8L, 9L, 9L, 9L, 9L, 9L
-        ), .Label = c(
-          "1", "2", "3", "4", "5",
-          "6", "7", "8", "9"
-        ), class = "factor")
-      ), row.names = c(
-        NA,
-        45L
-      ), class = "data.frame")
+        id = structure(
+          c(
+            1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L,
+            2L, 3L, 3L, 4L, 3L, 4L, 3L, 4L, 3L, 4L, 4L, 5L, 5L, 5L, 5L,
+            5L, 6L, 6L, 6L, 6L, 6L, 7L, 7L, 7L, 7L, 7L, 8L, 8L, 8L, 8L,
+            8L, 9L, 9L, 9L, 9L, 9L
+          ),
+          .Label = c(
+            "1", "2", "3", "4", "5",
+            "6", "7", "8", "9"
+          ), class = "factor"
+        )
+      ), row.names = c(NA, 45L), class = "data.frame")
 
     df <- filter(df, condition %in% c(1, 5))
 

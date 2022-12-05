@@ -164,7 +164,7 @@ test_that(
       x = condition,
       y = desire,
       type = "p",
-      k = 3,
+      k = 3L,
       paired = TRUE,
       p.adjust.method = "bonferroni"
     )
@@ -179,7 +179,7 @@ test_that(
       x = condition,
       y = desire,
       type = "np",
-      k = 3,
+      k = 3L,
       paired = TRUE,
       p.adjust.method = "BY"
     )
@@ -194,7 +194,7 @@ test_that(
       x = condition,
       y = desire,
       type = "r",
-      k = 3,
+      k = 3L,
       paired = TRUE,
       p.adjust.method = "hommel"
     )
@@ -232,7 +232,7 @@ test_that(
       x = Wine,
       y = Taste,
       type = "p",
-      k = 3,
+      k = 3L,
       paired = TRUE,
       p.adjust.method = "none"
     )
@@ -247,7 +247,7 @@ test_that(
       x = Wine,
       y = Taste,
       type = "np",
-      k = 3,
+      k = 3L,
       paired = TRUE,
       p.adjust.method = "none"
     )
@@ -262,7 +262,7 @@ test_that(
       x = Wine,
       y = Taste,
       type = "r",
-      k = 3,
+      k = 3L,
       paired = TRUE,
       p.adjust.method = "none"
     )
@@ -300,7 +300,7 @@ test_that(
         x = list("Wine"),
         y = list("Taste"),
         type = list("p", "np", "r", "bf"),
-        k = 3,
+        k = 3L,
         subject.id = list("Taster"),
         paired = TRUE
       )
@@ -315,7 +315,7 @@ test_that(
         x = list("Wine"),
         y = list("Taste"),
         type = list("p", "np", "r", "bf"),
-        k = 3,
+        k = 3L,
         paired = TRUE
       )
     )

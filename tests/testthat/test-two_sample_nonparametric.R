@@ -13,7 +13,7 @@ test_that(
         data = mtcars,
         x = am,
         y = wt,
-        k = 3,
+        k = 3L,
         conf.level = 0.90
       )
 
@@ -29,7 +29,6 @@ test_that(
   code = {
     # within-subjects design -----------------------------------------------
 
-    # data
     df_bird <-
       structure(list(Bird = c(
         "A", "B", "C", "D", "E", "F", "G", "H",
@@ -69,7 +68,7 @@ test_that(
         data = df_bird,
         x = type,
         y = length,
-        k = 5,
+        k = 5L,
         conf.level = 0.99,
         paired = TRUE
       ))
@@ -85,7 +84,6 @@ test_that(
   code = {
     # works with subject id --------------------------------------------------
 
-    # data
     df <-
       structure(list(
         score = c(
