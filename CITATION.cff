@@ -8,7 +8,7 @@ message: 'To cite package "statsExpressions" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'statsExpressions: Tidy Dataframes and Expressions with Statistical Details'
-version: 1.3.5
+version: 1.3.5.9000
 doi: 10.21105/joss.03236
 abstract: 'Utilities for producing dataframes with rich details for the most common
   types of statistical approaches and tests: parametric, nonparametric, robust, and
@@ -129,6 +129,10 @@ references:
     given-names: Indrajeet
     email: patilindrajeet.science@gmail.com
     orcid: https://orcid.org/0000-0003-1995-6531
+  - family-names: Bacher
+    given-names: Etienne
+    email: etienne.bacher@protonmail.com
+    orcid: https://orcid.org/0000-0002-9271-5075
   - family-names: Makowski
     given-names: Dominique
     email: dom.makowski@gmail.com
@@ -145,11 +149,7 @@ references:
     given-names: Brenton M.
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
-  - family-names: Bacher
-    given-names: Etienne
-    email: etienne.bacher@protonmail.com
-    orcid: https://orcid.org/0000-0002-9271-5075
-  version: '>= 0.6.3'
+  version: '>= 0.6.4'
   year: '2022'
 - type: software
   title: dplyr
@@ -170,6 +170,9 @@ references:
   - family-names: Müller
     given-names: Kirill
     orcid: https://orcid.org/0000-0002-1416-3412
+  - family-names: Vaughan
+    given-names: Davis
+    orcid: https://orcid.org/0000-0003-4777-038X
   year: '2022'
 - type: software
   title: effectsize
@@ -220,7 +223,7 @@ references:
   abstract: 'insight: Easy Access to Model Information for Various Model Objects'
   notes: Imports
   url: https://easystats.github.io/insight/
-  repository: https://CRAN.R-project.org/package=insight
+  repository: https://easystats.r-universe.dev
   authors:
   - family-names: Lüdecke
     given-names: Daniel
@@ -251,7 +254,7 @@ references:
     email: vincent.arel-bundock@umontreal.ca
     orcid: https://orcid.org/0000-0003-2042-7063
   year: '2022'
-  version: '>= 0.18.7'
+  version: '>= 0.18.8'
 - type: software
   title: magrittr
   abstract: 'magrittr: A Forward-Pipe Operator for R'
@@ -297,7 +300,7 @@ references:
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2022'
-  version: '>= 0.19.0'
+  version: '>= 0.20.0'
 - type: software
   title: performance
   abstract: 'performance: Assessment of Regression Models Performance'
@@ -536,12 +539,12 @@ references:
   url: https://purrr.tidyverse.org/
   repository: https://CRAN.R-project.org/package=purrr
   authors:
-  - family-names: Henry
-    given-names: Lionel
-    email: lionel@rstudio.com
   - family-names: Wickham
     given-names: Hadley
     email: hadley@rstudio.com
+  - family-names: Henry
+    given-names: Lionel
+    email: lionel@rstudio.com
   year: '2022'
 - type: software
   title: rmarkdown
