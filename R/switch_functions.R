@@ -89,8 +89,8 @@ stat_text_switch <- function(x) {
 #' @noRd
 prior_switch <- function(x) {
   case_when(
-    grepl("contingency", x, TRUE) ~ list(quote(italic("a")["Gunel-Dickey"])),
-    grepl("correlation", x, TRUE) ~ list(quote(italic("r")["beta"]^"JZS")),
+    grepl("contingency", x, fixed = TRUE) ~ list(quote(italic("a")["Gunel-Dickey"])),
+    grepl("correlation", x, fixed = TRUE) ~ list(quote(italic("r")["beta"]^"JZS")),
     TRUE ~ list(quote(italic("r")["Cauchy"]^"JZS"))
   )
 }
