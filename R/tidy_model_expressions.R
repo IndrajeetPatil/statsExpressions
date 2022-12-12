@@ -51,6 +51,7 @@ tidy_model_expressions <- function(data,
 
   # t-statistic --------------------------------
 
+  # nolint start: line_length_linter.
   if (statistic == "t") {
     df %<>% mutate(
       expression = case_when(
@@ -80,6 +81,8 @@ tidy_model_expressions <- function(data,
 
     df %<>% mutate(expression = glue("list({es.text}=='{estimate}', italic(F)('{df}', '{df.error}')=='{statistic}', italic(p)=='{p.value}')"))
   }
+
+  # nolint end
 
   # add the `expression` column to the original data frame
   #
