@@ -104,7 +104,6 @@ contingency_table <- function(data,
                               fixed.margin = "rows",
                               prior.concentration = 1,
                               ...) {
-  # standardize the type of statistics
   type <- stats_type_switch(type)
 
   # one-way or two-way table analysis?

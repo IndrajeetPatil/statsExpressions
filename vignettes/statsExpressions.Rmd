@@ -191,5 +191,3 @@ collaborative project created to facilitate the usage of `R` for statistical
 analyses. Thus, I would like to thank the [members of easystats](https://github.com/orgs/easystats/people) as well as the users.
 
 ## References
-
-

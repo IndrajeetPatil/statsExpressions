@@ -4,7 +4,7 @@
 #' @description
 #' Parametric, non-parametric, robust, and Bayesian random-effects meta-analysis.
 #'
-#' @param data A dataframe. It **must** contain columns named `estimate` (effect
+#' @param data A data frame. It **must** contain columns named `estimate` (effect
 #'   sizes or outcomes)  and `std.error` (corresponding standard errors). These
 #'   two columns will be used:
 #'   - as `yi`  and `sei` arguments in `metafor::rma` (for **parametric** test)

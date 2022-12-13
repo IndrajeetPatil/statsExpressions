@@ -14,7 +14,7 @@ meta_analysis(
 )
 }
 \arguments{
-\item{data}{A dataframe. It \strong{must} contain columns named \code{estimate} (effect
+\item{data}{A data frame. It \strong{must} contain columns named \code{estimate} (effect
 sizes or outcomes)  and \code{std.error} (corresponding standard errors). These
 two columns will be used:
 \itemize{
