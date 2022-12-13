@@ -14,6 +14,10 @@ repos:
           - r-lib/styler
         args:
           ['--ignore-start="^# styler: off$"', '--ignore-stop="^# styler: on$"']
+        exclude: >
+          (?x)^(
+          tests/testthat/.*/.*\.R(md|nw)?|
+          )$
       - id: use-tidy-description
       - id: parsable-R
       - id: no-browser-statement
