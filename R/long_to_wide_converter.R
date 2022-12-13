@@ -39,7 +39,7 @@
 #'   `paired = TRUE`.
 #' @param ... Currently ignored.
 #'
-#' @return A dataframe with `NA`s removed while respecting the
+#' @return A data frame with `NA`s removed while respecting the
 #'   between-or-within-subjects nature of the dataset.
 #'
 #' @examples

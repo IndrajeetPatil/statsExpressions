@@ -32,8 +32,7 @@
 #' @references For more, see:
 #' <https://indrajeetpatil.github.io/ggstatsplot/articles/web_only/pairwise.html>
 #'
-#' @examplesIf requireNamespace("PMCMRplus", quietly = TRUE)
-#' \donttest{
+#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("PMCMRplus", quietly = TRUE)
 #' # for reproducibility
 #' set.seed(123)
 #' library(statsExpressions)
@@ -141,7 +140,6 @@
 #'   type       = "bayes",
 #'   paired     = TRUE
 #' )
-#' }
 #' @export
 pairwise_comparisons <- function(data,
                                  x,

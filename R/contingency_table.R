@@ -47,8 +47,7 @@
 #' @inheritParams stats::chisq.test
 #' @inheritParams oneway_anova
 #'
-#' @examples
-#' \donttest{
+#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
 #' # for reproducibility
 #' set.seed(123)
 #' library(statsExpressions)
@@ -91,7 +90,6 @@
 #'   ratio  = c(0.2, 0.2, 0.3, 0.3),
 #'   type   = "bayes"
 #' )
-#' }
 #' @export
 contingency_table <- function(data,
                               x,

@@ -101,39 +101,35 @@ The table below provides summary about:
 }
 
 \examples{
-\dontshow{if (requireNamespace("metafor", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-\donttest{
+\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metafor", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # setup
 set.seed(123)
 library(statsExpressions)
 options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 
 # a data frame with estimates and standard errors (`mag` dataset from `{metaplus}`)
-df <- structure(list(
-  study = structure(c(
-    8L, 10L, 15L, 1L, 4L, 11L, 3L, 2L, 14L, 9L, 12L, 5L, 16L, 7L, 13L, 6L
-  ), .Label = c(
-    "Abraham", "Bertschat", "Ceremuzynski", "Feldstedt", "Golf",
-    "ISIS-4", "LIMIT-2", "Morton", "Pereira", "Rasmussen", "Schechter", "Schechter 1",
-    "Schechter 2", "Singh", "Smith", "Thogersen"
-  ), class = "factor"),
-  estimate = c(
-    -0.8303483, -1.056053, -1.27834, -0.0434851, 0.2231435,
-    -2.40752, -1.280934, -1.191703, -0.695748, -2.208274, -2.03816,
-    -0.8501509, -0.7932307, -0.2993399, -1.570789, 0.0575873
-  ),
-  std.error = c(
-    1.24701799987009, 0.41407060026039, 0.808139200261935,
-    1.42950999996502, 0.489168400451215, 1.07220799987689, 1.1937340001022,
-    1.66129199992054, 0.536177600240816, 1.10964800004326, 0.780726300312728,
-    0.618448600127771, 0.625866199758383, 0.146572899950844,
-    0.574039500383031, 0.0316420922190679
-  )
-), row.names = c(NA, -16L), class = "data.frame")
+df <- tibble::tribble(
+  ~study, ~estimate, ~std.error,
+  "Abraham", -0.83, 1.247,
+  "Bertschat", -1.056, 0.414,
+  "Ceremuzynski", -1.278, 0.808,
+  "Feldstedt", -0.043, 1.429,
+  "Golf", 0.223, 0.489,
+  "ISIS-4", -2.407, 1.072,
+  "LIMIT-2", -1.28, 1.193,
+  "Morton", -1.191, 1.661,
+  "Pereira", -0.695, 0.536,
+  "Rasmussen", -2.208, 1.109,
+  "Schechter", -2.038, 0.78,
+  "Schechter 1", -0.85, 0.618,
+  "Schechter 2", -0.793, 0.625,
+  "Singh", -0.299, 0.146,
+  "Smith", -1.57, 0.574,
+  "Thogersen", 0.057, 0.031
+)
 
 meta_analysis(df) # parametric
 # meta_analysis(df, type = "random", random = "normal") # robust
 # meta_analysis(df, type = "bayes") # Bayesian
-}
 \dontshow{\}) # examplesIf}
 }
