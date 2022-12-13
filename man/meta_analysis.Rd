@@ -128,8 +128,15 @@ df <- tibble::tribble(
   "Thogersen", 0.057, 0.031
 )
 
-meta_analysis(df) # parametric
-# meta_analysis(df, type = "random", random = "normal") # robust
-# meta_analysis(df, type = "bayes") # Bayesian
+# parametric
+meta_analysis(df)
+\dontshow{\}) # examplesIf}
+\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# robust
+meta_analysis(df, type = "random", random = "normal")
+\dontshow{\}) # examplesIf}
+\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaBMA", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Bayesian
+meta_analysis(df, type = "bayes") # Bayesian
 \dontshow{\}) # examplesIf}
 }

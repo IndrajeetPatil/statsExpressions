@@ -63,9 +63,16 @@
 #'   "Thogersen", 0.057, 0.031
 #' )
 #'
-#' meta_analysis(df) # parametric
-#' # meta_analysis(df, type = "random", random = "normal") # robust
-#' # meta_analysis(df, type = "bayes") # Bayesian
+#' # parametric
+#' meta_analysis(df)
+#'
+#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus", quietly = TRUE)
+#' # robust
+#' meta_analysis(df, type = "random", random = "normal")
+#'
+#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaBMA", quietly = TRUE)
+#' # Bayesian
+#' meta_analysis(df, type = "bayes") # Bayesian
 #' @export
 meta_analysis <- function(data,
                           type = "parametric",
