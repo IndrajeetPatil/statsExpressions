@@ -16,7 +16,7 @@ repos:
           ['--ignore-start="^# styler: off$"', '--ignore-stop="^# styler: on$"']
         exclude: >
           (?x)^(
-          tests/testthat/.*/.*\.R(md|nw)?|
+          tests/testthat/_snaps/.*|
           )$
       - id: use-tidy-description
       - id: parsable-R
