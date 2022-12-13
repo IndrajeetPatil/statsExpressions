@@ -40,7 +40,7 @@ jobs:
           if (percent_coverage < threshold) {
             cli::cli_abort("Code coverage using examples is below the required threshold ({threshold}%).")
           } else {
-            cli::cli_success("Code coverage using examples is above the required threshold ({threshold}%).")
+            cli::cli_alert_success("Code coverage using examples is above the required threshold ({threshold}%).")
           }
           cli::cli_rule()
         shell: Rscript {0}
