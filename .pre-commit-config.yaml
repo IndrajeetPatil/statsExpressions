@@ -16,7 +16,8 @@ repos:
           ['--ignore-start="^# styler: off$"', '--ignore-stop="^# styler: on$"']
         exclude: >
           (?x)^(
-          tests/testthat/_snaps/.*|
+          man/.*|
+          tests/testthat/_snaps/.*\.md|
           )$
       - id: use-tidy-description
       - id: parsable-R
@@ -28,6 +29,11 @@ repos:
       - id: file-contents-sorter
         files: "\\.Rbuildignore$"
       - id: end-of-file-fixer
+        exclude: >
+          (?x)^(
+          man/.*|
+          tests/testthat/_snaps/.*\.md|
+          )$
 
   - repo: https://github.com/lorenzwalthert/gitignore-tidy
     rev: 475bf5d96927a1887ce2863ff3075b1d7240bc51
