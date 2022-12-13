@@ -42,7 +42,6 @@ one_sample_test <- function(data,
                             bf.prior = 0.707,
                             effsize.type = "g",
                             ...) {
-  # standardize the type of statistics
   type <- stats_type_switch(type)
 
   # preparing the vector
