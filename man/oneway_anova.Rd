@@ -174,8 +174,7 @@ The table below provides summary about:
 }
 
 \examples{
-\dontshow{if (requireNamespace("afex", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-\donttest{
+\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("afex", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
@@ -259,6 +258,5 @@ oneway_anova(
   paired     = TRUE,
   type       = "bayes"
 )
-}
 \dontshow{\}) # examplesIf}
 }

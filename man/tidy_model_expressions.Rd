@@ -41,11 +41,18 @@ This is an \strong{experimental} function and may change in the future. Please d
 not use it yet in your workflow.
 }
 \examples{
+\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# setup
 set.seed(123)
+library(statsExpressions)
+options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 
-# tidy dataframe
+# tidy data frame
 df <- tidy_model_parameters(lm(wt ~ am * cyl, mtcars))
 
-# create a column containing expressions
+# create a column containing expression; the expression will depend on `statistic`
 tidy_model_expressions(df, statistic = "t")
+tidy_model_expressions(df, statistic = "z")
+tidy_model_expressions(df, statistic = "chi")
+\dontshow{\}) # examplesIf}
 }

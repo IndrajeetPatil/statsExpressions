@@ -41,8 +41,7 @@
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams stats::oneway.test
 #'
-#' @examplesIf requireNamespace("afex", quietly = TRUE)
-#' \donttest{
+#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("afex", quietly = TRUE)
 #' # for reproducibility
 #' set.seed(123)
 #' library(statsExpressions)
@@ -126,7 +125,6 @@
 #'   paired     = TRUE,
 #'   type       = "bayes"
 #' )
-#' }
 #' @export
 oneway_anova <- function(data,
                          x,

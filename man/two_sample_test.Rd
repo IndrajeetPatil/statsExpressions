@@ -179,7 +179,7 @@ The table below provides summary about:
 }
 
 \examples{
-\donttest{
+identical(Sys.getenv("NOT_CRAN"), "true")
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
@@ -264,5 +264,4 @@ two_sample_test(
   subject.id = subject,
   type       = "bayes"
 )
-}
 }

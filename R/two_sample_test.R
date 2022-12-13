@@ -24,8 +24,7 @@
 #' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```
 #'
-#' @examples
-#' \donttest{
+#' @examples identical(Sys.getenv("NOT_CRAN"), "true")
 #' # for reproducibility
 #' set.seed(123)
 #' library(statsExpressions)
@@ -110,7 +109,6 @@
 #'   subject.id = subject,
 #'   type       = "bayes"
 #' )
-#' }
 #' @export
 two_sample_test <- function(data,
                             x,
