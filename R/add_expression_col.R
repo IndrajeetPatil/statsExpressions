@@ -3,14 +3,14 @@
 #'
 #' @description
 #'
-#' Creates an expression from a dataframe containing statistical details.
-#' Ideally, this dataframe would come from having run `tidy_model_parameters`
+#' Creates an expression from a data frame containing statistical details.
+#' Ideally, this data frame would come from having run `tidy_model_parameters`
 #' function on your model object.
 #'
 #' This function is currently **not** stable and should not be used outside of
 #' this package context.
 #'
-#' @param data A dataframe containing details from the statistical analysis
+#' @param data A data frame containing details from the statistical analysis
 #'   and should contain some or all of the the following columns:
 #' - *statistic*: the numeric value of a statistic.
 #' - *df.error*: the numeric value of a parameter being modeled (often degrees
@@ -50,7 +50,7 @@
 #' @examples
 #' set.seed(123)
 #'
-#' # creating a dataframe with stats results
+#' # creating a data frame with stats results
 #' stats_df <- cbind.data.frame(
 #'   statistic  = 5.494,
 #'   df         = 29.234,

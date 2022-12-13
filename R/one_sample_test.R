@@ -1,7 +1,7 @@
 #' @title One-sample tests
 #' @name one_sample_test
 #'
-#' @param x A numeric variable from the dataframe `data`.
+#' @param x A numeric variable from the data frame `data`.
 #' @param test.value A number indicating the true value of the mean (Default:
 #'   `0`).
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
@@ -64,12 +64,10 @@ one_sample_test <- function(data,
   if (type == "nonparametric") c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
 
   if (type %in% c("parametric", "nonparametric")) {
-    # extracting test details
     stats_df <- exec(.f, x = x_vec, mu = test.value, alternative = alternative) %>%
       tidy_model_parameters() %>%
       select(-matches("^est|^conf|^diff|^term|^ci"))
 
-    # extracting effect size details
     effsize_df <- exec(
       .f.es,
       x       = x_vec,
@@ -79,7 +77,6 @@ one_sample_test <- function(data,
     ) %>%
       tidy_model_effectsize()
 
-    # dataframe
     stats_df <- bind_cols(stats_df, effsize_df)
   }
 
