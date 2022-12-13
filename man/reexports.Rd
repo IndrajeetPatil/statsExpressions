@@ -22,3 +22,4 @@ below to see their documentation.
 
   \item{zeallot}{\code{\link[zeallot:operator]{\%<-\%}}}
 }}
+
