@@ -103,9 +103,9 @@ add_expression_col <- function(data,
   df_expr <- .data_to_char(data, k, k.df, k.df.error)
 
   df_expr %<>% mutate(
-    statistic.text     = statistic.text %||% stat_text_switch(method),
-    es.text            = effsize.text %||% estimate_type_switch(effectsize),
-    prior.distribution = prior_switch(method),
+    statistic.text     = statistic.text %||% stat_text_switch(tolower(method)),
+    es.text            = effsize.text %||% estimate_type_switch(tolower(effectsize)),
+    prior.distribution = prior_switch(tolower(method)),
     n.obs              = .prettyNum(n.obs)
   )
 

@@ -156,7 +156,7 @@ The table below provides summary about:
 }
 
 \examples{
-\donttest{
+\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
@@ -199,5 +199,5 @@ contingency_table(
   ratio  = c(0.2, 0.2, 0.3, 0.3),
   type   = "bayes"
 )
-}
+\dontshow{\}) # examplesIf}
 }

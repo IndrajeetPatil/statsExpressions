@@ -51,7 +51,7 @@ converted from long/tidy to wide (default: \code{TRUE}). Relevant only if
 \item{...}{Currently ignored.}
 }
 \value{
-A dataframe with \code{NA}s removed while respecting the
+A data frame with \code{NA}s removed while respecting the
 between-or-within-subjects nature of the dataset.
 }
 \description{

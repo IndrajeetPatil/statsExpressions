@@ -157,8 +157,7 @@ Not supported.
 }
 
 \examples{
-\dontshow{if (requireNamespace("PMCMRplus", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-\donttest{
+\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("PMCMRplus", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
@@ -266,7 +265,6 @@ pairwise_comparisons(
   type       = "bayes",
   paired     = TRUE
 )
-}
 \dontshow{\}) # examplesIf}
 }
 \references{

@@ -18,14 +18,19 @@
 #' This is an **experimental** function and may change in the future. Please do
 #' not use it yet in your workflow.
 #'
-#' @examples
+#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
+#' # setup
 #' set.seed(123)
+#' library(statsExpressions)
+#' options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 #'
-#' # tidy dataframe
+#' # tidy data frame
 #' df <- tidy_model_parameters(lm(wt ~ am * cyl, mtcars))
 #'
-#' # create a column containing expressions
+#' # create a column containing expression; the expression will depend on `statistic`
 #' tidy_model_expressions(df, statistic = "t")
+#' tidy_model_expressions(df, statistic = "z")
+#' tidy_model_expressions(df, statistic = "chi")
 #' @export
 tidy_model_expressions <- function(data,
                                    statistic = NULL,
@@ -51,6 +56,7 @@ tidy_model_expressions <- function(data,
 
   # t-statistic --------------------------------
 
+  # nolint start: line_length_linter.
   if (statistic == "t") {
     df %<>% mutate(
       expression = case_when(
@@ -80,6 +86,8 @@ tidy_model_expressions <- function(data,
 
     df %<>% mutate(expression = glue("list({es.text}=='{estimate}', italic(F)('{df}', '{df.error}')=='{statistic}', italic(p)=='{p.value}')"))
   }
+
+  # nolint end
 
   # add the `expression` column to the original data frame
   #
