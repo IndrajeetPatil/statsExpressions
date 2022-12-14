@@ -9,11 +9,11 @@ test_that(
     dat <- mag %>% rename(estimate = yi, std.error = sei)
 
     set.seed(123)
-    df <- meta_analysis(
+    df <- suppressWarnings(meta_analysis(
       data = dat,
       type = "robust",
       random = "normal"
-    )
+    ))
 
     set.seed(123)
     expect_snapshot(select(df, -expression))

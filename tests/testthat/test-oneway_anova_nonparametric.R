@@ -8,14 +8,13 @@ test_that(
   code = {
     # without NA
     set.seed(123)
-    df1 <-
-      oneway_anova(
-        type = "np",
-        data = sample_frac(movies_long, 0.1),
-        x = genre,
-        y = length,
-        paired = FALSE
-      )
+    df1 <- oneway_anova(
+      type = "np",
+      data = sample_frac(movies_long, 0.1),
+      x = genre,
+      y = length,
+      paired = FALSE
+    )
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))
@@ -23,15 +22,14 @@ test_that(
 
     # with NA
     set.seed(123)
-    df2 <-
-      suppressWarnings(oneway_anova(
-        type = "np",
-        data = msleep,
-        x = vore,
-        y = sleep_cycle,
-        paired = FALSE,
-        conf.level = 0.99
-      ))
+    df2 <- suppressWarnings(oneway_anova(
+      type = "np",
+      data = msleep,
+      x = vore,
+      y = sleep_cycle,
+      paired = FALSE,
+      conf.level = 0.99
+    ))
 
     set.seed(123)
     expect_snapshot(select(df2, -expression))
@@ -46,15 +44,14 @@ test_that(
   code = {
     #  with NAs
     set.seed(123)
-    df1 <-
-      oneway_anova(
-        type = "np",
-        data = bugs_long,
-        x = condition,
-        y = desire,
-        paired = TRUE,
-        conf.level = 0.99
-      )
+    df1 <- oneway_anova(
+      type = "np",
+      data = bugs_long,
+      x = condition,
+      y = desire,
+      paired = TRUE,
+      conf.level = 0.99
+    )
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))
@@ -62,15 +59,14 @@ test_that(
 
     # without NAs
     set.seed(123)
-    df2 <-
-      oneway_anova(
-        type = "np",
-        data = iris_long,
-        x = condition,
-        y = value,
-        paired = TRUE,
-        conf.level = 0.90
-      )
+    df2 <- oneway_anova(
+      type = "np",
+      data = iris_long,
+      x = condition,
+      y = value,
+      paired = TRUE,
+      conf.level = 0.90
+    )
 
     set.seed(123)
     expect_snapshot(select(df2, -expression))

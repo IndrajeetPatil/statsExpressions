@@ -139,5 +139,9 @@ data_with_subid <- tibble::tribble(
     27.5,        "4", "9",
     82.5,        "1", "9"
 )
+
+library(dplyr)
+
+# Same as `ggplot2::msleep`
 # styler: on
 # nolint: end
