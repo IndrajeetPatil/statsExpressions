@@ -81,13 +81,10 @@ test_that(
 test_that(
   desc = "works with subject id",
   code = {
-    # data
-    df <- data_with_subid
-
     set.seed(123)
     expr1 <- oneway_anova(
       type = "np",
-      data = df,
+      data = data_with_subid,
       x = condition,
       y = score,
       subject.id = id,
@@ -97,7 +94,7 @@ test_that(
     set.seed(123)
     expr2 <- oneway_anova(
       type = "np",
-      data = arrange(df, id),
+      data = arrange(data_with_subid, id),
       x = condition,
       y = score,
       paired = TRUE

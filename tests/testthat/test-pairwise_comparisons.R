@@ -91,7 +91,6 @@ test_that(
       y = brainwt
     )
 
-
     expect_snapshot(df6)
     expect_snapshot(df6[["expression"]])
   }
@@ -270,7 +269,6 @@ test_that(
     expect_snapshot(df3)
     expect_snapshot(df3[["expression"]])
 
-    # Bayesian
     set.seed(123)
     df4 <- pairwise_comparisons(
       data = WRS2::WineTasting,

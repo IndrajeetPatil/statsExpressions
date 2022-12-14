@@ -1,7 +1,7 @@
 # don't test data frames because the values vary across platforms, even with the
 # same seed
 #
-# for the same reason, don't change `k` parameter
+# for the same reason, don't change number of digits
 
 # to print all tibble columns in the snapshot; don't remove
 withr::local_options(list(tibble.width = Inf))
@@ -72,13 +72,10 @@ test_that(
 
     # with subject.id ---------------------------------
 
-    df <- data_with_subid
-
-
     set.seed(123)
     expr1 <- oneway_anova(
       type       = "bayes",
-      data       = df,
+      data       = data_with_subid,
       x          = condition,
       y          = score,
       subject.id = id,
@@ -89,7 +86,7 @@ test_that(
     set.seed(123)
     expr2 <- oneway_anova(
       type   = "bayes",
-      data   = arrange(df, id),
+      data   = arrange(data_with_subid, id),
       x      = condition,
       y      = score,
       paired = TRUE

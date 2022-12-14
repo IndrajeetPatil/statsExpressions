@@ -143,7 +143,6 @@ test_that(
 
     # one-sample test (with NAs) -------------------------------------
 
-    # from function
     set.seed(123)
     df3 <- contingency_table(
       data = msleep,
@@ -165,7 +164,6 @@ test_that(
   code = {
     # bayesian (proportion test) --------------------------------------
 
-    # extracting results from where this function is implemented
     set.seed(123)
     df1 <- contingency_table(
       data = mtcars,
@@ -176,7 +174,6 @@ test_that(
     expect_snapshot(select(df1, -expression))
     expect_snapshot(df1[["expression"]])
 
-    # expr
     set.seed(123)
     df2 <- contingency_table(
       type = "bayes",
