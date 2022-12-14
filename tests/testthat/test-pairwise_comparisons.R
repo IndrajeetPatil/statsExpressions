@@ -91,7 +91,6 @@ test_that(
       y = brainwt
     )
 
-
     expect_snapshot(df6)
     expect_snapshot(df6[["expression"]])
   }
@@ -270,7 +269,6 @@ test_that(
     expect_snapshot(df3)
     expect_snapshot(df3[["expression"]])
 
-    # Bayesian
     set.seed(123)
     df4 <- pairwise_comparisons(
       data = WRS2::WineTasting,
@@ -286,12 +284,9 @@ test_that(
   }
 )
 
-# works with subject id ------------------------------------------------------
-
 test_that(
   desc = "works with subject id",
   code = {
-    # with subject id
     set.seed(123)
     df1 <- purrr::pmap_dfr(
       .f = pairwise_comparisons,
@@ -306,7 +301,6 @@ test_that(
       )
     )
 
-    # without subject id but sorted by it
     set.seed(123)
     df2 <- purrr::pmap_dfr(
       .f = pairwise_comparisons,
@@ -331,7 +325,6 @@ test_that(
 test_that(
   desc = "additional arguments are passed to underlying methods",
   code = {
-    # student's t test
     set.seed(123)
     df1 <- pairwise_comparisons(
       data = bugs_long,

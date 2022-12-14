@@ -1,6 +1,3 @@
-
-# switch for stats type works ------------------------------------------
-
 test_that(
   desc = "switch for stats type works",
   code = {

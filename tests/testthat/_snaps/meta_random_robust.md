@@ -6,13 +6,13 @@
       # A tibble: 1 x 12
         term    effectsize                     estimate std.error conf.low conf.high
         <chr>   <chr>                             <dbl>     <dbl>    <dbl>     <dbl>
-      1 Overall meta-analytic summary estimate   -0.693     0.368    -1.56    -0.118
-        statistic p.value conf.level method                                conf.method
-            <dbl>   <dbl>      <dbl> <chr>                                 <chr>      
-      1     -1.88  0.0230       0.95 Robust meta-analysis using 'metaplus' Wald       
-        n.obs
-        <int>
-      1     6
+      1 Overall meta-analytic summary estimate   -0.746     0.234    -1.26    -0.343
+        statistic  p.value conf.level method                               
+            <dbl>    <dbl>      <dbl> <chr>                                
+      1     -3.20 0.000501       0.95 Robust meta-analysis using 'metaplus'
+        conf.method n.obs
+        <chr>       <int>
+      1 Wald           16
 
 ---
 
@@ -20,8 +20,8 @@
       df[["expression"]]
     Output
       [[1]]
-      list(italic("z") == "-1.88", italic(p) == "0.02", widehat(beta)["summary"]^"meta" == 
-          "-0.69", CI["95%"] ~ "[" * "-1.56", "-0.12" * "]", italic("n")["effects"] == 
-          "6")
+      list(italic("z") == "-3.20", italic(p) == "5.01e-04", widehat(beta)["summary"]^"meta" == 
+          "-0.75", CI["95%"] ~ "[" * "-1.26", "-0.34" * "]", italic("n")["effects"] == 
+          "16")
       
 

@@ -5,18 +5,15 @@ test_that(
   code = {
     skip_if_not_installed("metaplus")
 
-    set.seed(123)
     data(mag, package = "metaplus")
-    dat <- mag %>%
-      rename(estimate = yi, std.error = sei) %>%
-      sample_frac(0.4)
+    dat <- mag %>% rename(estimate = yi, std.error = sei)
 
     set.seed(123)
-    df <- meta_analysis(
+    df <- suppressWarnings(meta_analysis(
       data = dat,
       type = "robust",
       random = "normal"
-    )
+    ))
 
     set.seed(123)
     expect_snapshot(select(df, -expression))
