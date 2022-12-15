@@ -23,6 +23,8 @@ repos:
       - id: parsable-R
       - id: deps-in-desc
       - id: spell-check
+        additional_dependencies:
+          - pdftools
         exclude: >
           (?x)^(
           \.github/.*\.yaml|
