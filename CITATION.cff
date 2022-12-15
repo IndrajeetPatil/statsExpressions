@@ -149,8 +149,8 @@ references:
     given-names: Brenton M.
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
-  version: '>= 0.6.4'
   year: '2022'
+  version: '>= 0.6.5'
 - type: software
   title: dplyr
   abstract: 'dplyr: A Grammar of Data Manipulation'
