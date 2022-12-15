@@ -23,6 +23,30 @@ repos:
       - id: parsable-R
       - id: deps-in-desc
       - id: spell-check
+        exclude: >
+          (?x)^(
+          \.github/.*\.yaml|
+          data/.*|
+          tests/testthat/.*|
+          touchstone/config\.json|
+          (.*/|)\.Rprofile|
+          (.*/|)\.Renviron|
+          (.*/|)\.gitignore|
+          (.*/|)NAMESPACE|
+          (.*/|)WORDLIST|
+          (.*/|)\.travis.yml|
+          (.*/|)appveyor.yml|
+          (.*/|)\.Rbuildignore|
+          (.*/|)\.pre-commit-.*|
+          .*\.[rR]|
+          .*\.Rproj|
+          .*\.py|
+          .*\.feather|
+          .*\.rds|
+          .*\.Rds|
+          .*\.sh|
+          .*\.RData|
+          )$
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
