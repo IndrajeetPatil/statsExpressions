@@ -160,18 +160,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "spelling",
-      "name": "spelling",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=spelling"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "survival",
       "name": "survival",
       "provider": {
@@ -415,7 +403,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4192.552KB",
+  "fileSize": "4188.674KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
