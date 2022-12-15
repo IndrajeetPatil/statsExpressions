@@ -20,7 +20,12 @@ repos:
           tests/testthat/_snaps/.*\.md|
           )$
       - id: no-browser-statement
+      - id: no-debug-statement
       - id: parsable-R
+      - id: deps-in-desc
+      - id: pkgdown
+        additional_dependencies:
+          - r-lib/pkgdown
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
