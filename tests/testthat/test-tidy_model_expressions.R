@@ -1,8 +1,6 @@
 withr::local_options(list(tibble.width = Inf))
 
 test_that("tidy_model_expressions works - t", {
-
-
   set.seed(123)
   mod_t <- lm(wt ~ mpg, data = mtcars)
 
@@ -35,7 +33,6 @@ test_that("tidy_model_expressions works - t", {
 })
 
 test_that("tidy_model_expressions works - chi2", {
-
   skip_if_not_installed("survival")
   library(survival)
 
@@ -61,7 +58,6 @@ test_that("tidy_model_expressions works - chi2", {
 })
 
 test_that("tidy_model_expressions works - z", {
-
   df <- as.data.frame(Titanic)
 
   # model
@@ -84,8 +80,6 @@ test_that("tidy_model_expressions works - z", {
 
 
 test_that("tidy_model_expressions works - F", {
-
-
   ## F-statistic --------------------------------
 
   set.seed(123)
