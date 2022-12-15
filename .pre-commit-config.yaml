@@ -5,7 +5,6 @@ default_language_version:
   python: python3
 
 repos:
-
   - repo: https://github.com/lorenzwalthert/precommit
     rev: v0.3.2.9003
     hooks:
@@ -40,11 +39,9 @@ repos:
           )$
 
   - repo: https://github.com/lorenzwalthert/gitignore-tidy
-    rev: 475bf5d96927a1887ce2863ff3075b1d7240bc51
+    rev: "475bf5d96927a1887ce2863ff3075b1d7240bc51"
     hooks:
       - id: tidy-gitignore
-
-default_stages: ["commit"]
 
 ci:
   autoupdate_schedule: monthly
