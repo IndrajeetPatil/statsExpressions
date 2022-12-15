@@ -5,7 +5,6 @@ test_that(
   code = {
     # between-subjects -------------------------------------------------------
 
-
     set.seed(123)
     df1 <- oneway_anova(
       type = "robust",
@@ -17,7 +16,6 @@ test_that(
       tr = 0.00025,
       nboot = 2
     )
-
 
     set.seed(123)
     df2 <- suppressWarnings(oneway_anova(
@@ -31,11 +29,9 @@ test_that(
       conf.level = 0.99
     ))
 
-
     set.seed(123)
     expect_snapshot(select(df1, -expression))
     expect_snapshot(df1[["expression"]])
-
 
     set.seed(123)
     expect_snapshot(select(df2, -expression))
@@ -48,7 +44,6 @@ test_that(
   code = {
     # within-subjects -------------------------------------------------------
 
-
     set.seed(123)
     df1 <- oneway_anova(
       type = "robust",
@@ -58,7 +53,6 @@ test_that(
       k = 4L,
       paired = TRUE
     )
-
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))
