@@ -1,6 +1,9 @@
 # styler: off
 # nolint: start
 
+# load hard dependencies used in tests
+library(dplyr, warn.conflicts = FALSE)
+
 # Same as `ggplot2::msleep`
 # datapasta::dpasta(ggplot2::msleep)
 msleep <- tibble::tribble(
@@ -140,8 +143,5 @@ data_with_subid <- tibble::tribble(
     82.5,        "1", "9"
 )
 
-library(dplyr)
-
-# Same as `ggplot2::msleep`
 # styler: on
 # nolint: end
