@@ -22,12 +22,13 @@ repos:
       - id: no-debug-statement
       - id: parsable-R
       - id: deps-in-desc
-      - id: pkgdown
+      #- id: pkgdown
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
     hooks:
       - id: check-added-large-files
+      - id: pretty-format-json
       - id: check-json
       - id: check-case-conflict
       - id: check-yaml
@@ -40,6 +41,16 @@ repos:
           man/.*|
           tests/testthat/_snaps/.*\.md|
           )$
+
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: v3.0.0
+    hooks:
+      - id: markdownlint
+
+  - repo: https://github.com/Lucas-C/pre-commit-hooks-nodejs
+    rev: v1.1.2
+    hooks:
+      - id: htmllint
 
   - repo: https://github.com/lorenzwalthert/gitignore-tidy
     rev: "475bf5d96927a1887ce2863ff3075b1d7240bc51"
