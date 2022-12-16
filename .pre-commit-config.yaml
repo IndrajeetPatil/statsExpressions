@@ -45,5 +45,17 @@ repos:
     hooks:
       - id: tidy-gitignore
 
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: 38980559e3a605691d6579f96222c30778e5a69e
+    hooks:
+    - id: markdownlint
+      exclude: >
+        (?x)^(
+        man/.*|
+        .github/.*\.md|
+        tests/testthat/_snaps/.*\.md|
+        LICENSE.md|
+        )$
+
 ci:
   autoupdate_schedule: monthly

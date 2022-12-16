@@ -1,26 +1,26 @@
-# statsExpressions 1.3.6
+## statsExpressions 1.3.6
 
 - Maintenance release.
 
-# statsExpressions 1.3.5
+## statsExpressions 1.3.5
 
 - `centrality_description()` gets a new `conf.level` parameter.
 
 - Updates tests and examples to insure against removal of suggested packages.
 
-# statsExpressions 1.3.4
+## statsExpressions 1.3.4
 
 - Fixes breakages due to `{effectsize}` package update.
 
-# statsExpressions 1.3.3
+## statsExpressions 1.3.3
 
 MINOR CHANGES
 
   - When any of the necessary numeric column values are missing, for these rows
-    `tidy_model_expressions()` now returns a `NULL` instead of an expression with
-    empty strings.
+    `tidy_model_expressions()` now returns a `NULL` instead of an expression
+    with empty strings.
 
-# statsExpressions 1.3.2
+## statsExpressions 1.3.2
 
 NEW FUNCTIONS
 
@@ -40,11 +40,11 @@ MAJOR CHANGES
     relevant only in the context of `{ggstatsplot}` package. As that package no
     longer uses it, it is no longer necessary to retain it.
 
-# statsExpressions 1.3.1
+## statsExpressions 1.3.1
 
   - Fixes breakages due to `{insight}` package update.
 
-# statsExpressions 1.3.0
+## statsExpressions 1.3.0
 
 BREAKING CHANGES
 
@@ -57,7 +57,7 @@ MINOR CHANGES
     dataframe with the additional expression column instead of just the
     expression.
 
-# statsExpressions 1.2.0
+## statsExpressions 1.2.0
 
 BREAKING CHANGES
 
@@ -105,7 +105,7 @@ MINOR CHANGES
   - Removes `VR_dilemma` dataset, which lacked enough variation to be a good
     dataset to use in examples or tests.
 
-# statsExpressions 1.1.0
+## statsExpressions 1.1.0
 
 MAJOR CHANGES
 
@@ -128,7 +128,7 @@ MINOR CHANGES
   - The output dataframes now contain columns with additional information about
     how confidence intervals are computed (thanks to `effectsize` package).
 
-# statsExpressions 1.0.1
+## statsExpressions 1.0.1
 
 BREAKING CHANGES
 
@@ -138,7 +138,7 @@ MINOR CHANGES
 
   - Adapts failing tests due to changes in `effectsize`.
 
-# statsExpressions 1.0.0
+## statsExpressions 1.0.0
 
 This is the first **stable** release of `{statsExpressions}`!
 
@@ -170,7 +170,7 @@ MINOR CHANGES
 
   - To reduce dependency load, `afex` has moved from `Imports` to `Suggests`.
 
-# statsExpressions 0.7.1
+## statsExpressions 0.7.1
 
 BREAKING CHANGES
 
@@ -204,7 +204,7 @@ MAJOR CHANGES
     `beta` argument has been replaced by `tr` argument. This should result only
     in minor changes in correlation coefficient estimates.
 
-# statsExpressions 0.7.0
+## statsExpressions 0.7.0
 
 BREAKING CHANGES
 
@@ -247,7 +247,7 @@ MINOR CHANGES
 
   - `expr_template` gains `paired` argument.
 
-# statsExpressions 0.6.2
+## statsExpressions 0.6.2
 
 MINOR CHANGES
 
@@ -256,7 +256,7 @@ MINOR CHANGES
 
   - Sample size information in expressions is pretty-formatted.
 
-# statsExpressions 0.6.1
+## statsExpressions 0.6.1
 
 MAJOR CHANGES
 
@@ -269,7 +269,7 @@ MAJOR CHANGES
 
   - Removes the unused and vestigial `Titanic_full` dataset.
 
-# statsExpressions 0.6.0
+## statsExpressions 0.6.0
 
 BREAKING CHANGES
 
@@ -313,7 +313,7 @@ MINOR CHANGES
   - Retires `bias.correct` argument for contingency table analysis. It is rarely
     justifiable to use the biased version of Cramer's *V*.
 
-# statsExpressions 0.5.1
+## statsExpressions 0.5.1
 
 MINOR CHANGES
 
@@ -323,7 +323,7 @@ MINOR CHANGES
 
   - Small *p*-values (< 0.001) are now shown in scientific format.
 
-# statsExpressions 0.5.0
+## statsExpressions 0.5.0
 
 MINOR CHANGES
 
@@ -334,7 +334,7 @@ MINOR CHANGES
   - The `t_nonparametric` subtitle now clarifies whether it's a Wilcoxon test or
     a Mann-Whitney test.
 
-# statsExpressions 0.4.2
+## statsExpressions 0.4.2
 
 MINOR CHANGES
 
@@ -349,7 +349,7 @@ MINOR CHANGES
   - The effect size measure for paired robust *t*-test is now changed to robust
     (trimmed-Winsorized) standardized difference similar to Cohen's *d*.
 
-# statsExpressions 0.4.1
+## statsExpressions 0.4.1
 
 BUG FIXES
 
@@ -361,7 +361,7 @@ MINOR CHANGES
 
   - Removes extra space contained in subtitles for Bayes Factor results (#31).
 
-# statsExpressions 0.4.0
+## statsExpressions 0.4.0
 
 BREAKING CHANGES
 
@@ -390,26 +390,26 @@ MINOR CHANGES
 
   - All expressions now contain name of the statistical test carried out.
 
-# statsExpressions 0.3.1
+## statsExpressions 0.3.1
  
   - Adds a new function `corr_objects` to reduce dependency load of
     `ggstatsplot`. This is an experimental function and should be avoided until
     it stabilizes.
 
-# statsExpressions 0.3.0
+## statsExpressions 0.3.0
 
 NEW FEATURES
 
   - New functions to carry out meta-analysis: `expr_meta_bayes`.
 
-# statsExpressions 0.2.1
+## statsExpressions 0.2.1
 
 NEW FEATURES
 
   - New functions to carry out meta-analysis: `expr_meta_parametric`,
     `expr_meta_robust`, `bf_meta`.
 
-# statsExpressions 0.2.0
+## statsExpressions 0.2.0
 
 BREAKING CHANGES
 
@@ -424,7 +424,7 @@ MINOR CHANGES
 
   - Cramer's *V* is bias-corrected by default.
 
-# statsExpressions 0.1.3
+## statsExpressions 0.1.3
 
 MAJOR CHANGES
 
@@ -433,13 +433,13 @@ MAJOR CHANGES
   - All effect size texts now contain `^` on top to signify that these are
     estimates.
 
-# statsExpressions 0.1.2
+## statsExpressions 0.1.2
 
 MINOR CHANGES
 
   - Maintenance release to fix additional check issues on `CRAN`.
 
-# statsExpressions 0.1.1
+## statsExpressions 0.1.1
 
 MINOR CHANGES
 
@@ -447,6 +447,7 @@ MINOR CHANGES
 
   - Minor code refactoring.
 
-# statsExpressions 0.1.0
+## statsExpressions 0.1.0
 
   - First release of the package.
+
