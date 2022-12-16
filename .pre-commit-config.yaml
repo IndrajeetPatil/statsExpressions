@@ -5,63 +5,62 @@ default_language_version:
   python: python3
 
 repos:
-  - repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.3.2.9003
-    hooks:
-      - id: style-files
-        additional_dependencies:
-          - r-lib/styler
-        args:
-          ['--ignore-start="^# styler: off$"', '--ignore-stop="^# styler: on$"']
-        exclude: >
-          (?x)^(
-          man/.*|
-          tests/testthat/_snaps/.*\.md|
-          )$
-      - id: no-browser-statement
-      - id: no-debug-statement
-      - id: parsable-R
-      - id: deps-in-desc
+- repo: https://github.com/lorenzwalthert/precommit
+  rev: v0.3.2.9003
+  hooks:
+  - id: style-files
+    additional_dependencies:
+    - r-lib/styler
+    args: ['--ignore-start="^# styler: off$"', '--ignore-stop="^# styler: on$"']
+    exclude: >
+      (?x)^(
+      man/.*|
+      tests/testthat/_snaps/.*\.md|
+      )$
+  - id: no-browser-statement
+  - id: no-debug-statement
+  - id: parsable-R
+  - id: deps-in-desc
       #- id: pkgdown
 
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.3.0
-    hooks:
-      - id: check-added-large-files
-      - id: pretty-format-json
-      - id: check-json
-      - id: check-case-conflict
-      - id: check-yaml
-      - id: mixed-line-ending
-      - id: file-contents-sorter
-        files: "\\.Rbuildignore$"
-      - id: end-of-file-fixer
-        exclude: >
-          (?x)^(
-          man/.*|
-          tests/testthat/_snaps/.*\.md|
-          )$
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.3.0
+  hooks:
+  - id: check-added-large-files
+  - id: pretty-format-json
+  - id: check-json
+  - id: check-case-conflict
+  - id: check-yaml
+  - id: mixed-line-ending
+  - id: file-contents-sorter
+    files: \.Rbuildignore$
+  - id: end-of-file-fixer
+    exclude: >
+      (?x)^(
+      man/.*|
+      tests/testthat/_snaps/.*\.md|
+      )$
 
-  - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: "38980559e3a605691d6579f96222c30778e5a69e"
-    hooks:
-      - id: markdownlint
+- repo: https://github.com/jumanjihouse/pre-commit-hooks
+  rev: 38980559e3a605691d6579f96222c30778e5a69e
+  hooks:
+  - id: markdownlint
 
-  - repo: https://github.com/Lucas-C/pre-commit-hooks-nodejs
-    rev: v1.1.2
-    hooks:
-      - id: htmllint
+- repo: https://github.com/Lucas-C/pre-commit-hooks-nodejs
+  rev: v1.1.2
+  hooks:
+  - id: htmllint
 
-  - repo: https://github.com/lorenzwalthert/gitignore-tidy
-    rev: "475bf5d96927a1887ce2863ff3075b1d7240bc51"
-    hooks:
-      - id: tidy-gitignore
+- repo: https://github.com/lorenzwalthert/gitignore-tidy
+  rev: 475bf5d96927a1887ce2863ff3075b1d7240bc51
+  hooks:
+  - id: tidy-gitignore
 
-  - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-    rev: v2.5.0
-    hooks:
-      - id: pretty-format-yaml
-        args: [--autofix, --indent, "2"]
+- repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+  rev: v2.5.0
+  hooks:
+  - id: pretty-format-yaml
+    args: [--autofix, --indent, '2']
 
 ci:
   autoupdate_schedule: monthly

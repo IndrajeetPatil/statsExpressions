@@ -10,74 +10,74 @@ template:
   #   in_header: |
   #     <script defer data-domain="indrajeetpatil.github.io/statsexpressions" src="https://plausible.io/js/plausible.js"></script>
   bslib:
-    base_font: { google: "Roboto" }
-    heading_font: { google: "Roboto" }
-    code_font: { google: "JetBrains Mono" }
+    base_font: {google: Roboto}
+    heading_font: {google: Roboto}
+    code_font: {google: JetBrains Mono}
   opengraph:
     image:
       src: man/figures/card.png
     twitter:
-      creator: "@patilindrajeets"
+      creator: '@patilindrajeets'
       card: summary_large_image
 
 # development:
 #   mode: auto
 
 reference:
-  - title: One-and two-sample t-tests
-    desc: Dataframes and expressions for one-and two-sample t-tests
-    contents:
-      - matches("sample")
+- title: One-and two-sample t-tests
+  desc: Dataframes and expressions for one-and two-sample t-tests
+  contents:
+  - matches("sample")
 
-  - title: One-way ANOVA
-    desc: Dataframes and expressions one-way (both between-and within-subject designs) ANOVA
-    contents:
-      - matches("anova")
+- title: One-way ANOVA
+  desc: Dataframes and expressions one-way (both between-and within-subject designs) ANOVA
+  contents:
+  - matches("anova")
 
-  - title: Correlation analysis
-    desc: Dataframes and expressions for correlation tests
-    contents:
-      - matches("corr_")
+- title: Correlation analysis
+  desc: Dataframes and expressions for correlation tests
+  contents:
+  - matches("corr_")
 
-  - title: Contingency table analysis
-    desc: Dataframes and expressions for contingency table analysis and one-sample goodness of fit proportion test
-    contents:
-      - matches("contingency_")
+- title: Contingency table analysis
+  desc: Dataframes and expressions for contingency table analysis and one-sample goodness of fit proportion test
+  contents:
+  - matches("contingency_")
 
-  - title: Meta-analysis
-    desc: Dataframes and expressions for random-effects meta-analysis
-    contents:
-      - matches("meta_")
+- title: Meta-analysis
+  desc: Dataframes and expressions for random-effects meta-analysis
+  contents:
+  - matches("meta_")
 
-  - title: Pairwise comparisons
-    desc: Multiple pairwise comparison tests for one-way design
-    contents:
-      - matches("pairwise_")
+- title: Pairwise comparisons
+  desc: Multiple pairwise comparison tests for one-way design
+  contents:
+  - matches("pairwise_")
 
-  - title: Centrality measure
-    desc: Dataframes and expressions for descriptive statistics
-    contents:
-      - matches("centrality_")
+- title: Centrality measure
+  desc: Dataframes and expressions for descriptive statistics
+  contents:
+  - matches("centrality_")
 
-  - title: Helper functions
-    desc: Note that these helper functions are not stable and may change in the future.
-    contents:
-      - matches("_template")
-      - matches("tidy_")
-      - stats_type_switch
-      - long_to_wide_converter
-      - add_expression_col
-      - p_adjust_text
+- title: Helper functions
+  desc: Note that these helper functions are not stable and may change in the future.
+  contents:
+  - matches("_template")
+  - matches("tidy_")
+  - stats_type_switch
+  - long_to_wide_converter
+  - add_expression_col
+  - p_adjust_text
 
-  - title: Reexported functions
-    desc: Useful functions re-exported from other packages.
-    contents:
-      - tibble
+- title: Reexported functions
+  desc: Useful functions re-exported from other packages.
+  contents:
+  - tibble
 
-  - title: Data
-    desc: Datasets included in the package.
-    contents:
-      - movies_wide
-      - movies_long
-      - iris_long
-      - bugs_long
+- title: Data
+  desc: Datasets included in the package.
+  contents:
+  - movies_wide
+  - movies_long
+  - iris_long
+  - bugs_long
