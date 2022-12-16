@@ -45,6 +45,11 @@ repos:
   rev: 38980559e3a605691d6579f96222c30778e5a69e
   hooks:
   - id: markdownlint
+    exclude: >
+      (?x)^(
+      man/.*|
+      tests/testthat/_snaps/.*\.md|
+      )$
 
 - repo: https://github.com/Lucas-C/pre-commit-hooks-nodejs
   rev: v1.1.2
