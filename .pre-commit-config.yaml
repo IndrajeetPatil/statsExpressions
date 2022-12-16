@@ -43,7 +43,7 @@ repos:
           )$
 
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: v3.0.0
+    rev: "38980559e3a605691d6579f96222c30778e5a69e"
     hooks:
       - id: markdownlint
 
