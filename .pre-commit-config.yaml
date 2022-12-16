@@ -60,7 +60,6 @@ repos:
   rev: v2.5.0
   hooks:
   - id: pretty-format-yaml
-    args: [--autofix, --indent, '2']
 
 ci:
   autoupdate_schedule: monthly
