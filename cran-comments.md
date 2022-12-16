@@ -2,7 +2,7 @@
 
 0 errors | 0 warnings | 0 note
 
-* Updates tests and examples to insure against removal of suggested packages.
+* Maintenance release.
 
 ## revdepcheck results
 

@@ -1,7 +1,7 @@
 #' @title One-sample tests
 #' @name one_sample_test
 #'
-#' @param x A numeric variable from the dataframe `data`.
+#' @param x A numeric variable from the data frame `data`.
 #' @param test.value A number indicating the true value of the mean (Default:
 #'   `0`).
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
@@ -42,11 +42,8 @@ one_sample_test <- function(data,
                             bf.prior = 0.707,
                             effsize.type = "g",
                             ...) {
-  # Preparing the vector
-  x_vec <- stats::na.omit(data %>% pull({{ x }}))
-
-  # Standardize the type of statistics
   type <- stats_type_switch(type)
+  x_vec <- stats::na.omit(data %>% pull({{ x }}))
 
   # Functions for inferential statistics and estimation
   c(.f, .f.es) %<-% switch(type,

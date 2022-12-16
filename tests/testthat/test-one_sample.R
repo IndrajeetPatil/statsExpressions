@@ -3,9 +3,6 @@ withr::local_options(list(tibble.width = Inf))
 test_that(
   desc = "one_sample_test parametric works",
   code = {
-    # parametric -------------------------------------------------
-
-    # Hedge's g and non-central
     set.seed(123)
     df1 <- one_sample_test(
       data = sample_frac(movies_long, 0.05),
@@ -15,7 +12,6 @@ test_that(
       k = 5
     )
 
-    # Cohen's d and non-central
     set.seed(123)
     df2 <- suppressWarnings(
       one_sample_test(
@@ -40,9 +36,6 @@ test_that(
 test_that(
   desc = "one_sample_test non-parametric works",
   code = {
-    # non-parametric --------------------------------------------------
-
-    # statsExpressions output
     set.seed(123)
     df1 <- suppressWarnings(one_sample_test(
       data = ToothGrowth,
@@ -52,7 +45,7 @@ test_that(
       k = 4
     ))
 
-    # statsExpressions output
+
     set.seed(123)
     df2 <- one_sample_test(
       data = msleep,
@@ -74,9 +67,6 @@ test_that(
 test_that(
   desc = "one_sample_test robust works",
   code = {
-    # robust --------------------------------------------------
-
-    # statsExpressions output
     set.seed(123)
     df1 <- one_sample_test(
       data = anscombe,
@@ -87,7 +77,7 @@ test_that(
       conf.level = 0.90
     )
 
-    # statsExpressions output
+
     set.seed(123)
     df2 <- one_sample_test(
       data = msleep,
@@ -97,7 +87,6 @@ test_that(
       k = 4L,
       conf.level = 0.99
     )
-
 
     set.seed(123)
     expect_snapshot(select(df1, -expression))
@@ -111,9 +100,6 @@ test_that(
 test_that(
   desc = "one_sample_test bayesian works",
   code = {
-    # Bayesian -----------------------------------------------
-
-    # extracting results from where this function is implemented
     set.seed(123)
     df_results <-
       one_sample_test(
@@ -125,9 +111,7 @@ test_that(
         bf.prior = 0.99
       )
 
-    # check Bayes factor values
     expect_equal(df_results$bf10[[1]], 5.958171e+20, tolerance = 0.001)
-
     expect_snapshot(names(df_results))
 
     # extracting subtitle (without NA)

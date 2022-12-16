@@ -24,7 +24,7 @@ be taken. Other data types (e.g., matrix,table, array, etc.) will \strong{not}
 be accepted. Additionally, grouped data frames from \code{{dplyr}} should be
 ungrouped before they are entered as \code{data}.}
 
-\item{x}{A numeric variable from the dataframe \code{data}.}
+\item{x}{A numeric variable from the data frame \code{data}.}
 
 \item{type}{A character specifying the type of statistical approach:
 \itemize{
