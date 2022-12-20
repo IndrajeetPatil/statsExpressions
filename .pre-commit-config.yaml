@@ -28,7 +28,6 @@ repos:
     hooks:
       - id: check-added-large-files
       - id: check-json
-      - id: check-case-conflict
       - id: check-yaml
       - id: mixed-line-ending
       - id: file-contents-sorter
