@@ -116,26 +116,22 @@ contingency_table <- function(data,
   # untable the data frame based on the counts for each observation (if present)
   if (".counts" %in% names(data)) data %<>% tidyr::uncount(weights = .counts)
 
-  # variables needed for both one-way and two-way analysis
   xtab <- table(data)
   ratio <- ratio %||% rep(1 / length(xtab), length(xtab))
 
   # non-Bayesian ---------------------------------------
 
-  # two-way table
   if (type != "bayes" && test == "2way") {
     if (paired) c(.f, .f.es) %<-% c(stats::mcnemar.test, effectsize::cohens_g)
     if (!paired) c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::cramers_v)
     .f.args <- list(x = xtab, correct = FALSE)
   }
 
-  # one-way table
   if (type != "bayes" && test == "1way") {
     c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::pearsons_c)
     .f.args <- list(x = xtab, p = ratio, correct = FALSE)
   }
 
-  # executing tests and combining data frames: inferential stats + effect sizes
   if (type != "bayes") {
     stats_df <- bind_cols(
       tidy_model_parameters(exec(.f, !!!.f.args)),
@@ -183,8 +179,6 @@ contingency_table <- function(data,
 
     return(stats_df)
   }
-
-  # expression ---------------------------------------
 
   add_expression_col(stats_df, paired = paired, n = nrow(data), k = k)
 }

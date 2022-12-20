@@ -43,7 +43,7 @@ tidy_model_parameters <- function(model, ...) {
 #' @name tidy_model_effectsize
 #' @title Convert `effectsize` package output to `tidyverse` conventions
 #'
-#' @param data Dataframe returned by `effectsize` functions.
+#' @param data A data frame returned by `{effectsize}` functions.
 #' @param ... Currently ignored.
 #'
 #' @examples
