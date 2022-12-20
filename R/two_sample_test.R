@@ -185,10 +185,7 @@ two_sample_test <- function(data,
     # styler: off
     if (!paired) c(.f, .f.es) %<-% c(WRS2::yuen, WRS2::akp.effect)
     if (paired) c(.f, .f.es)  %<-% c(WRS2::yuend, WRS2::dep.effect)
-    # styler: on
 
-    # common arguments
-    # styler: off
     .f.args    <- list(formula = new_formula(y, x), data = data, x = data[[2]], y = data[[3]])
     .f.es.args <- list(EQVAR = FALSE, nboot = nboot, alpha = 1 - conf.level, tr = tr)
 
@@ -203,14 +200,12 @@ two_sample_test <- function(data,
 
   # Bayesian ---------------------------------------
 
-  # running Bayesian t-test
   if (type == "bayes") {
     # styler: off
     if (!paired) .f.args <- list(formula = new_formula(y, x), paired = paired)
     if (paired) .f.args  <- list(x = data[[2]], y = data[[3]], paired = paired)
     # styler: on
 
-    # creating a `BayesFactor` object
     stats_df <- exec(BayesFactor::ttestBF, data = as.data.frame(data), rscale = bf.prior, !!!.f.args) %>%
       tidy_model_parameters(ci = conf.level)
   }

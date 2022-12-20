@@ -153,12 +153,8 @@ pairwise_comparisons <- function(data,
                                  p.adjust.method = "holm",
                                  k = 2L,
                                  ...) {
-  # standardize stats type
-  type <- stats_type_switch(type)
-
-  # fail early if the needed package is not available
   if (type != "robust") check_if_installed("PMCMRplus", reason = "for pairwise comparisons")
-
+  type <- stats_type_switch(type)
   c(x, y) %<-% c(ensym(x), ensym(y))
 
   # data frame -------------------------------
@@ -228,11 +224,8 @@ pairwise_comparisons <- function(data,
       .f.args <- list(y = quote(y_vec), groups = quote(x_vec), blocks = quote(g_vec))
     }
 
-    # cleaning the raw object and getting it in the right format
-    df <- eval(call2(.ns = .ns, .fn = .fn, tr = tr, !!!.f.args)) %>%
-      tidy_model_parameters()
+    df <- eval(call2(.ns = .ns, .fn = .fn, tr = tr, !!!.f.args)) %>% tidy_model_parameters()
 
-    # test details
     test <- "Yuen's trimmed means"
   }
 
@@ -259,7 +252,6 @@ pairwise_comparisons <- function(data,
       mutate(expression = glue("list(log[e]*(BF['01'])=='{format_value(-log(bf10), k)}')")) %>%
       mutate(test = "Student's t")
 
-    # combine it with the other details
     df <- bind_cols(select(df, group1, group2), df_tidy)
   }
 
@@ -294,7 +286,6 @@ pairwise_comparisons <- function(data,
 #' @name p_adjust_text
 #'
 #' @description
-#'
 #' Preparing text to describe which *p*-value adjustment method was used
 #'
 #' @return Standardized text description for what method was used.
