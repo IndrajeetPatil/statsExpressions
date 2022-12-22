@@ -101,13 +101,13 @@ test_that(
   code = {
     set.seed(123)
     df_results <- one_sample_test(
-        type = "bayes",
-        data = iris,
-        x = Petal.Length,
-        y = NULL,
-        test.value = 5.5,
-        bf.prior = 0.99
-      )
+      type = "bayes",
+      data = iris,
+      x = Petal.Length,
+      y = NULL,
+      test.value = 5.5,
+      bf.prior = 0.99
+    )
 
     expect_equal(df_results$bf10[[1]], 5.958171e+20, tolerance = 0.001)
     expect_snapshot(names(df_results))
