@@ -1,10 +1,10 @@
 #' @name tidy_model_parameters
-#' @title Convert `parameters` package output to `tidyverse` conventions
+#' @title Convert `{parameters}` package output to `{tidyverse}` conventions
 #'
 #' @inheritParams parameters::model_parameters
 #'
 #' @examples
-#' model <- lm(mpg ~ wt + cyl, data = mtcars)
+#' model <-   lm(mpg ~ wt + cyl, data = mtcars)
 #' tidy_model_parameters(model)
 #' @export
 tidy_model_parameters <- function(model, ...) {
