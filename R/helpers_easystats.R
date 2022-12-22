@@ -4,7 +4,7 @@
 #' @inheritParams parameters::model_parameters
 #'
 #' @examples
-#' model <-   lm(mpg ~ wt + cyl, data = mtcars)
+#' model <- lm(mpg ~ wt + cyl, data = mtcars)
 #' tidy_model_parameters(model)
 #' @export
 tidy_model_parameters <- function(model, ...) {

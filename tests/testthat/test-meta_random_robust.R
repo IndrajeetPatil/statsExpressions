@@ -6,7 +6,7 @@ test_that(
     skip_if_not_installed("metaplus")
 
     data(mag, package = "metaplus")
-    dat <- mag %>% rename(estimate = yi, std.error =   sei)
+    dat <- mag %>% rename(estimate = yi, std.error = sei)
 
     set.seed(123)
     df <- suppressWarnings(meta_analysis(

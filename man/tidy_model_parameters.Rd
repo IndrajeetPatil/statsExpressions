@@ -2,7 +2,7 @@
 % Please edit documentation in R/helpers_easystats.R
 \name{tidy_model_parameters}
 \alias{tidy_model_parameters}
-\title{Convert \code{parameters} package output to \code{tidyverse} conventions}
+\title{Convert \code{{parameters}} package output to \code{{tidyverse}} conventions}
 \usage{
 tidy_model_parameters(model, ...)
 }
@@ -17,7 +17,7 @@ in \code{\link[parameters:print.parameters_model]{print.parameters_model()}} and
 \code{\link[parameters:model_parameters.default]{model_parameters.default()}}.}
 }
 \description{
-Convert \code{parameters} package output to \code{tidyverse} conventions
+Convert \code{{parameters}} package output to \code{{tidyverse}} conventions
 }
 \examples{
 model <- lm(mpg ~ wt + cyl, data = mtcars)
