@@ -8,16 +8,6 @@ repos:
   - repo: https://github.com/lorenzwalthert/precommit
     rev: v0.3.2.9003
     hooks:
-      - id: style-files
-        additional_dependencies:
-          - r-lib/styler
-        args:
-          ['--ignore-start="^# styler: off$"', '--ignore-stop="^# styler: on$"']
-        exclude: >
-          (?x)^(
-          man/.*|
-          tests/testthat/_snaps/.*\.md|
-          )$
       - id: no-browser-statement
       - id: no-debug-statement
       - id: parsable-R

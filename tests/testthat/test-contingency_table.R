@@ -87,7 +87,7 @@ test_that(
 
     # deliberately introduce NAs
     set.seed(123)
-    paired_data[1, 1] <- NA
+    paired_data[1, 1]  <- NA
     paired_data[12, 1] <- NA
     paired_data[22, 1] <- NA
     paired_data[24, 1] <- NA
