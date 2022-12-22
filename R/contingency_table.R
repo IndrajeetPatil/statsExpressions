@@ -53,7 +53,7 @@
 #' library(statsExpressions)
 #' options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 #'
-#' # ------------------------ non-Bayesian -----------------------------
+#' # ------------------------ Frequentist -----------------------------
 #'
 #' # association test
 #' contingency_table(
@@ -105,8 +105,6 @@ contingency_table <- function(data,
                               prior.concentration = 1,
                               ...) {
   type <- stats_type_switch(type)
-
-  # one-way or two-way table analysis?
   test <- ifelse(quo_is_null(enquo(y)), "1way", "2way")
 
   data %<>%

@@ -24,7 +24,7 @@
 #' library(statsExpressions)
 #' options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 #'
-#' # tidy data frame
+#' # extract a tidy data frame
 #' df <- tidy_model_parameters(lm(wt ~ am * cyl, mtcars))
 #'
 #' # create a column containing expression; the expression will depend on `statistic`
