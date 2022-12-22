@@ -27,6 +27,7 @@ jobs:
           dependencies: '"hard"'
           extra-packages: |
             local::.
+            r-lib/pkgapi
             r-lib/styler
             r-lib/roxygen2
           needs: |
