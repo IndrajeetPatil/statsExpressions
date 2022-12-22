@@ -26,7 +26,7 @@ test_that(
       type = "np",
       data = msleep,
       x = vore,
-      y = sleep_cycle,
+      y = sleep_total,
       paired = FALSE,
       conf.level = 0.99
     ))

@@ -33,13 +33,13 @@
       # A tibble: 1 x 14
         parameter1  parameter2 statistic df.error p.value method                      
         <chr>       <chr>          <dbl>    <int>   <dbl> <chr>                       
-      1 sleep_cycle vore            5.24        3   0.155 Kruskal-Wallis rank sum test
+      1 sleep_total vore            3.30        3   0.348 Kruskal-Wallis rank sum test
         effectsize      estimate conf.level conf.low conf.high conf.method         
         <chr>              <dbl>      <dbl>    <dbl>     <dbl> <chr>               
-      1 Epsilon2 (rank)    0.175       0.99   0.0445         1 percentile bootstrap
+      1 Epsilon2 (rank)   0.0440       0.99  0.00729         1 percentile bootstrap
         conf.iterations n.obs
                   <int> <int>
-      1             100    31
+      1             100    76
 
 ---
 
@@ -47,9 +47,9 @@
       df2[["expression"]]
     Output
       [[1]]
-      list(chi["Kruskal-Wallis"]^2 * "(" * 3 * ")" == "5.24", italic(p) == 
-          "0.16", widehat(epsilon)["ordinal"]^2 == "0.17", CI["99%"] ~ 
-          "[" * "0.04", "1.00" * "]", italic("n")["obs"] == "31")
+      list(chi["Kruskal-Wallis"]^2 * "(" * 3 * ")" == "3.30", italic(p) == 
+          "0.35", widehat(epsilon)["ordinal"]^2 == "0.04", CI["99%"] ~ 
+          "[" * "7.29e-03", "1.00" * "]", italic("n")["obs"] == "76")
       
 
 # within-subjects

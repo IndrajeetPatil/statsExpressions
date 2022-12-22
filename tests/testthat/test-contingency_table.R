@@ -22,7 +22,7 @@ test_that(
     set.seed(123)
     df2 <- contingency_table(
       data = as.data.frame(Titanic),
-      x = names(as.data.frame(Titanic))[2],
+      x = Sex,
       y = Survived,
       counts = Freq
     )
