@@ -162,7 +162,7 @@ set.seed(123)
 library(statsExpressions)
 options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 
-# ------------------------ non-Bayesian -----------------------------
+# ------------------------ Frequentist -----------------------------
 
 # association test
 contingency_table(

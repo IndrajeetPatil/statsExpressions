@@ -45,11 +45,10 @@ test_that(
       k = 4
     ))
 
-
     set.seed(123)
     df2 <- one_sample_test(
       data = msleep,
-      x = names(msleep)[10],
+      x = brainwt,
       test.value = 0.25,
       type = "np",
       k = 4
@@ -77,7 +76,6 @@ test_that(
       conf.level = 0.90
     )
 
-
     set.seed(123)
     df2 <- one_sample_test(
       data = msleep,
@@ -101,15 +99,14 @@ test_that(
   desc = "one_sample_test bayesian works",
   code = {
     set.seed(123)
-    df_results <-
-      one_sample_test(
-        type = "bayes",
-        data = iris,
-        x = Petal.Length,
-        y = NULL,
-        test.value = 5.5,
-        bf.prior = 0.99
-      )
+    df_results <- one_sample_test(
+      type = "bayes",
+      data = iris,
+      x = Petal.Length,
+      y = NULL,
+      test.value = 5.5,
+      bf.prior = 0.99
+    )
 
     expect_equal(df_results$bf10[[1]], 5.958171e+20, tolerance = 0.001)
     expect_snapshot(names(df_results))
