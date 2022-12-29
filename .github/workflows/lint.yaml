@@ -52,3 +52,5 @@ jobs:
             defaults = linters_with_tags(tags = NULL)
           ))
         shell: Rscript {0}
+        env:
+          LINTR_ERROR_ON_LINT: true
