@@ -265,12 +265,7 @@ oneway_anova <- function(data,
       )
     }
 
-    stats_df <- exec(
-      BayesFactor::anovaBF,
-      data     = as.data.frame(data),
-      progress = FALSE,
-      !!!.f.args
-    ) %>%
+    stats_df <- exec(BayesFactor::anovaBF, data = as.data.frame(data), progress = FALSE, !!!.f.args) %>%
       tidy_model_parameters(ci = conf.level)
   }
 

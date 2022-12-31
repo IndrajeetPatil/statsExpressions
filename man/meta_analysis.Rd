@@ -18,9 +18,9 @@ meta_analysis(
 sizes or outcomes)  and \code{std.error} (corresponding standard errors). These
 two columns will be used:
 \itemize{
-\item as \code{yi}  and \code{sei} arguments in \code{metafor::rma} (for \strong{parametric} test)
-or \code{metaplus::metaplus} (for \strong{robust} test)
-\item as \code{y} and \code{SE} arguments in \code{metaBMA::meta_random} (for \strong{Bayesian}
+\item as \code{yi}  and \code{sei} arguments in \code{metafor::rma()} (for \strong{parametric} test)
+or \code{metaplus::metaplus()} (for \strong{robust} test)
+\item as \code{y} and \code{SE} arguments in \code{metaBMA::meta_random()} (for \strong{Bayesian}
 test).
 }}
 
@@ -107,7 +107,8 @@ set.seed(123)
 library(statsExpressions)
 options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 
-# a data frame with estimates and standard errors (`mag` dataset from `{metaplus}`)
+# a data frame with estimates and standard errors
+# (`mag` dataset from `{metaplus}`)
 df <- tibble::tribble(
   ~study, ~estimate, ~std.error,
   "Abraham", -0.83, 1.247,
@@ -137,6 +138,6 @@ meta_analysis(df, type = "random", random = "normal")
 \dontshow{\}) # examplesIf}
 \dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaBMA", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Bayesian
-meta_analysis(df, type = "bayes") # Bayesian
+meta_analysis(df, type = "bayes")
 \dontshow{\}) # examplesIf}
 }

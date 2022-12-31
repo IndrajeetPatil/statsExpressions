@@ -141,7 +141,6 @@ two_sample_test <- function(data,
 
   if (type == "parametric") {
     # styler: off
-
     k.df <- ifelse(paired || var.equal, 0L, k)
     .f   <- stats::t.test
     if (effsize.type %in% c("unbiased", "g")) .f.es <- effectsize::hedges_g
