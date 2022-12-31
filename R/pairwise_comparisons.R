@@ -232,9 +232,9 @@ pairwise_comparisons <- function(data,
   # Bayesian --------------------------------
 
   if (type == "bayes") {
-    df_tidy <- purrr::map_dfr(
+    df_tidy <- map_dfr(
       # creating a list of data frames with subsections of data
-      .x = purrr::map2(
+      .x = map2(
         .x = as.character(df$group1),
         .y = as.character(df$group2),
         .f = function(a, b) droplevels(filter(data, {{ x }} %in% c(a, b)))

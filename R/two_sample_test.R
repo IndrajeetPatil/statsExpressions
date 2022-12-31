@@ -141,7 +141,6 @@ two_sample_test <- function(data,
 
   if (type == "parametric") {
     # styler: off
-
     k.df <- ifelse(paired || var.equal, 0L, k)
     .f   <- stats::t.test
     if (effsize.type %in% c("unbiased", "g")) .f.es <- effectsize::hedges_g
@@ -186,8 +185,8 @@ two_sample_test <- function(data,
     if (!paired) c(.f, .f.es) %<-% c(WRS2::yuen, WRS2::akp.effect)
     if (paired) c(.f, .f.es)  %<-% c(WRS2::yuend, WRS2::dep.effect)
 
-    .f.args    <- list(formula = new_formula(y, x), data = data, x = data[[2]], y = data[[3]])
-    .f.es.args <- list(EQVAR = FALSE, nboot = nboot, alpha = 1 - conf.level, tr = tr)
+    .f.args    <- list(formula = new_formula(y, x), data = data, x = data[[2L]], y = data[[3L]])
+    .f.es.args <- list(EQVAR = FALSE, nboot = nboot, alpha = 1.0 - conf.level, tr = tr)
 
     effsize_df <- tidy_model_parameters(exec(.f.es, !!!.f.args, !!!.f.es.args), keep = "AKP")
     stats_df   <- tidy_model_parameters(exec(.f,    !!!.f.args, !!!.f.es.args))
@@ -203,7 +202,7 @@ two_sample_test <- function(data,
   if (type == "bayes") {
     # styler: off
     if (!paired) .f.args <- list(formula = new_formula(y, x), paired = paired)
-    if (paired) .f.args  <- list(x = data[[2]], y = data[[3]], paired = paired)
+    if (paired) .f.args  <- list(x = data[[2L]], y = data[[3L]], paired = paired)
     # styler: on
 
     stats_df <- exec(BayesFactor::ttestBF, data = as.data.frame(data), rscale = bf.prior, !!!.f.args) %>%

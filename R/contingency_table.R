@@ -156,11 +156,7 @@ contingency_table <- function(data,
     }
 
     p1s <- rdirichlet(n = 100000L, alpha = prior.concentration * ratio)
-
-    pr_h1 <- sapply(
-      X = 1:100000,
-      FUN = function(i) stats::dmultinom(as.matrix(xtab), prob = p1s[i, ], log = TRUE)
-    )
+    pr_h1 <- map_dbl(1:100000, ~ stats::dmultinom(as.matrix(xtab), prob = p1s[.x, ], log = TRUE))
 
     # BF = (log) prob of data under alternative - (log) prob of data under null
     # computing Bayes Factor and formatting the results
