@@ -150,33 +150,34 @@ contingency_table <- function(data,
   }
 
   if (type == "bayes" && test == "1way") {
-    # probability can't be exactly 0 or 1
-    if ((1 / length(as.vector(xtab)) == 0) || (1 / length(as.vector(xtab)) == 1)) {
-      return(NULL)
-    }
-
-    p1s <- rdirichlet(n = 100000L, alpha = prior.concentration * ratio)
-    pr_h1 <- map_dbl(1:100000, ~ stats::dmultinom(as.matrix(xtab), prob = p1s[.x, ], log = TRUE))
-
-    # BF = (log) prob of data under alternative - (log) prob of data under null
-    # computing Bayes Factor and formatting the results
-    stats_df <- tibble(
-      bf10        = exp(BayesFactor::logMeanExpLogs(pr_h1) - stats::dmultinom(as.matrix(xtab), NULL, ratio, TRUE)),
-      prior.scale = prior.concentration,
-      method      = "Bayesian one-way contingency table analysis"
-    )
-
-    stats_df %<>% mutate(expression = glue("list(
-            log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
-            {prior_switch(method)}=='{format_value(prior.scale, k)}')")) %>%
-      .glue_to_expression()
-
-    return(stats_df)
+    return(.one_way_bayesian_table(xtab, prior.concentration, ratio, k))
   }
 
   add_expression_col(stats_df, paired = paired, n = nrow(data), k = k)
 }
 
+
+.one_way_bayesian_table <- function(xtab, prior.concentration, ratio, k) {
+  # probability can't be exactly 0 or 1
+  if ((1 / length(as.vector(xtab)) == 0) || (1 / length(as.vector(xtab)) == 1)) {
+    return(NULL)
+  }
+
+  p1s <- rdirichlet(n = 100000L, alpha = prior.concentration * ratio)
+  pr_h1 <- map_dbl(1:100000, ~ stats::dmultinom(as.matrix(xtab), prob = p1s[.x, ], log = TRUE))
+
+  # BF = (log) prob of data under alternative - (log) prob of data under null
+  # computing Bayes Factor and formatting the results
+  tibble(
+    bf10        = exp(BayesFactor::logMeanExpLogs(pr_h1) - stats::dmultinom(as.matrix(xtab), NULL, ratio, TRUE)),
+    prior.scale = prior.concentration,
+    method      = "Bayesian one-way contingency table analysis"
+  ) %>%
+    mutate(expression = glue("list(
+            log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
+            {prior_switch(method)}=='{format_value(prior.scale, k)}')")) %>%
+    .glue_to_expression()
+}
 
 #' @title estimate log prob of data under null with Monte Carlo
 #' @note `rdirichlet()` function from `{MCMCpack}`
