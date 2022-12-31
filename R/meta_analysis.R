@@ -7,9 +7,9 @@
 #' @param data A data frame. It **must** contain columns named `estimate` (effect
 #'   sizes or outcomes)  and `std.error` (corresponding standard errors). These
 #'   two columns will be used:
-#'   - as `yi`  and `sei` arguments in `metafor::rma` (for **parametric** test)
-#'   or `metaplus::metaplus` (for **robust** test)
-#'   - as `y` and `SE` arguments in `metaBMA::meta_random` (for **Bayesian**
+#'   - as `yi`  and `sei` arguments in `metafor::rma()` (for **parametric** test)
+#'   or `metaplus::metaplus()` (for **robust** test)
+#'   - as `y` and `SE` arguments in `metaBMA::meta_random()` (for **Bayesian**
 #'   test).
 #' @inheritParams one_sample_test
 #' @inheritParams metaplus::metaplus
@@ -42,7 +42,8 @@
 #' library(statsExpressions)
 #' options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 #'
-#' # a data frame with estimates and standard errors (`mag` dataset from `{metaplus}`)
+#' # a data frame with estimates and standard errors
+#' # (`mag` dataset from `{metaplus}`)
 #' df <- tibble::tribble(
 #'   ~study, ~estimate, ~std.error,
 #'   "Abraham", -0.83, 1.247,
@@ -72,7 +73,8 @@
 #'
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaBMA", quietly = TRUE)
 #' # Bayesian
-#' meta_analysis(df, type = "bayes") # Bayesian
+#' meta_analysis(df, type = "bayes")
+#'
 #' @export
 meta_analysis <- function(data,
                           type = "parametric",
@@ -82,10 +84,6 @@ meta_analysis <- function(data,
                           ...) {
   type <- stats_type_switch(type)
 
-  # additional arguments
-  if (type != "bayes") .f.args <- list(yi = quote(estimate), sei = quote(std.error), random = random, ...)
-  if (type == "bayes") .f.args <- list(y = quote(estimate), SE = quote(std.error), ...)
-
   # styler: off
   if (type == "parametric") c(.ns, .fn) %<-% c("metafor", "rma")
   if (type == "robust") c(.ns, .fn)     %<-% c("metaplus", "metaplus")
@@ -93,6 +91,9 @@ meta_analysis <- function(data,
   # styler: on
 
   check_if_installed(.ns)
+
+  if (type != "bayes") .f.args <- list(yi = quote(estimate), sei = quote(std.error), random = random, ...)
+  if (type == "bayes") .f.args <- list(y = quote(estimate), SE = quote(std.error), ...)
 
   # construct a call and then extract a tidy data frame
   stats_df <- eval(call2(.fn = .fn, .ns = .ns, data = data, !!!.f.args)) %>%
