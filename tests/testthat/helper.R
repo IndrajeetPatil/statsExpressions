@@ -1,10 +1,11 @@
+# nolint start: indentation_linter.
+
 # styler: off
-# nolint: start
 
 # load hard dependencies used in tests
 library(dplyr, warn.conflicts = FALSE)
 
-# Same as `ggplot2::msleep`
+# Same as a smaller subset of `ggplot2::msleep` dataset
 # datapasta::dpasta(dplyr::select(ggplot2::msleep, brainwt, vore, conservation, sleep_total, sleep_rem))
 
 msleep <- tibble::tribble(
@@ -143,5 +144,6 @@ data_with_subid <- tibble::tribble(
     82.5,        "1", "9"
 )
 
-# nolint: end
 # styler: on
+
+# nolint end

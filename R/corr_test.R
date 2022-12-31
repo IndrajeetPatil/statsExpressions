@@ -37,7 +37,7 @@ corr_test <- function(data,
   type <- stats_type_switch(type)
 
   stats_df <- correlation::correlation(
-    data           = tidyr::drop_na(select(ungroup(data), {{ x }}, {{ y }})),
+    data           = select(ungroup(data), {{ x }}, {{ y }}) %>% tidyr::drop_na(),
     method         = ifelse(type == "nonparametric", "spearman", "pearson"),
     ci             = conf.level,
     bayesian       = type == "bayes",
