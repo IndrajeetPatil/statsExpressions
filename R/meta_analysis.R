@@ -84,16 +84,15 @@ meta_analysis <- function(data,
                           ...) {
   type <- stats_type_switch(type)
 
-  # styler: off
-  if (type == "parametric") c(.ns, .fn) %<-% c("metafor", "rma")
-  if (type == "robust") c(.ns, .fn)     %<-% c("metaplus", "metaplus")
-  if (type == "bayes") c(.ns, .fn)      %<-% c("metaBMA", "meta_random")
-  # styler: on
+  # nolint start: line_length_linter.
+  c(.ns, .fn, .f.args) %<-% switch(type,
+    "parametric" = list("metafor", "rma", list(yi = quote(estimate), sei = quote(std.error), ...)),
+    "robust"     = list("metaplus", "metaplus", list(yi = quote(estimate), sei = quote(std.error), random = random, ...)),
+    "bayes"      = list("metaBMA", "meta_random", list(y = quote(estimate), SE = quote(std.error), ...))
+  )
+  # nolint end
 
   check_if_installed(.ns)
-
-  if (type != "bayes") .f.args <- list(yi = quote(estimate), sei = quote(std.error), random = random, ...)
-  if (type == "bayes") .f.args <- list(y = quote(estimate), SE = quote(std.error), ...)
 
   # construct a call and then extract a tidy data frame
   stats_df <- eval(call2(.fn = .fn, .ns = .ns, data = data, !!!.f.args)) %>%
