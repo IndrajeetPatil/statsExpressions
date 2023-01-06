@@ -63,7 +63,7 @@ one_sample_test <- function(data,
   if (type == "nonparametric") c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
 
   if (type %in% c("parametric", "nonparametric")) {
-    stats_df <- exec(.f, x = x_vec, mu = test.value, alternative = alternative) %>%
+    stats_df <- exec(.f, x = x_vec, mu = test.value, alternative = alternative, exact = FALSE) %>%
       tidy_model_parameters() %>%
       select(-matches("^est|^conf|^diff|^term|^ci"))
 
