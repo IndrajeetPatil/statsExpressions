@@ -57,7 +57,7 @@ one_sample_test <- function(data,
   # styler: off
   c(.f.args, .f.es.args) %<-% switch(type,
     "parametric"    = ,
-    "nonparametric" = list(list(x = x_vec, mu = test.value, alternative = alternative), list(verbose = FALSE, ci = conf.level)),
+    "nonparametric" = list(list(x = x_vec, mu = test.value, alternative = alternative, exact = FALSE), list(verbose = FALSE, ci = conf.level)),
     "robust"        = list(list(x = x_vec, nv = test.value, tr = tr, alpha = 1 - conf.level), NULL),
     "bayes"         = list(list(x = x_vec, rscale = bf.prior, mu = test.value), NULL)
   )

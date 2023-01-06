@@ -168,7 +168,7 @@ options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 contingency_table(
   data   = mtcars,
   x      = am,
-  y      = cyl,
+  y      = vs,
   paired = FALSE
 )
 
@@ -186,7 +186,7 @@ contingency_table(
 contingency_table(
   data   = mtcars,
   x      = am,
-  y      = cyl,
+  y      = vs,
   paired = FALSE,
   type   = "bayes"
 )

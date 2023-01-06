@@ -59,7 +59,7 @@
 #' contingency_table(
 #'   data   = mtcars,
 #'   x      = am,
-#'   y      = cyl,
+#'   y      = vs,
 #'   paired = FALSE
 #' )
 #'
@@ -77,7 +77,7 @@
 #' contingency_table(
 #'   data   = mtcars,
 #'   x      = am,
-#'   y      = cyl,
+#'   y      = vs,
 #'   paired = FALSE,
 #'   type   = "bayes"
 #' )
