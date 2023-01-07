@@ -171,7 +171,7 @@ pairwise_comparisons <- function(data,
   x_vec <- pull(data, {{ x }})
   y_vec <- pull(data, {{ y }})
   g_vec <- pull(data, .rowid)
-  .f.args <- list(...)
+  .f.args <- list(paired = paired, p.adjust.method = "none", exact = FALSE, ...)
 
   # parametric ---------------------------------
 
@@ -187,24 +187,18 @@ pairwise_comparisons <- function(data,
     if (paired) c(.f, test) %<-% c(PMCMRplus::durbinAllPairsTest, "Durbin-Conover")
 
     # `exec` fails otherwise for `pairwise.t.test` because `y` is passed to `t.test`
-    .f.args <- list(y = y_vec, ...)
+    .f.args <- modifyList(.f.args, list(y = y_vec))
   }
 
-  # running the appropriate test
   if (type != "robust") {
-    df <- suppressWarnings(exec(
-      .fn             = .f,
+    df <- suppressWarnings(exec(.f,
       # Dunn, Games-Howell, Student's t-test
-      x               = y_vec,
-      g               = x_vec,
+      x      = y_vec,
+      g      = x_vec,
       # Durbin-Conover test
-      groups          = x_vec,
-      blocks          = g_vec,
-      # Student
-      paired          = paired,
+      groups = x_vec,
+      blocks = g_vec,
       # common
-      p.adjust.method = "none",
-      # problematic for other methods
       !!!.f.args
     )) %>%
       tidy_model_parameters() %>%
@@ -258,7 +252,7 @@ pairwise_comparisons <- function(data,
   # expression formatting ----------------------------------
 
   df %<>%
-    mutate_if(.predicate = is.factor, .funs = ~ as.character()) %>%
+    mutate(across(where(is.factor), ~ as.character())) %>%
     arrange(group1, group2) %>%
     select(group1, group2, everything())
 
