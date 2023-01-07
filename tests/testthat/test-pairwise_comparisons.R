@@ -125,7 +125,6 @@ test_that(
     ) %>%
       dplyr::filter(group2 == "omni", group1 == "carni")
 
-
     expect_equal(df1$statistic, df2$statistic, tolerance = 0.01)
   }
 )
@@ -211,7 +210,6 @@ test_that(
       paired = TRUE
     )
 
-
     expect_snapshot(df4)
     expect_snapshot(df4[["expression"]])
   }
@@ -277,7 +275,6 @@ test_that(
       type = "bf",
       paired = TRUE
     )
-
 
     expect_snapshot(df4)
     expect_snapshot(df4[["expression"]])
