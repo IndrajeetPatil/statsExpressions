@@ -1,9 +1,6 @@
 # for reproducibility
 set.seed(123)
 
-
-
-
 # ----------------------- parametric -----------------------
 
 one_sample_test(mtcars, wt, test.value = 3)

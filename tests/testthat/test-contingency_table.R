@@ -51,16 +51,11 @@ test_that(
   code = {
     # paired data - without NAs and counts data ----------------------------
 
-    paired_data <-
-      structure(
-        list(
-          response_before = structure(c(1L, 2L, 1L, 2L), levels = c("no", "yes"), class = "factor"),
-          response_after = structure(c(1L, 1L, 2L, 2L), levels = c("no", "yes"), class = "factor"),
-          Freq = c(65L, 25L, 5L, 5L)
-        ),
-        class = c("tbl_df", "tbl", "data.frame"),
-        row.names = c(NA, -4L)
-      )
+    paired_data <- tibble(
+      response_before = structure(c(1L, 2L, 1L, 2L), levels = c("no", "yes"), class = "factor"),
+      response_after = structure(c(1L, 1L, 2L, 2L), levels = c("no", "yes"), class = "factor"),
+      Freq = c(65L, 25L, 5L, 5L)
+    )
 
     set.seed(123)
     df1 <- suppressWarnings(
