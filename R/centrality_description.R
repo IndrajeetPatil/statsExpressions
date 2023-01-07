@@ -45,7 +45,7 @@ centrality_description <- function(data,
   )
   # styler: on
 
-  df <- select(data, {{ x }}, {{ y }}) %>%
+  select(data, {{ x }}, {{ y }}) %>%
     tidyr::drop_na() %>%
     group_by({{ x }}) %>%
     group_modify(
@@ -68,7 +68,4 @@ centrality_description <- function(data,
     arrange({{ x }}) %>%
     select({{ x }}, !!as.character(ensym(y)) := estimate, everything()) %>%
     .glue_to_expression()
-
-  class(df) <- c("statsExpressions", class(df))
-  df
 }
