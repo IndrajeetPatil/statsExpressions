@@ -91,7 +91,7 @@
                         <h4 data-toc-skip class="author">Indrajeet
 Patil</h4>
             
-            <h4 data-toc-skip class="date">2023-01-06</h4>
+            <h4 data-toc-skip class="date">2023-01-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/HEAD/vignettes/statsExpressions.Rmd" class="external-link"><code>vignettes/statsExpressions.Rmd</code></a></small>
       <div class="d-none name"><code>statsExpressions.Rmd</code></div>
@@ -293,27 +293,24 @@ manipulation packages. For example, we can use combination of
 <code>dplyr</code> and <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> to repeat the
 same statistical analysis across grouping variables.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># running one-sample proportion test for all levels of `cyl`</span></span>
+<code class="sourceCode R"><span><span class="co"># running one-sample proportion test for `vs` at all levels of `am`</span></span>
 <span><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_map.html" class="external-link">group_modify</a></span><span class="op">(</span><span class="op">~</span> <span class="fu"><a href="../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span><span class="va">.x</span>, <span class="va">am</span><span class="op">)</span>, .keep <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">am</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_map.html" class="external-link">group_modify</a></span><span class="op">(</span><span class="op">~</span> <span class="fu"><a href="../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span><span class="va">.x</span>, <span class="va">vs</span><span class="op">)</span>, .keep <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 14</span></span></span>
-<span><span class="co">#&gt;     <span style="font-weight: bold;">cyl</span> <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">df</span> <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>                                  </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 14</span></span></span>
+<span><span class="co">#&gt;      <span style="font-weight: bold;">am</span> <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">df</span> <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>                                  </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     4     2.27      1 <span style="color: #949494;">0.</span>132   Chi-squared test for given probabilities</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     6     <span style="color: #949494;">0.</span>143     1 <span style="color: #949494;">0.</span>705   Chi-squared test for given probabilities</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     8     7.14      1 <span style="color: #949494;">0.00</span>7<span style="text-decoration: underline;">53</span> Chi-squared test for given probabilities</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     <span style="color: #949494;">0</span>    1.32       1   <span style="color: #949494;">0.</span>251 Chi-squared test for given probabilities</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     1    <span style="color: #949494;">0.0</span>76<span style="text-decoration: underline;">9</span>     1   <span style="color: #949494;">0.</span>782 Chi-squared test for given probabilities</span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">effectsize</span>  <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span> <span style="font-weight: bold;">conf.method</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Pearson's C    <span style="color: #949494;">0.</span>414       <span style="color: #949494;">0.</span>95    <span style="color: #949494;">0</span>             1 ncp        </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Pearson's C    <span style="color: #949494;">0.</span>141       <span style="color: #949494;">0.</span>95    <span style="color: #949494;">0</span>             1 ncp        </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Pearson's C    <span style="color: #949494;">0.</span>581       <span style="color: #949494;">0.</span>95    <span style="color: #949494;">0.</span>265         1 ncp        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Pearson's C   <span style="color: #949494;">0.</span>254        <span style="color: #949494;">0.</span>95        <span style="color: #949494;">0</span>         1 ncp        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Pearson's C   <span style="color: #949494;">0.0</span>76<span style="text-decoration: underline;">7</span>       <span style="color: #949494;">0.</span>95        <span style="color: #949494;">0</span>         1 ncp        </span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">conf.distribution</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> chisq                11 <span style="color: #949494;">&lt;language&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> chisq                 7 <span style="color: #949494;">&lt;language&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> chisq                14 <span style="color: #949494;">&lt;language&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> chisq                19 <span style="color: #949494;">&lt;language&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> chisq                13 <span style="color: #949494;">&lt;language&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="expressions-for-plots">Expressions for Plots<a class="anchor" aria-label="anchor" href="#expressions-for-plots"></a>
