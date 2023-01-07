@@ -20,11 +20,20 @@ vignette: >
 #| echo = FALSE
 source("../setup.R")
 
-knitr::opts_chunk$set(
-  eval = requireNamespace("ggplot2", quietly = TRUE) &&
-    requireNamespace("afex", quietly = TRUE) &&
-    requireNamespace("metaplus", quietly = TRUE)
+pkgs <- c(
+  "afex",
+  "ggplot2",
+  "metaplus"
 )
+
+successfully_loaded <- purrr::map_lgl(pkgs, requireNamespace, quietly = TRUE)
+can_evaluate <- all(successfully_loaded)
+
+if (can_evaluate) {
+  purrr::walk(pkgs, library, character.only = TRUE)
+} else {
+  knitr::opts_chunk$set(eval = FALSE)
+}
 ```
 
 This vignette can be cited as:
