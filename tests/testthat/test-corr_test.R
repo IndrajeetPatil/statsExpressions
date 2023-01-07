@@ -1,5 +1,3 @@
-withr::local_options(list(tibble.width = Inf))
-
 # parametric --------------------------------------------------------------
 
 test_that(

@@ -1,5 +1,3 @@
-withr::local_options(list(tibble.width = Inf))
-
 test_that(
   desc = "t_nonparametric works - between-subjects design",
   code = {

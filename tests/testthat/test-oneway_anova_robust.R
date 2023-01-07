@@ -1,5 +1,3 @@
-withr::local_options(list(tibble.width = Inf))
-
 test_that(
   desc = "expr_anova_robust works - between-subjects",
   code = {

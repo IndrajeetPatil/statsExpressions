@@ -1,5 +1,3 @@
-withr::local_options(list(tibble.width = Inf))
-
 test_that(
   desc = "parametric anova subtitles work (without NAs)",
   code = {

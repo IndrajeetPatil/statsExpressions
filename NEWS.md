@@ -1,5 +1,10 @@
 # statsExpressions 1.3.6.9000
 
+NEW FEATURES
+
+- All returned data frames from `{statsExpressions}` get a new
+  `statsExpressions` class and a print method for this class.
+
 # statsExpressions 1.3.6
 
 - Maintenance release.
@@ -19,8 +24,8 @@
 MINOR CHANGES
 
   - When any of the necessary numeric column values are missing, for these rows
-    `tidy_model_expressions()` now returns a `NULL` instead of an expression with
-    empty strings.
+    `tidy_model_expressions()` now returns a `NULL` instead of an expression
+    with empty strings.
 
 # statsExpressions 1.3.2
 

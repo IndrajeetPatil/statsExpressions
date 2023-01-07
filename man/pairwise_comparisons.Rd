@@ -163,10 +163,6 @@ set.seed(123)
 library(statsExpressions)
 library(PMCMRplus)
 
-# show all columns and make the column titles bold
-# as a user, you don't need to do this; this is just for the package website
-options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE, pillar.subtle_num = TRUE)
-
 #------------------- between-subjects design ----------------------------
 
 # parametric
