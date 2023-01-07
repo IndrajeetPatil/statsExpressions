@@ -1,5 +1,3 @@
-withr::local_options(list(tibble.width = Inf))
-
 test_that("tidy_model_expressions works - t", {
   set.seed(123)
   mod_t <- lm(wt ~ mpg, data = mtcars)

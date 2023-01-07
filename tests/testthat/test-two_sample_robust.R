@@ -1,5 +1,3 @@
-withr::local_options(list(tibble.width = Inf))
-
 # within-subjects ------------------------------------------------------------
 
 test_that(

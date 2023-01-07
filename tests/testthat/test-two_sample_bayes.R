@@ -1,5 +1,3 @@
-withr::local_options(list(tibble.width = Inf))
-
 test_that(
   desc = "bayesian (independent samples t-test)",
   code = {

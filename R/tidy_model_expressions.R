@@ -22,7 +22,6 @@
 #' # setup
 #' set.seed(123)
 #' library(statsExpressions)
-#' options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 #'
 #' # extract a tidy data frame
 #' df <- tidy_model_parameters(lm(wt ~ am * cyl, mtcars))
@@ -109,5 +108,14 @@ tidy_model_expressions <- function(data,
     mutate(expression = case_when(
       is.na(unlist(expression)) ~ list(NULL),
       TRUE ~ unlist(expression)
-    ))
+    )) %>%
+    .add_package_class()
+}
+
+#' @keywords internal
+#' @noRd
+.add_package_class <- function(data) {
+  data <- as_tibble(data)
+  class(data) <- c("statsExpressions", class(data))
+  data
 }

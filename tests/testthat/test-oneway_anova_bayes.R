@@ -4,7 +4,7 @@
 # for the same reason, don't change number of digits
 
 # to print all tibble columns in the snapshot; don't remove
-withr::local_options(list(tibble.width = Inf))
+
 
 # between-subjects ------------------------------
 

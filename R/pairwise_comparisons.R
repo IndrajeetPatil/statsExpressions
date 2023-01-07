@@ -38,10 +38,6 @@
 #' library(statsExpressions)
 #' library(PMCMRplus)
 #'
-#' # show all columns and make the column titles bold
-#' # as a user, you don't need to do this; this is just for the package website
-#' options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE, pillar.subtle_num = TRUE)
-#'
 #' #------------------- between-subjects design ----------------------------
 #'
 #' # parametric
@@ -273,8 +269,7 @@ pairwise_comparisons <- function(data,
   }
 
   select(df, everything(), -matches("p.adjustment|^method$")) %>%
-    .glue_to_expression() %>%
-    as_tibble()
+    .glue_to_expression()
 }
 
 #' @title *p*-value adjustment method text

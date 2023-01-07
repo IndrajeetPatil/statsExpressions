@@ -45,7 +45,6 @@ not use it yet in your workflow.
 # setup
 set.seed(123)
 library(statsExpressions)
-options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 
 # extract a tidy data frame
 df <- tidy_model_parameters(lm(wt ~ am * cyl, mtcars))
