@@ -109,9 +109,6 @@ The table below provides summary about:
 # for reproducibility
 set.seed(123)
 
-
-
-
 # ----------------------- parametric -----------------------
 
 corr_test(mtcars, wt, mpg)
