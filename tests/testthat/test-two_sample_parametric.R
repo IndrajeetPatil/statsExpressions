@@ -1,5 +1,3 @@
-withr::local_options(list(tibble.width = Inf))
-
 test_that(
   desc = "parametric t-test works (between-subjects without NAs)",
   code = {

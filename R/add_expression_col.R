@@ -152,9 +152,10 @@ add_expression_col <- function(data,
   # convert `expression` to `language`
   df_expr %<>% .glue_to_expression()
 
-  as_tibble(data) %>%
+  data %>%
     relocate(matches("^effectsize$"), .before = matches("^estimate$")) %>%
-    mutate(expression = df_expr$expression)
+    mutate(expression = df_expr$expression) %>%
+    .add_package_class()
 }
 
 

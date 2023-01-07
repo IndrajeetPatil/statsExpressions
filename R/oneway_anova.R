@@ -46,7 +46,6 @@
 #' set.seed(123)
 #' library(statsExpressions)
 #' library(afex) # for within-subjects parametric ANOVA
-#' options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE)
 #'
 #' # ----------------------- parametric -------------------------------------
 #'

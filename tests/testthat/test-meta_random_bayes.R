@@ -2,7 +2,7 @@
 # Bayesian meta-analysis often crashes R session on macOS
 # this makes sure this test will be run after all others
 
-withr::local_options(list(tibble.width = Inf))
+
 
 test_that(
   desc = "meta_analysis works - bayesian",
