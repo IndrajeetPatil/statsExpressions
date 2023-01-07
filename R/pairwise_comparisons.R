@@ -191,7 +191,8 @@ pairwise_comparisons <- function(data,
   }
 
   if (type != "robust") {
-    df <- suppressWarnings(exec(.f,
+    df <- suppressWarnings(exec(
+      .f,
       # Dunn, Games-Howell, Student's t-test
       x      = y_vec,
       g      = x_vec,
