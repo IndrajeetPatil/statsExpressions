@@ -416,7 +416,7 @@ contingency_table(
 #| label = "meta"
 library(metaplus)
 
-# renaming to what `{statsExpressions}` expects
+# renaming columns to `{statsExpressions}` conventions
 df <- dplyr::rename(mag, estimate = yi, std.error = sei)
 
 # ----------------------- parametric ---------------------------------------
@@ -431,8 +431,9 @@ meta_analysis(df, type = "robust")
 
 # ----------------------- Bayesian ---------------------------------------
 
+# suppress warnings about divergent transitions after warmup
 set.seed(123)
-meta_analysis(df, type = "bayes")
+suppressWarnings(meta_analysis(df, type = "bayes"))
 ```
 
 ## Centrality description
