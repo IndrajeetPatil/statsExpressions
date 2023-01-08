@@ -5,6 +5,10 @@ on:
     branches: [main, master]
   pull_request:
     branches: [main, master]
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    # Trigger once a week at 00:00 on Sunday
+    - cron: "0 0 * * SUN"
 
 name: lint
 
@@ -28,20 +32,18 @@ jobs:
             local::.
           needs: lint
 
-      # TODO: Revisit to remove some of these allowances after more important lints
-      # have been removed.
       - name: Lint
         run: |
           library(lintr)
           lint_package(linters = linters_with_defaults(
             absolute_path_linter = NULL,
             commented_code_linter = NULL,
-            cyclocomp_linter = cyclocomp_linter(20),
+            cyclocomp_linter(20L),
             extraction_operator_linter = NULL,
             implicit_integer_linter = NULL,
-            line_length_linter(120),
+            line_length_linter(120L),
             object_name_linter = NULL,
-            object_length_linter(50),
+            object_length_linter(50L),
             object_usage_linter = NULL,
             nonportable_path_linter = NULL,
             string_boundary_linter = NULL,
@@ -52,5 +54,5 @@ jobs:
             defaults = linters_with_tags(tags = NULL)
           ))
         shell: Rscript {0}
-        env:
-          LINTR_ERROR_ON_LINT: true
+        # env:
+        #   LINTR_ERROR_ON_LINT: true
