@@ -16,7 +16,15 @@ name: R-CMD-check-strict
 
 jobs:
   R-CMD-check-strict:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.config.os }}
+    name: ${{ matrix.config.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - { os: windows-latest }
+          - { os: ubuntu-latest  }
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
