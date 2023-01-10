@@ -50,6 +50,8 @@ jobs:
         with:
           pak-version: devel
           needs: check
+          extra-packages: |
+            any::rcmdcheck
 
       - uses: r-lib/actions/check-r-package@v2
         with:
