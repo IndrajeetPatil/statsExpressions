@@ -36,8 +36,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # Always try to use the latest pandoc version
-      # https://github.com/jgm/pandoc/releases
       - uses: r-lib/actions/setup-pandoc@v2
         with:
           pandoc-version: "2.19.2"
@@ -58,4 +56,5 @@ jobs:
       - uses: r-lib/actions/check-r-package@v2
         with:
           upload-snapshots: true
+          upload-results: true
           error-on: '"note"'
