@@ -28,8 +28,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # Always try to use the latest pandoc version
-      # https://github.com/jgm/pandoc/releases
       - uses: r-lib/actions/setup-pandoc@v2
         with:
           pandoc-version: "2.19.2"
@@ -44,8 +42,7 @@ jobs:
         with:
           pak-version: devel
           extra-packages: |
-            deps::.
-            any::statsExpressions
+            local::.
             any::gghalves
             any::ggplot2
             any::ggridges
