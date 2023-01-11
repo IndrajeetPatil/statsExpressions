@@ -40,6 +40,7 @@ preferred-citation:
   issue: '61'
   journal: Journal of Open Source Software
   start: '3236'
+repository: https://CRAN.R-project.org/package=statsExpressions
 repository-code: https://github.com/IndrajeetPatil/statsExpressions
 url: https://indrajeetpatil.github.io/statsExpressions/
 contact:
@@ -89,6 +90,35 @@ references:
   year: '2023'
   version: '>= 0.9.12-4.4'
 - type: software
+  title: correlation
+  abstract: 'correlation: Methods for Correlation Analysis'
+  notes: Imports
+  url: https://easystats.github.io/correlation/
+  repository: https://CRAN.R-project.org/package=correlation
+  authors:
+  - family-names: Makowski
+    given-names: Dominique
+    email: dom.makowski@gmail.com
+    orcid: https://orcid.org/0000-0001-5375-9967
+  - family-names: Wiernik
+    given-names: Brenton M.
+    email: brenton@wiernik.org
+    orcid: https://orcid.org/0000-0001-9560-6336
+  - family-names: Patil
+    given-names: Indrajeet
+    email: patilindrajeet.science@gmail.com
+    orcid: https://orcid.org/0000-0003-1995-6531
+  - family-names: Lüdecke
+    given-names: Daniel
+    email: d.luedecke@uke.de
+    orcid: https://orcid.org/0000-0002-8895-3206
+  - family-names: Ben-Shachar
+    given-names: Mattan S.
+    email: matanshm@post.bgu.ac.il
+    orcid: https://orcid.org/0000-0002-4287-4801
+  version: '>= 0.8.3'
+  year: '2023'
+- type: software
   title: datawizard
   abstract: 'datawizard: Easy Data Wrangling and Statistical Transformations'
   notes: Imports
@@ -121,6 +151,29 @@ references:
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2023'
   version: '>= 0.6.5'
+- type: software
+  title: dplyr
+  abstract: 'dplyr: A Grammar of Data Manipulation'
+  notes: Imports
+  url: https://dplyr.tidyverse.org
+  repository: https://CRAN.R-project.org/package=dplyr
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+    orcid: https://orcid.org/0000-0003-4757-117X
+  - family-names: François
+    given-names: Romain
+    orcid: https://orcid.org/0000-0002-2444-4226
+  - family-names: Henry
+    given-names: Lionel
+  - family-names: Müller
+    given-names: Kirill
+    orcid: https://orcid.org/0000-0002-1416-3412
+  - family-names: Vaughan
+    given-names: Davis
+    orcid: https://orcid.org/0000-0003-4777-038X
+  year: '2023'
 - type: software
   title: effectsize
   abstract: 'effectsize: Indices of Effect Size'
@@ -296,6 +349,7 @@ references:
     given-names: Lionel
     email: lionel@rstudio.com
   year: '2023'
+  version: '>= 1.0.1'
 - type: software
   title: rlang
   abstract: 'rlang: Functions for Base Types and Core R and ''Tidyverse'' Features'
@@ -321,6 +375,21 @@ references:
   year: '2023'
   institution:
     name: R Foundation for Statistical Computing
+- type: software
+  title: tibble
+  abstract: 'tibble: Simple Data Frames'
+  notes: Imports
+  url: https://tibble.tidyverse.org/
+  repository: https://CRAN.R-project.org/package=tibble
+  authors:
+  - family-names: Müller
+    given-names: Kirill
+    email: kirill@cynkra.com
+    orcid: https://orcid.org/0000-0002-1416-3412
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2023'
 - type: software
   title: tidyr
   abstract: 'tidyr: Tidy Messy Data'

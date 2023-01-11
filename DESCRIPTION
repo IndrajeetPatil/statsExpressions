@@ -35,7 +35,7 @@ Imports:
     magrittr,
     parameters (>= 0.20.0),
     performance (>= 0.10.0),
-    purrr,
+    purrr (>= 1.0.1),
     rlang,
     stats,
     tibble,
