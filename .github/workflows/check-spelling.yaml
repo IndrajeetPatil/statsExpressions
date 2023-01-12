@@ -42,7 +42,7 @@ jobs:
           options(crayon.enabled = TRUE)
           spelling_mistakes <- spelling::spell_check_package()
           cli::cli_rule()
-          if (length(spelling_mistakes) > 0L) {
+          if (length(spelling_mistakes$word) > 0L) {
             cli::cli_abort("Spelling errors found. Either correct them or update `inst/WORDLIST`.")
             print(spelling_mistakes)
           } else {
