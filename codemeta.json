@@ -148,18 +148,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "spelling",
-      "name": "spelling",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=spelling"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "survival",
       "name": "survival",
       "provider": {
@@ -174,7 +162,7 @@
       "@type": "SoftwareApplication",
       "identifier": "testthat",
       "name": "testthat",
-      "version": ">= 3.1.5",
+      "version": ">= 3.1.6",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -301,7 +289,7 @@
       "@type": "SoftwareApplication",
       "identifier": "parameters",
       "name": "parameters",
-      "version": ">= 0.20.0",
+      "version": ">= 0.20.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -314,7 +302,7 @@
       "@type": "SoftwareApplication",
       "identifier": "performance",
       "name": "performance",
-      "version": ">= 0.10.0",
+      "version": ">= 0.10.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -416,7 +404,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4173.527KB",
+  "fileSize": "4173.491KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",

@@ -17,17 +17,17 @@ name: R-CMD-check-strict
 jobs:
   R-CMD-check-strict:
     runs-on: ${{ matrix.config.os }}
-    name: ${{ matrix.config.os }}
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
 
     strategy:
       fail-fast: false
       matrix:
         config:
+          # CRAN does not provide macOS binaries for R-devel, so some packages
+          # need to be built from source. To avoid that, use R-release.
+          - { os: macos-latest, r: "release" }
           - { os: windows-latest, r: "devel" }
           - { os: ubuntu-latest, r: "devel" }
-          # CRAN does not provide macOS binaries for R-devel, so a number of packages
-          # need to be built from source.
-          - { os: macos-latest, r: "release" }
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}

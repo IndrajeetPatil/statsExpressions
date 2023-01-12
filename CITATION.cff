@@ -300,7 +300,7 @@ references:
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2023'
-  version: '>= 0.20.0'
+  version: '>= 0.20.1'
 - type: software
   title: performance
   abstract: 'performance: Assessment of Regression Models Performance'
@@ -333,7 +333,7 @@ references:
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2023'
-  version: '>= 0.10.0'
+  version: '>= 0.10.2'
 - type: software
   title: purrr
   abstract: 'purrr: Functional Programming Tools'
@@ -613,21 +613,6 @@ references:
     orcid: https://orcid.org/0000-0003-3925-190X
   year: '2023'
 - type: software
-  title: spelling
-  abstract: 'spelling: Tools for Spell Checking in R'
-  notes: Suggests
-  url: https://docs.ropensci.org/spelling/
-  repository: https://CRAN.R-project.org/package=spelling
-  authors:
-  - family-names: Ooms
-    given-names: Jeroen
-    email: jeroen@berkeley.edu
-    orcid: https://orcid.org/0000-0002-4035-0289
-  - family-names: Hester
-    given-names: Jim
-    email: james.hester@rstudio.com
-  year: '2023'
-- type: software
   title: survival
   abstract: 'survival: Survival Analysis'
   notes: Suggests
@@ -649,7 +634,7 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2023'
-  version: '>= 3.1.5'
+  version: '>= 3.1.6'
 - type: software
   title: utils
   abstract: 'R: A Language and Environment for Statistical Computing'
