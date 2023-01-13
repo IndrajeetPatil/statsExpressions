@@ -34,7 +34,7 @@ Imports:
     insight (>= 0.18.8),
     magrittr,
     parameters (>= 0.20.1),
-    performance (>= 0.10.2),
+    performance (>= 0.10.2.1),
     purrr (>= 1.0.1),
     rlang,
     stats,
@@ -43,6 +43,8 @@ Imports:
     withr,
     WRS2 (>= 1.1-4),
     zeallot
+Remotes:
+    easystats/performance
 Suggests:
     afex (>= 1.2-0),
     ggplot2,
