@@ -215,7 +215,7 @@ two_sample_test(
 
 ```{r}
 #| label = "anova_w"
-library(afex)
+suppressPackageStartupMessages(library(afex))
 
 # ----------------------- parametric ---------------------------------------
 

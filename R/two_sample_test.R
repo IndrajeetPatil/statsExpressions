@@ -24,7 +24,7 @@
 #' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```
 #'
-#' @examples identical(Sys.getenv("NOT_CRAN"), "true")
+#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
 #' # for reproducibility
 #' set.seed(123)
 #' library(statsExpressions)

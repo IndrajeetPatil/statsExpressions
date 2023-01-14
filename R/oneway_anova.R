@@ -45,7 +45,7 @@
 #' # for reproducibility
 #' set.seed(123)
 #' library(statsExpressions)
-#' library(afex) # for within-subjects parametric ANOVA
+#' suppressPackageStartupMessages(library(afex)) # for within-subjects parametric ANOVA
 #'
 #' # ----------------------- parametric -------------------------------------
 #'

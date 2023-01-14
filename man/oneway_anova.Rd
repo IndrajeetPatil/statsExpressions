@@ -114,9 +114,7 @@ two degrees of freedom (e.g. anova)
 \item \code{expression}: pre-formatted expression containing statistical details
 }
 
-For examples of dataframe outputs, see examples and \href{https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html}{this vignette}.
-
-Note that all examples are preceded by \code{set.seed()} calls for reproducibility.
+For examples, see \href{https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html}{data frame output vignette}.
 }
 \description{
 Parametric, non-parametric, robust, and Bayesian one-way ANOVA.
@@ -178,7 +176,7 @@ The table below provides summary about:
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
-library(afex) # for within-subjects parametric ANOVA
+suppressPackageStartupMessages(library(afex)) # for within-subjects parametric ANOVA
 
 # ----------------------- parametric -------------------------------------
 
