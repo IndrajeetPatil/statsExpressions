@@ -10,7 +10,7 @@
 tidy_model_parameters <- function(model, ...) {
   stats_df <- model_parameters(model, verbose = FALSE, ...) %>%
     mutate(conf.method = . %@% "ci_method") %>%
-    select(where(~ !all(is.na(.x))), -matches("Difference")) %>% # remove columns where all rows are NAs
+    select(-matches("Difference")) %>%
     standardize_names(style = "broom") %>%
     rename_all(~ gsub("cramers.", "", .x)) %>%
     rename_all(.funs = recode, "bayes.factor" = "bf10") %>%

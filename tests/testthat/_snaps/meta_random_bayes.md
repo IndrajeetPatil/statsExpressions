@@ -3,23 +3,23 @@
     Code
       dplyr::select(df, -expression)
     Output
-      # A tibble: 2 x 16
+      # A tibble: 2 x 19
         term    effectsize                       estimate std.error conf.level
         <chr>   <chr>                               <dbl>     <dbl>      <dbl>
       1 Overall meta-analytic posterior estimate   -0.650     0.222       0.95
       2 tau     meta-analytic posterior estimate    0.486     0.184       0.95
-        conf.low conf.high  bf10 component prior.distribution prior.location
-           <dbl>     <dbl> <dbl> <chr>     <chr>                       <dbl>
-      1   -1.12     -0.251  53.0 meta      Student's t                     0
-      2    0.205     0.917  53.0 meta      Inverse gamma                   1
-        prior.scale method                                 conf.method log_e_bf10
-              <dbl> <chr>                                  <chr>            <dbl>
-      1       0.707 Bayesian meta-analysis using 'metaBMA' ETI               3.97
-      2       0.15  Bayesian meta-analysis using 'metaBMA' ETI               3.97
-        n.obs
-        <int>
-      1    16
-      2    16
+        conf.low conf.high weight  bf10  rhat   ess component prior.distribution
+           <dbl>     <dbl>  <dbl> <dbl> <dbl> <dbl> <chr>     <chr>             
+      1   -1.12     -0.251     NA  53.0    NA    NA meta      Student's t       
+      2    0.205     0.917     NA  53.0    NA    NA meta      Inverse gamma     
+        prior.location prior.scale method                                 conf.method
+                 <dbl>       <dbl> <chr>                                  <chr>      
+      1              0       0.707 Bayesian meta-analysis using 'metaBMA' ETI        
+      2              1       0.15  Bayesian meta-analysis using 'metaBMA' ETI        
+        log_e_bf10 n.obs
+             <dbl> <int>
+      1       3.97    16
+      2       3.97    16
 
 ---
 

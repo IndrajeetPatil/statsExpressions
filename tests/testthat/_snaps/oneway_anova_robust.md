@@ -90,3 +90,33 @@
           italic("n")["pairs"] == "88")
       
 
+---
+
+    Code
+      select(df2, -expression)
+    Output
+      # A tibble: 1 x 11
+        statistic    df df.error p.value
+            <dbl> <dbl>    <dbl>   <dbl>
+      1      22.1     1        3  0.0182
+        method                                                             
+        <chr>                                                              
+      1 A heteroscedastic one-way repeated measures ANOVA for trimmed means
+        effectsize                                                      estimate
+        <chr>                                                              <dbl>
+      1 Algina-Keselman-Penfield robust standardized difference average     -Inf
+        conf.level conf.low conf.high n.obs
+             <dbl>    <dbl>     <dbl> <int>
+      1       0.95     -Inf       NaN     4
+
+---
+
+    Code
+      df2[["expression"]]
+    Output
+      [[1]]
+      list(italic("F")["trimmed-means"](1, 3) == "22.09", italic(p) == 
+          "0.02", widehat(delta)["R-avg"]^"AKP" == "-Inf", CI["95%"] ~ 
+          "[" * "-Inf", "" * "]", italic("n")["pairs"] == "4")
+      
+
