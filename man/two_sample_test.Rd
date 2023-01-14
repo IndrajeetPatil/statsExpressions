@@ -119,9 +119,7 @@ two degrees of freedom (e.g. anova)
 \item \code{expression}: pre-formatted expression containing statistical details
 }
 
-For examples of dataframe outputs, see examples and \href{https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html}{this vignette}.
-
-Note that all examples are preceded by \code{set.seed()} calls for reproducibility.
+For examples, see \href{https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html}{data frame output vignette}.
 }
 \description{
 Parametric, non-parametric, robust, and Bayesian two-sample tests.
@@ -179,7 +177,7 @@ The table below provides summary about:
 }
 
 \examples{
-identical(Sys.getenv("NOT_CRAN"), "true")
+\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
@@ -263,4 +261,5 @@ two_sample_test(
   subject.id = subject,
   type       = "bayes"
 )
+\dontshow{\}) # examplesIf}
 }

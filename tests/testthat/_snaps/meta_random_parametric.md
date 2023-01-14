@@ -3,13 +3,16 @@
     Code
       select(df, -expression)
     Output
-      # A tibble: 1 x 12
+      # A tibble: 1 x 13
         term    effectsize                     estimate std.error conf.level conf.low
         <chr>   <chr>                             <dbl>     <dbl>      <dbl>    <dbl>
       1 Overall meta-analytic summary estimate   -0.767     0.212       0.95    -1.18
-        conf.high statistic  p.value method                        conf.method n.obs
-            <dbl>     <dbl>    <dbl> <chr>                         <chr>       <int>
-      1    -0.351     -3.62 0.000295 Meta-analysis using 'metafor' Wald           16
+        conf.high statistic  p.value weight method                        conf.method
+            <dbl>     <dbl>    <dbl>  <dbl> <chr>                         <chr>      
+      1    -0.351     -3.62 0.000295     NA Meta-analysis using 'metafor' Wald       
+        n.obs
+        <int>
+      1    16
 
 ---
 
