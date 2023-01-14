@@ -11,9 +11,12 @@ name: HTML5 check
 jobs:
   HTML5-check:
     runs-on: ubuntu-latest
+
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
+      _R_CHECK_RD_VALIDATE_RD2HTML_: true
+
     steps:
       - uses: actions/checkout@v3
 
@@ -41,7 +44,7 @@ jobs:
         with:
           args: 'c("--as-cran", "--no-codoc", "--no-examples", "--no-tests", "--no-vignettes", "--no-build-vignettes", "--ignore-vignettes", "--no-install")'
           build_args: 'c("--no-build-vignettes")'
-          error-on: '"error"' # '"note"'
+          error-on: '"note"'
         env:
           _R_CHECK_CRAN_INCOMING_REMOTE_: false
           _R_CHECK_CRAN_INCOMING_: false
