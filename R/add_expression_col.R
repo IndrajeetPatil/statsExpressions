@@ -171,7 +171,6 @@ add_expression_col <- function(data,
       across(.fns = ~ .to_char(.x, k.df.error), .cols = matches("^df.error$")),
       across(.fns = ~ paste0(.x * 100, "%"), .cols = matches("^conf.level$"))
     )
-
 }
 
 #' @noRd
