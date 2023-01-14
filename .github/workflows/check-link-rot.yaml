@@ -3,6 +3,10 @@ on:
     branches: [main, master]
   pull_request:
     branches: [main, master]
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    # Trigger once a week at 00:00 on Sunday
+    - cron: "0 0 * * SUN"
 
 name: check-link-rot
 
@@ -38,6 +42,6 @@ jobs:
           rotten_links <- urlchecker::url_check(progress = FALSE)
           print(rotten_links)
           if (length(rotten_links$URL) > 0L) {
-            stop("Some URLs are outdated and need to be updated.", call. = FALSE)
+            cli::cli_abort("Some URLs are outdated and need to be updated.")
           }
         shell: Rscript {0}

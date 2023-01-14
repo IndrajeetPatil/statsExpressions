@@ -59,7 +59,7 @@ tidy_model_expressions <- function(data,
   if (statistic == "t") {
     df %<>% mutate(
       expression = case_when(
-        df.error %in% c("", "Inf") ~ glue("list({es.text}=='{estimate}', italic(t)=='{statistic}', italic(p)=='{p.value}')"),
+        df.error %in% c("NA", "Inf") ~ glue("list({es.text}=='{estimate}', italic(t)=='{statistic}', italic(p)=='{p.value}')"),
         TRUE ~ glue("list({es.text}=='{estimate}', italic(t)('{df.error}')=='{statistic}', italic(p)=='{p.value}')")
       )
     )

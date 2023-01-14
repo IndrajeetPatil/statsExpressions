@@ -1,9 +1,18 @@
-# statsExpressions 1.3.6.9000
+# statsExpressions 1.4.0.9000
+
+# statsExpressions 1.4.0
 
 NEW FEATURES
 
 - All returned data frames from `{statsExpressions}` get a new
   `statsExpressions` class and a print method for this class.
+
+MINOR CHANGES
+
+- `tidy_model_parameters()` no longer removes columns which contain only missing
+  values.
+  
+- Wilcox tests no longer provide exact *p*-values.
 
 # statsExpressions 1.3.6
 

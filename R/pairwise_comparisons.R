@@ -183,7 +183,7 @@ pairwise_comparisons <- function(data,
     if (paired) c(.f, test) %<-% c(PMCMRplus::durbinAllPairsTest, "Durbin-Conover")
 
     # `exec` fails otherwise for `pairwise.t.test` because `y` is passed to `t.test`
-    .f.args <- modifyList(.f.args, list(y = y_vec))
+    .f.args <- utils::modifyList(.f.args, list(y = y_vec))
   }
 
   if (type != "robust") {

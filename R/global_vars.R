@@ -18,6 +18,7 @@ utils::globalVariables(
     "method",
     ".f",
     ".f.es",
+    ".f.args",
     "bf10",
     "conf.low",
     "conf.high",
