@@ -117,6 +117,6 @@
       [[1]]
       list(italic("F")["trimmed-means"](1, 3) == "22.09", italic(p) == 
           "0.02", widehat(delta)["R-avg"]^"AKP" == "-Inf", CI["95%"] ~ 
-          "[" * "-Inf", "" * "]", italic("n")["pairs"] == "4")
+          "[" * "-Inf", "NA" * "]", italic("n")["pairs"] == "4")
       
 
