@@ -22,8 +22,6 @@ jobs:
         config:
           # CRAN does not provide macOS binaries for R-devel so some packages
           # need to be built from source. To avoid that use R-release.
-          - { os: macos-latest, r: "release" }
-          - { os: windows-latest, r: "devel" }
           - { os: ubuntu-latest, r: "devel" }
 
     env:
