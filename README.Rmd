@@ -6,13 +6,7 @@ output: github_document
 
 ```{r}
 #| echo = FALSE
-options(
-  tibble.width      = Inf,
-  pillar.bold       = TRUE,
-  pillar.neg        = TRUE,
-  pillar.subtle_num = TRUE,
-  pillar.min_chars  = Inf
-)
+options(pillar.width = Inf, pillar.bold = TRUE, pillar.subtle_num = TRUE)
 
 knitr::opts_chunk$set(
   collapse  = TRUE,
@@ -183,11 +177,7 @@ results_data <- oneway_anova(iris, Species, Sepal.Length, type = "robust")
 
 # create a ridgeplot
 ggplot(iris, aes(x = Sepal.Length, y = Species)) +
-  geom_density_ridges(
-    jittered_points = TRUE, quantile_lines = TRUE,
-    scale = 0.9, vline_size = 1, vline_color = "red",
-    position = position_raincloud(adjust_vlines = TRUE)
-  ) +
+  geom_density_ridges() +
   labs(
     title = "A heteroscedastic one-way ANOVA for trimmed means",
     subtitle = results_data$expression[[1]]
@@ -349,9 +339,8 @@ to display them in plots:
 # setup
 set.seed(123)
 
-
 # Pearson's chi-squared test of independence
-contingency_table(mtcars, am, cyl)$expression[[1]]
+contingency_table(mtcars, am, vs)$expression[[1]]
 ```
 
 ## Expressions for meta-analysis
