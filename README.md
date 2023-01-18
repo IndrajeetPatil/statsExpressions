@@ -273,11 +273,7 @@ results_data <- oneway_anova(iris, Species, Sepal.Length, type = "robust")
 
 # create a ridgeplot
 ggplot(iris, aes(x = Sepal.Length, y = Species)) +
-  geom_density_ridges(
-    jittered_points = TRUE, quantile_lines = TRUE,
-    scale = 0.9, vline_size = 1, vline_color = "red",
-    position = position_raincloud(adjust_vlines = TRUE)
-  ) +
+  geom_density_ridges() +
   labs(
     title = "A heteroscedastic one-way ANOVA for trimmed means",
     subtitle = results_data$expression[[1]]
@@ -446,11 +442,10 @@ having to display them in plots:
 # setup
 set.seed(123)
 
-
 # Pearson's chi-squared test of independence
-contingency_table(mtcars, am, cyl)$expression[[1]]
-#> list(chi["Pearson"]^2 * "(" * 2 * ")" == "8.74", italic(p) == 
-#>     "0.01", widehat(italic("V"))["Cramer"] == "0.46", CI["95%"] ~ 
+contingency_table(mtcars, am, vs)$expression[[1]]
+#> list(chi["Pearson"]^2 * "(" * 1 * ")" == "0.91", italic(p) == 
+#>     "0.34", widehat(italic("V"))["Cramer"] == "0.00", CI["95%"] ~ 
 #>     "[" * "0.00", "1.00" * "]", italic("n")["obs"] == "32")
 ```
 
