@@ -340,7 +340,7 @@ library(PairedData)
 data(PrisonStress)
 
 # get data in tidy format
-df <- pivot_longer(PrisonStress, starts_with("PSS"), "PSS", values_to = "stress")
+df <- pivot_longer(PrisonStress, starts_with("PSS"), names_to = "PSS", values_to = "stress")
 
 results_data <- two_sample_test(
   data = df,
