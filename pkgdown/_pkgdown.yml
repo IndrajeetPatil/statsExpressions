@@ -4,6 +4,10 @@ authors:
   Indrajeet Patil:
     href: https://sites.google.com/site/indrajeetspatilmorality/
 
+home:
+  sidebar:
+    structure: [links, license, community, citation, authors, dev, toc]
+
 template:
   bootstrap: 5
   # includes:
