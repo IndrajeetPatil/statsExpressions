@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Tidy Dataframes and Expressions with Statistical Details
-Version: 1.4.0.9000
+Version: 1.5.0
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -23,7 +23,7 @@ URL: https://indrajeetpatil.github.io/statsExpressions/,
     https://github.com/IndrajeetPatil/statsExpressions
 BugReports: https://github.com/IndrajeetPatil/statsExpressions/issues
 Depends: 
-    R (>= 4.0.0)
+    R (>= 4.1.0)
 Imports:
     BayesFactor (>= 0.9.12-4.4),
     correlation (>= 0.8.3),

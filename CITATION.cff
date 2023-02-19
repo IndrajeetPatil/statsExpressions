@@ -1,5 +1,5 @@
 # -----------------------------------------------------------
-# CITATION file created with {cffr} R package, v0.4.0
+# CITATION file created with {cffr} R package, v0.4.1
 # See also: https://docs.ropensci.org/cffr/
 # -----------------------------------------------------------
  
@@ -8,7 +8,7 @@ message: 'To cite package "statsExpressions" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'statsExpressions: Tidy Dataframes and Expressions with Statistical Details'
-version: 1.4.0.9000
+version: 1.5.0
 doi: 10.21105/joss.03236
 abstract: 'Utilities for producing dataframes with rich details for the most common
   types of statistical approaches and tests: parametric, nonparametric, robust, and
@@ -73,7 +73,7 @@ references:
   year: '2023'
   institution:
     name: R Foundation for Statistical Computing
-  version: '>= 4.0.0'
+  version: '>= 4.1.0'
 - type: software
   title: BayesFactor
   abstract: 'BayesFactor: Computation of Bayes Factors for Common Designs'
@@ -94,7 +94,7 @@ references:
   abstract: 'correlation: Methods for Correlation Analysis'
   notes: Imports
   url: https://easystats.github.io/correlation/
-  repository: https://CRAN.R-project.org/package=correlation
+  repository: https://easystats.r-universe.dev
   authors:
   - family-names: Makowski
     given-names: Dominique
@@ -116,8 +116,8 @@ references:
     given-names: Mattan S.
     email: matanshm@post.bgu.ac.il
     orcid: https://orcid.org/0000-0002-4287-4801
-  version: '>= 0.8.3'
   year: '2023'
+  version: '>= 0.8.3'
 - type: software
   title: datawizard
   abstract: 'datawizard: Easy Data Wrangling and Statistical Transformations'
@@ -181,7 +181,7 @@ references:
   abstract: 'effectsize: Indices of Effect Size'
   notes: Imports
   url: https://easystats.github.io/effectsize/
-  repository: https://CRAN.R-project.org/package=effectsize
+  repository: https://easystats.r-universe.dev
   authors:
   - family-names: Ben-Shachar
     given-names: Mattan S.
@@ -493,7 +493,7 @@ references:
   authors:
   - family-names: Wickham
     given-names: Hadley
-    email: hadley@rstudio.com
+    email: hadley@posit.co
     orcid: https://orcid.org/0000-0003-4757-117X
   - family-names: Chang
     given-names: Winston
@@ -502,7 +502,7 @@ references:
     given-names: Lionel
   - family-names: Pedersen
     given-names: Thomas Lin
-    email: thomas.pedersen@rstudio.com
+    email: thomas.pedersen@posit.co
     orcid: https://orcid.org/0000-0002-5147-4711
   - family-names: Takahashi
     given-names: Kohske
