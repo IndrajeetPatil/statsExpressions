@@ -57,6 +57,8 @@ Suggests:
     utils
 VignetteBuilder: 
     knitr
+Remotes:
+    easystats/bayestestR
 Encoding: UTF-8
 Language: en-US
 LazyData: true
