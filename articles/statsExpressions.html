@@ -38,7 +38,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">statsExpressions</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,7 +91,7 @@
                         <h4 data-toc-skip class="author">Indrajeet
 Patil</h4>
             
-            <h4 data-toc-skip class="date">2023-02-19</h4>
+            <h4 data-toc-skip class="date">2023-03-21</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/statsExpressions/blob/HEAD/vignettes/statsExpressions.Rmd" class="external-link"><code>vignettes/statsExpressions.Rmd</code></a></small>
       <div class="d-none name"><code>statsExpressions.Rmd</code></div>
@@ -138,7 +138,7 @@ functions are pipe-friendly and compatible with tidy data.</p>
 </h2>
 <p>Statistical packages exhibit substantial diversity in terms of their
 syntax and expected input and output data type. For example, some
-functions expect vectors as inputs, while others expect dataframes.
+functions expect vectors as inputs, while others expect data frames.
 Depending on whether it is a repeated measures design or not, functions
 from the same package might expect data to be in wide or tidy format.
 Some functions can internally omit missing values, while others do not.
@@ -146,7 +146,7 @@ Furthermore, the statistical test objects returned by the test functions
 might not have all required information (e.g., degrees of freedom,
 significance, Bayes factor, etc.) accessible in a consistent data type.
 Depending on the specific test object and statistic in question, details
-may be returned as a list, a matrix, an array, or a dataframe. This
+may be returned as a list, a matrix, an array, or a data frame. This
 diversity can make it difficult to easily access all needed information
 for hypothesis testing and estimation, and to switch from one
 statistical approach to another.</p>
@@ -161,7 +161,7 @@ and with tidy data format.</p>
 <p>Unlike <a href="https://broom.tidymodels.org/" class="external-link">broom</a> <span class="citation">(<a href="#ref-Robinson2021">Robinson, Hayes, &amp; Couch, 2021</a>)</span>
 or <a href="https://easystats.github.io/parameters/" class="external-link">parameters</a> <span class="citation">(<a href="#ref-L%C3%BCdecke2020parameters">Lüdecke, Ben-Shachar, Patil, &amp;
 Makowski, 2020</a>)</span>, the goal of <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a>
-is not to convert model objects into tidy dataframes, but to provide a
+is not to convert model objects into tidy data frames, but to provide a
 consistent and easy syntax to carry out statistical tests. Additionally,
 none of these packages return statistical expressions.</p>
 </div>
@@ -170,9 +170,10 @@ none of these packages return statistical expressions.</p>
 </h2>
 <p>The package offers functions that allow users choose a statistical
 approach without changing the syntax (i.e., by only specifying a single
-argument). The functions always require a dataframe in tidy format <span class="citation">(<a href="#ref-Wickham2019">Wickham et al.,
+argument). The functions always require a data frame in tidy format
+<span class="citation">(<a href="#ref-Wickham2019">Wickham et al.,
 2019</a>)</span>, and work with missing data. Moreover, they always
-return a dataframe that can be further utilized downstream in the
+return a data frame that can be further utilized downstream in the
 workflow (such as visualization).</p>
 <table class="table">
 <caption>A summary table listing the primary functions in the package
@@ -239,19 +240,17 @@ package website: <a href="https://indrajeetpatil.github.io/statsExpressions/arti
 </tbody>
 </table>
 <p><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> internally relies on
-<code>stats</code> package for parametric and non-parametric <span class="citation">(<a href="#ref-base2021">R Core Team, 2021</a>)</span>,
-<code>WRS2</code> package for robust <span class="citation">(<a href="#ref-Mair2020">Mair &amp; Wilcox, 2020</a>)</span>, and
-<code>BayesFactor</code> package for Bayesian statistics <span class="citation">(<a href="#ref-Morey2020">Morey &amp; Rouder,
+<code>{stats}</code> package for parametric and non-parametric <span class="citation">(<a href="#ref-base2021">R Core Team, 2021</a>)</span>,
+<a href="https://r-forge.r-project.org/projects/psychor/" class="external-link">WRS2</a> package for robust <span class="citation">(<a href="#ref-Mair2020">Mair &amp; Wilcox, 2020</a>)</span>, and
+<a href="https://richarddmorey.github.io/BayesFactor/" class="external-link">BayesFactor</a> package for Bayesian statistics <span class="citation">(<a href="#ref-Morey2020">Morey &amp; Rouder,
 2020</a>)</span>. The random-effects meta-analysis is carried out using
-<code>metafor</code> (parametric) <span class="citation">(<a href="#ref-Viechtbauer2010">Viechtbauer, 2010</a>)</span>,
-<code>metaplus</code> (robust) <span class="citation">(<a href="#ref-Beath2016">Beath, 2016</a>)</span>, and <code>metaBMA</code>
-(Bayesian) <span class="citation">(<a href="#ref-Heck2019">Heck et al.,
-2019</a>)</span> packages. Additionally, it relies on
-<code>easystats</code> packages <span class="citation">(<a href="#ref-Ben-Shachar2020">Ben-Shachar, Lüdecke, &amp; Makowski,
-2020</a>; <a href="#ref-L%C3%BCdecke2020parameters">Lüdecke et al., 2020</a>;
-<a href="#ref-L%C3%BCdecke2020performance">Lüdecke, Ben-Shachar, Patil,
-Waggoner, &amp; Makowski, 2021</a>; <a href="#ref-L%C3%BCdecke2019">Lüdecke,
-Waggoner, &amp; Makowski, 2019</a>; <a href="#ref-Makowski2019">Makowski, Ben-Shachar, &amp; Lüdecke, 2019</a>;
+<a href="https://www.metafor-project.org" class="external-link">metafor</a> (parametric) <span class="citation">(<a href="#ref-Viechtbauer2010">Viechtbauer, 2010</a>)</span>,
+<code>{metaplus}</code> (robust) <span class="citation">(<a href="#ref-Beath2016">Beath, 2016</a>)</span>, and
+<a href="https://github.com/danheck/metaBMA" class="external-link">metaBMA</a> (Bayesian) <span class="citation">(<a href="#ref-Heck2019">Heck et al., 2019</a>)</span> packages.
+Additionally, it relies on <code>easystats</code> packages <span class="citation">(<a href="#ref-Ben-Shachar2020">Ben-Shachar, Lüdecke,
+&amp; Makowski, 2020</a>; <a href="#ref-L%C3%BCdecke2020parameters">Lüdecke
+et al., 2020</a>; <a href="#ref-L%C3%BCdecke2020performance">Lüdecke,
+Ben-Shachar, Patil, Waggoner, &amp; Makowski, 2021</a>; <a href="#ref-L%C3%BCdecke2019">Lüdecke, Waggoner, &amp; Makowski, 2019</a>; <a href="#ref-Makowski2019">Makowski, Ben-Shachar, &amp; Lüdecke, 2019</a>;
 <a href="#ref-Makowski2020">Makowski, Ben-Shachar, Patil, &amp; Lüdecke,
 2020</a>)</span> to compute appropriate effect size/posterior estimates
 and their confidence/credible intervals.</p>
@@ -292,7 +291,7 @@ statistical approach can be modified by changing a single argument:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>    32 <span style="color: #949494;">&lt;language&gt;</span></span></span></code></pre></div>
 <p>These functions are also compatible with other popular data
 manipulation packages. For example, we can use combination of
-<code>dplyr</code> and <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> to repeat the
+<a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a> and <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> to repeat the
 same statistical analysis across grouping variables.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># running one-sample proportion test for `vs` at all levels of `am`</span></span>
@@ -312,7 +311,7 @@ same statistical analysis across grouping variables.</p>
 <div class="section level2">
 <h2 id="expressions-for-plots">Expressions for Plots<a class="anchor" aria-label="anchor" href="#expressions-for-plots"></a>
 </h2>
-<p>In addition to other details contained in the dataframe, there is
+<p>In addition to other details contained in the data frame, there is
 also a column titled <code>expression</code>, which contains a
 pre-formatted text with statistical details. These expressions (Figure
 1) attempt to follow the gold standard in statistical reporting for both
