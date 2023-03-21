@@ -25,7 +25,6 @@ BugReports: https://github.com/IndrajeetPatil/statsExpressions/issues
 Depends: 
     R (>= 4.1.0)
 Imports:
-    afex (>= 1.2-0),
     BayesFactor (>= 0.9.12-4.4),
     correlation (>= 0.8.3),
     datawizard (>= 0.6.5),
@@ -45,6 +44,7 @@ Imports:
     WRS2 (>= 1.1-4),
     zeallot
 Suggests:
+    afex (>= 1.2-0),
     ggplot2,
     knitr,
     metaBMA,
