@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/IndrajeetPatil/statsExpressions",
   "issueTracker": "https://github.com/IndrajeetPatil/statsExpressions/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.5.0",
+  "version": "1.5.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -162,7 +162,7 @@
       "@type": "SoftwareApplication",
       "identifier": "testthat",
       "name": "testthat",
-      "version": ">= 3.1.6",
+      "version": ">= 3.1.7",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -265,7 +265,7 @@
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
-      "version": ">= 0.19.0",
+      "version": ">= 0.19.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -405,7 +405,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4132.323KB",
+  "fileSize": "4132.217KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",

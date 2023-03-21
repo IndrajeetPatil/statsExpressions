@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Tidy Dataframes and Expressions with Statistical Details
-Version: 1.5.0
+Version: 1.5.0.9000
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -31,14 +31,14 @@ Imports:
     dplyr (>= 1.1.0),
     effectsize (>= 0.8.3),
     glue,
-    insight (>= 0.19.0),
+    insight (>= 0.19.1),
     magrittr,
     parameters (>= 0.20.2),
     performance (>= 0.10.2),
     purrr (>= 1.0.1),
     rlang,
     stats,
-    tibble,
+    tibble (>= 3.2.1),
     tidyr,
     withr,
     WRS2 (>= 1.1-4),
@@ -53,10 +53,12 @@ Suggests:
     PMCMRplus,
     rmarkdown,
     survival,
-    testthat (>= 3.1.6),
+    testthat (>= 3.1.7),
     utils
 VignetteBuilder: 
     knitr
+Remotes:
+    easystats/bayestestR
 Encoding: UTF-8
 Language: en-US
 LazyData: true
