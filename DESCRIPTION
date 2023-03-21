@@ -38,7 +38,7 @@ Imports:
     purrr (>= 1.0.1),
     rlang,
     stats,
-    tibble,
+    tibble (>= 3.2.1),
     tidyr,
     withr,
     WRS2 (>= 1.1-4),
