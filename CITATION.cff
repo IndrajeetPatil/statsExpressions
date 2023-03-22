@@ -94,7 +94,7 @@ references:
   abstract: 'correlation: Methods for Correlation Analysis'
   notes: Imports
   url: https://easystats.github.io/correlation/
-  repository: https://easystats.r-universe.dev
+  repository: https://CRAN.R-project.org/package=correlation
   authors:
   - family-names: Makowski
     given-names: Dominique
@@ -123,7 +123,7 @@ references:
   abstract: 'datawizard: Easy Data Wrangling and Statistical Transformations'
   notes: Imports
   url: https://easystats.github.io/datawizard/
-  repository: https://easystats.r-universe.dev
+  repository: https://CRAN.R-project.org/package=datawizard
   authors:
   - family-names: Patil
     given-names: Indrajeet
@@ -181,7 +181,7 @@ references:
   abstract: 'effectsize: Indices of Effect Size'
   notes: Imports
   url: https://easystats.github.io/effectsize/
-  repository: https://easystats.r-universe.dev
+  repository: https://CRAN.R-project.org/package=effectsize
   authors:
   - family-names: Ben-Shachar
     given-names: Mattan S.
@@ -280,7 +280,7 @@ references:
   abstract: 'parameters: Processing of Model Parameters'
   notes: Imports
   url: https://easystats.github.io/parameters/
-  repository: https://easystats.r-universe.dev
+  repository: https://CRAN.R-project.org/package=parameters
   authors:
   - family-names: Lüdecke
     given-names: Daniel
@@ -396,6 +396,7 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2023'
+  version: '>= 3.2.1'
 - type: software
   title: tidyr
   abstract: 'tidyr: Tidy Messy Data'

@@ -346,6 +346,7 @@
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
+      "version": ">= 3.2.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -405,7 +406,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4132.217KB",
+  "fileSize": "4133.678KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
