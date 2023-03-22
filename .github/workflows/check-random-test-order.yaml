@@ -31,5 +31,21 @@ jobs:
         run: |
           options(crayon.enabled = TRUE)
           withr::local_envvar(TESTTHAT_PARALLEL = "FALSE")
-          testthat::test_dir("tests", shuffle = TRUE)
+          library(cli)
+          library(glue)
+          library(testthat)
+          pkgload::load_all(".")
+          test_script_paths <- testthat::find_test_scripts("tests/testthat")
+          set.seed(123)
+          randomized_test_script_paths <- sample(test_script_paths)
+          test_path <- function(path) {
+            cli_inform(paste0("Running tests in: `", path, "`\n"))
+            report <- as.data.frame(testthat::test_file(path, reporter = "silent"))
+            has_test_failures <- any(report$failed == 1L)
+            has_test_errors <- any(report$error == 1L)
+            if (has_test_failures) cli_abort(glue("Tests in `{path}` are failing."))
+            if (has_test_errors) cli_abort(glue("There was error while running tests in `{path}`."))
+            if (!has_test_failures && !has_test_errors) cli_alert_success(glue("All tests passing in `{path}`."))
+          }
+          purrr::walk(randomized_test_script_paths, test_path)
         shell: Rscript {0}
