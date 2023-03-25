@@ -1,21 +1,20 @@
+# R CMD Check is run with the development versions of hard dependencies.
 on:
-  push:
-    branches: [main, master]
-  pull_request:
-    branches: [main, master]
   schedule:
     # * is a special character in YAML so you have to quote this string
     # Trigger once a week at 00:00 on Sunday
     - cron: "0 0 * * SUN"
 
-name: check-link-rot
+name: R-CMD-check-devel
 
 jobs:
-  check-link-rot:
+  R-CMD-check-devel:
     runs-on: ubuntu-latest
+
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
+
     steps:
       - uses: actions/checkout@v3
 
@@ -29,20 +28,27 @@ jobs:
           http-user-agent: "release"
           use-public-rspm: true
 
+      # only download hard deps under active development
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           pak-version: devel
-          dependencies: '"hard"'
+          needs: check
+          cache: false
           extra-packages: |
             any::rcmdcheck
-            any::urlchecker
+            easystats/insight
+            easystats/bayestestR
+            easystats/datawizard
+            easystats/effectsize
+            easystats/parameters
+            easystats/performance
+            tidyverse/purrr
+            tidyverse/dplyr
+            tidyverse/tibble
+            tidyverse/tidyr
 
-      - name: Run URL checker
-        run: |
-          options(crayon.enabled = TRUE)
-          rotten_links <- urlchecker::url_check(progress = FALSE)
-          print(rotten_links)
-          if (length(rotten_links$URL) > 0L) {
-            cli::cli_abort("Some URLs are outdated and need to be updated.")
-          }
-        shell: Rscript {0}
+      - uses: r-lib/actions/check-r-package@v2
+        with:
+          upload-snapshots: true
+          upload-results: true
+          error-on: '"note"'

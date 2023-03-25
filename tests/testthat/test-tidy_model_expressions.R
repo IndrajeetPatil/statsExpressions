@@ -86,7 +86,7 @@ test_that("tidy_model_expressions works - F", {
   set.seed(123)
   df1 <- tidy_model_expressions(
     tidy_model_parameters(mod_f,
-      omega_squared = "partial",
+      effectsize_type = "omega",
       table_wide = TRUE
     ),
     statistic = "f"
@@ -98,7 +98,7 @@ test_that("tidy_model_expressions works - F", {
   set.seed(123)
   df2 <- tidy_model_expressions(
     tidy_model_parameters(mod_f,
-      eta_squared = "partial",
+      effectsize_type = "eta",
       table_wide = TRUE
     ),
     statistic = "f",

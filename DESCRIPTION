@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Tidy Dataframes and Expressions with Statistical Details
-Version: 1.4.0.9000
+Version: 1.5.0.9000
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -23,22 +23,22 @@ URL: https://indrajeetpatil.github.io/statsExpressions/,
     https://github.com/IndrajeetPatil/statsExpressions
 BugReports: https://github.com/IndrajeetPatil/statsExpressions/issues
 Depends: 
-    R (>= 4.0.0)
+    R (>= 4.1.0)
 Imports:
     BayesFactor (>= 0.9.12-4.4),
     correlation (>= 0.8.3),
     datawizard (>= 0.6.5),
-    dplyr,
-    effectsize (>= 0.8.2),
+    dplyr (>= 1.1.0),
+    effectsize (>= 0.8.3),
     glue,
-    insight (>= 0.18.8),
+    insight (>= 0.19.1),
     magrittr,
-    parameters (>= 0.20.1),
+    parameters (>= 0.20.2),
     performance (>= 0.10.2),
     purrr (>= 1.0.1),
     rlang,
     stats,
-    tibble,
+    tibble (>= 3.2.1),
     tidyr,
     withr,
     WRS2 (>= 1.1-4),
@@ -53,7 +53,7 @@ Suggests:
     PMCMRplus,
     rmarkdown,
     survival,
-    testthat (>= 3.1.6),
+    testthat (>= 3.1.7),
     utils
 VignetteBuilder: 
     knitr
@@ -64,3 +64,4 @@ Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate",
     "pkgapi::api_roclet"))
 RoxygenNote: 7.2.3.9000
 Config/testthat/edition: 3
+Config/testthat/parallel: true

@@ -1,4 +1,11 @@
-# statsExpressions 1.4.0.9000
+# statsExpressions 1.5.0.9000
+
+# statsExpressions 1.5.0
+
+BREAKING CHANGES
+
+- The minimum needed R version is now bumped to `R 4.1` because a critical 
+  dependency (`{pbkrtest}`) requires this R version.
 
 # statsExpressions 1.4.0
 
