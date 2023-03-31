@@ -34,10 +34,11 @@ jobs:
           withr::local_envvar(TESTTHAT_PARALLEL = "FALSE")
           library(cli)
           library(glue)
-          library(testthat)
           pkgload::load_all(".")
           test_script_paths <- testthat::find_test_scripts("tests/testthat")
-          set.seed(123)
+          seed <- sample.int(1e6, 1L)
+          cli_inform("Chosen seed for the current test run: {seed}")
+          set.seed(seed)
           randomized_test_script_paths <- sample(test_script_paths)
           any_test_failures <- FALSE
           any_test_errors <- FALSE
@@ -48,6 +49,8 @@ jobs:
             if (has_test_failures) {
               cli_alert_danger(glue("Tests in `{path}` are failing."))
               any_test_failures <<- TRUE
+              failed_tests <- subset(report, failed == 1L)[, c("test", "result")]
+              print(glue::glue_data(failed_tests, "Test `{test}` is failing:\n{purrr::pluck(result, 1L, 1L)}"))
             }
             if (has_test_errors) {
               cli_alert_danger(glue("There was error while running tests in `{path}`."))
