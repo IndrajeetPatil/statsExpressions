@@ -2,19 +2,19 @@
 
 # statsExpressions 1.5.0
 
-BREAKING CHANGES
+## BREAKING CHANGES
 
 - The minimum needed R version is now bumped to `R 4.1` because a critical 
   dependency (`{pbkrtest}`) requires this R version.
 
 # statsExpressions 1.4.0
 
-NEW FEATURES
+## NEW FEATURES
 
 - All returned data frames from `{statsExpressions}` get a new
   `statsExpressions` class and a print method for this class.
 
-MINOR CHANGES
+## MINOR CHANGES
 
 - `tidy_model_parameters()` no longer removes columns which contain only missing
   values.
@@ -37,7 +37,7 @@ MINOR CHANGES
 
 # statsExpressions 1.3.3
 
-MINOR CHANGES
+## MINOR CHANGES
 
   - When any of the necessary numeric column values are missing, for these rows
     `tidy_model_expressions()` now returns a `NULL` instead of an expression
@@ -45,12 +45,12 @@ MINOR CHANGES
 
 # statsExpressions 1.3.2
 
-NEW FUNCTIONS
+## NEW FEATURES
 
   - The `pairwise_comparisons()` function to carry out pairwise comparison tests
     for one-way designs.
 
-MAJOR CHANGES
+## MAJOR CHANGES
 
   - Expressions with statistical details were sometimes in a column named
     `label`, while other times in `expression` column. Now it will be
@@ -69,11 +69,11 @@ MAJOR CHANGES
 
 # statsExpressions 1.3.0
 
-BREAKING CHANGES
+## BREAKING CHANGES
 
   - The `format_num()` has been removed in favor of `insight::format_value()`.
 
-MINOR CHANGES
+## MINOR CHANGES
 
   - The `expr_template()` has been renamed to more informative
     `add_expression_col()` function and has a different API. It returns a
@@ -82,7 +82,7 @@ MINOR CHANGES
 
 # statsExpressions 1.2.0
 
-BREAKING CHANGES
+## BREAKING CHANGES
 
   - A number of effect size estimates and their confidence intervals have
     changed due to respective changes made in `{effectsize}` package version
@@ -92,7 +92,7 @@ BREAKING CHANGES
   - For the same reason, the effect size for one-way contingency table has
     changed from Cramer's *V* to Pearson's *C*.
 
-NEW FUNCTIONS
+## NEW FEATURES
 
   - `centrality_description()` function added to describe distribution for each
     level of a grouping variable and create an expression describing a
@@ -102,7 +102,7 @@ NEW FUNCTIONS
     expressions for dataframes containing tidied results from regression model
     objects.
 
-MAJOR CHANGES
+## MAJOR CHANGES
 
   - Removes the redundant `bf_extractor` function. The `tidy_model_parameters`
     does the same thing.
@@ -123,14 +123,14 @@ MAJOR CHANGES
     scale but in a scientific notation to keep the statistical expressions
     short.
 
-MINOR CHANGES
+## MINOR CHANGES
 
   - Removes `VR_dilemma` dataset, which lacked enough variation to be a good
     dataset to use in examples or tests.
 
 # statsExpressions 1.1.0
 
-MAJOR CHANGES
+## MAJOR CHANGES
 
   - There is a new _JOSS_ paper about `{statsExpressions}` package!!
     <https://joss.theoj.org/papers/10.21105/joss.03236>
@@ -146,18 +146,18 @@ MAJOR CHANGES
   - Cohen's *d* and Hedge's *g* use non-pooled standard deviation (cf.
     https://psyarxiv.com/tu6mp/).
 
-MINOR CHANGES
+## MINOR CHANGES
 
   - The output dataframes now contain columns with additional information about
     how confidence intervals are computed (thanks to `effectsize` package).
 
 # statsExpressions 1.0.1
 
-BREAKING CHANGES
+## BREAKING CHANGES
 
   - Retires all vestigial `expr_*` functions.
 
-MINOR CHANGES
+## MINOR CHANGES
 
   - Adapts failing tests due to changes in `effectsize`.
 
@@ -189,18 +189,18 @@ BUG FIXES
   - If the entered dataframe is `grouped`-tibble, the function internally
     ungroups this (#79).
 
-MINOR CHANGES
+## MINOR CHANGES
 
   - To reduce dependency load, `afex` has moved from `Imports` to `Suggests`.
 
 # statsExpressions 0.7.1
 
-BREAKING CHANGES
+## BREAKING CHANGES
 
   - To avoid confusion among users, the trimming level for all functions is now
     changed from `tr = 0.1` to `tr = 0.2` (which is what `WRS2` defaults to).
 
-MAJOR CHANGES
+## MAJOR CHANGES
 
   - `expr_template` gains a new argument `bayesian`, which can return an
     expression for Bayesian analysis, which has a slightly different template.
@@ -229,7 +229,7 @@ MAJOR CHANGES
 
 # statsExpressions 0.7.0
 
-BREAKING CHANGES
+## BREAKING CHANGES
 
   - To be consistent with `ggstatsplot`'s overall syntax philosophy the `type`
     argument can be used to specify which type of statistical approach is to be
@@ -253,7 +253,7 @@ BUG FIXES
   - `contingency_table` ignored `ratio` argument while computing Cramer's *V*
     for one-sample test. This is fixed.
 
-MAJOR CHANGES
+## MAJOR CHANGES
 
   - All non-parametric functions now use `effectsize` package to compute effect
     sizes and not `rcompanion`. This would lead to some changes in effect sizes
@@ -263,7 +263,7 @@ MAJOR CHANGES
     bootstrap-*t* method for one-sample test, which uses trimmed mean like the
     rest of the robust functions in this package.
 
-MINOR CHANGES
+## MINOR CHANGES
 
   - Package internally relies on `afex` instead of `ez` for within-subjects
     ANOVA.
@@ -272,7 +272,7 @@ MINOR CHANGES
 
 # statsExpressions 0.6.2
 
-MINOR CHANGES
+## MINOR CHANGES
 
   - Internal refactoring to catch up with changes made to `effectsize`. Tests
     are adapted to these changes as well.
@@ -281,7 +281,7 @@ MINOR CHANGES
 
 # statsExpressions 0.6.1
 
-MAJOR CHANGES
+## MAJOR CHANGES
 
   - Adds two new helper functions: `tidy_model_parameters` and
     `tidy_model_performance` to toggle between `easystats` and `tidymodels`
@@ -294,7 +294,7 @@ MAJOR CHANGES
 
 # statsExpressions 0.6.0
 
-BREAKING CHANGES
+## BREAKING CHANGES
 
   - Removes the alias `expr_onesample_proptest`.
 
@@ -304,7 +304,7 @@ BREAKING CHANGES
   - All meta-analyses are now carried out using `expr_meta_random` and the
     individual functions have been removed.
 
-MAJOR CHANGES
+## MAJOR CHANGES
 
   - All effect sizes for contingency tabs are now calculated via `effectsize`
     instead of `rcompanion`. This would lead to slight differences in effect
@@ -325,7 +325,7 @@ MAJOR CHANGES
   - The *t*-test and ANOVA tests get `subject.id` argument relevant for repeated
     measures design.
 
-MINOR CHANGES
+## MINOR CHANGES
 
   - Retires the vestigial `stat.title` argument. It was originally intended to
     give more info on the tests, but now the expressions themselves contain
@@ -338,7 +338,7 @@ MINOR CHANGES
 
 # statsExpressions 0.5.1
 
-MINOR CHANGES
+## MINOR CHANGES
 
   - Adapts tests to changes made in the `correlation` package.
 
@@ -348,7 +348,7 @@ MINOR CHANGES
 
 # statsExpressions 0.5.0
 
-MINOR CHANGES
+## MINOR CHANGES
 
   - Adapts to changes made in `tidyBF` package.
 
@@ -359,7 +359,7 @@ MINOR CHANGES
 
 # statsExpressions 0.4.2
 
-MINOR CHANGES
+## MINOR CHANGES
 
   - Thanks to Sarah, the package has a hexsticker. :)
 
@@ -380,20 +380,20 @@ BUG FIXES
     changing `conf.level` doesn't work and function defaults to `0.90` CIs
     (#32).
 
-MINOR CHANGES
+## MINOR CHANGES
 
   - Removes extra space contained in subtitles for Bayes Factor results (#31).
 
 # statsExpressions 0.4.0
 
-BREAKING CHANGES
+## BREAKING CHANGES
 
   - Removes the experimental `corr_objects` function.
 
   - All Bayes Factor related functions have now moved to the new `tidyBF`
     package and are re-exported from there.
 
-MAJOR CHANGES
+## MAJOR CHANGES
 
   - Minimum R version bumped to `R 3.6.0`.
 
@@ -409,11 +409,13 @@ MAJOR CHANGES
   - Correlation analysis is carried out using `correlation` package, which is
     now added as a dependency.
 
-MINOR CHANGES
+## MINOR CHANGES
 
   - All expressions now contain name of the statistical test carried out.
 
 # statsExpressions 0.3.1
+
+## NEW FEATURES
  
   - Adds a new function `corr_objects` to reduce dependency load of
     `ggstatsplot`. This is an experimental function and should be avoided until
@@ -421,27 +423,27 @@ MINOR CHANGES
 
 # statsExpressions 0.3.0
 
-NEW FEATURES
+## NEW FEATURES
 
-  - New functions to carry out meta-analysis: `expr_meta_bayes`.
+  - New function to carry out meta-analysis: `expr_meta_bayes`.
 
 # statsExpressions 0.2.1
 
-NEW FEATURES
+## NEW FEATURES
 
-  - New functions to carry out meta-analysis: `expr_meta_parametric`,
+  - New function to carry out meta-analysis: `expr_meta_parametric`,
     `expr_meta_robust`, `bf_meta`.
 
 # statsExpressions 0.2.0
 
-BREAKING CHANGES
+## BREAKING CHANGES
 
   - `expr_template` function now expects two dataframes: `data` and `effsize.df`
     that contain the details needed for creating expressions instead of
     providing each individual values. This makes the function more friendly work
     with using modeling packages like `broom`.
 
-MINOR CHANGES
+## MINOR CHANGES
 
   - Minor tweaks to how widehat is displayed in some of the expressions.
 
@@ -449,7 +451,7 @@ MINOR CHANGES
 
 # statsExpressions 0.1.3
 
-MAJOR CHANGES
+## MAJOR CHANGES
 
   - Removes `MCMCpack` from `Depends`.
 
@@ -458,13 +460,13 @@ MAJOR CHANGES
 
 # statsExpressions 0.1.2
 
-MINOR CHANGES
+## MINOR CHANGES
 
   - Maintenance release to fix additional check issues on `CRAN`.
 
 # statsExpressions 0.1.1
 
-MINOR CHANGES
+## MINOR CHANGES
 
   - Fixing tests for the new release of `rcompanion` dependency.
 
