@@ -59,17 +59,23 @@
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.5.0" id="statsexpressions-150">statsExpressions 1.5.0<a class="anchor" aria-label="anchor" href="#statsexpressions-150"></a></h2><p class="text-muted">CRAN release: 2023-02-19</p>
-<p>BREAKING CHANGES</p>
+<div class="section level3">
+<h3 id="breaking-changes-1-5-0">BREAKING CHANGES<a class="anchor" aria-label="anchor" href="#breaking-changes-1-5-0"></a></h3>
 <ul><li>The minimum needed R version is now bumped to <code>R 4.1</code> because a critical dependency (<a href="https://people.math.aau.dk/~sorenh/software/pbkrtest/" class="external-link">pbkrtest</a>) requires this R version.</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.4.0" id="statsexpressions-140">statsExpressions 1.4.0<a class="anchor" aria-label="anchor" href="#statsexpressions-140"></a></h2><p class="text-muted">CRAN release: 2023-01-14</p>
-<p>NEW FEATURES</p>
+<div class="section level3">
+<h3 id="new-features-1-4-0">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-1-4-0"></a></h3>
 <ul><li>All returned data frames from <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> get a new <code>statsExpressions</code> class and a print method for this class.</li>
-</ul><p>MINOR CHANGES</p>
+</ul></div>
+<div class="section level3">
+<h3 id="minor-changes-1-4-0">MINOR CHANGES<a class="anchor" aria-label="anchor" href="#minor-changes-1-4-0"></a></h3>
 <ul><li><p><code><a href="../reference/tidy_model_parameters.html">tidy_model_parameters()</a></code> no longer removes columns which contain only missing values.</p></li>
 <li><p>Wilcox tests no longer provide exact <em>p</em>-values.</p></li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.3.6" id="statsexpressions-136">statsExpressions 1.3.6<a class="anchor" aria-label="anchor" href="#statsexpressions-136"></a></h2><p class="text-muted">CRAN release: 2022-12-16</p>
 <ul><li>Maintenance release.</li>
@@ -85,63 +91,89 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.3.3" id="statsexpressions-133">statsExpressions 1.3.3<a class="anchor" aria-label="anchor" href="#statsexpressions-133"></a></h2><p class="text-muted">CRAN release: 2022-08-11</p>
-<p>MINOR CHANGES</p>
+<div class="section level3">
+<h3 id="minor-changes-1-3-3">MINOR CHANGES<a class="anchor" aria-label="anchor" href="#minor-changes-1-3-3"></a></h3>
 <ul><li>When any of the necessary numeric column values are missing, for these rows <code><a href="../reference/tidy_model_expressions.html">tidy_model_expressions()</a></code> now returns a <code>NULL</code> instead of an expression with empty strings.</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.3.2" id="statsexpressions-132">statsExpressions 1.3.2<a class="anchor" aria-label="anchor" href="#statsexpressions-132"></a></h2><p class="text-muted">CRAN release: 2022-05-20</p>
-<p>NEW FUNCTIONS</p>
+<div class="section level3">
+<h3 id="new-features-1-3-2">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-1-3-2"></a></h3>
 <ul><li>The <code><a href="../reference/pairwise_comparisons.html">pairwise_comparisons()</a></code> function to carry out pairwise comparison tests for one-way designs.</li>
-</ul><p>MAJOR CHANGES</p>
+</ul></div>
+<div class="section level3">
+<h3 id="major-changes-1-3-2">MAJOR CHANGES<a class="anchor" aria-label="anchor" href="#major-changes-1-3-2"></a></h3>
 <ul><li><p>Expressions with statistical details were sometimes in a column named <code>label</code>, while other times in <code>expression</code> column. Now it will be consistently in the <code>expression</code> column.</p></li>
 <li><p>Additionally, glue expressions were stored parsed in some data frame outputs, while unparsed in others. Now it is consistently parsed.</p></li>
 <li><p>The <code>top.text</code> parameter has been removed from all functions. It was relevant only in the context of <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link">ggstatsplot</a> package. As that package no longer uses it, it is no longer necessary to retain it.</p></li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.3.1" id="statsexpressions-131">statsExpressions 1.3.1<a class="anchor" aria-label="anchor" href="#statsexpressions-131"></a></h2><p class="text-muted">CRAN release: 2022-03-29</p>
 <ul><li>Fixes breakages due to <a href="https://easystats.github.io/insight/" class="external-link">insight</a> package update.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.3.0" id="statsexpressions-130">statsExpressions 1.3.0<a class="anchor" aria-label="anchor" href="#statsexpressions-130"></a></h2><p class="text-muted">CRAN release: 2022-01-14</p>
-<p>BREAKING CHANGES</p>
+<div class="section level3">
+<h3 id="breaking-changes-1-3-0">BREAKING CHANGES<a class="anchor" aria-label="anchor" href="#breaking-changes-1-3-0"></a></h3>
 <ul><li>The <code>format_num()</code> has been removed in favor of <code><a href="https://easystats.github.io/insight/reference/format_value.html" class="external-link">insight::format_value()</a></code>.</li>
-</ul><p>MINOR CHANGES</p>
+</ul></div>
+<div class="section level3">
+<h3 id="minor-changes-1-3-0">MINOR CHANGES<a class="anchor" aria-label="anchor" href="#minor-changes-1-3-0"></a></h3>
 <ul><li>The <code>expr_template()</code> has been renamed to more informative <code><a href="../reference/add_expression_col.html">add_expression_col()</a></code> function and has a different API. It returns a dataframe with the additional expression column instead of just the expression.</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.0" id="statsexpressions-120">statsExpressions 1.2.0<a class="anchor" aria-label="anchor" href="#statsexpressions-120"></a></h2><p class="text-muted">CRAN release: 2021-10-19</p>
-<p>BREAKING CHANGES</p>
+<div class="section level3">
+<h3 id="breaking-changes-1-2-0">BREAKING CHANGES<a class="anchor" aria-label="anchor" href="#breaking-changes-1-2-0"></a></h3>
 <ul><li><p>A number of effect size estimates and their confidence intervals have changed due to respective changes made in <a href="https://easystats.github.io/effectsize/" class="external-link">effectsize</a> package version <code>0.5</code> release. For full details of these changes, see: <a href="https://easystats.github.io/effectsize/news/index.html" class="external-link uri">https://easystats.github.io/effectsize/news/index.html</a></p></li>
 <li><p>For the same reason, the effect size for one-way contingency table has changed from Cramer’s <em>V</em> to Pearson’s <em>C</em>.</p></li>
-</ul><p>NEW FUNCTIONS</p>
+</ul></div>
+<div class="section level3">
+<h3 id="new-features-1-2-0">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-1-2-0"></a></h3>
 <ul><li><p><code><a href="../reference/centrality_description.html">centrality_description()</a></code> function added to describe distribution for each level of a grouping variable and create an expression describing a centrality measure.</p></li>
 <li><p>Adds new experimental function <code><a href="../reference/tidy_model_expressions.html">tidy_model_expressions()</a></code> to create expressions for dataframes containing tidied results from regression model objects.</p></li>
-</ul><p>MAJOR CHANGES</p>
+</ul></div>
+<div class="section level3">
+<h3 id="major-changes-1-2-0">MAJOR CHANGES<a class="anchor" aria-label="anchor" href="#major-changes-1-2-0"></a></h3>
 <ul><li><p>Removes the redundant <code>bf_extractor</code> function. The <code>tidy_model_parameters</code> does the same thing.</p></li>
 <li><p>Exports more utility functions (<code>long_to_wide_converter</code>, <code>format_num</code>, <code>stats_type_switch</code>) to get rid of reliance on <code>ipmisc</code> package.</p></li>
 <li><p>To be consistent with the expressions, the dataframe for Bayesian analysis now also contain log of Bayes Factor values.</p></li>
 <li><p>The <code>tidy_model_effectsize()</code> function is no longer exported as it is helpful only for the internal workings of the package.</p></li>
 <li><p>Given that these values can be really high, the statistic values for non-parametric tests were shown on a log scale, but this is a highly non-standard practice that has caused a lot of confusion among users. In light of this feedback, the functions no longer return these values on a log scale but in a scientific notation to keep the statistical expressions short.</p></li>
-</ul><p>MINOR CHANGES</p>
+</ul></div>
+<div class="section level3">
+<h3 id="minor-changes-1-2-0">MINOR CHANGES<a class="anchor" aria-label="anchor" href="#minor-changes-1-2-0"></a></h3>
 <ul><li>Removes <code>VR_dilemma</code> dataset, which lacked enough variation to be a good dataset to use in examples or tests.</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.1.0" id="statsexpressions-110">statsExpressions 1.1.0<a class="anchor" aria-label="anchor" href="#statsexpressions-110"></a></h2><p class="text-muted">CRAN release: 2021-05-30</p>
-<p>MAJOR CHANGES</p>
+<div class="section level3">
+<h3 id="major-changes-1-1-0">MAJOR CHANGES<a class="anchor" aria-label="anchor" href="#major-changes-1-1-0"></a></h3>
 <ul><li><p>There is a new <em>JOSS</em> paper about <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> package!! <a href="https://joss.theoj.org/papers/10.21105/joss.03236" class="external-link uri">https://joss.theoj.org/papers/10.21105/joss.03236</a></p></li>
 <li><p>The effect size for independent trimmed means two-sample test has been changed from explanatory measure of effect size to AKP’s delta, which is easier to understand and interpret since its a robust cousin of Cohen’s <em>d</em>.</p></li>
 <li><p><code>one_sample_test</code> and <code>two_sample_test</code> gain <code>alternative</code> argument to specify alternative hypothesis (<a href="https://github.com/IndrajeetPatil/statsExpressions/issues/86" class="external-link">#86</a>).</p></li>
 <li><p>Cohen’s <em>d</em> and Hedge’s <em>g</em> use non-pooled standard deviation (cf. <a href="https://psyarxiv.com/tu6mp/" class="external-link uri">https://psyarxiv.com/tu6mp/</a>).</p></li>
-</ul><p>MINOR CHANGES</p>
+</ul></div>
+<div class="section level3">
+<h3 id="minor-changes-1-1-0">MINOR CHANGES<a class="anchor" aria-label="anchor" href="#minor-changes-1-1-0"></a></h3>
 <ul><li>The output dataframes now contain columns with additional information about how confidence intervals are computed (thanks to <code>effectsize</code> package).</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.1" id="statsexpressions-101">statsExpressions 1.0.1<a class="anchor" aria-label="anchor" href="#statsexpressions-101"></a></h2><p class="text-muted">CRAN release: 2021-04-13</p>
-<p>BREAKING CHANGES</p>
+<div class="section level3">
+<h3 id="breaking-changes-1-0-1">BREAKING CHANGES<a class="anchor" aria-label="anchor" href="#breaking-changes-1-0-1"></a></h3>
 <ul><li>Retires all vestigial <code>expr_*</code> functions.</li>
-</ul><p>MINOR CHANGES</p>
+</ul></div>
+<div class="section level3">
+<h3 id="minor-changes-1-0-1">MINOR CHANGES<a class="anchor" aria-label="anchor" href="#minor-changes-1-0-1"></a></h3>
 <ul><li>Adapts failing tests due to changes in <code>effectsize</code>.</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.0" id="statsexpressions-100">statsExpressions 1.0.0<a class="anchor" aria-label="anchor" href="#statsexpressions-100"></a></h2><p class="text-muted">CRAN release: 2021-03-11</p>
 <p>This is the first <strong>stable</strong> release of <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a>!</p>
@@ -150,14 +182,19 @@
 <li><p>The <strong>good news</strong>: There will not be any new changes to any of the current functions, except for any change necessary for maintenance or bug squashing. Well, to be more precise, this is true only for the functions that have <strong>“stable”</strong> <a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link">badge</a>.</p></li>
 </ul><p>BUG FIXES</p>
 <ul><li>If the entered dataframe is <code>grouped</code>-tibble, the function internally ungroups this (<a href="https://github.com/IndrajeetPatil/statsExpressions/issues/79" class="external-link">#79</a>).</li>
-</ul><p>MINOR CHANGES</p>
+</ul><div class="section level3">
+<h3 id="minor-changes-1-0-0">MINOR CHANGES<a class="anchor" aria-label="anchor" href="#minor-changes-1-0-0"></a></h3>
 <ul><li>To reduce dependency load, <code>afex</code> has moved from <code>Imports</code> to <code>Suggests</code>.</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.7.1" id="statsexpressions-071">statsExpressions 0.7.1<a class="anchor" aria-label="anchor" href="#statsexpressions-071"></a></h2><p class="text-muted">CRAN release: 2021-02-19</p>
-<p>BREAKING CHANGES</p>
+<div class="section level3">
+<h3 id="breaking-changes-0-7-1">BREAKING CHANGES<a class="anchor" aria-label="anchor" href="#breaking-changes-0-7-1"></a></h3>
 <ul><li>To avoid confusion among users, the trimming level for all functions is now changed from <code>tr = 0.1</code> to <code>tr = 0.2</code> (which is what <code>WRS2</code> defaults to).</li>
-</ul><p>MAJOR CHANGES</p>
+</ul></div>
+<div class="section level3">
+<h3 id="major-changes-0-7-1">MAJOR CHANGES<a class="anchor" aria-label="anchor" href="#major-changes-0-7-1"></a></h3>
 <ul><li><p><code>expr_template</code> gains a new argument <code>bayesian</code>, which can return an expression for Bayesian analysis, which has a slightly different template. Additionally, it has changed its conventions about the column names it expects.</p></li>
 <li><p>Retires the additional caption-making functionality that was unique to <code>expr_meta_random</code> when <code>type = "parametric"</code>. This was the only context in which this feature was supported and was therefore inconsistent with the rest of the package API.</p></li>
 <li><p>Removes <code>tidy_model_performance</code> function, which is no longer used internally.</p></li>
@@ -165,9 +202,11 @@
 <li><p>All meta-analysis packages move from <code>Imports</code> to <code>Suggests</code> to reduce the installation time for the user.</p></li>
 <li><p>All robust tests in this package were based on trimmed means, except for correlation test. This has been changed: the robust correlation measure is now Winsorized correlation, which is based on trimming. Therefore, the <code>beta</code> argument has been replaced by <code>tr</code> argument. This should result only in minor changes in correlation coefficient estimates.</p></li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.7.0" id="statsexpressions-070">statsExpressions 0.7.0<a class="anchor" aria-label="anchor" href="#statsexpressions-070"></a></h2><p class="text-muted">CRAN release: 2021-01-19</p>
-<p>BREAKING CHANGES</p>
+<div class="section level3">
+<h3 id="breaking-changes-0-7-0">BREAKING CHANGES<a class="anchor" aria-label="anchor" href="#breaking-changes-0-7-0"></a></h3>
 <ul><li>
 <p>To be consistent with <code>ggstatsplot</code>’s overall syntax philosophy the <code>type</code> argument can be used to specify which type of statistical approach is to be used for all functions.</p>
 <ul><li><p><code>t_parametric</code>, <code>t_nonparametric</code>, <code>t_robust</code>, <code>t_bayes</code> are now removed in favor of a single function <code>two_sample_test</code>.</p></li>
@@ -177,125 +216,171 @@
 </ul><p>BUG FIXES</p>
 <ul><li>
 <code>contingency_table</code> ignored <code>ratio</code> argument while computing Cramer’s <em>V</em> for one-sample test. This is fixed.</li>
-</ul><p>MAJOR CHANGES</p>
+</ul></div>
+<div class="section level3">
+<h3 id="major-changes-0-7-0">MAJOR CHANGES<a class="anchor" aria-label="anchor" href="#major-changes-0-7-0"></a></h3>
 <ul><li><p>All non-parametric functions now use <code>effectsize</code> package to compute effect sizes and not <code>rcompanion</code>. This would lead to some changes in effect sizes and their confidence intervals reported by the respective functions.</p></li>
 <li><p>Robust one-sample test is changed from one-sample percentile bootstrap to bootstrap-<em>t</em> method for one-sample test, which uses trimmed mean like the rest of the robust functions in this package.</p></li>
-</ul><p>MINOR CHANGES</p>
+</ul></div>
+<div class="section level3">
+<h3 id="minor-changes-0-7-0">MINOR CHANGES<a class="anchor" aria-label="anchor" href="#minor-changes-0-7-0"></a></h3>
 <ul><li><p>Package internally relies on <code>afex</code> instead of <code>ez</code> for within-subjects ANOVA.</p></li>
 <li><p><code>expr_template</code> gains <code>paired</code> argument.</p></li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.6.2" id="statsexpressions-062">statsExpressions 0.6.2<a class="anchor" aria-label="anchor" href="#statsexpressions-062"></a></h2><p class="text-muted">CRAN release: 2020-12-08</p>
-<p>MINOR CHANGES</p>
+<div class="section level3">
+<h3 id="minor-changes-0-6-2">MINOR CHANGES<a class="anchor" aria-label="anchor" href="#minor-changes-0-6-2"></a></h3>
 <ul><li><p>Internal refactoring to catch up with changes made to <code>effectsize</code>. Tests are adapted to these changes as well.</p></li>
 <li><p>Sample size information in expressions is pretty-formatted.</p></li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.6.1" id="statsexpressions-061">statsExpressions 0.6.1<a class="anchor" aria-label="anchor" href="#statsexpressions-061"></a></h2><p class="text-muted">CRAN release: 2020-12-01</p>
-<p>MAJOR CHANGES</p>
+<div class="section level3">
+<h3 id="major-changes-0-6-1">MAJOR CHANGES<a class="anchor" aria-label="anchor" href="#major-changes-0-6-1"></a></h3>
 <ul><li><p>Adds two new helper functions: <code>tidy_model_parameters</code> and <code>tidy_model_performance</code> to toggle between <code>easystats</code> and <code>tidymodels</code> naming conventions.</p></li>
 <li><p>Drops <code>broomExtra</code> from dependencies in favor of <code>parameters</code> + <code>performance</code>.</p></li>
 <li><p>Removes the unused and vestigial <code>Titanic_full</code> dataset.</p></li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.6.0" id="statsexpressions-060">statsExpressions 0.6.0<a class="anchor" aria-label="anchor" href="#statsexpressions-060"></a></h2><p class="text-muted">CRAN release: 2020-10-30</p>
-<p>BREAKING CHANGES</p>
+<div class="section level3">
+<h3 id="breaking-changes-0-6-0">BREAKING CHANGES<a class="anchor" aria-label="anchor" href="#breaking-changes-0-6-0"></a></h3>
 <ul><li><p>Removes the alias <code>expr_onesample_proptest</code>.</p></li>
 <li><p>The <code>expr_template</code> function retires <code>effsize.df</code> argument. Now all details need to be entered only in <code>data</code>.</p></li>
 <li><p>All meta-analyses are now carried out using <code>expr_meta_random</code> and the individual functions have been removed.</p></li>
-</ul><p>MAJOR CHANGES</p>
+</ul></div>
+<div class="section level3">
+<h3 id="major-changes-0-6-0">MAJOR CHANGES<a class="anchor" aria-label="anchor" href="#major-changes-0-6-0"></a></h3>
 <ul><li><p>All effect sizes for contingency tabs are now calculated via <code>effectsize</code> instead of <code>rcompanion</code>. This would lead to slight differences in effect sizes and their CIs but the computations will be faster. Additionally, the lower bound will never be negative and will be restricted to [0,1].</p></li>
 <li><p><code>contingency_table</code> function has been made less robust. It now fails instead of returning <code>NULL</code> when it is not supposed to work. This is done to be consistent with the other functions in the package which also fail instead of returning <code>NULL</code>.</p></li>
 <li><p><code>expr_anova_parametric</code> always applies sphericity correction for <em>p</em>-values for repeated measures ANOVA.</p></li>
 <li><p><code>expr_anova_parametric</code> retires non-partial variants of effect sizes (eta-squared and omega-squared, i.e.) for parametric analyses.</p></li>
 <li><p>The <em>t</em>-test and ANOVA tests get <code>subject.id</code> argument relevant for repeated measures design.</p></li>
-</ul><p>MINOR CHANGES</p>
+</ul></div>
+<div class="section level3">
+<h3 id="minor-changes-0-6-0">MINOR CHANGES<a class="anchor" aria-label="anchor" href="#minor-changes-0-6-0"></a></h3>
 <ul><li><p>Retires the vestigial <code>stat.title</code> argument. It was originally intended to give more info on the tests, but now the expressions themselves contain these details.</p></li>
 <li><p>For paired ANOVA designs, <code>partial = TRUE</code> is recognized by effect sizes.</p></li>
 <li><p>Retires <code>bias.correct</code> argument for contingency table analysis. It is rarely justifiable to use the biased version of Cramer’s <em>V</em>.</p></li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.1" id="statsexpressions-051">statsExpressions 0.5.1<a class="anchor" aria-label="anchor" href="#statsexpressions-051"></a></h2><p class="text-muted">CRAN release: 2020-10-05</p>
-<p>MINOR CHANGES</p>
+<div class="section level3">
+<h3 id="minor-changes-0-5-1">MINOR CHANGES<a class="anchor" aria-label="anchor" href="#minor-changes-0-5-1"></a></h3>
 <ul><li><p>Adapts tests to changes made in the <code>correlation</code> package.</p></li>
 <li><p>Subtitles for correlation tests make clear the type of statistic.</p></li>
 <li><p>Small <em>p</em>-values (&lt; 0.001) are now shown in scientific format.</p></li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.0" id="statsexpressions-050">statsExpressions 0.5.0<a class="anchor" aria-label="anchor" href="#statsexpressions-050"></a></h2><p class="text-muted">CRAN release: 2020-09-12</p>
-<p>MINOR CHANGES</p>
+<div class="section level3">
+<h3 id="minor-changes-0-5-0">MINOR CHANGES<a class="anchor" aria-label="anchor" href="#minor-changes-0-5-0"></a></h3>
 <ul><li><p>Adapts to changes made in <code>tidyBF</code> package.</p></li>
 <li><p>Re-exports <code><a href="https://easystats.github.io/correlation/reference/correlation.html" class="external-link">correlation::correlation</a></code> needed for <code>ggstatsplot</code>.</p></li>
 <li><p>The <code>t_nonparametric</code> subtitle now clarifies whether it’s a Wilcoxon test or a Mann-Whitney test.</p></li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.2" id="statsexpressions-042">statsExpressions 0.4.2<a class="anchor" aria-label="anchor" href="#statsexpressions-042"></a></h2><p class="text-muted">CRAN release: 2020-06-20</p>
-<p>MINOR CHANGES</p>
+<div class="section level3">
+<h3 id="minor-changes-0-4-2">MINOR CHANGES<a class="anchor" aria-label="anchor" href="#minor-changes-0-4-2"></a></h3>
 <ul><li><p>Thanks to Sarah, the package has a hexsticker. :)</p></li>
 <li><p>Confidence intervals for Spearman’s rho are computed using <code>correlation</code> instead of <code>rcompanion</code>.</p></li>
 <li><p>All relevant functions get rid of <code>messages</code> argument as the functions no longer print a message when bootstrapped CIs are used.</p></li>
 <li><p>The effect size measure for paired robust <em>t</em>-test is now changed to robust (trimmed-Winsorized) standardized difference similar to Cohen’s <em>d</em>.</p></li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.1" id="statsexpressions-041">statsExpressions 0.4.1<a class="anchor" aria-label="anchor" href="#statsexpressions-041"></a></h2><p class="text-muted">CRAN release: 2020-04-22</p>
 <p>BUG FIXES</p>
 <ul><li>Major bug introduced in <code>0.4.0</code> release for <code>expr_anova_parametric</code>: changing <code>conf.level</code> doesn’t work and function defaults to <code>0.90</code> CIs (<a href="https://github.com/IndrajeetPatil/statsExpressions/issues/32" class="external-link">#32</a>).</li>
-</ul><p>MINOR CHANGES</p>
+</ul><div class="section level3">
+<h3 id="minor-changes-0-4-1">MINOR CHANGES<a class="anchor" aria-label="anchor" href="#minor-changes-0-4-1"></a></h3>
 <ul><li>Removes extra space contained in subtitles for Bayes Factor results (<a href="https://github.com/IndrajeetPatil/statsExpressions/issues/31" class="external-link">#31</a>).</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.0" id="statsexpressions-040">statsExpressions 0.4.0<a class="anchor" aria-label="anchor" href="#statsexpressions-040"></a></h2><p class="text-muted">CRAN release: 2020-04-15</p>
-<p>BREAKING CHANGES</p>
+<div class="section level3">
+<h3 id="breaking-changes-0-4-0">BREAKING CHANGES<a class="anchor" aria-label="anchor" href="#breaking-changes-0-4-0"></a></h3>
 <ul><li><p>Removes the experimental <code>corr_objects</code> function.</p></li>
 <li><p>All Bayes Factor related functions have now moved to the new <code>tidyBF</code> package and are re-exported from there.</p></li>
-</ul><p>MAJOR CHANGES</p>
+</ul></div>
+<div class="section level3">
+<h3 id="major-changes-0-4-0">MAJOR CHANGES<a class="anchor" aria-label="anchor" href="#major-changes-0-4-0"></a></h3>
 <ul><li><p>Minimum R version bumped to <code>R 3.6.0</code>.</p></li>
 <li><p>Retires the internal <code>effsize_t_parametric</code> helper function in favor of relying functions from <code>effectsize</code>, which is now added as a dependency. Similarly, <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> now relies on <code>effectsize</code> to compute effect sizes for ANOVA designs, instead of <code>sjstats</code>.</p></li>
 <li><p>For parametric <em>t</em>-tests and ANOVAs, confidence intervals for effect sizes are estimated using the noncentrality parameter method. Centrality-based methods are deprecated.</p></li>
 <li><p>Correlation analysis is carried out using <code>correlation</code> package, which is now added as a dependency.</p></li>
-</ul><p>MINOR CHANGES</p>
+</ul></div>
+<div class="section level3">
+<h3 id="minor-changes-0-4-0">MINOR CHANGES<a class="anchor" aria-label="anchor" href="#minor-changes-0-4-0"></a></h3>
 <ul><li>All expressions now contain name of the statistical test carried out.</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.1" id="statsexpressions-031">statsExpressions 0.3.1<a class="anchor" aria-label="anchor" href="#statsexpressions-031"></a></h2><p class="text-muted">CRAN release: 2020-02-14</p>
+<div class="section level3">
+<h3 id="new-features-0-3-1">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-3-1"></a></h3>
 <ul><li>Adds a new function <code>corr_objects</code> to reduce dependency load of <code>ggstatsplot</code>. This is an experimental function and should be avoided until it stabilizes.</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.0" id="statsexpressions-030">statsExpressions 0.3.0<a class="anchor" aria-label="anchor" href="#statsexpressions-030"></a></h2><p class="text-muted">CRAN release: 2020-01-29</p>
-<p>NEW FEATURES</p>
-<ul><li>New functions to carry out meta-analysis: <code>expr_meta_bayes</code>.</li>
+<div class="section level3">
+<h3 id="new-features-0-3-0">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-3-0"></a></h3>
+<ul><li>New function to carry out meta-analysis: <code>expr_meta_bayes</code>.</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.1" id="statsexpressions-021">statsExpressions 0.2.1<a class="anchor" aria-label="anchor" href="#statsexpressions-021"></a></h2><p class="text-muted">CRAN release: 2020-01-23</p>
-<p>NEW FEATURES</p>
-<ul><li>New functions to carry out meta-analysis: <code>expr_meta_parametric</code>, <code>expr_meta_robust</code>, <code>bf_meta</code>.</li>
+<div class="section level3">
+<h3 id="new-features-0-2-1">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-2-1"></a></h3>
+<ul><li>New function to carry out meta-analysis: <code>expr_meta_parametric</code>, <code>expr_meta_robust</code>, <code>bf_meta</code>.</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.0" id="statsexpressions-020">statsExpressions 0.2.0<a class="anchor" aria-label="anchor" href="#statsexpressions-020"></a></h2><p class="text-muted">CRAN release: 2020-01-10</p>
-<p>BREAKING CHANGES</p>
+<div class="section level3">
+<h3 id="breaking-changes-0-2-0">BREAKING CHANGES<a class="anchor" aria-label="anchor" href="#breaking-changes-0-2-0"></a></h3>
 <ul><li>
 <code>expr_template</code> function now expects two dataframes: <code>data</code> and <code>effsize.df</code> that contain the details needed for creating expressions instead of providing each individual values. This makes the function more friendly work with using modeling packages like <code>broom</code>.</li>
-</ul><p>MINOR CHANGES</p>
+</ul></div>
+<div class="section level3">
+<h3 id="minor-changes-0-2-0">MINOR CHANGES<a class="anchor" aria-label="anchor" href="#minor-changes-0-2-0"></a></h3>
 <ul><li><p>Minor tweaks to how widehat is displayed in some of the expressions.</p></li>
 <li><p>Cramer’s <em>V</em> is bias-corrected by default.</p></li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.3" id="statsexpressions-013">statsExpressions 0.1.3<a class="anchor" aria-label="anchor" href="#statsexpressions-013"></a></h2><p class="text-muted">CRAN release: 2019-12-18</p>
-<p>MAJOR CHANGES</p>
+<div class="section level3">
+<h3 id="major-changes-0-1-3">MAJOR CHANGES<a class="anchor" aria-label="anchor" href="#major-changes-0-1-3"></a></h3>
 <ul><li><p>Removes <code>MCMCpack</code> from <code>Depends</code>.</p></li>
 <li><p>All effect size texts now contain <code>^</code> on top to signify that these are estimates.</p></li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.2" id="statsexpressions-012">statsExpressions 0.1.2<a class="anchor" aria-label="anchor" href="#statsexpressions-012"></a></h2><p class="text-muted">CRAN release: 2019-12-13</p>
-<p>MINOR CHANGES</p>
+<div class="section level3">
+<h3 id="minor-changes-0-1-2">MINOR CHANGES<a class="anchor" aria-label="anchor" href="#minor-changes-0-1-2"></a></h3>
 <ul><li>Maintenance release to fix additional check issues on <code>CRAN</code>.</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.1" id="statsexpressions-011">statsExpressions 0.1.1<a class="anchor" aria-label="anchor" href="#statsexpressions-011"></a></h2><p class="text-muted">CRAN release: 2019-08-28</p>
-<p>MINOR CHANGES</p>
+<div class="section level3">
+<h3 id="minor-changes-0-1-1">MINOR CHANGES<a class="anchor" aria-label="anchor" href="#minor-changes-0-1-1"></a></h3>
 <ul><li><p>Fixing tests for the new release of <code>rcompanion</code> dependency.</p></li>
 <li><p>Minor code refactoring.</p></li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="statsexpressions-010">statsExpressions 0.1.0<a class="anchor" aria-label="anchor" href="#statsexpressions-010"></a></h2><p class="text-muted">CRAN release: 2019-08-24</p>
 <ul><li>First release of the package.</li>
