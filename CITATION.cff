@@ -117,7 +117,7 @@ references:
     email: matanshm@post.bgu.ac.il
     orcid: https://orcid.org/0000-0002-4287-4801
   year: '2023'
-  version: '>= 0.8.3'
+  version: '>= 0.8.4'
 - type: software
   title: datawizard
   abstract: 'datawizard: Easy Data Wrangling and Statistical Transformations'
@@ -149,8 +149,8 @@ references:
     given-names: Brenton M.
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
-  version: '>= 0.7.0'
   year: '2023'
+  version: '>= 0.7.1'
 - type: software
   title: dplyr
   abstract: 'dplyr: A Grammar of Data Manipulation'
@@ -259,8 +259,8 @@ references:
     given-names: Vincent
     email: vincent.arel-bundock@umontreal.ca
     orcid: https://orcid.org/0000-0003-2042-7063
-  year: '2023'
   version: '>= 0.19.1'
+  year: '2023'
 - type: software
   title: magrittr
   abstract: 'magrittr: A Forward-Pipe Operator for R'
@@ -306,7 +306,7 @@ references:
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2023'
-  version: '>= 0.20.2'
+  version: '>= 0.20.3'
 - type: software
   title: performance
   abstract: 'performance: Assessment of Regression Models Performance'
