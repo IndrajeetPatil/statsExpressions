@@ -26,14 +26,14 @@ Depends:
     R (>= 4.1.0)
 Imports:
     BayesFactor (>= 0.9.12-4.4),
-    correlation (>= 0.8.3),
-    datawizard (>= 0.7.0),
+    correlation (>= 0.8.4),
+    datawizard (>= 0.7.1),
     dplyr (>= 1.1.1),
     effectsize (>= 0.8.3),
     glue,
     insight (>= 0.19.1),
     magrittr,
-    parameters (>= 0.20.2),
+    parameters (>= 0.20.3),
     performance (>= 0.10.2),
     purrr (>= 1.0.1),
     rlang,
