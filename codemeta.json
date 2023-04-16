@@ -123,6 +123,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "rstantools",
+      "name": "rstantools",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rstantools"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "survival",
       "name": "survival",
       "provider": {
@@ -406,7 +418,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4131.928KB",
+  "fileSize": "4131.834KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",

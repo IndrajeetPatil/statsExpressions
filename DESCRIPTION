@@ -52,6 +52,7 @@ Suggests:
     metafor,
     metaplus,
     rmarkdown,
+    rstantools,
     survival,
     testthat (>= 3.1.7),
     utils
