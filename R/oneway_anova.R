@@ -139,7 +139,6 @@ oneway_anova <- function(data,
                          nboot = 100L,
                          ...) {
   type <- stats_type_switch(type)
-
   c(x, y) %<-% c(ensym(x), ensym(y))
 
   data %<>% long_to_wide_converter(
