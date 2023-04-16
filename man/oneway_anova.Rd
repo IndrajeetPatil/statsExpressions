@@ -234,6 +234,8 @@ oneway_anova(
   paired     = TRUE,
   type       = "r"
 )
+\dontshow{\}) # examplesIf}
+\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("rstantools", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 # ----------------------- Bayesian -------------------------------------
 

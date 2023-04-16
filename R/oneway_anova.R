@@ -104,6 +104,8 @@
 #'   type       = "r"
 #' )
 #'
+#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("rstantools", quietly = TRUE)
+#'
 #' # ----------------------- Bayesian -------------------------------------
 #'
 #' # between-subjects
