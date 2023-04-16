@@ -25,6 +25,7 @@ BugReports: https://github.com/IndrajeetPatil/statsExpressions/issues
 Depends: 
     R (>= 4.1.0)
 Imports:
+    afex (>= 1.2-0),
     BayesFactor (>= 0.9.12-4.4),
     correlation (>= 0.8.4),
     datawizard (>= 0.7.1),
@@ -35,6 +36,7 @@ Imports:
     magrittr,
     parameters (>= 0.20.3),
     performance (>= 0.10.2),
+    PMCMRplus,
     purrr (>= 1.0.1),
     rlang,
     stats,
@@ -44,13 +46,11 @@ Imports:
     WRS2 (>= 1.1-4),
     zeallot
 Suggests:
-    afex (>= 1.2-0),
     ggplot2,
     knitr,
     metaBMA,
     metafor,
     metaplus,
-    PMCMRplus,
     rmarkdown,
     survival,
     testthat (>= 3.1.7),

@@ -75,6 +75,28 @@ references:
     name: R Foundation for Statistical Computing
   version: '>= 4.1.0'
 - type: software
+  title: afex
+  abstract: 'afex: Analysis of Factorial Experiments'
+  notes: Imports
+  url: https://afex.singmann.science/
+  repository: https://CRAN.R-project.org/package=afex
+  authors:
+  - family-names: Singmann
+    given-names: Henrik
+    email: singmann@gmail.com
+    orcid: https://orcid.org/0000-0002-4842-3657
+  - family-names: Bolker
+    given-names: Ben
+  - family-names: Westfall
+    given-names: Jake
+  - family-names: Aust
+    given-names: Frederik
+    orcid: https://orcid.org/0000-0003-4900-788X
+  - family-names: Ben-Shachar
+    given-names: Mattan S.
+  year: '2023'
+  version: '>= 1.2-0'
+- type: software
   title: BayesFactor
   abstract: 'BayesFactor: Computation of Bayes Factors for Common Designs'
   notes: Imports
@@ -341,6 +363,18 @@ references:
   year: '2023'
   version: '>= 0.10.2'
 - type: software
+  title: PMCMRplus
+  abstract: 'PMCMRplus: Calculate Pairwise Multiple Comparisons of Mean Rank Sums
+    Extended'
+  notes: Imports
+  repository: https://CRAN.R-project.org/package=PMCMRplus
+  authors:
+  - family-names: Pohlert
+    given-names: Thorsten
+    email: thorsten.pohlert@gmx.de
+    orcid: https://orcid.org/0000-0003-3855-3025
+  year: '2023'
+- type: software
   title: purrr
   abstract: 'purrr: Functional Programming Tools'
   notes: Imports
@@ -464,28 +498,6 @@ references:
     email: nathanteetor@gmail.com
   year: '2023'
 - type: software
-  title: afex
-  abstract: 'afex: Analysis of Factorial Experiments'
-  notes: Suggests
-  url: https://afex.singmann.science/
-  repository: https://CRAN.R-project.org/package=afex
-  authors:
-  - family-names: Singmann
-    given-names: Henrik
-    email: singmann@gmail.com
-    orcid: https://orcid.org/0000-0002-4842-3657
-  - family-names: Bolker
-    given-names: Ben
-  - family-names: Westfall
-    given-names: Jake
-  - family-names: Aust
-    given-names: Frederik
-    orcid: https://orcid.org/0000-0003-4900-788X
-  - family-names: Ben-Shachar
-    given-names: Mattan S.
-  year: '2023'
-  version: '>= 1.2-0'
-- type: software
   title: ggplot2
   abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
   notes: Suggests
@@ -569,18 +581,6 @@ references:
     given-names: Ben
     email: bolker@mcmaster.ca
   - name: R Development Core Team
-  year: '2023'
-- type: software
-  title: PMCMRplus
-  abstract: 'PMCMRplus: Calculate Pairwise Multiple Comparisons of Mean Rank Sums
-    Extended'
-  notes: Suggests
-  repository: https://CRAN.R-project.org/package=PMCMRplus
-  authors:
-  - family-names: Pohlert
-    given-names: Thorsten
-    email: thorsten.pohlert@gmx.de
-    orcid: https://orcid.org/0000-0003-3855-3025
   year: '2023'
 - type: software
   title: rmarkdown

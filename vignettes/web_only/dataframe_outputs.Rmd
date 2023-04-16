@@ -21,7 +21,6 @@ vignette: >
 source("../setup.R")
 
 pkgs <- c(
-  "afex",
   "ggplot2",
   "metaplus"
 )
