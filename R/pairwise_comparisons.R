@@ -32,11 +32,10 @@
 #' @references For more, see:
 #' <https://indrajeetpatil.github.io/ggstatsplot/articles/web_only/pairwise.html>
 #'
-#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("PMCMRplus", quietly = TRUE)
+#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
 #' # for reproducibility
 #' set.seed(123)
 #' library(statsExpressions)
-#' library(PMCMRplus)
 #'
 #' #------------------- between-subjects design ----------------------------
 #'
@@ -149,7 +148,6 @@ pairwise_comparisons <- function(data,
                                  p.adjust.method = "holm",
                                  k = 2L,
                                  ...) {
-  if (type != "robust") check_if_installed("PMCMRplus", reason = "for pairwise comparisons")
   type <- stats_type_switch(type)
   c(x, y) %<-% c(ensym(x), ensym(y))
 

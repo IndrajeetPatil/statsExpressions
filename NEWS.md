@@ -1,5 +1,10 @@
 # statsExpressions 1.5.0.9000
 
+## MAJOR CHANGES
+
+- Following dependencies move from being weak to strong dependencies given their
+  importance in key functions: `{afex}` and `{PMCMRplus}`.
+
 # statsExpressions 1.5.0
 
 ## BREAKING CHANGES

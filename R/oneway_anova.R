@@ -41,11 +41,10 @@
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams stats::oneway.test
 #'
-#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("afex", quietly = TRUE)
+#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
 #' # for reproducibility
 #' set.seed(123)
 #' library(statsExpressions)
-#' suppressPackageStartupMessages(library(afex)) # for within-subjects parametric ANOVA
 #'
 #' # ----------------------- parametric -------------------------------------
 #'
@@ -105,6 +104,8 @@
 #'   type       = "r"
 #' )
 #'
+#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("rstantools", quietly = TRUE)
+#'
 #' # ----------------------- Bayesian -------------------------------------
 #'
 #' # between-subjects
@@ -140,7 +141,6 @@ oneway_anova <- function(data,
                          nboot = 100L,
                          ...) {
   type <- stats_type_switch(type)
-
   c(x, y) %<-% c(ensym(x), ensym(y))
 
   data %<>% long_to_wide_converter(
@@ -163,8 +163,6 @@ oneway_anova <- function(data,
     # styler: on
 
     if (paired) {
-      check_if_installed("afex", minimum_version = "1.0-0")
-
       mod <- afex::aov_ez(
         id          = ".rowid",
         dv          = as_string(y),

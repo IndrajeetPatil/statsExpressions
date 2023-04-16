@@ -59,8 +59,6 @@ test_that(
 test_that(
   desc = "paired parametric anova subtitles work (without NAs)",
   code = {
-    skip_if_not_installed("afex")
-
     # parametric repeated anova subtitles (basic) ----------------------------
 
     # statsExpression output
@@ -85,8 +83,6 @@ test_that(
 test_that(
   desc = "works with subject id",
   code = {
-    skip_if_not_installed("afex")
-
     df <- data_with_subid
 
 
