@@ -251,7 +251,7 @@ references:
   abstract: 'insight: Easy Access to Model Information for Various Model Objects'
   notes: Imports
   url: https://easystats.github.io/insight/
-  repository: https://easystats.r-universe.dev
+  repository: https://CRAN.R-project.org/package=insight
   authors:
   - family-names: Lüdecke
     given-names: Daniel
@@ -671,7 +671,7 @@ references:
     given-names: Hadley
     email: hadley@posit.co
   year: '2023'
-  version: '>= 3.1.7'
+  version: '>= 3.1.8'
 - type: software
   title: utils
   abstract: 'R: A Language and Environment for Statistical Computing'

@@ -1,9 +1,8 @@
 skip_if_not_installed("boot")
 
 test_that(
-  desc = "centrality description works as expected",
+  desc = "centrality description works as expected - no missing data",
   code = {
-    # data without NAs
     set.seed(123)
     df <- purrr::pmap_dfr(
       .l = list(
@@ -20,8 +19,12 @@ test_that(
     set.seed(123)
     expect_snapshot(select(df, -expression))
     expect_snapshot(df[["expression"]])
+  }
+)
 
-    # data with NAs
+test_that(
+  desc = "centrality description works as expected - missing data",
+  code = {
     set.seed(123)
     df_na <- purrr::pmap_dfr(
       .l = list(
@@ -37,6 +40,9 @@ test_that(
 
     set.seed(123)
     expect_snapshot(select(df_na, -expression))
+
+    # MAP estimate `9.85` on macOS, while `9.86` on windows and linux
+    skip_on_os(c("windows", "linux"))
     expect_snapshot(df_na[["expression"]])
   }
 )

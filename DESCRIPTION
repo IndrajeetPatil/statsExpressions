@@ -54,7 +54,7 @@ Suggests:
     rmarkdown,
     rstantools,
     survival,
-    testthat (>= 3.1.7),
+    testthat (>= 3.1.8),
     utils
 VignetteBuilder: 
     knitr
