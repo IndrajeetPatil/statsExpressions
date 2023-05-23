@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Tidy Dataframes and Expressions with Statistical Details
-Version: 1.5.0.9000
+Version: 1.5.1
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -25,25 +25,25 @@ BugReports: https://github.com/IndrajeetPatil/statsExpressions/issues
 Depends: 
     R (>= 4.1.0)
 Imports:
-    afex (>= 1.2-0),
+    afex (>= 1.3-0),
     BayesFactor (>= 0.9.12-4.4),
     correlation (>= 0.8.4),
     datawizard (>= 0.7.1),
-    dplyr (>= 1.1.1),
+    dplyr (>= 1.1.2),
     effectsize (>= 0.8.3),
     glue,
-    insight (>= 0.19.1),
+    insight (>= 0.19.2),
     magrittr,
-    parameters (>= 0.20.3),
-    performance (>= 0.10.2),
-    PMCMRplus,
+    parameters (>= 0.21.0),
+    performance (>= 0.10.3),
+    PMCMRplus (>= 1.9.6),
     purrr (>= 1.0.1),
     rlang,
     stats,
     tibble (>= 3.2.1),
-    tidyr,
+    tidyr (>= 1.3.0),
     withr,
-    WRS2 (>= 1.1-4),
+    WRS2,
     zeallot
 Suggests:
     ggplot2,
