@@ -87,7 +87,7 @@ table:
 
 ```{r}
 #| label = "kable"
-# setup
+
 set.seed(123)
 
 # one-sample robust t-test
@@ -169,7 +169,7 @@ If you want to display more than one expression in a plot, you will *have to* pa
 
 ```{r}
 #| label = "anova_rob1"
-# setup
+
 set.seed(123)
 library(ggridges)
 
@@ -188,7 +188,7 @@ ggplot(iris, aes(x = Sepal.Length, y = Species)) +
 
 ```{r}
 #| label = "anova_parametric2"
-# setup
+
 set.seed(123)
 library(WRS2)
 library(ggbeeswarm)
@@ -216,7 +216,7 @@ ggplot2::ggplot(WineTasting, aes(Wine, Taste, color = Wine)) +
 
 ```{r}
 #| label = "t_two"
-# setup
+
 set.seed(123)
 library(gghalves)
 
@@ -234,7 +234,7 @@ ggplot(ToothGrowth, aes(supp, len)) +
 
 ```{r}
 #| label = "t_two_paired1"
-# setup
+
 set.seed(123)
 library(tidyr)
 library(PairedData)
@@ -264,7 +264,7 @@ paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject")
 
 ```{r}
 #| label = "t_one"
-# setup
+
 set.seed(123)
 
 # dataframe with results
@@ -283,7 +283,7 @@ Let's look at another example where we want to run correlation analysis:
 
 ```{r}
 #| label = "corr"
-# setup
+
 set.seed(123)
 
 # dataframe with results
@@ -305,7 +305,7 @@ For categorical/nominal data - one-sample:
 
 ```{r}
 #| label = "gof"
-# setup
+
 set.seed(123)
 
 # dataframe with results
@@ -336,7 +336,7 @@ to display them in plots:
 
 ```{r}
 #| label = "expr_output"
-# setup
+
 set.seed(123)
 
 # Pearson's chi-squared test of independence
@@ -349,7 +349,7 @@ contingency_table(mtcars, am, vs)$expression[[1]]
 #| label = "metaanalysis",
 #| fig.height = 14,
 #| fig.width = 12
-# setup
+
 set.seed(123)
 library(metaviz)
 library(metaplus)
@@ -380,7 +380,7 @@ include. For example, here only statistic and *p*-values are included:
 
 ```{r}
 #| label = "custom_expr"
-# setup
+
 set.seed(123)
 
 # extracting detailed expression
