@@ -5,15 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Utilities for producing dataframes with rich details for the
-    most common types of statistical approaches and tests: parametric,
-    nonparametric, robust, and Bayesian t-test, one-way ANOVA, correlation
-    analyses, contingency table analyses, and meta-analyses. The
-    functions are pipe-friendly and provide a consistent syntax to work
-    with tidy data. These dataframes additionally contain expressions with
-    statistical details, and can be used in graphing packages. This
-    package also forms the statistical processing backend for
-    ggstatsplot. References: Patil (2021) &lt;doi:10.21105/joss.03236&gt;.">
+<meta name="description" content="Utilities for producing dataframes with rich details for the most common types of statistical approaches and tests: parametric, nonparametric, robust, and Bayesian t-test, one-way ANOVA, correlation analyses, contingency table analyses, and meta-analyses. The functions are pipe-friendly and provide a consistent syntax to work with tidy data. These dataframes additionally contain expressions with statistical details, and can be used in graphing packages. This package also forms the statistical processing backend for ggstatsplot. References: Patil (2021) &lt;doi:10.21105/joss.03236&gt;.">
 <title>Tidy Dataframes and Expressions with Statistical Details • statsExpressions</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -23,20 +15,12 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="deps/Roboto-0.4.5/font.css" rel="stylesheet">
-<link href="deps/JetBrains_Mono-0.4.5/font.css" rel="stylesheet">
+<script src="deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="deps/Roboto-0.4.6/font.css" rel="stylesheet">
+<link href="deps/JetBrains_Mono-0.4.6/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Tidy Dataframes and Expressions with Statistical Details">
-<meta property="og:description" content="Utilities for producing dataframes with rich details for the
-    most common types of statistical approaches and tests: parametric,
-    nonparametric, robust, and Bayesian t-test, one-way ANOVA, correlation
-    analyses, contingency table analyses, and meta-analyses. The
-    functions are pipe-friendly and provide a consistent syntax to work
-    with tidy data. These dataframes additionally contain expressions with
-    statistical details, and can be used in graphing packages. This
-    package also forms the statistical processing backend for
-    ggstatsplot. References: Patil (2021) &lt;doi:10.21105/joss.03236&gt;.">
+<meta property="og:description" content="Utilities for producing dataframes with rich details for the most common types of statistical approaches and tests: parametric, nonparametric, robust, and Bayesian t-test, one-way ANOVA, correlation analyses, contingency table analyses, and meta-analyses. The functions are pipe-friendly and provide a consistent syntax to work with tidy data. These dataframes additionally contain expressions with statistical details, and can be used in graphing packages. This package also forms the statistical processing backend for ggstatsplot. References: Patil (2021) &lt;doi:10.21105/joss.03236&gt;.">
 <meta property="og:image" content="https://indrajeetpatil.github.io/statsExpressions/reference/figures/card.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@patilindrajeets">
@@ -54,7 +38,7 @@
     
     <a class="navbar-brand me-2" href="index.html">statsExpressions</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,8 +56,8 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="articles/stats_details.html">Test and effect size details</a>
     <a class="dropdown-item" href="articles/web_only/dataframe_outputs.html">Data frame outputs</a>
+    <a class="dropdown-item" href="articles/stats_details.html">Test and effect size details</a>
   </div>
 </li>
 <li class="nav-item">
@@ -175,27 +159,26 @@
 </h1>
 <p>The package can be cited as:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">"statsExpressions"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>To cite package <span class="st">'statsExpressions'</span> <span class="cf">in</span> publications use<span class="sc">:</span></span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  Patil, I., (<span class="dv">2021</span>). statsExpressions<span class="sc">:</span> R Package <span class="cf">for</span> Tidy Dataframes</span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  and Expressions with Statistical Details. Journal of Open Source</span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>  Software, <span class="dv">6</span>(<span class="dv">61</span>), <span class="dv">3236</span>, https<span class="sc">:</span><span class="er">//</span>doi.org<span class="sc">/</span><span class="fl">10.21105</span><span class="sc">/</span>joss<span class="fl">.03236</span></span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>A BibTeX entry <span class="cf">for</span> LaTeX users is</span>
-<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>  <span class="sc">@</span>Article{,</span>
-<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>    doi <span class="ot">=</span> {<span class="fl">10.21105</span><span class="sc">/</span>joss<span class="fl">.03236</span>},</span>
-<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>    url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>doi.org<span class="sc">/</span><span class="fl">10.21105</span><span class="sc">/</span>joss<span class="fl">.03236</span>},</span>
-<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a>    year <span class="ot">=</span> {<span class="dv">2021</span>},</span>
-<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a>    publisher <span class="ot">=</span> {{The Open Journal}},</span>
-<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a>    volume <span class="ot">=</span> {<span class="dv">6</span>},</span>
-<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a>    number <span class="ot">=</span> {<span class="dv">61</span>},</span>
-<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a>    pages <span class="ot">=</span> {<span class="dv">3236</span>},</span>
-<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a>    author <span class="ot">=</span> {Indrajeet Patil},</span>
-<span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a>    title <span class="ot">=</span> {{statsExpressions<span class="sc">:</span> {R} Package <span class="cf">for</span> Tidy Dataframes and Expressions with Statistical Details}},</span>
-<span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a>    journal <span class="ot">=</span> {{Journal of Open Source Software}},</span>
-<span id="cb1-22"><a href="#cb1-22" tabindex="-1"></a>  }</span></code></pre></div>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>To cite package <span class="st">'statsExpressions'</span> <span class="cf">in</span> publications use<span class="sc">:</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>  Patil, I., (<span class="dv">2021</span>). statsExpressions<span class="sc">:</span> R Package <span class="cf">for</span> Tidy Dataframes</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  and Expressions with Statistical Details. Journal of Open Source</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  Software, <span class="dv">6</span>(<span class="dv">61</span>), <span class="dv">3236</span>, https<span class="sc">:</span><span class="er">//</span>doi.org<span class="sc">/</span><span class="fl">10.21105</span><span class="sc">/</span>joss<span class="fl">.03236</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>A BibTeX entry <span class="cf">for</span> LaTeX users is</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>  <span class="sc">@</span>Article{,</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>    doi <span class="ot">=</span> {<span class="fl">10.21105</span><span class="sc">/</span>joss<span class="fl">.03236</span>},</span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>    url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>doi.org<span class="sc">/</span><span class="fl">10.21105</span><span class="sc">/</span>joss<span class="fl">.03236</span>},</span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>    year <span class="ot">=</span> {<span class="dv">2021</span>},</span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a>    publisher <span class="ot">=</span> {{The Open Journal}},</span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a>    volume <span class="ot">=</span> {<span class="dv">6</span>},</span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a>    number <span class="ot">=</span> {<span class="dv">61</span>},</span>
+<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a>    pages <span class="ot">=</span> {<span class="dv">3236</span>},</span>
+<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a>    author <span class="ot">=</span> {Indrajeet Patil},</span>
+<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a>    title <span class="ot">=</span> {{statsExpressions<span class="sc">:</span> {R} Package <span class="cf">for</span> Tidy Dataframes and Expressions with Statistical Details}},</span>
+<span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a>    journal <span class="ot">=</span> {{Journal of Open Source Software}},</span>
+<span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a>  }</span></code></pre></div>
 </div>
 <div class="section level1">
 <h1 id="general-workflow">General Workflow<a class="anchor" aria-label="anchor" href="#general-workflow"></a>
@@ -385,8 +368,7 @@
 <p>All possible output dataframes from functions are tabulated here: <a href="https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html</a></p>
 <p>Needless to say this will also work with the <code>kable</code> function to generate a table:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># setup</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># one-sample robust t-test</span></span>
 <span><span class="co"># we will leave `expression` column out; it's not needed for using only the dataframe</span></span>
@@ -496,8 +478,7 @@
 <h3 id="between-subjects-design">Between-subjects design<a class="anchor" aria-label="anchor" href="#between-subjects-design"></a>
 </h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># setup</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/ggridges/" class="external-link">ggridges</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">results_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span>, <span class="va">Sepal.Length</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span></span>
@@ -515,8 +496,7 @@
 <h3 id="within-subjects-design">Within-subjects design<a class="anchor" aria-label="anchor" href="#within-subjects-design"></a>
 </h3>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># setup</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-forge.r-project.org/projects/psychor/" class="external-link">WRS2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/eclarke/ggbeeswarm" class="external-link">ggbeeswarm</a></span><span class="op">)</span></span>
 <span></span>
@@ -545,8 +525,7 @@
 <h3 id="between-subjects-design-1">Between-subjects design<a class="anchor" aria-label="anchor" href="#between-subjects-design-1"></a>
 </h3>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># setup</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/erocoar/gghalves" class="external-link">gghalves</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">results_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span><span class="va">ToothGrowth</span>, <span class="va">supp</span>, <span class="va">len</span><span class="op">)</span></span>
@@ -563,8 +542,7 @@
 <h3 id="within-subjects-design-1">Within-subjects design<a class="anchor" aria-label="anchor" href="#within-subjects-design-1"></a>
 </h3>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># setup</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">PairedData</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">PrisonStress</span><span class="op">)</span></span>
@@ -594,8 +572,7 @@
 <h2 id="expressions-for-one-sample-tests">Expressions for one-sample tests<a class="anchor" aria-label="anchor" href="#expressions-for-one-sample-tests"></a>
 </h2>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># setup</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># dataframe with results</span></span>
 <span><span class="va">results_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, test.value <span class="op">=</span> <span class="fl">3</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span></span>
@@ -612,8 +589,7 @@
 </h2>
 <p>Let’s look at another example where we want to run correlation analysis:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># setup</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># dataframe with results</span></span>
 <span><span class="va">results_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/corr_test.html">corr_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">mpg</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span></span>
@@ -633,8 +609,7 @@
 </h2>
 <p>For categorical/nominal data - one-sample:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># setup</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># dataframe with results</span></span>
 <span><span class="va">results_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/contingency_table.html">contingency_table</a></span><span class="op">(</span></span>
@@ -660,8 +635,7 @@
 <p><img src="reference/figures/README-gof-1.png" width="100%"></p>
 <p>You can also use these function to get the expression in return without having to display them in plots:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># setup</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Pearson's chi-squared test of independence</span></span>
 <span><span class="fu"><a href="reference/contingency_table.html">contingency_table</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">am</span>, <span class="va">vs</span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
@@ -673,8 +647,7 @@
 <h2 id="expressions-for-meta-analysis">Expressions for meta-analysis<a class="anchor" aria-label="anchor" href="#expressions-for-meta-analysis"></a>
 </h2>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># setup</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Mkossmeier/metaviz" class="external-link">metaviz</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">metaplus</span><span class="op">)</span></span>
 <span></span>
@@ -702,8 +675,7 @@
 </h1>
 <p>Sometimes you may not wish include so many details in the subtitle. In that case, you can extract the expression and copy-paste only the part you wish to include. For example, here only statistic and <em>p</em>-values are included:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># setup</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># extracting detailed expression</span></span>
 <span><span class="op">(</span><span class="va">res_expr</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span>, <span class="va">Sepal.Length</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
