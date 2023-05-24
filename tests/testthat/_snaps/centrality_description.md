@@ -1,4 +1,4 @@
-# centrality description works as expected
+# centrality description works as expected - no missing data
 
     Code
       select(df, -expression)
@@ -75,7 +75,7 @@
       list(widehat(mu)[MAP] == "6.40")
       
 
----
+# centrality description works as expected - missing data
 
     Code
       select(df_na, -expression)

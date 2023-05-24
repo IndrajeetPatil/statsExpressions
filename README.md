@@ -54,7 +54,6 @@ The package can be cited as:
 
 ``` r
 citation("statsExpressions")
-
 To cite package 'statsExpressions' in publications use:
 
   Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes
@@ -160,7 +159,6 @@ Needless to say this will also work with the `kable` function to
 generate a table:
 
 ``` r
-# setup
 set.seed(123)
 
 # one-sample robust t-test
@@ -265,7 +263,6 @@ If you want to display more than one expression in a plot, you will
 ### Between-subjects design
 
 ``` r
-# setup
 set.seed(123)
 library(ggridges)
 
@@ -285,7 +282,6 @@ ggplot(iris, aes(x = Sepal.Length, y = Species)) +
 ### Within-subjects design
 
 ``` r
-# setup
 set.seed(123)
 library(WRS2)
 library(ggbeeswarm)
@@ -314,7 +310,6 @@ ggplot2::ggplot(WineTasting, aes(Wine, Taste, color = Wine)) +
 ### Between-subjects design
 
 ``` r
-# setup
 set.seed(123)
 library(gghalves)
 
@@ -333,7 +328,6 @@ ggplot(ToothGrowth, aes(supp, len)) +
 ### Within-subjects design
 
 ``` r
-# setup
 set.seed(123)
 library(tidyr)
 library(PairedData)
@@ -364,7 +358,6 @@ paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject")
 ## Expressions for one-sample tests
 
 ``` r
-# setup
 set.seed(123)
 
 # dataframe with results
@@ -384,7 +377,6 @@ ggplot(mtcars, aes(wt)) +
 Let’s look at another example where we want to run correlation analysis:
 
 ``` r
-# setup
 set.seed(123)
 
 # dataframe with results
@@ -407,7 +399,6 @@ ggplot(mtcars, aes(mpg, wt)) +
 For categorical/nominal data - one-sample:
 
 ``` r
-# setup
 set.seed(123)
 
 # dataframe with results
@@ -439,7 +430,6 @@ You can also use these function to get the expression in return without
 having to display them in plots:
 
 ``` r
-# setup
 set.seed(123)
 
 # Pearson's chi-squared test of independence
@@ -452,7 +442,6 @@ contingency_table(mtcars, am, vs)$expression[[1]]
 ## Expressions for meta-analysis
 
 ``` r
-# setup
 set.seed(123)
 library(metaviz)
 library(metaplus)
@@ -485,7 +474,6 @@ you wish to include. For example, here only statistic and *p*-values are
 included:
 
 ``` r
-# setup
 set.seed(123)
 
 # extracting detailed expression

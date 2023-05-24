@@ -258,7 +258,7 @@ oneway_anova <- function(data,
         formula      = new_formula(enexpr(y), expr(!!enexpr(x) + .rowid)),
         rscaleFixed  = bf.prior,
         whichRandom  = ".rowid",
-        rscaleRandom = 1
+        rscaleRandom = 1.0
       )
     }
 
