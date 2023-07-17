@@ -172,7 +172,7 @@ references:
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2023'
-  version: '>= 0.7.1'
+  version: '>= 0.8.0'
 - type: software
   title: dplyr
   abstract: 'dplyr: A Grammar of Data Manipulation'
@@ -286,7 +286,7 @@ references:
     email: etienne.bacher@protonmail.com
     orcid: https://orcid.org/0000-0002-9271-5075
   year: '2023'
-  version: '>= 0.19.2'
+  version: '>= 0.19.3'
 - type: software
   title: magrittr
   abstract: 'magrittr: A Forward-Pipe Operator for R'
@@ -332,7 +332,7 @@ references:
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2023'
-  version: '>= 0.21.0'
+  version: '>= 0.21.1'
 - type: software
   title: performance
   abstract: 'performance: Assessment of Regression Models Performance'
@@ -378,7 +378,7 @@ references:
     email: thorsten.pohlert@gmx.de
     orcid: https://orcid.org/0000-0003-3855-3025
   year: '2023'
-  version: '>= 1.9.6'
+  version: '>= 1.9.7'
 - type: software
   title: purrr
   abstract: 'purrr: Functional Programming Tools'
