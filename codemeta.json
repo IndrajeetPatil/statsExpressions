@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/IndrajeetPatil/statsExpressions",
   "issueTracker": "https://github.com/IndrajeetPatil/statsExpressions/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.5.1",
+  "version": "1.5.1.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -419,7 +419,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4131.39KB",
+  "fileSize": "4131.426KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
