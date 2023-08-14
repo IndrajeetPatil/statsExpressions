@@ -1,4 +1,6 @@
-# statsExpressions 1.5.1.9000
+# statsExpressions 1.5.2
+
+- Maintenance release. No user-visible changes.
 
 # statsExpressions 1.5.1
 

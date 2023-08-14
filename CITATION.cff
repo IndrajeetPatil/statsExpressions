@@ -503,6 +503,38 @@ references:
     email: nathanteetor@gmail.com
   year: '2023'
 - type: software
+  title: bayestestR
+  abstract: 'bayestestR: Understand and Describe Bayesian Models and Posterior Distributions'
+  notes: Suggests
+  url: https://easystats.github.io/bayestestR/
+  repository: https://easystats.r-universe.dev
+  authors:
+  - family-names: Makowski
+    given-names: Dominique
+    email: dom.makowski@gmail.com
+    orcid: https://orcid.org/0000-0001-5375-9967
+  - family-names: Lüdecke
+    given-names: Daniel
+    email: d.luedecke@uke.de
+    orcid: https://orcid.org/0000-0002-8895-3206
+  - family-names: Ben-Shachar
+    given-names: Mattan S.
+    email: matanshm@post.bgu.ac.il
+    orcid: https://orcid.org/0000-0002-4287-4801
+  - family-names: Patil
+    given-names: Indrajeet
+    email: patilindrajeet.science@gmail.com
+    orcid: https://orcid.org/0000-0003-1995-6531
+  - family-names: Wilson
+    given-names: Michael D.
+    email: michael.d.wilson@curtin.edu.au
+    orcid: https://orcid.org/0000-0003-4143-7308
+  - family-names: Wiernik
+    given-names: Brenton M.
+    email: brenton@wiernik.org
+    orcid: https://orcid.org/0000-0001-9560-6336
+  year: '2023'
+- type: software
   title: ggplot2
   abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
   notes: Suggests
@@ -671,7 +703,7 @@ references:
     given-names: Hadley
     email: hadley@posit.co
   year: '2023'
-  version: '>= 3.1.8'
+  version: '>= 3.1.10'
 - type: software
   title: utils
   abstract: 'R: A Language and Environment for Statistical Computing'

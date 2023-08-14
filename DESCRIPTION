@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Tidy Dataframes and Expressions with Statistical Details
-Version: 1.5.1.9000
+Version: 1.5.2
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -46,6 +46,7 @@ Imports:
     WRS2,
     zeallot
 Suggests:
+    bayestestR,
     ggplot2,
     knitr,
     metaBMA,
@@ -54,7 +55,7 @@ Suggests:
     rmarkdown,
     rstantools,
     survival,
-    testthat (>= 3.1.8),
+    testthat (>= 3.1.10),
     utils
 VignetteBuilder: 
     knitr
