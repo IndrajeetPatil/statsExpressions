@@ -45,7 +45,7 @@ tidy_model_expressions <- function(data,
   # convert the necessary columns to character type for expression
   df <- data %>%
     filter(if_all(
-      .cols = c(matches("estimate|statistic|std.error|p.value")),
+      .cols = matches("estimate|statistic|std.error|p.value"),
       .fns = Negate(is.na)
     )) %>%
     .data_to_char(k)

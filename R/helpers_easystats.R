@@ -26,7 +26,7 @@ tidy_model_parameters <- function(model, ...) {
     df_r2 <- performance::r2_bayes(model, average = TRUE, verbose = FALSE, ci = stats_df$conf.level[[1]]) %>%
       as_tibble() %>%
       standardize_names(style = "broom") %>%
-      rename("estimate" = "r.squared") %>%
+      rename(estimate = r.squared) %>%
       filter(if_any(matches("component"), ~ (.x == "conditional")))
 
     # remove estimates and CIs and use R2 data frame instead

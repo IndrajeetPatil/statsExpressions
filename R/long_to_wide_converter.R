@@ -90,7 +90,7 @@ long_to_wide_converter <- function(data,
     ungroup() %>%
     nest_by(.rowid, .key = "nested_data") %>%
     filter(sum(is.na(nested_data)) == 0L) %>%
-    tidyr::unnest(cols = c(nested_data))
+    tidyr::unnest(cols = nested_data)
 
   # convert to wide?
   if (spread && paired) data %<>% tidyr::pivot_wider(names_from = {{ x }}, values_from = {{ y }})
