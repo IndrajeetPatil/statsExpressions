@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.3.0 (2023-04-21)",
+  "runtimePlatform": "R version 4.3.1 (2023-06-16)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -240,7 +240,7 @@
       "@type": "SoftwareApplication",
       "identifier": "effectsize",
       "name": "effectsize",
-      "version": ">= 0.8.3",
+      "version": ">= 0.8.5",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -329,7 +329,7 @@
       "@type": "SoftwareApplication",
       "identifier": "purrr",
       "name": "purrr",
-      "version": ">= 1.0.1",
+      "version": ">= 1.0.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -419,7 +419,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4132.001KB",
+  "fileSize": "4131.39KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
