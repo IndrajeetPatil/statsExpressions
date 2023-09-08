@@ -1,5 +1,3 @@
-skip_if_not_installed("afex")
-
 test_that(
   desc = " parametric t-tests",
   code = {

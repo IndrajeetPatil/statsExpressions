@@ -172,11 +172,10 @@ The table below provides summary about:
 }
 
 \examples{
-\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("afex", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
-suppressPackageStartupMessages(library(afex)) # for within-subjects parametric ANOVA
 
 # ----------------------- parametric -------------------------------------
 
@@ -235,6 +234,8 @@ oneway_anova(
   paired     = TRUE,
   type       = "r"
 )
+\dontshow{\}) # examplesIf}
+\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("rstantools", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 # ----------------------- Bayesian -------------------------------------
 

@@ -23,10 +23,7 @@ vignette: >
 #| echo = FALSE
 source("setup.R")
 
-pkgs <- c(
-  "afex",
-  "ggplot2"
-)
+pkgs <- "ggplot2"
 
 successfully_loaded <- purrr::map_lgl(pkgs, requireNamespace, quietly = TRUE)
 can_evaluate <- all(successfully_loaded)

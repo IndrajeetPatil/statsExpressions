@@ -1,0 +1,78 @@
+# To understand the aim and scope of this workflow, have a look at these slides:
+# https://indrajeetpatil.github.io/preventive-r-package-care/
+
+name: check-styling
+
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    # Trigger once a week at 00:00 on Sunday
+    - cron: "0 0 * * SUN"
+
+jobs:
+  check-styling:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          pak-version: devel
+          dependencies: '"hard"'
+          extra-packages: |
+            local::.
+            r-lib/styler
+          needs: |
+            styler
+
+      - name: Enable styler cache
+        run: |
+          styler::cache_activate()
+        shell: Rscript {0}
+
+      - name: Determine cache location
+        id: styler-location
+        run: |
+          cat(
+            "location=",
+            styler::cache_info(format = "tabular")$location,
+            "\n",
+            file = Sys.getenv("GITHUB_OUTPUT"),
+            append = TRUE,
+            sep = ""
+          )
+        shell: Rscript {0}
+
+      - name: Cache styler
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.styler-location.outputs.location }}
+          key: ${{ runner.os }}-styler-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-styler-
+            ${{ runner.os }}-
+
+      - name: Style package
+        run: |
+          options(crayon.enabled = TRUE)
+          styler::style_pkg(filetype = c(".R", ".Rmd", ".Rmarkdown", ".Rnw"))
+        shell: Rscript {0}
+
+      - name: Check for changes
+        run: |
+          GREEN='\033[0;32m'
+          RED='\033[0;31m'
+          if git diff --quiet; then
+            echo -e "\n${GREEN}All files follow the style guide.\n"
+          else
+            echo -e "\n${RED}Some files don't follow the style guide. Run styler::style_pkg() with latest {styler}.\n"
+            exit 1
+          fi
