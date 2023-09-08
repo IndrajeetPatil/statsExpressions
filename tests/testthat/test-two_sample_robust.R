@@ -3,7 +3,6 @@
 test_that(
   desc = "t_robust - within-subjects - without NAs",
   code = {
-    # subtitle
     set.seed(123)
     df1 <- two_sample_test(
       type = "r",
@@ -26,7 +25,6 @@ test_that(
 test_that(
   desc = "t_robust - within-subjects - with NAs",
   code = {
-    # subtitle
     set.seed(123)
     df1 <- two_sample_test(
       type = "r",
@@ -49,7 +47,7 @@ test_that(
   code = {
     # between-subjects ------------------------------------------------------
 
-    # subtitle
+
     set.seed(123)
     df1 <- two_sample_test(
       type = "r",
