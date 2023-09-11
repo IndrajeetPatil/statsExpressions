@@ -210,10 +210,10 @@ two_sample_test <- function(data,
   # expression ---------------------------------------
 
   add_expression_col(
-    data     = stats_df,
-    paired   = paired,
-    n        = ifelse(paired, length(unique(data$.rowid)), nrow(data)),
-    k        = k,
-    k.df     = k.df
+    data   = stats_df,
+    paired = paired,
+    n      = ifelse(paired, length(unique(data$.rowid)), nrow(data)),
+    k      = k,
+    k.df   = k.df
   )
 }
