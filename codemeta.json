@@ -213,7 +213,7 @@
       "@type": "SoftwareApplication",
       "identifier": "correlation",
       "name": "correlation",
-      "version": ">= 0.8.5",
+      "version": ">= 0.8.4",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
