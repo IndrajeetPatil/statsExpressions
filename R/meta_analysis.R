@@ -41,38 +41,21 @@
 #' set.seed(123)
 #' library(statsExpressions)
 #'
-#' # a data frame with estimates and standard errors
-#' # (`mag` dataset from `{metaplus}`)
-#' df <- tibble::tribble(
-#'   ~study, ~estimate, ~std.error,
-#'   "Abraham", -0.83, 1.247,
-#'   "Bertschat", -1.056, 0.414,
-#'   "Ceremuzynski", -1.278, 0.808,
-#'   "Feldstedt", -0.043, 1.429,
-#'   "Golf", 0.223, 0.489,
-#'   "ISIS-4", -2.407, 1.072,
-#'   "LIMIT-2", -1.28, 1.193,
-#'   "Morton", -1.191, 1.661,
-#'   "Pereira", -0.695, 0.536,
-#'   "Rasmussen", -2.208, 1.109,
-#'   "Schechter", -2.038, 0.78,
-#'   "Schechter 1", -0.85, 0.618,
-#'   "Schechter 2", -0.793, 0.625,
-#'   "Singh", -0.299, 0.146,
-#'   "Smith", -1.57, 0.574,
-#'   "Thogersen", 0.057, 0.031
-#' )
+#' @examplesIf requireNamespace("metaplus", quietly = TRUE)
+#' # let's use `mag` dataset from `{metaplus}`
+#' data(mag, package = "metaplus")
+#' dat <- dplyr::rename(mag, estimate = yi, std.error = sei)
 #'
 #' # parametric
-#' meta_analysis(df)
+#' meta_analysis(dat)
 #'
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus", quietly = TRUE)
 #' # robust
-#' meta_analysis(df, type = "random", random = "normal")
+#' meta_analysis(dat, type = "random", random = "normal")
 #'
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaBMA", quietly = TRUE)
 #' # Bayesian
-#' meta_analysis(df, type = "bayes")
+#' meta_analysis(dat, type = "bayes")
 #'
 #' @export
 meta_analysis <- function(data,
