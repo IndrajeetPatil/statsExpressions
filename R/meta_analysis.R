@@ -42,20 +42,26 @@
 #' library(statsExpressions)
 #'
 #' @examplesIf requireNamespace("metaplus", quietly = TRUE)
+#'
 #' # let's use `mag` dataset from `{metaplus}`
 #' data(mag, package = "metaplus")
 #' dat <- dplyr::rename(mag, estimate = yi, std.error = sei)
 #'
-#' # parametric
+#' # ----------------------- parametric -------------------------------------
+#'
 #' meta_analysis(dat)
 #'
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus", quietly = TRUE)
-#' # robust
+#'
+#' # ----------------------- robust ----------------------------------
+#'
 #' meta_analysis(dat, type = "random", random = "normal")
 #'
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaBMA", quietly = TRUE)
-#' # Bayesian
-#' meta_analysis(dat, type = "bayes")
+#'
+#' # ----------------------- Bayesian ----------------------------------
+#'
+#' suppressWarnings(meta_analysis(dat, type = "bayes"))
 #'
 #' @export
 meta_analysis <- function(data,
