@@ -72,7 +72,7 @@ meta_analysis <- function(data,
                           ...) {
   type <- stats_type_switch(type)
 
-  # nolint start: line_length_linter.
+  # nolint start: line_length_linter, keyword_quote_linter.
   c(.ns, .fn, .f.args) %<-% switch(type,
     "parametric" = list("metafor", "rma", list(yi = quote(estimate), sei = quote(std.error), ...)),
     "robust"     = list("metaplus", "metaplus", list(yi = quote(estimate), sei = quote(std.error), random = random, ...)),

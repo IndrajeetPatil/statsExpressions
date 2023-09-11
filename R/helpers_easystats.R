@@ -13,7 +13,7 @@ tidy_model_parameters <- function(model, ...) {
     select(-matches("Difference")) %>%
     standardize_names(style = "broom") %>%
     rename_all(~ gsub("cramers.", "", .x)) %>%
-    rename_all(.funs = recode, "bayes.factor" = "bf10") %>%
+    rename_with(recode, bayes.factor = "bf10") %>%
     tidyr::fill(matches("^prior|^bf"), .direction = "updown") %>%
     mutate(across(matches("bf10"), ~ log(.x), .names = "log_e_{.col}"))
 

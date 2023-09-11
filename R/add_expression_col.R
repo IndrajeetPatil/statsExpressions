@@ -91,7 +91,7 @@ add_expression_col <- function(data,
                                ...) {
   if (!"n.obs" %in% colnames(data)) data %<>% mutate(n.obs = n)
   if (!"effectsize" %in% colnames(data)) data %<>% mutate(effectsize = method)
-  data %<>% rename_all(.funs = recode, "bayes.factor" = "bf10")
+  data %<>% rename_with(recode, bayes.factor = "bf10")
 
   bayesian <- any("bf10" == colnames(data))
   no.parameters <- sum("df.error" %in% names(data) + "df" %in% names(data))
