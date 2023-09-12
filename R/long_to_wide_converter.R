@@ -1,14 +1,10 @@
-#' @title Convert long/tidy data frame to wide format with `NA`s removed
+#' @title Convert long/tidy data frame to wide format
 #' @name long_to_wide_converter
 #'
 #' @description
 #'
 #' This conversion is helpful mostly for repeated measures design, where
 #' removing `NA`s by participant can be a bit tedious.
-#'
-#' It does not make sense to spread the data frame to wide format when the
-#' measure is not repeated, so if `paired = TRUE`, `spread` argument will be
-#' ignored.
 #'
 #' @param data A data frame (or a tibble) from which variables specified are to
 #'   be taken. Other data types (e.g., matrix,table, array, etc.) will **not**
@@ -35,8 +31,7 @@
 #'   repeated measures/within-subjects or between-subjects. The default is
 #'   `FALSE`.
 #' @param spread Logical that decides whether the data frame needs to be
-#'   converted from long/tidy to wide (default: `TRUE`). Relevant only if
-#'   `paired = TRUE`.
+#'   converted from long/tidy to wide (default: `TRUE`).
 #' @param ... Currently ignored.
 #'
 #' @return A data frame with `NA`s removed while respecting the
@@ -49,20 +44,13 @@
 #'
 #' # repeated measures design
 #' long_to_wide_converter(
-#'   data       = bugs_long,
-#'   x          = condition,
-#'   y          = desire,
+#'   bugs_long, condition, desire,
 #'   subject.id = subject,
-#'   paired     = TRUE
+#'   paired = TRUE
 #' )
 #'
 #' # independent measures design
-#' long_to_wide_converter(
-#'   data   = mtcars,
-#'   x      = cyl,
-#'   y      = wt,
-#'   paired = FALSE
-#' )
+#' long_to_wide_converter(mtcars, cyl, wt, paired = FALSE)
 #' @export
 long_to_wide_converter <- function(data,
                                    x,
@@ -90,10 +78,10 @@ long_to_wide_converter <- function(data,
     ungroup() %>%
     nest_by(.rowid, .key = "nested_data") %>%
     filter(sum(is.na(nested_data)) == 0L) %>%
-    tidyr::unnest(cols = c(nested_data))
+    tidyr::unnest(cols = nested_data)
 
   # convert to wide?
-  if (spread && paired) data %<>% tidyr::pivot_wider(names_from = {{ x }}, values_from = {{ y }})
+  if (spread) data %<>% tidyr::pivot_wider(names_from = {{ x }}, values_from = {{ y }})
 
   as_tibble(relocate(data, .rowid) %>% arrange(.rowid))
 }

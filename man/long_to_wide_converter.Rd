@@ -2,7 +2,7 @@
 % Please edit documentation in R/long_to_wide_converter.R
 \name{long_to_wide_converter}
 \alias{long_to_wide_converter}
-\title{Convert long/tidy data frame to wide format with \code{NA}s removed}
+\title{Convert long/tidy data frame to wide format}
 \usage{
 long_to_wide_converter(
   data,
@@ -45,8 +45,7 @@ repeated measures/within-subjects or between-subjects. The default is
 \code{FALSE}.}
 
 \item{spread}{Logical that decides whether the data frame needs to be
-converted from long/tidy to wide (default: \code{TRUE}). Relevant only if
-\code{paired = TRUE}.}
+converted from long/tidy to wide (default: \code{TRUE}).}
 
 \item{...}{Currently ignored.}
 }
@@ -57,10 +56,6 @@ between-or-within-subjects nature of the dataset.
 \description{
 This conversion is helpful mostly for repeated measures design, where
 removing \code{NA}s by participant can be a bit tedious.
-
-It does not make sense to spread the data frame to wide format when the
-measure is not repeated, so if \code{paired = TRUE}, \code{spread} argument will be
-ignored.
 }
 \examples{
 # for reproducibility
@@ -69,18 +64,11 @@ set.seed(123)
 
 # repeated measures design
 long_to_wide_converter(
-  data       = bugs_long,
-  x          = condition,
-  y          = desire,
+  bugs_long, condition, desire,
   subject.id = subject,
-  paired     = TRUE
+  paired = TRUE
 )
 
 # independent measures design
-long_to_wide_converter(
-  data   = mtcars,
-  x      = cyl,
-  y      = wt,
-  paired = FALSE
-)
+long_to_wide_converter(mtcars, cyl, wt, paired = FALSE)
 }

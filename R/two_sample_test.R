@@ -132,7 +132,7 @@ two_sample_test <- function(data,
     y          = {{ y }},
     subject.id = {{ subject.id }},
     paired     = paired,
-    spread     = ifelse(type %in% c("bayes", "robust"), paired, FALSE)
+    spread     = ifelse(type %in% c("bayes", "robust"), paired, TRUE)
   )
 
   # parametric ---------------------------------------
@@ -151,26 +151,12 @@ two_sample_test <- function(data,
   if (type == "nonparametric") c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
 
   if (type %in% c("parametric", "nonparametric")) {
-    stats_df <- exec(
-      .f,
-      formula     = new_formula(y, x),
-      data        = data,
-      paired      = paired,
-      alternative = alternative,
-      var.equal   = var.equal,
-      exact       = FALSE
-    ) %>%
+    .f.args <- list(x = data[[2L]], y = data[[3L]], paired = paired, alternative = alternative)
+
+    stats_df <- exec(.f, !!!.f.args, var.equal = var.equal, exact = FALSE) %>%
       tidy_model_parameters()
 
-    effsize_df <- exec(
-      .f.es,
-      x           = new_formula(y, x),
-      data        = data,
-      paired      = paired,
-      pooled_sd   = FALSE,
-      ci          = conf.level,
-      verbose     = FALSE
-    ) %>%
+    effsize_df <- exec(.f.es, !!!.f.args, pooled_sd = FALSE, ci = conf.level, verbose = FALSE) %>%
       tidy_model_effectsize()
   }
 
@@ -210,10 +196,19 @@ two_sample_test <- function(data,
   # expression ---------------------------------------
 
   add_expression_col(
-    data     = stats_df,
-    paired   = paired,
-    n        = ifelse(paired, length(unique(data$.rowid)), nrow(data)),
-    k        = k,
-    k.df     = k.df
+    data   = if (type == "bayes") stats_df else .standardize_two_sample_terms(stats_df, as_name(x), as_name(y)),
+    paired = paired,
+    n      = ifelse(paired, length(unique(data$.rowid)), nrow(data)),
+    k      = k,
+    k.df   = k.df
   )
+}
+
+#' @noRd
+.standardize_two_sample_terms <- function(data, x_name, y_name) {
+  data %>%
+    mutate(
+      across(matches("^parameter1$|^term$"), ~y_name),
+      across(matches("^parameter2$|^group$"), ~x_name)
+    )
 }

@@ -33,7 +33,8 @@ utils::globalVariables(
     "group2",
     "log_e_bf10",
     "p_adjust_text",
-    "n.obs"
+    "n.obs",
+    "r.squared"
   ),
   package = "statsExpressions",
   add = FALSE

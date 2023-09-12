@@ -45,7 +45,7 @@ tidy_model_expressions <- function(data,
   # convert the necessary columns to character type for expression
   df <- data %>%
     filter(if_all(
-      .cols = c(matches("estimate|statistic|std.error|p.value")),
+      .cols = matches("estimate|statistic|std.error|p.value"),
       .fns = Negate(is.na)
     )) %>%
     .data_to_char(k)
@@ -88,11 +88,7 @@ tidy_model_expressions <- function(data,
 
   # nolint end
 
-  # add the `expression` column to the original data frame
-  #
-  # the rows for which no expression was created will have `NA`s in this column,
-  # which should instead be replaced with `NULL`, which when parsed in the plotting
-  # context, will not show anything instead of empty string
+  # Replace `NA` with `NULL` to show nothing instead of an empty string ("")
   left_join(data, select(df, term, expression), by = "term") %>%
     .glue_to_expression()
 }
