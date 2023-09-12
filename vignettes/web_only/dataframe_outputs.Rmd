@@ -49,47 +49,6 @@ citation("statsExpressions")
 ```{r}
 #| label = "onesample",
 #| file = "../../man/examples/examples-one_sample_test.R"
-
-# ----------------------- parametric ---------------------------------------
-
-set.seed(123)
-one_sample_test(
-  data       = ggplot2::msleep,
-  x          = brainwt,
-  test.value = 0.275,
-  type       = "parametric"
-)
-
-# ----------------------- non-parametric -----------------------------------
-
-set.seed(123)
-one_sample_test(
-  data       = ggplot2::msleep,
-  x          = brainwt,
-  test.value = 0.275,
-  type       = "nonparametric"
-)
-
-# ----------------------- robust --------------------------------------------
-
-set.seed(123)
-one_sample_test(
-  data       = ggplot2::msleep,
-  x          = brainwt,
-  test.value = 0.275,
-  type       = "robust"
-)
-
-# ----------------------- Bayesian ---------------------------------------
-
-set.seed(123)
-one_sample_test(
-  data       = ggplot2::msleep,
-  x          = brainwt,
-  test.value = 0.275,
-  type       = "bayes",
-  bf.prior   = 0.8
-)
 ```
 
 ## Two-sample tests
@@ -98,114 +57,14 @@ one_sample_test(
 
 ```{r}
 #| label = "twosample_w"
-
-# data
-df <- dplyr::filter(bugs_long, condition %in% c("LDLF", "LDHF"))
-
-# ----------------------- parametric ---------------------------------------
-
-set.seed(123)
-two_sample_test(
-  data       = df,
-  x          = condition,
-  y          = desire,
-  paired     = TRUE,
-  subject.id = subject,
-  type       = "p"
-)
-
-# ----------------------- non-parametric -----------------------------------
-
-set.seed(123)
-two_sample_test(
-  data       = df,
-  x          = condition,
-  y          = desire,
-  paired     = TRUE,
-  subject.id = subject,
-  type       = "np"
-)
-
-# ----------------------- robust --------------------------------------------
-
-set.seed(123)
-two_sample_test(
-  data       = df,
-  x          = condition,
-  y          = desire,
-  paired     = TRUE,
-  subject.id = subject,
-  type       = "r"
-)
-
-# ----------------------- Bayesian ---------------------------------------
-
-set.seed(123)
-two_sample_test(
-  data       = df,
-  x          = condition,
-  y          = desire,
-  paired     = TRUE,
-  subject.id = subject,
-  type       = "bayes"
-)
+#| file = "../../man/examples/examples-two_sample_test_within.R"
 ```
 
 ### between-subjects design
 
 ```{r}
 #| label = "twosample_b"
-
-# ----------------------- parametric ---------------------------------------
-
-# unequal variance
-set.seed(123)
-two_sample_test(
-  data      = ToothGrowth,
-  x         = supp,
-  y         = len,
-  type      = "p"
-)
-
-# equal variance
-set.seed(123)
-two_sample_test(
-  data      = ToothGrowth,
-  x         = supp,
-  y         = len,
-  var.equal = TRUE,
-  type      = "p"
-)
-
-# ----------------------- non-parametric -----------------------------------
-
-set.seed(123)
-two_sample_test(
-  data      = ToothGrowth,
-  x         = supp,
-  y         = len,
-  type      = "np"
-)
-
-# ----------------------- robust --------------------------------------------
-
-set.seed(123)
-two_sample_test(
-  data      = ToothGrowth,
-  x         = supp,
-  y         = len,
-  type      = "r"
-)
-
-# ----------------------- Bayesian ---------------------------------------
-
-set.seed(123)
-two_sample_test(
-  data      = ToothGrowth,
-  x         = supp,
-  y         = len,
-  type      = "bayes"
-)
+#| file = "../../man/examples/examples-two_sample_test_between.R"
 ```
 
 ## One-way ANOVAs

@@ -131,13 +131,13 @@ one_sample_test(mtcars, wt, test.value = 3)
 
 # ----------------------- non-parametric -------------------
 
-one_sample_test(mtcars, wt, test.value = 3, type = "n")
+one_sample_test(mtcars, wt, test.value = 3, type = "nonparametric")
 
 # ----------------------- robust ---------------------------
 
-one_sample_test(mtcars, wt, test.value = 3, type = "r")
+one_sample_test(mtcars, wt, test.value = 3, type = "robust")
 
 # ----------------------- Bayesian -------------------------
 
-one_sample_test(mtcars, wt, test.value = 3, type = "b")
+one_sample_test(mtcars, wt, test.value = 3, type = "bayes")
 }
