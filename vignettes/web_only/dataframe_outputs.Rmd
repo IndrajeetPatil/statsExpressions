@@ -56,14 +56,14 @@ citation("statsExpressions")
 ### within-subjects design
 
 ```{r}
-#| label = "twosample_w"
+#| label = "twosample_w",
 #| file = "../../man/examples/examples-two_sample_test_within.R"
 ```
 
 ### between-subjects design
 
 ```{r}
-#| label = "twosample_b"
+#| label = "twosample_b",
 #| file = "../../man/examples/examples-two_sample_test_between.R"
 ```
 
