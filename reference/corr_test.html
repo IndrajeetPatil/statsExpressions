@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">statsExpressions</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.2.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -170,7 +170,7 @@ two degrees of freedom (e.g. anova)</p></li>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># ----------------------- parametric -----------------------</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">corr_test</span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, <span class="va">mpg</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">corr_test</span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, <span class="va">mpg</span>, type <span class="op">=</span> <span class="st">"parametric"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 14</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">parameter1</span> <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">effectsize</span>          <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -184,7 +184,7 @@ two degrees of freedom (e.g. anova)</p></li>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># ----------------------- non-parametric -------------------</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">corr_test</span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, <span class="va">mpg</span>, type <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">corr_test</span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, <span class="va">mpg</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 13</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">parameter1</span> <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">effectsize</span>           <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -195,7 +195,7 @@ two degrees of freedom (e.g. anova)</p></li>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># ----------------------- robust ---------------------------</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">corr_test</span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, <span class="va">mpg</span>, type <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">corr_test</span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, <span class="va">mpg</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 14</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">parameter1</span> <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">effectsize</span>                     <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -209,7 +209,7 @@ two degrees of freedom (e.g. anova)</p></li>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># ----------------------- Bayesian -------------------------</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">corr_test</span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, <span class="va">mpg</span>, type <span class="op">=</span> <span class="st">"b"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">corr_test</span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, <span class="va">mpg</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 17</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">parameter1</span> <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">effectsize</span>                   <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>

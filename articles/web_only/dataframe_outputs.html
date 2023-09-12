@@ -38,7 +38,7 @@
     
     <a class="navbar-brand me-2" href="../../index.html">statsExpressions</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.2.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -143,7 +143,7 @@ A BibTeX entry for LaTeX users is
 <span></span>
 <span><span class="co"># ----------------------- non-parametric -------------------</span></span>
 <span></span>
-<span><span class="fu"><a href="../../reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, test.value <span class="op">=</span> <span class="fl">3</span>, type <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, test.value <span class="op">=</span> <span class="fl">3</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 12</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>                    <span style="font-weight: bold;">alternative</span> <span style="font-weight: bold;">effectsize</span>       </span></span>
 <span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            </span></span>
@@ -154,7 +154,7 @@ A BibTeX entry for LaTeX users is
 <span></span>
 <span><span class="co"># ----------------------- robust ---------------------------</span></span>
 <span></span>
-<span><span class="fu"><a href="../../reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, test.value <span class="op">=</span> <span class="fl">3</span>, type <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, test.value <span class="op">=</span> <span class="fl">3</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 10</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">method</span>                                 <span style="font-weight: bold;">effectsize</span>  </span></span>
 <span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span></span>
@@ -165,7 +165,7 @@ A BibTeX entry for LaTeX users is
 <span></span>
 <span><span class="co"># ----------------------- Bayesian -------------------------</span></span>
 <span></span>
-<span><span class="fu"><a href="../../reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, test.value <span class="op">=</span> <span class="fl">3</span>, type <span class="op">=</span> <span class="st">"b"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/one_sample_test.html">one_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, test.value <span class="op">=</span> <span class="fl">3</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 16</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">term</span>       <span style="font-weight: bold;">effectsize</span>      <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span>    <span style="font-weight: bold;">pd</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -184,20 +184,17 @@ A BibTeX entry for LaTeX users is
 <h3 id="within-subjects-design">within-subjects design<a class="anchor" aria-label="anchor" href="#within-subjects-design"></a>
 </h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># data</span></span>
+<code class="sourceCode R"><span><span class="co"># ----------------------- within-subjects -------------------------------------</span></span>
+<span></span>
+<span><span class="co"># data</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">bugs_long</span>, <span class="va">condition</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"LDLF"</span>, <span class="st">"LDHF"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># for reproducibility</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># ----------------------- parametric ---------------------------------------</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span></span>
-<span>  data       <span class="op">=</span> <span class="va">df</span>,</span>
-<span>  x          <span class="op">=</span> <span class="va">condition</span>,</span>
-<span>  y          <span class="op">=</span> <span class="va">desire</span>,</span>
-<span>  paired     <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  subject.id <span class="op">=</span> <span class="va">subject</span>,</span>
-<span>  type       <span class="op">=</span> <span class="st">"p"</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">condition</span>, <span class="va">desire</span>, subject.id <span class="op">=</span> <span class="va">subject</span>, paired <span class="op">=</span> <span class="cn">TRUE</span>, type <span class="op">=</span> <span class="st">"parametric"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 16</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">term</span>   <span style="font-weight: bold;">group</span>     <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">df.error</span>       <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>        <span style="font-weight: bold;">alternative</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
@@ -211,15 +208,7 @@ A BibTeX entry for LaTeX users is
 <span></span>
 <span><span class="co"># ----------------------- non-parametric -----------------------------------</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span></span>
-<span>  data       <span class="op">=</span> <span class="va">df</span>,</span>
-<span>  x          <span class="op">=</span> <span class="va">condition</span>,</span>
-<span>  y          <span class="op">=</span> <span class="va">desire</span>,</span>
-<span>  paired     <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  subject.id <span class="op">=</span> <span class="va">subject</span>,</span>
-<span>  type       <span class="op">=</span> <span class="st">"np"</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">condition</span>, <span class="va">desire</span>, subject.id <span class="op">=</span> <span class="va">subject</span>, paired <span class="op">=</span> <span class="cn">TRUE</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 14</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">parameter1</span> <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">statistic</span>      <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>                   </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    </span></span>
@@ -233,15 +222,7 @@ A BibTeX entry for LaTeX users is
 <span></span>
 <span><span class="co"># ----------------------- robust --------------------------------------------</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span></span>
-<span>  data       <span class="op">=</span> <span class="va">df</span>,</span>
-<span>  x          <span class="op">=</span> <span class="va">condition</span>,</span>
-<span>  y          <span class="op">=</span> <span class="va">desire</span>,</span>
-<span>  paired     <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  subject.id <span class="op">=</span> <span class="va">subject</span>,</span>
-<span>  type       <span class="op">=</span> <span class="st">"r"</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">condition</span>, <span class="va">desire</span>, subject.id <span class="op">=</span> <span class="va">subject</span>, paired <span class="op">=</span> <span class="cn">TRUE</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 15</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">df.error</span>      <span style="font-weight: bold;">p.value</span></span></span>
 <span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -258,19 +239,11 @@ A BibTeX entry for LaTeX users is
 <span></span>
 <span><span class="co"># ----------------------- Bayesian ---------------------------------------</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span></span>
-<span>  data       <span class="op">=</span> <span class="va">df</span>,</span>
-<span>  x          <span class="op">=</span> <span class="va">condition</span>,</span>
-<span>  y          <span class="op">=</span> <span class="va">desire</span>,</span>
-<span>  paired     <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  subject.id <span class="op">=</span> <span class="va">subject</span>,</span>
-<span>  type       <span class="op">=</span> <span class="st">"bayes"</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">condition</span>, <span class="va">desire</span>, subject.id <span class="op">=</span> <span class="va">subject</span>, paired <span class="op">=</span> <span class="cn">TRUE</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 16</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">term</span>       <span style="font-weight: bold;">effectsize</span>      <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span>    <span style="font-weight: bold;">pd</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Difference Bayesian t-test     1.62       <span style="color: #949494;">0.</span>95     1.13      2.12     1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Difference Bayesian t-test     1.63       <span style="color: #949494;">0.</span>95     1.13      2.11     1</span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">prior.distribution</span> <span style="font-weight: bold;">prior.location</span> <span style="font-weight: bold;">prior.scale</span>     <span style="font-weight: bold;">bf10</span> <span style="font-weight: bold;">method</span>         </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> cauchy                          <span style="color: #949494;">0</span>       <span style="color: #949494;">0.</span>707 4<span style="text-decoration: underline;">76</span><span style="color: #949494; text-decoration: underline;">2</span><span style="color: #949494;">370</span>. Bayesian t-test</span></span>
@@ -282,16 +255,15 @@ A BibTeX entry for LaTeX users is
 <h3 id="between-subjects-design">between-subjects design<a class="anchor" aria-label="anchor" href="#between-subjects-design"></a>
 </h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># ----------------------- parametric ---------------------------------------</span></span>
+<code class="sourceCode R"><span><span class="co"># ----------------------- between-subjects -------------------------------------</span></span>
+<span></span>
+<span><span class="co"># for reproducibility</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># ----------------------- parametric ---------------------------------------</span></span>
 <span></span>
 <span><span class="co"># unequal variance</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span></span>
-<span>  data      <span class="op">=</span> <span class="va">ToothGrowth</span>,</span>
-<span>  x         <span class="op">=</span> <span class="va">supp</span>,</span>
-<span>  y         <span class="op">=</span> <span class="va">len</span>,</span>
-<span>  type      <span class="op">=</span> <span class="st">"p"</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span><span class="va">ToothGrowth</span>, <span class="va">supp</span>, <span class="va">len</span>, type <span class="op">=</span> <span class="st">"parametric"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 18</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">parameter1</span> <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">mean.parameter1</span> <span style="font-weight: bold;">mean.parameter2</span> <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">df.error</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -304,14 +276,7 @@ A BibTeX entry for LaTeX users is
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  -<span style="color: #949494;">0.0</span><span style="color: #BB0000;">21</span><span style="color: #BB0000; text-decoration: underline;">7</span>     <span style="color: #949494;">0.</span>993 ncp         t                    60 <span style="color: #949494;">&lt;language&gt;</span></span></span>
 <span></span>
 <span><span class="co"># equal variance</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span></span>
-<span>  data      <span class="op">=</span> <span class="va">ToothGrowth</span>,</span>
-<span>  x         <span class="op">=</span> <span class="va">supp</span>,</span>
-<span>  y         <span class="op">=</span> <span class="va">len</span>,</span>
-<span>  var.equal <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  type      <span class="op">=</span> <span class="st">"p"</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span><span class="va">ToothGrowth</span>, <span class="va">supp</span>, <span class="va">len</span>, type <span class="op">=</span> <span class="st">"parametric"</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 18</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">parameter1</span> <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">mean.parameter1</span> <span style="font-weight: bold;">mean.parameter2</span> <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">df.error</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -325,13 +290,7 @@ A BibTeX entry for LaTeX users is
 <span></span>
 <span><span class="co"># ----------------------- non-parametric -----------------------------------</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span></span>
-<span>  data      <span class="op">=</span> <span class="va">ToothGrowth</span>,</span>
-<span>  x         <span class="op">=</span> <span class="va">supp</span>,</span>
-<span>  y         <span class="op">=</span> <span class="va">len</span>,</span>
-<span>  type      <span class="op">=</span> <span class="st">"np"</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span><span class="va">ToothGrowth</span>, <span class="va">supp</span>, <span class="va">len</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 14</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">parameter1</span> <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>                 <span style="font-weight: bold;">alternative</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
@@ -345,13 +304,7 @@ A BibTeX entry for LaTeX users is
 <span></span>
 <span><span class="co"># ----------------------- robust --------------------------------------------</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span></span>
-<span>  data      <span class="op">=</span> <span class="va">ToothGrowth</span>,</span>
-<span>  x         <span class="op">=</span> <span class="va">supp</span>,</span>
-<span>  y         <span class="op">=</span> <span class="va">len</span>,</span>
-<span>  type      <span class="op">=</span> <span class="st">"r"</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span><span class="va">ToothGrowth</span>, <span class="va">supp</span>, <span class="va">len</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 11</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">df.error</span> <span style="font-weight: bold;">p.value</span></span></span>
 <span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -368,17 +321,11 @@ A BibTeX entry for LaTeX users is
 <span></span>
 <span><span class="co"># ----------------------- Bayesian ---------------------------------------</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span></span>
-<span>  data      <span class="op">=</span> <span class="va">ToothGrowth</span>,</span>
-<span>  x         <span class="op">=</span> <span class="va">supp</span>,</span>
-<span>  y         <span class="op">=</span> <span class="va">len</span>,</span>
-<span>  type      <span class="op">=</span> <span class="st">"bayes"</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span><span class="va">ToothGrowth</span>, <span class="va">supp</span>, <span class="va">len</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 16</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">term</span>       <span style="font-weight: bold;">effectsize</span>      <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span>    <span style="font-weight: bold;">pd</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Difference Bayesian t-test     3.16       <span style="color: #949494;">0.</span>95   -<span style="color: #949494;">0.</span><span style="color: #BB0000;">410</span>      6.81 <span style="color: #949494;">0.</span>960</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Difference Bayesian t-test     3.16       <span style="color: #949494;">0.</span>95   -<span style="color: #949494;">0.</span><span style="color: #BB0000;">338</span>      6.78 <span style="color: #949494;">0.</span>961</span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">prior.distribution</span> <span style="font-weight: bold;">prior.location</span> <span style="font-weight: bold;">prior.scale</span>  <span style="font-weight: bold;">bf10</span> <span style="font-weight: bold;">method</span>         </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> cauchy                          <span style="color: #949494;">0</span>       <span style="color: #949494;">0.</span>707  1.20 Bayesian t-test</span></span>
@@ -762,7 +709,7 @@ A BibTeX entry for LaTeX users is
 <span></span>
 <span><span class="co"># ----------------------- parametric -----------------------</span></span>
 <span></span>
-<span><span class="fu"><a href="../../reference/corr_test.html">corr_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, <span class="va">mpg</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/corr_test.html">corr_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, <span class="va">mpg</span>, type <span class="op">=</span> <span class="st">"parametric"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 14</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">parameter1</span> <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">effectsize</span>          <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -776,7 +723,7 @@ A BibTeX entry for LaTeX users is
 <span></span>
 <span><span class="co"># ----------------------- non-parametric -------------------</span></span>
 <span></span>
-<span><span class="fu"><a href="../../reference/corr_test.html">corr_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, <span class="va">mpg</span>, type <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/corr_test.html">corr_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, <span class="va">mpg</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 13</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">parameter1</span> <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">effectsize</span>           <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -787,7 +734,7 @@ A BibTeX entry for LaTeX users is
 <span></span>
 <span><span class="co"># ----------------------- robust ---------------------------</span></span>
 <span></span>
-<span><span class="fu"><a href="../../reference/corr_test.html">corr_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, <span class="va">mpg</span>, type <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/corr_test.html">corr_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, <span class="va">mpg</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 14</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">parameter1</span> <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">effectsize</span>                     <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -801,7 +748,7 @@ A BibTeX entry for LaTeX users is
 <span></span>
 <span><span class="co"># ----------------------- Bayesian -------------------------</span></span>
 <span></span>
-<span><span class="fu"><a href="../../reference/corr_test.html">corr_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, <span class="va">mpg</span>, type <span class="op">=</span> <span class="st">"b"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/corr_test.html">corr_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">wt</span>, <span class="va">mpg</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 17</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">parameter1</span> <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">effectsize</span>                   <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -887,7 +834,7 @@ A BibTeX entry for LaTeX users is
 <span></span>
 <span><span class="co"># ----------------------- parametric -----------------------</span></span>
 <span></span>
-<span><span class="fu"><a href="../../reference/centrality_description.html">centrality_description</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span>, <span class="va">Sepal.Length</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/centrality_description.html">centrality_description</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span>, <span class="va">Sepal.Length</span>, type <span class="op">=</span> <span class="st">"parametric"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 12</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">Species</span>    <span style="font-weight: bold;">Sepal.Length</span> <span style="font-weight: bold;">std.dev</span>   <span style="font-weight: bold;">iqr</span>   <span style="font-weight: bold;">min</span>   <span style="font-weight: bold;">max</span> <span style="font-weight: bold;">skewness</span> <span style="font-weight: bold;">kurtosis</span> <span style="font-weight: bold;">n.obs</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
@@ -902,7 +849,7 @@ A BibTeX entry for LaTeX users is
 <span></span>
 <span><span class="co"># ----------------------- non-parametric -------------------</span></span>
 <span></span>
-<span><span class="fu"><a href="../../reference/centrality_description.html">centrality_description</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">am</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/centrality_description.html">centrality_description</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">am</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 12</span></span></span>
 <span><span class="co">#&gt;      <span style="font-weight: bold;">am</span>    <span style="font-weight: bold;">wt</span>   <span style="font-weight: bold;">mad</span>   <span style="font-weight: bold;">iqr</span>   <span style="font-weight: bold;">min</span>   <span style="font-weight: bold;">max</span> <span style="font-weight: bold;">skewness</span> <span style="font-weight: bold;">kurtosis</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">missing.obs</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
@@ -915,7 +862,7 @@ A BibTeX entry for LaTeX users is
 <span></span>
 <span><span class="co"># ----------------------- robust ---------------------------</span></span>
 <span></span>
-<span><span class="fu"><a href="../../reference/centrality_description.html">centrality_description</a></span><span class="op">(</span><span class="va">ToothGrowth</span>, <span class="va">supp</span>, <span class="va">len</span>, type <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/centrality_description.html">centrality_description</a></span><span class="op">(</span><span class="va">ToothGrowth</span>, <span class="va">supp</span>, <span class="va">len</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 12</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">supp</span>    <span style="font-weight: bold;">len</span> <span style="font-weight: bold;">std.dev</span>   <span style="font-weight: bold;">iqr</span>   <span style="font-weight: bold;">min</span>   <span style="font-weight: bold;">max</span> <span style="font-weight: bold;">skewness</span> <span style="font-weight: bold;">kurtosis</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">missing.obs</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
@@ -928,7 +875,7 @@ A BibTeX entry for LaTeX users is
 <span></span>
 <span><span class="co"># ----------------------- Bayesian -------------------------</span></span>
 <span></span>
-<span><span class="fu"><a href="../../reference/centrality_description.html">centrality_description</a></span><span class="op">(</span><span class="va">sleep</span>, <span class="va">group</span>, <span class="va">extra</span>, type <span class="op">=</span> <span class="st">"b"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/centrality_description.html">centrality_description</a></span><span class="op">(</span><span class="va">sleep</span>, <span class="va">group</span>, <span class="va">extra</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 11</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">group</span>  <span style="font-weight: bold;">extra</span>   <span style="font-weight: bold;">iqr</span>   <span style="font-weight: bold;">min</span>   <span style="font-weight: bold;">max</span> <span style="font-weight: bold;">skewness</span> <span style="font-weight: bold;">kurtosis</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">missing.obs</span> <span style="font-weight: bold;">expression</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span></span>
