@@ -1,6 +1,6 @@
 # statsExpressions 1.5.2
 
-- Maintenance release. No user-visible changes.
+- Fixes failures on R-devel due to changes in the formula interface for a paired test.
 
 # statsExpressions 1.5.1
 

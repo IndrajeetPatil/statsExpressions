@@ -197,6 +197,7 @@ pairwise_comparisons <- function(data,
       !!!.f.args
     )) %>%
       tidy_model_parameters() %>%
+      select(-matches("^parameter1$|^parameter2$")) %>%
       rename(group2 = group1, group1 = group2)
   }
 

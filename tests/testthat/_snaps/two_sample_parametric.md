@@ -4,12 +4,12 @@
       select(df1, -expression)
     Output
       # A tibble: 1 x 17
-        term  group mean.group1 mean.group2 statistic df.error p.value
-        <chr> <chr>       <dbl>       <dbl>     <dbl>    <dbl>   <dbl>
-      1 len   supp         20.7        17.0      1.92       58  0.0604
-        method            alternative effectsize estimate conf.level conf.low
-        <chr>             <chr>       <chr>         <dbl>      <dbl>    <dbl>
-      1 Two Sample t-test two.sided   Cohen's d     0.495       0.99   -0.184
+        parameter1 parameter2 mean.parameter1 mean.parameter2 statistic df.error
+        <chr>      <chr>                <dbl>           <dbl>     <dbl>    <dbl>
+      1 len        supp                  20.7            17.0      1.92       58
+        p.value method            alternative effectsize estimate conf.level conf.low
+          <dbl> <chr>             <chr>       <chr>         <dbl>      <dbl>    <dbl>
+      1  0.0604 Two Sample t-test two.sided   Cohen's d     0.495       0.99   -0.184
         conf.high conf.method conf.distribution n.obs
             <dbl> <chr>       <chr>             <int>
       1      1.17 ncp         t                    60
@@ -32,15 +32,15 @@
       select(df1, -expression)
     Output
       # A tibble: 1 x 17
-        term  group mean.group1 mean.group2 statistic df.error p.value
-        <chr> <chr>       <dbl>       <dbl>     <dbl>    <dbl>   <dbl>
-      1 len   supp         20.7        17.0      1.92     55.3  0.0606
-        method                  alternative effectsize estimate conf.level conf.low
-        <chr>                   <chr>       <chr>         <dbl>      <dbl>    <dbl>
-      1 Welch Two Sample t-test two.sided   Hedges' g     0.488        0.9   0.0599
-        conf.high conf.method conf.distribution n.obs
-            <dbl> <chr>       <chr>             <int>
-      1     0.911 ncp         t                    60
+        parameter1 parameter2 mean.parameter1 mean.parameter2 statistic df.error
+        <chr>      <chr>                <dbl>           <dbl>     <dbl>    <dbl>
+      1 len        supp                  20.7            17.0      1.92     55.3
+        p.value method                  alternative effectsize estimate conf.level
+          <dbl> <chr>                   <chr>       <chr>         <dbl>      <dbl>
+      1  0.0606 Welch Two Sample t-test two.sided   Hedges' g     0.488        0.9
+        conf.low conf.high conf.method conf.distribution n.obs
+           <dbl>     <dbl> <chr>       <chr>             <int>
+      1   0.0599     0.911 ncp         t                    60
 
 ---
 
