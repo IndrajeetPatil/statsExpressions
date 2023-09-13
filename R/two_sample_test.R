@@ -19,7 +19,7 @@
 #' ```{r child="man/rmd-fragments/two_sample_test.Rmd"}
 #' ```
 #'
-#' @return
+#' @returns
 #'
 #' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```

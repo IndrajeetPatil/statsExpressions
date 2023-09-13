@@ -12,7 +12,7 @@
 #' ```{r child="man/rmd-fragments/contingency_table.Rmd"}
 #' ```
 #'
-#' @return
+#' @returns
 #'
 #' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```

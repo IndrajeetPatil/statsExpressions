@@ -24,7 +24,7 @@
 #' ```{r child="man/rmd-fragments/pairwise_comparisons.Rmd"}
 #' ```
 #'
-#' @return
+#' @returns
 #'
 #' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```
@@ -277,7 +277,7 @@ pairwise_comparisons <- function(data,
 #' @description
 #' Preparing text to describe which *p*-value adjustment method was used
 #'
-#' @return Standardized text description for what method was used.
+#' @returns Standardized text description for what method was used.
 #'
 #' @inheritParams pairwise_comparisons
 #'

@@ -12,7 +12,7 @@
 #' ```{r child="man/rmd-fragments/oneway_anova.Rmd"}
 #' ```
 #'
-#' @return
+#' @returns
 #'
 #' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```

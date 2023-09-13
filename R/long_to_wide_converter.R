@@ -34,7 +34,7 @@
 #'   converted from long/tidy to wide (default: `TRUE`).
 #' @param ... Currently ignored.
 #'
-#' @return A data frame with `NA`s removed while respecting the
+#' @returns A data frame with `NA`s removed while respecting the
 #'   between-or-within-subjects nature of the dataset.
 #'
 #' @examples

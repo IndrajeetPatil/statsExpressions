@@ -24,7 +24,7 @@
 #' ```{r child="man/rmd-fragments/one_sample_test.Rmd"}
 #' ```
 #'
-#' @return
+#' @returns
 #'
 #' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```

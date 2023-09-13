@@ -25,7 +25,7 @@
 #' ```{r child="man/rmd-fragments/corr_test.Rmd"}
 #' ```
 #'
-#' @return
+#' @returns
 #'
 #' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```
