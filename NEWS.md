@@ -1,3 +1,9 @@
+# statsExpressions 1.5.2.9000
+
+# statsExpressions 1.5.2
+
+- Fixes failures on R-devel due to changes in the formula interface for a paired test.
+
 # statsExpressions 1.5.1
 
 ## MAJOR CHANGES

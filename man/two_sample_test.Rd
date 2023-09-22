@@ -178,88 +178,52 @@ The table below provides summary about:
 
 \examples{
 \dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{\}) # examplesIf}
+# ----------------------- within-subjects -------------------------------------
+
+# data
+df <- dplyr::filter(bugs_long, condition \%in\% c("LDLF", "LDHF"))
+
 # for reproducibility
 set.seed(123)
-library(statsExpressions)
 
-# parametric -------------------------------------
+# ----------------------- parametric ---------------------------------------
 
-# between-subjects design
-two_sample_test(
-  data = sleep,
-  x    = group,
-  y    = extra,
-  type = "p"
-)
+two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type = "parametric")
 
-# within-subjects design
-two_sample_test(
-  data       = dplyr::filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
-  x          = condition,
-  y          = desire,
-  paired     = TRUE,
-  subject.id = subject,
-  type       = "p"
-)
+# ----------------------- non-parametric -----------------------------------
 
-# non-parametric ----------------------------------
+two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type = "nonparametric")
 
-# between-subjects design
-two_sample_test(
-  data = sleep,
-  x    = group,
-  y    = extra,
-  type = "np"
-)
+# ----------------------- robust --------------------------------------------
 
-# within-subjects design
-two_sample_test(
-  data       = dplyr::filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
-  x          = condition,
-  y          = desire,
-  paired     = TRUE,
-  subject.id = subject,
-  type       = "np"
-)
+two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type = "robust")
 
-# robust ----------------------------------
+# ----------------------- Bayesian ---------------------------------------
 
-# between-subjects design
-two_sample_test(
-  data = sleep,
-  x    = group,
-  y    = extra,
-  type = "r"
-)
+two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type = "bayes")
+# ----------------------- between-subjects -------------------------------------
 
-# within-subjects design
-two_sample_test(
-  data       = dplyr::filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
-  x          = condition,
-  y          = desire,
-  paired     = TRUE,
-  subject.id = subject,
-  type       = "r"
-)
+# for reproducibility
+set.seed(123)
 
-#' # Bayesian ------------------------------
+# ----------------------- parametric ---------------------------------------
 
-# between-subjects design
-two_sample_test(
-  data = sleep,
-  x    = group,
-  y    = extra,
-  type = "bayes"
-)
+# unequal variance
+two_sample_test(ToothGrowth, supp, len, type = "parametric")
 
-# within-subjects design
-two_sample_test(
-  data       = dplyr::filter(bugs_long, condition \%in\% c("HDHF", "HDLF")),
-  x          = condition,
-  y          = desire,
-  paired     = TRUE,
-  subject.id = subject,
-  type       = "bayes"
-)
-\dontshow{\}) # examplesIf}
+# equal variance
+two_sample_test(ToothGrowth, supp, len, type = "parametric", var.equal = TRUE)
+
+# ----------------------- non-parametric -----------------------------------
+
+two_sample_test(ToothGrowth, supp, len, type = "nonparametric")
+
+# ----------------------- robust --------------------------------------------
+
+two_sample_test(ToothGrowth, supp, len, type = "robust")
+
+# ----------------------- Bayesian ---------------------------------------
+
+two_sample_test(ToothGrowth, supp, len, type = "bayes")
 }

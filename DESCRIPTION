@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Tidy Dataframes and Expressions with Statistical Details
-Version: 1.5.1
+Version: 1.5.2.9000
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -26,18 +26,18 @@ Depends:
     R (>= 4.1.0)
 Imports:
     afex (>= 1.3-0),
-    BayesFactor (>= 0.9.12-4.4),
+    BayesFactor (>= 0.9.12-4.5),
     correlation (>= 0.8.4),
-    datawizard (>= 0.8.0),
-    dplyr (>= 1.1.2),
-    effectsize (>= 0.8.3),
+    datawizard (>= 0.9.0),
+    dplyr (>= 1.1.3),
+    effectsize (>= 0.8.6),
     glue,
-    insight (>= 0.19.3),
+    insight (>= 0.19.5),
     magrittr,
     parameters (>= 0.21.1),
-    performance (>= 0.10.3),
+    performance (>= 0.10.5),
     PMCMRplus (>= 1.9.7),
-    purrr (>= 1.0.1),
+    purrr (>= 1.0.2),
     rlang,
     stats,
     tibble (>= 3.2.1),
@@ -46,6 +46,7 @@ Imports:
     WRS2,
     zeallot
 Suggests:
+    bayestestR,
     ggplot2,
     knitr,
     metaBMA,
@@ -54,15 +55,18 @@ Suggests:
     rmarkdown,
     rstantools,
     survival,
-    testthat (>= 3.1.8),
+    testthat (>= 3.1.10),
     utils
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
 Language: en-US
 LazyData: true
-Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate",
-    "pkgapi::api_roclet"))
+Roxygen: list(
+    markdown = TRUE,
+    roclets = c("collate", "namespace", "rd", "pkgapi::api_roclet", "roxyglobals::global_roclet")
+  )
 RoxygenNote: 7.2.3.9000
 Config/testthat/edition: 3
 Config/testthat/parallel: true
+Config/Needs/check: anthonynorth/roxyglobals

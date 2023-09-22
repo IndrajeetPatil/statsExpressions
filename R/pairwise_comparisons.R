@@ -24,13 +24,15 @@
 #' ```{r child="man/rmd-fragments/pairwise_comparisons.Rmd"}
 #' ```
 #'
-#' @return
+#' @returns
 #'
 #' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```
 #'
 #' @references For more, see:
 #' <https://indrajeetpatil.github.io/ggstatsplot/articles/web_only/pairwise.html>
+#'
+#' @autoglobal
 #'
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
 #' # for reproducibility
@@ -197,6 +199,7 @@ pairwise_comparisons <- function(data,
       !!!.f.args
     )) %>%
       tidy_model_parameters() %>%
+      select(-matches("^parameter1$|^parameter2$")) %>%
       rename(group2 = group1, group1 = group2)
   }
 
@@ -276,7 +279,7 @@ pairwise_comparisons <- function(data,
 #' @description
 #' Preparing text to describe which *p*-value adjustment method was used
 #'
-#' @return Standardized text description for what method was used.
+#' @returns Standardized text description for what method was used.
 #'
 #' @inheritParams pairwise_comparisons
 #'

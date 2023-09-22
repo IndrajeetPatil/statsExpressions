@@ -3,16 +3,16 @@ set.seed(123)
 
 # ----------------------- parametric -----------------------
 
-centrality_description(iris, Species, Sepal.Length)
+centrality_description(iris, Species, Sepal.Length, type = "parametric")
 
 # ----------------------- non-parametric -------------------
 
-centrality_description(mtcars, am, wt, type = "n")
+centrality_description(mtcars, am, wt, type = "nonparametric")
 
 # ----------------------- robust ---------------------------
 
-centrality_description(ToothGrowth, supp, len, type = "r")
+centrality_description(ToothGrowth, supp, len, type = "robust")
 
 # ----------------------- Bayesian -------------------------
 
-centrality_description(sleep, group, extra, type = "b")
+centrality_description(sleep, group, extra, type = "bayes")

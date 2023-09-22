@@ -47,6 +47,8 @@
 #' @inheritParams oneway_anova
 #' @inheritParams long_to_wide_converter
 #'
+#' @autoglobal
+#'
 #' @examples
 #' set.seed(123)
 #'
@@ -91,13 +93,13 @@ add_expression_col <- function(data,
                                ...) {
   if (!"n.obs" %in% colnames(data)) data %<>% mutate(n.obs = n)
   if (!"effectsize" %in% colnames(data)) data %<>% mutate(effectsize = method)
-  data %<>% rename_all(.funs = recode, "bayes.factor" = "bf10")
+  data %<>% rename_with(recode, bayes.factor = "bf10")
 
   bayesian <- any("bf10" == colnames(data))
   no.parameters <- sum("df.error" %in% names(data) + "df" %in% names(data))
 
   # special case for Bayesian contingency table analysis
-  if (bayesian && grepl("contingency", data$method[[1]], fixed = TRUE)) data %<>% mutate(effectsize = "Cramers_v")
+  if (bayesian && grepl("contingency", data$method[[1L]], fixed = TRUE)) data %<>% mutate(effectsize = "Cramers_v")
 
   # convert needed columns to character type
   df_expr <- .data_to_char(data, k, k.df, k.df.error)
@@ -169,7 +171,7 @@ add_expression_col <- function(data,
       across(.fns = ~ .to_char(.x, k), .cols = matches("^est|^sta|p.value|.scale$|.low$|.high$|^log")),
       across(.fns = ~ .to_char(.x, k.df), .cols = matches("^df$")),
       across(.fns = ~ .to_char(.x, k.df.error), .cols = matches("^df.error$")),
-      across(.fns = ~ paste0(.x * 100, "%"), .cols = matches("^conf.level$"))
+      across(.fns = ~ paste0(.x * 100L, "%"), .cols = matches("^conf.level$"))
     )
 }
 

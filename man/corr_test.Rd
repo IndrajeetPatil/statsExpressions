@@ -109,17 +109,17 @@ set.seed(123)
 
 # ----------------------- parametric -----------------------
 
-corr_test(mtcars, wt, mpg)
+corr_test(mtcars, wt, mpg, type = "parametric")
 
 # ----------------------- non-parametric -------------------
 
-corr_test(mtcars, wt, mpg, type = "n")
+corr_test(mtcars, wt, mpg, type = "nonparametric")
 
 # ----------------------- robust ---------------------------
 
-corr_test(mtcars, wt, mpg, type = "r")
+corr_test(mtcars, wt, mpg, type = "robust")
 
 # ----------------------- Bayesian -------------------------
 
-corr_test(mtcars, wt, mpg, type = "b")
+corr_test(mtcars, wt, mpg, type = "bayes")
 }

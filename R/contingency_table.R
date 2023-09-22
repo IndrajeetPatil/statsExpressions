@@ -12,7 +12,7 @@
 #' ```{r child="man/rmd-fragments/contingency_table.Rmd"}
 #' ```
 #'
-#' @return
+#' @returns
 #'
 #' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```
@@ -46,6 +46,8 @@
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams stats::chisq.test
 #' @inheritParams oneway_anova
+#'
+#' @autoglobal
 #'
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
 #' # for reproducibility
@@ -101,7 +103,7 @@ contingency_table <- function(data,
                               conf.level = 0.95,
                               sampling.plan = "indepMulti",
                               fixed.margin = "rows",
-                              prior.concentration = 1,
+                              prior.concentration = 1.0,
                               ...) {
   type <- stats_type_switch(type)
   test <- ifelse(quo_is_null(enquo(y)), "1way", "2way")
@@ -163,7 +165,7 @@ contingency_table <- function(data,
   }
 
   p1s <- rdirichlet(n = 100000L, alpha = prior.concentration * ratio)
-  pr_h1 <- map_dbl(1:100000, ~ stats::dmultinom(as.matrix(xtab), prob = p1s[.x, ], log = TRUE))
+  pr_h1 <- map_dbl(1:100000L, ~ stats::dmultinom(as.matrix(xtab), prob = p1s[.x, ], log = TRUE))
 
   # BF = (log) prob of data under alternative - (log) prob of data under null
   # computing Bayes Factor and formatting the results

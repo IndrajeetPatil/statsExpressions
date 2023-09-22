@@ -12,7 +12,7 @@
 #' ```{r child="man/rmd-fragments/corr_test.Rmd"}
 #' ```
 #'
-#' @return
+#' @returns
 #'
 #' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```
@@ -22,6 +22,8 @@
 #' @param y The column in `data` containing the response (outcome) variable to
 #'   be plotted on the `y`-axis.
 #' @inheritParams oneway_anova
+#'
+#' @autoglobal
 #'
 #' @example man/examples/examples-corr_test.R
 #' @export

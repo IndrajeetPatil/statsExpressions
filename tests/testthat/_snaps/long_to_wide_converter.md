@@ -13,8 +13,8 @@
       Rows: 32
       Columns: 3
       $ .rowid <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, ~
-      $ am     <fct> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, ~
-      $ wt     <dbl> 3.215, 3.440, 3.460, 3.570, 3.190, 3.150, 3.440, 3.440, 4.070, ~
+      $ `0`    <dbl> 3.215, 3.440, 3.460, 3.570, 3.190, 3.150, 3.440, 3.440, 4.070, ~
+      $ `1`    <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
       Rows: 88
       Columns: 5
       $ .rowid <int> 1, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,~
@@ -23,10 +23,12 @@
       $ LDHF   <dbl> 6.0, 10.0, 9.0, 6.5, 0.5, 10.0, 10.0, 9.5, 2.5, 7.5, 8.5, 8.0, ~
       $ LDLF   <dbl> 6.0, 5.0, 6.0, 3.0, 2.0, 10.0, 10.0, 9.5, 0.0, 9.5, 7.0, 3.0, 4~
       Rows: 51
-      Columns: 3
+      Columns: 5
       $ .rowid  <int> 3, 4, 5, 7, 9, 12, 17, 18, 19, 21, 23, 24, 25, 26, 27, 28, 29,~
-      $ vore    <fct> carni, carni, carni, carni, carni, carni, carni, carni, carni,~
-      $ brainwt <dbl> 0.07000, 0.01080, 0.02560, 0.32500, 0.01250, 0.15700, 0.01750,~
+      $ carni   <dbl> 0.0700, 0.0108, 0.0256, 0.3250, 0.0125, 0.1570, 0.0175, 0.0445~
+      $ herbi   <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, 0.42300, 0.09820, 0.11500,~
+      $ insecti <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA~
+      $ omni    <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA~
 
 ---
 
@@ -50,13 +52,14 @@
        Max.   :4.400  
       
       [[2]]
-           .rowid      am           wt       
-       Min.   : 1.00   0:19   Min.   :1.513  
-       1st Qu.: 8.75   1:13   1st Qu.:2.581  
-       Median :16.50          Median :3.325  
-       Mean   :16.50          Mean   :3.217  
-       3rd Qu.:24.25          3rd Qu.:3.610  
-       Max.   :32.00          Max.   :5.424  
+           .rowid            0               1        
+       Min.   : 1.00   Min.   :2.465   Min.   :1.513  
+       1st Qu.: 8.75   1st Qu.:3.438   1st Qu.:1.935  
+       Median :16.50   Median :3.520   Median :2.320  
+       Mean   :16.50   Mean   :3.769   Mean   :2.411  
+       3rd Qu.:24.25   3rd Qu.:3.842   3rd Qu.:2.780  
+       Max.   :32.00   Max.   :5.424   Max.   :3.570  
+                       NA's   :13      NA's   :19     
       
       [[3]]
            .rowid           HDHF             HDLF             LDHF       
@@ -75,13 +78,22 @@
        Max.   :10.000  
       
       [[4]]
-           .rowid           vore       brainwt       
-       Min.   : 3.00   carni  : 9   Min.   :0.00014  
-       1st Qu.:25.50   herbi  :20   1st Qu.:0.00375  
-       Median :46.00   insecti: 5   Median :0.01550  
-       Mean   :42.96   omni   :17   Mean   :0.30844  
-       3rd Qu.:61.50                3rd Qu.:0.16300  
-       Max.   :76.00                Max.   :5.71200  
+           .rowid          carni             herbi             insecti       
+       Min.   : 3.00   Min.   :0.01080   Min.   :0.000400   Min.   :0.00025  
+       1st Qu.:25.50   1st Qu.:0.01750   1st Qu.:0.005125   1st Qu.:0.00030  
+       Median :46.00   Median :0.04450   Median :0.012285   Median :0.00120  
+       Mean   :42.96   Mean   :0.07926   Mean   :0.621598   Mean   :0.02155  
+       3rd Qu.:61.50   3rd Qu.:0.07000   3rd Qu.:0.236000   3rd Qu.:0.02500  
+       Max.   :76.00   Max.   :0.32500   Max.   :5.712000   Max.   :0.08100  
+                       NA's   :42        NA's   :31         NA's   :46       
+            omni        
+       Min.   :0.00014  
+       1st Qu.:0.00260  
+       Median :0.00660  
+       Mean   :0.14573  
+       3rd Qu.:0.17900  
+       Max.   :1.32000  
+       NA's   :34       
       
 
 # long_to_wide_converter works - spread false

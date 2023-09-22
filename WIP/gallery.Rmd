@@ -1,7 +1,5 @@
 ---
 title: "Gallery of examples"
-author: "Indrajeet Patil"
-date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:
     fig_width: 6

@@ -29,24 +29,24 @@
       df_2_between
     Output
       # A tibble: 4 x 18
-        term  group mean.group1 mean.group2 statistic df.error    p.value
-        <chr> <chr>       <dbl>       <dbl>     <dbl>    <dbl>      <dbl>
-      1 wt    am           3.77        2.41      5.26     30   0.0000113 
-      2 wt    am           3.77        2.41      5.49     29.2 1.00      
-      3 wt    am           3.77        2.41      5.26     30   0.00000563
-      4 wt    am           3.77        2.41      5.49     29.2 0.00000627
-        method                  alternative effectsize estimate conf.level conf.low
-        <chr>                   <chr>       <chr>         <dbl>      <dbl>    <dbl>
-      1 Two Sample t-test       two.sided   Cohen's d      1.93       0.89    1.23 
-      2 Welch Two Sample t-test less        Hedges' g      1.88       0.99    0.793
-      3 Two Sample t-test       greater     Cohen's d      1.93       0.9     1.21 
-      4 Welch Two Sample t-test two.sided   Hedges' g      1.88       0.5     1.58 
-        conf.high conf.method conf.distribution n.obs expression
-            <dbl> <chr>       <chr>             <int> <list>    
-      1      2.61 ncp         t                    32 <language>
-      2      2.97 ncp         t                    32 <language>
-      3      2.63 ncp         t                    32 <language>
-      4      2.15 ncp         t                    32 <language>
+        parameter1 parameter2 mean.parameter1 mean.parameter2 statistic df.error
+        <chr>      <chr>                <dbl>           <dbl>     <dbl>    <dbl>
+      1 wt         am                    3.77            2.41      5.26     30  
+      2 wt         am                    3.77            2.41      5.49     29.2
+      3 wt         am                    3.77            2.41      5.26     30  
+      4 wt         am                    3.77            2.41      5.49     29.2
+           p.value method                  alternative effectsize estimate conf.level
+             <dbl> <chr>                   <chr>       <chr>         <dbl>      <dbl>
+      1 0.0000113  Two Sample t-test       two.sided   Cohen's d      1.93       0.89
+      2 1.00       Welch Two Sample t-test less        Hedges' g      1.88       0.99
+      3 0.00000563 Two Sample t-test       greater     Cohen's d      1.93       0.9 
+      4 0.00000627 Welch Two Sample t-test two.sided   Hedges' g      1.88       0.5 
+        conf.low conf.high conf.method conf.distribution n.obs expression
+           <dbl>     <dbl> <chr>       <chr>             <int> <list>    
+      1     1.23      2.61 ncp         t                    32 <language>
+      2  -Inf         2.86 ncp         t                    32 <language>
+      3     1.36    Inf    ncp         t                    32 <language>
+      4     1.58      2.15 ncp         t                    32 <language>
 
 ---
 

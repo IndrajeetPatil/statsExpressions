@@ -12,7 +12,7 @@
 #' ```{r child="man/rmd-fragments/oneway_anova.Rmd"}
 #' ```
 #'
-#' @return
+#' @returns
 #'
 #' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```
@@ -40,6 +40,8 @@
 #' @inheritParams add_expression_col
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams stats::oneway.test
+#'
+#' @autoglobal
 #'
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
 #' # for reproducibility
@@ -155,7 +157,7 @@ oneway_anova <- function(data,
   #  parametric ---------------------------------------
 
   if (type == "parametric") {
-    c(k.df, k.df.error) %<-% c(ifelse(!paired, 0L, k), ifelse(!paired && var.equal, 0L, k))
+    c(k.df, k.df.error) %<-% c(ifelse(paired, k, 0L), ifelse(!paired && var.equal, 0L, k))
 
     # styler: off
     if (effsize.type %in% c("unbiased", "omega")) .f.es <- effectsize::omega_squared

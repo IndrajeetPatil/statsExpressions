@@ -3,6 +3,8 @@
 #'
 #' @inheritParams parameters::model_parameters
 #'
+#' @autoglobal
+#'
 #' @examples
 #' model <- lm(mpg ~ wt + cyl, data = mtcars)
 #' tidy_model_parameters(model)
@@ -12,8 +14,8 @@ tidy_model_parameters <- function(model, ...) {
     mutate(conf.method = . %@% "ci_method") %>%
     select(-matches("Difference")) %>%
     standardize_names(style = "broom") %>%
-    rename_all(~ gsub("cramers.", "", .x)) %>%
-    rename_all(.funs = recode, "bayes.factor" = "bf10") %>%
+    rename_all(~ gsub("cramers.|omega2.|eta2.", "", .x)) %>%
+    rename_with(recode, bayes.factor = "bf10") %>%
     tidyr::fill(matches("^prior|^bf"), .direction = "updown") %>%
     mutate(across(matches("bf10"), ~ log(.x), .names = "log_e_{.col}"))
 
@@ -26,7 +28,7 @@ tidy_model_parameters <- function(model, ...) {
     df_r2 <- performance::r2_bayes(model, average = TRUE, verbose = FALSE, ci = stats_df$conf.level[[1]]) %>%
       as_tibble() %>%
       standardize_names(style = "broom") %>%
-      rename("estimate" = "r.squared") %>%
+      rename(estimate = r.squared) %>%
       filter(if_any(matches("component"), ~ (.x == "conditional")))
 
     # remove estimates and CIs and use R2 data frame instead
@@ -45,6 +47,8 @@ tidy_model_parameters <- function(model, ...) {
 #'
 #' @param data A data frame returned by `{effectsize}` functions.
 #' @param ... Currently ignored.
+#'
+#' @autoglobal
 #'
 #' @examples
 #' df <- effectsize::cohens_d(sleep$extra, sleep$group)

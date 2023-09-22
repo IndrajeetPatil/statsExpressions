@@ -8,7 +8,7 @@ message: 'To cite package "statsExpressions" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'statsExpressions: Tidy Dataframes and Expressions with Statistical Details'
-version: 1.5.1
+version: 1.5.2.9000
 doi: 10.21105/joss.03236
 abstract: 'Utilities for producing dataframes with rich details for the most common
   types of statistical approaches and tests: parametric, nonparametric, robust, and
@@ -110,13 +110,13 @@ references:
     given-names: Jeffrey N.
     email: jrouder@uci.edu
   year: '2023'
-  version: '>= 0.9.12-4.4'
+  version: '>= 0.9.12-4.5'
 - type: software
   title: correlation
   abstract: 'correlation: Methods for Correlation Analysis'
   notes: Imports
   url: https://easystats.github.io/correlation/
-  repository: https://CRAN.R-project.org/package=correlation
+  repository: https://easystats.r-universe.dev
   authors:
   - family-names: Makowski
     given-names: Dominique
@@ -138,6 +138,10 @@ references:
     given-names: Mattan S.
     email: matanshm@post.bgu.ac.il
     orcid: https://orcid.org/0000-0002-4287-4801
+  - family-names: Thériault
+    given-names: Rémi
+    email: remi.theriault@mail.mcgill.ca
+    orcid: https://orcid.org/0000-0003-4315-6788
   year: '2023'
   version: '>= 0.8.4'
 - type: software
@@ -145,7 +149,7 @@ references:
   abstract: 'datawizard: Easy Data Wrangling and Statistical Transformations'
   notes: Imports
   url: https://easystats.github.io/datawizard/
-  repository: https://easystats.r-universe.dev
+  repository: https://CRAN.R-project.org/package=datawizard
   authors:
   - family-names: Patil
     given-names: Indrajeet
@@ -172,7 +176,7 @@ references:
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2023'
-  version: '>= 0.8.0'
+  version: '>= 0.9.0'
 - type: software
   title: dplyr
   abstract: 'dplyr: A Grammar of Data Manipulation'
@@ -197,13 +201,13 @@ references:
     email: davis@posit.co
     orcid: https://orcid.org/0000-0003-4777-038X
   year: '2023'
-  version: '>= 1.1.2'
+  version: '>= 1.1.3'
 - type: software
   title: effectsize
   abstract: 'effectsize: Indices of Effect Size'
   notes: Imports
   url: https://easystats.github.io/effectsize/
-  repository: https://easystats.r-universe.dev
+  repository: https://CRAN.R-project.org/package=effectsize
   authors:
   - family-names: Ben-Shachar
     given-names: Mattan S.
@@ -230,7 +234,7 @@ references:
     email: remi.theriault@mail.mcgill.ca
     orcid: https://orcid.org/0000-0003-4315-6788
   year: '2023'
-  version: '>= 0.8.3'
+  version: '>= 0.8.6'
 - type: software
   title: glue
   abstract: 'glue: Interpreted String Literals'
@@ -251,7 +255,7 @@ references:
   abstract: 'insight: Easy Access to Model Information for Various Model Objects'
   notes: Imports
   url: https://easystats.github.io/insight/
-  repository: https://CRAN.R-project.org/package=insight
+  repository: https://easystats.r-universe.dev
   authors:
   - family-names: Lüdecke
     given-names: Daniel
@@ -286,7 +290,7 @@ references:
     email: etienne.bacher@protonmail.com
     orcid: https://orcid.org/0000-0002-9271-5075
   year: '2023'
-  version: '>= 0.19.3'
+  version: '>= 0.19.5'
 - type: software
   title: magrittr
   abstract: 'magrittr: A Forward-Pipe Operator for R'
@@ -365,7 +369,7 @@ references:
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2023'
-  version: '>= 0.10.3'
+  version: '>= 0.10.5'
 - type: software
   title: PMCMRplus
   abstract: 'PMCMRplus: Calculate Pairwise Multiple Comparisons of Mean Rank Sums
@@ -394,7 +398,7 @@ references:
     given-names: Lionel
     email: lionel@rstudio.com
   year: '2023'
-  version: '>= 1.0.1'
+  version: '>= 1.0.2'
 - type: software
   title: rlang
   abstract: 'rlang: Functions for Base Types and Core R and ''Tidyverse'' Features'
@@ -503,6 +507,38 @@ references:
     email: nathanteetor@gmail.com
   year: '2023'
 - type: software
+  title: bayestestR
+  abstract: 'bayestestR: Understand and Describe Bayesian Models and Posterior Distributions'
+  notes: Suggests
+  url: https://easystats.github.io/bayestestR/
+  repository: https://easystats.r-universe.dev
+  authors:
+  - family-names: Makowski
+    given-names: Dominique
+    email: dom.makowski@gmail.com
+    orcid: https://orcid.org/0000-0001-5375-9967
+  - family-names: Lüdecke
+    given-names: Daniel
+    email: d.luedecke@uke.de
+    orcid: https://orcid.org/0000-0002-8895-3206
+  - family-names: Ben-Shachar
+    given-names: Mattan S.
+    email: matanshm@post.bgu.ac.il
+    orcid: https://orcid.org/0000-0002-4287-4801
+  - family-names: Patil
+    given-names: Indrajeet
+    email: patilindrajeet.science@gmail.com
+    orcid: https://orcid.org/0000-0003-1995-6531
+  - family-names: Wilson
+    given-names: Michael D.
+    email: michael.d.wilson@curtin.edu.au
+    orcid: https://orcid.org/0000-0003-4143-7308
+  - family-names: Wiernik
+    given-names: Brenton M.
+    email: brenton@wiernik.org
+    orcid: https://orcid.org/0000-0001-9560-6336
+  year: '2023'
+- type: software
   title: ggplot2
   abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
   notes: Suggests
@@ -553,12 +589,12 @@ references:
   title: metaBMA
   abstract: 'metaBMA: Bayesian Model Averaging for Random and Fixed Effects Meta-Analysis'
   notes: Suggests
-  url: https://github.com/danheck/metaBMA
+  url: https://danheck.github.io/metaBMA/
   repository: https://CRAN.R-project.org/package=metaBMA
   authors:
   - family-names: Heck
     given-names: Daniel W.
-    email: dheck@uni-marburg.de
+    email: daniel.heck@uni-marburg.de
     orcid: https://orcid.org/0000-0002-6302-9252
   year: '2023'
 - type: software
@@ -671,7 +707,7 @@ references:
     given-names: Hadley
     email: hadley@posit.co
   year: '2023'
-  version: '>= 3.1.8'
+  version: '>= 3.1.10'
 - type: software
   title: utils
   abstract: 'R: A Language and Environment for Statistical Computing'
