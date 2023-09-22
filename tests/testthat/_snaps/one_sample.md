@@ -31,10 +31,10 @@
       # A tibble: 1 x 14
            mu statistic df.error p.value method            alternative effectsize
         <dbl>     <dbl>    <dbl>   <dbl> <chr>             <chr>       <chr>     
-      1   120     -2.67       78 0.00910 One Sample t-test two.sided   Cohen's d 
+      1   120     -2.67       78 0.00910 One Sample t-test two.sided   Hedges' g 
         estimate conf.level conf.low conf.high conf.method conf.distribution n.obs
            <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>             <int>
-      1   -0.301        0.9   -0.489    -0.111 ncp         t                    79
+      1   -0.298        0.9   -0.485    -0.110 ncp         t                    79
 
 ---
 
@@ -43,8 +43,8 @@
     Output
       [[1]]
       list(italic("t")["Student"] * "(" * 78 * ")" == "-2.6750", italic(p) == 
-          "0.0091", widehat(italic("d"))["Cohen"] == "-0.3010", CI["90%"] ~ 
-          "[" * "-0.4893", "-0.1108" * "]", italic("n")["obs"] == "79")
+          "0.0091", widehat(italic("g"))["Hedges"] == "-0.2981", CI["90%"] ~ 
+          "[" * "-0.4845", "-0.1097" * "]", italic("n")["obs"] == "79")
       
 
 # one_sample_test non-parametric works

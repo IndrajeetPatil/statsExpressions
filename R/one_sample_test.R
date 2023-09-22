@@ -4,8 +4,6 @@
 #' @param x A numeric variable from the data frame `data`.
 #' @param test.value A number indicating the true value of the mean (Default:
 #'   `0`).
-#' @param effsize.type Type of effect size needed for *parametric* tests. The
-#'   argument can be `"d"` (for Cohen's *d*) or `"g"` (for Hedge's *g*).
 #' @inheritParams long_to_wide_converter
 #' @inheritParams stats_type_switch
 #' @inheritParams add_expression_col
@@ -42,58 +40,35 @@ one_sample_test <- function(data,
                             conf.level = 0.95,
                             tr = 0.2,
                             bf.prior = 0.707,
-                            effsize.type = "g",
                             ...) {
   type <- stats_type_switch(type)
   x_vec <- stats::na.omit(data %>% pull({{ x }}))
 
-  # parametric ---------------------------------------
+  # Functions for inferential statistics and estimation
+  c(.f, .f.es) %<-% switch(type,
+    parametric    = list(stats::t.test, effectsize::hedges_g),
+    nonparametric = list(stats::wilcox.test, effectsize::rank_biserial),
+    robust        = list(WRS2::trimcibt, NULL),
+    bayes         = list(BayesFactor::ttestBF, NULL)
+  )
 
-  if (type == "parametric") {
-    .f <- stats::t.test
-    # styler: off
-    if (effsize.type %in% c("unbiased", "g")) .f.es <- effectsize::hedges_g
-    if (effsize.type %in% c("biased", "d")) .f.es   <- effectsize::cohens_d
-    # styler: on
-  }
+  # styler: off
+  .f.args <- switch(type,
+    parametric    = ,
+    nonparametric = list(x = x_vec, mu = test.value, alternative = alternative, exact = FALSE),
+    robust        = list(x = x_vec, nv = test.value, tr = tr, alpha = 1 - conf.level),
+    bayes         = list(x = x_vec, rscale = bf.prior, mu = test.value)
+  )
+  # styler: on
 
-  # non-parametric ---------------------------------------
+  stats_df <- exec(.f, !!!.f.args) %>% tidy_model_parameters(ci = conf.level)
 
-
-  if (type == "nonparametric") c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
-
+  # These are exceptions because the tidier for the underlying object won't also contain the effect size details
+  # so those need to be extracted separately and merged
   if (type %in% c("parametric", "nonparametric")) {
-    stats_df <- exec(.f, x = x_vec, mu = test.value, alternative = alternative, exact = FALSE) %>%
-      tidy_model_parameters() %>%
-      select(-matches("^est|^conf|^diff|^term|^ci"))
-
-    effsize_df <- exec(
-      .f.es,
-      x       = x_vec,
-      mu      = test.value,
-      verbose = FALSE,
-      ci      = conf.level
-    ) %>%
-      tidy_model_effectsize()
-
-    stats_df <- bind_cols(stats_df, effsize_df)
+    effsize_df <- exec(.f.es, !!!.f.args, verbose = FALSE, ci = conf.level) %>% tidy_model_effectsize()
+    stats_df <- bind_cols(select(stats_df, -matches("^est|^conf|^diff|^term|^ci")), effsize_df)
   }
-
-  # robust ---------------------------------------
-
-  if (type == "robust") {
-    stats_df <- exec(WRS2::trimcibt, x = x_vec, nv = test.value, tr = tr, alpha = 1 - conf.level) %>%
-      tidy_model_parameters()
-  }
-
-  # Bayesian ---------------------------------------
-
-  if (type == "bayes") {
-    stats_df <- BayesFactor::ttestBF(x = x_vec, rscale = bf.prior, mu = test.value) %>%
-      tidy_model_parameters(ci = conf.level)
-  }
-
-  # expression ---------------------------------------
 
   add_expression_col(stats_df, n = length(x_vec), k = k)
 }

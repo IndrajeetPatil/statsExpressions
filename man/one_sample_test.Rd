@@ -14,7 +14,6 @@ one_sample_test(
   conf.level = 0.95,
   tr = 0.2,
   bf.prior = 0.707,
-  effsize.type = "g",
   ...
 )
 }
@@ -61,9 +60,6 @@ addition to numeric arguments, several named values are also recognized:
 \code{"medium"}, \code{"wide"}, and \code{"ultrawide"}, corresponding to \emph{r} scale values
 of 1/2, sqrt(2)/2, and 1, respectively. In case of an ANOVA, this value
 corresponds to scale for fixed effects.}
-
-\item{effsize.type}{Type of effect size needed for \emph{parametric} tests. The
-argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \emph{g}).}
 
 \item{...}{Currently ignored.}
 }
