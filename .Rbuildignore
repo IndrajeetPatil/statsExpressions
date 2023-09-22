@@ -49,3 +49,5 @@ hextools
 publication/*
 references.bib
 tests\^spelling
+^Makefile$
+shell

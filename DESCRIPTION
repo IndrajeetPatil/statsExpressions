@@ -26,7 +26,7 @@ Depends:
     R (>= 4.1.0)
 Imports:
     afex (>= 1.3-0),
-    BayesFactor (>= 0.9.12-4.4),
+    BayesFactor (>= 0.9.12-4.5),
     correlation (>= 0.8.4),
     datawizard (>= 0.9.0),
     dplyr (>= 1.1.3),

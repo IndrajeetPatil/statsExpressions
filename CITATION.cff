@@ -110,7 +110,7 @@ references:
     given-names: Jeffrey N.
     email: jrouder@uci.edu
   year: '2023'
-  version: '>= 0.9.12-4.4'
+  version: '>= 0.9.12-4.5'
 - type: software
   title: correlation
   abstract: 'correlation: Methods for Correlation Analysis'
@@ -255,7 +255,7 @@ references:
   abstract: 'insight: Easy Access to Model Information for Various Model Objects'
   notes: Imports
   url: https://easystats.github.io/insight/
-  repository: https://CRAN.R-project.org/package=insight
+  repository: https://easystats.r-universe.dev
   authors:
   - family-names: Lüdecke
     given-names: Daniel

@@ -200,7 +200,7 @@
       "@type": "SoftwareApplication",
       "identifier": "BayesFactor",
       "name": "BayesFactor",
-      "version": ">= 0.9.12-4.4",
+      "version": ">= 0.9.12-4.5",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -431,7 +431,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4128.783KB",
+  "fileSize": "4129.184KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
