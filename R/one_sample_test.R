@@ -55,22 +55,21 @@ one_sample_test <- function(data,
     bayes         = list(BayesFactor::ttestBF, NULL)
   )
 
-  # Arguments to be supplied to these functions
   # styler: off
-  c(.f.args, .f.es.args) %<-% switch(type,
+  .f.args <- switch(type,
     parametric    = ,
-    nonparametric = list(list(x = x_vec, mu = test.value, alternative = alternative, exact = FALSE), list(verbose = FALSE, ci = conf.level)),
-    robust        = list(list(x = x_vec, nv = test.value, tr = tr, alpha = 1 - conf.level), NULL),
-    bayes         = list(list(x = x_vec, rscale = bf.prior, mu = test.value), NULL)
+    nonparametric = list(x = x_vec, mu = test.value, alternative = alternative, exact = FALSE),
+    robust        = list(x = x_vec, nv = test.value, tr = tr, alpha = 1 - conf.level),
+    bayes         = list(x = x_vec, rscale = bf.prior, mu = test.value)
   )
   # styler: on
 
-  stats_df <- exec(.f, !!!.f.args, !!!.f.es.args) %>% tidy_model_parameters(ci = conf.level)
+  stats_df <- exec(.f, !!!.f.args) %>% tidy_model_parameters(ci = conf.level)
 
   # These are exceptions because the tidier for the underlying object won't also contain the effect size details
   # so those need to be extracted separately and merged
   if (type %in% c("parametric", "nonparametric")) {
-    effsize_df <- exec(.f.es, !!!.f.args, !!!.f.es.args) %>% tidy_model_effectsize()
+    effsize_df <- exec(.f.es, !!!.f.args, verbose = FALSE, ci = conf.level) %>% tidy_model_effectsize()
     stats_df <- bind_cols(select(stats_df, -matches("^est|^conf|^diff|^term|^ci")), effsize_df)
   }
 
