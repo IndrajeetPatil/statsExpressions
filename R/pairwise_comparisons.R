@@ -264,7 +264,7 @@ pairwise_comparisons <- function(data,
       mutate(
         expression = case_when(
           p.adjust.method == "None" ~ glue("list(italic(p)[unadj.]=='{format_value(p.value, k)}')"),
-          TRUE ~ glue("list(italic(p)['{p.adjust.method}'-adj.]=='{format_value(p.value, k)}')")
+          .default = glue("list(italic(p)['{p.adjust.method}'-adj.]=='{format_value(p.value, k)}')")
         )
       )
   }
@@ -296,6 +296,6 @@ p_adjust_text <- function(p.adjust.method) {
     ),
     grepl("^BH|^f", p.adjust.method) ~ "FDR",
     grepl("^BY", p.adjust.method) ~ "BY",
-    TRUE ~ "Holm"
+    .default = "Holm"
   )
 }

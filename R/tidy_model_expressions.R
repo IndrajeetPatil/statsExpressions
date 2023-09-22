@@ -62,7 +62,7 @@ tidy_model_expressions <- function(data,
     df %<>% mutate(
       expression = case_when(
         df.error %in% c("NA", "Inf") ~ glue("list({es.text}=='{estimate}', italic(t)=='{statistic}', italic(p)=='{p.value}')"),
-        TRUE ~ glue("list({es.text}=='{estimate}', italic(t)('{df.error}')=='{statistic}', italic(p)=='{p.value}')")
+        .default = glue("list({es.text}=='{estimate}', italic(t)('{df.error}')=='{statistic}', italic(p)=='{p.value}')")
       )
     )
   }
@@ -105,7 +105,7 @@ tidy_model_expressions <- function(data,
     ungroup() %>% # convert from `expression` to `language`
     mutate(expression = case_when(
       is.na(unlist(expression)) ~ list(NULL),
-      TRUE ~ unlist(expression)
+      .default = unlist(expression)
     )) %>%
     .add_package_class()
 }

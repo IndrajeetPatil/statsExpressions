@@ -36,14 +36,14 @@ centrality_description <- function(data,
                                    tr = 0.2,
                                    k = 2L,
                                    ...) {
-  type <- stats_type_switch(type)
 
   # styler: off
-  centrality <- case_when(
-    type == "parametric"    ~ "mean",
-    type == "nonparametric" ~ "median",
-    type == "robust"        ~ "trimmed",
-    type == "bayes"         ~ "MAP"
+  centrality <- case_match(
+    stats_type_switch(type),
+    "parametric"    ~ "mean",
+    "nonparametric" ~ "median",
+    "robust"        ~ "trimmed",
+    "bayes"         ~ "MAP"
   )
   # styler: on
 
