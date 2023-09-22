@@ -37,6 +37,8 @@
 #' @returns A data frame with `NA`s removed while respecting the
 #'   between-or-within-subjects nature of the dataset.
 #'
+#' @autoglobal
+#'
 #' @examples
 #' # for reproducibility
 #' library(statsExpressions)

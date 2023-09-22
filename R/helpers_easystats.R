@@ -3,6 +3,8 @@
 #'
 #' @inheritParams parameters::model_parameters
 #'
+#' @autoglobal
+#'
 #' @examples
 #' model <- lm(mpg ~ wt + cyl, data = mtcars)
 #' tidy_model_parameters(model)
@@ -45,6 +47,8 @@ tidy_model_parameters <- function(model, ...) {
 #'
 #' @param data A data frame returned by `{effectsize}` functions.
 #' @param ... Currently ignored.
+#'
+#' @autoglobal
 #'
 #' @examples
 #' df <- effectsize::cohens_d(sleep$extra, sleep$group)

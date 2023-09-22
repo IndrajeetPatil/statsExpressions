@@ -36,6 +36,8 @@
 #' needed package (`{metafor}`, `{metaplus}`, or `{metaBMA}`) for meta-analysis.
 #' If they are not available, you will be asked to install them.
 #'
+#' @autoglobal
+#'
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metafor", quietly = TRUE)
 #' # setup
 #' set.seed(123)

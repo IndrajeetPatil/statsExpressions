@@ -24,9 +24,12 @@
 #' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```
 #'
+#' @autoglobal
+#'
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
 #' @example man/examples/examples-two_sample_test_within.R
 #' @example man/examples/examples-two_sample_test_between.R
+#'
 #' @export
 two_sample_test <- function(data,
                             x,

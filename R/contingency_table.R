@@ -47,6 +47,8 @@
 #' @inheritParams stats::chisq.test
 #' @inheritParams oneway_anova
 #'
+#' @autoglobal
+#'
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
 #' # for reproducibility
 #' set.seed(123)

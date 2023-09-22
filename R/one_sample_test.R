@@ -29,6 +29,8 @@
 #' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```
 #'
+#' @autoglobal
+#'
 #' @example man/examples/examples-one_sample_test.R
 #' @export
 one_sample_test <- function(data,

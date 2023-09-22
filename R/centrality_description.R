@@ -24,6 +24,8 @@
 #' @inheritParams oneway_anova
 #' @param ... Currently ignored.
 #'
+#' @autoglobal
+#'
 #' @example man/examples/examples-centrality_description.R
 #' @export
 centrality_description <- function(data,

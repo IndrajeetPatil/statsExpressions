@@ -23,6 +23,8 @@
 #'   be plotted on the `y`-axis.
 #' @inheritParams oneway_anova
 #'
+#' @autoglobal
+#'
 #' @example man/examples/examples-corr_test.R
 #' @export
 corr_test <- function(data,
