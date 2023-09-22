@@ -26,13 +26,13 @@ Depends:
     R (>= 4.1.0)
 Imports:
     afex (>= 1.3-0),
-    BayesFactor (>= 0.9.12-4.4),
+    BayesFactor (>= 0.9.12-4.5),
     correlation (>= 0.8.4),
-    datawizard (>= 0.8.0),
+    datawizard (>= 0.9.0),
     dplyr (>= 1.1.3),
-    effectsize (>= 0.8.5),
+    effectsize (>= 0.8.6),
     glue,
-    insight (>= 0.19.4),
+    insight (>= 0.19.5),
     magrittr,
     parameters (>= 0.21.1),
     performance (>= 0.10.5),
@@ -62,8 +62,11 @@ VignetteBuilder:
 Encoding: UTF-8
 Language: en-US
 LazyData: true
-Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate",
-    "pkgapi::api_roclet"))
+Roxygen: list(
+    markdown = TRUE,
+    roclets = c("collate", "namespace", "rd", "pkgapi::api_roclet", "roxyglobals::global_roclet")
+  )
 RoxygenNote: 7.2.3.9000
 Config/testthat/edition: 3
 Config/testthat/parallel: true
+Config/Needs/check: anthonynorth/roxyglobals

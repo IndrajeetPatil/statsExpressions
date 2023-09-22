@@ -18,6 +18,8 @@
 #' This is an **experimental** function and may change in the future. Please do
 #' not use it yet in your workflow.
 #'
+#' @autoglobal
+#'
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
 #' # setup
 #' set.seed(123)

@@ -44,6 +44,7 @@ jobs:
             commented_code_linter = NULL,
             cyclocomp_linter(25L),
             extraction_operator_linter = NULL,
+            if_not_else_linter(exceptions = character(0L)),
             implicit_integer_linter = NULL,
             library_call_linter = NULL,
             line_length_linter(120L),
@@ -62,3 +63,5 @@ jobs:
             defaults = linters_with_tags(tags = NULL)
           ))
         shell: Rscript {0}
+        env:
+          LINTR_ERROR_ON_LINT: true

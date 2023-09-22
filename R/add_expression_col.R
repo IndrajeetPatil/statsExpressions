@@ -47,6 +47,8 @@
 #' @inheritParams oneway_anova
 #' @inheritParams long_to_wide_converter
 #'
+#' @autoglobal
+#'
 #' @examples
 #' set.seed(123)
 #'

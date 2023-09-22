@@ -41,6 +41,8 @@
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams stats::oneway.test
 #'
+#' @autoglobal
+#'
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
 #' # for reproducibility
 #' set.seed(123)

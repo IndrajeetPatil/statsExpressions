@@ -16,6 +16,8 @@
 #'
 #' You can specify just the initial letter.
 #'
+#' @autoglobal
+#'
 #' @examples
 #' stats_type_switch("p")
 #' stats_type_switch("bf")
