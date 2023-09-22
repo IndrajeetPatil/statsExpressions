@@ -20,8 +20,6 @@ utils::globalVariables(c(
   ".f.args", # <meta_analysis>
   ".f", # <one_sample_test>
   ".f.es", # <one_sample_test>
-  ".f.args", # <one_sample_test>
-  ".f.es.args", # <one_sample_test>
   ".rowid", # <oneway_anova>
   "k.df", # <oneway_anova>
   "k.df.error", # <oneway_anova>
