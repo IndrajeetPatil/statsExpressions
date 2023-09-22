@@ -4,8 +4,6 @@
 #' @param x A numeric variable from the data frame `data`.
 #' @param test.value A number indicating the true value of the mean (Default:
 #'   `0`).
-#' @param effsize.type Type of effect size needed for *parametric* tests. The
-#'   argument can be `"d"` (for Cohen's *d*) or `"g"` (for Hedge's *g*).
 #' @inheritParams long_to_wide_converter
 #' @inheritParams stats_type_switch
 #' @inheritParams add_expression_col
@@ -42,7 +40,6 @@ one_sample_test <- function(data,
                             conf.level = 0.95,
                             tr = 0.2,
                             bf.prior = 0.707,
-                            effsize.type = "g",
                             ...) {
   type <- stats_type_switch(type)
   x_vec <- stats::na.omit(data %>% pull({{ x }}))

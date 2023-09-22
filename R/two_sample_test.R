@@ -4,6 +4,8 @@
 #' @description
 #' Parametric, non-parametric, robust, and Bayesian two-sample tests.
 #'
+#' @param effsize.type Type of effect size needed for *parametric* tests. The
+#'   argument can be `"d"` (for Cohen's *d*) or `"g"` (for Hedge's *g*).
 #' @inheritParams long_to_wide_converter
 #' @inheritParams stats_type_switch
 #' @inheritParams one_sample_test
