@@ -49,19 +49,19 @@ one_sample_test <- function(data,
 
   # Functions for inferential statistics and estimation
   c(.f, .f.es) %<-% switch(type,
-    "parametric"    = list(stats::t.test, effectsize::hedges_g),
-    "nonparametric" = list(stats::wilcox.test, effectsize::rank_biserial),
-    "robust"        = list(WRS2::trimcibt, NULL),
-    "bayes"         = list(BayesFactor::ttestBF, NULL)
+    parametric    = list(stats::t.test, effectsize::hedges_g),
+    nonparametric = list(stats::wilcox.test, effectsize::rank_biserial),
+    robust        = list(WRS2::trimcibt, NULL),
+    bayes         = list(BayesFactor::ttestBF, NULL)
   )
 
   # Arguments to be supplied to these functions
   # styler: off
   c(.f.args, .f.es.args) %<-% switch(type,
-    "parametric"    = ,
-    "nonparametric" = list(list(x = x_vec, mu = test.value, alternative = alternative, exact = FALSE), list(verbose = FALSE, ci = conf.level)),
-    "robust"        = list(list(x = x_vec, nv = test.value, tr = tr, alpha = 1 - conf.level), NULL),
-    "bayes"         = list(list(x = x_vec, rscale = bf.prior, mu = test.value), NULL)
+    parametric    = ,
+    nonparametric = list(list(x = x_vec, mu = test.value, alternative = alternative, exact = FALSE), list(verbose = FALSE, ci = conf.level)),
+    robust        = list(list(x = x_vec, nv = test.value, tr = tr, alpha = 1 - conf.level), NULL),
+    bayes         = list(list(x = x_vec, rscale = bf.prior, mu = test.value), NULL)
   )
   # styler: on
 
