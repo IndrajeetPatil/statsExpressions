@@ -21,12 +21,11 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@v2
         with:
-          pandoc-version: "3.1.7"
+          pandoc-version: "3.1.8"
 
       - uses: r-lib/actions/setup-r@v2
         with:
           r-version: "devel"
-          http-user-agent: "release"
           use-public-rspm: true
 
       - uses: r-lib/actions/setup-r-dependencies@v2
@@ -35,7 +34,8 @@ jobs:
           dependencies: '"hard"'
           extra-packages: |
             any::rcmdcheck
-            r-lib/urlchecker
+            any::urlchecker
+          needs: check
 
       - name: Run URL checker
         run: |
