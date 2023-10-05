@@ -67,7 +67,7 @@ one_sample_test <- function(data,
       tidy_model_parameters() %>%
       select(-matches("^est|^conf|^diff|^term|^ci"))
 
-    effsize_df <- exec(
+    ez_df <- exec(
       .f.es,
       x       = x_vec,
       mu      = test.value,
@@ -76,7 +76,7 @@ one_sample_test <- function(data,
     ) %>%
       tidy_model_effectsize()
 
-    stats_df <- bind_cols(stats_df, effsize_df)
+    stats_df <- bind_cols(stats_df, ez_df)
   }
 
   # robust ---------------------------------------
