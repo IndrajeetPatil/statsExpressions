@@ -32,9 +32,8 @@ test_that("tidy_model_expressions works - t", {
 
 test_that("tidy_model_expressions works - chi2", {
   skip_if_not_installed("survival")
-  library(survival)
+  withr::local_package("survival")
 
-  # model
   mod_chi <- survival::coxph(
     formula = Surv(time, status) ~ age + sex + frailty(inst),
     data = lung
@@ -58,7 +57,6 @@ test_that("tidy_model_expressions works - chi2", {
 test_that("tidy_model_expressions works - z", {
   df <- as.data.frame(Titanic)
 
-  # model
   mod_z <- stats::glm(
     formula = Survived ~ Sex + Age,
     data = df,
@@ -78,8 +76,6 @@ test_that("tidy_model_expressions works - z", {
 
 
 test_that("tidy_model_expressions works - F", {
-  ## F-statistic --------------------------------
-
   set.seed(123)
   mod_f <- aov(yield ~ N * P + Error(block), npk)
 

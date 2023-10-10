@@ -3,12 +3,9 @@ test_that(
   code = {
     skip_if_not_installed("metaplus")
 
-    data(mag, package = "metaplus")
-    dat <- mag %>% rename(estimate = yi, std.error = sei)
-
     set.seed(123)
     df <- meta_analysis(
-      data = dat,
+      data = data_meta,
       type = "robust",
       random = "normal"
     )
