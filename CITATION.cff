@@ -207,7 +207,7 @@ references:
   abstract: 'effectsize: Indices of Effect Size'
   notes: Imports
   url: https://easystats.github.io/effectsize/
-  repository: https://CRAN.R-project.org/package=effectsize
+  repository: https://easystats.r-universe.dev
   authors:
   - family-names: Ben-Shachar
     given-names: Mattan S.
@@ -468,7 +468,7 @@ references:
     given-names: Jim
   - family-names: Henry
     given-names: Lionel
-    email: lionel@rstudio.com
+    email: lionel@posit.co
   - family-names: Müller
     given-names: Kirill
     email: krlmlr+r@mailbox.org
@@ -707,7 +707,7 @@ references:
     given-names: Hadley
     email: hadley@posit.co
   year: '2023'
-  version: '>= 3.1.10'
+  version: '>= 3.2.0'
 - type: software
   title: utils
   abstract: 'R: A Language and Environment for Statistical Computing'

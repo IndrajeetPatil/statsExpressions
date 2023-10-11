@@ -144,6 +144,26 @@ data_with_subid <- tibble::tribble(
     82.5,        "1", "9"
 )
 
+data_meta <- tibble::tribble(
+  ~study,          ~estimate, ~std.error,
+  "Morton",        -0.83035,  1.24702,
+  "Rasmussen",     -1.05605,  0.41407,
+  "Smith",         -1.27834,  0.80814,
+  "Abraham",       -0.04349,  1.42951,
+  "Feldstedt",     0.22314,   0.48917,
+  "Schechter",     -2.40752,  1.07221,
+  "Ceremuzynski",  -1.28093,  1.19373,
+  "Bertschat",     -1.1917,   1.66129,
+  "Singh",         -0.69575,  0.53618,
+  "Pereira",       -2.20827,  1.10965,
+  "Schechter 1",   -2.03816,  0.78073,
+  "Golf",          -0.85015,  0.61845,
+  "Thogersen",     -0.79323,  0.62587,
+  "LIMIT-2",       -0.29934,  0.14657,
+  "Schechter 2",   -1.57079,  0.57404,
+  "ISIS-4",        0.05759,   0.03164
+)
+
 # styler: on
 
 # nolint end

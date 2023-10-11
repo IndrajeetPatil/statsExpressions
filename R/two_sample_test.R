@@ -74,12 +74,8 @@ two_sample_test <- function(data,
 
   if (type %in% c("parametric", "nonparametric")) {
     .f.args <- list(x = data[[2L]], y = data[[3L]], paired = paired, alternative = alternative)
-
-    stats_df <- exec(.f, !!!.f.args, var.equal = var.equal, exact = FALSE) %>%
-      tidy_model_parameters()
-
-    effsize_df <- exec(.f.es, !!!.f.args, pooled_sd = FALSE, ci = conf.level, verbose = FALSE) %>%
-      tidy_model_effectsize()
+    stats_df <- exec(.f, !!!.f.args, var.equal = var.equal, exact = FALSE) %>% tidy_model_parameters()
+    ez_df <- exec(.f.es, !!!.f.args, pooled_sd = FALSE, ci = conf.level, verbose = FALSE) %>% tidy_model_effectsize()
   }
 
   # robust ---------------------------------------
@@ -94,25 +90,24 @@ two_sample_test <- function(data,
     .f.args    <- list(formula = new_formula(y, x), data = data, x = data[[2L]], y = data[[3L]])
     .f.es.args <- list(EQVAR = FALSE, nboot = nboot, alpha = 1.0 - conf.level, tr = tr)
 
-    effsize_df <- tidy_model_parameters(exec(.f.es, !!!.f.args, !!!.f.es.args), keep = "AKP")
-    stats_df   <- tidy_model_parameters(exec(.f,    !!!.f.args, !!!.f.es.args))
+    ez_df    <- tidy_model_parameters(exec(.f.es, !!!.f.args, !!!.f.es.args), keep = "AKP")
+    stats_df <- tidy_model_parameters(exec(.f, !!!.f.args, !!!.f.es.args))
     # styler: on
   }
 
   if (type != "bayes") {
-    stats_df <- bind_cols(select(stats_df, -matches("^est|^eff|conf|^ci")), select(effsize_df, -matches("term")))
+    stats_df <- bind_cols(select(stats_df, -matches("^est|^eff|conf|^ci")), select(ez_df, -matches("term")))
   }
 
   # Bayesian ---------------------------------------
 
   if (type == "bayes") {
     # styler: off
-    if (!paired) .f.args <- list(formula = new_formula(y, x), paired = paired)
+    if (!paired) .f.args <- list(formula = new_formula(y, x), data = as.data.frame(data), paired = paired)
     if (paired) .f.args  <- list(x = data[[2L]], y = data[[3L]], paired = paired)
     # styler: on
 
-    stats_df <- exec(BayesFactor::ttestBF, data = as.data.frame(data), rscale = bf.prior, !!!.f.args) %>%
-      tidy_model_parameters(ci = conf.level)
+    stats_df <- exec(BayesFactor::ttestBF, rscale = bf.prior, !!!.f.args) %>% tidy_model_parameters(ci = conf.level)
   }
 
   # expression ---------------------------------------

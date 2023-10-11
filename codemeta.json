@@ -161,7 +161,7 @@
       "@type": "SoftwareApplication",
       "identifier": "testthat",
       "name": "testthat",
-      "version": ">= 3.1.10",
+      "version": ">= 3.2.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -431,7 +431,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4129.449KB",
+  "fileSize": "4131.402KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
@@ -463,7 +463,7 @@
   ],
   "releaseNotes": "https://github.com/IndrajeetPatil/statsExpressions/blob/master/NEWS.md",
   "readme": "https://github.com/IndrajeetPatil/statsExpressions/blob/main/README.md",
-  "contIntegration": "https://app.codecov.io/gh/IndrajeetPatil/statsExpressions?branch=main",
+  "contIntegration": ["https://github.com/IndrajeetPatil/statsExpressions/actions", "https://app.codecov.io/gh/IndrajeetPatil/statsExpressions?branch=main"],
   "developmentStatus": ["https://lifecycle.r-lib.org/articles/stages.html", "https://www.repostatus.org/##active"],
   "keywords": ["statistical-tests", "statistical-details", "meta-analysis", "contingency-table", "robust", "correlation", "parametric", "bayesian-inference", "bayesian-statistics", "robust-statistics", "effectsize", "tidy"]
 }

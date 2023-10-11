@@ -203,7 +203,7 @@ oneway_anova <- function(data,
 
     stats_df <- tidy_model_parameters(exec(.f, !!!.f.args, data = data))
 
-    effsize_df <- exec(
+    ez_df <- exec(
       .fn        = .f.es,
       data       = data,
       ci         = conf.level,
@@ -213,7 +213,7 @@ oneway_anova <- function(data,
     ) %>%
       tidy_model_effectsize()
 
-    stats_df <- bind_cols(stats_df, effsize_df)
+    stats_df <- bind_cols(stats_df, ez_df)
   }
 
   # robust ---------------------------------------
@@ -243,11 +243,11 @@ oneway_anova <- function(data,
     stats_df <- tidy_model_parameters(mod)
 
     if (paired) {
-      effsize_df <- long_to_wide_converter(data, {{ x }}, {{ y }}) %>%
+      ez_df <- long_to_wide_converter(data, {{ x }}, {{ y }}) %>%
         WRS2::wmcpAKP(select(-.rowid), tr = tr, nboot = nboot) %>%
         tidy_model_parameters()
 
-      stats_df <- bind_cols(stats_df, effsize_df)
+      stats_df <- bind_cols(stats_df, ez_df)
     }
   }
 
