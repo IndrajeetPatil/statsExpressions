@@ -277,7 +277,7 @@
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
-      "version": ">= 0.19.5",
+      "version": ">= 0.19.6",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -302,7 +302,7 @@
       "@type": "SoftwareApplication",
       "identifier": "parameters",
       "name": "parameters",
-      "version": ">= 0.21.1",
+      "version": ">= 0.21.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -315,7 +315,7 @@
       "@type": "SoftwareApplication",
       "identifier": "performance",
       "name": "performance",
-      "version": ">= 0.10.5",
+      "version": ">= 0.10.8",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -328,7 +328,6 @@
       "@type": "SoftwareApplication",
       "identifier": "PMCMRplus",
       "name": "PMCMRplus",
-      "version": ">= 1.9.7",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -431,7 +430,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4131.402KB",
+  "fileSize": "4132.149KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
