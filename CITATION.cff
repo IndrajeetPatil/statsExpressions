@@ -149,7 +149,7 @@ references:
   abstract: 'datawizard: Easy Data Wrangling and Statistical Transformations'
   notes: Imports
   url: https://easystats.github.io/datawizard/
-  repository: https://CRAN.R-project.org/package=datawizard
+  repository: https://easystats.r-universe.dev
   authors:
   - family-names: Patil
     given-names: Indrajeet
@@ -290,7 +290,7 @@ references:
     email: etienne.bacher@protonmail.com
     orcid: https://orcid.org/0000-0002-9271-5075
   year: '2023'
-  version: '>= 0.19.5'
+  version: '>= 0.19.6'
 - type: software
   title: magrittr
   abstract: 'magrittr: A Forward-Pipe Operator for R'
@@ -336,13 +336,13 @@ references:
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2023'
-  version: '>= 0.21.1'
+  version: '>= 0.21.2'
 - type: software
   title: performance
   abstract: 'performance: Assessment of Regression Models Performance'
   notes: Imports
   url: https://easystats.github.io/performance/
-  repository: https://easystats.r-universe.dev
+  repository: https://CRAN.R-project.org/package=performance
   authors:
   - family-names: Lüdecke
     given-names: Daniel
@@ -369,7 +369,7 @@ references:
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2023'
-  version: '>= 0.10.5'
+  version: '>= 0.10.8'
 - type: software
   title: PMCMRplus
   abstract: 'PMCMRplus: Calculate Pairwise Multiple Comparisons of Mean Rank Sums
@@ -382,7 +382,6 @@ references:
     email: thorsten.pohlert@gmx.de
     orcid: https://orcid.org/0000-0003-3855-3025
   year: '2023'
-  version: '>= 1.9.7'
 - type: software
   title: purrr
   abstract: 'purrr: Functional Programming Tools'
