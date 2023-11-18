@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.3.1 (2023-06-16)",
+  "runtimePlatform": "R version 4.3.2 (2023-10-31)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -26,7 +26,7 @@
       "@type": "Person",
       "givenName": "Indrajeet",
       "familyName": "Patil",
-      "email": "patilindrajeet.science@gmail.com",
+      "email": ["patilindrajeet.science@gmail.com", "inderonline1988@gmail.com"],
       "@id": "https://orcid.org/0000-0003-1995-6531"
     }
   ],
@@ -35,7 +35,7 @@
       "@type": "Person",
       "givenName": "Indrajeet",
       "familyName": "Patil",
-      "email": "patilindrajeet.science@gmail.com",
+      "email": ["patilindrajeet.science@gmail.com", "inderonline1988@gmail.com"],
       "@id": "https://orcid.org/0000-0003-1995-6531"
     }
   ],
@@ -44,7 +44,7 @@
       "@type": "Person",
       "givenName": "Indrajeet",
       "familyName": "Patil",
-      "email": "patilindrajeet.science@gmail.com",
+      "email": ["patilindrajeet.science@gmail.com", "inderonline1988@gmail.com"],
       "@id": "https://orcid.org/0000-0003-1995-6531"
     }
   ],
@@ -265,6 +265,7 @@
       "@type": "SoftwareApplication",
       "identifier": "glue",
       "name": "glue",
+      "version": ">= 1.6.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -290,6 +291,7 @@
       "@type": "SoftwareApplication",
       "identifier": "magrittr",
       "name": "magrittr",
+      "version": ">= 2.0.3",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -302,7 +304,7 @@
       "@type": "SoftwareApplication",
       "identifier": "parameters",
       "name": "parameters",
-      "version": ">= 0.21.2",
+      "version": ">= 0.21.3",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -328,6 +330,7 @@
       "@type": "SoftwareApplication",
       "identifier": "PMCMRplus",
       "name": "PMCMRplus",
+      "version": ">= 1.9.8",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -353,6 +356,7 @@
       "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
+      "version": ">= 1.1.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -396,6 +400,7 @@
       "@type": "SoftwareApplication",
       "identifier": "withr",
       "name": "withr",
+      "version": ">= 2.5.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -408,6 +413,7 @@
       "@type": "SoftwareApplication",
       "identifier": "WRS2",
       "name": "WRS2",
+      "version": ">= 1.1-5",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -420,6 +426,7 @@
       "@type": "SoftwareApplication",
       "identifier": "zeallot",
       "name": "zeallot",
+      "version": ">= 0.1.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -430,7 +437,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4132.149KB",
+  "fileSize": "4132.285KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",

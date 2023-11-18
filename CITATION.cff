@@ -250,6 +250,7 @@ references:
     email: jenny@rstudio.com
     orcid: https://orcid.org/0000-0002-6983-2759
   year: '2023'
+  version: '>= 1.6.2'
 - type: software
   title: insight
   abstract: 'insight: Easy Access to Model Information for Various Model Objects'
@@ -305,12 +306,13 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2023'
+  version: '>= 2.0.3'
 - type: software
   title: parameters
   abstract: 'parameters: Processing of Model Parameters'
   notes: Imports
   url: https://easystats.github.io/parameters/
-  repository: https://easystats.r-universe.dev
+  repository: https://CRAN.R-project.org/package=parameters
   authors:
   - family-names: Lüdecke
     given-names: Daniel
@@ -336,7 +338,7 @@ references:
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2023'
-  version: '>= 0.21.2'
+  version: '>= 0.21.3'
 - type: software
   title: performance
   abstract: 'performance: Assessment of Regression Models Performance'
@@ -382,6 +384,7 @@ references:
     email: thorsten.pohlert@gmx.de
     orcid: https://orcid.org/0000-0003-3855-3025
   year: '2023'
+  version: '>= 1.9.8'
 - type: software
   title: purrr
   abstract: 'purrr: Functional Programming Tools'
@@ -412,6 +415,7 @@ references:
     given-names: Hadley
     email: hadley@posit.co
   year: '2023'
+  version: '>= 1.1.2'
 - type: software
   title: stats
   abstract: 'R: A Language and Environment for Statistical Computing'
@@ -480,6 +484,7 @@ references:
   - family-names: Chang
     given-names: Winston
   year: '2023'
+  version: '>= 2.5.2'
 - type: software
   title: WRS2
   abstract: 'WRS2: A Collection of Robust Statistical Methods'
@@ -494,6 +499,7 @@ references:
     given-names: Rand
     email: rwilcox@usc.edu
   year: '2023'
+  version: '>= 1.1-5'
 - type: software
   title: zeallot
   abstract: 'zeallot: Multiple, Unpacking, and Destructuring Assignment'
@@ -505,6 +511,7 @@ references:
     given-names: Nathan
     email: nathanteetor@gmail.com
   year: '2023'
+  version: '>= 0.1.0'
 - type: software
   title: bayestestR
   abstract: 'bayestestR: Understand and Describe Bayesian Models and Posterior Distributions'
