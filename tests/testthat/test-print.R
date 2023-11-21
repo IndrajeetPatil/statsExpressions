@@ -7,7 +7,7 @@ test_that(
     old_tbl <- contingency_table(mtcars, am)
 
     capture.output({
-      new_tbl <- old_tbl %>% print()
+      new_tbl <- print(old_tbl)
     })
     new_option <- getOption("tibble.width")
 

@@ -241,8 +241,10 @@ pairwise_comparisons <- function(data,
       )
     ) %>%
       filter(term == "Difference") %>%
-      mutate(expression = glue("list(log[e]*(BF['01'])=='{format_value(-log(bf10), k)}')")) %>%
-      mutate(test = "Student's t")
+      mutate(
+        expression = glue("list(log[e]*(BF['01'])=='{format_value(-log(bf10), k)}')"),
+        test = "Student's t"
+      )
 
     df_pair <- bind_cols(select(df_pair, group1, group2), df_tidy)
   }
@@ -257,11 +259,9 @@ pairwise_comparisons <- function(data,
   if (type != "bayes") {
     df_pair %<>%
       mutate(
-        p.value         = stats::p.adjust(p = p.value, method = p.adjust.method),
+        p.value = stats::p.adjust(p = p.value, method = p.adjust.method),
         p.adjust.method = p_adjust_text(p.adjust.method),
-        test            = test
-      ) %>%
-      mutate(
+        test = test,
         expression = case_when(
           p.adjust.method == "None" ~ glue("list(italic(p)[unadj.]=='{format_value(p.value, k)}')"),
           .default = glue("list(italic(p)['{p.adjust.method}'-adj.]=='{format_value(p.value, k)}')")
