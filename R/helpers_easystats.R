@@ -55,11 +55,9 @@ tidy_model_parameters <- function(model, ...) {
 #' tidy_model_effectsize(df)
 #' @noRd
 tidy_model_effectsize <- function(data, ...) {
-  bind_cols(
-    data %>%
-      mutate(effectsize = stats::na.omit(effectsize::get_effectsize_label(colnames(.)))) %>%
-      standardize_names(style = "broom") %>%
-      select(-contains("term")),
-    rename_with(as_tibble(data %@% "ci_method"), ~ paste0("conf.", .x))
-  )
+  data %>%
+    mutate(effectsize = stats::na.omit(effectsize::get_effectsize_label(colnames(.)))) %>%
+    standardize_names(style = "broom") %>%
+    select(-contains("term")) %>%
+    bind_cols(rename_with(as_tibble(data %@% "ci_method"), ~ paste0("conf.", .x)))
 }

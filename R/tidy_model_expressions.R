@@ -26,12 +26,12 @@
 #' library(statsExpressions)
 #'
 #' # extract a tidy data frame
-#' df_expr <- tidy_model_parameters(lm(wt ~ am * cyl, mtcars))
+#' df <- tidy_model_parameters(lm(wt ~ am * cyl, mtcars))
 #'
 #' # create a column containing expression; the expression will depend on `statistic`
-#' tidy_model_expressions(df_expr, statistic = "t")
-#' tidy_model_expressions(df_expr, statistic = "z")
-#' tidy_model_expressions(df_expr, statistic = "chi")
+#' tidy_model_expressions(df, statistic = "t")
+#' tidy_model_expressions(df, statistic = "z")
+#' tidy_model_expressions(df, statistic = "chi")
 #' @export
 tidy_model_expressions <- function(data,
                                    statistic = NULL,
@@ -61,8 +61,8 @@ tidy_model_expressions <- function(data,
   if (statistic == "t") {
     df_expr %<>% mutate(
       expression = case_when(
-        df_expr.error %in% c("NA", "Inf") ~ glue("list({es.text}=='{estimate}', italic(t)=='{statistic}', italic(p)=='{p.value}')"),
-        .default = glue("list({es.text}=='{estimate}', italic(t)('{df_expr.error}')=='{statistic}', italic(p)=='{p.value}')")
+        df.error %in% c("NA", "Inf") ~ glue("list({es.text}=='{estimate}', italic(t)=='{statistic}', italic(p)=='{p.value}')"),
+        .default = glue("list({es.text}=='{estimate}', italic(t)('{df.error}')=='{statistic}', italic(p)=='{p.value}')")
       )
     )
   }
@@ -76,7 +76,7 @@ tidy_model_expressions <- function(data,
   # chi^2-statistic -----------------------------
 
   if (statistic == "c") {
-    df_expr %<>% mutate(expression = glue("list({es.text}=='{estimate}', italic(chi)^2*('{df_expr.error}')=='{statistic}', italic(p)=='{p.value}')"))
+    df_expr %<>% mutate(expression = glue("list({es.text}=='{estimate}', italic(chi)^2*('{df.error}')=='{statistic}', italic(p)=='{p.value}')"))
   }
 
   # f-statistic ---------------------------------
@@ -85,7 +85,7 @@ tidy_model_expressions <- function(data,
     if (effsize.type == "eta") es.text <- list(quote(widehat(italic(eta)[p]^2)))
     if (effsize.type == "omega") es.text <- list(quote(widehat(italic(omega)[p]^2)))
 
-    df_expr %<>% mutate(expression = glue("list({es.text}=='{estimate}', italic(F)('{df_expr}', '{df_expr.error}')=='{statistic}', italic(p)=='{p.value}')"))
+    df_expr %<>% mutate(expression = glue("list({es.text}=='{estimate}', italic(F)('{df}', '{df.error}')=='{statistic}', italic(p)=='{p.value}')"))
   }
 
   # nolint end

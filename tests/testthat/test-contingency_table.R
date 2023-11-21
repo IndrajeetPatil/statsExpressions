@@ -16,7 +16,7 @@ test_that(
     expect_snapshot(select(df1, -expression))
     expect_snapshot(df1[["expression"]])
 
-    
+
     set.seed(123)
     df2 <- contingency_table(
       data = as.data.frame(Titanic),
@@ -121,7 +121,7 @@ test_that(
     expect_snapshot(select(df1, -expression))
     expect_snapshot(df1[["expression"]])
 
-    
+
     set.seed(123)
     df2 <- contingency_table(
       data = as.data.frame(Titanic),

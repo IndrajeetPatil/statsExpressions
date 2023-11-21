@@ -45,7 +45,7 @@ one_sample_test <- function(data,
                             effsize.type = "g",
                             ...) {
   type <- stats_type_switch(type)
-  x_vec <- stats::na.omit(data %>% pull({{ x }}))
+  x_vec <- stats::na.omit(pull(data, {{ x }}))
 
   # parametric ---------------------------------------
 
