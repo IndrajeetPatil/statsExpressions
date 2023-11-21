@@ -187,7 +187,7 @@ pairwise_comparisons <- function(data,
   }
 
   if (type != "robust") {
-    df <- suppressWarnings(exec(
+    df_pair <- suppressWarnings(exec(
       .f,
       # Dunn, Games-Howell, Student's t-test
       x      = y_vec,
@@ -216,7 +216,7 @@ pairwise_comparisons <- function(data,
       .f.args <- list(y = quote(y_vec), groups = quote(x_vec), blocks = quote(g_vec))
     }
 
-    df <- eval(call2(.ns = .ns, .fn = .fn, tr = tr, !!!.f.args)) %>% tidy_model_parameters()
+    df_pair <- eval(call2(.ns = .ns, .fn = .fn, tr = tr, !!!.f.args)) %>% tidy_model_parameters()
 
     test <- "Yuen's trimmed means"
   }
@@ -227,8 +227,8 @@ pairwise_comparisons <- function(data,
     df_tidy <- map_dfr(
       # creating a list of data frames with subsections of data
       .x = map2(
-        .x = as.character(df$group1),
-        .y = as.character(df$group2),
+        .x = as.character(df_pair$group1),
+        .y = as.character(df_pair$group2),
         .f = function(a, b) droplevels(filter(data, {{ x }} %in% c(a, b)))
       ),
       .f = ~ two_sample_test(
@@ -244,18 +244,18 @@ pairwise_comparisons <- function(data,
       mutate(expression = glue("list(log[e]*(BF['01'])=='{format_value(-log(bf10), k)}')")) %>%
       mutate(test = "Student's t")
 
-    df <- bind_cols(select(df, group1, group2), df_tidy)
+    df_pair <- bind_cols(select(df_pair, group1, group2), df_tidy)
   }
 
   # expression formatting ----------------------------------
 
-  df %<>%
+  df_pair %<>%
     mutate(across(where(is.factor), ~ as.character())) %>%
     arrange(group1, group2) %>%
     select(group1, group2, everything())
 
   if (type != "bayes") {
-    df %<>%
+    df_pair %<>%
       mutate(
         p.value         = stats::p.adjust(p = p.value, method = p.adjust.method),
         p.adjust.method = p_adjust_text(p.adjust.method),
@@ -269,7 +269,7 @@ pairwise_comparisons <- function(data,
       )
   }
 
-  select(df, everything(), -matches("p.adjustment|^method$")) %>%
+  select(df_pair, everything(), -matches("p.adjustment|^method$")) %>%
     .glue_to_expression()
 }
 
