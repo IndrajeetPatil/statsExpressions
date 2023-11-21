@@ -75,7 +75,6 @@ test_that(
 
     # paired data with NAs  ---------------------------------------------
 
-    # untabling the data frame
     paired_data %<>% tidyr::uncount(weights = Freq)
 
     # deliberately introduce NAs

@@ -47,11 +47,11 @@ set.seed(123)
 library(statsExpressions)
 
 # extract a tidy data frame
-df <- tidy_model_parameters(lm(wt ~ am * cyl, mtcars))
+df_expr <- tidy_model_parameters(lm(wt ~ am * cyl, mtcars))
 
 # create a column containing expression; the expression will depend on `statistic`
-tidy_model_expressions(df, statistic = "t")
-tidy_model_expressions(df, statistic = "z")
-tidy_model_expressions(df, statistic = "chi")
+tidy_model_expressions(df_expr, statistic = "t")
+tidy_model_expressions(df_expr, statistic = "z")
+tidy_model_expressions(df_expr, statistic = "chi")
 \dontshow{\}) # examplesIf}
 }
