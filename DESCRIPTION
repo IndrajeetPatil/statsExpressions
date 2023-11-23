@@ -34,7 +34,7 @@ Imports:
     glue,
     insight (>= 0.19.6),
     magrittr,
-    parameters (>= 0.21.2),
+    parameters (>= 0.21.3),
     performance (>= 0.10.8),
     PMCMRplus,
     purrr (>= 1.0.2),
