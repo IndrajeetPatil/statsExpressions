@@ -290,7 +290,7 @@ references:
     email: etienne.bacher@protonmail.com
     orcid: https://orcid.org/0000-0002-9271-5075
   year: '2023'
-  version: '>= 0.19.6'
+  version: '>= 0.19.7'
 - type: software
   title: magrittr
   abstract: 'magrittr: A Forward-Pipe Operator for R'
