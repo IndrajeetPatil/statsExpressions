@@ -41,7 +41,7 @@ test_that(
       x = len,
       test.value = 20,
       type = "np",
-      k = 4
+      k = 4L
     ))
 
     set.seed(123)
@@ -50,7 +50,7 @@ test_that(
       x = brainwt,
       test.value = 0.25,
       type = "np",
-      k = 4
+      k = 4L
     )
 
     set.seed(123)
@@ -110,7 +110,6 @@ test_that(
     expect_equal(df_results$bf10[[1]], 5.958171e+20, tolerance = 0.001)
     expect_snapshot(names(df_results))
 
-    # extracting subtitle (without NA)
     set.seed(123)
     df1 <- one_sample_test(
       type = "bayes",
@@ -124,7 +123,6 @@ test_that(
 
     expect_snapshot(df1[["expression"]])
 
-    # extracting subtitle (with NA)
     set.seed(123)
     df2 <- one_sample_test(
       type = "bayes",
