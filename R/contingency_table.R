@@ -92,19 +92,20 @@
 #'   type   = "bayes"
 #' )
 #' @export
-contingency_table <- function(data,
-                              x,
-                              y = NULL,
-                              paired = FALSE,
-                              type = "parametric",
-                              counts = NULL,
-                              ratio = NULL,
-                              k = 2L,
-                              conf.level = 0.95,
-                              sampling.plan = "indepMulti",
-                              fixed.margin = "rows",
-                              prior.concentration = 1.0,
-                              ...) {
+contingency_table <- function(
+    data,
+    x,
+    y = NULL,
+    paired = FALSE,
+    type = "parametric",
+    counts = NULL,
+    ratio = NULL,
+    k = 2L,
+    conf.level = 0.95,
+    sampling.plan = "indepMulti",
+    fixed.margin = "rows",
+    prior.concentration = 1.0,
+    ...) {
   type <- stats_type_switch(type)
   test <- ifelse(quo_is_null(enquo(y)), "1way", "2way")
 

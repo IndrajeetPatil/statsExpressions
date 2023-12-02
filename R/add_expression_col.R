@@ -76,21 +76,22 @@
 #'   k.df           = 3L
 #' )
 #' @export
-add_expression_col <- function(data,
-                               paired = FALSE,
-                               statistic.text = NULL,
-                               effsize.text = NULL,
-                               prior.type = NULL,
-                               n = NULL,
-                               n.text = ifelse(
-                                 paired,
-                                 list(quote(italic("n")["pairs"])),
-                                 list(quote(italic("n")["obs"]))
-                               ),
-                               k = 2L,
-                               k.df = 0L,
-                               k.df.error = k.df,
-                               ...) {
+add_expression_col <- function(
+    data,
+    paired = FALSE,
+    statistic.text = NULL,
+    effsize.text = NULL,
+    prior.type = NULL,
+    n = NULL,
+    n.text = ifelse(
+      paired,
+      list(quote(italic("n")["pairs"])),
+      list(quote(italic("n")["obs"]))
+    ),
+    k = 2L,
+    k.df = 0L,
+    k.df.error = k.df,
+    ...) {
   if (!"n.obs" %in% colnames(data)) data %<>% mutate(n.obs = n)
   if (!"effectsize" %in% colnames(data)) data %<>% mutate(effectsize = method)
   data %<>% rename_with(recode, bayes.factor = "bf10")

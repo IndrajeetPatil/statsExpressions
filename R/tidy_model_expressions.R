@@ -33,11 +33,12 @@
 #' tidy_model_expressions(df, statistic = "z")
 #' tidy_model_expressions(df, statistic = "chi")
 #' @export
-tidy_model_expressions <- function(data,
-                                   statistic = NULL,
-                                   k = 2L,
-                                   effsize.type = "omega",
-                                   ...) {
+tidy_model_expressions <- function(
+    data,
+    statistic = NULL,
+    k = 2L,
+    effsize.type = "omega",
+    ...) {
   # standardize the statistic naming
   statistic <- substring(tolower(statistic), 1L, 1L)
 

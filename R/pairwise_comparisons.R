@@ -138,18 +138,19 @@
 #'   paired     = TRUE
 #' )
 #' @export
-pairwise_comparisons <- function(data,
-                                 x,
-                                 y,
-                                 subject.id = NULL,
-                                 type = "parametric",
-                                 paired = FALSE,
-                                 var.equal = FALSE,
-                                 tr = 0.2,
-                                 bf.prior = 0.707,
-                                 p.adjust.method = "holm",
-                                 k = 2L,
-                                 ...) {
+pairwise_comparisons <- function(
+    data,
+    x,
+    y,
+    subject.id = NULL,
+    type = "parametric",
+    paired = FALSE,
+    var.equal = FALSE,
+    tr = 0.2,
+    bf.prior = 0.707,
+    p.adjust.method = "holm",
+    k = 2L,
+    ...) {
   type <- stats_type_switch(type)
   c(x, y) %<-% c(ensym(x), ensym(y))
 

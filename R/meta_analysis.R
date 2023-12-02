@@ -66,19 +66,20 @@
 #' suppressWarnings(meta_analysis(dat, type = "bayes"))
 #'
 #' @export
-meta_analysis <- function(data,
-                          type = "parametric",
-                          random = "mixture",
-                          k = 2L,
-                          conf.level = 0.95,
-                          ...) {
+meta_analysis <- function(
+    data,
+    type = "parametric",
+    random = "mixture",
+    k = 2L,
+    conf.level = 0.95,
+    ...) {
   type <- stats_type_switch(type)
 
   # nolint start: line_length_linter.
   c(.ns, .fn, .f.args) %<-% switch(type,
     parametric = list("metafor", "rma", list(yi = quote(estimate), sei = quote(std.error), ...)),
-    robust     = list("metaplus", "metaplus", list(yi = quote(estimate), sei = quote(std.error), random = random, ...)),
-    bayes      = list("metaBMA", "meta_random", list(y = quote(estimate), SE = quote(std.error), ...))
+    robust = list("metaplus", "metaplus", list(yi = quote(estimate), sei = quote(std.error), random = random, ...)),
+    bayes = list("metaBMA", "meta_random", list(y = quote(estimate), SE = quote(std.error), ...))
   )
   # nolint end
 

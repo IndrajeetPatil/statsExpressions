@@ -128,20 +128,21 @@
 #'   type       = "bayes"
 #' )
 #' @export
-oneway_anova <- function(data,
-                         x,
-                         y,
-                         subject.id = NULL,
-                         type = "parametric",
-                         paired = FALSE,
-                         k = 2L,
-                         conf.level = 0.95,
-                         effsize.type = "omega",
-                         var.equal = FALSE,
-                         bf.prior = 0.707,
-                         tr = 0.2,
-                         nboot = 100L,
-                         ...) {
+oneway_anova <- function(
+    data,
+    x,
+    y,
+    subject.id = NULL,
+    type = "parametric",
+    paired = FALSE,
+    k = 2L,
+    conf.level = 0.95,
+    effsize.type = "omega",
+    var.equal = FALSE,
+    bf.prior = 0.707,
+    tr = 0.2,
+    nboot = 100L,
+    ...) {
   type <- stats_type_switch(type)
   c(x, y) %<-% c(ensym(x), ensym(y))
 

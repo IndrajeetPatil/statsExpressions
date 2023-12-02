@@ -64,7 +64,9 @@ set.seed(123)
 
 # repeated measures design
 long_to_wide_converter(
-  bugs_long, condition, desire,
+  bugs_long,
+  condition,
+  desire,
   subject.id = subject,
   paired = TRUE
 )
