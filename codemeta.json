@@ -239,7 +239,7 @@
       "@type": "SoftwareApplication",
       "identifier": "dplyr",
       "name": "dplyr",
-      "version": ">= 1.1.3",
+      "version": ">= 1.1.4",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -430,7 +430,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4131.547KB",
+  "fileSize": "4127.644KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
