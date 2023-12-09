@@ -46,7 +46,7 @@ citation("statsExpressions")
 
 ```{r}
 #| label = "onesample",
-#| file = "../../man/examples/examples-one_sample_test.R"
+#| file = "../../man/examples/examples-one-sample-test.R"
 ```
 
 ## Two-sample tests
@@ -55,14 +55,14 @@ citation("statsExpressions")
 
 ```{r}
 #| label = "twosample_w",
-#| file = "../../man/examples/examples-two_sample_test_within.R"
+#| file = "../../man/examples/examples-two-sample-test-within.R"
 ```
 
 ### between-subjects design
 
 ```{r}
 #| label = "twosample_b",
-#| file = "../../man/examples/examples-two_sample_test_between.R"
+#| file = "../../man/examples/examples-two-sample-test-between.R"
 ```
 
 ## One-way ANOVAs
@@ -257,7 +257,7 @@ contingency_table(
 
 ```{r}
 #| label = "corr",
-#| file = "../../man/examples/examples-corr_test.R"
+#| file = "../../man/examples/examples-corr-test.R"
 ```
 
 ## Meta-analysis
@@ -290,7 +290,7 @@ suppressWarnings(meta_analysis(df, type = "bayes"))
 
 ```{r}
 #| label = "centrality",
-#| file = "../../man/examples/examples-centrality_description.R"
+#| file = "../../man/examples/examples-centrality-description.R"
 ```
 
 ## Pairwise comparisons for one-way design
