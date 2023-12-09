@@ -1,3 +1,4 @@
+.ls-lint.yml
 ^.*\.Rproj$
 ^.gitlab-ci\.yaml$
 ^API$
@@ -51,4 +52,3 @@ publication/*
 references.bib
 shell
 tests\^spelling
-.ls-lint.yml
