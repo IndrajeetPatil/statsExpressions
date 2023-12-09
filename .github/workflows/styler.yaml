@@ -9,7 +9,7 @@ name: Style
 
 jobs:
   style:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:

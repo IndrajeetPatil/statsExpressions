@@ -21,7 +21,7 @@ name: check-all-examples
 
 jobs:
   check-all-examples:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 

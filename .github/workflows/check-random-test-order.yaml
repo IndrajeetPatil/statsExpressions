@@ -9,7 +9,7 @@ name: check-random-test-order
 
 jobs:
   check-random-test-order:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
