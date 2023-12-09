@@ -16,7 +16,7 @@ name: R-CMD-check-hard
 
 jobs:
   R-CMD-check-hard:
-    runs-on: windows-latest
+    runs-on: macos-latest
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}

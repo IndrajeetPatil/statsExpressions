@@ -14,7 +14,7 @@ name: lint
 
 jobs:
   lint:
-    runs-on: windows-latest
+    runs-on: macos-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
