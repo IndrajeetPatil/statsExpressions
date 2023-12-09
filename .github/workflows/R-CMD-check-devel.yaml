@@ -9,7 +9,7 @@ name: R-CMD-check-devel
 
 jobs:
   R-CMD-check-devel:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}

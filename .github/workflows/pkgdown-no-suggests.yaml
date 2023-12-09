@@ -14,7 +14,7 @@ name: pkgdown-no-suggests
 
 jobs:
   pkgdown-no-suggests:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
