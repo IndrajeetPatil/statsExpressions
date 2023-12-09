@@ -27,8 +27,8 @@
 #' @autoglobal
 #'
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
-#' @example man/examples/examples-two_sample_test_within.R
-#' @example man/examples/examples-two_sample_test_between.R
+#' @example man/examples/examples-two-sample-test-within.R
+#' @example man/examples/examples-two-sample-test-between.R
 #'
 #' @export
 two_sample_test <- function(

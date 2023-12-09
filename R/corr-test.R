@@ -25,7 +25,7 @@
 #'
 #' @autoglobal
 #'
-#' @example man/examples/examples-corr_test.R
+#' @example man/examples/examples-corr-test.R
 #' @export
 corr_test <- function(
     data,

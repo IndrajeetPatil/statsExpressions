@@ -31,7 +31,7 @@
 #'
 #' @autoglobal
 #'
-#' @example man/examples/examples-one_sample_test.R
+#' @example man/examples/examples-one-sample-test.R
 #' @export
 one_sample_test <- function(
     data,

@@ -1,0 +1,6 @@
+ls:
+    .R: kebab-case
+
+# package name can't be changed to follow kebab-case
+ignore:
+    - '**/statsExpressions*'

@@ -51,3 +51,4 @@ publication/*
 references.bib
 shell
 tests\^spelling
+.ls-lint.yml

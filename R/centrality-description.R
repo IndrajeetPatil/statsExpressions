@@ -26,7 +26,7 @@
 #'
 #' @autoglobal
 #'
-#' @example man/examples/examples-centrality_description.R
+#' @example man/examples/examples-centrality-description.R
 #' @export
 centrality_description <- function(
     data,
