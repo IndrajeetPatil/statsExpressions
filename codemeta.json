@@ -53,6 +53,7 @@
       "@type": "SoftwareApplication",
       "identifier": "bayestestR",
       "name": "bayestestR",
+      "version": ">= 0.13.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -161,7 +162,7 @@
       "@type": "SoftwareApplication",
       "identifier": "testthat",
       "name": "testthat",
-      "version": ">= 3.2.0",
+      "version": ">= 3.2.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -200,7 +201,7 @@
       "@type": "SoftwareApplication",
       "identifier": "BayesFactor",
       "name": "BayesFactor",
-      "version": ">= 0.9.12-4.5",
+      "version": ">= 0.9.12-4.6",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -430,7 +431,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4127.644KB",
+  "fileSize": "4127.656KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
