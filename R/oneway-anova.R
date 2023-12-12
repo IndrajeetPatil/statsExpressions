@@ -162,7 +162,7 @@ oneway_anova <- function(
 
     # styler: off
     if (effsize.type %in% c("unbiased", "omega")) .f.es <- effectsize::omega_squared
-    if (effsize.type %in% c("biased", "eta")) .f.es     <- effectsize::eta_squared
+    if (effsize.type %in% c("biased", "eta"))     .f.es <- effectsize::eta_squared
     # styler: on
 
     if (paired) {
@@ -224,10 +224,10 @@ oneway_anova <- function(
 
     if (paired) {
       mod <- WRS2::rmanova(
-        y       = data[[as_name(y)]],
-        groups  = data[[as_name(x)]],
-        blocks  = data[[".rowid"]],
-        tr      = tr
+        y      = data[[as_name(y)]],
+        groups = data[[as_name(x)]],
+        blocks = data[[".rowid"]],
+        tr     = tr
       )
     }
 

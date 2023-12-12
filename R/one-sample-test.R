@@ -54,12 +54,11 @@ one_sample_test <- function(
     .f <- stats::t.test
     # styler: off
     if (effsize.type %in% c("unbiased", "g")) .f.es <- effectsize::hedges_g
-    if (effsize.type %in% c("biased", "d")) .f.es   <- effectsize::cohens_d
+    if (effsize.type %in% c("biased", "d"))   .f.es <- effectsize::cohens_d
     # styler: on
   }
 
   # non-parametric ---------------------------------------
-
 
   if (type == "nonparametric") c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
 
