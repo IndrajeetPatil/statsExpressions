@@ -36,14 +36,14 @@ stats_type_switch <- function(type) {
 #' @noRd
 estimate_type_switch <- function(x) {
   case_when(
-    .fgrepl("pearson's c", x)     ~ list(quote(widehat(italic("C"))["Pearson"])),
-    .fgrepl("cohen's d", x)       ~ list(quote(widehat(italic("d"))["Cohen"])),
-    .fgrepl("hedges' g", x)       ~ list(quote(widehat(italic("g"))["Hedges"])),
-    .fgrepl("biserial", x)        ~ list(quote(widehat(italic("r"))["biserial"]^"rank")),
-    .fgrepl("cramer", x)          ~ list(quote(widehat(italic("V"))["Cramer"])),
-    .fgrepl("cohen's g", x)       ~ list(quote(widehat(italic("g"))["Cohen"])),
-    .fgrepl("r-squared", x)       ~ list(quote(widehat(italic(R^"2"))["Bayesian"])),
-    .fgrepl("spearman", x)        ~ list(quote(widehat(rho)["Spearman"])),
+    .grepl("pearson's c", x)      ~ list(quote(widehat(italic("C"))["Pearson"])),
+    .grepl("cohen's d", x)        ~ list(quote(widehat(italic("d"))["Cohen"])),
+    .grepl("hedges' g", x)        ~ list(quote(widehat(italic("g"))["Hedges"])),
+    .grepl("biserial", x)         ~ list(quote(widehat(italic("r"))["biserial"]^"rank")),
+    .grepl("cramer", x)           ~ list(quote(widehat(italic("V"))["Cramer"])),
+    .grepl("cohen's g", x)        ~ list(quote(widehat(italic("g"))["Cohen"])),
+    .grepl("r-squared", x)        ~ list(quote(widehat(italic(R^"2"))["Bayesian"])),
+    .grepl("spearman", x)         ~ list(quote(widehat(rho)["Spearman"])),
     grepl("^bayesian pearson", x) ~ list(quote(widehat(rho)["Pearson"])),
     grepl("posterior|t-", x)      ~ list(quote(widehat(delta)["difference"])),
     grepl("difference$", x)       ~ list(quote(widehat(delta)["R"]^"AKP")),
@@ -57,7 +57,7 @@ estimate_type_switch <- function(x) {
     grepl("^pearson", x)          ~ list(quote(widehat(italic("r"))["Pearson"])),
     grepl("^winsor", x)           ~ list(quote(widehat(italic("r"))["Winsorized"])),
     grepl("^kendall", x)          ~ list(quote(widehat(italic("W"))["Kendall"])),
-    TRUE                           ~ list(NULL)
+    TRUE                          ~ list(NULL)
   )
 }
 
@@ -69,17 +69,17 @@ stat_text_switch <- function(x) {
     grepl("^boot", x)                ~ list(quote(italic("t")["bootstrapped"])),
     grepl("^spearman", x)            ~ list(quote(italic("S"))),
     grepl("t-test$|correlation$", x) ~ list(quote(italic("t")["Student"])),
-    .fgrepl("wilcoxon rank", x)      ~ list(quote(italic("W")["Mann-Whitney"])),
-    .fgrepl("wilcoxon signed", x)    ~ list(quote(italic("V")["Wilcoxon"])),
-    .fgrepl("variances", x)          ~ list(quote(italic("F")["Welch"])),
-    .fgrepl("yuen", x)               ~ list(quote(italic("t")["Yuen"])),
-    .fgrepl("heteroscedastic", x)    ~ list(quote(italic("F")["trimmed-means"])),
-    .fgrepl("meta", x)               ~ list(quote(italic("z"))),
-    .fgrepl("friedman", x)           ~ list(quote(chi["Friedman"]^2)),
-    .fgrepl("kruskal", x)            ~ list(quote(chi["Kruskal-Wallis"]^2)),
-    .fgrepl("probabilities", x)      ~ list(quote(chi["gof"]^2)),
-    .fgrepl("pearson's chi", x)      ~ list(quote(chi["Pearson"]^2)),
-    .fgrepl("mcnemar's chi", x)      ~ list(quote(chi["McNemar"]^2)),
+    .grepl("wilcoxon rank", x)       ~ list(quote(italic("W")["Mann-Whitney"])),
+    .grepl("wilcoxon signed", x)     ~ list(quote(italic("V")["Wilcoxon"])),
+    .grepl("variances", x)           ~ list(quote(italic("F")["Welch"])),
+    .grepl("yuen", x)                ~ list(quote(italic("t")["Yuen"])),
+    .grepl("heteroscedastic", x)     ~ list(quote(italic("F")["trimmed-means"])),
+    .grepl("meta", x)                ~ list(quote(italic("z"))),
+    .grepl("friedman", x)            ~ list(quote(chi["Friedman"]^2)),
+    .grepl("kruskal", x)             ~ list(quote(chi["Kruskal-Wallis"]^2)),
+    .grepl("probabilities", x)       ~ list(quote(chi["gof"]^2)),
+    .grepl("pearson's chi", x)       ~ list(quote(chi["Pearson"]^2)),
+    .grepl("mcnemar's chi", x)       ~ list(quote(chi["McNemar"]^2)),
     TRUE                             ~ list(NULL)
   )
 }
@@ -87,13 +87,13 @@ stat_text_switch <- function(x) {
 #' @noRd
 prior_switch <- function(x) {
   case_when(
-    .fgrepl("contingency", x) ~ list(quote(italic("a")["Gunel-Dickey"])),
-    .fgrepl("correlation", x) ~ list(quote(italic("r")["beta"]^"JZS")),
-    TRUE                      ~ list(quote(italic("r")["Cauchy"]^"JZS"))
+    .grepl("contingency", x) ~ list(quote(italic("a")["Gunel-Dickey"])),
+    .grepl("correlation", x) ~ list(quote(italic("r")["beta"]^"JZS")),
+    TRUE                     ~ list(quote(italic("r")["Cauchy"]^"JZS"))
   )
 }
 
 #' @noRd
-.fgrepl <- purrr::partial(grepl, fixed = TRUE)
+.grepl <- purrr::partial(grepl, fixed = TRUE)
 
 # styler: on
