@@ -33,7 +33,7 @@ tidy_model_parameters <- function(model, ...) {
 
     # remove estimates and CIs and use R2 data frame instead
     stats_df %<>%
-      dplyr::select(-matches("^est|^conf|^comp")) %>%
+      select(-matches("^est|^conf|^comp")) %>%
       filter(if_any(matches("effect"), ~ (.x == "fixed"))) %>%
       bind_cols(df_r2)
   }

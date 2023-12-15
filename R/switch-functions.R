@@ -94,6 +94,6 @@ prior_switch <- function(x) {
 }
 
 #' @noRd
-.grepl <- function(pattern, x) grepl(pattern, x, fixed = TRUE)
+.grepl <- purrr::partial(grepl, fixed = TRUE)
 
 # styler: on
