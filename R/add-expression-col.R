@@ -102,15 +102,14 @@ add_expression_col <- function(
   # special case for Bayesian contingency table analysis
   if (bayesian && grepl("contingency", data$method[[1L]], fixed = TRUE)) data %<>% mutate(effectsize = "Cramers_v")
 
-  # convert needed columns to character type
-  df_expr <- .data_to_char(data, k, k.df, k.df.error)
-
-  df_expr %<>% mutate(
-    statistic.text     = statistic.text %||% stat_text_switch(tolower(method)),
-    es.text            = effsize.text %||% estimate_type_switch(tolower(effectsize)),
-    prior.distribution = prior_switch(tolower(method)),
-    n.obs              = .prettyNum(n.obs)
-  )
+  df_expr <- data %>% # convert needed columns to character type
+    .data_to_char(k, k.df, k.df.error) %>%
+    mutate(
+      statistic.text     = statistic.text %||% stat_text_switch(tolower(method)),
+      es.text            = effsize.text %||% estimate_type_switch(tolower(effectsize)),
+      prior.distribution = prior_switch(tolower(method)),
+      n.obs              = .prettyNum(n.obs)
+    )
 
   # Bayesian analysis ------------------------------
 
@@ -134,8 +133,7 @@ add_expression_col <- function(
   # 1 degree of freedom --------------------
 
   if (!bayesian && no.parameters == 1L) {
-    # for chi-squared statistic
-    if ("df" %in% colnames(df_expr)) df_expr %<>% mutate(df.error = df)
+    if ("df" %in% colnames(df_expr)) df_expr %<>% mutate(df.error = df) # for chi-squared statistic
 
     df_expr %<>% mutate(expression = glue("list(
             {statistic.text}*'('*{df.error}*')'=='{statistic}', italic(p)=='{p.value}',
