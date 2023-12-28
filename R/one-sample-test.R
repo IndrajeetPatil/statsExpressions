@@ -82,7 +82,7 @@ one_sample_test <- function(
   # robust ---------------------------------------
 
   if (type == "robust") {
-    stats_df <- exec(WRS2::trimcibt, x = x_vec, nv = test.value, tr = tr, alpha = 1 - conf.level) %>%
+    stats_df <- exec(WRS2::trimcibt, x = x_vec, nv = test.value, tr = tr, alpha = 1.0 - conf.level) %>%
       tidy_model_parameters()
   }
 

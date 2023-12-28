@@ -151,10 +151,10 @@ pairwise_comparisons <- function(
     p.adjust.method = "holm",
     k = 2L,
     ...) {
+  # data -------------------------------------------
+
   type <- stats_type_switch(type)
   c(x, y) %<-% c(ensym(x), ensym(y))
-
-  # data frame -------------------------------
 
   data %<>% long_to_wide_converter(
     x          = {{ x }},
@@ -173,15 +173,19 @@ pairwise_comparisons <- function(
   # parametric ---------------------------------
 
   if (type %in% c("parametric", "bayes")) {
-    if (var.equal || paired) c(.f, test) %<-% c(stats::pairwise.t.test, "Student's t")
+    # styler: off
+    if (var.equal || paired)    c(.f, test) %<-% c(stats::pairwise.t.test, "Student's t")
     if (!(var.equal || paired)) c(.f, test) %<-% c(PMCMRplus::gamesHowellTest, "Games-Howell")
+    # styler: on
   }
 
   # nonparametric ----------------------------
 
   if (type == "nonparametric") {
+    # styler: off
     if (!paired) c(.f, test) %<-% c(PMCMRplus::kwAllPairsDunnTest, "Dunn")
-    if (paired) c(.f, test) %<-% c(PMCMRplus::durbinAllPairsTest, "Durbin-Conover")
+    if (paired)  c(.f, test) %<-% c(PMCMRplus::durbinAllPairsTest, "Durbin-Conover")
+    # styler: on
 
     # `exec` fails otherwise for `pairwise.t.test` because `y` is passed to `t.test`
     .f.args <- utils::modifyList(.f.args, list(y = y_vec))
@@ -218,7 +222,6 @@ pairwise_comparisons <- function(
     }
 
     df_pair <- eval(call2(.ns = .ns, .fn = .fn, tr = tr, !!!.f.args)) %>% tidy_model_parameters()
-
     test <- "Yuen's trimmed means"
   }
 

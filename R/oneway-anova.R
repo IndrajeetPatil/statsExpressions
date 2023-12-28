@@ -143,6 +143,8 @@ oneway_anova <- function(
     tr = 0.2,
     nboot = 100L,
     ...) {
+  # data -------------------------------------------
+
   type <- stats_type_switch(type)
   c(x, y) %<-% c(ensym(x), ensym(y))
 

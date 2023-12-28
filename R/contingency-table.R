@@ -106,6 +106,8 @@ contingency_table <- function(
     fixed.margin = "rows",
     prior.concentration = 1.0,
     ...) {
+  # data -------------------------------------------
+
   type <- stats_type_switch(type)
   test <- ifelse(quo_is_null(enquo(y)), "1way", "2way")
 
