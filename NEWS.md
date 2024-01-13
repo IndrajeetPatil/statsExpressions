@@ -1,4 +1,6 @@
-# statsExpressions 1.5.2.9000
+# statsExpressions 1.5.3
+
+- Internal changes only.
 
 # statsExpressions 1.5.2
 

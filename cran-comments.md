@@ -2,7 +2,7 @@
 
 0 errors | 0 warnings | 0 note
 
-* ixes failures on R-devel due to changes in the formula interface for a paired test.
+* Maintenance release.
 
 ## revdepcheck results
 
