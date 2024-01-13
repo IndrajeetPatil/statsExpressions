@@ -128,20 +128,23 @@
 #'   type       = "bayes"
 #' )
 #' @export
-oneway_anova <- function(data,
-                         x,
-                         y,
-                         subject.id = NULL,
-                         type = "parametric",
-                         paired = FALSE,
-                         k = 2L,
-                         conf.level = 0.95,
-                         effsize.type = "omega",
-                         var.equal = FALSE,
-                         bf.prior = 0.707,
-                         tr = 0.2,
-                         nboot = 100L,
-                         ...) {
+oneway_anova <- function(
+    data,
+    x,
+    y,
+    subject.id = NULL,
+    type = "parametric",
+    paired = FALSE,
+    k = 2L,
+    conf.level = 0.95,
+    effsize.type = "omega",
+    var.equal = FALSE,
+    bf.prior = 0.707,
+    tr = 0.2,
+    nboot = 100L,
+    ...) {
+  # data -------------------------------------------
+
   type <- stats_type_switch(type)
   c(x, y) %<-% c(ensym(x), ensym(y))
 
@@ -161,7 +164,7 @@ oneway_anova <- function(data,
 
     # styler: off
     if (effsize.type %in% c("unbiased", "omega")) .f.es <- effectsize::omega_squared
-    if (effsize.type %in% c("biased", "eta")) .f.es     <- effectsize::eta_squared
+    if (effsize.type %in% c("biased", "eta"))     .f.es <- effectsize::eta_squared
     # styler: on
 
     if (paired) {
@@ -223,10 +226,10 @@ oneway_anova <- function(data,
 
     if (paired) {
       mod <- WRS2::rmanova(
-        y       = data[[as_name(y)]],
-        groups  = data[[as_name(x)]],
-        blocks  = data[[".rowid"]],
-        tr      = tr
+        y      = data[[as_name(y)]],
+        groups = data[[as_name(x)]],
+        blocks = data[[".rowid"]],
+        tr     = tr
       )
     }
 

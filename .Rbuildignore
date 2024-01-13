@@ -1,3 +1,4 @@
+.ls-lint.yml
 ^.*\.Rproj$
 ^.gitlab-ci\.yaml$
 ^API$

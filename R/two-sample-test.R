@@ -27,25 +27,28 @@
 #' @autoglobal
 #'
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
-#' @example man/examples/examples-two_sample_test_within.R
-#' @example man/examples/examples-two_sample_test_between.R
+#' @example man/examples/examples-two-sample-test-within.R
+#' @example man/examples/examples-two-sample-test-between.R
 #'
 #' @export
-two_sample_test <- function(data,
-                            x,
-                            y,
-                            subject.id = NULL,
-                            type = "parametric",
-                            paired = FALSE,
-                            alternative = "two.sided",
-                            k = 2L,
-                            conf.level = 0.95,
-                            effsize.type = "g",
-                            var.equal = FALSE,
-                            bf.prior = 0.707,
-                            tr = 0.2,
-                            nboot = 100L,
-                            ...) {
+two_sample_test <- function(
+    data,
+    x,
+    y,
+    subject.id = NULL,
+    type = "parametric",
+    paired = FALSE,
+    alternative = "two.sided",
+    k = 2L,
+    conf.level = 0.95,
+    effsize.type = "g",
+    var.equal = FALSE,
+    bf.prior = 0.707,
+    tr = 0.2,
+    nboot = 100L,
+    ...) {
+  # data -------------------------------------------
+
   type <- stats_type_switch(type)
   c(x, y) %<-% c(ensym(x), ensym(y))
 

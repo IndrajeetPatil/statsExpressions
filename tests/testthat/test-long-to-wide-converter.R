@@ -107,7 +107,7 @@ test_that(
 test_that(
   desc = "with .rowid - without NA",
   code = {
-    df <- structure(
+    df_original <- structure(
       list(
         score = c(90, 90, 72.5, 45),
         condition = structure(c(1L, 2L, 2L, 1L), .Label = c("4", "5"), class = "factor"),
@@ -117,18 +117,16 @@ test_that(
       class = c("tbl_df", "tbl", "data.frame")
     )
 
-    df1 <- arrange(df, id)
+    df_arranged <- arrange(df_original, id)
 
     expect_identical(
-      long_to_wide_converter(df1, condition, score),
-      long_to_wide_converter(df, condition, score, id)
+      long_to_wide_converter(df_arranged, condition, score),
+      long_to_wide_converter(df_original, condition, score, id)
     )
 
     expect_identical(
-      long_to_wide_converter(df1, condition, score, spread = FALSE) %>%
-        arrange(.rowid),
-      long_to_wide_converter(df, condition, score, id, spread = FALSE) %>%
-        arrange(.rowid)
+      arrange(long_to_wide_converter(df_arranged, condition, score, spread = FALSE), .rowid),
+      arrange(long_to_wide_converter(df_original, condition, score, id, spread = FALSE), .rowid)
     )
   }
 )
@@ -139,21 +137,17 @@ test_that(
 test_that(
   desc = "with .rowid - with NA",
   code = {
-    df <- bugs_long
-    df1 <- arrange(bugs_long, subject)
+    df_original <- bugs_long
+    df_arranged <- arrange(bugs_long, subject)
 
     expect_identical(
-      long_to_wide_converter(df1, condition, desire) %>%
-        select(-.rowid),
-      long_to_wide_converter(df, condition, desire, subject) %>%
-        select(-.rowid)
+      select(long_to_wide_converter(df_arranged, condition, desire), -.rowid),
+      select(long_to_wide_converter(df_original, condition, desire, subject), -.rowid)
     )
 
     expect_identical(
-      long_to_wide_converter(df1, condition, desire, spread = FALSE) %>%
-        select(-.rowid),
-      long_to_wide_converter(df, condition, desire, subject, spread = FALSE) %>%
-        select(-.rowid)
+      select(long_to_wide_converter(df_arranged, condition, desire, spread = FALSE), -.rowid),
+      select(long_to_wide_converter(df_original, condition, desire, subject, spread = FALSE), -.rowid)
     )
   }
 )

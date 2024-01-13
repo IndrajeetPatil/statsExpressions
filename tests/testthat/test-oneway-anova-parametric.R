@@ -47,7 +47,7 @@ test_that(
       x = vore,
       y = brainwt,
       effsize.type = "unbiased",
-      k = 4
+      k = 4L
     )
 
     set.seed(123)

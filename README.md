@@ -48,6 +48,13 @@ For more documentation, see the dedicated
 | Release     | [![CRAN Status](https://www.r-pkg.org/badges/version/statsExpressions)](https://cran.r-project.org/package=statsExpressions) | `install.packages("statsExpressions")`        |
 | Development | [![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/##active)                | `pak::pak("IndrajeetPatil/statsExpressions")` |
 
+On Linux, `{statsExpressions}` installation may require additional
+system dependencies, which can be checked using:
+
+``` r
+pak::pkg_sysreqs("statsExpressions")
+```
+
 # Citation
 
 The package can be cited as:

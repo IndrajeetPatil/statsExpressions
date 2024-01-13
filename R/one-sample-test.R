@@ -31,21 +31,22 @@
 #'
 #' @autoglobal
 #'
-#' @example man/examples/examples-one_sample_test.R
+#' @example man/examples/examples-one-sample-test.R
 #' @export
-one_sample_test <- function(data,
-                            x,
-                            type = "parametric",
-                            test.value = 0,
-                            alternative = "two.sided",
-                            k = 2L,
-                            conf.level = 0.95,
-                            tr = 0.2,
-                            bf.prior = 0.707,
-                            effsize.type = "g",
-                            ...) {
+one_sample_test <- function(
+    data,
+    x,
+    type = "parametric",
+    test.value = 0,
+    alternative = "two.sided",
+    k = 2L,
+    conf.level = 0.95,
+    tr = 0.2,
+    bf.prior = 0.707,
+    effsize.type = "g",
+    ...) {
   type <- stats_type_switch(type)
-  x_vec <- stats::na.omit(data %>% pull({{ x }}))
+  x_vec <- stats::na.omit(pull(data, {{ x }}))
 
   # parametric ---------------------------------------
 
@@ -53,12 +54,11 @@ one_sample_test <- function(data,
     .f <- stats::t.test
     # styler: off
     if (effsize.type %in% c("unbiased", "g")) .f.es <- effectsize::hedges_g
-    if (effsize.type %in% c("biased", "d")) .f.es   <- effectsize::cohens_d
+    if (effsize.type %in% c("biased", "d"))   .f.es <- effectsize::cohens_d
     # styler: on
   }
 
   # non-parametric ---------------------------------------
-
 
   if (type == "nonparametric") c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
 
@@ -82,7 +82,7 @@ one_sample_test <- function(data,
   # robust ---------------------------------------
 
   if (type == "robust") {
-    stats_df <- exec(WRS2::trimcibt, x = x_vec, nv = test.value, tr = tr, alpha = 1 - conf.level) %>%
+    stats_df <- exec(WRS2::trimcibt, x = x_vec, nv = test.value, tr = tr, alpha = 1.0 - conf.level) %>%
       tidy_model_parameters()
   }
 

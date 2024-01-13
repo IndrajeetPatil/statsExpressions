@@ -46,7 +46,9 @@
 #'
 #' # repeated measures design
 #' long_to_wide_converter(
-#'   bugs_long, condition, desire,
+#'   bugs_long,
+#'   condition,
+#'   desire,
 #'   subject.id = subject,
 #'   paired = TRUE
 #' )
@@ -54,13 +56,14 @@
 #' # independent measures design
 #' long_to_wide_converter(mtcars, cyl, wt, paired = FALSE)
 #' @export
-long_to_wide_converter <- function(data,
-                                   x,
-                                   y,
-                                   subject.id = NULL,
-                                   paired = TRUE,
-                                   spread = TRUE,
-                                   ...) {
+long_to_wide_converter <- function(
+    data,
+    x,
+    y,
+    subject.id = NULL,
+    paired = TRUE,
+    spread = TRUE,
+    ...) {
   data %<>%
     select({{ x }}, {{ y }}, .rowid = {{ subject.id }}) %>%
     mutate({{ x }} := droplevels(as.factor({{ x }}))) %>%

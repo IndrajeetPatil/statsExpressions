@@ -13,7 +13,7 @@ test_that(
       x = condition,
       y = value,
       paired = TRUE,
-      k = 4
+      k = 4L
     )
 
     set.seed(123)
@@ -76,7 +76,7 @@ test_that(
       y = brainwt,
       paired = FALSE,
       conf.level = 0.90,
-      k = 4
+      k = 4L
     )
 
     set.seed(123)

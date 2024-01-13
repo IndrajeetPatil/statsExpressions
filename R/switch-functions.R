@@ -93,6 +93,7 @@ prior_switch <- function(x) {
   )
 }
 
+#' @note Don't curry using `purrr::partial()` because it causes `Found a .Internal call` warning.
 #' @noRd
 .grepl <- function(pattern, x) grepl(pattern, x, fixed = TRUE)
 

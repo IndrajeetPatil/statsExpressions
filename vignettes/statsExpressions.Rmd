@@ -119,9 +119,9 @@ modified by changing a single argument:
 
 ```{r}
 #| label = "df_p"
-mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
+oneway_anova(mtcars, cyl, wt, type = "nonparametric")
 
-mtcars %>% oneway_anova(cyl, wt, type = "robust")
+oneway_anova(mtcars, cyl, wt, type = "robust")
 ```
 
 These functions are also compatible with other popular data manipulation

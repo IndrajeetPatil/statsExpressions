@@ -25,17 +25,18 @@
 #'
 #' @autoglobal
 #'
-#' @example man/examples/examples-corr_test.R
+#' @example man/examples/examples-corr-test.R
 #' @export
-corr_test <- function(data,
-                      x,
-                      y,
-                      type = "parametric",
-                      k = 2L,
-                      conf.level = 0.95,
-                      tr = 0.2,
-                      bf.prior = 0.707,
-                      ...) {
+corr_test <- function(
+    data,
+    x,
+    y,
+    type = "parametric",
+    k = 2L,
+    conf.level = 0.95,
+    tr = 0.2,
+    bf.prior = 0.707,
+    ...) {
   type <- stats_type_switch(type)
 
   stats_df <- correlation::correlation(

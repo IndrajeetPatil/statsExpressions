@@ -20,9 +20,9 @@
 #'   - votes.  Number of IMDB users who rated this movie.
 #'   - mpaa.  MPAA rating.
 #'   - action, animation, comedy, drama, documentary, romance, short. Binary
-#'   variables representing if movie was classified as belonging to that genre.
+#'     variables representing if movie was classified as belonging to that genre.
 #'   - NumGenre.  The number of different genres a film was classified in an
-#'   integer between one and four.
+#'     integer between one and four.
 #'
 #' @source <https://CRAN.R-project.org/package=ggplot2movies>
 #'
@@ -54,7 +54,7 @@
 #'   - votes.  Number of IMDB users who rated this movie.
 #'   - mpaa.  MPAA rating.
 #'   - genre. Different genres of movies (action, animation, comedy, drama,
-#'   documentary, romance, short).
+#'     documentary, romance, short).
 #'
 #' @source <https://CRAN.R-project.org/package=ggplot2movies>
 #'
@@ -78,13 +78,13 @@
 #'
 #'   - id. Dummy identity number for each flower (150 flowers in total).
 #'   - Species.	The species are *Iris setosa*, *versicolor*, and
-#'   *virginica*.
+#'     *virginica*.
 #'   - condition. Factor giving a detailed description of the attribute
-#'   (Four levels: `"Petal.Length"`, `"Petal.Width"`,  `"Sepal.Length"`,
-#'   `"Sepal.Width"`).
+#'     (Four levels: `"Petal.Length"`, `"Petal.Width"`,  `"Sepal.Length"`,
+#'     `"Sepal.Width"`).
 #'   - attribute.	What attribute is being measured (`"Sepal"` or `"Pepal"`).
 #'   - measure.	What aspect of the attribute is being measured (`"Length"`
-#'   or `"Width"`).
+#'     or `"Width"`).
 #'   - value.	Value of the measurement.
 #'
 #' @examples
@@ -107,12 +107,12 @@
 #'   - region. Region of the world the participant was from.
 #'   - education. Level of education.
 #'   - condition. Condition of the experiment the participant gave rating
-#'   for (**LDLF**: low freighteningness and low disgustingness; **LFHD**: low
-#'   freighteningness and high disgustingness; **HFHD**: high freighteningness
-#'   and low disgustingness; **HFHD**: high freighteningness and high
-#'   disgustingness).
+#'     for (**LDLF**: low freighteningness and low disgustingness; **LFHD**: low
+#'     freighteningness and high disgustingness; **HFHD**: high freighteningness
+#'     and low disgustingness; **HFHD**: high freighteningness and high
+#'     disgustingness).
 #'   - desire. The desire to kill an arthropod was indicated on a scale from
-#'   0 to 10.
+#'     0 to 10.
 #'
 #' @source
 #' <https://www.sciencedirect.com/science/article/pii/S0747563213000277>

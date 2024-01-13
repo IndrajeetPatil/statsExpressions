@@ -26,16 +26,17 @@
 #'
 #' @autoglobal
 #'
-#' @example man/examples/examples-centrality_description.R
+#' @example man/examples/examples-centrality-description.R
 #' @export
-centrality_description <- function(data,
-                                   x,
-                                   y,
-                                   type = "parametric",
-                                   conf.level = NULL,
-                                   tr = 0.2,
-                                   k = 2L,
-                                   ...) {
+centrality_description <- function(
+    data,
+    x,
+    y,
+    type = "parametric",
+    conf.level = NULL,
+    tr = 0.2,
+    k = 2L,
+    ...) {
 
   # styler: off
   centrality <- case_match(
