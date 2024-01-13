@@ -3,7 +3,6 @@
 \docType{package}
 \name{statsExpressions-package}
 \alias{statsExpressions-package}
-\alias{_PACKAGE}
 \alias{statsExpressions}
 \title{statsExpressions: Tidy Dataframes and Expressions with Statistical Details}
 \description{

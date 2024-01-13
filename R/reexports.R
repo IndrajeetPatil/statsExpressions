@@ -1,19 +1,19 @@
 # DO NOT REMOVE: Needed for `{ggstatsplot}`
 
 #' @export
-#' @importFrom magrittr "%>%"
+#' @importFrom magrittr %>%
 magrittr::`%>%`
 
 #' @export
-#' @importFrom magrittr "%<>%"
+#' @importFrom magrittr %<>%
 magrittr::`%<>%`
 
 #' @export
-#' @importFrom magrittr "%$%"
+#' @importFrom magrittr %$%
 magrittr::`%$%`
 
 #' @export
-#' @importFrom zeallot "%<-%"
+#' @importFrom zeallot %<-%
 zeallot::`%<-%`
 
 #' @export
