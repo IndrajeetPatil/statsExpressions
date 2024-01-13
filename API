@@ -23,7 +23,6 @@ print.statsExpressions(x, ...)
 
 ## Reexported objects
 
-magrittr::%$%
 zeallot::%<-%
 magrittr::%<>%
 magrittr::%>%
