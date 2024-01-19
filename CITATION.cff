@@ -8,7 +8,7 @@ message: 'To cite package "statsExpressions" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'statsExpressions: Tidy Dataframes and Expressions with Statistical Details'
-version: 1.5.3
+version: 1.5.3.9000
 doi: 10.21105/joss.03236
 abstract: 'Utilities for producing dataframes with rich details for the most common
   types of statistical approaches and tests: parametric, nonparametric, robust, and
@@ -480,10 +480,11 @@ references:
     email: kevinushey@gmail.com
   - family-names: Wickham
     given-names: Hadley
-    email: hadley@rstudio.com
+    email: hadley@posit.co
   - family-names: Chang
     given-names: Winston
   year: '2024'
+  version: '>= 3.0.0'
 - type: software
   title: WRS2
   abstract: 'WRS2: A Collection of Robust Statistical Methods'

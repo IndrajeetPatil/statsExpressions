@@ -42,7 +42,7 @@ Imports:
     stats,
     tibble (>= 3.2.1),
     tidyr (>= 1.3.0),
-    withr,
+    withr (>= 3.0.0),
     WRS2,
     zeallot
 Suggests:
