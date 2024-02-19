@@ -2,7 +2,6 @@
 
 utils::globalVariables(c(
   "method", # <add_expression_col>
-  "effectsize", # <add_expression_col>
   "n.obs", # <add_expression_col>
   "df", # <add_expression_col>
   "n.obs", # <centrality_description>
