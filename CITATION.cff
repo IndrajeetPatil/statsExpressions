@@ -95,7 +95,7 @@ references:
   - family-names: Ben-Shachar
     given-names: Mattan S.
   year: '2024'
-  version: '>= 1.3-0'
+  version: '>= 1.3-1'
 - type: software
   title: BayesFactor
   abstract: 'BayesFactor: Computation of Bayes Factors for Common Designs'
@@ -110,7 +110,7 @@ references:
     given-names: Jeffrey N.
     email: jrouder@uci.edu
   year: '2024'
-  version: '>= 0.9.12-4.6'
+  version: '>= 0.9.12-4.7'
 - type: software
   title: correlation
   abstract: 'correlation: Methods for Correlation Analysis'
@@ -377,7 +377,7 @@ references:
     email: remi.theriault@mail.mcgill.ca
     orcid: https://orcid.org/0000-0003-4315-6788
   year: '2024'
-  version: '>= 0.10.8'
+  version: '>= 0.10.9'
 - type: software
   title: PMCMRplus
   abstract: 'PMCMRplus: Calculate Pairwise Multiple Comparisons of Mean Rank Sums
