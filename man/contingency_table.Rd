@@ -30,13 +30,10 @@ ungrouped before they are entered as \code{data}.}
 
 \item{y}{The variable to use as the \strong{columns} in the contingency table.
 Default is \code{NULL}. If \code{NULL}, one-sample proportion test (a goodness of fit
-test) will be run for the \code{x} variable. Otherwise association test will be
-carried out.}
+test) will be run for the \code{x} variable.}
 
 \item{paired}{Logical indicating whether data came from a within-subjects or
-repeated measures design study (Default: \code{FALSE}). If \code{TRUE}, McNemar's
-test expression will be returned. If \code{FALSE}, Pearson's chi-square test will
-be returned.}
+repeated measures design study (Default: \code{FALSE}).}
 
 \item{type}{A character specifying the type of statistical approach:
 \itemize{
@@ -52,10 +49,10 @@ You can specify just the initial letter.}
 represents a single observation.}
 
 \item{ratio}{A vector of proportions: the expected proportions for the
-proportion test (should sum to 1). Default is \code{NULL}, which means the null
+proportion test (should sum to \code{1}). Default is \code{NULL}, which means the null
 is equal theoretical proportions across the levels of the nominal variable.
-This means if there are two levels this will be \code{ratio = c(0.5,0.5)} or if
-there are four levels this will be \code{ratio = c(0.25,0.25,0.25,0.25)}, etc.}
+E.g., \code{ratio = c(0.5, 0.5)} for two levels,
+\code{ratio = c(0.25, 0.25, 0.25, 0.25)} for four levels, etc.}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2L}).}
@@ -154,14 +151,13 @@ The table below provides summary about:
 }
 
 \examples{
-\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# for reproducibility
+#### -------------------- association test ------------------------ ####
+
+# ------------------------ frequentist ---------------------------------
+
+# unpaired
+
 set.seed(123)
-library(statsExpressions)
-
-# ------------------------ Frequentist -----------------------------
-
-# association test
 contingency_table(
   data   = mtcars,
   x      = am,
@@ -169,26 +165,62 @@ contingency_table(
   paired = FALSE
 )
 
-# goodness-of-fit test
+# paired
+
+paired_data <- tibble(
+  response_before = structure(c(1L, 2L, 1L, 2L), levels = c("no", "yes"), class = "factor"),
+  response_after = structure(c(1L, 1L, 2L, 2L), levels = c("no", "yes"), class = "factor"),
+  Freq = c(65L, 25L, 5L, 5L)
+)
+
+set.seed(123)
+contingency_table(
+  data   = paired_data,
+  x      = response_before,
+  y      = response_after,
+  paired = TRUE,
+  counts = Freq
+)
+
+# ------------------------ Bayesian -------------------------------------
+
+# unpaired
+
+set.seed(123)
+contingency_table(
+  data = mtcars,
+  x = am,
+  y = vs,
+  paired = FALSE,
+  type = "bayes"
+)
+
+# paired
+
+set.seed(123)
+contingency_table(
+  data = paired_data,
+  x = response_before,
+  y = response_after,
+  paired = TRUE,
+  counts = Freq,
+  type = "bayes"
+)
+
+#### -------------------- goodness-of-fit test -------------------- ####
+
+# ------------------------ frequentist ---------------------------------
+
+set.seed(123)
 contingency_table(
   data   = as.data.frame(HairEyeColor),
   x      = Eye,
-  counts = Freq,
-  ratio  = c(0.2, 0.2, 0.3, 0.3)
+  counts = Freq
 )
 
-# ------------------------ Bayesian -----------------------------
+# ------------------------ Bayesian -------------------------------------
 
-# association test
-contingency_table(
-  data   = mtcars,
-  x      = am,
-  y      = vs,
-  paired = FALSE,
-  type   = "bayes"
-)
-
-# goodness-of-fit test
+set.seed(123)
 contingency_table(
   data   = as.data.frame(HairEyeColor),
   x      = Eye,
@@ -196,5 +228,4 @@ contingency_table(
   ratio  = c(0.2, 0.2, 0.3, 0.3),
   type   = "bayes"
 )
-\dontshow{\}) # examplesIf}
 }
