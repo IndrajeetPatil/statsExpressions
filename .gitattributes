@@ -9,15 +9,15 @@
 *.rds      binary
 *.Rd       text
 *.Rdx      binary
-*.Rmd	   text
+*.Rmd	     text
 *.R        text eol=crlf
 *.Rproj    text
 *.[Rr]md   linguist-detectable
 
 # Documentation files
 # =============================
-docs/*    linguist-documentation
-man/*     linguist-documentation
-misc/*    linguist-documentation
-pkgdown/* linguist-documentation
-*.html    linguist-documentation
+docs/*     linguist-documentation
+man/*      linguist-documentation
+misc/*     linguist-documentation
+pkgdown/*  linguist-documentation
+*.html     linguist-documentation

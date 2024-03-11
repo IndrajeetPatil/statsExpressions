@@ -682,7 +682,7 @@ console.
 | Robust     | Meta-analysis via robust random-effects models   | *beta*      | Yes           | `metaplus::metaplus()`   |
 | Bayes      | Meta-analysis via Bayesian random-effects models | *beta*      | Yes           | `metaBMA::meta_random()` |
 
-# Usage in `ggstatsplot`
+# Usage in `{ggstatsplot}`
 
 Note that these functions were initially written to display results from
 statistical tests on ready-made `{ggplot2}` plots implemented in

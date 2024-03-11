@@ -446,7 +446,7 @@ more about how one-way (between-subjects) ANOVA, you can run
 ```{r, child = "man/rmd-fragments/meta_analysis.Rmd"}
 ```
 
-# Usage in `ggstatsplot`
+# Usage in `{ggstatsplot}`
 
 Note that these functions were initially written to display results from
 statistical tests on ready-made `{ggplot2}` plots implemented in `{ggstatsplot}`.
