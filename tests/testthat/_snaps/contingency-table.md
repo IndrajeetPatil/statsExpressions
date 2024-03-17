@@ -106,7 +106,7 @@
       1      13.3     1 0.000261 McNemar's Chi-squared test Cohen's g     0.333
         conf.level conf.low conf.high conf.method n.obs
              <dbl>    <dbl>     <dbl> <chr>       <int>
-      1        0.9    0.195     0.416 binomial       95
+      1        0.9    0.229       0.5 binomial       95
 
 ---
 
@@ -116,7 +116,7 @@
       [[1]]
       list(chi["McNemar"]^2 * "(" * 1 * ")" == "13.333", italic(p) == 
           "2.607e-04", widehat(italic("g"))["Cohen"] == "0.333", CI["90%"] ~ 
-          "[" * "0.195", "0.416" * "]", italic("n")["pairs"] == "95")
+          "[" * "0.229", "0.500" * "]", italic("n")["pairs"] == "95")
       
 
 # Goodness of Fit contingency_table works without counts
@@ -155,7 +155,7 @@
       1      722.     1 3.92e-159 Chi-squared test for given probabilities Pearson's C
         estimate conf.level conf.low conf.high conf.method conf.distribution n.obs
            <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>             <int>
-      1    0.497       0.95    0.469     0.524 ncp         chisq              2201
+      1    0.497       0.95    0.474         1 ncp         chisq              2201
 
 ---
 
@@ -165,7 +165,7 @@
       [[1]]
       list(chi["gof"]^2 * "(" * 1 * ")" == "722.45", italic(p) == "3.92e-159", 
           widehat(italic("C"))["Pearson"] == "0.50", CI["95%"] ~ "[" * 
-              "0.47", "0.52" * "]", italic("n")["obs"] == "2,201")
+              "0.47", "1.00" * "]", italic("n")["obs"] == "2,201")
       
 
 ---

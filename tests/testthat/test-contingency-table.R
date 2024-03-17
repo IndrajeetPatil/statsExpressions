@@ -92,6 +92,7 @@ test_that(
         x = response_before,
         y = response_after,
         paired = TRUE,
+        alternative = "greater",
         digits = 3L,
         conf.level = 0.90
       )
@@ -126,7 +127,8 @@ test_that(
     df2 <- contingency_table(
       data = as.data.frame(Titanic),
       x = Sex,
-      counts = Freq
+      counts = Freq,
+      alternative = "greater"
     )
 
     set.seed(123)
