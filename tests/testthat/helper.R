@@ -4,6 +4,7 @@
 
 # load hard dependencies used in tests
 library(dplyr, warn.conflicts = FALSE)
+options(lifecycle_verbosity = "warning")
 
 # Same as a smaller subset of `ggplot2::msleep` dataset
 # datapasta::dpasta(dplyr::select(ggplot2::msleep, brainwt, vore, conservation, sleep_total, sleep_rem))

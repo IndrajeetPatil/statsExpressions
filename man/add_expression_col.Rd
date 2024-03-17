@@ -13,9 +13,9 @@ add_expression_col(
   n = NULL,
   n.text = ifelse(paired, list(quote(italic("n")["pairs"])),
     list(quote(italic("n")["obs"]))),
-  k = 2L,
-  k.df = 0L,
-  k.df.error = k.df,
+  digits = 2L,
+  digits.df = 0L,
+  digits.df.error = digits.df,
   ...
 )
 }
@@ -57,13 +57,13 @@ what the \code{n} stands for. It defaults to \code{quote(italic("n")["pairs"])} 
 you wish to customize this further, you will need to provide object of
 \code{language} type.}
 
-\item{k}{Number of digits after decimal point (should be an integer)
-(Default: \code{k = 2L}).}
-
-\item{k.df, k.df.error}{Number of decimal places to display for the
+\item{digits, digits.df, digits.df.error}{Number of decimal places to display for the
 parameters (default: \code{0L}).}
 
 \item{...}{Currently ignored.}
+
+\item{k}{Number of digits after decimal point (should be an integer)
+(Default: \code{digits = 2L}).}
 }
 \description{
 Creates an expression from a data frame containing statistical details.
@@ -96,7 +96,7 @@ add_expression_col(
   effsize.text   = list(quote(italic("d"))),
   n              = 32L,
   n.text         = list(quote(italic("n")["no.obs"])),
-  k              = 3L,
-  k.df           = 3L
+  digits         = 3L,
+  digits.df      = 3L
 )
 }

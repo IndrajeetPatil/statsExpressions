@@ -36,7 +36,7 @@
 tidy_model_expressions <- function(
     data,
     statistic = NULL,
-    k = 2L,
+    digits = 2L,
     effsize.type = "omega",
     ...) {
   # standardize the statistic naming
@@ -51,7 +51,7 @@ tidy_model_expressions <- function(
       .cols = matches("estimate|statistic|std.error|p.value"),
       .fns = Negate(is.na)
     )) %>%
-    .data_to_char(k)
+    .data_to_char(digits)
 
   # effect size text for the expression (common for t, z, and chi^2)
   es.text <- list(quote(widehat(italic(beta))))

@@ -10,7 +10,7 @@ test_that(
       x = brainwt,
       y = sleep_rem,
       type = "parametric",
-      k = 3L,
+      digits = 3L,
       conf.level = 0.90
     )
 
@@ -25,7 +25,7 @@ test_that(
       x = wt,
       y = mpg,
       type = "p",
-      k = 3L
+      digits = 3L
     )
 
     set.seed(123)
@@ -46,7 +46,7 @@ test_that(
       x = brainwt,
       y = sleep_total,
       type = "r",
-      k = 4L,
+      digits = 4L,
       conf.level = 0.50
     )
 
@@ -81,7 +81,7 @@ test_that(
       x = brainwt,
       y = sleep_total,
       type = "np",
-      k = 4L,
+      digits = 4L,
       conf.level = 0.50
     )
 
@@ -96,7 +96,7 @@ test_that(
       x = wt,
       y = mpg,
       type = "np",
-      k = 4L
+      digits = 4L
     )
 
     set.seed(123)

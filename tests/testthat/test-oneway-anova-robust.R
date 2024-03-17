@@ -10,7 +10,7 @@ test_that(
       x = cyl,
       y = wt,
       paired = FALSE,
-      k = 5L,
+      digits = 5L,
       tr = 0.00025,
       nboot = 2
     )
@@ -22,7 +22,7 @@ test_that(
       x = vore,
       y = sleep_total,
       paired = FALSE,
-      k = 4L,
+      digits = 4L,
       nboot = 15,
       conf.level = 0.99
     ))
@@ -48,7 +48,7 @@ test_that(
       data = bugs_long,
       x = condition,
       y = desire,
-      k = 4L,
+      digits = 4L,
       paired = TRUE
     )
 
