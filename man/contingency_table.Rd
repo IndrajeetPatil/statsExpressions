@@ -12,6 +12,7 @@ contingency_table(
   type = "parametric",
   counts = NULL,
   ratio = NULL,
+  alternative = "two.sided",
   digits = 2L,
   conf.level = 0.95,
   sampling.plan = "indepMulti",
@@ -53,6 +54,12 @@ proportion test (should sum to \code{1}). Default is \code{NULL}, which means th
 is equal theoretical proportions across the levels of the nominal variable.
 E.g., \code{ratio = c(0.5, 0.5)} for two levels,
 \code{ratio = c(0.25, 0.25, 0.25, 0.25)} for four levels, etc.}
+
+\item{alternative}{A character string specifying the alternative hypothesis;
+Controls the type of CI returned: \code{"two.sided"} (default, two-sided CI),
+\code{"greater"} or \code{"less"} (one-sided CI). Partial matching is allowed
+(e.g., \code{"g"}, \code{"l"}, \code{"two"}...). See section \emph{One-Sided CIs} in
+the \href{https://easystats.github.io/effectsize/}{effectsize_CIs vignette}.}
 
 \item{digits}{Number of digits for rounding or significant figures. May also
 be \code{"signif"} to return significant figures or \code{"scientific"}

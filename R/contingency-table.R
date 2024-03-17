@@ -43,6 +43,7 @@
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams stats::chisq.test
 #' @inheritParams oneway_anova
+#' @inheritParams parameters::model_parameters.htest
 #'
 #' @autoglobal
 #'
@@ -56,6 +57,7 @@ contingency_table <- function(
     type = "parametric",
     counts = NULL,
     ratio = NULL,
+    alternative = "two.sided",
     digits = 2L,
     conf.level = 0.95,
     sampling.plan = "indepMulti",
@@ -93,7 +95,7 @@ contingency_table <- function(
   if (type != "bayes") {
     stats_df <- bind_cols(
       tidy_model_parameters(exec(.f, !!!.f.args)),
-      tidy_model_effectsize(exec(.f.es, !!!.f.args, ci = conf.level))
+      tidy_model_effectsize(exec(.f.es, !!!.f.args, ci = conf.level, alternative = alternative))
     )
   }
 
@@ -106,7 +108,7 @@ contingency_table <- function(
       fixedMargin        = fixed.margin,
       priorConcentration = prior.concentration
     ) %>%
-      tidy_model_parameters(ci = conf.level, effectsize_type = "cramers_v")
+      tidy_model_parameters(ci = conf.level, effectsize_type = "cramers_v", alternative = alternative)
   }
 
   if (type == "bayes" && test == "1way") {

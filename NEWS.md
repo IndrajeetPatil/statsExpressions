@@ -2,7 +2,11 @@
 
 ## MAJOR CHANGES
 
-- The cryptic but very useful parameter `k` has been renamed to `digits` to improve its discoverability.
+- The cryptic but very useful parameter `k` has been renamed to `digits` to
+  improve its discoverability.
+
+- To be consistent, `contingency_table()` gains `alternative` parameter, which
+  defaults to two-sided alternative hypothesis.
 
 # statsExpressions 1.5.3
 
@@ -10,7 +14,8 @@
 
 # statsExpressions 1.5.2
 
-- Fixes failures on R-devel due to changes in the formula interface for a paired test.
+- Fixes failures on R-devel due to changes in the formula interface for a paired
+  test.
 
 # statsExpressions 1.5.1
 
@@ -23,7 +28,7 @@
 
 ## BREAKING CHANGES
 
-- The minimum needed R version is now bumped to `R 4.1` because a critical 
+- The minimum needed R version is now bumped to `R 4.1` because a critical
   dependency (`{pbkrtest}`) requires this R version.
 
 # statsExpressions 1.4.0
@@ -37,7 +42,7 @@
 
 - `tidy_model_parameters()` no longer removes columns which contain only missing
   values.
-  
+
 - Wilcox tests no longer provide exact *p*-values.
 
 # statsExpressions 1.3.6
@@ -494,3 +499,4 @@ BUG FIXES
 # statsExpressions 0.1.0
 
   - First release of the package.
+
