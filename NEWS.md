@@ -1,5 +1,9 @@
 # statsExpressions 1.5.3.9000
 
+## MAJOR CHANGES
+
+- The cryptic but very useful parameter `k` has been renamed to `digits` to improve its discoverability.
+
 # statsExpressions 1.5.3
 
 - Internal changes only.
