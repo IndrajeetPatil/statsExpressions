@@ -39,8 +39,6 @@
 #'   `language` type.
 #' @param effsize.text A character that specifies the relevant effect size.
 #' @param prior.type The type of prior.
-#' @param k Number of digits after decimal point (should be an integer)
-#'   (Default: `digits = 2L`).
 #' @param ... Currently ignored.
 #' @inheritParams oneway_anova
 #' @inheritParams long_to_wide_converter

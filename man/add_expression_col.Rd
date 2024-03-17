@@ -61,9 +61,6 @@ you wish to customize this further, you will need to provide object of
 parameters (default: \code{0L}).}
 
 \item{...}{Currently ignored.}
-
-\item{k}{Number of digits after decimal point (should be an integer)
-(Default: \code{digits = 2L}).}
 }
 \description{
 Creates an expression from a data frame containing statistical details.
