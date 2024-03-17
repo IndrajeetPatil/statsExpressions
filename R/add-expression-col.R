@@ -29,9 +29,7 @@
 #'   For example, for tests with *t*-statistic, `statistic.text = "t"`.
 #' @param effsize.text A character that specifies the relevant effect size or
 #'   posterior estimate.
-#' @param k Number of digits after decimal point (should be an integer)
-#'   (Default: `k = 2L`).
-#' @param k.df,k.df.error Number of decimal places to display for the
+#' @param digits,digits.df,digits.df.error Number of decimal places to display for the
 #'   parameters (default: `0L`).
 #' @param n An integer specifying the sample size used for the test.
 #' @param n.text A character that specifies the design, which will determine
@@ -41,8 +39,6 @@
 #'   `language` type.
 #' @param effsize.text A character that specifies the relevant effect size.
 #' @param prior.type The type of prior.
-#' @param k Number of digits after decimal point (should be an integer)
-#'   (Default: `k = 2L`).
 #' @param ... Currently ignored.
 #' @inheritParams oneway_anova
 #' @inheritParams long_to_wide_converter
@@ -72,8 +68,8 @@
 #'   effsize.text   = list(quote(italic("d"))),
 #'   n              = 32L,
 #'   n.text         = list(quote(italic("n")["no.obs"])),
-#'   k              = 3L,
-#'   k.df           = 3L
+#'   digits         = 3L,
+#'   digits.df      = 3L
 #' )
 #' @export
 add_expression_col <- function(
@@ -88,9 +84,9 @@ add_expression_col <- function(
       list(quote(italic("n")["pairs"])),
       list(quote(italic("n")["obs"]))
     ),
-    k = 2L,
-    k.df = 0L,
-    k.df.error = k.df,
+    digits = 2L,
+    digits.df = 0L,
+    digits.df.error = digits.df,
     ...) {
   if (!"n.obs" %in% colnames(data)) data %<>% mutate(n.obs = n)
   if (!"effectsize" %in% colnames(data)) data %<>% mutate(effectsize = method)
@@ -103,7 +99,7 @@ add_expression_col <- function(
   if (bayesian && grepl("contingency", data$method[[1L]], fixed = TRUE)) data %<>% mutate(effectsize = "Cramers_v")
 
   df_expr <- data %>% # convert needed columns to character type
-    .data_to_char(k, k.df, k.df.error) %>%
+    .data_to_char(digits, digits.df, digits.df.error) %>%
     mutate(
       statistic.text     = statistic.text %||% stat_text_switch(tolower(method)),
       es.text            = effsize.text %||% estimate_type_switch(tolower(effectsize)),
@@ -115,7 +111,7 @@ add_expression_col <- function(
 
   if (bayesian) {
     df_expr %<>% mutate(expression = glue("list(
-            log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
+            log[e]*(BF['01'])=='{format_value(-log(bf10), digits)}',
             {es.text}^'posterior'=='{estimate}',
             CI['{conf.level}']^{conf.method}~'['*'{conf.low}', '{conf.high}'*']',
             {prior.distribution}=='{prior.scale}')"))
@@ -164,12 +160,12 @@ add_expression_col <- function(
 
 #' Helper function to convert certain numeric columns to character type
 #' @noRd
-.data_to_char <- function(data, k = 2L, k.df = 0L, k.df.error = 0L) {
+.data_to_char <- function(data, digits = 2L, digits.df = 0L, digits.df.error = 0L) {
   data %>%
     mutate(
-      across(.fns = ~ .to_char(.x, k), .cols = matches("^est|^sta|p.value|.scale$|.low$|.high$|^log")),
-      across(.fns = ~ .to_char(.x, k.df), .cols = matches("^df$")),
-      across(.fns = ~ .to_char(.x, k.df.error), .cols = matches("^df.error$")),
+      across(.fns = ~ .to_char(.x, digits), .cols = matches("^est|^sta|p.value|.scale$|.low$|.high$|^log")),
+      across(.fns = ~ .to_char(.x, digits.df), .cols = matches("^df$")),
+      across(.fns = ~ .to_char(.x, digits.df.error), .cols = matches("^df.error$")),
       across(.fns = ~ paste0(.x * 100L, "%"), .cols = matches("^conf.level$"))
     )
 }

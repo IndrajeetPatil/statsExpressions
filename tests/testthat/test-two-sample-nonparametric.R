@@ -9,7 +9,7 @@ test_that(
       data = mtcars,
       x = am,
       y = wt,
-      k = 3L,
+      digits = 3L,
       conf.level = 0.90
     )
 
@@ -30,7 +30,7 @@ test_that(
       x = condition,
       y = desire,
       type = "np",
-      k = 5L,
+      digits = 5L,
       conf.level = 0.99,
       paired = TRUE
     ))

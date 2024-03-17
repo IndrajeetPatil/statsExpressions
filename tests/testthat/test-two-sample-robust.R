@@ -13,7 +13,7 @@ test_that(
       x = condition,
       y = value,
       paired = TRUE,
-      k = 4L
+      digits = 4L
     )
 
     set.seed(123)
@@ -32,7 +32,7 @@ test_that(
       x = condition,
       y = desire,
       paired = TRUE,
-      k = 3L
+      digits = 3L
     )
 
     set.seed(123)
@@ -56,7 +56,7 @@ test_that(
       y = wt,
       paired = FALSE,
       conf.level = 0.99,
-      k = 3
+      digits = 3
     )
 
     set.seed(123)
@@ -76,7 +76,7 @@ test_that(
       y = brainwt,
       paired = FALSE,
       conf.level = 0.90,
-      k = 4L
+      digits = 4L
     )
 
     set.seed(123)

@@ -135,7 +135,7 @@ oneway_anova <- function(
     subject.id = NULL,
     type = "parametric",
     paired = FALSE,
-    k = 2L,
+    digits = 2L,
     conf.level = 0.95,
     effsize.type = "omega",
     var.equal = FALSE,
@@ -160,7 +160,7 @@ oneway_anova <- function(
   #  parametric ---------------------------------------
 
   if (type == "parametric") {
-    c(k.df, k.df.error) %<-% c(ifelse(paired, k, 0L), ifelse(!paired && var.equal, 0L, k))
+    c(digits.df, digits.df.error) %<-% c(ifelse(paired, digits, 0L), ifelse(!paired && var.equal, 0L, digits))
 
     # styler: off
     if (effsize.type %in% c("unbiased", "omega")) .f.es <- effectsize::omega_squared
@@ -188,7 +188,7 @@ oneway_anova <- function(
   # non-parametric ------------------------------------
 
   if (type == "nonparametric") {
-    c(k.df, k.df.error) %<-% c(0L, 0L)
+    c(digits.df, digits.df.error) %<-% c(0L, 0L)
 
     # styler: off
     if (paired) {
@@ -222,7 +222,7 @@ oneway_anova <- function(
   # robust ---------------------------------------
 
   if (type == "robust") {
-    c(k.df, k.df.error) %<-% c(ifelse(paired, k, 0L), k)
+    c(digits.df, digits.df.error) %<-% c(ifelse(paired, digits, 0L), digits)
 
     if (paired) {
       mod <- WRS2::rmanova(
@@ -274,11 +274,11 @@ oneway_anova <- function(
   # expression ---------------------------------------
 
   add_expression_col(
-    data       = stats_df,
-    n          = ifelse(paired, length(unique(data$.rowid)), nrow(data)),
-    paired     = paired,
-    k          = k,
-    k.df       = k.df,
-    k.df.error = k.df.error
+    data = stats_df,
+    n = ifelse(paired, length(unique(data$.rowid)), nrow(data)),
+    paired = paired,
+    digits = digits,
+    digits.df = digits.df,
+    digits.df.error = digits.df.error
   )
 }

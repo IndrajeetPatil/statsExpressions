@@ -12,6 +12,7 @@
 #' @inheritParams two_sample_test
 #' @inheritParams oneway_anova
 #' @inheritParams stats::t.test
+#' @inheritParams insight::format_value
 #'
 #' @description
 #' Parametric, non-parametric, robust, and Bayesian one-sample tests.
@@ -39,7 +40,7 @@ one_sample_test <- function(
     type = "parametric",
     test.value = 0,
     alternative = "two.sided",
-    k = 2L,
+    digits = 2L,
     conf.level = 0.95,
     tr = 0.2,
     bf.prior = 0.707,
@@ -95,5 +96,5 @@ one_sample_test <- function(
 
   # expression ---------------------------------------
 
-  add_expression_col(stats_df, n = length(x_vec), k = k)
+  add_expression_col(stats_df, n = length(x_vec), digits = digits)
 }

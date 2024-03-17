@@ -39,7 +39,7 @@ two_sample_test <- function(
     type = "parametric",
     paired = FALSE,
     alternative = "two.sided",
-    k = 2L,
+    digits = 2L,
     conf.level = 0.95,
     effsize.type = "g",
     var.equal = FALSE,
@@ -64,7 +64,7 @@ two_sample_test <- function(
 
   if (type == "parametric") {
     # styler: off
-    k.df <- ifelse(paired || var.equal, 0L, k)
+    digits.df <- ifelse(paired || var.equal, 0L, digits)
     .f   <- stats::t.test
     if (effsize.type %in% c("unbiased", "g")) .f.es <- effectsize::hedges_g
     if (effsize.type %in% c("biased", "d")) .f.es   <- effectsize::cohens_d
@@ -84,7 +84,7 @@ two_sample_test <- function(
   # robust ---------------------------------------
 
   if (type == "robust") {
-    k.df <- ifelse(paired, 0L, k)
+    digits.df <- ifelse(paired, 0L, digits)
 
     # styler: off
     if (!paired) c(.f, .f.es) %<-% c(WRS2::yuen, WRS2::akp.effect)
@@ -116,11 +116,11 @@ two_sample_test <- function(
   # expression ---------------------------------------
 
   add_expression_col(
-    data   = if (type == "bayes") stats_df else .standardize_two_sample_terms(stats_df, as_name(x), as_name(y)),
+    data = if (type == "bayes") stats_df else .standardize_two_sample_terms(stats_df, as_name(x), as_name(y)),
     paired = paired,
-    n      = ifelse(paired, length(unique(data$.rowid)), nrow(data)),
-    k      = k,
-    k.df   = k.df
+    n = ifelse(paired, length(unique(data$.rowid)), nrow(data)),
+    digits = digits,
+    digits.df = digits.df
   )
 }
 

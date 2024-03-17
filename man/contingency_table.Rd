@@ -12,7 +12,8 @@ contingency_table(
   type = "parametric",
   counts = NULL,
   ratio = NULL,
-  k = 2L,
+  alternative = "two.sided",
+  digits = 2L,
   conf.level = 0.95,
   sampling.plan = "indepMulti",
   fixed.margin = "rows",
@@ -54,8 +55,18 @@ is equal theoretical proportions across the levels of the nominal variable.
 E.g., \code{ratio = c(0.5, 0.5)} for two levels,
 \code{ratio = c(0.25, 0.25, 0.25, 0.25)} for four levels, etc.}
 
-\item{k}{Number of digits after decimal point (should be an integer)
-(Default: \code{k = 2L}).}
+\item{alternative}{A character string specifying the alternative hypothesis;
+Controls the type of CI returned: \code{"two.sided"} (default, two-sided CI),
+\code{"greater"} or \code{"less"} (one-sided CI). Partial matching is allowed
+(e.g., \code{"g"}, \code{"l"}, \code{"two"}...). See section \emph{One-Sided CIs} in
+the \href{https://easystats.github.io/effectsize/}{effectsize_CIs vignette}.}
+
+\item{digits}{Number of digits for rounding or significant figures. May also
+be \code{"signif"} to return significant figures or \code{"scientific"}
+to return scientific notation. Control the number of digits by adding the
+value as suffix, e.g. \code{digits = "scientific4"} to have scientific
+notation with 4 decimal places, or \code{digits = "signif5"} for 5
+significant figures (see also \code{\link[=signif]{signif()}}).}
 
 \item{conf.level}{Scalar between \code{0} and \code{1} (default: \verb{95\%}
 confidence/credible intervals, \code{0.95}). If \code{NULL}, no confidence intervals

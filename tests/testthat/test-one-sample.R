@@ -7,7 +7,7 @@ test_that(
       x = length,
       test.value = 120,
       type = "p",
-      k = 5
+      digits = 5
     )
 
     set.seed(123)
@@ -18,7 +18,7 @@ test_that(
         test.value = 120,
         type = "p",
         effsize.type = "d",
-        k = 4L,
+        digits = 4L,
         conf.level = 0.90
       )
     )
@@ -41,7 +41,7 @@ test_that(
       x = len,
       test.value = 20,
       type = "np",
-      k = 4L
+      digits = 4L
     ))
 
     set.seed(123)
@@ -50,7 +50,7 @@ test_that(
       x = brainwt,
       test.value = 0.25,
       type = "np",
-      k = 4L
+      digits = 4L
     )
 
     set.seed(123)
@@ -71,7 +71,7 @@ test_that(
       x = x1,
       test.value = 8,
       type = "r",
-      k = 4L,
+      digits = 4L,
       conf.level = 0.90
     )
 
@@ -81,7 +81,7 @@ test_that(
       x = brainwt,
       test.value = 0.1,
       type = "r",
-      k = 4L,
+      digits = 4L,
       conf.level = 0.99
     )
 
@@ -131,7 +131,7 @@ test_that(
       y = NULL,
       test.value = 0.25,
       bf.prior = 0.9,
-      k = 3L,
+      digits = 3L,
       conf.method = "eti"
     )
 

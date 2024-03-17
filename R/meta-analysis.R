@@ -70,7 +70,7 @@ meta_analysis <- function(
     data,
     type = "parametric",
     random = "mixture",
-    k = 2L,
+    digits = 2L,
     conf.level = 0.95,
     ...) {
   type <- stats_type_switch(type)
@@ -92,5 +92,5 @@ meta_analysis <- function(
   if (type != "bayes") stats_df %<>% mutate(effectsize = "meta-analytic summary estimate")
   if (type == "bayes") stats_df %<>% mutate(effectsize = "meta-analytic posterior estimate")
 
-  add_expression_col(stats_df, n = nrow(data), n.text = list(quote(italic("n")["effects"])), k = k)
+  add_expression_col(stats_df, n = nrow(data), n.text = list(quote(italic("n")["effects"])), digits = digits)
 }

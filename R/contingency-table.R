@@ -43,6 +43,7 @@
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams stats::chisq.test
 #' @inheritParams oneway_anova
+#' @inheritParams parameters::model_parameters.htest
 #'
 #' @autoglobal
 #'
@@ -56,7 +57,8 @@ contingency_table <- function(
     type = "parametric",
     counts = NULL,
     ratio = NULL,
-    k = 2L,
+    alternative = "two.sided",
+    digits = 2L,
     conf.level = 0.95,
     sampling.plan = "indepMulti",
     fixed.margin = "rows",
@@ -93,7 +95,7 @@ contingency_table <- function(
   if (type != "bayes") {
     stats_df <- bind_cols(
       tidy_model_parameters(exec(.f, !!!.f.args)),
-      tidy_model_effectsize(exec(.f.es, !!!.f.args, ci = conf.level))
+      tidy_model_effectsize(exec(.f.es, !!!.f.args, ci = conf.level, alternative = alternative))
     )
   }
 
@@ -106,18 +108,18 @@ contingency_table <- function(
       fixedMargin        = fixed.margin,
       priorConcentration = prior.concentration
     ) %>%
-      tidy_model_parameters(ci = conf.level, effectsize_type = "cramers_v")
+      tidy_model_parameters(ci = conf.level, effectsize_type = "cramers_v", alternative = alternative)
   }
 
   if (type == "bayes" && test == "1way") {
-    return(.one_way_bayesian_table(xtab, prior.concentration, ratio, k))
+    return(.one_way_bayesian_table(xtab, prior.concentration, ratio, digits))
   }
 
-  add_expression_col(stats_df, paired = paired, n = nrow(data), k = k)
+  add_expression_col(stats_df, paired = paired, n = nrow(data), digits = digits)
 }
 
 
-.one_way_bayesian_table <- function(xtab, prior.concentration, ratio, k) {
+.one_way_bayesian_table <- function(xtab, prior.concentration, ratio, digits) {
   # probability can't be exactly 0 or 1
   if ((1 / length(as.vector(xtab)) == 0) || (1 / length(as.vector(xtab)) == 1)) {
     return(NULL)
@@ -134,8 +136,8 @@ contingency_table <- function(
     method      = "Bayesian one-way contingency table analysis"
   ) %>%
     mutate(expression = glue("list(
-            log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
-            {prior_switch(method)}=='{format_value(prior.scale, k)}')")) %>%
+            log[e]*(BF['01'])=='{format_value(-log(bf10), digits)}',
+            {prior_switch(method)}=='{format_value(prior.scale, digits)}')")) %>%
     .glue_to_expression()
 }
 

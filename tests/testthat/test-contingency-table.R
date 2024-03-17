@@ -8,7 +8,7 @@ test_that(
       data = mtcars,
       x = am,
       y = cyl,
-      k = 5L,
+      digits = 5L,
       conf.level = 0.99
     ))
 
@@ -65,7 +65,7 @@ test_that(
         y = response_after,
         paired = TRUE,
         counts = Freq,
-        k = 5
+        digits = 5
       )
     )
 
@@ -92,7 +92,8 @@ test_that(
         x = response_before,
         y = response_after,
         paired = TRUE,
-        k = 3L,
+        alternative = "greater",
+        digits = 3L,
         conf.level = 0.90
       )
     )
@@ -114,7 +115,7 @@ test_that(
       data = mtcars,
       x = am,
       conf.level = 0.99,
-      k = 5
+      digits = 5
     ))
 
     set.seed(123)
@@ -126,7 +127,8 @@ test_that(
     df2 <- contingency_table(
       data = as.data.frame(Titanic),
       x = Sex,
-      counts = Freq
+      counts = Freq,
+      alternative = "greater"
     )
 
     set.seed(123)
