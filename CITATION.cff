@@ -1,5 +1,5 @@
 # -----------------------------------------------------------
-# CITATION file created with {cffr} R package, v0.5.0
+# CITATION file created with {cffr} R package, v1.0.0
 # See also: https://docs.ropensci.org/cffr/
 # -----------------------------------------------------------
  
@@ -8,7 +8,7 @@ message: 'To cite package "statsExpressions" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'statsExpressions: Tidy Dataframes and Expressions with Statistical Details'
-version: 1.5.3.9000
+version: 1.5.4
 doi: 10.21105/joss.03236
 abstract: 'Utilities for producing dataframes with rich details for the most common
   types of statistical approaches and tests: parametric, nonparametric, robust, and
@@ -16,7 +16,7 @@ abstract: 'Utilities for producing dataframes with rich details for the most com
   and meta-analyses. The functions are pipe-friendly and provide a consistent syntax
   to work with tidy data. These dataframes additionally contain expressions with statistical
   details, and can be used in graphing packages. This package also forms the statistical
-  processing backend for ''ggstatsplot''. References: Patil (2021) <doi:10.21105/joss.03236>.'
+  processing backend for ''ggstatsplot''. References: Patil (2021) <https://doi.org/10.21105/joss.03236>.'
 authors:
 - family-names: Patil
   given-names: Indrajeet
@@ -68,11 +68,10 @@ references:
   url: https://www.R-project.org/
   authors:
   - name: R Core Team
-  location:
-    name: Vienna, Austria
-  year: '2024'
   institution:
     name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
   version: '>= 4.1.0'
 - type: software
   title: afex
@@ -259,7 +258,7 @@ references:
   abstract: 'insight: Easy Access to Model Information for Various Model Objects'
   notes: Imports
   url: https://easystats.github.io/insight/
-  repository: https://easystats.r-universe.dev
+  repository: https://CRAN.R-project.org/package=insight
   authors:
   - family-names: Lüdecke
     given-names: Daniel
@@ -294,7 +293,7 @@ references:
     email: etienne.bacher@protonmail.com
     orcid: https://orcid.org/0000-0002-9271-5075
   year: '2024'
-  version: '>= 0.19.8'
+  version: '>= 0.19.9'
 - type: software
   title: magrittr
   abstract: 'magrittr: A Forward-Pipe Operator for R'
@@ -314,7 +313,7 @@ references:
   abstract: 'parameters: Processing of Model Parameters'
   notes: Imports
   url: https://easystats.github.io/parameters/
-  repository: https://easystats.r-universe.dev
+  repository: https://CRAN.R-project.org/package=parameters
   authors:
   - family-names: Lüdecke
     given-names: Daniel
@@ -340,7 +339,7 @@ references:
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2024'
-  version: '>= 0.21.5'
+  version: '>= 0.21.6'
 - type: software
   title: performance
   abstract: 'performance: Assessment of Regression Models Performance'
@@ -426,11 +425,10 @@ references:
   notes: Imports
   authors:
   - name: R Core Team
-  location:
-    name: Vienna, Austria
-  year: '2024'
   institution:
     name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
 - type: software
   title: tibble
   abstract: 'tibble: Simple Data Frames'
@@ -581,8 +579,9 @@ references:
   - family-names: Dunnington
     given-names: Dewey
     orcid: https://orcid.org/0000-0002-9415-4582
-  - family-names: van den Brand
+  - family-names: Brand
     given-names: Teun
+    name-particle: van den
     orcid: https://orcid.org/0000-0002-9335-7468
   year: '2024'
 - type: software
@@ -726,8 +725,7 @@ references:
   notes: Suggests
   authors:
   - name: R Core Team
-  location:
-    name: Vienna, Austria
-  year: '2024'
   institution:
     name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
