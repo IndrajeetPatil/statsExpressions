@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Tidy Dataframes and Expressions with Statistical Details
-Version: 1.5.3.9000
+Version: 1.5.4
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -32,9 +32,9 @@ Imports:
     dplyr (>= 1.1.4),
     effectsize (>= 0.8.6),
     glue,
-    insight (>= 0.19.8),
+    insight (>= 0.19.9),
     magrittr,
-    parameters (>= 0.21.5),
+    parameters (>= 0.21.6),
     performance (>= 0.10.9),
     PMCMRplus,
     purrr (>= 1.0.2),
