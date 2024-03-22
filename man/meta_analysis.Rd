@@ -34,6 +34,10 @@ test).
 
 You can specify just the initial letter.}
 
+\item{random}{
+The type of random effects distribution. One of "normal", "t-dist", "mixture", for standard normal, \eqn{t}-distribution or mixture of normals respectively.
+}
+
 \item{digits}{Number of digits for rounding or significant figures. May also
 be \code{"signif"} to return significant figures or \code{"scientific"}
 to return scientific notation. Control the number of digits by adding the
@@ -124,6 +128,6 @@ meta_analysis(dat, type = "random", random = "normal")
 
 # ----------------------- Bayesian ----------------------------------
 
-suppressWarnings(meta_analysis(dat, type = "bayes"))
+meta_analysis(dat, type = "bayes")
 \dontshow{\}) # examplesIf}
 }
