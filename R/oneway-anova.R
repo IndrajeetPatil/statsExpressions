@@ -18,7 +18,7 @@
 #' ```
 #'
 #' @inheritParams long_to_wide_converter
-#' @inheritParams stats_type_switch
+#' @inheritParams extract_stats_type
 #' @param conf.level Scalar between `0` and `1` (default: `95%`
 #' confidence/credible intervals, `0.95`). If `NULL`, no confidence intervals
 #' will be computed.
@@ -145,7 +145,7 @@ oneway_anova <- function(
     ...) {
   # data -------------------------------------------
 
-  type <- stats_type_switch(type)
+  type <- extract_stats_type(type)
   c(x, y) %<-% c(ensym(x), ensym(y))
 
   data %<>% long_to_wide_converter(

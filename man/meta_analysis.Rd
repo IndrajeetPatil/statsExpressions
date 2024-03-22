@@ -128,6 +128,6 @@ meta_analysis(dat, type = "random", random = "normal")
 
 # ----------------------- Bayesian ----------------------------------
 
-suppressWarnings(meta_analysis(dat, type = "bayes"))
+meta_analysis(dat, type = "bayes")
 \dontshow{\}) # examplesIf}
 }

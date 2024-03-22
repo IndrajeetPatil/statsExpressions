@@ -40,7 +40,7 @@ centrality_description <- function(
 
   # styler: off
   centrality <- case_match(
-    stats_type_switch(type),
+    extract_stats_type(type),
     "parametric"    ~ "mean",
     "nonparametric" ~ "median",
     "robust"        ~ "trimmed",

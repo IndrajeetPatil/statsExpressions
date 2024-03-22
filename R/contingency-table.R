@@ -66,7 +66,7 @@ contingency_table <- function(
     ...) {
   # data -------------------------------------------
 
-  type <- stats_type_switch(type)
+  type <- extract_stats_type(type)
   test <- ifelse(quo_is_null(enquo(y)), "1way", "2way")
 
   data %<>%

@@ -7,7 +7,7 @@
 #' comparisons between group levels with corrections for multiple testing.
 #'
 #' @inheritParams long_to_wide_converter
-#' @inheritParams stats_type_switch
+#' @inheritParams extract_stats_type
 #' @inheritParams oneway_anova
 #' @param p.adjust.method Adjustment method for *p*-values for multiple
 #'   comparisons. Possible methods are: `"holm"` (default), `"hochberg"`,
@@ -153,7 +153,7 @@ pairwise_comparisons <- function(
     ...) {
   # data -------------------------------------------
 
-  type <- stats_type_switch(type)
+  type <- extract_stats_type(type)
   c(x, y) %<-% c(ensym(x), ensym(y))
 
   data %<>% long_to_wide_converter(
