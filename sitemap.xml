@@ -55,6 +55,9 @@
     <loc>https://indrajeetpatil.github.io/statsExpressions/reference/corr_test.html</loc>
   </url>
   <url>
+    <loc>https://indrajeetpatil.github.io/statsExpressions/reference/extract_stats_type.html</loc>
+  </url>
+  <url>
     <loc>https://indrajeetpatil.github.io/statsExpressions/reference/index.html</loc>
   </url>
   <url>
@@ -89,9 +92,6 @@
   </url>
   <url>
     <loc>https://indrajeetpatil.github.io/statsExpressions/reference/statsExpressions-package.html</loc>
-  </url>
-  <url>
-    <loc>https://indrajeetpatil.github.io/statsExpressions/reference/stats_type_switch.html</loc>
   </url>
   <url>
     <loc>https://indrajeetpatil.github.io/statsExpressions/reference/tidy_model_expressions.html</loc>
