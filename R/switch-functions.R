@@ -1,4 +1,4 @@
-#' @name stats_type_switch
+#' @name extract_stats_type
 #' @title Switch the type of statistics.
 #'
 #' @description
@@ -19,22 +19,25 @@
 #' @autoglobal
 #'
 #' @examples
-#' stats_type_switch("p")
-#' stats_type_switch("bf")
+#' extract_stats_type("p")
+#' extract_stats_type("bf")
 #' @export
 # styler: off
-stats_type_switch <- function(type) {
+extract_stats_type <- function(type) {
   case_when(
-    grepl("^n|^s", type) ~ "nonparametric", # s is for Spearman's rho
-    grepl("^r", type)    ~ "robust",
-    grepl("^b", type)    ~ "bayes",
-    TRUE                 ~ "parametric"
+    grepl("^n", type) ~ "nonparametric",
+    grepl("^r", type) ~ "robust",
+    grepl("^b", type) ~ "bayes",
+    TRUE              ~ "parametric"
   )
 }
 
+#' @rdname extract_stats_type
+#' @export
+stats_type_switch <- extract_stats_type
 
 #' @noRd
-estimate_type_switch <- function(x) {
+extract_estimate_type <- function(x) {
   case_when(
     .grepl("pearson's c", x)      ~ list(quote(widehat(italic("C"))["Pearson"])),
     .grepl("cohen's d", x)        ~ list(quote(widehat(italic("d"))["Cohen"])),
@@ -62,7 +65,7 @@ estimate_type_switch <- function(x) {
 }
 
 #' @noRd
-stat_text_switch <- function(x) {
+extract_statistic_text <- function(x) {
   case_when(
     grepl("^welch", x)               ~ list(quote(italic("t")["Welch"])),
     grepl("afex| of means$", x)      ~ list(quote(italic("F")["Fisher"])),
@@ -93,7 +96,7 @@ prior_switch <- function(x) {
   )
 }
 
-#' @note Don't curry using `purrr::partial()` because it causes `Found a .Internal call` warning.
+#' @note Don't curry using `purrr::partial()` because it causes `"Found a .Internal call"` warning.
 #' @noRd
 .grepl <- function(pattern, x) grepl(pattern, x, fixed = TRUE)
 

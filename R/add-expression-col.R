@@ -101,8 +101,8 @@ add_expression_col <- function(
   df_expr <- data %>% # convert needed columns to character type
     .data_to_char(digits, digits.df, digits.df.error) %>%
     mutate(
-      statistic.text     = statistic.text %||% stat_text_switch(tolower(method)),
-      es.text            = effsize.text %||% estimate_type_switch(tolower(effectsize)),
+      statistic.text     = statistic.text %||% extract_statistic_text(tolower(method)),
+      es.text            = effsize.text %||% extract_estimate_type(tolower(effectsize)),
       prior.distribution = prior_switch(tolower(method)),
       n.obs              = .prettyNum(n.obs)
     )

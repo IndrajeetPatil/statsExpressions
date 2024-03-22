@@ -73,7 +73,7 @@ meta_analysis <- function(
     digits = 2L,
     conf.level = 0.95,
     ...) {
-  type <- stats_type_switch(type)
+  type <- extract_stats_type(type)
 
   # nolint start: line_length_linter.
   c(.ns, .fn, .f.args) %<-% switch(type,

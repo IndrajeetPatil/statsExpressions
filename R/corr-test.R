@@ -37,7 +37,7 @@ corr_test <- function(
     tr = 0.2,
     bf.prior = 0.707,
     ...) {
-  type <- stats_type_switch(type)
+  type <- extract_stats_type(type)
 
   stats_df <- correlation::correlation(
     data           = select(ungroup(data), {{ x }}, {{ y }}) %>% tidyr::drop_na(),
