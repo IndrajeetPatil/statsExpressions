@@ -8,7 +8,7 @@ meta_analysis(
   data,
   type = "parametric",
   random = "mixture",
-  k = 2L,
+  digits = 2L,
   conf.level = 0.95,
   ...
 )
@@ -38,8 +38,12 @@ You can specify just the initial letter.}
 The type of random effects distribution. One of "normal", "t-dist", "mixture", for standard normal, \eqn{t}-distribution or mixture of normals respectively.
 }
 
-\item{k}{Number of digits after decimal point (should be an integer)
-(Default: \code{k = 2L}).}
+\item{digits}{Number of digits for rounding or significant figures. May also
+be \code{"signif"} to return significant figures or \code{"scientific"}
+to return scientific notation. Control the number of digits by adding the
+value as suffix, e.g. \code{digits = "scientific4"} to have scientific
+notation with 4 decimal places, or \code{digits = "signif5"} for 5
+significant figures (see also \code{\link[=signif]{signif()}}).}
 
 \item{conf.level}{Scalar between \code{0} and \code{1} (default: \verb{95\%}
 confidence/credible intervals, \code{0.95}). If \code{NULL}, no confidence intervals
@@ -124,6 +128,6 @@ meta_analysis(dat, type = "random", random = "normal")
 
 # ----------------------- Bayesian ----------------------------------
 
-suppressWarnings(meta_analysis(dat, type = "bayes"))
+meta_analysis(dat, type = "bayes")
 \dontshow{\}) # examplesIf}
 }

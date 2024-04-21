@@ -10,7 +10,7 @@ test_that(
         effsize.type = "d",
         var.equal = TRUE,
         conf.level = 0.99,
-        k = 5
+        digits = 5
       )
     )
 
@@ -32,7 +32,7 @@ test_that(
         effsize.type = "g",
         var.equal = FALSE,
         conf.level = 0.90,
-        k = 3
+        digits = 3
       )
     )
 
@@ -52,7 +52,7 @@ test_that(
       y = value,
       paired = TRUE,
       effsize.type = "g",
-      k = 4L,
+      digits = 4L,
       conf.level = 0.50
     ))
 
@@ -73,7 +73,7 @@ test_that(
       y = desire,
       paired = TRUE,
       effsize.type = "d",
-      k = 3
+      digits = 3
     )
 
     set.seed(123)

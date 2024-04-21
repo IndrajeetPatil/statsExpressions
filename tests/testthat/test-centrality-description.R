@@ -10,7 +10,7 @@ test_that(
         x = alist(Species),
         y = alist(Sepal.Length),
         type = list("p", "np", "r", "b"),
-        k = list(2L, 3L, 3L, 2L),
+        digits = list(2L, 3L, 3L, 2L),
         conf.level = list(0.89, 0.99, 0.90, 0.50)
       ),
       .f = centrality_description
@@ -35,7 +35,7 @@ test_that(
         x = alist(condition),
         y = alist(desire),
         type = list("p", "np", "r", "b"),
-        k = list(2L, 3L, 3L, 2L),
+        digits = list(2L, 3L, 3L, 2L),
         conf.level = list(0.89, 0.99, 0.90, 0.50)
       ),
       .f = centrality_description

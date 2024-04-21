@@ -7,7 +7,7 @@
 #' comparisons between group levels with corrections for multiple testing.
 #'
 #' @inheritParams long_to_wide_converter
-#' @inheritParams stats_type_switch
+#' @inheritParams extract_stats_type
 #' @inheritParams oneway_anova
 #' @param p.adjust.method Adjustment method for *p*-values for multiple
 #'   comparisons. Possible methods are: `"holm"` (default), `"hochberg"`,
@@ -149,11 +149,11 @@ pairwise_comparisons <- function(
     tr = 0.2,
     bf.prior = 0.707,
     p.adjust.method = "holm",
-    k = 2L,
+    digits = 2L,
     ...) {
   # data -------------------------------------------
 
-  type <- stats_type_switch(type)
+  type <- extract_stats_type(type)
   c(x, y) %<-% c(ensym(x), ensym(y))
 
   data %<>% long_to_wide_converter(
@@ -246,7 +246,7 @@ pairwise_comparisons <- function(
     ) %>%
       filter(term == "Difference") %>%
       mutate(
-        expression = glue("list(log[e]*(BF['01'])=='{format_value(-log(bf10), k)}')"),
+        expression = glue("list(log[e]*(BF['01'])=='{format_value(-log(bf10), digits)}')"),
         test = "Student's t"
       )
 
@@ -267,8 +267,8 @@ pairwise_comparisons <- function(
         p.adjust.method = p_adjust_text(p.adjust.method),
         test = test,
         expression = case_when(
-          p.adjust.method == "None" ~ glue("list(italic(p)[unadj.]=='{format_value(p.value, k)}')"),
-          .default = glue("list(italic(p)['{p.adjust.method}'-adj.]=='{format_value(p.value, k)}')")
+          p.adjust.method == "None" ~ glue("list(italic(p)[unadj.]=='{format_value(p.value, digits)}')"),
+          .default = glue("list(italic(p)['{p.adjust.method}'-adj.]=='{format_value(p.value, digits)}')")
         )
       )
   }

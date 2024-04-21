@@ -15,7 +15,7 @@ pairwise_comparisons(
   tr = 0.2,
   bf.prior = 0.707,
   p.adjust.method = "holm",
-  k = 2L,
+  digits = 2L,
   ...
 )
 }
@@ -79,8 +79,12 @@ corresponds to scale for fixed effects.}
 comparisons. Possible methods are: \code{"holm"} (default), \code{"hochberg"},
 \code{"hommel"}, \code{"bonferroni"}, \code{"BH"}, \code{"BY"}, \code{"fdr"}, \code{"none"}.}
 
-\item{k}{Number of digits after decimal point (should be an integer)
-(Default: \code{k = 2L}).}
+\item{digits}{Number of digits for rounding or significant figures. May also
+be \code{"signif"} to return significant figures or \code{"scientific"}
+to return scientific notation. Control the number of digits by adding the
+value as suffix, e.g. \code{digits = "scientific4"} to have scientific
+notation with 4 decimal places, or \code{digits = "signif5"} for 5
+significant figures (see also \code{\link[=signif]{signif()}}).}
 
 \item{...}{Additional arguments passed to other methods.}
 }

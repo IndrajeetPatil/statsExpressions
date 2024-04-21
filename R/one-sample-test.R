@@ -7,11 +7,12 @@
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
 #'   argument can be `"d"` (for Cohen's *d*) or `"g"` (for Hedge's *g*).
 #' @inheritParams long_to_wide_converter
-#' @inheritParams stats_type_switch
+#' @inheritParams extract_stats_type
 #' @inheritParams add_expression_col
 #' @inheritParams two_sample_test
 #' @inheritParams oneway_anova
 #' @inheritParams stats::t.test
+#' @inheritParams insight::format_value
 #'
 #' @description
 #' Parametric, non-parametric, robust, and Bayesian one-sample tests.
@@ -39,13 +40,13 @@ one_sample_test <- function(
     type = "parametric",
     test.value = 0,
     alternative = "two.sided",
-    k = 2L,
+    digits = 2L,
     conf.level = 0.95,
     tr = 0.2,
     bf.prior = 0.707,
     effsize.type = "g",
     ...) {
-  type <- stats_type_switch(type)
+  type <- extract_stats_type(type)
   x_vec <- stats::na.omit(pull(data, {{ x }}))
 
   # parametric ---------------------------------------
@@ -95,5 +96,5 @@ one_sample_test <- function(
 
   # expression ---------------------------------------
 
-  add_expression_col(stats_df, n = length(x_vec), k = k)
+  add_expression_col(stats_df, n = length(x_vec), digits = digits)
 }

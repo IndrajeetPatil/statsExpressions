@@ -20,14 +20,11 @@
 #' @param x The variable to use as the **rows** in the contingency table.
 #' @param y The variable to use as the **columns** in the contingency table.
 #'   Default is `NULL`. If `NULL`, one-sample proportion test (a goodness of fit
-#'   test) will be run for the `x` variable. Otherwise association test will be
-#'   carried out.
+#'   test) will be run for the `x` variable.
 #' @param counts The variable in data containing counts, or `NULL` if each row
 #'   represents a single observation.
 #' @param paired Logical indicating whether data came from a within-subjects or
-#'   repeated measures design study (Default: `FALSE`). If `TRUE`, McNemar's
-#'   test expression will be returned. If `FALSE`, Pearson's chi-square test will
-#'   be returned.
+#'   repeated measures design study (Default: `FALSE`).
 #' @param sampling.plan Character describing the sampling plan. Possible options
 #'   are `"indepMulti"` (independent multinomial; default), `"poisson"`,
 #'   `"jointMulti"` (joint multinomial), `"hypergeom"` (hypergeometric). For
@@ -39,58 +36,18 @@
 #'   hypothesis under the alternative, and corresponds to Gunel and Dickey's
 #'   (1974) `"a"` parameter.
 #' @param ratio A vector of proportions: the expected proportions for the
-#'   proportion test (should sum to 1). Default is `NULL`, which means the null
+#'   proportion test (should sum to `1`). Default is `NULL`, which means the null
 #'   is equal theoretical proportions across the levels of the nominal variable.
-#'   This means if there are two levels this will be `ratio = c(0.5,0.5)` or if
-#'   there are four levels this will be `ratio = c(0.25,0.25,0.25,0.25)`, etc.
+#'   E.g., `ratio = c(0.5, 0.5)` for two levels,
+#'   `ratio = c(0.25, 0.25, 0.25, 0.25)` for four levels, etc.
 #' @param ... Additional arguments (currently ignored).
 #' @inheritParams stats::chisq.test
 #' @inheritParams oneway_anova
+#' @inheritParams parameters::model_parameters.htest
 #'
 #' @autoglobal
 #'
-#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
-#' # for reproducibility
-#' set.seed(123)
-#' library(statsExpressions)
-#'
-#' # ------------------------ Frequentist -----------------------------
-#'
-#' # association test
-#' contingency_table(
-#'   data   = mtcars,
-#'   x      = am,
-#'   y      = vs,
-#'   paired = FALSE
-#' )
-#'
-#' # goodness-of-fit test
-#' contingency_table(
-#'   data   = as.data.frame(HairEyeColor),
-#'   x      = Eye,
-#'   counts = Freq,
-#'   ratio  = c(0.2, 0.2, 0.3, 0.3)
-#' )
-#'
-#' # ------------------------ Bayesian -----------------------------
-#'
-#' # association test
-#' contingency_table(
-#'   data   = mtcars,
-#'   x      = am,
-#'   y      = vs,
-#'   paired = FALSE,
-#'   type   = "bayes"
-#' )
-#'
-#' # goodness-of-fit test
-#' contingency_table(
-#'   data   = as.data.frame(HairEyeColor),
-#'   x      = Eye,
-#'   counts = Freq,
-#'   ratio  = c(0.2, 0.2, 0.3, 0.3),
-#'   type   = "bayes"
-#' )
+#' @example man/examples/examples-contingency-table.R
 #' @export
 contingency_table <- function(
     data,
@@ -100,7 +57,8 @@ contingency_table <- function(
     type = "parametric",
     counts = NULL,
     ratio = NULL,
-    k = 2L,
+    alternative = "two.sided",
+    digits = 2L,
     conf.level = 0.95,
     sampling.plan = "indepMulti",
     fixed.margin = "rows",
@@ -108,7 +66,7 @@ contingency_table <- function(
     ...) {
   # data -------------------------------------------
 
-  type <- stats_type_switch(type)
+  type <- extract_stats_type(type)
   test <- ifelse(quo_is_null(enquo(y)), "1way", "2way")
 
   data %<>%
@@ -137,7 +95,7 @@ contingency_table <- function(
   if (type != "bayes") {
     stats_df <- bind_cols(
       tidy_model_parameters(exec(.f, !!!.f.args)),
-      tidy_model_effectsize(exec(.f.es, !!!.f.args, ci = conf.level))
+      tidy_model_effectsize(exec(.f.es, !!!.f.args, ci = conf.level, alternative = alternative))
     )
   }
 
@@ -150,18 +108,18 @@ contingency_table <- function(
       fixedMargin        = fixed.margin,
       priorConcentration = prior.concentration
     ) %>%
-      tidy_model_parameters(ci = conf.level, effectsize_type = "cramers_v")
+      tidy_model_parameters(ci = conf.level, effectsize_type = "cramers_v", alternative = alternative)
   }
 
   if (type == "bayes" && test == "1way") {
-    return(.one_way_bayesian_table(xtab, prior.concentration, ratio, k))
+    return(.one_way_bayesian_table(xtab, prior.concentration, ratio, digits))
   }
 
-  add_expression_col(stats_df, paired = paired, n = nrow(data), k = k)
+  add_expression_col(stats_df, paired = paired, n = nrow(data), digits = digits)
 }
 
 
-.one_way_bayesian_table <- function(xtab, prior.concentration, ratio, k) {
+.one_way_bayesian_table <- function(xtab, prior.concentration, ratio, digits) {
   # probability can't be exactly 0 or 1
   if ((1 / length(as.vector(xtab)) == 0) || (1 / length(as.vector(xtab)) == 1)) {
     return(NULL)
@@ -178,8 +136,8 @@ contingency_table <- function(
     method      = "Bayesian one-way contingency table analysis"
   ) %>%
     mutate(expression = glue("list(
-            log[e]*(BF['01'])=='{format_value(-log(bf10), k)}',
-            {prior_switch(method)}=='{format_value(prior.scale, k)}')")) %>%
+            log[e]*(BF['01'])=='{format_value(-log(bf10), digits)}',
+            {prior_switch(method)}=='{format_value(prior.scale, digits)}')")) %>%
     .glue_to_expression()
 }
 

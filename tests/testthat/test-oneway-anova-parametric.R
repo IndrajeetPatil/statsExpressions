@@ -10,7 +10,7 @@ test_that(
       x = cyl,
       y = wt,
       effsize.type = "eta",
-      k = 5L,
+      digits = 5L,
       var.equal = FALSE
     )
 
@@ -25,7 +25,7 @@ test_that(
       x = cyl,
       y = wt,
       effsize.type = "eta",
-      k = 5L,
+      digits = 5L,
       var.equal = TRUE
     )
 
@@ -47,7 +47,7 @@ test_that(
       x = vore,
       y = brainwt,
       effsize.type = "unbiased",
-      k = 4L
+      digits = 4L
     )
 
     set.seed(123)
@@ -68,7 +68,7 @@ test_that(
       x = condition,
       y = value,
       paired = TRUE,
-      k = 3L,
+      digits = 3L,
       var.equal = FALSE, # shouldn't make a difference
       conf.level = 0.99
     )

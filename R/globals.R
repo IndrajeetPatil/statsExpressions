@@ -18,8 +18,8 @@ utils::globalVariables(c(
   ".fn", # <meta_analysis>
   ".f.args", # <meta_analysis>
   ".rowid", # <oneway_anova>
-  "k.df", # <oneway_anova>
-  "k.df.error", # <oneway_anova>
+  "digits.df", # <oneway_anova>
+  "digits.df.error", # <oneway_anova>
   ".f", # <oneway_anova>
   ".rowid", # <pairwise_comparisons>
   ".f", # <pairwise_comparisons>

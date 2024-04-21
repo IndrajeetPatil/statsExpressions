@@ -11,7 +11,7 @@ centrality_description(
   type = "parametric",
   conf.level = NULL,
   tr = 0.2,
-  k = 2L,
+  digits = 2L,
   ...
 )
 }
@@ -43,8 +43,12 @@ will be computed.}
 of an error, try reducing the value of \code{tr}, which is by default set to
 \code{0.2}. Lowering the value might help.}
 
-\item{k}{Number of digits after decimal point (should be an integer)
-(Default: \code{k = 2L}).}
+\item{digits}{Number of digits for rounding or significant figures. May also
+be \code{"signif"} to return significant figures or \code{"scientific"}
+to return scientific notation. Control the number of digits by adding the
+value as suffix, e.g. \code{digits = "scientific4"} to have scientific
+notation with 4 decimal places, or \code{digits = "signif5"} for 5
+significant figures (see also \code{\link[=signif]{signif()}}).}
 
 \item{...}{Currently ignored.}
 }

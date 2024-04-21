@@ -32,12 +32,12 @@ corr_test <- function(
     x,
     y,
     type = "parametric",
-    k = 2L,
+    digits = 2L,
     conf.level = 0.95,
     tr = 0.2,
     bf.prior = 0.707,
     ...) {
-  type <- stats_type_switch(type)
+  type <- extract_stats_type(type)
 
   stats_df <- correlation::correlation(
     data           = select(ungroup(data), {{ x }}, {{ y }}) %>% tidyr::drop_na(),
@@ -50,5 +50,5 @@ corr_test <- function(
     standardize_names(style = "broom") %>%
     dplyr::mutate(conf.method = ifelse(type == "bayes", "HDI", "normal"))
 
-  add_expression_col(stats_df, paired = TRUE, k = k)
+  add_expression_col(stats_df, paired = TRUE, digits = digits)
 }

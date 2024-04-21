@@ -4,13 +4,13 @@ test_that(
     skip_if_not_installed("metaBMA")
 
     set.seed(123)
-    df <- suppressWarnings(meta_analysis(
+    df <- meta_analysis(
       type = "bayes",
       data = data_meta,
-      k = 3L,
+      digits = 3L,
       iter = 1000L,
       summarize = "integrate"
-    ))
+    )
 
     expect_type(df, "list")
 

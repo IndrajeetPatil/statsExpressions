@@ -35,12 +35,12 @@ centrality_description <- function(
     type = "parametric",
     conf.level = NULL,
     tr = 0.2,
-    k = 2L,
+    digits = 2L,
     ...) {
 
   # styler: off
   centrality <- case_match(
-    stats_type_switch(type),
+    extract_stats_type(type),
     "parametric"    ~ "mean",
     "nonparametric" ~ "median",
     "robust"        ~ "trimmed",
@@ -65,7 +65,7 @@ centrality_description <- function(
     ) %>%
     ungroup() %>%
     mutate(
-      expression = glue("list(widehat(mu)[{centrality}]=='{format_value(estimate, k)}')"),
+      expression = glue("list(widehat(mu)[{centrality}]=='{format_value(estimate, digits)}')"),
       n.expression = paste0({{ x }}, "\n(n = ", .prettyNum(n.obs), ")")
     ) %>%
     arrange({{ x }}) %>%

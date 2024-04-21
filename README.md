@@ -443,7 +443,7 @@ set.seed(123)
 contingency_table(mtcars, am, vs)$expression[[1]]
 #> list(chi["Pearson"]^2 * "(" * 1 * ")" == "0.91", italic(p) == 
 #>     "0.34", widehat(italic("V"))["Cramer"] == "0.00", CI["95%"] ~ 
-#>     "[" * "0.00", "1.00" * "]", italic("n")["obs"] == "32")
+#>     "[" * "0.00", "0.49" * "]", italic("n")["obs"] == "32")
 ```
 
 ## Expressions for meta-analysis
@@ -682,7 +682,7 @@ console.
 | Robust     | Meta-analysis via robust random-effects models   | *beta*      | Yes           | `metaplus::metaplus()`   |
 | Bayes      | Meta-analysis via Bayesian random-effects models | *beta*      | Yes           | `metaBMA::meta_random()` |
 
-# Usage in `ggstatsplot`
+# Usage in `{ggstatsplot}`
 
 Note that these functions were initially written to display results from
 statistical tests on ready-made `{ggplot2}` plots implemented in

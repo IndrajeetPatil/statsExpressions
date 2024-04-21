@@ -63,17 +63,17 @@
 #'
 #' # ----------------------- Bayesian ----------------------------------
 #'
-#' suppressWarnings(meta_analysis(dat, type = "bayes"))
+#' meta_analysis(dat, type = "bayes")
 #'
 #' @export
 meta_analysis <- function(
     data,
     type = "parametric",
     random = "mixture",
-    k = 2L,
+    digits = 2L,
     conf.level = 0.95,
     ...) {
-  type <- stats_type_switch(type)
+  type <- extract_stats_type(type)
 
   # nolint start: line_length_linter.
   c(.ns, .fn, .f.args) %<-% switch(type,
@@ -85,12 +85,11 @@ meta_analysis <- function(
 
   check_if_installed(.ns)
 
-  # construct a call and then extract a tidy data frame
   stats_df <- eval(call2(.fn = .fn, .ns = .ns, data = data, !!!.f.args)) %>%
     tidy_model_parameters(include_studies = FALSE, ci = conf.level)
 
   if (type != "bayes") stats_df %<>% mutate(effectsize = "meta-analytic summary estimate")
   if (type == "bayes") stats_df %<>% mutate(effectsize = "meta-analytic posterior estimate")
 
-  add_expression_col(stats_df, n = nrow(data), n.text = list(quote(italic("n")["effects"])), k = k)
+  add_expression_col(stats_df, n = nrow(data), n.text = list(quote(italic("n")["effects"])), digits = digits)
 }
