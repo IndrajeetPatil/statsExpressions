@@ -443,7 +443,7 @@ set.seed(123)
 contingency_table(mtcars, am, vs)$expression[[1]]
 #> list(chi["Pearson"]^2 * "(" * 1 * ")" == "0.91", italic(p) == 
 #>     "0.34", widehat(italic("V"))["Cramer"] == "0.00", CI["95%"] ~ 
-#>     "[" * "0.00", "1.00" * "]", italic("n")["obs"] == "32")
+#>     "[" * "0.00", "0.49" * "]", italic("n")["obs"] == "32")
 ```
 
 ## Expressions for meta-analysis
