@@ -90,7 +90,7 @@ this package context.</p>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>data</dt>
+    <dl><dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
 <dd><p>A data frame containing details from the statistical analysis
 and should contain some or all of the the following columns:</p><ul><li><p><em>statistic</em>: the numeric value of a statistic.</p></li>
 <li><p><em>df.error</em>: the numeric value of a parameter being modeled (often degrees
@@ -108,30 +108,30 @@ for non-parametric tests), this column will be irrelevant.</p></li>
 </ul></dd>
 
 
-<dt>paired</dt>
+<dt id="arg-paired">paired<a class="anchor" aria-label="anchor" href="#arg-paired"></a></dt>
 <dd><p>Logical that decides whether the experimental design is
 repeated measures/within-subjects or between-subjects. The default is
 <code>FALSE</code>.</p></dd>
 
 
-<dt>statistic.text</dt>
+<dt id="arg-statistic-text">statistic.text<a class="anchor" aria-label="anchor" href="#arg-statistic-text"></a></dt>
 <dd><p>A character that specifies the relevant test statistic.
 For example, for tests with <em>t</em>-statistic, <code>statistic.text = "t"</code>.</p></dd>
 
 
-<dt>effsize.text</dt>
+<dt id="arg-effsize-text">effsize.text<a class="anchor" aria-label="anchor" href="#arg-effsize-text"></a></dt>
 <dd><p>A character that specifies the relevant effect size.</p></dd>
 
 
-<dt>prior.type</dt>
+<dt id="arg-prior-type">prior.type<a class="anchor" aria-label="anchor" href="#arg-prior-type"></a></dt>
 <dd><p>The type of prior.</p></dd>
 
 
-<dt>n</dt>
+<dt id="arg-n">n<a class="anchor" aria-label="anchor" href="#arg-n"></a></dt>
 <dd><p>An integer specifying the sample size used for the test.</p></dd>
 
 
-<dt>n.text</dt>
+<dt id="arg-n-text">n.text<a class="anchor" aria-label="anchor" href="#arg-n-text"></a></dt>
 <dd><p>A character that specifies the design, which will determine
 what the <code>n</code> stands for. It defaults to <code>quote(italic("n")["pairs"])</code> if
 <code>paired = TRUE</code>, and to <code>quote(italic("n")["obs"])</code> if <code>paired = FALSE</code>. If
@@ -139,12 +139,12 @@ you wish to customize this further, you will need to provide object of
 <code>language</code> type.</p></dd>
 
 
-<dt>digits, digits.df, digits.df.error</dt>
+<dt id="arg-digits-digits-df-digits-df-error">digits, digits.df, digits.df.error<a class="anchor" aria-label="anchor" href="#arg-digits-digits-df-digits-df-error"></a></dt>
 <dd><p>Number of decimal places to display for the
 parameters (default: <code>0L</code>).</p></dd>
 
 
-<dt>...</dt>
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>Currently ignored.</p></dd>
 
 </dl></div>

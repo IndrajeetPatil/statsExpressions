@@ -80,29 +80,29 @@
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>data</dt>
+    <dl><dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
 <dd><p>A data frame (or a tibble) from which variables specified are to
 be taken. Other data types (e.g., matrix,table, array, etc.) will <strong>not</strong>
 be accepted. Additionally, grouped data frames from <code>{dplyr}</code> should be
 ungrouped before they are entered as <code>data</code>.</p></dd>
 
 
-<dt>x</dt>
+<dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
 <dd><p>The variable to use as the <strong>rows</strong> in the contingency table.</p></dd>
 
 
-<dt>y</dt>
+<dt id="arg-y">y<a class="anchor" aria-label="anchor" href="#arg-y"></a></dt>
 <dd><p>The variable to use as the <strong>columns</strong> in the contingency table.
 Default is <code>NULL</code>. If <code>NULL</code>, one-sample proportion test (a goodness of fit
 test) will be run for the <code>x</code> variable.</p></dd>
 
 
-<dt>paired</dt>
+<dt id="arg-paired">paired<a class="anchor" aria-label="anchor" href="#arg-paired"></a></dt>
 <dd><p>Logical indicating whether data came from a within-subjects or
 repeated measures design study (Default: <code>FALSE</code>).</p></dd>
 
 
-<dt>type</dt>
+<dt id="arg-type">type<a class="anchor" aria-label="anchor" href="#arg-type"></a></dt>
 <dd><p>A character specifying the type of statistical approach:</p><ul><li><p><code>"parametric"</code></p></li>
 <li><p><code>"nonparametric"</code></p></li>
 <li><p><code>"robust"</code></p></li>
@@ -110,12 +110,12 @@ repeated measures design study (Default: <code>FALSE</code>).</p></dd>
 </ul><p>You can specify just the initial letter.</p></dd>
 
 
-<dt>counts</dt>
+<dt id="arg-counts">counts<a class="anchor" aria-label="anchor" href="#arg-counts"></a></dt>
 <dd><p>The variable in data containing counts, or <code>NULL</code> if each row
 represents a single observation.</p></dd>
 
 
-<dt>ratio</dt>
+<dt id="arg-ratio">ratio<a class="anchor" aria-label="anchor" href="#arg-ratio"></a></dt>
 <dd><p>A vector of proportions: the expected proportions for the
 proportion test (should sum to <code>1</code>). Default is <code>NULL</code>, which means the null
 is equal theoretical proportions across the levels of the nominal variable.
@@ -123,7 +123,7 @@ E.g., <code>ratio = c(0.5, 0.5)</code> for two levels,
 <code>ratio = c(0.25, 0.25, 0.25, 0.25)</code> for four levels, etc.</p></dd>
 
 
-<dt>alternative</dt>
+<dt id="arg-alternative">alternative<a class="anchor" aria-label="anchor" href="#arg-alternative"></a></dt>
 <dd><p>A character string specifying the alternative hypothesis;
 Controls the type of CI returned: <code>"two.sided"</code> (default, two-sided CI),
 <code>"greater"</code> or <code>"less"</code> (one-sided CI). Partial matching is allowed
@@ -131,7 +131,7 @@ Controls the type of CI returned: <code>"two.sided"</code> (default, two-sided C
 the <a href="https://easystats.github.io/effectsize/" class="external-link">effectsize_CIs vignette</a>.</p></dd>
 
 
-<dt>digits</dt>
+<dt id="arg-digits">digits<a class="anchor" aria-label="anchor" href="#arg-digits"></a></dt>
 <dd><p>Number of digits for rounding or significant figures. May also
 be <code>"signif"</code> to return significant figures or <code>"scientific"</code>
 to return scientific notation. Control the number of digits by adding the
@@ -140,32 +140,32 @@ notation with 4 decimal places, or <code>digits = "signif5"</code> for 5
 significant figures (see also <code><a href="https://rdrr.io/r/base/Round.html" class="external-link">signif()</a></code>).</p></dd>
 
 
-<dt>conf.level</dt>
+<dt id="arg-conf-level">conf.level<a class="anchor" aria-label="anchor" href="#arg-conf-level"></a></dt>
 <dd><p>Scalar between <code>0</code> and <code>1</code> (default: <code>95%</code>
 confidence/credible intervals, <code>0.95</code>). If <code>NULL</code>, no confidence intervals
 will be computed.</p></dd>
 
 
-<dt>sampling.plan</dt>
+<dt id="arg-sampling-plan">sampling.plan<a class="anchor" aria-label="anchor" href="#arg-sampling-plan"></a></dt>
 <dd><p>Character describing the sampling plan. Possible options
 are <code>"indepMulti"</code> (independent multinomial; default), <code>"poisson"</code>,
 <code>"jointMulti"</code> (joint multinomial), <code>"hypergeom"</code> (hypergeometric). For
 more, see <code>?BayesFactor::contingencyTableBF()</code>.</p></dd>
 
 
-<dt>fixed.margin</dt>
+<dt id="arg-fixed-margin">fixed.margin<a class="anchor" aria-label="anchor" href="#arg-fixed-margin"></a></dt>
 <dd><p>For the independent multinomial sampling plan, which
 margin is fixed (<code>"rows"</code> or <code>"cols"</code>). Defaults to <code>"rows"</code>.</p></dd>
 
 
-<dt>prior.concentration</dt>
+<dt id="arg-prior-concentration">prior.concentration<a class="anchor" aria-label="anchor" href="#arg-prior-concentration"></a></dt>
 <dd><p>Specifies the prior concentration parameter, set
 to <code>1</code> by default. It indexes the expected deviation from the null
 hypothesis under the alternative, and corresponds to Gunel and Dickey's
 (1974) <code>"a"</code> parameter.</p></dd>
 
 
-<dt>...</dt>
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>Additional arguments (currently ignored).</p></dd>
 
 </dl></div>

@@ -75,24 +75,24 @@
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>data</dt>
+    <dl><dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
 <dd><p>A data frame (or a tibble) from which variables specified are to
 be taken. Other data types (e.g., matrix,table, array, etc.) will <strong>not</strong>
 be accepted. Additionally, grouped data frames from <code>{dplyr}</code> should be
 ungrouped before they are entered as <code>data</code>.</p></dd>
 
 
-<dt>x</dt>
+<dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
 <dd><p>The column in <code>data</code> containing the explanatory variable to be
 plotted on the <code>x</code>-axis.</p></dd>
 
 
-<dt>y</dt>
+<dt id="arg-y">y<a class="anchor" aria-label="anchor" href="#arg-y"></a></dt>
 <dd><p>The column in <code>data</code> containing the response (outcome) variable to
 be plotted on the <code>y</code>-axis.</p></dd>
 
 
-<dt>type</dt>
+<dt id="arg-type">type<a class="anchor" aria-label="anchor" href="#arg-type"></a></dt>
 <dd><p>A character specifying the type of statistical approach:</p><ul><li><p><code>"parametric"</code></p></li>
 <li><p><code>"nonparametric"</code></p></li>
 <li><p><code>"robust"</code></p></li>
@@ -100,7 +100,7 @@ be plotted on the <code>y</code>-axis.</p></dd>
 </ul><p>You can specify just the initial letter.</p></dd>
 
 
-<dt>digits</dt>
+<dt id="arg-digits">digits<a class="anchor" aria-label="anchor" href="#arg-digits"></a></dt>
 <dd><p>Number of digits for rounding or significant figures. May also
 be <code>"signif"</code> to return significant figures or <code>"scientific"</code>
 to return scientific notation. Control the number of digits by adding the
@@ -109,19 +109,19 @@ notation with 4 decimal places, or <code>digits = "signif5"</code> for 5
 significant figures (see also <code><a href="https://rdrr.io/r/base/Round.html" class="external-link">signif()</a></code>).</p></dd>
 
 
-<dt>conf.level</dt>
+<dt id="arg-conf-level">conf.level<a class="anchor" aria-label="anchor" href="#arg-conf-level"></a></dt>
 <dd><p>Scalar between <code>0</code> and <code>1</code> (default: <code>95%</code>
 confidence/credible intervals, <code>0.95</code>). If <code>NULL</code>, no confidence intervals
 will be computed.</p></dd>
 
 
-<dt>tr</dt>
+<dt id="arg-tr">tr<a class="anchor" aria-label="anchor" href="#arg-tr"></a></dt>
 <dd><p>Trim level for the mean when carrying out <code>robust</code> tests. In case
 of an error, try reducing the value of <code>tr</code>, which is by default set to
 <code>0.2</code>. Lowering the value might help.</p></dd>
 
 
-<dt>bf.prior</dt>
+<dt id="arg-bf-prior">bf.prior<a class="anchor" aria-label="anchor" href="#arg-bf-prior"></a></dt>
 <dd><p>A number between <code>0.5</code> and <code>2</code> (default <code>0.707</code>), the prior
 width to use in calculating Bayes factors and posterior estimates. In
 addition to numeric arguments, several named values are also recognized:
@@ -130,7 +130,7 @@ of 1/2, sqrt(2)/2, and 1, respectively. In case of an ANOVA, this value
 corresponds to scale for fixed effects.</p></dd>
 
 
-<dt>...</dt>
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>Additional arguments (currently ignored).</p></dd>
 
 </dl></div>
