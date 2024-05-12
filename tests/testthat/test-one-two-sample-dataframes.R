@@ -1,6 +1,8 @@
 test_that(
   desc = " parametric t-tests",
   code = {
+    skip_if_not(getRversion() >= "4.4.0")
+
     # one-sample t-test (with NAs) ---------
 
     set.seed(123)

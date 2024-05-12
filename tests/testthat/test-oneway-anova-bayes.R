@@ -1,10 +1,7 @@
 # don't test data frames because the values vary across platforms, even with the
-# same seed
-#
-# for the same reason, don't change number of digits
+# same seed; for the same reason, don't change number of digits
 
-# to print all tibble columns in the snapshot; don't remove
-
+skip_if_not(getRversion() >= "4.4.0")
 
 # between-subjects ------------------------------
 
