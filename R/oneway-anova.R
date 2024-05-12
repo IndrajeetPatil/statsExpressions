@@ -43,7 +43,7 @@
 #'
 #' @autoglobal
 #'
-#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
+#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && getRversion() >= "4.4.0"
 #' # for reproducibility
 #' set.seed(123)
 #' library(statsExpressions)
