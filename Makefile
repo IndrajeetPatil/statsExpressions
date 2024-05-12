@@ -1,10 +1,5 @@
-# h/t to @jimhester and @yihui for this parse block:
-# https://github.com/yihui/knitr/blob/dc5ead7bcfc0ebd2789fe99c527c7d91afb3de4a/Makefile#L1-L4
-# Note the portability change as suggested in the manual:
-# https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Writing-portable-packages
 PKGNAME = `sed -n "s/Package: *\([^ ]*\)/\1/p" DESCRIPTION`
 PKGVERS = `sed -n "s/Version: *\([^ ]*\)/\1/p" DESCRIPTION`
-
 
 all: check
 
@@ -24,3 +19,11 @@ install: build
 
 clean:
 	@rm -rf $(PKGNAME)_$(PKGVERS).tar.gz $(PKGNAME).Rcheck
+
+update_deps:
+	Rscript \
+	-e 'options(repos = c(CRAN = "https://cran.r-project.org"))' \
+	-e 'usethis::use_latest_dependencies(source = "CRAN")' \
+	-e 'roxygen2::roxygenise()' \
+	-e 'codemetar::write_codemeta()' \
+	-e 'cffr::cff_write()'
