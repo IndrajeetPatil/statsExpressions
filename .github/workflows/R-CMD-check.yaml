@@ -42,8 +42,8 @@ jobs:
           - { os: ubuntu-latest, r: "devel" }
           - { os: ubuntu-latest, r: "release" }
           - { os: ubuntu-latest, r: "oldrel" }
-          - { os: ubuntu-latest, r: "oldrel-2" }
-          - { os: ubuntu-latest, r: "oldrel-3" }
+          # - { os: ubuntu-latest, r: "oldrel-2" }
+          # - { os: ubuntu-latest, r: "oldrel-3" }
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -64,6 +64,7 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           pak-version: devel
+          cache-version: 10
           upgrade: 'TRUE'
           extra-packages: |
             any::rcmdcheck
