@@ -239,7 +239,7 @@ oneway_anova(
   type       = "r"
 )
 \dontshow{\}) # examplesIf}
-\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("rstantools", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("rstantools") && getRversion() >= "4.4.0") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 # ----------------------- Bayesian -------------------------------------
 

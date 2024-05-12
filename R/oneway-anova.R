@@ -106,7 +106,7 @@
 #'   type       = "r"
 #' )
 #'
-#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("rstantools", quietly = TRUE)
+#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("rstantools") && getRversion() >= "4.4.0"
 #'
 #' # ----------------------- Bayesian -------------------------------------
 #'
