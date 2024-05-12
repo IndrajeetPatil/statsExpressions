@@ -27,7 +27,7 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           pak-version: devel
-          upgrade: 'TRUE'
+          upgrade: "TRUE"
           extra-packages: |
             r-lib/lintr
             local::.
@@ -39,13 +39,11 @@ jobs:
         run: |
           options(crayon.enabled = TRUE)
           library(lintr)
-          lint_package(linters = linters_with_tags(
-            tags = NULL,
+          lint_package(linters = all_linters(
             absolute_path_linter = NULL,
             assignment_linter = NULL,
             commented_code_linter = NULL,
             cyclocomp_linter(25L),
-            extraction_operator_linter = NULL,
             if_not_else_linter(exceptions = character(0L)),
             implicit_integer_linter = NULL,
             library_call_linter = NULL,

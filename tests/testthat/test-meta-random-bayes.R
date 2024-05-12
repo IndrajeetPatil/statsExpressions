@@ -2,6 +2,7 @@ test_that(
   desc = "meta_analysis works - bayesian",
   code = {
     skip_if_not_installed("metaBMA")
+    skip_if_not(getRversion() >= "4.4.0")
 
     set.seed(123)
     df <- meta_analysis(

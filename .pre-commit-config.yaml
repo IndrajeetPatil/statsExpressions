@@ -6,7 +6,7 @@ default_language_version:
 
 repos:
   - repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.3.2.9003
+    rev: v0.4.2
     hooks:
       - id: no-browser-statement
       - id: no-debug-statement
@@ -14,7 +14,7 @@ repos:
       - id: deps-in-desc
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.3.0
+    rev: v4.6.0
     hooks:
       - id: check-added-large-files
       - id: check-json
@@ -30,7 +30,7 @@ repos:
           )$
 
   - repo: https://github.com/lorenzwalthert/gitignore-tidy
-    rev: "475bf5d96927a1887ce2863ff3075b1d7240bc51"
+    rev: "0.1.2"
     hooks:
       - id: tidy-gitignore
 

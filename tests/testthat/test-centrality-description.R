@@ -1,4 +1,5 @@
 skip_if_not_installed("boot")
+skip_if_not(getRversion() >= "4.4.0")
 
 test_that(
   desc = "centrality description works as expected - no missing data",

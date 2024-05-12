@@ -97,8 +97,8 @@
       12 LDLF        5.72    2.71   4       5.27      6.35   0      10   -0.132
       13 HDHF        9.98   NA      4       9.97      9.99   0      10   -1.13 
       14 HDLF        9.73   NA      5       9.10      9.92   0      10   -0.740
-      15 LDHF        9.85   NA      3.5     9.82      9.97   0.5    10   -0.947
-      16 LDLF        5.99   NA      4       5.58      6.26   0      10   -0.132
+      15 LDHF        9.86   NA      3.5     9.82      9.97   0.5    10   -0.947
+      16 LDLF        5.99   NA      4       5.59      6.25   0      10   -0.132
          kurtosis n.obs missing.obs n.expression       mad
             <dbl> <int>       <int> <chr>            <dbl>
        1    0.486    92           0 "HDHF\n(n = 92)" NA   
@@ -166,7 +166,7 @@
       list(widehat(mu)[MAP] == "9.73")
       
       [[15]]
-      list(widehat(mu)[MAP] == "9.85")
+      list(widehat(mu)[MAP] == "9.86")
       
       [[16]]
       list(widehat(mu)[MAP] == "5.99")
