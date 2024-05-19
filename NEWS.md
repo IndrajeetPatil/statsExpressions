@@ -1,5 +1,9 @@
 # statsExpressions 1.5.4.9000
 
+## MAJOR CHANGES
+
+- The package licence has been updated to an MIT license.
+
 # statsExpressions 1.5.4
 
 ## MAJOR CHANGES
