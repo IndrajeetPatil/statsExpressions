@@ -3,22 +3,19 @@ Package: statsExpressions
 Title: Tidy Dataframes and Expressions with Statistical Details
 Version: 1.5.4.9000
 Authors@R: 
-    person(given = "Indrajeet",
-           family = "Patil",
-           role = c("cre", "aut", "cph"),
-           email = "patilindrajeet.science@gmail.com",
+    person("Indrajeet", "Patil", , "patilindrajeet.science@gmail.com", role = c("cre", "aut", "cph"),
            comment = c(ORCID = "0000-0003-1995-6531", Twitter = "@patilindrajeets"))
 Maintainer: Indrajeet Patil <patilindrajeet.science@gmail.com>
 Description: Utilities for producing dataframes with rich details for the
     most common types of statistical approaches and tests: parametric,
     nonparametric, robust, and Bayesian t-test, one-way ANOVA, correlation
-    analyses, contingency table analyses, and meta-analyses. The
-    functions are pipe-friendly and provide a consistent syntax to work
-    with tidy data. These dataframes additionally contain expressions with
+    analyses, contingency table analyses, and meta-analyses. The functions
+    are pipe-friendly and provide a consistent syntax to work with tidy
+    data. These dataframes additionally contain expressions with
     statistical details, and can be used in graphing packages. This
     package also forms the statistical processing backend for
     'ggstatsplot'. References: Patil (2021) <doi:10.21105/joss.03236>.
-License: GPL-3 | file LICENSE
+License: MIT + file LICENSE
 URL: https://indrajeetpatil.github.io/statsExpressions/,
     https://github.com/IndrajeetPatil/statsExpressions
 BugReports: https://github.com/IndrajeetPatil/statsExpressions/issues
@@ -59,6 +56,9 @@ Suggests:
     utils
 VignetteBuilder: 
     knitr
+Config/Needs/check: anthonynorth/roxyglobals
+Config/testthat/edition: 3
+Config/testthat/parallel: true
 Encoding: UTF-8
 Language: en-US
 LazyData: true
@@ -67,6 +67,3 @@ Roxygen: list(
     roclets = c("collate", "namespace", "rd", "pkgapi::api_roclet", "roxyglobals::global_roclet")
   )
 RoxygenNote: 7.3.1
-Config/testthat/edition: 3
-Config/testthat/parallel: true
-Config/Needs/check: anthonynorth/roxyglobals

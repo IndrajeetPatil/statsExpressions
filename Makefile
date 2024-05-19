@@ -23,6 +23,7 @@ clean:
 update_deps:
 	Rscript \
 	-e 'options(repos = c(CRAN = "https://cran.r-project.org"))' \
+	-e 'usethis::use_tidy_description()' \
 	-e 'usethis::use_latest_dependencies(source = "CRAN")' \
 	-e 'roxygen2::roxygenise()' \
 	-e 'codemetar::write_codemeta()' \
