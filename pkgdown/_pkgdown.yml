@@ -4,12 +4,9 @@ authors:
   Indrajeet Patil:
     href: https://sites.google.com/site/indrajeetspatilmorality/
 
-home:
-  sidebar:
-    structure: [links, license, community, citation, authors, dev, toc]
-
 template:
   bootstrap: 5
+  light-switch: true
   # includes:
   #   in_header: |
   #     <script defer data-domain="indrajeetpatil.github.io/statsexpressions" src="https://plausible.io/js/plausible.js"></script>

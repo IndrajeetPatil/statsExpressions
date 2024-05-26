@@ -6,7 +6,7 @@
 cff-version: 1.2.0
 message: 'To cite package "statsExpressions" in publications use:'
 type: software
-license: GPL-3.0-only
+license: MIT
 title: 'statsExpressions: Tidy Dataframes and Expressions with Statistical Details'
 version: 1.5.4.9000
 doi: 10.21105/joss.03236

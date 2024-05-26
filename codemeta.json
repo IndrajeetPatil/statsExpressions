@@ -7,7 +7,7 @@
   "relatedLink": ["https://indrajeetpatil.github.io/statsExpressions/", "https://CRAN.R-project.org/package=statsExpressions"],
   "codeRepository": "https://github.com/IndrajeetPatil/statsExpressions",
   "issueTracker": "https://github.com/IndrajeetPatil/statsExpressions/issues",
-  "license": "https://spdx.org/licenses/GPL-3.0",
+  "license": "https://spdx.org/licenses/MIT",
   "version": "1.5.4.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
@@ -438,7 +438,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4135.191KB",
+  "fileSize": "4135.221KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
