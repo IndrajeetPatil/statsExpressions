@@ -43,10 +43,10 @@ For more documentation, see the dedicated
 
 # Installation
 
-| Type | Source | Command |
-|----|----|----|
-| Release | [![CRAN Status](https://www.r-pkg.org/badges/version/statsExpressions)](https://cran.r-project.org/package=statsExpressions) | `install.packages("statsExpressions")` |
-| Development | [![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/##active) | `pak::pak("IndrajeetPatil/statsExpressions")` |
+| Type        | Command                                       |
+|:------------|:----------------------------------------------|
+| Release     | `install.packages("statsExpressions")`        |
+| Development | `pak::pak("IndrajeetPatil/statsExpressions")` |
 
 On Linux, `{statsExpressions}` installation may require additional
 system dependencies, which can be checked using:
