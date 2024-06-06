@@ -227,7 +227,7 @@
       "@type": "SoftwareApplication",
       "identifier": "datawizard",
       "name": "datawizard",
-      "version": ">= 0.10.0",
+      "version": ">= 0.11.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -279,7 +279,7 @@
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
-      "version": ">= 0.19.11",
+      "version": ">= 0.20.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -357,7 +357,7 @@
       "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
-      "version": ">= 1.1.3",
+      "version": ">= 1.1.4",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -438,7 +438,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4135.221KB",
+  "fileSize": "4134.896KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",

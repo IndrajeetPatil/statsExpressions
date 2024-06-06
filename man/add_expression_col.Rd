@@ -25,10 +25,9 @@ and should contain some or all of the the following columns:
 \itemize{
 \item \emph{statistic}: the numeric value of a statistic.
 \item \emph{df.error}: the numeric value of a parameter being modeled (often degrees
-of freedom for the test); note that if there are no degrees of freedom (e.g.,
-for non-parametric tests), this column will be irrelevant.
-\item \emph{df}: relevant only if the statistic in question has two degrees of freedom.
-\item \emph{p.value}: the two-sided \emph{p}-value associated with the observed statistic.
+of freedom for the test); irrelevant. if there are no degrees of freedom.
+\item \emph{df}: relevant if the statistic in question has two degrees of freedom.
+\item \emph{p.value}: the two-sided \emph{p}-value associated with observed statistic.
 \item \emph{method}: method describing the test carried out.
 \item \emph{effectsize}: name of the effect size (if not present, same as \code{method}).
 \item \emph{estimate}: estimated value of the effect size.
@@ -57,8 +56,8 @@ what the \code{n} stands for. It defaults to \code{quote(italic("n")["pairs"])} 
 you wish to customize this further, you will need to provide object of
 \code{language} type.}
 
-\item{digits, digits.df, digits.df.error}{Number of decimal places to display for the
-parameters (default: \code{0L}).}
+\item{digits, digits.df, digits.df.error}{Number of decimal places to display
+for the parameters (default: \code{0L}).}
 
 \item{...}{Currently ignored.}
 }

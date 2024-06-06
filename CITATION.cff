@@ -175,7 +175,7 @@ references:
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2024'
-  version: '>= 0.10.0'
+  version: '>= 0.11.0'
 - type: software
   title: dplyr
   abstract: 'dplyr: A Grammar of Data Manipulation'
@@ -206,7 +206,7 @@ references:
   abstract: 'effectsize: Indices of Effect Size'
   notes: Imports
   url: https://easystats.github.io/effectsize/
-  repository: https://CRAN.R-project.org/package=effectsize
+  repository: https://easystats.r-universe.dev
   authors:
   - family-names: Ben-Shachar
     given-names: Mattan S.
@@ -294,7 +294,7 @@ references:
     email: etienne.bacher@protonmail.com
     orcid: https://orcid.org/0000-0002-9271-5075
   year: '2024'
-  version: '>= 0.19.11'
+  version: '>= 0.20.0'
 - type: software
   title: magrittr
   abstract: 'magrittr: A Forward-Pipe Operator for R'
@@ -315,7 +315,7 @@ references:
   abstract: 'parameters: Processing of Model Parameters'
   notes: Imports
   url: https://easystats.github.io/parameters/
-  repository: https://CRAN.R-project.org/package=parameters
+  repository: https://easystats.r-universe.dev
   authors:
   - family-names: Lüdecke
     given-names: Daniel
@@ -347,7 +347,7 @@ references:
   abstract: 'performance: Assessment of Regression Models Performance'
   notes: Imports
   url: https://easystats.github.io/performance/
-  repository: https://CRAN.R-project.org/package=performance
+  repository: https://easystats.r-universe.dev
   authors:
   - family-names: Lüdecke
     given-names: Daniel
@@ -422,7 +422,7 @@ references:
     given-names: Hadley
     email: hadley@posit.co
   year: '2024'
-  version: '>= 1.1.3'
+  version: '>= 1.1.4'
 - type: software
   title: stats
   abstract: 'R: A Language and Environment for Statistical Computing'
@@ -523,7 +523,7 @@ references:
   abstract: 'bayestestR: Understand and Describe Bayesian Models and Posterior Distributions'
   notes: Suggests
   url: https://easystats.github.io/bayestestR/
-  repository: https://CRAN.R-project.org/package=bayestestR
+  repository: https://easystats.r-universe.dev
   authors:
   - family-names: Makowski
     given-names: Dominique
