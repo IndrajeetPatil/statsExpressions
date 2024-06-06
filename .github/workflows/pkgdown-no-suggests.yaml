@@ -40,7 +40,7 @@ jobs:
           extra-packages: |
             any::knitr
             any::rmarkdown
-            r-lib/pkgdown
+            any::pkgdown
             local::.
           needs: website
 

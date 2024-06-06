@@ -54,6 +54,8 @@ Suggests:
     survival,
     testthat (>= 3.2.1),
     utils
+Remotes:
+    easystats/correlation
 VignetteBuilder: 
     knitr
 Config/Needs/check: anthonynorth/roxyglobals
