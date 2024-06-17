@@ -115,7 +115,7 @@ references:
   abstract: 'correlation: Methods for Correlation Analysis'
   notes: Imports
   url: https://easystats.github.io/correlation/
-  repository: https://easystats.r-universe.dev
+  repository: https://CRAN.R-project.org/package=correlation
   authors:
   - family-names: Makowski
     given-names: Dominique
@@ -142,13 +142,13 @@ references:
     email: remi.theriault@mail.mcgill.ca
     orcid: https://orcid.org/0000-0003-4315-6788
   year: '2024'
-  version: '>= 0.8.4'
+  version: '>= 0.8.5'
 - type: software
   title: datawizard
   abstract: 'datawizard: Easy Data Wrangling and Statistical Transformations'
   notes: Imports
   url: https://easystats.github.io/datawizard/
-  repository: https://CRAN.R-project.org/package=datawizard
+  repository: https://easystats.r-universe.dev
   authors:
   - family-names: Patil
     given-names: Indrajeet
@@ -294,7 +294,7 @@ references:
     email: etienne.bacher@protonmail.com
     orcid: https://orcid.org/0000-0002-9271-5075
   year: '2024'
-  version: '>= 0.20.0'
+  version: '>= 0.20.1'
 - type: software
   title: magrittr
   abstract: 'magrittr: A Forward-Pipe Operator for R'
@@ -378,7 +378,7 @@ references:
     email: remi.theriault@mail.mcgill.ca
     orcid: https://orcid.org/0000-0003-4315-6788
   year: '2024'
-  version: '>= 0.11.0'
+  version: '>= 0.12.0'
 - type: software
   title: PMCMRplus
   abstract: 'PMCMRplus: Calculate Pairwise Multiple Comparisons of Mean Rank Sums
