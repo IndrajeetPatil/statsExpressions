@@ -36,6 +36,7 @@ jobs:
           pak-version: devel
           upgrade: "TRUE"
           extra-packages: |
+            r-lib/evaluate
             r-lib/pkgdown
             local::.
           needs: website

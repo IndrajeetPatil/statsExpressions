@@ -3,10 +3,10 @@
 
 # `{statsExpressions}`: Tidy dataframes and expressions with statistical details
 
-| Status                                                                                                                                                              | Usage                                                                                                                                                | Miscellaneous                                                                                                                                                          |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Status | Usage | Miscellaneous |
+|----|----|----|
 | [![R build status](https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions/actions) | [![Total downloads](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Codecov](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/main/graph/badge.svg)](https://app.codecov.io/gh/IndrajeetPatil/statsExpressions?branch=main) |
-| [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)                                          | [![Daily downloads](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)    | [![DOI](https://joss.theoj.org/papers/10.21105/joss.03236/status.svg)](https://doi.org/10.21105/joss.03236)                                                            |
+| [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html) | [![Daily downloads](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![DOI](https://joss.theoj.org/papers/10.21105/joss.03236/status.svg)](https://doi.org/10.21105/joss.03236) |
 
 # Introduction <img src="man/figures/logo.png" align="right" width="240" />
 
@@ -43,10 +43,10 @@ For more documentation, see the dedicated
 
 # Installation
 
-| Type        | Source                                                                                                                       | Command                                       |
-|-------------|------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
-| Release     | [![CRAN Status](https://www.r-pkg.org/badges/version/statsExpressions)](https://cran.r-project.org/package=statsExpressions) | `install.packages("statsExpressions")`        |
-| Development | [![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/##active)                | `pak::pak("IndrajeetPatil/statsExpressions")` |
+| Type        | Command                                       |
+|:------------|:----------------------------------------------|
+| Release     | `install.packages("statsExpressions")`        |
+| Development | `pak::pak("IndrajeetPatil/statsExpressions")` |
 
 On Linux, `{statsExpressions}` installation may require additional
 system dependencies, which can be checked using:
@@ -113,15 +113,15 @@ A BibTeX entry for LaTeX users is
 
 **Summary of supported statistical approaches**
 
-| Description                                       | Parametric | Non-parametric | Robust | Bayesian |
-|:--------------------------------------------------|:-----------|:---------------|:-------|:---------|
-| Between group/condition comparisons               | ✅         | ✅             | ✅     | ✅       |
-| Within group/condition comparisons                | ✅         | ✅             | ✅     | ✅       |
-| Distribution of a numeric variable                | ✅         | ✅             | ✅     | ✅       |
-| Correlation between two variables                 | ✅         | ✅             | ✅     | ✅       |
-| Association between categorical variables         | ✅         | ✅             | ❌     | ✅       |
-| Equal proportions for categorical variable levels | ✅         | ✅             | ❌     | ✅       |
-| Random-effects meta-analysis                      | ✅         | ❌             | ✅     | ✅       |
+| Description | Parametric | Non-parametric | Robust | Bayesian |
+|:---|:---|:---|:---|:---|
+| Between group/condition comparisons | ✅ | ✅ | ✅ | ✅ |
+| Within group/condition comparisons | ✅ | ✅ | ✅ | ✅ |
+| Distribution of a numeric variable | ✅ | ✅ | ✅ | ✅ |
+| Correlation between two variables | ✅ | ✅ | ✅ | ✅ |
+| Association between categorical variables | ✅ | ✅ | ❌ | ✅ |
+| Equal proportions for categorical variable levels | ✅ | ✅ | ❌ | ✅ |
+| Random-effects meta-analysis | ✅ | ❌ | ✅ | ✅ |
 
 # Tidy dataframes from statistical analysis
 
@@ -142,6 +142,9 @@ mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
 #>   conf.high conf.method          conf.iterations n.obs expression
 #>       <dbl> <chr>                          <int> <int> <list>    
 #> 1         1 percentile bootstrap             100    32 <language>
+```
+
+``` r
 
 mtcars %>% oneway_anova(cyl, wt, type = "robust")
 #> # A tibble: 1 × 12
@@ -176,9 +179,9 @@ mtcars %>%
   knitr::kable()
 ```
 
-| statistic | p.value | n.obs | method                                 | effectsize   | estimate | conf.level | conf.low | conf.high |
-|----------:|--------:|------:|:---------------------------------------|:-------------|---------:|-----------:|---------:|----------:|
-|  1.179181 |   0.275 |    32 | Bootstrap-t method for one-sample test | Trimmed mean |    3.197 |       0.95 | 2.854246 |  3.539754 |
+| statistic | p.value | n.obs | method | effectsize | estimate | conf.level | conf.low | conf.high |
+|---:|---:|---:|:---|:---|---:|---:|---:|---:|
+| 1.179181 | 0.275 | 32 | Bootstrap-t method for one-sample test | Trimmed mean | 3.197 | 0.95 | 2.854246 | 3.539754 |
 
 These functions are also compatible with other popular data manipulation
 packages.
@@ -488,6 +491,9 @@ set.seed(123)
 #> list(italic("F")["Fisher"](2, 147) == "119.26", italic(p) == 
 #>     "1.67e-31", widehat(omega["p"]^2) == "0.61", CI["95%"] ~ 
 #>     "[" * "0.53", "1.00" * "]", italic("n")["obs"] == "150")
+```
+
+``` r
 
 # adapting the details to your liking
 ggplot(iris, aes(x = Species, y = Sepal.Length)) +
@@ -525,41 +531,41 @@ console.
 
 **Hypothesis testing**
 
-| Type           | No. of groups | Test                                            | Function used            |
-|:---------------|:--------------|:------------------------------------------------|:-------------------------|
-| Parametric     | \> 2          | Fisher’s or Welch’s one-way ANOVA               | `stats::oneway.test()`   |
-| Non-parametric | \> 2          | Kruskal-Wallis one-way ANOVA                    | `stats::kruskal.test()`  |
-| Robust         | \> 2          | Heteroscedastic one-way ANOVA for trimmed means | `WRS2::t1way()`          |
-| Bayes Factor   | \> 2          | Fisher’s ANOVA                                  | `BayesFactor::anovaBF()` |
+| Type | No. of groups | Test | Function used |
+|:---|:---|:---|:---|
+| Parametric | \> 2 | Fisher’s or Welch’s one-way ANOVA | `stats::oneway.test()` |
+| Non-parametric | \> 2 | Kruskal-Wallis one-way ANOVA | `stats::kruskal.test()` |
+| Robust | \> 2 | Heteroscedastic one-way ANOVA for trimmed means | `WRS2::t1way()` |
+| Bayes Factor | \> 2 | Fisher’s ANOVA | `BayesFactor::anovaBF()` |
 
 **Effect size estimation**
 
-| Type           | No. of groups | Effect size                                | CI available? | Function used                                              |
-|:---------------|:--------------|:-------------------------------------------|:--------------|:-----------------------------------------------------------|
-| Parametric     | \> 2          | partial eta-squared, partial omega-squared | Yes           | `effectsize::omega_squared()`, `effectsize::eta_squared()` |
-| Non-parametric | \> 2          | rank epsilon squared                       | Yes           | `effectsize::rank_epsilon_squared()`                       |
-| Robust         | \> 2          | Explanatory measure of effect size         | Yes           | `WRS2::t1way()`                                            |
-| Bayes Factor   | \> 2          | Bayesian R-squared                         | Yes           | `performance::r2_bayes()`                                  |
+| Type | No. of groups | Effect size | CI available? | Function used |
+|:---|:---|:---|:---|:---|
+| Parametric | \> 2 | partial eta-squared, partial omega-squared | Yes | `effectsize::omega_squared()`, `effectsize::eta_squared()` |
+| Non-parametric | \> 2 | rank epsilon squared | Yes | `effectsize::rank_epsilon_squared()` |
+| Robust | \> 2 | Explanatory measure of effect size | Yes | `WRS2::t1way()` |
+| Bayes Factor | \> 2 | Bayesian R-squared | Yes | `performance::r2_bayes()` |
 
 #### within-subjects
 
 **Hypothesis testing**
 
-| Type           | No. of groups | Test                                                              | Function used            |
-|:---------------|:--------------|:------------------------------------------------------------------|:-------------------------|
-| Parametric     | \> 2          | One-way repeated measures ANOVA                                   | `afex::aov_ez()`         |
-| Non-parametric | \> 2          | Friedman rank sum test                                            | `stats::friedman.test()` |
-| Robust         | \> 2          | Heteroscedastic one-way repeated measures ANOVA for trimmed means | `WRS2::rmanova()`        |
-| Bayes Factor   | \> 2          | One-way repeated measures ANOVA                                   | `BayesFactor::anovaBF()` |
+| Type | No. of groups | Test | Function used |
+|:---|:---|:---|:---|
+| Parametric | \> 2 | One-way repeated measures ANOVA | `afex::aov_ez()` |
+| Non-parametric | \> 2 | Friedman rank sum test | `stats::friedman.test()` |
+| Robust | \> 2 | Heteroscedastic one-way repeated measures ANOVA for trimmed means | `WRS2::rmanova()` |
+| Bayes Factor | \> 2 | One-way repeated measures ANOVA | `BayesFactor::anovaBF()` |
 
 **Effect size estimation**
 
-| Type           | No. of groups | Effect size                                                     | CI available? | Function used                                              |
-|:---------------|:--------------|:----------------------------------------------------------------|:--------------|:-----------------------------------------------------------|
-| Parametric     | \> 2          | partial eta-squared, partial omega-squared                      | Yes           | `effectsize::omega_squared()`, `effectsize::eta_squared()` |
-| Non-parametric | \> 2          | Kendall’s coefficient of concordance                            | Yes           | `effectsize::kendalls_w()`                                 |
-| Robust         | \> 2          | Algina-Keselman-Penfield robust standardized difference average | Yes           | `WRS2::wmcpAKP()`                                          |
-| Bayes Factor   | \> 2          | Bayesian R-squared                                              | Yes           | `performance::r2_bayes()`                                  |
+| Type | No. of groups | Effect size | CI available? | Function used |
+|:---|:---|:---|:---|:---|
+| Parametric | \> 2 | partial eta-squared, partial omega-squared | Yes | `effectsize::omega_squared()`, `effectsize::eta_squared()` |
+| Non-parametric | \> 2 | Kendall’s coefficient of concordance | Yes | `effectsize::kendalls_w()` |
+| Robust | \> 2 | Algina-Keselman-Penfield robust standardized difference average | Yes | `WRS2::wmcpAKP()` |
+| Bayes Factor | \> 2 | Bayesian R-squared | Yes | `performance::r2_bayes()` |
 
 ## `two_sample_test`
 
@@ -567,72 +573,72 @@ console.
 
 **Hypothesis testing**
 
-| Type           | No. of groups | Test                          | Function used            |
-|:---------------|:--------------|:------------------------------|:-------------------------|
-| Parametric     | 2             | Student’s or Welch’s *t*-test | `stats::t.test()`        |
-| Non-parametric | 2             | Mann-Whitney *U* test         | `stats::wilcox.test()`   |
-| Robust         | 2             | Yuen’s test for trimmed means | `WRS2::yuen()`           |
-| Bayesian       | 2             | Student’s *t*-test            | `BayesFactor::ttestBF()` |
+| Type | No. of groups | Test | Function used |
+|:---|:---|:---|:---|
+| Parametric | 2 | Student’s or Welch’s *t*-test | `stats::t.test()` |
+| Non-parametric | 2 | Mann-Whitney *U* test | `stats::wilcox.test()` |
+| Robust | 2 | Yuen’s test for trimmed means | `WRS2::yuen()` |
+| Bayesian | 2 | Student’s *t*-test | `BayesFactor::ttestBF()` |
 
 **Effect size estimation**
 
-| Type           | No. of groups | Effect size                                             | CI available? | Function used                                      |
-|:---------------|:--------------|:--------------------------------------------------------|:--------------|:---------------------------------------------------|
-| Parametric     | 2             | Cohen’s *d*, Hedge’s *g*                                | Yes           | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
-| Non-parametric | 2             | *r* (rank-biserial correlation)                         | Yes           | `effectsize::rank_biserial()`                      |
-| Robust         | 2             | Algina-Keselman-Penfield robust standardized difference | Yes           | `WRS2::akp.effect()`                               |
-| Bayesian       | 2             | difference                                              | Yes           | `bayestestR::describe_posterior()`                 |
+| Type | No. of groups | Effect size | CI available? | Function used |
+|:---|:---|:---|:---|:---|
+| Parametric | 2 | Cohen’s *d*, Hedge’s *g* | Yes | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
+| Non-parametric | 2 | *r* (rank-biserial correlation) | Yes | `effectsize::rank_biserial()` |
+| Robust | 2 | Algina-Keselman-Penfield robust standardized difference | Yes | `WRS2::akp.effect()` |
+| Bayesian | 2 | difference | Yes | `bayestestR::describe_posterior()` |
 
 #### within-subjects
 
 **Hypothesis testing**
 
-| Type           | No. of groups | Test                                               | Function used            |
-|:---------------|:--------------|:---------------------------------------------------|:-------------------------|
-| Parametric     | 2             | Student’s *t*-test                                 | `stats::t.test()`        |
-| Non-parametric | 2             | Wilcoxon signed-rank test                          | `stats::wilcox.test()`   |
-| Robust         | 2             | Yuen’s test on trimmed means for dependent samples | `WRS2::yuend()`          |
-| Bayesian       | 2             | Student’s *t*-test                                 | `BayesFactor::ttestBF()` |
+| Type | No. of groups | Test | Function used |
+|:---|:---|:---|:---|
+| Parametric | 2 | Student’s *t*-test | `stats::t.test()` |
+| Non-parametric | 2 | Wilcoxon signed-rank test | `stats::wilcox.test()` |
+| Robust | 2 | Yuen’s test on trimmed means for dependent samples | `WRS2::yuend()` |
+| Bayesian | 2 | Student’s *t*-test | `BayesFactor::ttestBF()` |
 
 **Effect size estimation**
 
-| Type           | No. of groups | Effect size                                             | CI available? | Function used                                      |
-|:---------------|:--------------|:--------------------------------------------------------|:--------------|:---------------------------------------------------|
-| Parametric     | 2             | Cohen’s *d*, Hedge’s *g*                                | Yes           | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
-| Non-parametric | 2             | *r* (rank-biserial correlation)                         | Yes           | `effectsize::rank_biserial()`                      |
-| Robust         | 2             | Algina-Keselman-Penfield robust standardized difference | Yes           | `WRS2::wmcpAKP()`                                  |
-| Bayesian       | 2             | difference                                              | Yes           | `bayestestR::describe_posterior()`                 |
+| Type | No. of groups | Effect size | CI available? | Function used |
+|:---|:---|:---|:---|:---|
+| Parametric | 2 | Cohen’s *d*, Hedge’s *g* | Yes | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
+| Non-parametric | 2 | *r* (rank-biserial correlation) | Yes | `effectsize::rank_biserial()` |
+| Robust | 2 | Algina-Keselman-Penfield robust standardized difference | Yes | `WRS2::wmcpAKP()` |
+| Bayesian | 2 | difference | Yes | `bayestestR::describe_posterior()` |
 
 ## `one_sample_test`
 
 **Hypothesis testing**
 
-| Type           | Test                                     | Function used            |
-|:---------------|:-----------------------------------------|:-------------------------|
-| Parametric     | One-sample Student’s *t*-test            | `stats::t.test()`        |
-| Non-parametric | One-sample Wilcoxon test                 | `stats::wilcox.test()`   |
-| Robust         | Bootstrap-*t* method for one-sample test | `WRS2::trimcibt()`       |
-| Bayesian       | One-sample Student’s *t*-test            | `BayesFactor::ttestBF()` |
+| Type | Test | Function used |
+|:---|:---|:---|
+| Parametric | One-sample Student’s *t*-test | `stats::t.test()` |
+| Non-parametric | One-sample Wilcoxon test | `stats::wilcox.test()` |
+| Robust | Bootstrap-*t* method for one-sample test | `WRS2::trimcibt()` |
+| Bayesian | One-sample Student’s *t*-test | `BayesFactor::ttestBF()` |
 
 **Effect size estimation**
 
-| Type           | Effect size                     | CI available? | Function used                                      |
-|:---------------|:--------------------------------|:--------------|:---------------------------------------------------|
-| Parametric     | Cohen’s *d*, Hedge’s *g*        | Yes           | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
-| Non-parametric | *r* (rank-biserial correlation) | Yes           | `effectsize::rank_biserial()`                      |
-| Robust         | trimmed mean                    | Yes           | `WRS2::trimcibt()`                                 |
-| Bayes Factor   | difference                      | Yes           | `bayestestR::describe_posterior()`                 |
+| Type | Effect size | CI available? | Function used |
+|:---|:---|:---|:---|
+| Parametric | Cohen’s *d*, Hedge’s *g* | Yes | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
+| Non-parametric | *r* (rank-biserial correlation) | Yes | `effectsize::rank_biserial()` |
+| Robust | trimmed mean | Yes | `WRS2::trimcibt()` |
+| Bayes Factor | difference | Yes | `bayestestR::describe_posterior()` |
 
 ## `corr_test`
 
 **Hypothesis testing** and **Effect size estimation**
 
-| Type           | Test                                         | CI available? | Function used                |
-|:---------------|:---------------------------------------------|:--------------|:-----------------------------|
-| Parametric     | Pearson’s correlation coefficient            | Yes           | `correlation::correlation()` |
-| Non-parametric | Spearman’s rank correlation coefficient      | Yes           | `correlation::correlation()` |
-| Robust         | Winsorized Pearson’s correlation coefficient | Yes           | `correlation::correlation()` |
-| Bayesian       | Bayesian Pearson’s correlation coefficient   | Yes           | `correlation::correlation()` |
+| Type | Test | CI available? | Function used |
+|:---|:---|:---|:---|
+| Parametric | Pearson’s correlation coefficient | Yes | `correlation::correlation()` |
+| Non-parametric | Spearman’s rank correlation coefficient | Yes | `correlation::correlation()` |
+| Robust | Winsorized Pearson’s correlation coefficient | Yes | `correlation::correlation()` |
+| Bayesian | Bayesian Pearson’s correlation coefficient | Yes | `correlation::correlation()` |
 
 ## `contingency_table`
 
@@ -640,47 +646,47 @@ console.
 
 **Hypothesis testing**
 
-| Type                      | Design   | Test                                | Function used                       |
-|:--------------------------|:---------|:------------------------------------|:------------------------------------|
-| Parametric/Non-parametric | Unpaired | Pearson’s chi-squared test          | `stats::chisq.test()`               |
-| Bayesian                  | Unpaired | Bayesian Pearson’s chi-squared test | `BayesFactor::contingencyTableBF()` |
-| Parametric/Non-parametric | Paired   | McNemar’s chi-squared test          | `stats::mcnemar.test()`             |
-| Bayesian                  | Paired   | No                                  | No                                  |
+| Type | Design | Test | Function used |
+|:---|:---|:---|:---|
+| Parametric/Non-parametric | Unpaired | Pearson’s chi-squared test | `stats::chisq.test()` |
+| Bayesian | Unpaired | Bayesian Pearson’s chi-squared test | `BayesFactor::contingencyTableBF()` |
+| Parametric/Non-parametric | Paired | McNemar’s chi-squared test | `stats::mcnemar.test()` |
+| Bayesian | Paired | No | No |
 
 **Effect size estimation**
 
-| Type                      | Design   | Effect size  | CI available? | Function used             |
-|:--------------------------|:---------|:-------------|:--------------|:--------------------------|
-| Parametric/Non-parametric | Unpaired | Cramer’s *V* | Yes           | `effectsize::cramers_v()` |
-| Bayesian                  | Unpaired | Cramer’s *V* | Yes           | `effectsize::cramers_v()` |
-| Parametric/Non-parametric | Paired   | Cohen’s *g*  | Yes           | `effectsize::cohens_g()`  |
-| Bayesian                  | Paired   | No           | No            | No                        |
+| Type | Design | Effect size | CI available? | Function used |
+|:---|:---|:---|:---|:---|
+| Parametric/Non-parametric | Unpaired | Cramer’s *V* | Yes | `effectsize::cramers_v()` |
+| Bayesian | Unpaired | Cramer’s *V* | Yes | `effectsize::cramers_v()` |
+| Parametric/Non-parametric | Paired | Cohen’s *g* | Yes | `effectsize::cohens_g()` |
+| Bayesian | Paired | No | No | No |
 
 #### one-way table
 
 **Hypothesis testing**
 
-| Type                      | Test                                      | Function used         |
-|:--------------------------|:------------------------------------------|:----------------------|
-| Parametric/Non-parametric | Goodness of fit chi-squared test          | `stats::chisq.test()` |
-| Bayesian                  | Bayesian Goodness of fit chi-squared test | (custom)              |
+| Type | Test | Function used |
+|:---|:---|:---|
+| Parametric/Non-parametric | Goodness of fit chi-squared test | `stats::chisq.test()` |
+| Bayesian | Bayesian Goodness of fit chi-squared test | (custom) |
 
 **Effect size estimation**
 
-| Type                      | Effect size   | CI available? | Function used              |
-|:--------------------------|:--------------|:--------------|:---------------------------|
-| Parametric/Non-parametric | Pearson’s *C* | Yes           | `effectsize::pearsons_c()` |
-| Bayesian                  | No            | No            | No                         |
+| Type | Effect size | CI available? | Function used |
+|:---|:---|:---|:---|
+| Parametric/Non-parametric | Pearson’s *C* | Yes | `effectsize::pearsons_c()` |
+| Bayesian | No | No | No |
 
 ## `meta_analysis`
 
 **Hypothesis testing** and **Effect size estimation**
 
-| Type       | Test                                             | Effect size | CI available? | Function used            |
-|:-----------|:-------------------------------------------------|:------------|:--------------|:-------------------------|
-| Parametric | Meta-analysis via random-effects models          | *beta*      | Yes           | `metafor::metafor()`     |
-| Robust     | Meta-analysis via robust random-effects models   | *beta*      | Yes           | `metaplus::metaplus()`   |
-| Bayes      | Meta-analysis via Bayesian random-effects models | *beta*      | Yes           | `metaBMA::meta_random()` |
+| Type | Test | Effect size | CI available? | Function used |
+|:---|:---|:---|:---|:---|
+| Parametric | Meta-analysis via random-effects models | *beta* | Yes | `metafor::metafor()` |
+| Robust | Meta-analysis via robust random-effects models | *beta* | Yes | `metaplus::metaplus()` |
+| Bayes | Meta-analysis via Bayesian random-effects models | *beta* | Yes | `metaBMA::meta_random()` |
 
 # Usage in `{ggstatsplot}`
 

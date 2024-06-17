@@ -14,10 +14,9 @@
 #'   and should contain some or all of the the following columns:
 #' - *statistic*: the numeric value of a statistic.
 #' - *df.error*: the numeric value of a parameter being modeled (often degrees
-#' of freedom for the test); note that if there are no degrees of freedom (e.g.,
-#' for non-parametric tests), this column will be irrelevant.
-#' - *df*: relevant only if the statistic in question has two degrees of freedom.
-#' - *p.value*: the two-sided *p*-value associated with the observed statistic.
+#' of freedom for the test); irrelevant. if there are no degrees of freedom.
+#' - *df*: relevant if the statistic in question has two degrees of freedom.
+#' - *p.value*: the two-sided *p*-value associated with observed statistic.
 #' - *method*: method describing the test carried out.
 #' - *effectsize*: name of the effect size (if not present, same as `method`).
 #' - *estimate*: estimated value of the effect size.
@@ -29,8 +28,8 @@
 #'   For example, for tests with *t*-statistic, `statistic.text = "t"`.
 #' @param effsize.text A character that specifies the relevant effect size or
 #'   posterior estimate.
-#' @param digits,digits.df,digits.df.error Number of decimal places to display for the
-#'   parameters (default: `0L`).
+#' @param digits,digits.df,digits.df.error Number of decimal places to display
+#'   for the parameters (default: `0L`).
 #' @param n An integer specifying the sample size used for the test.
 #' @param n.text A character that specifies the design, which will determine
 #'   what the `n` stands for. It defaults to `quote(italic("n")["pairs"])` if
