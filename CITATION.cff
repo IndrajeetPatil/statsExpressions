@@ -32,7 +32,6 @@ preferred-citation:
     email: patilindrajeet.science@gmail.com
     orcid: https://orcid.org/0000-0003-1995-6531
   doi: 10.21105/joss.03236
-  url: https://doi.org/10.21105/joss.03236
   year: '2021'
   publisher:
     name: The Open Journal
@@ -315,7 +314,7 @@ references:
   abstract: 'parameters: Processing of Model Parameters'
   notes: Imports
   url: https://easystats.github.io/parameters/
-  repository: https://easystats.r-universe.dev
+  repository: https://CRAN.R-project.org/package=parameters
   authors:
   - family-names: Lüdecke
     given-names: Daniel
@@ -341,7 +340,7 @@ references:
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2024'
-  version: '>= 0.21.7'
+  version: '>= 0.22.0'
 - type: software
   title: performance
   abstract: 'performance: Assessment of Regression Models Performance'
