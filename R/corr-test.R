@@ -26,6 +26,9 @@
 #' @autoglobal
 #'
 #' @example man/examples/examples-corr-test.R
+#'
+#' @template citation
+#'
 #' @export
 corr_test <- function(
     data,

@@ -70,6 +70,9 @@
 #'   digits         = 3L,
 #'   digits.df      = 3L
 #' )
+#'
+#' @template citation
+#'
 #' @export
 add_expression_col <- function(
     data,

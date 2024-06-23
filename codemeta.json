@@ -305,7 +305,7 @@
       "@type": "SoftwareApplication",
       "identifier": "parameters",
       "name": "parameters",
-      "version": ">= 0.21.7",
+      "version": ">= 0.22.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -438,7 +438,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4127.719KB",
+  "fileSize": "4127.82KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
@@ -452,7 +452,6 @@
       ],
       "name": "{statsExpressions: {R} Package for Tidy Dataframes and Expressions with Statistical Details}",
       "identifier": "10.21105/joss.03236",
-      "url": "https://doi.org/10.21105/joss.03236",
       "pagination": "3236",
       "@id": "https://doi.org/10.21105/joss.03236",
       "sameAs": "https://doi.org/10.21105/joss.03236",

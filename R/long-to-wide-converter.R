@@ -55,6 +55,9 @@
 #'
 #' # independent measures design
 #' long_to_wide_converter(mtcars, cyl, wt, paired = FALSE)
+#'
+#' @template citation
+#'
 #' @export
 long_to_wide_converter <- function(
     data,

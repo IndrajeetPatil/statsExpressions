@@ -33,6 +33,9 @@
 #' @autoglobal
 #'
 #' @example man/examples/examples-one-sample-test.R
+#'
+#' @template citation
+#'
 #' @export
 one_sample_test <- function(
     data,

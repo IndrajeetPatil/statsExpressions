@@ -108,7 +108,7 @@ contingency_table <- function(
       fixedMargin        = fixed.margin,
       priorConcentration = prior.concentration
     ) %>%
-      tidy_model_parameters(ci = conf.level, effectsize_type = "cramers_v", alternative = alternative)
+      tidy_model_parameters(ci = conf.level, es_type = "cramers_v", alternative = alternative)
   }
 
   if (type == "bayes" && test == "1way") {

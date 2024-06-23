@@ -44,6 +44,12 @@ jobs:
 
       - name: Run examples
         run: |
-          options(crayon.enabled = TRUE, warn = 2L)
+          options(
+            crayon.enabled = TRUE,
+            warn = 2L,
+            warnPartialMatchArgs = TRUE,
+            warnPartialMatchAttr = TRUE,
+            warnPartialMatchDollar = TRUE
+          )
           devtools::run_examples(run_dontrun = TRUE, run_donttest = TRUE, document = FALSE)
         shell: Rscript {0}

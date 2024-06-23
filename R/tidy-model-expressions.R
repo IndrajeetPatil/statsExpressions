@@ -32,6 +32,9 @@
 #' tidy_model_expressions(df, statistic = "t")
 #' tidy_model_expressions(df, statistic = "z")
 #' tidy_model_expressions(df, statistic = "chi")
+#'
+#' @template citation
+#'
 #' @export
 tidy_model_expressions <- function(
     data,

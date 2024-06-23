@@ -83,7 +83,7 @@ test_that("tidy_model_expressions works - F", {
   df1 <- tidy_model_expressions(
     tidy_model_parameters(
       mod_f,
-      effectsize_type = "omega",
+      es_type = "omega",
       table_wide = TRUE
     ),
     statistic = "f"
@@ -96,7 +96,7 @@ test_that("tidy_model_expressions works - F", {
   df2 <- tidy_model_expressions(
     tidy_model_parameters(
       mod_f,
-      effectsize_type = "eta",
+      es_type = "eta",
       table_wide = TRUE
     ),
     statistic = "f",
