@@ -27,6 +27,9 @@
 #' @autoglobal
 #'
 #' @example man/examples/examples-centrality-description.R
+#'
+#' @template citation
+#'
 #' @export
 centrality_description <- function(
     data,

@@ -158,6 +158,13 @@ Not supported.
 }
 }
 
+\section{Citation}{
+Patil I (2021). "statsExpressions: R Package for Tidy Dataframes and
+Expressions with Statistical Details." \emph{Journal of Open Source
+Software}, \emph{6}(61), 3236. doi:10.21105/joss.03236
+\url{https://doi.org/10.21105/joss.03236}.
+}
+
 \examples{
 \dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # for reproducibility

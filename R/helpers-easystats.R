@@ -8,6 +8,9 @@
 #' @examples
 #' model <- lm(mpg ~ wt + cyl, data = mtcars)
 #' tidy_model_parameters(model)
+#'
+#' @template citation
+#'
 #' @export
 tidy_model_parameters <- function(model, ...) {
   stats_df <- model_parameters(model, verbose = FALSE, ...) %>%

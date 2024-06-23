@@ -69,6 +69,13 @@ function on your model object.
 This function is currently \strong{not} stable and should not be used outside of
 this package context.
 }
+\section{Citation}{
+Patil I (2021). "statsExpressions: R Package for Tidy Dataframes and
+Expressions with Statistical Details." \emph{Journal of Open Source
+Software}, \emph{6}(61), 3236. doi:10.21105/joss.03236
+\url{https://doi.org/10.21105/joss.03236}.
+}
+
 \examples{
 set.seed(123)
 
@@ -95,4 +102,5 @@ add_expression_col(
   digits         = 3L,
   digits.df      = 3L
 )
+
 }

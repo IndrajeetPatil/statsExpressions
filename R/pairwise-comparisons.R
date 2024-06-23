@@ -137,6 +137,9 @@
 #'   type       = "bayes",
 #'   paired     = TRUE
 #' )
+#'
+#' @template citation
+#'
 #' @export
 pairwise_comparisons <- function(
     data,
