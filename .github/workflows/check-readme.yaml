@@ -54,6 +54,12 @@ jobs:
 
       - name: Render README
         run: |
-          options(crayon.enabled = TRUE, warn = 2L)
+          options(
+            crayon.enabled = TRUE,
+            warn = 2L,
+            warnPartialMatchArgs = TRUE,
+            warnPartialMatchAttr = TRUE,
+            warnPartialMatchDollar = TRUE
+          )
           rmarkdown::render("README.Rmd")
         shell: Rscript {0}
