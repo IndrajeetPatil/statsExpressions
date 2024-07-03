@@ -205,7 +205,7 @@ references:
   abstract: 'effectsize: Indices of Effect Size'
   notes: Imports
   url: https://easystats.github.io/effectsize/
-  repository: https://easystats.r-universe.dev
+  repository: https://CRAN.R-project.org/package=effectsize
   authors:
   - family-names: Ben-Shachar
     given-names: Mattan S.
@@ -236,7 +236,7 @@ references:
     email: philip.waggoner@gmail.com
     orcid: https://orcid.org/0000-0002-7825-7573
   year: '2024'
-  version: '>= 0.8.8'
+  version: '>= 0.8.9'
 - type: software
   title: glue
   abstract: 'glue: Interpreted String Literals'
