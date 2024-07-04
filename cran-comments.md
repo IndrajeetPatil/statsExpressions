@@ -2,7 +2,7 @@
 
 0 errors | 0 warnings | 0 note
 
-* Maintenance release.
+* Updates code to fix warnings coming via updates to easystats packages.
 
 ## revdepcheck results
 

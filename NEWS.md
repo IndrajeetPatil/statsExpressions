@@ -4,6 +4,10 @@
 
 - The package licence has been updated to an MIT license.
 
+## MINOR CHANGES
+
+- Updates code to fix warnings coming via updates to easystats packages.
+
 # statsExpressions 1.5.4
 
 ## MAJOR CHANGES
