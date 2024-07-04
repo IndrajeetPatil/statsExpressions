@@ -114,7 +114,7 @@
       "@type": "SoftwareApplication",
       "identifier": "metaplus",
       "name": "metaplus",
-      "version": ">= 1.0-4",
+      "version": ">= 1.0-5",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",

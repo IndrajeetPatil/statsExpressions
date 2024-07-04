@@ -640,13 +640,13 @@ references:
   authors:
   - family-names: Beath
     given-names: Ken
-    email: ken@kjbeath.com.au
+    email: ken@kjbeath.id.au
   - family-names: Bolker
     given-names: Ben
     email: bolker@mcmaster.ca
   - name: R Development Core Team
   year: '2024'
-  version: '>= 1.0-4'
+  version: '>= 1.0-5'
 - type: software
   title: rmarkdown
   abstract: 'rmarkdown: Dynamic Documents for R'
