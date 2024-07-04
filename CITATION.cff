@@ -646,6 +646,7 @@ references:
     email: bolker@mcmaster.ca
   - name: R Development Core Team
   year: '2024'
+  version: '>= 1.0-4'
 - type: software
   title: rmarkdown
   abstract: 'rmarkdown: Dynamic Documents for R'

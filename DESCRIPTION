@@ -48,7 +48,7 @@ Suggests:
     knitr,
     metaBMA,
     metafor,
-    metaplus,
+    metaplus (>= 1.0-4),
     rmarkdown,
     rstantools,
     survival,

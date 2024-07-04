@@ -114,6 +114,7 @@
       "@type": "SoftwareApplication",
       "identifier": "metaplus",
       "name": "metaplus",
+      "version": ">= 1.0-4",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -438,7 +439,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4129.691KB",
+  "fileSize": "4129.565KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
