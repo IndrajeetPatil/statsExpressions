@@ -8,7 +8,7 @@ message: 'To cite package "statsExpressions" in publications use:'
 type: software
 license: MIT
 title: 'statsExpressions: Tidy Dataframes and Expressions with Statistical Details'
-version: 1.5.4.9000
+version: 1.5.5
 doi: 10.21105/joss.03236
 abstract: 'Utilities for producing dataframes with rich details for the most common
   types of statistical approaches and tests: parametric, nonparametric, robust, and

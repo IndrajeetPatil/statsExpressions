@@ -1,4 +1,4 @@
-# statsExpressions 1.5.4.9000
+# statsExpressions 1.5.5
 
 ## MAJOR CHANGES
 
