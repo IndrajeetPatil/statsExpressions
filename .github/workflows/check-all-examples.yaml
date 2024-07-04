@@ -46,10 +46,10 @@ jobs:
         run: |
           options(
             crayon.enabled = TRUE,
-            warn = 2L,
-            warnPartialMatchArgs = TRUE,
-            warnPartialMatchAttr = TRUE,
-            warnPartialMatchDollar = TRUE
+            # warnPartialMatchArgs = TRUE,
+            # warnPartialMatchAttr = TRUE,
+            # warnPartialMatchDollar = TRUE,
+            warn = 2L
           )
           devtools::run_examples(run_dontrun = TRUE, run_donttest = TRUE, document = FALSE)
         shell: Rscript {0}

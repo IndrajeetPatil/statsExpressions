@@ -8,7 +8,6 @@
 ^CRAN-RELEASE$
 ^CRAN-SUBMISSION$
 ^LICENSE\.md$
-^man-roxygen$
 ^Makefile$
 ^Meta$
 ^NEWS$
@@ -43,6 +42,7 @@
 ^doc$
 ^docs$
 ^gitsum$
+^man-roxygen$
 ^paper.*$
 ^pkgdown$
 ^revdep$
