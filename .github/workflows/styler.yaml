@@ -33,6 +33,7 @@ jobs:
             any::roxygen2
             anthonynorth/roxyglobals
           needs: |
+            metaplus
             styler
             roxygen2
 
@@ -66,7 +67,7 @@ jobs:
       - name: Style package
         run: |
           options(crayon.enabled = TRUE)
-          styler::style_pkg(filetype = c(".qmd", ".R", ".Rmd", ".Rmarkdown", ".Rnw"))
+          styler::style_pkg()
         shell: Rscript {0}
 
       - name: Document
