@@ -45,10 +45,7 @@ This is an \strong{experimental} function and may change in the future. Please d
 not use it yet in your workflow.
 }
 \section{Citation}{
-Patil I (2021). "statsExpressions: R Package for Tidy Dataframes and
-Expressions with Statistical Details." \emph{Journal of Open Source
-Software}, \emph{6}(61), 3236. doi:10.21105/joss.03236
-\url{https://doi.org/10.21105/joss.03236}.
+Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressions with Statistical Details. Journal of Open Source Software, 6(61), 3236, https://doi.org/10.21105/joss.03236
 }
 
 \examples{
