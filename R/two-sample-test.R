@@ -30,6 +30,8 @@
 #' @example man/examples/examples-two-sample-test-within.R
 #' @example man/examples/examples-two-sample-test-between.R
 #'
+#' @template citation
+#'
 #' @export
 two_sample_test <- function(
     data,

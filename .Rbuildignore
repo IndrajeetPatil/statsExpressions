@@ -42,6 +42,7 @@
 ^doc$
 ^docs$
 ^gitsum$
+^man-roxygen$
 ^paper.*$
 ^pkgdown$
 ^revdep$

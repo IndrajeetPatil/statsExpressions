@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Tidy Dataframes and Expressions with Statistical Details
-Version: 1.5.4.9000
+Version: 1.5.5
 Authors@R: 
     person("Indrajeet", "Patil", , "patilindrajeet.science@gmail.com", role = c("cre", "aut", "cph"),
            comment = c(ORCID = "0000-0003-1995-6531", Twitter = "@patilindrajeets"))
@@ -27,11 +27,11 @@ Imports:
     correlation (>= 0.8.5),
     datawizard (>= 0.11.0),
     dplyr (>= 1.1.4),
-    effectsize (>= 0.8.8),
+    effectsize (>= 0.8.9),
     glue (>= 1.7.0),
     insight (>= 0.20.1),
     magrittr (>= 2.0.3),
-    parameters (>= 0.21.7),
+    parameters (>= 0.22.0),
     performance (>= 0.12.0),
     PMCMRplus (>= 1.9.10),
     purrr (>= 1.0.2),
@@ -48,7 +48,7 @@ Suggests:
     knitr,
     metaBMA,
     metafor,
-    metaplus,
+    metaplus (>= 1.0-5),
     rmarkdown,
     rstantools,
     survival,
@@ -62,8 +62,6 @@ Config/testthat/parallel: true
 Encoding: UTF-8
 Language: en-US
 LazyData: true
-Roxygen: list(
-    markdown = TRUE,
-    roclets = c("collate", "namespace", "rd", "pkgapi::api_roclet", "roxyglobals::global_roclet")
-  )
-RoxygenNote: 7.3.1
+Roxygen: list( markdown = TRUE, roclets = c("collate", "namespace", "rd",
+    "pkgapi::api_roclet", "roxyglobals::global_roclet") )
+RoxygenNote: 7.3.2

@@ -127,6 +127,9 @@
 #'   paired     = TRUE,
 #'   type       = "bayes"
 #' )
+#'
+#' @template citation
+#'
 #' @export
 oneway_anova <- function(
     data,

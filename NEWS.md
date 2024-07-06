@@ -1,8 +1,12 @@
-# statsExpressions 1.5.4.9000
+# statsExpressions 1.5.5
 
 ## MAJOR CHANGES
 
 - The package licence has been updated to an MIT license.
+
+## MINOR CHANGES
+
+- Updates code to fix warnings coming via updates to easystats packages.
 
 # statsExpressions 1.5.4
 

@@ -65,6 +65,8 @@
 #'
 #' meta_analysis(dat, type = "bayes")
 #'
+#' @template citation
+#'
 #' @export
 meta_analysis <- function(
     data,
