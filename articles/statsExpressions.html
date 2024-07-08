@@ -255,9 +255,8 @@ statistical approach can be modified by changing a single argument:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Kruskal-Wallis rank sum test Epsilon2 (rank)    <span style="color: #949494;">0.</span>736       <span style="color: #949494;">0.</span>95    <span style="color: #949494;">0.</span>624</span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">conf.high</span> <span style="font-weight: bold;">conf.method</span>          <span style="font-weight: bold;">conf.iterations</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span></span></span>
 <span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>         1 percentile bootstrap             100    32 <span style="color: #949494;">&lt;language&gt;</span></span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>         1 percentile bootstrap             100    32 <span style="color: #949494;">&lt;language&gt;</span></span></span>
+<span></span>
 <span><span class="fu"><a href="../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 12</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">df</span> <span style="font-weight: bold;">df.error</span> <span style="font-weight: bold;">p.value</span></span></span>
@@ -276,7 +275,7 @@ statistical approach can be modified by changing a single argument:</p>
 manipulation packages. For example, we can use combination of
 <a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a> and <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> to repeat the
 same statistical analysis across grouping variables.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># running one-sample proportion test for `vs` at all levels of `am`</span></span>
 <span><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">am</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -312,7 +311,7 @@ statistical results in the context of a visualization is indeed a
 philosophy adopted by the <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link">ggstatsplot</a> package <span class="citation">(<a href="#ref-Patil2021">Patil, 2021</a>)</span>, and
 <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> functions as its statistical processing
 backend.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># needed libraries</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
@@ -462,7 +461,7 @@ Software</em>, <em>4</em>(43), 1686. doi:<a href="https://doi.org/10.21105/joss.
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.9000.</p>
 </div>
 
     </footer>
