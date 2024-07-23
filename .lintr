@@ -12,10 +12,8 @@ linters: all_linters(
     object_name_linter = NULL,
     object_length_linter(50L),
     object_usage_linter = NULL,
-    string_boundary_linter = NULL,
     strings_as_factors_linter = NULL,
     undesirable_function_linter = NULL,
-    undesirable_operator_linter = NULL,
     unnecessary_concatenation_linter(allow_single_expression = FALSE),
     unused_import_linter = NULL
   )
