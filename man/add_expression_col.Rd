@@ -63,8 +63,8 @@ for the parameters (default: \code{0L}).}
 }
 \description{
 Creates an expression from a data frame containing statistical details.
-Ideally, this data frame would come from having run \code{tidy_model_parameters}
-function on your model object.
+Ideally, this data frame would come from having run \code{tidy_model_parameters()}
+on your model object.
 
 This function is currently \strong{not} stable and should not be used outside of
 this package context.

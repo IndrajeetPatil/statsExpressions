@@ -60,7 +60,7 @@ This function describes a distribution for \code{y} variable for each level of t
 grouping variable in \code{x} by a set of indices (e.g., measures of centrality,
 dispersion, range, skewness, kurtosis, etc.). It additionally returns an
 expression containing a specified centrality measure. The function internally
-relies on \code{datawizard::describe_distribution()} function.
+relies on \code{\link[datawizard:describe_distribution]{datawizard::describe_distribution()}} function.
 }
 \section{Centrality measures}{
 

@@ -14,7 +14,7 @@ tidy_model_expressions(
 }
 \arguments{
 \item{data}{A tidy data frame from regression model object (see
-\code{statsExpressions::tidy_model_parameters()}).}
+\code{\link[=tidy_model_parameters]{tidy_model_parameters()}}).}
 
 \item{statistic}{Which statistic is to be displayed (either \code{"t"} or \code{"f"}or
 \code{"z"} or \code{"chi"}) in the expression.}
@@ -39,10 +39,6 @@ Expressions with statistics for tidy regression data frames
 When any of the necessary numeric column values (\code{estimate}, \code{statistic},
 \code{p.value}) are missing, for these rows, a \code{NULL} is returned instead of an
 expression with empty strings.
-}
-\note{
-This is an \strong{experimental} function and may change in the future. Please do
-not use it yet in your workflow.
 }
 \section{Citation}{
 Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressions with Statistical Details. Journal of Open Source Software, 6(61), 3236, https://doi.org/10.21105/joss.03236

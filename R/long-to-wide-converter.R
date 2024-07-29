@@ -17,7 +17,7 @@
 #'   internal identifier. So if your data is **not** sorted, the results *can*
 #'   be inaccurate when there are more than two levels in `x` and there are
 #'   `NA`s present. The data is expected to be sorted by user in
-#'   subject-1,subject-2, ..., pattern.
+#'   subject-1, subject-2, ..., pattern.
 #' @param y The response (or outcome or dependent) variable from `data`.
 #' @param subject.id Relevant in case of a repeated measures or within-subjects
 #'   design (`paired = TRUE`, i.e.), it specifies the subject or repeated

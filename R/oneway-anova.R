@@ -34,8 +34,8 @@
 #'   width to use in calculating Bayes factors and posterior estimates. In
 #'   addition to numeric arguments, several named values are also recognized:
 #'   `"medium"`, `"wide"`, and `"ultrawide"`, corresponding to *r* scale values
-#'   of 1/2, sqrt(2)/2, and 1, respectively. In case of an ANOVA, this value
-#'   corresponds to scale for fixed effects.
+#'   of `1/2`, `sqrt(2)/2`, and `1`, respectively. In case of an ANOVA, this
+#'   value corresponds to scale for fixed effects.
 #' @inheritParams two_sample_test
 #' @inheritParams add_expression_col
 #' @param ... Additional arguments (currently ignored).

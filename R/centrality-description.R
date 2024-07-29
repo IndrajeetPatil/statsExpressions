@@ -7,7 +7,7 @@
 #' grouping variable in `x` by a set of indices (e.g., measures of centrality,
 #' dispersion, range, skewness, kurtosis, etc.). It additionally returns an
 #' expression containing a specified centrality measure. The function internally
-#' relies on `datawizard::describe_distribution()` function.
+#' relies on [`datawizard::describe_distribution()`] function.
 #'
 #' @description
 #' Parametric, non-parametric, robust, and Bayesian measures of centrality.
