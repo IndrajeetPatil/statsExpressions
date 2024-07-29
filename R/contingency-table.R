@@ -25,10 +25,12 @@
 #'   represents a single observation.
 #' @param paired Logical indicating whether data came from a within-subjects or
 #'   repeated measures design study (Default: `FALSE`).
-#' @param sampling.plan Character describing the sampling plan. Possible options
-#'   are `"indepMulti"` (independent multinomial; default), `"poisson"`,
-#'   `"jointMulti"` (joint multinomial), `"hypergeom"` (hypergeometric). For
-#'   more, see `?BayesFactor::contingencyTableBF()`.
+#' @param sampling.plan Character describing the sampling plan. Possible options:
+#'   - `"indepMulti"` (independent multinomial; default)
+#'   - `"poisson"`
+#'   - `"jointMulti"` (joint multinomial)
+#'   - `"hypergeom"` (hypergeometric).
+#'   For more, see [`BayesFactor::contingencyTableBF()`].
 #' @param fixed.margin For the independent multinomial sampling plan, which
 #'   margin is fixed (`"rows"` or `"cols"`). Defaults to `"rows"`.
 #' @param prior.concentration Specifies the prior concentration parameter, set

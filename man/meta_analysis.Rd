@@ -18,10 +18,9 @@ meta_analysis(
 sizes or outcomes)  and \code{std.error} (corresponding standard errors). These
 two columns will be used:
 \itemize{
-\item as \code{yi}  and \code{sei} arguments in \code{metafor::rma()} (for \strong{parametric} test)
-or \code{metaplus::metaplus()} (for \strong{robust} test)
-\item as \code{y} and \code{SE} arguments in \code{metaBMA::meta_random()} (for \strong{Bayesian}
-test).
+\item as \code{yi}  and \code{sei} arguments in \code{\link[metafor:rma.uni]{metafor::rma()}} (for \strong{parametric} test)
+\item as \code{yi}  and \code{sei} arguments in \code{\link[metaplus:metaplus]{metaplus::metaplus()}} (for \strong{robust} test)
+\item as \code{y} and \code{SE} arguments in \code{\link[metaBMA:meta_random]{metaBMA::meta_random()}} (for \strong{Bayesian} test)
 }}
 
 \item{type}{A character specifying the type of statistical approach:

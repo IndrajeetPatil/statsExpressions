@@ -14,7 +14,7 @@ tidy_model_expressions(
 }
 \arguments{
 \item{data}{A tidy data frame from regression model object (see
-\code{statsExpressions::tidy_model_parameters()}).}
+\code{\link[=tidy_model_parameters]{tidy_model_parameters()}}).}
 
 \item{statistic}{Which statistic is to be displayed (either \code{"t"} or \code{"f"}or
 \code{"z"} or \code{"chi"}) in the expression.}

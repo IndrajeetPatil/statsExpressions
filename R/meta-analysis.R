@@ -7,10 +7,9 @@
 #' @param data A data frame. It **must** contain columns named `estimate` (effect
 #'   sizes or outcomes)  and `std.error` (corresponding standard errors). These
 #'   two columns will be used:
-#'   - as `yi`  and `sei` arguments in `metafor::rma()` (for **parametric** test)
-#'   or `metaplus::metaplus()` (for **robust** test)
-#'   - as `y` and `SE` arguments in `metaBMA::meta_random()` (for **Bayesian**
-#'   test).
+#'   - as `yi`  and `sei` arguments in [`metafor::rma()`] (for **parametric** test)
+#'   - as `yi`  and `sei` arguments in [`metaplus::metaplus()`] (for **robust** test)
+#'   - as `y` and `SE` arguments in [`metaBMA::meta_random()`] (for **Bayesian** test)
 #' @inheritParams one_sample_test
 #' @inheritParams metaplus::metaplus
 #' @inheritParams oneway_anova
