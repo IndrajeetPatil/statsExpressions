@@ -40,10 +40,6 @@ When any of the necessary numeric column values (\code{estimate}, \code{statisti
 \code{p.value}) are missing, for these rows, a \code{NULL} is returned instead of an
 expression with empty strings.
 }
-\note{
-This is an \strong{experimental} function and may change in the future. Please do
-not use it yet in your workflow.
-}
 \section{Citation}{
 Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressions with Statistical Details. Journal of Open Source Software, 6(61), 3236, https://doi.org/10.21105/joss.03236
 }

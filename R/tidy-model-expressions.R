@@ -13,11 +13,6 @@
 #' `p.value`) are missing, for these rows, a `NULL` is returned instead of an
 #' expression with empty strings.
 #'
-#' @note
-#'
-#' This is an **experimental** function and may change in the future. Please do
-#' not use it yet in your workflow.
-#'
 #' @autoglobal
 #'
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
@@ -46,9 +41,8 @@ tidy_model_expressions <- function(
   statistic <- substring(tolower(statistic), 1L, 1L)
 
   # if any of the necessary numeric columns are missing, there shouldn't be an
-  # expression corresponding to that row
-  #
-  # convert the necessary columns to character type for expression
+  # expression corresponding to that row; convert the necessary columns to
+  # character type for expression
   df_expr <- data %>%
     filter(if_all(
       .cols = matches("estimate|statistic|std.error|p.value"),
@@ -95,8 +89,7 @@ tidy_model_expressions <- function(
   # nolint end
 
   # Replace `NA` with `NULL` to show nothing instead of an empty string ("")
-  left_join(data, select(df_expr, term, expression), by = "term") %>%
-    .glue_to_expression()
+  left_join(data, select(df_expr, term, expression), by = "term") %>% .glue_to_expression()
 }
 
 

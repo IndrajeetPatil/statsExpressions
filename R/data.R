@@ -1,6 +1,6 @@
 #' @title Movie information and user ratings from IMDB.com (wide format).
 #' @name movies_wide
-#' @details Modified dataset from `ggplot2movies` package.
+#' @details Modified dataset from `{ggplot2movies}` package.
 #'
 #' The internet movie database, <https://imdb.com/>, is a website devoted
 #' to collecting movie data supplied by studios and fans. It claims to be the
@@ -34,7 +34,7 @@
 
 #' @title Movie information and user ratings from IMDB.com (long format).
 #' @name movies_long
-#' @details Modified dataset from `ggplot2movies` package.
+#' @details Modified dataset from `{ggplot2movies}` package.
 #'
 #' The internet movie database, <https://imdb.com/>, is a website devoted
 #' to collecting movie data supplied by studios and fans. It claims to be the
@@ -72,7 +72,7 @@
 #'   petal length and width, respectively, for 50 flowers from each of 3 species
 #'   of iris. The species are Iris setosa, versicolor, and virginica.
 #'
-#' This is a modified dataset from `datasets` package.
+#' This is a modified dataset from `{datasets}` package.
 #'
 #' @format A data frame with 600 rows and 5 variables
 #'

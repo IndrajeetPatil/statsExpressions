@@ -27,7 +27,7 @@ data has already been sorted by such an id by the user and creates an
 internal identifier. So if your data is \strong{not} sorted, the results \emph{can}
 be inaccurate when there are more than two levels in \code{x} and there are
 \code{NA}s present. The data is expected to be sorted by user in
-subject-1,subject-2, ..., pattern.}
+subject-1, subject-2, ..., pattern.}
 
 \item{y}{The response (or outcome or dependent) variable from \code{data}.}
 
