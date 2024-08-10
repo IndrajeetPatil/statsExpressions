@@ -147,7 +147,7 @@
       1      9.70       0    83 Bootstrap-t method for one-sample test Trimmed mean
         estimate conf.level conf.low conf.high
            <dbl>      <dbl>    <dbl>     <dbl>
-      1     10.5       0.95     9.34      11.6
+      1     10.5       0.95     9.33      11.6
 
 ---
 
@@ -156,8 +156,8 @@
     Output
       [[1]]
       list(italic("t")["bootstrapped"] == "9.7023", italic(p) == "0.0000", 
-          widehat(mu)["trimmed"] == "10.4824", CI["95%"] ~ "[" * "9.3380", 
-          "11.6267" * "]", italic("n")["obs"] == "83")
+          widehat(mu)["trimmed"] == "10.4824", CI["95%"] ~ "[" * "9.3288", 
+          "11.6359" * "]", italic("n")["obs"] == "83")
       
 
 # one-sample-test without missing data:  type=robust, conf.level=0.9, effsize.type=d
@@ -171,7 +171,7 @@
       1      9.70       0    83 Bootstrap-t method for one-sample test Trimmed mean
         estimate conf.level conf.low conf.high
            <dbl>      <dbl>    <dbl>     <dbl>
-      1     10.5        0.9     9.61      11.4
+      1     10.5        0.9     9.51      11.5
 
 ---
 
@@ -180,8 +180,8 @@
     Output
       [[1]]
       list(italic("t")["bootstrapped"] == "9.7023", italic(p) == "0.0000", 
-          widehat(mu)["trimmed"] == "10.4824", CI["90%"] ~ "[" * "9.6096", 
-          "11.3551" * "]", italic("n")["obs"] == "83")
+          widehat(mu)["trimmed"] == "10.4824", CI["90%"] ~ "[" * "9.5064", 
+          "11.4583" * "]", italic("n")["obs"] == "83")
       
 
 # one-sample-test with missing data:  type=bayes, conf.level=0.95, effsize.type=g
@@ -328,10 +328,10 @@
       # A tibble: 1 x 9
         statistic p.value n.obs method                                 effectsize  
             <dbl>   <dbl> <int> <chr>                                  <chr>       
-      1     -13.2   0.015    56 Bootstrap-t method for one-sample test Trimmed mean
+      1     -13.2   0.005    56 Bootstrap-t method for one-sample test Trimmed mean
         estimate conf.level conf.low conf.high
            <dbl>      <dbl>    <dbl>     <dbl>
-      1   0.0390       0.95 0.000118    0.0778
+      1   0.0390       0.95  -0.0132    0.0911
 
 ---
 
@@ -340,8 +340,8 @@
     Output
       [[1]]
       list(italic("t")["bootstrapped"] == "-13.1637", italic(p) == 
-          "0.0150", widehat(mu)["trimmed"] == "0.0390", CI["95%"] ~ 
-          "[" * "0.0001", "0.0778" * "]", italic("n")["obs"] == "56")
+          "0.0050", widehat(mu)["trimmed"] == "0.0390", CI["95%"] ~ 
+          "[" * "-0.0132", "0.0911" * "]", italic("n")["obs"] == "56")
       
 
 # one-sample-test with missing data:  type=robust, conf.level=0.9, effsize.type=d
@@ -352,10 +352,10 @@
       # A tibble: 1 x 9
         statistic p.value n.obs method                                 effectsize  
             <dbl>   <dbl> <int> <chr>                                  <chr>       
-      1     -13.2       0    56 Bootstrap-t method for one-sample test Trimmed mean
+      1     -13.2   0.005    56 Bootstrap-t method for one-sample test Trimmed mean
         estimate conf.level conf.low conf.high
            <dbl>      <dbl>    <dbl>     <dbl>
-      1   0.0390        0.9  0.00933    0.0686
+      1   0.0390        0.9  0.00419    0.0737
 
 ---
 
@@ -364,7 +364,7 @@
     Output
       [[1]]
       list(italic("t")["bootstrapped"] == "-13.1637", italic(p) == 
-          "0.0000", widehat(mu)["trimmed"] == "0.0390", CI["90%"] ~ 
-          "[" * "0.0093", "0.0686" * "]", italic("n")["obs"] == "56")
+          "0.0050", widehat(mu)["trimmed"] == "0.0390", CI["90%"] ~ 
+          "[" * "0.0042", "0.0737" * "]", italic("n")["obs"] == "56")
       
 

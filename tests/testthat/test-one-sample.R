@@ -1,6 +1,7 @@
 run_one_sample_tests_with_parameters <- function(title, x, test.value) {
   patrick::with_parameters_test_that(title,
     {
+      set.seed(123L)
       res <- one_sample_test(
         data = msleep,
         x = {{ x }},
