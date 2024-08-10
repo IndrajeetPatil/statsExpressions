@@ -1,5 +1,14 @@
 run_one_sample_tests_with_parameters <- function(title, x, test.value) {
-  patrick::with_parameters_test_that(title,
+  cases_data <- tidyr::expand_grid(
+    type = c("bayes", "parametric", "nonparametric", "robust"),
+    conf.level = c(0.95, 0.90)
+  ) %>%
+    dplyr::mutate(
+      effsize.type = rep_len(c("g", "d"), length.out = nrow(.)) # relevant only for parametric
+    )
+
+  patrick::with_parameters_test_that(
+    title,
     {
       set.seed(123L)
       res <- one_sample_test(
@@ -23,13 +32,7 @@ run_one_sample_tests_with_parameters <- function(title, x, test.value) {
         expect_snapshot(res$bf10[[1L]])
       }
     },
-    .cases = tidyr::expand_grid(
-      type = c("bayes", "parametric", "nonparametric", "robust"),
-      conf.level = c(0.95, 0.90)
-    ) %>%
-      dplyr::mutate(
-        effsize.type = rep_len(c("g", "d"), length.out = nrow(.)) # relevant only for parametric
-      )
+    .cases = cases_data
   )
 }
 
