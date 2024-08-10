@@ -31,11 +31,10 @@ jobs:
             r-lib/pkgapi
             r-lib/styler
             any::roxygen2
+            any::metaplus
             anthonynorth/roxyglobals
           needs: |
-            metaplus
-            styler
-            roxygen2
+            check
 
       - name: Enable styler cache
         run: |
