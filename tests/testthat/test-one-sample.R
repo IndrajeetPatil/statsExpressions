@@ -10,7 +10,7 @@ run_one_sample_tests_with_parameters <- function(title, x, test.value) {
         effsize.type = effsize.type,
         conf.method = conf.method,
         test.value = test.value,
-        digits = 4L,
+        digits = 4L
       )
 
       if (type != "bayes") {
@@ -23,11 +23,12 @@ run_one_sample_tests_with_parameters <- function(title, x, test.value) {
         expect_snapshot(res$bf10[[1L]])
       }
     },
-    .cases = tidyr::expand_grid(
-      type = c("bayes", "parametric", "nonparametric", "robust"),
-      conf.level = c(0.95, 0.90)
-    ) %>%
+    .cases =
       dplyr::mutate(
+        tidyr::expand_grid(
+          type = c("bayes", "parametric", "nonparametric", "robust"),
+          conf.level = c(0.95, 0.90)
+        ),
         effsize.type = rep_len(c("g", "d"), length.out = nrow(.)) # relevant only for parametric
       )
   )
