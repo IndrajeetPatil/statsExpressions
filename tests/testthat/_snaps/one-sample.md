@@ -1,81 +1,241 @@
-# one_sample_test parametric works
+# one-sample-test works without missing data:  type=parametric, conf.level=0.95, effsize.type=g
 
     Code
-      select(df1, -expression)
+      select(res, -expression)
     Output
       # A tibble: 1 x 14
-           mu statistic df.error p.value method            alternative effectsize
-        <dbl>     <dbl>    <dbl>   <dbl> <chr>             <chr>       <chr>     
-      1   120     -2.67       78 0.00910 One Sample t-test two.sided   Hedges' g 
+           mu statistic df.error  p.value method            alternative effectsize
+        <dbl>     <dbl>    <dbl>    <dbl> <chr>             <chr>       <chr>     
+      1     5      11.1       82 4.70e-18 One Sample t-test two.sided   Hedges' g 
         estimate conf.level conf.low conf.high conf.method conf.distribution n.obs
            <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>             <int>
-      1   -0.298       0.95   -0.520   -0.0738 ncp         t                    79
+      1     1.21       0.95    0.925      1.49 ncp         t                    83
 
 ---
 
     Code
-      df1[["expression"]]
+      res[["expression"]]
     Output
       [[1]]
-      list(italic("t")["Student"] * "(" * 78 * ")" == "-2.67496", italic(p) == 
-          "0.00910", widehat(italic("g"))["Hedges"] == "-0.29805", 
-          CI["95%"] ~ "[" * "-0.52046", "-0.07382" * "]", italic("n")["obs"] == 
-              "79")
+      list(italic("t")["Student"] * "(" * 82 * ")" == "11.1235", italic(p) == 
+          "4.6953e-18", widehat(italic("g"))["Hedges"] == "1.2098", 
+          CI["95%"] ~ "[" * "0.9254", "1.4897" * "]", italic("n")["obs"] == 
+              "83")
       
 
----
+# one-sample-test works without missing data:  type=parametric, conf.level=0.9, effsize.type=d
 
     Code
-      select(df2, -expression)
+      select(res, -expression)
     Output
       # A tibble: 1 x 14
-           mu statistic df.error p.value method            alternative effectsize
-        <dbl>     <dbl>    <dbl>   <dbl> <chr>             <chr>       <chr>     
-      1   120     -2.67       78 0.00910 One Sample t-test two.sided   Cohen's d 
+           mu statistic df.error  p.value method            alternative effectsize
+        <dbl>     <dbl>    <dbl>    <dbl> <chr>             <chr>       <chr>     
+      1     5      11.1       82 4.70e-18 One Sample t-test two.sided   Cohen's d 
         estimate conf.level conf.low conf.high conf.method conf.distribution n.obs
            <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>             <int>
-      1   -0.301        0.9   -0.489    -0.111 ncp         t                    79
+      1     1.22        0.9    0.979      1.46 ncp         t                    83
 
 ---
 
     Code
-      df2[["expression"]]
+      res[["expression"]]
     Output
       [[1]]
-      list(italic("t")["Student"] * "(" * 78 * ")" == "-2.6750", italic(p) == 
-          "0.0091", widehat(italic("d"))["Cohen"] == "-0.3010", CI["90%"] ~ 
-          "[" * "-0.4893", "-0.1108" * "]", italic("n")["obs"] == "79")
+      list(italic("t")["Student"] * "(" * 82 * ")" == "11.1235", italic(p) == 
+          "4.6953e-18", widehat(italic("d"))["Cohen"] == "1.2210", 
+          CI["90%"] ~ "[" * "0.9792", "1.4572" * "]", italic("n")["obs"] == 
+              "83")
       
 
-# one_sample_test non-parametric works
+# one-sample-test works without missing data:  type=nonparametric, conf.level=0.95, effsize.type=g
 
     Code
-      select(df1, -expression)
+      select(res, -expression)
     Output
       # A tibble: 1 x 11
-        statistic p.value method                    alternative effectsize       
-            <dbl>   <dbl> <chr>                     <chr>       <chr>            
-      1      754.   0.323 Wilcoxon signed rank test two.sided   r (rank biserial)
+        statistic  p.value method                    alternative effectsize       
+            <dbl>    <dbl> <chr>                     <chr>       <chr>            
+      1     3338. 4.43e-13 Wilcoxon signed rank test two.sided   r (rank biserial)
         estimate conf.level conf.low conf.high conf.method n.obs
            <dbl>      <dbl>    <dbl>     <dbl> <chr>       <int>
-      1   -0.149       0.95   -0.416     0.143 normal         60
+      1    0.915       0.95    0.865     0.948 normal         83
 
 ---
 
     Code
-      df1[["expression"]]
+      res[["expression"]]
     Output
       [[1]]
-      list(italic("V")["Wilcoxon"] == "753.5000", italic(p) == "0.3227", 
-          widehat(italic("r"))["biserial"]^"rank" == "-0.1486", CI["95%"] ~ 
-              "[" * "-0.4162", "0.1427" * "]", italic("n")["obs"] == 
-              "60")
+      list(italic("V")["Wilcoxon"] == "3338.5000", italic(p) == "4.4279e-13", 
+          widehat(italic("r"))["biserial"]^"rank" == "0.9154", CI["95%"] ~ 
+              "[" * "0.8648", "0.9476" * "]", italic("n")["obs"] == 
+              "83")
       
+
+# one-sample-test works without missing data:  type=nonparametric, conf.level=0.9, effsize.type=d
+
+    Code
+      select(res, -expression)
+    Output
+      # A tibble: 1 x 11
+        statistic  p.value method                    alternative effectsize       
+            <dbl>    <dbl> <chr>                     <chr>       <chr>            
+      1     3338. 4.43e-13 Wilcoxon signed rank test two.sided   r (rank biserial)
+        estimate conf.level conf.low conf.high conf.method n.obs
+           <dbl>      <dbl>    <dbl>     <dbl> <chr>       <int>
+      1    0.915        0.9    0.874     0.943 normal         83
 
 ---
 
     Code
-      select(df2, -expression)
+      res[["expression"]]
+    Output
+      [[1]]
+      list(italic("V")["Wilcoxon"] == "3338.5000", italic(p) == "4.4279e-13", 
+          widehat(italic("r"))["biserial"]^"rank" == "0.9154", CI["90%"] ~ 
+              "[" * "0.8745", "0.9433" * "]", italic("n")["obs"] == 
+              "83")
+      
+
+# one-sample-test works without missing data:  type=bayes, conf.level=0.95, effsize.type=g
+
+    Code
+      names(res)
+    Output
+       [1] "term"               "effectsize"         "estimate"          
+       [4] "conf.level"         "conf.low"           "conf.high"         
+       [7] "pd"                 "prior.distribution" "prior.location"    
+      [10] "prior.scale"        "bf10"               "method"            
+      [13] "conf.method"        "log_e_bf10"         "n.obs"             
+      [16] "expression"        
+
+---
+
+    Code
+      res$bf10[[1L]]
+    Output
+      [1] 1.199152e+15
+
+# one-sample-test works without missing data:  type=bayes, conf.level=0.9, effsize.type=d
+
+    Code
+      names(res)
+    Output
+       [1] "term"               "effectsize"         "estimate"          
+       [4] "conf.level"         "conf.low"           "conf.high"         
+       [7] "pd"                 "prior.distribution" "prior.location"    
+      [10] "prior.scale"        "bf10"               "method"            
+      [13] "conf.method"        "log_e_bf10"         "n.obs"             
+      [16] "expression"        
+
+---
+
+    Code
+      res$bf10[[1L]]
+    Output
+      [1] 1.199152e+15
+
+# one-sample-test works without missing data:  type=robust, conf.level=0.95, effsize.type=g
+
+    Code
+      select(res, -expression)
+    Output
+      # A tibble: 1 x 9
+        statistic p.value n.obs method                                 effectsize  
+            <dbl>   <dbl> <int> <chr>                                  <chr>       
+      1      9.70       0    83 Bootstrap-t method for one-sample test Trimmed mean
+        estimate conf.level conf.low conf.high
+           <dbl>      <dbl>    <dbl>     <dbl>
+      1     10.5       0.95     9.39      11.6
+
+---
+
+    Code
+      res[["expression"]]
+    Output
+      [[1]]
+      list(italic("t")["bootstrapped"] == "9.7023", italic(p) == "0.0000", 
+          widehat(mu)["trimmed"] == "10.4824", CI["95%"] ~ "[" * "9.3914", 
+          "11.5733" * "]", italic("n")["obs"] == "83")
+      
+
+# one-sample-test works without missing data:  type=robust, conf.level=0.9, effsize.type=d
+
+    Code
+      select(res, -expression)
+    Output
+      # A tibble: 1 x 9
+        statistic p.value n.obs method                                 effectsize  
+            <dbl>   <dbl> <int> <chr>                                  <chr>       
+      1      9.70       0    83 Bootstrap-t method for one-sample test Trimmed mean
+        estimate conf.level conf.low conf.high
+           <dbl>      <dbl>    <dbl>     <dbl>
+      1     10.5        0.9     9.55      11.4
+
+---
+
+    Code
+      res[["expression"]]
+    Output
+      [[1]]
+      list(italic("t")["bootstrapped"] == "9.7023", italic(p) == "0.0000", 
+          widehat(mu)["trimmed"] == "10.4824", CI["90%"] ~ "[" * "9.5501", 
+          "11.4146" * "]", italic("n")["obs"] == "83")
+      
+
+# one-sample-test with missing data:  type=parametric, conf.level=0.95, effsize.type=g
+
+    Code
+      select(res, -expression)
+    Output
+      # A tibble: 1 x 14
+           mu statistic df.error p.value method            alternative effectsize
+        <dbl>     <dbl>    <dbl>   <dbl> <chr>             <chr>       <chr>     
+      1  0.25     0.242       55   0.810 One Sample t-test two.sided   Hedges' g 
+        estimate conf.level conf.low conf.high conf.method conf.distribution n.obs
+           <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>             <int>
+      1   0.0319       0.95   -0.227     0.290 ncp         t                    56
+
+---
+
+    Code
+      res[["expression"]]
+    Output
+      [[1]]
+      list(italic("t")["Student"] * "(" * 55 * ")" == "0.2420", italic(p) == 
+          "0.8096", widehat(italic("g"))["Hedges"] == "0.0319", CI["95%"] ~ 
+          "[" * "-0.2266", "0.2901" * "]", italic("n")["obs"] == "56")
+      
+
+# one-sample-test with missing data:  type=parametric, conf.level=0.9, effsize.type=d
+
+    Code
+      select(res, -expression)
+    Output
+      # A tibble: 1 x 14
+           mu statistic df.error p.value method            alternative effectsize
+        <dbl>     <dbl>    <dbl>   <dbl> <chr>             <chr>       <chr>     
+      1  0.25     0.242       55   0.810 One Sample t-test two.sided   Cohen's d 
+        estimate conf.level conf.low conf.high conf.method conf.distribution n.obs
+           <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>             <int>
+      1   0.0323        0.9   -0.188     0.252 ncp         t                    56
+
+---
+
+    Code
+      res[["expression"]]
+    Output
+      [[1]]
+      list(italic("t")["Student"] * "(" * 55 * ")" == "0.2420", italic(p) == 
+          "0.8096", widehat(italic("d"))["Cohen"] == "0.0323", CI["90%"] ~ 
+          "[" * "-0.1877", "0.2521" * "]", italic("n")["obs"] == "56")
+      
+
+# one-sample-test with missing data:  type=nonparametric, conf.level=0.95, effsize.type=g
+
+    Code
+      select(res, -expression)
     Output
       # A tibble: 1 x 11
         statistic   p.value method                    alternative effectsize       
@@ -88,7 +248,7 @@
 ---
 
     Code
-      df2[["expression"]]
+      res[["expression"]]
     Output
       [[1]]
       list(italic("V")["Wilcoxon"] == "262.0000", italic(p) == "1.2527e-05", 
@@ -97,58 +257,35 @@
               "56")
       
 
-# one_sample_test robust works
+# one-sample-test with missing data:  type=nonparametric, conf.level=0.9, effsize.type=d
 
     Code
-      select(df1, -expression)
+      select(res, -expression)
     Output
-      # A tibble: 1 x 9
-        statistic p.value n.obs method                                 effectsize  
-            <dbl>   <dbl> <int> <chr>                                  <chr>       
-      1     0.787   0.455    11 Bootstrap-t method for one-sample test Trimmed mean
-        estimate conf.level conf.low conf.high
-           <dbl>      <dbl>    <dbl>     <dbl>
-      1        9        0.9     6.55      11.5
+      # A tibble: 1 x 11
+        statistic   p.value method                    alternative effectsize       
+            <dbl>     <dbl> <chr>                     <chr>       <chr>            
+      1       262 0.0000125 Wilcoxon signed rank test two.sided   r (rank biserial)
+        estimate conf.level conf.low conf.high conf.method n.obs
+           <dbl>      <dbl>    <dbl>     <dbl> <chr>       <int>
+      1   -0.672        0.9   -0.788    -0.509 normal         56
 
 ---
 
     Code
-      df1[["expression"]]
+      res[["expression"]]
     Output
       [[1]]
-      list(italic("t")["bootstrapped"] == "0.7866", italic(p) == "0.4550", 
-          widehat(mu)["trimmed"] == "9.0000", CI["90%"] ~ "[" * "6.5487", 
-          "11.4513" * "]", italic("n")["obs"] == "11")
+      list(italic("V")["Wilcoxon"] == "262.0000", italic(p) == "1.2527e-05", 
+          widehat(italic("r"))["biserial"]^"rank" == "-0.6717", CI["90%"] ~ 
+              "[" * "-0.7881", "-0.5088" * "]", italic("n")["obs"] == 
+              "56")
       
 
----
+# one-sample-test with missing data:  type=bayes, conf.level=0.95, effsize.type=g
 
     Code
-      select(df2, -expression)
-    Output
-      # A tibble: 1 x 9
-        statistic p.value n.obs method                                 effectsize  
-            <dbl>   <dbl> <int> <chr>                                  <chr>       
-      1     -3.81    0.04    56 Bootstrap-t method for one-sample test Trimmed mean
-        estimate conf.level conf.low conf.high
-           <dbl>      <dbl>    <dbl>     <dbl>
-      1   0.0390       0.99  -0.0669     0.145
-
----
-
-    Code
-      df2[["expression"]]
-    Output
-      [[1]]
-      list(italic("t")["bootstrapped"] == "-3.8075", italic(p) == "0.0400", 
-          widehat(mu)["trimmed"] == "0.0390", CI["99%"] ~ "[" * "-0.0669", 
-          "0.1448" * "]", italic("n")["obs"] == "56")
-      
-
-# one_sample_test bayesian works
-
-    Code
-      names(df_results)
+      names(res)
     Output
        [1] "term"               "effectsize"         "estimate"          
        [4] "conf.level"         "conf.low"           "conf.high"         
@@ -160,22 +297,74 @@
 ---
 
     Code
-      df1[["expression"]]
+      res$bf10[[1L]]
     Output
-      [[1]]
-      list(log[e] * (BF["01"]) == "-47.84", widehat(delta)["difference"]^"posterior" == 
-          "-1.76", CI["90%"]^ETI ~ "[" * "-1.99", "-1.51" * "]", italic("r")["Cauchy"]^"JZS" == 
-          "0.99")
-      
+      [1] 0.1500561
+
+# one-sample-test with missing data:  type=bayes, conf.level=0.9, effsize.type=d
+
+    Code
+      names(res)
+    Output
+       [1] "term"               "effectsize"         "estimate"          
+       [4] "conf.level"         "conf.low"           "conf.high"         
+       [7] "pd"                 "prior.distribution" "prior.location"    
+      [10] "prior.scale"        "bf10"               "method"            
+      [13] "conf.method"        "log_e_bf10"         "n.obs"             
+      [16] "expression"        
 
 ---
 
     Code
-      df2[["expression"]]
+      res$bf10[[1L]]
+    Output
+      [1] 0.1500561
+
+# one-sample-test with missing data:  type=robust, conf.level=0.95, effsize.type=g
+
+    Code
+      select(res, -expression)
+    Output
+      # A tibble: 1 x 9
+        statistic p.value n.obs method                                 effectsize  
+            <dbl>   <dbl> <int> <chr>                                  <chr>       
+      1     -13.2       0    56 Bootstrap-t method for one-sample test Trimmed mean
+        estimate conf.level conf.low conf.high
+           <dbl>      <dbl>    <dbl>     <dbl>
+      1   0.0390       0.95 -0.00583    0.0837
+
+---
+
+    Code
+      res[["expression"]]
     Output
       [[1]]
-      list(log[e] * (BF["01"]) == "2.125", widehat(delta)["difference"]^"posterior" == 
-          "0.018", CI["95%"]^ETI ~ "[" * "-0.234", "0.274" * "]", italic("r")["Cauchy"]^"JZS" == 
-          "0.900")
+      list(italic("t")["bootstrapped"] == "-13.1637", italic(p) == 
+          "0.0000", widehat(mu)["trimmed"] == "0.0390", CI["95%"] ~ 
+          "[" * "-0.0058", "0.0837" * "]", italic("n")["obs"] == "56")
+      
+
+# one-sample-test with missing data:  type=robust, conf.level=0.9, effsize.type=d
+
+    Code
+      select(res, -expression)
+    Output
+      # A tibble: 1 x 9
+        statistic p.value n.obs method                                 effectsize  
+            <dbl>   <dbl> <int> <chr>                                  <chr>       
+      1     -13.2       0    56 Bootstrap-t method for one-sample test Trimmed mean
+        estimate conf.level conf.low conf.high
+           <dbl>      <dbl>    <dbl>     <dbl>
+      1   0.0390        0.9   0.0108    0.0671
+
+---
+
+    Code
+      res[["expression"]]
+    Output
+      [[1]]
+      list(italic("t")["bootstrapped"] == "-13.1637", italic(p) == 
+          "0.0000", widehat(mu)["trimmed"] == "0.0390", CI["90%"] ~ 
+          "[" * "0.0108", "0.0671" * "]", italic("n")["obs"] == "56")
       
 

@@ -52,6 +52,7 @@ Suggests:
     rmarkdown,
     rstantools,
     survival,
+    patrick,
     testthat (>= 3.2.1),
     utils
 VignetteBuilder: 

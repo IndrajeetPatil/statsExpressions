@@ -1,140 +1,62 @@
-test_that(
-  desc = "one_sample_test parametric works",
-  code = {
-    set.seed(123)
-    df1 <- one_sample_test(
-      data = sample_frac(movies_long, 0.05),
-      x = length,
-      test.value = 120,
-      type = "p",
-      digits = 5
-    )
+arg_data <- tidyr::expand_grid(
+  type = c("parametric", "nonparametric", "bayes", "robust"),
+  conf.level = c(0.95, 0.90)
+) %>%
+  dplyr::mutate(
+    effsize.type = rep_len(c("g", "d"), length.out = nrow(.)) # relevant only for parametric
+  )
 
-    set.seed(123)
-    df2 <- suppressWarnings(
-      one_sample_test(
-        data = sample_frac(movies_long, 0.05),
-        x = length,
-        test.value = 120,
-        type = "p",
-        effsize.type = "d",
-        digits = 4L,
-        conf.level = 0.90
-      )
-    )
-
-    set.seed(123)
-    expect_snapshot(select(df1, -expression))
-    expect_snapshot(df1[["expression"]])
-
-    expect_snapshot(select(df2, -expression))
-    expect_snapshot(df2[["expression"]])
-  }
-)
-
-test_that(
-  desc = "one_sample_test non-parametric works",
-  code = {
-    set.seed(123)
-    df1 <- suppressWarnings(one_sample_test(
-      data = ToothGrowth,
-      x = len,
-      test.value = 20,
-      type = "np",
-      digits = 4L
-    ))
-
-    set.seed(123)
-    df2 <- one_sample_test(
+patrick::with_parameters_test_that(
+  "one-sample-test works without missing data: ",
+  {
+    res <- one_sample_test(
       data = msleep,
-      x = brainwt,
-      test.value = 0.25,
-      type = "np",
-      digits = 4L
-    )
-
-    set.seed(123)
-    expect_snapshot(select(df1, -expression))
-    expect_snapshot(df1[["expression"]])
-
-    expect_snapshot(select(df2, -expression))
-    expect_snapshot(df2[["expression"]])
-  }
-)
-
-test_that(
-  desc = "one_sample_test robust works",
-  code = {
-    set.seed(123)
-    df1 <- one_sample_test(
-      data = anscombe,
-      x = x1,
-      test.value = 8,
-      type = "r",
+      x = sleep_total,
+      type = type,
+      conf.level = conf.level,
+      effsize.type = effsize.type,
+      conf.method = conf.method,
+      test.value = 5.0,
       digits = 4L,
-      conf.level = 0.90
     )
 
-    set.seed(123)
-    df2 <- one_sample_test(
-      data = msleep,
-      x = brainwt,
-      test.value = 0.1,
-      type = "r",
-      digits = 4L,
-      conf.level = 0.99
-    )
-
-    set.seed(123)
-    expect_snapshot(select(df1, -expression))
-    expect_snapshot(df1[["expression"]])
-
-    expect_snapshot(select(df2, -expression))
-    expect_snapshot(df2[["expression"]])
-  }
+    if (type != "bayes") {
+      expect_snapshot(select(res, -expression))
+      expect_snapshot(res[["expression"]])
+    } else {
+      # Bayesian estimation results are too platform-sensitive, so don't
+      # snapshot them; only recording Bayes Factors is enough
+      expect_snapshot(names(res))
+      expect_snapshot(res$bf10[[1L]])
+    }
+  },
+  .cases = arg_data
 )
 
-test_that(
-  desc = "one_sample_test bayesian works",
-  code = {
-    set.seed(123)
-    df_results <- one_sample_test(
-      type = "bayes",
-      data = iris,
-      x = Petal.Length,
-      y = NULL,
-      test.value = 5.5,
-      bf.prior = 0.99
-    )
 
-    expect_equal(df_results$bf10[[1]], 5.958171e+20, tolerance = 0.001)
-    expect_snapshot(names(df_results))
-
-    set.seed(123)
-    df1 <- one_sample_test(
-      type = "bayes",
-      data = iris,
-      x = Petal.Length,
-      y = NULL,
-      test.value = 5.5,
-      bf.prior = 0.99,
-      conf.level = 0.90
-    )
-
-    expect_snapshot(df1[["expression"]])
-
-    set.seed(123)
-    df2 <- one_sample_test(
-      type = "bayes",
+patrick::with_parameters_test_that(
+  "one-sample-test with missing data: ",
+  {
+    res <- one_sample_test(
       data = msleep,
       x = brainwt,
-      y = NULL,
+      type = type,
+      conf.level = conf.level,
+      effsize.type = effsize.type,
+      conf.method = conf.method,
       test.value = 0.25,
-      bf.prior = 0.9,
-      digits = 3L,
-      conf.method = "eti"
+      digits = 4L,
     )
 
-    expect_snapshot(df2[["expression"]])
-  }
+    if (type != "bayes") {
+      expect_snapshot(select(res, -expression))
+      expect_snapshot(res[["expression"]])
+    } else {
+      # Bayesian estimation results are too platform-sensitive, so don't
+      # snapshot them; only recording Bayes Factors is enough
+      expect_snapshot(names(res))
+      expect_snapshot(res$bf10[[1L]])
+    }
+  },
+  .cases = arg_data
 )
