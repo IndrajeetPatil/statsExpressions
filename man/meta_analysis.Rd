@@ -18,7 +18,7 @@ meta_analysis(
 sizes or outcomes)  and \code{std.error} (corresponding standard errors). These
 two columns will be used:
 \itemize{
-\item as \code{yi}  and \code{sei} arguments in \code{\link[metafor:rma.uni]{metafor::rma()}} (for \strong{parametric} test)
+\item as \code{yi}  and \code{sei} arguments in \code{\link[metafor:rma]{metafor::rma()}} (for \strong{parametric} test)
 \item as \code{yi}  and \code{sei} arguments in \code{\link[metaplus:metaplus]{metaplus::metaplus()}} (for \strong{robust} test)
 \item as \code{y} and \code{SE} arguments in \code{\link[metaBMA:meta_random]{metaBMA::meta_random()}} (for \strong{Bayesian} test)
 }}
@@ -32,10 +32,6 @@ two columns will be used:
 }
 
 You can specify just the initial letter.}
-
-\item{random}{
-The type of random effects distribution. One of "normal", "t-dist", "mixture", for standard normal, \eqn{t}-distribution or mixture of normals respectively.
-}
 
 \item{digits}{Number of digits for rounding or significant figures. May also
 be \code{"signif"} to return significant figures or \code{"scientific"}
