@@ -65,6 +65,6 @@ test_that(
       paired = TRUE
     )
 
-    expect_equal(expr1, expr2, ignore_attr = TRUE)
+    expect_identical(expr1, expr2)
   }
 )
