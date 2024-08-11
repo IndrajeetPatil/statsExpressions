@@ -22,14 +22,14 @@ run_one_sample_tests_with_parameters <- function(title, x, test.value) {
         digits = 4L
       )
 
-      if (type != "bayes") {
-        expect_snapshot(select(res, -expression))
-        expect_snapshot(res[["expression"]])
-      } else {
-        # Bayesian estimation results are too platform-sensitive, so don't
-        # snapshot them; only recording Bayes Factors is enough
+      # Bayesian estimation results are too platform-sensitive, so don't
+      # snapshot them; only recording Bayes Factors is enough
+      if (type == "bayes") {
         expect_snapshot(names(res))
         expect_snapshot(res$bf10[[1L]])
+      } else {
+        expect_snapshot(select(res, -expression))
+        expect_snapshot(res[["expression"]])
       }
     },
     .cases = cases_data
