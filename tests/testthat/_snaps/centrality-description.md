@@ -3,35 +3,27 @@
     Code
       select(df, -expression)
     Output
-      # A tibble: 12 x 14
-         Species    Sepal.Length std.dev   iqr conf.low conf.high   min   max skewness
-         <fct>             <dbl>   <dbl> <dbl>    <dbl>     <dbl> <dbl> <dbl>    <dbl>
-       1 setosa             5.01   0.352 0.400     4.93      5.09   4.3   5.8    0.120
-       2 versicolor         5.94   0.516 0.7       5.82      6.05   4.9   7      0.105
-       3 virginica          6.59   0.636 0.750     6.46      6.75   4.9   7.9    0.118
-       4 setosa             5     NA     0.400     4.9       5.1    4.3   5.8    0.120
-       5 versicolor         5.9   NA     0.7       5.65      6.1    4.9   7      0.105
-       6 virginica          6.5   NA     0.750     6.32      6.7    4.9   7.9    0.118
-       7 setosa             5      0.352 0.400     4.92      5.09   4.3   5.8    0.120
-       8 versicolor         5.91   0.516 0.7       5.81      6.07   4.9   7      0.105
-       9 virginica          6.55   0.636 0.750     6.42      6.71   4.9   7.9    0.118
-      10 setosa             5.02  NA     0.400     5.00      5.05   4.3   5.8    0.120
-      11 versicolor         5.75  NA     0.7       5.63      5.85   4.9   7      0.105
-      12 virginica          6.40  NA     0.750     6.34      6.42   4.9   7.9    0.118
-         kurtosis n.obs missing.obs n.expression              mad
-            <dbl> <int>       <int> <chr>                   <dbl>
-       1  -0.253     50           0 "setosa\n(n = 50)"     NA    
-       2  -0.533     50           0 "versicolor\n(n = 50)" NA    
-       3   0.0329    50           0 "virginica\n(n = 50)"  NA    
-       4  -0.253     50           0 "setosa\n(n = 50)"      0.297
-       5  -0.533     50           0 "versicolor\n(n = 50)"  0.519
-       6   0.0329    50           0 "virginica\n(n = 50)"   0.593
-       7  -0.253     50           0 "setosa\n(n = 50)"     NA    
-       8  -0.533     50           0 "versicolor\n(n = 50)" NA    
-       9   0.0329    50           0 "virginica\n(n = 50)"  NA    
-      10  -0.253     50           0 "setosa\n(n = 50)"     NA    
-      11  -0.533     50           0 "versicolor\n(n = 50)" NA    
-      12   0.0329    50           0 "virginica\n(n = 50)"  NA    
+      # A tibble: 8 x 14
+           am    wt std.dev   iqr conf.low conf.high   min   max skewness kurtosis
+        <dbl> <dbl>   <dbl> <dbl>    <dbl>     <dbl> <dbl> <dbl>    <dbl>    <dbl>
+      1     0  3.77   0.777 0.41      3.48      4.09  2.46  5.42    1.15     1.06 
+      2     1  2.41   0.617 0.942     2.20      2.69  1.51  3.57    0.269   -0.654
+      3     0  3.52  NA     0.41      3.44      3.84  2.46  5.42    1.15     1.06 
+      4     1  2.32  NA     0.942     1.99      3.17  1.51  3.57    0.269   -0.654
+      5     0  3.60   0.777 0.41      3.46      4.05  2.46  5.42    1.15     1.06 
+      6     1  2.39   0.617 0.942     2.06      2.74  1.51  3.57    0.269   -0.654
+      7     0  3.47  NA     0.41      3.44      3.53  2.46  5.42    1.15     1.06 
+      8     1  2.34  NA     0.942     2.01      2.76  1.51  3.57    0.269   -0.654
+        n.obs missing.obs n.expression     mad
+        <int>       <int> <chr>          <dbl>
+      1    19           0 "0\n(n = 19)" NA    
+      2    13           0 "1\n(n = 13)" NA    
+      3    19           0 "0\n(n = 19)"  0.452
+      4    13           0 "1\n(n = 13)"  0.682
+      5    19           0 "0\n(n = 19)" NA    
+      6    13           0 "1\n(n = 13)" NA    
+      7    19           0 "0\n(n = 19)" NA    
+      8    13           0 "1\n(n = 13)" NA    
 
 ---
 
@@ -39,40 +31,28 @@
       df[["expression"]]
     Output
       [[1]]
-      list(widehat(mu)[mean] == "5.01")
+      list(widehat(mu)[mean] == "3.769")
       
       [[2]]
-      list(widehat(mu)[mean] == "5.94")
+      list(widehat(mu)[mean] == "2.411")
       
       [[3]]
-      list(widehat(mu)[mean] == "6.59")
+      list(widehat(mu)[median] == "3.520")
       
       [[4]]
-      list(widehat(mu)[median] == "5.000")
+      list(widehat(mu)[median] == "2.320")
       
       [[5]]
-      list(widehat(mu)[median] == "5.900")
+      list(widehat(mu)[trimmed] == "3.599")
       
       [[6]]
-      list(widehat(mu)[median] == "6.500")
+      list(widehat(mu)[trimmed] == "2.386")
       
       [[7]]
-      list(widehat(mu)[trimmed] == "5.000")
+      list(widehat(mu)[MAP] == "3.472")
       
       [[8]]
-      list(widehat(mu)[trimmed] == "5.910")
-      
-      [[9]]
-      list(widehat(mu)[trimmed] == "6.547")
-      
-      [[10]]
-      list(widehat(mu)[MAP] == "5.02")
-      
-      [[11]]
-      list(widehat(mu)[MAP] == "5.75")
-      
-      [[12]]
-      list(widehat(mu)[MAP] == "6.40")
+      list(widehat(mu)[MAP] == "2.339")
       
 
 # centrality description works as expected - missing data
@@ -97,8 +77,8 @@
       12 LDLF        5.72    2.71   4       5.27      6.35   0      10   -0.132
       13 HDHF        9.98   NA      4       9.97      9.99   0      10   -1.13 
       14 HDLF        9.73   NA      5       9.10      9.92   0      10   -0.740
-      15 LDHF        9.86   NA      3.5     9.82      9.97   0.5    10   -0.947
-      16 LDLF        5.99   NA      4       5.59      6.25   0      10   -0.132
+      15 LDHF        9.85   NA      3.5     9.82      9.97   0.5    10   -0.947
+      16 LDLF        5.99   NA      4       5.58      6.26   0      10   -0.132
          kurtosis n.obs missing.obs n.expression       mad
             <dbl> <int>       <int> <chr>            <dbl>
        1    0.486    92           0 "HDHF\n(n = 92)" NA   
@@ -166,7 +146,7 @@
       list(widehat(mu)[MAP] == "9.73")
       
       [[15]]
-      list(widehat(mu)[MAP] == "9.86")
+      list(widehat(mu)[MAP] == "9.85")
       
       [[16]]
       list(widehat(mu)[MAP] == "5.99")
