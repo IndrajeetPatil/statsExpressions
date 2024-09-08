@@ -150,7 +150,7 @@ statistical reporting for both Bayesian [@van2020jasp] and Frequentist
 #| echo = FALSE,
 #| fig.cap = "The templates used in `{statsExpressions}` to display statistical details in a
 #| plot."
-knitr::include_graphics("../man/figures/stats_reporting_format.png")
+knitr::include_graphics("stats_reporting_format.png")
 ```
 
 This expression be easily displayed in a plot (Figure 2). Displaying statistical

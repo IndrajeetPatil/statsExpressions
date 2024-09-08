@@ -60,43 +60,27 @@
     Code
       select(df_na, -expression)
     Output
-      # A tibble: 16 x 14
-         condition desire std.dev   iqr conf.low conf.high   min   max skewness
-         <chr>      <dbl>   <dbl> <dbl>    <dbl>     <dbl> <dbl> <dbl>    <dbl>
-       1 HDHF        7.85    2.47   4       7.50      8.20   0      10   -1.13 
-       2 HDLF        6.74    3.11   5       6.22      7.26   0      10   -0.740
-       3 LDHF        7.38    2.52   3.5     7.01      7.88   0.5    10   -0.947
-       4 LDLF        5.72    2.71   4       5.34      6.10   0      10   -0.132
-       5 HDHF        8.75   NA      4       8         9.88   0      10   -1.13 
-       6 HDLF        8      NA      5       6         8.5    0      10   -0.740
-       7 LDHF        8      NA      3.5     7.25      8.5    0.5    10   -0.947
-       8 LDLF        6      NA      4       5         6.25   0      10   -0.132
-       9 HDHF        8.47    2.47   4       7.73      8.67   0      10   -1.13 
-      10 HDLF        7.32    3.11   5       6.35      7.77   0      10   -0.740
-      11 LDHF        7.88    2.52   3.5     7.12      8.12   0.5    10   -0.947
-      12 LDLF        5.72    2.71   4       5.27      6.35   0      10   -0.132
-      13 HDHF        9.98   NA      4       9.97      9.99   0      10   -1.13 
-      14 HDLF        9.73   NA      5       9.10      9.92   0      10   -0.740
-      15 LDHF        9.85   NA      3.5     9.82      9.97   0.5    10   -0.947
-      16 LDLF        5.99   NA      4       5.58      6.26   0      10   -0.132
-         kurtosis n.obs missing.obs n.expression       mad
-            <dbl> <int>       <int> <chr>            <dbl>
-       1    0.486    92           0 "HDHF\n(n = 92)" NA   
-       2   -0.663    91           0 "HDLF\n(n = 91)" NA   
-       3    0.160    91           0 "LDHF\n(n = 91)" NA   
-       4   -0.761    93           0 "LDLF\n(n = 93)" NA   
-       5    0.486    92           0 "HDHF\n(n = 92)"  1.85
-       6   -0.663    91           0 "HDLF\n(n = 91)"  2.97
-       7    0.160    91           0 "LDHF\n(n = 91)"  2.97
-       8   -0.761    93           0 "LDLF\n(n = 93)"  2.97
-       9    0.486    92           0 "HDHF\n(n = 92)" NA   
-      10   -0.663    91           0 "HDLF\n(n = 91)" NA   
-      11    0.160    91           0 "LDHF\n(n = 91)" NA   
-      12   -0.761    93           0 "LDLF\n(n = 93)" NA   
-      13    0.486    92           0 "HDHF\n(n = 92)" NA   
-      14   -0.663    91           0 "HDLF\n(n = 91)" NA   
-      15    0.160    91           0 "LDHF\n(n = 91)" NA   
-      16   -0.761    93           0 "LDLF\n(n = 93)" NA   
+      # A tibble: 8 x 14
+        gender desire std.dev   iqr conf.low conf.high   min   max skewness kurtosis
+        <fct>   <dbl>   <dbl> <dbl>    <dbl>     <dbl> <dbl> <dbl>    <dbl>    <dbl>
+      1 Female   7.07    2.87     5     6.77      7.36     0    10   -0.733   -0.550
+      2 Male     6.53    2.73     4     6.20      6.98     0    10   -0.628   -0.447
+      3 Female   8      NA        5     7         8.5      0    10   -0.733   -0.550
+      4 Male     7      NA        4     6         8        0    10   -0.628   -0.447
+      5 Female   7.63    2.87     5     7.05      7.69     0    10   -0.733   -0.550
+      6 Male     6.86    2.73     4     6.27      7.27     0    10   -0.628   -0.447
+      7 Female  10      NA        5     9.99     10        0    10   -0.733   -0.550
+      8 Male     7.89   NA        4     7.57      8.91     0    10   -0.628   -0.447
+        n.obs missing.obs n.expression          mad
+        <int>       <int> <chr>               <dbl>
+      1   247           0 "Female\n(n = 247)" NA   
+      2   116           0 "Male\n(n = 116)"   NA   
+      3   247           0 "Female\n(n = 247)"  2.97
+      4   116           0 "Male\n(n = 116)"    2.97
+      5   247           0 "Female\n(n = 247)" NA   
+      6   116           0 "Male\n(n = 116)"   NA   
+      7   247           0 "Female\n(n = 247)" NA   
+      8   116           0 "Male\n(n = 116)"   NA   
 
 ---
 
@@ -104,52 +88,28 @@
       df_na[["expression"]]
     Output
       [[1]]
-      list(widehat(mu)[mean] == "7.853")
+      list(widehat(mu)[mean] == "7.073")
       
       [[2]]
-      list(widehat(mu)[mean] == "6.742")
+      list(widehat(mu)[mean] == "6.534")
       
       [[3]]
-      list(widehat(mu)[mean] == "7.379")
+      list(widehat(mu)[median] == "8.000")
       
       [[4]]
-      list(widehat(mu)[mean] == "5.715")
+      list(widehat(mu)[median] == "7.000")
       
       [[5]]
-      list(widehat(mu)[median] == "8.750")
+      list(widehat(mu)[trimmed] == "7.631")
       
       [[6]]
-      list(widehat(mu)[median] == "8.000")
+      list(widehat(mu)[trimmed] == "6.857")
       
       [[7]]
-      list(widehat(mu)[median] == "8.000")
+      list(widehat(mu)[MAP] == "10.000")
       
       [[8]]
-      list(widehat(mu)[median] == "6.000")
-      
-      [[9]]
-      list(widehat(mu)[trimmed] == "8.473")
-      
-      [[10]]
-      list(widehat(mu)[trimmed] == "7.318")
-      
-      [[11]]
-      list(widehat(mu)[trimmed] == "7.882")
-      
-      [[12]]
-      list(widehat(mu)[trimmed] == "5.719")
-      
-      [[13]]
-      list(widehat(mu)[MAP] == "9.980")
-      
-      [[14]]
-      list(widehat(mu)[MAP] == "9.726")
-      
-      [[15]]
-      list(widehat(mu)[MAP] == "9.851")
-      
-      [[16]]
-      list(widehat(mu)[MAP] == "5.992")
+      list(widehat(mu)[MAP] == "7.889")
       
 
 # centrality description works when variable is named `variable`

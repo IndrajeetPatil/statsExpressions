@@ -30,7 +30,7 @@ test_that(
     df_na <- purrr::pmap_dfr(
       .l = list(
         data = list(bugs_long),
-        x = alist(condition),
+        x = alist(gender),
         y = alist(desire),
         type = list("p", "np", "r", "b"),
         digits = 3L,
