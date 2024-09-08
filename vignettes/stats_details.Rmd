@@ -17,7 +17,7 @@ vignette: >
 #| warning = FALSE,
 #| include = FALSE,
 #| echo = FALSE
-source("../setup.R")
+source("setup.R")
 ```
 
 This vignette can be cited as:
