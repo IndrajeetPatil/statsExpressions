@@ -38,7 +38,7 @@ Abbreviations used: CI = Confidence Interval
 
 ## Summary of functionality
 
-```{r child="./../../man/rmd-fragments/functionality.Rmd"}
+```{r child="man/rmd-fragments/functionality.Rmd"}
 ```
 
 ## Summary of tests and effect sizes
@@ -52,37 +52,37 @@ more about how one-way (between-subjects) ANOVA, you can run
 
 ### `centrality_description()`
 
-```{r child="./../../man/rmd-fragments/centrality_description.Rmd"}
+```{r child="man/rmd-fragments/centrality_description.Rmd"}
 ```
 
 ### `oneway_anova()`
 
-```{r child="./../../man/rmd-fragments/oneway_anova.Rmd"}
+```{r child="man/rmd-fragments/oneway_anova.Rmd"}
 ```
 
 ### `two_sample_test()` 
 
-```{r child="./../../man/rmd-fragments/two_sample_test.Rmd"}
+```{r child="man/rmd-fragments/two_sample_test.Rmd"}
 ```
 
 ### `one_sample_test()`
 
-```{r child="./../../man/rmd-fragments/one_sample_test.Rmd"}
+```{r child="man/rmd-fragments/one_sample_test.Rmd"}
 ```
 
 ### `corr_test()`
 
-```{r child="./../../man/rmd-fragments/corr_test.Rmd"}
+```{r child="man/rmd-fragments/corr_test.Rmd"}
 ```
 
 ### `contingency_table()`
 
-```{r child="./../../man/rmd-fragments/contingency_table.Rmd"}
+```{r child="man/rmd-fragments/contingency_table.Rmd"}
 ```
 
 ### `meta_analysis()`
 
-```{r child="./../../man/rmd-fragments/meta_analysis.Rmd"}
+```{r child="man/rmd-fragments/meta_analysis.Rmd"}
 ```
 
 ## Effect size interpretation
