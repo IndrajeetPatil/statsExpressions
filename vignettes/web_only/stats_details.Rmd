@@ -4,19 +4,26 @@ output:
   rmarkdown::html_vignette:
     toc: true
     toc_depth: 4
+    keep_md: true
 vignette: >
   %\VignetteIndexEntry{Test and effect size details}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r}
+```{r setup}
 #| label = "setup",
 #| message = FALSE,
 #| warning = FALSE,
 #| include = FALSE,
 #| echo = FALSE
 source("../setup.R")
+
+# TODO: check if the pkgdown issue with child document path is resolved
+# for now, run `rmarkdown::render("vignettes/web_only/stats_details.Rmd")` from root directory
+knitr::opts_chunk$set(
+  eval = if (identical(Sys.getenv("IN_PKGDOWN"), "true")) FALSE else TRUE
+)
 ```
 
 This vignette can be cited as:
