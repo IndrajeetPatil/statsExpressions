@@ -2,6 +2,8 @@
 ^.*\.Rproj$
 ^.dev$
 ^.gitlab-ci\.yml$
+^gitsum$
+^man-roxygen$
 ^API$
 ^CITATION\.cff$
 ^CODE_OF_CONDUCT\.md$
@@ -45,7 +47,7 @@
 ^paper.*$
 ^pkgdown$
 ^revdep$
+^shell$
 ^tests/manual$
 publication/*
 references.bib
-tests\^spelling
