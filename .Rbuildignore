@@ -2,8 +2,6 @@
 ^.*\.Rproj$
 ^.dev$
 ^.gitlab-ci\.yml$
-^gitsum$
-^man-roxygen$
 ^API$
 ^CITATION\.cff$
 ^CODE_OF_CONDUCT\.md$
@@ -42,7 +40,9 @@
 ^data-raw$
 ^doc$
 ^docs$
+^gitsum$
 ^hextools/.
+^man-roxygen$
 ^old/.
 ^paper.*$
 ^pkgdown$

@@ -6,7 +6,7 @@ default_language_version:
 
 repos:
   - repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.4.2
+    rev: v0.4.3
     hooks:
       - id: no-browser-statement
       - id: no-debug-statement
