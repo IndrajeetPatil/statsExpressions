@@ -20,9 +20,6 @@ disgustingness).
 0 to 10.
 }
 }
-\source{
-\url{https://www.sciencedirect.com/science/article/pii/S0747563213000277}
-}
 \usage{
 bugs_long
 }
@@ -39,5 +36,11 @@ all anthropods. Subset of the data reported by Ryan et al. (2013).
 dim(bugs_long)
 head(bugs_long)
 dplyr::glimpse(bugs_long)
+}
+\references{
+Ryan, R. S., Wilde, M., & Crist, S. (2013). Compared to a small, supervised
+lab experiment, a large, unsupervised web-based experiment on a previously
+unknown effect has benefits that outweigh its potential costs. \emph{Computers in
+Human Behavior}, \emph{29}(4), 1295-1301.
 }
 \keyword{datasets}
