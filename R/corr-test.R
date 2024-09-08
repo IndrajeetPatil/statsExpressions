@@ -6,15 +6,15 @@
 #'
 #' @section Correlation analyses:
 #'
-#' ```{r child="inst/rmd-fragments/table_intro.Rmd"}
+#' ```{r child="man/rmd-fragments/table_intro.Rmd"}
 #' ```
 #'
-#' ```{r child="inst/rmd-fragments/corr_test.Rmd"}
+#' ```{r child="man/rmd-fragments/corr_test.Rmd"}
 #' ```
 #'
 #' @returns
 #'
-#' ```{r child="inst/rmd-fragments/return.Rmd"}
+#' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```
 #'
 #' @param x The column in `data` containing the explanatory variable to be

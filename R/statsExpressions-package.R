@@ -4,7 +4,7 @@
 #'
 #' @description
 #'
-#' ```{r child="inst/rmd-fragments/statsExpressions-package.Rmd"}
+#' ```{r child="man/rmd-fragments/statsExpressions-package.Rmd"}
 #'
 #' ```
 #'

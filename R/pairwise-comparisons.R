@@ -18,15 +18,15 @@
 #'
 #' @section Pairwise comparison tests:
 #'
-#' ```{r child="inst/rmd-fragments/table_intro.Rmd"}
+#' ```{r child="man/rmd-fragments/table_intro.Rmd"}
 #' ```
 #'
-#' ```{r child="inst/rmd-fragments/pairwise_comparisons.Rmd"}
+#' ```{r child="man/rmd-fragments/pairwise_comparisons.Rmd"}
 #' ```
 #'
 #' @returns
 #'
-#' ```{r child="inst/rmd-fragments/return.Rmd"}
+#' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```
 #'
 #' @references For more, see:

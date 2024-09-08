@@ -13,15 +13,15 @@
 #'
 #' @section Two-sample tests:
 #'
-#' ```{r child="inst/rmd-fragments/table_intro.Rmd"}
+#' ```{r child="man/rmd-fragments/table_intro.Rmd"}
 #' ```
 #'
-#' ```{r child="inst/rmd-fragments/two_sample_test.Rmd"}
+#' ```{r child="man/rmd-fragments/two_sample_test.Rmd"}
 #' ```
 #'
 #' @returns
 #'
-#' ```{r child="inst/rmd-fragments/return.Rmd"}
+#' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```
 #'
 #' @autoglobal
