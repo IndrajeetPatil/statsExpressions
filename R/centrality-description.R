@@ -14,10 +14,10 @@
 #'
 #' @section Centrality measures:
 #'
-#' ```{r child="man/rmd-fragments/table_intro.Rmd"}
+#' ```{r child="inst/rmd-fragments/table_intro.Rmd"}
 #' ```
 #'
-#' ```{r child="man/rmd-fragments/centrality_description.Rmd"}
+#' ```{r child="inst/rmd-fragments/centrality_description.Rmd"}
 #' ```
 #'
 #' @param x The grouping (or independent) variable in `data`.

@@ -6,15 +6,15 @@
 #'
 #' @section One-way ANOVA:
 #'
-#' ```{r child="man/rmd-fragments/table_intro.Rmd"}
+#' ```{r child="inst/rmd-fragments/table_intro.Rmd"}
 #' ```
 #'
-#' ```{r child="man/rmd-fragments/oneway_anova.Rmd"}
+#' ```{r child="inst/rmd-fragments/oneway_anova.Rmd"}
 #' ```
 #'
 #' @returns
 #'
-#' ```{r child="man/rmd-fragments/return.Rmd"}
+#' ```{r child="inst/rmd-fragments/return.Rmd"}
 #' ```
 #'
 #' @inheritParams long_to_wide_converter

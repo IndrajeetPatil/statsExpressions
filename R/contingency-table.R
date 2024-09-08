@@ -6,15 +6,15 @@
 #'
 #' @section Contingency table analyses:
 #'
-#' ```{r child="man/rmd-fragments/table_intro.Rmd"}
+#' ```{r child="inst/rmd-fragments/table_intro.Rmd"}
 #' ```
 #'
-#' ```{r child="man/rmd-fragments/contingency_table.Rmd"}
+#' ```{r child="inst/rmd-fragments/contingency_table.Rmd"}
 #' ```
 #'
 #' @returns
 #'
-#' ```{r child="man/rmd-fragments/return.Rmd"}
+#' ```{r child="inst/rmd-fragments/return.Rmd"}
 #' ```
 #'
 #' @param x The variable to use as the **rows** in the contingency table.

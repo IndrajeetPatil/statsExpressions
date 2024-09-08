@@ -18,15 +18,15 @@
 #'
 #' @section Random-effects meta-analysis:
 #'
-#' ```{r child="man/rmd-fragments/table_intro.Rmd"}
+#' ```{r child="inst/rmd-fragments/table_intro.Rmd"}
 #' ```
 #'
-#' ```{r child="man/rmd-fragments/corr_test.Rmd"}
+#' ```{r child="inst/rmd-fragments/corr_test.Rmd"}
 #' ```
 #'
 #' @returns
 #'
-#' ```{r child="man/rmd-fragments/return.Rmd"}
+#' ```{r child="inst/rmd-fragments/return.Rmd"}
 #' ```
 #'
 #' @note
