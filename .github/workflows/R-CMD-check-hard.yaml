@@ -45,6 +45,7 @@ jobs:
             any::rmarkdown
             any::curl
             any::testthat
+            any::patrick
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2

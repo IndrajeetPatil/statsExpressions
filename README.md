@@ -64,13 +64,14 @@ citation("statsExpressions")
 To cite package 'statsExpressions' in publications use:
 
   Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes
-  and Expressions with Statistical Details. *Journal of Open Source
-  Software*, *6*(61), 3236, https://doi.org/10.21105/joss.03236
+  and Expressions with Statistical Details. Journal of Open Source
+  Software, 6(61), 3236, https://doi.org/10.21105/joss.03236
 
 A BibTeX entry for LaTeX users is
 
   @Article{,
     doi = {10.21105/joss.03236},
+    url = {https://doi.org/10.21105/joss.03236},
     year = {2021},
     publisher = {{The Open Journal}},
     volume = {6},
@@ -141,9 +142,6 @@ mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
 #>   conf.high conf.method          conf.iterations n.obs expression
 #>       <dbl> <chr>                          <int> <int> <list>    
 #> 1         1 percentile bootstrap             100    32 <language>
-```
-
-``` r
 
 mtcars %>% oneway_anova(cyl, wt, type = "robust")
 #> # A tibble: 1 × 12
@@ -490,9 +488,6 @@ set.seed(123)
 #> list(italic("F")["Fisher"](2, 147) == "119.26", italic(p) == 
 #>     "1.67e-31", widehat(omega["p"]^2) == "0.61", CI["95%"] ~ 
 #>     "[" * "0.53", "1.00" * "]", italic("n")["obs"] == "150")
-```
-
-``` r
 
 # adapting the details to your liking
 ggplot(iris, aes(x = Species, y = Sepal.Length)) +

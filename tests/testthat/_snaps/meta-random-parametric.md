@@ -25,3 +25,11 @@
           "16")
       
 
+---
+
+    Code
+      meta_analysis(mtcars)
+    Condition
+      Error:
+      ! Cannot find the object/variable ('estimate') specified for the 'yi' argument.
+

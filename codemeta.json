@@ -125,6 +125,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "patrick",
+      "name": "patrick",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=patrick"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "rmarkdown",
       "name": "rmarkdown",
       "provider": {
@@ -189,7 +201,7 @@
       "@type": "SoftwareApplication",
       "identifier": "afex",
       "name": "afex",
-      "version": ">= 1.3-1",
+      "version": ">= 1.4-1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -228,7 +240,7 @@
       "@type": "SoftwareApplication",
       "identifier": "datawizard",
       "name": "datawizard",
-      "version": ">= 0.12.2",
+      "version": ">= 0.12.3",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -280,7 +292,7 @@
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
-      "version": ">= 0.20.2",
+      "version": ">= 0.20.4",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -306,7 +318,7 @@
       "@type": "SoftwareApplication",
       "identifier": "parameters",
       "name": "parameters",
-      "version": ">= 0.22.1",
+      "version": ">= 0.22.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -319,7 +331,7 @@
       "@type": "SoftwareApplication",
       "identifier": "performance",
       "name": "performance",
-      "version": ">= 0.12.2",
+      "version": ">= 0.12.3",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -402,7 +414,7 @@
       "@type": "SoftwareApplication",
       "identifier": "withr",
       "name": "withr",
-      "version": ">= 3.0.0",
+      "version": ">= 3.0.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -439,7 +451,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4129.212KB",
+  "fileSize": "4135.693KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",

@@ -1,10 +1,9 @@
 Type: Package
 Package: statsExpressions
 Title: Tidy Dataframes and Expressions with Statistical Details
-Version: 1.5.5.9000
+Version: 1.6.0
 Authors@R: 
-    person("Indrajeet", "Patil", , "patilindrajeet.science@gmail.com", role = c("cre", "aut", "cph"),
-           comment = c(ORCID = "0000-0003-1995-6531", Twitter = "@patilindrajeets"))
+    person("Indrajeet", "Patil", , "patilindrajeet.science@gmail.com", role = c("cre", "aut", "cph"))
 Maintainer: Indrajeet Patil <patilindrajeet.science@gmail.com>
 Description: Utilities for producing dataframes with rich details for the
     most common types of statistical approaches and tests: parametric,
@@ -22,24 +21,24 @@ BugReports: https://github.com/IndrajeetPatil/statsExpressions/issues
 Depends: 
     R (>= 4.1.0)
 Imports:
-    afex (>= 1.3-1),
+    afex (>= 1.4-1),
     BayesFactor (>= 0.9.12-4.7),
     correlation (>= 0.8.5),
-    datawizard (>= 0.12.2),
+    datawizard (>= 0.12.3),
     dplyr (>= 1.1.4),
     effectsize (>= 0.8.9),
     glue (>= 1.7.0),
-    insight (>= 0.20.2),
+    insight (>= 0.20.4),
     magrittr (>= 2.0.3),
-    parameters (>= 0.22.1),
-    performance (>= 0.12.2),
+    parameters (>= 0.22.2),
+    performance (>= 0.12.3),
     PMCMRplus (>= 1.9.10),
     purrr (>= 1.0.2),
     rlang (>= 1.1.4),
     stats,
     tibble (>= 3.2.1),
     tidyr (>= 1.3.1),
-    withr (>= 3.0.0),
+    withr (>= 3.0.1),
     WRS2 (>= 1.1-6),
     zeallot (>= 0.1.0)
 Suggests:
@@ -49,6 +48,7 @@ Suggests:
     metaBMA,
     metafor,
     metaplus (>= 1.0-5),
+    patrick,
     rmarkdown,
     rstantools,
     survival,
@@ -65,4 +65,4 @@ Language: en-US
 LazyData: true
 Roxygen: list( markdown = TRUE, roclets = c("collate", "namespace", "rd",
     "pkgapi::api_roclet", "roxyglobals::global_roclet") )
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.2.9000

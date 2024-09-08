@@ -1,9 +1,6 @@
 test_that(
   desc = "parametric anova subtitles work (without NAs)",
   code = {
-    # parametric anova subtitles (without NAs) ------------------------------
-
-    # statsExpression output
     set.seed(123)
     df <- oneway_anova(
       data = mtcars,
@@ -18,7 +15,7 @@ test_that(
     expect_snapshot(select(df, -expression))
     expect_snapshot(df[["expression"]])
 
-    # statsExpression output
+
     set.seed(123)
     df1 <- oneway_anova(
       data = mtcars,
@@ -38,9 +35,6 @@ test_that(
 test_that(
   desc = "parametric anova subtitles with partial omega-squared",
   code = {
-    # parametric anova subtitles (partial omega) ------------------------------
-
-    # statsExpression output
     set.seed(123)
     df1 <- oneway_anova(
       data = msleep,
@@ -59,9 +53,6 @@ test_that(
 test_that(
   desc = "paired parametric anova subtitles work (without NAs)",
   code = {
-    # parametric repeated anova subtitles (basic) ----------------------------
-
-    # statsExpression output
     set.seed(123)
     df1 <- oneway_anova(
       data = iris_long,
@@ -85,7 +76,6 @@ test_that(
   code = {
     df <- data_with_subid
 
-
     set.seed(123)
     expr1 <- oneway_anova(
       data = df,
@@ -95,7 +85,6 @@ test_that(
       paired = TRUE
     )
 
-
     set.seed(123)
     expr2 <- oneway_anova(
       data = arrange(df, id),
@@ -104,6 +93,6 @@ test_that(
       paired = TRUE
     )
 
-    expect_equal(expr1, expr2, ignore_attr = TRUE)
+    expect_identical(expr1, expr2)
   }
 )

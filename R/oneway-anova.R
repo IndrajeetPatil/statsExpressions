@@ -43,7 +43,7 @@
 #'
 #' @autoglobal
 #'
-#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && getRversion() >= "4.4.0"
+#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
 #' # for reproducibility
 #' set.seed(123)
 #' library(statsExpressions)
@@ -106,7 +106,7 @@
 #'   type       = "r"
 #' )
 #'
-#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("rstantools") && getRversion() >= "4.4.0"
+#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("rstantools")
 #'
 #' # ----------------------- Bayesian -------------------------------------
 #'

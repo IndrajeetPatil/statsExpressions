@@ -1,5 +1,6 @@
 Meta
 doc
+docs
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -37,6 +38,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 # R Studio files
+*.html
 .RData
 .Rhistory
 .Rproj.user

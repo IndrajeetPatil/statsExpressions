@@ -1,4 +1,11 @@
-# statsExpressions 1.5.5.9000
+# statsExpressions 1.6.0
+
+## MAJOR CHANGES
+
+- _Test and effect size details_ vignette is now available only on the package
+  website (https://indrajeetpatil.github.io/statsExpressions/articles/).
+
+- Unused dataset has been removed: `movies_wide`.
 
 # statsExpressions 1.5.5
 

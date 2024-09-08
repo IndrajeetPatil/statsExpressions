@@ -1,17 +1,14 @@
-skip_if_not_installed("boot")
-skip_if_not(getRversion() >= "4.4.0")
-
 test_that(
   desc = "centrality description works as expected - no missing data",
   code = {
     set.seed(123)
     df <- purrr::pmap_dfr(
       .l = list(
-        data = list(iris),
-        x = alist(Species),
-        y = alist(Sepal.Length),
+        data = list(mtcars),
+        x = alist(am),
+        y = alist(wt),
         type = list("p", "np", "r", "b"),
-        digits = list(2L, 3L, 3L, 2L),
+        digits = 3L,
         conf.level = list(0.89, 0.99, 0.90, 0.50)
       ),
       .f = centrality_description
@@ -33,10 +30,10 @@ test_that(
     df_na <- purrr::pmap_dfr(
       .l = list(
         data = list(bugs_long),
-        x = alist(condition),
+        x = alist(gender),
         y = alist(desire),
         type = list("p", "np", "r", "b"),
-        digits = list(2L, 3L, 3L, 2L),
+        digits = 3L,
         conf.level = list(0.89, 0.99, 0.90, 0.50)
       ),
       .f = centrality_description
