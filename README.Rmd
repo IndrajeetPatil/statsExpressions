@@ -47,7 +47,6 @@ On Linux, `{statsExpressions}` installation may require additional system depend
 pak::pkg_sysreqs("statsExpressions")
 ```
 
-
 # Citation
 
 The package can be cited as:

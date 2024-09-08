@@ -2,7 +2,7 @@
 
 0 errors | 0 warnings | 0 note
 
-* Updates code to fix warnings coming via updates to easystats packages.
+* Fixes CRAN vignette build failures on R-oldrel.
 
 ## revdepcheck results
 
