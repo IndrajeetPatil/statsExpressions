@@ -104,16 +104,16 @@
       df_na[["expression"]]
     Output
       [[1]]
-      list(widehat(mu)[mean] == "7.85")
+      list(widehat(mu)[mean] == "7.853")
       
       [[2]]
-      list(widehat(mu)[mean] == "6.74")
+      list(widehat(mu)[mean] == "6.742")
       
       [[3]]
-      list(widehat(mu)[mean] == "7.38")
+      list(widehat(mu)[mean] == "7.379")
       
       [[4]]
-      list(widehat(mu)[mean] == "5.72")
+      list(widehat(mu)[mean] == "5.715")
       
       [[5]]
       list(widehat(mu)[median] == "8.750")
@@ -140,16 +140,16 @@
       list(widehat(mu)[trimmed] == "5.719")
       
       [[13]]
-      list(widehat(mu)[MAP] == "9.98")
+      list(widehat(mu)[MAP] == "9.980")
       
       [[14]]
-      list(widehat(mu)[MAP] == "9.73")
+      list(widehat(mu)[MAP] == "9.726")
       
       [[15]]
-      list(widehat(mu)[MAP] == "9.85")
+      list(widehat(mu)[MAP] == "9.851")
       
       [[16]]
-      list(widehat(mu)[MAP] == "5.99")
+      list(widehat(mu)[MAP] == "5.992")
       
 
 # centrality description works when variable is named `variable`

@@ -8,7 +8,7 @@ test_that(
         x = alist(am),
         y = alist(wt),
         type = list("p", "np", "r", "b"),
-        digits = list(3L, 3L, 3L, 3L),
+        digits = 3L,
         conf.level = list(0.89, 0.99, 0.90, 0.50)
       ),
       .f = centrality_description
@@ -33,7 +33,7 @@ test_that(
         x = alist(condition),
         y = alist(desire),
         type = list("p", "np", "r", "b"),
-        digits = list(2L, 3L, 3L, 2L),
+        digits = 3L,
         conf.level = list(0.89, 0.99, 0.90, 0.50)
       ),
       .f = centrality_description
