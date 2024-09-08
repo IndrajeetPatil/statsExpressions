@@ -18,12 +18,6 @@ vignette: >
 #| include = FALSE,
 #| echo = FALSE
 source("../setup.R")
-
-# TODO: check if the pkgdown issue with child document path is resolved # nolint.
-# for now, run `rmarkdown::render("vignettes/web_only/stats_details.Rmd")` from root directory
-knitr::opts_chunk$set(
-  eval = if (identical(Sys.getenv("IN_PKGDOWN"), "true")) FALSE else TRUE
-)
 ```
 
 This vignette can be cited as:
