@@ -1,0 +1,30 @@
+name: Releases
+
+on:
+  push:
+    tags:
+      - v*
+  workflow_run:
+    workflows: ["check package on main with checklist"]
+    types:
+      - completed
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get tag
+        run: |
+          git fetch --tags --force
+          TAG=$(git tag --contains $(git rev-parse HEAD))
+          TAG_BODY=$(git tag --contains $(git rev-parse HEAD) --format='%(contents)')
+          echo "tag=$TAG" >> $GITHUB_ENV
+          echo "$TAG_BODY" > body.md
+      - uses: ncipollo/release-action@v1
+        with:
+          name: Release ${{ env.tag }}
+          tag: ${{ env.tag }}
+          bodyFile: body.md

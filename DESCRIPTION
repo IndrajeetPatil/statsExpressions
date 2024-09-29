@@ -61,7 +61,7 @@ Config/roxyglobals/unique: TRUE
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Encoding: UTF-8
-Language: en-US
+Language: en-GB
 LazyData: true
 Roxygen: list( markdown = TRUE, roclets = c("collate", "namespace", "rd",
     "pkgapi::api_roclet", "roxyglobals::global_roclet") )

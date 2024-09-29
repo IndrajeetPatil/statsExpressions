@@ -1,53 +1,67 @@
-Meta
-doc
-docs
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
 
+# =========================
+# Directories potentially created on remote AFP share
+# Files that might appear in the root of a volume
 # Folder config file
-Desktop.ini
+# OSX
+# Operating System Files
+# R Studio files
 # Recycle Bin used on file shares
-$RECYCLE.BIN/
+# Thumbnails
 # Windows Installer files
+# Windows image file caches
+# Windows shortcuts
+$RECYCLE.BIN/
 *.cab
+*.dbf
+*.doc*
+*.gddoc
+*.gdsheet
+*.gpkg
+*.html
+*.lnk
+*.mdb
 *.msi
 *.msm
 *.msp
-# Windows shortcuts
-*.lnk
-# =========================
-# Operating System Files
-# OSX
+*.shp*
+*.shx
+*.xls*
+*_files
+.AppleDB
+.AppleDesktop
 .AppleDouble
 .DS_Store
-.LSOverride
-# Thumbnails
-._*
-# Files that might appear in the root of a volume
 .DocumentRevisions-V100
+.LSOverride
+.RData
+.Renviron
+.Rhistory
+.Rproj.user
+.Ruserdata
 .Spotlight-V100
 .TemporaryItems
 .Trashes
 .VolumeIcon.icns
-.fseventsd
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
+._*
 .apdisk
-Network Trash Folder
-Temporary Items
-# R Studio files
-*.html
-.RData
-.Rhistory
-.Rproj.user
-.Ruserdata
+.fseventsd
 .httr-oauth
 /Meta/
 /doc/
 CRAN-SUBMISSION
+Desktop.ini
+Meta
+Network Trash Folder
+Temporary Items
+Thumbs.db
+doc
+docs
+ehthumbs.db
 inst/doc
+libs
+output
+renv/library
 revdep/checks
 revdep/checks.noindex
 revdep/data.sqlite

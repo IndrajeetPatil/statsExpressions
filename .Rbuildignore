@@ -8,6 +8,7 @@
 ^CONDUCT\.md$
 ^CRAN-RELEASE$
 ^CRAN-SUBMISSION$
+^LICENSE.md$
 ^LICENSE\.md$
 ^Makefile$
 ^Meta$
@@ -30,11 +31,15 @@
 ^\.lintr$
 ^\.pre-commit-config\.yaml$
 ^\.travis\.yml$
+^\.zenodo\.json$
 ^\cache$
+^_pkgdown.yml$
 ^_pkgdown\.yaml$
 ^_pkgdown\.yml$
 ^appveyor\.yml$
+^checklist.yml$
 ^codecov\.yaml$
+^codecov\.yml$
 ^codemeta\.json$
 ^cran-comments\.md$
 ^data-raw$
@@ -44,6 +49,7 @@
 ^hextools/.
 ^man-roxygen$
 ^old/.
+^organisation.yml$
 ^paper.*$
 ^pkgdown$
 ^revdep$
