@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/IndrajeetPatil/statsExpressions",
   "issueTracker": "https://github.com/IndrajeetPatil/statsExpressions/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.5.5.9000",
+  "version": "1.6.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -26,8 +26,7 @@
       "@type": "Person",
       "givenName": "Indrajeet",
       "familyName": "Patil",
-      "email": "patilindrajeet.science@gmail.com",
-      "@id": "https://orcid.org/0000-0003-1995-6531"
+      "email": "patilindrajeet.science@gmail.com"
     }
   ],
   "copyrightHolder": [
@@ -35,8 +34,7 @@
       "@type": "Person",
       "givenName": "Indrajeet",
       "familyName": "Patil",
-      "email": "patilindrajeet.science@gmail.com",
-      "@id": "https://orcid.org/0000-0003-1995-6531"
+      "email": "patilindrajeet.science@gmail.com"
     }
   ],
   "maintainer": [
@@ -44,8 +42,7 @@
       "@type": "Person",
       "givenName": "Indrajeet",
       "familyName": "Patil",
-      "email": "patilindrajeet.science@gmail.com",
-      "@id": "https://orcid.org/0000-0003-1995-6531"
+      "email": "patilindrajeet.science@gmail.com"
     }
   ],
   "softwareSuggestions": [
@@ -344,7 +341,7 @@
       "@type": "SoftwareApplication",
       "identifier": "PMCMRplus",
       "name": "PMCMRplus",
-      "version": ">= 1.9.10",
+      "version": ">= 1.9.12",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -451,7 +448,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4135.693KB",
+  "fileSize": "4230.634KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
