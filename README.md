@@ -71,7 +71,6 @@ A BibTeX entry for LaTeX users is
 
   @Article{,
     doi = {10.21105/joss.03236},
-    url = {https://doi.org/10.21105/joss.03236},
     year = {2021},
     publisher = {{The Open Journal}},
     volume = {6},
