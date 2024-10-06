@@ -43,7 +43,7 @@ Imports:
     WRS2 (>= 1.1-6),
     zeallot (>= 0.1.0)
 Suggests:
-    bayestestR (>= 0.13.2),
+    bayestestR (>= 0.14.0),
     ggplot2,
     knitr,
     metaBMA,
@@ -55,6 +55,8 @@ Suggests:
     survival,
     testthat (>= 3.2.1),
     utils
+Remotes:
+    easystats/bayestestR
 VignetteBuilder: 
     knitr
 Config/Needs/check: anthonynorth/roxyglobals
