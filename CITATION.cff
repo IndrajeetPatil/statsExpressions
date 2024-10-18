@@ -2,7 +2,7 @@
 # CITATION file created with {cffr} R package
 # See also: https://docs.ropensci.org/cffr/
 # --------------------------------------------
- 
+
 cff-version: 1.2.0
 message: 'To cite package "statsExpressions" in publications use:'
 type: software
@@ -114,6 +114,40 @@ references:
   year: '2024'
   doi: 10.32614/CRAN.package.BayesFactor
   version: '>= 0.9.12-4.7'
+- type: software
+  title: bayestestR
+  abstract: 'bayestestR: Understand and Describe Bayesian Models and Posterior Distributions'
+  notes: Imports
+  url: https://easystats.github.io/bayestestR/
+  repository: https://CRAN.R-project.org/package=bayestestR
+  authors:
+  - family-names: Makowski
+    given-names: Dominique
+    email: dom.makowski@gmail.com
+    orcid: https://orcid.org/0000-0001-5375-9967
+  - family-names: Lüdecke
+    given-names: Daniel
+    email: d.luedecke@uke.de
+    orcid: https://orcid.org/0000-0002-8895-3206
+  - family-names: Ben-Shachar
+    given-names: Mattan S.
+    email: matanshm@post.bgu.ac.il
+    orcid: https://orcid.org/0000-0002-4287-4801
+  - family-names: Patil
+    given-names: Indrajeet
+    email: patilindrajeet.science@gmail.com
+    orcid: https://orcid.org/0000-0003-1995-6531
+  - family-names: Wilson
+    given-names: Micah K.
+    email: micah.k.wilson@curtin.edu.au
+    orcid: https://orcid.org/0000-0003-4143-7308
+  - family-names: Wiernik
+    given-names: Brenton M.
+    email: brenton@wiernik.org
+    orcid: https://orcid.org/0000-0001-9560-6336
+  year: '2024'
+  doi: 10.32614/CRAN.package.bayestestR
+  version: '>= 0.15.0'
 - type: software
   title: correlation
   abstract: 'correlation: Methods for Correlation Analysis'
@@ -540,40 +574,6 @@ references:
   doi: 10.32614/CRAN.package.zeallot
   version: '>= 0.1.0'
 - type: software
-  title: bayestestR
-  abstract: 'bayestestR: Understand and Describe Bayesian Models and Posterior Distributions'
-  notes: Suggests
-  url: https://easystats.github.io/bayestestR/
-  repository: https://CRAN.R-project.org/package=bayestestR
-  authors:
-  - family-names: Makowski
-    given-names: Dominique
-    email: dom.makowski@gmail.com
-    orcid: https://orcid.org/0000-0001-5375-9967
-  - family-names: Lüdecke
-    given-names: Daniel
-    email: d.luedecke@uke.de
-    orcid: https://orcid.org/0000-0002-8895-3206
-  - family-names: Ben-Shachar
-    given-names: Mattan S.
-    email: matanshm@post.bgu.ac.il
-    orcid: https://orcid.org/0000-0002-4287-4801
-  - family-names: Patil
-    given-names: Indrajeet
-    email: patilindrajeet.science@gmail.com
-    orcid: https://orcid.org/0000-0003-1995-6531
-  - family-names: Wilson
-    given-names: Micah K.
-    email: micah.k.wilson@curtin.edu.au
-    orcid: https://orcid.org/0000-0003-4143-7308
-  - family-names: Wiernik
-    given-names: Brenton M.
-    email: brenton@wiernik.org
-    orcid: https://orcid.org/0000-0001-9560-6336
-  year: '2024'
-  doi: 10.32614/CRAN.package.bayestestR
-  version: '>= 0.13.2'
-- type: software
   title: ggplot2
   abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
   notes: Suggests
@@ -786,4 +786,3 @@ references:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
   year: '2024'
-
