@@ -387,7 +387,7 @@ references:
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2024'
   doi: 10.32614/CRAN.package.parameters
-  version: '>= 0.22.2'
+  version: '>= 0.23.0'
 - type: software
   title: performance
   abstract: 'performance: Assessment of Regression Models Performance'
@@ -425,7 +425,7 @@ references:
     orcid: https://orcid.org/0000-0003-4315-6788
   year: '2024'
   doi: 10.32614/CRAN.package.performance
-  version: '>= 0.12.3'
+  version: '>= 0.12.4'
 - type: software
   title: PMCMRplus
   abstract: 'PMCMRplus: Calculate Pairwise Multiple Comparisons of Mean Rank Sums
