@@ -132,20 +132,21 @@
 #'
 #' @export
 oneway_anova <- function(
-    data,
-    x,
-    y,
-    subject.id = NULL,
-    type = "parametric",
-    paired = FALSE,
-    digits = 2L,
-    conf.level = 0.95,
-    effsize.type = "omega",
-    var.equal = FALSE,
-    bf.prior = 0.707,
-    tr = 0.2,
-    nboot = 100L,
-    ...) {
+  data,
+  x,
+  y,
+  subject.id = NULL,
+  type = "parametric",
+  paired = FALSE,
+  digits = 2L,
+  conf.level = 0.95,
+  effsize.type = "omega",
+  var.equal = FALSE,
+  bf.prior = 0.707,
+  tr = 0.2,
+  nboot = 100L,
+  ...
+) {
   # data -------------------------------------------
 
   type <- extract_stats_type(type)

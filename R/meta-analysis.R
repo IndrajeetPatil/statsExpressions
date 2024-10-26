@@ -68,12 +68,13 @@
 #'
 #' @export
 meta_analysis <- function(
-    data,
-    type = "parametric",
-    random = "mixture",
-    digits = 2L,
-    conf.level = 0.95,
-    ...) {
+  data,
+  type = "parametric",
+  random = "mixture",
+  digits = 2L,
+  conf.level = 0.95,
+  ...
+) {
   type <- extract_stats_type(type)
 
   # nolint start: line_length_linter.

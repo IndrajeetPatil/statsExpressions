@@ -142,18 +142,19 @@
 #'
 #' @export
 pairwise_comparisons <- function(
-    data,
-    x,
-    y,
-    subject.id = NULL,
-    type = "parametric",
-    paired = FALSE,
-    var.equal = FALSE,
-    tr = 0.2,
-    bf.prior = 0.707,
-    p.adjust.method = "holm",
-    digits = 2L,
-    ...) {
+  data,
+  x,
+  y,
+  subject.id = NULL,
+  type = "parametric",
+  paired = FALSE,
+  var.equal = FALSE,
+  tr = 0.2,
+  bf.prior = 0.707,
+  p.adjust.method = "holm",
+  digits = 2L,
+  ...
+) {
   # data -------------------------------------------
 
   type <- extract_stats_type(type)
