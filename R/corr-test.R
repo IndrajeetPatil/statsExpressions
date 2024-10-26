@@ -31,16 +31,15 @@
 #'
 #' @export
 corr_test <- function(
-  data,
-  x,
-  y,
-  type = "parametric",
-  digits = 2L,
-  conf.level = 0.95,
-  tr = 0.2,
-  bf.prior = 0.707,
-  ...
-) {
+    data,
+    x,
+    y,
+    type = "parametric",
+    digits = 2L,
+    conf.level = 0.95,
+    tr = 0.2,
+    bf.prior = 0.707,
+    ...) {
   type <- extract_stats_type(type)
 
   stats_df <- correlation::correlation(

@@ -32,15 +32,14 @@
 #'
 #' @export
 centrality_description <- function(
-  data,
-  x,
-  y,
-  type = "parametric",
-  conf.level = NULL,
-  tr = 0.2,
-  digits = 2L,
-  ...
-) {
+    data,
+    x,
+    y,
+    type = "parametric",
+    conf.level = NULL,
+    tr = 0.2,
+    digits = 2L,
+    ...) {
 
   # styler: off
   centrality <- case_match(

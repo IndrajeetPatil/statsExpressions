@@ -52,21 +52,20 @@
 #' @example man/examples/examples-contingency-table.R
 #' @export
 contingency_table <- function(
-  data,
-  x,
-  y = NULL,
-  paired = FALSE,
-  type = "parametric",
-  counts = NULL,
-  ratio = NULL,
-  alternative = "two.sided",
-  digits = 2L,
-  conf.level = 0.95,
-  sampling.plan = "indepMulti",
-  fixed.margin = "rows",
-  prior.concentration = 1.0,
-  ...
-) {
+    data,
+    x,
+    y = NULL,
+    paired = FALSE,
+    type = "parametric",
+    counts = NULL,
+    ratio = NULL,
+    alternative = "two.sided",
+    digits = 2L,
+    conf.level = 0.95,
+    sampling.plan = "indepMulti",
+    fixed.margin = "rows",
+    prior.concentration = 1.0,
+    ...) {
   # data -------------------------------------------
 
   type <- extract_stats_type(type)

@@ -32,12 +32,11 @@
 #'
 #' @export
 tidy_model_expressions <- function(
-  data,
-  statistic = NULL,
-  digits = 2L,
-  effsize.type = "omega",
-  ...
-) {
+    data,
+    statistic = NULL,
+    digits = 2L,
+    effsize.type = "omega",
+    ...) {
   # standardize the statistic naming
   statistic <- substring(tolower(statistic), 1L, 1L)
 

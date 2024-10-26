@@ -75,22 +75,21 @@
 #'
 #' @export
 add_expression_col <- function(
-  data,
-  paired = FALSE,
-  statistic.text = NULL,
-  effsize.text = NULL,
-  prior.type = NULL,
-  n = NULL,
-  n.text = ifelse(
-    paired,
-    list(quote(italic("n")["pairs"])),
-    list(quote(italic("n")["obs"]))
-  ),
-  digits = 2L,
-  digits.df = 0L,
-  digits.df.error = digits.df,
-  ...
-) {
+    data,
+    paired = FALSE,
+    statistic.text = NULL,
+    effsize.text = NULL,
+    prior.type = NULL,
+    n = NULL,
+    n.text = ifelse(
+      paired,
+      list(quote(italic("n")["pairs"])),
+      list(quote(italic("n")["obs"]))
+    ),
+    digits = 2L,
+    digits.df = 0L,
+    digits.df.error = digits.df,
+    ...) {
   if (!"n.obs" %in% colnames(data)) data %<>% mutate(n.obs = n)
   if (!"effectsize" %in% colnames(data)) data %<>% mutate(effectsize = method)
   data %<>% rename_with(recode, bayes.factor = "bf10")
