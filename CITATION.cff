@@ -543,7 +543,7 @@ references:
     given-names: Winston
   year: '2024'
   doi: 10.32614/CRAN.package.withr
-  version: '>= 3.0.1'
+  version: '>= 3.0.2'
 - type: software
   title: WRS2
   abstract: 'WRS2: A Collection of Robust Statistical Methods'
