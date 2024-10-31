@@ -8,7 +8,7 @@ message: 'To cite package "statsExpressions" in publications use:'
 type: software
 license: MIT
 title: 'statsExpressions: Tidy Dataframes and Expressions with Statistical Details'
-version: 1.5.5.9000
+version: 1.6.1
 doi: 10.21105/joss.03236
 identifiers:
 - type: doi
@@ -115,6 +115,40 @@ references:
   doi: 10.32614/CRAN.package.BayesFactor
   version: '>= 0.9.12-4.7'
 - type: software
+  title: bayestestR
+  abstract: 'bayestestR: Understand and Describe Bayesian Models and Posterior Distributions'
+  notes: Imports
+  url: https://easystats.github.io/bayestestR/
+  repository: https://CRAN.R-project.org/package=bayestestR
+  authors:
+  - family-names: Makowski
+    given-names: Dominique
+    email: dom.makowski@gmail.com
+    orcid: https://orcid.org/0000-0001-5375-9967
+  - family-names: Lüdecke
+    given-names: Daniel
+    email: d.luedecke@uke.de
+    orcid: https://orcid.org/0000-0002-8895-3206
+  - family-names: Ben-Shachar
+    given-names: Mattan S.
+    email: matanshm@post.bgu.ac.il
+    orcid: https://orcid.org/0000-0002-4287-4801
+  - family-names: Patil
+    given-names: Indrajeet
+    email: patilindrajeet.science@gmail.com
+    orcid: https://orcid.org/0000-0003-1995-6531
+  - family-names: Wilson
+    given-names: Micah K.
+    email: micah.k.wilson@curtin.edu.au
+    orcid: https://orcid.org/0000-0003-4143-7308
+  - family-names: Wiernik
+    given-names: Brenton M.
+    email: brenton@wiernik.org
+    orcid: https://orcid.org/0000-0001-9560-6336
+  year: '2024'
+  doi: 10.32614/CRAN.package.bayestestR
+  version: '>= 0.15.0'
+- type: software
   title: correlation
   abstract: 'correlation: Methods for Correlation Analysis'
   notes: Imports
@@ -147,7 +181,7 @@ references:
     orcid: https://orcid.org/0000-0003-4315-6788
   year: '2024'
   doi: 10.32614/CRAN.package.correlation
-  version: '>= 0.8.5'
+  version: '>= 0.8.6'
 - type: software
   title: datawizard
   abstract: 'datawizard: Easy Data Wrangling and Statistical Transformations'
@@ -181,7 +215,7 @@ references:
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2024'
   doi: 10.32614/CRAN.package.datawizard
-  version: '>= 0.12.3'
+  version: '>= 0.13.0'
 - type: software
   title: dplyr
   abstract: 'dplyr: A Grammar of Data Manipulation'
@@ -262,7 +296,7 @@ references:
     orcid: https://orcid.org/0000-0002-6983-2759
   year: '2024'
   doi: 10.32614/CRAN.package.glue
-  version: '>= 1.7.0'
+  version: '>= 1.8.0'
 - type: software
   title: insight
   abstract: 'insight: Easy Access to Model Information for Various Model Objects'
@@ -304,7 +338,7 @@ references:
     orcid: https://orcid.org/0000-0002-9271-5075
   year: '2024'
   doi: 10.32614/CRAN.package.insight
-  version: '>= 0.20.4'
+  version: '>= 0.20.5'
 - type: software
   title: magrittr
   abstract: 'magrittr: A Forward-Pipe Operator for R'
@@ -353,7 +387,7 @@ references:
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2024'
   doi: 10.32614/CRAN.package.parameters
-  version: '>= 0.22.2'
+  version: '>= 0.23.0'
 - type: software
   title: performance
   abstract: 'performance: Assessment of Regression Models Performance'
@@ -391,7 +425,7 @@ references:
     orcid: https://orcid.org/0000-0003-4315-6788
   year: '2024'
   doi: 10.32614/CRAN.package.performance
-  version: '>= 0.12.3'
+  version: '>= 0.12.4'
 - type: software
   title: PMCMRplus
   abstract: 'PMCMRplus: Calculate Pairwise Multiple Comparisons of Mean Rank Sums
@@ -405,7 +439,7 @@ references:
     orcid: https://orcid.org/0000-0003-3855-3025
   year: '2024'
   doi: 10.32614/CRAN.package.PMCMRplus
-  version: '>= 1.9.10'
+  version: '>= 1.9.12'
 - type: software
   title: purrr
   abstract: 'purrr: Functional Programming Tools'
@@ -509,7 +543,7 @@ references:
     given-names: Winston
   year: '2024'
   doi: 10.32614/CRAN.package.withr
-  version: '>= 3.0.1'
+  version: '>= 3.0.2'
 - type: software
   title: WRS2
   abstract: 'WRS2: A Collection of Robust Statistical Methods'
@@ -539,40 +573,6 @@ references:
   year: '2024'
   doi: 10.32614/CRAN.package.zeallot
   version: '>= 0.1.0'
-- type: software
-  title: bayestestR
-  abstract: 'bayestestR: Understand and Describe Bayesian Models and Posterior Distributions'
-  notes: Suggests
-  url: https://easystats.github.io/bayestestR/
-  repository: https://CRAN.R-project.org/package=bayestestR
-  authors:
-  - family-names: Makowski
-    given-names: Dominique
-    email: dom.makowski@gmail.com
-    orcid: https://orcid.org/0000-0001-5375-9967
-  - family-names: Lüdecke
-    given-names: Daniel
-    email: d.luedecke@uke.de
-    orcid: https://orcid.org/0000-0002-8895-3206
-  - family-names: Ben-Shachar
-    given-names: Mattan S.
-    email: matanshm@post.bgu.ac.il
-    orcid: https://orcid.org/0000-0002-4287-4801
-  - family-names: Patil
-    given-names: Indrajeet
-    email: patilindrajeet.science@gmail.com
-    orcid: https://orcid.org/0000-0003-1995-6531
-  - family-names: Wilson
-    given-names: Michael D.
-    email: michael.d.wilson@curtin.edu.au
-    orcid: https://orcid.org/0000-0003-4143-7308
-  - family-names: Wiernik
-    given-names: Brenton M.
-    email: brenton@wiernik.org
-    orcid: https://orcid.org/0000-0001-9560-6336
-  year: '2024'
-  doi: 10.32614/CRAN.package.bayestestR
-  version: '>= 0.13.2'
 - type: software
   title: ggplot2
   abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
