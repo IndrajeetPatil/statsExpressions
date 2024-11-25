@@ -2,7 +2,7 @@
 # CITATION file created with {cffr} R package
 # See also: https://docs.ropensci.org/cffr/
 # --------------------------------------------
- 
+
 cff-version: 1.2.0
 message: 'To cite package "statsExpressions" in publications use:'
 type: software
@@ -75,6 +75,16 @@ references:
     address: Vienna, Austria
   year: '2024'
   version: '>= 4.1.0'
+- type: software
+  title: stats
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Depends
+  authors:
+  - name: R Core Team
+  institution:
+    name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
 - type: software
   title: afex
   abstract: 'afex: Analysis of Factorial Experiments'
@@ -495,33 +505,6 @@ references:
   doi: 10.32614/CRAN.package.rstantools
   version: '>= 2.4.0'
 - type: software
-  title: stats
-  abstract: 'R: A Language and Environment for Statistical Computing'
-  notes: Imports
-  authors:
-  - name: R Core Team
-  institution:
-    name: R Foundation for Statistical Computing
-    address: Vienna, Austria
-  year: '2024'
-- type: software
-  title: tibble
-  abstract: 'tibble: Simple Data Frames'
-  notes: Imports
-  url: https://tibble.tidyverse.org/
-  repository: https://CRAN.R-project.org/package=tibble
-  authors:
-  - family-names: Müller
-    given-names: Kirill
-    email: kirill@cynkra.com
-    orcid: https://orcid.org/0000-0002-1416-3412
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@rstudio.com
-  year: '2024'
-  doi: 10.32614/CRAN.package.tibble
-  version: '>= 3.2.1'
-- type: software
   title: tidyr
   abstract: 'tidyr: Tidy Messy Data'
   notes: Imports
@@ -787,4 +770,3 @@ references:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
   year: '2024'
-

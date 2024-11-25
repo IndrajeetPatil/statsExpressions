@@ -26,6 +26,7 @@
 #' @importFrom parameters model_parameters
 #' @importFrom bayestestR describe_posterior
 #' @importFrom purrr map2 map_dbl map_dfr
+#' @importFrom rstantools bayes_R2
 #'
 ## statsExpressions namespace: end
 NULL

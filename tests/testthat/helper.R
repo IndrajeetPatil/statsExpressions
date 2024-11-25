@@ -9,7 +9,7 @@ options(lifecycle_verbosity = "warning")
 # Same as a smaller subset of `ggplot2::msleep` dataset
 # datapasta::dpasta(dplyr::select(ggplot2::msleep, brainwt, vore, conservation, sleep_total, sleep_rem))
 
-msleep <- tibble::tribble(
+msleep <- dplyr::tribble(
   ~brainwt,     ~vore,  ~conservation, ~sleep_total, ~sleep_rem,
         NA,   "carni",           "lc",         12.1,         NA,
     0.0155,    "omni",             NA,           17,        1.8,
@@ -96,7 +96,7 @@ msleep <- tibble::tribble(
     0.0504,   "carni",             NA,          9.8,        2.4
 )
 
-data_with_subid <- tibble::tribble(
+data_with_subid <- dplyr::tribble(
   ~score, ~condition, ~id,
       70,        "5", "1",
     82.5,        "1", "1",
@@ -145,7 +145,7 @@ data_with_subid <- tibble::tribble(
     82.5,        "1", "9"
 )
 
-data_meta <- tibble::tribble(
+data_meta <- dplyr::tribble(
   ~study,          ~estimate, ~std.error,
   "Morton",        -0.83035,  1.24702,
   "Rasmussen",     -1.05605,  0.41407,

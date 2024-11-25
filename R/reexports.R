@@ -13,9 +13,9 @@ magrittr::`%<>%`
 zeallot::`%<-%`
 
 #' @export
-#' @importFrom tibble tibble
-tibble::tibble
+#' @importFrom dplyr tibble
+dplyr::tibble
 
 #' @export
-#' @importFrom tibble as_tibble
-tibble::as_tibble
+#' @importFrom dplyr as_tibble
+dplyr::as_tibble

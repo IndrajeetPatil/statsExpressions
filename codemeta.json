@@ -174,6 +174,11 @@
     },
     "2": {
       "@type": "SoftwareApplication",
+      "identifier": "stats",
+      "name": "stats"
+    },
+    "3": {
+      "@type": "SoftwareApplication",
       "identifier": "afex",
       "name": "afex",
       "version": ">= 1.4-1",
@@ -185,7 +190,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=afex"
     },
-    "3": {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "BayesFactor",
       "name": "BayesFactor",
@@ -198,7 +203,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=BayesFactor"
     },
-    "4": {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "bayestestR",
       "name": "bayestestR",
@@ -211,7 +216,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=bayestestR"
     },
-    "5": {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "correlation",
       "name": "correlation",
@@ -224,7 +229,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=correlation"
     },
-    "6": {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "datawizard",
       "name": "datawizard",
@@ -237,7 +242,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=datawizard"
     },
-    "7": {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "dplyr",
       "name": "dplyr",
@@ -250,7 +255,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=dplyr"
     },
-    "8": {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "effectsize",
       "name": "effectsize",
@@ -263,7 +268,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=effectsize"
     },
-    "9": {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "glue",
       "name": "glue",
@@ -276,7 +281,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=glue"
     },
-    "10": {
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
@@ -289,7 +294,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=insight"
     },
-    "11": {
+    "12": {
       "@type": "SoftwareApplication",
       "identifier": "magrittr",
       "name": "magrittr",
@@ -302,7 +307,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=magrittr"
     },
-    "12": {
+    "13": {
       "@type": "SoftwareApplication",
       "identifier": "parameters",
       "name": "parameters",
@@ -315,7 +320,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=parameters"
     },
-    "13": {
+    "14": {
       "@type": "SoftwareApplication",
       "identifier": "performance",
       "name": "performance",
@@ -328,7 +333,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=performance"
     },
-    "14": {
+    "15": {
       "@type": "SoftwareApplication",
       "identifier": "PMCMRplus",
       "name": "PMCMRplus",
@@ -341,7 +346,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=PMCMRplus"
     },
-    "15": {
+    "16": {
       "@type": "SoftwareApplication",
       "identifier": "purrr",
       "name": "purrr",
@@ -354,7 +359,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=purrr"
     },
-    "16": {
+    "17": {
       "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
@@ -367,7 +372,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rlang"
     },
-    "17": {
+    "18": {
       "@type": "SoftwareApplication",
       "identifier": "rstantools",
       "name": "rstantools",
@@ -380,25 +385,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rstantools"
     },
-    "18": {
-      "@type": "SoftwareApplication",
-      "identifier": "stats",
-      "name": "stats"
-    },
     "19": {
-      "@type": "SoftwareApplication",
-      "identifier": "tibble",
-      "name": "tibble",
-      "version": ">= 3.2.1",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=tibble"
-    },
-    "20": {
       "@type": "SoftwareApplication",
       "identifier": "tidyr",
       "name": "tidyr",
@@ -411,7 +398,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tidyr"
     },
-    "21": {
+    "20": {
       "@type": "SoftwareApplication",
       "identifier": "withr",
       "name": "withr",
@@ -424,7 +411,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=withr"
     },
-    "22": {
+    "21": {
       "@type": "SoftwareApplication",
       "identifier": "WRS2",
       "name": "WRS2",
@@ -437,7 +424,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=WRS2"
     },
-    "23": {
+    "22": {
       "@type": "SoftwareApplication",
       "identifier": "zeallot",
       "name": "zeallot",
@@ -452,7 +439,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4231.134KB",
+  "fileSize": "4229.33KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
