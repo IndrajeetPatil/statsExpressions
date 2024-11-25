@@ -60,13 +60,14 @@
 #'
 #' @export
 long_to_wide_converter <- function(
-    data,
-    x,
-    y,
-    subject.id = NULL,
-    paired = TRUE,
-    spread = TRUE,
-    ...) {
+  data,
+  x,
+  y,
+  subject.id = NULL,
+  paired = TRUE,
+  spread = TRUE,
+  ...
+) {
   data %<>%
     select({{ x }}, {{ y }}, .rowid = {{ subject.id }}) %>%
     mutate({{ x }} := droplevels(as.factor({{ x }}))) %>%

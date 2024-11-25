@@ -8,13 +8,13 @@
   "codeRepository": "https://github.com/IndrajeetPatil/statsExpressions",
   "issueTracker": "https://github.com/IndrajeetPatil/statsExpressions/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.6.1",
+  "version": "1.6.1.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.4.1 (2024-06-14)",
+  "runtimePlatform": "R version 4.4.2 (2024-10-31)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -133,18 +133,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "rstantools",
-      "name": "rstantools",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=rstantools"
     },
     {
       "@type": "SoftwareApplication",
@@ -381,10 +369,23 @@
     },
     "17": {
       "@type": "SoftwareApplication",
+      "identifier": "rstantools",
+      "name": "rstantools",
+      "version": ">= 2.4.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rstantools"
+    },
+    "18": {
+      "@type": "SoftwareApplication",
       "identifier": "stats",
       "name": "stats"
     },
-    "18": {
+    "19": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
@@ -397,7 +398,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    "19": {
+    "20": {
       "@type": "SoftwareApplication",
       "identifier": "tidyr",
       "name": "tidyr",
@@ -410,7 +411,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tidyr"
     },
-    "20": {
+    "21": {
       "@type": "SoftwareApplication",
       "identifier": "withr",
       "name": "withr",
@@ -423,7 +424,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=withr"
     },
-    "21": {
+    "22": {
       "@type": "SoftwareApplication",
       "identifier": "WRS2",
       "name": "WRS2",
@@ -436,7 +437,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=WRS2"
     },
-    "22": {
+    "23": {
       "@type": "SoftwareApplication",
       "identifier": "zeallot",
       "name": "zeallot",
@@ -451,7 +452,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4230.718KB",
+  "fileSize": "4231.134KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",

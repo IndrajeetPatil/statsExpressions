@@ -38,17 +38,18 @@
 #'
 #' @export
 one_sample_test <- function(
-    data,
-    x,
-    type = "parametric",
-    test.value = 0,
-    alternative = "two.sided",
-    digits = 2L,
-    conf.level = 0.95,
-    tr = 0.2,
-    bf.prior = 0.707,
-    effsize.type = "g",
-    ...) {
+  data,
+  x,
+  type = "parametric",
+  test.value = 0,
+  alternative = "two.sided",
+  digits = 2L,
+  conf.level = 0.95,
+  tr = 0.2,
+  bf.prior = 0.707,
+  effsize.type = "g",
+  ...
+) {
   type <- extract_stats_type(type)
   x_vec <- stats::na.omit(pull(data, {{ x }}))
 
