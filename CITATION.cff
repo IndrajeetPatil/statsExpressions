@@ -348,7 +348,7 @@ references:
     orcid: https://orcid.org/0000-0002-9271-5075
   year: '2024'
   doi: 10.32614/CRAN.package.insight
-  version: '>= 0.20.5'
+  version: '>= 1.0.0'
 - type: software
   title: magrittr
   abstract: 'magrittr: A Forward-Pipe Operator for R'
@@ -397,7 +397,7 @@ references:
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2024'
   doi: 10.32614/CRAN.package.parameters
-  version: '>= 0.23.0'
+  version: '>= 0.24.0'
 - type: software
   title: performance
   abstract: 'performance: Assessment of Regression Models Performance'

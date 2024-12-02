@@ -60,15 +60,17 @@
     Code
       select(df_chi, -expression)
     Output
-      # A tibble: 2 x 10
-        term  estimate std.error conf.level conf.low conf.high statistic df.error
-        <chr>    <dbl>     <dbl>      <dbl>    <dbl>     <dbl>     <dbl>    <dbl>
-      1 age     0.0170   0.00923       0.95 -0.00106    0.0351      3.40        1
-      2 sex    -0.512    0.168         0.95 -0.840     -0.183       9.31        1
-        p.value conf.method
-          <dbl> <chr>      
-      1 0.0650  Wald       
-      2 0.00228 Wald       
+      # A tibble: 3 x 10
+        term          estimate std.error conf.level conf.low conf.high statistic
+        <chr>            <dbl>     <dbl>      <dbl>    <dbl>     <dbl>     <dbl>
+      1 age             0.0170   0.00923       0.95 -0.00106    0.0351 3.40     
+      2 sex            -0.512    0.168         0.95 -0.840     -0.183  9.31     
+      3 frailty(inst)  NA       NA             0.95 NA         NA      0.0000605
+        df.error p.value conf.method
+           <dbl>   <dbl> <chr>      
+      1        1 0.0650  Wald       
+      2        1 0.00228 Wald       
+      3        1 0.994   Wald       
 
 ---
 
@@ -82,6 +84,9 @@
       [[2]]
       list(widehat(italic(beta)) == "-0.51", italic(chi)^2 * ("1") == 
           "9.31", italic(p) == "2.28e-03")
+      
+      [[3]]
+      NULL
       
 
 # tidy_model_expressions works - z

@@ -213,7 +213,6 @@ test_that(
 )
 
 
-
 # within-subjects design - no NAs -----------------------------------------
 
 test_that(
