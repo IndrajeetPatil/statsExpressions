@@ -1,3 +1,7 @@
+# statsExpressions 1.6.2
+
+- The minimum needed R version is now bumped to `R 4.3`.
+
 # statsExpressions 1.6.1
 
 - Upgrade `{easystats}` package versions to avoid user-facing warnings due to 
