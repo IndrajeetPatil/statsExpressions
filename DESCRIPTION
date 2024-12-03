@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Tidy Dataframes and Expressions with Statistical Details
-Version: 1.6.1.9000
+Version: 1.6.2
 Authors@R: 
     person("Indrajeet", "Patil", , "patilindrajeet.science@gmail.com", role = c("cre", "aut", "cph"),
            comment = c(ORCID = "0000-0003-1995-6531"))
@@ -20,7 +20,7 @@ URL: https://indrajeetpatil.github.io/statsExpressions/,
     https://github.com/IndrajeetPatil/statsExpressions
 BugReports: https://github.com/IndrajeetPatil/statsExpressions/issues
 Depends: 
-    R (>= 4.1.0),
+    R (>= 4.3.0),
     stats
 Imports:
     afex (>= 1.4-1),
@@ -31,9 +31,9 @@ Imports:
     dplyr (>= 1.1.4),
     effectsize (>= 0.8.9),
     glue (>= 1.8.0),
-    insight (>= 0.20.5),
+    insight (>= 1.0.0),
     magrittr (>= 2.0.3),
-    parameters (>= 0.23.0),
+    parameters (>= 0.24.0),
     performance (>= 0.12.4),
     PMCMRplus (>= 1.9.12),
     purrr (>= 1.0.2),

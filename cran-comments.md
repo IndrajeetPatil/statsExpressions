@@ -2,7 +2,7 @@
 
 0 errors | 0 warnings | 0 note
 
-* Fixes CRAN vignette build failures on R-oldrel.
+* Fixes snapshot tests failing due to easystats updates.
 
 ## revdepcheck results
 

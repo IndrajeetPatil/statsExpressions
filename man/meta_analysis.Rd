@@ -106,12 +106,12 @@ Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressio
 }
 
 \examples{
-\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metafor", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metafor", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 # setup
 set.seed(123)
 library(statsExpressions)
 \dontshow{\}) # examplesIf}
-\dontshow{if (requireNamespace("metaplus", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("metaplus", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 
 # let's use `mag` dataset from `{metaplus}`
 data(mag, package = "metaplus")
@@ -121,13 +121,13 @@ dat <- dplyr::rename(mag, estimate = yi, std.error = sei)
 
 meta_analysis(dat)
 \dontshow{\}) # examplesIf}
-\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 
 # ----------------------- robust ----------------------------------
 
 meta_analysis(dat, type = "random", random = "normal")
 \dontshow{\}) # examplesIf}
-\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaBMA", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaBMA", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 
 # ----------------------- Bayesian ----------------------------------
 
