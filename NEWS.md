@@ -198,8 +198,7 @@
   - `one_sample_test` and `two_sample_test` gain `alternative` argument to
     specify alternative hypothesis (#86).
 
-  - Cohen's *d* and Hedge's *g* use non-pooled standard deviation (cf.
-    https://psyarxiv.com/tu6mp/).
+  - Cohen's *d* and Hedge's *g* use non-pooled standard deviation.
 
 ## MINOR CHANGES
 

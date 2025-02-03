@@ -30,8 +30,7 @@ You can use the [styler](https://CRAN.R-project.org/package=styler) package to
 apply these styles, but please don't restyle code that has nothing to do with 
 your PR.  
 *  We use [roxygen2](https://cran.r-project.org/package=roxygen2), with
-[Markdown syntax](https://cran.r-project.org/web/packages/roxygen2/vignettes/markdown.html), 
-for documentation.  
+Markdown syntax, for documentation.  
 *  We use [testthat](https://cran.r-project.org/package=testthat). Contributions
 with test cases included are easier to accept.  
 *  For user-facing changes, add a bullet to the top of `NEWS.md` below the
