@@ -3,11 +3,12 @@
 # statsExpressions 1.6.2
 
 - The minimum needed R version is now bumped to `R 4.3`.
+
 - Fixes failing tests due to changes in `{easystats}` packages.
 
 # statsExpressions 1.6.1
 
-- Upgrade `{easystats}` package versions to avoid user-facing warnings due to 
+- Upgrade `{easystats}` package versions to avoid user-facing warnings due to
   API changes upstream.
 
 # statsExpressions 1.6.0
@@ -198,8 +199,7 @@
   - `one_sample_test` and `two_sample_test` gain `alternative` argument to
     specify alternative hypothesis (#86).
 
-  - Cohen's *d* and Hedge's *g* use non-pooled standard deviation (cf.
-    https://psyarxiv.com/tu6mp/).
+  - Cohen's *d* and Hedge's *g* use non-pooled standard deviation.
 
 ## MINOR CHANGES
 

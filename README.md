@@ -450,7 +450,6 @@ contingency_table(mtcars, am, vs)$expression[[1]]
 ``` r
 set.seed(123)
 library(metaviz)
-library(metaplus)
 
 # dataframe with results
 results_data <- meta_analysis(dplyr::rename(mozart, estimate = d, std.error = se))

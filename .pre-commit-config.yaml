@@ -1,12 +1,12 @@
 # All available hooks: https://pre-commit.com/hooks.html
 # R specific hooks: https://github.com/lorenzwalthert/precommit
-default_stages: [commit]
+default_stages: [pre-commit, pre-push, commit-msg]
 default_language_version:
   python: python3
 
 repos:
   - repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.4.3
+    rev: v0.4.3.9003
     hooks:
       - id: no-browser-statement
       - id: no-debug-statement
@@ -14,7 +14,7 @@ repos:
       - id: deps-in-desc
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v5.0.0
     hooks:
       - id: check-added-large-files
       - id: check-json

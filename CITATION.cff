@@ -8,7 +8,7 @@ message: 'To cite package "statsExpressions" in publications use:'
 type: software
 license: MIT
 title: 'statsExpressions: Tidy Dataframes and Expressions with Statistical Details'
-version: 1.6.2
+version: 1.6.2.9000
 doi: 10.21105/joss.03236
 identifiers:
 - type: doi
@@ -73,7 +73,7 @@ references:
   institution:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
-  year: '2024'
+  year: '2025'
   version: '>= 4.3.0'
 - type: software
   title: stats
@@ -84,7 +84,7 @@ references:
   institution:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
-  year: '2024'
+  year: '2025'
 - type: software
   title: afex
   abstract: 'afex: Analysis of Factorial Experiments'
@@ -105,7 +105,7 @@ references:
     orcid: https://orcid.org/0000-0003-4900-788X
   - family-names: Ben-Shachar
     given-names: Mattan S.
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.afex
   version: '>= 1.4-1'
 - type: software
@@ -121,7 +121,7 @@ references:
   - family-names: Rouder
     given-names: Jeffrey N.
     email: jrouder@uci.edu
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.BayesFactor
   version: '>= 0.9.12-4.7'
 - type: software
@@ -155,9 +155,9 @@ references:
     given-names: Brenton M.
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.bayestestR
-  version: '>= 0.15.0'
+  version: '>= 0.15.1'
 - type: software
   title: correlation
   abstract: 'correlation: Methods for Correlation Analysis'
@@ -189,7 +189,7 @@ references:
     given-names: Rémi
     email: remi.theriault@mail.mcgill.ca
     orcid: https://orcid.org/0000-0003-4315-6788
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.correlation
   version: '>= 0.8.6'
 - type: software
@@ -223,9 +223,9 @@ references:
     given-names: Brenton M.
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.datawizard
-  version: '>= 0.13.0'
+  version: '>= 1.0.0'
 - type: software
   title: dplyr
   abstract: 'dplyr: A Grammar of Data Manipulation'
@@ -249,7 +249,7 @@ references:
     given-names: Davis
     email: davis@posit.co
     orcid: https://orcid.org/0000-0003-4777-038X
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.dplyr
   version: '>= 1.1.4'
 - type: software
@@ -287,7 +287,7 @@ references:
     given-names: Philip
     email: philip.waggoner@gmail.com
     orcid: https://orcid.org/0000-0002-7825-7573
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.effectsize
   version: '>= 1.0.0'
 - type: software
@@ -304,7 +304,7 @@ references:
     given-names: Jennifer
     email: jenny@posit.co
     orcid: https://orcid.org/0000-0002-6983-2759
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.glue
   version: '>= 1.8.0'
 - type: software
@@ -346,9 +346,9 @@ references:
     given-names: Etienne
     email: etienne.bacher@protonmail.com
     orcid: https://orcid.org/0000-0002-9271-5075
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.insight
-  version: '>= 1.0.0'
+  version: '>= 1.0.1'
 - type: software
   title: magrittr
   abstract: 'magrittr: A Forward-Pipe Operator for R'
@@ -362,7 +362,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@rstudio.com
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.magrittr
   version: '>= 2.0.3'
 - type: software
@@ -395,9 +395,9 @@ references:
     given-names: Brenton M.
     email: brenton@wiernik.org
     orcid: https://orcid.org/0000-0001-9560-6336
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.parameters
-  version: '>= 0.24.0'
+  version: '>= 0.24.1'
 - type: software
   title: performance
   abstract: 'performance: Assessment of Regression Models Performance'
@@ -433,9 +433,9 @@ references:
     given-names: Rémi
     email: remi.theriault@mail.mcgill.ca
     orcid: https://orcid.org/0000-0003-4315-6788
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.performance
-  version: '>= 0.12.4'
+  version: '>= 0.13.0'
 - type: software
   title: PMCMRplus
   abstract: 'PMCMRplus: Calculate Pairwise Multiple Comparisons of Mean Rank Sums
@@ -447,7 +447,7 @@ references:
     given-names: Thorsten
     email: thorsten.pohlert@gmx.de
     orcid: https://orcid.org/0000-0003-3855-3025
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.PMCMRplus
   version: '>= 1.9.12'
 - type: software
@@ -464,7 +464,7 @@ references:
   - family-names: Henry
     given-names: Lionel
     email: lionel@rstudio.com
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.purrr
   version: '>= 1.0.2'
 - type: software
@@ -480,9 +480,9 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@posit.co
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.rlang
-  version: '>= 1.1.4'
+  version: '>= 1.1.5'
 - type: software
   title: rstantools
   abstract: 'rstantools: Tools for Developing R Packages Interfacing with ''Stan'''
@@ -501,7 +501,7 @@ references:
     email: mlysy@uwaterloo.ca
   - family-names: Johnson
     given-names: Andrew
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.rstantools
   version: '>= 2.4.0'
 - type: software
@@ -519,7 +519,7 @@ references:
     email: davis@posit.co
   - family-names: Girlich
     given-names: Maximilian
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.tidyr
   version: '>= 1.3.1'
 - type: software
@@ -545,7 +545,7 @@ references:
     email: hadley@posit.co
   - family-names: Chang
     given-names: Winston
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.withr
   version: '>= 3.0.2'
 - type: software
@@ -561,7 +561,7 @@ references:
   - family-names: Wilcox
     given-names: Rand
     email: rwilcox@usc.edu
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.WRS2
   version: '>= 1.1-6'
 - type: software
@@ -574,7 +574,7 @@ references:
   - family-names: Teetor
     given-names: Nathan
     email: nathanteetor@gmail.com
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.zeallot
   version: '>= 0.1.0'
 - type: software
@@ -615,7 +615,7 @@ references:
     given-names: Teun
     name-particle: van den
     orcid: https://orcid.org/0000-0002-9335-7468
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.ggplot2
 - type: software
   title: knitr
@@ -628,7 +628,7 @@ references:
     given-names: Yihui
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.knitr
 - type: software
   title: metaBMA
@@ -641,7 +641,7 @@ references:
     given-names: Daniel W.
     email: daniel.heck@uni-marburg.de
     orcid: https://orcid.org/0000-0002-6302-9252
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.metaBMA
 - type: software
   title: metafor
@@ -654,7 +654,7 @@ references:
     given-names: Wolfgang
     email: wvb@metafor-project.org
     orcid: https://orcid.org/0000-0003-3463-4063
-  year: '2024'
+  year: '2025'
   identifiers:
   - type: url
     value: https://github.com/wviechtb/metafor
@@ -676,7 +676,7 @@ references:
     given-names: Ben
     email: bolker@mcmaster.ca
   - name: R Development Core Team
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.metaplus
   version: '>= 1.0-5'
 - type: software
@@ -689,7 +689,7 @@ references:
   - family-names: Quinn
     given-names: Michael
     email: msquinn@google.com
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.patrick
 - type: software
   title: rmarkdown
@@ -733,7 +733,7 @@ references:
     given-names: Richard
     email: rich@posit.co
     orcid: https://orcid.org/0000-0003-3925-190X
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.rmarkdown
 - type: software
   title: survival
@@ -745,7 +745,7 @@ references:
   - family-names: Therneau
     given-names: Terry M
     email: therneau.terry@mayo.edu
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.survival
 - type: software
   title: testthat
@@ -757,7 +757,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@posit.co
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.testthat
   version: '>= 3.2.1'
 - type: software
@@ -769,4 +769,4 @@ references:
   institution:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
-  year: '2024'
+  year: '2025'
