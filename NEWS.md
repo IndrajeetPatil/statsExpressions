@@ -3,11 +3,12 @@
 # statsExpressions 1.6.2
 
 - The minimum needed R version is now bumped to `R 4.3`.
+
 - Fixes failing tests due to changes in `{easystats}` packages.
 
 # statsExpressions 1.6.1
 
-- Upgrade `{easystats}` package versions to avoid user-facing warnings due to 
+- Upgrade `{easystats}` package versions to avoid user-facing warnings due to
   API changes upstream.
 
 # statsExpressions 1.6.0
