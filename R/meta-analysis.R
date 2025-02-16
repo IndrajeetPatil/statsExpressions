@@ -37,30 +37,29 @@
 #'
 #' @autoglobal
 #'
-#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metafor", quietly = TRUE)
-#' # setup
+#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus", quietly = TRUE)
 #' set.seed(123)
 #' library(statsExpressions)
-#'
-#' @examplesIf requireNamespace("metaplus", quietly = TRUE)
 #'
 #' # let's use `mag` dataset from `{metaplus}`
 #' data(mag, package = "metaplus")
 #' dat <- dplyr::rename(mag, estimate = yi, std.error = sei)
 #'
-#' # ----------------------- parametric -------------------------------------
+#' # ----------------------- parametric ----------------------------------------
+#'
+#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus") && requireNamespace("metafor")
 #'
 #' meta_analysis(dat)
 #'
-#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus", quietly = TRUE)
+#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus")
 #'
-#' # ----------------------- robust ----------------------------------
+#' # ----------------------- robust --------------------------------------------
 #'
 #' meta_analysis(dat, type = "random", random = "normal")
 #'
-#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaBMA", quietly = TRUE)
+#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus") && requireNamespace("metaBMA")
 #'
-#' # ----------------------- Bayesian ----------------------------------
+#' # ----------------------- Bayesian ------------------------------------------
 #'
 #' meta_analysis(dat, type = "bayes")
 #'

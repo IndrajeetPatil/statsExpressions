@@ -106,30 +106,29 @@ Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressio
 }
 
 \examples{
-\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metafor", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# setup
+\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 set.seed(123)
 library(statsExpressions)
-\dontshow{\}) # examplesIf}
-\dontshow{if (requireNamespace("metaplus", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 # let's use `mag` dataset from `{metaplus}`
 data(mag, package = "metaplus")
 dat <- dplyr::rename(mag, estimate = yi, std.error = sei)
 
-# ----------------------- parametric -------------------------------------
+# ----------------------- parametric ----------------------------------------
+\dontshow{\}) # examplesIf}
+\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus") && requireNamespace("metafor")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 meta_analysis(dat)
 \dontshow{\}) # examplesIf}
-\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
-# ----------------------- robust ----------------------------------
+# ----------------------- robust --------------------------------------------
 
 meta_analysis(dat, type = "random", random = "normal")
 \dontshow{\}) # examplesIf}
-\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaBMA", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus") && requireNamespace("metaBMA")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
-# ----------------------- Bayesian ----------------------------------
+# ----------------------- Bayesian ------------------------------------------
 
 meta_analysis(dat, type = "bayes")
 \dontshow{\}) # examplesIf}

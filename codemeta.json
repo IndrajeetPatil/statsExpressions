@@ -207,7 +207,7 @@
       "@type": "SoftwareApplication",
       "identifier": "bayestestR",
       "name": "bayestestR",
-      "version": ">= 0.15.1",
+      "version": ">= 0.15.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -285,7 +285,7 @@
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
-      "version": ">= 1.0.1",
+      "version": ">= 1.0.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -350,7 +350,7 @@
       "@type": "SoftwareApplication",
       "identifier": "purrr",
       "name": "purrr",
-      "version": ">= 1.0.2",
+      "version": ">= 1.0.4",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -439,7 +439,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4228.989KB",
+  "fileSize": "4229.246KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
