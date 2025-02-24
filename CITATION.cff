@@ -2,7 +2,7 @@
 # CITATION file created with {cffr} R package
 # See also: https://docs.ropensci.org/cffr/
 # --------------------------------------------
-
+ 
 cff-version: 1.2.0
 message: 'To cite package "statsExpressions" in publications use:'
 type: software
@@ -157,7 +157,7 @@ references:
     orcid: https://orcid.org/0000-0001-9560-6336
   year: '2025'
   doi: 10.32614/CRAN.package.bayestestR
-  version: '>= 0.15.1'
+  version: '>= 0.15.2'
 - type: software
   title: correlation
   abstract: 'correlation: Methods for Correlation Analysis'
@@ -348,7 +348,7 @@ references:
     orcid: https://orcid.org/0000-0002-9271-5075
   year: '2025'
   doi: 10.32614/CRAN.package.insight
-  version: '>= 1.0.1'
+  version: '>= 1.0.2'
 - type: software
   title: magrittr
   abstract: 'magrittr: A Forward-Pipe Operator for R'
@@ -459,14 +459,14 @@ references:
   authors:
   - family-names: Wickham
     given-names: Hadley
-    email: hadley@rstudio.com
+    email: hadley@posit.co
     orcid: https://orcid.org/0000-0003-4757-117X
   - family-names: Henry
     given-names: Lionel
-    email: lionel@rstudio.com
+    email: lionel@posit.co
   year: '2025'
   doi: 10.32614/CRAN.package.purrr
-  version: '>= 1.0.2'
+  version: '>= 1.0.4'
 - type: software
   title: rlang
   abstract: 'rlang: Functions for Base Types and Core R and ''Tidyverse'' Features'
@@ -655,13 +655,6 @@ references:
     email: wvb@metafor-project.org
     orcid: https://orcid.org/0000-0003-3463-4063
   year: '2025'
-  identifiers:
-  - type: url
-    value: https://github.com/wviechtb/metafor
-  - type: url
-    value: https://wviechtb.github.io/metafor/
-  - type: url
-    value: https://www.wvbauer.com
   doi: 10.32614/CRAN.package.metafor
 - type: software
   title: metaplus
