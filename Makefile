@@ -26,5 +26,4 @@ update_deps:
 	-e 'usethis::use_tidy_description()' \
 	-e 'usethis::use_latest_dependencies(source = "CRAN")' \
 	-e 'roxygen2::roxygenise()' \
-	-e 'codemetar::write_codemeta()' \
-	-e 'cffr::cff_write()'
+	-e 'codemetar::write_codemeta()'
