@@ -11,7 +11,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup}
+```{r}
 #| label = "setup",
 #| message = FALSE,
 #| warning = FALSE,
