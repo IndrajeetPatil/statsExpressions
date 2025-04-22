@@ -6,17 +6,16 @@ default_language_version:
 
 repos:
   - repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.4.3.9008
+    rev: v0.4.3.9009
     hooks:
       - id: no-browser-statement
       - id: no-debug-statement
-      - id: parsable-R
-      - id: deps-in-desc
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
       - id: check-added-large-files
+      - id: check-json
       - id: check-yaml
       - id: mixed-line-ending
       - id: file-contents-sorter
@@ -29,7 +28,7 @@ repos:
           )$
 
   - repo: https://github.com/lorenzwalthert/gitignore-tidy
-    rev: 0.1.2
+    rev: "0.1.2"
     hooks:
       - id: tidy-gitignore
 
