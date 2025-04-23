@@ -1,5 +1,7 @@
 # statsExpressions 1.6.2.9000
 
+- Fixes `centrality_description()` to adjust to new API in easystats.
+
 # statsExpressions 1.6.2
 
 - The minimum needed R version is now bumped to `R 4.3`.

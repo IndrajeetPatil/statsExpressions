@@ -36,12 +36,11 @@ centrality_description <- function(
   x,
   y,
   type = "parametric",
-  conf.level = NULL,
+  conf.level = 0.95,
   tr = 0.2,
   digits = 2L,
   ...
 ) {
-
   # styler: off
   centrality <- case_match(
     extract_stats_type(type),
@@ -67,6 +66,7 @@ centrality_description <- function(
         style = "broom"
       )
     ) %>%
+    rename_all(~ gsub(".mean|.median|.trimmed|.map", "", .x)) %>%
     ungroup() %>%
     mutate(
       expression = glue("list(widehat(mu)[{centrality}]=='{format_value(estimate, digits)}')"),

@@ -9,7 +9,7 @@ centrality_description(
   x,
   y,
   type = "parametric",
-  conf.level = NULL,
+  conf.level = 0.95,
   tr = 0.2,
   digits = 2L,
   ...

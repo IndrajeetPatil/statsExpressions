@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 )
 
 set.seed(123)
-library(statsExpressions)
+suppressPackageStartupMessages(library(statsExpressions))
 ```
 
 # `{statsExpressions}`: Tidy dataframes and expressions with statistical details

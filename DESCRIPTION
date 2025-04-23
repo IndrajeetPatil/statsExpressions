@@ -31,7 +31,7 @@ Imports:
     dplyr (>= 1.1.4),
     effectsize (>= 1.0.0),
     glue (>= 1.8.0),
-    insight (>= 1.1.0),
+    insight (>= 1.2.0),
     magrittr (>= 2.0.3),
     parameters (>= 0.24.2),
     performance (>= 0.13.0),
@@ -56,6 +56,9 @@ Suggests:
     utils
 VignetteBuilder: 
     knitr
+Remotes:
+    easystats/bayestestR,
+    easystats/datawizard
 Config/Needs/check: anthonynorth/roxyglobals
 Config/roxyglobals/unique: TRUE
 Config/testthat/edition: 3

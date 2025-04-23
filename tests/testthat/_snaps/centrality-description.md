@@ -117,17 +117,17 @@
     Code
       select(res, -expression)
     Output
-      # A tibble: 3 x 11
-        variable    wt std.dev   iqr   min   max skewness kurtosis n.obs missing.obs
-           <dbl> <dbl>   <dbl> <dbl> <dbl> <dbl>    <dbl>    <dbl> <int>       <int>
-      1        4  2.29   0.570 0.945  1.51  3.19    0.404  -0.851     11           0
-      2        6  3.12   0.356 0.67   2.62  3.46   -0.363  -2.08       7           0
-      3        8  4.00   0.759 0.865  3.17  5.42    1.24    0.0780    14           0
-        n.expression 
-        <chr>        
-      1 "4\n(n = 11)"
-      2 "6\n(n = 7)" 
-      3 "8\n(n = 14)"
+      # A tibble: 3 x 13
+        variable    wt std.dev   iqr conf.low conf.high   min   max skewness kurtosis
+           <dbl> <dbl>   <dbl> <dbl>    <dbl>     <dbl> <dbl> <dbl>    <dbl>    <dbl>
+      1        4  2.29   0.570 0.945     1.89      2.56  1.51  3.19    0.404  -0.851 
+      2        6  3.12   0.356 0.67      2.88      3.32  2.62  3.46   -0.363  -2.08  
+      3        8  4.00   0.759 0.865     3.60      4.41  3.17  5.42    1.24    0.0780
+        n.obs missing.obs n.expression 
+        <int>       <int> <chr>        
+      1    11           0 "4\n(n = 11)"
+      2     7           0 "6\n(n = 7)" 
+      3    14           0 "8\n(n = 14)"
 
 ---
 
