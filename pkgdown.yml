@@ -1,11 +1,11 @@
 pandoc: 3.6.4
-pkgdown: 2.1.1
+pkgdown: 2.1.2
 pkgdown_sha: ~
 articles:
   web_only/dataframe_outputs: web_only/dataframe_outputs.html
   stats_details: stats_details.html
   statsExpressions: statsExpressions.html
-last_built: 2025-04-23T19:54Z
+last_built: 2025-04-28T19:37Z
 urls:
   reference: https://indrajeetpatil.github.io/statsExpressions/reference
   article: https://indrajeetpatil.github.io/statsExpressions/articles
