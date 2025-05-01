@@ -1,4 +1,4 @@
-# statsExpressions 1.6.2.9000
+# statsExpressions 1.7.0
 
 - Fixes `centrality_description()` to adjust to new API in easystats.
 
