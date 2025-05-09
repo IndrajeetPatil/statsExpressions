@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/IndrajeetPatil/statsExpressions",
   "issueTracker": "https://github.com/IndrajeetPatil/statsExpressions/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.6.2.9000",
+  "version": "1.7.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -101,7 +101,7 @@
       "@type": "SoftwareApplication",
       "identifier": "metaplus",
       "name": "metaplus",
-      "version": ">= 1.0-5",
+      "version": ">= 1.0-6",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -150,7 +150,7 @@
       "@type": "SoftwareApplication",
       "identifier": "testthat",
       "name": "testthat",
-      "version": ">= 3.2.1",
+      "version": ">= 3.2.3",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -233,14 +233,14 @@
       "@type": "SoftwareApplication",
       "identifier": "datawizard",
       "name": "datawizard",
-      "version": ">= 1.0.2",
+      "version": ">= 1.1.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://github.com/easystats/datawizard"
+      "sameAs": "https://CRAN.R-project.org/package=datawizard"
     },
     "8": {
       "@type": "SoftwareApplication",
@@ -439,7 +439,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4231.252KB",
+  "fileSize": "4231.208KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
