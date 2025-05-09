@@ -27,7 +27,7 @@ Imports:
     BayesFactor (>= 0.9.12-4.7),
     bayestestR (>= 0.15.3),
     correlation (>= 0.8.7),
-    datawizard (>= 1.0.2),
+    datawizard (>= 1.1.0),
     dplyr (>= 1.1.4),
     effectsize (>= 1.0.0),
     glue (>= 1.8.0),
@@ -56,8 +56,6 @@ Suggests:
     utils
 VignetteBuilder: 
     knitr
-Remotes:
-    easystats/datawizard
 Config/Needs/check: anthonynorth/roxyglobals
 Config/roxyglobals/unique: TRUE
 Config/testthat/edition: 3
