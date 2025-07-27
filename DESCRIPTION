@@ -1,7 +1,7 @@
 Type: Package
 Package: statsExpressions
 Title: Tidy Dataframes and Expressions with Statistical Details
-Version: 1.7.0.9000
+Version: 1.7.1
 Authors@R: 
     person("Indrajeet", "Patil", , "patilindrajeet.science@gmail.com", role = c("cre", "aut", "cph"),
            comment = c(ORCID = "0000-0003-1995-6531"))
@@ -25,24 +25,24 @@ Depends:
 Imports:
     afex (>= 1.4-1),
     BayesFactor (>= 0.9.12-4.7),
-    bayestestR (>= 0.16.0),
-    correlation (>= 0.8.7),
-    datawizard (>= 1.1.0),
+    bayestestR (>= 0.16.1),
+    correlation (>= 0.8.8),
+    datawizard (>= 1.2.0),
     dplyr (>= 1.1.4),
-    effectsize (>= 1.0.0),
+    effectsize (>= 1.0.1),
     glue (>= 1.8.0),
-    insight (>= 1.3.0),
+    insight (>= 1.3.1),
     magrittr (>= 2.0.3),
-    parameters (>= 0.26.0),
-    performance (>= 0.14.0),
+    parameters (>= 0.27.0),
+    performance (>= 0.15.0),
     PMCMRplus (>= 1.9.12),
-    purrr (>= 1.0.4),
+    purrr (>= 1.1.0),
     rlang (>= 1.1.6),
     rstantools (>= 2.4.0),
     tidyr (>= 1.3.1),
     withr (>= 3.0.2),
     WRS2 (>= 1.1-7),
-    zeallot (>= 0.1.0)
+    zeallot (>= 0.2.0)
 Suggests:
     ggplot2,
     knitr,
@@ -65,4 +65,4 @@ Language: en-US
 LazyData: true
 Roxygen: list( markdown = TRUE, roclets = c("collate", "namespace", "rd",
     "pkgapi::api_roclet", "roxyglobals::global_roclet") )
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.2.9000

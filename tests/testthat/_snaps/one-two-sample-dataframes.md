@@ -38,7 +38,7 @@
            p.value method                  alternative effectsize estimate conf.level
              <dbl> <chr>                   <chr>       <chr>         <dbl>      <dbl>
       1 0.0000113  Two Sample t-test       two.sided   Cohen's d      1.93       0.89
-      2 1.00       Welch Two Sample t-test less        Hedges' g      1.88       0.99
+      2 1.000      Welch Two Sample t-test less        Hedges' g      1.88       0.99
       3 0.00000563 Two Sample t-test       greater     Cohen's d      1.93       0.9 
       4 0.00000627 Welch Two Sample t-test two.sided   Hedges' g      1.88       0.5 
         conf.low conf.high conf.method conf.distribution n.obs expression

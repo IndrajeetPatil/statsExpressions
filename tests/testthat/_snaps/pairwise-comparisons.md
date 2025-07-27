@@ -595,7 +595,7 @@
             <dbl> <dbl> <chr>                       <dbl>       <dbl>  <dbl>
       1    0.0562 0.624 cauchy                          0       0.707  0.235
       2    0.140  0.990 cauchy                          0       0.707  3.71 
-      3    0.110  1.00  cauchy                          0       0.707 50.5  
+      3    0.110  1.000 cauchy                          0       0.707 50.5  
         conf.method log_e_bf10 n.obs expression test       
         <chr>            <dbl> <int> <list>     <chr>      
       1 ETI              -1.45    22 <language> Student's t
@@ -664,12 +664,12 @@
       # A tibble: 6 x 6
         group1 group2 p.value p.adjust.method test        expression
         <chr>  <chr>    <dbl> <chr>           <chr>       <list>    
-      1 HDHF   HDLF    1.00   None            Student's t <language>
+      1 HDHF   HDLF    1.000  None            Student's t <language>
       2 HDHF   LDHF    0.965  None            Student's t <language>
-      3 HDHF   LDLF    1.00   None            Student's t <language>
+      3 HDHF   LDLF    1.000  None            Student's t <language>
       4 HDLF   LDHF    0.0281 None            Student's t <language>
       5 HDLF   LDLF    0.999  None            Student's t <language>
-      6 LDHF   LDLF    1.00   None            Student's t <language>
+      6 LDHF   LDLF    1.000  None            Student's t <language>
 
 ---
 
@@ -704,7 +704,7 @@
         group1 group2 p.value p.adjust.method test        expression
         <chr>  <chr>    <dbl> <chr>           <chr>       <list>    
       1 4      6        0.995 None            Student's t <language>
-      2 4      8        1.00  None            Student's t <language>
+      2 4      8        1.000 None            Student's t <language>
       3 6      8        0.997 None            Student's t <language>
 
 ---

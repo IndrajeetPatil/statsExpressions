@@ -142,9 +142,9 @@
       select(res, -expression)
     Output
       # A tibble: 1 x 9
-        statistic p.value n.obs method                                 effectsize  
-            <dbl>   <dbl> <int> <chr>                                  <chr>       
-      1      9.70       0    83 Bootstrap-t method for one-sample test Trimmed mean
+        statistic   p.value n.obs method                                 effectsize  
+            <dbl>     <dbl> <int> <chr>                                  <chr>       
+      1      9.70 2.23e-308    83 Bootstrap-t method for one-sample test Trimmed mean
         estimate conf.level conf.low conf.high
            <dbl>      <dbl>    <dbl>     <dbl>
       1     10.5       0.95     9.33      11.6
@@ -155,7 +155,7 @@
       res[["expression"]]
     Output
       [[1]]
-      list(italic("t")["bootstrapped"] == "9.7023", italic(p) == "0.0000", 
+      list(italic("t")["bootstrapped"] == "9.7023", italic(p) == "2.2251e-308", 
           widehat(mu)["trimmed"] == "10.4824", CI["95%"] ~ "[" * "9.3288", 
           "11.6359" * "]", italic("n")["obs"] == "83")
       
@@ -166,9 +166,9 @@
       select(res, -expression)
     Output
       # A tibble: 1 x 9
-        statistic p.value n.obs method                                 effectsize  
-            <dbl>   <dbl> <int> <chr>                                  <chr>       
-      1      9.70       0    83 Bootstrap-t method for one-sample test Trimmed mean
+        statistic   p.value n.obs method                                 effectsize  
+            <dbl>     <dbl> <int> <chr>                                  <chr>       
+      1      9.70 2.23e-308    83 Bootstrap-t method for one-sample test Trimmed mean
         estimate conf.level conf.low conf.high
            <dbl>      <dbl>    <dbl>     <dbl>
       1     10.5        0.9     9.51      11.5
@@ -179,7 +179,7 @@
       res[["expression"]]
     Output
       [[1]]
-      list(italic("t")["bootstrapped"] == "9.7023", italic(p) == "0.0000", 
+      list(italic("t")["bootstrapped"] == "9.7023", italic(p) == "2.2251e-308", 
           widehat(mu)["trimmed"] == "10.4824", CI["90%"] ~ "[" * "9.5064", 
           "11.4583" * "]", italic("n")["obs"] == "83")
       

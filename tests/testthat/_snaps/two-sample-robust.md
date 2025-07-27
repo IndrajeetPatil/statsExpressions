@@ -4,9 +4,12 @@
       select(df1, -expression)
     Output
       # A tibble: 1 x 14
-        statistic df.error p.value method                                            
-            <dbl>    <dbl>   <dbl> <chr>                                             
-      1      28.7       89       0 Yuen's test on trimmed means for dependent samples
+        statistic df.error   p.value
+            <dbl>    <dbl>     <dbl>
+      1      28.7       89 2.23e-308
+        method                                            
+        <chr>                                             
+      1 Yuen's test on trimmed means for dependent samples
         effectsize                                              estimate conf.level
         <chr>                                                      <dbl>      <dbl>
       1 Algina-Keselman-Penfield robust standardized difference     2.36       0.95
@@ -21,7 +24,7 @@
     Output
       [[1]]
       list(italic("t")["Yuen"] * "(" * 89 * ")" == "28.7230", italic(p) == 
-          "0.0000", widehat(delta)["R"]^"AKP" == "2.3582", CI["95%"] ~ 
+          "2.2251e-308", widehat(delta)["R"]^"AKP" == "2.3582", CI["95%"] ~ 
           "[" * "1.9615", "2.6081" * "]", italic("n")["pairs"] == "150")
       
 
