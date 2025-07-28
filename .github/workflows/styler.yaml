@@ -67,4 +67,4 @@ jobs:
           styler::style_pkg()
         shell: Rscript {0}
 
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - uses: stefanzweifel/git-auto-commit-action@v6
