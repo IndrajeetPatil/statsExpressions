@@ -239,7 +239,8 @@ ggplot(ToothGrowth, aes(supp, len)) +
 ### Within-subjects design
 
 ```{r}
-#| label = "t_two_paired1"
+#| label = "t_two_paired1",
+#| warning = FALSE
 
 set.seed(123)
 library(tidyr)
