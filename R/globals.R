@@ -43,6 +43,7 @@ utils::globalVariables(c(
   "n.obs",
   # <long_to_wide_converter>
   "nested_data",
+  # <add_expression_col>
   # <pairwise_comparisons>
   "p.value",
   # <tidy_model_parameters>
