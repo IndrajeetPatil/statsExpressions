@@ -352,7 +352,10 @@ results_data <- two_sample_test(
 )
 
 # plot
-paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject") +
+suppressWarnings(paired.plotProfiles(
+  PrisonStress, "PSSbefore", "PSSafter",
+  subjects = "Subject"
+)) +
   labs(
     title = "Two-sample Wilcoxon paired test",
     subtitle = parse(text = results_data$expression)

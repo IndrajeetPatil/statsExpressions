@@ -63,7 +63,7 @@ jobs:
         with:
           upload-snapshots: true
           upload-results: true
-          error-on: 'ifelse(getRversion() > "4.3", "note", "warning")'
+          error-on: '"note"'
         env:
           _R_CHECK_CRAN_INCOMING_REMOTE_: false
           _R_CHECK_CRAN_INCOMING_: false
