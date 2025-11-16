@@ -55,10 +55,9 @@
       res[["expression"]]
     Output
       [[1]]
-      list(italic("t")["Student"] * "(" * 82 * ")" == "11.1235", italic(p) == 
-          "4.6953e-18", widehat(italic("g"))["Hedges"] == "1.2098", 
-          CI["95%"] ~ "[" * "0.9254", "1.4897" * "]", italic("n")["obs"] == 
-              "83")
+      list(italic("t")["Student"] * "(" * 82 * ")" == "11.124", italic(p) == 
+          "4.695e-18", widehat(italic("g"))["Hedges"] == "1.210", CI["95%"] ~ 
+          "[" * "0.925", "1.490" * "]", italic("n")["obs"] == "83")
       
 
 # one-sample-test without missing data:  type=parametric, conf.level=0.9, effsize.type=d
@@ -80,10 +79,9 @@
       res[["expression"]]
     Output
       [[1]]
-      list(italic("t")["Student"] * "(" * 82 * ")" == "11.1235", italic(p) == 
-          "4.6953e-18", widehat(italic("d"))["Cohen"] == "1.2210", 
-          CI["90%"] ~ "[" * "0.9792", "1.4572" * "]", italic("n")["obs"] == 
-              "83")
+      list(italic("t")["Student"] * "(" * 82 * ")" == "11.124", italic(p) == 
+          "4.695e-18", widehat(italic("d"))["Cohen"] == "1.221", CI["90%"] ~ 
+          "[" * "0.979", "1.457" * "]", italic("n")["obs"] == "83")
       
 
 # one-sample-test without missing data:  type=nonparametric, conf.level=0.95, effsize.type=g
@@ -105,10 +103,9 @@
       res[["expression"]]
     Output
       [[1]]
-      list(italic("V")["Wilcoxon"] == "3338.5000", italic(p) == "4.4279e-13", 
-          widehat(italic("r"))["biserial"]^"rank" == "0.9154", CI["95%"] ~ 
-              "[" * "0.8648", "0.9476" * "]", italic("n")["obs"] == 
-              "83")
+      list(italic("V")["Wilcoxon"] == "3338.500", italic(p) == "4.428e-13", 
+          widehat(italic("r"))["biserial"]^"rank" == "0.915", CI["95%"] ~ 
+              "[" * "0.865", "0.948" * "]", italic("n")["obs"] == "83")
       
 
 # one-sample-test without missing data:  type=nonparametric, conf.level=0.9, effsize.type=d
@@ -130,10 +127,9 @@
       res[["expression"]]
     Output
       [[1]]
-      list(italic("V")["Wilcoxon"] == "3338.5000", italic(p) == "4.4279e-13", 
-          widehat(italic("r"))["biserial"]^"rank" == "0.9154", CI["90%"] ~ 
-              "[" * "0.8745", "0.9433" * "]", italic("n")["obs"] == 
-              "83")
+      list(italic("V")["Wilcoxon"] == "3338.500", italic(p) == "4.428e-13", 
+          widehat(italic("r"))["biserial"]^"rank" == "0.915", CI["90%"] ~ 
+              "[" * "0.874", "0.943" * "]", italic("n")["obs"] == "83")
       
 
 # one-sample-test without missing data:  type=robust, conf.level=0.95, effsize.type=g
@@ -155,9 +151,9 @@
       res[["expression"]]
     Output
       [[1]]
-      list(italic("t")["bootstrapped"] == "9.7023", italic(p) == "2.2251e-308", 
-          widehat(mu)["trimmed"] == "10.4824", CI["95%"] ~ "[" * "9.3288", 
-          "11.6359" * "]", italic("n")["obs"] == "83")
+      list(italic("t")["bootstrapped"] == "9.702", italic(p) == "2.225e-308", 
+          widehat(mu)["trimmed"] == "10.482", CI["95%"] ~ "[" * "9.329", 
+          "11.636" * "]", italic("n")["obs"] == "83")
       
 
 # one-sample-test without missing data:  type=robust, conf.level=0.9, effsize.type=d
@@ -179,9 +175,9 @@
       res[["expression"]]
     Output
       [[1]]
-      list(italic("t")["bootstrapped"] == "9.7023", italic(p) == "2.2251e-308", 
-          widehat(mu)["trimmed"] == "10.4824", CI["90%"] ~ "[" * "9.5064", 
-          "11.4583" * "]", italic("n")["obs"] == "83")
+      list(italic("t")["bootstrapped"] == "9.702", italic(p) == "2.225e-308", 
+          widehat(mu)["trimmed"] == "10.482", CI["90%"] ~ "[" * "9.506", 
+          "11.458" * "]", italic("n")["obs"] == "83")
       
 
 # one-sample-test with missing data:  type=bayes, conf.level=0.95, effsize.type=g
@@ -241,9 +237,9 @@
       res[["expression"]]
     Output
       [[1]]
-      list(italic("t")["Student"] * "(" * 55 * ")" == "0.2420", italic(p) == 
-          "0.8096", widehat(italic("g"))["Hedges"] == "0.0319", CI["95%"] ~ 
-          "[" * "-0.2266", "0.2901" * "]", italic("n")["obs"] == "56")
+      list(italic("t")["Student"] * "(" * 55 * ")" == "0.242", italic(p) == 
+          "0.810", widehat(italic("g"))["Hedges"] == "0.032", CI["95%"] ~ 
+          "[" * "-0.227", "0.290" * "]", italic("n")["obs"] == "56")
       
 
 # one-sample-test with missing data:  type=parametric, conf.level=0.9, effsize.type=d
@@ -265,9 +261,9 @@
       res[["expression"]]
     Output
       [[1]]
-      list(italic("t")["Student"] * "(" * 55 * ")" == "0.2420", italic(p) == 
-          "0.8096", widehat(italic("d"))["Cohen"] == "0.0323", CI["90%"] ~ 
-          "[" * "-0.1877", "0.2521" * "]", italic("n")["obs"] == "56")
+      list(italic("t")["Student"] * "(" * 55 * ")" == "0.242", italic(p) == 
+          "0.810", widehat(italic("d"))["Cohen"] == "0.032", CI["90%"] ~ 
+          "[" * "-0.188", "0.252" * "]", italic("n")["obs"] == "56")
       
 
 # one-sample-test with missing data:  type=nonparametric, conf.level=0.95, effsize.type=g
@@ -289,9 +285,9 @@
       res[["expression"]]
     Output
       [[1]]
-      list(italic("V")["Wilcoxon"] == "262.0000", italic(p) == "1.2527e-05", 
-          widehat(italic("r"))["biserial"]^"rank" == "-0.6717", CI["95%"] ~ 
-              "[" * "-0.8058", "-0.4720" * "]", italic("n")["obs"] == 
+      list(italic("V")["Wilcoxon"] == "262.000", italic(p) == "1.253e-05", 
+          widehat(italic("r"))["biserial"]^"rank" == "-0.672", CI["95%"] ~ 
+              "[" * "-0.806", "-0.472" * "]", italic("n")["obs"] == 
               "56")
       
 
@@ -314,9 +310,9 @@
       res[["expression"]]
     Output
       [[1]]
-      list(italic("V")["Wilcoxon"] == "262.0000", italic(p) == "1.2527e-05", 
-          widehat(italic("r"))["biserial"]^"rank" == "-0.6717", CI["90%"] ~ 
-              "[" * "-0.7881", "-0.5088" * "]", italic("n")["obs"] == 
+      list(italic("V")["Wilcoxon"] == "262.000", italic(p) == "1.253e-05", 
+          widehat(italic("r"))["biserial"]^"rank" == "-0.672", CI["90%"] ~ 
+              "[" * "-0.788", "-0.509" * "]", italic("n")["obs"] == 
               "56")
       
 
@@ -339,9 +335,9 @@
       res[["expression"]]
     Output
       [[1]]
-      list(italic("t")["bootstrapped"] == "-13.1637", italic(p) == 
-          "0.0050", widehat(mu)["trimmed"] == "0.0390", CI["95%"] ~ 
-          "[" * "-0.0132", "0.0911" * "]", italic("n")["obs"] == "56")
+      list(italic("t")["bootstrapped"] == "-13.164", italic(p) == "0.005", 
+          widehat(mu)["trimmed"] == "0.039", CI["95%"] ~ "[" * "-0.013", 
+          "0.091" * "]", italic("n")["obs"] == "56")
       
 
 # one-sample-test with missing data:  type=robust, conf.level=0.9, effsize.type=d
@@ -363,8 +359,8 @@
       res[["expression"]]
     Output
       [[1]]
-      list(italic("t")["bootstrapped"] == "-13.1637", italic(p) == 
-          "0.0050", widehat(mu)["trimmed"] == "0.0390", CI["90%"] ~ 
-          "[" * "0.0042", "0.0737" * "]", italic("n")["obs"] == "56")
+      list(italic("t")["bootstrapped"] == "-13.164", italic(p) == "0.005", 
+          widehat(mu)["trimmed"] == "0.039", CI["90%"] ~ "[" * "0.004", 
+          "0.074" * "]", italic("n")["obs"] == "56")
       
 
