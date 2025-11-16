@@ -1,3 +1,5 @@
+# statsExpressions 1.7.1.9000
+
 # statsExpressions 1.7.1
 
 - Fixes *p*-values in expressions when they are exactly 0.

@@ -19,7 +19,7 @@ run_one_sample_tests_with_parameters <- function(title, x, test.value) {
         effsize.type = effsize.type,
         conf.method = conf.method,
         test.value = test.value,
-        digits = 4L
+        digits = 3L
       )
 
       # Bayesian estimation results are too platform-sensitive, so don't

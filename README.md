@@ -352,7 +352,10 @@ results_data <- two_sample_test(
 )
 
 # plot
-paired.plotProfiles(PrisonStress, "PSSbefore", "PSSafter", subjects = "Subject") +
+suppressWarnings(paired.plotProfiles(
+  PrisonStress, "PSSbefore", "PSSafter",
+  subjects = "Subject"
+)) +
   labs(
     title = "Two-sample Wilcoxon paired test",
     subtitle = parse(text = results_data$expression)
@@ -455,13 +458,13 @@ library(metaviz)
 results_data <- meta_analysis(dplyr::rename(mozart, estimate = d, std.error = se))
 
 # meta-analysis forest plot with results random-effects meta-analysis
-viz_forest(
+suppressWarnings(viz_forest(
   x = mozart[, c("d", "se")],
   study_labels = mozart[, "study_name"],
   xlab = "Cohen's d",
   variant = "thick",
   type = "cumulative"
-) +
+)) +
   labs(
     title = "Meta-analysis of Pietschnig, Voracek, and Formann (2010) on the Mozart effect",
     subtitle = parse(text = results_data$expression)
