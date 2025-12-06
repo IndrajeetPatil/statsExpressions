@@ -1,7 +1,7 @@
+.claude
+.dev
 .ls-lint.yml
 ^.*\.Rproj$
-^.dev$
-^.gitlab-ci\.yml$
 ^API$
 ^CITATION\.cff$
 ^CODE_OF_CONDUCT\.md$
@@ -40,14 +40,12 @@
 ^data-raw$
 ^doc$
 ^docs$
-^gitsum$
 ^hextools/.
-^man-roxygen$
 ^old/.
 ^paper.*$
 ^pkgdown$
 ^revdep$
-^shell$
 ^tests/manual$
 publication/*
 references.bib
+tests\^spelling
