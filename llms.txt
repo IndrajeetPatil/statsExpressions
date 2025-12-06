@@ -729,7 +729,7 @@ Bug reports, suggestions, questions, and (most of all) contributions are
 welcome.
 
 Please note that this project is released with a [Contributor Code of
-Conduct](https://github.com/IndrajeetPatil/statsExpressions/blob/main/.github/CODE_OF_CONDUCT.md).
+Conduct](https://www.contributor-covenant.org/version/3/0/code_of_conduct/).
 By participating in this project you agree to abide by its terms.
 
 # Package index
