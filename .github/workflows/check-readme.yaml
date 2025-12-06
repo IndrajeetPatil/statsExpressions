@@ -44,8 +44,6 @@ jobs:
           upgrade: "TRUE"
           extra-packages: |
             local::.
-            any::gghalves
-            any::ggplot2
             any::ggridges
             any::ggbeeswarm
             any::PairedData
