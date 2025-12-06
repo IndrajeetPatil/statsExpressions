@@ -1,5 +1,5 @@
 ---
-title: 'statsExpressions: R Package for Tidy Dataframes and Expressions with Statistical Details'
+title: "statsExpressions: R Package for Tidy Dataframes and Expressions with Statistical Details"
 tags:
   - R
   - parametric statistics
@@ -18,15 +18,13 @@ date: "2021-05-19"
 bibliography: paper.bib
 ---
 
-
-
 # Summary
 
 The `{statsExpressions}` package has two key aims: to provide a consistent syntax
 to do statistical analysis with tidy data, and to provide statistical
 expressions (i.e., pre-formatted in-text statistical results) for plotting
 functions. Currently, it supports common types of statistical approaches and
-tests: parametric, nonparametric, robust, and Bayesian *t*-test, one-way ANOVA,
+tests: parametric, nonparametric, robust, and Bayesian _t_-test, one-way ANOVA,
 correlation analyses, contingency table analyses, and meta-analyses. The
 functions are pipe-friendly and compatible with tidy data.
 
@@ -64,14 +62,14 @@ functions always require a dataframe in tidy format [@Wickham2019], and work
 with missing data. Moreover, they always return a dataframe that can be further
 utilized downstream in the workflow (such as visualization).
 
-Function | Parametric | Non-parametric | Robust | Bayesian
------------------- | ---- | ----- | ----| ----- 
-`one_sample_test` | \checkmark | \checkmark | \checkmark | \checkmark
-`two_sample_test` | \checkmark | \checkmark | \checkmark | \checkmark
-`oneway_anova` | \checkmark | \checkmark | \checkmark | \checkmark
-`corr_test` | \checkmark | \checkmark | \checkmark | \checkmark
-`contingency_table` | \checkmark | \checkmark | - | \checkmark
-`meta_analysis` | \checkmark | - | \checkmark | \checkmark
+| Function            | Parametric | Non-parametric | Robust     | Bayesian   |
+| ------------------- | ---------- | -------------- | ---------- | ---------- |
+| `one_sample_test`   | \checkmark | \checkmark     | \checkmark | \checkmark |
+| `two_sample_test`   | \checkmark | \checkmark     | \checkmark | \checkmark |
+| `oneway_anova`      | \checkmark | \checkmark     | \checkmark | \checkmark |
+| `corr_test`         | \checkmark | \checkmark     | \checkmark | \checkmark |
+| `contingency_table` | \checkmark | \checkmark     | -          | \checkmark |
+| `meta_analysis`     | \checkmark | -              | \checkmark | \checkmark |
 
 : A summary table listing the primary functions in the package and the
 statistical approaches they support. More detailed description of the
@@ -95,9 +93,8 @@ ANOVA. If we first run a non-parametric ANOVA and then decide to run a robust
 ANOVA instead, the syntax remains the same and the statistical approach can be
 modified by changing a single argument:
 
-
 ```r
-mtcars %>% oneway_anova(cyl, wt, type = "nonparametric") 
+mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
 #> # A tibble: 1 x 14
 #>   parameter1 parameter2 statistic df.error   p.value
 #>   <chr>      <chr>          <dbl>    <int>     <dbl>
@@ -106,7 +103,7 @@ mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
 #>   <chr>                           <dbl>      <dbl>    <dbl>     <dbl>
 #> 1 Kruskal-Wallis rank sum test    0.736       0.95    0.613     0.831
 #>   effectsize      conf.method conf.iterations expression
-#>   <chr>           <chr>                 <int> <list>    
+#>   <chr>           <chr>                 <int> <list>
 #> 1 Epsilon2 (rank) bootstrap               100 <language>
 
 mtcars %>% oneway_anova(cyl, wt, type = "robust")
@@ -114,11 +111,11 @@ mtcars %>% oneway_anova(cyl, wt, type = "robust")
 #>   statistic    df df.error p.value estimate conf.level conf.low conf.high
 #>       <dbl> <dbl>    <dbl>   <dbl>    <dbl>      <dbl>    <dbl>     <dbl>
 #> 1      12.7     2     12.2 0.00102     1.05       0.95    0.843      1.50
-#>   effectsize                        
-#>   <chr>                             
+#>   effectsize
+#>   <chr>
 #> 1 Explanatory measure of effect size
 #>   method                                            expression
-#>   <chr>                                             <list>    
+#>   <chr>                                             <list>
 #> 1 A heteroscedastic one-way ANOVA for trimmed means <language>
 ```
 
@@ -153,8 +150,7 @@ source code stored at [GitHub](https://github.com/IndrajeetPatil/statsExpression
 In the spirit of honest and open science, requests and suggestions for fixes,
 feature updates, as well as general questions and concerns are encouraged via
 direct interaction with contributors and developers by filing an
-[issue](https://github.com/IndrajeetPatil/statsExpressions/issues) while respecting
-[*Contribution Guidelines*](https://indrajeetpatil.github.io/statsExpressions/CONTRIBUTING.html).
+[issue](https://github.com/IndrajeetPatil/statsExpressions/issues).
 
 # Acknowledgements
 
@@ -175,7 +171,6 @@ analyses. Thus, I would like to thank the [members of easystats](https://github.
 We can use combination of `dplyr` and `{statsExpressions}` to repeat the same
 statistical analysis across grouping variables.
 
-
 ```r
 # running one-sample proportion test for all levels of `cyl`
 mtcars %>%
@@ -183,25 +178,24 @@ mtcars %>%
   group_modify(~ contingency_table(.x, am), .keep = TRUE) %>%
   ungroup()
 #> # A tibble: 3 x 13
-#>     cyl statistic    df p.value method                                  
-#>   <dbl>     <dbl> <dbl>   <dbl> <chr>                                   
+#>     cyl statistic    df p.value method
+#>   <dbl>     <dbl> <dbl>   <dbl> <chr>
 #> 1     4     2.27      1 0.132   Chi-squared test for given probabilities
 #> 2     6     0.143     1 0.705   Chi-squared test for given probabilities
 #> 3     8     7.14      1 0.00753 Chi-squared test for given probabilities
 #>   estimate conf.level conf.low conf.high effectsize        conf.method
-#>      <dbl>      <dbl>    <dbl>     <dbl> <chr>             <chr>      
-#> 1    0.344       0.95    0         0.917 Cramer's V (adj.) ncp        
-#> 2    0           0.95    0         0     Cramer's V (adj.) ncp        
-#> 3    0.685       0.95    0.127     1.18  Cramer's V (adj.) ncp        
+#>      <dbl>      <dbl>    <dbl>     <dbl> <chr>             <chr>
+#> 1    0.344       0.95    0         0.917 Cramer's V (adj.) ncp
+#> 2    0           0.95    0         0     Cramer's V (adj.) ncp
+#> 3    0.685       0.95    0.127     1.18  Cramer's V (adj.) ncp
 #>   conf.distribution expression
-#>   <chr>             <list>    
+#>   <chr>             <list>
 #> 1 chisq             <language>
 #> 2 chisq             <language>
 #> 3 chisq             <language>
 ```
 
 ## Code to reproduce for Figure 2
-
 
 ```r
 # needed libraries
