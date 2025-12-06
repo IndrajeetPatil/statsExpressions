@@ -2,7 +2,7 @@
 
 0 errors | 0 warnings | 0 note
 
-* Fixes snapshot tests failing due to easystats updates.
+* Maintenance release to adapt to changes in easystats packages.
 
 ## revdepcheck results
 

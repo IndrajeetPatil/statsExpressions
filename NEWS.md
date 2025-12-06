@@ -1,5 +1,3 @@
-# statsExpressions 1.7.1.9000
-
 # statsExpressions 1.7.2
 
 - Maintenance release to adapt to changes in easystats packages.
