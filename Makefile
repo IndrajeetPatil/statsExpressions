@@ -26,6 +26,10 @@ update_deps:
 	Rscript -e 'roxygen2::roxygenise()'
 	Rscript -e 'codemetar::write_codemeta()'
 
+document:
+	Rscript -e 'roxygen2::roxygenise()'
+	Rscript -e 'rmarkdown::render("README.Rmd")'
+
 format:
 	Rscript -e 'styler::style_pkg()'
 
