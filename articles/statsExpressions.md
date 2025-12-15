@@ -237,9 +237,7 @@ spirit of honest and open science, requests and suggestions for fixes,
 feature updates, as well as general questions and concerns are
 encouraged via direct interaction with contributors and developers by
 filing an
-[issue](https://github.com/IndrajeetPatil/statsExpressions/issues) while
-respecting [*Contribution
-Guidelines*](https://indrajeetpatil.github.io/statsExpressions/CONTRIBUTING.html).
+[issue](https://github.com/IndrajeetPatil/statsExpressions/issues).
 
 ## Acknowledgements
 

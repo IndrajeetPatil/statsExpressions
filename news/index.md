@@ -1,6 +1,10 @@
 # Changelog
 
-## statsExpressions 1.7.1.9000
+## statsExpressions 1.7.2
+
+CRAN release: 2025-12-06
+
+- Maintenance release to adapt to changes in easystats packages.
 
 ## statsExpressions 1.7.1
 
