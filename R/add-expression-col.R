@@ -169,10 +169,10 @@ add_expression_col <- function(
 .data_to_char <- function(data, digits = 2L, digits.df = 0L, digits.df.error = 0L) {
   data %>%
     mutate(
-      across(.fns = ~ .to_char(.x, digits), .cols = matches("^est|^sta|p.value|.scale$|.low$|.high$|^log")),
-      across(.fns = ~ .to_char(.x, digits.df), .cols = matches("^df$")),
-      across(.fns = ~ .to_char(.x, digits.df.error), .cols = matches("^df.error$")),
-      across(.fns = ~ paste0(.x * 100L, "%"), .cols = matches("^conf.level$"))
+      across(.cols = matches("^est|^sta|p.value|.scale$|.low$|.high$|^log"), .fns = \(x) .to_char(x, digits)),
+      across(.cols = matches("^df$"), .fns = \(x) .to_char(x, digits.df)),
+      across(.cols = matches("^df.error$"), .fns = \(x) .to_char(x, digits.df.error)),
+      across(.cols = matches("^conf.level$"), .fns = \(x) paste0(x * 100L, "%"))
     )
 }
 
