@@ -17,10 +17,10 @@ tidy_model_parameters <- function(model, ...) {
     mutate(conf.method = . %@% "ci_method") %>%
     select(-matches("Difference")) %>%
     standardize_names(style = "broom") %>%
-    rename_all(~ gsub("cramers.|omega2.|eta2.", "", .x)) %>%
+    rename_all(\(x) gsub("cramers.|omega2.|eta2.", "", x)) %>%
     rename_with(recode, bayes.factor = "bf10") %>%
     tidyr::fill(matches("^prior|^bf"), .direction = "updown") %>%
-    mutate(across(matches("bf10"), ~ log(.x), .names = "log_e_{.col}"))
+    mutate(across(matches("bf10"), \(x) log(x), .names = "log_e_{.col}"))
 
   if (!"estimate" %in% colnames(stats_df)) stats_df %<>% select(-matches("^conf"))
 
@@ -62,5 +62,5 @@ tidy_model_effectsize <- function(data, ...) {
     mutate(effectsize = stats::na.omit(effectsize::get_effectsize_label(colnames(.)))) %>%
     standardize_names(style = "broom") %>%
     select(-contains("term")) %>%
-    bind_cols(rename_with(as_tibble(data %@% "ci_method"), ~ paste0("conf.", .x)))
+    bind_cols(rename_with(as_tibble(data %@% "ci_method"), \(x) paste0("conf.", x)))
 }

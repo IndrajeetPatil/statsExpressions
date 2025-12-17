@@ -260,7 +260,7 @@ pairwise_comparisons <- function(
   # expression formatting ----------------------------------
 
   df_pair %<>%
-    mutate(across(where(is.factor), ~ as.character())) %>%
+    mutate(across(where(is.factor), \(x) as.character(x))) %>%
     arrange(group1, group2) %>%
     select(group1, group2, everything())
 
