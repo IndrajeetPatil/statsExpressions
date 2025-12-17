@@ -131,7 +131,7 @@ two_sample_test <- function(
 .standardize_two_sample_terms <- function(data, x_name, y_name) {
   data %>%
     mutate(
-      across(matches("^parameter1$|^term$"), \(x) y_name),
-      across(matches("^parameter2$|^group$"), \(x) x_name)
+      across(matches("^parameter1$|^term$"), \(_) y_name),
+      across(matches("^parameter2$|^group$"), \(_) x_name)
     )
 }
