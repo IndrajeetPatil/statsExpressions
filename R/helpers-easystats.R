@@ -32,12 +32,26 @@ tidy_model_parameters <- function(model, ...) {
       as_tibble() %>%
       standardize_names(style = "broom") %>%
       rename(estimate = r.squared) %>%
-      filter(if_any(matches("component"), ~ (.x == "conditional")))
+      filter({
+        if (length(pick(matches("component"))) == 0L) {
+          # Keep all rows when it selects nothing
+          TRUE
+        } else {
+          if_any(matches("component"), ~ (.x == "conditional"))
+        }
+      })
 
     # remove estimates and CIs and use R2 data frame instead
     stats_df %<>%
       select(-matches("^est|^conf|^comp")) %>%
-      filter(if_any(matches("effect"), ~ (.x == "fixed"))) %>%
+      filter({
+        if (length(pick(matches("effect"))) == 0L) {
+          # Keep all rows when it selects nothing
+          TRUE
+        } else {
+          if_any(matches("effect"), ~ (.x == "fixed"))
+        }
+      }) %>%
       bind_cols(df_r2)
   }
 
