@@ -101,3 +101,10 @@
     Output
       [1] 7
 
+# tidy_model_parameters handles Bayesian ANOVA correctly
+
+    Code
+      dim(result_between)
+    Output
+      [1]  6 15
+

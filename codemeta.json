@@ -285,7 +285,7 @@
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
-      "version": ">= 1.4.5",
+      "version": ">= 1.4.6",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -324,7 +324,7 @@
       "@type": "SoftwareApplication",
       "identifier": "performance",
       "name": "performance",
-      "version": ">= 0.15.3",
+      "version": ">= 0.16.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",

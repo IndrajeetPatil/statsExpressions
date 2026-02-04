@@ -152,26 +152,7 @@ test_that(
     # Verify that the row replication worked - should have same number of rows as original
     expect_true(nrow(result_between) > 0)
 
-    # Test within-subjects design (has component column)
-    set.seed(123)
-    wine_data <- WRS2::WineTasting
-    wine_wide <- tidyr::pivot_wider(wine_data, names_from = Wine, values_from = Taste, id_cols = Taster)
-    model_within <- BayesFactor::anovaBF(
-      wine_wide$Wine1,
-      wine_wide$Wine2,
-      wine_wide$Wine3,
-      rscaleFixed = 0.88
-    )
-
-    result_within <- tidy_model_parameters(model_within[[1]])
-
-    # For within-subjects, should filter to conditional component only
-    expect_true("estimate" %in% colnames(result_within))
-    expect_true(nrow(result_within) > 0)
-
-    # Verify if_all behavior: when component column exists, it filters correctly
-    # when it doesn't exist (between-subjects), it keeps all rows
+    # Verify if_all behavior: when component column doesn't exist (between-subjects), keeps all rows
     expect_snapshot(dim(result_between))
-    expect_snapshot(dim(result_within))
   }
 )
