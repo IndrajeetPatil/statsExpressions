@@ -226,7 +226,7 @@ to follow the gold standard for statistical reporting.
 
 For example, here are results from Welch’s *t*-test:
 
-<img src="man/figures/stats_reporting_format.png" align="center" />
+<img src="man/figures/stats_reporting_format.png" alt="Example of statistical reporting format showing Welch's t-test results with test statistic, degrees of freedom, p-value, and effect size" align="center" />
 
 Let’s load the needed library for visualization:
 
@@ -378,7 +378,7 @@ ggplot(mtcars, aes(wt)) +
   labs(subtitle = parse(text = results_data$expression))
 ```
 
-<img src="man/figures/README-t_one-1.png" alt="" width="100%" />
+<img src="man/figures/README-t_one-1.png" alt="Histogram of car weights with a vertical line at the mean and Bayesian one-sample t-test subtitle" width="100%" />
 
 ## Expressions for correlation analysis
 
@@ -694,7 +694,7 @@ For detailed documentation, see the package website:
 Here is an example from `{ggstatsplot}` of what the plots look like when
 the expressions are displayed in the subtitle-
 
-<img src="man/figures/ggstatsplot.png" align="center" />
+<img src="man/figures/ggstatsplot.png" alt="Example plot from ggstatsplot package showing statistical results in subtitle" align="center" />
 
 # Acknowledgments
 

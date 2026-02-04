@@ -61,7 +61,8 @@ citation("statsExpressions")
 
 ```{r}
 #| echo = FALSE,
-#| out.width = "80%"
+#| out.width = "80%",
+#| fig.alt = "Diagram showing the general workflow of the statsExpressions package"
 knitr::include_graphics("man/figures/card.png")
 ```
 
@@ -136,7 +137,7 @@ the gold standard for statistical reporting.
 
 For example, here are results from Welch's *t*-test:
 
-<img src="man/figures/stats_reporting_format.png" align="center" />
+<img src="man/figures/stats_reporting_format.png" alt="Example of statistical reporting format showing Welch's t-test results with test statistic, degrees of freedom, p-value, and effect size" align="center" />
 
 Let's load the needed library for visualization:
 
@@ -149,7 +150,8 @@ library(ggplot2)
 **Note that when used in a geometric layer, the expression need to be parsed.**
 
 ```{r}
-#| label = "centrality"
+#| label = "centrality",
+#| fig.alt = "Example ggplot showing centrality_description output: mean wt by cyl with labeled statistical expressions."
 
 # displaying mean for each level of `cyl`
 centrality_description(mtcars, cyl, wt) |>
@@ -174,7 +176,8 @@ If you want to display more than one expression in a plot, you will *have to* pa
 ### Between-subjects design
 
 ```{r}
-#| label = "anova_rob1"
+#| label = "anova_rob1",
+#| fig.alt = "Example ridge density plot for a heteroscedastic one-way ANOVA on Sepal.Length by Species"
 
 set.seed(123)
 library(ggridges)
@@ -193,7 +196,8 @@ ggplot(iris, aes(x = Sepal.Length, y = Species)) +
 ### Within-subjects design
 
 ```{r}
-#| label = "anova_parametric2"
+#| label = "anova_parametric2",
+#| fig.alt = "Quasirandom dot plot of wine taste ratings by wine type with Friedman's rank sum test subtitle"
 
 set.seed(123)
 library(WRS2)
@@ -221,7 +225,8 @@ ggplot2::ggplot(WineTasting, aes(Wine, Taste, color = Wine)) +
 ### Between-subjects design
 
 ```{r}
-#| label = "t_two"
+#| label = "t_two",
+#| fig.alt = "Boxplot of ToothGrowth data with Two-Sample Welch's t-test expression in the subtitle"
 
 set.seed(123)
 
@@ -238,7 +243,8 @@ ggplot(ToothGrowth, aes(supp, len)) +
 ### Within-subjects design
 
 ```{r}
-#| label = "t_two_paired1"
+#| label = "t_two_paired1",
+#| fig.alt = "Example paired profiles plot for a two-sample Wilcoxon paired test"
 
 set.seed(123)
 library(tidyr)
@@ -271,7 +277,8 @@ suppressWarnings(paired.plotProfiles(
 ## Expressions for one-sample tests
 
 ```{r}
-#| label = "t_one"
+#| label = "t_one",
+#| fig.alt = "Histogram of car weights with a vertical line at the mean and Bayesian one-sample t-test subtitle"
 
 set.seed(123)
 
@@ -290,7 +297,8 @@ ggplot(mtcars, aes(wt)) +
 Let's look at another example where we want to run correlation analysis:
 
 ```{r}
-#| label = "corr"
+#| label = "corr",
+#| fig.alt = "Scatterplot of car fuel efficiency (mpg) versus weight (wt) with linear fit and Spearman correlation expression"
 
 set.seed(123)
 
@@ -312,7 +320,8 @@ ggplot(mtcars, aes(mpg, wt)) +
 For categorical/nominal data - one-sample:
 
 ```{r}
-#| label = "gof"
+#| label = "gof",
+#| fig.alt = "Pie chart of car classes showing example output with statistical caption"
 
 set.seed(123)
 
@@ -356,7 +365,8 @@ contingency_table(mtcars, am, vs)$expression[[1]]
 ```{r}
 #| label = "metaanalysis",
 #| fig.height = 14,
-#| fig.width = 12
+#| fig.width = 12,
+#| fig.alt = "Meta-analysis forest plot of the Mozart effect example, showing study estimates and the overall random-effects result."
 
 set.seed(123)
 library(metaviz)
@@ -386,7 +396,8 @@ case, you can extract the expression and copy-paste only the part you wish to
 include. For example, here only statistic and *p*-values are included:
 
 ```{r}
-#| label = "custom_expr"
+#| label = "custom_expr",
+#| fig.alt = "Example ggplot boxplot of iris Sepal.Length by Species with a custom statistical expression subtitle"
 
 set.seed(123)
 
@@ -457,7 +468,7 @@ For detailed documentation, see the package website:
 Here is an example from `{ggstatsplot}` of what the plots look like when the
 expressions are displayed in the subtitle-
 
-<img src="man/figures/ggstatsplot.png" align="center" />
+<img src="man/figures/ggstatsplot.png" alt="Example plot from ggstatsplot package showing statistical results in subtitle" align="center" />
 
 # Acknowledgments
 
