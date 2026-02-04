@@ -97,8 +97,8 @@ test_that(
   desc = "Bayesian ANOVA with if_all() filtering and row replication",
   code = {
     # Test between-subjects design
-    # This ensures the if_all(matches("effect")) filtering works correctly
-    # when the effect column exists
+    # This ensures the if_all(matches("effect")) filtering behaves correctly
+    # when effect/component columns are absent (they appear in the within-subjects case)
     set.seed(123)
     df_between <- suppressWarnings(oneway_anova(
       type = "bayes",
