@@ -84,7 +84,7 @@ A BibTeX entry for LaTeX users is
 
 # General Workflow
 
-<img src="man/figures/card.png" width="80%" />
+<img src="man/figures/card.png" alt="" width="80%" />
 
 # Summary of functionality
 
@@ -247,7 +247,7 @@ centrality_description(mtcars, cyl, wt) |>
   geom_label(aes(label = expression), parse = TRUE)
 ```
 
-<img src="man/figures/README-centrality-1.png" width="100%" />
+<img src="man/figures/README-centrality-1.png" alt="" width="100%" />
 
 Here are a few examples for supported analyses.
 
@@ -283,7 +283,7 @@ ggplot(iris, aes(x = Sepal.Length, y = Species)) +
   )
 ```
 
-<img src="man/figures/README-anova_rob1-1.png" width="100%" />
+<img src="man/figures/README-anova_rob1-1.png" alt="" width="100%" />
 
 ### Within-subjects design
 
@@ -309,7 +309,7 @@ ggplot2::ggplot(WineTasting, aes(Wine, Taste, color = Wine)) +
   )
 ```
 
-<img src="man/figures/README-anova_parametric2-1.png" width="100%" />
+<img src="man/figures/README-anova_parametric2-1.png" alt="" width="100%" />
 
 ## Expressions for two-sample tests
 
@@ -328,7 +328,7 @@ ggplot(ToothGrowth, aes(supp, len)) +
   )
 ```
 
-<img src="man/figures/README-t_two-1.png" width="100%" />
+<img src="man/figures/README-t_two-1.png" alt="" width="100%" />
 
 ### Within-subjects design
 
@@ -361,7 +361,7 @@ suppressWarnings(paired.plotProfiles(
   )
 ```
 
-<img src="man/figures/README-t_two_paired1-1.png" width="100%" />
+<img src="man/figures/README-t_two_paired1-1.png" alt="" width="100%" />
 
 ## Expressions for one-sample tests
 
@@ -378,7 +378,7 @@ ggplot(mtcars, aes(wt)) +
   labs(subtitle = parse(text = results_data$expression))
 ```
 
-<img src="man/figures/README-t_one-1.png" width="100%" />
+<img src="man/figures/README-t_one-1.png" alt="" width="100%" />
 
 ## Expressions for correlation analysis
 
@@ -400,7 +400,7 @@ ggplot(mtcars, aes(mpg, wt)) +
   )
 ```
 
-<img src="man/figures/README-corr-1.png" width="100%" />
+<img src="man/figures/README-corr-1.png" alt="" width="100%" />
 
 ## Expressions for contingency table analysis
 
@@ -432,7 +432,7 @@ ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1
   )
 ```
 
-<img src="man/figures/README-gof-1.png" width="100%" />
+<img src="man/figures/README-gof-1.png" alt="" width="100%" />
 
 You can also use these function to get the expression in return without
 having to display them in plots:
@@ -471,7 +471,7 @@ suppressWarnings(viz_forest(
   theme(text = element_text(size = 12))
 ```
 
-<img src="man/figures/README-metaanalysis-1.png" width="100%" />
+<img src="man/figures/README-metaanalysis-1.png" alt="" width="100%" />
 
 # Customizing details to your liking
 
@@ -498,7 +498,7 @@ ggplot(iris, aes(x = Species, y = Sepal.Length)) +
   )))
 ```
 
-<img src="man/figures/README-custom_expr-1.png" width="100%" />
+<img src="man/figures/README-custom_expr-1.png" alt="" width="100%" />
 
 # Summary of tests and effect sizes
 

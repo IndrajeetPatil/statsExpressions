@@ -1,3 +1,7 @@
+# statsExpressions 1.7.3
+
+- Maintenance release to adapt to API changes in `{dplyr}` (v1.2.0) and `{purrr}` (v1.2.1).
+
 # statsExpressions 1.7.2
 
 - Maintenance release to adapt to changes in easystats packages.
