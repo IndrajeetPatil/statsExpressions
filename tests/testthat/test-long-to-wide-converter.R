@@ -3,7 +3,7 @@ withr::local_options(list(tibble.width = Inf))
 test_that(
   desc = "long_to_wide_converter works - spread true",
   code = {
-    skip_if(grepl("Under development", R.version$status), "Skipping on R-devel due to summary() format changes")
+    skip_if(grepl("Under development", R.version$status, fixed = TRUE), "Skipping on R-devel due to summary() format changes")
 
     # data without NAs ------------------------------
 
