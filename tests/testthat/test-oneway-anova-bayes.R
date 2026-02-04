@@ -147,10 +147,10 @@ test_that(
     expect_true("conf.low" %in% colnames(result_between))
     expect_true("conf.high" %in% colnames(result_between))
     expect_true("method" %in% colnames(result_between))
-    expect_equal(result_between$method[[1]], "Bayes factors for linear models")
+    expect_identical(result_between$method[[1]], "Bayes factors for linear models")
 
     # Verify that the row replication worked - should have same number of rows as original
-    expect_true(nrow(result_between) > 0)
+    expect_gt(nrow(result_between), 0L)
 
     # Verify if_all behavior: when component column doesn't exist (between-subjects), keeps all rows
     expect_snapshot(dim(result_between))
