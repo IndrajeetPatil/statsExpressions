@@ -62,3 +62,49 @@
           "0.53", CI["95%"]^HDI ~ "[" * "0.46", "0.59" * "]", italic("r")["Cauchy"]^"JZS" == 
           "0.71")
 
+# Bayesian ANOVA with if_all() filtering and row replication
+
+    Code
+      colnames(df_between)
+    Output
+       [1] "term"               "pd"                 "prior.distribution"
+       [4] "prior.location"     "prior.scale"        "bf10"              
+       [7] "method"             "log_e_bf10"         "effectsize"        
+      [10] "estimate"           "std.dev"            "conf.level"        
+      [13] "conf.low"           "conf.high"          "conf.method"       
+      [16] "n.obs"              "expression"        
+
+---
+
+    Code
+      nrow(df_between)
+    Output
+      [1] 6
+
+---
+
+    Code
+      colnames(df_within)
+    Output
+       [1] "term"               "pd"                 "prior.distribution"
+       [4] "prior.location"     "prior.scale"        "effect"            
+       [7] "bf10"               "method"             "log_e_bf10"        
+      [10] "effectsize"         "estimate"           "std.dev"           
+      [13] "conf.level"         "conf.low"           "conf.high"         
+      [16] "conf.method"        "component"          "n.obs"             
+      [19] "expression"        
+
+---
+
+    Code
+      nrow(df_within)
+    Output
+      [1] 7
+
+# tidy_model_parameters handles Bayesian ANOVA correctly
+
+    Code
+      dim(result_between)
+    Output
+      [1]  6 15
+

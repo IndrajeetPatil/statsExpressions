@@ -14,7 +14,7 @@
 #' @export
 tidy_model_parameters <- function(model, ...) {
   stats_df <- model_parameters(model, verbose = FALSE, ...) %>%
-    mutate(conf.method = . %@% "ci_method") %>%
+    mutate(conf.method = attr(., "ci_method")) %>%
     select(-matches("Difference")) %>%
     standardize_names(style = "broom") %>%
     rename_all(\(x) gsub("cramers.|omega2.|eta2.", "", x)) %>%
@@ -27,18 +27,22 @@ tidy_model_parameters <- function(model, ...) {
   # Bayesian ANOVA designs -----------------------------------
 
   if ("method" %in% names(stats_df) && stats_df$method[[1]] == "Bayes factors for linear models") {
-    # for within-subjects design, retain only marginal component
+    # for within-subjects design, retain only conditional component
     df_r2 <- performance::r2_bayes(model, average = TRUE, verbose = FALSE, ci = stats_df$conf.level[[1]]) %>%
       as_tibble() %>%
       standardize_names(style = "broom") %>%
       rename(estimate = r.squared) %>%
-      filter(if_any(matches("component"), ~ (.x == "conditional")))
+      filter(if_all(matches("component"), ~ (.x == "conditional")))
 
     # remove estimates and CIs and use R2 data frame instead
     stats_df %<>%
       select(-matches("^est|^conf|^comp")) %>%
-      filter(if_any(matches("effect"), ~ (.x == "fixed"))) %>%
-      bind_cols(df_r2)
+      filter(if_all(matches("effect"), ~ (.x == "fixed")))
+
+    # replicate df_r2 to match stats_df rows for bind_cols
+    df_r2 <- df_r2[rep(1L, nrow(stats_df)), ]
+
+    stats_df %<>% bind_cols(df_r2)
   }
 
   as_tibble(stats_df)
@@ -62,5 +66,5 @@ tidy_model_effectsize <- function(data, ...) {
     mutate(effectsize = stats::na.omit(effectsize::get_effectsize_label(colnames(.)))) %>%
     standardize_names(style = "broom") %>%
     select(-contains("term")) %>%
-    bind_cols(rename_with(as_tibble(data %@% "ci_method"), \(x) paste0("conf.", x)))
+    bind_cols(rename_with(as_tibble(attr(data, "ci_method")), \(x) paste0("conf.", x)))
 }

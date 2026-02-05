@@ -8,7 +8,7 @@
 | [![R build status](https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions/actions) | [![Total downloads](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Codecov](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/main/graph/badge.svg)](https://app.codecov.io/gh/IndrajeetPatil/statsExpressions?branch=main) |
 | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html) | [![Daily downloads](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![DOI](https://joss.theoj.org/papers/10.21105/joss.03236/status.svg)](https://doi.org/10.21105/joss.03236) |
 
-# Introduction <img src="man/figures/logo.png" align="right" width="240" />
+# Introduction <img src="man/figures/logo.png" alt="statsExpressions package logo" align="right" width="240" />
 
 The `{statsExpressions}` package has two key aims:
 
@@ -84,7 +84,7 @@ A BibTeX entry for LaTeX users is
 
 # General Workflow
 
-<img src="man/figures/card.png" width="80%" />
+<img src="man/figures/card.png" alt="Diagram showing the general workflow of the statsExpressions package" width="80%" />
 
 # Summary of functionality
 
@@ -226,7 +226,7 @@ to follow the gold standard for statistical reporting.
 
 For example, here are results from Welch’s *t*-test:
 
-<img src="man/figures/stats_reporting_format.png" align="center" />
+<img src="man/figures/stats_reporting_format.png" alt="Example of statistical reporting format showing Welch's t-test results with test statistic, degrees of freedom, p-value, and effect size" align="center" />
 
 Let’s load the needed library for visualization:
 
@@ -247,7 +247,7 @@ centrality_description(mtcars, cyl, wt) |>
   geom_label(aes(label = expression), parse = TRUE)
 ```
 
-<img src="man/figures/README-centrality-1.png" width="100%" />
+<img src="man/figures/README-centrality-1.png" alt="Example ggplot showing centrality_description output: mean wt by cyl with labeled statistical expressions." width="100%" />
 
 Here are a few examples for supported analyses.
 
@@ -283,7 +283,7 @@ ggplot(iris, aes(x = Sepal.Length, y = Species)) +
   )
 ```
 
-<img src="man/figures/README-anova_rob1-1.png" width="100%" />
+<img src="man/figures/README-anova_rob1-1.png" alt="Example ridge density plot for a heteroscedastic one-way ANOVA on Sepal.Length by Species" width="100%" />
 
 ### Within-subjects design
 
@@ -309,7 +309,7 @@ ggplot2::ggplot(WineTasting, aes(Wine, Taste, color = Wine)) +
   )
 ```
 
-<img src="man/figures/README-anova_parametric2-1.png" width="100%" />
+<img src="man/figures/README-anova_parametric2-1.png" alt="Quasirandom dot plot of wine taste ratings by wine type with Friedman's rank sum test subtitle" width="100%" />
 
 ## Expressions for two-sample tests
 
@@ -328,7 +328,7 @@ ggplot(ToothGrowth, aes(supp, len)) +
   )
 ```
 
-<img src="man/figures/README-t_two-1.png" width="100%" />
+<img src="man/figures/README-t_two-1.png" alt="Boxplot of ToothGrowth data with Two-Sample Welch's t-test expression in the subtitle" width="100%" />
 
 ### Within-subjects design
 
@@ -361,7 +361,7 @@ suppressWarnings(paired.plotProfiles(
   )
 ```
 
-<img src="man/figures/README-t_two_paired1-1.png" width="100%" />
+<img src="man/figures/README-t_two_paired1-1.png" alt="Example paired profiles plot for a two-sample Wilcoxon paired test" width="100%" />
 
 ## Expressions for one-sample tests
 
@@ -378,7 +378,7 @@ ggplot(mtcars, aes(wt)) +
   labs(subtitle = parse(text = results_data$expression))
 ```
 
-<img src="man/figures/README-t_one-1.png" width="100%" />
+<img src="man/figures/README-t_one-1.png" alt="Histogram of car weights with a vertical line at the mean and Bayesian one-sample t-test subtitle" width="100%" />
 
 ## Expressions for correlation analysis
 
@@ -400,7 +400,7 @@ ggplot(mtcars, aes(mpg, wt)) +
   )
 ```
 
-<img src="man/figures/README-corr-1.png" width="100%" />
+<img src="man/figures/README-corr-1.png" alt="Scatterplot of car fuel efficiency (mpg) versus weight (wt) with linear fit and Spearman correlation expression" width="100%" />
 
 ## Expressions for contingency table analysis
 
@@ -432,7 +432,7 @@ ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1
   )
 ```
 
-<img src="man/figures/README-gof-1.png" width="100%" />
+<img src="man/figures/README-gof-1.png" alt="Pie chart of car classes showing example output with statistical caption" width="100%" />
 
 You can also use these function to get the expression in return without
 having to display them in plots:
@@ -471,7 +471,7 @@ suppressWarnings(viz_forest(
   theme(text = element_text(size = 12))
 ```
 
-<img src="man/figures/README-metaanalysis-1.png" width="100%" />
+<img src="man/figures/README-metaanalysis-1.png" alt="Meta-analysis forest plot of the Mozart effect example, showing study estimates and the overall random-effects result." width="100%" />
 
 # Customizing details to your liking
 
@@ -498,7 +498,7 @@ ggplot(iris, aes(x = Species, y = Sepal.Length)) +
   )))
 ```
 
-<img src="man/figures/README-custom_expr-1.png" width="100%" />
+<img src="man/figures/README-custom_expr-1.png" alt="Example ggplot boxplot of iris Sepal.Length by Species with a custom statistical expression subtitle" width="100%" />
 
 # Summary of tests and effect sizes
 
@@ -694,7 +694,7 @@ For detailed documentation, see the package website:
 Here is an example from `{ggstatsplot}` of what the plots look like when
 the expressions are displayed in the subtitle-
 
-<img src="man/figures/ggstatsplot.png" align="center" />
+<img src="man/figures/ggstatsplot.png" alt="Example plot from ggstatsplot package showing statistical results in subtitle" align="center" />
 
 # Acknowledgments
 
