@@ -10,7 +10,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/IndrajeetPatil/statsExpressions/blob/main/inst/CITATION)
+[`inst/CITATION`](https://github.com/IndrajeetPatil/statsExpressions/blob/HEAD/inst/CITATION)
 
 Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and
 Expressions with Statistical Details. Journal of Open Source Software,
