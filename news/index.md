@@ -1,5 +1,13 @@
 # Changelog
 
+## statsExpressions 1.7.3
+
+CRAN release: 2026-02-05
+
+- Maintenance release to adapt to API changes in
+  [dplyr](https://dplyr.tidyverse.org) (v1.2.0) and
+  [purrr](https://purrr.tidyverse.org/) (v1.2.1).
+
 ## statsExpressions 1.7.2
 
 CRAN release: 2025-12-06

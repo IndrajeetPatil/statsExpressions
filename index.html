@@ -33,7 +33,7 @@
 
     <a class="navbar-brand me-2" href="index.html">statsExpressions</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -168,7 +168,7 @@
 <div class="section level1">
 <h1 id="general-workflow">General Workflow<a class="anchor" aria-label="anchor" href="#general-workflow"></a>
 </h1>
-<p><img src="reference/figures/card.png" width="80%"></p>
+<p><img src="reference/figures/card.png" alt="Diagram showing the general workflow of the statsExpressions package" width="80%"></p>
 </div>
 <div class="section level1">
 <h1 id="summary-of-functionality">Summary of functionality<a class="anchor" aria-label="anchor" href="#summary-of-functionality"></a>
@@ -432,7 +432,7 @@
 <p>Note that <em>expression</em> here means <strong>a pre-formatted in-text statistical result</strong>. In addition to other details contained in the dataframe, there is also a column titled <code>expression</code>, which contains expression with statistical details and can be displayed in a plot.</p>
 <p>For <strong>all</strong> statistical test expressions, the default template attempt to follow the gold standard for statistical reporting.</p>
 <p>For example, here are results from Welch’s <em>t</em>-test:</p>
-<p><img src="reference/figures/stats_reporting_format.png" align="center"></p>
+<p><img src="reference/figures/stats_reporting_format.png" alt="Example of statistical reporting format showing Welch's t-test results with test statistic, degrees of freedom, p-value, and effect size" align="center"></p>
 <p>Let’s load the needed library for visualization:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></code></pre></div>
@@ -446,7 +446,7 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">wt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_label</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">expression</span><span class="op">)</span>, parse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-centrality-1.png" width="100%"></p>
+<p><img src="reference/figures/README-centrality-1.png" alt="Example ggplot showing centrality_description output: mean wt by cyl with labeled statistical expressions." width="100%"></p>
 <p>Here are a few examples for supported analyses.</p>
 </div>
 <div class="section level2">
@@ -475,7 +475,7 @@
 <span>    title <span class="op">=</span> <span class="st">"A heteroscedastic one-way ANOVA for trimmed means"</span>,</span>
 <span>    subtitle <span class="op">=</span> <span class="va">results_data</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-anova_rob1-1.png" width="100%"></p>
+<p><img src="reference/figures/README-anova_rob1-1.png" alt="Example ridge density plot for a heteroscedastic one-way ANOVA on Sepal.Length by Species" width="100%"></p>
 </div>
 <div class="section level3">
 <h3 id="within-subjects-design">Within-subjects design<a class="anchor" aria-label="anchor" href="#within-subjects-design"></a>
@@ -500,7 +500,7 @@
 <span>    title <span class="op">=</span> <span class="st">"Friedman's rank sum test"</span>,</span>
 <span>    subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/parse.html" class="external-link">parse</a></span><span class="op">(</span>text <span class="op">=</span> <span class="va">results_data</span><span class="op">$</span><span class="va">expression</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-anova_parametric2-1.png" width="100%"></p>
+<p><img src="reference/figures/README-anova_parametric2-1.png" alt="Quasirandom dot plot of wine taste ratings by wine type with Friedman's rank sum test subtitle" width="100%"></p>
 </div>
 </div>
 <div class="section level2">
@@ -520,7 +520,7 @@
 <span>    title <span class="op">=</span> <span class="st">"Two-Sample Welch's t-test"</span>,</span>
 <span>    subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/parse.html" class="external-link">parse</a></span><span class="op">(</span>text <span class="op">=</span> <span class="va">results_data</span><span class="op">$</span><span class="va">expression</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-t_two-1.png" width="100%"></p>
+<p><img src="reference/figures/README-t_two-1.png" alt="Boxplot of ToothGrowth data with Two-Sample Welch's t-test expression in the subtitle" width="100%"></p>
 </div>
 <div class="section level3">
 <h3 id="within-subjects-design-1">Within-subjects design<a class="anchor" aria-label="anchor" href="#within-subjects-design-1"></a>
@@ -552,7 +552,7 @@
 <span>    title <span class="op">=</span> <span class="st">"Two-sample Wilcoxon paired test"</span>,</span>
 <span>    subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/parse.html" class="external-link">parse</a></span><span class="op">(</span>text <span class="op">=</span> <span class="va">results_data</span><span class="op">$</span><span class="va">expression</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-t_two_paired1-1.png" width="100%"></p>
+<p><img src="reference/figures/README-t_two_paired1-1.png" alt="Example paired profiles plot for a two-sample Wilcoxon paired test" width="100%"></p>
 </div>
 </div>
 <div class="section level2">
@@ -569,7 +569,7 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" class="external-link">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">$</span><span class="va">wt</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/parse.html" class="external-link">parse</a></span><span class="op">(</span>text <span class="op">=</span> <span class="va">results_data</span><span class="op">$</span><span class="va">expression</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-t_one-1.png" width="100%"></p>
+<p><img src="reference/figures/README-t_one-1.png" alt="Histogram of car weights with a vertical line at the mean and Bayesian one-sample t-test subtitle" width="100%"></p>
 </div>
 <div class="section level2">
 <h2 id="expressions-for-correlation-analysis">Expressions for correlation analysis<a class="anchor" aria-label="anchor" href="#expressions-for-correlation-analysis"></a>
@@ -589,7 +589,7 @@
 <span>    title <span class="op">=</span> <span class="st">"Spearman's rank correlation coefficient"</span>,</span>
 <span>    subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/parse.html" class="external-link">parse</a></span><span class="op">(</span>text <span class="op">=</span> <span class="va">results_data</span><span class="op">$</span><span class="va">expression</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-corr-1.png" width="100%"></p>
+<p><img src="reference/figures/README-corr-1.png" alt="Scatterplot of car fuel efficiency (mpg) versus weight (wt) with linear fit and Spearman correlation expression" width="100%"></p>
 </div>
 <div class="section level2">
 <h2 id="expressions-for-contingency-table-analysis">Expressions for contingency table analysis<a class="anchor" aria-label="anchor" href="#expressions-for-contingency-table-analysis"></a>
@@ -619,7 +619,7 @@
 <span>    title <span class="op">=</span> <span class="st">"Pie Chart of class (type of car)"</span>,</span>
 <span>    caption <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/parse.html" class="external-link">parse</a></span><span class="op">(</span>text <span class="op">=</span> <span class="va">results_data</span><span class="op">$</span><span class="va">expression</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-gof-1.png" width="100%"></p>
+<p><img src="reference/figures/README-gof-1.png" alt="Pie chart of car classes showing example output with statistical caption" width="100%"></p>
 <p>You can also use these function to get the expression in return without having to display them in plots:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
@@ -653,7 +653,7 @@
 <span>    subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/parse.html" class="external-link">parse</a></span><span class="op">(</span>text <span class="op">=</span> <span class="va">results_data</span><span class="op">$</span><span class="va">expression</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-metaanalysis-1.png" width="100%"></p>
+<p><img src="reference/figures/README-metaanalysis-1.png" alt="Meta-analysis forest plot of the Mozart effect example, showing study estimates and the overall random-effects result." width="100%"></p>
 </div>
 </div>
 <div class="section level1">
@@ -676,7 +676,7 @@
 <span>    <span class="cn">NULL</span>, <span class="fu">italic</span><span class="op">(</span><span class="st">"F"</span><span class="op">)</span>, <span class="st">"("</span>, <span class="st">"2"</span>, <span class="st">","</span>, <span class="st">"147"</span>, <span class="st">") = "</span>, <span class="st">"119.26"</span>, <span class="st">", "</span>,</span>
 <span>    <span class="fu">italic</span><span class="op">(</span><span class="st">"p"</span><span class="op">)</span>, <span class="st">" = "</span>, <span class="st">"1.67e-31"</span></span>
 <span>  <span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-custom_expr-1.png" width="100%"></p>
+<p><img src="reference/figures/README-custom_expr-1.png" alt="Example ggplot boxplot of iris Sepal.Length by Species with a custom statistical expression subtitle" width="100%"></p>
 </div>
 <div class="section level1">
 <h1 id="summary-of-tests-and-effect-sizes">Summary of tests and effect sizes<a class="anchor" aria-label="anchor" href="#summary-of-tests-and-effect-sizes"></a>
@@ -1448,7 +1448,7 @@
 <p>Note that these functions were initially written to display results from statistical tests on ready-made <a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a> plots implemented in <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link">ggstatsplot</a>.</p>
 <p>For detailed documentation, see the package website: <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link uri">https://indrajeetpatil.github.io/ggstatsplot/</a></p>
 <p>Here is an example from <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link">ggstatsplot</a> of what the plots look like when the expressions are displayed in the subtitle-</p>
-<p><img src="reference/figures/ggstatsplot.png" align="center"></p>
+<p><img src="reference/figures/ggstatsplot.png" alt="Example plot from ggstatsplot package showing statistical results in subtitle" align="center"></p>
 </div>
 <div class="section level1">
 <h1 id="acknowledgments">Acknowledgments<a class="anchor" aria-label="anchor" href="#acknowledgments"></a>

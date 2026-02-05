@@ -87,7 +87,8 @@ A BibTeX entry for LaTeX users is
 
 # General Workflow
 
-![](reference/figures/card.png)
+![Diagram showing the general workflow of the statsExpressions
+package](reference/figures/card.png)
 
 # Summary of functionality
 
@@ -232,7 +233,9 @@ to follow the gold standard for statistical reporting.
 
 For example, here are results from Welch’s *t*-test:
 
-![](reference/figures/stats_reporting_format.png)
+![Example of statistical reporting format showing Welch's t-test results
+with test statistic, degrees of freedom, p-value, and effect
+size](reference/figures/stats_reporting_format.png)
 
 Let’s load the needed library for visualization:
 
@@ -255,7 +258,9 @@ centrality_description(mtcars, cyl, wt) |>
   geom_label(aes(label = expression), parse = TRUE)
 ```
 
-![](reference/figures/README-centrality-1.png)
+![Example ggplot showing centrality_description output: mean wt by cyl
+with labeled statistical
+expressions.](reference/figures/README-centrality-1.png)
 
 Here are a few examples for supported analyses.
 
@@ -292,7 +297,8 @@ ggplot(iris, aes(x = Sepal.Length, y = Species)) +
   )
 ```
 
-![](reference/figures/README-anova_rob1-1.png)
+![Example ridge density plot for a heteroscedastic one-way ANOVA on
+Sepal.Length by Species](reference/figures/README-anova_rob1-1.png)
 
 ### Within-subjects design
 
@@ -319,7 +325,9 @@ ggplot2::ggplot(WineTasting, aes(Wine, Taste, color = Wine)) +
   )
 ```
 
-![](reference/figures/README-anova_parametric2-1.png)
+![Quasirandom dot plot of wine taste ratings by wine type with
+Friedman's rank sum test
+subtitle](reference/figures/README-anova_parametric2-1.png)
 
 ## Expressions for two-sample tests
 
@@ -339,7 +347,8 @@ ggplot(ToothGrowth, aes(supp, len)) +
   )
 ```
 
-![](reference/figures/README-t_two-1.png)
+![Boxplot of ToothGrowth data with Two-Sample Welch's t-test expression
+in the subtitle](reference/figures/README-t_two-1.png)
 
 ### Within-subjects design
 
@@ -373,7 +382,8 @@ suppressWarnings(paired.plotProfiles(
   )
 ```
 
-![](reference/figures/README-t_two_paired1-1.png)
+![Example paired profiles plot for a two-sample Wilcoxon paired
+test](reference/figures/README-t_two_paired1-1.png)
 
 ## Expressions for one-sample tests
 
@@ -391,7 +401,8 @@ ggplot(mtcars, aes(wt)) +
   labs(subtitle = parse(text = results_data$expression))
 ```
 
-![](reference/figures/README-t_one-1.png)
+![Histogram of car weights with a vertical line at the mean and Bayesian
+one-sample t-test subtitle](reference/figures/README-t_one-1.png)
 
 ## Expressions for correlation analysis
 
@@ -414,7 +425,9 @@ ggplot(mtcars, aes(mpg, wt)) +
   )
 ```
 
-![](reference/figures/README-corr-1.png)
+![Scatterplot of car fuel efficiency (mpg) versus weight (wt) with
+linear fit and Spearman correlation
+expression](reference/figures/README-corr-1.png)
 
 ## Expressions for contingency table analysis
 
@@ -447,7 +460,8 @@ ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1
   )
 ```
 
-![](reference/figures/README-gof-1.png)
+![Pie chart of car classes showing example output with statistical
+caption](reference/figures/README-gof-1.png)
 
 You can also use these function to get the expression in return without
 having to display them in plots:
@@ -488,7 +502,9 @@ suppressWarnings(viz_forest(
   theme(text = element_text(size = 12))
 ```
 
-![](reference/figures/README-metaanalysis-1.png)
+![Meta-analysis forest plot of the Mozart effect example, showing study
+estimates and the overall random-effects
+result.](reference/figures/README-metaanalysis-1.png)
 
 # Customizing details to your liking
 
@@ -516,7 +532,9 @@ ggplot(iris, aes(x = Species, y = Sepal.Length)) +
   )))
 ```
 
-![](reference/figures/README-custom_expr-1.png)
+![Example ggplot boxplot of iris Sepal.Length by Species with a custom
+statistical expression
+subtitle](reference/figures/README-custom_expr-1.png)
 
 # Summary of tests and effect sizes
 
@@ -715,7 +733,8 @@ Here is an example from
 [ggstatsplot](https://indrajeetpatil.github.io/ggstatsplot/) of what the
 plots look like when the expressions are displayed in the subtitle-
 
-![](reference/figures/ggstatsplot.png)
+![Example plot from ggstatsplot package showing statistical results in
+subtitle](reference/figures/ggstatsplot.png)
 
 # Acknowledgments
 
