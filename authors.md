@@ -2,15 +2,13 @@
 
 ## Authors
 
-- **[Indrajeet
-  Patil](https://sites.google.com/site/indrajeetspatilmorality/)**.
-  Maintainer, author, copyright holder.
-  [](https://orcid.org/0000-0003-1995-6531)
+- **[Indrajeet Patil](https://indrajeetpatil.github.io/)**. Maintainer,
+  author, copyright holder. [](https://orcid.org/0000-0003-1995-6531)
 
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/IndrajeetPatil/statsExpressions/blob/HEAD/inst/CITATION)
+[`inst/CITATION`](https://github.com/IndrajeetPatil/statsExpressions/blob/main/inst/CITATION)
 
 Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and
 Expressions with Statistical Details. Journal of Open Source Software,

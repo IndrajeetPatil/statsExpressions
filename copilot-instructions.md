@@ -81,8 +81,12 @@ test_that("descriptive name", {
 
 ### Style
 
-- **Linting**: Uses `lintr::all_linters()` with exceptions in `.lintr`
-- **Formatting**: `styler::style_pkg()` (run via `make format`)
+- **Linting**: Uses
+  [`lintr::all_linters()`](https://lintr.r-lib.org/reference/all_linters.html)
+  with exceptions in `.lintr`
+- **Formatting**:
+  [`styler::style_pkg()`](https://styler.r-lib.org/reference/style_pkg.html)
+  (run via `make format`)
 - **Naming**: snake_case for functions and variables
 - **Pipes**: Use base R `|>` pipe (NOT magrittr `%>%`)
 
