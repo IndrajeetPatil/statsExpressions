@@ -59,7 +59,9 @@ make install_deps # Install/update dependencies
 ### Testing
 
 - Framework: `testthat` (edition 3) with parallel execution
-- Run tests: `devtools::test()` or `make check`
+- Run tests:
+  [`devtools::test()`](https://devtools.r-lib.org/reference/test.html)
+  or `make check`
 - **Snapshot tests**: Used extensively for expression output
   verification
 - Test files mirror source files: `R/oneway-anova.R` →
