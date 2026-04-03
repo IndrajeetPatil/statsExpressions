@@ -2,10 +2,10 @@ on:
   pull_request:
     branches: [main, master]
 
-name: pre-commit
+name: prek
 
 jobs:
-  pre-commit:
-    uses: IndrajeetPatil/workflows/.github/workflows/pre-commit.yaml@main
+  prek:
+    uses: IndrajeetPatil/workflows/.github/workflows/pre-commit.yaml@chore/migrate-to-prek
     permissions:
       contents: write
