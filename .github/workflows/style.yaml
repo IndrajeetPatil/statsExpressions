@@ -2,11 +2,13 @@ on:
   pull_request:
     branches: [main, master]
     paths: ["**.[rR]", "**.[qrR]md", "**.[rR]markdown", "**.[rR]nw"]
+  schedule:
+    - cron: "0 0 * * SUN"
 
-name: Style
+name: style
 
 jobs:
   style:
-    uses: IndrajeetPatil/workflows/.github/workflows/styler.yaml@main
+    uses: IndrajeetPatil/workflows/.github/workflows/style.yaml@consolidate-r-package-workflows
     permissions:
       contents: write
