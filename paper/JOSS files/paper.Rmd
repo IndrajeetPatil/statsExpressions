@@ -104,7 +104,7 @@ with missing data. Moreover, they always return a dataframe that can be further
 utilized downstream in the workflow (such as visualization).
 
 Function | Parametric | Non-parametric | Robust | Bayesian
------------------- | ---- | ----- | ----| ----- 
+------------------ | ---- | ----- | ----| -----
 `one_sample_test` | \checkmark | \checkmark | \checkmark | \checkmark
 `two_sample_test` | \checkmark | \checkmark | \checkmark | \checkmark
 `oneway_anova` | \checkmark | \checkmark | \checkmark | \checkmark

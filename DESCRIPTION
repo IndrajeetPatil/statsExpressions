@@ -2,7 +2,7 @@ Type: Package
 Package: statsExpressions
 Title: Tidy Dataframes and Expressions with Statistical Details
 Version: 1.7.3
-Authors@R: 
+Authors@R:
     person("Indrajeet", "Patil", , "patilindrajeet.science@gmail.com", role = c("cre", "aut", "cph"),
            comment = c(ORCID = "0000-0003-1995-6531"))
 Maintainer: Indrajeet Patil <patilindrajeet.science@gmail.com>
@@ -19,7 +19,7 @@ License: MIT + file LICENSE
 URL: https://indrajeetpatil.github.io/statsExpressions/,
     https://github.com/IndrajeetPatil/statsExpressions
 BugReports: https://github.com/IndrajeetPatil/statsExpressions/issues
-Depends: 
+Depends:
     R (>= 4.3.0),
     stats
 Imports:
@@ -54,7 +54,7 @@ Suggests:
     survival,
     testthat (>= 3.3.2),
     utils
-VignetteBuilder: 
+VignetteBuilder:
     knitr
 Config/Needs/check: anthonynorth/roxyglobals
 Config/roxyglobals/unique: TRUE
