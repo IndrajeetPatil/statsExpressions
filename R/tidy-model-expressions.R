@@ -28,10 +28,19 @@
 #' tidy_model_expressions(df, statistic = "z")
 #' tidy_model_expressions(df, statistic = "chi")
 #'
-#' # f-statistic (requires a data frame with `df` and `df.error` columns)
-#' df_f <- tidy_model_parameters(aov(wt ~ cyl, mtcars))
+#' # f-statistic (requires a data frame with `df`, `df.error`, and effect-size columns)
+#' df_f <- tidy_model_parameters(
+#'   aov(wt ~ cyl, mtcars),
+#'   es_type = "omega",
+#'   table_wide = TRUE
+#' )
 #' tidy_model_expressions(df_f, statistic = "f")
-#' tidy_model_expressions(df_f, statistic = "f", effsize.type = "eta")
+#' df_f_eta <- tidy_model_parameters(
+#'   aov(wt ~ cyl, mtcars),
+#'   es_type = "eta",
+#'   table_wide = TRUE
+#' )
+#' tidy_model_expressions(df_f_eta, statistic = "f", effsize.type = "eta")
 #'
 #' @template citation
 #'

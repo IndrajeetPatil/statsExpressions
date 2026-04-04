@@ -57,7 +57,7 @@
 #'   y    = wt
 #' )
 #'
-#' # biased (eta-squared) effect size
+#' # biased (partial eta-squared) effect size
 #' oneway_anova(
 #'   data         = mtcars,
 #'   x            = cyl,
