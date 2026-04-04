@@ -9,7 +9,7 @@ template:
   light-switch: true
   # includes:
   #   in_header: |
-  #     <script defer data-domain="indrajeetpatil.github.io/statsexpressions" src="https://plausible.io/js/plausible.js"></script>
+  #     <script defer data-domain="www.indrapatil.com/statsexpressions" src="https://plausible.io/js/plausible.js"></script>
   bslib:
     base_font: { google: "Roboto" }
     heading_font: { google: "Roboto" }
