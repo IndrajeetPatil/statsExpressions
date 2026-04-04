@@ -194,6 +194,14 @@ oneway_anova(
   y    = wt
 )
 
+# biased (eta-squared) effect size
+oneway_anova(
+  data         = mtcars,
+  x            = cyl,
+  y            = wt,
+  effsize.type = "eta"
+)
+
 # within-subjects design
 oneway_anova(
   data       = iris_long,
