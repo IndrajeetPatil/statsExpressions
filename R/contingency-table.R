@@ -124,8 +124,8 @@ contingency_table <- function(
 
 .one_way_bayesian_table <- function(xtab, prior.concentration, ratio, digits) {
   # nocov start
-  # probability can't be exactly 0 or 1
-  if ((1 / length(as.vector(xtab)) == 0) || (1 / length(as.vector(xtab)) == 1)) {
+  # a one-cell table is a degenerate case for this computation
+  if (length(as.vector(xtab)) == 1L) {
     return(NULL)
   }
   # nocov end
