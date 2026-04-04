@@ -123,10 +123,12 @@ contingency_table <- function(
 
 
 .one_way_bayesian_table <- function(xtab, prior.concentration, ratio, digits) {
+  # nocov start
   # probability can't be exactly 0 or 1
   if ((1 / length(as.vector(xtab)) == 0) || (1 / length(as.vector(xtab)) == 1)) {
     return(NULL)
   }
+  # nocov end
 
   p1s <- rdirichlet(n = 100000L, alpha = prior.concentration * ratio)
   pr_h1 <- map_dbl(1:100000L, ~ stats::dmultinom(as.matrix(xtab), prob = p1s[.x, ], log = TRUE))
