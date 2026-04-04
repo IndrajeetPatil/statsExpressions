@@ -30,7 +30,7 @@
 #' ```
 #'
 #' @references For more, see:
-#' <https://indrajeetpatil.github.io/ggstatsplot/articles/web_only/pairwise.html>
+#' <https://www.indrapatil.com/ggstatsplot/articles/web_only/pairwise.html>
 #'
 #' @autoglobal
 #'
