@@ -154,7 +154,7 @@ columns (the exact columns will depend on the statistical test):
 - `expression`: pre-formatted expression containing statistical details
 
 For examples, see [data frame output
-vignette](https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html).
+vignette](https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html).
 
 ## Pairwise comparison tests
 
@@ -209,7 +209,7 @@ Expressions with Statistical Details. Journal of Open Source Software,
 ## References
 
 For more, see:
-<https://indrajeetpatil.github.io/ggstatsplot/articles/web_only/pairwise.html>
+<https://www.indrapatil.com/ggstatsplot/articles/web_only/pairwise.html>
 
 ## Examples
 

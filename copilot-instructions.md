@@ -11,13 +11,13 @@ serves as a backend for `ggstatsplot`.
 ### Main Functions (R/)
 
 - **Statistical tests**:
-  [`oneway_anova()`](https://indrajeetpatil.github.io/statsExpressions/reference/oneway_anova.md),
-  [`two_sample_test()`](https://indrajeetpatil.github.io/statsExpressions/reference/two_sample_test.md),
-  [`one_sample_test()`](https://indrajeetpatil.github.io/statsExpressions/reference/one_sample_test.md),
-  [`corr_test()`](https://indrajeetpatil.github.io/statsExpressions/reference/corr_test.md),
-  [`contingency_table()`](https://indrajeetpatil.github.io/statsExpressions/reference/contingency_table.md),
-  [`meta_analysis()`](https://indrajeetpatil.github.io/statsExpressions/reference/meta_analysis.md),
-  [`pairwise_comparisons()`](https://indrajeetpatil.github.io/statsExpressions/reference/pairwise_comparisons.md)
+  [`oneway_anova()`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md),
+  [`two_sample_test()`](https://www.indrapatil.com/statsExpressions/reference/two_sample_test.md),
+  [`one_sample_test()`](https://www.indrapatil.com/statsExpressions/reference/one_sample_test.md),
+  [`corr_test()`](https://www.indrapatil.com/statsExpressions/reference/corr_test.md),
+  [`contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md),
+  [`meta_analysis()`](https://www.indrapatil.com/statsExpressions/reference/meta_analysis.md),
+  [`pairwise_comparisons()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)
 - **Each test supports 4 types** via `type` parameter: `"parametric"`,
   `"nonparametric"`, `"robust"`, `"bayes"`
 - **Output**: All functions return a tibble with a special `expression`
@@ -25,15 +25,15 @@ serves as a backend for `ggstatsplot`.
 
 ### Key Helper Functions
 
-- [`add_expression_col()`](https://indrajeetpatil.github.io/statsExpressions/reference/add_expression_col.md):
+- [`add_expression_col()`](https://www.indrapatil.com/statsExpressions/reference/add_expression_col.md):
   Adds plotmath expression column to statistical output
-- [`tidy_model_parameters()`](https://indrajeetpatil.github.io/statsExpressions/reference/tidy_model_parameters.md)
+- [`tidy_model_parameters()`](https://www.indrapatil.com/statsExpressions/reference/tidy_model_parameters.md)
   / `tidy_model_effectsize()`: Convert easystats output to tidyverse
   conventions
-- [`extract_stats_type()`](https://indrajeetpatil.github.io/statsExpressions/reference/extract_stats_type.md):
+- [`extract_stats_type()`](https://www.indrapatil.com/statsExpressions/reference/extract_stats_type.md):
   Normalizes type input (`"p"` → `"parametric"`, `"n"` →
   `"nonparametric"`, etc.)
-- [`long_to_wide_converter()`](https://indrajeetpatil.github.io/statsExpressions/reference/long_to_wide_converter.md):
+- [`long_to_wide_converter()`](https://www.indrapatil.com/statsExpressions/reference/long_to_wide_converter.md):
   Reshapes paired data from long to wide format
 
 ### Dependencies

@@ -4,9 +4,9 @@
 
 Dataframes and expressions for one-and two-sample t-tests
 
-- [`one_sample_test()`](https://indrajeetpatil.github.io/statsExpressions/reference/one_sample_test.md)
+- [`one_sample_test()`](https://www.indrapatil.com/statsExpressions/reference/one_sample_test.md)
   : One-sample tests
-- [`two_sample_test()`](https://indrajeetpatil.github.io/statsExpressions/reference/two_sample_test.md)
+- [`two_sample_test()`](https://www.indrapatil.com/statsExpressions/reference/two_sample_test.md)
   : Two-sample tests
 
 ## One-way ANOVA
@@ -14,14 +14,14 @@ Dataframes and expressions for one-and two-sample t-tests
 Dataframes and expressions one-way (both between-and within-subject
 designs) ANOVA
 
-- [`oneway_anova()`](https://indrajeetpatil.github.io/statsExpressions/reference/oneway_anova.md)
+- [`oneway_anova()`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)
   : One-way analysis of variance (ANOVA)
 
 ## Correlation analysis
 
 Dataframes and expressions for correlation tests
 
-- [`corr_test()`](https://indrajeetpatil.github.io/statsExpressions/reference/corr_test.md)
+- [`corr_test()`](https://www.indrapatil.com/statsExpressions/reference/corr_test.md)
   : Correlation analyses
 
 ## Contingency table analysis
@@ -29,28 +29,28 @@ Dataframes and expressions for correlation tests
 Dataframes and expressions for contingency table analysis and one-sample
 goodness of fit proportion test
 
-- [`contingency_table()`](https://indrajeetpatil.github.io/statsExpressions/reference/contingency_table.md)
+- [`contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md)
   : Contingency table analyses
 
 ## Meta-analysis
 
 Dataframes and expressions for random-effects meta-analysis
 
-- [`meta_analysis()`](https://indrajeetpatil.github.io/statsExpressions/reference/meta_analysis.md)
+- [`meta_analysis()`](https://www.indrapatil.com/statsExpressions/reference/meta_analysis.md)
   : Random-effects meta-analysis
 
 ## Pairwise comparisons
 
 Multiple pairwise comparison tests for one-way design
 
-- [`pairwise_comparisons()`](https://indrajeetpatil.github.io/statsExpressions/reference/pairwise_comparisons.md)
+- [`pairwise_comparisons()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)
   : Multiple pairwise comparison for one-way design
 
 ## Centrality measure
 
 Dataframes and expressions for descriptive statistics
 
-- [`centrality_description()`](https://indrajeetpatil.github.io/statsExpressions/reference/centrality_description.md)
+- [`centrality_description()`](https://www.indrapatil.com/statsExpressions/reference/centrality_description.md)
   : Data frame and expression for distribution properties
 
 ## Helper functions
@@ -58,26 +58,26 @@ Dataframes and expressions for descriptive statistics
 Note that these helper functions are not stable and may change in the
 future.
 
-- [`tidy_model_expressions()`](https://indrajeetpatil.github.io/statsExpressions/reference/tidy_model_expressions.md)
+- [`tidy_model_expressions()`](https://www.indrapatil.com/statsExpressions/reference/tidy_model_expressions.md)
   : Expressions with statistics for tidy regression data frames
 
-- [`tidy_model_parameters()`](https://indrajeetpatil.github.io/statsExpressions/reference/tidy_model_parameters.md)
+- [`tidy_model_parameters()`](https://www.indrapatil.com/statsExpressions/reference/tidy_model_parameters.md)
   :
 
   Convert [parameters](https://easystats.github.io/parameters/) package
   output to [tidyverse](https://tidyverse.tidyverse.org) conventions
 
-- [`extract_stats_type()`](https://indrajeetpatil.github.io/statsExpressions/reference/extract_stats_type.md)
-  [`stats_type_switch()`](https://indrajeetpatil.github.io/statsExpressions/reference/extract_stats_type.md)
+- [`extract_stats_type()`](https://www.indrapatil.com/statsExpressions/reference/extract_stats_type.md)
+  [`stats_type_switch()`](https://www.indrapatil.com/statsExpressions/reference/extract_stats_type.md)
   : Switch the type of statistics.
 
-- [`long_to_wide_converter()`](https://indrajeetpatil.github.io/statsExpressions/reference/long_to_wide_converter.md)
+- [`long_to_wide_converter()`](https://www.indrapatil.com/statsExpressions/reference/long_to_wide_converter.md)
   : Convert long/tidy data frame to wide format
 
-- [`add_expression_col()`](https://indrajeetpatil.github.io/statsExpressions/reference/add_expression_col.md)
+- [`add_expression_col()`](https://www.indrapatil.com/statsExpressions/reference/add_expression_col.md)
   : Template for expressions with statistical details
 
-- [`p_adjust_text()`](https://indrajeetpatil.github.io/statsExpressions/reference/p_adjust_text.md)
+- [`p_adjust_text()`](https://www.indrapatil.com/statsExpressions/reference/p_adjust_text.md)
   :
 
   *p*-value adjustment method text
@@ -86,21 +86,21 @@ future.
 
 Useful functions re-exported from other packages.
 
-- [`reexports`](https://indrajeetpatil.github.io/statsExpressions/reference/reexports.md)
-  [`%>%`](https://indrajeetpatil.github.io/statsExpressions/reference/reexports.md)
-  [`%<>%`](https://indrajeetpatil.github.io/statsExpressions/reference/reexports.md)
-  [`%<-%`](https://indrajeetpatil.github.io/statsExpressions/reference/reexports.md)
-  [`tibble`](https://indrajeetpatil.github.io/statsExpressions/reference/reexports.md)
-  [`as_tibble`](https://indrajeetpatil.github.io/statsExpressions/reference/reexports.md)
+- [`reexports`](https://www.indrapatil.com/statsExpressions/reference/reexports.md)
+  [`%>%`](https://www.indrapatil.com/statsExpressions/reference/reexports.md)
+  [`%<>%`](https://www.indrapatil.com/statsExpressions/reference/reexports.md)
+  [`%<-%`](https://www.indrapatil.com/statsExpressions/reference/reexports.md)
+  [`tibble`](https://www.indrapatil.com/statsExpressions/reference/reexports.md)
+  [`as_tibble`](https://www.indrapatil.com/statsExpressions/reference/reexports.md)
   : Objects exported from other packages
 
 ## Data
 
 Datasets included in the package.
 
-- [`movies_long`](https://indrajeetpatil.github.io/statsExpressions/reference/movies_long.md)
+- [`movies_long`](https://www.indrapatil.com/statsExpressions/reference/movies_long.md)
   : Movie information and user ratings from IMDB.
-- [`iris_long`](https://indrajeetpatil.github.io/statsExpressions/reference/iris_long.md)
+- [`iris_long`](https://www.indrapatil.com/statsExpressions/reference/iris_long.md)
   : Edgar Anderson's Iris Data in long format.
-- [`bugs_long`](https://indrajeetpatil.github.io/statsExpressions/reference/bugs_long.md)
+- [`bugs_long`](https://www.indrapatil.com/statsExpressions/reference/bugs_long.md)
   : Tidy version of the "Bugs" dataset.

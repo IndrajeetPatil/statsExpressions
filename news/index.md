@@ -25,7 +25,7 @@ CRAN release: 2025-07-27
 CRAN release: 2025-05-09
 
 - Fixes
-  [`centrality_description()`](https://indrajeetpatil.github.io/statsExpressions/reference/centrality_description.md)
+  [`centrality_description()`](https://www.indrapatil.com/statsExpressions/reference/centrality_description.md)
   to adjust to new API in easystats.
 
 ## statsExpressions 1.6.2
@@ -52,7 +52,7 @@ CRAN release: 2024-09-08
 
 - *Test and effect size details* vignette is now available only on the
   package website
-  (<https://indrajeetpatil.github.io/statsExpressions/articles/>).
+  (<https://www.indrapatil.com/statsExpressions/articles/>).
 
 - Unused dataset has been removed: `movies_wide`.
 
@@ -78,7 +78,7 @@ CRAN release: 2024-03-20
   to improve its discoverability.
 
 - To be consistent,
-  [`contingency_table()`](https://indrajeetpatil.github.io/statsExpressions/reference/contingency_table.md)
+  [`contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md)
   gains `alternative` parameter, which defaults to two-sided alternative
   hypothesis.
 
@@ -123,12 +123,12 @@ CRAN release: 2023-01-14
 ### NEW FEATURES
 
 - All returned data frames from
-  [statsExpressions](https://indrajeetpatil.github.io/statsExpressions/)
-  get a new `statsExpressions` class and a print method for this class.
+  [statsExpressions](https://www.indrapatil.com/statsExpressions/) get a
+  new `statsExpressions` class and a print method for this class.
 
 ### MINOR CHANGES
 
-- [`tidy_model_parameters()`](https://indrajeetpatil.github.io/statsExpressions/reference/tidy_model_parameters.md)
+- [`tidy_model_parameters()`](https://www.indrapatil.com/statsExpressions/reference/tidy_model_parameters.md)
   no longer removes columns which contain only missing values.
 
 - Wilcox tests no longer provide exact *p*-values.
@@ -143,7 +143,7 @@ CRAN release: 2022-12-16
 
 CRAN release: 2022-11-07
 
-- [`centrality_description()`](https://indrajeetpatil.github.io/statsExpressions/reference/centrality_description.md)
+- [`centrality_description()`](https://www.indrapatil.com/statsExpressions/reference/centrality_description.md)
   gets a new `conf.level` parameter.
 
 - Updates tests and examples to insure against removal of suggested
@@ -164,7 +164,7 @@ CRAN release: 2022-08-11
 
 - When any of the necessary numeric column values are missing, for these
   rows
-  [`tidy_model_expressions()`](https://indrajeetpatil.github.io/statsExpressions/reference/tidy_model_expressions.md)
+  [`tidy_model_expressions()`](https://www.indrapatil.com/statsExpressions/reference/tidy_model_expressions.md)
   now returns a `NULL` instead of an expression with empty strings.
 
 ## statsExpressions 1.3.2
@@ -174,7 +174,7 @@ CRAN release: 2022-05-20
 ### NEW FEATURES
 
 - The
-  [`pairwise_comparisons()`](https://indrajeetpatil.github.io/statsExpressions/reference/pairwise_comparisons.md)
+  [`pairwise_comparisons()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)
   function to carry out pairwise comparison tests for one-way designs.
 
 ### MAJOR CHANGES
@@ -211,7 +211,7 @@ CRAN release: 2022-01-14
 ### MINOR CHANGES
 
 - The `expr_template()` has been renamed to more informative
-  [`add_expression_col()`](https://indrajeetpatil.github.io/statsExpressions/reference/add_expression_col.md)
+  [`add_expression_col()`](https://www.indrapatil.com/statsExpressions/reference/add_expression_col.md)
   function and has a different API. It returns a dataframe with the
   additional expression column instead of just the expression.
 
@@ -232,12 +232,12 @@ CRAN release: 2021-10-19
 
 ### NEW FEATURES
 
-- [`centrality_description()`](https://indrajeetpatil.github.io/statsExpressions/reference/centrality_description.md)
+- [`centrality_description()`](https://www.indrapatil.com/statsExpressions/reference/centrality_description.md)
   function added to describe distribution for each level of a grouping
   variable and create an expression describing a centrality measure.
 
 - Adds new experimental function
-  [`tidy_model_expressions()`](https://indrajeetpatil.github.io/statsExpressions/reference/tidy_model_expressions.md)
+  [`tidy_model_expressions()`](https://www.indrapatil.com/statsExpressions/reference/tidy_model_expressions.md)
   to create expressions for dataframes containing tidied results from
   regression model objects.
 
@@ -275,7 +275,7 @@ CRAN release: 2021-05-30
 ### MAJOR CHANGES
 
 - There is a new *JOSS* paper about
-  [statsExpressions](https://indrajeetpatil.github.io/statsExpressions/)
+  [statsExpressions](https://www.indrapatil.com/statsExpressions/)
   package!! <https://joss.theoj.org/papers/10.21105/joss.03236>
 
 - The effect size for independent trimmed means two-sample test has been
@@ -312,7 +312,7 @@ CRAN release: 2021-04-13
 CRAN release: 2021-03-11
 
 This is the first **stable** release of
-[statsExpressions](https://indrajeetpatil.github.io/statsExpressions/)!
+[statsExpressions](https://www.indrapatil.com/statsExpressions/)!
 
 There is good news and there is bad news that accompanies this
 milestone.
@@ -329,7 +329,7 @@ milestone.
   which are vestigial names for new avatars of these function and will
   be removed in future. The new names are more intuitive, e.g.,
   `expr_t_onesample()` is now called
-  [`one_sample_test()`](https://indrajeetpatil.github.io/statsExpressions/reference/one_sample_test.md),
+  [`one_sample_test()`](https://www.indrapatil.com/statsExpressions/reference/one_sample_test.md),
   etc.
 
 - The **good news**: There will not be any new changes to any of the
@@ -404,12 +404,12 @@ CRAN release: 2021-01-19
     `expr_anova_robust`, `expr_anova_bayes` are now removed in favor of
     a single function `oneway_anova`.
 
-- [statsExpressions](https://indrajeetpatil.github.io/statsExpressions/)
-  no longer internally relies on `tidyBF`. All Bayesian analysis is
-  carried out in this package itself. This was done to make the
-  maintenance of this package easier and helps with some major internal
-  code refactoring. As such, all re-exported functions from `tidyBF`
-  have also been removed.
+- [statsExpressions](https://www.indrapatil.com/statsExpressions/) no
+  longer internally relies on `tidyBF`. All Bayesian analysis is carried
+  out in this package itself. This was done to make the maintenance of
+  this package easier and helps with some major internal code
+  refactoring. As such, all re-exported functions from `tidyBF` have
+  also been removed.
 
 BUG FIXES
 
@@ -586,8 +586,8 @@ CRAN release: 2020-04-15
 - Retires the internal `effsize_t_parametric` helper function in favor
   of relying functions from `effectsize`, which is now added as a
   dependency. Similarly,
-  [statsExpressions](https://indrajeetpatil.github.io/statsExpressions/)
-  now relies on `effectsize` to compute effect sizes for ANOVA designs,
+  [statsExpressions](https://www.indrapatil.com/statsExpressions/) now
+  relies on `effectsize` to compute effect sizes for ANOVA designs,
   instead of `sjstats`.
 
 - For parametric *t*-tests and ANOVAs, confidence intervals for effect

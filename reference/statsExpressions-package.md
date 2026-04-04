@@ -27,10 +27,10 @@ underlying packages can be accessed, with a simpler interface and no
 requirement to change data format.
 
 This package forms the statistical processing backend for
-[`ggstatsplot`](https://indrajeetpatil.github.io/ggstatsplot/) package.
+[`ggstatsplot`](https://www.indrapatil.com/ggstatsplot/) package.
 
 For more documentation, see the dedicated
-[website](https://indrajeetpatil.github.io/statsExpressions/).
+[website](https://www.indrapatil.com/statsExpressions/).
 
 ## Details
 
@@ -40,7 +40,7 @@ For more documentation, see the dedicated
 
 Useful links:
 
-- <https://indrajeetpatil.github.io/statsExpressions/>
+- <https://www.indrapatil.com/statsExpressions/>
 
 - <https://github.com/IndrajeetPatil/statsExpressions>
 

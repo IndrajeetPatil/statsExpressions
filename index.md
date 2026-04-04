@@ -7,8 +7,7 @@
 
 # Introduction
 
-The
-[statsExpressions](https://indrajeetpatil.github.io/statsExpressions/)
+The [statsExpressions](https://www.indrapatil.com/statsExpressions/)
 package has two key aims:
 
 - to provide a consistent syntax to do statistical analysis with tidy
@@ -30,16 +29,16 @@ return a list, a matrix, an array, a dataframe, etc., depending on the
 function.
 
 This is where
-[statsExpressions](https://indrajeetpatil.github.io/statsExpressions/)
-comes in: It can be thought of as a unified portal through which most of
-the functionality in these underlying packages can be accessed, with a
+[statsExpressions](https://www.indrapatil.com/statsExpressions/) comes
+in: It can be thought of as a unified portal through which most of the
+functionality in these underlying packages can be accessed, with a
 simpler interface and no requirement to change data format.
 
 This package forms the statistical processing backend for
-[`ggstatsplot`](https://indrajeetpatil.github.io/ggstatsplot/) package.
+[`ggstatsplot`](https://www.indrapatil.com/ggstatsplot/) package.
 
 For more documentation, see the dedicated
-[website](https://indrajeetpatil.github.io/statsExpressions/).
+[website](https://www.indrapatil.com/statsExpressions/).
 
 # Installation
 
@@ -49,7 +48,7 @@ For more documentation, see the dedicated
 | Development | `pak::pak("IndrajeetPatil/statsExpressions")` |
 
 On Linux,
-[statsExpressions](https://indrajeetpatil.github.io/statsExpressions/)
+[statsExpressions](https://www.indrapatil.com/statsExpressions/)
 installation may require additional system dependencies, which can be
 checked using:
 
@@ -96,13 +95,13 @@ package](reference/figures/card.png)
 
 | Test | Function |
 |:---|:---|
-| one-sample *t*-test | [`one_sample_test()`](https://indrajeetpatil.github.io/statsExpressions/reference/one_sample_test.md) |
-| two-sample *t*-test | [`two_sample_test()`](https://indrajeetpatil.github.io/statsExpressions/reference/two_sample_test.md) |
-| one-way ANOVA | [`oneway_anova()`](https://indrajeetpatil.github.io/statsExpressions/reference/oneway_anova.md) |
-| correlation analysis | [`corr_test()`](https://indrajeetpatil.github.io/statsExpressions/reference/corr_test.md) |
-| contingency table analysis | [`contingency_table()`](https://indrajeetpatil.github.io/statsExpressions/reference/contingency_table.md) |
-| meta-analysis | [`meta_analysis()`](https://indrajeetpatil.github.io/statsExpressions/reference/meta_analysis.md) |
-| pairwise comparisons | [`pairwise_comparisons()`](https://indrajeetpatil.github.io/statsExpressions/reference/pairwise_comparisons.md) |
+| one-sample *t*-test | [`one_sample_test()`](https://www.indrapatil.com/statsExpressions/reference/one_sample_test.md) |
+| two-sample *t*-test | [`two_sample_test()`](https://www.indrapatil.com/statsExpressions/reference/two_sample_test.md) |
+| one-way ANOVA | [`oneway_anova()`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md) |
+| correlation analysis | [`corr_test()`](https://www.indrapatil.com/statsExpressions/reference/corr_test.md) |
+| contingency table analysis | [`contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md) |
+| meta-analysis | [`meta_analysis()`](https://www.indrapatil.com/statsExpressions/reference/meta_analysis.md) |
+| pairwise comparisons | [`pairwise_comparisons()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md) |
 
 **Summary of details available for analyses**
 
@@ -164,7 +163,7 @@ mtcars %>% oneway_anova(cyl, wt, type = "robust")
 ```
 
 All possible output dataframes from functions are tabulated here:
-<https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html>
+<https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html>
 
 Needless to say this will also work with the `kable` function to
 generate a table:
@@ -727,7 +726,7 @@ plots implemented in
 [ggstatsplot](https://indrajeetpatil.github.io/ggstatsplot/).
 
 For detailed documentation, see the package website:
-<https://indrajeetpatil.github.io/ggstatsplot/>
+<https://www.indrapatil.com/ggstatsplot/>
 
 Here is an example from
 [ggstatsplot](https://indrajeetpatil.github.io/ggstatsplot/) of what the

@@ -20,7 +20,7 @@
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Tidy Dataframes and Expressions with Statistical Details">
 <meta name="description" content="Utilities for producing dataframes with rich details for the most common types of statistical approaches and tests: parametric, nonparametric, robust, and Bayesian t-test, one-way ANOVA, correlation analyses, contingency table analyses, and meta-analyses. The functions are pipe-friendly and provide a consistent syntax to work with tidy data. These dataframes additionally contain expressions with statistical details, and can be used in graphing packages. This package also forms the statistical processing backend for ggstatsplot. References: Patil (2021) &lt;doi:10.21105/joss.03236&gt;.">
 <meta property="og:description" content="Utilities for producing dataframes with rich details for the most common types of statistical approaches and tests: parametric, nonparametric, robust, and Bayesian t-test, one-way ANOVA, correlation analyses, contingency table analyses, and meta-analyses. The functions are pipe-friendly and provide a consistent syntax to work with tidy data. These dataframes additionally contain expressions with statistical details, and can be used in graphing packages. This package also forms the statistical processing backend for ggstatsplot. References: Patil (2021) &lt;doi:10.21105/joss.03236&gt;.">
-<meta property="og:image" content="https://indrajeetpatil.github.io/statsExpressions/reference/figures/card.png">
+<meta property="og:image" content="https://www.indrapatil.com/statsExpressions/reference/figures/card.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@patilindrajeets">
 <meta name="twitter:site" content="@patilindrajeets">
@@ -107,15 +107,15 @@
 <div class="section level1">
 <h1 id="introduction-">Introduction <a class="anchor" aria-label="anchor" href="#introduction-"></a>
 </h1>
-<p>The <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> package has two key aims:</p>
+<p>The <a href="https://www.indrapatil.com/statsExpressions/">statsExpressions</a> package has two key aims:</p>
 <ul>
 <li>to provide a consistent syntax to do statistical analysis with tidy data (in pipe-friendly manner),</li>
 <li>to provide statistical expressions (pre-formatted in-text statistical results) for plotting functions.</li>
 </ul>
 <p>Statistical packages exhibit substantial diversity in terms of their syntax and expected input type. This can make it difficult to switch from one statistical approach to another. For example, some functions expect vectors as inputs, while others expect dataframes. Depending on whether it is a repeated measures design or not, different functions might expect data to be in wide or long format. Some functions can internally omit missing values, while other functions error in their presence. Furthermore, if someone wishes to utilize the objects returned by these packages downstream in their workflow, this is not straightforward either because even functions from the same package can return a list, a matrix, an array, a dataframe, etc., depending on the function.</p>
-<p>This is where <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> comes in: It can be thought of as a unified portal through which most of the functionality in these underlying packages can be accessed, with a simpler interface and no requirement to change data format.</p>
-<p>This package forms the statistical processing backend for <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link"><code>ggstatsplot</code></a> package.</p>
-<p>For more documentation, see the dedicated <a href="https://indrajeetpatil.github.io/statsExpressions/">website</a>.</p>
+<p>This is where <a href="https://www.indrapatil.com/statsExpressions/">statsExpressions</a> comes in: It can be thought of as a unified portal through which most of the functionality in these underlying packages can be accessed, with a simpler interface and no requirement to change data format.</p>
+<p>This package forms the statistical processing backend for <a href="https://www.indrapatil.com/ggstatsplot/" class="external-link"><code>ggstatsplot</code></a> package.</p>
+<p>For more documentation, see the dedicated <a href="https://www.indrapatil.com/statsExpressions/">website</a>.</p>
 </div>
 <div class="section level1">
 <h1 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -136,7 +136,7 @@
 </tr>
 </tbody>
 </table>
-<p>On Linux, <a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a> installation may require additional system dependencies, which can be checked using:</p>
+<p>On Linux, <a href="https://www.indrapatil.com/statsExpressions/">statsExpressions</a> installation may require additional system dependencies, which can be checked using:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pkg_sysreqs.html" class="external-link">pkg_sysreqs</a></span><span class="op">(</span><span class="st">"statsExpressions"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -350,7 +350,7 @@
 <span><span class="co">#&gt;   n.obs expression</span></span>
 <span><span class="co">#&gt;   &lt;int&gt; &lt;list&gt;    </span></span>
 <span><span class="co">#&gt; 1    32 &lt;language&gt;</span></span></code></pre></div>
-<p>All possible output dataframes from functions are tabulated here: <a href="https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html" class="uri">https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html</a></p>
+<p>All possible output dataframes from functions are tabulated here: <a href="https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html" class="uri">https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html</a></p>
 <p>Needless to say this will also work with the <code>kable</code> function to generate a table:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
@@ -1446,7 +1446,7 @@
 <a class="anchor" aria-label="anchor" href="#usage-in-ggstatsplot"></a>
 </h1>
 <p>Note that these functions were initially written to display results from statistical tests on ready-made <a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a> plots implemented in <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link">ggstatsplot</a>.</p>
-<p>For detailed documentation, see the package website: <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link uri">https://indrajeetpatil.github.io/ggstatsplot/</a></p>
+<p>For detailed documentation, see the package website: <a href="https://www.indrapatil.com/ggstatsplot/" class="external-link uri">https://www.indrapatil.com/ggstatsplot/</a></p>
 <p>Here is an example from <a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link">ggstatsplot</a> of what the plots look like when the expressions are displayed in the subtitle-</p>
 <p><img src="reference/figures/ggstatsplot.png" alt="Example plot from ggstatsplot package showing statistical results in subtitle" align="center"></p>
 </div>
@@ -1491,7 +1491,7 @@
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://indrajeetpatil.github.io/" class="external-link">Indrajeet Patil</a> <br><small class="roles"> Maintainer, author, copyright holder </small> <a href="https://orcid.org/0000-0003-1995-6531" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<a href="https://www.indrapatil.com/" class="external-link">Indrajeet Patil</a> <br><small class="roles"> Maintainer, author, copyright holder </small> <a href="https://orcid.org/0000-0003-1995-6531" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 </ul>
 </div>
 
@@ -1502,7 +1502,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by <a href="https://indrajeetpatil.github.io/" class="external-link">Indrajeet Patil</a>.</p>
+  <p>Developed by <a href="https://www.indrapatil.com/" class="external-link">Indrajeet Patil</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">

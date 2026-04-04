@@ -24,8 +24,7 @@ This vignette can be cited as:
 
 ## Summary
 
-The
-[statsExpressions](https://indrajeetpatil.github.io/statsExpressions/)
+The [statsExpressions](https://www.indrapatil.com/statsExpressions/)
 package has two key aims: to provide a consistent syntax to do
 statistical analysis with tidy data, and to provide statistical
 expressions (i.e., pre-formatted in-text statistical results) for
@@ -53,9 +52,9 @@ for hypothesis testing and estimation, and to switch from one
 statistical approach to another.
 
 This is where
-[statsExpressions](https://indrajeetpatil.github.io/statsExpressions/)
-comes in: It can be thought of as a unified portal through which most of
-the functionality in these underlying packages can be accessed, with a
+[statsExpressions](https://www.indrapatil.com/statsExpressions/) comes
+in: It can be thought of as a unified portal through which most of the
+functionality in these underlying packages can be accessed, with a
 simpler interface and with tidy data format.
 
 ## Comparison to Other Packages
@@ -65,8 +64,8 @@ Couch, 2021](#ref-Robinson2021)) or
 [parameters](https://easystats.github.io/parameters/) ([Lüdecke,
 Ben-Shachar, Patil, & Makowski, 2020](#ref-L%C3%BCdecke2020parameters)),
 the goal of
-[statsExpressions](https://indrajeetpatil.github.io/statsExpressions/)
-is not to convert model objects into tidy data frames, but to provide a
+[statsExpressions](https://www.indrapatil.com/statsExpressions/) is not
+to convert model objects into tidy data frames, but to provide a
 consistent and easy syntax to carry out statistical tests. Additionally,
 none of these packages return statistical expressions.
 
@@ -91,10 +90,10 @@ downstream in the workflow (such as visualization).
 A summary table listing the primary functions in the package and the
 statistical approaches they support. More detailed description of the
 tests and outputs from these functions can be found on the package
-website: <https://indrajeetpatil.github.io/statsExpressions/articles/>.
+website: <https://www.indrapatil.com/statsExpressions/articles/>.
 {.table}
 
-[statsExpressions](https://indrajeetpatil.github.io/statsExpressions/)
+[statsExpressions](https://www.indrapatil.com/statsExpressions/)
 internally relies on `{stats}` package for parametric and non-parametric
 ([R Core Team, 2021](#ref-base2021)),
 [WRS2](https://r-forge.r-project.org/projects/psychor/) package for
@@ -157,8 +156,8 @@ oneway_anova(mtcars, cyl, wt, type = "robust")
 These functions are also compatible with other popular data manipulation
 packages. For example, we can use combination of
 [dplyr](https://dplyr.tidyverse.org) and
-[statsExpressions](https://indrajeetpatil.github.io/statsExpressions/)
-to repeat the same statistical analysis across grouping variables.
+[statsExpressions](https://www.indrapatil.com/statsExpressions/) to
+repeat the same statistical analysis across grouping variables.
 
 ``` r
 
@@ -189,15 +188,15 @@ Association and others, 2019](#ref-american2019publication)) frameworks.
 details in a plot.](stats_reporting_format.png)
 
 The templates used in
-[statsExpressions](https://indrajeetpatil.github.io/statsExpressions/)
-to display statistical details in a plot.
+[statsExpressions](https://www.indrapatil.com/statsExpressions/) to
+display statistical details in a plot.
 
 This expression be easily displayed in a plot (Figure 2). Displaying
 statistical results in the context of a visualization is indeed a
 philosophy adopted by the
 [ggstatsplot](https://indrajeetpatil.github.io/ggstatsplot/) package
 ([Patil, 2021](#ref-Patil2021)), and
-[statsExpressions](https://indrajeetpatil.github.io/statsExpressions/)
+[statsExpressions](https://www.indrapatil.com/statsExpressions/)
 functions as its statistical processing backend.
 
 ``` r
@@ -223,14 +222,14 @@ to display results from a statistical test in a
 plot.](statsExpressions_files/figure-html/anova_example-1.png)
 
 Example illustrating how
-[statsExpressions](https://indrajeetpatil.github.io/statsExpressions/)
+[statsExpressions](https://www.indrapatil.com/statsExpressions/)
 functions can be used to display results from a statistical test in a
 plot.
 
 ## Licensing and Availability
 
-[statsExpressions](https://indrajeetpatil.github.io/statsExpressions/)
-is licensed under the GNU General Public License (v3.0), with all source
+[statsExpressions](https://www.indrapatil.com/statsExpressions/) is
+licensed under the GNU General Public License (v3.0), with all source
 code stored at
 [GitHub](https://github.com/IndrajeetPatil/statsExpressions/). In the
 spirit of honest and open science, requests and suggestions for fixes,
@@ -243,12 +242,11 @@ filing an
 
 I would like to acknowledge the support of Mina Cikara, Fiery Cushman,
 and Iyad Rahwan during the development of this project.
-[statsExpressions](https://indrajeetpatil.github.io/statsExpressions/)
-relies heavily on the
-[`easystats`](https://github.com/easystats/easystats) ecosystem, a
-collaborative project created to facilitate the usage of `R` for
-statistical analyses. Thus, I would like to thank the [members of
-easystats](https://github.com/orgs/easystats/people) as well as the
+[statsExpressions](https://www.indrapatil.com/statsExpressions/) relies
+heavily on the [`easystats`](https://github.com/easystats/easystats)
+ecosystem, a collaborative project created to facilitate the usage of
+`R` for statistical analyses. Thus, I would like to thank the [members
+of easystats](https://github.com/orgs/easystats/people) as well as the
 users.
 
 ## References

@@ -41,13 +41,13 @@ Abbreviations used: CI = Confidence Interval
 
 | Test | Function |
 |:---|:---|
-| one-sample *t*-test | [`one_sample_test()`](https://indrajeetpatil.github.io/statsExpressions/reference/one_sample_test.md) |
-| two-sample *t*-test | [`two_sample_test()`](https://indrajeetpatil.github.io/statsExpressions/reference/two_sample_test.md) |
-| one-way ANOVA | [`oneway_anova()`](https://indrajeetpatil.github.io/statsExpressions/reference/oneway_anova.md) |
-| correlation analysis | [`corr_test()`](https://indrajeetpatil.github.io/statsExpressions/reference/corr_test.md) |
-| contingency table analysis | [`contingency_table()`](https://indrajeetpatil.github.io/statsExpressions/reference/contingency_table.md) |
-| meta-analysis | [`meta_analysis()`](https://indrajeetpatil.github.io/statsExpressions/reference/meta_analysis.md) |
-| pairwise comparisons | [`pairwise_comparisons()`](https://indrajeetpatil.github.io/statsExpressions/reference/pairwise_comparisons.md) |
+| one-sample *t*-test | [`one_sample_test()`](https://www.indrapatil.com/statsExpressions/reference/one_sample_test.md) |
+| two-sample *t*-test | [`two_sample_test()`](https://www.indrapatil.com/statsExpressions/reference/two_sample_test.md) |
+| one-way ANOVA | [`oneway_anova()`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md) |
+| correlation analysis | [`corr_test()`](https://www.indrapatil.com/statsExpressions/reference/corr_test.md) |
+| contingency table analysis | [`contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md) |
+| meta-analysis | [`meta_analysis()`](https://www.indrapatil.com/statsExpressions/reference/meta_analysis.md) |
+| pairwise comparisons | [`pairwise_comparisons()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md) |
 
 **Summary of details available for analyses**
 

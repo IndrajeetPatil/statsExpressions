@@ -172,7 +172,7 @@ columns (the exact columns will depend on the statistical test):
 - `expression`: pre-formatted expression containing statistical details
 
 For examples, see [data frame output
-vignette](https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html).
+vignette](https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html).
 
 ## Two-sample tests
 

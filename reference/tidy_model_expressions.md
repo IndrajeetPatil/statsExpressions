@@ -19,7 +19,7 @@ tidy_model_expressions(
 - data:
 
   A tidy data frame from regression model object (see
-  [`tidy_model_parameters()`](https://indrajeetpatil.github.io/statsExpressions/reference/tidy_model_parameters.md)).
+  [`tidy_model_parameters()`](https://www.indrapatil.com/statsExpressions/reference/tidy_model_parameters.md)).
 
 - statistic:
 

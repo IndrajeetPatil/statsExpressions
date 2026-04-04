@@ -2,7 +2,7 @@
 
 Creates an expression from a data frame containing statistical details.
 Ideally, this data frame would come from having run
-[`tidy_model_parameters()`](https://indrajeetpatil.github.io/statsExpressions/reference/tidy_model_parameters.md)
+[`tidy_model_parameters()`](https://www.indrapatil.com/statsExpressions/reference/tidy_model_parameters.md)
 on your model object.
 
 This function is currently **not** stable and should not be used outside
