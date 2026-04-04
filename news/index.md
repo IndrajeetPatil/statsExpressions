@@ -1,5 +1,10 @@
 # Changelog
 
+## statsExpressions 1.7.4
+
+- No user-facing changes (internal maintenance: dependency updates,
+  CI/CD improvements).
+
 ## statsExpressions 1.7.3
 
 CRAN release: 2026-02-05
