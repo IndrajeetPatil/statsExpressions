@@ -87,7 +87,7 @@ mtcars %>% oneway_anova(cyl, wt, type = "robust")
 ```
 
 All possible output dataframes from functions are tabulated here:
-<https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html>
+<https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html>
 
 Needless to say this will also work with the `kable` function to generate a
 table:
@@ -463,7 +463,7 @@ Note that these functions were initially written to display results from
 statistical tests on ready-made `{ggplot2}` plots implemented in `{ggstatsplot}`.
 
 For detailed documentation, see the package website:
-<https://indrajeetpatil.github.io/ggstatsplot/>
+<https://www.indrapatil.com/ggstatsplot/>
 
 Here is an example from `{ggstatsplot}` of what the plots look like when the
 expressions are displayed in the subtitle-

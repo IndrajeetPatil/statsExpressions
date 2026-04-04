@@ -114,7 +114,7 @@ Function | Parametric | Non-parametric | Robust | Bayesian
 
 : A summary table listing the primary functions in the package and the
 statistical approaches they support. More detailed description of the
-tests and outputs from these functions can be found on the package website: <https://indrajeetpatil.github.io/statsExpressions/articles/>.
+tests and outputs from these functions can be found on the package website: <https://www.indrapatil.com/statsExpressions/articles/>.
 
 `{statsExpressions}` internally relies on `stats` package for parametric and
 non-parametric [@base2021], `WRS2` package for robust [@Mair2020], and

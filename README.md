@@ -36,10 +36,10 @@ underlying packages can be accessed, with a simpler interface and no
 requirement to change data format.
 
 This package forms the statistical processing backend for
-[`ggstatsplot`](https://indrajeetpatil.github.io/ggstatsplot/) package.
+[`ggstatsplot`](https://www.indrapatil.com/ggstatsplot/) package.
 
 For more documentation, see the dedicated
-[website](https://indrajeetpatil.github.io/statsExpressions/).
+[website](https://www.indrapatil.com/statsExpressions/).
 
 # Installation
 
@@ -159,7 +159,7 @@ mtcars %>% oneway_anova(cyl, wt, type = "robust")
 ```
 
 All possible output dataframes from functions are tabulated here:
-<https://indrajeetpatil.github.io/statsExpressions/articles/web_only/dataframe_outputs.html>
+<https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html>
 
 Needless to say this will also work with the `kable` function to
 generate a table:
@@ -689,7 +689,7 @@ statistical tests on ready-made `{ggplot2}` plots implemented in
 `{ggstatsplot}`.
 
 For detailed documentation, see the package website:
-<https://indrajeetpatil.github.io/ggstatsplot/>
+<https://www.indrapatil.com/ggstatsplot/>
 
 Here is an example from `{ggstatsplot}` of what the plots look like when
 the expressions are displayed in the subtitle-

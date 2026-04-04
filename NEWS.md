@@ -30,7 +30,7 @@
 ## MAJOR CHANGES
 
 - _Test and effect size details_ vignette is now available only on the package
-  website (https://indrajeetpatil.github.io/statsExpressions/articles/).
+  website (https://www.indrapatil.com/statsExpressions/articles/).
 
 - Unused dataset has been removed: `movies_wide`.
 
