@@ -43,6 +43,19 @@ one_sample_test(mtcars, wt, test.value = 3)
 #>   <list>    
 #> 1 <language>
 
+# biased (Cohen's d) effect size
+one_sample_test(mtcars, wt, test.value = 3, effsize.type = "d")
+#> # A tibble: 1 × 15
+#>      mu statistic df.error p.value method            alternative effectsize
+#>   <dbl>     <dbl>    <dbl>   <dbl> <chr>             <chr>       <chr>     
+#> 1     3      1.26       31   0.218 One Sample t-test two.sided   Cohen's d 
+#>   estimate conf.level conf.low conf.high conf.method conf.distribution n.obs
+#>      <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>             <int>
+#> 1    0.222       0.95   -0.131     0.571 ncp         t                    32
+#>   expression
+#>   <list>    
+#> 1 <language>
+
 # ----------------------- non-parametric -------------------
 
 one_sample_test(mtcars, wt, test.value = 3, type = "nonparametric")
@@ -190,6 +203,19 @@ two_sample_test(ToothGrowth, supp, len, type = "parametric", var.equal = TRUE)
 #>   conf.high conf.method conf.distribution n.obs expression
 #>       <dbl> <chr>       <chr>             <int> <list>    
 #> 1     0.993 ncp         t                    60 <language>
+
+# biased (Cohen's d) effect size
+two_sample_test(ToothGrowth, supp, len, type = "parametric", effsize.type = "d")
+#> # A tibble: 1 × 18
+#>   parameter1 parameter2 mean.parameter1 mean.parameter2 statistic df.error
+#>   <chr>      <chr>                <dbl>           <dbl>     <dbl>    <dbl>
+#> 1 len        supp                  20.7            17.0      1.92     55.3
+#>   p.value method                  alternative effectsize estimate conf.level
+#>     <dbl> <chr>                   <chr>       <chr>         <dbl>      <dbl>
+#> 1  0.0606 Welch Two Sample t-test two.sided   Cohen's d     0.495       0.95
+#>   conf.low conf.high conf.method conf.distribution n.obs expression
+#>      <dbl>     <dbl> <chr>       <chr>             <int> <list>    
+#> 1  -0.0220      1.01 ncp         t                    60 <language>
 
 # ----------------------- non-parametric -----------------------------------
 
@@ -676,7 +702,7 @@ meta_analysis(df, type = "robust")
 #> # A tibble: 1 × 14
 #>   term    effectsize                     estimate std.error conf.low conf.high
 #>   <chr>   <chr>                             <dbl>     <dbl>    <dbl>     <dbl>
-#> 1 Overall meta-analytic summary estimate   -0.746     0.234    -1.26    -0.343
+#> 1 Overall meta-analytic summary estimate   -0.746     0.233    -1.26    -0.344
 #>   statistic  p.value weight conf.level method                               
 #>       <dbl>    <dbl>  <dbl>      <dbl> <chr>                                
 #> 1     -3.20 0.000777     NA       0.95 Robust meta-analysis using 'metaplus'

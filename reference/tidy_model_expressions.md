@@ -109,4 +109,32 @@ tidy_model_expressions(df, statistic = "chi")
 #> 2       28 0.238    Wald        <language>
 #> 3       28 0.000989 Wald        <language>
 #> 4       28 0.803    Wald        <language>
+
+# f-statistic (requires a data frame with `df`, `df.error`, and effect-size columns)
+df_f <- tidy_model_parameters(
+  aov(wt ~ cyl, mtcars),
+  es_type = "omega",
+  table_wide = TRUE
+)
+tidy_model_expressions(df_f, statistic = "f")
+#> # A tibble: 1 × 11
+#>   term  statistic    df df.error     p.value sumsq meansq estimate
+#>   <chr>     <dbl> <dbl>    <dbl>       <dbl> <dbl>  <dbl>    <dbl>
+#> 1 cyl        47.4     1       30 0.000000122  18.2   18.2    0.592
+#>   sum.squares.error mean.square.error expression
+#>               <dbl>             <dbl> <list>    
+#> 1              11.5             0.384 <language>
+df_f_eta <- tidy_model_parameters(
+  aov(wt ~ cyl, mtcars),
+  es_type = "eta",
+  table_wide = TRUE
+)
+tidy_model_expressions(df_f_eta, statistic = "f", effsize.type = "eta")
+#> # A tibble: 1 × 11
+#>   term  statistic    df df.error     p.value sumsq meansq estimate
+#>   <chr>     <dbl> <dbl>    <dbl>       <dbl> <dbl>  <dbl>    <dbl>
+#> 1 cyl        47.4     1       30 0.000000122  18.2   18.2    0.612
+#>   sum.squares.error mean.square.error expression
+#>               <dbl>             <dbl> <list>    
+#> 1              11.5             0.384 <language>
 ```

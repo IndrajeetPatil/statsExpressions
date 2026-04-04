@@ -192,6 +192,19 @@ one_sample_test(mtcars, wt, test.value = 3)
 #>   <list>    
 #> 1 <language>
 
+# biased (Cohen's d) effect size
+one_sample_test(mtcars, wt, test.value = 3, effsize.type = "d")
+#> # A tibble: 1 × 15
+#>      mu statistic df.error p.value method            alternative effectsize
+#>   <dbl>     <dbl>    <dbl>   <dbl> <chr>             <chr>       <chr>     
+#> 1     3      1.26       31   0.218 One Sample t-test two.sided   Cohen's d 
+#>   estimate conf.level conf.low conf.high conf.method conf.distribution n.obs
+#>      <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>             <int>
+#> 1    0.222       0.95   -0.131     0.571 ncp         t                    32
+#>   expression
+#>   <list>    
+#> 1 <language>
+
 # ----------------------- non-parametric -------------------
 
 one_sample_test(mtcars, wt, test.value = 3, type = "nonparametric")

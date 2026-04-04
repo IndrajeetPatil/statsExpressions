@@ -254,6 +254,24 @@ oneway_anova(
 #>        <dbl>    <dbl>     <dbl> <chr>       <chr>             <int> <list>    
 #> 1       0.95    0.370         1 ncp         F                    32 <language>
 
+# biased (partial eta-squared) effect size
+oneway_anova(
+  data         = mtcars,
+  x            = cyl,
+  y            = wt,
+  effsize.type = "eta"
+)
+#> # A tibble: 1 × 14
+#>   statistic    df df.error   p.value
+#>       <dbl> <dbl>    <dbl>     <dbl>
+#> 1      20.2     2     19.0 0.0000196
+#>   method                                                   effectsize estimate
+#>   <chr>                                                    <chr>         <dbl>
+#> 1 One-way analysis of means (not assuming equal variances) Eta2          0.681
+#>   conf.level conf.low conf.high conf.method conf.distribution n.obs expression
+#>        <dbl>    <dbl>     <dbl> <chr>       <chr>             <int> <list>    
+#> 1       0.95    0.437         1 ncp         F                    32 <language>
+
 # within-subjects design
 oneway_anova(
   data       = iris_long,
