@@ -2,6 +2,8 @@
 
 ## statsExpressions 1.7.4
 
+CRAN release: 2026-04-05
+
 - No user-facing changes (internal maintenance: dependency updates,
   CI/CD improvements).
 
