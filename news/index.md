@@ -195,8 +195,8 @@ CRAN release: 2022-05-20
 
 - The `top.text` parameter has been removed from all functions. It was
   relevant only in the context of
-  [ggstatsplot](https://indrajeetpatil.github.io/ggstatsplot/) package.
-  As that package no longer uses it, it is no longer necessary to retain
+  [ggstatsplot](https://www.indrapatil.com/ggstatsplot/) package. As
+  that package no longer uses it, it is no longer necessary to retain
   it.
 
 ## statsExpressions 1.3.1

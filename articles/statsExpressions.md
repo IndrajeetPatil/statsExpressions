@@ -175,6 +175,42 @@ mtcars %>%
 #> #   conf.distribution <chr>, n.obs <int>, expression <list>
 ```
 
+## Custom Statistical Workflows
+
+You can also programmatically aggregate results across different tests,
+apply automatic *p*-value adjustment across these multiple comparisons,
+and generate a single formatted expression summarizing all the results
+together.
+
+``` r
+
+# chaining multiple test types sequentially and aggregating results
+multi_test_results <- dplyr::bind_rows(
+  two_sample_test(mtcars, am, wt, type = "parametric") %>% mutate(test_type = "Parametric"),
+  two_sample_test(mtcars, am, wt, type = "nonparametric") %>% mutate(test_type = "Nonparametric"),
+  two_sample_test(mtcars, am, wt, type = "robust") %>% mutate(test_type = "Robust")
+) %>%
+  # automatic p-value adjustment across comparisons
+  dplyr::mutate(p.value = stats::p.adjust(p.value, method = "holm"))
+
+# creating a custom formatted expression that summarizes all results together
+summary_expression <- paste(
+  sprintf(
+    "%s: p_adj = %.3f, %s = %.2f",
+    multi_test_results$test_type,
+    multi_test_results$p.value,
+    multi_test_results$effectsize,
+    multi_test_results$estimate
+  ),
+  collapse = "\n"
+)
+
+cat(summary_expression)
+#> Parametric: p_adj = 0.000, Hedges' g = 1.88
+#> Nonparametric: p_adj = 0.000, r (rank biserial) = 0.87
+#> Robust: p_adj = 0.000, Algina-Keselman-Penfield robust standardized difference = 2.48
+```
+
 ## Expressions for Plots
 
 In addition to other details contained in the data frame, there is also
@@ -191,11 +227,11 @@ The templates used in
 [statsExpressions](https://www.indrapatil.com/statsExpressions/) to
 display statistical details in a plot.
 
-This expression be easily displayed in a plot (Figure 2). Displaying
+This expression can be easily displayed in a plot (Figure 2). Displaying
 statistical results in the context of a visualization is indeed a
 philosophy adopted by the
-[ggstatsplot](https://indrajeetpatil.github.io/ggstatsplot/) package
-([Patil, 2021](#ref-Patil2021)), and
+[ggstatsplot](https://www.indrapatil.com/ggstatsplot/) package ([Patil,
+2021](#ref-Patil2021)), and
 [statsExpressions](https://www.indrapatil.com/statsExpressions/)
 functions as its statistical processing backend.
 
@@ -204,8 +240,34 @@ functions as its statistical processing backend.
 # needed libraries
 library(ggplot2)
 
-# creating a data frame
-res <- oneway_anova(iris, Species, Sepal.Length, type = "nonparametric")
+# Example 1: Performing a t-test on raw tidy data and extracting the formatted expression
+# for direct use in a plot annotation
+res_ttest <- two_sample_test(mtcars, am, wt, type = "parametric")
+
+ggplot(mtcars, aes(as.factor(am), wt)) +
+  geom_boxplot() +
+  labs(
+    x = "Transmission (0 = automatic, 1 = manual)",
+    y = "Weight (1000 lbs)",
+    title = "Vehicle Weight by Transmission Type",
+    subtitle = res_ttest$expression[[1]] # Extract formatted p-value and effect size
+  )
+```
+
+![Example illustrating how \`{statsExpressions}\` functions can be used
+to display results from a statistical test in a
+plot.](statsExpressions_files/figure-html/anova_example-1.png)
+
+Example illustrating how
+[statsExpressions](https://www.indrapatil.com/statsExpressions/)
+functions can be used to display results from a statistical test in a
+plot.
+
+``` r
+
+
+# Example 2: One-way ANOVA
+res_anova <- oneway_anova(iris, Species, Sepal.Length, type = "nonparametric")
 
 ggplot(iris, aes(x = Sepal.Length, y = Species)) +
   geom_boxplot() + # use 'expression' column to display results in the subtitle
@@ -213,13 +275,13 @@ ggplot(iris, aes(x = Sepal.Length, y = Species)) +
     x = "Penguin Species",
     y = "Body mass (in grams)",
     title = "Kruskal-Wallis Rank Sum Test",
-    subtitle = res$expression[[1]]
+    subtitle = res_anova$expression[[1]]
   )
 ```
 
 ![Example illustrating how \`{statsExpressions}\` functions can be used
 to display results from a statistical test in a
-plot.](statsExpressions_files/figure-html/anova_example-1.png)
+plot.](statsExpressions_files/figure-html/anova_example-2.png)
 
 Example illustrating how
 [statsExpressions](https://www.indrapatil.com/statsExpressions/)

@@ -723,14 +723,14 @@ your R console.
 Note that these functions were initially written to display results from
 statistical tests on ready-made [ggplot2](https://ggplot2.tidyverse.org)
 plots implemented in
-[ggstatsplot](https://indrajeetpatil.github.io/ggstatsplot/).
+[ggstatsplot](https://www.indrapatil.com/ggstatsplot/).
 
 For detailed documentation, see the package website:
 <https://www.indrapatil.com/ggstatsplot/>
 
 Here is an example from
-[ggstatsplot](https://indrajeetpatil.github.io/ggstatsplot/) of what the
-plots look like when the expressions are displayed in the subtitle-
+[ggstatsplot](https://www.indrapatil.com/ggstatsplot/) of what the plots
+look like when the expressions are displayed in the subtitle-
 
 ![Example plot from ggstatsplot package showing statistical results in
 subtitle](reference/figures/ggstatsplot.png)
