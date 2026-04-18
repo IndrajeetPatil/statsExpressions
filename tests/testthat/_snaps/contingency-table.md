@@ -257,3 +257,25 @@
           "1.00")
       
 
+# contingency_table() expression is invariant to `options(OutDec)`:  dec=.
+
+    Code
+      df[["expression"]]
+    Output
+      [[1]]
+      list(chi["Pearson"]^2 * "(" * 2 * ")" == "8.74073", italic(p) == 
+          "0.01265", widehat(italic("V"))["Cramer"] == "0.46431", CI["99%"] ~ 
+          "[" * "0.00000", "0.93683" * "]", italic("n")["obs"] == "32")
+      
+
+# contingency_table() expression is invariant to `options(OutDec)`:  dec=,
+
+    Code
+      df[["expression"]]
+    Output
+      [[1]]
+      list(chi["Pearson"]^2 * "(" * 2 * ")" == "8.74073", italic(p) == 
+          "0.01265", widehat(italic("V"))["Cramer"] == "0.46431", CI["99%"] ~ 
+          "[" * "0.00000", "0.93683" * "]", italic("n")["obs"] == "32")
+      
+

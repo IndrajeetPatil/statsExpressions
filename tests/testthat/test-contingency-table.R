@@ -207,3 +207,29 @@ test_that(
     expect_snapshot(df2[["expression"]])
   }
 )
+
+# `options(OutDec)` invariance (#146) -------------------------------------
+#
+# Regardless of the user's decimal-mark locale, the plotmath expression must
+# carry `.` as the decimal mark (plotmath parses `,` as a list separator, so
+# `,` would break it) and no `big.mark`/`decimal.mark` clash warning should
+# be emitted.
+
+patrick::with_parameters_test_that(
+  "contingency_table() expression is invariant to `options(OutDec)`: ",
+  {
+    withr::local_options(list(OutDec = dec))
+
+    set.seed(123)
+    df <- suppressWarnings(contingency_table(
+      data = mtcars,
+      x = am,
+      y = cyl,
+      digits = 5L,
+      conf.level = 0.99
+    ))
+
+    expect_snapshot(df[["expression"]])
+  },
+  .cases = tibble(dec = c(".", ","))
+)
