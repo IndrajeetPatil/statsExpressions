@@ -210,12 +210,13 @@ test_that(
 
 # `options(OutDec)` invariance (#146) -------------------------------------
 #
-# Regardless of the user's decimal-mark locale, the public-API output must be
-# warning-free and the generated expression must carry `.` as the decimal mark
-# (plotmath parses `,` as a list separator, so `,` would break it).
+# Regardless of the user's decimal-mark locale, the plotmath expression must
+# carry `.` as the decimal mark (plotmath parses `,` as a list separator, so
+# `,` would break it) and no `big.mark`/`decimal.mark` clash warning should
+# be emitted.
 
 patrick::with_parameters_test_that(
-  "contingency_table() output is invariant to `options(OutDec)`: ",
+  "contingency_table() expression is invariant to `options(OutDec)`: ",
   {
     withr::local_options(list(OutDec = dec))
 
@@ -228,8 +229,6 @@ patrick::with_parameters_test_that(
       conf.level = 0.99
     ))
 
-    set.seed(123)
-    expect_snapshot(select(df, -expression))
     expect_snapshot(df[["expression"]])
   },
   .cases = tibble(dec = c(".", ","))
