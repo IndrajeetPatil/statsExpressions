@@ -221,7 +221,7 @@ patrick::with_parameters_test_that(
     withr::local_options(list(OutDec = dec))
 
     set.seed(123)
-    df <- suppressMessages(contingency_table(
+    df <- suppressWarnings(contingency_table(
       data = mtcars,
       x = am,
       y = cyl,
