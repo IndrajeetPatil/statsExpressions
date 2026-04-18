@@ -1,5 +1,13 @@
 # Changelog
 
+## statsExpressions (development version)
+
+- Fixes a warning emitted when `options(OutDec = ",")` is set (e.g., by
+  users in locales that use `,` as the decimal mark) and ensures the
+  generated plotmath expressions always use `.` as the decimal mark,
+  since `,` is parsed as a list separator in plotmath
+  ([\#146](https://github.com/IndrajeetPatil/statsExpressions/issues/146)).
+
 ## statsExpressions 1.7.4
 
 CRAN release: 2026-04-05
