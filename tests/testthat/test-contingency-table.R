@@ -208,13 +208,29 @@ test_that(
   }
 )
 
-test_that(
-  desc = "contingency_table works under `options(OutDec = \",\")` (#146)",
-  code = {
-    withr::local_options(list(OutDec = ","))
+# `options(OutDec)` invariance (#146) -------------------------------------
+#
+# Regardless of the user's decimal-mark locale, the public-API output must be
+# warning-free and the generated expression must carry `.` as the decimal mark
+# (plotmath parses `,` as a list separator, so `,` would break it).
+
+patrick::with_parameters_test_that(
+  "contingency_table() output is invariant to `options(OutDec)`: ",
+  {
+    withr::local_options(list(OutDec = dec))
 
     set.seed(123)
-    expect_no_warning(df <- contingency_table(mtcars, am))
-    expect_true(is.language(df[["expression"]][[1L]]))
-  }
+    df <- suppressMessages(contingency_table(
+      data = mtcars,
+      x = am,
+      y = cyl,
+      digits = 5L,
+      conf.level = 0.99
+    ))
+
+    set.seed(123)
+    expect_snapshot(select(df, -expression))
+    expect_snapshot(df[["expression"]])
+  },
+  .cases = tibble(dec = c(".", ","))
 )
