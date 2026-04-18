@@ -1,13 +1,5 @@
-# Tests that verify package behaviour when the user sets a non-default
-# decimal mark via `options(OutDec = ",")` (see issue #146).
-#
-# plotmath expressions used by downstream packages like `{ggstatsplot}`
-# require `.` as the decimal mark because `,` is parsed as a list separator.
-# Additionally, `prettyNum()` emits a warning when `big.mark` and
-# `decimal.mark` are identical.
-
 test_that(
-  desc = ".prettyNum() does not warn under `options(OutDec = \",\")`",
+  desc = ".prettyNum() does not warn under `options(OutDec = \",\")` (#146)",
   code = {
     withr::local_options(list(OutDec = ","))
 
@@ -17,7 +9,7 @@ test_that(
 )
 
 test_that(
-  desc = ".to_char() always uses `.` as decimal mark",
+  desc = ".to_char() always uses `.` as decimal mark (#146)",
   code = {
     withr::local_options(list(OutDec = ","))
 
@@ -27,7 +19,7 @@ test_that(
 )
 
 test_that(
-  desc = "add_expression_col() produces valid expressions under `options(OutDec = \",\")`",
+  desc = "add_expression_col() works under `options(OutDec = \",\")` (#146)",
   code = {
     withr::local_options(list(OutDec = ","))
 
@@ -42,8 +34,9 @@ test_that(
       method     = "Student's t-test"
     )
 
+    set.seed(123)
     expect_no_warning(
-      out <- add_expression_col(
+      df <- add_expression_col(
         data           = stats_df,
         statistic.text = list(quote(italic("t"))),
         effsize.text   = list(quote(italic("d"))),
@@ -53,17 +46,6 @@ test_that(
       )
     )
 
-    # the returned expression must be parseable as an R language object
-    expect_true(is.language(out$expression[[1L]]))
-  }
-)
-
-test_that(
-  desc = "contingency_table() works under `options(OutDec = \",\")`",
-  code = {
-    withr::local_options(list(OutDec = ","))
-
-    expect_no_warning(df <- contingency_table(mtcars, am))
-    expect_true(is.language(df$expression[[1L]]))
+    expect_true(is.language(df[["expression"]][[1L]]))
   }
 )

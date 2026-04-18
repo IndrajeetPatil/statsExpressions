@@ -207,3 +207,14 @@ test_that(
     expect_snapshot(df2[["expression"]])
   }
 )
+
+test_that(
+  desc = "contingency_table works under `options(OutDec = \",\")` (#146)",
+  code = {
+    withr::local_options(list(OutDec = ","))
+
+    set.seed(123)
+    expect_no_warning(df <- contingency_table(mtcars, am))
+    expect_true(is.language(df[["expression"]][[1L]]))
+  }
+)
