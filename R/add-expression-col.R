@@ -177,7 +177,15 @@ add_expression_col <- function(
 }
 
 #' @noRd
-.prettyNum <- function(x) prettyNum(x, big.mark = ",", scientific = FALSE)
+.prettyNum <- function(x) {
+  # plotmath expressions require `.` as decimal mark, so force it here to avoid
+  # a clash with `big.mark` when users set `options(OutDec = ",")`
+  prettyNum(x, big.mark = ",", decimal.mark = ".", scientific = FALSE)
+}
 
 #' @noRd
-.to_char <- function(x, digits = 2L) format_value(x, digits, missing = "NA")
+.to_char <- function(x, digits = 2L) {
+  # plotmath parses `,` as a list separator, so force `.` as the decimal mark
+  # regardless of the user's `options(OutDec)` setting
+  format_value(x, digits, missing = "NA", decimal_point = ".")
+}
