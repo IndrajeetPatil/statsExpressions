@@ -71,7 +71,7 @@ value corresponds to scale for fixed effects.}
 argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \emph{g}).}
 
 \item{exact}{A logical indicating whether you want exact p-values to be computed.
-Relevant only when \code{type = "nonparametric"}.}
+Relevant only when \code{type = "nonparametric"} (Default: \code{FALSE}).}
 
 \item{...}{Currently ignored.}
 }
