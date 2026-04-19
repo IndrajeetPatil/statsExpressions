@@ -1,5 +1,10 @@
 # statsExpressions (development version)
 
+- `pairwise_comparisons()` now allows users to specify a significance threshold
+  for *p*-values using `p.adjust.threshold`. If provided, the prepared
+  expressions will reflect this threshold (e.g., $p \le 0.05$) and a
+  `significant` column will be added to the output (#348).
+
 - Added `exact` parameter to allow users to specify whether an exact *p*-value should be computed for non-parametric tests (#249).
 
 - Fixes a warning emitted when `options(OutDec = ",")` is set (e.g., by users in

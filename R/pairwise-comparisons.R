@@ -13,6 +13,9 @@
 #' @param p.adjust.method Adjustment method for *p*-values for multiple
 #'   comparisons. Possible methods are: `"holm"` (default), `"hochberg"`,
 #'   `"hommel"`, `"bonferroni"`, `"BH"`, `"BY"`, `"fdr"`, `"none"`.
+#' @param p.adjust.threshold Significance level (alpha) for the *p*-value. If
+#'   provided, the prepared expressions will reflect this threshold (e.g., $p \le
+#'   0.05$) instead of showing the exact *p*-value.
 #' @param ... Additional arguments passed to other methods.
 #' @inheritParams stats::t.test
 #' @inheritParams WRS2::rmmcp
@@ -52,6 +55,15 @@
 #'   var.equal       = TRUE,
 #'   paired          = FALSE,
 #'   p.adjust.method = "none"
+#' )
+#'
+#' # expressions reflecting a chosen threshold
+#' pairwise_comparisons(
+#'   data               = mtcars,
+#'   x                  = cyl,
+#'   y                  = wt,
+#'   type               = "parametric",
+#'   p.adjust.threshold = 0.001
 #' )
 #'
 #' # if `var.equal = FALSE`, then Games-Howell test will be run
@@ -153,11 +165,14 @@ pairwise_comparisons <- function(
   tr = 0.2,
   bf.prior = 0.707,
   p.adjust.method = "holm",
+  p.adjust.threshold = 0.05,
   digits = 2L,
   exact = FALSE,
   ...
 ) {
   # data -------------------------------------------
+
+  p.adjust.threshold <- p.adjust.threshold %||% 0.05
 
   type <- extract_stats_type(type)
   c(x, y) %<-% c(ensym(x), ensym(y))
@@ -272,9 +287,12 @@ pairwise_comparisons <- function(
         p.value = stats::p.adjust(p = p.value, method = p.adjust.method),
         p.adjust.method = p_adjust_text(p.adjust.method),
         test = test,
+        significant = p.value <= p.adjust.threshold,
         expression = case_when(
-          p.adjust.method == "None" ~ glue("list(italic(p)[unadj.]=='{format_value(p.value, digits)}')"),
-          .default = glue("list(italic(p)['{p.adjust.method}'-adj.]=='{format_value(p.value, digits)}')")
+          p.adjust.method == "None" & significant ~ glue("list(italic(p)[unadj.]<='{format_value(p.adjust.threshold, digits)}')"),
+          p.adjust.method == "None" & !significant ~ glue("list(italic(p)[unadj.]>'{format_value(p.adjust.threshold, digits)}')"),
+          p.adjust.method != "None" & significant ~ glue("list(italic(p)['{p.adjust.method}'-adj.]<='{format_value(p.adjust.threshold, digits)}')"),
+          p.adjust.method != "None" & !significant ~ glue("list(italic(p)['{p.adjust.method}'-adj.]>'{format_value(p.adjust.threshold, digits)}')")
         )
       )
   }
