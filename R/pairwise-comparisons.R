@@ -9,6 +9,7 @@
 #' @inheritParams long_to_wide_converter
 #' @inheritParams extract_stats_type
 #' @inheritParams oneway_anova
+#' @inheritParams two_sample_test
 #' @param p.adjust.method Adjustment method for *p*-values for multiple
 #'   comparisons. Possible methods are: `"holm"` (default), `"hochberg"`,
 #'   `"hommel"`, `"bonferroni"`, `"BH"`, `"BY"`, `"fdr"`, `"none"`.
