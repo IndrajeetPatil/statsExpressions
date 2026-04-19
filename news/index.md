@@ -2,6 +2,10 @@
 
 ## statsExpressions (development version)
 
+- Added `exact` parameter to allow users to specify whether an exact
+  *p*-value should be computed for non-parametric tests
+  ([\#249](https://github.com/IndrajeetPatil/statsExpressions/issues/249)).
+
 - Fixes a warning emitted when `options(OutDec = ",")` is set (e.g., by
   users in locales that use `,` as the decimal mark) and ensures the
   generated plotmath expressions always use `.` as the decimal mark,

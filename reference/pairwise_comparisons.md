@@ -18,6 +18,7 @@ pairwise_comparisons(
   bf.prior = 0.707,
   p.adjust.method = "holm",
   digits = 2L,
+  exact = FALSE,
   ...
 )
 ```
@@ -112,6 +113,11 @@ pairwise_comparisons(
   as suffix, e.g. `digits = "scientific4"` to have scientific notation
   with 4 decimal places, or `digits = "signif5"` for 5 significant
   figures (see also [`signif()`](https://rdrr.io/r/base/Round.html)).
+
+- exact:
+
+  A logical indicating whether you want exact p-values to be computed.
+  Relevant only when `type = "nonparametric"` (Default: `FALSE`).
 
 - ...:
 

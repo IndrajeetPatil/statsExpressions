@@ -65,6 +65,7 @@
 <span>  bf.prior <span class="op">=</span> <span class="fl">0.707</span>,</span>
 <span>  tr <span class="op">=</span> <span class="fl">0.2</span>,</span>
 <span>  nboot <span class="op">=</span> <span class="fl">100L</span>,</span>
+<span>  exact <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -172,6 +173,11 @@ of an error, try reducing the value of <code>tr</code>, which is by default set 
 <dt id="arg-nboot">nboot<a class="anchor" aria-label="anchor" href="#arg-nboot"></a></dt>
 <dd><p>Number of bootstrap samples for computing confidence interval
 for the effect size (Default: <code>100L</code>).</p></dd>
+
+
+<dt id="arg-exact">exact<a class="anchor" aria-label="anchor" href="#arg-exact"></a></dt>
+<dd><p>A logical indicating whether you want exact p-values to be computed.
+Relevant only when <code>type = "nonparametric"</code> (Default: <code>FALSE</code>).</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>

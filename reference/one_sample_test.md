@@ -16,6 +16,7 @@ one_sample_test(
   tr = 0.2,
   bf.prior = 0.707,
   effsize.type = "g",
+  exact = FALSE,
   ...
 )
 ```
@@ -91,6 +92,11 @@ one_sample_test(
 
   Type of effect size needed for *parametric* tests. The argument can be
   `"d"` (for Cohen's *d*) or `"g"` (for Hedge's *g*).
+
+- exact:
+
+  A logical indicating whether you want exact p-values to be computed.
+  Relevant only when `type = "nonparametric"` (Default: `FALSE`).
 
 - ...:
 
