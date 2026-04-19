@@ -15,6 +15,7 @@ one_sample_test(
   tr = 0.2,
   bf.prior = 0.707,
   effsize.type = "g",
+  exact = FALSE,
   ...
 )
 }
@@ -68,6 +69,9 @@ value corresponds to scale for fixed effects.}
 
 \item{effsize.type}{Type of effect size needed for \emph{parametric} tests. The
 argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \emph{g}).}
+
+\item{exact}{A logical indicating whether you want exact p-values to be computed.
+Relevant only when \code{type = "nonparametric"}.}
 
 \item{...}{Currently ignored.}
 }

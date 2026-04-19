@@ -12,6 +12,8 @@
 #' @param p.adjust.method Adjustment method for *p*-values for multiple
 #'   comparisons. Possible methods are: `"holm"` (default), `"hochberg"`,
 #'   `"hommel"`, `"bonferroni"`, `"BH"`, `"BY"`, `"fdr"`, `"none"`.
+#' @param exact A logical indicating whether you want exact p-values to be computed.
+#'   Relevant only when `type = "nonparametric"`.
 #' @param ... Additional arguments passed to other methods.
 #' @inheritParams stats::t.test
 #' @inheritParams WRS2::rmmcp
@@ -153,6 +155,7 @@ pairwise_comparisons <- function(
   bf.prior = 0.707,
   p.adjust.method = "holm",
   digits = 2L,
+  exact = FALSE,
   ...
 ) {
   # data -------------------------------------------
@@ -172,7 +175,7 @@ pairwise_comparisons <- function(
   x_vec <- pull(data, {{ x }})
   y_vec <- pull(data, {{ y }})
   g_vec <- pull(data, .rowid)
-  .f.args <- list(paired = paired, p.adjust.method = "none", exact = FALSE, ...)
+  .f.args <- list(paired = paired, p.adjust.method = "none", exact = exact, ...)
 
   # parametric ---------------------------------
 

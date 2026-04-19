@@ -48,6 +48,7 @@ two_sample_test <- function(
   bf.prior = 0.707,
   tr = 0.2,
   nboot = 100L,
+  exact = FALSE,
   ...
 ) {
   # data -------------------------------------------
@@ -80,7 +81,7 @@ two_sample_test <- function(
 
   if (type %in% c("parametric", "nonparametric")) {
     .f.args <- list(x = data[[2L]], y = data[[3L]], paired = paired, alternative = alternative)
-    stats_df <- exec(.f, !!!.f.args, var.equal = var.equal, exact = FALSE) %>% tidy_model_parameters()
+    stats_df <- exec(.f, !!!.f.args, var.equal = var.equal, exact = exact) %>% tidy_model_parameters()
     ez_df <- exec(.f.es, !!!.f.args, pooled_sd = FALSE, ci = conf.level, verbose = FALSE) %>% tidy_model_effectsize()
   }
 
