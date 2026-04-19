@@ -6,6 +6,8 @@
 #'   `0`).
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
 #'   argument can be `"d"` (for Cohen's *d*) or `"g"` (for Hedge's *g*).
+#' @param exact A logical indicating whether you want exact p-values to be computed.
+#'   Relevant only when `type = "nonparametric"` (Default: `FALSE`).
 #' @inheritParams long_to_wide_converter
 #' @inheritParams extract_stats_type
 #' @inheritParams add_expression_col
@@ -48,6 +50,7 @@ one_sample_test <- function(
   tr = 0.2,
   bf.prior = 0.707,
   effsize.type = "g",
+  exact = FALSE,
   ...
 ) {
   type <- extract_stats_type(type)
@@ -68,7 +71,7 @@ one_sample_test <- function(
   if (type == "nonparametric") c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
 
   if (type %in% c("parametric", "nonparametric")) {
-    stats_df <- exec(.f, x = x_vec, mu = test.value, alternative = alternative, exact = FALSE) %>%
+    stats_df <- exec(.f, x = x_vec, mu = test.value, alternative = alternative, exact = exact) %>%
       tidy_model_parameters() %>%
       select(-matches("^est|^conf|^diff|^term|^ci"))
 

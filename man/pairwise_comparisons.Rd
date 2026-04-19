@@ -16,6 +16,7 @@ pairwise_comparisons(
   bf.prior = 0.707,
   p.adjust.method = "holm",
   digits = 2L,
+  exact = FALSE,
   ...
 )
 }
@@ -85,6 +86,9 @@ to return scientific notation. Control the number of digits by adding the
 value as suffix, e.g. \code{digits = "scientific4"} to have scientific
 notation with 4 decimal places, or \code{digits = "signif5"} for 5
 significant figures (see also \code{\link[=signif]{signif()}}).}
+
+\item{exact}{A logical indicating whether you want exact p-values to be computed.
+Relevant only when \code{type = "nonparametric"} (Default: \code{FALSE}).}
 
 \item{...}{Additional arguments passed to other methods.}
 }
