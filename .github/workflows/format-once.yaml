@@ -1,0 +1,30 @@
+on:
+  workflow_dispatch:
+
+name: format-once
+
+permissions:
+  contents: write
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/air-formatting
+
+      - uses: posit-dev/setup-air@v1
+        with:
+          version: 0.9.0
+
+      - name: Format
+        run: air format .
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "style: apply air 0.9.0 Linux formatting"
+          git push
