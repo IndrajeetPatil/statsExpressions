@@ -31,6 +31,8 @@ goodness of fit proportion test
 
 - [`contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md)
   : Contingency table analyses
+- [`pairwise_contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_contingency_table.md)
+  : Pairwise contingency table analyses
 
 ## Meta-analysis
 
@@ -45,6 +47,8 @@ Multiple pairwise comparison tests for one-way design
 
 - [`pairwise_comparisons()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)
   : Multiple pairwise comparison for one-way design
+- [`pairwise_contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_contingency_table.md)
+  : Pairwise contingency table analyses
 
 ## Centrality measure
 

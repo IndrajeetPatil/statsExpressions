@@ -254,7 +254,14 @@ set.seed(123)
 
 # ----------------------- parametric ---------------------------------------
 
-two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type = "parametric")
+two_sample_test(
+  df,
+  condition,
+  desire,
+  subject.id = subject,
+  paired = TRUE,
+  type = "parametric"
+)
 #> # A tibble: 1 × 16
 #>   term   group     statistic df.error       p.value method        alternative
 #>   <chr>  <chr>         <dbl>    <dbl>         <dbl> <chr>         <chr>      
@@ -268,7 +275,14 @@ two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type
 
 # ----------------------- non-parametric -----------------------------------
 
-two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type = "nonparametric")
+two_sample_test(
+  df,
+  condition,
+  desire,
+  subject.id = subject,
+  paired = TRUE,
+  type = "nonparametric"
+)
 #> # A tibble: 1 × 14
 #>   parameter1 parameter2 statistic      p.value method                   
 #>   <chr>      <chr>          <dbl>        <dbl> <chr>                    
@@ -282,7 +296,14 @@ two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type
 
 # ----------------------- robust --------------------------------------------
 
-two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type = "robust")
+two_sample_test(
+  df,
+  condition,
+  desire,
+  subject.id = subject,
+  paired = TRUE,
+  type = "robust"
+)
 #> # A tibble: 1 × 15
 #>   statistic df.error      p.value
 #>       <dbl>    <dbl>        <dbl>
@@ -299,7 +320,14 @@ two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type
 
 # ----------------------- Bayesian ---------------------------------------
 
-two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type = "bayes")
+two_sample_test(
+  df,
+  condition,
+  desire,
+  subject.id = subject,
+  paired = TRUE,
+  type = "bayes"
+)
 #> # A tibble: 1 × 16
 #>   term       effectsize      estimate conf.level conf.low conf.high    pd
 #>   <chr>      <chr>              <dbl>      <dbl>    <dbl>     <dbl> <dbl>

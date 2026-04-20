@@ -208,6 +208,10 @@
 <td align="left">pairwise comparisons</td>
 <td align="left"><code><a href="reference/pairwise_comparisons.html">pairwise_comparisons()</a></code></td>
 </tr>
+<tr>
+<td align="left">pairwise contingency table</td>
+<td align="left"><code><a href="reference/pairwise_contingency_table.html">pairwise_contingency_table()</a></code></td>
+</tr>
 </tbody>
 </table>
 <p><strong>Summary of details available for analyses</strong></p>
@@ -1394,6 +1398,39 @@
 </tbody>
 </table>
 </div>
+</div>
+<div class="section level2">
+<h2 id="pairwise_contingency_table">
+<code>pairwise_contingency_table</code><a class="anchor" aria-label="anchor" href="#pairwise_contingency_table"></a>
+</h2>
+<p><strong>Hypothesis testing</strong></p>
+<table class="table">
+<thead><tr>
+<th align="left">Test</th>
+<th align="left">
+<em>p</em>-value adjustment?</th>
+<th align="left">Function used</th>
+</tr></thead>
+<tbody><tr>
+<td align="left">Fisher’s exact test</td>
+<td align="left">Yes</td>
+<td align="left"><code><a href="https://rdrr.io/r/stats/fisher.test.html" class="external-link">stats::fisher.test()</a></code></td>
+</tr></tbody>
+</table>
+<p><strong>Effect size estimation</strong></p>
+<table class="table">
+<thead><tr>
+<th align="left">Effect size</th>
+<th align="left">CI available?</th>
+<th align="left">Function used</th>
+</tr></thead>
+<tbody><tr>
+<td align="left">Cramer’s <em>V</em>
+</td>
+<td align="left">Yes</td>
+<td align="left"><code><a href="https://easystats.github.io/effectsize/reference/phi.html" class="external-link">effectsize::cramers_v()</a></code></td>
+</tr></tbody>
+</table>
 </div>
 <div class="section level2">
 <h2 id="meta_analysis">

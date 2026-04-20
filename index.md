@@ -102,6 +102,7 @@ package](reference/figures/card.png)
 | contingency table analysis | [`contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md) |
 | meta-analysis | [`meta_analysis()`](https://www.indrapatil.com/statsExpressions/reference/meta_analysis.md) |
 | pairwise comparisons | [`pairwise_comparisons()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md) |
+| pairwise contingency table | [`pairwise_contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_contingency_table.md) |
 
 **Summary of details available for analyses**
 
@@ -707,6 +708,20 @@ your R console.
 |:---|:---|:---|:---|
 | Parametric/Non-parametric | Pearson’s *C* | Yes | [`effectsize::pearsons_c()`](https://easystats.github.io/effectsize/reference/phi.html) |
 | Bayesian | No | No | No |
+
+## `pairwise_contingency_table`
+
+**Hypothesis testing**
+
+| Test | *p*-value adjustment? | Function used |
+|:---|:---|:---|
+| Fisher’s exact test | Yes | [`stats::fisher.test()`](https://rdrr.io/r/stats/fisher.test.html) |
+
+**Effect size estimation**
+
+| Effect size | CI available? | Function used |
+|:---|:---|:---|
+| Cramer’s *V* | Yes | [`effectsize::cramers_v()`](https://easystats.github.io/effectsize/reference/phi.html) |
 
 ## `meta_analysis`
 

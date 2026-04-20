@@ -45,7 +45,8 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="statsexpressions-development-version">statsExpressions (development version)<a class="anchor" aria-label="anchor" href="#statsexpressions-development-version"></a></h2>
-<ul><li><p>Added <code>exact</code> parameter to allow users to specify whether an exact <em>p</em>-value should be computed for non-parametric tests (<a href="https://github.com/IndrajeetPatil/statsExpressions/issues/249" class="external-link">#249</a>).</p></li>
+<ul><li><p>New <code><a href="../reference/pairwise_contingency_table.html">pairwise_contingency_table()</a></code> function for pairwise Fisher’s exact tests as post hoc follow-ups for chi-squared contingency table analyses. Includes Cramer’s <em>V</em> effect sizes with confidence intervals and <em>p</em>-value adjustment for multiple comparisons (<a href="https://github.com/IndrajeetPatil/statsExpressions/issues/352" class="external-link">#352</a>).</p></li>
+<li><p>Added <code>exact</code> parameter to allow users to specify whether an exact <em>p</em>-value should be computed for non-parametric tests (<a href="https://github.com/IndrajeetPatil/statsExpressions/issues/249" class="external-link">#249</a>).</p></li>
 <li><p>Fixes a warning emitted when <code>options(OutDec = ",")</code> is set (e.g., by users in locales that use <code>,</code> as the decimal mark) and ensures the generated plotmath expressions always use <code>.</code> as the decimal mark, since <code>,</code> is parsed as a list separator in plotmath (<a href="https://github.com/IndrajeetPatil/statsExpressions/issues/146" class="external-link">#146</a>).</p></li>
 </ul></div>
     <div class="section level2">

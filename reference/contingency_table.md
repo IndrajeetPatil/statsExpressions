@@ -227,9 +227,9 @@ The table below provides summary about:
 
 set.seed(123)
 contingency_table(
-  data   = mtcars,
-  x      = am,
-  y      = vs,
+  data = mtcars,
+  x = am,
+  y = vs,
   paired = FALSE
 )
 #> # A tibble: 1 × 13
@@ -243,16 +243,24 @@ contingency_table(
 # paired
 
 paired_data <- tibble(
-  response_before = structure(c(1L, 2L, 1L, 2L), levels = c("no", "yes"), class = "factor"),
-  response_after = structure(c(1L, 1L, 2L, 2L), levels = c("no", "yes"), class = "factor"),
+  response_before = structure(
+    c(1L, 2L, 1L, 2L),
+    levels = c("no", "yes"),
+    class = "factor"
+  ),
+  response_after = structure(
+    c(1L, 1L, 2L, 2L),
+    levels = c("no", "yes"),
+    class = "factor"
+  ),
   Freq = c(65L, 25L, 5L, 5L)
 )
 
 set.seed(123)
 contingency_table(
-  data   = paired_data,
-  x      = response_before,
-  y      = response_after,
+  data = paired_data,
+  x = response_before,
+  y = response_after,
   paired = TRUE,
   counts = Freq
 )
@@ -315,8 +323,8 @@ contingency_table(
 
 set.seed(123)
 contingency_table(
-  data   = as.data.frame(HairEyeColor),
-  x      = Eye,
+  data = as.data.frame(HairEyeColor),
+  x = Eye,
   counts = Freq
 )
 #> # A tibble: 1 × 13
@@ -334,11 +342,11 @@ contingency_table(
 
 set.seed(123)
 contingency_table(
-  data   = as.data.frame(HairEyeColor),
-  x      = Eye,
+  data = as.data.frame(HairEyeColor),
+  x = Eye,
   counts = Freq,
-  ratio  = c(0.2, 0.2, 0.3, 0.3),
-  type   = "bayes"
+  ratio = c(0.2, 0.2, 0.3, 0.3),
+  type = "bayes"
 )
 #> # A tibble: 1 × 4
 #>      bf10 prior.scale method                                      expression

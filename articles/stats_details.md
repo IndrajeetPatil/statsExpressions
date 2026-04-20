@@ -48,6 +48,7 @@ Abbreviations used: CI = Confidence Interval
 | contingency table analysis | [`contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md) |
 | meta-analysis | [`meta_analysis()`](https://www.indrapatil.com/statsExpressions/reference/meta_analysis.md) |
 | pairwise comparisons | [`pairwise_comparisons()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md) |
+| pairwise contingency table | [`pairwise_contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_contingency_table.md) |
 
 **Summary of details available for analyses**
 

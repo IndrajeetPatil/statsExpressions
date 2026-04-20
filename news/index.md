@@ -2,6 +2,14 @@
 
 ## statsExpressions (development version)
 
+- New
+  [`pairwise_contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_contingency_table.md)
+  function for pairwise Fisher’s exact tests as post hoc follow-ups for
+  chi-squared contingency table analyses. Includes Cramer’s *V* effect
+  sizes with confidence intervals and *p*-value adjustment for multiple
+  comparisons
+  ([\#352](https://github.com/IndrajeetPatil/statsExpressions/issues/352)).
+
 - Added `exact` parameter to allow users to specify whether an exact
   *p*-value should be computed for non-parametric tests
   ([\#249](https://github.com/IndrajeetPatil/statsExpressions/issues/249)).
