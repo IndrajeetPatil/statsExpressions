@@ -522,85 +522,127 @@ oneway_anova(
 
 ``` r
 
-if (identical(Sys.getenv("NOT_CRAN"), "true")) {
-  #### -------------------- association test ------------------------ ####
+#### -------------------- association test ------------------------ ####
 
-  # ------------------------ frequentist ---------------------------------
+# ------------------------ frequentist ---------------------------------
 
-  # unpaired
+# unpaired
 
-  set.seed(123)
-  contingency_table(
-    data   = mtcars,
-    x      = am,
-    y      = vs,
-    paired = FALSE
-  )
+set.seed(123)
+contingency_table(
+  data   = mtcars,
+  x      = am,
+  y      = vs,
+  paired = FALSE
+)
+#> # A tibble: 1 × 13
+#>   statistic    df p.value method                     effectsize        estimate
+#>       <dbl> <int>   <dbl> <chr>                      <chr>                <dbl>
+#> 1     0.907     1   0.341 Pearson's Chi-squared test Cramer's V (adj.)        0
+#>   conf.level conf.low conf.high conf.method conf.distribution n.obs expression
+#>        <dbl>    <dbl>     <dbl> <chr>       <chr>             <int> <list>    
+#> 1       0.95        0     0.490 ncp         chisq                32 <language>
 
-  # paired
+# paired
 
-  paired_data <- tibble(
-    response_before = structure(c(1L, 2L, 1L, 2L), levels = c("no", "yes"), class = "factor"),
-    response_after = structure(c(1L, 1L, 2L, 2L), levels = c("no", "yes"), class = "factor"),
-    Freq = c(65L, 25L, 5L, 5L)
-  )
+paired_data <- tibble(
+  response_before = structure(c(1L, 2L, 1L, 2L), levels = c("no", "yes"), class = "factor"),
+  response_after = structure(c(1L, 1L, 2L, 2L), levels = c("no", "yes"), class = "factor"),
+  Freq = c(65L, 25L, 5L, 5L)
+)
 
-  set.seed(123)
-  contingency_table(
-    data   = paired_data,
-    x      = response_before,
-    y      = response_after,
-    paired = TRUE,
-    counts = Freq
-  )
+set.seed(123)
+contingency_table(
+  data   = paired_data,
+  x      = response_before,
+  y      = response_after,
+  paired = TRUE,
+  counts = Freq
+)
+#> # A tibble: 1 × 12
+#>   statistic    df  p.value method                     effectsize estimate
+#>       <dbl> <dbl>    <dbl> <chr>                      <chr>         <dbl>
+#> 1      13.3     1 0.000261 McNemar's Chi-squared test Cohen's g     0.333
+#>   conf.level conf.low conf.high conf.method n.obs expression
+#>        <dbl>    <dbl>     <dbl> <chr>       <int> <list>    
+#> 1       0.95    0.164     0.427 binomial      100 <language>
 
-  # ------------------------ Bayesian -------------------------------------
+# ------------------------ Bayesian -------------------------------------
 
-  # unpaired
+# unpaired
 
-  set.seed(123)
-  contingency_table(
-    data = mtcars,
-    x = am,
-    y = vs,
-    paired = FALSE,
-    type = "bayes"
-  )
+set.seed(123)
+contingency_table(
+  data = mtcars,
+  x = am,
+  y = vs,
+  paired = FALSE,
+  type = "bayes"
+)
+#> # A tibble: 1 × 15
+#>   term  conf.level effectsize estimate conf.low conf.high
+#>   <chr>      <dbl> <chr>         <dbl>    <dbl>     <dbl>
+#> 1 Ratio       0.95 Cramers_v         0        0     0.421
+#>   prior.distribution      prior.location prior.scale  bf10
+#>   <chr>                            <dbl>       <dbl> <dbl>
+#> 1 independent multinomial              0           1 0.643
+#>   method                              conf.method log_e_bf10 n.obs expression
+#>   <chr>                               <chr>            <dbl> <int> <list>    
+#> 1 Bayesian contingency table analysis ETI             -0.442    32 <language>
 
-  # paired
+# paired
 
-  set.seed(123)
-  contingency_table(
-    data = paired_data,
-    x = response_before,
-    y = response_after,
-    paired = TRUE,
-    counts = Freq,
-    type = "bayes"
-  )
+set.seed(123)
+contingency_table(
+  data = paired_data,
+  x = response_before,
+  y = response_after,
+  paired = TRUE,
+  counts = Freq,
+  type = "bayes"
+)
+#> # A tibble: 1 × 15
+#>   term  conf.level effectsize estimate conf.low conf.high
+#>   <chr>      <dbl> <chr>         <dbl>    <dbl>     <dbl>
+#> 1 Ratio       0.95 Cramers_v     0.111        0     0.340
+#>   prior.distribution      prior.location prior.scale  bf10
+#>   <chr>                            <dbl>       <dbl> <dbl>
+#> 1 independent multinomial              0           1 0.461
+#>   method                              conf.method log_e_bf10 n.obs expression
+#>   <chr>                               <chr>            <dbl> <int> <list>    
+#> 1 Bayesian contingency table analysis ETI             -0.775   100 <language>
 
-  #### -------------------- goodness-of-fit test -------------------- ####
+#### -------------------- goodness-of-fit test -------------------- ####
 
-  # ------------------------ frequentist ---------------------------------
+# ------------------------ frequentist ---------------------------------
 
-  set.seed(123)
-  contingency_table(
-    data   = as.data.frame(HairEyeColor),
-    x      = Eye,
-    counts = Freq
-  )
+set.seed(123)
+contingency_table(
+  data   = as.data.frame(HairEyeColor),
+  x      = Eye,
+  counts = Freq
+)
+#> # A tibble: 1 × 13
+#>   statistic    df  p.value method                                   effectsize 
+#>       <dbl> <dbl>    <dbl> <chr>                                    <chr>      
+#> 1      133.     3 9.65e-29 Chi-squared test for given probabilities Pearson's C
+#>   estimate conf.level conf.low conf.high conf.method conf.distribution n.obs
+#>      <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>             <int>
+#> 1    0.429       0.95    0.364     0.483 ncp         chisq               592
+#>   expression
+#>   <list>    
+#> 1 <language>
 
-  # ------------------------ Bayesian -------------------------------------
+# ------------------------ Bayesian -------------------------------------
 
-  set.seed(123)
-  contingency_table(
-    data   = as.data.frame(HairEyeColor),
-    x      = Eye,
-    counts = Freq,
-    ratio  = c(0.2, 0.2, 0.3, 0.3),
-    type   = "bayes"
-  )
-}
+set.seed(123)
+contingency_table(
+  data   = as.data.frame(HairEyeColor),
+  x      = Eye,
+  counts = Freq,
+  ratio  = c(0.2, 0.2, 0.3, 0.3),
+  type   = "bayes"
+)
 #> # A tibble: 1 × 4
 #>      bf10 prior.scale method                                      expression
 #>     <dbl>       <dbl> <chr>                                       <list>    
@@ -702,10 +744,10 @@ meta_analysis(df, type = "robust")
 #> # A tibble: 1 × 14
 #>   term    effectsize                     estimate std.error conf.low conf.high
 #>   <chr>   <chr>                             <dbl>     <dbl>    <dbl>     <dbl>
-#> 1 Overall meta-analytic summary estimate   -0.746     0.234    -1.26    -0.342
+#> 1 Overall meta-analytic summary estimate   -0.746     0.234    -1.26    -0.343
 #>   statistic  p.value weight conf.level method                               
 #>       <dbl>    <dbl>  <dbl>      <dbl> <chr>                                
-#> 1     -3.19 0.000501     NA       0.95 Robust meta-analysis using 'metaplus'
+#> 1     -3.20 0.000501     NA       0.95 Robust meta-analysis using 'metaplus'
 #>   conf.method n.obs expression
 #>   <chr>       <int> <list>    
 #> 1 Wald           16 <language>
