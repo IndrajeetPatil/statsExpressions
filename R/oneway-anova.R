@@ -199,10 +199,12 @@ oneway_anova <- function(
       mod <- stats::oneway.test(new_formula(y, x), data, var.equal = var.equal)
     }
 
+    effect_df <- exec(.f.es, model = mod, ci = conf.level, verbose = FALSE) %>%
+      tidy_model_effectsize()
+
     stats_df <- bind_cols(
       tidy_model_parameters(mod),
-      exec(.f.es, model = mod, ci = conf.level, verbose = FALSE) %>%
-        tidy_model_effectsize()
+      effect_df
     )
   }
 
@@ -216,21 +218,13 @@ oneway_anova <- function(
       c(.f, .f.es) %<-% c(stats::friedman.test, effectsize::kendalls_w)
       .f.args <- list(
         formula = new_formula(
-          {
-            {
-              enexpr(y)
-            }
-          },
+          enexpr(y),
           expr(!!enexpr(x) | .rowid)
         )
       )
       .f.es.args <- list(
         x = new_formula(
-          {
-            {
-              enexpr(y)
-            }
-          },
+          enexpr(y),
           expr(!!enexpr(x) | .rowid)
         )
       )
