@@ -47,9 +47,9 @@ utils::globalVariables(c(
   # <long_to_wide_converter>
   "nested_data",
   # <add_expression_col>
-  # <pairwise_comparisons>
   # <pairwise_contingency_table>
   "p.value",
+  # <pairwise_comparisons>
   # <pairwise_contingency_table>
   "p.value.adj",
   # <tidy_model_parameters>

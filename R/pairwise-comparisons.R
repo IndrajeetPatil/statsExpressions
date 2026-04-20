@@ -284,23 +284,31 @@ pairwise_comparisons <- function(
 
   if (type != "bayes") {
     df_pair %<>%
-      mutate(
-        p.value = stats::p.adjust(p = p.value, method = p.adjust.method),
-        p.adjust.method = p_adjust_text(p.adjust.method),
-        test = test,
-        expression = case_when(
-          p.adjust.method == "None" ~ glue(
-            "list(italic(p)[unadj.]=='{format_value(p.value, digits)}')"
-          ),
-          .default = glue(
-            "list(italic(p)['{p.adjust.method}'-adj.]=='{format_value(p.value, digits)}')"
-          )
-        )
-      )
+      .pairwise_p_adjust_expr(p.adjust.method, digits, test) %>%
+      mutate(p.value = p.value.adj) %>%
+      select(-p.value.adj)
   }
 
   select(df_pair, everything(), -matches("p.adjustment|^method$")) %>%
     .glue_to_expression()
+}
+
+#' @noRd
+.pairwise_p_adjust_expr <- function(data, p.adjust.method, digits, test) {
+  data %>%
+    mutate(
+      p.value.adj = stats::p.adjust(p = p.value, method = p.adjust.method),
+      p.adjust.method = p_adjust_text(p.adjust.method),
+      test = test,
+      expression = case_when(
+        p.adjust.method == "None" ~ glue(
+          "list(italic(p)[unadj.]=='{format_value(p.value.adj, digits)}')"
+        ),
+        .default = glue(
+          "list(italic(p)['{p.adjust.method}'-adj.]=='{format_value(p.value.adj, digits)}')"
+        )
+      )
+    )
 }
 
 #' @title *p*-value adjustment method text

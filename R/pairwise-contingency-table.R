@@ -88,19 +88,7 @@ pairwise_contingency_table <- function(
 
   df_pair %<>%
     arrange(group1, group2) %>%
-    mutate(
-      p.value.adj = stats::p.adjust(p = p.value, method = p.adjust.method),
-      p.adjust.method = p_adjust_text(p.adjust.method),
-      test = "Fisher's exact test",
-      expression = case_when(
-        p.adjust.method == "None" ~ glue(
-          "list(italic(p)[unadj.]=='{format_value(p.value.adj, digits)}')"
-        ),
-        .default = glue(
-          "list(italic(p)['{p.adjust.method}'-adj.]=='{format_value(p.value.adj, digits)}')"
-        )
-      )
-    )
+    .pairwise_p_adjust_expr(p.adjust.method, digits, "Fisher's exact test")
 
   select(
     df_pair,

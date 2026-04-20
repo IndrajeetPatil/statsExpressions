@@ -90,15 +90,16 @@ A BibTeX entry for LaTeX users is
 
 **Summary of available analyses**
 
-| Test                       | Function                 |
-|:---------------------------|:-------------------------|
-| one-sample *t*-test        | `one_sample_test()`      |
-| two-sample *t*-test        | `two_sample_test()`      |
-| one-way ANOVA              | `oneway_anova()`         |
-| correlation analysis       | `corr_test()`            |
-| contingency table analysis | `contingency_table()`    |
-| meta-analysis              | `meta_analysis()`        |
-| pairwise comparisons       | `pairwise_comparisons()` |
+| Test                       | Function                       |
+|:---------------------------|:-------------------------------|
+| one-sample *t*-test        | `one_sample_test()`            |
+| two-sample *t*-test        | `two_sample_test()`            |
+| one-way ANOVA              | `oneway_anova()`               |
+| correlation analysis       | `corr_test()`                  |
+| contingency table analysis | `contingency_table()`          |
+| meta-analysis              | `meta_analysis()`              |
+| pairwise comparisons       | `pairwise_comparisons()`       |
+| pairwise contingency table | `pairwise_contingency_table()` |
 
 **Summary of details available for analyses**
 
@@ -671,6 +672,20 @@ console.
 |:---|:---|:---|:---|
 | Parametric/Non-parametric | Pearson’s *C* | Yes | `effectsize::pearsons_c()` |
 | Bayesian | No | No | No |
+
+## `pairwise_contingency_table`
+
+**Hypothesis testing**
+
+| Test                | *p*-value adjustment? | Function used          |
+|:--------------------|:----------------------|:-----------------------|
+| Fisher’s exact test | Yes                   | `stats::fisher.test()` |
+
+**Effect size estimation**
+
+| Effect size  | CI available? | Function used             |
+|:-------------|:--------------|:--------------------------|
+| Cramer’s *V* | Yes           | `effectsize::cramers_v()` |
 
 ## `meta_analysis`
 
