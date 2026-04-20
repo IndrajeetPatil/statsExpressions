@@ -162,13 +162,14 @@ pairwise_comparisons <- function(
   type <- extract_stats_type(type)
   c(x, y) %<-% c(ensym(x), ensym(y))
 
-  data %<>% long_to_wide_converter(
-    x          = {{ x }},
-    y          = {{ y }},
-    subject.id = {{ subject.id }},
-    paired     = paired,
-    spread     = FALSE
-  )
+  data %<>%
+    long_to_wide_converter(
+      x = {{ x }},
+      y = {{ y }},
+      subject.id = {{ subject.id }},
+      paired = paired,
+      spread = FALSE
+    )
 
   # a few functions expect these as vectors
   x_vec <- pull(data, {{ x }})
@@ -180,8 +181,12 @@ pairwise_comparisons <- function(
 
   if (type %in% c("parametric", "bayes")) {
     # styler: off
-    if (var.equal || paired)    c(.f, test) %<-% c(stats::pairwise.t.test, "Student's t")
-    if (!(var.equal || paired)) c(.f, test) %<-% c(PMCMRplus::gamesHowellTest, "Games-Howell")
+    if (var.equal || paired) {
+      c(.f, test) %<-% c(stats::pairwise.t.test, "Student's t")
+    }
+    if (!(var.equal || paired)) {
+      c(.f, test) %<-% c(PMCMRplus::gamesHowellTest, "Games-Howell")
+    }
     # styler: on
   }
 
@@ -189,8 +194,12 @@ pairwise_comparisons <- function(
 
   if (type == "nonparametric") {
     # styler: off
-    if (!paired) c(.f, test) %<-% c(PMCMRplus::kwAllPairsDunnTest, "Dunn")
-    if (paired)  c(.f, test) %<-% c(PMCMRplus::durbinAllPairsTest, "Durbin-Conover")
+    if (!paired) {
+      c(.f, test) %<-% c(PMCMRplus::kwAllPairsDunnTest, "Dunn")
+    }
+    if (paired) {
+      c(.f, test) %<-% c(PMCMRplus::durbinAllPairsTest, "Durbin-Conover")
+    }
     # styler: on
 
     # `exec` fails otherwise for `pairwise.t.test` because `y` is passed to `t.test`
@@ -201,8 +210,8 @@ pairwise_comparisons <- function(
     df_pair <- suppressWarnings(exec(
       .f,
       # Dunn, Games-Howell, Student's t-test
-      x      = y_vec,
-      g      = x_vec,
+      x = y_vec,
+      g = x_vec,
       # Durbin-Conover test
       groups = x_vec,
       blocks = g_vec,
@@ -224,10 +233,15 @@ pairwise_comparisons <- function(
 
     if (paired) {
       c(.ns, .fn) %<-% c("WRS2", "rmmcp")
-      .f.args <- list(y = quote(y_vec), groups = quote(x_vec), blocks = quote(g_vec))
+      .f.args <- list(
+        y = quote(y_vec),
+        groups = quote(x_vec),
+        blocks = quote(g_vec)
+      )
     }
 
-    df_pair <- eval(call2(.ns = .ns, .fn = .fn, tr = tr, !!!.f.args)) %>% tidy_model_parameters()
+    df_pair <- eval(call2(.ns = .ns, .fn = .fn, tr = tr, !!!.f.args)) %>%
+      tidy_model_parameters()
     test <- "Yuen's trimmed means"
   }
 
@@ -242,17 +256,19 @@ pairwise_comparisons <- function(
         .f = function(a, b) droplevels(filter(data, {{ x }} %in% c(a, b)))
       ),
       .f = ~ two_sample_test(
-        data     = .x,
-        x        = {{ x }},
-        y        = {{ y }},
-        paired   = paired,
+        data = .x,
+        x = {{ x }},
+        y = {{ y }},
+        paired = paired,
         bf.prior = bf.prior,
-        type     = "bayes"
+        type = "bayes"
       )
     ) %>%
       filter(term == "Difference") %>%
       mutate(
-        expression = glue("list(log[e]*(BF['01'])=='{format_value(-log(bf10), digits)}')"),
+        expression = glue(
+          "list(log[e]*(BF['01'])=='{format_value(-log(bf10), digits)}')"
+        ),
         test = "Student's t"
       )
 
@@ -273,8 +289,12 @@ pairwise_comparisons <- function(
         p.adjust.method = p_adjust_text(p.adjust.method),
         test = test,
         expression = case_when(
-          p.adjust.method == "None" ~ glue("list(italic(p)[unadj.]=='{format_value(p.value, digits)}')"),
-          .default = glue("list(italic(p)['{p.adjust.method}'-adj.]=='{format_value(p.value, digits)}')")
+          p.adjust.method == "None" ~ glue(
+            "list(italic(p)[unadj.]=='{format_value(p.value, digits)}')"
+          ),
+          .default = glue(
+            "list(italic(p)['{p.adjust.method}'-adj.]=='{format_value(p.value, digits)}')"
+          )
         )
       )
   }

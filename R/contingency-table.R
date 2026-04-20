@@ -78,7 +78,9 @@ contingency_table <- function(
     tidyr::drop_na()
 
   # untable the data frame based on the counts for each observation (if present)
-  if (".counts" %in% names(data)) data %<>% tidyr::uncount(weights = .counts)
+  if (".counts" %in% names(data)) {
+    data %<>% tidyr::uncount(weights = .counts)
+  }
 
   xtab <- table(data)
   ratio <- ratio %||% rep(1 / length(xtab), length(xtab))
@@ -86,8 +88,12 @@ contingency_table <- function(
   # non-Bayesian ---------------------------------------
 
   if (type != "bayes" && test == "2way") {
-    if (paired) c(.f, .f.es) %<-% c(stats::mcnemar.test, effectsize::cohens_g)
-    if (!paired) c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::cramers_v)
+    if (paired) {
+      c(.f, .f.es) %<-% c(stats::mcnemar.test, effectsize::cohens_g)
+    }
+    if (!paired) {
+      c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::cramers_v)
+    }
     .f.args <- list(x = xtab, correct = FALSE)
   }
 
@@ -99,7 +105,12 @@ contingency_table <- function(
   if (type != "bayes") {
     stats_df <- bind_cols(
       tidy_model_parameters(exec(.f, !!!.f.args)),
-      tidy_model_effectsize(exec(.f.es, !!!.f.args, ci = conf.level, alternative = alternative))
+      tidy_model_effectsize(exec(
+        .f.es,
+        !!!.f.args,
+        ci = conf.level,
+        alternative = alternative
+      ))
     )
   }
 
@@ -108,11 +119,15 @@ contingency_table <- function(
   if (type == "bayes" && test == "2way") {
     stats_df <- BayesFactor::contingencyTableBF(
       xtab,
-      sampleType         = sampling.plan,
-      fixedMargin        = fixed.margin,
+      sampleType = sampling.plan,
+      fixedMargin = fixed.margin,
       priorConcentration = prior.concentration
     ) %>%
-      tidy_model_parameters(ci = conf.level, es_type = "cramers_v", alternative = alternative)
+      tidy_model_parameters(
+        ci = conf.level,
+        es_type = "cramers_v",
+        alternative = alternative
+      )
   }
 
   if (type == "bayes" && test == "1way") {
@@ -132,18 +147,28 @@ contingency_table <- function(
   # nocov end
 
   p1s <- rdirichlet(n = 100000L, alpha = prior.concentration * ratio)
-  pr_h1 <- map_dbl(1:100000L, ~ stats::dmultinom(as.matrix(xtab), prob = p1s[.x, ], log = TRUE))
+  pr_h1 <- map_dbl(
+    1:100000L,
+    ~ stats::dmultinom(as.matrix(xtab), prob = p1s[.x, ], log = TRUE)
+  )
 
   # BF = (log) prob of data under alternative - (log) prob of data under null
   # computing Bayes Factor and formatting the results
   tibble(
-    bf10        = exp(BayesFactor::logMeanExpLogs(pr_h1) - stats::dmultinom(as.matrix(xtab), NULL, ratio, TRUE)),
+    bf10 = exp(
+      BayesFactor::logMeanExpLogs(pr_h1) -
+        stats::dmultinom(as.matrix(xtab), NULL, ratio, TRUE)
+    ),
     prior.scale = prior.concentration,
-    method      = "Bayesian one-way contingency table analysis"
+    method = "Bayesian one-way contingency table analysis"
   ) %>%
-    mutate(expression = glue("list(
+    mutate(
+      expression = glue(
+        "list(
             log[e]*(BF['01'])=='{format_value(-log(bf10), digits)}',
-            {prior_switch(method)}=='{format_value(prior.scale, digits)}')")) %>%
+            {prior_switch(method)}=='{format_value(prior.scale, digits)}')"
+      )
+    ) %>%
     .glue_to_expression()
 }
 

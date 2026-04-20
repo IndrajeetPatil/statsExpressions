@@ -44,12 +44,12 @@ corr_test <- function(
   type <- extract_stats_type(type)
 
   stats_df <- correlation::correlation(
-    data           = select(ungroup(data), {{ x }}, {{ y }}) %>% tidyr::drop_na(),
-    method         = ifelse(type == "nonparametric", "spearman", "pearson"),
-    ci             = conf.level,
-    bayesian       = type == "bayes",
+    data = select(ungroup(data), {{ x }}, {{ y }}) %>% tidyr::drop_na(),
+    method = ifelse(type == "nonparametric", "spearman", "pearson"),
+    ci = conf.level,
+    bayesian = type == "bayes",
     bayesian_prior = bf.prior,
-    winsorize      = ifelse(type == "robust", tr, FALSE)
+    winsorize = ifelse(type == "robust", tr, FALSE)
   ) %>%
     standardize_names(style = "broom") %>%
     dplyr::mutate(conf.method = ifelse(type == "bayes", "HDI", "normal"))

@@ -76,7 +76,9 @@ long_to_wide_converter <- function(
   # if `subject.id` wasn't provided, create one for internal usage
   if (!".rowid" %in% names(data)) {
     # the row number needs to be assigned for each participant in paired data
-    if (paired) data %<>% group_by({{ x }})
+    if (paired) {
+      data %<>% group_by({{ x }})
+    }
 
     # unique id for each participant
     data %<>% mutate(.rowid = row_number())
@@ -90,7 +92,9 @@ long_to_wide_converter <- function(
     tidyr::unnest(cols = nested_data)
 
   # convert to wide?
-  if (spread) data %<>% tidyr::pivot_wider(names_from = {{ x }}, values_from = {{ y }})
+  if (spread) {
+    data %<>% tidyr::pivot_wider(names_from = {{ x }}, values_from = {{ y }})
+  }
 
   as_tibble(relocate(data, .rowid) %>% arrange(.rowid))
 }

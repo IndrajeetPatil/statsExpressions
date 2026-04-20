@@ -8,16 +8,44 @@ set.seed(123)
 
 # ----------------------- parametric ---------------------------------------
 
-two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type = "parametric")
+two_sample_test(
+  df,
+  condition,
+  desire,
+  subject.id = subject,
+  paired = TRUE,
+  type = "parametric"
+)
 
 # ----------------------- non-parametric -----------------------------------
 
-two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type = "nonparametric")
+two_sample_test(
+  df,
+  condition,
+  desire,
+  subject.id = subject,
+  paired = TRUE,
+  type = "nonparametric"
+)
 
 # ----------------------- robust --------------------------------------------
 
-two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type = "robust")
+two_sample_test(
+  df,
+  condition,
+  desire,
+  subject.id = subject,
+  paired = TRUE,
+  type = "robust"
+)
 
 # ----------------------- Bayesian ---------------------------------------
 
-two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type = "bayes")
+two_sample_test(
+  df,
+  condition,
+  desire,
+  subject.id = subject,
+  paired = TRUE,
+  type = "bayes"
+)
