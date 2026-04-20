@@ -1,31 +1,23 @@
 on:
-  push:
-    branches: [feature/air-formatting]
+  pull_request:
 
 name: format-once
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   format:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: feature/air-formatting
 
       - uses: posit-dev/setup-air@v1
         with:
           version: 0.9.0
 
-      - name: Format
-        run: air format .
+      - name: Check (merge commit default)
+        run: air format . --check || true
 
-      - name: Commit
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git diff --staged --quiet || git commit -m "style: apply air 0.9.0 Linux formatting [skip ci]"
-          git push
+      - name: Show git ref
+        run: git log --oneline -3 && echo "SHA=${{ github.sha }}"
