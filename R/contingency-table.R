@@ -49,6 +49,7 @@
 #'
 #' @autoglobal
 #'
+#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
 #' @example man/examples/examples-contingency-table.R
 #' @export
 contingency_table <- function(
