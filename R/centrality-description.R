@@ -44,10 +44,10 @@ centrality_description <- function(
   # styler: off
   centrality <- recode_values(
     extract_stats_type(type),
-    "parametric"    ~ "mean",
+    "parametric" ~ "mean",
     "nonparametric" ~ "median",
-    "robust"        ~ "trimmed",
-    "bayes"         ~ "MAP"
+    "robust" ~ "trimmed",
+    "bayes" ~ "MAP"
   )
   # styler: on
 
@@ -57,11 +57,11 @@ centrality_description <- function(
     group_modify(
       .f = ~ standardize_names(
         data = datawizard::describe_distribution(
-          x          = pull(., {{ y }}),
+          x = pull(., {{ y }}),
           centrality = centrality,
-          threshold  = tr,
-          verbose    = FALSE,
-          ci         = conf.level
+          threshold = tr,
+          verbose = FALSE,
+          ci = conf.level
         ),
         style = "broom"
       )
@@ -69,7 +69,9 @@ centrality_description <- function(
     rename_all(~ gsub(".mean|.median|.trimmed|.map", "", .x)) %>%
     ungroup() %>%
     mutate(
-      expression = glue("list(widehat(mu)[{centrality}]=='{format_value(estimate, digits)}')"),
+      expression = glue(
+        "list(widehat(mu)[{centrality}]=='{format_value(estimate, digits)}')"
+      ),
       n.expression = paste0({{ x }}, "\n(n = ", .prettyNum(n.obs), ")")
     ) %>%
     arrange({{ x }}) %>%

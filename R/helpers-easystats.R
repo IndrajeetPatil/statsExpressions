@@ -22,13 +22,24 @@ tidy_model_parameters <- function(model, ...) {
     tidyr::fill(matches("^prior|^bf"), .direction = "updown") %>%
     mutate(across(matches("bf10"), \(x) log(x), .names = "log_e_{.col}"))
 
-  if (!"estimate" %in% colnames(stats_df)) stats_df %<>% select(-matches("^conf"))
+  if (!"estimate" %in% colnames(stats_df)) {
+    stats_df %<>% select(-matches("^conf"))
+  }
 
   # Bayesian ANOVA designs -----------------------------------
 
-  if ("method" %in% names(stats_df) && stats_df$method[[1]] == "Bayes factors for linear models") {
+  if (
+    "method" %in%
+      names(stats_df) &&
+      stats_df$method[[1]] == "Bayes factors for linear models"
+  ) {
     # for within-subjects design, retain only conditional component
-    df_r2 <- performance::r2_bayes(model, average = TRUE, verbose = FALSE, ci = stats_df$conf.level[[1]]) %>%
+    df_r2 <- performance::r2_bayes(
+      model,
+      average = TRUE,
+      verbose = FALSE,
+      ci = stats_df$conf.level[[1]]
+    ) %>%
       as_tibble() %>%
       standardize_names(style = "broom") %>%
       rename(estimate = r.squared) %>%
@@ -63,8 +74,12 @@ tidy_model_parameters <- function(model, ...) {
 #' @noRd
 tidy_model_effectsize <- function(data, ...) {
   data %>%
-    mutate(effectsize = stats::na.omit(effectsize::get_effectsize_label(colnames(.)))) %>%
+    mutate(
+      effectsize = stats::na.omit(effectsize::get_effectsize_label(colnames(.)))
+    ) %>%
     standardize_names(style = "broom") %>%
     select(-contains("term")) %>%
-    bind_cols(rename_with(as_tibble(attr(data, "ci_method")), \(x) paste0("conf.", x)))
+    bind_cols(rename_with(as_tibble(attr(data, "ci_method")), \(x) {
+      paste0("conf.", x)
+    }))
 }

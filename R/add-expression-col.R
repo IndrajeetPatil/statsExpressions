@@ -91,65 +91,97 @@ add_expression_col <- function(
   digits.df.error = digits.df,
   ...
 ) {
-  if (!"n.obs" %in% colnames(data)) data %<>% mutate(n.obs = n)
-  if (!"effectsize" %in% colnames(data)) data %<>% mutate(effectsize = method)
+  if (!"n.obs" %in% colnames(data)) {
+    data %<>% mutate(n.obs = n)
+  }
+  if (!"effectsize" %in% colnames(data)) {
+    data %<>% mutate(effectsize = method)
+  }
   data %<>% rename_with(recode, bayes.factor = "bf10")
 
   bayesian <- any("bf10" == colnames(data))
   no.parameters <- sum("df.error" %in% names(data) + "df" %in% names(data))
 
   # special case for Bayesian contingency table analysis
-  if (bayesian && grepl("contingency", data$method[[1L]], fixed = TRUE)) data %<>% mutate(effectsize = "Cramers_v")
+  if (bayesian && grepl("contingency", data$method[[1L]], fixed = TRUE)) {
+    data %<>% mutate(effectsize = "Cramers_v")
+  }
 
   # dealing with exactly 0 p-values
-  if ("p.value" %in% colnames(data)) data %<>% mutate(p.value = if_else(p.value == 0, .Machine$double.xmin, p.value))
+  if ("p.value" %in% colnames(data)) {
+    data %<>%
+      mutate(p.value = if_else(p.value == 0, .Machine$double.xmin, p.value))
+  }
 
   df_expr <- data %>% # convert needed columns to character type
     .data_to_char(digits, digits.df, digits.df.error) %>%
     mutate(
-      statistic.text     = statistic.text %||% extract_statistic_text(tolower(method)),
-      es.text            = effsize.text %||% extract_estimate_type(tolower(effectsize)),
+      statistic.text = statistic.text %||%
+        extract_statistic_text(tolower(method)),
+      es.text = effsize.text %||% extract_estimate_type(tolower(effectsize)),
       prior.distribution = prior_switch(tolower(method)),
-      n.obs              = .prettyNum(n.obs)
+      n.obs = .prettyNum(n.obs)
     )
 
   # Bayesian analysis ------------------------------
 
   if (bayesian) {
-    df_expr %<>% mutate(expression = glue("list(
+    df_expr %<>%
+      mutate(
+        expression = glue(
+          "list(
             log[e]*(BF['01'])=='{format_value(-log(bf10), digits)}',
             {es.text}^'posterior'=='{estimate}',
             CI['{conf.level}']^{conf.method}~'['*'{conf.low}', '{conf.high}'*']',
-            {prior.distribution}=='{prior.scale}')"))
+            {prior.distribution}=='{prior.scale}')"
+        )
+      )
   }
 
   # 0 degrees of freedom --------------------
 
   if (!bayesian && no.parameters == 0L) {
-    df_expr %<>% mutate(expression = glue("list(
+    df_expr %<>%
+      mutate(
+        expression = glue(
+          "list(
             {statistic.text}=='{statistic}', italic(p)=='{p.value}',
             {es.text}=='{estimate}', CI['{conf.level}']~'['*'{conf.low}', '{conf.high}'*']',
-            {n.text}=='{n.obs}')"))
+            {n.text}=='{n.obs}')"
+        )
+      )
   }
 
   # 1 degree of freedom --------------------
 
   if (!bayesian && no.parameters == 1L) {
-    if ("df" %in% colnames(df_expr)) df_expr %<>% mutate(df.error = df) # for chi-squared statistic
+    if ("df" %in% colnames(df_expr)) {
+      df_expr %<>% mutate(df.error = df)
+    } # for chi-squared statistic
 
-    df_expr %<>% mutate(expression = glue("list(
+    df_expr %<>%
+      mutate(
+        expression = glue(
+          "list(
             {statistic.text}*'('*{df.error}*')'=='{statistic}', italic(p)=='{p.value}',
             {es.text}=='{estimate}', CI['{conf.level}']~'['*'{conf.low}', '{conf.high}'*']',
-            {n.text}=='{n.obs}')"))
+            {n.text}=='{n.obs}')"
+        )
+      )
   }
 
   # 2 degrees of freedom -----------------
 
   if (!bayesian && no.parameters == 2L) {
-    df_expr %<>% mutate(expression = glue("list(
+    df_expr %<>%
+      mutate(
+        expression = glue(
+          "list(
             {statistic.text}({df}, {df.error})=='{statistic}', italic(p)=='{p.value}',
             {es.text}=='{estimate}', CI['{conf.level}']~'['*'{conf.low}', '{conf.high}'*']',
-            {n.text}=='{n.obs}')"))
+            {n.text}=='{n.obs}')"
+        )
+      )
   }
 
   # convert `expression` to `language`
@@ -166,12 +198,22 @@ add_expression_col <- function(
 
 #' Helper function to convert certain numeric columns to character type
 #' @noRd
-.data_to_char <- function(data, digits = 2L, digits.df = 0L, digits.df.error = 0L) {
+.data_to_char <- function(
+  data,
+  digits = 2L,
+  digits.df = 0L,
+  digits.df.error = 0L
+) {
   data %>%
     mutate(
-      across(.cols = matches("^est|^sta|p.value|.scale$|.low$|.high$|^log"), .fns = \(x) .to_char(x, digits)),
+      across(
+        .cols = matches("^est|^sta|p.value|.scale$|.low$|.high$|^log"),
+        .fns = \(x) .to_char(x, digits)
+      ),
       across(.cols = matches("^df$"), .fns = \(x) .to_char(x, digits.df)),
-      across(.cols = matches("^df.error$"), .fns = \(x) .to_char(x, digits.df.error)),
+      across(.cols = matches("^df.error$"), .fns = \(x) {
+        .to_char(x, digits.df.error)
+      }),
       across(.cols = matches("^conf.level$"), .fns = \(x) paste0(x * 100L, "%"))
     )
 }
@@ -179,9 +221,13 @@ add_expression_col <- function(
 #' @note `decimal.mark` is pinned to `"."` to avoid a clash with `big.mark`
 #'   when users set `options(OutDec = ",")`.
 #' @noRd
-.prettyNum <- function(x) prettyNum(x, big.mark = ",", decimal.mark = ".", scientific = FALSE)
+.prettyNum <- function(x) {
+  prettyNum(x, big.mark = ",", decimal.mark = ".", scientific = FALSE)
+}
 
 #' @note `decimal_point` is pinned to `"."` because plotmath parses `,` as a
 #'   list separator, so expressions must use `.` regardless of `options(OutDec)`.
 #' @noRd
-.to_char <- function(x, digits = 2L) format_value(x, digits, missing = "NA", decimal_point = ".")
+.to_char <- function(x, digits = 2L) {
+  format_value(x, digits, missing = "NA", decimal_point = ".")
+}

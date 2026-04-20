@@ -10,7 +10,7 @@
 *.Rd       text
 *.Rdx      binary
 *.Rmd	     text
-*.R        text eol=crlf
+*.R        text eol=lf
 *.Rproj    text
 *.[Rr]md   linguist-detectable
 

@@ -61,26 +61,36 @@ one_sample_test <- function(
   if (type == "parametric") {
     .f <- stats::t.test
     # styler: off
-    if (effsize.type %in% c("unbiased", "g")) .f.es <- effectsize::hedges_g
-    if (effsize.type %in% c("biased", "d"))   .f.es <- effectsize::cohens_d
+    if (effsize.type %in% c("unbiased", "g")) {
+      .f.es <- effectsize::hedges_g
+    }
+    if (effsize.type %in% c("biased", "d")) .f.es <- effectsize::cohens_d
     # styler: on
   }
 
   # non-parametric ---------------------------------------
 
-  if (type == "nonparametric") c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
+  if (type == "nonparametric") {
+    c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
+  }
 
   if (type %in% c("parametric", "nonparametric")) {
-    stats_df <- exec(.f, x = x_vec, mu = test.value, alternative = alternative, exact = exact) %>%
+    stats_df <- exec(
+      .f,
+      x = x_vec,
+      mu = test.value,
+      alternative = alternative,
+      exact = exact
+    ) %>%
       tidy_model_parameters() %>%
       select(-matches("^est|^conf|^diff|^term|^ci"))
 
     ez_df <- exec(
       .f.es,
-      x       = x_vec,
-      mu      = test.value,
+      x = x_vec,
+      mu = test.value,
       verbose = FALSE,
-      ci      = conf.level
+      ci = conf.level
     ) %>%
       tidy_model_effectsize()
 
@@ -90,14 +100,24 @@ one_sample_test <- function(
   # robust ---------------------------------------
 
   if (type == "robust") {
-    stats_df <- exec(WRS2::trimcibt, x = x_vec, nv = test.value, tr = tr, alpha = 1.0 - conf.level) %>%
+    stats_df <- exec(
+      WRS2::trimcibt,
+      x = x_vec,
+      nv = test.value,
+      tr = tr,
+      alpha = 1.0 - conf.level
+    ) %>%
       tidy_model_parameters()
   }
 
   # Bayesian ---------------------------------------
 
   if (type == "bayes") {
-    stats_df <- BayesFactor::ttestBF(x = x_vec, rscale = bf.prior, mu = test.value) %>%
+    stats_df <- BayesFactor::ttestBF(
+      x = x_vec,
+      rscale = bf.prior,
+      mu = test.value
+    ) %>%
       tidy_model_parameters(ci = conf.level)
   }
 
