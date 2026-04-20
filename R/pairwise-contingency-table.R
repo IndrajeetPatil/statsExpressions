@@ -59,11 +59,11 @@ pairwise_contingency_table <- function(
   # pairwise comparisons -------------------------------------------
 
   x_levels <- levels(pull(data, {{ x }}))
-  pairs <- utils::combn(x_levels, 2L, simplify = FALSE)
+  pair_list <- utils::combn(x_levels, 2L, simplify = FALSE)
 
-  df_pair <- map_dfr(pairs, function(pair) {
+  df_pair <- map_dfr(pair_list, function(pair) {
     data_sub <- filter(data, {{ x }} %in% pair) %>%
-      mutate({{ x }} := droplevels({{ x }}))
+      mutate(across(where(is.factor), droplevels))
 
     xtab <- table(data_sub)
 
@@ -75,7 +75,11 @@ pairwise_contingency_table <- function(
     )
 
     bind_cols(
-      tibble(group1 = pair[[1L]], group2 = pair[[2L]], p.value = fisher_result$p.value),
+      tibble(
+        group1 = pair[[1L]],
+        group2 = pair[[2L]],
+        p.value = fisher_result$p.value
+      ),
       tidy_model_effectsize(es_result)
     )
   })
@@ -98,6 +102,14 @@ pairwise_contingency_table <- function(
       )
     )
 
-  select(df_pair, group1, group2, p.value, p.value.adj, everything(), -matches("^method$")) %>%
+  select(
+    df_pair,
+    group1,
+    group2,
+    p.value,
+    p.value.adj,
+    everything(),
+    -matches("^method$")
+  ) %>%
     .glue_to_expression()
 }
