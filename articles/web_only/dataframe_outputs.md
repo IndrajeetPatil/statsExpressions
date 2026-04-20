@@ -109,7 +109,14 @@ set.seed(123)
 
 # ----------------------- parametric ---------------------------------------
 
-two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type = "parametric")
+two_sample_test(
+  df,
+  condition,
+  desire,
+  subject.id = subject,
+  paired = TRUE,
+  type = "parametric"
+)
 #> # A tibble: 1 × 16
 #>   term   group     statistic df.error       p.value method        alternative
 #>   <chr>  <chr>         <dbl>    <dbl>         <dbl> <chr>         <chr>      
@@ -123,7 +130,14 @@ two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type
 
 # ----------------------- non-parametric -----------------------------------
 
-two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type = "nonparametric")
+two_sample_test(
+  df,
+  condition,
+  desire,
+  subject.id = subject,
+  paired = TRUE,
+  type = "nonparametric"
+)
 #> # A tibble: 1 × 14
 #>   parameter1 parameter2 statistic      p.value method                   
 #>   <chr>      <chr>          <dbl>        <dbl> <chr>                    
@@ -137,7 +151,14 @@ two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type
 
 # ----------------------- robust --------------------------------------------
 
-two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type = "robust")
+two_sample_test(
+  df,
+  condition,
+  desire,
+  subject.id = subject,
+  paired = TRUE,
+  type = "robust"
+)
 #> # A tibble: 1 × 15
 #>   statistic df.error      p.value
 #>       <dbl>    <dbl>        <dbl>
@@ -154,7 +175,14 @@ two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type
 
 # ----------------------- Bayesian ---------------------------------------
 
-two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type = "bayes")
+two_sample_test(
+  df,
+  condition,
+  desire,
+  subject.id = subject,
+  paired = TRUE,
+  type = "bayes"
+)
 #> # A tibble: 1 × 16
 #>   term       effectsize      estimate conf.level conf.low conf.high    pd
 #>   <chr>      <chr>              <dbl>      <dbl>    <dbl>     <dbl> <dbl>
@@ -364,14 +392,14 @@ oneway_anova(
 #> 8 g_.rowid       1     cauchy                          0       1     fixed 
 #>          bf10 method                          log_e_bf10 effectsize        
 #>         <dbl> <chr>                                <dbl> <chr>             
-#> 1 1372773377. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 2 1372773377. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 3 1372773377. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 4 1372773377. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 5 1372773377. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 6 1372773377. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 7 1372773377. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 8 1372773377. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 1 1372773375. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 2 1372773375. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 3 1372773375. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 4 1372773375. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 5 1372773375. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 6 1372773375. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 7 1372773375. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 8 1372773375. Bayes factors for linear models       21.0 Bayesian R-squared
 #>   estimate std.dev conf.level conf.low conf.high conf.method component   n.obs
 #>      <dbl>   <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>       <int>
 #> 1    0.529  0.0333       0.95    0.461     0.587 HDI         conditional    88
@@ -530,9 +558,9 @@ oneway_anova(
 
 set.seed(123)
 contingency_table(
-  data   = mtcars,
-  x      = am,
-  y      = vs,
+  data = mtcars,
+  x = am,
+  y = vs,
   paired = FALSE
 )
 #> # A tibble: 1 × 13
@@ -546,16 +574,24 @@ contingency_table(
 # paired
 
 paired_data <- tibble(
-  response_before = structure(c(1L, 2L, 1L, 2L), levels = c("no", "yes"), class = "factor"),
-  response_after = structure(c(1L, 1L, 2L, 2L), levels = c("no", "yes"), class = "factor"),
+  response_before = structure(
+    c(1L, 2L, 1L, 2L),
+    levels = c("no", "yes"),
+    class = "factor"
+  ),
+  response_after = structure(
+    c(1L, 1L, 2L, 2L),
+    levels = c("no", "yes"),
+    class = "factor"
+  ),
   Freq = c(65L, 25L, 5L, 5L)
 )
 
 set.seed(123)
 contingency_table(
-  data   = paired_data,
-  x      = response_before,
-  y      = response_after,
+  data = paired_data,
+  x = response_before,
+  y = response_after,
   paired = TRUE,
   counts = Freq
 )
@@ -618,8 +654,8 @@ contingency_table(
 
 set.seed(123)
 contingency_table(
-  data   = as.data.frame(HairEyeColor),
-  x      = Eye,
+  data = as.data.frame(HairEyeColor),
+  x = Eye,
   counts = Freq
 )
 #> # A tibble: 1 × 13
@@ -637,11 +673,11 @@ contingency_table(
 
 set.seed(123)
 contingency_table(
-  data   = as.data.frame(HairEyeColor),
-  x      = Eye,
+  data = as.data.frame(HairEyeColor),
+  x = Eye,
   counts = Freq,
-  ratio  = c(0.2, 0.2, 0.3, 0.3),
-  type   = "bayes"
+  ratio = c(0.2, 0.2, 0.3, 0.3),
+  type = "bayes"
 )
 #> # A tibble: 1 × 4
 #>      bf10 prior.scale method                                      expression
@@ -744,7 +780,7 @@ meta_analysis(df, type = "robust")
 #> # A tibble: 1 × 14
 #>   term    effectsize                     estimate std.error conf.low conf.high
 #>   <chr>   <chr>                             <dbl>     <dbl>    <dbl>     <dbl>
-#> 1 Overall meta-analytic summary estimate   -0.746     0.234    -1.26    -0.343
+#> 1 Overall meta-analytic summary estimate   -0.746     0.233    -1.26    -0.344
 #>   statistic  p.value weight conf.level method                               
 #>       <dbl>    <dbl>  <dbl>      <dbl> <chr>                                
 #> 1     -3.20 0.000501     NA       0.95 Robust meta-analysis using 'metaplus'
