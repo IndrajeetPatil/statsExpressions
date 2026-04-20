@@ -452,6 +452,11 @@ more about how one-way (between-subjects) ANOVA, you can run
 ```{r, child = "man/rmd-fragments/contingency_table.Rmd"}
 ```
 
+## `pairwise_contingency_table`
+
+```{r, child = "man/rmd-fragments/pairwise_contingency_table.Rmd"}
+```
+
 ## `meta_analysis`
 
 ```{r, child = "man/rmd-fragments/meta_analysis.Rmd"}

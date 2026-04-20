@@ -5,6 +5,7 @@ utils::globalVariables(c(
   # <tidy_model_effectsize>
   ".",
   # <contingency_table>
+  # <pairwise_contingency_table>
   ".counts",
   # <contingency_table>
   # <oneway_anova>
@@ -33,8 +34,10 @@ utils::globalVariables(c(
   # <centrality_description>
   "estimate",
   # <pairwise_comparisons>
+  # <pairwise_contingency_table>
   "group1",
   # <pairwise_comparisons>
+  # <pairwise_contingency_table>
   "group2",
   # <add_expression_col>
   "method",
@@ -45,7 +48,10 @@ utils::globalVariables(c(
   "nested_data",
   # <add_expression_col>
   # <pairwise_comparisons>
+  # <pairwise_contingency_table>
   "p.value",
+  # <pairwise_contingency_table>
+  "p.value.adj",
   # <tidy_model_parameters>
   "r.squared",
   # <pairwise_comparisons>
