@@ -9,6 +9,7 @@
 | contingency table analysis | `contingency_table()`    |
 | meta-analysis              | `meta_analysis()`        |
 | pairwise comparisons       | `pairwise_comparisons()` |
+| pairwise contingency table | `pairwise_contingency_table()` |
 
 **Summary of details available for analyses**
 

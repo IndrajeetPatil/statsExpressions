@@ -1,0 +1,11 @@
+**Hypothesis testing**
+
+| Test                | *p*-value adjustment? | Function used          |
+| :------------------ | :-------------------- | :--------------------- |
+| Fisher's exact test | Yes                   | `stats::fisher.test()` |
+
+**Effect size estimation**
+
+| Effect size  | CI available? | Function used             |
+| :----------- | :------------ | :------------------------ |
+| Cramer's *V* | Yes           | `effectsize::cramers_v()` |
