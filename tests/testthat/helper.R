@@ -1,4 +1,4 @@
-# nolint start: indentation_linter.
+# nolint start: indentation_linter, commas_linter.
 
 # styler: off
 
