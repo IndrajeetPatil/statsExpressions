@@ -120,12 +120,7 @@ add_expression_col <- function(
         extract_statistic_text(tolower(method)),
       es.text = effsize.text %||% extract_estimate_type(tolower(effectsize)),
       prior.distribution = prior_switch(tolower(method)),
-      n.obs = format_value(
-        n.obs,
-        digits = 0,
-        big_mark = ",",
-        decimal_point = "."
-      )
+      n.obs = .prettyNum(n.obs)
     )
 
   # Bayesian analysis ------------------------------
@@ -221,6 +216,13 @@ add_expression_col <- function(
       }),
       across(.cols = matches("^conf.level$"), .fns = \(x) paste0(x * 100L, "%"))
     )
+}
+
+#' @note `decimal.mark` is pinned to `"."` to avoid a clash with `big.mark`
+#'   when users set `options(OutDec = ",")`.
+#' @noRd
+.prettyNum <- function(x) {
+  format_value(x, digits = 0, big_mark = ",", decimal_point = ".")
 }
 
 #' @note `decimal_point` is pinned to `"."` because plotmath parses `,` as a
