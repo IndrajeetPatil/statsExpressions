@@ -222,7 +222,7 @@ add_expression_col <- function(
 #'   when users set `options(OutDec = ",")`.
 #' @noRd
 .prettyNum <- function(x) {
-  prettyNum(x, big.mark = ",", decimal.mark = ".", scientific = FALSE)
+  format_value(x, digits = 0, big_mark = ",", decimal_point = ".")
 }
 
 #' @note `decimal_point` is pinned to `"."` because plotmath parses `,` as a

@@ -60,12 +60,13 @@ one_sample_test <- function(
 
   if (type == "parametric") {
     .f <- stats::t.test
-    # styler: off
-    if (effsize.type %in% c("unbiased", "g")) {
-      .f.es <- effectsize::hedges_g
-    }
-    if (effsize.type %in% c("biased", "d")) .f.es <- effectsize::cohens_d
-    # styler: on
+    .f.es <- switch(
+      match.arg(effsize.type, c("g", "d", "unbiased", "biased")),
+      g = ,
+      unbiased = effectsize::hedges_g,
+      d = ,
+      biased = effectsize::cohens_d
+    )
   }
 
   # non-parametric ---------------------------------------

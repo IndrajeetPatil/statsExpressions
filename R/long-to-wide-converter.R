@@ -73,23 +73,16 @@ long_to_wide_converter <- function(
     mutate({{ x }} := droplevels(as.factor({{ x }}))) %>%
     arrange({{ x }})
 
-  # if `subject.id` wasn't provided, create one for internal usage
   if (!".rowid" %in% names(data)) {
-    # the row number needs to be assigned for each participant in paired data
     if (paired) {
       data %<>% group_by({{ x }})
     }
-
-    # unique id for each participant
     data %<>% mutate(.rowid = row_number())
   }
 
-  # NA removal
   data %<>%
     ungroup() %>%
-    nest_by(.rowid, .key = "nested_data") %>%
-    filter(!anyNA(nested_data)) %>%
-    tidyr::unnest(cols = nested_data)
+    filter(!anyNA(pick({{ x }}, {{ y }})), .by = .rowid)
 
   # convert to wide?
   if (spread) {

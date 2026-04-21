@@ -52,7 +52,7 @@ centrality_description <- function(
   # styler: on
 
   select(data, {{ x }}, {{ y }}) %>%
-    tidyr::drop_na() %>%
+    filter(!if_any(everything(), is.na)) %>%
     group_by({{ x }}) %>%
     group_modify(
       .f = ~ standardize_names(
