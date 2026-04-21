@@ -33,7 +33,7 @@ test_that(desc = "between-subjects", code = {
   expect_snapshot(df2[["expression"]])
 })
 
-# wthin-subjects ----------------------------------------------
+# within-subjects ----------------------------------------------
 
 test_that(desc = "within-subjects", code = {
   #  with NAs
