@@ -82,7 +82,7 @@ long_to_wide_converter <- function(
 
   data %<>%
     ungroup() %>%
-    filter(!anyNA(pick(everything())), .by = .rowid)
+    filter(!anyNA(pick({{ x }}, {{ y }})), .by = .rowid)
 
   # convert to wide?
   if (spread) {
