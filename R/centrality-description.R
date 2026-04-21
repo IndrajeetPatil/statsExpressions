@@ -52,7 +52,7 @@ centrality_description <- function(
   # styler: on
 
   select(data, {{ x }}, {{ y }}) %>%
-    tidyr::drop_na() %>%
+    filter(!if_any(everything(), is.na)) %>%
     group_by({{ x }}) %>%
     group_modify(
       .f = ~ standardize_names(
@@ -72,7 +72,12 @@ centrality_description <- function(
       expression = glue(
         "list(widehat(mu)[{centrality}]=='{format_value(estimate, digits)}')"
       ),
-      n.expression = paste0({{ x }}, "\n(n = ", .prettyNum(n.obs), ")")
+      n.expression = paste0(
+        {{ x }},
+        "\n(n = ",
+        format_value(n.obs, digits = 0, big_mark = ",", decimal_point = "."),
+        ")"
+      )
     ) %>%
     arrange({{ x }}) %>%
     select({{ x }}, !!as.character(ensym(y)) := estimate, everything()) %>%

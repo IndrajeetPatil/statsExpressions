@@ -176,14 +176,13 @@ oneway_anova <- function(
     c(digits.df, digits.df.error) %<-%
       c(ifelse(paired, digits, 0L), ifelse(!paired && var.equal, 0L, digits))
 
-    # styler: off
-    if (effsize.type %in% c("unbiased", "omega")) {
-      .f.es <- effectsize::omega_squared
-    }
-    if (effsize.type %in% c("biased", "eta")) {
-      .f.es <- effectsize::eta_squared
-    }
-    # styler: on
+    .f.es <- switch(
+      match.arg(effsize.type, c("omega", "eta", "unbiased", "biased")),
+      omega = ,
+      unbiased = effectsize::omega_squared,
+      eta = ,
+      biased = effectsize::eta_squared
+    )
 
     if (paired) {
       mod <- afex::aov_ez(

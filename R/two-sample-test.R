@@ -68,14 +68,15 @@ two_sample_test <- function(
   # parametric ---------------------------------------
 
   if (type == "parametric") {
-    # styler: off
     digits.df <- ifelse(paired || var.equal, 0L, digits)
     .f <- stats::t.test
-    if (effsize.type %in% c("unbiased", "g")) {
-      .f.es <- effectsize::hedges_g
-    }
-    if (effsize.type %in% c("biased", "d")) .f.es <- effectsize::cohens_d
-    # styler: on
+    .f.es <- switch(
+      match.arg(effsize.type, c("g", "d", "unbiased", "biased")),
+      g = ,
+      unbiased = effectsize::hedges_g,
+      d = ,
+      biased = effectsize::cohens_d
+    )
   }
 
   # non-parametric ------------------------------------
