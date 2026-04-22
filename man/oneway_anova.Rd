@@ -155,6 +155,11 @@ The table below provides summary about:
 
 \subsection{within-subjects}{
 
+\strong{Data requirement}: Repeated measures tests assume a \emph{complete} design with
+exactly \strong{one observation per subject per condition}. If your data has multiple
+trials per cell, aggregate first (e.g., take the mean). Verify with
+\code{table(data$subject, data$condition)} — every cell should equal \code{1}.
+
 \strong{Hypothesis testing}\tabular{llll}{
    Type \tab No. of groups \tab Test \tab Function used \cr
    Parametric \tab > 2 \tab One-way repeated measures ANOVA \tab \code{afex::aov_ez()} \cr

@@ -164,6 +164,10 @@ The table below provides summary about:
 
 \subsection{within-subjects}{
 
+\strong{Data requirement}: Paired tests assume exactly \strong{one observation per subject
+per condition}. If your data has multiple trials per cell, aggregate first
+(e.g., take the mean).
+
 \strong{Hypothesis testing}\tabular{llll}{
    Type \tab No. of groups \tab Test \tab Function used \cr
    Parametric \tab 2 \tab Student's \emph{t}-test \tab \code{stats::t.test()} \cr
