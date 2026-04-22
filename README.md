@@ -61,9 +61,11 @@ The package can be cited as:
 
 ``` r
 citation("statsExpressions")
-Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and
-Expressions with Statistical Details. Journal of Open Source Software,
-6(61), 3236, https://doi.org/10.21105/joss.03236
+To cite package 'statsExpressions' in publications use:
+
+  Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes
+  and Expressions with Statistical Details. Journal of Open Source
+  Software, 6(61), 3236, https://doi.org/10.21105/joss.03236
 
 A BibTeX entry for LaTeX users is
 
@@ -542,6 +544,12 @@ console.
 
 #### within-subjects
 
+**Data requirement**: Repeated measures tests assume a *complete* design
+with exactly **one observation per subject per condition**. If your data
+has multiple trials per cell, aggregate first (e.g., take the mean).
+Verify with `table(data$subject, data$condition)` — every cell should
+equal `1`.
+
 **Hypothesis testing**
 
 | Type | No. of groups | Test | Function used |
@@ -583,6 +591,10 @@ console.
 | Bayesian | 2 | difference | Yes | `bayestestR::describe_posterior()` |
 
 #### within-subjects
+
+**Data requirement**: Paired tests assume exactly **one observation per
+subject per condition**. If your data has multiple trials per cell,
+aggregate first (e.g., take the mean).
 
 **Hypothesis testing**
 
