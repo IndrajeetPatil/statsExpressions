@@ -54,16 +54,17 @@ two_sample_test <- function(
   # data -------------------------------------------
 
   type <- extract_stats_type(type)
-  c(x, y) %<-% c(ensym(x), ensym(y))
+  x <- ensym(x)
+  y <- ensym(y)
 
-  data %<>%
-    long_to_wide_converter(
-      x = {{ x }},
-      y = {{ y }},
-      subject.id = {{ subject.id }},
-      paired = paired,
-      spread = ifelse(type %in% c("bayes", "robust"), paired, TRUE)
-    )
+  data <- long_to_wide_converter(
+    data,
+    x = {{ x }},
+    y = {{ y }},
+    subject.id = {{ subject.id }},
+    paired = paired,
+    spread = ifelse(type %in% c("bayes", "robust"), paired, TRUE)
+  )
 
   # parametric ---------------------------------------
 
@@ -82,7 +83,8 @@ two_sample_test <- function(
   # non-parametric ------------------------------------
 
   if (type == "nonparametric") {
-    c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
+    .f <- stats::wilcox.test
+    .f.es <- effectsize::rank_biserial
   }
 
   if (type %in% c("parametric", "nonparametric")) {
@@ -111,10 +113,12 @@ two_sample_test <- function(
 
     # styler: off
     if (!paired) {
-      c(.f, .f.es) %<-% c(WRS2::yuen, WRS2::akp.effect)
+      .f <- WRS2::yuen
+      .f.es <- WRS2::akp.effect
     }
     if (paired) {
-      c(.f, .f.es) %<-% c(WRS2::yuend, WRS2::dep.effect)
+      .f <- WRS2::yuend
+      .f.es <- WRS2::dep.effect
     }
 
     .f.args <- list(

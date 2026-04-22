@@ -91,7 +91,7 @@ tidy_model_expressions <- function(
     ", italic(p)=='{p.value}')"
   )
 
-  df_expr %<>%
+  df_expr <- df_expr |>
     mutate(
       expression = if (stat_type == "t") {
         case_when(

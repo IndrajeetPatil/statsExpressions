@@ -272,7 +272,7 @@
       "@type": "SoftwareApplication",
       "identifier": "glue",
       "name": "glue",
-      "version": ">= 1.8.0",
+      "version": ">= 1.8.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -285,7 +285,7 @@
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
-      "version": ">= 1.4.6",
+      "version": ">= 1.5.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -295,19 +295,6 @@
       "sameAs": "https://CRAN.R-project.org/package=insight"
     },
     "12": {
-      "@type": "SoftwareApplication",
-      "identifier": "magrittr",
-      "name": "magrittr",
-      "version": ">= 2.0.4",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=magrittr"
-    },
-    "13": {
       "@type": "SoftwareApplication",
       "identifier": "parameters",
       "name": "parameters",
@@ -320,7 +307,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=parameters"
     },
-    "14": {
+    "13": {
       "@type": "SoftwareApplication",
       "identifier": "performance",
       "name": "performance",
@@ -333,7 +320,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=performance"
     },
-    "15": {
+    "14": {
       "@type": "SoftwareApplication",
       "identifier": "PMCMRplus",
       "name": "PMCMRplus",
@@ -346,11 +333,11 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=PMCMRplus"
     },
-    "16": {
+    "15": {
       "@type": "SoftwareApplication",
       "identifier": "purrr",
       "name": "purrr",
-      "version": ">= 1.2.1",
+      "version": ">= 1.2.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -359,11 +346,11 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=purrr"
     },
-    "17": {
+    "16": {
       "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
-      "version": ">= 1.1.7",
+      "version": ">= 1.2.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -372,7 +359,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rlang"
     },
-    "18": {
+    "17": {
       "@type": "SoftwareApplication",
       "identifier": "rstantools",
       "name": "rstantools",
@@ -385,7 +372,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rstantools"
     },
-    "19": {
+    "18": {
       "@type": "SoftwareApplication",
       "identifier": "tidyr",
       "name": "tidyr",
@@ -398,7 +385,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tidyr"
     },
-    "20": {
+    "19": {
       "@type": "SoftwareApplication",
       "identifier": "withr",
       "name": "withr",
@@ -411,7 +398,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=withr"
     },
-    "21": {
+    "20": {
       "@type": "SoftwareApplication",
       "identifier": "WRS2",
       "name": "WRS2",
@@ -424,22 +411,9 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=WRS2"
     },
-    "22": {
-      "@type": "SoftwareApplication",
-      "identifier": "zeallot",
-      "name": "zeallot",
-      "version": ">= 0.2.0",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=zeallot"
-    },
     "SystemRequirements": null
   },
-  "fileSize": "4195.743KB",
+  "fileSize": "4217.685KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",

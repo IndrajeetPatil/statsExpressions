@@ -24,7 +24,7 @@ tidy_model_parameters <- function(model, ...) {
     mutate(across(matches("bf10"), \(x) log(x), .names = "log_e_{.col}"))
 
   if (!"estimate" %in% colnames(stats_df)) {
-    stats_df %<>% select(-matches("^conf"))
+    stats_df <- select(stats_df, -matches("^conf"))
   }
 
   # Bayesian ANOVA designs -----------------------------------
@@ -47,14 +47,14 @@ tidy_model_parameters <- function(model, ...) {
       filter(if_all(matches("component"), ~ (.x == "conditional")))
 
     # remove estimates and CIs and use R2 data frame instead
-    stats_df %<>%
-      select(-matches("^est|^conf|^comp")) %>%
+    stats_df <- stats_df |>
+      select(-matches("^est|^conf|^comp")) |>
       filter(if_all(matches("effect"), ~ (.x == "fixed")))
 
     # replicate df_r2 to match stats_df rows for bind_cols
     df_r2 <- df_r2[rep(1L, nrow(stats_df)), ]
 
-    stats_df %<>% bind_cols(df_r2)
+    stats_df <- bind_cols(stats_df, df_r2)
   }
 
   as_tibble(stats_df)

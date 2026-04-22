@@ -53,7 +53,7 @@ test_that(desc = "expr_anova_robust works - within-subjects", code = {
 
   # edge case with few cases
 
-  dat <- tibble(
+  dat <- dplyr::tibble(
     cases = c(1, 1, 2, 2, 3, 3, 4, 4),
     groups = c("b", "a", "b", "a", "b", "a", "b", "a"),
     values = c(2, 5, 3, 4, 4, 6, 5, 8)

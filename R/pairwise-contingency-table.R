@@ -44,17 +44,18 @@ pairwise_contingency_table <- function(
 ) {
   # data -------------------------------------------
 
-  c(x, y) %<-% c(ensym(x), ensym(y))
+  x <- ensym(x)
+  y <- ensym(y)
 
-  data %<>%
-    select({{ x }}, {{ y }}, .counts = {{ counts }}) %>%
+  data <- data |>
+    select({{ x }}, {{ y }}, .counts = {{ counts }}) |>
     filter(!if_any(everything(), is.na))
 
   if (".counts" %in% names(data)) {
-    data %<>% tidyr::uncount(weights = .counts)
+    data <- tidyr::uncount(data, weights = .counts)
   }
 
-  data %<>% mutate({{ x }} := droplevels(as.factor({{ x }})))
+  data <- mutate(data, {{ x }} := droplevels(as.factor({{ x }})))
 
   # pairwise comparisons -------------------------------------------
 
@@ -86,8 +87,8 @@ pairwise_contingency_table <- function(
 
   # p-value adjustment and expression -------------------------------------------
 
-  df_pair %<>%
-    arrange(group1, group2) %>%
+  df_pair <- df_pair |>
+    arrange(group1, group2) |>
     .pairwise_p_adjust_expr(p.adjust.method, digits, "Fisher's exact test")
 
   select(

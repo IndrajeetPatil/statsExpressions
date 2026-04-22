@@ -174,7 +174,7 @@ test_that(desc = "with .rowid - with NA", code = {
 # NA in subject.id should not drop rows with complete x/y ----------------
 
 test_that("NA in subject.id does not drop rows with complete measurements", {
-  df <- tibble(
+  df <- dplyr::tibble(
     id = c(1L, 1L, NA_integer_, NA_integer_),
     group = c("a", "b", "a", "b"),
     value = c(10, 20, 30, 40)

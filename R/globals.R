@@ -4,30 +4,12 @@ utils::globalVariables(c(
   # <contingency_table>
   # <pairwise_contingency_table>
   ".counts",
-  # <contingency_table>
-  # <oneway_anova>
-  # <pairwise_comparisons>
-  ".f",
-  # <meta_analysis>
-  ".f.args",
-  # <contingency_table>
-  ".f.es",
-  # <meta_analysis>
-  # <pairwise_comparisons>
-  ".fn",
-  # <meta_analysis>
-  # <pairwise_comparisons>
-  ".ns",
   # <long_to_wide_converter>
   # <oneway_anova>
   # <pairwise_comparisons>
   ".rowid",
   # <add_expression_col>
   "df",
-  # <oneway_anova>
-  "digits.df",
-  # <oneway_anova>
-  "digits.df.error",
   # <centrality_description>
   "estimate",
   # <pairwise_comparisons>

@@ -73,13 +73,13 @@ contingency_table <- function(
   type <- extract_stats_type(type)
   test <- ifelse(quo_is_null(enquo(y)), "1way", "2way")
 
-  data %<>%
-    select({{ x }}, {{ y }}, .counts = {{ counts }}) %>%
+  data <- data |>
+    select({{ x }}, {{ y }}, .counts = {{ counts }}) |>
     filter(!if_any(everything(), is.na))
 
   # untable the data frame based on the counts for each observation (if present)
   if (".counts" %in% names(data)) {
-    data %<>% tidyr::uncount(weights = .counts)
+    data <- tidyr::uncount(data, weights = .counts)
   }
 
   xtab <- table(data)
@@ -89,16 +89,19 @@ contingency_table <- function(
 
   if (type != "bayes" && test == "2way") {
     if (paired) {
-      c(.f, .f.es) %<-% c(stats::mcnemar.test, effectsize::cohens_g)
+      .f <- stats::mcnemar.test
+      .f.es <- effectsize::cohens_g
     }
     if (!paired) {
-      c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::cramers_v)
+      .f <- stats::chisq.test
+      .f.es <- effectsize::cramers_v
     }
     .f.args <- list(x = xtab, correct = FALSE)
   }
 
   if (type != "bayes" && test == "1way") {
-    c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::pearsons_c)
+    .f <- stats::chisq.test
+    .f.es <- effectsize::pearsons_c
     .f.args <- list(x = xtab, p = ratio, correct = FALSE)
   }
 

@@ -158,23 +158,24 @@ oneway_anova <- function(
   # data -------------------------------------------
 
   type <- extract_stats_type(type)
-  c(x, y) %<-% c(ensym(x), ensym(y))
+  x <- ensym(x)
+  y <- ensym(y)
 
-  data %<>%
-    long_to_wide_converter(
-      x = {{ x }},
-      y = {{ y }},
-      subject.id = {{ subject.id }},
-      paired = paired,
-      spread = FALSE
-    ) %>%
+  data <- long_to_wide_converter(
+    data,
+    x = {{ x }},
+    y = {{ y }},
+    subject.id = {{ subject.id }},
+    paired = paired,
+    spread = FALSE
+  ) |>
     mutate(.rowid = as.factor(.rowid))
 
   #  parametric ---------------------------------------
 
   if (type == "parametric") {
-    c(digits.df, digits.df.error) %<-%
-      c(ifelse(paired, digits, 0L), ifelse(!paired && var.equal, 0L, digits))
+    digits.df <- ifelse(paired, digits, 0L)
+    digits.df.error <- ifelse(!paired && var.equal, 0L, digits)
 
     .f.es <- switch(
       match.arg(effsize.type, c("omega", "eta", "unbiased", "biased")),
@@ -210,11 +211,13 @@ oneway_anova <- function(
   # non-parametric ------------------------------------
 
   if (type == "nonparametric") {
-    c(digits.df, digits.df.error) %<-% c(0L, 0L)
+    digits.df <- 0L
+    digits.df.error <- 0L
 
     # styler: off
     if (paired) {
-      c(.f, .f.es) %<-% c(stats::friedman.test, effectsize::kendalls_w)
+      .f <- stats::friedman.test
+      .f.es <- effectsize::kendalls_w
       .f.args <- list(
         formula = new_formula(
           enexpr(y),
@@ -230,7 +233,8 @@ oneway_anova <- function(
     }
 
     if (!paired) {
-      c(.f, .f.es) %<-% c(stats::kruskal.test, effectsize::rank_epsilon_squared)
+      .f <- stats::kruskal.test
+      .f.es <- effectsize::rank_epsilon_squared
       .f.args <- list(formula = new_formula(y, x))
       .f.es.args <- list(x = new_formula(y, x))
     }
@@ -254,7 +258,8 @@ oneway_anova <- function(
   # robust ---------------------------------------
 
   if (type == "robust") {
-    c(digits.df, digits.df.error) %<-% c(ifelse(paired, digits, 0L), digits)
+    digits.df <- ifelse(paired, digits, 0L)
+    digits.df.error <- digits
 
     if (paired) {
       mod <- WRS2::rmanova(

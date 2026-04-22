@@ -160,16 +160,17 @@ pairwise_comparisons <- function(
   # data -------------------------------------------
 
   type <- extract_stats_type(type)
-  c(x, y) %<-% c(ensym(x), ensym(y))
+  x <- ensym(x)
+  y <- ensym(y)
 
-  data %<>%
-    long_to_wide_converter(
-      x = {{ x }},
-      y = {{ y }},
-      subject.id = {{ subject.id }},
-      paired = paired,
-      spread = FALSE
-    )
+  data <- long_to_wide_converter(
+    data,
+    x = {{ x }},
+    y = {{ y }},
+    subject.id = {{ subject.id }},
+    paired = paired,
+    spread = FALSE
+  )
 
   # a few functions expect these as vectors
   x_vec <- pull(data, {{ x }})
@@ -182,10 +183,12 @@ pairwise_comparisons <- function(
   if (type %in% c("parametric", "bayes")) {
     # styler: off
     if (var.equal || paired) {
-      c(.f, test) %<-% c(stats::pairwise.t.test, "Student's t")
+      .f <- stats::pairwise.t.test
+      test <- "Student's t"
     }
     if (!(var.equal || paired)) {
-      c(.f, test) %<-% c(PMCMRplus::gamesHowellTest, "Games-Howell")
+      .f <- PMCMRplus::gamesHowellTest
+      test <- "Games-Howell"
     }
     # styler: on
   }
@@ -195,10 +198,12 @@ pairwise_comparisons <- function(
   if (type == "nonparametric") {
     # styler: off
     if (!paired) {
-      c(.f, test) %<-% c(PMCMRplus::kwAllPairsDunnTest, "Dunn")
+      .f <- PMCMRplus::kwAllPairsDunnTest
+      test <- "Dunn"
     }
     if (paired) {
-      c(.f, test) %<-% c(PMCMRplus::durbinAllPairsTest, "Durbin-Conover")
+      .f <- PMCMRplus::durbinAllPairsTest
+      test <- "Durbin-Conover"
     }
     # styler: on
 
@@ -227,12 +232,14 @@ pairwise_comparisons <- function(
 
   if (type == "robust") {
     if (!paired) {
-      c(.ns, .fn) %<-% c("WRS2", "lincon")
+      .ns <- "WRS2"
+      .fn <- "lincon"
       .f.args <- list(formula = new_formula(y, x), data = data, method = "none")
     }
 
     if (paired) {
-      c(.ns, .fn) %<-% c("WRS2", "rmmcp")
+      .ns <- "WRS2"
+      .fn <- "rmmcp"
       .f.args <- list(
         y = quote(y_vec),
         groups = quote(x_vec),
@@ -277,15 +284,15 @@ pairwise_comparisons <- function(
 
   # expression formatting ----------------------------------
 
-  df_pair %<>%
-    mutate(across(where(is.factor), \(x) as.character(x))) %>%
-    arrange(group1, group2) %>%
+  df_pair <- df_pair |>
+    mutate(across(where(is.factor), \(x) as.character(x))) |>
+    arrange(group1, group2) |>
     select(group1, group2, everything())
 
   if (type != "bayes") {
-    df_pair %<>%
-      .pairwise_p_adjust_expr(p.adjust.method, digits, test) %>%
-      mutate(p.value = p.value.adj) %>%
+    df_pair <- df_pair |>
+      .pairwise_p_adjust_expr(p.adjust.method, digits, test) |>
+      mutate(p.value = p.value.adj) |>
       select(-p.value.adj)
   }
 
@@ -311,21 +318,7 @@ pairwise_comparisons <- function(
     )
 }
 
-#' @title *p*-value adjustment method text
-#' @name p_adjust_text
-#'
-#' @description
-#' Preparing text to describe which *p*-value adjustment method was used
-#'
-#' @returns Standardized text description for what method was used.
-#'
-#' @inheritParams pairwise_comparisons
-#'
-#' @examples
-#' p_adjust_text("none")
-#' p_adjust_text("BY")
-#'
-#' @export
+#' @noRd
 p_adjust_text <- function(p.adjust.method) {
   case_when(
     grepl("^n|^bo|^h", p.adjust.method) ~ paste0(
