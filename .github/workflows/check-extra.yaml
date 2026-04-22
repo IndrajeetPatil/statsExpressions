@@ -18,4 +18,4 @@ jobs:
         any::ggbeeswarm
         any::PairedData
         any::metaviz
-      http-user-agent: release
+
