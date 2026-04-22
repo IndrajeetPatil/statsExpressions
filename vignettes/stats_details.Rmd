@@ -50,9 +50,10 @@ A few additional requirements are worth noting:
   should equal `1`.
 
 - **`subject.id` argument**: For within-subjects designs, always specify
-  `subject.id` explicitly. If omitted, the function assumes the data is
-  pre-sorted by subject, which can produce incorrect results when `NA`s are
-  present or when there are more than two conditions.
+  `subject.id` explicitly. If omitted, the function pairs observations by
+  row order within each condition, so any data that is not already sorted
+  identically within every condition level can produce silently incorrect
+  paired tests — even with exactly two conditions and no missing values.
 
 - **Missing data**: Missing values are handled internally by removing any subject
   who has `NA` in *any* condition, ensuring a balanced design is maintained.
