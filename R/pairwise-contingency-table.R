@@ -62,7 +62,7 @@ pairwise_contingency_table <- function(
   pair_list <- utils::combn(x_levels, 2L, simplify = FALSE)
 
   df_pair <- map_dfr(pair_list, function(pair) {
-    data_sub <- filter(data, {{ x }} %in% pair) %>%
+    data_sub <- filter(data, {{ x }} %in% pair) |>
       mutate(across(where(is.factor), droplevels))
 
     xtab <- table(data_sub)
@@ -98,6 +98,6 @@ pairwise_contingency_table <- function(
     p.value.adj,
     everything(),
     -matches("^method$")
-  ) %>%
+  ) |>
     .glue_to_expression()
 }

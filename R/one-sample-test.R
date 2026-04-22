@@ -82,8 +82,8 @@ one_sample_test <- function(
       mu = test.value,
       alternative = alternative,
       exact = exact
-    ) %>%
-      tidy_model_parameters() %>%
+    ) |>
+      tidy_model_parameters() |>
       select(-matches("^est|^conf|^diff|^term|^ci"))
 
     ez_df <- exec(
@@ -92,7 +92,7 @@ one_sample_test <- function(
       mu = test.value,
       verbose = FALSE,
       ci = conf.level
-    ) %>%
+    ) |>
       tidy_model_effectsize()
 
     stats_df <- bind_cols(stats_df, ez_df)
@@ -107,7 +107,7 @@ one_sample_test <- function(
       nv = test.value,
       tr = tr,
       alpha = 1.0 - conf.level
-    ) %>%
+    ) |>
       tidy_model_parameters()
   }
 
@@ -118,7 +118,7 @@ one_sample_test <- function(
       x = x_vec,
       rscale = bf.prior,
       mu = test.value
-    ) %>%
+    ) |>
       tidy_model_parameters(ci = conf.level)
   }
 

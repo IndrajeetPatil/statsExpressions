@@ -113,8 +113,8 @@ add_expression_col <- function(
       mutate(p.value = if_else(p.value == 0, .Machine$double.xmin, p.value))
   }
 
-  df_expr <- data %>% # convert needed columns to character type
-    .data_to_char(digits, digits.df, digits.df.error) %>%
+  df_expr <- data |> # convert needed columns to character type
+    .data_to_char(digits, digits.df, digits.df.error) |>
     mutate(
       statistic.text = statistic.text %||%
         extract_statistic_text(tolower(method)),
@@ -187,9 +187,9 @@ add_expression_col <- function(
   # convert `expression` to `language`
   df_expr %<>% .glue_to_expression()
 
-  data %>%
-    relocate(matches("^effectsize$"), .before = matches("^estimate$")) %>%
-    mutate(expression = df_expr$expression) %>%
+  data |>
+    relocate(matches("^effectsize$"), .before = matches("^estimate$")) |>
+    mutate(expression = df_expr$expression) |>
     .add_package_class()
 }
 
@@ -204,7 +204,7 @@ add_expression_col <- function(
   digits.df = 0L,
   digits.df.error = 0L
 ) {
-  data %>%
+  data |>
     mutate(
       across(
         .cols = matches("^est|^sta|p.value|.scale$|.low$|.high$|^log"),

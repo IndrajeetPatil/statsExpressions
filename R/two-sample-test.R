@@ -92,7 +92,7 @@ two_sample_test <- function(
       paired = paired,
       alternative = alternative
     )
-    stats_df <- exec(.f, !!!.f.args, var.equal = var.equal, exact = exact) %>%
+    stats_df <- exec(.f, !!!.f.args, var.equal = var.equal, exact = exact) |>
       tidy_model_parameters()
     ez_df <- exec(
       .f.es,
@@ -100,7 +100,7 @@ two_sample_test <- function(
       pooled_sd = FALSE,
       ci = conf.level,
       verbose = FALSE
-    ) %>%
+    ) |>
       tidy_model_effectsize()
   }
 
@@ -161,7 +161,7 @@ two_sample_test <- function(
     }
     # styler: on
 
-    stats_df <- exec(BayesFactor::ttestBF, rscale = bf.prior, !!!.f.args) %>%
+    stats_df <- exec(BayesFactor::ttestBF, rscale = bf.prior, !!!.f.args) |>
       tidy_model_parameters(ci = conf.level)
   }
 
@@ -182,7 +182,7 @@ two_sample_test <- function(
 
 #' @noRd
 .standardize_two_sample_terms <- function(data, x_name, y_name) {
-  data %>%
+  data |>
     mutate(
       across(matches("^parameter1$|^term$"), \(x) y_name),
       across(matches("^parameter2$|^group$"), \(x) x_name)

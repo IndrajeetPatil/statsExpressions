@@ -217,9 +217,9 @@ pairwise_comparisons <- function(
       blocks = g_vec,
       # common
       !!!.f.args
-    )) %>%
-      tidy_model_parameters() %>%
-      select(-matches("^parameter1$|^parameter2$")) %>%
+    )) |>
+      tidy_model_parameters() |>
+      select(-matches("^parameter1$|^parameter2$")) |>
       rename(group2 = group1, group1 = group2)
   }
 
@@ -240,7 +240,7 @@ pairwise_comparisons <- function(
       )
     }
 
-    df_pair <- eval(call2(.ns = .ns, .fn = .fn, tr = tr, !!!.f.args)) %>%
+    df_pair <- eval(call2(.ns = .ns, .fn = .fn, tr = tr, !!!.f.args)) |>
       tidy_model_parameters()
     test <- "Yuen's trimmed means"
   }
@@ -263,8 +263,8 @@ pairwise_comparisons <- function(
         bf.prior = bf.prior,
         type = "bayes"
       )
-    ) %>%
-      filter(term == "Difference") %>%
+    ) |>
+      filter(term == "Difference") |>
       mutate(
         expression = glue(
           "list(log[e]*(BF['01'])=='{format_value(-log(bf10), digits)}')"
@@ -289,13 +289,13 @@ pairwise_comparisons <- function(
       select(-p.value.adj)
   }
 
-  select(df_pair, everything(), -matches("p.adjustment|^method$")) %>%
+  select(df_pair, everything(), -matches("p.adjustment|^method$")) |>
     .glue_to_expression()
 }
 
 #' @noRd
 .pairwise_p_adjust_expr <- function(data, p.adjust.method, digits, test) {
-  data %>%
+  data |>
     mutate(
       p.value.adj = stats::p.adjust(p = p.value, method = p.adjust.method),
       p.adjust.method = p_adjust_text(p.adjust.method),

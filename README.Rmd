@@ -81,9 +81,9 @@ modified by changing a single argument:
 ```{r}
 #| label = "df"
 
-mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
+mtcars |> oneway_anova(cyl, wt, type = "nonparametric")
 
-mtcars %>% oneway_anova(cyl, wt, type = "robust")
+mtcars |> oneway_anova(cyl, wt, type = "robust")
 ```
 
 All possible output dataframes from functions are tabulated here:
@@ -99,9 +99,9 @@ set.seed(123)
 
 # one-sample robust t-test
 # we will leave `expression` column out; it's not needed for using only the dataframe
-mtcars %>%
-  one_sample_test(wt, test.value = 3, type = "robust") %>%
-  dplyr::select(-expression) %>%
+mtcars |>
+  one_sample_test(wt, test.value = 3, type = "robust") |>
+  dplyr::select(-expression) |>
   knitr::kable()
 ```
 
@@ -119,9 +119,9 @@ library(dplyr)
 
 # grouped operation
 # running one-sample test for all levels of grouping variable `cyl`
-mtcars %>%
-  group_by(cyl) %>%
-  group_modify(~ one_sample_test(.x, wt, test.value = 3), .keep = TRUE) %>%
+mtcars |>
+  group_by(cyl) |>
+  group_modify(~ one_sample_test(.x, wt, test.value = 3), .keep = TRUE) |>
   ungroup()
 ```
 

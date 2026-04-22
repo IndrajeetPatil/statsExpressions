@@ -122,7 +122,7 @@ contingency_table <- function(
       sampleType = sampling.plan,
       fixedMargin = fixed.margin,
       priorConcentration = prior.concentration
-    ) %>%
+    ) |>
       tidy_model_parameters(
         ci = conf.level,
         es_type = "cramers_v",
@@ -161,14 +161,14 @@ contingency_table <- function(
     ),
     prior.scale = prior.concentration,
     method = "Bayesian one-way contingency table analysis"
-  ) %>%
+  ) |>
     mutate(
       expression = glue(
         "list(
             log[e]*(BF['01'])=='{format_value(-log(bf10), digits)}',
             {prior_switch(method)}=='{format_value(prior.scale, digits)}')"
       )
-    ) %>%
+    ) |>
     .glue_to_expression()
 }
 

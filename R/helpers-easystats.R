@@ -13,13 +13,14 @@
 #'
 #' @export
 tidy_model_parameters <- function(model, ...) {
-  stats_df <- model_parameters(model, verbose = FALSE, ...) %>%
-    mutate(conf.method = attr(., "ci_method")) %>%
-    select(-matches("Difference")) %>%
-    standardize_names(style = "broom") %>%
-    rename_all(\(x) gsub("cramers.|omega2.|eta2.", "", x)) %>%
-    rename_with(recode, bayes.factor = "bf10") %>%
-    tidyr::fill(matches("^prior|^bf"), .direction = "updown") %>%
+  params <- model_parameters(model, verbose = FALSE, ...)
+  stats_df <- params |>
+    mutate(conf.method = attr(params, "ci_method")) |>
+    select(-matches("Difference")) |>
+    standardize_names(style = "broom") |>
+    rename_all(\(x) gsub("cramers.|omega2.|eta2.", "", x)) |>
+    rename_with(recode, bayes.factor = "bf10") |>
+    tidyr::fill(matches("^prior|^bf"), .direction = "updown") |>
     mutate(across(matches("bf10"), \(x) log(x), .names = "log_e_{.col}"))
 
   if (!"estimate" %in% colnames(stats_df)) {
@@ -39,10 +40,10 @@ tidy_model_parameters <- function(model, ...) {
       average = TRUE,
       verbose = FALSE,
       ci = stats_df$conf.level[[1]]
-    ) %>%
-      as_tibble() %>%
-      standardize_names(style = "broom") %>%
-      rename(estimate = r.squared) %>%
+    ) |>
+      as_tibble() |>
+      standardize_names(style = "broom") |>
+      rename(estimate = r.squared) |>
       filter(if_all(matches("component"), ~ (.x == "conditional")))
 
     # remove estimates and CIs and use R2 data frame instead
@@ -73,12 +74,14 @@ tidy_model_parameters <- function(model, ...) {
 #' tidy_model_effectsize(df)
 #' @noRd
 tidy_model_effectsize <- function(data, ...) {
-  data %>%
+  data |>
     mutate(
-      effectsize = stats::na.omit(effectsize::get_effectsize_label(colnames(.)))
-    ) %>%
-    standardize_names(style = "broom") %>%
-    select(-contains("term")) %>%
+      effectsize = stats::na.omit(effectsize::get_effectsize_label(colnames(
+        data
+      )))
+    ) |>
+    standardize_names(style = "broom") |>
+    select(-contains("term")) |>
     bind_cols(rename_with(as_tibble(attr(data, "ci_method")), \(x) {
       paste0("conf.", x)
     }))
