@@ -63,11 +63,9 @@ The package can be cited as:
 
 ``` r
 citation("statsExpressions")
-To cite package 'statsExpressions' in publications use:
-
-  Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes
-  and Expressions with Statistical Details. Journal of Open Source
-  Software, 6(61), 3236, https://doi.org/10.21105/joss.03236
+Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and
+Expressions with Statistical Details. Journal of Open Source Software,
+6(61), 3236, https://doi.org/10.21105/joss.03236
 
 A BibTeX entry for LaTeX users is
 
@@ -135,7 +133,7 @@ statistical approach can be modified by changing a single argument:
 
 ``` r
 
-mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
+mtcars |> oneway_anova(cyl, wt, type = "nonparametric")
 #> # A tibble: 1 × 15
 #>   parameter1 parameter2 statistic df.error   p.value
 #>   <chr>      <chr>          <dbl>    <int>     <dbl>
@@ -147,7 +145,7 @@ mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
 #>       <dbl> <chr>                          <int> <int> <list>    
 #> 1         1 percentile bootstrap             100    32 <language>
 
-mtcars %>% oneway_anova(cyl, wt, type = "robust")
+mtcars |> oneway_anova(cyl, wt, type = "robust")
 #> # A tibble: 1 × 12
 #>   statistic    df df.error p.value
 #>       <dbl> <dbl>    <dbl>   <dbl>
@@ -175,9 +173,9 @@ set.seed(123)
 
 # one-sample robust t-test
 # we will leave `expression` column out; it's not needed for using only the dataframe
-mtcars %>%
-  one_sample_test(wt, test.value = 3, type = "robust") %>%
-  dplyr::select(-expression) %>%
+mtcars |>
+  one_sample_test(wt, test.value = 3, type = "robust") |>
+  dplyr::select(-expression) |>
   knitr::kable()
 ```
 
@@ -199,9 +197,9 @@ library(dplyr)
 
 # grouped operation
 # running one-sample test for all levels of grouping variable `cyl`
-mtcars %>%
-  group_by(cyl) %>%
-  group_modify(~ one_sample_test(.x, wt, test.value = 3), .keep = TRUE) %>%
+mtcars |>
+  group_by(cyl) |>
+  group_modify(~ one_sample_test(.x, wt, test.value = 3), .keep = TRUE) |>
   ungroup()
 #> # A tibble: 3 × 16
 #>     cyl    mu statistic df.error  p.value method            alternative

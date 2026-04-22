@@ -162,9 +162,9 @@ repeat the same statistical analysis across grouping variables.
 ``` r
 
 # running one-sample proportion test for `vs` at all levels of `am`
-mtcars %>%
-  group_by(am) %>%
-  group_modify(~ contingency_table(.x, vs), .keep = TRUE) %>%
+mtcars |>
+  group_by(am) |>
+  group_modify(~ contingency_table(.x, vs), .keep = TRUE) |>
   ungroup()
 #> # A tibble: 2 × 14
 #>      am statistic    df p.value method   effectsize estimate conf.level conf.low
@@ -186,10 +186,10 @@ together.
 
 # chaining multiple test types sequentially and aggregating results
 multi_test_results <- dplyr::bind_rows(
-  two_sample_test(mtcars, am, wt, type = "parametric") %>% mutate(test_type = "Parametric"),
-  two_sample_test(mtcars, am, wt, type = "nonparametric") %>% mutate(test_type = "Nonparametric"),
-  two_sample_test(mtcars, am, wt, type = "robust") %>% mutate(test_type = "Robust")
-) %>%
+  two_sample_test(mtcars, am, wt, type = "parametric") |> mutate(test_type = "Parametric"),
+  two_sample_test(mtcars, am, wt, type = "nonparametric") |> mutate(test_type = "Nonparametric"),
+  two_sample_test(mtcars, am, wt, type = "robust") |> mutate(test_type = "Robust")
+) |>
   # automatic p-value adjustment across comparisons
   dplyr::mutate(p.value = stats::p.adjust(p.value, method = "holm"))
 
