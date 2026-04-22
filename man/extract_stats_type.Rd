@@ -2,9 +2,12 @@
 % Please edit documentation in R/switch-functions.R
 \name{extract_stats_type}
 \alias{extract_stats_type}
+\alias{stats_type_switch}
 \title{Switch the type of statistics.}
 \usage{
 extract_stats_type(type)
+
+stats_type_switch(type)
 }
 \arguments{
 \item{type}{A character specifying the type of statistical approach:
