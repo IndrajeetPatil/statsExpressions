@@ -1,4 +1,4 @@
-# statsExpressions (development version)
+# statsExpressions 2.0.0
 
 - New `pairwise_contingency_table()` function for pairwise Fisher's exact tests
   as post hoc follow-ups for chi-squared contingency table analyses. Includes

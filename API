@@ -13,6 +13,7 @@ one_sample_test(data, x, type = "parametric", test.value = 0, alternative = "two
 oneway_anova(data, x, y, subject.id = NULL, type = "parametric", paired = FALSE, digits = 2L, conf.level = 0.95, effsize.type = "omega", var.equal = FALSE, bf.prior = 0.707, tr = 0.2, nboot = 100L, ...)
 pairwise_comparisons(data, x, y, subject.id = NULL, type = "parametric", paired = FALSE, var.equal = FALSE, tr = 0.2, bf.prior = 0.707, p.adjust.method = "holm", digits = 2L, exact = FALSE, ...)
 pairwise_contingency_table(data, x, y, counts = NULL, p.adjust.method = "holm", digits = 2L, conf.level = 0.95, alternative = "two.sided", ...)
+stats_type_switch(type)
 tidy_model_expressions(data, statistic = NULL, digits = 2L, effsize.type = "omega", ...)
 tidy_model_parameters(model, ...)
 two_sample_test(data, x, y, subject.id = NULL, type = "parametric", paired = FALSE, alternative = "two.sided", digits = 2L, conf.level = 0.95, effsize.type = "g", var.equal = FALSE, bf.prior = 0.707, tr = 0.2, nboot = 100L, exact = FALSE, ...)
