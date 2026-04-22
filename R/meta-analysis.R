@@ -87,7 +87,12 @@ meta_analysis <- function(
     robust = list(
       .ns = "metaplus",
       .fn = "metaplus",
-      .f.args = list(yi = quote(estimate), sei = quote(std.error), random = random, ...)
+      .f.args = list(
+        yi = quote(estimate),
+        sei = quote(std.error),
+        random = random,
+        ...
+      )
     ),
     bayes = list(
       .ns = "metaBMA",
@@ -106,10 +111,13 @@ meta_analysis <- function(
     tidy_model_parameters(include_studies = FALSE, ci = conf.level)
 
   if (type != "bayes") {
-    stats_df <- stats_df |> mutate(effectsize = "meta-analytic summary estimate")
+    stats_df <- mutate(stats_df, effectsize = "meta-analytic summary estimate")
   }
   if (type == "bayes") {
-    stats_df <- stats_df |> mutate(effectsize = "meta-analytic posterior estimate")
+    stats_df <- mutate(
+      stats_df,
+      effectsize = "meta-analytic posterior estimate"
+    )
   }
 
   add_expression_col(

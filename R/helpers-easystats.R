@@ -24,7 +24,7 @@ tidy_model_parameters <- function(model, ...) {
     mutate(across(matches("bf10"), \(x) log(x), .names = "log_e_{.col}"))
 
   if (!"estimate" %in% colnames(stats_df)) {
-    stats_df <- stats_df |> select(-matches("^conf"))
+    stats_df <- select(stats_df, -matches("^conf"))
   }
 
   # Bayesian ANOVA designs -----------------------------------
@@ -54,7 +54,7 @@ tidy_model_parameters <- function(model, ...) {
     # replicate df_r2 to match stats_df rows for bind_cols
     df_r2 <- df_r2[rep(1L, nrow(stats_df)), ]
 
-    stats_df <- stats_df |> bind_cols(df_r2)
+    stats_df <- bind_cols(stats_df, df_r2)
   }
 
   as_tibble(stats_df)

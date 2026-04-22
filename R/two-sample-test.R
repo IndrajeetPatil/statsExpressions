@@ -59,12 +59,12 @@ two_sample_test <- function(
 
   data <- long_to_wide_converter(
     data,
-      x = {{ x }},
-      y = {{ y }},
-      subject.id = {{ subject.id }},
-      paired = paired,
-      spread = ifelse(type %in% c("bayes", "robust"), paired, TRUE)
-    )
+    x = {{ x }},
+    y = {{ y }},
+    subject.id = {{ subject.id }},
+    paired = paired,
+    spread = ifelse(type %in% c("bayes", "robust"), paired, TRUE)
+  )
 
   # parametric ---------------------------------------
 

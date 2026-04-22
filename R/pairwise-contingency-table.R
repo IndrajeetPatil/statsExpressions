@@ -52,10 +52,10 @@ pairwise_contingency_table <- function(
     filter(!if_any(everything(), is.na))
 
   if (".counts" %in% names(data)) {
-    data <- data |> tidyr::uncount(weights = .counts)
+    data <- tidyr::uncount(data, weights = .counts)
   }
 
-  data <- data |> mutate({{ x }} := droplevels(as.factor({{ x }})))
+  data <- mutate(data, {{ x }} := droplevels(as.factor({{ x }})))
 
   # pairwise comparisons -------------------------------------------
 

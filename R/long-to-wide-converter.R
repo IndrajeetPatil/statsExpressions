@@ -75,9 +75,9 @@ long_to_wide_converter <- function(
 
   if (!".rowid" %in% names(data)) {
     if (paired) {
-      data <- data |> group_by({{ x }})
+      data <- group_by(data, {{ x }})
     }
-    data <- data |> mutate(.rowid = row_number())
+    data <- mutate(data, .rowid = row_number())
   }
 
   data <- data |>
@@ -86,7 +86,11 @@ long_to_wide_converter <- function(
 
   # convert to wide?
   if (spread) {
-    data <- data |> tidyr::pivot_wider(names_from = {{ x }}, values_from = {{ y }})
+    data <- tidyr::pivot_wider(
+      data,
+      names_from = {{ x }},
+      values_from = {{ y }}
+    )
   }
 
   as_tibble(relocate(data, .rowid) |> arrange(.rowid))

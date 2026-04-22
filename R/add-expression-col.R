@@ -92,19 +92,19 @@ add_expression_col <- function(
   ...
 ) {
   if (!"n.obs" %in% colnames(data)) {
-    data <- data |> mutate(n.obs = n)
+    data <- mutate(data, n.obs = n)
   }
   if (!"effectsize" %in% colnames(data)) {
-    data <- data |> mutate(effectsize = method)
+    data <- mutate(data, effectsize = method)
   }
-  data <- data |> rename_with(recode, bayes.factor = "bf10")
+  data <- rename_with(data, recode, bayes.factor = "bf10")
 
   bayesian <- any("bf10" == colnames(data))
   no.parameters <- sum("df.error" %in% names(data) + "df" %in% names(data))
 
   # special case for Bayesian contingency table analysis
   if (bayesian && grepl("contingency", data$method[[1L]], fixed = TRUE)) {
-    data <- data |> mutate(effectsize = "Cramers_v")
+    data <- mutate(data, effectsize = "Cramers_v")
   }
 
   # dealing with exactly 0 p-values
@@ -156,7 +156,7 @@ add_expression_col <- function(
 
   if (!bayesian && no.parameters == 1L) {
     if ("df" %in% colnames(df_expr)) {
-      df_expr <- df_expr |> mutate(df.error = df)
+      df_expr <- mutate(df_expr, df.error = df)
     } # for chi-squared statistic
 
     df_expr <- df_expr |>
@@ -185,7 +185,7 @@ add_expression_col <- function(
   }
 
   # convert `expression` to `language`
-  df_expr <- df_expr |> .glue_to_expression()
+  df_expr <- .glue_to_expression(df_expr)
 
   data |>
     relocate(matches("^effectsize$"), .before = matches("^estimate$")) |>

@@ -79,7 +79,7 @@ contingency_table <- function(
 
   # untable the data frame based on the counts for each observation (if present)
   if (".counts" %in% names(data)) {
-    data <- data |> tidyr::uncount(weights = .counts)
+    data <- tidyr::uncount(data, weights = .counts)
   }
 
   xtab <- table(data)
