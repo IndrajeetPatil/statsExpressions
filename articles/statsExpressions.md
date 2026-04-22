@@ -177,38 +177,108 @@ mtcars |>
 
 ## Custom Statistical Workflows
 
-You can also programmatically aggregate results across different tests,
-apply automatic *p*-value adjustment across these multiple comparisons,
-and generate a single formatted expression summarizing all the results
-together.
+### Pairwise comparisons with automatic *p*-value adjustment
+
+When an omnibus test (e.g., one-way ANOVA) is significant, you typically
+follow up with pairwise comparisons. The
+[`pairwise_comparisons()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)
+function handles this with built-in *p*-value adjustment across all
+pairwise tests:
 
 ``` r
 
-# chaining multiple test types sequentially and aggregating results
+pairwise_comparisons(
+  data            = mtcars,
+  x               = cyl,
+  y               = wt,
+  type            = "parametric",
+  var.equal       = FALSE,
+  p.adjust.method = "holm"
+)
+#> # A tibble: 3 × 9
+#>   group1 group2 statistic   p.value alternative distribution p.adjust.method
+#>   <chr>  <chr>      <dbl>     <dbl> <chr>       <chr>        <chr>          
+#> 1 4      6           5.39 0.00831   two.sided   q            Holm           
+#> 2 4      8           9.11 0.0000124 two.sided   q            Holm           
+#> 3 6      8           5.12 0.00831   two.sided   q            Holm           
+#>   test         expression
+#>   <chr>        <list>    
+#> 1 Games-Howell <language>
+#> 2 Games-Howell <language>
+#> 3 Games-Howell <language>
+```
+
+Each row contains a formatted `expression` column with the adjusted
+*p*-value, ready for use as a plot annotation. The `p.adjust.method`
+argument supports all methods from
+[`stats::p.adjust()`](https://rdrr.io/r/stats/p.adjust.html) (e.g.,
+`"holm"`, `"bonferroni"`, `"BH"`, `"fdr"`, `"none"`).
+
+### Chaining multiple tests and adjusting *p*-values
+
+You can chain different statistical tests on the same data, consolidate
+the results into a single data frame, and apply *p*-value correction
+across all comparisons:
+
+``` r
+
 multi_test_results <- dplyr::bind_rows(
-  two_sample_test(mtcars, am, wt, type = "parametric") |> mutate(test_type = "Parametric"),
-  two_sample_test(mtcars, am, wt, type = "nonparametric") |> mutate(test_type = "Nonparametric"),
-  two_sample_test(mtcars, am, wt, type = "robust") |> mutate(test_type = "Robust")
+  two_sample_test(mtcars, am, wt, type = "parametric"),
+  two_sample_test(mtcars, am, wt, type = "nonparametric"),
+  two_sample_test(mtcars, am, wt, type = "robust")
 ) |>
-  # automatic p-value adjustment across comparisons
   dplyr::mutate(p.value = stats::p.adjust(p.value, method = "holm"))
 
-# creating a custom formatted expression that summarizes all results together
-summary_expression <- paste(
-  sprintf(
-    "%s: p_adj = %.3f, %s = %.2f",
-    multi_test_results$test_type,
-    multi_test_results$p.value,
-    multi_test_results$effectsize,
-    multi_test_results$estimate
-  ),
-  collapse = "\n"
+dplyr::select(multi_test_results, method, effectsize, estimate, p.value)
+#> # A tibble: 3 × 4
+#>   method                                              
+#>   <chr>                                               
+#> 1 Welch Two Sample t-test                             
+#> 2 Wilcoxon rank sum test                              
+#> 3 Yuen's test on trimmed means for independent samples
+#>   effectsize                                              estimate   p.value
+#>   <chr>                                                      <dbl>     <dbl>
+#> 1 Hedges' g                                                  1.88  0.0000188
+#> 2 r (rank biserial)                                          0.866 0.0000869
+#> 3 Algina-Keselman-Penfield robust standardized difference    2.48  0.0000869
+```
+
+### Generating formatted expressions from custom results
+
+The
+[`add_expression_col()`](https://www.indrapatil.com/statsExpressions/reference/add_expression_col.md)
+function creates publication-ready plotmath expressions from any data
+frame containing statistical details. This is useful when you run your
+own tests outside
+[statsExpressions](https://www.indrapatil.com/statsExpressions/) and
+want to generate a formatted expression for plot annotations:
+
+``` r
+
+# suppose you have run your own statistical test
+custom_stats <- cbind.data.frame(
+  statistic  = 2.18,
+  df         = 18,
+  p.value    = 0.041,
+  estimate   = 0.65,
+  conf.level = 0.95,
+  conf.low   = 0.03,
+  conf.high  = 1.27,
+  method     = "Student's t-test"
 )
 
-cat(summary_expression)
-#> Parametric: p_adj = 0.000, Hedges' g = 1.88
-#> Nonparametric: p_adj = 0.000, r (rank biserial) = 0.87
-#> Robust: p_adj = 0.000, Algina-Keselman-Penfield robust standardized difference = 2.48
+# generate a formatted expression
+add_expression_col(
+  data           = custom_stats,
+  statistic.text = list(quote(italic("t"))),
+  effsize.text   = list(quote(italic("d")["Cohen"])),
+  n              = 20L,
+  digits         = 2L,
+  digits.df      = 0L
+)$expression[[1]]
+#> list(italic("t") * "(" * 18 * ")" == "2.18", italic(p) == "0.04", 
+#>     italic("d")["Cohen"] == "0.65", CI["95%"] ~ "[" * "0.03", 
+#>     "1.27" * "]", italic("n")["obs"] == "20")
 ```
 
 ## Expressions for Plots

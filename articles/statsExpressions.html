@@ -291,36 +291,101 @@ same statistical analysis across grouping variables.</p>
 <div class="section level2">
 <h2 id="custom-statistical-workflows">Custom Statistical Workflows<a class="anchor" aria-label="anchor" href="#custom-statistical-workflows"></a>
 </h2>
-<p>You can also programmatically aggregate results across different
-tests, apply automatic <em>p</em>-value adjustment across these multiple
-comparisons, and generate a single formatted expression summarizing all
-the results together.</p>
+<div class="section level3">
+<h3 id="pairwise-comparisons-with-automatic-p-value-adjustment">Pairwise comparisons with automatic <em>p</em>-value adjustment<a class="anchor" aria-label="anchor" href="#pairwise-comparisons-with-automatic-p-value-adjustment"></a>
+</h3>
+<p>When an omnibus test (e.g., one-way ANOVA) is significant, you
+typically follow up with pairwise comparisons. The
+<code><a href="../reference/pairwise_comparisons.html">pairwise_comparisons()</a></code> function handles this with built-in
+<em>p</em>-value adjustment across all pairwise tests:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># chaining multiple test types sequentially and aggregating results</span></span>
-<span><span class="va">multi_test_results</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html" class="external-link">bind_rows</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">am</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"parametric"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>test_type <span class="op">=</span> <span class="st">"Parametric"</span><span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">am</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>test_type <span class="op">=</span> <span class="st">"Nonparametric"</span><span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">am</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>test_type <span class="op">=</span> <span class="st">"Robust"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span></span>
+<span>  data            <span class="op">=</span> <span class="va">mtcars</span>,</span>
+<span>  x               <span class="op">=</span> <span class="va">cyl</span>,</span>
+<span>  y               <span class="op">=</span> <span class="va">wt</span>,</span>
+<span>  type            <span class="op">=</span> <span class="st">"parametric"</span>,</span>
+<span>  var.equal       <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  p.adjust.method <span class="op">=</span> <span class="st">"holm"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 9</span></span></span>
+<span><span class="co">#&gt;   <span style="font-weight: bold;">group1</span> <span style="font-weight: bold;">group2</span> <span style="font-weight: bold;">statistic</span>   <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">alternative</span> <span style="font-weight: bold;">distribution</span> <span style="font-weight: bold;">p.adjust.method</span></span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 4      6           5.39 <span style="color: #949494;">0.00</span>8<span style="text-decoration: underline;">31</span>   two.sided   q            Holm           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 4      8           9.11 <span style="color: #949494;">0.000</span><span style="color: #949494; text-decoration: underline;">0</span><span style="text-decoration: underline;">12</span>4 two.sided   q            Holm           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 6      8           5.12 <span style="color: #949494;">0.00</span>8<span style="text-decoration: underline;">31</span>   two.sided   q            Holm           </span></span>
+<span><span class="co">#&gt;   <span style="font-weight: bold;">test</span>         <span style="font-weight: bold;">expression</span></span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Games-Howell <span style="color: #949494;">&lt;language&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Games-Howell <span style="color: #949494;">&lt;language&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Games-Howell <span style="color: #949494;">&lt;language&gt;</span></span></span></code></pre></div>
+<p>Each row contains a formatted <code>expression</code> column with the
+adjusted <em>p</em>-value, ready for use as a plot annotation. The
+<code>p.adjust.method</code> argument supports all methods from
+<code><a href="https://rdrr.io/r/stats/p.adjust.html" class="external-link">stats::p.adjust()</a></code> (e.g., <code>"holm"</code>,
+<code>"bonferroni"</code>, <code>"BH"</code>, <code>"fdr"</code>,
+<code>"none"</code>).</p>
+</div>
+<div class="section level3">
+<h3 id="chaining-multiple-tests-and-adjusting-p-values">Chaining multiple tests and adjusting <em>p</em>-values<a class="anchor" aria-label="anchor" href="#chaining-multiple-tests-and-adjusting-p-values"></a>
+</h3>
+<p>You can chain different statistical tests on the same data,
+consolidate the results into a single data frame, and apply
+<em>p</em>-value correction across all comparisons:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">multi_test_results</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html" class="external-link">bind_rows</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">am</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"parametric"</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">am</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">am</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"robust"</span><span class="op">)</span></span>
 <span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># automatic p-value adjustment across comparisons</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>p.value <span class="op">=</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/p.adjust.html" class="external-link">p.adjust</a></span><span class="op">(</span><span class="va">p.value</span>, method <span class="op">=</span> <span class="st">"holm"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># creating a custom formatted expression that summarizes all results together</span></span>
-<span><span class="va">summary_expression</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span></span>
-<span>    <span class="st">"%s: p_adj = %.3f, %s = %.2f"</span>,</span>
-<span>    <span class="va">multi_test_results</span><span class="op">$</span><span class="va">test_type</span>,</span>
-<span>    <span class="va">multi_test_results</span><span class="op">$</span><span class="va">p.value</span>,</span>
-<span>    <span class="va">multi_test_results</span><span class="op">$</span><span class="va">effectsize</span>,</span>
-<span>    <span class="va">multi_test_results</span><span class="op">$</span><span class="va">estimate</span></span>
-<span>  <span class="op">)</span>,</span>
-<span>  collapse <span class="op">=</span> <span class="st">"\n"</span></span>
+<span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">multi_test_results</span>, <span class="va">method</span>, <span class="va">effectsize</span>, <span class="va">estimate</span>, <span class="va">p.value</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 4</span></span></span>
+<span><span class="co">#&gt;   <span style="font-weight: bold;">method</span>                                              </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                               </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Welch Two Sample t-test                             </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Wilcoxon rank sum test                              </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Yuen's test on trimmed means for independent samples</span></span>
+<span><span class="co">#&gt;   <span style="font-weight: bold;">effectsize</span>                                              <span style="font-weight: bold;">estimate</span>   <span style="font-weight: bold;">p.value</span></span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Hedges' g                                                  1.88  <span style="color: #949494;">0.000</span><span style="color: #949494; text-decoration: underline;">0</span><span style="text-decoration: underline;">18</span>8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> r (rank biserial)                                          <span style="color: #949494;">0.</span>866 <span style="color: #949494;">0.000</span><span style="color: #949494; text-decoration: underline;">0</span><span style="text-decoration: underline;">86</span>9</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Algina-Keselman-Penfield robust standardized difference    2.48  <span style="color: #949494;">0.000</span><span style="color: #949494; text-decoration: underline;">0</span><span style="text-decoration: underline;">86</span>9</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="generating-formatted-expressions-from-custom-results">Generating formatted expressions from custom results<a class="anchor" aria-label="anchor" href="#generating-formatted-expressions-from-custom-results"></a>
+</h3>
+<p>The <code><a href="../reference/add_expression_col.html">add_expression_col()</a></code> function creates
+publication-ready plotmath expressions from any data frame containing
+statistical details. This is useful when you run your own tests outside
+<a href="https://www.indrapatil.com/statsExpressions/">statsExpressions</a> and want to generate a formatted
+expression for plot annotations:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># suppose you have run your own statistical test</span></span>
+<span><span class="va">custom_stats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind.data.frame</a></span><span class="op">(</span></span>
+<span>  statistic  <span class="op">=</span> <span class="fl">2.18</span>,</span>
+<span>  df         <span class="op">=</span> <span class="fl">18</span>,</span>
+<span>  p.value    <span class="op">=</span> <span class="fl">0.041</span>,</span>
+<span>  estimate   <span class="op">=</span> <span class="fl">0.65</span>,</span>
+<span>  conf.level <span class="op">=</span> <span class="fl">0.95</span>,</span>
+<span>  conf.low   <span class="op">=</span> <span class="fl">0.03</span>,</span>
+<span>  conf.high  <span class="op">=</span> <span class="fl">1.27</span>,</span>
+<span>  method     <span class="op">=</span> <span class="st">"Student's t-test"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">summary_expression</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Parametric: p_adj = 0.000, Hedges' g = 1.88</span></span>
-<span><span class="co">#&gt; Nonparametric: p_adj = 0.000, r (rank biserial) = 0.87</span></span>
-<span><span class="co">#&gt; Robust: p_adj = 0.000, Algina-Keselman-Penfield robust standardized difference = 2.48</span></span></code></pre></div>
+<span><span class="co"># generate a formatted expression</span></span>
+<span><span class="fu"><a href="../reference/add_expression_col.html">add_expression_col</a></span><span class="op">(</span></span>
+<span>  data           <span class="op">=</span> <span class="va">custom_stats</span>,</span>
+<span>  statistic.text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">quote</a></span><span class="op">(</span><span class="fu">italic</span><span class="op">(</span><span class="st">"t"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  effsize.text   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">quote</a></span><span class="op">(</span><span class="fu">italic</span><span class="op">(</span><span class="st">"d"</span><span class="op">)</span><span class="op">[</span><span class="st">"Cohen"</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  n              <span class="op">=</span> <span class="fl">20L</span>,</span>
+<span>  digits         <span class="op">=</span> <span class="fl">2L</span>,</span>
+<span>  digits.df      <span class="op">=</span> <span class="fl">0L</span></span>
+<span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; list(italic("t") * "(" * 18 * ")" == "2.18", italic(p) == "0.04", </span></span>
+<span><span class="co">#&gt;     italic("d")["Cohen"] == "0.65", CI["95%"] ~ "[" * "0.03", </span></span>
+<span><span class="co">#&gt;     "1.27" * "]", italic("n")["obs"] == "20")</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="expressions-for-plots">Expressions for Plots<a class="anchor" aria-label="anchor" href="#expressions-for-plots"></a>
@@ -345,7 +410,7 @@ indeed a philosophy adopted by the <a href="https://www.indrapatil.com/ggstatspl
 <span class="citation">(<a href="#ref-Patil2021">Patil,
 2021</a>)</span>, and <a href="https://www.indrapatil.com/statsExpressions/">statsExpressions</a> functions as its
 statistical processing backend.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># needed libraries</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
@@ -368,7 +433,7 @@ Example illustrating how <a href="https://www.indrapatil.com/statsExpressions/">
 be used to display results from a statistical test in a plot.
 </p>
 </div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Example 2: One-way ANOVA</span></span>
 <span><span class="va">res_anova</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span>, <span class="va">Sepal.Length</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span></span>
