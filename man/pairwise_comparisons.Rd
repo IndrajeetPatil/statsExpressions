@@ -147,6 +147,10 @@ Not supported.
 
 \subsection{within-subjects}{
 
+\strong{Data requirement}: Paired pairwise tests assume exactly \strong{one observation per
+subject per condition}. If your data has multiple trials per cell, aggregate
+first (e.g., take the mean).
+
 \strong{Hypothesis testing}\tabular{llll}{
    Type \tab Test \tab \emph{p}-value adjustment? \tab Function used \cr
    Parametric \tab Student's \emph{t}-test \tab Yes \tab \code{stats::pairwise.t.test()} \cr
