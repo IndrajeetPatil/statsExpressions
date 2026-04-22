@@ -89,5 +89,5 @@ long_to_wide_converter <- function(
     data %<>% tidyr::pivot_wider(names_from = {{ x }}, values_from = {{ y }})
   }
 
-  as_tibble(relocate(data, .rowid) %>% arrange(.rowid))
+  as_tibble(relocate(data, .rowid) |> arrange(.rowid))
 }

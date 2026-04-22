@@ -198,7 +198,7 @@ oneway_anova <- function(
       mod <- stats::oneway.test(new_formula(y, x), data, var.equal = var.equal)
     }
 
-    effect_df <- exec(.f.es, model = mod, ci = conf.level, verbose = FALSE) %>%
+    effect_df <- exec(.f.es, model = mod, ci = conf.level, verbose = FALSE) |>
       tidy_model_effectsize()
 
     stats_df <- bind_cols(
@@ -245,7 +245,7 @@ oneway_anova <- function(
       iterations = nboot,
       verbose = FALSE,
       !!!.f.es.args
-    ) %>%
+    ) |>
       tidy_model_effectsize()
 
     stats_df <- bind_cols(stats_df, ez_df)
@@ -278,8 +278,8 @@ oneway_anova <- function(
     stats_df <- tidy_model_parameters(mod)
 
     if (paired) {
-      ez_df <- long_to_wide_converter(data, {{ x }}, {{ y }}) %>%
-        WRS2::wmcpAKP(select(-.rowid), tr = tr, nboot = nboot) %>%
+      ez_df <- long_to_wide_converter(data, {{ x }}, {{ y }}) |>
+        WRS2::wmcpAKP(select(-.rowid), tr = tr, nboot = nboot) |>
         tidy_model_parameters()
 
       stats_df <- bind_cols(stats_df, ez_df)
@@ -306,7 +306,7 @@ oneway_anova <- function(
       data = as.data.frame(data),
       progress = FALSE,
       !!!.f.args
-    ) %>%
+    ) |>
       tidy_model_parameters(ci = conf.level)
   }
 

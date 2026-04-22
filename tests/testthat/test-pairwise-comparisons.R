@@ -117,7 +117,7 @@ test_that(desc = "dropped levels are not included", code = {
     x = vore,
     y = brainwt,
     p.adjust.method = "none"
-  ) %>%
+  ) |>
     dplyr::filter(group2 == "omni", group1 == "carni")
 
   expect_equal(df1$statistic, df2$statistic, tolerance = 0.01)

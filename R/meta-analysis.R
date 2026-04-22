@@ -100,7 +100,7 @@ meta_analysis <- function(
 
   check_if_installed(.ns)
 
-  stats_df <- eval(call2(.fn = .fn, .ns = .ns, data = data, !!!.f.args)) %>%
+  stats_df <- eval(call2(.fn = .fn, .ns = .ns, data = data, !!!.f.args)) |>
     tidy_model_parameters(include_studies = FALSE, ci = conf.level)
 
   if (type != "bayes") {

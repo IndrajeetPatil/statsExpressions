@@ -43,7 +43,7 @@ corr_test <- function(
 ) {
   type <- extract_stats_type(type)
 
-  data <- select(ungroup(data), {{ x }}, {{ y }}) %>%
+  data <- select(ungroup(data), {{ x }}, {{ y }}) |>
     filter(!if_any(everything(), is.na))
 
   stats_df <- correlation::correlation(
@@ -53,8 +53,8 @@ corr_test <- function(
     bayesian = type == "bayes",
     bayesian_prior = bf.prior,
     winsorize = ifelse(type == "robust", tr, FALSE)
-  ) %>%
-    standardize_names(style = "broom") %>%
+  ) |>
+    standardize_names(style = "broom") |>
     dplyr::mutate(conf.method = ifelse(type == "bayes", "HDI", "normal"))
 
   add_expression_col(stats_df, paired = TRUE, digits = digits)

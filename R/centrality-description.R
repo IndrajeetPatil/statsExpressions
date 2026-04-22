@@ -51,9 +51,9 @@ centrality_description <- function(
   )
   # styler: on
 
-  select(data, {{ x }}, {{ y }}) %>%
-    filter(!if_any(everything(), is.na)) %>%
-    group_by({{ x }}) %>%
+  select(data, {{ x }}, {{ y }}) |>
+    filter(!if_any(everything(), is.na)) |>
+    group_by({{ x }}) |>
     group_modify(
       .f = ~ standardize_names(
         data = datawizard::describe_distribution(
@@ -65,16 +65,16 @@ centrality_description <- function(
         ),
         style = "broom"
       )
-    ) %>%
-    rename_all(~ gsub(".mean|.median|.trimmed|.map", "", .x)) %>%
-    ungroup() %>%
+    ) |>
+    rename_all(~ gsub(".mean|.median|.trimmed|.map", "", .x)) |>
+    ungroup() |>
     mutate(
       expression = glue(
         "list(widehat(mu)[{centrality}]=='{format_value(estimate, digits)}')"
       ),
       n.expression = paste0({{ x }}, "\n(n = ", .prettyNum(n.obs), ")")
-    ) %>%
-    arrange({{ x }}) %>%
-    select({{ x }}, !!as.character(ensym(y)) := estimate, everything()) %>%
+    ) |>
+    arrange({{ x }}) |>
+    select({{ x }}, !!as.character(ensym(y)) := estimate, everything()) |>
     .glue_to_expression()
 }

@@ -58,11 +58,11 @@ tidy_model_expressions <- function(
   # if any of the necessary numeric columns are missing, there shouldn't be an
   # expression corresponding to that row; convert the necessary columns to
   # character type for expression
-  df_expr <- data %>%
+  df_expr <- data |>
     filter(if_all(
       .cols = matches("estimate|statistic|std.error|p.value"),
       .fns = Negate(is.na)
-    )) %>%
+    )) |>
     .data_to_char(digits)
 
   stat_type <- statistic
@@ -107,7 +107,7 @@ tidy_model_expressions <- function(
   # nolint end
 
   # Replace `NA` with `NULL` to show nothing instead of an empty string ("")
-  left_join(data, select(df_expr, term, expression), by = "term") %>%
+  left_join(data, select(df_expr, term, expression), by = "term") |>
     .glue_to_expression()
 }
 
@@ -115,16 +115,16 @@ tidy_model_expressions <- function(
 #' @keywords internal
 #' @noRd
 .glue_to_expression <- function(data) {
-  data %>%
-    rowwise() %>%
-    mutate(expression = list(parse_expr(expression))) %>%
-    ungroup() %>% # convert from `expression` to `language`
+  data |>
+    rowwise() |>
+    mutate(expression = list(parse_expr(expression))) |>
+    ungroup() |> # convert from `expression` to `language`
     mutate(
       expression = case_when(
         is.na(unlist(expression)) ~ list(NULL),
         .default = unlist(expression)
       )
-    ) %>%
+    ) |>
     .add_package_class()
 }
 
