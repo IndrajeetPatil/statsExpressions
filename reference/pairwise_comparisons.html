@@ -207,6 +207,9 @@ two degrees of freedom (e.g. anova)</p></li>
 <h3 id="within-subjects">within-subjects<a class="anchor" aria-label="anchor" href="#within-subjects"></a></h3>
 
 
+<p><strong>Data requirement</strong>: Paired pairwise tests assume exactly <strong>one observation per
+subject per condition</strong>. If your data has multiple trials per cell, aggregate
+first (e.g., take the mean).</p>
 <p><strong>Hypothesis testing</strong></p><table class="table table"><tr><td>Type</td><td>Test</td><td><em>p</em>-value adjustment?</td><td>Function used</td></tr><tr><td>Parametric</td><td>Student's <em>t</em>-test</td><td>Yes</td><td><code><a href="https://rdrr.io/r/stats/pairwise.t.test.html" class="external-link">stats::pairwise.t.test()</a></code></td></tr><tr><td>Non-parametric</td><td>Durbin-Conover test</td><td>Yes</td><td><code><a href="https://rdrr.io/pkg/PMCMRplus/man/durbinAllPairsTest.html" class="external-link">PMCMRplus::durbinAllPairsTest()</a></code></td></tr><tr><td>Robust</td><td>Yuen's trimmed means test</td><td>Yes</td><td><code><a href="https://rdrr.io/pkg/WRS2/man/rmanova.html" class="external-link">WRS2::rmmcp()</a></code></td></tr><tr><td>Bayesian</td><td>Student's <em>t</em>-test</td><td><code>NA</code></td><td><code><a href="https://rdrr.io/pkg/BayesFactor/man/ttestBF.html" class="external-link">BayesFactor::ttestBF()</a></code></td></tr></table><p><strong>Effect size estimation</strong></p>
 <p>Not supported.</p>
 </div>

@@ -35,6 +35,29 @@ your R console.
 
 Abbreviations used: CI = Confidence Interval
 
+## Data requirements
+
+All functions expect data in **long (tidy) format** — one row per
+observation. A few additional requirements are worth noting:
+
+- **Within-subjects (repeated measures) designs**: The data must contain
+  exactly *one* observation per subject per condition (a complete,
+  balanced block design). If you have multiple trials per
+  subject-condition cell, aggregate them first (e.g., by taking the
+  mean) before passing the data. You can verify this with
+  `table(data$subject, data$condition)` — every cell should equal `1`.
+
+- **`subject.id` argument**: For within-subjects designs, always specify
+  `subject.id` explicitly. If omitted, the function pairs observations
+  by row order within each condition, so any data that is not already
+  sorted identically within every condition level can produce silently
+  incorrect paired tests — even with exactly two conditions and no
+  missing values.
+
+- **Missing data**: Missing values are handled internally by removing
+  any subject who has `NA` in *any* condition, ensuring a balanced
+  design is maintained.
+
 ## Summary of functionality
 
 **Summary of available analyses**
@@ -116,6 +139,12 @@ your R console.
 
 #### within-subjects
 
+**Data requirement**: Repeated measures tests assume a *complete* design
+with exactly **one observation per subject per condition**. If your data
+has multiple trials per cell, aggregate first (e.g., take the mean).
+Verify with `table(data$subject, data$condition)` — every cell should
+equal `1`.
+
 **Hypothesis testing**
 
 | Type | No. of groups | Test | Function used |
@@ -157,6 +186,10 @@ your R console.
 | Bayesian | 2 | difference | Yes | [`bayestestR::describe_posterior()`](https://easystats.github.io/bayestestR/reference/describe_posterior.html) |
 
 #### within-subjects
+
+**Data requirement**: Paired tests assume exactly **one observation per
+subject per condition**. If your data has multiple trials per cell,
+aggregate first (e.g., take the mean).
 
 **Hypothesis testing**
 

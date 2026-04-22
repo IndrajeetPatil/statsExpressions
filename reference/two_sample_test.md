@@ -215,6 +215,10 @@ The table below provides summary about:
 
 ### within-subjects
 
+**Data requirement**: Paired tests assume exactly **one observation per
+subject per condition**. If your data has multiple trials per cell,
+aggregate first (e.g., take the mean).
+
 **Hypothesis testing**
 
 |  |  |  |  |

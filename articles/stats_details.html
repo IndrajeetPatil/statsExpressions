@@ -114,6 +114,33 @@ in your R console.</p>
 <p>Abbreviations used: CI = Confidence Interval</p>
 </div>
 <div class="section level2">
+<h2 id="data-requirements">Data requirements<a class="anchor" aria-label="anchor" href="#data-requirements"></a>
+</h2>
+<p>All functions expect data in <strong>long (tidy) format</strong> —
+one row per observation. A few additional requirements are worth
+noting:</p>
+<ul>
+<li><p><strong>Within-subjects (repeated measures) designs</strong>: The
+data must contain exactly <em>one</em> observation per subject per
+condition (a complete, balanced block design). If you have multiple
+trials per subject-condition cell, aggregate them first (e.g., by taking
+the mean) before passing the data. You can verify this with
+<code>table(data$subject, data$condition)</code> — every cell should
+equal <code>1</code>.</p></li>
+<li><p><strong><code>subject.id</code> argument</strong>: For
+within-subjects designs, always specify <code>subject.id</code>
+explicitly. If omitted, the function pairs observations by row order
+within each condition, so any data that is not already sorted
+identically within every condition level can produce silently incorrect
+paired tests — even with exactly two conditions and no missing
+values.</p></li>
+<li><p><strong>Missing data</strong>: Missing values are handled
+internally by removing any subject who has <code>NA</code> in
+<em>any</em> condition, ensuring a balanced design is
+maintained.</p></li>
+</ul>
+</div>
+<div class="section level2">
 <h2 id="summary-of-functionality">Summary of functionality<a class="anchor" aria-label="anchor" href="#summary-of-functionality"></a>
 </h2>
 <p><strong>Summary of available analyses</strong></p>
@@ -417,6 +444,12 @@ in your R console.</p>
 <div class="section level4">
 <h4 id="within-subjects">within-subjects<a class="anchor" aria-label="anchor" href="#within-subjects"></a>
 </h4>
+<p><strong>Data requirement</strong>: Repeated measures tests assume a
+<em>complete</em> design with exactly <strong>one observation per
+subject per condition</strong>. If your data has multiple trials per
+cell, aggregate first (e.g., take the mean). Verify with
+<code>table(data$subject, data$condition)</code> — every cell should
+equal <code>1</code>.</p>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <colgroup>
@@ -617,6 +650,9 @@ difference</td>
 <div class="section level4">
 <h4 id="within-subjects-1">within-subjects<a class="anchor" aria-label="anchor" href="#within-subjects-1"></a>
 </h4>
+<p><strong>Data requirement</strong>: Paired tests assume exactly
+<strong>one observation per subject per condition</strong>. If your data
+has multiple trials per cell, aggregate first (e.g., take the mean).</p>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <colgroup>
