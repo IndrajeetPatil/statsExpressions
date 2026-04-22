@@ -45,7 +45,7 @@ test_that(desc = "contingency_table works", code = {
 test_that(desc = "paired contingency_table works ", code = {
   # paired data - without NAs and counts data ----------------------------
 
-  paired_data <- tibble(
+  paired_data <- dplyr::tibble(
     response_before = structure(
       c(1L, 2L, 1L, 2L),
       levels = c("no", "yes"),
@@ -221,5 +221,5 @@ patrick::with_parameters_test_that(
 
     expect_snapshot(df[["expression"]])
   },
-  .cases = tibble(dec = c(".", ","))
+  .cases = dplyr::tibble(dec = c(".", ","))
 )
