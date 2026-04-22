@@ -139,32 +139,77 @@ mtcars |>
 
 ## Custom Statistical Workflows
 
-You can also programmatically aggregate results across different tests, apply automatic *p*-value adjustment across these multiple comparisons, and generate a single formatted expression summarizing all the results together.
+### Pairwise comparisons with automatic *p*-value adjustment
+
+When an omnibus test (e.g., one-way ANOVA) is significant, you typically follow
+up with pairwise comparisons. The `pairwise_comparisons()` function handles this
+with built-in *p*-value adjustment across all pairwise tests:
+
+```{r}
+#| label = "pairwise"
+pairwise_comparisons(
+  data            = mtcars,
+  x               = cyl,
+  y               = wt,
+  type            = "parametric",
+  var.equal       = FALSE,
+  p.adjust.method = "holm"
+)
+```
+
+Each row contains a formatted `expression` column with the adjusted *p*-value,
+ready for use as a plot annotation. The `p.adjust.method` argument supports all
+methods from `stats::p.adjust()` (e.g., `"holm"`, `"bonferroni"`, `"BH"`,
+`"fdr"`, `"none"`).
+
+### Chaining multiple tests and adjusting *p*-values
+
+You can chain different statistical tests on the same data, consolidate the
+results into a single data frame, and apply *p*-value correction across all
+comparisons:
 
 ```{r}
 #| label = "custom_workflow"
-# chaining multiple test types sequentially and aggregating results
 multi_test_results <- dplyr::bind_rows(
-  two_sample_test(mtcars, am, wt, type = "parametric") |> mutate(test_type = "Parametric"),
-  two_sample_test(mtcars, am, wt, type = "nonparametric") |> mutate(test_type = "Nonparametric"),
-  two_sample_test(mtcars, am, wt, type = "robust") |> mutate(test_type = "Robust")
+  two_sample_test(mtcars, am, wt, type = "parametric"),
+  two_sample_test(mtcars, am, wt, type = "nonparametric"),
+  two_sample_test(mtcars, am, wt, type = "robust")
 ) |>
-  # automatic p-value adjustment across comparisons
   dplyr::mutate(p.value = stats::p.adjust(p.value, method = "holm"))
 
-# creating a custom formatted expression that summarizes all results together
-summary_expression <- paste(
-  sprintf(
-    "%s: p_adj = %.3f, %s = %.2f",
-    multi_test_results$test_type,
-    multi_test_results$p.value,
-    multi_test_results$effectsize,
-    multi_test_results$estimate
-  ),
-  collapse = "\n"
+dplyr::select(multi_test_results, method, effectsize, estimate, p.value)
+```
+
+### Generating formatted expressions from custom results
+
+The `add_expression_col()` function creates publication-ready plotmath
+expressions from any data frame containing statistical details. This is useful
+when you run your own tests outside `{statsExpressions}` and want to generate
+a formatted expression for plot annotations:
+
+```{r}
+#| label = "custom_expression"
+# suppose you have run your own statistical test
+custom_stats <- cbind.data.frame(
+  statistic  = 2.18,
+  df         = 18,
+  p.value    = 0.041,
+  estimate   = 0.65,
+  conf.level = 0.95,
+  conf.low   = 0.03,
+  conf.high  = 1.27,
+  method     = "Student's t-test"
 )
 
-cat(summary_expression)
+# generate a formatted expression
+add_expression_col(
+  data           = custom_stats,
+  statistic.text = list(quote(italic("t"))),
+  effsize.text   = list(quote(italic("d")["Cohen"])),
+  n              = 20L,
+  digits         = 2L,
+  digits.df      = 0L
+)$expression[[1]]
 ```
 
 ## Expressions for Plots
