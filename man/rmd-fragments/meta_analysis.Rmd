@@ -2,6 +2,6 @@
 
 | Type       | Test                                             | Effect size | CI available? | Function used            |
 | :--------- | :----------------------------------------------- | :---------- | :------------ | :----------------------- |
-| Parametric | Meta-analysis via random-effects models          | *beta*      | Yes           | `metafor::metafor()`     |
+| Parametric | Meta-analysis via random-effects models          | *beta*      | Yes           | `metafor::rma()`         |
 | Robust     | Meta-analysis via robust random-effects models   | *beta*      | Yes           | `metaplus::metaplus()`   |
-| Bayes      | Meta-analysis via Bayesian random-effects models | *beta*      | Yes           | `metaBMA::meta_random()` |
+| Bayesian   | Meta-analysis via Bayesian random-effects models | *beta*      | Yes           | `metaBMA::meta_random()` |
