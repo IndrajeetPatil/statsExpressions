@@ -242,7 +242,7 @@ contingency_table(
 
 # paired
 
-paired_data <- tibble(
+paired_data <- dplyr::tibble(
   response_before = structure(
     c(1L, 2L, 1L, 2L),
     levels = c("no", "yes"),

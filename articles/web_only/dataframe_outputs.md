@@ -22,7 +22,7 @@ This vignette can be cited as:
         journal = {{Journal of Open Source Software}},
       }
 
-## One-sample tests
+## One-sample test output
 
 ``` r
 
@@ -93,7 +93,7 @@ one_sample_test(mtcars, wt, test.value = 3, type = "bayes")
 #> 1 ETI             -0.950    32 <language>
 ```
 
-## Two-sample tests
+## Two-sample test output
 
 ### within-subjects design
 
@@ -392,14 +392,14 @@ oneway_anova(
 #> 8 g_.rowid       1     cauchy                          0       1     fixed 
 #>          bf10 method                          log_e_bf10 effectsize        
 #>         <dbl> <chr>                                <dbl> <chr>             
-#> 1 1372773377. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 2 1372773377. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 3 1372773377. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 4 1372773377. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 5 1372773377. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 6 1372773377. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 7 1372773377. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 8 1372773377. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 1 1372773375. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 2 1372773375. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 3 1372773375. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 4 1372773375. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 5 1372773375. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 6 1372773375. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 7 1372773375. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 8 1372773375. Bayes factors for linear models       21.0 Bayesian R-squared
 #>   estimate std.dev conf.level conf.low conf.high conf.method component   n.obs
 #>      <dbl>   <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>       <int>
 #> 1    0.529  0.0333       0.95    0.461     0.587 HDI         conditional    88
@@ -546,7 +546,7 @@ oneway_anova(
 #> 6       0.95    0.544     0.667 HDI           150 <language>
 ```
 
-## Contingency table analyses
+## Contingency table analysis output
 
 ``` r
 
@@ -573,7 +573,7 @@ contingency_table(
 
 # paired
 
-paired_data <- tibble(
+paired_data <- dplyr::tibble(
   response_before = structure(
     c(1L, 2L, 1L, 2L),
     levels = c("no", "yes"),
@@ -685,7 +685,7 @@ contingency_table(
 #> 1 4.17e55           1 Bayesian one-way contingency table analysis <language>
 ```
 
-## Correlation analyses
+## Correlation analysis output
 
 ``` r
 
@@ -749,7 +749,7 @@ corr_test(mtcars, wt, mpg, type = "bayes")
 #> 1 <language>
 ```
 
-## Meta-analysis
+## Random-effects meta-analysis output
 
 ``` r
 

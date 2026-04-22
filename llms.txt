@@ -858,23 +858,6 @@ future.
 - [`add_expression_col()`](https://www.indrapatil.com/statsExpressions/reference/add_expression_col.md)
   : Template for expressions with statistical details
 
-- [`p_adjust_text()`](https://www.indrapatil.com/statsExpressions/reference/p_adjust_text.md)
-  :
-
-  *p*-value adjustment method text
-
-## Reexported functions
-
-Useful functions re-exported from other packages.
-
-- [`reexports`](https://www.indrapatil.com/statsExpressions/reference/reexports.md)
-  [`%>%`](https://www.indrapatil.com/statsExpressions/reference/reexports.md)
-  [`%<>%`](https://www.indrapatil.com/statsExpressions/reference/reexports.md)
-  [`%<-%`](https://www.indrapatil.com/statsExpressions/reference/reexports.md)
-  [`tibble`](https://www.indrapatil.com/statsExpressions/reference/reexports.md)
-  [`as_tibble`](https://www.indrapatil.com/statsExpressions/reference/reexports.md)
-  : Objects exported from other packages
-
 ## Data
 
 Datasets included in the package.
