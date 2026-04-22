@@ -110,7 +110,6 @@ Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressio
 
 \examples{
 \dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true")) withAutoprint(\{ # examplesIf}
-\dontshow{\}) # examplesIf}
 # for reproducibility
 set.seed(123)
 library(statsExpressions)
@@ -139,4 +138,5 @@ pairwise_contingency_table(
   y = am,
   p.adjust.method = "none"
 )
+\dontshow{\}) # examplesIf}
 }
