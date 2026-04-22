@@ -32,10 +32,6 @@ extract_stats_type <- function(type) {
   )
 }
 
-#' @rdname extract_stats_type
-#' @export
-stats_type_switch <- extract_stats_type
-
 #' @noRd
 extract_estimate_type <- function(x) {
   case_when(

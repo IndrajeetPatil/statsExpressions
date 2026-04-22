@@ -20,7 +20,7 @@ test_that(desc = "`pairwise_comparisons()` works for between-subjects design", c
   df_msleep <- msleep
 
   # adding empty factor level (shouldn't change results)
-  df_msleep %<>% dplyr::mutate(vore = as.factor(vore))
+  df_msleep <- df_msleep |> dplyr::mutate(vore = as.factor(vore))
 
   df_msleep$vore <- factor(
     df_msleep$vore,

@@ -92,24 +92,24 @@ add_expression_col <- function(
   ...
 ) {
   if (!"n.obs" %in% colnames(data)) {
-    data %<>% mutate(n.obs = n)
+    data <- data |> mutate(n.obs = n)
   }
   if (!"effectsize" %in% colnames(data)) {
-    data %<>% mutate(effectsize = method)
+    data <- data |> mutate(effectsize = method)
   }
-  data %<>% rename_with(recode, bayes.factor = "bf10")
+  data <- data |> rename_with(recode, bayes.factor = "bf10")
 
   bayesian <- any("bf10" == colnames(data))
   no.parameters <- sum("df.error" %in% names(data) + "df" %in% names(data))
 
   # special case for Bayesian contingency table analysis
   if (bayesian && grepl("contingency", data$method[[1L]], fixed = TRUE)) {
-    data %<>% mutate(effectsize = "Cramers_v")
+    data <- data |> mutate(effectsize = "Cramers_v")
   }
 
   # dealing with exactly 0 p-values
   if ("p.value" %in% colnames(data)) {
-    data %<>%
+    data <- data |>
       mutate(p.value = if_else(p.value == 0, .Machine$double.xmin, p.value))
   }
 
@@ -126,7 +126,7 @@ add_expression_col <- function(
   # Bayesian analysis ------------------------------
 
   if (bayesian) {
-    df_expr %<>%
+    df_expr <- df_expr |>
       mutate(
         expression = glue(
           "list(
@@ -141,7 +141,7 @@ add_expression_col <- function(
   # 0 degrees of freedom --------------------
 
   if (!bayesian && no.parameters == 0L) {
-    df_expr %<>%
+    df_expr <- df_expr |>
       mutate(
         expression = glue(
           "list(
@@ -156,10 +156,10 @@ add_expression_col <- function(
 
   if (!bayesian && no.parameters == 1L) {
     if ("df" %in% colnames(df_expr)) {
-      df_expr %<>% mutate(df.error = df)
+      df_expr <- df_expr |> mutate(df.error = df)
     } # for chi-squared statistic
 
-    df_expr %<>%
+    df_expr <- df_expr |>
       mutate(
         expression = glue(
           "list(
@@ -173,7 +173,7 @@ add_expression_col <- function(
   # 2 degrees of freedom -----------------
 
   if (!bayesian && no.parameters == 2L) {
-    df_expr %<>%
+    df_expr <- df_expr |>
       mutate(
         expression = glue(
           "list(
@@ -185,7 +185,7 @@ add_expression_col <- function(
   }
 
   # convert `expression` to `language`
-  df_expr %<>% .glue_to_expression()
+  df_expr <- df_expr |> .glue_to_expression()
 
   data |>
     relocate(matches("^effectsize$"), .before = matches("^estimate$")) |>

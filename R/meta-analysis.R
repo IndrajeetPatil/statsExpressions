@@ -77,25 +77,27 @@ meta_analysis <- function(
   type <- extract_stats_type(type)
 
   # nolint start: line_length_linter.
-  c(.ns, .fn, .f.args) %<-%
-    switch(
-      type,
-      parametric = list(
-        "metafor",
-        "rma",
-        list(yi = quote(estimate), sei = quote(std.error), ...)
-      ),
-      robust = list(
-        "metaplus",
-        "metaplus",
-        list(yi = quote(estimate), sei = quote(std.error), random = random, ...)
-      ),
-      bayes = list(
-        "metaBMA",
-        "meta_random",
-        list(y = quote(estimate), SE = quote(std.error), ...)
-      )
+  .meta_args <- switch(
+    type,
+    parametric = list(
+      .ns = "metafor",
+      .fn = "rma",
+      .f.args = list(yi = quote(estimate), sei = quote(std.error), ...)
+    ),
+    robust = list(
+      .ns = "metaplus",
+      .fn = "metaplus",
+      .f.args = list(yi = quote(estimate), sei = quote(std.error), random = random, ...)
+    ),
+    bayes = list(
+      .ns = "metaBMA",
+      .fn = "meta_random",
+      .f.args = list(y = quote(estimate), SE = quote(std.error), ...)
     )
+  )
+  .ns <- .meta_args$.ns
+  .fn <- .meta_args$.fn
+  .f.args <- .meta_args$.f.args
   # nolint end
 
   check_if_installed(.ns)
@@ -104,10 +106,10 @@ meta_analysis <- function(
     tidy_model_parameters(include_studies = FALSE, ci = conf.level)
 
   if (type != "bayes") {
-    stats_df %<>% mutate(effectsize = "meta-analytic summary estimate")
+    stats_df <- stats_df |> mutate(effectsize = "meta-analytic summary estimate")
   }
   if (type == "bayes") {
-    stats_df %<>% mutate(effectsize = "meta-analytic posterior estimate")
+    stats_df <- stats_df |> mutate(effectsize = "meta-analytic posterior estimate")
   }
 
   add_expression_col(

@@ -77,7 +77,7 @@ test_that(desc = "paired contingency_table works ", code = {
 
   # paired data with NAs  ---------------------------------------------
 
-  paired_data %<>% tidyr::uncount(weights = Freq)
+  paired_data <- paired_data |> tidyr::uncount(weights = Freq)
 
   # deliberately introduce NAs
   set.seed(123)

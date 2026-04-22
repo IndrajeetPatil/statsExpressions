@@ -68,25 +68,25 @@ long_to_wide_converter <- function(
   spread = TRUE,
   ...
 ) {
-  data %<>%
-    select({{ x }}, {{ y }}, .rowid = {{ subject.id }}) %>%
-    mutate({{ x }} := droplevels(as.factor({{ x }}))) %>%
+  data <- data |>
+    select({{ x }}, {{ y }}, .rowid = {{ subject.id }}) |>
+    mutate({{ x }} := droplevels(as.factor({{ x }}))) |>
     arrange({{ x }})
 
   if (!".rowid" %in% names(data)) {
     if (paired) {
-      data %<>% group_by({{ x }})
+      data <- data |> group_by({{ x }})
     }
-    data %<>% mutate(.rowid = row_number())
+    data <- data |> mutate(.rowid = row_number())
   }
 
-  data %<>%
-    ungroup() %>%
+  data <- data |>
+    ungroup() |>
     filter(!anyNA(pick({{ x }}, {{ y }})), .by = .rowid)
 
   # convert to wide?
   if (spread) {
-    data %<>% tidyr::pivot_wider(names_from = {{ x }}, values_from = {{ y }})
+    data <- data |> tidyr::pivot_wider(names_from = {{ x }}, values_from = {{ y }})
   }
 
   as_tibble(relocate(data, .rowid) |> arrange(.rowid))

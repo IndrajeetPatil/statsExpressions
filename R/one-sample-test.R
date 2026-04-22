@@ -72,7 +72,8 @@ one_sample_test <- function(
   # non-parametric ---------------------------------------
 
   if (type == "nonparametric") {
-    c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
+    .f <- stats::wilcox.test
+    .f.es <- effectsize::rank_biserial
   }
 
   if (type %in% c("parametric", "nonparametric")) {

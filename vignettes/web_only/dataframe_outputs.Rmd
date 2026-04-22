@@ -42,14 +42,14 @@ This vignette can be cited as:
 citation("statsExpressions")
 ```
 
-## One-sample tests
+## One-sample test output
 
 ```{r}
 #| label = "onesample",
 #| file = "../../man/examples/examples-one-sample-test.R"
 ```
 
-## Two-sample tests
+## Two-sample test output
 
 ### within-subjects design
 
@@ -179,21 +179,21 @@ oneway_anova(
 )
 ```
 
-## Contingency table analyses
+## Contingency table analysis output
 
 ```{r}
 #| label = "crosstabs",
 #| file = "../../man/examples/examples-contingency-table.R"
 ```
 
-## Correlation analyses
+## Correlation analysis output
 
 ```{r}
 #| label = "corr",
 #| file = "../../man/examples/examples-corr-test.R"
 ```
 
-## Meta-analysis
+## Random-effects meta-analysis output
 
 ```{r}
 #| label = "meta"
