@@ -2,6 +2,8 @@
 
 ## statsExpressions 2.0.0
 
+CRAN release: 2026-04-23
+
 This major release accompanies the upcoming stable 1.0.0 release of
 [ggstatsplot](https://www.indrapatil.com/ggstatsplot/), which uses
 [statsExpressions](https://www.indrapatil.com/statsExpressions/) as its
