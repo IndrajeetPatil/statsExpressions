@@ -342,6 +342,7 @@ two_sample_test(
 #>   conf.method log_e_bf10 n.obs expression
 #>   <chr>            <dbl> <int> <list>    
 #> 1 ETI               15.4    91 <language>
+
 # ----------------------- between-subjects -------------------------------------
 
 # for reproducibility

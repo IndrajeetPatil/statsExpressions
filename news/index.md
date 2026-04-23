@@ -1,6 +1,11 @@
 # Changelog
 
-## statsExpressions (development version)
+## statsExpressions 2.0.0
+
+This major release accompanies the upcoming stable 1.0.0 release of
+[ggstatsplot](https://www.indrapatil.com/ggstatsplot/), which uses
+[statsExpressions](https://www.indrapatil.com/statsExpressions/) as its
+statistical processing backend.
 
 - New
   [`pairwise_contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_contingency_table.md)
@@ -10,14 +15,14 @@
   comparisons
   ([\#352](https://github.com/IndrajeetPatil/statsExpressions/issues/352)).
 
-- Added `exact` parameter to allow users to specify whether an exact
-  *p*-value should be computed for non-parametric tests
+- New `exact` parameter to control whether exact *p*-values are computed
+  for non-parametric tests
   ([\#249](https://github.com/IndrajeetPatil/statsExpressions/issues/249)).
 
-- Fixes a warning emitted when `options(OutDec = ",")` is set (e.g., by
-  users in locales that use `,` as the decimal mark) and ensures the
-  generated plotmath expressions always use `.` as the decimal mark,
-  since `,` is parsed as a list separator in plotmath
+- Fixed a warning when `options(OutDec = ",")` is set (e.g., in locales
+  that use `,` as the decimal mark). Generated plotmath expressions now
+  always use `.` as the decimal mark, since `,` is parsed as a list
+  separator in plotmath
   ([\#146](https://github.com/IndrajeetPatil/statsExpressions/issues/146)).
 
 ## statsExpressions 1.7.4
