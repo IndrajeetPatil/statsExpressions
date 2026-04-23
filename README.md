@@ -531,7 +531,7 @@ console.
 | Parametric | \> 2 | Fisher’s or Welch’s one-way ANOVA | `stats::oneway.test()` |
 | Non-parametric | \> 2 | Kruskal-Wallis one-way ANOVA | `stats::kruskal.test()` |
 | Robust | \> 2 | Heteroscedastic one-way ANOVA for trimmed means | `WRS2::t1way()` |
-| Bayes Factor | \> 2 | Fisher’s ANOVA | `BayesFactor::anovaBF()` |
+| Bayesian | \> 2 | Fisher’s ANOVA | `BayesFactor::anovaBF()` |
 
 **Effect size estimation**
 
@@ -540,7 +540,7 @@ console.
 | Parametric | \> 2 | partial eta-squared, partial omega-squared | Yes | `effectsize::omega_squared()`, `effectsize::eta_squared()` |
 | Non-parametric | \> 2 | rank epsilon squared | Yes | `effectsize::rank_epsilon_squared()` |
 | Robust | \> 2 | Explanatory measure of effect size | Yes | `WRS2::t1way()` |
-| Bayes Factor | \> 2 | Bayesian R-squared | Yes | `performance::r2_bayes()` |
+| Bayesian | \> 2 | Bayesian R-squared | Yes | `performance::r2_bayes()` |
 
 #### within-subjects
 
@@ -557,7 +557,7 @@ equal `1`.
 | Parametric | \> 2 | One-way repeated measures ANOVA | `afex::aov_ez()` |
 | Non-parametric | \> 2 | Friedman rank sum test | `stats::friedman.test()` |
 | Robust | \> 2 | Heteroscedastic one-way repeated measures ANOVA for trimmed means | `WRS2::rmanova()` |
-| Bayes Factor | \> 2 | One-way repeated measures ANOVA | `BayesFactor::anovaBF()` |
+| Bayesian | \> 2 | One-way repeated measures ANOVA | `BayesFactor::anovaBF()` |
 
 **Effect size estimation**
 
@@ -566,7 +566,7 @@ equal `1`.
 | Parametric | \> 2 | partial eta-squared, partial omega-squared | Yes | `effectsize::omega_squared()`, `effectsize::eta_squared()` |
 | Non-parametric | \> 2 | Kendall’s coefficient of concordance | Yes | `effectsize::kendalls_w()` |
 | Robust | \> 2 | Algina-Keselman-Penfield robust standardized difference average | Yes | `WRS2::wmcpAKP()` |
-| Bayes Factor | \> 2 | Bayesian R-squared | Yes | `performance::r2_bayes()` |
+| Bayesian | \> 2 | Bayesian R-squared | Yes | `performance::r2_bayes()` |
 
 ## `two_sample_test`
 
@@ -632,7 +632,7 @@ aggregate first (e.g., take the mean).
 | Parametric | Cohen’s *d*, Hedge’s *g* | Yes | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
 | Non-parametric | *r* (rank-biserial correlation) | Yes | `effectsize::rank_biserial()` |
 | Robust | trimmed mean | Yes | `WRS2::trimcibt()` |
-| Bayes Factor | difference | Yes | `bayestestR::describe_posterior()` |
+| Bayesian | difference | Yes | `bayestestR::describe_posterior()` |
 
 ## `corr_test`
 
@@ -703,9 +703,9 @@ aggregate first (e.g., take the mean).
 
 | Type | Test | Effect size | CI available? | Function used |
 |:---|:---|:---|:---|:---|
-| Parametric | Meta-analysis via random-effects models | *beta* | Yes | `metafor::metafor()` |
+| Parametric | Meta-analysis via random-effects models | *beta* | Yes | `metafor::rma()` |
 | Robust | Meta-analysis via robust random-effects models | *beta* | Yes | `metaplus::metaplus()` |
-| Bayes | Meta-analysis via Bayesian random-effects models | *beta* | Yes | `metaBMA::meta_random()` |
+| Bayesian | Meta-analysis via Bayesian random-effects models | *beta* | Yes | `metaBMA::meta_random()` |
 
 # Usage in `{ggstatsplot}`
 

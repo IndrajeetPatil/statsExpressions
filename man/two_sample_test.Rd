@@ -194,7 +194,6 @@ Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressio
 
 \examples{
 \dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true")) withAutoprint(\{ # examplesIf}
-\dontshow{\}) # examplesIf}
 # ----------------------- within-subjects -------------------------------------
 
 # data
@@ -246,6 +245,7 @@ two_sample_test(
   paired = TRUE,
   type = "bayes"
 )
+
 # ----------------------- between-subjects -------------------------------------
 
 # for reproducibility
@@ -273,4 +273,5 @@ two_sample_test(ToothGrowth, supp, len, type = "robust")
 # ----------------------- Bayesian ---------------------------------------
 
 two_sample_test(ToothGrowth, supp, len, type = "bayes")
+\dontshow{\}) # examplesIf}
 }

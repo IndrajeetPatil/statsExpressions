@@ -167,7 +167,6 @@ The table below provides summary about:
 
 \examples{
 \dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true")) withAutoprint(\{ # examplesIf}
-\dontshow{\}) # examplesIf}
 #### -------------------- association test ------------------------ ####
 
 # ------------------------ frequentist ---------------------------------
@@ -253,4 +252,5 @@ contingency_table(
   ratio = c(0.2, 0.2, 0.3, 0.3),
   type = "bayes"
 )
+\dontshow{\}) # examplesIf}
 }

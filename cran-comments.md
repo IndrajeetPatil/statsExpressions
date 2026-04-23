@@ -2,7 +2,7 @@
 
 0 errors | 0 warnings | 0 note
 
-* Maintenance release to adapt to API changes in `{dplyr}` (v1.2.0) and `{purrr}` (v1.2.1).
+* Major release (2.0.0) with new `pairwise_contingency_table()` function, `exact` parameter for non-parametric tests, and a fix for `options(OutDec = ",")` warnings in plotmath expressions.
 
 ## revdepcheck results
 
