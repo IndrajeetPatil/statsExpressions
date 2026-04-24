@@ -1,5 +1,9 @@
 withr::local_options(list(tibble.width = Inf))
 
+normalize_na_summary_label <- function(x) {
+  gsub("\\bNAs\\b", "NA's", x)
+}
+
 test_that(desc = "long_to_wide_converter works - spread true", code = {
   skip_if(
     grepl("Under development", R.version$status, fixed = TRUE),
@@ -48,7 +52,10 @@ test_that(desc = "long_to_wide_converter works - spread true", code = {
   # checking datasets
   set.seed(123)
   expect_snapshot(purrr::walk(list(df1, df2, df3, df4), dplyr::glimpse))
-  expect_snapshot(purrr::map(list(df1, df2, df3, df4), summary))
+  expect_snapshot(
+    purrr::map(list(df1, df2, df3, df4), summary),
+    transform = normalize_na_summary_label
+  )
 })
 
 
@@ -98,7 +105,10 @@ test_that(desc = "long_to_wide_converter works - spread false", code = {
 
   set.seed(123)
   expect_snapshot(purrr::walk(list(df1, df2, df3, df4), dplyr::glimpse))
-  expect_snapshot(purrr::map(list(df1, df2, df3, df4), summary))
+  expect_snapshot(
+    purrr::map(list(df1, df2, df3, df4), summary),
+    transform = normalize_na_summary_label
+  )
 })
 
 # with .rowid - without NA ---------------------------------------------
