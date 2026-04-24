@@ -50,7 +50,6 @@ README.html
 ^paper.*$
 ^pkgdown$
 ^revdep$
-^robots\.txt$
 ^tests/manual$
 publication/*
 references.bib
