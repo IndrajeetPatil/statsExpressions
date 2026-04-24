@@ -54,6 +54,8 @@ template:
   opengraph:
     image:
       src: man/figures/card.png
+    twitter:
+      card: summary_large_image
 
 # development:
 #   mode: auto
