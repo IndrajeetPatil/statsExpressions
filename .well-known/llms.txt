@@ -1,0 +1,5 @@
+# LLM Documentation Index for statsExpressions
+# Machine-readable package documentation for AI assistants
+# See https://llmstxt.org/ for the specification
+
+/statsExpressions/llms.txt: Concise package overview optimised for AI assistants
