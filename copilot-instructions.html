@@ -26,7 +26,7 @@
   },
   "keywords": ["R", "statistics", "tidy data", "effect sizes", "Bayesian", "frequentist", "nonparametric", "robust statistics", "ggplot2", "dataframes"]
 }
-</script><meta name="citation_title" content="statsExpressions: Tidy Dataframes and Expressions with Statistical Details"><meta name="citation_author" content="Indrajeet Patil"><meta name="citation_year" content="2021"><meta name="citation_doi" content="10.21105/joss.03236"><meta name="citation_journal_title" content="Journal of Open Source Software"><link rel="alternate" type="text/plain" href="/statsExpressions/llms.txt" title="LLM-friendly documentation summary"><link rel="alternate" type="text/plain" href="/statsExpressions/llms-full.txt" title="Full LLM documentation"></head><body>
+</script><meta name="citation_title" content="statsExpressions: Tidy Dataframes and Expressions with Statistical Details"><meta name="citation_author" content="Indrajeet Patil"><meta name="citation_year" content="2021"><meta name="citation_doi" content="10.21105/joss.03236"><meta name="citation_journal_title" content="Journal of Open Source Software"><link rel="alternate" type="text/plain" href="/statsExpressions/llms.txt" title="LLM-friendly documentation summary"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -120,7 +120,7 @@
 <div class="section level3">
 <h3 id="testing">Testing<a class="anchor" aria-label="anchor" href="#testing"></a></h3>
 <ul><li>Framework: <code>testthat</code> (edition 3) with parallel execution</li>
-<li>Run tests: <code><a href="https://devtools.r-lib.org/reference/test.html" class="external-link">devtools::test()</a></code> or <code>make check</code>
+<li>Run tests: <code>devtools::test()</code> or <code>make check</code>
 </li>
 <li>
 <strong>Snapshot tests</strong>: Used extensively for expression output verification</li>
@@ -143,10 +143,10 @@
 <div class="section level3">
 <h3 id="style">Style<a class="anchor" aria-label="anchor" href="#style"></a></h3>
 <ul><li>
-<strong>Linting</strong>: Uses <code><a href="https://lintr.r-lib.org/reference/all_linters.html" class="external-link">lintr::all_linters()</a></code> with exceptions in <code>.lintr</code>
+<strong>Linting</strong>: Uses <code>lintr::all_linters()</code> with exceptions in <code>.lintr</code>
 </li>
 <li>
-<strong>Formatting</strong>: <code><a href="https://styler.r-lib.org/reference/style_pkg.html" class="external-link">styler::style_pkg()</a></code> (run via <code>make format</code>)</li>
+<strong>Formatting</strong>: <code>styler::style_pkg()</code> (run via <code>make format</code>)</li>
 <li>
 <strong>Naming</strong>: snake_case for functions and variables</li>
 <li>
