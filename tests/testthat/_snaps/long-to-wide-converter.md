@@ -59,7 +59,7 @@
        Mean   :16.50   Mean   :3.769   Mean   :2.411  
        3rd Qu.:24.25   3rd Qu.:3.842   3rd Qu.:2.780  
        Max.   :32.00   Max.   :5.424   Max.   :3.570  
-                       NA's   :13      NA's   :19     
+                       NAs    :13      NAs    :19     
       
       [[3]]
            .rowid           HDHF             HDLF             LDHF       
@@ -85,7 +85,7 @@
        Mean   :42.96   Mean   :0.07926   Mean   :0.621598   Mean   :0.02155  
        3rd Qu.:61.50   3rd Qu.:0.07000   3rd Qu.:0.236000   3rd Qu.:0.02500  
        Max.   :76.00   Max.   :0.32500   Max.   :5.712000   Max.   :0.08100  
-                       NA's   :42        NA's   :31         NA's   :46       
+                       NAs    :42        NAs    :31         NAs    :46       
             omni        
        Min.   :0.00014  
        1st Qu.:0.00260  
@@ -93,7 +93,7 @@
        Mean   :0.14573  
        3rd Qu.:0.17900  
        Max.   :1.32000  
-       NA's   :34       
+       NAs    :34       
       
 
 # long_to_wide_converter works - spread false
