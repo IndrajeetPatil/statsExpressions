@@ -48,7 +48,10 @@ test_that(desc = "long_to_wide_converter works - spread true", code = {
   # checking datasets
   set.seed(123)
   expect_snapshot(purrr::walk(list(df1, df2, df3, df4), dplyr::glimpse))
-  skip_on_os("windows")
+  skip_if(
+    getRversion() < "4.6.0",
+    "Skipping on R < 4.6.0: summary() changed NA label from 'NA\\'s' to 'NAs' in 4.6.0"
+  )
   expect_snapshot(purrr::map(list(df1, df2, df3, df4), summary))
 })
 
