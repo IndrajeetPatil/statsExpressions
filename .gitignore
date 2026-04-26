@@ -39,11 +39,11 @@ Network Trash Folder
 Temporary Items
 # R Studio files
 *.Rcheck/*
+*.Rproj
 *.html
 *.tar.gz
 .RData
 .Rhistory
-*.Rproj
 .Rproj.user
 .Ruserdata
 .claude
