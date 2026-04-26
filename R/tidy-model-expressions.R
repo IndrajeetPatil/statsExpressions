@@ -58,67 +58,73 @@ tidy_model_expressions <- function(
   # if any of the necessary numeric columns are missing, there shouldn't be an
   # expression corresponding to that row; convert the necessary columns to
   # character type for expression
-  df_expr <- data %>%
+  df_expr <- data |>
     filter(if_all(
       .cols = matches("estimate|statistic|std.error|p.value"),
       .fns = Negate(is.na)
-    )) %>%
+    )) |>
     .data_to_char(digits)
 
-  # effect size text for the expression (common for t, z, and chi^2)
-  es.text <- list(quote(widehat(italic(beta))))
+  stat_type <- statistic
 
-  # t-statistic --------------------------------
+  es.text <- if (stat_type == "f") {
+    switch(
+      effsize.type,
+      eta = list(quote(widehat(italic(eta)[p]^2))),
+      list(quote(widehat(italic(omega)[p]^2)))
+    )
+  } else {
+    list(quote(widehat(italic(beta))))
+  }
 
   # nolint start: line_length_linter.
-  if (statistic == "t") {
-    df_expr %<>% mutate(
-      expression = case_when(
-        df.error %in% c("NA", "Inf") ~ glue("list({es.text}=='{estimate}', italic(t)=='{statistic}', italic(p)=='{p.value}')"),
-        .default = glue("list({es.text}=='{estimate}', italic(t)('{df.error}')=='{statistic}', italic(p)=='{p.value}')")
-      )
+  stat_part <- switch(
+    stat_type,
+    t = "italic(t)('{df.error}')=='{statistic}'",
+    z = "italic(z)=='{statistic}'",
+    c = "italic(chi)^2*('{df.error}')=='{statistic}'",
+    f = "italic(F)('{df}', '{df.error}')=='{statistic}'"
+  )
+  expr_template <- paste0(
+    "list({es.text}=='{estimate}', ",
+    stat_part,
+    ", italic(p)=='{p.value}')"
+  )
+
+  df_expr <- df_expr |>
+    mutate(
+      expression = if (stat_type == "t") {
+        case_when(
+          df.error %in% c("NA", "Inf") ~ glue(
+            "list({es.text}=='{estimate}', italic(t)=='{statistic}', italic(p)=='{p.value}')"
+          ),
+          .default = glue(expr_template)
+        )
+      } else {
+        glue(expr_template)
+      }
     )
-  }
-
-  # z-statistic ---------------------------------
-
-  if (statistic == "z") {
-    df_expr %<>% mutate(expression = glue("list({es.text}=='{estimate}', italic(z)=='{statistic}', italic(p)=='{p.value}')"))
-  }
-
-  # chi^2-statistic -----------------------------
-
-  if (statistic == "c") {
-    df_expr %<>% mutate(expression = glue("list({es.text}=='{estimate}', italic(chi)^2*('{df.error}')=='{statistic}', italic(p)=='{p.value}')"))
-  }
-
-  # f-statistic ---------------------------------
-
-  if (statistic == "f") {
-    if (effsize.type == "eta") es.text <- list(quote(widehat(italic(eta)[p]^2)))
-    if (effsize.type == "omega") es.text <- list(quote(widehat(italic(omega)[p]^2)))
-
-    df_expr %<>% mutate(expression = glue("list({es.text}=='{estimate}', italic(F)('{df}', '{df.error}')=='{statistic}', italic(p)=='{p.value}')"))
-  }
-
   # nolint end
 
   # Replace `NA` with `NULL` to show nothing instead of an empty string ("")
-  left_join(data, select(df_expr, term, expression), by = "term") %>% .glue_to_expression()
+  left_join(data, select(df_expr, term, expression), by = "term") |>
+    .glue_to_expression()
 }
 
 
 #' @keywords internal
 #' @noRd
 .glue_to_expression <- function(data) {
-  data %>%
-    rowwise() %>%
-    mutate(expression = list(parse_expr(expression))) %>%
-    ungroup() %>% # convert from `expression` to `language`
-    mutate(expression = case_when(
-      is.na(unlist(expression)) ~ list(NULL),
-      .default = unlist(expression)
-    )) %>%
+  data |>
+    rowwise() |>
+    mutate(expression = list(parse_expr(expression))) |>
+    ungroup() |> # convert from `expression` to `language`
+    mutate(
+      expression = case_when(
+        is.na(unlist(expression)) ~ list(NULL),
+        .default = unlist(expression)
+      )
+    ) |>
     .add_package_class()
 }
 

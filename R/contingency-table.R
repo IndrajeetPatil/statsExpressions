@@ -49,7 +49,93 @@
 #'
 #' @autoglobal
 #'
-#' @example man/examples/examples-contingency-table.R
+#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
+#' #### -------------------- association test ------------------------ ####
+#'
+#' # ------------------------ frequentist ---------------------------------
+#'
+#' # unpaired
+#'
+#' set.seed(123)
+#' contingency_table(
+#'   data = mtcars,
+#'   x = am,
+#'   y = vs,
+#'   paired = FALSE
+#' )
+#'
+#' # paired
+#'
+#' paired_data <- dplyr::tibble(
+#'   response_before = structure(
+#'     c(1L, 2L, 1L, 2L),
+#'     levels = c("no", "yes"),
+#'     class = "factor"
+#'   ),
+#'   response_after = structure(
+#'     c(1L, 1L, 2L, 2L),
+#'     levels = c("no", "yes"),
+#'     class = "factor"
+#'   ),
+#'   Freq = c(65L, 25L, 5L, 5L)
+#' )
+#'
+#' set.seed(123)
+#' contingency_table(
+#'   data = paired_data,
+#'   x = response_before,
+#'   y = response_after,
+#'   paired = TRUE,
+#'   counts = Freq
+#' )
+#'
+#' # ------------------------ Bayesian -------------------------------------
+#'
+#' # unpaired
+#'
+#' set.seed(123)
+#' contingency_table(
+#'   data = mtcars,
+#'   x = am,
+#'   y = vs,
+#'   paired = FALSE,
+#'   type = "bayes"
+#' )
+#'
+#' # paired
+#'
+#' set.seed(123)
+#' contingency_table(
+#'   data = paired_data,
+#'   x = response_before,
+#'   y = response_after,
+#'   paired = TRUE,
+#'   counts = Freq,
+#'   type = "bayes"
+#' )
+#'
+#' #### -------------------- goodness-of-fit test -------------------- ####
+#'
+#' # ------------------------ frequentist ---------------------------------
+#'
+#' set.seed(123)
+#' contingency_table(
+#'   data = as.data.frame(HairEyeColor),
+#'   x = Eye,
+#'   counts = Freq
+#' )
+#'
+#' # ------------------------ Bayesian -------------------------------------
+#'
+#' set.seed(123)
+#' contingency_table(
+#'   data = as.data.frame(HairEyeColor),
+#'   x = Eye,
+#'   counts = Freq,
+#'   ratio = c(0.2, 0.2, 0.3, 0.3),
+#'   type = "bayes"
+#' )
+#'
 #' @export
 contingency_table <- function(
   data,
@@ -72,12 +158,14 @@ contingency_table <- function(
   type <- extract_stats_type(type)
   test <- ifelse(quo_is_null(enquo(y)), "1way", "2way")
 
-  data %<>%
-    select({{ x }}, {{ y }}, .counts = {{ counts }}) %>%
-    tidyr::drop_na()
+  data <- data |>
+    select({{ x }}, {{ y }}, .counts = {{ counts }}) |>
+    filter(!if_any(everything(), is.na))
 
   # untable the data frame based on the counts for each observation (if present)
-  if (".counts" %in% names(data)) data %<>% tidyr::uncount(weights = .counts)
+  if (".counts" %in% names(data)) {
+    data <- tidyr::uncount(data, weights = .counts)
+  }
 
   xtab <- table(data)
   ratio <- ratio %||% rep(1 / length(xtab), length(xtab))
@@ -85,20 +173,32 @@ contingency_table <- function(
   # non-Bayesian ---------------------------------------
 
   if (type != "bayes" && test == "2way") {
-    if (paired) c(.f, .f.es) %<-% c(stats::mcnemar.test, effectsize::cohens_g)
-    if (!paired) c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::cramers_v)
+    if (paired) {
+      .f <- stats::mcnemar.test
+      .f.es <- effectsize::cohens_g
+    }
+    if (!paired) {
+      .f <- stats::chisq.test
+      .f.es <- effectsize::cramers_v
+    }
     .f.args <- list(x = xtab, correct = FALSE)
   }
 
   if (type != "bayes" && test == "1way") {
-    c(.f, .f.es) %<-% c(stats::chisq.test, effectsize::pearsons_c)
+    .f <- stats::chisq.test
+    .f.es <- effectsize::pearsons_c
     .f.args <- list(x = xtab, p = ratio, correct = FALSE)
   }
 
   if (type != "bayes") {
     stats_df <- bind_cols(
       tidy_model_parameters(exec(.f, !!!.f.args)),
-      tidy_model_effectsize(exec(.f.es, !!!.f.args, ci = conf.level, alternative = alternative))
+      tidy_model_effectsize(exec(
+        .f.es,
+        !!!.f.args,
+        ci = conf.level,
+        alternative = alternative
+      ))
     )
   }
 
@@ -107,11 +207,15 @@ contingency_table <- function(
   if (type == "bayes" && test == "2way") {
     stats_df <- BayesFactor::contingencyTableBF(
       xtab,
-      sampleType         = sampling.plan,
-      fixedMargin        = fixed.margin,
+      sampleType = sampling.plan,
+      fixedMargin = fixed.margin,
       priorConcentration = prior.concentration
-    ) %>%
-      tidy_model_parameters(ci = conf.level, es_type = "cramers_v", alternative = alternative)
+    ) |>
+      tidy_model_parameters(
+        ci = conf.level,
+        es_type = "cramers_v",
+        alternative = alternative
+      )
   }
 
   if (type == "bayes" && test == "1way") {
@@ -131,18 +235,28 @@ contingency_table <- function(
   # nocov end
 
   p1s <- rdirichlet(n = 100000L, alpha = prior.concentration * ratio)
-  pr_h1 <- map_dbl(1:100000L, ~ stats::dmultinom(as.matrix(xtab), prob = p1s[.x, ], log = TRUE))
+  pr_h1 <- map_dbl(
+    1:100000L,
+    ~ stats::dmultinom(as.matrix(xtab), prob = p1s[.x, ], log = TRUE)
+  )
 
   # BF = (log) prob of data under alternative - (log) prob of data under null
   # computing Bayes Factor and formatting the results
   tibble(
-    bf10        = exp(BayesFactor::logMeanExpLogs(pr_h1) - stats::dmultinom(as.matrix(xtab), NULL, ratio, TRUE)),
+    bf10 = exp(
+      BayesFactor::logMeanExpLogs(pr_h1) -
+        stats::dmultinom(as.matrix(xtab), NULL, ratio, TRUE)
+    ),
     prior.scale = prior.concentration,
-    method      = "Bayesian one-way contingency table analysis"
-  ) %>%
-    mutate(expression = glue("list(
+    method = "Bayesian one-way contingency table analysis"
+  ) |>
+    mutate(
+      expression = glue(
+        "list(
             log[e]*(BF['01'])=='{format_value(-log(bf10), digits)}',
-            {prior_switch(method)}=='{format_value(prior.scale, digits)}')")) %>%
+            {prior_switch(method)}=='{format_value(prior.scale, digits)}')"
+      )
+    ) |>
     .glue_to_expression()
 }
 

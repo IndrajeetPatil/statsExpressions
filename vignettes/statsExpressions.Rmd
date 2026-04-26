@@ -131,10 +131,85 @@ statistical analysis across grouping variables.
 ```{r}
 #| label = "grouped_df"
 # running one-sample proportion test for `vs` at all levels of `am`
-mtcars %>%
-  group_by(am) %>%
-  group_modify(~ contingency_table(.x, vs), .keep = TRUE) %>%
+mtcars |>
+  group_by(am) |>
+  group_modify(~ contingency_table(.x, vs), .keep = TRUE) |>
   ungroup()
+```
+
+## Custom Statistical Workflows
+
+### Pairwise comparisons with automatic *p*-value adjustment
+
+When an omnibus test (e.g., one-way ANOVA) is significant, you typically follow
+up with pairwise comparisons. The `pairwise_comparisons()` function handles this
+with built-in *p*-value adjustment across all pairwise tests:
+
+```{r}
+#| label = "pairwise"
+pairwise_comparisons(
+  data            = mtcars,
+  x               = cyl,
+  y               = wt,
+  type            = "parametric",
+  var.equal       = FALSE,
+  p.adjust.method = "holm"
+)
+```
+
+Each row contains a formatted `expression` column with the adjusted *p*-value,
+ready for use as a plot annotation. The `p.adjust.method` argument supports all
+methods from `stats::p.adjust()` (e.g., `"holm"`, `"bonferroni"`, `"BH"`,
+`"fdr"`, `"none"`).
+
+### Chaining multiple tests and adjusting *p*-values
+
+You can chain different statistical tests on the same data, consolidate the
+results into a single data frame, and apply *p*-value correction across all
+comparisons:
+
+```{r}
+#| label = "custom_workflow"
+multi_test_results <- dplyr::bind_rows(
+  two_sample_test(mtcars, am, wt, type = "parametric"),
+  two_sample_test(mtcars, am, wt, type = "nonparametric"),
+  two_sample_test(mtcars, am, wt, type = "robust")
+) |>
+  dplyr::mutate(p.value = stats::p.adjust(p.value, method = "holm"))
+
+dplyr::select(multi_test_results, method, effectsize, estimate, p.value)
+```
+
+### Generating formatted expressions from custom results
+
+The `add_expression_col()` function creates publication-ready plotmath
+expressions from any data frame containing statistical details. This is useful
+when you run your own tests outside `{statsExpressions}` and want to generate
+a formatted expression for plot annotations:
+
+```{r}
+#| label = "custom_expression"
+# suppose you have run your own statistical test
+custom_stats <- cbind.data.frame(
+  statistic  = 2.18,
+  df         = 18,
+  p.value    = 0.041,
+  estimate   = 0.65,
+  conf.level = 0.95,
+  conf.low   = 0.03,
+  conf.high  = 1.27,
+  method     = "Student's t-test"
+)
+
+# generate a formatted expression
+add_expression_col(
+  data           = custom_stats,
+  statistic.text = list(quote(italic("t"))),
+  effsize.text   = list(quote(italic("d")["Cohen"])),
+  n              = 20L,
+  digits         = 2L,
+  digits.df      = 0L
+)$expression[[1]]
 ```
 
 ## Expressions for Plots
@@ -153,7 +228,7 @@ statistical reporting for both Bayesian [@van2020jasp] and Frequentist
 knitr::include_graphics("stats_reporting_format.png")
 ```
 
-This expression be easily displayed in a plot (Figure 2). Displaying statistical
+This expression can be easily displayed in a plot (Figure 2). Displaying statistical
 results in the context of a visualization is indeed a philosophy adopted by the
 `{ggstatsplot}` package [@Patil2021], and `{statsExpressions}` functions as its
 statistical processing backend.
@@ -167,8 +242,21 @@ statistical processing backend.
 # needed libraries
 library(ggplot2)
 
-# creating a data frame
-res <- oneway_anova(iris, Species, Sepal.Length, type = "nonparametric")
+# Example 1: Performing a t-test on raw tidy data and extracting the formatted expression
+# for direct use in a plot annotation
+res_ttest <- two_sample_test(mtcars, am, wt, type = "parametric")
+
+ggplot(mtcars, aes(as.factor(am), wt)) +
+  geom_boxplot() +
+  labs(
+    x = "Transmission (0 = automatic, 1 = manual)",
+    y = "Weight (1000 lbs)",
+    title = "Vehicle Weight by Transmission Type",
+    subtitle = res_ttest$expression[[1]] # Extract formatted p-value and effect size
+  )
+
+# Example 2: One-way ANOVA
+res_anova <- oneway_anova(iris, Species, Sepal.Length, type = "nonparametric")
 
 ggplot(iris, aes(x = Sepal.Length, y = Species)) +
   geom_boxplot() + # use 'expression' column to display results in the subtitle
@@ -176,7 +264,7 @@ ggplot(iris, aes(x = Sepal.Length, y = Species)) +
     x = "Penguin Species",
     y = "Body mass (in grams)",
     title = "Kruskal-Wallis Rank Sum Test",
-    subtitle = res$expression[[1]]
+    subtitle = res_anova$expression[[1]]
   )
 ```
 

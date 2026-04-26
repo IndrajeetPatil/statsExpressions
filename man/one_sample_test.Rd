@@ -15,6 +15,7 @@ one_sample_test(
   tr = 0.2,
   bf.prior = 0.707,
   effsize.type = "g",
+  exact = FALSE,
   ...
 )
 }
@@ -69,6 +70,9 @@ value corresponds to scale for fixed effects.}
 \item{effsize.type}{Type of effect size needed for \emph{parametric} tests. The
 argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \emph{g}).}
 
+\item{exact}{A logical indicating whether you want exact p-values to be computed.
+Relevant only when \code{type = "nonparametric"} (Default: \code{FALSE}).}
+
 \item{...}{Currently ignored.}
 }
 \value{
@@ -121,7 +125,7 @@ The table below provides summary about:
    Parametric \tab Cohen's \emph{d}, Hedge's \emph{g} \tab Yes \tab \code{effectsize::cohens_d()}, \code{effectsize::hedges_g()} \cr
    Non-parametric \tab \emph{r} (rank-biserial correlation) \tab Yes \tab \code{effectsize::rank_biserial()} \cr
    Robust \tab trimmed mean \tab Yes \tab \code{WRS2::trimcibt()} \cr
-   Bayes Factor \tab difference \tab Yes \tab \code{bayestestR::describe_posterior()} \cr
+   Bayesian \tab difference \tab Yes \tab \code{bayestestR::describe_posterior()} \cr
 }
 }
 

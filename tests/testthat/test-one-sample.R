@@ -2,10 +2,11 @@ run_one_sample_tests_with_parameters <- function(title, x, test.value) {
   cases_data <- tidyr::expand_grid(
     type = c("bayes", "parametric", "nonparametric", "robust"),
     conf.level = c(0.95, 0.90)
-  ) %>%
-    dplyr::mutate(
-      effsize.type = rep_len(c("g", "d"), length.out = nrow(.)) # relevant only for parametric
-    )
+  )
+  cases_data <- dplyr::mutate(
+    cases_data,
+    effsize.type = rep_len(c("g", "d"), length.out = nrow(cases_data))
+  )
 
   patrick::with_parameters_test_that(
     title,
@@ -36,5 +37,13 @@ run_one_sample_tests_with_parameters <- function(title, x, test.value) {
   )
 }
 
-run_one_sample_tests_with_parameters("one-sample-test without missing data: ", sleep_total, 5.0)
-run_one_sample_tests_with_parameters("one-sample-test with missing data: ", brainwt, 0.25)
+run_one_sample_tests_with_parameters(
+  "one-sample-test without missing data: ",
+  sleep_total,
+  5.0
+)
+run_one_sample_tests_with_parameters(
+  "one-sample-test with missing data: ",
+  brainwt,
+  0.25
+)

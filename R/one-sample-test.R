@@ -6,6 +6,8 @@
 #'   `0`).
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
 #'   argument can be `"d"` (for Cohen's *d*) or `"g"` (for Hedge's *g*).
+#' @param exact A logical indicating whether you want exact p-values to be computed.
+#'   Relevant only when `type = "nonparametric"` (Default: `FALSE`).
 #' @inheritParams long_to_wide_converter
 #' @inheritParams extract_stats_type
 #' @inheritParams add_expression_col
@@ -48,6 +50,7 @@ one_sample_test <- function(
   tr = 0.2,
   bf.prior = 0.707,
   effsize.type = "g",
+  exact = FALSE,
   ...
 ) {
   type <- extract_stats_type(type)
@@ -57,28 +60,40 @@ one_sample_test <- function(
 
   if (type == "parametric") {
     .f <- stats::t.test
-    # styler: off
-    if (effsize.type %in% c("unbiased", "g")) .f.es <- effectsize::hedges_g
-    if (effsize.type %in% c("biased", "d"))   .f.es <- effectsize::cohens_d
-    # styler: on
+    .f.es <- switch(
+      match.arg(effsize.type, c("g", "d", "unbiased", "biased")),
+      g = ,
+      unbiased = effectsize::hedges_g,
+      d = ,
+      biased = effectsize::cohens_d
+    )
   }
 
   # non-parametric ---------------------------------------
 
-  if (type == "nonparametric") c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
+  if (type == "nonparametric") {
+    .f <- stats::wilcox.test
+    .f.es <- effectsize::rank_biserial
+  }
 
   if (type %in% c("parametric", "nonparametric")) {
-    stats_df <- exec(.f, x = x_vec, mu = test.value, alternative = alternative, exact = FALSE) %>%
-      tidy_model_parameters() %>%
+    stats_df <- exec(
+      .f,
+      x = x_vec,
+      mu = test.value,
+      alternative = alternative,
+      exact = exact
+    ) |>
+      tidy_model_parameters() |>
       select(-matches("^est|^conf|^diff|^term|^ci"))
 
     ez_df <- exec(
       .f.es,
-      x       = x_vec,
-      mu      = test.value,
+      x = x_vec,
+      mu = test.value,
       verbose = FALSE,
-      ci      = conf.level
-    ) %>%
+      ci = conf.level
+    ) |>
       tidy_model_effectsize()
 
     stats_df <- bind_cols(stats_df, ez_df)
@@ -87,14 +102,24 @@ one_sample_test <- function(
   # robust ---------------------------------------
 
   if (type == "robust") {
-    stats_df <- exec(WRS2::trimcibt, x = x_vec, nv = test.value, tr = tr, alpha = 1.0 - conf.level) %>%
+    stats_df <- exec(
+      WRS2::trimcibt,
+      x = x_vec,
+      nv = test.value,
+      tr = tr,
+      alpha = 1.0 - conf.level
+    ) |>
       tidy_model_parameters()
   }
 
   # Bayesian ---------------------------------------
 
   if (type == "bayes") {
-    stats_df <- BayesFactor::ttestBF(x = x_vec, rscale = bf.prior, mu = test.value) %>%
+    stats_df <- BayesFactor::ttestBF(
+      x = x_vec,
+      rscale = bf.prior,
+      mu = test.value
+    ) |>
       tidy_model_parameters(ci = conf.level)
   }
 

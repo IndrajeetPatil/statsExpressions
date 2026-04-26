@@ -1,158 +1,197 @@
 withr::local_options(list(tibble.width = Inf))
 
-test_that(
-  desc = "long_to_wide_converter works - spread true",
-  code = {
-    skip_if(
-      grepl("Under development", R.version$status, fixed = TRUE),
-      "Skipping on R-devel due to summary() format changes"
-    )
+test_that(desc = "long_to_wide_converter works - spread true", code = {
+  skip_if(
+    grepl("Under development", R.version$status, fixed = TRUE),
+    "Skipping on R-devel due to summary() format changes"
+  )
 
-    # data without NAs ------------------------------
+  # data without NAs ------------------------------
 
-    # within-subjects
-    set.seed(123)
-    df1 <- long_to_wide_converter(
-      data = iris_long,
-      x = condition,
-      y = value
-    )
+  # within-subjects
+  set.seed(123)
+  df1 <- long_to_wide_converter(
+    data = iris_long,
+    x = condition,
+    y = value
+  )
 
-    # between-subjects
-    set.seed(123)
-    df2 <- long_to_wide_converter(
-      data = mtcars,
-      x = am,
-      y = wt,
-      paired = FALSE
-    )
+  # between-subjects
+  set.seed(123)
+  df2 <- long_to_wide_converter(
+    data = mtcars,
+    x = am,
+    y = wt,
+    paired = FALSE
+  )
 
-    # data with NAs ------------------------------
+  # data with NAs ------------------------------
 
-    # within-subjects
-    set.seed(123)
-    df3 <- long_to_wide_converter(
-      data = bugs_long,
-      x = condition,
-      y = desire,
-      paired = TRUE
-    )
+  # within-subjects
+  set.seed(123)
+  df3 <- long_to_wide_converter(
+    data = bugs_long,
+    x = condition,
+    y = desire,
+    paired = TRUE
+  )
 
-    # between-subjects
-    set.seed(123)
-    df4 <- long_to_wide_converter(
-      data = msleep,
-      x = vore,
-      y = brainwt,
-      paired = FALSE
-    )
+  # between-subjects
+  set.seed(123)
+  df4 <- long_to_wide_converter(
+    data = msleep,
+    x = vore,
+    y = brainwt,
+    paired = FALSE
+  )
 
-    # checking datasets
-    set.seed(123)
-    expect_snapshot(purrr::walk(list(df1, df2, df3, df4), dplyr::glimpse))
-    expect_snapshot(purrr::map(list(df1, df2, df3, df4), summary))
-  }
-)
+  # checking datasets
+  set.seed(123)
+  expect_snapshot(purrr::walk(list(df1, df2, df3, df4), dplyr::glimpse))
+  skip_if(
+    getRversion() < "4.6.0",
+    "Skipping on R < 4.6.0: summary() changed NA label from 'NA\\'s' to 'NAs' in 4.6.0"
+  )
+  expect_snapshot(purrr::map(list(df1, df2, df3, df4), summary))
+})
 
 
-test_that(
-  desc = "long_to_wide_converter works - spread false",
-  code = {
-    # ----------------------- data without NAs ------------------------------
+test_that(desc = "long_to_wide_converter works - spread false", code = {
+  # ----------------------- data without NAs ------------------------------
 
-    # within-subjects
-    set.seed(123)
-    df1 <- long_to_wide_converter(
-      data = iris_long,
-      x = condition,
-      y = value,
-      spread = FALSE
-    )
+  # within-subjects
+  set.seed(123)
+  df1 <- long_to_wide_converter(
+    data = iris_long,
+    x = condition,
+    y = value,
+    spread = FALSE
+  )
 
-    # between-subjects
-    set.seed(123)
-    df2 <- long_to_wide_converter(
-      data = mtcars,
-      x = am,
-      y = wt,
-      paired = FALSE,
-      spread = FALSE
-    )
+  # between-subjects
+  set.seed(123)
+  df2 <- long_to_wide_converter(
+    data = mtcars,
+    x = am,
+    y = wt,
+    paired = FALSE,
+    spread = FALSE
+  )
 
-    # -------------------------- data with NAs ------------------------------
+  # -------------------------- data with NAs ------------------------------
 
-    # within-subjects
-    set.seed(123)
-    df3 <- long_to_wide_converter(
-      data = bugs_long,
-      x = condition,
-      y = desire,
-      paired = TRUE,
-      spread = FALSE
-    )
+  # within-subjects
+  set.seed(123)
+  df3 <- long_to_wide_converter(
+    data = bugs_long,
+    x = condition,
+    y = desire,
+    paired = TRUE,
+    spread = FALSE
+  )
 
-    # between-subjects
-    set.seed(123)
-    df4 <- long_to_wide_converter(
-      data = msleep,
-      x = vore,
-      y = brainwt,
-      paired = FALSE,
-      spread = FALSE
-    )
+  # between-subjects
+  set.seed(123)
+  df4 <- long_to_wide_converter(
+    data = msleep,
+    x = vore,
+    y = brainwt,
+    paired = FALSE,
+    spread = FALSE
+  )
 
-    set.seed(123)
-    expect_snapshot(purrr::walk(list(df1, df2, df3, df4), dplyr::glimpse))
-    expect_snapshot(purrr::map(list(df1, df2, df3, df4), summary))
-  }
-)
+  set.seed(123)
+  expect_snapshot(purrr::walk(list(df1, df2, df3, df4), dplyr::glimpse))
+  expect_snapshot(purrr::map(list(df1, df2, df3, df4), summary))
+})
 
 # with .rowid - without NA ---------------------------------------------
 
-test_that(
-  desc = "with .rowid - without NA",
-  code = {
-    df_original <- structure(
-      list(
-        score = c(90, 90, 72.5, 45),
-        condition = structure(c(1L, 2L, 2L, 1L), .Label = c("4", "5"), class = "factor"),
-        id = c(1L, 2L, 1L, 2L)
+test_that(desc = "with .rowid - without NA", code = {
+  df_original <- structure(
+    list(
+      score = c(90, 90, 72.5, 45),
+      condition = structure(
+        c(1L, 2L, 2L, 1L),
+        .Label = c("4", "5"),
+        class = "factor"
       ),
-      row.names = c(NA, -4L),
-      class = c("tbl_df", "tbl", "data.frame")
-    )
+      id = c(1L, 2L, 1L, 2L)
+    ),
+    row.names = c(NA, -4L),
+    class = c("tbl_df", "tbl", "data.frame")
+  )
 
-    df_arranged <- arrange(df_original, id)
+  df_arranged <- arrange(df_original, id)
 
-    expect_identical(
-      long_to_wide_converter(df_arranged, condition, score),
-      long_to_wide_converter(df_original, condition, score, id)
-    )
+  expect_identical(
+    long_to_wide_converter(df_arranged, condition, score),
+    long_to_wide_converter(df_original, condition, score, id)
+  )
 
-    expect_identical(
-      arrange(long_to_wide_converter(df_arranged, condition, score, spread = FALSE), .rowid),
-      arrange(long_to_wide_converter(df_original, condition, score, id, spread = FALSE), .rowid)
+  expect_identical(
+    arrange(
+      long_to_wide_converter(df_arranged, condition, score, spread = FALSE),
+      .rowid
+    ),
+    arrange(
+      long_to_wide_converter(df_original, condition, score, id, spread = FALSE),
+      .rowid
     )
-  }
-)
+  )
+})
 
 
 # with .rowid - with NA ---------------------------------------------
 
-test_that(
-  desc = "with .rowid - with NA",
-  code = {
-    df_original <- bugs_long
-    df_arranged <- arrange(bugs_long, subject)
+test_that(desc = "with .rowid - with NA", code = {
+  df_original <- bugs_long
+  df_arranged <- arrange(bugs_long, subject)
 
-    expect_identical(
-      select(long_to_wide_converter(df_arranged, condition, desire), -.rowid),
-      select(long_to_wide_converter(df_original, condition, desire, subject), -.rowid)
+  expect_identical(
+    select(long_to_wide_converter(df_arranged, condition, desire), -.rowid),
+    select(
+      long_to_wide_converter(df_original, condition, desire, subject),
+      -.rowid
     )
+  )
 
-    expect_identical(
-      select(long_to_wide_converter(df_arranged, condition, desire, spread = FALSE), -.rowid),
-      select(long_to_wide_converter(df_original, condition, desire, subject, spread = FALSE), -.rowid)
+  expect_identical(
+    select(
+      long_to_wide_converter(df_arranged, condition, desire, spread = FALSE),
+      -.rowid
+    ),
+    select(
+      long_to_wide_converter(
+        df_original,
+        condition,
+        desire,
+        subject,
+        spread = FALSE
+      ),
+      -.rowid
     )
-  }
-)
+  )
+})
+
+
+# NA in subject.id should not drop rows with complete x/y ----------------
+
+test_that("NA in subject.id does not drop rows with complete measurements", {
+  df <- dplyr::tibble(
+    id = c(1L, 1L, NA_integer_, NA_integer_),
+    group = c("a", "b", "a", "b"),
+    value = c(10, 20, 30, 40)
+  )
+
+  result <- long_to_wide_converter(
+    df,
+    x = group,
+    y = value,
+    subject.id = id,
+    paired = TRUE,
+    spread = FALSE
+  )
+
+  expect_identical(nrow(result), 4L)
+})

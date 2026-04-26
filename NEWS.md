@@ -1,3 +1,22 @@
+# statsExpressions 2.0.0
+
+This major release accompanies the upcoming stable 1.0.0 release of
+`{ggstatsplot}`, which uses `{statsExpressions}` as its statistical
+processing backend.
+
+- New `pairwise_contingency_table()` function for pairwise Fisher's exact tests
+  as post hoc follow-ups for chi-squared contingency table analyses. Includes
+  Cramer's *V* effect sizes with confidence intervals and *p*-value adjustment
+  for multiple comparisons (#352).
+
+- New `exact` parameter to control whether exact *p*-values are computed for
+  non-parametric tests (#249).
+
+- Fixed a warning when `options(OutDec = ",")` is set (e.g., in locales that
+  use `,` as the decimal mark). Generated plotmath expressions now always use
+  `.` as the decimal mark, since `,` is parsed as a list separator in plotmath
+  (#146).
+
 # statsExpressions 1.7.4
 
 - No user-facing changes (internal maintenance: dependency updates, CI/CD improvements).

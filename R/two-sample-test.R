@@ -27,8 +27,85 @@
 #' @autoglobal
 #'
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
-#' @example man/examples/examples-two-sample-test-within.R
-#' @example man/examples/examples-two-sample-test-between.R
+#' # ----------------------- within-subjects -------------------------------------
+#'
+#' # data
+#' df <- dplyr::filter(bugs_long, condition %in% c("LDLF", "LDHF"))
+#'
+#' # for reproducibility
+#' set.seed(123)
+#'
+#' # ----------------------- parametric ---------------------------------------
+#'
+#' two_sample_test(
+#'   df,
+#'   condition,
+#'   desire,
+#'   subject.id = subject,
+#'   paired = TRUE,
+#'   type = "parametric"
+#' )
+#'
+#' # ----------------------- non-parametric -----------------------------------
+#'
+#' two_sample_test(
+#'   df,
+#'   condition,
+#'   desire,
+#'   subject.id = subject,
+#'   paired = TRUE,
+#'   type = "nonparametric"
+#' )
+#'
+#' # ----------------------- robust --------------------------------------------
+#'
+#' two_sample_test(
+#'   df,
+#'   condition,
+#'   desire,
+#'   subject.id = subject,
+#'   paired = TRUE,
+#'   type = "robust"
+#' )
+#'
+#' # ----------------------- Bayesian ---------------------------------------
+#'
+#' two_sample_test(
+#'   df,
+#'   condition,
+#'   desire,
+#'   subject.id = subject,
+#'   paired = TRUE,
+#'   type = "bayes"
+#' )
+#'
+#' # ----------------------- between-subjects -------------------------------------
+#'
+#' # for reproducibility
+#' set.seed(123)
+#'
+#' # ----------------------- parametric ---------------------------------------
+#'
+#' # unequal variance
+#' two_sample_test(ToothGrowth, supp, len, type = "parametric")
+#'
+#' # equal variance
+#' two_sample_test(ToothGrowth, supp, len, type = "parametric", var.equal = TRUE)
+#'
+#' # biased (Cohen's d) effect size
+#' two_sample_test(ToothGrowth, supp, len, type = "parametric", effsize.type = "d")
+#'
+#' # ----------------------- non-parametric -----------------------------------
+#'
+#' two_sample_test(ToothGrowth, supp, len, type = "nonparametric")
+#'
+#' # ----------------------- robust --------------------------------------------
+#'
+#' two_sample_test(ToothGrowth, supp, len, type = "robust")
+#'
+#' # ----------------------- Bayesian ---------------------------------------
+#'
+#' two_sample_test(ToothGrowth, supp, len, type = "bayes")
 #'
 #' @template citation
 #'
@@ -48,40 +125,62 @@ two_sample_test <- function(
   bf.prior = 0.707,
   tr = 0.2,
   nboot = 100L,
+  exact = FALSE,
   ...
 ) {
   # data -------------------------------------------
 
   type <- extract_stats_type(type)
-  c(x, y) %<-% c(ensym(x), ensym(y))
+  x <- ensym(x)
+  y <- ensym(y)
 
-  data %<>% long_to_wide_converter(
-    x          = {{ x }},
-    y          = {{ y }},
+  data <- long_to_wide_converter(
+    data,
+    x = {{ x }},
+    y = {{ y }},
     subject.id = {{ subject.id }},
-    paired     = paired,
-    spread     = ifelse(type %in% c("bayes", "robust"), paired, TRUE)
+    paired = paired,
+    spread = ifelse(type %in% c("bayes", "robust"), paired, TRUE)
   )
 
   # parametric ---------------------------------------
 
   if (type == "parametric") {
-    # styler: off
     digits.df <- ifelse(paired || var.equal, 0L, digits)
-    .f   <- stats::t.test
-    if (effsize.type %in% c("unbiased", "g")) .f.es <- effectsize::hedges_g
-    if (effsize.type %in% c("biased", "d")) .f.es   <- effectsize::cohens_d
-    # styler: on
+    .f <- stats::t.test
+    .f.es <- switch(
+      match.arg(effsize.type, c("g", "d", "unbiased", "biased")),
+      g = ,
+      unbiased = effectsize::hedges_g,
+      d = ,
+      biased = effectsize::cohens_d
+    )
   }
 
   # non-parametric ------------------------------------
 
-  if (type == "nonparametric") c(.f, .f.es) %<-% c(stats::wilcox.test, effectsize::rank_biserial)
+  if (type == "nonparametric") {
+    .f <- stats::wilcox.test
+    .f.es <- effectsize::rank_biserial
+  }
 
   if (type %in% c("parametric", "nonparametric")) {
-    .f.args <- list(x = data[[2L]], y = data[[3L]], paired = paired, alternative = alternative)
-    stats_df <- exec(.f, !!!.f.args, var.equal = var.equal, exact = FALSE) %>% tidy_model_parameters()
-    ez_df <- exec(.f.es, !!!.f.args, pooled_sd = FALSE, ci = conf.level, verbose = FALSE) %>% tidy_model_effectsize()
+    .f.args <- list(
+      x = data[[2L]],
+      y = data[[3L]],
+      paired = paired,
+      alternative = alternative
+    )
+    stats_df <- exec(.f, !!!.f.args, var.equal = var.equal, exact = exact) |>
+      tidy_model_parameters()
+    ez_df <- exec(
+      .f.es,
+      !!!.f.args,
+      pooled_sd = FALSE,
+      ci = conf.level,
+      verbose = FALSE
+    ) |>
+      tidy_model_effectsize()
   }
 
   # robust ---------------------------------------
@@ -90,36 +189,71 @@ two_sample_test <- function(
     digits.df <- ifelse(paired, 0L, digits)
 
     # styler: off
-    if (!paired) c(.f, .f.es) %<-% c(WRS2::yuen, WRS2::akp.effect)
-    if (paired) c(.f, .f.es)  %<-% c(WRS2::yuend, WRS2::dep.effect)
+    if (!paired) {
+      .f <- WRS2::yuen
+      .f.es <- WRS2::akp.effect
+    }
+    if (paired) {
+      .f <- WRS2::yuend
+      .f.es <- WRS2::dep.effect
+    }
 
-    .f.args    <- list(formula = new_formula(y, x), data = data, x = data[[2L]], y = data[[3L]])
-    .f.es.args <- list(EQVAR = FALSE, nboot = nboot, alpha = 1.0 - conf.level, tr = tr)
+    .f.args <- list(
+      formula = new_formula(y, x),
+      data = data,
+      x = data[[2L]],
+      y = data[[3L]]
+    )
+    .f.es.args <- list(
+      EQVAR = FALSE,
+      nboot = nboot,
+      alpha = 1.0 - conf.level,
+      tr = tr
+    )
 
-    ez_df    <- tidy_model_parameters(exec(.f.es, !!!.f.args, !!!.f.es.args), keep = "AKP")
+    ez_df <- tidy_model_parameters(
+      exec(.f.es, !!!.f.args, !!!.f.es.args),
+      keep = "AKP"
+    )
     stats_df <- tidy_model_parameters(exec(.f, !!!.f.args, !!!.f.es.args))
     # styler: on
   }
 
   if (type != "bayes") {
-    stats_df <- bind_cols(select(stats_df, -matches("^est|^eff|conf|^ci")), select(ez_df, -matches("term")))
+    stats_df <- bind_cols(
+      select(stats_df, -matches("^est|^eff|conf|^ci")),
+      select(ez_df, -matches("term"))
+    )
   }
 
   # Bayesian ---------------------------------------
 
   if (type == "bayes") {
     # styler: off
-    if (!paired) .f.args <- list(formula = new_formula(y, x), data = as.data.frame(data), paired = paired)
-    if (paired) .f.args  <- list(x = data[[2L]], y = data[[3L]], paired = paired)
+    if (!paired) {
+      .f.args <- list(
+        formula = new_formula(y, x),
+        data = as.data.frame(data),
+        paired = paired
+      )
+    }
+    if (paired) {
+      .f.args <- list(x = data[[2L]], y = data[[3L]], paired = paired)
+    }
     # styler: on
 
-    stats_df <- exec(BayesFactor::ttestBF, rscale = bf.prior, !!!.f.args) %>% tidy_model_parameters(ci = conf.level)
+    stats_df <- exec(BayesFactor::ttestBF, rscale = bf.prior, !!!.f.args) |>
+      tidy_model_parameters(ci = conf.level)
   }
 
   # expression ---------------------------------------
 
   add_expression_col(
-    data = if (type == "bayes") stats_df else .standardize_two_sample_terms(stats_df, as_name(x), as_name(y)),
+    data = if (type == "bayes") {
+      stats_df
+    } else {
+      .standardize_two_sample_terms(stats_df, as_name(x), as_name(y))
+    },
     paired = paired,
     n = ifelse(paired, length(unique(data$.rowid)), nrow(data)),
     digits = digits,
@@ -129,7 +263,7 @@ two_sample_test <- function(
 
 #' @noRd
 .standardize_two_sample_terms <- function(data, x_name, y_name) {
-  data %>%
+  data |>
     mutate(
       across(matches("^parameter1$|^term$"), \(x) y_name),
       across(matches("^parameter2$|^group$"), \(x) x_name)

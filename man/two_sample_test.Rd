@@ -19,6 +19,7 @@ two_sample_test(
   bf.prior = 0.707,
   tr = 0.2,
   nboot = 100L,
+  exact = FALSE,
   ...
 )
 }
@@ -100,6 +101,9 @@ of an error, try reducing the value of \code{tr}, which is by default set to
 \item{nboot}{Number of bootstrap samples for computing confidence interval
 for the effect size (Default: \code{100L}).}
 
+\item{exact}{A logical indicating whether you want exact p-values to be computed.
+Relevant only when \code{type = "nonparametric"} (Default: \code{FALSE}).}
+
 \item{...}{Currently ignored.}
 }
 \value{
@@ -160,6 +164,10 @@ The table below provides summary about:
 
 \subsection{within-subjects}{
 
+\strong{Data requirement}: Paired tests assume exactly \strong{one observation per subject
+per condition}. If your data has multiple trials per cell, aggregate first
+(e.g., take the mean).
+
 \strong{Hypothesis testing}\tabular{llll}{
    Type \tab No. of groups \tab Test \tab Function used \cr
    Parametric \tab 2 \tab Student's \emph{t}-test \tab \code{stats::t.test()} \cr
@@ -186,7 +194,6 @@ Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressio
 
 \examples{
 \dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true")) withAutoprint(\{ # examplesIf}
-\dontshow{\}) # examplesIf}
 # ----------------------- within-subjects -------------------------------------
 
 # data
@@ -197,19 +204,48 @@ set.seed(123)
 
 # ----------------------- parametric ---------------------------------------
 
-two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type = "parametric")
+two_sample_test(
+  df,
+  condition,
+  desire,
+  subject.id = subject,
+  paired = TRUE,
+  type = "parametric"
+)
 
 # ----------------------- non-parametric -----------------------------------
 
-two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type = "nonparametric")
+two_sample_test(
+  df,
+  condition,
+  desire,
+  subject.id = subject,
+  paired = TRUE,
+  type = "nonparametric"
+)
 
 # ----------------------- robust --------------------------------------------
 
-two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type = "robust")
+two_sample_test(
+  df,
+  condition,
+  desire,
+  subject.id = subject,
+  paired = TRUE,
+  type = "robust"
+)
 
 # ----------------------- Bayesian ---------------------------------------
 
-two_sample_test(df, condition, desire, subject.id = subject, paired = TRUE, type = "bayes")
+two_sample_test(
+  df,
+  condition,
+  desire,
+  subject.id = subject,
+  paired = TRUE,
+  type = "bayes"
+)
+
 # ----------------------- between-subjects -------------------------------------
 
 # for reproducibility
@@ -237,4 +273,5 @@ two_sample_test(ToothGrowth, supp, len, type = "robust")
 # ----------------------- Bayesian ---------------------------------------
 
 two_sample_test(ToothGrowth, supp, len, type = "bayes")
+\dontshow{\}) # examplesIf}
 }

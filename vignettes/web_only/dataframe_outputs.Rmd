@@ -42,27 +42,103 @@ This vignette can be cited as:
 citation("statsExpressions")
 ```
 
-## One-sample tests
+## One-sample test output
 
 ```{r}
 #| label = "onesample",
 #| file = "../../man/examples/examples-one-sample-test.R"
 ```
 
-## Two-sample tests
+## Two-sample test output
 
 ### within-subjects design
 
 ```{r}
-#| label = "twosample_w",
-#| file = "../../man/examples/examples-two-sample-test-within.R"
+#| label = "twosample_w"
+# ----------------------- within-subjects -------------------------------------
+
+# data
+df <- dplyr::filter(bugs_long, condition %in% c("LDLF", "LDHF"))
+
+# for reproducibility
+set.seed(123)
+
+# ----------------------- parametric ---------------------------------------
+
+two_sample_test(
+  df,
+  condition,
+  desire,
+  subject.id = subject,
+  paired = TRUE,
+  type = "parametric"
+)
+
+# ----------------------- non-parametric -----------------------------------
+
+two_sample_test(
+  df,
+  condition,
+  desire,
+  subject.id = subject,
+  paired = TRUE,
+  type = "nonparametric"
+)
+
+# ----------------------- robust --------------------------------------------
+
+two_sample_test(
+  df,
+  condition,
+  desire,
+  subject.id = subject,
+  paired = TRUE,
+  type = "robust"
+)
+
+# ----------------------- Bayesian ---------------------------------------
+
+two_sample_test(
+  df,
+  condition,
+  desire,
+  subject.id = subject,
+  paired = TRUE,
+  type = "bayes"
+)
 ```
 
 ### between-subjects design
 
 ```{r}
-#| label = "twosample_b",
-#| file = "../../man/examples/examples-two-sample-test-between.R"
+#| label = "twosample_b"
+# ----------------------- between-subjects -------------------------------------
+
+# for reproducibility
+set.seed(123)
+
+# ----------------------- parametric ---------------------------------------
+
+# unequal variance
+two_sample_test(ToothGrowth, supp, len, type = "parametric")
+
+# equal variance
+two_sample_test(ToothGrowth, supp, len, type = "parametric", var.equal = TRUE)
+
+# biased (Cohen's d) effect size
+two_sample_test(ToothGrowth, supp, len, type = "parametric", effsize.type = "d")
+
+# ----------------------- non-parametric -----------------------------------
+
+two_sample_test(ToothGrowth, supp, len, type = "nonparametric")
+
+# ----------------------- robust --------------------------------------------
+
+two_sample_test(ToothGrowth, supp, len, type = "robust")
+
+# ----------------------- Bayesian ---------------------------------------
+
+two_sample_test(ToothGrowth, supp, len, type = "bayes")
 ```
 
 ## One-way ANOVAs
@@ -179,21 +255,105 @@ oneway_anova(
 )
 ```
 
-## Contingency table analyses
+## Contingency table analysis output
 
 ```{r}
-#| label = "crosstabs",
-#| file = "../../man/examples/examples-contingency-table.R"
+#| label = "crosstabs"
+#### -------------------- association test ------------------------ ####
+
+# ------------------------ frequentist ---------------------------------
+
+# unpaired
+
+set.seed(123)
+contingency_table(
+  data = mtcars,
+  x = am,
+  y = vs,
+  paired = FALSE
+)
+
+# paired
+
+paired_data <- dplyr::tibble(
+  response_before = structure(
+    c(1L, 2L, 1L, 2L),
+    levels = c("no", "yes"),
+    class = "factor"
+  ),
+  response_after = structure(
+    c(1L, 1L, 2L, 2L),
+    levels = c("no", "yes"),
+    class = "factor"
+  ),
+  Freq = c(65L, 25L, 5L, 5L)
+)
+
+set.seed(123)
+contingency_table(
+  data = paired_data,
+  x = response_before,
+  y = response_after,
+  paired = TRUE,
+  counts = Freq
+)
+
+# ------------------------ Bayesian -------------------------------------
+
+# unpaired
+
+set.seed(123)
+contingency_table(
+  data = mtcars,
+  x = am,
+  y = vs,
+  paired = FALSE,
+  type = "bayes"
+)
+
+# paired
+
+set.seed(123)
+contingency_table(
+  data = paired_data,
+  x = response_before,
+  y = response_after,
+  paired = TRUE,
+  counts = Freq,
+  type = "bayes"
+)
+
+#### -------------------- goodness-of-fit test -------------------- ####
+
+# ------------------------ frequentist ---------------------------------
+
+set.seed(123)
+contingency_table(
+  data = as.data.frame(HairEyeColor),
+  x = Eye,
+  counts = Freq
+)
+
+# ------------------------ Bayesian -------------------------------------
+
+set.seed(123)
+contingency_table(
+  data = as.data.frame(HairEyeColor),
+  x = Eye,
+  counts = Freq,
+  ratio = c(0.2, 0.2, 0.3, 0.3),
+  type = "bayes"
+)
 ```
 
-## Correlation analyses
+## Correlation analysis output
 
 ```{r}
 #| label = "corr",
 #| file = "../../man/examples/examples-corr-test.R"
 ```
 
-## Meta-analysis
+## Random-effects meta-analysis output
 
 ```{r}
 #| label = "meta"

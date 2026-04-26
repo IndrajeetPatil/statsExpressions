@@ -6,7 +6,7 @@
 | Status | Usage | Miscellaneous |
 |----|----|----|
 | [![R build status](https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions/actions) | [![Total downloads](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Codecov](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/main/graph/badge.svg)](https://app.codecov.io/gh/IndrajeetPatil/statsExpressions?branch=main) |
-| [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html) | [![Daily downloads](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![DOI](https://joss.theoj.org/papers/10.21105/joss.03236/status.svg)](https://doi.org/10.21105/joss.03236) |
+| [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) | [![Daily downloads](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![DOI](https://joss.theoj.org/papers/10.21105/joss.03236/status.svg)](https://doi.org/10.21105/joss.03236) |
 
 # Introduction <img src="man/figures/logo.png" alt="statsExpressions package logo" align="right" width="240" />
 
@@ -90,15 +90,16 @@ A BibTeX entry for LaTeX users is
 
 **Summary of available analyses**
 
-| Test                       | Function                 |
-|:---------------------------|:-------------------------|
-| one-sample *t*-test        | `one_sample_test()`      |
-| two-sample *t*-test        | `two_sample_test()`      |
-| one-way ANOVA              | `oneway_anova()`         |
-| correlation analysis       | `corr_test()`            |
-| contingency table analysis | `contingency_table()`    |
-| meta-analysis              | `meta_analysis()`        |
-| pairwise comparisons       | `pairwise_comparisons()` |
+| Test                       | Function                       |
+|:---------------------------|:-------------------------------|
+| one-sample *t*-test        | `one_sample_test()`            |
+| two-sample *t*-test        | `two_sample_test()`            |
+| one-way ANOVA              | `oneway_anova()`               |
+| correlation analysis       | `corr_test()`                  |
+| contingency table analysis | `contingency_table()`          |
+| meta-analysis              | `meta_analysis()`              |
+| pairwise comparisons       | `pairwise_comparisons()`       |
+| pairwise contingency table | `pairwise_contingency_table()` |
 
 **Summary of details available for analyses**
 
@@ -130,7 +131,7 @@ run a robust ANOVA instead, the syntax remains the same and the
 statistical approach can be modified by changing a single argument:
 
 ``` r
-mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
+mtcars |> oneway_anova(cyl, wt, type = "nonparametric")
 #> # A tibble: 1 × 15
 #>   parameter1 parameter2 statistic df.error   p.value
 #>   <chr>      <chr>          <dbl>    <int>     <dbl>
@@ -142,7 +143,7 @@ mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
 #>       <dbl> <chr>                          <int> <int> <list>    
 #> 1         1 percentile bootstrap             100    32 <language>
 
-mtcars %>% oneway_anova(cyl, wt, type = "robust")
+mtcars |> oneway_anova(cyl, wt, type = "robust")
 #> # A tibble: 1 × 12
 #>   statistic    df df.error p.value
 #>       <dbl> <dbl>    <dbl>   <dbl>
@@ -169,9 +170,9 @@ set.seed(123)
 
 # one-sample robust t-test
 # we will leave `expression` column out; it's not needed for using only the dataframe
-mtcars %>%
-  one_sample_test(wt, test.value = 3, type = "robust") %>%
-  dplyr::select(-expression) %>%
+mtcars |>
+  one_sample_test(wt, test.value = 3, type = "robust") |>
+  dplyr::select(-expression) |>
   knitr::kable()
 ```
 
@@ -192,9 +193,9 @@ library(dplyr)
 
 # grouped operation
 # running one-sample test for all levels of grouping variable `cyl`
-mtcars %>%
-  group_by(cyl) %>%
-  group_modify(~ one_sample_test(.x, wt, test.value = 3), .keep = TRUE) %>%
+mtcars |>
+  group_by(cyl) |>
+  group_modify(~ one_sample_test(.x, wt, test.value = 3), .keep = TRUE) |>
   ungroup()
 #> # A tibble: 3 × 16
 #>     cyl    mu statistic df.error  p.value method            alternative
@@ -530,7 +531,7 @@ console.
 | Parametric | \> 2 | Fisher’s or Welch’s one-way ANOVA | `stats::oneway.test()` |
 | Non-parametric | \> 2 | Kruskal-Wallis one-way ANOVA | `stats::kruskal.test()` |
 | Robust | \> 2 | Heteroscedastic one-way ANOVA for trimmed means | `WRS2::t1way()` |
-| Bayes Factor | \> 2 | Fisher’s ANOVA | `BayesFactor::anovaBF()` |
+| Bayesian | \> 2 | Fisher’s ANOVA | `BayesFactor::anovaBF()` |
 
 **Effect size estimation**
 
@@ -539,9 +540,15 @@ console.
 | Parametric | \> 2 | partial eta-squared, partial omega-squared | Yes | `effectsize::omega_squared()`, `effectsize::eta_squared()` |
 | Non-parametric | \> 2 | rank epsilon squared | Yes | `effectsize::rank_epsilon_squared()` |
 | Robust | \> 2 | Explanatory measure of effect size | Yes | `WRS2::t1way()` |
-| Bayes Factor | \> 2 | Bayesian R-squared | Yes | `performance::r2_bayes()` |
+| Bayesian | \> 2 | Bayesian R-squared | Yes | `performance::r2_bayes()` |
 
 #### within-subjects
+
+**Data requirement**: Repeated measures tests assume a *complete* design
+with exactly **one observation per subject per condition**. If your data
+has multiple trials per cell, aggregate first (e.g., take the mean).
+Verify with `table(data$subject, data$condition)` — every cell should
+equal `1`.
 
 **Hypothesis testing**
 
@@ -550,7 +557,7 @@ console.
 | Parametric | \> 2 | One-way repeated measures ANOVA | `afex::aov_ez()` |
 | Non-parametric | \> 2 | Friedman rank sum test | `stats::friedman.test()` |
 | Robust | \> 2 | Heteroscedastic one-way repeated measures ANOVA for trimmed means | `WRS2::rmanova()` |
-| Bayes Factor | \> 2 | One-way repeated measures ANOVA | `BayesFactor::anovaBF()` |
+| Bayesian | \> 2 | One-way repeated measures ANOVA | `BayesFactor::anovaBF()` |
 
 **Effect size estimation**
 
@@ -559,7 +566,7 @@ console.
 | Parametric | \> 2 | partial eta-squared, partial omega-squared | Yes | `effectsize::omega_squared()`, `effectsize::eta_squared()` |
 | Non-parametric | \> 2 | Kendall’s coefficient of concordance | Yes | `effectsize::kendalls_w()` |
 | Robust | \> 2 | Algina-Keselman-Penfield robust standardized difference average | Yes | `WRS2::wmcpAKP()` |
-| Bayes Factor | \> 2 | Bayesian R-squared | Yes | `performance::r2_bayes()` |
+| Bayesian | \> 2 | Bayesian R-squared | Yes | `performance::r2_bayes()` |
 
 ## `two_sample_test`
 
@@ -584,6 +591,10 @@ console.
 | Bayesian | 2 | difference | Yes | `bayestestR::describe_posterior()` |
 
 #### within-subjects
+
+**Data requirement**: Paired tests assume exactly **one observation per
+subject per condition**. If your data has multiple trials per cell,
+aggregate first (e.g., take the mean).
 
 **Hypothesis testing**
 
@@ -621,7 +632,7 @@ console.
 | Parametric | Cohen’s *d*, Hedge’s *g* | Yes | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
 | Non-parametric | *r* (rank-biserial correlation) | Yes | `effectsize::rank_biserial()` |
 | Robust | trimmed mean | Yes | `WRS2::trimcibt()` |
-| Bayes Factor | difference | Yes | `bayestestR::describe_posterior()` |
+| Bayesian | difference | Yes | `bayestestR::describe_posterior()` |
 
 ## `corr_test`
 
@@ -672,15 +683,29 @@ console.
 | Parametric/Non-parametric | Pearson’s *C* | Yes | `effectsize::pearsons_c()` |
 | Bayesian | No | No | No |
 
+## `pairwise_contingency_table`
+
+**Hypothesis testing**
+
+| Test                | *p*-value adjustment? | Function used          |
+|:--------------------|:----------------------|:-----------------------|
+| Fisher’s exact test | Yes                   | `stats::fisher.test()` |
+
+**Effect size estimation**
+
+| Effect size  | CI available? | Function used             |
+|:-------------|:--------------|:--------------------------|
+| Cramer’s *V* | Yes           | `effectsize::cramers_v()` |
+
 ## `meta_analysis`
 
 **Hypothesis testing** and **Effect size estimation**
 
 | Type | Test | Effect size | CI available? | Function used |
 |:---|:---|:---|:---|:---|
-| Parametric | Meta-analysis via random-effects models | *beta* | Yes | `metafor::metafor()` |
+| Parametric | Meta-analysis via random-effects models | *beta* | Yes | `metafor::rma()` |
 | Robust | Meta-analysis via robust random-effects models | *beta* | Yes | `metaplus::metaplus()` |
-| Bayes | Meta-analysis via Bayesian random-effects models | *beta* | Yes | `metaBMA::meta_random()` |
+| Bayesian | Meta-analysis via Bayesian random-effects models | *beta* | Yes | `metaBMA::meta_random()` |
 
 # Usage in `{ggstatsplot}`
 

@@ -15,4 +15,4 @@
 | Parametric     | Cohen's *d*, Hedge's *g*        | Yes           | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
 | Non-parametric | *r* (rank-biserial correlation) | Yes           | `effectsize::rank_biserial()`                      |
 | Robust         | trimmed mean                    | Yes           | `WRS2::trimcibt()`                                 |
-| Bayes Factor   | difference                      | Yes           | `bayestestR::describe_posterior()`                 |
+| Bayesian       | difference                      | Yes           | `bayestestR::describe_posterior()`                 |

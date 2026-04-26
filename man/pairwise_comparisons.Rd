@@ -16,6 +16,7 @@ pairwise_comparisons(
   bf.prior = 0.707,
   p.adjust.method = "holm",
   digits = 2L,
+  exact = FALSE,
   ...
 )
 }
@@ -86,6 +87,9 @@ value as suffix, e.g. \code{digits = "scientific4"} to have scientific
 notation with 4 decimal places, or \code{digits = "signif5"} for 5
 significant figures (see also \code{\link[=signif]{signif()}}).}
 
+\item{exact}{A logical indicating whether you want exact p-values to be computed.
+Relevant only when \code{type = "nonparametric"} (Default: \code{FALSE}).}
+
 \item{...}{Additional arguments passed to other methods.}
 }
 \value{
@@ -142,6 +146,10 @@ Not supported.
 }
 
 \subsection{within-subjects}{
+
+\strong{Data requirement}: Paired pairwise tests assume exactly \strong{one observation per
+subject per condition}. If your data has multiple trials per cell, aggregate
+first (e.g., take the mean).
 
 \strong{Hypothesis testing}\tabular{llll}{
    Type \tab Test \tab \emph{p}-value adjustment? \tab Function used \cr

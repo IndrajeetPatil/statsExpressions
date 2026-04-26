@@ -158,74 +158,98 @@ oneway_anova <- function(
   # data -------------------------------------------
 
   type <- extract_stats_type(type)
-  c(x, y) %<-% c(ensym(x), ensym(y))
+  x <- ensym(x)
+  y <- ensym(y)
 
-  data %<>% long_to_wide_converter(
-    x          = {{ x }},
-    y          = {{ y }},
+  data <- long_to_wide_converter(
+    data,
+    x = {{ x }},
+    y = {{ y }},
     subject.id = {{ subject.id }},
-    paired     = paired,
-    spread     = FALSE
-  ) %>%
+    paired = paired,
+    spread = FALSE
+  ) |>
     mutate(.rowid = as.factor(.rowid))
 
   #  parametric ---------------------------------------
 
   if (type == "parametric") {
-    c(digits.df, digits.df.error) %<-% c(ifelse(paired, digits, 0L), ifelse(!paired && var.equal, 0L, digits))
+    digits.df <- ifelse(paired, digits, 0L)
+    digits.df.error <- ifelse(!paired && var.equal, 0L, digits)
 
-    # styler: off
-    if (effsize.type %in% c("unbiased", "omega")) .f.es <- effectsize::omega_squared
-    if (effsize.type %in% c("biased", "eta"))     .f.es <- effectsize::eta_squared
-    # styler: on
+    .f.es <- switch(
+      match.arg(effsize.type, c("omega", "eta", "unbiased", "biased")),
+      omega = ,
+      unbiased = effectsize::omega_squared,
+      eta = ,
+      biased = effectsize::eta_squared
+    )
 
     if (paired) {
       mod <- afex::aov_ez(
-        id          = ".rowid",
-        dv          = as_string(y),
-        data        = data,
-        within      = as_string(x),
+        id = ".rowid",
+        dv = as_string(y),
+        data = data,
+        within = as_string(x),
         include_aov = TRUE
       )
     }
 
-    if (!paired) mod <- stats::oneway.test(new_formula(y, x), data, var.equal = var.equal)
+    if (!paired) {
+      mod <- stats::oneway.test(new_formula(y, x), data, var.equal = var.equal)
+    }
+
+    effect_df <- exec(.f.es, model = mod, ci = conf.level, verbose = FALSE) |>
+      tidy_model_effectsize()
 
     stats_df <- bind_cols(
       tidy_model_parameters(mod),
-      exec(.f.es, model = mod, ci = conf.level, verbose = FALSE) %>% tidy_model_effectsize()
+      effect_df
     )
   }
 
   # non-parametric ------------------------------------
 
   if (type == "nonparametric") {
-    c(digits.df, digits.df.error) %<-% c(0L, 0L)
+    digits.df <- 0L
+    digits.df.error <- 0L
 
     # styler: off
     if (paired) {
-      c(.f, .f.es) %<-% c(stats::friedman.test, effectsize::kendalls_w)
-      .f.args       <- list(formula = new_formula({{ enexpr(y) }}, expr(!!enexpr(x) | .rowid)))
-      .f.es.args    <- list(x = new_formula({{ enexpr(y) }}, expr(!!enexpr(x) | .rowid)))
+      .f <- stats::friedman.test
+      .f.es <- effectsize::kendalls_w
+      .f.args <- list(
+        formula = new_formula(
+          enexpr(y),
+          expr(!!enexpr(x) | .rowid)
+        )
+      )
+      .f.es.args <- list(
+        x = new_formula(
+          enexpr(y),
+          expr(!!enexpr(x) | .rowid)
+        )
+      )
     }
 
     if (!paired) {
-      c(.f, .f.es) %<-% c(stats::kruskal.test, effectsize::rank_epsilon_squared)
-      .f.args       <- list(formula = new_formula(y, x))
-      .f.es.args    <- list(x = new_formula(y, x))
+      .f <- stats::kruskal.test
+      .f.es <- effectsize::rank_epsilon_squared
+      .f.args <- list(formula = new_formula(y, x))
+      .f.es.args <- list(x = new_formula(y, x))
     }
     # styler: on
 
     stats_df <- tidy_model_parameters(exec(.f, !!!.f.args, data = data))
 
     ez_df <- exec(
-      .fn        = .f.es,
-      data       = data,
-      ci         = conf.level,
+      .fn = .f.es,
+      data = data,
+      ci = conf.level,
       iterations = nboot,
-      verbose    = FALSE,
+      verbose = FALSE,
       !!!.f.es.args
-    ) %>%
+    ) |>
       tidy_model_effectsize()
 
     stats_df <- bind_cols(stats_df, ez_df)
@@ -234,32 +258,33 @@ oneway_anova <- function(
   # robust ---------------------------------------
 
   if (type == "robust") {
-    c(digits.df, digits.df.error) %<-% c(ifelse(paired, digits, 0L), digits)
+    digits.df <- ifelse(paired, digits, 0L)
+    digits.df.error <- digits
 
     if (paired) {
       mod <- WRS2::rmanova(
-        y      = data[[as_name(y)]],
+        y = data[[as_name(y)]],
         groups = data[[as_name(x)]],
         blocks = data[[".rowid"]],
-        tr     = tr
+        tr = tr
       )
     }
 
     if (!paired) {
       mod <- WRS2::t1way(
         formula = new_formula(y, x),
-        data    = data,
-        tr      = tr,
-        alpha   = 1.0 - conf.level,
-        nboot   = nboot
+        data = data,
+        tr = tr,
+        alpha = 1.0 - conf.level,
+        nboot = nboot
       )
     }
 
     stats_df <- tidy_model_parameters(mod)
 
     if (paired) {
-      ez_df <- long_to_wide_converter(data, {{ x }}, {{ y }}) %>%
-        WRS2::wmcpAKP(select(-.rowid), tr = tr, nboot = nboot) %>%
+      ez_df <- long_to_wide_converter(data, {{ x }}, {{ y }}) |>
+        WRS2::wmcpAKP(select(-.rowid), tr = tr, nboot = nboot) |>
         tidy_model_parameters()
 
       stats_df <- bind_cols(stats_df, ez_df)
@@ -269,17 +294,24 @@ oneway_anova <- function(
   # Bayesian ---------------------------------------
 
   if (type == "bayes") {
-    if (!paired) .f.args <- list(formula = new_formula(y, x), rscaleFixed = bf.prior)
+    if (!paired) {
+      .f.args <- list(formula = new_formula(y, x), rscaleFixed = bf.prior)
+    }
     if (paired) {
       .f.args <- list(
-        formula      = new_formula(enexpr(y), expr(!!enexpr(x) + .rowid)),
-        rscaleFixed  = bf.prior,
-        whichRandom  = ".rowid",
+        formula = new_formula(enexpr(y), expr(!!enexpr(x) + .rowid)),
+        rscaleFixed = bf.prior,
+        whichRandom = ".rowid",
         rscaleRandom = 1.0
       )
     }
 
-    stats_df <- exec(BayesFactor::anovaBF, data = as.data.frame(data), progress = FALSE, !!!.f.args) %>%
+    stats_df <- exec(
+      BayesFactor::anovaBF,
+      data = as.data.frame(data),
+      progress = FALSE,
+      !!!.f.args
+    ) |>
       tidy_model_parameters(ci = conf.level)
   }
 

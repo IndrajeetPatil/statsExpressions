@@ -27,7 +27,7 @@ suppressPackageStartupMessages(library(statsExpressions))
 Status | Usage | Miscellaneous
 ----------------- | ----------------- | -----------------
 [![R build status](https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions/actions) | [![Total downloads](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Codecov](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/main/graph/badge.svg)](https://app.codecov.io/gh/IndrajeetPatil/statsExpressions?branch=main)
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html) | [![Daily downloads](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![DOI](https://joss.theoj.org/papers/10.21105/joss.03236/status.svg)](https://doi.org/10.21105/joss.03236)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) | [![Daily downloads](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![DOI](https://joss.theoj.org/papers/10.21105/joss.03236/status.svg)](https://doi.org/10.21105/joss.03236)
 
 # Introduction <img src="man/figures/logo.png" alt="statsExpressions package logo" align="right" width="240" />
 
@@ -81,9 +81,9 @@ modified by changing a single argument:
 ```{r}
 #| label = "df"
 
-mtcars %>% oneway_anova(cyl, wt, type = "nonparametric")
+mtcars |> oneway_anova(cyl, wt, type = "nonparametric")
 
-mtcars %>% oneway_anova(cyl, wt, type = "robust")
+mtcars |> oneway_anova(cyl, wt, type = "robust")
 ```
 
 All possible output dataframes from functions are tabulated here:
@@ -99,9 +99,9 @@ set.seed(123)
 
 # one-sample robust t-test
 # we will leave `expression` column out; it's not needed for using only the dataframe
-mtcars %>%
-  one_sample_test(wt, test.value = 3, type = "robust") %>%
-  dplyr::select(-expression) %>%
+mtcars |>
+  one_sample_test(wt, test.value = 3, type = "robust") |>
+  dplyr::select(-expression) |>
   knitr::kable()
 ```
 
@@ -119,9 +119,9 @@ library(dplyr)
 
 # grouped operation
 # running one-sample test for all levels of grouping variable `cyl`
-mtcars %>%
-  group_by(cyl) %>%
-  group_modify(~ one_sample_test(.x, wt, test.value = 3), .keep = TRUE) %>%
+mtcars |>
+  group_by(cyl) |>
+  group_modify(~ one_sample_test(.x, wt, test.value = 3), .keep = TRUE) |>
   ungroup()
 ```
 
@@ -450,6 +450,11 @@ more about how one-way (between-subjects) ANOVA, you can run
 ## `contingency_table`
 
 ```{r, child = "man/rmd-fragments/contingency_table.Rmd"}
+```
+
+## `pairwise_contingency_table`
+
+```{r, child = "man/rmd-fragments/pairwise_contingency_table.Rmd"}
 ```
 
 ## `meta_analysis`
