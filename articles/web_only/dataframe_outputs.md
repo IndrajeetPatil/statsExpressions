@@ -783,7 +783,7 @@ meta_analysis(df, type = "robust")
 #> 1 Overall meta-analytic summary estimate   -0.746     0.234    -1.26    -0.343
 #>   statistic  p.value weight conf.level method                               
 #>       <dbl>    <dbl>  <dbl>      <dbl> <chr>                                
-#> 1     -3.20 0.000501     NA       0.95 Robust meta-analysis using 'metaplus'
+#> 1     -3.20 0.000777     NA       0.95 Robust meta-analysis using 'metaplus'
 #>   conf.method n.obs expression
 #>   <chr>       <int> <list>    
 #> 1 Wald           16 <language>
