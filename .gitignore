@@ -39,6 +39,7 @@ Network Trash Folder
 Temporary Items
 # R Studio files
 *.Rcheck/*
+*.Rproj
 *.html
 *.tar.gz
 .RData
