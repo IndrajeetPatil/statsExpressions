@@ -701,12 +701,3 @@ the expressions are displayed in the subtitle-
 The hexsticker and the schematic illustration of general workflow were
 generously designed by Sarah Otterstetter (Max Planck Institute for
 Human Development, Berlin).
-
-# Contributing
-
-Bug reports, suggestions, questions, and (most of all) contributions are
-welcome.
-
-Please note that this project is released with a [Contributor Code of
-Conduct](https://www.contributor-covenant.org/version/3/0/code_of_conduct/).
-By participating in this project you agree to abide by its terms.
