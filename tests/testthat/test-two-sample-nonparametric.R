@@ -31,8 +31,9 @@ test_that(desc = "nonparametric works - within-subjects design", code = {
   ))
 
   set.seed(123)
-  expect_snapshot(select(df, -expression))
-  expect_snapshot(df[["expression"]])
+  snapshot_variant <- if (getRversion() >= "4.7.0") "r-4.7" else NULL
+  expect_snapshot(select(df, -expression), variant = snapshot_variant)
+  expect_snapshot(df[["expression"]], variant = snapshot_variant)
 })
 
 test_that(desc = "works with subject id", code = {
