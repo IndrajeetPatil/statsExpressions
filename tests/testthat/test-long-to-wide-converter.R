@@ -113,7 +113,7 @@ test_that(desc = "with .rowid - without NA", code = {
       score = c(90, 90, 72.5, 45),
       condition = structure(
         c(1L, 2L, 2L, 1L),
-        .Label = c("4", "5"),
+        levels = c("4", "5"),
         class = "factor"
       ),
       id = c(1L, 2L, 1L, 2L)

@@ -207,7 +207,7 @@
       "@type": "SoftwareApplication",
       "identifier": "bayestestR",
       "name": "bayestestR",
-      "version": ">= 0.17.0",
+      "version": ">= 0.18.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -259,7 +259,7 @@
       "@type": "SoftwareApplication",
       "identifier": "effectsize",
       "name": "effectsize",
-      "version": ">= 1.0.2",
+      "version": ">= 1.0.3",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -285,7 +285,7 @@
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
-      "version": ">= 1.5.0",
+      "version": ">= 1.5.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -298,7 +298,7 @@
       "@type": "SoftwareApplication",
       "identifier": "parameters",
       "name": "parameters",
-      "version": ">= 0.28.3",
+      "version": ">= 0.29.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -311,7 +311,7 @@
       "@type": "SoftwareApplication",
       "identifier": "performance",
       "name": "performance",
-      "version": ">= 0.16.0",
+      "version": ">= 0.17.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -350,7 +350,7 @@
       "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
-      "version": ">= 1.2.0",
+      "version": ">= 1.3.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -389,7 +389,7 @@
       "@type": "SoftwareApplication",
       "identifier": "withr",
       "name": "withr",
-      "version": ">= 3.0.2",
+      "version": ">= 3.0.3",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -413,7 +413,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4221.181KB",
+  "fileSize": "4221.349KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
