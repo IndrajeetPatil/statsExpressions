@@ -363,7 +363,7 @@
       "@type": "SoftwareApplication",
       "identifier": "rstantools",
       "name": "rstantools",
-      "version": ">= 2.6.0",
+      "version": ">= 2.7.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -413,7 +413,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4221.349KB",
+  "fileSize": "4222.425KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
