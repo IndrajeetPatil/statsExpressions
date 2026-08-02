@@ -20,7 +20,7 @@ URL: https://www.indrapatil.com/statsExpressions/,
     https://github.com/IndrajeetPatil/statsExpressions
 BugReports: https://github.com/IndrajeetPatil/statsExpressions/issues
 Depends:
-    R (>= 4.3.0),
+    R (>= 4.5.0),
     stats
 Imports:
     afex (>= 1.5-1),
