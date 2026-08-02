@@ -13,7 +13,7 @@ test_that("pairwise_contingency_table works - basic", {
   expect_snapshot(df1[["expression"]])
 
   # correct number of pairs (3 levels -> 3 pairs)
-  expect_identical(nrow(df1), 3L)
+  expect_shape(df1, nrow = 3L)
 
   # both raw and adjusted p-values present
   expect_true(all(c("p.value", "p.value.adj") %in% names(df1)))
@@ -38,7 +38,7 @@ test_that("pairwise_contingency_table works - with counts", {
   expect_snapshot(df1[["expression"]])
 
   # 4 levels -> C(4,2) = 6 pairs
-  expect_identical(nrow(df1), 6L)
+  expect_shape(df1, nrow = 6L)
 })
 
 # no adjustment --------------------------------------------------

@@ -42,6 +42,10 @@ Core dependencies include the tidyverse stack (`dplyr`, `purrr`, `tidyr`, and
 `effectsize`, `bayestestR`, `datawizard`, and `correlation`). Treat
 `DESCRIPTION` as the source of truth for dependency constraints.
 
+The minimum supported R version is 4.5. CI covers R-devel, the current R
+release, and the previous R release; keep README support wording independent of
+specific version numbers.
+
 ## Developer workflow
 
 Use the repository `Makefile` for routine package tasks:
@@ -62,6 +66,14 @@ make update_deps  # Refresh dependency constraints, docs, and codemeta
 `make update_deps` is a maintenance operation that can rewrite dependency
 constraints and generated metadata. Do not use it merely to install the current
 dependency set.
+
+### Versioning and changelog
+
+- Development versions use a fourth-component `.9000` suffix.
+- Keep the version in `DESCRIPTION`, `codemeta.json`, and the first `NEWS.md`
+  heading synchronized.
+- Record user-facing compatibility changes in `NEWS.md`; omit routine
+  dependency updates and internal lint or CI maintenance.
 
 ## Testing
 
@@ -151,3 +163,10 @@ coverage, documentation and extra checks, formatting, linting, prek hooks,
 pkgdown builds, and deployment tasks. Most jobs call reusable workflows from
 `IndrajeetPatil/workflows`; update the callers rather than copying those
 workflows into this repository.
+
+The shared R CMD check matrix intentionally covers R-devel, release, and
+oldrel. Do not reintroduce `oldrel-2` unless the package support policy changes.
+
+Open pull requests as ready for review rather than as drafts. Unless explicitly
+requested, do not wait for CI/CD checks to finish after pushing; report that the
+checks were triggered and include the pull request or workflow link.

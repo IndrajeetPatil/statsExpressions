@@ -193,5 +193,5 @@ test_that("NA in subject.id does not drop rows with complete measurements", {
     spread = FALSE
   )
 
-  expect_identical(nrow(result), 4L)
+  expect_shape(result, nrow = 4L)
 })
