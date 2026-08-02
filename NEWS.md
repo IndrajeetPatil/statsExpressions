@@ -3,14 +3,6 @@
 - The minimum supported R version is now 4.5. The project supports R-devel,
   the current R release, and the previous R release.
 
-- Dependency requirements have been refreshed, including `rstantools >= 2.7.0`.
-
-- Internal tests now use dedicated shape expectations to comply with current
-  `{lintr}` rules.
-
-- CI now rebuilds `{Rfast}` against the active `{RcppParallel}` TBB ABI,
-  including for example and vignette coverage.
-
 # statsExpressions 2.0.0
 
 This major release accompanies the upcoming stable 1.0.0 release of
