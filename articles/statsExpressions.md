@@ -123,35 +123,7 @@ one-way ANOVA. If we first run a non-parametric ANOVA and then decide to
 run a robust ANOVA instead, the syntax remains the same and the
 statistical approach can be modified by changing a single argument:
 
-``` r
-
-oneway_anova(mtcars, cyl, wt, type = "nonparametric")
-#> # A tibble: 1 × 15
-#>   parameter1 parameter2 statistic df.error   p.value
-#>   <chr>      <chr>          <dbl>    <int>     <dbl>
-#> 1 wt         cyl             22.8        2 0.0000112
-#>   method                       effectsize      estimate conf.level conf.low
-#>   <chr>                        <chr>              <dbl>      <dbl>    <dbl>
-#> 1 Kruskal-Wallis rank sum test Epsilon2 (rank)    0.736       0.95    0.624
-#>   conf.high conf.method          conf.iterations n.obs expression
-#>       <dbl> <chr>                          <int> <int> <list>    
-#> 1         1 percentile bootstrap             100    32 <language>
-
-oneway_anova(mtcars, cyl, wt, type = "robust")
-#> # A tibble: 1 × 12
-#>   statistic    df df.error p.value
-#>       <dbl> <dbl>    <dbl>   <dbl>
-#> 1      12.7     2     12.2 0.00102
-#>   method                                           
-#>   <chr>                                            
-#> 1 A heteroscedastic one-way ANOVA for trimmed means
-#>   effectsize                         estimate conf.level conf.low conf.high
-#>   <chr>                                 <dbl>      <dbl>    <dbl>     <dbl>
-#> 1 Explanatory measure of effect size     1.05       0.95    0.843      1.50
-#>   n.obs expression
-#>   <int> <list>    
-#> 1    32 <language>
-```
+[`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(``mtcars``, ``cyl``, ``wt``, type ``=`` ``"nonparametric"``)`` ``#> ``# A tibble: 1 × 15`` ``#> ``parameter1`` ``parameter2`` ``statistic`` ``df.error`` ``p.value`` ``#> ``<chr>`` ``<chr>`` ``<dbl>`` ``<int>`` ``<dbl>`` ``#> ``1`` wt cyl 22.8 2 ``0.000``0``11``2`` ``#> ``method`` ``effectsize`` ``estimate`` ``conf.level`` ``conf.low`` ``#> ``<chr>`` ``<chr>`` ``<dbl>`` ``<dbl>`` ``<dbl>`` ``#> ``1`` Kruskal-Wallis rank sum test Epsilon2 (rank) ``0.``736 ``0.``95 ``0.``624`` ``#> ``conf.high`` ``conf.method`` ``conf.iterations`` ``n.obs`` ``expression`` ``#> ``<dbl>`` ``<chr>`` ``<int>`` ``<int>`` ``<list>`` `` ``#> ``1`` 1 percentile bootstrap 100 32 ``<language>`` `` `[`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(``mtcars``, ``cyl``, ``wt``, type ``=`` ``"robust"``)`` ``#> ``# A tibble: 1 × 12`` ``#> ``statistic`` ``df`` ``df.error`` ``p.value`` ``#> ``<dbl>`` ``<dbl>`` ``<dbl>`` ``<dbl>`` ``#> ``1`` 12.7 2 12.2 ``0.00``1``02`` ``#> ``method`` `` ``#> ``<chr>`` `` ``#> ``1`` A heteroscedastic one-way ANOVA for trimmed means`` ``#> ``effectsize`` ``estimate`` ``conf.level`` ``conf.low`` ``conf.high`` ``#> ``<chr>`` ``<dbl>`` ``<dbl>`` ``<dbl>`` ``<dbl>`` ``#> ``1`` Explanatory measure of effect size 1.05 ``0.``95 ``0.``843 1.50`` ``#> ``n.obs`` ``expression`` ``#> ``<int>`` ``<list>`` `` ``#> ``1`` 32 ``<language>`
 
 These functions are also compatible with other popular data manipulation
 packages. For example, we can use combination of
@@ -159,21 +131,7 @@ packages. For example, we can use combination of
 [statsExpressions](https://www.indrapatil.com/statsExpressions/) to
 repeat the same statistical analysis across grouping variables.
 
-``` r
-
-# running one-sample proportion test for `vs` at all levels of `am`
-mtcars |>
-  group_by(am) |>
-  group_modify(~ contingency_table(.x, vs), .keep = TRUE) |>
-  ungroup()
-#> # A tibble: 2 × 14
-#>      am statistic    df p.value method   effectsize estimate conf.level conf.low
-#>   <dbl>     <dbl> <dbl>   <dbl> <chr>    <chr>         <dbl>      <dbl>    <dbl>
-#> 1     0    1.32       1   0.251 Chi-squ… Pearson's…   0.254        0.95        0
-#> 2     1    0.0769     1   0.782 Chi-squ… Pearson's…   0.0767       0.95        0
-#> # ℹ 5 more variables: conf.high <dbl>, conf.method <chr>,
-#> #   conf.distribution <chr>, n.obs <int>, expression <list>
-```
+`` # running one-sample proportion test for `vs` at all levels of `am` ``` ``mtcars`` ``|>`` `` `[`group_by`](https://dplyr.tidyverse.org/reference/group_by.html)`(``am``)`` ``|>`` `` `[`group_modify`](https://dplyr.tidyverse.org/reference/group_map.html)`(``~`` `[`contingency_table`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md)`(``.x``, ``vs``)``, .keep ``=`` ``TRUE``)`` ``|>`` `` `[`ungroup`](https://dplyr.tidyverse.org/reference/group_by.html)`(``)`` ``#> ``# A tibble: 2 × 14`` ``#> am statistic df p.value method effectsize estimate conf.level conf.low`` ``#> ``<dbl>`` ``<dbl>`` ``<dbl>`` ``<dbl>`` ``<chr>`` ``<chr>`` ``<dbl>`` ``<dbl>`` ``<dbl>`` ``#> ``1`` 0 1.32 1 0.251 Chi-squ… Pearson's… 0.254 0.95 0`` ``#> ``2`` 1 0.076``9`` 1 0.782 Chi-squ… Pearson's… 0.076``7`` 0.95 0`` ``#> ``# ℹ 5 more variables: conf.high <dbl>, conf.method <chr>,`` ``#> ``# conf.distribution <chr>, n.obs <int>, expression <list>`
 
 ## Custom Statistical Workflows
 
@@ -185,28 +143,7 @@ follow up with pairwise comparisons. The
 function handles this with built-in *p*-value adjustment across all
 pairwise tests:
 
-``` r
-
-pairwise_comparisons(
-  data            = mtcars,
-  x               = cyl,
-  y               = wt,
-  type            = "parametric",
-  var.equal       = FALSE,
-  p.adjust.method = "holm"
-)
-#> # A tibble: 3 × 9
-#>   group1 group2 statistic   p.value alternative distribution p.adjust.method
-#>   <chr>  <chr>      <dbl>     <dbl> <chr>       <chr>        <chr>          
-#> 1 4      6           5.39 0.00831   two.sided   q            Holm           
-#> 2 4      8           9.11 0.0000124 two.sided   q            Holm           
-#> 3 6      8           5.12 0.00831   two.sided   q            Holm           
-#>   test         expression
-#>   <chr>        <list>    
-#> 1 Games-Howell <language>
-#> 2 Games-Howell <language>
-#> 3 Games-Howell <language>
-```
+[`pairwise_comparisons`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)`(`` `` data ``=`` ``mtcars``,`` `` x ``=`` ``cyl``,`` `` y ``=`` ``wt``,`` `` type ``=`` ``"parametric"``,`` `` var.equal ``=`` ``FALSE``,`` `` p.adjust.method ``=`` ``"holm"`` ``)`` ``#> ``# A tibble: 3 × 9`` ``#> ``group1`` ``group2`` ``statistic`` ``p.value`` ``alternative`` ``distribution`` ``p.adjust.method`` ``#> ``<chr>`` ``<chr>`` ``<dbl>`` ``<dbl>`` ``<chr>`` ``<chr>`` ``<chr>`` `` ``#> ``1`` 4 6 5.39 ``0.00``8``31`` two.sided q Holm `` ``#> ``2`` 4 8 9.11 ``0.000``0``12``4 two.sided q Holm `` ``#> ``3`` 6 8 5.12 ``0.00``8``31`` two.sided q Holm `` ``#> ``test`` ``expression`` ``#> ``<chr>`` ``<list>`` `` ``#> ``1`` Games-Howell ``<language>`` ``#> ``2`` Games-Howell ``<language>`` ``#> ``3`` Games-Howell ``<language>`
 
 Each row contains a formatted `expression` column with the adjusted
 *p*-value, ready for use as a plot annotation. The `p.adjust.method`
@@ -220,28 +157,7 @@ You can chain different statistical tests on the same data, consolidate
 the results into a single data frame, and apply *p*-value correction
 across all comparisons:
 
-``` r
-
-multi_test_results <- dplyr::bind_rows(
-  two_sample_test(mtcars, am, wt, type = "parametric"),
-  two_sample_test(mtcars, am, wt, type = "nonparametric"),
-  two_sample_test(mtcars, am, wt, type = "robust")
-) |>
-  dplyr::mutate(p.value = stats::p.adjust(p.value, method = "holm"))
-
-dplyr::select(multi_test_results, method, effectsize, estimate, p.value)
-#> # A tibble: 3 × 4
-#>   method                                              
-#>   <chr>                                               
-#> 1 Welch Two Sample t-test                             
-#> 2 Wilcoxon rank sum test                              
-#> 3 Yuen's test on trimmed means for independent samples
-#>   effectsize                                              estimate   p.value
-#>   <chr>                                                      <dbl>     <dbl>
-#> 1 Hedges' g                                                  1.88  0.0000188
-#> 2 r (rank biserial)                                          0.866 0.0000869
-#> 3 Algina-Keselman-Penfield robust standardized difference    2.48  0.0000869
-```
+`multi_test_results`` ``<-`` ``dplyr``::`[`bind_rows`](https://dplyr.tidyverse.org/reference/bind_rows.html)`(`` `` `[`two_sample_test`](https://www.indrapatil.com/statsExpressions/reference/two_sample_test.md)`(``mtcars``, ``am``, ``wt``, type ``=`` ``"parametric"``)``,`` `` `[`two_sample_test`](https://www.indrapatil.com/statsExpressions/reference/two_sample_test.md)`(``mtcars``, ``am``, ``wt``, type ``=`` ``"nonparametric"``)``,`` `` `[`two_sample_test`](https://www.indrapatil.com/statsExpressions/reference/two_sample_test.md)`(``mtcars``, ``am``, ``wt``, type ``=`` ``"robust"``)`` ``)`` ``|>`` `` ``dplyr``::`[`mutate`](https://dplyr.tidyverse.org/reference/mutate.html)`(``p.value ``=`` ``stats``::`[`p.adjust`](https://rdrr.io/r/stats/p.adjust.html)`(``p.value``, method ``=`` ``"holm"``)``)`` `` ``dplyr``::`[`select`](https://dplyr.tidyverse.org/reference/select.html)`(``multi_test_results``, ``method``, ``effectsize``, ``estimate``, ``p.value``)`` ``#> ``# A tibble: 3 × 4`` ``#> ``method`` `` ``#> ``<chr>`` `` ``#> ``1`` Welch Two Sample t-test `` ``#> ``2`` Wilcoxon rank sum test `` ``#> ``3`` Yuen's test on trimmed means for independent samples`` ``#> ``effectsize`` ``estimate`` ``p.value`` ``#> ``<chr>`` ``<dbl>`` ``<dbl>`` ``#> ``1`` Hedges' g 1.88 ``0.000``0``18``8`` ``#> ``2`` r (rank biserial) ``0.``866 ``0.000``0``86``9`` ``#> ``3`` Algina-Keselman-Penfield robust standardized difference 2.48 ``0.000``0``86``9`
 
 ### Generating formatted expressions from custom results
 
@@ -253,33 +169,7 @@ own tests outside
 [statsExpressions](https://www.indrapatil.com/statsExpressions/) and
 want to generate a formatted expression for plot annotations:
 
-``` r
-
-# suppose you have run your own statistical test
-custom_stats <- cbind.data.frame(
-  statistic  = 2.18,
-  df         = 18,
-  p.value    = 0.041,
-  estimate   = 0.65,
-  conf.level = 0.95,
-  conf.low   = 0.03,
-  conf.high  = 1.27,
-  method     = "Student's t-test"
-)
-
-# generate a formatted expression
-add_expression_col(
-  data           = custom_stats,
-  statistic.text = list(quote(italic("t"))),
-  effsize.text   = list(quote(italic("d")["Cohen"])),
-  n              = 20L,
-  digits         = 2L,
-  digits.df      = 0L
-)$expression[[1]]
-#> list(italic("t") * "(" * 18 * ")" == "2.18", italic(p) == "0.04", 
-#>     italic("d")["Cohen"] == "0.65", CI["95%"] ~ "[" * "0.03", 
-#>     "1.27" * "]", italic("n")["obs"] == "20")
-```
+`# suppose you have run your own statistical test`` ``custom_stats`` ``<-`` `[`cbind.data.frame`](https://rdrr.io/r/base/cbind.html)`(`` `` statistic ``=`` ``2.18``,`` `` df ``=`` ``18``,`` `` p.value ``=`` ``0.041``,`` `` estimate ``=`` ``0.65``,`` `` conf.level ``=`` ``0.95``,`` `` conf.low ``=`` ``0.03``,`` `` conf.high ``=`` ``1.27``,`` `` method ``=`` ``"Student's t-test"`` ``)`` `` ``# generate a formatted expression`` `[`add_expression_col`](https://www.indrapatil.com/statsExpressions/reference/add_expression_col.md)`(`` `` data ``=`` ``custom_stats``,`` `` statistic.text ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`[`quote`](https://rdrr.io/r/base/substitute.html)`(``italic``(``"t"``)``)``)``,`` `` effsize.text ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`[`quote`](https://rdrr.io/r/base/substitute.html)`(``italic``(``"d"``)``[``"Cohen"``]``)``)``,`` `` n ``=`` ``20L``,`` `` digits ``=`` ``2L``,`` `` digits.df ``=`` ``0L`` ``)``$``expression``[[``1``]``]`` ``#> list(italic("t") * "(" * 18 * ")" == "2.18", italic(p) == "0.04", `` ``#> italic("d")["Cohen"] == "0.65", CI["95%"] ~ "[" * "0.03", `` ``#> "1.27" * "]", italic("n")["obs"] == "20")`
 
 ## Expressions for Plots
 
@@ -305,24 +195,7 @@ philosophy adopted by the
 [statsExpressions](https://www.indrapatil.com/statsExpressions/)
 functions as its statistical processing backend.
 
-``` r
-
-# needed libraries
-library(ggplot2)
-
-# Example 1: Performing a t-test on raw tidy data and extracting the formatted expression
-# for direct use in a plot annotation
-res_ttest <- two_sample_test(mtcars, am, wt, type = "parametric")
-
-ggplot(mtcars, aes(as.factor(am), wt)) +
-  geom_boxplot() +
-  labs(
-    x = "Transmission (0 = automatic, 1 = manual)",
-    y = "Weight (1000 lbs)",
-    title = "Vehicle Weight by Transmission Type",
-    subtitle = res_ttest$expression[[1]] # Extract formatted p-value and effect size
-  )
-```
+`# needed libraries`` `[`library`](https://rdrr.io/r/base/library.html)`(`[`ggplot2`](https://ggplot2.tidyverse.org)`)`` `` ``# Example 1: Performing a t-test on raw tidy data and extracting the formatted expression`` ``# for direct use in a plot annotation`` ``res_ttest`` ``<-`` `[`two_sample_test`](https://www.indrapatil.com/statsExpressions/reference/two_sample_test.md)`(``mtcars``, ``am``, ``wt``, type ``=`` ``"parametric"``)`` `` `[`ggplot`](https://ggplot2.tidyverse.org/reference/ggplot.html)`(``mtcars``, `[`aes`](https://ggplot2.tidyverse.org/reference/aes.html)`(`[`as.factor`](https://rdrr.io/r/base/factor.html)`(``am``)``, ``wt``)``)`` ``+`` `` `[`geom_boxplot`](https://ggplot2.tidyverse.org/reference/geom_boxplot.html)`(``)`` ``+`` `` `[`labs`](https://ggplot2.tidyverse.org/reference/labs.html)`(`` `` x ``=`` ``"Transmission (0 = automatic, 1 = manual)"``,`` `` y ``=`` ``"Weight (1000 lbs)"``,`` `` title ``=`` ``"Vehicle Weight by Transmission Type"``,`` `` subtitle ``=`` ``res_ttest``$``expression``[[``1``]``]`` ``# Extract formatted p-value and effect size`` `` ``)`
 
 ![Example illustrating how \`{statsExpressions}\` functions can be used
 to display results from a statistical test in a
@@ -333,21 +206,7 @@ Example illustrating how
 functions can be used to display results from a statistical test in a
 plot.
 
-``` r
-
-
-# Example 2: One-way ANOVA
-res_anova <- oneway_anova(iris, Species, Sepal.Length, type = "nonparametric")
-
-ggplot(iris, aes(x = Sepal.Length, y = Species)) +
-  geom_boxplot() + # use 'expression' column to display results in the subtitle
-  labs(
-    x = "Penguin Species",
-    y = "Body mass (in grams)",
-    title = "Kruskal-Wallis Rank Sum Test",
-    subtitle = res_anova$expression[[1]]
-  )
-```
+` ``# Example 2: One-way ANOVA`` ``res_anova`` ``<-`` `[`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(``iris``, ``Species``, ``Sepal.Length``, type ``=`` ``"nonparametric"``)`` `` `[`ggplot`](https://ggplot2.tidyverse.org/reference/ggplot.html)`(``iris``, `[`aes`](https://ggplot2.tidyverse.org/reference/aes.html)`(``x ``=`` ``Sepal.Length``, y ``=`` ``Species``)``)`` ``+`` `` `[`geom_boxplot`](https://ggplot2.tidyverse.org/reference/geom_boxplot.html)`(``)`` ``+`` ``# use 'expression' column to display results in the subtitle`` `` `[`labs`](https://ggplot2.tidyverse.org/reference/labs.html)`(`` `` x ``=`` ``"Penguin Species"``,`` `` y ``=`` ``"Body mass (in grams)"``,`` `` title ``=`` ``"Kruskal-Wallis Rank Sum Test"``,`` `` subtitle ``=`` ``res_anova``$``expression``[[``1``]``]`` `` ``)`
 
 ![Example illustrating how \`{statsExpressions}\` functions can be used
 to display results from a statistical test in a
