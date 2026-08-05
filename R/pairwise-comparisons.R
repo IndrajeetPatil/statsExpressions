@@ -255,22 +255,21 @@ pairwise_comparisons <- function(
   # Bayesian --------------------------------
 
   if (type == "bayes") {
-    df_tidy <- map_dfr(
-      # creating a list of data frames with subsections of data
-      .x = map2(
-        .x = as.character(df_pair$group1),
-        .y = as.character(df_pair$group2),
-        .f = function(a, b) droplevels(filter(data, {{ x }} %in% c(a, b)))
-      ),
-      .f = ~ two_sample_test(
-        data = .x,
-        x = {{ x }},
-        y = {{ y }},
-        paired = paired,
-        bf.prior = bf.prior,
-        type = "bayes"
-      )
+    df_tidy <- map2(
+      .x = as.character(df_pair$group1),
+      .y = as.character(df_pair$group2),
+      .f = function(a, b) {
+        two_sample_test(
+          data = droplevels(filter(data, {{ x }} %in% c(a, b))),
+          x = {{ x }},
+          y = {{ y }},
+          paired = paired,
+          bf.prior = bf.prior,
+          type = "bayes"
+        )
+      }
     ) |>
+      list_rbind() |>
       filter(term == "Difference") |>
       mutate(
         expression = glue(

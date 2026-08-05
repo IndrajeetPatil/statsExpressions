@@ -39,8 +39,8 @@ backend for `ggstatsplot`.
 
 Core dependencies include the tidyverse stack (`dplyr`, `purrr`, `tidyr`, and
 `rlang`) and the easystats ecosystem (`insight`, `parameters`, `performance`,
-`effectsize`, `bayestestR`, `datawizard`, and `correlation`). Treat
-`DESCRIPTION` as the source of truth for dependency constraints.
+`effectsize`, `datawizard`, and `correlation`). Treat `DESCRIPTION` as the
+source of truth for dependency constraints.
 
 The minimum supported R version is 4.5. CI covers R-devel, the current R
 release, and the previous R release; keep README support wording independent of
