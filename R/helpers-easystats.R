@@ -18,8 +18,8 @@ tidy_model_parameters <- function(model, ...) {
     mutate(conf.method = attr(params, "ci_method")) |>
     select(-matches("Difference")) |>
     standardize_names(style = "broom") |>
-    rename_all(\(x) gsub("cramers.|omega2.|eta2.", "", x)) |>
-    rename_with(recode, bayes.factor = "bf10") |>
+    rename_with(\(x) gsub("cramers.|omega2.|eta2.", "", x)) |>
+    rename_with(\(x) replace(x, x == "bayes.factor", "bf10")) |>
     tidyr::fill(matches("^prior|^bf"), .direction = "updown") |>
     mutate(across(matches("bf10"), \(x) log(x), .names = "log_e_{.col}"))
 

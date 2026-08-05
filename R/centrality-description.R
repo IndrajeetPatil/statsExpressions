@@ -51,23 +51,30 @@ centrality_description <- function(
   )
   # styler: on
 
+  x <- ensym(x)
+  y <- ensym(y)
+  x_name <- as_name(x)
+  y_name <- as_name(y)
+  group_name <- make.unique(c(names(data), ".group"))[[ncol(data) + 1L]]
+  response_name <- make.unique(c(names(data), group_name, ".response"))[[
+    ncol(data) + 2L
+  ]]
+
   select(data, {{ x }}, {{ y }}) |>
+    rename(!!group_name := {{ x }}, !!response_name := {{ y }}) |>
     filter(!if_any(everything(), is.na)) |>
-    group_by({{ x }}) |>
-    group_modify(
-      .f = ~ standardize_names(
-        data = datawizard::describe_distribution(
-          x = pull(., {{ y }}),
-          centrality = centrality,
-          threshold = tr,
-          verbose = FALSE,
-          ci = conf.level
-        ),
-        style = "broom"
-      )
+    datawizard::describe_distribution(
+      select = response_name,
+      by = group_name,
+      centrality = centrality,
+      threshold = tr,
+      verbose = FALSE,
+      ci = conf.level
     ) |>
-    rename_all(~ gsub(".mean|.median|.trimmed|.map", "", .x)) |>
-    ungroup() |>
+    standardize_names(style = "broom") |>
+    select(-all_of("variable")) |>
+    rename(!!x_name := all_of(group_name)) |>
+    rename_with(\(x) gsub(".mean|.median|.trimmed|.map", "", x)) |>
     mutate(
       expression = glue(
         "list(widehat(mu)[{centrality}]=='{format_value(estimate, digits)}')"
@@ -75,6 +82,6 @@ centrality_description <- function(
       n.expression = paste0({{ x }}, "\n(n = ", .prettyNum(n.obs), ")")
     ) |>
     arrange({{ x }}) |>
-    select({{ x }}, !!as.character(ensym(y)) := estimate, everything()) |>
+    select({{ x }}, !!y_name := estimate, everything()) |>
     .glue_to_expression()
 }

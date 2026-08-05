@@ -50,3 +50,35 @@ test_that(desc = "centrality description works when variable is named `variable`
   expect_snapshot(select(res, -expression))
   expect_snapshot(res[["expression"]])
 })
+
+test_that("centrality description works with reserved response names", {
+  for (response in c("n", "Mean", "SD", "IQR")) {
+    data <- data.frame(group = rep(c("a", "b"), each = 3L), value = 1:6)
+    names(data)[[2L]] <- response
+
+    result <- rlang::inject(centrality_description(
+      data,
+      group,
+      !!rlang::sym(response)
+    ))
+
+    expect_identical(names(result)[1:2], c("group", response))
+    expect_identical(result[[response]], c(2, 5))
+  }
+})
+
+test_that("centrality description works with reserved grouping names", {
+  for (group in c("n", "Mean", "SD", "IQR")) {
+    data <- data.frame(group = rep(c("a", "b"), each = 3L), value = 1:6)
+    names(data)[[1L]] <- group
+
+    result <- rlang::inject(centrality_description(
+      data,
+      !!rlang::sym(group),
+      value
+    ))
+
+    expect_identical(names(result)[1:2], c(group, "value"))
+    expect_identical(result[["value"]], c(2, 5))
+  }
+})

@@ -10,6 +10,8 @@ utils::globalVariables(c(
   ".rowid",
   # <add_expression_col>
   "df",
+  # <add_expression_col>
+  "effectsize",
   # <centrality_description>
   "estimate",
   # <pairwise_comparisons>
