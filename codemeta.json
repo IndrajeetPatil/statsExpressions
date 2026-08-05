@@ -149,19 +149,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "rstantools",
-      "name": "rstantools",
-      "version": ">= 2.7.0",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=rstantools"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "survival",
       "name": "survival",
       "provider": {
@@ -374,6 +361,19 @@
     },
     "16": {
       "@type": "SoftwareApplication",
+      "identifier": "rstantools",
+      "name": "rstantools",
+      "version": ">= 2.7.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rstantools"
+    },
+    "17": {
+      "@type": "SoftwareApplication",
       "identifier": "tidyr",
       "name": "tidyr",
       "version": ">= 1.3.2",
@@ -385,7 +385,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tidyr"
     },
-    "17": {
+    "18": {
       "@type": "SoftwareApplication",
       "identifier": "withr",
       "name": "withr",
@@ -398,7 +398,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=withr"
     },
-    "18": {
+    "19": {
       "@type": "SoftwareApplication",
       "identifier": "WRS2",
       "name": "WRS2",
@@ -413,7 +413,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "17160.155KB",
+  "fileSize": "4223.381KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",

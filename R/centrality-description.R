@@ -56,12 +56,13 @@ centrality_description <- function(
   x_name <- as_name(x)
   y_name <- as_name(y)
   group_name <- make.unique(c(names(data), ".group"))[[ncol(data) + 1L]]
+  response_name <- make.unique(c(names(data), group_name, ".response"))[[ncol(data) + 2L]]
 
   select(data, {{ x }}, {{ y }}) |>
-    rename(!!group_name := {{ x }}) |>
+    rename(!!group_name := {{ x }}, !!response_name := {{ y }}) |>
     filter(!if_any(everything(), is.na)) |>
     datawizard::describe_distribution(
-      select = y_name,
+      select = response_name,
       by = group_name,
       centrality = centrality,
       threshold = tr,
