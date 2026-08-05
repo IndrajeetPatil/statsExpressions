@@ -1,8 +1,9 @@
 ## R CMD check results
 
-0 errors | 0 warnings | 0 note
+0 errors | 0 warnings | 0 notes
 
-* Major release (2.0.0) with new `pairwise_contingency_table()` function, `exact` parameter for non-parametric tests, and a fix for `options(OutDec = ",")` warnings in plotmath expressions.
+- Minor release (2.1.0)
+- This release addresses a new NOTE found in CRAN's daily checks.
 
 ## revdepcheck results
 
