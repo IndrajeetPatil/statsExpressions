@@ -23,6 +23,7 @@
 #'
 #' @importFrom insight format_value check_if_installed standardize_names
 #' @importFrom parameters model_parameters
+#' @importFrom bayestestR describe_posterior
 #' @importFrom purrr list_rbind map map2 map_dbl
 #' @importFrom rstantools bayes_R2
 #'
