@@ -3,7 +3,6 @@
 0 errors | 0 warnings | 0 notes
 
 - Minor release (2.1.0)
-- This release addresses a new NOTE found in CRAN's daily checks.
 
 ## revdepcheck results
 
