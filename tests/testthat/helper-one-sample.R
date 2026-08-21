@@ -1,0 +1,38 @@
+run_one_sample_tests_with_parameters <- function(title, x, test.value) {
+  cases_data <- tidyr::expand_grid(
+    type = c("bayes", "parametric", "nonparametric", "robust"),
+    conf.level = c(0.95, 0.90)
+  )
+  cases_data <- dplyr::mutate(
+    cases_data,
+    effsize.type = rep_len(c("g", "d"), length.out = nrow(cases_data))
+  )
+
+  patrick::with_parameters_test_that(
+    title,
+    {
+      set.seed(123L)
+      res <- one_sample_test(
+        data = msleep,
+        x = {{ x }},
+        type = type,
+        conf.level = conf.level,
+        effsize.type = effsize.type,
+        conf.method = conf.method,
+        test.value = test.value,
+        digits = 3L
+      )
+
+      # Bayesian estimation results are too platform-sensitive, so don't
+      # snapshot them; only recording Bayes Factors is enough
+      if (type == "bayes") {
+        expect_snapshot(names(res))
+        expect_snapshot(res$bf10[[1L]])
+      } else {
+        expect_snapshot(select(res, -expression))
+        expect_snapshot(res[["expression"]])
+      }
+    },
+    .cases = cases_data
+  )
+}
