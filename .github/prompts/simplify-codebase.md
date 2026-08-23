@@ -1,5 +1,5 @@
 ---
-agent: 'agent'
+name: 'simplify-codebase'
 description: 'Simplify the codebase safely by removing avoidable custom code and adopting proven dependency capabilities.'
 ---
 
@@ -96,7 +96,9 @@ Do **not** update `NEWS.md` for minor cleanups or routine simplifications.
 Only if the work amounts to a **significant refactoring** should it be
 recorded there, and then record **only** the significant refactoring itself
 — not incidental cleanup details, drive-by edits, or validation notes.
-
+However, if the refactoring requires bumping the minimum version of a
+dependency in `DESCRIPTION`, you must record that compatibility change in
+`NEWS.md` regardless of the refactoring's size.
 ## Pull request
 
 At the end, create a ready-for-review PR with the `gh` CLI
