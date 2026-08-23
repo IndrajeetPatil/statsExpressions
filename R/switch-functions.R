@@ -118,3 +118,19 @@ prior_switch <- function(x) {
     biased = effectsize::cohens_d
   )
 }
+
+#' @title Select the test and effect-size functions for mean-difference tests
+#' @description Maps the statistical `type` to the base-R test function and its
+#'   companion `{effectsize}` function: the *parametric* approach pairs the
+#'   *t*-test with Hedges' *g* / Cohen's *d* (via [.mean_difference_effsize()]),
+#'   while the *non-parametric* approach pairs the Wilcoxon test with the
+#'   rank-biserial correlation. Shared by [one_sample_test()] and
+#'   [two_sample_test()].
+#' @noRd
+.mean_difference_fns <- function(type, effsize.type) {
+  if (type == "parametric") {
+    list(test = stats::t.test, es = .mean_difference_effsize(effsize.type))
+  } else {
+    list(test = stats::wilcox.test, es = effectsize::rank_biserial)
+  }
+}

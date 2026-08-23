@@ -143,22 +143,17 @@ two_sample_test <- function(
     spread = ifelse(type %in% c("bayes", "robust"), paired, TRUE)
   )
 
-  # parametric ---------------------------------------
+  # parametric & non-parametric ------------------------------------
 
   if (type == "parametric") {
     digits.df <- ifelse(paired || var.equal, 0L, digits)
-    .f <- stats::t.test
-    .f.es <- .mean_difference_effsize(effsize.type)
-  }
-
-  # non-parametric ------------------------------------
-
-  if (type == "nonparametric") {
-    .f <- stats::wilcox.test
-    .f.es <- effectsize::rank_biserial
   }
 
   if (type %in% c("parametric", "nonparametric")) {
+    fns <- .mean_difference_fns(type, effsize.type)
+    .f <- fns$test
+    .f.es <- fns$es
+
     .f.args <- list(
       x = data[[2L]],
       y = data[[3L]],
