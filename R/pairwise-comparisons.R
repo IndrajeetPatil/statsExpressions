@@ -255,7 +255,7 @@ pairwise_comparisons <- function(
   # Bayesian --------------------------------
 
   if (type == "bayes") {
-    df_tidy <- map2(
+    df_tidy <- map2_vec(
       .x = as.character(df_pair$group1),
       .y = as.character(df_pair$group2),
       .f = function(a, b) {
@@ -269,7 +269,6 @@ pairwise_comparisons <- function(
         )
       }
     ) |>
-      list_rbind() |>
       filter(term == "Difference") |>
       mutate(
         expression = glue(
