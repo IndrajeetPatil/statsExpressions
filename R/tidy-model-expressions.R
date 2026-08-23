@@ -116,14 +116,8 @@ tidy_model_expressions <- function(
 #' @noRd
 .glue_to_expression <- function(data) {
   data |>
-    rowwise() |>
-    mutate(expression = list(parse_expr(expression))) |>
-    ungroup() |> # convert from `expression` to `language`
     mutate(
-      expression = case_when(
-        is.na(unlist(expression)) ~ list(NULL),
-        .default = unlist(expression)
-      )
+      expression = parse_exprs(replace(expression, is.na(expression), "NULL"))
     ) |>
     .add_package_class()
 }
