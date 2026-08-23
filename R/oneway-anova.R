@@ -319,7 +319,7 @@ oneway_anova <- function(
 
   add_expression_col(
     data = stats_df,
-    n = ifelse(paired, length(unique(data$.rowid)), nrow(data)),
+    n = .n_obs(data, paired),
     paired = paired,
     digits = digits,
     digits.df = digits.df,
