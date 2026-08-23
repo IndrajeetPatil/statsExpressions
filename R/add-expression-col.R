@@ -138,50 +138,31 @@ add_expression_col <- function(
       )
   }
 
-  # 0 degrees of freedom --------------------
+  # frequentist analysis (0, 1, or 2 degrees of freedom) --------------------
 
-  if (!bayesian && no.parameters == 0L) {
-    df_expr <- df_expr |>
-      mutate(
-        expression = glue(
-          "list(
-            {statistic.text}=='{statistic}', italic(p)=='{p.value}',
-            {es.text}=='{estimate}', CI['{conf.level}']~'['*'{conf.low}', '{conf.high}'*']',
-            {n.text}=='{n.obs}')"
-        )
-      )
-  }
-
-  # 1 degree of freedom --------------------
-
-  if (!bayesian && no.parameters == 1L) {
-    if ("df" %in% colnames(df_expr)) {
+  if (!bayesian) {
+    # for chi-squared statistic, the degrees of freedom live in the `df` column
+    if (no.parameters == 1L && "df" %in% colnames(df_expr)) {
       df_expr <- mutate(df_expr, df.error = df)
-    } # for chi-squared statistic
+    }
 
-    df_expr <- df_expr |>
-      mutate(
-        expression = glue(
-          "list(
-            {statistic.text}*'('*{df.error}*')'=='{statistic}', italic(p)=='{p.value}',
-            {es.text}=='{estimate}', CI['{conf.level}']~'['*'{conf.low}', '{conf.high}'*']',
-            {n.text}=='{n.obs}')"
-        )
-      )
-  }
+    # the statistic term is the only part that varies with the number of
+    # degrees of freedom; the rest of the expression is shared
+    statistic_part <- switch(
+      as.character(no.parameters),
+      "0" = "{statistic.text}=='{statistic}'",
+      "1" = "{statistic.text}*'('*{df.error}*')'=='{statistic}'",
+      "2" = "{statistic.text}({df}, {df.error})=='{statistic}'"
+    )
 
-  # 2 degrees of freedom -----------------
+    expr_template <- paste0(
+      "list(",
+      statistic_part,
+      ", italic(p)=='{p.value}', {es.text}=='{estimate}', ",
+      "CI['{conf.level}']~'['*'{conf.low}', '{conf.high}'*']', {n.text}=='{n.obs}')"
+    )
 
-  if (!bayesian && no.parameters == 2L) {
-    df_expr <- df_expr |>
-      mutate(
-        expression = glue(
-          "list(
-            {statistic.text}({df}, {df.error})=='{statistic}', italic(p)=='{p.value}',
-            {es.text}=='{estimate}', CI['{conf.level}']~'['*'{conf.low}', '{conf.high}'*']',
-            {n.text}=='{n.obs}')"
-        )
-      )
+    df_expr <- mutate(df_expr, expression = glue(expr_template))
   }
 
   # convert `expression` to `language`
