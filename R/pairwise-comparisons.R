@@ -300,14 +300,17 @@ pairwise_comparisons <- function(
 
 #' @noRd
 .pairwise_p_adjust_expr <- function(data, p.adjust.method, digits, test) {
+  method_label <- insight::format_capitalize(p.adjust.method)
+  method_label <- recode_values(
+    method_label,
+    c("BH", "Fdr") ~ "FDR",
+    default = method_label
+  )
+
   data |>
     mutate(
       p.value.adj = stats::p.adjust(p = p.value, method = p.adjust.method),
-      p.adjust.method = recode(
-        insight::format_capitalize(p.adjust.method),
-        BH = "FDR",
-        Fdr = "FDR"
-      ),
+      p.adjust.method = method_label,
       test = test,
       expression = case_when(
         p.adjust.method == "None" ~ glue(
