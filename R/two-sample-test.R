@@ -249,7 +249,7 @@ two_sample_test <- function(
       .standardize_two_sample_terms(stats_df, as_name(x), as_name(y))
     },
     paired = paired,
-    n = ifelse(paired, length(unique(data$.rowid)), nrow(data)),
+    n = .n_obs(data, paired),
     digits = digits,
     digits.df = digits.df
   )

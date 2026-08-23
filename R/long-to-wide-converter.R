@@ -94,3 +94,13 @@ long_to_wide_converter <- function(
 
   as_tibble(relocate(data, .rowid) |> arrange(.rowid))
 }
+
+#' @title Paired-aware observation count for the expression's `n`
+#' @description Returns the number of unique subjects for repeated-measures
+#'   designs (`paired = TRUE`) and the number of rows otherwise, operating on
+#'   the `.rowid`-tagged data frame produced by [long_to_wide_converter()].
+#'   Shared by [two_sample_test()] and [oneway_anova()].
+#' @noRd
+.n_obs <- function(data, paired) {
+  ifelse(paired, length(unique(data$.rowid)), nrow(data))
+}
