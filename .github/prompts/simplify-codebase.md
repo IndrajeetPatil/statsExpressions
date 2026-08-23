@@ -91,6 +91,7 @@ Run any narrower targeted checks first when they are sufficient, but do not
 stop until you have strong evidence that the refactoring did not introduce
 defects.
 
+
 ## Changelog policy
 
 Do **not** update `NEWS.md` for minor cleanups or routine simplifications.
@@ -100,6 +101,7 @@ recorded there, and then record **only** the significant refactoring itself
 However, if the refactoring requires bumping the minimum version of a
 dependency in `DESCRIPTION`, you must record that compatibility change in
 `NEWS.md` regardless of the refactoring's size.
+
 ## Pull request
 
 At the end, create a ready-for-review PR with the `gh` CLI
@@ -112,6 +114,7 @@ At the end, create a ready-for-review PR with the `gh` CLI
 - how you ensured the refactoring stayed regression-free.
 - whether `NEWS.md` was updated, and if so, why the refactoring was
   significant enough to warrant it.
+
 
 The PR should make the case that the repository is now easier to maintain
 because it owns less custom code.
