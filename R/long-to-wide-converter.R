@@ -74,15 +74,14 @@ long_to_wide_converter <- function(
     arrange({{ x }})
 
   if (!".rowid" %in% names(data)) {
-    if (paired) {
-      data <- group_by(data, {{ x }})
+    data <- if (paired) {
+      mutate(data, .rowid = row_number(), .by = {{ x }})
+    } else {
+      mutate(data, .rowid = row_number())
     }
-    data <- mutate(data, .rowid = row_number())
   }
 
-  data <- data |>
-    ungroup() |>
-    filter(!anyNA(pick({{ x }}, {{ y }})), .by = .rowid)
+  data <- filter(data, !anyNA(pick({{ x }}, {{ y }})), .by = .rowid)
 
   # convert to wide?
   if (spread) {
