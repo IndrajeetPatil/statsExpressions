@@ -89,7 +89,7 @@ pairwise_contingency_table <- function(
   x_levels <- levels(pull(data, {{ x }}))
   pair_list <- utils::combn(x_levels, 2L, simplify = FALSE)
 
-  df_pair <- map(pair_list, function(pair) {
+  df_pair <- map_vec(pair_list, function(pair) {
     data_sub <- filter(data, {{ x }} %in% pair) |>
       mutate(across(where(is.factor), droplevels))
 
@@ -110,8 +110,7 @@ pairwise_contingency_table <- function(
       ),
       tidy_model_effectsize(es_result)
     )
-  }) |>
-    list_rbind()
+  })
 
   # p-value adjustment and expression -------------------------------------------
 
