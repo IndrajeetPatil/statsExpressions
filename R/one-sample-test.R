@@ -60,13 +60,7 @@ one_sample_test <- function(
 
   if (type == "parametric") {
     .f <- stats::t.test
-    .f.es <- switch(
-      match.arg(effsize.type, c("g", "d", "unbiased", "biased")),
-      g = ,
-      unbiased = effectsize::hedges_g,
-      d = ,
-      biased = effectsize::cohens_d
-    )
+    .f.es <- .mean_difference_effsize(effsize.type)
   }
 
   # non-parametric ---------------------------------------
