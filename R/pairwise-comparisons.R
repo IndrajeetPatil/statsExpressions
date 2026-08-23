@@ -304,7 +304,11 @@ pairwise_comparisons <- function(
   data |>
     mutate(
       p.value.adj = stats::p.adjust(p = p.value, method = p.adjust.method),
-      p.adjust.method = p_adjust_text(p.adjust.method),
+      p.adjust.method = recode(
+        insight::format_capitalize(p.adjust.method),
+        BH = "FDR",
+        Fdr = "FDR"
+      ),
       test = test,
       expression = case_when(
         p.adjust.method == "None" ~ glue(
@@ -315,17 +319,4 @@ pairwise_comparisons <- function(
         )
       )
     )
-}
-
-#' @noRd
-p_adjust_text <- function(p.adjust.method) {
-  case_when(
-    grepl("^n|^bo|^h", p.adjust.method) ~ paste0(
-      toupper(substr(p.adjust.method, 1L, 1L)),
-      substr(p.adjust.method, 2L, nchar(p.adjust.method))
-    ),
-    grepl("^BH|^f", p.adjust.method) ~ "FDR",
-    grepl("^BY", p.adjust.method) ~ "BY",
-    .default = "Holm"
-  )
 }
