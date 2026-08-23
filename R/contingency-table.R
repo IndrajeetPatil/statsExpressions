@@ -158,14 +158,7 @@ contingency_table <- function(
   type <- extract_stats_type(type)
   test <- ifelse(quo_is_null(enquo(y)), "1way", "2way")
 
-  data <- data |>
-    select({{ x }}, {{ y }}, .counts = {{ counts }}) |>
-    filter(!if_any(everything(), is.na))
-
-  # untable the data frame based on the counts for each observation (if present)
-  if (".counts" %in% names(data)) {
-    data <- tidyr::uncount(data, weights = .counts)
-  }
+  data <- .untable_by_counts(data, {{ x }}, {{ y }}, {{ counts }})
 
   xtab <- table(data)
   ratio <- ratio %||% rep(1 / length(xtab), length(xtab))
@@ -258,6 +251,26 @@ contingency_table <- function(
       )
     ) |>
     .glue_to_expression()
+}
+
+#' @title Select response and (optional) counts columns, then untable
+#' @description Selects the grouping/response (and optional counts) columns,
+#'   drops rows with `NA` in them and, when a counts column is present, expands
+#'   the frequency-weighted rows into one row per observation. Shared by
+#'   [contingency_table()] and [pairwise_contingency_table()].
+#' @autoglobal
+#' @noRd
+.untable_by_counts <- function(data, x, y, counts) {
+  data <- data |>
+    select({{ x }}, {{ y }}, .counts = {{ counts }}) |>
+    filter(!if_any(everything(), is.na))
+
+  # untable the data frame based on the counts for each observation (if present)
+  if (".counts" %in% names(data)) {
+    data <- tidyr::uncount(data, weights = .counts)
+  }
+
+  data
 }
 
 #' @title estimate log prob of data under null with Monte Carlo

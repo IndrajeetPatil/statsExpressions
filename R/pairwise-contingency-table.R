@@ -74,13 +74,7 @@ pairwise_contingency_table <- function(
   x <- ensym(x)
   y <- ensym(y)
 
-  data <- data |>
-    select({{ x }}, {{ y }}, .counts = {{ counts }}) |>
-    filter(!if_any(everything(), is.na))
-
-  if (".counts" %in% names(data)) {
-    data <- tidyr::uncount(data, weights = .counts)
-  }
+  data <- .untable_by_counts(data, {{ x }}, {{ y }}, {{ counts }})
 
   data <- mutate(data, {{ x }} := droplevels(as.factor({{ x }})))
 
