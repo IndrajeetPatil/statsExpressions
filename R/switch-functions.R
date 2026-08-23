@@ -103,3 +103,18 @@ prior_switch <- function(x) {
 .grepl <- function(pattern, x) grepl(pattern, x, fixed = TRUE)
 
 # styler: on
+
+#' @title Select the parametric effect size for mean-difference tests
+#' @description Maps the user-facing `effsize.type` to the corresponding
+#'   `{effectsize}` function (Hedges' *g* when unbiased, Cohen's *d* when
+#'   biased). Shared by [one_sample_test()] and [two_sample_test()].
+#' @noRd
+.mean_difference_effsize <- function(effsize.type) {
+  switch(
+    match.arg(effsize.type, c("g", "d", "unbiased", "biased")),
+    g = ,
+    unbiased = effectsize::hedges_g,
+    d = ,
+    biased = effectsize::cohens_d
+  )
+}
