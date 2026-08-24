@@ -231,24 +231,13 @@ pairwise_comparisons <- function(
   # robust ----------------------------------
 
   if (type == "robust") {
-    if (!paired) {
-      .ns <- "WRS2"
-      .fn <- "lincon"
-      .f.args <- list(formula = new_formula(y, x), data = data, method = "none")
+    df_pair <- if (paired) {
+      WRS2::rmmcp(y = y_vec, groups = x_vec, blocks = g_vec, tr = tr)
+    } else {
+      WRS2::lincon(new_formula(y, x), data, tr = tr, method = "none")
     }
 
-    if (paired) {
-      .ns <- "WRS2"
-      .fn <- "rmmcp"
-      .f.args <- list(
-        y = quote(y_vec),
-        groups = quote(x_vec),
-        blocks = quote(g_vec)
-      )
-    }
-
-    df_pair <- eval(call2(.ns = .ns, .fn = .fn, tr = tr, !!!.f.args)) |>
-      tidy_model_parameters()
+    df_pair <- tidy_model_parameters(df_pair)
     test <- "Yuen's trimmed means"
   }
 
