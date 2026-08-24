@@ -1,5 +1,11 @@
 # Changelog
 
+## statsExpressions 2.1.1
+
+CRAN release: 2026-08-24
+
+- Simple internal refactorings.
+
 ## statsExpressions 2.1.0
 
 CRAN release: 2026-08-21
