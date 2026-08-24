@@ -81,7 +81,7 @@ long_to_wide_converter <- function(
     }
   }
 
-  data <- filter(data, !anyNA(pick({{ x }}, {{ y }})), .by = .rowid)
+  data <- filter_out(data, anyNA(pick({{ x }}, {{ y }})), .by = .rowid)
 
   # convert to wide?
   if (spread) {
