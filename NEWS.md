@@ -1,3 +1,7 @@
+# statsExpressions 2.1.1
+
+- Simple internal refactorings.
+
 # statsExpressions 2.1.0
 
 - The minimum supported R version is now 4.5. The project supports R-devel,

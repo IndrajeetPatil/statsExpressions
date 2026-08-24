@@ -2,7 +2,7 @@
 
 0 errors | 0 warnings | 0 notes
 
-- Minor release (2.1.0)
+- Patch release (2.1.1)
 
 ## revdepcheck results
 
