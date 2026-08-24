@@ -44,7 +44,7 @@ corr_test <- function(
   type <- extract_stats_type(type)
 
   data <- select(ungroup(data), {{ x }}, {{ y }}) |>
-    filter(!if_any(everything(), is.na))
+    tidyr::drop_na()
 
   stats_df <- correlation::correlation(
     data = data,

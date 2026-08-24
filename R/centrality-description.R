@@ -62,7 +62,7 @@ centrality_description <- function(
 
   select(data, {{ x }}, {{ y }}) |>
     rename(!!group_name := {{ x }}, !!response_name := {{ y }}) |>
-    filter(!if_any(everything(), is.na)) |>
+    tidyr::drop_na() |>
     datawizard::describe_distribution(
       select = response_name,
       by = group_name,
