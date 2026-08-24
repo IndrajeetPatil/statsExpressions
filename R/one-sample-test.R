@@ -86,8 +86,7 @@ one_sample_test <- function(
   # robust ---------------------------------------
 
   if (type == "robust") {
-    stats_df <- exec(
-      WRS2::trimcibt,
+    stats_df <- WRS2::trimcibt(
       x = x_vec,
       nv = test.value,
       tr = tr,
