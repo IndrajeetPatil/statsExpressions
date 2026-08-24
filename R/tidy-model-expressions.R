@@ -59,10 +59,7 @@ tidy_model_expressions <- function(
   # expression corresponding to that row; convert the necessary columns to
   # character type for expression
   df_expr <- data |>
-    filter(if_all(
-      .cols = matches("estimate|statistic|std.error|p.value"),
-      .fns = Negate(is.na)
-    )) |>
+    tidyr::drop_na(matches("estimate|statistic|std.error|p.value")) |>
     .data_to_char(digits)
 
   stat_type <- statistic

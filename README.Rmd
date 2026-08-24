@@ -5,7 +5,9 @@ output: github_document
   <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r}
-#| echo = FALSE
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE
 options(pillar.width = Inf, pillar.bold = TRUE, pillar.subtle_num = TRUE)
 
 knitr::opts_chunk$set(
@@ -29,8 +31,10 @@ Status | Usage | Miscellaneous
 [![R build status](https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions/actions) | [![Total downloads](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Codecov](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/main/graph/badge.svg)](https://app.codecov.io/gh/IndrajeetPatil/statsExpressions?branch=main)
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) | [![Daily downloads](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![DOI](https://joss.theoj.org/papers/10.21105/joss.03236/status.svg)](https://doi.org/10.21105/joss.03236)
 
+```{=gfm}
 > [!NOTE]
 > This package supports R-devel, the current R release, and the previous R release.
+```
 
 # Introduction <img src="man/figures/logo.png" alt="statsExpressions package logo" align="right" width="240" />
 
