@@ -56,23 +56,13 @@ one_sample_test <- function(
   type <- extract_stats_type(type)
   x_vec <- stats::na.omit(pull(data, {{ x }}))
 
-  # parametric ---------------------------------------
-
-  if (type == "parametric") {
-    .f <- stats::t.test
-    .f.es <- .mean_difference_effsize(effsize.type)
-  }
-
-  # non-parametric ---------------------------------------
-
-  if (type == "nonparametric") {
-    .f <- stats::wilcox.test
-    .f.es <- effectsize::rank_biserial
-  }
+  # parametric & non-parametric ---------------------------------------
 
   if (type %in% c("parametric", "nonparametric")) {
+    fns <- .mean_difference_fns(type, effsize.type)
+
     stats_df <- exec(
-      .f,
+      fns$test,
       x = x_vec,
       mu = test.value,
       alternative = alternative,
@@ -82,7 +72,7 @@ one_sample_test <- function(
       select(-matches("^est|^conf|^diff|^term|^ci"))
 
     ez_df <- exec(
-      .f.es,
+      fns$es,
       x = x_vec,
       mu = test.value,
       verbose = FALSE,
