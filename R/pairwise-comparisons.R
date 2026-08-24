@@ -300,12 +300,8 @@ pairwise_comparisons <- function(
 
 #' @noRd
 .pairwise_p_adjust_expr <- function(data, p.adjust.method, digits, test) {
-  method_label <- insight::format_capitalize(p.adjust.method)
-  method_label <- recode_values(
-    method_label,
-    c("BH", "Fdr") ~ "FDR",
-    default = method_label
-  )
+  method_label <- insight::format_capitalize(p.adjust.method) |>
+    replace_values(c("BH", "Fdr") ~ "FDR")
 
   data |>
     mutate(
