@@ -165,33 +165,21 @@ contingency_table <- function(
 
   # non-Bayesian ---------------------------------------
 
-  if (type != "bayes" && test == "2way") {
-    if (paired) {
-      .f <- stats::mcnemar.test
-      .f.es <- effectsize::cohens_g
-    }
-    if (!paired) {
-      .f <- stats::chisq.test
-      .f.es <- effectsize::cramers_v
-    }
-    .f.args <- list(x = xtab, correct = FALSE)
-  }
-
-  if (type != "bayes" && test == "1way") {
-    .f <- stats::chisq.test
-    .f.es <- effectsize::pearsons_c
-    .f.args <- list(x = xtab, p = ratio, correct = FALSE)
-  }
-
   if (type != "bayes") {
+    if (test == "1way") {
+      test_model <- stats::chisq.test(x = xtab, p = ratio, correct = FALSE)
+      effect_model <- effectsize::pearsons_c(xtab, p = ratio, ci = conf.level, alternative = alternative)
+    } else if (paired) {
+      test_model <- stats::mcnemar.test(x = xtab, correct = FALSE)
+      effect_model <- effectsize::cohens_g(xtab, ci = conf.level, alternative = alternative)
+    } else {
+      test_model <- stats::chisq.test(x = xtab, correct = FALSE)
+      effect_model <- effectsize::cramers_v(xtab, ci = conf.level, alternative = alternative)
+    }
+
     stats_df <- bind_cols(
-      tidy_model_parameters(exec(.f, !!!.f.args)),
-      tidy_model_effectsize(exec(
-        .f.es,
-        !!!.f.args,
-        ci = conf.level,
-        alternative = alternative
-      ))
+      tidy_model_parameters(test_model),
+      tidy_model_effectsize(effect_model)
     )
   }
 
