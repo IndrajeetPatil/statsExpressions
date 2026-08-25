@@ -214,43 +214,32 @@ oneway_anova <- function(
     digits.df <- 0L
     digits.df.error <- 0L
 
-    # styler: off
     if (paired) {
-      .f <- stats::friedman.test
-      .f.es <- effectsize::kendalls_w
-      .f.args <- list(
-        formula = new_formula(
-          enexpr(y),
-          expr(!!enexpr(x) | .rowid)
-        )
-      )
-      .f.es.args <- list(
-        x = new_formula(
-          enexpr(y),
-          expr(!!enexpr(x) | .rowid)
-        )
+      test_formula <- new_formula(enexpr(y), expr(!!enexpr(x) | .rowid))
+      test_model <- stats::friedman.test(test_formula, data = data)
+      effect_model <- effectsize::kendalls_w(
+        x = test_formula,
+        data = data,
+        ci = conf.level,
+        iterations = nboot,
+        verbose = FALSE
       )
     }
 
     if (!paired) {
-      .f <- stats::kruskal.test
-      .f.es <- effectsize::rank_epsilon_squared
-      .f.args <- list(formula = new_formula(y, x))
-      .f.es.args <- list(x = new_formula(y, x))
+      test_formula <- new_formula(y, x)
+      test_model <- stats::kruskal.test(test_formula, data = data)
+      effect_model <- effectsize::rank_epsilon_squared(
+        x = test_formula,
+        data = data,
+        ci = conf.level,
+        iterations = nboot,
+        verbose = FALSE
+      )
     }
-    # styler: on
 
-    stats_df <- tidy_model_parameters(exec(.f, !!!.f.args, data = data))
-
-    ez_df <- exec(
-      .fn = .f.es,
-      data = data,
-      ci = conf.level,
-      iterations = nboot,
-      verbose = FALSE,
-      !!!.f.es.args
-    ) |>
-      tidy_model_effectsize()
+    stats_df <- tidy_model_parameters(test_model)
+    ez_df <- tidy_model_effectsize(effect_model)
 
     stats_df <- bind_cols(stats_df, ez_df)
   }
