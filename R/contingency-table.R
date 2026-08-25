@@ -168,13 +168,26 @@ contingency_table <- function(
   if (type != "bayes") {
     if (test == "1way") {
       test_model <- stats::chisq.test(x = xtab, p = ratio, correct = FALSE)
-      effect_model <- effectsize::pearsons_c(xtab, p = ratio, ci = conf.level, alternative = alternative)
+      effect_model <- effectsize::pearsons_c(
+        xtab,
+        p = ratio,
+        ci = conf.level,
+        alternative = alternative
+      )
     } else if (paired) {
       test_model <- stats::mcnemar.test(x = xtab, correct = FALSE)
-      effect_model <- effectsize::cohens_g(xtab, ci = conf.level, alternative = alternative)
+      effect_model <- effectsize::cohens_g(
+        xtab,
+        ci = conf.level,
+        alternative = alternative
+      )
     } else {
       test_model <- stats::chisq.test(x = xtab, correct = FALSE)
-      effect_model <- effectsize::cramers_v(xtab, ci = conf.level, alternative = alternative)
+      effect_model <- effectsize::cramers_v(
+        xtab,
+        ci = conf.level,
+        alternative = alternative
+      )
     }
 
     stats_df <- bind_cols(
