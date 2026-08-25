@@ -76,38 +76,35 @@ meta_analysis <- function(
 ) {
   type <- extract_stats_type(type)
 
-  # nolint start: line_length_linter.
-  .meta_args <- switch(
+  check_if_installed(switch(
     type,
-    parametric = list(
-      .ns = "metafor",
-      .fn = "rma",
-      .f.args = list(yi = quote(estimate), sei = quote(std.error), ...)
-    ),
-    robust = list(
-      .ns = "metaplus",
-      .fn = "metaplus",
-      .f.args = list(
-        yi = quote(estimate),
-        sei = quote(std.error),
-        random = random,
-        ...
-      )
-    ),
-    bayes = list(
-      .ns = "metaBMA",
-      .fn = "meta_random",
-      .f.args = list(y = quote(estimate), SE = quote(std.error), ...)
-    )
-  )
-  .ns <- .meta_args$.ns
-  .fn <- .meta_args$.fn
-  .f.args <- .meta_args$.f.args
-  # nolint end
+    parametric = "metafor",
+    robust = "metaplus",
+    bayes = "metaBMA"
+  ))
 
-  check_if_installed(.ns)
-
-  stats_df <- eval(call2(.fn = .fn, .ns = .ns, data = data, !!!.f.args)) |>
+  stats_df <- switch(
+    type,
+    parametric = inject(metafor::rma(
+      yi = !!sym("estimate"),
+      sei = !!sym("std.error"),
+      data = !!data,
+      ...
+    )),
+    robust = inject(metaplus::metaplus(
+      yi = !!sym("estimate"),
+      sei = !!sym("std.error"),
+      random = random,
+      data = !!data,
+      ...
+    )),
+    bayes = inject(metaBMA::meta_random(
+      y = !!sym("estimate"),
+      SE = !!sym("std.error"),
+      data = !!data,
+      ...
+    ))
+  ) |>
     tidy_model_parameters(include_studies = FALSE, ci = conf.level)
 
   if (type != "bayes") {
