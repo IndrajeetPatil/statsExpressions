@@ -205,19 +205,6 @@
     },
     "5": {
       "@type": "SoftwareApplication",
-      "identifier": "bayestestR",
-      "name": "bayestestR",
-      "version": ">= 0.18.1",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=bayestestR"
-    },
-    "6": {
-      "@type": "SoftwareApplication",
       "identifier": "correlation",
       "name": "correlation",
       "version": ">= 0.8.8",
@@ -229,7 +216,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=correlation"
     },
-    "7": {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "datawizard",
       "name": "datawizard",
@@ -242,7 +229,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=datawizard"
     },
-    "8": {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "dplyr",
       "name": "dplyr",
@@ -255,7 +242,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=dplyr"
     },
-    "9": {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "effectsize",
       "name": "effectsize",
@@ -268,7 +255,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=effectsize"
     },
-    "10": {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "glue",
       "name": "glue",
@@ -281,7 +268,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=glue"
     },
-    "11": {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
@@ -294,7 +281,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=insight"
     },
-    "12": {
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "parameters",
       "name": "parameters",
@@ -307,7 +294,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=parameters"
     },
-    "13": {
+    "12": {
       "@type": "SoftwareApplication",
       "identifier": "performance",
       "name": "performance",
@@ -320,7 +307,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=performance"
     },
-    "14": {
+    "13": {
       "@type": "SoftwareApplication",
       "identifier": "PMCMRplus",
       "name": "PMCMRplus",
@@ -333,7 +320,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=PMCMRplus"
     },
-    "15": {
+    "14": {
       "@type": "SoftwareApplication",
       "identifier": "purrr",
       "name": "purrr",
@@ -346,7 +333,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=purrr"
     },
-    "16": {
+    "15": {
       "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
@@ -359,7 +346,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rlang"
     },
-    "17": {
+    "16": {
       "@type": "SoftwareApplication",
       "identifier": "rstantools",
       "name": "rstantools",
@@ -372,7 +359,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rstantools"
     },
-    "18": {
+    "17": {
       "@type": "SoftwareApplication",
       "identifier": "tidyr",
       "name": "tidyr",
@@ -385,7 +372,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tidyr"
     },
-    "19": {
+    "18": {
       "@type": "SoftwareApplication",
       "identifier": "withr",
       "name": "withr",
@@ -398,7 +385,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=withr"
     },
-    "20": {
+    "19": {
       "@type": "SoftwareApplication",
       "identifier": "WRS2",
       "name": "WRS2",
@@ -413,7 +400,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4223.961KB",
+  "fileSize": "7666.459KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
