@@ -52,6 +52,41 @@ significant figures (see also \code{\link[=signif]{signif()}}).}
 
 \item{...}{Currently ignored.}
 }
+\value{
+The returned object is a tibble data frame with the additional class
+\code{"statsExpressions"}. Unlike the hypothesis-testing functions, this one returns
+one row \strong{per level} of the grouping variable \code{x}, describing the distribution
+of \code{y} within that level. The columns are:
+\itemize{
+\item the grouping variable (named after \code{x}, e.g. \code{Species})
+\item the requested centrality estimate (named after \code{y}, e.g. \code{Sepal.Length}):
+the mean (\code{type = "parametric"}), median (\code{"nonparametric"}), trimmed mean
+(\code{"robust"}), or MAP estimate (\code{"bayes"})
+\item \code{std.dev}: standard deviation (for \code{"parametric"} and \code{"robust"})
+\item \code{mad}: median absolute deviation (for \code{"nonparametric"})
+\item \code{iqr}: interquartile range
+\item \code{conf.low}, \code{conf.high}: bounds of the confidence/credible interval for the
+centrality estimate
+\item \code{min}, \code{max}: minimum and maximum values
+\item \code{skewness}, \code{kurtosis}: shape statistics of the distribution
+\item \code{n.obs}: number of non-missing observations
+\item \code{missing.obs}: number of missing observations
+\item \code{expression}: a list-column of pre-formatted
+\href{https://rdrr.io/r/grDevices/plotmath.html}{plotmath} expressions (each
+element is a \code{language} object, not a character string) containing the
+centrality estimate, ready to be used in \code{{ggplot2}}
+\item \code{n.expression}: a label combining the group name and its sample size (e.g.
+\code{"setosa\\n(n = 50)"}), useful as an axis or facet label
+}
+
+The exact dispersion column depends on the \code{type} of analysis (\code{std.dev} vs
+\code{mad}), and \code{datawizard::describe_distribution()} is used internally to compute
+these indices.
+
+For more examples, see the \href{https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html}{data frame output vignette}
+and the \href{https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html}{Return value schema}
+article.
+}
 \description{
 Parametric, non-parametric, robust, and Bayesian measures of centrality.
 }

@@ -1,0 +1,43 @@
+The returned object is a tibble data frame with the additional class
+`"statsExpressions"`. Unlike the hypothesis-testing functions, this one returns
+one row **per level** of the grouping variable `x`, describing the distribution
+of `y` within that level. The columns are:
+
+  - the grouping variable (named after `x`, e.g. `Species`)
+
+  - the requested centrality estimate (named after `y`, e.g. `Sepal.Length`):
+    the mean (`type = "parametric"`), median (`"nonparametric"`), trimmed mean
+    (`"robust"`), or MAP estimate (`"bayes"`)
+
+  - `std.dev`: standard deviation (for `"parametric"` and `"robust"`)
+
+  - `mad`: median absolute deviation (for `"nonparametric"`)
+
+  - `iqr`: interquartile range
+
+  - `conf.low`, `conf.high`: bounds of the confidence/credible interval for the
+    centrality estimate
+
+  - `min`, `max`: minimum and maximum values
+
+  - `skewness`, `kurtosis`: shape statistics of the distribution
+
+  - `n.obs`: number of non-missing observations
+
+  - `missing.obs`: number of missing observations
+
+  - `expression`: a list-column of pre-formatted
+    [plotmath](https://rdrr.io/r/grDevices/plotmath.html) expressions (each
+    element is a `language` object, not a character string) containing the
+    centrality estimate, ready to be used in `{ggplot2}`
+
+  - `n.expression`: a label combining the group name and its sample size (e.g.
+    `"setosa\n(n = 50)"`), useful as an axis or facet label
+
+The exact dispersion column depends on the `type` of analysis (`std.dev` vs
+`mad`), and `datawizard::describe_distribution()` is used internally to compute
+these indices.
+
+For more examples, see the [data frame output vignette](https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html)
+and the [Return value schema](https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html)
+article.
