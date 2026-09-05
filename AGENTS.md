@@ -112,7 +112,12 @@ install the current dependency set.
 
 Follow the existing snapshot style:
 
-`test_that``(``"descriptive name"``, ``{`` `` ``df`` ``<-`` ``function_under_test``(``data ``=`` ``dataset``, x ``=`` ``var1``, y ``=`` ``var2``)`` `` ``expect_snapshot``(``dplyr``::`[`select`](https://dplyr.tidyverse.org/reference/select.html)`(``df``, ``-``expression``)``)`` `` ``expect_snapshot``(``df``[[``"expression"``]``]``)`` ``}``)`
+\
+`test_that``(``"descriptive name"``, ``{`\
+`  ``df`` ``<-`` ``function_under_test``(``data ``=`` ``dataset``, x ``=`` ``var1``, y ``=`` ``var2``)`\
+`  ``expect_snapshot``(``dplyr``::`[`select`](https://dplyr.tidyverse.org/reference/select.html)`(``df``, ``-``expression``)``)`\
+`  ``expect_snapshot``(``df``[[``"expression"``]``]``)`\
+`}``)`
 
 ## Code conventions
 

@@ -125,8 +125,13 @@ pairwise_comparisons(
 
 ## Value
 
-The returned tibble data frame can contain some or all of the following
-columns (the exact columns will depend on the statistical test):
+The returned object is a tibble data frame with the additional class
+`"statsExpressions"`. The exact set of columns depends on the test and,
+for functions that accept a `type` argument, on the chosen analysis
+(parametric, non-parametric, robust, or Bayesian). Any given call
+therefore returns *some* (not all) of the columns below.
+
+**Hypothesis testing**
 
 - `statistic`: the numeric value of a statistic
 
@@ -141,25 +146,64 @@ columns (the exact columns will depend on the statistical test):
 
 - `method`: the name of the inferential statistical test
 
+**Effect size estimation**
+
+- `effectsize`: the name of the effect size
+
 - `estimate`: estimated value of the effect size
+
+- `conf.level`: the coverage level of the confidence/credible interval
+  (e.g. `0.95`); the interval itself spans `conf.low` to `conf.high`
 
 - `conf.low`: lower bound for the effect size estimate
 
 - `conf.high`: upper bound for the effect size estimate
 
-- `conf.level`: width of the confidence interval
-
-- `conf.method`: method used to compute confidence interval
+- `conf.method`: method used to compute the confidence/credible interval
 
 - `conf.distribution`: statistical distribution for the effect
 
-- `effectsize`: the name of the effect size
+**Bayesian analysis** (only when `type = "bayes"`)
+
+- `bf10`: Bayes factor for the alternative hypothesis relative to the
+  null
+
+- `log_e_bf10`: natural logarithm of the Bayes factor (present for most,
+  but not all, Bayesian analyses)
+
+- `prior.distribution`, `prior.scale`, `prior.location`: prior
+  specification used to compute the Bayes factor and posterior estimates
+
+**Pairwise comparisons** (for `pairwise_comparisons()` and
+[`pairwise_contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_contingency_table.md))
+
+- `group1`, `group2`: the two levels being compared
+
+- `p.adjust.method`: the adjustment method used for multiple comparisons
+
+- `p.value.adj`: the adjusted *p*-value; returned by
+  [`pairwise_contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_contingency_table.md).
+  Note that `pairwise_comparisons()` instead folds the adjusted value
+  into `p.value` (and does not return a separate `p.value.adj` column)
+
+**Common columns**
 
 - `n.obs`: number of observations
 
-- `expression`: pre-formatted expression containing statistical details
+- `expression`: a list-column of pre-formatted
+  [plotmath](https://rdrr.io/r/grDevices/plotmath.html) expressions;
+  each element is a `language` object (not a character string)
+  containing the statistical details, ready to be used in `{ggplot2}`
+  (e.g. in [`labs()`](https://ggplot2.tidyverse.org/reference/labs.html)
+  or
+  [`annotate()`](https://ggplot2.tidyverse.org/reference/annotate.html))
 
-For examples, see [data frame output
+For a per-function, column-by-column breakdown of the output (and an
+explanation of the internal
+[`add_expression_col()`](https://www.indrapatil.com/statsExpressions/reference/add_expression_col.md)
+engine that builds the `expression` column), see the [Return value
+schema](https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html)
+article. For more examples, see the [data frame output
 vignette](https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html).
 
 ## Pairwise comparison tests

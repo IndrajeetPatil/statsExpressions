@@ -48,6 +48,7 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/web_only/dataframe_outputs.html">Data frame outputs</a></li>
+    <li><a class="dropdown-item" href="../articles/web_only/return_value_schema.html">Return value schema</a></li>
     <li><a class="dropdown-item" href="../articles/stats_details.html">Test and effect size details</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -142,6 +143,37 @@ significant figures (see also <code><a href="https://rdrr.io/r/base/Round.html" 
 <dd><p>Currently ignored.</p></dd>
 
 </dl></div>
+    <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p>The returned object is a tibble data frame with the additional class
+<code>"statsExpressions"</code>. Unlike the hypothesis-testing functions, this one returns
+one row <strong>per level</strong> of the grouping variable <code>x</code>, describing the distribution
+of <code>y</code> within that level. The columns are:</p><ul><li><p>the grouping variable (named after <code>x</code>, e.g. <code>Species</code>)</p></li>
+<li><p>the requested centrality estimate (named after <code>y</code>, e.g. <code>Sepal.Length</code>):
+the mean (<code>type = "parametric"</code>), median (<code>"nonparametric"</code>), trimmed mean
+(<code>"robust"</code>), or MAP estimate (<code>"bayes"</code>)</p></li>
+<li><p><code>std.dev</code>: standard deviation (for <code>"parametric"</code> and <code>"robust"</code>)</p></li>
+<li><p><code>mad</code>: median absolute deviation (for <code>"nonparametric"</code>)</p></li>
+<li><p><code>iqr</code>: interquartile range</p></li>
+<li><p><code>conf.low</code>, <code>conf.high</code>: bounds of the confidence/credible interval for the
+centrality estimate</p></li>
+<li><p><code>min</code>, <code>max</code>: minimum and maximum values</p></li>
+<li><p><code>skewness</code>, <code>kurtosis</code>: shape statistics of the distribution</p></li>
+<li><p><code>n.obs</code>: number of non-missing observations</p></li>
+<li><p><code>missing.obs</code>: number of missing observations</p></li>
+<li><p><code>expression</code>: a list-column of pre-formatted
+<a href="https://rdrr.io/r/grDevices/plotmath.html" class="external-link">plotmath</a> expressions (each
+element is a <code>language</code> object, not a character string) containing the
+centrality estimate, ready to be used in <code>{ggplot2}</code></p></li>
+<li><p><code>n.expression</code>: a label combining the group name and its sample size (e.g.
+<code>"setosa\n(n = 50)"</code>), useful as an axis or facet label</p></li>
+</ul><p>The exact dispersion column depends on the <code>type</code> of analysis (<code>std.dev</code> vs
+<code>mad</code>), and <code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">datawizard::describe_distribution()</a></code> is used internally to compute
+these indices.</p>
+<p>For more examples, see the <a href="https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html">data frame output vignette</a>
+and the <a href="https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html">Return value schema</a>
+article.</p>
+    </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>This function describes a distribution for <code>y</code> variable for each level of the
