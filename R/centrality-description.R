@@ -20,6 +20,11 @@
 #' ```{r child="man/rmd-fragments/centrality_description.Rmd"}
 #' ```
 #'
+#' @returns
+#'
+#' ```{r child="man/rmd-fragments/return.Rmd"}
+#' ```
+#'
 #' @param x The grouping (or independent) variable in `data`.
 #' @inheritParams oneway_anova
 #' @param ... Currently ignored.

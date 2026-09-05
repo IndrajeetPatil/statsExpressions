@@ -1,5 +1,12 @@
 # statsExpressions 2.1.1
 
+- New _Return value schema_ article documenting, for each exported function, the
+  full set of returned tibble columns (including the preformatted `expression`
+  and `n.expression` columns) and the role of the internal `add_expression_col()`
+  engine. The shared `@returns` documentation has also been expanded to cover
+  previously undocumented columns (e.g. `bf10`, `log_e_bf10`, `prior.scale`,
+  `group1`/`group2`, `p.value.adj`).
+
 - Simple internal refactorings.
 
 # statsExpressions 2.1.0

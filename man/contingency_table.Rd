@@ -92,7 +92,12 @@ hypothesis under the alternative, and corresponds to Gunel and Dickey's
 \item{...}{Additional arguments (currently ignored).}
 }
 \value{
-The returned tibble data frame can contain some or all of the following columns (the exact columns will depend on the statistical test):
+The returned object is a tibble data frame with the additional class
+\code{"statsExpressions"}. The exact set of columns depends on the statistical test
+and the \code{type} of analysis (parametric, non-parametric, robust, or Bayesian), so
+any given call returns \emph{some} (not all) of the columns below.
+
+\strong{Hypothesis testing}
 \itemize{
 \item \code{statistic}: the numeric value of a statistic
 \item \code{df}: the numeric value of a parameter being modeled (often degrees
@@ -101,18 +106,50 @@ of freedom for the test)
 two degrees of freedom (e.g. anova)
 \item \code{p.value}: the two-sided \emph{p}-value associated with the observed statistic
 \item \code{method}: the name of the inferential statistical test
-\item \code{estimate}: estimated value of the effect size
-\item \code{conf.low}: lower bound for the effect size estimate
-\item \code{conf.high}: upper bound for the effect size estimate
-\item \code{conf.level}: width of the confidence interval
-\item \code{conf.method}: method used to compute confidence interval
-\item \code{conf.distribution}: statistical distribution for the effect
-\item \code{effectsize}: the name of the effect size
-\item \code{n.obs}: number of observations
-\item \code{expression}: pre-formatted expression containing statistical details
 }
 
-For examples, see \href{https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html}{data frame output vignette}.
+\strong{Effect size estimation}
+\itemize{
+\item \code{effectsize}: the name of the effect size
+\item \code{estimate}: estimated value of the effect size
+\item \code{conf.level}: width of the confidence/credible interval
+\item \code{conf.low}: lower bound for the effect size estimate
+\item \code{conf.high}: upper bound for the effect size estimate
+\item \code{conf.method}: method used to compute the confidence/credible interval
+\item \code{conf.distribution}: statistical distribution for the effect
+}
+
+\strong{Bayesian analysis} (only when \code{type = "bayes"})
+\itemize{
+\item \code{bf10}: Bayes factor for the alternative hypothesis relative to the null
+\item \code{log_e_bf10}: natural logarithm of the Bayes factor
+\item \code{prior.distribution}, \code{prior.scale}, \code{prior.location}: prior specification
+used to compute the Bayes factor and posterior estimates
+}
+
+\strong{Pairwise comparisons} (only for \code{pairwise_comparisons()} and
+\code{pairwise_contingency_table()})
+\itemize{
+\item \code{group1}, \code{group2}: the two levels being compared
+\item \code{p.value.adj}: the \emph{p}-value adjusted for multiple comparisons
+\item \code{p.adjust.method}: the adjustment method used for the \emph{p}-value
+}
+
+\strong{Common columns}
+\itemize{
+\item \code{n.obs}: number of observations
+\item \code{expression}: a pre-formatted \href{https://rdrr.io/r/grDevices/plotmath.html}{plotmath}
+expression (a \code{language} object, not a character string) containing the
+statistical details, ready to be used in \code{{ggplot2}} (e.g. in \code{labs()} or
+\code{annotate()})
+\item \code{n.expression}: (only for \code{centrality_description()}) a label combining the
+group name and its sample size, useful as an axis or facet label
+}
+
+For a per-function, column-by-column breakdown of the output (and an explanation
+of the internal \code{add_expression_col()} engine that builds the \code{expression}
+column), see the \href{https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html}{Return value schema}
+article. For more examples, see the \href{https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html}{data frame output vignette}.
 }
 \description{
 Parametric and Bayesian one-way and two-way contingency table analyses.
