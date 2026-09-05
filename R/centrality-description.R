@@ -22,7 +22,7 @@
 #'
 #' @returns
 #'
-#' ```{r child="man/rmd-fragments/return.Rmd"}
+#' ```{r child="man/rmd-fragments/return_centrality.Rmd"}
 #' ```
 #'
 #' @param x The grouping (or independent) variable in `data`.

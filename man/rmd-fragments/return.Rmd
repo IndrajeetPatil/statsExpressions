@@ -1,7 +1,8 @@
 The returned object is a tibble data frame with the additional class
-`"statsExpressions"`. The exact set of columns depends on the statistical test
-and the `type` of analysis (parametric, non-parametric, robust, or Bayesian), so
-any given call returns *some* (not all) of the columns below.
+`"statsExpressions"`. The exact set of columns depends on the test and, for
+functions that accept a `type` argument, on the chosen analysis (parametric,
+non-parametric, robust, or Bayesian). Any given call therefore returns *some*
+(not all) of the columns below.
 
 **Hypothesis testing**
 
@@ -23,7 +24,8 @@ any given call returns *some* (not all) of the columns below.
 
   - `estimate`: estimated value of the effect size
 
-  - `conf.level`: width of the confidence/credible interval
+  - `conf.level`: the coverage level of the confidence/credible interval
+    (e.g. `0.95`); the interval itself spans `conf.low` to `conf.high`
 
   - `conf.low`: lower bound for the effect size estimate
 
@@ -37,31 +39,33 @@ any given call returns *some* (not all) of the columns below.
 
   - `bf10`: Bayes factor for the alternative hypothesis relative to the null
 
-  - `log_e_bf10`: natural logarithm of the Bayes factor
+  - `log_e_bf10`: natural logarithm of the Bayes factor (present for most, but
+    not all, Bayesian analyses)
 
   - `prior.distribution`, `prior.scale`, `prior.location`: prior specification
     used to compute the Bayes factor and posterior estimates
 
-**Pairwise comparisons** (only for `pairwise_comparisons()` and
+**Pairwise comparisons** (for `pairwise_comparisons()` and
 `pairwise_contingency_table()`)
 
   - `group1`, `group2`: the two levels being compared
 
-  - `p.value.adj`: the *p*-value adjusted for multiple comparisons
+  - `p.adjust.method`: the adjustment method used for multiple comparisons
 
-  - `p.adjust.method`: the adjustment method used for the *p*-value
+  - `p.value.adj`: the adjusted *p*-value; returned by
+    `pairwise_contingency_table()`. Note that `pairwise_comparisons()` instead
+    folds the adjusted value into `p.value` (and does not return a separate
+    `p.value.adj` column)
 
 **Common columns**
 
   - `n.obs`: number of observations
 
-  - `expression`: a pre-formatted [plotmath](https://rdrr.io/r/grDevices/plotmath.html)
-    expression (a `language` object, not a character string) containing the
+  - `expression`: a list-column of pre-formatted
+    [plotmath](https://rdrr.io/r/grDevices/plotmath.html) expressions; each
+    element is a `language` object (not a character string) containing the
     statistical details, ready to be used in `{ggplot2}` (e.g. in `labs()` or
     `annotate()`)
-
-  - `n.expression`: (only for `centrality_description()`) a label combining the
-    group name and its sample size, useful as an axis or facet label
 
 For a per-function, column-by-column breakdown of the output (and an explanation
 of the internal `add_expression_col()` engine that builds the `expression`

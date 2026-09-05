@@ -93,9 +93,10 @@ hypothesis under the alternative, and corresponds to Gunel and Dickey's
 }
 \value{
 The returned object is a tibble data frame with the additional class
-\code{"statsExpressions"}. The exact set of columns depends on the statistical test
-and the \code{type} of analysis (parametric, non-parametric, robust, or Bayesian), so
-any given call returns \emph{some} (not all) of the columns below.
+\code{"statsExpressions"}. The exact set of columns depends on the test and, for
+functions that accept a \code{type} argument, on the chosen analysis (parametric,
+non-parametric, robust, or Bayesian). Any given call therefore returns \emph{some}
+(not all) of the columns below.
 
 \strong{Hypothesis testing}
 \itemize{
@@ -112,7 +113,8 @@ two degrees of freedom (e.g. anova)
 \itemize{
 \item \code{effectsize}: the name of the effect size
 \item \code{estimate}: estimated value of the effect size
-\item \code{conf.level}: width of the confidence/credible interval
+\item \code{conf.level}: the coverage level of the confidence/credible interval
+(e.g. \code{0.95}); the interval itself spans \code{conf.low} to \code{conf.high}
 \item \code{conf.low}: lower bound for the effect size estimate
 \item \code{conf.high}: upper bound for the effect size estimate
 \item \code{conf.method}: method used to compute the confidence/credible interval
@@ -122,28 +124,31 @@ two degrees of freedom (e.g. anova)
 \strong{Bayesian analysis} (only when \code{type = "bayes"})
 \itemize{
 \item \code{bf10}: Bayes factor for the alternative hypothesis relative to the null
-\item \code{log_e_bf10}: natural logarithm of the Bayes factor
+\item \code{log_e_bf10}: natural logarithm of the Bayes factor (present for most, but
+not all, Bayesian analyses)
 \item \code{prior.distribution}, \code{prior.scale}, \code{prior.location}: prior specification
 used to compute the Bayes factor and posterior estimates
 }
 
-\strong{Pairwise comparisons} (only for \code{pairwise_comparisons()} and
+\strong{Pairwise comparisons} (for \code{pairwise_comparisons()} and
 \code{pairwise_contingency_table()})
 \itemize{
 \item \code{group1}, \code{group2}: the two levels being compared
-\item \code{p.value.adj}: the \emph{p}-value adjusted for multiple comparisons
-\item \code{p.adjust.method}: the adjustment method used for the \emph{p}-value
+\item \code{p.adjust.method}: the adjustment method used for multiple comparisons
+\item \code{p.value.adj}: the adjusted \emph{p}-value; returned by
+\code{pairwise_contingency_table()}. Note that \code{pairwise_comparisons()} instead
+folds the adjusted value into \code{p.value} (and does not return a separate
+\code{p.value.adj} column)
 }
 
 \strong{Common columns}
 \itemize{
 \item \code{n.obs}: number of observations
-\item \code{expression}: a pre-formatted \href{https://rdrr.io/r/grDevices/plotmath.html}{plotmath}
-expression (a \code{language} object, not a character string) containing the
+\item \code{expression}: a list-column of pre-formatted
+\href{https://rdrr.io/r/grDevices/plotmath.html}{plotmath} expressions; each
+element is a \code{language} object (not a character string) containing the
 statistical details, ready to be used in \code{{ggplot2}} (e.g. in \code{labs()} or
 \code{annotate()})
-\item \code{n.expression}: (only for \code{centrality_description()}) a label combining the
-group name and its sample size, useful as an axis or facet label
 }
 
 For a per-function, column-by-column breakdown of the output (and an explanation
