@@ -145,15 +145,15 @@ set.seed(123)
 one_sample_test(mtcars, wt, test.value = 3, type = "bayes") |> dplyr::glimpse()
 ```
 
-| Column | Description |
-| :----- | :---------- |
-| `mu` | the null value the mean is tested against (`test.value`) |
-| `statistic`, `df.error`, `p.value` | test statistic, its degrees of freedom, and *p*-value (non-Bayesian) |
-| `effectsize`, `estimate` | name and value of the effect size (e.g. Hedges' *g*) |
-| `conf.level`, `conf.low`, `conf.high`, `conf.method`, `conf.distribution` | interval details for the effect size |
-| `bf10`, `log_e_bf10`, `prior.*` | Bayes factor, its log, and the prior (Bayesian only) |
-| `n.obs` | number of observations |
-| `expression` | plotmath expression with the test details |
+| Column                                                                    | Description                                                          |
+| :------------------------------------------------------------------------ | :------------------------------------------------------------------- |
+| `mu`                                                                      | the null value the mean is tested against (`test.value`)             |
+| `statistic`, `df.error`, `p.value`                                        | test statistic, its degrees of freedom, and *p*-value (non-Bayesian) |
+| `effectsize`, `estimate`                                                  | name and value of the effect size (e.g. Hedges' *g*)                 |
+| `conf.level`, `conf.low`, `conf.high`, `conf.method`, `conf.distribution` | interval details for the effect size                                 |
+| `bf10`, `log_e_bf10`, `prior.*`                                           | Bayes factor, its log, and the prior (Bayesian only)                 |
+| `n.obs`                                                                   | number of observations                                               |
+| `expression`                                                              | plotmath expression with the test details                            |
 
 ### `two_sample_test()`
 
@@ -163,13 +163,13 @@ set.seed(123)
 two_sample_test(ToothGrowth, supp, len) |> dplyr::glimpse()
 ```
 
-| Column | Description |
-| :----- | :---------- |
-| `parameter1`, `parameter2` | the outcome and grouping variable names |
-| `mean.parameter1`, `mean.parameter2` | group means (parametric between-subjects) |
-| `statistic`, `df.error`, `p.value` | test statistic, its degrees of freedom, and *p*-value |
-| `effectsize`, `estimate`, `conf.*` | effect size and its interval |
-| `n.obs`, `expression` | sample size and the plotmath expression |
+| Column                               | Description                                           |
+| :----------------------------------- | :---------------------------------------------------- |
+| `parameter1`, `parameter2`           | the outcome and grouping variable names               |
+| `mean.parameter1`, `mean.parameter2` | group means (parametric between-subjects)             |
+| `statistic`, `df.error`, `p.value`   | test statistic, its degrees of freedom, and *p*-value |
+| `effectsize`, `estimate`, `conf.*`   | effect size and its interval                          |
+| `n.obs`, `expression`                | sample size and the plotmath expression               |
 
 ### `oneway_anova()`
 
@@ -179,11 +179,11 @@ set.seed(123)
 oneway_anova(iris, Species, Sepal.Length) |> dplyr::glimpse()
 ```
 
-| Column | Description |
-| :----- | :---------- |
+| Column                                   | Description                                                  |
+| :--------------------------------------- | :----------------------------------------------------------- |
 | `statistic`, `df`, `df.error`, `p.value` | *F*-statistic with its two degrees of freedom, and *p*-value |
-| `effectsize`, `estimate`, `conf.*` | effect size (e.g. omega-squared) and its interval |
-| `n.obs`, `expression` | sample size and the plotmath expression |
+| `effectsize`, `estimate`, `conf.*`       | effect size (e.g. omega-squared) and its interval            |
+| `n.obs`, `expression`                    | sample size and the plotmath expression                      |
 
 For a two-degrees-of-freedom statistic like ANOVA, note that **both** `df` and
 `df.error` are present.
@@ -196,13 +196,13 @@ set.seed(123)
 corr_test(mtcars, wt, mpg) |> dplyr::glimpse()
 ```
 
-| Column | Description |
-| :----- | :---------- |
-| `parameter1`, `parameter2` | the two correlated variable names |
-| `effectsize`, `estimate` | name (e.g. Pearson's *r*) and value of the correlation |
-| `conf.level`, `conf.low`, `conf.high`, `conf.method` | interval details |
-| `statistic`, `df.error`, `p.value` | test statistic, degrees of freedom, and *p*-value |
-| `n.obs`, `expression` | sample size and the plotmath expression |
+| Column                                               | Description                                            |
+| :--------------------------------------------------- | :----------------------------------------------------- |
+| `parameter1`, `parameter2`                           | the two correlated variable names                      |
+| `effectsize`, `estimate`                             | name (e.g. Pearson's *r*) and value of the correlation |
+| `conf.level`, `conf.low`, `conf.high`, `conf.method` | interval details                                       |
+| `statistic`, `df.error`, `p.value`                   | test statistic, degrees of freedom, and *p*-value      |
+| `n.obs`, `expression`                                | sample size and the plotmath expression                |
 
 ### `contingency_table()`
 
@@ -217,12 +217,12 @@ set.seed(123)
 contingency_table(as.data.frame(HairEyeColor), Eye, counts = Freq) |> dplyr::glimpse()
 ```
 
-| Column | Description |
-| :----- | :---------- |
-| `statistic`, `df`, `p.value` | chi-squared statistic, its degrees of freedom, and *p*-value |
-| `effectsize`, `estimate`, `conf.*` | effect size (e.g. Cramer's *V*) and its interval |
-| `bf10`, `prior.scale` | Bayes factor and prior (Bayesian only) |
-| `n.obs`, `expression` | sample size and the plotmath expression |
+| Column                             | Description                                                  |
+| :--------------------------------- | :----------------------------------------------------------- |
+| `statistic`, `df`, `p.value`       | chi-squared statistic, its degrees of freedom, and *p*-value |
+| `effectsize`, `estimate`, `conf.*` | effect size (e.g. Cramer's *V*) and its interval             |
+| `bf10`, `prior.scale`              | Bayes factor and prior (Bayesian only)                       |
+| `n.obs`, `expression`              | sample size and the plotmath expression                      |
 
 ### `pairwise_comparisons()`
 
@@ -236,12 +236,12 @@ pairwise_comparisons(
 ) |> dplyr::glimpse()
 ```
 
-| Column | Description |
-| :----- | :---------- |
-| `group1`, `group2` | the two levels being compared |
-| `statistic`, `p.value` | test statistic and *p*-value for the comparison |
+| Column                    | Description                                             |
+| :------------------------ | :------------------------------------------------------ |
+| `group1`, `group2`        | the two levels being compared                           |
+| `statistic`, `p.value`    | test statistic and *p*-value for the comparison         |
 | `p.adjust.method`, `test` | multiple-comparison adjustment method and the test used |
-| `expression` | plotmath expression with the (adjusted) *p*-value |
+| `expression`              | plotmath expression with the (adjusted) *p*-value       |
 
 Unlike the single-test functions, this returns **one row per pairwise comparison**.
 
@@ -253,11 +253,11 @@ set.seed(123)
 pairwise_contingency_table(mtcars, cyl, am, p.adjust.method = "holm") |> dplyr::glimpse()
 ```
 
-| Column | Description |
-| :----- | :---------- |
-| `group1`, `group2` | the two levels being compared |
-| `p.value`, `p.value.adj` | unadjusted and multiplicity-adjusted *p*-values |
-| `effectsize`, `estimate`, `conf.*` | Cramer's *V* effect size and its interval |
+| Column                                  | Description                                      |
+| :-------------------------------------- | :----------------------------------------------- |
+| `group1`, `group2`                      | the two levels being compared                    |
+| `p.value`, `p.value.adj`                | unadjusted and multiplicity-adjusted *p*-values  |
+| `effectsize`, `estimate`, `conf.*`      | Cramer's *V* effect size and its interval        |
 | `p.adjust.method`, `test`, `expression` | adjustment method, test, and plotmath expression |
 
 ### `meta_analysis()`
@@ -272,13 +272,13 @@ set.seed(123)
 meta_analysis(df) |> dplyr::glimpse()
 ```
 
-| Column | Description |
-| :----- | :---------- |
-| `term`, `effectsize` | the summary term and effect-size label |
-| `estimate`, `std.error` | meta-analytic summary estimate and its standard error |
-| `conf.level`, `conf.low`, `conf.high`, `conf.method` | interval details |
-| `statistic`, `p.value` | test statistic and *p*-value |
-| `n.obs`, `expression` | number of studies and the plotmath expression |
+| Column                                               | Description                                           |
+| :--------------------------------------------------- | :---------------------------------------------------- |
+| `term`, `effectsize`                                 | the summary term and effect-size label                |
+| `estimate`, `std.error`                              | meta-analytic summary estimate and its standard error |
+| `conf.level`, `conf.low`, `conf.high`, `conf.method` | interval details                                      |
+| `statistic`, `p.value`                               | test statistic and *p*-value                          |
+| `n.obs`, `expression`                                | number of studies and the plotmath expression         |
 
 ### `centrality_description()`
 
@@ -288,15 +288,15 @@ set.seed(123)
 centrality_description(iris, Species, Sepal.Length) |> dplyr::glimpse()
 ```
 
-| Column | Description |
-| :----- | :---------- |
-| `<x>` (e.g. `Species`) | the grouping variable |
-| `<y>` (e.g. `Sepal.Length`) | the requested centrality measure (mean/median/trimmed mean/MAP) |
-| `std.dev`, `iqr`, `min`, `max`, `skewness`, `kurtosis` | dispersion and shape statistics |
-| `conf.low`, `conf.high` | interval for the centrality estimate |
-| `n.obs`, `missing.obs` | count of observations and missing values |
-| `expression` | plotmath expression with the centrality estimate |
-| `n.expression` | a label combining the group name and its sample size (handy as a facet/axis label) |
+| Column                                                 | Description                                                                        |
+| :----------------------------------------------------- | :--------------------------------------------------------------------------------- |
+| `<x>` (e.g. `Species`)                                 | the grouping variable                                                              |
+| `<y>` (e.g. `Sepal.Length`)                            | the requested centrality measure (mean/median/trimmed mean/MAP)                    |
+| `std.dev`, `iqr`, `min`, `max`, `skewness`, `kurtosis` | dispersion and shape statistics                                                    |
+| `conf.low`, `conf.high`                                | interval for the centrality estimate                                               |
+| `n.obs`, `missing.obs`                                 | count of observations and missing values                                           |
+| `expression`                                           | plotmath expression with the centrality estimate                                   |
+| `n.expression`                                         | a label combining the group name and its sample size (handy as a facet/axis label) |
 
 This is the only function that returns an `n.expression` column.
 
