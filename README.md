@@ -3,13 +3,10 @@
 
 # `{statsExpressions}`: Tidy dataframes and expressions with statistical details
 
-| Status | Usage | Miscellaneous |
-|----|----|----|
-| [![R build status](https://github.com/IndrajeetPatil/statsExpressions/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/statsExpressions/actions) | [![Total downloads](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![Codecov](https://codecov.io/gh/IndrajeetPatil/statsExpressions/branch/main/graph/badge.svg)](https://app.codecov.io/gh/IndrajeetPatil/statsExpressions?branch=main) |
-| [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) | [![Daily downloads](https://cranlogs.r-pkg.org/badges/last-day/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions) | [![DOI](https://joss.theoj.org/papers/10.21105/joss.03236/status.svg)](https://doi.org/10.21105/joss.03236) |
-
-> [!NOTE]
-> This package supports R-devel, the current R release, and the previous R release.
+[![Total
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=blue)](https://CRAN.R-project.org/package=statsExpressions)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
+[![DOI](https://joss.theoj.org/papers/10.21105/joss.03236/status.svg)](https://doi.org/10.21105/joss.03236)
 
 # Introduction <img src="man/figures/logo.png" alt="statsExpressions package logo" align="right" width="240" />
 
@@ -45,6 +42,9 @@ For more documentation, see the dedicated
 [website](https://www.indrapatil.com/statsExpressions/).
 
 # Installation
+
+Note: This package supports R-devel, the current R release, and the
+previous R release.
 
 | Type        | Command                                       |
 |:------------|:----------------------------------------------|
