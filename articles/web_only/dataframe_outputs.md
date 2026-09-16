@@ -385,14 +385,14 @@ This vignette can be cited as:
 `#> ``8`` g_.rowid       1     cauchy                          ``0``       1     fixed `\
 `#>          ``bf10`` ``method``                          ``log_e_bf10`` ``effectsize``        `\
 `#>         ``<dbl>`` ``<chr>``                                ``<dbl>`` ``<chr>``             `\
-`#> ``1`` ``1``37``2``773``377``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``2`` ``1``37``2``773``377``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``3`` ``1``37``2``773``377``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``4`` ``1``37``2``773``377``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``5`` ``1``37``2``773``377``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``6`` ``1``37``2``773``377``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``7`` ``1``37``2``773``377``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``8`` ``1``37``2``773``377``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``1`` ``1``37``2``773``375``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``2`` ``1``37``2``773``375``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``3`` ``1``37``2``773``375``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``4`` ``1``37``2``773``375``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``5`` ``1``37``2``773``375``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``6`` ``1``37``2``773``375``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``7`` ``1``37``2``773``375``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``8`` ``1``37``2``773``375``. Bayes factors for linear models       21.0 Bayesian R-squared`\
 `#>   ``estimate`` ``std.dev`` ``conf.level`` ``conf.low`` ``conf.high`` ``conf.method`` ``component``   ``n.obs`\
 `#>      ``<dbl>``   ``<dbl>``      ``<dbl>``    ``<dbl>``     ``<dbl>`` ``<chr>``       ``<chr>``       ``<int>`\
 `#> ``1``    ``0.``529  ``0.0``33``3``       ``0.``95    ``0.``461     ``0.``587 HDI         conditional    88`\
