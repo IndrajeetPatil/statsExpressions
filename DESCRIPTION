@@ -54,7 +54,7 @@ Suggests:
     utils
 VignetteBuilder:
     knitr
-Config/Needs/check: anthonynorth/roxyglobals
+Config/Needs/check: anthonynorth/roxyglobals, any::patrick
 Config/roxygen2/version: 8.0.0
 Config/roxyglobals/unique: TRUE
 Config/testthat/edition: 3
