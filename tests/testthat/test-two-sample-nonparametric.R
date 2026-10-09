@@ -1,6 +1,4 @@
 test_that(desc = "t_nonparametric works - between-subjects design", code = {
-  # between-subjects design -----------------------------------------------
-
   set.seed(123)
   df <- two_sample_test(
     type = "np",
@@ -16,8 +14,6 @@ test_that(desc = "t_nonparametric works - between-subjects design", code = {
 })
 
 test_that(desc = "nonparametric works - within-subjects design", code = {
-  # within-subjects design -----------------------------------------------
-
   set.seed(123)
   df <- suppressWarnings(two_sample_test(
     data = filter(bugs_long, condition %in% c("HDHF", "HDLF")),

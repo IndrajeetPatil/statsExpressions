@@ -56,7 +56,6 @@ test_that(desc = "paired parametric anova subtitles work (without NAs)", code = 
   expect_snapshot(df1[["expression"]])
 })
 
-
 test_that(desc = "works with subject id", code = {
   expect_subject_id_invariance(oneway_anova, data_with_subid)
 })

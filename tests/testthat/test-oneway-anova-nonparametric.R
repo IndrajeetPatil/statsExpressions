@@ -34,7 +34,7 @@ test_that(desc = "between-subjects", code = {
 # within-subjects ----------------------------------------------
 
 test_that(desc = "within-subjects", code = {
-  #  with NAs
+  # with NAs
   set.seed(123)
   df1 <- oneway_anova(
     type = "np",

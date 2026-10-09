@@ -170,7 +170,7 @@ oneway_anova <- function(
   ) |>
     mutate(.rowid = as.factor(.rowid))
 
-  #  parametric ---------------------------------------
+  # parametric ---------------------------------------
 
   if (type == "parametric") {
     digits.df <- ifelse(paired, digits, 0L)

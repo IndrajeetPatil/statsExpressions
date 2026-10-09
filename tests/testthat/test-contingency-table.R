@@ -132,8 +132,6 @@ test_that(desc = "Goodness of Fit contingency_table works without counts", code 
 })
 
 test_that(desc = "bayesian (proportion test)", code = {
-  # bayesian (proportion test) --------------------------------------
-
   set.seed(123)
   df1 <- contingency_table(
     data = mtcars,
