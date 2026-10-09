@@ -283,7 +283,7 @@ pairwise_comparisons <- function(
       select(-p.value.adj)
   }
 
-  select(df_pair, everything(), -matches("p.adjustment|^method$")) |>
+  select(df_pair, -matches("p.adjustment|^method$")) |>
     .glue_to_expression()
 }
 

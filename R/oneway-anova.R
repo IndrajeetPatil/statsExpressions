@@ -213,25 +213,22 @@ oneway_anova <- function(
 
     if (paired) {
       test_formula <- new_formula(y, expr(!!x | .rowid))
-      test_model <- stats::friedman.test(test_formula, data = data)
-      effect_model <- effectsize::kendalls_w(
-        x = test_formula,
-        data = data,
-        ci = conf.level,
-        iterations = nboot,
-        verbose = FALSE
-      )
+      .f <- stats::friedman.test
+      .f.es <- effectsize::kendalls_w
     } else {
       test_formula <- new_formula(y, x)
-      test_model <- stats::kruskal.test(test_formula, data = data)
-      effect_model <- effectsize::rank_epsilon_squared(
-        x = test_formula,
-        data = data,
-        ci = conf.level,
-        iterations = nboot,
-        verbose = FALSE
-      )
+      .f <- stats::kruskal.test
+      .f.es <- effectsize::rank_epsilon_squared
     }
+
+    test_model <- .f(test_formula, data = data)
+    effect_model <- .f.es(
+      x = test_formula,
+      data = data,
+      ci = conf.level,
+      iterations = nboot,
+      verbose = FALSE
+    )
 
     stats_df <- bind_cols(
       tidy_model_parameters(test_model),
@@ -252,24 +249,21 @@ oneway_anova <- function(
         blocks = data[[".rowid"]],
         tr = tr
       )
+
+      ez_df <- long_to_wide_converter(data, {{ x }}, {{ y }}) |>
+        WRS2::wmcpAKP(select(-.rowid), tr = tr, nboot = nboot) |>
+        tidy_model_parameters()
+
+      stats_df <- bind_cols(tidy_model_parameters(mod), ez_df)
     } else {
-      mod <- WRS2::t1way(
+      stats_df <- WRS2::t1way(
         formula = new_formula(y, x),
         data = data,
         tr = tr,
         alpha = 1.0 - conf.level,
         nboot = nboot
-      )
-    }
-
-    stats_df <- tidy_model_parameters(mod)
-
-    if (paired) {
-      ez_df <- long_to_wide_converter(data, {{ x }}, {{ y }}) |>
-        WRS2::wmcpAKP(select(-.rowid), tr = tr, nboot = nboot) |>
+      ) |>
         tidy_model_parameters()
-
-      stats_df <- bind_cols(stats_df, ez_df)
     }
   }
 
