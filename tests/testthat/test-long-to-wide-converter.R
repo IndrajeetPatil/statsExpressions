@@ -9,7 +9,6 @@ test_that(desc = "long_to_wide_converter works - spread true", code = {
   # data without NAs ------------------------------
 
   # within-subjects
-  set.seed(123)
   df1 <- long_to_wide_converter(
     data = iris_long,
     x = condition,
@@ -17,7 +16,6 @@ test_that(desc = "long_to_wide_converter works - spread true", code = {
   )
 
   # between-subjects
-  set.seed(123)
   df2 <- long_to_wide_converter(
     data = mtcars,
     x = am,
@@ -28,7 +26,6 @@ test_that(desc = "long_to_wide_converter works - spread true", code = {
   # data with NAs ------------------------------
 
   # within-subjects
-  set.seed(123)
   df3 <- long_to_wide_converter(
     data = bugs_long,
     x = condition,
@@ -37,7 +34,6 @@ test_that(desc = "long_to_wide_converter works - spread true", code = {
   )
 
   # between-subjects
-  set.seed(123)
   df4 <- long_to_wide_converter(
     data = msleep,
     x = vore,
@@ -59,7 +55,6 @@ test_that(desc = "long_to_wide_converter works - spread false", code = {
   # ----------------------- data without NAs ------------------------------
 
   # within-subjects
-  set.seed(123)
   df1 <- long_to_wide_converter(
     data = iris_long,
     x = condition,
@@ -68,7 +63,6 @@ test_that(desc = "long_to_wide_converter works - spread false", code = {
   )
 
   # between-subjects
-  set.seed(123)
   df2 <- long_to_wide_converter(
     data = mtcars,
     x = am,
@@ -80,7 +74,6 @@ test_that(desc = "long_to_wide_converter works - spread false", code = {
   # -------------------------- data with NAs ------------------------------
 
   # within-subjects
-  set.seed(123)
   df3 <- long_to_wide_converter(
     data = bugs_long,
     x = condition,
@@ -90,7 +83,6 @@ test_that(desc = "long_to_wide_converter works - spread false", code = {
   )
 
   # between-subjects
-  set.seed(123)
   df4 <- long_to_wide_converter(
     data = msleep,
     x = vore,
@@ -106,18 +98,10 @@ test_that(desc = "long_to_wide_converter works - spread false", code = {
 # with .rowid - without NA ---------------------------------------------
 
 test_that(desc = "with .rowid - without NA", code = {
-  df_original <- structure(
-    list(
-      score = c(90, 90, 72.5, 45),
-      condition = structure(
-        c(1L, 2L, 2L, 1L),
-        levels = c("4", "5"),
-        class = "factor"
-      ),
-      id = c(1L, 2L, 1L, 2L)
-    ),
-    row.names = c(NA, -4L),
-    class = c("tbl_df", "tbl", "data.frame")
+  df_original <- dplyr::tibble(
+    score = c(90, 90, 72.5, 45),
+    condition = factor(c("4", "5", "5", "4")),
+    id = c(1L, 2L, 1L, 2L)
   )
 
   df_arranged <- arrange(df_original, id)
@@ -127,15 +111,10 @@ test_that(desc = "with .rowid - without NA", code = {
     long_to_wide_converter(df_original, condition, score, id)
   )
 
+  # the output is already sorted by `.rowid`
   expect_identical(
-    arrange(
-      long_to_wide_converter(df_arranged, condition, score, spread = FALSE),
-      .rowid
-    ),
-    arrange(
-      long_to_wide_converter(df_original, condition, score, id, spread = FALSE),
-      .rowid
-    )
+    long_to_wide_converter(df_arranged, condition, score, spread = FALSE),
+    long_to_wide_converter(df_original, condition, score, id, spread = FALSE)
   )
 })
 

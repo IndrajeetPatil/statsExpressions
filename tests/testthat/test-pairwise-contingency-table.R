@@ -1,7 +1,6 @@
 # basic usage --------------------------------------------------
 
 test_that("pairwise_contingency_table works - basic", {
-  set.seed(123)
   df1 <- pairwise_contingency_table(
     data = mtcars,
     x = cyl,
@@ -16,7 +15,7 @@ test_that("pairwise_contingency_table works - basic", {
   expect_shape(df1, nrow = 3L)
 
   # both raw and adjusted p-values present
-  expect_true(all(c("p.value", "p.value.adj") %in% names(df1)))
+  expect_contains(names(df1), c("p.value", "p.value.adj"))
 
   # adjusted should be >= raw
   expect_true(all(df1$p.value.adj >= df1$p.value))
@@ -25,7 +24,6 @@ test_that("pairwise_contingency_table works - basic", {
 # counts data --------------------------------------------------
 
 test_that("pairwise_contingency_table works - with counts", {
-  set.seed(123)
   df1 <- pairwise_contingency_table(
     data = as.data.frame(Titanic),
     x = Class,
@@ -44,7 +42,6 @@ test_that("pairwise_contingency_table works - with counts", {
 # no adjustment --------------------------------------------------
 
 test_that("pairwise_contingency_table works - no adjustment", {
-  set.seed(123)
   df1 <- pairwise_contingency_table(
     data = mtcars,
     x = cyl,
@@ -62,7 +59,6 @@ test_that("pairwise_contingency_table works - no adjustment", {
 # data with NAs --------------------------------------------------
 
 test_that("pairwise_contingency_table works - data with NAs", {
-  set.seed(123)
   df1 <- pairwise_contingency_table(
     data = msleep,
     x = vore,
@@ -77,7 +73,6 @@ test_that("pairwise_contingency_table works - data with NAs", {
 # custom conf.level and alternative --------------------------------------------------
 
 test_that("pairwise_contingency_table works - custom conf.level and alternative", {
-  set.seed(123)
   df1 <- pairwise_contingency_table(
     data = mtcars,
     x = cyl,
@@ -94,7 +89,6 @@ test_that("pairwise_contingency_table works - custom conf.level and alternative"
 # custom digits --------------------------------------------------
 
 test_that("pairwise_contingency_table works - custom digits", {
-  set.seed(123)
   df1 <- pairwise_contingency_table(
     data = mtcars,
     x = cyl,
