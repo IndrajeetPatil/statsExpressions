@@ -126,6 +126,10 @@ A BibTeX entry for LaTeX users is
 | Equal proportions for categorical variable levels | ✅ | ✅ | ❌ | ✅ |
 | Random-effects meta-analysis | ✅ | ❌ | ✅ | ✅ |
 
+❌ means that no dedicated analysis of that type exists. For contingency
+tables, `type = "robust"` is still accepted and falls back to the
+parametric tests.
+
 # Tidy dataframes from statistical analysis
 
 To illustrate the simplicity of this syntax, let’s say we want to run a
@@ -649,6 +653,11 @@ aggregate first (e.g., take the mean).
 | Bayesian | Bayesian Pearson’s correlation coefficient | Yes | `correlation::correlation()` |
 
 ## `contingency_table`
+
+There are no dedicated non-parametric or robust contingency table
+analyses. `type = "nonparametric"` and `type = "robust"` are accepted,
+but run the same frequentist tests as `type = "parametric"` (the
+“Parametric/Non-parametric” rows below).
 
 #### two-way table
 

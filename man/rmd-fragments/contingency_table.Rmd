@@ -1,3 +1,8 @@
+There are no dedicated non-parametric or robust contingency table analyses.
+`type = "nonparametric"` and `type = "robust"` are accepted, but run the same
+frequentist tests as `type = "parametric"` (the "Parametric/Non-parametric" rows
+below).
+
 #### two-way table
 
 **Hypothesis testing**

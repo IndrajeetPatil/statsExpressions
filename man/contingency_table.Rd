@@ -167,10 +167,6 @@ article. For more examples, see the \href{https://www.indrapatil.com/statsExpres
 }
 \description{
 Parametric and Bayesian one-way and two-way contingency table analyses.
-
-There are no separate non-parametric or robust versions of these tests:
-\code{type = "nonparametric"} and \code{type = "robust"} run the same (parametric)
-chi-squared or McNemar's tests as \code{type = "parametric"}.
 }
 \section{Contingency table analyses}{
 
@@ -181,6 +177,11 @@ The table below provides summary about:
 \item type of effect size estimate and a measure of uncertainty for this estimate
 \item functions used internally to compute these details
 }
+
+There are no dedicated non-parametric or robust contingency table analyses.
+\code{type = "nonparametric"} and \code{type = "robust"} are accepted, but run the same
+frequentist tests as \code{type = "parametric"} (the "Parametric/Non-parametric" rows
+below).
 \subsection{two-way table}{
 
 \strong{Hypothesis testing}\tabular{llll}{

@@ -4,10 +4,6 @@
 #' @description
 #' Parametric and Bayesian one-way and two-way contingency table analyses.
 #'
-#' There are no separate non-parametric or robust versions of these tests:
-#' `type = "nonparametric"` and `type = "robust"` run the same (parametric)
-#' chi-squared or McNemar's tests as `type = "parametric"`.
-#'
 #' @section Contingency table analyses:
 #'
 #' ```{r child="man/rmd-fragments/table_intro.Rmd"}
