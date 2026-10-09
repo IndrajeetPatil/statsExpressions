@@ -31,7 +31,7 @@ document:
 	Rscript -e 'rmarkdown::render("README.Rmd")'
 
 format:
-	Rscript -e 'styler::style_pkg()'
+	air format .
 
 lint:
 	Rscript -e 'lintr::lint_package()'

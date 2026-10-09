@@ -32,3 +32,6 @@
 | Association between categorical variables         | ✅         | ✅             | ❌     | ✅       |
 | Equal proportions for categorical variable levels | ✅         | ✅             | ❌     | ✅       |
 | Random-effects meta-analysis                      | ✅         | ❌             | ✅     | ✅       |
+
+❌ means that no dedicated analysis of that type exists. For contingency tables,
+`type = "robust"` is still accepted and falls back to the parametric tests.

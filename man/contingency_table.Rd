@@ -23,7 +23,7 @@ contingency_table(
 }
 \arguments{
 \item{data}{A data frame (or a tibble) from which variables specified are to
-be taken. Other data types (e.g., matrix,table, array, etc.) will \strong{not}
+be taken. Other data types (e.g., matrix, table, array, etc.) will \strong{not}
 be accepted. Additionally, grouped data frames from \code{{dplyr}} should be
 ungrouped before they are entered as \code{data}.}
 
@@ -34,7 +34,12 @@ Default is \code{NULL}. If \code{NULL}, one-sample proportion test (a goodness o
 test) will be run for the \code{x} variable.}
 
 \item{paired}{Logical indicating whether data came from a within-subjects or
-repeated measures design study (Default: \code{FALSE}).}
+repeated measures design study (Default: \code{FALSE}). Only relevant for
+two-way tables (i.e., when \code{y} is supplied), and paired designs are only
+supported for frequentist tests (McNemar's test). For a two-way table with
+\code{type = "bayes"}, \code{paired} is ignored and the Bayesian test of
+independence for unpaired data is run instead. For one-way tables
+(\code{y = NULL}), \code{paired} has no effect.}
 
 \item{type}{A character specifying the type of statistical approach:
 \itemize{
@@ -44,7 +49,10 @@ repeated measures design study (Default: \code{FALSE}).}
 \item \code{"bayes"}
 }
 
-You can specify just the initial letter.}
+You can specify just the initial letter (e.g. \code{"np"} or \code{"bf"}). Matching is
+on the initial lowercase letter only, so any other value (including
+capitalized values such as \code{"Bayes"}) falls back to \code{"parametric"} without a
+warning.}
 
 \item{counts}{The variable in data containing counts, or \code{NULL} if each row
 represents a single observation.}
@@ -69,8 +77,7 @@ notation with 4 decimal places, or \code{digits = "signif5"} for 5
 significant figures (see also \code{\link[=signif]{signif()}}).}
 
 \item{conf.level}{Scalar between \code{0} and \code{1} (default: \verb{95\%}
-confidence/credible intervals, \code{0.95}). If \code{NULL}, no confidence intervals
-will be computed.}
+confidence/credible intervals, \code{0.95}).}
 
 \item{sampling.plan}{Character describing the sampling plan. Possible options:
 \itemize{
@@ -78,16 +85,19 @@ will be computed.}
 \item \code{"poisson"}
 \item \code{"jointMulti"} (joint multinomial)
 \item \code{"hypergeom"} (hypergeometric).
-For more, see \code{\link[BayesFactor:contingencyTableBF]{BayesFactor::contingencyTableBF()}}.
-}}
+}
+
+Only used for Bayesian two-way tables. For more, see
+\code{\link[BayesFactor:contingencyTableBF]{BayesFactor::contingencyTableBF()}}.}
 
 \item{fixed.margin}{For the independent multinomial sampling plan, which
-margin is fixed (\code{"rows"} or \code{"cols"}). Defaults to \code{"rows"}.}
+margin is fixed (\code{"rows"} or \code{"cols"}). Defaults to \code{"rows"}. Only used
+for Bayesian two-way tables.}
 
 \item{prior.concentration}{Specifies the prior concentration parameter, set
 to \code{1} by default. It indexes the expected deviation from the null
 hypothesis under the alternative, and corresponds to Gunel and Dickey's
-(1974) \code{"a"} parameter.}
+(1974) \code{"a"} parameter. Only used for Bayesian analyses.}
 
 \item{...}{Additional arguments (currently ignored).}
 }
@@ -105,7 +115,8 @@ non-parametric, robust, or Bayesian). Any given call therefore returns \emph{som
 of freedom for the test)
 \item \code{df.error} and \code{df}: relevant only if the statistic in question has
 two degrees of freedom (e.g. anova)
-\item \code{p.value}: the two-sided \emph{p}-value associated with the observed statistic
+\item \code{p.value}: the \emph{p}-value associated with the observed statistic (two-sided
+unless a one-sided \code{alternative} is requested, where supported)
 \item \code{method}: the name of the inferential statistical test
 }
 
@@ -168,6 +179,11 @@ The table below provides summary about:
 \item type of effect size estimate and a measure of uncertainty for this estimate
 \item functions used internally to compute these details
 }
+
+There are no dedicated non-parametric or robust contingency table analyses.
+\code{type = "nonparametric"} and \code{type = "robust"} are accepted, but run the same
+frequentist tests as \code{type = "parametric"} (the "Parametric/Non-parametric" rows
+below).
 \subsection{two-way table}{
 
 \strong{Hypothesis testing}\tabular{llll}{
@@ -187,6 +203,10 @@ The table below provides summary about:
    Bayesian \tab Paired \tab No \tab No \tab No \cr
 }
 
+
+Paired Bayesian analysis is not supported: for a two-way table with
+\code{type = "bayes"}, the \code{paired} argument is ignored and the unpaired Bayesian
+test is run instead.
 }
 
 \subsection{one-way table}{
@@ -295,4 +315,5 @@ contingency_table(
   type = "bayes"
 )
 \dontshow{\}) # examplesIf}
+
 }

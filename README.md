@@ -126,6 +126,10 @@ A BibTeX entry for LaTeX users is
 | Equal proportions for categorical variable levels | ✅ | ✅ | ❌ | ✅ |
 | Random-effects meta-analysis | ✅ | ❌ | ✅ | ✅ |
 
+❌ means that no dedicated analysis of that type exists. For contingency
+tables, `type = "robust"` is still accepted and falls back to the
+parametric tests.
+
 # Tidy dataframes from statistical analysis
 
 To illustrate the simplicity of this syntax, let’s say we want to run a
@@ -225,7 +229,7 @@ result**. In addition to other details contained in the dataframe, there
 is also a column titled `expression`, which contains expression with
 statistical details and can be displayed in a plot.
 
-For **all** statistical test expressions, the default template attempt
+For **all** statistical test expressions, the default template attempts
 to follow the gold standard for statistical reporting.
 
 For example, here are results from Welch’s *t*-test:
@@ -240,7 +244,7 @@ library(ggplot2)
 
 ## Expressions for centrality measure
 
-**Note that when used in a geometric layer, the expression need to be
+**Note that when used in a geometric layer, the expression needs to be
 parsed.**
 
 ``` r
@@ -438,7 +442,7 @@ ggplot(as.data.frame(table(mpg$class)), aes(x = "", y = Freq, fill = factor(Var1
 
 <img src="man/figures/README-gof-1.png" alt="Pie chart of car classes showing example output with statistical caption" width="100%" />
 
-You can also use these function to get the expression in return without
+You can also use these functions to get the expression in return without
 having to display them in plots:
 
 ``` r
@@ -479,10 +483,10 @@ suppressWarnings(viz_forest(
 
 # Customizing details to your liking
 
-Sometimes you may not wish include so many details in the subtitle. In
-that case, you can extract the expression and copy-paste only the part
-you wish to include. For example, here only statistic and *p*-values are
-included:
+Sometimes you may not wish to include so many details in the subtitle.
+In that case, you can extract the expression and copy-paste only the
+part you wish to include. For example, here only statistic and
+*p*-values are included:
 
 ``` r
 set.seed(123)
@@ -506,13 +510,13 @@ ggplot(iris, aes(x = Species, y = Sepal.Length)) +
 
 # Summary of tests and effect sizes
 
-Here a go-to summary about statistical test carried out and the returned
-effect size for each function is provided. This should be useful if one
+Here is a go-to summary of the statistical tests carried out and the
+effect sizes returned by each function. This should be useful if one
 needs to find out more information about how an argument is resolved in
 the underlying package or if one wishes to browse the source code. So,
-for example, if you want to know more about how one-way
-(between-subjects) ANOVA, you can run `?stats::oneway.test` in your R
-console.
+for example, if you want to know more about how the one-way
+(between-subjects) ANOVA is carried out, you can run
+`?stats::oneway.test` in your R console.
 
 ## `centrality_description`
 
@@ -650,6 +654,11 @@ aggregate first (e.g., take the mean).
 
 ## `contingency_table`
 
+There are no dedicated non-parametric or robust contingency table
+analyses. `type = "nonparametric"` and `type = "robust"` are accepted,
+but run the same frequentist tests as `type = "parametric"` (the
+“Parametric/Non-parametric” rows below).
+
 #### two-way table
 
 **Hypothesis testing**
@@ -670,6 +679,10 @@ aggregate first (e.g., take the mean).
 | Parametric/Non-parametric | Paired | Cohen’s *g* | Yes | `effectsize::cohens_g()` |
 | Bayesian | Paired | No | No | No |
 
+Paired Bayesian analysis is not supported: for a two-way table with
+`type = "bayes"`, the `paired` argument is ignored and the unpaired
+Bayesian test is run instead.
+
 #### one-way table
 
 **Hypothesis testing**
@@ -685,6 +698,43 @@ aggregate first (e.g., take the mean).
 |:---|:---|:---|:---|
 | Parametric/Non-parametric | Pearson’s *C* | Yes | `effectsize::pearsons_c()` |
 | Bayesian | No | No | No |
+
+## `pairwise_comparisons`
+
+#### between-subjects
+
+**Hypothesis testing**
+
+| Type | Equal variance? | Test | *p*-value adjustment? | Function used |
+|:---|:---|:---|:---|:---|
+| Parametric | No | Games-Howell test | Yes | `PMCMRplus::gamesHowellTest()` |
+| Parametric | Yes | Student’s *t*-test | Yes | `stats::pairwise.t.test()` |
+| Non-parametric | No | Dunn test | Yes | `PMCMRplus::kwAllPairsDunnTest()` |
+| Robust | No | Yuen’s trimmed means test | Yes | `WRS2::lincon()` |
+| Bayesian | `NA` | Student’s *t*-test | `NA` | `BayesFactor::ttestBF()` |
+
+**Effect size estimation**
+
+Not supported.
+
+#### within-subjects
+
+**Data requirement**: Paired pairwise tests assume exactly **one
+observation per subject per condition**. If your data has multiple
+trials per cell, aggregate first (e.g., take the mean).
+
+**Hypothesis testing**
+
+| Type | Test | *p*-value adjustment? | Function used |
+|:---|:---|:---|:---|
+| Parametric | Student’s *t*-test | Yes | `stats::pairwise.t.test()` |
+| Non-parametric | Durbin-Conover test | Yes | `PMCMRplus::durbinAllPairsTest()` |
+| Robust | Yuen’s trimmed means test | Yes | `WRS2::rmmcp()` |
+| Bayesian | Student’s *t*-test | `NA` | `BayesFactor::ttestBF()` |
+
+**Effect size estimation**
+
+Not supported.
 
 ## `pairwise_contingency_table`
 

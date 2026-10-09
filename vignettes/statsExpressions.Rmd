@@ -80,7 +80,7 @@ Additionally, none of these packages return statistical expressions.
 
 ## Consistent Syntax for Statistical Analysis
 
-The package offers functions that allow users choose a statistical approach
+The package offers functions that allow users to choose a statistical approach
 without changing the syntax (i.e., by only specifying a single argument). The
 functions always require a data frame in tidy format [@Wickham2019], and work
 with missing data. Moreover, they always return a data frame that can be further
@@ -185,7 +185,8 @@ dplyr::select(multi_test_results, method, effectsize, estimate, p.value)
 The `add_expression_col()` function creates publication-ready plotmath
 expressions from any data frame containing statistical details. This is useful
 when you run your own tests outside `{statsExpressions}` and want to generate
-a formatted expression for plot annotations:
+a formatted expression for plot annotations. Note that this helper is not yet
+stable, so its interface may change in future releases:
 
 ```{r}
 #| label = "custom_expression"
@@ -261,8 +262,8 @@ res_anova <- oneway_anova(iris, Species, Sepal.Length, type = "nonparametric")
 ggplot(iris, aes(x = Sepal.Length, y = Species)) +
   geom_boxplot() + # use 'expression' column to display results in the subtitle
   labs(
-    x = "Penguin Species",
-    y = "Body mass (in grams)",
+    x = "Sepal length (in cm)",
+    y = "Species",
     title = "Kruskal-Wallis Rank Sum Test",
     subtitle = res_anova$expression[[1]]
   )
@@ -270,7 +271,7 @@ ggplot(iris, aes(x = Sepal.Length, y = Species)) +
 
 ## Licensing and Availability
 
-`{statsExpressions}` is licensed under the GNU General Public License (v3.0), with all
+`{statsExpressions}` is licensed under the MIT License, with all
 source code stored at [GitHub](https://github.com/IndrajeetPatil/statsExpressions/).
 In the spirit of honest and open science, requests and suggestions for fixes,
 feature updates, as well as general questions and concerns are encouraged via

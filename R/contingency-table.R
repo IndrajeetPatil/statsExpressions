@@ -24,19 +24,27 @@
 #' @param counts The variable in data containing counts, or `NULL` if each row
 #'   represents a single observation.
 #' @param paired Logical indicating whether data came from a within-subjects or
-#'   repeated measures design study (Default: `FALSE`).
+#'   repeated measures design study (Default: `FALSE`). Only relevant for
+#'   two-way tables (i.e., when `y` is supplied), and paired designs are only
+#'   supported for frequentist tests (McNemar's test). For a two-way table with
+#'   `type = "bayes"`, `paired` is ignored and the Bayesian test of
+#'   independence for unpaired data is run instead. For one-way tables
+#'   (`y = NULL`), `paired` has no effect.
 #' @param sampling.plan Character describing the sampling plan. Possible options:
 #'   - `"indepMulti"` (independent multinomial; default)
 #'   - `"poisson"`
 #'   - `"jointMulti"` (joint multinomial)
 #'   - `"hypergeom"` (hypergeometric).
-#'   For more, see [`BayesFactor::contingencyTableBF()`].
+#'
+#'   Only used for Bayesian two-way tables. For more, see
+#'   [`BayesFactor::contingencyTableBF()`].
 #' @param fixed.margin For the independent multinomial sampling plan, which
-#'   margin is fixed (`"rows"` or `"cols"`). Defaults to `"rows"`.
+#'   margin is fixed (`"rows"` or `"cols"`). Defaults to `"rows"`. Only used
+#'   for Bayesian two-way tables.
 #' @param prior.concentration Specifies the prior concentration parameter, set
 #'   to `1` by default. It indexes the expected deviation from the null
 #'   hypothesis under the alternative, and corresponds to Gunel and Dickey's
-#'   (1974) `"a"` parameter.
+#'   (1974) `"a"` parameter. Only used for Bayesian analyses.
 #' @param ratio A vector of proportions: the expected proportions for the
 #'   proportion test (should sum to `1`). Default is `NULL`, which means the null
 #'   is equal theoretical proportions across the levels of the nominal variable.
@@ -49,92 +57,11 @@
 #'
 #' @autoglobal
 #'
-#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
-#' #### -------------------- association test ------------------------ ####
-#'
-#' # ------------------------ frequentist ---------------------------------
-#'
-#' # unpaired
-#'
-#' set.seed(123)
-#' contingency_table(
-#'   data = mtcars,
-#'   x = am,
-#'   y = vs,
-#'   paired = FALSE
-#' )
-#'
-#' # paired
-#'
-#' paired_data <- dplyr::tibble(
-#'   response_before = structure(
-#'     c(1L, 2L, 1L, 2L),
-#'     levels = c("no", "yes"),
-#'     class = "factor"
-#'   ),
-#'   response_after = structure(
-#'     c(1L, 1L, 2L, 2L),
-#'     levels = c("no", "yes"),
-#'     class = "factor"
-#'   ),
-#'   Freq = c(65L, 25L, 5L, 5L)
-#' )
-#'
-#' set.seed(123)
-#' contingency_table(
-#'   data = paired_data,
-#'   x = response_before,
-#'   y = response_after,
-#'   paired = TRUE,
-#'   counts = Freq
-#' )
-#'
-#' # ------------------------ Bayesian -------------------------------------
-#'
-#' # unpaired
-#'
-#' set.seed(123)
-#' contingency_table(
-#'   data = mtcars,
-#'   x = am,
-#'   y = vs,
-#'   paired = FALSE,
-#'   type = "bayes"
-#' )
-#'
-#' # paired
-#'
-#' set.seed(123)
-#' contingency_table(
-#'   data = paired_data,
-#'   x = response_before,
-#'   y = response_after,
-#'   paired = TRUE,
-#'   counts = Freq,
-#'   type = "bayes"
-#' )
-#'
-#' #### -------------------- goodness-of-fit test -------------------- ####
-#'
-#' # ------------------------ frequentist ---------------------------------
-#'
-#' set.seed(123)
-#' contingency_table(
-#'   data = as.data.frame(HairEyeColor),
-#'   x = Eye,
-#'   counts = Freq
-#' )
-#'
-#' # ------------------------ Bayesian -------------------------------------
-#'
-#' set.seed(123)
-#' contingency_table(
-#'   data = as.data.frame(HairEyeColor),
-#'   x = Eye,
-#'   counts = Freq,
-#'   ratio = c(0.2, 0.2, 0.3, 0.3),
-#'   type = "bayes"
-#' )
+#' @examples
+#' \dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true")) withAutoprint(\{ # examplesIf}
+#' @example man/examples/examples-contingency-table.R
+#' @examples
+#' \dontshow{\}) # examplesIf}
 #'
 #' @export
 contingency_table <- function(

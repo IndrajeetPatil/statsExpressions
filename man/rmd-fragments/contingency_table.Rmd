@@ -1,3 +1,8 @@
+There are no dedicated non-parametric or robust contingency table analyses.
+`type = "nonparametric"` and `type = "robust"` are accepted, but run the same
+frequentist tests as `type = "parametric"` (the "Parametric/Non-parametric" rows
+below).
+
 #### two-way table
 
 **Hypothesis testing**
@@ -17,6 +22,10 @@
 | Bayesian                  | Unpaired | Cramer's *V* | Yes           | `effectsize::cramers_v()` |
 | Parametric/Non-parametric | Paired   | Cohen's *g*  | Yes           | `effectsize::cohens_g()`  |
 | Bayesian                  | Paired   | No           | No            | No                        |
+
+Paired Bayesian analysis is not supported: for a two-way table with
+`type = "bayes"`, the `paired` argument is ignored and the unpaired Bayesian
+test is run instead.
 
 #### one-way table
 

@@ -30,7 +30,6 @@ template:
           "name": "R"
         },
         "license": "https://opensource.org/licenses/MIT",
-        "version": "2.0.0",
         "author": {
           "@type": "Person",
           "name": "Indrajeet Patil",
@@ -61,13 +60,13 @@ template:
 #   mode: auto
 
 reference:
-  - title: One-and two-sample t-tests
-    desc: Dataframes and expressions for one-and two-sample t-tests
+  - title: One- and two-sample t-tests
+    desc: Dataframes and expressions for one- and two-sample t-tests
     contents:
       - matches("sample")
 
   - title: One-way ANOVA
-    desc: Dataframes and expressions one-way (both between-and within-subject designs) ANOVA
+    desc: Dataframes and expressions for one-way (both between- and within-subject designs) ANOVA
     contents:
       - matches("anova")
 
@@ -99,7 +98,6 @@ reference:
   - title: Helper functions
     desc: Note that these helper functions are not stable and may change in the future.
     contents:
-      - matches("_template")
       - matches("tidy_")
       - extract_stats_type
       - long_to_wide_converter

@@ -21,7 +21,7 @@ one_sample_test(
 }
 \arguments{
 \item{data}{A data frame (or a tibble) from which variables specified are to
-be taken. Other data types (e.g., matrix,table, array, etc.) will \strong{not}
+be taken. Other data types (e.g., matrix, table, array, etc.) will \strong{not}
 be accepted. Additionally, grouped data frames from \code{{dplyr}} should be
 ungrouped before they are entered as \code{data}.}
 
@@ -35,7 +35,10 @@ ungrouped before they are entered as \code{data}.}
 \item \code{"bayes"}
 }
 
-You can specify just the initial letter.}
+You can specify just the initial letter (e.g. \code{"np"} or \code{"bf"}). Matching is
+on the initial lowercase letter only, so any other value (including
+capitalized values such as \code{"Bayes"}) falls back to \code{"parametric"} without a
+warning.}
 
 \item{test.value}{A number indicating the true value of the mean (Default:
 \code{0}).}
@@ -53,8 +56,7 @@ notation with 4 decimal places, or \code{digits = "signif5"} for 5
 significant figures (see also \code{\link[=signif]{signif()}}).}
 
 \item{conf.level}{Scalar between \code{0} and \code{1} (default: \verb{95\%}
-confidence/credible intervals, \code{0.95}). If \code{NULL}, no confidence intervals
-will be computed.}
+confidence/credible intervals, \code{0.95}).}
 
 \item{tr}{Trim level for the mean when carrying out \code{robust} tests. In case
 of an error, try reducing the value of \code{tr}, which is by default set to
@@ -89,7 +91,8 @@ non-parametric, robust, or Bayesian). Any given call therefore returns \emph{som
 of freedom for the test)
 \item \code{df.error} and \code{df}: relevant only if the statistic in question has
 two degrees of freedom (e.g. anova)
-\item \code{p.value}: the two-sided \emph{p}-value associated with the observed statistic
+\item \code{p.value}: the \emph{p}-value associated with the observed statistic (two-sided
+unless a one-sided \code{alternative} is requested, where supported)
 \item \code{method}: the name of the inferential statistical test
 }
 

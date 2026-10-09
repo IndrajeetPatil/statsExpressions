@@ -26,8 +26,16 @@ model summaries, it is recommended to set \code{pretty_names = FALSE} to speed
 up computation of the summary table.
 }}
 }
+\value{
+A tibble with one row per parameter.
+}
 \description{
-Convert \code{{parameters}} package output to \code{{tidyverse}} conventions
+Runs \code{\link[parameters:model_parameters]{parameters::model_parameters()}} on a model object and standardizes
+the result to \code{{broom}}-style column names (e.g. \code{estimate}, \code{std.error},
+\code{conf.low}, \code{conf.high}, \code{statistic}, \code{df.error}, \code{p.value}). Bayes factors
+are returned in a \code{bf10} column, along with their natural logarithm in
+\code{log_e_bf10}. For Bayesian ANOVA designs (\code{{BayesFactor}} linear models),
+the estimate is replaced by the Bayesian \emph{R}-squared.
 }
 \section{Citation}{
 Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressions with Statistical Details. Journal of Open Source Software, 6(61), 3236, https://doi.org/10.21105/joss.03236

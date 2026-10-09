@@ -3,15 +3,19 @@
 #'
 #' @param ... Currently ignored.
 #' @param data A tidy data frame from regression model object (see
-#'   [`statsExpressions::tidy_model_parameters()`]).
-#' @param statistic Which statistic is to be displayed (either `"t"` or `"f"`or
-#'   `"z"` or `"chi"`) in the expression.
+#'   [`statsExpressions::tidy_model_parameters()`]). It must contain a `term`
+#'   column identifying each row.
+#' @param statistic Which statistic is to be displayed (either `"t"`, `"f"`,
+#'   `"z"`, or `"chi"`) in the expression. This argument must be specified.
 #' @inheritParams oneway_anova
 #'
 #' @details
 #' When any of the necessary numeric column values (`estimate`, `statistic`,
 #' `p.value`) are missing, for these rows, a `NULL` is returned instead of an
 #' expression with empty strings.
+#'
+#' @returns The input data frame (as a tibble) with an additional `expression`
+#'   list-column.
 #'
 #' @autoglobal
 #'

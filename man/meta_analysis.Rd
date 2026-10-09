@@ -15,11 +15,11 @@ meta_analysis(
 }
 \arguments{
 \item{data}{A data frame. It \strong{must} contain columns named \code{estimate} (effect
-sizes or outcomes)  and \code{std.error} (corresponding standard errors). These
+sizes or outcomes) and \code{std.error} (corresponding standard errors). These
 two columns will be used:
 \itemize{
-\item as \code{yi}  and \code{sei} arguments in \code{\link[metafor:rma]{metafor::rma()}} (for \strong{parametric} test)
-\item as \code{yi}  and \code{sei} arguments in \code{\link[metaplus:metaplus]{metaplus::metaplus()}} (for \strong{robust} test)
+\item as \code{yi} and \code{sei} arguments in \code{\link[metafor:rma]{metafor::rma()}} (for \strong{parametric} test)
+\item as \code{yi} and \code{sei} arguments in \code{\link[metaplus:metaplus]{metaplus::metaplus()}} (for \strong{robust} test)
 \item as \code{y} and \code{SE} arguments in \code{\link[metaBMA:meta_random]{metaBMA::meta_random()}} (for \strong{Bayesian} test)
 }}
 
@@ -31,11 +31,15 @@ two columns will be used:
 \item \code{"bayes"}
 }
 
-You can specify just the initial letter.}
+You can specify just the initial letter (e.g. \code{"np"} or \code{"bf"}). Matching is
+on the initial lowercase letter only, so any other value (including
+capitalized values such as \code{"Bayes"}) falls back to \code{"parametric"} without a
+warning.}
 
-\item{random}{
-The type of random effects distribution. One of "normal", "t-dist", "mixture", for standard normal, \eqn{t}-distribution or mixture of normals respectively.
-}
+\item{random}{The type of random-effects distribution for the robust
+meta-analysis: \code{"mixture"} (default; mixture of normals), \code{"normal"}, or
+\code{"t-dist"} (\emph{t}-distribution). Passed to \code{\link[metaplus:metaplus]{metaplus::metaplus()}} and only
+used when \code{type = "robust"}.}
 
 \item{digits}{Number of digits for rounding or significant figures. May also
 be \code{"signif"} to return significant figures or \code{"scientific"}
@@ -45,8 +49,7 @@ notation with 4 decimal places, or \code{digits = "signif5"} for 5
 significant figures (see also \code{\link[=signif]{signif()}}).}
 
 \item{conf.level}{Scalar between \code{0} and \code{1} (default: \verb{95\%}
-confidence/credible intervals, \code{0.95}). If \code{NULL}, no confidence intervals
-will be computed.}
+confidence/credible intervals, \code{0.95}).}
 
 \item{...}{Additional arguments passed to the respective meta-analysis
 function.}
@@ -65,7 +68,8 @@ non-parametric, robust, or Bayesian). Any given call therefore returns \emph{som
 of freedom for the test)
 \item \code{df.error} and \code{df}: relevant only if the statistic in question has
 two degrees of freedom (e.g. anova)
-\item \code{p.value}: the two-sided \emph{p}-value associated with the observed statistic
+\item \code{p.value}: the \emph{p}-value associated with the observed statistic (two-sided
+unless a one-sided \code{alternative} is requested, where supported)
 \item \code{method}: the name of the inferential statistical test
 }
 
@@ -117,7 +121,10 @@ column), see the \href{https://www.indrapatil.com/statsExpressions/articles/web_
 article. For more examples, see the \href{https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html}{data frame output vignette}.
 }
 \description{
-Parametric, non-parametric, robust, and Bayesian random-effects meta-analysis.
+Parametric, robust, and Bayesian random-effects meta-analysis.
+
+A non-parametric meta-analysis is not available, so \code{type = "nonparametric"}
+is not supported.
 }
 \note{
 \strong{Important}: The function assumes that you have already downloaded the
@@ -134,12 +141,11 @@ The table below provides summary about:
 \item functions used internally to compute these details
 }
 
-\strong{Hypothesis testing} and \strong{Effect size estimation}\tabular{llll}{
-   Type \tab Test \tab CI available? \tab Function used \cr
-   Parametric \tab Pearson's correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
-   Non-parametric \tab Spearman's rank correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
-   Robust \tab Winsorized Pearson's correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
-   Bayesian \tab Bayesian Pearson's correlation coefficient \tab Yes \tab \code{correlation::correlation()} \cr
+\strong{Hypothesis testing} and \strong{Effect size estimation}\tabular{lllll}{
+   Type \tab Test \tab Effect size \tab CI available? \tab Function used \cr
+   Parametric \tab Meta-analysis via random-effects models \tab \emph{beta} \tab Yes \tab \code{metafor::rma()} \cr
+   Robust \tab Meta-analysis via robust random-effects models \tab \emph{beta} \tab Yes \tab \code{metaplus::metaplus()} \cr
+   Bayesian \tab Meta-analysis via Bayesian random-effects models \tab \emph{beta} \tab Yes \tab \code{metaBMA::meta_random()} \cr
 }
 }
 
@@ -166,7 +172,7 @@ meta_analysis(dat)
 
 # ----------------------- robust --------------------------------------------
 
-meta_analysis(dat, type = "random", random = "normal")
+meta_analysis(dat, type = "robust", random = "normal")
 \dontshow{\}) # examplesIf}
 \dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus") && requireNamespace("metaBMA")) withAutoprint(\{ # examplesIf}
 

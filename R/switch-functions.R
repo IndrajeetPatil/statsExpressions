@@ -8,19 +8,28 @@
 #' non-parametric, robust, and Bayesian. This switch function converts strings
 #' entered by users to a common pattern for convenience.
 #'
+#' `stats_type_switch()` is an alias of `extract_stats_type()`.
+#'
 #' @param type A character specifying the type of statistical approach:
 #'   - `"parametric"`
 #'   - `"nonparametric"`
 #'   - `"robust"`
 #'   - `"bayes"`
 #'
-#' You can specify just the initial letter.
+#' You can specify just the initial letter (e.g. `"np"` or `"bf"`). Matching is
+#' on the initial lowercase letter only, so any other value (including
+#' capitalized values such as `"Bayes"`) falls back to `"parametric"` without a
+#' warning.
+#'
+#' @returns A character vector of the same length as `type`, with values
+#'   `"parametric"`, `"nonparametric"`, `"robust"`, or `"bayes"`.
 #'
 #' @autoglobal
 #'
 #' @examples
 #' extract_stats_type("p")
 #' extract_stats_type("bf")
+#' extract_stats_type(c("np", "robust", "Bayes"))
 #' @export
 # styler: off
 extract_stats_type <- function(type) {
@@ -122,7 +131,7 @@ prior_switch <- function(x) {
 #' @title Select the test and effect-size functions for mean-difference tests
 #' @description Maps the statistical `type` to the base-R test function and its
 #'   companion `{effectsize}` function: the *parametric* approach pairs the
-#'   *t*-test with Hedges' *g* / Cohen's *d* (via [.mean_difference_effsize()]),
+#'   *t*-test with Hedges' *g* / Cohen's *d* (via `.mean_difference_effsize()`),
 #'   while the *non-parametric* approach pairs the Wilcoxon test with the
 #'   rank-biserial correlation. Shared by [one_sample_test()] and
 #'   [two_sample_test()].

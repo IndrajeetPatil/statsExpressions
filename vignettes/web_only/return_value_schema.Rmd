@@ -59,7 +59,7 @@ Two design principles are worth keeping in mind while reading this article:
 2.  **The `expression` column is the core deliverable.** Regardless of the test,
     almost every function returns a pre-formatted `expression` column intended for
     annotating plots. This is what powers the statistical details you see in
-    [`{ggstatsplot}`](https://indrajeetpatil.github.io/ggstatsplot/) plots.
+    [`{ggstatsplot}`](https://www.indrapatil.com/ggstatsplot/) plots.
 
 The rest of this article documents the `expression` column, the engine that
 builds it, and then provides a schema for each exported function. Because the
@@ -105,7 +105,9 @@ ggplot(ToothGrowth, aes(supp, len)) +
 Most of the `expression` columns are produced by a single internal engine:
 `add_expression_col()`. It is the main path for the hypothesis-testing functions
 (`one_sample_test()`, `two_sample_test()`, `oneway_anova()`, `corr_test()`,
-`contingency_table()`, `meta_analysis()`). Understanding it helps clarify why the
+`contingency_table()`, `meta_analysis()`). The one exception is the Bayesian
+one-way (goodness-of-fit) `contingency_table()` analysis, which builds its own
+minimal expression. Understanding it helps clarify why the
 output looks the way it does.
 
 The engine works as follows:

@@ -21,43 +21,53 @@ add_expression_col(
 }
 \arguments{
 \item{data}{A data frame containing details from the statistical analysis
-and should contain some or all of the the following columns:
+and should contain some or all of the following columns:
 \itemize{
 \item \emph{statistic}: the numeric value of a statistic.
 \item \emph{df.error}: the numeric value of a parameter being modeled (often degrees
-of freedom for the test); irrelevant. if there are no degrees of freedom.
+of freedom for the test); irrelevant if there are no degrees of freedom.
 \item \emph{df}: relevant if the statistic in question has two degrees of freedom.
-\item \emph{p.value}: the two-sided \emph{p}-value associated with observed statistic.
+\item \emph{p.value}: the \emph{p}-value associated with the observed statistic.
 \item \emph{method}: method describing the test carried out.
 \item \emph{effectsize}: name of the effect size (if not present, same as \code{method}).
 \item \emph{estimate}: estimated value of the effect size.
 \item \emph{conf.level}: width for the confidence intervals.
 \item \emph{conf.low}: lower bound for effect size estimate.
 \item \emph{conf.high}: upper bound for effect size estimate.
-\item \emph{bf10}: Bayes Factor value (if \code{bayesian = TRUE}).
+\item \emph{bf10}: Bayes Factor value. If this column is present, the analysis is
+treated as Bayesian and a Bayesian expression template is used, which
+additionally needs the \emph{conf.method} and \emph{prior.scale} columns.
 }}
 
 \item{paired}{Logical that decides whether the experimental design is
 repeated measures/within-subjects or between-subjects. The default is
 \code{FALSE}.}
 
-\item{statistic.text}{A character that specifies the relevant test statistic.
-For example, for tests with \emph{t}-statistic, \code{statistic.text = "t"}.}
+\item{statistic.text}{A list containing a \code{language} object that specifies
+the relevant test statistic. For example, for tests with \emph{t}-statistic,
+\code{statistic.text = list(quote(italic("t")))}. If \code{NULL} (default), it is
+inferred from the \code{method} column.}
 
-\item{effsize.text}{A character that specifies the relevant effect size.}
+\item{effsize.text}{A list containing a \code{language} object that specifies the
+relevant effect size or posterior estimate. For example,
+\code{effsize.text = list(quote(italic("d")))}. If \code{NULL} (default), it is
+inferred from the \code{effectsize} column.}
 
-\item{prior.type}{The type of prior.}
+\item{prior.type}{Currently ignored. The prior label is inferred from the
+\code{method} column.}
 
-\item{n}{An integer specifying the sample size used for the test.}
+\item{n}{An integer specifying the sample size used for the test. Ignored if
+\code{data} already contains an \code{n.obs} column.}
 
-\item{n.text}{A character that specifies the design, which will determine
-what the \code{n} stands for. It defaults to \code{quote(italic("n")["pairs"])} if
-\code{paired = TRUE}, and to \code{quote(italic("n")["obs"])} if \code{paired = FALSE}. If
-you wish to customize this further, you will need to provide object of
-\code{language} type.}
+\item{n.text}{A list containing a \code{language} object that specifies the
+design, which will determine what the \code{n} stands for. It defaults to
+\code{quote(italic("n")["pairs"])} if \code{paired = TRUE}, and to
+\code{quote(italic("n")["obs"])} if \code{paired = FALSE}.}
 
 \item{digits, digits.df, digits.df.error}{Number of decimal places to display
-for the parameters (default: \code{0L}).}
+for the parameters (\code{digits}; default: \code{2L}), and for the degrees of
+freedom in the \code{df} (\code{digits.df}; default: \code{0L}) and \code{df.error}
+(\code{digits.df.error}; default: same as \code{digits.df}) columns.}
 
 \item{...}{Currently ignored.}
 }

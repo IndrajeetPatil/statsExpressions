@@ -35,7 +35,7 @@ of `y` within that level. The columns are:
     `"setosa\n(n = 50)"`), useful as an axis or facet label
 
 The exact dispersion column depends on the `type` of analysis (`std.dev` vs
-`mad`), and `datawizard::describe_distribution()` is used internally to compute
+`mad`; neither is returned for `"bayes"`), and `datawizard::describe_distribution()` is used internally to compute
 these indices.
 
 For more examples, see the [data frame output vignette](https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html)
