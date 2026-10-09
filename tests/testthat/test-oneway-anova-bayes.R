@@ -99,9 +99,7 @@ test_that(desc = "Bayesian ANOVA with if_all() filtering and row replication", c
   ))
 
   # Verify structure is correct after filtering and binding
-  expect_true(all(
-    c("estimate", "conf.low", "conf.high") %in% colnames(df_between)
-  ))
+  expect_contains(colnames(df_between), c("estimate", "conf.low", "conf.high"))
   expect_snapshot(colnames(df_between))
   expect_snapshot(nrow(df_between))
 
@@ -117,9 +115,7 @@ test_that(desc = "Bayesian ANOVA with if_all() filtering and row replication", c
   ))
 
   # Should have same columns and proper row count
-  expect_true(all(
-    c("estimate", "conf.low", "conf.high") %in% colnames(df_within)
-  ))
+  expect_contains(colnames(df_within), c("estimate", "conf.low", "conf.high"))
   expect_snapshot(colnames(df_within))
   expect_snapshot(nrow(df_within))
 })
@@ -131,21 +127,16 @@ test_that(desc = "tidy_model_parameters handles Bayesian ANOVA correctly", code 
   set.seed(123)
   model_between <- BayesFactor::anovaBF(Sepal.Length ~ Species, data = iris)
 
-  # Call tidy_model_parameters directly
   result_between <- tidy_model_parameters(model_between)
 
-  # Verify expected columns exist
-  expect_true("estimate" %in% colnames(result_between))
-  expect_true("conf.low" %in% colnames(result_between))
-  expect_true("conf.high" %in% colnames(result_between))
-  expect_true("method" %in% colnames(result_between))
+  expect_contains(
+    colnames(result_between),
+    c("estimate", "conf.low", "conf.high", "method")
+  )
   expect_identical(
     result_between$method[[1]],
     "Bayes factors for linear models"
   )
-
-  # Verify that the row replication worked - should have same number of rows as original
-  expect_gt(nrow(result_between), 0L)
 
   # Verify if_all behavior: when component column doesn't exist (between-subjects), keeps all rows
   expect_snapshot(dim(result_between))
