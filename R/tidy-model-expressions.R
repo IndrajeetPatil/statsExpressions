@@ -56,8 +56,9 @@ tidy_model_expressions <- function(
   effsize.type = "omega",
   ...
 ) {
-  # standardize the statistic naming
-  statistic <- substring(tolower(statistic), 1L, 1L)
+  # standardize the statistic naming; a separate name is needed because
+  # `statistic` inside `mutate()` and `glue()` refers to the data column
+  stat_type <- substring(tolower(statistic), 1L, 1L)
 
   # if any of the necessary numeric columns are missing, there shouldn't be an
   # expression corresponding to that row; convert the necessary columns to
@@ -65,8 +66,6 @@ tidy_model_expressions <- function(
   df_expr <- data |>
     tidyr::drop_na(matches("estimate|statistic|std.error|p.value")) |>
     .data_to_char(digits)
-
-  stat_type <- statistic
 
   es.text <- if (stat_type == "f") {
     switch(
