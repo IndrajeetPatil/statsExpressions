@@ -192,9 +192,7 @@ oneway_anova <- function(
         within = as_string(x),
         include_aov = TRUE
       )
-    }
-
-    if (!paired) {
+    } else {
       mod <- stats::oneway.test(new_formula(y, x), data, var.equal = var.equal)
     }
 
@@ -214,7 +212,7 @@ oneway_anova <- function(
     digits.df.error <- 0L
 
     if (paired) {
-      test_formula <- new_formula(enexpr(y), expr(!!enexpr(x) | .rowid))
+      test_formula <- new_formula(y, expr(!!x | .rowid))
       test_model <- stats::friedman.test(test_formula, data = data)
       effect_model <- effectsize::kendalls_w(
         x = test_formula,
@@ -223,9 +221,7 @@ oneway_anova <- function(
         iterations = nboot,
         verbose = FALSE
       )
-    }
-
-    if (!paired) {
+    } else {
       test_formula <- new_formula(y, x)
       test_model <- stats::kruskal.test(test_formula, data = data)
       effect_model <- effectsize::rank_epsilon_squared(
@@ -237,10 +233,10 @@ oneway_anova <- function(
       )
     }
 
-    stats_df <- tidy_model_parameters(test_model)
-    ez_df <- tidy_model_effectsize(effect_model)
-
-    stats_df <- bind_cols(stats_df, ez_df)
+    stats_df <- bind_cols(
+      tidy_model_parameters(test_model),
+      tidy_model_effectsize(effect_model)
+    )
   }
 
   # robust ---------------------------------------
@@ -256,9 +252,7 @@ oneway_anova <- function(
         blocks = data[[".rowid"]],
         tr = tr
       )
-    }
-
-    if (!paired) {
+    } else {
       mod <- WRS2::t1way(
         formula = new_formula(y, x),
         data = data,
@@ -282,16 +276,15 @@ oneway_anova <- function(
   # Bayesian ---------------------------------------
 
   if (type == "bayes") {
-    if (!paired) {
-      .f.args <- list(formula = new_formula(y, x), rscaleFixed = bf.prior)
-    }
     if (paired) {
       .f.args <- list(
-        formula = new_formula(enexpr(y), expr(!!enexpr(x) + .rowid)),
+        formula = new_formula(y, expr(!!x + .rowid)),
         rscaleFixed = bf.prior,
         whichRandom = ".rowid",
         rscaleRandom = 1.0
       )
+    } else {
+      .f.args <- list(formula = new_formula(y, x), rscaleFixed = bf.prior)
     }
 
     stats_df <- exec(

@@ -76,8 +76,6 @@ two_sample_test <- function(
 
   if (type %in% c("parametric", "nonparametric")) {
     fns <- .mean_difference_fns(type, effsize.type)
-    .f <- fns$test
-    .f.es <- fns$es
 
     .f.args <- list(
       x = data[[2L]],
@@ -85,10 +83,15 @@ two_sample_test <- function(
       paired = paired,
       alternative = alternative
     )
-    stats_df <- exec(.f, !!!.f.args, var.equal = var.equal, exact = exact) |>
+    stats_df <- exec(
+      fns$test,
+      !!!.f.args,
+      var.equal = var.equal,
+      exact = exact
+    ) |>
       tidy_model_parameters()
     ez_df <- exec(
-      .f.es,
+      fns$es,
       !!!.f.args,
       pooled_sd = FALSE,
       ci = conf.level,
@@ -130,22 +133,22 @@ two_sample_test <- function(
     stats_df <- bind_cols(
       select(stats_df, -matches("^est|^eff|conf|^ci")),
       select(ez_df, -matches("term"))
-    )
+    ) |>
+      .standardize_two_sample_terms(as_name(x), as_name(y))
   }
 
   # Bayesian ---------------------------------------
 
   if (type == "bayes") {
     # styler: off
-    if (!paired) {
+    if (paired) {
+      .f.args <- list(x = data[[2L]], y = data[[3L]], paired = paired)
+    } else {
       .f.args <- list(
         formula = new_formula(y, x),
         data = as.data.frame(data),
         paired = paired
       )
-    }
-    if (paired) {
-      .f.args <- list(x = data[[2L]], y = data[[3L]], paired = paired)
     }
     # styler: on
 
@@ -156,11 +159,7 @@ two_sample_test <- function(
   # expression ---------------------------------------
 
   add_expression_col(
-    data = if (type == "bayes") {
-      stats_df
-    } else {
-      .standardize_two_sample_terms(stats_df, as_name(x), as_name(y))
-    },
+    data = stats_df,
     paired = paired,
     n = .n_obs(data, paired),
     digits = digits,

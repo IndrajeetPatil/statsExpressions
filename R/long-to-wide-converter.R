@@ -92,7 +92,10 @@ long_to_wide_converter <- function(
     )
   }
 
-  as_tibble(relocate(data, .rowid) |> arrange(.rowid))
+  data |>
+    relocate(.rowid) |>
+    arrange(.rowid) |>
+    as_tibble()
 }
 
 #' @title Paired-aware observation count for the expression's `n`
