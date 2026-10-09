@@ -13,7 +13,6 @@ test_that(desc = "between-subjects", code = {
     paired = FALSE
   )
 
-  set.seed(123)
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 
@@ -28,7 +27,6 @@ test_that(desc = "between-subjects", code = {
     conf.level = 0.99
   ))
 
-  set.seed(123)
   expect_snapshot(select(df2, -expression))
   expect_snapshot(df2[["expression"]])
 })
@@ -47,7 +45,6 @@ test_that(desc = "within-subjects", code = {
     conf.level = 0.99
   )
 
-  set.seed(123)
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 
@@ -62,7 +59,6 @@ test_that(desc = "within-subjects", code = {
     conf.level = 0.90
   )
 
-  set.seed(123)
   expect_snapshot(select(df2, -expression))
   expect_snapshot(df2[["expression"]])
 })

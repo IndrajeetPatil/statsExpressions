@@ -10,7 +10,6 @@ test_that(desc = "contingency_table works", code = {
     conf.level = 0.99
   ))
 
-  set.seed(123)
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 
@@ -22,7 +21,6 @@ test_that(desc = "contingency_table works", code = {
     counts = Freq
   )
 
-  set.seed(123)
   expect_snapshot(select(df2, -expression))
   expect_snapshot(df2[["expression"]])
 
@@ -37,7 +35,6 @@ test_that(desc = "contingency_table works", code = {
     conf.level = 0.990
   ))
 
-  set.seed(123)
   expect_snapshot(select(df3, -expression))
   expect_snapshot(df3[["expression"]])
 })
@@ -71,7 +68,6 @@ test_that(desc = "paired contingency_table works ", code = {
     )
   )
 
-  set.seed(123)
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 
@@ -80,7 +76,6 @@ test_that(desc = "paired contingency_table works ", code = {
   paired_data <- tidyr::uncount(paired_data, weights = Freq)
 
   # deliberately introduce NAs
-  set.seed(123)
   paired_data[1, 1] <- NA
   paired_data[12, 1] <- NA
   paired_data[22, 1] <- NA
@@ -100,7 +95,6 @@ test_that(desc = "paired contingency_table works ", code = {
     )
   )
 
-  set.seed(123)
   expect_snapshot(select(df2, -expression))
   expect_snapshot(df2[["expression"]])
 })
@@ -116,7 +110,6 @@ test_that(desc = "Goodness of Fit contingency_table works without counts", code 
     digits = 5
   ))
 
-  set.seed(123)
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 
@@ -128,7 +121,6 @@ test_that(desc = "Goodness of Fit contingency_table works without counts", code 
     alternative = "greater"
   )
 
-  set.seed(123)
   expect_snapshot(select(df2, -expression))
   expect_snapshot(df2[["expression"]])
 
@@ -141,7 +133,6 @@ test_that(desc = "Goodness of Fit contingency_table works without counts", code 
     ratio = c(0.2, 0.2, 0.3, 0.3)
   )
 
-  set.seed(123)
   expect_snapshot(select(df3, -expression))
   expect_snapshot(df3[["expression"]])
 

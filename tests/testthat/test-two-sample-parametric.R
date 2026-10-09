@@ -12,7 +12,6 @@ test_that(desc = "parametric t-test works (between-subjects without NAs)", code 
     )
   )
 
-  set.seed(123)
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 })
@@ -31,7 +30,6 @@ test_that(desc = "parametric t-test works (between-subjects with NAs)", code = {
     )
   )
 
-  set.seed(123)
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 })
@@ -48,7 +46,6 @@ test_that(desc = "parametric t-test works (within-subjects without NAs)", code =
     conf.level = 0.50
   ))
 
-  set.seed(123)
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 })
@@ -65,7 +62,6 @@ test_that(desc = "parametric t-test works (within-subjects with NAs)", code = {
     digits = 3
   )
 
-  set.seed(123)
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 })

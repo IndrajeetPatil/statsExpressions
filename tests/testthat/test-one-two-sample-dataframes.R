@@ -15,7 +15,6 @@ test_that(desc = " parametric t-tests", code = {
     .f = one_sample_test
   )
 
-  set.seed(123)
   expect_snapshot(df_1)
 
   # parametric t-test (between-subjects without NAs) ---------
@@ -34,7 +33,6 @@ test_that(desc = " parametric t-tests", code = {
     .f = two_sample_test
   )
 
-  set.seed(123)
   expect_snapshot(df_2_between)
 
   # parametric t-test (within-subjects with NAs) ---------
@@ -53,7 +51,6 @@ test_that(desc = " parametric t-tests", code = {
     .f = two_sample_test
   )
 
-  set.seed(123)
   expect_snapshot(df_2_within)
 
   # parametric ANOVA (within-subjects with NAs) ---------
@@ -71,7 +68,6 @@ test_that(desc = " parametric t-tests", code = {
     .f = oneway_anova
   )
 
-  set.seed(123)
   expect_snapshot(df_3_between)
 
   # parametric ANOVA (within-subjects with NAs) ---------
@@ -89,6 +85,5 @@ test_that(desc = " parametric t-tests", code = {
     .f = oneway_anova
   )
 
-  set.seed(123)
   expect_snapshot(df_3_within)
 })

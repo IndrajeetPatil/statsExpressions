@@ -1,5 +1,4 @@
 test_that("tidy_model_expressions works - t", {
-  set.seed(123)
   mod_t <- lm(wt ~ mpg, data = mtcars)
 
   set.seed(123)
@@ -76,7 +75,6 @@ test_that("tidy_model_expressions works - z", {
 
 
 test_that("tidy_model_expressions works - F", {
-  set.seed(123)
   mod_f <- aov(yield ~ N * P + Error(block), npk)
 
   set.seed(123)

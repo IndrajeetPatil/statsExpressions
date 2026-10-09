@@ -14,7 +14,6 @@ test_that(desc = "t_robust - within-subjects - without NAs", code = {
     digits = 4L
   )
 
-  set.seed(123)
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 })
@@ -30,7 +29,6 @@ test_that(desc = "t_robust - within-subjects - with NAs", code = {
     digits = 3L
   )
 
-  set.seed(123)
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 })
@@ -50,7 +48,6 @@ test_that(desc = "t_robust - between-subjects - without NAs", code = {
     digits = 3
   )
 
-  set.seed(123)
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 })
@@ -67,7 +64,6 @@ test_that(desc = "t_robust - between-subjects - with NAs", code = {
     digits = 4L
   )
 
-  set.seed(123)
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 })
