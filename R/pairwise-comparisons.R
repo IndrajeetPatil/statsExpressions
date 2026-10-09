@@ -187,31 +187,25 @@ pairwise_comparisons <- function(
   # parametric ---------------------------------
 
   if (type %in% c("parametric", "bayes")) {
-    # styler: off
     if (var.equal || paired) {
       .f <- stats::pairwise.t.test
       test <- "Student's t"
-    }
-    if (!(var.equal || paired)) {
+    } else {
       .f <- PMCMRplus::gamesHowellTest
       test <- "Games-Howell"
     }
-    # styler: on
   }
 
   # nonparametric ----------------------------
 
   if (type == "nonparametric") {
-    # styler: off
-    if (!paired) {
-      .f <- PMCMRplus::kwAllPairsDunnTest
-      test <- "Dunn"
-    }
     if (paired) {
       .f <- PMCMRplus::durbinAllPairsTest
       test <- "Durbin-Conover"
+    } else {
+      .f <- PMCMRplus::kwAllPairsDunnTest
+      test <- "Dunn"
     }
-    # styler: on
 
     # `exec` fails otherwise for `pairwise.t.test` because `y` is passed to `t.test`
     .f.args <- utils::modifyList(.f.args, list(y = y_vec))

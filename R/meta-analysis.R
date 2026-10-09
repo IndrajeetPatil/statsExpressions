@@ -113,15 +113,14 @@ meta_analysis <- function(
   ) |>
     tidy_model_parameters(include_studies = FALSE, ci = conf.level)
 
-  if (type != "bayes") {
-    stats_df <- mutate(stats_df, effectsize = "meta-analytic summary estimate")
-  }
-  if (type == "bayes") {
-    stats_df <- mutate(
-      stats_df,
-      effectsize = "meta-analytic posterior estimate"
-    )
-  }
+  stats_df <- mutate(
+    stats_df,
+    effectsize = if (type == "bayes") {
+      "meta-analytic posterior estimate"
+    } else {
+      "meta-analytic summary estimate"
+    }
+  )
 
   add_expression_col(
     stats_df,

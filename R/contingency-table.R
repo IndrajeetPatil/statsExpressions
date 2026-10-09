@@ -96,8 +96,7 @@ contingency_table <- function(
     if (paired) {
       .f <- stats::mcnemar.test
       .f.es <- effectsize::cohens_g
-    }
-    if (!paired) {
+    } else {
       .f <- stats::chisq.test
       .f.es <- effectsize::cramers_v
     }
