@@ -57,7 +57,7 @@ make check        # Build and run R CMD check --no-manual
 make install      # Build and install the package locally
 make document     # Regenerate roxygen docs and render README.Rmd
 make lint         # Run lintr::lint_package()
-make format       # Run styler::style_pkg()
+make format       # Run air format .
 make hooks        # Run all prek hooks
 make clean        # Remove package build and check artifacts
 make update_deps  # Refresh dependency constraints, docs, and codemeta
@@ -106,7 +106,8 @@ test_that("descriptive name", {
 
 ## Code conventions
 
-- Use `lintr` for linting and `styler` for formatting.
+- Use `lintr` for linting and [Air](https://posit-dev.github.io/air/) for
+  formatting; CI runs `air format . --check`.
 - Use snake_case for functions and variables.
 - Use the base R pipe (`|>`), not the magrittr pipe (`%>%`).
 - Preserve tidy evaluation for unquoted column arguments.
