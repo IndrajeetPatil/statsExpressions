@@ -9,6 +9,7 @@
 #'
 #' @inheritParams contingency_table
 #' @inheritParams pairwise_comparisons
+#' @param ... Additional arguments passed to [`stats::fisher.test()`].
 #'
 #' @section Pairwise contingency table tests:
 #'

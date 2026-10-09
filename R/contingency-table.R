@@ -4,6 +4,10 @@
 #' @description
 #' Parametric and Bayesian one-way and two-way contingency table analyses.
 #'
+#' There are no separate non-parametric or robust versions of these tests:
+#' `type = "nonparametric"` and `type = "robust"` run the same (parametric)
+#' chi-squared or McNemar's tests as `type = "parametric"`.
+#'
 #' @section Contingency table analyses:
 #'
 #' ```{r child="man/rmd-fragments/table_intro.Rmd"}
@@ -24,19 +28,25 @@
 #' @param counts The variable in data containing counts, or `NULL` if each row
 #'   represents a single observation.
 #' @param paired Logical indicating whether data came from a within-subjects or
-#'   repeated measures design study (Default: `FALSE`).
+#'   repeated measures design study (Default: `FALSE`). Paired designs are only
+#'   supported for frequentist tests (McNemar's test). With `type = "bayes"`,
+#'   `paired` is ignored and the Bayesian test of independence for unpaired
+#'   data is run instead.
 #' @param sampling.plan Character describing the sampling plan. Possible options:
 #'   - `"indepMulti"` (independent multinomial; default)
 #'   - `"poisson"`
 #'   - `"jointMulti"` (joint multinomial)
 #'   - `"hypergeom"` (hypergeometric).
-#'   For more, see [`BayesFactor::contingencyTableBF()`].
+#'
+#'   Only used for Bayesian two-way tables. For more, see
+#'   [`BayesFactor::contingencyTableBF()`].
 #' @param fixed.margin For the independent multinomial sampling plan, which
-#'   margin is fixed (`"rows"` or `"cols"`). Defaults to `"rows"`.
+#'   margin is fixed (`"rows"` or `"cols"`). Defaults to `"rows"`. Only used
+#'   for Bayesian two-way tables.
 #' @param prior.concentration Specifies the prior concentration parameter, set
 #'   to `1` by default. It indexes the expected deviation from the null
 #'   hypothesis under the alternative, and corresponds to Gunel and Dickey's
-#'   (1974) `"a"` parameter.
+#'   (1974) `"a"` parameter. Only used for Bayesian analyses.
 #' @param ratio A vector of proportions: the expected proportions for the
 #'   proportion test (should sum to `1`). Default is `NULL`, which means the null
 #'   is equal theoretical proportions across the levels of the nominal variable.

@@ -18,15 +18,25 @@ stats_type_switch(type)
 \item \code{"bayes"}
 }
 
-You can specify just the initial letter.}
+You can specify just the initial letter (e.g. \code{"np"} or \code{"bf"}). Matching is
+on the initial lowercase letter only, so any other value (including
+capitalized values such as \code{"Bayes"}) falls back to \code{"parametric"} without a
+warning.}
+}
+\value{
+A character vector of the same length as \code{type}, with values
+\code{"parametric"}, \code{"nonparametric"}, \code{"robust"}, or \code{"bayes"}.
 }
 \description{
 Relevant mostly for \code{{ggstatsplot}} and \code{{statsExpressions}} packages, where
 different statistical approaches are supported via this argument: parametric,
 non-parametric, robust, and Bayesian. This switch function converts strings
 entered by users to a common pattern for convenience.
+
+\code{stats_type_switch()} is an alias of \code{extract_stats_type()}.
 }
 \examples{
 extract_stats_type("p")
 extract_stats_type("bf")
+extract_stats_type(c("np", "robust", "Bayes"))
 }

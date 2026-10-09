@@ -55,8 +55,10 @@ A few additional requirements are worth noting:
   identically within every condition level can produce silently incorrect
   paired tests — even with exactly two conditions and no missing values.
 
-- **Missing data**: Missing values are handled internally by removing any subject
-  who has `NA` in *any* condition, ensuring a balanced design is maintained.
+- **Missing data**: Missing values are removed internally. For within-subjects
+  designs, any subject who has `NA` in *any* condition is removed entirely,
+  ensuring a balanced design is maintained. For between-subjects designs, only
+  the rows with `NA` are removed.
 
 ## Summary of functionality
 

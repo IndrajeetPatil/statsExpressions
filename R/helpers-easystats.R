@@ -1,7 +1,17 @@
 #' @name tidy_model_parameters
 #' @title Convert `{parameters}` package output to `{tidyverse}` conventions
 #'
+#' @description
+#' Runs [`parameters::model_parameters()`] on a model object and standardizes
+#' the result to `{broom}`-style column names (e.g. `estimate`, `std.error`,
+#' `conf.low`, `conf.high`, `statistic`, `df.error`, `p.value`). Bayes factors
+#' are returned in a `bf10` column, along with their natural logarithm in
+#' `log_e_bf10`. For Bayesian ANOVA designs (`{BayesFactor}` linear models),
+#' the estimate is replaced by the Bayesian *R*-squared.
+#'
 #' @inheritParams parameters::model_parameters
+#'
+#' @returns A tibble with one row per parameter.
 #'
 #' @autoglobal
 #'

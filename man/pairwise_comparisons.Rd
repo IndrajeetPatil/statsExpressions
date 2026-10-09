@@ -22,29 +22,23 @@ pairwise_comparisons(
 }
 \arguments{
 \item{data}{A data frame (or a tibble) from which variables specified are to
-be taken. Other data types (e.g., matrix,table, array, etc.) will \strong{not}
+be taken. Other data types (e.g., matrix, table, array, etc.) will \strong{not}
 be accepted. Additionally, grouped data frames from \code{{dplyr}} should be
 ungrouped before they are entered as \code{data}.}
 
-\item{x}{The grouping (or independent) variable from \code{data}. In case of a
-repeated measures or within-subjects design, if \code{subject.id} argument is
-not available or not explicitly specified, the function assumes that the
-data has already been sorted by such an id by the user and creates an
-internal identifier. So if your data is \strong{not} sorted, the results \emph{can}
-be inaccurate when there are more than two levels in \code{x} and there are
-\code{NA}s present. The data is expected to be sorted by user in
-subject-1, subject-2, ..., pattern.}
+\item{x}{The grouping (or independent) variable from \code{data}. For repeated
+measures designs, see the note on ordering in \code{subject.id}.}
 
 \item{y}{The response (or outcome or dependent) variable from \code{data}.}
 
 \item{subject.id}{Relevant in case of a repeated measures or within-subjects
-design (\code{paired = TRUE}, i.e.), it specifies the subject or repeated
-measures identifier. \strong{Important}: Note that if this argument is \code{NULL}
-(which is the default), the function assumes that the data has already been
-sorted by such an id by the user and creates an internal identifier. So if
-your data is \strong{not} sorted and you leave this argument unspecified, the
-results \emph{can} be inaccurate when there are more than two levels in \code{x} and
-there are \code{NA}s present.}
+design (i.e., \code{paired = TRUE}), it specifies the subject or repeated
+measures identifier. \strong{Important}: If this argument is \code{NULL} (which is
+the default), observations are paired by their row order within each level
+of \code{x} (i.e., the data is assumed to be sorted in a subject-1, subject-2,
+... pattern within every level). If the data is \strong{not} sorted this way,
+the paired results will be silently incorrect, so it is safest to always
+specify \code{subject.id}.}
 
 \item{type}{A character specifying the type of statistical approach:
 \itemize{
@@ -54,7 +48,10 @@ there are \code{NA}s present.}
 \item \code{"bayes"}
 }
 
-You can specify just the initial letter.}
+You can specify just the initial letter (e.g. \code{"np"} or \code{"bf"}). Matching is
+on the initial lowercase letter only, so any other value (including
+capitalized values such as \code{"Bayes"}) falls back to \code{"parametric"} without a
+warning.}
 
 \item{paired}{Logical that decides whether the experimental design is
 repeated measures/within-subjects or between-subjects. The default is
@@ -90,7 +87,9 @@ significant figures (see also \code{\link[=signif]{signif()}}).}
 \item{exact}{A logical indicating whether you want exact p-values to be computed.
 Relevant only when \code{type = "nonparametric"} (Default: \code{FALSE}).}
 
-\item{...}{Additional arguments passed to other methods.}
+\item{...}{Additional arguments passed to the underlying pairwise test
+function for the parametric and non-parametric tests (see the table
+below). Ignored for robust and Bayesian tests.}
 }
 \value{
 The returned object is a tibble data frame with the additional class
@@ -106,7 +105,8 @@ non-parametric, robust, or Bayesian). Any given call therefore returns \emph{som
 of freedom for the test)
 \item \code{df.error} and \code{df}: relevant only if the statistic in question has
 two degrees of freedom (e.g. anova)
-\item \code{p.value}: the two-sided \emph{p}-value associated with the observed statistic
+\item \code{p.value}: the \emph{p}-value associated with the observed statistic (two-sided
+unless a one-sided \code{alternative} is requested, where supported)
 \item \code{method}: the name of the inferential statistical test
 }
 

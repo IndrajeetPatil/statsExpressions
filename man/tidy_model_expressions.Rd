@@ -14,10 +14,11 @@ tidy_model_expressions(
 }
 \arguments{
 \item{data}{A tidy data frame from regression model object (see
-\code{\link[=tidy_model_parameters]{tidy_model_parameters()}}).}
+\code{\link[=tidy_model_parameters]{tidy_model_parameters()}}). It must contain a \code{term}
+column identifying each row.}
 
-\item{statistic}{Which statistic is to be displayed (either \code{"t"} or \code{"f"}or
-\code{"z"} or \code{"chi"}) in the expression.}
+\item{statistic}{Which statistic is to be displayed (either \code{"t"}, \code{"f"},
+\code{"z"}, or \code{"chi"}) in the expression. This argument must be specified.}
 
 \item{digits}{Number of digits for rounding or significant figures. May also
 be \code{"signif"} to return significant figures or \code{"scientific"}
@@ -31,6 +32,10 @@ argument can be \code{"eta"} (partial eta-squared) or \code{"omega"} (partial
 omega-squared).}
 
 \item{...}{Currently ignored.}
+}
+\value{
+The input data frame (as a tibble) with an additional \code{expression}
+list-column.
 }
 \description{
 Expressions with statistics for tidy regression data frames

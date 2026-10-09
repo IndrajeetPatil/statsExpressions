@@ -13,7 +13,9 @@
 #' @param p.adjust.method Adjustment method for *p*-values for multiple
 #'   comparisons. Possible methods are: `"holm"` (default), `"hochberg"`,
 #'   `"hommel"`, `"bonferroni"`, `"BH"`, `"BY"`, `"fdr"`, `"none"`.
-#' @param ... Additional arguments passed to other methods.
+#' @param ... Additional arguments passed to the underlying pairwise test
+#'   function for the parametric and non-parametric tests (see the table
+#'   below). Ignored for robust and Bayesian tests.
 #' @inheritParams stats::t.test
 #' @inheritParams WRS2::rmmcp
 #'

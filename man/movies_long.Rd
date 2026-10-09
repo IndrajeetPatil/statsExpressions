@@ -14,8 +14,9 @@ A data frame with 1,579 rows and 8 variables
 \item rating.  Average IMDB user rating.
 \item votes.  Number of IMDB users who rated this movie.
 \item mpaa.  MPAA rating.
-\item genre. Different genres of movies (action, animation, comedy, drama,
-documentary, romance, short).
+\item genre. Genre of the movie (\code{"Action"}, \code{"Action Comedy"},
+\code{"Action Drama"}, \code{"Animated"}, \code{"Comedy"}, \code{"Comedy Drama"}, \code{"Drama"},
+\code{"Romance Drama"}, \code{"RomCom"}).
 }
 }
 \source{
