@@ -140,7 +140,6 @@ two_sample_test <- function(
   # Bayesian ---------------------------------------
 
   if (type == "bayes") {
-    # styler: off
     if (paired) {
       .f.args <- list(x = data[[2L]], y = data[[3L]], paired = paired)
     } else {
@@ -150,7 +149,6 @@ two_sample_test <- function(
         paired = paired
       )
     }
-    # styler: on
 
     stats_df <- exec(BayesFactor::ttestBF, rscale = bf.prior, !!!.f.args) |>
       tidy_model_parameters(ci = conf.level)
