@@ -147,24 +147,23 @@ contingency_table <- function(
 .one_way_bayesian_table <- function(xtab, prior.concentration, ratio, digits) {
   # nocov start
   # a one-cell table is a degenerate case for this computation
-  if (length(as.vector(xtab)) == 1L) {
+  if (length(xtab) == 1L) {
     return(NULL)
   }
   # nocov end
 
-  p1s <- rdirichlet(n = 100000L, alpha = prior.concentration * ratio)
+  n_draws <- 100000L
+  counts <- as.matrix(xtab)
+  p1s <- rdirichlet(n = n_draws, alpha = prior.concentration * ratio)
   pr_h1 <- map_dbl(
-    1:100000L,
-    ~ stats::dmultinom(as.matrix(xtab), prob = p1s[.x, ], log = TRUE)
+    seq_len(n_draws),
+    \(i) stats::dmultinom(counts, prob = p1s[i, ], log = TRUE)
   )
+  pr_h0 <- stats::dmultinom(counts, prob = ratio, log = TRUE)
 
   # BF = (log) prob of data under alternative - (log) prob of data under null
-  # computing Bayes Factor and formatting the results
   tibble(
-    bf10 = exp(
-      BayesFactor::logMeanExpLogs(pr_h1) -
-        stats::dmultinom(as.matrix(xtab), NULL, ratio, TRUE)
-    ),
+    bf10 = exp(BayesFactor::logMeanExpLogs(pr_h1) - pr_h0),
     prior.scale = prior.concentration,
     method = "Bayesian one-way contingency table analysis"
   ) |>
