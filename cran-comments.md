@@ -2,7 +2,8 @@
 
 0 errors | 0 warnings | 0 notes
 
-- Patch release (2.1.1)
+- Patch release (2.1.2) containing documentation fixes only; there are no
+  changes to computed results.
 
 ## revdepcheck results
 
