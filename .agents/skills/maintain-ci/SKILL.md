@@ -18,8 +18,10 @@ Nearly every job is a thin caller of a reusable workflow in
   into this repository.
 - When a fix belongs in the shared workflow, make it in
   `IndrajeetPatil/workflows` and keep this repository's caller compatible.
-- Declare package-specific check tools in `DESCRIPTION` (for example
-  `Config/Needs/check`) rather than in caller inputs.
+- If a caller uses a public action directly, verify its latest stable release
+  and keep the repository's pinning convention.
+- Declare check-only packages as described in the `update-dependencies` skill,
+  not in caller inputs.
 
 ## Check matrix
 
@@ -36,5 +38,3 @@ changes.
 | check-formatting | `air format . --check`                        |
 | pre-commit       | `make hooks`                                  |
 | check-docs       | `lychee .` (links) and `typos` (spelling)     |
-
-Coverage must stay at 100% for both project and patch (see `codecov.yaml`).

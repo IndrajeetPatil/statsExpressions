@@ -168,9 +168,13 @@ Task-specific instructions live in `.agents/skills/`. Read a skill only when
 the task matches it:
 
 - `create-release`: prepare, submit, resume, or publish a CRAN release.
-- `update-dependencies`: refresh dependency constraints, change the minimum
-  R version, or add, remove, or move a dependency.
+- `update-dependencies`: update dependencies to their latest versions, change
+  the minimum R version, or add, remove, or move a dependency.
 - `maintain-ci`: change or debug workflows under `.github/workflows/`.
+
+User-invoked prompts for other tasks live in `.github/prompts/`. Keep each topic
+in exactly one place: `AGENTS.md` for every-session rules, a skill or a prompt
+for task-specific procedures.
 
 ## Pull requests
 
