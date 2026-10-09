@@ -107,8 +107,8 @@ add_expression_col <- function(
   }
   data <- rename(data, any_of(c(bf10 = "bayes.factor")))
 
-  bayesian <- any("bf10" == colnames(data))
-  no.parameters <- sum("df.error" %in% names(data) + "df" %in% names(data))
+  bayesian <- "bf10" %in% colnames(data)
+  no.parameters <- sum(c("df", "df.error") %in% colnames(data))
 
   # special case for Bayesian contingency table analysis
   if (bayesian && grepl("contingency", data$method[[1L]], fixed = TRUE)) {
@@ -144,11 +144,9 @@ add_expression_col <- function(
             {prior.distribution}=='{prior.scale}')"
         )
       )
-  }
+  } else {
+    # frequentist analysis (0, 1, or 2 degrees of freedom) ------------------
 
-  # frequentist analysis (0, 1, or 2 degrees of freedom) --------------------
-
-  if (!bayesian) {
     # for chi-squared statistic, the degrees of freedom live in the `df` column
     if (no.parameters == 1L && "df" %in% colnames(df_expr)) {
       df_expr <- mutate(df_expr, df.error = df)
@@ -196,14 +194,12 @@ add_expression_col <- function(
   data |>
     mutate(
       across(
-        .cols = matches("^est|^sta|p.value|.scale$|.low$|.high$|^log"),
-        .fns = \(x) .to_char(x, digits)
+        matches("^est|^sta|p.value|.scale$|.low$|.high$|^log"),
+        \(x) .to_char(x, digits)
       ),
-      across(.cols = matches("^df$"), .fns = \(x) .to_char(x, digits.df)),
-      across(.cols = matches("^df.error$"), .fns = \(x) {
-        .to_char(x, digits.df.error)
-      }),
-      across(.cols = matches("^conf.level$"), .fns = \(x) paste0(x * 100L, "%"))
+      across(matches("^df$"), \(x) .to_char(x, digits.df)),
+      across(matches("^df.error$"), \(x) .to_char(x, digits.df.error)),
+      across(matches("^conf.level$"), \(x) paste0(x * 100L, "%"))
     )
 }
 
