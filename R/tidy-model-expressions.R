@@ -77,7 +77,15 @@ tidy_model_expressions <- function(
     list(quote(widehat(italic(beta))))
   }
 
-  # nolint start: line_length_linter.
+  # only the statistic part varies; the estimate and p-value parts are shared
+  expr_template <- function(stat_part) {
+    paste0(
+      "list({es.text}=='{estimate}', ",
+      stat_part,
+      ", italic(p)=='{p.value}')"
+    )
+  }
+
   stat_part <- switch(
     stat_type,
     t = "italic(t)('{df.error}')=='{statistic}'",
@@ -85,28 +93,24 @@ tidy_model_expressions <- function(
     c = "italic(chi)^2*('{df.error}')=='{statistic}'",
     f = "italic(F)('{df}', '{df.error}')=='{statistic}'"
   )
-  expr_template <- paste0(
-    "list({es.text}=='{estimate}', ",
-    stat_part,
-    ", italic(p)=='{p.value}')"
-  )
 
   df_expr <- df_expr |>
     mutate(
       expression = if (stat_type == "t") {
+        # drop the degrees of freedom when they are missing or infinite
         case_when(
           df.error %in% c("NA", "Inf") ~ glue(
-            "list({es.text}=='{estimate}', italic(t)=='{statistic}', italic(p)=='{p.value}')"
+            expr_template("italic(t)=='{statistic}'")
           ),
-          .default = glue(expr_template)
+          .default = glue(expr_template(stat_part))
         )
       } else {
-        glue(expr_template)
+        glue(expr_template(stat_part))
       }
     )
-  # nolint end
 
-  # Replace `NA` with `NULL` to show nothing instead of an empty string ("")
+  # rows dropped above get an `NA` expression here, which is turned into `NULL`
+  # to show nothing instead of an empty string ("")
   left_join(data, select(df_expr, term, expression), by = "term") |>
     .glue_to_expression()
 }
