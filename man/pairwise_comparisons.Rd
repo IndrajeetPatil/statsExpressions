@@ -89,7 +89,11 @@ Relevant only when \code{type = "nonparametric"} (Default: \code{FALSE}).}
 
 \item{...}{Additional arguments passed to the underlying pairwise test
 function for the parametric and non-parametric tests (see the table
-below). Ignored for robust and Bayesian tests.}
+below). Ignored for robust tests. For Bayesian tests, they are passed to
+the frequentist test (\code{stats::pairwise.t.test()} or
+\code{PMCMRplus::gamesHowellTest()}) that is run first to enumerate the pairs,
+so they do not change the Bayes factors, but unsupported arguments can
+still cause an error.}
 }
 \value{
 The returned object is a tibble data frame with the additional class
