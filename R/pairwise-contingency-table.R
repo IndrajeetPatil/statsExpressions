@@ -75,9 +75,8 @@ pairwise_contingency_table <- function(
   x <- ensym(x)
   y <- ensym(y)
 
-  data <- .untable_by_counts(data, {{ x }}, {{ y }}, {{ counts }})
-
-  data <- mutate(data, {{ x }} := droplevels(as.factor({{ x }})))
+  data <- .untable_by_counts(data, {{ x }}, {{ y }}, {{ counts }}) |>
+    mutate({{ x }} := droplevels(as.factor({{ x }})))
 
   # pairwise comparisons -------------------------------------------
 

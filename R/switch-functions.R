@@ -31,7 +31,6 @@
 #' extract_stats_type("bf")
 #' extract_stats_type(c("np", "robust", "Bayes"))
 #' @export
-# styler: off
 extract_stats_type <- function(type) {
   case_when(
     grepl("^n", type) ~ "nonparametric",
@@ -110,8 +109,6 @@ prior_switch <- function(x) {
 #' @note Don't curry using `purrr::partial()` because it causes `"Found a .Internal call"` warning.
 #' @noRd
 .grepl <- function(pattern, x) grepl(pattern, x, fixed = TRUE)
-
-# styler: on
 
 #' @title Select the parametric effect size for mean-difference tests
 #' @description Maps the user-facing `effsize.type` to the corresponding
