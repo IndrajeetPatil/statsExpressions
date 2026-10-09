@@ -99,7 +99,7 @@ two_sample_test(
 - effsize.type:
 
   Type of effect size needed for *parametric* tests. The argument can be
-  `"d"` (for Cohen's *d*) or `"g"` (for Hedge's *g*).
+  `"d"` (for Cohen's *d*) or `"g"` (for Hedges' *g*).
 
 - var.equal:
 
@@ -253,7 +253,7 @@ The table below provides summary about:
 |  |  |  |  |  |
 |----|----|----|----|----|
 | Type | No. of groups | Effect size | CI available? | Function used |
-| Parametric | 2 | Cohen's *d*, Hedge's *g* | Yes | [`effectsize::cohens_d()`](https://easystats.github.io/effectsize/reference/cohens_d.html), [`effectsize::hedges_g()`](https://easystats.github.io/effectsize/reference/cohens_d.html) |
+| Parametric | 2 | Cohen's *d*, Hedges' *g* | Yes | [`effectsize::cohens_d()`](https://easystats.github.io/effectsize/reference/cohens_d.html), [`effectsize::hedges_g()`](https://easystats.github.io/effectsize/reference/cohens_d.html) |
 | Non-parametric | 2 | *r* (rank-biserial correlation) | Yes | [`effectsize::rank_biserial()`](https://easystats.github.io/effectsize/reference/rank_biserial.html) |
 | Robust | 2 | Algina-Keselman-Penfield robust standardized difference | Yes | [`WRS2::akp.effect()`](https://rdrr.io/pkg/WRS2/man/yuen.html) |
 | Bayesian | 2 | difference | Yes | [`bayestestR::describe_posterior()`](https://easystats.github.io/bayestestR/reference/describe_posterior.html) |
@@ -279,7 +279,7 @@ aggregate first (e.g., take the mean).
 |  |  |  |  |  |
 |----|----|----|----|----|
 | Type | No. of groups | Effect size | CI available? | Function used |
-| Parametric | 2 | Cohen's *d*, Hedge's *g* | Yes | [`effectsize::cohens_d()`](https://easystats.github.io/effectsize/reference/cohens_d.html), [`effectsize::hedges_g()`](https://easystats.github.io/effectsize/reference/cohens_d.html) |
+| Parametric | 2 | Cohen's *d*, Hedges' *g* | Yes | [`effectsize::cohens_d()`](https://easystats.github.io/effectsize/reference/cohens_d.html), [`effectsize::hedges_g()`](https://easystats.github.io/effectsize/reference/cohens_d.html) |
 | Non-parametric | 2 | *r* (rank-biserial correlation) | Yes | [`effectsize::rank_biserial()`](https://easystats.github.io/effectsize/reference/rank_biserial.html) |
 | Robust | 2 | Algina-Keselman-Penfield robust standardized difference | Yes | [`WRS2::wmcpAKP()`](https://rdrr.io/pkg/WRS2/man/wmcpAKP.html) |
 | Bayesian | 2 | difference | Yes | [`bayestestR::describe_posterior()`](https://easystats.github.io/bayestestR/reference/describe_posterior.html) |
