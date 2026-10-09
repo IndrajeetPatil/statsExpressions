@@ -452,6 +452,11 @@ ggplot(iris, aes(x = Species, y = Sepal.Length)) +
 ```{r, child = "man/rmd-fragments/contingency_table.Rmd"}
 ```
 
+## `pairwise_comparisons`
+
+```{r, child = "man/rmd-fragments/pairwise_comparisons.Rmd"}
+```
+
 ## `pairwise_contingency_table`
 
 ```{r, child = "man/rmd-fragments/pairwise_contingency_table.Rmd"}
