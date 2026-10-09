@@ -68,24 +68,5 @@ test_that(desc = "within-subjects", code = {
 })
 
 test_that(desc = "works with subject id", code = {
-  set.seed(123)
-  expr1 <- oneway_anova(
-    type = "np",
-    data = data_with_subid,
-    x = condition,
-    y = score,
-    subject.id = id,
-    paired = TRUE
-  )
-
-  set.seed(123)
-  expr2 <- oneway_anova(
-    type = "np",
-    data = arrange(data_with_subid, id),
-    x = condition,
-    y = score,
-    paired = TRUE
-  )
-
-  expect_identical(expr1, expr2)
+  expect_subject_id_invariance(oneway_anova, data_with_subid, type = "np")
 })

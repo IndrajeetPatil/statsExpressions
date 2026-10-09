@@ -62,24 +62,5 @@ test_that(desc = "paired parametric anova subtitles work (without NAs)", code = 
 
 
 test_that(desc = "works with subject id", code = {
-  df <- data_with_subid
-
-  set.seed(123)
-  expr1 <- oneway_anova(
-    data = df,
-    x = condition,
-    y = score,
-    subject.id = id,
-    paired = TRUE
-  )
-
-  set.seed(123)
-  expr2 <- oneway_anova(
-    data = arrange(df, id),
-    x = condition,
-    y = score,
-    paired = TRUE
-  )
-
-  expect_identical(expr1, expr2)
+  expect_subject_id_invariance(oneway_anova, data_with_subid)
 })
