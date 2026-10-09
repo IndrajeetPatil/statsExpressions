@@ -34,7 +34,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">statsExpressions</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.1.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,9 +72,33 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="2.1.1" id="statsexpressions-211">statsExpressions 2.1.1<a class="anchor" aria-label="anchor" href="#statsexpressions-211"></a></h2><p class="text-muted">CRAN release: 2026-08-24</p>
+<h2 class="pkg-version" data-toc-text="2.1.2" id="statsexpressions-212">statsExpressions 2.1.2<a class="anchor" aria-label="anchor" href="#statsexpressions-212"></a></h2>
+<p>This patch release contains documentation fixes only; there are no changes to computed results.</p>
 <ul><li><p>New <em>Return value schema</em> article documenting, for each exported function, the full set of returned tibble columns (including the preformatted <code>expression</code> and <code>n.expression</code> columns) and the role of the internal <code><a href="../reference/add_expression_col.html">add_expression_col()</a></code> engine. The shared <code>@returns</code> documentation has also been expanded to cover previously undocumented columns (e.g. <code>bf10</code>, <code>log_e_bf10</code>, <code>prior.scale</code>, <code>group1</code>/<code>group2</code>, <code>p.value.adj</code>).</p></li>
-<li><p>Simple internal refactorings.</p></li>
+<li>
+<p>Corrected inaccurate or incomplete documentation:</p>
+<ul><li>
+<code><a href="../reference/meta_analysis.html">meta_analysis()</a></code> now shows the meta-analysis test table (instead of the correlation one), no longer advertises a non-parametric option, and documents <code>type = "random"</code>.</li>
+<li>
+<code><a href="../reference/contingency_table.html">contingency_table()</a></code> documents that <code>type = "bayes"</code> ignores <code>paired</code>, that <code>"nonparametric"</code> and <code>"robust"</code> run the parametric tests, and which arguments apply only to Bayesian analyses.</li>
+<li>
+<code>conf.level = NULL</code> is no longer described as skipping confidence intervals.</li>
+<li>
+<code><a href="../reference/extract_stats_type.html">extract_stats_type()</a></code> documents its case-sensitive matching, return value, and the <code><a href="../reference/extract_stats_type.html">stats_type_switch()</a></code> alias.</li>
+<li>
+<code><a href="../reference/add_expression_col.html">add_expression_col()</a></code>: corrected the <code>digits</code> default and the descriptions of the <code>*.text</code> and <code>prior.type</code> arguments.</li>
+<li>
+<code><a href="../reference/long_to_wide_converter.html">long_to_wide_converter()</a></code> documents that, without <code>subject.id</code>, observations are always paired by row order.</li>
+<li>
+<code><a href="../reference/pairwise_contingency_table.html">pairwise_contingency_table()</a></code> documents that <code>...</code> is passed to <code><a href="https://rdrr.io/r/stats/fisher.test.html" class="external-link">fisher.test()</a></code>.</li>
+<li>Fixed descriptions of the <code>bugs_long</code>, <code>iris_long</code>, and <code>movies_long</code> datasets.</li>
+</ul></li>
+<li><p>Added missing documentation for <code><a href="../reference/tidy_model_parameters.html">tidy_model_parameters()</a></code> and <code><a href="../reference/tidy_model_expressions.html">tidy_model_expressions()</a></code>, and the <code><a href="../reference/pairwise_comparisons.html">pairwise_comparisons()</a></code> and <code><a href="../reference/pairwise_contingency_table.html">pairwise_contingency_table()</a></code> test tables in the README and the test details article.</p></li>
+<li><p>Raised minimum versions of several dependencies.</p></li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="2.1.1" id="statsexpressions-211">statsExpressions 2.1.1<a class="anchor" aria-label="anchor" href="#statsexpressions-211"></a></h2><p class="text-muted">CRAN release: 2026-08-24</p>
+<ul><li>Simple internal refactorings.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2.1.0" id="statsexpressions-210">statsExpressions 2.1.0<a class="anchor" aria-label="anchor" href="#statsexpressions-210"></a></h2><p class="text-muted">CRAN release: 2026-08-21</p>

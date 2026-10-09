@@ -1,8 +1,9 @@
 # Changelog
 
-## statsExpressions 2.1.1
+## statsExpressions 2.1.2
 
-CRAN release: 2026-08-24
+This patch release contains documentation fixes only; there are no
+changes to computed results.
 
 - New *Return value schema* article documenting, for each exported
   function, the full set of returned tibble columns (including the
@@ -12,6 +13,50 @@ CRAN release: 2026-08-24
   engine. The shared `@returns` documentation has also been expanded to
   cover previously undocumented columns (e.g. `bf10`, `log_e_bf10`,
   `prior.scale`, `group1`/`group2`, `p.value.adj`).
+
+- Corrected inaccurate or incomplete documentation:
+
+  - [`meta_analysis()`](https://www.indrapatil.com/statsExpressions/reference/meta_analysis.md)
+    now shows the meta-analysis test table (instead of the correlation
+    one), no longer advertises a non-parametric option, and documents
+    `type = "random"`.
+  - [`contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md)
+    documents that `type = "bayes"` ignores `paired`, that
+    `"nonparametric"` and `"robust"` run the parametric tests, and which
+    arguments apply only to Bayesian analyses.
+  - `conf.level = NULL` is no longer described as skipping confidence
+    intervals.
+  - [`extract_stats_type()`](https://www.indrapatil.com/statsExpressions/reference/extract_stats_type.md)
+    documents its case-sensitive matching, return value, and the
+    [`stats_type_switch()`](https://www.indrapatil.com/statsExpressions/reference/extract_stats_type.md)
+    alias.
+  - [`add_expression_col()`](https://www.indrapatil.com/statsExpressions/reference/add_expression_col.md):
+    corrected the `digits` default and the descriptions of the `*.text`
+    and `prior.type` arguments.
+  - [`long_to_wide_converter()`](https://www.indrapatil.com/statsExpressions/reference/long_to_wide_converter.md)
+    documents that, without `subject.id`, observations are always paired
+    by row order.
+  - [`pairwise_contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_contingency_table.md)
+    documents that `...` is passed to
+    [`fisher.test()`](https://rdrr.io/r/stats/fisher.test.html).
+  - Fixed descriptions of the `bugs_long`, `iris_long`, and
+    `movies_long` datasets.
+
+- Added missing documentation for
+  [`tidy_model_parameters()`](https://www.indrapatil.com/statsExpressions/reference/tidy_model_parameters.md)
+  and
+  [`tidy_model_expressions()`](https://www.indrapatil.com/statsExpressions/reference/tidy_model_expressions.md),
+  and the
+  [`pairwise_comparisons()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)
+  and
+  [`pairwise_contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_contingency_table.md)
+  test tables in the README and the test details article.
+
+- Raised minimum versions of several dependencies.
+
+## statsExpressions 2.1.1
+
+CRAN release: 2026-08-24
 
 - Simple internal refactorings.
 
