@@ -144,7 +144,6 @@ contingency_table <- function(
   add_expression_col(stats_df, paired = paired, n = nrow(data), digits = digits)
 }
 
-
 .one_way_bayesian_table <- function(xtab, prior.concentration, ratio, digits) {
   # nocov start
   # a one-cell table is a degenerate case for this computation
@@ -199,7 +198,7 @@ contingency_table <- function(
   data
 }
 
-#' @title estimate log prob of data under null with Monte Carlo
+#' @title Random draws from a Dirichlet distribution
 #' @note `rdirichlet()` function from `{MCMCpack}`
 #' @noRd
 rdirichlet <- function(n, alpha) {

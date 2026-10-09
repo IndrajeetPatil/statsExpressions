@@ -184,7 +184,7 @@ pairwise_comparisons <- function(
   g_vec <- pull(data, .rowid)
   .f.args <- list(paired = paired, p.adjust.method = "none", exact = exact, ...)
 
-  # parametric ---------------------------------
+  # parametric & Bayesian ---------------------------------
 
   if (type %in% c("parametric", "bayes")) {
     if (var.equal || paired) {
@@ -283,7 +283,7 @@ pairwise_comparisons <- function(
       select(-p.value.adj)
   }
 
-  select(df_pair, everything(), -matches("p.adjustment|^method$")) |>
+  select(df_pair, -matches("p.adjustment|^method$")) |>
     .glue_to_expression()
 }
 

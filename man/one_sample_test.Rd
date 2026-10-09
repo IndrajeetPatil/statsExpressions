@@ -70,7 +70,7 @@ of \code{1/2}, \code{sqrt(2)/2}, and \code{1}, respectively. In case of an ANOVA
 value corresponds to scale for fixed effects.}
 
 \item{effsize.type}{Type of effect size needed for \emph{parametric} tests. The
-argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedge's \emph{g}).}
+argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedges' \emph{g}).}
 
 \item{exact}{A logical indicating whether you want exact p-values to be computed.
 Relevant only when \code{type = "nonparametric"} (Default: \code{FALSE}).}
@@ -167,7 +167,7 @@ The table below provides summary about:
 
 \strong{Effect size estimation}\tabular{llll}{
    Type \tab Effect size \tab CI available? \tab Function used \cr
-   Parametric \tab Cohen's \emph{d}, Hedge's \emph{g} \tab Yes \tab \code{effectsize::cohens_d()}, \code{effectsize::hedges_g()} \cr
+   Parametric \tab Cohen's \emph{d}, Hedges' \emph{g} \tab Yes \tab \code{effectsize::cohens_d()}, \code{effectsize::hedges_g()} \cr
    Non-parametric \tab \emph{r} (rank-biserial correlation) \tab Yes \tab \code{effectsize::rank_biserial()} \cr
    Robust \tab trimmed mean \tab Yes \tab \code{WRS2::trimcibt()} \cr
    Bayesian \tab difference \tab Yes \tab \code{bayestestR::describe_posterior()} \cr
