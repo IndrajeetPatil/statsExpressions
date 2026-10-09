@@ -18,7 +18,6 @@ run_one_sample_tests_with_parameters <- function(title, x, test.value) {
         type = type,
         conf.level = conf.level,
         effsize.type = effsize.type,
-        conf.method = conf.method,
         test.value = test.value,
         digits = 3L
       )

@@ -53,7 +53,7 @@ test_that(desc = " parametric t-tests", code = {
 
   expect_snapshot(df_2_within)
 
-  # parametric ANOVA (within-subjects with NAs) ---------
+  # parametric ANOVA (between-subjects with NAs) ---------
 
   set.seed(123)
   df_3_between <- purrr::pmap_dfr(

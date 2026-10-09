@@ -26,7 +26,6 @@ test_that(desc = "contingency_table works", code = {
 
   # contingency tab - with NAs --------------------------------------
 
-  # introduce NAs
   set.seed(123)
   df3 <- suppressWarnings(contingency_table(
     data = msleep,
