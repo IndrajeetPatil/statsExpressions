@@ -24,10 +24,12 @@
 #' @param counts The variable in data containing counts, or `NULL` if each row
 #'   represents a single observation.
 #' @param paired Logical indicating whether data came from a within-subjects or
-#'   repeated measures design study (Default: `FALSE`). Paired designs are only
-#'   supported for frequentist tests (McNemar's test). With `type = "bayes"`,
-#'   `paired` is ignored and the Bayesian test of independence for unpaired
-#'   data is run instead.
+#'   repeated measures design study (Default: `FALSE`). Only relevant for
+#'   two-way tables (i.e., when `y` is supplied), and paired designs are only
+#'   supported for frequentist tests (McNemar's test). For a two-way table with
+#'   `type = "bayes"`, `paired` is ignored and the Bayesian test of
+#'   independence for unpaired data is run instead. For one-way tables
+#'   (`y = NULL`), `paired` has no effect.
 #' @param sampling.plan Character describing the sampling plan. Possible options:
 #'   - `"indepMulti"` (independent multinomial; default)
 #'   - `"poisson"`

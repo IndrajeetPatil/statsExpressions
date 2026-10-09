@@ -679,9 +679,9 @@ but run the same frequentist tests as `type = "parametric"` (the
 | Parametric/Non-parametric | Paired | Cohen’s *g* | Yes | `effectsize::cohens_g()` |
 | Bayesian | Paired | No | No | No |
 
-Paired Bayesian analysis is not supported: with `type = "bayes"`, the
-`paired` argument is ignored and the unpaired Bayesian test is run
-instead.
+Paired Bayesian analysis is not supported: for a two-way table with
+`type = "bayes"`, the `paired` argument is ignored and the unpaired
+Bayesian test is run instead.
 
 #### one-way table
 

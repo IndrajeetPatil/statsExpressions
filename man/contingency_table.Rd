@@ -34,10 +34,12 @@ Default is \code{NULL}. If \code{NULL}, one-sample proportion test (a goodness o
 test) will be run for the \code{x} variable.}
 
 \item{paired}{Logical indicating whether data came from a within-subjects or
-repeated measures design study (Default: \code{FALSE}). Paired designs are only
-supported for frequentist tests (McNemar's test). With \code{type = "bayes"},
-\code{paired} is ignored and the Bayesian test of independence for unpaired
-data is run instead.}
+repeated measures design study (Default: \code{FALSE}). Only relevant for
+two-way tables (i.e., when \code{y} is supplied), and paired designs are only
+supported for frequentist tests (McNemar's test). For a two-way table with
+\code{type = "bayes"}, \code{paired} is ignored and the Bayesian test of
+independence for unpaired data is run instead. For one-way tables
+(\code{y = NULL}), \code{paired} has no effect.}
 
 \item{type}{A character specifying the type of statistical approach:
 \itemize{
@@ -202,8 +204,9 @@ below).
 }
 
 
-Paired Bayesian analysis is not supported: with \code{type = "bayes"}, the \code{paired}
-argument is ignored and the unpaired Bayesian test is run instead.
+Paired Bayesian analysis is not supported: for a two-way table with
+\code{type = "bayes"}, the \code{paired} argument is ignored and the unpaired Bayesian
+test is run instead.
 }
 
 \subsection{one-way table}{
