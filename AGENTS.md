@@ -116,7 +116,13 @@ test_that("descriptive name", {
 - Roxygen uses Markdown and the `pkgapi` and `roxyglobals` roclets configured in
   `DESCRIPTION`.
 - Use `@autoglobal` from `roxyglobals` where appropriate.
-- Shared extended examples live in `man/rmd-fragments/`.
+- Shared documentation tables and prose live in `man/rmd-fragments/`; shared
+  example code lives in `man/examples/`.
+- `@examplesIf` cannot wrap an `@example` file. To keep a `NOT_CRAN` guard
+  around a shared example file, use the explicit
+  `\dontshow{if (...) withAutoprint(\{ # examplesIf}` and
+  `\dontshow{\}) # examplesIf}` `@examples` lines around `@example`, as in
+  `R/two-sample-test.R`.
 - After changing roxygen comments, run `make document` and commit the generated
   `NAMESPACE` or `man/*.Rd` changes. Do not edit generated `.Rd` files by hand.
 
@@ -158,8 +164,14 @@ When modifying a function, consider all relevant surfaces:
 1. `R/<function>.R` or its helper file.
 2. The corresponding files under `tests/testthat/`.
 3. Generated `man/<function>.Rd` after roxygen regeneration.
-4. `man/rmd-fragments/<function>.Rmd` when that fragment exists.
-5. `NEWS.md` for user-facing changes.
+4. `man/rmd-fragments/<function>.Rmd` when that fragment exists. Fragments are
+   shared by the Rd files, `README.Rmd`, and the vignettes, so edit the
+   fragment rather than its rendered copies.
+5. `man/examples/examples-<function>.R` when that example file exists. These
+   files are shared by the Rd files and the *Data frame outputs* article.
+6. `README.Rmd` (then re-render `README.md`) and the vignettes under
+   `vignettes/` when user-facing behavior or output changes.
+7. `NEWS.md` for user-facing changes.
 
 ## CI/CD
 
