@@ -207,8 +207,9 @@ pairwise_comparisons <- function(
       test <- "Dunn"
     }
 
-    # `exec` fails otherwise for `pairwise.t.test` because `y` is passed to `t.test`
-    .f.args <- utils::modifyList(.f.args, list(y = y_vec))
+    # Durbin-Conover needs `y`, but it can't be a common argument because
+    # `pairwise.t.test()` would pass it on to `t.test()`
+    .f.args$y <- y_vec
   }
 
   if (type != "robust") {
@@ -272,7 +273,7 @@ pairwise_comparisons <- function(
   # expression formatting ----------------------------------
 
   df_pair <- df_pair |>
-    mutate(across(where(is.factor), \(x) as.character(x))) |>
+    mutate(across(where(is.factor), as.character)) |>
     arrange(group1, group2) |>
     select(group1, group2, everything())
 
@@ -292,18 +293,19 @@ pairwise_comparisons <- function(
   method_label <- insight::format_capitalize(p.adjust.method) |>
     replace_values(c("BH", "Fdr") ~ "FDR")
 
+  p_subscript <- if (method_label == "None") {
+    "unadj."
+  } else {
+    glue("'{method_label}'-adj.")
+  }
+
   data |>
     mutate(
       p.value.adj = stats::p.adjust(p = p.value, method = p.adjust.method),
       p.adjust.method = method_label,
       test = test,
-      expression = case_when(
-        p.adjust.method == "None" ~ glue(
-          "list(italic(p)[unadj.]=='{format_value(p.value.adj, digits)}')"
-        ),
-        .default = glue(
-          "list(italic(p)['{p.adjust.method}'-adj.]=='{format_value(p.value.adj, digits)}')"
-        )
+      expression = glue(
+        "list(italic(p)[{p_subscript}]=='{format_value(p.value.adj, digits)}')"
       )
     )
 }
