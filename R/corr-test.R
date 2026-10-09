@@ -55,7 +55,7 @@ corr_test <- function(
     winsorize = ifelse(type == "robust", tr, FALSE)
   ) |>
     standardize_names(style = "broom") |>
-    dplyr::mutate(conf.method = ifelse(type == "bayes", "HDI", "normal"))
+    mutate(conf.method = ifelse(type == "bayes", "HDI", "normal"))
 
   add_expression_col(stats_df, paired = TRUE, digits = digits)
 }
