@@ -12,7 +12,6 @@ test_that(desc = "centrality description works as expected - no missing data", c
     .f = centrality_description
   )
 
-  set.seed(123)
   expect_snapshot(select(df, -expression))
   expect_snapshot(df[["expression"]])
 })
@@ -34,7 +33,6 @@ test_that(desc = "centrality description works as expected - missing data", code
     .f = centrality_description
   )
 
-  set.seed(123)
   expect_snapshot(select(df_na, -expression))
   expect_snapshot(df_na[["expression"]])
 })
@@ -46,7 +44,6 @@ test_that(desc = "centrality description works when variable is named `variable`
   set.seed(123)
   res <- suppressWarnings(centrality_description(df_var, variable, wt))
 
-  set.seed(123)
   expect_snapshot(select(res, -expression))
   expect_snapshot(res[["expression"]])
 })

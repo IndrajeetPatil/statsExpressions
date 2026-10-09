@@ -13,7 +13,6 @@ test_that(desc = "between-subjects", code = {
     paired = FALSE
   )
 
-  set.seed(123)
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 
@@ -28,7 +27,6 @@ test_that(desc = "between-subjects", code = {
     conf.level = 0.99
   ))
 
-  set.seed(123)
   expect_snapshot(select(df2, -expression))
   expect_snapshot(df2[["expression"]])
 })
@@ -47,7 +45,6 @@ test_that(desc = "within-subjects", code = {
     conf.level = 0.99
   )
 
-  set.seed(123)
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 
@@ -62,30 +59,10 @@ test_that(desc = "within-subjects", code = {
     conf.level = 0.90
   )
 
-  set.seed(123)
   expect_snapshot(select(df2, -expression))
   expect_snapshot(df2[["expression"]])
 })
 
 test_that(desc = "works with subject id", code = {
-  set.seed(123)
-  expr1 <- oneway_anova(
-    type = "np",
-    data = data_with_subid,
-    x = condition,
-    y = score,
-    subject.id = id,
-    paired = TRUE
-  )
-
-  set.seed(123)
-  expr2 <- oneway_anova(
-    type = "np",
-    data = arrange(data_with_subid, id),
-    x = condition,
-    y = score,
-    paired = TRUE
-  )
-
-  expect_identical(expr1, expr2)
+  expect_subject_id_invariance(oneway_anova, data_with_subid, type = "np")
 })

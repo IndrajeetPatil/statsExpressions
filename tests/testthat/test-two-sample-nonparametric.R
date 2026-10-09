@@ -11,7 +11,6 @@ test_that(desc = "t_nonparametric works - between-subjects design", code = {
     conf.level = 0.90
   )
 
-  set.seed(123)
   expect_snapshot(select(df, -expression))
   expect_snapshot(df[["expression"]])
 })
@@ -30,33 +29,15 @@ test_that(desc = "nonparametric works - within-subjects design", code = {
     paired = TRUE
   ))
 
-  set.seed(123)
   snapshot_variant <- if (getRversion() >= "4.7.0") "r-4.7" else NULL
   expect_snapshot(select(df, -expression), variant = snapshot_variant)
   expect_snapshot(df[["expression"]], variant = snapshot_variant)
 })
 
 test_that(desc = "works with subject id", code = {
-  df <- filter(data_with_subid, condition %in% c(1, 5))
-
-  set.seed(123)
-  expr1 <- two_sample_test(
-    type = "np",
-    data = df,
-    x = condition,
-    y = score,
-    subject.id = id,
-    paired = TRUE
+  expect_subject_id_invariance(
+    two_sample_test,
+    filter(data_with_subid, condition %in% c(1, 5)),
+    type = "np"
   )
-
-  set.seed(123)
-  expr2 <- two_sample_test(
-    type = "np",
-    data = arrange(df, id),
-    x = condition,
-    y = score,
-    paired = TRUE
-  )
-
-  expect_identical(expr1, expr2)
 })

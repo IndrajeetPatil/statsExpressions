@@ -9,7 +9,6 @@ test_that(desc = "parametric anova subtitles work (without NAs)", code = {
     var.equal = FALSE
   )
 
-  set.seed(123)
   expect_snapshot(select(df, -expression))
   expect_snapshot(df[["expression"]])
 
@@ -23,7 +22,6 @@ test_that(desc = "parametric anova subtitles work (without NAs)", code = {
     var.equal = TRUE
   )
 
-  set.seed(123)
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 })
@@ -38,7 +36,6 @@ test_that(desc = "parametric anova subtitles with partial omega-squared", code =
     digits = 4L
   )
 
-  set.seed(123)
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 })
@@ -55,31 +52,11 @@ test_that(desc = "paired parametric anova subtitles work (without NAs)", code = 
     conf.level = 0.99
   )
 
-  set.seed(123)
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 })
 
 
 test_that(desc = "works with subject id", code = {
-  df <- data_with_subid
-
-  set.seed(123)
-  expr1 <- oneway_anova(
-    data = df,
-    x = condition,
-    y = score,
-    subject.id = id,
-    paired = TRUE
-  )
-
-  set.seed(123)
-  expr2 <- oneway_anova(
-    data = arrange(df, id),
-    x = condition,
-    y = score,
-    paired = TRUE
-  )
-
-  expect_identical(expr1, expr2)
+  expect_subject_id_invariance(oneway_anova, data_with_subid)
 })

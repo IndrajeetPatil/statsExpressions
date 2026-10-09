@@ -46,7 +46,6 @@ test_that(desc = "long_to_wide_converter works - spread true", code = {
   )
 
   # checking datasets
-  set.seed(123)
   expect_snapshot(purrr::walk(list(df1, df2, df3, df4), dplyr::glimpse))
   skip_if(
     getRversion() < "4.6.0",
@@ -100,7 +99,6 @@ test_that(desc = "long_to_wide_converter works - spread false", code = {
     spread = FALSE
   )
 
-  set.seed(123)
   expect_snapshot(purrr::walk(list(df1, df2, df3, df4), dplyr::glimpse))
   expect_snapshot(purrr::map(list(df1, df2, df3, df4), summary))
 })
