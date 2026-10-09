@@ -24,14 +24,11 @@ This vignette can be cited as:
 
 ## Introduction
 
-Here a go-to summary about statistical test carried out and the returned
-effect size for each function is provided. This should be useful if one
-needs to find out more information about how an argument is resolved in
-the underlying package or if one wishes to browse the source code. So,
-for example, if you want to know more about how one-way
-(between-subjects) ANOVA, you can run
-[`?stats::oneway.test`](https://rdrr.io/r/stats/oneway.test.html) in
-your R console.
+This article describes the data that
+[statsExpressions](https://www.indrapatil.com/statsExpressions/)
+functions expect, and summarizes, for each function, the statistical
+tests carried out, the effect sizes returned, and the underlying
+functions used to compute them.
 
 Abbreviations used: CI = Confidence Interval
 
@@ -54,9 +51,12 @@ observation. A few additional requirements are worth noting:
   incorrect paired tests — even with exactly two conditions and no
   missing values.
 
-- **Missing data**: Missing values are handled internally by removing
-  any subject who has `NA` in *any* condition, ensuring a balanced
-  design is maintained.
+- **Missing data**: Missing values are removed internally. For
+  within-subjects designs, any subject who has `NA` in *any* condition
+  is removed entirely, ensuring a balanced design is maintained. For
+  between-subjects designs, only the rows with `NA` are removed, unless
+  `subject.id` is also supplied, in which case all rows of a subject
+  with an `NA` are removed.
 
 ## Summary of functionality
 
@@ -95,14 +95,18 @@ observation. A few additional requirements are worth noting:
 | Equal proportions for categorical variable levels | ✅ | ✅ | ❌ | ✅ |
 | Random-effects meta-analysis | ✅ | ❌ | ✅ | ✅ |
 
+❌ means that no dedicated analysis of that type exists. For contingency
+tables, `type = "robust"` is still accepted and falls back to the
+parametric tests.
+
 ## Summary of tests and effect sizes
 
-Here a go-to summary about statistical test carried out and the returned
-effect size for each function is provided. This should be useful if one
+Here is a go-to summary of the statistical tests carried out and the
+effect sizes returned by each function. This should be useful if one
 needs to find out more information about how an argument is resolved in
 the underlying package or if one wishes to browse the source code. So,
-for example, if you want to know more about how one-way
-(between-subjects) ANOVA, you can run
+for example, if you want to know more about how the one-way
+(between-subjects) ANOVA is carried out, you can run
 [`?stats::oneway.test`](https://rdrr.io/r/stats/oneway.test.html) in
 your R console.
 
@@ -242,6 +246,11 @@ aggregate first (e.g., take the mean).
 
 ### `contingency_table()`
 
+There are no dedicated non-parametric or robust contingency table
+analyses. `type = "nonparametric"` and `type = "robust"` are accepted,
+but run the same frequentist tests as `type = "parametric"` (the
+“Parametric/Non-parametric” rows below).
+
 #### two-way table
 
 **Hypothesis testing**
@@ -262,6 +271,10 @@ aggregate first (e.g., take the mean).
 | Parametric/Non-parametric | Paired | Cohen’s *g* | Yes | [`effectsize::cohens_g()`](https://easystats.github.io/effectsize/reference/cohens_g.html) |
 | Bayesian | Paired | No | No | No |
 
+Paired Bayesian analysis is not supported: for a two-way table with
+`type = "bayes"`, the `paired` argument is ignored and the unpaired
+Bayesian test is run instead.
+
 #### one-way table
 
 **Hypothesis testing**
@@ -277,6 +290,57 @@ aggregate first (e.g., take the mean).
 |:---|:---|:---|:---|
 | Parametric/Non-parametric | Pearson’s *C* | Yes | [`effectsize::pearsons_c()`](https://easystats.github.io/effectsize/reference/phi.html) |
 | Bayesian | No | No | No |
+
+### `pairwise_comparisons()`
+
+#### between-subjects
+
+**Hypothesis testing**
+
+| Type | Equal variance? | Test | *p*-value adjustment? | Function used |
+|:---|:---|:---|:---|:---|
+| Parametric | No | Games-Howell test | Yes | [`PMCMRplus::gamesHowellTest()`](https://rdrr.io/pkg/PMCMRplus/man/gamesHowellTest.html) |
+| Parametric | Yes | Student’s *t*-test | Yes | [`stats::pairwise.t.test()`](https://rdrr.io/r/stats/pairwise.t.test.html) |
+| Non-parametric | No | Dunn test | Yes | [`PMCMRplus::kwAllPairsDunnTest()`](https://rdrr.io/pkg/PMCMRplus/man/kwAllPairsDunnTest.html) |
+| Robust | No | Yuen’s trimmed means test | Yes | [`WRS2::lincon()`](https://rdrr.io/pkg/WRS2/man/t1way.html) |
+| Bayesian | `NA` | Student’s *t*-test | `NA` | [`BayesFactor::ttestBF()`](https://rdrr.io/pkg/BayesFactor/man/ttestBF.html) |
+
+**Effect size estimation**
+
+Not supported.
+
+#### within-subjects
+
+**Data requirement**: Paired pairwise tests assume exactly **one
+observation per subject per condition**. If your data has multiple
+trials per cell, aggregate first (e.g., take the mean).
+
+**Hypothesis testing**
+
+| Type | Test | *p*-value adjustment? | Function used |
+|:---|:---|:---|:---|
+| Parametric | Student’s *t*-test | Yes | [`stats::pairwise.t.test()`](https://rdrr.io/r/stats/pairwise.t.test.html) |
+| Non-parametric | Durbin-Conover test | Yes | [`PMCMRplus::durbinAllPairsTest()`](https://rdrr.io/pkg/PMCMRplus/man/durbinAllPairsTest.html) |
+| Robust | Yuen’s trimmed means test | Yes | [`WRS2::rmmcp()`](https://rdrr.io/pkg/WRS2/man/rmanova.html) |
+| Bayesian | Student’s *t*-test | `NA` | [`BayesFactor::ttestBF()`](https://rdrr.io/pkg/BayesFactor/man/ttestBF.html) |
+
+**Effect size estimation**
+
+Not supported.
+
+### `pairwise_contingency_table()`
+
+**Hypothesis testing**
+
+| Test | *p*-value adjustment? | Function used |
+|:---|:---|:---|
+| Fisher’s exact test | Yes | [`stats::fisher.test()`](https://rdrr.io/r/stats/fisher.test.html) |
+
+**Effect size estimation**
+
+| Effect size | CI available? | Function used |
+|:---|:---|:---|
+| Cramer’s *V* | Yes | [`effectsize::cramers_v()`](https://easystats.github.io/effectsize/reference/phi.html) |
 
 ### `meta_analysis()`
 

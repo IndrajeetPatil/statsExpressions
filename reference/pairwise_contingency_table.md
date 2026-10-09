@@ -25,9 +25,9 @@ pairwise_contingency_table(
 - data:
 
   A data frame (or a tibble) from which variables specified are to be
-  taken. Other data types (e.g., matrix,table, array, etc.) will **not**
-  be accepted. Additionally, grouped data frames from `{dplyr}` should
-  be ungrouped before they are entered as `data`.
+  taken. Other data types (e.g., matrix, table, array, etc.) will
+  **not** be accepted. Additionally, grouped data frames from `{dplyr}`
+  should be ungrouped before they are entered as `data`.
 
 - x:
 
@@ -62,8 +62,7 @@ pairwise_contingency_table(
 - conf.level:
 
   Scalar between `0` and `1` (default: `95%` confidence/credible
-  intervals, `0.95`). If `NULL`, no confidence intervals will be
-  computed.
+  intervals, `0.95`).
 
 - alternative:
 
@@ -75,7 +74,8 @@ pairwise_contingency_table(
 
 - ...:
 
-  Additional arguments (currently ignored).
+  Additional arguments passed to
+  [`stats::fisher.test()`](https://rdrr.io/r/stats/fisher.test.html).
 
 ## Value
 
@@ -95,8 +95,9 @@ therefore returns *some* (not all) of the columns below.
 - `df.error` and `df`: relevant only if the statistic in question has
   two degrees of freedom (e.g. anova)
 
-- `p.value`: the two-sided *p*-value associated with the observed
-  statistic
+- `p.value`: the *p*-value associated with the observed statistic
+  (two-sided unless a one-sided `alternative` is requested, where
+  supported)
 
 - `method`: the name of the inferential statistical test
 

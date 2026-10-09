@@ -18,7 +18,6 @@
     "name": "R"
   },
   "license": "https://opensource.org/licenses/MIT",
-  "version": "2.0.0",
   "author": {
     "@type": "Person",
     "name": "Indrajeet Patil",
@@ -94,12 +93,13 @@
 
 <dl><dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
 <dd><p>A tidy data frame from regression model object (see
-<code><a href="tidy_model_parameters.html">tidy_model_parameters()</a></code>).</p></dd>
+<code><a href="tidy_model_parameters.html">tidy_model_parameters()</a></code>). It must contain a <code>term</code>
+column identifying each row.</p></dd>
 
 
 <dt id="arg-statistic">statistic<a class="anchor" aria-label="anchor" href="#arg-statistic"></a></dt>
-<dd><p>Which statistic is to be displayed (either <code>"t"</code> or <code>"f"</code>or
-<code>"z"</code> or <code>"chi"</code>) in the expression.</p></dd>
+<dd><p>Which statistic is to be displayed (either <code>"t"</code>, <code>"f"</code>,
+<code>"z"</code>, or <code>"chi"</code>) in the expression. This argument must be specified.</p></dd>
 
 
 <dt id="arg-digits">digits<a class="anchor" aria-label="anchor" href="#arg-digits"></a></dt>
@@ -121,6 +121,11 @@ omega-squared).</p></dd>
 <dd><p>Currently ignored.</p></dd>
 
 </dl></div>
+    <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p>The input data frame (as a tibble) with an additional <code>expression</code>
+list-column.</p>
+    </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>When any of the necessary numeric column values (<code>estimate</code>, <code>statistic</code>,

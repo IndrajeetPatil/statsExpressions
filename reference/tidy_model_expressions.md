@@ -20,11 +20,12 @@ tidy_model_expressions(
 
   A tidy data frame from regression model object (see
   [`tidy_model_parameters()`](https://www.indrapatil.com/statsExpressions/reference/tidy_model_parameters.md)).
+  It must contain a `term` column identifying each row.
 
 - statistic:
 
-  Which statistic is to be displayed (either `"t"` or `"f"`or `"z"` or
-  `"chi"`) in the expression.
+  Which statistic is to be displayed (either `"t"`, `"f"`, `"z"`, or
+  `"chi"`) in the expression. This argument must be specified.
 
 - digits:
 
@@ -43,6 +44,11 @@ tidy_model_expressions(
 - ...:
 
   Currently ignored.
+
+## Value
+
+The input data frame (as a tibble) with an additional `expression`
+list-column.
 
 ## Details
 

@@ -43,7 +43,6 @@
     "name": "R"
   },
   "license": "https://opensource.org/licenses/MIT",
-  "version": "2.0.0",
   "author": {
     "@type": "Person",
     "name": "Indrajeet Patil",
@@ -335,6 +334,7 @@
 </tr>
 </tbody>
 </table>
+<p>❌ means that no dedicated analysis of that type exists. For contingency tables, <code>type = "robust"</code> is still accepted and falls back to the parametric tests.</p>
 </div>
 <div class="section level1">
 <h1 id="tidy-dataframes-from-statistical-analysis">Tidy dataframes from statistical analysis<a class="anchor" aria-label="anchor" href="#tidy-dataframes-from-statistical-analysis"></a>
@@ -447,7 +447,7 @@
 <h1 id="using-expressions-in-custom-plots">Using expressions in custom plots<a class="anchor" aria-label="anchor" href="#using-expressions-in-custom-plots"></a>
 </h1>
 <p>Note that <em>expression</em> here means <strong>a pre-formatted in-text statistical result</strong>. In addition to other details contained in the dataframe, there is also a column titled <code>expression</code>, which contains expression with statistical details and can be displayed in a plot.</p>
-<p>For <strong>all</strong> statistical test expressions, the default template attempt to follow the gold standard for statistical reporting.</p>
+<p>For <strong>all</strong> statistical test expressions, the default template attempts to follow the gold standard for statistical reporting.</p>
 <p>For example, here are results from Welch’s <em>t</em>-test:</p>
 <p><img src="reference/figures/stats_reporting_format.png" alt="Example of statistical reporting format showing Welch's t-test results with test statistic, degrees of freedom, p-value, and effect size" align="center"></p>
 <p>Let’s load the needed library for visualization:</p>
@@ -456,7 +456,7 @@
 <div class="section level2">
 <h2 id="expressions-for-centrality-measure">Expressions for centrality measure<a class="anchor" aria-label="anchor" href="#expressions-for-centrality-measure"></a>
 </h2>
-<p><strong>Note that when used in a geometric layer, the expression need to be parsed.</strong></p>
+<p><strong>Note that when used in a geometric layer, the expression needs to be parsed.</strong></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># displaying mean for each level of `cyl`</span></span>
 <span><span class="fu"><a href="reference/centrality_description.html">centrality_description</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -637,7 +637,7 @@
 <span>    caption <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/parse.html" class="external-link">parse</a></span><span class="op">(</span>text <span class="op">=</span> <span class="va">results_data</span><span class="op">$</span><span class="va">expression</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-gof-1.png" alt="Pie chart of car classes showing example output with statistical caption" width="100%"></p>
-<p>You can also use these function to get the expression in return without having to display them in plots:</p>
+<p>You can also use these functions to get the expression in return without having to display them in plots:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span></span>
@@ -676,7 +676,7 @@
 <div class="section level1">
 <h1 id="customizing-details-to-your-liking">Customizing details to your liking<a class="anchor" aria-label="anchor" href="#customizing-details-to-your-liking"></a>
 </h1>
-<p>Sometimes you may not wish include so many details in the subtitle. In that case, you can extract the expression and copy-paste only the part you wish to include. For example, here only statistic and <em>p</em>-values are included:</p>
+<p>Sometimes you may not wish to include so many details in the subtitle. In that case, you can extract the expression and copy-paste only the part you wish to include. For example, here only statistic and <em>p</em>-values are included:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span></span>
@@ -698,7 +698,7 @@
 <div class="section level1">
 <h1 id="summary-of-tests-and-effect-sizes">Summary of tests and effect sizes<a class="anchor" aria-label="anchor" href="#summary-of-tests-and-effect-sizes"></a>
 </h1>
-<p>Here a go-to summary about statistical test carried out and the returned effect size for each function is provided. This should be useful if one needs to find out more information about how an argument is resolved in the underlying package or if one wishes to browse the source code. So, for example, if you want to know more about how one-way (between-subjects) ANOVA, you can run <code><a href="https://rdrr.io/r/stats/oneway.test.html" class="external-link">?stats::oneway.test</a></code> in your R console.</p>
+<p>Here is a go-to summary of the statistical tests carried out and the effect sizes returned by each function. This should be useful if one needs to find out more information about how an argument is resolved in the underlying package or if one wishes to browse the source code. So, for example, if you want to know more about how the one-way (between-subjects) ANOVA is carried out, you can run <code><a href="https://rdrr.io/r/stats/oneway.test.html" class="external-link">?stats::oneway.test</a></code> in your R console.</p>
 <div class="section level2">
 <h2 id="centrality_description">
 <code>centrality_description</code><a class="anchor" aria-label="anchor" href="#centrality_description"></a>
@@ -1259,6 +1259,7 @@
 <h2 id="contingency_table">
 <code>contingency_table</code><a class="anchor" aria-label="anchor" href="#contingency_table"></a>
 </h2>
+<p>There are no dedicated non-parametric or robust contingency table analyses. <code>type = "nonparametric"</code> and <code>type = "robust"</code> are accepted, but run the same frequentist tests as <code>type = "parametric"</code> (the “Parametric/Non-parametric” rows below).</p>
 <div class="section level4">
 <h4 id="two-way-table">two-way table<a class="anchor" aria-label="anchor" href="#two-way-table"></a>
 </h4>
@@ -1353,6 +1354,7 @@
 </tr>
 </tbody>
 </table>
+<p>Paired Bayesian analysis is not supported: for a two-way table with <code>type = "bayes"</code>, the <code>paired</code> argument is ignored and the unpaired Bayesian test is run instead.</p>
 </div>
 <div class="section level4">
 <h4 id="one-way-table">one-way table<a class="anchor" aria-label="anchor" href="#one-way-table"></a>
@@ -1412,6 +1414,121 @@
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="section level2">
+<h2 id="pairwise_comparisons">
+<code>pairwise_comparisons</code><a class="anchor" aria-label="anchor" href="#pairwise_comparisons"></a>
+</h2>
+<div class="section level4">
+<h4 id="between-subjects-2">between-subjects<a class="anchor" aria-label="anchor" href="#between-subjects-2"></a>
+</h4>
+<p><strong>Hypothesis testing</strong></p>
+<table class="table">
+<colgroup>
+<col width="20%">
+<col width="20%">
+<col width="20%">
+<col width="20%">
+<col width="20%">
+</colgroup>
+<thead><tr>
+<th align="left">Type</th>
+<th align="left">Equal variance?</th>
+<th align="left">Test</th>
+<th align="left">
+<em>p</em>-value adjustment?</th>
+<th align="left">Function used</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="left">Parametric</td>
+<td align="left">No</td>
+<td align="left">Games-Howell test</td>
+<td align="left">Yes</td>
+<td align="left"><code><a href="https://rdrr.io/pkg/PMCMRplus/man/gamesHowellTest.html" class="external-link">PMCMRplus::gamesHowellTest()</a></code></td>
+</tr>
+<tr>
+<td align="left">Parametric</td>
+<td align="left">Yes</td>
+<td align="left">Student’s <em>t</em>-test</td>
+<td align="left">Yes</td>
+<td align="left"><code><a href="https://rdrr.io/r/stats/pairwise.t.test.html" class="external-link">stats::pairwise.t.test()</a></code></td>
+</tr>
+<tr>
+<td align="left">Non-parametric</td>
+<td align="left">No</td>
+<td align="left">Dunn test</td>
+<td align="left">Yes</td>
+<td align="left"><code><a href="https://rdrr.io/pkg/PMCMRplus/man/kwAllPairsDunnTest.html" class="external-link">PMCMRplus::kwAllPairsDunnTest()</a></code></td>
+</tr>
+<tr>
+<td align="left">Robust</td>
+<td align="left">No</td>
+<td align="left">Yuen’s trimmed means test</td>
+<td align="left">Yes</td>
+<td align="left"><code><a href="https://rdrr.io/pkg/WRS2/man/t1way.html" class="external-link">WRS2::lincon()</a></code></td>
+</tr>
+<tr>
+<td align="left">Bayesian</td>
+<td align="left"><code>NA</code></td>
+<td align="left">Student’s <em>t</em>-test</td>
+<td align="left"><code>NA</code></td>
+<td align="left"><code><a href="https://rdrr.io/pkg/BayesFactor/man/ttestBF.html" class="external-link">BayesFactor::ttestBF()</a></code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Effect size estimation</strong></p>
+<p>Not supported.</p>
+</div>
+<div class="section level4">
+<h4 id="within-subjects-2">within-subjects<a class="anchor" aria-label="anchor" href="#within-subjects-2"></a>
+</h4>
+<p><strong>Data requirement</strong>: Paired pairwise tests assume exactly <strong>one observation per subject per condition</strong>. If your data has multiple trials per cell, aggregate first (e.g., take the mean).</p>
+<p><strong>Hypothesis testing</strong></p>
+<table class="table">
+<colgroup>
+<col width="25%">
+<col width="25%">
+<col width="25%">
+<col width="25%">
+</colgroup>
+<thead><tr>
+<th align="left">Type</th>
+<th align="left">Test</th>
+<th align="left">
+<em>p</em>-value adjustment?</th>
+<th align="left">Function used</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="left">Parametric</td>
+<td align="left">Student’s <em>t</em>-test</td>
+<td align="left">Yes</td>
+<td align="left"><code><a href="https://rdrr.io/r/stats/pairwise.t.test.html" class="external-link">stats::pairwise.t.test()</a></code></td>
+</tr>
+<tr>
+<td align="left">Non-parametric</td>
+<td align="left">Durbin-Conover test</td>
+<td align="left">Yes</td>
+<td align="left"><code><a href="https://rdrr.io/pkg/PMCMRplus/man/durbinAllPairsTest.html" class="external-link">PMCMRplus::durbinAllPairsTest()</a></code></td>
+</tr>
+<tr>
+<td align="left">Robust</td>
+<td align="left">Yuen’s trimmed means test</td>
+<td align="left">Yes</td>
+<td align="left"><code><a href="https://rdrr.io/pkg/WRS2/man/rmanova.html" class="external-link">WRS2::rmmcp()</a></code></td>
+</tr>
+<tr>
+<td align="left">Bayesian</td>
+<td align="left">Student’s <em>t</em>-test</td>
+<td align="left"><code>NA</code></td>
+<td align="left"><code><a href="https://rdrr.io/pkg/BayesFactor/man/ttestBF.html" class="external-link">BayesFactor::ttestBF()</a></code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Effect size estimation</strong></p>
+<p>Not supported.</p>
 </div>
 </div>
 <div class="section level2">

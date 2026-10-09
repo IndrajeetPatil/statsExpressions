@@ -22,9 +22,9 @@ centrality_description(
 - data:
 
   A data frame (or a tibble) from which variables specified are to be
-  taken. Other data types (e.g., matrix,table, array, etc.) will **not**
-  be accepted. Additionally, grouped data frames from `{dplyr}` should
-  be ungrouped before they are entered as `data`.
+  taken. Other data types (e.g., matrix, table, array, etc.) will
+  **not** be accepted. Additionally, grouped data frames from `{dplyr}`
+  should be ungrouped before they are entered as `data`.
 
 - x:
 
@@ -46,13 +46,15 @@ centrality_description(
 
   - `"bayes"`
 
-  You can specify just the initial letter.
+  You can specify just the initial letter (e.g. `"np"` or `"bf"`).
+  Matching is on the initial lowercase letter only, so any other value
+  (including capitalized values such as `"Bayes"`) falls back to
+  `"parametric"` without a warning.
 
 - conf.level:
 
   Scalar between `0` and `1` (default: `95%` confidence/credible
-  intervals, `0.95`). If `NULL`, no confidence intervals will be
-  computed.
+  intervals, `0.95`).
 
 - tr:
 
@@ -113,7 +115,7 @@ the distribution of `y` within that level. The columns are:
   (e.g. `"setosa\n(n = 50)"`), useful as an axis or facet label
 
 The exact dispersion column depends on the `type` of analysis (`std.dev`
-vs `mad`), and
+vs `mad`; neither is returned for `"bayes"`), and
 [`datawizard::describe_distribution()`](https://easystats.github.io/datawizard/reference/describe_distribution.html)
 is used internally to compute these indices.
 

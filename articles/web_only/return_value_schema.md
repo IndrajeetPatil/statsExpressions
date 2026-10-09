@@ -47,8 +47,7 @@ article:
     the test, almost every function returns a pre-formatted `expression`
     column intended for annotating plots. This is what powers the
     statistical details you see in
-    [`{ggstatsplot}`](https://indrajeetpatil.github.io/ggstatsplot/)
-    plots.
+    [`{ggstatsplot}`](https://www.indrapatil.com/ggstatsplot/) plots.
 
 The rest of this article documents the `expression` column, the engine
 that builds it, and then provides a schema for each exported function.
@@ -103,7 +102,10 @@ It is the main path for the hypothesis-testing functions
 [`corr_test()`](https://www.indrapatil.com/statsExpressions/reference/corr_test.md),
 [`contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md),
 [`meta_analysis()`](https://www.indrapatil.com/statsExpressions/reference/meta_analysis.md)).
-Understanding it helps clarify why the output looks the way it does.
+The one exception is the Bayesian one-way (goodness-of-fit)
+[`contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md)
+analysis, which builds its own minimal expression. Understanding it
+helps clarify why the output looks the way it does.
 
 The engine works as follows:
 

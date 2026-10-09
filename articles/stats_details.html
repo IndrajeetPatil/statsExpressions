@@ -37,7 +37,6 @@
     "name": "R"
   },
   "license": "https://opensource.org/licenses/MIT",
-  "version": "2.0.0",
   "author": {
     "@type": "Person",
     "name": "Indrajeet Patil",
@@ -139,13 +138,10 @@ A BibTeX entry for LaTeX users is
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>Here a go-to summary about statistical test carried out and the
-returned effect size for each function is provided. This should be
-useful if one needs to find out more information about how an argument
-is resolved in the underlying package or if one wishes to browse the
-source code. So, for example, if you want to know more about how one-way
-(between-subjects) ANOVA, you can run <code><a href="https://rdrr.io/r/stats/oneway.test.html" class="external-link">?stats::oneway.test</a></code>
-in your R console.</p>
+<p>This article describes the data that <a href="https://www.indrapatil.com/statsExpressions/">statsExpressions</a>
+functions expect, and summarizes, for each function, the statistical
+tests carried out, the effect sizes returned, and the underlying
+functions used to compute them.</p>
 <p>Abbreviations used: CI = Confidence Interval</p>
 </div>
 <div class="section level2">
@@ -169,10 +165,13 @@ within each condition, so any data that is not already sorted
 identically within every condition level can produce silently incorrect
 paired tests — even with exactly two conditions and no missing
 values.</p></li>
-<li><p><strong>Missing data</strong>: Missing values are handled
-internally by removing any subject who has <code>NA</code> in
-<em>any</em> condition, ensuring a balanced design is
-maintained.</p></li>
+<li><p><strong>Missing data</strong>: Missing values are removed
+internally. For within-subjects designs, any subject who has
+<code>NA</code> in <em>any</em> condition is removed entirely, ensuring
+a balanced design is maintained. For between-subjects designs, only the
+rows with <code>NA</code> are removed, unless <code>subject.id</code> is
+also supplied, in which case all rows of a subject with an
+<code>NA</code> are removed.</p></li>
 </ul>
 </div>
 <div class="section level2">
@@ -327,17 +326,20 @@ maintained.</p></li>
 </tr>
 </tbody>
 </table>
+<p>❌ means that no dedicated analysis of that type exists. For
+contingency tables, <code>type = "robust"</code> is still accepted and
+falls back to the parametric tests.</p>
 </div>
 <div class="section level2">
 <h2 id="summary-of-tests-and-effect-sizes">Summary of tests and effect sizes<a class="anchor" aria-label="anchor" href="#summary-of-tests-and-effect-sizes"></a>
 </h2>
-<p>Here a go-to summary about statistical test carried out and the
-returned effect size for each function is provided. This should be
-useful if one needs to find out more information about how an argument
-is resolved in the underlying package or if one wishes to browse the
-source code. So, for example, if you want to know more about how one-way
-(between-subjects) ANOVA, you can run <code><a href="https://rdrr.io/r/stats/oneway.test.html" class="external-link">?stats::oneway.test</a></code>
-in your R console.</p>
+<p>Here is a go-to summary of the statistical tests carried out and the
+effect sizes returned by each function. This should be useful if one
+needs to find out more information about how an argument is resolved in
+the underlying package or if one wishes to browse the source code. So,
+for example, if you want to know more about how the one-way
+(between-subjects) ANOVA is carried out, you can run
+<code><a href="https://rdrr.io/r/stats/oneway.test.html" class="external-link">?stats::oneway.test</a></code> in your R console.</p>
 <div class="section level3">
 <h3 id="centrality_description">
 <code>centrality_description()</code><a class="anchor" aria-label="anchor" href="#centrality_description"></a>
@@ -921,6 +923,11 @@ estimation</strong></p>
 <h3 id="contingency_table">
 <code>contingency_table()</code><a class="anchor" aria-label="anchor" href="#contingency_table"></a>
 </h3>
+<p>There are no dedicated non-parametric or robust contingency table
+analyses. <code>type = "nonparametric"</code> and
+<code>type = "robust"</code> are accepted, but run the same frequentist
+tests as <code>type = "parametric"</code> (the
+“Parametric/Non-parametric” rows below).</p>
 <div class="section level4">
 <h4 id="two-way-table">two-way table<a class="anchor" aria-label="anchor" href="#two-way-table"></a>
 </h4>
@@ -1015,6 +1022,9 @@ estimation</strong></p>
 </tr>
 </tbody>
 </table>
+<p>Paired Bayesian analysis is not supported: for a two-way table with
+<code>type = "bayes"</code>, the <code>paired</code> argument is ignored
+and the unpaired Bayesian test is run instead.</p>
 </div>
 <div class="section level4">
 <h4 id="one-way-table">one-way table<a class="anchor" aria-label="anchor" href="#one-way-table"></a>
@@ -1075,6 +1085,157 @@ estimation</strong></p>
 </tbody>
 </table>
 </div>
+</div>
+<div class="section level3">
+<h3 id="pairwise_comparisons">
+<code>pairwise_comparisons()</code><a class="anchor" aria-label="anchor" href="#pairwise_comparisons"></a>
+</h3>
+<div class="section level4">
+<h4 id="between-subjects-2">between-subjects<a class="anchor" aria-label="anchor" href="#between-subjects-2"></a>
+</h4>
+<p><strong>Hypothesis testing</strong></p>
+<table class="table">
+<colgroup>
+<col width="12%">
+<col width="13%">
+<col width="23%">
+<col width="19%">
+<col width="30%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">Type</th>
+<th align="left">Equal variance?</th>
+<th align="left">Test</th>
+<th align="left">
+<em>p</em>-value adjustment?</th>
+<th align="left">Function used</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Parametric</td>
+<td align="left">No</td>
+<td align="left">Games-Howell test</td>
+<td align="left">Yes</td>
+<td align="left"><code><a href="https://rdrr.io/pkg/PMCMRplus/man/gamesHowellTest.html" class="external-link">PMCMRplus::gamesHowellTest()</a></code></td>
+</tr>
+<tr class="even">
+<td align="left">Parametric</td>
+<td align="left">Yes</td>
+<td align="left">Student’s <em>t</em>-test</td>
+<td align="left">Yes</td>
+<td align="left"><code><a href="https://rdrr.io/r/stats/pairwise.t.test.html" class="external-link">stats::pairwise.t.test()</a></code></td>
+</tr>
+<tr class="odd">
+<td align="left">Non-parametric</td>
+<td align="left">No</td>
+<td align="left">Dunn test</td>
+<td align="left">Yes</td>
+<td align="left"><code><a href="https://rdrr.io/pkg/PMCMRplus/man/kwAllPairsDunnTest.html" class="external-link">PMCMRplus::kwAllPairsDunnTest()</a></code></td>
+</tr>
+<tr class="even">
+<td align="left">Robust</td>
+<td align="left">No</td>
+<td align="left">Yuen’s trimmed means test</td>
+<td align="left">Yes</td>
+<td align="left"><code><a href="https://rdrr.io/pkg/WRS2/man/t1way.html" class="external-link">WRS2::lincon()</a></code></td>
+</tr>
+<tr class="odd">
+<td align="left">Bayesian</td>
+<td align="left"><code>NA</code></td>
+<td align="left">Student’s <em>t</em>-test</td>
+<td align="left"><code>NA</code></td>
+<td align="left"><code><a href="https://rdrr.io/pkg/BayesFactor/man/ttestBF.html" class="external-link">BayesFactor::ttestBF()</a></code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Effect size estimation</strong></p>
+<p>Not supported.</p>
+</div>
+<div class="section level4">
+<h4 id="within-subjects-2">within-subjects<a class="anchor" aria-label="anchor" href="#within-subjects-2"></a>
+</h4>
+<p><strong>Data requirement</strong>: Paired pairwise tests assume
+exactly <strong>one observation per subject per condition</strong>. If
+your data has multiple trials per cell, aggregate first (e.g., take the
+mean).</p>
+<p><strong>Hypothesis testing</strong></p>
+<table class="table">
+<colgroup>
+<col width="15%">
+<col width="26%">
+<col width="22%">
+<col width="35%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">Type</th>
+<th align="left">Test</th>
+<th align="left">
+<em>p</em>-value adjustment?</th>
+<th align="left">Function used</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Parametric</td>
+<td align="left">Student’s <em>t</em>-test</td>
+<td align="left">Yes</td>
+<td align="left"><code><a href="https://rdrr.io/r/stats/pairwise.t.test.html" class="external-link">stats::pairwise.t.test()</a></code></td>
+</tr>
+<tr class="even">
+<td align="left">Non-parametric</td>
+<td align="left">Durbin-Conover test</td>
+<td align="left">Yes</td>
+<td align="left"><code><a href="https://rdrr.io/pkg/PMCMRplus/man/durbinAllPairsTest.html" class="external-link">PMCMRplus::durbinAllPairsTest()</a></code></td>
+</tr>
+<tr class="odd">
+<td align="left">Robust</td>
+<td align="left">Yuen’s trimmed means test</td>
+<td align="left">Yes</td>
+<td align="left"><code><a href="https://rdrr.io/pkg/WRS2/man/rmanova.html" class="external-link">WRS2::rmmcp()</a></code></td>
+</tr>
+<tr class="even">
+<td align="left">Bayesian</td>
+<td align="left">Student’s <em>t</em>-test</td>
+<td align="left"><code>NA</code></td>
+<td align="left"><code><a href="https://rdrr.io/pkg/BayesFactor/man/ttestBF.html" class="external-link">BayesFactor::ttestBF()</a></code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Effect size estimation</strong></p>
+<p>Not supported.</p>
+</div>
+</div>
+<div class="section level3">
+<h3 id="pairwise_contingency_table">
+<code>pairwise_contingency_table()</code><a class="anchor" aria-label="anchor" href="#pairwise_contingency_table"></a>
+</h3>
+<p><strong>Hypothesis testing</strong></p>
+<table class="table">
+<thead><tr class="header">
+<th align="left">Test</th>
+<th align="left">
+<em>p</em>-value adjustment?</th>
+<th align="left">Function used</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="left">Fisher’s exact test</td>
+<td align="left">Yes</td>
+<td align="left"><code><a href="https://rdrr.io/r/stats/fisher.test.html" class="external-link">stats::fisher.test()</a></code></td>
+</tr></tbody>
+</table>
+<p><strong>Effect size estimation</strong></p>
+<table class="table">
+<thead><tr class="header">
+<th align="left">Effect size</th>
+<th align="left">CI available?</th>
+<th align="left">Function used</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="left">Cramer’s <em>V</em>
+</td>
+<td align="left">Yes</td>
+<td align="left"><code><a href="https://easystats.github.io/effectsize/reference/phi.html" class="external-link">effectsize::cramers_v()</a></code></td>
+</tr></tbody>
+</table>
 </div>
 <div class="section level3">
 <h3 id="meta_analysis">

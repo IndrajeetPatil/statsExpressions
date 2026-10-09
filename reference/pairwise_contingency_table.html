@@ -22,7 +22,6 @@ multiple comparisons."><meta property="og:image" content="https://www.indrapatil
     "name": "R"
   },
   "license": "https://opensource.org/licenses/MIT",
-  "version": "2.0.0",
   "author": {
     "@type": "Person",
     "name": "Indrajeet Patil",
@@ -104,7 +103,7 @@ multiple comparisons.</p>
 
 <dl><dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
 <dd><p>A data frame (or a tibble) from which variables specified are to
-be taken. Other data types (e.g., matrix,table, array, etc.) will <strong>not</strong>
+be taken. Other data types (e.g., matrix, table, array, etc.) will <strong>not</strong>
 be accepted. Additionally, grouped data frames from <code>{dplyr}</code> should be
 ungrouped before they are entered as <code>data</code>.</p></dd>
 
@@ -141,8 +140,7 @@ significant figures (see also <code><a href="https://rdrr.io/r/base/Round.html" 
 
 <dt id="arg-conf-level">conf.level<a class="anchor" aria-label="anchor" href="#arg-conf-level"></a></dt>
 <dd><p>Scalar between <code>0</code> and <code>1</code> (default: <code>95%</code>
-confidence/credible intervals, <code>0.95</code>). If <code>NULL</code>, no confidence intervals
-will be computed.</p></dd>
+confidence/credible intervals, <code>0.95</code>).</p></dd>
 
 
 <dt id="arg-alternative">alternative<a class="anchor" aria-label="anchor" href="#arg-alternative"></a></dt>
@@ -154,7 +152,7 @@ the <a href="https://easystats.github.io/effectsize/" class="external-link">effe
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>Additional arguments (currently ignored).</p></dd>
+<dd><p>Additional arguments passed to <code><a href="https://rdrr.io/r/stats/fisher.test.html" class="external-link">stats::fisher.test()</a></code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -169,7 +167,8 @@ non-parametric, robust, or Bayesian). Any given call therefore returns <em>some<
 of freedom for the test)</p></li>
 <li><p><code>df.error</code> and <code>df</code>: relevant only if the statistic in question has
 two degrees of freedom (e.g. anova)</p></li>
-<li><p><code>p.value</code>: the two-sided <em>p</em>-value associated with the observed statistic</p></li>
+<li><p><code>p.value</code>: the <em>p</em>-value associated with the observed statistic (two-sided
+unless a one-sided <code>alternative</code> is requested, where supported)</p></li>
 <li><p><code>method</code>: the name of the inferential statistical test</p></li>
 </ul><p><strong>Effect size estimation</strong></p><ul><li><p><code>effectsize</code>: the name of the effect size</p></li>
 <li><p><code>estimate</code>: estimated value of the effect size</p></li>

@@ -32,19 +32,18 @@ add_expression_col(
 - data:
 
   A data frame containing details from the statistical analysis and
-  should contain some or all of the the following columns:
+  should contain some or all of the following columns:
 
   - *statistic*: the numeric value of a statistic.
 
   - *df.error*: the numeric value of a parameter being modeled (often
-    degrees of freedom for the test); irrelevant. if there are no
-    degrees of freedom.
+    degrees of freedom for the test); irrelevant if there are no degrees
+    of freedom.
 
   - *df*: relevant if the statistic in question has two degrees of
     freedom.
 
-  - *p.value*: the two-sided *p*-value associated with observed
-    statistic.
+  - *p.value*: the *p*-value associated with the observed statistic.
 
   - *method*: method describing the test carried out.
 
@@ -59,7 +58,10 @@ add_expression_col(
 
   - *conf.high*: upper bound for effect size estimate.
 
-  - *bf10*: Bayes Factor value (if `bayesian = TRUE`).
+  - *bf10*: Bayes Factor value. If this column is present, the analysis
+    is treated as Bayesian and a Bayesian expression template is used,
+    which additionally needs the *conf.method* and *prior.scale*
+    columns.
 
 - paired:
 
@@ -68,33 +70,41 @@ add_expression_col(
 
 - statistic.text:
 
-  A character that specifies the relevant test statistic. For example,
-  for tests with *t*-statistic, `statistic.text = "t"`.
+  A list containing a `language` object that specifies the relevant test
+  statistic. For example, for tests with *t*-statistic,
+  `statistic.text = list(quote(italic("t")))`. If `NULL` (default), it
+  is inferred from the `method` column.
 
 - effsize.text:
 
-  A character that specifies the relevant effect size.
+  A list containing a `language` object that specifies the relevant
+  effect size or posterior estimate. For example,
+  `effsize.text = list(quote(italic("d")))`. If `NULL` (default), it is
+  inferred from the `effectsize` column.
 
 - prior.type:
 
-  The type of prior.
+  Currently ignored. The prior label is inferred from the `method`
+  column.
 
 - n:
 
-  An integer specifying the sample size used for the test.
+  An integer specifying the sample size used for the test. Ignored if
+  `data` already contains an `n.obs` column.
 
 - n.text:
 
-  A character that specifies the design, which will determine what the
-  `n` stands for. It defaults to `quote(italic("n")["pairs"])` if
-  `paired = TRUE`, and to `quote(italic("n")["obs"])` if
-  `paired = FALSE`. If you wish to customize this further, you will need
-  to provide object of `language` type.
+  A list containing a `language` object that specifies the design, which
+  will determine what the `n` stands for. It defaults to
+  `quote(italic("n")["pairs"])` if `paired = TRUE`, and to
+  `quote(italic("n")["obs"])` if `paired = FALSE`.
 
 - digits, digits.df, digits.df.error:
 
-  Number of decimal places to display for the parameters (default:
-  `0L`).
+  Number of decimal places to display for the parameters (`digits`;
+  default: `2L`), and for the degrees of freedom in the `df`
+  (`digits.df`; default: `0L`) and `df.error` (`digits.df.error`;
+  default: same as `digits.df`) columns.
 
 - ...:
 

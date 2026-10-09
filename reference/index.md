@@ -1,8 +1,8 @@
 # Package index
 
-## One-and two-sample t-tests
+## One- and two-sample t-tests
 
-Dataframes and expressions for one-and two-sample t-tests
+Dataframes and expressions for one- and two-sample t-tests
 
 - [`one_sample_test()`](https://www.indrapatil.com/statsExpressions/reference/one_sample_test.md)
   : One-sample tests
@@ -11,7 +11,7 @@ Dataframes and expressions for one-and two-sample t-tests
 
 ## One-way ANOVA
 
-Dataframes and expressions one-way (both between-and within-subject
+Dataframes and expressions for one-way (both between- and within-subject
 designs) ANOVA
 
 - [`oneway_anova()`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)

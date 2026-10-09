@@ -26,8 +26,9 @@ A data frame with 1,579 rows and 8 variables
 
 - mpaa. MPAA rating.
 
-- genre. Different genres of movies (action, animation, comedy, drama,
-  documentary, romance, short).
+- genre. Genre of the movie (`"Action"`, `"Action Comedy"`,
+  `"Action Drama"`, `"Animated"`, `"Comedy"`, `"Comedy Drama"`,
+  `"Drama"`, `"Romance Drama"`, `"RomCom"`).
 
 ## Source
 

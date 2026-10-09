@@ -28,20 +28,14 @@ pairwise_comparisons(
 - data:
 
   A data frame (or a tibble) from which variables specified are to be
-  taken. Other data types (e.g., matrix,table, array, etc.) will **not**
-  be accepted. Additionally, grouped data frames from `{dplyr}` should
-  be ungrouped before they are entered as `data`.
+  taken. Other data types (e.g., matrix, table, array, etc.) will
+  **not** be accepted. Additionally, grouped data frames from `{dplyr}`
+  should be ungrouped before they are entered as `data`.
 
 - x:
 
-  The grouping (or independent) variable from `data`. In case of a
-  repeated measures or within-subjects design, if `subject.id` argument
-  is not available or not explicitly specified, the function assumes
-  that the data has already been sorted by such an id by the user and
-  creates an internal identifier. So if your data is **not** sorted, the
-  results *can* be inaccurate when there are more than two levels in `x`
-  and there are `NA`s present. The data is expected to be sorted by user
-  in subject-1, subject-2, ..., pattern.
+  The grouping (or independent) variable from `data`. For repeated
+  measures designs, see the note on ordering in `subject.id`.
 
 - y:
 
@@ -50,13 +44,13 @@ pairwise_comparisons(
 - subject.id:
 
   Relevant in case of a repeated measures or within-subjects design
-  (`paired = TRUE`, i.e.), it specifies the subject or repeated measures
-  identifier. **Important**: Note that if this argument is `NULL` (which
-  is the default), the function assumes that the data has already been
-  sorted by such an id by the user and creates an internal identifier.
-  So if your data is **not** sorted and you leave this argument
-  unspecified, the results *can* be inaccurate when there are more than
-  two levels in `x` and there are `NA`s present.
+  (i.e., `paired = TRUE`), it specifies the subject or repeated measures
+  identifier. **Important**: If this argument is `NULL` (which is the
+  default), observations are paired by their row order within each level
+  of `x` (i.e., the data is assumed to be sorted in a subject-1,
+  subject-2, ... pattern within every level). If the data is **not**
+  sorted this way, the paired results will be silently incorrect, so it
+  is safest to always specify `subject.id`.
 
 - type:
 
@@ -70,7 +64,10 @@ pairwise_comparisons(
 
   - `"bayes"`
 
-  You can specify just the initial letter.
+  You can specify just the initial letter (e.g. `"np"` or `"bf"`).
+  Matching is on the initial lowercase letter only, so any other value
+  (including capitalized values such as `"Bayes"`) falls back to
+  `"parametric"` without a warning.
 
 - paired:
 
@@ -121,7 +118,15 @@ pairwise_comparisons(
 
 - ...:
 
-  Additional arguments passed to other methods.
+  Additional arguments passed to the underlying pairwise test function
+  for the parametric and non-parametric tests (see the table below).
+  Ignored for robust tests. For Bayesian tests, they are passed to the
+  frequentist test
+  ([`stats::pairwise.t.test()`](https://rdrr.io/r/stats/pairwise.t.test.html)
+  or
+  [`PMCMRplus::gamesHowellTest()`](https://rdrr.io/pkg/PMCMRplus/man/gamesHowellTest.html))
+  that is run first to enumerate the pairs, so they do not change the
+  Bayes factors, but unsupported arguments can still cause an error.
 
 ## Value
 
@@ -141,8 +146,9 @@ therefore returns *some* (not all) of the columns below.
 - `df.error` and `df`: relevant only if the statistic in question has
   two degrees of freedom (e.g. anova)
 
-- `p.value`: the two-sided *p*-value associated with the observed
-  statistic
+- `p.value`: the *p*-value associated with the observed statistic
+  (two-sided unless a one-sided `alternative` is requested, where
+  supported)
 
 - `method`: the name of the inferential statistical test
 

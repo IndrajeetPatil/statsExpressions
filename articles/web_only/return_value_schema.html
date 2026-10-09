@@ -37,7 +37,6 @@
     "name": "R"
   },
   "license": "https://opensource.org/licenses/MIT",
-  "version": "2.0.0",
   "author": {
     "@type": "Person",
     "name": "Indrajeet Patil",
@@ -160,7 +159,7 @@ Bayes-factor columns (<code>bf10</code>, and usually
 deliverable.</strong> Regardless of the test, almost every function
 returns a pre-formatted <code>expression</code> column intended for
 annotating plots. This is what powers the statistical details you see in
-<a href="https://indrajeetpatil.github.io/ggstatsplot/" class="external-link"><code>{ggstatsplot}</code></a>
+<a href="https://www.indrapatil.com/ggstatsplot/" class="external-link"><code>{ggstatsplot}</code></a>
 plots.</p></li>
 </ol>
 <p>The rest of this article documents the <code>expression</code>
@@ -209,8 +208,10 @@ internal engine: <code><a href="../../reference/add_expression_col.html">add_exp
 for the hypothesis-testing functions (<code><a href="../../reference/one_sample_test.html">one_sample_test()</a></code>,
 <code><a href="../../reference/two_sample_test.html">two_sample_test()</a></code>, <code><a href="../../reference/oneway_anova.html">oneway_anova()</a></code>,
 <code><a href="../../reference/corr_test.html">corr_test()</a></code>, <code><a href="../../reference/contingency_table.html">contingency_table()</a></code>,
-<code><a href="../../reference/meta_analysis.html">meta_analysis()</a></code>). Understanding it helps clarify why the
-output looks the way it does.</p>
+<code><a href="../../reference/meta_analysis.html">meta_analysis()</a></code>). The one exception is the Bayesian one-way
+(goodness-of-fit) <code><a href="../../reference/contingency_table.html">contingency_table()</a></code> analysis, which
+builds its own minimal expression. Understanding it helps clarify why
+the output looks the way it does.</p>
 <p>The engine works as follows:</p>
 <ul>
 <li><p>It consumes a tidy data frame of statistical details – ideally

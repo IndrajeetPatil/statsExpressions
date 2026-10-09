@@ -1,7 +1,9 @@
 # Random-effects meta-analysis
 
-Parametric, non-parametric, robust, and Bayesian random-effects
-meta-analysis.
+Parametric, robust, and Bayesian random-effects meta-analysis.
+
+A non-parametric meta-analysis is not available, so
+`type = "nonparametric"` is not supported.
 
 ## Usage
 
@@ -48,13 +50,18 @@ meta_analysis(
 
   - `"bayes"`
 
-  You can specify just the initial letter.
+  You can specify just the initial letter (e.g. `"np"` or `"bf"`).
+  Matching is on the initial lowercase letter only, so any other value
+  (including capitalized values such as `"Bayes"`) falls back to
+  `"parametric"` without a warning.
 
 - random:
 
-  The type of random effects distribution. One of "normal", "t-dist",
-  "mixture", for standard normal, \\t\\-distribution or mixture of
-  normals respectively.
+  The type of random-effects distribution for the robust meta-analysis:
+  `"mixture"` (default; mixture of normals), `"normal"`, or `"t-dist"`
+  (*t*-distribution). Passed to
+  [`metaplus::metaplus()`](https://rdrr.io/pkg/metaplus/man/metaplus.html)
+  and only used when `type = "robust"`.
 
 - digits:
 
@@ -68,8 +75,7 @@ meta_analysis(
 - conf.level:
 
   Scalar between `0` and `1` (default: `95%` confidence/credible
-  intervals, `0.95`). If `NULL`, no confidence intervals will be
-  computed.
+  intervals, `0.95`).
 
 - ...:
 
@@ -93,8 +99,9 @@ therefore returns *some* (not all) of the columns below.
 - `df.error` and `df`: relevant only if the statistic in question has
   two degrees of freedom (e.g. anova)
 
-- `p.value`: the two-sided *p*-value associated with the observed
-  statistic
+- `p.value`: the *p*-value associated with the observed statistic
+  (two-sided unless a one-sided `alternative` is requested, where
+  supported)
 
 - `method`: the name of the inferential statistical test
 
@@ -182,13 +189,12 @@ The table below provides summary about:
 
 **Hypothesis testing** and **Effect size estimation**
 
-|  |  |  |  |
-|----|----|----|----|
-| Type | Test | CI available? | Function used |
-| Parametric | Pearson's correlation coefficient | Yes | [`correlation::correlation()`](https://easystats.github.io/correlation/reference/correlation.html) |
-| Non-parametric | Spearman's rank correlation coefficient | Yes | [`correlation::correlation()`](https://easystats.github.io/correlation/reference/correlation.html) |
-| Robust | Winsorized Pearson's correlation coefficient | Yes | [`correlation::correlation()`](https://easystats.github.io/correlation/reference/correlation.html) |
-| Bayesian | Bayesian Pearson's correlation coefficient | Yes | [`correlation::correlation()`](https://easystats.github.io/correlation/reference/correlation.html) |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Type | Test | Effect size | CI available? | Function used |
+| Parametric | Meta-analysis via random-effects models | *beta* | Yes | [`metafor::rma()`](https://wviechtb.github.io/metafor/reference/rma.uni.html) |
+| Robust | Meta-analysis via robust random-effects models | *beta* | Yes | [`metaplus::metaplus()`](https://rdrr.io/pkg/metaplus/man/metaplus.html) |
+| Bayesian | Meta-analysis via Bayesian random-effects models | *beta* | Yes | [`metaBMA::meta_random()`](https://danheck.github.io/metaBMA/reference/meta_random.html) |
 
 ## Citation
 
@@ -222,7 +228,7 @@ meta_analysis(dat)
 
 # ----------------------- robust --------------------------------------------
 
-meta_analysis(dat, type = "random", random = "normal")
+meta_analysis(dat, type = "robust", random = "normal")
 #> # A tibble: 1 × 14
 #>   term    effectsize                     estimate std.error conf.low conf.high
 #>   <chr>   <chr>                             <dbl>     <dbl>    <dbl>     <dbl>

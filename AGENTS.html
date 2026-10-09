@@ -18,7 +18,6 @@
     "name": "R"
   },
   "license": "https://opensource.org/licenses/MIT",
-  "version": "2.0.0",
   "author": {
     "@type": "Person",
     "name": "Indrajeet Patil",
@@ -112,7 +111,7 @@
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">make</span> install      <span class="co"># Build and install the package locally</span></span>
 <span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="fu">make</span> document     <span class="co"># Regenerate roxygen docs and render README.Rmd</span></span>
 <span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="fu">make</span> lint         <span class="co"># Run lintr::lint_package()</span></span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="fu">make</span> format       <span class="co"># Run styler::style_pkg()</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="fu">make</span> format       <span class="co"># Run air format .</span></span>
 <span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="fu">make</span> hooks        <span class="co"># Run all prek hooks</span></span>
 <span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="fu">make</span> clean        <span class="co"># Remove package build and check artifacts</span></span>
 <span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="fu">make</span> update_deps  <span class="co"># Refresh dependency constraints, docs, and codemeta</span></span></code></pre></div>
@@ -149,7 +148,7 @@
 </div>
 <div class="section level2">
 <h2 id="code-conventions">Code conventions<a class="anchor" aria-label="anchor" href="#code-conventions"></a></h2>
-<ul><li>Use <code>lintr</code> for linting and <code>styler</code> for formatting.</li>
+<ul><li>Use <code>lintr</code> for linting and <a href="https://posit-dev.github.io/air/" class="external-link">Air</a> for formatting; CI runs <code>air format . --check</code>.</li>
 <li>Use snake_case for functions and variables.</li>
 <li>Use the base R pipe (<code>|&gt;</code>), not the magrittr pipe (<code>%&gt;%</code>).</li>
 <li>Preserve tidy evaluation for unquoted column arguments.</li>
@@ -157,7 +156,9 @@
 <h3 id="roxygen-documentation">Roxygen documentation<a class="anchor" aria-label="anchor" href="#roxygen-documentation"></a></h3>
 <ul><li>Roxygen uses Markdown and the <code>pkgapi</code> and <code>roxyglobals</code> roclets configured in <code>DESCRIPTION</code>.</li>
 <li>Use <code>@autoglobal</code> from <code>roxyglobals</code> where appropriate.</li>
-<li>Shared extended examples live in <code>man/rmd-fragments/</code>.</li>
+<li>Shared documentation tables and prose live in <code>man/rmd-fragments/</code>; shared example code lives in <code>man/examples/</code>.</li>
+<li>
+<code>@examplesIf</code> cannot wrap an <code>@example</code> file. To keep a <code>NOT_CRAN</code> guard around a shared example file, use the explicit <code>\dontshow{if (...) withAutoprint(\{ # examplesIf}</code> and <code>\dontshow{\}) # examplesIf}</code> <code>@examples</code> lines around <code>@example</code>, as in <code>R/two-sample-test.R</code>.</li>
 <li>After changing roxygen comments, run <code>make document</code> and commit the generated <code>NAMESPACE</code> or <code>man/*.Rd</code> changes. Do not edit generated <code>.Rd</code> files by hand.</li>
 </ul></div>
 <div class="section level3">
@@ -199,7 +200,11 @@
 <li>The corresponding files under <code>tests/testthat/</code>.</li>
 <li>Generated <code>man/&lt;function&gt;.Rd</code> after roxygen regeneration.</li>
 <li>
-<code>man/rmd-fragments/&lt;function&gt;.Rmd</code> when that fragment exists.</li>
+<code>man/rmd-fragments/&lt;function&gt;.Rmd</code> when that fragment exists. Fragments are shared by the Rd files, <code>README.Rmd</code>, and the vignettes, so edit the fragment rather than its rendered copies.</li>
+<li>
+<code>man/examples/examples-&lt;function&gt;.R</code> when that example file exists. These files are shared by the Rd files and the <em>Data frame outputs</em> article.</li>
+<li>
+<code>README.Rmd</code> (then re-render <code>README.md</code>) and the vignettes under <code>vignettes/</code> when user-facing behavior or output changes.</li>
 <li>
 <code>NEWS.md</code> for user-facing changes.</li>
 </ol></div>

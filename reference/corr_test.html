@@ -18,7 +18,6 @@
     "name": "R"
   },
   "license": "https://opensource.org/licenses/MIT",
-  "version": "2.0.0",
   "author": {
     "@type": "Person",
     "name": "Indrajeet Patil",
@@ -98,7 +97,7 @@
 
 <dl><dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
 <dd><p>A data frame (or a tibble) from which variables specified are to
-be taken. Other data types (e.g., matrix,table, array, etc.) will <strong>not</strong>
+be taken. Other data types (e.g., matrix, table, array, etc.) will <strong>not</strong>
 be accepted. Additionally, grouped data frames from <code>{dplyr}</code> should be
 ungrouped before they are entered as <code>data</code>.</p></dd>
 
@@ -118,7 +117,10 @@ be plotted on the <code>y</code>-axis.</p></dd>
 <li><p><code>"nonparametric"</code></p></li>
 <li><p><code>"robust"</code></p></li>
 <li><p><code>"bayes"</code></p></li>
-</ul><p>You can specify just the initial letter.</p></dd>
+</ul><p>You can specify just the initial letter (e.g. <code>"np"</code> or <code>"bf"</code>). Matching is
+on the initial lowercase letter only, so any other value (including
+capitalized values such as <code>"Bayes"</code>) falls back to <code>"parametric"</code> without a
+warning.</p></dd>
 
 
 <dt id="arg-digits">digits<a class="anchor" aria-label="anchor" href="#arg-digits"></a></dt>
@@ -132,8 +134,7 @@ significant figures (see also <code><a href="https://rdrr.io/r/base/Round.html" 
 
 <dt id="arg-conf-level">conf.level<a class="anchor" aria-label="anchor" href="#arg-conf-level"></a></dt>
 <dd><p>Scalar between <code>0</code> and <code>1</code> (default: <code>95%</code>
-confidence/credible intervals, <code>0.95</code>). If <code>NULL</code>, no confidence intervals
-will be computed.</p></dd>
+confidence/credible intervals, <code>0.95</code>).</p></dd>
 
 
 <dt id="arg-tr">tr<a class="anchor" aria-label="anchor" href="#arg-tr"></a></dt>
@@ -167,7 +168,8 @@ non-parametric, robust, or Bayesian). Any given call therefore returns <em>some<
 of freedom for the test)</p></li>
 <li><p><code>df.error</code> and <code>df</code>: relevant only if the statistic in question has
 two degrees of freedom (e.g. anova)</p></li>
-<li><p><code>p.value</code>: the two-sided <em>p</em>-value associated with the observed statistic</p></li>
+<li><p><code>p.value</code>: the <em>p</em>-value associated with the observed statistic (two-sided
+unless a one-sided <code>alternative</code> is requested, where supported)</p></li>
 <li><p><code>method</code>: the name of the inferential statistical test</p></li>
 </ul><p><strong>Effect size estimation</strong></p><ul><li><p><code>effectsize</code>: the name of the effect size</p></li>
 <li><p><code>estimate</code>: estimated value of the effect size</p></li>

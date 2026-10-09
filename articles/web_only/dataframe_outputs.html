@@ -37,7 +37,6 @@
     "name": "R"
   },
   "license": "https://opensource.org/licenses/MIT",
-  "version": "2.0.0",
   "author": {
     "@type": "Person",
     "name": "Indrajeet Patil",
@@ -209,9 +208,6 @@ A BibTeX entry for LaTeX users is
 <div class="section level2">
 <h2 id="two-sample-test-output">Two-sample test output<a class="anchor" aria-label="anchor" href="#two-sample-test-output"></a>
 </h2>
-<div class="section level3">
-<h3 id="within-subjects-design">within-subjects design<a class="anchor" aria-label="anchor" href="#within-subjects-design"></a>
-</h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ----------------------- within-subjects -------------------------------------</span></span>
 <span></span>
@@ -306,13 +302,9 @@ A BibTeX entry for LaTeX users is
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> cauchy                          <span style="color: #949494;">0</span>       <span style="color: #949494;">0.</span>707 4<span style="text-decoration: underline;">76</span><span style="color: #949494; text-decoration: underline;">2</span><span style="color: #949494;">370</span>. Bayesian t-test</span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">conf.method</span> <span style="font-weight: bold;">log_e_bf10</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> ETI               15.4    91 <span style="color: #949494;">&lt;language&gt;</span></span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="between-subjects-design">between-subjects design<a class="anchor" aria-label="anchor" href="#between-subjects-design"></a>
-</h3>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># ----------------------- between-subjects -------------------------------------</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> ETI               15.4    91 <span style="color: #949494;">&lt;language&gt;</span></span></span>
+<span></span>
+<span><span class="co"># ----------------------- between-subjects -------------------------------------</span></span>
 <span></span>
 <span><span class="co"># for reproducibility</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
@@ -403,14 +395,13 @@ A BibTeX entry for LaTeX users is
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> ETI              <span style="color: #949494;">0.</span>181    60 <span style="color: #949494;">&lt;language&gt;</span></span></span></code></pre></div>
 </div>
-</div>
 <div class="section level2">
 <h2 id="one-way-anovas">One-way ANOVAs<a class="anchor" aria-label="anchor" href="#one-way-anovas"></a>
 </h2>
 <div class="section level3">
-<h3 id="within-subjects-design-1">within-subjects design<a class="anchor" aria-label="anchor" href="#within-subjects-design-1"></a>
+<h3 id="within-subjects-design">within-subjects design<a class="anchor" aria-label="anchor" href="#within-subjects-design"></a>
 </h3>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://afex.singmann.science/" class="external-link">afex</a></span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># ----------------------- parametric ---------------------------------------</span></span>
@@ -506,14 +497,14 @@ A BibTeX entry for LaTeX users is
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> g_.rowid       1     cauchy                          <span style="color: #949494;">0</span>       1     fixed </span></span>
 <span><span class="co">#&gt;          <span style="font-weight: bold;">bf10</span> <span style="font-weight: bold;">method</span>                          <span style="font-weight: bold;">log_e_bf10</span> <span style="font-weight: bold;">effectsize</span>        </span></span>
 <span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> <span style="text-decoration: underline;">1</span>37<span style="color: #949494;">2</span><span style="color: #949494; text-decoration: underline;">773</span><span style="color: #949494;">375</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> <span style="text-decoration: underline;">1</span>37<span style="color: #949494;">2</span><span style="color: #949494; text-decoration: underline;">773</span><span style="color: #949494;">375</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> <span style="text-decoration: underline;">1</span>37<span style="color: #949494;">2</span><span style="color: #949494; text-decoration: underline;">773</span><span style="color: #949494;">375</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> <span style="text-decoration: underline;">1</span>37<span style="color: #949494;">2</span><span style="color: #949494; text-decoration: underline;">773</span><span style="color: #949494;">375</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> <span style="text-decoration: underline;">1</span>37<span style="color: #949494;">2</span><span style="color: #949494; text-decoration: underline;">773</span><span style="color: #949494;">375</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> <span style="text-decoration: underline;">1</span>37<span style="color: #949494;">2</span><span style="color: #949494; text-decoration: underline;">773</span><span style="color: #949494;">375</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> <span style="text-decoration: underline;">1</span>37<span style="color: #949494;">2</span><span style="color: #949494; text-decoration: underline;">773</span><span style="color: #949494;">375</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> <span style="text-decoration: underline;">1</span>37<span style="color: #949494;">2</span><span style="color: #949494; text-decoration: underline;">773</span><span style="color: #949494;">375</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> <span style="text-decoration: underline;">1</span>37<span style="color: #949494;">2</span><span style="color: #949494; text-decoration: underline;">773</span><span style="color: #949494;">377</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> <span style="text-decoration: underline;">1</span>37<span style="color: #949494;">2</span><span style="color: #949494; text-decoration: underline;">773</span><span style="color: #949494;">377</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> <span style="text-decoration: underline;">1</span>37<span style="color: #949494;">2</span><span style="color: #949494; text-decoration: underline;">773</span><span style="color: #949494;">377</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> <span style="text-decoration: underline;">1</span>37<span style="color: #949494;">2</span><span style="color: #949494; text-decoration: underline;">773</span><span style="color: #949494;">377</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> <span style="text-decoration: underline;">1</span>37<span style="color: #949494;">2</span><span style="color: #949494; text-decoration: underline;">773</span><span style="color: #949494;">377</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> <span style="text-decoration: underline;">1</span>37<span style="color: #949494;">2</span><span style="color: #949494; text-decoration: underline;">773</span><span style="color: #949494;">377</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> <span style="text-decoration: underline;">1</span>37<span style="color: #949494;">2</span><span style="color: #949494; text-decoration: underline;">773</span><span style="color: #949494;">377</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> <span style="text-decoration: underline;">1</span>37<span style="color: #949494;">2</span><span style="color: #949494; text-decoration: underline;">773</span><span style="color: #949494;">377</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">std.dev</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span> <span style="font-weight: bold;">conf.method</span> <span style="font-weight: bold;">component</span>   <span style="font-weight: bold;">n.obs</span></span></span>
 <span><span class="co">#&gt;      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>    <span style="color: #949494;">0.</span>529  <span style="color: #949494;">0.0</span>33<span style="text-decoration: underline;">3</span>       <span style="color: #949494;">0.</span>95    <span style="color: #949494;">0.</span>461     <span style="color: #949494;">0.</span>587 HDI         conditional    88</span></span>
@@ -536,9 +527,9 @@ A BibTeX entry for LaTeX users is
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> <span style="color: #949494;">&lt;language&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="between-subjects-design-1">between-subjects design<a class="anchor" aria-label="anchor" href="#between-subjects-design-1"></a>
+<h3 id="between-subjects-design">between-subjects design<a class="anchor" aria-label="anchor" href="#between-subjects-design"></a>
 </h3>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ----------------------- parametric ---------------------------------------</span></span>
 <span></span>
 <span><span class="co"># unequal variance</span></span>
@@ -662,7 +653,7 @@ A BibTeX entry for LaTeX users is
 <div class="section level2">
 <h2 id="contingency-table-analysis-output">Contingency table analysis output<a class="anchor" aria-label="anchor" href="#contingency-table-analysis-output"></a>
 </h2>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#### -------------------- association test ------------------------ ####</span></span>
 <span></span>
 <span><span class="co"># ------------------------ frequentist ---------------------------------</span></span>
@@ -800,7 +791,7 @@ A BibTeX entry for LaTeX users is
 <div class="section level2">
 <h2 id="correlation-analysis-output">Correlation analysis output<a class="anchor" aria-label="anchor" href="#correlation-analysis-output"></a>
 </h2>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># for reproducibility</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span></span>
@@ -863,7 +854,7 @@ A BibTeX entry for LaTeX users is
 <div class="section level2">
 <h2 id="random-effects-meta-analysis-output">Random-effects meta-analysis output<a class="anchor" aria-label="anchor" href="#random-effects-meta-analysis-output"></a>
 </h2>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">metaplus</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># renaming columns to `{statsExpressions}` conventions</span></span>
@@ -891,10 +882,10 @@ A BibTeX entry for LaTeX users is
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 14</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">term</span>    <span style="font-weight: bold;">effectsize</span>                     <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">std.error</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Overall meta-analytic summary estimate   -<span style="color: #949494;">0.</span><span style="color: #BB0000;">746</span>     <span style="color: #949494;">0.</span>233    -<span style="color: #BB0000;">1.26</span>    -<span style="color: #949494;">0.</span><span style="color: #BB0000;">344</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Overall meta-analytic summary estimate   -<span style="color: #949494;">0.</span><span style="color: #BB0000;">746</span>     <span style="color: #949494;">0.</span>234    -<span style="color: #BB0000;">1.26</span>    -<span style="color: #949494;">0.</span><span style="color: #BB0000;">343</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">statistic</span>  <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">weight</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">method</span>                               </span></span>
 <span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     -<span style="color: #BB0000;">3.20</span> <span style="color: #949494;">0.000</span><span style="text-decoration: underline;">501</span>     <span style="color: #BB0000;">NA</span>       <span style="color: #949494;">0.</span>95 Robust meta-analysis using 'metaplus'</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     -<span style="color: #BB0000;">3.20</span> <span style="color: #949494;">0.000</span><span style="text-decoration: underline;">777</span>     <span style="color: #BB0000;">NA</span>       <span style="color: #949494;">0.</span>95 Robust meta-analysis using 'metaplus'</span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">conf.method</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Wald           16 <span style="color: #949494;">&lt;language&gt;</span></span></span>
@@ -925,7 +916,7 @@ A BibTeX entry for LaTeX users is
 <div class="section level2">
 <h2 id="centrality-description">Centrality description<a class="anchor" aria-label="anchor" href="#centrality-description"></a>
 </h2>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># for reproducibility</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span></span>
@@ -987,9 +978,9 @@ A BibTeX entry for LaTeX users is
 <h2 id="pairwise-comparisons-for-one-way-design">Pairwise comparisons for one-way design<a class="anchor" aria-label="anchor" href="#pairwise-comparisons-for-one-way-design"></a>
 </h2>
 <div class="section level3">
-<h3 id="between-subjects-design-2">Between-subjects design<a class="anchor" aria-label="anchor" href="#between-subjects-design-2"></a>
+<h3 id="between-subjects-design-1">Between-subjects design<a class="anchor" aria-label="anchor" href="#between-subjects-design-1"></a>
 </h3>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ----------------------- parametric -----------------------</span></span>
 <span></span>
 <span><span class="co"># if `var.equal = TRUE`, then Student's *t*-test will be run</span></span>
@@ -1132,9 +1123,9 @@ A BibTeX entry for LaTeX users is
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> ETI             -<span style="color: #949494;">0.</span><span style="color: #BB0000;">606</span>    22 <span style="color: #949494;">&lt;language&gt;</span> Student's t</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="within-subjects-design-2">Within-subjects design<a class="anchor" aria-label="anchor" href="#within-subjects-design-2"></a>
+<h3 id="within-subjects-design-1">Within-subjects design<a class="anchor" aria-label="anchor" href="#within-subjects-design-1"></a>
 </h3>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ----------------------- parametric -----------------------</span></span>
 <span></span>
 <span><span class="fu"><a href="../../reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span></span>

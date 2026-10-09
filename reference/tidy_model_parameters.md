@@ -1,6 +1,13 @@
 # Convert `{parameters}` package output to `{tidyverse}` conventions
 
-Convert `{parameters}` package output to `{tidyverse}` conventions
+Runs
+[`parameters::model_parameters()`](https://easystats.github.io/parameters/reference/model_parameters.html)
+on a model object and standardizes the result to `{broom}`-style column
+names (e.g. `estimate`, `std.error`, `conf.low`, `conf.high`,
+`statistic`, `df.error`, `p.value`). Bayes factors are returned in a
+`bf10` column, along with their natural logarithm in `log_e_bf10`. For
+Bayesian ANOVA designs (`{BayesFactor}` linear models), the estimate is
+replaced by the Bayesian *R*-squared.
 
 ## Usage
 
@@ -38,6 +45,10 @@ tidy_model_parameters(model, ...)
   - For developers, whose interest mainly is to get a "tidy" data frame
     of model summaries, it is recommended to set `pretty_names = FALSE`
     to speed up computation of the summary table.
+
+## Value
+
+A tibble with one row per parameter.
 
 ## Citation
 

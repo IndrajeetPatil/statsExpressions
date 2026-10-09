@@ -71,7 +71,7 @@ none of these packages return statistical expressions.
 
 ## Consistent Syntax for Statistical Analysis
 
-The package offers functions that allow users choose a statistical
+The package offers functions that allow users to choose a statistical
 approach without changing the syntax (i.e., by only specifying a single
 argument). The functions always require a data frame in tidy format
 ([Wickham et al., 2019](#ref-Wickham2019)), and work with missing data.
@@ -243,7 +243,9 @@ function creates publication-ready plotmath expressions from any data
 frame containing statistical details. This is useful when you run your
 own tests outside
 [statsExpressions](https://www.indrapatil.com/statsExpressions/) and
-want to generate a formatted expression for plot annotations:
+want to generate a formatted expression for plot annotations. Note that
+this helper is not yet stable, so its interface may change in future
+releases:
 
 \
 `# suppose you have run your own statistical test`\
@@ -329,8 +331,8 @@ plot.
 [`ggplot`](https://ggplot2.tidyverse.org/reference/ggplot.html)`(``iris``, `[`aes`](https://ggplot2.tidyverse.org/reference/aes.html)`(``x ``=`` ``Sepal.Length``, y ``=`` ``Species``)``)`` ``+`\
 `  `[`geom_boxplot`](https://ggplot2.tidyverse.org/reference/geom_boxplot.html)`(``)`` ``+`` ``# use 'expression' column to display results in the subtitle`\
 `  `[`labs`](https://ggplot2.tidyverse.org/reference/labs.html)`(`\
-`    x ``=`` ``"Penguin Species"``,`\
-`    y ``=`` ``"Body mass (in grams)"``,`\
+`    x ``=`` ``"Sepal length (in cm)"``,`\
+`    y ``=`` ``"Species"``,`\
 `    title ``=`` ``"Kruskal-Wallis Rank Sum Test"``,`\
 `    subtitle ``=`` ``res_anova``$``expression``[[``1``]``]`\
 `  ``)`
@@ -347,8 +349,7 @@ plot.
 ## Licensing and Availability
 
 [statsExpressions](https://www.indrapatil.com/statsExpressions/) is
-licensed under the GNU General Public License (v3.0), with all source
-code stored at
+licensed under the MIT License, with all source code stored at
 [GitHub](https://github.com/IndrajeetPatil/statsExpressions/). In the
 spirit of honest and open science, requests and suggestions for fixes,
 feature updates, as well as general questions and concerns are
