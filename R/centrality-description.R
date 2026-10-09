@@ -46,7 +46,6 @@ centrality_description <- function(
   digits = 2L,
   ...
 ) {
-  # styler: off
   centrality <- recode_values(
     extract_stats_type(type),
     "parametric" ~ "mean",
@@ -54,7 +53,6 @@ centrality_description <- function(
     "robust" ~ "trimmed",
     "bayes" ~ "MAP"
   )
-  # styler: on
 
   x <- ensym(x)
   y <- ensym(y)
