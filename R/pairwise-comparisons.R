@@ -124,7 +124,7 @@
 #'   p.adjust.method = "BY"
 #' )
 #'
-#' # robust (Yuen's trimmed means t-test)
+#' # robust (Yuen's trimmed means *t*-test)
 #' pairwise_comparisons(
 #'   data            = bugs_long,
 #'   x               = condition,

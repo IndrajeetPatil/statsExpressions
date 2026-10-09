@@ -83,7 +83,6 @@ long_to_wide_converter <- function(
 
   data <- filter_out(data, anyNA(pick({{ x }}, {{ y }})), .by = .rowid)
 
-  # convert to wide?
   if (spread) {
     data <- tidyr::pivot_wider(
       data,

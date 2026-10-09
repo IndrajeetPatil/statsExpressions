@@ -52,7 +52,7 @@ test_that(desc = "long_to_wide_converter works - spread true", code = {
 
 
 test_that(desc = "long_to_wide_converter works - spread false", code = {
-  # ----------------------- data without NAs ------------------------------
+  # data without NAs ------------------------------
 
   # within-subjects
   df1 <- long_to_wide_converter(
@@ -71,7 +71,7 @@ test_that(desc = "long_to_wide_converter works - spread false", code = {
     spread = FALSE
   )
 
-  # -------------------------- data with NAs ------------------------------
+  # data with NAs ------------------------------
 
   # within-subjects
   df3 <- long_to_wide_converter(
