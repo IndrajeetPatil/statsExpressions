@@ -31,9 +31,11 @@
 #' @returns A tibble with `NA`s removed while respecting the
 #'   between-or-within-subjects nature of the dataset: for paired designs, a
 #'   subject with a missing value in any condition is removed entirely, while
-#'   for unpaired designs only the rows with missing values are removed. The
-#'   `.rowid` column contains the subject identifier (or an internal row
-#'   identifier).
+#'   for unpaired designs only the rows with missing values are removed. Rows
+#'   are grouped by `subject.id` whenever it is supplied, so with
+#'   `paired = FALSE` and a `subject.id`, a missing value still removes every
+#'   row of that subject. The `.rowid` column contains the subject identifier
+#'   (or an internal row identifier).
 #'
 #' @autoglobal
 #'

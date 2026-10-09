@@ -55,7 +55,8 @@ A few additional requirements are worth noting:
 - **Missing data**: Missing values are removed internally. For within-subjects
   designs, any subject who has `NA` in *any* condition is removed entirely,
   ensuring a balanced design is maintained. For between-subjects designs, only
-  the rows with `NA` are removed.
+  the rows with `NA` are removed, unless `subject.id` is also supplied, in
+  which case all rows of a subject with an `NA` are removed.
 
 ## Summary of functionality
 

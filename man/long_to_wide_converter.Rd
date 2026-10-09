@@ -47,9 +47,11 @@ converted from long/tidy to wide (default: \code{TRUE}).}
 A tibble with \code{NA}s removed while respecting the
 between-or-within-subjects nature of the dataset: for paired designs, a
 subject with a missing value in any condition is removed entirely, while
-for unpaired designs only the rows with missing values are removed. The
-\code{.rowid} column contains the subject identifier (or an internal row
-identifier).
+for unpaired designs only the rows with missing values are removed. Rows
+are grouped by \code{subject.id} whenever it is supplied, so with
+\code{paired = FALSE} and a \code{subject.id}, a missing value still removes every
+row of that subject. The \code{.rowid} column contains the subject identifier
+(or an internal row identifier).
 }
 \description{
 This conversion is helpful mostly for repeated measures design, where
