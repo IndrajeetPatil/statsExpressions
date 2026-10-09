@@ -169,6 +169,9 @@ mtcars |> oneway_anova(cyl, wt, type = "robust")
 All possible output dataframes from functions are tabulated here:
 <https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html>
 
+The columns and attributes of these dataframes are documented here:
+<https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html>
+
 Needless to say this will also work with the `kable` function to
 generate a table:
 
@@ -309,7 +312,7 @@ results_data <- oneway_anova(
   type = "np"
 )
 
-ggplot2::ggplot(WineTasting, aes(Wine, Taste, color = Wine)) +
+ggplot(WineTasting, aes(Wine, Taste, color = Wine)) +
   geom_quasirandom() +
   labs(
     title = "Friedman's rank sum test",

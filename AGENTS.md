@@ -40,11 +40,8 @@ backend for `ggstatsplot`.
 Core dependencies include the tidyverse stack (`dplyr`, `purrr`, `tidyr`, and
 `rlang`) and the easystats ecosystem (`insight`, `parameters`, `performance`,
 `effectsize`, `bayestestR`, `datawizard`, and `correlation`). Treat
-`DESCRIPTION` as the source of truth for dependency constraints.
-
-The minimum supported R version is 4.5. CI covers R-devel, the current R
-release, and the previous R release; keep README support wording independent of
-specific version numbers.
+`DESCRIPTION` as the source of truth for dependency constraints and the minimum
+supported R version.
 
 ## Developer workflow
 
@@ -60,12 +57,8 @@ make lint         # Run lintr::lint_package()
 make format       # Run air format .
 make hooks        # Run all prek hooks
 make clean        # Remove package build and check artifacts
-make update_deps  # Refresh dependency constraints, docs, and codemeta
+make update_deps  # Refresh dependency constraints (maintenance only)
 ```
-
-`make update_deps` is a maintenance operation that can rewrite dependency
-constraints and generated metadata. Do not use it merely to install the current
-dependency set.
 
 ### Versioning and changelog
 
@@ -74,11 +67,6 @@ dependency set.
   heading synchronized.
 - Record user-facing compatibility changes in `NEWS.md`; omit routine
   dependency updates and internal lint or CI maintenance.
-
-### Repository skills
-
-- Use `.agents/skills/create-release/SKILL.md` only when asked to prepare,
-  submit, resume, or publish a CRAN release.
 
 ## Testing
 
@@ -174,16 +162,21 @@ When modifying a function, consider all relevant surfaces:
    `vignettes/` when user-facing behavior or output changes.
 7. `NEWS.md` for user-facing changes.
 
-## CI/CD
+## Repository skills
 
-Workflows under `.github/workflows/` run standard and hard R CMD checks,
-coverage, documentation and extra checks, formatting, linting, prek hooks,
-pkgdown builds, and deployment tasks. Most jobs call reusable workflows from
-`IndrajeetPatil/workflows`; update the callers rather than copying those
-workflows into this repository.
+Task-specific instructions live in `.agents/skills/`. Read a skill only when
+the task matches it:
 
-The shared R CMD check matrix intentionally covers R-devel, release, and
-oldrel. Do not reintroduce `oldrel-2` unless the package support policy changes.
+- `create-release`: prepare, submit, resume, or publish a CRAN release.
+- `update-dependencies`: update dependencies to their latest versions, change
+  the minimum R version, or add, remove, or move a dependency.
+- `maintain-ci`: change or debug workflows under `.github/workflows/`.
+
+User-invoked prompts for other tasks live in `.github/prompts/`. Keep each topic
+in exactly one place: `AGENTS.md` for every-session rules, a skill or a prompt
+for task-specific procedures.
+
+## Pull requests
 
 Open pull requests as ready for review rather than as drafts. Unless explicitly
 requested, do not wait for CI/CD checks to finish after pushing; report that the
