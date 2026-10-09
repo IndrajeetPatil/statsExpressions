@@ -368,6 +368,7 @@
 <span><span class="co">#&gt;   &lt;int&gt; &lt;list&gt;    </span></span>
 <span><span class="co">#&gt; 1    32 &lt;language&gt;</span></span></code></pre></div>
 <p>All possible output dataframes from functions are tabulated here: <a href="https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html" class="uri">https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html</a></p>
+<p>The columns and attributes of these dataframes are documented here: <a href="https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html" class="uri">https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html</a></p>
 <p>Needless to say this will also work with the <code>kable</code> function to generate a table:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
@@ -511,7 +512,7 @@
 <span>  type <span class="op">=</span> <span class="st">"np"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">WineTasting</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">Wine</span>, <span class="va">Taste</span>, color <span class="op">=</span> <span class="va">Wine</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">WineTasting</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">Wine</span>, <span class="va">Taste</span>, color <span class="op">=</span> <span class="va">Wine</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_quasirandom</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
 <span>    title <span class="op">=</span> <span class="st">"Friedman's rank sum test"</span>,</span>

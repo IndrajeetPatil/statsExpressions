@@ -169,6 +169,9 @@ statistical approach can be modified by changing a single argument:
 All possible output dataframes from functions are tabulated here:
 <https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html>
 
+The columns and attributes of these dataframes are documented here:
+<https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html>
+
 Needless to say this will also work with the `kable` function to
 generate a table:
 
@@ -309,7 +312,7 @@ Sepal.Length by Species](reference/figures/README-anova_rob1-1.png)
 `  type ``=`` ``"np"`\
 `)`\
 \
-`ggplot2``::`[`ggplot`](https://ggplot2.tidyverse.org/reference/ggplot.html)`(``WineTasting``, `[`aes`](https://ggplot2.tidyverse.org/reference/aes.html)`(``Wine``, ``Taste``, color ``=`` ``Wine``)``)`` ``+`\
+[`ggplot`](https://ggplot2.tidyverse.org/reference/ggplot.html)`(``WineTasting``, `[`aes`](https://ggplot2.tidyverse.org/reference/aes.html)`(``Wine``, ``Taste``, color ``=`` ``Wine``)``)`` ``+`\
 `  ``geom_quasirandom``(``)`` ``+`\
 `  `[`labs`](https://ggplot2.tidyverse.org/reference/labs.html)`(`\
 `    title ``=`` ``"Friedman's rank sum test"``,`\

@@ -98,8 +98,7 @@
 </ul></div>
 <div class="section level3">
 <h3 id="dependencies">Dependencies<a class="anchor" aria-label="anchor" href="#dependencies"></a></h3>
-<p>Core dependencies include the tidyverse stack (<code>dplyr</code>, <code>purrr</code>, <code>tidyr</code>, and <code>rlang</code>) and the easystats ecosystem (<code>insight</code>, <code>parameters</code>, <code>performance</code>, <code>effectsize</code>, <code>bayestestR</code>, <code>datawizard</code>, and <code>correlation</code>). Treat <code>DESCRIPTION</code> as the source of truth for dependency constraints.</p>
-<p>The minimum supported R version is 4.5. CI covers R-devel, the current R release, and the previous R release; keep README support wording independent of specific version numbers.</p>
+<p>Core dependencies include the tidyverse stack (<code>dplyr</code>, <code>purrr</code>, <code>tidyr</code>, and <code>rlang</code>) and the easystats ecosystem (<code>insight</code>, <code>parameters</code>, <code>performance</code>, <code>effectsize</code>, <code>bayestestR</code>, <code>datawizard</code>, and <code>correlation</code>). Treat <code>DESCRIPTION</code> as the source of truth for dependency constraints and the minimum supported R version.</p>
 </div>
 </div>
 <div class="section level2">
@@ -114,17 +113,12 @@
 <span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="fu">make</span> format       <span class="co"># Run air format .</span></span>
 <span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="fu">make</span> hooks        <span class="co"># Run all prek hooks</span></span>
 <span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="fu">make</span> clean        <span class="co"># Remove package build and check artifacts</span></span>
-<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="fu">make</span> update_deps  <span class="co"># Refresh dependency constraints, docs, and codemeta</span></span></code></pre></div>
-<p><code>make update_deps</code> is a maintenance operation that can rewrite dependency constraints and generated metadata. Do not use it merely to install the current dependency set.</p>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="fu">make</span> update_deps  <span class="co"># Refresh dependency constraints (maintenance only)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="versioning-and-changelog">Versioning and changelog<a class="anchor" aria-label="anchor" href="#versioning-and-changelog"></a></h3>
 <ul><li>Development versions use a fourth-component <code>.9000</code> suffix.</li>
 <li>Keep the version in <code>DESCRIPTION</code>, <code>codemeta.json</code>, and the first <code>NEWS.md</code> heading synchronized.</li>
 <li>Record user-facing compatibility changes in <code>NEWS.md</code>; omit routine dependency updates and internal lint or CI maintenance.</li>
-</ul></div>
-<div class="section level3">
-<h3 id="repository-skills">Repository skills<a class="anchor" aria-label="anchor" href="#repository-skills"></a></h3>
-<ul><li>Use <code>.agents/skills/create-release/SKILL.md</code> only when asked to prepare, submit, resume, or publish a CRAN release.</li>
 </ul></div>
 </div>
 <div class="section level2">
@@ -209,9 +203,18 @@
 <code>NEWS.md</code> for user-facing changes.</li>
 </ol></div>
 <div class="section level2">
-<h2 id="cicd">CI/CD<a class="anchor" aria-label="anchor" href="#cicd"></a></h2>
-<p>Workflows under <code>.github/workflows/</code> run standard and hard R CMD checks, coverage, documentation and extra checks, formatting, linting, prek hooks, pkgdown builds, and deployment tasks. Most jobs call reusable workflows from <code>IndrajeetPatil/workflows</code>; update the callers rather than copying those workflows into this repository.</p>
-<p>The shared R CMD check matrix intentionally covers R-devel, release, and oldrel. Do not reintroduce <code>oldrel-2</code> unless the package support policy changes.</p>
+<h2 id="repository-skills">Repository skills<a class="anchor" aria-label="anchor" href="#repository-skills"></a></h2>
+<p>Task-specific instructions live in <code>.agents/skills/</code>. Read a skill only when the task matches it:</p>
+<ul><li>
+<code>create-release</code>: prepare, submit, resume, or publish a CRAN release.</li>
+<li>
+<code>update-dependencies</code>: update dependencies to their latest versions, change the minimum R version, or add, remove, or move a dependency.</li>
+<li>
+<code>maintain-ci</code>: change or debug workflows under <code>.github/workflows/</code>.</li>
+</ul><p>User-invoked prompts for other tasks live in <code>.github/prompts/</code>. Keep each topic in exactly one place: <code>AGENTS.md</code> for every-session rules, a skill or a prompt for task-specific procedures.</p>
+</div>
+<div class="section level2">
+<h2 id="pull-requests">Pull requests<a class="anchor" aria-label="anchor" href="#pull-requests"></a></h2>
 <p>Open pull requests as ready for review rather than as drafts. Unless explicitly requested, do not wait for CI/CD checks to finish after pushing; report that the checks were triggered and include the pull request or workflow link.</p>
 </div>
 </div>
