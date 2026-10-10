@@ -1,5 +1,21 @@
 # Changelog
 
+## statsExpressions 2.1.2.9000
+
+- Columns in the input data that share a name with a function argument
+  or an internal variable no longer change the results. For example, a
+  column named `digits` or `n.text` in
+  [`add_expression_col()`](https://www.indrapatil.com/statsExpressions/reference/add_expression_col.md)
+  input, a grouping variable named `digits` or `centrality` in
+  [`centrality_description()`](https://www.indrapatil.com/statsExpressions/reference/centrality_description.md),
+  `a` or `b` in Bayesian
+  [`pairwise_comparisons()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md),
+  `pair` in
+  [`pairwise_contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_contingency_table.md),
+  or `es.text` in
+  [`tidy_model_expressions()`](https://www.indrapatil.com/statsExpressions/reference/tidy_model_expressions.md)
+  input could previously produce wrong expressions or errors.
+
 ## statsExpressions 2.1.2
 
 CRAN release: 2026-10-09
