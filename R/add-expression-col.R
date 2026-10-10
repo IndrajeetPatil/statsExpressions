@@ -100,7 +100,7 @@ add_expression_col <- function(
   ...
 ) {
   if (!"n.obs" %in% colnames(data)) {
-    data <- mutate(data, n.obs = n)
+    data <- mutate(data, n.obs = .env$n)
   }
   if (!"effectsize" %in% colnames(data)) {
     data <- mutate(data, effectsize = method)
@@ -121,12 +121,15 @@ add_expression_col <- function(
       mutate(p.value = if_else(p.value == 0, .Machine$double.xmin, p.value))
   }
 
+  # arguments are referenced with `.env$` so that columns in `data` with the
+  # same names can't shadow them
   df_expr <- data |> # convert needed columns to character type
     .data_to_char(digits, digits.df, digits.df.error) |>
     mutate(
-      statistic.text = statistic.text %||%
+      statistic.text = .env$statistic.text %||%
         extract_statistic_text(tolower(method)),
-      es.text = effsize.text %||% extract_estimate_type(tolower(effectsize)),
+      es.text = .env$effsize.text %||%
+        extract_estimate_type(tolower(effectsize)),
       prior.distribution = prior_switch(tolower(method)),
       n.obs = .prettyNum(n.obs)
     )
@@ -138,7 +141,7 @@ add_expression_col <- function(
       mutate(
         expression = glue(
           "list(
-            log[e]*(BF['01'])=='{format_value(-log(bf10), digits)}',
+            log[e]*(BF['01'])=='{format_value(-log(bf10), .env$digits)}',
             {es.text}^'posterior'=='{estimate}',
             CI['{conf.level}']^{conf.method}~'['*'{conf.low}', '{conf.high}'*']',
             {prior.distribution}=='{prior.scale}')"
@@ -165,7 +168,7 @@ add_expression_col <- function(
       "list(",
       statistic_part,
       ", italic(p)=='{p.value}', {es.text}=='{estimate}', ",
-      "CI['{conf.level}']~'['*'{conf.low}', '{conf.high}'*']', {n.text}=='{n.obs}')"
+      "CI['{conf.level}']~'['*'{conf.low}', '{conf.high}'*']', {.env$n.text}=='{n.obs}')"
     )
 
     df_expr <- mutate(df_expr, expression = glue(expr_template))
@@ -195,10 +198,10 @@ add_expression_col <- function(
     mutate(
       across(
         matches("^est|^sta|p.value|.scale$|.low$|.high$|^log"),
-        \(x) .to_char(x, digits)
+        \(x) .to_char(x, .env$digits)
       ),
-      across(matches("^df$"), \(x) .to_char(x, digits.df)),
-      across(matches("^df.error$"), \(x) .to_char(x, digits.df.error)),
+      across(matches("^df$"), \(x) .to_char(x, .env$digits.df)),
+      across(matches("^df.error$"), \(x) .to_char(x, .env$digits.df.error)),
       across(matches("^conf.level$"), \(x) paste0(x * 100L, "%"))
     )
 }

@@ -80,7 +80,7 @@ centrality_description <- function(
     rename_with(\(name) gsub(".mean|.median|.trimmed|.map", "", name)) |>
     mutate(
       expression = glue(
-        "list(widehat(mu)[{centrality}]=='{format_value(estimate, digits)}')"
+        "list(widehat(mu)[{.env$centrality}]=='{format_value(estimate, .env$digits)}')"
       ),
       n.expression = paste0({{ x }}, "\n(n = ", .prettyNum(n.obs), ")")
     ) |>

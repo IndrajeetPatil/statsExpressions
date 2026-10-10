@@ -1,3 +1,13 @@
+# statsExpressions 2.1.2.9000
+
+- Columns in the input data that share a name with a function argument or an
+  internal variable no longer change the results. For example, a column named
+  `digits` or `n.text` in `add_expression_col()` input, a grouping variable
+  named `digits` or `centrality` in `centrality_description()`, `a` or `b` in
+  Bayesian `pairwise_comparisons()`, `pair` in `pairwise_contingency_table()`,
+  or `es.text` in `tidy_model_expressions()` input could previously produce
+  wrong expressions or errors.
+
 # statsExpressions 2.1.2
 
 This patch release contains documentation fixes only; there are no changes to

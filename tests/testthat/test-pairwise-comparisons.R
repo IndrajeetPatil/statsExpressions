@@ -71,8 +71,7 @@ test_that(desc = "`pairwise_comparisons()` works for between-subjects design", c
   expect_snapshot(df5)
   expect_snapshot(df5[["expression"]])
 
-  # bayes test
-  set.seed(123)
+  # games-howell with the default p-value adjustment
   df6 <- pairwise_comparisons(
     data = df_msleep,
     x = vore,
@@ -328,4 +327,25 @@ test_that(desc = "additional arguments are passed to underlying methods", code =
 
   expect_snapshot(df4)
   expect_snapshot(df4[["expression"]])
+})
+
+# grouping names that clash with local variables ----------------------------
+
+test_that(desc = "Bayesian comparisons work with `a` or `b` as grouping name", code = {
+  set.seed(123)
+  expected <- pairwise_comparisons(mtcars, cyl, wt, type = "bayes")
+
+  for (group in c("a", "b")) {
+    data <- rename(mtcars, !!group := cyl)
+
+    set.seed(123)
+    df <- rlang::inject(pairwise_comparisons(
+      data,
+      !!rlang::sym(group),
+      wt,
+      type = "bayes"
+    ))
+
+    expect_identical(df[["expression"]], expected[["expression"]])
+  }
 })
