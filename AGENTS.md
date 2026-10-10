@@ -91,11 +91,17 @@ make update_deps  # Refresh dependency constraints (maintenance only)
 - Tests cover source areas, but helper and shared source files may be
   exercised by broader test files rather than a one-to-one filename
   match.
-- Set seeds before Bayesian or otherwise stochastic tests.
+- Set seeds before Bayesian or otherwise stochastic tests, and only
+  there.
 - Use `skip_if_not_installed()` for optional dependencies.
 - Suppress warnings only when a test intentionally exercises a
   warning-producing path.
 - Codecov requires 100% project and patch coverage.
+- Use
+  [`patrick::with_parameters_test_that()`](https://rdrr.io/pkg/patrick/man/with_parameters_test_that.html)
+  to cover combinations of inputs, with a `.test_name` column in
+  `.cases` (the `test_name` column is deprecated). Snapshot each case’s
+  output rather than hand-writing expected expressions.
 
 Follow the existing snapshot style:
 
@@ -113,6 +119,11 @@ Follow the existing snapshot style:
 - Use snake_case for functions and variables.
 - Use the base R pipe (`|>`), not the magrittr pipe (`%>%`).
 - Preserve tidy evaluation for unquoted column arguments.
+- Inside `mutate()` and other data-masking calls, including `glue()`
+  called there, a bare name resolves to a column of `data` before a
+  local variable. Build local values such as expression templates before
+  the call and refer to them with `.env$name`, so input columns can’t
+  shadow them.
 
 ### Roxygen documentation
 

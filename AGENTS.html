@@ -128,10 +128,11 @@
 <code>make check</code> is the canonical full local validation command.</li>
 <li>Snapshot tests are used extensively for both tidy statistical output and the <code>expression</code> column.</li>
 <li>Tests cover source areas, but helper and shared source files may be exercised by broader test files rather than a one-to-one filename match.</li>
-<li>Set seeds before Bayesian or otherwise stochastic tests.</li>
+<li>Set seeds before Bayesian or otherwise stochastic tests, and only there.</li>
 <li>Use <code>skip_if_not_installed()</code> for optional dependencies.</li>
 <li>Suppress warnings only when a test intentionally exercises a warning-producing path.</li>
 <li>Codecov requires 100% project and patch coverage.</li>
+<li>Use <code><a href="https://rdrr.io/pkg/patrick/man/with_parameters_test_that.html" class="external-link">patrick::with_parameters_test_that()</a></code> to cover combinations of inputs, with a <code>.test_name</code> column in <code>.cases</code> (the <code>test_name</code> column is deprecated). Snapshot each case’s output rather than hand-writing expected expressions.</li>
 </ul><p>Follow the existing snapshot style:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">test_that</span><span class="op">(</span><span class="st">"descriptive name"</span>, <span class="op">{</span></span>
@@ -146,6 +147,7 @@
 <li>Use snake_case for functions and variables.</li>
 <li>Use the base R pipe (<code>|&gt;</code>), not the magrittr pipe (<code>%&gt;%</code>).</li>
 <li>Preserve tidy evaluation for unquoted column arguments.</li>
+<li>Inside <code>mutate()</code> and other data-masking calls, including <code>glue()</code> called there, a bare name resolves to a column of <code>data</code> before a local variable. Build local values such as expression templates before the call and refer to them with <code>.env$name</code>, so input columns can’t shadow them.</li>
 </ul><div class="section level3">
 <h3 id="roxygen-documentation">Roxygen documentation<a class="anchor" aria-label="anchor" href="#roxygen-documentation"></a></h3>
 <ul><li>Roxygen uses Markdown and the <code>pkgapi</code> and <code>roxyglobals</code> roclets configured in <code>DESCRIPTION</code>.</li>
