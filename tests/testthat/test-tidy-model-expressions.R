@@ -111,7 +111,9 @@ patrick::with_parameters_test_that(
       df,
       stat_part = "s",
       template = "s",
-      template_no_df = "s"
+      template_no_df = "s",
+      es.text = "s",
+      es_text = "s"
     )
 
     res <- tidy_model_expressions(
