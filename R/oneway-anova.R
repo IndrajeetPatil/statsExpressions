@@ -251,7 +251,8 @@ oneway_anova <- function(
       )
 
       ez_df <- long_to_wide_converter(data, {{ x }}, {{ y }}) |>
-        WRS2::wmcpAKP(select(-.rowid), tr = tr, nboot = nboot) |>
+        select(-.rowid) |>
+        WRS2::wmcpAKP(tr = tr, nboot = nboot) |>
         tidy_model_parameters()
 
       stats_df <- bind_cols(tidy_model_parameters(mod), ez_df)

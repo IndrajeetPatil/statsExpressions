@@ -1,5 +1,10 @@
 # statsExpressions 2.1.2.9000
 
+- `oneway_anova()` with `type = "robust"` and `paired = TRUE` now reports the
+  correct Algina-Keselman-Penfield effect size and confidence interval.
+  Previously the internal row identifier was treated as an extra condition,
+  which inflated the estimate (e.g., 0.66 instead of 0.32 for `bugs_long`).
+
 - Columns in the input data that share a name with a function argument or an
   internal variable no longer change the results. For example, a column named
   `digits` or `n.text` in `add_expression_col()` input, a grouping variable
