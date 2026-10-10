@@ -2,6 +2,8 @@
 
 ## statsExpressions 2.1.2
 
+CRAN release: 2026-10-09
+
 This patch release contains documentation fixes only; there are no
 changes to computed results.
 
