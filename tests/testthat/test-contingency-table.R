@@ -67,11 +67,7 @@ test_that(desc = "paired contingency_table works ", code = {
   paired_data <- tidyr::uncount(paired_data, weights = Freq)
 
   # deliberately introduce NAs
-  paired_data[1, 1] <- NA
-  paired_data[12, 1] <- NA
-  paired_data[22, 1] <- NA
-  paired_data[24, 1] <- NA
-  paired_data[65, 1] <- NA
+  paired_data[c(1L, 12L, 22L, 24L, 65L), 1L] <- NA
 
   set.seed(123)
   df2 <- suppressWarnings(

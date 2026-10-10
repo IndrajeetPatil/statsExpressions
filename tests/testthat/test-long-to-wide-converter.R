@@ -98,24 +98,14 @@ test_that(desc = "long_to_wide_converter works - spread false", code = {
 # with .rowid - without NA ---------------------------------------------
 
 test_that(desc = "with .rowid - without NA", code = {
-  df_original <- dplyr::tibble(
+  data <- dplyr::tibble(
     score = c(90, 90, 72.5, 45),
     condition = factor(c("4", "5", "5", "4")),
     id = c(1L, 2L, 1L, 2L)
   )
 
-  df_arranged <- arrange(df_original, id)
-
-  expect_identical(
-    long_to_wide_converter(df_arranged, condition, score),
-    long_to_wide_converter(df_original, condition, score, id)
-  )
-
-  # the output is already sorted by `.rowid`
-  expect_identical(
-    long_to_wide_converter(df_arranged, condition, score, spread = FALSE),
-    long_to_wide_converter(df_original, condition, score, id, spread = FALSE)
-  )
+  expect_subject_id_invariance(long_to_wide_converter, data)
+  expect_subject_id_invariance(long_to_wide_converter, data, spread = FALSE)
 })
 
 
