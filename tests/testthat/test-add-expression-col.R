@@ -14,7 +14,7 @@ stats_df <- dplyr::tibble(
 )
 
 patrick::with_parameters_test_that(
-  "add_expression_col() ignores a column named",
+  "add_expression_col() ignores a column named:",
   {
     expected <- add_expression_col(stats_df, n = 20L)
     data <- stats_df
@@ -24,14 +24,17 @@ patrick::with_parameters_test_that(
 
     expect_identical(df[["expression"]], expected[["expression"]])
   },
-  column = c(
-    "digits",
-    "digits.df",
-    "digits.df.error",
-    "n",
-    "n.text",
-    "statistic.text",
-    "effsize.text"
+  .cases = dplyr::tibble(
+    column = c(
+      "digits",
+      "digits.df",
+      "digits.df.error",
+      "n",
+      "n.text",
+      "statistic.text",
+      "effsize.text"
+    ),
+    .test_name = paste0("`", column, "`")
   )
 )
 
