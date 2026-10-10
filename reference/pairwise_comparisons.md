@@ -437,7 +437,7 @@ pairwise_comparisons(
 #> 5 Durbin-Conover <language>
 #> 6 Durbin-Conover <language>
 
-# robust (Yuen's trimmed means t-test)
+# robust (Yuen's trimmed means *t*-test)
 pairwise_comparisons(
   data            = bugs_long,
   x               = condition,
