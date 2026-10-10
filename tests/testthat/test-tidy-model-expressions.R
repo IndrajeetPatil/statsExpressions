@@ -88,3 +88,14 @@ test_that("tidy_model_expressions works - F", {
   expect_snapshot(select(df2, -expression))
   expect_snapshot(df2[["expression"]])
 })
+
+test_that("columns in data don't shadow internal expression templates", {
+  df <- tidy_model_parameters(lm(wt ~ mpg, mtcars))
+  expected <- tidy_model_expressions(df, statistic = "t")$expression
+
+  df$stat_part <- df$template <- df$template_no_df <- "x"
+  expect_identical(
+    tidy_model_expressions(df, statistic = "t")$expression,
+    expected
+  )
+})
