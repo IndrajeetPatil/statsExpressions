@@ -89,13 +89,142 @@ test_that("tidy_model_expressions works - F", {
   expect_snapshot(df2[["expression"]])
 })
 
-test_that("columns in data don't shadow internal expression templates", {
-  df <- tidy_model_parameters(lm(wt ~ mpg, mtcars))
-  expected <- tidy_model_expressions(df, statistic = "t")$expression
+# expression templates ---------------------------------------------------
+#
+# Every statistic and effect-size branch is checked against a hand-written
+# expression, so that a change to the templates can't silently alter output.
+# Each case is also run with columns named like the function's internal
+# variables, which must not shadow the templates, and with a second row
+# lacking an estimate, which must get a `NULL` expression.
 
-  df$stat_part <- df$template <- df$template_no_df <- "x"
+patrick::with_parameters_test_that(
+  "tidy_model_expressions() builds the expected expression:",
+  {
+    df <- dplyr::tibble(
+      term = c("x", "y"),
+      estimate = c(0.5, NA),
+      statistic = 2.3456,
+      df = 2,
+      df.error = df.error,
+      p.value = 0.0312
+    )
+    df_shadow <- mutate(
+      df,
+      stat_part = "s",
+      template = "s",
+      template_no_df = "s"
+    )
+
+    for (data in list(df, df_shadow)) {
+      res <- tidy_model_expressions(
+        data,
+        statistic = statistic,
+        effsize.type = effsize.type,
+        digits = digits
+      )
+
+      expect_identical(res$expression[[1L]], expected)
+      expect_null(res$expression[[2L]])
+    }
+  },
+  .cases = dplyr::tibble(
+    .test_name = c(
+      "t",
+      "t, missing df.error",
+      "t, infinite df.error",
+      "t, upper case, 3 digits",
+      "z",
+      "chi",
+      "F, omega",
+      "F, eta",
+      "F, upper case, 3 digits"
+    ),
+    statistic = c("t", "t", "t", "T", "z", "chi", "f", "f", "F"),
+    effsize.type = c(rep("omega", 7L), "eta", "omega"),
+    df.error = c(10, NA, Inf, rep(10, 6L)),
+    digits = c(2L, 2L, 2L, 3L, 2L, 2L, 2L, 2L, 3L),
+    # `F` is the plotmath symbol here, not `FALSE`
+    # nolint start: T_and_F_symbol_linter.
+    expected = list(
+      quote(list(
+        widehat(italic(beta)) == "0.50",
+        italic(t)("10") == "2.35",
+        italic(p) == "0.03"
+      )),
+      quote(list(
+        widehat(italic(beta)) == "0.50",
+        italic(t) == "2.35",
+        italic(p) == "0.03"
+      )),
+      quote(list(
+        widehat(italic(beta)) == "0.50",
+        italic(t) == "2.35",
+        italic(p) == "0.03"
+      )),
+      quote(list(
+        widehat(italic(beta)) == "0.500",
+        italic(t)("10") == "2.346",
+        italic(p) == "0.031"
+      )),
+      quote(list(
+        widehat(italic(beta)) == "0.50",
+        italic(z) == "2.35",
+        italic(p) == "0.03"
+      )),
+      quote(list(
+        widehat(italic(beta)) == "0.50",
+        italic(chi)^2 * ("10") == "2.35",
+        italic(p) == "0.03"
+      )),
+      quote(list(
+        widehat(italic(omega)[p]^2) == "0.50",
+        italic(F)("2", "10") == "2.35",
+        italic(p) == "0.03"
+      )),
+      quote(list(
+        widehat(italic(eta)[p]^2) == "0.50",
+        italic(F)("2", "10") == "2.35",
+        italic(p) == "0.03"
+      )),
+      quote(list(
+        widehat(italic(omega)[p]^2) == "0.500",
+        italic(F)("2", "10") == "2.346",
+        italic(p) == "0.031"
+      ))
+    )
+    # nolint end
+  )
+)
+
+test_that("tidy_model_expressions() drops the t degrees of freedom per row", {
+  df <- dplyr::tibble(
+    term = c("x", "y", "z"),
+    estimate = 0.5,
+    statistic = 2.3456,
+    df.error = c(10, NA, Inf),
+    p.value = 0.0312
+  )
+
+  res <- tidy_model_expressions(df, statistic = "t")
+
   expect_identical(
-    tidy_model_expressions(df, statistic = "t")$expression,
-    expected
+    res$expression,
+    list(
+      quote(list(
+        widehat(italic(beta)) == "0.50",
+        italic(t)("10") == "2.35",
+        italic(p) == "0.03"
+      )),
+      quote(list(
+        widehat(italic(beta)) == "0.50",
+        italic(t) == "2.35",
+        italic(p) == "0.03"
+      )),
+      quote(list(
+        widehat(italic(beta)) == "0.50",
+        italic(t) == "2.35",
+        italic(p) == "0.03"
+      ))
+    )
   )
 })
