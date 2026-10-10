@@ -94,18 +94,21 @@ tidy_model_expressions <- function(
     f = "italic(F)('{df}', '{df.error}')=='{statistic}'"
   )
 
+  # build templates outside the data mask so that columns in `data` can't
+  # shadow them
+  template <- expr_template(stat_part)
+  template_no_df <- expr_template("italic(t)=='{statistic}'")
+
   df_expr <- df_expr |>
     mutate(
       expression = if (stat_type == "t") {
         # drop the degrees of freedom when they are missing or infinite
         case_when(
-          df.error %in% c("NA", "Inf") ~ glue(
-            expr_template("italic(t)=='{statistic}'")
-          ),
-          .default = glue(expr_template(stat_part))
+          df.error %in% c("NA", "Inf") ~ glue(.env$template_no_df),
+          .default = glue(.env$template)
         )
       } else {
-        glue(expr_template(stat_part))
+        glue(.env$template)
       }
     )
 
