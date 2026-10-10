@@ -83,47 +83,18 @@ contingency_table <- function(
   # data -------------------------------------------
 
   type <- extract_stats_type(type)
-  test <- ifelse(quo_is_null(enquo(y)), "1way", "2way")
+  one_way <- quo_is_null(enquo(y))
 
   data <- .untable_by_counts(data, {{ x }}, {{ y }}, {{ counts }})
 
   xtab <- table(data)
   ratio <- ratio %||% rep(1 / length(xtab), length(xtab))
 
-  # non-Bayesian ---------------------------------------
-
-  if (type != "bayes" && test == "2way") {
-    if (paired) {
-      .f <- stats::mcnemar.test
-      .f.es <- effectsize::cohens_g
-    } else {
-      .f <- stats::chisq.test
-      .f.es <- effectsize::cramers_v
-    }
-    .f.args <- list(x = xtab, correct = FALSE)
+  if (type == "bayes" && one_way) {
+    return(.one_way_bayesian_table(xtab, prior.concentration, ratio, digits))
   }
 
-  if (type != "bayes" && test == "1way") {
-    .f <- stats::chisq.test
-    .f.es <- effectsize::pearsons_c
-    .f.args <- list(x = xtab, p = ratio, correct = FALSE)
-  }
-
-  if (type != "bayes") {
-    stats_df <- bind_cols(
-      tidy_model_parameters(exec(.f, !!!.f.args)),
-      tidy_model_effectsize(exec(
-        .f.es,
-        !!!.f.args,
-        ci = conf.level,
-        alternative = alternative
-      ))
-    )
-  }
-
-  # Bayesian ---------------------------------------
-
-  if (type == "bayes" && test == "2way") {
+  if (type == "bayes") {
     stats_df <- BayesFactor::contingencyTableBF(
       xtab,
       sampleType = sampling.plan,
@@ -135,10 +106,30 @@ contingency_table <- function(
         es_type = "cramers_v",
         alternative = alternative
       )
-  }
+  } else {
+    if (one_way) {
+      .f <- stats::chisq.test
+      .f.es <- effectsize::pearsons_c
+      .f.args <- list(x = xtab, p = ratio, correct = FALSE)
+    } else if (paired) {
+      .f <- stats::mcnemar.test
+      .f.es <- effectsize::cohens_g
+      .f.args <- list(x = xtab, correct = FALSE)
+    } else {
+      .f <- stats::chisq.test
+      .f.es <- effectsize::cramers_v
+      .f.args <- list(x = xtab, correct = FALSE)
+    }
 
-  if (type == "bayes" && test == "1way") {
-    return(.one_way_bayesian_table(xtab, prior.concentration, ratio, digits))
+    stats_df <- bind_cols(
+      tidy_model_parameters(exec(.f, !!!.f.args)),
+      tidy_model_effectsize(exec(
+        .f.es,
+        !!!.f.args,
+        ci = conf.level,
+        alternative = alternative
+      ))
+    )
   }
 
   add_expression_col(stats_df, paired = paired, n = nrow(data), digits = digits)
