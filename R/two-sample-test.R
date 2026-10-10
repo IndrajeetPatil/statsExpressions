@@ -67,12 +67,14 @@ two_sample_test <- function(
     paired = paired,
     spread = ifelse(type %in% c("bayes", "robust"), paired, TRUE)
   )
+  y_by_x <- new_formula(y, x)
+
+  # only Welch's and Yuen's between-subjects tests have fractional df
+  fractional_df <- !paired &&
+    (type == "robust" || (type == "parametric" && !var.equal))
+  digits.df <- if (fractional_df) digits else 0L
 
   # parametric & non-parametric ------------------------------------
-
-  if (type == "parametric") {
-    digits.df <- ifelse(paired || var.equal, 0L, digits)
-  }
 
   if (type %in% c("parametric", "nonparametric")) {
     fns <- .mean_difference_fns(type, effsize.type)
@@ -103,8 +105,6 @@ two_sample_test <- function(
   # robust ---------------------------------------
 
   if (type == "robust") {
-    digits.df <- ifelse(paired, 0L, digits)
-
     if (paired) {
       effect_model <- WRS2::dep.effect(
         x = data[[2L]],
@@ -115,14 +115,14 @@ two_sample_test <- function(
       test_model <- WRS2::yuend(x = data[[2L]], y = data[[3L]], tr = tr)
     } else {
       effect_model <- WRS2::akp.effect(
-        formula = new_formula(y, x),
+        formula = y_by_x,
         data = data,
         EQVAR = FALSE,
         tr = tr,
         nboot = nboot,
         alpha = 1.0 - conf.level
       )
-      test_model <- WRS2::yuen(new_formula(y, x), data, tr = tr)
+      test_model <- WRS2::yuen(y_by_x, data, tr = tr)
     }
 
     ez_df <- tidy_model_parameters(effect_model, keep = "AKP")
@@ -141,16 +141,17 @@ two_sample_test <- function(
 
   if (type == "bayes") {
     if (paired) {
-      .f.args <- list(x = data[[2L]], y = data[[3L]], paired = paired)
+      .f.args <- list(x = data[[2L]], y = data[[3L]])
     } else {
-      .f.args <- list(
-        formula = new_formula(y, x),
-        data = as.data.frame(data),
-        paired = paired
-      )
+      .f.args <- list(formula = y_by_x, data = as.data.frame(data))
     }
 
-    stats_df <- exec(BayesFactor::ttestBF, rscale = bf.prior, !!!.f.args) |>
+    stats_df <- exec(
+      BayesFactor::ttestBF,
+      !!!.f.args,
+      paired = paired,
+      rscale = bf.prior
+    ) |>
       tidy_model_parameters(ci = conf.level)
   }
 
