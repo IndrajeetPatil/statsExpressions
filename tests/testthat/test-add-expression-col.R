@@ -1,28 +1,26 @@
-# Columns in `data` named like the function's arguments must not shadow them.
-
-stats_df <- dplyr::tibble(
-  statistic = 2.3456,
-  df = 1,
-  df.error = 10,
-  p.value = 0.0312,
-  estimate = 0.4,
-  conf.level = 0.95,
-  conf.low = 0.1,
-  conf.high = 0.7,
-  method = "Student's t-test",
-  effectsize = "Cohen's d"
-)
+# Columns in `data` named like the function's arguments must not shadow them,
+# so every case must give the same expression.
 
 patrick::with_parameters_test_that(
   "add_expression_col() ignores a column named:",
   {
-    expected <- add_expression_col(stats_df, n = 20L)
-    data <- stats_df
+    data <- dplyr::tibble(
+      statistic = 2.3456,
+      df = 1,
+      df.error = 10,
+      p.value = 0.0312,
+      estimate = 0.4,
+      conf.level = 0.95,
+      conf.low = 0.1,
+      conf.high = 0.7,
+      method = "Student's t-test",
+      effectsize = "Cohen's d"
+    )
     data[[column]] <- "x"
 
     df <- add_expression_col(data, n = 20L)
 
-    expect_identical(df[["expression"]], expected[["expression"]])
+    expect_snapshot(df[["expression"]])
   },
   .cases = dplyr::tibble(
     column = c(
