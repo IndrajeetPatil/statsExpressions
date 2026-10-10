@@ -250,7 +250,7 @@ pairwise_comparisons <- function(
       .y = as.character(df_pair$group2),
       .f = function(a, b) {
         two_sample_test(
-          data = droplevels(filter(data, {{ x }} %in% c(a, b))),
+          data = droplevels(filter(data, {{ x }} %in% c(.env$a, .env$b))),
           x = {{ x }},
           y = {{ y }},
           paired = paired,

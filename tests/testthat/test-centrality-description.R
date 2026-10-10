@@ -65,7 +65,14 @@ test_that("centrality description works with reserved response names", {
 })
 
 test_that("centrality description works with reserved grouping names", {
-  for (group in c("n", "Mean", "SD", "IQR")) {
+  expected <- centrality_description(
+    data.frame(group = rep(c("a", "b"), each = 3L), value = 1:6),
+    group,
+    value
+  )
+
+  # `centrality` and `digits` are also local variables of the function
+  for (group in c("n", "Mean", "SD", "IQR", "centrality", "digits")) {
     data <- data.frame(group = rep(c("a", "b"), each = 3L), value = 1:6)
     names(data)[[1L]] <- group
 
@@ -77,5 +84,6 @@ test_that("centrality description works with reserved grouping names", {
 
     expect_identical(names(result)[1:2], c(group, "value"))
     expect_identical(result[["value"]], c(2, 5))
+    expect_identical(result[["expression"]], expected[["expression"]])
   }
 })

@@ -100,3 +100,10 @@ test_that("pairwise_contingency_table works - custom digits", {
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 })
+
+test_that("pairwise_contingency_table works with `pair` as grouping name", {
+  expected <- pairwise_contingency_table(mtcars, cyl, am)
+  df <- pairwise_contingency_table(rename(mtcars, pair = cyl), pair, am)
+
+  expect_identical(df[["expression"]], expected[["expression"]])
+})
