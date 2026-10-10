@@ -245,37 +245,21 @@ test_that(desc = "`pairwise_comparisons()` works for within-subjects design - wi
   expect_snapshot(df4[["expression"]])
 })
 
-test_that(desc = "works with subject id", code = {
-  set.seed(123)
-  df1 <- purrr::pmap_dfr(
-    .f = pairwise_comparisons,
-    .l = list(
-      data = list(WRS2::WineTasting),
-      x = list("Wine"),
-      y = list("Taste"),
-      type = list("p", "np", "r", "bf"),
-      digits = 3L,
-      subject.id = list("Taster"),
-      paired = TRUE
+patrick::with_parameters_test_that(
+  "works with subject id:",
+  {
+    expect_subject_id_invariance(
+      pairwise_comparisons,
+      rename(WRS2::WineTasting, condition = Wine, score = Taste, id = Taster),
+      type = type,
+      digits = 3L
     )
+  },
+  .cases = dplyr::tibble(
+    type = c("p", "np", "r", "bf"),
+    .test_name = type
   )
-
-  set.seed(123)
-  df2 <- purrr::pmap_dfr(
-    .f = pairwise_comparisons,
-    .l = list(
-      data = list(dplyr::arrange(WRS2::WineTasting, Taster)),
-      x = list("Wine"),
-      y = list("Taste"),
-      type = list("p", "np", "r", "bf"),
-      digits = 3L,
-      paired = TRUE
-    )
-  )
-
-  # results should be the same no matter the test
-  expect_equal(df1, df2, ignore_attr = TRUE)
-})
+)
 
 # additional arguments are passed ---------------------------------------
 
