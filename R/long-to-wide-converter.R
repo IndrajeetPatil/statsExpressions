@@ -83,7 +83,6 @@ long_to_wide_converter <- function(
 
   data <- filter_out(data, anyNA(pick({{ x }}, {{ y }})), .by = .rowid)
 
-  # convert to wide?
   if (spread) {
     data <- tidyr::pivot_wider(
       data,
@@ -105,5 +104,5 @@ long_to_wide_converter <- function(
 #'   Shared by [two_sample_test()] and [oneway_anova()].
 #' @noRd
 .n_obs <- function(data, paired) {
-  ifelse(paired, length(unique(data$.rowid)), nrow(data))
+  if (paired) length(unique(data$.rowid)) else nrow(data)
 }

@@ -2,7 +2,6 @@
 
 test_that(desc = "`pairwise_comparisons()` works for between-subjects design", code = {
   # student's t
-  set.seed(123)
   df1 <- pairwise_comparisons(
     data = msleep,
     x = vore,
@@ -16,18 +15,12 @@ test_that(desc = "`pairwise_comparisons()` works for between-subjects design", c
   expect_snapshot(df1)
   expect_snapshot(df1[["expression"]])
 
-  # games-howell
-  df_msleep <- msleep
-
-  # adding empty factor level (shouldn't change results)
-  df_msleep <- df_msleep |> dplyr::mutate(vore = as.factor(vore))
-
-  df_msleep$vore <- factor(
-    df_msleep$vore,
-    levels = c(levels(df_msleep$vore), "Random")
+  # games-howell, with an empty factor level (shouldn't change results)
+  df_msleep <- dplyr::mutate(
+    msleep,
+    vore = factor(vore, levels = c(levels(factor(vore)), "Random"))
   )
 
-  set.seed(123)
   df2 <- pairwise_comparisons(
     data = df_msleep,
     x = vore,
@@ -42,7 +35,6 @@ test_that(desc = "`pairwise_comparisons()` works for between-subjects design", c
   expect_snapshot(df2[["expression"]])
 
   # Dunn test
-  set.seed(123)
   df3 <- pairwise_comparisons(
     data = msleep,
     x = vore,
@@ -56,7 +48,6 @@ test_that(desc = "`pairwise_comparisons()` works for between-subjects design", c
   expect_snapshot(df3[["expression"]])
 
   # robust t test
-  set.seed(123)
   df4 <- pairwise_comparisons(
     data = msleep,
     x = vore,
@@ -70,7 +61,6 @@ test_that(desc = "`pairwise_comparisons()` works for between-subjects design", c
   expect_snapshot(df4[["expression"]])
 
   # checking the edge case where factor level names contain `-`
-  set.seed(123)
   df5 <- pairwise_comparisons(
     data = movies_long,
     x = mpaa,
@@ -100,7 +90,6 @@ test_that(desc = "dropped levels are not included", code = {
   msleep2 <- dplyr::filter(.data = msleep, vore %in% c("carni", "omni"))
 
   # check those levels are not included
-  set.seed(123)
   df1 <- pairwise_comparisons(
     data = msleep2,
     x = vore,
@@ -111,7 +100,6 @@ test_that(desc = "dropped levels are not included", code = {
   expect_snapshot(df1)
   expect_snapshot(df1[["expression"]])
 
-  set.seed(123)
   df2 <- pairwise_comparisons(
     data = msleep,
     x = vore,
@@ -126,7 +114,6 @@ test_that(desc = "dropped levels are not included", code = {
 # data without NAs --------------------------------------------------
 
 test_that(desc = "data without NAs", code = {
-  set.seed(123)
   df <- pairwise_comparisons(
     data = iris,
     x = Species,
@@ -145,7 +132,6 @@ test_that(desc = "data without NAs", code = {
 
 test_that(desc = "`pairwise_comparisons()` works for within-subjects design - NAs", code = {
   # student's t test
-  set.seed(123)
   df1 <- pairwise_comparisons(
     data = bugs_long,
     x = condition,
@@ -160,7 +146,6 @@ test_that(desc = "`pairwise_comparisons()` works for within-subjects design - NA
   expect_snapshot(df1[["expression"]])
 
   # Durbin-Conover test
-  set.seed(123)
   df2 <- pairwise_comparisons(
     data = bugs_long,
     x = condition,
@@ -175,7 +160,6 @@ test_that(desc = "`pairwise_comparisons()` works for within-subjects design - NA
   expect_snapshot(df2[["expression"]])
 
   # robust t test
-  set.seed(123)
   df3 <- pairwise_comparisons(
     data = bugs_long,
     x = condition,
@@ -208,7 +192,6 @@ test_that(desc = "`pairwise_comparisons()` works for within-subjects design - NA
 
 test_that(desc = "`pairwise_comparisons()` works for within-subjects design - without NAs", code = {
   # student's t test
-  set.seed(123)
   df1 <- pairwise_comparisons(
     data = WRS2::WineTasting,
     x = Wine,
@@ -223,7 +206,6 @@ test_that(desc = "`pairwise_comparisons()` works for within-subjects design - wi
   expect_snapshot(df1[["expression"]])
 
   # Durbin-Conover test
-  set.seed(123)
   df2 <- pairwise_comparisons(
     data = WRS2::WineTasting,
     x = Wine,
@@ -238,7 +220,6 @@ test_that(desc = "`pairwise_comparisons()` works for within-subjects design - wi
   expect_snapshot(df2[["expression"]])
 
   # robust t test
-  set.seed(123)
   df3 <- pairwise_comparisons(
     data = WRS2::WineTasting,
     x = Wine,
@@ -293,23 +274,13 @@ test_that(desc = "works with subject id", code = {
     )
   )
 
-  # columns should be same no matter the test
-  expect_equal(
-    dplyr::select(df1, -expression),
-    dplyr::select(df2, -expression),
-    ignore_attr = TRUE
-  )
-  expect_equal(
-    dplyr::select(df1, expression),
-    dplyr::select(df2, expression),
-    ignore_attr = TRUE
-  )
+  # results should be the same no matter the test
+  expect_equal(df1, df2, ignore_attr = TRUE)
 })
 
 # additional arguments are passed ---------------------------------------
 
 test_that(desc = "additional arguments are passed to underlying methods", code = {
-  set.seed(123)
   df1 <- pairwise_comparisons(
     data = bugs_long,
     x = condition,
@@ -322,7 +293,6 @@ test_that(desc = "additional arguments are passed to underlying methods", code =
   expect_snapshot(df1)
   expect_snapshot(df1[["expression"]])
 
-  set.seed(123)
   df2 <- pairwise_comparisons(
     data = bugs_long,
     x = condition,
@@ -335,7 +305,6 @@ test_that(desc = "additional arguments are passed to underlying methods", code =
   expect_snapshot(df2)
   expect_snapshot(df2[["expression"]])
 
-  set.seed(123)
   df3 <- pairwise_comparisons(
     data = mtcars,
     x = cyl,
@@ -348,7 +317,6 @@ test_that(desc = "additional arguments are passed to underlying methods", code =
   expect_snapshot(df3)
   expect_snapshot(df3[["expression"]])
 
-  set.seed(123)
   df4 <- pairwise_comparisons(
     data = mtcars,
     x = cyl,
