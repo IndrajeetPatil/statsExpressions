@@ -4,13 +4,13 @@
 #'
 #' @format A data frame with 1,579 rows and 8 variables
 #'
-#'   - title.  Title of the movie.
-#'   - year.  Year of release.
-#'   - budget.  Total budget (if known) in US dollars
-#'   - length.  Length in minutes.
-#'   - rating.  Average IMDB user rating.
-#'   - votes.  Number of IMDB users who rated this movie.
-#'   - mpaa.  MPAA rating.
+#'   - title. Title of the movie.
+#'   - year. Year of release.
+#'   - budget. Total budget (if known) in US dollars.
+#'   - length. Length in minutes.
+#'   - rating. Average IMDB user rating.
+#'   - votes. Number of IMDB users who rated this movie.
+#'   - mpaa. MPAA rating.
 #'   - genre. Genre of the movie (`"Action"`, `"Action Comedy"`,
 #'     `"Action Drama"`, `"Animated"`, `"Comedy"`, `"Comedy Drama"`, `"Drama"`,
 #'     `"Romance Drama"`, `"RomCom"`).
@@ -36,15 +36,15 @@
 #' @format A data frame with 600 rows and 6 variables
 #'
 #'   - id. Dummy identity number for each flower (150 flowers in total).
-#'   - Species.	The species are *Iris setosa*, *versicolor*, and
+#'   - Species. The species are *Iris setosa*, *versicolor*, and
 #'     *virginica*.
 #'   - condition. Factor giving a detailed description of the attribute
 #'     (Four levels: `"Petal.Length"`, `"Petal.Width"`, `"Sepal.Length"`,
 #'     `"Sepal.Width"`).
-#'   - attribute.	What attribute is being measured (`"Sepal"` or `"Petal"`).
-#'   - measure.	What aspect of the attribute is being measured (`"Length"`
+#'   - attribute. What attribute is being measured (`"Sepal"` or `"Petal"`).
+#'   - measure. What aspect of the attribute is being measured (`"Length"`
 #'     or `"Width"`).
-#'   - value.	Value of the measurement.
+#'   - value. Value of the measurement.
 #'
 #' @examples
 #' dim(iris_long)

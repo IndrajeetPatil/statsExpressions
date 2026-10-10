@@ -7,13 +7,13 @@
 \format{
 A data frame with 1,579 rows and 8 variables
 \itemize{
-\item title.  Title of the movie.
-\item year.  Year of release.
-\item budget.  Total budget (if known) in US dollars
-\item length.  Length in minutes.
-\item rating.  Average IMDB user rating.
-\item votes.  Number of IMDB users who rated this movie.
-\item mpaa.  MPAA rating.
+\item title. Title of the movie.
+\item year. Year of release.
+\item budget. Total budget (if known) in US dollars.
+\item length. Length in minutes.
+\item rating. Average IMDB user rating.
+\item votes. Number of IMDB users who rated this movie.
+\item mpaa. MPAA rating.
 \item genre. Genre of the movie (\code{"Action"}, \code{"Action Comedy"},
 \code{"Action Drama"}, \code{"Animated"}, \code{"Comedy"}, \code{"Comedy Drama"}, \code{"Drama"},
 \code{"Romance Drama"}, \code{"RomCom"}).
