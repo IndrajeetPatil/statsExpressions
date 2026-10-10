@@ -173,8 +173,8 @@ oneway_anova <- function(
   # parametric ---------------------------------------
 
   if (type == "parametric") {
-    digits.df <- ifelse(paired, digits, 0L)
-    digits.df.error <- ifelse(!paired && var.equal, 0L, digits)
+    digits.df <- if (paired) digits else 0L
+    digits.df.error <- if (!paired && var.equal) 0L else digits
 
     .f.es <- switch(
       match.arg(effsize.type, c("omega", "eta", "unbiased", "biased")),
@@ -239,7 +239,7 @@ oneway_anova <- function(
   # robust ---------------------------------------
 
   if (type == "robust") {
-    digits.df <- ifelse(paired, digits, 0L)
+    digits.df <- if (paired) digits else 0L
     digits.df.error <- digits
 
     if (paired) {
