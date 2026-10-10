@@ -108,7 +108,7 @@ add_expression_col <- function(
   data <- rename(data, any_of(c(bf10 = "bayes.factor")))
 
   bayesian <- "bf10" %in% colnames(data)
-  no.parameters <- sum(c("df", "df.error") %in% colnames(data))
+  n_df_cols <- sum(c("df", "df.error") %in% colnames(data))
 
   # special case for Bayesian contingency table analysis
   if (bayesian && grepl("contingency", data$method[[1L]], fixed = TRUE)) {
@@ -151,14 +151,14 @@ add_expression_col <- function(
     # frequentist analysis (0, 1, or 2 degrees of freedom) ------------------
 
     # for chi-squared statistic, the degrees of freedom live in the `df` column
-    if (no.parameters == 1L && "df" %in% colnames(df_expr)) {
+    if (n_df_cols == 1L && "df" %in% colnames(df_expr)) {
       df_expr <- mutate(df_expr, df.error = df)
     }
 
     # the statistic term is the only part that varies with the number of
     # degrees of freedom; the rest of the expression is shared
     statistic_part <- switch(
-      as.character(no.parameters),
+      as.character(n_df_cols),
       "0" = "{statistic.text}=='{statistic}'",
       "1" = "{statistic.text}*'('*{df.error}*')'=='{statistic}'",
       "2" = "{statistic.text}({df}, {df.error})=='{statistic}'"
