@@ -423,10 +423,10 @@ oneway_anova(
 #> 1 A heteroscedastic one-way repeated measures ANOVA for trimmed means
 #>   effectsize                                                      estimate
 #>   <chr>                                                              <dbl>
-#> 1 Algina-Keselman-Penfield robust standardized difference average   -0.349
+#> 1 Algina-Keselman-Penfield robust standardized difference average    -1.48
 #>   conf.level conf.low conf.high n.obs expression
 #>        <dbl>    <dbl>     <dbl> <int> <list>    
-#> 1       0.95   -0.755     0.123   150 <language>
+#> 1       0.95    -1.96    -0.873   150 <language>
 
 # ----------------------- Bayesian -------------------------------------
 
@@ -442,26 +442,26 @@ oneway_anova(
 #>   <chr> <dbl> <chr>                       <dbl>       <dbl>  <dbl>
 #> 1 mu    1     cauchy                          0       0.707 20968.
 #> 2 cyl-4 1     cauchy                          0       0.707 20968.
-#> 3 cyl-6 0.552 cauchy                          0       0.707 20968.
+#> 3 cyl-6 0.535 cauchy                          0       0.707 20968.
 #> 4 cyl-8 1     cauchy                          0       0.707 20968.
 #> 5 sig2  1     cauchy                          0       0.707 20968.
 #> 6 g_cyl 1     cauchy                          0       0.707 20968.
 #>   method                          log_e_bf10 effectsize         estimate std.dev
 #>   <chr>                                <dbl> <chr>                 <dbl>   <dbl>
-#> 1 Bayes factors for linear models       9.95 Bayesian R-squared    0.577  0.0869
-#> 2 Bayes factors for linear models       9.95 Bayesian R-squared    0.577  0.0869
-#> 3 Bayes factors for linear models       9.95 Bayesian R-squared    0.577  0.0869
-#> 4 Bayes factors for linear models       9.95 Bayesian R-squared    0.577  0.0869
-#> 5 Bayes factors for linear models       9.95 Bayesian R-squared    0.577  0.0869
-#> 6 Bayes factors for linear models       9.95 Bayesian R-squared    0.577  0.0869
+#> 1 Bayes factors for linear models       9.95 Bayesian R-squared    0.576  0.0867
+#> 2 Bayes factors for linear models       9.95 Bayesian R-squared    0.576  0.0867
+#> 3 Bayes factors for linear models       9.95 Bayesian R-squared    0.576  0.0867
+#> 4 Bayes factors for linear models       9.95 Bayesian R-squared    0.576  0.0867
+#> 5 Bayes factors for linear models       9.95 Bayesian R-squared    0.576  0.0867
+#> 6 Bayes factors for linear models       9.95 Bayesian R-squared    0.576  0.0867
 #>   conf.level conf.low conf.high conf.method n.obs expression
 #>        <dbl>    <dbl>     <dbl> <chr>       <int> <list>    
-#> 1       0.95    0.379     0.707 HDI            32 <language>
-#> 2       0.95    0.379     0.707 HDI            32 <language>
-#> 3       0.95    0.379     0.707 HDI            32 <language>
-#> 4       0.95    0.379     0.707 HDI            32 <language>
-#> 5       0.95    0.379     0.707 HDI            32 <language>
-#> 6       0.95    0.379     0.707 HDI            32 <language>
+#> 1       0.95    0.382     0.703 HDI            32 <language>
+#> 2       0.95    0.382     0.703 HDI            32 <language>
+#> 3       0.95    0.382     0.703 HDI            32 <language>
+#> 4       0.95    0.382     0.703 HDI            32 <language>
+#> 5       0.95    0.382     0.703 HDI            32 <language>
+#> 6       0.95    0.382     0.703 HDI            32 <language>
 
 # within-subjects design
 oneway_anova(
@@ -488,24 +488,24 @@ oneway_anova(
 #> 8 g_.rowid                   1 cauchy                          0       1    
 #>   effect     bf10 method                          log_e_bf10 effectsize        
 #>   <chr>     <dbl> <chr>                                <dbl> <chr>             
-#> 1 fixed  1.55e182 Bayes factors for linear models       420. Bayesian R-squared
-#> 2 fixed  1.55e182 Bayes factors for linear models       420. Bayesian R-squared
-#> 3 fixed  1.55e182 Bayes factors for linear models       420. Bayesian R-squared
-#> 4 fixed  1.55e182 Bayes factors for linear models       420. Bayesian R-squared
-#> 5 fixed  1.55e182 Bayes factors for linear models       420. Bayesian R-squared
-#> 6 fixed  1.55e182 Bayes factors for linear models       420. Bayesian R-squared
-#> 7 fixed  1.55e182 Bayes factors for linear models       420. Bayesian R-squared
-#> 8 fixed  1.55e182 Bayes factors for linear models       420. Bayesian R-squared
+#> 1 fixed  1.54e182 Bayes factors for linear models       420. Bayesian R-squared
+#> 2 fixed  1.54e182 Bayes factors for linear models       420. Bayesian R-squared
+#> 3 fixed  1.54e182 Bayes factors for linear models       420. Bayesian R-squared
+#> 4 fixed  1.54e182 Bayes factors for linear models       420. Bayesian R-squared
+#> 5 fixed  1.54e182 Bayes factors for linear models       420. Bayesian R-squared
+#> 6 fixed  1.54e182 Bayes factors for linear models       420. Bayesian R-squared
+#> 7 fixed  1.54e182 Bayes factors for linear models       420. Bayesian R-squared
+#> 8 fixed  1.54e182 Bayes factors for linear models       420. Bayesian R-squared
 #>   estimate std.dev conf.level conf.low conf.high conf.method component   n.obs
 #>      <dbl>   <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>       <int>
-#> 1    0.818 0.00841       0.95    0.800     0.834 HDI         conditional   150
-#> 2    0.818 0.00841       0.95    0.800     0.834 HDI         conditional   150
-#> 3    0.818 0.00841       0.95    0.800     0.834 HDI         conditional   150
-#> 4    0.818 0.00841       0.95    0.800     0.834 HDI         conditional   150
-#> 5    0.818 0.00841       0.95    0.800     0.834 HDI         conditional   150
-#> 6    0.818 0.00841       0.95    0.800     0.834 HDI         conditional   150
-#> 7    0.818 0.00841       0.95    0.800     0.834 HDI         conditional   150
-#> 8    0.818 0.00841       0.95    0.800     0.834 HDI         conditional   150
+#> 1    0.818 0.00837       0.95    0.800     0.833 HDI         conditional   150
+#> 2    0.818 0.00837       0.95    0.800     0.833 HDI         conditional   150
+#> 3    0.818 0.00837       0.95    0.800     0.833 HDI         conditional   150
+#> 4    0.818 0.00837       0.95    0.800     0.833 HDI         conditional   150
+#> 5    0.818 0.00837       0.95    0.800     0.833 HDI         conditional   150
+#> 6    0.818 0.00837       0.95    0.800     0.833 HDI         conditional   150
+#> 7    0.818 0.00837       0.95    0.800     0.833 HDI         conditional   150
+#> 8    0.818 0.00837       0.95    0.800     0.833 HDI         conditional   150
 #>   expression
 #>   <list>    
 #> 1 <language>

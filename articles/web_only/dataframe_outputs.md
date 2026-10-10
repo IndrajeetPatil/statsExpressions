@@ -351,10 +351,10 @@ This vignette can be cited as:
 `#> ``1`` A heteroscedastic one-way repeated measures ANOVA for trimmed means`\
 `#>   ``effectsize``                                                      ``estimate`\
 `#>   ``<chr>``                                                              ``<dbl>`\
-`#> ``1`` Algina-Keselman-Penfield robust standardized difference average    ``0.``664`\
+`#> ``1`` Algina-Keselman-Penfield robust standardized difference average    ``0.``325`\
 `#>   ``conf.level`` ``conf.low`` ``conf.high`` ``n.obs`` ``expression`\
 `#>        ``<dbl>``    ``<dbl>``     ``<dbl>`` ``<int>`` ``<list>``    `\
-`#> ``1``       ``0.``95    ``0.``466     ``0.``971    88 ``<language>`\
+`#> ``1``       ``0.``95    ``0.``152     ``0.``559    88 ``<language>`\
 \
 `# ----------------------- Bayesian ---------------------------------------`\
 \
@@ -760,7 +760,7 @@ This vignette can be cited as:
 `#> ``# A tibble: 1 × 14`\
 `#>   ``term``    ``effectsize``                     ``estimate`` ``std.error`` ``conf.low`` ``conf.high`\
 `#>   ``<chr>``   ``<chr>``                             ``<dbl>``     ``<dbl>``    ``<dbl>``     ``<dbl>`\
-`#> ``1`` Overall meta-analytic summary estimate   -``0.``746``     ``0.``233    -``1.26``    -``0.``344`\
+`#> ``1`` Overall meta-analytic summary estimate   -``0.``746``     ``0.``234    -``1.26``    -``0.``343`\
 `#>   ``statistic``  ``p.value`` ``weight`` ``conf.level`` ``method``                               `\
 `#>       ``<dbl>``    ``<dbl>``  ``<dbl>``      ``<dbl>`` ``<chr>``                                `\
 `#> ``1``     -``3.20`` ``0.000``501``     ``NA``       ``0.``95 Robust meta-analysis using 'metaplus'`\
