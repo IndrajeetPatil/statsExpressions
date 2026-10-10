@@ -71,8 +71,7 @@ test_that(desc = "`pairwise_comparisons()` works for between-subjects design", c
   expect_snapshot(df5)
   expect_snapshot(df5[["expression"]])
 
-  # bayes test
-  set.seed(123)
+  # games-howell with the default p-value adjustment
   df6 <- pairwise_comparisons(
     data = df_msleep,
     x = vore,
