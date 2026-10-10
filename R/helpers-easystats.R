@@ -39,17 +39,13 @@ tidy_model_parameters <- function(model, ...) {
 
   # Bayesian ANOVA designs -----------------------------------
 
-  if (
-    "method" %in%
-      names(stats_df) &&
-      stats_df$method[[1]] == "Bayes factors for linear models"
-  ) {
+  if (isTRUE(stats_df[["method"]][1L] == "Bayes factors for linear models")) {
     # for within-subjects design, retain only conditional component
     df_r2 <- performance::r2_bayes(
       model,
       average = TRUE,
       verbose = FALSE,
-      ci = stats_df$conf.level[[1]]
+      ci = stats_df$conf.level[[1L]]
     ) |>
       as_tibble() |>
       standardize_names(style = "broom") |>
