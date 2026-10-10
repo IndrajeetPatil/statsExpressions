@@ -59,29 +59,10 @@ test_that(desc = "bayesian (within-subjects - anova)", code = {
 
   expect_snapshot(dim(df2))
   expect_snapshot(df2[["expression"]][[1]])
+})
 
-  # with subject.id ---------------------------------
-
-  set.seed(123)
-  expr1 <- oneway_anova(
-    type = "bayes",
-    data = data_with_subid,
-    x = condition,
-    y = score,
-    subject.id = id,
-    paired = TRUE
-  )
-
-  set.seed(123)
-  expr2 <- oneway_anova(
-    type = "bayes",
-    data = arrange(data_with_subid, id),
-    x = condition,
-    y = score,
-    paired = TRUE
-  )
-
-  expect_equal(expr2, expr1, ignore_attr = TRUE)
+test_that(desc = "works with subject id", code = {
+  expect_subject_id_invariance(oneway_anova, data_with_subid, type = "bayes")
 })
 
 # test Bayesian ANOVA helper behavior --------
