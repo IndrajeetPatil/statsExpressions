@@ -42,16 +42,8 @@ test_that(desc = "paired contingency_table works ", code = {
   # paired data - without NAs and counts data ----------------------------
 
   paired_data <- dplyr::tibble(
-    response_before = structure(
-      c(1L, 2L, 1L, 2L),
-      levels = c("no", "yes"),
-      class = "factor"
-    ),
-    response_after = structure(
-      c(1L, 1L, 2L, 2L),
-      levels = c("no", "yes"),
-      class = "factor"
-    ),
+    response_before = factor(c("no", "yes", "no", "yes")),
+    response_after = factor(c("no", "no", "yes", "yes")),
     Freq = c(65L, 25L, 5L, 5L)
   )
 
@@ -140,8 +132,6 @@ test_that(desc = "Goodness of Fit contingency_table works without counts", code 
 })
 
 test_that(desc = "bayesian (proportion test)", code = {
-  # bayesian (proportion test) --------------------------------------
-
   set.seed(123)
   df1 <- contingency_table(
     data = mtcars,

@@ -50,7 +50,6 @@ test_that(desc = "parametric t-test works (within-subjects without NAs)", code =
   expect_snapshot(df1[["expression"]])
 })
 
-
 test_that(desc = "parametric t-test works (within-subjects with NAs)", code = {
   set.seed(123)
   df1 <- two_sample_test(
