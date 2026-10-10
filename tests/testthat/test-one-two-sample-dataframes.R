@@ -1,7 +1,6 @@
 test_that(desc = " parametric t-tests", code = {
   # one-sample t-test (with NAs) ---------
 
-  set.seed(123)
   df_1 <- purrr::pmap_dfr(
     .l = list(
       data = list(msleep),
@@ -9,7 +8,6 @@ test_that(desc = " parametric t-tests", code = {
       test.value = list(0.25),
       effsize.type = list("d", "g", "d", "g"),
       alternative = c("two.sided", "less", "greater", "two.sided"),
-      var.equal = list(TRUE, FALSE, TRUE, FALSE),
       conf.level = list(0.89, 0.99, 0.90, 0.50)
     ),
     .f = one_sample_test
@@ -19,7 +17,6 @@ test_that(desc = " parametric t-tests", code = {
 
   # parametric t-test (between-subjects without NAs) ---------
 
-  set.seed(123)
   df_2_between <- purrr::pmap_dfr(
     .l = list(
       data = list(mtcars),
@@ -37,7 +34,6 @@ test_that(desc = " parametric t-tests", code = {
 
   # parametric t-test (within-subjects with NAs) ---------
 
-  set.seed(123)
   df_2_within <- purrr::pmap_dfr(
     .l = list(
       data = list(filter(bugs_long, condition %in% c("HDHF", "HDLF"))),
@@ -55,7 +51,6 @@ test_that(desc = " parametric t-tests", code = {
 
   # parametric ANOVA (between-subjects with NAs) ---------
 
-  set.seed(123)
   df_3_between <- purrr::pmap_dfr(
     .l = list(
       data = list(msleep),
@@ -72,7 +67,6 @@ test_that(desc = " parametric t-tests", code = {
 
   # parametric ANOVA (within-subjects with NAs) ---------
 
-  set.seed(123)
   df_3_within <- purrr::pmap_dfr(
     .l = list(
       data = list(bugs_long),
