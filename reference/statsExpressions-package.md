@@ -32,10 +32,6 @@ This package forms the statistical processing backend for
 For more documentation, see the dedicated
 [website](https://www.indrapatil.com/statsExpressions/).
 
-## Details
-
-`statsExpressions`
-
 ## See also
 
 Useful links:
