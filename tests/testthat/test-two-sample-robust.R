@@ -70,7 +70,7 @@ test_that(desc = "t_robust - between-subjects - with NAs", code = {
 test_that(desc = "works with subject id", code = {
   expect_subject_id_invariance(
     two_sample_test,
-    filter(data_with_subid, condition %in% c(1, 5)),
+    data_with_subid_two_groups,
     type = "r"
   )
 })

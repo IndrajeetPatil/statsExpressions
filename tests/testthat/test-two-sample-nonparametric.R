@@ -31,7 +31,7 @@ test_that(desc = "nonparametric works - within-subjects design", code = {
 test_that(desc = "works with subject id", code = {
   expect_subject_id_invariance(
     two_sample_test,
-    filter(data_with_subid, condition %in% c(1, 5)),
+    data_with_subid_two_groups,
     type = "np"
   )
 })
