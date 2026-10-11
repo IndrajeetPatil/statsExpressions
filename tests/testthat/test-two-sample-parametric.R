@@ -15,9 +15,9 @@ test_that(desc = "parametric t-test works (between-subjects without NAs)", code 
 
 test_that(desc = "parametric t-test works (between-subjects with NAs)", code = {
   df1 <- two_sample_test(
-    ToothGrowth,
-    x = supp,
-    y = len,
+    data = filter(msleep, vore %in% c("carni", "herbi")),
+    x = vore,
+    y = brainwt,
     effsize.type = "g",
     var.equal = FALSE,
     conf.level = 0.90,

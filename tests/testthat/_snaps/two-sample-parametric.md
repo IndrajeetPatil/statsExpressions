@@ -34,13 +34,13 @@
       # A tibble: 1 x 17
         parameter1 parameter2 mean.parameter1 mean.parameter2 statistic df.error
         <chr>      <chr>                <dbl>           <dbl>     <dbl>    <dbl>
-      1 len        supp                  20.7            17.0      1.92     55.3
+      1 brainwt    vore                0.0793           0.622     -1.54     19.4
         p.value method                  alternative effectsize estimate conf.level
           <dbl> <chr>                   <chr>       <chr>         <dbl>      <dbl>
-      1  0.0606 Welch Two Sample t-test two.sided   Hedges' g     0.488        0.9
+      1   0.141 Welch Two Sample t-test two.sided   Hedges' g    -0.468        0.9
         conf.low conf.high conf.method conf.distribution n.obs
            <dbl>     <dbl> <chr>       <chr>             <int>
-      1   0.0599     0.911 ncp         t                    60
+      1   -0.978    0.0539 ncp         t                    29
 
 ---
 
@@ -48,9 +48,9 @@
       df1[["expression"]]
     Output
       [[1]]
-      list(italic("t")["Welch"] * "(" * 55.309 * ")" == "1.915", italic(p) == 
-          "0.061", widehat(italic("g"))["Hedges"] == "0.488", CI["90%"] ~ 
-          "[" * "0.060", "0.911" * "]", italic("n")["obs"] == "60")
+      list(italic("t")["Welch"] * "(" * 19.358 * ")" == "-1.536", italic(p) == 
+          "0.141", widehat(italic("g"))["Hedges"] == "-0.468", CI["90%"] ~ 
+          "[" * "-0.978", "0.054" * "]", italic("n")["obs"] == "29")
       
 
 # parametric t-test works (within-subjects without NAs)
