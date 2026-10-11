@@ -116,21 +116,19 @@ patrick::with_parameters_test_that(
       es_text = "s"
     )
 
-    res <- tidy_model_expressions(
-      df,
-      statistic = statistic,
-      effsize.type = effsize.type,
-      digits = digits
-    )
-    res_shadow <- tidy_model_expressions(
-      df_shadow,
-      statistic = statistic,
-      effsize.type = effsize.type,
-      digits = digits
-    )
+    run <- function(data) {
+      tidy_model_expressions(
+        data,
+        statistic = statistic,
+        effsize.type = effsize.type,
+        digits = digits
+      )
+    }
+
+    res <- run(df)
 
     expect_snapshot(res[["expression"]])
-    expect_identical(res_shadow[["expression"]], res[["expression"]])
+    expect_identical(run(df_shadow)[["expression"]], res[["expression"]])
   },
   .cases = dplyr::tibble(
     .test_name = c(
