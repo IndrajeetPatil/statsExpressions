@@ -323,12 +323,7 @@ test_that(desc = "Bayesian comparisons work with `a` or `b` as grouping name", c
     data <- rename(mtcars, !!group := cyl)
 
     set.seed(123)
-    df <- rlang::inject(pairwise_comparisons(
-      data,
-      !!rlang::sym(group),
-      wt,
-      type = "bayes"
-    ))
+    df <- pairwise_comparisons(data, !!rlang::sym(group), wt, type = "bayes")
 
     expect_identical(df[["expression"]], expected[["expression"]])
   }

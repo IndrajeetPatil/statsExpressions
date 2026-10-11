@@ -112,33 +112,24 @@ test_that(desc = "with .rowid - without NA", code = {
 # with .rowid - with NA ---------------------------------------------
 
 test_that(desc = "with .rowid - with NA", code = {
-  df_original <- bugs_long
+  convert_without_rowid <- function(...) {
+    select(long_to_wide_converter(...), -.rowid)
+  }
+
   df_arranged <- arrange(bugs_long, subject)
 
-  expect_identical(
-    select(long_to_wide_converter(df_arranged, condition, desire), -.rowid),
-    select(
-      long_to_wide_converter(df_original, condition, desire, subject),
-      -.rowid
-    )
-  )
-
-  expect_identical(
-    select(
-      long_to_wide_converter(df_arranged, condition, desire, spread = FALSE),
-      -.rowid
-    ),
-    select(
-      long_to_wide_converter(
-        df_original,
+  for (spread in c(TRUE, FALSE)) {
+    expect_identical(
+      convert_without_rowid(df_arranged, condition, desire, spread = spread),
+      convert_without_rowid(
+        bugs_long,
         condition,
         desire,
         subject,
-        spread = FALSE
-      ),
-      -.rowid
+        spread = spread
+      )
     )
-  )
+  }
 })
 
 
