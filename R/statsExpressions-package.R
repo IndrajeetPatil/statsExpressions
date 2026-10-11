@@ -1,5 +1,3 @@
-#' \code{statsExpressions}
-#'
 #' @title statsExpressions: Tidy Dataframes and Expressions with Statistical Details
 #'
 #' @description

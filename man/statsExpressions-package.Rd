@@ -32,9 +32,6 @@ This package forms the statistical processing backend for \href{https://www.indr
 
 For more documentation, see the dedicated \href{https://www.indrapatil.com/statsExpressions/}{website}.
 }
-\details{
-\code{statsExpressions}
-}
 \seealso{
 Useful links:
 \itemize{
