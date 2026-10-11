@@ -117,8 +117,10 @@ add_expression_col <- function(
 
   # dealing with exactly 0 p-values
   if ("p.value" %in% colnames(data)) {
-    data <- data |>
-      mutate(p.value = if_else(p.value == 0, .Machine$double.xmin, p.value))
+    data <- mutate(
+      data,
+      p.value = if_else(p.value == 0, .Machine$double.xmin, p.value)
+    )
   }
 
   # arguments are referenced with `.env$` so that columns in `data` with the
