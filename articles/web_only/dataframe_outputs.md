@@ -380,14 +380,14 @@ This vignette can be cited as:
 `#> ``8`` g_.rowid       1     cauchy                          ``0``       1     fixed `\
 `#>          ``bf10`` ``method``                          ``log_e_bf10`` ``effectsize``        `\
 `#>         ``<dbl>`` ``<chr>``                                ``<dbl>`` ``<chr>``             `\
-`#> ``1`` ``1``37``2``773``375``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``2`` ``1``37``2``773``375``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``3`` ``1``37``2``773``375``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``4`` ``1``37``2``773``375``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``5`` ``1``37``2``773``375``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``6`` ``1``37``2``773``375``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``7`` ``1``37``2``773``375``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``8`` ``1``37``2``773``375``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``1`` ``1``37``2``773``377``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``2`` ``1``37``2``773``377``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``3`` ``1``37``2``773``377``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``4`` ``1``37``2``773``377``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``5`` ``1``37``2``773``377``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``6`` ``1``37``2``773``377``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``7`` ``1``37``2``773``377``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``8`` ``1``37``2``773``377``. Bayes factors for linear models       21.0 Bayesian R-squared`\
 `#>   ``estimate`` ``std.dev`` ``conf.level`` ``conf.low`` ``conf.high`` ``conf.method`` ``component``   ``n.obs`\
 `#>      ``<dbl>``   ``<dbl>``      ``<dbl>``    ``<dbl>``     ``<dbl>`` ``<chr>``       ``<chr>``       ``<int>`\
 `#> ``1``    ``0.``529  ``0.0``33``3``       ``0.``95    ``0.``461     ``0.``587 HDI         conditional    88`\
@@ -760,7 +760,7 @@ This vignette can be cited as:
 `#> ``# A tibble: 1 × 14`\
 `#>   ``term``    ``effectsize``                     ``estimate`` ``std.error`` ``conf.low`` ``conf.high`\
 `#>   ``<chr>``   ``<chr>``                             ``<dbl>``     ``<dbl>``    ``<dbl>``     ``<dbl>`\
-`#> ``1`` Overall meta-analytic summary estimate   -``0.``746``     ``0.``234    -``1.26``    -``0.``343`\
+`#> ``1`` Overall meta-analytic summary estimate   -``0.``746``     ``0.``233    -``1.26``    -``0.``344`\
 `#>   ``statistic``  ``p.value`` ``weight`` ``conf.level`` ``method``                               `\
 `#>       ``<dbl>``    ``<dbl>``  ``<dbl>``      ``<dbl>`` ``<chr>``                                `\
 `#> ``1``     -``3.20`` ``0.000``501``     ``NA``       ``0.``95 Robust meta-analysis using 'metaplus'`\
