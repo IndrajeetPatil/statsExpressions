@@ -168,3 +168,6 @@ data_meta <- dplyr::tribble(
 # styler: on
 
 # nolint end
+
+# two-condition subset of `data_with_subid` for paired two-sample tests
+data_with_subid_two_groups <- filter(data_with_subid, condition %in% c(1, 5))

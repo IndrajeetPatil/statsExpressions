@@ -48,14 +48,14 @@ corr_test <- function(
 
   stats_df <- correlation::correlation(
     data = data,
-    method = ifelse(type == "nonparametric", "spearman", "pearson"),
+    method = if (type == "nonparametric") "spearman" else "pearson",
     ci = conf.level,
     bayesian = type == "bayes",
     bayesian_prior = bf.prior,
-    winsorize = ifelse(type == "robust", tr, FALSE)
+    winsorize = if (type == "robust") tr else FALSE
   ) |>
     standardize_names(style = "broom") |>
-    mutate(conf.method = ifelse(type == "bayes", "HDI", "normal"))
+    mutate(conf.method = if (type == "bayes") "HDI" else "normal")
 
   add_expression_col(stats_df, paired = TRUE, digits = digits)
 }
