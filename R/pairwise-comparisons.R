@@ -184,35 +184,38 @@ pairwise_comparisons <- function(
   g_vec <- pull(data, .rowid)
   .f.args <- list(paired = paired, p.adjust.method = "none", exact = exact, ...)
 
-  # parametric & Bayesian ---------------------------------
+  # frequentist tests (Bayesian ones reuse them to enumerate pairs) ----------
 
-  if (type %in% c("parametric", "bayes")) {
-    if (var.equal || paired) {
+  if (type == "robust") {
+    df_pair <- if (paired) {
+      WRS2::rmmcp(y = y_vec, groups = x_vec, blocks = g_vec, tr = tr)
+    } else {
+      WRS2::lincon(new_formula(y, x), data, tr = tr, method = "none")
+    }
+
+    df_pair <- tidy_model_parameters(df_pair)
+    test <- "Yuen's trimmed means"
+  } else {
+    if (type == "nonparametric") {
+      if (paired) {
+        .f <- PMCMRplus::durbinAllPairsTest
+        test <- "Durbin-Conover"
+      } else {
+        .f <- PMCMRplus::kwAllPairsDunnTest
+        test <- "Dunn"
+      }
+
+      # Durbin-Conover needs `y`, but it can't be a common argument because
+      # `pairwise.t.test()` would pass it on to `t.test()`
+      .f.args$y <- y_vec
+    } else if (var.equal || paired) {
       .f <- stats::pairwise.t.test
       test <- "Student's t"
     } else {
       .f <- PMCMRplus::gamesHowellTest
       test <- "Games-Howell"
     }
-  }
 
-  # nonparametric ----------------------------
-
-  if (type == "nonparametric") {
-    if (paired) {
-      .f <- PMCMRplus::durbinAllPairsTest
-      test <- "Durbin-Conover"
-    } else {
-      .f <- PMCMRplus::kwAllPairsDunnTest
-      test <- "Dunn"
-    }
-
-    # Durbin-Conover needs `y`, but it can't be a common argument because
-    # `pairwise.t.test()` would pass it on to `t.test()`
-    .f.args$y <- y_vec
-  }
-
-  if (type != "robust") {
     df_pair <- suppressWarnings(exec(
       .f,
       # Dunn, Games-Howell, Student's t-test
@@ -225,21 +228,8 @@ pairwise_comparisons <- function(
       !!!.f.args
     )) |>
       tidy_model_parameters() |>
-      select(-matches("^parameter1$|^parameter2$")) |>
+      select(-matches("^parameter[12]$")) |>
       rename(group2 = group1, group1 = group2)
-  }
-
-  # robust ----------------------------------
-
-  if (type == "robust") {
-    df_pair <- if (paired) {
-      WRS2::rmmcp(y = y_vec, groups = x_vec, blocks = g_vec, tr = tr)
-    } else {
-      WRS2::lincon(new_formula(y, x), data, tr = tr, method = "none")
-    }
-
-    df_pair <- tidy_model_parameters(df_pair)
-    test <- "Yuen's trimmed means"
   }
 
   # Bayesian --------------------------------

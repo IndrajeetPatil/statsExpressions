@@ -111,13 +111,6 @@ pairwise_contingency_table <- function(
   df_pair |>
     arrange(group1, group2) |>
     .pairwise_p_adjust_expr(p.adjust.method, digits, "Fisher's exact test") |>
-    select(
-      group1,
-      group2,
-      p.value,
-      p.value.adj,
-      everything(),
-      -matches("^method$")
-    ) |>
+    relocate(p.value.adj, .after = p.value) |>
     .glue_to_expression()
 }
