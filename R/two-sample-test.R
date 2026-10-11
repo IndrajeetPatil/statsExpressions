@@ -65,7 +65,7 @@ two_sample_test <- function(
     y = {{ y }},
     subject.id = {{ subject.id }},
     paired = paired,
-    spread = ifelse(type %in% c("bayes", "robust"), paired, TRUE)
+    spread = if (type %in% c("bayes", "robust")) paired else TRUE
   )
   y_by_x <- new_formula(y, x)
 
