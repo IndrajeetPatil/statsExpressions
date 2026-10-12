@@ -1,4 +1,4 @@
-#  parametric t-tests
+# parametric t-tests and ANOVAs
 
     Code
       df_1

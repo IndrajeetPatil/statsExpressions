@@ -38,7 +38,7 @@ test_that(desc = "contingency_table works", code = {
   expect_snapshot(df3[["expression"]])
 })
 
-test_that(desc = "paired contingency_table works ", code = {
+test_that(desc = "paired contingency_table works", code = {
   # paired data - without NAs and counts data ----------------------------
 
   paired_data <- dplyr::tibble(
@@ -86,7 +86,7 @@ test_that(desc = "paired contingency_table works ", code = {
   expect_snapshot(df2[["expression"]])
 })
 
-test_that(desc = "Goodness of Fit contingency_table works without counts", code = {
+test_that(desc = "goodness of fit contingency_table works", code = {
   # one-sample test (without NAs) -------------------------------------
 
   set.seed(123)
@@ -182,7 +182,7 @@ test_that(desc = "bayesian (contingency tab)", code = {
 # be emitted.
 
 patrick::with_parameters_test_that(
-  "contingency_table() expression is invariant to `options(OutDec)`: ",
+  "contingency_table() expression is invariant to `options(OutDec)`:",
   {
     withr::local_options(list(OutDec = dec))
 
