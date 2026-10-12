@@ -117,6 +117,8 @@ long_to_wide_converter <- function(
     mutate({{ x }} := droplevels({{ x }}))
 
   if (anyDuplicated(select(data, {{ x }}, .rowid)) > 0L) {
+    # nocov start
+    # duplicated subjects are an input error, so examples never reach this
     abort(c(
       glue(
         "Each `{as_name(enquo(subject.id))}` value must appear at most once ",
@@ -124,6 +126,7 @@ long_to_wide_converter <- function(
       ),
       i = "Aggregate repeated observations within each condition first."
     ))
+    # nocov end
   }
 
   data |>
