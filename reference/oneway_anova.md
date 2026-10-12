@@ -325,22 +325,22 @@ oneway_anova(
 
 # within-subjects design
 oneway_anova(
-  data       = iris_long,
+  data       = bugs_long,
   x          = condition,
-  y          = value,
-  subject.id = id,
+  y          = desire,
+  subject.id = subject,
   paired     = TRUE
 )
 #> # A tibble: 1 × 18
 #>   term      sumsq sum.squares.error    df df.error meansq statistic  p.value
 #>   <chr>     <dbl>             <dbl> <dbl>    <dbl>  <dbl>     <dbl>    <dbl>
-#> 1 condition 1656.              318.  1.15     171.   1.86      776. 1.32e-69
+#> 1 condition  233.              984.  2.63     229.   4.30      20.6 8.27e-11
 #>   method                                              effectsize       estimate
 #>   <chr>                                               <chr>               <dbl>
-#> 1 ANOVA estimation for factorial designs using 'afex' Omega2 (partial)    0.707
+#> 1 ANOVA estimation for factorial designs using 'afex' Omega2 (partial)   0.0783
 #>   conf.level conf.low conf.high conf.method conf.distribution n.obs expression
 #>        <dbl>    <dbl>     <dbl> <chr>       <chr>             <int> <list>    
-#> 1       0.95    0.673         1 ncp         F                   150 <language>
+#> 1       0.95   0.0280         1 ncp         F                    88 <language>
 
 # ----------------------- non-parametric ----------------------------------
 
@@ -364,23 +364,23 @@ oneway_anova(
 
 # within-subjects design
 oneway_anova(
-  data       = iris_long,
+  data       = bugs_long,
   x          = condition,
-  y          = value,
-  subject.id = id,
+  y          = desire,
+  subject.id = subject,
   paired     = TRUE,
   type       = "np"
 )
 #> # A tibble: 1 × 15
 #>   parameter1 parameter2 statistic df.error  p.value method                
 #>   <chr>      <chr>          <dbl>    <dbl>    <dbl> <chr>                 
-#> 1 value      condition        410        3 1.51e-88 Friedman rank sum test
+#> 1 desire     condition       55.8        3 4.56e-12 Friedman rank sum test
 #>   effectsize  estimate conf.level conf.low conf.high conf.method         
 #>   <chr>          <dbl>      <dbl>    <dbl>     <dbl> <chr>               
-#> 1 Kendall's W    0.911       0.95    0.904         1 percentile bootstrap
+#> 1 Kendall's W    0.211       0.95    0.154         1 percentile bootstrap
 #>   conf.iterations n.obs expression
 #>             <int> <int> <list>    
-#> 1             100   150 <language>
+#> 1             100    88 <language>
 
 # ----------------------- robust -------------------------------------
 
@@ -400,33 +400,33 @@ oneway_anova(
 #> 1 A heteroscedastic one-way ANOVA for trimmed means
 #>   effectsize                         estimate conf.level conf.low conf.high
 #>   <chr>                                 <dbl>      <dbl>    <dbl>     <dbl>
-#> 1 Explanatory measure of effect size     1.02       0.95    0.828      1.35
+#> 1 Explanatory measure of effect size     1.02       0.95    0.824      1.62
 #>   n.obs expression
 #>   <int> <list>    
 #> 1    32 <language>
 
 # within-subjects design
 oneway_anova(
-  data       = iris_long,
+  data       = bugs_long,
   x          = condition,
-  y          = value,
-  subject.id = id,
+  y          = desire,
+  subject.id = subject,
   paired     = TRUE,
   type       = "r"
 )
 #> # A tibble: 1 × 12
-#>   statistic    df df.error   p.value
-#>       <dbl> <dbl>    <dbl>     <dbl>
-#> 1      368.  1.09     97.1 2.23e-308
+#>   statistic    df df.error  p.value
+#>       <dbl> <dbl>    <dbl>    <dbl>
+#> 1      21.0  2.73     145. 1.15e-10
 #>   method                                                             
 #>   <chr>                                                              
 #> 1 A heteroscedastic one-way repeated measures ANOVA for trimmed means
 #>   effectsize                                                      estimate
 #>   <chr>                                                              <dbl>
-#> 1 Algina-Keselman-Penfield robust standardized difference average    -1.48
+#> 1 Algina-Keselman-Penfield robust standardized difference average    0.325
 #>   conf.level conf.low conf.high n.obs expression
 #>        <dbl>    <dbl>     <dbl> <int> <list>    
-#> 1       0.95    -1.96    -0.873   150 <language>
+#> 1       0.95    0.110     0.572    88 <language>
 
 # ----------------------- Bayesian -------------------------------------
 
@@ -442,33 +442,33 @@ oneway_anova(
 #>   <chr> <dbl> <chr>                       <dbl>       <dbl>  <dbl>
 #> 1 mu    1     cauchy                          0       0.707 20968.
 #> 2 cyl-4 1     cauchy                          0       0.707 20968.
-#> 3 cyl-6 0.535 cauchy                          0       0.707 20968.
+#> 3 cyl-6 0.542 cauchy                          0       0.707 20968.
 #> 4 cyl-8 1     cauchy                          0       0.707 20968.
 #> 5 sig2  1     cauchy                          0       0.707 20968.
 #> 6 g_cyl 1     cauchy                          0       0.707 20968.
 #>   method                          log_e_bf10 effectsize         estimate std.dev
 #>   <chr>                                <dbl> <chr>                 <dbl>   <dbl>
-#> 1 Bayes factors for linear models       9.95 Bayesian R-squared    0.576  0.0867
-#> 2 Bayes factors for linear models       9.95 Bayesian R-squared    0.576  0.0867
-#> 3 Bayes factors for linear models       9.95 Bayesian R-squared    0.576  0.0867
-#> 4 Bayes factors for linear models       9.95 Bayesian R-squared    0.576  0.0867
-#> 5 Bayes factors for linear models       9.95 Bayesian R-squared    0.576  0.0867
-#> 6 Bayes factors for linear models       9.95 Bayesian R-squared    0.576  0.0867
+#> 1 Bayes factors for linear models       9.95 Bayesian R-squared    0.581  0.0815
+#> 2 Bayes factors for linear models       9.95 Bayesian R-squared    0.581  0.0815
+#> 3 Bayes factors for linear models       9.95 Bayesian R-squared    0.581  0.0815
+#> 4 Bayes factors for linear models       9.95 Bayesian R-squared    0.581  0.0815
+#> 5 Bayes factors for linear models       9.95 Bayesian R-squared    0.581  0.0815
+#> 6 Bayes factors for linear models       9.95 Bayesian R-squared    0.581  0.0815
 #>   conf.level conf.low conf.high conf.method n.obs expression
 #>        <dbl>    <dbl>     <dbl> <chr>       <int> <list>    
-#> 1       0.95    0.382     0.703 HDI            32 <language>
-#> 2       0.95    0.382     0.703 HDI            32 <language>
-#> 3       0.95    0.382     0.703 HDI            32 <language>
-#> 4       0.95    0.382     0.703 HDI            32 <language>
-#> 5       0.95    0.382     0.703 HDI            32 <language>
-#> 6       0.95    0.382     0.703 HDI            32 <language>
+#> 1       0.95    0.373     0.702 HDI            32 <language>
+#> 2       0.95    0.373     0.702 HDI            32 <language>
+#> 3       0.95    0.373     0.702 HDI            32 <language>
+#> 4       0.95    0.373     0.702 HDI            32 <language>
+#> 5       0.95    0.373     0.702 HDI            32 <language>
+#> 6       0.95    0.373     0.702 HDI            32 <language>
 
 # within-subjects design
 oneway_anova(
-  data       = iris_long,
+  data       = bugs_long,
   x          = condition,
-  y          = value,
-  subject.id = id,
+  y          = desire,
+  subject.id = subject,
   paired     = TRUE,
   type       = "bayes"
 )
@@ -476,36 +476,36 @@ oneway_anova(
 #>   the first numerator model.
 #>   See help("get_parameters", package = "insight").
 #> # A tibble: 8 × 19
-#>   term                      pd prior.distribution prior.location prior.scale
-#>   <chr>                  <dbl> <chr>                       <dbl>       <dbl>
-#> 1 mu                         1 cauchy                          0       0.707
-#> 2 condition-Petal.Length     1 cauchy                          0       0.707
-#> 3 condition-Petal.Width      1 cauchy                          0       0.707
-#> 4 condition-Sepal.Length     1 cauchy                          0       0.707
-#> 5 condition-Sepal.Width      1 cauchy                          0       0.707
-#> 6 sig2                       1 cauchy                          0       1    
-#> 7 g_condition                1 cauchy                          0       1    
-#> 8 g_.rowid                   1 cauchy                          0       1    
-#>   effect     bf10 method                          log_e_bf10 effectsize        
-#>   <chr>     <dbl> <chr>                                <dbl> <chr>             
-#> 1 fixed  1.54e182 Bayes factors for linear models       420. Bayesian R-squared
-#> 2 fixed  1.54e182 Bayes factors for linear models       420. Bayesian R-squared
-#> 3 fixed  1.54e182 Bayes factors for linear models       420. Bayesian R-squared
-#> 4 fixed  1.54e182 Bayes factors for linear models       420. Bayesian R-squared
-#> 5 fixed  1.54e182 Bayes factors for linear models       420. Bayesian R-squared
-#> 6 fixed  1.54e182 Bayes factors for linear models       420. Bayesian R-squared
-#> 7 fixed  1.54e182 Bayes factors for linear models       420. Bayesian R-squared
-#> 8 fixed  1.54e182 Bayes factors for linear models       420. Bayesian R-squared
+#>   term              pd prior.distribution prior.location prior.scale effect
+#>   <chr>          <dbl> <chr>                       <dbl>       <dbl> <chr> 
+#> 1 mu             1     cauchy                          0       0.707 fixed 
+#> 2 condition-HDHF 1     cauchy                          0       0.707 fixed 
+#> 3 condition-HDLF 0.868 cauchy                          0       0.707 fixed 
+#> 4 condition-LDHF 0.994 cauchy                          0       0.707 fixed 
+#> 5 condition-LDLF 1     cauchy                          0       0.707 fixed 
+#> 6 sig2           1     cauchy                          0       1     fixed 
+#> 7 g_condition    1     cauchy                          0       1     fixed 
+#> 8 g_.rowid       1     cauchy                          0       1     fixed 
+#>          bf10 method                          log_e_bf10 effectsize        
+#>         <dbl> <chr>                                <dbl> <chr>             
+#> 1 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 2 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 3 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 4 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 5 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 6 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 7 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 8 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
 #>   estimate std.dev conf.level conf.low conf.high conf.method component   n.obs
 #>      <dbl>   <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>       <int>
-#> 1    0.818 0.00837       0.95    0.800     0.833 HDI         conditional   150
-#> 2    0.818 0.00837       0.95    0.800     0.833 HDI         conditional   150
-#> 3    0.818 0.00837       0.95    0.800     0.833 HDI         conditional   150
-#> 4    0.818 0.00837       0.95    0.800     0.833 HDI         conditional   150
-#> 5    0.818 0.00837       0.95    0.800     0.833 HDI         conditional   150
-#> 6    0.818 0.00837       0.95    0.800     0.833 HDI         conditional   150
-#> 7    0.818 0.00837       0.95    0.800     0.833 HDI         conditional   150
-#> 8    0.818 0.00837       0.95    0.800     0.833 HDI         conditional   150
+#> 1    0.531  0.0323       0.95    0.461     0.587 HDI         conditional    88
+#> 2    0.531  0.0323       0.95    0.461     0.587 HDI         conditional    88
+#> 3    0.531  0.0323       0.95    0.461     0.587 HDI         conditional    88
+#> 4    0.531  0.0323       0.95    0.461     0.587 HDI         conditional    88
+#> 5    0.531  0.0323       0.95    0.461     0.587 HDI         conditional    88
+#> 6    0.531  0.0323       0.95    0.461     0.587 HDI         conditional    88
+#> 7    0.531  0.0323       0.95    0.461     0.587 HDI         conditional    88
+#> 8    0.531  0.0323       0.95    0.461     0.587 HDI         conditional    88
 #>   expression
 #>   <list>    
 #> 1 <language>
