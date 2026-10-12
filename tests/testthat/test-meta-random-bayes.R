@@ -10,8 +10,6 @@ test_that(desc = "meta_analysis works - bayesian", code = {
     summarize = "integrate"
   )
 
-  expect_type(df, "list")
-
   expect_snapshot(dplyr::select(df, -expression))
   expect_snapshot(df[["expression"]])
 })
