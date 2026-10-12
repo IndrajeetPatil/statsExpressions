@@ -3,6 +3,7 @@
 S3method(print,statsExpressions)
 export(add_expression_col)
 export(centrality_description)
+export(complete_subjects)
 export(contingency_table)
 export(corr_test)
 export(extract_stats_type)

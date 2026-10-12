@@ -101,6 +101,7 @@ reference:
       - matches("tidy_")
       - extract_stats_type
       - long_to_wide_converter
+      - complete_subjects
       - add_expression_col
 
   - title: Data

@@ -1,8 +1,16 @@
 # statsExpressions 2.1.2.9000
 
+- New helper `complete_subjects()` prepares long-format repeated-measures
+  data the same way the paired tests do. It drops rows that cannot be paired,
+  validates the subject identifier, and keeps only subjects observed in every
+  condition. Packages that plot or summarize repeated-measures data (such as
+  `{ggstatsplot}`) can use it so that they work on the same observations as
+  the statistical tests.
+
 - Repeated-measures analyses (`paired = TRUE`) now validate the subject
-  identifier in `long_to_wide_converter()`, and thus in `two_sample_test()`,
-  `oneway_anova()`, and `pairwise_comparisons()`:
+  identifier via `complete_subjects()`, and thus in
+  `long_to_wide_converter()`, `two_sample_test()`, `oneway_anova()`, and
+  `pairwise_comparisons()`:
 
   - A subject with more than one row in a level of `x` now gives an
     informative error. Previously, depending on `type`, this produced

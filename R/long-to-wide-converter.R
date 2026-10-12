@@ -22,7 +22,8 @@
 #'   the paired results will be silently incorrect, so it is safest to always
 #'   specify `subject.id`. For paired designs, each subject must have at most
 #'   one row per level of `x` (an error is thrown otherwise), and rows with a
-#'   missing `subject.id` are dropped because they cannot be paired.
+#'   missing `subject.id` are dropped because they cannot be paired (see
+#'   [complete_subjects()]).
 #' @param paired Logical that decides whether the experimental design is
 #'   repeated measures/within-subjects or between-subjects. The default is
 #'   `FALSE`.
@@ -71,23 +72,19 @@ long_to_wide_converter <- function(
   spread = TRUE,
   ...
 ) {
-  data <- data |>
-    select({{ x }}, {{ y }}, .rowid = {{ subject.id }}) |>
-    mutate({{ x }} := droplevels(as.factor({{ x }}))) |>
-    arrange({{ x }})
-
-  if (!".rowid" %in% names(data)) {
-    data <- if (paired) {
-      mutate(data, .rowid = row_number(), .by = {{ x }})
-    } else {
-      mutate(data, .rowid = row_number())
-    }
-  }
-
-  data <- if (paired) {
-    .complete_subjects(data, {{ x }}, {{ y }}, {{ subject.id }})
+  if (paired) {
+    data <- complete_subjects(data, {{ x }}, {{ y }}, {{ subject.id }})
   } else {
-    filter_out(data, anyNA(pick({{ x }}, {{ y }})), .by = .rowid)
+    data <- data |>
+      select({{ x }}, {{ y }}, .rowid = {{ subject.id }}) |>
+      mutate({{ x }} := droplevels(as.factor({{ x }}))) |>
+      arrange({{ x }})
+
+    if (!".rowid" %in% names(data)) {
+      data <- mutate(data, .rowid = row_number())
+    }
+
+    data <- filter_out(data, anyNA(pick({{ x }}, {{ y }})), .by = .rowid)
   }
 
   if (spread) {
@@ -102,36 +99,6 @@ long_to_wide_converter <- function(
     relocate(.rowid) |>
     arrange(.rowid) |>
     as_tibble()
-}
-
-#' @title Keep subjects observed in every condition
-#' @description Drops rows that cannot be paired (missing `x` or subject
-#'   identifier), checks that each subject has at most one row per level of
-#'   `x`, and keeps only subjects with a non-missing `y` in every level of `x`.
-#' @param subject.id The subject identifier, used only in the error message for
-#'   duplicated subjects (which cannot occur without it).
-#' @noRd
-.complete_subjects <- function(data, x, y, subject.id) {
-  data <- data |>
-    filter(!is.na(.rowid), !is.na({{ x }})) |>
-    mutate({{ x }} := droplevels({{ x }}))
-
-  if (anyDuplicated(select(data, {{ x }}, .rowid)) > 0L) {
-    # nocov start
-    # duplicated subjects are an input error, so examples never reach this
-    abort(c(
-      glue(
-        "Each `{as_name(enquo(subject.id))}` value must appear at most once ",
-        "per level of `{as_name(enquo(x))}`."
-      ),
-      i = "Aggregate repeated observations within each condition first."
-    ))
-    # nocov end
-  }
-
-  data |>
-    filter(!is.na({{ y }})) |>
-    filter(n() == nlevels({{ x }}), .by = .rowid)
 }
 
 #' @title Paired-aware observation count for the expression's `n`
