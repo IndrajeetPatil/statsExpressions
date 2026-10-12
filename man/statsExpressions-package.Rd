@@ -2,8 +2,8 @@
 % Please edit documentation in R/statsExpressions-package.R
 \docType{package}
 \name{statsExpressions-package}
-\alias{statsExpressions-package}
 \alias{statsExpressions}
+\alias{statsExpressions-package}
 \title{statsExpressions: Tidy Dataframes and Expressions with Statistical Details}
 \description{
 The \code{{statsExpressions}} package has two key aims:
