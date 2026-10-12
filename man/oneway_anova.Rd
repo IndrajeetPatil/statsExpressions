@@ -248,10 +248,10 @@ oneway_anova(
 
 # within-subjects design
 oneway_anova(
-  data       = iris_long,
+  data       = bugs_long,
   x          = condition,
-  y          = value,
-  subject.id = id,
+  y          = desire,
+  subject.id = subject,
   paired     = TRUE
 )
 
@@ -267,10 +267,10 @@ oneway_anova(
 
 # within-subjects design
 oneway_anova(
-  data       = iris_long,
+  data       = bugs_long,
   x          = condition,
-  y          = value,
-  subject.id = id,
+  y          = desire,
+  subject.id = subject,
   paired     = TRUE,
   type       = "np"
 )
@@ -287,15 +287,13 @@ oneway_anova(
 
 # within-subjects design
 oneway_anova(
-  data       = iris_long,
+  data       = bugs_long,
   x          = condition,
-  y          = value,
-  subject.id = id,
+  y          = desire,
+  subject.id = subject,
   paired     = TRUE,
   type       = "r"
 )
-\dontshow{\}) # examplesIf}
-\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("rstantools")) withAutoprint(\{ # examplesIf}
 
 # ----------------------- Bayesian -------------------------------------
 
@@ -309,10 +307,10 @@ oneway_anova(
 
 # within-subjects design
 oneway_anova(
-  data       = iris_long,
+  data       = bugs_long,
   x          = condition,
-  y          = value,
-  subject.id = id,
+  y          = desire,
+  subject.id = subject,
   paired     = TRUE,
   type       = "bayes"
 )
