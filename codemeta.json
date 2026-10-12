@@ -144,6 +144,7 @@
       "@type": "SoftwareApplication",
       "identifier": "survival",
       "name": "survival",
+      "version": ">= 3.8-12",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -419,7 +420,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4266.748KB",
+  "fileSize": "17911.556KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
