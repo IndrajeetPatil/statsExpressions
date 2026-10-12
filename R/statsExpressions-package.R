@@ -6,9 +6,6 @@
 #'
 #' ```
 #'
-#' @docType package
-#' @aliases statsExpressions statsExpressions-package
-#' @name statsExpressions-package
 #' @keywords internal
 "_PACKAGE"
 
