@@ -20,7 +20,9 @@
 #'   of `x` (i.e., the data is assumed to be sorted in a subject-1, subject-2,
 #'   ... pattern within every level). If the data is **not** sorted this way,
 #'   the paired results will be silently incorrect, so it is safest to always
-#'   specify `subject.id`.
+#'   specify `subject.id`. For paired designs, each subject must have at most
+#'   one row per level of `x` (an error is thrown otherwise), and rows with a
+#'   missing `subject.id` are dropped because they cannot be paired.
 #' @param paired Logical that decides whether the experimental design is
 #'   repeated measures/within-subjects or between-subjects. The default is
 #'   `FALSE`.
@@ -29,13 +31,14 @@
 #' @param ... Currently ignored.
 #'
 #' @returns A tibble with `NA`s removed while respecting the
-#'   between-or-within-subjects nature of the dataset: for paired designs, a
-#'   subject with a missing value in any condition is removed entirely, while
-#'   for unpaired designs only the rows with missing values are removed. Rows
-#'   are grouped by `subject.id` whenever it is supplied, so with
-#'   `paired = FALSE` and a `subject.id`, a missing value still removes every
-#'   row of that subject. The `.rowid` column contains the subject identifier
-#'   (or an internal row identifier).
+#'   between-or-within-subjects nature of the dataset: for paired designs, only
+#'   subjects observed in every level of `x` are kept (a subject with a missing
+#'   value or a missing row in any condition is removed entirely), while for
+#'   unpaired designs only the rows with missing values are removed. Rows are
+#'   grouped by `subject.id` whenever it is supplied, so with `paired = FALSE`
+#'   and a `subject.id`, a missing value still removes every row of that
+#'   subject. The `.rowid` column contains the subject identifier (or an
+#'   internal row identifier).
 #'
 #' @autoglobal
 #'
@@ -81,7 +84,11 @@ long_to_wide_converter <- function(
     }
   }
 
-  data <- filter_out(data, anyNA(pick({{ x }}, {{ y }})), .by = .rowid)
+  data <- if (paired) {
+    .complete_subjects(data, {{ x }}, {{ y }}, {{ subject.id }})
+  } else {
+    filter_out(data, anyNA(pick({{ x }}, {{ y }})), .by = .rowid)
+  }
 
   if (spread) {
     data <- tidyr::pivot_wider(
@@ -95,6 +102,33 @@ long_to_wide_converter <- function(
     relocate(.rowid) |>
     arrange(.rowid) |>
     as_tibble()
+}
+
+#' @title Keep subjects observed in every condition
+#' @description Drops rows that cannot be paired (missing `x` or subject
+#'   identifier), checks that each subject has at most one row per level of
+#'   `x`, and keeps only subjects with a non-missing `y` in every level of `x`.
+#' @param subject.id The subject identifier, used only in the error message for
+#'   duplicated subjects (which cannot occur without it).
+#' @noRd
+.complete_subjects <- function(data, x, y, subject.id) {
+  data <- data |>
+    filter(!is.na(.rowid), !is.na({{ x }})) |>
+    mutate({{ x }} := droplevels({{ x }}))
+
+  if (anyDuplicated(select(data, {{ x }}, .rowid)) > 0L) {
+    abort(c(
+      glue(
+        "Each `{as_name(enquo(subject.id))}` value must appear at most once ",
+        "per level of `{as_name(enquo(x))}`."
+      ),
+      i = "Aggregate repeated observations within each condition first."
+    ))
+  }
+
+  data |>
+    filter(!is.na({{ y }})) |>
+    filter(n() == nlevels({{ x }}), .by = .rowid)
 }
 
 #' @title Paired-aware observation count for the expression's `n`
