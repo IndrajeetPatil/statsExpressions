@@ -66,10 +66,10 @@
 #'
 #' # within-subjects design
 #' oneway_anova(
-#'   data       = iris_long,
+#'   data       = bugs_long,
 #'   x          = condition,
-#'   y          = value,
-#'   subject.id = id,
+#'   y          = desire,
+#'   subject.id = subject,
 #'   paired     = TRUE
 #' )
 #'
@@ -85,10 +85,10 @@
 #'
 #' # within-subjects design
 #' oneway_anova(
-#'   data       = iris_long,
+#'   data       = bugs_long,
 #'   x          = condition,
-#'   y          = value,
-#'   subject.id = id,
+#'   y          = desire,
+#'   subject.id = subject,
 #'   paired     = TRUE,
 #'   type       = "np"
 #' )
@@ -105,10 +105,10 @@
 #'
 #' # within-subjects design
 #' oneway_anova(
-#'   data       = iris_long,
+#'   data       = bugs_long,
 #'   x          = condition,
-#'   y          = value,
-#'   subject.id = id,
+#'   y          = desire,
+#'   subject.id = subject,
 #'   paired     = TRUE,
 #'   type       = "r"
 #' )
@@ -127,10 +127,10 @@
 #'
 #' # within-subjects design
 #' oneway_anova(
-#'   data       = iris_long,
+#'   data       = bugs_long,
 #'   x          = condition,
-#'   y          = value,
-#'   subject.id = id,
+#'   y          = desire,
+#'   subject.id = subject,
 #'   paired     = TRUE,
 #'   type       = "bayes"
 #' )
