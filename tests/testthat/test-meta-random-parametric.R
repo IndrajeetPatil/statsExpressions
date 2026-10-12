@@ -1,7 +1,6 @@
 test_that(desc = "meta_analysis works - parametric", code = {
   skip_if_not_installed("metafor")
 
-  set.seed(123)
   df <- meta_analysis(data_meta)
 
   expect_snapshot(select(df, -expression))

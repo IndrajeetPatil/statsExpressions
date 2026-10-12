@@ -63,8 +63,7 @@ centrality_description <- function(
   group_name <- temp_names[[ncol(data) + 1L]]
   response_name <- temp_names[[ncol(data) + 2L]]
 
-  select(data, {{ x }}, {{ y }}) |>
-    rename(!!group_name := {{ x }}, !!response_name := {{ y }}) |>
+  select(data, !!group_name := {{ x }}, !!response_name := {{ y }}) |>
     tidyr::drop_na() |>
     datawizard::describe_distribution(
       select = response_name,

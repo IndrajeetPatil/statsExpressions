@@ -85,10 +85,8 @@ test_that(desc = "`pairwise_comparisons()` works for between-subjects design", c
 # dropped levels --------------------------------------------------
 
 test_that(desc = "dropped levels are not included", code = {
-  # drop levels
-  msleep2 <- dplyr::filter(.data = msleep, vore %in% c("carni", "omni"))
+  msleep2 <- dplyr::filter(msleep, vore %in% c("carni", "omni"))
 
-  # check those levels are not included
   df1 <- pairwise_comparisons(
     data = msleep2,
     x = vore,
@@ -125,7 +123,6 @@ test_that(desc = "data without NAs", code = {
   expect_snapshot(df)
   expect_snapshot(df[["expression"]])
 })
-
 
 # within-subjects design - NAs --------------------------------------------
 
@@ -185,7 +182,6 @@ test_that(desc = "`pairwise_comparisons()` works for within-subjects design - NA
   expect_snapshot(df4)
   expect_snapshot(df4[["expression"]])
 })
-
 
 # within-subjects design - no NAs -----------------------------------------
 

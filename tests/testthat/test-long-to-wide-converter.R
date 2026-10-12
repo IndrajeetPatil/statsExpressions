@@ -6,93 +6,21 @@ test_that(desc = "long_to_wide_converter works - spread true", code = {
     "Skipping on R-devel due to summary() format changes"
   )
 
-  # data without NAs ------------------------------
+  dfs <- convert_example_data(spread = TRUE)
 
-  # within-subjects
-  df1 <- long_to_wide_converter(
-    data = iris_long,
-    x = condition,
-    y = value
-  )
-
-  # between-subjects
-  df2 <- long_to_wide_converter(
-    data = mtcars,
-    x = am,
-    y = wt,
-    paired = FALSE
-  )
-
-  # data with NAs ------------------------------
-
-  # within-subjects
-  df3 <- long_to_wide_converter(
-    data = bugs_long,
-    x = condition,
-    y = desire,
-    paired = TRUE
-  )
-
-  # between-subjects
-  df4 <- long_to_wide_converter(
-    data = msleep,
-    x = vore,
-    y = brainwt,
-    paired = FALSE
-  )
-
-  # checking datasets
-  expect_snapshot(purrr::walk(list(df1, df2, df3, df4), dplyr::glimpse))
+  expect_snapshot(purrr::walk(dfs, dplyr::glimpse))
   skip_if(
     getRversion() < "4.6.0",
     "Skipping on R < 4.6.0: summary() changed NA label from 'NA\\'s' to 'NAs' in 4.6.0"
   )
-  expect_snapshot(purrr::map(list(df1, df2, df3, df4), summary))
+  expect_snapshot(purrr::map(dfs, summary))
 })
 
-
 test_that(desc = "long_to_wide_converter works - spread false", code = {
-  # data without NAs ------------------------------
+  dfs <- convert_example_data(spread = FALSE)
 
-  # within-subjects
-  df1 <- long_to_wide_converter(
-    data = iris_long,
-    x = condition,
-    y = value,
-    spread = FALSE
-  )
-
-  # between-subjects
-  df2 <- long_to_wide_converter(
-    data = mtcars,
-    x = am,
-    y = wt,
-    paired = FALSE,
-    spread = FALSE
-  )
-
-  # data with NAs ------------------------------
-
-  # within-subjects
-  df3 <- long_to_wide_converter(
-    data = bugs_long,
-    x = condition,
-    y = desire,
-    paired = TRUE,
-    spread = FALSE
-  )
-
-  # between-subjects
-  df4 <- long_to_wide_converter(
-    data = msleep,
-    x = vore,
-    y = brainwt,
-    paired = FALSE,
-    spread = FALSE
-  )
-
-  expect_snapshot(purrr::walk(list(df1, df2, df3, df4), dplyr::glimpse))
-  expect_snapshot(purrr::map(list(df1, df2, df3, df4), summary))
+  expect_snapshot(purrr::walk(dfs, dplyr::glimpse))
+  expect_snapshot(purrr::map(dfs, summary))
 })
 
 # with .rowid - without NA ---------------------------------------------
