@@ -2,11 +2,8 @@ run_one_sample_tests_with_parameters <- function(title, x, test.value) {
   cases_data <- tidyr::expand_grid(
     type = c("bayes", "parametric", "nonparametric", "robust"),
     conf.level = c(0.95, 0.90)
-  )
-  cases_data <- dplyr::mutate(
-    cases_data,
-    effsize.type = rep_len(c("g", "d"), length.out = nrow(cases_data))
-  )
+  ) |>
+    dplyr::mutate(effsize.type = rep_len(c("g", "d"), dplyr::n()))
 
   patrick::with_parameters_test_that(
     title,

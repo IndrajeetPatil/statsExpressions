@@ -33,9 +33,9 @@ test_that(desc = "t_robust - within-subjects - with NAs", code = {
   expect_snapshot(df1[["expression"]])
 })
 
-test_that(desc = "t_robust - between-subjects - without NAs", code = {
-  # between-subjects ------------------------------------------------------
+# between-subjects ------------------------------------------------------------
 
+test_that(desc = "t_robust - between-subjects - without NAs", code = {
   set.seed(123)
   df1 <- two_sample_test(
     type = "r",

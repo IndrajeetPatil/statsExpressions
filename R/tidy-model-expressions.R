@@ -105,9 +105,10 @@ tidy_model_expressions <- function(
     mutate(
       expression = if (stat_type == "t") {
         # drop the degrees of freedom when they are missing or infinite
-        case_when(
-          df.error %in% c("NA", "Inf") ~ glue(.env$template_no_df),
-          .default = glue(.env$template)
+        if_else(
+          df.error %in% c("NA", "Inf"),
+          glue(.env$template_no_df),
+          glue(.env$template)
         )
       } else {
         glue(.env$template)

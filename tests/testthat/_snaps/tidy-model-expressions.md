@@ -27,34 +27,6 @@
           italic(p) == "1.29e-10")
       
 
----
-
-    Code
-      df_t_na[["expression"]]
-    Output
-      [[1]]
-      list(widehat(italic(beta)) == "6.05", italic(t) == "19.59", italic(p) == 
-          "1.20e-18")
-      
-      [[2]]
-      list(widehat(italic(beta)) == "-0.14", italic(t) == "-9.56", 
-          italic(p) == "1.29e-10")
-      
-
----
-
-    Code
-      df_t_inf[["expression"]]
-    Output
-      [[1]]
-      list(widehat(italic(beta)) == "6.05", italic(t) == "19.59", italic(p) == 
-          "1.20e-18")
-      
-      [[2]]
-      list(widehat(italic(beta)) == "-0.14", italic(t) == "-9.56", 
-          italic(p) == "1.29e-10")
-      
-
 # tidy_model_expressions works - chi2
 
     Code

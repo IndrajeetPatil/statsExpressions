@@ -595,7 +595,7 @@ equal `1`.
 
 | Type | No. of groups | Effect size | CI available? | Function used |
 |:---|:---|:---|:---|:---|
-| Parametric | 2 | Cohen’s *d*, Hedge’s *g* | Yes | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
+| Parametric | 2 | Cohen’s *d*, Hedges’ *g* | Yes | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
 | Non-parametric | 2 | *r* (rank-biserial correlation) | Yes | `effectsize::rank_biserial()` |
 | Robust | 2 | Algina-Keselman-Penfield robust standardized difference | Yes | `WRS2::akp.effect()` |
 | Bayesian | 2 | difference | Yes | `bayestestR::describe_posterior()` |
@@ -619,7 +619,7 @@ aggregate first (e.g., take the mean).
 
 | Type | No. of groups | Effect size | CI available? | Function used |
 |:---|:---|:---|:---|:---|
-| Parametric | 2 | Cohen’s *d*, Hedge’s *g* | Yes | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
+| Parametric | 2 | Cohen’s *d*, Hedges’ *g* | Yes | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
 | Non-parametric | 2 | *r* (rank-biserial correlation) | Yes | `effectsize::rank_biserial()` |
 | Robust | 2 | Algina-Keselman-Penfield robust standardized difference | Yes | `WRS2::wmcpAKP()` |
 | Bayesian | 2 | difference | Yes | `bayestestR::describe_posterior()` |
@@ -639,7 +639,7 @@ aggregate first (e.g., take the mean).
 
 | Type | Effect size | CI available? | Function used |
 |:---|:---|:---|:---|
-| Parametric | Cohen’s *d*, Hedge’s *g* | Yes | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
+| Parametric | Cohen’s *d*, Hedges’ *g* | Yes | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
 | Non-parametric | *r* (rank-biserial correlation) | Yes | `effectsize::rank_biserial()` |
 | Robust | trimmed mean | Yes | `WRS2::trimcibt()` |
 | Bayesian | difference | Yes | `bayestestR::describe_posterior()` |

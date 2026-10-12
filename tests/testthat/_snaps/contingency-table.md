@@ -70,7 +70,7 @@
           "[" * "0.00", "0.25" * "]", italic("n")["obs"] == "52")
       
 
-# paired contingency_table works 
+# paired contingency_table works
 
     Code
       select(df1, -expression)
@@ -119,7 +119,7 @@
           "[" * "0.229", "0.500" * "]", italic("n")["pairs"] == "95")
       
 
-# Goodness of Fit contingency_table works without counts
+# goodness of fit contingency_table works
 
     Code
       select(df1, -expression)
@@ -257,7 +257,7 @@
           "1.00")
       
 
-# contingency_table() expression is invariant to `options(OutDec)`:  dec=.
+# contingency_table() expression is invariant to `options(OutDec)`: dec=.
 
     Code
       df[["expression"]]
@@ -268,7 +268,7 @@
           "[" * "0.00000", "0.93683" * "]", italic("n")["obs"] == "32")
       
 
-# contingency_table() expression is invariant to `options(OutDec)`:  dec=,
+# contingency_table() expression is invariant to `options(OutDec)`: dec=,
 
     Code
       df[["expression"]]
