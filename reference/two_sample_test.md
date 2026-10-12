@@ -52,7 +52,11 @@ two_sample_test(
   of `x` (i.e., the data is assumed to be sorted in a subject-1,
   subject-2, ... pattern within every level). If the data is **not**
   sorted this way, the paired results will be silently incorrect, so it
-  is safest to always specify `subject.id`.
+  is safest to always specify `subject.id`. For paired designs, each
+  subject must have at most one row per level of `x` (an error is thrown
+  otherwise), and rows with a missing `subject.id` are dropped because
+  they cannot be paired (see
+  [`complete_subjects()`](https://www.indrapatil.com/statsExpressions/reference/complete_subjects.md)).
 
 - type:
 

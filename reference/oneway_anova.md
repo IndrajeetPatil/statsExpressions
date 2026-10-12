@@ -50,7 +50,11 @@ oneway_anova(
   of `x` (i.e., the data is assumed to be sorted in a subject-1,
   subject-2, ... pattern within every level). If the data is **not**
   sorted this way, the paired results will be silently incorrect, so it
-  is safest to always specify `subject.id`.
+  is safest to always specify `subject.id`. For paired designs, each
+  subject must have at most one row per level of `x` (an error is thrown
+  otherwise), and rows with a missing `subject.id` are dropped because
+  they cannot be paired (see
+  [`complete_subjects()`](https://www.indrapatil.com/statsExpressions/reference/complete_subjects.md)).
 
 - type:
 
@@ -488,14 +492,14 @@ oneway_anova(
 #> 8 g_.rowid       1     cauchy                          0       1     fixed 
 #>          bf10 method                          log_e_bf10 effectsize        
 #>         <dbl> <chr>                                <dbl> <chr>             
-#> 1 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 2 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 3 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 4 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 5 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 6 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 7 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 8 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 1 1360982795. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 2 1360982795. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 3 1360982795. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 4 1360982795. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 5 1360982795. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 6 1360982795. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 7 1360982795. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 8 1360982795. Bayes factors for linear models       21.0 Bayesian R-squared
 #>   estimate std.dev conf.level conf.low conf.high conf.method component   n.obs
 #>      <dbl>   <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>       <int>
 #> 1    0.531  0.0323       0.95    0.461     0.587 HDI         conditional    88

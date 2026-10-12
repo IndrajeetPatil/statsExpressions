@@ -44,7 +44,11 @@ long_to_wide_converter(
   of `x` (i.e., the data is assumed to be sorted in a subject-1,
   subject-2, ... pattern within every level). If the data is **not**
   sorted this way, the paired results will be silently incorrect, so it
-  is safest to always specify `subject.id`.
+  is safest to always specify `subject.id`. For paired designs, each
+  subject must have at most one row per level of `x` (an error is thrown
+  otherwise), and rows with a missing `subject.id` are dropped because
+  they cannot be paired (see
+  [`complete_subjects()`](https://www.indrapatil.com/statsExpressions/reference/complete_subjects.md)).
 
 - paired:
 
@@ -63,13 +67,14 @@ long_to_wide_converter(
 ## Value
 
 A tibble with `NA`s removed while respecting the
-between-or-within-subjects nature of the dataset: for paired designs, a
-subject with a missing value in any condition is removed entirely, while
-for unpaired designs only the rows with missing values are removed. Rows
-are grouped by `subject.id` whenever it is supplied, so with
-`paired = FALSE` and a `subject.id`, a missing value still removes every
-row of that subject. The `.rowid` column contains the subject identifier
-(or an internal row identifier).
+between-or-within-subjects nature of the dataset: for paired designs,
+only subjects observed in every level of `x` are kept (a subject with a
+missing value or a missing row in any condition is removed entirely),
+while for unpaired designs only the rows with missing values are
+removed. Rows are grouped by `subject.id` whenever it is supplied, so
+with `paired = FALSE` and a `subject.id`, a missing value still removes
+every row of that subject. The `.rowid` column contains the subject
+identifier (or an internal row identifier).
 
 ## Citation
 

@@ -126,7 +126,10 @@ the default), observations are paired by their row order within each level
 of <code>x</code> (i.e., the data is assumed to be sorted in a subject-1, subject-2,
 ... pattern within every level). If the data is <strong>not</strong> sorted this way,
 the paired results will be silently incorrect, so it is safest to always
-specify <code>subject.id</code>.</p></dd>
+specify <code>subject.id</code>. For paired designs, each subject must have at most
+one row per level of <code>x</code> (an error is thrown otherwise), and rows with a
+missing <code>subject.id</code> are dropped because they cannot be paired (see
+<code><a href="complete_subjects.html">complete_subjects()</a></code>).</p></dd>
 
 
 <dt id="arg-type">type<a class="anchor" aria-label="anchor" href="#arg-type"></a></dt>

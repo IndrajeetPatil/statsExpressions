@@ -78,6 +78,9 @@ future.
 - [`long_to_wide_converter()`](https://www.indrapatil.com/statsExpressions/reference/long_to_wide_converter.md)
   : Convert long/tidy data frame to wide format
 
+- [`complete_subjects()`](https://www.indrapatil.com/statsExpressions/reference/complete_subjects.md)
+  : Keep complete subjects in repeated measures data
+
 - [`add_expression_col()`](https://www.indrapatil.com/statsExpressions/reference/add_expression_col.md)
   : Template for expressions with statistical details
 
