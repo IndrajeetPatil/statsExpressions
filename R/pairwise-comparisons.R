@@ -270,8 +270,7 @@ pairwise_comparisons <- function(
   if (type != "bayes") {
     df_pair <- df_pair |>
       .pairwise_p_adjust_expr(p.adjust.method, digits, test) |>
-      mutate(p.value = p.value.adj) |>
-      select(-p.value.adj)
+      mutate(p.value = p.value.adj, p.value.adj = NULL)
   }
 
   select(df_pair, -matches("p.adjustment|^method$")) |>
