@@ -39,7 +39,10 @@ the default), observations are paired by their row order within each level
 of \code{x} (i.e., the data is assumed to be sorted in a subject-1, subject-2,
 ... pattern within every level). If the data is \strong{not} sorted this way,
 the paired results will be silently incorrect, so it is safest to always
-specify \code{subject.id}.}
+specify \code{subject.id}. For paired designs, each subject must have at most
+one row per level of \code{x} (an error is thrown otherwise), and rows with a
+missing \code{subject.id} are dropped because they cannot be paired (see
+\code{\link[=complete_subjects]{complete_subjects()}}).}
 
 \item{type}{A character specifying the type of statistical approach:
 \itemize{

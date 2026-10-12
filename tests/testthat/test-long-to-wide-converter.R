@@ -61,23 +61,77 @@ test_that(desc = "with .rowid - with NA", code = {
 })
 
 
-# NA in subject.id should not drop rows with complete x/y ----------------
+# NA in subject.id ------------------------------------------------------
 
-test_that("NA in subject.id does not drop rows with complete measurements", {
+test_that("rows with NA subject.id are dropped only for paired designs", {
   df <- dplyr::tibble(
     id = c(1L, 1L, NA_integer_, NA_integer_),
     group = c("a", "b", "a", "b"),
     value = c(10, 20, 30, 40)
   )
 
-  result <- long_to_wide_converter(
-    df,
-    x = group,
-    y = value,
-    subject.id = id,
-    paired = TRUE,
-    spread = FALSE
+  convert <- function(paired) {
+    long_to_wide_converter(
+      df,
+      x = group,
+      y = value,
+      subject.id = id,
+      paired = paired,
+      spread = FALSE
+    )
+  }
+
+  expect_identical(convert(paired = TRUE)$.rowid, c(1L, 1L))
+  expect_shape(convert(paired = FALSE), nrow = 4L)
+})
+
+# incomplete subjects --------------------------------------------------
+
+test_that("paired designs keep only subjects observed in every condition", {
+  df <- dplyr::tibble(
+    id = c(1L, 1L, 2L, 2L, 3L, 4L, 4L, 4L),
+    group = c("a", "b", "a", "b", "a", "a", "b", NA),
+    value = c(1, 2, 3, NA, 5, 6, 7, 8)
   )
 
-  expect_shape(result, nrow = 4L)
+  expect_identical(
+    long_to_wide_converter(df, group, value, subject.id = id)$.rowid,
+    c(1L, 4L)
+  )
+
+  # without `subject.id`, a condition with fewer rows leaves subjects unpaired
+  expect_identical(
+    long_to_wide_converter(
+      dplyr::tibble(group = c("a", "a", "a", "b", "b"), value = 1:5),
+      group,
+      value
+    )$.rowid,
+    c(1L, 2L)
+  )
+})
+
+# duplicated subjects --------------------------------------------------
+
+test_that("paired designs need at most one row per subject and condition", {
+  df <- dplyr::tibble(
+    id = c(1L, 1L, 1L, 2L, 2L),
+    group = c("a", "a", "b", "a", "b"),
+    value = c(1, 2, 3, 4, 5)
+  )
+
+  expect_snapshot_error(long_to_wide_converter(df, group, value, id))
+  expect_snapshot_error(
+    two_sample_test(df, group, value, subject.id = id, paired = TRUE)
+  )
+  expect_shape(
+    long_to_wide_converter(
+      df,
+      group,
+      value,
+      id,
+      paired = FALSE,
+      spread = FALSE
+    ),
+    nrow = 5L
+  )
 })

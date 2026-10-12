@@ -1,5 +1,29 @@
 # statsExpressions 2.1.2.9000
 
+- New helper `complete_subjects()` prepares long-format repeated-measures
+  data the same way the paired tests do. It drops rows that cannot be paired,
+  validates the subject identifier, and keeps only subjects observed in every
+  condition. Packages that plot or summarize repeated-measures data (such as
+  `{ggstatsplot}`) can use it so that they work on the same observations as
+  the statistical tests.
+
+- Repeated-measures analyses (`paired = TRUE`) now validate the subject
+  identifier via `complete_subjects()`, and thus in
+  `long_to_wide_converter()`, `two_sample_test()`, `oneway_anova()`, and
+  `pairwise_comparisons()`:
+
+  - A subject with more than one row in a level of `x` now gives an
+    informative error. Previously, depending on `type`, this produced
+    list-column warnings, cryptic errors, or results that silently averaged or
+    discarded the duplicated observations.
+  - Rows with a missing `subject.id` are dropped. Previously they were treated
+    as observations of a single shared subject.
+  - Subjects without a row for every level of `x` are dropped, just like
+    subjects with a missing response. Previously they were counted in the
+    reported sample size, and the Bayesian two-sample test failed.
+  - A row with a missing `x` value now removes only that row rather than every
+    row of the subject.
+
 - `oneway_anova()` with `type = "robust"` and `paired = TRUE` now reports the
   correct Algina-Keselman-Penfield effect size and confidence interval.
   Previously the internal row identifier was treated as an extra condition,

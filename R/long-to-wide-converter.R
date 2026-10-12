@@ -20,7 +20,10 @@
 #'   of `x` (i.e., the data is assumed to be sorted in a subject-1, subject-2,
 #'   ... pattern within every level). If the data is **not** sorted this way,
 #'   the paired results will be silently incorrect, so it is safest to always
-#'   specify `subject.id`.
+#'   specify `subject.id`. For paired designs, each subject must have at most
+#'   one row per level of `x` (an error is thrown otherwise), and rows with a
+#'   missing `subject.id` are dropped because they cannot be paired (see
+#'   [complete_subjects()]).
 #' @param paired Logical that decides whether the experimental design is
 #'   repeated measures/within-subjects or between-subjects. The default is
 #'   `FALSE`.
@@ -29,13 +32,14 @@
 #' @param ... Currently ignored.
 #'
 #' @returns A tibble with `NA`s removed while respecting the
-#'   between-or-within-subjects nature of the dataset: for paired designs, a
-#'   subject with a missing value in any condition is removed entirely, while
-#'   for unpaired designs only the rows with missing values are removed. Rows
-#'   are grouped by `subject.id` whenever it is supplied, so with
-#'   `paired = FALSE` and a `subject.id`, a missing value still removes every
-#'   row of that subject. The `.rowid` column contains the subject identifier
-#'   (or an internal row identifier).
+#'   between-or-within-subjects nature of the dataset: for paired designs, only
+#'   subjects observed in every level of `x` are kept (a subject with a missing
+#'   value or a missing row in any condition is removed entirely), while for
+#'   unpaired designs only the rows with missing values are removed. Rows are
+#'   grouped by `subject.id` whenever it is supplied, so with `paired = FALSE`
+#'   and a `subject.id`, a missing value still removes every row of that
+#'   subject. The `.rowid` column contains the subject identifier (or an
+#'   internal row identifier).
 #'
 #' @autoglobal
 #'
@@ -68,20 +72,20 @@ long_to_wide_converter <- function(
   spread = TRUE,
   ...
 ) {
-  data <- data |>
-    select({{ x }}, {{ y }}, .rowid = {{ subject.id }}) |>
-    mutate({{ x }} := droplevels(as.factor({{ x }}))) |>
-    arrange({{ x }})
+  if (paired) {
+    data <- complete_subjects(data, {{ x }}, {{ y }}, {{ subject.id }})
+  } else {
+    data <- data |>
+      select({{ x }}, {{ y }}, .rowid = {{ subject.id }}) |>
+      mutate({{ x }} := droplevels(as.factor({{ x }}))) |>
+      arrange({{ x }})
 
-  if (!".rowid" %in% names(data)) {
-    data <- if (paired) {
-      mutate(data, .rowid = row_number(), .by = {{ x }})
-    } else {
-      mutate(data, .rowid = row_number())
+    if (!".rowid" %in% names(data)) {
+      data <- mutate(data, .rowid = row_number())
     }
-  }
 
-  data <- filter_out(data, anyNA(pick({{ x }}, {{ y }})), .by = .rowid)
+    data <- filter_out(data, anyNA(pick({{ x }}, {{ y }})), .by = .rowid)
+  }
 
   if (spread) {
     data <- tidyr::pivot_wider(

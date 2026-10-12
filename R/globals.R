@@ -3,6 +3,7 @@
 utils::globalVariables(c(
   # <.untable_by_counts>
   ".counts",
+  # <complete_subjects>
   # <long_to_wide_converter>
   # <oneway_anova>
   # <pairwise_comparisons>

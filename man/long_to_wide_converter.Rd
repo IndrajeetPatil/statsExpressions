@@ -32,7 +32,10 @@ the default), observations are paired by their row order within each level
 of \code{x} (i.e., the data is assumed to be sorted in a subject-1, subject-2,
 ... pattern within every level). If the data is \strong{not} sorted this way,
 the paired results will be silently incorrect, so it is safest to always
-specify \code{subject.id}.}
+specify \code{subject.id}. For paired designs, each subject must have at most
+one row per level of \code{x} (an error is thrown otherwise), and rows with a
+missing \code{subject.id} are dropped because they cannot be paired (see
+\code{\link[=complete_subjects]{complete_subjects()}}).}
 
 \item{paired}{Logical that decides whether the experimental design is
 repeated measures/within-subjects or between-subjects. The default is
@@ -45,13 +48,14 @@ converted from long/tidy to wide (default: \code{TRUE}).}
 }
 \value{
 A tibble with \code{NA}s removed while respecting the
-between-or-within-subjects nature of the dataset: for paired designs, a
-subject with a missing value in any condition is removed entirely, while
-for unpaired designs only the rows with missing values are removed. Rows
-are grouped by \code{subject.id} whenever it is supplied, so with
-\code{paired = FALSE} and a \code{subject.id}, a missing value still removes every
-row of that subject. The \code{.rowid} column contains the subject identifier
-(or an internal row identifier).
+between-or-within-subjects nature of the dataset: for paired designs, only
+subjects observed in every level of \code{x} are kept (a subject with a missing
+value or a missing row in any condition is removed entirely), while for
+unpaired designs only the rows with missing values are removed. Rows are
+grouped by \code{subject.id} whenever it is supplied, so with \code{paired = FALSE}
+and a \code{subject.id}, a missing value still removes every row of that
+subject. The \code{.rowid} column contains the subject identifier (or an
+internal row identifier).
 }
 \description{
 This conversion is helpful mostly for repeated measures design, where

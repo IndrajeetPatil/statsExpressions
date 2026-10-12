@@ -164,3 +164,13 @@
        Max.   :76.00                Max.   :5.71200  
       
 
+# paired designs need at most one row per subject and condition
+
+    Each `id` value must appear at most once per level of `group`.
+    i Aggregate repeated observations within each condition first.
+
+---
+
+    Each `id` value must appear at most once per level of `group`.
+    i Aggregate repeated observations within each condition first.
+
