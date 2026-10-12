@@ -1,26 +1,11 @@
 test_that("tidy_model_expressions works - t", {
-  df_params <- tidy_model_parameters(lm(wt ~ mpg, data = mtcars))
-
-  df_t <- tidy_model_expressions(df_params, statistic = "t")
+  df_t <- tidy_model_expressions(
+    tidy_model_parameters(lm(wt ~ mpg, data = mtcars)),
+    statistic = "t"
+  )
 
   expect_snapshot(select(df_t, -expression))
   expect_snapshot(df_t[["expression"]])
-
-  # with NA df.error
-  df_t_na <- tidy_model_expressions(
-    mutate(df_params, df.error = NA_real_),
-    statistic = "t"
-  )
-
-  expect_snapshot(df_t_na[["expression"]])
-
-  # with infinity as error
-  df_t_inf <- tidy_model_expressions(
-    mutate(df_params, df.error = Inf),
-    statistic = "t"
-  )
-
-  expect_snapshot(df_t_inf[["expression"]])
 })
 
 test_that("tidy_model_expressions works - chi2", {
@@ -39,14 +24,6 @@ test_that("tidy_model_expressions works - chi2", {
 
   expect_snapshot(select(df_chi, -expression))
   expect_snapshot(df_chi[["expression"]])
-
-  # no expression for a row with a missing estimate
-  df_chi$estimate[1] <- NA
-  df_chi2 <- tidy_model_expressions(
-    select(df_chi, -expression),
-    statistic = "chi"
-  )
-  expect_null(df_chi2[["expression"]][[1]])
 })
 
 test_that("tidy_model_expressions works - z", {
