@@ -89,10 +89,8 @@ add_expression_col <- function(
   effsize.text = NULL,
   prior.type = NULL,
   n = NULL,
-  n.text = ifelse(
-    paired,
-    list(quote(italic("n")["pairs"])),
-    list(quote(italic("n")["obs"]))
+  n.text = list(
+    if (paired) quote(italic("n")["pairs"]) else quote(italic("n")["obs"])
   ),
   digits = 2L,
   digits.df = 0L,

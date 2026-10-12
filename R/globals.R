@@ -9,6 +9,8 @@ utils::globalVariables(c(
   ".rowid",
   # <add_expression_col>
   "df",
+  # <tidy_model_expressions>
+  "df.error",
   # <add_expression_col>
   "effectsize",
   # <centrality_description>
