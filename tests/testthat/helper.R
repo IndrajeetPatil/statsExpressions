@@ -1,7 +1,5 @@
 # nolint start: indentation_linter, commas_linter.
 
-# styler: off
-
 # load hard dependencies used in tests
 library(dplyr, warn.conflicts = FALSE)
 options(lifecycle_verbosity = "warning")
@@ -164,8 +162,6 @@ data_meta <- dplyr::tribble(
   "Schechter 2"  , -1.57079  , 0.57404    ,
   "ISIS-4"       ,  0.05759  , 0.03164
 )
-
-# styler: on
 
 # nolint end
 
