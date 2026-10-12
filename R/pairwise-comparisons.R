@@ -252,7 +252,7 @@ pairwise_comparisons <- function(
       filter(term == "Difference") |>
       mutate(
         expression = glue(
-          "list(log[e]*(BF['01'])=='{format_value(-log(bf10), digits)}')"
+          "list(log[e]*(BF['01'])=='{format_value(-log(bf10), .env$digits)}')"
         ),
         test = "Student's t"
       )
@@ -292,9 +292,9 @@ pairwise_comparisons <- function(
     mutate(
       p.value.adj = stats::p.adjust(p = p.value, method = p.adjust.method),
       p.adjust.method = method_label,
-      test = test,
+      test = .env$test,
       expression = glue(
-        "list(italic(p)[{p_subscript}]=='{format_value(p.value.adj, digits)}')"
+        "list(italic(p)[{.env$p_subscript}]=='{format_value(p.value.adj, .env$digits)}')"
       )
     )
 }
