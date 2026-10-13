@@ -37,6 +37,9 @@
   or `es.text` in `tidy_model_expressions()` input could previously produce
   wrong expressions or errors.
 
+- Functions that report a sample size no longer warn that `'big.mark' and
+  'decimal.mark' are both ','` when `options(OutDec = ",")` is set (#146).
+
 # statsExpressions 2.1.2
 
 This patch release contains documentation fixes only; there are no changes to
