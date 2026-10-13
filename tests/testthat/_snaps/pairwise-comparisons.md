@@ -301,10 +301,10 @@
       list(italic(p)["FDR" - adj.] == "2.77e-09")
       
 
-# `pairwise_comparisons()` works for within-subjects design - NAs
+# `pairwise_comparisons()` works for within-subjects design: bugs_long p
 
     Code
-      df1
+      df
     Output
       # A tibble: 6 x 6
         group1 group2  p.value p.adjust.method test        expression
@@ -319,7 +319,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic(p)["Bonferroni" - adj.] == "0.003")
@@ -340,10 +340,10 @@
       list(italic(p)["Bonferroni" - adj.] == "1.331e-08")
       
 
----
+# `pairwise_comparisons()` works for within-subjects design: bugs_long np
 
     Code
-      df2
+      df
     Output
       # A tibble: 6 x 9
         group1 group2 statistic  p.value alternative distribution p.adjust.method
@@ -366,7 +366,7 @@
 ---
 
     Code
-      df2[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic(p)["BY" - adj.] == "1.436e-05")
@@ -387,10 +387,10 @@
       list(italic(p)["BY" - adj.] == "4.635e-07")
       
 
----
+# `pairwise_comparisons()` works for within-subjects design: bugs_long r
 
     Code
-      df3
+      df
     Output
       # A tibble: 6 x 11
         group1 group2 estimate conf.level conf.low conf.high     p.value  p.crit
@@ -413,7 +413,7 @@
 ---
 
     Code
-      df3[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic(p)["Hommel" - adj.] == "0.010")
@@ -434,10 +434,101 @@
       list(italic(p)["Hommel" - adj.] == "1.017e-04")
       
 
+# `pairwise_comparisons()` works for within-subjects design: WineTasting p
+
+    Code
+      df
+    Output
+      # A tibble: 3 x 6
+        group1 group2  p.value p.adjust.method test        expression
+        <chr>  <chr>     <dbl> <chr>           <chr>       <list>    
+      1 Wine A Wine B 0.732    None            Student's t <language>
+      2 Wine A Wine C 0.0142   None            Student's t <language>
+      3 Wine B Wine C 0.000675 None            Student's t <language>
+
 ---
 
     Code
-      df4
+      df[["expression"]]
+    Output
+      [[1]]
+      list(italic(p)[unadj.] == "0.732")
+      
+      [[2]]
+      list(italic(p)[unadj.] == "0.014")
+      
+      [[3]]
+      list(italic(p)[unadj.] == "6.754e-04")
+      
+
+# `pairwise_comparisons()` works for within-subjects design: WineTasting np
+
+    Code
+      df
+    Output
+      # A tibble: 3 x 9
+        group1 group2 statistic  p.value alternative distribution p.adjust.method
+        <chr>  <chr>      <dbl>    <dbl> <chr>       <chr>        <chr>          
+      1 Wine A Wine B      1.05 0.301    two.sided   t            None           
+      2 Wine A Wine C      3.66 0.000691 two.sided   t            None           
+      3 Wine B Wine C      2.62 0.0123   two.sided   t            None           
+        test           expression
+        <chr>          <list>    
+      1 Durbin-Conover <language>
+      2 Durbin-Conover <language>
+      3 Durbin-Conover <language>
+
+---
+
+    Code
+      df[["expression"]]
+    Output
+      [[1]]
+      list(italic(p)[unadj.] == "0.301")
+      
+      [[2]]
+      list(italic(p)[unadj.] == "6.915e-04")
+      
+      [[3]]
+      list(italic(p)[unadj.] == "0.012")
+      
+
+# `pairwise_comparisons()` works for within-subjects design: WineTasting r
+
+    Code
+      df
+    Output
+      # A tibble: 3 x 11
+        group1 group2 estimate conf.level conf.low conf.high p.value p.crit
+        <chr>  <chr>     <dbl>      <dbl>    <dbl>     <dbl>   <dbl>  <dbl>
+      1 Wine A Wine B   0.0214       0.95 -0.0216     0.0645 0.195   0.05  
+      2 Wine A Wine C   0.114        0.95  0.0215     0.207  0.00492 0.0169
+      3 Wine B Wine C   0.0821       0.95  0.00891    0.155  0.00878 0.025 
+        p.adjust.method test                 expression
+        <chr>           <chr>                <list>    
+      1 None            Yuen's trimmed means <language>
+      2 None            Yuen's trimmed means <language>
+      3 None            Yuen's trimmed means <language>
+
+---
+
+    Code
+      df[["expression"]]
+    Output
+      [[1]]
+      list(italic(p)[unadj.] == "0.195")
+      
+      [[2]]
+      list(italic(p)[unadj.] == "0.005")
+      
+      [[3]]
+      list(italic(p)[unadj.] == "0.009")
+      
+
+# Bayesian `pairwise_comparisons()` works for within-subjects design: bugs_long
+
+    Code
+      df
     Output
       # A tibble: 6 x 18
         group1 group2 term       effectsize      estimate conf.level conf.low
@@ -468,7 +559,7 @@
 ---
 
     Code
-      df4[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(log[e] * (BF["01"]) == "-3.73")
@@ -489,101 +580,10 @@
       list(log[e] * (BF["01"]) == "-15.39")
       
 
-# `pairwise_comparisons()` works for within-subjects design - without NAs
+# Bayesian `pairwise_comparisons()` works for within-subjects design: WineTasting
 
     Code
-      df1
-    Output
-      # A tibble: 3 x 6
-        group1 group2  p.value p.adjust.method test        expression
-        <chr>  <chr>     <dbl> <chr>           <chr>       <list>    
-      1 Wine A Wine B 0.732    None            Student's t <language>
-      2 Wine A Wine C 0.0142   None            Student's t <language>
-      3 Wine B Wine C 0.000675 None            Student's t <language>
-
----
-
-    Code
-      df1[["expression"]]
-    Output
-      [[1]]
-      list(italic(p)[unadj.] == "0.732")
-      
-      [[2]]
-      list(italic(p)[unadj.] == "0.014")
-      
-      [[3]]
-      list(italic(p)[unadj.] == "6.754e-04")
-      
-
----
-
-    Code
-      df2
-    Output
-      # A tibble: 3 x 9
-        group1 group2 statistic  p.value alternative distribution p.adjust.method
-        <chr>  <chr>      <dbl>    <dbl> <chr>       <chr>        <chr>          
-      1 Wine A Wine B      1.05 0.301    two.sided   t            None           
-      2 Wine A Wine C      3.66 0.000691 two.sided   t            None           
-      3 Wine B Wine C      2.62 0.0123   two.sided   t            None           
-        test           expression
-        <chr>          <list>    
-      1 Durbin-Conover <language>
-      2 Durbin-Conover <language>
-      3 Durbin-Conover <language>
-
----
-
-    Code
-      df2[["expression"]]
-    Output
-      [[1]]
-      list(italic(p)[unadj.] == "0.301")
-      
-      [[2]]
-      list(italic(p)[unadj.] == "6.915e-04")
-      
-      [[3]]
-      list(italic(p)[unadj.] == "0.012")
-      
-
----
-
-    Code
-      df3
-    Output
-      # A tibble: 3 x 11
-        group1 group2 estimate conf.level conf.low conf.high p.value p.crit
-        <chr>  <chr>     <dbl>      <dbl>    <dbl>     <dbl>   <dbl>  <dbl>
-      1 Wine A Wine B   0.0214       0.95 -0.0216     0.0645 0.195   0.05  
-      2 Wine A Wine C   0.114        0.95  0.0215     0.207  0.00492 0.0169
-      3 Wine B Wine C   0.0821       0.95  0.00891    0.155  0.00878 0.025 
-        p.adjust.method test                 expression
-        <chr>           <chr>                <list>    
-      1 None            Yuen's trimmed means <language>
-      2 None            Yuen's trimmed means <language>
-      3 None            Yuen's trimmed means <language>
-
----
-
-    Code
-      df3[["expression"]]
-    Output
-      [[1]]
-      list(italic(p)[unadj.] == "0.195")
-      
-      [[2]]
-      list(italic(p)[unadj.] == "0.005")
-      
-      [[3]]
-      list(italic(p)[unadj.] == "0.009")
-      
-
----
-
-    Code
-      df4
+      df
     Output
       # A tibble: 3 x 18
         group1 group2 term       effectsize      estimate conf.level conf.low
@@ -605,7 +605,7 @@
 ---
 
     Code
-      df4[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(log[e] * (BF["01"]) == "1.45")
