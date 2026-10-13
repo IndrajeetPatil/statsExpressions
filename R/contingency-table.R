@@ -136,12 +136,10 @@ contingency_table <- function(
 }
 
 .one_way_bayesian_table <- function(xtab, prior.concentration, ratio, digits) {
-  # nocov start
   # a one-cell table is a degenerate case for this computation
   if (length(xtab) == 1L) {
     return(NULL)
   }
-  # nocov end
 
   n_draws <- 100000L
   counts <- as.matrix(xtab)
