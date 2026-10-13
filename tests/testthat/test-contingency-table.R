@@ -187,12 +187,16 @@ patrick::with_parameters_test_that(
     withr::local_options(list(OutDec = dec))
 
     set.seed(123)
-    df <- suppressWarnings(contingency_table(
-      data = mtcars,
-      x = am,
-      y = cyl,
-      digits = 5L,
-      conf.level = 0.99
+    # only the chi-squared approximation warning is expected for this table
+    df <- suppressWarnings(expect_no_warning(
+      contingency_table(
+        data = mtcars,
+        x = am,
+        y = cyl,
+        digits = 5L,
+        conf.level = 0.99
+      ),
+      message = "big.mark"
     ))
 
     expect_snapshot(df[["expression"]])
