@@ -54,6 +54,11 @@
   [`tidy_model_expressions()`](https://www.indrapatil.com/statsExpressions/reference/tidy_model_expressions.md)
   input could previously produce wrong expressions or errors.
 
+- Functions that report a sample size no longer warn that
+  `'big.mark' and 'decimal.mark' are both ','` when
+  `options(OutDec = ",")` is set
+  ([\#146](https://github.com/IndrajeetPatil/statsExpressions/issues/146)).
+
 ## statsExpressions 2.1.2
 
 CRAN release: 2026-10-09
