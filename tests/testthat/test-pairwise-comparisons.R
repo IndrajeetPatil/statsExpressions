@@ -124,122 +124,58 @@ test_that(desc = "data without NAs", code = {
   expect_snapshot(df[["expression"]])
 })
 
-# within-subjects design - NAs --------------------------------------------
+# within-subjects design --------------------------------------------------
 
-test_that(desc = "`pairwise_comparisons()` works for within-subjects design - NAs", code = {
-  # student's t test
-  df1 <- pairwise_comparisons(
-    data = bugs_long,
-    x = condition,
-    y = desire,
-    type = "p",
-    digits = 3L,
-    paired = TRUE,
-    p.adjust.method = "bonferroni"
+# `bugs_long` has `NA`s, `WRS2::WineTasting` doesn't
+within_subjects_data <- list(
+  bugs_long = bugs_long,
+  WineTasting = rename(WRS2::WineTasting, condition = Wine, desire = Taste)
+)
+
+patrick::with_parameters_test_that(
+  "`pairwise_comparisons()` works for within-subjects design:",
+  {
+    df <- pairwise_comparisons(
+      data = within_subjects_data[[dataset]],
+      x = condition,
+      y = desire,
+      type = type,
+      digits = 3L,
+      paired = TRUE,
+      p.adjust.method = p.adjust.method
+    )
+
+    expect_snapshot(df)
+    expect_snapshot(df[["expression"]])
+  },
+  .cases = dplyr::tibble(
+    dataset = rep(c("bugs_long", "WineTasting"), each = 3L),
+    type = rep(c("p", "np", "r"), times = 2L),
+    p.adjust.method = c("bonferroni", "BY", "hommel", "none", "none", "none"),
+    .test_name = paste(dataset, type)
   )
+)
 
-  expect_snapshot(df1)
-  expect_snapshot(df1[["expression"]])
+patrick::with_parameters_test_that(
+  "Bayesian `pairwise_comparisons()` works for within-subjects design:",
+  {
+    set.seed(123)
+    df <- pairwise_comparisons(
+      data = within_subjects_data[[dataset]],
+      x = condition,
+      y = desire,
+      type = "bf",
+      paired = TRUE
+    )
 
-  # Durbin-Conover test
-  df2 <- pairwise_comparisons(
-    data = bugs_long,
-    x = condition,
-    y = desire,
-    type = "np",
-    digits = 3L,
-    paired = TRUE,
-    p.adjust.method = "BY"
+    expect_snapshot(df)
+    expect_snapshot(df[["expression"]])
+  },
+  .cases = dplyr::tibble(
+    dataset = c("bugs_long", "WineTasting"),
+    .test_name = dataset
   )
-
-  expect_snapshot(df2)
-  expect_snapshot(df2[["expression"]])
-
-  # robust t test
-  df3 <- pairwise_comparisons(
-    data = bugs_long,
-    x = condition,
-    y = desire,
-    type = "r",
-    digits = 3L,
-    paired = TRUE,
-    p.adjust.method = "hommel"
-  )
-
-  expect_snapshot(df3)
-  expect_snapshot(df3[["expression"]])
-
-  # Bayesian
-  set.seed(123)
-  df4 <- pairwise_comparisons(
-    data = bugs_long,
-    x = condition,
-    y = desire,
-    type = "bf",
-    paired = TRUE
-  )
-
-  expect_snapshot(df4)
-  expect_snapshot(df4[["expression"]])
-})
-
-# within-subjects design - no NAs -----------------------------------------
-
-test_that(desc = "`pairwise_comparisons()` works for within-subjects design - without NAs", code = {
-  # student's t test
-  df1 <- pairwise_comparisons(
-    data = WRS2::WineTasting,
-    x = Wine,
-    y = Taste,
-    type = "p",
-    digits = 3L,
-    paired = TRUE,
-    p.adjust.method = "none"
-  )
-
-  expect_snapshot(df1)
-  expect_snapshot(df1[["expression"]])
-
-  # Durbin-Conover test
-  df2 <- pairwise_comparisons(
-    data = WRS2::WineTasting,
-    x = Wine,
-    y = Taste,
-    type = "np",
-    digits = 3L,
-    paired = TRUE,
-    p.adjust.method = "none"
-  )
-
-  expect_snapshot(df2)
-  expect_snapshot(df2[["expression"]])
-
-  # robust t test
-  df3 <- pairwise_comparisons(
-    data = WRS2::WineTasting,
-    x = Wine,
-    y = Taste,
-    type = "r",
-    digits = 3L,
-    paired = TRUE,
-    p.adjust.method = "none"
-  )
-
-  expect_snapshot(df3)
-  expect_snapshot(df3[["expression"]])
-
-  set.seed(123)
-  df4 <- pairwise_comparisons(
-    data = WRS2::WineTasting,
-    x = Wine,
-    y = Taste,
-    type = "bf",
-    paired = TRUE
-  )
-
-  expect_snapshot(df4)
-  expect_snapshot(df4[["expression"]])
-})
+)
 
 patrick::with_parameters_test_that(
   "works with subject id:",
