@@ -206,11 +206,15 @@ add_expression_col <- function(
     )
 }
 
-#' @note `decimal.mark` is pinned to `"."` to avoid a clash with `big.mark`
-#'   when users set `options(OutDec = ",")`.
+#' @note `OutDec` is pinned to `"."` to avoid a clash with `big_mark` when
+#'   users set `options(OutDec = ",")`; `format_value()` applies `big_mark` via
+#'   `prettyNum()`, whose `decimal.mark` follows `OutDec`.
 #' @noRd
 .prettyNum <- function(x) {
-  format_value(x, digits = 0, big_mark = ",", decimal_point = ".")
+  withr::with_options(
+    list(OutDec = "."),
+    format_value(x, digits = 0, big_mark = ",")
+  )
 }
 
 #' @note `decimal_point` is pinned to `"."` because plotmath parses `,` as a
