@@ -127,16 +127,11 @@ test_that(desc = "data without NAs", code = {
 # within-subjects design --------------------------------------------------
 
 # `bugs_long` has `NA`s, `WRS2::WineTasting` doesn't
-within_subjects_data <- list(
-  bugs_long = bugs_long,
-  WineTasting = rename(WRS2::WineTasting, condition = Wine, desire = Taste)
-)
-
 patrick::with_parameters_test_that(
   "`pairwise_comparisons()` works for within-subjects design:",
   {
     df <- pairwise_comparisons(
-      data = within_subjects_data[[dataset]],
+      data = data,
       x = condition,
       y = desire,
       type = type,
@@ -149,10 +144,16 @@ patrick::with_parameters_test_that(
     expect_snapshot(df[["expression"]])
   },
   .cases = dplyr::tibble(
-    dataset = rep(c("bugs_long", "WineTasting"), each = 3L),
+    data = rep(
+      list(
+        bugs_long,
+        rename(WRS2::WineTasting, condition = Wine, desire = Taste)
+      ),
+      each = 3L
+    ),
     type = rep(c("p", "np", "r"), times = 2L),
     p.adjust.method = c("bonferroni", "BY", "hommel", "none", "none", "none"),
-    .test_name = paste(dataset, type)
+    .test_name = paste(rep(c("bugs_long", "WineTasting"), each = 3L), type)
   )
 )
 
@@ -161,7 +162,7 @@ patrick::with_parameters_test_that(
   {
     set.seed(123)
     df <- pairwise_comparisons(
-      data = within_subjects_data[[dataset]],
+      data = data,
       x = condition,
       y = desire,
       type = "bf",
@@ -172,8 +173,11 @@ patrick::with_parameters_test_that(
     expect_snapshot(df[["expression"]])
   },
   .cases = dplyr::tibble(
-    dataset = c("bugs_long", "WineTasting"),
-    .test_name = dataset
+    data = list(
+      bugs_long,
+      rename(WRS2::WineTasting, condition = Wine, desire = Taste)
+    ),
+    .test_name = c("bugs_long", "WineTasting")
   )
 )
 
