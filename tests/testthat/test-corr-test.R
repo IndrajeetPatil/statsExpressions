@@ -2,7 +2,6 @@
 
 test_that(desc = "corr_test works - parametric", code = {
   # with NA
-  set.seed(123)
   df1 <- corr_test(
     data = msleep,
     x = brainwt,
@@ -16,7 +15,6 @@ test_that(desc = "corr_test works - parametric", code = {
   expect_snapshot(df1[["expression"]])
 
   # without NA
-  set.seed(123)
   df2 <- corr_test(
     data = mtcars,
     x = wt,
@@ -33,7 +31,6 @@ test_that(desc = "corr_test works - parametric", code = {
 
 test_that(desc = "corr_test works - robust", code = {
   # with NA
-  set.seed(123)
   df1 <- corr_test(
     data = msleep,
     x = brainwt,
@@ -47,7 +44,6 @@ test_that(desc = "corr_test works - robust", code = {
   expect_snapshot(df1[["expression"]])
 
   # without NA
-  set.seed(123)
   df2 <- corr_test(
     data = mtcars,
     x = wt,
@@ -63,7 +59,6 @@ test_that(desc = "corr_test works - robust", code = {
 
 test_that(desc = "corr_test works - nonparametric", code = {
   # with NA
-  set.seed(123)
   df1 <- corr_test(
     data = msleep,
     x = brainwt,
@@ -77,7 +72,6 @@ test_that(desc = "corr_test works - nonparametric", code = {
   expect_snapshot(df1[["expression"]])
 
   # without NA
-  set.seed(123)
   df2 <- corr_test(
     data = mtcars,
     x = wt,
