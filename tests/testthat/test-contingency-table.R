@@ -1,7 +1,6 @@
 test_that(desc = "contingency_table works", code = {
   # contingency tab - without NAs ---------------------------------
 
-  set.seed(123)
   df1 <- suppressWarnings(contingency_table(
     data = mtcars,
     x = am,
@@ -13,7 +12,6 @@ test_that(desc = "contingency_table works", code = {
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 
-  set.seed(123)
   df2 <- contingency_table(
     data = as.data.frame(Titanic),
     x = Sex,
@@ -26,7 +24,6 @@ test_that(desc = "contingency_table works", code = {
 
   # contingency tab - with NAs --------------------------------------
 
-  set.seed(123)
   df3 <- suppressWarnings(contingency_table(
     data = msleep,
     x = vore,
@@ -47,16 +44,13 @@ test_that(desc = "paired contingency_table works", code = {
     Freq = c(65L, 25L, 5L, 5L)
   )
 
-  set.seed(123)
-  df1 <- suppressWarnings(
-    contingency_table(
-      data = paired_data,
-      x = response_before,
-      y = response_after,
-      paired = TRUE,
-      counts = Freq,
-      digits = 5
-    )
+  df1 <- contingency_table(
+    data = paired_data,
+    x = response_before,
+    y = response_after,
+    paired = TRUE,
+    counts = Freq,
+    digits = 5
   )
 
   expect_snapshot(select(df1, -expression))
@@ -69,17 +63,14 @@ test_that(desc = "paired contingency_table works", code = {
   # deliberately introduce NAs
   paired_data[c(1L, 12L, 22L, 24L, 65L), 1L] <- NA
 
-  set.seed(123)
-  df2 <- suppressWarnings(
-    contingency_table(
-      data = paired_data,
-      x = response_before,
-      y = response_after,
-      paired = TRUE,
-      alternative = "greater",
-      digits = 3L,
-      conf.level = 0.90
-    )
+  df2 <- contingency_table(
+    data = paired_data,
+    x = response_before,
+    y = response_after,
+    paired = TRUE,
+    alternative = "greater",
+    digits = 3L,
+    conf.level = 0.90
   )
 
   expect_snapshot(select(df2, -expression))
@@ -89,18 +80,16 @@ test_that(desc = "paired contingency_table works", code = {
 test_that(desc = "goodness of fit contingency_table works", code = {
   # one-sample test (without NAs) -------------------------------------
 
-  set.seed(123)
-  df1 <- suppressWarnings(contingency_table(
+  df1 <- contingency_table(
     data = mtcars,
     x = am,
     conf.level = 0.99,
     digits = 5
-  ))
+  )
 
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 
-  set.seed(123)
   df2 <- contingency_table(
     data = as.data.frame(Titanic),
     x = Sex,
@@ -113,7 +102,6 @@ test_that(desc = "goodness of fit contingency_table works", code = {
 
   # one-sample test (with NAs) -------------------------------------
 
-  set.seed(123)
   df3 <- contingency_table(
     data = msleep,
     x = vore,
@@ -186,7 +174,6 @@ patrick::with_parameters_test_that(
   {
     withr::local_options(list(OutDec = dec))
 
-    set.seed(123)
     # only the chi-squared approximation warning is expected for this table
     df <- suppressWarnings(expect_no_warning(
       contingency_table(
