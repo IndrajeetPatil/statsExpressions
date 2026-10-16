@@ -115,6 +115,12 @@ test_that("descriptive name", {
 - Use `@autoglobal` from `roxyglobals` where appropriate.
 - Shared documentation tables and prose live in `man/rmd-fragments/`; shared
   example code lives in `man/examples/`.
+- Keep the README introductory and link to articles for detailed method tables
+  and output schemas. Reuse canonical fragments and example files rather than
+  maintaining copies in multiple documentation sources.
+- Add examples only when they explain a distinct workflow or important behavior.
+  Prefer concise prose and cross-references for routine details; avoid expanding
+  website builds and CRAN checks with examples for every function or option.
 - `@examplesIf` cannot wrap an `@example` file. To keep a `NOT_CRAN` guard
   around a shared example file, use the explicit
   `\dontshow{if (...) withAutoprint(\{ # examplesIf}` and

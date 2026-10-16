@@ -18,16 +18,6 @@ vignette: >
 #| echo = FALSE
 source("../setup.R")
 
-pkgs <- c("metaplus", "metafor", "metaBMA")
-
-successfully_loaded <- purrr::map_lgl(pkgs, requireNamespace, quietly = TRUE)
-can_evaluate <- all(successfully_loaded)
-
-if (can_evaluate) {
-  purrr::walk(pkgs, library, character.only = TRUE)
-} else {
-  knitr::opts_chunk$set(eval = FALSE)
-}
 ```
 
 This vignette can be cited as:
@@ -61,12 +51,10 @@ Two design principles are worth keeping in mind while reading this article:
     annotating plots. This is what powers the statistical details you see in
     [`{ggstatsplot}`](https://www.indrapatil.com/ggstatsplot/) plots.
 
-The rest of this article documents the `expression` column, the engine that
-builds it, and then provides a schema for each exported function. Because the
-precise columns vary with the test and `type`, the tables below describe the
-*representative* columns you can expect; the accompanying `dplyr::glimpse()`
-output is the authoritative list for each call. Where a column is specific to a
-particular `type`, this is called out in the notes.
+This article explains the `expression` column and lists representative output
+columns for each analysis function. For worked examples, see
+[Data frame outputs](dataframe_outputs.html); for the meaning of the tests and
+effect sizes, see [Test and effect size details](../stats_details.html).
 
 ## The `expression` column
 
@@ -148,22 +136,12 @@ through `add_expression_col()`.
 
 ## Per-function schema
 
-The examples below use `dplyr::glimpse()` so that every returned column (and its
-type) is visible at a glance. The tables list the *representative* columns; the
-`glimpse()` output is authoritative for any given call, and type-specific
-differences are noted below each table.
+The tables list representative columns, with type-specific differences noted
+below each table. Use `names(result)` or `dplyr::glimpse(result)` to inspect the
+exact columns returned by a particular call and package version. `conf.*` and
+`prior.*` below abbreviate the available interval and prior columns.
 
 ### `one_sample_test()`
-
-```{r}
-#| label = "one-sample"
-set.seed(123)
-one_sample_test(mtcars, wt, test.value = 3) |> dplyr::glimpse()
-
-# Bayesian variant returns Bayes-factor columns instead of a test statistic
-set.seed(123)
-one_sample_test(mtcars, wt, test.value = 3, type = "bayes") |> dplyr::glimpse()
-```
 
 | Column                                                                    | Description                                                          |
 | :------------------------------------------------------------------------ | :------------------------------------------------------------------- |
@@ -176,16 +154,9 @@ one_sample_test(mtcars, wt, test.value = 3, type = "bayes") |> dplyr::glimpse()
 | `expression`                                                              | plotmath expression with the test details                            |
 
 The Bayesian variant (`type = "bayes"`) replaces `statistic`/`df.error`/`p.value`
-with `term`, `pd`, `bf10`, `log_e_bf10`, and the `prior.*` columns, as the second
-`glimpse()` above shows.
+with `term`, `pd`, `bf10`, `log_e_bf10`, and the `prior.*` columns.
 
 ### `two_sample_test()`
-
-```{r}
-#| label = "two-sample"
-set.seed(123)
-two_sample_test(ToothGrowth, supp, len) |> dplyr::glimpse()
-```
 
 | Column                               | Description                                           |
 | :----------------------------------- | :---------------------------------------------------- |
@@ -201,12 +172,6 @@ As with `one_sample_test()`, the Bayesian variant returns `term`, `pd`, `bf10`,
 
 ### `oneway_anova()`
 
-```{r}
-#| label = "oneway-anova"
-set.seed(123)
-oneway_anova(iris, Species, Sepal.Length) |> dplyr::glimpse()
-```
-
 | Column                                   | Description                                                  |
 | :--------------------------------------- | :----------------------------------------------------------- |
 | `statistic`, `df`, `df.error`, `p.value` | *F*-statistic with its two degrees of freedom, and *p*-value |
@@ -221,12 +186,6 @@ variant returns the usual `bf10`/`log_e_bf10`/`prior.*` columns.
 
 ### `corr_test()`
 
-```{r}
-#| label = "corr-test"
-set.seed(123)
-corr_test(mtcars, wt, mpg) |> dplyr::glimpse()
-```
-
 | Column                                               | Description                                            |
 | :--------------------------------------------------- | :----------------------------------------------------- |
 | `parameter1`, `parameter2`                           | the two correlated variable names                      |
@@ -235,21 +194,11 @@ corr_test(mtcars, wt, mpg) |> dplyr::glimpse()
 | `statistic`, `df.error`, `p.value`                   | test statistic, degrees of freedom, and *p*-value      |
 | `n.obs`, `expression`                                | sample size and the plotmath expression                |
 
-The Bayesian variant adds `bf10`, `log_e_bf10`, `pd`, `rope.percentage`, and the
-`prior.*` columns.
+The Bayesian variant returns `bf10`, `pd`, `rope.percentage`, and the `prior.*`
+columns in place of `statistic`, `df.error`, and `p.value`. Unlike the Bayesian
+*t*-tests, it does not return `log_e_bf10`.
 
 ### `contingency_table()`
-
-```{r}
-#| label = "contingency"
-# two-way association test
-set.seed(123)
-contingency_table(mtcars, am, vs) |> dplyr::glimpse()
-
-# one-way goodness-of-fit test
-set.seed(123)
-contingency_table(as.data.frame(HairEyeColor), Eye, counts = Freq) |> dplyr::glimpse()
-```
 
 | Column                             | Description                                                  |
 | :--------------------------------- | :----------------------------------------------------------- |
@@ -267,16 +216,6 @@ it does **not** include a `log_e_bf10` column.
 
 ### `pairwise_comparisons()`
 
-```{r}
-#| label = "pairwise-comparisons"
-set.seed(123)
-pairwise_comparisons(
-  mtcars, cyl, wt,
-  type = "nonparametric",
-  p.adjust.method = "none"
-) |> dplyr::glimpse()
-```
-
 | Column                    | Description                                             |
 | :------------------------ | :------------------------------------------------------ |
 | `group1`, `group2`        | the two levels being compared                           |
@@ -287,16 +226,11 @@ pairwise_comparisons(
 Unlike the single-test functions, this returns **one row per pairwise
 comparison**. Note that the adjusted *p*-value is folded directly into the
 `p.value` column here (there is no separate `p.value.adj` column, unlike in
-`pairwise_contingency_table()`). The Bayesian variant additionally returns
-`estimate`, `bf10`, `log_e_bf10`, and the `prior.*` columns.
+`pairwise_contingency_table()`). The Bayesian variant returns posterior estimates, intervals, `bf10`,
+`log_e_bf10`, and `prior.*` columns instead of `statistic`, `p.value`, and
+`p.adjust.method`; no *p*-value adjustment is applied to Bayes factors.
 
 ### `pairwise_contingency_table()`
-
-```{r}
-#| label = "pairwise-contingency"
-set.seed(123)
-pairwise_contingency_table(mtcars, cyl, am, p.adjust.method = "holm") |> dplyr::glimpse()
-```
 
 | Column                                  | Description                                      |
 | :-------------------------------------- | :----------------------------------------------- |
@@ -307,22 +241,12 @@ pairwise_contingency_table(mtcars, cyl, am, p.adjust.method = "holm") |> dplyr::
 
 ### `meta_analysis()`
 
-```{r}
-#| label = "meta"
-# renaming columns to `{statsExpressions}` conventions
-data(mag, package = "metaplus")
-df <- dplyr::rename(mag, estimate = yi, std.error = sei)
-
-set.seed(123)
-meta_analysis(df) |> dplyr::glimpse()
-```
-
 | Column                                               | Description                                           |
 | :--------------------------------------------------- | :---------------------------------------------------- |
 | `term`, `effectsize`                                 | the summary term and effect-size label                |
 | `estimate`, `std.error`                              | meta-analytic summary estimate and its standard error |
 | `conf.level`, `conf.low`, `conf.high`, `conf.method` | interval details                                      |
-| `statistic`, `p.value`, `weight`                     | test statistic, *p*-value, and study weight           |
+| `statistic`, `p.value`, `weight`                     | test statistic, *p*-value, and summary weight (may be `NA`)           |
 | `n.obs`, `expression`                                | number of studies and the plotmath expression         |
 
 The Bayesian variant additionally returns MCMC diagnostics and Bayes-factor
@@ -331,25 +255,22 @@ columns.
 
 ### `centrality_description()`
 
-```{r}
-#| label = "centrality"
-set.seed(123)
-centrality_description(iris, Species, Sepal.Length) |> dplyr::glimpse()
-```
-
 | Column                                                        | Description                                                                        |
 | :------------------------------------------------------------ | :--------------------------------------------------------------------------------- |
 | `<x>` (e.g. `Species`)                                        | the grouping variable                                                              |
 | `<y>` (e.g. `Sepal.Length`)                                   | the requested centrality measure (mean/median/trimmed mean/MAP)                    |
 | `std.dev` or `mad`, `iqr`, `min`, `max`, `skewness`, `kurtosis` | dispersion and shape statistics                                                  |
 | `conf.low`, `conf.high`                                       | interval for the centrality estimate                                               |
-| `n.obs`, `missing.obs`                                        | count of observations and missing values                                           |
+| `n.obs`, `missing.obs`                                        | retained observations and missing values after filtering (see below)                |
 | `expression`                                                  | plotmath expression with the centrality estimate                                   |
 | `n.expression`                                                | a label combining the group name and its sample size (handy as a facet/axis label) |
 
 The dispersion column depends on `type`: `std.dev` for `"parametric"` and
 `"robust"`, `mad` (median absolute deviation) for `"nonparametric"`, and neither
-for `"bayes"`. This is the only function that returns an `n.expression` column.
+for `"bayes"`. Rows with missing `x` or `y` are removed before the summaries
+are computed, so `missing.obs` is `0` rather than the number of missing values
+in the original input. This is the only function that returns an `n.expression`
+column.
 
 ## Suggestions
 

@@ -90,7 +90,7 @@ mtcars |> oneway_anova(cyl, wt, type = "nonparametric")
 mtcars |> oneway_anova(cyl, wt, type = "robust")
 ```
 
-All possible output dataframes from functions are tabulated here:
+Worked examples of output data frames are collected here:
 <https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html>
 
 The columns and attributes of these dataframes are documented here:
@@ -178,7 +178,8 @@ Assuming there is only a single result you need to display in a plot, to use it 
 - extract the expression from the list column (`results_data$expression[[1]]`) without parsing
 - use the list column as is, in which case you will need to parse it (`parse(text = results_data$expression)`)
 
-If you want to display more than one expression in a plot, you will *have to* parse them.
+For several row-specific labels in a geometric layer, map `expression` to
+`label` and use `parse = TRUE`, as in the centrality example above.
 
 ### Between-subjects design
 
@@ -420,55 +421,11 @@ ggplot(iris, aes(x = Species, y = Sepal.Length)) +
   )))
 ```
 
-# Summary of tests and effect sizes
+# Tests and effect sizes
 
-```{r, child = "man/rmd-fragments/summary_intro.Rmd"}
-```
-
-## `centrality_description`
-
-```{r, child = "man/rmd-fragments/centrality_description.Rmd"}
-```
-
-## `oneway_anova`
-
-```{r, child = "man/rmd-fragments/oneway_anova.Rmd"}
-```
-
-## `two_sample_test`
-
-```{r, child = "man/rmd-fragments/two_sample_test.Rmd"}
-```
-
-## `one_sample_test`
-
-```{r, child = "man/rmd-fragments/one_sample_test.Rmd"}
-```
-
-## `corr_test`
-
-```{r, child = "man/rmd-fragments/corr_test.Rmd"}
-```
-
-## `contingency_table`
-
-```{r, child = "man/rmd-fragments/contingency_table.Rmd"}
-```
-
-## `pairwise_comparisons`
-
-```{r, child = "man/rmd-fragments/pairwise_comparisons.Rmd"}
-```
-
-## `pairwise_contingency_table`
-
-```{r, child = "man/rmd-fragments/pairwise_contingency_table.Rmd"}
-```
-
-## `meta_analysis`
-
-```{r, child = "man/rmd-fragments/meta_analysis.Rmd"}
-```
+See [Test and effect size details](https://www.indrapatil.com/statsExpressions/articles/stats_details.html)
+for the methods, effect sizes, and underlying functions used by each analysis.
+The same method tables are included in the individual function help pages.
 
 # Usage in `{ggstatsplot}`
 

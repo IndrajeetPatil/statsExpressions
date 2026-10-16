@@ -1,37 +1,17 @@
-**Summary of available analyses**
-
-| Test                       | Function                 |
-| :------------------------- | :----------------------- |
-| one-sample *t*-test        | `one_sample_test()`      |
-| two-sample *t*-test        | `two_sample_test()`      |
-| one-way ANOVA              | `oneway_anova()`         |
-| correlation analysis       | `corr_test()`            |
-| contingency table analysis | `contingency_table()`    |
-| meta-analysis              | `meta_analysis()`        |
-| pairwise comparisons       | `pairwise_comparisons()` |
-| pairwise contingency table | `pairwise_contingency_table()` |
-
-**Summary of details available for analyses**
-
-| Analysis                        | Hypothesis testing | Effect size estimation |
-| :------------------------------ | :----------------- | :--------------------- |
-| (one/two-sample) *t*-test       | ✅                 | ✅                     |
-| one-way ANOVA                   | ✅                 | ✅                     |
-| correlation                     | ✅                 | ✅                     |
-| (one/two-way) contingency table | ✅                 | ✅                     |
-| random-effects meta-analysis    | ✅                 | ✅                     |
-
-**Summary of supported statistical approaches**
-
-| Description                                       | Parametric | Non-parametric | Robust | Bayesian |
-| :------------------------------------------------ | :--------- | :------------- | :----- | :------- |
-| Between group/condition comparisons               | ✅         | ✅             | ✅     | ✅       |
-| Within group/condition comparisons                | ✅         | ✅             | ✅     | ✅       |
-| Distribution of a numeric variable                | ✅         | ✅             | ✅     | ✅       |
-| Correlation between two variables                 | ✅         | ✅             | ✅     | ✅       |
-| Association between categorical variables         | ✅         | ✅             | ❌     | ✅       |
-| Equal proportions for categorical variable levels | ✅         | ✅             | ❌     | ✅       |
-| Random-effects meta-analysis                      | ✅         | ❌             | ✅     | ✅       |
+| Function | Analysis | Parametric | Non-parametric | Robust | Bayesian |
+| :------- | :------- | :--------- | :------------- | :----- | :------- |
+| `one_sample_test()` | one-sample test | ✅ | ✅ | ✅ | ✅ |
+| `two_sample_test()` | two-sample test | ✅ | ✅ | ✅ | ✅ |
+| `oneway_anova()` | one-way ANOVA | ✅ | ✅ | ✅ | ✅ |
+| `corr_test()` | correlation | ✅ | ✅ | ✅ | ✅ |
+| `contingency_table()` | one- or two-way contingency table | ✅ | ✅ | ❌ | ✅ |
+| `meta_analysis()` | random-effects meta-analysis | ✅ | ❌ | ✅ | ✅ |
+| `pairwise_comparisons()` | pairwise group comparisons | ✅ | ✅ | ✅ | ✅ |
+| `centrality_description()` | centrality and distribution | ✅ | ✅ | ✅ | ✅ |
 
 ❌ means that no dedicated analysis of that type exists. For contingency tables,
-`type = "robust"` is still accepted and falls back to the parametric tests.
+`type = "nonparametric"` and `type = "robust"` both use the same frequentist tests
+as `type = "parametric"`.
+
+`pairwise_contingency_table()` provides pairwise Fisher's exact tests with
+Cramer's *V* effect sizes. It does not have a `type` argument.

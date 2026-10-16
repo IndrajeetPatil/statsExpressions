@@ -91,44 +91,23 @@ A BibTeX entry for LaTeX users is
 
 # Summary of functionality
 
-**Summary of available analyses**
-
-| Test                       | Function                       |
-|:---------------------------|:-------------------------------|
-| one-sample *t*-test        | `one_sample_test()`            |
-| two-sample *t*-test        | `two_sample_test()`            |
-| one-way ANOVA              | `oneway_anova()`               |
-| correlation analysis       | `corr_test()`                  |
-| contingency table analysis | `contingency_table()`          |
-| meta-analysis              | `meta_analysis()`              |
-| pairwise comparisons       | `pairwise_comparisons()`       |
-| pairwise contingency table | `pairwise_contingency_table()` |
-
-**Summary of details available for analyses**
-
-| Analysis                        | Hypothesis testing | Effect size estimation |
-|:--------------------------------|:-------------------|:-----------------------|
-| (one/two-sample) *t*-test       | ✅                 | ✅                     |
-| one-way ANOVA                   | ✅                 | ✅                     |
-| correlation                     | ✅                 | ✅                     |
-| (one/two-way) contingency table | ✅                 | ✅                     |
-| random-effects meta-analysis    | ✅                 | ✅                     |
-
-**Summary of supported statistical approaches**
-
-| Description | Parametric | Non-parametric | Robust | Bayesian |
-|:---|:---|:---|:---|:---|
-| Between group/condition comparisons | ✅ | ✅ | ✅ | ✅ |
-| Within group/condition comparisons | ✅ | ✅ | ✅ | ✅ |
-| Distribution of a numeric variable | ✅ | ✅ | ✅ | ✅ |
-| Correlation between two variables | ✅ | ✅ | ✅ | ✅ |
-| Association between categorical variables | ✅ | ✅ | ❌ | ✅ |
-| Equal proportions for categorical variable levels | ✅ | ✅ | ❌ | ✅ |
-| Random-effects meta-analysis | ✅ | ❌ | ✅ | ✅ |
+| Function | Analysis | Parametric | Non-parametric | Robust | Bayesian |
+|:---|:---|:---|:---|:---|:---|
+| `one_sample_test()` | one-sample test | ✅ | ✅ | ✅ | ✅ |
+| `two_sample_test()` | two-sample test | ✅ | ✅ | ✅ | ✅ |
+| `oneway_anova()` | one-way ANOVA | ✅ | ✅ | ✅ | ✅ |
+| `corr_test()` | correlation | ✅ | ✅ | ✅ | ✅ |
+| `contingency_table()` | one- or two-way contingency table | ✅ | ✅ | ❌ | ✅ |
+| `meta_analysis()` | random-effects meta-analysis | ✅ | ❌ | ✅ | ✅ |
+| `pairwise_comparisons()` | pairwise group comparisons | ✅ | ✅ | ✅ | ✅ |
+| `centrality_description()` | centrality and distribution | ✅ | ✅ | ✅ | ✅ |
 
 ❌ means that no dedicated analysis of that type exists. For contingency
-tables, `type = "robust"` is still accepted and falls back to the
-parametric tests.
+tables, `type = "nonparametric"` and `type = "robust"` both use the same
+frequentist tests as `type = "parametric"`.
+
+`pairwise_contingency_table()` provides pairwise Fisher’s exact tests
+with Cramer’s *V* effect sizes. It does not have a `type` argument.
 
 # Tidy dataframes from statistical analysis
 
@@ -166,7 +145,7 @@ mtcars |> oneway_anova(cyl, wt, type = "robust")
 #> 1    32 <language>
 ```
 
-All possible output dataframes from functions are tabulated here:
+Worked examples of output data frames are collected here:
 <https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html>
 
 The columns and attributes of these dataframes are documented here:
@@ -274,8 +253,8 @@ use it in a plot, you have two options:
 - use the list column as is, in which case you will need to parse it
   (`parse(text = results_data$expression)`)
 
-If you want to display more than one expression in a plot, you will
-*have to* parse them.
+For several row-specific labels in a geometric layer, map `expression`
+to `label` and use `parse = TRUE`, as in the centrality example above.
 
 ### Between-subjects design
 
@@ -511,257 +490,13 @@ ggplot(iris, aes(x = Species, y = Sepal.Length)) +
 
 <img src="man/figures/README-custom_expr-1.png" alt="Example ggplot boxplot of iris Sepal.Length by Species with a custom statistical expression subtitle" width="100%" />
 
-# Summary of tests and effect sizes
-
-Here is a go-to summary of the statistical tests carried out and the
-effect sizes returned by each function. This should be useful if one
-needs to find out more information about how an argument is resolved in
-the underlying package or if one wishes to browse the source code. So,
-for example, if you want to know more about how the one-way
-(between-subjects) ANOVA is carried out, you can run
-`?stats::oneway.test` in your R console.
-
-## `centrality_description`
-
-| Type           | Measure      | Function used                         |
-|:---------------|:-------------|:--------------------------------------|
-| Parametric     | mean         | `datawizard::describe_distribution()` |
-| Non-parametric | median       | `datawizard::describe_distribution()` |
-| Robust         | trimmed mean | `datawizard::describe_distribution()` |
-| Bayesian       | MAP          | `datawizard::describe_distribution()` |
-
-## `oneway_anova`
-
-#### between-subjects
-
-**Hypothesis testing**
-
-| Type | No. of groups | Test | Function used |
-|:---|:---|:---|:---|
-| Parametric | \> 2 | Fisher’s or Welch’s one-way ANOVA | `stats::oneway.test()` |
-| Non-parametric | \> 2 | Kruskal-Wallis one-way ANOVA | `stats::kruskal.test()` |
-| Robust | \> 2 | Heteroscedastic one-way ANOVA for trimmed means | `WRS2::t1way()` |
-| Bayesian | \> 2 | Fisher’s ANOVA | `BayesFactor::anovaBF()` |
-
-**Effect size estimation**
-
-| Type | No. of groups | Effect size | CI available? | Function used |
-|:---|:---|:---|:---|:---|
-| Parametric | \> 2 | partial eta-squared, partial omega-squared | Yes | `effectsize::omega_squared()`, `effectsize::eta_squared()` |
-| Non-parametric | \> 2 | rank epsilon squared | Yes | `effectsize::rank_epsilon_squared()` |
-| Robust | \> 2 | Explanatory measure of effect size | Yes | `WRS2::t1way()` |
-| Bayesian | \> 2 | Bayesian R-squared | Yes | `performance::r2_bayes()` |
-
-#### within-subjects
-
-**Data requirement**: Repeated measures tests assume a *complete* design
-with exactly **one observation per subject per condition**. If your data
-has multiple trials per cell, aggregate first (e.g., take the mean).
-Verify with `table(data$subject, data$condition)` — every cell should
-equal `1`.
-
-**Hypothesis testing**
-
-| Type | No. of groups | Test | Function used |
-|:---|:---|:---|:---|
-| Parametric | \> 2 | One-way repeated measures ANOVA | `afex::aov_ez()` |
-| Non-parametric | \> 2 | Friedman rank sum test | `stats::friedman.test()` |
-| Robust | \> 2 | Heteroscedastic one-way repeated measures ANOVA for trimmed means | `WRS2::rmanova()` |
-| Bayesian | \> 2 | One-way repeated measures ANOVA | `BayesFactor::anovaBF()` |
-
-**Effect size estimation**
-
-| Type | No. of groups | Effect size | CI available? | Function used |
-|:---|:---|:---|:---|:---|
-| Parametric | \> 2 | partial eta-squared, partial omega-squared | Yes | `effectsize::omega_squared()`, `effectsize::eta_squared()` |
-| Non-parametric | \> 2 | Kendall’s coefficient of concordance | Yes | `effectsize::kendalls_w()` |
-| Robust | \> 2 | Algina-Keselman-Penfield robust standardized difference average | Yes | `WRS2::wmcpAKP()` |
-| Bayesian | \> 2 | Bayesian R-squared | Yes | `performance::r2_bayes()` |
-
-## `two_sample_test`
-
-#### between-subjects
-
-**Hypothesis testing**
-
-| Type | No. of groups | Test | Function used |
-|:---|:---|:---|:---|
-| Parametric | 2 | Student’s or Welch’s *t*-test | `stats::t.test()` |
-| Non-parametric | 2 | Mann-Whitney *U* test | `stats::wilcox.test()` |
-| Robust | 2 | Yuen’s test for trimmed means | `WRS2::yuen()` |
-| Bayesian | 2 | Student’s *t*-test | `BayesFactor::ttestBF()` |
-
-**Effect size estimation**
-
-| Type | No. of groups | Effect size | CI available? | Function used |
-|:---|:---|:---|:---|:---|
-| Parametric | 2 | Cohen’s *d*, Hedges’ *g* | Yes | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
-| Non-parametric | 2 | *r* (rank-biserial correlation) | Yes | `effectsize::rank_biserial()` |
-| Robust | 2 | Algina-Keselman-Penfield robust standardized difference | Yes | `WRS2::akp.effect()` |
-| Bayesian | 2 | difference | Yes | `bayestestR::describe_posterior()` |
-
-#### within-subjects
-
-**Data requirement**: Paired tests assume exactly **one observation per
-subject per condition**. If your data has multiple trials per cell,
-aggregate first (e.g., take the mean).
-
-**Hypothesis testing**
-
-| Type | No. of groups | Test | Function used |
-|:---|:---|:---|:---|
-| Parametric | 2 | Student’s *t*-test | `stats::t.test()` |
-| Non-parametric | 2 | Wilcoxon signed-rank test | `stats::wilcox.test()` |
-| Robust | 2 | Yuen’s test on trimmed means for dependent samples | `WRS2::yuend()` |
-| Bayesian | 2 | Student’s *t*-test | `BayesFactor::ttestBF()` |
-
-**Effect size estimation**
-
-| Type | No. of groups | Effect size | CI available? | Function used |
-|:---|:---|:---|:---|:---|
-| Parametric | 2 | Cohen’s *d*, Hedges’ *g* | Yes | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
-| Non-parametric | 2 | *r* (rank-biserial correlation) | Yes | `effectsize::rank_biserial()` |
-| Robust | 2 | Algina-Keselman-Penfield robust standardized difference | Yes | `WRS2::wmcpAKP()` |
-| Bayesian | 2 | difference | Yes | `bayestestR::describe_posterior()` |
-
-## `one_sample_test`
-
-**Hypothesis testing**
-
-| Type | Test | Function used |
-|:---|:---|:---|
-| Parametric | One-sample Student’s *t*-test | `stats::t.test()` |
-| Non-parametric | One-sample Wilcoxon test | `stats::wilcox.test()` |
-| Robust | Bootstrap-*t* method for one-sample test | `WRS2::trimcibt()` |
-| Bayesian | One-sample Student’s *t*-test | `BayesFactor::ttestBF()` |
-
-**Effect size estimation**
-
-| Type | Effect size | CI available? | Function used |
-|:---|:---|:---|:---|
-| Parametric | Cohen’s *d*, Hedges’ *g* | Yes | `effectsize::cohens_d()`, `effectsize::hedges_g()` |
-| Non-parametric | *r* (rank-biserial correlation) | Yes | `effectsize::rank_biserial()` |
-| Robust | trimmed mean | Yes | `WRS2::trimcibt()` |
-| Bayesian | difference | Yes | `bayestestR::describe_posterior()` |
-
-## `corr_test`
-
-**Hypothesis testing** and **Effect size estimation**
-
-| Type | Test | CI available? | Function used |
-|:---|:---|:---|:---|
-| Parametric | Pearson’s correlation coefficient | Yes | `correlation::correlation()` |
-| Non-parametric | Spearman’s rank correlation coefficient | Yes | `correlation::correlation()` |
-| Robust | Winsorized Pearson’s correlation coefficient | Yes | `correlation::correlation()` |
-| Bayesian | Bayesian Pearson’s correlation coefficient | Yes | `correlation::correlation()` |
-
-## `contingency_table`
-
-There are no dedicated non-parametric or robust contingency table
-analyses. `type = "nonparametric"` and `type = "robust"` are accepted,
-but run the same frequentist tests as `type = "parametric"` (the
-“Parametric/Non-parametric” rows below).
-
-#### two-way table
-
-**Hypothesis testing**
-
-| Type | Design | Test | Function used |
-|:---|:---|:---|:---|
-| Parametric/Non-parametric | Unpaired | Pearson’s chi-squared test | `stats::chisq.test()` |
-| Bayesian | Unpaired | Bayesian Pearson’s chi-squared test | `BayesFactor::contingencyTableBF()` |
-| Parametric/Non-parametric | Paired | McNemar’s chi-squared test | `stats::mcnemar.test()` |
-| Bayesian | Paired | No | No |
-
-**Effect size estimation**
-
-| Type | Design | Effect size | CI available? | Function used |
-|:---|:---|:---|:---|:---|
-| Parametric/Non-parametric | Unpaired | Cramer’s *V* | Yes | `effectsize::cramers_v()` |
-| Bayesian | Unpaired | Cramer’s *V* | Yes | `effectsize::cramers_v()` |
-| Parametric/Non-parametric | Paired | Cohen’s *g* | Yes | `effectsize::cohens_g()` |
-| Bayesian | Paired | No | No | No |
-
-Paired Bayesian analysis is not supported: for a two-way table with
-`type = "bayes"`, the `paired` argument is ignored and the unpaired
-Bayesian test is run instead.
-
-#### one-way table
-
-**Hypothesis testing**
-
-| Type | Test | Function used |
-|:---|:---|:---|
-| Parametric/Non-parametric | Goodness of fit chi-squared test | `stats::chisq.test()` |
-| Bayesian | Bayesian Goodness of fit chi-squared test | (custom) |
-
-**Effect size estimation**
-
-| Type | Effect size | CI available? | Function used |
-|:---|:---|:---|:---|
-| Parametric/Non-parametric | Pearson’s *C* | Yes | `effectsize::pearsons_c()` |
-| Bayesian | No | No | No |
-
-## `pairwise_comparisons`
-
-#### between-subjects
-
-**Hypothesis testing**
-
-| Type | Equal variance? | Test | *p*-value adjustment? | Function used |
-|:---|:---|:---|:---|:---|
-| Parametric | No | Games-Howell test | Yes | `PMCMRplus::gamesHowellTest()` |
-| Parametric | Yes | Student’s *t*-test | Yes | `stats::pairwise.t.test()` |
-| Non-parametric | No | Dunn test | Yes | `PMCMRplus::kwAllPairsDunnTest()` |
-| Robust | No | Yuen’s trimmed means test | Yes | `WRS2::lincon()` |
-| Bayesian | `NA` | Student’s *t*-test | `NA` | `BayesFactor::ttestBF()` |
-
-**Effect size estimation**
-
-Not supported.
-
-#### within-subjects
-
-**Data requirement**: Paired pairwise tests assume exactly **one
-observation per subject per condition**. If your data has multiple
-trials per cell, aggregate first (e.g., take the mean).
-
-**Hypothesis testing**
-
-| Type | Test | *p*-value adjustment? | Function used |
-|:---|:---|:---|:---|
-| Parametric | Student’s *t*-test | Yes | `stats::pairwise.t.test()` |
-| Non-parametric | Durbin-Conover test | Yes | `PMCMRplus::durbinAllPairsTest()` |
-| Robust | Yuen’s trimmed means test | Yes | `WRS2::rmmcp()` |
-| Bayesian | Student’s *t*-test | `NA` | `BayesFactor::ttestBF()` |
-
-**Effect size estimation**
-
-Not supported.
-
-## `pairwise_contingency_table`
-
-**Hypothesis testing**
-
-| Test                | *p*-value adjustment? | Function used          |
-|:--------------------|:----------------------|:-----------------------|
-| Fisher’s exact test | Yes                   | `stats::fisher.test()` |
-
-**Effect size estimation**
-
-| Effect size  | CI available? | Function used             |
-|:-------------|:--------------|:--------------------------|
-| Cramer’s *V* | Yes           | `effectsize::cramers_v()` |
-
-## `meta_analysis`
-
-**Hypothesis testing** and **Effect size estimation**
-
-| Type | Test | Effect size | CI available? | Function used |
-|:---|:---|:---|:---|:---|
-| Parametric | Meta-analysis via random-effects models | *beta* | Yes | `metafor::rma()` |
-| Robust | Meta-analysis via robust random-effects models | *beta* | Yes | `metaplus::metaplus()` |
-| Bayesian | Meta-analysis via Bayesian random-effects models | *beta* | Yes | `metaBMA::meta_random()` |
+# Tests and effect sizes
+
+See [Test and effect size
+details](https://www.indrapatil.com/statsExpressions/articles/stats_details.html)
+for the methods, effect sizes, and underlying functions used by each
+analysis. The same method tables are included in the individual function
+help pages.
 
 # Usage in `{ggstatsplot}`
 

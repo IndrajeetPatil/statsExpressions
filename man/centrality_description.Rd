@@ -72,7 +72,8 @@ centrality estimate
 \item \code{min}, \code{max}: minimum and maximum values
 \item \code{skewness}, \code{kurtosis}: shape statistics of the distribution
 \item \code{n.obs}: number of non-missing observations
-\item \code{missing.obs}: number of missing observations
+\item \code{missing.obs}: number of missing observations after filtering (always
+\code{0}, since rows with missing \code{x} or \code{y} are removed before summarizing)
 \item \code{expression}: a list-column of pre-formatted
 \href{https://rdrr.io/r/grDevices/plotmath.html}{plotmath} expressions (each
 element is a \code{language} object, not a character string) containing the

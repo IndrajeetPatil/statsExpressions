@@ -16,9 +16,8 @@ Not supported.
 
 #### within-subjects
 
-**Data requirement**: Paired pairwise tests assume exactly **one observation per
-subject per condition**. If your data has multiple trials per cell, aggregate
-first (e.g., take the mean).
+**Paired data**: See [complete_subjects()] for subject matching, duplicate
+observations, and removal of incomplete subjects.
 
 **Hypothesis testing**
 

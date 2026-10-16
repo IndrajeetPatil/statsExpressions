@@ -24,7 +24,8 @@ of `y` within that level. The columns are:
 
   - `n.obs`: number of non-missing observations
 
-  - `missing.obs`: number of missing observations
+  - `missing.obs`: number of missing observations after filtering (always
+    `0`, since rows with missing `x` or `y` are removed before summarizing)
 
   - `expression`: a list-column of pre-formatted
     [plotmath](https://rdrr.io/r/grDevices/plotmath.html) expressions (each
