@@ -8,24 +8,24 @@ skip_if_not_installed("rstantools")
 test_that("bayesian (between-subjects - anova)", {
   # with NA
   set.seed(123)
-  df1 <- suppressWarnings(oneway_anova(
+  df1 <- oneway_anova(
     type = "bayes",
     data = msleep,
     x = vore,
     y = brainwt
-  ))
+  )
 
   expect_snapshot(dim(df1))
   expect_snapshot(df1[["expression"]][[1]])
 
   # without NA
   set.seed(123)
-  df2 <- suppressWarnings(oneway_anova(
+  df2 <- oneway_anova(
     type = "bayes",
     data = iris,
     x = Species,
     y = Sepal.Length
-  ))
+  )
 
   expect_snapshot(dim(df2))
   expect_snapshot(df2[["expression"]][[1]])
@@ -72,12 +72,12 @@ test_that("Bayesian ANOVA with if_all() filtering and row replication", {
   # This ensures the if_all(matches("effect")) filtering behaves correctly
   # when effect/component columns are absent (they appear in the within-subjects case)
   set.seed(123)
-  df_between <- suppressWarnings(oneway_anova(
+  df_between <- oneway_anova(
     type = "bayes",
     data = iris,
     x = Species,
     y = Sepal.Length
-  ))
+  )
 
   # Verify structure is correct after filtering and binding
   expect_contains(colnames(df_between), c("estimate", "conf.low", "conf.high"))
@@ -87,13 +87,13 @@ test_that("Bayesian ANOVA with if_all() filtering and row replication", {
   # Test within-subjects design
   # This tests both if_all filters and the row replication logic
   set.seed(123)
-  df_within <- suppressWarnings(oneway_anova(
+  df_within <- oneway_anova(
     type = "bayes",
     data = WRS2::WineTasting,
     x = Wine,
     y = Taste,
     paired = TRUE
-  ))
+  )
 
   # Should have same columns and proper row count
   expect_contains(colnames(df_within), c("estimate", "conf.low", "conf.high"))

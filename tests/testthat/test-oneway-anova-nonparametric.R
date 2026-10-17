@@ -18,14 +18,14 @@ test_that("between-subjects", {
 
   # with NA
   set.seed(123)
-  df2 <- suppressWarnings(oneway_anova(
+  df2 <- oneway_anova(
     type = "np",
     data = msleep,
     x = vore,
     y = sleep_total,
     paired = FALSE,
     conf.level = 0.99
-  ))
+  )
 
   expect_snapshot(select(df2, -expression))
   expect_snapshot(df2[["expression"]])

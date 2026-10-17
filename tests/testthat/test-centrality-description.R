@@ -42,7 +42,7 @@ test_that("centrality description works when variable is named `variable`", {
   df_var <- dplyr::rename(mtcars, variable = cyl)
 
   set.seed(123)
-  res <- suppressWarnings(centrality_description(df_var, variable, wt))
+  res <- centrality_description(df_var, variable, wt)
 
   expect_snapshot(select(res, -expression))
   expect_snapshot(res[["expression"]])
