@@ -22,34 +22,10 @@ vignette: >
 source("setup.R")
 ```
 
-## Summary
+## Introduction
 
-The `{statsExpressions}` package has two key aims: to provide a consistent syntax
-to do statistical analysis with tidy data, and to provide statistical
-expressions (i.e., pre-formatted in-text statistical results) for plotting
-functions. Currently, it supports common types of statistical approaches and
-tests: parametric, nonparametric, robust, and Bayesian *t*-test, one-way ANOVA,
-correlation analyses, contingency table analyses, and meta-analyses. The
-functions are pipe-friendly and compatible with tidy data.
-
-## Statement of need
-
-Statistical packages exhibit substantial diversity in terms of their syntax and
-expected input and output data type. For example, some functions expect vectors
-as inputs, while others expect data frames. Depending on whether it is a repeated
-measures design or not, functions from the same package might expect data to be
-in wide or tidy format. Some functions can internally omit missing values, while
-others do not. Furthermore, the statistical test objects returned by the test
-functions might not have all required information (e.g., degrees of freedom,
-significance, Bayes factor, etc.) accessible in a consistent data type.
-Depending on the specific test object and statistic in question, details may be
-returned as a list, a matrix, an array, or a data frame. This diversity can make
-it difficult to easily access all needed information for hypothesis testing and
-estimation, and to switch from one statistical approach to another.
-
-This is where `{statsExpressions}` comes in: It can be thought of as a unified
-portal through which most of the functionality in these underlying packages can
-be accessed, with a simpler interface and with tidy data format.
+```{r child="../man/rmd-fragments/statsExpressions-package.Rmd"}
+```
 
 ## Comparison to other packages
 
@@ -182,8 +158,7 @@ knitr::include_graphics("stats_reporting_format.png")
 
 This expression can be easily displayed in a plot (Figure 2). Displaying statistical
 results in the context of a visualization is indeed a philosophy adopted by the
-`{ggstatsplot}` package [@Patil2021], and `{statsExpressions}` functions as its
-statistical processing backend.
+`{ggstatsplot}` package [@Patil2021].
 
 ```{r}
 #| label = "anova_example",
