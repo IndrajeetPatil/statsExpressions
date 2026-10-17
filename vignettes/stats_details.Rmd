@@ -63,8 +63,9 @@ A few additional requirements are worth noting:
 
 ## Summary of tests and effect sizes
 
-```{r child="../man/rmd-fragments/summary_intro.Rmd"}
-```
+To learn how an argument is resolved, or to browse the source code, consult the
+underlying function listed in these tables. For example, for the
+between-subjects one-way ANOVA, run `?stats::oneway.test` in your R console.
 
 ### `centrality_description()`
 
