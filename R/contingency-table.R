@@ -87,6 +87,14 @@ contingency_table <- function(
 
   data <- .untable_by_counts(data, {{ x }}, {{ y }}, {{ counts }})
 
+  # a test of independence is undefined with an empty row or column, so drop
+  # unused levels (e.g. ones emptied by removing missing values); levels are
+  # kept for a goodness-of-fit test (zero counts are valid data) and for a
+  # paired test (both variables need the same levels)
+  if (!one_way && !paired) {
+    data <- droplevels(data)
+  }
+
   xtab <- table(data)
   ratio <- ratio %||% rep(1 / length(xtab), length(xtab))
 

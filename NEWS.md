@@ -5,6 +5,11 @@
   sizes. Previously the *p*-value was one-sided but the effect size
   confidence interval was always two-sided, unlike in `two_sample_test()`.
 
+- `contingency_table()` no longer fails for a test of independence when `x`
+  or `y` has an empty level, either an unused factor level or one emptied by
+  removing rows with missing values. Such levels are now dropped, as in
+  `pairwise_contingency_table()`.
+
 # statsExpressions 2.2.0
 
 - New helper `complete_subjects()` prepares long-format repeated-measures

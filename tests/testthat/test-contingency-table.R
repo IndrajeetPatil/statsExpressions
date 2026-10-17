@@ -190,3 +190,44 @@ patrick::with_parameters_test_that(
   },
   .cases = dplyr::tibble(dec = c(".", ","))
 )
+
+# empty levels ------------------------------------------------------------
+#
+# A test of independence is undefined with an empty row or column, so unused
+# factor levels (including ones emptied by removing missing values) must be
+# dropped rather than cause an error.
+
+patrick::with_parameters_test_that(
+  "contingency_table() drops empty levels in a test of independence:",
+  {
+    df <- mutate(mtcars, am = factor(am), cyl = factor(cyl))
+    df_unused <- mutate(df, cyl = factor(cyl, levels = c(4, 6, 8, 10)))
+    df_emptied <- mutate(
+      df,
+      am = factor(am, levels = c(0, 1, 2)),
+      cyl = replace(cyl, am == 1 & cyl == 8, NA)
+    )
+
+    run <- function(data) {
+      set.seed(123)
+      suppressWarnings(contingency_table(data, cyl, am, type = type))
+    }
+
+    expect_identical(run(df_unused), run(df))
+    expect_identical(
+      run(df_emptied),
+      run(filter(df, !(am == 1 & cyl == 8)))
+    )
+  },
+  .cases = dplyr::tibble(type = c("parametric", "bayes"))
+)
+
+test_that("contingency_table() keeps zero-count levels in goodness-of-fit tests", {
+  df <- mutate(mtcars, cyl = factor(cyl, levels = c(4, 6, 8, 10)))
+
+  res <- suppressWarnings(
+    contingency_table(df, cyl, ratio = c(0.3, 0.2, 0.4, 0.1))
+  )
+
+  expect_identical(res$df, 3)
+})
