@@ -20,17 +20,11 @@
 #' @autoglobal
 #'
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
-#' # setup
 #' set.seed(123)
-#' library(statsExpressions)
 #'
-#' # extract a tidy data frame
+#' # t-statistic from a tidy linear model data frame
 #' df <- tidy_model_parameters(lm(wt ~ am * cyl, mtcars))
-#'
-#' # create a column containing expression; the expression will depend on `statistic`
 #' tidy_model_expressions(df, statistic = "t")
-#' tidy_model_expressions(df, statistic = "z")
-#' tidy_model_expressions(df, statistic = "chi")
 #'
 #' # f-statistic (requires a data frame with `df`, `df.error`, and effect-size columns)
 #' df_f <- tidy_model_parameters(

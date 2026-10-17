@@ -129,7 +129,7 @@ statistical details, ready to be used in \code{{ggplot2}} (e.g. in \code{labs()}
 For a per-function, column-by-column breakdown of the output (and an explanation
 of the internal \code{add_expression_col()} engine that builds the \code{expression}
 column), see the \href{https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html}{Return value schema}
-article. For more examples, see the \href{https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html}{data frame output vignette}.
+article. For more examples, see the \href{https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html}{Data frame outputs} article.
 }
 \description{
 Parametric, non-parametric, robust, and Bayesian correlation test.
@@ -137,11 +137,11 @@ Parametric, non-parametric, robust, and Bayesian correlation test.
 \section{Correlation analyses}{
 
 
-The table below provides summary about:
+Below is a summary of:
 \itemize{
-\item statistical test carried out for inferential statistics
-\item type of effect size estimate and a measure of uncertainty for this estimate
-\item functions used internally to compute these details
+\item the statistical test carried out for inferential statistics
+\item the type of effect size estimate and a measure of uncertainty for this estimate
+\item the functions used internally to compute these details
 }
 
 \strong{Hypothesis testing and effect size estimation}\tabular{llll}{

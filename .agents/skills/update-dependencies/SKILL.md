@@ -51,13 +51,11 @@ instead of editing them by hand.
 ## Validate and publish
 
 1. Start with the affected `testthat` files and snapshots, then iterate until
-   the full gate passes: `air format . --check`, `make lint`, `make hooks`, and
-   `make check`.
+   the full validation gate in `AGENTS.md` passes.
 2. Keep validation serial when R processes share an installation library. Run
    `make clean` afterwards and verify that only intended files changed.
-3. Follow the `NEWS.md` policy in `AGENTS.md`: record a higher minimum R version
-   or a newly required package, but omit routine constraint bumps. Commit
-   dependency bumps as `chore(deps): ...`.
+3. Follow the `NEWS.md` policy in `AGENTS.md`. Commit dependency bumps as
+   `chore(deps): ...`.
 4. If the branch already has a pull request, update its body with the
    dependency groups, compatibility fixes, simplifications, and validation
    commands; otherwise open one following `AGENTS.md`.

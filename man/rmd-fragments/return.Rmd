@@ -71,4 +71,4 @@ non-parametric, robust, or Bayesian). Any given call therefore returns *some*
 For a per-function, column-by-column breakdown of the output (and an explanation
 of the internal `add_expression_col()` engine that builds the `expression`
 column), see the [Return value schema](https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html)
-article. For more examples, see the [data frame output vignette](https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html).
+article. For more examples, see the [Data frame outputs](https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html) article.

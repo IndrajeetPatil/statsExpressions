@@ -29,7 +29,6 @@
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
 #' # for reproducibility
 #' set.seed(123)
-#' library(statsExpressions)
 #'
 #' # pairwise Fisher's exact tests with Holm adjustment
 #' pairwise_contingency_table(
@@ -46,14 +45,6 @@
 #'   y = Survived,
 #'   counts = Freq,
 #'   p.adjust.method = "bonferroni"
-#' )
-#'
-#' # no p-value adjustment
-#' pairwise_contingency_table(
-#'   data = mtcars,
-#'   x = cyl,
-#'   y = am,
-#'   p.adjust.method = "none"
 #' )
 #'
 #' @template citation

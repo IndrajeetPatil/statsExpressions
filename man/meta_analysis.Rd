@@ -119,7 +119,7 @@ statistical details, ready to be used in \code{{ggplot2}} (e.g. in \code{labs()}
 For a per-function, column-by-column breakdown of the output (and an explanation
 of the internal \code{add_expression_col()} engine that builds the \code{expression}
 column), see the \href{https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html}{Return value schema}
-article. For more examples, see the \href{https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html}{data frame output vignette}.
+article. For more examples, see the \href{https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html}{Data frame outputs} article.
 }
 \description{
 Parametric, robust, and Bayesian random-effects meta-analysis.
@@ -135,11 +135,11 @@ If they are not available, you will be asked to install them.
 \section{Random-effects meta-analysis}{
 
 
-The table below provides summary about:
+Below is a summary of:
 \itemize{
-\item statistical test carried out for inferential statistics
-\item type of effect size estimate and a measure of uncertainty for this estimate
-\item functions used internally to compute these details
+\item the statistical test carried out for inferential statistics
+\item the type of effect size estimate and a measure of uncertainty for this estimate
+\item the functions used internally to compute these details
 }
 
 \strong{Hypothesis testing and effect size estimation}\tabular{lllll}{
@@ -155,30 +155,26 @@ Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressio
 }
 
 \examples{
-\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus", quietly = TRUE)) withAutoprint(\{ # examplesIf}
-set.seed(123)
-library(statsExpressions)
-
+\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && rlang::is_installed(c("metafor", "metaplus", "metaBMA"))) withAutoprint(\{ # examplesIf}
 # let's use `mag` dataset from `{metaplus}`
 data(mag, package = "metaplus")
 dat <- dplyr::rename(mag, estimate = yi, std.error = sei)
 
-# ----------------------- parametric ----------------------------------------
-\dontshow{\}) # examplesIf}
-\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus") && requireNamespace("metafor")) withAutoprint(\{ # examplesIf}
+# ----------------------- parametric ---------------------------------------
 
+set.seed(123)
 meta_analysis(dat)
-\dontshow{\}) # examplesIf}
-\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus")) withAutoprint(\{ # examplesIf}
 
 # ----------------------- robust --------------------------------------------
 
+set.seed(123)
 meta_analysis(dat, type = "robust", random = "normal")
-\dontshow{\}) # examplesIf}
-\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus") && requireNamespace("metaBMA")) withAutoprint(\{ # examplesIf}
 
 # ----------------------- Bayesian ------------------------------------------
 
-meta_analysis(dat, type = "bayes")
+# suppress warnings about divergent transitions after warmup
+set.seed(123)
+suppressWarnings(meta_analysis(dat, type = "bayes"))
 \dontshow{\}) # examplesIf}
+
 }

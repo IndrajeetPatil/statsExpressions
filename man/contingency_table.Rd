@@ -166,7 +166,7 @@ statistical details, ready to be used in \code{{ggplot2}} (e.g. in \code{labs()}
 For a per-function, column-by-column breakdown of the output (and an explanation
 of the internal \code{add_expression_col()} engine that builds the \code{expression}
 column), see the \href{https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html}{Return value schema}
-article. For more examples, see the \href{https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html}{data frame output vignette}.
+article. For more examples, see the \href{https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html}{Data frame outputs} article.
 }
 \description{
 Parametric and Bayesian one-way and two-way contingency table analyses.
@@ -174,11 +174,11 @@ Parametric and Bayesian one-way and two-way contingency table analyses.
 \section{Contingency table analyses}{
 
 
-The table below provides summary about:
+Below is a summary of:
 \itemize{
-\item statistical test carried out for inferential statistics
-\item type of effect size estimate and a measure of uncertainty for this estimate
-\item functions used internally to compute these details
+\item the statistical test carried out for inferential statistics
+\item the type of effect size estimate and a measure of uncertainty for this estimate
+\item the functions used internally to compute these details
 }
 
 There are no dedicated non-parametric or robust contingency table analyses.
@@ -226,6 +226,10 @@ test is run instead.
 }
 
 }
+}
+
+\section{Citation}{
+Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressions with Statistical Details. Journal of Open Source Software, 6(61), 3236, https://doi.org/10.21105/joss.03236
 }
 
 \examples{

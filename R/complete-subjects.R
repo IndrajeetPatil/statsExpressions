@@ -26,8 +26,6 @@
 #' @autoglobal
 #'
 #' @examples
-#' library(statsExpressions)
-#'
 #' # subjects with a missing rating in any condition are removed
 #' complete_subjects(bugs_long, condition, desire, subject.id = subject)
 #'

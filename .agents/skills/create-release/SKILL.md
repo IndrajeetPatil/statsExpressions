@@ -30,21 +30,13 @@ then publish the GitHub Release from `main` only after CRAN acceptance.
    the existing development section in `NEWS.md`. Do not invent changes.
 2. Synchronize the target version in `DESCRIPTION`, the first `NEWS.md`
    heading, and `codemeta.json`; remove any development `.9000` suffix.
-3. Keep NEWS concise and user-facing. Omit routine dependency, lint,
-   formatting, CI, and generated-file maintenance.
+3. Keep NEWS concise and user-facing, following the `NEWS.md` policy in
+   `AGENTS.md`.
 4. Update `cran-comments.md` accurately. Mention a CRAN issue only when the
    repository evidence supports it.
 5. Do not refresh dependencies merely because this is a release.
-6. Run the complete release gate:
-
-   ```bash
-   air format . --check
-   make lint
-   make hooks
-   make check
-   git diff --check
-   ```
-
+6. Run the full validation gate from `AGENTS.md`, followed by
+   `git diff --check`.
 7. Clean build artifacts, inspect the complete diff, commit the validated
    release state, and push the release branch. Only then open or update a
    ready-for-review pull request against `main`; its title must contain the

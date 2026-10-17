@@ -32,8 +32,6 @@ Movie information and user ratings from IMDB.
 Modified dataset from \code{{ggplot2movies}} package.
 }
 \examples{
-dim(movies_long)
-head(movies_long)
 dplyr::glimpse(movies_long)
 }
 \keyword{datasets}

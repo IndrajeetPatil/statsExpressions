@@ -66,10 +66,6 @@ Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressio
 }
 
 \examples{
-# for reproducibility
-library(statsExpressions)
-set.seed(123)
-
 # repeated measures design
 long_to_wide_converter(
   bugs_long,
