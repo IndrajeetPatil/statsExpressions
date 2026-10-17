@@ -17,20 +17,6 @@ vignette: >
 #| include = FALSE,
 #| echo = FALSE
 source("../setup.R")
-
-pkgs <- c(
-  "ggplot2",
-  "metaplus"
-)
-
-successfully_loaded <- purrr::map_lgl(pkgs, requireNamespace, quietly = TRUE)
-can_evaluate <- all(successfully_loaded)
-
-if (can_evaluate) {
-  purrr::walk(pkgs, library, character.only = TRUE)
-} else {
-  knitr::opts_chunk$set(eval = FALSE)
-}
 ```
 
 ## One-sample test output
@@ -71,27 +57,9 @@ if (can_evaluate) {
 ## Random-effects meta-analysis output
 
 ```{r}
-#| label = "meta"
-library(metaplus)
-
-# renaming columns to `{statsExpressions}` conventions
-df <- dplyr::rename(mag, estimate = yi, std.error = sei)
-
-# ----------------------- parametric ---------------------------------------
-
-set.seed(123)
-meta_analysis(df, type = "parametric")
-
-# ----------------------- robust --------------------------------------------
-
-set.seed(123)
-meta_analysis(df, type = "robust")
-
-# ----------------------- Bayesian ---------------------------------------
-
-# suppress warnings about divergent transitions after warmup
-set.seed(123)
-suppressWarnings(meta_analysis(df, type = "bayes"))
+#| label = "meta",
+#| eval = rlang::is_installed(c("metafor", "metaplus", "metaBMA")),
+#| file = "../../man/examples/examples-meta-analysis.R"
 ```
 
 ## Centrality description

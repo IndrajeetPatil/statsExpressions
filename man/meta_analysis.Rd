@@ -155,30 +155,26 @@ Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressio
 }
 
 \examples{
-\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus", quietly = TRUE)) withAutoprint(\{ # examplesIf}
-set.seed(123)
-library(statsExpressions)
-
+\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && rlang::is_installed(c("metafor", "metaplus", "metaBMA"))) withAutoprint(\{ # examplesIf}
 # let's use `mag` dataset from `{metaplus}`
 data(mag, package = "metaplus")
 dat <- dplyr::rename(mag, estimate = yi, std.error = sei)
 
-# ----------------------- parametric ----------------------------------------
-\dontshow{\}) # examplesIf}
-\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus") && requireNamespace("metafor")) withAutoprint(\{ # examplesIf}
+# ----------------------- parametric ---------------------------------------
 
+set.seed(123)
 meta_analysis(dat)
-\dontshow{\}) # examplesIf}
-\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus")) withAutoprint(\{ # examplesIf}
 
 # ----------------------- robust --------------------------------------------
 
+set.seed(123)
 meta_analysis(dat, type = "robust", random = "normal")
-\dontshow{\}) # examplesIf}
-\dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus") && requireNamespace("metaBMA")) withAutoprint(\{ # examplesIf}
 
 # ----------------------- Bayesian ------------------------------------------
 
-meta_analysis(dat, type = "bayes")
+# suppress warnings about divergent transitions after warmup
+set.seed(123)
+suppressWarnings(meta_analysis(dat, type = "bayes"))
 \dontshow{\}) # examplesIf}
+
 }

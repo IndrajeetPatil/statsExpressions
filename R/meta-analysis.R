@@ -1,3 +1,4 @@
+# nolint start: line_length_linter. pkgdown needs the examplesIf guard on one line.
 #' @title Random-effects meta-analysis
 #' @name meta_analysis
 #'
@@ -43,35 +44,16 @@
 #'
 #' @autoglobal
 #'
-#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus", quietly = TRUE)
-#' set.seed(123)
-#' library(statsExpressions)
-#'
-#' # let's use `mag` dataset from `{metaplus}`
-#' data(mag, package = "metaplus")
-#' dat <- dplyr::rename(mag, estimate = yi, std.error = sei)
-#'
-#' # ----------------------- parametric ----------------------------------------
-#'
-#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus") && requireNamespace("metafor")
-#'
-#' meta_analysis(dat)
-#'
-#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus")
-#'
-#' # ----------------------- robust --------------------------------------------
-#'
-#' meta_analysis(dat, type = "robust", random = "normal")
-#'
-#' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true") && requireNamespace("metaplus") && requireNamespace("metaBMA")
-#'
-#' # ----------------------- Bayesian ------------------------------------------
-#'
-#' meta_analysis(dat, type = "bayes")
+#' @examples
+#' \dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true") && rlang::is_installed(c("metafor", "metaplus", "metaBMA"))) withAutoprint(\{ # examplesIf}
+#' @example man/examples/examples-meta-analysis.R
+#' @examples
+#' \dontshow{\}) # examplesIf}
 #'
 #' @template citation
 #'
 #' @export
+# nolint end
 meta_analysis <- function(
   data,
   type = "parametric",
