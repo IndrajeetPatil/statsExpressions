@@ -85,7 +85,7 @@ A BibTeX entry for LaTeX users is
   }
 ```
 
-# General Workflow
+# General workflow
 
 <img src="man/figures/card.png" alt="Diagram showing the general workflow of the statsExpressions package" width="80%" />
 

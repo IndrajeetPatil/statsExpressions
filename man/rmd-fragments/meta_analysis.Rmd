@@ -1,4 +1,4 @@
-**Hypothesis testing** and **Effect size estimation**
+**Hypothesis testing and effect size estimation**
 
 | Type       | Test                                             | Effect size | CI available? | Function used            |
 | :--------- | :----------------------------------------------- | :---------- | :------------ | :----------------------- |

@@ -20,15 +20,6 @@ source("../setup.R")
 
 ```
 
-This vignette can be cited as:
-
-```{r}
-#| label = "citation",
-#| echo = FALSE,
-#| comment = ""
-citation("statsExpressions")
-```
-
 ## Introduction
 
 Every exported analysis function in `{statsExpressions}` returns a **tidy tibble**
@@ -275,3 +266,8 @@ column.
 ## Suggestions
 
 If you find any bugs or have any suggestions/remarks, please file an issue on GitHub: <https://github.com/IndrajeetPatil/statsExpressions/issues>
+
+## Citation
+
+```{r child="../../man/rmd-fragments/citation.Rmd"}
+```

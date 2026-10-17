@@ -1,4 +1,4 @@
-#### between-subjects
+#### Between-subjects
 
 **Hypothesis testing**
 
@@ -18,7 +18,7 @@
 | Robust         | 2             | Algina-Keselman-Penfield robust standardized difference | Yes           | `WRS2::akp.effect()`                               |
 | Bayesian       | 2             | difference                                              | Yes           | `bayestestR::describe_posterior()`                 |
 
-#### within-subjects
+#### Within-subjects
 
 **Paired data**: See `complete_subjects()` for subject matching, duplicate
 observations, and removal of incomplete subjects.

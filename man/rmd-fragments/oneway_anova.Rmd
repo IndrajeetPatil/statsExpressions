@@ -1,4 +1,4 @@
-#### between-subjects
+#### Between-subjects
 
 **Hypothesis testing**
 
@@ -18,7 +18,7 @@
 | Robust         | > 2           | Explanatory measure of effect size         | Yes           | `WRS2::t1way()`                                            |
 | Bayesian       | > 2           | Bayesian R-squared                         | Yes           | `performance::r2_bayes()`                                  |
 
-#### within-subjects
+#### Within-subjects
 
 **Paired data**: See `complete_subjects()` for subject matching, duplicate
 observations, and removal of incomplete subjects.

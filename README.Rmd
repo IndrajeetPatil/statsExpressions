@@ -61,7 +61,7 @@ The package can be cited as:
 citation("statsExpressions")
 ```
 
-# General Workflow
+# General workflow
 
 ```{r}
 #| echo = FALSE,

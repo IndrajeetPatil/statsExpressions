@@ -184,7 +184,7 @@ The table below provides summary about:
 \item type of effect size estimate and a measure of uncertainty for this estimate
 \item functions used internally to compute these details
 }
-\subsection{between-subjects}{
+\subsection{Between-subjects}{
 
 \strong{Hypothesis testing}\tabular{llll}{
    Type \tab No. of groups \tab Test \tab Function used \cr
@@ -205,7 +205,7 @@ The table below provides summary about:
 
 }
 
-\subsection{within-subjects}{
+\subsection{Within-subjects}{
 
 \strong{Paired data}: See \code{complete_subjects()} for subject matching, duplicate
 observations, and removal of incomplete subjects.

@@ -20,12 +20,6 @@ vignette: >
 source("setup.R")
 ```
 
-This vignette can be cited as:
-
-```{r citation, echo=FALSE, comment = ""}
-citation("statsExpressions")
-```
-
 ## Introduction
 
 This article describes the data that `{statsExpressions}` functions expect, and
@@ -139,3 +133,8 @@ to interpret effect sizes:
 
 If you find any bugs or have any suggestions/remarks, please file an issue on GitHub:
 <https://github.com/IndrajeetPatil/statsExpressions/issues>
+
+## Citation
+
+```{r child="../man/rmd-fragments/citation.Rmd"}
+```

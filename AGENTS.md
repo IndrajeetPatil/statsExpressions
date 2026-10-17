@@ -121,11 +121,18 @@ test_that("descriptive name", {
 - Add examples only when they explain a distinct workflow or important behavior.
   Prefer concise prose and cross-references for routine details; avoid expanding
   website builds and CRAN checks with examples for every function or option.
+- Use sentence case for prose headings, preserving function names, proper nouns,
+  and published titles. Keep table labels such as **Hypothesis testing** and
+  **Effect size estimation** bold.
+- End each vignette with a Citation section that includes
+  `man/rmd-fragments/citation.Rmd`.
 - `@examplesIf` cannot wrap an `@example` file. To keep a `NOT_CRAN` guard
   around a shared example file, use the explicit
   `\dontshow{if (...) withAutoprint(\{ # examplesIf}` and
   `\dontshow{\}) # examplesIf}` `@examples` lines around `@example`, as in
-  `R/two-sample-test.R`.
+  `R/two-sample-test.R`. The wrapper preserves automatic printing inside the
+  conditional block, including on R >= 4.5; it is not a compatibility fallback.
+  The `# examplesIf` markers let pkgdown recognise the conditional examples.
 - After changing roxygen comments, run `make document` and commit the generated
   `NAMESPACE` or `man/*.Rd` changes. Do not edit generated `.Rd` files by hand.
 
