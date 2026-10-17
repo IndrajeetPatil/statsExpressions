@@ -179,9 +179,9 @@ still contain the unadjusted *p*-values.
 
 ### Expressions from model results
 
-For a fitted model, use [tidy_model_parameters()] to extract a tidy data frame,
-then [tidy_model_expressions()] to add plotmath expressions. The lower-level
-[add_expression_col()] helper is intended for internal use and its interface
+For a fitted model, use `tidy_model_parameters()` to extract a tidy data frame,
+then `tidy_model_expressions()` to add plotmath expressions. The lower-level
+`add_expression_col()` helper is intended for internal use and its interface
 is not stable.
 
 ## Expressions for Plots

@@ -207,7 +207,7 @@ The table below provides summary about:
 
 \subsection{within-subjects}{
 
-\strong{Paired data}: See \code{\link[=complete_subjects]{complete_subjects()}} for subject matching, duplicate
+\strong{Paired data}: See \code{complete_subjects()} for subject matching, duplicate
 observations, and removal of incomplete subjects.
 
 \strong{Hypothesis testing}\tabular{llll}{

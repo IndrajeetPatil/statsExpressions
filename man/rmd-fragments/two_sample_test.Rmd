@@ -20,7 +20,7 @@
 
 #### within-subjects
 
-**Paired data**: See [complete_subjects()] for subject matching, duplicate
+**Paired data**: See `complete_subjects()` for subject matching, duplicate
 observations, and removal of incomplete subjects.
 
 **Hypothesis testing**
