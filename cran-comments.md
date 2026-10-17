@@ -2,8 +2,9 @@
 
 0 errors | 0 warnings | 0 notes
 
-- Patch release (2.1.2) containing documentation fixes only; there are no
-  changes to computed results.
+- Minor release (2.2.0) that adds the exported `complete_subjects()` helper
+  and fixes bugs in repeated-measures analyses and in expressions under
+  `options(OutDec = ",")`.
 
 ## revdepcheck results
 

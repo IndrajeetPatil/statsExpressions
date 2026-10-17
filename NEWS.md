@@ -1,4 +1,4 @@
-# statsExpressions 2.1.2.9000
+# statsExpressions 2.2.0
 
 - New helper `complete_subjects()` prepares long-format repeated-measures
   data the same way the paired tests do. It drops rows that cannot be paired,
@@ -39,6 +39,10 @@
 
 - Functions that report a sample size no longer warn that `'big.mark' and
   'decimal.mark' are both ','` when `options(OutDec = ",")` is set (#146).
+
+- Corrected the documentation of Bayesian correlation columns, missing-value
+  counts in `centrality_description()`, degrees of freedom, paired sample
+  sizes, and adjusting p-values after expressions have been generated.
 
 # statsExpressions 2.1.2
 
