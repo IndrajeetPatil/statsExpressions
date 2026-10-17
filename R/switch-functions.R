@@ -36,7 +36,7 @@ extract_stats_type <- function(type) {
     grepl("^n", type) ~ "nonparametric",
     grepl("^r", type) ~ "robust",
     grepl("^b", type) ~ "bayes",
-    TRUE ~ "parametric"
+    .default = "parametric"
   )
 }
 
@@ -70,7 +70,7 @@ extract_estimate_type <- function(x) {
     grepl("^pearson", x) ~ list(quote(widehat(italic("r"))["Pearson"])),
     grepl("^winsor", x) ~ list(quote(widehat(italic("r"))["Winsorized"])),
     grepl("^kendall", x) ~ list(quote(widehat(italic("W"))["Kendall"])),
-    TRUE ~ list(NULL)
+    .default = list(NULL)
   )
 }
 
@@ -93,7 +93,7 @@ extract_statistic_text <- function(x) {
     .grepl("probabilities", x) ~ list(quote(chi["gof"]^2)),
     .grepl("pearson's chi", x) ~ list(quote(chi["Pearson"]^2)),
     .grepl("mcnemar's chi", x) ~ list(quote(chi["McNemar"]^2)),
-    TRUE ~ list(NULL)
+    .default = list(NULL)
   )
 }
 
@@ -102,7 +102,7 @@ prior_switch <- function(x) {
   case_when(
     .grepl("contingency", x) ~ list(quote(italic("a")["Gunel-Dickey"])),
     .grepl("correlation", x) ~ list(quote(italic("r")["beta"]^"JZS")),
-    TRUE ~ list(quote(italic("r")["Cauchy"]^"JZS"))
+    .default = list(quote(italic("r")["Cauchy"]^"JZS"))
   )
 }
 
