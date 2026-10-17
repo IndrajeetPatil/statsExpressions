@@ -1,4 +1,4 @@
-The `{statsExpressions}` package has two key aims: 
+The `{statsExpressions}` package has two key aims:
 
 - to provide a consistent syntax to do statistical analysis with tidy data (in pipe-friendly manner),
 - to provide statistical expressions (pre-formatted in-text statistical

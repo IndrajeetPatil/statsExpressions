@@ -17,7 +17,6 @@ vignette: >
 #| include = FALSE,
 #| echo = FALSE
 source("../setup.R")
-
 ```
 
 ## Introduction

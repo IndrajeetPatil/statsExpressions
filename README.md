@@ -499,7 +499,7 @@ For detailed documentation, see the package website:
 <https://www.indrapatil.com/ggstatsplot/>
 
 Here is an example from `{ggstatsplot}` of what the plots look like when
-the expressions are displayed in the subtitle-
+the expressions are displayed in the subtitle:
 
 <img src="man/figures/ggstatsplot.png" alt="Example plot from ggstatsplot package showing statistical results in subtitle" align="center" />
 
