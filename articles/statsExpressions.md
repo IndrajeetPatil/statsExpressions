@@ -1,39 +1,46 @@
 # statsExpressions: R Package for Tidy Dataframes and Expressions with Statistical Details
 
-## Summary
+## Introduction
 
 The [statsExpressions](https://www.indrapatil.com/statsExpressions/)
-package has two key aims: to provide a consistent syntax to do
-statistical analysis with tidy data, and to provide statistical
-expressions (i.e., pre-formatted in-text statistical results) for
-plotting functions. Currently, it supports common types of statistical
-approaches and tests: parametric, nonparametric, robust, and Bayesian
-*t*-test, one-way ANOVA, correlation analyses, contingency table
-analyses, and meta-analyses. The functions are pipe-friendly and
-compatible with tidy data.
+package has two key aims:
 
-## Statement of need
+- to provide a consistent syntax to do statistical analysis with tidy
+  data (in a pipe-friendly manner),
+- to provide statistical expressions (pre-formatted in-text statistical
+  results) for plotting functions.
+
+It covers common statistical tests (*t*-tests, one-way ANOVA,
+correlation analyses, contingency table analyses, and meta-analyses)
+with parametric, nonparametric, robust, and Bayesian approaches,
+depending on the test.
 
 Statistical packages exhibit substantial diversity in terms of their
 syntax and expected input and output data type. For example, some
 functions expect vectors as inputs, while others expect data frames.
 Depending on whether it is a repeated measures design or not, functions
-from the same package might expect data to be in wide or tidy format.
-Some functions can internally omit missing values, while others do not.
-Furthermore, the statistical test objects returned by the test functions
-might not have all required information (e.g., degrees of freedom,
-significance, Bayes factor, etc.) accessible in a consistent data type.
-Depending on the specific test object and statistic in question, details
-may be returned as a list, a matrix, an array, or a data frame. This
-diversity can make it difficult to easily access all needed information
-for hypothesis testing and estimation, and to switch from one
+from the same package might expect data to be in wide or long format.
+Some functions can internally omit missing values, while other functions
+error in their presence. Furthermore, the objects returned by test
+functions might not have all required information (e.g., degrees of
+freedom, significance, Bayes factor, etc.) accessible in a consistent
+data type: depending on the function, details may be returned as a list,
+a matrix, an array, or a data frame. This diversity makes it difficult
+to access all needed information for hypothesis testing and estimation,
+to use the results downstream in a workflow, and to switch from one
 statistical approach to another.
 
 This is where
 [statsExpressions](https://www.indrapatil.com/statsExpressions/) comes
 in: It can be thought of as a unified portal through which most of the
 functionality in these underlying packages can be accessed, with a
-simpler interface and with tidy data format.
+simpler interface and no requirement to change data format.
+
+This package forms the statistical processing backend for the
+[`ggstatsplot`](https://www.indrapatil.com/ggstatsplot/) package.
+
+For more documentation, see the dedicated
+[website](https://www.indrapatil.com/statsExpressions/).
 
 ## Comparison to other packages
 
@@ -255,9 +262,7 @@ This expression can be easily displayed in a plot (Figure 2). Displaying
 statistical results in the context of a visualization is indeed a
 philosophy adopted by the
 [ggstatsplot](https://www.indrapatil.com/ggstatsplot/) package ([Patil,
-2021](#ref-Patil2021)), and
-[statsExpressions](https://www.indrapatil.com/statsExpressions/)
-functions as its statistical processing backend.
+2021](#ref-Patil2021)).
 
 \
 [`library`](https://rdrr.io/r/base/library.html)`(`[`ggplot2`](https://ggplot2.tidyverse.org)`)`\
