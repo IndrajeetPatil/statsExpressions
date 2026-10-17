@@ -204,19 +204,6 @@ patrick::with_parameters_test_that(
 
 # additional arguments are passed ---------------------------------------
 
-alternative_cases <- tidyr::expand_grid(
-  dplyr::tibble(
-    design = c("within-subjects", "between-subjects"),
-    data = list(bugs_long, mtcars),
-    x = c("condition", "cyl"),
-    y = c("desire", "wt"),
-    paired = c(TRUE, FALSE),
-    var.equal = c(FALSE, TRUE)
-  ),
-  alternative = c("less", "greater")
-) |>
-  dplyr::mutate(.test_name = paste(design, alternative, sep = ", "))
-
 patrick::with_parameters_test_that(
   "additional arguments are passed to underlying methods:",
   {
@@ -235,7 +222,20 @@ patrick::with_parameters_test_that(
     expect_snapshot(dplyr::select(df, -expression))
     expect_snapshot(df[["expression"]])
   },
-  .cases = alternative_cases
+  .cases = dplyr::mutate(
+    tidyr::expand_grid(
+      dplyr::tibble(
+        design = c("within-subjects", "between-subjects"),
+        data = list(bugs_long, mtcars),
+        x = c("condition", "cyl"),
+        y = c("desire", "wt"),
+        paired = c(TRUE, FALSE),
+        var.equal = c(FALSE, TRUE)
+      ),
+      alternative = c("less", "greater")
+    ),
+    .test_name = paste(design, alternative, sep = ", ")
+  )
 )
 
 # grouping names that clash with local variables ----------------------------
