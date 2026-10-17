@@ -61,11 +61,12 @@ tidy_model_expressions <- function(
   stat_type <- substring(tolower(statistic), 1L, 1L)
 
   # if any of the necessary numeric columns are missing, there shouldn't be an
-  # expression corresponding to that row; convert the necessary columns to
-  # character type for expression
-  df_expr <- data |>
-    tidyr::drop_na(matches("estimate|statistic|std.error|p.value")) |>
-    .data_to_char(digits)
+  # expression corresponding to that row
+  needed_cols <- select(data, matches("estimate|statistic|std.error|p.value"))
+  has_missing <- rowSums(is.na(needed_cols)) > 0L
+
+  # convert the necessary columns to character type for expression
+  df_expr <- .data_to_char(data, digits)
 
   es_text <- if (stat_type == "f") {
     switch(
@@ -115,9 +116,12 @@ tidy_model_expressions <- function(
     }
   )
 
-  # rows dropped above get an `NA` expression here, which is turned into `NULL`
-  # to show nothing instead of an empty string ("")
-  left_join(data, select(df_expr, term, expression), by = "term") |>
+  # rows with missing values get an `NA` expression here, which is turned into
+  # `NULL` to show nothing instead of an empty string (""); expressions are
+  # matched by position because `term` needn't be unique (e.g. multivariate
+  # models repeat terms for each response)
+  data |>
+    mutate(expression = replace(df_expr$expression, .env$has_missing, NA)) |>
     .glue_to_expression()
 }
 

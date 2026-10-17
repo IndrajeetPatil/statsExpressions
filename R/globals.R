@@ -36,7 +36,6 @@ utils::globalVariables(c(
   # <tidy_model_parameters>
   "r.squared",
   # <pairwise_comparisons>
-  # <tidy_model_expressions>
   "term",
   NULL
 ))

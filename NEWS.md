@@ -15,6 +15,10 @@
   empty level was kept, which made robust `oneway_anova()` and
   `pairwise_comparisons()` fail.
 
+- `tidy_model_expressions()` no longer duplicates rows and mismatches
+  expressions when `term` values repeat, as in multivariate models where each
+  term appears once per response.
+
 # statsExpressions 2.2.0
 
 - New helper `complete_subjects()` prepares long-format repeated-measures

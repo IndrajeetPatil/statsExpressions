@@ -137,3 +137,18 @@ test_that("tidy_model_expressions() drops the t degrees of freedom per row", {
 
   expect_snapshot(tidy_model_expressions(df, statistic = "t")[["expression"]])
 })
+
+test_that("tidy_model_expressions() keeps one row per term with repeated terms", {
+  # multivariate models repeat each term for every response
+  df <- tidy_model_parameters(lm(cbind(mpg, wt) ~ hp, mtcars))
+  res <- tidy_model_expressions(df, statistic = "t")
+
+  expect_shape(res, nrow = nrow(df))
+  expect_identical(res$response, df$response)
+  expect_identical(
+    res[["expression"]],
+    purrr::map(seq_len(nrow(df)), \(i) {
+      tidy_model_expressions(df[i, ], statistic = "t")[["expression"]][[1L]]
+    })
+  )
+})
