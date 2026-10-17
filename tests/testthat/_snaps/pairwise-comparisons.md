@@ -617,10 +617,10 @@
       list(log[e] * (BF["01"]) == "-3.92")
       
 
-# additional arguments are passed to underlying methods
+# additional arguments are passed to underlying methods: within-subjects, less
 
     Code
-      df1
+      df
     Output
       # A tibble: 6 x 6
         group1 group2  p.value p.adjust.method test        expression
@@ -635,7 +635,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic(p)[unadj.] == "2.65e-04")
@@ -656,10 +656,10 @@
       list(italic(p)[unadj.] == "1.11e-09")
       
 
----
+# additional arguments are passed to underlying methods: within-subjects, greater
 
     Code
-      df2
+      df
     Output
       # A tibble: 6 x 6
         group1 group2 p.value p.adjust.method test        expression
@@ -674,7 +674,7 @@
 ---
 
     Code
-      df2[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic(p)[unadj.] == "1.00")
@@ -695,10 +695,10 @@
       list(italic(p)[unadj.] == "1.00")
       
 
----
+# additional arguments are passed to underlying methods: between-subjects, less
 
     Code
-      df3
+      df
     Output
       # A tibble: 3 x 6
         group1 group2 p.value p.adjust.method test        expression
@@ -710,7 +710,7 @@
 ---
 
     Code
-      df3[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic(p)[unadj.] == "0.99")
@@ -722,10 +722,10 @@
       list(italic(p)[unadj.] == "1.00")
       
 
----
+# additional arguments are passed to underlying methods: between-subjects, greater
 
     Code
-      df4
+      df
     Output
       # A tibble: 3 x 6
         group1 group2     p.value p.adjust.method test        expression
@@ -737,7 +737,7 @@
 ---
 
     Code
-      df4[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic(p)[unadj.] == "5.32e-03")

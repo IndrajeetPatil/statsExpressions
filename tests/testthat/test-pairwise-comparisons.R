@@ -199,55 +199,39 @@ patrick::with_parameters_test_that(
 
 # additional arguments are passed ---------------------------------------
 
-test_that("additional arguments are passed to underlying methods", {
-  df1 <- pairwise_comparisons(
-    data = bugs_long,
-    x = condition,
-    y = desire,
-    paired = TRUE,
-    p.adjust.method = "none",
-    alternative = "less"
-  )
+alternative_cases <- tidyr::expand_grid(
+  dplyr::tibble(
+    design = c("within-subjects", "between-subjects"),
+    data = list(bugs_long, mtcars),
+    x = c("condition", "cyl"),
+    y = c("desire", "wt"),
+    paired = c(TRUE, FALSE),
+    var.equal = c(FALSE, TRUE)
+  ),
+  alternative = c("less", "greater")
+) |>
+  dplyr::mutate(.test_name = paste(design, alternative, sep = ", "))
 
-  expect_snapshot(df1)
-  expect_snapshot(df1[["expression"]])
+patrick::with_parameters_test_that(
+  "additional arguments are passed to underlying methods:",
+  {
+    # `exec()` inlines the column names, as if they were typed in the call
+    df <- rlang::exec(
+      pairwise_comparisons,
+      data = data,
+      x = x,
+      y = y,
+      paired = paired,
+      var.equal = var.equal,
+      p.adjust.method = "none",
+      alternative = alternative
+    )
 
-  df2 <- pairwise_comparisons(
-    data = bugs_long,
-    x = condition,
-    y = desire,
-    paired = TRUE,
-    p.adjust.method = "none",
-    alternative = "greater"
-  )
-
-  expect_snapshot(df2)
-  expect_snapshot(df2[["expression"]])
-
-  df3 <- pairwise_comparisons(
-    data = mtcars,
-    x = cyl,
-    y = wt,
-    var.equal = TRUE,
-    p.adjust.method = "none",
-    alternative = "less"
-  )
-
-  expect_snapshot(df3)
-  expect_snapshot(df3[["expression"]])
-
-  df4 <- pairwise_comparisons(
-    data = mtcars,
-    x = cyl,
-    y = wt,
-    var.equal = TRUE,
-    p.adjust.method = "none",
-    alternative = "greater"
-  )
-
-  expect_snapshot(df4)
-  expect_snapshot(df4[["expression"]])
-})
+    expect_snapshot(df)
+    expect_snapshot(df[["expression"]])
+  },
+  .cases = alternative_cases
+)
 
 # grouping names that clash with local variables ----------------------------
 
