@@ -4,7 +4,6 @@ output:
   rmarkdown::html_vignette:
     toc: true
     toc_depth: 4
-    keep_md: true
 vignette: >
   %\VignetteIndexEntry{Test and effect size details}
   %\VignetteEngine{knitr::rmarkdown}
@@ -117,18 +116,18 @@ between-subjects one-way ANOVA, run `?stats::oneway.test` in your R console.
 See `{effectsize}`'s interpretation functions to check different rules/conventions
 to interpret effect sizes:
 
-<https://easystats.github.io/effectsize/reference/index.html#section-interpretation>
+<https://easystats.github.io/effectsize/reference/index.html#interpretation>
 
 ## References
 
-  - For parametric and non-parametric effect sizes:
-    <https://easystats.github.io/effectsize/articles/>
+- For parametric and non-parametric effect sizes:
+  <https://easystats.github.io/effectsize/articles/>
 
-  - For robust effect sizes:
-    <https://CRAN.R-project.org/package=WRS2/vignettes/WRS2.pdf>
+- For robust effect sizes:
+  <https://CRAN.R-project.org/package=WRS2/vignettes/WRS2.pdf>
 
-  - For Bayesian posterior estimates:
-    <https://easystats.github.io/bayestestR/articles/bayes_factors.html>
+- For Bayesian posterior estimates:
+  <https://easystats.github.io/bayestestR/articles/bayes_factors.html>
 
 ## Suggestions
 
