@@ -83,9 +83,9 @@ centrality estimate, ready to be used in \code{{ggplot2}}
 \code{"setosa\\n(n = 50)"}), useful as an axis or facet label
 }
 
-For more examples, see the \href{https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html}{data frame output vignette}
+For more examples, see the \href{https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html}{Data frame outputs}
 and the \href{https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html}{Return value schema}
-article.
+articles.
 }
 \description{
 Parametric, non-parametric, robust, and Bayesian measures of centrality.
