@@ -80,15 +80,9 @@ instructions for you to follow:
 6. Run the relevant validation until the refactoring is demonstrated to be
    regression-free.
 
-Use the smallest validation that proves the change, and escalate as needed.
-For this repository, that commonly means:
-
-- `make check`
-- `make lint`
-
-Run any narrower targeted checks first when they are sufficient, but do not
-stop until you have strong evidence that the refactoring did not introduce
-defects.
+Validate as described under Validation in `AGENTS.md`, escalating to the full
+validation gate. Do not stop until you have strong evidence that the
+refactoring did not introduce defects.
 
 ## Changelog policy
 
@@ -96,9 +90,9 @@ Do **not** update `NEWS.md` for minor cleanups or routine simplifications.
 Only if the work amounts to a **significant refactoring** should it be
 recorded there, and then record **only** the significant refactoring itself
 — not incidental cleanup details, drive-by edits, or validation notes.
-However, if the refactoring requires bumping the minimum version of a
-dependency in `DESCRIPTION`, you must record that compatibility change in
-`NEWS.md` regardless of the refactoring's size.
+Compatibility changes, such as a dependency minimum version that the
+refactoring requires, follow the `NEWS.md` policy in `AGENTS.md` regardless of
+the refactoring's size.
 
 ## Pull request
 
