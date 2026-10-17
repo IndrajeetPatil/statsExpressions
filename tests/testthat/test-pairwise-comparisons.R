@@ -147,7 +147,7 @@ patrick::with_parameters_test_that(
     data = rep(
       list(
         bugs_long,
-        rename(WRS2::WineTasting, condition = Wine, desire = Taste)
+        dplyr::rename(WRS2::WineTasting, condition = Wine, desire = Taste)
       ),
       each = 3L
     ),
@@ -175,7 +175,7 @@ patrick::with_parameters_test_that(
   .cases = dplyr::tibble(
     data = list(
       bugs_long,
-      rename(WRS2::WineTasting, condition = Wine, desire = Taste)
+      dplyr::rename(WRS2::WineTasting, condition = Wine, desire = Taste)
     ),
     .test_name = c("bugs_long", "WineTasting")
   )
@@ -186,7 +186,12 @@ patrick::with_parameters_test_that(
   {
     expect_subject_id_invariance(
       pairwise_comparisons,
-      rename(WRS2::WineTasting, condition = Wine, score = Taste, id = Taster),
+      dplyr::rename(
+        WRS2::WineTasting,
+        condition = Wine,
+        score = Taste,
+        id = Taster
+      ),
       type = type,
       digits = 3L
     )
@@ -240,7 +245,7 @@ test_that("Bayesian comparisons work with `a` or `b` as grouping name", {
   expected <- pairwise_comparisons(mtcars, cyl, wt, type = "bayes")
 
   for (group in c("a", "b")) {
-    data <- rename(mtcars, !!group := cyl)
+    data <- dplyr::rename(mtcars, !!group := cyl)
 
     set.seed(123)
     df <- pairwise_comparisons(data, !!rlang::sym(group), wt, type = "bayes")
