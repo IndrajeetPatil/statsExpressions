@@ -1,8 +1,6 @@
 # don't test data frames because the values vary across platforms, even with the
 # same seed; for the same reason, don't change number of digits
 
-skip_if_not_installed("rstantools")
-
 # between-subjects ------------------------------
 
 test_that("bayesian (between-subjects - anova)", {
