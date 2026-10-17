@@ -172,11 +172,11 @@ comparisons between group levels with corrections for multiple testing.
 \section{Pairwise comparison tests}{
 
 
-The table below provides summary about:
+Below is a summary of:
 \itemize{
-\item statistical test carried out for inferential statistics
-\item type of effect size estimate and a measure of uncertainty for this estimate
-\item functions used internally to compute these details
+\item the statistical test carried out for inferential statistics
+\item the type of effect size estimate and a measure of uncertainty for this estimate
+\item the functions used internally to compute these details
 }
 \subsection{Between-subjects}{
 

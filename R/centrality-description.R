@@ -14,9 +14,6 @@
 #'
 #' @section Centrality measures:
 #'
-#' ```{r child="man/rmd-fragments/table_intro.Rmd"}
-#' ```
-#'
 #' ```{r child="man/rmd-fragments/centrality_description.Rmd"}
 #' ```
 #'
