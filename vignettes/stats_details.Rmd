@@ -120,14 +120,14 @@ to interpret effect sizes:
 
 ## References
 
-  - For parametric and non-parametric effect sizes:
-    <https://easystats.github.io/effectsize/articles/>
+- For parametric and non-parametric effect sizes:
+  <https://easystats.github.io/effectsize/articles/>
 
-  - For robust effect sizes:
-    <https://CRAN.R-project.org/package=WRS2/vignettes/WRS2.pdf>
+- For robust effect sizes:
+  <https://CRAN.R-project.org/package=WRS2/vignettes/WRS2.pdf>
 
-  - For Bayesian posterior estimates:
-    <https://easystats.github.io/bayestestR/articles/bayes_factors.html>
+- For Bayesian posterior estimates:
+  <https://easystats.github.io/bayestestR/articles/bayes_factors.html>
 
 ## Suggestions
 
