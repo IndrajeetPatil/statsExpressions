@@ -1,6 +1,6 @@
 # parametric --------------------------------------------------------------
 
-test_that(desc = "corr_test works - parametric", code = {
+test_that("corr_test works - parametric", {
   # with NA
   df1 <- corr_test(
     data = msleep,
@@ -29,7 +29,7 @@ test_that(desc = "corr_test works - parametric", code = {
 
 # robust ----------------------------------------------------------------
 
-test_that(desc = "corr_test works - robust", code = {
+test_that("corr_test works - robust", {
   # with NA
   df1 <- corr_test(
     data = msleep,
@@ -57,7 +57,7 @@ test_that(desc = "corr_test works - robust", code = {
 
 # nonparametric ----------------------------------------------------------
 
-test_that(desc = "corr_test works - nonparametric", code = {
+test_that("corr_test works - nonparametric", {
   # with NA
   df1 <- corr_test(
     data = msleep,
@@ -86,7 +86,7 @@ test_that(desc = "corr_test works - nonparametric", code = {
 
 # bayesian --------------------------------------
 
-test_that(desc = "corr_test works - Bayesian", code = {
+test_that("corr_test works - Bayesian", {
   # with NA
   set.seed(123)
   df1 <- corr_test(

@@ -1,4 +1,4 @@
-test_that(desc = "meta_analysis works - parametric", code = {
+test_that("meta_analysis works - parametric", {
   skip_if_not_installed("metafor")
 
   df <- meta_analysis(data_meta)

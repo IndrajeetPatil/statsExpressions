@@ -1,6 +1,6 @@
 # within-subjects ------------------------------------------------------------
 
-test_that(desc = "t_robust - within-subjects - without NAs", code = {
+test_that("t_robust - within-subjects - without NAs", {
   set.seed(123)
   df1 <- two_sample_test(
     type = "r",
@@ -18,7 +18,7 @@ test_that(desc = "t_robust - within-subjects - without NAs", code = {
   expect_snapshot(df1[["expression"]])
 })
 
-test_that(desc = "t_robust - within-subjects - with NAs", code = {
+test_that("t_robust - within-subjects - with NAs", {
   set.seed(123)
   df1 <- two_sample_test(
     type = "r",
@@ -35,7 +35,7 @@ test_that(desc = "t_robust - within-subjects - with NAs", code = {
 
 # between-subjects ------------------------------------------------------------
 
-test_that(desc = "t_robust - between-subjects - without NAs", code = {
+test_that("t_robust - between-subjects - without NAs", {
   set.seed(123)
   df1 <- two_sample_test(
     type = "r",
@@ -51,7 +51,7 @@ test_that(desc = "t_robust - between-subjects - without NAs", code = {
   expect_snapshot(df1[["expression"]])
 })
 
-test_that(desc = "t_robust - between-subjects - with NAs", code = {
+test_that("t_robust - between-subjects - with NAs", {
   set.seed(123)
   df1 <- two_sample_test(
     type = "r",
@@ -67,7 +67,7 @@ test_that(desc = "t_robust - between-subjects - with NAs", code = {
   expect_snapshot(df1[["expression"]])
 })
 
-test_that(desc = "works with subject id", code = {
+test_that("works with subject id", {
   expect_subject_id_invariance(
     two_sample_test,
     data_with_subid_two_groups,

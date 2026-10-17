@@ -2,7 +2,7 @@ skip_if_not_installed("boot")
 
 # between-subjects ----------------------------------------------
 
-test_that(desc = "between-subjects", code = {
+test_that("between-subjects", {
   # without NA
   set.seed(123)
   df1 <- oneway_anova(
@@ -33,7 +33,7 @@ test_that(desc = "between-subjects", code = {
 
 # within-subjects ----------------------------------------------
 
-test_that(desc = "within-subjects", code = {
+test_that("within-subjects", {
   # with NAs
   set.seed(123)
   df1 <- oneway_anova(
@@ -63,6 +63,6 @@ test_that(desc = "within-subjects", code = {
   expect_snapshot(df2[["expression"]])
 })
 
-test_that(desc = "works with subject id", code = {
+test_that("works with subject id", {
   expect_subject_id_invariance(oneway_anova, data_with_subid, type = "np")
 })

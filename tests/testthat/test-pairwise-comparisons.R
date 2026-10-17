@@ -1,6 +1,6 @@
 # between-subjects design --------------------------------------------------
 
-test_that(desc = "`pairwise_comparisons()` works for between-subjects design", code = {
+test_that("`pairwise_comparisons()` works for between-subjects design", {
   # student's t
   df1 <- pairwise_comparisons(
     data = msleep,
@@ -84,7 +84,7 @@ test_that(desc = "`pairwise_comparisons()` works for between-subjects design", c
 
 # dropped levels --------------------------------------------------
 
-test_that(desc = "dropped levels are not included", code = {
+test_that("dropped levels are not included", {
   msleep2 <- dplyr::filter(msleep, vore %in% c("carni", "omni"))
 
   df1 <- pairwise_comparisons(
@@ -110,7 +110,7 @@ test_that(desc = "dropped levels are not included", code = {
 
 # data without NAs --------------------------------------------------
 
-test_that(desc = "data without NAs", code = {
+test_that("data without NAs", {
   df <- pairwise_comparisons(
     data = iris,
     x = Species,
@@ -199,7 +199,7 @@ patrick::with_parameters_test_that(
 
 # additional arguments are passed ---------------------------------------
 
-test_that(desc = "additional arguments are passed to underlying methods", code = {
+test_that("additional arguments are passed to underlying methods", {
   df1 <- pairwise_comparisons(
     data = bugs_long,
     x = condition,
@@ -251,7 +251,7 @@ test_that(desc = "additional arguments are passed to underlying methods", code =
 
 # grouping names that clash with local variables ----------------------------
 
-test_that(desc = "Bayesian comparisons work with `a` or `b` as grouping name", code = {
+test_that("Bayesian comparisons work with `a` or `b` as grouping name", {
   set.seed(123)
   expected <- pairwise_comparisons(mtcars, cyl, wt, type = "bayes")
 

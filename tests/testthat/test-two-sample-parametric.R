@@ -1,4 +1,4 @@
-test_that(desc = "parametric t-test works (between-subjects without NAs)", code = {
+test_that("parametric t-test works (between-subjects without NAs)", {
   df1 <- two_sample_test(
     ToothGrowth,
     x = supp,
@@ -13,7 +13,7 @@ test_that(desc = "parametric t-test works (between-subjects without NAs)", code 
   expect_snapshot(df1[["expression"]])
 })
 
-test_that(desc = "parametric t-test works (between-subjects with NAs)", code = {
+test_that("parametric t-test works (between-subjects with NAs)", {
   df1 <- two_sample_test(
     data = filter(msleep, vore %in% c("carni", "herbi")),
     x = vore,
@@ -28,7 +28,7 @@ test_that(desc = "parametric t-test works (between-subjects with NAs)", code = {
   expect_snapshot(df1[["expression"]])
 })
 
-test_that(desc = "parametric t-test works (within-subjects without NAs)", code = {
+test_that("parametric t-test works (within-subjects without NAs)", {
   df1 <- two_sample_test(
     data = filter(iris_long, condition %in% c("Sepal.Length", "Sepal.Width")),
     x = condition,
@@ -43,7 +43,7 @@ test_that(desc = "parametric t-test works (within-subjects without NAs)", code =
   expect_snapshot(df1[["expression"]])
 })
 
-test_that(desc = "parametric t-test works (within-subjects with NAs)", code = {
+test_that("parametric t-test works (within-subjects with NAs)", {
   df1 <- two_sample_test(
     data = filter(bugs_long, condition %in% c("HDHF", "HDLF")),
     x = condition,
@@ -57,7 +57,7 @@ test_that(desc = "parametric t-test works (within-subjects with NAs)", code = {
   expect_snapshot(df1[["expression"]])
 })
 
-test_that(desc = "works with subject id", code = {
+test_that("works with subject id", {
   expect_subject_id_invariance(
     two_sample_test,
     data_with_subid_two_groups

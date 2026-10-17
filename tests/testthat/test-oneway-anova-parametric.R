@@ -1,4 +1,4 @@
-test_that(desc = "parametric anova subtitles work (without NAs)", code = {
+test_that("parametric anova subtitles work (without NAs)", {
   set.seed(123)
   df <- oneway_anova(
     data = mtcars,
@@ -26,7 +26,7 @@ test_that(desc = "parametric anova subtitles work (without NAs)", code = {
   expect_snapshot(df1[["expression"]])
 })
 
-test_that(desc = "parametric anova subtitles with partial omega-squared", code = {
+test_that("parametric anova subtitles with partial omega-squared", {
   set.seed(123)
   df1 <- oneway_anova(
     data = msleep,
@@ -40,7 +40,7 @@ test_that(desc = "parametric anova subtitles with partial omega-squared", code =
   expect_snapshot(df1[["expression"]])
 })
 
-test_that(desc = "paired parametric anova subtitles work (without NAs)", code = {
+test_that("paired parametric anova subtitles work (without NAs)", {
   set.seed(123)
   df1 <- oneway_anova(
     data = iris_long,
@@ -56,6 +56,6 @@ test_that(desc = "paired parametric anova subtitles work (without NAs)", code = 
   expect_snapshot(df1[["expression"]])
 })
 
-test_that(desc = "works with subject id", code = {
+test_that("works with subject id", {
   expect_subject_id_invariance(oneway_anova, data_with_subid)
 })

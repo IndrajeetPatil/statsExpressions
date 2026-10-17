@@ -1,4 +1,4 @@
-test_that(desc = "centrality description works as expected - no missing data", code = {
+test_that("centrality description works as expected - no missing data", {
   set.seed(123)
   df <- purrr::pmap_dfr(
     .l = list(
@@ -16,7 +16,7 @@ test_that(desc = "centrality description works as expected - no missing data", c
   expect_snapshot(df[["expression"]])
 })
 
-test_that(desc = "centrality description works as expected - missing data", code = {
+test_that("centrality description works as expected - missing data", {
   # some MAP estimates are different on macOS compared to windows and linux
   skip_on_os(c("windows", "linux"))
 
@@ -38,7 +38,7 @@ test_that(desc = "centrality description works as expected - missing data", code
 })
 
 
-test_that(desc = "centrality description works when variable is named `variable`", code = {
+test_that("centrality description works when variable is named `variable`", {
   df_var <- dplyr::rename(mtcars, variable = cyl)
 
   set.seed(123)

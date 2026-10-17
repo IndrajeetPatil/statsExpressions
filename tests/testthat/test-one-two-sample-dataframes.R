@@ -1,4 +1,4 @@
-test_that(desc = "parametric t-tests and ANOVAs", code = {
+test_that("parametric t-tests and ANOVAs", {
   # one-sample t-test (with NAs) ---------
 
   df_1 <- purrr::pmap_dfr(

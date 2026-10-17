@@ -1,4 +1,4 @@
-test_that(desc = "expr_anova_robust works - between-subjects", code = {
+test_that("expr_anova_robust works - between-subjects", {
   set.seed(123)
   df1 <- oneway_anova(
     type = "robust",
@@ -30,7 +30,7 @@ test_that(desc = "expr_anova_robust works - between-subjects", code = {
   expect_snapshot(df2[["expression"]])
 })
 
-test_that(desc = "expr_anova_robust works - within-subjects", code = {
+test_that("expr_anova_robust works - within-subjects", {
   set.seed(123)
   df1 <- oneway_anova(
     type = "robust",

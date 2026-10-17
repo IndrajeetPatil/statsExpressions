@@ -1,4 +1,4 @@
-test_that(desc = "t_nonparametric works - between-subjects design", code = {
+test_that("t_nonparametric works - between-subjects design", {
   df <- two_sample_test(
     type = "np",
     data = mtcars,
@@ -12,7 +12,7 @@ test_that(desc = "t_nonparametric works - between-subjects design", code = {
   expect_snapshot(df[["expression"]])
 })
 
-test_that(desc = "nonparametric works - within-subjects design", code = {
+test_that("nonparametric works - within-subjects design", {
   df <- suppressWarnings(two_sample_test(
     data = filter(bugs_long, condition %in% c("HDHF", "HDLF")),
     x = condition,
@@ -28,7 +28,7 @@ test_that(desc = "nonparametric works - within-subjects design", code = {
   expect_snapshot(df[["expression"]], variant = snapshot_variant)
 })
 
-test_that(desc = "works with subject id", code = {
+test_that("works with subject id", {
   expect_subject_id_invariance(
     two_sample_test,
     data_with_subid_two_groups,

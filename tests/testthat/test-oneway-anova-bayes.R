@@ -5,7 +5,7 @@ skip_if_not_installed("rstantools")
 
 # between-subjects ------------------------------
 
-test_that(desc = "bayesian (between-subjects - anova)", code = {
+test_that("bayesian (between-subjects - anova)", {
   # with NA
   set.seed(123)
   df1 <- suppressWarnings(oneway_anova(
@@ -33,7 +33,7 @@ test_that(desc = "bayesian (between-subjects - anova)", code = {
 
 # within-subjects ------------------------------
 
-test_that(desc = "bayesian (within-subjects - anova)", code = {
+test_that("bayesian (within-subjects - anova)", {
   set.seed(123)
   df1 <- oneway_anova(
     type = "bayes",
@@ -61,13 +61,13 @@ test_that(desc = "bayesian (within-subjects - anova)", code = {
   expect_snapshot(df2[["expression"]][[1]])
 })
 
-test_that(desc = "works with subject id", code = {
+test_that("works with subject id", {
   expect_subject_id_invariance(oneway_anova, data_with_subid, type = "bayes")
 })
 
 # test Bayesian ANOVA helper behavior --------
 
-test_that(desc = "Bayesian ANOVA with if_all() filtering and row replication", code = {
+test_that("Bayesian ANOVA with if_all() filtering and row replication", {
   # Test between-subjects design
   # This ensures the if_all(matches("effect")) filtering behaves correctly
   # when effect/component columns are absent (they appear in the within-subjects case)
@@ -103,7 +103,7 @@ test_that(desc = "Bayesian ANOVA with if_all() filtering and row replication", c
 
 # test tidy_model_parameters with Bayesian ANOVA --------
 
-test_that(desc = "tidy_model_parameters handles Bayesian ANOVA correctly", code = {
+test_that("tidy_model_parameters handles Bayesian ANOVA correctly", {
   # Test between-subjects design (no component column)
   set.seed(123)
   model_between <- BayesFactor::anovaBF(Sepal.Length ~ Species, data = iris)
