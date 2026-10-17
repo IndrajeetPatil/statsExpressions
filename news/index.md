@@ -1,5 +1,34 @@
 # Changelog
 
+## statsExpressions 2.2.0.9000
+
+- [`one_sample_test()`](https://www.indrapatil.com/statsExpressions/reference/one_sample_test.md)
+  with a one-sided `alternative` now also reports a one-sided confidence
+  interval for the parametric and nonparametric effect sizes. Previously
+  the *p*-value was one-sided but the effect size confidence interval
+  was always two-sided, unlike in
+  [`two_sample_test()`](https://www.indrapatil.com/statsExpressions/reference/two_sample_test.md).
+
+- [`contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md)
+  no longer fails for a test of independence when `x` or `y` has an
+  empty level, either an unused factor level or one emptied by removing
+  rows with missing values. Such levels are now dropped, as in
+  [`pairwise_contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_contingency_table.md).
+
+- For between-subjects designs (`paired = FALSE`),
+  [`long_to_wide_converter()`](https://www.indrapatil.com/statsExpressions/reference/long_to_wide_converter.md)
+  now drops a level of `x` whose responses are all missing. Previously
+  the empty level was kept, which made robust
+  [`oneway_anova()`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)
+  and
+  [`pairwise_comparisons()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)
+  fail.
+
+- [`tidy_model_expressions()`](https://www.indrapatil.com/statsExpressions/reference/tidy_model_expressions.md)
+  no longer duplicates rows and mismatches expressions when `term`
+  values repeat, as in multivariate models where each term appears once
+  per response.
+
 ## statsExpressions 2.2.0
 
 - New helper
