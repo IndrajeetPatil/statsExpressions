@@ -36,7 +36,7 @@ test_that("parametric t-tests and ANOVAs", {
 
   df_2_within <- purrr::pmap_dfr(
     .l = list(
-      data = list(filter(bugs_long, condition %in% c("HDHF", "HDLF"))),
+      data = list(bugs_long_two_groups),
       x = "condition",
       y = "desire",
       paired = TRUE,

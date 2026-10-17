@@ -25,10 +25,10 @@ patrick::with_parameters_test_that(
       "between-subjects with NAs"
     ),
     data = list(
-      filter(iris_long, condition %in% c("Sepal.Length", "Sepal.Width")),
-      filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+      iris_long_two_groups,
+      bugs_long_two_groups,
       mtcars,
-      filter(msleep, vore %in% c("carni", "herbi"))
+      msleep_two_groups
     ),
     x = c("condition", "condition", "am", "vore"),
     y = c("value", "desire", "wt", "brainwt"),

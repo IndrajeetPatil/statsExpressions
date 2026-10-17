@@ -26,9 +26,9 @@ patrick::with_parameters_test_that(
     ),
     data = list(
       ToothGrowth,
-      filter(msleep, vore %in% c("carni", "herbi")),
-      filter(iris_long, condition %in% c("Sepal.Length", "Sepal.Width")),
-      filter(bugs_long, condition %in% c("HDHF", "HDLF"))
+      msleep_two_groups,
+      iris_long_two_groups,
+      bugs_long_two_groups
     ),
     x = c("supp", "vore", "condition", "condition"),
     y = c("len", "brainwt", "value", "desire"),

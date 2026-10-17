@@ -13,12 +13,10 @@ test_that("bayesian (independent samples t-test)", {
 })
 
 test_that("bayesian (paired t-test)", {
-  dat_tidy <- dplyr::filter(bugs_long, condition %in% c("HDLF", "HDHF"))
-
   set.seed(123)
   df <- two_sample_test(
     type = "bayes",
-    data = dat_tidy,
+    data = bugs_long_two_groups,
     x = "condition",
     y = desire,
     paired = TRUE,
