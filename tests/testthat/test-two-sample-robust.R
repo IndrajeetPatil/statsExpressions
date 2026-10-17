@@ -1,71 +1,42 @@
-# within-subjects ------------------------------------------------------------
+patrick::with_parameters_test_that(
+  "t_robust works:",
+  {
+    set.seed(123)
+    # `exec()` inlines the column names, as if they were typed in the call
+    df <- rlang::exec(
+      two_sample_test,
+      type = "r",
+      data = data,
+      x = x,
+      y = y,
+      paired = paired,
+      conf.level = conf.level,
+      digits = digits
+    )
 
-test_that("t_robust - within-subjects - without NAs", {
-  set.seed(123)
-  df1 <- two_sample_test(
-    type = "r",
-    data = filter(
-      iris_long,
-      condition %in% c("Sepal.Length", "Sepal.Width")
+    expect_snapshot(select(df, -expression))
+    expect_snapshot(df[["expression"]])
+  },
+  .cases = dplyr::tibble(
+    .test_name = c(
+      "within-subjects without NAs",
+      "within-subjects with NAs",
+      "between-subjects without NAs",
+      "between-subjects with NAs"
     ),
-    x = condition,
-    y = value,
-    paired = TRUE,
-    digits = 4L
+    data = list(
+      filter(iris_long, condition %in% c("Sepal.Length", "Sepal.Width")),
+      filter(bugs_long, condition %in% c("HDHF", "HDLF")),
+      mtcars,
+      filter(msleep, vore %in% c("carni", "herbi"))
+    ),
+    x = c("condition", "condition", "am", "vore"),
+    y = c("value", "desire", "wt", "brainwt"),
+    paired = c(TRUE, TRUE, FALSE, FALSE),
+    conf.level = c(0.95, 0.95, 0.99, 0.90),
+    digits = c(4L, 3L, 3L, 4L)
   )
-
-  expect_snapshot(select(df1, -expression))
-  expect_snapshot(df1[["expression"]])
-})
-
-test_that("t_robust - within-subjects - with NAs", {
-  set.seed(123)
-  df1 <- two_sample_test(
-    type = "r",
-    data = filter(bugs_long, condition %in% c("HDHF", "HDLF")),
-    x = condition,
-    y = desire,
-    paired = TRUE,
-    digits = 3L
-  )
-
-  expect_snapshot(select(df1, -expression))
-  expect_snapshot(df1[["expression"]])
-})
-
-# between-subjects ------------------------------------------------------------
-
-test_that("t_robust - between-subjects - without NAs", {
-  set.seed(123)
-  df1 <- two_sample_test(
-    type = "r",
-    data = mtcars,
-    x = am,
-    y = wt,
-    paired = FALSE,
-    conf.level = 0.99,
-    digits = 3
-  )
-
-  expect_snapshot(select(df1, -expression))
-  expect_snapshot(df1[["expression"]])
-})
-
-test_that("t_robust - between-subjects - with NAs", {
-  set.seed(123)
-  df1 <- two_sample_test(
-    type = "r",
-    data = filter(msleep, vore %in% c("carni", "herbi")),
-    x = vore,
-    y = brainwt,
-    paired = FALSE,
-    conf.level = 0.90,
-    digits = 4L
-  )
-
-  expect_snapshot(select(df1, -expression))
-  expect_snapshot(df1[["expression"]])
-})
+)
 
 test_that("works with subject id", {
   expect_subject_id_invariance(
