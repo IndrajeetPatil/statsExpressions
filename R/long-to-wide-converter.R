@@ -76,17 +76,9 @@ long_to_wide_converter <- function(
     data <- complete_subjects(data, {{ x }}, {{ y }}, {{ subject.id }})
   } else {
     data <- data |>
-      select({{ x }}, {{ y }}, .rowid = {{ subject.id }}) |>
-      mutate({{ x }} := droplevels(as.factor({{ x }}))) |>
-      arrange({{ x }})
-
-    if (!".rowid" %in% names(data)) {
-      data <- mutate(data, .rowid = row_number())
-    }
-
-    # drop levels only after removing missing values, so that a level whose
-    # every response is missing doesn't remain as an empty group
-    data <- data |>
+      .prepare_long_data({{ x }}, {{ y }}, {{ subject.id }}, paired = FALSE) |>
+      # drop levels only after removing missing values, so that a level whose
+      # every response is missing doesn't remain as an empty group
       filter_out(anyNA(pick({{ x }}, {{ y }})), .by = .rowid) |>
       mutate({{ x }} := droplevels({{ x }}))
   }
@@ -103,6 +95,32 @@ long_to_wide_converter <- function(
     relocate(.rowid) |>
     arrange(.rowid) |>
     as_tibble()
+}
+
+#' @title Select and sort long data, tagging rows with a `.rowid`
+#' @description Keeps only `x`, `y`, and `subject.id` (renamed to `.rowid`),
+#'   converts `x` to a factor with unused levels dropped, and sorts by `x`.
+#'   Missing values are left in place for the caller to handle. Without a
+#'   `subject.id`, `.rowid` is the row number within each level of `x` for
+#'   paired designs (so subjects are matched by row order), and the overall
+#'   row number otherwise. Shared by [complete_subjects()] and
+#'   [long_to_wide_converter()].
+#' @noRd
+.prepare_long_data <- function(data, x, y, subject.id, paired) {
+  data <- data |>
+    select({{ x }}, {{ y }}, .rowid = {{ subject.id }}) |>
+    mutate({{ x }} := droplevels(as.factor({{ x }}))) |>
+    arrange({{ x }})
+
+  if (".rowid" %in% names(data)) {
+    return(data)
+  }
+
+  if (paired) {
+    mutate(data, .rowid = row_number(), .by = {{ x }})
+  } else {
+    mutate(data, .rowid = row_number())
+  }
 }
 
 #' @title Paired-aware observation count for the expression's `n`

@@ -36,17 +36,8 @@
 #' @export
 complete_subjects <- function(data, x, y, subject.id = NULL) {
   data <- data |>
-    select({{ x }}, {{ y }}, .rowid = {{ subject.id }}) |>
-    filter(!is.na({{ x }})) |>
-    mutate({{ x }} := droplevels(as.factor({{ x }}))) |>
-    arrange({{ x }})
-
-  if (!".rowid" %in% names(data)) {
-    data <- mutate(data, .rowid = row_number(), .by = {{ x }})
-  }
-
-  data <- data |>
-    filter(!is.na(.rowid)) |>
+    .prepare_long_data({{ x }}, {{ y }}, {{ subject.id }}, paired = TRUE) |>
+    filter(!is.na({{ x }}), !is.na(.rowid)) |>
     mutate({{ x }} := droplevels({{ x }}))
 
   if (anyDuplicated(select(data, {{ x }}, .rowid)) > 0L) {
