@@ -1,4 +1,4 @@
-# one-sample-test without missing data:  type=bayes, conf.level=0.95, effsize.type=g
+# one_sample_test() works: sleep_total, type = bayes, conf.level = 0.95, effsize.type = g
 
     Code
       names(res)
@@ -17,7 +17,7 @@
     Output
       [1] 1.199152e+15
 
-# one-sample-test without missing data:  type=bayes, conf.level=0.9, effsize.type=d
+# one_sample_test() works: sleep_total, type = bayes, conf.level = 0.9, effsize.type = d
 
     Code
       names(res)
@@ -36,7 +36,7 @@
     Output
       [1] 1.199152e+15
 
-# one-sample-test without missing data:  type=parametric, conf.level=0.95, effsize.type=g
+# one_sample_test() works: sleep_total, type = parametric, conf.level = 0.95, effsize.type = g
 
     Code
       select(res, -expression)
@@ -60,7 +60,7 @@
           "[" * "0.925", "1.490" * "]", italic("n")["obs"] == "83")
       
 
-# one-sample-test without missing data:  type=parametric, conf.level=0.9, effsize.type=d
+# one_sample_test() works: sleep_total, type = parametric, conf.level = 0.9, effsize.type = d
 
     Code
       select(res, -expression)
@@ -84,7 +84,7 @@
           "[" * "0.979", "1.457" * "]", italic("n")["obs"] == "83")
       
 
-# one-sample-test without missing data:  type=nonparametric, conf.level=0.95, effsize.type=g
+# one_sample_test() works: sleep_total, type = nonparametric, conf.level = 0.95, effsize.type = g
 
     Code
       select(res, -expression)
@@ -108,7 +108,7 @@
               "[" * "0.865", "0.948" * "]", italic("n")["obs"] == "83")
       
 
-# one-sample-test without missing data:  type=nonparametric, conf.level=0.9, effsize.type=d
+# one_sample_test() works: sleep_total, type = nonparametric, conf.level = 0.9, effsize.type = d
 
     Code
       select(res, -expression)
@@ -132,7 +132,7 @@
               "[" * "0.874", "0.943" * "]", italic("n")["obs"] == "83")
       
 
-# one-sample-test without missing data:  type=robust, conf.level=0.95, effsize.type=g
+# one_sample_test() works: sleep_total, type = robust, conf.level = 0.95, effsize.type = g
 
     Code
       select(res, -expression)
@@ -156,7 +156,7 @@
           "11.636" * "]", italic("n")["obs"] == "83")
       
 
-# one-sample-test without missing data:  type=robust, conf.level=0.9, effsize.type=d
+# one_sample_test() works: sleep_total, type = robust, conf.level = 0.9, effsize.type = d
 
     Code
       select(res, -expression)
@@ -180,7 +180,7 @@
           "11.458" * "]", italic("n")["obs"] == "83")
       
 
-# one-sample-test with missing data:  type=bayes, conf.level=0.95, effsize.type=g
+# one_sample_test() works: brainwt, type = bayes, conf.level = 0.95, effsize.type = g
 
     Code
       names(res)
@@ -199,7 +199,7 @@
     Output
       [1] 0.1500561
 
-# one-sample-test with missing data:  type=bayes, conf.level=0.9, effsize.type=d
+# one_sample_test() works: brainwt, type = bayes, conf.level = 0.9, effsize.type = d
 
     Code
       names(res)
@@ -218,7 +218,7 @@
     Output
       [1] 0.1500561
 
-# one-sample-test with missing data:  type=parametric, conf.level=0.95, effsize.type=g
+# one_sample_test() works: brainwt, type = parametric, conf.level = 0.95, effsize.type = g
 
     Code
       select(res, -expression)
@@ -242,7 +242,7 @@
           "[" * "-0.227", "0.290" * "]", italic("n")["obs"] == "56")
       
 
-# one-sample-test with missing data:  type=parametric, conf.level=0.9, effsize.type=d
+# one_sample_test() works: brainwt, type = parametric, conf.level = 0.9, effsize.type = d
 
     Code
       select(res, -expression)
@@ -266,7 +266,7 @@
           "[" * "-0.188", "0.252" * "]", italic("n")["obs"] == "56")
       
 
-# one-sample-test with missing data:  type=nonparametric, conf.level=0.95, effsize.type=g
+# one_sample_test() works: brainwt, type = nonparametric, conf.level = 0.95, effsize.type = g
 
     Code
       select(res, -expression)
@@ -291,7 +291,7 @@
               "56")
       
 
-# one-sample-test with missing data:  type=nonparametric, conf.level=0.9, effsize.type=d
+# one_sample_test() works: brainwt, type = nonparametric, conf.level = 0.9, effsize.type = d
 
     Code
       select(res, -expression)
@@ -316,7 +316,7 @@
               "56")
       
 
-# one-sample-test with missing data:  type=robust, conf.level=0.95, effsize.type=g
+# one_sample_test() works: brainwt, type = robust, conf.level = 0.95, effsize.type = g
 
     Code
       select(res, -expression)
@@ -340,7 +340,7 @@
           "0.091" * "]", italic("n")["obs"] == "56")
       
 
-# one-sample-test with missing data:  type=robust, conf.level=0.9, effsize.type=d
+# one_sample_test() works: brainwt, type = robust, conf.level = 0.9, effsize.type = d
 
     Code
       select(res, -expression)
