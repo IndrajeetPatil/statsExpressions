@@ -60,6 +60,9 @@ tidy_model_expressions <- function(
   # `statistic` inside `mutate()` and `glue()` refers to the data column
   stat_type <- substring(tolower(statistic), 1L, 1L)
 
+  # expressions are matched to rows by position, which grouping would break
+  data <- ungroup(data)
+
   # if any of the necessary numeric columns are missing, there shouldn't be an
   # expression corresponding to that row
   needed_cols <- select(data, matches("estimate|statistic|std.error|p.value"))
@@ -119,10 +122,10 @@ tidy_model_expressions <- function(
   # rows with missing values get an `NA` expression here, which is turned into
   # `NULL` to show nothing instead of an empty string (""); expressions are
   # matched by position because `term` needn't be unique (e.g. multivariate
-  # models repeat terms for each response)
-  data |>
-    mutate(expression = replace(df_expr$expression, .env$has_missing, NA)) |>
-    .glue_to_expression()
+  # models repeat terms for each response); assigned outside a data mask so
+  # that columns in `data` can't shadow the local variables
+  data$expression <- replace(df_expr$expression, has_missing, NA)
+  .glue_to_expression(data)
 }
 
 
