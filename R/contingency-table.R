@@ -63,6 +63,8 @@
 #' @examples
 #' \dontshow{\}) # examplesIf}
 #'
+#' @template citation
+#'
 #' @export
 contingency_table <- function(
   data,
