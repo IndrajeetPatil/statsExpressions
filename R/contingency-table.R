@@ -171,8 +171,8 @@ contingency_table <- function(
     mutate(
       expression = glue(
         "list(
-            log[e]*(BF['01'])=='{format_value(-log(bf10), digits)}',
-            {prior_switch(method)}=='{format_value(prior.scale, digits)}')"
+            log[e]*(BF['01'])=='{format_value(-log(bf10), .env$digits)}',
+            {prior_switch(method)}=='{format_value(prior.scale, .env$digits)}')"
       )
     ) |>
     .glue_to_expression()

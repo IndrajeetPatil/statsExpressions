@@ -82,6 +82,7 @@ oneway_anova <- function(
     spread = FALSE
   ) |>
     mutate(.rowid = as.factor(.rowid))
+  y_by_x <- new_formula(y, x)
 
   # parametric ---------------------------------------
 
@@ -100,13 +101,13 @@ oneway_anova <- function(
     if (paired) {
       mod <- afex::aov_ez(
         id = ".rowid",
-        dv = as_string(y),
+        dv = as_name(y),
         data = data,
-        within = as_string(x),
+        within = as_name(x),
         include_aov = TRUE
       )
     } else {
-      mod <- stats::oneway.test(new_formula(y, x), data, var.equal = var.equal)
+      mod <- stats::oneway.test(y_by_x, data, var.equal = var.equal)
     }
 
     effect_df <- exec(.f.es, model = mod, ci = conf.level, verbose = FALSE) |>
@@ -129,7 +130,7 @@ oneway_anova <- function(
       .f <- stats::friedman.test
       .f.es <- effectsize::kendalls_w
     } else {
-      test_formula <- new_formula(y, x)
+      test_formula <- y_by_x
       .f <- stats::kruskal.test
       .f.es <- effectsize::rank_epsilon_squared
     }
@@ -171,7 +172,7 @@ oneway_anova <- function(
       stats_df <- bind_cols(tidy_model_parameters(mod), ez_df)
     } else {
       stats_df <- WRS2::t1way(
-        formula = new_formula(y, x),
+        formula = y_by_x,
         data = data,
         tr = tr,
         alpha = 1.0 - conf.level,
@@ -192,7 +193,7 @@ oneway_anova <- function(
         rscaleRandom = 1.0
       )
     } else {
-      .f.args <- list(formula = new_formula(y, x), rscaleFixed = bf.prior)
+      .f.args <- list(formula = y_by_x, rscaleFixed = bf.prior)
     }
 
     stats_df <- exec(

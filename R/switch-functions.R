@@ -36,7 +36,7 @@ extract_stats_type <- function(type) {
     grepl("^n", type) ~ "nonparametric",
     grepl("^r", type) ~ "robust",
     grepl("^b", type) ~ "bayes",
-    TRUE ~ "parametric"
+    .default = "parametric"
   )
 }
 
@@ -70,7 +70,7 @@ extract_estimate_type <- function(x) {
     grepl("^pearson", x) ~ list(quote(widehat(italic("r"))["Pearson"])),
     grepl("^winsor", x) ~ list(quote(widehat(italic("r"))["Winsorized"])),
     grepl("^kendall", x) ~ list(quote(widehat(italic("W"))["Kendall"])),
-    TRUE ~ list(NULL)
+    .default = list(NULL)
   )
 }
 
@@ -93,7 +93,7 @@ extract_statistic_text <- function(x) {
     .grepl("probabilities", x) ~ list(quote(chi["gof"]^2)),
     .grepl("pearson's chi", x) ~ list(quote(chi["Pearson"]^2)),
     .grepl("mcnemar's chi", x) ~ list(quote(chi["McNemar"]^2)),
-    TRUE ~ list(NULL)
+    .default = list(NULL)
   )
 }
 
@@ -102,7 +102,7 @@ prior_switch <- function(x) {
   case_when(
     .grepl("contingency", x) ~ list(quote(italic("a")["Gunel-Dickey"])),
     .grepl("correlation", x) ~ list(quote(italic("r")["beta"]^"JZS")),
-    TRUE ~ list(quote(italic("r")["Cauchy"]^"JZS"))
+    .default = list(quote(italic("r")["Cauchy"]^"JZS"))
   )
 }
 
@@ -110,33 +110,26 @@ prior_switch <- function(x) {
 #' @noRd
 .grepl <- function(pattern, x) grepl(pattern, x, fixed = TRUE)
 
-#' @title Select the parametric effect size for mean-difference tests
-#' @description Maps the user-facing `effsize.type` to the corresponding
-#'   `{effectsize}` function (Hedges' *g* when unbiased, Cohen's *d* when
-#'   biased). Shared by [one_sample_test()] and [two_sample_test()].
+#' @title Select the test and effect-size functions for mean-difference tests
+#' @description Maps the statistical `type` to the base-R test function and its
+#'   companion `{effectsize}` function: the *parametric* approach pairs the
+#'   *t*-test with Hedges' *g* (`effsize.type` `"g"` or `"unbiased"`) or
+#'   Cohen's *d* (`"d"` or `"biased"`), while the *non-parametric* approach
+#'   pairs the Wilcoxon test with the rank-biserial correlation. Shared by
+#'   [one_sample_test()] and [two_sample_test()].
 #' @noRd
-.mean_difference_effsize <- function(effsize.type) {
-  switch(
+.mean_difference_fns <- function(type, effsize.type) {
+  if (type != "parametric") {
+    return(list(test = stats::wilcox.test, es = effectsize::rank_biserial))
+  }
+
+  es <- switch(
     match.arg(effsize.type, c("g", "d", "unbiased", "biased")),
     g = ,
     unbiased = effectsize::hedges_g,
     d = ,
     biased = effectsize::cohens_d
   )
-}
 
-#' @title Select the test and effect-size functions for mean-difference tests
-#' @description Maps the statistical `type` to the base-R test function and its
-#'   companion `{effectsize}` function: the *parametric* approach pairs the
-#'   *t*-test with Hedges' *g* / Cohen's *d* (via `.mean_difference_effsize()`),
-#'   while the *non-parametric* approach pairs the Wilcoxon test with the
-#'   rank-biserial correlation. Shared by [one_sample_test()] and
-#'   [two_sample_test()].
-#' @noRd
-.mean_difference_fns <- function(type, effsize.type) {
-  if (type == "parametric") {
-    list(test = stats::t.test, es = .mean_difference_effsize(effsize.type))
-  } else {
-    list(test = stats::wilcox.test, es = effectsize::rank_biserial)
-  }
+  list(test = stats::t.test, es = es)
 }
