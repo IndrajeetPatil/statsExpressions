@@ -1,5 +1,4 @@
 test_that("parametric anova subtitles work (without NAs)", {
-  set.seed(123)
   df <- oneway_anova(
     data = mtcars,
     x = cyl,
@@ -12,7 +11,6 @@ test_that("parametric anova subtitles work (without NAs)", {
   expect_snapshot(select(df, -expression))
   expect_snapshot(df[["expression"]])
 
-  set.seed(123)
   df1 <- oneway_anova(
     data = mtcars,
     x = cyl,
@@ -27,7 +25,6 @@ test_that("parametric anova subtitles work (without NAs)", {
 })
 
 test_that("parametric anova subtitles with partial omega-squared", {
-  set.seed(123)
   df1 <- oneway_anova(
     data = msleep,
     x = vore,
@@ -41,7 +38,6 @@ test_that("parametric anova subtitles with partial omega-squared", {
 })
 
 test_that("paired parametric anova subtitles work (without NAs)", {
-  set.seed(123)
   df1 <- oneway_anova(
     data = iris_long,
     x = condition,
