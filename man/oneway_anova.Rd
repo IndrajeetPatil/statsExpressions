@@ -106,10 +106,9 @@ non-parametric, robust, or Bayesian). Any given call therefore returns \emph{som
 \strong{Hypothesis testing}
 \itemize{
 \item \code{statistic}: the numeric value of a statistic
-\item \code{df}: the numeric value of a parameter being modeled (often degrees
-of freedom for the test)
-\item \code{df.error} and \code{df}: relevant only if the statistic in question has
-two degrees of freedom (e.g. anova)
+\item \code{df} and/or \code{df.error}: degrees of freedom for the test. A \emph{t}-test
+uses \code{df.error}, a chi-squared test uses \code{df}, and a parametric ANOVA
+uses both (numerator \code{df} and denominator \code{df.error})
 \item \code{p.value}: the \emph{p}-value associated with the observed statistic (two-sided
 unless a one-sided \code{alternative} is requested, where supported)
 \item \code{method}: the name of the inferential statistical test
@@ -149,7 +148,9 @@ folds the adjusted value into \code{p.value} (and does not return a separate
 
 \strong{Common columns}
 \itemize{
-\item \code{n.obs}: number of observations
+\item \code{n.obs}: sample size used for the analysis: observations for unpaired
+tests, complete subjects/pairs for paired two-sample tests and ANOVAs,
+or studies for meta-analysis
 \item \code{expression}: a list-column of pre-formatted
 \href{https://rdrr.io/r/grDevices/plotmath.html}{plotmath} expressions; each
 element is a \code{language} object (not a character string) containing the
@@ -174,7 +175,7 @@ The table below provides summary about:
 \item type of effect size estimate and a measure of uncertainty for this estimate
 \item functions used internally to compute these details
 }
-\subsection{between-subjects}{
+\subsection{Between-subjects}{
 
 \strong{Hypothesis testing}\tabular{llll}{
    Type \tab No. of groups \tab Test \tab Function used \cr
@@ -195,12 +196,10 @@ The table below provides summary about:
 
 }
 
-\subsection{within-subjects}{
+\subsection{Within-subjects}{
 
-\strong{Data requirement}: Repeated measures tests assume a \emph{complete} design with
-exactly \strong{one observation per subject per condition}. If your data has multiple
-trials per cell, aggregate first (e.g., take the mean). Verify with
-\code{table(data$subject, data$condition)} — every cell should equal \code{1}.
+\strong{Paired data}: See \code{complete_subjects()} for subject matching, duplicate
+observations, and removal of incomplete subjects.
 
 \strong{Hypothesis testing}\tabular{llll}{
    Type \tab No. of groups \tab Test \tab Function used \cr
@@ -237,25 +236,25 @@ library(statsExpressions)
 # between-subjects
 oneway_anova(
   data = mtcars,
-  x    = cyl,
-  y    = wt
+  x = cyl,
+  y = wt
 )
 
 # biased (partial eta-squared) effect size
 oneway_anova(
-  data         = mtcars,
-  x            = cyl,
-  y            = wt,
+  data = mtcars,
+  x = cyl,
+  y = wt,
   effsize.type = "eta"
 )
 
 # within-subjects design
 oneway_anova(
-  data       = bugs_long,
-  x          = condition,
-  y          = desire,
+  data = bugs_long,
+  x = condition,
+  y = desire,
   subject.id = subject,
-  paired     = TRUE
+  paired = TRUE
 )
 
 # ----------------------- non-parametric ----------------------------------
@@ -263,19 +262,19 @@ oneway_anova(
 # between-subjects
 oneway_anova(
   data = mtcars,
-  x    = cyl,
-  y    = wt,
+  x = cyl,
+  y = wt,
   type = "np"
 )
 
 # within-subjects design
 oneway_anova(
-  data       = bugs_long,
-  x          = condition,
-  y          = desire,
+  data = bugs_long,
+  x = condition,
+  y = desire,
   subject.id = subject,
-  paired     = TRUE,
-  type       = "np"
+  paired = TRUE,
+  type = "np"
 )
 
 # ----------------------- robust -------------------------------------
@@ -283,19 +282,19 @@ oneway_anova(
 # between-subjects
 oneway_anova(
   data = mtcars,
-  x    = cyl,
-  y    = wt,
+  x = cyl,
+  y = wt,
   type = "r"
 )
 
 # within-subjects design
 oneway_anova(
-  data       = bugs_long,
-  x          = condition,
-  y          = desire,
+  data = bugs_long,
+  x = condition,
+  y = desire,
   subject.id = subject,
-  paired     = TRUE,
-  type       = "r"
+  paired = TRUE,
+  type = "r"
 )
 
 # ----------------------- Bayesian -------------------------------------
@@ -303,19 +302,20 @@ oneway_anova(
 # between-subjects
 oneway_anova(
   data = mtcars,
-  x    = cyl,
-  y    = wt,
+  x = cyl,
+  y = wt,
   type = "bayes"
 )
 
 # within-subjects design
 oneway_anova(
-  data       = bugs_long,
-  x          = condition,
-  y          = desire,
+  data = bugs_long,
+  x = condition,
+  y = desire,
   subject.id = subject,
-  paired     = TRUE,
-  type       = "bayes"
+  paired = TRUE,
+  type = "bayes"
 )
 \dontshow{\}) # examplesIf}
+
 }

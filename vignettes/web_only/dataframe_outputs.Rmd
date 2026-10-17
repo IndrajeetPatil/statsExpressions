@@ -33,15 +33,6 @@ if (can_evaluate) {
 }
 ```
 
-This vignette can be cited as:
-
-```{r}
-#| label = "citation",
-#| echo = FALSE,
-#| comment = ""
-citation("statsExpressions")
-```
-
 ## One-sample test output
 
 ```{r}
@@ -58,116 +49,9 @@ citation("statsExpressions")
 
 ## One-way ANOVAs
 
-### within-subjects design
-
 ```{r}
-#| label = "anova_w"
-suppressPackageStartupMessages(library(afex))
-
-# ----------------------- parametric ---------------------------------------
-
-set.seed(123)
-oneway_anova(
-  data       = bugs_long,
-  x          = condition,
-  y          = desire,
-  paired     = TRUE,
-  subject.id = subject,
-  type       = "p"
-)
-
-# ----------------------- non-parametric -----------------------------------
-
-set.seed(123)
-oneway_anova(
-  data       = bugs_long,
-  x          = condition,
-  y          = desire,
-  paired     = TRUE,
-  subject.id = subject,
-  type       = "np"
-)
-
-# ----------------------- robust --------------------------------------------
-
-set.seed(123)
-oneway_anova(
-  data       = bugs_long,
-  x          = condition,
-  y          = desire,
-  paired     = TRUE,
-  subject.id = subject,
-  type       = "r"
-)
-
-# ----------------------- Bayesian ---------------------------------------
-
-set.seed(123)
-oneway_anova(
-  data       = bugs_long,
-  x          = condition,
-  y          = desire,
-  paired     = TRUE,
-  subject.id = subject,
-  type       = "bayes"
-)
-```
-
-### between-subjects design
-
-```{r}
-#| label = "anova_b"
-
-# ----------------------- parametric ---------------------------------------
-
-# unequal variance
-set.seed(123)
-oneway_anova(
-  data      = iris,
-  x         = Species,
-  y         = Sepal.Length,
-  type      = "p"
-)
-
-# equal variance
-set.seed(123)
-oneway_anova(
-  data      = iris,
-  x         = Species,
-  y         = Sepal.Length,
-  var.equal = TRUE,
-  type      = "p"
-)
-
-# ----------------------- non-parametric -----------------------------------
-
-set.seed(123)
-oneway_anova(
-  data      = iris,
-  x         = Species,
-  y         = Sepal.Length,
-  type      = "np"
-)
-
-# ----------------------- robust --------------------------------------------
-
-set.seed(123)
-oneway_anova(
-  data      = iris,
-  x         = Species,
-  y         = Sepal.Length,
-  type      = "r"
-)
-
-# ----------------------- Bayesian ---------------------------------------
-
-set.seed(123)
-oneway_anova(
-  data      = iris,
-  x         = Species,
-  y         = Sepal.Length,
-  type      = "bayes"
-)
+#| label = "anova",
+#| file = "../../man/examples/examples-oneway-anova.R"
 ```
 
 ## Contingency table analysis output
@@ -219,119 +103,17 @@ suppressWarnings(meta_analysis(df, type = "bayes"))
 
 ## Pairwise comparisons for one-way design
 
-### Between-subjects design
-
 ```{r}
-# ----------------------- parametric -----------------------
-
-# if `var.equal = TRUE`, then Student's *t*-test will be run
-pairwise_comparisons(
-  data            = ggplot2::msleep,
-  x               = vore,
-  y               = brainwt,
-  type            = "parametric",
-  var.equal       = TRUE,
-  paired          = FALSE,
-  p.adjust.method = "bonferroni"
-)
-
-# if `var.equal = FALSE`, then Games-Howell test will be run
-pairwise_comparisons(
-  data            = ggplot2::msleep,
-  x               = vore,
-  y               = brainwt,
-  type            = "parametric",
-  var.equal       = FALSE,
-  paired          = FALSE,
-  p.adjust.method = "bonferroni"
-)
-
-# ----------------------- non-parametric -------------------
-
-pairwise_comparisons(
-  data            = ggplot2::msleep,
-  x               = vore,
-  y               = brainwt,
-  type            = "nonparametric",
-  paired          = FALSE,
-  p.adjust.method = "none"
-)
-
-# ----------------------- robust ---------------------------
-
-pairwise_comparisons(
-  data            = ggplot2::msleep,
-  x               = vore,
-  y               = brainwt,
-  type            = "robust",
-  paired          = FALSE,
-  p.adjust.method = "fdr"
-)
-
-# ----------------------- Bayesian -------------------------
-
-pairwise_comparisons(
-  data   = ggplot2::msleep,
-  x      = vore,
-  y      = brainwt,
-  type   = "bayes",
-  paired = FALSE
-)
-```
-
-
-### Within-subjects design
-
-```{r}
-# ----------------------- parametric -----------------------
-
-pairwise_comparisons(
-  data            = bugs_long,
-  x               = condition,
-  y               = desire,
-  subject.id      = subject,
-  type            = "parametric",
-  paired          = TRUE,
-  p.adjust.method = "BH"
-)
-
-# ----------------------- non-parametric -------------------
-
-pairwise_comparisons(
-  data            = bugs_long,
-  x               = condition,
-  y               = desire,
-  subject.id      = subject,
-  type            = "nonparametric",
-  paired          = TRUE,
-  p.adjust.method = "BY"
-)
-
-# ----------------------- robust ---------------------------
-
-pairwise_comparisons(
-  data            = bugs_long,
-  x               = condition,
-  y               = desire,
-  subject.id      = subject,
-  type            = "robust",
-  paired          = TRUE,
-  p.adjust.method = "hommel"
-)
-
-# ----------------------- Bayesian -------------------------
-
-pairwise_comparisons(
-  data       = bugs_long,
-  x          = condition,
-  y          = desire,
-  subject.id = subject,
-  type       = "bayes",
-  paired     = TRUE,
-  bf.prior   = 0.77
-)
+#| label = "pairwise",
+#| file = "../../man/examples/examples-pairwise-comparisons.R"
 ```
 
 ## Suggestions
 
 If you find any bugs or have any suggestions/remarks, please file an issue on GitHub: <https://github.com/IndrajeetPatil/statsExpressions/issues>
+
+## Citation
+
+```{r citation, echo = FALSE, comment = ""}
+citation("statsExpressions")
+```

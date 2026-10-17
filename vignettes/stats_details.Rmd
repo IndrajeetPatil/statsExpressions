@@ -20,12 +20,6 @@ vignette: >
 source("setup.R")
 ```
 
-This vignette can be cited as:
-
-```{r citation, echo=FALSE, comment = ""}
-citation("statsExpressions")
-```
-
 ## Introduction
 
 This article describes the data that `{statsExpressions}` functions expect, and
@@ -36,7 +30,10 @@ Abbreviations used: CI = Confidence Interval
 
 ## Data requirements
 
-All functions expect data in **long (tidy) format** — one row per observation.
+The one-sample, group-comparison, correlation, and centrality functions expect
+**long (tidy) data** — one row per observation. Contingency-table functions also
+accept a `counts` column for aggregated frequencies; `meta_analysis()` instead
+requires `estimate` and `std.error` columns, with one row per study.
 A few additional requirements are worth noting:
 
 - **Within-subjects (repeated measures) designs**: The data must contain exactly
@@ -53,8 +50,9 @@ A few additional requirements are worth noting:
   paired tests — even with exactly two conditions and no missing values.
 
 - **Missing data**: Missing values are removed internally. For within-subjects
-  designs, any subject who has `NA` in *any* condition is removed entirely,
-  ensuring a balanced design is maintained. For between-subjects designs, only
+  designs, any subject who has `NA` in *any* condition, or lacks a row in a
+  condition, is removed entirely by `complete_subjects()`, ensuring a balanced
+  design is maintained. For between-subjects designs, only
   the rows with `NA` are removed, unless `subject.id` is also supplied, in
   which case all rows of a subject with an `NA` are removed.
 
@@ -135,3 +133,9 @@ to interpret effect sizes:
 
 If you find any bugs or have any suggestions/remarks, please file an issue on GitHub:
 <https://github.com/IndrajeetPatil/statsExpressions/issues>
+
+## Citation
+
+```{r citation, echo = FALSE, comment = ""}
+citation("statsExpressions")
+```

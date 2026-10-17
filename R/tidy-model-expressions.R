@@ -101,19 +101,19 @@ tidy_model_expressions <- function(
   template <- expr_template(stat_part)
   template_no_df <- expr_template("italic(t)=='{statistic}'")
 
-  df_expr <- df_expr |>
-    mutate(
-      expression = if (stat_type == "t") {
-        # drop the degrees of freedom when they are missing or infinite
-        if_else(
-          df.error %in% c("NA", "Inf"),
-          glue(.env$template_no_df),
-          glue(.env$template)
-        )
-      } else {
+  df_expr <- mutate(
+    df_expr,
+    expression = if (stat_type == "t") {
+      # drop the degrees of freedom when they are missing or infinite
+      if_else(
+        df.error %in% c("NA", "Inf"),
+        glue(.env$template_no_df),
         glue(.env$template)
-      }
-    )
+      )
+    } else {
+      glue(.env$template)
+    }
+  )
 
   # rows dropped above get an `NA` expression here, which is turned into `NULL`
   # to show nothing instead of an empty string ("")

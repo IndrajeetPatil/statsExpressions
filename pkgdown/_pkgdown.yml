@@ -46,8 +46,8 @@ template:
       <meta name="citation_journal_title" content="Journal of Open Source Software" />
       <link rel="alternate" type="text/plain" href="/statsExpressions/llms.txt" title="LLM-friendly documentation summary" />
   bslib:
-    base_font: { google: "Roboto" }
-    heading_font: { google: "Roboto" }
+    base_font: { google: { family: "Roboto", wght: [400, 500, 700] } }
+    heading_font: { google: { family: "Roboto", wght: [400, 500, 700] } }
     code_font: { google: "JetBrains Mono" }
   opengraph:
     image:
