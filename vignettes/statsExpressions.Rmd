@@ -20,17 +20,6 @@ vignette: >
 #| include = FALSE,
 #| echo = FALSE
 source("setup.R")
-
-pkgs <- "ggplot2"
-
-successfully_loaded <- purrr::map_lgl(pkgs, requireNamespace, quietly = TRUE)
-can_evaluate <- all(successfully_loaded)
-
-if (can_evaluate) {
-  purrr::walk(pkgs, library, character.only = TRUE)
-} else {
-  knitr::opts_chunk$set(eval = FALSE)
-}
 ```
 
 ## Summary
@@ -202,7 +191,6 @@ statistical processing backend.
 #| fig.width = 8,
 #| fig.cap = "Example illustrating how `{statsExpressions}` functions can be used to display
 #| results from a statistical test in a plot."
-# needed libraries
 library(ggplot2)
 
 # Example 1: Performing a t-test on raw tidy data and extracting the formatted expression
