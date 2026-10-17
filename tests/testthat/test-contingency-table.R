@@ -205,7 +205,7 @@ patrick::with_parameters_test_that(
     df_emptied <- mutate(
       df,
       am = factor(am, levels = c(0, 1, 2)),
-      cyl = replace(cyl, am == 1 & cyl == 8, NA)
+      cyl = replace_when(cyl, am == 1 & cyl == 8 ~ NA)
     )
 
     run <- function(data) {
@@ -218,10 +218,7 @@ patrick::with_parameters_test_that(
     }
 
     expect_identical(run(df_unused), run(df))
-    expect_identical(
-      run(df_emptied),
-      run(filter(df, !(am == 1 & cyl == 8)))
-    )
+    expect_identical(run(df_emptied), run(filter_out(df, am == 1, cyl == 8)))
   },
   .cases = dplyr::tibble(
     .test_name = c("parametric", "bayes", "bayes, paired"),

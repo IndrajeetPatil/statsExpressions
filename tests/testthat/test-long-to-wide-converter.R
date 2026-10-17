@@ -139,7 +139,7 @@ test_that("paired designs need at most one row per subject and condition", {
 # levels without any response --------------------------------------------
 
 test_that("between-subjects designs drop levels whose responses are all missing", {
-  df <- mutate(mtcars, cyl = factor(cyl), wt = replace(wt, cyl == 8, NA))
+  df <- mutate(mtcars, cyl = factor(cyl), wt = replace_when(wt, cyl == 8 ~ NA))
   df_complete <- filter(df, cyl != 8)
 
   res <- long_to_wide_converter(df, cyl, wt, paired = FALSE, spread = FALSE)
