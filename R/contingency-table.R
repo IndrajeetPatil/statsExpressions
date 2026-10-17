@@ -89,9 +89,11 @@ contingency_table <- function(
 
   # a test of independence is undefined with an empty row or column, so drop
   # unused levels (e.g. ones emptied by removing missing values); levels are
-  # kept for a goodness-of-fit test (zero counts are valid data) and for a
-  # paired test (both variables need the same levels)
-  if (!one_way && !paired) {
+  # kept for a goodness-of-fit test (zero counts are valid data) and for
+  # McNemar's test (both variables need the same levels), which the Bayesian
+  # analysis doesn't run even for paired data
+  mcnemar <- paired && type != "bayes"
+  if (!one_way && !mcnemar) {
     data <- droplevels(data)
   }
 

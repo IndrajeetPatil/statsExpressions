@@ -209,8 +209,12 @@ patrick::with_parameters_test_that(
     )
 
     run <- function(data) {
-      set.seed(123)
-      suppressWarnings(contingency_table(data, cyl, am, type = type))
+      if (type == "bayes") {
+        set.seed(123)
+      }
+      suppressWarnings(
+        contingency_table(data, cyl, am, type = type, paired = paired)
+      )
     }
 
     expect_identical(run(df_unused), run(df))
@@ -219,7 +223,11 @@ patrick::with_parameters_test_that(
       run(filter(df, !(am == 1 & cyl == 8)))
     )
   },
-  .cases = dplyr::tibble(type = c("parametric", "bayes"))
+  .cases = dplyr::tibble(
+    .test_name = c("parametric", "bayes", "bayes, paired"),
+    type = c("parametric", "bayes", "bayes"),
+    paired = c(FALSE, FALSE, TRUE)
+  )
 )
 
 test_that("contingency_table() keeps zero-count levels in goodness-of-fit tests", {
