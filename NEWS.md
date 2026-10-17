@@ -1,3 +1,24 @@
+# statsExpressions 2.2.0.9000
+
+- `one_sample_test()` with a one-sided `alternative` now also reports a
+  one-sided confidence interval for the parametric and nonparametric effect
+  sizes. Previously the *p*-value was one-sided but the effect size
+  confidence interval was always two-sided, unlike in `two_sample_test()`.
+
+- `contingency_table()` no longer fails for a test of independence when `x`
+  or `y` has an empty level, either an unused factor level or one emptied by
+  removing rows with missing values. Such levels are now dropped, as in
+  `pairwise_contingency_table()`.
+
+- For between-subjects designs (`paired = FALSE`), `long_to_wide_converter()`
+  now drops a level of `x` whose responses are all missing. Previously the
+  empty level was kept, which made robust `oneway_anova()` and
+  `pairwise_comparisons()` fail.
+
+- `tidy_model_expressions()` no longer duplicates rows and mismatches
+  expressions when `term` values repeat, as in multivariate models where each
+  term appears once per response.
+
 # statsExpressions 2.2.0
 
 - New helper `complete_subjects()` prepares long-format repeated-measures

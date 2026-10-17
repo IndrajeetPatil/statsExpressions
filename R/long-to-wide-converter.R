@@ -84,7 +84,11 @@ long_to_wide_converter <- function(
       data <- mutate(data, .rowid = row_number())
     }
 
-    data <- filter_out(data, anyNA(pick({{ x }}, {{ y }})), .by = .rowid)
+    # drop levels only after removing missing values, so that a level whose
+    # every response is missing doesn't remain as an empty group
+    data <- data |>
+      filter_out(anyNA(pick({{ x }}, {{ y }})), .by = .rowid) |>
+      mutate({{ x }} := droplevels({{ x }}))
   }
 
   if (spread) {

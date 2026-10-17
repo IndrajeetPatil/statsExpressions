@@ -90,7 +90,8 @@ patrick::with_parameters_test_that(
       template = "s",
       template_no_df = "s",
       es.text = "s",
-      es_text = "s"
+      es_text = "s",
+      df_expr = "s"
     )
 
     run <- function(data) {
@@ -136,4 +137,22 @@ test_that("tidy_model_expressions() drops the t degrees of freedom per row", {
   )
 
   expect_snapshot(tidy_model_expressions(df, statistic = "t")[["expression"]])
+})
+
+test_that("tidy_model_expressions() keeps one row per term with repeated terms", {
+  # multivariate models repeat each term for every response
+  df <- tidy_model_parameters(lm(cbind(mpg, wt) ~ hp, mtcars))
+  res <- tidy_model_expressions(df, statistic = "t")
+
+  expect_snapshot(select(res, -expression))
+  expect_snapshot(res[["expression"]])
+})
+
+test_that("tidy_model_expressions() ignores grouping of the input", {
+  df <- tidy_model_parameters(lm(cbind(mpg, wt) ~ hp, mtcars))
+
+  expect_identical(
+    tidy_model_expressions(group_by(df, response), statistic = "t"),
+    tidy_model_expressions(df, statistic = "t")
+  )
 })

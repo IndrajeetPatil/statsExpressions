@@ -60,12 +60,11 @@ tidy_model_expressions <- function(
   # `statistic` inside `mutate()` and `glue()` refers to the data column
   stat_type <- substring(tolower(statistic), 1L, 1L)
 
-  # if any of the necessary numeric columns are missing, there shouldn't be an
-  # expression corresponding to that row; convert the necessary columns to
-  # character type for expression
-  df_expr <- data |>
-    tidyr::drop_na(matches("estimate|statistic|std.error|p.value")) |>
-    .data_to_char(digits)
+  # expressions are matched to rows by position, which grouping would break
+  data <- ungroup(data)
+
+  # convert the necessary columns to character type for expression
+  df_expr <- .data_to_char(data, digits)
 
   es_text <- if (stat_type == "f") {
     switch(
@@ -115,9 +114,19 @@ tidy_model_expressions <- function(
     }
   )
 
-  # rows dropped above get an `NA` expression here, which is turned into `NULL`
-  # to show nothing instead of an empty string ("")
-  left_join(data, select(df_expr, term, expression), by = "term") |>
+  # if any of the necessary numeric columns are missing, there shouldn't be an
+  # expression for that row: an `NA` is turned into `NULL` to show nothing
+  # instead of an empty string (""); expressions are matched by position
+  # because `term` needn't be unique (e.g. multivariate models repeat terms for
+  # each response)
+  data |>
+    mutate(
+      expression = if_else(
+        if_any(matches("estimate|statistic|std.error|p.value"), is.na),
+        NA,
+        .env$df_expr$expression
+      )
+    ) |>
     .glue_to_expression()
 }
 
