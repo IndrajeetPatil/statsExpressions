@@ -1,17 +1,17 @@
 # `pairwise_comparisons()` works for between-subjects design
 
     Code
-      df1
+      dplyr::select(df1, -expression)
     Output
-      # A tibble: 6 x 6
-        group1  group2  p.value p.adjust.method test        expression
-        <chr>   <chr>     <dbl> <chr>           <chr>       <list>    
-      1 carni   herbi     1     Bonferroni      Student's t <language>
-      2 carni   insecti   1     Bonferroni      Student's t <language>
-      3 carni   omni      1     Bonferroni      Student's t <language>
-      4 herbi   insecti   1     Bonferroni      Student's t <language>
-      5 herbi   omni      0.979 Bonferroni      Student's t <language>
-      6 insecti omni      1     Bonferroni      Student's t <language>
+      # A tibble: 6 x 5
+        group1  group2  p.value p.adjust.method test       
+        <chr>   <chr>     <dbl> <chr>           <chr>      
+      1 carni   herbi     1     Bonferroni      Student's t
+      2 carni   insecti   1     Bonferroni      Student's t
+      3 carni   omni      1     Bonferroni      Student's t
+      4 herbi   insecti   1     Bonferroni      Student's t
+      5 herbi   omni      0.979 Bonferroni      Student's t
+      6 insecti omni      1     Bonferroni      Student's t
 
 ---
 
@@ -40,9 +40,9 @@
 ---
 
     Code
-      df2
+      dplyr::select(df2, -expression)
     Output
-      # A tibble: 6 x 9
+      # A tibble: 6 x 8
         group1  group2  statistic p.value alternative distribution p.adjust.method
         <chr>   <chr>       <dbl>   <dbl> <chr>       <chr>        <chr>          
       1 carni   herbi        2.17       1 two.sided   q            Bonferroni     
@@ -51,14 +51,14 @@
       4 herbi   insecti     -2.41       1 two.sided   q            Bonferroni     
       5 herbi   omni        -1.87       1 two.sided   q            Bonferroni     
       6 insecti omni         2.19       1 two.sided   q            Bonferroni     
-        test         expression
-        <chr>        <list>    
-      1 Games-Howell <language>
-      2 Games-Howell <language>
-      3 Games-Howell <language>
-      4 Games-Howell <language>
-      5 Games-Howell <language>
-      6 Games-Howell <language>
+        test        
+        <chr>       
+      1 Games-Howell
+      2 Games-Howell
+      3 Games-Howell
+      4 Games-Howell
+      5 Games-Howell
+      6 Games-Howell
 
 ---
 
@@ -87,9 +87,9 @@
 ---
 
     Code
-      df3
+      dplyr::select(df3, -expression)
     Output
-      # A tibble: 6 x 9
+      # A tibble: 6 x 8
         group1  group2  statistic p.value alternative distribution p.adjust.method
         <chr>   <chr>       <dbl>   <dbl> <chr>       <chr>        <chr>          
       1 carni   herbi       0.582  0.561  two.sided   z            None           
@@ -98,14 +98,14 @@
       4 herbi   insecti     1.63   0.102  two.sided   z            None           
       5 herbi   omni        0.717  0.474  two.sided   z            None           
       6 insecti omni        1.14   0.254  two.sided   z            None           
-        test  expression
-        <chr> <list>    
-      1 Dunn  <language>
-      2 Dunn  <language>
-      3 Dunn  <language>
-      4 Dunn  <language>
-      5 Dunn  <language>
-      6 Dunn  <language>
+        test 
+        <chr>
+      1 Dunn 
+      2 Dunn 
+      3 Dunn 
+      4 Dunn 
+      5 Dunn 
+      6 Dunn 
 
 ---
 
@@ -134,9 +134,9 @@
 ---
 
     Code
-      df4
+      dplyr::select(df4, -expression)
     Output
-      # A tibble: 6 x 10
+      # A tibble: 6 x 9
         group1  group2  estimate conf.level conf.low conf.high p.value p.adjust.method
         <chr>   <chr>      <dbl>      <dbl>    <dbl>     <dbl>   <dbl> <chr>          
       1 carni   herbi   -0.0323        0.95  -0.248     0.184    0.790 FDR            
@@ -145,14 +145,14 @@
       4 herbi   insecti  0.0774        0.95  -0.133     0.288    0.552 FDR            
       5 herbi   omni     0.0375        0.95  -0.182     0.257    0.790 FDR            
       6 insecti omni    -0.0399        0.95  -0.142     0.0625   0.552 FDR            
-        test                 expression
-        <chr>                <list>    
-      1 Yuen's trimmed means <language>
-      2 Yuen's trimmed means <language>
-      3 Yuen's trimmed means <language>
-      4 Yuen's trimmed means <language>
-      5 Yuen's trimmed means <language>
-      6 Yuen's trimmed means <language>
+        test                
+        <chr>               
+      1 Yuen's trimmed means
+      2 Yuen's trimmed means
+      3 Yuen's trimmed means
+      4 Yuen's trimmed means
+      5 Yuen's trimmed means
+      6 Yuen's trimmed means
 
 ---
 
@@ -181,14 +181,14 @@
 ---
 
     Code
-      df5
+      dplyr::select(df5, -expression)
     Output
-      # A tibble: 3 x 6
-        group1 group2 p.value p.adjust.method test        expression
-        <chr>  <chr>    <dbl> <chr>           <chr>       <list>    
-      1 PG     PG-13  0.316   Holm            Student's t <language>
-      2 PG     R      0.00283 Holm            Student's t <language>
-      3 PG-13  R      0.00310 Holm            Student's t <language>
+      # A tibble: 3 x 5
+        group1 group2 p.value p.adjust.method test       
+        <chr>  <chr>    <dbl> <chr>           <chr>      
+      1 PG     PG-13  0.316   Holm            Student's t
+      2 PG     R      0.00283 Holm            Student's t
+      3 PG-13  R      0.00310 Holm            Student's t
 
 ---
 
@@ -208,9 +208,9 @@
 ---
 
     Code
-      df6
+      dplyr::select(df6, -expression)
     Output
-      # A tibble: 6 x 9
+      # A tibble: 6 x 8
         group1  group2  statistic p.value alternative distribution p.adjust.method
         <chr>   <chr>       <dbl>   <dbl> <chr>       <chr>        <chr>          
       1 carni   herbi        2.17       1 two.sided   q            Holm           
@@ -219,14 +219,14 @@
       4 herbi   insecti     -2.41       1 two.sided   q            Holm           
       5 herbi   omni        -1.87       1 two.sided   q            Holm           
       6 insecti omni         2.19       1 two.sided   q            Holm           
-        test         expression
-        <chr>        <list>    
-      1 Games-Howell <language>
-      2 Games-Howell <language>
-      3 Games-Howell <language>
-      4 Games-Howell <language>
-      5 Games-Howell <language>
-      6 Games-Howell <language>
+        test        
+        <chr>       
+      1 Games-Howell
+      2 Games-Howell
+      3 Games-Howell
+      4 Games-Howell
+      5 Games-Howell
+      6 Games-Howell
 
 ---
 
@@ -255,15 +255,15 @@
 # dropped levels are not included
 
     Code
-      df1
+      dplyr::select(df1, -expression)
     Output
-      # A tibble: 1 x 9
+      # A tibble: 1 x 8
         group1 group2 statistic p.value alternative distribution p.adjust.method
         <chr>  <chr>      <dbl>   <dbl> <chr>       <chr>        <chr>          
       1 carni  omni        1.10   0.447 two.sided   q            None           
-        test         expression
-        <chr>        <list>    
-      1 Games-Howell <language>
+        test        
+        <chr>       
+      1 Games-Howell
 
 ---
 
@@ -277,14 +277,14 @@
 # data without NAs
 
     Code
-      df
+      dplyr::select(df, -expression)
     Output
-      # A tibble: 3 x 6
-        group1     group2      p.value p.adjust.method test        expression
-        <chr>      <chr>         <dbl> <chr>           <chr>       <list>    
-      1 setosa     versicolor 1.32e-15 FDR             Student's t <language>
-      2 setosa     virginica  6.64e-32 FDR             Student's t <language>
-      3 versicolor virginica  2.77e- 9 FDR             Student's t <language>
+      # A tibble: 3 x 5
+        group1     group2      p.value p.adjust.method test       
+        <chr>      <chr>         <dbl> <chr>           <chr>      
+      1 setosa     versicolor 1.32e-15 FDR             Student's t
+      2 setosa     virginica  6.64e-32 FDR             Student's t
+      3 versicolor virginica  2.77e- 9 FDR             Student's t
 
 ---
 
@@ -304,17 +304,17 @@
 # `pairwise_comparisons()` works for within-subjects design: bugs_long p
 
     Code
-      df
+      dplyr::select(df, -expression)
     Output
-      # A tibble: 6 x 6
-        group1 group2  p.value p.adjust.method test        expression
-        <chr>  <chr>     <dbl> <chr>           <chr>       <list>    
-      1 HDHF   HDLF   3.18e- 3 Bonferroni      Student's t <language>
-      2 HDHF   LDHF   4.21e- 1 Bonferroni      Student's t <language>
-      3 HDHF   LDLF   3.95e-12 Bonferroni      Student's t <language>
-      4 HDLF   LDHF   3.37e- 1 Bonferroni      Student's t <language>
-      5 HDLF   LDLF   7.94e- 3 Bonferroni      Student's t <language>
-      6 LDHF   LDLF   1.33e- 8 Bonferroni      Student's t <language>
+      # A tibble: 6 x 5
+        group1 group2  p.value p.adjust.method test       
+        <chr>  <chr>     <dbl> <chr>           <chr>      
+      1 HDHF   HDLF   3.18e- 3 Bonferroni      Student's t
+      2 HDHF   LDHF   4.21e- 1 Bonferroni      Student's t
+      3 HDHF   LDLF   3.95e-12 Bonferroni      Student's t
+      4 HDLF   LDHF   3.37e- 1 Bonferroni      Student's t
+      5 HDLF   LDLF   7.94e- 3 Bonferroni      Student's t
+      6 LDHF   LDLF   1.33e- 8 Bonferroni      Student's t
 
 ---
 
@@ -343,9 +343,9 @@
 # `pairwise_comparisons()` works for within-subjects design: bugs_long np
 
     Code
-      df
+      dplyr::select(df, -expression)
     Output
-      # A tibble: 6 x 9
+      # A tibble: 6 x 8
         group1 group2 statistic  p.value alternative distribution p.adjust.method
         <chr>  <chr>      <dbl>    <dbl> <chr>       <chr>        <chr>          
       1 HDHF   HDLF        4.78 1.44e- 5 two.sided   t            BY             
@@ -354,14 +354,14 @@
       4 HDLF   LDHF        2.34 4.96e- 2 two.sided   t            BY             
       5 HDLF   LDLF        3.23 5.05e- 3 two.sided   t            BY             
       6 LDHF   LDLF        5.57 4.64e- 7 two.sided   t            BY             
-        test           expression
-        <chr>          <list>    
-      1 Durbin-Conover <language>
-      2 Durbin-Conover <language>
-      3 Durbin-Conover <language>
-      4 Durbin-Conover <language>
-      5 Durbin-Conover <language>
-      6 Durbin-Conover <language>
+        test          
+        <chr>         
+      1 Durbin-Conover
+      2 Durbin-Conover
+      3 Durbin-Conover
+      4 Durbin-Conover
+      5 Durbin-Conover
+      6 Durbin-Conover
 
 ---
 
@@ -390,9 +390,9 @@
 # `pairwise_comparisons()` works for within-subjects design: bugs_long r
 
     Code
-      df
+      dplyr::select(df, -expression)
     Output
-      # A tibble: 6 x 11
+      # A tibble: 6 x 10
         group1 group2 estimate conf.level conf.low conf.high     p.value  p.crit
         <chr>  <chr>     <dbl>      <dbl>    <dbl>     <dbl>       <dbl>   <dbl>
       1 HDHF   HDLF      1.03        0.95   0.140      1.92  0.00999     0.0127 
@@ -401,14 +401,14 @@
       4 HDLF   LDHF     -0.676       0.95  -1.61       0.256 0.0520      0.05   
       5 HDLF   LDLF      0.889       0.95   0.0244     1.75  0.0203      0.0169 
       6 LDHF   LDLF      1.35        0.95   0.560      2.14  0.000102    0.0102 
-        p.adjust.method test                 expression
-        <chr>           <chr>                <list>    
-      1 Hommel          Yuen's trimmed means <language>
-      2 Hommel          Yuen's trimmed means <language>
-      3 Hommel          Yuen's trimmed means <language>
-      4 Hommel          Yuen's trimmed means <language>
-      5 Hommel          Yuen's trimmed means <language>
-      6 Hommel          Yuen's trimmed means <language>
+        p.adjust.method test                
+        <chr>           <chr>               
+      1 Hommel          Yuen's trimmed means
+      2 Hommel          Yuen's trimmed means
+      3 Hommel          Yuen's trimmed means
+      4 Hommel          Yuen's trimmed means
+      5 Hommel          Yuen's trimmed means
+      6 Hommel          Yuen's trimmed means
 
 ---
 
@@ -437,14 +437,14 @@
 # `pairwise_comparisons()` works for within-subjects design: WineTasting p
 
     Code
-      df
+      dplyr::select(df, -expression)
     Output
-      # A tibble: 3 x 6
-        group1 group2  p.value p.adjust.method test        expression
-        <chr>  <chr>     <dbl> <chr>           <chr>       <list>    
-      1 Wine A Wine B 0.732    None            Student's t <language>
-      2 Wine A Wine C 0.0142   None            Student's t <language>
-      3 Wine B Wine C 0.000675 None            Student's t <language>
+      # A tibble: 3 x 5
+        group1 group2  p.value p.adjust.method test       
+        <chr>  <chr>     <dbl> <chr>           <chr>      
+      1 Wine A Wine B 0.732    None            Student's t
+      2 Wine A Wine C 0.0142   None            Student's t
+      3 Wine B Wine C 0.000675 None            Student's t
 
 ---
 
@@ -464,19 +464,19 @@
 # `pairwise_comparisons()` works for within-subjects design: WineTasting np
 
     Code
-      df
+      dplyr::select(df, -expression)
     Output
-      # A tibble: 3 x 9
+      # A tibble: 3 x 8
         group1 group2 statistic  p.value alternative distribution p.adjust.method
         <chr>  <chr>      <dbl>    <dbl> <chr>       <chr>        <chr>          
       1 Wine A Wine B      1.05 0.301    two.sided   t            None           
       2 Wine A Wine C      3.66 0.000691 two.sided   t            None           
       3 Wine B Wine C      2.62 0.0123   two.sided   t            None           
-        test           expression
-        <chr>          <list>    
-      1 Durbin-Conover <language>
-      2 Durbin-Conover <language>
-      3 Durbin-Conover <language>
+        test          
+        <chr>         
+      1 Durbin-Conover
+      2 Durbin-Conover
+      3 Durbin-Conover
 
 ---
 
@@ -496,19 +496,19 @@
 # `pairwise_comparisons()` works for within-subjects design: WineTasting r
 
     Code
-      df
+      dplyr::select(df, -expression)
     Output
-      # A tibble: 3 x 11
+      # A tibble: 3 x 10
         group1 group2 estimate conf.level conf.low conf.high p.value p.crit
         <chr>  <chr>     <dbl>      <dbl>    <dbl>     <dbl>   <dbl>  <dbl>
       1 Wine A Wine B   0.0214       0.95 -0.0216     0.0645 0.195   0.05  
       2 Wine A Wine C   0.114        0.95  0.0215     0.207  0.00492 0.0169
       3 Wine B Wine C   0.0821       0.95  0.00891    0.155  0.00878 0.025 
-        p.adjust.method test                 expression
-        <chr>           <chr>                <list>    
-      1 None            Yuen's trimmed means <language>
-      2 None            Yuen's trimmed means <language>
-      3 None            Yuen's trimmed means <language>
+        p.adjust.method test                
+        <chr>           <chr>               
+      1 None            Yuen's trimmed means
+      2 None            Yuen's trimmed means
+      3 None            Yuen's trimmed means
 
 ---
 
@@ -528,9 +528,9 @@
 # Bayesian `pairwise_comparisons()` works for within-subjects design: bugs_long
 
     Code
-      df
+      dplyr::select(df, -expression)
     Output
-      # A tibble: 6 x 18
+      # A tibble: 6 x 17
         group1 group2 term       effectsize      estimate conf.level conf.low
         <chr>  <chr>  <chr>      <chr>              <dbl>      <dbl>    <dbl>
       1 HDHF   HDLF   Difference Bayesian t-test    1.10        0.95   0.488 
@@ -547,14 +547,14 @@
       4    0.0583 0.968 cauchy                          0       0.707 6.98e- 1
       5    1.60   0.999 cauchy                          0       0.707 1.81e+ 1
       6    2.15   1     cauchy                          0       0.707 4.81e+ 6
-        conf.method log_e_bf10 n.obs expression test       
-        <chr>            <dbl> <int> <list>     <chr>      
-      1 ETI              3.73     88 <language> Student's t
-      2 ETI             -0.539    88 <language> Student's t
-      3 ETI             23.2      88 <language> Student's t
-      4 ETI             -0.359    88 <language> Student's t
-      5 ETI              2.90     88 <language> Student's t
-      6 ETI             15.4      88 <language> Student's t
+        conf.method log_e_bf10 n.obs test       
+        <chr>            <dbl> <int> <chr>      
+      1 ETI              3.73     88 Student's t
+      2 ETI             -0.539    88 Student's t
+      3 ETI             23.2      88 Student's t
+      4 ETI             -0.359    88 Student's t
+      5 ETI              2.90     88 Student's t
+      6 ETI             15.4      88 Student's t
 
 ---
 
@@ -583,9 +583,9 @@
 # Bayesian `pairwise_comparisons()` works for within-subjects design: WineTasting
 
     Code
-      df
+      dplyr::select(df, -expression)
     Output
-      # A tibble: 3 x 18
+      # A tibble: 3 x 17
         group1 group2 term       effectsize      estimate conf.level conf.low
         <chr>  <chr>  <chr>      <chr>              <dbl>      <dbl>    <dbl>
       1 Wine A Wine B Difference Bayesian t-test  0.00721       0.95  -0.0418
@@ -596,11 +596,11 @@
       1    0.0562 0.624 cauchy                          0       0.707  0.235
       2    0.140  0.990 cauchy                          0       0.707  3.71 
       3    0.110  1.000 cauchy                          0       0.707 50.5  
-        conf.method log_e_bf10 n.obs expression test       
-        <chr>            <dbl> <int> <list>     <chr>      
-      1 ETI              -1.45    22 <language> Student's t
-      2 ETI               1.31    22 <language> Student's t
-      3 ETI               3.92    22 <language> Student's t
+        conf.method log_e_bf10 n.obs test       
+        <chr>            <dbl> <int> <chr>      
+      1 ETI              -1.45    22 Student's t
+      2 ETI               1.31    22 Student's t
+      3 ETI               3.92    22 Student's t
 
 ---
 
@@ -620,17 +620,17 @@
 # additional arguments are passed to underlying methods: within-subjects, less
 
     Code
-      df
+      dplyr::select(df, -expression)
     Output
-      # A tibble: 6 x 6
-        group1 group2  p.value p.adjust.method test        expression
-        <chr>  <chr>     <dbl> <chr>           <chr>       <list>    
-      1 HDHF   HDLF   2.65e- 4 None            Student's t <language>
-      2 HDHF   LDHF   3.51e- 2 None            Student's t <language>
-      3 HDHF   LDLF   3.29e-13 None            Student's t <language>
-      4 HDLF   LDHF   9.72e- 1 None            Student's t <language>
-      5 HDLF   LDLF   6.62e- 4 None            Student's t <language>
-      6 LDHF   LDLF   1.11e- 9 None            Student's t <language>
+      # A tibble: 6 x 5
+        group1 group2  p.value p.adjust.method test       
+        <chr>  <chr>     <dbl> <chr>           <chr>      
+      1 HDHF   HDLF   2.65e- 4 None            Student's t
+      2 HDHF   LDHF   3.51e- 2 None            Student's t
+      3 HDHF   LDLF   3.29e-13 None            Student's t
+      4 HDLF   LDHF   9.72e- 1 None            Student's t
+      5 HDLF   LDLF   6.62e- 4 None            Student's t
+      6 LDHF   LDLF   1.11e- 9 None            Student's t
 
 ---
 
@@ -659,17 +659,17 @@
 # additional arguments are passed to underlying methods: within-subjects, greater
 
     Code
-      df
+      dplyr::select(df, -expression)
     Output
-      # A tibble: 6 x 6
-        group1 group2 p.value p.adjust.method test        expression
-        <chr>  <chr>    <dbl> <chr>           <chr>       <list>    
-      1 HDHF   HDLF    1.000  None            Student's t <language>
-      2 HDHF   LDHF    0.965  None            Student's t <language>
-      3 HDHF   LDLF    1.000  None            Student's t <language>
-      4 HDLF   LDHF    0.0281 None            Student's t <language>
-      5 HDLF   LDLF    0.999  None            Student's t <language>
-      6 LDHF   LDLF    1.000  None            Student's t <language>
+      # A tibble: 6 x 5
+        group1 group2 p.value p.adjust.method test       
+        <chr>  <chr>    <dbl> <chr>           <chr>      
+      1 HDHF   HDLF    1.000  None            Student's t
+      2 HDHF   LDHF    0.965  None            Student's t
+      3 HDHF   LDLF    1.000  None            Student's t
+      4 HDLF   LDHF    0.0281 None            Student's t
+      5 HDLF   LDLF    0.999  None            Student's t
+      6 LDHF   LDLF    1.000  None            Student's t
 
 ---
 
@@ -698,14 +698,14 @@
 # additional arguments are passed to underlying methods: between-subjects, less
 
     Code
-      df
+      dplyr::select(df, -expression)
     Output
-      # A tibble: 3 x 6
-        group1 group2 p.value p.adjust.method test        expression
-        <chr>  <chr>    <dbl> <chr>           <chr>       <list>    
-      1 4      6        0.995 None            Student's t <language>
-      2 4      8        1.000 None            Student's t <language>
-      3 6      8        0.997 None            Student's t <language>
+      # A tibble: 3 x 5
+        group1 group2 p.value p.adjust.method test       
+        <chr>  <chr>    <dbl> <chr>           <chr>      
+      1 4      6        0.995 None            Student's t
+      2 4      8        1.000 None            Student's t
+      3 6      8        0.997 None            Student's t
 
 ---
 
@@ -725,14 +725,14 @@
 # additional arguments are passed to underlying methods: between-subjects, greater
 
     Code
-      df
+      dplyr::select(df, -expression)
     Output
-      # A tibble: 3 x 6
-        group1 group2     p.value p.adjust.method test        expression
-        <chr>  <chr>        <dbl> <chr>           <chr>       <list>    
-      1 4      6      0.00532     None            Student's t <language>
-      2 4      8      0.000000103 None            Student's t <language>
-      3 6      8      0.00258     None            Student's t <language>
+      # A tibble: 3 x 5
+        group1 group2     p.value p.adjust.method test       
+        <chr>  <chr>        <dbl> <chr>           <chr>      
+      1 4      6      0.00532     None            Student's t
+      2 4      8      0.000000103 None            Student's t
+      3 6      8      0.00258     None            Student's t
 
 ---
 
