@@ -13,7 +13,7 @@ downloads](https://cranlogs.r-pkg.org/badges/grand-total/statsExpressions?color=
 The `{statsExpressions}` package has two key aims:
 
 - to provide a consistent syntax to do statistical analysis with tidy
-  data (in pipe-friendly manner),
+  data (in a pipe-friendly manner),
 - to provide statistical expressions (pre-formatted in-text statistical
   results) for plotting functions.
 
@@ -42,7 +42,7 @@ unified portal through which most of the functionality in these
 underlying packages can be accessed, with a simpler interface and no
 requirement to change data format.
 
-This package forms the statistical processing backend for
+This package forms the statistical processing backend for the
 [`ggstatsplot`](https://www.indrapatil.com/ggstatsplot/) package.
 
 For more documentation, see the dedicated

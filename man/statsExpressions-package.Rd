@@ -8,7 +8,7 @@
 \description{
 The \code{{statsExpressions}} package has two key aims:
 \itemize{
-\item to provide a consistent syntax to do statistical analysis with tidy data (in pipe-friendly manner),
+\item to provide a consistent syntax to do statistical analysis with tidy data (in a pipe-friendly manner),
 \item to provide statistical expressions (pre-formatted in-text statistical
 results) for plotting functions.
 }
@@ -35,7 +35,7 @@ This is where \code{{statsExpressions}} comes in: It can be thought of as a unif
 portal through which most of the functionality in these underlying packages can
 be accessed, with a simpler interface and no requirement to change data format.
 
-This package forms the statistical processing backend for \href{https://www.indrapatil.com/ggstatsplot/}{\code{ggstatsplot}} package.
+This package forms the statistical processing backend for the \href{https://www.indrapatil.com/ggstatsplot/}{\code{ggstatsplot}} package.
 
 For more documentation, see the dedicated \href{https://www.indrapatil.com/statsExpressions/}{website}.
 }
