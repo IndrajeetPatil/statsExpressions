@@ -301,3 +301,44 @@
           "0.03")
       
 
+# tidy_model_expressions() keeps one row per term with repeated terms
+
+    Code
+      select(res, -expression)
+    Output
+      # A tibble: 4 x 11
+        term        estimate std.error conf.level conf.low conf.high statistic
+        <chr>          <dbl>     <dbl>      <dbl>    <dbl>     <dbl>     <dbl>
+      1 (Intercept) 30.1       1.63          0.95 26.8       33.4        18.4 
+      2 hp          -0.0682    0.0101        0.95 -0.0889    -0.0476     -6.74
+      3 (Intercept)  1.84      0.317         0.95  1.19       2.48        5.81
+      4 hp           0.00940   0.00196       0.95  0.00540    0.0134      4.80
+        df.error  p.value response conf.method
+           <int>    <dbl> <chr>    <chr>      
+      1       30 6.64e-18 mpg      Wald       
+      2       30 1.79e- 7 mpg      Wald       
+      3       30 2.39e- 6 wt       Wald       
+      4       30 4.15e- 5 wt       Wald       
+
+---
+
+    Code
+      res[["expression"]]
+    Output
+      [[1]]
+      list(widehat(italic(beta)) == "30.10", italic(t)("30") == "18.42", 
+          italic(p) == "6.64e-18")
+      
+      [[2]]
+      list(widehat(italic(beta)) == "-0.07", italic(t)("30") == "-6.74", 
+          italic(p) == "1.79e-07")
+      
+      [[3]]
+      list(widehat(italic(beta)) == "1.84", italic(t)("30") == "5.81", 
+          italic(p) == "2.39e-06")
+      
+      [[4]]
+      list(widehat(italic(beta)) == "9.40e-03", italic(t)("30") == 
+          "4.80", italic(p) == "4.15e-05")
+      
+
