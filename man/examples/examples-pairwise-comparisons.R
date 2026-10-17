@@ -1,6 +1,5 @@
 # for reproducibility
 set.seed(123)
-library(statsExpressions)
 
 #------------------- between-subjects design ----------------------------
 

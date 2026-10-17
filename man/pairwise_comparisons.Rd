@@ -223,7 +223,6 @@ Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressio
 \dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true")) withAutoprint(\{ # examplesIf}
 # for reproducibility
 set.seed(123)
-library(statsExpressions)
 
 #------------------- between-subjects design ----------------------------
 

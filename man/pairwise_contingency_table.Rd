@@ -155,7 +155,6 @@ Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressio
 \dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true")) withAutoprint(\{ # examplesIf}
 # for reproducibility
 set.seed(123)
-library(statsExpressions)
 
 # pairwise Fisher's exact tests with Holm adjustment
 pairwise_contingency_table(
@@ -172,14 +171,6 @@ pairwise_contingency_table(
   y = Survived,
   counts = Freq,
   p.adjust.method = "bonferroni"
-)
-
-# no p-value adjustment
-pairwise_contingency_table(
-  data = mtcars,
-  x = cyl,
-  y = am,
-  p.adjust.method = "none"
 )
 \dontshow{\}) # examplesIf}
 }
