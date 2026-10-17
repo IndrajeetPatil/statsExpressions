@@ -1,3 +1,5 @@
+# statsExpressions 2.2.0.9000
+
 # statsExpressions 2.2.0
 
 - New helper `complete_subjects()` prepares long-format repeated-measures
