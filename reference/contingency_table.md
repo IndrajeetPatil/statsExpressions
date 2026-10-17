@@ -221,19 +221,20 @@ explanation of the internal
 [`add_expression_col()`](https://www.indrapatil.com/statsExpressions/reference/add_expression_col.md)
 engine that builds the `expression` column), see the [Return value
 schema](https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html)
-article. For more examples, see the [data frame output
-vignette](https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html).
+article. For more examples, see the [Data frame
+outputs](https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html)
+article.
 
 ## Contingency table analyses
 
-The table below provides summary about:
+Below is a summary of:
 
-- statistical test carried out for inferential statistics
+- the statistical test carried out for inferential statistics
 
-- type of effect size estimate and a measure of uncertainty for this
+- the type of effect size estimate and a measure of uncertainty for this
   estimate
 
-- functions used internally to compute these details
+- the functions used internally to compute these details
 
 There are no dedicated non-parametric or robust contingency table
 analyses. `type = "nonparametric"` and `type = "robust"` are accepted,
@@ -283,6 +284,12 @@ Bayesian test is run instead.
 | Type | Effect size | CI available? | Function used |
 | Parametric/Non-parametric | Pearson's *C* | Yes | [`effectsize::pearsons_c()`](https://easystats.github.io/effectsize/reference/phi.html) |
 | Bayesian | No | No | No |
+
+## Citation
+
+Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and
+Expressions with Statistical Details. Journal of Open Source Software,
+6(61), 3236, https://doi.org/10.21105/joss.03236
 
 ## Examples
 

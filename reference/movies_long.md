@@ -41,18 +41,6 @@ Modified dataset from `{ggplot2movies}` package.
 ## Examples
 
 ``` r
-dim(movies_long)
-#> [1] 1579    8
-head(movies_long)
-#> # A tibble: 6 × 8
-#>   title                             year length budget rating  votes mpaa  genre
-#>   <chr>                            <int>  <int>  <dbl>  <dbl>  <int> <fct> <fct>
-#> 1 Shawshank Redemption, The         1994    142     25    9.1 149494 R     Drama
-#> 2 Lord of the Rings: The Return o…  2003    251     94    9   103631 PG-13 Acti…
-#> 3 Lord of the Rings: The Fellowsh…  2001    208     93    8.8 157608 PG-13 Acti…
-#> 4 Lord of the Rings: The Two Towe…  2002    223     94    8.8 114797 PG-13 Acti…
-#> 5 Pulp Fiction                      1994    168      8    8.8 132745 R     Drama
-#> 6 Schindler's List                  1993    195     25    8.8  97667 R     Drama
 dplyr::glimpse(movies_long)
 #> Rows: 1,579
 #> Columns: 8

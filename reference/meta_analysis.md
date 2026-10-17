@@ -166,8 +166,9 @@ explanation of the internal
 [`add_expression_col()`](https://www.indrapatil.com/statsExpressions/reference/add_expression_col.md)
 engine that builds the `expression` column), see the [Return value
 schema](https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html)
-article. For more examples, see the [data frame output
-vignette](https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html).
+article. For more examples, see the [Data frame
+outputs](https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html)
+article.
 
 ## Note
 
@@ -178,14 +179,14 @@ them.
 
 ## Random-effects meta-analysis
 
-The table below provides summary about:
+Below is a summary of:
 
-- statistical test carried out for inferential statistics
+- the statistical test carried out for inferential statistics
 
-- type of effect size estimate and a measure of uncertainty for this
+- the type of effect size estimate and a measure of uncertainty for this
   estimate
 
-- functions used internally to compute these details
+- the functions used internally to compute these details
 
 **Hypothesis testing and effect size estimation**
 
@@ -205,15 +206,13 @@ Expressions with Statistical Details. Journal of Open Source Software,
 ## Examples
 
 ``` r
-set.seed(123)
-library(statsExpressions)
-
 # let's use `mag` dataset from `{metaplus}`
 data(mag, package = "metaplus")
 dat <- dplyr::rename(mag, estimate = yi, std.error = sei)
 
-# ----------------------- parametric ----------------------------------------
+# ----------------------- parametric ---------------------------------------
 
+set.seed(123)
 meta_analysis(dat)
 #> # A tibble: 1 × 14
 #>   term    effectsize                     estimate std.error conf.level conf.low
@@ -228,6 +227,7 @@ meta_analysis(dat)
 
 # ----------------------- robust --------------------------------------------
 
+set.seed(123)
 meta_analysis(dat, type = "robust", random = "normal")
 #> # A tibble: 1 × 14
 #>   term    effectsize                     estimate std.error conf.low conf.high
@@ -242,7 +242,9 @@ meta_analysis(dat, type = "robust", random = "normal")
 
 # ----------------------- Bayesian ------------------------------------------
 
-meta_analysis(dat, type = "bayes")
+# suppress warnings about divergent transitions after warmup
+set.seed(123)
+suppressWarnings(meta_analysis(dat, type = "bayes"))
 #> # A tibble: 2 × 20
 #>   term    effectsize                       estimate std.error conf.level
 #>   <chr>   <chr>                               <dbl>     <dbl>      <dbl>

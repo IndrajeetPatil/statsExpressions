@@ -200,16 +200,16 @@ statistical details, ready to be used in <code>{ggplot2}</code> (e.g. in <code><
 </ul><p>For a per-function, column-by-column breakdown of the output (and an explanation
 of the internal <code><a href="add_expression_col.html">add_expression_col()</a></code> engine that builds the <code>expression</code>
 column), see the <a href="https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html">Return value schema</a>
-article. For more examples, see the <a href="https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html">data frame output vignette</a>.</p>
+article. For more examples, see the <a href="https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html">Data frame outputs</a> article.</p>
     </div>
     <div class="section level2">
     <h2 id="pairwise-contingency-table-tests">Pairwise contingency table tests<a class="anchor" aria-label="anchor" href="#pairwise-contingency-table-tests"></a></h2>
 
 
 
-<p>The table below provides summary about:</p><ul><li><p>statistical test carried out for inferential statistics</p></li>
-<li><p>type of effect size estimate and a measure of uncertainty for this estimate</p></li>
-<li><p>functions used internally to compute these details</p></li>
+<p>Below is a summary of:</p><ul><li><p>the statistical test carried out for inferential statistics</p></li>
+<li><p>the type of effect size estimate and a measure of uncertainty for this estimate</p></li>
+<li><p>the functions used internally to compute these details</p></li>
 </ul><p><strong>Hypothesis testing</strong></p><table class="table table"><tr><td>Test</td><td><em>p</em>-value adjustment?</td><td>Function used</td></tr><tr><td>Fisher's exact test</td><td>Yes</td><td><code><a href="https://rdrr.io/r/stats/fisher.test.html" class="external-link">stats::fisher.test()</a></code></td></tr></table><p><strong>Effect size estimation</strong></p><table class="table table"><tr><td>Effect size</td><td>CI available?</td><td>Function used</td></tr><tr><td>Cramer's <em>V</em></td><td>Yes</td><td><code><a href="https://easystats.github.io/effectsize/reference/phi.html" class="external-link">effectsize::cramers_v()</a></code></td></tr></table></div>
     <div class="section level2">
     <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a></h2>
@@ -220,7 +220,6 @@ article. For more examples, see the <a href="https://www.indrapatil.com/statsExp
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># for reproducibility</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.indrapatil.com/statsExpressions/">statsExpressions</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># pairwise Fisher's exact tests with Holm adjustment</span></span></span>
 <span class="r-in"><span><span class="fu">pairwise_contingency_table</span><span class="op">(</span></span></span>
@@ -279,30 +278,6 @@ article. For more examples, see the <a href="https://www.indrapatil.com/statsExp
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Fisher's exact test <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Fisher's exact test <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Fisher's exact test <span style="color: #949494;">&lt;language&gt;</span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># no p-value adjustment</span></span></span>
-<span class="r-in"><span><span class="fu">pairwise_contingency_table</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span></span>
-<span class="r-in"><span>  x <span class="op">=</span> <span class="va">cyl</span>,</span></span>
-<span class="r-in"><span>  y <span class="op">=</span> <span class="va">am</span>,</span></span>
-<span class="r-in"><span>  p.adjust.method <span class="op">=</span> <span class="st">"none"</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 14</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">group1</span> <span style="font-weight: bold;">group2</span> <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">p.value.adj</span> <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 4      6      <span style="color: #949494;">0.</span>332       <span style="color: #949494;">0.</span>332      <span style="color: #949494;">0.</span>180       <span style="color: #949494;">0.</span>95        <span style="color: #949494;">0</span>     <span style="color: #949494;">0.</span>743</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 4      8      <span style="color: #949494;">0.00</span>5<span style="text-decoration: underline;">14</span>     <span style="color: #949494;">0.00</span>5<span style="text-decoration: underline;">14</span>    <span style="color: #949494;">0.</span>568       <span style="color: #949494;">0.</span>95        <span style="color: #949494;">0</span>     <span style="color: #949494;">0.</span>983</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 6      8      <span style="color: #949494;">0.</span>280       <span style="color: #949494;">0.</span>280      <span style="color: #949494;">0.</span>229       <span style="color: #949494;">0.</span>95        <span style="color: #949494;">0</span>     <span style="color: #949494;">0.</span>728</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">effectsize</span>        <span style="font-weight: bold;">conf.method</span> <span style="font-weight: bold;">conf.distribution</span> <span style="font-weight: bold;">p.adjust.method</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Cramer's V (adj.) ncp         chisq             None           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Cramer's V (adj.) ncp         chisq             None           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Cramer's V (adj.) ncp         chisq             None           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">test</span>                <span style="font-weight: bold;">expression</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Fisher's exact test <span style="color: #949494;">&lt;language&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Fisher's exact test <span style="color: #949494;">&lt;language&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Fisher's exact test <span style="color: #949494;">&lt;language&gt;</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

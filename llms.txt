@@ -146,14 +146,14 @@ statistical approach can be modified by changing a single argument:
 `#>   <int> <list>    `\
 `#> 1    32 <language>`
 
-Worked examples of output data frames are collected here:
-<https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html>
+For worked examples of these data frames, see [Data frame
+outputs](https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html);
+for their columns and attributes, see [Return value
+schema](https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html).
 
-The columns and attributes of these dataframes are documented here:
-<https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html>
-
-Needless to say this will also work with the `kable` function to
-generate a table:
+The data frames also work with
+[`knitr::kable()`](https://rdrr.io/pkg/knitr/man/kable.html) to generate
+a table:
 
 \
 [`set.seed`](https://rdrr.io/r/base/Random.html)`(``123``)`\
@@ -219,15 +219,23 @@ For example, here are results from Welch’s *t*-test:
 with test statistic, degrees of freedom, p-value, and effect
 size](reference/figures/stats_reporting_format.png)
 
-Let’s load the needed library for visualization:
+To display a single result in a plot, you have two options:
+
+- extract the expression from the list column
+  (`results_data$expression[[1]]`) without parsing
+- use the list column as is, in which case you will need to parse it
+  (`parse(text = results_data$expression)`)
+
+For several row-specific labels in a geometric layer, map `expression`
+to `label` and use `parse = TRUE`, as in the centrality example below.
+
+Here are a few examples for supported analyses. Let’s load the needed
+library for visualization:
 
 \
 [`library`](https://rdrr.io/r/base/library.html)`(`[`ggplot2`](https://ggplot2.tidyverse.org)`)`
 
 ## Expressions for centrality measure
-
-**Note that when used in a geometric layer, the expression needs to be
-parsed.**
 
 \
 `` # displaying mean for each level of `cyl` ``\
@@ -240,22 +248,7 @@ parsed.**
 with labeled statistical
 expressions.](reference/figures/README-centrality-1.png)
 
-Here are a few examples for supported analyses.
-
 ## Expressions for one-way ANOVAs
-
-The returned data frame will always have a column called `expression`.
-
-Assuming there is only a single result you need to display in a plot, to
-use it in a plot, you have two options:
-
-- extract the expression from the list column
-  (`results_data$expression[[1]]`) without parsing
-- use the list column as is, in which case you will need to parse it
-  (`parse(text = results_data$expression)`)
-
-For several row-specific labels in a geometric layer, map `expression`
-to `label` and use `parse = TRUE`, as in the centrality example above.
 
 ### Between-subjects design
 
@@ -514,7 +507,7 @@ For detailed documentation, see the package website:
 
 Here is an example from
 [ggstatsplot](https://www.indrapatil.com/ggstatsplot/) of what the plots
-look like when the expressions are displayed in the subtitle-
+look like when the expressions are displayed in the subtitle:
 
 ![Example plot from ggstatsplot package showing statistical results in
 subtitle](reference/figures/ggstatsplot.png)

@@ -47,18 +47,6 @@ costs. *Computers in Human Behavior*, *29*(4), 1295-1301.
 ## Examples
 
 ``` r
-dim(bugs_long)
-#> [1] 372   6
-head(bugs_long)
-#> # A tibble: 6 × 6
-#>   subject gender region        education condition desire
-#>     <int> <fct>  <fct>         <fct>     <chr>      <dbl>
-#> 1       1 Female North America some      LDLF           6
-#> 2       2 Female North America advance   LDLF          10
-#> 3       3 Female Europe        college   LDLF           5
-#> 4       4 Female North America college   LDLF           6
-#> 5       5 Female North America some      LDLF           3
-#> 6       6 Female Europe        some      LDLF           2
 dplyr::glimpse(bugs_long)
 #> Rows: 372
 #> Columns: 6

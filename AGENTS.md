@@ -74,18 +74,34 @@ make clean        # Remove package build and check artifacts
 make update_deps  # Refresh dependency constraints (maintenance only)
 ```
 
+### Validation
+
+Start with the narrowest check that proves a change, such as the
+affected `testthat` files and snapshots. When a change affects shared
+behavior, dependencies, generated metadata, or workflows, also run the
+full validation gate:
+
+``` bash
+air format . --check
+make lint
+make hooks
+make check
+```
+
 ### Versioning and changelog
 
 - Development versions use a fourth-component `.9000` suffix.
 - Keep the version in `DESCRIPTION`, `codemeta.json`, and the first
   `NEWS.md` heading synchronized.
-- Record user-facing compatibility changes in `NEWS.md`; omit routine
-  dependency updates and internal lint or CI maintenance.
+- Keep `NEWS.md` concise and user-facing. Record behavior and
+  compatibility changes, such as a higher minimum R version, a newly
+  required package, or a dependency minimum version that new code
+  requires; omit routine dependency updates and lint, formatting, CI, or
+  generated-file maintenance.
 
 ## Testing
 
 - The package uses `testthat` edition 3 with parallel execution.
-- `make check` is the canonical full local validation command.
 - Snapshot tests are used extensively for both tidy statistical output
   and the `expression` column.
 - Tests cover source areas, but helper and shared source files may be

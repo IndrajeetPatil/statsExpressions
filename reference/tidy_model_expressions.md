@@ -65,43 +65,11 @@ Expressions with Statistical Details. Journal of Open Source Software,
 ## Examples
 
 ``` r
-# setup
 set.seed(123)
-library(statsExpressions)
 
-# extract a tidy data frame
+# t-statistic from a tidy linear model data frame
 df <- tidy_model_parameters(lm(wt ~ am * cyl, mtcars))
-
-# create a column containing expression; the expression will depend on `statistic`
 tidy_model_expressions(df, statistic = "t")
-#> # A tibble: 4 × 11
-#>   term        estimate std.error conf.level conf.low conf.high statistic
-#>   <chr>          <dbl>     <dbl>      <dbl>    <dbl>     <dbl>     <dbl>
-#> 1 (Intercept)   1.66      0.587        0.95    0.455     2.86      2.82 
-#> 2 am           -0.956     0.793        0.95   -2.58      0.668    -1.21 
-#> 3 cyl           0.304     0.0826       0.95    0.135     0.473     3.68 
-#> 4 am:cyl        0.0328    0.130        0.95   -0.234     0.300     0.252
-#>   df.error  p.value conf.method expression
-#>      <int>    <dbl> <chr>       <list>    
-#> 1       28 0.00864  Wald        <language>
-#> 2       28 0.238    Wald        <language>
-#> 3       28 0.000989 Wald        <language>
-#> 4       28 0.803    Wald        <language>
-tidy_model_expressions(df, statistic = "z")
-#> # A tibble: 4 × 11
-#>   term        estimate std.error conf.level conf.low conf.high statistic
-#>   <chr>          <dbl>     <dbl>      <dbl>    <dbl>     <dbl>     <dbl>
-#> 1 (Intercept)   1.66      0.587        0.95    0.455     2.86      2.82 
-#> 2 am           -0.956     0.793        0.95   -2.58      0.668    -1.21 
-#> 3 cyl           0.304     0.0826       0.95    0.135     0.473     3.68 
-#> 4 am:cyl        0.0328    0.130        0.95   -0.234     0.300     0.252
-#>   df.error  p.value conf.method expression
-#>      <int>    <dbl> <chr>       <list>    
-#> 1       28 0.00864  Wald        <language>
-#> 2       28 0.238    Wald        <language>
-#> 3       28 0.000989 Wald        <language>
-#> 4       28 0.803    Wald        <language>
-tidy_model_expressions(df, statistic = "chi")
 #> # A tibble: 4 × 11
 #>   term        estimate std.error conf.level conf.low conf.high statistic
 #>   <chr>          <dbl>     <dbl>      <dbl>    <dbl>     <dbl>     <dbl>

@@ -189,19 +189,20 @@ explanation of the internal
 [`add_expression_col()`](https://www.indrapatil.com/statsExpressions/reference/add_expression_col.md)
 engine that builds the `expression` column), see the [Return value
 schema](https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html)
-article. For more examples, see the [data frame output
-vignette](https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html).
+article. For more examples, see the [Data frame
+outputs](https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html)
+article.
 
 ## One-sample tests
 
-The table below provides summary about:
+Below is a summary of:
 
-- statistical test carried out for inferential statistics
+- the statistical test carried out for inferential statistics
 
-- type of effect size estimate and a measure of uncertainty for this
+- the type of effect size estimate and a measure of uncertainty for this
   estimate
 
-- functions used internally to compute these details
+- the functions used internally to compute these details
 
 **Hypothesis testing**
 

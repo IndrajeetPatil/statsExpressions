@@ -115,17 +115,23 @@
 <span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="fu">make</span> clean        <span class="co"># Remove package build and check artifacts</span></span>
 <span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="fu">make</span> update_deps  <span class="co"># Refresh dependency constraints (maintenance only)</span></span></code></pre></div>
 <div class="section level3">
+<h3 id="validation">Validation<a class="anchor" aria-label="anchor" href="#validation"></a></h3>
+<p>Start with the narrowest check that proves a change, such as the affected <code>testthat</code> files and snapshots. When a change affects shared behavior, dependencies, generated metadata, or workflows, also run the full validation gate:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">air</span> format . <span class="at">--check</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">make</span> lint</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="fu">make</span> hooks</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="fu">make</span> check</span></code></pre></div>
+</div>
+<div class="section level3">
 <h3 id="versioning-and-changelog">Versioning and changelog<a class="anchor" aria-label="anchor" href="#versioning-and-changelog"></a></h3>
 <ul><li>Development versions use a fourth-component <code>.9000</code> suffix.</li>
 <li>Keep the version in <code>DESCRIPTION</code>, <code>codemeta.json</code>, and the first <code>NEWS.md</code> heading synchronized.</li>
-<li>Record user-facing compatibility changes in <code>NEWS.md</code>; omit routine dependency updates and internal lint or CI maintenance.</li>
+<li>Keep <code>NEWS.md</code> concise and user-facing. Record behavior and compatibility changes, such as a higher minimum R version, a newly required package, or a dependency minimum version that new code requires; omit routine dependency updates and lint, formatting, CI, or generated-file maintenance.</li>
 </ul></div>
 </div>
 <div class="section level2">
 <h2 id="testing">Testing<a class="anchor" aria-label="anchor" href="#testing"></a></h2>
 <ul><li>The package uses <code>testthat</code> edition 3 with parallel execution.</li>
-<li>
-<code>make check</code> is the canonical full local validation command.</li>
 <li>Snapshot tests are used extensively for both tidy statistical output and the <code>expression</code> column.</li>
 <li>Tests cover source areas, but helper and shared source files may be exercised by broader test files rather than a one-to-one filename match.</li>
 <li>Set seeds before Bayesian or otherwise stochastic tests, and only there.</li>
@@ -134,7 +140,7 @@
 <li>Codecov requires 100% project and patch coverage.</li>
 <li>Use <code><a href="https://rdrr.io/pkg/patrick/man/with_parameters_test_that.html" class="external-link">patrick::with_parameters_test_that()</a></code> to cover combinations of inputs, with a <code>.test_name</code> column in <code>.cases</code> (the <code>test_name</code> column is deprecated). Snapshot each case’s output rather than hand-writing expected expressions.</li>
 </ul><p>Follow the existing snapshot style:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">test_that</span><span class="op">(</span><span class="st">"descriptive name"</span>, <span class="op">{</span></span>
 <span>  <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">function_under_test</span><span class="op">(</span>data <span class="op">=</span> <span class="va">dataset</span>, x <span class="op">=</span> <span class="va">var1</span>, y <span class="op">=</span> <span class="va">var2</span><span class="op">)</span></span>
 <span>  <span class="fu">expect_snapshot</span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">df</span>, <span class="op">-</span><span class="va">expression</span><span class="op">)</span><span class="op">)</span></span>

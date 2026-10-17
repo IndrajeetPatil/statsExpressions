@@ -160,19 +160,20 @@ explanation of the internal
 [`add_expression_col()`](https://www.indrapatil.com/statsExpressions/reference/add_expression_col.md)
 engine that builds the `expression` column), see the [Return value
 schema](https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html)
-article. For more examples, see the [data frame output
-vignette](https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html).
+article. For more examples, see the [Data frame
+outputs](https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html)
+article.
 
 ## Pairwise contingency table tests
 
-The table below provides summary about:
+Below is a summary of:
 
-- statistical test carried out for inferential statistics
+- the statistical test carried out for inferential statistics
 
-- type of effect size estimate and a measure of uncertainty for this
+- the type of effect size estimate and a measure of uncertainty for this
   estimate
 
-- functions used internally to compute these details
+- the functions used internally to compute these details
 
 **Hypothesis testing**
 
@@ -199,7 +200,6 @@ Expressions with Statistical Details. Journal of Open Source Software,
 ``` r
 # for reproducibility
 set.seed(123)
-library(statsExpressions)
 
 # pairwise Fisher's exact tests with Holm adjustment
 pairwise_contingency_table(
@@ -258,28 +258,4 @@ pairwise_contingency_table(
 #> 4 Fisher's exact test <language>
 #> 5 Fisher's exact test <language>
 #> 6 Fisher's exact test <language>
-
-# no p-value adjustment
-pairwise_contingency_table(
-  data = mtcars,
-  x = cyl,
-  y = am,
-  p.adjust.method = "none"
-)
-#> # A tibble: 3 × 14
-#>   group1 group2 p.value p.value.adj estimate conf.level conf.low conf.high
-#>   <chr>  <chr>    <dbl>       <dbl>    <dbl>      <dbl>    <dbl>     <dbl>
-#> 1 4      6      0.332       0.332      0.180       0.95        0     0.743
-#> 2 4      8      0.00514     0.00514    0.568       0.95        0     0.983
-#> 3 6      8      0.280       0.280      0.229       0.95        0     0.728
-#>   effectsize        conf.method conf.distribution p.adjust.method
-#>   <chr>             <chr>       <chr>             <chr>          
-#> 1 Cramer's V (adj.) ncp         chisq             None           
-#> 2 Cramer's V (adj.) ncp         chisq             None           
-#> 3 Cramer's V (adj.) ncp         chisq             None           
-#>   test                expression
-#>   <chr>               <list>    
-#> 1 Fisher's exact test <language>
-#> 2 Fisher's exact test <language>
-#> 3 Fisher's exact test <language>
 ```

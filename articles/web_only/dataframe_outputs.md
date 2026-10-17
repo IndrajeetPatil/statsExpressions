@@ -263,7 +263,6 @@
 \
 `# for reproducibility`\
 [`set.seed`](https://rdrr.io/r/base/Random.html)`(``123``)`\
-[`library`](https://rdrr.io/r/base/library.html)`(`[`statsExpressions`](https://www.indrapatil.com/statsExpressions/)`)`\
 \
 `# ----------------------- parametric -------------------------------------`\
 \
@@ -695,15 +694,14 @@
 ## Random-effects meta-analysis output
 
 \
-[`library`](https://rdrr.io/r/base/library.html)`(``metaplus``)`\
-\
-`` # renaming columns to `{statsExpressions}` conventions ``\
-`df`` ``<-`` ``dplyr``::`[`rename`](https://dplyr.tidyverse.org/reference/rename.html)`(``mag``, estimate ``=`` ``yi``, std.error ``=`` ``sei``)`\
+`` # let's use `mag` dataset from `{metaplus}` ``\
+[`data`](https://rdrr.io/r/utils/data.html)`(``mag``, package ``=`` ``"metaplus"``)`\
+`dat`` ``<-`` ``dplyr``::`[`rename`](https://dplyr.tidyverse.org/reference/rename.html)`(``mag``, estimate ``=`` ``yi``, std.error ``=`` ``sei``)`\
 \
 `# ----------------------- parametric ---------------------------------------`\
 \
 [`set.seed`](https://rdrr.io/r/base/Random.html)`(``123``)`\
-[`meta_analysis`](https://www.indrapatil.com/statsExpressions/reference/meta_analysis.md)`(``df``, type ``=`` ``"parametric"``)`\
+[`meta_analysis`](https://www.indrapatil.com/statsExpressions/reference/meta_analysis.md)`(``dat``)`\
 `#> ``# A tibble: 1 × 14`\
 `#>   ``term``    ``effectsize``                     ``estimate`` ``std.error`` ``conf.level`` ``conf.low`\
 `#>   ``<chr>``   ``<chr>``                             ``<dbl>``     ``<dbl>``      ``<dbl>``    ``<dbl>`\
@@ -718,7 +716,7 @@
 `# ----------------------- robust --------------------------------------------`\
 \
 [`set.seed`](https://rdrr.io/r/base/Random.html)`(``123``)`\
-[`meta_analysis`](https://www.indrapatil.com/statsExpressions/reference/meta_analysis.md)`(``df``, type ``=`` ``"robust"``)`\
+[`meta_analysis`](https://www.indrapatil.com/statsExpressions/reference/meta_analysis.md)`(``dat``, type ``=`` ``"robust"``, random ``=`` ``"normal"``)`\
 `#> ``# A tibble: 1 × 14`\
 `#>   ``term``    ``effectsize``                     ``estimate`` ``std.error`` ``conf.low`` ``conf.high`\
 `#>   ``<chr>``   ``<chr>``                             ``<dbl>``     ``<dbl>``    ``<dbl>``     ``<dbl>`\
@@ -730,11 +728,11 @@
 `#>   ``<chr>``       ``<int>`` ``<list>``    `\
 `#> ``1`` Wald           16 ``<language>`\
 \
-`# ----------------------- Bayesian ---------------------------------------`\
+`# ----------------------- Bayesian ------------------------------------------`\
 \
 `# suppress warnings about divergent transitions after warmup`\
 [`set.seed`](https://rdrr.io/r/base/Random.html)`(``123``)`\
-[`suppressWarnings`](https://rdrr.io/r/base/warning.html)`(`[`meta_analysis`](https://www.indrapatil.com/statsExpressions/reference/meta_analysis.md)`(``df``, type ``=`` ``"bayes"``)``)`\
+[`suppressWarnings`](https://rdrr.io/r/base/warning.html)`(`[`meta_analysis`](https://www.indrapatil.com/statsExpressions/reference/meta_analysis.md)`(``dat``, type ``=`` ``"bayes"``)``)`\
 `#> ``# A tibble: 2 × 20`\
 `#>   ``term``    ``effectsize``                       ``estimate`` ``std.error`` ``conf.level`\
 `#>   ``<chr>``   ``<chr>``                               ``<dbl>``     ``<dbl>``      ``<dbl>`\
@@ -818,7 +816,6 @@
 \
 `# for reproducibility`\
 [`set.seed`](https://rdrr.io/r/base/Random.html)`(``123``)`\
-[`library`](https://rdrr.io/r/base/library.html)`(`[`statsExpressions`](https://www.indrapatil.com/statsExpressions/)`)`\
 \
 `#------------------- between-subjects design ----------------------------`\
 \

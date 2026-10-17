@@ -154,7 +154,8 @@ of <code>y</code> within that level. The columns are:</p><ul><li><p>the grouping
 the mean (<code>type = "parametric"</code>), median (<code>"nonparametric"</code>), trimmed mean
 (<code>"robust"</code>), or MAP estimate (<code>"bayes"</code>)</p></li>
 <li><p><code>std.dev</code>: standard deviation (for <code>"parametric"</code> and <code>"robust"</code>)</p></li>
-<li><p><code>mad</code>: median absolute deviation (for <code>"nonparametric"</code>)</p></li>
+<li><p><code>mad</code>: median absolute deviation (for <code>"nonparametric"</code>); neither <code>std.dev</code>
+nor <code>mad</code> is returned for <code>"bayes"</code></p></li>
 <li><p><code>iqr</code>: interquartile range</p></li>
 <li><p><code>conf.low</code>, <code>conf.high</code>: bounds of the confidence/credible interval for the
 centrality estimate</p></li>
@@ -169,12 +170,9 @@ element is a <code>language</code> object, not a character string) containing th
 centrality estimate, ready to be used in <code>{ggplot2}</code></p></li>
 <li><p><code>n.expression</code>: a label combining the group name and its sample size (e.g.
 <code>"setosa\n(n = 50)"</code>), useful as an axis or facet label</p></li>
-</ul><p>The exact dispersion column depends on the <code>type</code> of analysis (<code>std.dev</code> vs
-<code>mad</code>; neither is returned for <code>"bayes"</code>), and <code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">datawizard::describe_distribution()</a></code> is used internally to compute
-these indices.</p>
-<p>For more examples, see the <a href="https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html">data frame output vignette</a>
+</ul><p>For more examples, see the <a href="https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html">Data frame outputs</a>
 and the <a href="https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html">Return value schema</a>
-article.</p>
+articles.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -187,12 +185,7 @@ relies on <code><a href="https://easystats.github.io/datawizard/reference/descri
     <div class="section level2">
     <h2 id="centrality-measures">Centrality measures<a class="anchor" aria-label="anchor" href="#centrality-measures"></a></h2>
 
-
-
-<p>The table below provides summary about:</p><ul><li><p>statistical test carried out for inferential statistics</p></li>
-<li><p>type of effect size estimate and a measure of uncertainty for this estimate</p></li>
-<li><p>functions used internally to compute these details</p></li>
-</ul><table class="table table"><tr><td>Type</td><td>Measure</td><td>Function used</td></tr><tr><td>Parametric</td><td>mean</td><td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">datawizard::describe_distribution()</a></code></td></tr><tr><td>Non-parametric</td><td>median</td><td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">datawizard::describe_distribution()</a></code></td></tr><tr><td>Robust</td><td>trimmed mean</td><td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">datawizard::describe_distribution()</a></code></td></tr><tr><td>Bayesian</td><td>MAP</td><td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">datawizard::describe_distribution()</a></code></td></tr></table></div>
+<table class="table table"><tr><td>Type</td><td>Measure</td><td>Function used</td></tr><tr><td>Parametric</td><td>mean</td><td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">datawizard::describe_distribution()</a></code></td></tr><tr><td>Non-parametric</td><td>median</td><td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">datawizard::describe_distribution()</a></code></td></tr><tr><td>Robust</td><td>trimmed mean</td><td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">datawizard::describe_distribution()</a></code></td></tr><tr><td>Bayesian</td><td>MAP</td><td><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">datawizard::describe_distribution()</a></code></td></tr></table></div>
     <div class="section level2">
     <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a></h2>
     <p>Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressions with Statistical Details. Journal of Open Source Software, 6(61), 3236, https://doi.org/10.21105/joss.03236</p>

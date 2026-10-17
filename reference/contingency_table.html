@@ -244,16 +244,16 @@ statistical details, ready to be used in <code>{ggplot2}</code> (e.g. in <code><
 </ul><p>For a per-function, column-by-column breakdown of the output (and an explanation
 of the internal <code><a href="add_expression_col.html">add_expression_col()</a></code> engine that builds the <code>expression</code>
 column), see the <a href="https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html">Return value schema</a>
-article. For more examples, see the <a href="https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html">data frame output vignette</a>.</p>
+article. For more examples, see the <a href="https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html">Data frame outputs</a> article.</p>
     </div>
     <div class="section level2">
     <h2 id="contingency-table-analyses">Contingency table analyses<a class="anchor" aria-label="anchor" href="#contingency-table-analyses"></a></h2>
 
 
 
-<p>The table below provides summary about:</p><ul><li><p>statistical test carried out for inferential statistics</p></li>
-<li><p>type of effect size estimate and a measure of uncertainty for this estimate</p></li>
-<li><p>functions used internally to compute these details</p></li>
+<p>Below is a summary of:</p><ul><li><p>the statistical test carried out for inferential statistics</p></li>
+<li><p>the type of effect size estimate and a measure of uncertainty for this estimate</p></li>
+<li><p>the functions used internally to compute these details</p></li>
 </ul><p>There are no dedicated non-parametric or robust contingency table analyses.
 <code>type = "nonparametric"</code> and <code>type = "robust"</code> are accepted, but run the same
 frequentist tests as <code>type = "parametric"</code> (the "Parametric/Non-parametric" rows
@@ -272,6 +272,10 @@ test is run instead.</p>
 
 <p><strong>Hypothesis testing</strong></p><table class="table table"><tr><td>Type</td><td>Test</td><td>Function used</td></tr><tr><td>Parametric/Non-parametric</td><td>Goodness of fit chi-squared test</td><td><code><a href="https://rdrr.io/r/stats/chisq.test.html" class="external-link">stats::chisq.test()</a></code></td></tr><tr><td>Bayesian</td><td>Bayesian Goodness of fit chi-squared test</td><td>(custom)</td></tr></table><p><strong>Effect size estimation</strong></p><table class="table table"><tr><td>Type</td><td>Effect size</td><td>CI available?</td><td>Function used</td></tr><tr><td>Parametric/Non-parametric</td><td>Pearson's <em>C</em></td><td>Yes</td><td><code><a href="https://easystats.github.io/effectsize/reference/phi.html" class="external-link">effectsize::pearsons_c()</a></code></td></tr><tr><td>Bayesian</td><td>No</td><td>No</td><td>No</td></tr></table></div>
 
+    </div>
+    <div class="section level2">
+    <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a></h2>
+    <p>Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressions with Statistical Details. Journal of Open Source Software, 6(61), 3236, https://doi.org/10.21105/joss.03236</p>
     </div>
 
     <div class="section level2">

@@ -65,12 +65,9 @@ It does not have a `type` argument.
 
 ## Summary of tests and effect sizes
 
-Here is a go-to summary of the statistical tests carried out and the
-effect sizes returned by each function. This should be useful if one
-needs to find out more information about how an argument is resolved in
-the underlying package or if one wishes to browse the source code. So,
-for example, if you want to know more about how the one-way
-(between-subjects) ANOVA is carried out, you can run
+To learn how an argument is resolved, or to browse the source code,
+consult the underlying function listed in these tables. For example, for
+the between-subjects one-way ANOVA, run
 [`?stats::oneway.test`](https://rdrr.io/r/stats/oneway.test.html) in
 your R console.
 

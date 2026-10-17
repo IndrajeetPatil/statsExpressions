@@ -39,18 +39,6 @@ This is a modified dataset from `{datasets}` package.
 ## Examples
 
 ``` r
-dim(iris_long)
-#> [1] 600   6
-head(iris_long)
-#> # A tibble: 6 × 6
-#>      id Species condition    attribute measure value
-#>   <int> <fct>   <fct>        <fct>     <fct>   <dbl>
-#> 1     1 setosa  Sepal.Length Sepal     Length    5.1
-#> 2     2 setosa  Sepal.Length Sepal     Length    4.9
-#> 3     3 setosa  Sepal.Length Sepal     Length    4.7
-#> 4     4 setosa  Sepal.Length Sepal     Length    4.6
-#> 5     5 setosa  Sepal.Length Sepal     Length    5  
-#> 6     6 setosa  Sepal.Length Sepal     Length    5.4
 dplyr::glimpse(iris_long)
 #> Rows: 600
 #> Columns: 6

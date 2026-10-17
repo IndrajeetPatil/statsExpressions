@@ -260,7 +260,6 @@ philosophy adopted by the
 functions as its statistical processing backend.
 
 \
-`# needed libraries`\
 [`library`](https://rdrr.io/r/base/library.html)`(`[`ggplot2`](https://ggplot2.tidyverse.org)`)`\
 \
 `# Example 1: Performing a t-test on raw tidy data and extracting the formatted expression`\

@@ -91,7 +91,8 @@ the distribution of `y` within that level. The columns are:
 
 - `std.dev`: standard deviation (for `"parametric"` and `"robust"`)
 
-- `mad`: median absolute deviation (for `"nonparametric"`)
+- `mad`: median absolute deviation (for `"nonparametric"`); neither
+  `std.dev` nor `mad` is returned for `"bayes"`
 
 - `iqr`: interquartile range
 
@@ -116,16 +117,11 @@ the distribution of `y` within that level. The columns are:
 - `n.expression`: a label combining the group name and its sample size
   (e.g. `"setosa\n(n = 50)"`), useful as an axis or facet label
 
-The exact dispersion column depends on the `type` of analysis (`std.dev`
-vs `mad`; neither is returned for `"bayes"`), and
-[`datawizard::describe_distribution()`](https://easystats.github.io/datawizard/reference/describe_distribution.html)
-is used internally to compute these indices.
-
-For more examples, see the [data frame output
-vignette](https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html)
+For more examples, see the [Data frame
+outputs](https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html)
 and the [Return value
 schema](https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html)
-article.
+articles.
 
 ## Details
 
@@ -138,15 +134,6 @@ measure. The function internally relies on
 function.
 
 ## Centrality measures
-
-The table below provides summary about:
-
-- statistical test carried out for inferential statistics
-
-- type of effect size estimate and a measure of uncertainty for this
-  estimate
-
-- functions used internally to compute these details
 
 |  |  |  |
 |----|----|----|
