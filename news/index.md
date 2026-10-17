@@ -31,6 +31,8 @@
 
 ## statsExpressions 2.2.0
 
+CRAN release: 2026-10-17
+
 - New helper
   [`complete_subjects()`](https://www.indrapatil.com/statsExpressions/reference/complete_subjects.md)
   prepares long-format repeated-measures data the same way the paired
