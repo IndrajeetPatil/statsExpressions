@@ -1,5 +1,0 @@
-This vignette can be cited as:
-
-```{r citation, echo = FALSE, comment = ""}
-citation("statsExpressions")
-```

@@ -124,8 +124,10 @@ test_that("descriptive name", {
 - Use sentence case for prose headings, preserving function names, proper nouns,
   and published titles. Keep table labels such as **Hypothesis testing** and
   **Effect size estimation** bold.
-- End each vignette with a Citation section that includes
-  `man/rmd-fragments/citation.Rmd`.
+- End each vignette with a Citation section calling
+  `citation("statsExpressions")`; the package metadata is the source of truth.
+  Avoid relative child documents for this executable footer: pkgdown can render
+  it from a temporary Markdown file.
 - `@examplesIf` cannot wrap an `@example` file. To keep a `NOT_CRAN` guard
   around a shared example file, use the explicit
   `\dontshow{if (...) withAutoprint(\{ # examplesIf}` and

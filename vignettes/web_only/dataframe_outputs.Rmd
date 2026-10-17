@@ -114,5 +114,6 @@ If you find any bugs or have any suggestions/remarks, please file an issue on Gi
 
 ## Citation
 
-```{r child="../../man/rmd-fragments/citation.Rmd"}
+```{r citation, echo = FALSE, comment = ""}
+citation("statsExpressions")
 ```

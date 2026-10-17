@@ -255,5 +255,6 @@ analyses. Thus, I would like to thank the [members of easystats](https://github.
 
 ## Citation
 
-```{r child="../man/rmd-fragments/citation.Rmd"}
+```{r citation, echo = FALSE, comment = ""}
+citation("statsExpressions")
 ```
