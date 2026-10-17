@@ -84,10 +84,7 @@ pairwise_contingency_table <- function(
   pair_list <- utils::combn(x_levels, 2L, simplify = FALSE)
 
   df_pair <- map_vec(pair_list, function(pair) {
-    data_sub <- filter(data, {{ x }} %in% .env$pair) |>
-      mutate(across(where(is.factor), droplevels))
-
-    xtab <- table(data_sub)
+    xtab <- table(droplevels(filter(data, {{ x }} %in% .env$pair)))
 
     fisher_result <- stats::fisher.test(xtab, alternative = alternative, ...)
     es_result <- effectsize::cramers_v(
