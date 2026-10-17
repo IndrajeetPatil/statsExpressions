@@ -101,9 +101,9 @@ oneway_anova <- function(
     if (paired) {
       mod <- afex::aov_ez(
         id = ".rowid",
-        dv = as_string(y),
+        dv = as_name(y),
         data = data,
-        within = as_string(x),
+        within = as_name(x),
         include_aov = TRUE
       )
     } else {
