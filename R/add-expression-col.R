@@ -137,16 +137,16 @@ add_expression_col <- function(
   # Bayesian analysis ------------------------------
 
   if (bayesian) {
-    df_expr <- df_expr |>
-      mutate(
-        expression = glue(
-          "list(
+    df_expr <- mutate(
+      df_expr,
+      expression = glue(
+        "list(
             log[e]*(BF['01'])=='{format_value(-log(bf10), .env$digits)}',
             {es.text}^'posterior'=='{estimate}',
             CI['{conf.level}']^{conf.method}~'['*'{conf.low}', '{conf.high}'*']',
             {prior.distribution}=='{prior.scale}')"
-        )
       )
+    )
   } else {
     # frequentist analysis (0, 1, or 2 degrees of freedom) ------------------
 
@@ -194,16 +194,16 @@ add_expression_col <- function(
   digits.df = 0L,
   digits.df.error = 0L
 ) {
-  data |>
-    mutate(
-      across(
-        matches("^est|^sta|p.value|.scale$|.low$|.high$|^log"),
-        \(x) .to_char(x, .env$digits)
-      ),
-      across(matches("^df$"), \(x) .to_char(x, .env$digits.df)),
-      across(matches("^df.error$"), \(x) .to_char(x, .env$digits.df.error)),
-      across(matches("^conf.level$"), \(x) paste0(x * 100L, "%"))
-    )
+  mutate(
+    data,
+    across(
+      matches("^est|^sta|p.value|.scale$|.low$|.high$|^log"),
+      \(x) .to_char(x, .env$digits)
+    ),
+    across(matches("^df$"), \(x) .to_char(x, .env$digits.df)),
+    across(matches("^df.error$"), \(x) .to_char(x, .env$digits.df.error)),
+    across(matches("^conf.level$"), \(x) paste0(x * 100L, "%"))
+  )
 }
 
 #' @note `OutDec` is pinned to `"."` to avoid a clash with `big_mark` when

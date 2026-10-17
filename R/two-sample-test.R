@@ -168,9 +168,9 @@ two_sample_test <- function(
 
 #' @noRd
 .standardize_two_sample_terms <- function(data, x_name, y_name) {
-  data |>
-    mutate(
-      across(matches("^parameter1$|^term$"), \(x) y_name),
-      across(matches("^parameter2$|^group$"), \(x) x_name)
-    )
+  mutate(
+    data,
+    across(matches("^parameter1$|^term$"), \(x) y_name),
+    across(matches("^parameter2$|^group$"), \(x) x_name)
+  )
 }

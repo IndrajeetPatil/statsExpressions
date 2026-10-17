@@ -190,13 +190,13 @@ pairwise_comparisons <- function(
     glue("'{method_label}'-adj.")
   }
 
-  data |>
-    mutate(
-      p.value.adj = stats::p.adjust(p = p.value, method = p.adjust.method),
-      p.adjust.method = method_label,
-      test = .env$test,
-      expression = glue(
-        "list(italic(p)[{.env$p_subscript}]=='{format_value(p.value.adj, .env$digits)}')"
-      )
+  mutate(
+    data,
+    p.value.adj = stats::p.adjust(p = p.value, method = p.adjust.method),
+    p.adjust.method = method_label,
+    test = .env$test,
+    expression = glue(
+      "list(italic(p)[{.env$p_subscript}]=='{format_value(p.value.adj, .env$digits)}')"
     )
+  )
 }
