@@ -41,8 +41,6 @@ complete_subjects <- function(data, x, y, subject.id = NULL) {
     mutate({{ x }} := droplevels({{ x }}))
 
   if (anyDuplicated(select(data, {{ x }}, .rowid)) > 0L) {
-    # nocov start
-    # duplicated subjects are an input error, so examples never reach this
     abort(c(
       glue(
         "Each `{as_name(enquo(subject.id))}` value must appear at most once ",
@@ -50,7 +48,6 @@ complete_subjects <- function(data, x, y, subject.id = NULL) {
       ),
       i = "Aggregate repeated observations within each condition first."
     ))
-    # nocov end
   }
 
   data |>
