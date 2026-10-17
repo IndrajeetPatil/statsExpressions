@@ -320,7 +320,7 @@ See [effectsize](https://easystats.github.io/effectsize/)’s
 interpretation functions to check different rules/conventions to
 interpret effect sizes:
 
-<https://easystats.github.io/effectsize/reference/index.html#section-interpretation>
+<https://easystats.github.io/effectsize/reference/index.html#interpretation>
 
 ## References
 
