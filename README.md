@@ -145,14 +145,12 @@ mtcars |> oneway_anova(cyl, wt, type = "robust")
 #> 1    32 <language>
 ```
 
-Worked examples of output data frames are collected here:
-<https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html>
+For worked examples of these data frames, see [Data frame
+outputs](https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html);
+for their columns and attributes, see [Return value
+schema](https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html).
 
-The columns and attributes of these dataframes are documented here:
-<https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html>
-
-Needless to say this will also work with the `kable` function to
-generate a table:
+The data frames also work with `knitr::kable()` to generate a table:
 
 ``` r
 set.seed(123)
@@ -218,16 +216,24 @@ For example, here are results from Welch’s *t*-test:
 
 <img src="man/figures/stats_reporting_format.png" alt="Example of statistical reporting format showing Welch's t-test results with test statistic, degrees of freedom, p-value, and effect size" align="center" />
 
-Let’s load the needed library for visualization:
+To display a single result in a plot, you have two options:
+
+- extract the expression from the list column
+  (`results_data$expression[[1]]`) without parsing
+- use the list column as is, in which case you will need to parse it
+  (`parse(text = results_data$expression)`)
+
+For several row-specific labels in a geometric layer, map `expression`
+to `label` and use `parse = TRUE`, as in the centrality example below.
+
+Here are a few examples for supported analyses. Let’s load the needed
+library for visualization:
 
 ``` r
 library(ggplot2)
 ```
 
 ## Expressions for centrality measure
-
-**Note that when used in a geometric layer, the expression needs to be
-parsed.**
 
 ``` r
 # displaying mean for each level of `cyl`
@@ -239,22 +245,7 @@ centrality_description(mtcars, cyl, wt) |>
 
 <img src="man/figures/README-centrality-1.png" alt="Example ggplot showing centrality_description output: mean wt by cyl with labeled statistical expressions." width="100%" />
 
-Here are a few examples for supported analyses.
-
 ## Expressions for one-way ANOVAs
-
-The returned data frame will always have a column called `expression`.
-
-Assuming there is only a single result you need to display in a plot, to
-use it in a plot, you have two options:
-
-- extract the expression from the list column
-  (`results_data$expression[[1]]`) without parsing
-- use the list column as is, in which case you will need to parse it
-  (`parse(text = results_data$expression)`)
-
-For several row-specific labels in a geometric layer, map `expression`
-to `label` and use `parse = TRUE`, as in the centrality example above.
 
 ### Between-subjects design
 
