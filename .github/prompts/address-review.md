@@ -4,7 +4,7 @@ description: Address code review comments and reply to them
 disable-model-invocation: true
 ---
 
-# Address Code Review Comments
+# Address code review comments
 
 Use the gh CLI to fetch the current pull request's thread-aware review state. For
 every unresolved comment, determine whether it has merit. Fix valid findings;

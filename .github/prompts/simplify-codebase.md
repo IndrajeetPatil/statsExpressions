@@ -3,7 +3,7 @@ name: 'simplify-codebase'
 description: 'Simplify the codebase safely by removing avoidable custom code and adopting proven dependency capabilities.'
 ---
 
-# Simplify the Codebase Safely
+# Simplify the codebase safely
 
 Treat the codebase as a liability, not an asset. Extra lines of code, bespoke
 helpers, compatibility shims, and home-grown abstractions all carry ongoing
