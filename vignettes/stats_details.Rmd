@@ -116,7 +116,7 @@ between-subjects one-way ANOVA, run `?stats::oneway.test` in your R console.
 See `{effectsize}`'s interpretation functions to check different rules/conventions
 to interpret effect sizes:
 
-<https://easystats.github.io/effectsize/reference/index.html#section-interpretation>
+<https://easystats.github.io/effectsize/reference/index.html#interpretation>
 
 ## References
 
