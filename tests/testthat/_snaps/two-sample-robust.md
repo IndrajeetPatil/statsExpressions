@@ -1,7 +1,7 @@
-# t_robust - within-subjects - without NAs
+# t_robust works: within-subjects without NAs
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 14
         statistic df.error   p.value
@@ -20,7 +20,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic("t")["Yuen"] * "(" * 89 * ")" == "28.7230", italic(p) == 
@@ -28,10 +28,10 @@
           "[" * "1.9615", "2.6081" * "]", italic("n")["pairs"] == "150")
       
 
-# t_robust - within-subjects - with NAs
+# t_robust works: within-subjects with NAs
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 14
         statistic df.error p.value method                                            
@@ -47,7 +47,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic("t")["Yuen"] * "(" * 53 * ")" == "2.909", italic(p) == 
@@ -55,10 +55,10 @@
           "[" * "0.238", "0.611" * "]", italic("n")["pairs"] == "90")
       
 
-# t_robust - between-subjects - without NAs
+# t_robust works: between-subjects without NAs
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 10
         statistic df.error   p.value
@@ -77,7 +77,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic("t")["Yuen"] * "(" * 13.584 * ")" == "5.840", italic(p) == 
@@ -85,10 +85,10 @@
           "[" * "0.738", "5.128" * "]", italic("n")["obs"] == "32")
       
 
-# t_robust - between-subjects - with NAs
+# t_robust works: between-subjects with NAs
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 10
         statistic df.error p.value
@@ -107,7 +107,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic("t")["Yuen"] * "(" * 13.8476 * ")" == "0.4521", italic(p) == 

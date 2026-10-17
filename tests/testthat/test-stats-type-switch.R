@@ -1,4 +1,4 @@
-test_that(desc = "switch for stats type works", code = {
+test_that("switch for stats type works", {
   expect_identical(extract_stats_type("p"), "parametric")
   expect_identical(extract_stats_type("pearson"), "parametric")
   expect_identical(extract_stats_type("non-parametric"), "nonparametric")

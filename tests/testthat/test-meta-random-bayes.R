@@ -1,4 +1,4 @@
-test_that(desc = "meta_analysis works - bayesian", code = {
+test_that("meta_analysis works - bayesian", {
   skip_if_not_installed("metaBMA")
 
   set.seed(123)

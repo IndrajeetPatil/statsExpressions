@@ -167,3 +167,11 @@ data_meta <- dplyr::tribble(
 
 # two-condition subset of `data_with_subid` for paired two-sample tests
 data_with_subid_two_groups <- filter(data_with_subid, condition %in% c(1, 5))
+
+# two-group subsets for two-sample tests; `bugs_long` and `msleep` have `NA`s
+bugs_long_two_groups <- filter(bugs_long, condition %in% c("HDHF", "HDLF"))
+iris_long_two_groups <- filter(
+  iris_long,
+  condition %in% c("Sepal.Length", "Sepal.Width")
+)
+msleep_two_groups <- filter(msleep, vore %in% c("carni", "herbi"))

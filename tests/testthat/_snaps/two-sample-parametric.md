@@ -1,7 +1,7 @@
-# parametric t-test works (between-subjects without NAs)
+# parametric t-test works: between-subjects without NAs
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 17
         parameter1 parameter2 mean.parameter1 mean.parameter2 statistic df.error
@@ -17,7 +17,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic("t")["Student"] * "(" * 58 * ")" == "1.91527", italic(p) == 
@@ -26,10 +26,10 @@
           "60")
       
 
-# parametric t-test works (between-subjects with NAs)
+# parametric t-test works: between-subjects with NAs
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 17
         parameter1 parameter2 mean.parameter1 mean.parameter2 statistic df.error
@@ -45,7 +45,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic("t")["Welch"] * "(" * 19.358 * ")" == "-1.536", italic(p) == 
@@ -53,10 +53,10 @@
           "[" * "-0.978", "0.054" * "]", italic("n")["obs"] == "29")
       
 
-# parametric t-test works (within-subjects without NAs)
+# parametric t-test works: within-subjects without NAs
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 15
         term  group     statistic df.error  p.value method        alternative
@@ -72,7 +72,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic("t")["Student"] * "(" * 149 * ")" == "34.8152", italic(p) == 
@@ -81,10 +81,10 @@
               "150")
       
 
-# parametric t-test works (within-subjects with NAs)
+# parametric t-test works: within-subjects with NAs
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 15
         term   group     statistic df.error  p.value method        alternative
@@ -100,7 +100,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic("t")["Student"] * "(" * 89 * ")" == "3.613", italic(p) == 

@@ -1,4 +1,4 @@
-test_that(desc = "parametric t-tests and ANOVAs", code = {
+test_that("parametric t-tests and ANOVAs", {
   # one-sample t-test (with NAs) ---------
 
   df_1 <- purrr::pmap_dfr(
@@ -36,7 +36,7 @@ test_that(desc = "parametric t-tests and ANOVAs", code = {
 
   df_2_within <- purrr::pmap_dfr(
     .l = list(
-      data = list(filter(bugs_long, condition %in% c("HDHF", "HDLF"))),
+      data = list(bugs_long_two_groups),
       x = "condition",
       y = "desire",
       paired = TRUE,

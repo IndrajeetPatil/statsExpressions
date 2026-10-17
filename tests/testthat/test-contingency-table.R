@@ -1,4 +1,4 @@
-test_that(desc = "contingency_table works", code = {
+test_that("contingency_table works", {
   # contingency tab - without NAs ---------------------------------
 
   df1 <- suppressWarnings(contingency_table(
@@ -35,7 +35,7 @@ test_that(desc = "contingency_table works", code = {
   expect_snapshot(df3[["expression"]])
 })
 
-test_that(desc = "paired contingency_table works", code = {
+test_that("paired contingency_table works", {
   # paired data - without NAs and counts data ----------------------------
 
   paired_data <- dplyr::tibble(
@@ -77,7 +77,7 @@ test_that(desc = "paired contingency_table works", code = {
   expect_snapshot(df2[["expression"]])
 })
 
-test_that(desc = "goodness of fit contingency_table works", code = {
+test_that("goodness of fit contingency_table works", {
   # one-sample test (without NAs) -------------------------------------
 
   df1 <- contingency_table(
@@ -115,7 +115,7 @@ test_that(desc = "goodness of fit contingency_table works", code = {
   expect_null(contingency_table(data.frame(x = "x"), x, type = "bayes"))
 })
 
-test_that(desc = "bayesian (proportion test)", code = {
+test_that("bayesian (proportion test)", {
   set.seed(123)
   df1 <- contingency_table(
     data = mtcars,
@@ -138,7 +138,7 @@ test_that(desc = "bayesian (proportion test)", code = {
   expect_snapshot(df2[["expression"]])
 })
 
-test_that(desc = "bayesian (contingency tab)", code = {
+test_that("bayesian (contingency tab)", {
   # without NAs
   set.seed(123)
   df1 <- contingency_table(

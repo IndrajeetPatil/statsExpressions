@@ -1,6 +1,6 @@
 withr::local_options(list(tibble.width = Inf))
 
-test_that(desc = "long_to_wide_converter works - spread true", code = {
+test_that("long_to_wide_converter works - spread true", {
   skip_if(
     grepl("Under development", R.version$status, fixed = TRUE),
     "Skipping on R-devel due to summary() format changes"
@@ -16,7 +16,7 @@ test_that(desc = "long_to_wide_converter works - spread true", code = {
   expect_snapshot(purrr::map(dfs, summary))
 })
 
-test_that(desc = "long_to_wide_converter works - spread false", code = {
+test_that("long_to_wide_converter works - spread false", {
   dfs <- convert_example_data(spread = FALSE)
 
   expect_snapshot(purrr::walk(dfs, dplyr::glimpse))
@@ -25,7 +25,7 @@ test_that(desc = "long_to_wide_converter works - spread false", code = {
 
 # with .rowid - without NA ---------------------------------------------
 
-test_that(desc = "with .rowid - without NA", code = {
+test_that("with .rowid - without NA", {
   data <- dplyr::tibble(
     score = c(90, 90, 72.5, 45),
     condition = factor(c("4", "5", "5", "4")),
@@ -39,7 +39,7 @@ test_that(desc = "with .rowid - without NA", code = {
 
 # with .rowid - with NA ---------------------------------------------
 
-test_that(desc = "with .rowid - with NA", code = {
+test_that("with .rowid - with NA", {
   convert_without_rowid <- function(...) {
     select(long_to_wide_converter(...), -.rowid)
   }

@@ -1,7 +1,7 @@
-# corr_test works - parametric
+# corr_test works: parametric, with NA
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 13
         parameter1 parameter2 effectsize          estimate conf.level conf.low
@@ -14,7 +14,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic("t")["Student"] * "(" * 46 * ")" == "-1.539", italic(p) == 
@@ -22,10 +22,10 @@
           "[" * "-0.438", "0.020" * "]", italic("n")["pairs"] == "48")
       
 
----
+# corr_test works: parametric, without NA
 
     Code
-      select(df2, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 13
         parameter1 parameter2 effectsize          estimate conf.level conf.low
@@ -38,7 +38,7 @@
 ---
 
     Code
-      df2[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic("t")["Student"] * "(" * 30 * ")" == "-9.559", italic(p) == 
@@ -47,10 +47,10 @@
               "32")
       
 
-# corr_test works - robust
+# corr_test works: robust, with NA
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 13
         parameter1 parameter2  effectsize                     estimate conf.level
@@ -66,7 +66,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic("t")["Student"] * "(" * 54 * ")" == "-4.8286", italic(p) == 
@@ -75,10 +75,10 @@
               "56")
       
 
----
+# corr_test works: robust, without NA
 
     Code
-      select(df2, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 13
         parameter1 parameter2 effectsize                     estimate conf.level
@@ -94,7 +94,7 @@
 ---
 
     Code
-      df2[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic("t")["Student"] * "(" * 30 * ")" == "-9.41", italic(p) == 
@@ -103,10 +103,10 @@
               "32")
       
 
-# corr_test works - nonparametric
+# corr_test works: nonparametric, with NA
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 12
         parameter1 parameter2  effectsize           estimate conf.level conf.low
@@ -119,7 +119,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic("S") == "46627.1234", italic(p) == "1.4262e-06", 
@@ -127,10 +127,10 @@
               "-0.6518", "-0.5283" * "]", italic("n")["pairs"] == "56")
       
 
----
+# corr_test works: nonparametric, without NA
 
     Code
-      select(df2, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 12
         parameter1 parameter2 effectsize           estimate conf.level conf.low
@@ -143,7 +143,7 @@
 ---
 
     Code
-      df2[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic("S") == "10292.3186", italic(p) == "1.4876e-11", 

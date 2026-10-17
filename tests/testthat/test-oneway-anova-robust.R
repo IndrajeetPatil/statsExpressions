@@ -1,4 +1,4 @@
-test_that(desc = "expr_anova_robust works - between-subjects", code = {
+test_that("expr_anova_robust works - between-subjects", {
   set.seed(123)
   df1 <- oneway_anova(
     type = "robust",
@@ -12,7 +12,7 @@ test_that(desc = "expr_anova_robust works - between-subjects", code = {
   )
 
   set.seed(123)
-  df2 <- suppressWarnings(oneway_anova(
+  df2 <- oneway_anova(
     type = "robust",
     data = filter(msleep, vore != "insecti"),
     x = vore,
@@ -21,7 +21,7 @@ test_that(desc = "expr_anova_robust works - between-subjects", code = {
     digits = 4L,
     nboot = 15,
     conf.level = 0.99
-  ))
+  )
 
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
@@ -30,7 +30,7 @@ test_that(desc = "expr_anova_robust works - between-subjects", code = {
   expect_snapshot(df2[["expression"]])
 })
 
-test_that(desc = "expr_anova_robust works - within-subjects", code = {
+test_that("expr_anova_robust works - within-subjects", {
   set.seed(123)
   df1 <- oneway_anova(
     type = "robust",

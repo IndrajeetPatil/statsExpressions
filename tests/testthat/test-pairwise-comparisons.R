@@ -1,6 +1,6 @@
 # between-subjects design --------------------------------------------------
 
-test_that(desc = "`pairwise_comparisons()` works for between-subjects design", code = {
+test_that("`pairwise_comparisons()` works for between-subjects design", {
   # student's t
   df1 <- pairwise_comparisons(
     data = msleep,
@@ -12,7 +12,7 @@ test_that(desc = "`pairwise_comparisons()` works for between-subjects design", c
     p.adjust.method = "bonferroni"
   )
 
-  expect_snapshot(df1)
+  expect_snapshot(dplyr::select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 
   # games-howell, with an empty factor level (shouldn't change results)
@@ -31,7 +31,7 @@ test_that(desc = "`pairwise_comparisons()` works for between-subjects design", c
     p.adjust.method = "bonferroni"
   )
 
-  expect_snapshot(df2)
+  expect_snapshot(dplyr::select(df2, -expression))
   expect_snapshot(df2[["expression"]])
 
   # Dunn test
@@ -44,7 +44,7 @@ test_that(desc = "`pairwise_comparisons()` works for between-subjects design", c
     p.adjust.method = "none"
   )
 
-  expect_snapshot(df3)
+  expect_snapshot(dplyr::select(df3, -expression))
   expect_snapshot(df3[["expression"]])
 
   # robust t test
@@ -57,7 +57,7 @@ test_that(desc = "`pairwise_comparisons()` works for between-subjects design", c
     p.adjust.method = "fdr"
   )
 
-  expect_snapshot(df4)
+  expect_snapshot(dplyr::select(df4, -expression))
   expect_snapshot(df4[["expression"]])
 
   # checking the edge case where factor level names contain `-`
@@ -68,7 +68,7 @@ test_that(desc = "`pairwise_comparisons()` works for between-subjects design", c
     var.equal = TRUE
   )
 
-  expect_snapshot(df5)
+  expect_snapshot(dplyr::select(df5, -expression))
   expect_snapshot(df5[["expression"]])
 
   # games-howell with the default p-value adjustment
@@ -78,13 +78,13 @@ test_that(desc = "`pairwise_comparisons()` works for between-subjects design", c
     y = brainwt
   )
 
-  expect_snapshot(df6)
+  expect_snapshot(dplyr::select(df6, -expression))
   expect_snapshot(df6[["expression"]])
 })
 
 # dropped levels --------------------------------------------------
 
-test_that(desc = "dropped levels are not included", code = {
+test_that("dropped levels are not included", {
   msleep2 <- dplyr::filter(msleep, vore %in% c("carni", "omni"))
 
   df1 <- pairwise_comparisons(
@@ -94,7 +94,7 @@ test_that(desc = "dropped levels are not included", code = {
     p.adjust.method = "none"
   )
 
-  expect_snapshot(df1)
+  expect_snapshot(dplyr::select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 
   df2 <- pairwise_comparisons(
@@ -110,7 +110,7 @@ test_that(desc = "dropped levels are not included", code = {
 
 # data without NAs --------------------------------------------------
 
-test_that(desc = "data without NAs", code = {
+test_that("data without NAs", {
   df <- pairwise_comparisons(
     data = iris,
     x = Species,
@@ -120,7 +120,7 @@ test_that(desc = "data without NAs", code = {
     var.equal = TRUE
   )
 
-  expect_snapshot(df)
+  expect_snapshot(dplyr::select(df, -expression))
   expect_snapshot(df[["expression"]])
 })
 
@@ -140,14 +140,14 @@ patrick::with_parameters_test_that(
       p.adjust.method = p.adjust.method
     )
 
-    expect_snapshot(df)
+    expect_snapshot(dplyr::select(df, -expression))
     expect_snapshot(df[["expression"]])
   },
   .cases = dplyr::tibble(
     data = rep(
       list(
         bugs_long,
-        rename(WRS2::WineTasting, condition = Wine, desire = Taste)
+        dplyr::rename(WRS2::WineTasting, condition = Wine, desire = Taste)
       ),
       each = 3L
     ),
@@ -169,13 +169,13 @@ patrick::with_parameters_test_that(
       paired = TRUE
     )
 
-    expect_snapshot(df)
+    expect_snapshot(dplyr::select(df, -expression))
     expect_snapshot(df[["expression"]])
   },
   .cases = dplyr::tibble(
     data = list(
       bugs_long,
-      rename(WRS2::WineTasting, condition = Wine, desire = Taste)
+      dplyr::rename(WRS2::WineTasting, condition = Wine, desire = Taste)
     ),
     .test_name = c("bugs_long", "WineTasting")
   )
@@ -186,7 +186,12 @@ patrick::with_parameters_test_that(
   {
     expect_subject_id_invariance(
       pairwise_comparisons,
-      rename(WRS2::WineTasting, condition = Wine, score = Taste, id = Taster),
+      dplyr::rename(
+        WRS2::WineTasting,
+        condition = Wine,
+        score = Taste,
+        id = Taster
+      ),
       type = type,
       digits = 3L
     )
@@ -199,64 +204,48 @@ patrick::with_parameters_test_that(
 
 # additional arguments are passed ---------------------------------------
 
-test_that(desc = "additional arguments are passed to underlying methods", code = {
-  df1 <- pairwise_comparisons(
-    data = bugs_long,
-    x = condition,
-    y = desire,
-    paired = TRUE,
-    p.adjust.method = "none",
-    alternative = "less"
+patrick::with_parameters_test_that(
+  "additional arguments are passed to underlying methods:",
+  {
+    # `exec()` inlines the column names, as if they were typed in the call
+    df <- rlang::exec(
+      pairwise_comparisons,
+      data = data,
+      x = x,
+      y = y,
+      paired = paired,
+      var.equal = var.equal,
+      p.adjust.method = "none",
+      alternative = alternative
+    )
+
+    expect_snapshot(dplyr::select(df, -expression))
+    expect_snapshot(df[["expression"]])
+  },
+  .cases = dplyr::mutate(
+    tidyr::expand_grid(
+      dplyr::tibble(
+        design = c("within-subjects", "between-subjects"),
+        data = list(bugs_long, mtcars),
+        x = c("condition", "cyl"),
+        y = c("desire", "wt"),
+        paired = c(TRUE, FALSE),
+        var.equal = c(FALSE, TRUE)
+      ),
+      alternative = c("less", "greater")
+    ),
+    .test_name = paste(design, alternative, sep = ", ")
   )
-
-  expect_snapshot(df1)
-  expect_snapshot(df1[["expression"]])
-
-  df2 <- pairwise_comparisons(
-    data = bugs_long,
-    x = condition,
-    y = desire,
-    paired = TRUE,
-    p.adjust.method = "none",
-    alternative = "greater"
-  )
-
-  expect_snapshot(df2)
-  expect_snapshot(df2[["expression"]])
-
-  df3 <- pairwise_comparisons(
-    data = mtcars,
-    x = cyl,
-    y = wt,
-    var.equal = TRUE,
-    p.adjust.method = "none",
-    alternative = "less"
-  )
-
-  expect_snapshot(df3)
-  expect_snapshot(df3[["expression"]])
-
-  df4 <- pairwise_comparisons(
-    data = mtcars,
-    x = cyl,
-    y = wt,
-    var.equal = TRUE,
-    p.adjust.method = "none",
-    alternative = "greater"
-  )
-
-  expect_snapshot(df4)
-  expect_snapshot(df4[["expression"]])
-})
+)
 
 # grouping names that clash with local variables ----------------------------
 
-test_that(desc = "Bayesian comparisons work with `a` or `b` as grouping name", code = {
+test_that("Bayesian comparisons work with `a` or `b` as grouping name", {
   set.seed(123)
   expected <- pairwise_comparisons(mtcars, cyl, wt, type = "bayes")
 
   for (group in c("a", "b")) {
-    data <- rename(mtcars, !!group := cyl)
+    data <- dplyr::rename(mtcars, !!group := cyl)
 
     set.seed(123)
     df <- pairwise_comparisons(data, !!rlang::sym(group), wt, type = "bayes")

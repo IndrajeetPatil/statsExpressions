@@ -1,4 +1,4 @@
-test_that(desc = "bayesian (independent samples t-test)", code = {
+test_that("bayesian (independent samples t-test)", {
   set.seed(123)
   df <- two_sample_test(
     type = "bayes",
@@ -12,13 +12,11 @@ test_that(desc = "bayesian (independent samples t-test)", code = {
   expect_snapshot(df[["expression"]])
 })
 
-test_that(desc = "bayesian (paired t-test)", code = {
-  dat_tidy <- dplyr::filter(bugs_long, condition %in% c("HDLF", "HDHF"))
-
+test_that("bayesian (paired t-test)", {
   set.seed(123)
   df <- two_sample_test(
     type = "bayes",
-    data = dat_tidy,
+    data = bugs_long_two_groups,
     x = "condition",
     y = desire,
     paired = TRUE,
@@ -29,7 +27,7 @@ test_that(desc = "bayesian (paired t-test)", code = {
   expect_snapshot(df[["expression"]])
 })
 
-test_that(desc = "works with subject id", code = {
+test_that("works with subject id", {
   expect_subject_id_invariance(
     two_sample_test,
     data_with_subid_two_groups,

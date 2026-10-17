@@ -1,4 +1,4 @@
-test_that(desc = "meta_analysis works - robust", code = {
+test_that("meta_analysis works - robust", {
   skip_if_not_installed("metaplus")
 
   df <- meta_analysis(data_meta, type = "robust", random = "normal")
