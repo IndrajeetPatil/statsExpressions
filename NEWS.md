@@ -1,5 +1,10 @@
 # statsExpressions 2.2.0.9000
 
+- `one_sample_test()` with a one-sided `alternative` now also reports a
+  one-sided confidence interval for the parametric and nonparametric effect
+  sizes. Previously the *p*-value was one-sided but the effect size
+  confidence interval was always two-sided, unlike in `two_sample_test()`.
+
 # statsExpressions 2.2.0
 
 - New helper `complete_subjects()` prepares long-format repeated-measures

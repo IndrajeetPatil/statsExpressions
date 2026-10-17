@@ -75,6 +75,7 @@ one_sample_test <- function(
       fns$es,
       x = x_vec,
       mu = test.value,
+      alternative = alternative,
       verbose = FALSE,
       ci = conf.level
     ) |>
