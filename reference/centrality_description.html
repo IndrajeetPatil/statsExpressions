@@ -161,7 +161,8 @@ centrality estimate</p></li>
 <li><p><code>min</code>, <code>max</code>: minimum and maximum values</p></li>
 <li><p><code>skewness</code>, <code>kurtosis</code>: shape statistics of the distribution</p></li>
 <li><p><code>n.obs</code>: number of non-missing observations</p></li>
-<li><p><code>missing.obs</code>: number of missing observations</p></li>
+<li><p><code>missing.obs</code>: number of missing observations after filtering (always
+<code>0</code>, since rows with missing <code>x</code> or <code>y</code> are removed before summarizing)</p></li>
 <li><p><code>expression</code>: a list-column of pre-formatted
 <a href="https://rdrr.io/r/grDevices/plotmath.html" class="external-link">plotmath</a> expressions (each
 element is a <code>language</code> object, not a character string) containing the

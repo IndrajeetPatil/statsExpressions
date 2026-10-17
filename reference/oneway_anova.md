@@ -140,11 +140,9 @@ therefore returns *some* (not all) of the columns below.
 
 - `statistic`: the numeric value of a statistic
 
-- `df`: the numeric value of a parameter being modeled (often degrees of
-  freedom for the test)
-
-- `df.error` and `df`: relevant only if the statistic in question has
-  two degrees of freedom (e.g. anova)
+- `df` and/or `df.error`: degrees of freedom for the test. A *t*-test
+  uses `df.error`, a chi-squared test uses `df`, and a parametric ANOVA
+  uses both (numerator `df` and denominator `df.error`)
 
 - `p.value`: the *p*-value associated with the observed statistic
   (two-sided unless a one-sided `alternative` is requested, where
@@ -198,7 +196,9 @@ and
 
 **Common columns**
 
-- `n.obs`: number of observations
+- `n.obs`: sample size used for the analysis: observations for unpaired
+  tests, complete subjects/pairs for paired two-sample tests and ANOVAs,
+  or studies for meta-analysis
 
 - `expression`: a list-column of pre-formatted
   [plotmath](https://rdrr.io/r/grDevices/plotmath.html) expressions;
@@ -227,7 +227,7 @@ The table below provides summary about:
 
 - functions used internally to compute these details
 
-### between-subjects
+### Between-subjects
 
 **Hypothesis testing**
 
@@ -249,13 +249,12 @@ The table below provides summary about:
 | Robust | \> 2 | Explanatory measure of effect size | Yes | [`WRS2::t1way()`](https://rdrr.io/pkg/WRS2/man/t1way.html) |
 | Bayesian | \> 2 | Bayesian R-squared | Yes | [`performance::r2_bayes()`](https://easystats.github.io/performance/reference/r2_bayes.html) |
 
-### within-subjects
+### Within-subjects
 
-**Data requirement**: Repeated measures tests assume a *complete* design
-with exactly **one observation per subject per condition**. If your data
-has multiple trials per cell, aggregate first (e.g., take the mean).
-Verify with `table(data$subject, data$condition)` — every cell should
-equal `1`.
+**Paired data**: See
+[`complete_subjects()`](https://www.indrapatil.com/statsExpressions/reference/complete_subjects.md)
+for subject matching, duplicate observations, and removal of incomplete
+subjects.
 
 **Hypothesis testing**
 
@@ -295,8 +294,8 @@ library(statsExpressions)
 # between-subjects
 oneway_anova(
   data = mtcars,
-  x    = cyl,
-  y    = wt
+  x = cyl,
+  y = wt
 )
 #> # A tibble: 1 × 14
 #>   statistic    df df.error   p.value
@@ -311,9 +310,9 @@ oneway_anova(
 
 # biased (partial eta-squared) effect size
 oneway_anova(
-  data         = mtcars,
-  x            = cyl,
-  y            = wt,
+  data = mtcars,
+  x = cyl,
+  y = wt,
   effsize.type = "eta"
 )
 #> # A tibble: 1 × 14
@@ -329,12 +328,15 @@ oneway_anova(
 
 # within-subjects design
 oneway_anova(
-  data       = bugs_long,
-  x          = condition,
-  y          = desire,
+  data = bugs_long,
+  x = condition,
+  y = desire,
   subject.id = subject,
-  paired     = TRUE
+  paired = TRUE
 )
+#> Registered S3 method overwritten by 'car':
+#>   method           from
+#>   na.action.merMod lme4
 #> # A tibble: 1 × 18
 #>   term      sumsq sum.squares.error    df df.error meansq statistic  p.value
 #>   <chr>     <dbl>             <dbl> <dbl>    <dbl>  <dbl>     <dbl>    <dbl>
@@ -351,8 +353,8 @@ oneway_anova(
 # between-subjects
 oneway_anova(
   data = mtcars,
-  x    = cyl,
-  y    = wt,
+  x = cyl,
+  y = wt,
   type = "np"
 )
 #> # A tibble: 1 × 15
@@ -368,12 +370,12 @@ oneway_anova(
 
 # within-subjects design
 oneway_anova(
-  data       = bugs_long,
-  x          = condition,
-  y          = desire,
+  data = bugs_long,
+  x = condition,
+  y = desire,
   subject.id = subject,
-  paired     = TRUE,
-  type       = "np"
+  paired = TRUE,
+  type = "np"
 )
 #> # A tibble: 1 × 15
 #>   parameter1 parameter2 statistic df.error  p.value method                
@@ -391,8 +393,8 @@ oneway_anova(
 # between-subjects
 oneway_anova(
   data = mtcars,
-  x    = cyl,
-  y    = wt,
+  x = cyl,
+  y = wt,
   type = "r"
 )
 #> # A tibble: 1 × 12
@@ -411,12 +413,12 @@ oneway_anova(
 
 # within-subjects design
 oneway_anova(
-  data       = bugs_long,
-  x          = condition,
-  y          = desire,
+  data = bugs_long,
+  x = condition,
+  y = desire,
   subject.id = subject,
-  paired     = TRUE,
-  type       = "r"
+  paired = TRUE,
+  type = "r"
 )
 #> # A tibble: 1 × 12
 #>   statistic    df df.error  p.value
@@ -437,8 +439,8 @@ oneway_anova(
 # between-subjects
 oneway_anova(
   data = mtcars,
-  x    = cyl,
-  y    = wt,
+  x = cyl,
+  y = wt,
   type = "bayes"
 )
 #> # A tibble: 6 × 17
@@ -469,12 +471,12 @@ oneway_anova(
 
 # within-subjects design
 oneway_anova(
-  data       = bugs_long,
-  x          = condition,
-  y          = desire,
+  data = bugs_long,
+  x = condition,
+  y = desire,
   subject.id = subject,
-  paired     = TRUE,
-  type       = "bayes"
+  paired = TRUE,
+  type = "bayes"
 )
 #> Multiple `BFBayesFactor` models detected - posteriors are extracted from
 #>   the first numerator model.
@@ -492,14 +494,14 @@ oneway_anova(
 #> 8 g_.rowid       1     cauchy                          0       1     fixed 
 #>          bf10 method                          log_e_bf10 effectsize        
 #>         <dbl> <chr>                                <dbl> <chr>             
-#> 1 1360982795. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 2 1360982795. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 3 1360982795. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 4 1360982795. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 5 1360982795. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 6 1360982795. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 7 1360982795. Bayes factors for linear models       21.0 Bayesian R-squared
-#> 8 1360982795. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 1 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 2 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 3 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 4 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 5 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 6 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 7 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
+#> 8 1360982789. Bayes factors for linear models       21.0 Bayesian R-squared
 #>   estimate std.dev conf.level conf.low conf.high conf.method component   n.obs
 #>      <dbl>   <dbl>      <dbl>    <dbl>     <dbl> <chr>       <chr>       <int>
 #> 1    0.531  0.0323       0.95    0.461     0.587 HDI         conditional    88

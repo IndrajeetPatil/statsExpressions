@@ -152,10 +152,9 @@ functions that accept a <code>type</code> argument, on the chosen analysis (para
 non-parametric, robust, or Bayesian). Any given call therefore returns <em>some</em>
 (not all) of the columns below.</p>
 <p><strong>Hypothesis testing</strong></p><ul><li><p><code>statistic</code>: the numeric value of a statistic</p></li>
-<li><p><code>df</code>: the numeric value of a parameter being modeled (often degrees
-of freedom for the test)</p></li>
-<li><p><code>df.error</code> and <code>df</code>: relevant only if the statistic in question has
-two degrees of freedom (e.g. anova)</p></li>
+<li><p><code>df</code> and/or <code>df.error</code>: degrees of freedom for the test. A <em>t</em>-test
+uses <code>df.error</code>, a chi-squared test uses <code>df</code>, and a parametric ANOVA
+uses both (numerator <code>df</code> and denominator <code>df.error</code>)</p></li>
 <li><p><code>p.value</code>: the <em>p</em>-value associated with the observed statistic (two-sided
 unless a one-sided <code>alternative</code> is requested, where supported)</p></li>
 <li><p><code>method</code>: the name of the inferential statistical test</p></li>
@@ -179,7 +178,9 @@ used to compute the Bayes factor and posterior estimates</p></li>
 <code><a href="pairwise_contingency_table.html">pairwise_contingency_table()</a></code>. Note that <code><a href="pairwise_comparisons.html">pairwise_comparisons()</a></code> instead
 folds the adjusted value into <code>p.value</code> (and does not return a separate
 <code>p.value.adj</code> column)</p></li>
-</ul><p><strong>Common columns</strong></p><ul><li><p><code>n.obs</code>: number of observations</p></li>
+</ul><p><strong>Common columns</strong></p><ul><li><p><code>n.obs</code>: sample size used for the analysis: observations for unpaired
+tests, complete subjects/pairs for paired two-sample tests and ANOVAs,
+or studies for meta-analysis</p></li>
 <li><p><code>expression</code>: a list-column of pre-formatted
 <a href="https://rdrr.io/r/grDevices/plotmath.html" class="external-link">plotmath</a> expressions; each
 element is a <code>language</code> object (not a character string) containing the
@@ -204,7 +205,7 @@ If they are not available, you will be asked to install them.</p>
 <p>The table below provides summary about:</p><ul><li><p>statistical test carried out for inferential statistics</p></li>
 <li><p>type of effect size estimate and a measure of uncertainty for this estimate</p></li>
 <li><p>functions used internally to compute these details</p></li>
-</ul><p><strong>Hypothesis testing</strong> and <strong>Effect size estimation</strong></p><table class="table table"><tr><td>Type</td><td>Test</td><td>Effect size</td><td>CI available?</td><td>Function used</td></tr><tr><td>Parametric</td><td>Meta-analysis via random-effects models</td><td><em>beta</em></td><td>Yes</td><td><code><a href="https://wviechtb.github.io/metafor/reference/rma.uni.html" class="external-link">metafor::rma()</a></code></td></tr><tr><td>Robust</td><td>Meta-analysis via robust random-effects models</td><td><em>beta</em></td><td>Yes</td><td><code><a href="https://rdrr.io/pkg/metaplus/man/metaplus.html" class="external-link">metaplus::metaplus()</a></code></td></tr><tr><td>Bayesian</td><td>Meta-analysis via Bayesian random-effects models</td><td><em>beta</em></td><td>Yes</td><td><code><a href="https://danheck.github.io/metaBMA/reference/meta_random.html" class="external-link">metaBMA::meta_random()</a></code></td></tr></table></div>
+</ul><p><strong>Hypothesis testing and effect size estimation</strong></p><table class="table table"><tr><td>Type</td><td>Test</td><td>Effect size</td><td>CI available?</td><td>Function used</td></tr><tr><td>Parametric</td><td>Meta-analysis via random-effects models</td><td><em>beta</em></td><td>Yes</td><td><code><a href="https://wviechtb.github.io/metafor/reference/rma.uni.html" class="external-link">metafor::rma()</a></code></td></tr><tr><td>Robust</td><td>Meta-analysis via robust random-effects models</td><td><em>beta</em></td><td>Yes</td><td><code><a href="https://rdrr.io/pkg/metaplus/man/metaplus.html" class="external-link">metaplus::metaplus()</a></code></td></tr><tr><td>Bayesian</td><td>Meta-analysis via Bayesian random-effects models</td><td><em>beta</em></td><td>Yes</td><td><code><a href="https://danheck.github.io/metaBMA/reference/meta_random.html" class="external-link">metaBMA::meta_random()</a></code></td></tr></table></div>
     <div class="section level2">
     <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a></h2>
     <p>Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressions with Statistical Details. Journal of Open Source Software, 6(61), 3236, https://doi.org/10.21105/joss.03236</p>

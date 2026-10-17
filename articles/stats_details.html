@@ -115,26 +115,6 @@
 
     
     
-<p>This vignette can be cited as:</p>
-<pre><code>To cite package 'statsExpressions' in publications use:
-
-  Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes
-  and Expressions with Statistical Details. Journal of Open Source
-  Software, 6(61), 3236, https://doi.org/10.21105/joss.03236
-
-A BibTeX entry for LaTeX users is
-
-  @Article{,
-    doi = {10.21105/joss.03236},
-    year = {2021},
-    publisher = {{The Open Journal}},
-    volume = {6},
-    number = {61},
-    pages = {3236},
-    author = {Indrajeet Patil},
-    title = {{statsExpressions: {R} Package for Tidy Dataframes and Expressions with Statistical Details}},
-    journal = {{Journal of Open Source Software}},
-  }</code></pre>
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
@@ -147,9 +127,13 @@ functions used to compute them.</p>
 <div class="section level2">
 <h2 id="data-requirements">Data requirements<a class="anchor" aria-label="anchor" href="#data-requirements"></a>
 </h2>
-<p>All functions expect data in <strong>long (tidy) format</strong> —
-one row per observation. A few additional requirements are worth
-noting:</p>
+<p>The one-sample, group-comparison, correlation, and centrality
+functions expect <strong>long (tidy) data</strong> — one row per
+observation. Contingency-table functions also accept a
+<code>counts</code> column for aggregated frequencies;
+<code><a href="../reference/meta_analysis.html">meta_analysis()</a></code> instead requires <code>estimate</code> and
+<code>std.error</code> columns, with one row per study. A few additional
+requirements are worth noting:</p>
 <ul>
 <li><p><strong>Within-subjects (repeated measures) designs</strong>: The
 data must contain exactly <em>one</em> observation per subject per
@@ -167,108 +151,29 @@ paired tests — even with exactly two conditions and no missing
 values.</p></li>
 <li><p><strong>Missing data</strong>: Missing values are removed
 internally. For within-subjects designs, any subject who has
-<code>NA</code> in <em>any</em> condition is removed entirely, ensuring
-a balanced design is maintained. For between-subjects designs, only the
-rows with <code>NA</code> are removed, unless <code>subject.id</code> is
-also supplied, in which case all rows of a subject with an
-<code>NA</code> are removed.</p></li>
+<code>NA</code> in <em>any</em> condition, or lacks a row in a
+condition, is removed entirely by <code><a href="../reference/complete_subjects.html">complete_subjects()</a></code>,
+ensuring a balanced design is maintained. For between-subjects designs,
+only the rows with <code>NA</code> are removed, unless
+<code>subject.id</code> is also supplied, in which case all rows of a
+subject with an <code>NA</code> are removed.</p></li>
 </ul>
 </div>
 <div class="section level2">
 <h2 id="summary-of-functionality">Summary of functionality<a class="anchor" aria-label="anchor" href="#summary-of-functionality"></a>
 </h2>
-<p><strong>Summary of available analyses</strong></p>
-<table class="table">
-<thead><tr class="header">
-<th align="left">Test</th>
-<th align="left">Function</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">one-sample <em>t</em>-test</td>
-<td align="left"><code><a href="../reference/one_sample_test.html">one_sample_test()</a></code></td>
-</tr>
-<tr class="even">
-<td align="left">two-sample <em>t</em>-test</td>
-<td align="left"><code><a href="../reference/two_sample_test.html">two_sample_test()</a></code></td>
-</tr>
-<tr class="odd">
-<td align="left">one-way ANOVA</td>
-<td align="left"><code><a href="../reference/oneway_anova.html">oneway_anova()</a></code></td>
-</tr>
-<tr class="even">
-<td align="left">correlation analysis</td>
-<td align="left"><code><a href="../reference/corr_test.html">corr_test()</a></code></td>
-</tr>
-<tr class="odd">
-<td align="left">contingency table analysis</td>
-<td align="left"><code><a href="../reference/contingency_table.html">contingency_table()</a></code></td>
-</tr>
-<tr class="even">
-<td align="left">meta-analysis</td>
-<td align="left"><code><a href="../reference/meta_analysis.html">meta_analysis()</a></code></td>
-</tr>
-<tr class="odd">
-<td align="left">pairwise comparisons</td>
-<td align="left"><code><a href="../reference/pairwise_comparisons.html">pairwise_comparisons()</a></code></td>
-</tr>
-<tr class="even">
-<td align="left">pairwise contingency table</td>
-<td align="left"><code><a href="../reference/pairwise_contingency_table.html">pairwise_contingency_table()</a></code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Summary of details available for analyses</strong></p>
 <table class="table">
 <colgroup>
-<col width="43%">
+<col width="14%">
+<col width="14%">
+<col width="18%">
 <col width="25%">
-<col width="30%">
-</colgroup>
-<thead><tr class="header">
-<th align="left">Analysis</th>
-<th align="left">Hypothesis testing</th>
-<th align="left">Effect size estimation</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">(one/two-sample) <em>t</em>-test</td>
-<td align="left">✅</td>
-<td align="left">✅</td>
-</tr>
-<tr class="even">
-<td align="left">one-way ANOVA</td>
-<td align="left">✅</td>
-<td align="left">✅</td>
-</tr>
-<tr class="odd">
-<td align="left">correlation</td>
-<td align="left">✅</td>
-<td align="left">✅</td>
-</tr>
-<tr class="even">
-<td align="left">(one/two-way) contingency table</td>
-<td align="left">✅</td>
-<td align="left">✅</td>
-</tr>
-<tr class="odd">
-<td align="left">random-effects meta-analysis</td>
-<td align="left">✅</td>
-<td align="left">✅</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Summary of supported statistical approaches</strong></p>
-<table class="table">
-<colgroup>
-<col width="56%">
 <col width="11%">
-<col width="16%">
-<col width="6%">
-<col width="9%">
+<col width="14%">
 </colgroup>
 <thead><tr class="header">
-<th align="left">Description</th>
+<th align="left">Function</th>
+<th align="left">Analysis</th>
 <th align="left">Parametric</th>
 <th align="left">Non-parametric</th>
 <th align="left">Robust</th>
@@ -276,59 +181,78 @@ also supplied, in which case all rows of a subject with an
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">Between group/condition comparisons</td>
+<td align="left"><code><a href="../reference/one_sample_test.html">one_sample_test()</a></code></td>
+<td align="left">one-sample test</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 </tr>
 <tr class="even">
-<td align="left">Within group/condition comparisons</td>
+<td align="left"><code><a href="../reference/two_sample_test.html">two_sample_test()</a></code></td>
+<td align="left">two-sample test</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 </tr>
 <tr class="odd">
-<td align="left">Distribution of a numeric variable</td>
+<td align="left"><code><a href="../reference/oneway_anova.html">oneway_anova()</a></code></td>
+<td align="left">one-way ANOVA</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 </tr>
 <tr class="even">
-<td align="left">Correlation between two variables</td>
+<td align="left"><code><a href="../reference/corr_test.html">corr_test()</a></code></td>
+<td align="left">correlation</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 </tr>
 <tr class="odd">
-<td align="left">Association between categorical variables</td>
+<td align="left"><code><a href="../reference/contingency_table.html">contingency_table()</a></code></td>
+<td align="left">one- or two-way contingency table</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">❌</td>
 <td align="left">✅</td>
 </tr>
 <tr class="even">
-<td align="left">Equal proportions for categorical variable levels</td>
-<td align="left">✅</td>
+<td align="left"><code><a href="../reference/meta_analysis.html">meta_analysis()</a></code></td>
+<td align="left">random-effects meta-analysis</td>
 <td align="left">✅</td>
 <td align="left">❌</td>
+<td align="left">✅</td>
 <td align="left">✅</td>
 </tr>
 <tr class="odd">
-<td align="left">Random-effects meta-analysis</td>
+<td align="left"><code><a href="../reference/pairwise_comparisons.html">pairwise_comparisons()</a></code></td>
+<td align="left">pairwise group comparisons</td>
 <td align="left">✅</td>
-<td align="left">❌</td>
+<td align="left">✅</td>
+<td align="left">✅</td>
+<td align="left">✅</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="../reference/centrality_description.html">centrality_description()</a></code></td>
+<td align="left">centrality and distribution</td>
+<td align="left">✅</td>
+<td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 </tr>
 </tbody>
 </table>
 <p>❌ means that no dedicated analysis of that type exists. For
-contingency tables, <code>type = "robust"</code> is still accepted and
-falls back to the parametric tests.</p>
+contingency tables, <code>type = "nonparametric"</code> and
+<code>type = "robust"</code> both use the same frequentist tests as
+<code>type = "parametric"</code>.</p>
+<p><code><a href="../reference/pairwise_contingency_table.html">pairwise_contingency_table()</a></code> provides pairwise Fisher’s
+exact tests with Cramer’s <em>V</em> effect sizes. It does not have a
+<code>type</code> argument.</p>
 </div>
 <div class="section level2">
 <h2 id="summary-of-tests-and-effect-sizes">Summary of tests and effect sizes<a class="anchor" aria-label="anchor" href="#summary-of-tests-and-effect-sizes"></a>
@@ -384,7 +308,7 @@ for example, if you want to know more about how the one-way
 <code>oneway_anova()</code><a class="anchor" aria-label="anchor" href="#oneway_anova"></a>
 </h3>
 <div class="section level4">
-<h4 id="between-subjects">between-subjects<a class="anchor" aria-label="anchor" href="#between-subjects"></a>
+<h4 id="between-subjects">Between-subjects<a class="anchor" aria-label="anchor" href="#between-subjects"></a>
 </h4>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
@@ -479,14 +403,11 @@ for example, if you want to know more about how the one-way
 </table>
 </div>
 <div class="section level4">
-<h4 id="within-subjects">within-subjects<a class="anchor" aria-label="anchor" href="#within-subjects"></a>
+<h4 id="within-subjects">Within-subjects<a class="anchor" aria-label="anchor" href="#within-subjects"></a>
 </h4>
-<p><strong>Data requirement</strong>: Repeated measures tests assume a
-<em>complete</em> design with exactly <strong>one observation per
-subject per condition</strong>. If your data has multiple trials per
-cell, aggregate first (e.g., take the mean). Verify with
-<code>table(data$subject, data$condition)</code> — every cell should
-equal <code>1</code>.</p>
+<p><strong>Paired data</strong>: See <code><a href="../reference/complete_subjects.html">complete_subjects()</a></code>
+for subject matching, duplicate observations, and removal of incomplete
+subjects.</p>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <colgroup>
@@ -587,7 +508,7 @@ average</td>
 <code>two_sample_test()</code><a class="anchor" aria-label="anchor" href="#two_sample_test"></a>
 </h3>
 <div class="section level4">
-<h4 id="between-subjects-1">between-subjects<a class="anchor" aria-label="anchor" href="#between-subjects-1"></a>
+<h4 id="between-subjects-1">Between-subjects<a class="anchor" aria-label="anchor" href="#between-subjects-1"></a>
 </h4>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
@@ -685,11 +606,11 @@ difference</td>
 </table>
 </div>
 <div class="section level4">
-<h4 id="within-subjects-1">within-subjects<a class="anchor" aria-label="anchor" href="#within-subjects-1"></a>
+<h4 id="within-subjects-1">Within-subjects<a class="anchor" aria-label="anchor" href="#within-subjects-1"></a>
 </h4>
-<p><strong>Data requirement</strong>: Paired tests assume exactly
-<strong>one observation per subject per condition</strong>. If your data
-has multiple trials per cell, aggregate first (e.g., take the mean).</p>
+<p><strong>Paired data</strong>: See <code><a href="../reference/complete_subjects.html">complete_subjects()</a></code>
+for subject matching, duplicate observations, and removal of incomplete
+subjects.</p>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <colgroup>
@@ -876,8 +797,7 @@ difference</td>
 <h3 id="corr_test">
 <code>corr_test()</code><a class="anchor" aria-label="anchor" href="#corr_test"></a>
 </h3>
-<p><strong>Hypothesis testing</strong> and <strong>Effect size
-estimation</strong></p>
+<p><strong>Hypothesis testing and effect size estimation</strong></p>
 <table class="table">
 <colgroup>
 <col width="14%">
@@ -929,7 +849,7 @@ analyses. <code>type = "nonparametric"</code> and
 tests as <code>type = "parametric"</code> (the
 “Parametric/Non-parametric” rows below).</p>
 <div class="section level4">
-<h4 id="two-way-table">two-way table<a class="anchor" aria-label="anchor" href="#two-way-table"></a>
+<h4 id="two-way-table">Two-way table<a class="anchor" aria-label="anchor" href="#two-way-table"></a>
 </h4>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
@@ -1027,7 +947,7 @@ tests as <code>type = "parametric"</code> (the
 and the unpaired Bayesian test is run instead.</p>
 </div>
 <div class="section level4">
-<h4 id="one-way-table">one-way table<a class="anchor" aria-label="anchor" href="#one-way-table"></a>
+<h4 id="one-way-table">One-way table<a class="anchor" aria-label="anchor" href="#one-way-table"></a>
 </h4>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
@@ -1091,7 +1011,7 @@ and the unpaired Bayesian test is run instead.</p>
 <code>pairwise_comparisons()</code><a class="anchor" aria-label="anchor" href="#pairwise_comparisons"></a>
 </h3>
 <div class="section level4">
-<h4 id="between-subjects-2">between-subjects<a class="anchor" aria-label="anchor" href="#between-subjects-2"></a>
+<h4 id="between-subjects-2">Between-subjects<a class="anchor" aria-label="anchor" href="#between-subjects-2"></a>
 </h4>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
@@ -1152,12 +1072,11 @@ and the unpaired Bayesian test is run instead.</p>
 <p>Not supported.</p>
 </div>
 <div class="section level4">
-<h4 id="within-subjects-2">within-subjects<a class="anchor" aria-label="anchor" href="#within-subjects-2"></a>
+<h4 id="within-subjects-2">Within-subjects<a class="anchor" aria-label="anchor" href="#within-subjects-2"></a>
 </h4>
-<p><strong>Data requirement</strong>: Paired pairwise tests assume
-exactly <strong>one observation per subject per condition</strong>. If
-your data has multiple trials per cell, aggregate first (e.g., take the
-mean).</p>
+<p><strong>Paired data</strong>: See <code><a href="../reference/complete_subjects.html">complete_subjects()</a></code>
+for subject matching, duplicate observations, and removal of incomplete
+subjects.</p>
 <p><strong>Hypothesis testing</strong></p>
 <table class="table">
 <colgroup>
@@ -1241,8 +1160,7 @@ mean).</p>
 <h3 id="meta_analysis">
 <code>meta_analysis()</code><a class="anchor" aria-label="anchor" href="#meta_analysis"></a>
 </h3>
-<p><strong>Hypothesis testing</strong> and <strong>Effect size
-estimation</strong></p>
+<p><strong>Hypothesis testing and effect size estimation</strong></p>
 <table class="table">
 <colgroup>
 <col width="9%">
@@ -1305,6 +1223,29 @@ different rules/conventions to interpret effect sizes:</p>
 </h2>
 <p>If you find any bugs or have any suggestions/remarks, please file an
 issue on GitHub: <a href="https://github.com/IndrajeetPatil/statsExpressions/issues" class="external-link uri">https://github.com/IndrajeetPatil/statsExpressions/issues</a></p>
+</div>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
+<pre><code>To cite package 'statsExpressions' in publications use:
+
+  Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes
+  and Expressions with Statistical Details. Journal of Open Source
+  Software, 6(61), 3236, https://doi.org/10.21105/joss.03236
+
+A BibTeX entry for LaTeX users is
+
+  @Article{,
+    doi = {10.21105/joss.03236},
+    year = {2021},
+    publisher = {{The Open Journal}},
+    volume = {6},
+    number = {61},
+    pages = {3236},
+    author = {Indrajeet Patil},
+    title = {{statsExpressions: {R} Package for Tidy Dataframes and Expressions with Statistical Details}},
+    journal = {{Journal of Open Source Software}},
+  }</code></pre>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

@@ -1,27 +1,5 @@
 # statsExpressions: R Package for Tidy Dataframes and Expressions with Statistical Details
 
-This vignette can be cited as:
-
-    To cite package 'statsExpressions' in publications use:
-
-      Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes
-      and Expressions with Statistical Details. Journal of Open Source
-      Software, 6(61), 3236, https://doi.org/10.21105/joss.03236
-
-    A BibTeX entry for LaTeX users is
-
-      @Article{,
-        doi = {10.21105/joss.03236},
-        year = {2021},
-        publisher = {{The Open Journal}},
-        volume = {6},
-        number = {61},
-        pages = {3236},
-        author = {Indrajeet Patil},
-        title = {{statsExpressions: {R} Package for Tidy Dataframes and Expressions with Statistical Details}},
-        journal = {{Journal of Open Source Software}},
-      }
-
 ## Summary
 
 The [statsExpressions](https://www.indrapatil.com/statsExpressions/)
@@ -34,7 +12,7 @@ approaches and tests: parametric, nonparametric, robust, and Bayesian
 analyses, and meta-analyses. The functions are pipe-friendly and
 compatible with tidy data.
 
-## Statement of Need
+## Statement of need
 
 Statistical packages exhibit substantial diversity in terms of their
 syntax and expected input and output data type. For example, some
@@ -57,7 +35,7 @@ in: It can be thought of as a unified portal through which most of the
 functionality in these underlying packages can be accessed, with a
 simpler interface and with tidy data format.
 
-## Comparison to Other Packages
+## Comparison to other packages
 
 Unlike [broom](https://broom.tidymodels.org/) ([Robinson, Hayes, &
 Couch, 2021](#ref-Robinson2021)) or
@@ -69,7 +47,7 @@ to convert model objects into tidy data frames, but to provide a
 consistent and easy syntax to carry out statistical tests. Additionally,
 none of these packages return statistical expressions.
 
-## Consistent Syntax for Statistical Analysis
+## Consistent syntax for statistical analysis
 
 The package offers functions that allow users to choose a statistical
 approach without changing the syntax (i.e., by only specifying a single
@@ -78,20 +56,28 @@ argument). The functions always require a data frame in tidy format
 Moreover, they always return a data frame that can be further utilized
 downstream in the workflow (such as visualization).
 
-| Function            | Parametric | Non-parametric | Robust | Bayesian |
-|:--------------------|:-----------|:---------------|:-------|:---------|
-| `one_sample_test`   | ✅         | ✅             | ✅     | ✅       |
-| `two_sample_test`   | ✅         | ✅             | ✅     | ✅       |
-| `oneway_anova`      | ✅         | ✅             | ✅     | ✅       |
-| `corr_test`         | ✅         | ✅             | ✅     | ✅       |
-| `contingency_table` | ✅         | ✅             | \-     | ✅       |
-| `meta_analysis`     | ✅         | \-             | ✅     | ✅       |
+| Function | Analysis | Parametric | Non-parametric | Robust | Bayesian |
+|:---|:---|:---|:---|:---|:---|
+| [`one_sample_test()`](https://www.indrapatil.com/statsExpressions/reference/one_sample_test.md) | one-sample test | ✅ | ✅ | ✅ | ✅ |
+| [`two_sample_test()`](https://www.indrapatil.com/statsExpressions/reference/two_sample_test.md) | two-sample test | ✅ | ✅ | ✅ | ✅ |
+| [`oneway_anova()`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md) | one-way ANOVA | ✅ | ✅ | ✅ | ✅ |
+| [`corr_test()`](https://www.indrapatil.com/statsExpressions/reference/corr_test.md) | correlation | ✅ | ✅ | ✅ | ✅ |
+| [`contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md) | one- or two-way contingency table | ✅ | ✅ | ❌ | ✅ |
+| [`meta_analysis()`](https://www.indrapatil.com/statsExpressions/reference/meta_analysis.md) | random-effects meta-analysis | ✅ | ❌ | ✅ | ✅ |
+| [`pairwise_comparisons()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md) | pairwise group comparisons | ✅ | ✅ | ✅ | ✅ |
+| [`centrality_description()`](https://www.indrapatil.com/statsExpressions/reference/centrality_description.md) | centrality and distribution | ✅ | ✅ | ✅ | ✅ |
 
-A summary table listing the primary functions in the package and the
-statistical approaches they support. More detailed description of the
-tests and outputs from these functions can be found on the package
-website: <https://www.indrapatil.com/statsExpressions/articles/>.
-{.table}
+❌ means that no dedicated analysis of that type exists. For contingency
+tables, `type = "nonparametric"` and `type = "robust"` both use the same
+frequentist tests as `type = "parametric"`.
+
+[`pairwise_contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_contingency_table.md)
+provides pairwise Fisher’s exact tests with Cramer’s *V* effect sizes.
+It does not have a `type` argument.
+
+For the tests, effect sizes, and underlying functions used by each
+analysis, see [Test and effect size
+details](https://www.indrapatil.com/statsExpressions/articles/stats_details.html).
 
 [statsExpressions](https://www.indrapatil.com/statsExpressions/)
 internally relies on `{stats}` package for parametric and non-parametric
@@ -116,7 +102,7 @@ Ben-Shachar, Patil, & Lüdecke, 2020](#ref-Makowski2020)) to compute
 appropriate effect size/posterior estimates and their
 confidence/credible intervals.
 
-## Tidy Dataframes from Statistical Analysis
+## Tidy dataframes from statistical analysis
 
 To illustrate the simplicity of this syntax, let’s say we want to run a
 one-way ANOVA. If we first run a non-parametric ANOVA and then decide to
@@ -171,7 +157,7 @@ repeat the same statistical analysis across grouping variables.
 `#> ``# ℹ 5 more variables: conf.high <dbl>, conf.method <chr>,`\
 `#> ``#   conf.distribution <chr>, n.obs <int>, expression <list>`
 
-## Custom Statistical Workflows
+## Custom statistical workflows
 
 ### Pairwise comparisons with automatic *p*-value adjustment
 
@@ -235,45 +221,21 @@ across all comparisons:
 `#> ``2`` r (rank biserial)                                          ``0.``866 ``0.000``0``86``9`\
 `#> ``3`` Algina-Keselman-Penfield robust standardized difference    2.48  ``0.000``0``86``9`
 
-### Generating formatted expressions from custom results
+Changing `p.value` after a test does not update its existing
+`expression` column. The example selects the adjusted numeric results
+only; the original expressions still contain the unadjusted *p*-values.
 
-The
+### Expressions from model results
+
+For a fitted model, use
+[`tidy_model_parameters()`](https://www.indrapatil.com/statsExpressions/reference/tidy_model_parameters.md)
+to extract a tidy data frame, then
+[`tidy_model_expressions()`](https://www.indrapatil.com/statsExpressions/reference/tidy_model_expressions.md)
+to add plotmath expressions. The lower-level
 [`add_expression_col()`](https://www.indrapatil.com/statsExpressions/reference/add_expression_col.md)
-function creates publication-ready plotmath expressions from any data
-frame containing statistical details. This is useful when you run your
-own tests outside
-[statsExpressions](https://www.indrapatil.com/statsExpressions/) and
-want to generate a formatted expression for plot annotations. Note that
-this helper is not yet stable, so its interface may change in future
-releases:
+helper is intended for internal use and its interface is not stable.
 
-\
-`# suppose you have run your own statistical test`\
-`custom_stats`` ``<-`` `[`cbind.data.frame`](https://rdrr.io/r/base/cbind.html)`(`\
-`  statistic  ``=`` ``2.18``,`\
-`  df         ``=`` ``18``,`\
-`  p.value    ``=`` ``0.041``,`\
-`  estimate   ``=`` ``0.65``,`\
-`  conf.level ``=`` ``0.95``,`\
-`  conf.low   ``=`` ``0.03``,`\
-`  conf.high  ``=`` ``1.27``,`\
-`  method     ``=`` ``"Student's t-test"`\
-`)`\
-\
-`# generate a formatted expression`\
-[`add_expression_col`](https://www.indrapatil.com/statsExpressions/reference/add_expression_col.md)`(`\
-`  data           ``=`` ``custom_stats``,`\
-`  statistic.text ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`[`quote`](https://rdrr.io/r/base/substitute.html)`(``italic``(``"t"``)``)``)``,`\
-`  effsize.text   ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`[`quote`](https://rdrr.io/r/base/substitute.html)`(``italic``(``"d"``)``[``"Cohen"``]``)``)``,`\
-`  n              ``=`` ``20L``,`\
-`  digits         ``=`` ``2L``,`\
-`  digits.df      ``=`` ``0L`\
-`)``$``expression``[[``1``]``]`\
-`#> list(italic("t") * "(" * 18 * ")" == "2.18", italic(p) == "0.04", `\
-`#>     italic("d")["Cohen"] == "0.65", CI["95%"] ~ "[" * "0.03", `\
-`#>     "1.27" * "]", italic("n")["obs"] == "20")`
-
-## Expressions for Plots
+## Expressions for plots
 
 In addition to other details contained in the data frame, there is also
 a column titled `expression`, which contains a pre-formatted text with
@@ -346,7 +308,7 @@ Example illustrating how
 functions can be used to display results from a statistical test in a
 plot.
 
-## Licensing and Availability
+## Licensing and availability
 
 [statsExpressions](https://www.indrapatil.com/statsExpressions/) is
 licensed under the MIT License, with all source code stored at
@@ -447,3 +409,25 @@ Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D.,
 François, R., Grolemund, G., et al. (2019). Welcome to the tidyverse.
 *Journal of Open Source Software*, *4*(43), 1686.
 doi:[10.21105/joss.01686](https://doi.org/10.21105/joss.01686)
+
+## Citation
+
+    To cite package 'statsExpressions' in publications use:
+
+      Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes
+      and Expressions with Statistical Details. Journal of Open Source
+      Software, 6(61), 3236, https://doi.org/10.21105/joss.03236
+
+    A BibTeX entry for LaTeX users is
+
+      @Article{,
+        doi = {10.21105/joss.03236},
+        year = {2021},
+        publisher = {{The Open Journal}},
+        volume = {6},
+        number = {61},
+        pages = {3236},
+        author = {Indrajeet Patil},
+        title = {{statsExpressions: {R} Package for Tidy Dataframes and Expressions with Statistical Details}},
+        journal = {{Journal of Open Source Software}},
+      }

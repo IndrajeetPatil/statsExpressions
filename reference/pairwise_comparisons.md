@@ -144,11 +144,9 @@ therefore returns *some* (not all) of the columns below.
 
 - `statistic`: the numeric value of a statistic
 
-- `df`: the numeric value of a parameter being modeled (often degrees of
-  freedom for the test)
-
-- `df.error` and `df`: relevant only if the statistic in question has
-  two degrees of freedom (e.g. anova)
+- `df` and/or `df.error`: degrees of freedom for the test. A *t*-test
+  uses `df.error`, a chi-squared test uses `df`, and a parametric ANOVA
+  uses both (numerator `df` and denominator `df.error`)
 
 - `p.value`: the *p*-value associated with the observed statistic
   (two-sided unless a one-sided `alternative` is requested, where
@@ -198,7 +196,9 @@ therefore returns *some* (not all) of the columns below.
 
 **Common columns**
 
-- `n.obs`: number of observations
+- `n.obs`: sample size used for the analysis: observations for unpaired
+  tests, complete subjects/pairs for paired two-sample tests and ANOVAs,
+  or studies for meta-analysis
 
 - `expression`: a list-column of pre-formatted
   [plotmath](https://rdrr.io/r/grDevices/plotmath.html) expressions;
@@ -227,7 +227,7 @@ The table below provides summary about:
 
 - functions used internally to compute these details
 
-### between-subjects
+### Between-subjects
 
 **Hypothesis testing**
 
@@ -244,11 +244,12 @@ The table below provides summary about:
 
 Not supported.
 
-### within-subjects
+### Within-subjects
 
-**Data requirement**: Paired pairwise tests assume exactly **one
-observation per subject per condition**. If your data has multiple
-trials per cell, aggregate first (e.g., take the mean).
+**Paired data**: See
+[`complete_subjects()`](https://www.indrapatil.com/statsExpressions/reference/complete_subjects.md)
+for subject matching, duplicate observations, and removal of incomplete
+subjects.
 
 **Hypothesis testing**
 
@@ -287,12 +288,12 @@ library(statsExpressions)
 # parametric
 # if `var.equal = TRUE`, then Student's t-test will be run
 pairwise_comparisons(
-  data            = mtcars,
-  x               = cyl,
-  y               = wt,
-  type            = "parametric",
-  var.equal       = TRUE,
-  paired          = FALSE,
+  data = mtcars,
+  x = cyl,
+  y = wt,
+  type = "parametric",
+  var.equal = TRUE,
+  paired = FALSE,
   p.adjust.method = "none"
 )
 #> # A tibble: 3 × 6
@@ -304,12 +305,12 @@ pairwise_comparisons(
 
 # if `var.equal = FALSE`, then Games-Howell test will be run
 pairwise_comparisons(
-  data            = mtcars,
-  x               = cyl,
-  y               = wt,
-  type            = "parametric",
-  var.equal       = FALSE,
-  paired          = FALSE,
+  data = mtcars,
+  x = cyl,
+  y = wt,
+  type = "parametric",
+  var.equal = FALSE,
+  paired = FALSE,
   p.adjust.method = "bonferroni"
 )
 #> # A tibble: 3 × 9
@@ -326,11 +327,11 @@ pairwise_comparisons(
 
 # non-parametric (Dunn test)
 pairwise_comparisons(
-  data            = mtcars,
-  x               = cyl,
-  y               = wt,
-  type            = "nonparametric",
-  paired          = FALSE,
+  data = mtcars,
+  x = cyl,
+  y = wt,
+  type = "nonparametric",
+  paired = FALSE,
   p.adjust.method = "none"
 )
 #> # A tibble: 3 × 9
@@ -347,11 +348,11 @@ pairwise_comparisons(
 
 # robust (Yuen's trimmed means *t*-test)
 pairwise_comparisons(
-  data            = mtcars,
-  x               = cyl,
-  y               = wt,
-  type            = "robust",
-  paired          = FALSE,
+  data = mtcars,
+  x = cyl,
+  y = wt,
+  type = "robust",
+  paired = FALSE,
   p.adjust.method = "fdr"
 )
 #> # A tibble: 3 × 10
@@ -368,10 +369,10 @@ pairwise_comparisons(
 
 # Bayes Factor (Student's *t*-test)
 pairwise_comparisons(
-  data   = mtcars,
-  x      = cyl,
-  y      = wt,
-  type   = "bayes",
+  data = mtcars,
+  x = cyl,
+  y = wt,
+  type = "bayes",
   paired = FALSE
 )
 #> # A tibble: 3 × 18
@@ -395,12 +396,12 @@ pairwise_comparisons(
 
 # parametric (Student's *t*-test)
 pairwise_comparisons(
-  data            = bugs_long,
-  x               = condition,
-  y               = desire,
-  subject.id      = subject,
-  type            = "parametric",
-  paired          = TRUE,
+  data = bugs_long,
+  x = condition,
+  y = desire,
+  subject.id = subject,
+  type = "parametric",
+  paired = TRUE,
   p.adjust.method = "BH"
 )
 #> # A tibble: 6 × 6
@@ -415,12 +416,12 @@ pairwise_comparisons(
 
 # non-parametric (Durbin-Conover test)
 pairwise_comparisons(
-  data            = bugs_long,
-  x               = condition,
-  y               = desire,
-  subject.id      = subject,
-  type            = "nonparametric",
-  paired          = TRUE,
+  data = bugs_long,
+  x = condition,
+  y = desire,
+  subject.id = subject,
+  type = "nonparametric",
+  paired = TRUE,
   p.adjust.method = "BY"
 )
 #> # A tibble: 6 × 9
@@ -443,12 +444,12 @@ pairwise_comparisons(
 
 # robust (Yuen's trimmed means *t*-test)
 pairwise_comparisons(
-  data            = bugs_long,
-  x               = condition,
-  y               = desire,
-  subject.id      = subject,
-  type            = "robust",
-  paired          = TRUE,
+  data = bugs_long,
+  x = condition,
+  y = desire,
+  subject.id = subject,
+  type = "robust",
+  paired = TRUE,
   p.adjust.method = "hommel"
 )
 #> # A tibble: 6 × 11
@@ -471,12 +472,12 @@ pairwise_comparisons(
 
 # Bayes Factor (Student's *t*-test)
 pairwise_comparisons(
-  data       = bugs_long,
-  x          = condition,
-  y          = desire,
+  data = bugs_long,
+  x = condition,
+  y = desire,
   subject.id = subject,
-  type       = "bayes",
-  paired     = TRUE
+  type = "bayes",
+  paired = TRUE
 )
 #> # A tibble: 6 × 18
 #>   group1 group2 term       effectsize      estimate conf.level conf.low

@@ -1,27 +1,5 @@
 # Test and effect size details
 
-This vignette can be cited as:
-
-    To cite package 'statsExpressions' in publications use:
-
-      Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes
-      and Expressions with Statistical Details. Journal of Open Source
-      Software, 6(61), 3236, https://doi.org/10.21105/joss.03236
-
-    A BibTeX entry for LaTeX users is
-
-      @Article{,
-        doi = {10.21105/joss.03236},
-        year = {2021},
-        publisher = {{The Open Journal}},
-        volume = {6},
-        number = {61},
-        pages = {3236},
-        author = {Indrajeet Patil},
-        title = {{statsExpressions: {R} Package for Tidy Dataframes and Expressions with Statistical Details}},
-        journal = {{Journal of Open Source Software}},
-      }
-
 ## Introduction
 
 This article describes the data that
@@ -34,8 +12,12 @@ Abbreviations used: CI = Confidence Interval
 
 ## Data requirements
 
-All functions expect data in **long (tidy) format** — one row per
-observation. A few additional requirements are worth noting:
+The one-sample, group-comparison, correlation, and centrality functions
+expect **long (tidy) data** — one row per observation. Contingency-table
+functions also accept a `counts` column for aggregated frequencies;
+[`meta_analysis()`](https://www.indrapatil.com/statsExpressions/reference/meta_analysis.md)
+instead requires `estimate` and `std.error` columns, with one row per
+study. A few additional requirements are worth noting:
 
 - **Within-subjects (repeated measures) designs**: The data must contain
   exactly *one* observation per subject per condition (a complete,
@@ -52,52 +34,34 @@ observation. A few additional requirements are worth noting:
   missing values.
 
 - **Missing data**: Missing values are removed internally. For
-  within-subjects designs, any subject who has `NA` in *any* condition
-  is removed entirely, ensuring a balanced design is maintained. For
-  between-subjects designs, only the rows with `NA` are removed, unless
-  `subject.id` is also supplied, in which case all rows of a subject
-  with an `NA` are removed.
+  within-subjects designs, any subject who has `NA` in *any* condition,
+  or lacks a row in a condition, is removed entirely by
+  [`complete_subjects()`](https://www.indrapatil.com/statsExpressions/reference/complete_subjects.md),
+  ensuring a balanced design is maintained. For between-subjects
+  designs, only the rows with `NA` are removed, unless `subject.id` is
+  also supplied, in which case all rows of a subject with an `NA` are
+  removed.
 
 ## Summary of functionality
 
-**Summary of available analyses**
-
-| Test | Function |
-|:---|:---|
-| one-sample *t*-test | [`one_sample_test()`](https://www.indrapatil.com/statsExpressions/reference/one_sample_test.md) |
-| two-sample *t*-test | [`two_sample_test()`](https://www.indrapatil.com/statsExpressions/reference/two_sample_test.md) |
-| one-way ANOVA | [`oneway_anova()`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md) |
-| correlation analysis | [`corr_test()`](https://www.indrapatil.com/statsExpressions/reference/corr_test.md) |
-| contingency table analysis | [`contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md) |
-| meta-analysis | [`meta_analysis()`](https://www.indrapatil.com/statsExpressions/reference/meta_analysis.md) |
-| pairwise comparisons | [`pairwise_comparisons()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md) |
-| pairwise contingency table | [`pairwise_contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_contingency_table.md) |
-
-**Summary of details available for analyses**
-
-| Analysis                        | Hypothesis testing | Effect size estimation |
-|:--------------------------------|:-------------------|:-----------------------|
-| (one/two-sample) *t*-test       | ✅                 | ✅                     |
-| one-way ANOVA                   | ✅                 | ✅                     |
-| correlation                     | ✅                 | ✅                     |
-| (one/two-way) contingency table | ✅                 | ✅                     |
-| random-effects meta-analysis    | ✅                 | ✅                     |
-
-**Summary of supported statistical approaches**
-
-| Description | Parametric | Non-parametric | Robust | Bayesian |
-|:---|:---|:---|:---|:---|
-| Between group/condition comparisons | ✅ | ✅ | ✅ | ✅ |
-| Within group/condition comparisons | ✅ | ✅ | ✅ | ✅ |
-| Distribution of a numeric variable | ✅ | ✅ | ✅ | ✅ |
-| Correlation between two variables | ✅ | ✅ | ✅ | ✅ |
-| Association between categorical variables | ✅ | ✅ | ❌ | ✅ |
-| Equal proportions for categorical variable levels | ✅ | ✅ | ❌ | ✅ |
-| Random-effects meta-analysis | ✅ | ❌ | ✅ | ✅ |
+| Function | Analysis | Parametric | Non-parametric | Robust | Bayesian |
+|:---|:---|:---|:---|:---|:---|
+| [`one_sample_test()`](https://www.indrapatil.com/statsExpressions/reference/one_sample_test.md) | one-sample test | ✅ | ✅ | ✅ | ✅ |
+| [`two_sample_test()`](https://www.indrapatil.com/statsExpressions/reference/two_sample_test.md) | two-sample test | ✅ | ✅ | ✅ | ✅ |
+| [`oneway_anova()`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md) | one-way ANOVA | ✅ | ✅ | ✅ | ✅ |
+| [`corr_test()`](https://www.indrapatil.com/statsExpressions/reference/corr_test.md) | correlation | ✅ | ✅ | ✅ | ✅ |
+| [`contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md) | one- or two-way contingency table | ✅ | ✅ | ❌ | ✅ |
+| [`meta_analysis()`](https://www.indrapatil.com/statsExpressions/reference/meta_analysis.md) | random-effects meta-analysis | ✅ | ❌ | ✅ | ✅ |
+| [`pairwise_comparisons()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md) | pairwise group comparisons | ✅ | ✅ | ✅ | ✅ |
+| [`centrality_description()`](https://www.indrapatil.com/statsExpressions/reference/centrality_description.md) | centrality and distribution | ✅ | ✅ | ✅ | ✅ |
 
 ❌ means that no dedicated analysis of that type exists. For contingency
-tables, `type = "robust"` is still accepted and falls back to the
-parametric tests.
+tables, `type = "nonparametric"` and `type = "robust"` both use the same
+frequentist tests as `type = "parametric"`.
+
+[`pairwise_contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/pairwise_contingency_table.md)
+provides pairwise Fisher’s exact tests with Cramer’s *V* effect sizes.
+It does not have a `type` argument.
 
 ## Summary of tests and effect sizes
 
@@ -121,7 +85,7 @@ your R console.
 
 ### `oneway_anova()`
 
-#### between-subjects
+#### Between-subjects
 
 **Hypothesis testing**
 
@@ -141,13 +105,12 @@ your R console.
 | Robust | \> 2 | Explanatory measure of effect size | Yes | [`WRS2::t1way()`](https://rdrr.io/pkg/WRS2/man/t1way.html) |
 | Bayesian | \> 2 | Bayesian R-squared | Yes | [`performance::r2_bayes()`](https://easystats.github.io/performance/reference/r2_bayes.html) |
 
-#### within-subjects
+#### Within-subjects
 
-**Data requirement**: Repeated measures tests assume a *complete* design
-with exactly **one observation per subject per condition**. If your data
-has multiple trials per cell, aggregate first (e.g., take the mean).
-Verify with `table(data$subject, data$condition)` — every cell should
-equal `1`.
+**Paired data**: See
+[`complete_subjects()`](https://www.indrapatil.com/statsExpressions/reference/complete_subjects.md)
+for subject matching, duplicate observations, and removal of incomplete
+subjects.
 
 **Hypothesis testing**
 
@@ -169,7 +132,7 @@ equal `1`.
 
 ### `two_sample_test()`
 
-#### between-subjects
+#### Between-subjects
 
 **Hypothesis testing**
 
@@ -189,11 +152,12 @@ equal `1`.
 | Robust | 2 | Algina-Keselman-Penfield robust standardized difference | Yes | [`WRS2::akp.effect()`](https://rdrr.io/pkg/WRS2/man/yuen.html) |
 | Bayesian | 2 | difference | Yes | [`bayestestR::describe_posterior()`](https://easystats.github.io/bayestestR/reference/describe_posterior.html) |
 
-#### within-subjects
+#### Within-subjects
 
-**Data requirement**: Paired tests assume exactly **one observation per
-subject per condition**. If your data has multiple trials per cell,
-aggregate first (e.g., take the mean).
+**Paired data**: See
+[`complete_subjects()`](https://www.indrapatil.com/statsExpressions/reference/complete_subjects.md)
+for subject matching, duplicate observations, and removal of incomplete
+subjects.
 
 **Hypothesis testing**
 
@@ -235,7 +199,7 @@ aggregate first (e.g., take the mean).
 
 ### `corr_test()`
 
-**Hypothesis testing** and **Effect size estimation**
+**Hypothesis testing and effect size estimation**
 
 | Type | Test | CI available? | Function used |
 |:---|:---|:---|:---|
@@ -251,7 +215,7 @@ analyses. `type = "nonparametric"` and `type = "robust"` are accepted,
 but run the same frequentist tests as `type = "parametric"` (the
 “Parametric/Non-parametric” rows below).
 
-#### two-way table
+#### Two-way table
 
 **Hypothesis testing**
 
@@ -275,7 +239,7 @@ Paired Bayesian analysis is not supported: for a two-way table with
 `type = "bayes"`, the `paired` argument is ignored and the unpaired
 Bayesian test is run instead.
 
-#### one-way table
+#### One-way table
 
 **Hypothesis testing**
 
@@ -293,7 +257,7 @@ Bayesian test is run instead.
 
 ### `pairwise_comparisons()`
 
-#### between-subjects
+#### Between-subjects
 
 **Hypothesis testing**
 
@@ -309,11 +273,12 @@ Bayesian test is run instead.
 
 Not supported.
 
-#### within-subjects
+#### Within-subjects
 
-**Data requirement**: Paired pairwise tests assume exactly **one
-observation per subject per condition**. If your data has multiple
-trials per cell, aggregate first (e.g., take the mean).
+**Paired data**: See
+[`complete_subjects()`](https://www.indrapatil.com/statsExpressions/reference/complete_subjects.md)
+for subject matching, duplicate observations, and removal of incomplete
+subjects.
 
 **Hypothesis testing**
 
@@ -344,7 +309,7 @@ Not supported.
 
 ### `meta_analysis()`
 
-**Hypothesis testing** and **Effect size estimation**
+**Hypothesis testing and effect size estimation**
 
 | Type | Test | Effect size | CI available? | Function used |
 |:---|:---|:---|:---|:---|
@@ -376,3 +341,25 @@ interpret effect sizes:
 If you find any bugs or have any suggestions/remarks, please file an
 issue on GitHub:
 <https://github.com/IndrajeetPatil/statsExpressions/issues>
+
+## Citation
+
+    To cite package 'statsExpressions' in publications use:
+
+      Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes
+      and Expressions with Statistical Details. Journal of Open Source
+      Software, 6(61), 3236, https://doi.org/10.21105/joss.03236
+
+    A BibTeX entry for LaTeX users is
+
+      @Article{,
+        doi = {10.21105/joss.03236},
+        year = {2021},
+        publisher = {{The Open Journal}},
+        volume = {6},
+        number = {61},
+        pages = {3236},
+        author = {Indrajeet Patil},
+        title = {{statsExpressions: {R} Package for Tidy Dataframes and Expressions with Statistical Details}},
+        journal = {{Journal of Open Source Software}},
+      }

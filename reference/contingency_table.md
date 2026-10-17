@@ -148,11 +148,9 @@ therefore returns *some* (not all) of the columns below.
 
 - `statistic`: the numeric value of a statistic
 
-- `df`: the numeric value of a parameter being modeled (often degrees of
-  freedom for the test)
-
-- `df.error` and `df`: relevant only if the statistic in question has
-  two degrees of freedom (e.g. anova)
+- `df` and/or `df.error`: degrees of freedom for the test. A *t*-test
+  uses `df.error`, a chi-squared test uses `df`, and a parametric ANOVA
+  uses both (numerator `df` and denominator `df.error`)
 
 - `p.value`: the *p*-value associated with the observed statistic
   (two-sided unless a one-sided `alternative` is requested, where
@@ -206,7 +204,9 @@ and
 
 **Common columns**
 
-- `n.obs`: number of observations
+- `n.obs`: sample size used for the analysis: observations for unpaired
+  tests, complete subjects/pairs for paired two-sample tests and ANOVAs,
+  or studies for meta-analysis
 
 - `expression`: a list-column of pre-formatted
   [plotmath](https://rdrr.io/r/grDevices/plotmath.html) expressions;
@@ -240,7 +240,7 @@ analyses. `type = "nonparametric"` and `type = "robust"` are accepted,
 but run the same frequentist tests as `type = "parametric"` (the
 "Parametric/Non-parametric" rows below).
 
-### two-way table
+### Two-way table
 
 **Hypothesis testing**
 
@@ -266,7 +266,7 @@ Paired Bayesian analysis is not supported: for a two-way table with
 `type = "bayes"`, the `paired` argument is ignored and the unpaired
 Bayesian test is run instead.
 
-### one-way table
+### One-way table
 
 **Hypothesis testing**
 

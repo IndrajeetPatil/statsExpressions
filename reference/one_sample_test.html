@@ -183,10 +183,9 @@ functions that accept a <code>type</code> argument, on the chosen analysis (para
 non-parametric, robust, or Bayesian). Any given call therefore returns <em>some</em>
 (not all) of the columns below.</p>
 <p><strong>Hypothesis testing</strong></p><ul><li><p><code>statistic</code>: the numeric value of a statistic</p></li>
-<li><p><code>df</code>: the numeric value of a parameter being modeled (often degrees
-of freedom for the test)</p></li>
-<li><p><code>df.error</code> and <code>df</code>: relevant only if the statistic in question has
-two degrees of freedom (e.g. anova)</p></li>
+<li><p><code>df</code> and/or <code>df.error</code>: degrees of freedom for the test. A <em>t</em>-test
+uses <code>df.error</code>, a chi-squared test uses <code>df</code>, and a parametric ANOVA
+uses both (numerator <code>df</code> and denominator <code>df.error</code>)</p></li>
 <li><p><code>p.value</code>: the <em>p</em>-value associated with the observed statistic (two-sided
 unless a one-sided <code>alternative</code> is requested, where supported)</p></li>
 <li><p><code>method</code>: the name of the inferential statistical test</p></li>
@@ -210,7 +209,9 @@ used to compute the Bayes factor and posterior estimates</p></li>
 <code><a href="pairwise_contingency_table.html">pairwise_contingency_table()</a></code>. Note that <code><a href="pairwise_comparisons.html">pairwise_comparisons()</a></code> instead
 folds the adjusted value into <code>p.value</code> (and does not return a separate
 <code>p.value.adj</code> column)</p></li>
-</ul><p><strong>Common columns</strong></p><ul><li><p><code>n.obs</code>: number of observations</p></li>
+</ul><p><strong>Common columns</strong></p><ul><li><p><code>n.obs</code>: sample size used for the analysis: observations for unpaired
+tests, complete subjects/pairs for paired two-sample tests and ANOVAs,
+or studies for meta-analysis</p></li>
 <li><p><code>expression</code>: a list-column of pre-formatted
 <a href="https://rdrr.io/r/grDevices/plotmath.html" class="external-link">plotmath</a> expressions; each
 element is a <code>language</code> object (not a character string) containing the

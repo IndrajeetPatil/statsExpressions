@@ -178,105 +178,25 @@
 <span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a>  }</span></code></pre></div>
 </div>
 <div class="section level1">
-<h1 id="general-workflow">General Workflow<a class="anchor" aria-label="anchor" href="#general-workflow"></a>
+<h1 id="general-workflow">General workflow<a class="anchor" aria-label="anchor" href="#general-workflow"></a>
 </h1>
 <p><img src="reference/figures/card.png" alt="Diagram showing the general workflow of the statsExpressions package" width="80%"></p>
 </div>
 <div class="section level1">
 <h1 id="summary-of-functionality">Summary of functionality<a class="anchor" aria-label="anchor" href="#summary-of-functionality"></a>
 </h1>
-<p><strong>Summary of available analyses</strong></p>
-<table class="table">
-<thead><tr>
-<th align="left">Test</th>
-<th align="left">Function</th>
-</tr></thead>
-<tbody>
-<tr>
-<td align="left">one-sample <em>t</em>-test</td>
-<td align="left"><code><a href="reference/one_sample_test.html">one_sample_test()</a></code></td>
-</tr>
-<tr>
-<td align="left">two-sample <em>t</em>-test</td>
-<td align="left"><code><a href="reference/two_sample_test.html">two_sample_test()</a></code></td>
-</tr>
-<tr>
-<td align="left">one-way ANOVA</td>
-<td align="left"><code><a href="reference/oneway_anova.html">oneway_anova()</a></code></td>
-</tr>
-<tr>
-<td align="left">correlation analysis</td>
-<td align="left"><code><a href="reference/corr_test.html">corr_test()</a></code></td>
-</tr>
-<tr>
-<td align="left">contingency table analysis</td>
-<td align="left"><code><a href="reference/contingency_table.html">contingency_table()</a></code></td>
-</tr>
-<tr>
-<td align="left">meta-analysis</td>
-<td align="left"><code><a href="reference/meta_analysis.html">meta_analysis()</a></code></td>
-</tr>
-<tr>
-<td align="left">pairwise comparisons</td>
-<td align="left"><code><a href="reference/pairwise_comparisons.html">pairwise_comparisons()</a></code></td>
-</tr>
-<tr>
-<td align="left">pairwise contingency table</td>
-<td align="left"><code><a href="reference/pairwise_contingency_table.html">pairwise_contingency_table()</a></code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Summary of details available for analyses</strong></p>
 <table style="width:99%;" class="table">
 <colgroup>
-<col width="42%">
-<col width="25%">
-<col width="31%">
+<col width="16%">
+<col width="16%">
+<col width="16%">
+<col width="16%">
+<col width="16%">
+<col width="16%">
 </colgroup>
 <thead><tr>
+<th align="left">Function</th>
 <th align="left">Analysis</th>
-<th align="left">Hypothesis testing</th>
-<th align="left">Effect size estimation</th>
-</tr></thead>
-<tbody>
-<tr>
-<td align="left">(one/two-sample) <em>t</em>-test</td>
-<td align="left">✅</td>
-<td align="left">✅</td>
-</tr>
-<tr>
-<td align="left">one-way ANOVA</td>
-<td align="left">✅</td>
-<td align="left">✅</td>
-</tr>
-<tr>
-<td align="left">correlation</td>
-<td align="left">✅</td>
-<td align="left">✅</td>
-</tr>
-<tr>
-<td align="left">(one/two-way) contingency table</td>
-<td align="left">✅</td>
-<td align="left">✅</td>
-</tr>
-<tr>
-<td align="left">random-effects meta-analysis</td>
-<td align="left">✅</td>
-<td align="left">✅</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Summary of supported statistical approaches</strong></p>
-<table class="table">
-<colgroup>
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-</colgroup>
-<thead><tr>
-<th align="left">Description</th>
 <th align="left">Parametric</th>
 <th align="left">Non-parametric</th>
 <th align="left">Robust</th>
@@ -284,57 +204,73 @@
 </tr></thead>
 <tbody>
 <tr>
-<td align="left">Between group/condition comparisons</td>
+<td align="left"><code><a href="reference/one_sample_test.html">one_sample_test()</a></code></td>
+<td align="left">one-sample test</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 </tr>
 <tr>
-<td align="left">Within group/condition comparisons</td>
+<td align="left"><code><a href="reference/two_sample_test.html">two_sample_test()</a></code></td>
+<td align="left">two-sample test</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 </tr>
 <tr>
-<td align="left">Distribution of a numeric variable</td>
+<td align="left"><code><a href="reference/oneway_anova.html">oneway_anova()</a></code></td>
+<td align="left">one-way ANOVA</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 </tr>
 <tr>
-<td align="left">Correlation between two variables</td>
+<td align="left"><code><a href="reference/corr_test.html">corr_test()</a></code></td>
+<td align="left">correlation</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 </tr>
 <tr>
-<td align="left">Association between categorical variables</td>
+<td align="left"><code><a href="reference/contingency_table.html">contingency_table()</a></code></td>
+<td align="left">one- or two-way contingency table</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">❌</td>
 <td align="left">✅</td>
 </tr>
 <tr>
-<td align="left">Equal proportions for categorical variable levels</td>
-<td align="left">✅</td>
+<td align="left"><code><a href="reference/meta_analysis.html">meta_analysis()</a></code></td>
+<td align="left">random-effects meta-analysis</td>
 <td align="left">✅</td>
 <td align="left">❌</td>
+<td align="left">✅</td>
 <td align="left">✅</td>
 </tr>
 <tr>
-<td align="left">Random-effects meta-analysis</td>
+<td align="left"><code><a href="reference/pairwise_comparisons.html">pairwise_comparisons()</a></code></td>
+<td align="left">pairwise group comparisons</td>
 <td align="left">✅</td>
-<td align="left">❌</td>
+<td align="left">✅</td>
+<td align="left">✅</td>
+<td align="left">✅</td>
+</tr>
+<tr>
+<td align="left"><code><a href="reference/centrality_description.html">centrality_description()</a></code></td>
+<td align="left">centrality and distribution</td>
+<td align="left">✅</td>
+<td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 </tr>
 </tbody>
 </table>
-<p>❌ means that no dedicated analysis of that type exists. For contingency tables, <code>type = "robust"</code> is still accepted and falls back to the parametric tests.</p>
+<p>❌ means that no dedicated analysis of that type exists. For contingency tables, <code>type = "nonparametric"</code> and <code>type = "robust"</code> both use the same frequentist tests as <code>type = "parametric"</code>.</p>
+<p><code><a href="reference/pairwise_contingency_table.html">pairwise_contingency_table()</a></code> provides pairwise Fisher’s exact tests with Cramer’s <em>V</em> effect sizes. It does not have a <code>type</code> argument.</p>
 </div>
 <div class="section level1">
 <h1 id="tidy-dataframes-from-statistical-analysis">Tidy dataframes from statistical analysis<a class="anchor" aria-label="anchor" href="#tidy-dataframes-from-statistical-analysis"></a>
@@ -367,7 +303,7 @@
 <span><span class="co">#&gt;   n.obs expression</span></span>
 <span><span class="co">#&gt;   &lt;int&gt; &lt;list&gt;    </span></span>
 <span><span class="co">#&gt; 1    32 &lt;language&gt;</span></span></code></pre></div>
-<p>All possible output dataframes from functions are tabulated here: <a href="https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html" class="uri">https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html</a></p>
+<p>Worked examples of output data frames are collected here: <a href="https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html" class="uri">https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html</a></p>
 <p>The columns and attributes of these dataframes are documented here: <a href="https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html" class="uri">https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html</a></p>
 <p>Needless to say this will also work with the <code>kable</code> function to generate a table:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -476,7 +412,7 @@
 <li>extract the expression from the list column (<code>results_data$expression[[1]]</code>) without parsing</li>
 <li>use the list column as is, in which case you will need to parse it (<code>parse(text = results_data$expression)</code>)</li>
 </ul>
-<p>If you want to display more than one expression in a plot, you will <em>have to</em> parse them.</p>
+<p>For several row-specific labels in a geometric layer, map <code>expression</code> to <code>label</code> and use <code>parse = TRUE</code>, as in the centrality example above.</p>
 <div class="section level3">
 <h3 id="between-subjects-design">Between-subjects design<a class="anchor" aria-label="anchor" href="#between-subjects-design"></a>
 </h3>
@@ -697,919 +633,9 @@
 <p><img src="reference/figures/README-custom_expr-1.png" alt="Example ggplot boxplot of iris Sepal.Length by Species with a custom statistical expression subtitle" width="100%"></p>
 </div>
 <div class="section level1">
-<h1 id="summary-of-tests-and-effect-sizes">Summary of tests and effect sizes<a class="anchor" aria-label="anchor" href="#summary-of-tests-and-effect-sizes"></a>
+<h1 id="tests-and-effect-sizes">Tests and effect sizes<a class="anchor" aria-label="anchor" href="#tests-and-effect-sizes"></a>
 </h1>
-<p>Here is a go-to summary of the statistical tests carried out and the effect sizes returned by each function. This should be useful if one needs to find out more information about how an argument is resolved in the underlying package or if one wishes to browse the source code. So, for example, if you want to know more about how the one-way (between-subjects) ANOVA is carried out, you can run <code><a href="https://rdrr.io/r/stats/oneway.test.html" class="external-link">?stats::oneway.test</a></code> in your R console.</p>
-<div class="section level2">
-<h2 id="centrality_description">
-<code>centrality_description</code><a class="anchor" aria-label="anchor" href="#centrality_description"></a>
-</h2>
-<table class="table">
-<colgroup>
-<col width="23%">
-<col width="20%">
-<col width="56%">
-</colgroup>
-<thead><tr>
-<th align="left">Type</th>
-<th align="left">Measure</th>
-<th align="left">Function used</th>
-</tr></thead>
-<tbody>
-<tr>
-<td align="left">Parametric</td>
-<td align="left">mean</td>
-<td align="left"><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">datawizard::describe_distribution()</a></code></td>
-</tr>
-<tr>
-<td align="left">Non-parametric</td>
-<td align="left">median</td>
-<td align="left"><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">datawizard::describe_distribution()</a></code></td>
-</tr>
-<tr>
-<td align="left">Robust</td>
-<td align="left">trimmed mean</td>
-<td align="left"><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">datawizard::describe_distribution()</a></code></td>
-</tr>
-<tr>
-<td align="left">Bayesian</td>
-<td align="left">MAP</td>
-<td align="left"><code><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html" class="external-link">datawizard::describe_distribution()</a></code></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section level2">
-<h2 id="oneway_anova">
-<code>oneway_anova</code><a class="anchor" aria-label="anchor" href="#oneway_anova"></a>
-</h2>
-<div class="section level4">
-<h4 id="between-subjects">between-subjects<a class="anchor" aria-label="anchor" href="#between-subjects"></a>
-</h4>
-<p><strong>Hypothesis testing</strong></p>
-<table class="table">
-<colgroup>
-<col width="25%">
-<col width="25%">
-<col width="25%">
-<col width="25%">
-</colgroup>
-<thead><tr>
-<th align="left">Type</th>
-<th align="left">No. of groups</th>
-<th align="left">Test</th>
-<th align="left">Function used</th>
-</tr></thead>
-<tbody>
-<tr>
-<td align="left">Parametric</td>
-<td align="left">&gt; 2</td>
-<td align="left">Fisher’s or Welch’s one-way ANOVA</td>
-<td align="left"><code><a href="https://rdrr.io/r/stats/oneway.test.html" class="external-link">stats::oneway.test()</a></code></td>
-</tr>
-<tr>
-<td align="left">Non-parametric</td>
-<td align="left">&gt; 2</td>
-<td align="left">Kruskal-Wallis one-way ANOVA</td>
-<td align="left"><code><a href="https://rdrr.io/r/stats/kruskal.test.html" class="external-link">stats::kruskal.test()</a></code></td>
-</tr>
-<tr>
-<td align="left">Robust</td>
-<td align="left">&gt; 2</td>
-<td align="left">Heteroscedastic one-way ANOVA for trimmed means</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/WRS2/man/t1way.html" class="external-link">WRS2::t1way()</a></code></td>
-</tr>
-<tr>
-<td align="left">Bayesian</td>
-<td align="left">&gt; 2</td>
-<td align="left">Fisher’s ANOVA</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/BayesFactor/man/anovaBF.html" class="external-link">BayesFactor::anovaBF()</a></code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Effect size estimation</strong></p>
-<table class="table">
-<colgroup>
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-</colgroup>
-<thead><tr>
-<th align="left">Type</th>
-<th align="left">No. of groups</th>
-<th align="left">Effect size</th>
-<th align="left">CI available?</th>
-<th align="left">Function used</th>
-</tr></thead>
-<tbody>
-<tr>
-<td align="left">Parametric</td>
-<td align="left">&gt; 2</td>
-<td align="left">partial eta-squared, partial omega-squared</td>
-<td align="left">Yes</td>
-<td align="left">
-<code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::omega_squared()</a></code>, <code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::eta_squared()</a></code>
-</td>
-</tr>
-<tr>
-<td align="left">Non-parametric</td>
-<td align="left">&gt; 2</td>
-<td align="left">rank epsilon squared</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://easystats.github.io/effectsize/reference/rank_epsilon_squared.html" class="external-link">effectsize::rank_epsilon_squared()</a></code></td>
-</tr>
-<tr>
-<td align="left">Robust</td>
-<td align="left">&gt; 2</td>
-<td align="left">Explanatory measure of effect size</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/WRS2/man/t1way.html" class="external-link">WRS2::t1way()</a></code></td>
-</tr>
-<tr>
-<td align="left">Bayesian</td>
-<td align="left">&gt; 2</td>
-<td align="left">Bayesian R-squared</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://easystats.github.io/performance/reference/r2_bayes.html" class="external-link">performance::r2_bayes()</a></code></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section level4">
-<h4 id="within-subjects">within-subjects<a class="anchor" aria-label="anchor" href="#within-subjects"></a>
-</h4>
-<p><strong>Data requirement</strong>: Repeated measures tests assume a <em>complete</em> design with exactly <strong>one observation per subject per condition</strong>. If your data has multiple trials per cell, aggregate first (e.g., take the mean). Verify with <code>table(data$subject, data$condition)</code> — every cell should equal <code>1</code>.</p>
-<p><strong>Hypothesis testing</strong></p>
-<table class="table">
-<colgroup>
-<col width="25%">
-<col width="25%">
-<col width="25%">
-<col width="25%">
-</colgroup>
-<thead><tr>
-<th align="left">Type</th>
-<th align="left">No. of groups</th>
-<th align="left">Test</th>
-<th align="left">Function used</th>
-</tr></thead>
-<tbody>
-<tr>
-<td align="left">Parametric</td>
-<td align="left">&gt; 2</td>
-<td align="left">One-way repeated measures ANOVA</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/afex/man/aov_car.html" class="external-link">afex::aov_ez()</a></code></td>
-</tr>
-<tr>
-<td align="left">Non-parametric</td>
-<td align="left">&gt; 2</td>
-<td align="left">Friedman rank sum test</td>
-<td align="left"><code><a href="https://rdrr.io/r/stats/friedman.test.html" class="external-link">stats::friedman.test()</a></code></td>
-</tr>
-<tr>
-<td align="left">Robust</td>
-<td align="left">&gt; 2</td>
-<td align="left">Heteroscedastic one-way repeated measures ANOVA for trimmed means</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/WRS2/man/rmanova.html" class="external-link">WRS2::rmanova()</a></code></td>
-</tr>
-<tr>
-<td align="left">Bayesian</td>
-<td align="left">&gt; 2</td>
-<td align="left">One-way repeated measures ANOVA</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/BayesFactor/man/anovaBF.html" class="external-link">BayesFactor::anovaBF()</a></code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Effect size estimation</strong></p>
-<table class="table">
-<colgroup>
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-</colgroup>
-<thead><tr>
-<th align="left">Type</th>
-<th align="left">No. of groups</th>
-<th align="left">Effect size</th>
-<th align="left">CI available?</th>
-<th align="left">Function used</th>
-</tr></thead>
-<tbody>
-<tr>
-<td align="left">Parametric</td>
-<td align="left">&gt; 2</td>
-<td align="left">partial eta-squared, partial omega-squared</td>
-<td align="left">Yes</td>
-<td align="left">
-<code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::omega_squared()</a></code>, <code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::eta_squared()</a></code>
-</td>
-</tr>
-<tr>
-<td align="left">Non-parametric</td>
-<td align="left">&gt; 2</td>
-<td align="left">Kendall’s coefficient of concordance</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://easystats.github.io/effectsize/reference/rank_epsilon_squared.html" class="external-link">effectsize::kendalls_w()</a></code></td>
-</tr>
-<tr>
-<td align="left">Robust</td>
-<td align="left">&gt; 2</td>
-<td align="left">Algina-Keselman-Penfield robust standardized difference average</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/WRS2/man/wmcpAKP.html" class="external-link">WRS2::wmcpAKP()</a></code></td>
-</tr>
-<tr>
-<td align="left">Bayesian</td>
-<td align="left">&gt; 2</td>
-<td align="left">Bayesian R-squared</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://easystats.github.io/performance/reference/r2_bayes.html" class="external-link">performance::r2_bayes()</a></code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section level2">
-<h2 id="two_sample_test">
-<code>two_sample_test</code><a class="anchor" aria-label="anchor" href="#two_sample_test"></a>
-</h2>
-<div class="section level4">
-<h4 id="between-subjects-1">between-subjects<a class="anchor" aria-label="anchor" href="#between-subjects-1"></a>
-</h4>
-<p><strong>Hypothesis testing</strong></p>
-<table class="table">
-<thead><tr>
-<th align="left">Type</th>
-<th align="left">No. of groups</th>
-<th align="left">Test</th>
-<th align="left">Function used</th>
-</tr></thead>
-<tbody>
-<tr>
-<td align="left">Parametric</td>
-<td align="left">2</td>
-<td align="left">Student’s or Welch’s <em>t</em>-test</td>
-<td align="left"><code><a href="https://rdrr.io/r/stats/t.test.html" class="external-link">stats::t.test()</a></code></td>
-</tr>
-<tr>
-<td align="left">Non-parametric</td>
-<td align="left">2</td>
-<td align="left">Mann-Whitney <em>U</em> test</td>
-<td align="left"><code><a href="https://rdrr.io/r/stats/wilcox.test.html" class="external-link">stats::wilcox.test()</a></code></td>
-</tr>
-<tr>
-<td align="left">Robust</td>
-<td align="left">2</td>
-<td align="left">Yuen’s test for trimmed means</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/WRS2/man/yuen.html" class="external-link">WRS2::yuen()</a></code></td>
-</tr>
-<tr>
-<td align="left">Bayesian</td>
-<td align="left">2</td>
-<td align="left">Student’s <em>t</em>-test</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/BayesFactor/man/ttestBF.html" class="external-link">BayesFactor::ttestBF()</a></code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Effect size estimation</strong></p>
-<table class="table">
-<colgroup>
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-</colgroup>
-<thead><tr>
-<th align="left">Type</th>
-<th align="left">No. of groups</th>
-<th align="left">Effect size</th>
-<th align="left">CI available?</th>
-<th align="left">Function used</th>
-</tr></thead>
-<tbody>
-<tr>
-<td align="left">Parametric</td>
-<td align="left">2</td>
-<td align="left">Cohen’s <em>d</em>, Hedges’ <em>g</em>
-</td>
-<td align="left">Yes</td>
-<td align="left">
-<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::cohens_d()</a></code>, <code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::hedges_g()</a></code>
-</td>
-</tr>
-<tr>
-<td align="left">Non-parametric</td>
-<td align="left">2</td>
-<td align="left">
-<em>r</em> (rank-biserial correlation)</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html" class="external-link">effectsize::rank_biserial()</a></code></td>
-</tr>
-<tr>
-<td align="left">Robust</td>
-<td align="left">2</td>
-<td align="left">Algina-Keselman-Penfield robust standardized difference</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/WRS2/man/yuen.html" class="external-link">WRS2::akp.effect()</a></code></td>
-</tr>
-<tr>
-<td align="left">Bayesian</td>
-<td align="left">2</td>
-<td align="left">difference</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://easystats.github.io/bayestestR/reference/describe_posterior.html" class="external-link">bayestestR::describe_posterior()</a></code></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section level4">
-<h4 id="within-subjects-1">within-subjects<a class="anchor" aria-label="anchor" href="#within-subjects-1"></a>
-</h4>
-<p><strong>Data requirement</strong>: Paired tests assume exactly <strong>one observation per subject per condition</strong>. If your data has multiple trials per cell, aggregate first (e.g., take the mean).</p>
-<p><strong>Hypothesis testing</strong></p>
-<table class="table">
-<colgroup>
-<col width="25%">
-<col width="25%">
-<col width="25%">
-<col width="25%">
-</colgroup>
-<thead><tr>
-<th align="left">Type</th>
-<th align="left">No. of groups</th>
-<th align="left">Test</th>
-<th align="left">Function used</th>
-</tr></thead>
-<tbody>
-<tr>
-<td align="left">Parametric</td>
-<td align="left">2</td>
-<td align="left">Student’s <em>t</em>-test</td>
-<td align="left"><code><a href="https://rdrr.io/r/stats/t.test.html" class="external-link">stats::t.test()</a></code></td>
-</tr>
-<tr>
-<td align="left">Non-parametric</td>
-<td align="left">2</td>
-<td align="left">Wilcoxon signed-rank test</td>
-<td align="left"><code><a href="https://rdrr.io/r/stats/wilcox.test.html" class="external-link">stats::wilcox.test()</a></code></td>
-</tr>
-<tr>
-<td align="left">Robust</td>
-<td align="left">2</td>
-<td align="left">Yuen’s test on trimmed means for dependent samples</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/WRS2/man/yuend.html" class="external-link">WRS2::yuend()</a></code></td>
-</tr>
-<tr>
-<td align="left">Bayesian</td>
-<td align="left">2</td>
-<td align="left">Student’s <em>t</em>-test</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/BayesFactor/man/ttestBF.html" class="external-link">BayesFactor::ttestBF()</a></code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Effect size estimation</strong></p>
-<table class="table">
-<colgroup>
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-</colgroup>
-<thead><tr>
-<th align="left">Type</th>
-<th align="left">No. of groups</th>
-<th align="left">Effect size</th>
-<th align="left">CI available?</th>
-<th align="left">Function used</th>
-</tr></thead>
-<tbody>
-<tr>
-<td align="left">Parametric</td>
-<td align="left">2</td>
-<td align="left">Cohen’s <em>d</em>, Hedges’ <em>g</em>
-</td>
-<td align="left">Yes</td>
-<td align="left">
-<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::cohens_d()</a></code>, <code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::hedges_g()</a></code>
-</td>
-</tr>
-<tr>
-<td align="left">Non-parametric</td>
-<td align="left">2</td>
-<td align="left">
-<em>r</em> (rank-biserial correlation)</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html" class="external-link">effectsize::rank_biserial()</a></code></td>
-</tr>
-<tr>
-<td align="left">Robust</td>
-<td align="left">2</td>
-<td align="left">Algina-Keselman-Penfield robust standardized difference</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/WRS2/man/wmcpAKP.html" class="external-link">WRS2::wmcpAKP()</a></code></td>
-</tr>
-<tr>
-<td align="left">Bayesian</td>
-<td align="left">2</td>
-<td align="left">difference</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://easystats.github.io/bayestestR/reference/describe_posterior.html" class="external-link">bayestestR::describe_posterior()</a></code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section level2">
-<h2 id="one_sample_test">
-<code>one_sample_test</code><a class="anchor" aria-label="anchor" href="#one_sample_test"></a>
-</h2>
-<p><strong>Hypothesis testing</strong></p>
-<table class="table">
-<colgroup>
-<col width="33%">
-<col width="33%">
-<col width="33%">
-</colgroup>
-<thead><tr>
-<th align="left">Type</th>
-<th align="left">Test</th>
-<th align="left">Function used</th>
-</tr></thead>
-<tbody>
-<tr>
-<td align="left">Parametric</td>
-<td align="left">One-sample Student’s <em>t</em>-test</td>
-<td align="left"><code><a href="https://rdrr.io/r/stats/t.test.html" class="external-link">stats::t.test()</a></code></td>
-</tr>
-<tr>
-<td align="left">Non-parametric</td>
-<td align="left">One-sample Wilcoxon test</td>
-<td align="left"><code><a href="https://rdrr.io/r/stats/wilcox.test.html" class="external-link">stats::wilcox.test()</a></code></td>
-</tr>
-<tr>
-<td align="left">Robust</td>
-<td align="left">Bootstrap-<em>t</em> method for one-sample test</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/WRS2/man/trimcibt.html" class="external-link">WRS2::trimcibt()</a></code></td>
-</tr>
-<tr>
-<td align="left">Bayesian</td>
-<td align="left">One-sample Student’s <em>t</em>-test</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/BayesFactor/man/ttestBF.html" class="external-link">BayesFactor::ttestBF()</a></code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Effect size estimation</strong></p>
-<table class="table">
-<colgroup>
-<col width="25%">
-<col width="25%">
-<col width="25%">
-<col width="25%">
-</colgroup>
-<thead><tr>
-<th align="left">Type</th>
-<th align="left">Effect size</th>
-<th align="left">CI available?</th>
-<th align="left">Function used</th>
-</tr></thead>
-<tbody>
-<tr>
-<td align="left">Parametric</td>
-<td align="left">Cohen’s <em>d</em>, Hedges’ <em>g</em>
-</td>
-<td align="left">Yes</td>
-<td align="left">
-<code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::cohens_d()</a></code>, <code><a href="https://easystats.github.io/effectsize/reference/cohens_d.html" class="external-link">effectsize::hedges_g()</a></code>
-</td>
-</tr>
-<tr>
-<td align="left">Non-parametric</td>
-<td align="left">
-<em>r</em> (rank-biserial correlation)</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://easystats.github.io/effectsize/reference/rank_biserial.html" class="external-link">effectsize::rank_biserial()</a></code></td>
-</tr>
-<tr>
-<td align="left">Robust</td>
-<td align="left">trimmed mean</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/WRS2/man/trimcibt.html" class="external-link">WRS2::trimcibt()</a></code></td>
-</tr>
-<tr>
-<td align="left">Bayesian</td>
-<td align="left">difference</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://easystats.github.io/bayestestR/reference/describe_posterior.html" class="external-link">bayestestR::describe_posterior()</a></code></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section level2">
-<h2 id="corr_test">
-<code>corr_test</code><a class="anchor" aria-label="anchor" href="#corr_test"></a>
-</h2>
-<p><strong>Hypothesis testing</strong> and <strong>Effect size estimation</strong></p>
-<table class="table">
-<colgroup>
-<col width="25%">
-<col width="25%">
-<col width="25%">
-<col width="25%">
-</colgroup>
-<thead><tr>
-<th align="left">Type</th>
-<th align="left">Test</th>
-<th align="left">CI available?</th>
-<th align="left">Function used</th>
-</tr></thead>
-<tbody>
-<tr>
-<td align="left">Parametric</td>
-<td align="left">Pearson’s correlation coefficient</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://easystats.github.io/correlation/reference/correlation.html" class="external-link">correlation::correlation()</a></code></td>
-</tr>
-<tr>
-<td align="left">Non-parametric</td>
-<td align="left">Spearman’s rank correlation coefficient</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://easystats.github.io/correlation/reference/correlation.html" class="external-link">correlation::correlation()</a></code></td>
-</tr>
-<tr>
-<td align="left">Robust</td>
-<td align="left">Winsorized Pearson’s correlation coefficient</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://easystats.github.io/correlation/reference/correlation.html" class="external-link">correlation::correlation()</a></code></td>
-</tr>
-<tr>
-<td align="left">Bayesian</td>
-<td align="left">Bayesian Pearson’s correlation coefficient</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://easystats.github.io/correlation/reference/correlation.html" class="external-link">correlation::correlation()</a></code></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section level2">
-<h2 id="contingency_table">
-<code>contingency_table</code><a class="anchor" aria-label="anchor" href="#contingency_table"></a>
-</h2>
-<p>There are no dedicated non-parametric or robust contingency table analyses. <code>type = "nonparametric"</code> and <code>type = "robust"</code> are accepted, but run the same frequentist tests as <code>type = "parametric"</code> (the “Parametric/Non-parametric” rows below).</p>
-<div class="section level4">
-<h4 id="two-way-table">two-way table<a class="anchor" aria-label="anchor" href="#two-way-table"></a>
-</h4>
-<p><strong>Hypothesis testing</strong></p>
-<table class="table">
-<colgroup>
-<col width="25%">
-<col width="25%">
-<col width="25%">
-<col width="25%">
-</colgroup>
-<thead><tr>
-<th align="left">Type</th>
-<th align="left">Design</th>
-<th align="left">Test</th>
-<th align="left">Function used</th>
-</tr></thead>
-<tbody>
-<tr>
-<td align="left">Parametric/Non-parametric</td>
-<td align="left">Unpaired</td>
-<td align="left">Pearson’s chi-squared test</td>
-<td align="left"><code><a href="https://rdrr.io/r/stats/chisq.test.html" class="external-link">stats::chisq.test()</a></code></td>
-</tr>
-<tr>
-<td align="left">Bayesian</td>
-<td align="left">Unpaired</td>
-<td align="left">Bayesian Pearson’s chi-squared test</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/BayesFactor/man/contingencyTableBF.html" class="external-link">BayesFactor::contingencyTableBF()</a></code></td>
-</tr>
-<tr>
-<td align="left">Parametric/Non-parametric</td>
-<td align="left">Paired</td>
-<td align="left">McNemar’s chi-squared test</td>
-<td align="left"><code><a href="https://rdrr.io/r/stats/mcnemar.test.html" class="external-link">stats::mcnemar.test()</a></code></td>
-</tr>
-<tr>
-<td align="left">Bayesian</td>
-<td align="left">Paired</td>
-<td align="left">No</td>
-<td align="left">No</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Effect size estimation</strong></p>
-<table class="table">
-<colgroup>
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-</colgroup>
-<thead><tr>
-<th align="left">Type</th>
-<th align="left">Design</th>
-<th align="left">Effect size</th>
-<th align="left">CI available?</th>
-<th align="left">Function used</th>
-</tr></thead>
-<tbody>
-<tr>
-<td align="left">Parametric/Non-parametric</td>
-<td align="left">Unpaired</td>
-<td align="left">Cramer’s <em>V</em>
-</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://easystats.github.io/effectsize/reference/phi.html" class="external-link">effectsize::cramers_v()</a></code></td>
-</tr>
-<tr>
-<td align="left">Bayesian</td>
-<td align="left">Unpaired</td>
-<td align="left">Cramer’s <em>V</em>
-</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://easystats.github.io/effectsize/reference/phi.html" class="external-link">effectsize::cramers_v()</a></code></td>
-</tr>
-<tr>
-<td align="left">Parametric/Non-parametric</td>
-<td align="left">Paired</td>
-<td align="left">Cohen’s <em>g</em>
-</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://easystats.github.io/effectsize/reference/cohens_g.html" class="external-link">effectsize::cohens_g()</a></code></td>
-</tr>
-<tr>
-<td align="left">Bayesian</td>
-<td align="left">Paired</td>
-<td align="left">No</td>
-<td align="left">No</td>
-<td align="left">No</td>
-</tr>
-</tbody>
-</table>
-<p>Paired Bayesian analysis is not supported: for a two-way table with <code>type = "bayes"</code>, the <code>paired</code> argument is ignored and the unpaired Bayesian test is run instead.</p>
-</div>
-<div class="section level4">
-<h4 id="one-way-table">one-way table<a class="anchor" aria-label="anchor" href="#one-way-table"></a>
-</h4>
-<p><strong>Hypothesis testing</strong></p>
-<table class="table">
-<colgroup>
-<col width="33%">
-<col width="33%">
-<col width="33%">
-</colgroup>
-<thead><tr>
-<th align="left">Type</th>
-<th align="left">Test</th>
-<th align="left">Function used</th>
-</tr></thead>
-<tbody>
-<tr>
-<td align="left">Parametric/Non-parametric</td>
-<td align="left">Goodness of fit chi-squared test</td>
-<td align="left"><code><a href="https://rdrr.io/r/stats/chisq.test.html" class="external-link">stats::chisq.test()</a></code></td>
-</tr>
-<tr>
-<td align="left">Bayesian</td>
-<td align="left">Bayesian Goodness of fit chi-squared test</td>
-<td align="left">(custom)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Effect size estimation</strong></p>
-<table class="table">
-<colgroup>
-<col width="25%">
-<col width="25%">
-<col width="25%">
-<col width="25%">
-</colgroup>
-<thead><tr>
-<th align="left">Type</th>
-<th align="left">Effect size</th>
-<th align="left">CI available?</th>
-<th align="left">Function used</th>
-</tr></thead>
-<tbody>
-<tr>
-<td align="left">Parametric/Non-parametric</td>
-<td align="left">Pearson’s <em>C</em>
-</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://easystats.github.io/effectsize/reference/phi.html" class="external-link">effectsize::pearsons_c()</a></code></td>
-</tr>
-<tr>
-<td align="left">Bayesian</td>
-<td align="left">No</td>
-<td align="left">No</td>
-<td align="left">No</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section level2">
-<h2 id="pairwise_comparisons">
-<code>pairwise_comparisons</code><a class="anchor" aria-label="anchor" href="#pairwise_comparisons"></a>
-</h2>
-<div class="section level4">
-<h4 id="between-subjects-2">between-subjects<a class="anchor" aria-label="anchor" href="#between-subjects-2"></a>
-</h4>
-<p><strong>Hypothesis testing</strong></p>
-<table class="table">
-<colgroup>
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-</colgroup>
-<thead><tr>
-<th align="left">Type</th>
-<th align="left">Equal variance?</th>
-<th align="left">Test</th>
-<th align="left">
-<em>p</em>-value adjustment?</th>
-<th align="left">Function used</th>
-</tr></thead>
-<tbody>
-<tr>
-<td align="left">Parametric</td>
-<td align="left">No</td>
-<td align="left">Games-Howell test</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/PMCMRplus/man/gamesHowellTest.html" class="external-link">PMCMRplus::gamesHowellTest()</a></code></td>
-</tr>
-<tr>
-<td align="left">Parametric</td>
-<td align="left">Yes</td>
-<td align="left">Student’s <em>t</em>-test</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://rdrr.io/r/stats/pairwise.t.test.html" class="external-link">stats::pairwise.t.test()</a></code></td>
-</tr>
-<tr>
-<td align="left">Non-parametric</td>
-<td align="left">No</td>
-<td align="left">Dunn test</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/PMCMRplus/man/kwAllPairsDunnTest.html" class="external-link">PMCMRplus::kwAllPairsDunnTest()</a></code></td>
-</tr>
-<tr>
-<td align="left">Robust</td>
-<td align="left">No</td>
-<td align="left">Yuen’s trimmed means test</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/WRS2/man/t1way.html" class="external-link">WRS2::lincon()</a></code></td>
-</tr>
-<tr>
-<td align="left">Bayesian</td>
-<td align="left"><code>NA</code></td>
-<td align="left">Student’s <em>t</em>-test</td>
-<td align="left"><code>NA</code></td>
-<td align="left"><code><a href="https://rdrr.io/pkg/BayesFactor/man/ttestBF.html" class="external-link">BayesFactor::ttestBF()</a></code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Effect size estimation</strong></p>
-<p>Not supported.</p>
-</div>
-<div class="section level4">
-<h4 id="within-subjects-2">within-subjects<a class="anchor" aria-label="anchor" href="#within-subjects-2"></a>
-</h4>
-<p><strong>Data requirement</strong>: Paired pairwise tests assume exactly <strong>one observation per subject per condition</strong>. If your data has multiple trials per cell, aggregate first (e.g., take the mean).</p>
-<p><strong>Hypothesis testing</strong></p>
-<table class="table">
-<colgroup>
-<col width="25%">
-<col width="25%">
-<col width="25%">
-<col width="25%">
-</colgroup>
-<thead><tr>
-<th align="left">Type</th>
-<th align="left">Test</th>
-<th align="left">
-<em>p</em>-value adjustment?</th>
-<th align="left">Function used</th>
-</tr></thead>
-<tbody>
-<tr>
-<td align="left">Parametric</td>
-<td align="left">Student’s <em>t</em>-test</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://rdrr.io/r/stats/pairwise.t.test.html" class="external-link">stats::pairwise.t.test()</a></code></td>
-</tr>
-<tr>
-<td align="left">Non-parametric</td>
-<td align="left">Durbin-Conover test</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/PMCMRplus/man/durbinAllPairsTest.html" class="external-link">PMCMRplus::durbinAllPairsTest()</a></code></td>
-</tr>
-<tr>
-<td align="left">Robust</td>
-<td align="left">Yuen’s trimmed means test</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/WRS2/man/rmanova.html" class="external-link">WRS2::rmmcp()</a></code></td>
-</tr>
-<tr>
-<td align="left">Bayesian</td>
-<td align="left">Student’s <em>t</em>-test</td>
-<td align="left"><code>NA</code></td>
-<td align="left"><code><a href="https://rdrr.io/pkg/BayesFactor/man/ttestBF.html" class="external-link">BayesFactor::ttestBF()</a></code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Effect size estimation</strong></p>
-<p>Not supported.</p>
-</div>
-</div>
-<div class="section level2">
-<h2 id="pairwise_contingency_table">
-<code>pairwise_contingency_table</code><a class="anchor" aria-label="anchor" href="#pairwise_contingency_table"></a>
-</h2>
-<p><strong>Hypothesis testing</strong></p>
-<table class="table">
-<thead><tr>
-<th align="left">Test</th>
-<th align="left">
-<em>p</em>-value adjustment?</th>
-<th align="left">Function used</th>
-</tr></thead>
-<tbody><tr>
-<td align="left">Fisher’s exact test</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://rdrr.io/r/stats/fisher.test.html" class="external-link">stats::fisher.test()</a></code></td>
-</tr></tbody>
-</table>
-<p><strong>Effect size estimation</strong></p>
-<table class="table">
-<thead><tr>
-<th align="left">Effect size</th>
-<th align="left">CI available?</th>
-<th align="left">Function used</th>
-</tr></thead>
-<tbody><tr>
-<td align="left">Cramer’s <em>V</em>
-</td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://easystats.github.io/effectsize/reference/phi.html" class="external-link">effectsize::cramers_v()</a></code></td>
-</tr></tbody>
-</table>
-</div>
-<div class="section level2">
-<h2 id="meta_analysis">
-<code>meta_analysis</code><a class="anchor" aria-label="anchor" href="#meta_analysis"></a>
-</h2>
-<p><strong>Hypothesis testing</strong> and <strong>Effect size estimation</strong></p>
-<table class="table">
-<colgroup>
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-</colgroup>
-<thead><tr>
-<th align="left">Type</th>
-<th align="left">Test</th>
-<th align="left">Effect size</th>
-<th align="left">CI available?</th>
-<th align="left">Function used</th>
-</tr></thead>
-<tbody>
-<tr>
-<td align="left">Parametric</td>
-<td align="left">Meta-analysis via random-effects models</td>
-<td align="left"><em>beta</em></td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://wviechtb.github.io/metafor/reference/rma.uni.html" class="external-link">metafor::rma()</a></code></td>
-</tr>
-<tr>
-<td align="left">Robust</td>
-<td align="left">Meta-analysis via robust random-effects models</td>
-<td align="left"><em>beta</em></td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/metaplus/man/metaplus.html" class="external-link">metaplus::metaplus()</a></code></td>
-</tr>
-<tr>
-<td align="left">Bayesian</td>
-<td align="left">Meta-analysis via Bayesian random-effects models</td>
-<td align="left"><em>beta</em></td>
-<td align="left">Yes</td>
-<td align="left"><code><a href="https://danheck.github.io/metaBMA/reference/meta_random.html" class="external-link">metaBMA::meta_random()</a></code></td>
-</tr>
-</tbody>
-</table>
-</div>
+<p>See <a href="https://www.indrapatil.com/statsExpressions/articles/stats_details.html">Test and effect size details</a> for the methods, effect sizes, and underlying functions used by each analysis. The same method tables are included in the individual function help pages.</p>
 </div>
 <div class="section level1">
 <h1 id="usage-in-ggstatsplot">Usage in <code>{ggstatsplot}</code>

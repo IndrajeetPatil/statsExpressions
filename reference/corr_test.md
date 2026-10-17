@@ -99,11 +99,9 @@ therefore returns *some* (not all) of the columns below.
 
 - `statistic`: the numeric value of a statistic
 
-- `df`: the numeric value of a parameter being modeled (often degrees of
-  freedom for the test)
-
-- `df.error` and `df`: relevant only if the statistic in question has
-  two degrees of freedom (e.g. anova)
+- `df` and/or `df.error`: degrees of freedom for the test. A *t*-test
+  uses `df.error`, a chi-squared test uses `df`, and a parametric ANOVA
+  uses both (numerator `df` and denominator `df.error`)
 
 - `p.value`: the *p*-value associated with the observed statistic
   (two-sided unless a one-sided `alternative` is requested, where
@@ -157,7 +155,9 @@ and
 
 **Common columns**
 
-- `n.obs`: number of observations
+- `n.obs`: sample size used for the analysis: observations for unpaired
+  tests, complete subjects/pairs for paired two-sample tests and ANOVAs,
+  or studies for meta-analysis
 
 - `expression`: a list-column of pre-formatted
   [plotmath](https://rdrr.io/r/grDevices/plotmath.html) expressions;
@@ -186,7 +186,7 @@ The table below provides summary about:
 
 - functions used internally to compute these details
 
-**Hypothesis testing** and **Effect size estimation**
+**Hypothesis testing and effect size estimation**
 
 |  |  |  |  |
 |----|----|----|----|

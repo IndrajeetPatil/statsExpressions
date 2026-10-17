@@ -115,26 +115,6 @@
 
     
     
-<p>This vignette can be cited as:</p>
-<pre><code>To cite package 'statsExpressions' in publications use:
-
-  Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes
-  and Expressions with Statistical Details. Journal of Open Source
-  Software, 6(61), 3236, https://doi.org/10.21105/joss.03236
-
-A BibTeX entry for LaTeX users is
-
-  @Article{,
-    doi = {10.21105/joss.03236},
-    year = {2021},
-    publisher = {{The Open Journal}},
-    volume = {6},
-    number = {61},
-    pages = {3236},
-    author = {Indrajeet Patil},
-    title = {{statsExpressions: {R} Package for Tidy Dataframes and Expressions with Statistical Details}},
-    journal = {{Journal of Open Source Software}},
-  }</code></pre>
 <div class="section level2">
 <h2 id="summary">Summary<a class="anchor" aria-label="anchor" href="#summary"></a>
 </h2>
@@ -148,7 +128,7 @@ correlation analyses, contingency table analyses, and meta-analyses. The
 functions are pipe-friendly and compatible with tidy data.</p>
 </div>
 <div class="section level2">
-<h2 id="statement-of-need">Statement of Need<a class="anchor" aria-label="anchor" href="#statement-of-need"></a>
+<h2 id="statement-of-need">Statement of need<a class="anchor" aria-label="anchor" href="#statement-of-need"></a>
 </h2>
 <p>Statistical packages exhibit substantial diversity in terms of their
 syntax and expected input and output data type. For example, some
@@ -170,7 +150,7 @@ in these underlying packages can be accessed, with a simpler interface
 and with tidy data format.</p>
 </div>
 <div class="section level2">
-<h2 id="comparison-to-other-packages">Comparison to Other Packages<a class="anchor" aria-label="anchor" href="#comparison-to-other-packages"></a>
+<h2 id="comparison-to-other-packages">Comparison to other packages<a class="anchor" aria-label="anchor" href="#comparison-to-other-packages"></a>
 </h2>
 <p>Unlike <a href="https://broom.tidymodels.org/" class="external-link">broom</a> <span class="citation">(<a href="#ref-Robinson2021">Robinson, Hayes, &amp; Couch, 2021</a>)</span>
 or <a href="https://easystats.github.io/parameters/" class="external-link">parameters</a> <span class="citation">(<a href="#ref-L%C3%BCdecke2020parameters">Lüdecke, Ben-Shachar, Patil,
@@ -181,7 +161,7 @@ out statistical tests. Additionally, none of these packages return
 statistical expressions.</p>
 </div>
 <div class="section level2">
-<h2 id="consistent-syntax-for-statistical-analysis">Consistent Syntax for Statistical Analysis<a class="anchor" aria-label="anchor" href="#consistent-syntax-for-statistical-analysis"></a>
+<h2 id="consistent-syntax-for-statistical-analysis">Consistent syntax for statistical analysis<a class="anchor" aria-label="anchor" href="#consistent-syntax-for-statistical-analysis"></a>
 </h2>
 <p>The package offers functions that allow users to choose a statistical
 approach without changing the syntax (i.e., by only specifying a single
@@ -191,19 +171,17 @@ argument). The functions always require a data frame in tidy format
 return a data frame that can be further utilized downstream in the
 workflow (such as visualization).</p>
 <table class="table">
-<caption>A summary table listing the primary functions in the package
-and the statistical approaches they support. More detailed description
-of the tests and outputs from these functions can be found on the
-package website: <a href="https://www.indrapatil.com/statsExpressions/articles/" class="uri">https://www.indrapatil.com/statsExpressions/articles/</a>.</caption>
 <colgroup>
-<col width="33%">
-<col width="17%">
-<col width="24%">
-<col width="10%">
+<col width="14%">
+<col width="14%">
+<col width="18%">
+<col width="25%">
+<col width="11%">
 <col width="14%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">Function</th>
+<th align="left">Analysis</th>
 <th align="left">Parametric</th>
 <th align="left">Non-parametric</th>
 <th align="left">Robust</th>
@@ -211,49 +189,81 @@ package website: <a href="https://www.indrapatil.com/statsExpressions/articles/"
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left"><code>one_sample_test</code></td>
+<td align="left"><code><a href="../reference/one_sample_test.html">one_sample_test()</a></code></td>
+<td align="left">one-sample test</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 </tr>
 <tr class="even">
-<td align="left"><code>two_sample_test</code></td>
+<td align="left"><code><a href="../reference/two_sample_test.html">two_sample_test()</a></code></td>
+<td align="left">two-sample test</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>oneway_anova</code></td>
+<td align="left"><code><a href="../reference/oneway_anova.html">oneway_anova()</a></code></td>
+<td align="left">one-way ANOVA</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 </tr>
 <tr class="even">
-<td align="left"><code>corr_test</code></td>
+<td align="left"><code><a href="../reference/corr_test.html">corr_test()</a></code></td>
+<td align="left">correlation</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>contingency_table</code></td>
+<td align="left"><code><a href="../reference/contingency_table.html">contingency_table()</a></code></td>
+<td align="left">one- or two-way contingency table</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
-<td align="left">-</td>
+<td align="left">❌</td>
 <td align="left">✅</td>
 </tr>
 <tr class="even">
-<td align="left"><code>meta_analysis</code></td>
+<td align="left"><code><a href="../reference/meta_analysis.html">meta_analysis()</a></code></td>
+<td align="left">random-effects meta-analysis</td>
 <td align="left">✅</td>
-<td align="left">-</td>
+<td align="left">❌</td>
+<td align="left">✅</td>
+<td align="left">✅</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="../reference/pairwise_comparisons.html">pairwise_comparisons()</a></code></td>
+<td align="left">pairwise group comparisons</td>
+<td align="left">✅</td>
+<td align="left">✅</td>
+<td align="left">✅</td>
+<td align="left">✅</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="../reference/centrality_description.html">centrality_description()</a></code></td>
+<td align="left">centrality and distribution</td>
+<td align="left">✅</td>
+<td align="left">✅</td>
 <td align="left">✅</td>
 <td align="left">✅</td>
 </tr>
 </tbody>
 </table>
+<p>❌ means that no dedicated analysis of that type exists. For
+contingency tables, <code>type = "nonparametric"</code> and
+<code>type = "robust"</code> both use the same frequentist tests as
+<code>type = "parametric"</code>.</p>
+<p><code><a href="../reference/pairwise_contingency_table.html">pairwise_contingency_table()</a></code> provides pairwise Fisher’s
+exact tests with Cramer’s <em>V</em> effect sizes. It does not have a
+<code>type</code> argument.</p>
+<p>For the tests, effect sizes, and underlying functions used by each
+analysis, see <a href="https://www.indrapatil.com/statsExpressions/articles/stats_details.html">Test
+and effect size details</a>.</p>
 <p><a href="https://www.indrapatil.com/statsExpressions/">statsExpressions</a> internally relies on
 <code>{stats}</code> package for parametric and non-parametric <span class="citation">(<a href="#ref-base2021">R Core Team, 2021</a>)</span>,
 <a href="https://r-forge.r-project.org/projects/psychor/" class="external-link">WRS2</a> package for robust <span class="citation">(<a href="#ref-Mair2020">Mair &amp; Wilcox, 2020</a>)</span>, and
@@ -271,13 +281,13 @@ Patil, &amp; Lüdecke, 2020</a>)</span> to compute appropriate effect
 size/posterior estimates and their confidence/credible intervals.</p>
 </div>
 <div class="section level2">
-<h2 id="tidy-dataframes-from-statistical-analysis">Tidy Dataframes from Statistical Analysis<a class="anchor" aria-label="anchor" href="#tidy-dataframes-from-statistical-analysis"></a>
+<h2 id="tidy-dataframes-from-statistical-analysis">Tidy dataframes from statistical analysis<a class="anchor" aria-label="anchor" href="#tidy-dataframes-from-statistical-analysis"></a>
 </h2>
 <p>To illustrate the simplicity of this syntax, let’s say we want to run
 a one-way ANOVA. If we first run a non-parametric ANOVA and then decide
 to run a robust ANOVA instead, the syntax remains the same and the
 statistical approach can be modified by changing a single argument:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 15</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">parameter1</span> <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">df.error</span>   <span style="font-weight: bold;">p.value</span></span></span>
@@ -308,7 +318,7 @@ statistical approach can be modified by changing a single argument:</p>
 manipulation packages. For example, we can use combination of
 <a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a> and <a href="https://www.indrapatil.com/statsExpressions/">statsExpressions</a> to repeat the
 same statistical analysis across grouping variables.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># running one-sample proportion test for `vs` at all levels of `am`</span></span>
 <span><span class="va">mtcars</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">am</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -323,7 +333,7 @@ same statistical analysis across grouping variables.</p>
 <span><span class="co">#&gt; <span style="color: #949494;">#   conf.distribution &lt;chr&gt;, n.obs &lt;int&gt;, expression &lt;list&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="custom-statistical-workflows">Custom Statistical Workflows<a class="anchor" aria-label="anchor" href="#custom-statistical-workflows"></a>
+<h2 id="custom-statistical-workflows">Custom statistical workflows<a class="anchor" aria-label="anchor" href="#custom-statistical-workflows"></a>
 </h2>
 <div class="section level3">
 <h3 id="pairwise-comparisons-with-automatic-p-value-adjustment">Pairwise comparisons with automatic <em>p</em>-value adjustment<a class="anchor" aria-label="anchor" href="#pairwise-comparisons-with-automatic-p-value-adjustment"></a>
@@ -332,7 +342,7 @@ same statistical analysis across grouping variables.</p>
 typically follow up with pairwise comparisons. The
 <code><a href="../reference/pairwise_comparisons.html">pairwise_comparisons()</a></code> function handles this with built-in
 <em>p</em>-value adjustment across all pairwise tests:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span></span>
 <span>  data            <span class="op">=</span> <span class="va">mtcars</span>,</span>
 <span>  x               <span class="op">=</span> <span class="va">cyl</span>,</span>
@@ -365,7 +375,7 @@ adjusted <em>p</em>-value, ready for use as a plot annotation. The
 <p>You can chain different statistical tests on the same data,
 consolidate the results into a single data frame, and apply
 <em>p</em>-value correction across all comparisons:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">multi_test_results</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html" class="external-link">bind_rows</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">am</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"parametric"</span><span class="op">)</span>,</span>
 <span>  <span class="fu"><a href="../reference/two_sample_test.html">two_sample_test</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">am</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span>,</span>
@@ -385,45 +395,23 @@ consolidate the results into a single data frame, and apply
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Hedges' g                                                  1.88  <span style="color: #949494;">0.000</span><span style="color: #949494; text-decoration: underline;">0</span><span style="text-decoration: underline;">18</span>8</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> r (rank biserial)                                          <span style="color: #949494;">0.</span>866 <span style="color: #949494;">0.000</span><span style="color: #949494; text-decoration: underline;">0</span><span style="text-decoration: underline;">86</span>9</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Algina-Keselman-Penfield robust standardized difference    2.48  <span style="color: #949494;">0.000</span><span style="color: #949494; text-decoration: underline;">0</span><span style="text-decoration: underline;">86</span>9</span></span></code></pre></div>
+<p>Changing <code>p.value</code> after a test does not update its
+existing <code>expression</code> column. The example selects the
+adjusted numeric results only; the original expressions still contain
+the unadjusted <em>p</em>-values.</p>
 </div>
 <div class="section level3">
-<h3 id="generating-formatted-expressions-from-custom-results">Generating formatted expressions from custom results<a class="anchor" aria-label="anchor" href="#generating-formatted-expressions-from-custom-results"></a>
+<h3 id="expressions-from-model-results">Expressions from model results<a class="anchor" aria-label="anchor" href="#expressions-from-model-results"></a>
 </h3>
-<p>The <code><a href="../reference/add_expression_col.html">add_expression_col()</a></code> function creates
-publication-ready plotmath expressions from any data frame containing
-statistical details. This is useful when you run your own tests outside
-<a href="https://www.indrapatil.com/statsExpressions/">statsExpressions</a> and want to generate a formatted
-expression for plot annotations. Note that this helper is not yet
-stable, so its interface may change in future releases:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># suppose you have run your own statistical test</span></span>
-<span><span class="va">custom_stats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind.data.frame</a></span><span class="op">(</span></span>
-<span>  statistic  <span class="op">=</span> <span class="fl">2.18</span>,</span>
-<span>  df         <span class="op">=</span> <span class="fl">18</span>,</span>
-<span>  p.value    <span class="op">=</span> <span class="fl">0.041</span>,</span>
-<span>  estimate   <span class="op">=</span> <span class="fl">0.65</span>,</span>
-<span>  conf.level <span class="op">=</span> <span class="fl">0.95</span>,</span>
-<span>  conf.low   <span class="op">=</span> <span class="fl">0.03</span>,</span>
-<span>  conf.high  <span class="op">=</span> <span class="fl">1.27</span>,</span>
-<span>  method     <span class="op">=</span> <span class="st">"Student's t-test"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># generate a formatted expression</span></span>
-<span><span class="fu"><a href="../reference/add_expression_col.html">add_expression_col</a></span><span class="op">(</span></span>
-<span>  data           <span class="op">=</span> <span class="va">custom_stats</span>,</span>
-<span>  statistic.text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">quote</a></span><span class="op">(</span><span class="fu">italic</span><span class="op">(</span><span class="st">"t"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>  effsize.text   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">quote</a></span><span class="op">(</span><span class="fu">italic</span><span class="op">(</span><span class="st">"d"</span><span class="op">)</span><span class="op">[</span><span class="st">"Cohen"</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>  n              <span class="op">=</span> <span class="fl">20L</span>,</span>
-<span>  digits         <span class="op">=</span> <span class="fl">2L</span>,</span>
-<span>  digits.df      <span class="op">=</span> <span class="fl">0L</span></span>
-<span><span class="op">)</span><span class="op">$</span><span class="va">expression</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
-<span><span class="co">#&gt; list(italic("t") * "(" * 18 * ")" == "2.18", italic(p) == "0.04", </span></span>
-<span><span class="co">#&gt;     italic("d")["Cohen"] == "0.65", CI["95%"] ~ "[" * "0.03", </span></span>
-<span><span class="co">#&gt;     "1.27" * "]", italic("n")["obs"] == "20")</span></span></code></pre></div>
+<p>For a fitted model, use <code><a href="../reference/tidy_model_parameters.html">tidy_model_parameters()</a></code> to
+extract a tidy data frame, then <code><a href="../reference/tidy_model_expressions.html">tidy_model_expressions()</a></code> to
+add plotmath expressions. The lower-level
+<code><a href="../reference/add_expression_col.html">add_expression_col()</a></code> helper is intended for internal use
+and its interface is not stable.</p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="expressions-for-plots">Expressions for Plots<a class="anchor" aria-label="anchor" href="#expressions-for-plots"></a>
+<h2 id="expressions-for-plots">Expressions for plots<a class="anchor" aria-label="anchor" href="#expressions-for-plots"></a>
 </h2>
 <p>In addition to other details contained in the data frame, there is
 also a column titled <code>expression</code>, which contains a
@@ -445,7 +433,7 @@ indeed a philosophy adopted by the <a href="https://www.indrapatil.com/ggstatspl
 <span class="citation">(<a href="#ref-Patil2021">Patil,
 2021</a>)</span>, and <a href="https://www.indrapatil.com/statsExpressions/">statsExpressions</a> functions as its
 statistical processing backend.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># needed libraries</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
@@ -468,7 +456,7 @@ Example illustrating how <a href="https://www.indrapatil.com/statsExpressions/">
 be used to display results from a statistical test in a plot.
 </p>
 </div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Example 2: One-way ANOVA</span></span>
 <span><span class="va">res_anova</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span>, <span class="va">Sepal.Length</span>, type <span class="op">=</span> <span class="st">"nonparametric"</span><span class="op">)</span></span>
@@ -490,7 +478,7 @@ be used to display results from a statistical test in a plot.
 </div>
 </div>
 <div class="section level2">
-<h2 id="licensing-and-availability">Licensing and Availability<a class="anchor" aria-label="anchor" href="#licensing-and-availability"></a>
+<h2 id="licensing-and-availability">Licensing and availability<a class="anchor" aria-label="anchor" href="#licensing-and-availability"></a>
 </h2>
 <p><a href="https://www.indrapatil.com/statsExpressions/">statsExpressions</a> is licensed under the MIT License,
 with all source code stored at <a href="https://github.com/IndrajeetPatil/statsExpressions/" class="external-link">GitHub</a>.
@@ -510,8 +498,8 @@ ecosystem, a collaborative project created to facilitate the usage of
 <a href="https://github.com/orgs/easystats/people" class="external-link">members of
 easystats</a> as well as the users.</p>
 </div>
-<div class="section level2 unnumbered">
-<h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0" line-spacing="2">
 <div id="ref-american2019publication" class="csl-entry">
@@ -602,6 +590,29 @@ François, R., Grolemund, G., et al. (2019). Welcome to the <span class="nocase"
 Software</em>, <em>4</em>(43), 1686. doi:<a href="https://doi.org/10.21105/joss.01686" class="external-link">10.21105/joss.01686</a>
 </div>
 </div>
+</div>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
+<pre><code>To cite package 'statsExpressions' in publications use:
+
+  Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes
+  and Expressions with Statistical Details. Journal of Open Source
+  Software, 6(61), 3236, https://doi.org/10.21105/joss.03236
+
+A BibTeX entry for LaTeX users is
+
+  @Article{,
+    doi = {10.21105/joss.03236},
+    year = {2021},
+    publisher = {{The Open Journal}},
+    volume = {6},
+    number = {61},
+    pages = {3236},
+    author = {Indrajeet Patil},
+    title = {{statsExpressions: {R} Package for Tidy Dataframes and Expressions with Statistical Details}},
+    journal = {{Journal of Open Source Software}},
+  }</code></pre>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
