@@ -91,9 +91,7 @@ patrick::with_parameters_test_that(
       template_no_df = "s",
       es.text = "s",
       es_text = "s",
-      df_expr = "s",
-      has_missing = "s",
-      needed_cols = "s"
+      df_expr = "s"
     )
 
     run <- function(data) {

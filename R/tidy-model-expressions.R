@@ -63,11 +63,6 @@ tidy_model_expressions <- function(
   # expressions are matched to rows by position, which grouping would break
   data <- ungroup(data)
 
-  # if any of the necessary numeric columns are missing, there shouldn't be an
-  # expression corresponding to that row
-  needed_cols <- select(data, matches("estimate|statistic|std.error|p.value"))
-  has_missing <- rowSums(is.na(needed_cols)) > 0L
-
   # convert the necessary columns to character type for expression
   df_expr <- .data_to_char(data, digits)
 
@@ -119,13 +114,20 @@ tidy_model_expressions <- function(
     }
   )
 
-  # rows with missing values get an `NA` expression here, which is turned into
-  # `NULL` to show nothing instead of an empty string (""); expressions are
-  # matched by position because `term` needn't be unique (e.g. multivariate
-  # models repeat terms for each response); assigned outside a data mask so
-  # that columns in `data` can't shadow the local variables
-  data$expression <- replace(df_expr$expression, has_missing, NA)
-  .glue_to_expression(data)
+  # if any of the necessary numeric columns are missing, there shouldn't be an
+  # expression for that row: an `NA` is turned into `NULL` to show nothing
+  # instead of an empty string (""); expressions are matched by position
+  # because `term` needn't be unique (e.g. multivariate models repeat terms for
+  # each response)
+  data |>
+    mutate(
+      expression = if_else(
+        if_any(matches("estimate|statistic|std.error|p.value"), is.na),
+        NA,
+        .env$df_expr$expression
+      )
+    ) |>
+    .glue_to_expression()
 }
 
 
