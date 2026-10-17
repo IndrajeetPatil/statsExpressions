@@ -18,8 +18,6 @@
 #' @source <https://CRAN.R-project.org/package=ggplot2movies>
 #'
 #' @examples
-#' dim(movies_long)
-#' head(movies_long)
 #' dplyr::glimpse(movies_long)
 "movies_long"
 
@@ -47,8 +45,6 @@
 #'   - value. Value of the measurement.
 #'
 #' @examples
-#' dim(iris_long)
-#' head(iris_long)
 #' dplyr::glimpse(iris_long)
 "iris_long"
 
@@ -81,7 +77,5 @@
 #' Human Behavior*, *29*(4), 1295-1301.
 #'
 #' @examples
-#' dim(bugs_long)
-#' head(bugs_long)
 #' dplyr::glimpse(bugs_long)
 "bugs_long"

@@ -55,8 +55,6 @@ Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressio
 }
 
 \examples{
-library(statsExpressions)
-
 # subjects with a missing rating in any condition are removed
 complete_subjects(bugs_long, condition, desire, subject.id = subject)
 

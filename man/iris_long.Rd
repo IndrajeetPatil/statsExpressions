@@ -34,8 +34,6 @@ of iris. The species are Iris setosa, versicolor, and virginica.
 This is a modified dataset from \code{{datasets}} package.
 }
 \examples{
-dim(iris_long)
-head(iris_long)
 dplyr::glimpse(iris_long)
 }
 \keyword{datasets}
