@@ -10,6 +10,11 @@
   removing rows with missing values. Such levels are now dropped, as in
   `pairwise_contingency_table()`.
 
+- For between-subjects designs (`paired = FALSE`), `long_to_wide_converter()`
+  now drops a level of `x` whose responses are all missing. Previously the
+  empty level was kept, which made robust `oneway_anova()` and
+  `pairwise_comparisons()` fail.
+
 # statsExpressions 2.2.0
 
 - New helper `complete_subjects()` prepares long-format repeated-measures

@@ -135,3 +135,22 @@ test_that("paired designs need at most one row per subject and condition", {
     nrow = 5L
   )
 })
+
+# levels without any response --------------------------------------------
+
+test_that("between-subjects designs drop levels whose responses are all missing", {
+  df <- mutate(mtcars, cyl = factor(cyl), wt = replace(wt, cyl == 8, NA))
+  df_complete <- filter(df, cyl != 8)
+
+  res <- long_to_wide_converter(df, cyl, wt, paired = FALSE, spread = FALSE)
+
+  expect_identical(levels(res$cyl), c("4", "6"))
+
+  # robust tests error on an empty group
+  for (.f in list(oneway_anova, pairwise_comparisons)) {
+    set.seed(123)
+    res_na <- .f(df, cyl, wt, type = "robust")
+    set.seed(123)
+    expect_identical(res_na, .f(df_complete, cyl, wt, type = "robust"))
+  }
+})
