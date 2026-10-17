@@ -12,7 +12,7 @@ test_that("`pairwise_comparisons()` works for between-subjects design", {
     p.adjust.method = "bonferroni"
   )
 
-  expect_snapshot(df1)
+  expect_snapshot(dplyr::select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 
   # games-howell, with an empty factor level (shouldn't change results)
@@ -31,7 +31,7 @@ test_that("`pairwise_comparisons()` works for between-subjects design", {
     p.adjust.method = "bonferroni"
   )
 
-  expect_snapshot(df2)
+  expect_snapshot(dplyr::select(df2, -expression))
   expect_snapshot(df2[["expression"]])
 
   # Dunn test
@@ -44,7 +44,7 @@ test_that("`pairwise_comparisons()` works for between-subjects design", {
     p.adjust.method = "none"
   )
 
-  expect_snapshot(df3)
+  expect_snapshot(dplyr::select(df3, -expression))
   expect_snapshot(df3[["expression"]])
 
   # robust t test
@@ -57,7 +57,7 @@ test_that("`pairwise_comparisons()` works for between-subjects design", {
     p.adjust.method = "fdr"
   )
 
-  expect_snapshot(df4)
+  expect_snapshot(dplyr::select(df4, -expression))
   expect_snapshot(df4[["expression"]])
 
   # checking the edge case where factor level names contain `-`
@@ -68,7 +68,7 @@ test_that("`pairwise_comparisons()` works for between-subjects design", {
     var.equal = TRUE
   )
 
-  expect_snapshot(df5)
+  expect_snapshot(dplyr::select(df5, -expression))
   expect_snapshot(df5[["expression"]])
 
   # games-howell with the default p-value adjustment
@@ -78,7 +78,7 @@ test_that("`pairwise_comparisons()` works for between-subjects design", {
     y = brainwt
   )
 
-  expect_snapshot(df6)
+  expect_snapshot(dplyr::select(df6, -expression))
   expect_snapshot(df6[["expression"]])
 })
 
@@ -94,7 +94,7 @@ test_that("dropped levels are not included", {
     p.adjust.method = "none"
   )
 
-  expect_snapshot(df1)
+  expect_snapshot(dplyr::select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 
   df2 <- pairwise_comparisons(
@@ -120,7 +120,7 @@ test_that("data without NAs", {
     var.equal = TRUE
   )
 
-  expect_snapshot(df)
+  expect_snapshot(dplyr::select(df, -expression))
   expect_snapshot(df[["expression"]])
 })
 
@@ -140,7 +140,7 @@ patrick::with_parameters_test_that(
       p.adjust.method = p.adjust.method
     )
 
-    expect_snapshot(df)
+    expect_snapshot(dplyr::select(df, -expression))
     expect_snapshot(df[["expression"]])
   },
   .cases = dplyr::tibble(
@@ -169,7 +169,7 @@ patrick::with_parameters_test_that(
       paired = TRUE
     )
 
-    expect_snapshot(df)
+    expect_snapshot(dplyr::select(df, -expression))
     expect_snapshot(df[["expression"]])
   },
   .cases = dplyr::tibble(
@@ -227,7 +227,7 @@ patrick::with_parameters_test_that(
       alternative = alternative
     )
 
-    expect_snapshot(df)
+    expect_snapshot(dplyr::select(df, -expression))
     expect_snapshot(df[["expression"]])
   },
   .cases = alternative_cases
