@@ -65,7 +65,8 @@ of \code{y} within that level. The columns are:
 the mean (\code{type = "parametric"}), median (\code{"nonparametric"}), trimmed mean
 (\code{"robust"}), or MAP estimate (\code{"bayes"})
 \item \code{std.dev}: standard deviation (for \code{"parametric"} and \code{"robust"})
-\item \code{mad}: median absolute deviation (for \code{"nonparametric"})
+\item \code{mad}: median absolute deviation (for \code{"nonparametric"}); neither \code{std.dev}
+nor \code{mad} is returned for \code{"bayes"}
 \item \code{iqr}: interquartile range
 \item \code{conf.low}, \code{conf.high}: bounds of the confidence/credible interval for the
 centrality estimate
@@ -81,10 +82,6 @@ centrality estimate, ready to be used in \code{{ggplot2}}
 \item \code{n.expression}: a label combining the group name and its sample size (e.g.
 \code{"setosa\\n(n = 50)"}), useful as an axis or facet label
 }
-
-The exact dispersion column depends on the \code{type} of analysis (\code{std.dev} vs
-\code{mad}; neither is returned for \code{"bayes"}), and \code{datawizard::describe_distribution()} is used internally to compute
-these indices.
 
 For more examples, see the \href{https://www.indrapatil.com/statsExpressions/articles/web_only/dataframe_outputs.html}{data frame output vignette}
 and the \href{https://www.indrapatil.com/statsExpressions/articles/web_only/return_value_schema.html}{Return value schema}
