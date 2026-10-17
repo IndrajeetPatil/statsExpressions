@@ -1,6 +1,6 @@
 # Changelog
 
-## statsExpressions 2.1.2.9000
+## statsExpressions 2.2.0
 
 - New helper
   [`complete_subjects()`](https://www.indrapatil.com/statsExpressions/reference/complete_subjects.md)
@@ -58,6 +58,12 @@
   `'big.mark' and 'decimal.mark' are both ','` when
   `options(OutDec = ",")` is set
   ([\#146](https://github.com/IndrajeetPatil/statsExpressions/issues/146)).
+
+- Corrected the documentation of Bayesian correlation columns,
+  missing-value counts in
+  [`centrality_description()`](https://www.indrapatil.com/statsExpressions/reference/centrality_description.md),
+  degrees of freedom, paired sample sizes, and adjusting p-values after
+  expressions have been generated.
 
 ## statsExpressions 2.1.2
 
