@@ -1,0 +1,10 @@
+To illustrate the simplicity of this syntax, let's say we want to run a one-way
+ANOVA. If we first run a non-parametric ANOVA and then decide to run a robust
+ANOVA instead, the syntax remains the same and the statistical approach can be
+modified by changing a single argument:
+
+```{r}
+mtcars |> oneway_anova(cyl, wt, type = "nonparametric")
+
+mtcars |> oneway_anova(cyl, wt, type = "robust")
+```
