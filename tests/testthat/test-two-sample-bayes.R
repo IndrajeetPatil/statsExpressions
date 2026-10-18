@@ -17,7 +17,7 @@ test_that("bayesian (paired t-test)", {
   df <- two_sample_test(
     type = "bayes",
     data = bugs_long_two_groups,
-    x = "condition",
+    x = condition,
     y = desire,
     paired = TRUE,
     bf.prior = 0.8
