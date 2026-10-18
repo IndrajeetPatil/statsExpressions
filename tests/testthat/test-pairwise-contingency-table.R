@@ -1,104 +1,59 @@
-# basic usage --------------------------------------------------
+# `msleep` has `NA`s; `Titanic` is counts data
+patrick::with_parameters_test_that(
+  "pairwise_contingency_table() works:",
+  {
+    # `exec()` inlines the column names, as if they were typed in the call
+    df <- rlang::exec(
+      pairwise_contingency_table,
+      data = data,
+      x = x,
+      y = y,
+      counts = counts,
+      p.adjust.method = p.adjust.method,
+      digits = digits,
+      conf.level = conf.level,
+      alternative = alternative
+    )
 
-test_that("pairwise_contingency_table works - basic", {
-  df1 <- pairwise_contingency_table(
-    data = mtcars,
-    x = cyl,
-    y = am,
+    expect_snapshot(select(df, -expression))
+    expect_snapshot(df[["expression"]])
+  },
+  .cases = dplyr::tibble(
+    .test_name = c(
+      "basic",
+      "with counts",
+      "no adjustment",
+      "data with NAs",
+      "custom conf.level and alternative",
+      "custom digits"
+    ),
+    data = list(mtcars, as.data.frame(Titanic), mtcars, msleep, mtcars, mtcars),
+    x = c("cyl", "Class", "cyl", "vore", "cyl", "cyl"),
+    y = c("am", "Survived", "am", "conservation", "am", "am"),
+    counts = list(NULL, "Freq", NULL, NULL, NULL, NULL),
+    p.adjust.method = c("bonferroni", "fdr", "none", "holm", "holm", "BH"),
+    digits = c(2L, 2L, 2L, 2L, 2L, 4L),
+    conf.level = c(0.95, 0.95, 0.95, 0.95, 0.90, 0.95),
+    alternative = c(rep("two.sided", 4L), "greater", "two.sided")
+  )
+)
+
+test_that("pairwise_contingency_table() adjusts p-values only when asked", {
+  df <- pairwise_contingency_table(
+    mtcars,
+    cyl,
+    am,
     p.adjust.method = "bonferroni"
   )
-
-  expect_snapshot(select(df1, -expression))
-  expect_snapshot(df1[["expression"]])
-
-  # correct number of pairs (3 levels -> 3 pairs)
-  expect_shape(df1, nrow = 3L)
-
-  # both raw and adjusted p-values present
-  expect_contains(names(df1), c("p.value", "p.value.adj"))
-
-  # adjusted should be >= raw
-  expect_true(all(df1$p.value.adj >= df1$p.value))
-})
-
-# counts data --------------------------------------------------
-
-test_that("pairwise_contingency_table works - with counts", {
-  df1 <- pairwise_contingency_table(
-    data = as.data.frame(Titanic),
-    x = Class,
-    y = Survived,
-    counts = Freq,
-    p.adjust.method = "fdr"
-  )
-
-  expect_snapshot(select(df1, -expression))
-  expect_snapshot(df1[["expression"]])
-
-  # 4 levels -> C(4,2) = 6 pairs
-  expect_shape(df1, nrow = 6L)
-})
-
-# no adjustment --------------------------------------------------
-
-test_that("pairwise_contingency_table works - no adjustment", {
-  df1 <- pairwise_contingency_table(
-    data = mtcars,
-    x = cyl,
-    y = am,
+  df_none <- pairwise_contingency_table(
+    mtcars,
+    cyl,
+    am,
     p.adjust.method = "none"
   )
 
-  expect_snapshot(select(df1, -expression))
-  expect_snapshot(df1[["expression"]])
-
-  # with no adjustment, raw and adjusted should be equal
-  expect_identical(df1$p.value, df1$p.value.adj)
-})
-
-# data with NAs --------------------------------------------------
-
-test_that("pairwise_contingency_table works - data with NAs", {
-  df1 <- pairwise_contingency_table(
-    data = msleep,
-    x = vore,
-    y = conservation,
-    p.adjust.method = "holm"
-  )
-
-  expect_snapshot(select(df1, -expression))
-  expect_snapshot(df1[["expression"]])
-})
-
-# custom conf.level and alternative --------------------------------------------------
-
-test_that("pairwise_contingency_table works - custom conf.level and alternative", {
-  df1 <- pairwise_contingency_table(
-    data = mtcars,
-    x = cyl,
-    y = am,
-    conf.level = 0.90,
-    alternative = "greater",
-    p.adjust.method = "holm"
-  )
-
-  expect_snapshot(select(df1, -expression))
-  expect_snapshot(df1[["expression"]])
-})
-
-# custom digits --------------------------------------------------
-
-test_that("pairwise_contingency_table works - custom digits", {
-  df1 <- pairwise_contingency_table(
-    data = mtcars,
-    x = cyl,
-    y = am,
-    digits = 4L,
-    p.adjust.method = "BH"
-  )
-
-  expect_snapshot(select(df1, -expression))
-  expect_snapshot(df1[["expression"]])
+  expect_true(all(df$p.value.adj >= df$p.value))
+  expect_identical(df_none$p.value, df_none$p.value.adj)
 })
 
 test_that("pairwise_contingency_table works with `pair` as grouping name", {

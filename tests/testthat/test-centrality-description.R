@@ -37,7 +37,6 @@ test_that("centrality description works as expected - missing data", {
   expect_snapshot(df_na[["expression"]])
 })
 
-
 test_that("centrality description works when variable is named `variable`", {
   df_var <- dplyr::rename(mtcars, variable = cyl)
 

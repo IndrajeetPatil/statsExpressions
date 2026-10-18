@@ -175,3 +175,23 @@ iris_long_two_groups <- filter(
   condition %in% c("Sepal.Length", "Sepal.Width")
 )
 msleep_two_groups <- filter(msleep, vore %in% c("carni", "herbi"))
+
+# `msleep` with an empty factor level, which shouldn't change results
+msleep_empty_level <- dplyr::mutate(
+  msleep,
+  vore = factor(vore, levels = c(levels(factor(vore)), "Random"))
+)
+
+# few subjects in a within-subjects design
+few_cases <- dplyr::tibble(
+  cases = c(1, 1, 2, 2, 3, 3, 4, 4),
+  groups = c("b", "a", "b", "a", "b", "a", "b", "a"),
+  values = c(2, 5, 3, 4, 4, 6, 5, 8)
+)
+
+# within-subjects data without `NA`s, with the column names of `bugs_long`
+wine_tasting <- dplyr::rename(
+  WRS2::WineTasting,
+  condition = Wine,
+  desire = Taste
+)

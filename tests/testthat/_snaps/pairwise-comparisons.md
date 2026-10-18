@@ -1,7 +1,7 @@
-# `pairwise_comparisons()` works for between-subjects design
+# `pairwise_comparisons()` works for between-subjects design: Student's t
 
     Code
-      dplyr::select(df1, -expression)
+      dplyr::select(df, -expression)
     Output
       # A tibble: 6 x 5
         group1  group2  p.value p.adjust.method test       
@@ -16,7 +16,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic(p)["Bonferroni" - adj.] == "1.00")
@@ -37,10 +37,10 @@
       list(italic(p)["Bonferroni" - adj.] == "1.00")
       
 
----
+# `pairwise_comparisons()` works for between-subjects design: Games-Howell, empty factor level
 
     Code
-      dplyr::select(df2, -expression)
+      dplyr::select(df, -expression)
     Output
       # A tibble: 6 x 8
         group1  group2  statistic p.value alternative distribution p.adjust.method
@@ -63,7 +63,7 @@
 ---
 
     Code
-      df2[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic(p)["Bonferroni" - adj.] == "1.00")
@@ -84,10 +84,10 @@
       list(italic(p)["Bonferroni" - adj.] == "1.00")
       
 
----
+# `pairwise_comparisons()` works for between-subjects design: Dunn
 
     Code
-      dplyr::select(df3, -expression)
+      dplyr::select(df, -expression)
     Output
       # A tibble: 6 x 8
         group1  group2  statistic p.value alternative distribution p.adjust.method
@@ -110,7 +110,7 @@
 ---
 
     Code
-      df3[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic(p)[unadj.] == "0.56")
@@ -131,10 +131,10 @@
       list(italic(p)[unadj.] == "0.25")
       
 
----
+# `pairwise_comparisons()` works for between-subjects design: robust t
 
     Code
-      dplyr::select(df4, -expression)
+      dplyr::select(df, -expression)
     Output
       # A tibble: 6 x 9
         group1  group2  estimate conf.level conf.low conf.high p.value p.adjust.method
@@ -157,7 +157,7 @@
 ---
 
     Code
-      df4[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic(p)["FDR" - adj.] == "0.79")
@@ -178,10 +178,10 @@
       list(italic(p)["FDR" - adj.] == "0.55")
       
 
----
+# `pairwise_comparisons()` works for between-subjects design: level names containing `-`
 
     Code
-      dplyr::select(df5, -expression)
+      dplyr::select(df, -expression)
     Output
       # A tibble: 3 x 5
         group1 group2 p.value p.adjust.method test       
@@ -193,7 +193,7 @@
 ---
 
     Code
-      df5[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic(p)["Holm" - adj.] == "0.32")
@@ -205,10 +205,10 @@
       list(italic(p)["Holm" - adj.] == "3.10e-03")
       
 
----
+# `pairwise_comparisons()` works for between-subjects design: Games-Howell, default p-value adjustment
 
     Code
-      dplyr::select(df6, -expression)
+      dplyr::select(df, -expression)
     Output
       # A tibble: 6 x 8
         group1  group2  statistic p.value alternative distribution p.adjust.method
@@ -231,7 +231,7 @@
 ---
 
     Code
-      df6[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic(p)["Holm" - adj.] == "1.00")
@@ -252,29 +252,7 @@
       list(italic(p)["Holm" - adj.] == "1.00")
       
 
-# dropped levels are not included
-
-    Code
-      dplyr::select(df1, -expression)
-    Output
-      # A tibble: 1 x 8
-        group1 group2 statistic p.value alternative distribution p.adjust.method
-        <chr>  <chr>      <dbl>   <dbl> <chr>       <chr>        <chr>          
-      1 carni  omni        1.10   0.447 two.sided   q            None           
-        test        
-        <chr>       
-      1 Games-Howell
-
----
-
-    Code
-      df1[["expression"]]
-    Output
-      [[1]]
-      list(italic(p)[unadj.] == "0.45")
-      
-
-# data without NAs
+# `pairwise_comparisons()` works for between-subjects design: Student's t, without NAs
 
     Code
       dplyr::select(df, -expression)
@@ -299,6 +277,28 @@
       
       [[3]]
       list(italic(p)["FDR" - adj.] == "2.77e-09")
+      
+
+# dropped levels are not included
+
+    Code
+      dplyr::select(df1, -expression)
+    Output
+      # A tibble: 1 x 8
+        group1 group2 statistic p.value alternative distribution p.adjust.method
+        <chr>  <chr>      <dbl>   <dbl> <chr>       <chr>        <chr>          
+      1 carni  omni        1.10   0.447 two.sided   q            None           
+        test        
+        <chr>       
+      1 Games-Howell
+
+---
+
+    Code
+      df1[["expression"]]
+    Output
+      [[1]]
+      list(italic(p)[unadj.] == "0.45")
       
 
 # `pairwise_comparisons()` works for within-subjects design: bugs_long p

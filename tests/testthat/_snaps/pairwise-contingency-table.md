@@ -1,7 +1,7 @@
-# pairwise_contingency_table works - basic
+# pairwise_contingency_table() works: basic
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 3 x 13
         group1 group2 p.value p.value.adj estimate conf.level conf.low conf.high
@@ -23,7 +23,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic(p)["Bonferroni" - adj.] == "1.00")
@@ -35,10 +35,10 @@
       list(italic(p)["Bonferroni" - adj.] == "0.84")
       
 
-# pairwise_contingency_table works - with counts
+# pairwise_contingency_table() works: with counts
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 6 x 13
         group1 group2  p.value p.value.adj estimate conf.level conf.low conf.high
@@ -69,7 +69,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic(p)["FDR" - adj.] == "4.17e-07")
@@ -90,10 +90,10 @@
       list(italic(p)["FDR" - adj.] == "0.60")
       
 
-# pairwise_contingency_table works - no adjustment
+# pairwise_contingency_table() works: no adjustment
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 3 x 13
         group1 group2 p.value p.value.adj estimate conf.level conf.low conf.high
@@ -115,7 +115,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic(p)[unadj.] == "0.33")
@@ -127,10 +127,10 @@
       list(italic(p)[unadj.] == "0.28")
       
 
-# pairwise_contingency_table works - data with NAs
+# pairwise_contingency_table() works: data with NAs
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 6 x 13
         group1  group2  p.value p.value.adj estimate conf.level conf.low conf.high
@@ -161,7 +161,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic(p)["Holm" - adj.] == "1.00")
@@ -182,10 +182,10 @@
       list(italic(p)["Holm" - adj.] == "1.00")
       
 
-# pairwise_contingency_table works - custom conf.level and alternative
+# pairwise_contingency_table() works: custom conf.level and alternative
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 3 x 13
         group1 group2 p.value p.value.adj estimate conf.level conf.low conf.high
@@ -207,7 +207,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic(p)["Holm" - adj.] == "1.00")
@@ -219,10 +219,10 @@
       list(italic(p)["Holm" - adj.] == "1.00")
       
 
-# pairwise_contingency_table works - custom digits
+# pairwise_contingency_table() works: custom digits
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 3 x 13
         group1 group2 p.value p.value.adj estimate conf.level conf.low conf.high
@@ -244,7 +244,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic(p)["FDR" - adj.] == "0.3322")

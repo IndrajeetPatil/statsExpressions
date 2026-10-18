@@ -1,4 +1,4 @@
-# parametric anova subtitles work (without NAs)
+# parametric oneway_anova() works: between-subjects without NAs, Welch
 
     Code
       select(df, -expression)
@@ -25,10 +25,10 @@
           "[" * "0.43668", "1.00000" * "]", italic("n")["obs"] == "32")
       
 
----
+# parametric oneway_anova() works: between-subjects without NAs, Fisher
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 13
         statistic    df df.error    p.value method                    effectsize
@@ -41,7 +41,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic("F")["Fisher"](2, 29) == "22.91139", italic(p) == 
@@ -49,10 +49,10 @@
           "[" * "0.40360", "1.00000" * "]", italic("n")["obs"] == "32")
       
 
-# parametric anova subtitles with partial omega-squared
+# parametric oneway_anova() works: between-subjects with NAs, partial omega-squared
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 13
         statistic    df df.error p.value
@@ -68,7 +68,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic("F")["Welch"](3, 24.0475) == "2.2653", italic(p) == 
@@ -76,10 +76,10 @@
           "[" * "0.0000", "1.0000" * "]", italic("n")["obs"] == "51")
       
 
-# paired parametric anova subtitles work (without NAs)
+# parametric oneway_anova() works: within-subjects without NAs
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 17
         term      sumsq sum.squares.error    df df.error meansq statistic  p.value
@@ -95,7 +95,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic("F")["Fisher"](1.149, 171.217) == "776.318", italic(p) == 

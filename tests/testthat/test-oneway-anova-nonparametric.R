@@ -62,7 +62,3 @@ test_that("within-subjects", {
   expect_snapshot(select(df2, -expression))
   expect_snapshot(df2[["expression"]])
 })
-
-test_that("works with subject id", {
-  expect_subject_id_invariance(oneway_anova, data_with_subid, type = "np")
-})

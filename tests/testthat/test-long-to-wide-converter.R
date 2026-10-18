@@ -36,7 +36,6 @@ test_that("with .rowid - without NA", {
   expect_subject_id_invariance(long_to_wide_converter, data, spread = FALSE)
 })
 
-
 # with .rowid - with NA ---------------------------------------------
 
 test_that("with .rowid - with NA", {
@@ -59,7 +58,6 @@ test_that("with .rowid - with NA", {
     )
   }
 })
-
 
 # NA in subject.id ------------------------------------------------------
 

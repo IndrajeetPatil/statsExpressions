@@ -110,9 +110,6 @@ test_that("goodness of fit contingency_table works", {
 
   expect_snapshot(select(df3, -expression))
   expect_snapshot(df3[["expression"]])
-
-  # edge case
-  expect_null(contingency_table(data.frame(x = "x"), x, type = "bayes"))
 })
 
 test_that("bayesian (proportion test)", {
@@ -136,6 +133,9 @@ test_that("bayesian (proportion test)", {
 
   expect_snapshot(select(df2, -expression))
   expect_snapshot(df2[["expression"]])
+
+  # a variable with a single level gives no result
+  expect_null(contingency_table(data.frame(x = "x"), x, type = "bayes"))
 })
 
 test_that("bayesian (contingency tab)", {

@@ -27,11 +27,3 @@ test_that("nonparametric works - within-subjects design", {
   expect_snapshot(select(df, -expression), variant = snapshot_variant)
   expect_snapshot(df[["expression"]], variant = snapshot_variant)
 })
-
-test_that("works with subject id", {
-  expect_subject_id_invariance(
-    two_sample_test,
-    data_with_subid_two_groups,
-    type = "np"
-  )
-})

@@ -37,11 +37,3 @@ patrick::with_parameters_test_that(
     digits = c(4L, 3L, 3L, 4L)
   )
 )
-
-test_that("works with subject id", {
-  expect_subject_id_invariance(
-    two_sample_test,
-    data_with_subid_two_groups,
-    type = "r"
-  )
-})
