@@ -19,8 +19,8 @@ backend for `ggstatsplot`.
   `pairwise_comparisons()`, and `pairwise_contingency_table()`.
 - Supporting public helpers include `centrality_description()`,
   `add_expression_col()`, `tidy_model_expressions()`,
-  `tidy_model_parameters()`, `extract_stats_type()`, `stats_type_switch()`, and
-  `long_to_wide_converter()`.
+  `tidy_model_parameters()`, `extract_stats_type()`, `stats_type_switch()`,
+  `long_to_wide_converter()`, and `complete_subjects()`.
 - The package standardizes parametric, nonparametric, robust, and Bayesian
   `type` labels, but supported choices vary by function. Do not assume every
   exported function has this interface; for example,
