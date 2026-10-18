@@ -156,8 +156,7 @@ results in the context of a visualization is indeed a philosophy adopted by the
 #| results from a statistical test in a plot."
 library(ggplot2)
 
-# Example 1: Performing a t-test on raw tidy data and extracting the formatted expression
-# for direct use in a plot annotation
+# Example 1: two-sample t-test
 res_ttest <- two_sample_test(mtcars, am, wt, type = "parametric")
 
 ggplot(mtcars, aes(as.factor(am), wt)) +
@@ -166,14 +165,14 @@ ggplot(mtcars, aes(as.factor(am), wt)) +
     x = "Transmission (0 = automatic, 1 = manual)",
     y = "Weight (1000 lbs)",
     title = "Vehicle Weight by Transmission Type",
-    subtitle = res_ttest$expression[[1]] # Extract formatted p-value and effect size
+    subtitle = res_ttest$expression[[1]]
   )
 
-# Example 2: One-way ANOVA
+# Example 2: one-way ANOVA
 res_anova <- oneway_anova(iris, Species, Sepal.Length, type = "nonparametric")
 
 ggplot(iris, aes(x = Sepal.Length, y = Species)) +
-  geom_boxplot() + # use 'expression' column to display results in the subtitle
+  geom_boxplot() +
   labs(
     x = "Sepal length (in cm)",
     y = "Species",
