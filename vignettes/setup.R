@@ -11,7 +11,5 @@ knitr::opts_chunk$set(
 library(dplyr)
 library(statsExpressions)
 
-options(lifecycle_verbosity = "warning")
-
 # for reproducibility
 set.seed(123)

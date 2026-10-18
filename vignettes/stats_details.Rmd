@@ -12,10 +12,7 @@ vignette: >
 
 ```{r}
 #| label = "setup",
-#| message = FALSE,
-#| warning = FALSE,
-#| include = FALSE,
-#| echo = FALSE
+#| include = FALSE
 source("setup.R")
 ```
 
