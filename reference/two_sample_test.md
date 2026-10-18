@@ -134,7 +134,7 @@ two_sample_test(
 
 - exact:
 
-  A logical indicating whether you want exact p-values to be computed.
+  A logical indicating whether exact *p*-values should be computed.
   Relevant only when `type = "nonparametric"` (Default: `FALSE`).
 
 - ...:

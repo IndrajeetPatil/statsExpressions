@@ -172,10 +172,9 @@ article.
 
 ## Note
 
-**Important**: The function assumes that you have already downloaded the
-needed package (`{metafor}`, `{metaplus}`, or `{metaBMA}`) for
-meta-analysis. If they are not available, you will be asked to install
-them.
+The package needed for the chosen `type` (`{metafor}`, `{metaplus}`, or
+`{metaBMA}`) is only suggested, so you will be asked to install it if it
+is not available.
 
 ## Random-effects meta-analysis
 
