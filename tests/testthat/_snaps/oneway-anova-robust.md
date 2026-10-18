@@ -1,7 +1,7 @@
-# expr_anova_robust works - between-subjects
+# robust oneway_anova() works: between-subjects without NAs
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 11
         statistic    df df.error   p.value
@@ -20,7 +20,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic("F")["trimmed-means"](2, 18.97383) == "20.24946", 
@@ -29,10 +29,10 @@
               "32")
       
 
----
+# robust oneway_anova() works: between-subjects with NAs
 
     Code
-      select(df2, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 11
         statistic    df df.error p.value
@@ -51,7 +51,7 @@
 ---
 
     Code
-      df2[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic("F")["trimmed-means"](2, 21.6869) == "0.0503", italic(p) == 
@@ -59,10 +59,10 @@
           "0.7537" * "]", italic("n")["obs"] == "71")
       
 
-# expr_anova_robust works - within-subjects
+# robust oneway_anova() works: within-subjects with NAs
 
     Code
-      select(df1, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 11
         statistic    df df.error  p.value
@@ -81,7 +81,7 @@
 ---
 
     Code
-      df1[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic("F")["trimmed-means"](2.7303, 144.7051) == "20.9752", 
@@ -90,10 +90,10 @@
           italic("n")["pairs"] == "88")
       
 
----
+# robust oneway_anova() works: within-subjects with few cases
 
     Code
-      select(df2, -expression)
+      select(df, -expression)
     Output
       # A tibble: 1 x 11
         statistic    df df.error p.value
@@ -112,7 +112,7 @@
 ---
 
     Code
-      df2[["expression"]]
+      df[["expression"]]
     Output
       [[1]]
       list(italic("F")["trimmed-means"](1, 3) == "22.09", italic(p) == 

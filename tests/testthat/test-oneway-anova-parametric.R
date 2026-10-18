@@ -1,56 +1,40 @@
-test_that("parametric anova subtitles work (without NAs)", {
-  df <- oneway_anova(
-    data = mtcars,
-    x = cyl,
-    y = wt,
-    effsize.type = "eta",
-    digits = 5L,
-    var.equal = FALSE
+patrick::with_parameters_test_that(
+  "parametric oneway_anova() works:",
+  {
+    # `exec()` inlines the column names, as if they were typed in the call
+    df <- rlang::exec(
+      oneway_anova,
+      data = data,
+      x = x,
+      y = y,
+      paired = paired,
+      effsize.type = effsize.type,
+      var.equal = var.equal,
+      conf.level = conf.level,
+      digits = digits
+    )
+
+    expect_snapshot(select(df, -expression))
+    expect_snapshot(df[["expression"]])
+  },
+  .cases = dplyr::tibble(
+    .test_name = c(
+      "between-subjects without NAs, Welch",
+      "between-subjects without NAs, Fisher",
+      "between-subjects with NAs, partial omega-squared",
+      # `var.equal` shouldn't make a difference
+      "within-subjects without NAs"
+    ),
+    data = list(mtcars, mtcars, msleep, iris_long),
+    x = c("cyl", "cyl", "vore", "condition"),
+    y = c("wt", "wt", "brainwt", "value"),
+    paired = c(FALSE, FALSE, FALSE, TRUE),
+    effsize.type = c("eta", "eta", "unbiased", "omega"),
+    var.equal = c(FALSE, TRUE, FALSE, FALSE),
+    conf.level = c(0.95, 0.95, 0.95, 0.99),
+    digits = c(5L, 5L, 4L, 3L)
   )
-
-  expect_snapshot(select(df, -expression))
-  expect_snapshot(df[["expression"]])
-
-  df1 <- oneway_anova(
-    data = mtcars,
-    x = cyl,
-    y = wt,
-    effsize.type = "eta",
-    digits = 5L,
-    var.equal = TRUE
-  )
-
-  expect_snapshot(select(df1, -expression))
-  expect_snapshot(df1[["expression"]])
-})
-
-test_that("parametric anova subtitles with partial omega-squared", {
-  df1 <- oneway_anova(
-    data = msleep,
-    x = vore,
-    y = brainwt,
-    effsize.type = "unbiased",
-    digits = 4L
-  )
-
-  expect_snapshot(select(df1, -expression))
-  expect_snapshot(df1[["expression"]])
-})
-
-test_that("paired parametric anova subtitles work (without NAs)", {
-  df1 <- oneway_anova(
-    data = iris_long,
-    x = condition,
-    y = value,
-    paired = TRUE,
-    digits = 3L,
-    var.equal = FALSE, # shouldn't make a difference
-    conf.level = 0.99
-  )
-
-  expect_snapshot(select(df1, -expression))
-  expect_snapshot(df1[["expression"]])
-})
+)
 
 test_that("works with subject id", {
   expect_subject_id_invariance(oneway_anova, data_with_subid)
