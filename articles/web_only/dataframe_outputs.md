@@ -519,16 +519,8 @@
 `# paired`\
 \
 `paired_data`` ``<-`` ``dplyr``::`[`tibble`](https://tibble.tidyverse.org/reference/tibble.html)`(`\
-`  response_before ``=`` `[`structure`](https://rdrr.io/r/base/structure.html)`(`\
-`    `[`c`](https://rdrr.io/r/base/c.html)`(``1L``, ``2L``, ``1L``, ``2L``)``,`\
-`    levels ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"no"``, ``"yes"``)``,`\
-`    class ``=`` ``"factor"`\
-`  ``)``,`\
-`  response_after ``=`` `[`structure`](https://rdrr.io/r/base/structure.html)`(`\
-`    `[`c`](https://rdrr.io/r/base/c.html)`(``1L``, ``1L``, ``2L``, ``2L``)``,`\
-`    levels ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"no"``, ``"yes"``)``,`\
-`    class ``=`` ``"factor"`\
-`  ``)``,`\
+`  response_before ``=`` `[`factor`](https://rdrr.io/r/base/factor.html)`(`[`c`](https://rdrr.io/r/base/c.html)`(``"no"``, ``"yes"``, ``"no"``, ``"yes"``)``)``,`\
+`  response_after ``=`` `[`factor`](https://rdrr.io/r/base/factor.html)`(`[`c`](https://rdrr.io/r/base/c.html)`(``"no"``, ``"no"``, ``"yes"``, ``"yes"``)``)``,`\
 `  Freq ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``65L``, ``25L``, ``5L``, ``5L``)`\
 `)`\
 \
@@ -880,7 +872,7 @@
 `#> ``2`` Dunn  ``<language>`\
 `#> ``3`` Dunn  ``<language>`\
 \
-`# robust (Yuen's trimmed means *t*-test)`\
+`# robust (Yuen's trimmed means t-test)`\
 [`pairwise_comparisons`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)`(`\
 `  data ``=`` ``mtcars``,`\
 `  x ``=`` ``cyl``,`\
@@ -901,7 +893,7 @@
 `#> ``2`` Yuen's trimmed means ``<language>`\
 `#> ``3`` Yuen's trimmed means ``<language>`\
 \
-`# Bayes Factor (Student's *t*-test)`\
+`# Bayes Factor (Student's t-test)`\
 [`pairwise_comparisons`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)`(`\
 `  data ``=`` ``mtcars``,`\
 `  x ``=`` ``cyl``,`\
@@ -928,7 +920,7 @@
 \
 `#------------------- within-subjects design ----------------------------`\
 \
-`# parametric (Student's *t*-test)`\
+`# parametric (Student's t-test)`\
 [`pairwise_comparisons`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)`(`\
 `  data ``=`` ``bugs_long``,`\
 `  x ``=`` ``condition``,`\
@@ -976,7 +968,7 @@
 `#> ``5`` Durbin-Conover ``<language>`\
 `#> ``6`` Durbin-Conover ``<language>`\
 \
-`# robust (Yuen's trimmed means *t*-test)`\
+`# robust (Yuen's trimmed means t-test)`\
 [`pairwise_comparisons`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)`(`\
 `  data ``=`` ``bugs_long``,`\
 `  x ``=`` ``condition``,`\
@@ -1004,7 +996,7 @@
 `#> ``5`` Hommel          Yuen's trimmed means ``<language>`\
 `#> ``6`` Hommel          Yuen's trimmed means ``<language>`\
 \
-`# Bayes Factor (Student's *t*-test)`\
+`# Bayes Factor (Student's t-test)`\
 [`pairwise_comparisons`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)`(`\
 `  data ``=`` ``bugs_long``,`\
 `  x ``=`` ``condition``,`\

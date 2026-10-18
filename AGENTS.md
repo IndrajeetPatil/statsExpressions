@@ -31,8 +31,9 @@ the statistical backend for `ggstatsplot`.
   [`tidy_model_parameters()`](https://www.indrapatil.com/statsExpressions/reference/tidy_model_parameters.md),
   [`extract_stats_type()`](https://www.indrapatil.com/statsExpressions/reference/extract_stats_type.md),
   [`stats_type_switch()`](https://www.indrapatil.com/statsExpressions/reference/extract_stats_type.md),
+  [`long_to_wide_converter()`](https://www.indrapatil.com/statsExpressions/reference/long_to_wide_converter.md),
   and
-  [`long_to_wide_converter()`](https://www.indrapatil.com/statsExpressions/reference/long_to_wide_converter.md).
+  [`complete_subjects()`](https://www.indrapatil.com/statsExpressions/reference/complete_subjects.md).
 - The package standardizes parametric, nonparametric, robust, and
   Bayesian `type` labels, but supported choices vary by function. Do not
   assume every exported function has this interface; for example,

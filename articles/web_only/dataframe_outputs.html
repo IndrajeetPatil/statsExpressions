@@ -638,16 +638,8 @@
 <span><span class="co"># paired</span></span>
 <span></span>
 <span><span class="va">paired_data</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
-<span>  response_before <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/structure.html" class="external-link">structure</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">1L</span>, <span class="fl">2L</span><span class="op">)</span>,</span>
-<span>    levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span>, <span class="st">"yes"</span><span class="op">)</span>,</span>
-<span>    class <span class="op">=</span> <span class="st">"factor"</span></span>
-<span>  <span class="op">)</span>,</span>
-<span>  response_after <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/structure.html" class="external-link">structure</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">2L</span><span class="op">)</span>,</span>
-<span>    levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span>, <span class="st">"yes"</span><span class="op">)</span>,</span>
-<span>    class <span class="op">=</span> <span class="st">"factor"</span></span>
-<span>  <span class="op">)</span>,</span>
+<span>  response_before <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span>, <span class="st">"yes"</span>, <span class="st">"no"</span>, <span class="st">"yes"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  response_after <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span>, <span class="st">"no"</span>, <span class="st">"yes"</span>, <span class="st">"yes"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  Freq <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">65L</span>, <span class="fl">25L</span>, <span class="fl">5L</span>, <span class="fl">5L</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
@@ -1003,7 +995,7 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Dunn  <span style="color: #949494;">&lt;language&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Dunn  <span style="color: #949494;">&lt;language&gt;</span></span></span>
 <span></span>
-<span><span class="co"># robust (Yuen's trimmed means *t*-test)</span></span>
+<span><span class="co"># robust (Yuen's trimmed means t-test)</span></span>
 <span><span class="fu"><a href="../../reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span>
 <span>  x <span class="op">=</span> <span class="va">cyl</span>,</span>
@@ -1024,7 +1016,7 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Yuen's trimmed means <span style="color: #949494;">&lt;language&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Yuen's trimmed means <span style="color: #949494;">&lt;language&gt;</span></span></span>
 <span></span>
-<span><span class="co"># Bayes Factor (Student's *t*-test)</span></span>
+<span><span class="co"># Bayes Factor (Student's t-test)</span></span>
 <span><span class="fu"><a href="../../reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span>
 <span>  x <span class="op">=</span> <span class="va">cyl</span>,</span>
@@ -1051,7 +1043,7 @@
 <span></span>
 <span><span class="co">#------------------- within-subjects design ----------------------------</span></span>
 <span></span>
-<span><span class="co"># parametric (Student's *t*-test)</span></span>
+<span><span class="co"># parametric (Student's t-test)</span></span>
 <span><span class="fu"><a href="../../reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">bugs_long</span>,</span>
 <span>  x <span class="op">=</span> <span class="va">condition</span>,</span>
@@ -1099,7 +1091,7 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Durbin-Conover <span style="color: #949494;">&lt;language&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Durbin-Conover <span style="color: #949494;">&lt;language&gt;</span></span></span>
 <span></span>
-<span><span class="co"># robust (Yuen's trimmed means *t*-test)</span></span>
+<span><span class="co"># robust (Yuen's trimmed means t-test)</span></span>
 <span><span class="fu"><a href="../../reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">bugs_long</span>,</span>
 <span>  x <span class="op">=</span> <span class="va">condition</span>,</span>
@@ -1127,7 +1119,7 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Hommel          Yuen's trimmed means <span style="color: #949494;">&lt;language&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Hommel          Yuen's trimmed means <span style="color: #949494;">&lt;language&gt;</span></span></span>
 <span></span>
-<span><span class="co"># Bayes Factor (Student's *t*-test)</span></span>
+<span><span class="co"># Bayes Factor (Student's t-test)</span></span>
 <span><span class="fu"><a href="../../reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">bugs_long</span>,</span>
 <span>  x <span class="op">=</span> <span class="va">condition</span>,</span>

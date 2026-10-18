@@ -117,7 +117,7 @@ run a robust ANOVA instead, the syntax remains the same and the
 statistical approach can be modified by changing a single argument:
 
 \
-[`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(``mtcars``, ``cyl``, ``wt``, type ``=`` ``"nonparametric"``)`\
+`mtcars`` ``|>`` `[`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(``cyl``, ``wt``, type ``=`` ``"nonparametric"``)`\
 `#> ``# A tibble: 1 × 15`\
 `#>   ``parameter1`` ``parameter2`` ``statistic`` ``df.error``   ``p.value`\
 `#>   ``<chr>``      ``<chr>``          ``<dbl>``    ``<int>``     ``<dbl>`\
@@ -129,7 +129,7 @@ statistical approach can be modified by changing a single argument:
 `#>       ``<dbl>`` ``<chr>``                          ``<int>`` ``<int>`` ``<list>``    `\
 `#> ``1``         1 percentile bootstrap             100    32 ``<language>`\
 \
-[`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(``mtcars``, ``cyl``, ``wt``, type ``=`` ``"robust"``)`\
+`mtcars`` ``|>`` `[`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(``cyl``, ``wt``, type ``=`` ``"robust"``)`\
 `#> ``# A tibble: 1 × 12`\
 `#>   ``statistic``    ``df`` ``df.error`` ``p.value`\
 `#>       ``<dbl>`` ``<dbl>``    ``<dbl>``   ``<dbl>`\
@@ -267,8 +267,7 @@ philosophy adopted by the
 \
 [`library`](https://rdrr.io/r/base/library.html)`(`[`ggplot2`](https://ggplot2.tidyverse.org)`)`\
 \
-`# Example 1: Performing a t-test on raw tidy data and extracting the formatted expression`\
-`# for direct use in a plot annotation`\
+`# Example 1: two-sample t-test`\
 `res_ttest`` ``<-`` `[`two_sample_test`](https://www.indrapatil.com/statsExpressions/reference/two_sample_test.md)`(``mtcars``, ``am``, ``wt``, type ``=`` ``"parametric"``)`\
 \
 [`ggplot`](https://ggplot2.tidyverse.org/reference/ggplot.html)`(``mtcars``, `[`aes`](https://ggplot2.tidyverse.org/reference/aes.html)`(`[`as.factor`](https://rdrr.io/r/base/factor.html)`(``am``)``, ``wt``)``)`` ``+`\
@@ -277,7 +276,7 @@ philosophy adopted by the
 `    x ``=`` ``"Transmission (0 = automatic, 1 = manual)"``,`\
 `    y ``=`` ``"Weight (1000 lbs)"``,`\
 `    title ``=`` ``"Vehicle Weight by Transmission Type"``,`\
-`    subtitle ``=`` ``res_ttest``$``expression``[[``1``]``]`` ``# Extract formatted p-value and effect size`\
+`    subtitle ``=`` ``res_ttest``$``expression``[[``1``]``]`\
 `  ``)`
 
 ![Example illustrating how \`{statsExpressions}\` functions can be used
@@ -291,11 +290,11 @@ plot.
 
 \
 \
-`# Example 2: One-way ANOVA`\
+`# Example 2: one-way ANOVA`\
 `res_anova`` ``<-`` `[`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(``iris``, ``Species``, ``Sepal.Length``, type ``=`` ``"nonparametric"``)`\
 \
 [`ggplot`](https://ggplot2.tidyverse.org/reference/ggplot.html)`(``iris``, `[`aes`](https://ggplot2.tidyverse.org/reference/aes.html)`(``x ``=`` ``Sepal.Length``, y ``=`` ``Species``)``)`` ``+`\
-`  `[`geom_boxplot`](https://ggplot2.tidyverse.org/reference/geom_boxplot.html)`(``)`` ``+`` ``# use 'expression' column to display results in the subtitle`\
+`  `[`geom_boxplot`](https://ggplot2.tidyverse.org/reference/geom_boxplot.html)`(``)`` ``+`\
 `  `[`labs`](https://ggplot2.tidyverse.org/reference/labs.html)`(`\
 `    x ``=`` ``"Sepal length (in cm)"``,`\
 `    y ``=`` ``"Species"``,`\

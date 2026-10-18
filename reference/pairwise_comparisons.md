@@ -346,7 +346,7 @@ pairwise_comparisons(
 #> 2 Dunn  <language>
 #> 3 Dunn  <language>
 
-# robust (Yuen's trimmed means *t*-test)
+# robust (Yuen's trimmed means t-test)
 pairwise_comparisons(
   data = mtcars,
   x = cyl,
@@ -367,7 +367,7 @@ pairwise_comparisons(
 #> 2 Yuen's trimmed means <language>
 #> 3 Yuen's trimmed means <language>
 
-# Bayes Factor (Student's *t*-test)
+# Bayes Factor (Student's t-test)
 pairwise_comparisons(
   data = mtcars,
   x = cyl,
@@ -394,7 +394,7 @@ pairwise_comparisons(
 
 #------------------- within-subjects design ----------------------------
 
-# parametric (Student's *t*-test)
+# parametric (Student's t-test)
 pairwise_comparisons(
   data = bugs_long,
   x = condition,
@@ -442,7 +442,7 @@ pairwise_comparisons(
 #> 5 Durbin-Conover <language>
 #> 6 Durbin-Conover <language>
 
-# robust (Yuen's trimmed means *t*-test)
+# robust (Yuen's trimmed means t-test)
 pairwise_comparisons(
   data = bugs_long,
   x = condition,
@@ -470,7 +470,7 @@ pairwise_comparisons(
 #> 5 Hommel          Yuen's trimmed means <language>
 #> 6 Hommel          Yuen's trimmed means <language>
 
-# Bayes Factor (Student's *t*-test)
+# Bayes Factor (Student's t-test)
 pairwise_comparisons(
   data = bugs_long,
   x = condition,
