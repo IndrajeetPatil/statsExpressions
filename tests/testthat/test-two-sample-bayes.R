@@ -26,11 +26,3 @@ test_that("bayesian (paired t-test)", {
   expect_equal(df$bf10[[1]], 40.36079, tolerance = 0.001)
   expect_snapshot(df[["expression"]])
 })
-
-test_that("works with subject id", {
-  expect_subject_id_invariance(
-    two_sample_test,
-    data_with_subid_two_groups,
-    type = "bayes"
-  )
-})

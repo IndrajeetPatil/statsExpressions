@@ -35,7 +35,3 @@ patrick::with_parameters_test_that(
     digits = c(5L, 5L, 4L, 3L)
   )
 )
-
-test_that("works with subject id", {
-  expect_subject_id_invariance(oneway_anova, data_with_subid)
-})

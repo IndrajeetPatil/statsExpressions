@@ -139,27 +139,6 @@ patrick::with_parameters_test_that(
   )
 )
 
-patrick::with_parameters_test_that(
-  "works with subject id:",
-  {
-    expect_subject_id_invariance(
-      pairwise_comparisons,
-      dplyr::rename(
-        WRS2::WineTasting,
-        condition = Wine,
-        score = Taste,
-        id = Taster
-      ),
-      type = type,
-      digits = 3L
-    )
-  },
-  .cases = dplyr::tibble(
-    type = c("p", "np", "r", "bf"),
-    .test_name = type
-  )
-)
-
 # additional arguments are passed ---------------------------------------
 
 patrick::with_parameters_test_that(

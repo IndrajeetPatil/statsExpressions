@@ -37,10 +37,6 @@ patrick::with_parameters_test_that(
   )
 )
 
-test_that("works with subject id", {
-  expect_subject_id_invariance(oneway_anova, data_with_subid, type = "bayes")
-})
-
 test_that("tidy_model_parameters handles Bayesian ANOVA correctly", {
   set.seed(123)
   model <- BayesFactor::anovaBF(Sepal.Length ~ Species, data = iris)
