@@ -72,8 +72,8 @@ value corresponds to scale for fixed effects.}
 \item{effsize.type}{Type of effect size needed for \emph{parametric} tests. The
 argument can be \code{"d"} (for Cohen's \emph{d}) or \code{"g"} (for Hedges' \emph{g}).}
 
-\item{exact}{A logical indicating whether you want exact p-values to be computed.
-Relevant only when \code{type = "nonparametric"} (Default: \code{FALSE}).}
+\item{exact}{A logical indicating whether exact \emph{p}-values should be
+computed. Relevant only when \code{type = "nonparametric"} (Default: \code{FALSE}).}
 
 \item{...}{Currently ignored.}
 }

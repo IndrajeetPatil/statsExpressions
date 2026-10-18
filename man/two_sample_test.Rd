@@ -100,8 +100,8 @@ of an error, try reducing the value of \code{tr}, which is by default set to
 \item{nboot}{Number of bootstrap samples for computing confidence interval
 for the effect size (Default: \code{100L}).}
 
-\item{exact}{A logical indicating whether you want exact p-values to be computed.
-Relevant only when \code{type = "nonparametric"} (Default: \code{FALSE}).}
+\item{exact}{A logical indicating whether exact \emph{p}-values should be
+computed. Relevant only when \code{type = "nonparametric"} (Default: \code{FALSE}).}
 
 \item{...}{Currently ignored.}
 }

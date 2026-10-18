@@ -6,8 +6,8 @@
 #'   `0`).
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
 #'   argument can be `"d"` (for Cohen's *d*) or `"g"` (for Hedges' *g*).
-#' @param exact A logical indicating whether you want exact p-values to be computed.
-#'   Relevant only when `type = "nonparametric"` (Default: `FALSE`).
+#' @param exact A logical indicating whether exact *p*-values should be
+#'   computed. Relevant only when `type = "nonparametric"` (Default: `FALSE`).
 #' @inheritParams long_to_wide_converter
 #' @inheritParams extract_stats_type
 #' @inheritParams add_expression_col
