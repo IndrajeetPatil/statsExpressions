@@ -1,122 +1,54 @@
 # don't test data frames because the values vary across platforms, even with the
 # same seed; for the same reason, don't change number of digits
 
-# between-subjects ------------------------------
+# column names cover the `if_all(matches("effect"))` filtering, which must keep
+# every row when the effect/component columns are absent (between-subjects)
+patrick::with_parameters_test_that(
+  "Bayesian oneway_anova() works:",
+  {
+    set.seed(123)
+    # `exec()` inlines the column names, as if they were typed in the call
+    df <- rlang::exec(
+      oneway_anova,
+      type = "bayes",
+      data = data,
+      x = x,
+      y = y,
+      paired = paired,
+      bf.prior = bf.prior
+    )
 
-test_that("bayesian (between-subjects - anova)", {
-  # with NA
-  set.seed(123)
-  df1 <- oneway_anova(
-    type = "bayes",
-    data = msleep,
-    x = vore,
-    y = brainwt
+    expect_snapshot(dim(df))
+    expect_snapshot(colnames(df))
+    expect_snapshot(df[["expression"]][[1]])
+  },
+  .cases = dplyr::tibble(
+    .test_name = c(
+      "between-subjects with NAs",
+      "between-subjects without NAs",
+      "within-subjects without NAs",
+      "within-subjects with NAs"
+    ),
+    data = list(msleep, iris, WRS2::WineTasting, bugs_long),
+    x = c("vore", "Species", "Wine", "condition"),
+    y = c("brainwt", "Sepal.Length", "Taste", "desire"),
+    paired = c(FALSE, FALSE, TRUE, TRUE),
+    bf.prior = c(0.707, 0.707, 0.88, 0.707)
   )
-
-  expect_snapshot(dim(df1))
-  expect_snapshot(df1[["expression"]][[1]])
-
-  # without NA
-  set.seed(123)
-  df2 <- oneway_anova(
-    type = "bayes",
-    data = iris,
-    x = Species,
-    y = Sepal.Length
-  )
-
-  expect_snapshot(dim(df2))
-  expect_snapshot(df2[["expression"]][[1]])
-})
-
-# within-subjects ------------------------------
-
-test_that("bayesian (within-subjects - anova)", {
-  set.seed(123)
-  df1 <- oneway_anova(
-    type = "bayes",
-    data = WRS2::WineTasting,
-    x = Wine,
-    y = Taste,
-    paired = TRUE,
-    bf.prior = 0.88
-  )
-
-  expect_snapshot(dim(df1))
-  expect_snapshot(df1[["expression"]][[1]])
-
-  # data with NA
-  set.seed(123)
-  df2 <- oneway_anova(
-    type = "bayes",
-    data = bugs_long,
-    x = condition,
-    y = desire,
-    paired = TRUE
-  )
-
-  expect_snapshot(dim(df2))
-  expect_snapshot(df2[["expression"]][[1]])
-})
+)
 
 test_that("works with subject id", {
   expect_subject_id_invariance(oneway_anova, data_with_subid, type = "bayes")
 })
 
-# test Bayesian ANOVA helper behavior --------
-
-test_that("Bayesian ANOVA with if_all() filtering and row replication", {
-  # Test between-subjects design
-  # This ensures the if_all(matches("effect")) filtering behaves correctly
-  # when effect/component columns are absent (they appear in the within-subjects case)
-  set.seed(123)
-  df_between <- oneway_anova(
-    type = "bayes",
-    data = iris,
-    x = Species,
-    y = Sepal.Length
-  )
-
-  # Verify structure is correct after filtering and binding
-  expect_contains(colnames(df_between), c("estimate", "conf.low", "conf.high"))
-  expect_snapshot(colnames(df_between))
-  expect_snapshot(nrow(df_between))
-
-  # Test within-subjects design
-  # This tests both if_all filters and the row replication logic
-  set.seed(123)
-  df_within <- oneway_anova(
-    type = "bayes",
-    data = WRS2::WineTasting,
-    x = Wine,
-    y = Taste,
-    paired = TRUE
-  )
-
-  # Should have same columns and proper row count
-  expect_contains(colnames(df_within), c("estimate", "conf.low", "conf.high"))
-  expect_snapshot(colnames(df_within))
-  expect_snapshot(nrow(df_within))
-})
-
-# test tidy_model_parameters with Bayesian ANOVA --------
-
 test_that("tidy_model_parameters handles Bayesian ANOVA correctly", {
-  # Test between-subjects design (no component column)
   set.seed(123)
-  model_between <- BayesFactor::anovaBF(Sepal.Length ~ Species, data = iris)
+  model <- BayesFactor::anovaBF(Sepal.Length ~ Species, data = iris)
 
-  result_between <- tidy_model_parameters(model_between)
+  result <- tidy_model_parameters(model)
 
-  expect_contains(
-    colnames(result_between),
-    c("estimate", "conf.low", "conf.high", "method")
-  )
-  expect_identical(
-    result_between$method[[1]],
-    "Bayes factors for linear models"
-  )
-
-  # Verify if_all behavior: when component column doesn't exist (between-subjects), keeps all rows
-  expect_snapshot(dim(result_between))
+  expect_contains(colnames(result), c("estimate", "conf.low", "conf.high"))
+  expect_identical(result$method[[1]], "Bayes factors for linear models")
+  # without a component column (between-subjects), all rows are kept
+  expect_snapshot(dim(result))
 })
