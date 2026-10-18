@@ -125,7 +125,6 @@ tidy_model_expressions <- function(
 }
 
 
-#' @keywords internal
 #' @noRd
 .glue_to_expression <- function(data) {
   data |>
@@ -135,7 +134,6 @@ tidy_model_expressions <- function(
     .add_package_class()
 }
 
-#' @keywords internal
 #' @noRd
 .add_package_class <- function(data) {
   data <- as_tibble(data)
