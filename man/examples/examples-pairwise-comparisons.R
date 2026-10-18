@@ -36,7 +36,7 @@ pairwise_comparisons(
   p.adjust.method = "none"
 )
 
-# robust (Yuen's trimmed means *t*-test)
+# robust (Yuen's trimmed means t-test)
 pairwise_comparisons(
   data = mtcars,
   x = cyl,
@@ -46,7 +46,7 @@ pairwise_comparisons(
   p.adjust.method = "fdr"
 )
 
-# Bayes Factor (Student's *t*-test)
+# Bayes Factor (Student's t-test)
 pairwise_comparisons(
   data = mtcars,
   x = cyl,
@@ -57,7 +57,7 @@ pairwise_comparisons(
 
 #------------------- within-subjects design ----------------------------
 
-# parametric (Student's *t*-test)
+# parametric (Student's t-test)
 pairwise_comparisons(
   data = bugs_long,
   x = condition,
@@ -79,7 +79,7 @@ pairwise_comparisons(
   p.adjust.method = "BY"
 )
 
-# robust (Yuen's trimmed means *t*-test)
+# robust (Yuen's trimmed means t-test)
 pairwise_comparisons(
   data = bugs_long,
   x = condition,
@@ -90,7 +90,7 @@ pairwise_comparisons(
   p.adjust.method = "hommel"
 )
 
-# Bayes Factor (Student's *t*-test)
+# Bayes Factor (Student's t-test)
 pairwise_comparisons(
   data = bugs_long,
   x = condition,
