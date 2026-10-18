@@ -1,86 +1,63 @@
 # between-subjects design --------------------------------------------------
 
-test_that("`pairwise_comparisons()` works for between-subjects design", {
-  # student's t
-  df1 <- pairwise_comparisons(
-    data = msleep,
-    x = vore,
-    y = brainwt,
-    type = "p",
-    var.equal = TRUE,
-    paired = FALSE,
-    p.adjust.method = "bonferroni"
+# an empty factor level shouldn't change results
+msleep_empty_level <- dplyr::mutate(
+  msleep,
+  vore = factor(vore, levels = c(levels(factor(vore)), "Random"))
+)
+
+# `msleep` has `NA`s, `iris` doesn't; `movies_long$mpaa` has levels with `-`
+patrick::with_parameters_test_that(
+  "`pairwise_comparisons()` works for between-subjects design:",
+  {
+    # `exec()` inlines the column names, as if they were typed in the call
+    df <- rlang::exec(
+      pairwise_comparisons,
+      data = data,
+      x = x,
+      y = y,
+      type = type,
+      var.equal = var.equal,
+      p.adjust.method = p.adjust.method
+    )
+
+    expect_snapshot(dplyr::select(df, -expression))
+    expect_snapshot(df[["expression"]])
+  },
+  .cases = dplyr::tibble(
+    .test_name = c(
+      "Student's t",
+      "Games-Howell, empty factor level",
+      "Dunn",
+      "robust t",
+      "level names containing `-`",
+      "Games-Howell, default p-value adjustment",
+      "Student's t, without NAs"
+    ),
+    data = list(
+      msleep,
+      msleep_empty_level,
+      msleep,
+      msleep,
+      movies_long,
+      msleep_empty_level,
+      iris
+    ),
+    x = c(rep("vore", 4L), "mpaa", "vore", "Species"),
+    y = c(rep("brainwt", 4L), "rating", "brainwt", "Sepal.Length"),
+    type = c("p", "p", "np", "r", "p", "p", "p"),
+    var.equal = c(TRUE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE),
+    p.adjust.method = c(
+      "bonferroni",
+      "bonferroni",
+      "none",
+      "fdr",
+      "holm",
+      "holm",
+      "fdr"
+    )
   )
-
-  expect_snapshot(dplyr::select(df1, -expression))
-  expect_snapshot(df1[["expression"]])
-
-  # games-howell, with an empty factor level (shouldn't change results)
-  df_msleep <- dplyr::mutate(
-    msleep,
-    vore = factor(vore, levels = c(levels(factor(vore)), "Random"))
-  )
-
-  df2 <- pairwise_comparisons(
-    data = df_msleep,
-    x = vore,
-    y = brainwt,
-    type = "p",
-    var.equal = FALSE,
-    paired = FALSE,
-    p.adjust.method = "bonferroni"
-  )
-
-  expect_snapshot(dplyr::select(df2, -expression))
-  expect_snapshot(df2[["expression"]])
-
-  # Dunn test
-  df3 <- pairwise_comparisons(
-    data = msleep,
-    x = vore,
-    y = brainwt,
-    type = "np",
-    paired = FALSE,
-    p.adjust.method = "none"
-  )
-
-  expect_snapshot(dplyr::select(df3, -expression))
-  expect_snapshot(df3[["expression"]])
-
-  # robust t test
-  df4 <- pairwise_comparisons(
-    data = msleep,
-    x = vore,
-    y = brainwt,
-    type = "r",
-    paired = FALSE,
-    p.adjust.method = "fdr"
-  )
-
-  expect_snapshot(dplyr::select(df4, -expression))
-  expect_snapshot(df4[["expression"]])
-
-  # checking the edge case where factor level names contain `-`
-  df5 <- pairwise_comparisons(
-    data = movies_long,
-    x = mpaa,
-    y = rating,
-    var.equal = TRUE
-  )
-
-  expect_snapshot(dplyr::select(df5, -expression))
-  expect_snapshot(df5[["expression"]])
-
-  # games-howell with the default p-value adjustment
-  df6 <- pairwise_comparisons(
-    data = df_msleep,
-    x = vore,
-    y = brainwt
-  )
-
-  expect_snapshot(dplyr::select(df6, -expression))
-  expect_snapshot(df6[["expression"]])
-})
+)
 
 # dropped levels --------------------------------------------------
 
@@ -108,23 +85,13 @@ test_that("dropped levels are not included", {
   expect_equal(df1$statistic, df2$statistic, tolerance = 0.01)
 })
 
-# data without NAs --------------------------------------------------
-
-test_that("data without NAs", {
-  df <- pairwise_comparisons(
-    data = iris,
-    x = Species,
-    y = Sepal.Length,
-    type = "p",
-    p.adjust.method = "fdr",
-    var.equal = TRUE
-  )
-
-  expect_snapshot(dplyr::select(df, -expression))
-  expect_snapshot(df[["expression"]])
-})
-
 # within-subjects design --------------------------------------------------
+
+wine_tasting <- dplyr::rename(
+  WRS2::WineTasting,
+  condition = Wine,
+  desire = Taste
+)
 
 # `bugs_long` has `NA`s, `WRS2::WineTasting` doesn't
 patrick::with_parameters_test_that(
@@ -144,13 +111,7 @@ patrick::with_parameters_test_that(
     expect_snapshot(df[["expression"]])
   },
   .cases = dplyr::tibble(
-    data = rep(
-      list(
-        bugs_long,
-        dplyr::rename(WRS2::WineTasting, condition = Wine, desire = Taste)
-      ),
-      each = 3L
-    ),
+    data = rep(list(bugs_long, wine_tasting), each = 3L),
     type = rep(c("p", "np", "r"), times = 2L),
     p.adjust.method = c("bonferroni", "BY", "hommel", "none", "none", "none"),
     .test_name = paste(rep(c("bugs_long", "WineTasting"), each = 3L), type)
@@ -173,10 +134,7 @@ patrick::with_parameters_test_that(
     expect_snapshot(df[["expression"]])
   },
   .cases = dplyr::tibble(
-    data = list(
-      bugs_long,
-      dplyr::rename(WRS2::WineTasting, condition = Wine, desire = Taste)
-    ),
+    data = list(bugs_long, wine_tasting),
     .test_name = c("bugs_long", "WineTasting")
   )
 )
