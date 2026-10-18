@@ -1,11 +1,5 @@
 # between-subjects design --------------------------------------------------
 
-# an empty factor level shouldn't change results
-msleep_empty_level <- dplyr::mutate(
-  msleep,
-  vore = factor(vore, levels = c(levels(factor(vore)), "Random"))
-)
-
 # `msleep` has `NA`s, `iris` doesn't; `movies_long$mpaa` has levels with `-`
 patrick::with_parameters_test_that(
   "`pairwise_comparisons()` works for between-subjects design:",
@@ -86,12 +80,6 @@ test_that("dropped levels are not included", {
 })
 
 # within-subjects design --------------------------------------------------
-
-wine_tasting <- dplyr::rename(
-  WRS2::WineTasting,
-  condition = Wine,
-  desire = Taste
-)
 
 # `bugs_long` has `NA`s, `WRS2::WineTasting` doesn't
 patrick::with_parameters_test_that(

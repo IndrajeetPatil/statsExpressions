@@ -1,10 +1,3 @@
-# few subjects in a within-subjects design
-few_cases <- dplyr::tibble(
-  cases = c(1, 1, 2, 2, 3, 3, 4, 4),
-  groups = c("b", "a", "b", "a", "b", "a", "b", "a"),
-  values = c(2, 5, 3, 4, 4, 6, 5, 8)
-)
-
 patrick::with_parameters_test_that(
   "robust oneway_anova() works:",
   {
