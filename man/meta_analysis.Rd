@@ -128,9 +128,9 @@ A non-parametric meta-analysis is not available, so \code{type = "nonparametric"
 is not supported.
 }
 \note{
-\strong{Important}: The function assumes that you have already downloaded the
-needed package (\code{{metafor}}, \code{{metaplus}}, or \code{{metaBMA}}) for meta-analysis.
-If they are not available, you will be asked to install them.
+The package needed for the chosen \code{type} (\code{{metafor}}, \code{{metaplus}}, or
+\code{{metaBMA}}) is only suggested, so you will be asked to install it if it is
+not available.
 }
 \section{Random-effects meta-analysis}{
 

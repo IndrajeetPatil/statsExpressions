@@ -84,12 +84,16 @@ oneway_anova <- function(
     mutate(.rowid = as.factor(.rowid))
   y_by_x <- new_formula(y, x)
 
+  # sphericity-corrected (paired) and Welch-type (unpaired) tests have
+  # fractional degrees of freedom
+  digits.df <- if (paired && type %in% c("parametric", "robust")) digits else 0L
+  fractional_df_error <- type == "robust" ||
+    (type == "parametric" && (paired || !var.equal))
+  digits.df.error <- if (fractional_df_error) digits else 0L
+
   # parametric ---------------------------------------
 
   if (type == "parametric") {
-    digits.df <- if (paired) digits else 0L
-    digits.df.error <- if (!paired && var.equal) 0L else digits
-
     .f.es <- switch(
       match.arg(effsize.type, c("omega", "eta", "unbiased", "biased")),
       omega = ,
@@ -122,9 +126,6 @@ oneway_anova <- function(
   # non-parametric ------------------------------------
 
   if (type == "nonparametric") {
-    digits.df <- 0L
-    digits.df.error <- 0L
-
     if (paired) {
       test_formula <- new_formula(y, expr(!!x | .rowid))
       .f <- stats::friedman.test
@@ -153,9 +154,6 @@ oneway_anova <- function(
   # robust ---------------------------------------
 
   if (type == "robust") {
-    digits.df <- if (paired) digits else 0L
-    digits.df.error <- digits
-
     if (paired) {
       mod <- WRS2::rmanova(
         y = data[[as_name(y)]],
