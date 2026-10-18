@@ -56,9 +56,6 @@ template:
       creator: "@patilindrajeets"
       card: summary_large_image
 
-# development:
-#   mode: auto
-
 reference:
   - title: One- and two-sample t-tests
     desc: Dataframes and expressions for one- and two-sample t-tests
