@@ -2,13 +2,13 @@
 
 0 errors | 0 warnings | 0 notes
 
-- Minor release (2.2.0) that adds the exported `complete_subjects()` helper
-  and fixes bugs in repeated-measures analyses and in expressions under
-  `options(OutDec = ",")`.
+- Patch release (2.2.1) that fixes edge-case bugs in `one_sample_test()`,
+  `contingency_table()`, `long_to_wide_converter()`, and
+  `tidy_model_expressions()`.
 
 ## revdepcheck results
 
-We checked 1 reverse dependencies, comparing R CMD check results across CRAN and
+We checked 2 reverse dependencies, comparing R CMD check results across CRAN and
 dev versions of this package.
 
  * We saw 0 new problems
