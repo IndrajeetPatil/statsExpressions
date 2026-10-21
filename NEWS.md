@@ -1,4 +1,4 @@
-# statsExpressions 2.2.0.9000
+# statsExpressions 2.2.1
 
 - `one_sample_test()` with a one-sided `alternative` now also reports a
   one-sided confidence interval for the parametric and nonparametric effect
