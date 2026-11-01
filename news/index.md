@@ -2,6 +2,8 @@
 
 ## statsExpressions 2.2.1
 
+CRAN release: 2026-10-21
+
 - [`one_sample_test()`](https://www.indrapatil.com/statsExpressions/reference/one_sample_test.md)
   with a one-sided `alternative` now also reports a one-sided confidence
   interval for the parametric and nonparametric effect sizes. Previously

@@ -72,7 +72,7 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="2.2.1" id="statsexpressions-221">statsExpressions 2.2.1<a class="anchor" aria-label="anchor" href="#statsexpressions-221"></a></h2>
+<h2 class="pkg-version" data-toc-text="2.2.1" id="statsexpressions-221">statsExpressions 2.2.1<a class="anchor" aria-label="anchor" href="#statsexpressions-221"></a></h2><p class="text-muted">CRAN release: 2026-10-21</p>
 <ul><li><p><code><a href="../reference/one_sample_test.html">one_sample_test()</a></code> with a one-sided <code>alternative</code> now also reports a one-sided confidence interval for the parametric and nonparametric effect sizes. Previously the <em>p</em>-value was one-sided but the effect size confidence interval was always two-sided, unlike in <code><a href="../reference/two_sample_test.html">two_sample_test()</a></code>.</p></li>
 <li><p><code><a href="../reference/contingency_table.html">contingency_table()</a></code> no longer fails for a test of independence when <code>x</code> or <code>y</code> has an empty level, either an unused factor level or one emptied by removing rows with missing values. Such levels are now dropped, as in <code><a href="../reference/pairwise_contingency_table.html">pairwise_contingency_table()</a></code>.</p></li>
 <li><p>For between-subjects designs (<code>paired = FALSE</code>), <code><a href="../reference/long_to_wide_converter.html">long_to_wide_converter()</a></code> now drops a level of <code>x</code> whose responses are all missing. Previously the empty level was kept, which made robust <code><a href="../reference/oneway_anova.html">oneway_anova()</a></code> and <code><a href="../reference/pairwise_comparisons.html">pairwise_comparisons()</a></code> fail.</p></li>
