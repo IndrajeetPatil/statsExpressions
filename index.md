@@ -267,7 +267,7 @@ expressions.](reference/figures/README-centrality-1.png)
 \
 `# create a ridgeplot`\
 [`ggplot`](https://ggplot2.tidyverse.org/reference/ggplot.html)`(``iris``, `[`aes`](https://ggplot2.tidyverse.org/reference/aes.html)`(``x ``=`` ``Sepal.Length``, y ``=`` ``Species``)``)`` ``+`\
-`  ``geom_density_ridges``(``)`` ``+`\
+`  `[`geom_density_ridges`](https://wilkelab.org/ggridges/reference/geom_density_ridges.html)`(``)`` ``+`\
 `  `[`labs`](https://ggplot2.tidyverse.org/reference/labs.html)`(`\
 `    title ``=`` ``"A heteroscedastic one-way ANOVA for trimmed means"``,`\
 `    subtitle ``=`` ``results_data``$``expression``[[``1``]``]`\
@@ -293,7 +293,7 @@ Sepal.Length by Species](reference/figures/README-anova_rob1-1.png)
 `)`\
 \
 [`ggplot`](https://ggplot2.tidyverse.org/reference/ggplot.html)`(``WineTasting``, `[`aes`](https://ggplot2.tidyverse.org/reference/aes.html)`(``Wine``, ``Taste``, color ``=`` ``Wine``)``)`` ``+`\
-`  ``geom_quasirandom``(``)`` ``+`\
+`  `[`geom_quasirandom`](https://rdrr.io/pkg/ggbeeswarm/man/geom_quasirandom.html)`(``)`` ``+`\
 `  `[`labs`](https://ggplot2.tidyverse.org/reference/labs.html)`(`\
 `    title ``=`` ``"Friedman's rank sum test"``,`\
 `    subtitle ``=`` `[`parse`](https://rdrr.io/r/base/parse.html)`(``text ``=`` ``results_data``$``expression``)`\
@@ -343,7 +343,7 @@ in the subtitle](reference/figures/README-t_two-1.png)
 `)`\
 \
 `# plot`\
-[`suppressWarnings`](https://rdrr.io/r/base/warning.html)`(``paired.plotProfiles``(`\
+[`suppressWarnings`](https://rdrr.io/r/base/warning.html)`(`[`paired.plotProfiles`](https://rdrr.io/pkg/PairedData/man/paired.plotProfiles.html)`(`\
 `  ``PrisonStress``, ``"PSSbefore"``, ``"PSSafter"``,`\
 `  subjects ``=`` ``"Subject"`\
 `)``)`` ``+`\
@@ -449,7 +449,7 @@ having to display them in plots:
 `results_data`` ``<-`` `[`meta_analysis`](https://www.indrapatil.com/statsExpressions/reference/meta_analysis.md)`(``dplyr``::`[`rename`](https://dplyr.tidyverse.org/reference/rename.html)`(``mozart``, estimate ``=`` ``d``, std.error ``=`` ``se``)``)`\
 \
 `# meta-analysis forest plot with results random-effects meta-analysis`\
-[`suppressWarnings`](https://rdrr.io/r/base/warning.html)`(``viz_forest``(`\
+[`suppressWarnings`](https://rdrr.io/r/base/warning.html)`(`[`viz_forest`](https://rdrr.io/pkg/metaviz/man/viz_forest.html)`(`\
 `  x ``=`` ``mozart``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"d"``, ``"se"``)``]``,`\
 `  study_labels ``=`` ``mozart``[``, ``"study_name"``]``,`\
 `  xlab ``=`` ``"Cohen's d"``,`\
