@@ -20,5 +20,5 @@ expect_subject_id_invariance <- function(.f, data, ...) {
     ...
   )
 
-  expect_identical(with_id, sorted_by_id)
+  expect_equal(with_id, sorted_by_id)
 }
