@@ -20,5 +20,6 @@ expect_subject_id_invariance <- function(.f, data, ...) {
     ...
   )
 
-  expect_equal(with_id, sorted_by_id)
+  # alternative BLAS (e.g. MKL) can introduce floating-point noise
+  expect_equal(with_id, sorted_by_id, tolerance = 1e-10)
 }
