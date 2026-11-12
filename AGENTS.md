@@ -1,71 +1,37 @@
 # AGENTS.md
 
-Project-level instructions for AI coding agents working on this repository.
-GitHub Copilot Code Review, Copilot coding agent, Codex, and other
-`AGENTS.md`-aware tools read this file directly.
+Project instructions for AI coding agents. `AGENTS.md`-aware tools read this
+file directly. It records only what the code, `DESCRIPTION`, `Makefile`, and
+configuration files do not already make clear; read those for the rest.
 
 ## Package overview
 
-`statsExpressions` is an R package that creates tidy data frames and plotmath
-expressions with details from statistical tests. It serves as the statistical
-backend for `ggstatsplot`.
+`statsExpressions` creates tidy data frames and plotmath expressions with
+details from statistical tests. It is the statistical backend for
+`ggstatsplot`, which consumes the returned columns and attributes, so keep
+them stable.
 
-## Architecture
+## Implementation patterns
 
-### Main functions (`R/`)
+- Supported `type` values vary by function, and some functions, such as
+  `pairwise_contingency_table()`, take no `type`. Normalise `type` with
+  `extract_stats_type()`, then follow the function's existing branching rather
+  than imposing one shared `switch()` shape.
+- Normalise easystats output with `tidy_model_parameters()` and
+  `tidy_model_effectsize()` instead of renaming columns or rebuilding
+  confidence intervals by hand.
+- Inside `mutate()` and other data-masking calls, including `glue()` called
+  there, a bare name resolves to a column of `data` before a local variable.
+  Build local values such as expression templates before the call and refer to
+  them with `.env$name`, so input columns can't shadow them.
+- Preserve tidy evaluation for unquoted column arguments, and use the base
+  pipe (`|>`).
 
-- Statistical tests: `oneway_anova()`, `two_sample_test()`,
-  `one_sample_test()`, `corr_test()`, `contingency_table()`, `meta_analysis()`,
-  `pairwise_comparisons()`, and `pairwise_contingency_table()`.
-- Supporting public helpers include `centrality_description()`,
-  `add_expression_col()`, `tidy_model_expressions()`,
-  `tidy_model_parameters()`, `extract_stats_type()`, `stats_type_switch()`,
-  `long_to_wide_converter()`, and `complete_subjects()`.
-- The package standardizes parametric, nonparametric, robust, and Bayesian
-  `type` labels, but supported choices vary by function. Do not assume every
-  exported function has this interface; for example,
-  `pairwise_contingency_table()` does not accept `type`.
-- Statistical functions return tibbles with a special `expression` column for
-  plotmath output where applicable.
-
-### Key internal helpers
-
-- `tidy_model_effectsize()`: Convert effect-size output to tidy conventions.
-- `extract_estimate_type()` and `extract_statistic_text()`: Choose plotmath
-  labels for estimates and test statistics.
-- `prior_switch()`: Choose prior labels for Bayesian output.
-
-### Dependencies
-
-Core dependencies include the tidyverse stack (`dplyr`, `purrr`, `tidyr`, and
-`rlang`) and the easystats ecosystem (`insight`, `parameters`, `performance`,
-`effectsize`, `bayestestR`, `datawizard`, and `correlation`). Treat
-`DESCRIPTION` as the source of truth for dependency constraints and the minimum
-supported R version.
-
-## Developer workflow
-
-Use the repository `Makefile` for routine package tasks:
-
-```bash
-make install_deps # Install dependencies declared in DESCRIPTION
-make build        # Build the package tarball
-make check        # Build and run R CMD check --no-manual
-make install      # Build and install the package locally
-make document     # Regenerate roxygen docs and render README.Rmd
-make lint         # Run lintr::lint_package()
-make format       # Run air format .
-make hooks        # Run all prek hooks
-make clean        # Remove package build and check artifacts
-make update_deps  # Refresh dependency constraints (maintenance only)
-```
-
-### Validation
+## Validation
 
 Start with the narrowest check that proves a change, such as the affected
-`testthat` files and snapshots. When a change affects shared behavior,
-dependencies, generated metadata, or workflows, also run the full validation
-gate:
+`testthat` files and snapshots. When a change affects shared behaviour,
+dependencies, generated metadata, or workflows, also run the full gate:
 
 ```bash
 air format . --check
@@ -74,148 +40,73 @@ make hooks
 make check
 ```
 
-### Versioning and changelog
-
-- Development versions use a fourth-component `.9000` suffix.
-- Keep the version in `DESCRIPTION`, `codemeta.json`, and the first `NEWS.md`
-  heading synchronized.
-- Keep `NEWS.md` concise and user-facing. Record behavior and compatibility
-  changes, such as a higher minimum R version, a newly required package, or a
-  dependency minimum version that new code requires; omit routine dependency
-  updates and lint, formatting, CI, or generated-file maintenance.
-
 ## Testing
 
-- The package uses `testthat` edition 3 with parallel execution.
-- Snapshot tests are used extensively for both tidy statistical output and the
-  `expression` column.
-- Tests cover source areas, but helper and shared source files may be exercised
-  by broader test files rather than a one-to-one filename match.
-- Set seeds before Bayesian or otherwise stochastic tests, and only there.
-- Use `skip_if_not_installed()` for optional dependencies.
-- Suppress warnings only when a test intentionally exercises a warning-producing
-  path.
+- Snapshot the output instead of hand-writing expected values, with the tidy
+  columns and the `expression` column as separate snapshots:
+
+  ```r
+  test_that("descriptive name", {
+    df <- function_under_test(data = dataset, x = var1, y = var2)
+    expect_snapshot(dplyr::select(df, -expression))
+    expect_snapshot(df[["expression"]])
+  })
+  ```
+
+- Cover input combinations with `patrick::with_parameters_test_that()`, naming
+  cases in a `.test_name` column (`test_name` is deprecated).
 - Codecov requires 100% project and patch coverage.
-- Use `patrick::with_parameters_test_that()` to cover combinations of inputs,
-  with a `.test_name` column in `.cases` (the `test_name` column is
-  deprecated). Snapshot each case's output rather than hand-writing expected
-  expressions.
+- Set seeds only before Bayesian or otherwise stochastic tests.
+- Use `skip_if_not_installed()` for optional dependencies, and suppress
+  warnings only when a test deliberately exercises a warning path.
 
-Follow the existing snapshot style:
+## Documentation
 
-```r
-test_that("descriptive name", {
-  df <- function_under_test(data = dataset, x = var1, y = var2)
-  expect_snapshot(dplyr::select(df, -expression))
-  expect_snapshot(df[["expression"]])
-})
-```
-
-## Code conventions
-
-- Use `lintr` for linting and [Air](https://posit-dev.github.io/air/) for
-  formatting; CI runs `air format . --check`.
-- Use snake_case for functions and variables.
-- Use the base R pipe (`|>`), not the magrittr pipe (`%>%`).
-- Preserve tidy evaluation for unquoted column arguments.
-- Inside `mutate()` and other data-masking calls, including `glue()` called
-  there, a bare name resolves to a column of `data` before a local variable.
-  Build local values such as expression templates before the call and refer
-  to them with `.env$name`, so input columns can't shadow them.
-
-### Roxygen documentation
-
-- Roxygen uses Markdown and the `pkgapi` and `roxyglobals` roclets configured in
-  `DESCRIPTION`.
-- Use `@autoglobal` from `roxyglobals` where appropriate.
-- Shared documentation tables and prose live in `man/rmd-fragments/`; shared
-  example code lives in `man/examples/`.
-- Keep the README introductory and link to articles for detailed method tables
-  and output schemas. Reuse canonical fragments and example files rather than
-  maintaining copies in multiple documentation sources.
-- Add examples only when they explain a distinct workflow or important behavior.
-  Prefer concise prose and cross-references for routine details; avoid expanding
-  website builds and CRAN checks with examples for every function or option.
-- Use sentence case for prose headings, preserving function names, proper nouns,
-  and published titles. Keep table labels such as **Hypothesis testing** and
-  **Effect size estimation** bold.
+- Never edit generated files by hand. After changing roxygen comments or
+  `README.Rmd`, run `make document` and commit the regenerated `NAMESPACE`,
+  `man/*.Rd`, and `README.md`.
+- Shared prose and tables live in `man/rmd-fragments/`, and shared example code
+  in `man/examples/`. They feed the Rd files, `README.Rmd`, and the vignettes,
+  so edit the source rather than a rendered copy.
+- Keep the README introductory and link to articles for method tables and
+  output schemas. Add examples only for a distinct workflow or important
+  behaviour, not for every function or option.
+- Use sentence case for prose headings, preserving function names, proper
+  nouns, and published titles. Keep table labels such as
+  **Hypothesis testing** and **Effect size estimation** bold.
 - End each vignette with a Citation section calling
-  `citation("statsExpressions")`; the package metadata is the source of truth.
-  Avoid relative child documents for this executable footer: pkgdown can render
-  it from a temporary Markdown file.
-- `@examplesIf` cannot wrap an `@example` file. To keep a `NOT_CRAN` guard
-  around a shared example file, use the explicit
-  `\dontshow{if (...) withAutoprint(\{ # examplesIf}` and
-  `\dontshow{\}) # examplesIf}` `@examples` lines around `@example`, as in
-  `R/two-sample-test.R`. The wrapper preserves automatic printing inside the
-  conditional block, including on R >= 4.5; it is not a compatibility fallback.
-  The `# examplesIf` markers let pkgdown recognise the conditional examples.
-- After changing roxygen comments, run `make document` and commit the generated
-  `NAMESPACE` or `man/*.Rd` changes. Do not edit generated `.Rd` files by hand.
+  `citation("statsExpressions")`. Write the footer inline: pkgdown can render a
+  vignette from a temporary file, which breaks relative child documents.
+- `@examplesIf` cannot wrap an `@example` file. For a `NOT_CRAN` guard around a
+  shared example file, copy the `\dontshow{if (...) withAutoprint(\{ # examplesIf}`
+  and `\dontshow{\}) # examplesIf}` lines from `R/two-sample-test.R`. This is
+  the intended form, not a compatibility fallback: it keeps auto-printing, and
+  pkgdown recognises the `# examplesIf` markers.
 
-### Common function parameters
+## Versioning and changelog
 
-- `data`: Input data frame.
-- `x`, `y`: Unquoted column names using tidy evaluation.
-- `type`: Usually one of `"parametric"`, `"nonparametric"`, `"robust"`, or
-  `"bayes"` where supported.
-- `paired`: Whether the design is paired or within-subjects.
-- `digits`: Number of decimal places.
-- `conf.level`: Confidence level between 0 and 1.
-
-## Important patterns
-
-### Statistical method selection
-
-Functions normalize supported `type` values with `extract_stats_type()` and
-then select the appropriate statistical and effect-size functions. Follow the
-existing per-function branching and argument construction; do not assume one
-shared `switch()` shape applies to every analysis.
-
-### Expression generation
-
-Statistical results are standardized and passed to `add_expression_col()` or
-the specialized expression helpers. Keep returned columns and attributes stable
-because `ggstatsplot` consumes them.
-
-### Easystats integration
-
-Use `tidy_model_parameters()` and `tidy_model_effectsize()` to normalize
-easystats output rather than duplicating column-renaming and confidence-interval
-logic.
-
-## Files to update together
-
-When modifying a function, consider all relevant surfaces:
-
-1. `R/<function>.R` or its helper file.
-2. The corresponding files under `tests/testthat/`.
-3. Generated `man/<function>.Rd` after roxygen regeneration.
-4. `man/rmd-fragments/<function>.Rmd` when that fragment exists. Fragments are
-   shared by the Rd files, `README.Rmd`, and the vignettes, so edit the
-   fragment rather than its rendered copies.
-5. `man/examples/examples-<function>.R` when that example file exists. These
-   files are shared by the Rd files and the *Data frame outputs* article.
-6. `README.Rmd` (then re-render `README.md`) and the vignettes under
-   `vignettes/` when user-facing behavior or output changes.
-7. `NEWS.md` for user-facing changes.
+- Development versions use a fourth-component `.9000` suffix. Keep the version
+  in `DESCRIPTION`, `codemeta.json`, and the first `NEWS.md` heading in sync.
+- Keep `NEWS.md` concise and user-facing. Record behaviour and compatibility
+  changes, including a higher minimum R version, a newly required package, or
+  a dependency minimum that new code requires. Omit routine dependency updates
+  and lint, formatting, CI, or generated-file maintenance.
 
 ## Repository skills
 
-Task-specific instructions live in `.agents/skills/`. Read a skill only when
-the task matches it:
+Task-specific procedures live in `.agents/skills/`. Read one only when the task
+matches it:
 
 - `create-release`: prepare, submit, resume, or publish a CRAN release.
-- `update-dependencies`: update dependencies to their latest versions, change
-  the minimum R version, or add, remove, or move a dependency.
+- `update-dependencies`: update dependencies, change the minimum R version, or
+  add, remove, or move a dependency.
 - `maintain-ci`: change or debug workflows under `.github/workflows/`.
 
-User-invoked prompts for other tasks live in `.github/prompts/`. Keep each topic
-in exactly one place: `AGENTS.md` for every-session rules, a skill or a prompt
-for task-specific procedures.
+User-invoked prompts live in `.github/prompts/`. Keep each topic in exactly one
+place: `AGENTS.md` for every-session rules, a skill or prompt for
+task-specific procedures.
 
 ## Pull requests
 
-Open pull requests as ready for review rather than as drafts. Unless explicitly
-requested, do not wait for CI/CD checks to finish after pushing; report that the
-checks were triggered and include the pull request or workflow link.
+Open pull requests as ready for review. Unless asked, do not wait for CI after
+pushing; report that checks were triggered and link the pull request.
