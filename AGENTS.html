@@ -73,161 +73,71 @@
 
 <div id="agentsmd" class="section level1">
 
-<p>Project-level instructions for AI coding agents working on this repository. GitHub Copilot Code Review, Copilot coding agent, Codex, and other <code>AGENTS.md</code>-aware tools read this file directly.</p>
+<p>Project instructions for AI coding agents. <code>AGENTS.md</code>-aware tools read this file directly. It records only what the code, <code>DESCRIPTION</code>, <code>Makefile</code>, and configuration files do not already make clear; read those for the rest.</p>
 <div class="section level2">
 <h2 id="package-overview">Package overview<a class="anchor" aria-label="anchor" href="#package-overview"></a></h2>
-<p><code>statsExpressions</code> is an R package that creates tidy data frames and plotmath expressions with details from statistical tests. It serves as the statistical backend for <code>ggstatsplot</code>.</p>
+<p><code>statsExpressions</code> creates tidy data frames and plotmath expressions with details from statistical tests. It is the statistical backend for <code>ggstatsplot</code>, which consumes the returned columns and attributes, so keep them stable.</p>
 </div>
 <div class="section level2">
-<h2 id="architecture">Architecture<a class="anchor" aria-label="anchor" href="#architecture"></a></h2>
-<div class="section level3">
-<h3 id="main-functions-r">Main functions (<code>R/</code>)<a class="anchor" aria-label="anchor" href="#main-functions-r"></a></h3>
-<ul><li>Statistical tests: <code><a href="reference/oneway_anova.html">oneway_anova()</a></code>, <code><a href="reference/two_sample_test.html">two_sample_test()</a></code>, <code><a href="reference/one_sample_test.html">one_sample_test()</a></code>, <code><a href="reference/corr_test.html">corr_test()</a></code>, <code><a href="reference/contingency_table.html">contingency_table()</a></code>, <code><a href="reference/meta_analysis.html">meta_analysis()</a></code>, <code><a href="reference/pairwise_comparisons.html">pairwise_comparisons()</a></code>, and <code><a href="reference/pairwise_contingency_table.html">pairwise_contingency_table()</a></code>.</li>
-<li>Supporting public helpers include <code><a href="reference/centrality_description.html">centrality_description()</a></code>, <code><a href="reference/add_expression_col.html">add_expression_col()</a></code>, <code><a href="reference/tidy_model_expressions.html">tidy_model_expressions()</a></code>, <code><a href="reference/tidy_model_parameters.html">tidy_model_parameters()</a></code>, <code><a href="reference/extract_stats_type.html">extract_stats_type()</a></code>, <code><a href="reference/extract_stats_type.html">stats_type_switch()</a></code>, <code><a href="reference/long_to_wide_converter.html">long_to_wide_converter()</a></code>, and <code><a href="reference/complete_subjects.html">complete_subjects()</a></code>.</li>
-<li>The package standardizes parametric, nonparametric, robust, and Bayesian <code>type</code> labels, but supported choices vary by function. Do not assume every exported function has this interface; for example, <code><a href="reference/pairwise_contingency_table.html">pairwise_contingency_table()</a></code> does not accept <code>type</code>.</li>
-<li>Statistical functions return tibbles with a special <code>expression</code> column for plotmath output where applicable.</li>
+<h2 id="implementation-patterns">Implementation patterns<a class="anchor" aria-label="anchor" href="#implementation-patterns"></a></h2>
+<ul><li>Supported <code>type</code> values vary by function, and some functions, such as <code><a href="reference/pairwise_contingency_table.html">pairwise_contingency_table()</a></code>, take no <code>type</code>. Normalise <code>type</code> with <code><a href="reference/extract_stats_type.html">extract_stats_type()</a></code>, then follow the function’s existing branching rather than imposing one shared <code><a href="https://rdrr.io/r/base/switch.html" class="external-link">switch()</a></code> shape.</li>
+<li>Normalise easystats output with <code><a href="reference/tidy_model_parameters.html">tidy_model_parameters()</a></code> and <code>tidy_model_effectsize()</code> instead of renaming columns or rebuilding confidence intervals by hand.</li>
+<li>Inside <code>mutate()</code> and other data-masking calls, including <code>glue()</code> called there, a bare name resolves to a column of <code>data</code> before a local variable. Build local values such as expression templates before the call and refer to them with <code>.env$name</code>, so input columns can’t shadow them.</li>
+<li>Preserve tidy evaluation for unquoted column arguments, and use the base pipe (<code>|&gt;</code>).</li>
 </ul></div>
-<div class="section level3">
-<h3 id="key-internal-helpers">Key internal helpers<a class="anchor" aria-label="anchor" href="#key-internal-helpers"></a></h3>
-<ul><li>
-<code>tidy_model_effectsize()</code>: Convert effect-size output to tidy conventions.</li>
-<li>
-<code>extract_estimate_type()</code> and <code>extract_statistic_text()</code>: Choose plotmath labels for estimates and test statistics.</li>
-<li>
-<code>prior_switch()</code>: Choose prior labels for Bayesian output.</li>
-</ul></div>
-<div class="section level3">
-<h3 id="dependencies">Dependencies<a class="anchor" aria-label="anchor" href="#dependencies"></a></h3>
-<p>Core dependencies include the tidyverse stack (<code>dplyr</code>, <code>purrr</code>, <code>tidyr</code>, and <code>rlang</code>) and the easystats ecosystem (<code>insight</code>, <code>parameters</code>, <code>performance</code>, <code>effectsize</code>, <code>bayestestR</code>, <code>datawizard</code>, and <code>correlation</code>). Treat <code>DESCRIPTION</code> as the source of truth for dependency constraints and the minimum supported R version.</p>
-</div>
-</div>
 <div class="section level2">
-<h2 id="developer-workflow">Developer workflow<a class="anchor" aria-label="anchor" href="#developer-workflow"></a></h2>
-<p>Use the repository <code>Makefile</code> for routine package tasks:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">make</span> install_deps <span class="co"># Install dependencies declared in DESCRIPTION</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">make</span> build        <span class="co"># Build the package tarball</span></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">make</span> check        <span class="co"># Build and run R CMD check --no-manual</span></span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">make</span> install      <span class="co"># Build and install the package locally</span></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="fu">make</span> document     <span class="co"># Regenerate roxygen docs and render README.Rmd</span></span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="fu">make</span> lint         <span class="co"># Run lintr::lint_package()</span></span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="fu">make</span> format       <span class="co"># Run air format .</span></span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="fu">make</span> hooks        <span class="co"># Run all prek hooks</span></span>
-<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="fu">make</span> clean        <span class="co"># Remove package build and check artifacts</span></span>
-<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="fu">make</span> update_deps  <span class="co"># Refresh dependency constraints (maintenance only)</span></span></code></pre></div>
-<div class="section level3">
-<h3 id="validation">Validation<a class="anchor" aria-label="anchor" href="#validation"></a></h3>
-<p>Start with the narrowest check that proves a change, such as the affected <code>testthat</code> files and snapshots. When a change affects shared behavior, dependencies, generated metadata, or workflows, also run the full validation gate:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">air</span> format . <span class="at">--check</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">make</span> lint</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="fu">make</span> hooks</span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="fu">make</span> check</span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="versioning-and-changelog">Versioning and changelog<a class="anchor" aria-label="anchor" href="#versioning-and-changelog"></a></h3>
-<ul><li>Development versions use a fourth-component <code>.9000</code> suffix.</li>
-<li>Keep the version in <code>DESCRIPTION</code>, <code>codemeta.json</code>, and the first <code>NEWS.md</code> heading synchronized.</li>
-<li>Keep <code>NEWS.md</code> concise and user-facing. Record behavior and compatibility changes, such as a higher minimum R version, a newly required package, or a dependency minimum version that new code requires; omit routine dependency updates and lint, formatting, CI, or generated-file maintenance.</li>
-</ul></div>
+<h2 id="validation">Validation<a class="anchor" aria-label="anchor" href="#validation"></a></h2>
+<p>Start with the narrowest check that proves a change, such as the affected <code>testthat</code> files and snapshots. When a change affects shared behaviour, dependencies, generated metadata, or workflows, also run the full gate:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">air</span> format . <span class="at">--check</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">make</span> lint</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">make</span> hooks</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">make</span> check</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="testing">Testing<a class="anchor" aria-label="anchor" href="#testing"></a></h2>
-<ul><li>The package uses <code>testthat</code> edition 3 with parallel execution.</li>
-<li>Snapshot tests are used extensively for both tidy statistical output and the <code>expression</code> column.</li>
-<li>Tests cover source areas, but helper and shared source files may be exercised by broader test files rather than a one-to-one filename match.</li>
-<li>Set seeds before Bayesian or otherwise stochastic tests, and only there.</li>
-<li>Use <code>skip_if_not_installed()</code> for optional dependencies.</li>
-<li>Suppress warnings only when a test intentionally exercises a warning-producing path.</li>
-<li>Codecov requires 100% project and patch coverage.</li>
-<li>Use <code><a href="https://rdrr.io/pkg/patrick/man/with_parameters_test_that.html" class="external-link">patrick::with_parameters_test_that()</a></code> to cover combinations of inputs, with a <code>.test_name</code> column in <code>.cases</code> (the <code>test_name</code> column is deprecated). Snapshot each case’s output rather than hand-writing expected expressions.</li>
-</ul><p>Follow the existing snapshot style:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<ul><li>
+<p>Snapshot the output instead of hand-writing expected values, with the tidy columns and the <code>expression</code> column as separate snapshots:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">test_that</span><span class="op">(</span><span class="st">"descriptive name"</span>, <span class="op">{</span></span>
 <span>  <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">function_under_test</span><span class="op">(</span>data <span class="op">=</span> <span class="va">dataset</span>, x <span class="op">=</span> <span class="va">var1</span>, y <span class="op">=</span> <span class="va">var2</span><span class="op">)</span></span>
 <span>  <span class="fu">expect_snapshot</span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">df</span>, <span class="op">-</span><span class="va">expression</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu">expect_snapshot</span><span class="op">(</span><span class="va">df</span><span class="op">[[</span><span class="st">"expression"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
-</div>
+</li>
+<li><p>Cover input combinations with <code><a href="https://rdrr.io/pkg/patrick/man/with_parameters_test_that.html" class="external-link">patrick::with_parameters_test_that()</a></code>, naming cases in a <code>.test_name</code> column (<code>test_name</code> is deprecated).</p></li>
+<li><p>Codecov requires 100% project and patch coverage.</p></li>
+<li><p>Set seeds only before Bayesian or otherwise stochastic tests.</p></li>
+<li><p>Use <code>skip_if_not_installed()</code> for optional dependencies, and suppress warnings only when a test deliberately exercises a warning path.</p></li>
+</ul></div>
 <div class="section level2">
-<h2 id="code-conventions">Code conventions<a class="anchor" aria-label="anchor" href="#code-conventions"></a></h2>
-<ul><li>Use <code>lintr</code> for linting and <a href="https://posit-dev.github.io/air/" class="external-link">Air</a> for formatting; CI runs <code>air format . --check</code>.</li>
-<li>Use snake_case for functions and variables.</li>
-<li>Use the base R pipe (<code>|&gt;</code>), not the magrittr pipe (<code>%&gt;%</code>).</li>
-<li>Preserve tidy evaluation for unquoted column arguments.</li>
-<li>Inside <code>mutate()</code> and other data-masking calls, including <code>glue()</code> called there, a bare name resolves to a column of <code>data</code> before a local variable. Build local values such as expression templates before the call and refer to them with <code>.env$name</code>, so input columns can’t shadow them.</li>
-</ul><div class="section level3">
-<h3 id="roxygen-documentation">Roxygen documentation<a class="anchor" aria-label="anchor" href="#roxygen-documentation"></a></h3>
-<ul><li>Roxygen uses Markdown and the <code>pkgapi</code> and <code>roxyglobals</code> roclets configured in <code>DESCRIPTION</code>.</li>
-<li>Use <code>@autoglobal</code> from <code>roxyglobals</code> where appropriate.</li>
-<li>Shared documentation tables and prose live in <code>man/rmd-fragments/</code>; shared example code lives in <code>man/examples/</code>.</li>
-<li>Keep the README introductory and link to articles for detailed method tables and output schemas. Reuse canonical fragments and example files rather than maintaining copies in multiple documentation sources.</li>
-<li>Add examples only when they explain a distinct workflow or important behavior. Prefer concise prose and cross-references for routine details; avoid expanding website builds and CRAN checks with examples for every function or option.</li>
+<h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a></h2>
+<ul><li>Never edit generated files by hand. After changing roxygen comments or <code>README.Rmd</code>, run <code>make document</code> and commit the regenerated <code>NAMESPACE</code>, <code>man/*.Rd</code>, and <code>README.md</code>.</li>
+<li>Shared prose and tables live in <code>man/rmd-fragments/</code>, and shared example code in <code>man/examples/</code>. They feed the Rd files, <code>README.Rmd</code>, and the vignettes, so edit the source rather than a rendered copy.</li>
+<li>Keep the README introductory and link to articles for method tables and output schemas. Add examples only for a distinct workflow or important behaviour, not for every function or option.</li>
 <li>Use sentence case for prose headings, preserving function names, proper nouns, and published titles. Keep table labels such as <strong>Hypothesis testing</strong> and <strong>Effect size estimation</strong> bold.</li>
-<li>End each vignette with a Citation section calling <code>citation("statsExpressions")</code>; the package metadata is the source of truth. Avoid relative child documents for this executable footer: pkgdown can render it from a temporary Markdown file.</li>
+<li>End each vignette with a Citation section calling <code>citation("statsExpressions")</code>. Write the footer inline: pkgdown can render a vignette from a temporary file, which breaks relative child documents.</li>
 <li>
-<code>@examplesIf</code> cannot wrap an <code>@example</code> file. To keep a <code>NOT_CRAN</code> guard around a shared example file, use the explicit <code>\dontshow{if (...) withAutoprint(\{ # examplesIf}</code> and <code>\dontshow{\}) # examplesIf}</code> <code>@examples</code> lines around <code>@example</code>, as in <code>R/two-sample-test.R</code>. The wrapper preserves automatic printing inside the conditional block, including on R &gt;= 4.5; it is not a compatibility fallback. The <code># examplesIf</code> markers let pkgdown recognise the conditional examples.</li>
-<li>After changing roxygen comments, run <code>make document</code> and commit the generated <code>NAMESPACE</code> or <code>man/*.Rd</code> changes. Do not edit generated <code>.Rd</code> files by hand.</li>
+<code>@examplesIf</code> cannot wrap an <code>@example</code> file. For a <code>NOT_CRAN</code> guard around a shared example file, copy the <code>\dontshow{if (...) withAutoprint(\{ # examplesIf}</code> and <code>\dontshow{\}) # examplesIf}</code> lines from <code>R/two-sample-test.R</code>. This is the intended form, not a compatibility fallback: it keeps auto-printing, and pkgdown recognises the <code># examplesIf</code> markers.</li>
 </ul></div>
-<div class="section level3">
-<h3 id="common-function-parameters">Common function parameters<a class="anchor" aria-label="anchor" href="#common-function-parameters"></a></h3>
-<ul><li>
-<code>data</code>: Input data frame.</li>
-<li>
-<code>x</code>, <code>y</code>: Unquoted column names using tidy evaluation.</li>
-<li>
-<code>type</code>: Usually one of <code>"parametric"</code>, <code>"nonparametric"</code>, <code>"robust"</code>, or <code>"bayes"</code> where supported.</li>
-<li>
-<code>paired</code>: Whether the design is paired or within-subjects.</li>
-<li>
-<code>digits</code>: Number of decimal places.</li>
-<li>
-<code>conf.level</code>: Confidence level between 0 and 1.</li>
+<div class="section level2">
+<h2 id="versioning-and-changelog">Versioning and changelog<a class="anchor" aria-label="anchor" href="#versioning-and-changelog"></a></h2>
+<ul><li>Development versions use a fourth-component <code>.9000</code> suffix. Keep the version in <code>DESCRIPTION</code>, <code>codemeta.json</code>, and the first <code>NEWS.md</code> heading in sync.</li>
+<li>Keep <code>NEWS.md</code> concise and user-facing. Record behaviour and compatibility changes, including a higher minimum R version, a newly required package, or a dependency minimum that new code requires. Omit routine dependency updates and lint, formatting, CI, or generated-file maintenance.</li>
 </ul></div>
-</div>
-<div class="section level2">
-<h2 id="important-patterns">Important patterns<a class="anchor" aria-label="anchor" href="#important-patterns"></a></h2>
-<div class="section level3">
-<h3 id="statistical-method-selection">Statistical method selection<a class="anchor" aria-label="anchor" href="#statistical-method-selection"></a></h3>
-<p>Functions normalize supported <code>type</code> values with <code><a href="reference/extract_stats_type.html">extract_stats_type()</a></code> and then select the appropriate statistical and effect-size functions. Follow the existing per-function branching and argument construction; do not assume one shared <code><a href="https://rdrr.io/r/base/switch.html" class="external-link">switch()</a></code> shape applies to every analysis.</p>
-</div>
-<div class="section level3">
-<h3 id="expression-generation">Expression generation<a class="anchor" aria-label="anchor" href="#expression-generation"></a></h3>
-<p>Statistical results are standardized and passed to <code><a href="reference/add_expression_col.html">add_expression_col()</a></code> or the specialized expression helpers. Keep returned columns and attributes stable because <code>ggstatsplot</code> consumes them.</p>
-</div>
-<div class="section level3">
-<h3 id="easystats-integration">Easystats integration<a class="anchor" aria-label="anchor" href="#easystats-integration"></a></h3>
-<p>Use <code><a href="reference/tidy_model_parameters.html">tidy_model_parameters()</a></code> and <code>tidy_model_effectsize()</code> to normalize easystats output rather than duplicating column-renaming and confidence-interval logic.</p>
-</div>
-</div>
-<div class="section level2">
-<h2 id="files-to-update-together">Files to update together<a class="anchor" aria-label="anchor" href="#files-to-update-together"></a></h2>
-<p>When modifying a function, consider all relevant surfaces:</p>
-<ol style="list-style-type: decimal"><li>
-<code>R/&lt;function&gt;.R</code> or its helper file.</li>
-<li>The corresponding files under <code>tests/testthat/</code>.</li>
-<li>Generated <code>man/&lt;function&gt;.Rd</code> after roxygen regeneration.</li>
-<li>
-<code>man/rmd-fragments/&lt;function&gt;.Rmd</code> when that fragment exists. Fragments are shared by the Rd files, <code>README.Rmd</code>, and the vignettes, so edit the fragment rather than its rendered copies.</li>
-<li>
-<code>man/examples/examples-&lt;function&gt;.R</code> when that example file exists. These files are shared by the Rd files and the <em>Data frame outputs</em> article.</li>
-<li>
-<code>README.Rmd</code> (then re-render <code>README.md</code>) and the vignettes under <code>vignettes/</code> when user-facing behavior or output changes.</li>
-<li>
-<code>NEWS.md</code> for user-facing changes.</li>
-</ol></div>
 <div class="section level2">
 <h2 id="repository-skills">Repository skills<a class="anchor" aria-label="anchor" href="#repository-skills"></a></h2>
-<p>Task-specific instructions live in <code>.agents/skills/</code>. Read a skill only when the task matches it:</p>
+<p>Task-specific procedures live in <code>.agents/skills/</code>. Read one only when the task matches it:</p>
 <ul><li>
 <code>create-release</code>: prepare, submit, resume, or publish a CRAN release.</li>
 <li>
-<code>update-dependencies</code>: update dependencies to their latest versions, change the minimum R version, or add, remove, or move a dependency.</li>
+<code>update-dependencies</code>: update dependencies, change the minimum R version, or add, remove, or move a dependency.</li>
 <li>
 <code>maintain-ci</code>: change or debug workflows under <code>.github/workflows/</code>.</li>
-</ul><p>User-invoked prompts for other tasks live in <code>.github/prompts/</code>. Keep each topic in exactly one place: <code>AGENTS.md</code> for every-session rules, a skill or a prompt for task-specific procedures.</p>
+</ul><p>User-invoked prompts live in <code>.github/prompts/</code>. Keep each topic in exactly one place: <code>AGENTS.md</code> for every-session rules, a skill or prompt for task-specific procedures.</p>
 </div>
 <div class="section level2">
 <h2 id="pull-requests">Pull requests<a class="anchor" aria-label="anchor" href="#pull-requests"></a></h2>
-<p>Open pull requests as ready for review rather than as drafts. Unless explicitly requested, do not wait for CI/CD checks to finish after pushing; report that the checks were triggered and include the pull request or workflow link.</p>
+<p>Open pull requests as ready for review. Unless asked, do not wait for CI after pushing; report that checks were triggered and link the pull request.</p>
 </div>
 </div>
 
