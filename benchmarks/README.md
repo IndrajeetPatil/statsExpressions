@@ -26,6 +26,10 @@ repetition counts stable and update this catalogue when the main API changes.
 | `pairwise-parametric` | `pairwise_comparisons()` |
 | `pairwise-contingency` | `pairwise_contingency_table()` |
 
+Use positional API calls and omit default-valued arguments to keep workloads
+readable as single-line calls. Expand counted fixtures before the calls rather
+than specifying a counts argument.
+
 ## Run locally
 
 Install the checkout and run each workload from the repository root:
@@ -49,8 +53,7 @@ On a supported Linux machine with the CodSpeed CLI installed, use
 ## CI and comparisons
 
 - The `Benchmarks` caller uses the shared `r-benchmarks.yaml` workflow from
-  `IndrajeetPatil/workflows` at `ci/r-benchmarks-workflow` for coordinated PR
-  validation. Use `@main` once the shared workflow is merged. The shared job uses Ubuntu 24.04, R 4.6.1, and one thread for BLAS
+  `IndrajeetPatil/workflows` at `@main`. The shared job uses Ubuntu 24.04, R 4.6.1, and one thread for BLAS
   and OpenMP. Dependencies are resolved from the configured package repository;
   they are not locked. The workflow records `sessionInfo()` for each run.
 - The official CodSpeed action runs CPU simulation on ordinary GitHub runners
