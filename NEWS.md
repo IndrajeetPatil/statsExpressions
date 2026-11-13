@@ -1,3 +1,8 @@
+# statsExpressions 2.2.2
+
+- Fixes a test failure in CRAN's additional checks with an alternative BLAS
+  (MKL). There are no user-visible changes.
+
 # statsExpressions 2.2.1
 
 - `one_sample_test()` with a one-sided `alternative` now also reports a
