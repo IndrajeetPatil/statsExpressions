@@ -1,5 +1,17 @@
 benchmarks:
+  - name: centrality-parametric
+    exec: Rscript --vanilla benchmarks/run.R centrality-parametric
+  - name: one-sample-parametric
+    exec: Rscript --vanilla benchmarks/run.R one-sample-parametric
   - name: two-sample-parametric
     exec: Rscript --vanilla benchmarks/run.R two-sample-parametric
+  - name: anova-parametric
+    exec: Rscript --vanilla benchmarks/run.R anova-parametric
   - name: correlation-parametric
     exec: Rscript --vanilla benchmarks/run.R correlation-parametric
+  - name: contingency-parametric
+    exec: Rscript --vanilla benchmarks/run.R contingency-parametric
+  - name: pairwise-parametric
+    exec: Rscript --vanilla benchmarks/run.R pairwise-parametric
+  - name: pairwise-contingency
+    exec: Rscript --vanilla benchmarks/run.R pairwise-contingency
