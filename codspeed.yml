@@ -1,0 +1,5 @@
+benchmarks:
+  - name: two-sample-parametric
+    exec: Rscript --vanilla benchmarks/run.R two-sample-parametric
+  - name: correlation-parametric
+    exec: Rscript --vanilla benchmarks/run.R correlation-parametric
