@@ -288,12 +288,10 @@ set.seed(123)
 # parametric
 # if `var.equal = TRUE`, then Student's t-test will be run
 pairwise_comparisons(
-  data = mtcars,
-  x = cyl,
-  y = wt,
-  type = "parametric",
+  mtcars,
+  cyl,
+  wt,
   var.equal = TRUE,
-  paired = FALSE,
   p.adjust.method = "none"
 )
 #> # A tibble: 3 × 6
@@ -304,15 +302,7 @@ pairwise_comparisons(
 #> 3 6      8      0.00516     None            Student's t <language>
 
 # if `var.equal = FALSE`, then Games-Howell test will be run
-pairwise_comparisons(
-  data = mtcars,
-  x = cyl,
-  y = wt,
-  type = "parametric",
-  var.equal = FALSE,
-  paired = FALSE,
-  p.adjust.method = "bonferroni"
-)
+pairwise_comparisons(mtcars, cyl, wt, p.adjust.method = "bonferroni")
 #> # A tibble: 3 × 9
 #>   group1 group2 statistic   p.value alternative distribution p.adjust.method
 #>   <chr>  <chr>      <dbl>     <dbl> <chr>       <chr>        <chr>          
@@ -327,11 +317,10 @@ pairwise_comparisons(
 
 # non-parametric (Dunn test)
 pairwise_comparisons(
-  data = mtcars,
-  x = cyl,
-  y = wt,
+  mtcars,
+  cyl,
+  wt,
   type = "nonparametric",
-  paired = FALSE,
   p.adjust.method = "none"
 )
 #> # A tibble: 3 × 9
@@ -347,14 +336,7 @@ pairwise_comparisons(
 #> 3 Dunn  <language>
 
 # robust (Yuen's trimmed means t-test)
-pairwise_comparisons(
-  data = mtcars,
-  x = cyl,
-  y = wt,
-  type = "robust",
-  paired = FALSE,
-  p.adjust.method = "fdr"
-)
+pairwise_comparisons(mtcars, cyl, wt, type = "robust", p.adjust.method = "fdr")
 #> # A tibble: 3 × 10
 #>   group1 group2 estimate conf.level conf.low conf.high  p.value p.adjust.method
 #>   <chr>  <chr>     <dbl>      <dbl>    <dbl>     <dbl>    <dbl> <chr>          
@@ -368,13 +350,7 @@ pairwise_comparisons(
 #> 3 Yuen's trimmed means <language>
 
 # Bayes Factor (Student's t-test)
-pairwise_comparisons(
-  data = mtcars,
-  x = cyl,
-  y = wt,
-  type = "bayes",
-  paired = FALSE
-)
+pairwise_comparisons(mtcars, cyl, wt, type = "bayes")
 #> # A tibble: 3 × 18
 #>   group1 group2 term       effectsize      estimate conf.level conf.low
 #>   <chr>  <chr>  <chr>      <chr>              <dbl>      <dbl>    <dbl>
@@ -396,11 +372,10 @@ pairwise_comparisons(
 
 # parametric (Student's t-test)
 pairwise_comparisons(
-  data = bugs_long,
-  x = condition,
-  y = desire,
+  bugs_long,
+  condition,
+  desire,
   subject.id = subject,
-  type = "parametric",
   paired = TRUE,
   p.adjust.method = "BH"
 )
@@ -416,9 +391,9 @@ pairwise_comparisons(
 
 # non-parametric (Durbin-Conover test)
 pairwise_comparisons(
-  data = bugs_long,
-  x = condition,
-  y = desire,
+  bugs_long,
+  condition,
+  desire,
   subject.id = subject,
   type = "nonparametric",
   paired = TRUE,
@@ -444,9 +419,9 @@ pairwise_comparisons(
 
 # robust (Yuen's trimmed means t-test)
 pairwise_comparisons(
-  data = bugs_long,
-  x = condition,
-  y = desire,
+  bugs_long,
+  condition,
+  desire,
   subject.id = subject,
   type = "robust",
   paired = TRUE,
@@ -472,9 +447,9 @@ pairwise_comparisons(
 
 # Bayes Factor (Student's t-test)
 pairwise_comparisons(
-  data = bugs_long,
-  x = condition,
-  y = desire,
+  bugs_long,
+  condition,
+  desire,
   subject.id = subject,
   type = "bayes",
   paired = TRUE

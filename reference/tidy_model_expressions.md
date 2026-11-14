@@ -65,8 +65,6 @@ Expressions with Statistical Details. Journal of Open Source Software,
 ## Examples
 
 ``` r
-set.seed(123)
-
 # t-statistic from a tidy linear model data frame
 df <- tidy_model_parameters(lm(wt ~ am * cyl, mtcars))
 tidy_model_expressions(df, statistic = "t")

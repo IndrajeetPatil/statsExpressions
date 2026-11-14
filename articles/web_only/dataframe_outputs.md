@@ -267,11 +267,7 @@
 `# ----------------------- parametric -------------------------------------`\
 \
 `# between-subjects`\
-[`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(`\
-`  data ``=`` ``mtcars``,`\
-`  x ``=`` ``cyl``,`\
-`  y ``=`` ``wt`\
-`)`\
+[`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(``mtcars``, ``cyl``, ``wt``)`\
 `#> ``# A tibble: 1 × 14`\
 `#>   ``statistic``    ``df`` ``df.error``   ``p.value`\
 `#>       ``<dbl>`` ``<dbl>``    ``<dbl>``     ``<dbl>`\
@@ -284,12 +280,7 @@
 `#> ``1``       ``0.``95    ``0.``370         1 ncp         F                    32 ``<language>`\
 \
 `# biased (partial eta-squared) effect size`\
-[`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(`\
-`  data ``=`` ``mtcars``,`\
-`  x ``=`` ``cyl``,`\
-`  y ``=`` ``wt``,`\
-`  effsize.type ``=`` ``"eta"`\
-`)`\
+[`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(``mtcars``, ``cyl``, ``wt``, effsize.type ``=`` ``"eta"``)`\
 `#> ``# A tibble: 1 × 14`\
 `#>   ``statistic``    ``df`` ``df.error``   ``p.value`\
 `#>       ``<dbl>`` ``<dbl>``    ``<dbl>``     ``<dbl>`\
@@ -302,13 +293,7 @@
 `#> ``1``       ``0.``95    ``0.``437         1 ncp         F                    32 ``<language>`\
 \
 `# within-subjects design`\
-[`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(`\
-`  data ``=`` ``bugs_long``,`\
-`  x ``=`` ``condition``,`\
-`  y ``=`` ``desire``,`\
-`  subject.id ``=`` ``subject``,`\
-`  paired ``=`` ``TRUE`\
-`)`\
+[`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(``bugs_long``, ``condition``, ``desire``, subject.id ``=`` ``subject``, paired ``=`` ``TRUE``)`\
 `#> ``# A tibble: 1 × 18`\
 `#>   ``term``      ``sumsq`` ``sum.squares.error``    ``df`` ``df.error`` ``meansq`` ``statistic``  ``p.value`\
 `#>   ``<chr>``     ``<dbl>``             ``<dbl>`` ``<dbl>``    ``<dbl>``  ``<dbl>``     ``<dbl>``    ``<dbl>`\
@@ -323,12 +308,7 @@
 `# ----------------------- non-parametric ----------------------------------`\
 \
 `# between-subjects`\
-[`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(`\
-`  data ``=`` ``mtcars``,`\
-`  x ``=`` ``cyl``,`\
-`  y ``=`` ``wt``,`\
-`  type ``=`` ``"np"`\
-`)`\
+[`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(``mtcars``, ``cyl``, ``wt``, type ``=`` ``"np"``)`\
 `#> ``# A tibble: 1 × 15`\
 `#>   ``parameter1`` ``parameter2`` ``statistic`` ``df.error``   ``p.value`\
 `#>   ``<chr>``      ``<chr>``          ``<dbl>``    ``<int>``     ``<dbl>`\
@@ -342,9 +322,9 @@
 \
 `# within-subjects design`\
 [`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(`\
-`  data ``=`` ``bugs_long``,`\
-`  x ``=`` ``condition``,`\
-`  y ``=`` ``desire``,`\
+`  ``bugs_long``,`\
+`  ``condition``,`\
+`  ``desire``,`\
 `  subject.id ``=`` ``subject``,`\
 `  paired ``=`` ``TRUE``,`\
 `  type ``=`` ``"np"`\
@@ -363,12 +343,7 @@
 `# ----------------------- robust -------------------------------------`\
 \
 `# between-subjects`\
-[`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(`\
-`  data ``=`` ``mtcars``,`\
-`  x ``=`` ``cyl``,`\
-`  y ``=`` ``wt``,`\
-`  type ``=`` ``"r"`\
-`)`\
+[`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(``mtcars``, ``cyl``, ``wt``, type ``=`` ``"r"``)`\
 `#> ``# A tibble: 1 × 12`\
 `#>   ``statistic``    ``df`` ``df.error`` ``p.value`\
 `#>       ``<dbl>`` ``<dbl>``    ``<dbl>``   ``<dbl>`\
@@ -385,9 +360,9 @@
 \
 `# within-subjects design`\
 [`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(`\
-`  data ``=`` ``bugs_long``,`\
-`  x ``=`` ``condition``,`\
-`  y ``=`` ``desire``,`\
+`  ``bugs_long``,`\
+`  ``condition``,`\
+`  ``desire``,`\
 `  subject.id ``=`` ``subject``,`\
 `  paired ``=`` ``TRUE``,`\
 `  type ``=`` ``"r"`\
@@ -409,12 +384,7 @@
 `# ----------------------- Bayesian -------------------------------------`\
 \
 `# between-subjects`\
-[`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(`\
-`  data ``=`` ``mtcars``,`\
-`  x ``=`` ``cyl``,`\
-`  y ``=`` ``wt``,`\
-`  type ``=`` ``"bayes"`\
-`)`\
+[`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(``mtcars``, ``cyl``, ``wt``, type ``=`` ``"bayes"``)`\
 `#> ``# A tibble: 6 × 17`\
 `#>   ``term``     ``pd`` ``prior.distribution`` ``prior.location`` ``prior.scale``   ``bf10`\
 `#>   ``<chr>`` ``<dbl>`` ``<chr>``                       ``<dbl>``       ``<dbl>``  ``<dbl>`\
@@ -443,9 +413,9 @@
 \
 `# within-subjects design`\
 [`oneway_anova`](https://www.indrapatil.com/statsExpressions/reference/oneway_anova.md)`(`\
-`  data ``=`` ``bugs_long``,`\
-`  x ``=`` ``condition``,`\
-`  y ``=`` ``desire``,`\
+`  ``bugs_long``,`\
+`  ``condition``,`\
+`  ``desire``,`\
 `  subject.id ``=`` ``subject``,`\
 `  paired ``=`` ``TRUE``,`\
 `  type ``=`` ``"bayes"`\
@@ -463,14 +433,14 @@
 `#> ``8`` g_.rowid       1     cauchy                          ``0``       1     fixed `\
 `#>          ``bf10`` ``method``                          ``log_e_bf10`` ``effectsize``        `\
 `#>         ``<dbl>`` ``<chr>``                                ``<dbl>`` ``<chr>``             `\
-`#> ``1`` ``1``36``0``982``795``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``2`` ``1``36``0``982``795``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``3`` ``1``36``0``982``795``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``4`` ``1``36``0``982``795``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``5`` ``1``36``0``982``795``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``6`` ``1``36``0``982``795``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``7`` ``1``36``0``982``795``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``8`` ``1``36``0``982``795``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``1`` ``1``36``0``982``789``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``2`` ``1``36``0``982``789``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``3`` ``1``36``0``982``789``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``4`` ``1``36``0``982``789``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``5`` ``1``36``0``982``789``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``6`` ``1``36``0``982``789``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``7`` ``1``36``0``982``789``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``8`` ``1``36``0``982``789``. Bayes factors for linear models       21.0 Bayesian R-squared`\
 `#>   ``estimate`` ``std.dev`` ``conf.level`` ``conf.low`` ``conf.high`` ``conf.method`` ``component``   ``n.obs`\
 `#>      ``<dbl>``   ``<dbl>``      ``<dbl>``    ``<dbl>``     ``<dbl>`` ``<chr>``       ``<chr>``       ``<int>`\
 `#> ``1``    ``0.``531  ``0.0``32``3``       ``0.``95    ``0.``461     ``0.``587 HDI         conditional    88`\
@@ -495,19 +465,15 @@
 ## Contingency table analysis output
 
 \
+`# for reproducibility`\
+[`set.seed`](https://rdrr.io/r/base/Random.html)`(``123``)`\
+\
 `#### -------------------- association test ------------------------ ####`\
 \
 `# ------------------------ frequentist ---------------------------------`\
 \
 `# unpaired`\
-\
-[`set.seed`](https://rdrr.io/r/base/Random.html)`(``123``)`\
-[`contingency_table`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md)`(`\
-`  data ``=`` ``mtcars``,`\
-`  x ``=`` ``am``,`\
-`  y ``=`` ``vs``,`\
-`  paired ``=`` ``FALSE`\
-`)`\
+[`contingency_table`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md)`(``mtcars``, ``am``, ``vs``)`\
 `#> ``# A tibble: 1 × 13`\
 `#>   ``statistic``    ``df`` ``p.value`` ``method``                     ``effectsize``        ``estimate`\
 `#>       ``<dbl>`` ``<int>``   ``<dbl>`` ``<chr>``                      ``<chr>``                ``<dbl>`\
@@ -517,18 +483,16 @@
 `#> ``1``       ``0.``95        ``0``     ``0.``490 ncp         chisq                32 ``<language>`\
 \
 `# paired`\
-\
 `paired_data`` ``<-`` ``dplyr``::`[`tibble`](https://tibble.tidyverse.org/reference/tibble.html)`(`\
 `  response_before ``=`` `[`factor`](https://rdrr.io/r/base/factor.html)`(`[`c`](https://rdrr.io/r/base/c.html)`(``"no"``, ``"yes"``, ``"no"``, ``"yes"``)``)``,`\
 `  response_after ``=`` `[`factor`](https://rdrr.io/r/base/factor.html)`(`[`c`](https://rdrr.io/r/base/c.html)`(``"no"``, ``"no"``, ``"yes"``, ``"yes"``)``)``,`\
 `  Freq ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``65L``, ``25L``, ``5L``, ``5L``)`\
 `)`\
 \
-[`set.seed`](https://rdrr.io/r/base/Random.html)`(``123``)`\
 [`contingency_table`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md)`(`\
-`  data ``=`` ``paired_data``,`\
-`  x ``=`` ``response_before``,`\
-`  y ``=`` ``response_after``,`\
+`  ``paired_data``,`\
+`  ``response_before``,`\
+`  ``response_after``,`\
 `  paired ``=`` ``TRUE``,`\
 `  counts ``=`` ``Freq`\
 `)`\
@@ -542,16 +506,8 @@
 \
 `# ------------------------ Bayesian -------------------------------------`\
 \
-`# unpaired`\
-\
-[`set.seed`](https://rdrr.io/r/base/Random.html)`(``123``)`\
-[`contingency_table`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md)`(`\
-`  data ``=`` ``mtcars``,`\
-`  x ``=`` ``am``,`\
-`  y ``=`` ``vs``,`\
-`  paired ``=`` ``FALSE``,`\
-`  type ``=`` ``"bayes"`\
-`)`\
+`# only unpaired designs are supported`\
+[`contingency_table`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md)`(``mtcars``, ``am``, ``vs``, type ``=`` ``"bayes"``)`\
 `#> ``# A tibble: 1 × 15`\
 `#>   ``term``  ``conf.level`` ``effectsize`` ``estimate`` ``conf.low`` ``conf.high`\
 `#>   ``<chr>``      ``<dbl>`` ``<chr>``         ``<dbl>``    ``<dbl>``     ``<dbl>`\
@@ -563,38 +519,13 @@
 `#>   ``<chr>``                               ``<chr>``            ``<dbl>`` ``<int>`` ``<list>``    `\
 `#> ``1`` Bayesian contingency table analysis ETI             -``0.``442``    32 ``<language>`\
 \
-`# paired`\
-\
-[`set.seed`](https://rdrr.io/r/base/Random.html)`(``123``)`\
-[`contingency_table`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md)`(`\
-`  data ``=`` ``paired_data``,`\
-`  x ``=`` ``response_before``,`\
-`  y ``=`` ``response_after``,`\
-`  paired ``=`` ``TRUE``,`\
-`  counts ``=`` ``Freq``,`\
-`  type ``=`` ``"bayes"`\
-`)`\
-`#> ``# A tibble: 1 × 15`\
-`#>   ``term``  ``conf.level`` ``effectsize`` ``estimate`` ``conf.low`` ``conf.high`\
-`#>   ``<chr>``      ``<dbl>`` ``<chr>``         ``<dbl>``    ``<dbl>``     ``<dbl>`\
-`#> ``1`` Ratio       ``0.``95 Cramers_v     ``0.``111        ``0``     ``0.``340`\
-`#>   ``prior.distribution``      ``prior.location`` ``prior.scale``  ``bf10`\
-`#>   ``<chr>``                            ``<dbl>``       ``<dbl>`` ``<dbl>`\
-`#> ``1`` independent multinomial              ``0``           1 ``0.``461`\
-`#>   ``method``                              ``conf.method`` ``log_e_bf10`` ``n.obs`` ``expression`\
-`#>   ``<chr>``                               ``<chr>``            ``<dbl>`` ``<int>`` ``<list>``    `\
-`#> ``1`` Bayesian contingency table analysis ETI             -``0.``775``   100 ``<language>`\
-\
 `#### -------------------- goodness-of-fit test -------------------- ####`\
+\
+`hair_eye_data`` ``<-`` `[`as.data.frame`](https://rdrr.io/r/base/as.data.frame.html)`(``HairEyeColor``)`\
 \
 `# ------------------------ frequentist ---------------------------------`\
 \
-[`set.seed`](https://rdrr.io/r/base/Random.html)`(``123``)`\
-[`contingency_table`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md)`(`\
-`  data ``=`` `[`as.data.frame`](https://rdrr.io/r/base/as.data.frame.html)`(``HairEyeColor``)``,`\
-`  x ``=`` ``Eye``,`\
-`  counts ``=`` ``Freq`\
-`)`\
+[`contingency_table`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md)`(``hair_eye_data``, ``Eye``, counts ``=`` ``Freq``)`\
 `#> ``# A tibble: 1 × 13`\
 `#>   ``statistic``    ``df``  ``p.value`` ``method``                                   ``effectsize`` `\
 `#>       ``<dbl>`` ``<dbl>``    ``<dbl>`` ``<chr>``                                    ``<chr>``      `\
@@ -608,10 +539,9 @@
 \
 `# ------------------------ Bayesian -------------------------------------`\
 \
-[`set.seed`](https://rdrr.io/r/base/Random.html)`(``123``)`\
 [`contingency_table`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md)`(`\
-`  data ``=`` `[`as.data.frame`](https://rdrr.io/r/base/as.data.frame.html)`(``HairEyeColor``)``,`\
-`  x ``=`` ``Eye``,`\
+`  ``hair_eye_data``,`\
+`  ``Eye``,`\
 `  counts ``=`` ``Freq``,`\
 `  ratio ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.2``, ``0.2``, ``0.3``, ``0.3``)``,`\
 `  type ``=`` ``"bayes"`\
@@ -619,7 +549,7 @@
 `#> ``# A tibble: 1 × 4`\
 `#>      ``bf10`` ``prior.scale`` ``method``                                      ``expression`\
 `#>     ``<dbl>``       ``<dbl>`` ``<chr>``                                       ``<list>``    `\
-`#> ``1`` 4.17``e``55           1 Bayesian one-way contingency table analysis ``<language>`
+`#> ``1`` 3.75``e``55           1 Bayesian one-way contingency table analysis ``<language>`
 
 ## Correlation analysis output
 
@@ -814,12 +744,10 @@
 `# parametric`\
 `` # if `var.equal = TRUE`, then Student's t-test will be run ``\
 [`pairwise_comparisons`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)`(`\
-`  data ``=`` ``mtcars``,`\
-`  x ``=`` ``cyl``,`\
-`  y ``=`` ``wt``,`\
-`  type ``=`` ``"parametric"``,`\
+`  ``mtcars``,`\
+`  ``cyl``,`\
+`  ``wt``,`\
 `  var.equal ``=`` ``TRUE``,`\
-`  paired ``=`` ``FALSE``,`\
 `  p.adjust.method ``=`` ``"none"`\
 `)`\
 `#> ``# A tibble: 3 × 6`\
@@ -830,15 +758,7 @@
 `#> ``3`` 6      8      ``0.00``5``16``     None            Student's t ``<language>`\
 \
 `` # if `var.equal = FALSE`, then Games-Howell test will be run ``\
-[`pairwise_comparisons`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)`(`\
-`  data ``=`` ``mtcars``,`\
-`  x ``=`` ``cyl``,`\
-`  y ``=`` ``wt``,`\
-`  type ``=`` ``"parametric"``,`\
-`  var.equal ``=`` ``FALSE``,`\
-`  paired ``=`` ``FALSE``,`\
-`  p.adjust.method ``=`` ``"bonferroni"`\
-`)`\
+[`pairwise_comparisons`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)`(``mtcars``, ``cyl``, ``wt``, p.adjust.method ``=`` ``"bonferroni"``)`\
 `#> ``# A tibble: 3 × 9`\
 `#>   ``group1`` ``group2`` ``statistic``   ``p.value`` ``alternative`` ``distribution`` ``p.adjust.method`\
 `#>   ``<chr>``  ``<chr>``      ``<dbl>``     ``<dbl>`` ``<chr>``       ``<chr>``        ``<chr>``          `\
@@ -853,11 +773,10 @@
 \
 `# non-parametric (Dunn test)`\
 [`pairwise_comparisons`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)`(`\
-`  data ``=`` ``mtcars``,`\
-`  x ``=`` ``cyl``,`\
-`  y ``=`` ``wt``,`\
+`  ``mtcars``,`\
+`  ``cyl``,`\
+`  ``wt``,`\
 `  type ``=`` ``"nonparametric"``,`\
-`  paired ``=`` ``FALSE``,`\
 `  p.adjust.method ``=`` ``"none"`\
 `)`\
 `#> ``# A tibble: 3 × 9`\
@@ -873,14 +792,7 @@
 `#> ``3`` Dunn  ``<language>`\
 \
 `# robust (Yuen's trimmed means t-test)`\
-[`pairwise_comparisons`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)`(`\
-`  data ``=`` ``mtcars``,`\
-`  x ``=`` ``cyl``,`\
-`  y ``=`` ``wt``,`\
-`  type ``=`` ``"robust"``,`\
-`  paired ``=`` ``FALSE``,`\
-`  p.adjust.method ``=`` ``"fdr"`\
-`)`\
+[`pairwise_comparisons`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)`(``mtcars``, ``cyl``, ``wt``, type ``=`` ``"robust"``, p.adjust.method ``=`` ``"fdr"``)`\
 `#> ``# A tibble: 3 × 10`\
 `#>   ``group1`` ``group2`` ``estimate`` ``conf.level`` ``conf.low`` ``conf.high``  ``p.value`` ``p.adjust.method`\
 `#>   ``<chr>``  ``<chr>``     ``<dbl>``      ``<dbl>``    ``<dbl>``     ``<dbl>``    ``<dbl>`` ``<chr>``          `\
@@ -894,13 +806,7 @@
 `#> ``3`` Yuen's trimmed means ``<language>`\
 \
 `# Bayes Factor (Student's t-test)`\
-[`pairwise_comparisons`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)`(`\
-`  data ``=`` ``mtcars``,`\
-`  x ``=`` ``cyl``,`\
-`  y ``=`` ``wt``,`\
-`  type ``=`` ``"bayes"``,`\
-`  paired ``=`` ``FALSE`\
-`)`\
+[`pairwise_comparisons`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)`(``mtcars``, ``cyl``, ``wt``, type ``=`` ``"bayes"``)`\
 `#> ``# A tibble: 3 × 18`\
 `#>   ``group1`` ``group2`` ``term``       ``effectsize``      ``estimate`` ``conf.level`` ``conf.low`\
 `#>   ``<chr>``  ``<chr>``  ``<chr>``      ``<chr>``              ``<dbl>``      ``<dbl>``    ``<dbl>`\
@@ -922,11 +828,10 @@
 \
 `# parametric (Student's t-test)`\
 [`pairwise_comparisons`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)`(`\
-`  data ``=`` ``bugs_long``,`\
-`  x ``=`` ``condition``,`\
-`  y ``=`` ``desire``,`\
+`  ``bugs_long``,`\
+`  ``condition``,`\
+`  ``desire``,`\
 `  subject.id ``=`` ``subject``,`\
-`  type ``=`` ``"parametric"``,`\
 `  paired ``=`` ``TRUE``,`\
 `  p.adjust.method ``=`` ``"BH"`\
 `)`\
@@ -942,9 +847,9 @@
 \
 `# non-parametric (Durbin-Conover test)`\
 [`pairwise_comparisons`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)`(`\
-`  data ``=`` ``bugs_long``,`\
-`  x ``=`` ``condition``,`\
-`  y ``=`` ``desire``,`\
+`  ``bugs_long``,`\
+`  ``condition``,`\
+`  ``desire``,`\
 `  subject.id ``=`` ``subject``,`\
 `  type ``=`` ``"nonparametric"``,`\
 `  paired ``=`` ``TRUE``,`\
@@ -970,9 +875,9 @@
 \
 `# robust (Yuen's trimmed means t-test)`\
 [`pairwise_comparisons`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)`(`\
-`  data ``=`` ``bugs_long``,`\
-`  x ``=`` ``condition``,`\
-`  y ``=`` ``desire``,`\
+`  ``bugs_long``,`\
+`  ``condition``,`\
+`  ``desire``,`\
 `  subject.id ``=`` ``subject``,`\
 `  type ``=`` ``"robust"``,`\
 `  paired ``=`` ``TRUE``,`\
@@ -998,9 +903,9 @@
 \
 `# Bayes Factor (Student's t-test)`\
 [`pairwise_comparisons`](https://www.indrapatil.com/statsExpressions/reference/pairwise_comparisons.md)`(`\
-`  data ``=`` ``bugs_long``,`\
-`  x ``=`` ``condition``,`\
-`  y ``=`` ``desire``,`\
+`  ``bugs_long``,`\
+`  ``condition``,`\
+`  ``desire``,`\
 `  subject.id ``=`` ``subject``,`\
 `  type ``=`` ``"bayes"``,`\
 `  paired ``=`` ``TRUE`\

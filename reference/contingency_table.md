@@ -294,19 +294,15 @@ Expressions with Statistical Details. Journal of Open Source Software,
 ## Examples
 
 ``` r
+# for reproducibility
+set.seed(123)
+
 #### -------------------- association test ------------------------ ####
 
 # ------------------------ frequentist ---------------------------------
 
 # unpaired
-
-set.seed(123)
-contingency_table(
-  data = mtcars,
-  x = am,
-  y = vs,
-  paired = FALSE
-)
+contingency_table(mtcars, am, vs)
 #> # A tibble: 1 × 13
 #>   statistic    df p.value method                     effectsize        estimate
 #>       <dbl> <int>   <dbl> <chr>                      <chr>                <dbl>
@@ -316,18 +312,16 @@ contingency_table(
 #> 1       0.95        0     0.490 ncp         chisq                32 <language>
 
 # paired
-
 paired_data <- dplyr::tibble(
   response_before = factor(c("no", "yes", "no", "yes")),
   response_after = factor(c("no", "no", "yes", "yes")),
   Freq = c(65L, 25L, 5L, 5L)
 )
 
-set.seed(123)
 contingency_table(
-  data = paired_data,
-  x = response_before,
-  y = response_after,
+  paired_data,
+  response_before,
+  response_after,
   paired = TRUE,
   counts = Freq
 )
@@ -341,16 +335,8 @@ contingency_table(
 
 # ------------------------ Bayesian -------------------------------------
 
-# unpaired
-
-set.seed(123)
-contingency_table(
-  data = mtcars,
-  x = am,
-  y = vs,
-  paired = FALSE,
-  type = "bayes"
-)
+# only unpaired designs are supported
+contingency_table(mtcars, am, vs, type = "bayes")
 #> # A tibble: 1 × 15
 #>   term  conf.level effectsize estimate conf.low conf.high
 #>   <chr>      <dbl> <chr>         <dbl>    <dbl>     <dbl>
@@ -362,38 +348,13 @@ contingency_table(
 #>   <chr>                               <chr>            <dbl> <int> <list>    
 #> 1 Bayesian contingency table analysis ETI             -0.442    32 <language>
 
-# paired
-
-set.seed(123)
-contingency_table(
-  data = paired_data,
-  x = response_before,
-  y = response_after,
-  paired = TRUE,
-  counts = Freq,
-  type = "bayes"
-)
-#> # A tibble: 1 × 15
-#>   term  conf.level effectsize estimate conf.low conf.high
-#>   <chr>      <dbl> <chr>         <dbl>    <dbl>     <dbl>
-#> 1 Ratio       0.95 Cramers_v     0.111        0     0.340
-#>   prior.distribution      prior.location prior.scale  bf10
-#>   <chr>                            <dbl>       <dbl> <dbl>
-#> 1 independent multinomial              0           1 0.461
-#>   method                              conf.method log_e_bf10 n.obs expression
-#>   <chr>                               <chr>            <dbl> <int> <list>    
-#> 1 Bayesian contingency table analysis ETI             -0.775   100 <language>
-
 #### -------------------- goodness-of-fit test -------------------- ####
+
+hair_eye_data <- as.data.frame(HairEyeColor)
 
 # ------------------------ frequentist ---------------------------------
 
-set.seed(123)
-contingency_table(
-  data = as.data.frame(HairEyeColor),
-  x = Eye,
-  counts = Freq
-)
+contingency_table(hair_eye_data, Eye, counts = Freq)
 #> # A tibble: 1 × 13
 #>   statistic    df  p.value method                                   effectsize 
 #>       <dbl> <dbl>    <dbl> <chr>                                    <chr>      
@@ -407,10 +368,9 @@ contingency_table(
 
 # ------------------------ Bayesian -------------------------------------
 
-set.seed(123)
 contingency_table(
-  data = as.data.frame(HairEyeColor),
-  x = Eye,
+  hair_eye_data,
+  Eye,
   counts = Freq,
   ratio = c(0.2, 0.2, 0.3, 0.3),
   type = "bayes"
@@ -418,5 +378,5 @@ contingency_table(
 #> # A tibble: 1 × 4
 #>      bf10 prior.scale method                                      expression
 #>     <dbl>       <dbl> <chr>                                       <list>    
-#> 1 4.17e55           1 Bayesian one-way contingency table analysis <language>
+#> 1 3.75e55           1 Bayesian one-way contingency table analysis <language>
 ```

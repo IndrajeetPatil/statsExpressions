@@ -385,11 +385,7 @@
 <span><span class="co"># ----------------------- parametric -------------------------------------</span></span>
 <span></span>
 <span><span class="co"># between-subjects</span></span>
-<span><span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">cyl</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">wt</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 14</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">df</span> <span style="font-weight: bold;">df.error</span>   <span style="font-weight: bold;">p.value</span></span></span>
 <span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -402,12 +398,7 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>       <span style="color: #949494;">0.</span>95    <span style="color: #949494;">0.</span>370         1 ncp         F                    32 <span style="color: #949494;">&lt;language&gt;</span></span></span>
 <span></span>
 <span><span class="co"># biased (partial eta-squared) effect size</span></span>
-<span><span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">cyl</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">wt</span>,</span>
-<span>  effsize.type <span class="op">=</span> <span class="st">"eta"</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span>, effsize.type <span class="op">=</span> <span class="st">"eta"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 14</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">df</span> <span style="font-weight: bold;">df.error</span>   <span style="font-weight: bold;">p.value</span></span></span>
 <span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -420,13 +411,7 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>       <span style="color: #949494;">0.</span>95    <span style="color: #949494;">0.</span>437         1 ncp         F                    32 <span style="color: #949494;">&lt;language&gt;</span></span></span>
 <span></span>
 <span><span class="co"># within-subjects design</span></span>
-<span><span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">bugs_long</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">condition</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">desire</span>,</span>
-<span>  subject.id <span class="op">=</span> <span class="va">subject</span>,</span>
-<span>  paired <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">bugs_long</span>, <span class="va">condition</span>, <span class="va">desire</span>, subject.id <span class="op">=</span> <span class="va">subject</span>, paired <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 18</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">term</span>      <span style="font-weight: bold;">sumsq</span> <span style="font-weight: bold;">sum.squares.error</span>    <span style="font-weight: bold;">df</span> <span style="font-weight: bold;">df.error</span> <span style="font-weight: bold;">meansq</span> <span style="font-weight: bold;">statistic</span>  <span style="font-weight: bold;">p.value</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -441,12 +426,7 @@
 <span><span class="co"># ----------------------- non-parametric ----------------------------------</span></span>
 <span></span>
 <span><span class="co"># between-subjects</span></span>
-<span><span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">cyl</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">wt</span>,</span>
-<span>  type <span class="op">=</span> <span class="st">"np"</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"np"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 15</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">parameter1</span> <span style="font-weight: bold;">parameter2</span> <span style="font-weight: bold;">statistic</span> <span style="font-weight: bold;">df.error</span>   <span style="font-weight: bold;">p.value</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -460,9 +440,9 @@
 <span></span>
 <span><span class="co"># within-subjects design</span></span>
 <span><span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">bugs_long</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">condition</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">desire</span>,</span>
+<span>  <span class="va">bugs_long</span>,</span>
+<span>  <span class="va">condition</span>,</span>
+<span>  <span class="va">desire</span>,</span>
 <span>  subject.id <span class="op">=</span> <span class="va">subject</span>,</span>
 <span>  paired <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  type <span class="op">=</span> <span class="st">"np"</span></span>
@@ -481,12 +461,7 @@
 <span><span class="co"># ----------------------- robust -------------------------------------</span></span>
 <span></span>
 <span><span class="co"># between-subjects</span></span>
-<span><span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">cyl</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">wt</span>,</span>
-<span>  type <span class="op">=</span> <span class="st">"r"</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 12</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">df</span> <span style="font-weight: bold;">df.error</span> <span style="font-weight: bold;">p.value</span></span></span>
 <span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -503,9 +478,9 @@
 <span></span>
 <span><span class="co"># within-subjects design</span></span>
 <span><span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">bugs_long</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">condition</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">desire</span>,</span>
+<span>  <span class="va">bugs_long</span>,</span>
+<span>  <span class="va">condition</span>,</span>
+<span>  <span class="va">desire</span>,</span>
 <span>  subject.id <span class="op">=</span> <span class="va">subject</span>,</span>
 <span>  paired <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  type <span class="op">=</span> <span class="st">"r"</span></span>
@@ -527,12 +502,7 @@
 <span><span class="co"># ----------------------- Bayesian -------------------------------------</span></span>
 <span></span>
 <span><span class="co"># between-subjects</span></span>
-<span><span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">cyl</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">wt</span>,</span>
-<span>  type <span class="op">=</span> <span class="st">"bayes"</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 17</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">term</span>     <span style="font-weight: bold;">pd</span> <span style="font-weight: bold;">prior.distribution</span> <span style="font-weight: bold;">prior.location</span> <span style="font-weight: bold;">prior.scale</span>   <span style="font-weight: bold;">bf10</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -561,9 +531,9 @@
 <span></span>
 <span><span class="co"># within-subjects design</span></span>
 <span><span class="fu"><a href="../../reference/oneway_anova.html">oneway_anova</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">bugs_long</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">condition</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">desire</span>,</span>
+<span>  <span class="va">bugs_long</span>,</span>
+<span>  <span class="va">condition</span>,</span>
+<span>  <span class="va">desire</span>,</span>
 <span>  subject.id <span class="op">=</span> <span class="va">subject</span>,</span>
 <span>  paired <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  type <span class="op">=</span> <span class="st">"bayes"</span></span>
@@ -581,14 +551,14 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> g_.rowid       1     cauchy                          <span style="color: #949494;">0</span>       1     fixed </span></span>
 <span><span class="co">#&gt;          <span style="font-weight: bold;">bf10</span> <span style="font-weight: bold;">method</span>                          <span style="font-weight: bold;">log_e_bf10</span> <span style="font-weight: bold;">effectsize</span>        </span></span>
 <span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> <span style="text-decoration: underline;">1</span>36<span style="color: #949494;">0</span><span style="color: #949494; text-decoration: underline;">982</span><span style="color: #949494;">795</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> <span style="text-decoration: underline;">1</span>36<span style="color: #949494;">0</span><span style="color: #949494; text-decoration: underline;">982</span><span style="color: #949494;">795</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> <span style="text-decoration: underline;">1</span>36<span style="color: #949494;">0</span><span style="color: #949494; text-decoration: underline;">982</span><span style="color: #949494;">795</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> <span style="text-decoration: underline;">1</span>36<span style="color: #949494;">0</span><span style="color: #949494; text-decoration: underline;">982</span><span style="color: #949494;">795</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> <span style="text-decoration: underline;">1</span>36<span style="color: #949494;">0</span><span style="color: #949494; text-decoration: underline;">982</span><span style="color: #949494;">795</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> <span style="text-decoration: underline;">1</span>36<span style="color: #949494;">0</span><span style="color: #949494; text-decoration: underline;">982</span><span style="color: #949494;">795</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> <span style="text-decoration: underline;">1</span>36<span style="color: #949494;">0</span><span style="color: #949494; text-decoration: underline;">982</span><span style="color: #949494;">795</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> <span style="text-decoration: underline;">1</span>36<span style="color: #949494;">0</span><span style="color: #949494; text-decoration: underline;">982</span><span style="color: #949494;">795</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> <span style="text-decoration: underline;">1</span>36<span style="color: #949494;">0</span><span style="color: #949494; text-decoration: underline;">982</span><span style="color: #949494;">789</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> <span style="text-decoration: underline;">1</span>36<span style="color: #949494;">0</span><span style="color: #949494; text-decoration: underline;">982</span><span style="color: #949494;">789</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> <span style="text-decoration: underline;">1</span>36<span style="color: #949494;">0</span><span style="color: #949494; text-decoration: underline;">982</span><span style="color: #949494;">789</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> <span style="text-decoration: underline;">1</span>36<span style="color: #949494;">0</span><span style="color: #949494; text-decoration: underline;">982</span><span style="color: #949494;">789</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> <span style="text-decoration: underline;">1</span>36<span style="color: #949494;">0</span><span style="color: #949494; text-decoration: underline;">982</span><span style="color: #949494;">789</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> <span style="text-decoration: underline;">1</span>36<span style="color: #949494;">0</span><span style="color: #949494; text-decoration: underline;">982</span><span style="color: #949494;">789</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> <span style="text-decoration: underline;">1</span>36<span style="color: #949494;">0</span><span style="color: #949494; text-decoration: underline;">982</span><span style="color: #949494;">789</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> <span style="text-decoration: underline;">1</span>36<span style="color: #949494;">0</span><span style="color: #949494; text-decoration: underline;">982</span><span style="color: #949494;">789</span>. Bayes factors for linear models       21.0 Bayesian R-squared</span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">std.dev</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span> <span style="font-weight: bold;">conf.method</span> <span style="font-weight: bold;">component</span>   <span style="font-weight: bold;">n.obs</span></span></span>
 <span><span class="co">#&gt;      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>    <span style="color: #949494;">0.</span>531  <span style="color: #949494;">0.0</span>32<span style="text-decoration: underline;">3</span>       <span style="color: #949494;">0.</span>95    <span style="color: #949494;">0.</span>461     <span style="color: #949494;">0.</span>587 HDI         conditional    88</span></span>
@@ -614,19 +584,15 @@
 <h2 id="contingency-table-analysis-output">Contingency table analysis output<a class="anchor" aria-label="anchor" href="#contingency-table-analysis-output"></a>
 </h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#### -------------------- association test ------------------------ ####</span></span>
+<code class="sourceCode R"><span><span class="co"># for reproducibility</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#### -------------------- association test ------------------------ ####</span></span>
 <span></span>
 <span><span class="co"># ------------------------ frequentist ---------------------------------</span></span>
 <span></span>
 <span><span class="co"># unpaired</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">am</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">vs</span>,</span>
-<span>  paired <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">am</span>, <span class="va">vs</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 13</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">df</span> <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>                     <span style="font-weight: bold;">effectsize</span>        <span style="font-weight: bold;">estimate</span></span></span>
 <span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -636,18 +602,16 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>       <span style="color: #949494;">0.</span>95        <span style="color: #949494;">0</span>     <span style="color: #949494;">0.</span>490 ncp         chisq                32 <span style="color: #949494;">&lt;language&gt;</span></span></span>
 <span></span>
 <span><span class="co"># paired</span></span>
-<span></span>
 <span><span class="va">paired_data</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
 <span>  response_before <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span>, <span class="st">"yes"</span>, <span class="st">"no"</span>, <span class="st">"yes"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  response_after <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span>, <span class="st">"no"</span>, <span class="st">"yes"</span>, <span class="st">"yes"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  Freq <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">65L</span>, <span class="fl">25L</span>, <span class="fl">5L</span>, <span class="fl">5L</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">paired_data</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">response_before</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">response_after</span>,</span>
+<span>  <span class="va">paired_data</span>,</span>
+<span>  <span class="va">response_before</span>,</span>
+<span>  <span class="va">response_after</span>,</span>
 <span>  paired <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  counts <span class="op">=</span> <span class="va">Freq</span></span>
 <span><span class="op">)</span></span>
@@ -661,16 +625,8 @@
 <span></span>
 <span><span class="co"># ------------------------ Bayesian -------------------------------------</span></span>
 <span></span>
-<span><span class="co"># unpaired</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">am</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">vs</span>,</span>
-<span>  paired <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  type <span class="op">=</span> <span class="st">"bayes"</span></span>
-<span><span class="op">)</span></span>
+<span><span class="co"># only unpaired designs are supported</span></span>
+<span><span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">am</span>, <span class="va">vs</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 15</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">term</span>  <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">effectsize</span> <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -682,38 +638,13 @@
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Bayesian contingency table analysis ETI             -<span style="color: #949494;">0.</span><span style="color: #BB0000;">442</span>    32 <span style="color: #949494;">&lt;language&gt;</span></span></span>
 <span></span>
-<span><span class="co"># paired</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">paired_data</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">response_before</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">response_after</span>,</span>
-<span>  paired <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  counts <span class="op">=</span> <span class="va">Freq</span>,</span>
-<span>  type <span class="op">=</span> <span class="st">"bayes"</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 15</span></span></span>
-<span><span class="co">#&gt;   <span style="font-weight: bold;">term</span>  <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">effectsize</span> <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span></span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Ratio       <span style="color: #949494;">0.</span>95 Cramers_v     <span style="color: #949494;">0.</span>111        <span style="color: #949494;">0</span>     <span style="color: #949494;">0.</span>340</span></span>
-<span><span class="co">#&gt;   <span style="font-weight: bold;">prior.distribution</span>      <span style="font-weight: bold;">prior.location</span> <span style="font-weight: bold;">prior.scale</span>  <span style="font-weight: bold;">bf10</span></span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> independent multinomial              <span style="color: #949494;">0</span>           1 <span style="color: #949494;">0.</span>461</span></span>
-<span><span class="co">#&gt;   <span style="font-weight: bold;">method</span>                              <span style="font-weight: bold;">conf.method</span> <span style="font-weight: bold;">log_e_bf10</span> <span style="font-weight: bold;">n.obs</span> <span style="font-weight: bold;">expression</span></span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Bayesian contingency table analysis ETI             -<span style="color: #949494;">0.</span><span style="color: #BB0000;">775</span>   100 <span style="color: #949494;">&lt;language&gt;</span></span></span>
-<span></span>
 <span><span class="co">#### -------------------- goodness-of-fit test -------------------- ####</span></span>
+<span></span>
+<span><span class="va">hair_eye_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">HairEyeColor</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># ------------------------ frequentist ---------------------------------</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">HairEyeColor</span><span class="op">)</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">Eye</span>,</span>
-<span>  counts <span class="op">=</span> <span class="va">Freq</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span><span class="va">hair_eye_data</span>, <span class="va">Eye</span>, counts <span class="op">=</span> <span class="va">Freq</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 13</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">statistic</span>    <span style="font-weight: bold;">df</span>  <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">method</span>                                   <span style="font-weight: bold;">effectsize</span> </span></span>
 <span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
@@ -727,10 +658,9 @@
 <span></span>
 <span><span class="co"># ------------------------ Bayesian -------------------------------------</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../../reference/contingency_table.html">contingency_table</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">HairEyeColor</span><span class="op">)</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">Eye</span>,</span>
+<span>  <span class="va">hair_eye_data</span>,</span>
+<span>  <span class="va">Eye</span>,</span>
 <span>  counts <span class="op">=</span> <span class="va">Freq</span>,</span>
 <span>  ratio <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span><span class="op">)</span>,</span>
 <span>  type <span class="op">=</span> <span class="st">"bayes"</span></span>
@@ -738,7 +668,7 @@
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 4</span></span></span>
 <span><span class="co">#&gt;      <span style="font-weight: bold;">bf10</span> <span style="font-weight: bold;">prior.scale</span> <span style="font-weight: bold;">method</span>                                      <span style="font-weight: bold;">expression</span></span></span>
 <span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                       <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 4.17<span style="color: #949494;">e</span>55           1 Bayesian one-way contingency table analysis <span style="color: #949494;">&lt;language&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 3.75<span style="color: #949494;">e</span>55           1 Bayesian one-way contingency table analysis <span style="color: #949494;">&lt;language&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="correlation-analysis-output">Correlation analysis output<a class="anchor" aria-label="anchor" href="#correlation-analysis-output"></a>
@@ -937,12 +867,10 @@
 <span><span class="co"># parametric</span></span>
 <span><span class="co"># if `var.equal = TRUE`, then Student's t-test will be run</span></span>
 <span><span class="fu"><a href="../../reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">cyl</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">wt</span>,</span>
-<span>  type <span class="op">=</span> <span class="st">"parametric"</span>,</span>
+<span>  <span class="va">mtcars</span>,</span>
+<span>  <span class="va">cyl</span>,</span>
+<span>  <span class="va">wt</span>,</span>
 <span>  var.equal <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  paired <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  p.adjust.method <span class="op">=</span> <span class="st">"none"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 6</span></span></span>
@@ -953,15 +881,7 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 6      8      <span style="color: #949494;">0.00</span>5<span style="text-decoration: underline;">16</span>     None            Student's t <span style="color: #949494;">&lt;language&gt;</span></span></span>
 <span></span>
 <span><span class="co"># if `var.equal = FALSE`, then Games-Howell test will be run</span></span>
-<span><span class="fu"><a href="../../reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">cyl</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">wt</span>,</span>
-<span>  type <span class="op">=</span> <span class="st">"parametric"</span>,</span>
-<span>  var.equal <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  paired <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  p.adjust.method <span class="op">=</span> <span class="st">"bonferroni"</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span>, p.adjust.method <span class="op">=</span> <span class="st">"bonferroni"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 9</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">group1</span> <span style="font-weight: bold;">group2</span> <span style="font-weight: bold;">statistic</span>   <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">alternative</span> <span style="font-weight: bold;">distribution</span> <span style="font-weight: bold;">p.adjust.method</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span></span>
@@ -976,11 +896,10 @@
 <span></span>
 <span><span class="co"># non-parametric (Dunn test)</span></span>
 <span><span class="fu"><a href="../../reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">cyl</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">wt</span>,</span>
+<span>  <span class="va">mtcars</span>,</span>
+<span>  <span class="va">cyl</span>,</span>
+<span>  <span class="va">wt</span>,</span>
 <span>  type <span class="op">=</span> <span class="st">"nonparametric"</span>,</span>
-<span>  paired <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  p.adjust.method <span class="op">=</span> <span class="st">"none"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 9</span></span></span>
@@ -996,14 +915,7 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Dunn  <span style="color: #949494;">&lt;language&gt;</span></span></span>
 <span></span>
 <span><span class="co"># robust (Yuen's trimmed means t-test)</span></span>
-<span><span class="fu"><a href="../../reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">cyl</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">wt</span>,</span>
-<span>  type <span class="op">=</span> <span class="st">"robust"</span>,</span>
-<span>  paired <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  p.adjust.method <span class="op">=</span> <span class="st">"fdr"</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"robust"</span>, p.adjust.method <span class="op">=</span> <span class="st">"fdr"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 10</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">group1</span> <span style="font-weight: bold;">group2</span> <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span>  <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">p.adjust.method</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span></span>
@@ -1017,13 +929,7 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Yuen's trimmed means <span style="color: #949494;">&lt;language&gt;</span></span></span>
 <span></span>
 <span><span class="co"># Bayes Factor (Student's t-test)</span></span>
-<span><span class="fu"><a href="../../reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">cyl</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">wt</span>,</span>
-<span>  type <span class="op">=</span> <span class="st">"bayes"</span>,</span>
-<span>  paired <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../../reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 18</span></span></span>
 <span><span class="co">#&gt;   <span style="font-weight: bold;">group1</span> <span style="font-weight: bold;">group2</span> <span style="font-weight: bold;">term</span>       <span style="font-weight: bold;">effectsize</span>      <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span></span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -1045,11 +951,10 @@
 <span></span>
 <span><span class="co"># parametric (Student's t-test)</span></span>
 <span><span class="fu"><a href="../../reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">bugs_long</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">condition</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">desire</span>,</span>
+<span>  <span class="va">bugs_long</span>,</span>
+<span>  <span class="va">condition</span>,</span>
+<span>  <span class="va">desire</span>,</span>
 <span>  subject.id <span class="op">=</span> <span class="va">subject</span>,</span>
-<span>  type <span class="op">=</span> <span class="st">"parametric"</span>,</span>
 <span>  paired <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  p.adjust.method <span class="op">=</span> <span class="st">"BH"</span></span>
 <span><span class="op">)</span></span>
@@ -1065,9 +970,9 @@
 <span></span>
 <span><span class="co"># non-parametric (Durbin-Conover test)</span></span>
 <span><span class="fu"><a href="../../reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">bugs_long</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">condition</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">desire</span>,</span>
+<span>  <span class="va">bugs_long</span>,</span>
+<span>  <span class="va">condition</span>,</span>
+<span>  <span class="va">desire</span>,</span>
 <span>  subject.id <span class="op">=</span> <span class="va">subject</span>,</span>
 <span>  type <span class="op">=</span> <span class="st">"nonparametric"</span>,</span>
 <span>  paired <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -1093,9 +998,9 @@
 <span></span>
 <span><span class="co"># robust (Yuen's trimmed means t-test)</span></span>
 <span><span class="fu"><a href="../../reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">bugs_long</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">condition</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">desire</span>,</span>
+<span>  <span class="va">bugs_long</span>,</span>
+<span>  <span class="va">condition</span>,</span>
+<span>  <span class="va">desire</span>,</span>
 <span>  subject.id <span class="op">=</span> <span class="va">subject</span>,</span>
 <span>  type <span class="op">=</span> <span class="st">"robust"</span>,</span>
 <span>  paired <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -1121,9 +1026,9 @@
 <span></span>
 <span><span class="co"># Bayes Factor (Student's t-test)</span></span>
 <span><span class="fu"><a href="../../reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">bugs_long</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">condition</span>,</span>
-<span>  y <span class="op">=</span> <span class="va">desire</span>,</span>
+<span>  <span class="va">bugs_long</span>,</span>
+<span>  <span class="va">condition</span>,</span>
+<span>  <span class="va">desire</span>,</span>
 <span>  subject.id <span class="op">=</span> <span class="va">subject</span>,</span>
 <span>  type <span class="op">=</span> <span class="st">"bayes"</span>,</span>
 <span>  paired <span class="op">=</span> <span class="cn">TRUE</span></span>

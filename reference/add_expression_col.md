@@ -118,8 +118,6 @@ Expressions with Statistical Details. Journal of Open Source Software,
 ## Examples
 
 ``` r
-set.seed(123)
-
 # creating a data frame with stats results
 stats_df <- cbind.data.frame(
   statistic  = 5.494,

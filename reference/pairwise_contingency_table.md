@@ -198,9 +198,6 @@ Expressions with Statistical Details. Journal of Open Source Software,
 ## Examples
 
 ``` r
-# for reproducibility
-set.seed(123)
-
 # pairwise Fisher's exact tests with Holm adjustment
 pairwise_contingency_table(
   data = mtcars,

@@ -295,12 +295,10 @@ observations, and removal of incomplete subjects.</p>
 <span class="r-in"><span><span class="co"># parametric</span></span></span>
 <span class="r-in"><span><span class="co"># if `var.equal = TRUE`, then Student's t-test will be run</span></span></span>
 <span class="r-in"><span><span class="fu">pairwise_comparisons</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span></span>
-<span class="r-in"><span>  x <span class="op">=</span> <span class="va">cyl</span>,</span></span>
-<span class="r-in"><span>  y <span class="op">=</span> <span class="va">wt</span>,</span></span>
-<span class="r-in"><span>  type <span class="op">=</span> <span class="st">"parametric"</span>,</span></span>
+<span class="r-in"><span>  <span class="va">mtcars</span>,</span></span>
+<span class="r-in"><span>  <span class="va">cyl</span>,</span></span>
+<span class="r-in"><span>  <span class="va">wt</span>,</span></span>
 <span class="r-in"><span>  var.equal <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
-<span class="r-in"><span>  paired <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
 <span class="r-in"><span>  p.adjust.method <span class="op">=</span> <span class="st">"none"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 6</span></span>
@@ -311,15 +309,7 @@ observations, and removal of incomplete subjects.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 6      8      <span style="color: #949494;">0.00</span>5<span style="text-decoration: underline;">16</span>     None            Student's t <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># if `var.equal = FALSE`, then Games-Howell test will be run</span></span></span>
-<span class="r-in"><span><span class="fu">pairwise_comparisons</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span></span>
-<span class="r-in"><span>  x <span class="op">=</span> <span class="va">cyl</span>,</span></span>
-<span class="r-in"><span>  y <span class="op">=</span> <span class="va">wt</span>,</span></span>
-<span class="r-in"><span>  type <span class="op">=</span> <span class="st">"parametric"</span>,</span></span>
-<span class="r-in"><span>  var.equal <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
-<span class="r-in"><span>  paired <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
-<span class="r-in"><span>  p.adjust.method <span class="op">=</span> <span class="st">"bonferroni"</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">pairwise_comparisons</span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span>, p.adjust.method <span class="op">=</span> <span class="st">"bonferroni"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 9</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">group1</span> <span style="font-weight: bold;">group2</span> <span style="font-weight: bold;">statistic</span>   <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">alternative</span> <span style="font-weight: bold;">distribution</span> <span style="font-weight: bold;">p.adjust.method</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span>
@@ -334,11 +324,10 @@ observations, and removal of incomplete subjects.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># non-parametric (Dunn test)</span></span></span>
 <span class="r-in"><span><span class="fu">pairwise_comparisons</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span></span>
-<span class="r-in"><span>  x <span class="op">=</span> <span class="va">cyl</span>,</span></span>
-<span class="r-in"><span>  y <span class="op">=</span> <span class="va">wt</span>,</span></span>
+<span class="r-in"><span>  <span class="va">mtcars</span>,</span></span>
+<span class="r-in"><span>  <span class="va">cyl</span>,</span></span>
+<span class="r-in"><span>  <span class="va">wt</span>,</span></span>
 <span class="r-in"><span>  type <span class="op">=</span> <span class="st">"nonparametric"</span>,</span></span>
-<span class="r-in"><span>  paired <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
 <span class="r-in"><span>  p.adjust.method <span class="op">=</span> <span class="st">"none"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 9</span></span>
@@ -354,14 +343,7 @@ observations, and removal of incomplete subjects.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Dunn  <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># robust (Yuen's trimmed means t-test)</span></span></span>
-<span class="r-in"><span><span class="fu">pairwise_comparisons</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span></span>
-<span class="r-in"><span>  x <span class="op">=</span> <span class="va">cyl</span>,</span></span>
-<span class="r-in"><span>  y <span class="op">=</span> <span class="va">wt</span>,</span></span>
-<span class="r-in"><span>  type <span class="op">=</span> <span class="st">"robust"</span>,</span></span>
-<span class="r-in"><span>  paired <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
-<span class="r-in"><span>  p.adjust.method <span class="op">=</span> <span class="st">"fdr"</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">pairwise_comparisons</span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"robust"</span>, p.adjust.method <span class="op">=</span> <span class="st">"fdr"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 10</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">group1</span> <span style="font-weight: bold;">group2</span> <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span> <span style="font-weight: bold;">conf.high</span>  <span style="font-weight: bold;">p.value</span> <span style="font-weight: bold;">p.adjust.method</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span>
@@ -375,13 +357,7 @@ observations, and removal of incomplete subjects.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Yuen's trimmed means <span style="color: #949494;">&lt;language&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Bayes Factor (Student's t-test)</span></span></span>
-<span class="r-in"><span><span class="fu">pairwise_comparisons</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  data <span class="op">=</span> <span class="va">mtcars</span>,</span></span>
-<span class="r-in"><span>  x <span class="op">=</span> <span class="va">cyl</span>,</span></span>
-<span class="r-in"><span>  y <span class="op">=</span> <span class="va">wt</span>,</span></span>
-<span class="r-in"><span>  type <span class="op">=</span> <span class="st">"bayes"</span>,</span></span>
-<span class="r-in"><span>  paired <span class="op">=</span> <span class="cn">FALSE</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">pairwise_comparisons</span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span>, type <span class="op">=</span> <span class="st">"bayes"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 18</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">group1</span> <span style="font-weight: bold;">group2</span> <span style="font-weight: bold;">term</span>       <span style="font-weight: bold;">effectsize</span>      <span style="font-weight: bold;">estimate</span> <span style="font-weight: bold;">conf.level</span> <span style="font-weight: bold;">conf.low</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -403,11 +379,10 @@ observations, and removal of incomplete subjects.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># parametric (Student's t-test)</span></span></span>
 <span class="r-in"><span><span class="fu">pairwise_comparisons</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  data <span class="op">=</span> <span class="va">bugs_long</span>,</span></span>
-<span class="r-in"><span>  x <span class="op">=</span> <span class="va">condition</span>,</span></span>
-<span class="r-in"><span>  y <span class="op">=</span> <span class="va">desire</span>,</span></span>
+<span class="r-in"><span>  <span class="va">bugs_long</span>,</span></span>
+<span class="r-in"><span>  <span class="va">condition</span>,</span></span>
+<span class="r-in"><span>  <span class="va">desire</span>,</span></span>
 <span class="r-in"><span>  subject.id <span class="op">=</span> <span class="va">subject</span>,</span></span>
-<span class="r-in"><span>  type <span class="op">=</span> <span class="st">"parametric"</span>,</span></span>
 <span class="r-in"><span>  paired <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
 <span class="r-in"><span>  p.adjust.method <span class="op">=</span> <span class="st">"BH"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
@@ -423,9 +398,9 @@ observations, and removal of incomplete subjects.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># non-parametric (Durbin-Conover test)</span></span></span>
 <span class="r-in"><span><span class="fu">pairwise_comparisons</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  data <span class="op">=</span> <span class="va">bugs_long</span>,</span></span>
-<span class="r-in"><span>  x <span class="op">=</span> <span class="va">condition</span>,</span></span>
-<span class="r-in"><span>  y <span class="op">=</span> <span class="va">desire</span>,</span></span>
+<span class="r-in"><span>  <span class="va">bugs_long</span>,</span></span>
+<span class="r-in"><span>  <span class="va">condition</span>,</span></span>
+<span class="r-in"><span>  <span class="va">desire</span>,</span></span>
 <span class="r-in"><span>  subject.id <span class="op">=</span> <span class="va">subject</span>,</span></span>
 <span class="r-in"><span>  type <span class="op">=</span> <span class="st">"nonparametric"</span>,</span></span>
 <span class="r-in"><span>  paired <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
@@ -451,9 +426,9 @@ observations, and removal of incomplete subjects.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># robust (Yuen's trimmed means t-test)</span></span></span>
 <span class="r-in"><span><span class="fu">pairwise_comparisons</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  data <span class="op">=</span> <span class="va">bugs_long</span>,</span></span>
-<span class="r-in"><span>  x <span class="op">=</span> <span class="va">condition</span>,</span></span>
-<span class="r-in"><span>  y <span class="op">=</span> <span class="va">desire</span>,</span></span>
+<span class="r-in"><span>  <span class="va">bugs_long</span>,</span></span>
+<span class="r-in"><span>  <span class="va">condition</span>,</span></span>
+<span class="r-in"><span>  <span class="va">desire</span>,</span></span>
 <span class="r-in"><span>  subject.id <span class="op">=</span> <span class="va">subject</span>,</span></span>
 <span class="r-in"><span>  type <span class="op">=</span> <span class="st">"robust"</span>,</span></span>
 <span class="r-in"><span>  paired <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
@@ -479,9 +454,9 @@ observations, and removal of incomplete subjects.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Bayes Factor (Student's t-test)</span></span></span>
 <span class="r-in"><span><span class="fu">pairwise_comparisons</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  data <span class="op">=</span> <span class="va">bugs_long</span>,</span></span>
-<span class="r-in"><span>  x <span class="op">=</span> <span class="va">condition</span>,</span></span>
-<span class="r-in"><span>  y <span class="op">=</span> <span class="va">desire</span>,</span></span>
+<span class="r-in"><span>  <span class="va">bugs_long</span>,</span></span>
+<span class="r-in"><span>  <span class="va">condition</span>,</span></span>
+<span class="r-in"><span>  <span class="va">desire</span>,</span></span>
 <span class="r-in"><span>  subject.id <span class="op">=</span> <span class="va">subject</span>,</span></span>
 <span class="r-in"><span>  type <span class="op">=</span> <span class="st">"bayes"</span>,</span></span>
 <span class="r-in"><span>  paired <span class="op">=</span> <span class="cn">TRUE</span></span></span>
