@@ -1,43 +1,8 @@
-Meta
-doc
-docs
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-
-# Folder config file
-Desktop.ini
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-# Windows shortcuts
-*.lnk
-# =========================
-# Operating System Files
-# OSX
-.AppleDouble
+# Operating system files
 .DS_Store
-.LSOverride
-# Thumbnails
-._*
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-.fseventsd
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-.apdisk
-Network Trash Folder
-Temporary Items
-# R Studio files
+Thumbs.db
+
+# R and RStudio files
 *.Rcheck/*
 *.Rproj
 *.html
@@ -47,13 +12,8 @@ Temporary Items
 .Rproj.user
 .Ruserdata
 .claude
-.httr-oauth
 /Meta/
 /doc/
 CRAN-SUBMISSION
+docs
 inst/doc
-revdep/checks
-revdep/checks.noindex
-revdep/data.sqlite
-revdep/library
-revdep/library.noindex
