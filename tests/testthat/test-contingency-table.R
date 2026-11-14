@@ -143,6 +143,15 @@ test_that("bayesian proportion test needs one ratio per level", {
   )
 })
 
+test_that("bayesian proportion test ignores unobserved impossible levels", {
+  df <- mutate(mtcars, am = factor(am, levels = 0:2))
+
+  expect_identical(
+    contingency_table(df, am, ratio = c(0.5, 0.5, 0), type = "bayes"),
+    contingency_table(mtcars, am, type = "bayes")
+  )
+})
+
 test_that("bayesian proportion test matches numerical integration", {
   # with two levels, the marginal likelihood is an integral over one proportion
   n_auto <- sum(mtcars$am == 0)

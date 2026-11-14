@@ -166,7 +166,11 @@ contingency_table <- function(
   # closed-form Bayes factor: the Dirichlet-multinomial marginal likelihood
   # under the alternative relative to the multinomial likelihood under the null
   # (the multinomial coefficient is common to both, and thus cancels out)
-  counts <- as.vector(xtab)
+  # unobserved levels with a zero expected proportion are impossible under both
+  # hypotheses; they carry no information, but would make the result undefined
+  informative <- ratio > 0 | xtab > 0
+  counts <- as.vector(xtab)[informative]
+  ratio <- ratio[informative]
   alpha <- prior.concentration * ratio
   log_bf10 <- .log_multivariate_beta(alpha + counts) -
     .log_multivariate_beta(alpha) -
