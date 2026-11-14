@@ -1,5 +1,4 @@
 #' @title Correlation analyses
-#' @name corr_test
 #'
 #' @description
 #' Parametric, non-parametric, robust, and Bayesian correlation test.

@@ -1,5 +1,4 @@
 #' @title Movie information and user ratings from IMDB.
-#' @name movies_long
 #' @details Modified dataset from `{ggplot2movies}` package.
 #'
 #' @format A data frame with 1,579 rows and 8 variables
@@ -23,7 +22,6 @@
 
 
 #' @title Edgar Anderson's Iris Data in long format.
-#' @name iris_long
 #' @details This famous (Fisher's or Anderson's) iris data set gives the
 #'   measurements in centimeters of the variables sepal length and width and
 #'   petal length and width, respectively, for 50 flowers from each of 3 species
@@ -49,7 +47,6 @@
 "iris_long"
 
 #' @title Tidy version of the "Bugs" dataset.
-#' @name bugs_long
 #' @details This data set, "Bugs", provides the extent to which men and women
 #'   want to kill arthropods that vary in frighteningness (low, high) and
 #'   disgustingness (low, high). Each participant rates their attitudes towards

@@ -1,15 +1,12 @@
 #' @title Two-sample tests
-#' @name two_sample_test
 #'
 #' @description
 #' Parametric, non-parametric, robust, and Bayesian two-sample tests.
 #'
 #' @inheritParams long_to_wide_converter
-#' @inheritParams extract_stats_type
 #' @inheritParams one_sample_test
 #' @inheritParams oneway_anova
 #' @inheritParams stats::t.test
-#' @inheritParams add_expression_col
 #'
 #' @section Two-sample tests:
 #'

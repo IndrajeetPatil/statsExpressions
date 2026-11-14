@@ -1,5 +1,4 @@
 #' @title One-way analysis of variance (ANOVA)
-#' @name oneway_anova
 #'
 #' @description
 #' Parametric, non-parametric, robust, and Bayesian one-way ANOVA.
@@ -17,8 +16,6 @@
 #' ```{r child="man/rmd-fragments/return.Rmd"}
 #' ```
 #'
-#' @inheritParams long_to_wide_converter
-#' @inheritParams extract_stats_type
 #' @param conf.level Scalar between `0` and `1` (default: `95%`
 #'   confidence/credible intervals, `0.95`).
 #' @param effsize.type Type of effect size needed for *parametric* tests. The
@@ -36,9 +33,7 @@
 #'   of `1/2`, `sqrt(2)/2`, and `1`, respectively. In case of an ANOVA, this
 #'   value corresponds to scale for fixed effects.
 #' @inheritParams two_sample_test
-#' @inheritParams add_expression_col
 #' @param ... Additional arguments (currently ignored).
-#' @inheritParams stats::oneway.test
 #'
 #' @autoglobal
 #'

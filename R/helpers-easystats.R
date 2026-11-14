@@ -1,4 +1,3 @@
-#' @name tidy_model_parameters
 #' @title Convert `{parameters}` package output to `{tidyverse}` conventions
 #'
 #' @description
@@ -57,9 +56,7 @@ tidy_model_parameters <- function(model, ...) {
       select(-matches("^est|^conf|^comp")) |>
       filter(if_all(matches("effect"), \(x) x == "fixed"))
 
-    # replicate df_r2 to match stats_df rows for bind_cols
-    df_r2 <- df_r2[rep(1L, nrow(stats_df)), ]
-
+    # the single-row `df_r2` is recycled to match `stats_df` rows
     stats_df <- bind_cols(stats_df, df_r2)
   }
 
@@ -67,7 +64,6 @@ tidy_model_parameters <- function(model, ...) {
 }
 
 
-#' @name tidy_model_effectsize
 #' @title Convert `{effectsize}` package output to `{tidyverse}` conventions
 #'
 #' @param data A data frame returned by `{effectsize}` functions.

@@ -1,3 +1,8 @@
+# within-subjects data whose rows are not sorted by subject
+wine_unsorted <- WRS2::WineTasting |>
+  rename(condition = Wine, score = Taste, id = Taster) |>
+  arrange(score)
+
 patrick::with_parameters_test_that(
   "`subject.id` gives the same result as data sorted by subject:",
   {
@@ -9,14 +14,9 @@ patrick::with_parameters_test_that(
         fun_name = c("oneway_anova", "pairwise_comparisons", "two_sample_test"),
         fun = list(oneway_anova, pairwise_comparisons, two_sample_test),
         data = list(
-          data_with_subid,
-          dplyr::rename(
-            WRS2::WineTasting,
-            condition = Wine,
-            score = Taste,
-            id = Taster
-          ),
-          data_with_subid_two_groups
+          wine_unsorted,
+          wine_unsorted,
+          filter(wine_unsorted, condition != "Wine C")
         )
       ),
       type = c("parametric", "nonparametric", "robust", "bayes")

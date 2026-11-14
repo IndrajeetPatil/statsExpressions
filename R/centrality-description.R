@@ -1,5 +1,4 @@
 #' @title Data frame and expression for distribution properties
-#' @name centrality_description
 #'
 #' @details
 #'

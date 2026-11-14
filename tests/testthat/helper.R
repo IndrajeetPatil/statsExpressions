@@ -94,55 +94,6 @@ msleep <- dplyr::tribble(
       0.0504  , "carni"   , NA             ,  9.8         , 2.4
 )
 
-data_with_subid <- dplyr::tribble(
-  ~score , ~condition , ~id ,
-   70    , "5"        , "1" ,
-   82.5  , "1"        , "1" ,
-   97.5  , "2"        , "1" ,
-  100    , "3"        , "1" ,
-   52.5  , "4"        , "1" ,
-   62.5  , "4"        , "2" ,
-   92.5  , "5"        , "2" ,
-   70    , "1"        , "2" ,
-   90    , "2"        , "2" ,
-   92.5  , "3"        , "2" ,
-   90    , "2"        , "3" ,
-   75    , "3"        , "3" ,
-   60    , "3"        , "4" ,
-   90    , "4"        , "3" ,
-   85    , "2"        , "4" ,
-   67.5  , "1"        , "3" ,
-   90    , "5"        , "4" ,
-   72.5  , "5"        , "3" ,
-   45    , "4"        , "4" ,
-   60    , "1"        , "4" ,
-   72.5  , "1"        , "5" ,
-   80    , "4"        , "5" ,
-  100    , "3"        , "5" ,
-  100    , "5"        , "5" ,
-   97.5  , "2"        , "5" ,
-   95    , "5"        , "6" ,
-   65    , "1"        , "6" ,
-   87.5  , "2"        , "6" ,
-   90    , "3"        , "6" ,
-   62.5  , "4"        , "6" ,
-  100    , "4"        , "7" ,
-  100    , "5"        , "7" ,
-   97.5  , "1"        , "7" ,
-  100    , "2"        , "7" ,
-   97.5  , "3"        , "7" ,
-   95    , "2"        , "8" ,
-   82.5  , "3"        , "8" ,
-   82.5  , "4"        , "8" ,
-   40    , "1"        , "8" ,
-   92.5  , "5"        , "8" ,
-   85    , "3"        , "9" ,
-   72.5  , "2"        , "9" ,
-   35    , "5"        , "9" ,
-   27.5  , "4"        , "9" ,
-   82.5  , "1"        , "9"
-)
-
 data_meta <- dplyr::tribble(
   ~study         , ~estimate , ~std.error ,
   "Morton"       , -0.83035  , 1.24702    ,
@@ -164,9 +115,6 @@ data_meta <- dplyr::tribble(
 )
 
 # nolint end
-
-# two-condition subset of `data_with_subid` for paired two-sample tests
-data_with_subid_two_groups <- filter(data_with_subid, condition %in% c(1, 5))
 
 # two-group subsets for two-sample tests; `bugs_long` and `msleep` have `NA`s
 bugs_long_two_groups <- filter(bugs_long, condition %in% c("HDHF", "HDLF"))

@@ -1,5 +1,4 @@
 #' @title Template for expressions with statistical details
-#' @name add_expression_col
 #'
 #' @description
 #'
@@ -47,14 +46,11 @@
 #' @param prior.type Currently ignored. The prior label is inferred from the
 #'   `method` column.
 #' @param ... Currently ignored.
-#' @inheritParams oneway_anova
 #' @inheritParams long_to_wide_converter
 #'
 #' @autoglobal
 #'
 #' @examples
-#' set.seed(123)
-#'
 #' # creating a data frame with stats results
 #' stats_df <- cbind.data.frame(
 #'   statistic  = 5.494,
@@ -113,12 +109,10 @@ add_expression_col <- function(
   }
 
   # dealing with exactly 0 p-values
-  if ("p.value" %in% colnames(data)) {
-    data <- mutate(
-      data,
-      p.value = if_else(p.value == 0, .Machine$double.xmin, p.value)
-    )
-  }
+  data <- mutate(
+    data,
+    across(any_of("p.value"), \(p) replace_values(p, 0 ~ .Machine$double.xmin))
+  )
 
   # arguments are referenced with `.env$` so that columns in `data` with the
   # same names can't shadow them
@@ -212,10 +206,8 @@ add_expression_col <- function(
 #'   `prettyNum()`, whose `decimal.mark` follows `OutDec`.
 #' @noRd
 .prettyNum <- function(x) {
-  withr::with_options(
-    list(OutDec = "."),
-    format_value(x, digits = 0, big_mark = ",")
-  )
+  local_options(OutDec = ".")
+  format_value(x, digits = 0, big_mark = ",")
 }
 
 #' @note `decimal_point` is pinned to `"."` because plotmath parses `,` as a

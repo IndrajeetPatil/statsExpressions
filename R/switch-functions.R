@@ -1,4 +1,3 @@
-#' @name extract_stats_type
 #' @title Switch the type of statistics.
 #'
 #' @description

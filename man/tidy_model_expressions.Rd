@@ -51,8 +51,6 @@ Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressio
 
 \examples{
 \dontshow{if (identical(Sys.getenv("NOT_CRAN"), "true")) withAutoprint(\{ # examplesIf}
-set.seed(123)
-
 # t-statistic from a tidy linear model data frame
 df <- tidy_model_parameters(lm(wt ~ am * cyl, mtcars))
 tidy_model_expressions(df, statistic = "t")

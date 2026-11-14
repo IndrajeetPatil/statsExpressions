@@ -27,7 +27,6 @@ utils::globalVariables(c(
   # <add_expression_col>
   # <centrality_description>
   "n.obs",
-  # <add_expression_col>
   # <pairwise_contingency_table>
   "p.value",
   # <pairwise_comparisons>

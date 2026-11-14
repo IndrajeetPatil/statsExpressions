@@ -1,5 +1,4 @@
 #' @title Pairwise contingency table analyses
-#' @name pairwise_contingency_table
 #'
 #' @description
 #'
@@ -27,9 +26,6 @@
 #' @autoglobal
 #'
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
-#' # for reproducibility
-#' set.seed(123)
-#'
 #' # pairwise Fisher's exact tests with Holm adjustment
 #' pairwise_contingency_table(
 #'   data = mtcars,

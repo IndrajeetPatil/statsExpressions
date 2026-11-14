@@ -83,8 +83,6 @@ Patil, I., (2021). statsExpressions: R Package for Tidy Dataframes and Expressio
 }
 
 \examples{
-set.seed(123)
-
 # creating a data frame with stats results
 stats_df <- cbind.data.frame(
   statistic  = 5.494,

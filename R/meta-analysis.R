@@ -1,6 +1,5 @@
 # nolint start: line_length_linter. pkgdown needs the examplesIf guard on one line.
 #' @title Random-effects meta-analysis
-#' @name meta_analysis
 #'
 #' @description
 #' Parametric, robust, and Bayesian random-effects meta-analysis.
@@ -18,7 +17,6 @@
 #'   meta-analysis: `"mixture"` (default; mixture of normals), `"normal"`, or
 #'   `"t-dist"` (*t*-distribution). Passed to [`metaplus::metaplus()`] and only
 #'   used when `type = "robust"`.
-#' @inheritParams one_sample_test
 #' @inheritParams oneway_anova
 #' @param ... Additional arguments passed to the respective meta-analysis
 #'   function.
