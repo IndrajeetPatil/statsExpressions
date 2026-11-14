@@ -235,6 +235,14 @@
           "10.00")
       
 
+# bayesian proportion test needs one ratio per level
+
+    Code
+      contingency_table(mtcars, cyl, type = "bayes", ratio = c(0.5, 0.5))
+    Condition
+      Error in `.one_way_bayesian_table()`:
+      ! `ratio` must have one value per level of `x` (3), not 2.
+
 # bayesian (contingency tab)
 
     Code

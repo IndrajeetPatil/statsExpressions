@@ -153,6 +153,13 @@ contingency_table <- function(
   }
   # nocov end
 
+  if (length(ratio) != length(xtab)) {
+    abort(glue(
+      "`ratio` must have one value per level of `x` ({length(xtab)}), ",
+      "not {length(ratio)}."
+    ))
+  }
+
   # closed-form Bayes factor: the Dirichlet-multinomial marginal likelihood
   # under the alternative relative to the multinomial likelihood under the null
   # (the multinomial coefficient is common to both, and thus cancels out)

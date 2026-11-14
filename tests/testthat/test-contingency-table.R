@@ -136,6 +136,13 @@ test_that("bayesian (proportion test)", {
   expect_null(contingency_table(data.frame(x = "x"), x, type = "bayes"))
 })
 
+test_that("bayesian proportion test needs one ratio per level", {
+  expect_snapshot(
+    contingency_table(mtcars, cyl, type = "bayes", ratio = c(0.5, 0.5)),
+    error = TRUE
+  )
+})
+
 test_that("bayesian proportion test matches numerical integration", {
   # with two levels, the marginal likelihood is an integral over one proportion
   n_auto <- sum(mtcars$am == 0)
