@@ -395,8 +395,6 @@ ggplot(mtcars, aes(mpg, wt)) +
 For categorical/nominal data - one-sample:
 
 ``` r
-set.seed(123)
-
 # dataframe with results
 results_data <- contingency_table(
   as.data.frame(table(mpg$class)),

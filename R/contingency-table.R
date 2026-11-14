@@ -153,18 +153,17 @@ contingency_table <- function(
   }
   # nocov end
 
-  n_draws <- 100000L
-  counts <- as.matrix(xtab)
-  p1s <- rdirichlet(n = n_draws, alpha = prior.concentration * ratio)
-  pr_h1 <- map_dbl(
-    seq_len(n_draws),
-    \(i) stats::dmultinom(counts, prob = p1s[i, ], log = TRUE)
-  )
-  pr_h0 <- stats::dmultinom(counts, prob = ratio, log = TRUE)
+  # closed-form Bayes factor: the Dirichlet-multinomial marginal likelihood
+  # under the alternative relative to the multinomial likelihood under the null
+  # (the multinomial coefficient is common to both, and thus cancels out)
+  counts <- as.vector(xtab)
+  alpha <- prior.concentration * ratio
+  log_bf10 <- .log_multivariate_beta(alpha + counts) -
+    .log_multivariate_beta(alpha) -
+    sum(counts * log(ratio / sum(ratio)))
 
-  # BF = (log) prob of data under alternative - (log) prob of data under null
   tibble(
-    bf10 = exp(BayesFactor::logMeanExpLogs(pr_h1) - pr_h0),
+    bf10 = exp(log_bf10),
     prior.scale = prior.concentration,
     method = "Bayesian one-way contingency table analysis"
   ) |>
@@ -198,11 +197,8 @@ contingency_table <- function(
   data
 }
 
-#' @title Random draws from a Dirichlet distribution
-#' @note `rdirichlet()` function from `{MCMCpack}`
+#' @title Logarithm of the multivariate beta function
 #' @noRd
-rdirichlet <- function(n, alpha) {
-  l <- length(alpha)
-  x <- matrix(stats::rgamma(l * n, alpha), ncol = l, byrow = TRUE)
-  x / as.vector(x %*% rep(1, l))
+.log_multivariate_beta <- function(alpha) {
+  sum(lgamma(alpha)) - lgamma(sum(alpha))
 }

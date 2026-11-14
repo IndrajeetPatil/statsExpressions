@@ -29,7 +29,6 @@ importFrom(insight,
 importFrom(parameters,model_parameters)
 importFrom(purrr,
   map2_vec,
-  map_dbl,
   map_vec
 )
 importFrom(rstantools,bayes_R2)

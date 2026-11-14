@@ -203,7 +203,7 @@
       # A tibble: 1 x 3
          bf10 prior.scale method                                     
         <dbl>       <dbl> <chr>                                      
-      1 0.247           1 Bayesian one-way contingency table analysis
+      1 0.246           1 Bayesian one-way contingency table analysis
 
 ---
 
@@ -223,7 +223,7 @@
       # A tibble: 1 x 3
          bf10 prior.scale method                                     
         <dbl>       <dbl> <chr>                                      
-      1 0.579          10 Bayesian one-way contingency table analysis
+      1 0.577          10 Bayesian one-way contingency table analysis
 
 ---
 
