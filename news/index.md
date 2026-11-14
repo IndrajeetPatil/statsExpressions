@@ -1,5 +1,10 @@
 # Changelog
 
+## statsExpressions 2.2.2
+
+- Fixes a test failure in CRAN’s additional checks with an alternative
+  BLAS (MKL). There are no user-visible changes.
+
 ## statsExpressions 2.2.1
 
 CRAN release: 2026-10-21
