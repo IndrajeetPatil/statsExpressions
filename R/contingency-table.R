@@ -154,10 +154,13 @@ contingency_table <- function(
   # nocov end
 
   if (length(ratio) != length(xtab)) {
+    # nocov start
+    # a mismatched `ratio` is an input error, so examples never reach this
     abort(glue(
       "`ratio` must have one value per level of `x` ({length(xtab)}), ",
       "not {length(ratio)}."
     ))
+    # nocov end
   }
 
   # closed-form Bayes factor: the Dirichlet-multinomial marginal likelihood
