@@ -1,6 +1,17 @@
 # Changelog
 
+## statsExpressions 2.2.2.9000
+
+- [`contingency_table()`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md)
+  now computes the Bayes factor for the Bayesian goodness-of-fit test
+  (`type = "bayes"` without `y`) exactly, instead of estimating it from
+  random draws. Results no longer depend on the random seed and can
+  differ from earlier versions, noticeably so for tables with many
+  levels or large counts, where the earlier estimate was unstable.
+
 ## statsExpressions 2.2.2
+
+CRAN release: 2026-11-14
 
 - Fixes a test failure in CRAN’s additional checks with an alternative
   BLAS (MKL). There are no user-visible changes.

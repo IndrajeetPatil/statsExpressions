@@ -400,8 +400,6 @@ expression](reference/figures/README-corr-1.png)
 For categorical/nominal data - one-sample:
 
 \
-[`set.seed`](https://rdrr.io/r/base/Random.html)`(``123``)`\
-\
 `# dataframe with results`\
 `results_data`` ``<-`` `[`contingency_table`](https://www.indrapatil.com/statsExpressions/reference/contingency_table.md)`(`\
 `  `[`as.data.frame`](https://rdrr.io/r/base/as.data.frame.html)`(`[`table`](https://rdrr.io/r/base/table.html)`(``mpg``$``class``)``)``,`\

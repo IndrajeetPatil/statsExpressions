@@ -433,14 +433,14 @@
 `#> ``8`` g_.rowid       1     cauchy                          ``0``       1     fixed `\
 `#>          ``bf10`` ``method``                          ``log_e_bf10`` ``effectsize``        `\
 `#>         ``<dbl>`` ``<chr>``                                ``<dbl>`` ``<chr>``             `\
-`#> ``1`` ``1``36``0``982``795``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``2`` ``1``36``0``982``795``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``3`` ``1``36``0``982``795``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``4`` ``1``36``0``982``795``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``5`` ``1``36``0``982``795``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``6`` ``1``36``0``982``795``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``7`` ``1``36``0``982``795``. Bayes factors for linear models       21.0 Bayesian R-squared`\
-`#> ``8`` ``1``36``0``982``795``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``1`` ``1``36``0``982``789``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``2`` ``1``36``0``982``789``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``3`` ``1``36``0``982``789``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``4`` ``1``36``0``982``789``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``5`` ``1``36``0``982``789``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``6`` ``1``36``0``982``789``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``7`` ``1``36``0``982``789``. Bayes factors for linear models       21.0 Bayesian R-squared`\
+`#> ``8`` ``1``36``0``982``789``. Bayes factors for linear models       21.0 Bayesian R-squared`\
 `#>   ``estimate`` ``std.dev`` ``conf.level`` ``conf.low`` ``conf.high`` ``conf.method`` ``component``   ``n.obs`\
 `#>      ``<dbl>``   ``<dbl>``      ``<dbl>``    ``<dbl>``     ``<dbl>`` ``<chr>``       ``<chr>``       ``<int>`\
 `#> ``1``    ``0.``531  ``0.0``32``3``       ``0.``95    ``0.``461     ``0.``587 HDI         conditional    88`\
@@ -549,7 +549,7 @@
 `#> ``# A tibble: 1 × 4`\
 `#>      ``bf10`` ``prior.scale`` ``method``                                      ``expression`\
 `#>     ``<dbl>``       ``<dbl>`` ``<chr>``                                       ``<list>``    `\
-`#> ``1`` 3.75``e``55           1 Bayesian one-way contingency table analysis ``<language>`
+`#> ``1`` 6.01``e``55           1 Bayesian one-way contingency table analysis ``<language>`
 
 ## Correlation analysis output
 

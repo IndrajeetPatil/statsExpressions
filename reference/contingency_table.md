@@ -378,5 +378,5 @@ contingency_table(
 #> # A tibble: 1 × 4
 #>      bf10 prior.scale method                                      expression
 #>     <dbl>       <dbl> <chr>                                       <list>    
-#> 1 3.75e55           1 Bayesian one-way contingency table analysis <language>
+#> 1 6.01e55           1 Bayesian one-way contingency table analysis <language>
 ```

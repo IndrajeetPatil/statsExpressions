@@ -34,7 +34,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">statsExpressions</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.2.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.2.2.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,7 +72,12 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="2.2.2" id="statsexpressions-222">statsExpressions 2.2.2<a class="anchor" aria-label="anchor" href="#statsexpressions-222"></a></h2>
+<h2 class="pkg-version" data-toc-text="2.2.2.9000" id="statsexpressions-2229000">statsExpressions 2.2.2.9000<a class="anchor" aria-label="anchor" href="#statsexpressions-2229000"></a></h2>
+<ul><li>
+<code><a href="../reference/contingency_table.html">contingency_table()</a></code> now computes the Bayes factor for the Bayesian goodness-of-fit test (<code>type = "bayes"</code> without <code>y</code>) exactly, instead of estimating it from random draws. Results no longer depend on the random seed and can differ from earlier versions, noticeably so for tables with many levels or large counts, where the earlier estimate was unstable.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="2.2.2" id="statsexpressions-222">statsExpressions 2.2.2<a class="anchor" aria-label="anchor" href="#statsexpressions-222"></a></h2><p class="text-muted">CRAN release: 2026-11-14</p>
 <ul><li>Fixes a test failure in CRAN’s additional checks with an alternative BLAS (MKL). There are no user-visible changes.</li>
 </ul></div>
     <div class="section level2">
