@@ -1,14 +1,10 @@
 #' @title Multiple pairwise comparison for one-way design
-#' @name pairwise_comparisons
 #'
 #' @description
 #'
 #' Calculate parametric, non-parametric, robust, and Bayes Factor pairwise
 #' comparisons between group levels with corrections for multiple testing.
 #'
-#' @inheritParams long_to_wide_converter
-#' @inheritParams extract_stats_type
-#' @inheritParams oneway_anova
 #' @inheritParams two_sample_test
 #' @param p.adjust.method Adjustment method for *p*-values for multiple
 #'   comparisons. Possible methods are: `"holm"` (default), `"hochberg"`,
@@ -20,8 +16,6 @@
 #'   `PMCMRplus::gamesHowellTest()`) that is run first to enumerate the pairs,
 #'   so they do not change the Bayes factors, but unsupported arguments can
 #'   still cause an error.
-#' @inheritParams stats::t.test
-#' @inheritParams WRS2::rmmcp
 #'
 #' @section Pairwise comparison tests:
 #'

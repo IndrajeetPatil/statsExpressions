@@ -1,5 +1,4 @@
 #' @title Keep complete subjects in repeated measures data
-#' @name complete_subjects
 #'
 #' @description
 #'

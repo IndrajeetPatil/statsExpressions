@@ -1,5 +1,4 @@
 #' @title One-sample tests
-#' @name one_sample_test
 #'
 #' @param x A numeric variable from the data frame `data`.
 #' @param test.value A number indicating the true value of the mean (Default:
@@ -10,8 +9,6 @@
 #'   computed. Relevant only when `type = "nonparametric"` (Default: `FALSE`).
 #' @inheritParams long_to_wide_converter
 #' @inheritParams extract_stats_type
-#' @inheritParams add_expression_col
-#' @inheritParams two_sample_test
 #' @inheritParams oneway_anova
 #' @inheritParams stats::t.test
 #' @inheritParams insight::format_value

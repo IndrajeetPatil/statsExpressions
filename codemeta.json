@@ -170,6 +170,19 @@
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "withr",
+      "name": "withr",
+      "version": ">= 3.0.3",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=withr"
     }
   ],
   "softwareRequirements": {
@@ -394,19 +407,6 @@
     },
     "19": {
       "@type": "SoftwareApplication",
-      "identifier": "withr",
-      "name": "withr",
-      "version": ">= 3.0.3",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=withr"
-    },
-    "20": {
-      "@type": "SoftwareApplication",
       "identifier": "WRS2",
       "name": "WRS2",
       "version": ">= 1.1-7",
@@ -420,7 +420,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4255.551KB",
+  "fileSize": "4251.244KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",

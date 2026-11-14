@@ -1,5 +1,4 @@
 #' @title Convert long/tidy data frame to wide format
-#' @name long_to_wide_converter
 #'
 #' @description
 #'
@@ -126,5 +125,5 @@ long_to_wide_converter <- function(
 #'   Shared by [two_sample_test()] and [oneway_anova()].
 #' @noRd
 .n_obs <- function(data, paired) {
-  if (paired) length(unique(data$.rowid)) else nrow(data)
+  if (paired) n_distinct(data$.rowid) else nrow(data)
 }

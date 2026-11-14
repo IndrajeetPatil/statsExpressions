@@ -1,5 +1,4 @@
 #' @title Expressions with statistics for tidy regression data frames
-#' @name tidy_model_expressions
 #'
 #' @param ... Currently ignored.
 #' @param data A tidy data frame from regression model object (see
@@ -20,8 +19,6 @@
 #' @autoglobal
 #'
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
-#' set.seed(123)
-#'
 #' # t-statistic from a tidy linear model data frame
 #' df <- tidy_model_parameters(lm(wt ~ am * cyl, mtcars))
 #' tidy_model_expressions(df, statistic = "t")

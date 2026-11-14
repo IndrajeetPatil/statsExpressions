@@ -1,5 +1,4 @@
 #' @title Contingency table analyses
-#' @name contingency_table
 #'
 #' @description
 #' Parametric and Bayesian one-way and two-way contingency table analyses.
@@ -51,7 +50,6 @@
 #'   E.g., `ratio = c(0.5, 0.5)` for two levels,
 #'   `ratio = c(0.25, 0.25, 0.25, 0.25)` for four levels, etc.
 #' @param ... Additional arguments (currently ignored).
-#' @inheritParams stats::chisq.test
 #' @inheritParams oneway_anova
 #' @inheritParams parameters::model_parameters.htest
 #'
