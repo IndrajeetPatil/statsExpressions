@@ -113,7 +113,6 @@ test_that("goodness of fit contingency_table works", {
 })
 
 test_that("bayesian (proportion test)", {
-  set.seed(123)
   df1 <- contingency_table(
     data = mtcars,
     x = am,
@@ -123,7 +122,6 @@ test_that("bayesian (proportion test)", {
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
 
-  set.seed(123)
   df2 <- contingency_table(
     type = "bayes",
     data = mtcars,
@@ -136,6 +134,37 @@ test_that("bayesian (proportion test)", {
 
   # a variable with a single level gives no result
   expect_null(contingency_table(data.frame(x = "x"), x, type = "bayes"))
+})
+
+test_that("bayesian proportion test needs one ratio per level", {
+  expect_snapshot(
+    contingency_table(mtcars, cyl, type = "bayes", ratio = c(0.5, 0.5)),
+    error = TRUE
+  )
+})
+
+test_that("bayesian proportion test ignores unobserved impossible levels", {
+  df <- mutate(mtcars, am = factor(am, levels = 0:2))
+
+  expect_identical(
+    contingency_table(df, am, ratio = c(0.5, 0.5, 0), type = "bayes"),
+    contingency_table(mtcars, am, type = "bayes")
+  )
+})
+
+test_that("bayesian proportion test matches numerical integration", {
+  # with two levels, the marginal likelihood is an integral over one proportion
+  n_auto <- sum(mtcars$am == 0)
+  marginal <- stats::integrate(
+    \(p) stats::dbinom(n_auto, 32L, p) * stats::dbeta(p, 0.3, 0.7),
+    lower = 0,
+    upper = 1
+  )
+  expected <- marginal$value / stats::dbinom(n_auto, 32L, 0.3)
+
+  df <- contingency_table(mtcars, am, ratio = c(0.3, 0.7), type = "bayes")
+
+  expect_equal(df$bf10, expected, tolerance = 1e-6)
 })
 
 test_that("bayesian (contingency tab)", {

@@ -314,8 +314,6 @@ For categorical/nominal data - one-sample:
 #| label = "gof",
 #| fig.alt = "Pie chart of car classes showing example output with statistical caption"
 
-set.seed(123)
-
 # dataframe with results
 results_data <- contingency_table(
   as.data.frame(table(mpg$class)),

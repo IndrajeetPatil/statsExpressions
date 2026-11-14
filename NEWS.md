@@ -1,3 +1,11 @@
+# statsExpressions 2.2.2.9000
+
+- `contingency_table()` now computes the Bayes factor for the Bayesian
+  goodness-of-fit test (`type = "bayes"` without `y`) exactly, instead of
+  estimating it from random draws. Results no longer depend on the random
+  seed and can differ from earlier versions, noticeably so for tables with
+  many levels or large counts, where the earlier estimate was unstable.
+
 # statsExpressions 2.2.2
 
 - Fixes a test failure in CRAN's additional checks with an alternative BLAS
