@@ -122,13 +122,12 @@ prior_switch <- function(x) {
     return(list(test = stats::wilcox.test, es = effectsize::rank_biserial))
   }
 
-  es <- switch(
-    match.arg(effsize.type, c("g", "d", "unbiased", "biased")),
-    g = ,
-    unbiased = effectsize::hedges_g,
-    d = ,
-    biased = effectsize::cohens_d
-  )
+  effsize.type <- match.arg(effsize.type, c("g", "d", "unbiased", "biased"))
+  es <- if (effsize.type %in% c("g", "unbiased")) {
+    effectsize::hedges_g
+  } else {
+    effectsize::cohens_d
+  }
 
   list(test = stats::t.test, es = es)
 }

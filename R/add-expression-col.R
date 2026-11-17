@@ -152,12 +152,11 @@ add_expression_col <- function(
 
     # the statistic term is the only part that varies with the number of
     # degrees of freedom; the rest of the expression is shared
-    statistic_part <- switch(
-      as.character(n_df_cols),
-      "0" = "{statistic.text}=='{statistic}'",
-      "1" = "{statistic.text}*'('*{df.error}*')'=='{statistic}'",
-      "2" = "{statistic.text}({df}, {df.error})=='{statistic}'"
-    )
+    statistic_part <- c(
+      "{statistic.text}=='{statistic}'",
+      "{statistic.text}*'('*{df.error}*')'=='{statistic}'",
+      "{statistic.text}({df}, {df.error})=='{statistic}'"
+    )[[n_df_cols + 1L]]
 
     expr_template <- paste0(
       "list(",
