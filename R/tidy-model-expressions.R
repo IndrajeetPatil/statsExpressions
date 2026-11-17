@@ -50,6 +50,19 @@ tidy_model_expressions <- function(
   # standardize the statistic naming; a separate name is needed because
   # `statistic` inside `mutate()` and `glue()` refers to the data column
   stat_type <- substring(tolower(statistic), 1L, 1L)
+  stat_parts <- c(
+    t = "italic(t)('{df.error}')=='{statistic}'",
+    z = "italic(z)=='{statistic}'",
+    c = "italic(chi)^2*('{df.error}')=='{statistic}'",
+    f = "italic(F)('{df}', '{df.error}')=='{statistic}'"
+  )
+
+  if (length(stat_type) != 1L || !stat_type %in% names(stat_parts)) {
+    # nocov start
+    # an unsupported `statistic` is an input error, so examples never reach this
+    abort('`statistic` must be one of "t", "f", "z", or "chi".')
+    # nocov end
+  }
 
   # expressions are matched to rows by position, which grouping would break
   data <- ungroup(data)
@@ -78,17 +91,9 @@ tidy_model_expressions <- function(
     )
   }
 
-  stat_part <- switch(
-    stat_type,
-    t = "italic(t)('{df.error}')=='{statistic}'",
-    z = "italic(z)=='{statistic}'",
-    c = "italic(chi)^2*('{df.error}')=='{statistic}'",
-    f = "italic(F)('{df}', '{df.error}')=='{statistic}'"
-  )
-
   # build templates outside the data mask so that columns in `data` can't
   # shadow them; only the column placeholders are left for `glue()`
-  template <- expr_template(stat_part)
+  template <- expr_template(stat_parts[[stat_type]])
   template_no_df <- expr_template("italic(t)=='{statistic}'")
 
   df_expr <- mutate(

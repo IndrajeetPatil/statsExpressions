@@ -156,3 +156,10 @@ test_that("tidy_model_expressions() ignores grouping of the input", {
     tidy_model_expressions(df, statistic = "t")
   )
 })
+
+test_that("tidy_model_expressions errors for an unsupported statistic", {
+  df <- tidy_model_parameters(lm(wt ~ am, mtcars))
+
+  expect_snapshot(tidy_model_expressions(df), error = TRUE)
+  expect_snapshot(tidy_model_expressions(df, statistic = "w"), error = TRUE)
+})
