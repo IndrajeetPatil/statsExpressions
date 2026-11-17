@@ -9,6 +9,16 @@
   differ from earlier versions, noticeably so for tables with many
   levels or large counts, where the earlier estimate was unstable.
 
+- [`meta_analysis()`](https://www.indrapatil.com/statsExpressions/reference/meta_analysis.md)
+  with `type = "nonparametric"` now gives an informative error.
+  Previously it failed with an unrelated error about a missing model
+  object.
+
+- [`tidy_model_expressions()`](https://www.indrapatil.com/statsExpressions/reference/tidy_model_expressions.md)
+  now gives an error when `statistic` is missing or not one of `"t"`,
+  `"f"`, `"z"`, or `"chi"`. Previously it returned malformed expressions
+  for an unsupported `statistic`.
+
 ## statsExpressions 2.2.2
 
 CRAN release: 2026-11-14

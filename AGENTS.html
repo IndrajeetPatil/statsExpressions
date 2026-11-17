@@ -105,7 +105,7 @@
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
 </li>
 <li><p>Cover input combinations with <code><a href="https://rdrr.io/pkg/patrick/man/with_parameters_test_that.html" class="external-link">patrick::with_parameters_test_that()</a></code>, naming cases in a <code>.test_name</code> column (<code>test_name</code> is deprecated).</p></li>
-<li><p>Codecov requires 100% project and patch coverage.</p></li>
+<li><p>CI requires 100% line and branch coverage (covr’s <code>covr.branch_coverage</code>), and Codecov requires 100% project and patch coverage. A <code><a href="https://rdrr.io/r/base/switch.html" class="external-link">switch()</a></code> without a default leaves an untaken “no match” branch: make its last case the default or use a lookup vector instead. Exclude a branch that can’t be covered with <code># nocov</code>, and say why in a comment.</p></li>
 <li><p>Set seeds only before Bayesian or otherwise stochastic tests.</p></li>
 <li><p>Use <code>skip_if_not_installed()</code> for optional dependencies, and suppress warnings only when a test deliberately exercises a warning path.</p></li>
 </ul></div>

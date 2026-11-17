@@ -62,7 +62,12 @@ make check
   [`patrick::with_parameters_test_that()`](https://rdrr.io/pkg/patrick/man/with_parameters_test_that.html),
   naming cases in a `.test_name` column (`test_name` is deprecated).
 
-- Codecov requires 100% project and patch coverage.
+- CI requires 100% line and branch coverage (covr’s
+  `covr.branch_coverage`), and Codecov requires 100% project and patch
+  coverage. A [`switch()`](https://rdrr.io/r/base/switch.html) without a
+  default leaves an untaken “no match” branch: make its last case the
+  default or use a lookup vector instead. Exclude a branch that can’t be
+  covered with `# nocov`, and say why in a comment.
 
 - Set seeds only before Bayesian or otherwise stochastic tests.
 
