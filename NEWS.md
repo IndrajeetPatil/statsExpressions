@@ -6,6 +6,14 @@
   seed and can differ from earlier versions, noticeably so for tables with
   many levels or large counts, where the earlier estimate was unstable.
 
+- `meta_analysis()` with `type = "nonparametric"` now gives an informative
+  error. Previously it failed with an unrelated error about a missing model
+  object.
+
+- `tidy_model_expressions()` now gives an error when `statistic` is missing or
+  not one of `"t"`, `"f"`, `"z"`, or `"chi"`. Previously it returned malformed
+  expressions for an unsupported `statistic`.
+
 # statsExpressions 2.2.2
 
 - Fixes a test failure in CRAN's additional checks with an alternative BLAS
