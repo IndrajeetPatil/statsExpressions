@@ -58,7 +58,8 @@ make check
 - CI requires 100% line and branch coverage (covr's `covr.branch_coverage`),
   and Codecov requires 100% project and patch coverage. A `switch()` without a
   default leaves an untaken "no match" branch: make its last case the default
-  or use a lookup vector instead.
+  or use a lookup vector instead. Exclude a branch that can't be covered with
+  `# nocov`, and say why in a comment.
 - Set seeds only before Bayesian or otherwise stochastic tests.
 - Use `skip_if_not_installed()` for optional dependencies, and suppress
   warnings only when a test deliberately exercises a warning path.
