@@ -33,3 +33,12 @@
       Error:
       ! Cannot find the object/variable ('estimate') specified for the 'yi' argument.
 
+---
+
+    Code
+      meta_analysis(data_meta, type = "np")
+    Condition
+      Error in `meta_analysis()`:
+      ! A non-parametric meta-analysis is not available.
+      i Use `type = "parametric"`, `"robust"`, or `"bayes"` instead.
+

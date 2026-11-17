@@ -89,13 +89,15 @@ oneway_anova <- function(
   # parametric ---------------------------------------
 
   if (type == "parametric") {
-    .f.es <- switch(
-      match.arg(effsize.type, c("omega", "eta", "unbiased", "biased")),
-      omega = ,
-      unbiased = effectsize::omega_squared,
-      eta = ,
-      biased = effectsize::eta_squared
+    effsize.type <- match.arg(
+      effsize.type,
+      c("omega", "eta", "unbiased", "biased")
     )
+    .f.es <- if (effsize.type %in% c("omega", "unbiased")) {
+      effectsize::omega_squared
+    } else {
+      effectsize::eta_squared
+    }
 
     if (paired) {
       mod <- afex::aov_ez(

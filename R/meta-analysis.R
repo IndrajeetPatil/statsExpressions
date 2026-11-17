@@ -62,13 +62,21 @@ meta_analysis <- function(
 ) {
   type <- extract_stats_type(type)
 
-  check_if_installed(switch(
-    type,
-    parametric = "metafor",
-    robust = "metaplus",
-    bayes = "metaBMA"
-  ))
+  if (type == "nonparametric") {
+    # nocov start
+    # an unsupported `type` is an input error, so examples never reach this
+    abort(c(
+      "A non-parametric meta-analysis is not available.",
+      i = 'Use `type = "parametric"`, `"robust"`, or `"bayes"` instead.'
+    ))
+    # nocov end
+  }
 
+  check_if_installed(
+    c(parametric = "metafor", robust = "metaplus", bayes = "metaBMA")[[type]]
+  )
+
+  # the remaining `type` is "bayes"
   stats_df <- switch(
     type,
     parametric = inject(metafor::rma(
@@ -84,7 +92,7 @@ meta_analysis <- function(
       data = !!data,
       ...
     )),
-    bayes = inject(metaBMA::meta_random(
+    inject(metaBMA::meta_random(
       y = !!sym("estimate"),
       SE = !!sym("std.error"),
       data = !!data,

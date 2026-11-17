@@ -342,3 +342,19 @@
           "4.80", italic(p) == "4.15e-05")
       
 
+# tidy_model_expressions errors for an unsupported statistic
+
+    Code
+      tidy_model_expressions(df)
+    Condition
+      Error in `tidy_model_expressions()`:
+      ! `statistic` must be one of "t", "f", "z", or "chi".
+
+---
+
+    Code
+      tidy_model_expressions(df, statistic = "w")
+    Condition
+      Error in `tidy_model_expressions()`:
+      ! `statistic` must be one of "t", "f", "z", or "chi".
+
