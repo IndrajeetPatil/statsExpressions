@@ -11,7 +11,9 @@ permissions:
 
 jobs:
   test-coverage:
-    uses: IndrajeetPatil/workflows/.github/workflows/test-coverage.yaml@main
+    uses: IndrajeetPatil/workflows/.github/workflows/test-coverage.yaml@feat/test-coverage-branch-coverage
+    with:
+      branch-coverage: true
     # Pass only the secret this workflow uses, not every repository secret.
     secrets:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
