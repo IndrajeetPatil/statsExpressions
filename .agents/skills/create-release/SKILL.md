@@ -32,8 +32,11 @@ then publish the GitHub Release from `main` only after CRAN acceptance.
    heading, and `codemeta.json`; remove any development `.9000` suffix.
 3. Keep NEWS concise and user-facing, following the `NEWS.md` policy in
    `AGENTS.md`.
-4. Update `cran-comments.md` accurately. Mention a CRAN issue only when the
-   repository evidence supports it.
+4. Update `cran-comments.md` accurately. Mention a CRAN issue only when
+   the repository evidence supports it. Do not run reverse-dependency checks
+   (`revdepcheck`): CRAN runs them on submission, so a local run only costs
+   time. Leave a reverse-dependency results section out of `cran-comments.md`,
+   and remove a stale one.
 5. Do not refresh dependencies merely because this is a release.
 6. Run the full validation gate from `AGENTS.md`, followed by
    `git diff --check`.
