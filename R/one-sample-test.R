@@ -58,24 +58,13 @@ one_sample_test <- function(
   if (type %in% c("parametric", "nonparametric")) {
     fns <- .mean_difference_fns(type, effsize.type)
 
-    stats_df <- exec(
-      fns$test,
-      x = x_vec,
-      mu = test.value,
-      alternative = alternative,
-      exact = exact
-    ) |>
+    .f.args <- list(x = x_vec, mu = test.value, alternative = alternative)
+
+    stats_df <- exec(fns$test, !!!.f.args, exact = exact) |>
       tidy_model_parameters() |>
       select(-matches("^est|^conf|^diff|^term|^ci"))
 
-    ez_df <- exec(
-      fns$es,
-      x = x_vec,
-      mu = test.value,
-      alternative = alternative,
-      verbose = FALSE,
-      ci = conf.level
-    ) |>
+    ez_df <- exec(fns$es, !!!.f.args, verbose = FALSE, ci = conf.level) |>
       tidy_model_effectsize()
 
     stats_df <- bind_cols(stats_df, ez_df)

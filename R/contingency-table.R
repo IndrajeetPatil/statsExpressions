@@ -117,18 +117,17 @@ contingency_table <- function(
         alternative = alternative
       )
   } else {
+    .f <- stats::chisq.test
+    .f.args <- list(x = xtab, correct = FALSE)
+
     if (one_way) {
-      .f <- stats::chisq.test
       .f.es <- effectsize::pearsons_c
-      .f.args <- list(x = xtab, p = ratio, correct = FALSE)
+      .f.args$p <- ratio
     } else if (paired) {
       .f <- stats::mcnemar.test
       .f.es <- effectsize::cohens_g
-      .f.args <- list(x = xtab, correct = FALSE)
     } else {
-      .f <- stats::chisq.test
       .f.es <- effectsize::cramers_v
-      .f.args <- list(x = xtab, correct = FALSE)
     }
 
     stats_df <- bind_cols(

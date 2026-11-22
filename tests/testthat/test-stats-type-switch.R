@@ -1,9 +1,13 @@
 test_that("switch for stats type works", {
-  expect_identical(extract_stats_type("p"), "parametric")
-  expect_identical(extract_stats_type("pearson"), "parametric")
-  expect_identical(extract_stats_type("non-parametric"), "nonparametric")
-  expect_identical(extract_stats_type("np"), "nonparametric")
-  expect_identical(extract_stats_type("r"), "robust")
-  expect_identical(extract_stats_type("bf"), "bayes")
-  expect_identical(extract_stats_type("xxx"), "parametric")
+  expected <- c(
+    p = "parametric",
+    pearson = "parametric",
+    `non-parametric` = "nonparametric",
+    np = "nonparametric",
+    r = "robust",
+    bf = "bayes",
+    xxx = "parametric"
+  )
+
+  expect_identical(extract_stats_type(names(expected)), unname(expected))
 })
