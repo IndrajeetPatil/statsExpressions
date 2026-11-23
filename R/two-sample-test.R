@@ -127,11 +127,17 @@ two_sample_test <- function(
   }
 
   if (type != "bayes") {
+    x_name <- as_name(x)
+    y_name <- as_name(y)
+
     stats_df <- bind_cols(
       select(stats_df, -matches("^est|^eff|conf|^ci")),
       select(ez_df, -matches("term"))
     ) |>
-      .standardize_two_sample_terms(as_name(x), as_name(y))
+      mutate(
+        across(matches("^parameter1$|^term$"), \(col) .env$y_name),
+        across(matches("^parameter2$|^group$"), \(col) .env$x_name)
+      )
   }
 
   # Bayesian ---------------------------------------
@@ -160,14 +166,5 @@ two_sample_test <- function(
     n = .n_obs(data, paired),
     digits = digits,
     digits.df = digits.df
-  )
-}
-
-#' @noRd
-.standardize_two_sample_terms <- function(data, x_name, y_name) {
-  mutate(
-    data,
-    across(matches("^parameter1$|^term$"), \(x) y_name),
-    across(matches("^parameter2$|^group$"), \(x) x_name)
   )
 }
