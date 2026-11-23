@@ -13,6 +13,7 @@ README.html
 ^Rplots.pdf$
 ^\.Rproj\.user$
 ^\.agents$
+^\.git$
 ^\.github$
 ^\.lintr$
 ^\.pre-commit-config\.yaml$
