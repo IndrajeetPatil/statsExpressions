@@ -53,7 +53,7 @@
       "@type": "SoftwareApplication",
       "identifier": "ggplot2",
       "name": "ggplot2",
-      "version": ">= 4.0.3",
+      "version": ">= 4.0.4",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -253,7 +253,7 @@
       "@type": "SoftwareApplication",
       "identifier": "datawizard",
       "name": "datawizard",
-      "version": ">= 1.4.1",
+      "version": ">= 1.5.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -331,7 +331,7 @@
       "@type": "SoftwareApplication",
       "identifier": "performance",
       "name": "performance",
-      "version": ">= 0.19.0",
+      "version": ">= 0.20.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -420,7 +420,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "4252.016KB",
+  "fileSize": "4255.201KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
