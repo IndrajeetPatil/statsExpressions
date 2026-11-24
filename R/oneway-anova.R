@@ -114,10 +114,7 @@ oneway_anova <- function(
     effect_df <- exec(.f.es, model = mod, ci = conf.level, verbose = FALSE) |>
       tidy_model_effectsize()
 
-    stats_df <- bind_cols(
-      tidy_model_parameters(mod),
-      effect_df
-    )
+    stats_df <- bind_cols(tidy_model_parameters(mod), effect_df)
   }
 
   # non-parametric ------------------------------------

@@ -118,9 +118,13 @@ test_that("paired designs need at most one row per subject and condition", {
   )
 
   expect_snapshot_error(long_to_wide_converter(df, group, value, id))
-  expect_snapshot_error(
-    two_sample_test(df, group, value, subject.id = id, paired = TRUE)
-  )
+  expect_snapshot_error(two_sample_test(
+    df,
+    group,
+    value,
+    subject.id = id,
+    paired = TRUE
+  ))
   expect_shape(
     long_to_wide_converter(
       df,

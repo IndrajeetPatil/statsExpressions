@@ -77,10 +77,9 @@ tidy_model_parameters <- function(model, ...) {
 #' @noRd
 tidy_model_effectsize <- function(data, ...) {
   effectsize_labels <- effectsize::get_effectsize_label(colnames(data))
-  ci_method <- rename_with(
-    as_tibble(attr(data, "ci_method")),
-    \(x) paste0("conf.", x)
-  )
+  ci_method <- rename_with(as_tibble(attr(data, "ci_method")), \(x) {
+    paste0("conf.", x)
+  })
 
   data |>
     mutate(effectsize = stats::na.omit(effectsize_labels)) |>

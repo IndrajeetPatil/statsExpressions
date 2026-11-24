@@ -36,10 +36,7 @@ test_that("tidy_model_expressions works - z", {
     family = stats::binomial(link = "logit")
   )
 
-  df_z <- tidy_model_expressions(
-    tidy_model_parameters(mod_z),
-    statistic = "z"
-  )
+  df_z <- tidy_model_expressions(tidy_model_parameters(mod_z), statistic = "z")
 
   expect_snapshot(select(df_z, -expression))
   expect_snapshot(df_z[["expression"]])

@@ -52,12 +52,7 @@ test_that("corr_test works - Bayesian", {
 
   # without NA
   set.seed(123)
-  df2 <- corr_test(
-    data = mtcars,
-    x = wt,
-    y = mpg,
-    type = "bayes"
-  )
+  df2 <- corr_test(data = mtcars, x = wt, y = mpg, type = "bayes")
 
   expect_snapshot(df2[["expression"]])
 })

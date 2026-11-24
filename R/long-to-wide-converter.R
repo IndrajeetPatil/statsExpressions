@@ -86,10 +86,7 @@ long_to_wide_converter <- function(
     )
   }
 
-  data |>
-    relocate(.rowid) |>
-    arrange(.rowid) |>
-    as_tibble()
+  data |> relocate(.rowid) |> arrange(.rowid) |> as_tibble()
 }
 
 #' @title Select and sort long data, tagging rows with a `.rowid`

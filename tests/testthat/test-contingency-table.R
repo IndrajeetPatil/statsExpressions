@@ -80,12 +80,7 @@ test_that("paired contingency_table works", {
 test_that("goodness of fit contingency_table works", {
   # one-sample test (without NAs) -------------------------------------
 
-  df1 <- contingency_table(
-    data = mtcars,
-    x = am,
-    conf.level = 0.99,
-    digits = 5
-  )
+  df1 <- contingency_table(data = mtcars, x = am, conf.level = 0.99, digits = 5)
 
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
@@ -113,11 +108,7 @@ test_that("goodness of fit contingency_table works", {
 })
 
 test_that("bayesian (proportion test)", {
-  df1 <- contingency_table(
-    data = mtcars,
-    x = am,
-    type = "bayes"
-  )
+  df1 <- contingency_table(data = mtcars, x = am, type = "bayes")
 
   expect_snapshot(select(df1, -expression))
   expect_snapshot(df1[["expression"]])
@@ -170,12 +161,7 @@ test_that("bayesian proportion test matches numerical integration", {
 test_that("bayesian (contingency tab)", {
   # without NAs
   set.seed(123)
-  df1 <- contingency_table(
-    type = "bayes",
-    data = mtcars,
-    x = am,
-    y = cyl
-  )
+  df1 <- contingency_table(type = "bayes", data = mtcars, x = am, y = cyl)
 
   expect_snapshot(df1[["expression"]])
 
@@ -241,9 +227,13 @@ patrick::with_parameters_test_that(
       if (type == "bayes") {
         set.seed(123)
       }
-      suppressWarnings(
-        contingency_table(data, cyl, am, type = type, paired = paired)
-      )
+      suppressWarnings(contingency_table(
+        data,
+        cyl,
+        am,
+        type = type,
+        paired = paired
+      ))
     }
 
     expect_identical(run(df_unused), run(df))
@@ -259,9 +249,11 @@ patrick::with_parameters_test_that(
 test_that("contingency_table() keeps zero-count levels in goodness-of-fit tests", {
   df <- mutate(mtcars, cyl = factor(cyl, levels = c(4, 6, 8, 10)))
 
-  res <- suppressWarnings(
-    contingency_table(df, cyl, ratio = c(0.3, 0.2, 0.4, 0.1))
-  )
+  res <- suppressWarnings(contingency_table(
+    df,
+    cyl,
+    ratio = c(0.3, 0.2, 0.4, 0.1)
+  ))
 
   expect_identical(res$df, 3)
 })

@@ -72,9 +72,11 @@ meta_analysis <- function(
     # nocov end
   }
 
-  check_if_installed(
-    c(parametric = "metafor", robust = "metaplus", bayes = "metaBMA")[[type]]
-  )
+  check_if_installed(c(
+    parametric = "metafor",
+    robust = "metaplus",
+    bayes = "metaBMA"
+  )[[type]])
 
   # the remaining `type` is "bayes"
   stats_df <- switch(

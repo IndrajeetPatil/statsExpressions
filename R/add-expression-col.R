@@ -190,10 +190,9 @@ add_expression_col <- function(
 ) {
   mutate(
     data,
-    across(
-      matches("^est|^sta|p.value|.scale$|.low$|.high$|^log"),
-      \(x) .to_char(x, .env$digits)
-    ),
+    across(matches("^est|^sta|p.value|.scale$|.low$|.high$|^log"), \(x) {
+      .to_char(x, .env$digits)
+    }),
     across(matches("^df$"), \(x) .to_char(x, .env$digits.df)),
     across(matches("^df.error$"), \(x) .to_char(x, .env$digits.df.error)),
     across(matches("^conf.level$"), \(x) paste0(x * 100L, "%"))
